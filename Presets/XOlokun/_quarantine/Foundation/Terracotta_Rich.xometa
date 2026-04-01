@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Terracotta Rich",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.2,
+      "morph_macroCoupling": 0.574,
+      "morph_macroMovement": 0.254,
+      "morph_macroSpace": 0.728
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.642,
+      "snap_macroCoupling": 0.706,
+      "snap_macroMovement": 0.871,
+      "snap_macroSpace": 0.547
+    }
   },
   "schema_version": 1,
   "tags": [

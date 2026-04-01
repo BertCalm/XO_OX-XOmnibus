@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Prism Plate",
   "parameters": {
-    "Oblique": {},
-    "Obscura": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.764,
+      "oblq_macroCoupling": 0.614,
+      "oblq_macroMovement": 0.714,
+      "oblq_macroSpace": 0.514
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.386,
+      "obscura_macroCoupling": 0.586,
+      "obscura_macroMovement": 0.286,
+      "obscura_macroSpace": 0.636
+    }
   },
   "schema_version": 1,
   "tags": [

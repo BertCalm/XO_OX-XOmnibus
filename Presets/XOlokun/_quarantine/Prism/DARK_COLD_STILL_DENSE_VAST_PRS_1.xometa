@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Phase Expanse",
   "parameters": {
-    "Oracle": {},
-    "Osteria": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.16,
+      "oracle_macroCoupling": 0.836,
+      "oracle_macroMovement": 0.154,
+      "oracle_macroSpace": 0.996
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.05,
+      "osteria_macroCoupling": 1.0,
+      "osteria_macroMovement": 0.045,
+      "osteria_macroSpace": 0.911
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Calm Cinnamon",
   "parameters": {
-    "Obsidian": {},
-    "Outwit": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.84,
+      "obsidian_macroCoupling": 0.66,
+      "obsidian_macroMovement": 0.74,
+      "obsidian_macroSpace": 0.31
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.82,
+      "owit_macroCoupling": 0.71,
+      "owit_macroMovement": 0.86,
+      "owit_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "sequencer": null,

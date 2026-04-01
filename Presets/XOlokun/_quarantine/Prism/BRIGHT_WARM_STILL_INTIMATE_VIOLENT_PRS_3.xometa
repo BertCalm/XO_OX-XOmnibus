@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Peach Strike",
   "parameters": {
-    "Ohm": {},
-    "Orphica": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.978,
+      "ohm_macroCoupling": 0.543,
+      "ohm_macroMovement": 0.0,
+      "ohm_macroSpace": 0.18
+    },
+    "Orphica": {
+      "orph_macroCharacter": 1.0,
+      "orph_macroCoupling": 0.473,
+      "orph_macroMovement": 0.001,
+      "orph_macroSpace": 0.098
+    }
   },
   "schema_version": 1,
   "sequencer": null,

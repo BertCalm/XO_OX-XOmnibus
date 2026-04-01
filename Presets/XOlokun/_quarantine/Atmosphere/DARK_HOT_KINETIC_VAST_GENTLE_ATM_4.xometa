@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Mahogany Horizon",
   "parameters": {
-    "Oblique": {},
-    "Opal": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.4833,
+      "oblq_macroCoupling": 0.3028,
+      "oblq_macroMovement": 0.9173,
+      "oblq_macroSpace": 0.9859
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.458,
+      "opal_macroCoupling": 0.3291,
+      "opal_macroMovement": 0.8772,
+      "opal_macroSpace": 0.9688
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Velvet Stream",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.523,
+      "drift_macroCoupling": 0.542,
+      "drift_macroMovement": 0.939,
+      "drift_macroSpace": 0.929
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.544,
+      "opal_macroCoupling": 0.56,
+      "opal_macroMovement": 0.899,
+      "opal_macroSpace": 0.913
+    }
   },
   "schema_version": 1,
   "tags": [

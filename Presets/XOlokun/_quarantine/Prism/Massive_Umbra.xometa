@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Massive Umbra",
   "parameters": {
-    "Ohm": {},
-    "Orphica": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.472,
+      "ohm_macroCoupling": 0.631,
+      "ohm_macroMovement": 0.575,
+      "ohm_macroSpace": 0.502
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.918,
+      "orph_macroCoupling": 0.557,
+      "orph_macroMovement": 0.575,
+      "orph_macroSpace": 0.502
+    }
   },
   "schema_version": 1,
   "tags": [

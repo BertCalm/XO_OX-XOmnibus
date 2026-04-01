@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Ember Strike",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.0336,
+      "oblq_macroCoupling": 0.9346,
+      "oblq_macroMovement": 0.4128,
+      "oblq_macroSpace": 0.0101
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.0588,
+      "orb_macroCoupling": 0.9849,
+      "orb_macroMovement": 0.4272,
+      "orb_macroSpace": 0.01
+    }
   },
   "schema_version": 1,
   "tags": [

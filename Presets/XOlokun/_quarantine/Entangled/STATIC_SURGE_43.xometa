@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "STATIC SURGE 43",
   "parameters": {
-    "Osteria": {},
-    "Ottoni": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.739,
+      "osteria_macroCoupling": 0.299,
+      "osteria_macroMovement": 0.896,
+      "osteria_macroSpace": 0.336
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.828,
+      "otto_macroCoupling": 0.532,
+      "otto_macroMovement": 0.979,
+      "otto_macroSpace": 0.709
+    }
   },
   "schema_version": 1,
   "tags": [

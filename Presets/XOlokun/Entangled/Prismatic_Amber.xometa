@@ -49,7 +49,11 @@
       "filter_resonance": 0.291,
       "output_level": 0.9114,
       "reverb_mix": 0.3271,
-      "reverb_size": 0.3751
+      "reverb_size": 0.3751,
+      "orb_macroCharacter": 0.9921,
+      "orb_macroCoupling": 0.7273,
+      "orb_macroMovement": 0.0995,
+      "orb_macroSpace": 0.3033
     },
     "Organon": {
       "amp_attack": 0.4067,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.2818,
       "output_level": 0.9374,
       "reverb_mix": 0.3359,
-      "reverb_size": 0.4014
+      "reverb_size": 0.4014,
+      "organon_macroCharacter": 0.9888,
+      "organon_macroCoupling": 0.715,
+      "organon_macroMovement": 0.0902,
+      "organon_macroSpace": 0.3304
     }
   },
   "schema_version": 1,

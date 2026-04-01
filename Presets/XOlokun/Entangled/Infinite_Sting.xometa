@@ -49,7 +49,11 @@
       "filter_resonance": 0.6037,
       "output_level": 0.8853,
       "reverb_mix": 0.7306,
-      "reverb_size": 0.8
+      "reverb_size": 0.8,
+      "obscura_macroCharacter": 0.6241,
+      "obscura_macroCoupling": 0.9716,
+      "obscura_macroMovement": 0.472,
+      "obscura_macroSpace": 0.964
     },
     "Ohm": {
       "amp_attack": 0.277,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.6106,
       "output_level": 0.8516,
       "reverb_mix": 0.7142,
-      "reverb_size": 0.7686
+      "reverb_size": 0.7686,
+      "ohm_macroCharacter": 0.6321,
+      "ohm_macroCoupling": 0.9274,
+      "ohm_macroMovement": 0.4952,
+      "ohm_macroSpace": 0.957
     }
   },
   "schema_version": 1,

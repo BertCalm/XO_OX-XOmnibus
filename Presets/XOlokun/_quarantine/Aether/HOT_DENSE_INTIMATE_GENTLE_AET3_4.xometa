@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Radiant Titan",
   "parameters": {
-    "OddfeliX": {},
-    "Ombre": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.7017,
+      "snap_macroCoupling": 0.7431,
+      "snap_macroMovement": 0.7986,
+      "snap_macroSpace": 0.8304
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.5662,
+      "ombre_macroCoupling": 0.5642,
+      "ombre_macroMovement": 0.4047,
+      "ombre_macroSpace": 0.4916
+    }
   },
   "schema_version": 1,
   "tags": [

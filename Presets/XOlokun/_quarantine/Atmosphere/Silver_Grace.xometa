@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Silver Grace",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.299,
+      "opal_macroCoupling": 0.066,
+      "opal_macroMovement": 0.069,
+      "opal_macroSpace": 0.097
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.299,
+      "organon_macroCoupling": 0.066,
+      "organon_macroMovement": 0.069,
+      "organon_macroSpace": 0.097
+    }
   },
   "schema_version": 1,
   "tags": [

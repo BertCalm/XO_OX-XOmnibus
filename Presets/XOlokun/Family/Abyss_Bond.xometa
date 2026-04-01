@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Abyss Bond",
   "parameters": {
-    "Opal": {},
+    "Opal": {
+      "opal_macroCharacter": 0.528,
+      "opal_macroCoupling": 0.982,
+      "opal_macroMovement": 0.3,
+      "opal_macroSpace": 0.06
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.51,
+      "dub_macroCoupling": 0.968,
+      "dub_macroMovement": 0.335,
+      "dub_macroSpace": 0.058
     }
   },
   "schema_version": 1,

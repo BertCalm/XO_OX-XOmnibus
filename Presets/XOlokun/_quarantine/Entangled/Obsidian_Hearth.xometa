@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Obsidian Hearth",
   "parameters": {
-    "Obbligato": {},
-    "Oracle": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.16,
+      "obbl_macroCoupling": 0.54,
+      "obbl_macroMovement": 0.53,
+      "obbl_macroSpace": 0.19
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.27,
+      "oracle_macroCoupling": 0.63,
+      "oracle_macroMovement": 0.23,
+      "oracle_macroSpace": 0.26
+    }
   },
   "schema_version": 1,
   "tags": [

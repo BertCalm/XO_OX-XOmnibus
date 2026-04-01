@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Rust Cavern",
   "parameters": {
-    "Onset": {},
-    "Overbite": {}
+    "Onset": {
+      "perc_macroCharacter": 0.256,
+      "perc_macroCoupling": 1.0,
+      "perc_macroMovement": 0.282,
+      "perc_macroSpace": 0.95
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.164,
+      "poss_macroCoupling": 1.0,
+      "poss_macroMovement": 0.34,
+      "poss_macroSpace": 0.823
+    }
   },
   "schema_version": 1,
   "sequencer": null,

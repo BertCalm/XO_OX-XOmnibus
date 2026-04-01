@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Harmonic Tonnage",
   "parameters": {
-    "Obese": {},
-    "Organon": {}
+    "Obese": {
+      "fat_macroCharacter": 0.99,
+      "fat_macroCoupling": 0.84,
+      "fat_macroMovement": 0.52,
+      "fat_macroSpace": 0.6
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.89,
+      "organon_macroCoupling": 0.78,
+      "organon_macroMovement": 0.59,
+      "organon_macroSpace": 0.37
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Prophecy Brass",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.58,
+      "oracle_macroCoupling": 0.67,
+      "oracle_macroMovement": 0.62,
+      "oracle_macroSpace": 0.55
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.65,
+      "otto_macroCoupling": 0.67,
+      "otto_macroMovement": 0.5,
+      "otto_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

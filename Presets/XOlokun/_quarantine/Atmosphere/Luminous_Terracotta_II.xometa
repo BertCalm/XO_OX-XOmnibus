@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Luminous Terracotta II",
   "parameters": {
-    "OddOscar": {},
-    "Overworld": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.935,
+      "morph_macroCoupling": 0.661,
+      "morph_macroMovement": 0.404,
+      "morph_macroSpace": 0.555
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.867,
+      "ow_macroCoupling": 0.649,
+      "ow_macroMovement": 0.277,
+      "ow_macroSpace": 0.487
+    }
   },
   "schema_version": 1,
   "tags": [

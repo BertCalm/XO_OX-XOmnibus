@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Lattice Altar",
   "parameters": {
-    "OddOscar": {},
-    "Orbital": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.301,
+      "morph_macroCoupling": 0.53,
+      "morph_macroMovement": 0.722,
+      "morph_macroSpace": 0.681
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.623,
+      "orb_macroCoupling": 0.541,
+      "orb_macroMovement": 0.38,
+      "orb_macroSpace": 0.502
+    }
   },
   "schema_version": 1,
   "tags": [

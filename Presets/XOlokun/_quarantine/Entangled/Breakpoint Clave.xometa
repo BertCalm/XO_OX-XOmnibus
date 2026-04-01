@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Breakpoint Clave",
   "parameters": {
-    "Ole": {},
-    "Oracle": {}
+    "Ole": {
+      "ole_macroCharacter": 0.72,
+      "ole_macroCoupling": 0.72,
+      "ole_macroMovement": 0.62,
+      "ole_macroSpace": 0.35
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.55,
+      "oracle_macroCoupling": 0.72,
+      "oracle_macroMovement": 0.7,
+      "oracle_macroSpace": 0.55
+    }
   },
   "schema_version": 1,
   "sequencer": null,

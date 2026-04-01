@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE GEN... (Osteria)",
   "parameters": {
-    "Orphica": {},
-    "Osteria": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.569,
+      "orph_macroCoupling": 0.514,
+      "orph_macroMovement": 0.65,
+      "orph_macroSpace": 0.112
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.525,
+      "osteria_macroCoupling": 0.536,
+      "osteria_macroMovement": 0.606,
+      "osteria_macroSpace": 0.088
+    }
   },
   "schema_version": 1,
   "tags": [

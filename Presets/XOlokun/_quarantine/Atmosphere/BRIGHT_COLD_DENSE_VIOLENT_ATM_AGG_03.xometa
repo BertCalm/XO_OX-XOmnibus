@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT COLD DENSE VIOLENT A... (Oceanic I)",
   "parameters": {
-    "Oceanic": {},
-    "Optic": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.86,
+      "ocean_macroCoupling": 0.791,
+      "ocean_macroMovement": 0.375,
+      "ocean_macroSpace": 0.616
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.88,
+      "optic_macroCoupling": 0.824,
+      "optic_macroMovement": 0.373,
+      "optic_macroSpace": 0.608
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -49,7 +49,11 @@
       "filter_resonance": 0.5385,
       "output_level": 0.8662,
       "reverb_mix": 0.6872,
-      "reverb_size": 0.7733
+      "reverb_size": 0.7733,
+      "origami_macroCharacter": 0.7108,
+      "origami_macroCoupling": 0.9061,
+      "origami_macroMovement": 0.6035,
+      "origami_macroSpace": 0.9353
     },
     "Outwit": {
       "amp_attack": 0.1717,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.5586,
       "output_level": 0.8662,
       "reverb_mix": 0.6778,
-      "reverb_size": 0.7533
+      "reverb_size": 0.7533,
+      "owit_macroCharacter": 0.7107,
+      "owit_macroCoupling": 0.9643,
+      "owit_macroMovement": 0.6176,
+      "owit_macroSpace": 0.951
     }
   },
   "schema_version": 1,

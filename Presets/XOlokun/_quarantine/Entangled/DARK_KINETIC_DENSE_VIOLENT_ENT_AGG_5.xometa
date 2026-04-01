@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Signal Thick",
   "parameters": {
-    "Obsidian": {},
-    "Orca": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.679,
+      "obsidian_macroCoupling": 0.756,
+      "obsidian_macroMovement": 0.925,
+      "obsidian_macroSpace": 0.626
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.658,
+      "orca_macroCoupling": 0.768,
+      "orca_macroMovement": 0.921,
+      "orca_macroSpace": 0.583
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Ember Solar",
   "parameters": {
-    "Overbite": {},
-    "Overdub": {}
+    "Overbite": {
+      "poss_macroCharacter": 0.954,
+      "poss_macroCoupling": 0.667,
+      "poss_macroMovement": 0.904,
+      "poss_macroSpace": 0.437
+    },
+    "Overdub": {
+      "dub_macroCharacter": 0.954,
+      "dub_macroCoupling": 0.667,
+      "dub_macroMovement": 0.904,
+      "dub_macroSpace": 0.437
+    }
   },
   "schema_version": 1,
   "tags": [

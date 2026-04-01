@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "KINETIC STORM 7",
   "parameters": {
-    "Ole": {},
-    "Outwit": {}
+    "Ole": {
+      "ole_macroCharacter": 0.998,
+      "ole_macroCoupling": 0.275,
+      "ole_macroMovement": 0.915,
+      "ole_macroSpace": 0.98
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.042,
+      "owit_macroCoupling": 0.87,
+      "owit_macroMovement": 0.949,
+      "owit_macroSpace": 0.353
+    }
   },
   "schema_version": 1,
   "tags": [

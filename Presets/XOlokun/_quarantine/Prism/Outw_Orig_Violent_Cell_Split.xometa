@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Outwit": {},
-    "Origami": {}
+    "Outwit": {
+      "owit_macroCharacter": 0.85,
+      "owit_macroMovement": 0.76,
+      "owit_macroCoupling": 0.64,
+      "owit_macroSpace": 0.41
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.92,
+      "origami_macroMovement": 0.65,
+      "origami_macroCoupling": 0.63,
+      "origami_macroSpace": 0.28
+    }
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

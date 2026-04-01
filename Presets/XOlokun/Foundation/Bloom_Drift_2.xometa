@@ -45,9 +45,18 @@
   "mood": "Foundation",
   "name": "Bloom Drift 2",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.906,
+      "morph_macroCoupling": 0.384,
+      "morph_macroMovement": 0.903,
+      "morph_macroSpace": 1.0
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.835,
+      "dub_macroCoupling": 0.455,
+      "dub_macroMovement": 0.963,
+      "dub_macroSpace": 0.84
     }
   },
   "schema_version": 1,

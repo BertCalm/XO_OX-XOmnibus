@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Tone Packed",
   "parameters": {
-    "Ohm": {},
-    "Organon": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.7836,
+      "ohm_macroCoupling": 0.9729,
+      "ohm_macroMovement": 0.1227,
+      "ohm_macroSpace": 0.5894
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.6839,
+      "organon_macroCoupling": 0.976,
+      "organon_macroMovement": 0.1101,
+      "organon_macroSpace": 0.2686
+    }
   },
   "schema_version": 1,
   "sequencer": null,

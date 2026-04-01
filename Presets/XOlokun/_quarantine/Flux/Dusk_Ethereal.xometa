@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Dusk Ethereal",
   "parameters": {
-    "Oceanic": {},
-    "Orca": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.1751,
+      "ocean_macroCoupling": 0.4646,
+      "ocean_macroMovement": 0.7791,
+      "ocean_macroSpace": 0.6954
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.3325,
+      "orca_macroCoupling": 0.546,
+      "orca_macroMovement": 0.0443,
+      "orca_macroSpace": 0.8135
+    }
   },
   "schema_version": 1,
   "tags": [

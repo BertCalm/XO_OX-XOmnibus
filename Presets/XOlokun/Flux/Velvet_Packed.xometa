@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Velvet Packed",
   "parameters": {
-    "Ouroboros": {},
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.5326,
+      "ouro_macroCoupling": 0.9865,
+      "ouro_macroMovement": 0.654,
+      "ouro_macroSpace": 0.883
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.5219,
+      "dub_macroCoupling": 0.9618,
+      "dub_macroMovement": 0.6938,
+      "dub_macroSpace": 0.8728
     }
   },
   "schema_version": 1,

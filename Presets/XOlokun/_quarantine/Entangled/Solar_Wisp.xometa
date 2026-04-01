@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Solar Wisp",
   "parameters": {
-    "Onset": {},
-    "Osteria": {}
+    "Onset": {
+      "perc_macroCharacter": 0.784,
+      "perc_macroCoupling": 0.535,
+      "perc_macroMovement": 0.583,
+      "perc_macroSpace": 0.594
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.795,
+      "osteria_macroCoupling": 0.785,
+      "osteria_macroMovement": 0.578,
+      "osteria_macroSpace": 0.663
+    }
   },
   "schema_version": 1,
   "tags": [

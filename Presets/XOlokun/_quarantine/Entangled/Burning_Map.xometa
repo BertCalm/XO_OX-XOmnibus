@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Burning Map",
   "parameters": {
-    "OddfeliX": {},
-    "Orbital": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.446,
+      "snap_macroCoupling": 0.667,
+      "snap_macroMovement": 0.794,
+      "snap_macroSpace": 0.541
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.481,
+      "orb_macroCoupling": 0.649,
+      "orb_macroMovement": 0.608,
+      "orb_macroSpace": 0.215
+    }
   },
   "schema_version": 1,
   "tags": [

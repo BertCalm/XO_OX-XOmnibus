@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Solid Shroud",
   "parameters": {
-    "Ombre": {},
-    "Overworld": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.6912,
+      "ombre_macroCoupling": 0.6617,
+      "ombre_macroMovement": 0.8253,
+      "ombre_macroSpace": 0.9043
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.4098,
+      "ow_macroCoupling": 0.363,
+      "ow_macroMovement": 0.7177,
+      "ow_macroSpace": 0.5335
+    }
   },
   "schema_version": 1,
   "tags": [

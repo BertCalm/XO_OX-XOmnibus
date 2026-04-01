@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Grain Ripple 3",
   "parameters": {
-    "Oceanic": {},
-    "Organon": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.513,
+      "ocean_macroCoupling": 0.614,
+      "ocean_macroMovement": 0.815,
+      "ocean_macroSpace": 0.487
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.422,
+      "organon_macroCoupling": 0.617,
+      "organon_macroMovement": 0.915,
+      "organon_macroSpace": 0.573
+    }
   },
   "schema_version": 1,
   "tags": [

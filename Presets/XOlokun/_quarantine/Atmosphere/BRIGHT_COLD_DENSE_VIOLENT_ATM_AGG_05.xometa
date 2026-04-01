@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT COLD DENSE VIOLENT A... (Osprey I)",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.88,
+      "oblq_macroCoupling": 0.972,
+      "oblq_macroMovement": 0.563,
+      "oblq_macroSpace": 0.624
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.915,
+      "osprey_macroCoupling": 0.94,
+      "osprey_macroMovement": 0.586,
+      "osprey_macroSpace": 0.65
+    }
   },
   "schema_version": 1,
   "tags": [

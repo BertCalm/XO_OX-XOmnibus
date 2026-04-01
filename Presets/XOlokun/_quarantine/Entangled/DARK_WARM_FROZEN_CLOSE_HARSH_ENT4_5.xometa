@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Rust Crush 2",
   "parameters": {
-    "Ombre": {},
-    "Opal": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.48,
+      "ombre_macroCoupling": 0.468,
+      "ombre_macroMovement": 0.046,
+      "ombre_macroSpace": 0.1
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.514,
+      "opal_macroCoupling": 0.467,
+      "opal_macroMovement": 0.051,
+      "opal_macroSpace": 0.083
+    }
   },
   "schema_version": 1,
   "tags": [

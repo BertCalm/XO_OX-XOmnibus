@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Silver Edge 2",
   "parameters": {
-    "Oceanic": {},
-    "Orphica": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.743,
+      "ocean_macroCoupling": 0.905,
+      "ocean_macroMovement": 0.704,
+      "ocean_macroSpace": 0.158
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.384,
+      "orph_macroCoupling": 0.914,
+      "orph_macroMovement": 0.685,
+      "orph_macroSpace": 0.095
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Siphonophore Cell",
   "parameters": {
-    "Organon": {},
-    "Orphica": {}
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.65,
+      "organon_macroMovement": 0.72,
+      "organon_macroSpace": 0.55
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.62,
+      "orph_macroCoupling": 0.65,
+      "orph_macroMovement": 0.55,
+      "orph_macroSpace": 0.72
+    }
   },
   "schema_version": 1,
   "sequencer": null,

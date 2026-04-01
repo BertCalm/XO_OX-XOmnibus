@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Grain Crush",
   "parameters": {
-    "Oracle": {},
-    "Owlfish": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.495,
+      "oracle_macroCoupling": 0.435,
+      "oracle_macroMovement": 0.566,
+      "oracle_macroSpace": 0.125
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.952,
+      "owl_macroCoupling": 0.365,
+      "owl_macroMovement": 0.566,
+      "owl_macroSpace": 0.125
+    }
   },
   "schema_version": 1,
   "tags": [

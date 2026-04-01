@@ -49,7 +49,11 @@
       "filter_resonance": 0.1047,
       "output_level": 0.6806,
       "reverb_mix": 0.3696,
-      "reverb_size": 0.4802
+      "reverb_size": 0.4802,
+      "obscura_macroCharacter": 0.8266,
+      "obscura_macroCoupling": 0.663,
+      "obscura_macroMovement": 0.8697,
+      "obscura_macroSpace": 0.4424
     },
     "Optic": {
       "amp_attack": 0.0572,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.1436,
       "output_level": 0.7221,
       "reverb_mix": 0.3988,
-      "reverb_size": 0.4204
+      "reverb_size": 0.4204,
+      "optic_macroCharacter": 0.8327,
+      "optic_macroCoupling": 0.5993,
+      "optic_macroMovement": 0.9123,
+      "optic_macroSpace": 0.424
     }
   },
   "schema_version": 1,

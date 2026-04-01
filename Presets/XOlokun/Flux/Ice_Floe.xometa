@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Ice Floe",
   "parameters": {
-    "Origami": {},
+    "Origami": {
+      "origami_macroCharacter": 0.7361,
+      "origami_macroCoupling": 0.4786,
+      "origami_macroMovement": 0.0892,
+      "origami_macroSpace": 0.8452
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.5682,
+      "dub_macroCoupling": 0.6525,
+      "dub_macroMovement": 0.1195,
+      "dub_macroSpace": 0.8948
     }
   },
   "schema_version": 1,

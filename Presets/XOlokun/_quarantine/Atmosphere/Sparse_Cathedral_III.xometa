@@ -39,8 +39,18 @@
   "mood": "Atmosphere",
   "name": "Sparse Cathedral III",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.64,
+      "morph_macroCoupling": 0.56,
+      "morph_macroMovement": 0.88,
+      "morph_macroSpace": 0.4
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.79,
+      "opal_macroCoupling": 0.65,
+      "opal_macroMovement": 0.77,
+      "opal_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

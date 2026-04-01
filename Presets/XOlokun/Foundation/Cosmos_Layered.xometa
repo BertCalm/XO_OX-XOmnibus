@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Cosmos Layered",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.633,
+      "snap_macroCoupling": 0.867,
+      "snap_macroMovement": 0.669,
+      "snap_macroSpace": 0.363
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.809,
+      "dub_macroCoupling": 0.655,
+      "dub_macroMovement": 0.792,
+      "dub_macroSpace": 0.318
     }
   },
   "schema_version": 1,

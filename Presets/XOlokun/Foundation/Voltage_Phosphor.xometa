@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Voltage Phosphor",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.962,
+      "morph_macroCoupling": 0.966,
+      "morph_macroMovement": 0.77,
+      "morph_macroSpace": 0.944
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.962,
+      "dub_macroCoupling": 0.966,
+      "dub_macroMovement": 0.77,
+      "dub_macroSpace": 0.944
     }
   },
   "schema_version": 1,

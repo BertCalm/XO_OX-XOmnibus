@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Halo Surge",
   "parameters": {
-    "Oceanic": {},
-    "Ombre": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.8775,
+      "ocean_macroCoupling": 0.3241,
+      "ocean_macroMovement": 0.5705,
+      "ocean_macroSpace": 0.1271
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.8813,
+      "ombre_macroCoupling": 0.3798,
+      "ombre_macroMovement": 0.5692,
+      "ombre_macroSpace": 0.0781
+    }
   },
   "schema_version": 1,
   "tags": [

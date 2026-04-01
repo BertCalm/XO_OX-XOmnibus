@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Thin Still III",
   "parameters": {
-    "Obscura": {},
-    "Oracle": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.314,
+      "obscura_macroCoupling": 0.071,
+      "obscura_macroMovement": 0.036,
+      "obscura_macroSpace": 0.1
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.314,
+      "oracle_macroCoupling": 0.071,
+      "oracle_macroMovement": 0.036,
+      "oracle_macroSpace": 0.1
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,10 +45,19 @@
   "mood": "Entangled",
   "name": "Golden Orbit 2",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.9342,
+      "oblq_macroCoupling": 0.8882,
+      "oblq_macroMovement": 0.0289,
+      "oblq_macroSpace": 0.7106
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.9821,
+      "bob_macroCoupling": 0.8967,
+      "bob_macroMovement": 0.0317,
+      "bob_macroSpace": 0.7532
     }
   },
   "schema_version": 1,

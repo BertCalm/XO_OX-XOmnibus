@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Crystal Grain",
   "parameters": {
-    "Obsidian": {},
-    "Opal": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.14,
+      "obsidian_macroCoupling": 0.71,
+      "obsidian_macroMovement": 0.38,
+      "obsidian_macroSpace": 0.92
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.11,
+      "opal_macroCoupling": 0.76,
+      "opal_macroMovement": 0.33,
+      "opal_macroSpace": 0.95
+    }
   },
   "schema_version": 1,
   "tags": [

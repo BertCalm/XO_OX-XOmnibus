@@ -39,9 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.4254,
+      "bob_macroCoupling": 0.3448,
+      "bob_macroMovement": 0.9324,
+      "bob_macroSpace": 0.9117
     },
-    "Oceanic": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.1938,
+      "ocean_macroCoupling": 0.4199,
+      "ocean_macroMovement": 0.8757,
+      "ocean_macroSpace": 0.8745
+    }
   },
   "schema_version": 1,
   "tags": [

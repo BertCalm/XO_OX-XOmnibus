@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Metabolic Brass",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.5,
+      "organon_macroCoupling": 0.6,
+      "organon_macroMovement": 0.65,
+      "organon_macroSpace": 0.5
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.62,
+      "otto_macroCoupling": 0.6,
+      "otto_macroMovement": 0.55,
+      "otto_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "sequencer": null,

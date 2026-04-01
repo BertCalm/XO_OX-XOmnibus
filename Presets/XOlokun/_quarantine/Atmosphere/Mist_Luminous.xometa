@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Mist Luminous",
   "parameters": {
-    "Oblique": {},
-    "Organon": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.517,
+      "oblq_macroCoupling": 0.629,
+      "oblq_macroMovement": 0.193,
+      "oblq_macroSpace": 0.887
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.777,
+      "organon_macroCoupling": 0.833,
+      "organon_macroMovement": 0.089,
+      "organon_macroSpace": 0.861
+    }
   },
   "schema_version": 1,
   "tags": [

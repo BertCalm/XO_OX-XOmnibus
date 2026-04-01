@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Grain Stream 3",
   "parameters": {
-    "Orphica": {},
-    "Overbite": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.671,
+      "orph_macroCoupling": 0.95,
+      "orph_macroMovement": 0.879,
+      "orph_macroSpace": 0.342
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.597,
+      "poss_macroCoupling": 0.957,
+      "poss_macroMovement": 0.894,
+      "poss_macroSpace": 0.31
+    }
   },
   "schema_version": 1,
   "tags": [

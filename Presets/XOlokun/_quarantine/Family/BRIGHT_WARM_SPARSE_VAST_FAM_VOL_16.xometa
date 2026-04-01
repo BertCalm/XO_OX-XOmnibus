@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Bloom Void",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.968,
+      "ohm_macroCoupling": 0.4,
+      "ohm_macroMovement": 0.584,
+      "ohm_macroSpace": 0.957
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.977,
+      "ole_macroCoupling": 0.387,
+      "ole_macroMovement": 0.634,
+      "ole_macroSpace": 0.938
+    }
   },
   "schema_version": 1,
   "tags": [

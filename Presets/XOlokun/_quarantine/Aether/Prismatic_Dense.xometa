@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Prismatic Dense",
   "parameters": {
-    "Oblique": {},
-    "Obsidian": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.923,
+      "oblq_macroCoupling": 0.788,
+      "oblq_macroMovement": 0.468,
+      "oblq_macroSpace": 0.448
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.798,
+      "obsidian_macroCoupling": 0.581,
+      "obsidian_macroMovement": 0.334,
+      "obsidian_macroSpace": 0.483
+    }
   },
   "schema_version": 1,
   "tags": [

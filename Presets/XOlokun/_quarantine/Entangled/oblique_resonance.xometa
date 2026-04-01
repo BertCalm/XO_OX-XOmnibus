@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Oblique Resonance",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.822,
+      "oblq_macroCoupling": 0.672,
+      "oblq_macroMovement": 0.772,
+      "oblq_macroSpace": 0.572
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.378,
+      "orb_macroCoupling": 0.478,
+      "orb_macroMovement": 0.528,
+      "orb_macroSpace": 0.678
+    }
   },
   "schema_version": 1,
   "tags": [

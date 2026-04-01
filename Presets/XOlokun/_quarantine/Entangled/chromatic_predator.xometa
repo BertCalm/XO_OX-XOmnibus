@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Chromatic Predator",
   "parameters": {
-    "Ocelot": {},
-    "Optic": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.678,
+      "ocelot_macroCoupling": 0.578,
+      "ocelot_macroMovement": 0.728,
+      "ocelot_macroSpace": 0.478
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.472,
+      "optic_macroCoupling": 0.572,
+      "optic_macroMovement": 0.422,
+      "optic_macroSpace": 0.472
+    }
   },
   "schema_version": 1,
   "tags": [

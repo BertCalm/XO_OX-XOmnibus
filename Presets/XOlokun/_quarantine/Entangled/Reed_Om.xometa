@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Reed Om",
   "parameters": {
-    "Ohm": {},
-    "Organon": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.65,
+      "ohm_macroCoupling": 0.72,
+      "ohm_macroMovement": 0.8,
+      "ohm_macroSpace": 0.23
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.87,
+      "organon_macroCoupling": 0.82,
+      "organon_macroMovement": 0.81,
+      "organon_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

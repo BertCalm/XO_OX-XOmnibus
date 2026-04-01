@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Grain Shimmer 3",
   "parameters": {
-    "Oblique": {},
-    "Odyssey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.655,
+      "oblq_macroCoupling": 0.8,
+      "oblq_macroMovement": 0.971,
+      "oblq_macroSpace": 0.492
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.436,
+      "drift_macroCoupling": 0.775,
+      "drift_macroMovement": 0.921,
+      "drift_macroSpace": 0.504
+    }
   },
   "schema_version": 1,
   "tags": [

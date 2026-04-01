@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Frozen Orbit (Orbital)",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.802,
+      "ombre_macroCoupling": 0.85,
+      "ombre_macroMovement": 0.851,
+      "ombre_macroSpace": 0.927
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.835,
+      "orb_macroCoupling": 0.22,
+      "orb_macroMovement": 0.233,
+      "orb_macroSpace": 0.953
+    }
   },
   "schema_version": 1,
   "tags": [

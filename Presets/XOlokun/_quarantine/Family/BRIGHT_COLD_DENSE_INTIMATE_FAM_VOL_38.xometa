@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Prism Packed 2",
   "parameters": {
-    "Organon": {},
-    "Osteria": {}
+    "Organon": {
+      "organon_macroCharacter": 0.477,
+      "organon_macroCoupling": 0.748,
+      "organon_macroMovement": 0.511,
+      "organon_macroSpace": 0.117
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.501,
+      "osteria_macroCoupling": 0.742,
+      "osteria_macroMovement": 0.484,
+      "osteria_macroSpace": 0.107
+    }
   },
   "schema_version": 1,
   "tags": [

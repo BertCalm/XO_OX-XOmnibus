@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Solid Current II",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.347,
+      "orph_macroCoupling": 0.711,
+      "orph_macroMovement": 0.903,
+      "orph_macroSpace": 0.581
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.726,
+      "otto_macroCoupling": 0.806,
+      "otto_macroMovement": 0.903,
+      "otto_macroSpace": 0.581
+    }
   },
   "schema_version": 1,
   "tags": [

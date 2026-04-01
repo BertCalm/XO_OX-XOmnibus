@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "RESONANT FURY 52",
   "parameters": {
-    "OddfeliX": {},
-    "Ombre": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.762,
+      "snap_macroCoupling": 0.922,
+      "snap_macroMovement": 0.946,
+      "snap_macroSpace": 0.351
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.693,
+      "ombre_macroCoupling": 0.029,
+      "ombre_macroMovement": 0.941,
+      "ombre_macroSpace": 0.273
+    }
   },
   "schema_version": 1,
   "tags": [

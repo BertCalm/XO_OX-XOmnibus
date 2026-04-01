@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Solar Crush 2",
   "parameters": {
-    "Ombre": {},
-    "Osteria": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.5889,
+      "ombre_macroCoupling": 0.8905,
+      "ombre_macroMovement": 0.0367,
+      "ombre_macroSpace": 0.6396
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.5447,
+      "osteria_macroCoupling": 0.8335,
+      "osteria_macroMovement": 0.0438,
+      "osteria_macroSpace": 0.3833
+    }
   },
   "schema_version": 1,
   "sequencer": null,

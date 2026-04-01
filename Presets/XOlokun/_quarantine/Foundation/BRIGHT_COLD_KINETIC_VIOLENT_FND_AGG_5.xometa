@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Arctic Storm",
   "parameters": {
-    "Origami": {},
-    "Ouroboros": {}
+    "Origami": {
+      "origami_macroCharacter": 0.807,
+      "origami_macroCoupling": 0.923,
+      "origami_macroMovement": 0.505,
+      "origami_macroSpace": 0.73
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.829,
+      "ouro_macroCoupling": 0.878,
+      "ouro_macroMovement": 0.554,
+      "ouro_macroSpace": 0.771
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Cyclic Patina",
   "parameters": {
-    "Ottoni": {},
-    "Ouroboros": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.62,
+      "otto_macroMovement": 0.45,
+      "otto_macroSpace": 0.35
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.55,
+      "ouro_macroCoupling": 0.62,
+      "ouro_macroMovement": 0.65,
+      "ouro_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT COLD DENSE BALANCED ...",
   "parameters": {
-    "Oceanic": {},
-    "OddfeliX": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.523,
+      "ocean_macroCoupling": 0.638,
+      "ocean_macroMovement": 0.524,
+      "ocean_macroSpace": 0.636
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.544,
+      "snap_macroCoupling": 0.62,
+      "snap_macroMovement": 0.55,
+      "snap_macroSpace": 0.63
+    }
   },
   "schema_version": 1,
   "tags": [

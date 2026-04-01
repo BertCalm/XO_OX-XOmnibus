@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Funk Arc",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.815,
+      "oblq_macroCoupling": 0.665,
+      "oblq_macroMovement": 0.765,
+      "oblq_macroSpace": 0.565
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.385,
+      "orb_macroCoupling": 0.485,
+      "orb_macroMovement": 0.535,
+      "orb_macroSpace": 0.685
+    }
   },
   "schema_version": 1,
   "tags": [

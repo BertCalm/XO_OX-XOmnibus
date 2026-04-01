@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Wave Crush",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.126,
+      "snap_macroCoupling": 0.631,
+      "snap_macroMovement": 0.915,
+      "snap_macroSpace": 0.128
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.048,
+      "origami_macroCoupling": 0.469,
+      "origami_macroMovement": 0.875,
+      "origami_macroSpace": 0.052
+    }
   },
   "schema_version": 1,
   "sequencer": null,

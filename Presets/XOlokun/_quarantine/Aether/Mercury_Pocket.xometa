@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Mercury Pocket",
   "parameters": {
-    "Ombre": {},
-    "Opal": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.095,
+      "ombre_macroCoupling": 0.255,
+      "ombre_macroMovement": 0.098,
+      "ombre_macroSpace": 0.09
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.095,
+      "opal_macroCoupling": 0.255,
+      "opal_macroMovement": 0.098,
+      "opal_macroSpace": 0.09
+    }
   },
   "schema_version": 1,
   "tags": [

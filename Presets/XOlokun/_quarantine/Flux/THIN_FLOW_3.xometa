@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 3",
   "parameters": {
-    "OddfeliX": {},
-    "Overbite": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.4535,
+      "snap_macroCoupling": 0.0951,
+      "snap_macroMovement": 0.416,
+      "snap_macroSpace": 0.4268
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.215,
+      "poss_macroCoupling": 0.2285,
+      "poss_macroMovement": 0.4516,
+      "poss_macroSpace": 0.3389
+    }
   },
   "schema_version": 1,
   "tags": [

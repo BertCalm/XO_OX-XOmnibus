@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Glow Dense 2",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.915,
+      "snap_macroCoupling": 0.82,
+      "snap_macroMovement": 0.654,
+      "snap_macroSpace": 0.125
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.916,
+      "osprey_macroCoupling": 0.794,
+      "osprey_macroMovement": 0.673,
+      "osprey_macroSpace": 0.123
+    }
   },
   "schema_version": 1,
   "tags": [

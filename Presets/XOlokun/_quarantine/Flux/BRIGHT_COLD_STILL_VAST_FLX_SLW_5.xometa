@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Chrome Vast",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.653,
+      "drift_macroCoupling": 0.693,
+      "drift_macroMovement": 0.024,
+      "drift_macroSpace": 0.979
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.501,
+      "organon_macroCoupling": 0.866,
+      "organon_macroMovement": 0.024,
+      "organon_macroSpace": 0.949
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Ocean Dusk",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.398,
+      "ole_macroCoupling": 0.456,
+      "ole_macroMovement": 0.11,
+      "ole_macroSpace": 0.97
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.794,
+      "osteria_macroCoupling": 0.496,
+      "osteria_macroMovement": 0.11,
+      "osteria_macroSpace": 0.97
+    }
   },
   "schema_version": 1,
   "tags": [

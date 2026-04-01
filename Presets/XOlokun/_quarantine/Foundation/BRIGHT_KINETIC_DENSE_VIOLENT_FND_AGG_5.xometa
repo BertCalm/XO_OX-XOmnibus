@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Ice Deep",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.758,
+      "morph_macroCoupling": 0.368,
+      "morph_macroMovement": 0.386,
+      "morph_macroSpace": 0.368
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.775,
+      "ouro_macroCoupling": 0.39,
+      "ouro_macroMovement": 0.385,
+      "ouro_macroSpace": 0.369
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Solar Abyss",
   "parameters": {
-    "Optic": {},
-    "Osprey": {}
+    "Optic": {
+      "optic_macroCharacter": 0.9449,
+      "optic_macroCoupling": 0.0884,
+      "optic_macroMovement": 0.6765,
+      "optic_macroSpace": 0.9622
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.8984,
+      "osprey_macroCoupling": 0.1248,
+      "osprey_macroMovement": 0.6787,
+      "osprey_macroSpace": 0.9501
+    }
   },
   "schema_version": 1,
   "tags": [

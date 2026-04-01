@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Solar Titan",
   "parameters": {
-    "OddOscar": {},
-    "Onset": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.617,
+      "morph_macroCoupling": 0.214,
+      "morph_macroMovement": 0.1,
+      "morph_macroSpace": 0.255
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.582,
+      "perc_macroCoupling": 0.173,
+      "perc_macroMovement": 0.686,
+      "perc_macroSpace": 0.271
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Fragment Wrath 2",
   "parameters": {
-    "OddfeliX": {},
-    "Owlfish": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.8558,
+      "snap_macroCoupling": 0.951,
+      "snap_macroMovement": 0.0954,
+      "snap_macroSpace": 0.5929
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.924,
+      "owl_macroCoupling": 0.8572,
+      "owl_macroMovement": 0.0823,
+      "owl_macroSpace": 0.5117
+    }
   },
   "schema_version": 1,
   "sequencer": null,

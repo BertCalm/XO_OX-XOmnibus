@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Node Massive",
   "parameters": {
-    "OddfeliX": {},
-    "Ombre": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.3944,
+      "snap_macroCoupling": 0.6782,
+      "snap_macroMovement": 0.3854,
+      "snap_macroSpace": 0.7744
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.6109,
+      "ombre_macroCoupling": 0.7577,
+      "ombre_macroMovement": 0.8729,
+      "ombre_macroSpace": 0.556
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Frost Saturated",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.372,
+      "opal_macroCoupling": 0.543,
+      "opal_macroMovement": 0.346,
+      "opal_macroSpace": 0.532
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.706,
+      "oracle_macroCoupling": 0.707,
+      "oracle_macroMovement": 0.388,
+      "oracle_macroSpace": 0.582
+    }
   },
   "schema_version": 1,
   "tags": [

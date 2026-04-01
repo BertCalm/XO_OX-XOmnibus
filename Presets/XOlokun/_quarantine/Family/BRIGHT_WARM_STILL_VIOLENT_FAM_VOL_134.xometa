@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Solar Rage 4",
   "parameters": {
-    "OddOscar": {},
-    "Ole": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.978,
+      "morph_macroCoupling": 0.808,
+      "morph_macroMovement": 0.08,
+      "morph_macroSpace": 0.537
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.956,
+      "ole_macroCoupling": 0.811,
+      "ole_macroMovement": 0.093,
+      "ole_macroSpace": 0.492
+    }
   },
   "schema_version": 1,
   "tags": [

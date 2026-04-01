@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "DARK WARM TIGHT VIOLENT PRS... (Orphica I)",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.083,
+      "orph_macroCoupling": 0.892,
+      "orph_macroMovement": 0.316,
+      "orph_macroSpace": 0.123
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.08,
+      "otto_macroCoupling": 0.905,
+      "otto_macroMovement": 0.313,
+      "otto_macroSpace": 0.127
+    }
   },
   "schema_version": 1,
   "tags": [

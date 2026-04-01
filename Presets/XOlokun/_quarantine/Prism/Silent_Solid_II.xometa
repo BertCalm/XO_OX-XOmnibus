@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Silent Solid II",
   "parameters": {
-    "Obscura": {},
-    "Ouroboros": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.624,
+      "obscura_macroCoupling": 0.747,
+      "obscura_macroMovement": 0.06,
+      "obscura_macroSpace": 0.643
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.758,
+      "ouro_macroCoupling": 0.559,
+      "ouro_macroMovement": 0.154,
+      "ouro_macroSpace": 0.629
+    }
   },
   "schema_version": 1,
   "tags": [

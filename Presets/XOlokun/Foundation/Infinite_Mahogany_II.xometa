@@ -37,10 +37,19 @@
   "mood": "Foundation",
   "name": "Infinite Mahogany II",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.127,
+      "fat_macroCoupling": 0.159,
+      "fat_macroMovement": 0.579,
+      "fat_macroSpace": 0.81
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.607,
+      "bob_macroCoupling": 0.855,
+      "bob_macroMovement": 0.355,
+      "bob_macroSpace": 0.158
     }
   },
   "schema_version": 1,

@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Honey Flux 2",
   "parameters": {
-    "Onset": {},
-    "Ouroboros": {}
+    "Onset": {
+      "perc_macroCharacter": 0.6397,
+      "perc_macroCoupling": 0.9331,
+      "perc_macroMovement": 0.0903,
+      "perc_macroSpace": 0.3319
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.5722,
+      "ouro_macroCoupling": 0.855,
+      "ouro_macroMovement": 0.063,
+      "ouro_macroSpace": 0.9045
+    }
   },
   "schema_version": 1,
   "sequencer": null,

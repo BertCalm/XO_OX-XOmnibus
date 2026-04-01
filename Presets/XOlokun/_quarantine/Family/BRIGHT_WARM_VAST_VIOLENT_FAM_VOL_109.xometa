@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Peach Vast",
   "parameters": {
-    "OddOscar": {},
-    "Ole": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.905,
+      "morph_macroCoupling": 0.609,
+      "morph_macroMovement": 0.679,
+      "morph_macroSpace": 0.948
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.902,
+      "ole_macroCoupling": 0.63,
+      "ole_macroMovement": 0.705,
+      "ole_macroSpace": 0.975
+    }
   },
   "schema_version": 1,
   "tags": [

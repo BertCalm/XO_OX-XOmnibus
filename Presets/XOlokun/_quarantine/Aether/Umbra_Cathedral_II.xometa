@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Umbra Cathedral II",
   "parameters": {
-    "Ombre": {},
-    "Opal": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.287,
+      "ombre_macroCoupling": 0.632,
+      "ombre_macroMovement": 1.0,
+      "ombre_macroSpace": 1.0
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.211,
+      "opal_macroCoupling": 0.786,
+      "opal_macroMovement": 0.934,
+      "opal_macroSpace": 0.939
+    }
   },
   "schema_version": 1,
   "tags": [

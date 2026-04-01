@@ -49,7 +49,11 @@
       "filter_resonance": 0.1878,
       "output_level": 0.9516,
       "reverb_mix": 0.3196,
-      "reverb_size": 0.4192
+      "reverb_size": 0.4192,
+      "octo_macroCharacter": 0.4171,
+      "octo_macroCoupling": 0.6541,
+      "octo_macroMovement": 0.9804,
+      "octo_macroSpace": 0.2989
     },
     "Orphica": {
       "amp_attack": 0.039,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.198,
       "output_level": 0.9077,
       "reverb_mix": 0.3567,
-      "reverb_size": 0.3903
+      "reverb_size": 0.3903,
+      "orph_macroCharacter": 0.4388,
+      "orph_macroCoupling": 0.6564,
+      "orph_macroMovement": 0.9567,
+      "orph_macroSpace": 0.2913
     }
   },
   "schema_version": 1,

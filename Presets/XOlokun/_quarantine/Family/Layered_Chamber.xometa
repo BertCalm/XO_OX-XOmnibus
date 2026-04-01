@@ -39,8 +39,18 @@
   "mood": "Family",
   "name": "Layered Chamber",
   "parameters": {
-    "Obbligato": {},
-    "Orbital": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.99,
+      "obbl_macroCoupling": 0.54,
+      "obbl_macroMovement": 0.96,
+      "obbl_macroSpace": 0.35
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.89,
+      "orb_macroCoupling": 0.64,
+      "orb_macroMovement": 0.75,
+      "orb_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

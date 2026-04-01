@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Prism Crush",
   "parameters": {
-    "Obese": {},
-    "Overbite": {}
+    "Obese": {
+      "fat_macroCharacter": 0.968,
+      "fat_macroCoupling": 0.116,
+      "fat_macroMovement": 0.009,
+      "fat_macroSpace": 0.108
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.905,
+      "poss_macroCoupling": 0.0,
+      "poss_macroMovement": 0.142,
+      "poss_macroSpace": 0.046
+    }
   },
   "schema_version": 1,
   "sequencer": null,

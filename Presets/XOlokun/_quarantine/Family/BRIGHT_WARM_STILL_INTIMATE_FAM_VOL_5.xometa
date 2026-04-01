@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Golden Titan 2",
   "parameters": {
-    "OddOscar": {},
-    "Ole": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.88,
+      "morph_macroCoupling": 0.502,
+      "morph_macroMovement": 0.021,
+      "morph_macroSpace": 0.074
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.929,
+      "ole_macroCoupling": 0.471,
+      "ole_macroMovement": 0.024,
+      "ole_macroSpace": 0.071
+    }
   },
   "schema_version": 1,
   "tags": [

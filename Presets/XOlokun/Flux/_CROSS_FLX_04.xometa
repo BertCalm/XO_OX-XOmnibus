@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "CROSS FLX 04",
   "parameters": {
-    "Optic": {},
+    "Optic": {
+      "optic_macroCharacter": 0.747,
+      "optic_macroCoupling": 0.92,
+      "optic_macroMovement": 0.062,
+      "optic_macroSpace": 0.936
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.747,
+      "dub_macroCoupling": 0.92,
+      "dub_macroMovement": 0.062,
+      "dub_macroSpace": 0.936
     }
   },
   "schema_version": 1,

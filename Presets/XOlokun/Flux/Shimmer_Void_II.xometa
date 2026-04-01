@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Shimmer Void II",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.8991,
+      "organon_macroCoupling": 0.7636,
+      "organon_macroMovement": 0.8984,
+      "organon_macroSpace": 0.8622
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.8723,
+      "dub_macroCoupling": 0.7613,
+      "dub_macroMovement": 0.8819,
+      "dub_macroSpace": 0.9227
     }
   },
   "schema_version": 1,

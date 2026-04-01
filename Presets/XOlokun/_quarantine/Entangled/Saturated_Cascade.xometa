@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Saturated Cascade",
   "parameters": {
-    "Octopus": {},
-    "Overlap": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.79,
+      "octo_macroCoupling": 0.89,
+      "octo_macroMovement": 0.94,
+      "octo_macroSpace": 0.31
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.65,
+      "olap_macroCoupling": 0.87,
+      "olap_macroMovement": 0.9,
+      "olap_macroSpace": 0.46
+    }
   },
   "schema_version": 1,
   "sequencer": null,

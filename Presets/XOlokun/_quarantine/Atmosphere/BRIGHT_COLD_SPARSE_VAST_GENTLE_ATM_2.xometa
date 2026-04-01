@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Mirror Abyss",
   "parameters": {
-    "Organon": {},
-    "Osprey": {}
+    "Organon": {
+      "organon_macroCharacter": 0.5043,
+      "organon_macroCoupling": 0.07,
+      "organon_macroMovement": 0.618,
+      "organon_macroSpace": 0.9754
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.5106,
+      "osprey_macroCoupling": 0.0543,
+      "osprey_macroMovement": 0.6006,
+      "osprey_macroSpace": 0.9526
+    }
   },
   "schema_version": 1,
   "tags": [

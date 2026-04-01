@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oceanic": {},
-    "Osteria": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.98,
+      "ocean_macroMovement": 1.0,
+      "ocean_macroCoupling": 0.79,
+      "ocean_macroSpace": 0.38
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.88,
+      "osteria_macroMovement": 0.94,
+      "osteria_macroCoupling": 0.69,
+      "osteria_macroSpace": 0.34
+    }
   },
   "coupling": {
     "type": "RING_MOD",

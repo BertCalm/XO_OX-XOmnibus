@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Massive Close",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.85,
+      "oblq_macroCoupling": 0.74,
+      "oblq_macroMovement": 0.97,
+      "oblq_macroSpace": 0.49
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.63,
+      "osprey_macroCoupling": 0.67,
+      "osprey_macroMovement": 0.71,
+      "osprey_macroSpace": 0.49
+    }
   },
   "schema_version": 1,
   "sequencer": null,

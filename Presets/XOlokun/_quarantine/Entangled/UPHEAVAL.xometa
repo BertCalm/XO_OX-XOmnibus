@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "UPHEAVAL",
   "parameters": {
-    "Octopus": {},
-    "OddOscar": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.387,
+      "octo_macroCoupling": 0.774,
+      "octo_macroMovement": 0.916,
+      "octo_macroSpace": 0.679
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.052,
+      "morph_macroCoupling": 0.631,
+      "morph_macroMovement": 0.972,
+      "morph_macroSpace": 0.335
+    }
   },
   "schema_version": 1,
   "tags": [

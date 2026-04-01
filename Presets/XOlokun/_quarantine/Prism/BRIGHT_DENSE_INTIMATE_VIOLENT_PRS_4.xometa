@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Wave Storm 2",
   "parameters": {
-    "Ohm": {},
-    "Oracle": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.528,
+      "ohm_macroCoupling": 0.622,
+      "ohm_macroMovement": 0.366,
+      "ohm_macroSpace": 0.134
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.948,
+      "oracle_macroCoupling": 0.308,
+      "oracle_macroMovement": 0.366,
+      "oracle_macroSpace": 0.134
+    }
   },
   "schema_version": 1,
   "tags": [

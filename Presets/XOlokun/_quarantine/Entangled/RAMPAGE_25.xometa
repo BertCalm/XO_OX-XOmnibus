@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "RAMPAGE 25",
   "parameters": {
-    "Oceanic": {},
-    "Osprey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.671,
+      "ocean_macroCoupling": 0.364,
+      "ocean_macroMovement": 0.973,
+      "ocean_macroSpace": 0.07
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.538,
+      "osprey_macroCoupling": 0.719,
+      "osprey_macroMovement": 0.88,
+      "osprey_macroSpace": 0.742
+    }
   },
   "schema_version": 1,
   "tags": [

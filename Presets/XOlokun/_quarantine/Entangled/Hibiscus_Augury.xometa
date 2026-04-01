@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Hibiscus Augury",
   "parameters": {
-    "Ole": {},
-    "Oracle": {}
+    "Ole": {
+      "ole_macroCharacter": 0.72,
+      "ole_macroCoupling": 0.72,
+      "ole_macroMovement": 0.65,
+      "ole_macroSpace": 0.44
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.58,
+      "oracle_macroCoupling": 0.63,
+      "oracle_macroMovement": 0.62,
+      "oracle_macroSpace": 0.54
+    }
   },
   "schema_version": 1,
   "tags": [

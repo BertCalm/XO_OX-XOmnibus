@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Tone Vast",
   "parameters": {
-    "Oblique": {},
-    "Osteria": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.323,
+      "oblq_macroCoupling": 0.077,
+      "oblq_macroMovement": 0.086,
+      "oblq_macroSpace": 0.914
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.301,
+      "osteria_macroCoupling": 0.104,
+      "osteria_macroMovement": 0.087,
+      "osteria_macroSpace": 0.905
+    }
   },
   "schema_version": 1,
   "tags": [

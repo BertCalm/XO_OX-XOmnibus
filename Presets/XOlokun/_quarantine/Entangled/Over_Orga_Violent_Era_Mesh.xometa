@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overworld": {},
-    "Organon": {}
+    "Overworld": {
+      "ow_macroCharacter": 0.75,
+      "ow_macroMovement": 0.97,
+      "ow_macroCoupling": 0.64,
+      "ow_macroSpace": 0.1
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.9,
+      "organon_macroMovement": 0.93,
+      "organon_macroCoupling": 0.78,
+      "organon_macroSpace": 0.43
+    }
   },
   "coupling": {
     "type": "FILTER_SHARE",

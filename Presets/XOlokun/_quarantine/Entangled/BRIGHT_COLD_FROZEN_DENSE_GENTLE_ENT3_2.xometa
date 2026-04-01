@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Quartz Deep",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.7213,
+      "ocelot_macroCoupling": 0.8048,
+      "ocelot_macroMovement": 0.018,
+      "ocelot_macroSpace": 0.3881
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.7038,
+      "poss_macroCoupling": 0.7728,
+      "poss_macroMovement": 0.0265,
+      "poss_macroSpace": 0.4627
+    }
   },
   "schema_version": 1,
   "sequencer": null,

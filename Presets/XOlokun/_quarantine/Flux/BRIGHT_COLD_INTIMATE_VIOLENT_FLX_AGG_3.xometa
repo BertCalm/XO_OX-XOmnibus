@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Ice Wrath",
   "parameters": {
-    "Optic": {},
-    "Organon": {}
+    "Optic": {
+      "optic_macroCharacter": 0.712,
+      "optic_macroCoupling": 0.95,
+      "optic_macroMovement": 0.476,
+      "optic_macroSpace": 0.021
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.568,
+      "organon_macroCoupling": 0.939,
+      "organon_macroMovement": 0.425,
+      "organon_macroSpace": 0.071
+    }
   },
   "schema_version": 1,
   "tags": [

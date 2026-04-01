@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Golden Blade 2",
   "parameters": {
-    "OddfeliX": {},
-    "Ole": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.857,
+      "snap_macroCoupling": 0.482,
+      "snap_macroMovement": 0.508,
+      "snap_macroSpace": 0.464
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.831,
+      "ole_macroCoupling": 0.464,
+      "ole_macroMovement": 0.481,
+      "ole_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

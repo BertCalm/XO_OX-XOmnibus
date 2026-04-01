@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Red Hibiscus",
   "parameters": {
-    "Ole": {},
-    "Ouroboros": {}
+    "Ole": {
+      "ole_macroCharacter": 0.68,
+      "ole_macroCoupling": 0.58,
+      "ole_macroMovement": 0.65,
+      "ole_macroSpace": 0.38
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.6,
+      "ouro_macroCoupling": 0.58,
+      "ouro_macroMovement": 0.72,
+      "ouro_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "sequencer": null,

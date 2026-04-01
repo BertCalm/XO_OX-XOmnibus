@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Thick Ember II",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.689,
+      "oblq_macroCoupling": 0.9236,
+      "oblq_macroMovement": 0.3141,
+      "oblq_macroSpace": 0.2947
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.924,
+      "ow_macroCoupling": 0.2753,
+      "ow_macroMovement": 0.449,
+      "ow_macroSpace": 0.8338
+    }
   },
   "schema_version": 1,
   "tags": [

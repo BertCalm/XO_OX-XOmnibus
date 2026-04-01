@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK KINETIC DENSE VIOLENT ... (Optic I)",
   "parameters": {
-    "Opal": {},
-    "Optic": {}
+    "Opal": {
+      "opal_macroCharacter": 0.02,
+      "opal_macroCoupling": 0.917,
+      "opal_macroMovement": 0.912,
+      "opal_macroSpace": 0.576
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.019,
+      "optic_macroCoupling": 0.832,
+      "optic_macroMovement": 0.871,
+      "optic_macroSpace": 0.59
+    }
   },
   "schema_version": 1,
   "tags": [

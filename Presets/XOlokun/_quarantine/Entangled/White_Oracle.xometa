@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "White Oracle",
   "parameters": {
-    "Obsidian": {},
-    "Oracle": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.17,
+      "obsidian_macroCoupling": 0.69,
+      "obsidian_macroMovement": 0.42,
+      "obsidian_macroSpace": 0.91
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.14,
+      "oracle_macroCoupling": 0.74,
+      "oracle_macroMovement": 0.37,
+      "oracle_macroSpace": 0.94
+    }
   },
   "schema_version": 1,
   "tags": [

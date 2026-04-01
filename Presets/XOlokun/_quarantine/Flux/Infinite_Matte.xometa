@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Infinite Matte",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.075,
+      "optic_macroCoupling": 0.7339,
+      "optic_macroMovement": 0.1757,
+      "optic_macroSpace": 0.8996
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.1529,
+      "oracle_macroCoupling": 0.7174,
+      "oracle_macroMovement": 0.1963,
+      "oracle_macroSpace": 0.847
+    }
   },
   "schema_version": 1,
   "tags": [

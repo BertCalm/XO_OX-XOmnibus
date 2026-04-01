@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Luminous Spiral",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.958,
+      "morph_macroCoupling": 0.643,
+      "morph_macroMovement": 0.967,
+      "morph_macroSpace": 0.368
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.958,
+      "opal_macroCoupling": 0.643,
+      "opal_macroMovement": 0.967,
+      "opal_macroSpace": 0.368
+    }
   },
   "schema_version": 1,
   "tags": [

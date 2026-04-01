@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "COLD FLUX 6",
   "parameters": {
-    "Obese": {},
-    "Ohm": {}
+    "Obese": {
+      "fat_macroCharacter": 0.218,
+      "fat_macroCoupling": 0.7669,
+      "fat_macroMovement": 0.6995,
+      "fat_macroSpace": 0.1678
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.6072,
+      "ohm_macroCoupling": 0.1145,
+      "ohm_macroMovement": 0.7479,
+      "ohm_macroSpace": 0.8193
+    }
   },
   "schema_version": 1,
   "tags": [

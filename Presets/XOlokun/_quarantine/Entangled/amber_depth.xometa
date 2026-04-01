@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Amber Depth",
   "parameters": {
-    "Oceanic": {},
-    "Ocelot": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.305,
+      "ocean_macroCoupling": 0.455,
+      "ocean_macroMovement": 0.355,
+      "ocean_macroSpace": 0.805
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.645,
+      "ocelot_macroCoupling": 0.545,
+      "ocelot_macroMovement": 0.695,
+      "ocelot_macroSpace": 0.445
+    }
   },
   "schema_version": 1,
   "tags": [

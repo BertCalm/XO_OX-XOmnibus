@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Platinum Eclipse",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.3301,
+      "ocean_macroCoupling": 0.7694,
+      "ocean_macroMovement": 0.3147,
+      "ocean_macroSpace": 0.2565
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.9135,
+      "oracle_macroCoupling": 0.548,
+      "oracle_macroMovement": 0.671,
+      "oracle_macroSpace": 0.6228
+    }
   },
   "schema_version": 1,
   "tags": [

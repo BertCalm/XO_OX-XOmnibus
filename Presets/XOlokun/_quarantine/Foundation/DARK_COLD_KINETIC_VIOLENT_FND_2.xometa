@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Tone Swirl",
   "parameters": {
-    "Onset": {},
-    "Origami": {}
+    "Onset": {
+      "perc_macroCharacter": 0.79,
+      "perc_macroCoupling": 0.845,
+      "perc_macroMovement": 0.538,
+      "perc_macroSpace": 0.673
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.305,
+      "origami_macroCoupling": 0.419,
+      "origami_macroMovement": 0.366,
+      "origami_macroSpace": 0.642
+    }
   },
   "schema_version": 1,
   "tags": [

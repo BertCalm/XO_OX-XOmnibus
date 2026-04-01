@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK HOT STILL VAST GENTLE ... (Obsidian I)",
   "parameters": {
-    "Obsidian": {},
-    "Osprey": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.493,
+      "obsidian_macroCoupling": 0.197,
+      "obsidian_macroMovement": 0.13,
+      "obsidian_macroSpace": 0.99
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.518,
+      "osprey_macroCoupling": 0.173,
+      "osprey_macroMovement": 0.2,
+      "osprey_macroSpace": 0.967
+    }
   },
   "schema_version": 1,
   "tags": [

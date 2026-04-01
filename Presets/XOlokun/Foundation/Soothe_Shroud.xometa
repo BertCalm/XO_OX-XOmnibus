@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Soothe Shroud",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.213,
+      "snap_macroCoupling": 0.062,
+      "snap_macroMovement": 0.086,
+      "snap_macroSpace": 0.085
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.213,
+      "dub_macroCoupling": 0.062,
+      "dub_macroMovement": 0.086,
+      "dub_macroSpace": 0.085
     }
   },
   "schema_version": 1,

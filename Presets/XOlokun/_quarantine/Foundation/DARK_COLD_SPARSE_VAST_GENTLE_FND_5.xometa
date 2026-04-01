@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Signal Canyon",
   "parameters": {
-    "Obese": {},
-    "Overbite": {}
+    "Obese": {
+      "fat_macroCharacter": 0.0,
+      "fat_macroCoupling": 0.094,
+      "fat_macroMovement": 0.381,
+      "fat_macroSpace": 0.893
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.107,
+      "poss_macroCoupling": 0.085,
+      "poss_macroMovement": 0.475,
+      "poss_macroSpace": 0.837
+    }
   },
   "schema_version": 1,
   "sequencer": null,

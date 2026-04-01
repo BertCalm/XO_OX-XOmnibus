@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Phase Heavy",
   "parameters": {
-    "Obbligato": {},
-    "Opal": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.031,
+      "obbl_macroCoupling": 0.733,
+      "obbl_macroMovement": 0.11,
+      "obbl_macroSpace": 0.438
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.055,
+      "opal_macroCoupling": 0.783,
+      "opal_macroMovement": 0.098,
+      "opal_macroSpace": 0.464
+    }
   },
   "schema_version": 1,
   "tags": [

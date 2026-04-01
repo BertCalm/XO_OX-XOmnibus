@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Warm Fathom",
   "parameters": {
-    "Ole": {},
+    "Ole": {
+      "ole_macroCharacter": 0.742,
+      "ole_macroCoupling": 0.515,
+      "ole_macroMovement": 0.031,
+      "ole_macroSpace": 0.033
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.715,
+      "dub_macroCoupling": 0.533,
+      "dub_macroMovement": 0.02,
+      "dub_macroSpace": 0.035
     }
   },
   "schema_version": 1,

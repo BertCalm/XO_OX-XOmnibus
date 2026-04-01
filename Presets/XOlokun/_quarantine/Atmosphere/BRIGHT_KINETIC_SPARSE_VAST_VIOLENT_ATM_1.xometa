@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Golden Orbit",
   "parameters": {
-    "Oceanic": {},
-    "Organon": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.8074,
+      "ocean_macroCoupling": 0.1005,
+      "ocean_macroMovement": 0.8911,
+      "ocean_macroSpace": 0.9443
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.8539,
+      "organon_macroCoupling": 0.1111,
+      "organon_macroMovement": 0.894,
+      "organon_macroSpace": 0.9298
+    }
   },
   "schema_version": 1,
   "tags": [

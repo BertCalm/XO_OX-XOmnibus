@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Horizon Silk",
   "parameters": {
-    "Oceanic": {},
-    "Odyssey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.214,
+      "ocean_macroCoupling": 0.0721,
+      "ocean_macroMovement": 0.5954,
+      "ocean_macroSpace": 0.8671
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.1348,
+      "drift_macroCoupling": 0.1191,
+      "drift_macroMovement": 0.6232,
+      "drift_macroSpace": 0.9324
+    }
   },
   "schema_version": 1,
   "tags": [

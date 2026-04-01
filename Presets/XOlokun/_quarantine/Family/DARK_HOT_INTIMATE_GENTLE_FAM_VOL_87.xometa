@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Mahogany Stream",
   "parameters": {
-    "Obbligato": {},
-    "Odyssey": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.53,
+      "obbl_macroCoupling": 0.225,
+      "obbl_macroMovement": 0.671,
+      "obbl_macroSpace": 0.01
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.533,
+      "drift_macroCoupling": 0.213,
+      "drift_macroMovement": 0.652,
+      "drift_macroSpace": 0.01
+    }
   },
   "schema_version": 1,
   "tags": [

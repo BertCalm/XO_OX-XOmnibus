@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Signal Heavy",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.648,
+      "snap_macroCoupling": 0.102,
+      "snap_macroMovement": 0.528,
+      "snap_macroSpace": 0.834
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.587,
+      "dub_macroCoupling": 0.849,
+      "dub_macroMovement": 0.331,
+      "dub_macroSpace": 0.594
     }
   },
   "schema_version": 1,

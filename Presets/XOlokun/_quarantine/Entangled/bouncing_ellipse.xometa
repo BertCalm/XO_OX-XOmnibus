@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Bouncing Ellipse",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.825,
+      "oblq_macroCoupling": 0.675,
+      "oblq_macroMovement": 0.775,
+      "oblq_macroSpace": 0.575
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.375,
+      "orb_macroCoupling": 0.475,
+      "orb_macroMovement": 0.525,
+      "orb_macroSpace": 0.675
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Brass Solid III",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.923,
+      "ocean_macroCoupling": 0.648,
+      "ocean_macroMovement": 0.921,
+      "ocean_macroSpace": 0.368
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.923,
+      "oracle_macroCoupling": 0.648,
+      "oracle_macroMovement": 0.921,
+      "oracle_macroSpace": 0.368
+    }
   },
   "schema_version": 1,
   "tags": [

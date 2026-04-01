@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HYPERLANE",
   "parameters": {
-    "Obese": {},
-    "Osteria": {}
+    "Obese": {
+      "fat_macroCharacter": 0.257,
+      "fat_macroCoupling": 0.114,
+      "fat_macroMovement": 0.223,
+      "fat_macroSpace": 0.917
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.387,
+      "osteria_macroCoupling": 0.349,
+      "osteria_macroMovement": 0.787,
+      "osteria_macroSpace": 0.942
+    }
   },
   "schema_version": 1,
   "tags": [

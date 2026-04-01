@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Arctic Dome",
   "parameters": {
-    "Oblique": {},
-    "Ouroboros": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.777,
+      "oblq_macroCoupling": 0.8259,
+      "oblq_macroMovement": 0.0354,
+      "oblq_macroSpace": 0.3217
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.7837,
+      "ouro_macroCoupling": 0.7595,
+      "ouro_macroMovement": 0.0349,
+      "ouro_macroSpace": 0.1697
+    }
   },
   "schema_version": 1,
   "sequencer": null,

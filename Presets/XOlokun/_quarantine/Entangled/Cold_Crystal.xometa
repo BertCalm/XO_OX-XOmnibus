@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Cold Crystal",
   "parameters": {
-    "Obsidian": {},
-    "Opal": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.11,
+      "obsidian_macroCoupling": 0.78,
+      "obsidian_macroMovement": 0.26,
+      "obsidian_macroSpace": 0.95
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.08,
+      "opal_macroCoupling": 0.83,
+      "opal_macroMovement": 0.21,
+      "opal_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

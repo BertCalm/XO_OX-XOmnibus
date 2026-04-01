@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Dusk Velvet",
   "parameters": {
-    "Oblique": {},
-    "Oceanic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.951,
+      "oblq_macroCoupling": 0.903,
+      "oblq_macroMovement": 0.074,
+      "oblq_macroSpace": 0.499
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.848,
+      "ocean_macroCoupling": 0.841,
+      "ocean_macroMovement": 0.097,
+      "ocean_macroSpace": 0.526
+    }
   },
   "schema_version": 1,
   "tags": [

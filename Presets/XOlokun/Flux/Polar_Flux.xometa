@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Polar Flux",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.1787,
+      "morph_macroCoupling": 0.8705,
+      "morph_macroMovement": 0.9126,
+      "morph_macroSpace": 0.2984
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.6389,
+      "dub_macroCoupling": 0.1528,
+      "dub_macroMovement": 0.609,
+      "dub_macroSpace": 0.7625
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Abyss Rich",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.341,
+      "opal_macroCoupling": 0.617,
+      "opal_macroMovement": 0.732,
+      "opal_macroSpace": 0.755
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.303,
+      "oracle_macroCoupling": 0.821,
+      "oracle_macroMovement": 0.735,
+      "oracle_macroSpace": 0.893
+    }
   },
   "schema_version": 1,
   "tags": [

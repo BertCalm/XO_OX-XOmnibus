@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Dense Gentle",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.785,
+      "opal_macroCoupling": 0.717,
+      "opal_macroMovement": 0.733,
+      "opal_macroSpace": 0.914
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.783,
+      "oracle_macroCoupling": 0.613,
+      "oracle_macroMovement": 0.696,
+      "oracle_macroSpace": 0.749
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Sunrise Shimmer",
   "parameters": {
-    "Oblique": {},
-    "Obscura": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.953,
+      "oblq_macroCoupling": 0.1564,
+      "oblq_macroMovement": 0.9281,
+      "oblq_macroSpace": 0.6363
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.9628,
+      "obscura_macroCoupling": 0.15,
+      "obscura_macroMovement": 0.9192,
+      "obscura_macroSpace": 0.6326
+    }
   },
   "schema_version": 1,
   "tags": [

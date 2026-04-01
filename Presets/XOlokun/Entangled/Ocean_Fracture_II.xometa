@@ -49,7 +49,11 @@
       "filter_resonance": 0.56,
       "output_level": 0.7714,
       "reverb_mix": 0.6868,
-      "reverb_size": 0.8025
+      "reverb_size": 0.8025,
+      "ole_macroCharacter": 0.4998,
+      "ole_macroCoupling": 0.9319,
+      "ole_macroMovement": 0.3584,
+      "ole_macroSpace": 0.984
     },
     "Overworld": {
       "amp_attack": 0.3396,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.5555,
       "output_level": 0.763,
       "reverb_mix": 0.6462,
-      "reverb_size": 0.7949
+      "reverb_size": 0.7949,
+      "ow_macroCharacter": 0.5283,
+      "ow_macroCoupling": 0.9146,
+      "ow_macroMovement": 0.3412,
+      "ow_macroSpace": 0.9671
     }
   },
   "schema_version": 1,

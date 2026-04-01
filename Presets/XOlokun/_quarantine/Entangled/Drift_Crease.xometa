@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Drift Crease",
   "parameters": {
-    "Odyssey": {},
-    "Origami": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.1,
+      "drift_macroCoupling": 0.8,
+      "drift_macroMovement": 0.22,
+      "drift_macroSpace": 0.95
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.07,
+      "origami_macroCoupling": 0.85,
+      "origami_macroMovement": 0.17,
+      "origami_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Node Horizon 3",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.2232,
+      "snap_macroCoupling": 0.0799,
+      "snap_macroMovement": 0.1184,
+      "snap_macroSpace": 0.9393
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.2575,
+      "organon_macroCoupling": 0.0675,
+      "organon_macroMovement": 0.1089,
+      "organon_macroSpace": 0.9575
+    }
   },
   "schema_version": 1,
   "tags": [

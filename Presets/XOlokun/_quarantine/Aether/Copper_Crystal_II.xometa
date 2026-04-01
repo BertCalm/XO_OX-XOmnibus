@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Copper Crystal II",
   "parameters": {
-    "Orbital": {},
-    "Orphica": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.864,
+      "orb_macroCoupling": 0.949,
+      "orb_macroMovement": 0.501,
+      "orb_macroSpace": 0.599
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.909,
+      "orph_macroCoupling": 0.655,
+      "orph_macroMovement": 0.433,
+      "orph_macroSpace": 0.504
+    }
   },
   "schema_version": 1,
   "tags": [

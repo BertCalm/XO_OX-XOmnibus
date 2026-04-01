@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Ignis Weave",
   "parameters": {
-    "Obese": {},
-    "OddOscar": {}
+    "Obese": {
+      "fat_macroCharacter": 0.9,
+      "fat_macroCoupling": 0.51,
+      "fat_macroMovement": 0.41,
+      "fat_macroSpace": 0.45
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.88,
+      "morph_macroCoupling": 0.76,
+      "morph_macroMovement": 0.65,
+      "morph_macroSpace": 0.48
+    }
   },
   "schema_version": 1,
   "tags": [

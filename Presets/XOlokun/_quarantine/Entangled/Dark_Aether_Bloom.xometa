@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Dark Aether Bloom",
   "parameters": {
-    "Obsidian": {},
-    "Oracle": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.11,
+      "obsidian_macroCoupling": 0.68,
+      "obsidian_macroMovement": 0.38,
+      "obsidian_macroSpace": 0.74
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.52,
+      "oracle_macroCoupling": 0.72,
+      "oracle_macroMovement": 0.88,
+      "oracle_macroSpace": 0.72
+    }
   },
   "schema_version": 1,
   "tags": [

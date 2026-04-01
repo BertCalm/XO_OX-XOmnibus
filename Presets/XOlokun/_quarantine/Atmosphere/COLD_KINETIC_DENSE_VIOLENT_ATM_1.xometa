@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Flux Force 3",
   "parameters": {
-    "OddOscar": {},
-    "Orbital": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.599,
+      "morph_macroCoupling": 0.409,
+      "morph_macroMovement": 0.777,
+      "morph_macroSpace": 0.415
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.527,
+      "orb_macroCoupling": 0.556,
+      "orb_macroMovement": 0.802,
+      "orb_macroSpace": 0.469
+    }
   },
   "schema_version": 1,
   "tags": [

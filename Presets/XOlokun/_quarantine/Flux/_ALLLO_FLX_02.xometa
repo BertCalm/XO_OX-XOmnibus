@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "ALLLO FLX 02",
   "parameters": {
-    "Odyssey": {},
-    "Optic": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.294,
+      "drift_macroCoupling": 0.065,
+      "drift_macroMovement": 0.094,
+      "drift_macroSpace": 0.065
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.294,
+      "optic_macroCoupling": 0.065,
+      "optic_macroMovement": 0.094,
+      "optic_macroSpace": 0.065
+    }
   },
   "schema_version": 1,
   "tags": [

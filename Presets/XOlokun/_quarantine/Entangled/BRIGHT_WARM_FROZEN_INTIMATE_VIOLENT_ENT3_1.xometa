@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Candlelight Rage",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.793,
+      "ombre_macroCoupling": 0.9635,
+      "ombre_macroMovement": 0.0445,
+      "ombre_macroSpace": 0.7244
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.5127,
+      "orb_macroCoupling": 0.8049,
+      "orb_macroMovement": 0.0548,
+      "orb_macroSpace": 0.6732
+    }
   },
   "schema_version": 1,
   "sequencer": null,

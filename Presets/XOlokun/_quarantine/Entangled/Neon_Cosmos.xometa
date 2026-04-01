@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Neon Cosmos",
   "parameters": {
-    "Obese": {},
-    "OddfeliX": {}
+    "Obese": {
+      "fat_macroCharacter": 0.94,
+      "fat_macroCoupling": 0.85,
+      "fat_macroMovement": 0.78,
+      "fat_macroSpace": 0.37
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.68,
+      "snap_macroCoupling": 0.85,
+      "snap_macroMovement": 1.0,
+      "snap_macroSpace": 0.39
+    }
   },
   "schema_version": 1,
   "sequencer": null,

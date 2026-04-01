@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Pierce Quartz",
   "parameters": {
-    "Obbligato": {},
-    "Origami": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.069,
+      "obbl_macroCoupling": 0.434,
+      "obbl_macroMovement": 0.467,
+      "obbl_macroSpace": 0.334
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.071,
+      "origami_macroCoupling": 0.679,
+      "origami_macroMovement": 0.613,
+      "origami_macroSpace": 0.301
+    }
   },
   "schema_version": 1,
   "tags": [

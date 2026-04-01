@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Pierce Core",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.478,
+      "snap_macroCoupling": 0.509,
+      "snap_macroMovement": 0.651,
+      "snap_macroSpace": 0.053
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.478,
+      "organon_macroCoupling": 0.509,
+      "organon_macroMovement": 0.651,
+      "organon_macroSpace": 0.053
+    }
   },
   "schema_version": 1,
   "tags": [

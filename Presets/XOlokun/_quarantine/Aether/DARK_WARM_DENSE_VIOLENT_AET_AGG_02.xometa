@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK WARM DENSE VIOLENT AET... (Overworld)",
   "parameters": {
-    "OddOscar": {},
-    "Overworld": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.08,
+      "morph_macroCoupling": 0.855,
+      "morph_macroMovement": 0.308,
+      "morph_macroSpace": 0.602
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.081,
+      "ow_macroCoupling": 0.827,
+      "ow_macroMovement": 0.304,
+      "ow_macroSpace": 0.599
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "RESONANCE QUAKE 62",
   "parameters": {
-    "Organon": {},
-    "Owlfish": {}
+    "Organon": {
+      "organon_macroCharacter": 0.944,
+      "organon_macroCoupling": 0.638,
+      "organon_macroMovement": 0.893,
+      "organon_macroSpace": 0.753
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.046,
+      "owl_macroCoupling": 0.055,
+      "owl_macroMovement": 0.951,
+      "owl_macroSpace": 0.292
+    }
   },
   "schema_version": 1,
   "tags": [

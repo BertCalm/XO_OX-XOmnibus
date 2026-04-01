@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Flux Grit 4",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.687,
+      "morph_macroCoupling": 0.596,
+      "morph_macroMovement": 0.752,
+      "morph_macroSpace": 0.874
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.731,
+      "osprey_macroCoupling": 0.638,
+      "osprey_macroMovement": 0.744,
+      "osprey_macroSpace": 0.829
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Resonant Savanna",
   "parameters": {
-    "Ocelot": {},
-    "Orbital": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.65,
+      "ocelot_macroCoupling": 0.55,
+      "ocelot_macroMovement": 0.7,
+      "ocelot_macroSpace": 0.45
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.4,
+      "orb_macroCoupling": 0.5,
+      "orb_macroMovement": 0.55,
+      "orb_macroSpace": 0.7
+    }
   },
   "schema_version": 1,
   "tags": [

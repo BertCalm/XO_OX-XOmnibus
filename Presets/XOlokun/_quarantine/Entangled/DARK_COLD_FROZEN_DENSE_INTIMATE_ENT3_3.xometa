@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Node Thick 3",
   "parameters": {
-    "Oblique": {},
-    "Ohm": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7381,
+      "oblq_macroCoupling": 0.7666,
+      "oblq_macroMovement": 0.0207,
+      "oblq_macroSpace": 0.7465
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.5284,
+      "ohm_macroCoupling": 0.9607,
+      "ohm_macroMovement": 0.01,
+      "ohm_macroSpace": 0.9049
+    }
   },
   "schema_version": 1,
   "sequencer": null,

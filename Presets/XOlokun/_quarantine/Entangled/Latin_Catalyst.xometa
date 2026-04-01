@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Latin Catalyst",
   "parameters": {
-    "Ole": {},
-    "Organon": {}
+    "Ole": {
+      "ole_macroCharacter": 0.7,
+      "ole_macroCoupling": 0.7,
+      "ole_macroMovement": 0.64,
+      "ole_macroSpace": 0.46
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.6,
+      "organon_macroMovement": 0.62,
+      "organon_macroSpace": 0.54
+    }
   },
   "schema_version": 1,
   "tags": [

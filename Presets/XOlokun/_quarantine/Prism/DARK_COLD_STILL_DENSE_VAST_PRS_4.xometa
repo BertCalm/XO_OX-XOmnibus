@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Thread Solid 2",
   "parameters": {
-    "Orphica": {},
-    "Osteria": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.0,
+      "orph_macroCoupling": 0.9,
+      "orph_macroMovement": 0.086,
+      "orph_macroSpace": 0.932
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.195,
+      "osteria_macroCoupling": 0.779,
+      "osteria_macroMovement": 0.016,
+      "osteria_macroSpace": 0.886
+    }
   },
   "schema_version": 1,
   "sequencer": null,

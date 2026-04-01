@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Honey Wrath",
   "parameters": {
-    "Origami": {},
+    "Origami": {
+      "origami_macroCharacter": 0.491,
+      "origami_macroCoupling": 0.748,
+      "origami_macroMovement": 0.632,
+      "origami_macroSpace": 0.243
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.15,
+      "dub_macroCoupling": 0.851,
+      "dub_macroMovement": 0.495,
+      "dub_macroSpace": 0.275
     }
   },
   "schema_version": 1,

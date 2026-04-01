@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Shadow Locomotion",
   "parameters": {
-    "Ouroboros": {},
-    "Overworld": {}
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.69,
+      "ouro_macroCoupling": 0.88,
+      "ouro_macroMovement": 0.79,
+      "ouro_macroSpace": 0.27
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.14,
+      "ow_macroCoupling": 0.53,
+      "ow_macroMovement": 0.52,
+      "ow_macroSpace": 0.56
+    }
   },
   "schema_version": 1,
   "tags": [

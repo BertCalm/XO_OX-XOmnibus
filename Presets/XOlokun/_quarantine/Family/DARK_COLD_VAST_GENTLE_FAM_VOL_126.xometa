@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Grain Dome",
   "parameters": {
-    "Osteria": {},
-    "Ottoni": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.058,
+      "osteria_macroCoupling": 0.343,
+      "osteria_macroMovement": 0.358,
+      "osteria_macroSpace": 0.927
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.085,
+      "otto_macroCoupling": 0.363,
+      "otto_macroMovement": 0.386,
+      "otto_macroSpace": 0.905
+    }
   },
   "schema_version": 1,
   "tags": [

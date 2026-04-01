@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Shard Shimmer",
   "parameters": {
-    "Onset": {},
-    "Origami": {}
+    "Onset": {
+      "perc_macroCharacter": 0.262,
+      "perc_macroCoupling": 0.579,
+      "perc_macroMovement": 0.753,
+      "perc_macroSpace": 0.521
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.501,
+      "origami_macroCoupling": 0.118,
+      "origami_macroMovement": 0.824,
+      "origami_macroSpace": 0.257
+    }
   },
   "schema_version": 1,
   "tags": [

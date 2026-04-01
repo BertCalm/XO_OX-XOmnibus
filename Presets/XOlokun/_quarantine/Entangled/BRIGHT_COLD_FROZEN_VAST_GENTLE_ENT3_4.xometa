@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Quartz Canyon",
   "parameters": {
-    "Obscura": {},
-    "Ole": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.7493,
+      "obscura_macroCoupling": 0.7791,
+      "obscura_macroMovement": 0.0256,
+      "obscura_macroSpace": 0.2708
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.8873,
+      "ole_macroCoupling": 0.7563,
+      "ole_macroMovement": 0.0348,
+      "ole_macroSpace": 0.5709
+    }
   },
   "schema_version": 1,
   "sequencer": null,

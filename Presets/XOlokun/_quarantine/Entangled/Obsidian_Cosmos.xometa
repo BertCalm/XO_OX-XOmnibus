@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Obsidian Cosmos",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.78,
+      "ocean_macroCoupling": 0.58,
+      "ocean_macroMovement": 0.14,
+      "ocean_macroSpace": 0.4
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.32,
+      "oracle_macroCoupling": 0.61,
+      "oracle_macroMovement": 0.42,
+      "oracle_macroSpace": 0.74
+    }
   },
   "schema_version": 1,
   "tags": [

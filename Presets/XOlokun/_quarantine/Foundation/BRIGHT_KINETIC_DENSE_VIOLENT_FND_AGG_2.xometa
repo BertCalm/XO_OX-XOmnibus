@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Sunrise Current",
   "parameters": {
-    "Obsidian": {},
-    "OddOscar": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.784,
+      "obsidian_macroCoupling": 0.946,
+      "obsidian_macroMovement": 0.743,
+      "obsidian_macroSpace": 0.841
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.783,
+      "morph_macroCoupling": 0.933,
+      "morph_macroMovement": 0.782,
+      "morph_macroSpace": 0.807
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Shimmer 2",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.9,
+      "organon_macroCoupling": 0.493,
+      "organon_macroMovement": 0.86,
+      "organon_macroSpace": 0.863
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.896,
+      "origami_macroCoupling": 0.534,
+      "origami_macroMovement": 0.908,
+      "origami_macroSpace": 0.87
+    }
   },
   "schema_version": 1,
   "tags": [

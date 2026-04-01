@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Node Heavy 2",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.7475,
+      "opal_macroCoupling": 0.8503,
+      "opal_macroMovement": 0.435,
+      "opal_macroSpace": 0.1017
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.5263,
+      "origami_macroCoupling": 0.9176,
+      "origami_macroMovement": 0.3063,
+      "origami_macroSpace": 0.1584
+    }
   },
   "schema_version": 1,
   "tags": [

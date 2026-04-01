@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Serpent Dance",
   "parameters": {
-    "Ole": {},
-    "Ouroboros": {}
+    "Ole": {
+      "ole_macroCharacter": 0.7,
+      "ole_macroCoupling": 0.72,
+      "ole_macroMovement": 0.68,
+      "ole_macroSpace": 0.38
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroCoupling": 0.72,
+      "ouro_macroMovement": 0.75,
+      "ouro_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

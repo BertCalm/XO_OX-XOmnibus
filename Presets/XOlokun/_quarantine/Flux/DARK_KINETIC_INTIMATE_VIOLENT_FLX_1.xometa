@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Grain Stream 2",
   "parameters": {
-    "Oblique": {},
-    "Organon": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.1468,
+      "oblq_macroCoupling": 0.7512,
+      "oblq_macroMovement": 0.8922,
+      "oblq_macroSpace": 0.172
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.1218,
+      "organon_macroCoupling": 0.8036,
+      "organon_macroMovement": 0.9672,
+      "organon_macroSpace": 0.0908
+    }
   },
   "schema_version": 1,
   "tags": [

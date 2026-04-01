@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Gravity Well (Ouroboros)",
   "parameters": {
-    "Oracle": {},
-    "Ouroboros": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.327,
+      "oracle_macroCoupling": 0.692,
+      "oracle_macroMovement": 0.217,
+      "oracle_macroSpace": 0.899
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.617,
+      "ouro_macroCoupling": 0.956,
+      "ouro_macroMovement": 0.78,
+      "ouro_macroSpace": 0.897
+    }
   },
   "schema_version": 1,
   "tags": [

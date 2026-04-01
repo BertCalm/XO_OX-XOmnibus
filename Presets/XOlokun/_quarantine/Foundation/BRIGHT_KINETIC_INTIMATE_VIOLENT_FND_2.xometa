@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Crystal Strike",
   "parameters": {
-    "Onset": {},
-    "Overbite": {}
+    "Onset": {
+      "perc_macroCharacter": 0.616,
+      "perc_macroCoupling": 0.495,
+      "perc_macroMovement": 0.528,
+      "perc_macroSpace": 0.233
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.561,
+      "poss_macroCoupling": 0.309,
+      "poss_macroMovement": 0.285,
+      "poss_macroSpace": 0.552
+    }
   },
   "schema_version": 1,
   "tags": [

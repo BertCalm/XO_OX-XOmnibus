@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Node Expanse 4",
   "parameters": {
-    "OddfeliX": {},
-    "Ole": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.074,
+      "snap_macroCoupling": 0.382,
+      "snap_macroMovement": 0.34,
+      "snap_macroSpace": 0.899
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.091,
+      "ole_macroCoupling": 0.402,
+      "ole_macroMovement": 0.379,
+      "ole_macroSpace": 0.918
+    }
   },
   "schema_version": 1,
   "tags": [

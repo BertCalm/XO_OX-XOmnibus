@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glass Drift",
   "parameters": {
-    "Oceanic": {},
-    "OddOscar": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.4617,
+      "ocean_macroCoupling": 0.5326,
+      "ocean_macroMovement": 0.99,
+      "ocean_macroSpace": 0.9624
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.4584,
+      "morph_macroCoupling": 0.5705,
+      "morph_macroMovement": 0.99,
+      "morph_macroSpace": 0.9263
+    }
   },
   "schema_version": 1,
   "tags": [

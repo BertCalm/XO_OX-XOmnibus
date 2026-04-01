@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "PYROCLASTIC",
   "parameters": {
-    "Obbligato": {},
-    "Oblique": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.123,
+      "obbl_macroCoupling": 0.141,
+      "obbl_macroMovement": 0.45,
+      "obbl_macroSpace": 0.051
+    },
+    "Oblique": {
+      "oblq_macroCharacter": 0.945,
+      "oblq_macroCoupling": 0.418,
+      "oblq_macroMovement": 0.864,
+      "oblq_macroSpace": 0.963
+    }
   },
   "schema_version": 1,
   "tags": [

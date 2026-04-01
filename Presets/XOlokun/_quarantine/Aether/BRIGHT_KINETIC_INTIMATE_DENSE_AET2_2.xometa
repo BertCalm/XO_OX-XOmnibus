@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Tone Shimmer 2",
   "parameters": {
-    "Obscura": {},
-    "Orbital": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.9828,
+      "obscura_macroCoupling": 0.9147,
+      "obscura_macroMovement": 0.9627,
+      "obscura_macroSpace": 0.0317
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.9125,
+      "orb_macroCoupling": 0.9266,
+      "orb_macroMovement": 0.99,
+      "orb_macroSpace": 0.0756
+    }
   },
   "schema_version": 1,
   "tags": [

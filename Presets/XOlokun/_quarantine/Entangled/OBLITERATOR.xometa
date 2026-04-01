@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "OBLITERATOR",
   "parameters": {
-    "Obbligato": {},
-    "Octopus": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.483,
+      "obbl_macroCoupling": 0.428,
+      "obbl_macroMovement": 0.429,
+      "obbl_macroSpace": 0.56
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.2,
+      "octo_macroCoupling": 0.159,
+      "octo_macroMovement": 0.354,
+      "octo_macroSpace": 0.473
+    }
   },
   "schema_version": 1,
   "tags": [

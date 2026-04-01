@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Node Swirl 2",
   "parameters": {
-    "Oceanic": {},
+    "Oceanic": {
+      "ocean_macroCharacter": 0.7358,
+      "ocean_macroCoupling": 0.1186,
+      "ocean_macroMovement": 0.9849,
+      "ocean_macroSpace": 0.9516
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.7741,
+      "dub_macroCoupling": 0.1279,
+      "dub_macroMovement": 0.9622,
+      "dub_macroSpace": 0.9847
     }
   },
   "schema_version": 1,

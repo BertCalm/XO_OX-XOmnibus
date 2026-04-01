@@ -39,8 +39,18 @@
   "mood": "Atmosphere",
   "name": "Suspended Phosphor",
   "parameters": {
-    "Oblique": {},
-    "Ombre": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.82,
+      "oblq_macroCoupling": 0.57,
+      "oblq_macroMovement": 0.9,
+      "oblq_macroSpace": 0.46
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.98,
+      "ombre_macroCoupling": 0.82,
+      "ombre_macroMovement": 0.91,
+      "ombre_macroSpace": 0.48
+    }
   },
   "schema_version": 1,
   "sequencer": null,

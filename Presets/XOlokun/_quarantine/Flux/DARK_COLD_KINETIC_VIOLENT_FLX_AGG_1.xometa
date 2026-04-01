@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Phase Blade 2",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.385,
+      "ocean_macroCoupling": 0.757,
+      "ocean_macroMovement": 0.87,
+      "ocean_macroSpace": 0.581
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.519,
+      "oracle_macroCoupling": 0.774,
+      "oracle_macroMovement": 0.903,
+      "oracle_macroSpace": 0.591
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glow Shimmer",
   "parameters": {
-    "Orbital": {},
-    "Organon": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.47,
+      "orb_macroCoupling": 0.642,
+      "orb_macroMovement": 0.845,
+      "orb_macroSpace": 0.624
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.552,
+      "organon_macroCoupling": 0.572,
+      "organon_macroMovement": 0.791,
+      "organon_macroSpace": 0.523
+    }
   },
   "schema_version": 1,
   "tags": [

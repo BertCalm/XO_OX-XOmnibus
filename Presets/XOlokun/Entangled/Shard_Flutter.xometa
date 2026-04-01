@@ -49,7 +49,11 @@
       "filter_resonance": 0.295,
       "output_level": 0.8192,
       "reverb_mix": 0.2102,
-      "reverb_size": 0.2583
+      "reverb_size": 0.2583,
+      "fat_macroCharacter": 0.3925,
+      "fat_macroCoupling": 0.7571,
+      "fat_macroMovement": 0.8603,
+      "fat_macroSpace": 0.0862
     },
     "OddfeliX": {
       "amp_attack": 0.0762,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.3545,
       "output_level": 0.8509,
       "reverb_mix": 0.2106,
-      "reverb_size": 0.1985
+      "reverb_size": 0.1985,
+      "snap_macroCharacter": 0.3887,
+      "snap_macroCoupling": 0.7994,
+      "snap_macroMovement": 0.9034,
+      "snap_macroSpace": 0.0586
     }
   },
   "schema_version": 1,

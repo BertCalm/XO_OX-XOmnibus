@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Niche Filament",
   "parameters": {
-    "Obese": {},
-    "Optic": {}
+    "Obese": {
+      "fat_macroCharacter": 0.082,
+      "fat_macroCoupling": 0.047,
+      "fat_macroMovement": 0.312,
+      "fat_macroSpace": 0.028
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.082,
+      "optic_macroCoupling": 0.047,
+      "optic_macroMovement": 0.312,
+      "optic_macroSpace": 0.028
+    }
   },
   "schema_version": 1,
   "tags": [

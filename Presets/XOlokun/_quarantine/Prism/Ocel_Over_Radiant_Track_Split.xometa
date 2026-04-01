@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.9,
+      "ocelot_macroMovement": 0.74,
+      "ocelot_macroCoupling": 0.89,
+      "ocelot_macroSpace": 0.23
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.95,
+      "poss_macroMovement": 0.69,
+      "poss_macroCoupling": 0.9,
+      "poss_macroSpace": 0.33
+    }
   },
   "coupling": {
     "type": "FM_CROSS",

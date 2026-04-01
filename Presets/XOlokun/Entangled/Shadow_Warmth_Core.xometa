@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Shadow Warmth Core",
   "parameters": {
-    "Opal": {},
+    "Opal": {
+      "opal_macroCharacter": 0.58,
+      "opal_macroCoupling": 0.83,
+      "opal_macroMovement": 0.88,
+      "opal_macroSpace": 0.26
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.6,
+      "dub_macroCoupling": 0.66,
+      "dub_macroMovement": 0.61,
+      "dub_macroSpace": 0.82
     }
   },
   "schema_version": 1,

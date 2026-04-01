@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Warm Form",
   "parameters": {
-    "Obbligato": {},
-    "Orca": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.729,
+      "obbl_macroCoupling": 0.744,
+      "obbl_macroMovement": 0.632,
+      "obbl_macroSpace": 0.626
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.715,
+      "orca_macroCoupling": 0.768,
+      "orca_macroMovement": 0.747,
+      "orca_macroSpace": 0.358
+    }
   },
   "schema_version": 1,
   "tags": [

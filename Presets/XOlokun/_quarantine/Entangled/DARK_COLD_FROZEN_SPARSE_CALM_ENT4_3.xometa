@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Grain Cathedral 3",
   "parameters": {
-    "Opal": {},
-    "Overlap": {}
+    "Opal": {
+      "opal_macroCharacter": 0.084,
+      "opal_macroCoupling": 0.145,
+      "opal_macroMovement": 0.017,
+      "opal_macroSpace": 0.705
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.06,
+      "olap_macroCoupling": 0.144,
+      "olap_macroMovement": 0.018,
+      "olap_macroSpace": 0.659
+    }
   },
   "schema_version": 1,
   "tags": [

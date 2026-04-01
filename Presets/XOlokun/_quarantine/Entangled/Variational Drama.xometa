@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Variational Drama",
   "parameters": {
-    "Ole": {},
-    "Organon": {}
+    "Ole": {
+      "ole_macroCharacter": 0.68,
+      "ole_macroCoupling": 0.72,
+      "ole_macroMovement": 0.62,
+      "ole_macroSpace": 0.36
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.58,
+      "organon_macroCoupling": 0.72,
+      "organon_macroMovement": 0.68,
+      "organon_macroSpace": 0.52
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK COLD KINETIC VAST DENS... (Onset I)",
   "parameters": {
-    "Onset": {},
-    "Orca": {}
+    "Onset": {
+      "perc_macroCharacter": 0.11,
+      "perc_macroCoupling": 0.662,
+      "perc_macroMovement": 0.985,
+      "perc_macroSpace": 0.983
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.146,
+      "orca_macroCoupling": 0.65,
+      "orca_macroMovement": 0.955,
+      "orca_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

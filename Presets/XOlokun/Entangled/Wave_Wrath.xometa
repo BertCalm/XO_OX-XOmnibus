@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Wave Wrath",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.504,
+      "oblq_macroCoupling": 0.947,
+      "oblq_macroMovement": 0.317,
+      "oblq_macroSpace": 0.536
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.615,
+      "dub_macroCoupling": 0.954,
+      "dub_macroMovement": 0.317,
+      "dub_macroSpace": 0.619
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC VIOLENT... (OddOscar)",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.883,
+      "morph_macroCoupling": 0.871,
+      "morph_macroMovement": 0.932,
+      "morph_macroSpace": 0.449
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.874,
+      "osprey_macroCoupling": 0.922,
+      "osprey_macroMovement": 0.96,
+      "osprey_macroSpace": 0.447
+    }
   },
   "schema_version": 1,
   "tags": [

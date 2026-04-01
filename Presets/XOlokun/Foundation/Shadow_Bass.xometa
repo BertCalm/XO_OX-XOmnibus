@@ -37,10 +37,19 @@
   "mood": "Foundation",
   "name": "Shadow Bass",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.246,
+      "fat_macroCoupling": 0.503,
+      "fat_macroMovement": 0.437,
+      "fat_macroSpace": 0.611
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.622,
+      "bob_macroCoupling": 0.148,
+      "bob_macroMovement": 0.264,
+      "bob_macroSpace": 0.653
     }
   },
   "schema_version": 1,

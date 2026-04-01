@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orbital": {},
-    "Obbligato": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.89,
+      "orb_macroMovement": 0.75,
+      "orb_macroCoupling": 0.64,
+      "orb_macroSpace": 0.42
+    },
+    "Obbligato": {
+      "obbl_macroCharacter": 0.99,
+      "obbl_macroMovement": 0.96,
+      "obbl_macroCoupling": 0.54,
+      "obbl_macroSpace": 0.35
+    }
   },
   "coupling": {
     "type": "HARMONIC_STACK",

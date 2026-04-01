@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 2",
   "parameters": {
-    "Obsidian": {},
-    "Odyssey": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.3022,
+      "obsidian_macroCoupling": 0.1398,
+      "obsidian_macroMovement": 0.4083,
+      "obsidian_macroSpace": 0.9463
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.3044,
+      "drift_macroCoupling": 0.0972,
+      "drift_macroMovement": 0.4926,
+      "drift_macroSpace": 0.8873
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Timeless Current",
   "parameters": {
-    "Osteria": {},
-    "Owlfish": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.554,
+      "osteria_macroCoupling": 0.731,
+      "osteria_macroMovement": 0.384,
+      "osteria_macroSpace": 0.54
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.523,
+      "owl_macroCoupling": 0.588,
+      "owl_macroMovement": 0.409,
+      "owl_macroSpace": 0.633
+    }
   },
   "schema_version": 1,
   "tags": [

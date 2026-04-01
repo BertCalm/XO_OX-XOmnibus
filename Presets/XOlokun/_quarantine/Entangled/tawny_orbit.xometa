@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Tawny Orbit",
   "parameters": {
-    "Ocelot": {},
-    "Orbital": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.66,
+      "ocelot_macroCoupling": 0.56,
+      "ocelot_macroMovement": 0.71,
+      "ocelot_macroSpace": 0.46
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.39,
+      "orb_macroCoupling": 0.49,
+      "orb_macroMovement": 0.54,
+      "orb_macroSpace": 0.69
+    }
   },
   "schema_version": 1,
   "tags": [

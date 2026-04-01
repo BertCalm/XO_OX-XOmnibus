@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Shard Force",
   "parameters": {
-    "Ouroboros": {},
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.138,
+      "ouro_macroCoupling": 0.302,
+      "ouro_macroMovement": 0.879,
+      "ouro_macroSpace": 0.599
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.443,
+      "dub_macroCoupling": 0.616,
+      "dub_macroMovement": 0.251,
+      "dub_macroSpace": 0.402
     }
   },
   "schema_version": 1,

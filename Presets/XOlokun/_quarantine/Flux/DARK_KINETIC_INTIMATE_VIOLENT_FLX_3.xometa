@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Smoke Swirl",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.1885,
+      "drift_macroCoupling": 0.7512,
+      "drift_macroMovement": 0.8331,
+      "drift_macroSpace": 0.2065
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.1448,
+      "oracle_macroCoupling": 0.7247,
+      "oracle_macroMovement": 0.9426,
+      "oracle_macroSpace": 0.1687
+    }
   },
   "schema_version": 1,
   "tags": [

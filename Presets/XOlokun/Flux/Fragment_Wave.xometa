@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Fragment Wave",
   "parameters": {
-    "Oracle": {},
+    "Oracle": {
+      "oracle_macroCharacter": 0.69,
+      "oracle_macroCoupling": 0.722,
+      "oracle_macroMovement": 0.045,
+      "oracle_macroSpace": 0.455
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.364,
+      "dub_macroCoupling": 0.875,
+      "dub_macroMovement": 0.052,
+      "dub_macroSpace": 0.46
     }
   },
   "schema_version": 1,

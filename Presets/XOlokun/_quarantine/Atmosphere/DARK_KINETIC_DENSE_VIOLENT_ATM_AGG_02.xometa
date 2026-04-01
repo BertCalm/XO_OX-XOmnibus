@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK KINETIC DENSE VIOLENT ... (OddfeliX)",
   "parameters": {
-    "OddfeliX": {},
-    "Oracle": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.119,
+      "snap_macroCoupling": 0.817,
+      "snap_macroMovement": 0.864,
+      "snap_macroSpace": 0.506
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.116,
+      "oracle_macroCoupling": 0.893,
+      "oracle_macroMovement": 0.848,
+      "oracle_macroSpace": 0.515
+    }
   },
   "schema_version": 1,
   "tags": [

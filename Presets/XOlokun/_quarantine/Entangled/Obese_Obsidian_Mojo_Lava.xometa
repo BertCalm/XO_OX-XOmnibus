@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Mojo Lava",
   "parameters": {
-    "Obese": {},
-    "Obsidian": {}
+    "Obese": {
+      "fat_macroCharacter": 0.82,
+      "fat_macroCoupling": 0.75,
+      "fat_macroMovement": 0.48,
+      "fat_macroSpace": 0.2
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.85,
+      "obsidian_macroCoupling": 0.78,
+      "obsidian_macroMovement": 0.4,
+      "obsidian_macroSpace": 0.18
+    }
   },
   "schema_version": 1,
   "tags": [

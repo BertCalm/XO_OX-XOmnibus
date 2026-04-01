@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Void Automata March",
   "parameters": {
-    "Onset": {},
-    "Overworld": {}
+    "Onset": {
+      "perc_macroCharacter": 0.17,
+      "perc_macroCoupling": 0.62,
+      "perc_macroMovement": 0.15,
+      "perc_macroSpace": 0.62
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.46,
+      "ow_macroCoupling": 0.58,
+      "ow_macroMovement": 0.45,
+      "ow_macroSpace": 0.43
+    }
   },
   "schema_version": 1,
   "tags": [

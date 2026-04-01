@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT COLD KINETIC DENSE V...",
   "parameters": {
-    "Ombre": {},
-    "Ouroboros": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.523,
+      "ombre_macroCoupling": 0.966,
+      "ombre_macroMovement": 0.924,
+      "ombre_macroSpace": 0.449
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.506,
+      "ouro_macroCoupling": 0.939,
+      "ouro_macroMovement": 0.931,
+      "ouro_macroSpace": 0.404
+    }
   },
   "schema_version": 1,
   "tags": [

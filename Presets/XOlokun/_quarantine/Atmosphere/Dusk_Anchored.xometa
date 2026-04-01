@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Dusk Anchored",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.55,
+      "snap_macroCoupling": 0.65,
+      "snap_macroMovement": 0.097,
+      "snap_macroSpace": 0.111
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.665,
+      "origami_macroCoupling": 0.684,
+      "origami_macroMovement": 0.126,
+      "origami_macroSpace": 0.079
+    }
   },
   "schema_version": 1,
   "tags": [

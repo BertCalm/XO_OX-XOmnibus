@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Filament Phosphor",
   "parameters": {
-    "Odyssey": {},
-    "Owlfish": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.694,
+      "drift_macroCoupling": 0.65,
+      "drift_macroMovement": 0.56,
+      "drift_macroSpace": 0.345
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.713,
+      "owl_macroCoupling": 0.521,
+      "owl_macroMovement": 0.489,
+      "owl_macroSpace": 0.329
+    }
   },
   "schema_version": 1,
   "tags": [

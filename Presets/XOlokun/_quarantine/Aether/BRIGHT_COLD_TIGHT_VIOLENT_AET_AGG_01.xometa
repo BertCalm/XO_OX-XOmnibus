@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.954,
+      "ocean_macroCoupling": 0.879,
+      "ocean_macroMovement": 0.518,
+      "ocean_macroSpace": 0.046
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.969,
+      "oracle_macroCoupling": 0.94,
+      "oracle_macroMovement": 0.515,
+      "oracle_macroSpace": 0.043
+    }
   },
   "schema_version": 1,
   "tags": [

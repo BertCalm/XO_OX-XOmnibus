@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Candescent Drift",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.72,
+      "oracle_macroCoupling": 0.79,
+      "oracle_macroMovement": 0.44,
+      "oracle_macroSpace": 0.37
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.94,
+      "origami_macroCoupling": 0.86,
+      "origami_macroMovement": 0.44,
+      "origami_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

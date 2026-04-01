@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Smoke Thick",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.428,
+      "organon_macroCoupling": 0.948,
+      "organon_macroMovement": 0.946,
+      "organon_macroSpace": 0.365
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.602,
+      "origami_macroCoupling": 0.917,
+      "origami_macroMovement": 0.917,
+      "origami_macroSpace": 0.294
+    }
   },
   "schema_version": 1,
   "tags": [

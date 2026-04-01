@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Folded Prophecy",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.12,
+      "oracle_macroCoupling": 0.77,
+      "oracle_macroMovement": 0.29,
+      "oracle_macroSpace": 0.95
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.15,
+      "origami_macroCoupling": 0.72,
+      "origami_macroMovement": 0.34,
+      "origami_macroSpace": 0.92
+    }
   },
   "schema_version": 1,
   "tags": [

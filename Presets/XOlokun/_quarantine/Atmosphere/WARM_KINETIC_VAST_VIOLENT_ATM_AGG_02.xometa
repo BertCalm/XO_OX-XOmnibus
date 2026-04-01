@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "WARM KINETIC VAST VIOLENT A... (Origami)",
   "parameters": {
-    "Origami": {},
-    "Osprey": {}
+    "Origami": {
+      "origami_macroCharacter": 0.41,
+      "origami_macroCoupling": 0.912,
+      "origami_macroMovement": 0.852,
+      "origami_macroSpace": 0.85
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.431,
+      "osprey_macroCoupling": 0.971,
+      "osprey_macroMovement": 0.899,
+      "osprey_macroSpace": 0.865
+    }
   },
   "schema_version": 1,
   "tags": [

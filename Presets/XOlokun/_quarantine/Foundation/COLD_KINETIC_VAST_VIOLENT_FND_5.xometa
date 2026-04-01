@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Phase Shimmer",
   "parameters": {
-    "Obese": {},
-    "OddOscar": {}
+    "Obese": {
+      "fat_macroCharacter": 0.799,
+      "fat_macroCoupling": 0.881,
+      "fat_macroMovement": 0.276,
+      "fat_macroSpace": 0.526
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.443,
+      "morph_macroCoupling": 0.78,
+      "morph_macroMovement": 0.86,
+      "morph_macroSpace": 0.224
+    }
   },
   "schema_version": 1,
   "tags": [

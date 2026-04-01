@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Dappled Gather",
   "parameters": {
-    "Obbligato": {},
+    "Obbligato": {
+      "obbl_macroCharacter": 0.99,
+      "obbl_macroCoupling": 0.798,
+      "obbl_macroMovement": 0.084,
+      "obbl_macroSpace": 0.113
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.979,
+      "dub_macroCoupling": 0.784,
+      "dub_macroMovement": 0.089,
+      "dub_macroSpace": 0.102
     }
   },
   "schema_version": 1,

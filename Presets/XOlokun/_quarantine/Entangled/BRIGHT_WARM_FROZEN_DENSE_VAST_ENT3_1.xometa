@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Candlelight Cavern",
   "parameters": {
-    "Orbital": {},
-    "Overbite": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.5156,
+      "orb_macroCoupling": 0.7725,
+      "orb_macroMovement": 0.0416,
+      "orb_macroSpace": 0.2978
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.775,
+      "poss_macroCoupling": 0.9218,
+      "poss_macroMovement": 0.0343,
+      "poss_macroSpace": 0.6961
+    }
   },
   "schema_version": 1,
   "sequencer": null,

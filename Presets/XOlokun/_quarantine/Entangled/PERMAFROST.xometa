@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Permafrost (Ombre)",
   "parameters": {
-    "Ombre": {},
-    "Onset": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.8,
+      "ombre_macroCoupling": 0.488,
+      "ombre_macroMovement": 0.898,
+      "ombre_macroSpace": 0.273
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.486,
+      "perc_macroCoupling": 0.669,
+      "perc_macroMovement": 0.389,
+      "perc_macroSpace": 0.798
+    }
   },
   "schema_version": 1,
   "tags": [

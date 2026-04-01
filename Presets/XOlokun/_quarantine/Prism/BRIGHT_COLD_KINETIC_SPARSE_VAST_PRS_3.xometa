@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Chrome Pulse",
   "parameters": {
-    "Ohm": {},
-    "Osteria": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.945,
+      "ohm_macroCoupling": 0.002,
+      "ohm_macroMovement": 0.921,
+      "ohm_macroSpace": 0.99
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.862,
+      "osteria_macroCoupling": 0.053,
+      "osteria_macroMovement": 1.0,
+      "osteria_macroSpace": 0.89
+    }
   },
   "schema_version": 1,
   "sequencer": null,

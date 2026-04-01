@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Radiant Passage",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.79,
+      "drift_macroCoupling": 0.74,
+      "drift_macroMovement": 0.51,
+      "drift_macroSpace": 0.6
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.96,
+      "opal_macroCoupling": 0.68,
+      "opal_macroMovement": 0.43,
+      "opal_macroSpace": 0.75
+    }
   },
   "schema_version": 1,
   "tags": [

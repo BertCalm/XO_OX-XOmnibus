@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Indigo Dispersal",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.17,
+      "drift_macroCoupling": 0.71,
+      "drift_macroMovement": 0.37,
+      "drift_macroSpace": 0.91
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.2,
+      "oracle_macroCoupling": 0.66,
+      "oracle_macroMovement": 0.42,
+      "oracle_macroSpace": 0.88
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Radiant Cascade",
   "parameters": {
-    "OddfeliX": {},
-    "Odyssey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.94,
+      "snap_macroCoupling": 0.458,
+      "snap_macroMovement": 0.867,
+      "snap_macroSpace": 0.081
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.918,
+      "drift_macroCoupling": 0.507,
+      "drift_macroMovement": 0.883,
+      "drift_macroSpace": 0.042
+    }
   },
   "schema_version": 1,
   "tags": [

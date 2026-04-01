@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Copper Wrath",
   "parameters": {
-    "Ottoni": {},
-    "Overworld": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.085,
+      "otto_macroCoupling": 0.0,
+      "otto_macroMovement": 0.957,
+      "otto_macroSpace": 0.592
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.107,
+      "ow_macroCoupling": 0.196,
+      "ow_macroMovement": 0.891,
+      "ow_macroSpace": 0.455
+    }
   },
   "schema_version": 1,
   "sequencer": null,

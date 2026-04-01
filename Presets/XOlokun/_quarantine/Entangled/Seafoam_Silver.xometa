@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Seafoam Silver",
   "parameters": {
-    "Obscura": {},
-    "Orphica": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.64,
+      "obscura_macroCoupling": 0.68,
+      "obscura_macroMovement": 0.57,
+      "obscura_macroSpace": 0.54
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.78,
+      "orph_macroCoupling": 0.78,
+      "orph_macroMovement": 0.64,
+      "orph_macroSpace": 0.7
+    }
   },
   "schema_version": 1,
   "tags": [

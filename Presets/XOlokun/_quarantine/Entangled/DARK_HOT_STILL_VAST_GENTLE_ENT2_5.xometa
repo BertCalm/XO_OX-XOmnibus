@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK HOT STILL VAST GENTLE ... (Overbite I)",
   "parameters": {
-    "Osteria": {},
-    "Overbite": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.519,
+      "osteria_macroCoupling": 0.154,
+      "osteria_macroMovement": 0.116,
+      "osteria_macroSpace": 0.99
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.528,
+      "poss_macroCoupling": 0.172,
+      "poss_macroMovement": 0.105,
+      "poss_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

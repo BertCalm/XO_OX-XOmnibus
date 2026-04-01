@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddOscar": {},
-    "Orca": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.61,
+      "morph_macroMovement": 0.95,
+      "morph_macroCoupling": 0.79,
+      "morph_macroSpace": 0.47
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.64,
+      "orca_macroMovement": 0.87,
+      "orca_macroCoupling": 0.63,
+      "orca_macroSpace": 0.48
+    }
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

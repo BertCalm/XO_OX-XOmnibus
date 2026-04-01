@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Velvet Void",
   "parameters": {
-    "OddfeliX": {},
-    "Osteria": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.9206,
+      "snap_macroCoupling": 0.7847,
+      "snap_macroMovement": 0.0216,
+      "snap_macroSpace": 0.2105
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.5855,
+      "osteria_macroCoupling": 0.9087,
+      "osteria_macroMovement": 0.0122,
+      "osteria_macroSpace": 0.1219
+    }
   },
   "schema_version": 1,
   "sequencer": null,

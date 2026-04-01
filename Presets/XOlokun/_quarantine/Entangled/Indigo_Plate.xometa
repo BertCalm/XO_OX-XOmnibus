@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Indigo Plate",
   "parameters": {
-    "Obscura": {},
-    "Oracle": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.1,
+      "obscura_macroCoupling": 0.84,
+      "obscura_macroMovement": 0.2,
+      "obscura_macroSpace": 0.97
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.13,
+      "oracle_macroCoupling": 0.79,
+      "oracle_macroMovement": 0.25,
+      "oracle_macroSpace": 0.94
+    }
   },
   "schema_version": 1,
   "tags": [

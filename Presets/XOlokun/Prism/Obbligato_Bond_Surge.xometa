@@ -34,7 +34,11 @@
       "obbl_filterResonance": 0.3,
       "obbl_releaseTime": 0.9,
       "obbl_tuningA": 0.0,
-      "obbl_tuningB": 0.07
+      "obbl_tuningB": 0.07,
+      "obbl_macroCharacter": 0.65,
+      "obbl_macroCoupling": 0.0,
+      "obbl_macroMovement": 0.55,
+      "obbl_macroSpace": 0.5
     }
   },
   "schema_version": 1,

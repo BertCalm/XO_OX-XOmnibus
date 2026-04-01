@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Glow Swirl",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.4757,
+      "ocean_macroCoupling": 0.6306,
+      "ocean_macroMovement": 0.772,
+      "ocean_macroSpace": 0.8054
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.8339,
+      "oracle_macroCoupling": 0.8138,
+      "oracle_macroMovement": 0.9309,
+      "oracle_macroSpace": 0.6602
+    }
   },
   "schema_version": 1,
   "tags": [

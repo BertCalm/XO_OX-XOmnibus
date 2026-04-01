@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Honey Stream",
   "parameters": {
-    "Oblique": {},
-    "Obscura": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.934,
+      "oblq_macroCoupling": 0.5323,
+      "oblq_macroMovement": 0.9194,
+      "oblq_macroSpace": 0.054
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.9055,
+      "obscura_macroCoupling": 0.5107,
+      "obscura_macroMovement": 0.9507,
+      "obscura_macroSpace": 0.0398
+    }
   },
   "schema_version": 1,
   "tags": [

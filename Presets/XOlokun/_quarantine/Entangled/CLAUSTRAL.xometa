@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "CLAUSTRAL",
   "parameters": {
-    "Orca": {},
-    "Orphica": {}
+    "Orca": {
+      "orca_macroCharacter": 0.973,
+      "orca_macroCoupling": 0.115,
+      "orca_macroMovement": 0.947,
+      "orca_macroSpace": 0.074
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.487,
+      "orph_macroCoupling": 0.844,
+      "orph_macroMovement": 0.315,
+      "orph_macroSpace": 0.068
+    }
   },
   "schema_version": 1,
   "tags": [

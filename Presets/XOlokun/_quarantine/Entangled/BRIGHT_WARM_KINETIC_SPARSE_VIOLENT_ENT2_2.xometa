@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT WARM KINETIC SPARSE ... (Ottoni)",
   "parameters": {
-    "Orca": {},
-    "Ottoni": {}
+    "Orca": {
+      "orca_macroCharacter": 0.939,
+      "orca_macroCoupling": 0.504,
+      "orca_macroMovement": 0.943,
+      "orca_macroSpace": 0.411
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.957,
+      "otto_macroCoupling": 0.494,
+      "otto_macroMovement": 0.925,
+      "otto_macroSpace": 0.372
+    }
   },
   "schema_version": 1,
   "tags": [

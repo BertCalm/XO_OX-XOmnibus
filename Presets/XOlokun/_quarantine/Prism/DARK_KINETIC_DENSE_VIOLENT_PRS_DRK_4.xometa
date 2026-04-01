@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Signal Crush",
   "parameters": {
-    "Oblique": {},
-    "Ocelot": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.6406,
+      "oblq_macroCoupling": 0.9143,
+      "oblq_macroMovement": 0.8743,
+      "oblq_macroSpace": 0.521
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.6643,
+      "ocelot_macroCoupling": 0.9462,
+      "ocelot_macroMovement": 0.9032,
+      "ocelot_macroSpace": 0.4978
+    }
   },
   "schema_version": 1,
   "tags": [

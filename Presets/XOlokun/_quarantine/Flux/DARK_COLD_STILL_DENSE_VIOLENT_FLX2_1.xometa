@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Wave Massive",
   "parameters": {
-    "Odyssey": {},
-    "Origami": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.0525,
+      "drift_macroCoupling": 0.9677,
+      "drift_macroMovement": 0.0335,
+      "drift_macroSpace": 0.3348
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.0725,
+      "origami_macroCoupling": 0.971,
+      "origami_macroMovement": 0.0438,
+      "origami_macroSpace": 0.3521
+    }
   },
   "schema_version": 1,
   "tags": [

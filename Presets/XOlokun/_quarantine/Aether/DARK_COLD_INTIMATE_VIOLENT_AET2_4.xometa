@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Flux Crush",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.0524,
+      "snap_macroCoupling": 0.3326,
+      "snap_macroMovement": 0.5764,
+      "snap_macroSpace": 0.075
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.0517,
+      "origami_macroCoupling": 0.3341,
+      "origami_macroMovement": 0.6017,
+      "origami_macroSpace": 0.0279
+    }
   },
   "schema_version": 1,
   "tags": [

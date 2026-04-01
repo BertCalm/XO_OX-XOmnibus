@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Silver Fold",
   "parameters": {
-    "Obscura": {},
-    "Origami": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.16,
+      "obscura_macroCoupling": 0.71,
+      "obscura_macroMovement": 0.36,
+      "obscura_macroSpace": 0.92
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.13,
+      "origami_macroCoupling": 0.76,
+      "origami_macroMovement": 0.31,
+      "origami_macroSpace": 0.95
+    }
   },
   "schema_version": 1,
   "tags": [

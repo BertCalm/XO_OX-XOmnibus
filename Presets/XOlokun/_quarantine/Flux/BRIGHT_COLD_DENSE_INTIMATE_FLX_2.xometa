@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Quartz Saturated",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.8352,
+      "ocean_macroCoupling": 0.3929,
+      "ocean_macroMovement": 0.4944,
+      "ocean_macroSpace": 0.1781
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.8982,
+      "oracle_macroCoupling": 0.1811,
+      "oracle_macroMovement": 0.5216,
+      "oracle_macroSpace": 0.1897
+    }
   },
   "schema_version": 1,
   "tags": [

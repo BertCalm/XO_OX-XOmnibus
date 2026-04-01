@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Phase Force",
   "parameters": {
-    "Obbligato": {},
-    "OddOscar": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.704,
+      "obbl_macroCoupling": 0.438,
+      "obbl_macroMovement": 0.404,
+      "obbl_macroSpace": 0.462
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.737,
+      "morph_macroCoupling": 0.412,
+      "morph_macroMovement": 0.439,
+      "morph_macroSpace": 0.504
+    }
   },
   "schema_version": 1,
   "tags": [

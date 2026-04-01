@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Paper Cloud",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.11,
+      "opal_macroCoupling": 0.77,
+      "opal_macroMovement": 0.25,
+      "opal_macroSpace": 0.95
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.08,
+      "origami_macroCoupling": 0.82,
+      "origami_macroMovement": 0.2,
+      "origami_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

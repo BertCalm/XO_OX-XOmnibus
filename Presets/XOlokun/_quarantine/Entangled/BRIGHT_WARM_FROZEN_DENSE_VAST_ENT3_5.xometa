@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Bloom Solid",
   "parameters": {
-    "Orca": {},
-    "Origami": {}
+    "Orca": {
+      "orca_macroCharacter": 0.6298,
+      "orca_macroCoupling": 0.8092,
+      "orca_macroMovement": 0.0572,
+      "orca_macroSpace": 0.5772
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.7864,
+      "origami_macroCoupling": 0.9655,
+      "origami_macroMovement": 0.0555,
+      "origami_macroSpace": 0.4395
+    }
   },
   "schema_version": 1,
   "sequencer": null,

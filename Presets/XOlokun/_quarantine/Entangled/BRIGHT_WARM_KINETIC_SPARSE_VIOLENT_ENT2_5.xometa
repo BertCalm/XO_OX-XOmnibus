@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT WARM KINETIC SPARSE ... (Ohm I)",
   "parameters": {
-    "Ohm": {},
-    "Orbital": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.944,
+      "ohm_macroCoupling": 0.51,
+      "ohm_macroMovement": 0.947,
+      "ohm_macroSpace": 0.32
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.935,
+      "orb_macroCoupling": 0.522,
+      "orb_macroMovement": 0.956,
+      "orb_macroSpace": 0.276
+    }
   },
   "schema_version": 1,
   "tags": [

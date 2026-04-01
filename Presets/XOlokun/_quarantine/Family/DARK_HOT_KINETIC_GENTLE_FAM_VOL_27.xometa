@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Smoke Surge",
   "parameters": {
-    "OddfeliX": {},
-    "Odyssey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.522,
+      "snap_macroCoupling": 0.315,
+      "snap_macroMovement": 0.99,
+      "snap_macroSpace": 0.715
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.471,
+      "drift_macroCoupling": 0.293,
+      "drift_macroMovement": 0.99,
+      "drift_macroSpace": 0.707
+    }
   },
   "schema_version": 1,
   "tags": [

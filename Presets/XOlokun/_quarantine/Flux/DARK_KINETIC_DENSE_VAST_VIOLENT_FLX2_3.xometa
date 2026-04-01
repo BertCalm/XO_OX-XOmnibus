@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Tone Edge 2",
   "parameters": {
-    "Oceanic": {},
-    "Opal": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.2803,
+      "ocean_macroCoupling": 0.9644,
+      "ocean_macroMovement": 0.9521,
+      "ocean_macroSpace": 0.9443
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.281,
+      "opal_macroCoupling": 0.964,
+      "opal_macroMovement": 0.9482,
+      "opal_macroSpace": 0.9337
+    }
   },
   "schema_version": 1,
   "tags": [

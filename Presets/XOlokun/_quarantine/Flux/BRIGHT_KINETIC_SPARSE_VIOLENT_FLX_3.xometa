@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Tone Flutter 4",
   "parameters": {
-    "Oceanic": {},
-    "Overworld": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.7916,
+      "ocean_macroCoupling": 0.7792,
+      "ocean_macroMovement": 0.9459,
+      "ocean_macroSpace": 0.7992
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.9099,
+      "ow_macroCoupling": 0.8122,
+      "ow_macroMovement": 0.8752,
+      "ow_macroSpace": 0.7219
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Signal Strike",
   "parameters": {
-    "Oblique": {},
-    "Organon": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.676,
+      "oblq_macroCoupling": 0.84,
+      "oblq_macroMovement": 0.082,
+      "oblq_macroSpace": 0.038
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.51,
+      "organon_macroCoupling": 0.692,
+      "organon_macroMovement": 0.092,
+      "organon_macroSpace": 0.036
+    }
   },
   "schema_version": 1,
   "tags": [

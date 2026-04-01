@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Tone Deep",
   "parameters": {
-    "OddOscar": {},
-    "Oracle": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.0767,
+      "morph_macroCoupling": 0.8823,
+      "morph_macroMovement": 0.4028,
+      "morph_macroSpace": 0.0292
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.0538,
+      "oracle_macroCoupling": 0.8988,
+      "oracle_macroMovement": 0.4405,
+      "oracle_macroSpace": 0.01
+    }
   },
   "schema_version": 1,
   "tags": [

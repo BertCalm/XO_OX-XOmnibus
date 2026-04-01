@@ -49,7 +49,11 @@
       "filter_resonance": 0.1053,
       "output_level": 0.7065,
       "reverb_mix": 0.4389,
-      "reverb_size": 0.5512
+      "reverb_size": 0.5512,
+      "oblq_macroCharacter": 0.6933,
+      "oblq_macroCoupling": 0.6041,
+      "oblq_macroMovement": 0.4558,
+      "oblq_macroSpace": 0.5967
     },
     "Ombre": {
       "amp_attack": 0.299,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.1245,
       "output_level": 0.7271,
       "reverb_mix": 0.447,
-      "reverb_size": 0.5636
+      "reverb_size": 0.5636,
+      "ombre_macroCharacter": 0.7169,
+      "ombre_macroCoupling": 0.6383,
+      "ombre_macroMovement": 0.4352,
+      "ombre_macroSpace": 0.5957
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Vast Blade",
   "parameters": {
-    "Orbital": {},
-    "Overbite": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.916,
+      "orb_macroCoupling": 0.929,
+      "orb_macroMovement": 0.41,
+      "orb_macroSpace": 0.961
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.886,
+      "poss_macroCoupling": 0.916,
+      "poss_macroMovement": 0.411,
+      "poss_macroSpace": 0.937
+    }
   },
   "schema_version": 1,
   "tags": [

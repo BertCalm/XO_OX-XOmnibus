@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Octopus": {},
-    "Overlap": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.98,
+      "octo_macroMovement": 0.64,
+      "octo_macroCoupling": 0.76,
+      "octo_macroSpace": 0.1
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.79,
+      "olap_macroMovement": 0.87,
+      "olap_macroCoupling": 0.84,
+      "olap_macroSpace": 0.43
+    }
   },
   "coupling": {
     "type": "CHAOS_INJECT",

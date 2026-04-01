@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Scorched Orbit",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.75,
+      "drift_macroCoupling": 0.66,
+      "drift_macroMovement": 0.7,
+      "drift_macroSpace": 0.95
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.64,
+      "organon_macroCoupling": 0.53,
+      "organon_macroMovement": 0.42,
+      "organon_macroSpace": 0.94
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Shadow Nebula",
   "parameters": {
-    "Ombre": {},
-    "Opal": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.82,
+      "ombre_macroCoupling": 0.58,
+      "ombre_macroMovement": 0.12,
+      "ombre_macroSpace": 0.26
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.3,
+      "opal_macroCoupling": 0.7,
+      "opal_macroMovement": 0.46,
+      "opal_macroSpace": 0.64
+    }
   },
   "schema_version": 1,
   "tags": [

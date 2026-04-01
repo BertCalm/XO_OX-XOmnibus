@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Wave Force",
   "parameters": {
-    "Oceanic": {},
-    "Organon": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.0694,
+      "ocean_macroCoupling": 0.9047,
+      "ocean_macroMovement": 0.1111,
+      "ocean_macroSpace": 0.4147
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.0743,
+      "organon_macroCoupling": 0.8736,
+      "organon_macroMovement": 0.1007,
+      "organon_macroSpace": 0.4135
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Copper Frozen",
   "parameters": {
-    "OddfeliX": {},
-    "Overlap": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.662,
+      "snap_macroCoupling": 0.465,
+      "snap_macroMovement": 0.111,
+      "snap_macroSpace": 0.643
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.564,
+      "olap_macroCoupling": 0.383,
+      "olap_macroMovement": 0.159,
+      "olap_macroSpace": 0.497
+    }
   },
   "schema_version": 1,
   "tags": [

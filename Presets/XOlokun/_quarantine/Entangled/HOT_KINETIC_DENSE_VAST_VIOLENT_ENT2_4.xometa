@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HOT KINETIC DENSE VAST VIOL... (Obbligato I)",
   "parameters": {
-    "Obbligato": {},
-    "Odyssey": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.742,
+      "obbl_macroCoupling": 0.94,
+      "obbl_macroMovement": 0.971,
+      "obbl_macroSpace": 0.948
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.785,
+      "drift_macroCoupling": 0.945,
+      "drift_macroMovement": 0.99,
+      "drift_macroSpace": 0.981
+    }
   },
   "schema_version": 1,
   "tags": [

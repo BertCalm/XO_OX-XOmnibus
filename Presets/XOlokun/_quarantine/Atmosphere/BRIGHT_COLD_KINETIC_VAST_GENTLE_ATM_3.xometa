@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Silver Swirl 2",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.4525,
+      "opal_macroCoupling": 0.6461,
+      "opal_macroMovement": 0.9535,
+      "opal_macroSpace": 0.9056
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.4532,
+      "oracle_macroCoupling": 0.6382,
+      "oracle_macroMovement": 0.9202,
+      "oracle_macroSpace": 0.8895
+    }
   },
   "schema_version": 1,
   "tags": [

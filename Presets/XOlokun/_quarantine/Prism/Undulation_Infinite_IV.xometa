@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Undulation Infinite IV",
   "parameters": {
-    "Osprey": {},
-    "Ottoni": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.404,
+      "osprey_macroCoupling": 0.62,
+      "osprey_macroMovement": 1.0,
+      "osprey_macroSpace": 0.828
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.326,
+      "otto_macroCoupling": 0.558,
+      "otto_macroMovement": 0.957,
+      "otto_macroSpace": 0.957
+    }
   },
   "schema_version": 1,
   "tags": [

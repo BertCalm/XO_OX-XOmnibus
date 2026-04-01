@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Candlelight Abyss",
   "parameters": {
-    "Onset": {},
-    "Ouroboros": {}
+    "Onset": {
+      "perc_macroCharacter": 0.88,
+      "perc_macroCoupling": 0.629,
+      "perc_macroMovement": 0.076,
+      "perc_macroSpace": 0.933
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.92,
+      "ouro_macroCoupling": 0.647,
+      "ouro_macroMovement": 0.062,
+      "ouro_macroSpace": 0.928
+    }
   },
   "schema_version": 1,
   "tags": [

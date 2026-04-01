@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE GEN... (Ole I)",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.498,
+      "ohm_macroCoupling": 0.524,
+      "ohm_macroMovement": 0.59,
+      "ohm_macroSpace": 0.084
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.519,
+      "ole_macroCoupling": 0.529,
+      "ole_macroMovement": 0.628,
+      "ole_macroSpace": 0.095
+    }
   },
   "schema_version": 1,
   "tags": [

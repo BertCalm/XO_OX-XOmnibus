@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Void Pulse (Oblique)",
   "parameters": {
-    "Oblique": {},
-    "Ole": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.687,
+      "oblq_macroCoupling": 0.505,
+      "oblq_macroMovement": 0.853,
+      "oblq_macroSpace": 0.251
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.908,
+      "ole_macroCoupling": 0.634,
+      "ole_macroMovement": 0.051,
+      "ole_macroSpace": 0.829
+    }
   },
   "schema_version": 1,
   "tags": [

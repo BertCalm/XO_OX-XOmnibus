@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Vapor Radiant II",
   "parameters": {
-    "Oracle": {},
+    "Oracle": {
+      "oracle_macroCharacter": 0.346,
+      "oracle_macroCoupling": 0.637,
+      "oracle_macroMovement": 0.323,
+      "oracle_macroSpace": 0.254
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.181,
+      "dub_macroCoupling": 0.321,
+      "dub_macroMovement": 0.445,
+      "dub_macroSpace": 0.282
     }
   },
   "schema_version": 1,

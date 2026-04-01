@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Glass Horizon 3",
   "parameters": {
-    "Opal": {},
-    "Overworld": {}
+    "Opal": {
+      "opal_macroCharacter": 0.7535,
+      "opal_macroCoupling": 0.7808,
+      "opal_macroMovement": 0.0519,
+      "opal_macroSpace": 0.8047
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.5614,
+      "ow_macroCoupling": 0.8261,
+      "ow_macroMovement": 0.0484,
+      "ow_macroSpace": 0.163
+    }
   },
   "schema_version": 1,
   "sequencer": null,

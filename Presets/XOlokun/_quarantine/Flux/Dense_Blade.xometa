@@ -39,8 +39,18 @@
   "mood": "Flux",
   "name": "Dense Blade",
   "parameters": {
-    "Obscura": {},
-    "Ombre": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.98,
+      "obscura_macroCoupling": 0.77,
+      "obscura_macroMovement": 0.96,
+      "obscura_macroSpace": 0.2
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.67,
+      "ombre_macroCoupling": 0.73,
+      "ombre_macroMovement": 0.9,
+      "ombre_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "sequencer": null,

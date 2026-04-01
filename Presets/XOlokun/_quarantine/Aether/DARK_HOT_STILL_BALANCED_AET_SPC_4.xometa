@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK HOT STILL BALANCED AET... (Oceanic I)",
   "parameters": {
-    "Oceanic": {},
-    "OddfeliX": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.491,
+      "ocean_macroCoupling": 0.657,
+      "ocean_macroMovement": 0.07,
+      "ocean_macroSpace": 0.649
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.465,
+      "snap_macroCoupling": 0.644,
+      "snap_macroMovement": 0.055,
+      "snap_macroSpace": 0.645
+    }
   },
   "schema_version": 1,
   "tags": [

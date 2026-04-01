@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "COLD DENSE VAST VIOLENT PRS... (Oblique II)",
   "parameters": {
-    "Oblique": {},
-    "Osteria": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.607,
+      "oblq_macroCoupling": 0.871,
+      "oblq_macroMovement": 0.58,
+      "oblq_macroSpace": 0.947
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.576,
+      "osteria_macroCoupling": 0.899,
+      "osteria_macroMovement": 0.562,
+      "osteria_macroSpace": 0.914
+    }
   },
   "schema_version": 1,
   "tags": [

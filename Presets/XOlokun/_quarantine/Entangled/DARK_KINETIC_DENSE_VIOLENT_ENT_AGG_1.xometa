@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Wave Surge",
   "parameters": {
-    "Ombre": {},
-    "Ottoni": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.667,
+      "ombre_macroCoupling": 0.911,
+      "ombre_macroMovement": 0.98,
+      "ombre_macroSpace": 0.499
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.373,
+      "otto_macroCoupling": 0.873,
+      "otto_macroMovement": 0.945,
+      "otto_macroSpace": 0.509
+    }
   },
   "schema_version": 1,
   "tags": [

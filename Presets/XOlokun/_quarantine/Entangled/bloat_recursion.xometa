@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Bloat Recursion",
   "parameters": {
-    "Obese": {},
-    "Ouroboros": {}
+    "Obese": {
+      "fat_macroCharacter": 0.5,
+      "fat_macroCoupling": 0.8,
+      "fat_macroMovement": 0.9,
+      "fat_macroSpace": 0.4
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.5,
+      "ouro_macroCoupling": 0.8,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "tags": [

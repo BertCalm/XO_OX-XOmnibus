@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Sunspot Tangle",
   "parameters": {
-    "Ohm": {},
-    "Origami": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.59,
+      "ohm_macroCoupling": 0.54,
+      "ohm_macroMovement": 0.47,
+      "ohm_macroSpace": 0.42
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.78,
+      "origami_macroCoupling": 0.73,
+      "origami_macroMovement": 0.46,
+      "origami_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "tags": [

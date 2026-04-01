@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "MELTDOWN 44",
   "parameters": {
-    "Orbital": {},
-    "Overworld": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.83,
+      "orb_macroCoupling": 0.554,
+      "orb_macroMovement": 0.913,
+      "orb_macroSpace": 0.586
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.989,
+      "ow_macroCoupling": 0.787,
+      "ow_macroMovement": 0.885,
+      "ow_macroSpace": 0.205
+    }
   },
   "schema_version": 1,
   "tags": [

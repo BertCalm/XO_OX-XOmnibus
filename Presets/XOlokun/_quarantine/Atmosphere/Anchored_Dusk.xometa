@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Anchored Dusk",
   "parameters": {
-    "Optic": {},
-    "Orbital": {}
+    "Optic": {
+      "optic_macroCharacter": 0.068,
+      "optic_macroCoupling": 0.11,
+      "optic_macroMovement": 0.257,
+      "optic_macroSpace": 0.11
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.068,
+      "orb_macroCoupling": 0.11,
+      "orb_macroMovement": 0.257,
+      "orb_macroSpace": 0.11
+    }
   },
   "schema_version": 1,
   "tags": [

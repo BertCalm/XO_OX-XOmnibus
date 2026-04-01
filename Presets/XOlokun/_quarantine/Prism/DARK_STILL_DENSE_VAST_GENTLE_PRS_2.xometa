@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Flux Dome",
   "parameters": {
-    "Oblique": {},
-    "Origami": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.088,
+      "oblq_macroCoupling": 0.906,
+      "oblq_macroMovement": 0.06,
+      "oblq_macroSpace": 0.884
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.094,
+      "origami_macroCoupling": 1.0,
+      "origami_macroMovement": 0.106,
+      "origami_macroSpace": 0.838
+    }
   },
   "schema_version": 1,
   "sequencer": null,

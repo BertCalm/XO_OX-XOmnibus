@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Arctic Obsidian",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.138,
+      "ocelot_macroCoupling": 0.474,
+      "ocelot_macroMovement": 0.491,
+      "ocelot_macroSpace": 0.249
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.074,
+      "poss_macroCoupling": 0.85,
+      "poss_macroMovement": 0.49,
+      "poss_macroSpace": 0.325
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,10 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.659,
+      "bob_macroCoupling": 0.346,
+      "bob_macroMovement": 0.864,
+      "bob_macroSpace": 0.802
     },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.235,
+      "dub_macroCoupling": 0.717,
+      "dub_macroMovement": 0.123,
+      "dub_macroSpace": 0.626
     }
   },
   "schema_version": 1,

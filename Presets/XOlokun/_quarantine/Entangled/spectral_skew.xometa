@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Spectral Skew",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.825,
+      "oblq_macroCoupling": 0.675,
+      "oblq_macroMovement": 0.775,
+      "oblq_macroSpace": 0.575
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.475,
+      "optic_macroCoupling": 0.575,
+      "optic_macroMovement": 0.425,
+      "optic_macroSpace": 0.475
+    }
   },
   "schema_version": 1,
   "tags": [

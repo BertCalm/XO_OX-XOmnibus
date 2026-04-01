@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK COLD KINETIC VIOLENT A... (Orbital II)",
   "parameters": {
-    "Orbital": {},
-    "Organon": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.064,
+      "orb_macroCoupling": 0.835,
+      "orb_macroMovement": 0.857,
+      "orb_macroSpace": 0.483
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.065,
+      "organon_macroCoupling": 0.886,
+      "organon_macroMovement": 0.831,
+      "organon_macroSpace": 0.492
+    }
   },
   "schema_version": 1,
   "tags": [

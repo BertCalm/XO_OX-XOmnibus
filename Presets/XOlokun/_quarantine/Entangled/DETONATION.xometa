@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DETONATION",
   "parameters": {
-    "Obbligato": {},
-    "Obsidian": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.107,
+      "obbl_macroCoupling": 0.134,
+      "obbl_macroMovement": 0.909,
+      "obbl_macroSpace": 0.264
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.366,
+      "obsidian_macroCoupling": 0.403,
+      "obsidian_macroMovement": 0.881,
+      "obsidian_macroSpace": 0.045
+    }
   },
   "schema_version": 1,
   "tags": [

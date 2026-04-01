@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Swollen Prophecy",
   "parameters": {
-    "Obese": {},
-    "Oracle": {}
+    "Obese": {
+      "fat_macroCharacter": 0.3,
+      "fat_macroCoupling": 0.9,
+      "fat_macroMovement": 0.5,
+      "fat_macroSpace": 0.3
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.7,
+      "oracle_macroCoupling": 0.8,
+      "oracle_macroMovement": 0.5,
+      "oracle_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "tags": [

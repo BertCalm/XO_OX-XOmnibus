@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Afro Attractor",
   "parameters": {
-    "Ole": {},
-    "Ouroboros": {}
+    "Ole": {
+      "ole_macroCharacter": 0.72,
+      "ole_macroCoupling": 0.7,
+      "ole_macroMovement": 0.62,
+      "ole_macroSpace": 0.36
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.58,
+      "ouro_macroCoupling": 0.7,
+      "ouro_macroMovement": 0.75,
+      "ouro_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "sequencer": null,

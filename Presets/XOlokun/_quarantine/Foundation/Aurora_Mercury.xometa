@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Aurora Mercury",
   "parameters": {
-    "Onset": {},
-    "Overworld": {}
+    "Onset": {
+      "perc_macroCharacter": 0.673,
+      "perc_macroCoupling": 0.689,
+      "perc_macroMovement": 0.252,
+      "perc_macroSpace": 0.8
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.202,
+      "ow_macroCoupling": 0.699,
+      "ow_macroMovement": 0.839,
+      "ow_macroSpace": 0.159
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Prism Blade",
   "parameters": {
-    "OddfeliX": {},
-    "Ole": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.744,
+      "snap_macroCoupling": 0.874,
+      "snap_macroMovement": 0.894,
+      "snap_macroSpace": 0.55
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.752,
+      "ole_macroCoupling": 0.859,
+      "ole_macroMovement": 0.858,
+      "ole_macroSpace": 0.597
+    }
   },
   "schema_version": 1,
   "tags": [

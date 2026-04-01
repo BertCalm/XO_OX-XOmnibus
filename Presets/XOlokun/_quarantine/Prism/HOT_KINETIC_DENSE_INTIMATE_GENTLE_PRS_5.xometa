@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Dusk Molten",
   "parameters": {
-    "Oracle": {},
-    "Orphica": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.466,
+      "oracle_macroCoupling": 1.0,
+      "oracle_macroMovement": 0.981,
+      "oracle_macroSpace": 0.049
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.331,
+      "orph_macroCoupling": 1.0,
+      "orph_macroMovement": 0.859,
+      "orph_macroSpace": 0.106
+    }
   },
   "schema_version": 1,
   "sequencer": null,

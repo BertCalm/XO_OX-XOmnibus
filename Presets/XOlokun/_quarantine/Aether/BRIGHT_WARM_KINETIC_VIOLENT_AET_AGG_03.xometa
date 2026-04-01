@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC VIOLENT... (Oracle I)",
   "parameters": {
-    "Oracle": {},
-    "Osprey": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.932,
+      "oracle_macroCoupling": 0.911,
+      "oracle_macroMovement": 0.816,
+      "oracle_macroSpace": 0.634
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.896,
+      "osprey_macroCoupling": 0.857,
+      "osprey_macroMovement": 0.857,
+      "osprey_macroSpace": 0.655
+    }
   },
   "schema_version": 1,
   "tags": [

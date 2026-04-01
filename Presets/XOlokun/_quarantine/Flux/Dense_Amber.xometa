@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Dense Amber",
   "parameters": {
-    "Oracle": {},
-    "Overworld": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.0628,
+      "oracle_macroCoupling": 0.7567,
+      "oracle_macroMovement": 0.5788,
+      "oracle_macroSpace": 0.2945
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.2079,
+      "ow_macroCoupling": 0.7345,
+      "ow_macroMovement": 0.5981,
+      "ow_macroSpace": 0.2403
+    }
   },
   "schema_version": 1,
   "tags": [

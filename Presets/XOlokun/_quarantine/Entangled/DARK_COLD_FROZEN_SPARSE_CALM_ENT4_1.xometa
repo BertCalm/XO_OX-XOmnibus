@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Node Vast 2",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.054,
+      "snap_macroCoupling": 0.032,
+      "snap_macroMovement": 0.057,
+      "snap_macroSpace": 0.551
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.09,
+      "osprey_macroCoupling": 0.078,
+      "osprey_macroMovement": 0.069,
+      "osprey_macroSpace": 0.528
+    }
   },
   "schema_version": 1,
   "tags": [

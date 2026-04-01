@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HARMONIC FRACTURE 61",
   "parameters": {
-    "Obese": {},
-    "Ocelot": {}
+    "Obese": {
+      "fat_macroCharacter": 0.252,
+      "fat_macroCoupling": 0.082,
+      "fat_macroMovement": 0.955,
+      "fat_macroSpace": 0.019
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.539,
+      "ocelot_macroCoupling": 1.0,
+      "ocelot_macroMovement": 0.963,
+      "ocelot_macroSpace": 0.35
+    }
   },
   "schema_version": 1,
   "tags": [

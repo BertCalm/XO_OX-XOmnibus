@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Maqam Brass",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.58,
+      "oracle_macroCoupling": 0.58,
+      "oracle_macroMovement": 0.6,
+      "oracle_macroSpace": 0.58
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.62,
+      "otto_macroCoupling": 0.58,
+      "otto_macroMovement": 0.52,
+      "otto_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "sequencer": null,

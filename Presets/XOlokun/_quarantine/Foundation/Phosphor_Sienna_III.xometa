@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Phosphor Sienna III",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.96,
+      "ocelot_macroCoupling": 0.89,
+      "ocelot_macroMovement": 0.6,
+      "ocelot_macroSpace": 0.25
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.74,
+      "poss_macroCoupling": 0.86,
+      "poss_macroMovement": 0.91,
+      "poss_macroSpace": 0.43
+    }
   },
   "schema_version": 1,
   "sequencer": null,

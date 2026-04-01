@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Monolith Arctic",
   "parameters": {
-    "Obbligato": {},
-    "Osteria": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.259,
+      "obbl_macroCoupling": 0.093,
+      "obbl_macroMovement": 0.044,
+      "obbl_macroSpace": 0.105
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.259,
+      "osteria_macroCoupling": 0.093,
+      "osteria_macroMovement": 0.044,
+      "osteria_macroSpace": 0.105
+    }
   },
   "schema_version": 1,
   "tags": [

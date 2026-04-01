@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Harp Ouroboros",
   "parameters": {
-    "Orphica": {},
-    "Ouroboros": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.7,
+      "orph_macroCoupling": 0.7,
+      "orph_macroMovement": 0.56,
+      "orph_macroSpace": 0.72
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroCoupling": 0.65,
+      "ouro_macroMovement": 0.64,
+      "ouro_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "tags": [

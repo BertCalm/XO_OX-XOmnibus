@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Prismatic Thin",
   "parameters": {
-    "OddOscar": {},
-    "Organon": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.352,
+      "morph_macroCoupling": 0.692,
+      "morph_macroMovement": 0.251,
+      "morph_macroSpace": 0.9
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.752,
+      "organon_macroCoupling": 0.654,
+      "organon_macroMovement": 0.099,
+      "organon_macroSpace": 0.848
+    }
   },
   "schema_version": 1,
   "tags": [

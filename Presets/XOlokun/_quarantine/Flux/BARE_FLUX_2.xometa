@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "BARE FLUX 2",
   "parameters": {
-    "Obscura": {},
-    "Optic": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.8555,
+      "obscura_macroCoupling": 0.6857,
+      "obscura_macroMovement": 0.0994,
+      "obscura_macroSpace": 0.5445
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.0327,
+      "optic_macroCoupling": 0.4434,
+      "optic_macroMovement": 0.3705,
+      "optic_macroSpace": 0.9506
+    }
   },
   "schema_version": 1,
   "tags": [

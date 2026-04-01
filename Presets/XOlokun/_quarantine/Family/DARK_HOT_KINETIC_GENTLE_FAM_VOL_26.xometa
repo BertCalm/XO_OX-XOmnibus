@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Mahogany Ripple",
   "parameters": {
-    "Obbligato": {},
-    "Ohm": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.49,
+      "obbl_macroCoupling": 0.326,
+      "obbl_macroMovement": 0.962,
+      "obbl_macroSpace": 0.531
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.497,
+      "ohm_macroCoupling": 0.365,
+      "ohm_macroMovement": 0.969,
+      "ohm_macroSpace": 0.512
+    }
   },
   "schema_version": 1,
   "tags": [

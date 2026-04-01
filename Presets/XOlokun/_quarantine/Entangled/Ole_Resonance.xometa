@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Ole Resonance",
   "parameters": {
-    "Ole": {},
-    "Ouroboros": {}
+    "Ole": {
+      "ole_macroCharacter": 0.8,
+      "ole_macroCoupling": 0.8,
+      "ole_macroMovement": 0.72,
+      "ole_macroSpace": 0.36
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.72,
+      "ouro_macroCoupling": 0.75,
+      "ouro_macroMovement": 0.76,
+      "ouro_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "tags": [

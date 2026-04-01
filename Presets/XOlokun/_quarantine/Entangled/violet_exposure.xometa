@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Violet Exposure II",
   "parameters": {
-    "Oblique": {},
-    "Obscura": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.775,
+      "oblq_macroCoupling": 0.625,
+      "oblq_macroMovement": 0.725,
+      "oblq_macroSpace": 0.525
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.375,
+      "obscura_macroCoupling": 0.575,
+      "obscura_macroMovement": 0.275,
+      "obscura_macroSpace": 0.625
+    }
   },
   "schema_version": 1,
   "tags": [

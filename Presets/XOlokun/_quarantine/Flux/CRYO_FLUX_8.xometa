@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "CRYO FLUX 8",
   "parameters": {
-    "Octopus": {},
-    "Origami": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.1214,
+      "octo_macroCoupling": 0.6089,
+      "octo_macroMovement": 0.9731,
+      "octo_macroSpace": 0.2393
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.5492,
+      "origami_macroCoupling": 0.4381,
+      "origami_macroMovement": 0.9277,
+      "origami_macroSpace": 0.6983
+    }
   },
   "schema_version": 1,
   "tags": [

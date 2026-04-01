@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Solid Silent",
   "parameters": {
-    "OddfeliX": {},
-    "Overlap": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.75,
+      "snap_macroCoupling": 0.527,
+      "snap_macroMovement": 0.085,
+      "snap_macroSpace": 0.454
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.601,
+      "olap_macroCoupling": 0.766,
+      "olap_macroMovement": 0.213,
+      "olap_macroSpace": 0.52
+    }
   },
   "schema_version": 1,
   "tags": [

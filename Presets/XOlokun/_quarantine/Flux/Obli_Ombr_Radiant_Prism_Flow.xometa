@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oblique": {},
-    "Ombre": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.63,
+      "oblq_macroMovement": 0.74,
+      "oblq_macroCoupling": 0.59,
+      "oblq_macroSpace": 0.42
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.84,
+      "ombre_macroMovement": 0.67,
+      "ombre_macroCoupling": 0.69,
+      "ombre_macroSpace": 0.13
+    }
   },
   "coupling": {
     "type": "FM_CROSS",

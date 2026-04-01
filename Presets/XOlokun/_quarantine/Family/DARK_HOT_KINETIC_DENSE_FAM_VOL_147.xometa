@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Velvet Packed 2",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.488,
+      "ohm_macroCoupling": 0.774,
+      "ohm_macroMovement": 0.898,
+      "ohm_macroSpace": 0.474
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.502,
+      "otto_macroCoupling": 0.765,
+      "otto_macroMovement": 0.899,
+      "otto_macroSpace": 0.444
+    }
   },
   "schema_version": 1,
   "tags": [

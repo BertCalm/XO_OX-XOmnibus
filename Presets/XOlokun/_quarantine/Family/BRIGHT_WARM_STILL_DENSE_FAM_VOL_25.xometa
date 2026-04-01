@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Solar Saturated 2",
   "parameters": {
-    "Obbligato": {},
-    "OddfeliX": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.913,
+      "obbl_macroCoupling": 0.817,
+      "obbl_macroMovement": 0.088,
+      "obbl_macroSpace": 0.462
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.921,
+      "snap_macroCoupling": 0.804,
+      "snap_macroMovement": 0.102,
+      "snap_macroSpace": 0.423
+    }
   },
   "schema_version": 1,
   "tags": [

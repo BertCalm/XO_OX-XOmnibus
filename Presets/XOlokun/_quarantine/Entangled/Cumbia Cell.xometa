@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Cumbia Cell",
   "parameters": {
-    "Ole": {},
-    "Organon": {}
+    "Ole": {
+      "ole_macroCharacter": 0.7,
+      "ole_macroCoupling": 0.65,
+      "ole_macroMovement": 0.6,
+      "ole_macroSpace": 0.38
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.65,
+      "organon_macroMovement": 0.72,
+      "organon_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "sequencer": null,

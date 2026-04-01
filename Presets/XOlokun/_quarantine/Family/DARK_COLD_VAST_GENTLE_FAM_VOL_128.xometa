@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Shard Dome",
   "parameters": {
-    "Orphica": {},
-    "Osteria": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.068,
+      "orph_macroCoupling": 0.259,
+      "orph_macroMovement": 0.709,
+      "orph_macroSpace": 0.927
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.067,
+      "osteria_macroCoupling": 0.222,
+      "osteria_macroMovement": 0.707,
+      "osteria_macroSpace": 0.925
+    }
   },
   "schema_version": 1,
   "tags": [

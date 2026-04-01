@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Halo Packed",
   "parameters": {
-    "Obscura": {},
-    "Osprey": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.8888,
+      "obscura_macroCoupling": 0.99,
+      "obscura_macroMovement": 0.4849,
+      "obscura_macroSpace": 0.0572
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9167,
+      "osprey_macroCoupling": 0.9579,
+      "osprey_macroMovement": 0.4202,
+      "osprey_macroSpace": 0.0763
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "FROZEN FLUX 2",
   "parameters": {
-    "Oblique": {},
-    "Ombre": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.9264,
+      "oblq_macroCoupling": 0.1663,
+      "oblq_macroMovement": 0.8487,
+      "oblq_macroSpace": 0.4856
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.0506,
+      "ombre_macroCoupling": 0.836,
+      "ombre_macroMovement": 0.9993,
+      "ombre_macroSpace": 0.969
+    }
   },
   "schema_version": 1,
   "tags": [

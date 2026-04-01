@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Tone Crush 2",
   "parameters": {
-    "Obese": {},
-    "Ouroboros": {}
+    "Obese": {
+      "fat_macroCharacter": 0.603,
+      "fat_macroCoupling": 0.894,
+      "fat_macroMovement": 0.534,
+      "fat_macroSpace": 0.081
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.564,
+      "ouro_macroCoupling": 0.888,
+      "ouro_macroMovement": 0.528,
+      "ouro_macroSpace": 0.062
+    }
   },
   "schema_version": 1,
   "tags": [

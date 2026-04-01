@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "ERUPTION",
   "parameters": {
-    "Obscura": {},
-    "Overlap": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.722,
+      "obscura_macroCoupling": 0.777,
+      "obscura_macroMovement": 0.914,
+      "obscura_macroSpace": 0.568
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.085,
+      "olap_macroCoupling": 0.053,
+      "olap_macroMovement": 0.917,
+      "olap_macroSpace": 0.157
+    }
   },
   "schema_version": 1,
   "tags": [

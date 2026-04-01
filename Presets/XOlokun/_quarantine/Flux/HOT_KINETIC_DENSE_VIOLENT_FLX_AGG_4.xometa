@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Phase Grit 2",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.668,
+      "oblq_macroCoupling": 0.77,
+      "oblq_macroMovement": 0.939,
+      "oblq_macroSpace": 0.501
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.418,
+      "ow_macroCoupling": 0.806,
+      "ow_macroMovement": 0.882,
+      "ow_macroSpace": 0.462
+    }
   },
   "schema_version": 1,
   "tags": [

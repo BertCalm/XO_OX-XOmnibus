@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Sunrise Crush",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.366,
+      "drift_macroCoupling": 0.79,
+      "drift_macroMovement": 0.902,
+      "drift_macroSpace": 0.322
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.511,
+      "organon_macroCoupling": 0.759,
+      "organon_macroMovement": 0.967,
+      "organon_macroSpace": 0.36
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,7 +39,11 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.81,
+      "bob_macroCoupling": 0.68,
+      "bob_macroMovement": 0.52,
+      "bob_macroSpace": 0.32
     },
     "Osprey": {
       "osprey_macroCharacter": 0.68,

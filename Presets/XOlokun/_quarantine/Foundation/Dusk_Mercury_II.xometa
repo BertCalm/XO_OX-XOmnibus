@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Dusk Mercury II",
   "parameters": {
-    "Obese": {},
-    "OddOscar": {}
+    "Obese": {
+      "fat_macroCharacter": 0.885,
+      "fat_macroCoupling": 0.612,
+      "fat_macroMovement": 0.655,
+      "fat_macroSpace": 0.255
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.352,
+      "morph_macroCoupling": 0.166,
+      "morph_macroMovement": 0.136,
+      "morph_macroSpace": 0.547
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Ripple Charcoal II",
   "parameters": {
-    "Osteria": {},
-    "Ottoni": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.732,
+      "osteria_macroCoupling": 0.532,
+      "osteria_macroMovement": 0.968,
+      "osteria_macroSpace": 0.946
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.27,
+      "otto_macroCoupling": 0.851,
+      "otto_macroMovement": 0.968,
+      "otto_macroSpace": 0.946
+    }
   },
   "schema_version": 1,
   "tags": [

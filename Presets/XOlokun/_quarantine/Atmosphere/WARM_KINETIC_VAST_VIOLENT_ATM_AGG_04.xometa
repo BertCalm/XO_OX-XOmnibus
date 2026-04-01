@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "WARM KINETIC VAST VIOLENT A... (Optic I)",
   "parameters": {
-    "Optic": {},
-    "Osprey": {}
+    "Optic": {
+      "optic_macroCharacter": 0.497,
+      "optic_macroCoupling": 0.859,
+      "optic_macroMovement": 0.864,
+      "optic_macroSpace": 0.9
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.515,
+      "osprey_macroCoupling": 0.854,
+      "osprey_macroMovement": 0.889,
+      "osprey_macroSpace": 0.871
+    }
   },
   "schema_version": 1,
   "tags": [

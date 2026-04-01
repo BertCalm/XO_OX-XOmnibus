@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Cocoa Pulse",
   "parameters": {
-    "OddfeliX": {},
-    "Orphica": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.511,
+      "snap_macroCoupling": 0.464,
+      "snap_macroMovement": 0.943,
+      "snap_macroSpace": 0.892
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.521,
+      "orph_macroCoupling": 0.426,
+      "orph_macroMovement": 0.943,
+      "orph_macroSpace": 0.864
+    }
   },
   "schema_version": 1,
   "tags": [

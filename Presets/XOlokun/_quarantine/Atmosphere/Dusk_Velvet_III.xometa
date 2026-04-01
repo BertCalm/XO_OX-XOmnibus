@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Dusk Velvet III",
   "parameters": {
-    "OddfeliX": {},
-    "Orbital": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.382,
+      "snap_macroCoupling": 0.602,
+      "snap_macroMovement": 0.557,
+      "snap_macroSpace": 0.923
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.707,
+      "orb_macroCoupling": 0.823,
+      "orb_macroMovement": 0.528,
+      "orb_macroSpace": 0.915
+    }
   },
   "schema_version": 1,
   "tags": [

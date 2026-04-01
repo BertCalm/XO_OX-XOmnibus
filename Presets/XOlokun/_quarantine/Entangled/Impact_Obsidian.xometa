@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Impact Obsidian",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.082,
+      "ocelot_macroCoupling": 0.817,
+      "ocelot_macroMovement": 0.657,
+      "ocelot_macroSpace": 0.348
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.085,
+      "poss_macroCoupling": 0.443,
+      "poss_macroMovement": 0.58,
+      "poss_macroSpace": 0.304
+    }
   },
   "schema_version": 1,
   "tags": [

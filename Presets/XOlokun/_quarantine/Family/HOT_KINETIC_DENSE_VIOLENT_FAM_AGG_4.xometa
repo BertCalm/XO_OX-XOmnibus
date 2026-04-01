@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Honey Cascade",
   "parameters": {
-    "Ole": {},
-    "Osprey": {}
+    "Ole": {
+      "ole_macroCharacter": 0.846,
+      "ole_macroCoupling": 0.788,
+      "ole_macroMovement": 0.589,
+      "ole_macroSpace": 0.538
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.827,
+      "osprey_macroCoupling": 0.833,
+      "osprey_macroMovement": 0.564,
+      "osprey_macroSpace": 0.557
+    }
   },
   "schema_version": 1,
   "tags": [

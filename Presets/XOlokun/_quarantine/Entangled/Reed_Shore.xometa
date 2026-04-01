@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Reed Shore",
   "parameters": {
-    "Organon": {},
-    "Osprey": {}
+    "Organon": {
+      "organon_macroCharacter": 0.86,
+      "organon_macroCoupling": 0.72,
+      "organon_macroMovement": 0.47,
+      "organon_macroSpace": 0.61
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.87,
+      "osprey_macroCoupling": 0.64,
+      "osprey_macroMovement": 0.37,
+      "osprey_macroSpace": 0.51
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Mahogany Glint",
   "parameters": {
-    "Orbital": {},
-    "Orphica": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.941,
+      "orb_macroCoupling": 0.585,
+      "orb_macroMovement": 0.65,
+      "orb_macroSpace": 0.457
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.944,
+      "orph_macroCoupling": 0.607,
+      "orph_macroMovement": 0.678,
+      "orph_macroSpace": 0.597
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 7",
   "parameters": {
-    "Oceanic": {},
-    "Osteria": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.8011,
+      "ocean_macroCoupling": 0.9528,
+      "ocean_macroMovement": 0.6794,
+      "ocean_macroSpace": 0.1428
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.6076,
+      "osteria_macroCoupling": 0.0348,
+      "osteria_macroMovement": 0.7813,
+      "osteria_macroSpace": 0.0672
+    }
   },
   "schema_version": 1,
   "tags": [

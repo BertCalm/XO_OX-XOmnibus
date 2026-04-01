@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Glow Dense",
   "parameters": {
-    "Oceanic": {},
-    "Osprey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.99,
+      "ocean_macroCoupling": 0.5731,
+      "ocean_macroMovement": 0.5244,
+      "ocean_macroSpace": 0.0101
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9727,
+      "osprey_macroCoupling": 0.5957,
+      "osprey_macroMovement": 0.5032,
+      "osprey_macroSpace": 0.0651
+    }
   },
   "schema_version": 1,
   "tags": [

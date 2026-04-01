@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM DENSE INTIMATE ... (Osteria I)",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.885,
+      "ole_macroCoupling": 0.541,
+      "ole_macroMovement": 0.44,
+      "ole_macroSpace": 0.2
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.914,
+      "osteria_macroCoupling": 0.521,
+      "osteria_macroMovement": 0.404,
+      "osteria_macroSpace": 0.129
+    }
   },
   "schema_version": 1,
   "tags": [

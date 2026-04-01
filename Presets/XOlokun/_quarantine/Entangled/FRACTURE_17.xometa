@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "FRACTURE 17",
   "parameters": {
-    "Obsidian": {},
-    "Owlfish": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.607,
+      "obsidian_macroCoupling": 0.748,
+      "obsidian_macroMovement": 0.902,
+      "obsidian_macroSpace": 0.115
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.699,
+      "owl_macroCoupling": 0.767,
+      "owl_macroMovement": 0.936,
+      "owl_macroSpace": 0.168
+    }
   },
   "schema_version": 1,
   "tags": [

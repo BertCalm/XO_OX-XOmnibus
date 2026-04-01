@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Crystal Edge",
   "parameters": {
-    "Origami": {},
-    "Overworld": {}
+    "Origami": {
+      "origami_macroCharacter": 0.374,
+      "origami_macroCoupling": 0.758,
+      "origami_macroMovement": 0.893,
+      "origami_macroSpace": 0.277
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.377,
+      "ow_macroCoupling": 0.735,
+      "ow_macroMovement": 0.953,
+      "ow_macroSpace": 0.266
+    }
   },
   "schema_version": 1,
   "tags": [

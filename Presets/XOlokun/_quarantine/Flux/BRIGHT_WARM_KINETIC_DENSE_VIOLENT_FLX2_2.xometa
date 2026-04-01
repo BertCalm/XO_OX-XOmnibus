@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Bloom Edge",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.9221,
+      "oblq_macroCoupling": 0.9097,
+      "oblq_macroMovement": 0.9054,
+      "oblq_macroSpace": 0.4307
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.9255,
+      "optic_macroCoupling": 0.8688,
+      "optic_macroMovement": 0.8782,
+      "optic_macroSpace": 0.4189
+    }
   },
   "schema_version": 1,
   "tags": [

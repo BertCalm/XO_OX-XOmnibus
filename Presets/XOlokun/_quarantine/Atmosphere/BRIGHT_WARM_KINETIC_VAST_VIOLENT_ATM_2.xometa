@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Golden Dome",
   "parameters": {
-    "Obscura": {},
-    "Osprey": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.9303,
+      "obscura_macroCoupling": 0.5148,
+      "obscura_macroMovement": 0.9427,
+      "obscura_macroSpace": 0.9133
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9472,
+      "osprey_macroCoupling": 0.5191,
+      "osprey_macroMovement": 0.9148,
+      "osprey_macroSpace": 0.9272
+    }
   },
   "schema_version": 1,
   "tags": [

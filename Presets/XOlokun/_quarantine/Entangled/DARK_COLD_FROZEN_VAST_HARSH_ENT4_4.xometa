@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Flux Rage 2",
   "parameters": {
-    "OddOscar": {},
-    "Ohm": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.083,
+      "morph_macroCoupling": 0.562,
+      "morph_macroMovement": 0.084,
+      "morph_macroSpace": 0.857
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.067,
+      "ohm_macroCoupling": 0.561,
+      "ohm_macroMovement": 0.075,
+      "ohm_macroSpace": 0.884
+    }
   },
   "schema_version": 1,
   "tags": [

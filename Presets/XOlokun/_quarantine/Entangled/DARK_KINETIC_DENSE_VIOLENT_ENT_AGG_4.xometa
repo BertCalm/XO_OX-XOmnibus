@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Tone Force 2",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.63,
+      "orph_macroCoupling": 0.837,
+      "orph_macroMovement": 0.954,
+      "orph_macroSpace": 0.392
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.42,
+      "otto_macroCoupling": 0.837,
+      "otto_macroMovement": 0.879,
+      "otto_macroSpace": 0.349
+    }
   },
   "schema_version": 1,
   "tags": [

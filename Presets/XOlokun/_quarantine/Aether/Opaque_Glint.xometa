@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Opaque Glint",
   "parameters": {
-    "Orbital": {},
-    "Overworld": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.4572,
+      "orb_macroCoupling": 0.8397,
+      "orb_macroMovement": 0.7156,
+      "orb_macroSpace": 0.5791
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.3883,
+      "ow_macroCoupling": 0.2381,
+      "ow_macroMovement": 0.8811,
+      "ow_macroSpace": 0.6757
+    }
   },
   "schema_version": 1,
   "tags": [

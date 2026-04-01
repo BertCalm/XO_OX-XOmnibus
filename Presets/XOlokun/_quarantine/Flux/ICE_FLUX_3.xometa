@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "ICE FLUX 3",
   "parameters": {
-    "Obscura": {},
-    "Orphica": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.8809,
+      "obscura_macroCoupling": 0.3695,
+      "obscura_macroMovement": 0.8793,
+      "obscura_macroSpace": 0.1577
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.8337,
+      "orph_macroCoupling": 0.6117,
+      "orph_macroMovement": 0.7035,
+      "orph_macroSpace": 0.9872
+    }
   },
   "schema_version": 1,
   "tags": [

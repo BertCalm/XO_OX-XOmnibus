@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Layered Monolith",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.927,
+      "drift_macroCoupling": 0.746,
+      "drift_macroMovement": 0.036,
+      "drift_macroSpace": 0.742
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.822,
+      "opal_macroCoupling": 0.848,
+      "opal_macroMovement": 0.036,
+      "opal_macroSpace": 0.707
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Mahogany Strike",
   "parameters": {
-    "Ombre": {},
-    "Oracle": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.444,
+      "ombre_macroCoupling": 0.821,
+      "ombre_macroMovement": 0.925,
+      "ombre_macroSpace": 0.551
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.664,
+      "oracle_macroCoupling": 0.807,
+      "oracle_macroMovement": 0.984,
+      "oracle_macroSpace": 0.584
+    }
   },
   "schema_version": 1,
   "tags": [

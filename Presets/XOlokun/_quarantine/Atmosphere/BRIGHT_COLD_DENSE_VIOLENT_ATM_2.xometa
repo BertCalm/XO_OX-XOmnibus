@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Mirror Edge",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.495,
+      "snap_macroCoupling": 0.857,
+      "snap_macroMovement": 0.378,
+      "snap_macroSpace": 0.643
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.4,
+      "origami_macroCoupling": 0.708,
+      "origami_macroMovement": 0.476,
+      "origami_macroSpace": 0.53
+    }
   },
   "schema_version": 1,
   "tags": [

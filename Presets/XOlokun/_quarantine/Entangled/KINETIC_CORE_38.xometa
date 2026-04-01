@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "KINETIC CORE 38",
   "parameters": {
-    "Oblique": {},
-    "Odyssey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.288,
+      "oblq_macroCoupling": 0.881,
+      "oblq_macroMovement": 0.907,
+      "oblq_macroSpace": 0.485
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.029,
+      "drift_macroCoupling": 0.63,
+      "drift_macroMovement": 0.893,
+      "drift_macroSpace": 0.799
+    }
   },
   "schema_version": 1,
   "tags": [

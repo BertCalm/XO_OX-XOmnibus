@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Penumbra Slash",
   "parameters": {
-    "Oceanic": {},
-    "Outwit": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.007,
+      "ocean_macroCoupling": 0.614,
+      "ocean_macroMovement": 0.589,
+      "ocean_macroSpace": 0.694
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.052,
+      "owit_macroCoupling": 0.884,
+      "owit_macroMovement": 0.566,
+      "owit_macroSpace": 0.647
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Golden Pulse",
   "parameters": {
-    "Onset": {},
+    "Onset": {
+      "perc_macroCharacter": 0.726,
+      "perc_macroCoupling": 0.603,
+      "perc_macroMovement": 0.825,
+      "perc_macroSpace": 0.388
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.714,
+      "dub_macroCoupling": 0.606,
+      "dub_macroMovement": 0.875,
+      "dub_macroSpace": 0.435
     }
   },
   "schema_version": 1,

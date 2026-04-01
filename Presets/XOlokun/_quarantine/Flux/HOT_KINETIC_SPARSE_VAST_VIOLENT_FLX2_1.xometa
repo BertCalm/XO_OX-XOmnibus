@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Rust Ripple",
   "parameters": {
-    "Oceanic": {},
-    "Opal": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.6649,
+      "ocean_macroCoupling": 0.1303,
+      "ocean_macroMovement": 0.99,
+      "ocean_macroSpace": 0.99
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.688,
+      "opal_macroCoupling": 0.1268,
+      "opal_macroMovement": 0.99,
+      "opal_macroSpace": 0.9866
+    }
   },
   "schema_version": 1,
   "tags": [

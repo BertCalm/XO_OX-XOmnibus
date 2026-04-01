@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Mercury Dusk III",
   "parameters": {
-    "Obbligato": {},
-    "Origami": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.036,
+      "obbl_macroCoupling": 0.86,
+      "obbl_macroMovement": 0.43,
+      "obbl_macroSpace": 0.547
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.139,
+      "origami_macroCoupling": 0.471,
+      "origami_macroMovement": 0.353,
+      "origami_macroSpace": 0.554
+    }
   },
   "schema_version": 1,
   "tags": [

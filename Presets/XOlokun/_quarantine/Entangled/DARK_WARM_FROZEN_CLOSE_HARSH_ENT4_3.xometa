@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Velvet Storm 2",
   "parameters": {
-    "OddfeliX": {},
-    "Osteria": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.488,
+      "snap_macroCoupling": 0.373,
+      "snap_macroMovement": 0.078,
+      "snap_macroSpace": 0.115
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.482,
+      "osteria_macroCoupling": 0.41,
+      "osteria_macroMovement": 0.073,
+      "osteria_macroSpace": 0.089
+    }
   },
   "schema_version": 1,
   "tags": [

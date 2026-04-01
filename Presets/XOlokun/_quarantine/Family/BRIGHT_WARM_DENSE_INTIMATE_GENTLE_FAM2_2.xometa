@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM DENSE INTIMATE ... (Orphica)",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.837,
+      "ole_macroCoupling": 0.534,
+      "ole_macroMovement": 0.209,
+      "ole_macroSpace": 0.2
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.871,
+      "orph_macroCoupling": 0.524,
+      "orph_macroMovement": 0.287,
+      "orph_macroSpace": 0.136
+    }
   },
   "schema_version": 1,
   "tags": [

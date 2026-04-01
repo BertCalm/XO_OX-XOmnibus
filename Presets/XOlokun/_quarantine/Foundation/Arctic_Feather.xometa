@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Arctic Feather",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.783,
+      "morph_macroCoupling": 0.796,
+      "morph_macroMovement": 0.82,
+      "morph_macroSpace": 0.239
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.505,
+      "ouro_macroCoupling": 0.3,
+      "ouro_macroMovement": 0.848,
+      "ouro_macroSpace": 0.538
+    }
   },
   "schema_version": 1,
   "tags": [

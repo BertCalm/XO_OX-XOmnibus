@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Skin Contact",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.448,
+      "organon_macroCoupling": 0.472,
+      "organon_macroMovement": 0.404,
+      "organon_macroSpace": 0.102
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.335,
+      "origami_macroCoupling": 0.195,
+      "origami_macroMovement": 0.288,
+      "origami_macroSpace": 0.078
+    }
   },
   "schema_version": 1,
   "tags": [

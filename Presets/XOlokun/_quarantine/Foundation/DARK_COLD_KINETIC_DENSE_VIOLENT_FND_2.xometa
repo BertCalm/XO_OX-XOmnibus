@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Node Cascade",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.067,
+      "morph_macroCoupling": 0.946,
+      "morph_macroMovement": 1.0,
+      "morph_macroSpace": 0.409
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.122,
+      "ouro_macroCoupling": 0.774,
+      "ouro_macroMovement": 1.0,
+      "ouro_macroSpace": 0.283
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Solid Brass III",
   "parameters": {
-    "Oblique": {},
-    "Obsidian": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.893,
+      "oblq_macroCoupling": 0.585,
+      "oblq_macroMovement": 0.406,
+      "oblq_macroSpace": 0.652
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.993,
+      "obsidian_macroCoupling": 0.513,
+      "obsidian_macroMovement": 0.467,
+      "obsidian_macroSpace": 0.798
+    }
   },
   "schema_version": 1,
   "tags": [

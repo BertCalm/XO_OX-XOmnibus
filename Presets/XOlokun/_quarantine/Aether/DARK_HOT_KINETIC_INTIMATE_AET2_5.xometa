@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Cocoa Drift",
   "parameters": {
-    "Oceanic": {},
-    "Origami": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.0931,
+      "ocean_macroCoupling": 0.3558,
+      "ocean_macroMovement": 0.9414,
+      "ocean_macroSpace": 0.069
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.0716,
+      "origami_macroCoupling": 0.3187,
+      "origami_macroMovement": 0.99,
+      "origami_macroSpace": 0.1261
+    }
   },
   "schema_version": 1,
   "tags": [

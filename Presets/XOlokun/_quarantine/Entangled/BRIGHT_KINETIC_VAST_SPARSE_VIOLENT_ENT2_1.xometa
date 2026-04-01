@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
-    "Ole": {},
-    "Origami": {}
+    "Ole": {
+      "ole_macroCharacter": 0.616,
+      "ole_macroCoupling": 0.524,
+      "ole_macroMovement": 0.888,
+      "ole_macroSpace": 0.979
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.585,
+      "origami_macroCoupling": 0.552,
+      "origami_macroMovement": 0.92,
+      "origami_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

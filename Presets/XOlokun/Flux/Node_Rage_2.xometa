@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Node Rage 2",
   "parameters": {
-    "Optic": {},
+    "Optic": {
+      "optic_macroCharacter": 0.563,
+      "optic_macroCoupling": 0.803,
+      "optic_macroMovement": 0.065,
+      "optic_macroSpace": 0.113
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.336,
+      "dub_macroCoupling": 0.857,
+      "dub_macroMovement": 0.079,
+      "dub_macroSpace": 0.096
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK WARM DENSE VIOLENT AET...",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.114,
+      "oblq_macroCoupling": 0.912,
+      "oblq_macroMovement": 0.652,
+      "oblq_macroSpace": 0.426
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.108,
+      "osprey_macroCoupling": 0.852,
+      "osprey_macroMovement": 0.668,
+      "osprey_macroSpace": 0.41
+    }
   },
   "schema_version": 1,
   "tags": [

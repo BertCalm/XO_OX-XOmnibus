@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Glass Ripple",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.915,
+      "morph_macroCoupling": 0.948,
+      "morph_macroMovement": 0.904,
+      "morph_macroSpace": 0.077
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 1.0,
+      "snap_macroCoupling": 0.801,
+      "snap_macroMovement": 0.954,
+      "snap_macroSpace": 0.142
+    }
   },
   "schema_version": 1,
   "sequencer": null,

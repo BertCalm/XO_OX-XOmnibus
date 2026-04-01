@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Flux Horizon 2",
   "parameters": {
-    "Opal": {},
-    "Ottoni": {}
+    "Opal": {
+      "opal_macroCharacter": 0.5382,
+      "opal_macroCoupling": 0.8251,
+      "opal_macroMovement": 0.0595,
+      "opal_macroSpace": 0.4649
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.6946,
+      "otto_macroCoupling": 0.9281,
+      "otto_macroMovement": 0.0617,
+      "otto_macroSpace": 0.4708
+    }
   },
   "schema_version": 1,
   "sequencer": null,

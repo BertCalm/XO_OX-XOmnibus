@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Daguerreotype Brass II",
   "parameters": {
-    "Obscura": {},
-    "Ottoni": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.6,
+      "obscura_macroCoupling": 0.65,
+      "obscura_macroMovement": 0.55,
+      "obscura_macroSpace": 0.52
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.72,
+      "otto_macroCoupling": 0.74,
+      "otto_macroMovement": 0.58,
+      "otto_macroSpace": 0.46
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "FIRESTORM",
   "parameters": {
-    "Ombre": {},
+    "Ombre": {
+      "ombre_macroCharacter": 0.753,
+      "ombre_macroCoupling": 0.853,
+      "ombre_macroMovement": 0.957,
+      "ombre_macroSpace": 0.953
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.38,
+      "dub_macroCoupling": 0.006,
+      "dub_macroMovement": 0.966,
+      "dub_macroSpace": 0.352
     }
   },
   "schema_version": 1,

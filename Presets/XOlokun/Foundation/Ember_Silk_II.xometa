@@ -37,10 +37,19 @@
   "mood": "Foundation",
   "name": "Ember Silk II",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.888,
+      "fat_macroCoupling": 0.724,
+      "fat_macroMovement": 0.651,
+      "fat_macroSpace": 0.586
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.32,
+      "bob_macroCoupling": 0.432,
+      "bob_macroMovement": 0.765,
+      "bob_macroSpace": 0.57
     }
   },
   "schema_version": 1,

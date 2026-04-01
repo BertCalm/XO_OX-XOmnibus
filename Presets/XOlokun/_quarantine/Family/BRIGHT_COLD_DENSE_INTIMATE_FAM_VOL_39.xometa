@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Ice Titan",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.467,
+      "snap_macroCoupling": 0.68,
+      "snap_macroMovement": 0.604,
+      "snap_macroSpace": 0.01
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.459,
+      "origami_macroCoupling": 0.675,
+      "origami_macroMovement": 0.6,
+      "origami_macroSpace": 0.01
+    }
   },
   "schema_version": 1,
   "tags": [

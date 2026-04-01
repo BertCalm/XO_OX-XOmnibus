@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Ghost Echo",
   "parameters": {
-    "Orca": {},
-    "Osprey": {}
+    "Orca": {
+      "orca_macroCharacter": 0.786,
+      "orca_macroCoupling": 0.528,
+      "orca_macroMovement": 0.571,
+      "orca_macroSpace": 0.219
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.619,
+      "osprey_macroCoupling": 0.584,
+      "osprey_macroMovement": 0.328,
+      "osprey_macroSpace": 0.599
+    }
   },
   "schema_version": 1,
   "tags": [

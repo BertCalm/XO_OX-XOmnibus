@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Gilded Weave",
   "parameters": {
-    "Ohm": {},
-    "Orbital": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.69,
+      "ohm_macroCoupling": 0.62,
+      "ohm_macroMovement": 0.31,
+      "ohm_macroSpace": 0.48
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.83,
+      "orb_macroCoupling": 0.64,
+      "orb_macroMovement": 0.38,
+      "orb_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "THUNDERHEAD 29",
   "parameters": {
-    "Ohm": {},
-    "Overworld": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.907,
+      "ohm_macroCoupling": 0.592,
+      "ohm_macroMovement": 0.964,
+      "ohm_macroSpace": 0.663
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.92,
+      "ow_macroCoupling": 0.981,
+      "ow_macroMovement": 0.952,
+      "ow_macroSpace": 0.534
+    }
   },
   "schema_version": 1,
   "tags": [

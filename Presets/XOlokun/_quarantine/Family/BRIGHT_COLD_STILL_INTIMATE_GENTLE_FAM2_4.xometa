@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT COLD STILL INTIMATE ... (Opal I)",
   "parameters": {
-    "Ole": {},
-    "Opal": {}
+    "Ole": {
+      "ole_macroCharacter": 0.506,
+      "ole_macroCoupling": 0.207,
+      "ole_macroMovement": 0.03,
+      "ole_macroSpace": 0.121
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.503,
+      "opal_macroCoupling": 0.192,
+      "opal_macroMovement": 0.02,
+      "opal_macroSpace": 0.102
+    }
   },
   "schema_version": 1,
   "tags": [

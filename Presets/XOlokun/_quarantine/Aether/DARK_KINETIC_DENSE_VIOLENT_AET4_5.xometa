@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Flux Molten",
   "parameters": {
-    "Oblique": {},
-    "OddfeliX": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.3614,
+      "oblq_macroCoupling": 0.2379,
+      "oblq_macroMovement": 0.4647,
+      "oblq_macroSpace": 0.5712
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.8618,
+      "snap_macroCoupling": 0.5529,
+      "snap_macroMovement": 0.6907,
+      "snap_macroSpace": 0.6025
+    }
   },
   "schema_version": 1,
   "tags": [

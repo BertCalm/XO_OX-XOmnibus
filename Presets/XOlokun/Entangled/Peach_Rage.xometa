@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Peach Rage",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.94,
+      "oblq_macroCoupling": 0.409,
+      "oblq_macroMovement": 0.082,
+      "oblq_macroSpace": 0.071
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.897,
+      "dub_macroCoupling": 0.391,
+      "dub_macroMovement": 0.087,
+      "dub_macroSpace": 0.077
     }
   },
   "schema_version": 1,

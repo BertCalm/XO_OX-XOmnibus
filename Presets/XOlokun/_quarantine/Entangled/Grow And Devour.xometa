@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Grow And Devour",
   "parameters": {
-    "Ottoni": {},
-    "Ouroboros": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.72,
+      "otto_macroCoupling": 0.66,
+      "otto_macroMovement": 0.5,
+      "otto_macroSpace": 0.35
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.58,
+      "ouro_macroCoupling": 0.66,
+      "ouro_macroMovement": 0.68,
+      "ouro_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "sequencer": null,

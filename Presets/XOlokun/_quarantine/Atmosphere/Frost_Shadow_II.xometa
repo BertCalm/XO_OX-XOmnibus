@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Frost Shadow II",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.016,
+      "ocelot_macroCoupling": 0.733,
+      "ocelot_macroMovement": 0.271,
+      "ocelot_macroSpace": 0.403
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.076,
+      "poss_macroCoupling": 0.824,
+      "poss_macroMovement": 0.328,
+      "poss_macroSpace": 0.432
+    }
   },
   "schema_version": 1,
   "tags": [

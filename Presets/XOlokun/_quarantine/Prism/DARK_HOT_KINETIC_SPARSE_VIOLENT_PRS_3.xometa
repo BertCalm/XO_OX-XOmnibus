@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Rust Surge",
   "parameters": {
-    "Origami": {},
-    "Owlfish": {}
+    "Origami": {
+      "origami_macroCharacter": 0.167,
+      "origami_macroCoupling": 0.155,
+      "origami_macroMovement": 1.0,
+      "origami_macroSpace": 0.39
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.074,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 1.0,
+      "owl_macroSpace": 0.399
+    }
   },
   "schema_version": 1,
   "sequencer": null,

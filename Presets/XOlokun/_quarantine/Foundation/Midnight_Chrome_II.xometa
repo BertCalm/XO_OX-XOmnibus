@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Midnight Chrome II",
   "parameters": {
-    "Obese": {},
-    "Ouroboros": {}
+    "Obese": {
+      "fat_macroCharacter": 0.669,
+      "fat_macroCoupling": 0.174,
+      "fat_macroMovement": 0.662,
+      "fat_macroSpace": 0.767
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.253,
+      "ouro_macroCoupling": 0.176,
+      "ouro_macroMovement": 0.609,
+      "ouro_macroSpace": 0.367
+    }
   },
   "schema_version": 1,
   "tags": [

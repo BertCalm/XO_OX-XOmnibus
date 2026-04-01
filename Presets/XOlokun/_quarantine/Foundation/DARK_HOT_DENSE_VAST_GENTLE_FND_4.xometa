@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Amber Void",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.095,
+      "morph_macroCoupling": 0.788,
+      "morph_macroMovement": 0.419,
+      "morph_macroSpace": 0.889
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.207,
+      "origami_macroCoupling": 1.0,
+      "origami_macroMovement": 0.409,
+      "origami_macroSpace": 0.854
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Cold Augur",
   "parameters": {
-    "Obscura": {},
-    "Oracle": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.19,
+      "obscura_macroCoupling": 0.69,
+      "obscura_macroMovement": 0.53,
+      "obscura_macroSpace": 0.9
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.22,
+      "oracle_macroCoupling": 0.64,
+      "oracle_macroMovement": 0.58,
+      "oracle_macroSpace": 0.87
+    }
   },
   "schema_version": 1,
   "tags": [

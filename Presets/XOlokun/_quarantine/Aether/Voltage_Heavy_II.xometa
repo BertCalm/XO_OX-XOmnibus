@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Voltage Heavy II",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.248,
+      "snap_macroCoupling": 0.546,
+      "snap_macroMovement": 0.944,
+      "snap_macroSpace": 0.105
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.248,
+      "organon_macroCoupling": 0.546,
+      "organon_macroMovement": 0.944,
+      "organon_macroSpace": 0.105
+    }
   },
   "schema_version": 1,
   "tags": [

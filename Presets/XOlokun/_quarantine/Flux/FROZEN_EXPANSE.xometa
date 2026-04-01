@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Frozen Expanse (Organon)",
   "parameters": {
-    "Organon": {},
-    "Orphica": {}
+    "Organon": {
+      "organon_macroCharacter": 0.277,
+      "organon_macroCoupling": 0.966,
+      "organon_macroMovement": 0.341,
+      "organon_macroSpace": 0.804
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.318,
+      "orph_macroCoupling": 0.847,
+      "orph_macroMovement": 0.417,
+      "orph_macroSpace": 0.658
+    }
   },
   "schema_version": 1,
   "tags": [

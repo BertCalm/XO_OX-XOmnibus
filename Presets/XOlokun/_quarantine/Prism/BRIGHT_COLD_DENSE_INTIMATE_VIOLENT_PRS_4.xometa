@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Glass Rage",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 1.0,
+      "oblq_macroCoupling": 0.894,
+      "oblq_macroMovement": 0.504,
+      "oblq_macroSpace": 0.0
+    },
+    "Optic": {
+      "optic_macroCharacter": 1.0,
+      "optic_macroCoupling": 0.899,
+      "optic_macroMovement": 0.394,
+      "optic_macroSpace": 0.041
+    }
   },
   "schema_version": 1,
   "sequencer": null,

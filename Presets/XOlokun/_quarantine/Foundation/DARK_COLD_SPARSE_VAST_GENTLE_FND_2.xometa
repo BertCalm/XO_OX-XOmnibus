@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Phase Canyon",
   "parameters": {
-    "OddfeliX": {},
-    "Overbite": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.02,
+      "snap_macroCoupling": 0.083,
+      "snap_macroMovement": 0.693,
+      "snap_macroSpace": 0.868
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.096,
+      "poss_macroCoupling": 0.149,
+      "poss_macroMovement": 0.583,
+      "poss_macroSpace": 0.84
+    }
   },
   "schema_version": 1,
   "sequencer": null,

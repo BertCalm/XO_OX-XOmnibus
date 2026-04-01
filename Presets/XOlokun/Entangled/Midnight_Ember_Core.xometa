@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Midnight Ember Core",
   "parameters": {
-    "Obbligato": {},
+    "Obbligato": {
+      "obbl_macroCharacter": 0.6,
+      "obbl_macroCoupling": 0.58,
+      "obbl_macroMovement": 0.87,
+      "obbl_macroSpace": 0.64
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.37,
+      "dub_macroCoupling": 0.52,
+      "dub_macroMovement": 0.42,
+      "dub_macroSpace": 0.24
     }
   },
   "schema_version": 1,

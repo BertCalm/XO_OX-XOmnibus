@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Peach Signal",
   "parameters": {
-    "Origami": {},
-    "Ottoni": {}
+    "Origami": {
+      "origami_macroCharacter": 0.869,
+      "origami_macroCoupling": 0.274,
+      "origami_macroMovement": 0.121,
+      "origami_macroSpace": 0.0
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.877,
+      "otto_macroCoupling": 0.387,
+      "otto_macroMovement": 0.11,
+      "otto_macroSpace": 0.121
+    }
   },
   "schema_version": 1,
   "sequencer": null,

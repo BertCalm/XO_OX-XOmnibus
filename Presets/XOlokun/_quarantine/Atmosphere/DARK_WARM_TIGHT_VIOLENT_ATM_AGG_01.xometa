@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.052,
+      "ocean_macroCoupling": 0.85,
+      "ocean_macroMovement": 0.417,
+      "ocean_macroSpace": 0.112
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.053,
+      "orb_macroCoupling": 0.876,
+      "orb_macroMovement": 0.439,
+      "orb_macroSpace": 0.109
+    }
   },
   "schema_version": 1,
   "tags": [

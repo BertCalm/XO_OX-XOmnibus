@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "BARE FLUX 5",
   "parameters": {
-    "Osteria": {},
-    "Overworld": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.1803,
+      "osteria_macroCoupling": 0.9477,
+      "osteria_macroMovement": 0.2142,
+      "osteria_macroSpace": 0.4863
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.2265,
+      "ow_macroCoupling": 0.0772,
+      "ow_macroMovement": 0.1376,
+      "ow_macroSpace": 0.8444
+    }
   },
   "schema_version": 1,
   "tags": [

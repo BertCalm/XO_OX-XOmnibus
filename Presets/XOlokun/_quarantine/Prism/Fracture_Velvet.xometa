@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Fracture Velvet",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.68,
+      "ohm_macroCoupling": 0.61,
+      "ohm_macroMovement": 0.097,
+      "ohm_macroSpace": 0.311
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.782,
+      "otto_macroCoupling": 0.415,
+      "otto_macroMovement": 0.097,
+      "otto_macroSpace": 0.311
+    }
   },
   "schema_version": 1,
   "tags": [

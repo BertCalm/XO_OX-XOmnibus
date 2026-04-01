@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glint Thread",
   "parameters": {
-    "Obscura": {},
-    "Organon": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.506,
+      "obscura_macroCoupling": 0.498,
+      "obscura_macroMovement": 0.501,
+      "obscura_macroSpace": 0.939
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.58,
+      "organon_macroCoupling": 0.791,
+      "organon_macroMovement": 0.541,
+      "organon_macroSpace": 0.83
+    }
   },
   "schema_version": 1,
   "tags": [

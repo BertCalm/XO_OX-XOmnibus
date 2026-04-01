@@ -39,9 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.6,
+      "bob_macroCoupling": 0.61,
+      "bob_macroMovement": 0.41,
+      "bob_macroSpace": 0.43
     },
-    "Organon": {}
+    "Organon": {
+      "organon_macroCharacter": 0.9,
+      "organon_macroCoupling": 0.71,
+      "organon_macroMovement": 0.34,
+      "organon_macroSpace": 0.49
+    }
   },
   "schema_version": 1,
   "tags": [

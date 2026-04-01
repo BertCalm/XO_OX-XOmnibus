@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Obsidian Motion Field",
   "parameters": {
-    "Octopus": {},
-    "Origami": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.18,
+      "octo_macroCoupling": 0.77,
+      "octo_macroMovement": 0.49,
+      "octo_macroSpace": 0.24
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.63,
+      "origami_macroCoupling": 0.51,
+      "origami_macroMovement": 0.55,
+      "origami_macroSpace": 0.26
+    }
   },
   "schema_version": 1,
   "tags": [

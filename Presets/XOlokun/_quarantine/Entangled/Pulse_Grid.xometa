@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Pulse Grid",
   "parameters": {
-    "Obsidian": {},
-    "OddOscar": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.74,
+      "obsidian_macroCoupling": 0.892,
+      "obsidian_macroMovement": 0.665,
+      "obsidian_macroSpace": 0.551
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.742,
+      "morph_macroCoupling": 0.535,
+      "morph_macroMovement": 0.532,
+      "morph_macroSpace": 0.402
+    }
   },
   "schema_version": 1,
   "tags": [

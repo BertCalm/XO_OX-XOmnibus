@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Phosphor Tender",
   "parameters": {
-    "Oceanic": {},
-    "Organon": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.77,
+      "ocean_macroCoupling": 0.7,
+      "ocean_macroMovement": 0.82,
+      "ocean_macroSpace": 0.15
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.94,
+      "organon_macroCoupling": 0.79,
+      "organon_macroMovement": 0.65,
+      "organon_macroSpace": 0.16
+    }
   },
   "schema_version": 1,
   "sequencer": null,

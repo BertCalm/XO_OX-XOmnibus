@@ -39,8 +39,18 @@
   "mood": "Family",
   "name": "Solar Silk",
   "parameters": {
-    "Obsidian": {},
-    "Outwit": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.85,
+      "obsidian_macroCoupling": 0.7,
+      "obsidian_macroMovement": 0.71,
+      "obsidian_macroSpace": 0.39
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.69,
+      "owit_macroCoupling": 0.66,
+      "owit_macroMovement": 0.75,
+      "owit_macroSpace": 0.15
+    }
   },
   "schema_version": 1,
   "sequencer": null,

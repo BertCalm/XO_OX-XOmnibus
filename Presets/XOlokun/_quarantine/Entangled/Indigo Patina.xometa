@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Indigo Patina",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.55,
+      "oracle_macroCoupling": 0.71,
+      "oracle_macroMovement": 0.65,
+      "oracle_macroSpace": 0.58
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.71,
+      "otto_macroMovement": 0.48,
+      "otto_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Silent Trace II",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.99,
+      "ohm_macroCoupling": 0.52,
+      "ohm_macroMovement": 0.77,
+      "ohm_macroSpace": 0.1
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.94,
+      "otto_macroCoupling": 0.79,
+      "otto_macroMovement": 0.81,
+      "otto_macroSpace": 0.24
+    }
   },
   "schema_version": 1,
   "sequencer": null,

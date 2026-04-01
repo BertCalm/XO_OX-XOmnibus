@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Thread Swirl 2",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.566,
+      "organon_macroCoupling": 0.915,
+      "organon_macroMovement": 0.953,
+      "organon_macroSpace": 0.689
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.435,
+      "dub_macroCoupling": 0.925,
+      "dub_macroMovement": 0.957,
+      "dub_macroSpace": 0.639
     }
   },
   "schema_version": 1,

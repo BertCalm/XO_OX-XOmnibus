@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Ocean Aurora II",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.074,
+      "ole_macroCoupling": 0.334,
+      "ole_macroMovement": 0.301,
+      "ole_macroSpace": 0.971
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.542,
+      "osteria_macroCoupling": 0.749,
+      "osteria_macroMovement": 0.301,
+      "osteria_macroSpace": 0.971
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Dusk Solid",
   "parameters": {
-    "Odyssey": {},
-    "Orphica": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.896,
+      "drift_macroCoupling": 0.967,
+      "drift_macroMovement": 0.772,
+      "drift_macroSpace": 0.881
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.866,
+      "orph_macroCoupling": 0.938,
+      "orph_macroMovement": 0.785,
+      "orph_macroSpace": 0.93
+    }
   },
   "schema_version": 1,
   "tags": [

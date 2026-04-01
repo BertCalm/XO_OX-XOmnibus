@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Prism Optic",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.84,
+      "oblq_macroCoupling": 0.69,
+      "oblq_macroMovement": 0.79,
+      "oblq_macroSpace": 0.59
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.46,
+      "optic_macroCoupling": 0.56,
+      "optic_macroMovement": 0.41,
+      "optic_macroSpace": 0.46
+    }
   },
   "schema_version": 1,
   "tags": [

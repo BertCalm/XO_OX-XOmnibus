@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Shadow Organism Pulse",
   "parameters": {
-    "Octopus": {},
-    "Ouroboros": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.51,
+      "octo_macroCoupling": 0.56,
+      "octo_macroMovement": 0.88,
+      "octo_macroSpace": 0.74
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.83,
+      "ouro_macroCoupling": 0.63,
+      "ouro_macroMovement": 0.2,
+      "ouro_macroSpace": 0.21
+    }
   },
   "schema_version": 1,
   "tags": [

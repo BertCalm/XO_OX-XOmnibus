@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Silver Grit",
   "parameters": {
-    "Oracle": {},
-    "Orphica": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.958,
+      "oracle_macroCoupling": 0.8041,
+      "oracle_macroMovement": 0.1019,
+      "oracle_macroSpace": 0.9054
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.6392,
+      "orph_macroCoupling": 0.7689,
+      "orph_macroMovement": 0.1194,
+      "orph_macroSpace": 0.2669
+    }
   },
   "schema_version": 1,
   "sequencer": null,

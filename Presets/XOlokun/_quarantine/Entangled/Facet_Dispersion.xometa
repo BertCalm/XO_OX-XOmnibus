@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Facet Dispersion",
   "parameters": {
-    "Obsidian": {},
-    "Opal": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.2,
+      "obsidian_macroCoupling": 0.63,
+      "obsidian_macroMovement": 0.58,
+      "obsidian_macroSpace": 0.87
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.17,
+      "opal_macroCoupling": 0.68,
+      "opal_macroMovement": 0.53,
+      "opal_macroSpace": 0.9
+    }
   },
   "schema_version": 1,
   "tags": [

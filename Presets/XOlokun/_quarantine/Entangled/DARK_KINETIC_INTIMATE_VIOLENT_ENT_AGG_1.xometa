@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Node Edge 2",
   "parameters": {
-    "Orca": {},
-    "Ouroboros": {}
+    "Orca": {
+      "orca_macroCharacter": 0.539,
+      "orca_macroCoupling": 0.91,
+      "orca_macroMovement": 0.916,
+      "orca_macroSpace": 0.086
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroCoupling": 0.899,
+      "ouro_macroMovement": 0.884,
+      "ouro_macroSpace": 0.101
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Verde Vitality",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.68,
+      "organon_macroMovement": 0.72,
+      "organon_macroSpace": 0.52
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.75,
+      "otto_macroCoupling": 0.68,
+      "otto_macroMovement": 0.5,
+      "otto_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "sequencer": null,

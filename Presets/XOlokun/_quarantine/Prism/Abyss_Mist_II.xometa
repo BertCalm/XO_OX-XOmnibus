@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Abyss Mist II",
   "parameters": {
-    "Ocelot": {},
-    "Oracle": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.698,
+      "ocelot_macroCoupling": 0.466,
+      "ocelot_macroMovement": 0.091,
+      "ocelot_macroSpace": 0.951
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.279,
+      "oracle_macroCoupling": 0.804,
+      "oracle_macroMovement": 0.091,
+      "oracle_macroSpace": 0.951
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Barb Nucleus",
   "parameters": {
-    "OddfeliX": {},
-    "Ottoni": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.7,
+      "snap_macroCoupling": 0.5,
+      "snap_macroMovement": 0.99,
+      "snap_macroSpace": 0.46
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.73,
+      "otto_macroCoupling": 0.81,
+      "otto_macroMovement": 0.83,
+      "otto_macroSpace": 0.27
+    }
   },
   "schema_version": 1,
   "sequencer": null,

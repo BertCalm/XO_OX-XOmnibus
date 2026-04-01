@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Glass Wrath 2",
   "parameters": {
-    "Odyssey": {},
-    "Ohm": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.631,
+      "drift_macroCoupling": 0.978,
+      "drift_macroMovement": 0.351,
+      "drift_macroSpace": 0.043
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.401,
+      "ohm_macroCoupling": 0.977,
+      "ohm_macroMovement": 0.375,
+      "ohm_macroSpace": 0.05
+    }
   },
   "schema_version": 1,
   "tags": [

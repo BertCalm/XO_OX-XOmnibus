@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Abyss Silver",
   "parameters": {
-    "Obese": {},
-    "Ouroboros": {}
+    "Obese": {
+      "fat_macroCharacter": 0.592,
+      "fat_macroCoupling": 0.552,
+      "fat_macroMovement": 0.732,
+      "fat_macroSpace": 0.7
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.696,
+      "ouro_macroCoupling": 0.62,
+      "ouro_macroMovement": 0.33,
+      "ouro_macroSpace": 0.618
+    }
   },
   "schema_version": 1,
   "tags": [

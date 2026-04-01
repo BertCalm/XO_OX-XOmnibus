@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Smoke Edge",
   "parameters": {
-    "Ohm": {},
-    "Overworld": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.9631,
+      "ohm_macroCoupling": 0.3814,
+      "ohm_macroMovement": 0.9612,
+      "ohm_macroSpace": 0.5197
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.9735,
+      "ow_macroCoupling": 0.3982,
+      "ow_macroMovement": 0.9851,
+      "ow_macroSpace": 0.5046
+    }
   },
   "schema_version": 1,
   "tags": [

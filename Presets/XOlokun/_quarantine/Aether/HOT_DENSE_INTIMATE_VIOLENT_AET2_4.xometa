@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Thread Solid",
   "parameters": {
-    "OddOscar": {},
-    "Ombre": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.4113,
+      "morph_macroCoupling": 0.9068,
+      "morph_macroMovement": 0.4825,
+      "morph_macroSpace": 0.0814
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.4608,
+      "ombre_macroCoupling": 0.922,
+      "ombre_macroMovement": 0.4956,
+      "ombre_macroSpace": 0.0422
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Shard Saturated",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.6677,
+      "optic_macroCoupling": 0.9381,
+      "optic_macroMovement": 0.99,
+      "optic_macroSpace": 0.4815
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.6428,
+      "oracle_macroCoupling": 0.9761,
+      "oracle_macroMovement": 0.9636,
+      "oracle_macroSpace": 0.4626
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Night Fire Synthesis",
   "parameters": {
-    "Ohm": {},
-    "Oracle": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.28,
+      "ohm_macroCoupling": 0.6,
+      "ohm_macroMovement": 0.37,
+      "ohm_macroSpace": 0.19
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.87,
+      "oracle_macroCoupling": 0.64,
+      "oracle_macroMovement": 0.29,
+      "oracle_macroSpace": 0.68
+    }
   },
   "schema_version": 1,
   "tags": [

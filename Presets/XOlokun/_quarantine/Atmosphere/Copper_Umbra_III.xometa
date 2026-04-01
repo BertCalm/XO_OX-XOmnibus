@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Copper Umbra III",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.736,
+      "morph_macroCoupling": 0.704,
+      "morph_macroMovement": 0.76,
+      "morph_macroSpace": 0.593
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.621,
+      "opal_macroCoupling": 0.407,
+      "opal_macroMovement": 0.888,
+      "opal_macroSpace": 0.591
+    }
   },
   "schema_version": 1,
   "tags": [

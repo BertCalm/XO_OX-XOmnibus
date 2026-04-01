@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "DARK KINETIC DENSE VIOLENT ... (Owlfish I)",
   "parameters": {
-    "Ocelot": {},
-    "Owlfish": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.088,
+      "ocelot_macroCoupling": 0.834,
+      "ocelot_macroMovement": 0.838,
+      "ocelot_macroSpace": 0.434
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.088,
+      "owl_macroCoupling": 0.824,
+      "owl_macroMovement": 0.818,
+      "owl_macroSpace": 0.456
+    }
   },
   "schema_version": 1,
   "tags": [

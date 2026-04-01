@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Sunrise Pulse 2",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.906,
+      "ole_macroCoupling": 0.548,
+      "ole_macroMovement": 0.99,
+      "ole_macroSpace": 0.031
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.948,
+      "orph_macroCoupling": 0.55,
+      "orph_macroMovement": 0.986,
+      "orph_macroSpace": 0.066
+    }
   },
   "schema_version": 1,
   "tags": [

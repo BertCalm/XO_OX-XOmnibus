@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Amber Wave",
   "parameters": {
-    "Ocelot": {},
-    "Origami": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.6904,
+      "ocelot_macroCoupling": 0.3124,
+      "ocelot_macroMovement": 0.0835,
+      "ocelot_macroSpace": 0.0763
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.6984,
+      "origami_macroCoupling": 0.3095,
+      "origami_macroMovement": 0.045,
+      "origami_macroSpace": 0.0412
+    }
   },
   "schema_version": 1,
   "tags": [

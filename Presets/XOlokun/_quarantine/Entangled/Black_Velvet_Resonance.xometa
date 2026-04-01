@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Black Velvet Resonance",
   "parameters": {
-    "Obscura": {},
-    "Organon": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.59,
+      "obscura_macroCoupling": 0.67,
+      "obscura_macroMovement": 0.18,
+      "obscura_macroSpace": 0.69
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.57,
+      "organon_macroMovement": 0.9,
+      "organon_macroSpace": 0.64
+    }
   },
   "schema_version": 1,
   "tags": [

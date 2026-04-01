@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Cocoa Pulse 2",
   "parameters": {
-    "Odyssey": {},
-    "Osteria": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.487,
+      "drift_macroCoupling": 0.206,
+      "drift_macroMovement": 0.981,
+      "drift_macroSpace": 0.575
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.528,
+      "osteria_macroCoupling": 0.215,
+      "osteria_macroMovement": 0.99,
+      "osteria_macroSpace": 0.518
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Pulse Gossamer",
   "parameters": {
-    "Osteria": {},
-    "Ottoni": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.495,
+      "osteria_macroCoupling": 0.344,
+      "osteria_macroMovement": 0.973,
+      "osteria_macroSpace": 0.954
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.651,
+      "otto_macroCoupling": 0.348,
+      "otto_macroMovement": 0.973,
+      "otto_macroSpace": 0.954
+    }
   },
   "schema_version": 1,
   "tags": [

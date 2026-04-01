@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Velvet Solid",
   "parameters": {
-    "Oblique": {},
-    "Ottoni": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.6629,
+      "oblq_macroCoupling": 0.7606,
+      "oblq_macroMovement": 0.1206,
+      "oblq_macroSpace": 0.5641
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.8591,
+      "otto_macroCoupling": 0.9008,
+      "otto_macroMovement": 0.1175,
+      "otto_macroSpace": 0.7558
+    }
   },
   "schema_version": 1,
   "sequencer": null,

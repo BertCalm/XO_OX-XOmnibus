@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT KINETIC VAST SPARSE ... (Origami)",
   "parameters": {
-    "Oblique": {},
-    "Origami": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.628,
+      "oblq_macroCoupling": 0.56,
+      "oblq_macroMovement": 0.8,
+      "oblq_macroSpace": 0.99
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.584,
+      "origami_macroCoupling": 0.532,
+      "origami_macroMovement": 0.856,
+      "origami_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Expanse Sienna",
   "parameters": {
-    "Optic": {},
-    "Ouroboros": {}
+    "Optic": {
+      "optic_macroCharacter": 0.8578,
+      "optic_macroCoupling": 0.468,
+      "optic_macroMovement": 0.8747,
+      "optic_macroSpace": 0.9299
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.7783,
+      "ouro_macroCoupling": 0.3278,
+      "ouro_macroMovement": 0.8371,
+      "ouro_macroSpace": 0.8407
+    }
   },
   "schema_version": 1,
   "tags": [

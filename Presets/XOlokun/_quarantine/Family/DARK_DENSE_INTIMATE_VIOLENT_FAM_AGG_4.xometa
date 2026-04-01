@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Grain Heavy 2",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.581,
+      "snap_macroCoupling": 0.923,
+      "snap_macroMovement": 0.698,
+      "snap_macroSpace": 0.793
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.535,
+      "osprey_macroCoupling": 0.93,
+      "osprey_macroMovement": 0.739,
+      "osprey_macroSpace": 0.762
+    }
   },
   "schema_version": 1,
   "tags": [

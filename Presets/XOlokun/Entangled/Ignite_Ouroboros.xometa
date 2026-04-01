@@ -37,10 +37,19 @@
   "mood": "Entangled",
   "name": "Ignite Ouroboros",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.84,
+      "fat_macroCoupling": 0.52,
+      "fat_macroMovement": 0.35,
+      "fat_macroSpace": 0.38
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.92,
+      "bob_macroCoupling": 0.73,
+      "bob_macroMovement": 0.44,
+      "bob_macroSpace": 0.4
     }
   },
   "schema_version": 1,

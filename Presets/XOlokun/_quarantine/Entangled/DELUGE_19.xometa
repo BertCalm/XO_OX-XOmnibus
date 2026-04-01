@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DELUGE 19",
   "parameters": {
-    "Oceanic": {},
-    "Ombre": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.193,
+      "ocean_macroCoupling": 0.12,
+      "ocean_macroMovement": 0.905,
+      "ocean_macroSpace": 0.536
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.762,
+      "ombre_macroCoupling": 0.185,
+      "ombre_macroMovement": 0.892,
+      "ombre_macroSpace": 0.216
+    }
   },
   "schema_version": 1,
   "tags": [

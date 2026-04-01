@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Quartz Vast",
   "parameters": {
-    "Obscura": {},
-    "OddOscar": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.4449,
+      "obscura_macroCoupling": 0.0448,
+      "obscura_macroMovement": 0.3971,
+      "obscura_macroSpace": 0.8983
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.4637,
+      "morph_macroCoupling": 0.0699,
+      "morph_macroMovement": 0.388,
+      "morph_macroSpace": 0.9018
+    }
   },
   "schema_version": 1,
   "tags": [

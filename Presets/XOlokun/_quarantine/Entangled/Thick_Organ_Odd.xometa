@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Thick Organ Odd",
   "parameters": {
-    "OddOscar": {},
-    "Organon": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.84,
+      "morph_macroCoupling": 0.77,
+      "morph_macroMovement": 0.38,
+      "morph_macroSpace": 0.33
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.77,
+      "organon_macroCoupling": 0.6,
+      "organon_macroMovement": 0.17,
+      "organon_macroSpace": 0.18
+    }
   },
   "schema_version": 1,
   "tags": [

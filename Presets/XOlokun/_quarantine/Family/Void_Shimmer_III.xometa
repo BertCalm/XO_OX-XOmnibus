@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Void Shimmer III",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.711,
+      "ole_macroCoupling": 0.953,
+      "ole_macroMovement": 0.917,
+      "ole_macroSpace": 0.985
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.711,
+      "orph_macroCoupling": 0.953,
+      "orph_macroMovement": 0.917,
+      "orph_macroSpace": 0.985
+    }
   },
   "schema_version": 1,
   "tags": [

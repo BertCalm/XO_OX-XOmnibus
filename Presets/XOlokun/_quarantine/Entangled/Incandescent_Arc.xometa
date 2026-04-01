@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Incandescent Arc",
   "parameters": {
-    "Ohm": {},
-    "Orbital": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.78,
+      "ohm_macroCoupling": 0.78,
+      "ohm_macroMovement": 0.62,
+      "ohm_macroSpace": 0.39
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.89,
+      "orb_macroCoupling": 0.9,
+      "orb_macroMovement": 0.73,
+      "orb_macroSpace": 0.34
+    }
   },
   "schema_version": 1,
   "tags": [

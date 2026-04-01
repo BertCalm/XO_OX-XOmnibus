@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Dense Fold Flux",
   "parameters": {
-    "Odyssey": {},
-    "Origami": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.3,
+      "drift_macroCoupling": 0.9,
+      "drift_macroMovement": 0.4,
+      "drift_macroSpace": 0.2
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.8,
+      "origami_macroCoupling": 0.8,
+      "origami_macroMovement": 0.4,
+      "origami_macroSpace": 0.2
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Phase Edge",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.401,
+      "ocean_macroCoupling": 0.89,
+      "ocean_macroMovement": 0.02,
+      "ocean_macroSpace": 0.951
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.396,
+      "oracle_macroCoupling": 0.778,
+      "oracle_macroMovement": 0.018,
+      "oracle_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

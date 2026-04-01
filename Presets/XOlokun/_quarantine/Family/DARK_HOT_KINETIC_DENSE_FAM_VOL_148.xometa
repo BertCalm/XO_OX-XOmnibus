@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Copper Thick",
   "parameters": {
-    "Obbligato": {},
-    "OddOscar": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.524,
+      "obbl_macroCoupling": 0.736,
+      "obbl_macroMovement": 0.886,
+      "obbl_macroSpace": 0.651
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.53,
+      "morph_macroCoupling": 0.696,
+      "morph_macroMovement": 0.913,
+      "morph_macroSpace": 0.636
+    }
   },
   "schema_version": 1,
   "tags": [

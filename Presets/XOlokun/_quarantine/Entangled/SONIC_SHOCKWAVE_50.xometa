@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "SONIC SHOCKWAVE 50",
   "parameters": {
-    "Obsidian": {},
-    "Oracle": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.345,
+      "obsidian_macroCoupling": 0.773,
+      "obsidian_macroMovement": 0.937,
+      "obsidian_macroSpace": 0.146
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.543,
+      "oracle_macroCoupling": 0.896,
+      "oracle_macroMovement": 0.909,
+      "oracle_macroSpace": 0.395
+    }
   },
   "schema_version": 1,
   "tags": [

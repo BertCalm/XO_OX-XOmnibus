@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Packed Nebula",
   "parameters": {
-    "Obsidian": {},
-    "OddfeliX": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.115,
+      "obsidian_macroCoupling": 0.332,
+      "obsidian_macroMovement": 0.531,
+      "obsidian_macroSpace": 0.423
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.375,
+      "snap_macroCoupling": 0.145,
+      "snap_macroMovement": 0.732,
+      "snap_macroSpace": 0.253
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -47,9 +47,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.6937,
+      "bob_macroCoupling": 0.8938,
+      "bob_macroMovement": 0.0304,
+      "bob_macroSpace": 0.1065
     },
-    "Optic": {}
+    "Optic": {
+      "optic_macroCharacter": 0.6035,
+      "optic_macroCoupling": 0.7829,
+      "optic_macroMovement": 0.0314,
+      "optic_macroSpace": 0.3172
+    }
   },
   "schema_version": 1,
   "sequencer": null,

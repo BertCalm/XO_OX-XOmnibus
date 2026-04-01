@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Strike Umbra II",
   "parameters": {
-    "Oceanic": {},
-    "Outwit": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.152,
+      "ocean_macroCoupling": 0.805,
+      "ocean_macroMovement": 0.568,
+      "ocean_macroSpace": 0.552
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.086,
+      "owit_macroCoupling": 0.846,
+      "owit_macroMovement": 0.567,
+      "owit_macroSpace": 0.538
+    }
   },
   "schema_version": 1,
   "tags": [

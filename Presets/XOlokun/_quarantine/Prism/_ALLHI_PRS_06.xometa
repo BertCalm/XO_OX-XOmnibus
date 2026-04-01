@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "ALLHI PRS 06",
   "parameters": {
-    "Ocelot": {},
-    "Osteria": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.929,
+      "ocelot_macroCoupling": 0.805,
+      "ocelot_macroMovement": 0.933,
+      "ocelot_macroSpace": 0.972
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.929,
+      "osteria_macroCoupling": 0.805,
+      "osteria_macroMovement": 0.933,
+      "osteria_macroSpace": 0.972
+    }
   },
   "schema_version": 1,
   "tags": [

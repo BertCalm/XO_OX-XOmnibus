@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddfeliX": {},
-    "Obese": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.79,
+      "snap_macroMovement": 0.93,
+      "snap_macroCoupling": 0.61,
+      "snap_macroSpace": 0.16
+    },
+    "Obese": {
+      "fat_macroCharacter": 0.64,
+      "fat_macroMovement": 0.94,
+      "fat_macroCoupling": 0.65,
+      "fat_macroSpace": 0.38
+    }
   },
   "coupling": {
     "type": "PHASE_LOCK",

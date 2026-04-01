@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Wave Solid 3",
   "parameters": {
-    "Ole": {},
-    "Overbite": {}
+    "Ole": {
+      "ole_macroCharacter": 0.678,
+      "ole_macroCoupling": 0.964,
+      "ole_macroMovement": 0.09,
+      "ole_macroSpace": 0.917
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.657,
+      "poss_macroCoupling": 0.965,
+      "poss_macroMovement": 0.08,
+      "poss_macroSpace": 0.934
+    }
   },
   "schema_version": 1,
   "tags": [

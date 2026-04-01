@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "KINETIC SPARSE VAST VIOLENT... (Osprey I)",
   "parameters": {
-    "Oracle": {},
-    "Osprey": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.367,
+      "oracle_macroCoupling": 0.83,
+      "oracle_macroMovement": 0.901,
+      "oracle_macroSpace": 0.889
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.369,
+      "osprey_macroCoupling": 0.884,
+      "osprey_macroMovement": 0.897,
+      "osprey_macroSpace": 0.932
+    }
   },
   "schema_version": 1,
   "tags": [

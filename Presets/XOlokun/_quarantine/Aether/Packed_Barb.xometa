@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Packed Barb",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.3799,
+      "morph_macroCoupling": 0.3174,
+      "morph_macroMovement": 0.614,
+      "morph_macroSpace": 0.5064
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.7721,
+      "opal_macroCoupling": 0.3985,
+      "opal_macroMovement": 0.6691,
+      "opal_macroSpace": 0.2609
+    }
   },
   "schema_version": 1,
   "tags": [

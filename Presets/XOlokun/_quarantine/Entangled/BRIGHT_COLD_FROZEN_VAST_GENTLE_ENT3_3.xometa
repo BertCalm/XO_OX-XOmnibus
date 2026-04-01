@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Prism Horizon 3",
   "parameters": {
-    "Obsidian": {},
-    "Ouroboros": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.543,
+      "obsidian_macroCoupling": 0.9137,
+      "obsidian_macroMovement": 0.1024,
+      "obsidian_macroSpace": 0.8187
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9179,
+      "ouro_macroCoupling": 0.8585,
+      "ouro_macroMovement": 0.1074,
+      "ouro_macroSpace": 0.8639
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glow Vast",
   "parameters": {
-    "Orbital": {},
-    "Organon": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.9266,
+      "orb_macroCoupling": 0.0864,
+      "orb_macroMovement": 0.3231,
+      "orb_macroSpace": 0.9643
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.9181,
+      "organon_macroCoupling": 0.0924,
+      "organon_macroMovement": 0.3098,
+      "organon_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

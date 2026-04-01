@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Shroud Soothe",
   "parameters": {
-    "Oceanic": {},
-    "Odyssey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.1208,
+      "ocean_macroCoupling": 0.1146,
+      "ocean_macroMovement": 0.4368,
+      "ocean_macroSpace": 0.8818
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.1338,
+      "drift_macroCoupling": 0.1706,
+      "drift_macroMovement": 0.5159,
+      "drift_macroSpace": 0.7513
+    }
   },
   "schema_version": 1,
   "tags": [

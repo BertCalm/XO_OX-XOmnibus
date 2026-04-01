@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Glass Cavern 2",
   "parameters": {
-    "Obsidian": {},
-    "Ombre": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.476,
+      "obsidian_macroCoupling": 0.675,
+      "obsidian_macroMovement": 0.032,
+      "obsidian_macroSpace": 0.92
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.458,
+      "ombre_macroCoupling": 0.642,
+      "ombre_macroMovement": 0.049,
+      "ombre_macroSpace": 0.922
+    }
   },
   "schema_version": 1,
   "tags": [

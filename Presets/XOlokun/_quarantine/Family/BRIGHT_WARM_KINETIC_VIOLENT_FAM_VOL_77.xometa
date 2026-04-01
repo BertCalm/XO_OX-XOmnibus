@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Rage 4",
   "parameters": {
-    "Odyssey": {},
-    "Osprey": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.985,
+      "drift_macroCoupling": 0.688,
+      "drift_macroMovement": 0.924,
+      "drift_macroSpace": 0.544
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.98,
+      "osprey_macroCoupling": 0.713,
+      "osprey_macroMovement": 0.96,
+      "osprey_macroSpace": 0.56
+    }
   },
   "schema_version": 1,
   "tags": [

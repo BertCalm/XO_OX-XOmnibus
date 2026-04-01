@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HELIOSPHERE",
   "parameters": {
-    "Obscura": {},
-    "Overworld": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.519,
+      "obscura_macroCoupling": 0.096,
+      "obscura_macroMovement": 0.549,
+      "obscura_macroSpace": 0.911
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.669,
+      "ow_macroCoupling": 0.177,
+      "ow_macroMovement": 0.949,
+      "ow_macroSpace": 0.943
+    }
   },
   "schema_version": 1,
   "tags": [

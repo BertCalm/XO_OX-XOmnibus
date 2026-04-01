@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Plate Erosion",
   "parameters": {
-    "Obscura": {},
-    "Opal": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.07,
+      "obscura_macroCoupling": 0.82,
+      "obscura_macroMovement": 0.15,
+      "obscura_macroSpace": 0.98
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.1,
+      "opal_macroCoupling": 0.77,
+      "opal_macroMovement": 0.2,
+      "opal_macroSpace": 0.95
+    }
   },
   "schema_version": 1,
   "tags": [

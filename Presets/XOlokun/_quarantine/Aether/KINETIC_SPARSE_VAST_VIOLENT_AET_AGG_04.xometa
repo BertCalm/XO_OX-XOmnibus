@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "KINETIC SPARSE VAST VIOLENT... (Overworld I)",
   "parameters": {
-    "Orbital": {},
-    "Overworld": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.52,
+      "orb_macroCoupling": 0.868,
+      "orb_macroMovement": 0.836,
+      "orb_macroSpace": 0.872
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.506,
+      "ow_macroCoupling": 0.912,
+      "ow_macroMovement": 0.854,
+      "ow_macroSpace": 0.811
+    }
   },
   "schema_version": 1,
   "tags": [

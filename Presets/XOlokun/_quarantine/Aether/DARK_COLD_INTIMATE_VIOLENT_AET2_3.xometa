@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Flux Rage",
   "parameters": {
-    "OddfeliX": {},
-    "Opal": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.0615,
+      "snap_macroCoupling": 0.6342,
+      "snap_macroMovement": 0.5415,
+      "snap_macroSpace": 0.0521
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.0711,
+      "opal_macroCoupling": 0.6493,
+      "opal_macroMovement": 0.4716,
+      "opal_macroSpace": 0.0769
+    }
   },
   "schema_version": 1,
   "tags": [

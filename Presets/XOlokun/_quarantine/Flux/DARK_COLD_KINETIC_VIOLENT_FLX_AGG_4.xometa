@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Fragment Ripple",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.448,
+      "opal_macroCoupling": 0.815,
+      "opal_macroMovement": 0.924,
+      "opal_macroSpace": 0.536
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.535,
+      "origami_macroCoupling": 0.779,
+      "origami_macroMovement": 0.979,
+      "origami_macroSpace": 0.586
+    }
   },
   "schema_version": 1,
   "tags": [

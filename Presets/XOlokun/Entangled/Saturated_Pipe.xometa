@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Saturated Pipe",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.66,
+      "organon_macroCoupling": 0.56,
+      "organon_macroMovement": 0.22,
+      "organon_macroSpace": 0.3
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.89,
+      "dub_macroCoupling": 0.58,
+      "dub_macroMovement": 0.27,
+      "dub_macroSpace": 0.23
     }
   },
   "schema_version": 1,

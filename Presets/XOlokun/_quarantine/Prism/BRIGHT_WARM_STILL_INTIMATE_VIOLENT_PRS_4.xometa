@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Candlelight Storm",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.893,
+      "ohm_macroCoupling": 0.44,
+      "ohm_macroMovement": 0.159,
+      "ohm_macroSpace": 0.096
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 1.0,
+      "otto_macroCoupling": 0.453,
+      "otto_macroMovement": 0.165,
+      "otto_macroSpace": 0.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

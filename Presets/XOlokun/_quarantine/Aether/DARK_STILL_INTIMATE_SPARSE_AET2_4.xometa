@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Fragment Shard",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.034,
+      "opal_macroCoupling": 0.0709,
+      "opal_macroMovement": 0.0518,
+      "opal_macroSpace": 0.0867
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.0714,
+      "organon_macroCoupling": 0.1099,
+      "organon_macroMovement": 0.0855,
+      "organon_macroSpace": 0.0379
+    }
   },
   "schema_version": 1,
   "tags": [

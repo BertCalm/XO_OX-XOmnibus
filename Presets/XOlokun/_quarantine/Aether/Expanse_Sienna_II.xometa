@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Expanse Sienna II",
   "parameters": {
-    "OddfeliX": {},
-    "Orbital": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.8606,
+      "snap_macroCoupling": 0.4771,
+      "snap_macroMovement": 0.8595,
+      "snap_macroSpace": 0.3183
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.8253,
+      "orb_macroCoupling": 0.6588,
+      "orb_macroMovement": 0.7277,
+      "orb_macroSpace": 0.9404
+    }
   },
   "schema_version": 1,
   "tags": [

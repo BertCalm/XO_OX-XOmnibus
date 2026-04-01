@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Prismatic Vast III",
   "parameters": {
-    "Oracle": {},
-    "Overbite": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.803,
+      "oracle_macroCoupling": 0.122,
+      "oracle_macroMovement": 0.127,
+      "oracle_macroSpace": 0.572
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.54,
+      "poss_macroCoupling": 0.569,
+      "poss_macroMovement": 0.83,
+      "poss_macroSpace": 0.431
+    }
   },
   "schema_version": 1,
   "tags": [

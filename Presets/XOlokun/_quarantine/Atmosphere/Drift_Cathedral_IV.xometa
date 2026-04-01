@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Drift Cathedral IV",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.718,
+      "morph_macroCoupling": 0.525,
+      "morph_macroMovement": 0.813,
+      "morph_macroSpace": 0.917
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.694,
+      "opal_macroCoupling": 0.544,
+      "opal_macroMovement": 0.794,
+      "opal_macroSpace": 0.886
+    }
   },
   "schema_version": 1,
   "tags": [

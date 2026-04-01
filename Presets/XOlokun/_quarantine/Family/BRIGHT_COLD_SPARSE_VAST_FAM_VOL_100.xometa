@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Prism Orbit",
   "parameters": {
-    "Ole": {},
-    "Opal": {}
+    "Ole": {
+      "ole_macroCharacter": 0.489,
+      "ole_macroCoupling": 0.349,
+      "ole_macroMovement": 0.32,
+      "ole_macroSpace": 0.959
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.522,
+      "opal_macroCoupling": 0.318,
+      "opal_macroMovement": 0.285,
+      "opal_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

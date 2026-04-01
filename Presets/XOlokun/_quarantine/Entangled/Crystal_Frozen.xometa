@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Crystal Frozen",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.62,
+      "ole_macroCoupling": 0.81,
+      "ole_macroMovement": 0.68,
+      "ole_macroSpace": 0.39
+    },
+    "Orphica": {
+      "orph_macroCharacter": 1.0,
+      "orph_macroCoupling": 0.89,
+      "orph_macroMovement": 0.93,
+      "orph_macroSpace": 0.27
+    }
   },
   "schema_version": 1,
   "sequencer": null,

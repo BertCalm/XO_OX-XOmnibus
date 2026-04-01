@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Frost Horizon",
   "parameters": {
-    "Obbligato": {},
-    "Ottoni": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.535,
+      "obbl_macroCoupling": 0.297,
+      "obbl_macroMovement": 0.368,
+      "obbl_macroSpace": 0.926
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.498,
+      "otto_macroCoupling": 0.263,
+      "otto_macroMovement": 0.338,
+      "otto_macroSpace": 0.911
+    }
   },
   "schema_version": 1,
   "tags": [

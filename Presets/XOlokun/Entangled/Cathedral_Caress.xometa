@@ -49,7 +49,11 @@
       "filter_resonance": 0.0819,
       "output_level": 0.9081,
       "reverb_mix": 0.7309,
-      "reverb_size": 0.7848
+      "reverb_size": 0.7848,
+      "obbl_macroCharacter": 0.7828,
+      "obbl_macroCoupling": 0.5854,
+      "obbl_macroMovement": 0.4746,
+      "obbl_macroSpace": 0.9631
     },
     "Owlfish": {
       "amp_attack": 0.2917,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.1109,
       "output_level": 0.9299,
       "reverb_mix": 0.6835,
-      "reverb_size": 0.7754
+      "reverb_size": 0.7754,
+      "owl_macroCharacter": 0.7954,
+      "owl_macroCoupling": 0.5967,
+      "owl_macroMovement": 0.5111,
+      "owl_macroSpace": 0.9974
     }
   },
   "schema_version": 1,

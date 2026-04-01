@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Signal Edge 3",
   "parameters": {
-    "Odyssey": {},
-    "Optic": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.567,
+      "drift_macroCoupling": 0.696,
+      "drift_macroMovement": 0.084,
+      "drift_macroSpace": 0.586
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.44,
+      "optic_macroCoupling": 0.706,
+      "optic_macroMovement": 0.075,
+      "optic_macroSpace": 0.553
+    }
   },
   "schema_version": 1,
   "tags": [

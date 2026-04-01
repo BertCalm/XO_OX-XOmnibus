@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Frozen Plate",
   "parameters": {
-    "Obscura": {},
-    "Odyssey": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.08,
+      "obscura_macroCoupling": 0.84,
+      "obscura_macroMovement": 0.17,
+      "obscura_macroSpace": 0.98
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.11,
+      "drift_macroCoupling": 0.79,
+      "drift_macroMovement": 0.22,
+      "drift_macroSpace": 0.95
+    }
   },
   "schema_version": 1,
   "tags": [

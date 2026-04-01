@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Shard Shimmer 2",
   "parameters": {
-    "Oracle": {},
-    "Overworld": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.751,
+      "oracle_macroCoupling": 0.577,
+      "oracle_macroMovement": 0.263,
+      "oracle_macroSpace": 0.535
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.856,
+      "ow_macroCoupling": 0.134,
+      "ow_macroMovement": 0.553,
+      "ow_macroSpace": 0.628
+    }
   },
   "schema_version": 1,
   "tags": [

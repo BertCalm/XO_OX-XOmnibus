@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Midnight Surge (Optic)",
   "parameters": {
-    "Ocelot": {},
-    "Optic": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.736,
+      "ocelot_macroCoupling": 0.73,
+      "ocelot_macroMovement": 0.893,
+      "ocelot_macroSpace": 0.595
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.335,
+      "optic_macroCoupling": 0.637,
+      "optic_macroMovement": 0.893,
+      "optic_macroSpace": 0.595
+    }
   },
   "schema_version": 1,
   "tags": [

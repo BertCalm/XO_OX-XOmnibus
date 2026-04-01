@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Wave Void",
   "parameters": {
-    "Ohm": {},
-    "Osteria": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.193,
+      "ohm_macroCoupling": 0.977,
+      "ohm_macroMovement": 0.064,
+      "ohm_macroSpace": 0.8
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.083,
+      "osteria_macroCoupling": 0.902,
+      "osteria_macroMovement": 0.079,
+      "osteria_macroSpace": 0.924
+    }
   },
   "schema_version": 1,
   "sequencer": null,

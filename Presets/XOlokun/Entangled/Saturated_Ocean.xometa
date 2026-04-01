@@ -49,7 +49,11 @@
       "filter_resonance": 0.5884,
       "output_level": 0.981,
       "reverb_mix": 0.6895,
-      "reverb_size": 0.7892
+      "reverb_size": 0.7892,
+      "obsidian_macroCharacter": 0.8619,
+      "obsidian_macroCoupling": 0.9473,
+      "obsidian_macroMovement": 0.597,
+      "obsidian_macroSpace": 0.9077
     },
     "Osprey": {
       "osprey_ampAttack": 0.2463,

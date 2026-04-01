@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Node Titan",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.486,
+      "drift_macroCoupling": 0.923,
+      "drift_macroMovement": 0.881,
+      "drift_macroSpace": 0.344
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.498,
+      "opal_macroCoupling": 0.896,
+      "opal_macroMovement": 0.829,
+      "opal_macroSpace": 0.398
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,9 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.53,
+      "bob_macroCoupling": 0.358,
+      "bob_macroMovement": 0.863,
+      "bob_macroSpace": 0.882
     },
-    "Osteria": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.525,
+      "osteria_macroCoupling": 0.361,
+      "osteria_macroMovement": 0.91,
+      "osteria_macroSpace": 0.874
+    }
   },
   "schema_version": 1,
   "tags": [

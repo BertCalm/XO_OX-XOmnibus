@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Signal Grit 2",
   "parameters": {
-    "Obscura": {},
-    "Overlap": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.522,
+      "obscura_macroCoupling": 0.793,
+      "obscura_macroMovement": 0.579,
+      "obscura_macroSpace": 0.012
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.748,
+      "olap_macroCoupling": 0.789,
+      "olap_macroMovement": 0.599,
+      "olap_macroSpace": 0.051
+    }
   },
   "schema_version": 1,
   "tags": [

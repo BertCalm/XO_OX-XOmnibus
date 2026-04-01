@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Thread Rage",
   "parameters": {
-    "OddfeliX": {},
-    "Oracle": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.4069,
+      "snap_macroCoupling": 0.8792,
+      "snap_macroMovement": 0.5152,
+      "snap_macroSpace": 0.056
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.4562,
+      "oracle_macroCoupling": 0.927,
+      "oracle_macroMovement": 0.5612,
+      "oracle_macroSpace": 0.0785
+    }
   },
   "schema_version": 1,
   "tags": [

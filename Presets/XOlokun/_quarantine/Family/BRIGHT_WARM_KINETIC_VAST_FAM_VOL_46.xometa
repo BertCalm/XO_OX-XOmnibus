@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Cavern 2",
   "parameters": {
-    "Opal": {},
-    "Osprey": {}
+    "Opal": {
+      "opal_macroCharacter": 0.909,
+      "opal_macroCoupling": 0.394,
+      "opal_macroMovement": 0.956,
+      "opal_macroSpace": 0.968
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.944,
+      "osprey_macroCoupling": 0.413,
+      "osprey_macroMovement": 0.935,
+      "osprey_macroSpace": 0.969
+    }
   },
   "schema_version": 1,
   "tags": [

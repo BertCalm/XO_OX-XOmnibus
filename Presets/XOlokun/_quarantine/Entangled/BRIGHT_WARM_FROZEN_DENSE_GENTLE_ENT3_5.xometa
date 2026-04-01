@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Solar Thick 2",
   "parameters": {
-    "Obese": {},
-    "Octopus": {}
+    "Obese": {
+      "fat_macroCharacter": 0.7344,
+      "fat_macroCoupling": 0.8404,
+      "fat_macroMovement": 0.0235,
+      "fat_macroSpace": 0.9132
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.8458,
+      "octo_macroCoupling": 0.8745,
+      "octo_macroMovement": 0.045,
+      "octo_macroSpace": 0.5768
+    }
   },
   "schema_version": 1,
   "sequencer": null,

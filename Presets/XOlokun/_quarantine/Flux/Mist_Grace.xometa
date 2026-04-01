@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Mist Grace",
   "parameters": {
-    "Onset": {},
-    "Osteria": {}
+    "Onset": {
+      "perc_macroCharacter": 0.748,
+      "perc_macroCoupling": 0.463,
+      "perc_macroMovement": 0.539,
+      "perc_macroSpace": 0.615
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.619,
+      "osteria_macroCoupling": 0.594,
+      "osteria_macroMovement": 0.619,
+      "osteria_macroSpace": 0.53
+    }
   },
   "schema_version": 1,
   "tags": [

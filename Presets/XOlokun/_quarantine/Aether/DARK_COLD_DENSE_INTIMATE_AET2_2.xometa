@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Wave Deep",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.1183,
+      "ombre_macroCoupling": 0.9081,
+      "ombre_macroMovement": 0.6246,
+      "ombre_macroSpace": 0.0717
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.0751,
+      "orb_macroCoupling": 0.9583,
+      "orb_macroMovement": 0.556,
+      "orb_macroSpace": 0.0429
+    }
   },
   "schema_version": 1,
   "tags": [

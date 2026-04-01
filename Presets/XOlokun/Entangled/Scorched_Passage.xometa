@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Scorched Passage",
   "parameters": {
-    "Opal": {},
+    "Opal": {
+      "opal_macroCharacter": 0.77,
+      "opal_macroCoupling": 0.59,
+      "opal_macroMovement": 0.76,
+      "opal_macroSpace": 0.51
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.69,
+      "dub_macroCoupling": 0.49,
+      "dub_macroMovement": 0.74,
+      "dub_macroSpace": 0.68
     }
   },
   "schema_version": 1,

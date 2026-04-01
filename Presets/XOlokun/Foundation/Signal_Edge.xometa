@@ -45,9 +45,18 @@
   "mood": "Foundation",
   "name": "Signal Edge",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.162,
+      "fat_macroCoupling": 0.428,
+      "fat_macroMovement": 0.919,
+      "fat_macroSpace": 0.137
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.116,
+      "dub_macroCoupling": 0.358,
+      "dub_macroMovement": 0.832,
+      "dub_macroSpace": 0.158
     }
   },
   "schema_version": 1,

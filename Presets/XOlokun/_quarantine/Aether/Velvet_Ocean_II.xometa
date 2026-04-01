@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Velvet Ocean II",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.7271,
+      "morph_macroCoupling": 0.3886,
+      "morph_macroMovement": 0.4032,
+      "morph_macroSpace": 0.2905
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.5982,
+      "osprey_macroCoupling": 0.7595,
+      "osprey_macroMovement": 0.5191,
+      "osprey_macroSpace": 0.4481
+    }
   },
   "schema_version": 1,
   "tags": [

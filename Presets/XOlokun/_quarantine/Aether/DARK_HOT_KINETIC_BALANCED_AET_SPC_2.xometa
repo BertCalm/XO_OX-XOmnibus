@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK HOT KINETIC BALANCED A... (Orbital)",
   "parameters": {
-    "OddfeliX": {},
-    "Orbital": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.527,
+      "snap_macroCoupling": 0.879,
+      "snap_macroMovement": 0.969,
+      "snap_macroSpace": 0.389
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.498,
+      "orb_macroCoupling": 0.876,
+      "orb_macroMovement": 0.984,
+      "orb_macroSpace": 0.396
+    }
   },
   "schema_version": 1,
   "tags": [

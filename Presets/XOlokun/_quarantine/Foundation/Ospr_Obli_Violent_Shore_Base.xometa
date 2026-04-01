@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Osprey": {},
-    "Oblique": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.74,
+      "osprey_macroMovement": 0.72,
+      "osprey_macroCoupling": 0.54,
+      "osprey_macroSpace": 0.49
+    },
+    "Oblique": {
+      "oblq_macroCharacter": 0.85,
+      "oblq_macroMovement": 0.91,
+      "oblq_macroCoupling": 0.54,
+      "oblq_macroSpace": 0.27
+    }
   },
   "coupling": {
     "type": "CHAOS_INJECT",

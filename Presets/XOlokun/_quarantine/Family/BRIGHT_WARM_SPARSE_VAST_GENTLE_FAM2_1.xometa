@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM SPARSE VAST GEN...",
   "parameters": {
-    "Odyssey": {},
-    "Orphica": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.913,
+      "drift_macroCoupling": 0.069,
+      "drift_macroMovement": 0.294,
+      "drift_macroSpace": 0.981
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.929,
+      "orph_macroCoupling": 0.075,
+      "orph_macroMovement": 0.349,
+      "orph_macroSpace": 0.953
+    }
   },
   "schema_version": 1,
   "tags": [

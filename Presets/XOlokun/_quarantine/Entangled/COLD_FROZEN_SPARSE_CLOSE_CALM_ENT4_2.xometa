@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Phase Shard",
   "parameters": {
-    "Obbligato": {},
-    "Obscura": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.351,
+      "obbl_macroCoupling": 0.01,
+      "obbl_macroMovement": 0.011,
+      "obbl_macroSpace": 0.051
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.334,
+      "obscura_macroCoupling": 0.01,
+      "obscura_macroMovement": 0.023,
+      "obscura_macroSpace": 0.07
+    }
   },
   "schema_version": 1,
   "tags": [

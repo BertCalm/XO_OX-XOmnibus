@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glint Lull",
   "parameters": {
-    "Onset": {},
-    "Osteria": {}
+    "Onset": {
+      "perc_macroCharacter": 0.731,
+      "perc_macroCoupling": 0.458,
+      "perc_macroMovement": 0.46,
+      "perc_macroSpace": 0.514
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.635,
+      "osteria_macroCoupling": 0.815,
+      "osteria_macroMovement": 0.599,
+      "osteria_macroSpace": 0.397
+    }
   },
   "schema_version": 1,
   "tags": [

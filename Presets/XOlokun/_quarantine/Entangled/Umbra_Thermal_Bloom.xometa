@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Umbra Thermal Bloom",
   "parameters": {
-    "OddOscar": {},
-    "Oracle": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.79,
+      "morph_macroCoupling": 0.74,
+      "morph_macroMovement": 0.72,
+      "morph_macroSpace": 0.59
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.78,
+      "oracle_macroCoupling": 0.79,
+      "oracle_macroMovement": 0.85,
+      "oracle_macroSpace": 0.84
+    }
   },
   "schema_version": 1,
   "tags": [

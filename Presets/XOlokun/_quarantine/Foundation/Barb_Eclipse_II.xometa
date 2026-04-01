@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Barb Eclipse II",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.0,
+      "ocelot_macroCoupling": 0.429,
+      "ocelot_macroMovement": 0.387,
+      "ocelot_macroSpace": 0.557
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.073,
+      "poss_macroCoupling": 0.515,
+      "poss_macroMovement": 0.348,
+      "poss_macroSpace": 0.435
+    }
   },
   "schema_version": 1,
   "tags": [

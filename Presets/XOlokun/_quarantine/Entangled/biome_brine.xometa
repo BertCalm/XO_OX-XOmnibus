@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Biome Brine",
   "parameters": {
-    "Oceanic": {},
-    "Ocelot": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.295,
+      "ocean_macroCoupling": 0.445,
+      "ocean_macroMovement": 0.345,
+      "ocean_macroSpace": 0.795
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.655,
+      "ocelot_macroCoupling": 0.555,
+      "ocelot_macroMovement": 0.705,
+      "ocelot_macroSpace": 0.455
+    }
   },
   "schema_version": 1,
   "tags": [

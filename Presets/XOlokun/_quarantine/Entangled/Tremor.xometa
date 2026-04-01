@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "TREMOR",
   "parameters": {
-    "Optic": {},
-    "Orphica": {}
+    "Optic": {
+      "optic_macroCharacter": 0.31,
+      "optic_macroCoupling": 0.398,
+      "optic_macroMovement": 0.969,
+      "optic_macroSpace": 0.815
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.473,
+      "orph_macroCoupling": 0.037,
+      "orph_macroMovement": 0.912,
+      "orph_macroSpace": 0.647
+    }
   },
   "schema_version": 1,
   "tags": [

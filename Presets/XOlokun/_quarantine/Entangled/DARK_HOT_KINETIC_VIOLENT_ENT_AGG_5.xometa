@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Copper Pulse",
   "parameters": {
-    "Obsidian": {},
-    "Origami": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.712,
+      "obsidian_macroCoupling": 0.749,
+      "obsidian_macroMovement": 0.938,
+      "obsidian_macroSpace": 0.632
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.596,
+      "origami_macroCoupling": 0.755,
+      "origami_macroMovement": 0.892,
+      "origami_macroSpace": 0.648
+    }
   },
   "schema_version": 1,
   "tags": [

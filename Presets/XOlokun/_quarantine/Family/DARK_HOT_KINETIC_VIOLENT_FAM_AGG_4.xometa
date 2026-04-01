@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Amber Fang",
   "parameters": {
-    "Ole": {},
-    "Osprey": {}
+    "Ole": {
+      "ole_macroCharacter": 0.875,
+      "ole_macroCoupling": 0.666,
+      "ole_macroMovement": 0.614,
+      "ole_macroSpace": 0.624
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.897,
+      "osprey_macroCoupling": 0.681,
+      "osprey_macroMovement": 0.605,
+      "osprey_macroSpace": 0.589
+    }
   },
   "schema_version": 1,
   "tags": [

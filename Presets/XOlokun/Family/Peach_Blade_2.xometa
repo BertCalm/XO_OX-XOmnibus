@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Peach Blade 2",
   "parameters": {
-    "Osteria": {},
+    "Osteria": {
+      "osteria_macroCharacter": 0.983,
+      "osteria_macroCoupling": 0.501,
+      "osteria_macroMovement": 0.671,
+      "osteria_macroSpace": 0.534
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.979,
+      "dub_macroCoupling": 0.512,
+      "dub_macroMovement": 0.711,
+      "dub_macroSpace": 0.539
     }
   },
   "schema_version": 1,

@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Glint Opaque II",
   "parameters": {
-    "Octopus": {},
+    "Octopus": {
+      "octo_macroCharacter": 0.897,
+      "octo_macroCoupling": 0.614,
+      "octo_macroMovement": 0.463,
+      "octo_macroSpace": 0.483
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.919,
+      "dub_macroCoupling": 0.637,
+      "dub_macroMovement": 0.389,
+      "dub_macroSpace": 0.422
     }
   },
   "schema_version": 1,

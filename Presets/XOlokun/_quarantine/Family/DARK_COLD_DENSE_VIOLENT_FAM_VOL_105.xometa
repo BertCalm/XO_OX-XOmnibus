@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Wave Edge",
   "parameters": {
-    "Ohm": {},
-    "Opal": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.055,
+      "ohm_macroCoupling": 0.939,
+      "ohm_macroMovement": 0.655,
+      "ohm_macroSpace": 0.637
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.023,
+      "opal_macroCoupling": 0.938,
+      "opal_macroMovement": 0.65,
+      "opal_macroSpace": 0.612
+    }
   },
   "schema_version": 1,
   "tags": [

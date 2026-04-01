@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Deep Space Fold",
   "parameters": {
-    "Obscura": {},
-    "Origami": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.15,
+      "obscura_macroCoupling": 0.85,
+      "obscura_macroMovement": 0.73,
+      "obscura_macroSpace": 0.65
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.35,
+      "origami_macroCoupling": 0.88,
+      "origami_macroMovement": 0.57,
+      "origami_macroSpace": 0.21
+    }
   },
   "schema_version": 1,
   "tags": [

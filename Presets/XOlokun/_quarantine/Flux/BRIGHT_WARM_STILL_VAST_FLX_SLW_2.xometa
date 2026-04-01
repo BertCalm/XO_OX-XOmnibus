@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Solar Horizon 2",
   "parameters": {
-    "Ouroboros": {},
-    "Overworld": {}
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.494,
+      "ouro_macroCoupling": 0.935,
+      "ouro_macroMovement": 0.09,
+      "ouro_macroSpace": 1.0
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.328,
+      "ow_macroCoupling": 0.764,
+      "ow_macroMovement": 0.086,
+      "ow_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "tags": [

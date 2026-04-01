@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "WHIPLASH 26",
   "parameters": {
-    "Opal": {},
-    "Orca": {}
+    "Opal": {
+      "opal_macroCharacter": 0.791,
+      "opal_macroCoupling": 0.138,
+      "opal_macroMovement": 0.964,
+      "opal_macroSpace": 0.287
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.83,
+      "orca_macroCoupling": 0.696,
+      "orca_macroMovement": 0.945,
+      "orca_macroSpace": 0.139
+    }
   },
   "schema_version": 1,
   "tags": [

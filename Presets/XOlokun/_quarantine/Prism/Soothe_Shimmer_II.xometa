@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Soothe Shimmer II",
   "parameters": {
-    "Ole": {},
-    "Overworld": {}
+    "Ole": {
+      "ole_macroCharacter": 0.487,
+      "ole_macroCoupling": 0.569,
+      "ole_macroMovement": 0.454,
+      "ole_macroSpace": 0.39
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.078,
+      "ow_macroCoupling": 0.303,
+      "ow_macroMovement": 0.454,
+      "ow_macroSpace": 0.39
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Sparse Crystal",
   "parameters": {
-    "Onset": {},
-    "Optic": {}
+    "Onset": {
+      "perc_macroCharacter": 0.82,
+      "perc_macroCoupling": 0.7,
+      "perc_macroMovement": 0.95,
+      "perc_macroSpace": 0.23
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.93,
+      "optic_macroCoupling": 0.82,
+      "optic_macroMovement": 0.63,
+      "optic_macroSpace": 0.31
+    }
   },
   "schema_version": 1,
   "sequencer": null,

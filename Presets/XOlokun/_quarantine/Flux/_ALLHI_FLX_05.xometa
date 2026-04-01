@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "ALLHI FLX 05",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.929,
+      "oracle_macroCoupling": 0.747,
+      "oracle_macroMovement": 0.919,
+      "oracle_macroSpace": 0.557
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.929,
+      "organon_macroCoupling": 0.747,
+      "organon_macroMovement": 0.919,
+      "organon_macroSpace": 0.557
+    }
   },
   "schema_version": 1,
   "tags": [

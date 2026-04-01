@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Grain Deep",
   "parameters": {
-    "Oblique": {},
-    "Oceanic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.608,
+      "oblq_macroCoupling": 0.828,
+      "oblq_macroMovement": 0.907,
+      "oblq_macroSpace": 0.43
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.402,
+      "ocean_macroCoupling": 0.86,
+      "ocean_macroMovement": 0.852,
+      "ocean_macroSpace": 0.438
+    }
   },
   "schema_version": 1,
   "tags": [

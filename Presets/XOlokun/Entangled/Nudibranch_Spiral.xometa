@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Nudibranch Spiral",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.94,
+      "morph_macroCoupling": 0.82,
+      "morph_macroMovement": 0.4,
+      "morph_macroSpace": 0.33
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.94,
+      "dub_macroCoupling": 0.99,
+      "dub_macroMovement": 0.37,
+      "dub_macroSpace": 0.45
     }
   },
   "schema_version": 1,

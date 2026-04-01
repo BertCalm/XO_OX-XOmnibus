@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Cocoa Orbit 2",
   "parameters": {
-    "Ohm": {},
-    "Opal": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.523,
+      "ohm_macroCoupling": 0.242,
+      "ohm_macroMovement": 0.3,
+      "ohm_macroSpace": 0.962
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.508,
+      "opal_macroCoupling": 0.263,
+      "opal_macroMovement": 0.296,
+      "opal_macroSpace": 0.914
+    }
   },
   "schema_version": 1,
   "tags": [

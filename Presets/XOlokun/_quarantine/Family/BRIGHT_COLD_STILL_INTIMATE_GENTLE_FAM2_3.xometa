@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT COLD STILL INTIMATE ... (Obbligato I)",
   "parameters": {
-    "Obbligato": {},
-    "Osteria": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.481,
+      "obbl_macroCoupling": 0.197,
+      "obbl_macroMovement": 0.029,
+      "obbl_macroSpace": 0.091
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.48,
+      "osteria_macroCoupling": 0.201,
+      "osteria_macroMovement": 0.065,
+      "osteria_macroSpace": 0.114
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Brass Current",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.365,
+      "organon_macroCoupling": 0.678,
+      "organon_macroMovement": 0.814,
+      "organon_macroSpace": 0.307
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.682,
+      "origami_macroCoupling": 0.837,
+      "origami_macroMovement": 0.849,
+      "origami_macroSpace": 0.388
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Shadow Prism (Orbital)",
   "parameters": {
-    "Optic": {},
-    "Orbital": {}
+    "Optic": {
+      "optic_macroCharacter": 0.337,
+      "optic_macroCoupling": 0.727,
+      "optic_macroMovement": 0.405,
+      "optic_macroSpace": 0.745
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.793,
+      "orb_macroCoupling": 0.732,
+      "orb_macroMovement": 0.894,
+      "orb_macroSpace": 0.286
+    }
   },
   "schema_version": 1,
   "tags": [

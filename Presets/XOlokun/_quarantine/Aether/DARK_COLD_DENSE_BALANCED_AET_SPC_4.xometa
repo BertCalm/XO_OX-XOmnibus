@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK COLD DENSE BALANCED AE... (OddfeliX I)",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.117,
+      "morph_macroCoupling": 0.845,
+      "morph_macroMovement": 0.52,
+      "morph_macroSpace": 0.508
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.115,
+      "snap_macroCoupling": 0.843,
+      "snap_macroMovement": 0.503,
+      "snap_macroSpace": 0.538
+    }
   },
   "schema_version": 1,
   "tags": [

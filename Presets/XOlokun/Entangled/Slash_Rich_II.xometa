@@ -49,7 +49,11 @@
       "filter_resonance": 0.603,
       "output_level": 0.9303,
       "reverb_mix": 0.6399,
-      "reverb_size": 0.7132
+      "reverb_size": 0.7132,
+      "fat_macroCharacter": 0.8254,
+      "fat_macroCoupling": 0.93,
+      "fat_macroMovement": 0.4153,
+      "fat_macroSpace": 0.9073
     },
     "Odyssey": {
       "amp_attack": 0.3092,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.6286,
       "output_level": 0.9522,
       "reverb_mix": 0.6568,
-      "reverb_size": 0.7537
+      "reverb_size": 0.7537,
+      "drift_macroCharacter": 0.82,
+      "drift_macroCoupling": 0.9169,
+      "drift_macroMovement": 0.3515,
+      "drift_macroSpace": 0.9328
     }
   },
   "schema_version": 1,

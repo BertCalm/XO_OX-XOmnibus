@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Wave Rage 3",
   "parameters": {
-    "Orca": {},
-    "Osprey": {}
+    "Orca": {
+      "orca_macroCharacter": 0.099,
+      "orca_macroCoupling": 0.67,
+      "orca_macroMovement": 0.029,
+      "orca_macroSpace": 0.895
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.12,
+      "osprey_macroCoupling": 0.676,
+      "osprey_macroMovement": 0.04,
+      "osprey_macroSpace": 0.866
+    }
   },
   "schema_version": 1,
   "tags": [

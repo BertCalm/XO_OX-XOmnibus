@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Golden Shimmer",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.441,
+      "oblq_macroCoupling": 0.421,
+      "oblq_macroMovement": 0.827,
+      "oblq_macroSpace": 0.372
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.718,
+      "orb_macroCoupling": 0.719,
+      "orb_macroMovement": 0.805,
+      "orb_macroSpace": 0.396
+    }
   },
   "schema_version": 1,
   "tags": [

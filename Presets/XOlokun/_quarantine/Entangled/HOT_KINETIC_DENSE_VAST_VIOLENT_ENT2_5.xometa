@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HOT KINETIC DENSE VAST VIOL... (Orphica I)",
   "parameters": {
-    "Ocelot": {},
-    "Orphica": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.713,
+      "ocelot_macroCoupling": 0.958,
+      "ocelot_macroMovement": 0.947,
+      "ocelot_macroSpace": 0.972
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.716,
+      "orph_macroCoupling": 0.958,
+      "orph_macroMovement": 0.957,
+      "orph_macroSpace": 0.945
+    }
   },
   "schema_version": 1,
   "tags": [

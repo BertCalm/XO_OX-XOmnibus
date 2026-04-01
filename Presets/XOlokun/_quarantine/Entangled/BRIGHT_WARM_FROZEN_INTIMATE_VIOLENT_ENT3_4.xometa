@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Radiant Force",
   "parameters": {
-    "Ombre": {},
-    "Owlfish": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.8917,
+      "ombre_macroCoupling": 0.9203,
+      "ombre_macroMovement": 0.0347,
+      "ombre_macroSpace": 0.3641
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.9316,
+      "owl_macroCoupling": 0.8663,
+      "owl_macroMovement": 0.0594,
+      "owl_macroSpace": 0.1245
+    }
   },
   "schema_version": 1,
   "sequencer": null,

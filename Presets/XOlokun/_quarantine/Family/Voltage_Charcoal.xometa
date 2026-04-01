@@ -39,8 +39,18 @@
   "mood": "Family",
   "name": "Voltage Charcoal",
   "parameters": {
-    "Onset": {},
-    "Oracle": {}
+    "Onset": {
+      "perc_macroCharacter": 0.68,
+      "perc_macroCoupling": 0.71,
+      "perc_macroMovement": 0.99,
+      "perc_macroSpace": 0.27
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.82,
+      "oracle_macroCoupling": 0.61,
+      "oracle_macroMovement": 0.88,
+      "oracle_macroSpace": 0.49
+    }
   },
   "schema_version": 1,
   "sequencer": null,

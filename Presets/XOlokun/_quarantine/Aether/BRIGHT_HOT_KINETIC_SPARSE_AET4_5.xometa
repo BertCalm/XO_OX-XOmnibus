@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Radiant Stream",
   "parameters": {
-    "Obscura": {},
-    "OddOscar": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.3064,
+      "obscura_macroCoupling": 0.223,
+      "obscura_macroMovement": 0.6749,
+      "obscura_macroSpace": 0.7596
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.3613,
+      "morph_macroCoupling": 0.4557,
+      "morph_macroMovement": 0.5149,
+      "morph_macroSpace": 0.4775
+    }
   },
   "schema_version": 1,
   "tags": [

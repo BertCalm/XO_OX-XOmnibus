@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Eddy Radiant",
   "parameters": {
-    "OddOscar": {},
-    "Ohm": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.962,
+      "morph_macroCoupling": 0.935,
+      "morph_macroMovement": 0.709,
+      "morph_macroSpace": 0.959
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.962,
+      "ohm_macroCoupling": 0.935,
+      "ohm_macroMovement": 0.709,
+      "ohm_macroSpace": 0.959
+    }
   },
   "schema_version": 1,
   "tags": [

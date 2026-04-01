@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Crystal Orbit 2",
   "parameters": {
-    "Ombre": {},
-    "Orca": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.8901,
+      "ombre_macroCoupling": 0.7907,
+      "ombre_macroMovement": 0.0393,
+      "ombre_macroSpace": 0.1721
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.7167,
+      "orca_macroCoupling": 0.8013,
+      "orca_macroMovement": 0.0547,
+      "orca_macroSpace": 0.5022
+    }
   },
   "schema_version": 1,
   "sequencer": null,

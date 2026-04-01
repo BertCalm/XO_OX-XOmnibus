@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Prism Shimmer 2",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.499,
+      "ole_macroCoupling": 0.509,
+      "ole_macroMovement": 0.968,
+      "ole_macroSpace": 0.914
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.494,
+      "osteria_macroCoupling": 0.517,
+      "osteria_macroMovement": 0.96,
+      "osteria_macroSpace": 0.882
+    }
   },
   "schema_version": 1,
   "tags": [

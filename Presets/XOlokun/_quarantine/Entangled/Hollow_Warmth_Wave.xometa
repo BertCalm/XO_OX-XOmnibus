@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Hollow Warmth Wave",
   "parameters": {
-    "Obbligato": {},
-    "Organon": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.44,
+      "obbl_macroCoupling": 0.79,
+      "obbl_macroMovement": 0.58,
+      "obbl_macroSpace": 0.68
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.18,
+      "organon_macroCoupling": 0.81,
+      "organon_macroMovement": 0.11,
+      "organon_macroSpace": 0.41
+    }
   },
   "schema_version": 1,
   "tags": [

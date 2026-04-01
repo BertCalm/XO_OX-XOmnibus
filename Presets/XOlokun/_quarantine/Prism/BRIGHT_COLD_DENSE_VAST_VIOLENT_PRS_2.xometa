@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Silver Titan",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.969,
+      "oblq_macroCoupling": 0.854,
+      "oblq_macroMovement": 0.472,
+      "oblq_macroSpace": 0.958
+    },
+    "Overworld": {
+      "ow_macroCharacter": 1.0,
+      "ow_macroCoupling": 1.0,
+      "ow_macroMovement": 0.374,
+      "ow_macroSpace": 0.871
+    }
   },
   "schema_version": 1,
   "sequencer": null,

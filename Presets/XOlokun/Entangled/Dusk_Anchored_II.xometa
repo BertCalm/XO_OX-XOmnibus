@@ -49,7 +49,11 @@
       "filter_resonance": 0.4348,
       "output_level": 0.7324,
       "reverb_mix": 0.6683,
-      "reverb_size": 0.8063
+      "reverb_size": 0.8063,
+      "opal_macroCharacter": 0.5436,
+      "opal_macroCoupling": 0.777,
+      "opal_macroMovement": 0.0281,
+      "opal_macroSpace": 0.9496
     },
     "Orca": {
       "amp_attack": 0.4324,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.4265,
       "output_level": 0.697,
       "reverb_mix": 0.6841,
-      "reverb_size": 0.7781
+      "reverb_size": 0.7781,
+      "orca_macroCharacter": 0.6094,
+      "orca_macroCoupling": 0.801,
+      "orca_macroMovement": 0.0236,
+      "orca_macroSpace": 0.9257
     }
   },
   "schema_version": 1,

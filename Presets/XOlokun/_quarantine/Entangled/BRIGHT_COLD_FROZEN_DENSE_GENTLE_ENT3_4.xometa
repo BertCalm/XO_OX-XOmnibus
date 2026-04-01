@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Glass Solid",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.9142,
+      "organon_macroCoupling": 0.8382,
+      "organon_macroMovement": 0.0234,
+      "organon_macroSpace": 0.7482
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.8955,
+      "otto_macroCoupling": 0.9528,
+      "otto_macroMovement": 0.0331,
+      "otto_macroSpace": 0.9284
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK COLD KINETIC VAST DENS... (Opal I)",
   "parameters": {
-    "Opal": {},
-    "Orca": {}
+    "Opal": {
+      "opal_macroCharacter": 0.064,
+      "opal_macroCoupling": 0.699,
+      "opal_macroMovement": 0.918,
+      "opal_macroSpace": 0.959
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.082,
+      "orca_macroCoupling": 0.666,
+      "orca_macroMovement": 0.935,
+      "orca_macroSpace": 0.951
+    }
   },
   "schema_version": 1,
   "tags": [

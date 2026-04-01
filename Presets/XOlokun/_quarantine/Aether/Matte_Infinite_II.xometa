@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Matte Infinite II",
   "parameters": {
-    "Oblique": {},
-    "Obscura": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7278,
+      "oblq_macroCoupling": 0.825,
+      "oblq_macroMovement": 0.5752,
+      "oblq_macroSpace": 0.8047
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.2541,
+      "obscura_macroCoupling": 0.2317,
+      "obscura_macroMovement": 0.8463,
+      "obscura_macroSpace": 0.2141
+    }
   },
   "schema_version": 1,
   "tags": [

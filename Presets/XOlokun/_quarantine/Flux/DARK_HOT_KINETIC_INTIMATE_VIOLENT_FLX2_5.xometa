@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Cocoa Rage 2",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.5386,
+      "opal_macroCoupling": 0.3443,
+      "opal_macroMovement": 0.8846,
+      "opal_macroSpace": 0.0621
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.5337,
+      "organon_macroCoupling": 0.3295,
+      "organon_macroMovement": 0.9074,
+      "organon_macroSpace": 0.0925
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "DARK COLD STILL DENSE GENTL...",
   "parameters": {
-    "Ohm": {},
-    "Organon": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.053,
+      "ohm_macroCoupling": 0.433,
+      "ohm_macroMovement": 0.077,
+      "ohm_macroSpace": 0.657
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.04,
+      "organon_macroCoupling": 0.46,
+      "organon_macroMovement": 0.053,
+      "organon_macroSpace": 0.599
+    }
   },
   "schema_version": 1,
   "tags": [

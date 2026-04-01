@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Mahogany Flutter",
   "parameters": {
-    "Origami": {},
-    "Owlfish": {}
+    "Origami": {
+      "origami_macroCharacter": 0.6985,
+      "origami_macroCoupling": 0.9017,
+      "origami_macroMovement": 0.9113,
+      "origami_macroSpace": 0.3174
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.7249,
+      "owl_macroCoupling": 0.9306,
+      "owl_macroMovement": 0.9208,
+      "owl_macroSpace": 0.3236
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM DENSE VIOLENT P...",
   "parameters": {
-    "Ocelot": {},
-    "Oracle": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.842,
+      "ocelot_macroCoupling": 0.83,
+      "ocelot_macroMovement": 0.442,
+      "ocelot_macroSpace": 0.581
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.815,
+      "oracle_macroCoupling": 0.838,
+      "oracle_macroMovement": 0.415,
+      "oracle_macroSpace": 0.559
+    }
   },
   "schema_version": 1,
   "tags": [

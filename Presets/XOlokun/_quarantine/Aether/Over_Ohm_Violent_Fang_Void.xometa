@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overbite": {},
-    "Ohm": {}
+    "Overbite": {
+      "poss_macroCharacter": 1.0,
+      "poss_macroMovement": 0.81,
+      "poss_macroCoupling": 0.52,
+      "poss_macroSpace": 0.15
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.65,
+      "ohm_macroMovement": 0.65,
+      "ohm_macroCoupling": 0.59,
+      "ohm_macroSpace": 0.33
+    }
   },
   "coupling": {
     "type": "FILTER_SHARE",

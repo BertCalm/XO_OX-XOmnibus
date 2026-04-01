@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Cinder Reverb",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.72,
+      "organon_macroCoupling": 0.66,
+      "organon_macroMovement": 0.49,
+      "organon_macroSpace": 0.69
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.88,
+      "dub_macroCoupling": 0.72,
+      "dub_macroMovement": 0.51,
+      "dub_macroSpace": 0.72
     }
   },
   "schema_version": 1,

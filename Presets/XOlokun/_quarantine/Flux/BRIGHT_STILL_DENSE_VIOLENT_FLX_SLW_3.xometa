@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Glass Massive 2",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.986,
+      "drift_macroCoupling": 0.794,
+      "drift_macroMovement": 0.028,
+      "drift_macroSpace": 0.676
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.822,
+      "organon_macroCoupling": 0.665,
+      "organon_macroMovement": 0.03,
+      "organon_macroSpace": 0.603
+    }
   },
   "schema_version": 1,
   "tags": [

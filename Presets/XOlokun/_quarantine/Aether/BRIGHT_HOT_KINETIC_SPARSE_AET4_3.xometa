@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Peach Stream",
   "parameters": {
-    "Oracle": {},
-    "Overworld": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.7541,
+      "oracle_macroCoupling": 0.6173,
+      "oracle_macroMovement": 0.8088,
+      "oracle_macroSpace": 0.6398
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.6212,
+      "ow_macroCoupling": 0.2917,
+      "ow_macroMovement": 0.4472,
+      "ow_macroSpace": 0.4652
+    }
   },
   "schema_version": 1,
   "tags": [

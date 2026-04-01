@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Honey Stream 2",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.578,
+      "snap_macroCoupling": 0.883,
+      "snap_macroMovement": 0.957,
+      "snap_macroSpace": 0.472
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.428,
+      "organon_macroCoupling": 0.922,
+      "organon_macroMovement": 0.935,
+      "organon_macroSpace": 0.464
+    }
   },
   "schema_version": 1,
   "tags": [

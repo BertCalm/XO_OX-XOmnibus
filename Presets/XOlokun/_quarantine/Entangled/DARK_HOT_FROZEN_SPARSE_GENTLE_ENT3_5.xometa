@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Dusk Shard",
   "parameters": {
-    "Osteria": {},
-    "Ottoni": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.8143,
+      "osteria_macroCoupling": 0.8459,
+      "osteria_macroMovement": 0.0774,
+      "osteria_macroSpace": 0.934
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.9602,
+      "otto_macroCoupling": 0.7777,
+      "otto_macroMovement": 0.0631,
+      "otto_macroSpace": 0.9248
+    }
   },
   "schema_version": 1,
   "sequencer": null,

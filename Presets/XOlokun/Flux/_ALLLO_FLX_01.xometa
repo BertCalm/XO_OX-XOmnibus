@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "ALLLO FLX 01",
   "parameters": {
-    "Origami": {},
+    "Origami": {
+      "origami_macroCharacter": 0.323,
+      "origami_macroCoupling": 0.042,
+      "origami_macroMovement": 0.06,
+      "origami_macroSpace": 0.035
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.323,
+      "dub_macroCoupling": 0.042,
+      "dub_macroMovement": 0.06,
+      "dub_macroSpace": 0.035
     }
   },
   "schema_version": 1,

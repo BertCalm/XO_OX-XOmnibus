@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Acute Transit",
   "parameters": {
-    "Odyssey": {},
-    "Origami": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.5,
+      "drift_macroCoupling": 0.7,
+      "drift_macroMovement": 0.9,
+      "drift_macroSpace": 0.7
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.4,
+      "origami_macroCoupling": 0.8,
+      "origami_macroMovement": 0.9,
+      "origami_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

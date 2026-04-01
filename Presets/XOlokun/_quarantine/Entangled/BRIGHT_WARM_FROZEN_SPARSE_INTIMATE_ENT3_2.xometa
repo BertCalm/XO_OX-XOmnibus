@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Peach Flux",
   "parameters": {
-    "Oceanic": {},
-    "Octopus": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.6381,
+      "ocean_macroCoupling": 0.8416,
+      "ocean_macroMovement": 0.1036,
+      "ocean_macroSpace": 0.5483
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.6802,
+      "octo_macroCoupling": 0.9773,
+      "octo_macroMovement": 0.0834,
+      "octo_macroSpace": 0.9368
+    }
   },
   "schema_version": 1,
   "sequencer": null,

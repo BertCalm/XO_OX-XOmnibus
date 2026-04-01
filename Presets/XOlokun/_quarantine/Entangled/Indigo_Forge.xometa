@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Indigo Forge",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.62,
+      "oracle_macroCoupling": 0.68,
+      "oracle_macroMovement": 0.6,
+      "oracle_macroSpace": 0.5
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.74,
+      "otto_macroCoupling": 0.76,
+      "otto_macroMovement": 0.56,
+      "otto_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "tags": [

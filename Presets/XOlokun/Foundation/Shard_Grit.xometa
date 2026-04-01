@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Shard Grit",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.267,
+      "snap_macroCoupling": 0.719,
+      "snap_macroMovement": 0.751,
+      "snap_macroSpace": 0.563
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.413,
+      "dub_macroCoupling": 0.707,
+      "dub_macroMovement": 0.355,
+      "dub_macroSpace": 0.362
     }
   },
   "schema_version": 1,

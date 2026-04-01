@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Bloom Abyss",
   "parameters": {
-    "OddfeliX": {},
-    "Osteria": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.896,
+      "snap_macroCoupling": 0.762,
+      "snap_macroMovement": 0.389,
+      "snap_macroSpace": 0.988
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.925,
+      "osteria_macroCoupling": 0.72,
+      "osteria_macroMovement": 0.368,
+      "osteria_macroSpace": 0.939
+    }
   },
   "schema_version": 1,
   "tags": [

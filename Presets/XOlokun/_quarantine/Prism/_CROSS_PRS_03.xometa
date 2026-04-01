@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "CROSS PRS 03",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.269,
+      "ole_macroCoupling": 0.504,
+      "ole_macroMovement": 0.917,
+      "ole_macroSpace": 0.085
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.269,
+      "osteria_macroCoupling": 0.504,
+      "osteria_macroMovement": 0.917,
+      "osteria_macroSpace": 0.085
+    }
   },
   "schema_version": 1,
   "tags": [

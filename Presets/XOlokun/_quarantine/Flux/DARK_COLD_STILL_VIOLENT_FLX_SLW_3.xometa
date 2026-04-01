@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Grain Edge 2",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.645,
+      "opal_macroCoupling": 0.887,
+      "opal_macroMovement": 0.016,
+      "opal_macroSpace": 0.652
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.64,
+      "origami_macroCoupling": 0.807,
+      "origami_macroMovement": 0.022,
+      "origami_macroSpace": 0.624
+    }
   },
   "schema_version": 1,
   "tags": [

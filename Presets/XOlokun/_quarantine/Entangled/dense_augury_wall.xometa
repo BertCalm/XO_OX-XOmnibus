@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Dense Augury Wall",
   "parameters": {
-    "Obese": {},
-    "Oracle": {}
+    "Obese": {
+      "fat_macroCharacter": 0.2,
+      "fat_macroCoupling": 0.9,
+      "fat_macroMovement": 0.4,
+      "fat_macroSpace": 0.2
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.8,
+      "oracle_macroCoupling": 0.9,
+      "oracle_macroMovement": 0.4,
+      "oracle_macroSpace": 0.2
+    }
   },
   "schema_version": 1,
   "tags": [

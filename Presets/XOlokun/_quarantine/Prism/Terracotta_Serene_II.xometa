@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Terracotta Serene II",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.503,
+      "optic_macroCoupling": 0.507,
+      "optic_macroMovement": 0.06,
+      "optic_macroSpace": 0.466
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.13,
+      "oracle_macroCoupling": 0.623,
+      "oracle_macroMovement": 0.06,
+      "oracle_macroSpace": 0.466
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Cascade Mercury II",
   "parameters": {
-    "Oracle": {},
-    "Overworld": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.223,
+      "oracle_macroCoupling": 0.57,
+      "oracle_macroMovement": 0.929,
+      "oracle_macroSpace": 0.878
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.396,
+      "ow_macroCoupling": 0.566,
+      "ow_macroMovement": 0.929,
+      "ow_macroSpace": 0.878
+    }
   },
   "schema_version": 1,
   "tags": [

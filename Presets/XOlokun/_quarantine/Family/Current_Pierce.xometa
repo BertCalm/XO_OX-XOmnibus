@@ -39,8 +39,18 @@
   "mood": "Family",
   "name": "Current Pierce",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.63,
+      "oblq_macroCoupling": 0.51,
+      "oblq_macroMovement": 0.65,
+      "oblq_macroSpace": 0.24
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.8,
+      "osprey_macroCoupling": 0.53,
+      "osprey_macroMovement": 0.62,
+      "osprey_macroSpace": 0.23
+    }
   },
   "schema_version": 1,
   "sequencer": null,

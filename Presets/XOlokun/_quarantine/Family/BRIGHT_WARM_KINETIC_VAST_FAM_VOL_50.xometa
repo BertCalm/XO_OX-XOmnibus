@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Peach Shimmer",
   "parameters": {
-    "Osprey": {},
-    "Osteria": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.938,
+      "osprey_macroCoupling": 0.566,
+      "osprey_macroMovement": 0.914,
+      "osprey_macroSpace": 0.907
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.931,
+      "osteria_macroCoupling": 0.567,
+      "osteria_macroMovement": 0.918,
+      "osteria_macroSpace": 0.922
+    }
   },
   "schema_version": 1,
   "tags": [

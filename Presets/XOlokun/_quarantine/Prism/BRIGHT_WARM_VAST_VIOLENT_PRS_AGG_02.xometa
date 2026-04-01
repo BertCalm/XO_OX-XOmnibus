@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM VAST VIOLENT PR... (Overworld)",
   "parameters": {
-    "Origami": {},
-    "Overworld": {}
+    "Origami": {
+      "origami_macroCharacter": 0.865,
+      "origami_macroCoupling": 0.796,
+      "origami_macroMovement": 0.513,
+      "origami_macroSpace": 0.933
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.809,
+      "ow_macroCoupling": 0.839,
+      "ow_macroMovement": 0.528,
+      "ow_macroSpace": 0.951
+    }
   },
   "schema_version": 1,
   "tags": [

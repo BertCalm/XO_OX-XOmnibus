@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Arctic Ripple",
   "parameters": {
-    "Oblique": {},
-    "Organon": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7091,
+      "oblq_macroCoupling": 0.9793,
+      "oblq_macroMovement": 0.9794,
+      "oblq_macroSpace": 0.0422
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.7321,
+      "organon_macroCoupling": 0.9727,
+      "organon_macroMovement": 0.99,
+      "organon_macroSpace": 0.0504
+    }
   },
   "schema_version": 1,
   "tags": [

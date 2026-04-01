@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Bloom Stream 2",
   "parameters": {
-    "Oracle": {},
-    "Orbital": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.9606,
+      "oracle_macroCoupling": 0.0981,
+      "oracle_macroMovement": 0.9145,
+      "oracle_macroSpace": 0.3508
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.9312,
+      "orb_macroCoupling": 0.0417,
+      "orb_macroMovement": 0.9341,
+      "orb_macroSpace": 0.3527
+    }
   },
   "schema_version": 1,
   "tags": [

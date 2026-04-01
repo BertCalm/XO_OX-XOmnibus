@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Bronze Tower",
   "parameters": {
-    "Ole": {},
-    "Owlfish": {}
+    "Ole": {
+      "ole_macroCharacter": 0.726,
+      "ole_macroCoupling": 0.695,
+      "ole_macroMovement": 0.482,
+      "ole_macroSpace": 0.22
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.486,
+      "owl_macroCoupling": 0.754,
+      "owl_macroMovement": 0.554,
+      "owl_macroSpace": 0.345
+    }
   },
   "schema_version": 1,
   "tags": [

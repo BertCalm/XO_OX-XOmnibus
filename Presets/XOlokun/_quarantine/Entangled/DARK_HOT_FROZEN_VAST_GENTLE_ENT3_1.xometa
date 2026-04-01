@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Velvet Canyon",
   "parameters": {
-    "Ohm": {},
-    "Orca": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.988,
+      "ohm_macroCoupling": 0.7779,
+      "ohm_macroMovement": 0.0443,
+      "ohm_macroSpace": 0.2996
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.8181,
+      "orca_macroCoupling": 0.778,
+      "orca_macroMovement": 0.0243,
+      "orca_macroSpace": 0.1385
+    }
   },
   "schema_version": 1,
   "sequencer": null,

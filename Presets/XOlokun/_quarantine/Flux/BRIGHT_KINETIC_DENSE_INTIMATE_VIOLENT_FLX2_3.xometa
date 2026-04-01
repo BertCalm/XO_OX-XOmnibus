@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Phase Rage",
   "parameters": {
-    "Oblique": {},
-    "Opal": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.6981,
+      "oblq_macroCoupling": 0.923,
+      "oblq_macroMovement": 0.9709,
+      "oblq_macroSpace": 0.0519
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.7352,
+      "opal_macroCoupling": 0.8867,
+      "opal_macroMovement": 0.9797,
+      "opal_macroSpace": 0.033
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Frozen Umbra",
   "parameters": {
-    "OddOscar": {},
-    "Orphica": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.085,
+      "morph_macroCoupling": 0.083,
+      "morph_macroMovement": 0.304,
+      "morph_macroSpace": 0.098
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.085,
+      "orph_macroCoupling": 0.083,
+      "orph_macroMovement": 0.304,
+      "orph_macroSpace": 0.098
+    }
   },
   "schema_version": 1,
   "tags": [

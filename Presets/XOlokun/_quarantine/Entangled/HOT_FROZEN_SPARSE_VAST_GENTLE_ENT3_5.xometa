@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Tone Cathedral",
   "parameters": {
-    "Oblique": {},
-    "Origami": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.872,
+      "oblq_macroCoupling": 0.7681,
+      "oblq_macroMovement": 0.0345,
+      "oblq_macroSpace": 0.9086
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.5504,
+      "origami_macroCoupling": 0.8114,
+      "origami_macroMovement": 0.0155,
+      "origami_macroSpace": 0.2475
+    }
   },
   "schema_version": 1,
   "sequencer": null,

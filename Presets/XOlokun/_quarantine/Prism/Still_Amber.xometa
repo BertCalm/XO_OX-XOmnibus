@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Still Amber",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.091,
+      "ole_macroCoupling": 0.376,
+      "ole_macroMovement": 0.065,
+      "ole_macroSpace": 0.579
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.502,
+      "orph_macroCoupling": 0.879,
+      "orph_macroMovement": 0.065,
+      "orph_macroSpace": 0.579
+    }
   },
   "schema_version": 1,
   "tags": [

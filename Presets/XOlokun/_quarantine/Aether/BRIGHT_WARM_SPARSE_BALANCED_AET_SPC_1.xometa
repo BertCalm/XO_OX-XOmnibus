@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.936,
+      "snap_macroCoupling": 0.689,
+      "snap_macroMovement": 0.613,
+      "snap_macroSpace": 0.479
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.935,
+      "osprey_macroCoupling": 0.681,
+      "osprey_macroMovement": 0.609,
+      "osprey_macroSpace": 0.502
+    }
   },
   "schema_version": 1,
   "tags": [

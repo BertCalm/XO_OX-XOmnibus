@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Cocoa Void",
   "parameters": {
-    "Oracle": {},
-    "Orphica": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.3274,
+      "oracle_macroCoupling": 0.3296,
+      "oracle_macroMovement": 0.9181,
+      "oracle_macroSpace": 0.9455
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.3073,
+      "orph_macroCoupling": 0.3229,
+      "orph_macroMovement": 0.9227,
+      "orph_macroSpace": 0.9532
+    }
   },
   "schema_version": 1,
   "tags": [

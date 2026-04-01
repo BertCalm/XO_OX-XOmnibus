@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Thread Horizon 3",
   "parameters": {
-    "Oceanic": {},
-    "OddfeliX": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.2749,
+      "ocean_macroCoupling": 0.1201,
+      "ocean_macroMovement": 0.1337,
+      "ocean_macroSpace": 0.947
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.3195,
+      "snap_macroCoupling": 0.1019,
+      "snap_macroMovement": 0.0983,
+      "snap_macroSpace": 0.9389
+    }
   },
   "schema_version": 1,
   "tags": [

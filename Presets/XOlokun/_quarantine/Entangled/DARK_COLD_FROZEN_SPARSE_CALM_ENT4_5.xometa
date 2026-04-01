@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Grain Signal 2",
   "parameters": {
-    "Oblique": {},
-    "Octopus": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.07,
+      "oblq_macroCoupling": 0.104,
+      "oblq_macroMovement": 0.036,
+      "oblq_macroSpace": 0.415
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.053,
+      "octo_macroCoupling": 0.09,
+      "octo_macroMovement": 0.023,
+      "octo_macroSpace": 0.381
+    }
   },
   "schema_version": 1,
   "tags": [

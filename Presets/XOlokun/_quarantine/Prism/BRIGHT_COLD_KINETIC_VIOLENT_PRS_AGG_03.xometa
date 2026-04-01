@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT COLD KINETIC VIOLENT... (Origami I)",
   "parameters": {
-    "Origami": {},
-    "Overworld": {}
+    "Origami": {
+      "origami_macroCharacter": 0.84,
+      "origami_macroCoupling": 0.927,
+      "origami_macroMovement": 0.954,
+      "origami_macroSpace": 0.581
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.884,
+      "ow_macroCoupling": 0.955,
+      "ow_macroMovement": 0.906,
+      "ow_macroSpace": 0.597
+    }
   },
   "schema_version": 1,
   "tags": [

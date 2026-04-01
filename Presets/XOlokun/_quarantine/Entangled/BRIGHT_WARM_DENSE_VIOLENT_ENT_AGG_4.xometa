@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Peach Saturated",
   "parameters": {
-    "Obbligato": {},
-    "Oracle": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.451,
+      "obbl_macroCoupling": 0.808,
+      "obbl_macroMovement": 0.515,
+      "obbl_macroSpace": 0.6
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.385,
+      "oracle_macroCoupling": 0.778,
+      "oracle_macroMovement": 0.601,
+      "oracle_macroSpace": 0.636
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -39,8 +39,18 @@
   "mood": "Aether",
   "name": "Platinum Barb III",
   "parameters": {
-    "Ocelot": {},
-    "Orphica": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.76,
+      "ocelot_macroCoupling": 0.61,
+      "ocelot_macroMovement": 0.64,
+      "ocelot_macroSpace": 0.28
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.69,
+      "orph_macroCoupling": 0.76,
+      "orph_macroMovement": 0.86,
+      "orph_macroSpace": 0.14
+    }
   },
   "schema_version": 1,
   "sequencer": null,

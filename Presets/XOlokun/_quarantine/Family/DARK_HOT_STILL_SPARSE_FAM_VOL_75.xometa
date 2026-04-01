@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Ember Vast",
   "parameters": {
-    "Opal": {},
-    "Orphica": {}
+    "Opal": {
+      "opal_macroCharacter": 0.542,
+      "opal_macroCoupling": 0.279,
+      "opal_macroMovement": 0.052,
+      "opal_macroSpace": 0.661
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.538,
+      "orph_macroCoupling": 0.285,
+      "orph_macroMovement": 0.064,
+      "orph_macroSpace": 0.637
+    }
   },
   "schema_version": 1,
   "tags": [

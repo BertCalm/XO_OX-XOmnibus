@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK KINETIC DENSE BALANCED... (Ombre I)",
   "parameters": {
-    "OddOscar": {},
-    "Ombre": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.203,
+      "morph_macroCoupling": 0.601,
+      "morph_macroMovement": 0.911,
+      "morph_macroSpace": 0.408
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.191,
+      "ombre_macroCoupling": 0.604,
+      "ombre_macroMovement": 0.899,
+      "ombre_macroSpace": 0.397
+    }
   },
   "schema_version": 1,
   "tags": [

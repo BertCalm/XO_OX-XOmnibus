@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "White Fold",
   "parameters": {
-    "Obsidian": {},
-    "Origami": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.19,
+      "obsidian_macroCoupling": 0.67,
+      "obsidian_macroMovement": 0.5,
+      "obsidian_macroSpace": 0.89
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.22,
+      "origami_macroCoupling": 0.62,
+      "origami_macroMovement": 0.55,
+      "origami_macroSpace": 0.86
+    }
   },
   "schema_version": 1,
   "tags": [

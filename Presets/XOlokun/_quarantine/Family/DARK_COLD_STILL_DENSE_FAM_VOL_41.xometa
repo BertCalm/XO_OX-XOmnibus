@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Fragment Solid",
   "parameters": {
-    "Obbligato": {},
-    "OddfeliX": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.077,
+      "obbl_macroCoupling": 0.66,
+      "obbl_macroMovement": 0.09,
+      "obbl_macroSpace": 0.666
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.072,
+      "snap_macroCoupling": 0.661,
+      "snap_macroMovement": 0.129,
+      "snap_macroSpace": 0.672
+    }
   },
   "schema_version": 1,
   "tags": [

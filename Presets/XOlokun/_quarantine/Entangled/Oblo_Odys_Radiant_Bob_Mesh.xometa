@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oblong": {},
-    "Odyssey": {}
+    "Oblong": {
+      "bob_macroCharacter": 0.86,
+      "bob_macroMovement": 0.65,
+      "bob_macroCoupling": 0.77,
+      "bob_macroSpace": 0.25
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.67,
+      "drift_macroMovement": 0.78,
+      "drift_macroCoupling": 0.6,
+      "drift_macroSpace": 0.23
+    }
   },
   "coupling": {
     "type": "PITCH_FOLLOW",

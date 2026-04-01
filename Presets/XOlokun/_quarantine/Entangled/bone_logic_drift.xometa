@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Bone Logic Drift",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.5,
+      "drift_macroCoupling": 0.9,
+      "drift_macroMovement": 0.3,
+      "drift_macroSpace": 0.2
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.8,
+      "organon_macroCoupling": 0.8,
+      "organon_macroMovement": 0.4,
+      "organon_macroSpace": 0.2
+    }
   },
   "schema_version": 1,
   "tags": [

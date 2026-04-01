@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Solar Horizon III",
   "parameters": {
-    "Oblique": {},
-    "Ole": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.066,
+      "oblq_macroCoupling": 0.379,
+      "oblq_macroMovement": 0.586,
+      "oblq_macroSpace": 0.907
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.538,
+      "ole_macroCoupling": 0.604,
+      "ole_macroMovement": 0.586,
+      "ole_macroSpace": 0.907
+    }
   },
   "schema_version": 1,
   "tags": [

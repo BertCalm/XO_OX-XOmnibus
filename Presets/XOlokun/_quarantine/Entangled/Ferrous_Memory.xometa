@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Ferrous Memory",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.48,
+      "organon_macroCoupling": 0.52,
+      "organon_macroMovement": 0.6,
+      "organon_macroSpace": 0.58
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.62,
+      "otto_macroCoupling": 0.6,
+      "otto_macroMovement": 0.52,
+      "otto_macroSpace": 0.55
+    }
   },
   "schema_version": 1,
   "tags": [

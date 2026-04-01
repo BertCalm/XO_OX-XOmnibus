@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Golden Cascade",
   "parameters": {
-    "OddfeliX": {},
-    "Oracle": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.9185,
+      "snap_macroCoupling": 0.571,
+      "snap_macroMovement": 0.5777,
+      "snap_macroSpace": 0.0136
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.9166,
+      "oracle_macroCoupling": 0.5752,
+      "oracle_macroMovement": 0.6096,
+      "oracle_macroSpace": 0.014
+    }
   },
   "schema_version": 1,
   "tags": [

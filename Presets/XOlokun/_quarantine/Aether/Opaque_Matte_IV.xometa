@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Opaque Matte IV",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.366,
+      "morph_macroCoupling": 0.8179,
+      "morph_macroMovement": 0.2474,
+      "morph_macroSpace": 0.882
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.4266,
+      "snap_macroCoupling": 0.3048,
+      "snap_macroMovement": 0.5062,
+      "snap_macroSpace": 0.9097
+    }
   },
   "schema_version": 1,
   "tags": [

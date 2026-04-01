@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Candlelight Stream",
   "parameters": {
-    "Oblique": {},
-    "OddOscar": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.8491,
+      "oblq_macroCoupling": 0.8661,
+      "oblq_macroMovement": 0.5226,
+      "oblq_macroSpace": 0.5104
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.2858,
+      "morph_macroCoupling": 0.8583,
+      "morph_macroMovement": 0.691,
+      "morph_macroSpace": 0.6135
+    }
   },
   "schema_version": 1,
   "tags": [

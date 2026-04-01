@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Harp Metabolism II",
   "parameters": {
-    "Organon": {},
-    "Orphica": {}
+    "Organon": {
+      "organon_macroCharacter": 0.5,
+      "organon_macroCoupling": 0.58,
+      "organon_macroMovement": 0.62,
+      "organon_macroSpace": 0.58
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.68,
+      "orph_macroCoupling": 0.68,
+      "orph_macroMovement": 0.55,
+      "orph_macroSpace": 0.72
+    }
   },
   "schema_version": 1,
   "tags": [

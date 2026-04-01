@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Golden Rage",
   "parameters": {
-    "Opal": {},
-    "Orphica": {}
+    "Opal": {
+      "opal_macroCharacter": 0.437,
+      "opal_macroCoupling": 0.391,
+      "opal_macroMovement": 0.795,
+      "opal_macroSpace": 0.39
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.443,
+      "orph_macroCoupling": 0.38,
+      "orph_macroMovement": 0.803,
+      "orph_macroSpace": 0.399
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Cosmos Arctic",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.415,
+      "oblq_macroCoupling": 0.545,
+      "oblq_macroMovement": 0.935,
+      "oblq_macroSpace": 0.949
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.219,
+      "ow_macroCoupling": 0.714,
+      "ow_macroMovement": 0.935,
+      "ow_macroSpace": 0.949
+    }
   },
   "schema_version": 1,
   "tags": [

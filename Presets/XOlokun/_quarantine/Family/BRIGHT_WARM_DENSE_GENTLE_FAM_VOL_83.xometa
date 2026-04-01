@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Solar Packed",
   "parameters": {
-    "OddfeliX": {},
-    "Odyssey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.935,
+      "snap_macroCoupling": 0.57,
+      "snap_macroMovement": 0.63,
+      "snap_macroSpace": 0.501
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.932,
+      "drift_macroCoupling": 0.524,
+      "drift_macroMovement": 0.651,
+      "drift_macroSpace": 0.521
+    }
   },
   "schema_version": 1,
   "tags": [

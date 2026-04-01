@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Ocean Anchored II",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.382,
+      "ocean_macroCoupling": 0.525,
+      "ocean_macroMovement": 0.156,
+      "ocean_macroSpace": 0.909
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.619,
+      "orb_macroCoupling": 0.743,
+      "orb_macroMovement": 0.212,
+      "orb_macroSpace": 0.886
+    }
   },
   "schema_version": 1,
   "tags": [

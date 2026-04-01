@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Frozen Crystal",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.9068,
+      "opal_macroCoupling": 0.1427,
+      "opal_macroMovement": 0.0669,
+      "opal_macroSpace": 0.8868
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.9384,
+      "organon_macroCoupling": 0.2291,
+      "organon_macroMovement": 0.0793,
+      "organon_macroSpace": 0.9225
+    }
   },
   "schema_version": 1,
   "tags": [

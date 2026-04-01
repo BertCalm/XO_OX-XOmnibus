@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Solar Grit",
   "parameters": {
-    "Optic": {},
-    "Ouroboros": {}
+    "Optic": {
+      "optic_macroCharacter": 0.9633,
+      "optic_macroCoupling": 0.99,
+      "optic_macroMovement": 0.9756,
+      "optic_macroSpace": 0.5223
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9778,
+      "ouro_macroCoupling": 0.99,
+      "ouro_macroMovement": 0.9513,
+      "ouro_macroSpace": 0.5378
+    }
   },
   "schema_version": 1,
   "tags": [

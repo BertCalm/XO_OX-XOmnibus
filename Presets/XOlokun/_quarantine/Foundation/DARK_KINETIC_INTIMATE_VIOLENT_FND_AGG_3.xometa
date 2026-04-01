@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Velvet Edge",
   "parameters": {
-    "Obese": {},
-    "Ouroboros": {}
+    "Obese": {
+      "fat_macroCharacter": 0.849,
+      "fat_macroCoupling": 0.767,
+      "fat_macroMovement": 0.537,
+      "fat_macroSpace": 0.757
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.821,
+      "ouro_macroCoupling": 0.768,
+      "ouro_macroMovement": 0.521,
+      "ouro_macroSpace": 0.788
+    }
   },
   "schema_version": 1,
   "tags": [

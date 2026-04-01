@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Rust Heavy",
   "parameters": {
-    "Oracle": {},
-    "Orbital": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.3713,
+      "oracle_macroCoupling": 0.9676,
+      "oracle_macroMovement": 0.4602,
+      "oracle_macroSpace": 0.0646
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.3388,
+      "orb_macroCoupling": 0.9333,
+      "orb_macroMovement": 0.4783,
+      "orb_macroSpace": 0.0845
+    }
   },
   "schema_version": 1,
   "tags": [

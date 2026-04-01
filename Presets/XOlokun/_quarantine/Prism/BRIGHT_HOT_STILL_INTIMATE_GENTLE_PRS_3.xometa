@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Honey Massive",
   "parameters": {
-    "Ottoni": {},
-    "Owlfish": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.957,
+      "otto_macroCoupling": 0.618,
+      "otto_macroMovement": 0.002,
+      "otto_macroSpace": 0.01
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 1.0,
+      "owl_macroCoupling": 0.642,
+      "owl_macroMovement": 0.021,
+      "owl_macroSpace": 0.092
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Solar Rage",
   "parameters": {
-    "OddOscar": {},
-    "Oracle": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.689,
+      "morph_macroCoupling": 0.513,
+      "morph_macroMovement": 0.78,
+      "morph_macroSpace": 0.766
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.713,
+      "oracle_macroCoupling": 0.472,
+      "oracle_macroMovement": 0.781,
+      "oracle_macroSpace": 0.731
+    }
   },
   "schema_version": 1,
   "tags": [

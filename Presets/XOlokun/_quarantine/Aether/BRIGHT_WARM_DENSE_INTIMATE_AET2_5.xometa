@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Radiant Thick",
   "parameters": {
-    "Obscura": {},
-    "Osprey": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.9722,
+      "obscura_macroCoupling": 0.9614,
+      "obscura_macroMovement": 0.6713,
+      "obscura_macroSpace": 0.0687
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9812,
+      "osprey_macroCoupling": 0.9719,
+      "osprey_macroMovement": 0.6894,
+      "osprey_macroSpace": 0.0644
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Ripple Sienna II",
   "parameters": {
-    "Obscura": {},
-    "Oceanic": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.6155,
+      "obscura_macroCoupling": 0.8027,
+      "obscura_macroMovement": 0.4767,
+      "obscura_macroSpace": 0.6137
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.659,
+      "ocean_macroCoupling": 0.432,
+      "ocean_macroMovement": 0.2647,
+      "ocean_macroSpace": 0.9497
+    }
   },
   "schema_version": 1,
   "tags": [

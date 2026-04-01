@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Node Strike",
   "parameters": {
-    "Obese": {},
-    "Obsidian": {}
+    "Obese": {
+      "fat_macroCharacter": 0.867,
+      "fat_macroCoupling": 0.38,
+      "fat_macroMovement": 0.68,
+      "fat_macroSpace": 0.95
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.901,
+      "obsidian_macroCoupling": 0.423,
+      "obsidian_macroMovement": 0.727,
+      "obsidian_macroSpace": 0.985
+    }
   },
   "schema_version": 1,
   "tags": [

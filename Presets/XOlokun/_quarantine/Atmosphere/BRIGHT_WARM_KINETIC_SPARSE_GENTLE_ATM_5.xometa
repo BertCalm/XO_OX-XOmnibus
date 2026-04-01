@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Radiant Stream 2",
   "parameters": {
-    "Optic": {},
-    "Orbital": {}
+    "Optic": {
+      "optic_macroCharacter": 0.9791,
+      "optic_macroCoupling": 0.0275,
+      "optic_macroMovement": 0.9474,
+      "optic_macroSpace": 0.5186
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.9406,
+      "orb_macroCoupling": 0.0514,
+      "orb_macroMovement": 0.9722,
+      "orb_macroSpace": 0.5234
+    }
   },
   "schema_version": 1,
   "tags": [

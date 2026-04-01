@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Chrome Dome",
   "parameters": {
-    "Oblique": {},
-    "Ole": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.838,
+      "oblq_macroCoupling": 0.071,
+      "oblq_macroMovement": 0.974,
+      "oblq_macroSpace": 0.98
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.883,
+      "ole_macroCoupling": 0.069,
+      "ole_macroMovement": 0.888,
+      "ole_macroSpace": 0.849
+    }
   },
   "schema_version": 1,
   "sequencer": null,

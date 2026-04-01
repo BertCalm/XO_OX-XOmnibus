@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Wave Rage 2",
   "parameters": {
-    "Ouroboros": {},
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.0697,
+      "ouro_macroCoupling": 0.9176,
+      "ouro_macroMovement": 0.02,
+      "ouro_macroSpace": 0.5123
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.0509,
+      "dub_macroCoupling": 0.9255,
+      "dub_macroMovement": 0.0206,
+      "dub_macroSpace": 0.5177
     }
   },
   "schema_version": 1,

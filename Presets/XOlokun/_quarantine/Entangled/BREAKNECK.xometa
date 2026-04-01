@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BREAKNECK",
   "parameters": {
-    "Onset": {},
-    "Ottoni": {}
+    "Onset": {
+      "perc_macroCharacter": 0.373,
+      "perc_macroCoupling": 0.987,
+      "perc_macroMovement": 0.893,
+      "perc_macroSpace": 0.558
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.366,
+      "otto_macroCoupling": 0.144,
+      "otto_macroMovement": 0.89,
+      "otto_macroSpace": 0.602
+    }
   },
   "schema_version": 1,
   "tags": [

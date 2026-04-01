@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Barb Eclipse",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.072,
+      "ocelot_macroCoupling": 0.656,
+      "ocelot_macroMovement": 0.575,
+      "ocelot_macroSpace": 0.195
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.094,
+      "poss_macroCoupling": 0.553,
+      "poss_macroMovement": 0.518,
+      "poss_macroSpace": 0.332
+    }
   },
   "schema_version": 1,
   "tags": [

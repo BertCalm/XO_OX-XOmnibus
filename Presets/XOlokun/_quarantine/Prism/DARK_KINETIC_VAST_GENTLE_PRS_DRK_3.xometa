@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Shard Drift",
   "parameters": {
-    "Ohm": {},
-    "Orphica": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.2923,
+      "ohm_macroCoupling": 0.3695,
+      "ohm_macroMovement": 0.8888,
+      "ohm_macroSpace": 0.879
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.2708,
+      "orph_macroCoupling": 0.3857,
+      "orph_macroMovement": 0.9054,
+      "orph_macroSpace": 0.8753
+    }
   },
   "schema_version": 1,
   "tags": [

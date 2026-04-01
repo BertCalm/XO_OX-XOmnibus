@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Impact Arctic",
   "parameters": {
-    "Obsidian": {},
-    "Odyssey": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 1.0,
+      "obsidian_macroCoupling": 0.72,
+      "obsidian_macroMovement": 0.98,
+      "obsidian_macroSpace": 0.12
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.65,
+      "drift_macroCoupling": 0.8,
+      "drift_macroMovement": 0.71,
+      "drift_macroSpace": 0.22
+    }
   },
   "schema_version": 1,
   "sequencer": null,

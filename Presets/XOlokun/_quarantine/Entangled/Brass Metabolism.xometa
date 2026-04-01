@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Brass Metabolism",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.55,
+      "organon_macroCoupling": 0.72,
+      "organon_macroMovement": 0.62,
+      "organon_macroSpace": 0.5
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.65,
+      "otto_macroCoupling": 0.72,
+      "otto_macroMovement": 0.5,
+      "otto_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "sequencer": null,

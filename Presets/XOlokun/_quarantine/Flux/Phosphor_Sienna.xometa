@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Phosphor Sienna",
   "parameters": {
-    "Oblique": {},
-    "Obsidian": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.942,
+      "oblq_macroCoupling": 0.554,
+      "oblq_macroMovement": 0.635,
+      "oblq_macroSpace": 0.661
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.966,
+      "obsidian_macroCoupling": 0.497,
+      "obsidian_macroMovement": 0.705,
+      "obsidian_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Grain Swirl",
   "parameters": {
-    "Oblique": {},
-    "Opal": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.6894,
+      "oblq_macroCoupling": 0.0928,
+      "oblq_macroMovement": 0.9513,
+      "oblq_macroSpace": 0.8592
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.671,
+      "opal_macroCoupling": 0.0709,
+      "opal_macroMovement": 0.9275,
+      "opal_macroSpace": 0.8975
+    }
   },
   "schema_version": 1,
   "tags": [

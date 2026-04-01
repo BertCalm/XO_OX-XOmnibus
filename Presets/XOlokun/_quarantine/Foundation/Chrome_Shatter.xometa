@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Chrome Shatter",
   "parameters": {
-    "Onset": {},
-    "Oracle": {}
+    "Onset": {
+      "perc_macroCharacter": 0.89,
+      "perc_macroCoupling": 0.74,
+      "perc_macroMovement": 0.74,
+      "perc_macroSpace": 0.46
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.96,
+      "oracle_macroCoupling": 0.61,
+      "oracle_macroMovement": 0.67,
+      "oracle_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "sequencer": null,

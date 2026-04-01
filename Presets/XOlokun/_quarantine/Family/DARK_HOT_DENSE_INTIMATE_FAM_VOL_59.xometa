@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Ember Titan",
   "parameters": {
-    "Organon": {},
-    "Orphica": {}
+    "Organon": {
+      "organon_macroCharacter": 0.541,
+      "organon_macroCoupling": 0.765,
+      "organon_macroMovement": 0.416,
+      "organon_macroSpace": 0.097
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.548,
+      "orph_macroCoupling": 0.78,
+      "orph_macroMovement": 0.424,
+      "orph_macroSpace": 0.067
+    }
   },
   "schema_version": 1,
   "tags": [

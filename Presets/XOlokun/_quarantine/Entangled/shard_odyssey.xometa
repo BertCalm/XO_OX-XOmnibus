@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Shard Odyssey",
   "parameters": {
-    "Obsidian": {},
-    "Odyssey": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.5,
+      "obsidian_macroCoupling": 0.8,
+      "obsidian_macroMovement": 0.6,
+      "obsidian_macroSpace": 0.5
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.6,
+      "drift_macroCoupling": 0.7,
+      "drift_macroMovement": 0.7,
+      "drift_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

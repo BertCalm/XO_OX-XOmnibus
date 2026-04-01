@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Wave Vast",
   "parameters": {
-    "Octopus": {},
-    "Oracle": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.8811,
+      "octo_macroCoupling": 0.8663,
+      "octo_macroMovement": 0.0795,
+      "octo_macroSpace": 0.3034
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.7205,
+      "oracle_macroCoupling": 0.9304,
+      "oracle_macroMovement": 0.073,
+      "oracle_macroSpace": 0.8139
+    }
   },
   "schema_version": 1,
   "sequencer": null,

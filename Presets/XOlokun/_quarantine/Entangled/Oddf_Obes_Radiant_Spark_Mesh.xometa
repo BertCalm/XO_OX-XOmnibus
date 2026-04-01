@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddfeliX": {},
-    "Obese": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.68,
+      "snap_macroMovement": 1.0,
+      "snap_macroCoupling": 0.85,
+      "snap_macroSpace": 0.39
+    },
+    "Obese": {
+      "fat_macroCharacter": 0.94,
+      "fat_macroMovement": 0.78,
+      "fat_macroCoupling": 0.85,
+      "fat_macroSpace": 0.37
+    }
   },
   "coupling": {
     "type": "RHYTHM_GATE",

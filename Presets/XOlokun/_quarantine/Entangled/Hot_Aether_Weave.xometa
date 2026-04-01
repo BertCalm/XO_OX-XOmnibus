@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Hot Aether Weave",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.79,
+      "drift_macroCoupling": 0.42,
+      "drift_macroMovement": 0.62,
+      "drift_macroSpace": 0.71
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.67,
+      "organon_macroCoupling": 0.43,
+      "organon_macroMovement": 0.43,
+      "organon_macroSpace": 0.67
+    }
   },
   "schema_version": 1,
   "tags": [

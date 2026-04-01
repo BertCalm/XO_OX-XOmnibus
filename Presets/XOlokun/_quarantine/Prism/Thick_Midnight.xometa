@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Thick Midnight",
   "parameters": {
-    "Ocelot": {},
-    "Oracle": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.917,
+      "ocelot_macroCoupling": 0.806,
+      "ocelot_macroMovement": 0.44,
+      "ocelot_macroSpace": 0.649
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.47,
+      "oracle_macroCoupling": 0.708,
+      "oracle_macroMovement": 0.44,
+      "oracle_macroSpace": 0.649
+    }
   },
   "schema_version": 1,
   "tags": [

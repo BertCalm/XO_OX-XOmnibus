@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Thread Surge",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.8864,
+      "opal_macroCoupling": 0.8865,
+      "opal_macroMovement": 0.8614,
+      "opal_macroSpace": 0.0549
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.9286,
+      "organon_macroCoupling": 0.8564,
+      "organon_macroMovement": 0.914,
+      "organon_macroSpace": 0.065
+    }
   },
   "schema_version": 1,
   "tags": [

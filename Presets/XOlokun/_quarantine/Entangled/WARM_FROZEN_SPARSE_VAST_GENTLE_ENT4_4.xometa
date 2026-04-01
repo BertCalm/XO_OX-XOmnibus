@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Peach Cathedral",
   "parameters": {
-    "Origami": {},
-    "Osprey": {}
+    "Origami": {
+      "origami_macroCharacter": 0.803,
+      "origami_macroCoupling": 0.091,
+      "origami_macroMovement": 0.078,
+      "origami_macroSpace": 0.984
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.787,
+      "osprey_macroCoupling": 0.126,
+      "osprey_macroMovement": 0.08,
+      "osprey_macroSpace": 0.965
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Golden Molten",
   "parameters": {
-    "Octopus": {},
-    "Orca": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.7134,
+      "octo_macroCoupling": 0.9254,
+      "octo_macroMovement": 0.0676,
+      "octo_macroSpace": 0.3281
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.9071,
+      "orca_macroCoupling": 0.7708,
+      "orca_macroMovement": 0.0433,
+      "orca_macroSpace": 0.8494
+    }
   },
   "schema_version": 1,
   "sequencer": null,

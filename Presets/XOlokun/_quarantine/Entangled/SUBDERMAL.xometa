@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "SUBDERMAL",
   "parameters": {
-    "Ocelot": {},
-    "Ohm": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.837,
+      "ocelot_macroCoupling": 0.924,
+      "ocelot_macroMovement": 0.065,
+      "ocelot_macroSpace": 0.116
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.199,
+      "ohm_macroCoupling": 0.982,
+      "ohm_macroMovement": 0.479,
+      "ohm_macroSpace": 0.097
+    }
   },
   "schema_version": 1,
   "tags": [

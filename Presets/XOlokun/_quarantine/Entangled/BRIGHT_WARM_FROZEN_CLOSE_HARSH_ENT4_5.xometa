@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Solar Fang",
   "parameters": {
-    "Opal": {},
-    "Orca": {}
+    "Opal": {
+      "opal_macroCharacter": 0.933,
+      "opal_macroCoupling": 0.704,
+      "opal_macroMovement": 0.059,
+      "opal_macroSpace": 0.044
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.939,
+      "orca_macroCoupling": 0.7,
+      "orca_macroMovement": 0.058,
+      "orca_macroSpace": 0.034
+    }
   },
   "schema_version": 1,
   "tags": [

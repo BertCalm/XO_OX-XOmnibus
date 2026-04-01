@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Amber Surge",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.51,
+      "ohm_macroCoupling": 0.226,
+      "ohm_macroMovement": 0.678,
+      "ohm_macroSpace": 0.063
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.499,
+      "ole_macroCoupling": 0.2,
+      "ole_macroMovement": 0.64,
+      "ole_macroSpace": 0.029
+    }
   },
   "schema_version": 1,
   "tags": [

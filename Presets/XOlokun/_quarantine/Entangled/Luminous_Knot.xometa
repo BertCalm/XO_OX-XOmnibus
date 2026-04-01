@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Luminous Knot",
   "parameters": {
-    "Obbligato": {},
-    "Orbital": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.66,
+      "obbl_macroCoupling": 0.71,
+      "obbl_macroMovement": 0.26,
+      "obbl_macroSpace": 0.53
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.73,
+      "orb_macroCoupling": 0.75,
+      "orb_macroMovement": 0.36,
+      "orb_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "tags": [

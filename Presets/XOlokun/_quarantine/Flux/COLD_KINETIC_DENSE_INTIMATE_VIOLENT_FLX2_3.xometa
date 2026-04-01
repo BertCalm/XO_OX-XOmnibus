@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Mirror Flutter 2",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.3892,
+      "optic_macroCoupling": 0.8653,
+      "optic_macroMovement": 0.9849,
+      "optic_macroSpace": 0.1202
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.385,
+      "oracle_macroCoupling": 0.8856,
+      "oracle_macroMovement": 0.9398,
+      "oracle_macroSpace": 0.1097
+    }
   },
   "schema_version": 1,
   "tags": [

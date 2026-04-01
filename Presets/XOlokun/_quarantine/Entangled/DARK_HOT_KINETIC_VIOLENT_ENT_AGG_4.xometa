@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Velvet Rage",
   "parameters": {
-    "Origami": {},
-    "Outwit": {}
+    "Origami": {
+      "origami_macroCharacter": 0.509,
+      "origami_macroCoupling": 0.808,
+      "origami_macroMovement": 0.961,
+      "origami_macroSpace": 0.675
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.516,
+      "owit_macroCoupling": 0.84,
+      "owit_macroMovement": 0.937,
+      "owit_macroSpace": 0.626
+    }
   },
   "schema_version": 1,
   "tags": [

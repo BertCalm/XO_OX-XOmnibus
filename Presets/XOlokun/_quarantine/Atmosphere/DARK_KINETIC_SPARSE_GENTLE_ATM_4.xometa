@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Thread Flutter",
   "parameters": {
-    "Opal": {},
-    "Organon": {}
+    "Opal": {
+      "opal_macroCharacter": 0.585,
+      "opal_macroCoupling": 0.489,
+      "opal_macroMovement": 0.88,
+      "opal_macroSpace": 0.492
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.439,
+      "organon_macroCoupling": 0.62,
+      "organon_macroMovement": 0.737,
+      "organon_macroSpace": 0.516
+    }
   },
   "schema_version": 1,
   "tags": [

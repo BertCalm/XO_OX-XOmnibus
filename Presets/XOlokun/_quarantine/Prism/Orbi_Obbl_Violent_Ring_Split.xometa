@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orbital": {},
-    "Obbligato": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.73,
+      "orb_macroMovement": 0.92,
+      "orb_macroCoupling": 0.62,
+      "orb_macroSpace": 0.49
+    },
+    "Obbligato": {
+      "obbl_macroCharacter": 0.63,
+      "obbl_macroMovement": 0.8,
+      "obbl_macroCoupling": 0.6,
+      "obbl_macroSpace": 0.47
+    }
   },
   "coupling": {
     "type": "FILTER_SHARE",

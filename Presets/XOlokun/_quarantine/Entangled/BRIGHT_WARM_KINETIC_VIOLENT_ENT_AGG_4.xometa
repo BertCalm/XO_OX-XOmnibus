@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Solar Pulse",
   "parameters": {
-    "Octopus": {},
-    "OddOscar": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.56,
+      "octo_macroCoupling": 0.929,
+      "octo_macroMovement": 0.961,
+      "octo_macroSpace": 0.411
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.542,
+      "morph_macroCoupling": 0.923,
+      "morph_macroMovement": 0.975,
+      "morph_macroSpace": 0.423
+    }
   },
   "schema_version": 1,
   "tags": [

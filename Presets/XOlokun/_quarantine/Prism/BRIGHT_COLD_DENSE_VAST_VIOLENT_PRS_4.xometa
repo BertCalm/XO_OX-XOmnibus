@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Glass Wrath",
   "parameters": {
-    "Ocelot": {},
-    "Owlfish": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.935,
+      "ocelot_macroCoupling": 0.773,
+      "ocelot_macroMovement": 0.642,
+      "ocelot_macroSpace": 1.0
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.89,
+      "owl_macroCoupling": 0.792,
+      "owl_macroMovement": 0.475,
+      "owl_macroSpace": 0.995
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overlap": {},
-    "Owlfish": {}
+    "Overlap": {
+      "olap_macroCharacter": 0.86,
+      "olap_macroMovement": 0.97,
+      "olap_macroCoupling": 0.61,
+      "olap_macroSpace": 0.26
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.67,
+      "owl_macroMovement": 0.91,
+      "owl_macroCoupling": 0.71,
+      "owl_macroSpace": 0.3
+    }
   },
   "coupling": {
     "type": "RHYTHM_GATE",

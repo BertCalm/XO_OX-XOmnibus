@@ -39,8 +39,18 @@
   "mood": "Foundation",
   "name": "Dusk Mercury",
   "parameters": {
-    "Obbligato": {},
-    "Orbital": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.65,
+      "obbl_macroCoupling": 0.83,
+      "obbl_macroMovement": 0.62,
+      "obbl_macroSpace": 0.17
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.87,
+      "orb_macroCoupling": 0.53,
+      "orb_macroMovement": 0.83,
+      "orb_macroSpace": 0.33
+    }
   },
   "schema_version": 1,
   "sequencer": null,

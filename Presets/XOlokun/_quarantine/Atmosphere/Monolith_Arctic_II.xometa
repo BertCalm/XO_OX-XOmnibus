@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Monolith Arctic II",
   "parameters": {
-    "Oracle": {},
-    "Osprey": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.671,
+      "oracle_macroCoupling": 0.752,
+      "oracle_macroMovement": 0.162,
+      "oracle_macroSpace": 0.21
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.755,
+      "osprey_macroCoupling": 0.761,
+      "osprey_macroMovement": 0.111,
+      "osprey_macroSpace": 0.279
+    }
   },
   "schema_version": 1,
   "tags": [

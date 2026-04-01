@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Solar Ripple",
   "parameters": {
-    "Oracle": {},
-    "Owlfish": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.471,
+      "oracle_macroCoupling": 0.974,
+      "oracle_macroMovement": 0.975,
+      "oracle_macroSpace": 1.0
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.533,
+      "owl_macroCoupling": 0.99,
+      "owl_macroMovement": 0.95,
+      "owl_macroSpace": 0.973
+    }
   },
   "schema_version": 1,
   "tags": [

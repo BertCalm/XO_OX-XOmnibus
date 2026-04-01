@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Velocity Serpent",
   "parameters": {
-    "Ole": {},
-    "Ouroboros": {}
+    "Ole": {
+      "ole_macroCharacter": 0.82,
+      "ole_macroCoupling": 0.82,
+      "ole_macroMovement": 0.74,
+      "ole_macroSpace": 0.34
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.74,
+      "ouro_macroCoupling": 0.77,
+      "ouro_macroMovement": 0.78,
+      "ouro_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

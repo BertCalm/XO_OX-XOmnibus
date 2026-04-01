@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT COLD DENSE VIOLENT A... (Organon)",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.901,
+      "organon_macroCoupling": 0.828,
+      "organon_macroMovement": 0.456,
+      "organon_macroSpace": 0.65
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.868,
+      "origami_macroCoupling": 0.903,
+      "origami_macroMovement": 0.468,
+      "origami_macroSpace": 0.619
+    }
   },
   "schema_version": 1,
   "tags": [

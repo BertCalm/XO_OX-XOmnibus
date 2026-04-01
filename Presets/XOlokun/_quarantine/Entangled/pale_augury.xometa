@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Pale Augury",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.9,
+      "drift_macroCoupling": 0.5,
+      "drift_macroMovement": 0.6,
+      "drift_macroSpace": 0.9
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.2,
+      "oracle_macroCoupling": 0.6,
+      "oracle_macroMovement": 0.5,
+      "oracle_macroSpace": 0.9
+    }
   },
   "schema_version": 1,
   "tags": [

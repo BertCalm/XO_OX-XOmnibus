@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Sacred Root",
   "parameters": {
-    "OddOscar": {},
-    "Orbital": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.576,
+      "morph_macroCoupling": 0.55,
+      "morph_macroMovement": 0.599,
+      "morph_macroSpace": 0.387
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.343,
+      "orb_macroCoupling": 0.514,
+      "orb_macroMovement": 0.727,
+      "orb_macroSpace": 0.573
+    }
   },
   "schema_version": 1,
   "tags": [

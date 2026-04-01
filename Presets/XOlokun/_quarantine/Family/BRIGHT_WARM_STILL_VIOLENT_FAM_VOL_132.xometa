@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Peach Fang 2",
   "parameters": {
-    "Opal": {},
-    "Osprey": {}
+    "Opal": {
+      "opal_macroCharacter": 0.937,
+      "opal_macroCoupling": 0.779,
+      "opal_macroMovement": 0.128,
+      "opal_macroSpace": 0.595
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.937,
+      "osprey_macroCoupling": 0.779,
+      "osprey_macroMovement": 0.092,
+      "osprey_macroSpace": 0.628
+    }
   },
   "schema_version": 1,
   "tags": [

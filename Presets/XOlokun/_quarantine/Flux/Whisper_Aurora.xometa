@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Whisper Aurora",
   "parameters": {
-    "Oceanic": {},
-    "Overworld": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.8857,
+      "ocean_macroCoupling": 0.1226,
+      "ocean_macroMovement": 0.1588,
+      "ocean_macroSpace": 0.8237
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.8931,
+      "ow_macroCoupling": 0.0686,
+      "ow_macroMovement": 0.1381,
+      "ow_macroSpace": 0.828
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Dark Kinetic Web",
   "parameters": {
-    "Origami": {},
-    "Outwit": {}
+    "Origami": {
+      "origami_macroCharacter": 0.22,
+      "origami_macroCoupling": 0.61,
+      "origami_macroMovement": 0.78,
+      "origami_macroSpace": 0.2
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.43,
+      "owit_macroCoupling": 0.76,
+      "owit_macroMovement": 0.89,
+      "owit_macroSpace": 0.25
+    }
   },
   "schema_version": 1,
   "tags": [

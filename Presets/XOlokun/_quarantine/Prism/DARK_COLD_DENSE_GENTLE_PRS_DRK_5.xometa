@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Node Molten 2",
   "parameters": {
-    "Origami": {},
-    "Orphica": {}
+    "Origami": {
+      "origami_macroCharacter": 0.0622,
+      "origami_macroCoupling": 0.9481,
+      "origami_macroMovement": 0.3971,
+      "origami_macroSpace": 0.2945
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.0617,
+      "orph_macroCoupling": 0.9602,
+      "orph_macroMovement": 0.4265,
+      "orph_macroSpace": 0.329
+    }
   },
   "schema_version": 1,
   "tags": [

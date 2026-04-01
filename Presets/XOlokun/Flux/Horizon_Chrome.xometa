@@ -38,9 +38,18 @@
   "name": "Horizon Chrome",
   "parameters": {
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.0698,
+      "dub_macroCoupling": 0.6207,
+      "dub_macroMovement": 0.2669,
+      "dub_macroSpace": 0.8443
     },
-    "Overworld": {}
+    "Overworld": {
+      "ow_macroCharacter": 0.0568,
+      "ow_macroCoupling": 0.555,
+      "ow_macroMovement": 0.3851,
+      "ow_macroSpace": 0.8464
+    }
   },
   "schema_version": 1,
   "tags": [

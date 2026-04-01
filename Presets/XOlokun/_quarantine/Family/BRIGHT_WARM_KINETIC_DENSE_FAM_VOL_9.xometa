@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Solar Deep 2",
   "parameters": {
-    "Ohm": {},
-    "Origami": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.99,
+      "ohm_macroCoupling": 0.818,
+      "ohm_macroMovement": 0.86,
+      "ohm_macroSpace": 0.486
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.968,
+      "origami_macroCoupling": 0.837,
+      "origami_macroMovement": 0.859,
+      "origami_macroSpace": 0.469
+    }
   },
   "schema_version": 1,
   "tags": [

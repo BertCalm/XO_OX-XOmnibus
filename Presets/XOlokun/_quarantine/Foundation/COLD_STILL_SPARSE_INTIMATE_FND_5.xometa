@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Wave Storm",
   "parameters": {
-    "Obese": {},
-    "Obsidian": {}
+    "Obese": {
+      "fat_macroCharacter": 0.267,
+      "fat_macroCoupling": 0.277,
+      "fat_macroMovement": 0.411,
+      "fat_macroSpace": 0.791
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.368,
+      "obsidian_macroCoupling": 0.858,
+      "obsidian_macroMovement": 0.213,
+      "obsidian_macroSpace": 0.639
+    }
   },
   "schema_version": 1,
   "tags": [

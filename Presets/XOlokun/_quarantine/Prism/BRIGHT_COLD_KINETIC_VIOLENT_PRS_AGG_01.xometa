@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
-    "Ocelot": {},
-    "Ohm": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.83,
+      "ocelot_macroCoupling": 0.856,
+      "ocelot_macroMovement": 0.89,
+      "ocelot_macroSpace": 0.38
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.882,
+      "ohm_macroCoupling": 0.885,
+      "ohm_macroMovement": 0.951,
+      "ohm_macroSpace": 0.37
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Quartz Stream",
   "parameters": {
-    "Oceanic": {},
-    "Origami": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.3838,
+      "ocean_macroCoupling": 0.8739,
+      "ocean_macroMovement": 0.9841,
+      "ocean_macroSpace": 0.0525
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.3966,
+      "origami_macroCoupling": 0.9141,
+      "origami_macroMovement": 0.9842,
+      "origami_macroSpace": 0.0497
+    }
   },
   "schema_version": 1,
   "tags": [

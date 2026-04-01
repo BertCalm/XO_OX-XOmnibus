@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Phase Flutter",
   "parameters": {
-    "Overlap": {},
-    "Overworld": {}
+    "Overlap": {
+      "olap_macroCharacter": 0.495,
+      "olap_macroCoupling": 0.838,
+      "olap_macroMovement": 0.967,
+      "olap_macroSpace": 0.025
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.742,
+      "ow_macroCoupling": 0.875,
+      "ow_macroMovement": 0.931,
+      "ow_macroSpace": 0.114
+    }
   },
   "schema_version": 1,
   "tags": [

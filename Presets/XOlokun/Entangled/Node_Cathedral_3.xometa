@@ -45,10 +45,19 @@
   "mood": "Entangled",
   "name": "Node Cathedral 3",
   "parameters": {
-    "Obbligato": {},
+    "Obbligato": {
+      "obbl_macroCharacter": 0.9044,
+      "obbl_macroCoupling": 0.7568,
+      "obbl_macroMovement": 0.066,
+      "obbl_macroSpace": 0.1386
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.7826,
+      "bob_macroCoupling": 0.9063,
+      "bob_macroMovement": 0.057,
+      "bob_macroSpace": 0.7519
     }
   },
   "schema_version": 1,

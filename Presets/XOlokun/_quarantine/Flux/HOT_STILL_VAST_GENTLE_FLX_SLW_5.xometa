@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Peach Dome",
   "parameters": {
-    "Oblique": {},
-    "Oracle": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.601,
+      "oblq_macroCoupling": 0.705,
+      "oblq_macroMovement": 0.067,
+      "oblq_macroSpace": 0.925
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.52,
+      "oracle_macroCoupling": 0.653,
+      "oracle_macroMovement": 0.077,
+      "oracle_macroSpace": 0.997
+    }
   },
   "schema_version": 1,
   "tags": [

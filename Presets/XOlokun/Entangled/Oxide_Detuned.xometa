@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Oxide Detuned",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.81,
+      "morph_macroCoupling": 0.64,
+      "morph_macroMovement": 0.38,
+      "morph_macroSpace": 0.27
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.99,
+      "dub_macroCoupling": 0.64,
+      "dub_macroMovement": 0.41,
+      "dub_macroSpace": 0.52
     }
   },
   "schema_version": 1,

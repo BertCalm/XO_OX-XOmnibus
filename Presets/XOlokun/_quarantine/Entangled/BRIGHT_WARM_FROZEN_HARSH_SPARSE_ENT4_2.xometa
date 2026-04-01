@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Sunrise Strike",
   "parameters": {
-    "Orbital": {},
-    "Overlap": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.937,
+      "orb_macroCoupling": 0.034,
+      "orb_macroMovement": 0.095,
+      "orb_macroSpace": 0.55
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.926,
+      "olap_macroCoupling": 0.02,
+      "olap_macroMovement": 0.084,
+      "olap_macroSpace": 0.529
+    }
   },
   "schema_version": 1,
   "tags": [

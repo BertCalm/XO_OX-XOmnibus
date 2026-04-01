@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Wave Stream 2",
   "parameters": {
-    "Obscura": {},
-    "Organon": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.5102,
+      "obscura_macroCoupling": 0.5901,
+      "obscura_macroMovement": 0.971,
+      "obscura_macroSpace": 0.0689
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.5002,
+      "organon_macroCoupling": 0.608,
+      "organon_macroMovement": 0.9306,
+      "organon_macroSpace": 0.0219
+    }
   },
   "schema_version": 1,
   "tags": [

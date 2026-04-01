@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Crystal Cathedral II",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.731,
+      "morph_macroCoupling": 0.505,
+      "morph_macroMovement": 0.344,
+      "morph_macroSpace": 0.308
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.776,
+      "ouro_macroCoupling": 0.765,
+      "ouro_macroMovement": 0.326,
+      "ouro_macroSpace": 0.359
+    }
   },
   "schema_version": 1,
   "tags": [

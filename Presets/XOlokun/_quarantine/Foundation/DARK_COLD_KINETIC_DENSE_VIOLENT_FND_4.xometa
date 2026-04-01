@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Thread Massive",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.158,
+      "morph_macroCoupling": 1.0,
+      "morph_macroMovement": 0.886,
+      "morph_macroSpace": 0.513
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.176,
+      "origami_macroCoupling": 1.0,
+      "origami_macroMovement": 0.85,
+      "origami_macroSpace": 0.455
+    }
   },
   "schema_version": 1,
   "sequencer": null,

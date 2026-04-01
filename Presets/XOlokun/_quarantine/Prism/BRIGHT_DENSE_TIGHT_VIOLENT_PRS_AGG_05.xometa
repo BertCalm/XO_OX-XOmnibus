@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT DENSE TIGHT VIOLENT ... (Ocelot I)",
   "parameters": {
-    "Ocelot": {},
-    "Overworld": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.934,
+      "ocelot_macroCoupling": 0.932,
+      "ocelot_macroMovement": 0.468,
+      "ocelot_macroSpace": 0.079
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.947,
+      "ow_macroCoupling": 0.905,
+      "ow_macroMovement": 0.472,
+      "ow_macroSpace": 0.081
+    }
   },
   "schema_version": 1,
   "tags": [

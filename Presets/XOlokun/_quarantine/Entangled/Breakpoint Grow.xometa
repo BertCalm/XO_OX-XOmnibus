@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Breakpoint Grow",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.5,
+      "oracle_macroCoupling": 0.65,
+      "oracle_macroMovement": 0.7,
+      "oracle_macroSpace": 0.55
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.72,
+      "otto_macroCoupling": 0.65,
+      "otto_macroMovement": 0.42,
+      "otto_macroSpace": 0.32
+    }
   },
   "schema_version": 1,
   "sequencer": null,

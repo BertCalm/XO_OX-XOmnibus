@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Black Soil Resonance",
   "parameters": {
-    "Obsidian": {},
-    "Overworld": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.47,
+      "obsidian_macroCoupling": 0.79,
+      "obsidian_macroMovement": 0.64,
+      "obsidian_macroSpace": 0.17
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.15,
+      "ow_macroCoupling": 0.69,
+      "ow_macroMovement": 0.17,
+      "ow_macroSpace": 0.34
+    }
   },
   "schema_version": 1,
   "tags": [

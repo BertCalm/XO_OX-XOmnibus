@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "DARK COLD KINETIC VIOLENT P...",
   "parameters": {
-    "Ocelot": {},
-    "Ohm": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.12,
+      "ocelot_macroCoupling": 0.919,
+      "ocelot_macroMovement": 0.949,
+      "ocelot_macroSpace": 0.53
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.116,
+      "ohm_macroCoupling": 0.874,
+      "ohm_macroMovement": 0.889,
+      "ohm_macroSpace": 0.534
+    }
   },
   "schema_version": 1,
   "tags": [

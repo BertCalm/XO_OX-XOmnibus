@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Arctic Ripple 2",
   "parameters": {
-    "Origami": {},
-    "Ouroboros": {}
+    "Origami": {
+      "origami_macroCharacter": 0.8147,
+      "origami_macroCoupling": 0.6594,
+      "origami_macroMovement": 0.9489,
+      "origami_macroSpace": 0.3766
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.8545,
+      "ouro_macroCoupling": 0.5372,
+      "ouro_macroMovement": 0.8782,
+      "ouro_macroSpace": 0.594
+    }
   },
   "schema_version": 1,
   "tags": [

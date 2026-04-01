@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Shadow Cavern",
   "parameters": {
-    "OddOscar": {},
-    "Odyssey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.517,
+      "morph_macroCoupling": 0.486,
+      "morph_macroMovement": 0.915,
+      "morph_macroSpace": 0.99
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.514,
+      "drift_macroCoupling": 0.49,
+      "drift_macroMovement": 0.932,
+      "drift_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

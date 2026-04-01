@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Jade Rune",
   "parameters": {
-    "Obsidian": {},
-    "OddOscar": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.622,
+      "obsidian_macroCoupling": 0.593,
+      "obsidian_macroMovement": 0.339,
+      "obsidian_macroSpace": 0.225
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.367,
+      "morph_macroCoupling": 0.653,
+      "morph_macroMovement": 0.699,
+      "morph_macroSpace": 0.497
+    }
   },
   "schema_version": 1,
   "tags": [

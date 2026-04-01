@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Wave Grit 2",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.8087,
+      "oblq_macroCoupling": 0.7541,
+      "oblq_macroMovement": 0.9373,
+      "oblq_macroSpace": 0.325
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.8178,
+      "optic_macroCoupling": 0.9389,
+      "optic_macroMovement": 0.8596,
+      "optic_macroSpace": 0.519
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Midnight Kinetics",
   "parameters": {
-    "Octopus": {},
-    "Outwit": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.37,
+      "octo_macroCoupling": 0.53,
+      "octo_macroMovement": 0.56,
+      "octo_macroSpace": 0.64
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.71,
+      "owit_macroCoupling": 0.88,
+      "owit_macroMovement": 0.38,
+      "owit_macroSpace": 0.41
+    }
   },
   "schema_version": 1,
   "tags": [

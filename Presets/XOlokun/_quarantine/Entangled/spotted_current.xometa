@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Spotted Current",
   "parameters": {
-    "Oceanic": {},
-    "Ocelot": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.29,
+      "ocean_macroCoupling": 0.44,
+      "ocean_macroMovement": 0.34,
+      "ocean_macroSpace": 0.79
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.66,
+      "ocelot_macroCoupling": 0.56,
+      "ocelot_macroMovement": 0.71,
+      "ocelot_macroSpace": 0.46
+    }
   },
   "schema_version": 1,
   "tags": [

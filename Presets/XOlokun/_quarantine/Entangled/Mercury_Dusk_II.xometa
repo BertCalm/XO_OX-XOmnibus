@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Mercury Dusk II",
   "parameters": {
-    "Obbligato": {},
-    "Origami": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.042,
+      "obbl_macroCoupling": 0.783,
+      "obbl_macroMovement": 0.568,
+      "obbl_macroSpace": 0.387
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.074,
+      "origami_macroCoupling": 0.368,
+      "origami_macroMovement": 0.642,
+      "origami_macroSpace": 0.483
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Thin Gentle",
   "parameters": {
-    "Odyssey": {},
-    "Owlfish": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.653,
+      "drift_macroCoupling": 0.425,
+      "drift_macroMovement": 0.669,
+      "drift_macroSpace": 0.645
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.754,
+      "owl_macroCoupling": 1.0,
+      "owl_macroMovement": 0.81,
+      "owl_macroSpace": 0.75
+    }
   },
   "schema_version": 1,
   "tags": [

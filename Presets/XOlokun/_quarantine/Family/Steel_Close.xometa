@@ -39,8 +39,18 @@
   "mood": "Family",
   "name": "Steel Close",
   "parameters": {
-    "Origami": {},
-    "Outwit": {}
+    "Origami": {
+      "origami_macroCharacter": 0.9,
+      "origami_macroCoupling": 0.62,
+      "origami_macroMovement": 0.79,
+      "origami_macroSpace": 0.1
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.85,
+      "owit_macroCoupling": 0.66,
+      "owit_macroMovement": 0.61,
+      "owit_macroSpace": 0.14
+    }
   },
   "schema_version": 1,
   "sequencer": null,

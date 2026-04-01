@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Verdant Oracle",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.55,
+      "oracle_macroCoupling": 0.76,
+      "oracle_macroMovement": 0.65,
+      "oracle_macroSpace": 0.58
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.68,
+      "otto_macroCoupling": 0.76,
+      "otto_macroMovement": 0.44,
+      "otto_macroSpace": 0.35
+    }
   },
   "schema_version": 1,
   "sequencer": null,

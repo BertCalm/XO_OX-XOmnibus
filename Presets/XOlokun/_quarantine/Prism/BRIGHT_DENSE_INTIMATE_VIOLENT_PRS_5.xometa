@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Signal Dense",
   "parameters": {
-    "Ole": {},
-    "Osteria": {}
+    "Ole": {
+      "ole_macroCharacter": 0.907,
+      "ole_macroCoupling": 0.69,
+      "ole_macroMovement": 0.534,
+      "ole_macroSpace": 0.133
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.466,
+      "osteria_macroCoupling": 0.37,
+      "osteria_macroMovement": 0.534,
+      "osteria_macroSpace": 0.133
+    }
   },
   "schema_version": 1,
   "tags": [

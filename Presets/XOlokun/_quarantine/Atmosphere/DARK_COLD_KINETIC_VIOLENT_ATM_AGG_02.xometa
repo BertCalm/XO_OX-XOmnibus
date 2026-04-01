@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK COLD KINETIC VIOLENT A... (Oracle)",
   "parameters": {
-    "OddfeliX": {},
-    "Oracle": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.115,
+      "snap_macroCoupling": 0.794,
+      "snap_macroMovement": 0.924,
+      "snap_macroSpace": 0.405
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.108,
+      "oracle_macroCoupling": 0.859,
+      "oracle_macroMovement": 0.941,
+      "oracle_macroSpace": 0.416
+    }
   },
   "schema_version": 1,
   "tags": [

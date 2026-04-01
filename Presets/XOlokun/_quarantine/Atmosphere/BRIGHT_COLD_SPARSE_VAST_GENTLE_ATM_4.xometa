@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Ice Orbit",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.5705,
+      "oblq_macroCoupling": 0.1318,
+      "oblq_macroMovement": 0.3029,
+      "oblq_macroSpace": 0.9419
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.5494,
+      "optic_macroCoupling": 0.1001,
+      "optic_macroMovement": 0.291,
+      "optic_macroSpace": 0.9353
+    }
   },
   "schema_version": 1,
   "tags": [

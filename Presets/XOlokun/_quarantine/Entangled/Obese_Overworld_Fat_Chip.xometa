@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Fat Chip II",
   "parameters": {
-    "Obese": {},
-    "Overworld": {}
+    "Obese": {
+      "fat_macroCharacter": 0.9,
+      "fat_macroCoupling": 0.82,
+      "fat_macroMovement": 0.5,
+      "fat_macroSpace": 0.15
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.6,
+      "ow_macroCoupling": 0.65,
+      "ow_macroMovement": 0.7,
+      "ow_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "tags": [

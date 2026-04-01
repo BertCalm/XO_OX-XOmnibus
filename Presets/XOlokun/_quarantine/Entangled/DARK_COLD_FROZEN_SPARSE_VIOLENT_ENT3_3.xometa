@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Tone Force",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.7009,
+      "snap_macroCoupling": 0.9071,
+      "snap_macroMovement": 0.0188,
+      "snap_macroSpace": 0.2312
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.9749,
+      "origami_macroCoupling": 0.8313,
+      "origami_macroMovement": 0.026,
+      "origami_macroSpace": 0.6888
+    }
   },
   "schema_version": 1,
   "sequencer": null,

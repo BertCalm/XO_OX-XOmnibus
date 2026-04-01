@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Stream 2",
   "parameters": {
-    "Osteria": {},
+    "Osteria": {
+      "osteria_macroCharacter": 0.931,
+      "osteria_macroCoupling": 0.335,
+      "osteria_macroMovement": 0.928,
+      "osteria_macroSpace": 0.462
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.92,
+      "dub_macroCoupling": 0.299,
+      "dub_macroMovement": 0.918,
+      "dub_macroSpace": 0.441
     }
   },
   "schema_version": 1,

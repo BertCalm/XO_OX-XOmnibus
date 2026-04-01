@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Crystal Chaos",
   "parameters": {
-    "Orphica": {},
-    "Ouroboros": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.78,
+      "orph_macroCoupling": 0.8,
+      "orph_macroMovement": 0.66,
+      "orph_macroSpace": 0.66
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.72,
+      "ouro_macroCoupling": 0.76,
+      "ouro_macroMovement": 0.74,
+      "ouro_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

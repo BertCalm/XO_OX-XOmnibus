@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Smoke Drift",
   "parameters": {
-    "Obbligato": {},
-    "Ombre": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.572,
+      "obbl_macroCoupling": 0.783,
+      "obbl_macroMovement": 0.502,
+      "obbl_macroSpace": 0.246
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.622,
+      "ombre_macroCoupling": 0.519,
+      "ombre_macroMovement": 0.373,
+      "ombre_macroSpace": 0.312
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK HOT DENSE INTIMATE VIO... (Opal)",
   "parameters": {
-    "Opal": {},
-    "Optic": {}
+    "Opal": {
+      "opal_macroCharacter": 0.504,
+      "opal_macroCoupling": 0.974,
+      "opal_macroMovement": 0.569,
+      "opal_macroSpace": 0.034
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.52,
+      "optic_macroCoupling": 0.986,
+      "optic_macroMovement": 0.595,
+      "optic_macroSpace": 0.028
+    }
   },
   "schema_version": 1,
   "tags": [

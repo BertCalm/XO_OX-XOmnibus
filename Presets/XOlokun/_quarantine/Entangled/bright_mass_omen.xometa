@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Bright Mass Omen",
   "parameters": {
-    "Obese": {},
-    "Oracle": {}
+    "Obese": {
+      "fat_macroCharacter": 0.9,
+      "fat_macroCoupling": 0.6,
+      "fat_macroMovement": 0.6,
+      "fat_macroSpace": 0.8
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.3,
+      "oracle_macroCoupling": 0.7,
+      "oracle_macroMovement": 0.5,
+      "oracle_macroSpace": 0.8
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Torch Braid",
   "parameters": {
-    "Oracle": {},
-    "Orbital": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.84,
+      "oracle_macroCoupling": 0.73,
+      "oracle_macroMovement": 0.67,
+      "oracle_macroSpace": 0.65
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.77,
+      "orb_macroCoupling": 0.67,
+      "orb_macroMovement": 0.65,
+      "orb_macroSpace": 0.62
+    }
   },
   "schema_version": 1,
   "tags": [

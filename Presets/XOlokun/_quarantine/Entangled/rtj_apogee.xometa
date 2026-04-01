@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "RTJ Apogee",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.82,
+      "oblq_macroCoupling": 0.67,
+      "oblq_macroMovement": 0.77,
+      "oblq_macroSpace": 0.57
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.38,
+      "orb_macroCoupling": 0.48,
+      "orb_macroMovement": 0.53,
+      "orb_macroSpace": 0.68
+    }
   },
   "schema_version": 1,
   "tags": [

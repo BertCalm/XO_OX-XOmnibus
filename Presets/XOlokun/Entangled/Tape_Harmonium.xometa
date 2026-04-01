@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Tape Harmonium",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.71,
+      "organon_macroCoupling": 0.6,
+      "organon_macroMovement": 0.44,
+      "organon_macroSpace": 0.53
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.78,
+      "dub_macroCoupling": 0.58,
+      "dub_macroMovement": 0.59,
+      "dub_macroSpace": 0.57
     }
   },
   "schema_version": 1,

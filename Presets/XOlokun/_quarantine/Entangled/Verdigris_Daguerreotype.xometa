@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Verdigris Daguerreotype",
   "parameters": {
-    "Obscura": {},
-    "Ottoni": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.68,
+      "obscura_macroCoupling": 0.74,
+      "obscura_macroMovement": 0.6,
+      "obscura_macroSpace": 0.44
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.78,
+      "otto_macroCoupling": 0.8,
+      "otto_macroMovement": 0.65,
+      "otto_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

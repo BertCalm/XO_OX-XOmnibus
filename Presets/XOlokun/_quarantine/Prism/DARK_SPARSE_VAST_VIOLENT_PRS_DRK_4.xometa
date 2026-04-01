@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Shadow Expanse 2",
   "parameters": {
-    "Oblique": {},
-    "Ottoni": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7753,
+      "oblq_macroCoupling": 0.0428,
+      "oblq_macroMovement": 0.6892,
+      "oblq_macroSpace": 0.9691
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.8044,
+      "otto_macroCoupling": 0.0788,
+      "otto_macroMovement": 0.6923,
+      "otto_macroSpace": 0.9788
+    }
   },
   "schema_version": 1,
   "tags": [

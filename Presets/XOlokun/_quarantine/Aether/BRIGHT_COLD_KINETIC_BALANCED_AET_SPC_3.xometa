@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT COLD KINETIC BALANCE... (Organon I)",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.58,
+      "snap_macroCoupling": 0.817,
+      "snap_macroMovement": 0.859,
+      "snap_macroSpace": 0.573
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.554,
+      "organon_macroCoupling": 0.837,
+      "organon_macroMovement": 0.875,
+      "organon_macroSpace": 0.555
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Node Edge",
   "parameters": {
-    "OddOscar": {},
-    "Onset": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.414,
+      "morph_macroCoupling": 0.49,
+      "morph_macroMovement": 0.329,
+      "morph_macroSpace": 0.168
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.858,
+      "perc_macroCoupling": 0.499,
+      "perc_macroMovement": 0.296,
+      "perc_macroSpace": 0.181
+    }
   },
   "schema_version": 1,
   "tags": [

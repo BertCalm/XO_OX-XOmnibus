@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Crystal Stream",
   "parameters": {
-    "Obscura": {},
-    "Opal": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.99,
+      "obscura_macroCoupling": 0.9566,
+      "obscura_macroMovement": 0.99,
+      "obscura_macroSpace": 0.0495
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.9746,
+      "opal_macroCoupling": 0.9454,
+      "opal_macroMovement": 0.99,
+      "opal_macroSpace": 0.0204
+    }
   },
   "schema_version": 1,
   "tags": [

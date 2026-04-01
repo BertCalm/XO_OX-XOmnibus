@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Thermal Cathedral",
   "parameters": {
-    "Opal": {},
+    "Opal": {
+      "opal_macroCharacter": 0.82,
+      "opal_macroCoupling": 0.49,
+      "opal_macroMovement": 0.76,
+      "opal_macroSpace": 0.63
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.73,
+      "dub_macroCoupling": 0.68,
+      "dub_macroMovement": 0.56,
+      "dub_macroSpace": 0.54
     }
   },
   "schema_version": 1,

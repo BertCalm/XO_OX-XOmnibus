@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Sunrise Crush 2",
   "parameters": {
-    "Ole": {},
-    "Ottoni": {}
+    "Ole": {
+      "ole_macroCharacter": 0.318,
+      "ole_macroCoupling": 0.643,
+      "ole_macroMovement": 0.885,
+      "ole_macroSpace": 0.615
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.354,
+      "otto_macroCoupling": 0.69,
+      "otto_macroMovement": 0.872,
+      "otto_macroSpace": 0.59
+    }
   },
   "schema_version": 1,
   "tags": [

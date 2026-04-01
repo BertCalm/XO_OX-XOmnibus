@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Mass Fold Bloom",
   "parameters": {
-    "Obese": {},
-    "Origami": {}
+    "Obese": {
+      "fat_macroCharacter": 0.6,
+      "fat_macroCoupling": 0.8,
+      "fat_macroMovement": 0.5,
+      "fat_macroSpace": 0.4
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.6,
+      "origami_macroCoupling": 0.7,
+      "origami_macroMovement": 0.5,
+      "origami_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

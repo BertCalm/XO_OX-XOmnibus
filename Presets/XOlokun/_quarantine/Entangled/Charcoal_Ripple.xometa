@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Charcoal Ripple",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.219,
+      "ohm_macroCoupling": 0.602,
+      "ohm_macroMovement": 0.919,
+      "ohm_macroSpace": 0.91
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.209,
+      "ole_macroCoupling": 0.52,
+      "ole_macroMovement": 0.807,
+      "ole_macroSpace": 0.768
+    }
   },
   "schema_version": 1,
   "tags": [

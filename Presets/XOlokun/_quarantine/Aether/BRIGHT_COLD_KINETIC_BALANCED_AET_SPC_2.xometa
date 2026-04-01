@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT COLD KINETIC BALANCE... (Ombre)",
   "parameters": {
-    "Obscura": {},
-    "Ombre": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.482,
+      "obscura_macroCoupling": 0.639,
+      "obscura_macroMovement": 0.951,
+      "obscura_macroSpace": 0.376
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.479,
+      "ombre_macroCoupling": 0.666,
+      "ombre_macroMovement": 0.955,
+      "ombre_macroSpace": 0.384
+    }
   },
   "schema_version": 1,
   "tags": [

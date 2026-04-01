@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Node Dense",
   "parameters": {
-    "Obsidian": {},
-    "Origami": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.205,
+      "obsidian_macroCoupling": 0.557,
+      "obsidian_macroMovement": 0.278,
+      "obsidian_macroSpace": 0.861
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.562,
+      "origami_macroCoupling": 0.661,
+      "origami_macroMovement": 0.873,
+      "origami_macroSpace": 0.548
+    }
   },
   "schema_version": 1,
   "tags": [

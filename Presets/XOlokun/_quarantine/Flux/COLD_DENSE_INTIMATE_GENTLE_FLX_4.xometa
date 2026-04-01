@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Tone Heavy 3",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.3849,
+      "organon_macroCoupling": 0.072,
+      "organon_macroMovement": 0.3856,
+      "organon_macroSpace": 0.0948
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.2836,
+      "origami_macroCoupling": 0.1366,
+      "origami_macroMovement": 0.259,
+      "origami_macroSpace": 0.0955
+    }
   },
   "schema_version": 1,
   "tags": [

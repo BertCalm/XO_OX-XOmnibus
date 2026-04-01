@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Ignite Bright",
   "parameters": {
-    "Origami": {},
-    "Ottoni": {}
+    "Origami": {
+      "origami_macroCharacter": 0.73,
+      "origami_macroCoupling": 0.59,
+      "origami_macroMovement": 0.6,
+      "origami_macroSpace": 0.52
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.85,
+      "otto_macroCoupling": 0.51,
+      "otto_macroMovement": 0.54,
+      "otto_macroSpace": 0.47
+    }
   },
   "schema_version": 1,
   "tags": [

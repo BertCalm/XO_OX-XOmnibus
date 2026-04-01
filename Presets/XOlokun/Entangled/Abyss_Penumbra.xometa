@@ -49,7 +49,11 @@
       "filter_resonance": 0.5731,
       "output_level": 0.8145,
       "reverb_mix": 0.6875,
-      "reverb_size": 0.8219
+      "reverb_size": 0.8219,
+      "morph_macroCharacter": 0.6508,
+      "morph_macroCoupling": 0.9358,
+      "morph_macroMovement": 0.438,
+      "morph_macroSpace": 0.9928
     },
     "Ottoni": {
       "amp_attack": 0.3006,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.5715,
       "output_level": 0.7563,
       "reverb_mix": 0.6575,
-      "reverb_size": 0.7878
+      "reverb_size": 0.7878,
+      "otto_macroCharacter": 0.6433,
+      "otto_macroCoupling": 0.9354,
+      "otto_macroMovement": 0.4062,
+      "otto_macroSpace": 0.9832
     }
   },
   "schema_version": 1,

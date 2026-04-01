@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT COLD KINETIC DENSE V... (Overlap)",
   "parameters": {
-    "Ocelot": {},
-    "Overlap": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.521,
+      "ocelot_macroCoupling": 0.982,
+      "ocelot_macroMovement": 0.962,
+      "ocelot_macroSpace": 0.426
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.517,
+      "olap_macroCoupling": 0.97,
+      "olap_macroMovement": 0.956,
+      "olap_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

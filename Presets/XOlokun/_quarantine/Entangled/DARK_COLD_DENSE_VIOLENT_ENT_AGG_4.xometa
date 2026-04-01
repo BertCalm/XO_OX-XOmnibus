@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Grain Solid",
   "parameters": {
-    "Ombre": {},
-    "Organon": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.538,
+      "ombre_macroCoupling": 0.831,
+      "ombre_macroMovement": 0.604,
+      "ombre_macroSpace": 0.597
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.738,
+      "organon_macroCoupling": 0.86,
+      "organon_macroMovement": 0.624,
+      "organon_macroSpace": 0.55
+    }
   },
   "schema_version": 1,
   "tags": [

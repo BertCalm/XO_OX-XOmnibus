@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Bloom Deep",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.977,
+      "snap_macroCoupling": 0.516,
+      "snap_macroMovement": 0.094,
+      "snap_macroSpace": 0.144
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.97,
+      "origami_macroCoupling": 0.492,
+      "origami_macroMovement": 0.087,
+      "origami_macroSpace": 0.14
+    }
   },
   "schema_version": 1,
   "tags": [

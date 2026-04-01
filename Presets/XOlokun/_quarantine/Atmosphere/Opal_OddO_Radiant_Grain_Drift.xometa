@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Opal": {},
-    "OddOscar": {}
+    "Opal": {
+      "opal_macroCharacter": 0.79,
+      "opal_macroMovement": 0.77,
+      "opal_macroCoupling": 0.65,
+      "opal_macroSpace": 0.42
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.64,
+      "morph_macroMovement": 0.88,
+      "morph_macroCoupling": 0.56,
+      "morph_macroSpace": 0.4
+    }
   },
   "coupling": {
     "type": "AMPLITUDE_SYNC",

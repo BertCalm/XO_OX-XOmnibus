@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Phase Molten",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.047,
+      "morph_macroCoupling": 1.0,
+      "morph_macroMovement": 0.892,
+      "morph_macroSpace": 0.662
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.175,
+      "snap_macroCoupling": 1.0,
+      "snap_macroMovement": 0.953,
+      "snap_macroSpace": 0.689
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Thread Void",
   "parameters": {
-    "Obbligato": {},
-    "Ouroboros": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.465,
+      "obbl_macroCoupling": 0.775,
+      "obbl_macroMovement": 0.641,
+      "obbl_macroSpace": 0.978
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.475,
+      "ouro_macroCoupling": 0.763,
+      "ouro_macroMovement": 0.711,
+      "ouro_macroSpace": 0.986
+    }
   },
   "schema_version": 1,
   "tags": [

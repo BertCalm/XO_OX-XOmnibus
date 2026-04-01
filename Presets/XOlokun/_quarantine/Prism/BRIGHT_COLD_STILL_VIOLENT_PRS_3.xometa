@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Chrome Fang",
   "parameters": {
-    "Oracle": {},
-    "Owlfish": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.495,
+      "oracle_macroCoupling": 0.868,
+      "oracle_macroMovement": 0.114,
+      "oracle_macroSpace": 0.611
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.929,
+      "owl_macroCoupling": 0.827,
+      "owl_macroMovement": 0.114,
+      "owl_macroSpace": 0.611
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Silk Ember",
   "parameters": {
-    "Ombre": {},
-    "Opal": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.6639,
+      "ombre_macroCoupling": 0.633,
+      "ombre_macroMovement": 0.8463,
+      "ombre_macroSpace": 0.7284
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.9298,
+      "opal_macroCoupling": 0.614,
+      "opal_macroMovement": 0.4839,
+      "opal_macroSpace": 0.8221
+    }
   },
   "schema_version": 1,
   "tags": [

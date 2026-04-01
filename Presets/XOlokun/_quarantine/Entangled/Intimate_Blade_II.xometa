@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Intimate Blade II",
   "parameters": {
-    "Origami": {},
-    "Osprey": {}
+    "Origami": {
+      "origami_macroCharacter": 0.245,
+      "origami_macroCoupling": 0.5,
+      "origami_macroMovement": 0.924,
+      "origami_macroSpace": 0.041
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.245,
+      "osprey_macroCoupling": 0.5,
+      "osprey_macroMovement": 0.924,
+      "osprey_macroSpace": 0.041
+    }
   },
   "schema_version": 1,
   "tags": [

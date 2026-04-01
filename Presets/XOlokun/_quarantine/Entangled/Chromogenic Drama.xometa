@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Chromogenic Drama",
   "parameters": {
-    "Obscura": {},
-    "Ole": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.52,
+      "obscura_macroCoupling": 0.65,
+      "obscura_macroMovement": 0.62,
+      "obscura_macroSpace": 0.65
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.72,
+      "ole_macroCoupling": 0.65,
+      "ole_macroMovement": 0.68,
+      "ole_macroSpace": 0.35
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Deep Maroon Synthesis",
   "parameters": {
-    "Obbligato": {},
-    "Opal": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.22,
+      "obbl_macroCoupling": 0.72,
+      "obbl_macroMovement": 0.48,
+      "obbl_macroSpace": 0.24
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.47,
+      "opal_macroCoupling": 0.73,
+      "opal_macroMovement": 0.15,
+      "opal_macroSpace": 0.17
+    }
   },
   "schema_version": 1,
   "tags": [

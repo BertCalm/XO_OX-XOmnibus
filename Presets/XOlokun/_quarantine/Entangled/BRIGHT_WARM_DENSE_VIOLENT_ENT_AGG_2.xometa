@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Sunrise Dense",
   "parameters": {
-    "Obese": {},
-    "Oracle": {}
+    "Obese": {
+      "fat_macroCharacter": 0.472,
+      "fat_macroCoupling": 0.815,
+      "fat_macroMovement": 0.624,
+      "fat_macroSpace": 0.486
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.511,
+      "oracle_macroCoupling": 0.834,
+      "oracle_macroMovement": 0.669,
+      "oracle_macroSpace": 0.486
+    }
   },
   "schema_version": 1,
   "tags": [

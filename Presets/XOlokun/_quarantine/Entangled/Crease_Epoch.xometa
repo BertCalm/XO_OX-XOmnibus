@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Crease Epoch",
   "parameters": {
-    "Odyssey": {},
-    "Origami": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.05,
+      "drift_macroCoupling": 0.9,
+      "drift_macroMovement": 0.1,
+      "drift_macroSpace": 1.0
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.08,
+      "origami_macroCoupling": 0.85,
+      "origami_macroMovement": 0.15,
+      "origami_macroSpace": 0.97
+    }
   },
   "schema_version": 1,
   "tags": [

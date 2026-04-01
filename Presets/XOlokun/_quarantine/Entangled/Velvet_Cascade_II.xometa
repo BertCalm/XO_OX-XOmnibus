@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Velvet Cascade II",
   "parameters": {
-    "Oceanic": {},
-    "Ole": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.959,
+      "ocean_macroCoupling": 0.671,
+      "ocean_macroMovement": 0.967,
+      "ocean_macroSpace": 0.956
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.959,
+      "ole_macroCoupling": 0.671,
+      "ole_macroMovement": 0.967,
+      "ole_macroSpace": 0.956
+    }
   },
   "schema_version": 1,
   "tags": [

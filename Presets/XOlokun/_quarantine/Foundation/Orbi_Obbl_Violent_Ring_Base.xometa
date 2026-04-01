@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orbital": {},
-    "Obbligato": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.87,
+      "orb_macroMovement": 0.83,
+      "orb_macroCoupling": 0.53,
+      "orb_macroSpace": 0.33
+    },
+    "Obbligato": {
+      "obbl_macroCharacter": 0.65,
+      "obbl_macroMovement": 0.62,
+      "obbl_macroCoupling": 0.83,
+      "obbl_macroSpace": 0.17
+    }
   },
   "coupling": {
     "type": "RING_MOD",

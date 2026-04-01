@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Tone Shimmer",
   "parameters": {
-    "Opal": {},
-    "Orbital": {}
+    "Opal": {
+      "opal_macroCharacter": 0.4567,
+      "opal_macroCoupling": 0.8793,
+      "opal_macroMovement": 0.92,
+      "opal_macroSpace": 0.0564
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.4672,
+      "orb_macroCoupling": 0.8446,
+      "orb_macroMovement": 0.9125,
+      "orb_macroSpace": 0.01
+    }
   },
   "schema_version": 1,
   "tags": [

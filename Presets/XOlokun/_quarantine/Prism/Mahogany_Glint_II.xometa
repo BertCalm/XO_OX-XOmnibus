@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Mahogany Glint II",
   "parameters": {
-    "Optic": {},
-    "Osteria": {}
+    "Optic": {
+      "optic_macroCharacter": 0.093,
+      "optic_macroCoupling": 0.858,
+      "optic_macroMovement": 0.522,
+      "optic_macroSpace": 0.638
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.53,
+      "osteria_macroCoupling": 0.831,
+      "osteria_macroMovement": 0.522,
+      "osteria_macroSpace": 0.638
+    }
   },
   "schema_version": 1,
   "tags": [

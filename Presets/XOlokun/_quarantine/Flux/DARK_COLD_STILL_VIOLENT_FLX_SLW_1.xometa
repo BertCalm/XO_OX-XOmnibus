@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Node Blade 2",
   "parameters": {
-    "Organon": {},
-    "Origami": {}
+    "Organon": {
+      "organon_macroCharacter": 0.496,
+      "organon_macroCoupling": 0.865,
+      "organon_macroMovement": 0.016,
+      "organon_macroSpace": 0.582
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.547,
+      "origami_macroCoupling": 0.726,
+      "origami_macroMovement": 0.019,
+      "origami_macroSpace": 0.575
+    }
   },
   "schema_version": 1,
   "tags": [

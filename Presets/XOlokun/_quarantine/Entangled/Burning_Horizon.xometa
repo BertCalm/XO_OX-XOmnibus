@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Burning Horizon",
   "parameters": {
-    "Odyssey": {},
-    "Orbital": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.783,
+      "drift_macroCoupling": 0.656,
+      "drift_macroMovement": 0.554,
+      "drift_macroSpace": 0.361
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.398,
+      "orb_macroCoupling": 0.432,
+      "orb_macroMovement": 0.553,
+      "orb_macroSpace": 0.245
+    }
   },
   "schema_version": 1,
   "tags": [

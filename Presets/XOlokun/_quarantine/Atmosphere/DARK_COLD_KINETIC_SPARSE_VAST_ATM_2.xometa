@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Tone Shimmer 3",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.0589,
+      "oracle_macroCoupling": 0.1265,
+      "oracle_macroMovement": 0.9333,
+      "oracle_macroSpace": 0.9218
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.022,
+      "organon_macroCoupling": 0.0963,
+      "organon_macroMovement": 0.8948,
+      "organon_macroSpace": 0.9088
+    }
   },
   "schema_version": 1,
   "tags": [

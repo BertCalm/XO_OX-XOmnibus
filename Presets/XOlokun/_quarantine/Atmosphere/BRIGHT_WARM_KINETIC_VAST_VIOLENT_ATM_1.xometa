@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Glow Abyss 2",
   "parameters": {
-    "Obscura": {},
-    "Optic": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.9327,
+      "obscura_macroCoupling": 0.7098,
+      "obscura_macroMovement": 0.8681,
+      "obscura_macroSpace": 0.9199
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.965,
+      "optic_macroCoupling": 0.6685,
+      "optic_macroMovement": 0.8935,
+      "optic_macroSpace": 0.9691
+    }
   },
   "schema_version": 1,
   "tags": [

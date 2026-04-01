@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Pulse Surge",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.735,
+      "morph_macroCoupling": 0.773,
+      "morph_macroMovement": 0.568,
+      "morph_macroSpace": 0.635
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.647,
+      "origami_macroCoupling": 0.459,
+      "origami_macroMovement": 0.795,
+      "origami_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "tags": [

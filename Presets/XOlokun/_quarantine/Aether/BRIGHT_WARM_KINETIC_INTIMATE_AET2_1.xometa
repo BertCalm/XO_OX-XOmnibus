@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Glow Drift",
   "parameters": {
-    "Obscura": {},
-    "Orbital": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.9171,
+      "obscura_macroCoupling": 0.564,
+      "obscura_macroMovement": 0.9703,
+      "obscura_macroSpace": 0.01
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.9673,
+      "orb_macroCoupling": 0.5089,
+      "orb_macroMovement": 0.99,
+      "orb_macroSpace": 0.073
+    }
   },
   "schema_version": 1,
   "tags": [

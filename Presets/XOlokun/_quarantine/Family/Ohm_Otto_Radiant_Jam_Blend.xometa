@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.67,
+      "ohm_macroMovement": 0.92,
+      "ohm_macroCoupling": 0.67,
+      "ohm_macroSpace": 0.39
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.65,
+      "otto_macroMovement": 0.79,
+      "otto_macroCoupling": 0.52,
+      "otto_macroSpace": 0.42
+    }
   },
   "coupling": {
     "type": "FM_CROSS",

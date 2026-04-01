@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM DENSE VIOLENT P... (Ohm I)",
   "parameters": {
-    "Ohm": {},
-    "Overworld": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.914,
+      "ohm_macroCoupling": 0.957,
+      "ohm_macroMovement": 0.294,
+      "ohm_macroSpace": 0.338
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.878,
+      "ow_macroCoupling": 0.94,
+      "ow_macroMovement": 0.289,
+      "ow_macroSpace": 0.349
+    }
   },
   "schema_version": 1,
   "tags": [

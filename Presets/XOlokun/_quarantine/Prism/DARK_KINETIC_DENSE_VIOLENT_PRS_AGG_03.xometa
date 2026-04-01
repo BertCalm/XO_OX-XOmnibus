@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "DARK KINETIC DENSE VIOLENT ... (Origami I)",
   "parameters": {
-    "Origami": {},
-    "Owlfish": {}
+    "Origami": {
+      "origami_macroCharacter": 0.028,
+      "origami_macroCoupling": 0.838,
+      "origami_macroMovement": 0.915,
+      "origami_macroSpace": 0.408
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.028,
+      "owl_macroCoupling": 0.779,
+      "owl_macroMovement": 0.919,
+      "owl_macroSpace": 0.424
+    }
   },
   "schema_version": 1,
   "tags": [

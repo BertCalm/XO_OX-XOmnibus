@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Obsidian Drift Current",
   "parameters": {
-    "Octopus": {},
-    "Onset": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.78,
+      "octo_macroCoupling": 0.89,
+      "octo_macroMovement": 0.76,
+      "octo_macroSpace": 0.47
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.29,
+      "perc_macroCoupling": 0.85,
+      "perc_macroMovement": 0.4,
+      "perc_macroSpace": 0.49
+    }
   },
   "schema_version": 1,
   "tags": [

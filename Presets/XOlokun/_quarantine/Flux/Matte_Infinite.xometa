@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Matte Infinite",
   "parameters": {
-    "Oceanic": {},
-    "Opal": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.1412,
+      "ocean_macroCoupling": 0.2226,
+      "ocean_macroMovement": 0.6661,
+      "ocean_macroSpace": 0.8944
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.181,
+      "opal_macroCoupling": 0.188,
+      "opal_macroMovement": 0.5175,
+      "opal_macroSpace": 0.9171
+    }
   },
   "schema_version": 1,
   "tags": [

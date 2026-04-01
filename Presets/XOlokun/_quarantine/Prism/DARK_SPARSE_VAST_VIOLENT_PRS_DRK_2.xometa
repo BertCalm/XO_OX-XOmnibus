@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Shard Storm 2",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.6849,
+      "oblq_macroCoupling": 0.1319,
+      "oblq_macroMovement": 0.313,
+      "oblq_macroSpace": 0.945
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.7244,
+      "ow_macroCoupling": 0.1116,
+      "ow_macroMovement": 0.3249,
+      "ow_macroSpace": 0.9167
+    }
   },
   "schema_version": 1,
   "tags": [

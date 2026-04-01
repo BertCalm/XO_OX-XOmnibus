@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Signal Titan",
   "parameters": {
-    "Oracle": {},
-    "Ouroboros": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.7145,
+      "oracle_macroCoupling": 0.0995,
+      "oracle_macroMovement": 0.613,
+      "oracle_macroSpace": 0.1736
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.6932,
+      "ouro_macroCoupling": 0.1757,
+      "ouro_macroMovement": 0.4914,
+      "ouro_macroSpace": 0.2176
+    }
   },
   "schema_version": 1,
   "tags": [

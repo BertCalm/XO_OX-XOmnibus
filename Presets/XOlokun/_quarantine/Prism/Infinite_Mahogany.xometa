@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Infinite Mahogany",
   "parameters": {
-    "Onset": {},
-    "Optic": {}
+    "Onset": {
+      "perc_macroCharacter": 0.61,
+      "perc_macroCoupling": 0.85,
+      "perc_macroMovement": 0.69,
+      "perc_macroSpace": 0.16
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.66,
+      "optic_macroCoupling": 0.9,
+      "optic_macroMovement": 0.9,
+      "optic_macroSpace": 0.22
+    }
   },
   "schema_version": 1,
   "sequencer": null,

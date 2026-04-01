@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Wave Stream",
   "parameters": {
-    "OddfeliX": {},
-    "Origami": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.76,
+      "snap_macroCoupling": 0.612,
+      "snap_macroMovement": 0.475,
+      "snap_macroSpace": 0.71
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.78,
+      "origami_macroCoupling": 0.587,
+      "origami_macroMovement": 0.493,
+      "origami_macroSpace": 0.753
+    }
   },
   "schema_version": 1,
   "tags": [

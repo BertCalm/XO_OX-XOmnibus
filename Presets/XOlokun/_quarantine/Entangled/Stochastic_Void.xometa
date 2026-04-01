@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Stochastic Void",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.07,
+      "drift_macroCoupling": 0.85,
+      "drift_macroMovement": 0.2,
+      "drift_macroSpace": 0.97
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.1,
+      "oracle_macroCoupling": 0.8,
+      "oracle_macroMovement": 0.25,
+      "oracle_macroSpace": 0.94
+    }
   },
   "schema_version": 1,
   "tags": [

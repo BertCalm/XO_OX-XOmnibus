@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Thick Fold Rush",
   "parameters": {
-    "Obese": {},
-    "Origami": {}
+    "Obese": {
+      "fat_macroCharacter": 0.5,
+      "fat_macroCoupling": 0.8,
+      "fat_macroMovement": 0.7,
+      "fat_macroSpace": 0.3
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.7,
+      "origami_macroCoupling": 0.8,
+      "origami_macroMovement": 0.7,
+      "origami_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "tags": [

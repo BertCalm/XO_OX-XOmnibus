@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Ghost Engine",
   "parameters": {
-    "Orphica": {},
-    "Owlfish": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.654,
+      "orph_macroCoupling": 0.815,
+      "orph_macroMovement": 0.436,
+      "orph_macroSpace": 0.67
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.752,
+      "owl_macroCoupling": 0.696,
+      "owl_macroMovement": 0.697,
+      "owl_macroSpace": 0.638
+    }
   },
   "schema_version": 1,
   "tags": [

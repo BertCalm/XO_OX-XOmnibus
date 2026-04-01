@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Thread Infinite",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.694,
+      "oracle_macroCoupling": 0.958,
+      "oracle_macroMovement": 0.064,
+      "oracle_macroSpace": 0.958
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.694,
+      "organon_macroCoupling": 0.958,
+      "organon_macroMovement": 0.064,
+      "organon_macroSpace": 0.958
+    }
   },
   "schema_version": 1,
   "tags": [

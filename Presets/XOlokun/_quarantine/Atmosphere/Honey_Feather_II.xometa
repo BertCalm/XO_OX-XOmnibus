@@ -39,8 +39,18 @@
   "mood": "Atmosphere",
   "name": "Honey Feather II",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.96,
+      "oracle_macroCoupling": 0.81,
+      "oracle_macroMovement": 0.92,
+      "oracle_macroSpace": 0.27
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.89,
+      "origami_macroCoupling": 0.66,
+      "origami_macroMovement": 0.99,
+      "origami_macroSpace": 0.17
+    }
   },
   "schema_version": 1,
   "sequencer": null,

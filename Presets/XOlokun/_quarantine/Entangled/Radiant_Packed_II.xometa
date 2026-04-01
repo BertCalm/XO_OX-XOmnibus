@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Radiant Packed II",
   "parameters": {
-    "Onset": {},
-    "Orphica": {}
+    "Onset": {
+      "perc_macroCharacter": 0.792,
+      "perc_macroCoupling": 0.929,
+      "perc_macroMovement": 0.942,
+      "perc_macroSpace": 0.936
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.792,
+      "orph_macroCoupling": 0.929,
+      "orph_macroMovement": 0.942,
+      "orph_macroSpace": 0.936
+    }
   },
   "schema_version": 1,
   "tags": [

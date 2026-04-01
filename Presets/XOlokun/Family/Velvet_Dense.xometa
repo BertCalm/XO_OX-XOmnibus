@@ -39,9 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.373,
+      "bob_macroCoupling": 0.945,
+      "bob_macroMovement": 0.775,
+      "bob_macroSpace": 0.664
     },
-    "OddfeliX": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.384,
+      "snap_macroCoupling": 0.987,
+      "snap_macroMovement": 0.761,
+      "snap_macroSpace": 0.653
+    }
   },
   "schema_version": 1,
   "tags": [

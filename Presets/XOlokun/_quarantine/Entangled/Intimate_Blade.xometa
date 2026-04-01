@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Intimate Blade",
   "parameters": {
-    "OddOscar": {},
-    "Orca": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.88,
+      "morph_macroCoupling": 0.73,
+      "morph_macroMovement": 0.87,
+      "morph_macroSpace": 0.15
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.64,
+      "orca_macroCoupling": 0.88,
+      "orca_macroMovement": 0.93,
+      "orca_macroSpace": 0.19
+    }
   },
   "schema_version": 1,
   "sequencer": null,

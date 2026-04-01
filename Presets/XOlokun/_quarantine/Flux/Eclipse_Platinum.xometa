@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Eclipse Platinum",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.138,
+      "ocelot_macroCoupling": 0.521,
+      "ocelot_macroMovement": 0.374,
+      "ocelot_macroSpace": 0.598
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.055,
+      "poss_macroCoupling": 0.773,
+      "poss_macroMovement": 0.37,
+      "poss_macroSpace": 0.597
+    }
   },
   "schema_version": 1,
   "tags": [

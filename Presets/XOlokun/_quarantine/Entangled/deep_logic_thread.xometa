@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Deep Logic Thread",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.4,
+      "drift_macroCoupling": 0.8,
+      "drift_macroMovement": 0.4,
+      "drift_macroSpace": 0.3
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.7,
+      "organon_macroCoupling": 0.9,
+      "organon_macroMovement": 0.5,
+      "organon_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "tags": [

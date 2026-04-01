@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Solar Molten",
   "parameters": {
-    "Ohm": {},
-    "Owlfish": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.589,
+      "ohm_macroCoupling": 1.0,
+      "ohm_macroMovement": 0.998,
+      "ohm_macroSpace": 0.01
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.609,
+      "owl_macroCoupling": 0.992,
+      "owl_macroMovement": 0.908,
+      "owl_macroSpace": 0.138
+    }
   },
   "schema_version": 1,
   "sequencer": null,

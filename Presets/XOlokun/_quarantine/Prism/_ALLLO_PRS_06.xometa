@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "ALLLO PRS 06",
   "parameters": {
-    "Ohm": {},
-    "Osteria": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.037,
+      "ohm_macroCoupling": 0.33,
+      "ohm_macroMovement": 0.071,
+      "ohm_macroSpace": 0.099
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.037,
+      "osteria_macroCoupling": 0.33,
+      "osteria_macroMovement": 0.071,
+      "osteria_macroSpace": 0.099
+    }
   },
   "schema_version": 1,
   "tags": [

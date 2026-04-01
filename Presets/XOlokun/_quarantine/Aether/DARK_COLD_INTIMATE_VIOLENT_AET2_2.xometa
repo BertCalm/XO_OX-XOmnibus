@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Wave Strike",
   "parameters": {
-    "Oblique": {},
-    "Orbital": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.0627,
+      "oblq_macroCoupling": 0.4732,
+      "oblq_macroMovement": 0.6487,
+      "oblq_macroSpace": 0.0706
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.122,
+      "orb_macroCoupling": 0.4219,
+      "orb_macroMovement": 0.63,
+      "orb_macroSpace": 0.0908
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Tone Strike",
   "parameters": {
-    "Optic": {},
+    "Optic": {
+      "optic_macroCharacter": 0.739,
+      "optic_macroCoupling": 0.944,
+      "optic_macroMovement": 0.885,
+      "optic_macroSpace": 0.312
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.638,
+      "dub_macroCoupling": 0.933,
+      "dub_macroMovement": 0.946,
+      "dub_macroSpace": 0.338
     }
   },
   "schema_version": 1,

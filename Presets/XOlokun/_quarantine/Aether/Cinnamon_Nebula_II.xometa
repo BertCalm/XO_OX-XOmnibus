@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Cinnamon Nebula II",
   "parameters": {
-    "Obscura": {},
-    "Oceanic": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.2858,
+      "obscura_macroCoupling": 0.5488,
+      "obscura_macroMovement": 0.9108,
+      "obscura_macroSpace": 0.3922
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.4767,
+      "ocean_macroCoupling": 0.9228,
+      "ocean_macroMovement": 0.6544,
+      "ocean_macroSpace": 0.7388
+    }
   },
   "schema_version": 1,
   "tags": [

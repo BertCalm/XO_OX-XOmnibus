@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obsidian": {},
-    "Outwit": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.9,
+      "obsidian_macroMovement": 0.69,
+      "obsidian_macroCoupling": 0.76,
+      "obsidian_macroSpace": 0.5
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.75,
+      "owit_macroMovement": 0.94,
+      "owit_macroCoupling": 0.79,
+      "owit_macroSpace": 0.42
+    }
   },
   "coupling": {
     "type": "FM_CROSS",

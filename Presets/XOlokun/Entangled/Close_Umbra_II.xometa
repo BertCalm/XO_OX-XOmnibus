@@ -49,7 +49,11 @@
       "filter_resonance": 0.3248,
       "output_level": 0.9393,
       "reverb_mix": 0.1561,
-      "reverb_size": 0.2071
+      "reverb_size": 0.2071,
+      "obbl_macroCharacter": 0.3792,
+      "obbl_macroCoupling": 0.7989,
+      "obbl_macroMovement": 0.5348,
+      "obbl_macroSpace": 0.0247
     },
     "Oceanic": {
       "amp_attack": 0.2054,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.3535,
       "output_level": 0.8856,
       "reverb_mix": 0.1833,
-      "reverb_size": 0.2602
+      "reverb_size": 0.2602,
+      "ocean_macroCharacter": 0.4037,
+      "ocean_macroCoupling": 0.7679,
+      "ocean_macroMovement": 0.5009,
+      "ocean_macroSpace": 0.0385
     }
   },
   "schema_version": 1,

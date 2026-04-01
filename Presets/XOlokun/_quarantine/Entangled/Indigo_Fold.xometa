@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Indigo Fold",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.21,
+      "oracle_macroCoupling": 0.63,
+      "oracle_macroMovement": 0.56,
+      "oracle_macroSpace": 0.87
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.18,
+      "origami_macroCoupling": 0.68,
+      "origami_macroMovement": 0.51,
+      "origami_macroSpace": 0.9
+    }
   },
   "schema_version": 1,
   "tags": [

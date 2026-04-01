@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Amber Heavy",
   "parameters": {
-    "Orbital": {},
-    "Origami": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.1132,
+      "orb_macroCoupling": 0.9368,
+      "orb_macroMovement": 0.5339,
+      "orb_macroSpace": 0.1019
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.0669,
+      "origami_macroCoupling": 0.953,
+      "origami_macroMovement": 0.5217,
+      "origami_macroSpace": 0.1342
+    }
   },
   "schema_version": 1,
   "tags": [

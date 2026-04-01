@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Charcoal Bloom Field",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.63,
+      "oracle_macroCoupling": 0.69,
+      "oracle_macroMovement": 0.34,
+      "oracle_macroSpace": 0.67
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.77,
+      "organon_macroCoupling": 0.68,
+      "organon_macroMovement": 0.47,
+      "organon_macroSpace": 0.8
+    }
   },
   "schema_version": 1,
   "tags": [

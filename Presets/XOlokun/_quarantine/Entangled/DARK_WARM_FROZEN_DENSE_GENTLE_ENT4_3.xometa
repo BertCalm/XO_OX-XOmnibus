@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Smoke Titan",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.515,
+      "organon_macroCoupling": 0.854,
+      "organon_macroMovement": 0.099,
+      "organon_macroSpace": 0.469
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.543,
+      "otto_macroCoupling": 0.894,
+      "otto_macroMovement": 0.107,
+      "otto_macroSpace": 0.466
+    }
   },
   "schema_version": 1,
   "tags": [

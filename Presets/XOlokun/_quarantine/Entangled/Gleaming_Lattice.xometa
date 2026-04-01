@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Gleaming Lattice",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.74,
+      "oracle_macroCoupling": 0.61,
+      "oracle_macroMovement": 0.54,
+      "oracle_macroSpace": 0.46
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.74,
+      "origami_macroCoupling": 0.65,
+      "origami_macroMovement": 0.4,
+      "origami_macroSpace": 0.46
+    }
   },
   "schema_version": 1,
   "tags": [

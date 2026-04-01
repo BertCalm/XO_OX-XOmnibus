@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM DENSE VIOLENT P... (Oblique)",
   "parameters": {
-    "Oblique": {},
-    "Owlfish": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.871,
+      "oblq_macroCoupling": 0.836,
+      "oblq_macroMovement": 0.389,
+      "oblq_macroSpace": 0.442
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.816,
+      "owl_macroCoupling": 0.855,
+      "owl_macroMovement": 0.372,
+      "owl_macroSpace": 0.439
+    }
   },
   "schema_version": 1,
   "tags": [

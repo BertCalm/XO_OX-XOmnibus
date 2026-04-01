@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Amber Saturated",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.515,
+      "ole_macroCoupling": 0.949,
+      "ole_macroMovement": 0.351,
+      "ole_macroSpace": 0.492
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.516,
+      "orph_macroCoupling": 0.968,
+      "orph_macroMovement": 0.324,
+      "orph_macroSpace": 0.483
+    }
   },
   "schema_version": 1,
   "tags": [

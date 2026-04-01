@@ -45,9 +45,18 @@
   "mood": "Foundation",
   "name": "Signal Cavern",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.247,
+      "snap_macroCoupling": 0.192,
+      "snap_macroMovement": 1.0,
+      "snap_macroSpace": 0.94
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.474,
+      "dub_macroCoupling": 0.033,
+      "dub_macroMovement": 0.982,
+      "dub_macroSpace": 0.94
     }
   },
   "schema_version": 1,

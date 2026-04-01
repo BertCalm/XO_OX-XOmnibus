@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Ice Saturated",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.9321,
+      "opal_macroCoupling": 0.4559,
+      "opal_macroMovement": 0.4425,
+      "opal_macroSpace": 0.1156
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.8541,
+      "oracle_macroCoupling": 0.3708,
+      "oracle_macroMovement": 0.3023,
+      "oracle_macroSpace": 0.1654
+    }
   },
   "schema_version": 1,
   "tags": [

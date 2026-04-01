@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT WARM KINETIC SPARSE ... (Owlfish I)",
   "parameters": {
-    "Organon": {},
-    "Owlfish": {}
+    "Organon": {
+      "organon_macroCharacter": 0.943,
+      "organon_macroCoupling": 0.481,
+      "organon_macroMovement": 0.944,
+      "organon_macroSpace": 0.33
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.956,
+      "owl_macroCoupling": 0.491,
+      "owl_macroMovement": 0.96,
+      "owl_macroSpace": 0.39
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Halo Heavy",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.8648,
+      "oracle_macroCoupling": 0.9495,
+      "oracle_macroMovement": 0.5313,
+      "oracle_macroSpace": 0.0128
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.8684,
+      "organon_macroCoupling": 0.9676,
+      "organon_macroMovement": 0.5526,
+      "organon_macroSpace": 0.0397
+    }
   },
   "schema_version": 1,
   "tags": [

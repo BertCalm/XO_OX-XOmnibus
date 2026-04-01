@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Signal Heavy 3",
   "parameters": {
-    "Ohm": {},
-    "Orphica": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.114,
+      "ohm_macroCoupling": 0.91,
+      "ohm_macroMovement": 0.522,
+      "ohm_macroSpace": 0.666
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.126,
+      "orph_macroCoupling": 0.931,
+      "orph_macroMovement": 0.522,
+      "orph_macroSpace": 0.655
+    }
   },
   "schema_version": 1,
   "tags": [

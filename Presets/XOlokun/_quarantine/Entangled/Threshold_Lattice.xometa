@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Threshold Lattice",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.06,
+      "drift_macroCoupling": 0.89,
+      "drift_macroMovement": 0.13,
+      "drift_macroSpace": 1.0
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.09,
+      "oracle_macroCoupling": 0.84,
+      "oracle_macroMovement": 0.18,
+      "oracle_macroSpace": 0.97
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orphica": {},
-    "Ocelot": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.72,
+      "orph_macroMovement": 0.96,
+      "orph_macroCoupling": 0.6,
+      "orph_macroSpace": 0.13
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.93,
+      "ocelot_macroMovement": 0.91,
+      "ocelot_macroCoupling": 0.74,
+      "ocelot_macroSpace": 0.21
+    }
   },
   "coupling": {
     "type": "CHAOS_INJECT",

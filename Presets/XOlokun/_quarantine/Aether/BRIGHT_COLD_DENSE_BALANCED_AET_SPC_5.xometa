@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT COLD DENSE BALANCED ... (Opal I)",
   "parameters": {
-    "Opal": {},
-    "Osprey": {}
+    "Opal": {
+      "opal_macroCharacter": 0.49,
+      "opal_macroCoupling": 0.524,
+      "opal_macroMovement": 0.429,
+      "opal_macroSpace": 0.471
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.491,
+      "osprey_macroCoupling": 0.524,
+      "osprey_macroMovement": 0.436,
+      "osprey_macroSpace": 0.468
+    }
   },
   "schema_version": 1,
   "tags": [

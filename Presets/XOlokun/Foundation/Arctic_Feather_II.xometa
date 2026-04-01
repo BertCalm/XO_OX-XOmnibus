@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Arctic Feather II",
   "parameters": {
-    "Onset": {},
+    "Onset": {
+      "perc_macroCharacter": 0.236,
+      "perc_macroCoupling": 0.667,
+      "perc_macroMovement": 0.124,
+      "perc_macroSpace": 0.27
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.401,
+      "dub_macroCoupling": 0.471,
+      "dub_macroMovement": 0.617,
+      "dub_macroSpace": 0.893
     }
   },
   "schema_version": 1,

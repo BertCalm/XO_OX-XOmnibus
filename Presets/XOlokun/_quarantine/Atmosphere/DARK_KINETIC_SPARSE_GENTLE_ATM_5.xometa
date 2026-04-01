@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Grain Drift 2",
   "parameters": {
-    "Optic": {},
-    "Orbital": {}
+    "Optic": {
+      "optic_macroCharacter": 0.681,
+      "optic_macroCoupling": 0.629,
+      "optic_macroMovement": 0.848,
+      "optic_macroSpace": 0.565
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.615,
+      "orb_macroCoupling": 0.52,
+      "orb_macroMovement": 0.891,
+      "orb_macroSpace": 0.528
+    }
   },
   "schema_version": 1,
   "tags": [

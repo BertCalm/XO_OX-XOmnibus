@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Shard Fang",
   "parameters": {
-    "Odyssey": {},
-    "Organon": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.1042,
+      "drift_macroCoupling": 0.87,
+      "drift_macroMovement": 0.0426,
+      "drift_macroSpace": 0.6836
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.1021,
+      "organon_macroCoupling": 0.8575,
+      "organon_macroMovement": 0.02,
+      "organon_macroSpace": 0.646
+    }
   },
   "schema_version": 1,
   "tags": [

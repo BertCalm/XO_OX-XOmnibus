@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Sunrise Molten",
   "parameters": {
-    "OddfeliX": {},
-    "Ottoni": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.894,
+      "snap_macroCoupling": 0.759,
+      "snap_macroMovement": 0.908,
+      "snap_macroSpace": 0.521
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.911,
+      "otto_macroCoupling": 0.788,
+      "otto_macroMovement": 0.954,
+      "otto_macroSpace": 0.517
+    }
   },
   "schema_version": 1,
   "tags": [

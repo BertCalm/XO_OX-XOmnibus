@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Dense Proof Wall",
   "parameters": {
-    "Obese": {},
-    "Organon": {}
+    "Obese": {
+      "fat_macroCharacter": 0.2,
+      "fat_macroCoupling": 0.9,
+      "fat_macroMovement": 0.3,
+      "fat_macroSpace": 0.1
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.9,
+      "organon_macroCoupling": 0.9,
+      "organon_macroMovement": 0.3,
+      "organon_macroSpace": 0.1
+    }
   },
   "schema_version": 1,
   "tags": [

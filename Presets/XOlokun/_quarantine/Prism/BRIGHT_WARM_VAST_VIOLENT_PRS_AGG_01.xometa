@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM VAST VIOLENT PR...",
   "parameters": {
-    "Origami": {},
-    "Osteria": {}
+    "Origami": {
+      "origami_macroCharacter": 0.858,
+      "origami_macroCoupling": 0.791,
+      "origami_macroMovement": 0.505,
+      "origami_macroSpace": 0.85
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.821,
+      "osteria_macroCoupling": 0.836,
+      "osteria_macroMovement": 0.483,
+      "osteria_macroSpace": 0.864
+    }
   },
   "schema_version": 1,
   "tags": [

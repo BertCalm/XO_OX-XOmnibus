@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Patina Pulse",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.55,
+      "organon_macroCoupling": 0.55,
+      "organon_macroMovement": 0.7,
+      "organon_macroSpace": 0.48
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.65,
+      "otto_macroCoupling": 0.68,
+      "otto_macroMovement": 0.6,
+      "otto_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

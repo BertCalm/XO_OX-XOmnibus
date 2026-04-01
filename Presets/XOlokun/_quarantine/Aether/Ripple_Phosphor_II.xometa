@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Ripple Phosphor II",
   "parameters": {
-    "Oblique": {},
-    "Oracle": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.975,
+      "oblq_macroCoupling": 0.704,
+      "oblq_macroMovement": 0.952,
+      "oblq_macroSpace": 0.445
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.975,
+      "oracle_macroCoupling": 0.704,
+      "oracle_macroMovement": 0.952,
+      "oracle_macroSpace": 0.445
+    }
   },
   "schema_version": 1,
   "tags": [

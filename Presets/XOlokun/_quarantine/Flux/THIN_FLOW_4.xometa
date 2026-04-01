@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 4",
   "parameters": {
-    "Octopus": {},
-    "Origami": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.5758,
+      "octo_macroCoupling": 0.7095,
+      "octo_macroMovement": 0.5734,
+      "octo_macroSpace": 0.4177
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.0423,
+      "origami_macroCoupling": 0.9212,
+      "origami_macroMovement": 0.0187,
+      "origami_macroSpace": 0.8621
+    }
   },
   "schema_version": 1,
   "tags": [

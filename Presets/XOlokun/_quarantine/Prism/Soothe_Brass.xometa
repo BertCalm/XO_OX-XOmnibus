@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Soothe Brass",
   "parameters": {
-    "Ottoni": {},
-    "Owlfish": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.4848,
+      "otto_macroCoupling": 0.4892,
+      "otto_macroMovement": 0.3972,
+      "otto_macroSpace": 0.9188
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.4822,
+      "owl_macroCoupling": 0.5031,
+      "owl_macroMovement": 0.4155,
+      "owl_macroSpace": 0.9575
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
-    "Ole": {},
-    "Orphica": {}
+    "Ole": {
+      "ole_macroCharacter": 0.856,
+      "ole_macroCoupling": 0.856,
+      "ole_macroMovement": 0.409,
+      "ole_macroSpace": 0.083
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.858,
+      "orph_macroCoupling": 0.914,
+      "orph_macroMovement": 0.41,
+      "orph_macroSpace": 0.084
+    }
   },
   "schema_version": 1,
   "tags": [

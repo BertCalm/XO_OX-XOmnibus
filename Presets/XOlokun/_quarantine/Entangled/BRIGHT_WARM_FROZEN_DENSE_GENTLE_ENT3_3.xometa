@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Bloom Dense",
   "parameters": {
-    "Outwit": {},
-    "Overlap": {}
+    "Outwit": {
+      "owit_macroCharacter": 0.8473,
+      "owit_macroCoupling": 0.8219,
+      "owit_macroMovement": 0.044,
+      "owit_macroSpace": 0.7934
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.8302,
+      "olap_macroCoupling": 0.9852,
+      "olap_macroMovement": 0.0612,
+      "olap_macroSpace": 0.5961
+    }
   },
   "schema_version": 1,
   "sequencer": null,

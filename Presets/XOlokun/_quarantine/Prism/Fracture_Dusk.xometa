@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Fracture Dusk",
   "parameters": {
-    "Ocelot": {},
-    "Overbite": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.171,
+      "ocelot_macroCoupling": 0.731,
+      "ocelot_macroMovement": 0.461,
+      "ocelot_macroSpace": 0.443
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.075,
+      "poss_macroCoupling": 0.593,
+      "poss_macroMovement": 0.317,
+      "poss_macroSpace": 0.582
+    }
   },
   "schema_version": 1,
   "tags": [

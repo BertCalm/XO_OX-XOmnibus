@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "COLD KINETIC DENSE VIOLENT ... (Osprey I)",
   "parameters": {
-    "Ombre": {},
-    "Osprey": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.565,
+      "ombre_macroCoupling": 0.886,
+      "ombre_macroMovement": 0.881,
+      "ombre_macroSpace": 0.614
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.571,
+      "osprey_macroCoupling": 0.942,
+      "osprey_macroMovement": 0.911,
+      "osprey_macroSpace": 0.616
+    }
   },
   "schema_version": 1,
   "tags": [

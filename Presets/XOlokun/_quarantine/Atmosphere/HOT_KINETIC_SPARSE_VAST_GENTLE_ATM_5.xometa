@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Phase Surge",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.74,
+      "ocean_macroCoupling": 0.1325,
+      "ocean_macroMovement": 0.9439,
+      "ocean_macroSpace": 0.8613
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.73,
+      "orb_macroCoupling": 0.1018,
+      "orb_macroMovement": 0.99,
+      "orb_macroSpace": 0.9032
+    }
   },
   "schema_version": 1,
   "tags": [

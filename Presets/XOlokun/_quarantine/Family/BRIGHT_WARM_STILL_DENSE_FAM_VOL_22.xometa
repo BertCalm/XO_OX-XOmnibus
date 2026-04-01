@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Halo Molten 2",
   "parameters": {
-    "Ole": {},
-    "Osprey": {}
+    "Ole": {
+      "ole_macroCharacter": 0.932,
+      "ole_macroCoupling": 0.634,
+      "ole_macroMovement": 0.041,
+      "ole_macroSpace": 0.401
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.973,
+      "osprey_macroCoupling": 0.635,
+      "osprey_macroMovement": 0.028,
+      "osprey_macroSpace": 0.418
+    }
   },
   "schema_version": 1,
   "tags": [

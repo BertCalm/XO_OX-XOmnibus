@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK HOT DENSE INTIMATE VIO... (Organon I)",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.502,
+      "oracle_macroCoupling": 0.923,
+      "oracle_macroMovement": 0.669,
+      "oracle_macroSpace": 0.06
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.506,
+      "organon_macroCoupling": 0.946,
+      "organon_macroMovement": 0.643,
+      "organon_macroSpace": 0.039
+    }
   },
   "schema_version": 1,
   "tags": [

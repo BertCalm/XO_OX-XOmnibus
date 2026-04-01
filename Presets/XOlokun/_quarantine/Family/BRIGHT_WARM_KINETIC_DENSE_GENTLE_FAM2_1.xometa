@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
-    "Osprey": {},
-    "Osteria": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.925,
+      "osprey_macroCoupling": 0.457,
+      "osprey_macroMovement": 0.93,
+      "osprey_macroSpace": 0.633
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.93,
+      "osteria_macroCoupling": 0.475,
+      "osteria_macroMovement": 0.927,
+      "osteria_macroSpace": 0.68
+    }
   },
   "schema_version": 1,
   "tags": [

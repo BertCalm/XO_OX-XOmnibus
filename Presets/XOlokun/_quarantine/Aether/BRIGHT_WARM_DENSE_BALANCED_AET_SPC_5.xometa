@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM DENSE BALANCED ... (Oracle I)",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.99,
+      "ocean_macroCoupling": 0.697,
+      "ocean_macroMovement": 0.363,
+      "ocean_macroSpace": 0.482
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.97,
+      "oracle_macroCoupling": 0.717,
+      "oracle_macroMovement": 0.339,
+      "oracle_macroSpace": 0.512
+    }
   },
   "schema_version": 1,
   "tags": [

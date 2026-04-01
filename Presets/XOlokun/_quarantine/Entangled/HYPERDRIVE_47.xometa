@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "HYPERDRIVE 47",
   "parameters": {
-    "Obese": {},
-    "Ohm": {}
+    "Obese": {
+      "fat_macroCharacter": 0.656,
+      "fat_macroCoupling": 0.006,
+      "fat_macroMovement": 0.929,
+      "fat_macroSpace": 0.751
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.77,
+      "ohm_macroCoupling": 0.107,
+      "ohm_macroMovement": 0.904,
+      "ohm_macroSpace": 0.425
+    }
   },
   "schema_version": 1,
   "tags": [

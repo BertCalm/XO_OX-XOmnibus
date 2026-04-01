@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Voltage Expanse",
   "parameters": {
-    "Obbligato": {},
-    "Ole": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.675,
+      "obbl_macroCoupling": 0.971,
+      "obbl_macroMovement": 0.066,
+      "obbl_macroSpace": 0.965
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.675,
+      "ole_macroCoupling": 0.971,
+      "ole_macroMovement": 0.066,
+      "ole_macroSpace": 0.965
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Thread Shard",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.136,
+      "morph_macroCoupling": 0.25,
+      "morph_macroMovement": 0.221,
+      "morph_macroSpace": 0.79
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.46,
+      "origami_macroCoupling": 0.333,
+      "origami_macroMovement": 0.646,
+      "origami_macroSpace": 0.721
+    }
   },
   "schema_version": 1,
   "tags": [

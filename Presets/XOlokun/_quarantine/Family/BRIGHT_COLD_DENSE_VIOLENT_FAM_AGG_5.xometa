@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Silver Storm",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.868,
+      "orph_macroCoupling": 0.46,
+      "orph_macroMovement": 0.438,
+      "orph_macroSpace": 0.77
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.831,
+      "otto_macroCoupling": 0.5,
+      "otto_macroMovement": 0.433,
+      "otto_macroSpace": 0.735
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Silver Slash III",
   "parameters": {
-    "Oceanic": {},
-    "Outwit": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.095,
+      "ocean_macroCoupling": 0.535,
+      "ocean_macroMovement": 0.42,
+      "ocean_macroSpace": 0.429
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.07,
+      "owit_macroCoupling": 0.774,
+      "owit_macroMovement": 0.419,
+      "owit_macroSpace": 0.532
+    }
   },
   "schema_version": 1,
   "tags": [

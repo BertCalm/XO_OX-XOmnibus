@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Layered Impact II",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.5633,
+      "ombre_macroCoupling": 0.7722,
+      "ombre_macroMovement": 0.4493,
+      "ombre_macroSpace": 0.4829
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.6349,
+      "orb_macroCoupling": 0.8489,
+      "orb_macroMovement": 0.695,
+      "orb_macroSpace": 0.5349
+    }
   },
   "schema_version": 1,
   "tags": [

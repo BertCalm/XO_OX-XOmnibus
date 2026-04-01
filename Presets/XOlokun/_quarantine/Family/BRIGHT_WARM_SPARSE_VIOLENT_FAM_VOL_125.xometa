@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Golden Strike 2",
   "parameters": {
-    "Obbligato": {},
-    "OddfeliX": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.922,
+      "obbl_macroCoupling": 0.496,
+      "obbl_macroMovement": 0.328,
+      "obbl_macroSpace": 0.577
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.941,
+      "snap_macroCoupling": 0.501,
+      "snap_macroMovement": 0.283,
+      "snap_macroSpace": 0.596
+    }
   },
   "schema_version": 1,
   "tags": [

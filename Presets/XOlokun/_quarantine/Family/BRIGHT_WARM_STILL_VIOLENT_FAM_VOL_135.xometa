@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Radiant Blade",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.947,
+      "organon_macroCoupling": 0.698,
+      "organon_macroMovement": 0.051,
+      "organon_macroSpace": 0.518
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.951,
+      "otto_macroCoupling": 0.676,
+      "otto_macroMovement": 0.029,
+      "otto_macroSpace": 0.461
+    }
   },
   "schema_version": 1,
   "tags": [

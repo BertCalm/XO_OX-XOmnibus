@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Shadow Void 4",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.454,
+      "morph_macroCoupling": 0.367,
+      "morph_macroMovement": 0.423,
+      "morph_macroSpace": 0.942
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.48,
+      "opal_macroCoupling": 0.317,
+      "opal_macroMovement": 0.42,
+      "opal_macroSpace": 0.936
+    }
   },
   "schema_version": 1,
   "tags": [

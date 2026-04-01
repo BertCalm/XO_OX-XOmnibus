@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Sienna Expanse",
   "parameters": {
-    "Ottoni": {},
-    "Overworld": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.5227,
+      "otto_macroCoupling": 0.5759,
+      "otto_macroMovement": 0.6021,
+      "otto_macroSpace": 0.9556
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.5241,
+      "ow_macroCoupling": 0.5539,
+      "ow_macroMovement": 0.5718,
+      "ow_macroSpace": 0.9426
+    }
   },
   "schema_version": 1,
   "tags": [

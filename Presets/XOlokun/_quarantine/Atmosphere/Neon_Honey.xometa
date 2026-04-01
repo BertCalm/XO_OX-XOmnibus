@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Neon Honey",
   "parameters": {
-    "OddOscar": {},
-    "Optic": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.494,
+      "morph_macroCoupling": 0.445,
+      "morph_macroMovement": 0.692,
+      "morph_macroSpace": 0.838
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.543,
+      "optic_macroCoupling": 0.857,
+      "optic_macroMovement": 0.611,
+      "optic_macroSpace": 0.856
+    }
   },
   "schema_version": 1,
   "tags": [

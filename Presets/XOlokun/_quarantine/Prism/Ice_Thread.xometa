@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Ice Thread",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.732,
+      "orph_macroCoupling": 0.695,
+      "orph_macroMovement": 0.364,
+      "orph_macroSpace": 0.919
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.333,
+      "otto_macroCoupling": 0.626,
+      "otto_macroMovement": 0.364,
+      "otto_macroSpace": 0.919
+    }
   },
   "schema_version": 1,
   "tags": [

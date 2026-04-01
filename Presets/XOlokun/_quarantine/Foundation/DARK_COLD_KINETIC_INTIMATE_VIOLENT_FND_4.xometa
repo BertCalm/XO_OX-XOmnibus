@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Grain Surge",
   "parameters": {
-    "Onset": {},
-    "Overbite": {}
+    "Onset": {
+      "perc_macroCharacter": 0.16,
+      "perc_macroCoupling": 0.583,
+      "perc_macroMovement": 1.0,
+      "perc_macroSpace": 0.148
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.172,
+      "poss_macroCoupling": 0.299,
+      "poss_macroMovement": 0.971,
+      "poss_macroSpace": 0.17
+    }
   },
   "schema_version": 1,
   "sequencer": null,

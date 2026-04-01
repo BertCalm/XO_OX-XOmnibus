@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Thread Grit 2",
   "parameters": {
-    "OddOscar": {},
-    "Overworld": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.469,
+      "morph_macroCoupling": 0.777,
+      "morph_macroMovement": 0.875,
+      "morph_macroSpace": 0.909
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.624,
+      "ow_macroCoupling": 0.768,
+      "ow_macroMovement": 0.899,
+      "ow_macroSpace": 0.926
+    }
   },
   "schema_version": 1,
   "tags": [

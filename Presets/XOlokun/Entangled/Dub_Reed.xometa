@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Dub Reed",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.86,
+      "organon_macroCoupling": 0.87,
+      "organon_macroMovement": 0.49,
+      "organon_macroSpace": 0.31
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.74,
+      "dub_macroCoupling": 0.8,
+      "dub_macroMovement": 0.71,
+      "dub_macroSpace": 0.25
     }
   },
   "schema_version": 1,

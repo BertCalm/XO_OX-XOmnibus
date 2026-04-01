@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Current Void",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.2661,
+      "morph_macroCoupling": 0.3825,
+      "morph_macroMovement": 0.8334,
+      "morph_macroSpace": 0.6417
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.593,
+      "origami_macroCoupling": 0.4327,
+      "origami_macroMovement": 0.4968,
+      "origami_macroSpace": 0.4546
+    }
   },
   "schema_version": 1,
   "tags": [

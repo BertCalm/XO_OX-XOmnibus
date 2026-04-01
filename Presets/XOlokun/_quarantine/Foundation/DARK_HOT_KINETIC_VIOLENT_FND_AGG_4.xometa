@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Mahogany Blade",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.714,
+      "morph_macroCoupling": 0.975,
+      "morph_macroMovement": 0.543,
+      "morph_macroSpace": 0.394
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.688,
+      "ouro_macroCoupling": 0.946,
+      "ouro_macroMovement": 0.532,
+      "ouro_macroSpace": 0.421
+    }
   },
   "schema_version": 1,
   "tags": [

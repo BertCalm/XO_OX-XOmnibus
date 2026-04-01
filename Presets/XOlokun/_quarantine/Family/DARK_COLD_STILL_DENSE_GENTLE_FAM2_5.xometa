@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "DARK COLD STILL DENSE GENTL... (Orphica I)",
   "parameters": {
-    "Opal": {},
-    "Orphica": {}
+    "Opal": {
+      "opal_macroCharacter": 0.029,
+      "opal_macroCoupling": 0.46,
+      "opal_macroMovement": 0.044,
+      "opal_macroSpace": 0.573
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.06,
+      "orph_macroCoupling": 0.482,
+      "orph_macroMovement": 0.049,
+      "orph_macroSpace": 0.609
+    }
   },
   "schema_version": 1,
   "tags": [

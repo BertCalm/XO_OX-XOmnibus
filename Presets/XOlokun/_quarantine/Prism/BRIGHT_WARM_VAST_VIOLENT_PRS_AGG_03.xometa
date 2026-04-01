@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT WARM VAST VIOLENT PR... (Oblique I)",
   "parameters": {
-    "Oblique": {},
-    "Oracle": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.906,
+      "oblq_macroCoupling": 0.863,
+      "oblq_macroMovement": 0.592,
+      "oblq_macroSpace": 0.846
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.905,
+      "oracle_macroCoupling": 0.863,
+      "oracle_macroMovement": 0.587,
+      "oracle_macroSpace": 0.84
+    }
   },
   "schema_version": 1,
   "tags": [

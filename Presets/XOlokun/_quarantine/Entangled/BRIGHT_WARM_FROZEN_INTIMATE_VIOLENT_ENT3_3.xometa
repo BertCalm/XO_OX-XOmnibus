@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Solar Crush 3",
   "parameters": {
-    "Orphica": {},
-    "Osprey": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.6584,
+      "orph_macroCoupling": 0.9828,
+      "orph_macroMovement": 0.1051,
+      "orph_macroSpace": 0.4435
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9842,
+      "osprey_macroCoupling": 0.9078,
+      "osprey_macroMovement": 0.101,
+      "osprey_macroSpace": 0.5612
+    }
   },
   "schema_version": 1,
   "sequencer": null,

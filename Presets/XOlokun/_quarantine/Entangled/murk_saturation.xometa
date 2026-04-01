@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Murk Saturation",
   "parameters": {
-    "Obese": {},
-    "Obscura": {}
+    "Obese": {
+      "fat_macroCharacter": 0.3,
+      "fat_macroCoupling": 0.8,
+      "fat_macroMovement": 0.7,
+      "fat_macroSpace": 0.2
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.7,
+      "obscura_macroCoupling": 0.8,
+      "obscura_macroMovement": 0.7,
+      "obscura_macroSpace": 0.2
+    }
   },
   "schema_version": 1,
   "tags": [

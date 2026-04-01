@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Brass Biome",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.58,
+      "organon_macroCoupling": 0.62,
+      "organon_macroMovement": 0.68,
+      "organon_macroSpace": 0.53
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.72,
+      "otto_macroCoupling": 0.74,
+      "otto_macroMovement": 0.62,
+      "otto_macroSpace": 0.43
+    }
   },
   "schema_version": 1,
   "tags": [

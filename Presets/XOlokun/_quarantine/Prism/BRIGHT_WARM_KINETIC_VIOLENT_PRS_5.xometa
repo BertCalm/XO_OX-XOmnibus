@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Solar Strike",
   "parameters": {
-    "Oblique": {},
-    "Ohm": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.951,
+      "oblq_macroCoupling": 0.778,
+      "oblq_macroMovement": 0.881,
+      "oblq_macroSpace": 0.498
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.5,
+      "ohm_macroCoupling": 0.655,
+      "ohm_macroMovement": 0.881,
+      "ohm_macroSpace": 0.498
+    }
   },
   "schema_version": 1,
   "tags": [

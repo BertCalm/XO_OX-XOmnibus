@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Void Warmth Cascade",
   "parameters": {
-    "OddOscar": {},
-    "Ohm": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.45,
+      "morph_macroCoupling": 0.63,
+      "morph_macroMovement": 0.23,
+      "morph_macroSpace": 0.8
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.38,
+      "ohm_macroCoupling": 0.79,
+      "ohm_macroMovement": 0.55,
+      "ohm_macroSpace": 0.49
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Cinnamon Balm",
   "parameters": {
-    "Ohm": {},
-    "Osteria": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.075,
+      "ohm_macroCoupling": 0.6,
+      "ohm_macroMovement": 0.52,
+      "ohm_macroSpace": 0.511
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.467,
+      "osteria_macroCoupling": 0.802,
+      "osteria_macroMovement": 0.52,
+      "osteria_macroSpace": 0.511
+    }
   },
   "schema_version": 1,
   "tags": [

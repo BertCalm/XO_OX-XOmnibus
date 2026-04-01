@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Frost Strike",
   "parameters": {
-    "Obese": {},
-    "Onset": {}
+    "Obese": {
+      "fat_macroCharacter": 0.948,
+      "fat_macroCoupling": 0.083,
+      "fat_macroMovement": 0.081,
+      "fat_macroSpace": 0.062
+    },
+    "Onset": {
+      "perc_macroCharacter": 1.0,
+      "perc_macroCoupling": 0.141,
+      "perc_macroMovement": 0.018,
+      "perc_macroSpace": 0.059
+    }
   },
   "schema_version": 1,
   "sequencer": null,

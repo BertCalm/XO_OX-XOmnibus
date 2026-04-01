@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Dusk Vast",
   "parameters": {
-    "Orca": {},
-    "Overbite": {}
+    "Orca": {
+      "orca_macroCharacter": 0.641,
+      "orca_macroCoupling": 0.97,
+      "orca_macroMovement": 0.064,
+      "orca_macroSpace": 0.967
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.649,
+      "poss_macroCoupling": 0.948,
+      "poss_macroMovement": 0.074,
+      "poss_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "tags": [

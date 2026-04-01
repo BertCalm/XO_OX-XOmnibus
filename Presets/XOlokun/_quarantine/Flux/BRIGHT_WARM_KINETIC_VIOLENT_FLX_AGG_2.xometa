@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Solar Rage 3",
   "parameters": {
-    "Odyssey": {},
-    "Optic": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.736,
+      "drift_macroCoupling": 0.756,
+      "drift_macroMovement": 0.951,
+      "drift_macroSpace": 0.387
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.393,
+      "optic_macroCoupling": 0.791,
+      "optic_macroMovement": 0.931,
+      "optic_macroSpace": 0.316
+    }
   },
   "schema_version": 1,
   "tags": [

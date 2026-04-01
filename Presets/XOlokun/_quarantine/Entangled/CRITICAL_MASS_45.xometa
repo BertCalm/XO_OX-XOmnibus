@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "CRITICAL MASS 45",
   "parameters": {
-    "Ouroboros": {},
-    "Overlap": {}
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.593,
+      "ouro_macroCoupling": 0.527,
+      "ouro_macroMovement": 0.891,
+      "ouro_macroSpace": 0.308
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.221,
+      "olap_macroCoupling": 0.984,
+      "olap_macroMovement": 0.948,
+      "olap_macroSpace": 0.055
+    }
   },
   "schema_version": 1,
   "tags": [

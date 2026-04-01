@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Mojo Dub",
   "parameters": {
-    "Obese": {},
+    "Obese": {
+      "fat_macroCharacter": 0.9,
+      "fat_macroCoupling": 0.85,
+      "fat_macroMovement": 0.4,
+      "fat_macroSpace": 0.2
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.55,
+      "dub_macroCoupling": 0.65,
+      "dub_macroMovement": 0.75,
+      "dub_macroSpace": 0.7
     }
   },
   "schema_version": 1,

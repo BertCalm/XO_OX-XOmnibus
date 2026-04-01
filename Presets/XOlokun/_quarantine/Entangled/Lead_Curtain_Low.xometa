@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Lead Curtain Low",
   "parameters": {
-    "Obsidian": {},
-    "Ombre": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.66,
+      "obsidian_macroCoupling": 0.85,
+      "obsidian_macroMovement": 0.85,
+      "obsidian_macroSpace": 0.38
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.18,
+      "ombre_macroCoupling": 0.63,
+      "ombre_macroMovement": 0.44,
+      "ombre_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "tags": [

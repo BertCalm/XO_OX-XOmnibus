@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Hibiscus Indigo",
   "parameters": {
-    "Ole": {},
-    "Oracle": {}
+    "Ole": {
+      "ole_macroCharacter": 0.74,
+      "ole_macroCoupling": 0.74,
+      "ole_macroMovement": 0.66,
+      "ole_macroSpace": 0.44
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.6,
+      "oracle_macroCoupling": 0.64,
+      "oracle_macroMovement": 0.62,
+      "oracle_macroSpace": 0.52
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 4",
   "parameters": {
-    "Ocelot": {},
-    "Overworld": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.5993,
+      "ocelot_macroCoupling": 0.3014,
+      "ocelot_macroMovement": 0.0077,
+      "ocelot_macroSpace": 0.2112
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.4866,
+      "ow_macroCoupling": 0.0454,
+      "ow_macroMovement": 0.6671,
+      "ow_macroSpace": 0.3953
+    }
   },
   "schema_version": 1,
   "tags": [

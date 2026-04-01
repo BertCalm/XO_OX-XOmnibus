@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oceanic": {},
-    "Osteria": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.83,
+      "ocean_macroMovement": 0.96,
+      "ocean_macroCoupling": 0.83,
+      "ocean_macroSpace": 0.45
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.69,
+      "osteria_macroMovement": 0.67,
+      "osteria_macroCoupling": 0.66,
+      "osteria_macroSpace": 0.37
+    }
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

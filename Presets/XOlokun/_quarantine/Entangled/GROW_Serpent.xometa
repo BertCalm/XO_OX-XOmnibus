@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "GROW Serpent",
   "parameters": {
-    "Ottoni": {},
-    "Ouroboros": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.7,
+      "otto_macroMovement": 0.55,
+      "otto_macroSpace": 0.42
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroCoupling": 0.65,
+      "ouro_macroMovement": 0.6,
+      "ouro_macroSpace": 0.45
+    }
   },
   "schema_version": 1,
   "tags": [

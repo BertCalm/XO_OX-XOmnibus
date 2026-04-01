@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "CROSS PRS 05",
   "parameters": {
-    "Ocelot": {},
-    "Optic": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.487,
+      "ocelot_macroCoupling": 0.46,
+      "ocelot_macroMovement": 0.674,
+      "ocelot_macroSpace": 0.024
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.487,
+      "optic_macroCoupling": 0.46,
+      "optic_macroMovement": 0.674,
+      "optic_macroSpace": 0.024
+    }
   },
   "schema_version": 1,
   "tags": [

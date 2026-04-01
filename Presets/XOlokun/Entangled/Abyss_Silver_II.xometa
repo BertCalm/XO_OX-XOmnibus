@@ -49,7 +49,11 @@
       "filter_resonance": 0.5235,
       "output_level": 0.772,
       "reverb_mix": 0.7184,
-      "reverb_size": 0.8002
+      "reverb_size": 0.8002,
+      "ocelot_macroCharacter": 0.5644,
+      "ocelot_macroCoupling": 0.9001,
+      "ocelot_macroMovement": 0.6881,
+      "ocelot_macroSpace": 0.9496
     },
     "Overbite": {}
   },

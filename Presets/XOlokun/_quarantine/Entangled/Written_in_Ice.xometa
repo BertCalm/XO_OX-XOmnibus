@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Written in Ice",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.08,
+      "oracle_macroCoupling": 0.86,
+      "oracle_macroMovement": 0.16,
+      "oracle_macroSpace": 0.97
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.05,
+      "origami_macroCoupling": 0.91,
+      "origami_macroMovement": 0.11,
+      "origami_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "tags": [

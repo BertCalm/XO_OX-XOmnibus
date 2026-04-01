@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Shimmer Trace II",
   "parameters": {
-    "OddOscar": {},
-    "Overbite": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.958,
+      "morph_macroCoupling": 0.252,
+      "morph_macroMovement": 0.482,
+      "morph_macroSpace": 0.398
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.958,
+      "poss_macroCoupling": 0.252,
+      "poss_macroMovement": 0.482,
+      "poss_macroSpace": 0.398
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Mirror Packed",
   "parameters": {
-    "Overbite": {},
-    "Overdub": {}
+    "Overbite": {
+      "poss_macroCharacter": 0.672,
+      "poss_macroCoupling": 0.227,
+      "poss_macroMovement": 0.355,
+      "poss_macroSpace": 0.569
+    },
+    "Overdub": {
+      "dub_macroCharacter": 0.318,
+      "dub_macroCoupling": 0.497,
+      "dub_macroMovement": 0.755,
+      "dub_macroSpace": 0.238
+    }
   },
   "schema_version": 1,
   "tags": [

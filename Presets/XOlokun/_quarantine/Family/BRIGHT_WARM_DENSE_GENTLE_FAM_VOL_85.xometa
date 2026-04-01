@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Thick 2",
   "parameters": {
-    "Ohm": {},
-    "Orphica": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.857,
+      "ohm_macroCoupling": 0.522,
+      "ohm_macroMovement": 0.312,
+      "ohm_macroSpace": 0.647
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.899,
+      "orph_macroCoupling": 0.526,
+      "orph_macroMovement": 0.32,
+      "orph_macroSpace": 0.634
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Frost Cavern",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.515,
+      "snap_macroCoupling": 0.174,
+      "snap_macroMovement": 0.431,
+      "snap_macroSpace": 0.946
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.482,
+      "osprey_macroCoupling": 0.187,
+      "osprey_macroMovement": 0.468,
+      "osprey_macroSpace": 0.954
+    }
   },
   "schema_version": 1,
   "tags": [

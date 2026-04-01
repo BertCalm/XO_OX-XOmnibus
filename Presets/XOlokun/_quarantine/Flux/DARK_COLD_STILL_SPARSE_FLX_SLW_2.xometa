@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Flux Force 2",
   "parameters": {
-    "Ouroboros": {},
-    "Overworld": {}
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.555,
+      "ouro_macroCoupling": 0.727,
+      "ouro_macroMovement": 0.046,
+      "ouro_macroSpace": 0.529
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.664,
+      "ow_macroCoupling": 0.858,
+      "ow_macroMovement": 0.064,
+      "ow_macroSpace": 0.532
+    }
   },
   "schema_version": 1,
   "tags": [

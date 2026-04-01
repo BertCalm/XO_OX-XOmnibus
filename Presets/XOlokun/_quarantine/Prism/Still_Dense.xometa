@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Still Dense",
   "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.678,
+      "orph_macroCoupling": 0.363,
+      "orph_macroMovement": 0.041,
+      "orph_macroSpace": 0.64
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.754,
+      "otto_macroCoupling": 0.793,
+      "otto_macroMovement": 0.041,
+      "otto_macroSpace": 0.64
+    }
   },
   "schema_version": 1,
   "tags": [

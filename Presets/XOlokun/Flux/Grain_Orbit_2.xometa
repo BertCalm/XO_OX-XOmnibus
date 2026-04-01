@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Grain Orbit 2",
   "parameters": {
-    "Ouroboros": {},
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.432,
+      "ouro_macroCoupling": 0.733,
+      "ouro_macroMovement": 0.041,
+      "ouro_macroSpace": 0.515
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.49,
+      "dub_macroCoupling": 0.756,
+      "dub_macroMovement": 0.053,
+      "dub_macroSpace": 0.505
     }
   },
   "schema_version": 1,

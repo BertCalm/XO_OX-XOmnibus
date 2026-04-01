@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Ice Abyss",
   "parameters": {
-    "Ohm": {},
-    "Overlap": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.5114,
+      "ohm_macroCoupling": 0.9769,
+      "ohm_macroMovement": 0.0477,
+      "ohm_macroSpace": 0.5296
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.6054,
+      "olap_macroCoupling": 0.8347,
+      "olap_macroMovement": 0.0288,
+      "olap_macroSpace": 0.143
+    }
   },
   "schema_version": 1,
   "sequencer": null,

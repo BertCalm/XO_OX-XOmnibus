@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Quartz Phase",
   "parameters": {
-    "Onset": {},
-    "Optic": {}
+    "Onset": {
+      "perc_macroCharacter": 0.328,
+      "perc_macroCoupling": 0.057,
+      "perc_macroMovement": 0.041,
+      "perc_macroSpace": 0.082
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.342,
+      "optic_macroCoupling": 0.077,
+      "optic_macroMovement": 0.034,
+      "optic_macroSpace": 0.07
+    }
   },
   "schema_version": 1,
   "tags": [

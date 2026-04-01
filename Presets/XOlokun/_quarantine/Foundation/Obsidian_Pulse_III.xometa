@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Obsidian Pulse III",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.267,
+      "ohm_macroCoupling": 0.724,
+      "ohm_macroMovement": 0.913,
+      "ohm_macroSpace": 0.904
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.168,
+      "ole_macroCoupling": 0.604,
+      "ole_macroMovement": 0.982,
+      "ole_macroSpace": 0.868
+    }
   },
   "schema_version": 1,
   "tags": [

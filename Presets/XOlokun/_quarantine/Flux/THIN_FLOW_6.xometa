@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 6",
   "parameters": {
-    "Obscura": {},
-    "Orphica": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.835,
+      "obscura_macroCoupling": 0.7272,
+      "obscura_macroMovement": 0.5488,
+      "obscura_macroSpace": 0.5278
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.1112,
+      "orph_macroCoupling": 0.3012,
+      "orph_macroMovement": 0.2881,
+      "orph_macroSpace": 0.0477
+    }
   },
   "schema_version": 1,
   "tags": [

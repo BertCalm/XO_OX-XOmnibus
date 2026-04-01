@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Swim Bladder",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.67,
+      "organon_macroCoupling": 0.56,
+      "organon_macroMovement": 0.47,
+      "organon_macroSpace": 0.3
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.9,
+      "dub_macroCoupling": 0.85,
+      "dub_macroMovement": 0.55,
+      "dub_macroSpace": 0.49
     }
   },
   "schema_version": 1,

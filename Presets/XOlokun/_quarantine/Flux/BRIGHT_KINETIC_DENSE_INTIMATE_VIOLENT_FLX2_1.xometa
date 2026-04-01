@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Mirror Pulse (Optic)",
   "parameters": {
-    "Optic": {},
-    "Ouroboros": {}
+    "Optic": {
+      "optic_macroCharacter": 0.5968,
+      "optic_macroCoupling": 0.9537,
+      "optic_macroMovement": 0.99,
+      "optic_macroSpace": 0.1187
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.5828,
+      "ouro_macroCoupling": 0.9552,
+      "ouro_macroMovement": 0.9741,
+      "ouro_macroSpace": 0.1434
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Neon Pulse II",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.495,
+      "organon_macroCoupling": 0.944,
+      "organon_macroMovement": 0.936,
+      "organon_macroSpace": 0.533
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.744,
+      "dub_macroCoupling": 0.911,
+      "dub_macroMovement": 1.0,
+      "dub_macroSpace": 0.494
     }
   },
   "schema_version": 1,

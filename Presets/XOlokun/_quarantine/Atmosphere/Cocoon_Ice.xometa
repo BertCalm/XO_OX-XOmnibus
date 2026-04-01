@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Cocoon Ice",
   "parameters": {
-    "OddfeliX": {},
-    "Opal": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.323,
+      "snap_macroCoupling": 0.858,
+      "snap_macroMovement": 0.272,
+      "snap_macroSpace": 0.163
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.402,
+      "opal_macroCoupling": 0.782,
+      "opal_macroMovement": 0.129,
+      "opal_macroSpace": 0.146
+    }
   },
   "schema_version": 1,
   "tags": [

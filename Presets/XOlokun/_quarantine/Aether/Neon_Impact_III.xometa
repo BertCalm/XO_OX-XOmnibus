@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Neon Impact III",
   "parameters": {
-    "Obscura": {},
-    "Origami": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.945,
+      "obscura_macroCoupling": 0.938,
+      "obscura_macroMovement": 0.782,
+      "obscura_macroSpace": 0.9
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.945,
+      "origami_macroCoupling": 0.938,
+      "origami_macroMovement": 0.782,
+      "origami_macroSpace": 0.9
+    }
   },
   "schema_version": 1,
   "tags": [

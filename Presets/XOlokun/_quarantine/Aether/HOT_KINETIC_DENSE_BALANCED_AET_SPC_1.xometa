@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
-    "Obscura": {},
-    "Oceanic": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.647,
+      "obscura_macroCoupling": 0.919,
+      "obscura_macroMovement": 0.969,
+      "obscura_macroSpace": 0.542
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.625,
+      "ocean_macroCoupling": 0.902,
+      "ocean_macroMovement": 0.946,
+      "ocean_macroSpace": 0.559
+    }
   },
   "schema_version": 1,
   "tags": [

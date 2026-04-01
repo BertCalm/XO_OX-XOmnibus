@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Phase Cathedral",
   "parameters": {
-    "Obbligato": {},
-    "OddOscar": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.074,
+      "obbl_macroCoupling": 0.305,
+      "obbl_macroMovement": 0.376,
+      "obbl_macroSpace": 0.898
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.101,
+      "morph_macroCoupling": 0.302,
+      "morph_macroMovement": 0.373,
+      "morph_macroSpace": 0.911
+    }
   },
   "schema_version": 1,
   "tags": [

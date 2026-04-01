@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT COLD DENSE VIOLENT A... (Origami I)",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.938,
+      "opal_macroCoupling": 0.87,
+      "opal_macroMovement": 0.438,
+      "opal_macroSpace": 0.413
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.962,
+      "origami_macroCoupling": 0.893,
+      "origami_macroMovement": 0.45,
+      "origami_macroSpace": 0.432
+    }
   },
   "schema_version": 1,
   "tags": [

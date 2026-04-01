@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Octopus Amber",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.68,
+      "organon_macroMovement": 0.89,
+      "organon_macroSpace": 0.59
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.15,
+      "dub_macroCoupling": 0.55,
+      "dub_macroMovement": 0.75,
+      "dub_macroSpace": 0.63
     }
   },
   "schema_version": 1,

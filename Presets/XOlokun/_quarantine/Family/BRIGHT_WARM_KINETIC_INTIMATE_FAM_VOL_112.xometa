@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Shimmer",
   "parameters": {
-    "Obbligato": {},
-    "Ohm": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.895,
+      "obbl_macroCoupling": 0.47,
+      "obbl_macroMovement": 0.978,
+      "obbl_macroSpace": 0.071
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.902,
+      "ohm_macroCoupling": 0.461,
+      "ohm_macroMovement": 0.973,
+      "ohm_macroSpace": 0.072
+    }
   },
   "schema_version": 1,
   "tags": [

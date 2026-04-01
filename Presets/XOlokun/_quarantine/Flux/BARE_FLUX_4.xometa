@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "BARE FLUX 4",
   "parameters": {
-    "Organon": {},
-    "Osprey": {}
+    "Organon": {
+      "organon_macroCharacter": 0.5105,
+      "organon_macroCoupling": 0.51,
+      "organon_macroMovement": 0.114,
+      "organon_macroSpace": 0.9059
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.3103,
+      "osprey_macroCoupling": 0.3331,
+      "osprey_macroMovement": 0.3395,
+      "osprey_macroSpace": 0.1681
+    }
   },
   "schema_version": 1,
   "tags": [

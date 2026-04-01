@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Shard Massive",
   "parameters": {
-    "OddfeliX": {},
+    "OddfeliX": {
+      "snap_macroCharacter": 0.65,
+      "snap_macroCoupling": 0.736,
+      "snap_macroMovement": 0.881,
+      "snap_macroSpace": 0.436
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.614,
+      "dub_macroCoupling": 0.74,
+      "dub_macroMovement": 0.905,
+      "dub_macroSpace": 0.461
     }
   },
   "schema_version": 1,

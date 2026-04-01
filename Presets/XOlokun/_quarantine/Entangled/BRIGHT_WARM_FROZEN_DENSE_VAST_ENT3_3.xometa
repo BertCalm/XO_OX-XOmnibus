@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Honey Deep",
   "parameters": {
-    "Optic": {},
-    "Owlfish": {}
+    "Optic": {
+      "optic_macroCharacter": 0.9828,
+      "optic_macroCoupling": 0.9553,
+      "optic_macroMovement": 0.0937,
+      "optic_macroSpace": 0.8365
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.7222,
+      "owl_macroCoupling": 0.9502,
+      "owl_macroMovement": 0.0927,
+      "owl_macroSpace": 0.2383
+    }
   },
   "schema_version": 1,
   "sequencer": null,

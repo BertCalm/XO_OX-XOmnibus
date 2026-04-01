@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Glass Strike",
   "parameters": {
-    "Ombre": {},
-    "Osprey": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.8883,
+      "ombre_macroCoupling": 0.4873,
+      "ombre_macroMovement": 0.0739,
+      "ombre_macroSpace": 0.0384
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.8908,
+      "osprey_macroCoupling": 0.5112,
+      "osprey_macroMovement": 0.0309,
+      "osprey_macroSpace": 0.047
+    }
   },
   "schema_version": 1,
   "tags": [

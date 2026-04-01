@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Fragment Strike",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.0239,
+      "oblq_macroCoupling": 0.0419,
+      "oblq_macroMovement": 0.1252,
+      "oblq_macroSpace": 0.0565
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.0738,
+      "osprey_macroCoupling": 0.0971,
+      "osprey_macroMovement": 0.0802,
+      "osprey_macroSpace": 0.0302
+    }
   },
   "schema_version": 1,
   "tags": [

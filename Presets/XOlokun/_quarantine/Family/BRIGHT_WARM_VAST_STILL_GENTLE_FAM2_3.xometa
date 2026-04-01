@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM VAST STILL GENT... (Odyssey I)",
   "parameters": {
-    "OddfeliX": {},
-    "Odyssey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.926,
+      "snap_macroCoupling": 0.285,
+      "snap_macroMovement": 0.075,
+      "snap_macroSpace": 0.99
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.94,
+      "drift_macroCoupling": 0.302,
+      "drift_macroMovement": 0.096,
+      "drift_macroSpace": 0.963
+    }
   },
   "schema_version": 1,
   "tags": [

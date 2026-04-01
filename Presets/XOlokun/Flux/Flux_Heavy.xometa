@@ -39,9 +39,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.0554,
+      "bob_macroCoupling": 0.9255,
+      "bob_macroMovement": 0.8877,
+      "bob_macroSpace": 0.4065
     },
-    "Oracle": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.0959,
+      "oracle_macroCoupling": 0.9321,
+      "oracle_macroMovement": 0.8742,
+      "oracle_macroSpace": 0.403
+    }
   },
   "schema_version": 1,
   "tags": [

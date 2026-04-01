@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC TIGHT VIOLEN... (Oceanic I)",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.852,
+      "ocean_macroCoupling": 0.889,
+      "ocean_macroMovement": 0.912,
+      "ocean_macroSpace": 0.125
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.84,
+      "orb_macroCoupling": 0.86,
+      "orb_macroMovement": 0.888,
+      "orb_macroSpace": 0.121
+    }
   },
   "schema_version": 1,
   "tags": [

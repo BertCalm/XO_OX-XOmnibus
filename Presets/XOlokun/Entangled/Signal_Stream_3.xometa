@@ -49,7 +49,11 @@
       "filter_resonance": 0.2557,
       "output_level": 0.9064,
       "reverb_mix": 0.1693,
-      "reverb_size": 0.2132
+      "reverb_size": 0.2132,
+      "octo_macroCharacter": 0.3736,
+      "octo_macroCoupling": 0.7053,
+      "octo_macroMovement": 0.8778,
+      "octo_macroSpace": 0.077
     },
     "Overlap": {
       "amp_attack": 0.0535,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.2884,
       "output_level": 0.8603,
       "reverb_mix": 0.1802,
-      "reverb_size": 0.2471
+      "reverb_size": 0.2471,
+      "olap_macroCharacter": 0.369,
+      "olap_macroCoupling": 0.711,
+      "olap_macroMovement": 0.8923,
+      "olap_macroSpace": 0.0553
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Thread Stream",
   "parameters": {
-    "Oceanic": {},
-    "Odyssey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.2476,
+      "ocean_macroCoupling": 0.9067,
+      "ocean_macroMovement": 0.9395,
+      "ocean_macroSpace": 0.3298
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.2419,
+      "drift_macroCoupling": 0.9249,
+      "drift_macroMovement": 0.9319,
+      "drift_macroSpace": 0.4239
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Tone Ripple",
   "parameters": {
-    "Obsidian": {},
-    "Ouroboros": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 1.0,
+      "obsidian_macroCoupling": 0.985,
+      "obsidian_macroMovement": 0.981,
+      "obsidian_macroSpace": 0.04
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 1.0,
+      "ouro_macroCoupling": 0.931,
+      "ouro_macroMovement": 0.932,
+      "ouro_macroSpace": 0.044
+    }
   },
   "schema_version": 1,
   "sequencer": null,

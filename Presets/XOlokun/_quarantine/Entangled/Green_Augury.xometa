@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Green Augury",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.58,
+      "oracle_macroCoupling": 0.62,
+      "oracle_macroMovement": 0.6,
+      "oracle_macroSpace": 0.52
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.7,
+      "otto_macroMovement": 0.55,
+      "otto_macroSpace": 0.48
+    }
   },
   "schema_version": 1,
   "tags": [

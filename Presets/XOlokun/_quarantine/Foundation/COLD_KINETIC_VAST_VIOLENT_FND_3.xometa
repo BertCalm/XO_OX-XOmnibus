@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Phase Vast",
   "parameters": {
-    "Obsidian": {},
-    "Origami": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.845,
+      "obsidian_macroCoupling": 0.781,
+      "obsidian_macroMovement": 0.713,
+      "obsidian_macroSpace": 0.874
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.543,
+      "origami_macroCoupling": 0.246,
+      "origami_macroMovement": 0.521,
+      "origami_macroSpace": 0.413
+    }
   },
   "schema_version": 1,
   "tags": [

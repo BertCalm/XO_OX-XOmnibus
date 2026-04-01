@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Wave Solid",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.1128,
+      "morph_macroCoupling": 0.9611,
+      "morph_macroMovement": 0.6116,
+      "morph_macroSpace": 0.0598
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.1518,
+      "opal_macroCoupling": 0.9669,
+      "opal_macroMovement": 0.5851,
+      "opal_macroSpace": 0.0484
+    }
   },
   "schema_version": 1,
   "tags": [

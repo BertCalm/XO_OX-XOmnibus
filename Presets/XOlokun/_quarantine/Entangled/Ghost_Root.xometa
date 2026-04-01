@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Ghost Root",
   "parameters": {
-    "Octopus": {},
-    "Orca": {}
+    "Octopus": {
+      "octo_macroCharacter": 0.426,
+      "octo_macroCoupling": 0.77,
+      "octo_macroMovement": 0.599,
+      "octo_macroSpace": 0.309
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.776,
+      "orca_macroCoupling": 0.498,
+      "orca_macroMovement": 0.692,
+      "orca_macroSpace": 0.422
+    }
   },
   "schema_version": 1,
   "tags": [

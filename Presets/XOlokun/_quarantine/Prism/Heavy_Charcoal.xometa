@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Heavy Charcoal",
   "parameters": {
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.644,
+      "oblq_macroCoupling": 0.506,
+      "oblq_macroMovement": 0.893,
+      "oblq_macroSpace": 0.604
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.22,
+      "ow_macroCoupling": 0.515,
+      "ow_macroMovement": 0.893,
+      "ow_macroSpace": 0.604
+    }
   },
   "schema_version": 1,
   "tags": [

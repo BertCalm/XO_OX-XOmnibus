@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Dense Cycle Gate",
   "parameters": {
-    "Odyssey": {},
-    "Ouroboros": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.5,
+      "drift_macroCoupling": 0.8,
+      "drift_macroMovement": 0.5,
+      "drift_macroSpace": 0.3
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.7,
+      "ouro_macroCoupling": 0.8,
+      "ouro_macroMovement": 0.6,
+      "ouro_macroSpace": 0.3
+    }
   },
   "schema_version": 1,
   "tags": [

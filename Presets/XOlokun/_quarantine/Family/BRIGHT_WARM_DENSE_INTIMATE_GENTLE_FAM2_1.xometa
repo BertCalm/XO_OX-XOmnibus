@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM DENSE INTIMATE ...",
   "parameters": {
-    "Obbligato": {},
-    "OddfeliX": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.879,
+      "obbl_macroCoupling": 0.536,
+      "obbl_macroMovement": 0.349,
+      "obbl_macroSpace": 0.106
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.899,
+      "snap_macroCoupling": 0.533,
+      "snap_macroMovement": 0.346,
+      "snap_macroSpace": 0.106
+    }
   },
   "schema_version": 1,
   "tags": [

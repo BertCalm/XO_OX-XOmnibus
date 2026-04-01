@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC BALANCE... (Ombre I)",
   "parameters": {
-    "OddfeliX": {},
-    "Ombre": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.957,
+      "snap_macroCoupling": 0.851,
+      "snap_macroMovement": 0.883,
+      "snap_macroSpace": 0.42
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.94,
+      "ombre_macroCoupling": 0.879,
+      "ombre_macroMovement": 0.899,
+      "ombre_macroSpace": 0.431
+    }
   },
   "schema_version": 1,
   "tags": [

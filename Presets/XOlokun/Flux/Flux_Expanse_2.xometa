@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Flux Expanse 2",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.535,
+      "oblq_macroCoupling": 0.841,
+      "oblq_macroMovement": 0.521,
+      "oblq_macroSpace": 0.931
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.37,
+      "dub_macroCoupling": 0.823,
+      "dub_macroMovement": 0.564,
+      "dub_macroSpace": 0.992
     }
   },
   "schema_version": 1,

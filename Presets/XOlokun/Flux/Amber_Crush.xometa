@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Amber Crush",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.5019,
+      "oblq_macroCoupling": 0.6069,
+      "oblq_macroMovement": 0.9212,
+      "oblq_macroSpace": 0.0443
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.4757,
+      "dub_macroCoupling": 0.6119,
+      "dub_macroMovement": 0.94,
+      "dub_macroSpace": 0.0969
     }
   },
   "schema_version": 1,

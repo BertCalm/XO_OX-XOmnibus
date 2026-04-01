@@ -51,7 +51,11 @@
       "reverb_mix": 0.6853,
       "reverb_size": 0.7633,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.5477,
+      "bob_macroCoupling": 0.8069,
+      "bob_macroMovement": 0.0001,
+      "bob_macroSpace": 0.9719
     },
     "Ohm": {
       "amp_attack": 0.4655,
@@ -63,7 +67,11 @@
       "filter_resonance": 0.4369,
       "output_level": 0.742,
       "reverb_mix": 0.7028,
-      "reverb_size": 0.7843
+      "reverb_size": 0.7843,
+      "ohm_macroCharacter": 0.53,
+      "ohm_macroCoupling": 0.808,
+      "ohm_macroMovement": 0.0579,
+      "ohm_macroSpace": 0.9797
     }
   },
   "schema_version": 1,

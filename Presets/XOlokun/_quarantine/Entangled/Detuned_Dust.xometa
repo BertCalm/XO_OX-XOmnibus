@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Detuned Dust",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.79,
+      "morph_macroCoupling": 0.73,
+      "morph_macroMovement": 0.49,
+      "morph_macroSpace": 0.36
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.67,
+      "opal_macroCoupling": 0.75,
+      "opal_macroMovement": 0.24,
+      "opal_macroSpace": 0.43
+    }
   },
   "schema_version": 1,
   "tags": [

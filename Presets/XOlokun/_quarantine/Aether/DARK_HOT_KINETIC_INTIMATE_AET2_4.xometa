@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Rust Drift",
   "parameters": {
-    "Organon": {},
-    "Osprey": {}
+    "Organon": {
+      "organon_macroCharacter": 0.0569,
+      "organon_macroCoupling": 0.6568,
+      "organon_macroMovement": 0.9859,
+      "organon_macroSpace": 0.0335
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.0916,
+      "osprey_macroCoupling": 0.6272,
+      "osprey_macroMovement": 0.9757,
+      "osprey_macroSpace": 0.0409
+    }
   },
   "schema_version": 1,
   "tags": [

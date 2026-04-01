@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK HOT KINETIC BALANCED A... (Organon I)",
   "parameters": {
-    "Oceanic": {},
-    "Organon": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.541,
+      "ocean_macroCoupling": 0.661,
+      "ocean_macroMovement": 0.923,
+      "ocean_macroSpace": 0.577
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroCoupling": 0.672,
+      "organon_macroMovement": 0.928,
+      "organon_macroSpace": 0.579
+    }
   },
   "schema_version": 1,
   "tags": [

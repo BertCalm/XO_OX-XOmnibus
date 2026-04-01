@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Amber Abyss 2",
   "parameters": {
-    "Ole": {},
-    "Overbite": {}
+    "Ole": {
+      "ole_macroCharacter": 0.9358,
+      "ole_macroCoupling": 0.9284,
+      "ole_macroMovement": 0.0917,
+      "ole_macroSpace": 0.8604
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.9771,
+      "poss_macroCoupling": 0.8691,
+      "poss_macroMovement": 0.1132,
+      "poss_macroSpace": 0.5229
+    }
   },
   "schema_version": 1,
   "sequencer": null,

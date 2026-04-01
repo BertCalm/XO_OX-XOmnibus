@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Crystal Massive",
   "parameters": {
-    "OddOscar": {},
-    "Overworld": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.927,
+      "morph_macroCoupling": 0.687,
+      "morph_macroMovement": 0.454,
+      "morph_macroSpace": 0.395
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.866,
+      "ow_macroCoupling": 0.943,
+      "ow_macroMovement": 0.597,
+      "ow_macroSpace": 0.327
+    }
   },
   "schema_version": 1,
   "tags": [

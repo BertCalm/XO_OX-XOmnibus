@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Slash Hearth",
   "parameters": {
-    "Onset": {},
-    "Oracle": {}
+    "Onset": {
+      "perc_macroCharacter": 0.67,
+      "perc_macroCoupling": 0.59,
+      "perc_macroMovement": 0.71,
+      "perc_macroSpace": 0.18
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.86,
+      "oracle_macroCoupling": 0.83,
+      "oracle_macroMovement": 0.91,
+      "oracle_macroSpace": 0.12
+    }
   },
   "schema_version": 1,
   "sequencer": null,

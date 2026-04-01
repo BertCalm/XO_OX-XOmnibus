@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Node Strike 2",
   "parameters": {
-    "Obscura": {},
-    "Orbital": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.1431,
+      "obscura_macroCoupling": 0.0968,
+      "obscura_macroMovement": 0.0712,
+      "obscura_macroSpace": 0.01
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.1129,
+      "orb_macroCoupling": 0.1452,
+      "orb_macroMovement": 0.1106,
+      "orb_macroSpace": 0.0211
+    }
   },
   "schema_version": 1,
   "tags": [

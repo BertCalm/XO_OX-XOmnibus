@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Shroud Quartz",
   "parameters": {
-    "Obbligato": {},
-    "Origami": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.07,
+      "obbl_macroCoupling": 0.873,
+      "obbl_macroMovement": 0.664,
+      "obbl_macroSpace": 0.463
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.068,
+      "origami_macroCoupling": 0.668,
+      "origami_macroMovement": 0.543,
+      "origami_macroSpace": 0.354
+    }
   },
   "schema_version": 1,
   "tags": [

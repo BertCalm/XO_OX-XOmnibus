@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 8",
   "parameters": {
-    "Onset": {},
-    "Ouroboros": {}
+    "Onset": {
+      "perc_macroCharacter": 0.7093,
+      "perc_macroCoupling": 0.9409,
+      "perc_macroMovement": 0.346,
+      "perc_macroSpace": 0.8949
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.1242,
+      "ouro_macroCoupling": 0.1647,
+      "ouro_macroMovement": 0.153,
+      "ouro_macroSpace": 0.3227
+    }
   },
   "schema_version": 1,
   "tags": [

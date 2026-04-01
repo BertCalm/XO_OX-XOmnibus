@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "DARK HOT DENSE INTIMATE VIO... (Owlfish I)",
   "parameters": {
-    "Ombre": {},
-    "Owlfish": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.51,
+      "ombre_macroCoupling": 0.933,
+      "ombre_macroMovement": 0.68,
+      "ombre_macroSpace": 0.027
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.519,
+      "owl_macroCoupling": 0.944,
+      "owl_macroMovement": 0.696,
+      "owl_macroSpace": 0.024
+    }
   },
   "schema_version": 1,
   "tags": [

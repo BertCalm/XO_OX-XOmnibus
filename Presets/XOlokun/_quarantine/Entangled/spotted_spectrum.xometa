@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Spotted Spectrum",
   "parameters": {
-    "Oblique": {},
-    "Ocelot": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.762,
+      "oblq_macroCoupling": 0.612,
+      "oblq_macroMovement": 0.712,
+      "oblq_macroSpace": 0.512
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.688,
+      "ocelot_macroCoupling": 0.588,
+      "ocelot_macroMovement": 0.738,
+      "ocelot_macroSpace": 0.488
+    }
   },
   "schema_version": 1,
   "tags": [

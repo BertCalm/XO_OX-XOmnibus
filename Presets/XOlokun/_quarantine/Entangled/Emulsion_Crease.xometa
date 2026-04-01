@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Emulsion Crease",
   "parameters": {
-    "Obscura": {},
-    "Origami": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.18,
+      "obscura_macroCoupling": 0.67,
+      "obscura_macroMovement": 0.44,
+      "obscura_macroSpace": 0.9
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.15,
+      "origami_macroCoupling": 0.72,
+      "origami_macroMovement": 0.39,
+      "origami_macroSpace": 0.93
+    }
   },
   "schema_version": 1,
   "tags": [

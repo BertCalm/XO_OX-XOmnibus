@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Cathedral Strike",
   "parameters": {
-    "OddOscar": {},
-    "OddfeliX": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.743,
+      "morph_macroCoupling": 0.954,
+      "morph_macroMovement": 0.902,
+      "morph_macroSpace": 0.964
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.743,
+      "snap_macroCoupling": 0.954,
+      "snap_macroMovement": 0.902,
+      "snap_macroSpace": 0.964
+    }
   },
   "schema_version": 1,
   "tags": [

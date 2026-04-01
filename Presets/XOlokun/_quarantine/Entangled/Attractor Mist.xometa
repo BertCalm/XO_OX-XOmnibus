@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Attractor Mist (Orphica)",
   "parameters": {
-    "Orphica": {},
-    "Ouroboros": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.62,
+      "orph_macroCoupling": 0.6,
+      "orph_macroMovement": 0.52,
+      "orph_macroSpace": 0.78
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.6,
+      "ouro_macroCoupling": 0.6,
+      "ouro_macroMovement": 0.7,
+      "ouro_macroSpace": 0.42
+    }
   },
   "schema_version": 1,
   "sequencer": null,

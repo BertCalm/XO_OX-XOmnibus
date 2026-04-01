@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Mahogany Cascade 2",
   "parameters": {
-    "Odyssey": {},
-    "Orphica": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.49,
+      "drift_macroCoupling": 0.28,
+      "drift_macroMovement": 0.912,
+      "drift_macroSpace": 0.7
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.464,
+      "orph_macroCoupling": 0.267,
+      "orph_macroMovement": 0.895,
+      "orph_macroSpace": 0.658
+    }
   },
   "schema_version": 1,
   "tags": [

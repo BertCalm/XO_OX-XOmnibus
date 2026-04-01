@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Optic": {},
-    "Oblong": {}
+    "Optic": {
+      "optic_macroCharacter": 0.65,
+      "optic_macroMovement": 0.95,
+      "optic_macroCoupling": 0.88,
+      "optic_macroSpace": 0.42
+    },
+    "Oblong": {
+      "bob_macroCharacter": 0.89,
+      "bob_macroMovement": 0.62,
+      "bob_macroCoupling": 0.74,
+      "bob_macroSpace": 0.25
+    }
   },
   "coupling": {
     "type": "RING_MOD",

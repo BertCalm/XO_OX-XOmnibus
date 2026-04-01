@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "AVALANCHE 4",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.7,
+      "oracle_macroCoupling": 0.943,
+      "oracle_macroMovement": 0.892,
+      "oracle_macroSpace": 0.5
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.494,
+      "organon_macroCoupling": 0.08,
+      "organon_macroMovement": 0.949,
+      "organon_macroSpace": 0.04
+    }
   },
   "schema_version": 1,
   "tags": [

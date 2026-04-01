@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Chrome Orbit",
   "parameters": {
-    "Osprey": {},
-    "Ottoni": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.506,
+      "osprey_macroCoupling": 0.489,
+      "osprey_macroMovement": 0.844,
+      "osprey_macroSpace": 0.882
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.535,
+      "otto_macroCoupling": 0.543,
+      "otto_macroMovement": 0.898,
+      "otto_macroSpace": 0.916
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Mirror Void",
   "parameters": {
-    "Ombre": {},
-    "Orca": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.544,
+      "ombre_macroCoupling": 0.639,
+      "ombre_macroMovement": 0.692,
+      "ombre_macroSpace": 0.575
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.649,
+      "orca_macroCoupling": 0.788,
+      "orca_macroMovement": 0.554,
+      "orca_macroSpace": 0.463
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Node Deep",
   "parameters": {
-    "OddOscar": {},
+    "OddOscar": {
+      "morph_macroCharacter": 0.546,
+      "morph_macroCoupling": 0.683,
+      "morph_macroMovement": 0.768,
+      "morph_macroSpace": 0.465
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.562,
+      "dub_macroCoupling": 0.708,
+      "dub_macroMovement": 0.756,
+      "dub_macroSpace": 0.432
     }
   },
   "schema_version": 1,

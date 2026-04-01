@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Cinnamon Radiant",
   "parameters": {
-    "Ombre": {},
-    "Osteria": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.956,
+      "ombre_macroCoupling": 0.307,
+      "ombre_macroMovement": 0.517,
+      "ombre_macroSpace": 0.514
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.956,
+      "osteria_macroCoupling": 0.307,
+      "osteria_macroMovement": 0.517,
+      "osteria_macroSpace": 0.514
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Sunrise Blade",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.879,
+      "morph_macroCoupling": 0.831,
+      "morph_macroMovement": 0.343,
+      "morph_macroSpace": 0.533
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.892,
+      "osprey_macroCoupling": 0.828,
+      "osprey_macroMovement": 0.378,
+      "osprey_macroSpace": 0.526
+    }
   },
   "schema_version": 1,
   "tags": [

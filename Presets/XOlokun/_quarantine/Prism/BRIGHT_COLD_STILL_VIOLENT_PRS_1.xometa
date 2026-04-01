@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Crystal Wrath",
   "parameters": {
-    "Osteria": {},
-    "Overworld": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.915,
+      "osteria_macroCoupling": 0.617,
+      "osteria_macroMovement": 0.07,
+      "osteria_macroSpace": 0.355
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.504,
+      "ow_macroCoupling": 0.883,
+      "ow_macroMovement": 0.07,
+      "ow_macroSpace": 0.355
+    }
   },
   "schema_version": 1,
   "tags": [

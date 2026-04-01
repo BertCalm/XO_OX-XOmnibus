@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Feather Obsidian",
   "parameters": {
-    "Ohm": {},
-    "Oracle": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.042,
+      "ohm_macroCoupling": 0.839,
+      "ohm_macroMovement": 0.092,
+      "ohm_macroSpace": 0.368
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.496,
+      "oracle_macroCoupling": 0.579,
+      "oracle_macroMovement": 0.092,
+      "oracle_macroSpace": 0.368
+    }
   },
   "schema_version": 1,
   "tags": [

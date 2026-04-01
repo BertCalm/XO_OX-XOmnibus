@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Silver Horizon",
   "parameters": {
-    "Orphica": {},
-    "Overworld": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.903,
+      "orph_macroCoupling": 0.128,
+      "orph_macroMovement": 0.932,
+      "orph_macroSpace": 1.0
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.786,
+      "ow_macroCoupling": 0.072,
+      "ow_macroMovement": 0.954,
+      "ow_macroSpace": 0.909
+    }
   },
   "schema_version": 1,
   "sequencer": null,

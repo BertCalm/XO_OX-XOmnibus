@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Ocean Ethereal III",
   "parameters": {
-    "Onset": {},
-    "Ouroboros": {}
+    "Onset": {
+      "perc_macroCharacter": 0.742,
+      "perc_macroCoupling": 0.113,
+      "perc_macroMovement": 0.342,
+      "perc_macroSpace": 0.418
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.831,
+      "ouro_macroCoupling": 0.839,
+      "ouro_macroMovement": 0.492,
+      "ouro_macroSpace": 0.579
+    }
   },
   "schema_version": 1,
   "tags": [

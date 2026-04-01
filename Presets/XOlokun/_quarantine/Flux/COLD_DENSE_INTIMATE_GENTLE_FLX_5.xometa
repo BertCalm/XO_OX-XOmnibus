@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Crystal Deep",
   "parameters": {
-    "Opal": {},
-    "Origami": {}
+    "Opal": {
+      "opal_macroCharacter": 0.5746,
+      "opal_macroCoupling": 0.1875,
+      "opal_macroMovement": 0.5371,
+      "opal_macroSpace": 0.1546
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.5926,
+      "origami_macroCoupling": 0.1084,
+      "origami_macroMovement": 0.4608,
+      "origami_macroSpace": 0.1213
+    }
   },
   "schema_version": 1,
   "tags": [

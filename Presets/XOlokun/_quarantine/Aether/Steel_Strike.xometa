@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Steel Strike",
   "parameters": {
-    "Obese": {},
-    "Optic": {}
+    "Obese": {
+      "fat_macroCharacter": 0.08,
+      "fat_macroCoupling": 0.403,
+      "fat_macroMovement": 0.372,
+      "fat_macroSpace": 0.424
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.1,
+      "optic_macroCoupling": 0.728,
+      "optic_macroMovement": 0.342,
+      "optic_macroSpace": 0.464
+    }
   },
   "schema_version": 1,
   "tags": [

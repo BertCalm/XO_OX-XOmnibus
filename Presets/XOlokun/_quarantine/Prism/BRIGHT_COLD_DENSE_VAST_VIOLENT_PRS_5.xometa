@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Glass Orbit",
   "parameters": {
-    "Ocelot": {},
-    "Owlfish": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.907,
+      "ocelot_macroCoupling": 0.848,
+      "ocelot_macroMovement": 0.537,
+      "ocelot_macroSpace": 1.0
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.878,
+      "owl_macroCoupling": 0.945,
+      "owl_macroMovement": 0.406,
+      "owl_macroSpace": 0.99
+    }
   },
   "schema_version": 1,
   "sequencer": null,

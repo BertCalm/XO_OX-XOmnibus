@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Stochastic Forge",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.52,
+      "oracle_macroCoupling": 0.6,
+      "oracle_macroMovement": 0.68,
+      "oracle_macroSpace": 0.55
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.68,
+      "otto_macroCoupling": 0.6,
+      "otto_macroMovement": 0.45,
+      "otto_macroSpace": 0.35
+    }
   },
   "schema_version": 1,
   "sequencer": null,

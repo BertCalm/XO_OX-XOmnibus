@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Copper Umbra",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.502,
+      "ohm_macroCoupling": 0.676,
+      "ohm_macroMovement": 0.041,
+      "ohm_macroSpace": 0.306
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.043,
+      "ole_macroCoupling": 0.872,
+      "ole_macroMovement": 0.041,
+      "ole_macroSpace": 0.306
+    }
   },
   "schema_version": 1,
   "tags": [

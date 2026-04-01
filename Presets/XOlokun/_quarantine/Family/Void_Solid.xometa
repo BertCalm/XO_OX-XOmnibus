@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Void Solid",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.518,
+      "morph_macroCoupling": 0.791,
+      "morph_macroMovement": 0.534,
+      "morph_macroSpace": 0.987
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.518,
+      "opal_macroCoupling": 0.791,
+      "opal_macroMovement": 0.534,
+      "opal_macroSpace": 0.987
+    }
   },
   "schema_version": 1,
   "tags": [

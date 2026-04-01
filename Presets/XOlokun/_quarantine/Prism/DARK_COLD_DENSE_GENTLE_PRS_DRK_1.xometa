@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Tone Dense",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.0306,
+      "optic_macroCoupling": 0.9349,
+      "optic_macroMovement": 0.5609,
+      "optic_macroSpace": 0.3059
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.01,
+      "oracle_macroCoupling": 0.8996,
+      "oracle_macroMovement": 0.553,
+      "oracle_macroSpace": 0.2962
+    }
   },
   "schema_version": 1,
   "tags": [

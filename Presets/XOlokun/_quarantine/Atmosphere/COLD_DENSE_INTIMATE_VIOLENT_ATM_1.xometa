@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Frost Strike 2",
   "parameters": {
-    "Orbital": {},
-    "Osprey": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.443,
+      "orb_macroCoupling": 0.642,
+      "orb_macroMovement": 0.513,
+      "orb_macroSpace": 0.29
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.39,
+      "osprey_macroCoupling": 0.746,
+      "osprey_macroMovement": 0.608,
+      "osprey_macroSpace": 0.154
+    }
   },
   "schema_version": 1,
   "tags": [

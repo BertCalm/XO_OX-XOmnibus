@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Feline Aperture",
   "parameters": {
-    "Ocelot": {},
-    "Optic": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.688,
+      "ocelot_macroCoupling": 0.588,
+      "ocelot_macroMovement": 0.738,
+      "ocelot_macroSpace": 0.488
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.462,
+      "optic_macroCoupling": 0.562,
+      "optic_macroMovement": 0.412,
+      "optic_macroSpace": 0.462
+    }
   },
   "schema_version": 1,
   "tags": [

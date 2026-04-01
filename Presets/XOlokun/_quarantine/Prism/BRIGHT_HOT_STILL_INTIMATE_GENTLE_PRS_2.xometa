@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Honey Flux",
   "parameters": {
-    "Ole": {},
-    "Optic": {}
+    "Ole": {
+      "ole_macroCharacter": 1.0,
+      "ole_macroCoupling": 0.332,
+      "ole_macroMovement": 0.207,
+      "ole_macroSpace": 0.132
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.89,
+      "optic_macroCoupling": 0.285,
+      "optic_macroMovement": 0.062,
+      "optic_macroSpace": 0.183
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Shadow Void 3",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.106,
+      "oracle_macroCoupling": 0.416,
+      "oracle_macroMovement": 0.922,
+      "oracle_macroSpace": 0.92
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.115,
+      "otto_macroCoupling": 0.492,
+      "otto_macroMovement": 0.847,
+      "otto_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

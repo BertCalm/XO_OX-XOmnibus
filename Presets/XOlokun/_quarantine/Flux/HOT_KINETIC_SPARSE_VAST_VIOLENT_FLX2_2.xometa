@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Copper Grit",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.62,
+      "drift_macroCoupling": 0.1015,
+      "drift_macroMovement": 0.8813,
+      "drift_macroSpace": 0.8777
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.6444,
+      "opal_macroCoupling": 0.1008,
+      "opal_macroMovement": 0.8606,
+      "opal_macroSpace": 0.8862
+    }
   },
   "schema_version": 1,
   "tags": [

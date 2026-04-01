@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Flux Titan 3",
   "parameters": {
-    "Optic": {},
-    "Overworld": {}
+    "Optic": {
+      "optic_macroCharacter": 0.502,
+      "optic_macroCoupling": 0.89,
+      "optic_macroMovement": 0.914,
+      "optic_macroSpace": 0.501
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.616,
+      "ow_macroCoupling": 0.93,
+      "ow_macroMovement": 0.921,
+      "ow_macroSpace": 0.502
+    }
   },
   "schema_version": 1,
   "tags": [

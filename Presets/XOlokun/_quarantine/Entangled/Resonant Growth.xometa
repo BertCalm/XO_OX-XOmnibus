@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Resonant Growth",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.55,
+      "organon_macroCoupling": 0.75,
+      "organon_macroMovement": 0.6,
+      "organon_macroSpace": 0.5
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.75,
+      "otto_macroMovement": 0.4,
+      "otto_macroSpace": 0.38
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Flux Swirl",
   "parameters": {
-    "Ocelot": {},
-    "Owlfish": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.3048,
+      "ocelot_macroCoupling": 0.6685,
+      "ocelot_macroMovement": 0.9689,
+      "ocelot_macroSpace": 0.9227
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.3043,
+      "owl_macroCoupling": 0.6317,
+      "owl_macroMovement": 0.9353,
+      "owl_macroSpace": 0.9173
+    }
   },
   "schema_version": 1,
   "tags": [

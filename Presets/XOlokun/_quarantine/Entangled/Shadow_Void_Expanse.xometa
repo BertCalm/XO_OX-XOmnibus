@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Shadow Void Expanse",
   "parameters": {
-    "Oceanic": {},
-    "Odyssey": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.12,
+      "ocean_macroCoupling": 0.86,
+      "ocean_macroMovement": 0.41,
+      "ocean_macroSpace": 0.78
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.16,
+      "drift_macroCoupling": 0.72,
+      "drift_macroMovement": 0.28,
+      "drift_macroSpace": 0.24
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Prophetic Course",
   "parameters": {
-    "Odyssey": {},
-    "Oracle": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.6,
+      "drift_macroCoupling": 0.7,
+      "drift_macroMovement": 0.6,
+      "drift_macroSpace": 0.6
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.5,
+      "oracle_macroCoupling": 0.7,
+      "oracle_macroMovement": 0.6,
+      "oracle_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

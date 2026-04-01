@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Radiant Braid",
   "parameters": {
-    "Oracle": {},
-    "Ottoni": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.79,
+      "oracle_macroCoupling": 0.66,
+      "oracle_macroMovement": 0.54,
+      "oracle_macroSpace": 0.61
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.78,
+      "otto_macroCoupling": 0.71,
+      "otto_macroMovement": 0.51,
+      "otto_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Halo Packed 2",
   "parameters": {
-    "Ole": {},
-    "Ottoni": {}
+    "Ole": {
+      "ole_macroCharacter": 0.817,
+      "ole_macroCoupling": 1.0,
+      "ole_macroMovement": 1.0,
+      "ole_macroSpace": 0.117
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.754,
+      "otto_macroCoupling": 1.0,
+      "otto_macroMovement": 0.943,
+      "otto_macroSpace": 0.049
+    }
   },
   "schema_version": 1,
   "sequencer": null,

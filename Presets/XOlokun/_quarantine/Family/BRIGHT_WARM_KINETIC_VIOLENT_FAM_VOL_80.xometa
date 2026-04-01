@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Halo Flutter",
   "parameters": {
-    "Ole": {},
-    "Opal": {}
+    "Ole": {
+      "ole_macroCharacter": 0.984,
+      "ole_macroCoupling": 0.68,
+      "ole_macroMovement": 0.99,
+      "ole_macroSpace": 0.702
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.968,
+      "opal_macroCoupling": 0.66,
+      "opal_macroMovement": 0.985,
+      "opal_macroSpace": 0.684
+    }
   },
   "schema_version": 1,
   "tags": [

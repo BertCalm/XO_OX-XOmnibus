@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "CROSS PRS 02",
   "parameters": {
-    "Oblique": {},
-    "Origami": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.488,
+      "oblq_macroCoupling": 0.499,
+      "oblq_macroMovement": 0.69,
+      "oblq_macroSpace": 0.927
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.488,
+      "origami_macroCoupling": 0.499,
+      "origami_macroMovement": 0.69,
+      "origami_macroSpace": 0.927
+    }
   },
   "schema_version": 1,
   "tags": [

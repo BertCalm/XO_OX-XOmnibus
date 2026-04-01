@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Ice Rage",
   "parameters": {
-    "Ocelot": {},
-    "Ole": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 1.0,
+      "ocelot_macroCoupling": 0.85,
+      "ocelot_macroMovement": 0.438,
+      "ocelot_macroSpace": 0.069
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.894,
+      "ole_macroCoupling": 0.879,
+      "ole_macroMovement": 0.583,
+      "ole_macroSpace": 0.124
+    }
   },
   "schema_version": 1,
   "sequencer": null,

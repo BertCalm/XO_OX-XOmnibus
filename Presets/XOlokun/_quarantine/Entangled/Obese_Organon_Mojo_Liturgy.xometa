@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Mojo Liturgy",
   "parameters": {
-    "Obese": {},
-    "Organon": {}
+    "Obese": {
+      "fat_macroCharacter": 0.75,
+      "fat_macroCoupling": 0.65,
+      "fat_macroMovement": 0.6,
+      "fat_macroSpace": 0.3
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.8,
+      "organon_macroCoupling": 0.6,
+      "organon_macroMovement": 0.5,
+      "organon_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

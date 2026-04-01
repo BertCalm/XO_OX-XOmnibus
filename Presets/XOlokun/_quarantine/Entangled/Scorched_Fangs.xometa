@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Scorched Fangs",
   "parameters": {
-    "Orca": {},
-    "Ouroboros": {}
+    "Orca": {
+      "orca_macroCharacter": 0.72,
+      "orca_macroCoupling": 0.81,
+      "orca_macroMovement": 0.49,
+      "orca_macroSpace": 0.63
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.78,
+      "ouro_macroCoupling": 0.67,
+      "ouro_macroMovement": 0.3,
+      "ouro_macroSpace": 0.63
+    }
   },
   "schema_version": 1,
   "tags": [

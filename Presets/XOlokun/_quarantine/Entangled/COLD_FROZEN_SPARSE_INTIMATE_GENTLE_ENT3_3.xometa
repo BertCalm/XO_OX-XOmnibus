@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Node Shard",
   "parameters": {
-    "Oblique": {},
-    "Ouroboros": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7735,
+      "oblq_macroCoupling": 0.8499,
+      "oblq_macroMovement": 0.0201,
+      "oblq_macroSpace": 0.6067
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.8801,
+      "ouro_macroCoupling": 0.8413,
+      "ouro_macroMovement": 0.01,
+      "ouro_macroSpace": 0.8722
+    }
   },
   "schema_version": 1,
   "sequencer": null,

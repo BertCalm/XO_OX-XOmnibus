@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Grace Luminous",
   "parameters": {
-    "Onset": {},
-    "Osteria": {}
+    "Onset": {
+      "perc_macroCharacter": 0.744,
+      "perc_macroCoupling": 0.621,
+      "perc_macroMovement": 0.646,
+      "perc_macroSpace": 0.36
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.676,
+      "osteria_macroCoupling": 0.553,
+      "osteria_macroMovement": 0.513,
+      "osteria_macroSpace": 0.303
+    }
   },
   "schema_version": 1,
   "tags": [

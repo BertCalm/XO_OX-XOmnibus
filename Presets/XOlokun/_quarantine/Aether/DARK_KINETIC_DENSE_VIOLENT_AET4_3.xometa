@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Signal Rage",
   "parameters": {
-    "OddfeliX": {},
-    "Osprey": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.5402,
+      "snap_macroCoupling": 0.3186,
+      "snap_macroMovement": 0.7165,
+      "snap_macroSpace": 0.5117
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.4266,
+      "osprey_macroCoupling": 0.8055,
+      "osprey_macroMovement": 0.3837,
+      "osprey_macroSpace": 0.5046
+    }
   },
   "schema_version": 1,
   "tags": [

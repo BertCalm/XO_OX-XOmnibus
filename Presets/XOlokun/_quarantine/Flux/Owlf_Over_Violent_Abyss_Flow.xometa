@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Owlfish": {},
-    "Overdub": {}
+    "Owlfish": {
+      "owl_macroCharacter": 0.74,
+      "owl_macroMovement": 0.68,
+      "owl_macroCoupling": 0.6,
+      "owl_macroSpace": 0.17
+    },
+    "Overdub": {
+      "dub_macroCharacter": 0.93,
+      "dub_macroMovement": 0.87,
+      "dub_macroCoupling": 0.65,
+      "dub_macroSpace": 0.17
+    }
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

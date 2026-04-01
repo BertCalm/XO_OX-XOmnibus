@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Flux Vast II",
   "parameters": {
-    "Oceanic": {},
-    "OddOscar": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.767,
+      "ocean_macroCoupling": 0.455,
+      "ocean_macroMovement": 0.881,
+      "ocean_macroSpace": 0.821
+    },
+    "OddOscar": {
+      "morph_macroCharacter": 0.41,
+      "morph_macroCoupling": 0.515,
+      "morph_macroMovement": 0.845,
+      "morph_macroSpace": 0.834
+    }
   },
   "schema_version": 1,
   "tags": [

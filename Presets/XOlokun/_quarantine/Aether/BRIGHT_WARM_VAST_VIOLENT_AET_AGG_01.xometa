@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM VAST VIOLENT AE...",
   "parameters": {
-    "Orbital": {},
-    "Osprey": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.843,
+      "orb_macroCoupling": 0.872,
+      "orb_macroMovement": 0.481,
+      "orb_macroSpace": 0.866
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.87,
+      "osprey_macroCoupling": 0.865,
+      "osprey_macroMovement": 0.482,
+      "osprey_macroSpace": 0.865
+    }
   },
   "schema_version": 1,
   "tags": [

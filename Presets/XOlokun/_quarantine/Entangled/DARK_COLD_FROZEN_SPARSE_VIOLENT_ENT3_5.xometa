@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Fragment Storm 2",
   "parameters": {
-    "Oblique": {},
-    "Origami": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.5387,
+      "oblq_macroCoupling": 0.959,
+      "oblq_macroMovement": 0.01,
+      "oblq_macroSpace": 0.6268
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.7603,
+      "origami_macroCoupling": 0.8858,
+      "origami_macroMovement": 0.01,
+      "origami_macroSpace": 0.7736
+    }
   },
   "schema_version": 1,
   "sequencer": null,

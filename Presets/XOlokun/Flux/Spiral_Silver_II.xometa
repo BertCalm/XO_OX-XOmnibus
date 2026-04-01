@@ -37,10 +37,19 @@
   "mood": "Flux",
   "name": "Spiral Silver II",
   "parameters": {
-    "Oblique": {},
+    "Oblique": {
+      "oblq_macroCharacter": 0.3705,
+      "oblq_macroCoupling": 0.6211,
+      "oblq_macroMovement": 0.9445,
+      "oblq_macroSpace": 0.9451
+    },
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.2925,
+      "bob_macroCoupling": 0.7653,
+      "bob_macroMovement": 0.8909,
+      "bob_macroSpace": 0.8629
     }
   },
   "schema_version": 1,

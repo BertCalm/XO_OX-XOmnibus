@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Lattice Signal",
   "parameters": {
-    "OddfeliX": {},
-    "Orbital": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.648,
+      "snap_macroCoupling": 0.772,
+      "snap_macroMovement": 0.369,
+      "snap_macroSpace": 0.219
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.734,
+      "orb_macroCoupling": 0.561,
+      "orb_macroMovement": 0.325,
+      "orb_macroSpace": 0.681
+    }
   },
   "schema_version": 1,
   "tags": [

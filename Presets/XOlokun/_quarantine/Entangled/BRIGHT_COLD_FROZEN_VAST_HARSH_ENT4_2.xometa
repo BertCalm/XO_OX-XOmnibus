@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Glass Expanse",
   "parameters": {
-    "Obese": {},
-    "Odyssey": {}
+    "Obese": {
+      "fat_macroCharacter": 0.566,
+      "fat_macroCoupling": 0.384,
+      "fat_macroMovement": 0.091,
+      "fat_macroSpace": 0.938
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.547,
+      "drift_macroCoupling": 0.384,
+      "drift_macroMovement": 0.095,
+      "drift_macroSpace": 0.915
+    }
   },
   "schema_version": 1,
   "tags": [

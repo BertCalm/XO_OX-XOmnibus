@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Siren Attractor",
   "parameters": {
-    "Orphica": {},
-    "Ouroboros": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.8,
+      "orph_macroCoupling": 0.82,
+      "orph_macroMovement": 0.68,
+      "orph_macroSpace": 0.65
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.74,
+      "ouro_macroCoupling": 0.78,
+      "ouro_macroMovement": 0.76,
+      "ouro_macroSpace": 0.36
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Signal Canyon 2",
   "parameters": {
-    "Optic": {},
+    "Optic": {
+      "optic_macroCharacter": 0.636,
+      "optic_macroCoupling": 0.823,
+      "optic_macroMovement": 0.018,
+      "optic_macroSpace": 0.971
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.574,
+      "dub_macroCoupling": 0.724,
+      "dub_macroMovement": 0.019,
+      "dub_macroSpace": 1.0
     }
   },
   "schema_version": 1,

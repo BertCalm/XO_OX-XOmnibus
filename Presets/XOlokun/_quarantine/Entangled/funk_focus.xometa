@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Funk Focus",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.82,
+      "oblq_macroCoupling": 0.67,
+      "oblq_macroMovement": 0.77,
+      "oblq_macroSpace": 0.57
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.48,
+      "optic_macroCoupling": 0.58,
+      "optic_macroMovement": 0.43,
+      "optic_macroSpace": 0.48
+    }
   },
   "schema_version": 1,
   "tags": [

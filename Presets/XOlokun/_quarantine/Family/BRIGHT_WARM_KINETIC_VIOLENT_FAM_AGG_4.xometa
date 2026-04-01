@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Bloom Ripple",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.587,
+      "morph_macroCoupling": 0.355,
+      "morph_macroMovement": 0.71,
+      "morph_macroSpace": 0.531
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.558,
+      "opal_macroCoupling": 0.331,
+      "opal_macroMovement": 0.674,
+      "opal_macroSpace": 0.514
+    }
   },
   "schema_version": 1,
   "tags": [

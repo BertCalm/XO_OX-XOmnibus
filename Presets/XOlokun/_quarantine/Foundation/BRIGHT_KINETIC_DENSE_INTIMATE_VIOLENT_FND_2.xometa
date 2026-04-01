@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Grain Shimmer",
   "parameters": {
-    "OddfeliX": {},
-    "Overbite": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.935,
+      "snap_macroCoupling": 0.794,
+      "snap_macroMovement": 0.884,
+      "snap_macroSpace": 0.157
+    },
+    "Overbite": {
+      "poss_macroCharacter": 1.0,
+      "poss_macroCoupling": 0.824,
+      "poss_macroMovement": 0.914,
+      "poss_macroSpace": 0.223
+    }
   },
   "schema_version": 1,
   "sequencer": null,

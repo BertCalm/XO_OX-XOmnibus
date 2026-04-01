@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Tawny Thermocline",
   "parameters": {
-    "Oceanic": {},
-    "Ocelot": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.31,
+      "ocean_macroCoupling": 0.46,
+      "ocean_macroMovement": 0.36,
+      "ocean_macroSpace": 0.81
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.64,
+      "ocelot_macroCoupling": 0.54,
+      "ocelot_macroMovement": 0.69,
+      "ocelot_macroSpace": 0.44
+    }
   },
   "schema_version": 1,
   "tags": [

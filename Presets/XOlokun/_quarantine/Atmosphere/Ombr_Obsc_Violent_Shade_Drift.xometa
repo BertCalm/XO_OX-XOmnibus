@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ombre": {},
-    "Obscura": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.84,
+      "ombre_macroMovement": 0.77,
+      "ombre_macroCoupling": 0.79,
+      "ombre_macroSpace": 0.4
+    },
+    "Obscura": {
+      "obscura_macroCharacter": 0.87,
+      "obscura_macroMovement": 0.66,
+      "obscura_macroCoupling": 0.81,
+      "obscura_macroSpace": 0.42
+    }
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

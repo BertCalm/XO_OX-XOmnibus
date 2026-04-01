@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Wave Packed",
   "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.429,
+      "morph_macroCoupling": 0.258,
+      "morph_macroMovement": 0.697,
+      "morph_macroSpace": 0.562
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.42,
+      "ouro_macroCoupling": 0.799,
+      "ouro_macroMovement": 0.11,
+      "ouro_macroSpace": 0.119
+    }
   },
   "schema_version": 1,
   "tags": [

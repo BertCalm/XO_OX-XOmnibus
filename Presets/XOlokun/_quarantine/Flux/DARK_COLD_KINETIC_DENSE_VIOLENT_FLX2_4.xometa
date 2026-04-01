@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Thread Fang",
   "parameters": {
-    "Oblique": {},
-    "Ouroboros": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.1011,
+      "oblq_macroCoupling": 0.9452,
+      "oblq_macroMovement": 0.9111,
+      "oblq_macroSpace": 0.585
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.1342,
+      "ouro_macroCoupling": 0.9558,
+      "ouro_macroMovement": 0.8901,
+      "ouro_macroSpace": 0.5807
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Grain Node",
   "parameters": {
-    "Ocelot": {},
-    "Osprey": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.8236,
+      "ocelot_macroCoupling": 0.7877,
+      "ocelot_macroMovement": 0.054,
+      "ocelot_macroSpace": 0.2477
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.5013,
+      "osprey_macroCoupling": 0.8581,
+      "osprey_macroMovement": 0.0627,
+      "osprey_macroSpace": 0.6047
+    }
   },
   "schema_version": 1,
   "sequencer": null,

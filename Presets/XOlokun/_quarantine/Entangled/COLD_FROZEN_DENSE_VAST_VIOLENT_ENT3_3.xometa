@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Ice Crush",
   "parameters": {
-    "Odyssey": {},
-    "Ohm": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.7222,
+      "drift_macroCoupling": 0.9153,
+      "drift_macroMovement": 0.0708,
+      "drift_macroSpace": 0.2344
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.7276,
+      "ohm_macroCoupling": 0.8316,
+      "ohm_macroMovement": 0.0887,
+      "ohm_macroSpace": 0.2221
+    }
   },
   "schema_version": 1,
   "sequencer": null,

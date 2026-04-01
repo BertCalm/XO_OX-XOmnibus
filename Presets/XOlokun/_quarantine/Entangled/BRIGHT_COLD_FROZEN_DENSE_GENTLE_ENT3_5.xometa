@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Frost Heavy",
   "parameters": {
-    "Obbligato": {},
-    "Ohm": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.5341,
+      "obbl_macroCoupling": 0.9278,
+      "obbl_macroMovement": 0.0595,
+      "obbl_macroSpace": 0.926
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.672,
+      "ohm_macroCoupling": 0.7935,
+      "ohm_macroMovement": 0.0821,
+      "ohm_macroSpace": 0.2218
+    }
   },
   "schema_version": 1,
   "sequencer": null,

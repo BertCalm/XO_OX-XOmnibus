@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Fragment Stream",
   "parameters": {
-    "Oblique": {},
-    "Oceanic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.7642,
+      "oblq_macroCoupling": 0.1382,
+      "oblq_macroMovement": 0.925,
+      "oblq_macroSpace": 0.8724
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.7726,
+      "ocean_macroCoupling": 0.1191,
+      "ocean_macroMovement": 0.9326,
+      "ocean_macroSpace": 0.8733
+    }
   },
   "schema_version": 1,
   "tags": [

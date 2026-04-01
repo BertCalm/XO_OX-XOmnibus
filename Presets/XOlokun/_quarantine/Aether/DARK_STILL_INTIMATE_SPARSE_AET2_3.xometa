@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Copper Phase",
   "parameters": {
-    "Obscura": {},
-    "Organon": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.01,
+      "obscura_macroCoupling": 0.1089,
+      "obscura_macroMovement": 0.1644,
+      "obscura_macroSpace": 0.01
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.0273,
+      "organon_macroCoupling": 0.1021,
+      "organon_macroMovement": 0.1164,
+      "organon_macroSpace": 0.0278
+    }
   },
   "schema_version": 1,
   "tags": [

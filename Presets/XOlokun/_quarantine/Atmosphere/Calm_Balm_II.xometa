@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Calm Balm II",
   "parameters": {
-    "Oceanic": {},
-    "Oracle": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.764,
+      "ocean_macroCoupling": 0.805,
+      "ocean_macroMovement": 0.224,
+      "ocean_macroSpace": 0.894
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.612,
+      "oracle_macroCoupling": 0.865,
+      "oracle_macroMovement": 0.162,
+      "oracle_macroSpace": 0.814
+    }
   },
   "schema_version": 1,
   "tags": [

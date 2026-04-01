@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Thread Dome",
   "parameters": {
-    "Obbligato": {},
+    "Obbligato": {
+      "obbl_macroCharacter": 0.09,
+      "obbl_macroCoupling": 0.551,
+      "obbl_macroMovement": 0.034,
+      "obbl_macroSpace": 0.925
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.051,
+      "dub_macroCoupling": 0.536,
+      "dub_macroMovement": 0.038,
+      "dub_macroSpace": 0.902
     }
   },
   "schema_version": 1,

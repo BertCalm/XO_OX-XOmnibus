@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Bouncing Lens",
   "parameters": {
-    "Oblique": {},
-    "Optic": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.835,
+      "oblq_macroCoupling": 0.685,
+      "oblq_macroMovement": 0.785,
+      "oblq_macroSpace": 0.585
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.465,
+      "optic_macroCoupling": 0.565,
+      "optic_macroMovement": 0.415,
+      "optic_macroSpace": 0.465
+    }
   },
   "schema_version": 1,
   "tags": [

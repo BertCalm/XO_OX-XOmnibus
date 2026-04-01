@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Frozen Oracle II",
   "parameters": {
-    "Obsidian": {},
-    "Oracle": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.08,
+      "obsidian_macroCoupling": 0.85,
+      "obsidian_macroMovement": 0.14,
+      "obsidian_macroSpace": 0.97
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.05,
+      "oracle_macroCoupling": 0.9,
+      "oracle_macroMovement": 0.09,
+      "oracle_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "tags": [

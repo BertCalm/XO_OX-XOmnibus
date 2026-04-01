@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM VAST VIOLENT AE... (Oracle I)",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.891,
+      "oracle_macroCoupling": 0.771,
+      "oracle_macroMovement": 0.583,
+      "oracle_macroSpace": 0.932
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.873,
+      "organon_macroCoupling": 0.812,
+      "organon_macroMovement": 0.585,
+      "organon_macroSpace": 0.895
+    }
   },
   "schema_version": 1,
   "tags": [

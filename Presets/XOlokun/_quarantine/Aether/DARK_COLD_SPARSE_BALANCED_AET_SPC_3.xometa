@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK COLD SPARSE BALANCED A... (Ombre I)",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.064,
+      "ombre_macroCoupling": 0.689,
+      "ombre_macroMovement": 0.66,
+      "ombre_macroSpace": 0.55
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.09,
+      "orb_macroCoupling": 0.713,
+      "orb_macroMovement": 0.671,
+      "orb_macroSpace": 0.557
+    }
   },
   "schema_version": 1,
   "tags": [

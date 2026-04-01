@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "THIN FLOW 8",
   "parameters": {
-    "Ocelot": {},
-    "Optic": {}
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.6051,
+      "ocelot_macroCoupling": 0.5636,
+      "ocelot_macroMovement": 0.8425,
+      "ocelot_macroSpace": 0.8252
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.0284,
+      "optic_macroCoupling": 0.6415,
+      "optic_macroMovement": 0.0455,
+      "optic_macroSpace": 0.5768
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Wave Thick 2",
   "parameters": {
-    "Oblique": {},
-    "Ole": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.0664,
+      "oblq_macroCoupling": 0.9272,
+      "oblq_macroMovement": 0.3201,
+      "oblq_macroSpace": 0.6678
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.0319,
+      "ole_macroCoupling": 0.9561,
+      "ole_macroMovement": 0.2855,
+      "ole_macroSpace": 0.6601
+    }
   },
   "schema_version": 1,
   "tags": [

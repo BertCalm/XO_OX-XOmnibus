@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Fragment Stream 2",
   "parameters": {
-    "OddfeliX": {},
-    "Ottoni": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.879,
+      "snap_macroCoupling": 0.542,
+      "snap_macroMovement": 0.381,
+      "snap_macroSpace": 0.786
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.87,
+      "otto_macroCoupling": 0.565,
+      "otto_macroMovement": 0.429,
+      "otto_macroSpace": 0.823
+    }
   },
   "schema_version": 1,
   "tags": [

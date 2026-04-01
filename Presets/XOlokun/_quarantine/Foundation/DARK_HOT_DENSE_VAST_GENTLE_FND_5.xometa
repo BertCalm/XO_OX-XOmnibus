@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Dusk Heavy",
   "parameters": {
-    "Obese": {},
-    "Obsidian": {}
+    "Obese": {
+      "fat_macroCharacter": 0.018,
+      "fat_macroCoupling": 0.892,
+      "fat_macroMovement": 0.68,
+      "fat_macroSpace": 0.872
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.046,
+      "obsidian_macroCoupling": 1.0,
+      "obsidian_macroMovement": 0.587,
+      "obsidian_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

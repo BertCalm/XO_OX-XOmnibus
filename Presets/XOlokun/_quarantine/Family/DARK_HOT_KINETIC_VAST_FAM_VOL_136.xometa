@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Rust Cascade",
   "parameters": {
-    "OddfeliX": {},
-    "Orphica": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.489,
+      "snap_macroCoupling": 0.649,
+      "snap_macroMovement": 0.99,
+      "snap_macroSpace": 0.926
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.459,
+      "orph_macroCoupling": 0.642,
+      "orph_macroMovement": 0.975,
+      "orph_macroSpace": 0.932
+    }
   },
   "schema_version": 1,
   "tags": [

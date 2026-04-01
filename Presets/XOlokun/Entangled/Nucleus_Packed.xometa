@@ -49,7 +49,11 @@
       "filter_resonance": 0.3087,
       "output_level": 0.9608,
       "reverb_mix": 0.1651,
-      "reverb_size": 0.2545
+      "reverb_size": 0.2545,
+      "fat_macroCharacter": 0.3858,
+      "fat_macroCoupling": 0.7726,
+      "fat_macroMovement": 0.5963,
+      "fat_macroSpace": 0.0576
     },
     "Orbital": {
       "amp_attack": 0.2176,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.2992,
       "output_level": 0.8954,
       "reverb_mix": 0.1977,
-      "reverb_size": 0.2376
+      "reverb_size": 0.2376,
+      "orb_macroCharacter": 0.3386,
+      "orb_macroCoupling": 0.7361,
+      "orb_macroMovement": 0.608,
+      "orb_macroSpace": 0.0062
     }
   },
   "schema_version": 1,

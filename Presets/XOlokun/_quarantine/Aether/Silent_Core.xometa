@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Silent Core",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.224,
+      "oracle_macroCoupling": 0.038,
+      "oracle_macroMovement": 0.036,
+      "oracle_macroSpace": 0.025
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.224,
+      "origami_macroCoupling": 0.038,
+      "origami_macroMovement": 0.036,
+      "origami_macroSpace": 0.025
+    }
   },
   "schema_version": 1,
   "tags": [

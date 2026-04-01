@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Peach Cavern 2",
   "parameters": {
-    "Ombre": {},
-    "Origami": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.793,
+      "ombre_macroCoupling": 0.062,
+      "ombre_macroMovement": 0.066,
+      "ombre_macroSpace": 0.99
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.792,
+      "origami_macroCoupling": 0.062,
+      "origami_macroMovement": 0.062,
+      "origami_macroSpace": 0.974
+    }
   },
   "schema_version": 1,
   "tags": [

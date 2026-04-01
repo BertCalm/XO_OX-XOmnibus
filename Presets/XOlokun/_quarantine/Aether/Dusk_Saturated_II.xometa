@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Dusk Saturated II",
   "parameters": {
-    "Oracle": {},
-    "Osprey": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.7375,
+      "oracle_macroCoupling": 0.4051,
+      "oracle_macroMovement": 0.5817,
+      "oracle_macroSpace": 0.826
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.9352,
+      "osprey_macroCoupling": 0.6134,
+      "osprey_macroMovement": 0.3828,
+      "osprey_macroSpace": 0.4877
+    }
   },
   "schema_version": 1,
   "tags": [

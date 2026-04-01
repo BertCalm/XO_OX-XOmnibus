@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Candlelight Packed 2",
   "parameters": {
-    "Origami": {},
-    "Osteria": {}
+    "Origami": {
+      "origami_macroCharacter": 0.986,
+      "origami_macroCoupling": 0.696,
+      "origami_macroMovement": 0.093,
+      "origami_macroSpace": 0.474
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.977,
+      "osteria_macroCoupling": 0.708,
+      "osteria_macroMovement": 0.088,
+      "osteria_macroSpace": 0.517
+    }
   },
   "schema_version": 1,
   "tags": [

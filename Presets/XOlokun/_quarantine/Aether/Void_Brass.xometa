@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Void Brass",
   "parameters": {
-    "Oracle": {},
-    "Overworld": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.6328,
+      "oracle_macroCoupling": 0.3138,
+      "oracle_macroMovement": 0.7148,
+      "oracle_macroSpace": 0.8084
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.9118,
+      "ow_macroCoupling": 0.3861,
+      "ow_macroMovement": 0.2639,
+      "ow_macroSpace": 0.6186
+    }
   },
   "schema_version": 1,
   "tags": [

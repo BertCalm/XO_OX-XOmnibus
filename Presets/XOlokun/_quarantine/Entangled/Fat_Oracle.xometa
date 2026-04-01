@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Fat Oracle",
   "parameters": {
-    "Obese": {},
-    "Organon": {}
+    "Obese": {
+      "fat_macroCharacter": 0.99,
+      "fat_macroCoupling": 0.86,
+      "fat_macroMovement": 0.27,
+      "fat_macroSpace": 0.54
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.8,
+      "organon_macroCoupling": 0.85,
+      "organon_macroMovement": 0.23,
+      "organon_macroSpace": 0.5
+    }
   },
   "schema_version": 1,
   "tags": [

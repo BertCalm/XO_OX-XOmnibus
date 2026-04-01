@@ -39,8 +39,18 @@
   "mood": "Flux",
   "name": "Silk Horizon",
   "parameters": {
-    "OddOscar": {},
-    "Opal": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.91,
+      "morph_macroCoupling": 0.9,
+      "morph_macroMovement": 0.83,
+      "morph_macroSpace": 0.46
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.86,
+      "opal_macroCoupling": 0.83,
+      "opal_macroMovement": 0.81,
+      "opal_macroSpace": 0.13
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Velvet Wrath",
   "parameters": {
-    "Obese": {},
-    "Onset": {}
+    "Obese": {
+      "fat_macroCharacter": 0.362,
+      "fat_macroCoupling": 0.115,
+      "fat_macroMovement": 0.705,
+      "fat_macroSpace": 0.351
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.227,
+      "perc_macroCoupling": 0.285,
+      "perc_macroMovement": 0.228,
+      "perc_macroSpace": 0.408
+    }
   },
   "schema_version": 1,
   "tags": [

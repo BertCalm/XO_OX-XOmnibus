@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Shadow Cascade",
   "parameters": {
-    "Ole": {},
-    "Owlfish": {}
+    "Ole": {
+      "ole_macroCharacter": 0.231,
+      "ole_macroCoupling": 0.031,
+      "ole_macroMovement": 1.0,
+      "ole_macroSpace": 0.629
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.054,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.997,
+      "owl_macroSpace": 0.58
+    }
   },
   "schema_version": 1,
   "sequencer": null,

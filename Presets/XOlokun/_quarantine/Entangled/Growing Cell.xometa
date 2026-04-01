@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Growing Cell",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.5,
+      "organon_macroCoupling": 0.65,
+      "organon_macroMovement": 0.7,
+      "organon_macroSpace": 0.55
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.7,
+      "otto_macroCoupling": 0.65,
+      "otto_macroMovement": 0.45,
+      "otto_macroSpace": 0.35
+    }
   },
   "schema_version": 1,
   "sequencer": null,

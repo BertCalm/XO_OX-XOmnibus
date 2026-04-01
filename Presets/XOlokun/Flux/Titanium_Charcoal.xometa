@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Titanium Charcoal",
   "parameters": {
-    "Optic": {},
+    "Optic": {
+      "optic_macroCharacter": 0.1443,
+      "optic_macroCoupling": 0.6383,
+      "optic_macroMovement": 0.5185,
+      "optic_macroSpace": 0.8926
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.084,
+      "dub_macroCoupling": 0.6563,
+      "dub_macroMovement": 0.5105,
+      "dub_macroSpace": 0.8288
     }
   },
   "schema_version": 1,

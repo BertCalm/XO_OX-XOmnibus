@@ -47,9 +47,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.943,
+      "bob_macroCoupling": 0.77,
+      "bob_macroMovement": 0.9,
+      "bob_macroSpace": 0.0
     },
-    "Obsidian": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 1.0,
+      "obsidian_macroCoupling": 0.81,
+      "obsidian_macroMovement": 0.907,
+      "obsidian_macroSpace": 0.109
+    }
   },
   "schema_version": 1,
   "sequencer": null,

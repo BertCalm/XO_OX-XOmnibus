@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Grain Massive",
   "parameters": {
-    "OddOscar": {},
-    "Onset": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.35,
+      "morph_macroCoupling": 0.502,
+      "morph_macroMovement": 0.447,
+      "morph_macroSpace": 0.412
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.377,
+      "perc_macroCoupling": 0.524,
+      "perc_macroMovement": 0.487,
+      "perc_macroSpace": 0.398
+    }
   },
   "schema_version": 1,
   "tags": [

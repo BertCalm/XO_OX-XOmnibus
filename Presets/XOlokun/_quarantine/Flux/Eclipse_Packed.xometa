@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Eclipse Packed",
   "parameters": {
-    "Optic": {},
-    "Oracle": {}
+    "Optic": {
+      "optic_macroCharacter": 0.1682,
+      "optic_macroCoupling": 0.9221,
+      "optic_macroMovement": 0.5148,
+      "optic_macroSpace": 0.5979
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.1028,
+      "oracle_macroCoupling": 0.8897,
+      "oracle_macroMovement": 0.5694,
+      "oracle_macroSpace": 0.637
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "ALLHI PRS 03",
   "parameters": {
-    "Ohm": {},
-    "Oracle": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.911,
+      "ohm_macroCoupling": 0.947,
+      "ohm_macroMovement": 0.668,
+      "ohm_macroSpace": 0.966
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.911,
+      "oracle_macroCoupling": 0.947,
+      "oracle_macroMovement": 0.668,
+      "oracle_macroSpace": 0.966
+    }
   },
   "schema_version": 1,
   "tags": [

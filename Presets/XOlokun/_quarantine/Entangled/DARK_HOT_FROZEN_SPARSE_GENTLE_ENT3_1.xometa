@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Shadow Abyss 2",
   "parameters": {
-    "Obsidian": {},
-    "Organon": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.6381,
+      "obsidian_macroCoupling": 0.8006,
+      "obsidian_macroMovement": 0.0829,
+      "obsidian_macroSpace": 0.3914
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.6296,
+      "organon_macroCoupling": 0.9635,
+      "organon_macroMovement": 0.0616,
+      "organon_macroSpace": 0.7311
+    }
   },
   "schema_version": 1,
   "sequencer": null,

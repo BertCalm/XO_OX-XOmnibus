@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Cascade Layer",
   "parameters": {
-    "Orca": {},
-    "Owlfish": {}
+    "Orca": {
+      "orca_macroCharacter": 0.641,
+      "orca_macroCoupling": 0.567,
+      "orca_macroMovement": 0.483,
+      "orca_macroSpace": 0.258
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.444,
+      "owl_macroCoupling": 0.728,
+      "owl_macroMovement": 0.583,
+      "owl_macroSpace": 0.641
+    }
   },
   "schema_version": 1,
   "tags": [

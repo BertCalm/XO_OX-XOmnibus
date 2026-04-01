@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC VAST VIOLENT... (Osprey I)",
   "parameters": {
-    "Oracle": {},
-    "Osprey": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.879,
+      "oracle_macroCoupling": 0.872,
+      "oracle_macroMovement": 0.876,
+      "oracle_macroSpace": 0.912
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.865,
+      "osprey_macroCoupling": 0.874,
+      "osprey_macroMovement": 0.886,
+      "osprey_macroSpace": 0.87
+    }
   },
   "schema_version": 1,
   "tags": [

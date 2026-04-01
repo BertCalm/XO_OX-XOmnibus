@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Cinnamon Eclipse II",
   "parameters": {
-    "Ombre": {},
-    "Orbital": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.5153,
+      "ombre_macroCoupling": 0.708,
+      "ombre_macroMovement": 0.9053,
+      "ombre_macroSpace": 0.8771
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.6616,
+      "orb_macroCoupling": 0.611,
+      "orb_macroMovement": 0.4257,
+      "orb_macroSpace": 0.2003
+    }
   },
   "schema_version": 1,
   "tags": [

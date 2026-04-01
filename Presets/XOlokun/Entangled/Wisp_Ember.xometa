@@ -49,7 +49,11 @@
       "filter_resonance": 0.1701,
       "output_level": 0.7007,
       "reverb_mix": 0.3784,
-      "reverb_size": 0.4465
+      "reverb_size": 0.4465,
+      "obbl_macroCharacter": 0.6997,
+      "obbl_macroCoupling": 0.6759,
+      "obbl_macroMovement": 0.5282,
+      "obbl_macroSpace": 0.4537
     },
     "OddOscar": {
       "amp_attack": 0.2564,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.1803,
       "output_level": 0.7501,
       "reverb_mix": 0.4471,
-      "reverb_size": 0.4803
+      "reverb_size": 0.4803,
+      "morph_macroCharacter": 0.7075,
+      "morph_macroCoupling": 0.6364,
+      "morph_macroMovement": 0.5252,
+      "morph_macroSpace": 0.4921
     }
   },
   "schema_version": 1,

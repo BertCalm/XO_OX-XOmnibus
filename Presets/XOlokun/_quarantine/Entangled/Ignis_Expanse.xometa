@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Ignis Expanse",
   "parameters": {
-    "Odyssey": {},
-    "Opal": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.78,
+      "drift_macroCoupling": 0.62,
+      "drift_macroMovement": 0.38,
+      "drift_macroSpace": 0.78
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.71,
+      "opal_macroCoupling": 0.63,
+      "opal_macroMovement": 0.44,
+      "opal_macroSpace": 0.91
+    }
   },
   "schema_version": 1,
   "tags": [

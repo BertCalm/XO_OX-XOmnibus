@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Flux Heavy 2",
   "parameters": {
-    "Oblique": {},
-    "Odyssey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.0466,
+      "oblq_macroCoupling": 0.9417,
+      "oblq_macroMovement": 0.0306,
+      "oblq_macroSpace": 0.559
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.0407,
+      "drift_macroCoupling": 0.9253,
+      "drift_macroMovement": 0.0307,
+      "drift_macroSpace": 0.5449
+    }
   },
   "schema_version": 1,
   "tags": [

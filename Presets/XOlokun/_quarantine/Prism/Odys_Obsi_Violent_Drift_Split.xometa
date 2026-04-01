@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Odyssey": {},
-    "Obsidian": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.65,
+      "drift_macroMovement": 0.71,
+      "drift_macroCoupling": 0.8,
+      "drift_macroSpace": 0.22
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 1.0,
+      "obsidian_macroMovement": 0.98,
+      "obsidian_macroCoupling": 0.72,
+      "obsidian_macroSpace": 0.12
+    }
   },
   "coupling": {
     "type": "HARMONIC_STACK",

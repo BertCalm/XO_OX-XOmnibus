@@ -39,8 +39,18 @@
   "mood": "Prism",
   "name": "Velvet Anchored",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.62,
+      "ohm_macroCoupling": 0.89,
+      "ohm_macroMovement": 0.99,
+      "ohm_macroSpace": 0.43
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.86,
+      "otto_macroCoupling": 0.54,
+      "otto_macroMovement": 0.83,
+      "otto_macroSpace": 0.13
+    }
   },
   "schema_version": 1,
   "sequencer": null,

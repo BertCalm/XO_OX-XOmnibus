@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Rust Void",
   "parameters": {
-    "Ole": {},
-    "Orbital": {}
+    "Ole": {
+      "ole_macroCharacter": 0.714,
+      "ole_macroCoupling": 0.7754,
+      "ole_macroMovement": 0.0385,
+      "ole_macroSpace": 0.4703
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.5385,
+      "orb_macroCoupling": 0.9589,
+      "orb_macroMovement": 0.0314,
+      "orb_macroSpace": 0.7339
+    }
   },
   "schema_version": 1,
   "sequencer": null,

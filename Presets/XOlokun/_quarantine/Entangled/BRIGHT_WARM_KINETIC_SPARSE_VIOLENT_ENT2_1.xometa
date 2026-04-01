@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT WARM KINETIC SPARSE ...",
   "parameters": {
-    "Overlap": {},
-    "Overworld": {}
+    "Overlap": {
+      "olap_macroCharacter": 0.978,
+      "olap_macroCoupling": 0.472,
+      "olap_macroMovement": 0.953,
+      "olap_macroSpace": 0.423
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.962,
+      "ow_macroCoupling": 0.489,
+      "ow_macroMovement": 0.941,
+      "ow_macroSpace": 0.376
+    }
   },
   "schema_version": 1,
   "tags": [

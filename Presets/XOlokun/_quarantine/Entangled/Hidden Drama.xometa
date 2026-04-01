@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Hidden Drama",
   "parameters": {
-    "Obscura": {},
-    "Ole": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.52,
+      "obscura_macroCoupling": 0.68,
+      "obscura_macroMovement": 0.58,
+      "obscura_macroSpace": 0.72
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.7,
+      "ole_macroCoupling": 0.68,
+      "ole_macroMovement": 0.62,
+      "ole_macroSpace": 0.4
+    }
   },
   "schema_version": 1,
   "sequencer": null,

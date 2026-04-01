@@ -37,9 +37,18 @@
   "mood": "Family",
   "name": "Deep Kin",
   "parameters": {
-    "Odyssey": {},
+    "Odyssey": {
+      "drift_macroCharacter": 0.045,
+      "drift_macroCoupling": 0.457,
+      "drift_macroMovement": 0.09,
+      "drift_macroSpace": 0.543
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.059,
+      "dub_macroCoupling": 0.444,
+      "dub_macroMovement": 0.102,
+      "dub_macroSpace": 0.587
     }
   },
   "schema_version": 1,

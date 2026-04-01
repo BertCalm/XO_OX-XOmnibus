@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "COLD STILL SPARSE BALANCED ...",
   "parameters": {
-    "Oblique": {},
-    "Organon": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.351,
+      "oblq_macroCoupling": 0.682,
+      "oblq_macroMovement": 0.119,
+      "oblq_macroSpace": 0.432
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.331,
+      "organon_macroCoupling": 0.66,
+      "organon_macroMovement": 0.117,
+      "organon_macroSpace": 0.439
+    }
   },
   "schema_version": 1,
   "tags": [

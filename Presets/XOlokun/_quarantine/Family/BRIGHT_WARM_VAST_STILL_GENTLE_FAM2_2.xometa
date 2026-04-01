@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT WARM VAST STILL GENT... (Osteria)",
   "parameters": {
-    "Ohm": {},
-    "Osteria": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.888,
+      "ohm_macroCoupling": 0.245,
+      "ohm_macroMovement": 0.156,
+      "ohm_macroSpace": 0.956
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.897,
+      "osteria_macroCoupling": 0.226,
+      "osteria_macroMovement": 0.12,
+      "osteria_macroSpace": 0.953
+    }
   },
   "schema_version": 1,
   "tags": [

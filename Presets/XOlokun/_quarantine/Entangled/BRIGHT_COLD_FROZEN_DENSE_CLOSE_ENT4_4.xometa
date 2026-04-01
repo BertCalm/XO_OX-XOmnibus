@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Quartz Dense",
   "parameters": {
-    "Obbligato": {},
-    "Ohm": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.526,
+      "obbl_macroCoupling": 0.904,
+      "obbl_macroMovement": 0.077,
+      "obbl_macroSpace": 0.033
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.476,
+      "ohm_macroCoupling": 0.876,
+      "ohm_macroMovement": 0.088,
+      "ohm_macroSpace": 0.054
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Frost Titan",
   "parameters": {
-    "Obsidian": {},
-    "Ocelot": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.442,
+      "obsidian_macroCoupling": 0.879,
+      "obsidian_macroMovement": 0.908,
+      "obsidian_macroSpace": 0.468
+    },
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.563,
+      "ocelot_macroCoupling": 0.884,
+      "ocelot_macroMovement": 0.869,
+      "ocelot_macroSpace": 0.462
+    }
   },
   "schema_version": 1,
   "tags": [

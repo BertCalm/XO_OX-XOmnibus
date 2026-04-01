@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Chrome Shimmer",
   "parameters": {
-    "Ohm": {},
-    "Organon": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.515,
+      "ohm_macroCoupling": 0.564,
+      "ohm_macroMovement": 0.918,
+      "ohm_macroSpace": 0.934
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.529,
+      "organon_macroCoupling": 0.558,
+      "organon_macroMovement": 0.92,
+      "organon_macroSpace": 0.918
+    }
   },
   "schema_version": 1,
   "tags": [

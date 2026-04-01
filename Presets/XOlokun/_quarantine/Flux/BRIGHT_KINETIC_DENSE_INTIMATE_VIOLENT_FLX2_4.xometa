@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Fragment Pulse",
   "parameters": {
-    "Opal": {},
-    "Overworld": {}
+    "Opal": {
+      "opal_macroCharacter": 0.687,
+      "opal_macroCoupling": 0.8712,
+      "opal_macroMovement": 0.943,
+      "opal_macroSpace": 0.02
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.7117,
+      "ow_macroCoupling": 0.8525,
+      "ow_macroMovement": 0.9384,
+      "ow_macroSpace": 0.02
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Thread Fang 2",
   "parameters": {
-    "Oracle": {},
+    "Oracle": {
+      "oracle_macroCharacter": 0.486,
+      "oracle_macroCoupling": 0.864,
+      "oracle_macroMovement": 0.044,
+      "oracle_macroSpace": 0.089
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.471,
+      "dub_macroCoupling": 0.765,
+      "dub_macroMovement": 0.049,
+      "dub_macroSpace": 0.094
     }
   },
   "schema_version": 1,

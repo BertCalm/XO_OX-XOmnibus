@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Sunrise Solid",
   "parameters": {
-    "Orphica": {},
-    "Osprey": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.937,
+      "orph_macroCoupling": 0.51,
+      "orph_macroMovement": 0.518,
+      "orph_macroSpace": 0.411
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.901,
+      "osprey_macroCoupling": 0.496,
+      "osprey_macroMovement": 0.488,
+      "osprey_macroSpace": 0.433
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Chrome Deep",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.612,
+      "morph_macroCoupling": 0.482,
+      "morph_macroMovement": 0.536,
+      "morph_macroSpace": 0.061
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.61,
+      "osprey_macroCoupling": 0.562,
+      "osprey_macroMovement": 0.522,
+      "osprey_macroSpace": 0.068
+    }
   },
   "schema_version": 1,
   "tags": [

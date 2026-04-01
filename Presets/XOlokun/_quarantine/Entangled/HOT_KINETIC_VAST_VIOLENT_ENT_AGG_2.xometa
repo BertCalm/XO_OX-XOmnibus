@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Signal Flutter 2",
   "parameters": {
-    "Ohm": {},
-    "Orbital": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.592,
+      "ohm_macroCoupling": 0.885,
+      "ohm_macroMovement": 0.936,
+      "ohm_macroSpace": 0.904
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.687,
+      "orb_macroCoupling": 0.891,
+      "orb_macroMovement": 0.997,
+      "orb_macroSpace": 0.964
+    }
   },
   "schema_version": 1,
   "tags": [

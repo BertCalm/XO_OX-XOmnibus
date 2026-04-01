@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "RIPTIDE 27",
   "parameters": {
-    "Origami": {},
+    "Origami": {
+      "origami_macroCharacter": 0.509,
+      "origami_macroCoupling": 0.273,
+      "origami_macroMovement": 0.93,
+      "origami_macroSpace": 0.835
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.98,
+      "dub_macroCoupling": 0.244,
+      "dub_macroMovement": 0.952,
+      "dub_macroSpace": 0.551
     }
   },
   "schema_version": 1,

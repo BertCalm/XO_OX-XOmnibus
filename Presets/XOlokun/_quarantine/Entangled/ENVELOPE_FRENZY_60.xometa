@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "ENVELOPE FRENZY 60",
   "parameters": {
-    "Organon": {},
-    "Outwit": {}
+    "Organon": {
+      "organon_macroCharacter": 0.442,
+      "organon_macroCoupling": 0.303,
+      "organon_macroMovement": 0.895,
+      "organon_macroSpace": 0.275
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.056,
+      "owit_macroCoupling": 0.507,
+      "owit_macroMovement": 0.887,
+      "owit_macroSpace": 0.31
+    }
   },
   "schema_version": 1,
   "tags": [

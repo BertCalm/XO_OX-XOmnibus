@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ottoni": {},
-    "OddfeliX": {}
+    "Ottoni": {
+      "otto_macroCharacter": 0.73,
+      "otto_macroMovement": 0.83,
+      "otto_macroCoupling": 0.81,
+      "otto_macroSpace": 0.27
+    },
+    "OddfeliX": {
+      "snap_macroCharacter": 0.7,
+      "snap_macroMovement": 0.99,
+      "snap_macroCoupling": 0.5,
+      "snap_macroSpace": 0.46
+    }
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

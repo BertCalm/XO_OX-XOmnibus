@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Copper Heavy",
   "parameters": {
-    "Ole": {},
-    "Origami": {}
+    "Ole": {
+      "ole_macroCharacter": 0.491,
+      "ole_macroCoupling": 0.763,
+      "ole_macroMovement": 0.658,
+      "ole_macroSpace": 0.101
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.5,
+      "origami_macroCoupling": 0.72,
+      "origami_macroMovement": 0.612,
+      "origami_macroSpace": 0.11
+    }
   },
   "schema_version": 1,
   "tags": [

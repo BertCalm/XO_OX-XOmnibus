@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Whisper Velvet",
   "parameters": {
-    "Oblique": {},
-    "Ottoni": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.073,
+      "oblq_macroCoupling": 0.778,
+      "oblq_macroMovement": 0.098,
+      "oblq_macroSpace": 0.574
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.489,
+      "otto_macroCoupling": 0.476,
+      "otto_macroMovement": 0.098,
+      "otto_macroSpace": 0.574
+    }
   },
   "schema_version": 1,
   "tags": [

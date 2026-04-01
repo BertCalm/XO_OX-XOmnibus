@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "BRIGHT KINETIC VAST SPARSE ... (Orphica I)",
   "parameters": {
-    "Orphica": {},
-    "Overbite": {}
+    "Orphica": {
+      "orph_macroCharacter": 0.639,
+      "orph_macroCoupling": 0.517,
+      "orph_macroMovement": 0.869,
+      "orph_macroSpace": 0.974
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.628,
+      "poss_macroCoupling": 0.502,
+      "poss_macroMovement": 0.8,
+      "poss_macroSpace": 0.938
+    }
   },
   "schema_version": 1,
   "tags": [

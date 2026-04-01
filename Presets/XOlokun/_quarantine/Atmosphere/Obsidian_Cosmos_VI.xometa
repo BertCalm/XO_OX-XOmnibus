@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Obsidian Cosmos VI",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.329,
+      "ohm_macroCoupling": 0.458,
+      "ohm_macroMovement": 0.907,
+      "ohm_macroSpace": 0.965
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.345,
+      "ole_macroCoupling": 0.485,
+      "ole_macroMovement": 0.839,
+      "ole_macroSpace": 1.0
+    }
   },
   "schema_version": 1,
   "tags": [

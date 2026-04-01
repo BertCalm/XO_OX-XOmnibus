@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obese": {},
-    "Ole": {}
+    "Obese": {
+      "fat_macroCharacter": 0.83,
+      "fat_macroMovement": 0.93,
+      "fat_macroCoupling": 0.69,
+      "fat_macroSpace": 0.13
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.63,
+      "ole_macroMovement": 0.98,
+      "ole_macroCoupling": 0.8,
+      "ole_macroSpace": 0.1
+    }
   },
   "coupling": {
     "type": "FILTER_SHARE",

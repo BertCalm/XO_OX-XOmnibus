@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "BRIGHT WARM SPARSE BALANCED... (Organon II)",
   "parameters": {
-    "Ombre": {},
-    "Organon": {}
+    "Ombre": {
+      "ombre_macroCharacter": 0.909,
+      "ombre_macroCoupling": 0.59,
+      "ombre_macroMovement": 0.503,
+      "ombre_macroSpace": 0.651
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.932,
+      "organon_macroCoupling": 0.613,
+      "organon_macroMovement": 0.521,
+      "organon_macroSpace": 0.649
+    }
   },
   "schema_version": 1,
   "tags": [

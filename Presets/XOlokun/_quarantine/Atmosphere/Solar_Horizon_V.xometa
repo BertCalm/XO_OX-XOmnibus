@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Solar Horizon V",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.78,
+      "ocean_macroCoupling": 0.933,
+      "ocean_macroMovement": 0.905,
+      "ocean_macroSpace": 0.933
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.78,
+      "orb_macroCoupling": 0.933,
+      "orb_macroMovement": 0.905,
+      "orb_macroSpace": 0.933
+    }
   },
   "schema_version": 1,
   "tags": [

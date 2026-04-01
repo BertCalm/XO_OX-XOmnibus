@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK WARM DENSE VIOLENT AET... (Opal I)",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.1,
+      "opal_macroCoupling": 0.852,
+      "opal_macroMovement": 0.452,
+      "opal_macroSpace": 0.414
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.095,
+      "oracle_macroCoupling": 0.92,
+      "oracle_macroMovement": 0.454,
+      "oracle_macroSpace": 0.422
+    }
   },
   "schema_version": 1,
   "tags": [

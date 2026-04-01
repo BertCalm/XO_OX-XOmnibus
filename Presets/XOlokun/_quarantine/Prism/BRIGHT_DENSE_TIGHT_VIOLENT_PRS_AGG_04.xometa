@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "BRIGHT DENSE TIGHT VIOLENT ... (Ottoni II)",
   "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.904,
+      "ohm_macroCoupling": 0.83,
+      "ohm_macroMovement": 0.345,
+      "ohm_macroSpace": 0.056
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.916,
+      "otto_macroCoupling": 0.874,
+      "otto_macroMovement": 0.361,
+      "otto_macroSpace": 0.057
+    }
   },
   "schema_version": 1,
   "tags": [

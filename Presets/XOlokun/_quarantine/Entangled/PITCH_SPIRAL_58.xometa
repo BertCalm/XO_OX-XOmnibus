@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "PITCH SPIRAL 58",
   "parameters": {
-    "Obsidian": {},
-    "Overlap": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.589,
+      "obsidian_macroCoupling": 0.524,
+      "obsidian_macroMovement": 0.972,
+      "obsidian_macroSpace": 0.396
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.088,
+      "olap_macroCoupling": 0.844,
+      "olap_macroMovement": 0.963,
+      "olap_macroSpace": 0.243
+    }
   },
   "schema_version": 1,
   "tags": [

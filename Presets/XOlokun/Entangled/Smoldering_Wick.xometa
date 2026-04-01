@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Smoldering Wick",
   "parameters": {
-    "Organon": {},
+    "Organon": {
+      "organon_macroCharacter": 0.67,
+      "organon_macroCoupling": 0.85,
+      "organon_macroMovement": 0.25,
+      "organon_macroSpace": 0.51
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.8,
+      "dub_macroCoupling": 0.8,
+      "dub_macroMovement": 0.52,
+      "dub_macroSpace": 0.3
     }
   },
   "schema_version": 1,

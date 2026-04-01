@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Frost Abyss",
   "parameters": {
-    "Origami": {},
-    "Overlap": {}
+    "Origami": {
+      "origami_macroCharacter": 0.5299,
+      "origami_macroCoupling": 0.8253,
+      "origami_macroMovement": 0.0514,
+      "origami_macroSpace": 0.1426
+    },
+    "Overlap": {
+      "olap_macroCharacter": 0.593,
+      "olap_macroCoupling": 0.8022,
+      "olap_macroMovement": 0.0617,
+      "olap_macroSpace": 0.1497
+    }
   },
   "schema_version": 1,
   "sequencer": null,

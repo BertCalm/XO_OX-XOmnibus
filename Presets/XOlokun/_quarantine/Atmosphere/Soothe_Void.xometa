@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Soothe Void",
   "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.482,
+      "ocean_macroCoupling": 0.863,
+      "ocean_macroMovement": 0.796,
+      "ocean_macroSpace": 0.823
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.322,
+      "orb_macroCoupling": 0.714,
+      "orb_macroMovement": 0.733,
+      "orb_macroSpace": 0.852
+    }
   },
   "schema_version": 1,
   "tags": [

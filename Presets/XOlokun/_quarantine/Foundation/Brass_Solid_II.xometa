@@ -37,8 +37,18 @@
   "mood": "Foundation",
   "name": "Brass Solid II",
   "parameters": {
-    "Obese": {},
-    "Oracle": {}
+    "Obese": {
+      "fat_macroCharacter": 0.128,
+      "fat_macroCoupling": 0.715,
+      "fat_macroMovement": 0.878,
+      "fat_macroSpace": 0.703
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.242,
+      "oracle_macroCoupling": 0.59,
+      "oracle_macroMovement": 0.867,
+      "oracle_macroSpace": 0.884
+    }
   },
   "schema_version": 1,
   "tags": [

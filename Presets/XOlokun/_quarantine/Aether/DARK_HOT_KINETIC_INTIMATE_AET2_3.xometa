@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Velvet Shimmer",
   "parameters": {
-    "OddOscar": {},
-    "Osprey": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.1385,
+      "morph_macroCoupling": 0.6826,
+      "morph_macroMovement": 0.936,
+      "morph_macroSpace": 0.0699
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.1706,
+      "osprey_macroCoupling": 0.6613,
+      "osprey_macroMovement": 0.9433,
+      "osprey_macroSpace": 0.0854
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Prism",
   "name": "Platinum Eddy II",
   "parameters": {
-    "Ole": {},
-    "Owlfish": {}
+    "Ole": {
+      "ole_macroCharacter": 0.34,
+      "ole_macroCoupling": 0.326,
+      "ole_macroMovement": 0.961,
+      "ole_macroSpace": 0.953
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.794,
+      "owl_macroCoupling": 0.519,
+      "owl_macroMovement": 0.961,
+      "owl_macroSpace": 0.953
+    }
   },
   "schema_version": 1,
   "tags": [

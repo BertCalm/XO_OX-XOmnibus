@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "ERUPTION 14",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.132,
+      "organon_macroCoupling": 0.358,
+      "organon_macroMovement": 0.891,
+      "organon_macroSpace": 0.788
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.589,
+      "otto_macroCoupling": 0.016,
+      "otto_macroMovement": 0.967,
+      "otto_macroSpace": 0.265
+    }
   },
   "schema_version": 1,
   "tags": [

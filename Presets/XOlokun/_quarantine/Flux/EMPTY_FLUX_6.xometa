@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "EMPTY FLUX 6",
   "parameters": {
-    "Odyssey": {},
-    "Orca": {}
+    "Odyssey": {
+      "drift_macroCharacter": 0.2533,
+      "drift_macroCoupling": 0.1911,
+      "drift_macroMovement": 0.7533,
+      "drift_macroSpace": 0.357
+    },
+    "Orca": {
+      "orca_macroCharacter": 0.7808,
+      "orca_macroCoupling": 0.3319,
+      "orca_macroMovement": 0.8658,
+      "orca_macroSpace": 0.1245
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Absolute Zero II",
   "parameters": {
-    "Obsidian": {},
-    "Odyssey": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.05,
+      "obsidian_macroCoupling": 0.87,
+      "obsidian_macroMovement": 0.07,
+      "obsidian_macroSpace": 1.0
+    },
+    "Odyssey": {
+      "drift_macroCharacter": 0.08,
+      "drift_macroCoupling": 0.82,
+      "drift_macroMovement": 0.12,
+      "drift_macroSpace": 0.97
+    }
   },
   "schema_version": 1,
   "tags": [

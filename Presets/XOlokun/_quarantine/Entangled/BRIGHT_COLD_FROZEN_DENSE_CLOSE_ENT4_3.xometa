@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Prism Heavy",
   "parameters": {
-    "Organon": {},
-    "Ottoni": {}
+    "Organon": {
+      "organon_macroCharacter": 0.516,
+      "organon_macroCoupling": 0.914,
+      "organon_macroMovement": 0.063,
+      "organon_macroSpace": 0.113
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.529,
+      "otto_macroCoupling": 0.903,
+      "otto_macroMovement": 0.068,
+      "otto_macroSpace": 0.101
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -47,9 +47,18 @@
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.9653,
+      "bob_macroCoupling": 0.7978,
+      "bob_macroMovement": 0.01,
+      "bob_macroSpace": 0.1173
     },
-    "OddOscar": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.5618,
+      "morph_macroCoupling": 0.9107,
+      "morph_macroMovement": 0.01,
+      "morph_macroSpace": 0.5794
+    }
   },
   "schema_version": 1,
   "sequencer": null,

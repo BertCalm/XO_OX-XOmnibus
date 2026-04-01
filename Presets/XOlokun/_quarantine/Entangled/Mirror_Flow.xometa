@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Mirror Flow",
   "parameters": {
-    "Orca": {},
-    "Owlfish": {}
+    "Orca": {
+      "orca_macroCharacter": 0.356,
+      "orca_macroCoupling": 0.693,
+      "orca_macroMovement": 0.301,
+      "orca_macroSpace": 0.261
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.75,
+      "owl_macroCoupling": 0.589,
+      "owl_macroMovement": 0.793,
+      "owl_macroSpace": 0.223
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
-    "Oracle": {},
-    "Origami": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.027,
+      "oracle_macroCoupling": 0.935,
+      "oracle_macroMovement": 0.901,
+      "oracle_macroSpace": 0.6
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.027,
+      "origami_macroCoupling": 0.957,
+      "origami_macroMovement": 0.841,
+      "origami_macroSpace": 0.637
+    }
   },
   "schema_version": 1,
   "tags": [

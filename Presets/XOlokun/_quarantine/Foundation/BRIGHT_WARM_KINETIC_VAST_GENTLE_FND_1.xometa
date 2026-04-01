@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Sunrise Canyon",
   "parameters": {
-    "OddOscar": {},
-    "Overbite": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.953,
+      "morph_macroCoupling": 0.439,
+      "morph_macroMovement": 0.857,
+      "morph_macroSpace": 1.0
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.818,
+      "poss_macroCoupling": 0.495,
+      "poss_macroMovement": 1.0,
+      "poss_macroSpace": 0.879
+    }
   },
   "schema_version": 1,
   "sequencer": null,

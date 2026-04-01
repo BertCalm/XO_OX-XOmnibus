@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "Cathedral Frozen",
   "parameters": {
-    "Obbligato": {},
-    "Owlfish": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.723,
+      "obbl_macroCoupling": 0.964,
+      "obbl_macroMovement": 0.049,
+      "obbl_macroSpace": 0.98
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.723,
+      "owl_macroCoupling": 0.964,
+      "owl_macroMovement": 0.049,
+      "owl_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

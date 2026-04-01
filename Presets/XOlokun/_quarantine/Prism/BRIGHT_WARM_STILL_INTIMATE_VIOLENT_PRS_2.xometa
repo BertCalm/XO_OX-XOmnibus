@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Solar Rage 2",
   "parameters": {
-    "Ole": {},
-    "Origami": {}
+    "Ole": {
+      "ole_macroCharacter": 0.987,
+      "ole_macroCoupling": 0.472,
+      "ole_macroMovement": 0.176,
+      "ole_macroSpace": 0.0
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.992,
+      "origami_macroCoupling": 0.425,
+      "origami_macroMovement": 0.192,
+      "origami_macroSpace": 0.119
+    }
   },
   "schema_version": 1,
   "sequencer": null,

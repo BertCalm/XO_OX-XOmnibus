@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Brass Shimmer III",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.8456,
+      "oblq_macroCoupling": 0.7405,
+      "oblq_macroMovement": 0.2086,
+      "oblq_macroSpace": 0.7113
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.4862,
+      "osprey_macroCoupling": 0.5968,
+      "osprey_macroMovement": 0.9471,
+      "osprey_macroSpace": 0.9283
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -37,8 +37,18 @@
   "mood": "Atmosphere",
   "name": "Node Deep 4",
   "parameters": {
-    "Optic": {},
-    "Orbital": {}
+    "Optic": {
+      "optic_macroCharacter": 0.449,
+      "optic_macroCoupling": 0.53,
+      "optic_macroMovement": 0.895,
+      "optic_macroSpace": 0.494
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.476,
+      "orb_macroCoupling": 0.48,
+      "orb_macroMovement": 0.792,
+      "orb_macroSpace": 0.445
+    }
   },
   "schema_version": 1,
   "tags": [

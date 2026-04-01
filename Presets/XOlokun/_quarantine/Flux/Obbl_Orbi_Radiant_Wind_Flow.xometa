@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obbligato": {},
-    "Orbital": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.93,
+      "obbl_macroMovement": 0.67,
+      "obbl_macroCoupling": 0.88,
+      "obbl_macroSpace": 0.15
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.69,
+      "orb_macroMovement": 0.7,
+      "orb_macroCoupling": 0.53,
+      "orb_macroSpace": 0.25
+    }
   },
   "coupling": {
     "type": "LFO_SYNC",

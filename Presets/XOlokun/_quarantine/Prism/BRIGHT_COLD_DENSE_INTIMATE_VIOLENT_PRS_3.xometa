@@ -45,8 +45,18 @@
   "mood": "Prism",
   "name": "Arctic Titan",
   "parameters": {
-    "Origami": {},
-    "Owlfish": {}
+    "Origami": {
+      "origami_macroCharacter": 0.926,
+      "origami_macroCoupling": 1.0,
+      "origami_macroMovement": 0.461,
+      "origami_macroSpace": 0.025
+    },
+    "Owlfish": {
+      "owl_macroCharacter": 0.86,
+      "owl_macroCoupling": 0.972,
+      "owl_macroMovement": 0.336,
+      "owl_macroSpace": 0.13
+    }
   },
   "schema_version": 1,
   "sequencer": null,

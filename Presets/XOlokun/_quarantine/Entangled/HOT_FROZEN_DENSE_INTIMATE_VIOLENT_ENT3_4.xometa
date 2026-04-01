@@ -45,8 +45,18 @@
   "mood": "Entangled",
   "name": "Thread Grit 3",
   "parameters": {
-    "Obbligato": {},
-    "Osprey": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.7531,
+      "obbl_macroCoupling": 0.7959,
+      "obbl_macroMovement": 0.0557,
+      "obbl_macroSpace": 0.3052
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.637,
+      "osprey_macroCoupling": 0.8931,
+      "osprey_macroMovement": 0.0616,
+      "osprey_macroSpace": 0.8481
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Entangled",
   "name": "TEMPEST",
   "parameters": {
-    "Oceanic": {},
-    "Origami": {}
+    "Oceanic": {
+      "ocean_macroCharacter": 0.455,
+      "ocean_macroCoupling": 0.315,
+      "ocean_macroMovement": 0.961,
+      "ocean_macroSpace": 0.323
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.97,
+      "origami_macroCoupling": 0.404,
+      "origami_macroMovement": 0.935,
+      "origami_macroSpace": 0.515
+    }
   },
   "schema_version": 1,
   "tags": [

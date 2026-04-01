@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Ice Surge",
   "parameters": {
-    "Obbligato": {},
-    "Ole": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.537,
+      "obbl_macroCoupling": 0.612,
+      "obbl_macroMovement": 0.958,
+      "obbl_macroSpace": 0.856
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.521,
+      "ole_macroCoupling": 0.627,
+      "ole_macroMovement": 0.942,
+      "ole_macroSpace": 0.854
+    }
   },
   "schema_version": 1,
   "tags": [

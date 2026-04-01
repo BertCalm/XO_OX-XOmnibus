@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Golden Blade",
   "parameters": {
-    "Oceanic": {},
+    "Oceanic": {
+      "ocean_macroCharacter": 0.888,
+      "ocean_macroCoupling": 0.7644,
+      "ocean_macroMovement": 0.7195,
+      "ocean_macroSpace": 0.6926
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.7764,
+      "dub_macroCoupling": 0.7339,
+      "dub_macroMovement": 0.6142,
+      "dub_macroSpace": 0.5642
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "BRIGHT COLD STILL INTIMATE ... (Ottoni I)",
   "parameters": {
-    "Origami": {},
-    "Ottoni": {}
+    "Origami": {
+      "origami_macroCharacter": 0.485,
+      "origami_macroCoupling": 0.142,
+      "origami_macroMovement": 0.082,
+      "origami_macroSpace": 0.2
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.491,
+      "otto_macroCoupling": 0.164,
+      "otto_macroMovement": 0.06,
+      "otto_macroSpace": 0.134
+    }
   },
   "schema_version": 1,
   "tags": [

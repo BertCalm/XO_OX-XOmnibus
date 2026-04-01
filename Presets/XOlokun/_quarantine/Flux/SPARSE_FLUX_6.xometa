@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 6",
   "parameters": {
-    "Obsidian": {},
-    "Orbital": {}
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.9945,
+      "obsidian_macroCoupling": 0.0282,
+      "obsidian_macroMovement": 0.3749,
+      "obsidian_macroSpace": 0.9308
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.0267,
+      "orb_macroCoupling": 0.502,
+      "orb_macroMovement": 0.0533,
+      "orb_macroSpace": 0.2358
+    }
   },
   "schema_version": 1,
   "tags": [

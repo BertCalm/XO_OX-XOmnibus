@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "Solar Surge",
   "parameters": {
-    "Optic": {},
-    "Ouroboros": {}
+    "Optic": {
+      "optic_macroCharacter": 0.9502,
+      "optic_macroCoupling": 0.9087,
+      "optic_macroMovement": 0.99,
+      "optic_macroSpace": 0.4685
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9073,
+      "ouro_macroCoupling": 0.8996,
+      "ouro_macroMovement": 0.9814,
+      "ouro_macroSpace": 0.4556
+    }
   },
   "schema_version": 1,
   "tags": [

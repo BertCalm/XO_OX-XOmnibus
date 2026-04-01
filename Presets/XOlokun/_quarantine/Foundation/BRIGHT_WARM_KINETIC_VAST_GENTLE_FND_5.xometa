@@ -45,8 +45,18 @@
   "mood": "Foundation",
   "name": "Candlelight Pulse",
   "parameters": {
-    "OddOscar": {},
-    "Origami": {}
+    "OddOscar": {
+      "morph_macroCharacter": 1.0,
+      "morph_macroCoupling": 0.552,
+      "morph_macroMovement": 0.895,
+      "morph_macroSpace": 0.87
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.967,
+      "origami_macroCoupling": 0.439,
+      "origami_macroMovement": 0.875,
+      "origami_macroSpace": 0.955
+    }
   },
   "schema_version": 1,
   "sequencer": null,

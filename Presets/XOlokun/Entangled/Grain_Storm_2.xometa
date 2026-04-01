@@ -37,9 +37,18 @@
   "mood": "Entangled",
   "name": "Grain Storm 2",
   "parameters": {
-    "Orca": {},
+    "Orca": {
+      "orca_macroCharacter": 0.097,
+      "orca_macroCoupling": 0.513,
+      "orca_macroMovement": 0.019,
+      "orca_macroSpace": 0.936
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.131,
+      "dub_macroCoupling": 0.508,
+      "dub_macroMovement": 0.018,
+      "dub_macroSpace": 0.932
     }
   },
   "schema_version": 1,

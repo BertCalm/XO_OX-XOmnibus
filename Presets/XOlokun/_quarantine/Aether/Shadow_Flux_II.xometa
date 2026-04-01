@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Shadow Flux II",
   "parameters": {
-    "Ohm": {},
-    "Ole": {}
+    "Ohm": {
+      "ohm_macroCharacter": 0.309,
+      "ohm_macroCoupling": 0.457,
+      "ohm_macroMovement": 0.924,
+      "ohm_macroSpace": 0.905
+    },
+    "Ole": {
+      "ole_macroCharacter": 0.244,
+      "ole_macroCoupling": 0.611,
+      "ole_macroMovement": 0.978,
+      "ole_macroSpace": 0.955
+    }
   },
   "schema_version": 1,
   "tags": [

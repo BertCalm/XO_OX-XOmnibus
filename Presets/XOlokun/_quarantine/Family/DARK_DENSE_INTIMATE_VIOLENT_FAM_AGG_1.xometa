@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Wave Crush 3",
   "parameters": {
-    "OddOscar": {},
-    "Ohm": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.403,
+      "morph_macroCoupling": 0.496,
+      "morph_macroMovement": 0.857,
+      "morph_macroSpace": 0.703
+    },
+    "Ohm": {
+      "ohm_macroCharacter": 0.405,
+      "ohm_macroCoupling": 0.477,
+      "ohm_macroMovement": 0.847,
+      "ohm_macroSpace": 0.687
+    }
   },
   "schema_version": 1,
   "tags": [

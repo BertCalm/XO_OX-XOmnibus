@@ -39,8 +39,18 @@
   "mood": "Entangled",
   "name": "Maqam Carnival",
   "parameters": {
-    "Ole": {},
-    "Oracle": {}
+    "Ole": {
+      "ole_macroCharacter": 0.68,
+      "ole_macroCoupling": 0.62,
+      "ole_macroMovement": 0.65,
+      "ole_macroSpace": 0.38
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.55,
+      "oracle_macroCoupling": 0.62,
+      "oracle_macroMovement": 0.62,
+      "oracle_macroSpace": 0.58
+    }
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "Glow Swirl 2",
   "parameters": {
-    "Opal": {},
-    "Osprey": {}
+    "Opal": {
+      "opal_macroCharacter": 0.909,
+      "opal_macroCoupling": 0.412,
+      "opal_macroMovement": 0.952,
+      "opal_macroSpace": 0.636
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.893,
+      "osprey_macroCoupling": 0.4,
+      "osprey_macroMovement": 0.953,
+      "osprey_macroSpace": 0.642
+    }
   },
   "schema_version": 1,
   "tags": [

@@ -32,8 +32,18 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Onset": {},
-    "Optic": {}
+    "Onset": {
+      "perc_macroCharacter": 0.89,
+      "perc_macroMovement": 0.73,
+      "perc_macroCoupling": 0.58,
+      "perc_macroSpace": 0.38
+    },
+    "Optic": {
+      "optic_macroCharacter": 0.93,
+      "optic_macroMovement": 0.74,
+      "optic_macroCoupling": 0.57,
+      "optic_macroSpace": 0.12
+    }
   },
   "coupling": {
     "type": "RHYTHM_GATE",

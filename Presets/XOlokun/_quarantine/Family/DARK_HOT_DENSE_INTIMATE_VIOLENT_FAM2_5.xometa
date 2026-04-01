@@ -37,8 +37,18 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE VIO... (OddfeliX I)",
   "parameters": {
-    "OddfeliX": {},
-    "Organon": {}
+    "OddfeliX": {
+      "snap_macroCharacter": 0.519,
+      "snap_macroCoupling": 0.93,
+      "snap_macroMovement": 0.333,
+      "snap_macroSpace": 0.023
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.51,
+      "organon_macroCoupling": 0.882,
+      "organon_macroMovement": 0.266,
+      "organon_macroSpace": 0.02
+    }
   },
   "schema_version": 1,
   "tags": [

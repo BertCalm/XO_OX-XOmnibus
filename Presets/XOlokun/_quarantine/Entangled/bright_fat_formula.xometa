@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Bright Fat Formula",
   "parameters": {
-    "Obese": {},
-    "Organon": {}
+    "Obese": {
+      "fat_macroCharacter": 0.8,
+      "fat_macroCoupling": 0.7,
+      "fat_macroMovement": 0.6,
+      "fat_macroSpace": 0.6
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.4,
+      "organon_macroCoupling": 0.7,
+      "organon_macroMovement": 0.6,
+      "organon_macroSpace": 0.6
+    }
   },
   "schema_version": 1,
   "tags": [

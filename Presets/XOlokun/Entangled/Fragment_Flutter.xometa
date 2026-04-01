@@ -49,7 +49,11 @@
       "filter_resonance": 0.1188,
       "output_level": 0.9611,
       "reverb_mix": 0.3154,
-      "reverb_size": 0.3566
+      "reverb_size": 0.3566,
+      "orph_macroCharacter": 0.5356,
+      "orph_macroCoupling": 0.594,
+      "orph_macroMovement": 0.9887,
+      "orph_macroSpace": 0.3239
     },
     "Overdub": {
       "amp_attack": 0.0419,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.1267,
       "output_level": 0.8873,
       "reverb_mix": 0.3098,
-      "reverb_size": 0.4075
+      "reverb_size": 0.4075,
+      "dub_macroCharacter": 0.5483,
+      "dub_macroCoupling": 0.6204,
+      "dub_macroMovement": 0.986,
+      "dub_macroSpace": 0.3461
     }
   },
   "schema_version": 1,

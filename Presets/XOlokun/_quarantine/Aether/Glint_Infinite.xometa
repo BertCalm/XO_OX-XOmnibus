@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Glint Infinite",
   "parameters": {
-    "OddOscar": {},
-    "Ombre": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.5744,
+      "morph_macroCoupling": 0.6821,
+      "morph_macroMovement": 0.8635,
+      "morph_macroSpace": 0.3072
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.3047,
+      "ombre_macroCoupling": 0.6042,
+      "ombre_macroMovement": 0.7587,
+      "ombre_macroSpace": 0.7603
+    }
   },
   "schema_version": 1,
   "tags": [

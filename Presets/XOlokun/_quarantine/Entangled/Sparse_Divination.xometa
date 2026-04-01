@@ -38,8 +38,18 @@
   "mood": "Entangled",
   "name": "Sparse Divination",
   "parameters": {
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.12,
+      "opal_macroCoupling": 0.78,
+      "opal_macroMovement": 0.32,
+      "opal_macroSpace": 0.95
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.09,
+      "oracle_macroCoupling": 0.83,
+      "oracle_macroMovement": 0.27,
+      "oracle_macroSpace": 0.98
+    }
   },
   "schema_version": 1,
   "tags": [

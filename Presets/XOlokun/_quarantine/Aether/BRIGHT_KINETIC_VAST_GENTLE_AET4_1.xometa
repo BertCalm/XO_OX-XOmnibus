@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Solar Stream",
   "parameters": {
-    "Oblique": {},
-    "Osprey": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.8393,
+      "oblq_macroCoupling": 0.485,
+      "oblq_macroMovement": 0.8445,
+      "oblq_macroSpace": 0.4375
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.739,
+      "osprey_macroCoupling": 0.8543,
+      "osprey_macroMovement": 0.7696,
+      "osprey_macroSpace": 0.2269
+    }
   },
   "schema_version": 1,
   "tags": [

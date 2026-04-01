@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "DARK COLD DENSE BALANCED AE... (Overworld I)",
   "parameters": {
-    "Orbital": {},
-    "Overworld": {}
+    "Orbital": {
+      "orb_macroCharacter": 0.044,
+      "orb_macroCoupling": 0.645,
+      "orb_macroMovement": 0.647,
+      "orb_macroSpace": 0.397
+    },
+    "Overworld": {
+      "ow_macroCharacter": 0.065,
+      "ow_macroCoupling": 0.632,
+      "ow_macroMovement": 0.677,
+      "ow_macroSpace": 0.384
+    }
   },
   "schema_version": 1,
   "tags": [

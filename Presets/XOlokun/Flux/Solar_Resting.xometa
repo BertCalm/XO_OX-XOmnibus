@@ -37,9 +37,18 @@
   "mood": "Flux",
   "name": "Solar Resting",
   "parameters": {
-    "Oracle": {},
+    "Oracle": {
+      "oracle_macroCharacter": 0.9369,
+      "oracle_macroCoupling": 0.1902,
+      "oracle_macroMovement": 0.17,
+      "oracle_macroSpace": 0.755
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.887,
+      "dub_macroCoupling": 0.257,
+      "dub_macroMovement": 0.0665,
+      "dub_macroSpace": 0.8783
     }
   },
   "schema_version": 1,

@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Tone Heavy",
   "parameters": {
-    "Opal": {},
-    "Orbital": {}
+    "Opal": {
+      "opal_macroCharacter": 0.0401,
+      "opal_macroCoupling": 0.9342,
+      "opal_macroMovement": 0.5129,
+      "opal_macroSpace": 0.01
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.0824,
+      "orb_macroCoupling": 0.9395,
+      "orb_macroMovement": 0.5078,
+      "orb_macroSpace": 0.0116
+    }
   },
   "schema_version": 1,
   "tags": [

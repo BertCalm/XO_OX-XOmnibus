@@ -37,8 +37,18 @@
   "mood": "Flux",
   "name": "ARCTIC FLOW 7",
   "parameters": {
-    "Obbligato": {},
-    "Ottoni": {}
+    "Obbligato": {
+      "obbl_macroCharacter": 0.3076,
+      "obbl_macroCoupling": 0.5692,
+      "obbl_macroMovement": 0.749,
+      "obbl_macroSpace": 0.2886
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.9084,
+      "otto_macroCoupling": 0.0714,
+      "otto_macroMovement": 0.8266,
+      "otto_macroSpace": 0.1659
+    }
   },
   "schema_version": 1,
   "tags": [

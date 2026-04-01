@@ -37,8 +37,18 @@
   "mood": "Aether",
   "name": "Phase Molten 2",
   "parameters": {
-    "Oracle": {},
-    "Organon": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.1098,
+      "oracle_macroCoupling": 0.9753,
+      "oracle_macroMovement": 0.5074,
+      "oracle_macroSpace": 0.0422
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.0747,
+      "organon_macroCoupling": 0.9797,
+      "organon_macroMovement": 0.4712,
+      "organon_macroSpace": 0.0721
+    }
   },
   "schema_version": 1,
   "tags": [

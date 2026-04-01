@@ -37,9 +37,18 @@
   "mood": "Foundation",
   "name": "Caress Massive",
   "parameters": {
-    "Ouroboros": {},
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.498,
+      "ouro_macroCoupling": 0.473,
+      "ouro_macroMovement": 0.793,
+      "ouro_macroSpace": 0.921
+    },
     "Overdub": {
-      "dub_lfoDepth": 0.12
+      "dub_lfoDepth": 0.12,
+      "dub_macroCharacter": 0.498,
+      "dub_macroCoupling": 0.473,
+      "dub_macroMovement": 0.793,
+      "dub_macroSpace": 0.921
     }
   },
   "schema_version": 1,

@@ -49,7 +49,11 @@
       "filter_resonance": 0.5422,
       "output_level": 0.7904,
       "reverb_mix": 0.2224,
-      "reverb_size": 0.2211
+      "reverb_size": 0.2211,
+      "ocean_macroCharacter": 0.9035,
+      "ocean_macroCoupling": 0.8997,
+      "ocean_macroMovement": 0.6216,
+      "ocean_macroSpace": 0.101
     },
     "Ouroboros": {
       "amp_attack": 0.2223,
@@ -61,7 +65,11 @@
       "filter_resonance": 0.5636,
       "output_level": 0.8243,
       "reverb_mix": 0.1562,
-      "reverb_size": 0.2393
+      "reverb_size": 0.2393,
+      "ouro_macroCharacter": 0.8964,
+      "ouro_macroCoupling": 0.9231,
+      "ouro_macroMovement": 0.5841,
+      "ouro_macroSpace": 0.0355
     }
   },
   "schema_version": 1,
