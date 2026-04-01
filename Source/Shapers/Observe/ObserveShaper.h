@@ -31,6 +31,7 @@ namespace xolokun {
 struct ObserveBand
 {
     CytomicSVF filter;
+    CytomicSVF tiltHighShelf;  // Second filter used only in Tilt mode (type 11)
     float character = 0.0f;       // 0 = feliX (clinical), 1 = Oscar (warm)
 
     // Transformer iron emulation state (Oscar mode)
@@ -51,6 +52,7 @@ struct ObserveBand
     void reset()
     {
         filter.reset();
+        tiltHighShelf.reset();
         ironStateX = ironStateY = 0.0f;
         tidePhase = 0.0f;
         tideOut = 0.0f;
@@ -94,6 +96,13 @@ public:
                        int numSamples) override
     {
         if (numSamples <= 0 || isBypassed()) return;
+
+        // Silence gate: skip all DSP when input has been silent long enough
+        if (silenceGate.isBypassed())
+        {
+            buffer.clear();
+            return;
+        }
 
         // ParamSnapshot
         const float inGain  = loadP (pInputGain, 0.0f);
@@ -174,19 +183,54 @@ public:
                 float effQ    = clamp (snap[b].q + qMod, 0.1f, 20.0f);
                 float effChar = clamp (snap[b].character + charMod, 0.0f, 1.0f);
 
-                // Set filter coefficients
-                setFilterType (band.filter, snap[b].type);
-                band.filter.setCoefficients (effFreq, effQ, sr);
+                // Set filter coefficients.
+                // Tilt (type 11) uses two shelf filters; all others use a single filter.
+                const bool isTilt = (snap[b].type == 11);
+                if (isTilt)
+                {
+                    // Tilt EQ: LowShelf at +effGain/2 dB and HighShelf at -effGain/2 dB,
+                    // both centred on effFreq. Combined they tilt the spectrum around the
+                    // pivot frequency — boosting lows while cutting highs (or vice versa).
+                    band.filter.setMode (CytomicSVF::Mode::LowShelf);
+                    band.filter.setCoefficients (effFreq, effQ, sr, effGain * 0.5f);
+                    band.tiltHighShelf.setMode (CytomicSVF::Mode::HighShelf);
+                    band.tiltHighShelf.setCoefficients (effFreq, effQ, sr, -effGain * 0.5f);
+                }
+                else
+                {
+                    setFilterType (band.filter, snap[b].type);
+                    band.filter.setCoefficients (effFreq, effQ, sr, effGain);
+                }
 
-                // Apply gain as pre-filter boost
-                float gainLin = dbToGain (effGain);
+                // Apply gain as a post-filter scale for non-shelf, non-tilt types
+                // (shelf/tilt bake gain into coefficients; LP/HP/BP/Notch/Peak scale output).
+                float gainLin = (isTilt
+                                 || snap[b].type == 2 || snap[b].type == 3)  // Low/High Shelf
+                                ? 1.0f
+                                : dbToGain (effGain);
 
                 // Process L
-                float bandL = band.filter.processSample (sampleL) * gainLin;
-                // Process R (filter is stereo-linked for now)
-                float bandR = R ? band.filter.processSample (sampleR) * gainLin : bandL;
+                float bandL;
+                if (isTilt)
+                    bandL = band.tiltHighShelf.processSample (band.filter.processSample (sampleL));
+                else
+                    bandL = band.filter.processSample (sampleL) * gainLin;
 
-                // Oscar character: tanh saturation on the band contribution
+                // Process R (filter is stereo-linked for now)
+                float bandR;
+                if (R)
+                {
+                    if (isTilt)
+                        bandR = band.tiltHighShelf.processSample (band.filter.processSample (sampleR));
+                    else
+                        bandR = band.filter.processSample (sampleR) * gainLin;
+                }
+                else
+                {
+                    bandR = bandL;
+                }
+
+                // Oscar character: tanh saturation on the band output
                 if (effChar > 0.05f)
                 {
                     float drive = 1.0f + effChar * 4.0f;
@@ -204,15 +248,8 @@ public:
                     }
                 }
 
-                // Accumulate into output
-                sampleL += bandL - (sampleL * (std::fabs (effGain) > 0.01f ? 0.0f : 0.0f));
-                sampleR += bandR - (sampleR * 0.0f);
-
-                // Actually — proper EQ: the filter IS the processing
-                // The CytomicSVF in peak mode adds/subtracts from the signal
-                // So sampleL/R should be the filter output directly for peak bands
-                // For shelf/pass types, it's a replacement
-                // Simplified: use additive model (band output IS the EQ'd signal)
+                // Serial EQ topology: each band processes the output of the previous band.
+                // This is the standard parametric EQ model — bands are chained, not summed.
                 sampleL = bandL;
                 sampleR = bandR;
 
@@ -230,6 +267,11 @@ public:
             L[s] = dryL * (1.0f - mix) + sampleL * mix;
             if (R) R[s] = dryR * (1.0f - mix) + sampleR * mix;
         }
+
+        // Update silence gate — analyzes output to detect sustained silence
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() >= 2 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
 
         // Store coupling output (per-band energy)
         for (int b = 0; b < kNumBands; ++b)
@@ -370,14 +412,21 @@ private:
 
     void setFilterType (CytomicSVF& filter, int type)
     {
+        // type indices must match the bandTypes StringArray in createParameterLayout:
+        //   0=Peak, 1=Notch, 2=Low Shelf, 3=High Shelf,
+        //   4=LP6, 5=LP12, 6=LP24, 7=HP6, 8=HP12, 9=HP24,
+        //   10=Band Pass, 11=Tilt (handled in processBlock — not routed here)
         switch (type)
         {
-            case 0: case 1: filter.setMode (CytomicSVF::Mode::BandPass); break; // Peak/Notch
-            case 2: case 3: filter.setMode (CytomicSVF::Mode::LowPass); break;  // Shelves (simplified)
-            case 4: case 5: case 6: filter.setMode (CytomicSVF::Mode::LowPass); break;
-            case 7: case 8: case 9: filter.setMode (CytomicSVF::Mode::HighPass); break;
-            case 10: filter.setMode (CytomicSVF::Mode::BandPass); break;
-            default: filter.setMode (CytomicSVF::Mode::BandPass); break;
+            case 0:  filter.setMode (CytomicSVF::Mode::Peak);      break; // Peak
+            case 1:  filter.setMode (CytomicSVF::Mode::Notch);     break; // Notch
+            case 2:  filter.setMode (CytomicSVF::Mode::LowShelf);  break; // Low Shelf
+            case 3:  filter.setMode (CytomicSVF::Mode::HighShelf); break; // High Shelf
+            case 4: case 5: case 6: filter.setMode (CytomicSVF::Mode::LowPass);  break; // LP6/12/24
+            case 7: case 8: case 9: filter.setMode (CytomicSVF::Mode::HighPass); break; // HP6/12/24
+            case 10: filter.setMode (CytomicSVF::Mode::BandPass); break; // Band Pass
+            // case 11 (Tilt) is handled directly in processBlock using two shelf filters
+            default: filter.setMode (CytomicSVF::Mode::Peak); break;
         }
     }
 

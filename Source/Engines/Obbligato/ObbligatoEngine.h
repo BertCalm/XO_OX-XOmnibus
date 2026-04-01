@@ -413,6 +413,7 @@ public:
         // -----------------------------------------------------------------------
         float bondTarget = bondStage * 8.0f; // 0..8 stage range
         bondSmoothed += (bondTarget - bondSmoothed) * std::min (bondRate, 1.0f);
+        bondSmoothed = flushDenormal(bondSmoothed);
 
         int   bondIdx  = std::min (static_cast<int> (bondSmoothed), 7);
         float bondFrac = bondSmoothed - static_cast<float> (bondIdx);

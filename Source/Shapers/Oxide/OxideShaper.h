@@ -215,6 +215,7 @@ public:
             // Saturation stage
             float satL = inL, satR = inR;
             float driveAmt = 1.0f + modDrive * 9.0f; // 1x to 10x
+            driveAmt = std::max(0.01f, driveAmt); // Guard: diode mode (case 3) divides by driveAmt
 
             switch (driveMode)
             {

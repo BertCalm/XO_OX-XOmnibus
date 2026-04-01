@@ -60,6 +60,7 @@ public:
         dcPrevR = 0.0f;
 
         smoothedEntropy = 0.0f;
+        dcCoeff_ = (sampleRate > 0.0f) ? 1.0f - (6.28318f * 5.0f / static_cast<float> (sampleRate)) : 0.995f;
     }
 
     void reset()
@@ -113,6 +114,7 @@ public:
                 cachedEntropy = computeEntropy();
             entropySampleCounter = (entropySampleCounter + 1) % kEntropyInterval;
             smoothedEntropy += (cachedEntropy - smoothedEntropy) * entSmooth;
+            smoothedEntropy = flushDenormal(smoothedEntropy);
 
             // --- Heat Equation: 2-stage 1-pole lowpass cascade ---
             // Each stage: y[n] = y[n-1] + coeff * (x[n] - y[n-1])
@@ -120,6 +122,10 @@ public:
             heatStateL[1] += (heatStateL[0] - heatStateL[1]) * heatCoeff;
             heatStateR[0] += (dryR - heatStateR[0]) * heatCoeff;
             heatStateR[1] += (heatStateR[0] - heatStateR[1]) * heatCoeff;
+            heatStateL[0] = flushDenormal(heatStateL[0]);
+            heatStateL[1] = flushDenormal(heatStateL[1]);
+            heatStateR[0] = flushDenormal(heatStateR[0]);
+            heatStateR[1] = flushDenormal(heatStateR[1]);
 
             float cooledL = heatStateL[1];
             float cooledR = heatStateR[1];
@@ -134,6 +140,7 @@ public:
             float demonRelease = 1.0f - std::exp (-1.0f / (0.05f * sr));  // 50ms
             float demonCoeff = (demonTarget > demonActiveL) ? demonAttack : demonRelease;
             demonActiveL += (demonTarget - demonActiveL) * demonCoeff;
+            demonActiveL = flushDenormal(demonActiveL);
             demonActiveR = demonActiveL; // mono demon for coherent response
 
             float wetL = cooledL;
@@ -159,13 +166,12 @@ public:
             }
 
             // --- DC blocker (high-pass at ~5 Hz) ---
-            float dcCoeff = 1.0f - (6.28318f * 5.0f / sr);
-            float outL = wetL - dcPrevL + dcStateL * dcCoeff;
-            float outR = wetR - dcPrevR + dcStateR * dcCoeff;
+            float outL = wetL - dcPrevL + dcStateL * dcCoeff_;
+            float outR = wetR - dcPrevR + dcStateR * dcCoeff_;
             dcPrevL = wetL;
             dcPrevR = wetR;
-            dcStateL = outL;
-            dcStateR = outR;
+            dcStateL = flushDenormal(outL);
+            dcStateR = flushDenormal(outR);
 
             outL = flushDenormal (outL);
             outR = flushDenormal (outR);
@@ -198,6 +204,7 @@ private:
     // DC blocker
     float dcStateL = 0.0f, dcStateR = 0.0f;
     float dcPrevL = 0.0f, dcPrevR = 0.0f;
+    float dcCoeff_ = 0.995f;
 
     //--------------------------------------------------------------------------
     // Shannon entropy approximation over amplitude histogram (16 bins).

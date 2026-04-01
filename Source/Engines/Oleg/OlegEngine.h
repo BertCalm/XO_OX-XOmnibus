@@ -851,6 +851,7 @@ public:
                 float targetPressure = std::clamp (voice.velocity * bellowsNow
                     + aftertouchAmount * 0.4f + modWheelAmount * 0.3f, 0.0f, 1.0f);
                 voice.pressureSmoothed += (targetPressure - voice.pressureSmoothed) * 0.001f;
+                voice.pressureSmoothed = flushDenormal(voice.pressureSmoothed);
                 voice.pressure = voice.pressureSmoothed;
 
                 // Glide time update

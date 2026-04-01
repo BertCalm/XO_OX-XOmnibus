@@ -357,7 +357,9 @@ struct LeslieSpeaker
 
         // --- Ramp rotation speeds with physical inertia ---
         currentHornRate += (targetHornRate - currentHornRate) * speedRampCoeff;
+        currentHornRate = flushDenormal(currentHornRate);
         currentDrumRate += (targetDrumRate - currentDrumRate) * speedRampCoeff;
+        currentDrumRate = flushDenormal(currentDrumRate);
 
         // --- Horn: write current horn input into circular delay buffer ---
         delayBufL[delayWritePos] = hornInL;
