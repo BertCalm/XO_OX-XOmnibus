@@ -480,8 +480,9 @@ private:
             {
                 auto* entry = zip.getEntry(i);
                 if (entry == nullptr) continue;
-                if (juce::String(entry->filename).contains(".."))
-                    continue;  // Skip entries with path traversal
+                if (juce::String(entry->filename).contains("..") ||
+                    juce::String(entry->filename).startsWithChar('/'))
+                    continue;  // Skip entries with path traversal or absolute paths
                 if (entry->filename.endsWithIgnoreCase(".wav"))
                 {
                     auto dest = wavDir.getChildFile(juce::File(entry->filename).getFileName());
@@ -1169,7 +1170,7 @@ private:
         // Write one drum XPM per drum program (unchanged behavior)
         for (auto* prog : drumProgs)
         {
-            auto xpmFile = xpmDir.getChildFile(prog->name + ".xpm");
+            auto xpmFile = xpmDir.getChildFile(sanitizeFilename(prog->name) + ".xpm");
             if (!xpmFile.replaceWithText(buildDrumXPM(*prog, splits)))
                 errors_.add("Failed to write XPM: " + xpmFile.getFullPathName());
         }
@@ -1426,10 +1427,11 @@ private:
 
         for (const auto& prog : programs)
         {
-            auto xpmFile = xpmDir.getChildFile(prog.name + ".xpm");
+            auto safeName = sanitizeFilename(prog.name);
+            auto xpmFile = xpmDir.getChildFile(safeName + ".xpm");
             if (xpmFile.existsAsFile())
             {
-                builder.addFile(xpmFile, 9, "Programs/" + prog.name + ".xpm");
+                builder.addFile(xpmFile, 9, "Programs/" + safeName + ".xpm");
                 ++totalFiles;
             }
             for (const auto& l : prog.layers)
@@ -1439,7 +1441,7 @@ private:
                     // WAV files: use compression level 0 (store) to avoid re-encoding.
                     // WAV is already compressed at 24-bit integer; zlib compression of PCM
                     // yields <1% reduction and wastes CPU. MPC unzips faster at level 0.
-                    builder.addFile(l.file, 0, "Samples/" + prog.name + "/" + l.filename);
+                    builder.addFile(l.file, 0, "Samples/" + safeName + "/" + l.filename);
                     ++totalFiles;
                 }
             }
@@ -1472,11 +1474,12 @@ private:
         auto xpmDir = workDir.getChildFile("programs");
         for (const auto& prog : programs)
         {
-            auto xpmFile = xpmDir.getChildFile(prog.name + ".xpm");
+            auto safeName = sanitizeFilename(prog.name);
+            auto xpmFile = xpmDir.getChildFile(safeName + ".xpm");
             if (xpmFile.existsAsFile())
-                xpmFile.copyFileTo(progDir.getChildFile(prog.name + ".xpm"));
+                xpmFile.copyFileTo(progDir.getChildFile(safeName + ".xpm"));
 
-            auto sampDir = output.getChildFile("Samples").getChildFile(prog.name);
+            auto sampDir = output.getChildFile("Samples").getChildFile(safeName);
             sampDir.createDirectory();
             for (const auto& l : prog.layers)
                 if (l.file.existsAsFile())
@@ -1539,6 +1542,17 @@ private:
     static juce::String sanitizeForFAT32 (const juce::String& name)
     {
         return name.removeCharacters("?<>:\"/\\|*");
+    }
+
+    // Sanitize a program name before using it in file paths or ZIP archive entries.
+    // Removes characters that are dangerous in filenames, collapses path-traversal
+    // sequences, trims whitespace, and enforces a reasonable length limit.
+    static juce::String sanitizeFilename (const juce::String& name)
+    {
+        return name.removeCharacters("/\\:*?\"<>|")
+                   .replace("..", "_")
+                   .trim()
+                   .substring(0, 200);
     }
 
     static float measureLufs (const juce::AudioBuffer<float>& buf, double sr)
