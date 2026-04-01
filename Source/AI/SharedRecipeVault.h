@@ -122,6 +122,15 @@ public:
 
     SharedRecipeVault() = default;
 
+    ~SharedRecipeVault()
+    {
+        // Signal all in-flight background threads not to dereference this
+        // object. Threads capture a pointer to destroyed_ and check it
+        // before invoking callbacks, preventing a use-after-free if the
+        // vault is destroyed while a network request is still in flight.
+        destroyed_.store (true);
+    }
+
     void configure (VaultConfig config)
     {
         std::lock_guard<std::mutex> lock (configMutex);
@@ -418,6 +427,7 @@ public:
     }
 
 private:
+    std::atomic<bool> destroyed_ { false };
     mutable std::mutex configMutex;
     VaultConfig cfg;
 
@@ -499,10 +509,13 @@ private:
         void run() override
         {
             auto result = vault.browse (filter);
-            juce::MessageManager::callAsync ([this, result]()
+            juce::MessageManager::callAsync ([this, result, destroyedFlag = &vault.destroyed_]()
             {
-                if (vault.onBrowseComplete)
-                    vault.onBrowseComplete (result);
+                if (! destroyedFlag->load())
+                {
+                    if (vault.onBrowseComplete)
+                        vault.onBrowseComplete (result);
+                }
                 delete this;
             });
         }
@@ -526,10 +539,13 @@ private:
         void run() override
         {
             auto result = vault.shareRecipe (recipeJSON, description, tags);
-            juce::MessageManager::callAsync ([this, result]()
+            juce::MessageManager::callAsync ([this, result, destroyedFlag = &vault.destroyed_]()
             {
-                if (vault.onShareComplete)
-                    vault.onShareComplete (result);
+                if (! destroyedFlag->load())
+                {
+                    if (vault.onShareComplete)
+                        vault.onShareComplete (result);
+                }
                 delete this;
             });
         }
@@ -551,10 +567,13 @@ private:
         void run() override
         {
             auto result = vault.downloadRecipe (recipeId);
-            juce::MessageManager::callAsync ([this, result]()
+            juce::MessageManager::callAsync ([this, result, destroyedFlag = &vault.destroyed_]()
             {
-                if (vault.onDownloadComplete)
-                    vault.onDownloadComplete (result);
+                if (! destroyedFlag->load())
+                {
+                    if (vault.onDownloadComplete)
+                        vault.onDownloadComplete (result);
+                }
                 delete this;
             });
         }
