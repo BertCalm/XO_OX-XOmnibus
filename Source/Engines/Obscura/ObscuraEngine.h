@@ -623,27 +623,12 @@ public:
         // Map normalized parameters to physical simulation values
         //----------------------------------------------------------------------
 
-        // Spring constant: quadratic mapping [0,1] -> [0, 0.95].
-        // Quadratic curve gives finer control at low stiffness values,
-        // where the timbral change is most audible.
-        // D006: may be recomputed below after MIDI loop if aftertouch is active.
-        float springConstant = effectiveStiffness * effectiveStiffness
-                             * kMaxSpringConstant;
-
-        // Damping coefficient: linear mapping [0,1] -> [0, 0.15].
-        // 0.15 is the maximum before the chain becomes overdamped and
-        // stops oscillating (all energy absorbed in ~1 cycle).
-        constexpr float kMaxDampingCoefficient = 0.15f;
-        float dampingCoefficient = effectiveDamping * kMaxDampingCoefficient;
-
-        // Cubic spring coefficient: quadratic mapping [0,1] -> [0, 0.5].
-        // The cubic term adds amplitude-dependent frequency shift --
-        // louder displacements produce higher frequencies, like a real
-        // stiff bar or struck bell.
-        constexpr float kMaxCubicSpringCoefficient = 0.5f;
-        float cubicSpringCoefficient = effectiveNonlinearity
-                                     * effectiveNonlinearity
-                                     * kMaxCubicSpringCoefficient;
+        // Physical constants are recomputed per-sample from smoothed parameter
+        // values (perSampleSpringConstant / perSampleDampingCoefficient /
+        // perSampleCubicSpringCoefficient) to eliminate zipper noise. The
+        // named constant limits used in that per-sample path are declared there.
+        // kMaxDampingCoefficient and kMaxCubicSpringCoefficient are also needed
+        // in the per-sample path so they are declared at point of use below.
 
         // Scanner width in masses: [0,1] -> [1, chainSize/4].
         // Width = 1: point scanner (reads a single mass, maximum brightness).
@@ -708,11 +693,10 @@ public:
 
         // D006: aftertouch adds up to +0.25 spring stiffness (sensitivity 0.25).
         // Pressing harder increases stiffness — brighter timbre, shorter decay.
-        // springConstant must be recomputed here after atPressure is available.
+        // effectiveStiffness is updated here; the per-sample smoother picks it up.
         if (atPressure > 0.001f)
         {
             effectiveStiffness = clamp (effectiveStiffness + atPressure * 0.25f, 0.0f, 1.0f);
-            springConstant = effectiveStiffness * effectiveStiffness * kMaxSpringConstant;
         }
 
         //----------------------------------------------------------------------
@@ -753,9 +737,12 @@ public:
             const float smoothedDampingValue       = smoothedDamping.process();
             const float smoothedNonlinearityValue  = smoothedNonlinearity.process();
 
-            // Map smoothed normalised values to the same physical constants used
-            // at block-rate, so the per-sample physics track exactly what the
-            // block-rate path would have computed.
+            // Map smoothed normalised values to physical constants.
+            // 0.15 is the maximum damping before the chain becomes overdamped
+            // (all energy absorbed in ~1 cycle). 0.5 is the max cubic term
+            // before amplitude-dependent pitch shift becomes too extreme.
+            constexpr float kMaxDampingCoefficient = 0.15f;
+            constexpr float kMaxCubicSpringCoefficient = 0.5f;
             const float perSampleSpringConstant =
                 smoothedStiffnessValue * smoothedStiffnessValue * kMaxSpringConstant;
             const float perSampleDampingCoefficient =

@@ -177,7 +177,6 @@ public:
                 break;
         }
 
-        double prevPhase = phase;
         phase += phaseInc;
         wrapped = false;
         if (phase >= 1.0) { phase -= 1.0; wrapped = true; }
@@ -1029,7 +1028,6 @@ public:
 
     float process() noexcept
     {
-        float prevPhase = phase;
         phase += rate * invSR;
         bool wrapped = false;
         if (phase >= 1.0f) { phase -= 1.0f; wrapped = true; }

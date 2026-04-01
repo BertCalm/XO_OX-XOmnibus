@@ -105,8 +105,7 @@ struct Particle
         vPan = 0.0f;
         subFlock = flock;
         phase = 0.0f;
-        // Recompute cached pan for new position
-        constexpr float kQuarterPi = 0.7853981633974483f;
+        // Recompute cached pan for new position: map [-1,1] -> [0, pi/2]
         float angle = (p + 1.0f) * 0.25f * 3.14159265358979323846f;
         panL = fastCos (angle);
         panR = fastSin (angle);
@@ -729,7 +728,6 @@ public:
 
                 // --- Audio-rate: render particle oscillator bank ---
                 float voiceL = 0.0f, voiceR = 0.0f;
-                int activeParticles = 0;
 
                 for (int i = 0; i < kParticlesPerVoice; ++i)
                 {
@@ -822,7 +820,6 @@ public:
                     // Eliminates std::cos + std::sin per particle per sample.
                     voiceL += osc * p.panL;
                     voiceR += osc * p.panR;
-                    activeParticles++;
                 }
 
                 // FIX 4: use cached inverse-norm (updated at control rate).
