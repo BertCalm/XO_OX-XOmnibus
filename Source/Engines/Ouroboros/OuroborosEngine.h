@@ -856,6 +856,7 @@ public:
         const float projectionPhi     = paramPhi          ? paramPhi->load()          : 0.0f;
         const float dampingAmount     = paramDamping      ? paramDamping->load()      : 0.3f;
         const float injectionDepth    = paramInjection    ? paramInjection->load()    : 0.0f;
+        const float velTimbreDepth    = paramVelTimbre    ? paramVelTimbre->load()    : 0.4f;
 
         //----------------------------------------------------------------------
         // D004: Read macro values (centered at 0.5 = no effect).
@@ -986,9 +987,10 @@ public:
         // dampAlpha near 0.05 = heavy damping (only slow evolution survives).
         // The 0.95 multiplier ensures we never reach alpha=0 (frozen state).
         // effectiveDampingRaw already includes SPACE macro offset.
+        // Per-voice velocity offset is applied below (D001: velocity → timbre).
         //----------------------------------------------------------------------
-        float dampAlpha = 1.0f - (effectiveDampingRaw + couplingDampingModulation) * 0.95f;
-        dampAlpha = clamp (dampAlpha, 0.05f, 1.0f);
+        float baseDampAlpha = 1.0f - (effectiveDampingRaw + couplingDampingModulation) * 0.95f;
+        baseDampAlpha = clamp (baseDampAlpha, 0.05f, 1.0f);
 
         //----------------------------------------------------------------------
         // Per-sample rendering loop
@@ -1257,12 +1259,19 @@ public:
                 //--------------------------------------------------------------
                 // DAMPING (single-pole LP accumulator)
                 //
+                // D001: velocity shapes damping — soft notes (low velocity) get more
+                // damping (duller, smoother chaos); hard notes (high velocity) get less
+                // damping (brighter, more raw chaotic timbre).
+                // velTimbreDepth=0 disables the velocity path (amplitude-only mode).
+                //
                 // Flush denormals in the feedback path: during quiet passages,
                 // the accumulator value can decay into subnormal range. On x86
                 // CPUs, subnormal arithmetic triggers microcode assists that
                 // cost 10-100x normal FPU throughput — an inaudible value
                 // causing very audible CPU spikes.
                 //--------------------------------------------------------------
+                const float velDampOffset = (1.0f - voice.velocity) * velTimbreDepth * 0.5f;
+                const float dampAlpha = clamp (baseDampAlpha - velDampOffset, 0.05f, 1.0f);
                 voice.dampingAccumulatorLeft  = flushDenormal (voice.dampingAccumulatorLeft  * (1.0f - dampAlpha) + outputLeft  * dampAlpha);
                 voice.dampingAccumulatorRight = flushDenormal (voice.dampingAccumulatorRight * (1.0f - dampAlpha) + outputRight * dampAlpha);
                 outputLeft  = voice.dampingAccumulatorLeft;
@@ -1459,6 +1468,7 @@ public:
         paramDamping    = apvts.getRawParameterValue ("ouro_damping");
         paramInjection  = apvts.getRawParameterValue ("ouro_injection");
         paramBreathRate = apvts.getRawParameterValue ("ouro_breathRate");
+        paramVelTimbre  = apvts.getRawParameterValue ("ouro_velTimbre");
         paramMacroChar  = apvts.getRawParameterValue ("ouro_macroChar");
         paramMacroMove  = apvts.getRawParameterValue ("ouro_macroMove");
         paramMacroCoup  = apvts.getRawParameterValue ("ouro_macroCoup");
@@ -1553,6 +1563,14 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_breathRate", 1), "Breath Rate",
             juce::NormalisableRange<float> (0.001f, 8.0f, 0.0f, 0.3f), 0.08f));
+
+        // D001: Velocity → timbre depth. Controls how much velocity modulates damping.
+        // At 0.0 velocity has no timbral effect (amplitude-only behavior, pre-fix state).
+        // At 1.0 soft notes are heavily damped (dark/smooth) vs hard notes (bright/raw chaos).
+        // Default 0.4 provides an audible but musical velocity sensitivity.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_velTimbre", 1), "Vel Timbre",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
     }
 
     //==========================================================================
@@ -1665,6 +1683,7 @@ private:
     std::atomic<float>* paramDamping    = nullptr;
     std::atomic<float>* paramInjection  = nullptr;
     std::atomic<float>* paramBreathRate = nullptr;  // D005: breathing LFO rate (0.001–8.0 Hz)
+    std::atomic<float>* paramVelTimbre  = nullptr;  // D001: velocity → damping depth
 
     // D004: four standard macro parameter pointers
     std::atomic<float>* paramMacroChar  = nullptr;  // CHARACTER: chaos + theta + leash
