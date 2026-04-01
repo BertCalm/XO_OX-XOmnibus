@@ -105,6 +105,10 @@ final class ReefStore: ObservableObject {
     @Published var reefName: String = "My Reef"
     @Published var totalDiveDepth: Int = 0
 
+    /// Set when a database operation fails. UI layers observe this to surface an alert or banner.
+    /// Cleared to nil once the error has been shown.
+    @Published var lastDBError: String? = nil
+
     /// Tracks which slot was most recently filled (for "NEW!" badge in ReefScene).
     var lastAddedSlot: Int? = nil
     var lastAddedTime: Date? = nil

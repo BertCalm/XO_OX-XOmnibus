@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
+    @EnvironmentObject var reefStore: ReefStore
     @State private var selectedTab = 0
     @State private var showMusicCatch = false
+    @State private var dbErrorMessage: String? = nil
 
     var body: some View {
         ZStack {
@@ -63,6 +65,23 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $showMusicCatch) {
             MusicCatchFlow()
+        }
+        // Surface GRDB errors to the user — fixes #278 (print-only DB errors).
+        .alert("Save Error", isPresented: Binding(
+            get: { dbErrorMessage != nil },
+            set: { if !$0 { dbErrorMessage = nil; reefStore.lastDBError = nil } }
+        )) {
+            Button("OK", role: .cancel) {
+                dbErrorMessage = nil
+                reefStore.lastDBError = nil
+            }
+        } message: {
+            Text(dbErrorMessage ?? "An unknown error occurred saving your data.")
+        }
+        .onChange(of: reefStore.lastDBError) { error in
+            if let error {
+                dbErrorMessage = error
+            }
         }
     }
 

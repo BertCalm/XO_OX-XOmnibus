@@ -7,6 +7,16 @@ extension ReefStore {
     /// Debounce token for async save — cancels any pending write before scheduling a new one.
     private static var saveWorkItem: DispatchWorkItem?
 
+    /// Report a database error to the user by publishing it on the main thread.
+    /// Sets `lastDBError` which UI layers observe to surface an alert or banner (fixes #278).
+    private func reportDBError(_ context: String, _ error: Error) {
+        let message = "\(context): \(error.localizedDescription)"
+        print("[ReefPersistence] \(message)")
+        DispatchQueue.main.async { [weak self] in
+            self?.lastDBError = message
+        }
+    }
+
     /// Save the entire reef state to database.
     /// Debounced 500 ms and dispatched on a utility queue so rapid slider drags
     /// do not block the main thread (fixes #273).
@@ -45,7 +55,7 @@ extension ReefStore {
                     try saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
                 }
             } catch {
-                print("[ReefPersistence] save failed: \(error)")
+                self?.reportDBError("Reef save failed", error)
             }
         }
         ReefStore.saveWorkItem = workItem
@@ -86,7 +96,7 @@ extension ReefStore {
                 try saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
             }
         } catch {
-            print("[ReefPersistence] saveImmediately failed: \(error)")
+            reportDBError("Reef save (immediate) failed", error)
         }
     }
 
@@ -135,7 +145,7 @@ extension ReefStore {
                 }
             }
         } catch {
-            print("[ReefPersistence] Load failed: \(error)")
+            reportDBError("Reef load failed", error)
         }
     }
 
@@ -148,7 +158,7 @@ extension ReefStore {
                 try record.save(db)
             }
         } catch {
-            print("[ReefPersistence] Save specimen failed: \(error)")
+            reportDBError("Specimen save failed", error)
         }
     }
 
@@ -160,7 +170,7 @@ extension ReefStore {
                 try SpecimenRecord.fetchAll(db).compactMap { $0.toSpecimen() }
             }
         } catch {
-            print("[ReefPersistence] Load all failed: \(error)")
+            reportDBError("Load all specimens failed", error)
             return []
         }
     }
@@ -199,7 +209,7 @@ extension ReefStore {
                 self?.load()
             }
         } catch {
-            print("[ReefPersistence] Dormancy decay failed: \(error)")
+            reportDBError("Dormancy decay failed", error)
         }
     }
 
@@ -222,7 +232,7 @@ extension ReefStore {
                 try db.execute(sql: "DELETE FROM visitedGeohash")
             }
         } catch {
-            print("[ReefPersistence] Reset failed: \(error)")
+            reportDBError("Reef reset failed", error)
         }
     }
 
@@ -236,7 +246,7 @@ extension ReefStore {
                 """, arguments: [hash, Date()])
             }
         } catch {
-            print("[ReefPersistence] Save geohash failed: \(error)")
+            reportDBError("Geohash save failed", error)
         }
     }
 
