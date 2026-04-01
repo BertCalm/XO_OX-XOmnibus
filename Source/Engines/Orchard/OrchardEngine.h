@@ -31,7 +31,7 @@
 //      once established. In full-quad coupling, XOrchard is the last to
 //      achieve peak expression. The concertmaster mechanism.
 //
-//  Accent: Harvest Gold #DAA520
+//  Accent: Orchard Blossom #FFB7C5
 //  Parameter prefix: orch_
 //  Voices: 4 (Decision G2: CPU budget)
 //

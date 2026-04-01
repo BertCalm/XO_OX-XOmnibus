@@ -43,7 +43,7 @@
 //      Hammond footage ratios: 16', 5-1/3', 8', 4', 2-2/3', 2',
 //      1-3/5', 1-1/3', 1'.
 //
-//  Accent: Soul Gold #DAA520 (the color of Otis Redding's horns)
+//  Accent: Gospel Gold #D4A017
 //  Parameter prefix: otis_
 //
 //==============================================================================
@@ -798,7 +798,7 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Otis"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFDAA520); }  // Soul Gold
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFD4A017); }  // Gospel Gold
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
