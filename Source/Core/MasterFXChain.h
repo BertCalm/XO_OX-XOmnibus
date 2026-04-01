@@ -27,6 +27,7 @@
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
+#include "ShaperRegistry.h"
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
 
@@ -35,7 +36,10 @@ namespace xolokun {
 //==============================================================================
 // MasterFXChain — Post-mix master effects for XOlokun.
 //
-// Signal chain (23 stages, fixed order):
+// Signal chain (24 stages, fixed order):
+//   0.  Bus Shapers       — ShaperRegistry bus slots [0-1] process the mixed bus
+//                           before all other master stages (Oxide/Observe by default).
+//                           Shapers are loaded via loadBusShaper()/loadInsertShaper().
 //   1.  Saturation        — Tape/Tube/Digital/FoldBack via Saturator (mode select)
 //   2.  Corroder          — Digital erosion: bitcrush + SR reduce + FM distortion
 //   3.  Vibe Knob         — Bipolar character: GRIT(+) ←→ SWEET(−) in one dial
@@ -68,6 +72,32 @@ class MasterFXChain
 {
 public:
     MasterFXChain() = default;
+
+    //--------------------------------------------------------------------------
+    // Shaper slot management — delegates to ShaperRegistry.
+    // Call from the message thread (before or after prepare); the registry
+    // stores unique_ptr<ShaperEngine> and calls prepare() internally.
+
+    /// Load a shaper into a bus slot (0-1) by registry ID (e.g. "Oxide", "Observe").
+    /// Pass an empty string to clear the slot. prepare() must have been called first
+    /// so that sampleRate/blockSize are valid.
+    void loadBusShaper (int slot, const std::string& shaperId)
+    {
+        ShaperRegistry::instance().loadBus (slot, shaperId, sr, blockSize);
+    }
+
+    /// Load a shaper into an insert slot (0-3) by registry ID.
+    /// Insert shapers process a single engine's output before it reaches the mix.
+    void loadInsertShaper (int slot, const std::string& shaperId)
+    {
+        ShaperRegistry::instance().loadInsert (slot, shaperId, sr, blockSize);
+    }
+
+    /// Returns the registered shaper IDs available for selection in the UI.
+    std::vector<std::string> getAvailableShaperIds() const
+    {
+        return ShaperRegistry::instance().getRegisteredShaperIds();
+    }
 
     //--------------------------------------------------------------------------
     void prepare (double sampleRate, int samplesPerBlock,
@@ -168,6 +198,29 @@ public:
 
         // Dry buffer for compressor parallel blend
         dryBuffer.setSize (2, samplesPerBlock);
+
+        // Stage 0: ShaperRegistry — prepare any already-loaded bus/insert shapers,
+        // then load defaults if no shapers are currently registered.
+        // Default: "Oxide" (saturation character) on bus slot 0,
+        //          "Observe" (6-band EQ) on bus slot 1.
+        // Both start bypassed so they are zero-CPU until the user engages them.
+        auto& reg = ShaperRegistry::instance();
+        reg.prepareAll (sampleRate, samplesPerBlock);
+
+        const auto ids = reg.getRegisteredShaperIds();
+        const bool hasOxide   = std::find (ids.begin(), ids.end(), "Oxide")   != ids.end();
+        const bool hasObserve = std::find (ids.begin(), ids.end(), "Observe") != ids.end();
+
+        if (reg.getBus (0) == nullptr && hasOxide)
+        {
+            reg.loadBus (0, "Oxide", sampleRate, samplesPerBlock);
+            if (auto* s = reg.getBus (0)) s->setBypassed (true); // off by default
+        }
+        if (reg.getBus (1) == nullptr && hasObserve)
+        {
+            reg.loadBus (1, "Observe", sampleRate, samplesPerBlock);
+            if (auto* s = reg.getBus (1)) s->setBypassed (true); // off by default
+        }
 
         cacheParameterPointers (apvts);
     }
