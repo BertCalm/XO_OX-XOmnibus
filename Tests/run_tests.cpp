@@ -6,6 +6,7 @@
 */
 
 #include "DSPTests/DSPStabilityTests.h"
+#include "DSPTests/DSPComponentTests.h"
 #include "CouplingTests/CouplingMatrixTests.h"
 #include "PresetTests/PresetRoundTripTests.h"
 #include "ExportTests/XPNExportTests.h"
@@ -30,6 +31,7 @@ int main()
     int totalFailures = 0;
 
     totalFailures += dsp_tests::runAll();
+    totalFailures += dsp_component_tests::runAll();
     totalFailures += coupling_tests::runAll();
     totalFailures += preset_tests::runAll();
     totalFailures += export_tests::runAll();
