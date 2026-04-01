@@ -71,7 +71,7 @@ This is the 12-year-old test: a child opens the plugin and hears something beaut
 
 Every engine has a unique accent color. This is not decoration — it is a complete visual language system. When OPERA (Aria Gold `#D4AF37`) is active, the macro knob arcs, the coupling strip, the PlaySurface trails, the preset browser highlights, and the knob indicators ALL shift to Aria Gold. When you switch to OBRIX (Reef Jade `#1E8B7E`), the entire interface shifts. The color IS the engine's voice.
 
-No other synthesizer uses a 73-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOlokun's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
+No other synthesizer uses a 76-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOlokun's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
 
 ### 1.1.2 The Emotional Arc
 
@@ -1257,9 +1257,9 @@ This gives the performer a god's-eye view of the entire XOlokun universe. It is 
 
 No synthesizer has ever shown its entire capability space in a single, beautiful, interactive view.
 
-**Implementation**: 73 positioned circles with SVG creature icons. Layout: hardcoded positions following the water column arrangement from the design guidelines (Section 10.2). Click: loads engine into active slot. Drag between: creates coupling route. Golden lines: same Bezier rendering as coupling visualizer.
+**Implementation**: 76 positioned circles with SVG creature icons. Layout: hardcoded positions following the water column arrangement from the design guidelines (Section 10.2). Click: loads engine into active slot. Drag between: creates coupling route. Golden lines: same Bezier rendering as coupling visualizer.
 
-**JUCE**: `ConstellationOverlay : public juce::Component`. Full-window overlay, modal. 73 `juce::Component` children (engine stars). Lines painted in parent `paint()`. Fade-in: 300ms.
+**JUCE**: `ConstellationOverlay : public juce::Component`. Full-window overlay, modal. 76 `juce::Component` children (engine stars). Lines painted in parent `paint()`. Fade-in: 300ms.
 
 ---
 

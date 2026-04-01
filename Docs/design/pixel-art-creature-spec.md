@@ -14,7 +14,7 @@
 | **Palette** | Max 8 colors per sprite | Engine accent color + 3-4 shades + black + white + 1-2 supporting |
 | **Style** | Clean pixel art, 1px outlines, no anti-aliasing | Crisp at all sizes, retro charm |
 | **Orientation** | Facing right, centered | Consistent across fleet, flippable for coupling pairs |
-| **Poses** | 1 primary (idle) per engine | 73 sprites total scope |
+| **Poses** | 1 primary (idle) per engine | 76 sprites total scope |
 | **Naming** | `creature-{engine_id}.png` | e.g., `creature-obrix.png` |
 | **Location** | `Assets/creatures/` | New directory in repo |
 

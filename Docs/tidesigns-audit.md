@@ -20,7 +20,7 @@
 | Coupling UX | 3/10 | Drag-to-create broken. Right-click dead. 3 color systems |
 | Export | 5/10 | Thread safety fixed. Dead sidebar controls. No MIDI export |
 | PlaySurface | 7/10 | Key forwarding fixed. Georgia dependency. NoteOff fixed |
-| Engine Identity | 4/10 | Creature removed. 7/74 vocabulary coverage |
+| Engine Identity | 4/10 | Creature removed. 7/76 vocabulary coverage |
 | Dark/Light Mode | 6/10 | 13 hardcoded Light:: in Outshine. 6 white-on-themed files |
 | Performance | 6/10 | 569 timer callbacks/sec peak. Unconditional repaints |
 | Spec Fidelity | 4/10 | DNA hex, Tide Controller, sensitivity map all MISSING |
@@ -153,7 +153,7 @@
 
 ## Phase 4: EngineVocabulary Coverage
 
-- 7/74 engines have override tables (9.5%)
+- 7/76 engines have override tables (9.5%)
 - 50% of fallback-derived labels are poor or broken
 - Root causes: multi-underscore IDs, LFO identity erasure, parallel envelope collision, multi-layer LEVEL/RATE/DEPTH saturation
 - Priority engines needing overrides: Oxytocin, Ocelot, Owlfish, Obscura, Fat

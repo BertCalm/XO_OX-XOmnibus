@@ -10,7 +10,7 @@
 
 > "We don't need to run to a V1. I am looking to perfect everything currently built. Let's not be precious about the release since there is no hard deadline in place."
 
-V1 ships when the fleet is ready — not on a calendar date. The purpose of this document is to define **what ships in V1** (engine selection, quality bar, exit criteria) so every downstream decision has a reference point. The scope is intentionally focused: a curated subset of the 73-engine fleet at the quality bar the product deserves.
+V1 ships when the fleet is ready — not on a calendar date. The purpose of this document is to define **what ships in V1** (engine selection, quality bar, exit criteria) so every downstream decision has a reference point. The scope is intentionally focused: a curated subset of the 76-engine fleet at the quality bar the product deserves.
 
 ---
 
@@ -18,7 +18,7 @@ V1 ships when the fleet is ready — not on a calendar date. The purpose of this
 
 **Formula:** OBRIX flagship + 6–8 FX engines + 20–25 curated synthesis engines = **28–34 total**
 
-The full 73-engine fleet remains active in the personal build. V1 gating applies to public distribution only.
+The full 76-engine fleet remains active in the personal build. V1 gating applies to public distribution only.
 
 ---
 

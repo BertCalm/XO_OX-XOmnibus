@@ -676,7 +676,7 @@ All files follow naming convention: `[section]-[descriptor].png` at `~/[filename
 | **Numeric readout font** | JetBrains Mono Regular (Google Fonts) | Google Fonts CDN |
 | **Display/nameplate font** | Nebulica Bold/ExtraBold | `~/Downloads/nebulica_.../OTF/` |
 | **Brand accent color** | `--xo-gold: #E9C46A` | `Site/design-tokens.css` |
-| **Engine accent colors** | 73 engine colors table | `Site/design-tokens.css` Section 3 |
+| **Engine accent colors** | 76 engine colors table | `Site/design-tokens.css` Section 3 |
 | **Button state matrix** | Game UX Kit node `47:211` | Figma: `xo643maNsuCFslvd9DaZ7k` |
 | **Form input states (7)** | Lean Mantine Library `3050:2818` | Figma: `3jtGAzg3jCdmcgAIhJblYc` |
 | **Toast notifications** | FLOW V.4.0 `7008:42828` | Figma: `yzqQkVf2alXAsF4jweZ3Rl` |
