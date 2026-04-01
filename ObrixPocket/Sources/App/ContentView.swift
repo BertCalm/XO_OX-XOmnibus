@@ -46,7 +46,7 @@ struct ContentView: View {
                         Spacer()
                         Button(action: { showMusicCatch = true }) {
                             Image(systemName: "music.note")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: 20, weight: .semibold, relativeTo: .title3))
                                 .foregroundColor(.white)
                                 .frame(width: 52, height: 52)
                                 .background(musicCatchButtonBackground)

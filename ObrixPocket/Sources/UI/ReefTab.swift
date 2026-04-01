@@ -153,7 +153,7 @@ struct ReefTab: View {
                     Button(action: { withAnimation { showRecordingControls = true } }) {
                         HStack(spacing: 4) {
                             Image(systemName: "record.circle")
-                                .font(.system(size: 10))
+                                .font(.system(size: 10, relativeTo: .caption2))
                             Text("REC")
                                 .font(DesignTokens.mono(9))
                         }
@@ -171,7 +171,7 @@ struct ReefTab: View {
                         Spacer()
                         Button(action: { withAnimation { showRecordingControls = false } }) {
                             Image(systemName: "chevron.down.circle.fill")
-                                .font(.system(size: 14))
+                                .font(.system(size: 14, relativeTo: .footnote))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
@@ -323,7 +323,7 @@ struct StasisBrowser: View {
                 Spacer()
                 Button(action: { onDismiss?() }) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 10, weight: .bold))
+                        .font(.system(size: 10, weight: .bold, relativeTo: .caption2))
                         .foregroundColor(.white.opacity(0.3))
                 }
             }

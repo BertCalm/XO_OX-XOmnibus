@@ -84,7 +84,7 @@ struct MicroscopeView: View {
             if specimen.isFavorite {
                 HStack(spacing: 4) {
                     Image(systemName: "heart.fill")
-                        .font(.system(size: 10))
+                        .font(.system(size: 10, relativeTo: .caption2))
                         .foregroundColor(DesignTokens.errorRed)
                     Text("Favorite")
                         .font(DesignTokens.body(10))
@@ -144,7 +144,7 @@ struct MicroscopeView: View {
             if showSynthParams {
                 HStack(spacing: 4) {
                     Text("→")
-                        .font(.system(size: 10))
+                        .font(.system(size: 10, relativeTo: .caption))
                         .foregroundColor(.white.opacity(0.2))
                     Text(synthParam)
                         .font(DesignTokens.mono(9))
@@ -257,7 +257,7 @@ struct MicroscopeView: View {
                 ForEach(recentEntries) { entry in
                     HStack(alignment: .top, spacing: 8) {
                         Image(systemName: journalIcon(entry.type))
-                            .font(.system(size: 9))
+                            .font(.system(size: 9, relativeTo: .caption2))
                             .foregroundColor(journalColor(entry.type))
                             .frame(width: 16)
 
