@@ -1098,7 +1098,8 @@ private:
 //==============================================================================
 struct BiteVoice
 {
-    bool active = false;
+    bool active    = false;
+    bool releasing = false;  // True during release stage; voice can be stolen preferentially
     int noteNumber = 60;
     float velocity = 0.0f;
     uint64_t startTime = 0;  // Monotonic counter for LRU voice stealing (VoiceAllocator)
@@ -1216,7 +1217,8 @@ public:
     {
         for (auto& v : voices)
         {
-            v.active = false;
+            v.active    = false;
+            v.releasing = false;
             v.oscA.reset();
             v.oscB.reset();
             v.sub.reset();
@@ -1839,7 +1841,8 @@ public:
 
                 if (!voice.ampEnv.isActive())
                 {
-                    voice.active = false;
+                    voice.active    = false;
+                    voice.releasing = false;
                 }
 
                 // Pan (equal-power) — unison voices spread across stereo field
@@ -2820,7 +2823,8 @@ private:
     {
         float prevFreq = v.hasPlayedBefore ? v.glide.getFreq() : midiToFreq (noteNumber);
 
-        v.active = true;
+        v.active    = true;
+        v.releasing = false;  // Clear releasing flag — new noteOn takes this slot
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.startTime = ++voiceCounter;
@@ -2886,7 +2890,12 @@ private:
 
         for (int ui = 0; ui < nUnison; ++ui)
         {
-            int idx = VoiceAllocator::findFreeVoice (voices, poly);
+            // Prefer stealing releasing voices over actively-sustaining ones.
+            // This prevents polyphony exhaustion during long release tails — a
+            // 2s release on an 8-voice poly patch no longer blocks new notes.
+            int idx = VoiceAllocator::findFreeVoicePreferRelease (
+                voices, poly,
+                [](const BiteVoice& v) { return v.releasing; });
             initVoiceSlot (voices[static_cast<size_t> (idx)], noteNumber, velocity,
                            midiChannel, ui, nUnison);
         }
@@ -2906,6 +2915,10 @@ private:
                 v.ampEnv.noteOff();
                 v.filterEnv.noteOff();
                 v.modEnv.noteOff();
+                // Mark as releasing so VoiceAllocator can steal this slot first
+                // when all poly slots are full. Releasing voices are always preferred
+                // over actively-sustaining voices for stealing (see noteOn).
+                v.releasing = true;
             }
         }
     }
@@ -2914,7 +2927,8 @@ private:
     {
         for (auto& v : voices)
         {
-            v.active = false;
+            v.active    = false;
+            v.releasing = false;
             v.ampEnv.reset();
             v.filterEnv.reset();
             v.modEnv.reset();
