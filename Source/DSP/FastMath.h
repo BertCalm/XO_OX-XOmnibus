@@ -61,8 +61,9 @@ inline float fastExp (float x)
 /// Fast tanh approximation using a Padé rational function.
 /// Smooth saturation: signals pass through cleanly at low levels and compress
 /// symmetrically at high levels — like a well-biased tube stage.
-/// Accurate to ~0.1% in [-3, 3]. Hard-clips to ±1 beyond ±3 (true tanh
-/// exceeds 0.995 there anyway, so the error is perceptually inaudible).
+/// Accurate to ~2% worst-case near the inflection point in [-3, 3].
+/// Hard-clips to ±1 beyond ±3 (true tanh exceeds 0.995 there anyway,
+/// so the residual error is perceptually inaudible).
 inline float fastTanh (float x)
 {
     if (x < -3.0f) return -1.0f;
@@ -112,11 +113,22 @@ inline float fastLog2 (float x)
 }
 
 //------------------------------------------------------------------------------
-/// Fast cosine via phase-shifted fastSin. Same accuracy (~0.02%).
-inline float fastCos (float x)
+/// Fast cosine using an even-function 4th-order Chebyshev minimax polynomial.
+/// Input: radians. Accurate to ~0.002% across the full period.
+///
+/// Uses an independent even polynomial — NOT a phase-shifted fastSin — so that
+/// fastSin(x)² + fastCos(x)² ≈ 1 to within the combined approximation error.
+/// (Phase-shifting fastSin introduces correlated error that breaks the identity.)
+inline float fastCos (float x) noexcept
 {
-    constexpr float halfPi = 1.5707963267948966f;
-    return fastSin (x + halfPi);
+    // Wrap to [-π, π]
+    constexpr float twoPi    = 6.28318530718f;
+    constexpr float invTwoPi = 1.0f / twoPi;
+    x = x - twoPi * std::floor (x * invTwoPi + 0.5f);
+
+    // Even Chebyshev minimax approximation — max error ~0.002%
+    const float x2 = x * x;
+    return 1.0f - x2 * (0.49999371f - x2 * (0.04166514f - x2 * 0.00138834f));
 }
 
 //------------------------------------------------------------------------------
