@@ -34,7 +34,7 @@
   },
   "parameters": {
     "OddOscar": {
-      "morph_morph": 2.35,
+      "morph_morph": 1.0,
       "morph_bloom": 2.5,
       "morph_decay": 5.5,
       "morph_sustain": 0.62,
@@ -60,7 +60,7 @@
     }
   },
   "macros": {
-    "CHARACTER": 2.35,
+    "CHARACTER": 1.0,
     "MOVEMENT": 0.72,
     "COUPLING": 0.0,
     "SPACE": 0.52
