@@ -1507,6 +1507,17 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                     }
                 }
             }
+
+            // CC123 All Notes Off / CC120 All Sound Off — MIDI panic.
+            // Clear all sustain state so no stuck notes survive the panic message.
+            if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            {
+                for (auto& held : sustainHeld_)
+                    held = false;
+                for (auto& slotPending : sustainPendingNoteOffs_)
+                    for (auto& chanPending : slotPending)
+                        chanPending.clearAll();
+            }
         }
 
         // Step 2: rebuild each slotMidi[], suppressing note-offs that arrive while
