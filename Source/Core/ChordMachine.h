@@ -562,13 +562,26 @@ public:
         if (obj->hasProperty ("enabled"))
             setEnabled (static_cast<bool> (obj->getProperty ("enabled")));
         if (obj->hasProperty ("palette"))
-            setPalette (static_cast<PaletteType> (static_cast<int> (obj->getProperty ("palette"))));
+        {
+            // Range-check before cast to avoid UB from malformed preset data (issue #425).
+            int idx = static_cast<int> (obj->getProperty ("palette"));
+            if (idx >= 0 && idx < static_cast<int> (PaletteType::NumPalettes))
+                setPalette (static_cast<PaletteType> (idx));
+        }
         if (obj->hasProperty ("voicing"))
-            setVoicing (static_cast<VoicingMode> (static_cast<int> (obj->getProperty ("voicing"))));
+        {
+            int idx = static_cast<int> (obj->getProperty ("voicing"));
+            if (idx >= 0 && idx < static_cast<int> (VoicingMode::NumModes))
+                setVoicing (static_cast<VoicingMode> (idx));
+        }
         if (obj->hasProperty ("spread"))
             setSpread (static_cast<float> (obj->getProperty ("spread")));
         if (obj->hasProperty ("velocityCurve"))
-            setVelocityCurve (static_cast<VelocityCurve> (static_cast<int> (obj->getProperty ("velocityCurve"))));
+        {
+            int idx = static_cast<int> (obj->getProperty ("velocityCurve"));
+            if (idx >= 0 && idx < static_cast<int> (VelocityCurve::NumCurves))
+                setVelocityCurve (static_cast<VelocityCurve> (idx));
+        }
         if (obj->hasProperty ("humanize"))
             setHumanize (static_cast<float> (obj->getProperty ("humanize")));
         if (obj->hasProperty ("sidechainDuck"))
@@ -594,7 +607,11 @@ public:
                     if (seqObj->hasProperty ("gate"))
                         setGlobalGate (static_cast<float> (seqObj->getProperty ("gate")));
                     if (seqObj->hasProperty ("pattern"))
-                        applyPattern (static_cast<RhythmPattern> (static_cast<int> (seqObj->getProperty ("pattern"))));
+                    {
+                        int idx = static_cast<int> (seqObj->getProperty ("pattern"));
+                        if (idx >= 0 && idx < static_cast<int> (RhythmPattern::NumPatterns))
+                            applyPattern (static_cast<RhythmPattern> (idx));
+                    }
 
                     // Per-step data
                     if (seqObj->hasProperty ("steps"))
