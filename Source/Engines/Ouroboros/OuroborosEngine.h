@@ -333,9 +333,12 @@ struct AttractorState
     void normalizeToUnit (float& normalizedX, float& normalizedY, float& normalizedZ) const noexcept
     {
         int topologyIndex = static_cast<int> (topology);
-        normalizedX = (x - bounds[topologyIndex].xMin) / (bounds[topologyIndex].xMax - bounds[topologyIndex].xMin);
-        normalizedY = (y - bounds[topologyIndex].yMin) / (bounds[topologyIndex].yMax - bounds[topologyIndex].yMin);
-        normalizedZ = (z - bounds[topologyIndex].zMin) / (bounds[topologyIndex].zMax - bounds[topologyIndex].zMin);
+        float dx = bounds[topologyIndex].xMax - bounds[topologyIndex].xMin;
+        float dy = bounds[topologyIndex].yMax - bounds[topologyIndex].yMin;
+        float dz = bounds[topologyIndex].zMax - bounds[topologyIndex].zMin;
+        normalizedX = (std::abs (dx) < 1e-6f) ? 0.5f : (x - bounds[topologyIndex].xMin) / dx;
+        normalizedY = (std::abs (dy) < 1e-6f) ? 0.5f : (y - bounds[topologyIndex].yMin) / dy;
+        normalizedZ = (std::abs (dz) < 1e-6f) ? 0.5f : (z - bounds[topologyIndex].zMin) / dz;
         normalizedX = clamp (normalizedX, 0.0f, 1.0f);
         normalizedY = clamp (normalizedY, 0.0f, 1.0f);
         normalizedZ = clamp (normalizedZ, 0.0f, 1.0f);

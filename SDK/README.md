@@ -4,7 +4,7 @@ Build your own XOlokun engine — no JUCE required.
 
 The SDK lets anyone write a custom synthesis engine that loads into XOlokun
 at runtime, participates in the coupling matrix, and appears in the UI alongside
-the 46 factory engines.
+the 76 factory engines.
 
 ---
 
@@ -30,7 +30,7 @@ clang++ -std=c++17 -I SDK/include -fvisibility=hidden -shared -fPIC \
 
 An **engine** is a self-contained synthesizer module. XOlokun hosts up to 4 engines
 simultaneously and routes audio + modulation between them through the
-**MegaCouplingMatrix** (14 coupling types).
+**MegaCouplingMatrix** (15 coupling types).
 
 Every engine:
 - Implements the `xolokun::SynthEngine` interface
@@ -48,7 +48,7 @@ SDK/
   include/
     xolokun/
       SynthEngine.h       — the interface (inherit this)
-      CouplingTypes.h     — 14 coupling type enums
+      CouplingTypes.h     — 15 coupling type enums
       EngineModule.h      — XOLOKUN_EXPORT_ENGINE macro
   examples/
     HelloEngine/
@@ -166,7 +166,7 @@ void applyCouplingInput (CouplingType type, float amount,
 | `AmpToChoke` | Source amplitude ducks/chokes receiver |
 | `EnvToDecay` | Source envelope modulates receiver's decay time |
 | `PitchToPitch` | Source pitch transposes receiver (harmony) |
-| ... | See `SDK/include/xolokun/CouplingTypes.h` for all 14 |
+| ... | See `SDK/include/xolokun/CouplingTypes.h` for all 15 |
 
 ---
 

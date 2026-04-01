@@ -114,7 +114,7 @@ def main():
     for path in entangled_files:
         try:
             data = load_preset(path)
-        except:
+        except (json.JSONDecodeError, OSError, ValueError):
             continue
 
         engines = data.get("engines", [])
@@ -168,7 +168,7 @@ def main():
     for path in family_files:
         try:
             data = load_preset(path)
-        except:
+        except (json.JSONDecodeError, OSError, ValueError):
             continue
 
         name = get_preset_name(data, path)

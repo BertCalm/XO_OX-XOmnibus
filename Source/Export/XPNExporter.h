@@ -1150,7 +1150,7 @@ private:
         xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         xml << "<MPCVObject type=\"com.akaipro.mpc.keygroup.program\">\n";
         xml << "  <Version>1.7</Version>\n";
-        xml << "  <ProgramName>" << preset.name.substring(0, 30) << "</ProgramName>\n";
+        xml << "  <ProgramName>" << xmlEscape(preset.name.substring(0, 30)) << "</ProgramName>\n";
         xml << "  <AfterTouch>\n";
         xml << "    <Destination>FilterCutoff</Destination>\n";
         xml << "    <Amount>50</Amount>\n";
@@ -1179,7 +1179,7 @@ private:
             for (int v = 0; v < (int)velSplits.size(); ++v)
             {
                 xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
-                xml << "          <SampleName>" << wavFilename(preset.name, note, v) << "</SampleName>\n";
+                xml << "          <SampleName>" << xmlEscape(wavFilename(preset.name, note, v)) << "</SampleName>\n";
                 xml << "          <VelStart>" << velSplits[(size_t)v].start << "</VelStart>\n";
                 xml << "          <VelEnd>"   << velSplits[(size_t)v].end   << "</VelEnd>\n";
                 xml << "          <Volume>"   << juce::String(velSplits[(size_t)v].volume, 2) << "</Volume>\n";
@@ -1248,6 +1248,14 @@ private:
         result = result.trimCharactersAtStart(".").trimCharactersAtEnd(".");
         if (result == ".." || result == ".") result = "unnamed";
         return result;
+    }
+
+    static juce::String xmlEscape(const juce::String& s)
+    {
+        return s.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;");
     }
 
     static juce::String wavFilename(const juce::String& presetName, int note, int velLayer)

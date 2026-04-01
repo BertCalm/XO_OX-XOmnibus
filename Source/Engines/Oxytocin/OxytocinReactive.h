@@ -154,8 +154,8 @@ public:
         s4 = 2.0f * y4 - s4;
 
         // P1-3: denormal guards on ladder integrator states
-        constexpr float kDenorm = 1e-18f;
-        s1 += kDenorm;  s2 += kDenorm;  s3 += kDenorm;  s4 += kDenorm;
+        auto fd = [](float v) { return (std::abs(v) < 1e-18f) ? 0.0f : v; };
+        s1 = fd(s1);  s2 = fd(s2);  s3 = fd(s3);  s4 = fd(s4);
 
         // Commitment hold: resist state change
         if (holdCoeff > 0.0f)

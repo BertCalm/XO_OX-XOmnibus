@@ -143,7 +143,16 @@ public:
     /// Process stereo audio in-place.
     void processBlock (float* L, float* R, int numSamples)
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+        {
+            if (!bypassed_)
+            {
+                reset();
+                bypassed_ = true;
+            }
+            return;
+        }
+        bypassed_ = false;
 
         const float srF = static_cast<float> (sr);
 
@@ -238,7 +247,7 @@ private:
     // Each meter pattern has a unique spatial story — not mechanical L/R alternation.
     void getSpatialPan (int tapIndex, int numTaps, float& panL, float& panR) const
     {
-        float t = static_cast<float> (tapIndex) / static_cast<float> (numTaps);
+        float t = (numTaps > 0) ? static_cast<float> (tapIndex) / static_cast<float> (numTaps) : 0.0f;
 
         float panAngle = 0.0f;  // [-1, +1]
 
@@ -376,6 +385,7 @@ private:
     float dampingResonance = 0.2f;    // Moog resonant damping
     float drift            = 0.0f;    // Kakehashi drift
     float mix              = 0.0f;
+    bool  bypassed_        = true;
 };
 
 } // namespace xolokun

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xo-ox.org/sitemap.xml

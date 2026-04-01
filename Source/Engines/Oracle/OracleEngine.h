@@ -642,6 +642,9 @@ public:
             smoothedTimeStep     += (effectiveTimeStep - smoothedTimeStep) * parameterSmoothingCoeff;
             smoothedAmpStep      += (effectiveAmpStep - smoothedAmpStep) * parameterSmoothingCoeff;
             smoothedDistribution += (effectiveDistribution - smoothedDistribution) * parameterSmoothingCoeff;
+            smoothedTimeStep     = flushDenormal (smoothedTimeStep);
+            smoothedAmpStep      = flushDenormal (smoothedAmpStep);
+            smoothedDistribution = flushDenormal (smoothedDistribution);
 
             float mixL = 0.0f, mixR = 0.0f;
 

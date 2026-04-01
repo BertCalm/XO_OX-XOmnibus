@@ -193,7 +193,7 @@ See `Source/Core/SynthEngine.h` for the JUCE-native version with `SilenceGate`.
 ## See Also
 
 - `SDK/include/xolokun/SynthEngine.h` — full interface definition
-- `SDK/include/xolokun/CouplingTypes.h` — all 14 coupling types
+- `SDK/include/xolokun/CouplingTypes.h` — all 15 coupling types
 - `SDK/include/xolokun/EngineModule.h` — `XOLOKUN_EXPORT_ENGINE` macro
 - `SDK/tools/validate_engine.py` — doctrine validation script
 - `SDK/templates/MinimalEngine/MinimalEngine.h` — bare-minimum template (1 param, 1 voice)

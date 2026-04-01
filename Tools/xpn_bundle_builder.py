@@ -100,6 +100,7 @@ import json
 import os
 import shutil
 import sys
+import tempfile
 import zipfile
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -1370,7 +1371,7 @@ def main():
     p_pre = sub.add_parser("predefined", help="Build from a predefined pack template")
     p_pre.add_argument("profile_key", help="Profile key (or 'list' to list all)")
     p_pre.add_argument("--wavs-dir",   help="Directory of rendered WAVs")
-    p_pre.add_argument("--output-dir", default="/tmp/xo_ox_bundles")
+    p_pre.add_argument("--output-dir", default=str(Path(tempfile.gettempdir()) / "xo_ox_bundles"))
     p_pre.add_argument("--dry-run",    action="store_true")
 
     # save-profile

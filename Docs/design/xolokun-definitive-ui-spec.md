@@ -514,7 +514,7 @@ The Fab Five mandate: 16-24 controls visible at any time. XOlokun achieves this 
 **Search Field**:
 - Full width minus 16pt margins, 36pt height
 - Background: `#EAE8E4` light / `#363636` dark, 8pt corner radius
-- Placeholder: Inter Regular 12pt, "Search 19,000+ presets...", `#777570`
+- Placeholder: Inter Regular 12pt, "Search 17,250+ presets...", `#777570`
 - Search icon: HeroIcons magnifying glass, 16x16pt, left-aligned inside field
 - Focus ring: 2px `#E9C46A` outline-offset 2px
 
@@ -1184,11 +1184,11 @@ Current state of the art: presets are loaded discretely. You click "Velvet Morni
 
 XOlokun does something no software has attempted: **Spatial Preset Navigation**.
 
-The preset browser is not a list — it is a territory. All 19,000+ presets exist as points in 6D Sonic DNA space, projected onto a 2D map (PCA or t-SNE dimensionality reduction). The map fills the sidebar's PRESET tab.
+The preset browser is not a list — it is a territory. All 17,250+ presets exist as points in 6D Sonic DNA space, projected onto a 2D map (PCA or t-SNE dimensionality reduction). The map fills the sidebar's PRESET tab.
 
 The performer does not SELECT a preset. They NAVIGATE to a location on the map. As they move, XOlokun continuously interpolates between the nearest presets. Every point on the map produces a unique sound — not just the points where presets live, but the SPACES BETWEEN presets.
 
-This means XOlokun has not 19,000 presets but INFINITE sounds. The preset map is a continuous sound landscape where every position is a valid, musical sound.
+This means XOlokun has not 17,250 presets but INFINITE sounds. The preset map is a continuous sound landscape where every position is a valid, musical sound.
 
 **Implementation**:
 - Presets embedded as 6D vectors (already computed — Sonic DNA)
