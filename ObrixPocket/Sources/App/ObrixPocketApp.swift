@@ -45,6 +45,15 @@ struct ObrixPocketApp: App {
         _breedingManager      = StateObject(wrappedValue: bm)
         _specimenAgingManager = StateObject(wrappedValue: sam)
         _gameCoordinator      = StateObject(wrappedValue: gc)
+
+        // #382: Eagerly initialize singletons so UserDefaults state is loaded
+        // before their owning views appear. Without this, lazy first-access inside
+        // a view means the manager's init() (which calls load()) runs only when that
+        // specific view is first rendered — any session where the user never visits
+        // that view leaves the manager at default values, losing saved progress.
+        _ = BadgeManager.shared
+        _ = MasteryManager.shared
+        _ = CookbookManager.shared
     }
 
     var body: some Scene {
@@ -98,6 +107,10 @@ struct ObrixPocketApp: App {
                         // Returning user: restore persisted reef
                         reefStore.load()
 
+                        // #378: Restore breeding pairs and nursery occupants persisted
+                        // across app kills (pairs, nursery, parameter offsets, genome IDs).
+                        breedingManager.restore()
+
                         // Apply health decay for days the app was closed
                         let daysSince = firstLaunchManager.daysSinceLastOpen
                         if daysSince > 0 {
@@ -117,12 +130,19 @@ struct ObrixPocketApp: App {
                         // Save immediately on inactive — covers sudden termination (e.g. swipe-kill,
                         // incoming call) before the process reaches .background or is killed outright.
                         reefStore.saveImmediately()
+                        // #379: Persist breeding state on inactive so a swipe-kill doesn't
+                        // discard in-progress breeding pairs or nursery occupants.
+                        breedingManager.save()
+                        CookbookManager.shared.save()
                     case .background:
                         // Force active notes off before saving so XP state is complete and the
                         // audio engine is clean on the next foreground restore (issue #443).
                         audioEngine.allNotesOff()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                             reefStore.save()
+                            // #379: Persist game manager state not covered by reefStore.save().
+                            breedingManager.save()
+                            CookbookManager.shared.save()
                         }
                         // Don't stop audio — reef ambient continues in background per spec (Section 5.2)
                         // UIBackgroundModes: audio in Info.plist permits this.

@@ -482,6 +482,10 @@ final class AudioEngineManager: ObservableObject {
     /// Records when each slot's note started (for duration-based XP on noteOff)
     private var noteOnTimestamps: [Int: Date] = [:]
 
+    /// Debounce token for XP save — avoids thrashing disk on rapid note bursts.
+    /// Replaced on each XP mutation; fires 30 s after the last mutation.
+    private var xpSaveWorkItem: DispatchWorkItem?
+
     /// Award XP from external sources (Dive rewards, daily energy).
     /// Must be called on the main thread. Does a single atomic read-mutate-write.
     func awardBulkXP(slotIndex: Int, amount: Int) {
@@ -625,6 +629,9 @@ final class AudioEngineManager: ObservableObject {
             if specimen.level > oldLevel {
                 rebuildParamCache(reefStore: reefStore)
             }
+
+            // #377: Debounced save — flush XP to disk at most once per 30 s during play.
+            scheduleXPSave(reefStore: reefStore)
         }
     }
 
@@ -661,7 +668,22 @@ final class AudioEngineManager: ObservableObject {
 
             // Single write — no stale-copy clobber
             reefStore.specimens[slotIndex] = specimen
+
+            // #377: Debounced save — flush XP to disk at most once per 30 s during play.
+            scheduleXPSave(reefStore: reefStore)
         }
+    }
+
+    /// Schedule a debounced save of the reef store to persist XP gains.
+    /// Each call cancels the previous pending save and schedules a new one 30 s out,
+    /// so rapid note bursts only produce one disk write per 30-second window.
+    private func scheduleXPSave(reefStore: ReefStore) {
+        xpSaveWorkItem?.cancel()
+        let work = DispatchWorkItem { [weak reefStore] in
+            reefStore?.save()
+        }
+        xpSaveWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30, execute: work)
     }
 
     func allNotesOff() {
