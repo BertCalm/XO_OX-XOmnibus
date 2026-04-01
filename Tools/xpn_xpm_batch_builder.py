@@ -286,7 +286,7 @@ def _instrument_block_drum(instrument_num: int, pad_cfg: Optional[dict],
         if choke_group
         else ""
     )
-    note_label = f"  <!-- {xml_escape(note_name)} -->" if note_name else ""
+    note_label = f"  <!-- {xml_escape(note_name).replace('--', '- -')} -->" if note_name else ""
 
     return (
         f'      <Instrument number="{instrument_num}">{note_label}\n'

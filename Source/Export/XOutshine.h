@@ -1170,7 +1170,8 @@ private:
         for (auto* prog : drumProgs)
         {
             auto xpmFile = xpmDir.getChildFile(prog->name + ".xpm");
-            xpmFile.replaceWithText(buildDrumXPM(*prog, splits));
+            if (!xpmFile.replaceWithText(buildDrumXPM(*prog, splits)))
+                errors_.add("Failed to write XPM: " + xpmFile.getFullPathName());
         }
 
         // Write one keygroup XPM for all melodic programs combined
@@ -1180,7 +1181,8 @@ private:
             juce::String melodicName = settings_.packName.isEmpty()
                 ? melodicProgs[0]->name : settings_.packName;
             auto xpmFile = xpmDir.getChildFile(sanitizeForFAT32(melodicName) + ".xpm");
-            xpmFile.replaceWithText(buildKeygroupXPM(melodicProgs, splits, melodicName));
+            if (!xpmFile.replaceWithText(buildKeygroupXPM(melodicProgs, splits, melodicName)))
+                errors_.add("Failed to write keygroup XPM: " + xpmFile.getFullPathName());
         }
     }
 
@@ -1410,7 +1412,8 @@ private:
         manifest << "</Expansion>\n";
 
         auto manifestFile = workDir.getChildFile("Manifest.xml");
-        manifestFile.replaceWithText(manifest);
+        if (!manifestFile.replaceWithText(manifest))
+            errors_.add("Failed to write Manifest.xml: " + manifestFile.getFullPathName());
 
         // Enumerate all files to add. Order: Manifest, XPMs, WAVs.
         // juce::ZipFile::Builder reads each file from disk during writeToStream()
@@ -1615,6 +1618,7 @@ private:
                 writer->writeFromAudioSampleBuffer(buf, 0, buf.getNumSamples());
             }
         }
+        else { errors_.add("Cannot create WAV writer: " + file.getFullPathName()); return; }
     }
 
     // 2:1 decimation with a simple 5-tap LP FIR anti-alias filter.

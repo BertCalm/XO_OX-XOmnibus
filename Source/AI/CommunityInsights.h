@@ -309,7 +309,8 @@ public:
     {
         std::lock_guard<std::mutex> lock (dataMutex);
         auto file = appDataDir.getChildFile ("insights_pending.json");
-        file.replaceWithText (batchToJSON (currentBatch));
+        if (!file.replaceWithText (batchToJSON (currentBatch)))
+            DBG("CommunityInsights: failed to write batch to " + file.getFullPathName());
     }
 
     void loadPendingFromDisk (const juce::File& appDataDir)
