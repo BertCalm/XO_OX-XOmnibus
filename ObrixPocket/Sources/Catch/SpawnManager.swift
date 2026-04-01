@@ -257,30 +257,34 @@ final class SpawnManager: ObservableObject {
 
     // MARK: - Performance Reward (Effects only — Phase 2)
 
-    /// Spawns an Effect specimen after Dive completion. Score thresholds determine rarity:
+    /// Spawns an Effect specimen after Dive completion. Score thresholds determine rarity
+    /// AND spawn probability — higher scores yield both better rarity AND higher spawn chance:
     ///
-    ///   < 1000         → Common  (80% chance to spawn at all)
-    ///   1000 – 2999    → Uncommon (30% chance)
-    ///   3000 – 5999    → Rare     (15% chance)
-    ///   6000+          → Legendary (5% chance)
+    ///   < 1000         → Common    (5%  chance to spawn)
+    ///   1000 – 2999    → Uncommon  (15% chance)
+    ///   3000 – 5999    → Rare      (30% chance)
+    ///   6000+          → Legendary (50% chance)
     ///
     /// Call this from DiveTab.endDive() with the final computed score.
     func checkPerformanceReward(diveScore: Int) {
         let spawnChance: Float
         let rarity: SpecimenRarity
 
+        // Better performance → higher spawn probability AND better rarity.
+        // Previous implementation had this inverted (low scores gave 80% common,
+        // high scores gave 5% legendary), removing the incentive to perform well.
         switch diveScore {
         case ..<1000:
-            spawnChance = 0.80
+            spawnChance = 0.05
             rarity = .common
         case 1000..<3000:
-            spawnChance = 0.30
+            spawnChance = 0.15
             rarity = .uncommon
         case 3000..<6000:
-            spawnChance = 0.15
+            spawnChance = 0.30
             rarity = .rare
         default: // 6000+
-            spawnChance = 0.05
+            spawnChance = 0.50
             rarity = .legendary
         }
 
