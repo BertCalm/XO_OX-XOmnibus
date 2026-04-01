@@ -176,6 +176,8 @@ A 12-round quality sweep ran across the original engine fleet before the new eng
 
 ## A Note on the Number 42
 
+*[Historical note: This section describes the state at V1 draft (2026-03-21), when 42 engines were registered. The fleet has since grown to 76 engines. The narrative below is preserved as written.]*
+
 XOlokun started as a question: what if every character instrument in the XO_OX family could speak at the same time, through each other?
 
 42 engines is not where we planned to land. It is where the question led. There are still engines we have not built yet. There are coupling types we have not written. There are sounds that only become possible when two specific engines are routed into each other in a configuration nobody has tried.

@@ -90,7 +90,7 @@ Keep it flat and factual. No adjectives. No "finally." No exclamation points. Pr
 
 Post 2 (30 min later, audio loop):
 > OBRIX + OCEANDEEP coupled on Atmosphere > [loop file]
-> This is what 13 coupling types sounds like
+> This is what 15 coupling types sounds like
 
 Do not explain the coupling. Let the sound be the point.
 
@@ -98,7 +98,7 @@ Do not explain the coupling. Let the sound be the point.
 
 **L+1 — Reddit r/synthesizers: The Authentic Drop**
 
-Title: "I spent the last year building a free, open-source multi-engine synth. 42 engines, ~15,000 presets. Here's what I learned about coupling."
+Title: "I spent the last year building a free, open-source multi-engine synth. 76 engines, ~15,000 presets. Here's what I learned about coupling."
 
 Format: Personal post, not a launch announcement. Open with the honest version of what this was — a solo project that grew into something unexpected. Talk about one specific design decision: why coupling became the organizing principle instead of more knobs per engine. Link to the Field Guide post on coupling philosophy.
 
@@ -137,7 +137,7 @@ Gearspace readers skew older, more skeptical, and more gear-literate. The right 
 
 Title: "Cross-engine coupling in a multi-synth architecture — some DSP decisions I had to make"
 
-Open with a technical question that naturally leads to XOlokun: how do you route modulation between engines that were designed independently? Describe the MegaCouplingMatrix approach. Mention the 13 coupling types. Let the product emerge from the technical discussion, not the other way around.
+Open with a technical question that naturally leads to XOlokun: how do you route modulation between engines that were designed independently? Describe the MegaCouplingMatrix approach. Mention the 15 coupling types. Let the product emerge from the technical discussion, not the other way around.
 
 If it lands, it lands. Gearspace cannot be forced. A genuine technical thread that happens to describe XOlokun is worth ten press releases.
 
@@ -181,13 +181,13 @@ Reddit and Gearspace will have skeptics. Some are good-faith, some are reflexive
 **Good-faith skeptics ask things like:**
 - "How does this compare to Bitwig's Grid?"
 - "What's the CPU overhead of 4 coupled engines?"
-- "Is this actually 42 engines or 42 variations of one architecture?"
+- "Is this actually 76 engines or 76 variations of one architecture?"
 
 Answer these directly, technically, without hedging. These readers can become your most effective advocates if you engage honestly. "The Grid is modular and more open-ended; XOlokun is opinionated — each engine has a character, coupling is curated not arbitrary. Different tools." That's an honest answer that respects both tools and the questioner.
 
 **Reflexive skeptics say things like:**
 - "Just another free synth nobody will use"
-- "42 engines is marketing fluff"
+- "76 engines is marketing fluff"
 - "This will be abandoned in 6 months like everything else"
 
 One response maximum, no defensiveness:
@@ -201,7 +201,7 @@ Do not feed the thread. The good-faith readers can see the difference. Your sile
 ### Free vs. Patreon — What to Share Where
 
 **Always free, share loudly:**
-- The download itself (42 engines, all presets, XPN export tools)
+- The download itself (76 engines, all presets, XPN export tools)
 - Field Guide posts (technical depth, mythology, sound design philosophy)
 - Preset videos and audio loops
 - GitHub discussions and technical architecture
@@ -400,13 +400,13 @@ One response maximum, then silence. The response should be neutral and factual: 
 
 ### Reddit Launch Post Template (r/synthesizers)
 
-> **Title:** Free multi-engine synth — 42 engines, cross-engine coupling, ~15,000 presets. Here's what I learned building it.
+> **Title:** Free multi-engine synth — 76 engines, cross-engine coupling, ~15,000 presets. Here's what I learned building it.
 >
 > I've been building XOlokun for about a year. It started as a way to put six character instruments I'd built separately into one platform. Then the coupling between engines became more interesting than the engines themselves.
 >
-> The basic idea: you load up to 4 engines, then route modulation between them. One engine's LFO shapes another engine's filter. A drum hit from ONSET triggers a harmonic shift in OPENSKY. The 13 coupling types are the core of the sound design workflow — not the individual engine controls.
+> The basic idea: you load up to 4 engines, then route modulation between them. One engine's LFO shapes another engine's filter. A drum hit from ONSET triggers a harmonic shift in OPENSKY. The 15 coupling types are the core of the sound design workflow — not the individual engine controls.
 >
-> It's free, open-source, AU + standalone for macOS. 42 engines ranging from straightforward (OBLONG, OPENSKY) to genuinely weird (OUROBOROS, ORGANISM).
+> It's free, open-source, AU + standalone for macOS. 76 engines ranging from straightforward (OBLONG, OPENSKY) to genuinely weird (OUROBOROS, ORGANISM).
 >
 > Download + Field Guide: [XO-OX.org]
 > GitHub: [link]
@@ -435,7 +435,7 @@ One response maximum, then silence. The response should be neutral and factual: 
 > [One sentence: what makes it unusual]
 > Character: [Accent color + creature mythology in 6 words]
 > [Audio loop or screenshot]
-> All 42 engines, free: XO-OX.org
+> All 76 engines, free: XO-OX.org
 
 ---
 

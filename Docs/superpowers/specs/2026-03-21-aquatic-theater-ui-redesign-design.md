@@ -99,7 +99,7 @@ Increase key font sizes for readability on dark background:
 ### 2.4 Fix missing accent colors
 - `accentForEngine()` is missing entries for: OXBOW (`#1A6B5A`), OWARE (`#B5883E`), OPERA (`#D4AF37`), OFFERING (`#E5B80B`)
 - Add all 4 entries. Cross-reference full color table in CLAUDE.md.
-- Audit: ensure all 46 engines have an entry. The function currently falls back to grey for unknown IDs.
+- Audit: ensure all 76 engines have an entry. The function currently falls back to grey for unknown IDs.
 
 ### 2.5 Dark mode as default
 - Flip `GalleryColors::darkMode()` default to `true`
@@ -162,7 +162,7 @@ struct EngineInfo { const char* id; const char* shortDesc; const char* category;
 static constexpr EngineInfo kEngineInfo[] = {
     {"Onset",     "Percussion synthesis, 8 voices",  "Percussion", "ON"},
     {"Opal",      "Granular synthesis",              "Spectral",   "OP"},
-    // ... all 46 engines
+    // ... all 76 engines
 };
 ```
 This table also provides the 2-letter abbreviation (resolves S4 collision issue — hand-authored, not derived).
@@ -193,7 +193,7 @@ When "Show All" is toggled:
      - `macro` → "Macros", `fx` → "Effects", `xvc` → "Cross-Voice", `char` → "Character"
      - `lfo` → "LFO", `env` → "Envelope", `mod` → "Modulation", `osc` → "Oscillator"
      - Unknown sub-prefixes: use the raw sub-prefix, Title-cased (e.g., `hunt` → "Hunt")
-  5. This works across ALL 46 engines because it's derived from parameter ID structure, not hardcoded per engine
+  5. This works across ALL 76 engines because it's derived from parameter ID structure, not hardcoded per engine
 - For engines with flat naming (e.g., `opal_grainSize` has no sub-prefix → all params go to "Core")
   that's acceptable — a single "Core" group is no worse than the current flat grid, and these engines
   can adopt sub-prefixes later without UI changes

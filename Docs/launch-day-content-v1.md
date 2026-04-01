@@ -1,7 +1,7 @@
 # XOlokun V1 — Launch Day Content
 
 **Date drafted:** 2026-03-21
-**Product state:** 46 engines | ~22,000 presets | macOS AU + Standalone | MIT license | Free
+**Product state:** 76 engines | ~22,000 presets | macOS AU + Standalone | MIT license | Free
 
 ---
 
@@ -13,7 +13,7 @@
 
 XOlokun V1 is out.
 
-46 synthesis engines. ~22,000 presets. Cross-engine coupling in real time.
+76 synthesis engines. ~22,000 presets. Cross-engine coupling in real time.
 
 Free. Open-source. MIT license. Always.
 
@@ -37,7 +37,7 @@ ORGANISM runs cellular automata. The rule set is the synthesis.
 
 The coupling system is the instrument.
 
-14 coupling types. Any engine can drive any other — filter cutoff, pitch, amplitude, LFO rate, FM depth. Load ONSET (8-voice percussion) in slot 1, wire its transient envelope to OPERA's phase coherence parameter in slot 2.
+15 coupling types. Any engine can drive any other — filter cutoff, pitch, amplitude, LFO rate, FM depth. Load ONSET (8-voice percussion) in slot 1, wire its transient envelope to OPERA's phase coherence parameter in slot 2.
 
 That's a sound that doesn't exist in any single synth.
 
@@ -81,7 +81,7 @@ Premium content (Guru Bin packs, Patreon) funds development. The engine is MIT-l
 
 **(7/7)**
 
-One person. One year. 46 engines.
+One person. One year. 76 engines.
 
 The aquarium is open.
 
@@ -92,7 +92,7 @@ xo-ox.org
 
 ## 2. Single Tweet Version (280 char max)
 
-XOlokun V1: 46 synthesis engines (Kuramoto vocal, mallet physics, cellular automata, continued fractions, Berlyne curiosity). Cross-engine coupling. ~22k presets. Free. MIT. macOS AU + Standalone. [DOWNLOAD LINK]
+XOlokun V1: 76 synthesis engines (Kuramoto vocal, mallet physics, cellular automata, continued fractions, Berlyne curiosity). Cross-engine coupling. ~22k presets. Free. MIT. macOS AU + Standalone. [DOWNLOAD LINK]
 
 *(243 characters)*
 
@@ -100,7 +100,7 @@ XOlokun V1: 46 synthesis engines (Kuramoto vocal, mallet physics, cellular autom
 
 ## 3. Instagram Caption
 
-46 synthesis engines in one plugin. Free. Open-source. Here.
+76 synthesis engines in one plugin. Free. Open-source. Here.
 
 OPERA runs Kuramoto phase synchronization — 32 partials that lock together or fragment apart, shaped by an autonomous Conductor arc that writes its own dramatic arc through the sound. OWARE models a balafon mallet compressing against wood, mathematically, from a 1997 acoustics paper. OBRIX stacks synthesis bricks into ecologies where each source modulates the others. ORGANISM runs Conway's Game of Life on your signal. These aren't variations on a theme. Each engine is a separate physics.
 
@@ -120,7 +120,7 @@ The coupling system connects them in real time. Load four engines. Wire the tran
 
 I shipped XOlokun V1 today.
 
-I've been sitting with that sentence for a few hours trying to figure out what the right thing to say is. The honest answer is: I don't know exactly what this is yet. I know what it contains — 46 synthesis engines, ~22,000 presets, a cross-engine coupling system, 14 coupling types, a shared DSP library — but the thing about building something like this for a year is that you lose the ability to see it from the outside.
+I've been sitting with that sentence for a few hours trying to figure out what the right thing to say is. The honest answer is: I don't know exactly what this is yet. I know what it contains — 76 synthesis engines, ~22,000 presets, a cross-engine coupling system, 15 coupling types, a shared DSP library — but the thing about building something like this for a year is that you lose the ability to see it from the outside.
 
 So let me just tell you what happened, and what comes next.
 
@@ -150,13 +150,13 @@ xo-ox.org
 
 ## 5. Reddit Post (r/synthesizers)
 
-**Title:** I spent a year building a free, open-source multi-engine synth — 46 engines, ~22k presets, cross-engine coupling. Here's the thing I kept getting wrong.
+**Title:** I spent a year building a free, open-source multi-engine synth — 76 engines, ~22k presets, cross-engine coupling. Here's the thing I kept getting wrong.
 
 ---
 
 Hi r/synthesizers. I shipped XOlokun V1 today. Free, MIT-licensed, macOS AU + Standalone. Download is at xo-ox.org. But that's not the interesting part.
 
-The thing I kept getting wrong was assuming more engines meant more variety. It doesn't, by itself. You can have 46 engines that each sound like a slightly different subtractive synth with different filter characteristics. That's not what this is, but it's what it could have been.
+The thing I kept getting wrong was assuming more engines meant more variety. It doesn't, by itself. You can have 76 engines that each sound like a slightly different subtractive synth with different filter characteristics. That's not what this is, but it's what it could have been.
 
 The design discipline I had to learn was: every engine needs to be unreproducible from the others. Not "different flavor." Genuinely unreachable from any other synthesis paradigm in the plugin.
 
@@ -192,7 +192,7 @@ I shipped XOlokun V1 today. Free, open-source (MIT), macOS AU + Standalone. I'll
 
 **The coupling system**
 
-The MegaCouplingMatrix supports 14 coupling types. The routing is any-to-any across the four engine slots, and the coupling input becomes a first-class synthesis parameter in the receiving engine — not just a modulation wheel substitute.
+The MegaCouplingMatrix supports 15 coupling types. The routing is any-to-any across the four engine slots, and the coupling input becomes a first-class synthesis parameter in the receiving engine — not just a modulation wheel substitute.
 
 Coupling types include:
 
@@ -227,7 +227,7 @@ I'm not claiming this is perfect. The seance process found real bugs — OCELOT'
 
 **What it is**
 
-46 engines. ~22,000 presets. 6D Sonic DNA fingerprinting. Four macros per preset (CHARACTER, MOVEMENT, COUPLING, SPACE). Gallery Model UI — warm white shell, engine-specific accent colors. MIT license.
+76 engines. ~22,000 presets. 6D Sonic DNA fingerprinting. Four macros per preset (CHARACTER, MOVEMENT, COUPLING, SPACE). Gallery Model UI — warm white shell, engine-specific accent colors. MIT license.
 
 Free. That part is not changing.
 
