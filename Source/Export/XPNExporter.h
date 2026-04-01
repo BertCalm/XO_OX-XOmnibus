@@ -1247,6 +1247,7 @@ private:
         // After existing character stripping:
         result = result.trimCharactersAtStart(".").trimCharactersAtEnd(".");
         if (result == ".." || result == ".") result = "unnamed";
+        if (result.isEmpty()) result = "unnamed";
         return result;
     }
 
