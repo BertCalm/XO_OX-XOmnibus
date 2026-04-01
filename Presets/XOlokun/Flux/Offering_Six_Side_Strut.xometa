@@ -9,10 +9,10 @@
     "flux"
   ],
   "macros": {
-    "M1": 0.4,
-    "M2": 0.65,
-    "M3": 0.0,
-    "M4": 0.2
+    "DIG": 0.4,
+    "CITY": 0.65,
+    "FLIP": 0.0,
+    "DUST": 0.2
   },
   "dna": {
     "brightness": 0.45,
@@ -49,5 +49,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

@@ -50,5 +50,11 @@
       "wash_stereoWidth": 0.5,
       "wash_level": 0.8
     }
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

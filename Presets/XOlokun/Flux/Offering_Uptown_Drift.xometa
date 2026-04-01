@@ -9,10 +9,10 @@
     "movement"
   ],
   "macros": {
-    "M1": 0.7,
-    "M2": 0.0,
-    "M3": 0.1,
-    "M4": 0.15
+    "DIG": 0.7,
+    "CITY": 0.0,
+    "FLIP": 0.1,
+    "DUST": 0.15
   },
   "dna": {
     "brightness": 0.55,
@@ -49,5 +49,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

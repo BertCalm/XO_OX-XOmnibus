@@ -9,10 +9,10 @@
     "slow"
   ],
   "macros": {
-    "M1": 0.5,
-    "M2": 0.15,
-    "M3": 0.0,
-    "M4": 0.15
+    "DIG": 0.5,
+    "CITY": 0.15,
+    "FLIP": 0.0,
+    "DUST": 0.15
   },
   "dna": {
     "brightness": 0.35,
@@ -54,5 +54,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

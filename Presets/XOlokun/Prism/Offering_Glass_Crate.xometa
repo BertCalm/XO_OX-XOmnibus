@@ -9,10 +9,10 @@
     "compressed"
   ],
   "macros": {
-    "M1": 0.2,
-    "M2": 0.5,
-    "M3": 0.4,
-    "M4": 0.05
+    "DIG": 0.2,
+    "CITY": 0.5,
+    "FLIP": 0.4,
+    "DUST": 0.05
   },
   "dna": {
     "brightness": 0.85,
@@ -49,5 +49,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

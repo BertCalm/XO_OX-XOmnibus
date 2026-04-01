@@ -9,10 +9,10 @@
     "variation"
   ],
   "macros": {
-    "M1": 0.4,
-    "M2": 0.8,
-    "M3": 0.2,
-    "M4": 0.1
+    "DIG": 0.4,
+    "CITY": 0.8,
+    "FLIP": 0.2,
+    "DUST": 0.1
   },
   "dna": {
     "brightness": 0.5,
@@ -50,5 +50,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

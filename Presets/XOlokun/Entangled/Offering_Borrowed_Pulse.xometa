@@ -9,10 +9,10 @@
     "intertwined"
   ],
   "macros": {
-    "M1": 0.75,
-    "M2": 0.2,
-    "M3": 0.8,
-    "M4": 0.25
+    "DIG": 0.75,
+    "CITY": 0.2,
+    "FLIP": 0.8,
+    "DUST": 0.25
   },
   "dna": {
     "brightness": 0.5,
@@ -50,5 +50,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

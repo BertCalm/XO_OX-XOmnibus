@@ -13,16 +13,16 @@
   },
   "sequencer": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
   ],
   "macros": {
-    "M1": "PROWL",
-    "M2": "FOLIAGE",
-    "M3": "ECOSYSTEM",
-    "M4": "CANOPY"
+    "PROWL": 0.5,
+    "FOLIAGE": 0.5,
+    "ECOSYSTEM": 0.5,
+    "CANOPY": 0.5
   },
   "description": "Solo OCELOT preset but fully entangled internally — all four strata in active dialogue at dawn. Canopy shimmer feeding floor tension at the first light. The ecosystem waking up.",
   "tags": [],

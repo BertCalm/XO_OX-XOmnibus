@@ -9,10 +9,10 @@
     "uncertain"
   ],
   "macros": {
-    "M1": 0.6,
-    "M2": 0.15,
-    "M3": 0.65,
-    "M4": 0.2
+    "DIG": 0.6,
+    "CITY": 0.15,
+    "FLIP": 0.65,
+    "DUST": 0.2
   },
   "dna": {
     "brightness": 0.65,
@@ -57,5 +57,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

@@ -9,10 +9,10 @@
     "complex"
   ],
   "macros": {
-    "M1": 0.5,
-    "M2": 0.55,
-    "M3": 0.95,
-    "M4": 0.05
+    "DIG": 0.5,
+    "CITY": 0.55,
+    "FLIP": 0.95,
+    "DUST": 0.05
   },
   "dna": {
     "brightness": 0.7,
@@ -51,5 +51,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

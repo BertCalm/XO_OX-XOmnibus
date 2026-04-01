@@ -61,5 +61,11 @@
     "aggression": 0.45
   },
   "tempo": null,
-  "description": "Bright and refractive, shimmering, crystalline lead. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Bright and refractive, shimmering, crystalline lead. Macro sweeps reveal shifting timbral landscapes.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

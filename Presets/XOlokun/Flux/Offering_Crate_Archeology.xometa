@@ -9,10 +9,10 @@
     "warmth"
   ],
   "macros": {
-    "M1": 0.85,
-    "M2": 0.1,
-    "M3": 0.0,
-    "M4": 0.6
+    "DIG": 0.85,
+    "CITY": 0.1,
+    "FLIP": 0.0,
+    "DUST": 0.6
   },
   "dna": {
     "brightness": 0.2,
@@ -49,5 +49,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

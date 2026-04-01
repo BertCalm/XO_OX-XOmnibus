@@ -9,10 +9,10 @@
     "woven"
   ],
   "macros": {
-    "M1": 0.7,
-    "M2": 0.7,
-    "M3": 0.85,
-    "M4": 0.25
+    "DIG": 0.7,
+    "CITY": 0.7,
+    "FLIP": 0.85,
+    "DUST": 0.25
   },
   "dna": {
     "brightness": 0.4,
@@ -51,5 +51,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

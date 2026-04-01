@@ -61,5 +61,11 @@
     "aggression": 0.25
   },
   "tempo": null,
-  "description": "Deep and pressurized, gentle sound. Responds expressively to velocity and modulation."
+  "description": "Deep and pressurized, gentle sound. Responds expressively to velocity and modulation.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

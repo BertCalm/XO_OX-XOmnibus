@@ -50,5 +50,11 @@
     "density": 0.4,
     "space": 0.5,
     "aggression": 0.1
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

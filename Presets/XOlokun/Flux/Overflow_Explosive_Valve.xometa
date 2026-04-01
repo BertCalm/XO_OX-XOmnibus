@@ -49,5 +49,11 @@
       "flow_stereoWidth": 0.72,
       "flow_level": 0.8
     }
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

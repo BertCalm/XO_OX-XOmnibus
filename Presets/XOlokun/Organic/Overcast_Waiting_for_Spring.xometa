@@ -48,5 +48,11 @@
       "cast_lfo1Depth": 0.12,
       "cast_level": 0.78
     }
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

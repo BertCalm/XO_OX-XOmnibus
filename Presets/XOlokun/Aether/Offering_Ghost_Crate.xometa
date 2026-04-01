@@ -9,10 +9,10 @@
     "lo-fi"
   ],
   "macros": {
-    "M1": 0.7,
-    "M2": 0.1,
-    "M3": 0.4,
-    "M4": 0.4
+    "DIG": 0.7,
+    "CITY": 0.1,
+    "FLIP": 0.4,
+    "DUST": 0.4
   },
   "dna": {
     "brightness": 0.3,
@@ -56,5 +56,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

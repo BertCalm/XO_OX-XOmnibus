@@ -61,5 +61,11 @@
     "aggression": 0.05
   },
   "tempo": null,
-  "description": "Anchored and grounding, still, intimate sound. Responds expressively to velocity and modulation."
+  "description": "Anchored and grounding, still, intimate sound. Responds expressively to velocity and modulation.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

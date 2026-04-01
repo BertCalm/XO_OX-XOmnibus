@@ -9,10 +9,10 @@
     "zero gravity"
   ],
   "macros": {
-    "M1": 0.55,
-    "M2": 0.05,
-    "M3": 0.2,
-    "M4": 0.12
+    "DIG": 0.55,
+    "CITY": 0.05,
+    "FLIP": 0.2,
+    "DUST": 0.12
   },
   "dna": {
     "brightness": 0.4,
@@ -56,5 +56,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

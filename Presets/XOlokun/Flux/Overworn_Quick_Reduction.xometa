@@ -45,5 +45,11 @@
       "worn_stereoWidth": 0.46,
       "worn_level": 0.8
     }
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

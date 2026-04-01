@@ -61,5 +61,11 @@
     "aggression": 0.07
   },
   "tempo": null,
-  "description": "Spacious and ambient, expansive, gentle sound. Let it breathe — the space is the instrument."
+  "description": "Spacious and ambient, expansive, gentle sound. Let it breathe — the space is the instrument.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

@@ -61,5 +61,11 @@
     "aggression": 0.2
   },
   "tempo": null,
-  "description": "Anchored and grounding, still, intimate bass. Sits warmly in any arrangement without fighting for space."
+  "description": "Anchored and grounding, still, intimate bass. Sits warmly in any arrangement without fighting for space.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

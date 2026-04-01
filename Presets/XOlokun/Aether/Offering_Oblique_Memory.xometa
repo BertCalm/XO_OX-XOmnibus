@@ -9,10 +9,10 @@
     "saturated"
   ],
   "macros": {
-    "M1": 0.5,
-    "M2": 0.4,
-    "M3": 0.3,
-    "M4": 0.45
+    "DIG": 0.5,
+    "CITY": 0.4,
+    "FLIP": 0.3,
+    "DUST": 0.45
   },
   "dna": {
     "brightness": 0.35,
@@ -57,5 +57,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

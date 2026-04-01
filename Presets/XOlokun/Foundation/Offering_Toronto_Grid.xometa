@@ -9,10 +9,10 @@
     "architectural"
   ],
   "macros": {
-    "M1": 0.0,
-    "M2": 0.0,
-    "M3": 0.0,
-    "M4": 0.0
+    "DIG": 0.0,
+    "CITY": 0.0,
+    "FLIP": 0.0,
+    "DUST": 0.0
   },
   "dna": {
     "brightness": 0.6,
@@ -51,5 +51,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

@@ -9,10 +9,10 @@
     "deep curiosity"
   ],
   "macros": {
-    "M1": 0.8,
-    "M2": 0.25,
-    "M3": 0.0,
-    "M4": 0.08
+    "DIG": 0.8,
+    "CITY": 0.25,
+    "FLIP": 0.0,
+    "DUST": 0.08
   },
   "dna": {
     "brightness": 0.5,
@@ -52,5 +52,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

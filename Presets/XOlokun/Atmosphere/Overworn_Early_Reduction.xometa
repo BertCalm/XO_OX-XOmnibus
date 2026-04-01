@@ -47,5 +47,11 @@
       "worn_level": 0.8,
       "worn_stateReset": 0.0
     }
-  }
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

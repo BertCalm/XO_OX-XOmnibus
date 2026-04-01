@@ -61,5 +61,11 @@
     "aggression": 0.15
   },
   "tempo": null,
-  "description": "Warm and familiar, gentle sound. Responds expressively to velocity and modulation."
+  "description": "Warm and familiar, gentle sound. Responds expressively to velocity and modulation.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

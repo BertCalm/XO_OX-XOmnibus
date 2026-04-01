@@ -25,10 +25,10 @@
     "CANOPY"
   ],
   "macros": {
-    "M1": "PROWL",
-    "M2": "FOLIAGE",
-    "M3": "ECOSYSTEM",
-    "M4": "CANOPY"
+    "PROWL": 0.5,
+    "FOLIAGE": 0.5,
+    "ECOSYSTEM": 0.5,
+    "CANOPY": 0.5
   },
   "couplingIntensity": "None",
   "tempo": null,

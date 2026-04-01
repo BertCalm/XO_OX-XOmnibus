@@ -9,10 +9,10 @@
     "swing"
   ],
   "macros": {
-    "M1": 0.2,
-    "M2": 0.45,
-    "M3": 0.1,
-    "M4": 0.35
+    "DIG": 0.2,
+    "CITY": 0.45,
+    "FLIP": 0.1,
+    "DUST": 0.35
   },
   "dna": {
     "brightness": 0.45,
@@ -52,5 +52,11 @@
   ],
   "author": "XO_OX Designs",
   "description": "",
-  "schema_version": 1
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
 }

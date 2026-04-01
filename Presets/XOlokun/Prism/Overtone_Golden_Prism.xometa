@@ -61,5 +61,11 @@
     "aggression": 0.2
   },
   "tempo": null,
-  "description": "Bright and refractive, shimmering, gentle sound. Responds expressively to velocity and modulation."
+  "description": "Bright and refractive, shimmering, gentle sound. Responds expressively to velocity and modulation.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }

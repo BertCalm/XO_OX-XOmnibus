@@ -61,5 +61,11 @@
     "aggression": 0.05
   },
   "tempo": null,
-  "description": "Vast and otherworldly, gentle sound. Let it breathe — the space is the instrument."
+  "description": "Vast and otherworldly, gentle sound. Let it breathe — the space is the instrument.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ]
 }
