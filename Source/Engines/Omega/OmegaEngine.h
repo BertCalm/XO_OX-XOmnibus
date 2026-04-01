@@ -77,9 +77,9 @@ struct OmegaFMOperator
         float effectivePhase = phase + modInput;
         float out = fastSin (effectivePhase * kTwoPi);
 
-        // Self-feedback
-        float feedbackSample = out * feedback;
-        lastOutput = feedbackSample;
+        // Self-feedback: store raw out so the call site (which multiplies by feedback)
+        // produces a single feedback gain, not feedback².
+        lastOutput = out;
 
         phase += phaseInc;
         if (phase >= 1.0f) phase -= 1.0f;
