@@ -641,6 +641,8 @@ private:
                     ->addTextElement(juce::String(range.end));
                 layer->createNewChildElement("RootNote")
                     ->addTextElement("0");
+                layer->createNewChildElement("KeyTrack")
+                    ->addTextElement("True");
             }
         }
 
