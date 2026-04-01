@@ -53,7 +53,8 @@ struct ReefTab: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)  // Center in available space
                         .onReceive(reefStore.objectWillChange) { _ in
                             gridRefreshTimer?.invalidate()
-                            let t = Timer(timeInterval: 0.15, repeats: false) { [self] _ in
+                            let t = Timer(timeInterval: 0.15, repeats: false) { [weak self] _ in
+                                guard let self else { return }
                                 reefScene?.refreshGrid()
                             }
                             RunLoop.main.add(t, forMode: .common)
@@ -230,7 +231,8 @@ struct ReefTab: View {
                         loopRecorder.recordNoteOff(midiNote: midiNote)
                         ambientResumeTimer?.invalidate()
                         if ambientEnabled {
-                            let t = Timer(timeInterval: 3.0, repeats: false) { [self] _ in
+                            let t = Timer(timeInterval: 3.0, repeats: false) { [weak self] _ in
+                                guard let self else { return }
                                 ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
                             }
                             RunLoop.main.add(t, forMode: .common)
