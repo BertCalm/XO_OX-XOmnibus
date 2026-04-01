@@ -554,6 +554,10 @@ public:
         const float macroGravity          = loadParam (pMacroGravity, 0.0f);
         const float macroDrift            = loadParam (pMacroDrift, 0.0f);
 
+        // D001: velocity-to-timbre depth — how much velocity scales stochastic drift.
+        // Louder notes produce denser, more complex spectra via deeper breakpoint evolution.
+        const float velDriftDepth         = loadParam (pVelDriftDepth, 0.3f);
+
         // ----- Voice mode configuration -----
         int maxPolyphony       = kMaxVoices;
         bool isMonophonic      = false;
@@ -690,10 +694,16 @@ public:
                 float modulatedAmpStep  = clamp (smoothedAmpStep + lfo2Value * 0.3f,
                                                  0.0f, 1.0f);
 
+                // D001: velocity scales stochastic drift depth — louder notes produce
+                // denser, more complex spectra as breakpoints evolve more aggressively.
+                // velBrightness maps [0,1] velocity to [0.3,1.0] so soft notes still evolve.
+                float velBrightness = 0.3f + 0.7f * voice.velocity;
+                float velScaledDrift = clamp (effectiveDrift + velBrightness * velDriftDepth, 0.0f, 1.0f);
+
                 // Stochastic depth: how much the breakpoints actually move.
                 // Controlled by the stochastic envelope (fades in/out with note)
-                // and the drift parameter (global evolution intensity).
-                float stochasticDepth = stochasticLevel * effectiveDrift;
+                // and the drift parameter (global evolution intensity, now velocity-modulated).
+                float stochasticDepth = stochasticLevel * velScaledDrift;
 
                 // --- Phase increment ---
                 voice.wavePhaseIncrement = frequency / sampleRateFloat;
@@ -1010,6 +1020,14 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_macroDrift", 1 }, "Oracle Macro DRIFT",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D001: Velocity → stochastic drift depth.
+        // Controls how much velocity scales breakpoint evolution intensity.
+        // At 0.0 velocity has no timbral effect (amplitude-only). At 1.0 hard
+        // strikes produce fully dense chaotic spectra; soft strikes evolve slowly.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oracle_velDriftDepth", 1 }, "Oracle Vel Drift",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -1048,6 +1066,8 @@ public:
         pMacroEvolution     = apvts.getRawParameterValue ("oracle_macroEvolution");
         pMacroGravity       = apvts.getRawParameterValue ("oracle_macroGravity");
         pMacroDrift         = apvts.getRawParameterValue ("oracle_macroDrift");
+
+        pVelDriftDepth      = apvts.getRawParameterValue ("oracle_velDriftDepth");
     }
 
     //==========================================================================
@@ -1645,6 +1665,9 @@ private:
     std::atomic<float>* pMacroEvolution    = nullptr;  // Accelerates stochastic evolution
     std::atomic<float>* pMacroGravity      = nullptr;  // Pulls tuning toward maqam system
     std::atomic<float>* pMacroDrift        = nullptr;  // Increases overall drift and motion
+
+    // D001: velocity-to-timbre
+    std::atomic<float>* pVelDriftDepth     = nullptr;  // Velocity → stochastic drift depth
 };
 
 } // namespace xolokun
