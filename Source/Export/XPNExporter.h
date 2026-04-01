@@ -338,9 +338,13 @@ public:
         }
 
         // Atomic export: write to temp dir first, rename on success
-        auto finalBundleDir = config.outputDir.getChildFile(config.name.replace(" ", "_"));
+        // Sanitize bundle name to prevent path traversal (issue #423):
+        // config.name comes from user input; strip '/', '..', and filesystem
+        // reserved chars before using it to construct directory paths.
+        const auto safeBundleName = sanitizeFilename(config.name);
+        auto finalBundleDir = config.outputDir.getChildFile(safeBundleName);
         auto tempBundleDir = config.outputDir.getChildFile(
-            "." + config.name.replace(" ", "_") + "_tmp_" +
+            "." + safeBundleName + "_tmp_" +
             juce::String(juce::Time::currentTimeMillis()));
 
         if (!tempBundleDir.createDirectory())
@@ -536,9 +540,11 @@ public:
         }
 
         // Atomic export: write to temp dir first, rename on success
-        auto finalBundleDir = config.outputDir.getChildFile(config.name.replace(" ", "_"));
+        // Sanitize bundle name to prevent path traversal (issue #423).
+        const auto safeBundleName = sanitizeFilename(config.name);
+        auto finalBundleDir = config.outputDir.getChildFile(safeBundleName);
         auto tempBundleDir = config.outputDir.getChildFile(
-            "." + config.name.replace(" ", "_") + "_tmp_" +
+            "." + safeBundleName + "_tmp_" +
             juce::String(juce::Time::currentTimeMillis()));
 
         if (!tempBundleDir.createDirectory())
