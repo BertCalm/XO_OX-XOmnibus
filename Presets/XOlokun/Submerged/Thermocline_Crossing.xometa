@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermocline Crossing",
+  "name": "Thermocline Crossing (Orca)",
   "mood": "Submerged",
   "engines": [
     "Orca"

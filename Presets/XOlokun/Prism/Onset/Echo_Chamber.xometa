@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Echo Chamber",
+  "name": "Echo Chamber (Onset)",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,

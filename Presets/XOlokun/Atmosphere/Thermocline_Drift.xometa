@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermocline Drift",
+  "name": "Thermocline Drift (Oceanic)",
   "mood": "Atmosphere",
   "engines": [
     "Oceanic"

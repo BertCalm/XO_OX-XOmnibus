@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "Wander Path",
+  "name": "Wander Path (Oblong)",
   "parameters": {
     "Oblong": {
       "bob_ampAttack": 0.3,

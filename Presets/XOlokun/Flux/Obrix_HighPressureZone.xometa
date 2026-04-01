@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "High Pressure Zone",
+  "name": "High Pressure Zone (Obrix)",
   "mood": "Flux",
   "engines": [
     "Obrix"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tectonic Drone",
+  "name": "Tectonic Drone (Owlfish)",
   "mood": "Foundation",
   "engines": [
     "Owlfish"

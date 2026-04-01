@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Flash Freeze",
+  "name": "Flash Freeze (Overcast)",
   "mood": "Foundation",
   "engines": [
     "Overcast"

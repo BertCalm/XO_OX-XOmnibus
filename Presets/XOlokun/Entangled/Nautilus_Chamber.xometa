@@ -36,7 +36,7 @@
     "SPACE": 0.2
   },
   "mood": "Entangled",
-  "name": "Nautilus Chamber",
+  "name": "Nautilus Chamber (Oblong)",
   "parameters": {
     "Oblong": {
       "bob_curAmount": 0.2,

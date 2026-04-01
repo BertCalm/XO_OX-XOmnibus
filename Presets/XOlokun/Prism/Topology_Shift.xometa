@@ -37,7 +37,7 @@
     }
   ],
   "mood": "Prism",
-  "name": "Topology Shift",
+  "name": "Topology Shift (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_damping": 0.42,

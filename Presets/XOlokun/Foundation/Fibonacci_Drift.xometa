@@ -1,18 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Fibonacci Drift",
+  "name": "Fibonacci Drift (Obiont)",
   "mood": "Aether",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Rule 90's Sierpinski triangle at glacial tempo. Drift pitch mode (pitchMode=1) lets the phase accumulator free-run — notes lose their MIDI-locked pitch and become atmospheric tones that drift against each other in 8-voice polymode. LFO at 0.03 Hz (ultra-slow) morphs projection width over minutes. Very high projection (0.82) means many cells contribute — maximum warmth, maximum diffusion. Hold several notes and let the grid breathe for two minutes. Something will emerge.",
-  "tags": ["awakening", "ambient", "drift", "rule-90", "slow", "pitch-drift", "meditation"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "ambient",
+    "drift",
+    "rule-90",
+    "slow",
+    "pitch-drift",
+    "meditation"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,

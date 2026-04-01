@@ -1,18 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Mitosis",
+  "name": "Mitosis (Obiont)",
   "mood": "Kinetic",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Fast evolution (22 Hz) creates rhythmic amplitude pulsing as the grid cycles through high-density and low-density states. Grid Energy routes directly to both FilterCutoff and EvolutionRate — creating a feedback loop where energy states open the filter AND speed up the next generation. The sound divides and multiplies. Use at medium-high tempos as a rhythmic textural element. Rule 90 provides the fractal cellular substrate.",
-  "tags": ["awakening", "rhythmic", "pulse", "rule-90", "grid-energy", "texture", "kinetic"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "rhythmic",
+    "pulse",
+    "rule-90",
+    "grid-energy",
+    "texture",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Trench Pressure",
+  "name": "Trench Pressure (Owlfish)",
   "mood": "Submerged",
   "engines": [
     "Owlfish"

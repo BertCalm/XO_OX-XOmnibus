@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Pulse",
+  "name": "Abyssal Pulse (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

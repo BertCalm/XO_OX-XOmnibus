@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Rule 184 Traffic",
+  "name": "Rule 184 Traffic (Outwit)",
   "mood": "Foundation",
   "engines": [
     "Outwit"

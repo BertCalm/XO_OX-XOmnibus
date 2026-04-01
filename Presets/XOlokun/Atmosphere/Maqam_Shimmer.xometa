@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Maqam Shimmer",
+  "name": "Maqam Shimmer (Oracle)",
   "mood": "Atmosphere",
   "engines": [
     "Oracle"

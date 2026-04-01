@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Luminous",
-  "name": "Gentle Tendril",
+  "name": "Gentle Tendril (Overgrow)",
   "parameters": {
     "Overgrow": {
       "grow_damping": 0.2,

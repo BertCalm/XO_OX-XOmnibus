@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hadal Whisper",
+  "name": "Hadal Whisper (Obrix)",
   "mood": "Submerged",
   "engines": [
     "Obrix"

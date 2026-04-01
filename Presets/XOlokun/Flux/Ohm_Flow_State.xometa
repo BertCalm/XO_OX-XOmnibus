@@ -24,7 +24,7 @@
     "MEADOW"
   ],
   "mood": "Flux",
-  "name": "Flow State",
+  "name": "Flow State (Ohm)",
   "parameters": {
     "Ohm": {
       "ohm_bodyMaterial": 3,

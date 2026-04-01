@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pillow Talk",
+  "name": "Pillow Talk (Opal)",
   "mood": "Foundation",
   "engines": [
     "Opal"

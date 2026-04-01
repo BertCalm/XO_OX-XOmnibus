@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Crushing Depth",
+  "name": "Crushing Depth (Overlap)",
   "mood": "Submerged",
   "engines": [
     "Overlap"

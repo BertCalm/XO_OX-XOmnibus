@@ -24,7 +24,7 @@
     "BLOOM"
   ],
   "mood": "Entangled",
-  "name": "Double Helix",
+  "name": "Double Helix (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 2,

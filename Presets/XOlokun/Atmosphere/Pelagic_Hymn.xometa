@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Atmosphere",
-  "name": "Pelagic Hymn",
+  "name": "Pelagic Hymn (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 2,

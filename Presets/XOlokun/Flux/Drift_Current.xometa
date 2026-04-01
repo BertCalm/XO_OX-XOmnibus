@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drift Current",
+  "name": "Drift Current (Ohm I)",
   "mood": "Flux",
   "engines": [
     "Ohm"

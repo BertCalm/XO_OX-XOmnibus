@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drift Ensemble",
+  "name": "Drift Ensemble (Obrix)",
   "mood": "Foundation",
   "engines": [
     "Obrix"

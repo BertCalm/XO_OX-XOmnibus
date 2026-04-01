@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Ice Chime Matrix",
+  "name": "Ice Chime Matrix (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 15.0,
     "ocelot_ampDecay": 350.0,

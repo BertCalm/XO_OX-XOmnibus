@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Fog Bank",
+  "name": "Fog Bank (Outflow)",
   "mood": "Atmosphere",
   "engines": [
     "Outflow"

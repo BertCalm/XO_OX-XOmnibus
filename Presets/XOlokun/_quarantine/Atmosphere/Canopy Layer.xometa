@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Canopy Layer",
+  "name": "Canopy Layer (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 30.0,
     "ocelot_ampDecay": 400.0,

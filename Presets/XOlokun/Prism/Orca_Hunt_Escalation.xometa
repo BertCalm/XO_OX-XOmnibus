@@ -61,7 +61,7 @@
     }
   ],
   "mood": "Prism",
-  "name": "Hunt Escalation",
+  "name": "Hunt Escalation (Orca)",
   "parameters": {
     "Orca": {
       "orca_attack": 0.08,

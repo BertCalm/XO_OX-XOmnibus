@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Frozen Cathedral",
+  "name": "Frozen Cathedral (Ocelot I)",
   "parameters": {
     "ocelot_ampAttack": 12.0,
     "ocelot_ampDecay": 300.0,

@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Organic",
-  "name": "Silence Preparation",
+  "name": "Silence Preparation (Overgrow)",
   "parameters": {
     "Overgrow": {
       "grow_attack": 0.03,

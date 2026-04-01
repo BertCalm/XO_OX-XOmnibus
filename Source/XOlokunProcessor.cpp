@@ -769,7 +769,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // Stage 2: Corroder (digital erosion)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_corrMix", 1), "Master Corroder Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_corrBits", 1), "Master Corroder Bits",
         juce::NormalisableRange<float>(1.0f, 24.0f, 0.0f, 0.5f), 24.0f));

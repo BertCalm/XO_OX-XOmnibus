@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hive Mind",
+  "name": "Hive Mind (Organism)",
   "mood": "Family",
   "engines": [
     "Organism"

@@ -35,7 +35,7 @@
     "SPACE": 0.7
   },
   "mood": "Entangled",
-  "name": "Daguerreotype Depth",
+  "name": "Daguerreotype Depth (Obscura)",
   "parameters": {
     "Obscura": {
       "obscura_macroCharacter": 0.313,

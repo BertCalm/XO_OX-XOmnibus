@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Upwelling",
+  "name": "Upwelling (Oceanic)",
   "mood": "Flux",
   "engines": [
     "Oceanic"

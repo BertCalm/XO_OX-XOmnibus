@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sonar Ping",
+  "name": "Sonar Ping (Obrix)",
   "mood": "Submerged",
   "engines": [
     "Obrix"

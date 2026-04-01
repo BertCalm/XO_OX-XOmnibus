@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Low Orbit",
+  "name": "Low Orbit (Orbital)",
   "mood": "Foundation",
   "engines": [
     "Orbital"

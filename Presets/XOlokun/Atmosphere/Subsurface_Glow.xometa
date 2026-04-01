@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Subsurface Glow",
+  "name": "Subsurface Glow (Overlap)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"

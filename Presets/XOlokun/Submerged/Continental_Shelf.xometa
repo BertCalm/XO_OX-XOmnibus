@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Continental Shelf",
+  "name": "Continental Shelf (Onset)",
   "mood": "Submerged",
   "engines": [
     "Onset"

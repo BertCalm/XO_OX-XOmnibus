@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tidal Pull",
+  "name": "Tidal Pull (Overlap)",
   "mood": "Flux",
   "engines": [
     "Overlap"

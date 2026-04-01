@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Entangled Pad",
+  "name": "Entangled Pad (Organism)",
   "mood": "Submerged",
   "engines": [
     "Organism"

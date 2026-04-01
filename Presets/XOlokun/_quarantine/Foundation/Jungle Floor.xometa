@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Jungle Floor",
+  "name": "Jungle Floor (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 8.0,
     "ocelot_ampDecay": 250.0,

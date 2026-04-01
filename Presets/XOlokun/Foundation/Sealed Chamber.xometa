@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Sealed Chamber",
+  "name": "Sealed Chamber (Optic)",
   "parameters": {
     "Optic": {
       "optic_autoPulse": 1,

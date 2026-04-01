@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drop",
+  "name": "Pressure Drop (Overflow)",
   "mood": "Atmosphere",
   "engines": [
     "Overflow"

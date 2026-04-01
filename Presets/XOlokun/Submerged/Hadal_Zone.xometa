@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hadal Zone",
+  "name": "Hadal Zone (Overlap)",
   "mood": "Submerged",
   "engines": [
     "Overlap"

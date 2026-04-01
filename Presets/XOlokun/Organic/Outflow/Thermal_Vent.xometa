@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermal Vent",
+  "name": "Thermal Vent (Outflow)",
   "mood": "Organic",
   "engines": [
     "Outflow"

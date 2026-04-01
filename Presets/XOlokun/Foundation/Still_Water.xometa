@@ -23,7 +23,7 @@
     "DECAY"
   ],
   "mood": "Foundation",
-  "name": "Still Water",
+  "name": "Still Water (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_damping": 0.55,

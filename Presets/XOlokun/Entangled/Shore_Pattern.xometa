@@ -37,7 +37,7 @@
     "SPACE": 0.627
   },
   "mood": "Entangled",
-  "name": "Shore Pattern",
+  "name": "Shore Pattern (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.15,

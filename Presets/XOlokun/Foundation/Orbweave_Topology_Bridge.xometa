@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Topology Bridge",
+  "name": "Topology Bridge (Orbweave)",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 2,

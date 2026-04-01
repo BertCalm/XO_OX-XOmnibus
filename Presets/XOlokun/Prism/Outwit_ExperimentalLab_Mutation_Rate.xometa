@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Mutation Rate",
+  "name": "Mutation Rate (Outwit)",
   "mood": "Prism",
   "engines": [
     "Outwit"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Deep Canopy",
+  "name": "Deep Canopy (Overlap)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"
