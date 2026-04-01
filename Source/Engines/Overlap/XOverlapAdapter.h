@@ -504,7 +504,7 @@ public:
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_attack", "Attack",
             juce::NormalisableRange<float>(0.001f, 2.0f, 0.0f, 0.3f), 0.05f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_decay", "Decay",
-            juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.3f), 1.0f));
+            juce::NormalisableRange<float>(0.01f, 30.0f, 0.0f, 0.3f), 1.0f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_sustain", "Sustain",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_release", "Release",
@@ -614,7 +614,7 @@ public:
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_attack", "Attack",
             juce::NormalisableRange<float>(0.001f, 2.0f, 0.0f, 0.3f), 0.05f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_decay", "Decay",
-            juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.3f), 1.0f));
+            juce::NormalisableRange<float>(0.01f, 30.0f, 0.0f, 0.3f), 1.0f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_sustain", "Sustain",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_release", "Release",
