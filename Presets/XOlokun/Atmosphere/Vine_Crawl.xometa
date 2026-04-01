@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Vine Crawl (Overgrow) (Overgrow) 2",
+  "name": "Vine Crawl (Overgrow) 2",
   "parameters": {
     "Overgrow": {
       "grow_attack": 0.1,

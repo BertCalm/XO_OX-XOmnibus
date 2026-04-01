@@ -29,7 +29,7 @@
     "SPACE": 0.52
   },
   "mood": "Flux",
-  "name": "Bioluminescent Pulse (Overtone)",
+  "name": "Bio Pulse (Overtone)",
   "parameters": {
     "Overtone": {
       "over_constant": 2,

@@ -23,7 +23,7 @@
     "PRESSURE"
   ],
   "mood": "Flux",
-  "name": "Feeding Frenzy (Owlfish) (Owlfish)",
+  "name": "Feeding Frenzy (Owlfish)",
   "parameters": {
     "Owlfish": {
       "owl_ampAttack": 1,

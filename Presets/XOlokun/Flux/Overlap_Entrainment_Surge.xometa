@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Entrainment Surge (Overlap) (Overlap)",
+  "name": "Entrainment Surge (Overlap)",
   "mood": "Flux",
   "engines": [
     "Overlap"

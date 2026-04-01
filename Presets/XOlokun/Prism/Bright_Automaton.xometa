@@ -23,7 +23,7 @@
     "DEN"
   ],
   "mood": "Prism",
-  "name": "Bright Automaton (Outwit) (Outwit)",
+  "name": "Bright Automaton (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 37,

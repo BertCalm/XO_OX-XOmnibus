@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Orbweave Knot Theory Low Velocity",
+  "name": "Knot Theory Low Velocity",
   "mood": "Foundation",
   "engines": [
     "Orbweave"

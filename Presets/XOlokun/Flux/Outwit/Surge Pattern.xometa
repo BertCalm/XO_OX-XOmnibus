@@ -24,7 +24,7 @@
     "DEN"
   ],
   "mood": "Flux",
-  "name": "Surge Pattern (Outwit) (Outwit)",
+  "name": "Surge Pattern (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 22,

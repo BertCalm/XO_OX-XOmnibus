@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Jet Propulsion (Octopus) (Octopus)",
+  "name": "Jet Propulsion (Octopus)",
   "mood": "Flux",
   "engines": [
     "Octopus"

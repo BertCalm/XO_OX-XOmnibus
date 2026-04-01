@@ -24,7 +24,7 @@
     "DEN"
   ],
   "mood": "Flux",
-  "name": "Synapse Storm (Outwit) (Outwit)",
+  "name": "Synapse Storm (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 90,
