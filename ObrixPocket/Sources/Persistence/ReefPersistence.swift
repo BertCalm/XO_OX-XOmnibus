@@ -52,6 +52,44 @@ extension ReefStore {
         DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
 
+    /// Save the reef state immediately, bypassing the 500 ms debounce.
+    /// Use when the process is about to be suspended or killed (inactive/background
+    /// scene phase transition) so the write completes before iOS suspends us.
+    func saveImmediately() {
+        // Cancel any pending debounced write — we're doing it now.
+        ReefStore.saveWorkItem?.cancel()
+        ReefStore.saveWorkItem = nil
+
+        let snapshotSpecimens = specimens
+        let snapshotRoutes = couplingRoutes
+        let snapshotReefName = reefName
+        let snapshotDiveDepth = totalDiveDepth
+
+        guard let db = DatabaseManager.shared.db else { return }
+        do {
+            try db.write { db in
+                try SpecimenRecord.filter(Column("reefSlotIndex") != nil).deleteAll(db)
+                try CouplingRouteRecord.deleteAll(db)
+
+                for (index, specimen) in snapshotSpecimens.enumerated() {
+                    guard let spec = specimen else { continue }
+                    var record = SpecimenRecord(from: spec, reefSlotIndex: index)
+                    try record.save(db)
+                }
+
+                for route in snapshotRoutes {
+                    var record = CouplingRouteRecord(from: route)
+                    try record.save(db)
+                }
+
+                try saveMetadata(db, key: "reefName", value: snapshotReefName)
+                try saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
+            }
+        } catch {
+            print("[ReefPersistence] saveImmediately failed: \(error)")
+        }
+    }
+
     /// Load reef state from database.
     /// A generation counter guards against double-call races: if two load() calls
     /// overlap, only the most-recent one's async write is applied.

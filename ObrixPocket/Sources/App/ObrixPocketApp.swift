@@ -110,9 +110,13 @@ struct ObrixPocketApp: App {
 
                     firstLaunchManager.recordAppOpen()
                 }
-                // Save on background, manage audio on foreground
+                // Save on background/inactive, manage audio on foreground
                 .onChange(of: scenePhase) { newPhase in
                     switch newPhase {
+                    case .inactive:
+                        // Save immediately on inactive — covers sudden termination (e.g. swipe-kill,
+                        // incoming call) before the process reaches .background or is killed outright.
+                        reefStore.saveImmediately()
                     case .background:
                         reefStore.save()
                         // Don't stop audio — reef ambient continues in background per spec (Section 5.2)
