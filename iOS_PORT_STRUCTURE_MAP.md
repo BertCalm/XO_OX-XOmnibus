@@ -66,7 +66,7 @@ Source/
 │   ├── SRO/                      (Spectral Resonance Objects — CPU optimization)
 │   └── (core DSP modules)
 │
-├── Engines/                      (73 total engines)
+├── Engines/                      (76 total engines)
 │   ├── Bite, Bob, Drift, Dub, Fat, Morph (legacy, pre-O-word era)
 │   ├── Oaken, Oasis, Obbligato, Obelisk, Oblique, Obrix (O-word generation)
 │   ├── Obscura, Obsidian, OceanDeep, Oceanic, Ocelot, Ochre (continuing)
@@ -157,7 +157,7 @@ Files with iOS/Mobile Conditional Compilation:
    - #if JUCE_MAC || JUCE_IOS
 
 ================================================================================
-4. ENGINE ROSTER (73 Total)
+4. ENGINE ROSTER (76 Total)
 ================================================================================
 
 Early Generations (Pre-O naming):
@@ -174,17 +174,17 @@ Kitchen Collection (24 total across 6 quads):
   Broth Quad (Pads):       OVERWASH, OVERWORN, OVERFLOW, OVERCAST
   Fusion Quad (EP):        OASIS, ODDFELLOW, ONKOLO, OPCODE
 
-Open Source Engines (73 total - Fleet):
+Open Source Engines (76 total - Fleet):
   ODDFELIX, ODDOSCAR (2), OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD,
   OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE,
   OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH,
   OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA,
   OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE,
   ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OXYTOCIN, OUTLOOK
-  (+ 24 Kitchen Collection = 73 total)
+  (+ 24 Kitchen Collection + OBIONT + OSIER + OVERFLOW = 76 total)
 
 Status Summary:
-  - 72/73 seanced (OSMOSIS = design-only, not built)
+  - 72/76 seanced (OSMOSIS = design-only, not built)
   - 6 engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1,
                        OUROBOROS 9.0, OXBOW 9.0)
   - Fleet average: ~8.8/10 (post 2026-03-22 DSP fixes)
@@ -234,7 +234,7 @@ Total Source Files (Source/):
   - Total:                 356 files
 
 By Subsystem:
-  - Engines/:              ~170 files (73 engines × 2–3 files each)
+  - Engines/:              ~170 files (76 engines × 2–3 files each)
   - UI/:                   ~80 files (including Mobile/ subsystem)
   - Core/:                 ~40 files
   - DSP/:                  ~30 files
@@ -254,7 +254,7 @@ COMPLETED (Ready to Build):
   ✓ Mobile UI spec         - Detailed spec in Docs/ (v1.0)
   ✓ Mobile strategy        - Phase 1 (Touch Foundation) documented
   ✓ MIDI integration       - MIDILearnManager supports cross-platform
-  ✓ DSP (73 engines)       - All identical to macOS (no platform-specific DSP)
+  ✓ DSP (76 engines)       - All identical to macOS (no platform-specific DSP)
 
 IN PROGRESS (Phase 1 — Touch Foundation):
   ✓ MobilePlaySurface.h    - Touch-optimized PlaySurface (27KB header)

@@ -1287,17 +1287,9 @@ private:
     }
 
     // -------------------------------------------------------------------------
-    // TODO (Tuning Decision): Organ drawbar levels -- this defines ORBITAL's
-    // organ character across the entire Organ preset family.
-    //
-    // Current values emulate a rock Hammond registration (8' heavy, 4' strong).
-    // Each element corresponds to one drawbar partial; all un-set partials
-    // remain silent.
-    //
-    // Alternative registrations to try:
-    //   Jazz Hammond: a[0]=1.0, a[1]=0.4, a[3]=0.8, a[7]=0.6 (sparse, punchy)
-    //   Cathedral:    a[0]=0.8, a[2]=0.6, a[3]=0.5, a[5]=0.4, a[7]=0.3 (rich)
-    //   Rock Hammond: values below (bright mid, heavy fundamental)
+    // NOTE: Alternative drawbar registrations considered — current values are final.
+    // Rock Hammond registration (8' heavy, 4' strong) defines ORBITAL's organ character.
+    // Each element corresponds to one drawbar partial; all un-set partials remain silent.
     // -------------------------------------------------------------------------
     static std::array<float, kNumPartials> buildOrgan()
     {

@@ -16,7 +16,7 @@ namespace xocelot {
 // Biome transforms: Underwater = deep/dark (low partials dominant, slow tidal breathe)
 //                   Winter = sparse/wide (high partials, wind gust breathe, cold detuning)
 //
-// TODO Phase 2: Full additive partial bank + wavefolder.
+// FUTURE: Full additive partial bank + wavefolder.
 // Stub: sine bank with wavefold approximation.
 
 class OcelotCanopy

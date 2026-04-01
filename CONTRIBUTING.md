@@ -87,7 +87,7 @@ Additional conventions:
 
 ## What Makes a Good Contribution
 
-**Bug fixes** with clear reproduction steps are always welcome. The three categories most likely to contain bugs: race conditions in coupling routes, stale Zustand closures in the tools, and DSP paths that handle 0.0 with `||` instead of `??`.
+**Bug fixes** with clear reproduction steps are always welcome. The three categories most likely to contain bugs: race conditions in coupling routes, missing denormal guards in filter feedback paths, and Python tools that use string matching against stale engine name lists.
 
 **Preset contributions** are product. Follow the format:
 - `.xometa` JSON (see `Docs/xolokun_master_specification.md` for schema)

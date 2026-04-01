@@ -2,7 +2,7 @@
 
 **Synthesis from the deepest place.**
 
-XOlokun is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 73 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
+XOlokun is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 76 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
 
 ## Why It Exists
 
@@ -20,7 +20,7 @@ This is not a feature. This is the ecology.
 
 ## The Engines
 
-73 engines. Every one a standalone instrument before it entered the fleet.
+76 engines. Every one a standalone instrument before it entered the fleet.
 
 | Engine | Creature | Character |
 |--------|----------|-----------|
@@ -78,7 +78,7 @@ This is not a feature. This is the ecology.
 
 **Coupling is not mixing.** Two audio streams summed together is mixing. Coupling is when ONSET's transient attack modulates ORGANON's metabolic rate in real time. When OPERA's vocal formants ride OUROBOROS's strange attractor. When OXYTOCIN's bond depth accumulates note-by-note, unlocking timbral states that short notes can never reach.
 
-Fourteen coupling types. Each engine was designed knowing the others exist. The coupling system is not a feature bolted on — it is the ecology that gives every engine a reason to be alive.
+Fifteen coupling types. Each engine was designed knowing the others exist. The coupling system is not a feature bolted on — it is the ecology that gives every engine a reason to be alive.
 
 **The mythology is the mechanism.** The water column placement, creature identities, feliX-Oscar polarity — these aren't branding. They're a navigational system. You can feel the difference between a surface engine (bright, snapping, feliX-adjacent) and an abyssal engine (dark, pressurized, self-generating). The aquarium is real.
 
@@ -141,7 +141,7 @@ auval -v aumu Xolk XoOx
 - `Docs/xolokun_master_specification.md` — the single source of truth
 - `Docs/xolokun_sound_design_guides.md` — per-engine sound design
 - `scripture/the-scripture.md` — the Book of Bin (Guru Bin's accumulated DSP wisdom)
-- `Docs/seance_cross_reference.md` — ghost council verdicts for all 72 seanced engines
+- `Docs/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines
 - `site/` — the web presence at [XO-OX.org](https://xo-ox.org)
 
 ## The Expedition

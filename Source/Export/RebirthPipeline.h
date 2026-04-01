@@ -830,7 +830,7 @@ private:
                     // parameter routing (FormantResonator centre-freq, AllpassDiffuser
                     // delay time) is deferred to Phase 1C (CHAOS + advanced controls).
                     //
-                    // TODO(Phase 1C): Route LFO output to target module parameters
+                    // FUTURE(Phase 1C): Route LFO output to target module parameters
                     // based on cfg.params["target"]:
                     //   0.0 = FormantResonator centre frequencies (±depth Hz)
                     //   1.0 = AllpassDiffuser delay times (±depth ms)

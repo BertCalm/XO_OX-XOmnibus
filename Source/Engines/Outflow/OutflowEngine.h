@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OutflowEngine.h — XOutflow | "The Predictive Spatial Engine"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOutflow is a generative fluid-dynamics spatial engine that anticipates

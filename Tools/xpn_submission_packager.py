@@ -54,15 +54,60 @@ COVER_ART_MIN_PX = 1400
 COVER_ART_MAX_BYTES = 2 * 1024 * 1024  # 2 MB
 
 VALID_ENGINES = {
-    "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",
-    "ONSET", "OVERWORLD", "OPAL", "ORBITAL", "ORGANON", "OUROBOROS",
+    # Mascots
+    "ODDFELIX", "ODDOSCAR",
+    # Original fleet
+    "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "ONSET",
+    "OVERWORLD", "OPAL", "ORBITAL",
+    "ORGANON", "OUROBOROS",
     "OBSIDIAN", "OVERBITE", "ORIGAMI", "ORACLE", "OBSCURA", "OCEANIC",
-    "OCELOT", "OPTIC", "OBLIQUE", "OSPREY", "OSTERIA", "OWLFISH",
-    "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE", "OVERLAP", "OUTWIT",
-    "OMBRE", "ORCA", "OCTOPUS",
+    "OCELOT", "OSPREY", "OSTERIA", "OWLFISH",
+    "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE",
+    "OPTIC", "OBLIQUE", "OMBRE", "ORCA", "OCTOPUS",
+    # Phase 4 engines
+    "OVERLAP", "OUTWIT",
+    # V1 concept engines
+    "OPENSKY", "OSTINATO", "OCEANDEEP", "OUIE",
+    # Flagship
+    "OBRIX",
+    # V2 theorem engines
+    "ORBWEAVE", "OVERTONE", "ORGANISM",
+    # Singularity engines
+    "OXBOW", "OWARE",
+    # Kuramoto vocal synthesis
+    "OPERA",
+    # Psychology-driven boom bap drums
+    "OFFERING",
+    # Chef Quad Collection
+    "OTO", "OCTAVE", "OLEG", "OTIS",
+    # Kitchen Quad Collection
+    "OVEN", "OCHRE", "OBELISK", "OPALINE",
+    # Cellar Quad Collection
+    "OGRE", "OLATE", "OAKEN", "OMEGA",
+    # Garden Quad Collection
+    "ORCHARD", "OVERGROW", "OSIER", "OXALIS",
+    # Broth Quad Collection
+    "OVERWASH", "OVERWORN", "OVERFLOW", "OVERCAST",
+    # Fusion Quad Collection
+    "OKEANOS", "ODDFELLOW", "ONKOLO", "OPCODE",
+    # Membrane Collection
+    "OSMOSIS",
+    # Love Triangle Circuit Synth
+    "OXYTOCIN",
+    # Panoramic visionary synth
+    "OUTLOOK",
+    # Dual Engine Integration
+    "OASIS", "OUTFLOW",
+    # Cellular Automata Oscillator
+    "OBIONT",
 }
 
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+# All 15 canonical mood categories — source of truth is PresetManager / CLAUDE.md
+VALID_MOODS = {
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux",
+    "Aether", "Family", "Submerged", "Coupling", "Crystalline",
+    "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+}
 
 
 # ── Data classes ───────────────────────────────────────────────────────────────
@@ -247,6 +292,7 @@ def _infer_pack_yaml(directory: Path, pack_name: str) -> dict:
     Scans presets/*.xometa for engine references.
     """
     engines_found = set()
+    moods_found = set()
     preset_dir = directory / "presets"
     if preset_dir.is_dir():
         for xometa in preset_dir.glob("*.xometa"):
@@ -258,17 +304,25 @@ def _infer_pack_yaml(directory: Path, pack_name: str) -> dict:
                 if "engines" in data and isinstance(data["engines"], list):
                     for e in data["engines"]:
                         engines_found.add(str(e).upper())
+                # Mood may appear as "mood" string or in "mood_tags" list
+                if "mood" in data:
+                    moods_found.add(str(data["mood"]))
+                if "mood_tags" in data and isinstance(data["mood_tags"], list):
+                    for m in data["mood_tags"]:
+                        moods_found.add(str(m))
             except Exception:
                 pass
 
     valid_found = sorted(engines_found & VALID_ENGINES)
+    # Filter scanned moods against VALID_MOODS; fall back to ["Foundation"] if none recognized
+    valid_moods_found = sorted(moods_found & VALID_MOODS) or ["Foundation"]
 
     return {
         "pack_name": pack_name,
         "contributor_handle": "CONTRIBUTOR_HANDLE",
         "contributor_email": "contact@example.com",
         "target_engines": valid_found or ["UNKNOWN"],
-        "mood_tags": ["Foundation"],
+        "mood_tags": valid_moods_found,
         "xo_ox_version": "1.0",
         "art_origin": "original",
         "_generated": True,

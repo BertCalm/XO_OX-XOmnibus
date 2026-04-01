@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OkeanosEngine.h — XOkeanos | "The Spice Route Rhodes"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOkeanos is the Rhodes electric piano that traveled the Spice Route —

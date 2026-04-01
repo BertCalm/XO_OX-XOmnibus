@@ -21,7 +21,7 @@ namespace xocelot {
 // Triggers: auto-periodic (creatureRate) OR threshold-gated from EcosystemMatrix
 //           (Floor→Emergent: loud percussion fires a creature call)
 //
-// TODO Phase 2: Voiced source (LF pitch oscillator), full Klatt-style vocal tract.
+// FUTURE: Voiced source (LF pitch oscillator), full Klatt-style vocal tract.
 // Stub: noise excitation through resonant bandpass triples.
 
 class OcelotEmergent
