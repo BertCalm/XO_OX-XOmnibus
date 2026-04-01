@@ -75,7 +75,6 @@ public:
     float process (float morph, FatNoiseGen& noise) noexcept
     {
         float t = static_cast<float> (phase);
-        float dt = static_cast<float> (phaseInc);
         float out;
 
         if (morph <= 0.33f)

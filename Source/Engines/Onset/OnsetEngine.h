@@ -2096,7 +2096,6 @@ private:
     OnsetLoFi fxLoFi;
     double sr = 44100.0;
     int blockSize = 512;
-    int lastRenderedSamples = 0;
 
     // Coupling modulation accumulators
     float couplingFilterMod = 0.0f;

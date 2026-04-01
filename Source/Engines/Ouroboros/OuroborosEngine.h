@@ -876,7 +876,7 @@ public:
         // D005: update breathing LFO rate from ouro_breathRate parameter (once per block),
         // then tick it to get the current modulation value.
         const float breathRateHz = paramBreathRate ? paramBreathRate->load() : 0.08f;
-        breathingLFO.setRate (breathRateHz, static_cast<float> (sampleRate));
+        breathingLFO.setRate (breathRateHz, static_cast<float> (currentSampleRate));
         const float breathLFO = breathingLFO.process();  // [-1, +1] sine at user-controlled rate
 
         // Apply macros as additive offsets to core params before use:
