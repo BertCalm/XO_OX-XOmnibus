@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "schema_version": 1,
   "name": "Osmosis First Breath",
   "mood": "Atmosphere",
   "engines": [
@@ -15,25 +15,25 @@
       "osmo_macro1": 0.6,
       "osmo_macro2": 0.7,
       "osmo_macro3": 0.5,
-      "osmo_macro4": 0.4
-    },
-    "mfx_formantMix": 0.3,
-    "mfx_formantShift": 0.1,
-    "mfx_formantVowel": 0.0,
-    "mfx_formantQ": 6.0,
-    "mfx_breathMix": 0.15,
-    "mfx_breathAmount": 0.4,
-    "mfx_breathTilt": 0.6,
-    "mfx_breathSens": 0.5
+      "osmo_macro4": 0.4,
+      "mfx_formantMix": 0.3,
+      "mfx_formantShift": 0.1,
+      "mfx_formantVowel": 0.0,
+      "mfx_formantQ": 6.0,
+      "mfx_breathMix": 0.15,
+      "mfx_breathAmount": 0.4,
+      "mfx_breathTilt": 0.6,
+      "mfx_breathSens": 0.5
+    }
   },
   "coupling": {
     "pairs": []
   },
   "macros": {
-    "M1": "PERMEABILITY",
-    "M2": "SELECTIVITY",
-    "M3": "REACTIVITY",
-    "M4": "MEMORY"
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
   },
   "tags": [
     "membrane",
@@ -50,6 +50,5 @@
     "density": 0.4,
     "space": 0.5,
     "aggression": 0.1
-  },
-  "schema_version": 1
+  }
 }
