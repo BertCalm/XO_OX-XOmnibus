@@ -8,10 +8,20 @@ project(XOlokun VERSION 1.0.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Security hardening flags
+# Security hardening and warning-as-error flags.
+# -Werror is enabled so that warnings cannot accumulate silently in CI.
+# Exceptions:
+#   -Wno-error=unused-parameter  — JUCE virtual callback overrides routinely
+#                                   omit parameters by design; not a code bug.
+#   -Wno-error=deprecated-declarations — JUCE itself uses deprecated APIs on
+#                                         some macOS versions; suppress until
+#                                         the JUCE version bump resolves them.
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
     add_compile_options(
         -Wall -Wextra -Wpedantic
+        -Werror
+        -Wno-error=unused-parameter
+        -Wno-error=deprecated-declarations
         -fstack-protector-strong
         -D_FORTIFY_SOURCE=2
     )
