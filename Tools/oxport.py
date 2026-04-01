@@ -2504,7 +2504,7 @@ def cmd_build(args) -> int:
                 import xpn_mpce_quad_builder as qb
                 import shutil as _shutil
 
-                # TODO #2 fix: when SELECT ran, build PresetInfo from selected_presets
+                # When SELECT ran, build PresetInfo from selected_presets
                 # dicts rather than re-scanning the entire presets tree. This guarantees
                 # the XPM only references presets that actually got rendered.
                 if selected_presets:
@@ -2546,7 +2546,7 @@ def cmd_build(args) -> int:
                           f"({len(presets)} presets)")
                     print(f"         ✓ Written: {xpm_path}")
 
-                    # TODO #3 fix: stage WAVs from renders/ into Samples/.
+                    # Stage WAVs from renders/ into Samples/.
                     # For multi-preset packs (SELECT wired), WAVs are named
                     # {preset_name}__{slug}__{note}__{vel}.WAV — group them per
                     # preset name into Samples/{program_slug}/{safe_preset_name}/
@@ -2858,7 +2858,7 @@ def cmd_build(args) -> int:
             else:
                 print(f"         ⚠  No profile — skipping phenotype validation")
 
-            # Phase 2: WAV content audit (TODO #4 fix)
+            # Phase 2: WAV content audit
             # Check that rendered WAVs exist, are non-empty, and count matches expectation.
             renders_dir = output_dir / "renders"
             if renders_dir.exists():
