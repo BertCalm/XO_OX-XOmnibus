@@ -28,7 +28,13 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     add_compile_definitions(XO_MOBILE=1)
 else()
     set(XO_MOBILE OFF)
-    set(XO_FORMATS AU Standalone)  # VST3 added in v2
+    # VST3 is a V2 target (tracked in #98). Add "VST3" to XO_FORMATS here when
+    # VST3 work begins. Pass -DXOLOKUN_BUILD_VST3=ON to enable before that lands.
+    if(XOLOKUN_BUILD_VST3)
+        set(XO_FORMATS AU Standalone VST3)
+    else()
+        set(XO_FORMATS AU Standalone)
+    endif()
 endif()
 
 # JUCE
@@ -435,9 +441,14 @@ target_include_directories(XOlokun PRIVATE
 target_compile_definitions(XOlokun PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
-    JUCE_VST3_CAN_REPLACE_VST2=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
 )
+
+# JUCE_VST3_CAN_REPLACE_VST2 is only relevant when building VST3.
+# Guard it to avoid confusion when VST3 is not in XO_FORMATS.
+if(XOLOKUN_BUILD_VST3)
+    target_compile_definitions(XOlokun PUBLIC JUCE_VST3_CAN_REPLACE_VST2=0)
+endif()
 
 target_link_libraries(XOlokun PRIVATE
     juce::juce_audio_utils
