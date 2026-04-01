@@ -1,8 +1,11 @@
 #pragma once
 #include "ShaperEngine.h"
-#include <functional>
-#include <unordered_map>
+#include <algorithm>
 #include <array>
+#include <functional>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 namespace xolokun {
 

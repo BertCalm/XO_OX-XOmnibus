@@ -482,6 +482,18 @@ public:
         };
 
         // ====================================================================
+        // Stage 0: Bus Shapers (ShaperRegistry bus slots 0-1)
+        // Runs before all MasterFX stages. Bypassed by default until the user
+        // loads and enables a shaper. Uses a stub MidiBuffer since the bus
+        // signal is post-MIDI; shapers may use MIDI for sidechain/key-track.
+        // ====================================================================
+        if (!ShaperRegistry::instance().isGlobalBypassed())
+        {
+            juce::MidiBuffer emptyMidi;
+            ShaperRegistry::instance().processBus (buffer, emptyMidi, numSamples);
+        }
+
+        // ====================================================================
         // Stage 1: Saturation (with mode select)
         // ====================================================================
         float effectiveSatDrive = applySeqMod (satDrive,
@@ -941,6 +953,9 @@ public:
     //--------------------------------------------------------------------------
     void reset()
     {
+        // Stage 0: Bus shapers
+        ShaperRegistry::instance().resetAll();
+
         saturator.reset();
         corroder.reset();
         vibeKnob.reset();
