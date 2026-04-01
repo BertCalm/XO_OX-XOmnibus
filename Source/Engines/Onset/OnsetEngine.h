@@ -1464,7 +1464,7 @@ struct OnsetVoice
 
     // D005: Breathing LFO — continuous autonomous filter modulation
     // Replaced inline struct with shared BreathingLFO (Source/DSP/StandardLFO.h).
-    // Rate is fixed at 0.08 Hz; set once in prepare(), then call process() per sample.
+    // Rate is set from perc_breathRate parameter; updated per block.
     BreathingLFO breathingLFO;
     float baseCutoff = 1000.0f;  // stored at trigger for LFO modulation
 
@@ -1492,7 +1492,7 @@ struct OnsetVoice
         phaseDist.prepare (sampleRate);
         ampEnv.prepare (sampleRate);
         transient.prepare (sampleRate);
-        breathingLFO.setRate (0.08f, static_cast<float> (sampleRate));
+        breathingLFO.setRate (0.08f, static_cast<float> (sampleRate));  // default; overridden per block from perc_breathRate
         voiceFilter.setMode (CytomicSVF::Mode::LowPass);
     }
 
@@ -1828,6 +1828,12 @@ public:
         float masterDrive = percDrive  ? percDrive->load()  : 0.0f;
         float masterTone  = percTone   ? percTone->load()   : 0.5f;
 
+        // D005: update breathing LFO rate on all voices once per block.
+        // Using perc_breathRate gives user + coupling system control over filter drift speed.
+        const float breathRateHz = percBreathRate ? percBreathRate->load() : 0.08f;
+        for (int v = 0; v < kNumVoices; ++v)
+            voices[v].breathingLFO.setRate (breathRateHz, static_cast<float> (sr));
+
         // FX + Character stage snapshots
         float pCharGrit   = charGrit       ? charGrit->load()       : 0.0f;
         float pCharWarmth = charWarmth     ? charWarmth->load()     : 0.5f;
@@ -2060,6 +2066,8 @@ public:
         charGrit   = apvts.getRawParameterValue ("perc_char_grit");
         charWarmth = apvts.getRawParameterValue ("perc_char_warmth");
 
+        percBreathRate = apvts.getRawParameterValue ("perc_breathRate");
+
         fxDelayTime     = apvts.getRawParameterValue ("perc_fx_delay_time");
         fxDelayFeedback = apvts.getRawParameterValue ("perc_fx_delay_feedback");
         fxDelayMix      = apvts.getRawParameterValue ("perc_fx_delay_mix");
@@ -2148,6 +2156,9 @@ private:
     // Character stage parameter pointers
     std::atomic<float>* charGrit   = nullptr;
     std::atomic<float>* charWarmth = nullptr;
+
+    // D005: breathing LFO rate parameter pointer
+    std::atomic<float>* percBreathRate = nullptr;
 
     // XVC state: previous-block voice peak amplitudes
     float voicePeaks[kNumVoices] = {};
@@ -2287,6 +2298,13 @@ private:
         params.push_back (std::make_unique<Float> (
             juce::ParameterID ("perc_xvc_global_amount", 1), "XVC Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // D005: Breathing LFO rate — user-controllable autonomous filter modulation speed.
+        // Range 0.001–8.0 Hz covers ultra-slow organic drift to fast pulse; default 0.08 Hz.
+        // Skew 0.3 gives finer resolution in the sub-Hz range where the effect is most musical.
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_breathRate", 1), "Breath Rate",
+            juce::NormalisableRange<float> (0.001f, 8.0f, 0.0f, 0.3f), 0.08f));
 
         // Character stage
         params.push_back (std::make_unique<Float> (
