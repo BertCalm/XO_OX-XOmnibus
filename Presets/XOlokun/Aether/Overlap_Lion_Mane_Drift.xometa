@@ -27,7 +27,7 @@
   "parameters": {
     "Overlap": {
       "olap_damping": 0.08,
-      "olap_decay": 60.0,
+      "olap_decay": 5.0,
       "olap_delayFeedback": 0.95,
       "olap_diffusion": 0.85,
       "olap_knotType": 1,

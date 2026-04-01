@@ -37,7 +37,7 @@
       "olap_delayFeedback": 0.82,
       "olap_diffusion": 0.72,
       "olap_spread": 0.82,
-      "olap_decay": 35.0,
+      "olap_decay": 5.0,
       "olap_modDepth": 0.12,
       "olap_modRate": 0.03,
       "olap_damping": 0.88,
