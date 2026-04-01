@@ -244,6 +244,18 @@ public:
                 continue;
             }
 
+            // TriangularCoupling (#15) semantic note (#419):
+            // At the matrix level, TriangularCoupling is processed as a generic
+            // audio-rate signal (stereo-to-mono mixdown → applyCouplingInput).
+            // The 3-band Sternberg semantics (Intimacy/Passion/Commitment) are
+            // implemented inside OxytocinAdapter::applyCouplingInput(), which maps
+            // the incoming RMS to all three love components with per-component
+            // scaling (×0.3 / ×0.2 / ×0.15). This is correct V1 behaviour:
+            // the matrix is transport-agnostic; semantics live in the receiver.
+            // Future engines may decode the RMS into band-specific signals if
+            // needed — OxytocinEngine exposes the encoded bands via channel
+            // offsets (bandA=ch0 intimacy, bandB=ch1 passion, bandC=ch2 commitment,
+            // bandD=ch3 memory) in getSampleForCoupling(). Closes #419.
             const bool isAudioRoute =
                 route.type == CouplingType::AudioToWavetable
              || route.type == CouplingType::AudioToFM
