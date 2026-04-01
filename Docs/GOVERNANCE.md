@@ -10,7 +10,7 @@
 | Level | Documents | Description |
 |-------|-----------|-------------|
 | **L1 — Canonical** | `CLAUDE.md`, `Docs/xolokun_master_specification.md` | Single source of truth. Must be updated within 24h of any material change. |
-| **L2 — Living Index** | `Docs/seance_cross_reference.md`, `Docs/MANIFEST.md`, `Skills/README.md` | Accurate indexes. Must stay in sync with L1. |
+| **L2 — Living Index** | `Docs/seances/seance_cross_reference.md`, `Docs/MANIFEST.md`, `Skills/README.md` | Accurate indexes. Must stay in sync with L1. |
 | **L3 — Reference** | `Docs/xolokun_sound_design_guides.md`, `Skills/*/SKILL.md`, `Docs/fleet_health_*.md` | Deep reference. Updated per engine/feature cycle. |
 | **L4 — Historical** | `Docs/prism_sweep_*.md`, `Docs/seances/*.md`, `Docs/guild/*.md` | Immutable once committed. Archival value. |
 | **L5 — Archive** | `Docs/plans/`, `Docs/specs/archive/`, superseded docs | Completed or obsolete. Add status headers, do not delete. |
@@ -27,7 +27,7 @@
 | `Docs/xolokun_master_specification.md` | ✅ Required | Within 24h | Section 3.1 engine table, section 3 coupling if new type added |
 | `Source/XOlokunProcessor.cpp` | ✅ Required | On integration | Register engine, add to addParameters, SilencePeriod if needed |
 | `Source/Core/PresetManager.h` | ✅ Required | On integration | Add to validEngineNames, frozenPrefixForEngine |
-| `Docs/seance_cross_reference.md` | ✅ Required | After seance | Add seance row with score, blessings, D-violations, quote |
+| `Docs/seances/seance_cross_reference.md` | ✅ Required | After seance | Add seance row with score, blessings, D-violations, quote |
 | `Docs/xolokun_sound_design_guides.md` | ✅ Required | Within 1 week | Add per-engine guide section |
 | `Skills/README.md` | ⚠️ If skill changes | On skill creation | Only if a new skill was created for the engine |
 | `CMakeLists.txt` | ✅ Required | On integration | Add .h and .cpp to source list |
@@ -47,7 +47,7 @@
 | Document | Update Required | Timing |
 |----------|----------------|--------|
 | `CLAUDE.md` blessings table | ✅ Required | Within 24h — assign next global B-ID |
-| `Docs/seance_cross_reference.md` engine row | ✅ Required | With seance commit |
+| `Docs/seances/seance_cross_reference.md` engine row | ✅ Required | With seance commit |
 | Seance verdict file | ✅ Required | Same commit as seance |
 
 **Blessing ID assignment rules:**
@@ -60,7 +60,7 @@
 | Document | Update Required | Timing |
 |----------|----------------|--------|
 | `CLAUDE.md` Critical Fleet-Wide Findings | ✅ Required | Same commit as fix |
-| `Docs/seance_cross_reference.md` doctrine violation table | ✅ Required | Within 24h |
+| `Docs/seances/seance_cross_reference.md` doctrine violation table | ✅ Required | Within 24h |
 | `Docs/prism_sweep_final_report.md` | ✅ Required | At round completion |
 
 ### Scenario: New Preset Batch Committed
@@ -75,7 +75,7 @@
 | Document | Update Required | Timing |
 |----------|----------------|--------|
 | `CLAUDE.md` debates table | ✅ Required | Within 24h — change status from UNRESOLVED |
-| `Docs/seance_cross_reference.md` | ✅ Required | Add note in relevant engine row |
+| `Docs/seances/seance_cross_reference.md` | ✅ Required | Add note in relevant engine row |
 | Seance verdict file | ✅ Required | Already committed |
 
 ---

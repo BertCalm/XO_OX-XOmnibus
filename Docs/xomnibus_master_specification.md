@@ -35,7 +35,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 | Document | Authority For | Notes |
 |----------|--------------|-------|
 | `../CLAUDE.md` | Engine registry, blessings (B001–B031), debates, architecture rules | Claude Code project guide — always current |
-| `seance_cross_reference.md` | Engine health, seance scores, D-violations, P0 bugs | Updated after each seance |
+| `seances/seance_cross_reference.md` | Engine health, seance scores, D-violations, P0 bugs | Updated after each seance |
 | `prism_sweep_final_report.md` | 12-round quality history, doctrine resolution | Immutable historical record |
 | `fleet_health_2026_03_20.md` | Current fleet status snapshot | Latest: 2026-03-20 |
 | `xolokun_landscape_2026.md` | Grand survey baseline (2026-03-14) | Pre-sweep; see fleet_health for current |
@@ -169,7 +169,7 @@ The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They
 
 **Authoritative source:** `CLAUDE.md` — Seance Findings section.
 **Per-engine audit tool:** `/engine-health-check` skill.
-**Fleet compliance status:** `Docs/seance_cross_reference.md` — Doctrine Violation Summary.
+**Fleet compliance status:** `Docs/seances/seance_cross_reference.md` — Doctrine Violation Summary.
 
 ---
 

@@ -18,11 +18,11 @@ Sorted by most authoritative/most recent score, descending. Post-fix estimated s
 | OXYTOCIN | 48 | **9.5/10** | 2026-03-22 | B040 Note Duration (unanimous) | "Note duration as emotional state is not a novelty — it is an instrument design philosophy. The causal chain is honest physics." — Buchla | Path to 9.7 in progress (velocity in consummate topology, D003 citation gap, D006 note-duration as explicit expression) | `Docs/concepts/seance-concept-review-xoxytocin.md` |
 | OVERBITE | — | **~9.2 est.** | 2026-03-14 | B008 Five-Macro System (all 8 ghosts) | "These macros are not parameters — they are survival strategies." | No blocking gaps identified | `Docs/seances/overbite_seance_verdict.md` |
 | OWARE | 44 | **9.2/10** (post-fix) | 2026-03-21 | B032 Mallet Articulation Stack; B033 Living Tuning Grid; B034 Per-Mode Sympathetic Network | "The Akan tuning is not approximation — it is the actual harmonic series. The material knows what it is." — Moog | Sympathetic window width (% not Hz); per-material filter envelope ADSR | `Docs/seances/oware-seance-2026-03-21.md`; `Docs/seances/seance-oware-verdict.md` |
-| OBSCURA | — | **~9.1 est.** | 2026-03-14 | — (D003 fully compliant) | "The physics IS the synthesis — this is the only engine where the algorithm is the character." | — | `Docs/seance_cross_reference.md`; `Docs/obscura_synthesis_guide.md` |
+| OBSCURA | — | **~9.1 est.** | 2026-03-14 | — (D003 fully compliant) | "The physics IS the synthesis — this is the only engine where the algorithm is the character." | — | `Docs/seances/seance_cross_reference.md`; `Docs/obscura_synthesis_guide.md` |
 | OUROBOROS | — | **~9.0 est.** | 2026-03-14 | B003 Leash Mechanism; B007 Velocity Coupling Outputs | "Lorenz, Rossler, Chua, Aizawa — this engine cites its sources. It is science." | — | `Docs/seances/ouroboros_seance_verdict.md` |
 | OXBOW | 43 | **9.0/10** (post-fix) | 2026-03-21 | Chiasmus FDN entangled reverb architecture | "The Chiasmus is not a reverb — it is a conversation between two resonant bodies." — Buchla | resonanceQ continuous update (V1.1); monophonic constraint debate (Moog/Schulze) | `Docs/seances/oxbow-seance-2026-03-21.md` |
 | OPCODE | — | **9.0/10** | 2026-03-21 | Cleanest implementation in Fusion quad; all D001–D006 PASS | "This feels like 1983. The 2-operator simplification is honest." | attackTransience in SpectralFingerprint (V2) | `Docs/seances/seance-broth-fusion-verdict.md` |
-| ORGANON | — | **8/8 PASS** (~9.0+) | 2026-03-14 | B011 Variational Free Energy Metabolism | "The VFE implementation is publishable as an academic paper — but it needs a sine wave." | — (D005 LFO resolved) | `Docs/seance_cross_reference.md` |
+| ORGANON | — | **8/8 PASS** (~9.0+) | 2026-03-14 | B011 Variational Free Energy Metabolism | "The VFE implementation is publishable as an academic paper — but it needs a sine wave." | — (D005 LFO resolved) | `Docs/seances/seance_cross_reference.md` |
 
 ### Tier 2 — Very Good (8.7–8.99)
 
@@ -43,7 +43,7 @@ Sorted by most authoritative/most recent score, descending. Post-fix estimated s
 
 | Engine | # | Score | Date | Blessings | Key Ghost Quote | Path to Higher | Source |
 |--------|---|-------|------|-----------|-----------------|----------------|--------|
-| ONSET | — | Ahead of industry (~8.7 est.) | 2026-03-14 | B002 XVC Cross-Voice Coupling; B006 Dual-Layer Blend Architecture | "The XVC matrix is 3 to 5 years ahead of any commercial drum machine." | — | `Docs/seance_cross_reference.md` |
+| ONSET | — | Ahead of industry (~8.7 est.) | 2026-03-14 | B002 XVC Cross-Voice Coupling; B006 Dual-Layer Blend Architecture | "The XVC matrix is 3 to 5 years ahead of any commercial drum machine." | — | `Docs/seances/seance_cross_reference.md` |
 | ORACLE | — | **8.6/10** | 2026-03-14 | B010 GENDY Stochastic Synthesis + Maqam | "Buchla said 10 out of 10 — and there are zero presets to prove it." (resolved) | — (D003 compliant) | `Docs/seances/orca_seance_verdict.md`; `Docs/oracle_synthesis_guide.md` |
 | ORCA | — | **8.6 est.** (post-fix) | 2026-03-19 | APEX HUNT macro (5 simultaneous DSP targets) | "The predator hunts without hearing — aftertouch is silent." (resolved: commit 2035aa0) | — (D006 fixed) | `Docs/seances/orca_seance_verdict.md` |
 | OVERWORN | — | **8.6/10** | 2026-03-21 | ReductionState leaky integrator + Maillard reaction | "The reduction is not a filter — it is time, burning the sauce down to what matters." — Moog | worn_sessionAge never written back to APVTS; reset param toggle-knob semantics | `Docs/seances/seance-broth-fusion-verdict.md` |
@@ -62,38 +62,38 @@ Sorted by most authoritative/most recent score, descending. Post-fix estimated s
 
 | Engine | # | Score | Date | Blessings | Key Ghost Quote | Path to Higher | Source |
 |--------|---|-------|------|-----------|-----------------|----------------|--------|
-| ORBITAL | — | APPROVED (~8.1 est.) | 2026-03-14 | B001 Group Envelope System | "The group envelope is a crown jewel — but without an LFO the jewel sits in a still room." (resolved) | — | `Docs/seance_cross_reference.md` |
-| OSPREY | — | APPROVE/CONDITIONAL (~8.1 est.) | 2026-03-14 | B012 ShoreSystem | "The LFO is written, tested, elegant — and it has never been called." (resolved) | — | `Docs/seance_cross_reference.md` |
-| OSTERIA | — | Production-grade (~8.2 est.) | 2026-03-14 | B012 ShoreSystem | "The right channel of the warmth filter has been cold since the first compile." (resolved) | — | `Docs/seance_cross_reference.md` |
+| ORBITAL | — | APPROVED (~8.1 est.) | 2026-03-14 | B001 Group Envelope System | "The group envelope is a crown jewel — but without an LFO the jewel sits in a still room." (resolved) | — | `Docs/seances/seance_cross_reference.md` |
+| OSPREY | — | APPROVE/CONDITIONAL (~8.1 est.) | 2026-03-14 | B012 ShoreSystem | "The LFO is written, tested, elegant — and it has never been called." (resolved) | — | `Docs/seances/seance_cross_reference.md` |
+| OSTERIA | — | Production-grade (~8.2 est.) | 2026-03-14 | B012 ShoreSystem | "The right channel of the warmth filter has been cold since the first compile." (resolved) | — | `Docs/seances/seance_cross_reference.md` |
 | OCTOPUS | — | **8.3/10** | 2026-03-19 | 8-arm prime-ratio LFO (never phase-locks) | "Eight arms reach into every parameter — but the skin never responds to the player's touch." (resolved: D006 FIXED commit c261a81) | — | `Docs/seances/octopus_seance_verdict.md` |
 | OSIER | — | **8.3/10** | 2026-03-21 | Wind-Reed Synthesis — bowed-string + breath hybrid | "The wind density parameter is the most musically useful atmospheric coupling I have seen." — Moog | — (all D001–D006 PASS) | `Docs/seances/seance-cellar-garden-verdict.md` |
 | ORCHARD | — | **8.2/10** | 2026-03-21 | Bow Pressure Physics — Chaigne-adjacent contact modeling | "The bow pressure curve is genuinely nonlinear — it does not give you more until it gives you everything." — Moog | — (all D001–D006 PASS) | `Docs/seances/seance-cellar-garden-verdict.md` |
 | OCHRE | — | **8.2/10** | 2026-03-21 | Caramel Saturation — fleet's best saturation mechanic | "XOchre is the only engine with a hard P0. It is also the only engine without an architecture doc." | LFO2 dead (KC-P0-04); no architecture doc | `Docs/seances/seance_cross_reference.md` |
 | OBSIDIAN | — | **8.2 est.** (post-sweep) | 2026-03-14 | — | "The right channel has never heard one of the two filters." (resolved) | — (both P0s fixed; formant LFO breathing added) | `Docs/seances/seance_cross_reference.md` |
-| OPAL | — | Concept reviewed (~8.1 est.) | 2026-03-14 | V008 Time-Telescope | "XOpal is the universal transformer — every other engine becomes different when viewed through its lens." | opal_smear fixed; Time-Telescope as V2 feature | `Docs/seance_cross_reference.md` |
+| OPAL | — | Concept reviewed (~8.1 est.) | 2026-03-14 | V008 Time-Telescope | "XOpal is the universal transformer — every other engine becomes different when viewed through its lens." | opal_smear fixed; Time-Telescope as V2 feature | `Docs/seances/seance_cross_reference.md` |
 | OPENSKY | — | **8.1/10** | 2026-03-20 | B023 Shepard Shimmer Architecture; B024 RISE Macro | "Every time you hold a note, the room grows taller." — Buchla | sky_subWave D004 partial; shimmer/chorus mutual exclusion | `Docs/seances/opensky_seance_verdict.md` |
 | OLATE | — | **8.1/10** | 2026-03-21 | FermentationIntegrator — progressive tanh saturation | "Terroir is the most culturally specific parameter in the CELLAR quad and I want it to succeed." — Buchla | KC-P0-02: terroir dead for 0.7–1.0 range; vintage param step-changes | `Docs/seances/seance-cellar-garden-verdict.md` |
 | OVERFLOW | — | **8.0/10** | 2026-03-21 | Pressure Cooker Synthesis | "The pressure cooker model is the correct metaphor for how sustain works in this engine." | BROTH coordinator missing (KC-P0-05) | `Docs/seances/seance-broth-fusion-verdict.md` |
 | OTO | — | **8.0/10** (→8.6 post-retreat) | 2026-03-21 | BC-OTO-01 OtoBreathSource; BC-OTO-02 Cluster Density Partial Sweep | "The Sho aitake ratios are derived from gagaku tuning theory. I see an instrument designer who did the musicological work." — Buchla | KC-P0-06 organ crossfade dead; KC-P0-07 Melodica unaliased above C5 | `Docs/seances/seance-oto-verdict.md` |
 | OCTAVE | — | **8.0/10** | 2026-03-21 | — | "The Leslie speed system and inertia are correct. The Doppler implementation is wrong at a fundamental level." — Hammond (ghost) | KC-P0-08: Leslie Doppler pitch modulation absent | `Docs/seances/seance-octave-verdict.md` |
 | OLEG | — | **8.0/10** (→8.7 with R1–R3) | 2026-03-21 | OlegBuzzBridge — Pignol & Music 2014 citation | "The buzz bridge alone is a genuine fleet contribution." | 10 presets for 4 instruments is thin; D003 partial (tabletop accordion ratios approximate) | `Docs/seances/seance-oleg-verdict.md` |
-| ORIGAMI | — | **~8.0 est.** | 2026-03-14 | — | "The instantaneousFreq variable is a spectral compass that no preset has ever used." | P0-03 STFT race condition fixed; instantaneousFreq still unused | `Docs/seance_cross_reference.md` |
+| ORIGAMI | — | **~8.0 est.** | 2026-03-14 | — | "The instantaneousFreq variable is a spectral compass that no preset has ever used." | P0-03 STFT race condition fixed; instantaneousFreq still unused | `Docs/seances/seance_cross_reference.md` |
 
 ### Tier 5 — Acceptable (7.0–7.9)
 
 | Engine | # | Score | Date | Blessings | Key Ghost Quote | Path to Higher | Source |
 |--------|---|-------|------|-----------|-----------------|----------------|--------|
-| OBLONG | — | **7.x/10** | 2026-03-14 | — | "The CuriosityEngine is the soul but it does not respond to the player's hand." | CuriosityEngine touch response; D006 aftertouch resolved | `Docs/seance_cross_reference.md` |
-| OCEANIC | — | **7.1/10** | 2026-03-14 | B013 Chromatophore Modulator | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." (resolved) | — (D001 resolved Round 9E) | `Docs/seance_cross_reference.md` |
-| OWLFISH | — | **7.1/10** | 2026-03-14 | B014 Mixtur-Trautonium Oscillator | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." (D004+D005 fixed) | — | `Docs/seance_cross_reference.md` |
+| OBLONG | — | **7.x/10** | 2026-03-14 | — | "The CuriosityEngine is the soul but it does not respond to the player's hand." | CuriosityEngine touch response; D006 aftertouch resolved | `Docs/seances/seance_cross_reference.md` |
+| OCEANIC | — | **7.1/10** | 2026-03-14 | B013 Chromatophore Modulator | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." (resolved) | — (D001 resolved Round 9E) | `Docs/seances/seance_cross_reference.md` |
+| OWLFISH | — | **7.1/10** | 2026-03-14 | B014 Mixtur-Trautonium Oscillator | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." (D004+D005 fixed) | — | `Docs/seances/seance_cross_reference.md` |
 | OUTLOOK | — | **7.1/10** → **~8.0** (post-fix) | 2026-03-23 | B039 candidate: Parallax Stereo Field (conditional) | "The parallax stereo field is genuinely novel — note pitch as stereo depth. But the horizon scan is inert for 5/8 waveforms." — Buchla | P0-OUTLOOK-01–04 fixed 2026-03-23; D004 look_delayMix/macroCoupling wired | `Docs/seances/seance_cross_reference.md` |
 | OTTONI | — | **7.2/10** | 2026-03-14 | — | "Four instrument voices and none of them chose to speak." (resolved) | — (D004 fixed; D001 fixed; reverb SR-scaled) | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OBRIX | — | **7.2/10** → 9.4 roadmap | 2026-03-19 | B016 Brick Independence (AMENDED 2026-03-21) | "The ecology is real. The bricks are alive. But the reef has no presets." — Kakehashi | Wave 5 Reef Residency complete; 337+ presets now; audio-rate LFO unlock | `Docs/seances/obrix_seance_verdict.md` |
 | OBLIQUE | — | **~7.2 est.** (post-Round 8A) | 2026-03-14 | — | "Six presets for the engine with the most interesting conceptual premise in the gallery." (expanded to 22+) | — (all doctrines addressed) | `Docs/oblique_deep_recovery.md` |
 | OVERDUB | — | **7.4/10** | 2026-03-14 | B004 Spring Reverb | "The send/return architecture is brilliant but the LFO is a sine wave dressed in burlap." | Single sine LFO; D002 partial (resolved) | `Docs/seances/outwit_seance_verdict.md` |
 | OVERGROW | — | **7.5/10** | 2026-03-21 | Growth Rate Synthesis via Verhulst logistic curve | "The growth equation is Verhulst's logistic curve applied to harmonic content. No other engine grows its timbre from first principles." — Smith | D002 partial: growth rate LFO could be deeper; velocity range narrow | `Docs/seances/seance-cellar-garden-verdict.md` |
-| ODYSSEY | — | **7.6/10** | 2026-03-14 | V007 Climax Paradigm | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." (resolved in presets) | — (dead mod sources wired; AT/MW live) | `Docs/seance_cross_reference.md` |
-| OVERWORLD | — | **7.6/10** | 2026-03-14 | B009 ERA Triangle | "The ERA triangle arrives at the XOlokun dock with no luggage." (D001 + D005 + D006 resolved) | — | `Docs/seance_cross_reference.md` |
+| ODYSSEY | — | **7.6/10** | 2026-03-14 | V007 Climax Paradigm | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." (resolved in presets) | — (dead mod sources wired; AT/MW live) | `Docs/seances/seance_cross_reference.md` |
+| OVERWORLD | — | **7.6/10** | 2026-03-14 | B009 ERA Triangle | "The ERA triangle arrives at the XOlokun dock with no luggage." (D001 + D005 + D006 resolved) | — | `Docs/seances/seance_cross_reference.md` |
 | OHM | — | **7.6/10** | 2026-03-14 | — | "The Dad ensemble knows which instrument to play — and then plays them all in the center." | Mono voice summing; D001 partial (intensity not brightness) | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OVERTONE | — | **7.6/10** (re-seance) | 2026-03-20 | B028 Continued Fraction Convergent Synthesis | "The convergent tables are not decoration — they ARE the synthesis." — Buchla | Pi table spectral collapse at low depth; 1-voice only; Nyquist patched | `Docs/seances/overtone_seance_verdict.md`; `scripture/seances/overtone-seance-2026-03-20.md` |
 | OCEANDEEP | — | **7.8/10** | 2026-03-20 | B029 Hydrostatic Compressor; B030 Bioluminescent Exciter; B031 Darkness Filter Ceiling | "The pressure is physics, not a compressor." — Moog | No independent filter ADSR; missing pitch bend | `Docs/seances/oceandeep_seance_verdict.md` |
@@ -123,17 +123,17 @@ These are original scores that have been significantly improved by post-seance f
 
 | Engine | Verdict | Key Finding | Date | Source |
 |--------|---------|-------------|------|--------|
-| ONSET | Ahead of industry | XVC 3–5 years ahead of commercial drums (B002 + B006) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OPTIC | Revolutionary | Zero-audio synthesis is 10 years ahead of industry (B005) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| ORBITAL | APPROVED | Group Envelope System (B001) — "crown jewel" | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| ORGANON | 8/8 PASS | VFE metabolism publishable as academic paper (B011) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OVERBITE | Full approval | Best macro system in fleet (B008) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OSPREY | APPROVE/CONDITIONAL | ShoreSystem (B012); dead LFO code fixed Round 3B | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OSTERIA | Production-grade | ShoreSystem (B012); warmth filter P0 fixed | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OUROBOROS | Production-ready | Most scientifically rigorous engine (B003 + B007) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OPAL | Concept reviewed | Time-Telescope concept; opal_smear fixed | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| ORIGAMI | Not formally scored | STFT correct; race condition P0 fixed Round 3A | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| OSMOSIS | NOT SEANCED | Design-confirmed 2026-03-21. External audio membrane engine. Build pending. | 2026-03-21 | `Docs/seance_cross_reference.md` |
+| ONSET | Ahead of industry | XVC 3–5 years ahead of commercial drums (B002 + B006) | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OPTIC | Revolutionary | Zero-audio synthesis is 10 years ahead of industry (B005) | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| ORBITAL | APPROVED | Group Envelope System (B001) — "crown jewel" | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| ORGANON | 8/8 PASS | VFE metabolism publishable as academic paper (B011) | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OVERBITE | Full approval | Best macro system in fleet (B008) | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OSPREY | APPROVE/CONDITIONAL | ShoreSystem (B012); dead LFO code fixed Round 3B | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OSTERIA | Production-grade | ShoreSystem (B012); warmth filter P0 fixed | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OUROBOROS | Production-ready | Most scientifically rigorous engine (B003 + B007) | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OPAL | Concept reviewed | Time-Telescope concept; opal_smear fixed | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| ORIGAMI | Not formally scored | STFT correct; race condition P0 fixed Round 3A | 2026-03-14 | `Docs/seances/seance_cross_reference.md` |
+| OSMOSIS | NOT SEANCED | Design-confirmed 2026-03-21. External audio membrane engine. Build pending. | 2026-03-21 | `Docs/seances/seance_cross_reference.md` |
 
 ---
 
