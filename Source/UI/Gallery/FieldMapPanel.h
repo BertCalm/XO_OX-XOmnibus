@@ -62,8 +62,13 @@ public:
         float now = static_cast<float>((juce::Time::getCurrentTime() - sessionStart).inSeconds());
         const float kWindowS = 240.0f; // 4-minute display window
 
-        // ── Background — dark wash with zone bands ───────────────────────────
-        g.setColour(juce::Colour(0xFF0D0D1A));
+        // ── Background — dark wash with zone bands (#393 — theme-aware) ─────
+        // In dark mode: near-black with a blue tinge (original 0xFF0D0D1A).
+        // In light mode: the Gallery shell white so FieldMapPanel integrates
+        // with the light theme while zone bands remain visible.
+        g.setColour(juce::Colour(GalleryColors::darkMode()
+            ? 0xFF0D0D1Au
+            : GalleryColors::shellWhite()));
         g.fillRect(b);
 
         // Zone bands (bottom=Midnight, top=Sunlit — matching XOlokun ecology)
@@ -125,7 +130,10 @@ public:
 
         // ── Label ────────────────────────────────────────────────────────────
         g.setFont(GalleryFonts::body(8.0f));
-        g.setColour(juce::Colours::white.withAlpha(0.20f));
+        // #393: theme-aware label — dark mode: white at 20% alpha; light mode: dark text at 35%.
+        g.setColour(GalleryColors::darkMode()
+            ? juce::Colours::white.withAlpha(0.20f)
+            : juce::Colour(GalleryColors::textMid()).withAlpha(0.35f));
         g.drawText("FIELD MAP", b.reduced(6.0f, 4.0f), juce::Justification::topLeft);
     }
 

@@ -61,9 +61,11 @@ public:
         buildParamStrip();   // creates param row sub-components (hidden until first selection)
         startTimerHz(10);    // hit-flash decay + lazy strip visibility
 
+        setWantsKeyboardFocus(true); // WCAG 2.1.1: arrow-key navigation + Space/Enter trigger (#385)
+
         A11y::setup(*this,
                     "Drum Pad Grid",
-                    juce::String(numVoices) + "-voice pad grid. Click a pad to trigger and select it.");
+                    juce::String(numVoices) + "-voice pad grid. Click a pad to trigger and select it. Arrow keys navigate pads, Space or Enter triggers the selected pad.");
     }
 
     ~DrumPadGrid() override
@@ -221,6 +223,74 @@ public:
             pressedPad = -1;
         }
     }
+
+    // WCAG 2.1.1 keyboard accessibility (#385).
+    // Arrow keys navigate between pads; Space/Enter trigger the selected pad.
+    // The component requests keyboard focus on mouseDown so arrow navigation
+    // begins naturally after the user clicks any pad.
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        int cols = kGridCols;
+        int rows = (numVoices + cols - 1) / cols;
+
+        auto moveTo = [&](int next) {
+            next = juce::jlimit(0, numVoices - 1, next);
+            if (selectedPad != next)
+            {
+                selectedPad = next;
+                if (hasVoiceParams)
+                    activateParamStripForVoice(next);
+                repaint();
+            }
+            return true;
+        };
+
+        if (key == juce::KeyPress::upKey)
+        {
+            return moveTo(selectedPad < 0 ? 0 : selectedPad - cols);
+        }
+        if (key == juce::KeyPress::downKey)
+        {
+            return moveTo(selectedPad < 0 ? 0 : selectedPad + cols);
+        }
+        if (key == juce::KeyPress::leftKey)
+        {
+            return moveTo(selectedPad < 0 ? 0 : selectedPad - 1);
+        }
+        if (key == juce::KeyPress::rightKey)
+        {
+            return moveTo(selectedPad < 0 ? 0 : selectedPad + 1);
+        }
+        if (key == juce::KeyPress::spaceKey
+            || key == juce::KeyPress::returnKey)
+        {
+            int pad = (selectedPad < 0) ? 0 : selectedPad;
+            // Trigger at fixed mezzo-forte velocity (0.6) for keyboard access
+            const float kKbVelocity = 0.6f;
+            padCells[(size_t)pad].hitAlpha = kKbVelocity;
+            selectedPad = pad;
+            if (hasVoiceParams)
+                activateParamStripForVoice(pad);
+
+            if (pressedPad >= 0 && pressedPad != pad)
+            {
+                int prevNote = juce::jlimit(0, 127, kBaseMidiNote + pressedPad);
+                proc.getMidiCollector().addMessageToQueue(
+                    juce::MidiMessage::noteOff(10, prevNote));
+            }
+            int midiNote = juce::jlimit(0, 127, kBaseMidiNote + pad);
+            proc.getMidiCollector().addMessageToQueue(
+                juce::MidiMessage::noteOn(10, midiNote, kKbVelocity));
+            pressedPad = pad;
+            repaint();
+            return true;
+        }
+        (void)rows; // suppress unused-variable warning when rows not used in all branches
+        return false;
+    }
+
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType)   override { repaint(); }
 
 private:
     // ── Internal constants ────────────────────────────────────────────────────

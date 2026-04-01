@@ -1368,6 +1368,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             crossfades[i].outgoing             = std::move(pending.outgoing);
             crossfades[i].fadeGain             = pending.fadeGain;
             crossfades[i].fadeSamplesRemaining = pending.fadeSamplesRemaining;
+            crossfades[i].needsAllNotesOff     = pending.needsAllNotesOff;
             // Release the slot so the message thread may post another swap.
             pending.ready.store(false, std::memory_order_release);
         }
@@ -1894,8 +1895,20 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             continue;
 
         crossfadeBuffer.clear();
-        juce::MidiBuffer emptyMidi;
-        cf.outgoing->renderBlock(crossfadeBuffer, emptyMidi, numSamples);
+        juce::MidiBuffer fadeMidi;
+        // #360: On the first crossfade block, inject CC123 (All Notes Off) and
+        // CC120 (All Sound Off) so any held voices in the outgoing engine release
+        // cleanly instead of sustaining indefinitely (drone / pad engines).
+        if (cf.needsAllNotesOff)
+        {
+            for (int ch = 0; ch < 16; ++ch)
+            {
+                fadeMidi.addEvent(juce::MidiMessage::controllerEvent(ch + 1, 123, 0), 0); // All Notes Off
+                fadeMidi.addEvent(juce::MidiMessage::controllerEvent(ch + 1, 120, 0), 0); // All Sound Off
+            }
+            cf.needsAllNotesOff = false;
+        }
+        cf.outgoing->renderBlock(crossfadeBuffer, fadeMidi, numSamples);
 
         int fadeSamples = std::min(numSamples, cf.fadeSamplesRemaining);
         if (fadeSamples <= 0)

@@ -729,6 +729,16 @@ h3 {
   border-color: var(--teal);
   color: var(--teal);
 }
+/* #388: "Coming Soon" disabled state — no scroll-to-top, honest placeholder */
+.preset-dl-btn--soon {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+.preset-dl-btn--soon:hover {
+  border-color: var(--border);
+  color: var(--text-dim);
+}
 
 .gallery-cta {
   text-align: center;
@@ -1476,7 +1486,7 @@ footer {
           <div class="depth-dot"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Symbiont Bloom preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Symbiont Bloom preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
     <article class="preset-card" data-category="bass" style="--accent-color: #B5883E;">
@@ -1493,7 +1503,7 @@ footer {
           <div class="depth-dot filled"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Trench Walker preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Trench Walker preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
     <article class="preset-card" data-category="pads" style="--accent-color: #A78BFA;">
@@ -1510,7 +1520,7 @@ footer {
           <div class="depth-dot"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Pelagic Drift preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Pelagic Drift preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
     <article class="preset-card" data-category="leads" style="--accent-color: #00A6D6;">
@@ -1527,7 +1537,7 @@ footer {
           <div class="depth-dot"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Neon Strike preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Neon Strike preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
     <article class="preset-card" data-category="drums" style="--accent-color: #0066FF;">
@@ -1544,7 +1554,7 @@ footer {
           <div class="depth-dot"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Deep Kick 001 preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Deep Kick 001 preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
     <article class="preset-card" data-category="experimental" style="--accent-color: #E040FB;">
@@ -1561,7 +1571,7 @@ footer {
           <div class="depth-dot filled"></div>
         </div>
       </div>
-      <a href="#" class="preset-dl-btn" aria-label="Download Chromatophore Storm preset">Download .xometa</a>
+      <a href="#" class="preset-dl-btn preset-dl-btn--soon" aria-label="Chromatophore Storm preset — coming soon" aria-disabled="true" tabindex="0" onclick="return false;">Coming Soon</a>
     </article>
 
   </div>

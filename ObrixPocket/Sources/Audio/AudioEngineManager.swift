@@ -203,15 +203,18 @@ final class AudioEngineManager: ObservableObject {
             ]
             params.append(("obrix_fx1Type", fxTypeMap[specimen.subtype] ?? 1))
         }
-        // Mapped parameter values — apply rarity multiplier to continuous params
+        // Mapped parameter values — apply rarity multiplier and level-up range multiplier
+        // to continuous params. paramRangeMultiplier widens accessible parameter range at
+        // level thresholds (5/7/10) so evolved specimens genuinely sound more powerful (#380).
         let rMult = Self.rarityMultiplier(specimen.rarity)
+        let levelMult = SpecimenLeveling.paramRangeMultiplier(level: specimen.level)
 
         // Build a mutable param dict for bridge-modifier overlay
         var paramDict: [String: Float] = [:]
         for (specimenParam, value) in specimen.parameterState {
             if let mapping = Self.parameterMapping[specimenParam] {
                 let scaled = mapping.scale(value)
-                paramDict[mapping.engineParam] = mapping.isContinuous ? (scaled * rMult) : scaled
+                paramDict[mapping.engineParam] = mapping.isContinuous ? (scaled * rMult * levelMult) : scaled
             }
         }
         // Fill any gaps with catalog defaults so every specimen type's character
@@ -609,11 +612,18 @@ final class AudioEngineManager: ObservableObject {
                 specimen.gentleScore += 0.1
             }
 
-            // Level-up check
+            // Level-up check — capture old level to detect a threshold crossing
+            let oldLevel = specimen.level
             checkAndApplyLevelUp(&specimen)
 
             // Single write — no clobbering
             reefStore.specimens[slotIndex] = specimen
+
+            // #380: If the specimen levelled up, paramRangeMultiplier changed.
+            // Invalidate the param cache so the next noteOn uses the wider range.
+            if specimen.level > oldLevel {
+                rebuildParamCache(reefStore: reefStore)
+            }
         }
     }
 

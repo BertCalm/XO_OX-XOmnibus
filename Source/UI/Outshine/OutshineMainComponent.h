@@ -202,10 +202,16 @@ private:
 
         auto safeThis = juce::Component::SafePointer<OutshineMainComponent>(this);
         auto paths = grainPaths;
+        // #355: Capture engine pointer before thread launch (on message thread).
+        // The destructor sets cancelFlag=true and waits 500ms — if the component is
+        // alive when we check cancelFlag here the pointer is still valid; if it's
+        // about to be destroyed the destructor will wait for us to finish.
+        auto* enginePtr = &outshine;
+        auto& cancelRef = cancelFlag;
 
         // Background thread for analysis
         analysisComplete_.reset();
-        juce::Thread::launch([safeThis, paths]() {
+        juce::Thread::launch([safeThis, paths, enginePtr, &cancelRef]() {
             OutshineSettings settings;
             OutshineProgress progress;
             progress.cancelled = false;
@@ -221,8 +227,8 @@ private:
             };
 
             bool success = false;
-            if (auto* self = safeThis.getComponent())
-                success = self->outshine.analyzeGrains(paths, settings, callback);
+            if (!cancelRef.load())
+                success = enginePtr->analyzeGrains(paths, settings, callback);
 
             juce::MessageManager::callAsync([safeThis, success]() {
                 if (auto* w = safeThis.getComponent())
@@ -269,9 +275,12 @@ private:
         transitionToState(OutshineState::Exporting);
 
         auto safeThis = juce::Component::SafePointer<OutshineMainComponent>(this);
+        // #355: Capture engine pointer before thread launch (on message thread).
+        auto* enginePtr = &outshine;
+        auto& cancelRef = cancelFlag;
 
         analysisComplete_.reset();
-        juce::Thread::launch([safeThis, pearlName, outputPath]() {
+        juce::Thread::launch([safeThis, pearlName, outputPath, enginePtr, &cancelRef]() {
             OutshineSettings settings;
 
             auto callback = [safeThis](OutshineProgress& p) {
@@ -285,8 +294,8 @@ private:
             };
 
             bool success = false;
-            if (auto* self = safeThis.getComponent())
-                success = self->outshine.exportPearl(outputPath, settings, callback);
+            if (!cancelRef.load())
+                success = enginePtr->exportPearl(outputPath, settings, callback);
 
             juce::MessageManager::callAsync([safeThis, success, pearlName]() {
                 if (auto* w = safeThis.getComponent())

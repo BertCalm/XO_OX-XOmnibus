@@ -19,6 +19,7 @@
 #include <cmath>
 
 #include "HarmonicField.h"
+#include "../GalleryColors.h"  // theme-aware color accessors (#393)
 
 namespace xolokun {
 
@@ -128,6 +129,15 @@ public:
 
     //==========================================================================
     // juce::Component overrides
+
+    // WCAG 2.1.1: Page Up / Page Down shift the visible octave range (#385).
+    // Keyboard-only users can scroll the key surface without a mouse wheel.
+    bool keyPressed (const juce::KeyPress& key) override
+    {
+        if (key == juce::KeyPress::pageUpKey)   { octaveUp();   return true; }
+        if (key == juce::KeyPress::pageDownKey) { octaveDown(); return true; }
+        return false;
+    }
 
     void paint (juce::Graphics& g) override
     {
@@ -406,8 +416,12 @@ private:
             g.fillRect (border);
         }
 
-        // --- Key outline (hairline) ------------------------------------------
-        g.setColour (sharp ? juce::Colour (0xFF1A1A1A) : juce::Colour (0xFFBBB8B2));
+        // --- Key outline (hairline) — theme-aware (#393) ---------------------
+        // Sharp key outline: dark text color (dark on dark bg, dark on light bg — both legible).
+        // Natural key outline: border gray (adapts between dark/light palette).
+        g.setColour (sharp
+            ? juce::Colour (GalleryColors::textDark())
+            : juce::Colour (GalleryColors::borderGray()));
         g.drawRect (rect, 1.0f);
     }
 

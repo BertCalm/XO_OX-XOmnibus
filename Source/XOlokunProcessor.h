@@ -338,6 +338,7 @@ private:
         std::shared_ptr<SynthEngine> outgoing;  // engine being faded out
         float fadeGain = 0.0f;                    // 1.0 → 0.0 during crossfade
         int fadeSamplesRemaining = 0;
+        bool needsAllNotesOff = false;            // inject CC123 on first crossfade block (#360)
     };
     std::array<CrossfadeState, MaxSlots> crossfades;
 
@@ -353,6 +354,7 @@ private:
         std::shared_ptr<SynthEngine> outgoing;
         float fadeGain               = 0.0f;
         int   fadeSamplesRemaining   = 0;
+        bool  needsAllNotesOff       = true;      // inject CC123 on first block (#360)
         std::atomic<bool> ready      { false };
 
         // Non-copyable — std::atomic<bool> cannot be copy/move-assigned.
