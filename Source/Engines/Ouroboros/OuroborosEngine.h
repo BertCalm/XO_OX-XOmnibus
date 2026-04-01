@@ -800,8 +800,7 @@ public:
         aftertouch.prepare (sampleRate);
 
         // D005: breathing LFO — sub-Hz sine modulates leash ±0.05.
-        // 0.08 Hz = ~12.5 second cycle. Slow enough to be felt as organic drift
-        // rather than audible vibrato, satisfying the "cannot breathe = photograph" doctrine.
+        // Default 0.08 Hz; overridden each block from ouro_breathRate parameter.
         breathingLFO.setRate (0.08f, static_cast<float> (sampleRate));
         breathingLFO.setShape (StandardLFO::Sine);
         breathingLFO.reset();
@@ -873,8 +872,11 @@ public:
         const float coupBipolar  = (macroCoup  - 0.5f) * 2.0f;
         const float spaceBipolar = (macroSpace - 0.5f) * 2.0f;
 
-        // D005: tick breathing LFO once per block (controls leash micro-drift).
-        const float breathLFO = breathingLFO.process();  // [-1, +1] sine at 0.08 Hz
+        // D005: update breathing LFO rate from ouro_breathRate parameter (once per block),
+        // then tick it to get the current modulation value.
+        const float breathRateHz = paramBreathRate ? paramBreathRate->load() : 0.08f;
+        breathingLFO.setRate (breathRateHz, static_cast<float> (sampleRate));
+        const float breathLFO = breathingLFO.process();  // [-1, +1] sine at user-controlled rate
 
         // Apply macros as additive offsets to core params before use:
         //   CHARACTER:  chaosIndex ±0.3, theta ±15° (0.2618 rad), leash ±0.1
@@ -1456,6 +1458,7 @@ public:
         paramPhi        = apvts.getRawParameterValue ("ouro_phi");
         paramDamping    = apvts.getRawParameterValue ("ouro_damping");
         paramInjection  = apvts.getRawParameterValue ("ouro_injection");
+        paramBreathRate = apvts.getRawParameterValue ("ouro_breathRate");
         paramMacroChar  = apvts.getRawParameterValue ("ouro_macroChar");
         paramMacroMove  = apvts.getRawParameterValue ("ouro_macroMove");
         paramMacroCoup  = apvts.getRawParameterValue ("ouro_macroCoup");
@@ -1542,6 +1545,14 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_macroSpace", 1), "SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // D005: Breathing LFO rate — controls the speed of autonomous leash micro-drift.
+        // Range 0.001–8.0 Hz covers ultra-slow geological drift to fast pulsation.
+        // Default 0.08 Hz = ~12.5-second cycle (original hardcoded value preserved).
+        // Skew 0.3 gives finer resolution in the sub-Hz range where the effect is most musical.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_breathRate", 1), "Breath Rate",
+            juce::NormalisableRange<float> (0.001f, 8.0f, 0.0f, 0.3f), 0.08f));
     }
 
     //==========================================================================
@@ -1641,7 +1652,7 @@ private:
     // D006: mod wheel (CC#1) — tightens leash tension (+0.4 at full wheel)
     float modWheelAmount = 0.0f;
 
-    //-- D005: Breathing LFO — 0.08 Hz sine applied to leash (±0.05 modulation depth) --
+    //-- D005: Breathing LFO — rate set from ouro_breathRate param (±0.05 leash modulation depth) --
     StandardLFO breathingLFO;
 
     //-- Cached parameter pointers (attached once, read per-block) -------------
@@ -1653,6 +1664,7 @@ private:
     std::atomic<float>* paramPhi        = nullptr;
     std::atomic<float>* paramDamping    = nullptr;
     std::atomic<float>* paramInjection  = nullptr;
+    std::atomic<float>* paramBreathRate = nullptr;  // D005: breathing LFO rate (0.001–8.0 Hz)
 
     // D004: four standard macro parameter pointers
     std::atomic<float>* paramMacroChar  = nullptr;  // CHARACTER: chaos + theta + leash
