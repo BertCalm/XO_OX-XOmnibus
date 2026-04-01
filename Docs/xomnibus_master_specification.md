@@ -467,13 +467,15 @@ The platform provides a clean, neutral space — warm white walls, consistent ty
 - **Coupling strip:** Golden corridor connecting two exhibitions
 - **Preset browser:** Exhibition catalog — organized by mood, searchable by DNA
 
-### 6.2 Light Mode Default
+### 6.2 Dark Mode Default
 
-XOlokun defaults to **light mode**. This is a deliberate choice:
-- A bright, clean gallery wall makes engine accent colors pop
-- When every other synth is a dark rectangle, XOlokun is the one you notice
-- Dark mode is available as a toggle for late-night sessions
-- Marketing, screenshots, and first-launch are all light mode
+XOlokun defaults to **dark mode**. This is a deliberate choice:
+- Dark mode is the primary performance environment — studio, stage, and late-night sessions
+- Engine accent colors are most vivid against the dark shell
+- Light mode is available as a toggle for bright environments and marketing screenshots
+- Marketing screenshots may be taken in either mode; the dark shell is the canonical brand presentation
+
+> **Note (2026-03-24 revision):** This section previously stated "light mode default." That was reversed in the Gallery Model redesign. Dark mode is canonical. CLAUDE.md is the authoritative reference.
 
 ### 6.3 Platform Colors (Shell)
 

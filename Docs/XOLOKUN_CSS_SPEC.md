@@ -1,6 +1,6 @@
 # XOlokun V04 Polished — Complete CSS Design Specification
 
-Reference: `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/mockups/xolokun-v04-polished.html`
+Reference: `Docs/mockups/xolokun-v04-polished.html`
 
 **Date**: 2026-03-26
 **Version**: 1.0

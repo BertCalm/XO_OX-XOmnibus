@@ -1,8 +1,10 @@
 # XOlokun Fleet Seance Score Audit
 **Generated:** 2026-03-20
 **Updated:** 2026-03-21 — 5 engines recovered (OBESE/ODDOSCAR/ODDFELIX/OCELOT/ORPHICA); post-fix rescoring applied below. OPERA full seance added (8.7/10, path to 9.1).
-**Scope:** All 46 registered engines (OXBOW + OWARE + OPERA + OFFERING added 2026-03-21)
+**Scope:** All 46 registered engines as of 2026-03-21 (OXBOW + OWARE + OPERA + OFFERING added 2026-03-21)
 **Sources:** `Docs/seances/*_verdict.md`, `Docs/seances/*_seance*.md`, `scripture/seances/*.md`, `Docs/seance_cross_reference.md`, `Docs/seance_ombre_orca_octopus.md`, `Docs/seance_ostinato_opensky_oceandeep_ouie.md`, `~/.claude/skills/synth-seance/knowledge/index.md`
+
+> **STALENESS WARNING (2026-03-30):** This file documents 46 engines. The current fleet has 74 engines (28 engines added between 2026-03-21 and 2026-03-28). The 28 engines added after this file's last update — including OSMOSIS, OXYTOCIN, OUTLOOK, OBIONT, and all 24 Kitchen Collection engines — are not reflected here. The MANIFEST.md L2 48-hour SLA for this file has been exceeded. A full fleet regeneration is required before V1 launch. See `Docs/seances/seance_cross_reference.md` for the most current per-engine status. Issue #467 tracks this.
 
 ---
 

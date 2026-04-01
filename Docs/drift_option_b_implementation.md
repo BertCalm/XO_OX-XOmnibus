@@ -156,14 +156,14 @@ All three new DSP classes satisfy the XOlokun architecture constraints:
 
 ## Files Modified
 
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Drift/DriftEngine.h` — primary change file
+- `Source/Engines/Drift/DriftEngine.h` — primary change file
 
 ## Files Referenced (read-only)
 
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/drift_fx_gap_analysis.md` — analysis driving this pass
-- `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/TidalPulse.h` — source for DriftTidalPulse
-- `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/Fracture.h` — source for DriftFracture
-- `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/ReverbFX.h` — source for DriftReverb
+- `Docs/drift_fx_gap_analysis.md` — analysis driving this pass
+- `[external] XOdyssey/src/engine/TidalPulse.h` — source for DriftTidalPulse
+- `[external] XOdyssey/src/engine/Fracture.h` — source for DriftFracture
+- `[external] XOdyssey/src/engine/ReverbFX.h` — source for DriftReverb
 
 ---
 

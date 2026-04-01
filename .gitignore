@@ -42,6 +42,9 @@ Export/
 *.pem
 *.key
 *.cert
+*.crt
+*.pfx
+*.p12
 credentials.json
 secrets/
 supabase/.env.local

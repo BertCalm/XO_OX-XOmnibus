@@ -31,6 +31,21 @@ auval -v aumu Xolk XoOx
 
 If `auval` passes, the engine is trustworthy. If it fails, don't ship it.
 
+### Python Tools Setup
+
+`Tools/` contains Python utilities for preset management, XPN export, and DNA analysis. Most tools use only the standard library, but a few optional dependencies enable cover art generation and DSP expansion:
+
+```bash
+# Install optional Python dependencies (Python 3.9+ required)
+pip install -r Tools/requirements.txt
+
+# Or install only what you need:
+pip install Pillow numpy        # cover art tools (xpn_cover_art.py)
+pip install soundfile scipy     # DSP expansion (xpn_kit_expander.py)
+```
+
+Most tools run without any of these installed — they degrade gracefully when optional deps are absent.
+
 ## Architecture
 
 - **Engines** (`Source/Engines/`): Each engine implements the `SynthEngine` interface. DSP lives inline in `.h` headers — portable, testable, no `.cpp` bloat.

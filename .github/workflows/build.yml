@@ -28,7 +28,10 @@ jobs:
         if: steps.cache-juce.outputs.cache-hit != 'true'
         run: |
           mkdir -p Libs
-          git clone --depth 1 --branch 8.0.4 https://github.com/juce-framework/JUCE.git Libs/JUCE
+          # Pin to the exact commit SHA for JUCE 8.0.4 to prevent supply chain attacks
+          # via force-pushed tags. SHA verified 2026-03-30 against juce-framework/JUCE tag 8.0.4.
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
 
       - name: Install Ninja
         run: brew install ninja

@@ -83,7 +83,7 @@ across the entire fleet.
 cmake --build build --target XOlokun_All
 ```
 
-**Result:** PASS — 66/66 targets, 0 errors, 0 warnings related to mod wheel changes. AU component installed to `/Users/joshuacramblet/Library/Audio/Plug-Ins/Components/XOlokun.component`.
+**Result:** PASS — 66/66 targets, 0 errors, 0 warnings related to mod wheel changes. AU component installed to `$HOME/Library/Audio/Plug-Ins/Components/XOlokun.component`.
 
 ---
 

@@ -154,6 +154,19 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 ---
 
+## The Six Doctrines (`doctrines/`)
+
+Formal definition files for D001–D006 — requirements, failure patterns, test criteria, fleet compliance.
+
+- [doctrines/D001-velocity-shapes-timbre.md](doctrines/D001-velocity-shapes-timbre.md) — D001: Velocity Must Shape Timbre
+- [doctrines/D002-modulation-is-lifeblood.md](doctrines/D002-modulation-is-lifeblood.md) — D002: Modulation Is the Lifeblood
+- [doctrines/D003-physics-is-synthesis.md](doctrines/D003-physics-is-synthesis.md) — D003: The Physics IS the Synthesis
+- [doctrines/D004-dead-parameters.md](doctrines/D004-dead-parameters.md) — D004: Dead Parameters Are Broken Promises
+- [doctrines/D005-engines-must-breathe.md](doctrines/D005-engines-must-breathe.md) — D005: An Engine That Cannot Breathe Is a Photograph
+- [doctrines/D006-expression-required.md](doctrines/D006-expression-required.md) — D006: Expression Input Is Not Optional
+
+---
+
 ## Doctrine Fixes & Fix Reports
 
 - [p0_fixes_applied.md](p0_fixes_applied.md) — P0 doctrine fixes applied

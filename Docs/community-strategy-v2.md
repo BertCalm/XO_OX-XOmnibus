@@ -6,6 +6,22 @@
 
 ---
 
+## Implementation Status (Updated 2026-03-30)
+
+The five community features listed below are planned post-launch, not launch-day features. None have code implementations yet — this is by design (see Phase rollout model in Section 2).
+
+| Feature | Phase | Target | Code Status |
+|---------|-------|--------|-------------|
+| `.xcoupling` Protocol + GitHub Registry | Phase 2 (Month 2) | Separate GitHub repo + format spec | TODO: create spec + seed repo |
+| Alignment Rite Audio Quiz | Phase 2 (Month 2-3) | Site page at `/alignment` | TODO: HTML + quiz logic + local persistence |
+| Discord Creature Bots (DeepBot, Professor Oscar) | Phase 2 (Month 2+) | Discord bot service | TODO: extend `Tools/social/discord_webhook.py` |
+| Community Challenge System | Phase 2 (Month 1-2) | Challenge submission workflow | TODO: define submission format + review process |
+| Newsletter / Email Capture | Not planned | Not planned — "For All" principle | Intentionally absent per strategy |
+
+**Note:** Newsletter/email capture is explicitly excluded by strategy ("No email capture. No gate." — Section 3). This is correct.
+
+---
+
 ## Why v2 Exists
 
 v1 was a vision document. It described the ocean we want to build. v2 is an operations document. It describes the harbor where we launch the boat.

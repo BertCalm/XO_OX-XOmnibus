@@ -59,12 +59,21 @@ All Diver benefits, plus:
 
 ## II. Milestone Release Strategy
 
+> **Model Clarification (2026-03-30):** Two release models are documented across different files.
+> This document describes the **patron-milestone model** (unlock by patron count).
+> `kitchen-collection-release-calendar.md` describes the **calendar model** (unlock by date, Aug–Dec 2026).
+> The intended resolution: milestone unlocks are the *ceiling* trigger, calendar dates are the *floor* trigger.
+> A quad ships when **either** (a) its patron milestone is reached, **or** (b) its calendar ship date passes — whichever comes first.
+> The KC engines are code-complete as of 2026-03-23. The gates are editorial/Patreon windows, not build time.
+> This reconciliation should be formalized before V1 launch. See issue #413.
+
 ### How It Works
 
 1. When the Patreon reaches a patron count milestone, a Kitchen Collection quad unlocks
-2. The unlock is **permanent and free for everyone** — not just patrons
-3. Patrons vote on which quad unlocks next (from the remaining pool)
-4. Each unlock is celebrated with a "Depth Event" — a themed release with accompanying content
+2. Alternatively, each quad ships on its calendar date regardless of patron count
+3. The unlock is **permanent and free for everyone** — not just patrons
+4. Patrons vote on which quad unlocks next (from the remaining pool)
+5. Each unlock is celebrated with a "Depth Event" — a themed release with accompanying content
 
 ### Milestone Map
 

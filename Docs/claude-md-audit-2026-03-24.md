@@ -8,7 +8,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 
 | File | Location |
 |------|----------|
-| `CLAUDE.md` (audio-xpm-creator) | `/Users/joshuacramblet/CLAUDE.md` |
+| `CLAUDE.md` (audio-xpm-creator) | `$HOME/CLAUDE.md` |
 | `CLAUDE.md` (XOlokun) | `XO_OX-XOmnibus/CLAUDE.md` |
 | `CLAUDE.md` (XOzone) | `XO_OX-XOzone-Instrument/CLAUDE.md` |
 | `CLAUDE.md` (XOxytocin) | `XOxytocin/CLAUDE.md` |
@@ -28,7 +28,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 
 ---
 
-## File 1: `/Users/joshuacramblet/CLAUDE.md` (audio-xpm-creator)
+## File 1: `$HOME/CLAUDE.md` (audio-xpm-creator)
 
 **Score: 84/100**
 
@@ -136,7 +136,7 @@ None. Scores are acceptable and this is a standalone instrument (lower priority 
 
 | File | Changes |
 |------|---------|
-| `/Users/joshuacramblet/CLAUDE.md` | Added `npm run dev` + `npm run build` to Environment |
+| `$HOME/CLAUDE.md` | Added `npm run dev` + `npm run build` to Environment |
 | `XO_OX-XOmnibus/CLAUDE.md` | Fixed preset count; added Environment section with JUCE gotchas + AU ID; added auval command; added V1 Scope section; added Kitchen Collection section; expanded Documentation Index |
 | `XOxytocin/CLAUDE.md` | Replaced 5x XOmnibus → XOlokun; updated seance status (9.5/10); updated preset count (120 → 130) |
 | `XO_OX-XOzone-Instrument/CLAUDE.md` | No changes (standalone instrument, acceptable baseline) |
