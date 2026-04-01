@@ -77,6 +77,7 @@ struct SpecimenParamPanel: View {
                             .font(.system(size: 14))
                             .foregroundColor((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? DesignTokens.errorRed : .white.opacity(0.3))
                     }
+                    .accessibilityLabel((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? "Remove from favorites" : "Add to favorites")
 
                     // Close button — 28pt visible area, 44pt tap target
                     Button(action: { onDismiss?() }) {
@@ -87,6 +88,7 @@ struct SpecimenParamPanel: View {
                             .background(Color.white.opacity(0.06))
                             .clipShape(Circle())
                     }
+                    .accessibilityLabel("Close parameter panel")
                     .frame(minWidth: 44, minHeight: 44)
                     .contentShape(Rectangle())
                 }
@@ -605,6 +607,9 @@ struct SpecimenParamPanel: View {
                 )
                 .tint(.clear) // Hide default tint — we draw our own track
                 .accentColor(.clear)
+                .accessibilityLabel(label)
+                .accessibilityValue(formatValue(liveValue, unit: unit, range: range))
+                .accessibilityAddTraits(.updatesFrequently)
             }
 
             // Value readout
