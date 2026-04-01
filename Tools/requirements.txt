@@ -5,15 +5,23 @@
 # All tools degrade gracefully when optional deps are absent.
 #
 # Install all optional deps at once:
-#   pip install Pillow numpy scipy soundfile
+#   pip install Pillow numpy scipy soundfile mido python-rtmidi sounddevice pyloudnorm
 #
 # Per-tool breakdown:
 #   Pillow, numpy       — xpn_cover_art.py, xpn_cover_art_batch.py
 #                         (cover art generation; both required together)
 #   soundfile           — xpn_kit_expander.py (WAV I/O for DSP expansion)
 #   scipy               — xpn_kit_expander.py (signal processing for expansion)
+#   mido                — MIDI export tools (MIDI file I/O)
+#   python-rtmidi       — live preview tools (real-time MIDI I/O)
+#   sounddevice         — audio preview during export (audio playback)
+#   pyloudnorm          — XPN loudness normalization step
 
 Pillow>=9.0
 numpy>=1.21
 soundfile>=0.10
 scipy>=1.7
+mido>=1.3.0
+python-rtmidi>=1.5.0
+sounddevice>=0.4.6
+pyloudnorm>=0.1.1

@@ -118,7 +118,12 @@ struct ObrixPocketApp: App {
                         // incoming call) before the process reaches .background or is killed outright.
                         reefStore.saveImmediately()
                     case .background:
-                        reefStore.save()
+                        // Force active notes off before saving so XP state is complete and the
+                        // audio engine is clean on the next foreground restore (issue #443).
+                        audioEngine.allNotesOff()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            reefStore.save()
+                        }
                         // Don't stop audio — reef ambient continues in background per spec (Section 5.2)
                         // UIBackgroundModes: audio in Info.plist permits this.
                         // The interruption handler manages stop/restart on phone calls, etc.

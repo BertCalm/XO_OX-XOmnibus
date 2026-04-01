@@ -11,6 +11,7 @@ final class AudioEngineManager: ObservableObject {
     @Published var hasPlayedFirstNote = false
 
     private var audioSessionConfigured = false
+    private var isInterrupted = false
     private let midiOutput = MIDIOutputManager()
 
     /// Bridge to genetics, aging, memory, and nursery modifiers.
@@ -714,8 +715,12 @@ final class AudioEngineManager: ObservableObject {
 
         switch type {
         case .began:
+            isInterrupted = true
             stop()
         case .ended:
+            // Guard against spurious .ended without a prior .began (nested interruptions).
+            guard isInterrupted else { return }
+
             // Always attempt resume — InterruptionOptionKey may be absent on iOS 14+
             let shouldResume: Bool
             if let optionsValue = info[AVAudioSessionInterruptionOptionKey] as? UInt {
@@ -725,11 +730,14 @@ final class AudioEngineManager: ObservableObject {
             }
             if shouldResume {
                 do {
-                    try AVAudioSession.sharedInstance().setActive(true)
+                    try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+                    isInterrupted = false
+                    start()
                 } catch {
-                    print("[ObrixPocket] Failed to reactivate audio session: \(error)")
+                    // Don't start the engine if session reactivation failed — audio would
+                    // be routed to a dead session and produce silence or a crash.
+                    print("[ObrixPocket] Failed to reactivate audio session after interruption: \(error)")
                 }
-                start()
             }
         @unknown default:
             break

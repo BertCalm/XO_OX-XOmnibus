@@ -66,6 +66,21 @@ CANONICAL = {
     # V2 theorem engines
     "OVERTONE": "Overtone",
     "ORGANISM": "Organism",
+    # Newer engines (2026-03-20 to 2026-03-28)
+    "OXBOW":     "Oxbow",
+    "OWARE":     "Oware",
+    "OPERA":     "Opera",
+    "OFFERING":  "Offering",
+    "OSMOSIS":   "Osmosis",
+    "OXYTOCIN":  "Oxytocin",
+    "Oxytocin":  "Oxytocin",
+    "XOxytocin": "Oxytocin",
+    "OUTLOOK":   "Outlook",
+    "Outlook":   "Outlook",
+    "XOutlook":  "Outlook",
+    "OBIONT":    "Obiont",
+    "Obiont":    "Obiont",
+    "XObiont":   "Obiont",
     # X-prefixed variants not in PresetManager alias table
     # (Constellation + Phase 3/4 engines added after the original alias set)
     "XOhm": "Ohm",
