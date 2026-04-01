@@ -875,6 +875,42 @@
         "name": "Wide-Eye Horizon Fish",
         "zone": "sunlit"
       }
+    },
+    {
+      "id": "OKEANOS",
+      "accent": "#C49B3F",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Horseshoe Crab.png",
+        "path": "img/fish/saltwater/Horseshoe Crab.png",
+        "spritesheetRow": null,
+        "name": "Horseshoe Crab",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OUTFLOW",
+      "accent": "#1A1A40",
+      "creature": {
+        "source": "bagatan-abyss",
+        "file": "fangtooth_fish.png",
+        "path": "img/fish/abyss/fangtooth_fish.png",
+        "spritesheetRow": null,
+        "name": "Fangtooth Fish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OBIONT",
+      "accent": "#E8A030",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Firefly Squid.png",
+        "path": "img/fish/saltwater/Firefly Squid.png",
+        "spritesheetRow": null,
+        "name": "Firefly Squid",
+        "zone": "twilight"
+      }
     }
   ]
 }

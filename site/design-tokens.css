@@ -6,7 +6,7 @@
  * Sections:
  *   1. Global Brand
  *   2. Ecological Depth Zones
- *   3. Engine Accent Colors (73 engines)
+ *   3. Engine Accent Colors (76 engines)
  *   4. Ecological Instrument Anatomy
  *   5. Glass / Porthole Formula
  *   6. PlaySurface Tokens
@@ -117,7 +117,7 @@
 
 
 /* ============================================================
-   SECTION 3 — Engine Accent Colors (73 engines)
+   SECTION 3 — Engine Accent Colors (76 engines)
    One custom property per registered engine.
    Property name matches the Engine ID (all-caps).
    Source: CLAUDE.md Engine Modules table.
@@ -230,6 +230,9 @@
   --engine-ONKOLO:   #FFBF00;   /* Spectral Amber            — XOnkolo */
   --engine-OPCODE:   #00CED1;   /* Dark Turquoise            — XOpcode */
   --engine-OUTLOOK:  #4169E1;   /* Horizon Indigo            — XOutlook */
+  --engine-OKEANOS: #C49B3F;   /* Spice Route Gold          — XOkeanos */
+  --engine-OUTFLOW: #1A1A40;   /* Predictive Void           — XOutflow */
+  --engine-OBIONT:  #E8A030;   /* Bioluminescent Amber      — XObiont */
 }
 
 
