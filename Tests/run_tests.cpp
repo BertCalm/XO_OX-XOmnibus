@@ -9,6 +9,7 @@
 #include "DSPTests/DSPComponentTests.h"
 #include "CouplingTests/CouplingMatrixTests.h"
 #include "PresetTests/PresetRoundTripTests.h"
+#include "PresetTests/BackwardCompatibilityTests.h"
 #include "ExportTests/XPNExportTests.h"
 #include "DoctrineTests/DoctrineTests.h"
 #include "PlaySurfaceTests/HarmonicFieldTests.h"
@@ -34,6 +35,7 @@ int main()
     totalFailures += dsp_component_tests::runAll();
     totalFailures += coupling_tests::runAll();
     totalFailures += preset_tests::runAll();
+    totalFailures += backward_compat_tests::runAll();
     totalFailures += export_tests::runAll();
     totalFailures += doctrine_tests::runAll();
     totalFailures += playsurface_tests::runAll();
