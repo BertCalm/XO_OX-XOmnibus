@@ -93,43 +93,47 @@ namespace xolokun {
 // Porcelain Cups: struck ceramic — bell-like but with porcelain's narrow bandwidth
 //==============================================================================
 
+namespace {  // anonymous namespace — prevents ODR violations when multiple engine headers are included
+
 // Celesta: tuned metal bars — nearly perfect harmonic series
 // (bars with resonator tubes produce very clean partials)
-static constexpr float kCelestaRatios[16] = {
+constexpr float kCelestaRatios[16] = {
     1.000f, 2.000f, 3.000f, 4.000f, 5.000f, 6.000f, 7.000f, 8.000f,
     9.000f, 10.00f, 11.00f, 12.00f, 13.00f, 14.00f, 15.00f, 16.00f
 };
 
 // Toy Piano: metal tines struck by small hammers — slightly inharmonic
 // (short, stiff tines produce stretched partials per beam equation)
-static constexpr float kToyPianoRatios[16] = {
+constexpr float kToyPianoRatios[16] = {
     1.000f, 2.756f, 5.404f, 8.933f, 13.34f, 18.64f, 24.81f, 31.84f,
     1.500f, 3.010f, 5.982f, 9.880f, 14.63f, 20.22f, 26.66f, 33.95f
 };
 
 // Glass Harp: circular plate/shell modes — strongly inharmonic
 // (wine glass has (n,m) shell mode pairs, producing ethereal shimmer)
-static constexpr float kGlassHarpRatios[16] = {
+constexpr float kGlassHarpRatios[16] = {
     1.000f, 1.594f, 2.136f, 2.653f, 3.156f, 3.652f, 4.154f, 4.670f,
     5.208f, 5.774f, 6.373f, 7.011f, 7.694f, 8.426f, 9.212f, 10.06f
 };
 
 // Porcelain Cups: struck ceramic — bell-like (Rossing 2000)
 // (porcelain cup modes are between bell and plate — moderately inharmonic)
-static constexpr float kPorcelainRatios[16] = {
+constexpr float kPorcelainRatios[16] = {
     1.000f, 1.506f, 2.000f, 2.514f, 3.011f, 3.578f, 4.170f, 4.952f,
     5.820f, 6.770f, 7.800f, 8.910f, 10.10f, 11.37f, 12.72f, 14.15f
 };
 
 // Per-instrument mode amplitude rolloff: how quickly higher modes decay
 // Celesta = slow rolloff (pure), Toy Piano = mid, Glass/Porcelain = fast
-static constexpr float kModeRolloff[4] = { 0.12f, 0.20f, 0.18f, 0.15f };
+constexpr float kModeRolloff[4] = { 0.12f, 0.20f, 0.18f, 0.15f };
 
 // Per-instrument base Q (glass is VERY high Q — rings forever)
-static constexpr float kBaseQ[4] = { 200.0f, 120.0f, 500.0f, 350.0f };
+constexpr float kBaseQ[4] = { 200.0f, 120.0f, 500.0f, 350.0f };
 
 // Per-instrument sympathetic ring potential (glass: almost none)
-static constexpr float kSympathyScale[4] = { 0.15f, 0.10f, 0.05f, 0.08f };
+constexpr float kSympathyScale[4] = { 0.15f, 0.10f, 0.05f, 0.08f };
+
+}  // anonymous namespace
 
 //==============================================================================
 // OpalineExciter — Hammer/striker model tailored per instrument type.

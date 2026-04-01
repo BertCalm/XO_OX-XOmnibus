@@ -66,7 +66,9 @@ namespace xolokun {
 // voice. Ratios are relative to the fundamental, derived from the 17-pipe
 // configuration of the traditional sho.
 //==============================================================================
-static constexpr float kShoAitakeRatios[11] = {
+namespace {  // anonymous namespace — prevents ODR violations when multiple engine headers are included
+
+constexpr float kShoAitakeRatios[11] = {
     1.000f,   // fundamental (root)
     1.0595f,  // minor 2nd (beating with root)
     1.1892f,  // minor 3rd
@@ -84,7 +86,7 @@ static constexpr float kShoAitakeRatios[11] = {
 // Sheng partial ratios -- brighter, more defined harmonics.
 // Based on measured spectra of 17-pipe sheng (Zhou, 2010).
 //==============================================================================
-static constexpr float kShengRatios[11] = {
+constexpr float kShengRatios[11] = {
     1.000f,
     2.000f,   // strong octave
     3.000f,   // 12th
@@ -102,7 +104,7 @@ static constexpr float kShengRatios[11] = {
 // Khene paired-pipe ratios -- deliberately non-harmonic for beating.
 // Each "pipe pair" has slight detuning (~3-8 cents) built in.
 //==============================================================================
-static constexpr float kKheneRatios[11] = {
+constexpr float kKheneRatios[11] = {
     1.000f,
     1.003f,   // detuned unison (paired pipe beating)
     2.000f,
@@ -120,7 +122,7 @@ static constexpr float kKheneRatios[11] = {
 // Melodica has simpler harmonic content (reed + plastic body resonance).
 // Mix of saw-like harmonics with body resonance shaping.
 //==============================================================================
-static constexpr float kMelodicaRatios[11] = {
+constexpr float kMelodicaRatios[11] = {
     1.000f,
     2.000f,
     3.000f,
@@ -139,18 +141,20 @@ static constexpr float kMelodicaRatios[11] = {
 // Sho: relatively even (cluster chord), Sheng: falling harmonics,
 // Khene: paired strong, Melodica: saw-like 1/n rolloff.
 //==============================================================================
-static constexpr float kShoAmps[11] = {
+constexpr float kShoAmps[11] = {
     1.0f, 0.9f, 0.85f, 0.8f, 0.75f, 0.65f, 0.6f, 0.5f, 0.4f, 0.3f, 0.25f
 };
-static constexpr float kShengAmps[11] = {
+constexpr float kShengAmps[11] = {
     1.0f, 0.7f, 0.5f, 0.35f, 0.25f, 0.18f, 0.13f, 0.09f, 0.06f, 0.04f, 0.03f
 };
-static constexpr float kKheneAmps[11] = {
+constexpr float kKheneAmps[11] = {
     1.0f, 0.95f, 0.7f, 0.65f, 0.5f, 0.45f, 0.35f, 0.3f, 0.2f, 0.15f, 0.1f
 };
-static constexpr float kMelodicaAmps[11] = {
+constexpr float kMelodicaAmps[11] = {
     1.0f, 0.5f, 0.33f, 0.25f, 0.2f, 0.16f, 0.14f, 0.12f, 0.0f, 0.0f, 0.0f
 };
+
+}  // anonymous namespace
 
 //==============================================================================
 // OtoChiffGenerator -- brief harmonic burst on note-on that simulates the

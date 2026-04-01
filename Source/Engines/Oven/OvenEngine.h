@@ -70,7 +70,9 @@ namespace xolokun {
 //
 // For cast iron with B ~= 0.0004 (high stiffness, high density):
 //==============================================================================
-static constexpr float kCastIronModeRatios[16] = {
+namespace {  // anonymous namespace — prevents ODR violations when multiple engine headers are included
+
+constexpr float kCastIronModeRatios[16] = {
     1.000f,   // fundamental body mode
     2.005f,   // ~octave, slight stretch from stiffness
     3.018f,   // 5th above octave
@@ -91,10 +93,12 @@ static constexpr float kCastIronModeRatios[16] = {
 
 // Audsley spectral envelope: amplitude weighting per mode for concert grand.
 // Fundamental strongest, 1/n rolloff with slight boost at modes 3-5 (formant).
-static constexpr float kAudsleyAmplitudes[16] = {
+constexpr float kAudsleyAmplitudes[16] = {
     1.000f, 0.620f, 0.550f, 0.480f, 0.400f, 0.310f, 0.240f, 0.185f,
     0.140f, 0.105f, 0.078f, 0.058f, 0.042f, 0.030f, 0.021f, 0.015f
 };
+
+}  // anonymous namespace
 
 //==============================================================================
 // OvenModalResonator — second-order IIR resonator with dynamic pruning.
