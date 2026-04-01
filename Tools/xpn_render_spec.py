@@ -375,6 +375,348 @@ ENGINE_STRATEGIES = {
                        "axis positions. Capture both characters.",
         "variants": ["strife", "love"],
     },
+
+    # ── Theorem engines (2026-03-20+) ─────────────────────────────────────────
+    "Obrix": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Modular brick synthesis — coral reef ecology. Render with "
+                       "Harmonic Field at 0.0 (dry brick) and 1.0 (full JI attractor).",
+        "variants": ["field_off", "field_on"],
+    },
+    "Orbweave": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Topological knot coupling — render at different knot types. "
+                       "Hold 3+ seconds for the knot phase to evolve.",
+        "variants": ["trefoil", "torus"],
+    },
+    "Overtone": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Continued fraction spectral — render at different convergent "
+                       "constants (π, φ, √2). Full range, clean captures.",
+        "variants": ["pi_convergent", "phi_convergent"],
+    },
+    "Organism": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Cellular automata generative — render 30s stems per rule set. "
+                       "Captures emergent coral colony patterns across rule changes.",
+        "variants": ["rule_a", "rule_b"],
+    },
+    "Oxbow": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Entangled reverb synth — render dry and wet variants. "
+                       "Hold 4+ seconds for the FDN reverb tail to develop.",
+        "variants": ["dry", "wet"],
+    },
+    "Oware": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Tuned percussion — mallet physics. Render with different "
+                       "material settings (wood/metal/stone). 2s hold per note.",
+        "variants": ["wood", "metal", "stone"],
+    },
+    "Opera": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Additive-vocal Kuramoto — render with Conductor arc active. "
+                       "Hold 4+ seconds for the dramatic arc to develop.",
+    },
+    "Offering": {
+        "program_type": "drum",
+        "voices": ["kick", "snare", "chat", "ohat", "clap", "tom", "fx", "accent"],
+        "vel_layers": 4,
+        "vel_suffixes": ["v1", "v2", "v3", "v4"],
+        "notes": None,
+        "description": "Psychology-driven boom bap — 8 voices × 4 velocity layers. "
+                       "Capture the Berlyne curiosity arc across velocity layers.",
+    },
+    "Osmosis": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "External audio membrane — render 30s process stems. "
+                       "Route external source through the membrane at low/high permeability.",
+        "variants": ["low_permeability", "high_permeability"],
+    },
+    "Oxytocin": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Circuit-modeling love-triangle — render long notes (4+ seconds) to "
+                       "capture note-duration-as-synthesis (B040). Include intimacy/passion "
+                       "axis variants.",
+        "variants": ["short_notes", "long_notes"],
+    },
+    "Outlook": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 2,
+        "range": "C1-C6",
+        "description": "Panoramic dual wavetable — render with vista filter at different "
+                       "horizon scan positions. Full range.",
+        "variants": ["near_horizon", "far_horizon"],
+    },
+    "Obiont": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Wolfram CA oscillator — render at different CA rule sets "
+                       "(30 = chaotic, 110 = complex, 90 = symmetric). "
+                       "8-voice poly — render chords for full texture.",
+        "variants": ["rule_30", "rule_90", "rule_110"],
+    },
+    "Okeanos": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Spice Route Rhodes — bioluminescent EP. Render with entropy at "
+                       "low (clean) and high (evolved) settings.",
+        "variants": ["clean", "evolved"],
+    },
+    "Outflow": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Predictive fluid dynamics — render at different current speed "
+                       "settings. Hold 3+ seconds for spatial evolution.",
+        "variants": ["low_current", "high_current"],
+    },
+
+    # ── Kitchen Collection — Chef quad (organs) ────────────────────────────────
+    "Oto": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Pipe organ / melodica / harmonica / sho — render at 3 drawbar "
+                       "configurations (sparse, mid, full).",
+        "variants": ["sparse", "mid", "full"],
+    },
+    "Octave": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Hammond tonewheel — render at slow and fast Leslie speeds. "
+                       "Hold 2+ seconds per note to capture the Leslie rotation.",
+        "variants": ["slow_leslie", "fast_leslie"],
+    },
+    "Oleg": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Theatre pipe organ — render at different harmonics settings. "
+                       "Capture the swell pedal dynamics across velocity layers.",
+    },
+    "Otis": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Gospel organ — render with SOUL drive at low and high settings. "
+                       "Include Leslie slow/fast variants. Hold 2+ seconds per note.",
+        "variants": ["soul_low", "soul_high"],
+    },
+
+    # ── Kitchen Collection — Kitchen quad (pianos) ─────────────────────────────
+    "Oven": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Steinway grand — render with hammer brightness at low, mid, high. "
+                       "Full range, clean room capture. Let decay ring naturally.",
+        "variants": ["soft", "medium", "bright"],
+    },
+    "Ochre": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Upright piano — wood resonance character. Render with caramel "
+                       "saturation off (clean) and on (warm). Full range.",
+        "variants": ["clean", "caramel"],
+    },
+    "Obelisk": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Concert grand — string mass variations. Render full range with "
+                       "long natural decay. This is the purity anchor of the quad.",
+    },
+    "Opaline": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Prepared piano — render at different preparation densities "
+                       "(minimal/mid/full). Let the prepared resonances sustain.",
+        "variants": ["prep_low", "prep_mid", "prep_full"],
+    },
+
+    # ── Kitchen Collection — Cellar quad (bass) ────────────────────────────────
+    "Ogre": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:9],  # C0-C2 (sub bass)
+        "vel_layers": 4,
+        "range": "C0-C2",
+        "description": "Sub bass — render in the deepest register. Hold 3+ seconds for "
+                       "the tectonic LFO to complete a cycle. Soil typology variants.",
+        "variants": ["soil_clay", "soil_rocky"],
+    },
+    "Olate": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Fretless bass — render with terroir at different regional settings. "
+                       "Capture glide slides between notes.",
+        "variants": ["terroir_low", "terroir_high"],
+    },
+    "Oaken": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Upright double bass — string age character. Render at new (bright) "
+                       "and aged (warm) string settings.",
+        "variants": ["new_strings", "aged_strings"],
+    },
+    "Omega": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:9],  # C0-C3
+        "vel_layers": 4,
+        "range": "C0-C3",
+        "description": "Synth bass — render deep register focus. Full analogue character: "
+                       "capture filter sweeps via velocity layers.",
+    },
+
+    # ── Kitchen Collection — Garden quad (strings) ─────────────────────────────
+    "Orchard": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Bowed strings — render at different bow pressure settings. "
+                       "Hold 3+ seconds for the sustain to bloom.",
+        "variants": ["soft_bow", "full_bow"],
+    },
+    "Overgrow": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 2,
+        "range": "C1-C6",
+        "description": "Forest growth strings — render with growth rate at slow and fast. "
+                       "Hold 4+ seconds for the organic evolution.",
+        "variants": ["slow_growth", "fast_growth"],
+    },
+    "Osier": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Wind instrument / willow reeds — render with wind density at low "
+                       "and high. Capture the breathy character.",
+        "variants": ["light_wind", "dense_wind"],
+    },
+    "Oxalis": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 2,
+        "range": "C1-C6",
+        "description": "Plucked strings / wood sorrel — render with leaf tension at "
+                       "low (loose) and high (taut). Full range.",
+        "variants": ["loose", "taut"],
+    },
+
+    # ── Kitchen Collection — Broth quad (pads) ────────────────────────────────
+    "Overwash": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Tide foam — render 30s pad stems. Capture the slow tidal cycle "
+                       "at different tide depth settings.",
+        "variants": ["shallow_tide", "deep_tide"],
+    },
+    "Overworn": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Worn felt pads — render 30s stems. Capture the aged felt character "
+                       "at different felt age settings.",
+        "variants": ["fresh_felt", "worn_felt"],
+    },
+    "Overflow": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Deep current pads — render 30s stems. Capture different current "
+                       "speeds for pad evolution.",
+        "variants": ["slow_current", "fast_current"],
+    },
+    "Overcast": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Light slate gray pads — render 30s cloud stems. Different cloud "
+                       "densities create distinct pad characters.",
+        "variants": ["light_cloud", "dense_cloud"],
+    },
+
+    # ── Kitchen Collection — Fusion quad (EPs) ────────────────────────────────
+    "Oasis": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Desert spring EP — bioluminescent ecosystem. Render at different "
+                       "spring depth settings. Capture the clean EP attack.",
+        "variants": ["shallow_spring", "deep_spring"],
+    },
+    "Oddfellow": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Fusion copper EP — render with spectral shift variations. "
+                       "Capture the warm copper character.",
+        "variants": ["shift_low", "shift_high"],
+    },
+    "Onkolo": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Spectral amber EP — render with resonance core variations. "
+                       "Capture the spectral fingerprint cache character.",
+        "variants": ["core_low", "core_high"],
+    },
+    "Opcode": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Cadet blue EP — render with code depth variations. "
+                       "Capture the digital EP character.",
+        "variants": ["depth_low", "depth_high"],
+    },
 }
 
 # Default strategy for engines not explicitly listed

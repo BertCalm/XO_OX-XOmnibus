@@ -125,8 +125,8 @@ ENGINE_PAD_COLORS = {
     "Obbligato": "#FF8A7A",  # Rascal Coral
     "Ottoni":    "#5B8A72",  # Patina
     "Ole":       "#C9377A",  # Hibiscus
-    "Overlap":   "#4A90D9",  # (FDN Reverb)
-    "Outwit":    "#8B5CF6",  # (Wolfram CA)
+    "Overlap":   "#00FFB4",  # Bioluminescent Cyan-Green
+    "Outwit":    "#CC6600",  # Chromatophore Amber
     "Ombre":     "#7B6B8A",  # Shadow Mauve
     "Orca":      "#1B2838",  # Deep Ocean
     "Octopus":   "#E040FB",  # Chromatophore Magenta
@@ -146,6 +146,41 @@ ENGINE_PAD_COLORS = {
     "Osmosis":   "#C0C0C0",  # Surface Tension Silver
     # Engine #48 (added 2026-03-23)
     "Oxytocin":  "#9B5DE5",  # Synapse Violet
+    # Newer engines (added 2026-03-23 through 2026-03-31)
+    "Outlook":   "#4169E1",  # Horizon Indigo
+    "Obiont":    "#E8A030",  # Bioluminescent Amber
+    "Okeanos":   "#C49B3F",  # Cardamom Gold
+    "Outflow":   "#1A1A40",  # Deep Storm Indigo
+    # Kitchen Collection — Chef quad (organs)
+    "Oto":       "#F5F0E8",  # Pipe Organ Ivory
+    "Octave":    "#8B6914",  # Hammond Teak
+    "Oleg":      "#C0392B",  # Theatre Red
+    "Otis":      "#D4A017",  # Gospel Gold
+    # Kitchen Collection — Kitchen quad (pianos)
+    "Oven":      "#1C1C1C",  # Steinway Ebony
+    "Ochre":     "#CC7722",  # Ochre Pigment
+    "Obelisk":   "#FFFFF0",  # Grand Ivory
+    "Opaline":   "#B7410E",  # Prepared Rust
+    # Kitchen Collection — Cellar quad (bass)
+    "Ogre":      "#0D0D0D",  # Sub Bass Black
+    "Olate":     "#5C3317",  # Fretless Walnut
+    "Oaken":     "#9C6B30",  # Upright Oak
+    "Omega":     "#003366",  # Synth Bass Blue
+    # Kitchen Collection — Garden quad (strings)
+    "Orchard":   "#FFB7C5",  # Orchard Blossom
+    "Overgrow":  "#228B22",  # Forest Green
+    "Osier":     "#C0C8C8",  # Willow Silver
+    "Oxalis":    "#9B59B6",  # Wood Sorrel Lilac
+    # Kitchen Collection — Broth quad (pads)
+    "Overwash":  "#F0F8FF",  # Tide Foam White
+    "Overworn":  "#808080",  # Worn Felt Grey
+    "Overflow":  "#1A3A5C",  # Deep Current Blue
+    "Overcast":  "#778899",  # Light Slate Gray
+    # Kitchen Collection — Fusion quad (EPs)
+    "Oasis":     "#00827F",  # Desert Spring Teal
+    "Oddfellow": "#B87333",  # Fusion Copper
+    "Onkolo":    "#FFBF00",  # Spectral Amber
+    "Opcode":    "#5F9EA0",  # Cadet Blue
 }
 
 
