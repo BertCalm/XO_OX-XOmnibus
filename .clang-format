@@ -1,0 +1,51 @@
+# XOlokun — clang-format configuration
+# Matches the JUCE/Allman brace style used throughout the codebase.
+
+BasedOnStyle: LLVM
+Language: Cpp
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+
+# Brace style — Allman (opening brace on new line), matching JUCE convention
+BreakBeforeBraces: Allman
+
+# Column limit
+ColumnLimit: 120
+
+# Spaces
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpaceAfterCStyleCast: false
+SpaceAroundPointerQualifiers: Default
+PointerAlignment: Left
+
+# Includes
+SortIncludes: false
+
+# Access modifiers
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+
+# Namespaces
+NamespaceIndentation: None
+CompactNamespaces: false
+
+# Short blocks
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+
+# Constructor initializer
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+
+# Template
+AlwaysBreakTemplateDeclarations: Yes
+
+# Comments
+ReflowComments: false
