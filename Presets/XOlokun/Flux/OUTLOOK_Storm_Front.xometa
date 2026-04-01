@@ -22,14 +22,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": {
-    "brightness": 0.35,
-    "warmth": 0.4,
-    "movement": 0.75,
-    "density": 0.7,
-    "space": 0.35,
-    "aggression": 0.5
-  },
   "parameters": {
     "Outlook": {
       "look_waveShape1": 3,
@@ -62,11 +54,11 @@
     "pairs": []
   },
   "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.5,
-    "density": 0.5,
-    "space": 0.5,
+    "brightness": 0.35,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.7,
+    "space": 0.35,
     "aggression": 0.5
   }
 }
