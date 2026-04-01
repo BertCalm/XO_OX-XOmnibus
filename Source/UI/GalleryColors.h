@@ -28,10 +28,21 @@ namespace xolokun::a11y_platform {
 namespace xolokun {
 namespace GalleryColors {
 
-    // Theme state — dark by default (dark mode is the primary presentation)
+    // Theme state — dark by default (dark mode is the primary presentation).
+    //
+    // V1 KNOWN LIMITATION (#329): This is a function-local static and is therefore
+    // shared across all plugin instances in the same DAW process. Toggling dark mode
+    // in one editor window affects all other open instances simultaneously.
+    //
+    // Correct fix: remove the static, add a `bool darkMode` member to
+    // XOlokunEditor (per-instance), initialise it from PropertiesFile in the
+    // editor constructor, thread it through every component that calls this
+    // function, and store it in the APVTS non-parameter XML so it survives
+    // DAW session save/restore. Until that refactor lands, the V1 behaviour
+    // is: all instances share the same theme.
     inline bool& darkMode()
     {
-        static bool dark = true;
+        static bool dark = true;  // TODO(#329): move to per-instance editor state
         return dark;
     }
 
