@@ -205,6 +205,7 @@ public:
         if (gliding && targetFreqHz > 0.0f)
         {
             baseFreqHz += (targetFreqHz - baseFreqHz) * glideRate;
+            // No flushDenormal needed: convergence snap below (< 0.01f) prevents subnormals for MIDI-range frequencies
             if (std::abs(targetFreqHz - baseFreqHz) < 0.01f)
             {
                 baseFreqHz = targetFreqHz;
