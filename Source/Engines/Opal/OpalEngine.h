@@ -1358,6 +1358,7 @@ public:
         // Return the per-sample cached output so tight coupling (AudioToFM,
         // AudioToRing, etc.) sees the correct per-position value, not a stale
         // end-of-block scalar.
+        if (sampleIndex < 0) return 0.0f;
         auto idx = static_cast<size_t> (sampleIndex);
         if (channel == 0 && idx < outputCacheLeft.size())
             return outputCacheLeft[idx];

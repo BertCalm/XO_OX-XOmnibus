@@ -450,6 +450,7 @@ public:
     // P0-05 fix: return proper per-sample, per-channel output from cache
     float getSampleForCoupling(int channel, int sampleIndex) const override
     {
+        if (sampleIndex < 0) return 0.0f;
         auto index = static_cast<size_t> (sampleIndex);
         if (channel == 0 && index < outputCacheLeft.size())  return outputCacheLeft[index];
         if (channel == 1 && index < outputCacheRight.size()) return outputCacheRight[index];

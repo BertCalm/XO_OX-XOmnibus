@@ -1429,6 +1429,7 @@ public:
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
+        if (sampleIndex < 0) return 0.0f;
         auto index = static_cast<size_t> (sampleIndex);
         if (channel == 0 && index < outputCacheL.size()) return outputCacheL[index];
         if (channel == 1 && index < outputCacheR.size()) return outputCacheR[index];
