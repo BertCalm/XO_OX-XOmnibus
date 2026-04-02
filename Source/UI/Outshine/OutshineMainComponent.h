@@ -20,8 +20,7 @@ enum class OutshineState { Shell, Input, Preview, Exporting };
 class OutshineMainComponent : public juce::Component
 {
 public:
-    explicit OutshineMainComponent(XOlokunProcessor& processorRef)
-        : processor(processorRef)
+    explicit OutshineMainComponent(XOlokunProcessor& /*processorRef*/)
     {
         setWantsKeyboardFocus(true);
         A11y::setup(*this, "Outshine Main", "Sample instrument forge — drag, analyze, export");
@@ -54,7 +53,7 @@ public:
             onGrainsChanged(paths);
         };
 
-        autoMode->getZoneMap().onZoneClicked = [this](int /*grainIndex*/) {
+        autoMode->getZoneMap().onZoneClicked = [](int /*grainIndex*/) {
             // In Phase 1A: no scrolling action — just a click event placeholder
         };
 
@@ -315,7 +314,6 @@ private:
         });
     }
 
-    XOlokunProcessor& processor;
     XOutshine outshine;
     OutshineState uiState { OutshineState::Shell };
 

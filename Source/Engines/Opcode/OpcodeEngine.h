@@ -395,13 +395,6 @@ public:
         const float pIndex       = loadP (paramIndex, 0.7f);
         const float pBrightness  = loadP (paramBrightness, 10000.0f);
         const float pFeedback    = loadP (paramFeedback, 0.0f);
-        const float pAttack      = loadP (paramAttack, 0.005f);
-        const float pDecay       = loadP (paramDecay, 1.0f);
-        const float pSustain     = loadP (paramSustain, 0.5f);
-        const float pRelease     = loadP (paramRelease, 0.6f);
-        const float pModAttack   = loadP (paramModAttack, 0.001f);
-        const float pModDecay    = loadP (paramModDecay, 0.3f);
-        const float pModSustain  = loadP (paramModSustain, 0.2f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.3f);
         const float pBendRange   = loadP (paramBendRange, 2.0f);
         const float pMigration   = loadP (paramMigration, 0.0f);

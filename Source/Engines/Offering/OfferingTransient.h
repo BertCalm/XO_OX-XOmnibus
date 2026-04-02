@@ -448,14 +448,11 @@ private:
     //--------------------------------------------------------------------------
     float processHat (float env) noexcept
     {
-        // 6 square oscillators at inharmonic ratios
-        float sum = 0.0f;
+        // 6 square oscillators at inharmonic ratios — advance all phases
         for (int i = 0; i < 6; ++i)
         {
             metalPhases_[i] += metalOscFreqs_[i] / sr_;
             if (metalPhases_[i] >= 1.0f) metalPhases_[i] -= 1.0f;
-            float sq = (metalPhases_[i] < 0.5f) ? 1.0f : -1.0f;
-            sum += sq;
         }
 
         // Ring-modulate in pairs: (0,1), (2,3), (4,5) then sum

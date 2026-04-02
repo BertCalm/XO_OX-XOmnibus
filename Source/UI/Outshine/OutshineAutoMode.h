@@ -353,8 +353,6 @@ private:
 
     void updateMismatchWarning()
     {
-        const auto& profile = getRebirthProfile(activeProfileId);
-
         // Check whether the detected sample category matches the profile's
         // intended material. A mismatch is flagged when:
         //   - The profile is PERCUSSIVE-optimised (ONSET) but sample is melodic, or

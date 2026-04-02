@@ -363,7 +363,10 @@ struct CouplingPair {
 // A single macro target — one parameter controlled by a global macro knob.
 // Each preset stores up to 4 macro slots (CHARACTER/MOVEMENT/COUPLING/SPACE),
 // and each slot can route to multiple engine parameters.
-struct MacroTarget {
+//
+// NOTE: Named PresetMacroTarget to avoid collision with xolokun::MacroTarget
+// in MacroSystem.h, which is the live-runtime modulation struct.
+struct PresetMacroTarget {
     juce::String engineName;   // Canonical engine ID (e.g. "Onset", "Obrix")
     juce::String paramId;      // Frozen parameter ID (e.g. "perc_noiseLevel")
     float depthMin = 0.0f;     // Parameter value when macro is at 0.0
@@ -389,7 +392,7 @@ struct PresetData {
     std::vector<CouplingPair> couplingPairs;
     // Macro target routing: [0]=CHARACTER [1]=MOVEMENT [2]=COUPLING [3]=SPACE.
     // Each slot holds zero or more parameter targets that the macro sweeps.
-    std::array<std::vector<MacroTarget>, 4> macroTargets;
+    std::array<std::vector<PresetMacroTarget>, 4> macroTargets;
     juce::var sequencerData;               // Raw JSON, undefined if no sequencer
 
     // Source file for navigation purposes (empty for programmatic presets)
@@ -1013,7 +1016,7 @@ private:
                         if (targetObj == nullptr)
                             continue;
 
-                        MacroTarget mt;
+                        PresetMacroTarget mt;
                         mt.engineName = resolveEngineAlias(targetObj->getProperty("engineName").toString());
                         mt.paramId    = targetObj->getProperty("paramId").toString();
 

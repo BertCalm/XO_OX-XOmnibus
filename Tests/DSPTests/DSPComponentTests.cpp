@@ -217,31 +217,25 @@ static void testStandardADSR()
     // Envelope starts at 0 before noteOn
     {
         StandardADSR env;
-        env.setSampleRate(sampleRate);
-        env.setAttack(0.01f);
-        env.setDecay(0.1f);
-        env.setSustain(0.7f);
-        env.setRelease(0.2f);
+        env.prepare(sampleRate);
+        env.setADSR(0.01f, 0.1f, 0.7f, 0.2f);
 
-        float firstSample = env.processSample();
+        float firstSample = env.process();
         reportTest("ADSR starts at 0 before noteOn", firstSample == 0.0f);
     }
 
     // After noteOn, envelope rises during attack
     {
         StandardADSR env;
-        env.setSampleRate(sampleRate);
-        env.setAttack(0.1f); // 100ms attack
-        env.setDecay(0.1f);
-        env.setSustain(0.7f);
-        env.setRelease(0.2f);
+        env.prepare(sampleRate);
+        env.setADSR(0.1f, 0.1f, 0.7f, 0.2f); // 100ms attack
         env.noteOn();
 
         // After 50ms (half of attack), output should be between 0 and 1
         int halfAttack = static_cast<int>(sampleRate * 0.05f);
         float midAttack = 0.0f;
         for (int i = 0; i < halfAttack; ++i)
-            midAttack = env.processSample();
+            midAttack = env.process();
 
         reportTest("ADSR rising during attack (>0.0 at half-attack)", midAttack > 0.0f);
         reportTest("ADSR not yet at peak during attack (<1.1)", midAttack < 1.1f);
@@ -250,17 +244,14 @@ static void testStandardADSR()
     // After attack completes, envelope reaches peak near 1.0
     {
         StandardADSR env;
-        env.setSampleRate(sampleRate);
-        env.setAttack(0.01f); // 10ms attack — short so we can test quickly
-        env.setDecay(0.5f);   // Long decay to stay near peak
-        env.setSustain(0.8f);
-        env.setRelease(0.2f);
+        env.prepare(sampleRate);
+        env.setADSR(0.01f, 0.5f, 0.8f, 0.2f); // 10ms attack, long decay to stay near peak
         env.noteOn();
 
         int attackSamples = static_cast<int>(sampleRate * 0.015f); // 1.5x attack time
         float peakVal = 0.0f;
         for (int i = 0; i < attackSamples; ++i)
-            peakVal = std::max(peakVal, env.processSample());
+            peakVal = std::max(peakVal, env.process());
 
         reportTest("ADSR reaches peak ≥ 0.9 after attack", peakVal >= 0.9f);
     }
@@ -268,18 +259,15 @@ static void testStandardADSR()
     // Envelope settles at sustain level
     {
         StandardADSR env;
-        env.setSampleRate(sampleRate);
-        env.setAttack(0.001f); // Very short attack
-        env.setDecay(0.001f);  // Very short decay
-        env.setSustain(0.6f);
-        env.setRelease(0.5f);
+        env.prepare(sampleRate);
+        env.setADSR(0.001f, 0.001f, 0.6f, 0.5f); // Very short A+D
         env.noteOn();
 
         // Run past A+D, into sustain
         int passSamples = static_cast<int>(sampleRate * 0.05f);
         float sustainVal = 0.0f;
         for (int i = 0; i < passSamples; ++i)
-            sustainVal = env.processSample();
+            sustainVal = env.process();
 
         reportTest("ADSR sustain level within 10% of target (0.6)", std::abs(sustainVal - 0.6f) < 0.1f);
     }
@@ -287,25 +275,22 @@ static void testStandardADSR()
     // After noteOff, envelope decreases
     {
         StandardADSR env;
-        env.setSampleRate(sampleRate);
-        env.setAttack(0.001f);
-        env.setDecay(0.001f);
-        env.setSustain(0.8f);
-        env.setRelease(0.05f); // 50ms release
+        env.prepare(sampleRate);
+        env.setADSR(0.001f, 0.001f, 0.8f, 0.05f); // 50ms release
         env.noteOn();
 
         // Run to sustain
         for (int i = 0; i < static_cast<int>(sampleRate * 0.05f); ++i)
-            env.processSample();
+            env.process();
 
-        float sustainLevel = env.processSample();
+        float sustainLevel = env.process();
         env.noteOff();
 
         // After half of release time, should be lower than sustain
         int halfRelease = static_cast<int>(sampleRate * 0.025f);
         float relVal = sustainLevel;
         for (int i = 0; i < halfRelease; ++i)
-            relVal = env.processSample();
+            relVal = env.process();
 
         reportTest("ADSR decreases after noteOff", relVal < sustainLevel);
     }
@@ -323,14 +308,13 @@ static void testStandardLFO()
     // LFO output is in [-1, 1] for bipolar waveforms
     {
         StandardLFO lfo;
-        lfo.setSampleRate(sampleRate);
-        lfo.setRate(2.0f); // 2 Hz
+        lfo.setRate(2.0f, sampleRate); // 2 Hz
         lfo.setShape(StandardLFO::Shape::Sine);
 
         float minVal = 2.0f, maxVal = -2.0f;
         for (int i = 0; i < static_cast<int>(sampleRate); ++i) // 1 second
         {
-            float v = lfo.processSample();
+            float v = lfo.process();
             minVal = std::min(minVal, v);
             maxVal = std::max(maxVal, v);
         }
@@ -343,16 +327,15 @@ static void testStandardLFO()
     // LFO frequency accuracy: at 1 Hz, ~1 cycle per second
     {
         StandardLFO lfo;
-        lfo.setSampleRate(sampleRate);
-        lfo.setRate(1.0f); // 1 Hz
+        lfo.setRate(1.0f, sampleRate); // 1 Hz
         lfo.setShape(StandardLFO::Shape::Sine);
 
         // Count zero crossings (positive slope) over 3 seconds
         int crossings = 0;
-        float prev = lfo.processSample();
+        float prev = lfo.process();
         for (int i = 1; i < static_cast<int>(sampleRate * 3.0f); ++i)
         {
-            float curr = lfo.processSample();
+            float curr = lfo.process();
             if (prev < 0.0f && curr >= 0.0f)
                 ++crossings;
             prev = curr;
@@ -364,28 +347,27 @@ static void testStandardLFO()
     // LFO rate change takes effect
     {
         StandardLFO lfo;
-        lfo.setSampleRate(sampleRate);
         lfo.setShape(StandardLFO::Shape::Sine);
 
         // Count cycles at 1 Hz over 1 second
-        lfo.setRate(1.0f);
+        lfo.setRate(1.0f, sampleRate);
         int crossingsSlow = 0;
-        float prev = lfo.processSample();
+        float prev = lfo.process();
         for (int i = 1; i < static_cast<int>(sampleRate); ++i)
         {
-            float curr = lfo.processSample();
+            float curr = lfo.process();
             if (prev < 0.0f && curr >= 0.0f)
                 ++crossingsSlow;
             prev = curr;
         }
 
         // Count cycles at 5 Hz over 1 second
-        lfo.setRate(5.0f);
+        lfo.setRate(5.0f, sampleRate);
         int crossingsFast = 0;
-        prev = lfo.processSample();
+        prev = lfo.process();
         for (int i = 1; i < static_cast<int>(sampleRate); ++i)
         {
-            float curr = lfo.processSample();
+            float curr = lfo.process();
             if (prev < 0.0f && curr >= 0.0f)
                 ++crossingsFast;
             prev = curr;
@@ -407,15 +389,14 @@ static void testParameterSmoother()
     // Smoother converges to target value
     {
         ParameterSmoother smoother;
-        smoother.setSampleRate(sampleRate);
-        smoother.setSmoothingTime(0.01f); // 10ms
+        smoother.prepare(sampleRate, 0.01f); // 10ms smoothing time
 
-        smoother.setTarget(1.0f);
+        smoother.set(1.0f);
 
         // Run for 50ms — well beyond 10ms smoothing time
         float finalVal = 0.0f;
         for (int i = 0; i < static_cast<int>(sampleRate * 0.05f); ++i)
-            finalVal = smoother.processSample();
+            finalVal = smoother.process();
 
         reportTest("ParameterSmoother converges to target (>0.95 of 1.0)", finalVal > 0.95f);
     }
@@ -423,26 +404,24 @@ static void testParameterSmoother()
     // Smoother starts at initial value (0.0) and doesn't jump
     {
         ParameterSmoother smoother;
-        smoother.setSampleRate(sampleRate);
-        smoother.setSmoothingTime(0.1f); // 100ms — slow
-        smoother.setTarget(1.0f);
+        smoother.prepare(sampleRate, 0.1f); // 100ms — slow
+        smoother.set(1.0f);
 
-        float firstSample = smoother.processSample();
+        float firstSample = smoother.process();
         reportTest("ParameterSmoother first sample < 0.1 (no instantaneous jump)", firstSample < 0.1f);
     }
 
     // Smoother output is monotonically increasing toward target
     {
         ParameterSmoother smoother;
-        smoother.setSampleRate(sampleRate);
-        smoother.setSmoothingTime(0.05f);
-        smoother.setTarget(1.0f);
+        smoother.prepare(sampleRate, 0.05f);
+        smoother.set(1.0f);
 
-        float prev = smoother.processSample();
+        float prev = smoother.process();
         bool monotonic = true;
         for (int i = 0; i < static_cast<int>(sampleRate * 0.1f); ++i)
         {
-            float curr = smoother.processSample();
+            float curr = smoother.process();
             if (curr < prev - 0.001f) // Allow tiny floating-point jitter
                 monotonic = false;
             prev = curr;

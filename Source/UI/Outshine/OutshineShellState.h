@@ -20,8 +20,6 @@ public:
     {
         g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
 
-        auto bounds = getLocalBounds().reduced(24);
-
         // Gold border glow on drag-enter
         if (dragActive)
         {

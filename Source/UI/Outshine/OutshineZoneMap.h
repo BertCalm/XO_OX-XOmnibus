@@ -157,7 +157,6 @@ private:
     }
 
     std::vector<ZoneEntry> zones;
-    int hoveredZone { -1 };
 
     static constexpr int kMidiLow  = 0;
     static constexpr int kMidiHigh = 108;

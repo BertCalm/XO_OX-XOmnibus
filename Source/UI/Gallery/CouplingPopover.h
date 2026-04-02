@@ -30,7 +30,7 @@ class CouplingPopover : public juce::Component
 {
 public:
     CouplingPopover(XOlokunProcessor& proc, int routeIndex)
-        : processor(proc), route(routeIndex)
+        : route(routeIndex)
     {
         jassert(route >= 1 && route <= 4);
         auto& apvts = proc.getAPVTS();
@@ -218,7 +218,6 @@ private:
         return juce::Colour(0xFFE9C46A);                             // XO Gold — modulation
     }
 
-    XOlokunProcessor& processor;
     int route; // 1–4
 
     juce::ToggleButton activeButton;

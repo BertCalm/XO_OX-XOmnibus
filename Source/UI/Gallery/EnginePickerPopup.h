@@ -47,6 +47,10 @@ class EnginePickerPopup : public juce::Component,
                           public juce::KeyListener
 {
 public:
+    // Unhide juce::Component::keyPressed(KeyPress) — we override the KeyListener
+    // two-argument form, which would otherwise hide the Component one-argument form.
+    using juce::Component::keyPressed;
+
     //==========================================================================
     // Callback invoked when the user selects an engine. Caller is responsible
     // for dismissing the owning CallOutBox (or call dismissPopup()).

@@ -572,9 +572,6 @@ public:
         using PI = juce::AudioParameterInt;
 
         // ── Per-voice parameters (6 × 8 = 48) ────────────────────────
-        static const char* voiceNames[8] = {
-            "Kick", "Snare", "CHat", "OHat", "Clap", "Rim", "Tom", "Perc"
-        };
         static const int   defTypes[8]  = { 0, 1, 2, 3, 4, 5, 6, 7 };
         static const float defDecay[8]  = { 0.35f, 0.22f, 0.05f, 0.4f, 0.25f, 0.04f, 0.35f, 0.15f };
         static const float defBody[8]   = { 0.7f, 0.5f, 0.3f, 0.3f, 0.2f, 0.4f, 0.6f, 0.4f };

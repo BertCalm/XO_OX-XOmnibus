@@ -918,21 +918,12 @@ public:
         const int   organModel     = static_cast<int> (loadP (paramOrgan, 0.0f));
         const float pLeslieSpeed   = loadP (paramLeslie, 0.5f);
         const float pKeyClickLevel = loadP (paramKeyClick, 0.5f);
-        const float pPercLevel     = loadP (paramPercussion, 0.5f);
-        const float pPercHarm      = loadP (paramPercHarmonic, 0.0f);
-        const float pPercDecay     = loadP (paramPercDecay, 0.3f);
         const float pCrosstalk     = loadP (paramCrosstalk, 0.3f);
         const float pBrightness    = loadP (paramBrightness, 8000.0f);
         const float pDrive         = loadP (paramDrive, 0.2f);
         const float pBendRange     = loadP (paramBendRange, 2.0f);
-        const float pBendAmount    = loadP (paramBendAmount, 2.0f);  // harmonica bend depth
         const float pInstability   = loadP (paramInstability, 0.5f); // calliope chaos
         const float pMusette       = loadP (paramMusette, 0.5f);     // accordion reed detune
-
-        const float pAttack   = loadP (paramAttack, 0.005f);
-        const float pDecay    = loadP (paramDecay, 0.3f);
-        const float pSustain  = loadP (paramSustain, 0.8f);
-        const float pRelease  = loadP (paramRelease, 0.3f);
 
         const float pFilterEnvAmt = loadP (paramFilterEnvAmount, 0.3f);
 

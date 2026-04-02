@@ -22,6 +22,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         -Werror
         -Wno-error=unused-parameter
         -Wno-error=deprecated-declarations
+        -Wno-error=unused-but-set-variable  # JUCE 8 internals set-but-don't-read in lambda conditions
         -fstack-protector-strong
         -D_FORTIFY_SOURCE=2
     )
@@ -494,12 +495,15 @@ endif()
 add_executable(XOlokunTests
     Tests/run_tests.cpp
     Tests/DSPTests/DSPStabilityTests.cpp
+    Tests/DSPTests/DSPComponentTests.cpp
     Tests/CouplingTests/CouplingMatrixTests.cpp
     Tests/PresetTests/PresetRoundTripTests.cpp
+    Tests/PresetTests/BackwardCompatibilityTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
     Tests/DoctrineTests/DoctrineTests.cpp
     Tests/PlaySurfaceTests/HarmonicFieldTests.cpp
     Tests/PlaySurfaceTests/GestureTrailTests.cpp
+    Tests/PipelineTests/FullPipelineTests.cpp
 )
 
 # FamilyWaveguideTest is a standalone executable (has its own main())

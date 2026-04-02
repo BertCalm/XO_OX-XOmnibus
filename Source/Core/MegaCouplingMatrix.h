@@ -509,7 +509,6 @@ private:
         if (numSamples <= 0)
             return;
 
-        const float invRatio = 1.0f / static_cast<float>(controlRateRatio);
         float currentVal = source->getSampleForCoupling(0, 0);
 
         int blockStart = 0;

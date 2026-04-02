@@ -1423,17 +1423,13 @@ private:
         builder.addFile(manifestFile, 9, "Expansions/Manifest.xml");
 
         auto xpmDir = workDir.getChildFile("programs");
-        int totalFiles = 1;  // manifest
 
         for (const auto& prog : programs)
         {
             auto safeName = sanitizeFilename(prog.name);
             auto xpmFile = xpmDir.getChildFile(safeName + ".xpm");
             if (xpmFile.existsAsFile())
-            {
                 builder.addFile(xpmFile, 9, "Programs/" + safeName + ".xpm");
-                ++totalFiles;
-            }
             for (const auto& l : prog.layers)
             {
                 if (l.file.existsAsFile())
@@ -1442,7 +1438,6 @@ private:
                     // WAV is already compressed at 24-bit integer; zlib compression of PCM
                     // yields <1% reduction and wastes CPU. MPC unzips faster at level 0.
                     builder.addFile(l.file, 0, "Samples/" + safeName + "/" + l.filename);
-                    ++totalFiles;
                 }
             }
         }

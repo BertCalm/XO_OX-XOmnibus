@@ -87,15 +87,6 @@ static const char* kValidPresetJSON = R"({
     "sequencer": null
 })";
 
-static const char* kMinimalValidJSON = R"({
-    "schema_version": 1,
-    "name": "Minimal",
-    "mood": "Foundation",
-    "engines": ["Snap"],
-    "parameters": {
-        "Snap": {}
-    }
-})";
 
 //==============================================================================
 // Parsing tests

@@ -54,8 +54,7 @@ public:
                   const juce::String& paramY,
                   const std::array<juce::String, 3>& vertexLabels,
                   const std::array<juce::Colour, 3>& vertexColors)
-        : apvtsRef(apvts),
-          paramIdX(paramX),
+        : paramIdX(paramX),
           paramIdY(paramY),
           labels(vertexLabels),
           colors(vertexColors)
@@ -355,7 +354,6 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    juce::AudioProcessorValueTreeState& apvtsRef;
     const juce::String                  paramIdX, paramIdY;
     const std::array<juce::String, 3>   labels;
     const std::array<juce::Colour, 3>   colors;
@@ -639,7 +637,6 @@ class FiveMacroDisplay : public juce::Component
 public:
     explicit FiveMacroDisplay(juce::AudioProcessorValueTreeState& apvts,
                               MIDILearnManager* midiLearn = nullptr)
-        : apvtsRef(apvts)
     {
         struct KnobDef
         {
@@ -754,8 +751,6 @@ public:
     }
 
 private:
-    juce::AudioProcessorValueTreeState& apvtsRef;
-
     std::array<GalleryKnob,  5> knobs;
     std::array<juce::Label,  5> labels;
 

@@ -1631,7 +1631,7 @@ private:
     //  ENGINE STATE
     //==========================================================================
 
-    double currentSampleRate = 44100.0;
+    std::atomic<double> currentSampleRate { 44100.0 };
     int currentBlockSize = 512;
     uint64_t noteCounter = 0;
     AttractorTopology currentTopology = AttractorTopology::Lorenz;

@@ -439,14 +439,9 @@ public:
         const float pFunk        = loadP (paramFunk, 0.5f);
         const float pPickup      = loadP (paramPickup, 0.7f);
         const float pBrightness  = loadP (paramBrightness, 8000.0f);
-        const float pAttack      = loadP (paramAttack, 0.001f);
-        const float pDecay       = loadP (paramDecay, 0.3f);
-        const float pSustain     = loadP (paramSustain, 0.4f);
-        const float pRelease     = loadP (paramRelease, 0.15f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.6f);
         const float pBendRange   = loadP (paramBendRange, 2.0f);
         const float pMigration   = loadP (paramMigration, 0.0f);
-        const float pClunk       = loadP (paramClunk, 0.5f);
 
         const float macroChar    = loadP (paramMacroCharacter, 0.0f);
         const float macroMove    = loadP (paramMacroMovement, 0.0f);

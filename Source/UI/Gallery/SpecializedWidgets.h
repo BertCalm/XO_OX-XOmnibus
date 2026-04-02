@@ -66,8 +66,7 @@ public:
                       const juce::StringArray&              modeNames,
                       const std::vector<juce::Colour>*      modeColors  = nullptr,
                       juce::Colour                          defaultAccent = juce::Colour(GalleryColors::xoGold))
-        : apvtsRef(apvts),
-          pid(paramId),
+        : pid(paramId),
           names(modeNames),
           accent(defaultAccent)
     {
@@ -259,7 +258,6 @@ private:
     }
 
     //──────────────────────────────────────────────────────────────────────
-    juce::AudioProcessorValueTreeState& apvtsRef;
     juce::String                        pid;
     juce::StringArray                   names;
     std::vector<juce::Colour>           colors;
@@ -321,8 +319,7 @@ public:
                    const juce::String&                  rightLabel,
                    juce::Colour                         leftColor,
                    juce::Colour                         rightColor)
-        : apvtsRef(apvts),
-          pid(paramId),
+        : pid(paramId),
           lblLeft(leftLabel),
           lblRight(rightLabel),
           colLeft(leftColor),
@@ -505,7 +502,6 @@ private:
     }
 
     //──────────────────────────────────────────────────────────────────────
-    juce::AudioProcessorValueTreeState& apvtsRef;
     juce::String                        pid;
     juce::String                        lblLeft;
     juce::String                        lblRight;

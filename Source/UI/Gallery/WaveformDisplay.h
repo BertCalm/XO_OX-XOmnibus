@@ -261,7 +261,6 @@ public:
         if (allZero)
             return;
 
-        const float w    = static_cast<float>(getWidth());
         const float h    = static_cast<float>(getHeight());
         const float midY = h * 0.5f;
 

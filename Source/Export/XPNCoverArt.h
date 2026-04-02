@@ -298,7 +298,6 @@ private:
         for (float angle : angles)
         {
             float rad = angle * juce::MathConstants<float>::pi / 180.0f;
-            float cosA = std::cos(rad), sinA = std::sin(rad);
             int period = randInt(rng, 200, 500);
             float brightness = randFloat(rng, 0.15f, 0.45f);
 

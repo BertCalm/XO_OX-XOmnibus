@@ -373,7 +373,7 @@ private:
             const auto& params = it->second;
             if (params.isObject() && params.hasProperty(key))
             {
-                auto v = params[key];
+                auto v = params.getProperty(juce::Identifier(key), juce::var());
                 if (v.isDouble() || v.isInt()) return (float)(double)v;
             }
             return fallback;

@@ -31,8 +31,8 @@ struct ModalResonator
         y2 = y1;
         y1 = y;
         // Denormal flush
-        if (std::abs(y1) < 1.0e-15f) y1 = 0.0f;
-        if (std::abs(y2) < 1.0e-15f) y2 = 0.0f;
+        if (std::abs(y1) < 1.0e-10f) y1 = 0.0f;
+        if (std::abs(y2) < 1.0e-10f) y2 = 0.0f;
         return y * gain;
     }
 

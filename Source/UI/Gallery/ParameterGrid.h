@@ -342,12 +342,10 @@ public:
 
         int cols      = juce::jmax(1, getWidth() / kCellW);
         int y         = kPad;
-        int flatIdx   = 0;
         int secIdx    = 0; // used to cycle dot colors by display order
 
         for (auto& run : sectionRuns)
         {
-            juce::Colour secCol  = sectionColour(run.sec);
             juce::Colour dotCol  = sectionDotColour(secIdx);
             juce::String secText = sectionName(run.sec);
             bool collapsed       = collapsedSections.count(run.sec) > 0;
@@ -398,11 +396,7 @@ public:
             ++secIdx;
 
             if (collapsed)
-            {
-                // Skip knob cells — advance flatIdx only, no y advance
-                flatIdx += run.count;
                 continue;
-            }
 
             // ── Section content: thin left border only (no lighter bg) ────
             int rows = (run.count + cols - 1) / cols;
@@ -411,8 +405,6 @@ public:
             g.setColour(dotCol.withAlpha(0.40f));
             g.fillRect(4, y, 2, contentH);
 
-            // Skip knob cells for flatIdx tracking
-            flatIdx += run.count;
             y += contentH;
         }
     }

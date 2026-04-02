@@ -707,7 +707,6 @@ public:
     {
         const auto b = getLocalBounds().toFloat();
         const float w = b.getWidth();
-        const float h = b.getHeight();
 
         // ---- Lock button (top-right, ~14px) ----
         const float lockSize = 14.0f;

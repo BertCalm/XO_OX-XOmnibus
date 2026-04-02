@@ -101,7 +101,6 @@ public:
             if (processThisSample)
             {
                 float inputL = dryL;
-                float inputR = dryR;
 
                 // === A. APF Cascade ===
                 float lfoVal = fastSin (apfLFOPhase * 6.28318f) * lfoDepth;

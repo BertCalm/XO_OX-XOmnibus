@@ -255,7 +255,6 @@ public:
 
         // ── Geometry constants ────────────────────────────────────────────────
         constexpr float kEngineNodeW = 64.0f;
-        constexpr float kEngineNodeH = 32.0f;
         constexpr float kFXNodeW     = 40.0f;
         constexpr float kOUTNodeW    = 32.0f;
         constexpr float kNodeH       = 32.0f;
@@ -263,7 +262,6 @@ public:
         constexpr float kCornerR     = 5.0f;
         constexpr float kBorderW     = 2.0f;
         constexpr float kBadgeR      = 8.0f;   // badge circle diameter
-        constexpr float kArrowHead   = 5.0f;   // arrow head half-height
 
         // Total chain width (engine nodes + gap/arrow segments + FX + OUT)
         const int  N          = static_cast<int>(nodes.size());

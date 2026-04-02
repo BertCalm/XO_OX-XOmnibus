@@ -92,7 +92,7 @@ public:
     {
         // Precompute
         float stepSize = static_cast<float> (sr) / targetSR;
-        float quantLevels = fastPow2 (bitDepth - 1.0f);
+        float quantLevels = std::max (1.0f, fastPow2 (bitDepth - 1.0f));
         float invLevels = 1.0f / quantLevels;
         bool doBitReduce = (bitDepth < 23.5f);
         bool doSRReduce = (targetSR < static_cast<float> (sr) * 0.99f);

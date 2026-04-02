@@ -232,7 +232,6 @@ static void testTwoEngineCoupledPipeline()
 
     bool anyFiniteFailure = false;
     bool receivedAudio    = false;
-    bool couplingDelivered = false;
 
     for (int b = 0; b < kNumBlocks; ++b)
     {

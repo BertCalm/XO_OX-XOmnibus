@@ -1392,8 +1392,6 @@ inline void AquaticFXSuite::cacheParameterPointers (juce::AudioProcessorValueTre
 inline void AquaticFXSuite::addParameters (juce::AudioProcessorValueTreeState::ParameterLayout& layout)
 {
     using AP  = juce::AudioParameterFloat;
-    using APC = juce::AudioParameterChoice;
-    using APB = juce::AudioParameterBool;
     using NR  = juce::NormalisableRange<float>;
 
     //--- Stage 1: Fathom ---

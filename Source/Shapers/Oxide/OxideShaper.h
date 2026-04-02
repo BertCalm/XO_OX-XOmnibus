@@ -61,7 +61,7 @@ struct LorenzAttractor
         // Reset to a known finite initial condition to recover gracefully.
         if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z))
         {
-            x = 0.1f; y = 0.0f; z = 0.0f;
+            x = 0.1f; y = 0.1f; z = 0.1f;
         }
 
         // Normalize x to [-1, 1] range (typical Lorenz x range is ~[-20, 20])

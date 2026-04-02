@@ -483,7 +483,6 @@ public:
             return p ? p->load (std::memory_order_relaxed) : def;
         };
 
-        const int   pExciter      = static_cast<int> (loadP (paramExciter, 0.0f));
         const float pBowPressure  = loadP (paramBowPressure, 0.5f);
         const float pStringTension = loadP (paramStringTension, 0.5f);
         const float pBodyDepth    = loadP (paramBodyDepth, 0.5f);

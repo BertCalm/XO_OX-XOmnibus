@@ -485,10 +485,6 @@ public:
         const float pCrosstalk   = loadP (paramCrosstalk, 0.0f);
         const float pCutoff      = loadP (paramFilterCutoff, 8000.0f);
         const float pRes         = loadP (paramFilterRes, 0.1f);
-        const float pAttack      = loadP (paramAttack, 0.08f);
-        const float pDecay       = loadP (paramDecay, 0.5f);
-        const float pSustain     = loadP (paramSustain, 0.8f);
-        const float pRelease     = loadP (paramRelease, 0.4f);
         const float pLFO1Rate    = loadP (paramLfo1Rate, 0.3f);
         const float pLFO1Depth   = loadP (paramLfo1Depth, 0.0f);
         const float pCompetition = loadP (paramCompetition, 0.0f);
@@ -539,18 +535,7 @@ public:
         // ---- Determine current organ model (clamped) ----
         int organModel = std::clamp (pOrgan, 0, 3);
 
-        // Select partial ratios and amplitudes for current model
-        const float* ratios = nullptr;
-        const float* amps   = nullptr;
-        int activePartials   = 11;
-
-        switch (organModel)
-        {
-            case 0: ratios = kShoAitakeRatios; amps = kShoAmps;     activePartials = 11; break;
-            case 1: ratios = kShengRatios;      amps = kShengAmps;   activePartials = 11; break;
-            case 2: ratios = kKheneRatios;      amps = kKheneAmps;   activePartials = 11; break;
-            case 3: ratios = kMelodicaRatios;   amps = kMelodicaAmps; activePartials = 8; break;  // only 8 non-zero
-        }
+        // Partial tables are selected per-voice inside the synthesiseModel lambda below.
 
         // ---- Compute crosstalk mix (adjacent voice leakage) ----
         // Pre-compute voice outputs from last block for crosstalk injection

@@ -121,7 +121,9 @@ public:
                 return; // SRO: input is silent, skip processing
 
             shaper->processBlock (buffer, midi, numSamples);
-            shaper->silenceGate.analyzeBlock (buffer, numSamples);
+            shaper->silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                numSamples);
         }
     }
 
@@ -138,7 +140,9 @@ public:
                     continue;
 
                 shaper->processBlock (buffer, midi, numSamples);
-                shaper->silenceGate.analyzeBlock (buffer, numSamples);
+                shaper->silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                    buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                    numSamples);
             }
         }
     }

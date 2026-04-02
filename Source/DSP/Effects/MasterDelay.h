@@ -184,7 +184,7 @@ public:
         // Autoclear: fade out buffers over ~5ms
         if (autoclearPending)
         {
-            int fadeSamples = juce::jmin (static_cast<int> (sr * 0.005), bufferSize);
+            int fadeSamples = juce::jmax (1, juce::jmin (static_cast<int> (sr * 0.005), bufferSize));
             float fadeStep = 1.0f / static_cast<float> (fadeSamples);
             for (int i = 0; i < fadeSamples; ++i)
             {
