@@ -325,8 +325,8 @@ def collect_all_names(preset_dir: pathlib.Path, skip_paths: set) -> set:
                 data = json.loads(fpath.read_text(encoding="utf-8"))
                 if n := data.get("name"):
                     names.add(n)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'[WARN] Rename failed: {e}', file=sys.stderr)
     return names
 
 

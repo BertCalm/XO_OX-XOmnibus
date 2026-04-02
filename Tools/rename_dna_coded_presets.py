@@ -87,8 +87,8 @@ def main():
                 d = json.loads(f.read_text())
                 if n := d.get("name"):
                     existing.add(n)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'[WARN] Rename failed: {e}', file=sys.stderr)
 
     renamed = 0
     for f in bad:

@@ -58,8 +58,8 @@ def load_engine_dna(engine_name: str) -> list[dict]:
                     dna = data.get("sonic_dna") or data.get("dna") or {}
                     vec = [float(dna.get(dim, 0.5)) for dim in DNA_DIMS]
                     vectors.append(vec)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'[WARN] Preset parse failed: {e}', file=sys.stderr)
     return vectors
 
 def centroid(vectors: list[list[float]]) -> list[float]:

@@ -186,8 +186,8 @@ def _score_pack(zf: zipfile.ZipFile) -> int:
             dims = _image_dims(img_data)
             if dims and min(dims) < 400:
                 penalty += 5
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'[WARN] Preset parse failed for {best}: {e}', file=sys.stderr)
 
     # WAV issues
     wav_files = [n for n in names if n.lower().endswith('.wav')]

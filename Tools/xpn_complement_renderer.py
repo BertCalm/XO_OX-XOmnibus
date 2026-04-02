@@ -674,8 +674,8 @@ def _generate_complement_cover(
             if os.path.exists(p):
                 try:
                     return ImageFont.truetype(p, size_pt)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'[WARN] Font load failed: {e}', file=sys.stderr)
         return ImageFont.load_default()
 
     font_large  = try_font(int(SIZE * 0.055))

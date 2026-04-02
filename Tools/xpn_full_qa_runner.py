@@ -215,8 +215,8 @@ def _is_drum_xpm(name: str, content: bytes) -> bool:
         text = content.decode("utf-8", errors="replace")
         if "<Pad>" in text or "<pad>" in text.lower():
             return True
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'[WARN] Report write failed: {e}', file=sys.stderr)
     return False
 
 

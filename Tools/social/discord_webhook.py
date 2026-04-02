@@ -214,7 +214,7 @@ def main() -> None:
     if args.dry_run:
         print("[DRY RUN] Would post to Discord:")
         print(f"  Username: {args.username}")
-        print(f"  Webhook:  {webhook_url[:40]}…")
+        print(f"  Webhook:  [configured]")
         print(f"  Message ({len(message)} chars):")
         print("  " + "\n  ".join(message.splitlines()))
         if not args.no_log:
