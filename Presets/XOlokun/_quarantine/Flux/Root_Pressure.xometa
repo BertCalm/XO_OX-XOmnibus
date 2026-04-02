@@ -43,5 +43,6 @@
     "root",
     "pressure"
   ],
-  "description": "Overbite root frequencies under maximum pressure — tectonic bass density."
+  "description": "Overbite root frequencies under maximum pressure — tectonic bass density.",
+  "quarantine_reason": "legacy_uncategorized"
 }

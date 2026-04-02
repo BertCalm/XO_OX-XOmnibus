@@ -42,5 +42,6 @@
     "strike",
     "bass"
   ],
-  "description": "Bass jaw snapping shut at terminal velocity — bite and hold."
+  "description": "Bass jaw snapping shut at terminal velocity — bite and hold.",
+  "quarantine_reason": "legacy_uncategorized"
 }

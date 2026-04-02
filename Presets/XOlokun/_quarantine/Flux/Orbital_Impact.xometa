@@ -43,5 +43,6 @@
     "impact",
     "collision"
   ],
-  "description": "Orbital impact event — ring system collision, debris compacted instantly."
+  "description": "Orbital impact event — ring system collision, debris compacted instantly.",
+  "quarantine_reason": "legacy_uncategorized"
 }

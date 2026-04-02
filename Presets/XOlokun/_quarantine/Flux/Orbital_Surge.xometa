@@ -43,5 +43,6 @@
     "surge",
     "structured"
   ],
-  "description": "Group envelopes shaping the surge — energy channeled, not unleashed."
+  "description": "Group envelopes shaping the surge — energy channeled, not unleashed.",
+  "quarantine_reason": "legacy_uncategorized"
 }

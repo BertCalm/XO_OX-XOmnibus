@@ -43,5 +43,6 @@
     "grid",
     "collapse"
   ],
-  "description": "Overworld era crossfade mid-collapse — all three chip eras failing together."
+  "description": "Overworld era crossfade mid-collapse — all three chip eras failing together.",
+  "quarantine_reason": "legacy_uncategorized"
 }

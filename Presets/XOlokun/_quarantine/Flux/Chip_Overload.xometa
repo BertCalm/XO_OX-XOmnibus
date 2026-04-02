@@ -42,5 +42,6 @@
     "chip",
     "overload"
   ],
-  "description": "All three chip engines in simultaneous distortion overload."
+  "description": "All three chip engines in simultaneous distortion overload.",
+  "quarantine_reason": "legacy_uncategorized"
 }

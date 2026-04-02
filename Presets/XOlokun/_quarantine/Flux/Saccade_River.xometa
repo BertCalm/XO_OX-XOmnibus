@@ -42,5 +42,6 @@
     "saccade",
     "river"
   ],
-  "description": "Rapid eye movements as water — perception at tidal velocity."
+  "description": "Rapid eye movements as water — perception at tidal velocity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

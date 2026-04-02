@@ -43,5 +43,6 @@
     "fault",
     "mauve"
   ],
-  "description": "Memory and forgetting locked in opposition — the shadow before the rupture."
+  "description": "Memory and forgetting locked in opposition — the shadow before the rupture.",
+  "quarantine_reason": "legacy_uncategorized"
 }

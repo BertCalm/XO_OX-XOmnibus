@@ -43,5 +43,6 @@
     "scattered",
     "light"
   ],
-  "description": "Opal granular particles scattered through maximum space — light without mass."
+  "description": "Opal granular particles scattered through maximum space — light without mass.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "meltdown",
     "saturation"
   ],
-  "description": "BELLY maxed, MOJO maxed — thermal runaway in the harmonic chain."
+  "description": "BELLY maxed, MOJO maxed — thermal runaway in the harmonic chain.",
+  "quarantine_reason": "legacy_uncategorized"
 }

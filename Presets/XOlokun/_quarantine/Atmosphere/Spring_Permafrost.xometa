@@ -42,5 +42,6 @@
     "reverb",
     "still"
   ],
-  "description": "Spring reverb suspended beneath permafrost — resonance without decay."
+  "description": "Spring reverb suspended beneath permafrost — resonance without decay.",
+  "quarantine_reason": "legacy_uncategorized"
 }

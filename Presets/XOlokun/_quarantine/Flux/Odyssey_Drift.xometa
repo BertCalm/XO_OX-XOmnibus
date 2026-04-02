@@ -43,5 +43,6 @@
     "drift",
     "sparse"
   ],
-  "description": "Odyssey wavetable adrift in open space — minimal presence, maximum journey."
+  "description": "Odyssey wavetable adrift in open space — minimal presence, maximum journey.",
+  "quarantine_reason": "legacy_uncategorized"
 }

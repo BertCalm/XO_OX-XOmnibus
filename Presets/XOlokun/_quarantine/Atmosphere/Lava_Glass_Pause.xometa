@@ -42,5 +42,6 @@
     "pause",
     "cold"
   ],
-  "description": "The moment lava surrenders heat and becomes mirror."
+  "description": "The moment lava surrenders heat and becomes mirror.",
+  "quarantine_reason": "legacy_uncategorized"
 }

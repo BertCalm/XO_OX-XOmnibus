@@ -43,5 +43,6 @@
     "grain",
     "frozen"
   ],
-  "description": "Granular storm arrested mid-scatter — lavender clouds of maximum density, no escape velocity."
+  "description": "Granular storm arrested mid-scatter — lavender clouds of maximum density, no escape velocity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

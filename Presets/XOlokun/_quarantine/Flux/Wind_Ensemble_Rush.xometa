@@ -43,5 +43,6 @@
     "wind",
     "rush"
   ],
-  "description": "BOND macro mid-engage — dual wind lines in close disciplined parallel."
+  "description": "BOND macro mid-engage — dual wind lines in close disciplined parallel.",
+  "quarantine_reason": "legacy_uncategorized"
 }

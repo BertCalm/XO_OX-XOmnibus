@@ -43,5 +43,6 @@
     "phosphor",
     "storm"
   ],
-  "description": "AutoPulse at maximum rate — light as pure aggression, zero silence."
+  "description": "AutoPulse at maximum rate — light as pure aggression, zero silence.",
+  "quarantine_reason": "legacy_uncategorized"
 }

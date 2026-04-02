@@ -43,5 +43,6 @@
     "dense",
     "matter"
   ],
-  "description": "Origami folded to dense matter — paper geometry approaching neutron star density."
+  "description": "Origami folded to dense matter — paper geometry approaching neutron star density.",
+  "quarantine_reason": "legacy_uncategorized"
 }

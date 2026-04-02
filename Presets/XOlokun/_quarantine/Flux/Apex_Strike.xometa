@@ -43,5 +43,6 @@
     "predator",
     "strike"
   ],
-  "description": "Orca breach at full velocity — echolocation burst into direct impact."
+  "description": "Orca breach at full velocity — echolocation burst into direct impact.",
+  "quarantine_reason": "legacy_uncategorized"
 }

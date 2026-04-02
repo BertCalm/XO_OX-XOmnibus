@@ -43,5 +43,6 @@
     "chiptune",
     "avalanche"
   ],
-  "description": "Overworld chip engine cascading — NES/Genesis layers pile into avalanche."
+  "description": "Overworld chip engine cascading — NES/Genesis layers pile into avalanche.",
+  "quarantine_reason": "legacy_uncategorized"
 }

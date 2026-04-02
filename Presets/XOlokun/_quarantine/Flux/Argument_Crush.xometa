@@ -43,5 +43,6 @@
     "argument",
     "crush"
   ],
-  "description": "Organon argument crush — logical structure compressed beyond recognition."
+  "description": "Organon argument crush — logical structure compressed beyond recognition.",
+  "quarantine_reason": "legacy_uncategorized"
 }

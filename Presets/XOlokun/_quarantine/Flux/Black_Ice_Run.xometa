@@ -43,5 +43,6 @@
     "black-ice",
     "run"
   ],
-  "description": "OddOscar oscillator pair sliding on black ice — dangerous cold velocity."
+  "description": "OddOscar oscillator pair sliding on black ice — dangerous cold velocity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

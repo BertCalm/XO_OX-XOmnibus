@@ -42,5 +42,6 @@
     "tundra",
     "gradient"
   ],
-  "description": "A slow colour gradient across a frozen plain — barely shifting."
+  "description": "A slow colour gradient across a frozen plain — barely shifting.",
+  "quarantine_reason": "legacy_uncategorized"
 }

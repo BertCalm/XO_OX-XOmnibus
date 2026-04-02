@@ -43,5 +43,6 @@
     "metabolic",
     "push"
   ],
-  "description": "Metabolic rate elevated — variational free energy channeled into forward propulsion."
+  "description": "Metabolic rate elevated — variational free energy channeled into forward propulsion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

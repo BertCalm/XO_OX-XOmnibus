@@ -43,5 +43,6 @@
     "logic",
     "saturation"
   ],
-  "description": "Organon logic saturation — all propositions true simultaneously."
+  "description": "Organon logic saturation — all propositions true simultaneously.",
+  "quarantine_reason": "legacy_uncategorized"
 }

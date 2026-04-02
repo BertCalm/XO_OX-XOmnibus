@@ -42,5 +42,6 @@
     "cathedral",
     "cold"
   ],
-  "description": "Stone and cold air — liturgical silence between the pillars."
+  "description": "Stone and cold air — liturgical silence between the pillars.",
+  "quarantine_reason": "legacy_uncategorized"
 }

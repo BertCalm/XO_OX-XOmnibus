@@ -43,5 +43,6 @@
     "abyssal",
     "hold"
   ],
-  "description": "Mixtur-Trautonium with bowed pressure — subharmonic mass at dead stop."
+  "description": "Mixtur-Trautonium with bowed pressure — subharmonic mass at dead stop.",
+  "quarantine_reason": "legacy_uncategorized"
 }

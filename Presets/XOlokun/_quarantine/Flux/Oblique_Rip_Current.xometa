@@ -42,5 +42,6 @@
     "rip",
     "current"
   ],
-  "description": "Lateral energy at full speed — oblique force without malice."
+  "description": "Lateral energy at full speed — oblique force without malice.",
+  "quarantine_reason": "legacy_uncategorized"
 }

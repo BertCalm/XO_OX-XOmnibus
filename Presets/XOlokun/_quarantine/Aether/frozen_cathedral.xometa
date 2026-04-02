@@ -39,5 +39,6 @@
     "pairs": []
   },
   "tempo": null,
-  "description": ""
+  "description": "",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "glass",
     "crushing"
   ],
-  "description": "Dense black refraction under maximum pressure — no give, no motion."
+  "description": "Dense black refraction under maximum pressure — no give, no motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

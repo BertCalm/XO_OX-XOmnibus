@@ -43,5 +43,6 @@
     "pressure",
     "granular"
   ],
-  "description": "Granular cloud suspended — grain scatter frozen at maximum density, waiting."
+  "description": "Granular cloud suspended — grain scatter frozen at maximum density, waiting.",
+  "quarantine_reason": "legacy_uncategorized"
 }

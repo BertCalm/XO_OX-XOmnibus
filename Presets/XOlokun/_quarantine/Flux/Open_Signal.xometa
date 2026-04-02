@@ -43,5 +43,6 @@
     "open",
     "signal"
   ],
-  "description": "Opal open signal — granular emission spreading freely through maximum space."
+  "description": "Opal open signal — granular emission spreading freely through maximum space.",
+  "quarantine_reason": "legacy_uncategorized"
 }

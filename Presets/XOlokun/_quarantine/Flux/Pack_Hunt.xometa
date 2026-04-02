@@ -42,5 +42,6 @@
     "pack",
     "predator"
   ],
-  "description": "Coordinated pursuit at full sprint — no prey escapes."
+  "description": "Coordinated pursuit at full sprint — no prey escapes.",
+  "quarantine_reason": "legacy_uncategorized"
 }

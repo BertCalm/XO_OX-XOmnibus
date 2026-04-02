@@ -42,5 +42,6 @@
     "chaos",
     "frenzy"
   ],
-  "description": "Self-devouring at maximum velocity — the serpent tears itself apart."
+  "description": "Self-devouring at maximum velocity — the serpent tears itself apart.",
+  "quarantine_reason": "legacy_uncategorized"
 }

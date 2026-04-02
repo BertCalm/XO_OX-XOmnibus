@@ -42,5 +42,6 @@
     "feedback",
     "apocalypse"
   ],
-  "description": "Recursive destruction loop — signal consuming signal."
+  "description": "Recursive destruction loop — signal consuming signal.",
+  "quarantine_reason": "legacy_uncategorized"
 }

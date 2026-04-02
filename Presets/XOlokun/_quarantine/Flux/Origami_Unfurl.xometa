@@ -42,5 +42,6 @@
     "unfurl",
     "fold"
   ],
-  "description": "Paper folds releasing in rapid sequence — kinetic grace at speed."
+  "description": "Paper folds releasing in rapid sequence — kinetic grace at speed.",
+  "quarantine_reason": "legacy_uncategorized"
 }

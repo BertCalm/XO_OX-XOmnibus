@@ -43,5 +43,6 @@
     "chaos",
     "spine"
   ],
-  "description": "Strange attractor at peak density — the serpent eating itself at speed."
+  "description": "Strange attractor at peak density — the serpent eating itself at speed.",
+  "quarantine_reason": "legacy_uncategorized"
 }

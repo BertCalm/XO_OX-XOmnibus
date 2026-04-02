@@ -43,5 +43,6 @@
     "arms",
     "escalation"
   ],
-  "description": "Outwit 8-arm CA in arms race — all rules escalating toward maximum complexity."
+  "description": "Outwit 8-arm CA in arms race — all rules escalating toward maximum complexity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

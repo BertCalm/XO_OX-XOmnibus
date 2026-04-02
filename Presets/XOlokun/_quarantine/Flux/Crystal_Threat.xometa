@@ -43,5 +43,6 @@
     "crystal",
     "threat"
   ],
-  "description": "Pure obsidian density with zero release — structural threat without a single movement."
+  "description": "Pure obsidian density with zero release — structural threat without a single movement.",
+  "quarantine_reason": "legacy_uncategorized"
 }

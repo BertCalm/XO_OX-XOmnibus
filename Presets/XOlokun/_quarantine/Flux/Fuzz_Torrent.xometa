@@ -43,5 +43,6 @@
     "fuzz",
     "torrent"
   ],
-  "description": "Overbite bass filter wide open — fuzz distortion torrenting through the mix."
+  "description": "Overbite bass filter wide open — fuzz distortion torrenting through the mix.",
+  "quarantine_reason": "legacy_uncategorized"
 }

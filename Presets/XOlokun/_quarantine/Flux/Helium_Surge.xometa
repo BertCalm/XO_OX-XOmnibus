@@ -43,5 +43,6 @@
     "helium",
     "surge"
   ],
-  "description": "OddOscar at helium temperature — superfluid motion without resistance."
+  "description": "OddOscar at helium temperature — superfluid motion without resistance.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "chaos",
     "fracture"
   ],
-  "description": "Ouroboros feedback loop at critical mass — topology collapses into pure event."
+  "description": "Ouroboros feedback loop at critical mass — topology collapses into pure event.",
+  "quarantine_reason": "legacy_uncategorized"
 }

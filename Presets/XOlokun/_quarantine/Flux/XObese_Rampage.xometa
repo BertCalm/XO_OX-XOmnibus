@@ -42,5 +42,6 @@
     "rampage",
     "crushing"
   ],
-  "description": "Every sample slot detonating simultaneously — unhinged mass event."
+  "description": "Every sample slot detonating simultaneously — unhinged mass event.",
+  "quarantine_reason": "legacy_uncategorized"
 }

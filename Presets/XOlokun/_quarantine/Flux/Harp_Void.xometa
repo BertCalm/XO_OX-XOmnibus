@@ -43,5 +43,6 @@
     "harp",
     "void"
   ],
-  "description": "Orphica microsound harp in void — single pluck resonating through absolute space."
+  "description": "Orphica microsound harp in void — single pluck resonating through absolute space.",
+  "quarantine_reason": "legacy_uncategorized"
 }

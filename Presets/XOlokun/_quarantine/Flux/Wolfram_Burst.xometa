@@ -43,5 +43,6 @@
     "cellular-automata",
     "burst"
   ],
-  "description": "Outwit CA rules firing simultaneously — Wolfram Rule 110 at maximum density."
+  "description": "Outwit CA rules firing simultaneously — Wolfram Rule 110 at maximum density.",
+  "quarantine_reason": "legacy_uncategorized"
 }

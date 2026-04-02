@@ -43,5 +43,6 @@
     "distant",
     "resonance"
   ],
-  "description": "Odyssey wavetable in deep space — single resonance moving through void."
+  "description": "Odyssey wavetable in deep space — single resonance moving through void.",
+  "quarantine_reason": "legacy_uncategorized"
 }

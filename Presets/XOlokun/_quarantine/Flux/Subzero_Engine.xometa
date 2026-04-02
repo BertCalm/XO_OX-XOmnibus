@@ -43,5 +43,6 @@
     "subzero",
     "engine"
   ],
-  "description": "Obscura granular engine running subzero — cold spectral motion."
+  "description": "Obscura granular engine running subzero — cold spectral motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

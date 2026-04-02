@@ -43,5 +43,6 @@
     "memory",
     "fault"
   ],
-  "description": "Two narrative layers in maximum conflict — forgetting fighting memory at fault line."
+  "description": "Two narrative layers in maximum conflict — forgetting fighting memory at fault line.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -102,5 +102,6 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "quarantine_reason": "legacy_uncategorized"
 }

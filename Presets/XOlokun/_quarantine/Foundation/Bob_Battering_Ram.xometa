@@ -42,5 +42,6 @@
     "battering",
     "crushing"
   ],
-  "description": "Static mass with single purpose — pressure without pace."
+  "description": "Static mass with single purpose — pressure without pace.",
+  "quarantine_reason": "legacy_uncategorized"
 }

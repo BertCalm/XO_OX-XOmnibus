@@ -43,5 +43,6 @@
     "storm",
     "tentacle"
   ],
-  "description": "Octopus 8-arm crossfade in full storm — every arm thrashing simultaneously."
+  "description": "Octopus 8-arm crossfade in full storm — every arm thrashing simultaneously.",
+  "quarantine_reason": "legacy_uncategorized"
 }

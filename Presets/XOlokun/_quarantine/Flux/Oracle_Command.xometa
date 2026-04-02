@@ -43,5 +43,6 @@
     "command",
     "maqam"
   ],
-  "description": "GENDY stochastic system with breakpoints tightened — prophecy that obeys a schedule."
+  "description": "GENDY stochastic system with breakpoints tightened — prophecy that obeys a schedule.",
+  "quarantine_reason": "legacy_uncategorized"
 }

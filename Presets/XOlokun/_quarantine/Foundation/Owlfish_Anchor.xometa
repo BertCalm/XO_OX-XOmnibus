@@ -42,5 +42,6 @@
     "anchor",
     "deep"
   ],
-  "description": "Owlfish planted in seafloor — pure downward force without drift."
+  "description": "Owlfish planted in seafloor — pure downward force without drift.",
+  "quarantine_reason": "legacy_uncategorized"
 }

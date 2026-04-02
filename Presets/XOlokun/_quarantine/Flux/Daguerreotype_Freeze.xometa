@@ -43,5 +43,6 @@
     "daguerreotype",
     "freeze"
   ],
-  "description": "Silver plate under pressure — the moment before the image burns through."
+  "description": "Silver plate under pressure — the moment before the image burns through.",
+  "quarantine_reason": "legacy_uncategorized"
 }

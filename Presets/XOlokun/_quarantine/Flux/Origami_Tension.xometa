@@ -42,5 +42,6 @@
     "origami",
     "fold"
   ],
-  "description": "Paper creased to its limit — fold point held back from the final tear."
+  "description": "Paper creased to its limit — fold point held back from the final tear.",
+  "quarantine_reason": "legacy_uncategorized"
 }

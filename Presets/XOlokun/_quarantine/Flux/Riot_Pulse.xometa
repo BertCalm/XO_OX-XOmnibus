@@ -44,5 +44,6 @@
     "percussion"
   ],
   "description": "Onset drums in full riot — every hit overlapping, rhythm dissolving into noise.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "siege",
     "violet"
   ],
-  "description": "Odyssey osc stack at max density, minimal movement — the violet siege before the drift."
+  "description": "Odyssey osc stack at max density, minimal movement — the violet siege before the drift.",
+  "quarantine_reason": "legacy_uncategorized"
 }

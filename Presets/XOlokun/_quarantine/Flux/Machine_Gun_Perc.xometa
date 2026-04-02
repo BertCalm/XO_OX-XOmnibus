@@ -44,5 +44,6 @@
     "machine"
   ],
   "description": "XVC at maximum cross-voice density — drum machine as weapon.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

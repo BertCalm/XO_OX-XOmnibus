@@ -42,5 +42,6 @@
     "stasis",
     "harmonic"
   ],
-  "description": "Pipe organ drones locked in harmonic stasis — breath held forever."
+  "description": "Pipe organ drones locked in harmonic stasis — breath held forever.",
+  "quarantine_reason": "legacy_uncategorized"
 }

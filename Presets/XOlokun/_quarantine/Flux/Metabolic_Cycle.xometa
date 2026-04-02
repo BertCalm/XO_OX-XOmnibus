@@ -43,5 +43,6 @@
     "metabolic",
     "cycle"
   ],
-  "description": "Cellular coupling at medium rate — organism in aerobic flux, not anaerobic crisis."
+  "description": "Cellular coupling at medium rate — organism in aerobic flux, not anaerobic crisis.",
+  "quarantine_reason": "legacy_uncategorized"
 }

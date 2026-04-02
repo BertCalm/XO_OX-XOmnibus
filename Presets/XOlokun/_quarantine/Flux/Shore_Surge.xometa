@@ -43,5 +43,6 @@
     "shore",
     "surge"
   ],
-  "description": "ShoreSystem at high tide — coastal wind against structured rhythm."
+  "description": "ShoreSystem at high tide — coastal wind against structured rhythm.",
+  "quarantine_reason": "legacy_uncategorized"
 }

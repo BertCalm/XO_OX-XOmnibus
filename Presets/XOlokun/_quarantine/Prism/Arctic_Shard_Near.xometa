@@ -38,5 +38,6 @@
     "bright"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "thread",
     "pull"
   ],
-  "description": "Orphica single thread pulled through silence — sparse harp gesture."
+  "description": "Orphica single thread pulled through silence — sparse harp gesture.",
+  "quarantine_reason": "legacy_uncategorized"
 }

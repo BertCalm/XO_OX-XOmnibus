@@ -43,5 +43,6 @@
     "cascade",
     "prism"
   ],
-  "description": "Bouncing prisms past Nyquist — harmonic cascade without ceiling."
+  "description": "Bouncing prisms past Nyquist — harmonic cascade without ceiling.",
+  "quarantine_reason": "legacy_uncategorized"
 }

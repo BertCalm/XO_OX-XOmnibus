@@ -43,5 +43,6 @@
     "paper",
     "crush"
   ],
-  "description": "Origami fold geometry at maximum density — paper crushed into singularity."
+  "description": "Origami fold geometry at maximum density — paper crushed into singularity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

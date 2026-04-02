@@ -43,5 +43,6 @@
     "prophecy",
     "beat"
   ],
-  "description": "Indigo oracle locking stochastic output to a groove — chaos serving rhythm."
+  "description": "Indigo oracle locking stochastic output to a groove — chaos serving rhythm.",
+  "quarantine_reason": "legacy_uncategorized"
 }

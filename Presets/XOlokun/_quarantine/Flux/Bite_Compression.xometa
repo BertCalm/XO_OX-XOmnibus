@@ -43,5 +43,6 @@
     "bite",
     "compression"
   ],
-  "description": "Overbite maximum bite — all frequency bands compressed into dense mass."
+  "description": "Overbite maximum bite — all frequency bands compressed into dense mass.",
+  "quarantine_reason": "legacy_uncategorized"
 }

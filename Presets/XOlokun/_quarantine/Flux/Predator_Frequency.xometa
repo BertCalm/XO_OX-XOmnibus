@@ -43,5 +43,6 @@
     "predator",
     "frequency"
   ],
-  "description": "Echolocation locked on target — subsonic pulse before the kill."
+  "description": "Echolocation locked on target — subsonic pulse before the kill.",
+  "quarantine_reason": "legacy_uncategorized"
 }

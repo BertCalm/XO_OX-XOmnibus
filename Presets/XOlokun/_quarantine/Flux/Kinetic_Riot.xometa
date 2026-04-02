@@ -43,5 +43,6 @@
     "kinetic",
     "riot"
   ],
-  "description": "Optic scanner in kinetic riot — visual data streams colliding."
+  "description": "Optic scanner in kinetic riot — visual data streams colliding.",
+  "quarantine_reason": "legacy_uncategorized"
 }

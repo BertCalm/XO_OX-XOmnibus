@@ -49,5 +49,6 @@
     ]
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

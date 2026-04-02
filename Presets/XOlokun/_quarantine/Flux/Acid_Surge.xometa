@@ -42,5 +42,6 @@
     "acid",
     "surge"
   ],
-  "description": "Overbite filter fully open — acid wave at maximum aggression."
+  "description": "Overbite filter fully open — acid wave at maximum aggression.",
+  "quarantine_reason": "legacy_uncategorized"
 }

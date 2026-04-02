@@ -43,5 +43,6 @@
     "eruption"
   ],
   "description": "Every transient at maximum attack — volcanic drum battery.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

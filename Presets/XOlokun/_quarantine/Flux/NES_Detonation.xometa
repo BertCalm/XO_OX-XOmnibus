@@ -42,5 +42,6 @@
     "NES",
     "detonation"
   ],
-  "description": "2A03 pushed past technical limits — retro violence at 8-bit scale."
+  "description": "2A03 pushed past technical limits — retro violence at 8-bit scale.",
+  "quarantine_reason": "legacy_uncategorized"
 }

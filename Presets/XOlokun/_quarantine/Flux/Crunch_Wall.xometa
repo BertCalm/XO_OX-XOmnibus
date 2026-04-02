@@ -43,5 +43,6 @@
     "crunch",
     "wall"
   ],
-  "description": "Oblong chord stacks compressed into a crunch wall — harmonic saturation peak."
+  "description": "Oblong chord stacks compressed into a crunch wall — harmonic saturation peak.",
+  "quarantine_reason": "legacy_uncategorized"
 }

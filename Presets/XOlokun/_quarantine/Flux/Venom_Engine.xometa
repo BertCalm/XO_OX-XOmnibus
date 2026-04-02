@@ -43,5 +43,6 @@
     "venom",
     "engine"
   ],
-  "description": "BITE + TRASH running together — acid filter with possum venom backing."
+  "description": "BITE + TRASH running together — acid filter with possum venom backing.",
+  "quarantine_reason": "legacy_uncategorized"
 }

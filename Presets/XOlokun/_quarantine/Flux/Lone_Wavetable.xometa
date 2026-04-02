@@ -43,5 +43,6 @@
     "lone",
     "wavetable"
   ],
-  "description": "Odyssey lone wavetable scanning through empty frequency space."
+  "description": "Odyssey lone wavetable scanning through empty frequency space.",
+  "quarantine_reason": "legacy_uncategorized"
 }

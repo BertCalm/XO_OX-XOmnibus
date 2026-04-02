@@ -42,5 +42,6 @@
     "brass",
     "bombardment"
   ],
-  "description": "Triple brass locked in low unison — harmonic siege engine."
+  "description": "Triple brass locked in low unison — harmonic siege engine.",
+  "quarantine_reason": "legacy_uncategorized"
 }

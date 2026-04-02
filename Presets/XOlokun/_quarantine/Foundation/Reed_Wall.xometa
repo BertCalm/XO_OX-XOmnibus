@@ -42,5 +42,6 @@
     "reed",
     "wall"
   ],
-  "description": "Dual woodwind sustain as structural force — held without movement."
+  "description": "Dual woodwind sustain as structural force — held without movement.",
+  "quarantine_reason": "legacy_uncategorized"
 }

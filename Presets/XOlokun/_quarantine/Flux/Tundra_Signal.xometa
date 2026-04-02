@@ -43,5 +43,6 @@
     "tundra",
     "signal"
   ],
-  "description": "Ombre tundra gradient — cold sparse signal moving across open plains."
+  "description": "Ombre tundra gradient — cold sparse signal moving across open plains.",
+  "quarantine_reason": "legacy_uncategorized"
 }

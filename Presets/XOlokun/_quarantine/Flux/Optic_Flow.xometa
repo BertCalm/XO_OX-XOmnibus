@@ -42,5 +42,6 @@
     "flow",
     "light"
   ],
-  "description": "Visual field streaming past at speed — all movement, no tension."
+  "description": "Visual field streaming past at speed — all movement, no tension.",
+  "quarantine_reason": "legacy_uncategorized"
 }

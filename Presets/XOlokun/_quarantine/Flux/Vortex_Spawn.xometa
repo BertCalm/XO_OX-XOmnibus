@@ -43,5 +43,6 @@
     "vortex",
     "feedback"
   ],
-  "description": "Ouroboros feedback snake consuming itself — self-modulating vortex."
+  "description": "Ouroboros feedback snake consuming itself — self-modulating vortex.",
+  "quarantine_reason": "legacy_uncategorized"
 }

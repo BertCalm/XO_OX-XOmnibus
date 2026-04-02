@@ -43,5 +43,6 @@
     "spring",
     "threat"
   ],
-  "description": "Tape delay held at loop boundary — the moment before the spring snaps back."
+  "description": "Tape delay held at loop boundary — the moment before the spring snaps back.",
+  "quarantine_reason": "legacy_uncategorized"
 }

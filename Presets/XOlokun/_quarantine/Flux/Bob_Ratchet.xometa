@@ -43,5 +43,6 @@
     "ratchet",
     "amber"
   ],
-  "description": "Amber filter ratcheting up — Bob's warmth at working tempo."
+  "description": "Amber filter ratcheting up — Bob's warmth at working tempo.",
+  "quarantine_reason": "legacy_uncategorized"
 }

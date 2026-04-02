@@ -42,5 +42,6 @@
     "genesis",
     "YM2612"
   ],
-  "description": "YM2612 FM feedback at maximum — Mega Drive hardware screaming."
+  "description": "YM2612 FM feedback at maximum — Mega Drive hardware screaming.",
+  "quarantine_reason": "legacy_uncategorized"
 }

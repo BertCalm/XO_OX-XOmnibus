@@ -42,5 +42,6 @@
     "dormant",
     "prophecy"
   ],
-  "description": "The oracle rests — vision suspended in crystalline silence."
+  "description": "The oracle rests — vision suspended in crystalline silence.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "harp",
     "tide"
   ],
-  "description": "String grains swept by a benevolent current — fast, musical, serene."
+  "description": "String grains swept by a benevolent current — fast, musical, serene.",
+  "quarantine_reason": "legacy_uncategorized"
 }

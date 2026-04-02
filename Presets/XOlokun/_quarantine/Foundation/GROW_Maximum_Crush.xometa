@@ -42,5 +42,6 @@
     "GROW",
     "crush"
   ],
-  "description": "GROW macro at maximum — brass swell without forward motion."
+  "description": "GROW macro at maximum — brass swell without forward motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

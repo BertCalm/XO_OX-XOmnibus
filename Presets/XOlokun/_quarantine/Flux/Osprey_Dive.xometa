@@ -43,5 +43,6 @@
     "dive",
     "azulejo"
   ],
-  "description": "Shore wind behind the dive — controlled plummet with azulejo blue clarity."
+  "description": "Shore wind behind the dive — controlled plummet with azulejo blue clarity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

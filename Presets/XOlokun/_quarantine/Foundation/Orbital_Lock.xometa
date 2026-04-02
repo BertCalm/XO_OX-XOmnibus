@@ -42,5 +42,6 @@
     "lock",
     "gravity"
   ],
-  "description": "Gravitational lock — orbital mechanics as static crushing force."
+  "description": "Gravitational lock — orbital mechanics as static crushing force.",
+  "quarantine_reason": "legacy_uncategorized"
 }

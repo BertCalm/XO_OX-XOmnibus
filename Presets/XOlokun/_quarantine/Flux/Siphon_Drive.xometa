@@ -43,5 +43,6 @@
     "siphon",
     "harp"
   ],
-  "description": "Microsound harp driven fast — plucks compressed into a continuous propulsive line."
+  "description": "Microsound harp driven fast — plucks compressed into a continuous propulsive line.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "solitude",
     "ring"
   ],
-  "description": "Orbital single ring — one particle traversing vast empty circumference."
+  "description": "Orbital single ring — one particle traversing vast empty circumference.",
+  "quarantine_reason": "legacy_uncategorized"
 }

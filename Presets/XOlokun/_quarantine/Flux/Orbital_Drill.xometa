@@ -43,5 +43,6 @@
     "drill",
     "focused"
   ],
-  "description": "Group envelopes staggered for drilling rhythm — sustained intensity with internal order."
+  "description": "Group envelopes staggered for drilling rhythm — sustained intensity with internal order.",
+  "quarantine_reason": "legacy_uncategorized"
 }

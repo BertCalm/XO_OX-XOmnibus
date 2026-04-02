@@ -43,5 +43,6 @@
     "crystal",
     "scatter"
   ],
-  "description": "Opal crystal grains scattered bright — high-frequency particles in open field."
+  "description": "Opal crystal grains scattered bright — high-frequency particles in open field.",
+  "quarantine_reason": "legacy_uncategorized"
 }

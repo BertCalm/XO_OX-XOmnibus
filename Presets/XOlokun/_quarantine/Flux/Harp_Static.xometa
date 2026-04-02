@@ -43,5 +43,6 @@
     "harp",
     "static"
   ],
-  "description": "Orphica harp static — microsound particles barely disturbing the silence."
+  "description": "Orphica harp static — microsound particles barely disturbing the silence.",
+  "quarantine_reason": "legacy_uncategorized"
 }

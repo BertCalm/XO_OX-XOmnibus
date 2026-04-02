@@ -42,5 +42,6 @@
     "survey",
     "vast"
   ],
-  "description": "Low harmonic survey across an unbroken white expanse."
+  "description": "Low harmonic survey across an unbroken white expanse.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -44,5 +44,6 @@
     "barrage"
   ],
   "description": "All 8 voices triggered in a 32nd-note fusillade — rhythm as violence.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

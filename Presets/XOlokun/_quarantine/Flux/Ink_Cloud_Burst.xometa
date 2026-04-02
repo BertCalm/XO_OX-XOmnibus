@@ -42,5 +42,6 @@
     "ink",
     "burst"
   ],
-  "description": "Defence as offence — dense chemical chaos at full release."
+  "description": "Defence as offence — dense chemical chaos at full release.",
+  "quarantine_reason": "legacy_uncategorized"
 }

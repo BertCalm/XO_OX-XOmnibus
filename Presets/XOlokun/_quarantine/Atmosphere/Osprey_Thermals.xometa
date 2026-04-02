@@ -42,5 +42,6 @@
     "soaring",
     "still"
   ],
-  "description": "Held high on a thermal column — zero effort, zero movement."
+  "description": "Held high on a thermal column — zero effort, zero movement.",
+  "quarantine_reason": "legacy_uncategorized"
 }

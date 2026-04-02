@@ -43,5 +43,6 @@
     "fold",
     "stack"
   ],
-  "description": "Origami fold-stack maximum — 64 simultaneous fold geometries in dense lattice."
+  "description": "Origami fold-stack maximum — 64 simultaneous fold geometries in dense lattice.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "debris",
     "field"
   ],
-  "description": "Orbital ring collapsed — dense debris field with no clear space between particles."
+  "description": "Orbital ring collapsed — dense debris field with no clear space between particles.",
+  "quarantine_reason": "legacy_uncategorized"
 }

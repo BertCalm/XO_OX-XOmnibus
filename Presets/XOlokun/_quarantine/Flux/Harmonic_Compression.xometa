@@ -43,5 +43,6 @@
     "harmonic",
     "compression"
   ],
-  "description": "Organon logic engine under harmonic compression — syllogism stack overflow."
+  "description": "Organon logic engine under harmonic compression — syllogism stack overflow.",
+  "quarantine_reason": "legacy_uncategorized"
 }

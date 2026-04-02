@@ -43,5 +43,6 @@
     "arctic",
     "drift"
   ],
-  "description": "Obscura granular textures drifting across arctic silence."
+  "description": "Obscura granular textures drifting across arctic silence.",
+  "quarantine_reason": "legacy_uncategorized"
 }

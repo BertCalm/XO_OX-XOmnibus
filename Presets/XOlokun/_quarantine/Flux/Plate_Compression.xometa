@@ -43,5 +43,6 @@
     "plate",
     "compression"
   ],
-  "description": "Stiffness model at maximum tension — silver daguerreotype plate about to crack."
+  "description": "Stiffness model at maximum tension — silver daguerreotype plate about to crack.",
+  "quarantine_reason": "legacy_uncategorized"
 }

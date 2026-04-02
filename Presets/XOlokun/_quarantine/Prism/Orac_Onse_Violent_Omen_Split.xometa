@@ -61,5 +61,6 @@
     "space": 0.076,
     "aggression": 0.941
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

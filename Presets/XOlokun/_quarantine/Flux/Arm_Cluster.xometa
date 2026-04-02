@@ -43,5 +43,6 @@
     "arms",
     "cluster"
   ],
-  "description": "Wolfram CA rule 30 — unpredictable arm outputs all competing for dominance."
+  "description": "Wolfram CA rule 30 — unpredictable arm outputs all competing for dominance.",
+  "quarantine_reason": "legacy_uncategorized"
 }

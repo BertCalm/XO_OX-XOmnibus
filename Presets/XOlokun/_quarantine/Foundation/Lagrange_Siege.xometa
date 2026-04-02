@@ -41,5 +41,6 @@
     "orbital",
     "lagrange"
   ],
-  "description": "Positioned at L1 — maximum aggression through perfect stillness."
+  "description": "Positioned at L1 — maximum aggression through perfect stillness.",
+  "quarantine_reason": "legacy_uncategorized"
 }

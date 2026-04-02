@@ -43,5 +43,6 @@
     "nitrogen",
     "liquid"
   ],
-  "description": "Ombre gradient locked at coldest temperature — liquid nitrogen flow."
+  "description": "Ombre gradient locked at coldest temperature — liquid nitrogen flow.",
+  "quarantine_reason": "legacy_uncategorized"
 }

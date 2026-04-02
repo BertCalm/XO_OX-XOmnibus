@@ -43,5 +43,6 @@
     "overburn",
     "light"
   ],
-  "description": "Phosphor screen pushed past luminance limits — visual synthesis as pure white noise."
+  "description": "Phosphor screen pushed past luminance limits — visual synthesis as pure white noise.",
+  "quarantine_reason": "legacy_uncategorized"
 }

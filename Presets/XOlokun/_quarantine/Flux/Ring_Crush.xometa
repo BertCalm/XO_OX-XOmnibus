@@ -43,5 +43,6 @@
     "ring",
     "crush"
   ],
-  "description": "Orbital ring crush — circumference shrinking, density increasing to critical."
+  "description": "Orbital ring crush — circumference shrinking, density increasing to critical.",
+  "quarantine_reason": "legacy_uncategorized"
 }

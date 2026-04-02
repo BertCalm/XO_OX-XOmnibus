@@ -43,5 +43,6 @@
     "fractal",
     "panic"
   ],
-  "description": "Ouroboros self-referential feedback at fractal panic state."
+  "description": "Ouroboros self-referential feedback at fractal panic state.",
+  "quarantine_reason": "legacy_uncategorized"
 }

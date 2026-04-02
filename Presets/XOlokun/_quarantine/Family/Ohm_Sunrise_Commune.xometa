@@ -44,5 +44,6 @@
     "drone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "quarantine_reason": "legacy_uncategorized"
 }

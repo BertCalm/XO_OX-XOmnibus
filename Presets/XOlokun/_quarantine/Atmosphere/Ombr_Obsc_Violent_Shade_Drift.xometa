@@ -60,5 +60,6 @@
     "density": 0.932,
     "space": 0.43,
     "aggression": 0.919
-  }
+  },
+  "quarantine_reason": "legacy_uncategorized"
 }

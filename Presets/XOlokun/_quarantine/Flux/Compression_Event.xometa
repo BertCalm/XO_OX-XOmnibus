@@ -43,5 +43,6 @@
     "compression",
     "event"
   ],
-  "description": "Overbite compression event — all bass frequencies collapsing inward."
+  "description": "Overbite compression event — all bass frequencies collapsing inward.",
+  "quarantine_reason": "legacy_uncategorized"
 }

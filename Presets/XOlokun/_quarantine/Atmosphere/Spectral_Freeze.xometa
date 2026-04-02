@@ -42,5 +42,6 @@
     "spectral",
     "freeze"
   ],
-  "description": "A single grain stretched across an ice shelf."
+  "description": "A single grain stretched across an ice shelf.",
+  "quarantine_reason": "legacy_uncategorized"
 }

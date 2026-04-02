@@ -42,5 +42,6 @@
     "granular",
     "cascade"
   ],
-  "description": "Microsound grains cascading like surf across a siphonophore colony."
+  "description": "Microsound grains cascading like surf across a siphonophore colony.",
+  "quarantine_reason": "legacy_uncategorized"
 }

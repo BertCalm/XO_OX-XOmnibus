@@ -43,5 +43,6 @@
     "pounce",
     "biome"
   ],
-  "description": "Low crouch to explosive spring — every gesture deliberate, landing exact."
+  "description": "Low crouch to explosive spring — every gesture deliberate, landing exact.",
+  "quarantine_reason": "legacy_uncategorized"
 }

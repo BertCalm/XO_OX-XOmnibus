@@ -43,5 +43,6 @@
     "drums"
   ],
   "description": "Wall of hits with zero mercy — pure rhythmic violence.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "cryogenic",
     "pulse"
   ],
-  "description": "OddOscar cold oscillator pair — cryogenic pulse through frozen tubes."
+  "description": "OddOscar cold oscillator pair — cryogenic pulse through frozen tubes.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "apoapsis",
     "hold"
   ],
-  "description": "Orbit at its farthest point — zero velocity, maximum potential energy."
+  "description": "Orbit at its farthest point — zero velocity, maximum potential energy.",
+  "quarantine_reason": "legacy_uncategorized"
 }

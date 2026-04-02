@@ -43,5 +43,6 @@
     "frost",
     "protocol"
   ],
-  "description": "Oracle frost protocol — prediction lattice crystallizing in cold motion."
+  "description": "Oracle frost protocol — prediction lattice crystallizing in cold motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

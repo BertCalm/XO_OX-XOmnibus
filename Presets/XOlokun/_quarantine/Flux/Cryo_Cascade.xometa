@@ -43,5 +43,6 @@
     "cryo",
     "cascade"
   ],
-  "description": "Obscura granular cryo cascade — frozen particles streaming in cold flux."
+  "description": "Obscura granular cryo cascade — frozen particles streaming in cold flux.",
+  "quarantine_reason": "legacy_uncategorized"
 }

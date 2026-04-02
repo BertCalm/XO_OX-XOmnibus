@@ -43,5 +43,6 @@
     "mass",
     "collapse"
   ],
-  "description": "Obese at maximum density — gravitational collapse of all harmonic matter."
+  "description": "Obese at maximum density — gravitational collapse of all harmonic matter.",
+  "quarantine_reason": "legacy_uncategorized"
 }

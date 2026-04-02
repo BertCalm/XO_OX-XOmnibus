@@ -43,5 +43,6 @@
     "tidal",
     "engine"
   ],
-  "description": "Separation parameter mid-range — flocking behavior synchronized to a driving pulse."
+  "description": "Separation parameter mid-range — flocking behavior synchronized to a driving pulse.",
+  "quarantine_reason": "legacy_uncategorized"
 }

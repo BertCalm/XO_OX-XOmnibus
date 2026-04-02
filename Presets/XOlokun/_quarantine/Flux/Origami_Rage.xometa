@@ -43,5 +43,6 @@
     "rage",
     "fold"
   ],
-  "description": "Fold point slammed forward — paper crane becomes shuriken."
+  "description": "Fold point slammed forward — paper crane becomes shuriken.",
+  "quarantine_reason": "legacy_uncategorized"
 }

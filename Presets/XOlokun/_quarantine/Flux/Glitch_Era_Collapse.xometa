@@ -43,5 +43,6 @@
     "glitch",
     "collapse"
   ],
-  "description": "ERA triangle cornered in NES maximum — chip noise at the edge of meltdown."
+  "description": "ERA triangle cornered in NES maximum — chip noise at the edge of meltdown.",
+  "quarantine_reason": "legacy_uncategorized"
 }

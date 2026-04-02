@@ -43,5 +43,6 @@
     "threshold",
     "sage"
   ],
-  "description": "COMMUNE macro at decision threshold — the commune before it either harmonizes or fractures."
+  "description": "COMMUNE macro at decision threshold — the commune before it either harmonizes or fractures.",
+  "quarantine_reason": "legacy_uncategorized"
 }

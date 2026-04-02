@@ -43,5 +43,6 @@
     "gravity",
     "well"
   ],
-  "description": "Obese gravity well — all surrounding sound drawn into dense singularity."
+  "description": "Obese gravity well — all surrounding sound drawn into dense singularity.",
+  "quarantine_reason": "legacy_uncategorized"
 }

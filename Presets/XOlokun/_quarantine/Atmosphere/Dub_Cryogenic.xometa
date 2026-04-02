@@ -42,5 +42,6 @@
     "dub",
     "cryogenic"
   ],
-  "description": "Tape echo cooled to near-zero — reverb trails frozen in place."
+  "description": "Tape echo cooled to near-zero — reverb trails frozen in place.",
+  "quarantine_reason": "legacy_uncategorized"
 }

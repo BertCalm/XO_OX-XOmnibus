@@ -43,5 +43,6 @@
     "prism",
     "shatter"
   ],
-  "description": "Prismatic bounce with walls collapsed — RTJ-mode at critical resonance."
+  "description": "Prismatic bounce with walls collapsed — RTJ-mode at critical resonance.",
+  "quarantine_reason": "legacy_uncategorized"
 }

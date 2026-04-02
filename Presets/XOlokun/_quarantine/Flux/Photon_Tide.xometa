@@ -42,5 +42,6 @@
     "photon",
     "tide"
   ],
-  "description": "Coherent light cycling through the spectrum — wave nature dominant."
+  "description": "Coherent light cycling through the spectrum — wave nature dominant.",
+  "quarantine_reason": "legacy_uncategorized"
 }

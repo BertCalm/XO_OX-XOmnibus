@@ -42,5 +42,6 @@
     "cross-swell",
     "glide"
   ],
-  "description": "Two tidal bodies intersecting — combined motion, zero impact."
+  "description": "Two tidal bodies intersecting — combined motion, zero impact.",
+  "quarantine_reason": "legacy_uncategorized"
 }

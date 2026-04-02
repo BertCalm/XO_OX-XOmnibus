@@ -43,5 +43,6 @@
     "saturation",
     "riot"
   ],
-  "description": "MOJO slammed — every harmonic screaming at once, saturation absolute."
+  "description": "MOJO slammed — every harmonic screaming at once, saturation absolute.",
+  "quarantine_reason": "legacy_uncategorized"
 }

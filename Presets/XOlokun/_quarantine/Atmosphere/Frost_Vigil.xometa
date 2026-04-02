@@ -42,5 +42,6 @@
     "frost",
     "vigil"
   ],
-  "description": "Roosting through the polar night — patient, motionless, present."
+  "description": "Roosting through the polar night — patient, motionless, present.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -44,5 +44,6 @@
     "whip"
   ],
   "description": "Hi-hat velocity layers cracking like plasma whip — lightning percussion.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "quarantine_reason": "legacy_uncategorized"
 }

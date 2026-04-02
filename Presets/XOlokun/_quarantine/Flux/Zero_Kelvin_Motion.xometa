@@ -43,5 +43,6 @@
     "zero",
     "kelvin"
   ],
-  "description": "Oracle prediction engine at absolute zero — cold motion without heat."
+  "description": "Oracle prediction engine at absolute zero — cold motion without heat.",
+  "quarantine_reason": "legacy_uncategorized"
 }

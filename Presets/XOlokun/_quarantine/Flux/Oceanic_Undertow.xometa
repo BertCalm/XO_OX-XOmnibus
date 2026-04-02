@@ -43,5 +43,6 @@
     "undertow",
     "teal"
   ],
-  "description": "Chromatophore modulator cycling fast — tidal pull with predictable return."
+  "description": "Chromatophore modulator cycling fast — tidal pull with predictable return.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "thermal",
     "null"
   ],
-  "description": "Oracle at thermal null — movement persisting where all heat has fled."
+  "description": "Oracle at thermal null — movement persisting where all heat has fled.",
+  "quarantine_reason": "legacy_uncategorized"
 }

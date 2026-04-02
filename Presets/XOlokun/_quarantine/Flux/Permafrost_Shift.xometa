@@ -43,5 +43,6 @@
     "permafrost",
     "shift"
   ],
-  "description": "Obsidian permafrost beginning to shift — cold slow movement under pressure."
+  "description": "Obsidian permafrost beginning to shift — cold slow movement under pressure.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "fortress",
     "dark"
   ],
-  "description": "Volcanic glass as architecture — impenetrable and still."
+  "description": "Volcanic glass as architecture — impenetrable and still.",
+  "quarantine_reason": "legacy_uncategorized"
 }

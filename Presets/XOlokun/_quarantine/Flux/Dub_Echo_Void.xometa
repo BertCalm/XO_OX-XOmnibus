@@ -43,5 +43,6 @@
     "dub",
     "void"
   ],
-  "description": "Overdub tape echo in maximum space — single repeat dying across infinite room."
+  "description": "Overdub tape echo in maximum space — single repeat dying across infinite room.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "frozen",
     "current"
   ],
-  "description": "Obsidian dark matter in motion — cold current through absolute zero."
+  "description": "Obsidian dark matter in motion — cold current through absolute zero.",
+  "quarantine_reason": "legacy_uncategorized"
 }

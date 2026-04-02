@@ -42,5 +42,6 @@
     "drone",
     "gentle"
   ],
-  "description": "Hippy-dad sine waves cycling at tidal rhythm — fast but at peace."
+  "description": "Hippy-dad sine waves cycling at tidal rhythm — fast but at peace.",
+  "quarantine_reason": "legacy_uncategorized"
 }

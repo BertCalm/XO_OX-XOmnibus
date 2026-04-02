@@ -43,5 +43,6 @@
     "grain",
     "desert"
   ],
-  "description": "Opal grains scattered across desert space — rare particles in fast motion."
+  "description": "Opal grains scattered across desert space — rare particles in fast motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

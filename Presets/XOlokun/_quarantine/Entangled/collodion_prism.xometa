@@ -60,5 +60,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "couplingIntensity": "Moderate"
+  "couplingIntensity": "Moderate",
+  "quarantine_reason": "legacy_uncategorized"
 }

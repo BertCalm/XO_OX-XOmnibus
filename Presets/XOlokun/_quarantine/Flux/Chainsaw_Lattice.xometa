@@ -43,5 +43,6 @@
     "chainsaw",
     "harsh"
   ],
-  "description": "Oblong chord engine razor-edged — bright lattice of stacked aggression."
+  "description": "Oblong chord engine razor-edged — bright lattice of stacked aggression.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "commune",
     "surge"
   ],
-  "description": "The commune breathes in waves — collective motion without tension."
+  "description": "The commune breathes in waves — collective motion without tension.",
+  "quarantine_reason": "legacy_uncategorized"
 }

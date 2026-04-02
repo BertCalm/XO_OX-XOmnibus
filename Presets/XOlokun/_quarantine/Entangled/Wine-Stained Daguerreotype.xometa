@@ -82,5 +82,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "couplingIntensity": "Moderate"
+  "couplingIntensity": "Moderate",
+  "quarantine_reason": "legacy_uncategorized"
 }

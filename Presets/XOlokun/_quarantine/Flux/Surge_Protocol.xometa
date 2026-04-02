@@ -43,5 +43,6 @@
     "surge",
     "protocol"
   ],
-  "description": "Octopus surge protocol engaged — all 8 arms firing in burst sequence."
+  "description": "Octopus surge protocol engaged — all 8 arms firing in burst sequence.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "sparse",
     "ring"
   ],
-  "description": "Orbital sparse ring — wide circumference with few particles in motion."
+  "description": "Orbital sparse ring — wide circumference with few particles in motion.",
+  "quarantine_reason": "legacy_uncategorized"
 }

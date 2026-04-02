@@ -42,5 +42,6 @@
     "stone",
     "table"
   ],
-  "description": "Unmovable mass at the centre of the room — dense, still, dominant."
+  "description": "Unmovable mass at the centre of the room — dense, still, dominant.",
+  "quarantine_reason": "legacy_uncategorized"
 }

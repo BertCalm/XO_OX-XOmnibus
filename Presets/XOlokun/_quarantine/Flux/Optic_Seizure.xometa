@@ -43,5 +43,6 @@
     "strobe",
     "seizure"
   ],
-  "description": "Optic visual synth — stroboscopic brightness at seizure threshold."
+  "description": "Optic visual synth — stroboscopic brightness at seizure threshold.",
+  "quarantine_reason": "legacy_uncategorized"
 }

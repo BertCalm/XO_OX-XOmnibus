@@ -42,5 +42,6 @@
     "standoff",
     "heavy"
   ],
-  "description": "The tavern in the siege town — unmoving through the bombardment."
+  "description": "The tavern in the siege town — unmoving through the bombardment.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -43,5 +43,6 @@
     "echo",
     "dispersal"
   ],
-  "description": "Overdub echo dispersal — sound dissolving into space, barely traceable."
+  "description": "Overdub echo dispersal — sound dissolving into space, barely traceable.",
+  "quarantine_reason": "legacy_uncategorized"
 }

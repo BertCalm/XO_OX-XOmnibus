@@ -42,5 +42,6 @@
     "breach",
     "impact"
   ],
-  "description": "Five-tonne body airborne — re-entry as sonic event."
+  "description": "Five-tonne body airborne — re-entry as sonic event.",
+  "quarantine_reason": "legacy_uncategorized"
 }

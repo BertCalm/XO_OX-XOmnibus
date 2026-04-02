@@ -42,5 +42,6 @@
     "sibyl",
     "still"
   ],
-  "description": "Words not yet spoken, frozen on the oracle's tongue."
+  "description": "Words not yet spoken, frozen on the oracle's tongue.",
+  "quarantine_reason": "legacy_uncategorized"
 }

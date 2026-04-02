@@ -41,5 +41,6 @@
     "obbligato",
     "BOND"
   ],
-  "description": "BOND macro holding both wind voices in aggressive stasis."
+  "description": "BOND macro holding both wind voices in aggressive stasis.",
+  "quarantine_reason": "legacy_uncategorized"
 }

@@ -42,5 +42,6 @@
     "rampart",
     "heavy"
   ],
-  "description": "Immovable structure at maximum density — the wall before the gate."
+  "description": "Immovable structure at maximum density — the wall before the gate.",
+  "quarantine_reason": "legacy_uncategorized"
 }

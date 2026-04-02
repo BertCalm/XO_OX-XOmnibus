@@ -43,5 +43,6 @@
     "lock",
     "violet"
   ],
-  "description": "Drift envelopes frozen at peak sustain — violet pressure behind glass."
+  "description": "Drift envelopes frozen at peak sustain — violet pressure behind glass.",
+  "quarantine_reason": "legacy_uncategorized"
 }

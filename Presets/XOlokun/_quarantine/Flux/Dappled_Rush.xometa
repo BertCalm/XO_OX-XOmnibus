@@ -42,5 +42,6 @@
     "dappled",
     "rush"
   ],
-  "description": "Light through canopy at sprint pace — bright, fast, harmless."
+  "description": "Light through canopy at sprint pace — bright, fast, harmless.",
+  "quarantine_reason": "legacy_uncategorized"
 }

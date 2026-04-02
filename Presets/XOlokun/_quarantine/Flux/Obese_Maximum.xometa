@@ -42,5 +42,6 @@
     "maximum",
     "heavy"
   ],
-  "description": "Absolute mass at absolute velocity — gravitational violence."
+  "description": "Absolute mass at absolute velocity — gravitational violence.",
+  "quarantine_reason": "legacy_uncategorized"
 }
