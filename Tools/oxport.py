@@ -60,6 +60,7 @@ import argparse
 import json
 import math
 import os
+import re
 import struct
 import subprocess
 import sys
@@ -318,12 +319,22 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
             else:
                 spec["coupling_warning"] = False
 
+            # Sanitize slug derived from external preset name (#563 — path traversal)
+            spec['preset_slug'] = re.sub(
+                r'[^a-zA-Z0-9_.-]', '_', spec['preset_slug']
+            ).strip('.')
+
             ctx.render_specs.append(spec)
 
             if not ctx.dry_run:
                 spec_path = ctx.specs_dir / f"{spec['preset_slug']}_render_spec.json"
-                with open(spec_path, "w") as f:
-                    json.dump(spec, f, indent=2)
+                # Path containment check before write
+                resolved = spec_path.resolve()
+                if not resolved.is_relative_to(ctx.specs_dir.resolve()):
+                    print(f'[WARN] Path escape blocked: {spec_path}', file=sys.stderr)
+                else:
+                    with open(spec_path, "w") as f:
+                        json.dump(spec, f, indent=2)
 
             print(f"      {spec['preset_name']}  ({spec['wav_count']} WAVs, {spec['program_type']})")
         except Exception as e:
@@ -364,8 +375,8 @@ def _stage_categorize(ctx: PipelineContext) -> None:
                 dna = _dna.compute_dna(str(wav_path))
                 ctx.sample_dna_cache[wav_path.stem.lower()] = dna
                 n_dna += 1
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'[WARN] DNA cache failed: {e}', file=sys.stderr)
         if n_dna:
             print(f"    DNA cache: {n_dna} sample(s) analyzed (velocity sculpting enabled)")
     except (ImportError, Exception):
@@ -2429,7 +2440,10 @@ def cmd_build(args) -> int:
                         # Slug prefix = preset name (slugified) so WAVs are organized per preset.
                         all_jobs: list[dict] = []
                         for prog_num, sel_preset in enumerate(selected_presets):
-                            preset_slug_prefix = sel_preset["name"].replace(" ", "_")
+                            preset_slug_prefix = re.sub(
+                                r'[^a-zA-Z0-9_.-]', '_',
+                                sel_preset["name"].replace(" ", "_")
+                            ).strip('.')
                             # Clone note-layout entries with the correct program number injected
                             patched_layout = []
                             for entry in note_layout:
@@ -2556,10 +2570,17 @@ def cmd_build(args) -> int:
                                        sorted(renders_dir.glob("*.wav")):
                                 parts = wav.stem.split("__", maxsplit=1)
                                 if len(parts) == 2:
-                                    preset_slug = parts[0]
+                                    # Sanitize slug extracted from WAV filename (#563 — path traversal)
+                                    preset_slug = re.sub(
+                                        r'[^a-zA-Z0-9_.-]', '_', parts[0]
+                                    ).strip('.')
                                     dest_dir = samples_root / preset_slug
                                 else:
                                     dest_dir = samples_root
+                                # Path containment check before any file write
+                                if not dest_dir.resolve().is_relative_to(samples_root.resolve()):
+                                    print(f'[WARN] Path escape blocked: {dest_dir}', file=sys.stderr)
+                                    continue
                                 dest_dir.mkdir(parents=True, exist_ok=True)
                                 dest_wav = dest_dir / wav.name
                                 if not dest_wav.exists():
@@ -2704,8 +2725,8 @@ def cmd_build(args) -> int:
                         _avg = _pd.get("pack_average", {})
                         sonic_dna.update({k: v for k, v in _avg.items()
                                          if k in sonic_dna})
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'[WARN] pack_dna.json parse error: {e}', file=sys.stderr)
 
                 png_bytes = art_gen.generate_cover_art(
                     engine=engine,

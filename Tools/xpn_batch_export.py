@@ -30,6 +30,7 @@ Optional job fields (all map directly to oxport.py flags):
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -107,6 +108,21 @@ def _validate_job(job: dict) -> None:
         raise ValueError(
             f"Invalid tuning system {tuning!r} — must be one of {sorted(VALID_TUNING_SYSTEMS)}"
         )
+
+    # Validate engine name — alphanumeric + underscore only (#564 — arg injection)
+    engine = str(job.get("engine", ""))
+    if not re.match(r'^[A-Za-z][A-Za-z0-9_]*$', engine):
+        raise ValueError(f"Invalid engine name: {engine!r}")
+
+    # Validate pack_name — safe filename characters only (#564 — arg injection)
+    pack_name = str(job.get("pack_name", ""))
+    if pack_name and not re.match(r'^[\w .()\-]+$', pack_name):
+        raise ValueError(f"Invalid pack_name: {pack_name!r}")
+
+    # Validate wavs_dir — no path traversal (#564 — arg injection)
+    wavs_dir = str(job.get("wavs_dir", ""))
+    if wavs_dir and ".." in Path(wavs_dir).parts:
+        raise ValueError(f"Path traversal in wavs_dir: {wavs_dir!r}")
 
 
 # ---------------------------------------------------------------------------
