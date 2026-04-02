@@ -550,15 +550,73 @@ private:
         return true;
     }
 
-    template <typename CallbackType>
-    static void callbackError (CallbackType& cb, const juce::String& msg)
+    // callbackError — log the error and invoke the callback with a failed result.
+    // Concrete overloads per callback type avoid brittle JUCE internal trait hackery.
+    // All overloads: log to JUCE logger (visible in console / DAW log), then dispatch
+    // a failure result to the callback on the message thread so the UI can show the
+    // error rather than silently swallowing it.
+
+    static void callbackError (RecipeCallback& cb, const juce::String& msg)
     {
-        // Create a default result with the error
-        using ResultType = typename std::remove_reference<
-            typename std::tuple_element<0,
-                typename juce::dsp::util::FunctionTraits<CallbackType>::ArgTypes>::type>::type;
-        // Simplified: just log the error
-        (void) cb; (void) msg;
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        RecipeResult result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (RefineCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        RefineResult result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (SoundMatchCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        SoundMatchResult result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (CouplingCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        CouplingAdvice result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (MacroCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        MacroSuggestion result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (NamingCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        NamingSuggestion result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
+    }
+
+    static void callbackError (ExplanationCallback& cb, const juce::String& msg)
+    {
+        juce::Logger::writeToLog ("[SoundAssistant] Error: " + msg);
+        SoundExplanation result;
+        result.success      = false;
+        result.errorMessage = msg;
+        juce::MessageManager::callAsync ([cb, result]() { cb (result); });
     }
 
     //--------------------------------------------------------------------------
