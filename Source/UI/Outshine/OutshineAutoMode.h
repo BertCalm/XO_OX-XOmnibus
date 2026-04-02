@@ -69,7 +69,20 @@ public:
         s.enabled   = rebirthToggle.getToggleState();
         s.profileId = activeProfileId;
         s.intensity = (float)intensitySlider.getValue();
-        s.chaosAmount = 0.0f; // Phase 1C
+        // chaosAmount: derived from intensity with a profile-specific multiplier.
+        // Higher-energy profiles (ONSET, OVERWASH) produce more noise texture at
+        // a given intensity than tonal profiles (OBRIX, OPERA).
+        // Range 0.0–1.0; the pipeline uses this to scale NoiseBurst burst level.
+        static constexpr float kChaosScale[5] = {
+            0.30f,  // OBRIX    — tonal/harmonic, low chaos
+            0.70f,  // ONSET    — percussive, high chaos
+            0.40f,  // OWARE    — resonant body, moderate chaos
+            0.25f,  // OPERA    — shimmer/tonal, low chaos
+            0.60f,  // OVERWASH — diffusion-heavy, elevated chaos
+        };
+        int profileIdx = static_cast<int>(activeProfileId);
+        float scale = (profileIdx >= 0 && profileIdx < 5) ? kChaosScale[profileIdx] : 0.3f;
+        s.chaosAmount = s.intensity * scale;
         return s;
     }
 

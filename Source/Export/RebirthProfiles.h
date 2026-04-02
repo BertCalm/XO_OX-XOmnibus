@@ -69,14 +69,15 @@ struct DSPModuleConfig
 
 //==============================================================================
 // RebirthSettings — embedded in OutshineSettings (integrated in Task 5).
-// Phase 1B: chaosAmount field is present but MUST be ignored by the pipeline
-// until Phase 1C implements the CHAOS parameter generation layer.
+// chaosAmount: 0.0–1.0 scalar that increases noise texture energy in the pipeline.
+// Derived in OutshineAutoMode::getRebirthSettings() from intensity × profile chaos scale.
+// Used by RebirthPipeline to boost NoiseBurst burst level and length (#163).
 //==============================================================================
 struct RebirthSettings
 {
     RebirthProfileID profileId   = RebirthProfileID::OBRIX;
     float            intensity   = 0.7f;   ///< 0.0 = dry, 1.0 = full transformation
-    float            chaosAmount = 0.0f;   ///< Phase 1B: always ignored (implemented in Phase 1C)
+    float            chaosAmount = 0.0f;   ///< 0.0–1.0 noise texture energy (intensity × profile scale)
     bool             enabled     = false;
 };
 

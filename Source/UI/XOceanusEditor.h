@@ -719,19 +719,30 @@ public:
             g.fillEllipse(cx2 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
         }
 
-        // Engine name — T1 text, vertically stacked in 52px header (shifted right by 34px)
-        g.setColour(get(t1()));
-        g.setFont(GalleryFonts::display(12.0f));
-        g.drawText("XOceanus",
-                   juce::Rectangle<int>(48, 6, 100, 20),
-                   juce::Justification::centredLeft);
+        // Engine name — T1 text, proportional to header height and component width.
+        // Logo mark ends at ~cx2 + circR = 14 + 7 + 8 + 7 = 36px; start text at 48px.
+        // Text area extends to half the header width to avoid overlap with controls.
+        {
+            const int textX    = 48;
+            const int textMaxW = getWidth() / 2 - textX;
+            const int nameH    = juce::roundToInt(headerH * 0.38f);
+            const int nameY    = juce::roundToInt(headerH * 0.12f);
+            const int subH     = juce::roundToInt(headerH * 0.27f);
+            const int subY     = juce::roundToInt(headerH * 0.52f);
 
-        // Subtitle — "XO_OX Designs" at 10px, T3 color (shifted right by 34px)
-        g.setColour(get(t3()));
-        g.setFont(GalleryFonts::body(10.0f));
-        g.drawText("XO_OX Designs",
-                   juce::Rectangle<int>(48, 26, 100, 14),
-                   juce::Justification::centredLeft);
+            g.setColour(get(t1()));
+            g.setFont(GalleryFonts::display(12.0f));
+            g.drawText("XOceanus",
+                       juce::Rectangle<int>(textX, nameY, textMaxW, nameH),
+                       juce::Justification::centredLeft);
+
+            // Subtitle — "XO_OX Designs" at 10px, T3 color
+            g.setColour(get(t3()));
+            g.setFont(GalleryFonts::body(10.0f));
+            g.drawText("XO_OX Designs",
+                       juce::Rectangle<int>(textX, subY, textMaxW, subH),
+                       juce::Justification::centredLeft);
+        }
 
         // NOTE: Coupling stats / engine-count text has been moved out of paint().
         // It will be surfaced via StatusBar::setStatusText() in a future timerCallback() update

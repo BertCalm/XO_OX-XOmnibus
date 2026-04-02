@@ -112,7 +112,7 @@ public:
     // Parameters:
     //   source          — source sample (any channels, any sample rate)
     //   sourceSampleRate— declared sample rate of the source buffer
-    //   settings        — Rebirth settings (profile, intensity, chaosAmount ignored)
+    //   settings        — Rebirth settings (profile, intensity, chaosAmount)
     //   velocityNorm    — 0.0 (softest layer) to 1.0 (hardest layer)
     //   rng             — seeded PRNG for per-round-robin variation
     //   progress        — optional 0.0→1.0 progress callback (may be null)
@@ -684,8 +684,20 @@ private:
                     float burstLevelDb  = resolveVelocityParam (cfg, "burstLevelDb",  velocityNorm);
                     float hpfCutoffHz   = resolveVelocityParam (cfg, "hpfCutoffHz",   velocityNorm);
 
-                    noiseBurst.setBurstLengthMs (burstLengthMs > 0.0f ? burstLengthMs : 5.0f);
-                    noiseBurst.setBurstLevelDb  (burstLevelDb  < 0.0f ? burstLevelDb  : -24.0f);
+                    // chaosAmount (0.0–1.0) adds extra noise energy on top of the
+                    // profile-defined burst level.  Each +1.0 of chaosAmount lifts the
+                    // burst by up to +12 dB and extends burst length by up to +20 ms,
+                    // creating audible textural variation that scales with user intent.
+                    const float chaosBurstDb  = settings.chaosAmount * 12.0f;   // 0 → +12 dB
+                    const float chaosLengthMs = settings.chaosAmount * 20.0f;   // 0 → +20 ms
+
+                    float finalBurstDb = (burstLevelDb < 0.0f ? burstLevelDb : -24.0f)
+                                        + chaosBurstDb;
+                    float finalLengthMs = (burstLengthMs > 0.0f ? burstLengthMs : 5.0f)
+                                         + chaosLengthMs;
+
+                    noiseBurst.setBurstLengthMs (finalLengthMs);
+                    noiseBurst.setBurstLevelDb  (finalBurstDb);
                     noiseBurst.setHPFCutoffHz   (hpfCutoffHz   > 0.0f ? hpfCutoffHz   : 4000.0f);
                     noiseBurst.triggerBurst();
 
