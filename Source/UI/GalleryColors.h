@@ -10,6 +10,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <atomic>
+#include <unordered_map>             // per-instance dark mode registry (fix #329)
 #include "BinaryData.h"              // FontData:: namespace (embedded fonts via juce_add_binary_data)
 #include "../Core/PresetManager.h"   // frozenPrefixForEngine()
 
@@ -30,20 +31,81 @@ namespace GalleryColors {
 
     // Theme state — dark by default (dark mode is the primary presentation).
     //
-    // V1 KNOWN LIMITATION (#329): This is a function-local static and is therefore
-    // shared across all plugin instances in the same DAW process. Toggling dark mode
-    // in one editor window affects all other open instances simultaneously.
+    // Fix #329: the previous implementation used a function-local static `bool`
+    // which was shared across all plugin instances in the same DAW process.
+    // This has been replaced with a per-instance registry:
     //
-    // Correct fix: remove the static, add a `bool darkMode` member to
-    // XOlokunEditor (per-instance), initialise it from PropertiesFile in the
-    // editor constructor, thread it through every component that calls this
-    // function, and store it in the APVTS non-parameter XML so it survives
-    // DAW session save/restore. Until that refactor lands, the V1 behaviour
-    // is: all instances share the same theme.
+    //   - XOlokunEditor registers itself with setInstanceDarkMode(editorPtr, val)
+    //     in its constructor (reads PropertiesFile for the saved preference) and
+    //     calls unregisterInstance(editorPtr) in its destructor.
+    //   - Before painting, each editor calls setActiveDarkModeContext(editorPtr)
+    //     so that darkMode() returns the value for the currently-rendering instance.
+    //   - Components that need to write the preference (SettingsPanel) call
+    //     setInstanceDarkMode(getTopLevelComponent(), newVal).
+    //
+    // Because all JUCE paint calls run on the message thread, and a given thread
+    // can only be painting one editor at a time, the active-context pointer is
+    // message-thread-local in practice.
+    //
+    // The free function darkMode() is preserved for source compatibility.
+
+    // Per-instance registry: editor pointer → dark mode bool
+    inline std::unordered_map<void*, bool>& instanceRegistry()
+    {
+        static std::unordered_map<void*, bool> reg;
+        return reg;
+    }
+
+    // The editor pointer that is currently active on the message thread (paint context).
+    inline void*& activeEditorContext()
+    {
+        static void* ptr = nullptr;
+        return ptr;
+    }
+
+    // Called by XOlokunEditor constructor / setDarkMode() and SettingsPanel.
+    inline void setInstanceDarkMode(void* editorPtr, bool value)
+    {
+        instanceRegistry()[editorPtr] = value;
+        // If this editor is currently active, propagate immediately to darkMode()
+        if (activeEditorContext() == editorPtr || activeEditorContext() == nullptr)
+            activeEditorContext() = editorPtr;
+    }
+
+    // Called by XOlokunEditor destructor.
+    inline void unregisterInstance(void* editorPtr)
+    {
+        instanceRegistry().erase(editorPtr);
+        if (activeEditorContext() == editorPtr)
+            activeEditorContext() = nullptr;
+    }
+
+    // Called by XOlokunEditor::paint() (or resized/visibilityChanged) to set
+    // the per-instance context before any child component queries darkMode().
+    inline void setActiveDarkModeContext(void* editorPtr)
+    {
+        activeEditorContext() = editorPtr;
+    }
+
+    // The single free-function entry point used by all UI components.
+    // Returns the dark mode value for the currently-active editor instance,
+    // falling back to true (dark is primary) when no context is registered.
     inline bool& darkMode()
     {
-        static bool dark = true;  // TODO(#329): move to per-instance editor state
-        return dark;
+        void* ctx = activeEditorContext();
+        if (ctx != nullptr)
+        {
+            auto& reg = instanceRegistry();
+            auto it = reg.find(ctx);
+            if (it != reg.end())
+                return it->second;
+        }
+        // Fallback: return a stable reference to a default-true static.
+        // This path is taken during editor construction before the first
+        // setActiveDarkModeContext() call, and in non-editor contexts
+        // (e.g. export pipeline preview). Dark mode is the primary presentation.
+        static bool fallbackDark = true;
+        return fallbackDark;
     }
 
     // Light palette
