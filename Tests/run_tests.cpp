@@ -16,6 +16,7 @@
 #include "PlaySurfaceTests/GestureTrailTests.h"
 #include "PipelineTests/FullPipelineTests.h"
 #include "ParameterSweepTests/ParameterSweepTests.h"
+#include "BenchmarkTests/CPUBenchmarkTests.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_gui_basics/juce_gui_basics.h>
@@ -44,6 +45,7 @@ int main()
     totalFailures += gesture_trail_tests::runAll();
     totalFailures += pipeline_tests::runAll();
     totalFailures += param_sweep_tests::runAll();
+    totalFailures += cpu_benchmark_tests::runAll();
 
     std::cout << "\n##################################################\n";
     if (totalFailures == 0)

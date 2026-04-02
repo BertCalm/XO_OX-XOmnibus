@@ -109,6 +109,18 @@ targets:
           - "JuceCompilationTime.cpp"
         compilerFlags: "-fno-objc-arc"
       - path: Resources
+      - path: ../Assets/fonts/SpaceGrotesk-Bold.otf
+        buildPhase: resources
+      - path: ../Assets/fonts/SpaceGrotesk-Medium.otf
+        buildPhase: resources
+      - path: ../Assets/fonts/Inter-Regular.ttf
+        buildPhase: resources
+      - path: ../Assets/fonts/Inter-Medium.ttf
+        buildPhase: resources
+      - path: ../Assets/fonts/Inter-Bold.ttf
+        buildPhase: resources
+      - path: ../Assets/fonts/JetBrainsMono-Regular.ttf
+        buildPhase: resources
     settings:
       base:
         INFOPLIST_FILE: Resources/Info.plist
