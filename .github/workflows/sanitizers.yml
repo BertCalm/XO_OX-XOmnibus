@@ -1,0 +1,74 @@
+name: Sanitizer Builds
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  MACOSX_DEPLOYMENT_TARGET: '12.0'
+
+jobs:
+  sanitize:
+    runs-on: macos-latest
+    continue-on-error: true
+
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer: [asan, tsan]
+        include:
+          - sanitizer: asan
+            cxx_flags: "-fsanitize=address -fno-omit-frame-pointer"
+            c_flags: "-fsanitize=address -fno-omit-frame-pointer"
+            linker_flags: "-fsanitize=address"
+          - sanitizer: tsan
+            cxx_flags: "-fsanitize=thread"
+            c_flags: "-fsanitize=thread"
+            linker_flags: "-fsanitize=thread"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          # Pin to the exact commit SHA for JUCE 8.0.4 to prevent supply chain attacks
+          # via force-pushed tags. SHA verified 2026-03-30 against juce-framework/JUCE tag 8.0.4.
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Configure CMake (${{ matrix.sanitizer }})
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_FLAGS="${{ matrix.cxx_flags }}" \
+            -DCMAKE_C_FLAGS="${{ matrix.c_flags }}" \
+            -DCMAKE_EXE_LINKER_FLAGS="${{ matrix.linker_flags }}" \
+            -DCMAKE_SHARED_LINKER_FLAGS="${{ matrix.linker_flags }}"
+
+      - name: Build (${{ matrix.sanitizer }})
+        run: cmake --build build
+
+      - name: Run tests (${{ matrix.sanitizer }})
+        run: |
+          cd build
+          ctest --output-on-failure --timeout 300 2>&1 | tee test_output.txt
+
+      - name: Upload test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanitizer-test-output-${{ matrix.sanitizer }}
+          path: build/test_output.txt
