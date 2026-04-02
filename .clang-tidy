@@ -1,0 +1,25 @@
+# XOceanus .clang-tidy configuration
+#
+# Scope: Source/ only (HeaderFilterRegex below excludes JUCE and third-party headers).
+# WarningsAsErrors is empty — all findings are informational until the team decides to gate on them.
+# clang-analyzer-* is disabled: too slow for CI and produces noise against JUCE internals.
+# Naming checks are disabled: the project has frozen mixed conventions (snap_, morph_, deep_, etc.).
+
+Checks: >
+    bugprone-*,
+    performance-*,
+    modernize-use-override,
+    readability-redundant-smartptr-get,
+    -clang-analyzer-*,
+    -bugprone-easily-swappable-parameters,
+    -bugprone-macro-parentheses,
+
+WarningsAsErrors: ''
+
+HeaderFilterRegex: 'Source/.*'
+
+CheckOptions:
+  - key: bugprone-assert-side-effect.AssertMacros
+    value: jassert,jassertfalse
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: 'false'

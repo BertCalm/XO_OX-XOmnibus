@@ -936,8 +936,19 @@ private:
             {
                 XOriginate exporter;
 
-                // Wire the shared APVTS so renderNoteToWav() produces real audio.
-                // If dialogApvts is null the render falls back to silent placeholders.
+                // APVTS must be non-null — without it renderNoteToWav() cannot produce
+                // real audio. Fail fast here rather than silently exporting blank WAVs.
+                if (dialog.dialogApvts == nullptr)
+                {
+                    XOriginate::ExportResult failResult;
+                    failResult.success = false;
+                    failResult.errorMessage = "Export aborted: audio engine not available (APVTS is null). "
+                                              "Please reopen the export dialog from a live plugin instance.";
+                    dialog.exportResult = failResult;
+                    dialog.exportFinished.store(true, std::memory_order_release);
+                    return;
+                }
+
                 exporter.setAPVTS(dialog.dialogApvts);
 
                 XOriginate::BundleConfig config;

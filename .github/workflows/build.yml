@@ -67,6 +67,14 @@ jobs:
           fi
           echo "AU component found at build/XOceanus_artefacts/Release/AU/XOceanus.component"
 
+      - name: Run auval validation
+        continue-on-error: true
+        run: |
+          cp -R build/XOceanus_artefacts/Release/AU/XOceanus.component ~/Library/Audio/Plug-Ins/Components/
+          echo "Running auval -v aumu Xocn XoOx"
+          auval -v aumu Xocn XoOx
+          echo "auval exit code: $?"
+
       - name: Verify Standalone app
         run: |
           if [ ! -d "build/XOceanus_artefacts/Release/Standalone/XOceanus.app" ]; then
