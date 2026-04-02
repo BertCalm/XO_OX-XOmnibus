@@ -690,6 +690,33 @@ final class AudioEngineManager: ObservableObject {
         ObrixBridge.shared()?.allNotesOff()
     }
 
+    /// Accumulate elapsed play time for any notes that are currently active (i.e. note-on
+    /// without a matching note-off yet) into each specimen's `totalPlaySeconds`.
+    ///
+    /// Call this when the app is about to go to background so that long-sustain pad notes
+    /// are accounted for even if the player never releases the key before backgrounding.
+    /// The note-on timestamps are NOT cleared here — `noteOff` (or the next `allNotesOff`)
+    /// will see updated timestamps relative to the flush point and correctly avoid
+    /// double-counting elapsed time.
+    ///
+    /// Must be called on the main thread.
+    func flushActiveNotePlayTime() {
+        assert(Thread.isMainThread, "flushActiveNotePlayTime must be called on main thread")
+        guard let reefStore = reefStoreRef else { return }
+        let now = Date()
+        for (slotIndex, startTime) in noteOnTimestamps {
+            guard var specimen = reefStore.specimens[slotIndex] else { continue }
+            let elapsed = now.timeIntervalSince(startTime)
+            guard elapsed > 0 else { continue }
+            specimen.totalPlaySeconds += elapsed
+            ReefStatsTracker.shared.increment(.playSeconds, by: max(1, Int(elapsed)))
+            reefStore.specimens[slotIndex] = specimen
+            // Advance the timestamp to now so that the eventual noteOff only counts
+            // the additional time after this flush, avoiding double-counting.
+            noteOnTimestamps[slotIndex] = now
+        }
+    }
+
     // MARK: - Audio Session
 
     private func configureAudioSession() {

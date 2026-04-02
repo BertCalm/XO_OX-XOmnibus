@@ -135,6 +135,11 @@ struct ObrixPocketApp: App {
                         breedingManager.save()
                         CookbookManager.shared.save()
                     case .background:
+                        // #383: Flush elapsed play time for any notes currently held so that
+                        // long-sustain pads accumulate correct totalPlaySeconds even when the
+                        // user backgrounds the app mid-note without releasing the key.
+                        // Must run before allNotesOff so the timestamps are still present.
+                        audioEngine.flushActiveNotePlayTime()
                         // Force active notes off before saving so XP state is complete and the
                         // audio engine is clean on the next foreground restore (issue #443).
                         audioEngine.allNotesOff()
