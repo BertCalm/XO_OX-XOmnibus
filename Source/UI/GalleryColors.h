@@ -241,12 +241,16 @@ namespace GalleryColors {
         else if (id == "Octopus")   result = juce::Colour(0xFFE040FB);
         else if (id == "Oddfellow") result = juce::Colour(0xFFB87333);
         else if (id == "Offering")  result = juce::Colour(0xFFE5B80B);
-        else if (id == "Ogre")      result = juce::Colour(0xFF0D0D0D);
+        // Near-black engines: return pre-chosen accessible replacements directly.
+        // ensureMinContrast() would lift these to indistinguishable medium gray
+        // because their saturation is near zero.  The replacements share the
+        // original engine concept (Steinway warmth / sub-bass depth) while
+        // providing ≥4.5:1 contrast and visually distinct identities (#185).
+        else if (id == "Ogre")      return juce::Colour(0xFF7878A0); // Sub Bass Slate — cool blue-violet, ≥4.5:1 on Dark::bg
         else if (id == "Okeanos")   result = juce::Colour(0xFFC49B3F);
         else if (id == "Ohm")       result = juce::Colour(0xFF87AE73);
         else if (id == "Oaken")     result = juce::Colour(0xFF9C6B30);
         else if (id == "Oasis")     result = juce::Colour(0xFF00827F);
-        else if (id == "Okeanos")   result = juce::Colour(0xFFC49B3F);
         else if (id == "Oblique")   result = juce::Colour(0xFFBF40FF);
         else if (id == "Olate")     result = juce::Colour(0xFF5C3317);
         else if (id == "Ole")       result = juce::Colour(0xFFC9377A);
@@ -283,10 +287,9 @@ namespace GalleryColors {
         else if (id == "Ouroboros") result = juce::Colour(0xFFFF2D2D);
         else if (id == "Outwit")    result = juce::Colour(0xFFCC6600);
         else if (id == "Outlook")   result = juce::Colour(0xFF4169E1);
-        else if (id == "Oven")      result = juce::Colour(0xFF1C1C1C);
+        else if (id == "Oven")      return juce::Colour(0xFF908070); // Steinway Ebony Warm — warm ivory charcoal, ≥4.5:1 on Dark::bg
         else if (id == "Overbite")  result = juce::Colour(0xFFF0EDE8);  // Fang White
         else if (id == "Overcast")  result = juce::Colour(0xFF778899);
-        else if (id == "Outflow")   result = juce::Colour(0xFF1A1A40);
         else if (id == "Overflow")  result = juce::Colour(0xFF1A3A5C);
         else if (id == "Overgrow")  result = juce::Colour(0xFF228B22);
         else if (id == "Overlap")   result = juce::Colour(0xFF00FFB4);
