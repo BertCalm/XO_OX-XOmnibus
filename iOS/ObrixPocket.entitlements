@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- App Groups for shared data with XOlokun (Reef Link) -->
+    <!-- App Groups for shared data with XOceanus (Reef Link) -->
     <key>com.apple.security.application-groups</key>
     <array>
-        <string>group.org.xo-ox.xolokun</string>
+        <string>group.org.xo-ox.xoceanus</string>
         <string>group.org.xo-ox.obrix-pocket</string>
     </array>
     <!-- Standalone only: no inter-app-audio entitlement needed -->

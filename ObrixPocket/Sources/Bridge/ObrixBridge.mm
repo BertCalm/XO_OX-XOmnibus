@@ -16,7 +16,7 @@
 // The engine
 #include "../../Source/Engines/Obrix/ObrixEngine.h"
 
-using namespace xolokun;
+using namespace xoceanus;
 
 // Suppress JUCE GUI — we only use audio modules
 // JUCE_MODULE_AVAILABLE_juce_gui_basics is NOT defined

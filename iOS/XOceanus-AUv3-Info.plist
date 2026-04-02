@@ -4,11 +4,11 @@
 <dict>
     <!-- Bundle identification -->
     <key>CFBundleDisplayName</key>
-    <string>XOlokun</string>
+    <string>XOceanus</string>
     <key>CFBundleIdentifier</key>
-    <string>org.xo-ox.xolokun.auv3</string>
+    <string>org.xo-ox.xoceanus.auv3</string>
     <key>CFBundleName</key>
-    <string>XOlokun</string>
+    <string>XOceanus</string>
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>CFBundleShortVersionString</key>
@@ -28,7 +28,7 @@
         <key>NSExtensionPointIdentifier</key>
         <string>com.apple.AudioUnit-UI</string>
         <key>NSExtensionPrincipalClass</key>
-        <string>$(PRODUCT_MODULE_NAME).XOlokunAudioUnitViewController</string>
+        <string>$(PRODUCT_MODULE_NAME).XOceanusAudioUnitViewController</string>
         <key>NSExtensionAttributes</key>
         <dict>
             <!-- AudioComponents registration -->
@@ -41,11 +41,11 @@
                     <!-- Type: aumu = music instrument -->
                     <key>type</key>
                     <string>aumu</string>
-                    <!-- Subtype: Xolk -->
+                    <!-- Subtype: Xocn -->
                     <key>subtype</key>
-                    <string>Xolk</string>
+                    <string>Xocn</string>
                     <key>name</key>
-                    <string>XO-OX: XOlokun</string>
+                    <string>XO-OX: XOceanus</string>
                     <key>version</key>
                     <integer>65536</integer>
                     <!-- Sandbox-safe: required for iOS AUv3 -->

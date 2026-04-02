@@ -5,7 +5,7 @@
     <!-- App Groups for shared data between host app and AUv3 extension -->
     <key>com.apple.security.application-groups</key>
     <array>
-        <string>group.org.xo-ox.xolokun</string>
+        <string>group.org.xo-ox.xoceanus</string>
     </array>
     <!-- Inter-app audio (for Audiobus compatibility) -->
     <key>inter-app-audio</key>
