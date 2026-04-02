@@ -35,6 +35,8 @@ import sys
 from pathlib import Path
 from typing import Optional
 
+from engine_registry import get_all_engines, is_valid_engine
+
 REPO_ROOT   = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 
@@ -732,12 +734,10 @@ DEFAULT_STRATEGY = {
 def _resolve_engine_name(engine_id: str) -> str:
     """Resolve engine ID from preset 'engines' array to canonical display name.
 
-    NOTE: oxport.py also maintains ENGINE_ALIASES for CLI input normalization.
-    Importing oxport here would create a circular import (oxport imports this
-    module), so both tables are kept in sync manually. If you add a new alias,
-    add it to both ENGINE_ALIASES in oxport.py and this dict.
-    These aliases resolve legacy preset-internal engine IDs (Snap, Bob, etc.)
-    to canonical names; oxport.py's table normalises case variants from the CLI.
+    Handles legacy preset-internal engine IDs (Snap, Bob, etc.) that predate
+    the O-prefix convention.  Case-variant normalisation for CLI input is
+    handled by ENGINE_ALIASES in oxport.py (which now also sources from
+    engine_registry.py).  The full canonical name set lives in engine_registry.
     """
     aliases = {
         "Snap": "OddfeliX", "Morph": "OddOscar",
@@ -915,6 +915,19 @@ def main():
     parser.add_argument("--json", action="store_true",
                         help="Output as JSON to stdout")
     args = parser.parse_args()
+
+    # Validate --engine argument against the shared registry
+    if args.engine:
+        all_names = get_all_engines()
+        match = next(
+            (n for n in all_names if n.lower() == args.engine.lower()), None
+        )
+        if match is None:
+            parser.error(
+                f"Unknown engine: {args.engine!r}.  "
+                f"Valid engines: {', '.join(all_names)}"
+            )
+        args.engine = match  # normalise to canonical case
 
     specs = []
 

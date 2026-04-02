@@ -98,31 +98,23 @@ except ImportError:
 # Engine name canonicalization
 # ---------------------------------------------------------------------------
 
-# Canonical engine names (title-case, one spelling per engine)
-# Legacy names (Odyssey, Oblong, Obese) are kept here as aliases for
-# backward compatibility; canonical display names are now Odyssey → Odyssey,
-# Oblong → Oblong, Obese → Obese (engine IDs unchanged, parameter
-# prefixes frozen as drift_, bob_, fat_). See CLAUDE.md parameter prefix table.
-ENGINE_ALIASES = {
-    "onset": "Onset", "ONSET": "Onset", "OnsetEngine": "Onset",
-    "odyssey": "Odyssey", "ODYSSEY": "Odyssey",
-    "obese": "Obese", "OBESE": "Obese",
-    "overdub": "Overdub", "OVERDUB": "Overdub",
-    "oblong": "Oblong", "OBLONG": "Oblong",
-    # Current fleet canonical names (case-insensitive variants)
-    "obsidian": "Obsidian", "OBSIDIAN": "Obsidian",
-    "oblique": "Oblique", "OBLIQUE": "Oblique",
-    "osprey": "Osprey", "OSPREY": "Osprey",
-    "opal": "Opal", "OPAL": "Opal",
-    "orbital": "Orbital", "ORBITAL": "Orbital",
-    "organon": "Organon", "ORGANON": "Organon",
-    "ouroboros": "Ouroboros", "OUROBOROS": "Ouroboros",
-    "overworld": "Overworld", "OVERWORLD": "Overworld",
-    "ohm": "Ohm", "OHM": "Ohm",
-    "obbligato": "Obbligato", "OBBLIGATO": "Obbligato",
-    "ottoni": "Ottoni", "OTTONI": "Ottoni",
-    "ole": "Ole", "OLE": "Ole",
-}
+# ENGINE_ALIASES is built from engine_registry so it covers all 76 engines.
+# Upper-case and lower-case variants of every canonical name are pre-populated.
+# Additional hand-authored entries handle multi-word casing quirks and the
+# "OnsetEngine" legacy alias that appears in older render specs.
+from engine_registry import get_all_engines as _get_all_engines
+
+ENGINE_ALIASES: dict[str, str] = {}
+for _n in _get_all_engines():
+    ENGINE_ALIASES[_n.upper()] = _n
+    ENGINE_ALIASES[_n.lower()] = _n
+# Extra hand-authored aliases not derivable by simple case-fold
+ENGINE_ALIASES.update({
+    "OnsetEngine": "Onset",
+    "Opensky":     "OpenSky",
+    "Oceandeep":   "OceanDeep",
+})
+del _get_all_engines, _n
 
 
 def resolve_engine_name(raw: str) -> str:

@@ -39,6 +39,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+from engine_registry import valid_engines_upper
+
 # ── Brand constants ────────────────────────────────────────────────────────────
 ACCENT_COLOR = "#E9C46A"   # XO Gold — used for placeholder cover art
 PLACEHOLDER_SVG_W = 1400
@@ -53,54 +55,10 @@ WAVE_FORMAT_EXTENSIBLE = 0xFFFE
 COVER_ART_MIN_PX = 1400
 COVER_ART_MAX_BYTES = 2 * 1024 * 1024  # 2 MB
 
-VALID_ENGINES = {
-    # Mascots
-    "ODDFELIX", "ODDOSCAR",
-    # Original fleet
-    "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "ONSET",
-    "OVERWORLD", "OPAL", "ORBITAL",
-    "ORGANON", "OUROBOROS",
-    "OBSIDIAN", "OVERBITE", "ORIGAMI", "ORACLE", "OBSCURA", "OCEANIC",
-    "OCELOT", "OSPREY", "OSTERIA", "OWLFISH",
-    "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE",
-    "OPTIC", "OBLIQUE", "OMBRE", "ORCA", "OCTOPUS",
-    # Phase 4 engines
-    "OVERLAP", "OUTWIT",
-    # V1 concept engines
-    "OPENSKY", "OSTINATO", "OCEANDEEP", "OUIE",
-    # Flagship
-    "OBRIX",
-    # V2 theorem engines
-    "ORBWEAVE", "OVERTONE", "ORGANISM",
-    # Singularity engines
-    "OXBOW", "OWARE",
-    # Kuramoto vocal synthesis
-    "OPERA",
-    # Psychology-driven boom bap drums
-    "OFFERING",
-    # Chef Quad Collection
-    "OTO", "OCTAVE", "OLEG", "OTIS",
-    # Kitchen Quad Collection
-    "OVEN", "OCHRE", "OBELISK", "OPALINE",
-    # Cellar Quad Collection
-    "OGRE", "OLATE", "OAKEN", "OMEGA",
-    # Garden Quad Collection
-    "ORCHARD", "OVERGROW", "OSIER", "OXALIS",
-    # Broth Quad Collection
-    "OVERWASH", "OVERWORN", "OVERFLOW", "OVERCAST",
-    # Fusion Quad Collection
-    "OKEANOS", "ODDFELLOW", "ONKOLO", "OPCODE",
-    # Membrane Collection
-    "OSMOSIS",
-    # Love Triangle Circuit Synth
-    "OXYTOCIN",
-    # Panoramic visionary synth
-    "OUTLOOK",
-    # Dual Engine Integration
-    "OASIS", "OUTFLOW",
-    # Cellular Automata Oscillator
-    "OBIONT",
-}
+# All 76 canonical engine names in upper-case form — sourced from engine_registry.py
+# which is synced to Source/Core/PresetManager.h. Do NOT add engines here directly;
+# add them to PresetManager.h and engine_registry.py instead.
+VALID_ENGINES = valid_engines_upper()
 
 # All 15 canonical mood categories — source of truth is PresetManager / CLAUDE.md
 VALID_MOODS = {

@@ -32,30 +32,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+from engine_registry import get_all_engines
+
 # Canonical engine names: (lowercase_key, display_name)
-ENGINE_NAMES = [
-    ("oddfelix", "OddfeliX"),
-    ("oddoscar", "OddOscar"),
-    ("overdub", "Overdub"),
-    ("odyssey", "Odyssey"),
-    ("oblong", "Oblong"),
-    ("obese", "Obese"),
-    ("onset", "Onset"),
-    ("overworld", "Overworld"),
-    ("opal", "Opal"),
-    ("overbite", "Overbite"),
-    ("orbital", "Orbital"),
-    ("organon", "Organon"),
-    ("ouroboros", "Ouroboros"),
-    ("obsidian", "Obsidian"),
-    ("origami", "Origami"),
-    ("oracle", "Oracle"),
-    ("obscura", "Obscura"),
-    ("oceanic", "Oceanic"),
-    ("optic", "Optic"),
-    ("oblique", "Oblique"),
-    ("ombre", "Ombre"),
-]
+# Sourced from engine_registry.py — do NOT maintain a local list here.
+ENGINE_NAMES = [(name.lower(), name) for name in get_all_engines()]
 
 SAMPLE_RATE = "44100"
 CHANNELS = "2"

@@ -26,6 +26,8 @@ import time as _time
 import time
 from pathlib import Path
 
+from engine_registry import get_all_engines, is_valid_engine
+
 
 # ---------------------------------------------------------------------------
 # Precise timing
@@ -493,6 +495,21 @@ Render spec JSON format:
     if not os.path.isfile(args.spec):
         print(f"ERROR: Spec file not found: {args.spec}", file=sys.stderr)
         sys.exit(1)
+
+    # Validate --engine against the shared registry (case-insensitive lookup)
+    if args.engine:
+        all_names = get_all_engines()
+        match = next(
+            (n for n in all_names if n.lower() == args.engine.lower()), None
+        )
+        if match is None:
+            print(
+                f"ERROR: Unknown engine: {args.engine!r}. "
+                f"Valid engines: {', '.join(all_names)}",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        args.engine = match  # normalise to canonical case
 
     spec = load_spec(args.spec)
     presets = resolve_presets(spec, args.engine)

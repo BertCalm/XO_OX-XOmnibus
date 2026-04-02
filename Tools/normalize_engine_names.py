@@ -13,91 +13,51 @@ import os
 import sys
 from pathlib import Path
 
-# Canonical engine name mapping — source of truth
-CANONICAL = {
-    # Original 26 engines
-    "ODDFELIX": "OddfeliX",
-    "OddFelix": "OddfeliX",
-    "oddfelix": "OddfeliX",
-    "ODDOSCAR": "OddOscar",
-    "Oddoscar": "OddOscar",
-    "oddoscar": "OddOscar",
-    "OVERDUB": "Overdub",
-    "ODYSSEY": "Odyssey",
-    "OBLONG": "Oblong",
-    "OBESE": "Obese",
-    "ONSET": "Onset",
-    "OVERWORLD": "Overworld",
-    "OPAL": "Opal",
-    "ORBITAL": "Orbital",
-    "ORGANON": "Organon",
-    "OUROBOROS": "Ouroboros",
-    "OBSIDIAN": "Obsidian",
-    "OVERBITE": "Overbite",
-    "ORIGAMI": "Origami",
-    "ORACLE": "Oracle",
-    "OBSCURA": "Obscura",
-    "OCEANIC": "Oceanic",
-    "OCELOT": "Ocelot",
-    "OPTIC": "Optic",
-    "OBLIQUE": "Oblique",
-    "OSPREY": "Osprey",
-    "OSTERIA": "Osteria",
-    "OWLFISH": "Owlfish",
-    # Constellation engines
-    "OHM": "Ohm",
-    "ORPHICA": "Orphica",
-    "OBBLIGATO": "Obbligato",
-    "OTTONI": "Ottoni",
-    "OLE": "Ole",
-    # Phase 3/4 engines
-    "OMBRE": "Ombre",
-    "ORCA": "Orca",
-    "OCTOPUS": "Octopus",
-    "OVERLAP": "Overlap",
-    "OUTWIT": "Outwit",
-    # V1 concept engines
-    "OPENSKY": "OpenSky",
-    "Opensky": "OpenSky",
-    "OSTINATO": "Ostinato",
-    "OCEANDEEP": "OceanDeep",
-    "Oceandeep": "OceanDeep",
-    "OUIE": "Ouie",
-    # V2 theorem engines
-    "OVERTONE": "Overtone",
-    "ORGANISM": "Organism",
-    # Newer engines (2026-03-20 to 2026-03-28)
-    "OXBOW":     "Oxbow",
-    "OWARE":     "Oware",
-    "OPERA":     "Opera",
-    "OFFERING":  "Offering",
-    "OSMOSIS":   "Osmosis",
-    "OXYTOCIN":  "Oxytocin",
-    "Oxytocin":  "Oxytocin",
-    "XOxytocin": "Oxytocin",
-    "OUTLOOK":   "Outlook",
-    "Outlook":   "Outlook",
-    "XOutlook":  "Outlook",
-    "OBIONT":    "Obiont",
-    "Obiont":    "Obiont",
-    "XObiont":   "Obiont",
+from engine_registry import get_all_engines
+
+# Canonical engine name mapping — ALL-CAPS and common misspellings → canonical form.
+# The canonical names themselves come from engine_registry.get_all_engines() so this
+# file never needs updating when a new engine is added.  Only add entries here for
+# new misspelling / casing variants that appear in the wild.
+CANONICAL: dict[str, str] = {}
+
+# Auto-populate ALL-CAPS → canonical for every registered engine
+for _name in get_all_engines():
+    CANONICAL[_name.upper()] = _name
+    CANONICAL[_name.lower()] = _name
+
+# Hand-authored variants that cannot be derived from upper/lower alone
+CANONICAL.update({
+    # OddfeliX / OddOscar casing quirks
+    "OddFelix":   "OddfeliX",
+    "oddfelix":   "OddfeliX",
+    "Oddoscar":   "OddOscar",
+    "oddoscar":   "OddOscar",
+    "XOddFelix":  "OddfeliX",
+    "XOddOscar":  "OddOscar",
+    # Multi-word names with collapsed casing
+    "Opensky":    "OpenSky",
+    "Oceandeep":  "OceanDeep",
     # X-prefixed variants not in PresetManager alias table
-    # (Constellation + Phase 3/4 engines added after the original alias set)
-    "XOhm": "Ohm",
-    "XOrphica": "Orphica",
+    "XOhm":       "Ohm",
+    "XOrphica":   "Orphica",
     "XObbligato": "Obbligato",
-    "XOttoni": "Ottoni",
-    "XOle": "Ole",
-    "XOmbre": "Ombre",
-    "XOsprey": "Osprey",
-    "XOsteria": "Osteria",
-    "XOwlfish": "Owlfish",
-    "XOcelot": "Ocelot",
-    "XOddFelix": "OddfeliX",
-    "XOddOscar": "OddOscar",
-    "XOutwit": "Outwit",
-    "XOverlap": "Overlap",
-}
+    "XOttoni":    "Ottoni",
+    "XOle":       "Ole",
+    "XOmbre":     "Ombre",
+    "XOsprey":    "Osprey",
+    "XOsteria":   "Osteria",
+    "XOwlfish":   "Owlfish",
+    "XOcelot":    "Ocelot",
+    "XOutwit":    "Outwit",
+    "XOverlap":   "Overlap",
+    # Newer engine variants spotted in agent-written presets
+    "XOxytocin":  "Oxytocin",
+    "XOutlook":   "Outlook",
+    "XObiont":    "Obiont",
+    "XOkeanos":   "Okeanos",
+    "XOutflow":   "Outflow",
+})
 
 
 def normalize_preset(path: Path) -> bool:
