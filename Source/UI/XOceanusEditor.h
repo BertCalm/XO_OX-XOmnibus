@@ -1519,7 +1519,27 @@ private:
         }
 
         const auto collection  = EngineRegistry::detectCollection(ids);
-        const bool shouldShow  = collection.isNotEmpty();
+
+        // Guard (#188): only animate the ghost slot if every engine ID in the
+        // matched collection is actually registered in the picker table.
+        // detectCollection() may return a match for engine IDs that exist in
+        // preset data but are not registered in the current build, causing a
+        // spinning/pulsing ghost tile with no engine behind it.
+        bool allRegistered = collection.isNotEmpty();
+        if (allRegistered)
+        {
+            const auto& reg = EngineRegistry::instance();
+            for (const auto& id : ids)
+            {
+                if (id.isNotEmpty() && !reg.isRegistered(id.toStdString()))
+                {
+                    allRegistered = false;
+                    break;
+                }
+            }
+        }
+
+        const bool shouldShow  = allRegistered;
         auto& anim             = juce::Desktop::getInstance().getAnimator();
 
         if (shouldShow && !ghostTile.isVisible())
