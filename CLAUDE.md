@@ -1,12 +1,12 @@
-# XOlokun — Claude Code Project Guide
+# XOceanus — Claude Code Project Guide
 
-> **Rename note:** Formerly XOmnibus. Renamed to XOlokun 2026-03-24. Motto: "XOlokun — for all."
+> **Rename note:** Formerly XOmnibus. Renamed to XOceanus 2026-03-24. Motto: "XOceanus — for all."
 
 ## Product Identity
 
-XOlokun ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
+XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **76 engines** are registered in XOlokun
+and mutate into sounds impossible with any single synth. **76 engines** are registered in XOceanus
 (5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23; OBIONT added 2026-03-28; OKEANOS + OUTFLOW added 2026-03-31)
 — see engine table below.
 
@@ -247,8 +247,8 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Oxytocin/OxytocinAdapter.h` | Circuit-modeling love-triangle synth (RE-201/MS-20/Moog/Serge/Buchla + TriangularCoupling #15) |
 | `Source/Engines/Outlook/OutlookEngine.h` | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo + vista filter + aurora mod) |
 | `Source/Engines/Obiont/ObiontEngine.h` | Cellular automata oscillator (1D Wolfram CA spatial projection + cosine readout + 8-voice poly + anti-extinction) |
-| `SDK/include/xolokun/` | JUCE-free SDK headers for third-party engine development |
-| `Presets/XOlokun/{mood}/` | Factory presets by mood |
+| `SDK/include/xoceanus/` | JUCE-free SDK headers for third-party engine development |
+| `Presets/XOceanus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
 | `Docs/` | All specification documents |
 
@@ -306,13 +306,13 @@ auval -v aumu Xolk XoOx
 
 ## Adding New Engines
 
-New engines are designed as standalone instruments first, then integrated into XOlokun.
+New engines are designed as standalone instruments first, then integrated into XOceanus.
 
 **Invoke:** `/new-xo-engine` — walks through ideation, architecture, scaffold, and integration prep.
 
 **Full process:** `Docs/xomnibus_new_engine_process.md`
 
-**Quick rules for XOlokun-ready standalone development:**
+**Quick rules for XOceanus-ready standalone development:**
 - Parameter IDs use `{shortname}_{paramName}` format from day one
 - Presets use `.xometa` JSON format from day one
 - DSP lives in inline `.h` headers (portable)
@@ -509,7 +509,7 @@ When a new engine is registered, update **all four** of these sections in CLAUDE
 Then update these external files:
 - `Docs/xomnibus_master_specification.md` section 3.1 engine table (add row)
 - `Docs/seances/seance_cross_reference.md` (add seance row after the seance is run)
-- `Source/XOlokunProcessor.cpp` (register the engine)
+- `Source/XOceanusProcessor.cpp` (register the engine)
 - `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
 
 Full process: `Docs/xomnibus_new_engine_process.md`

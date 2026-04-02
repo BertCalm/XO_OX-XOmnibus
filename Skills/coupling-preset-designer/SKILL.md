@@ -190,7 +190,7 @@ After writing parameters, assign 6D DNA values. Coupling presets have characteri
    - Good: "Drum Eats Bass", "Orbit Eats Light", "Grain Oracle"
    - Bad: "ONSET OVERBITE Coupled", "Amp Filter Preset 1"
 
-2. **File location:** `Presets/XOlokun/Entangled/{name_slug}.xometa`
+2. **File location:** `Presets/XOceanus/Entangled/{name_slug}.xometa`
    - Slug: `name.replace(" ", "_").replace("/", "-")`
 
 3. **Run DNA validator:** `python3 Tools/audit_sonic_dna.py` to verify DNA completeness

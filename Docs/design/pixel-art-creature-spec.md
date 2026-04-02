@@ -1,4 +1,4 @@
-# XOlokun Pixel Art Creature Sprite Spec
+# XOceanus Pixel Art Creature Sprite Spec
 
 **Date:** 2026-03-24
 **Purpose:** Asset generation guide for 71 engine creature sprites (feliX + Oscar have 3D renders)

@@ -1,4 +1,4 @@
-# XOlokun Coupling Preset Library
+# XOceanus Coupling Preset Library
 **Date:** 2026-03-14
 **Author:** XO_OX Designs
 **Status:** v1.0 — 18 presets across 6 engine pairs
@@ -7,7 +7,7 @@
 
 ## Overview
 
-Cross-engine coupling is XOlokun's most powerful differentiator. Most factory presets use a single engine or layer two engines passively. This library is the first systematic collection devoted entirely to demonstrating what coupling *sounds like* at three distinct intensities — subtle, equal partnership, and full domination.
+Cross-engine coupling is XOceanus's most powerful differentiator. Most factory presets use a single engine or layer two engines passively. This library is the first systematic collection devoted entirely to demonstrating what coupling *sounds like* at three distinct intensities — subtle, equal partnership, and full domination.
 
 Each pair was chosen for a combination of three criteria:
 
@@ -82,7 +82,7 @@ Each pair was chosen for a combination of three criteria:
 ## Preset Table
 
 ### Pair 1: ONSET → OVERBITE
-Receiving engine: **Overbite**. Directory: `Presets/XOlokun/Entangled/Onset-Overbite/`
+Receiving engine: **Overbite**. Directory: `Presets/XOceanus/Entangled/Onset-Overbite/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -91,7 +91,7 @@ Receiving engine: **Overbite**. Directory: `Presets/XOlokun/Entangled/Onset-Over
 | Percussion Is Character | Possession | `Amp->Filter` 0.80, `Audio->FM` 0.45, `Env->Decay` 0.30 | Drum transients fully rewrite Bite's FM depth and filter on every hit — the percussion is the sound design |
 
 ### Pair 2: OPAL → OVERDUB
-Receiving engine: **Overdub**. Directory: `Presets/XOlokun/Entangled/Opal-Overdub/`
+Receiving engine: **Overdub**. Directory: `Presets/XOceanus/Entangled/Opal-Overdub/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -100,7 +100,7 @@ Receiving engine: **Overdub**. Directory: `Presets/XOlokun/Entangled/Opal-Overdu
 | Scattered Signal | Possession | `Amp->Filter` 0.75, `Amp->Pitch` 0.30, `Rhythm->Blend` 0.45 | Dense grain storm seizes filter, pitch, and delay blend — the dub engine is a granular instrument |
 
 ### Pair 3: ODYSSEY → OPAL
-Receiving engine: **Opal**. Directory: `Presets/XOlokun/Entangled/Odyssey-Opal/`
+Receiving engine: **Opal**. Directory: `Presets/XOceanus/Entangled/Odyssey-Opal/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -109,7 +109,7 @@ Receiving engine: **Opal**. Directory: `Presets/XOlokun/Entangled/Odyssey-Opal/`
 | Journey Atomized | Possession | `Env->Morph` 0.80, `Amp->Filter` 0.55, `LFO->Pitch` 0.35 | Drift fully decomposes into Opal — LFO scatters grain pitch, envelope seizes morph |
 
 ### Pair 4: OVERWORLD → OPAL
-Receiving engine: **Opal**. Directory: `Presets/XOlokun/Entangled/Overworld-Opal/`
+Receiving engine: **Opal**. Directory: `Presets/XOceanus/Entangled/Overworld-Opal/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -118,7 +118,7 @@ Receiving engine: **Opal**. Directory: `Presets/XOlokun/Entangled/Overworld-Opal
 | 8bit Dissolution | Possession | `Audio->FM` 0.70, `Env->Morph` 0.55, `Amp->Filter` 0.40 | FM chip audio injected as grain source; chip envelope seizes morph and filter entirely |
 
 ### Pair 5: ORACLE → ORGANON
-Receiving engine: **Organon**. Directory: `Presets/XOlokun/Entangled/Oracle-Organon/`
+Receiving engine: **Organon**. Directory: `Presets/XOceanus/Entangled/Oracle-Organon/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -127,7 +127,7 @@ Receiving engine: **Organon**. Directory: `Presets/XOlokun/Entangled/Oracle-Orga
 | Chaos Ingested | Possession | `Audio->FM` 0.80, `Amp->Filter` 0.55, `Env->Morph` 0.45 | GENDY fully replaces metabolic input; envelope seizes filter and morph — organism now speaks in prophecy |
 
 ### Pair 6: OUROBOROS → ONSET
-Receiving engine: **Onset**. Directory: `Presets/XOlokun/Entangled/Ouroboros-Onset/`
+Receiving engine: **Onset**. Directory: `Presets/XOceanus/Entangled/Ouroboros-Onset/`
 
 | Preset Name | Intensity | Coupling Amount(s) | Musical Effect |
 |-------------|-----------|-------------------|----------------|
@@ -153,7 +153,7 @@ This section describes the 6 pairs as a *network* of musical relationships — h
 
 ### The Rhythm-Timbre Axis: ONSET ↔ OVERBITE
 
-ONSET and OVERBITE form the most *physically immediate* coupling in the library. Percussion and bass have always been linked in music theory (the kick and bass sharing a frequency region, playing together or in opposition). XOlokun makes this structural link *literally audible* — drum amplitude rewires bass character in real time. At Whisper intensity this is a sidechain; at Possession intensity it is a new synthesis paradigm where the drum IS the bass sound design.
+ONSET and OVERBITE form the most *physically immediate* coupling in the library. Percussion and bass have always been linked in music theory (the kick and bass sharing a frequency region, playing together or in opposition). XOceanus makes this structural link *literally audible* — drum amplitude rewires bass character in real time. At Whisper intensity this is a sidechain; at Possession intensity it is a new synthesis paradigm where the drum IS the bass sound design.
 
 This pair benefits most from a sequencer with a kick on beats 1 and 3. Without rhythm, the coupling is invisible.
 
@@ -177,7 +177,7 @@ This pair has the most literal archaeological narrative in the library: digging 
 
 ### The Ancient-Living Axis: ORACLE ↔ ORGANON
 
-ORACLE generates waveforms through genuine stochastic processes derived from Xenakis's GENDY algorithm — the most mathematically ancient synthesis technique in the fleet. ORGANON is based on Friston's Variational Free Energy principle — the most biologically sophisticated model in the fleet. Ancient probability mathematics feeding a living organism's metabolism is the deepest intellectual coupling in XOlokun.
+ORACLE generates waveforms through genuine stochastic processes derived from Xenakis's GENDY algorithm — the most mathematically ancient synthesis technique in the fleet. ORGANON is based on Friston's Variational Free Energy principle — the most biologically sophisticated model in the fleet. Ancient probability mathematics feeding a living organism's metabolism is the deepest intellectual coupling in XOceanus.
 
 The musical result is genuinely unpredictable: even with identical parameters, no two notes sound the same because ORACLE's randomness feeds ORGANON's adaptation. This pair rewards long sustain contexts — let the organism digest the prophecy for several seconds before releasing the key.
 

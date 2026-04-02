@@ -14,10 +14,10 @@
  *   8. Typography Scale (10 Named Tokens)
  *   9. Spacing Scale
  *  10. Animation
- *  11. XOlokun Depth System
+ *  11. XOceanus Depth System
  */
 
-/* XOlokun — Synthesis from the deepest place. Depth palette added 2026-03-24. */
+/* XOceanus — Synthesis from the deepest place. Depth palette added 2026-03-24. */
 
 
 /* ============================================================
@@ -717,7 +717,7 @@
 
 
 /* ═══════════════════════════════════════════════════════
-   SECTION 11 — XOlokun Depth System
+   SECTION 11 — XOceanus Depth System
    Brand palette: depth-themed colors for the deep ocean identity
    ═══════════════════════════════════════════════════════ */
 
@@ -756,5 +756,5 @@
 
   /* Tagline */
   --xo-tagline: "Synthesis from the deepest place.";
-  --xo-motto:   "XOlokun — For All";
+  --xo-motto:   "XOceanus — For All";
 }

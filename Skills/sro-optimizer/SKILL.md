@@ -3,7 +3,7 @@
 **Invoke with:** `/sro-optimizer [engine-name | audit | integrate]`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new engine addition or platform target change
-**Purpose:** Sustainability & Resource Optimization — make constraint the accelerator that drives creative DSP solutions, ensures the platform stays accessible to every user's machine, and keeps XOlokun sustainable for the long haul.
+**Purpose:** Sustainability & Resource Optimization — make constraint the accelerator that drives creative DSP solutions, ensures the platform stays accessible to every user's machine, and keeps XOceanus sustainable for the long haul.
 
 ---
 
@@ -30,7 +30,7 @@ Every breakthrough instrument in history was born from constraint — and the co
 - **LEGO (1958)** — Godtfred Kirk Christiansen constrained the entire product line to one interlocking system with one stud size. Infinite complexity from finite, shared components. Our DSP kernel is the stud — CytomicSVF is the 2×4 brick. Every engine clicks into the same foundation, and the constraint is what makes the combinations possible.
 - **Haiku (8th century)** — 5-7-5 syllables. The constraint forces the poet to distill an entire scene into seventeen sounds. The result is compression so extreme it becomes its own form of beauty. A lean oscillator class is a haiku — every line present because removing it would break the poem.
 
-XOlokun is free, open-source, and runs on everything from a 2018 MacBook Air to a maxed M-series studio rig. That's not a constraint to fight — it's the design space we *chose*. When we say "earn your place," we're not policing CPU. We're asking the same question every great instrument designer asks: **"What is the most musical thing I can do with what I have?"**
+XOceanus is free, open-source, and runs on everything from a 2018 MacBook Air to a maxed M-series studio rig. That's not a constraint to fight — it's the design space we *chose*. When we say "earn your place," we're not policing CPU. We're asking the same question every great instrument designer asks: **"What is the most musical thing I can do with what I have?"**
 
 The SRO Framework exists because:
 - A user running 4 engines on a modest laptop deserves the same creative experience as someone on a $10K workstation
@@ -46,9 +46,9 @@ The SRO Framework exists because:
 | **Zero-Idle = Room for More** | When silent engines consume nothing, the user gets headroom to load a 4th engine, add more coupling, push the effects chain harder. Efficiency *expands* creative possibility. | Toyota's kanban: empty shelves aren't waste — they're capacity waiting for the next order. A sleeping engine slot is an invitation. |
 | **Upcycling > Reinventing** | A shared CytomicSVF filter, battle-tested across 34 engines, is more reliable and more optimized than 34 local filters written at different time. Reuse is a creative act — it frees the engine designer to focus on what makes *their* engine unique. | LEGO's single stud system. Unix pipes. Eurorack's standardized power/signal format — Doepfer's A-100 bus freed 500+ manufacturers to focus on what their module *does*, not how it connects. |
 | **Control Rate = Creative Smoothing** | Running modulation at 1/32 rate with interpolation isn't just cheaper — it naturally smooths zipper artifacts. The constraint *solves a problem you'd have to solve anyway*. | Pixar's RenderMan shading rate: surfaces further from camera get fewer shader evaluations. The variable rate is imperceptible and saves 60% of render time. Same principle, different domain. |
-| **Sustainability is Love** | This project is built by passion, maintained by community, and given away free. Every CPU cycle we save is a gift to every user who loads XOlokun on their machine. That's the ROI that matters. | The Volca series — Korg proved that $150 synths with real analog circuits could exist by ruthlessly constraining the feature set. Accessibility *is* the feature. |
+| **Sustainability is Love** | This project is built by passion, maintained by community, and given away free. Every CPU cycle we save is a gift to every user who loads XOceanus on their machine. That's the ROI that matters. | The Volca series — Korg proved that $150 synths with real analog circuits could exist by ruthlessly constraining the feature set. Accessibility *is* the feature. |
 
-### Historical Precedents in XOlokun
+### Historical Precedents in XOceanus
 
 Constraint has already driven innovation here:
 
@@ -560,18 +560,18 @@ Before marking an SRO integration as complete, verify these. They're not bureauc
 
 ## The Sustainability Commitment
 
-XOlokun is free. It will stay free. It runs on hardware people already own. That's a promise to the community, and SRO is how we keep it.
+XOceanus is free. It will stay free. It runs on hardware people already own. That's a promise to the community, and SRO is how we keep it.
 
 Every cycle we save is:
 - A user on a 2018 laptop who can load 4 engines instead of 3
 - A live performer whose set doesn't glitch during the bridge
 - A bedroom producer who doesn't need to bounce stems to free up CPU
-- A student who can run XOlokun on a school computer
+- A student who can run XOceanus on a school computer
 - Another year this project stays viable without monetization pressure
 
 The Teenage Engineering OP-1 runs an entire production studio on a battery-powered ARM chip. Dirtywave's M8 runs a tracker on a Teensy microcontroller. Monome's norns runs SuperCollider on a Raspberry Pi. These aren't compromised instruments — they're *beloved* instruments, precisely because their designers embraced constraint as identity rather than fighting it as limitation.
 
-XOlokun has 34 engines, a coupling matrix, a sequencer, an effects chain, and 2,550 presets. It runs on hardware from 2018. The only way that's possible — the only way it *stays* possible as we add engines 35, 36, 37 — is if every component earns its place, every shared module lifts the whole fleet, and every optimization is explored for its creative potential before it's filed as "just" an efficiency gain.
+XOceanus has 34 engines, a coupling matrix, a sequencer, an effects chain, and 2,550 presets. It runs on hardware from 2018. The only way that's possible — the only way it *stays* possible as we add engines 35, 36, 37 — is if every component earns its place, every shared module lifts the whole fleet, and every optimization is explored for its creative potential before it's filed as "just" an efficiency gain.
 
 Constraint isn't the enemy. Constraint is the instrument.
 
@@ -613,7 +613,7 @@ public:
 - SROAuditor monitors the Prime Mover slot separately (not counted in the 4-slot budget).
 - SilenceGate applies normally to Prime Movers — if the source is silent, the whole chain can sleep.
 
-**Use case:** User picks an fXO_ effect chain (4 slots of effects). The Prime Mover generates the source audio that feeds through them. This enables XOlokun to function as a full effects processor, not just a generator.
+**Use case:** User picks an fXO_ effect chain (4 slots of effects). The Prime Mover generates the source audio that feeds through them. This enables XOceanus to function as a full effects processor, not just a generator.
 
 **Interface addition to SynthEngine:**
 ```cpp
@@ -688,7 +688,7 @@ A reasonable initial set of Prime Mover engines (source generators for effects c
 | `XO_Origin` | Clean multi-osc generator (saw/square/sine/noise) | Neutral source — lets the fXO_ chain define character |
 | `XO_Overture` | Sample/loop player | Brings any audio into the fXO_ chain |
 | `XO_Oscillograph` | Wavetable + FM source | Rich harmonic starting material |
-| `XO_Ouverture` | Mic/line input pass-through | Makes XOlokun a live effects processor |
+| `XO_Ouverture` | Mic/line input pass-through | Makes XOceanus a live effects processor |
 
 These are **not** creative engines like OPAL or ORGANON — they're transparent sources designed to feed effects chains. Their job is to get out of the way and let the fXO_ engines shine.
 
@@ -716,4 +716,4 @@ These are **not** creative engines like OPAL or ORGANON — they're transparent 
 - `Source/DSP/CytomicSVF.h` — Shared TPT SVF filter (one great filter, 34 engines)
 - `Source/DSP/Effects/Saturator.h` — Shared saturation/waveshaping
 - `Skills/engine-health-check/SKILL.md` — Doctrine compliance (complements SRO)
-- `Docs/xolokun_master_specification.md` — Architecture rules
+- `Docs/xoceanus_master_specification.md` — Architecture rules

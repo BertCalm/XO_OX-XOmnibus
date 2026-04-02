@@ -17,7 +17,7 @@ At seance, OBLIQUE had:
 - Velocity shaped amplitude only (basic D001 compliance), not timbre
 - No aftertouch or mod wheel response — D006 incomplete
 - Filter envelope was wired but `oblq_filterEnvDepth` had not been added as a parameter (Round 7B)
-- Four XOlokun standard macros (FOLD, BOUNCE, COLOR, SPACE) were not yet implemented (Round 7D)
+- Four XOceanus standard macros (FOLD, BOUNCE, COLOR, SPACE) were not yet implemented (Round 7D)
 
 Ghost quote: *"Six presets for the engine with the most interesting conceptual premise in the gallery."*
 
@@ -78,7 +78,7 @@ Doc: `Docs/oblique_expansion.md`
 
 ### Round 7D — Macros FOLD, BOUNCE, COLOR, SPACE (2026-03-14)
 
-**Fix:** All four XOlokun standard macros wired to audible DSP parameters.
+**Fix:** All four XOceanus standard macros wired to audible DSP parameters.
 
 Added 4 parameters: `oblq_macroFold`, `oblq_macroBounce`, `oblq_macroColor`, `oblq_macroSpace`.
 

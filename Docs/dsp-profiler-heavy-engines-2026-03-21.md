@@ -85,7 +85,7 @@ Operation cost references used:
 | **Voice total** | **~1,616 ns** | **~6,466 ns** |
 
 **Estimated CPU at 44.1 kHz, 4 voices active: ~29%**
-(Budget per engine in 4-slot XOlokun: ~25%; Organon is currently overbudget when all 4 voices run)
+(Budget per engine in 4-slot XOceanus: ~25%; Organon is currently overbudget when all 4 voices run)
 Organon's own declared budget: 22% (`profiler.setCpuBudgetFraction(0.22f)`) — will breach at 3–4 active voices.
 
 ### Most Expensive DSP Stages

@@ -1,9 +1,9 @@
-# XOlokun UI Wiring Manifest — Phase 1
+# XOceanus UI Wiring Manifest — Phase 1
 
 > **Status:** V2 — Post Quantum Audit, Ready for Build Sprint
 > **Date:** 2026-03-25
 > **Purpose:** Single source of truth mapping every UI element in the V1 spatial architecture to its C++ APVTS parameter, callback, data source, or implementation need. A JUCE developer reads this document and knows exactly what to build, what to rewire, and what already exists.
-> **Source files used:** `Source/UI/XOlokunEditor.h` (4,323 lines), `Docs/design/xolokun-spatial-architecture-v1.md`, `Docs/design/xolokun-definitive-ui-spec.md`
+> **Source files used:** `Source/UI/XOceanusEditor.h` (4,323 lines), `Docs/design/xoceanus-spatial-architecture-v1.md`, `Docs/design/xoceanus-definitive-ui-spec.md`
 
 ---
 
@@ -27,7 +27,7 @@
 ## 1. HEADER (64pt)
 
 ### Current Implementation
-The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XOlokunEditor::paint()`. It contains: "XOlokun" text (Space Grotesk 19pt), "XO_OX Designs" subtitle, active coupling route count label, MIDI Learn status badge. Right side: `PresetBrowserStrip` (220px wide), Export button, Dark mode toggle, PS toggle, Performance toggle, CM toggle.
+The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XOceanusEditor::paint()`. It contains: "XOceanus" text (Space Grotesk 19pt), "XO_OX Designs" subtitle, active coupling route count label, MIDI Learn status badge. Right side: `PresetBrowserStrip` (220px wide), Export button, Dark mode toggle, PS toggle, Performance toggle, CM toggle.
 
 **Target (V1):** 64pt header with Logo, Depth-Zone Dial engine selector, Preset Navigator (prev/name/next/heart/DNA), A/B comparison toggle, M1-M4 macro knobs, utility cluster.
 
@@ -39,7 +39,7 @@ The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XO
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
-| XO_OX Logo (32x32pt SVG) | None — static asset | Text "XOlokun" painted in `XOlokunEditor::paint()`. No SVG logo component. | REWIRE | [UI] | Replace text with `juce::Drawable::createFromSVG()`. Asset path: `Resources/logo.svg`. Bridge color always `#E9C46A`. Symbol color `#1A1A1A` light / `#F0EDE8` dark. Click opens About panel (not implemented). |
+| XO_OX Logo (32x32pt SVG) | None — static asset | Text "XOceanus" painted in `XOceanusEditor::paint()`. No SVG logo component. | REWIRE | [UI] | Replace text with `juce::Drawable::createFromSVG()`. Asset path: `Resources/logo.svg`. Bridge color always `#E9C46A`. Symbol color `#1A1A1A` light / `#F0EDE8` dark. Click opens About panel (not implemented). |
 | About panel (on logo click) | None — informational | Not implemented | BUILD | [UI] | Simple `juce::CallOutBox` with version, credits, patreon link. No APVTS involvement. |
 
 ---
@@ -50,7 +50,7 @@ The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XO
 |-----------|--------------------------|----------------------|--------|---------------|-------|
 | Depth-Zone Dial (48x48pt circular dial) | `EngineRegistry::instance()` — reads registered engine list; calls `processor.loadEngine(slot, engineId)` on change | Not implemented. Engine selection currently done via `CompactEngineTile` right-click context menu only (`showLoadMenu()` in `CompactEngineTile::mouseDown`). | BUILD | [UI] | Custom `juce::Component`. Radial gradient: top arc `#48CAE4` (Sunlit), middle `#0096C7` (Twilight), bottom `#7B2FBE` (Midnight). Center: creature icon (engine-specific SVG, outline-only, 1.5px stroke). Drag CW/CCW scrolls through engines in water-column order. 50ms hot-swap crossfade on engine change (existing in processor). |
 | Engine name label (below dial) | `processor.getEngine(selectedSlot)->getEngineId()` | `CompactEngineTile` shows engine name; no standalone engine name label in header | BUILD | [UI] | Space Grotesk Regular 11pt, engine accent color. Updates when Depth-Zone Dial changes selection. |
-| Slot selector (which slot is the dial editing) | Internal dial state; maps to `selectedSlot` in editor | `XOlokunEditor::selectedSlot` (int, -1 to 3) — currently tile-click driven | REWIRE | [UI] | **Q1 RESOLVED (A):** Dial = engine picker for active slot. Tile clicks remain the primary slot selector. The two controls are complementary — tiles select the slot, dial browses engines within it. |
+| Slot selector (which slot is the dial editing) | Internal dial state; maps to `selectedSlot` in editor | `XOceanusEditor::selectedSlot` (int, -1 to 3) — currently tile-click driven | REWIRE | [UI] | **Q1 RESOLVED (A):** Dial = engine picker for active slot. Tile clicks remain the primary slot selector. The two controls are complementary — tiles select the slot, dial browses engines within it. |
 
 ---
 
@@ -93,7 +93,7 @@ The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XO
 |-----------|--------------------------|----------------------|--------|---------------|-------|
 | Dark/Light mode toggle | `GalleryColors::darkMode()` — global bool, no APVTS param | EXISTS — `themeToggleBtn` (`juce::TextButton`) with `onClick` calling `GalleryColors::setDarkMode()` + `laf->applyTheme()` + `repaint()` | REWIRE | [UI] | V1: 20x20pt sun/moon SVG icon (HeroIcons). Currently text button. Behavior correct. |
 | CPU meter | `processor.getMIDILearnManager()` — no, wrong. CPU from `juce::AudioProcessorGraph` or custom atomic | Not implemented as a displayed meter; header shows MIDI Learn badge only | BUILD | [UI] — atomic read | JetBrains Mono 10pt "CPU: 4.2%". Processor must expose `std::atomic<float> cpuPercent` updated in `processBlock`. Color: green < 30%, amber 30-70%, red > 70%. Update at 1Hz via existing timer. |
-| MIDI activity indicator | `processor.getMIDILearnManager().isLearning()` | EXISTS — MIDI Learn badge in header (amber pulsing when active). No general MIDI note-on flash. | REWIRE | [UI] | V1: 8x8pt circle. Flashes engine accent on note-on (50ms flash, 200ms decay). Requires lock-free FIFO from audio thread signaling note-on events (already partially present: `XOlokunProcessor::NoteMapEvent` drained via `drainNoteEvents()`). Wire to indicator component. |
+| MIDI activity indicator | `processor.getMIDILearnManager().isLearning()` | EXISTS — MIDI Learn badge in header (amber pulsing when active). No general MIDI note-on flash. | REWIRE | [UI] | V1: 8x8pt circle. Flashes engine accent on note-on (50ms flash, 200ms decay). Requires lock-free FIFO from audio thread signaling note-on events (already partially present: `XOceanusProcessor::NoteMapEvent` drained via `drainNoteEvents()`). Wire to indicator component. |
 | Settings gear | Opens settings panel | Not implemented | BUILD | [UI] | 20x20pt HeroIcons cog. Opens settings panel (see Section 4.5 — C5 Settings tab). Can use `juce::CallOutBox` for V1. |
 | Export button | Launches `ExportDialog` | EXISTS — `exportBtn` (`juce::TextButton` "EXPORT") with `onClick` launching `ExportDialog` in `juce::CallOutBox` | EXISTS | [UI] | Already correct. ExportDialog.h handles XPN export pipeline. |
 | Performance Lock toggle | `performanceLock` bool — no APVTS param needed | Not implemented | BUILD | [UI] | When active: all param changes blocked except PlaySurface and FIRE/XOSEND/ECHO/PANIC. Visual: lock icon on affected controls at 40% opacity. Toggle: padlock icon in header utility cluster. Status bar indicator (see Section 6). |
@@ -113,19 +113,19 @@ Left sidebar is 155px wide (`kSidebarW = 155`). Contains 4 `CompactEngineTile` i
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
-| Column A container | Layout | `kSidebarW = 155` in `XOlokunEditor` | REWIRE | [UI] | Widen to 260pt. Update `resized()` math accordingly. All right-panel widths shrink proportionally. |
+| Column A container | Layout | `kSidebarW = 155` in `XOceanusEditor` | REWIRE | [UI] | Widen to 260pt. Update `resized()` math accordingly. All right-panel widths shrink proportionally. |
 | "Add Engine" button (`[+ ENGINE]`) | `EngineRegistry::instance()` — load engine into empty slot | Not implemented as a separate button; empty tiles show "+" and can be right-clicked | BUILD | [UI] | `juce::TextButton` below the 4 tiles. Opens engine picker (same popup as tile right-click `showLoadMenu()`). |
 
 ---
 
 ### 2.2 Slot Tile — Per-Slot Elements (4 tiles)
 
-**Existing class:** `CompactEngineTile` in `XOlokunEditor.h` at line 1447.
+**Existing class:** `CompactEngineTile` in `XOceanusEditor.h` at line 1447.
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
 | Tile background + border | `isSelected`, `hasEngine`, `isMouseOver()` | EXISTS — depth-zone gradient when selected, `slotBg()` otherwise, accent border on select/hover | EXISTS | [UI] | Correct. No change needed. |
-| On/Off toggle (engine mute) | `{prefix}_enabled` or per-slot bypass param | Not implemented in tile | BUILD | [UI] | Small toggle (16x16pt, top-left of tile). `SliderAttachment` or `ButtonAttachment` to a per-slot bypass parameter. Needs new APVTS params: `slot1_enabled`, `slot2_enabled`, `slot3_enabled`, `slot4_enabled` (bool, default true). Add to `XOlokunProcessor::createParameters()`. |
+| On/Off toggle (engine mute) | `{prefix}_enabled` or per-slot bypass param | Not implemented in tile | BUILD | [UI] | Small toggle (16x16pt, top-left of tile). `SliderAttachment` or `ButtonAttachment` to a per-slot bypass parameter. Needs new APVTS params: `slot1_enabled`, `slot2_enabled`, `slot3_enabled`, `slot4_enabled` (bool, default true). Add to `XOceanusProcessor::createParameters()`. |
 | Creature icon (24x24pt outline SVG) | `eng->getEngineId()` → icon asset lookup | NOT implemented — porthole circle with slot number is current substitute | BUILD | [UI] | 76 SVG icons required (one per engine), outline-only, 1.5px stroke, engine accent color. Asset path convention: `Resources/creatures/{engineId}.svg`. For V1 fallback: continue using porthole+slot-number until all icons created. |
 | Engine name label | `eng->getEngineId()` | EXISTS — `GalleryFonts::heading(11.0f)`, engine ID uppercase | REWIRE | [UI] | V1 spec: Space Grotesk SemiBold, engine accent color when selected (currently `get(textDark())` when unselected). Layout adjustment needed for wider tile. |
 | Mini waveform (32×16pt) | Lock-free FIFO — 256 audio samples from audio thread | Not implemented | BUILD | [FIFO] | `juce::Path` from ring buffer of 256 samples. Processor must write samples to per-slot lock-free FIFO (e.g., `juce::AbstractFifo` + `std::array<float, 256>`). UI reads at 30Hz. Stroke 1.5px, engine accent color. No waveform when slot empty. |
@@ -135,7 +135,7 @@ Left sidebar is 155px wide (`kSidebarW = 155`). Contains 4 `CompactEngineTile` i
 | Left accent strip (voice activity) | `eng->getActiveVoiceCount()` | EXISTS — 3px left strip, voice-density-driven alpha | EXISTS | [ATOMIC] | Correct. |
 | Porthole circle | Slot number display / voice indicator | EXISTS — 30px circle, slot number, inner fill + ring responsive to voice count | REWIRE | [UI] | V1: replace porthole with creature icon once icons exist. For now, porthole remains valid. |
 | Tile select callback | `selectSlot(int)` in editor | EXISTS — `onSelect` lambda, calls `selectSlot()` | EXISTS | [UI] | Correct. |
-| Tile keyboard navigation (1-4 keys) | Keyboard shortcut → `selectSlot()` | EXISTS — `keyPressed()` in `XOlokunEditor`: '1'=slot 0, '2'=slot 1, '3'=slot 2, '4'=slot 3 | EXISTS | [UI] | Correct. |
+| Tile keyboard navigation (1-4 keys) | Keyboard shortcut → `selectSlot()` | EXISTS — `keyPressed()` in `XOceanusEditor`: '1'=slot 0, '2'=slot 1, '3'=slot 2, '4'=slot 3 | EXISTS | [UI] | Correct. |
 | Engine load popup (right-click) | `EngineRegistry::instance().getRegisteredIds()` | EXISTS — `showLoadMenu()` in `CompactEngineTile::mouseDown` — scans registry, shows `juce::PopupMenu` | EXISTS | [UI] | Correct. Hot-swap handled by processor. |
 | Engine remove (right-click → Remove) | `processor.removeEngine(slot)` | EXISTS — in `showLoadMenu()` popup | EXISTS | [UI] | Correct. |
 | Focus ring (WCAG 2.4.7) | Keyboard focus | EXISTS — `A11y::drawFocusRing()` in `CompactEngineTile::paint()` | EXISTS | [UI] | Correct. |
@@ -208,7 +208,7 @@ Column B is the "right panel" area (editor width minus 155px sidebar). Shows one
 | Inline coupling popover (click on arc) | `cp_r{N}_type`, `cp_r{N}_amount`, `cp_r{N}_active` | NOT in `OverviewPanel` — arcs in the overlay don't receive clicks (`setInterceptsMouseClicks(false, false)`) | BUILD | [UI] — APVTS | V1 mandates inline popover on arc click (type/amount/depth in-place). `CouplingArcOverlay` currently passes through all mouse events. Add hit-testing per arc in a new clickable overlay variant (or move arc drawing into a clickable component). Shows: type dropdown, amount slider (bipolar), active toggle. |
 | Living Gold Corridor (coupling active gold band) | `cp_r{N}_amount` values — coupling energy RMS | Not implemented | BUILD | [UI] — FIFO | 24px horizontal gold band at top of overview area. `alpha = 0.7 + 0.3 * couplingRMS`. Gold glow 4px above/below. Coupling energy from lock-free FIFO. |
 | Empty state (no engines) | Static | EXISTS — XO Gold logo mark + "Load engines to begin" instruction text | EXISTS | [UI] | Correct. |
-| `OverviewPanel::refresh()` | Called from `XOlokunEditor::timerCallback()` | EXISTS — reads `getCouplingMatrix().getRoutes()` + per-slot engine info | EXISTS | [UI] | Correct. Called at 1Hz/10Hz depending on MIDI Learn state. |
+| `OverviewPanel::refresh()` | Called from `XOceanusEditor::timerCallback()` | EXISTS — reads `getCouplingMatrix().getRoutes()` + per-slot engine info | EXISTS | [UI] | Correct. Called at 1Hz/10Hz depending on MIDI Learn state. |
 
 ---
 
@@ -294,7 +294,7 @@ Column C does not exist as a distinct component. Preset browsing: `PresetBrowser
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
-| Column C container (320pt) | Layout | Not implemented | BUILD | [UI] | New `juce::Component` class `SidebarPanel`. Contains tab bar + content area. Added to `XOlokunEditor::resized()`. |
+| Column C container (320pt) | Layout | Not implemented | BUILD | [UI] | New `juce::Component` class `SidebarPanel`. Contains tab bar + content area. Added to `XOceanusEditor::resized()`. |
 | Tab bar (36pt, 6 tabs) | Internal state | Not implemented | BUILD | [UI] | Tabs: PRESET, COUPLE, FX, PLAY, EXPORT, SETTINGS. Space Grotesk SemiBold 10pt ALL CAPS. Active: engine accent color text + 2px underline. Inactive: `rgba(240,237,232,0.45)`. |
 
 ---
@@ -472,7 +472,7 @@ No dedicated status bar component. No FIRE/XOSEND/ECHO/PANIC triggers. BPM, voic
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
-| Status bar container (28pt, full width) | Layout | Not implemented | BUILD | [UI] | New component `StatusBar : public juce::Component`. Add to `XOlokunEditor::resized()` at bottom. Adjust other heights. |
+| Status bar container (28pt, full width) | Layout | Not implemented | BUILD | [UI] | New component `StatusBar : public juce::Component`. Add to `XOceanusEditor::resized()` at bottom. Adjust other heights. |
 | FIRE trigger pad (48x48pt, green, key Z) | `ChordMachine` or trigger system | Not implemented | BUILD | [UI] | `juce::TextButton`. `#4ADE80` fill. Click triggers preset-defined action (e.g., start chord machine, trigger one-shot). Spring physics: 2px depth shift 50ms, bounce back 150ms. Keyboard shortcut Z. |
 | XOSEND trigger pad (key X) | Export / send system | Not implemented | BUILD | [UI] | `#F5C97A` fill. Trigger XPN send or DAW clip export. Key X. |
 | ECHO CUT trigger pad (key C) | Delay feedback cut | Not implemented | BUILD | [UI] | `#F5C97A` fill. Cuts delay feedback to 0 (one-shot, spring return). Sets `master_delayFeedback` to 0 temporarily. Key C. |
@@ -491,10 +491,10 @@ No dedicated status bar component. No FIRE/XOSEND/ECHO/PANIC triggers. BPM, voic
 
 | Feature | Data Source | Current Implementation | Status | Notes |
 |---------|------------|----------------------|--------|-------|
-| First launch detection | `juce::PropertiesFile` — `isFirstLaunch` key | Not implemented | BUILD | Check on `XOlokunEditor` construction. If first launch: load OXBOW "First Breath" preset into slot 1, trigger auto-play at velocity 0.4. |
-| OXBOW "First Breath" auto-play | `processor.applyPreset(firstBreathPreset)` + `processor.getMidiCollector().addMessageToQueue(noteOn)` | Not implemented | BUILD | Preset must exist at `Presets/XOlokun/Foundation/OXBOW_First_Breath.xometa`. |
+| First launch detection | `juce::PropertiesFile` — `isFirstLaunch` key | Not implemented | BUILD | Check on `XOceanusEditor` construction. If first launch: load OXBOW "First Breath" preset into slot 1, trigger auto-play at velocity 0.4. |
+| OXBOW "First Breath" auto-play | `processor.applyPreset(firstBreathPreset)` + `processor.getMidiCollector().addMessageToQueue(noteOn)` | Not implemented | BUILD | Preset must exist at `Presets/XOceanus/Foundation/OXBOW_First_Breath.xometa`. |
 | Hover modulation (any knob moves 5%) | `juce::MouseListener` on root component — `mouseMove()` → `setValueNotifyingHost()` | Not implemented | BUILD | Add `FirstLaunchHoverListener` to editor. Active for 30s then self-disables. Subtle: knob shifts ±5% toward cursor direction. |
-| Welcome toast ("Welcome to XOlokun. Touch anything.") | `juce::Timer::callAfterDelay(30000, ...)` | Not implemented | BUILD | Need toast notification system. See `Docs/design/toast-notification-system.md`. |
+| Welcome toast ("Welcome to XOceanus. Touch anything.") | `juce::Timer::callAfterDelay(30000, ...)` | Not implemented | BUILD | Need toast notification system. See `Docs/design/toast-notification-system.md`. |
 | Flag first launch complete | `juce::PropertiesFile` write | Not implemented | BUILD | Set `isFirstLaunch = false` after first note is played by user. |
 
 ---
@@ -881,7 +881,7 @@ These components appear in multiple engines' detail views and should be built on
 | Full editor overlay | `CouplingArcOverlay` | Stay as overlay | STAYS — correct |
 | Column B (110px strip) | `FieldMapPanel` | Column B — reduced height strip below panel stack | **Q3 RESOLVED (A):** Keep FieldMapPanel in Column B below the panel stack at reduced height (~60-70px instead of 110px). This frees ~40-50px for the Status Bar without removing the sonic cartography feature. Update `resized()` to allocate 65px to FieldMapPanel and 28px to StatusBar. |
 
-### New Components to Add to `XOlokunEditor`
+### New Components to Add to `XOceanusEditor`
 
 ```
 // New members to add:
@@ -918,7 +918,7 @@ Status Bar:      28pt   (FIRE/XOSEND/ECHO/PANIC + BPM + Voices + CPU + slot dots
 | CPU usage | Audio thread | UI thread | `std::atomic<float>` in processor | Must be added. Update once per `processBlock`. |
 | BPM from host | Audio thread (`processBlock` via `getPlayHead()`) | UI thread (status bar) | `std::atomic<double>` in processor | Must be added. |
 | Waveform data (oscilloscope) | Audio thread (per-block sample copy) | UI thread (30Hz repaint) | `juce::AbstractFifo` + `std::array<float, 256>` per slot | Must be built. Never allocate in audio thread. |
-| Note-on events (FieldMapPanel, MIDI indicator) | Audio thread (`processBlock`) | UI thread (1Hz drain) | Lock-free FIFO (`XOlokunProcessor::NoteMapEvent`) | EXISTS — `drainNoteEvents()` called in timer. Add MIDI indicator flash. |
+| Note-on events (FieldMapPanel, MIDI indicator) | Audio thread (`processBlock`) | UI thread (1Hz drain) | Lock-free FIFO (`XOceanusProcessor::NoteMapEvent`) | EXISTS — `drainNoteEvents()` called in timer. Add MIDI indicator flash. |
 | Coupling energy / RMS (arcs, corridor pulse) | Audio thread | UI thread | Lock-free FIFO (one float per route per frame) | Must be built. Used by Living Gold Corridor and arc thickness animation. |
 | LFO phase values (PlaySurface engine state viz) | Audio thread | UI thread | Lock-free FIFO (one float per slot per block) | Must be built. |
 | Cellular automaton state (ORGANISM, OUTWIT) | Audio thread | UI thread | Lock-free FIFO (grid snapshot) | Must be built per engine. |
@@ -950,7 +950,7 @@ All questions resolved. Implementation may proceed.
 | Q5 | **OBRIX dedicated panel vs augmented grid**: OBRIX has 81 params. Full custom `ObrixDetailPanel` or augmented `ParameterGrid`? | **RESOLVED: (A)** — Full custom `ObrixDetailPanel` for OBRIX flagship. Brick Stack View, Reef Ecology Display, Harmonic Field indicator, Environmental params panel. Supports B016 brick independence correctly. | `ObrixDetailPanel` class built from scratch. `EngineDetailPanel::loadSlot()` checks `eng->getEngineId() == "Obrix"` and swaps component accordingly. |
 | Q6 | **FX location strategy**: Three FX entry points — intentional? | **RESOLVED: (A)** — Three FX entry points coexist: bottom strip `MasterFXSection` (compact always-visible summary), B3 panel (full edit view), C3 inspector (deep params + reorder). Layered progressive disclosure matches design philosophy. | All three views reference same APVTS params. No duplication of attachments — C3 and B3 use visual-only meters where bottom strip holds the `SliderAttachment`s, or each section is scoped to non-overlapping params. |
 | Q7 | **Performance View toggle button (`perfToggleBtn`)**: Remove or repurpose after coupling moves to C2? | **RESOLVED: (B)** — Keep `perfToggleBtn` as "Cinematic Mode" trigger. Cinematic Mode: Column A + Column C collapse, Column B expands to full 1100pt coupling visualization. Button label updated to reflect new purpose. | `perfToggleBtn` renamed / relabeled. Cinematic Mode `resized()` path added. `PerformanceViewPanel` remains in Column B for Cinematic Mode; coupling inspector in C2 for normal mode. |
-| Q8 | **A/B preset comparison data persistence**: Session-only or persisted in plugin state? | **RESOLVED: (B)** — A/B preset slots persisted in plugin state via `setStateInformation`/`getStateInformation`. Preferred for professional use. `PresetData presetA, presetB` serialized to/from plugin state XML. | `XOlokunProcessor::getStateInformation()` updated to include `presetA` and `presetB` blobs. Increases state size by ~2× preset size. |
+| Q8 | **A/B preset comparison data persistence**: Session-only or persisted in plugin state? | **RESOLVED: (B)** — A/B preset slots persisted in plugin state via `setStateInformation`/`getStateInformation`. Preferred for professional use. `PresetData presetA, presetB` serialized to/from plugin state XML. | `XOceanusProcessor::getStateInformation()` updated to include `presetA` and `presetB` blobs. Increases state size by ~2× preset size. |
 | Q9 | **TriangularCoupling (#15) in UI**: Currently 14 types shown in coupling type dropdown. | **RESOLVED: (A)** — TriangularCoupling added as 15th item in the coupling type dropdown (`cp_r{N}_type` ComboBox). Accessible for any route, not OXYTOCIN-exclusive. OXYTOCIN seance (B040) identifies it as OXYTOCIN's defining coupling type — the dropdown makes it discoverable to all. | `RouteSection::typeBox` updated to 15 items. `couplingTypeLabel()` and `CLAUDE.md` coupling type list updated to include TriangularCoupling. |
 | Q10 | **Master volume knob relocation**: Moves with macros out of bottom strip. New home? | **RESOLVED: (A)** — Master volume knob placed in header right edge, after the M4 macro knob. Part of the header utility cluster alongside macro knobs. `SliderAttachment("masterVolume")` in header. | `MacroSection` restructured to include master vol in the header layout. `resized()` adds ~44pt for master vol knob after M4. |
 
@@ -964,7 +964,7 @@ All questions resolved. Implementation may proceed.
 
 | ID | Finding | Resolution | Status |
 |----|---------|------------|--------|
-| BS-P0-1 | XOlokunEditor.h (4,323 lines) must be split before adding V1 components | Extract 9 classes into separate files. See Prep Sprint Step 1. | PENDING |
+| BS-P0-1 | XOceanusEditor.h (4,323 lines) must be split before adding V1 components | Extract 9 classes into separate files. See Prep Sprint Step 1. | PENDING |
 | BS-P0-2 | resized() proportional 3-column math undefined | Write ColumnLayoutManager (80-line struct). See Prep Sprint Step 6. | PENDING |
 | GC-P0-1 | crossfadeMutex on audio thread — std::scoped_lock in processBlock | Replace with lock-free command queue or atomic CAS. | PENDING |
 | GC-P0-2 | 11 engines return non-atomic getActiveVoiceCount() | Add std::atomic<int> to SynthEngine base class. | PENDING |
@@ -1028,7 +1028,7 @@ When all 4 engine slots contain engines from the same collection (e.g., Kitchen 
 
 | Element | Data Source | Status | Thread Safety | Notes |
 |---------|-----------|--------|---------------|-------|
-| `MaxSlots` constant change (4 → 5) | `EngineRegistry.h`, `MegaCouplingMatrix.h`, `XOlokunProcessor.h` | BUILD | [UI + AUDIO] | Compile-time constant. All slot arrays, FIFOs, coupling matrices expand automatically. |
+| `MaxSlots` constant change (4 → 5) | `EngineRegistry.h`, `MegaCouplingMatrix.h`, `XOceanusProcessor.h` | BUILD | [UI + AUDIO] | Compile-time constant. All slot arrays, FIFOs, coupling matrices expand automatically. |
 | Collection detection | `EngineRegistry` — check if slots 0-3 contain engines from same collection | BUILD | [UI] | New method: `EngineRegistry::detectCollection(engineIds[4])` returns collection name or empty. |
 | 5th slot CompactEngineTile | Conditional visibility based on collection detection | BUILD | [UI] | Hidden by default (`setVisible(false)`). Materializes with collection-specific animation on detection. |
 | Ghost Slot coupling | Spectral Fingerprint Cache — metadata coupling, NOT audio routing | BUILD | [UI] | MegaCouplingMatrix stays 4×4 for audio. 5th slot uses fingerprint-based modulation only. |
@@ -1058,5 +1058,5 @@ Visual signal-flow representation showing active coupling routes as a readable c
 
 ---
 
-*End of XOlokun UI Wiring Manifest — Phase 1*
-*Built from: `Source/UI/XOlokunEditor.h` (4,323 lines), `Docs/design/xolokun-spatial-architecture-v1.md`, `Docs/design/xolokun-definitive-ui-spec.md`, CLAUDE.md, and all 76 engine APVTS parameter specifications.*
+*End of XOceanus UI Wiring Manifest — Phase 1*
+*Built from: `Source/UI/XOceanusEditor.h` (4,323 lines), `Docs/design/xoceanus-spatial-architecture-v1.md`, `Docs/design/xoceanus-definitive-ui-spec.md`, CLAUDE.md, and all 76 engine APVTS parameter specifications.*

@@ -32,7 +32,7 @@ In the Aquarium (our depth-zone atlas), feliX engines tend to cluster near the s
 
 ## 3.2 6D Sonic DNA — What Brightness, Warmth, Movement, Density, Space, and Aggression Actually Mean When Making Beats
 
-XO_OX presets carry a six-dimensional descriptor we call Sonic DNA. Every preset has a value from 0 to 10 for each of six dimensions. If you use XOlokun, these values are searchable and sortable. If you're working with XPN expansion packs on MPC hardware, they're part of how the packs were curated — every pack represents a deliberate spread of DNA values designed to give you compositional range within a single aesthetic.
+XO_OX presets carry a six-dimensional descriptor we call Sonic DNA. Every preset has a value from 0 to 10 for each of six dimensions. If you use XOceanus, these values are searchable and sortable. If you're working with XPN expansion packs on MPC hardware, they're part of how the packs were curated — every pack represents a deliberate spread of DNA values designed to give you compositional range within a single aesthetic.
 
 Understanding what the dimensions actually mean in practice — not as abstract numbers, but as musical qualities you can hear — is the difference between using Sonic DNA as a filing system and using it as a compositional tool.
 
@@ -74,9 +74,9 @@ Why? Because that is how acoustic instruments work. Strike a drum harder and you
 
 Synthesizers that implement only velocity-to-amplitude are lying about what they are. They are static sounds that scale up and down. They feel mechanical. Producers sense this even when they can't articulate it — a keyboard without timbral velocity response feels like pressing a button rather than playing an instrument. The physical metaphor breaks down. You stop performing and start programming.
 
-**In XOlokun, D001 is implemented at the engine level.** Every engine has a velocity-to-filter-cutoff pathway. Hard hits open the filter cutoff. This is the baseline. But most engines go further: velocity also shapes envelope rates (harder velocity = faster attack), harmonic content (additional overtones enter at higher velocities via feedback or FM pathways), distortion amount (harder velocity = more saturation in the drive stage), and — through coupling — can trigger behavioral changes in entirely separate engines.
+**In XOceanus, D001 is implemented at the engine level.** Every engine has a velocity-to-filter-cutoff pathway. Hard hits open the filter cutoff. This is the baseline. But most engines go further: velocity also shapes envelope rates (harder velocity = faster attack), harmonic content (additional overtones enter at higher velocities via feedback or FM pathways), distortion amount (harder velocity = more saturation in the drive stage), and — through coupling — can trigger behavioral changes in entirely separate engines.
 
-The most sophisticated implementation of D001 in XOlokun is in OVERBITE's BITE macro: playing hard not only opens the filter, it engages a resonant bite character that changes the entire tonal identity of the sound. Soft playing gets the warm, round side. Hard playing gets the aggressive, snapping character. You're not playing two volume levels of the same sound. You're playing two different aspects of the same instrument's personality.
+The most sophisticated implementation of D001 in XOceanus is in OVERBITE's BITE macro: playing hard not only opens the filter, it engages a resonant bite character that changes the entire tonal identity of the sound. Soft playing gets the warm, round side. Hard playing gets the aggressive, snapping character. You're not playing two volume levels of the same sound. You're playing two different aspects of the same instrument's personality.
 
 **In XPN expansion packs, D001 is implemented through velocity layers.** Each pad has up to four velocity layers, each rendered at a different velocity level with different synthesis parameters. The samples themselves were rendered with:
 
@@ -107,13 +107,13 @@ The Hammond B3 is a character instrument. It does one thing extremely well. Its 
 
 **XO_OX makes character instruments.**
 
-Every engine in XOlokun has a specific identity. OBLONG is the warm polysynth — not a warm-style feature-maximal synthesizer, but a warm polysynth whose character comes from a specific filter architecture and envelope behavior that cannot be replicated by feature-switching. OVERBITE is the bass-forward character synth with a bite you will not find anywhere else. OVERDUB is the dub synth: voice, send VCA, drive, tape delay, spring reverb, master. It does not also do pads. It is not also a wavetable synthesizer. It is a dub synth, precisely.
+Every engine in XOceanus has a specific identity. OBLONG is the warm polysynth — not a warm-style feature-maximal synthesizer, but a warm polysynth whose character comes from a specific filter architecture and envelope behavior that cannot be replicated by feature-switching. OVERBITE is the bass-forward character synth with a bite you will not find anywhere else. OVERDUB is the dub synth: voice, send VCA, drive, tape delay, spring reverb, master. It does not also do pads. It is not also a wavetable synthesizer. It is a dub synth, precisely.
 
-When we build a new engine, the first questions are: what is this instrument's *one thing*? What does it do that no other engine in XOlokun does? What is its personality — feliX or Oscar or somewhere in between, and where does it live in the aquarium? What is the user relationship? Do you play it or does it perform around you?
+When we build a new engine, the first questions are: what is this instrument's *one thing*? What does it do that no other engine in XOceanus does? What is its personality — feliX or Oscar or somewhere in between, and where does it live in the aquarium? What is the user relationship? Do you play it or does it perform around you?
 
 We do not ask: how many oscillators should it have, or how many filter types, or whether it should include a sample-and-hold. Those are features. Features serve character. Character is not assembled from features.
 
-> **Practical tip:** When an engine resists you, stop fighting it. If ONSET is giving you tight electronic drum sounds and you need big, warm acoustic textures, ONSET is not broken — you've chosen the wrong tool. The discipline is learning which engine serves which creative need. XOlokun with 34 engines gives you enough character range that the right engine almost always exists. Spend time with the ones you haven't explored yet.
+> **Practical tip:** When an engine resists you, stop fighting it. If ONSET is giving you tight electronic drum sounds and you need big, warm acoustic textures, ONSET is not broken — you've chosen the wrong tool. The discipline is learning which engine serves which creative need. XOceanus with 34 engines gives you enough character range that the right engine almost always exists. Spend time with the ones you haven't explored yet.
 
 The corollary is the real payoff: **when you find the engine that fits, it fits deeply.** The preset library was not designed as a thin starting point. It was designed as a curated sonic range — 6D Sonic DNA spread across dozens of presets, all sharing the engine's character while covering different timbral territory. Load a Foundation mood preset from OPAL and you should be able to drop it directly into a session and have something that already belongs. Not a starting point that requires three hours of editing. A sound, placed intentionally, ready to make music.
 
@@ -156,7 +156,7 @@ Some specific DNA combinations that consistently work:
 
 ## 3.6 The Four Macros as a Compositional Framework — CHARACTER, MOVEMENT, COUPLING, SPACE
 
-Every XO_OX engine has four macros: **CHARACTER, MOVEMENT, COUPLING, SPACE.** In XOlokun they appear as the four knobs on every preset page. In XPN expansion packs, they are mapped to the first four Q-Links on the MPC. They are the performance interface of XO_OX sound design — the bridge between what a preset was designed to do and what you, playing it right now, make it do.
+Every XO_OX engine has four macros: **CHARACTER, MOVEMENT, COUPLING, SPACE.** In XOceanus they appear as the four knobs on every preset page. In XPN expansion packs, they are mapped to the first four Q-Links on the MPC. They are the performance interface of XO_OX sound design — the bridge between what a preset was designed to do and what you, playing it right now, make it do.
 
 The macros look like four knobs. They function as four different *dimensions of time* in music.
 

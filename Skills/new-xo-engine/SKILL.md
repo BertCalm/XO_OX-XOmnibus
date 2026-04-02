@@ -3,16 +3,16 @@
 **Invoke with:** `/new-xo-engine`
 **Status:** LIVE
 **Last Updated:** 2026-03-22 | **Version:** 1.0 | **Next Review:** On next engine addition
-**Purpose:** End-to-end guide for designing, scaffolding, and integrating a new engine into XOlokun — from concept brief through gallery installation.
+**Purpose:** End-to-end guide for designing, scaffolding, and integrating a new engine into XOceanus — from concept brief through gallery installation.
 
 ---
 
 ## When to Use This Skill
 
 Use this skill when:
-- Creating a brand-new engine for XOlokun
+- Creating a brand-new engine for XOceanus
 - Scaffolding an engine concept into code
-- Integrating a standalone XO instrument into the XOlokun gallery
+- Integrating a standalone XO instrument into the XOceanus gallery
 - Planning a new engine and need the concept brief template
 
 **For engine quality checks after building, use `/engine-health-check`.**
@@ -23,7 +23,7 @@ Use this skill when:
 
 ## Overview
 
-Every XOlokun engine starts as a concept, gets designed, then built and integrated. This skill walks through all 5 phases:
+Every XOceanus engine starts as a concept, gets designed, then built and integrated. This skill walks through all 5 phases:
 
 ```
 Phase 0: IDEATION          → "What exhibition?"
@@ -33,7 +33,7 @@ Phase 3: INTEGRATION       → "Hang it in the gallery"
 Phase 4: VERIFICATION      → "Gallery walk-through"
 ```
 
-Reference: `Docs/xolokun_new_engine_process.md` for the full standalone→gallery dual-target workflow.
+Reference: `Docs/xoceanus_new_engine_process.md` for the full standalone→gallery dual-target workflow.
 
 ---
 
@@ -162,7 +162,7 @@ Create `Source/Engines/{Name}/{Name}Engine.h`:
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 class {Name}Engine : public SynthEngine
 {
@@ -264,7 +264,7 @@ private:
     // Oscillators, filters, voices, LFOs, envelopes...
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 ### 2.2 File Structure
@@ -281,7 +281,7 @@ All DSP in `.h` files. No `.cpp` stubs needed for modern pattern.
 
 ## Phase 3: Integration
 
-### 3.1 Register in XOlokunProcessor.cpp
+### 3.1 Register in XOceanusProcessor.cpp
 
 Add include at the top (after existing includes):
 ```cpp
@@ -291,9 +291,9 @@ Add include at the top (after existing includes):
 Add registration (after last registered engine):
 ```cpp
 // {NAME} — [brief description]
-static bool registered_{Name} = xolokun::EngineRegistry::instance().registerEngine(
-    "{Name}", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::{Name}Engine>();
+static bool registered_{Name} = xoceanus::EngineRegistry::instance().registerEngine(
+    "{Name}", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::{Name}Engine>();
     });
 ```
 
@@ -318,7 +318,7 @@ Add to `frozenPrefixForEngine()` map:
 
 ### 3.4 Update Master Spec
 
-Add engine row to `Docs/xolokun_master_specification.md` section 3.1.
+Add engine row to `Docs/xoceanus_master_specification.md` section 3.1.
 
 ---
 
@@ -340,7 +340,7 @@ D006 (Expression):         ✅ PASS
 ### 4.2 Integration Checklist
 
 ```
-[ ] Engine compiles in XOlokun build
+[ ] Engine compiles in XOceanus build
 [ ] Engine appears in EngineRegistry (getEngineId matches registration)
 [ ] Single-engine presets load and play correctly
 [ ] All 4 macros produce audible change in every preset
@@ -351,7 +351,7 @@ D006 (Expression):         ✅ PASS
 [ ] Accent color renders correctly in gallery shell
 [ ] CLAUDE.md updated (all 4 sections)
 [ ] PresetManager.h updated (validEngineNames + frozenPrefixForEngine)
-[ ] XOlokunProcessor.cpp updated (include + registration)
+[ ] XOceanusProcessor.cpp updated (include + registration)
 ```
 
 ### 4.3 Preset Minimum

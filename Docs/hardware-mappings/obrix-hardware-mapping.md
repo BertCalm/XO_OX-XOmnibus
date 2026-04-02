@@ -231,7 +231,7 @@ Pads 13–16 (top-left quadrant with Shift): Gesture type selection
 - All CCs use 0–127 range
 - Bipolar parameters (FM Depth, Field Polarity, Env Current) center at CC value 64 = 0.0
 - Log-scaled parameters (Attack, Decay, Release, Cutoff) are marked `[log]` — host must apply curve or use NRPN
-- CC 80–83 reserved for coupling bus (XOlokun-level control, see xolokun-performance-mapping.md)
+- CC 80–83 reserved for coupling bus (XOceanus-level control, see xoceanus-performance-mapping.md)
 
 | CC# | Parameter ID | Name | Range Notes |
 |-----|-------------|------|-------------|
@@ -281,11 +281,11 @@ Pads 13–16 (top-left quadrant with Shift): Gesture type selection
 | CC77 | `obrix_driftDepth` | Drift Depth | 0=off, 127=full ensemble drift |
 | CC78 | `obrix_residentStrength` | Reef Resident Strength | 0=off, 127=dominant ecology |
 | CC79 | `obrix_glideTime` | Glide Time | 0=instant, 127=max |
-| **Coupling Bus (XOlokun-level)** | | | |
-| CC80 | xolokun coupling A→B amount | Coupling Out | see xolokun map |
-| CC81 | xolokun coupling B→A amount | Coupling In | see xolokun map |
-| CC82 | xolokun coupling type | Coupling Type | 0–14 |
-| CC83 | xolokun coupling bypass | Bypass toggle | 0=active, 127=bypass |
+| **Coupling Bus (XOceanus-level)** | | | |
+| CC80 | xoceanus coupling A→B amount | Coupling Out | see xoceanus map |
+| CC81 | xoceanus coupling B→A amount | Coupling In | see xoceanus map |
+| CC82 | xoceanus coupling type | Coupling Type | 0–14 |
+| CC83 | xoceanus coupling bypass | Bypass toggle | 0=active, 127=bypass |
 
 ### Recommended Mod Wheel Routing
 - **Default:** `obrix_mod2Depth` (LFO depth) — breathing filter motion

@@ -1,4 +1,4 @@
-# XOlokun 6-Month Content Backlog
+# XOceanus 6-Month Content Backlog
 **Generated:** 2026-03-20 | **Khan Sultan Consulting**
 **Window:** April 2026 -- September 2026
 **Fleet:** 44 engines | ~21,918 presets | V1 launch imminent
@@ -194,7 +194,7 @@ MPC-ready packs exported via Oxport pipeline. Each pack = drum programs + keygro
 ### B09. XPN: Starter Pack (Free)
 - **Pitch:** Gateway drug -- one program from each of the 5 best XPN engines, completely free
 - **Sonic Identity:** Best-of showcase across drum, bass, pad, lead, texture
-- **Target Workflow:** All MPC workflows -- introduces XOlokun to MPC users
+- **Target Workflow:** All MPC workflows -- introduces XOceanus to MPC users
 - **Best Engines:** ONSET (drums), OVERBITE (bass), OPAL (pad), OBRIX (lead), OVERDUB (texture)
 - **Contents:** 5 programs, 2 kits
 - **Effort:** 1 session | **Revenue:** Free (funnel) | **Release:** April 2026 (launch)
@@ -268,7 +268,7 @@ Entangled mood presets showcasing the MegaCouplingMatrix. Each pack demonstrates
 Focused preset packs for specific production genres. Each pack draws from the best-suited engines and includes coupling presets where appropriate.
 
 ### D01. Genre: Lo-Fi Hip Hop
-- **Pitch:** Warm, dusty, imperfect -- the XOlokun lo-fi toolkit
+- **Pitch:** Warm, dusty, imperfect -- the XOceanus lo-fi toolkit
 - **Best Engines:** OBLONG (warm keys, Amber character), OVERDUB (tape saturation + spring), ODYSSEY (analog drift), OVERWORLD (SNES mode for nostalgic textures), OBESE (Mojo warmth)
 - **Contents:** 30 presets -- 10 keys/chords, 8 bass, 6 pads, 4 leads, 2 coupled textures
 - **Effort:** 2-3 sessions | **Revenue:** Free (community magnet) | **Release:** April 2026
@@ -295,7 +295,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 - **Pitch:** The weird fleet -- engines that make sounds nothing else can
 - **Best Engines:** ORACLE (GENDY stochastic), ORGANISM (cellular automata), OUROBOROS (strange attractors), OPTIC (zero-audio visual-to-parameter), OWLFISH (Mixtur-Trautonium), OUTWIT (step CA)
 - **Contents:** 20 presets -- all unique, no genre conventions, pure exploration
-- **Effort:** 2-3 sessions | **Revenue:** Free (establishes XOlokun credibility with experimental community) | **Release:** June 2026
+- **Effort:** 2-3 sessions | **Revenue:** Free (establishes XOceanus credibility with experimental community) | **Release:** June 2026
 
 ### D06. Genre: Drum & Bass
 - **Pitch:** Reese bass, sharp drums, atmospheric pads, and tearing leads for DnB
@@ -362,7 +362,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 - **Effort:** 2-3 sessions/quarter (curation) | **Revenue:** Free | **Release:** July 2026 (first volume)
 
 ### E07. Sound Design Masterclass: Coupling Deep Dive
-- **Pitch:** Live stream or long-form video: building a full track using only XOlokun with 4-engine coupling
+- **Pitch:** Live stream or long-form video: building a full track using only XOceanus with 4-engine coupling
 - **Format:** 90-minute deep dive, screen recording, posted to YouTube + Field Guide
 - **Effort:** 1 session (prep) + 1 session (recording/edit) | **Revenue:** Free (thought leadership) | **Release:** May 2026
 
@@ -395,7 +395,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 - **Effort:** 1 week | **Revenue:** Free | **Release:** V1.5 (August 2026)
 
 ### F04. MPCe Quad-Corner 3D Pad Integration
-- **Pitch:** Map XOlokun macros to MPCe's quad-corner 3D pressure pads -- first-mover advantage
+- **Pitch:** Map XOceanus macros to MPCe's quad-corner 3D pressure pads -- first-mover advantage
 - **What It Does:** Four macros (CHARACTER, MOVEMENT, COUPLING, SPACE) mapped to 4 pad corners with pressure = depth
 - **Why It Matters:** Zero competitors designing for MPCe's 3D pads. 6-12 month window to own this space.
 - **Effort:** 1 week | **Revenue:** Premium (MPCe pack) | **Release:** V1.5 (timing dependent on MPCe availability)
@@ -409,7 +409,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 ### F06. Drift FX Integration (1,353 Standalone Params)
 - **Pitch:** Expose ODYSSEY's full standalone parameter set as an FX processing chain available to all engines
 - **What It Does:** Any engine can route through Drift's analog-modeled filter, VCA, envelope followers
-- **Why It Matters:** 1,353 params from ODYSSEY standalone are currently not exposed in XOlokun (identified gap)
+- **Why It Matters:** 1,353 params from ODYSSEY standalone are currently not exposed in XOceanus (identified gap)
 - **Effort:** 1 week | **Revenue:** Free | **Release:** V1.1 or V1.2
 
 ---
@@ -437,7 +437,7 @@ The Field Guide currently has 14 published posts (~47K words) and 16 planned. Th
 - **Effort:** 2-3 sessions | **Revenue:** Free | **Release:** May 2026
 
 ### G04. "One Person, 42 Engines: The Solo Developer Story"
-- **Pitch:** Behind-the-scenes narrative of building XOlokun alone -- process, tools, Claude partnership, decisions
+- **Pitch:** Behind-the-scenes narrative of building XOceanus alone -- process, tools, Claude partnership, decisions
 - **SEO Target:** "solo developer synth plugin", "one person software company"
 - **Format:** 4,000 words, timeline, honest accounting of scope decisions
 - **Effort:** 1 session | **Revenue:** Free | **Release:** May 2026
@@ -472,8 +472,8 @@ The Field Guide currently has 14 published posts (~47K words) and 16 planned. Th
 - **Format:** 3,500 words, example seance transcript excerpts, blessing/doctrine outcomes
 - **Effort:** 1 session | **Revenue:** Free | **Release:** August 2026
 
-### G10. "From MPC to XOlokun and Back: The XPN Pipeline"
-- **Pitch:** Practical guide for MPC producers -- how to use XOlokun to generate sounds, export XPN, play on hardware
+### G10. "From MPC to XOceanus and Back: The XPN Pipeline"
+- **Pitch:** Practical guide for MPC producers -- how to use XOceanus to generate sounds, export XPN, play on hardware
 - **SEO Target:** "MPC XPN creation", "MPC expansion pack creation", "Akai MPC sound design"
 - **Format:** 3,000 words, step-by-step workflow, Oxport tool showcase
 - **Effort:** 1 session | **Revenue:** Free | **Release:** August 2026
@@ -571,7 +571,7 @@ The Field Guide currently has 14 published posts (~47K words) and 16 planned. Th
 | D09 | Genre: World Fusion | Genre | Patreon |
 | F03 | Preset DNA Search API | Feature | Free |
 | G09 | The Seance Process | Field Guide | Free |
-| G10 | MPC to XOlokun Pipeline | Field Guide | Free |
+| G10 | MPC to XOceanus Pipeline | Field Guide | Free |
 
 ### September 2026
 | ID | Name | Category | Revenue |
@@ -612,7 +612,7 @@ The Field Guide currently has 14 published posts (~47K words) and 16 planned. Th
 2. **OBRIX Brix packs are the content spine.** 14 packs over 6 months keeps the flagship engine in constant conversation.
 3. **XPN packs target a different audience** than the synth community. MPC producers are a separate funnel with separate channels (Elektronauts, MPC Forums, Facebook groups).
 4. **Community challenges create user-generated content** that reduces your content burden and builds investment.
-5. **Field Guide posts are SEO plays.** GENDY, Maqam, cellular automata, Mixtur-Trautonium -- these are low-competition search terms where XOlokun can rank page 1.
+5. **Field Guide posts are SEO plays.** GENDY, Maqam, cellular automata, Mixtur-Trautonium -- these are low-competition search terms where XOceanus can rank page 1.
 6. **Coupling packs are the moat.** No competitor has cross-engine modulation. Every coupling preset is a product demo that cannot be replicated elsewhere.
 7. **The Guru Bin Transcendental Vol 1 announcement at T+14** is the revenue inflection point. Time it to the peak of post-launch goodwill.
 8. **Collections (Kitchen, Travel, Artwork, Photography) are V2 paid expansions.** Nothing in this backlog touches collection scope -- that is a separate product line with its own launch moments.

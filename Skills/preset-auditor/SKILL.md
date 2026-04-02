@@ -22,11 +22,11 @@
 Run the automated validator first:
 
 ```bash
-python3 Tools/validate_presets.py Presets/XOlokun/{mood}/{preset}.xometa
+python3 Tools/validate_presets.py Presets/XOceanus/{mood}/{preset}.xometa
 # Or for a whole mood folder:
-python3 Tools/validate_presets.py Presets/XOlokun/{mood}/
+python3 Tools/validate_presets.py Presets/XOceanus/{mood}/
 # Or fleet-wide:
-python3 Tools/validate_presets.py Presets/XOlokun/
+python3 Tools/validate_presets.py Presets/XOceanus/
 ```
 
 **Schema errors to catch:**
@@ -92,7 +92,7 @@ Preset names must follow:
 - **2–3 words** (e.g., "Coral Architect", "Midnight Surge", "Abyssal Flicker")
 - **Max 30 characters** including spaces
 - **No synth jargon** ("FM pad", "wavetable sweep", "filter envelope" are forbidden)
-- **No duplicates** across the entire `Presets/XOlokun/` tree
+- **No duplicates** across the entire `Presets/XOceanus/` tree
 
 ```bash
 # Check for duplicates fleet-wide

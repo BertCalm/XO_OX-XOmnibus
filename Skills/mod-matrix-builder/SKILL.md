@@ -156,9 +156,9 @@ struct {EnginePrefix}ParamSnapshot {
 
 ---
 
-## Adapter Wiring (XOlokun)
+## Adapter Wiring (XOceanus)
 
-When wrapping in an XOlokun adapter, ensure MIDI expression is forwarded:
+When wrapping in an XOceanus adapter, ensure MIDI expression is forwarded:
 
 ```cpp
 // In adapter's renderBlock(), before calling the standalone processBlock:

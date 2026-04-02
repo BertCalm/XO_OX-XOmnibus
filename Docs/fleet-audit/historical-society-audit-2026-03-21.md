@@ -55,9 +55,9 @@ No files contained the count 43. The jump was directly from 42 to 44.
 ## 2. Missing Sound Design Guide Coverage
 
 ### Current state
-`Docs/xolokun_sound_design_guides.md` covers **38 of 44 engines**. Header updated from "38 of 38" to "38 of 44" with a warning note listing the 6 missing engines.
+`Docs/xoceanus_sound_design_guides.md` covers **38 of 44 engines**. Header updated from "38 of 38" to "38 of 44" with a warning note listing the 6 missing engines.
 
-### Missing entries (no section in `xolokun_sound_design_guides.md`)
+### Missing entries (no section in `xoceanus_sound_design_guides.md`)
 
 | Engine | Added | Has Other Docs? | Priority |
 |--------|-------|-----------------|----------|
@@ -78,7 +78,7 @@ The sound design guide has a structural anomaly: OVERLAP (§27 + §31), OUTWIT (
 | Issue | Files | Detail |
 |-------|-------|--------|
 | Fleet count inconsistency | `fleet-seance-scores-2026-03-20.md` vs. `CLAUDE.md` | Seance doc counted 42 engines while CLAUDE.md (post-OXBOW/OWARE) says 44. Resolved by adding Section 1b to seance doc clarifying the 2-engine gap. |
-| Sound guide self-description | `xolokun_sound_design_guides.md` line 3 | Header said "38 of 38" — inaccurate since ABRIX/ORBWEAVE/OVERTONE/ORGANISM/OXBOW/OWARE are not covered. Fixed to "38 of 44". |
+| Sound guide self-description | `xoceanus_sound_design_guides.md` line 3 | Header said "38 of 38" — inaccurate since ABRIX/ORBWEAVE/OVERTONE/ORGANISM/OXBOW/OWARE are not covered. Fixed to "38 of 44". |
 | CLAUDE.md key files table | `CLAUDE.md` line 165 | Listed "34 of 34 engines" — this count predates the Constellation additions. Fixed to "38 of 44". |
 | Section 4 of fleet seance doc | `fleet-seance-scores-2026-03-20.md` line 226 | States "Every engine in the 42-engine fleet has been through at least one seance" — partially true (OXBOW/OWARE not covered). The broader count note in the header was updated to clarify. |
 | `aquarium-42-engines-2026-03-20.md` title | Title, section header, table header | All three said "42 engines". Fixed to 44 with notes explaining OXBOW/OWARE are not yet placed in the water column. |
@@ -146,7 +146,7 @@ These files reference "42 engines" accurately for their scope:
 
 ## Action Queue (for next session)
 
-1. **Add OBRIX section** to `Docs/xolokun_sound_design_guides.md` (use `fab_five_obrix_*.md` as source material — the most complete engine documentation in the fleet)
+1. **Add OBRIX section** to `Docs/xoceanus_sound_design_guides.md` (use `fab_five_obrix_*.md` as source material — the most complete engine documentation in the fleet)
 2. **Add ORBWEAVE section** to guide (use `seances/orbweave_seance_verdict.md`)
 3. **Add OVERTONE section** to guide (use `seances/overtone_seance_verdict.md`)
 4. **Add ORGANISM section** to guide (use `seances/organism_seance_verdict.md`)

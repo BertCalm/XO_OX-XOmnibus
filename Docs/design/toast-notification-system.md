@@ -2,7 +2,7 @@
 ## XO_OX Design System — FLOW V.4.0 Adoption
 
 **Status**: Specification v1.0
-**Platforms**: Web (Next.js), JUCE (XOlokun), iOS (AUv3/Standalone)
+**Platforms**: Web (Next.js), JUCE (XOceanus), iOS (AUv3/Standalone)
 **Designers**: Ulf (material), Issea (shadow/weight), Xavier (accessibility)
 **DSP Lead**: Lucy (JUCE implementation)
 
@@ -180,7 +180,7 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 
 ## 7. Platform Implementation: JUCE
 
-**Target plugins**: XOlokun, Outshine, Originate
+**Target plugins**: XOceanus, Outshine, Originate
 **Files**: `Source/UI/ToastOverlay.h`, `Source/UI/ToastOverlay.cpp`
 
 ### Architecture

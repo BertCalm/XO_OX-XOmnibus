@@ -44,21 +44,21 @@ The following parameter combinations produce the most aggressive Oblong sounds:
 
 | Preset | File | Target DNA |
 |--------|------|------------|
-| Industrial Clank | `Presets/XOlokun/Flux/Bob_Industrial_Clank.xometa` | B=0.75 W=0.15 M=0.55 D=0.45 S=0.20 **A=0.90** |
-| Fuzz Bass | `Presets/XOlokun/Flux/Bob_Fuzz_Bass.xometa` | B=0.42 W=0.72 M=0.35 D=0.55 S=0.20 **A=0.87** |
-| Glitch Stutter | `Presets/XOlokun/Flux/Bob_Glitch_Stutter.xometa` | B=0.70 W=0.18 M=0.92 D=0.52 S=0.15 **A=0.93** |
-| Acid Drive | `Presets/XOlokun/Flux/Bob_Acid_Drive.xometa` | B=0.62 W=0.38 M=0.80 D=0.40 S=0.18 **A=0.88** |
-| Noise Burst | `Presets/XOlokun/Flux/Bob_Noise_Burst.xometa` | B=0.85 W=0.12 M=0.45 D=0.62 S=0.15 **A=0.95** |
-| Terror Sub | `Presets/XOlokun/Flux/Bob_Terror_Sub.xometa` | B=0.25 W=0.78 M=0.42 D=0.52 S=0.22 **A=0.85** |
+| Industrial Clank | `Presets/XOceanus/Flux/Bob_Industrial_Clank.xometa` | B=0.75 W=0.15 M=0.55 D=0.45 S=0.20 **A=0.90** |
+| Fuzz Bass | `Presets/XOceanus/Flux/Bob_Fuzz_Bass.xometa` | B=0.42 W=0.72 M=0.35 D=0.55 S=0.20 **A=0.87** |
+| Glitch Stutter | `Presets/XOceanus/Flux/Bob_Glitch_Stutter.xometa` | B=0.70 W=0.18 M=0.92 D=0.52 S=0.15 **A=0.93** |
+| Acid Drive | `Presets/XOceanus/Flux/Bob_Acid_Drive.xometa` | B=0.62 W=0.38 M=0.80 D=0.40 S=0.18 **A=0.88** |
+| Noise Burst | `Presets/XOceanus/Flux/Bob_Noise_Burst.xometa` | B=0.85 W=0.12 M=0.45 D=0.62 S=0.15 **A=0.95** |
+| Terror Sub | `Presets/XOceanus/Flux/Bob_Terror_Sub.xometa` | B=0.25 W=0.78 M=0.42 D=0.52 S=0.22 **A=0.85** |
 
 ### Prism Mood
 
 | Preset | File | Target DNA |
 |--------|------|------------|
-| Max Fold | `Presets/XOlokun/Prism/Bob_Max_Fold.xometa` | B=0.88 W=0.20 M=0.65 D=0.60 S=0.25 **A=0.97** |
-| Growl Lead | `Presets/XOlokun/Prism/Bob_Growl_Lead.xometa` | B=0.68 W=0.35 M=0.78 D=0.48 S=0.28 **A=0.86** |
-| Crunch Layer | `Presets/XOlokun/Prism/Bob_Crunch_Layer.xometa` | B=0.72 W=0.32 M=0.50 D=0.88 S=0.30 **A=0.88** |
-| Distorted Pad | `Presets/XOlokun/Prism/Bob_Distorted_Pad.xometa` | B=0.58 W=0.42 M=0.45 D=0.55 S=0.48 **A=0.79** |
+| Max Fold | `Presets/XOceanus/Prism/Bob_Max_Fold.xometa` | B=0.88 W=0.20 M=0.65 D=0.60 S=0.25 **A=0.97** |
+| Growl Lead | `Presets/XOceanus/Prism/Bob_Growl_Lead.xometa` | B=0.68 W=0.35 M=0.78 D=0.48 S=0.28 **A=0.86** |
+| Crunch Layer | `Presets/XOceanus/Prism/Bob_Crunch_Layer.xometa` | B=0.72 W=0.32 M=0.50 D=0.88 S=0.30 **A=0.88** |
+| Distorted Pad | `Presets/XOceanus/Prism/Bob_Distorted_Pad.xometa` | B=0.58 W=0.42 M=0.45 D=0.55 S=0.48 **A=0.79** |
 
 ---
 

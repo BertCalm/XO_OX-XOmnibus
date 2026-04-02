@@ -1,8 +1,8 @@
-# XOlokun Engine Fleet — Complete Inventory (March 28, 2026)
+# XOceanus Engine Fleet — Complete Inventory (March 28, 2026)
 
 ## Executive Summary
 
-**73 total engines registered** across the XO_OX-XOlokun synth platform:
+**73 total engines registered** across the XO_OX-XOceanus synth platform:
 - **4 adapter-based** (Opera, Oxytocin, Outwit, Overlap) — standalone repos integrated via adapters
 - **69 native engines** — implemented directly in Source/Engines/
 - **7 legacy aliases** (Bite/Bob/Drift/Dub/Fat/Morph/Snap) — map to canonical O-prefix names
@@ -47,7 +47,7 @@ Key features:
 
 ---
 
-### Native XOlokun Engines (66) — Alphabetical by Directory
+### Native XOceanus Engines (66) — Alphabetical by Directory
 
 | # | Dir | Canonical ID | Primary File | Size | Presets | Seance | Status |
 |----|-----|-------------|--------------|------|--------:|--------|--------|
@@ -171,7 +171,7 @@ All 6 quads built, seanced, and guru bin retreats complete (2026-03-23):
 
 | Issue | Engines | Impact | Path to Resolution |
 |-------|---------|--------|-------------------|
-| **BROTH Coordinator Not Written** | Overwash, Overworn, Overflow, Overcast | Cross-engine flavor chemistry inert | Write `setBrothSessionAge()` + getter methods in XOlokunProcessor.cpp |
+| **BROTH Coordinator Not Written** | Overwash, Overworn, Overflow, Overcast | Cross-engine flavor chemistry inert | Write `setBrothSessionAge()` + getter methods in XOceanusProcessor.cpp |
 | **P0 DSP Dead Parameters** | Ogre (soil), Ochre (LFO2), Obelisk (3), Opaline (coupling), Octave (2), Oware (3 LFO2 params) | 7 engines fail D004 (Dead Params Are Broken Promises) | Fix per-engine, re-seance |
 | **Osmosis Design-Phase Only** | Osmosis | 1 preset, never seanced | Seance the design (or defer to V1.1) |
 | **Outlook New Engine** | Outlook | 18 presets, never seanced | Formal seance required before shipping |
@@ -235,5 +235,5 @@ All 6 quads built, seanced, and guru bin retreats complete (2026-03-23):
 *Inventory generated 2026-03-28. Ground truth sourced from:*
 - *Source/Engines/ filesystem (73 directories, 502+ files)*
 - *Source/Core/EngineRegistry.h (canonical engine list)*
-- *Presets/XOlokun/ (17,251 presets, JSON-parsed)*
+- *Presets/XOceanus/ (17,251 presets, JSON-parsed)*
 - *Docs/fleet-health-dashboard-2026-03-24.md (seance scores, retreat status)*

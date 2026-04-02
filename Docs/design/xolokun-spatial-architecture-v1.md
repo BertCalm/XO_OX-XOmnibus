@@ -1,4 +1,4 @@
-# XOlokun Spatial Architecture V1
+# XOceanus Spatial Architecture V1
 
 > **Status:** V1 — Post 10-panel review synthesis
 > **Date:** 2026-03-24
@@ -138,7 +138,7 @@ Every issue flagged by 3+ review panels, resolved:
 
 ### 3.2 Modulation System: Coupling IS the Mod Matrix (Comic Book Guy P0-2)
 
-**Resolution:** XOlokun's modulation architecture is fundamentally different from Vital/Serum. State it explicitly:
+**Resolution:** XOceanus's modulation architecture is fundamentally different from Vital/Serum. State it explicitly:
 
 **Per-engine modulation:** Each engine has internal LFOs, envelopes, and mod routing pre-wired by the engine designer. These are exposed as standard parameters (lfoRate, lfoDepth, envAmount, etc.) in the collapsible MOD section. The engine designer decides what modulates what — the user adjusts depth and rate.
 

@@ -3,14 +3,14 @@
 **Invoke with:** `/engine-health-check [engine-name]`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new doctrine addition or engine addition
-**Purpose:** Quick doctrine compliance check for any XOlokun engine — covers D001–D006, coupling quality, and known bugs. Produces a pass/fail table with remediation notes.
+**Purpose:** Quick doctrine compliance check for any XOceanus engine — covers D001–D006, coupling quality, and known bugs. Produces a pass/fail table with remediation notes.
 
 ---
 
 ## When to Use This Skill
 
 Use this skill when:
-- Adding a new engine to XOlokun for the first time
+- Adding a new engine to XOceanus for the first time
 - After any modification to an engine's DSP or adapter
 - Preparing for a release or QA pass
 - An engine is flagged in the seance cross-reference as having violations

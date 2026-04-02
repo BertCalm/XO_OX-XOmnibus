@@ -252,10 +252,10 @@ Maschine touch strips can be assigned to Drama and Voice for smooth formant morp
 | CC30 | `opera_atAmt` | Aftertouch Amount | 0–127 |
 | CC31 | `opera_responseSpeed` | Response Speed | 0=slow, 127=fast |
 | **Coupling Bus** | | | |
-| CC80 | xolokun coupling A→B | Coupling Out | see xolokun map |
-| CC81 | xolokun coupling B→A | Coupling In | see xolokun map |
-| CC82 | xolokun coupling type | Coupling Type | 0–14 |
-| CC83 | xolokun coupling bypass | Bypass | 0=active, 127=bypass |
+| CC80 | xoceanus coupling A→B | Coupling Out | see xoceanus map |
+| CC81 | xoceanus coupling B→A | Coupling In | see xoceanus map |
+| CC82 | xoceanus coupling type | Coupling Type | 0–14 |
+| CC83 | xoceanus coupling bypass | Bypass | 0=active, 127=bypass |
 
 ### Recommended Mod Wheel Routing
 - **Default (engine hardcoded):** CC01 → Drama (Kuramoto K) with `opera_modWheelAmt` depth

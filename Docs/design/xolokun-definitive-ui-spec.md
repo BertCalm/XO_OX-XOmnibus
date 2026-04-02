@@ -1,11 +1,11 @@
-# XOlokun — The Definitive UI/UX Specification
+# XOceanus — The Definitive UI/UX Specification
 
 **Version**: 1.0 — 2026-03-23
 **Authors**: The Visionary (L1-L5+) + UIX Design Studio (Ulf, Issea, Xavier, JUCE-y Lucy)
 **Status**: THE document. Everything before this is history. Everything after this is implementation.
 **Target**: A JUCE developer reads this and builds the entire interface. Every pixel. Every animation. Every interaction.
 
-> "XOlokun — for all."
+> "XOceanus — for all."
 
 ---
 
@@ -30,9 +30,9 @@
 
 Every synthesizer interface ever made has treated the UI as a **control surface** — a collection of knobs, sliders, and screens that manipulate an audio engine running underneath. Vital is gorgeous. Serum is precise. Pigments is friendly. They are all dashboards for sound engines.
 
-XOlokun is not a dashboard.
+XOceanus is not a dashboard.
 
-XOlokun is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 76 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOlokun. The performer enters it.
+XOceanus is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 76 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOceanus. The performer enters it.
 
 This is the fundamental inversion that no synthesizer has attempted: **the mythology IS the interface**.
 
@@ -40,7 +40,7 @@ This is the fundamental inversion that no synthesizer has attempted: **the mytho
 
 **Principle 1: The Instrument Teaches You How to Play It**
 
-The XOuija Planchette is not a cursor. It is a divining lens. When you move over the performance surface, the surface itself communicates where the interesting sounds live. High parameter sensitivity regions glow brighter. Dead zones dim. The instrument is literally guiding the performer toward expression. No other synthesizer does this. No other instrument has EVER done this — not even acoustic ones. A violin does not glow where the harmonics are sweetest. XOlokun does.
+The XOuija Planchette is not a cursor. It is a divining lens. When you move over the performance surface, the surface itself communicates where the interesting sounds live. High parameter sensitivity regions glow brighter. Dead zones dim. The instrument is literally guiding the performer toward expression. No other synthesizer does this. No other instrument has EVER done this — not even acoustic ones. A violin does not glow where the harmonics are sweetest. XOceanus does.
 
 Implementation: Per-preset parameter sensitivity maps cached as 64x64 textures. Precomputed on preset load (cost: ~200 floats, <1ms). Rendered as a background luminance layer at 8% opacity on XOuija surface.
 
@@ -51,7 +51,7 @@ Borrowed from maritime bridge design (OpenBridge 6.0 reference): in a Dark Cockp
 - The control that is currently moving
 - The coupling arc that is currently modulating
 
-Everything else exists at 15-20% opacity — present but silent. This is the opposite of every synth that shows 200 knobs at full brightness. XOlokun shows you exactly what matters RIGHT NOW.
+Everything else exists at 15-20% opacity — present but silent. This is the opposite of every synth that shows 200 knobs at full brightness. XOceanus shows you exactly what matters RIGHT NOW.
 
 This is not minimalism. Every control is present. This is **attentional design** — the interface respects the performer's cognitive bandwidth.
 
@@ -63,15 +63,15 @@ Default opacity: 5-8% (subconscious influence). User-adjustable to 30% (delibera
 
 **Principle 4: Sound on First Launch**
 
-When XOlokun opens for the first time, it is already making sound. Not a sustained drone — a gentle, evolving pad preset (OXBOW "First Breath") that responds to mouse hover over ANY control. Moving the cursor over a knob produces a subtle pitch shift. Moving over the coupling strip produces a harmonic swell. The plugin is alive before the performer touches a single control.
+When XOceanus opens for the first time, it is already making sound. Not a sustained drone — a gentle, evolving pad preset (OXBOW "First Breath") that responds to mouse hover over ANY control. Moving the cursor over a knob produces a subtle pitch shift. Moving over the coupling strip produces a harmonic swell. The plugin is alive before the performer touches a single control.
 
-This is the 12-year-old test: a child opens the plugin and hears something beautiful within 0.5 seconds. They move their mouse and it responds. They are hooked before they understand anything about synthesis. Every synth competitor shows a silent init patch and a wall of controls. XOlokun greets you with music.
+This is the 12-year-old test: a child opens the plugin and hears something beautiful within 0.5 seconds. They move their mouse and it responds. They are hooked before they understand anything about synthesis. Every synth competitor shows a silent init patch and a wall of controls. XOceanus greets you with music.
 
 **Principle 5: 73 Colors Are 73 Languages**
 
 Every engine has a unique accent color. This is not decoration — it is a complete visual language system. When OPERA (Aria Gold `#D4AF37`) is active, the macro knob arcs, the coupling strip, the PlaySurface trails, the preset browser highlights, and the knob indicators ALL shift to Aria Gold. When you switch to OBRIX (Reef Jade `#1E8B7E`), the entire interface shifts. The color IS the engine's voice.
 
-No other synthesizer uses a 76-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOlokun's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
+No other synthesizer uses a 76-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOceanus's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
 
 ### 1.1.2 The Emotional Arc
 
@@ -94,7 +94,7 @@ Transition: 400ms ease-in-out. All non-active controls dim to 20% opacity. Activ
 
 ## 1.2 The XOuija Planchette
 
-The Planchette is the single most distinctive UI element in XOlokun. It is a translucent lens approximately 80x60pt that floats over the XOuija performance surface. It is simultaneously:
+The Planchette is the single most distinctive UI element in XOceanus. It is a translucent lens approximately 80x60pt that floats over the XOuija performance surface. It is simultaneously:
 - A note display (shows current pitch, octave, Hz)
 - An engine identifier (border tinted to engine accent color)
 - A performance indicator (velocity, expression values)
@@ -171,7 +171,7 @@ Font: Note name = Space Grotesk SemiBold 13pt. Hz value = JetBrains Mono Regular
 
 ## 1.3 The Tide Controller
 
-A novel expression controller unique to XOlokun. A circular water-surface simulation (120pt diameter) that responds to touch with actual fluid dynamics.
+A novel expression controller unique to XOceanus. A circular water-surface simulation (120pt diameter) that responds to touch with actual fluid dynamics.
 
 **Physics**: 2D wave equation on a 16x16 grid:
 ```cpp
@@ -438,7 +438,7 @@ The engine panel is the "exhibition" inside the gallery. Each engine transforms 
 
 ### 2.4.3 Progressive Disclosure Control Layout
 
-The Fab Five mandate: 16-24 controls visible at any time. XOlokun achieves this through three disclosure levels:
+The Fab Five mandate: 16-24 controls visible at any time. XOceanus achieves this through three disclosure levels:
 
 **Level 1 — Macro View (default, 4 controls visible)**:
 - 4 macro knobs: CHARACTER, MOVEMENT, COUPLING, SPACE
@@ -779,7 +779,7 @@ Dark Cockpit is the system that manages attentional focus. It is NOT a "dark mod
 
 ### 2.9.1 Behavior
 
-When XOlokun loads for the first time (detected via `localStorage` flag):
+When XOceanus loads for the first time (detected via `localStorage` flag):
 1. Engine slot 1 loads OXBOW with preset "First Breath" (a gentle, evolving pad)
 2. The preset begins playing automatically at velocity 0.4
 3. Mouse hover over ANY control produces subtle parameter modulation:
@@ -787,11 +787,11 @@ When XOlokun loads for the first time (detected via `localStorage` flag):
    - Hover over coupling strip: coupling amount increases by 0.1 temporarily
    - Hover over PlaySurface: gentle pitch shift based on cursor X position
 4. After 30 seconds, the automatic sound fades to silence over 3 seconds
-5. A toast notification appears: "Welcome to XOlokun. Touch anything." (Inter Regular 13pt, XO Gold text)
+5. A toast notification appears: "Welcome to XOceanus. Touch anything." (Inter Regular 13pt, XO Gold text)
 
 ### 2.9.2 Subsequent Launches
 
-On all subsequent launches, XOlokun loads silently with the last-used preset and engine configuration. The "hover modulation" feature is OFF by default but can be re-enabled in Settings (toggle: "Interactive Hover").
+On all subsequent launches, XOceanus loads silently with the last-used preset and engine configuration. The "hover modulation" feature is OFF by default but can be re-enabled in Settings (toggle: "Interactive Hover").
 
 ---
 
@@ -804,7 +804,7 @@ On all subsequent launches, XOlokun loads silently with the last-used preset and
 ```
 +=========================================================================+
 |  NAV BAR (44pt — iOS standard)                                          |
-|  [Back] [XOlokun Logo 28x28] [Engine Name] [Preset ◄ ►] [M1 M2 M3 M4]|
+|  [Back] [XOceanus Logo 28x28] [Engine Name] [Preset ◄ ►] [M1 M2 M3 M4]|
 +=========================================================================+
 |                                                                          |
 |  FULL-SCREEN PLAY SURFACE                                               |
@@ -873,7 +873,7 @@ On all subsequent launches, XOlokun loads silently with the last-used preset and
 
 On iPad, the XOuija is the star. The entire screen becomes a continuous instrument surface. The Planchette is the performer's bow. The ocean gradient is the stage. The bioluminescent trails are the performer's signature.
 
-This is the "XOlokun Pocket" experience that makes a tween fall in love with synthesis: open the app, see a beautiful ocean surface, touch it, and hear something magical. Move your fingers and the sound responds. See trails of light follow your gestures. This is the 12-year-old test, passed.
+This is the "XOceanus Pocket" experience that makes a tween fall in love with synthesis: open the app, see a beautiful ocean surface, touch it, and hear something magical. Move your fingers and the sound responds. See trails of light follow your gestures. This is the 12-year-old test, passed.
 
 ---
 
@@ -1111,7 +1111,7 @@ bool reducedMotion = [[NSWorkspace sharedWorkspace] accessibilityDisplayShouldRe
 // iOS
 bool reducedMotion = UIAccessibility.isReduceMotionEnabled;
 
-// Fallback: user preference in XOlokun settings
+// Fallback: user preference in XOceanus settings
 bool reducedMotion = userPrefs.getBoolValue("reducedMotion", false);
 ```
 
@@ -1160,7 +1160,7 @@ The silhouette is precomputed per engine (not per preset) and rendered as a fill
 
 ### 5.1.3 Breathing Animation Formula
 
-All "living" animations in XOlokun use the same organic breathing function (from Gemini research):
+All "living" animations in XOceanus use the same organic breathing function (from Gemini research):
 
 ```
 f(t) = (e^sin(t) - 1/e) / (e - 1/e)
@@ -1182,13 +1182,13 @@ This produces a value that oscillates between 0 and 1 with a natural, organic fe
 
 Current state of the art: presets are loaded discretely. You click "Velvet Morning" and all parameters jump. Some synths (Pigments, Massive X) offer A/B morphing between two presets.
 
-XOlokun does something no software has attempted: **Spatial Preset Navigation**.
+XOceanus does something no software has attempted: **Spatial Preset Navigation**.
 
 The preset browser is not a list — it is a territory. All 17,250+ presets exist as points in 6D Sonic DNA space, projected onto a 2D map (PCA or t-SNE dimensionality reduction). The map fills the sidebar's PRESET tab.
 
-The performer does not SELECT a preset. They NAVIGATE to a location on the map. As they move, XOlokun continuously interpolates between the nearest presets. Every point on the map produces a unique sound — not just the points where presets live, but the SPACES BETWEEN presets.
+The performer does not SELECT a preset. They NAVIGATE to a location on the map. As they move, XOceanus continuously interpolates between the nearest presets. Every point on the map produces a unique sound — not just the points where presets live, but the SPACES BETWEEN presets.
 
-This means XOlokun has not 17,250 presets but INFINITE sounds. The preset map is a continuous sound landscape where every position is a valid, musical sound.
+This means XOceanus has not 17,250 presets but INFINITE sounds. The preset map is a continuous sound landscape where every position is a valid, musical sound.
 
 **Implementation**:
 - Presets embedded as 6D vectors (already computed — Sonic DNA)
@@ -1205,7 +1205,7 @@ This is not theoretical — it is immediately implementable with existing data a
 
 ### 5.2.2 The Living Manual — Embedded, Contextual, Beautiful
 
-No synthesizer has ever made its documentation beautiful enough that users WANT to read it. XOlokun embeds the documentation INTO the interface.
+No synthesizer has ever made its documentation beautiful enough that users WANT to read it. XOceanus embeds the documentation INTO the interface.
 
 When a performer hovers over ANY control for 2 seconds, a gentle tooltip appears — not a grey rectangle with text, but a contextual miniature of the feature's documentation. For a filter knob, it shows:
 - The filter curve visualization (live, responding to the current cutoff value)
@@ -1219,7 +1219,7 @@ This tooltip is glass-morphism: blurred background, engine accent border, 12pt c
 
 ### 5.2.3 Emotion-Responsive UI — The Interface Reads the Music
 
-The most ambitious proposal: XOlokun's interface subtly adapts to the EMOTION of the sound being produced.
+The most ambitious proposal: XOceanus's interface subtly adapts to the EMOTION of the sound being produced.
 
 When the audio output is analyzed in real-time (spectral centroid, RMS, spectral flatness — data that already exists for the OpticVisualizer), the UI environment shifts:
 
@@ -1243,7 +1243,7 @@ This is embodied cognition applied to software design. It has never been attempt
 
 ### 5.2.4 The Constellation View — Seeing All 76 at Once
 
-Every synth forces you to look at one engine at a time. XOlokun has 76 engines. What if you could see ALL of them?
+Every synth forces you to look at one engine at a time. XOceanus has 76 engines. What if you could see ALL of them?
 
 The Constellation View is a full-window overlay (triggered by a button in the header or Cmd+Shift+A) that shows all 76 engines as stars in a constellation map. The map layout follows the water column (surface engines at top, abyss engines at bottom). Each star:
 - Size: proportional to preset count (popular engines are larger stars)
@@ -1253,7 +1253,7 @@ The Constellation View is a full-window overlay (triggered by a button in the he
 
 The performer can click any star to load that engine. They can drag between two stars to create a coupling connection. The constellation IS the coupling matrix, rendered as a star chart.
 
-This gives the performer a god's-eye view of the entire XOlokun universe. It is both navigational (find and load engines) and creative (design coupling networks by connecting stars).
+This gives the performer a god's-eye view of the entire XOceanus universe. It is both navigational (find and load engines) and creative (design coupling networks by connecting stars).
 
 No synthesizer has ever shown its entire capability space in a single, beautiful, interactive view.
 
@@ -1466,7 +1466,7 @@ This table maps every UI element to its source purchased asset.
 ## D.1 Component Hierarchy
 
 ```
-XOlokunEditor : public juce::AudioProcessorEditor
+XOceanusEditor : public juce::AudioProcessorEditor
   |
   +-- HeaderBar : public juce::Component
   |     +-- LogoComponent (SVG Drawable)
@@ -1520,7 +1520,7 @@ XOlokunEditor : public juce::AudioProcessorEditor
 ## D.2 LookAndFeel Architecture
 
 ```cpp
-class XOlokunLookAndFeel : public juce::LookAndFeel_V4
+class XOceanusLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
     // === KNOBS ===
@@ -1571,7 +1571,7 @@ private:
 ## D.3 OpenGL Context Setup
 
 ```cpp
-// In XOlokunEditor constructor:
+// In XOceanusEditor constructor:
 openGLContext.setComponentPaintingEnabled(true);
 openGLContext.setContinuousRepainting(false); // We control repaint timing
 openGLContext.attachTo(*this);
@@ -1636,7 +1636,7 @@ if (size1 > 0) {
 ## D.6 Resize Strategy
 
 ```cpp
-void XOlokunEditor::resized()
+void XOceanusEditor::resized()
 {
     auto bounds = getLocalBounds();
     int w = bounds.getWidth();
@@ -1671,7 +1671,7 @@ void XOlokunEditor::resized()
 
 # APPENDIX E: ANIMATION TIMING BIBLE
 
-Every animation in XOlokun is specified here. No animation exists outside this list. If it is not here, it does not animate.
+Every animation in XOceanus is specified here. No animation exists outside this list. If it is not here, it does not animate.
 
 ## E.1 UI Transitions
 
@@ -1741,7 +1741,7 @@ All spring physics: `velocity += (target - current) * stiffness; velocity *= dam
 
 | Phase | Components | Effort | Impact |
 |-------|-----------|--------|--------|
-| Phase 0 | `XOlokunLookAndFeel` (knob filmstrips, fonts, colors) | 2 days | Foundation for everything |
+| Phase 0 | `XOceanusLookAndFeel` (knob filmstrips, fonts, colors) | 2 days | Foundation for everything |
 | Phase 1 | Header bar + Status bar | 2 days | Frame establishes identity |
 | Phase 2 | Engine panel (Level 1 macro view) | 2 days | Sound manipulation works |
 | Phase 3 | Sidebar (Preset tab only) | 3 days | Preset browsing works |
@@ -1767,8 +1767,8 @@ All spring physics: `velocity += (target - current) * stiffness; velocity *= dam
 
 ---
 
-*This document supersedes all previous UI specifications for XOlokun. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 76-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
+*This document supersedes all previous UI specifications for XOceanus. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 76-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
 
 *The interface is the instrument. The instrument is the interface. The mythology is the medium.*
 
-*XOlokun — for all.*
+*XOceanus — for all.*

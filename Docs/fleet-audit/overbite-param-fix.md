@@ -9,7 +9,7 @@
 
 ## Summary
 
-The OVERBITE engine accumulated 4 generations of parameter naming across its life as a standalone plugin and XOlokun engine. The `applyPreset()` loader silently drops any unrecognized parameter ID, meaning all legacy-named params were inert — presets loaded with incorrect parameter values (defaults instead of authored values).
+The OVERBITE engine accumulated 4 generations of parameter naming across its life as a standalone plugin and XOceanus engine. The `applyPreset()` loader silently drops any unrecognized parameter ID, meaning all legacy-named params were inert — presets loaded with incorrect parameter values (defaults instead of authored values).
 
 | Metric | Count |
 |--------|-------|
@@ -25,20 +25,20 @@ The OVERBITE engine accumulated 4 generations of parameter naming across its lif
 ## Parameter Generations Found
 
 ### Gen 1 — Completely Unprefixed (very early prototypes)
-No `poss_` prefix at all. These params never loaded in XOlokun regardless.
+No `poss_` prefix at all. These params never loaded in XOceanus regardless.
 - `amp_attack`, `amp_release`, `filter_cutoff`, `filter_resonance`, `output_level`
 - `reverb_mix`, `reverb_size`, `density`, `coupling_level`, `drive`
 - `macro_character`, `macro_coupling`, `macro_movement`, `macro_space`
 - `level`, `pan`, `bite`, `coupling`, `resonance`, `space`
 
-### Gen 2 — Standalone Concept Params (pre-XOlokun integration)
+### Gen 2 — Standalone Concept Params (pre-XOceanus integration)
 Had `poss_` prefix but different param naming scheme. No canonical equivalents.
 - `poss_aggression`, `poss_brightness`, `poss_warmth`
 - `poss_couplingBus`, `poss_couplingLevel`, `poss_macroCoupling`
 - `poss_attack`, `poss_release`
 - `poss_biteDepth`, `poss_fangAttack`, `poss_snapRelease`
 
-### Gen 3 — First XOlokun Integration (shortened names)
+### Gen 3 — First XOceanus Integration (shortened names)
 Had `poss_` prefix, abbreviated naming that didn't match APVTS IDs.
 Canonical equivalents exist — these are the mappable renames.
 
@@ -134,7 +134,7 @@ adding a `resolveBiteParamAlias()` function to `Source/Core/PresetManager.h` wit
 rename map above, so that any future legacy presets (e.g., user community files) also load
 correctly at runtime — not just files cleaned up by this migration script.
 
-See the `applyPreset()` function in `Source/XOlokunProcessor.cpp` lines 1440-1448 for
+See the `applyPreset()` function in `Source/XOceanusProcessor.cpp` lines 1440-1448 for
 the OddfeliX integration pattern to follow.
 
 ---

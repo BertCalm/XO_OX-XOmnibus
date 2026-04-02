@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Space Between the Engines — Coupling System | XO_OX Field Guide</title>
-<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOlokun's 15-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
+<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOceanus's 15-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -589,14 +589,14 @@ footer {
 }
 </style>
 <meta property="og:title" content="The Space Between the Engines — XO_OX Field Guide">
-<meta property="og:description" content="A complete walkthrough of XOlokun's 15-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
+<meta property="og:description" content="A complete walkthrough of XOceanus's 15-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
 <meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Space Between the Engines — XO_OX Field Guide">
 <meta name="twitter:description" content="15 coupling types. Any engine can drive any other. Here is how.">
 <meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
-<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="XOceanus Signal" href="feed.xml">
 <link rel="stylesheet" href="/design-tokens.css">
 </head>
 <body>
@@ -626,7 +626,7 @@ footer {
   <div class="article-hero-label">Field Guide &mdash; Architecture 10</div>
   <h1>The Space Between <em>the Engines</em></h1>
   <p class="article-hero-sub">
-    XOlokun has 76 synthesis engines. The interesting sounds don't live inside them. They live in the connections. This is the complete guide to the MegaCouplingMatrix &mdash; all 15 coupling types, how to wire them, and why the seam between two engines is where the music is.
+    XOceanus has 76 synthesis engines. The interesting sounds don't live inside them. They live in the connections. This is the complete guide to the MegaCouplingMatrix &mdash; all 15 coupling types, how to wire them, and why the seam between two engines is where the music is.
   </p>
   <div class="article-meta">
     <div class="article-meta-item">System<span style="color: var(--coupling);">MegaCouplingMatrix &mdash; Cross-Engine Coupling</span></div>
@@ -640,7 +640,7 @@ footer {
 <article class="article" id="article-content">
 
 <p class="reveal">
-Load any two engines into XOlokun slots 1 and 2. Play a note. You will hear two sounds happening simultaneously &mdash; which is to say, you will hear what any two plugins running side by side in a DAW would produce. Two sounds. Two independent instruments. A mix. This is not what XOlokun is for.
+Load any two engines into XOceanus slots 1 and 2. Play a note. You will hear two sounds happening simultaneously &mdash; which is to say, you will hear what any two plugins running side by side in a DAW would produce. Two sounds. Two independent instruments. A mix. This is not what XOceanus is for.
 </p>
 
 <p class="reveal">
@@ -668,7 +668,7 @@ The difference is the grain of the signal. A sidechain compressor responds to an
 </p>
 
 <p class="reveal">
-XOlokun coupling operates at two granularities. Control-rate coupling updates every block (same as sidechain). But audio-rate coupling &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong> &mdash; operates sample by sample. Engine 1's audio output is passed directly into Engine 2's synthesis process at the sample level. At 48kHz, that is 48,000 interactions per second. The signal from Engine 1 isn't modulating Engine 2's parameters. It <em>is</em> Engine 2's parameters, in real time, at audio rate.
+XOceanus coupling operates at two granularities. Control-rate coupling updates every block (same as sidechain). But audio-rate coupling &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong> &mdash; operates sample by sample. Engine 1's audio output is passed directly into Engine 2's synthesis process at the sample level. At 48kHz, that is 48,000 interactions per second. The signal from Engine 1 isn't modulating Engine 2's parameters. It <em>is</em> Engine 2's parameters, in real time, at audio rate.
 </p>
 
 <p class="reveal">
@@ -684,7 +684,7 @@ The MegaCouplingMatrix operates on a pattern called the <strong>Normalled Matria
 </p>
 
 <p class="reveal">
-In XOlokun, every engine pairing has a set of default routes &mdash; pre-wired connections that engage when you load two engines together and represent the designers' best intuition about how those specific engines like to interact. Load ONSET in Slot 1 and OPERA in Slot 2, and the normalled connection is <strong>AmpToFilter</strong>: ONSET's percussive transient envelope drives OPERA's filter cutoff. Load ORBWEAVE and OXBOW, and the normalled connection is <strong>KnotTopology</strong>, because those two engines were designed to entangle. The defaults are meant to produce an interesting sound before you patch anything.
+In XOceanus, every engine pairing has a set of default routes &mdash; pre-wired connections that engage when you load two engines together and represent the designers' best intuition about how those specific engines like to interact. Load ONSET in Slot 1 and OPERA in Slot 2, and the normalled connection is <strong>AmpToFilter</strong>: ONSET's percussive transient envelope drives OPERA's filter cutoff. Load ORBWEAVE and OXBOW, and the normalled connection is <strong>KnotTopology</strong>, because those two engines were designed to entangle. The defaults are meant to produce an interesting sound before you patch anything.
 </p>
 
 <p class="reveal">
@@ -973,7 +973,7 @@ Above 0.7, you are in territory where the driven engine is no longer itself. Eng
 <h2 class="reveal">The XVC Exception</h2>
 
 <p class="reveal">
-There is a fifteenth coupling behavior in XOlokun that does not appear in the MegaCouplingMatrix, because it doesn't live between engines. It lives inside one.
+There is a fifteenth coupling behavior in XOceanus that does not appear in the MegaCouplingMatrix, because it doesn't live between engines. It lives inside one.
 </p>
 
 <p class="reveal">
@@ -993,7 +993,7 @@ XVC is not in the CouplingType enum because it is implemented entirely within ON
 <h2 class="reveal">Coupling Is the Instrument</h2>
 
 <p class="reveal">
-There is a convenient way to think about XOlokun, and it is incomplete. The convenient view is: 76 engines, pick four, mix together, enjoy. The engines are the instrument and the coupling is a modulation bonus.
+There is a convenient way to think about XOceanus, and it is incomplete. The convenient view is: 76 engines, pick four, mix together, enjoy. The engines are the instrument and the coupling is a modulation bonus.
 </p>
 
 <p class="reveal">
@@ -1013,7 +1013,7 @@ This is the coupling system's actual argument: it isn't that you can connect Eng
 </p>
 
 <p class="reveal">
-The aquarium metaphor that runs through XOlokun's design is not just aesthetic. An ecosystem is not a collection of animals. It is the sum of the relationships between them. The pistol shrimp and the gobby fish share a burrow; the shrimp digs and the fish watches for predators. Neither behavior is fully intelligible without the other. In the aquarium, engines are organisms. The coupling matrix is the ecology. The sounds that matter are the ones that emerge from the relationship.
+The aquarium metaphor that runs through XOceanus's design is not just aesthetic. An ecosystem is not a collection of animals. It is the sum of the relationships between them. The pistol shrimp and the gobby fish share a burrow; the shrimp digs and the fish watches for predators. Neither behavior is fully intelligible without the other. In the aquarium, engines are organisms. The coupling matrix is the ecology. The sounds that matter are the ones that emerge from the relationship.
 </p>
 
 <div class="article-divider reveal"></div>
@@ -1057,13 +1057,13 @@ The aquarium metaphor that runs through XOlokun's design is not just aesthetic. 
       color: var(--cream);
       line-height: 1.7;
       margin-bottom: 2rem;
-    ">XOlokun is free, open-source, and built for people who listen closely. If something in this guide opened a door, come through it.</p>
+    ">XOceanus is free, open-source, and built for people who listen closely. If something in this guide opened a door, come through it.</p>
     <div style="
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     ">
-      <a href="https://github.com/BertCalm/XO_OX-XOlokun" style="
+      <a href="https://github.com/BertCalm/XO_OX-XOceanus" style="
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -1077,8 +1077,8 @@ The aquarium metaphor that runs through XOlokun's design is not just aesthetic. 
         text-decoration: none;
         border-radius: 2px;
         transition: opacity 0.2s;
-      " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Download XOlokun</a>
-      <a href="https://discord.gg/xolokun" style="
+      " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Download XOceanus</a>
+      <a href="https://discord.gg/xoceanus" style="
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -1119,7 +1119,7 @@ The aquarium metaphor that runs through XOlokun's design is not just aesthetic. 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="footer">
   <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
-  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOceanus">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>

@@ -1,12 +1,12 @@
-# Contributing to XOlokun
+# Contributing to XOceanus
 
-XOlokun is free because it has to be. MIT-licensed, no subscriptions, no gatekeeping. That promise extends to who can contribute. If you have something to add — a bug fix, a preset, an engine concept, a documentation correction — this is your instrument too.
+XOceanus is free because it has to be. MIT-licensed, no subscriptions, no gatekeeping. That promise extends to who can contribute. If you have something to add — a bug fix, a preset, an engine concept, a documentation correction — this is your instrument too.
 
 Here's how the deep works.
 
 ## Environment Setup
 
-XOlokun requires:
+XOceanus requires:
 - **CMake** 3.22+
 - **Ninja** build system
 - **Xcode Command Line Tools** (macOS) or **GCC/Clang** (Linux) — C++17 required
@@ -23,7 +23,7 @@ cmake --build build
 ### Validate (macOS)
 
 ```bash
-auval -v aumu Xolk XoOx
+auval -v aumu Xocn XoOx
 ```
 
 If `auval` passes, the engine is trustworthy. If it fails, don't ship it.
@@ -48,7 +48,7 @@ Most tools run without any of these installed — they degrade gracefully when o
 - **Engines** (`Source/Engines/`): Each engine implements the `SynthEngine` interface. DSP lives inline in `.h` headers — portable, testable, no `.cpp` bloat.
 - **Core** (`Source/Core/`): Engine registry, MegaCouplingMatrix, preset manager.
 - **DSP** (`Source/DSP/`): Shared DSP library — StandardLFO, FilterEnvelope, PitchBendUtil, VoiceAllocator, GlideProcessor, ParameterSmoother.
-- **Presets** (`Presets/XOlokun/`): `.xometa` JSON files organized by mood. 15 moods. ~17,250 presets.
+- **Presets** (`Presets/XOceanus/`): `.xometa` JSON files organized by mood. 15 moods. ~17,250 presets.
 - **Tools** (`Tools/`): Python utilities for preset management and XPN export.
 - **Scripture** (`scripture/`): The Book of Bin — accumulated DSP wisdom and ghost council verdicts.
 
@@ -90,7 +90,7 @@ Additional conventions:
 2. Create a feature branch from `main`
 3. Make your changes
 4. Ensure `cmake --build build` passes with no errors
-5. Run `auval -v aumu Xolk XoOx` if you touched audio code
+5. Run `auval -v aumu Xocn XoOx` if you touched audio code
 6. Open a Pull Request describing:
    - What you changed and why
    - Which engines are affected
@@ -102,13 +102,13 @@ Additional conventions:
 **Bug fixes** with clear reproduction steps are always welcome. The three categories most likely to contain bugs: race conditions in coupling routes, missing denormal guards in filter feedback paths, and Python tools that use string matching against stale engine name lists.
 
 **Preset contributions** are product. Follow the format:
-- `.xometa` JSON (see `Docs/xolokun_master_specification.md` for schema)
+- `.xometa` JSON (see `Docs/xoceanus_master_specification.md` for schema)
 - 2-3 words, evocative, max 30 characters
 - No jargon. No duplicates. No filler.
 - 6D Sonic DNA filled in: brightness, warmth, movement, density, space, aggression
 - All four macros must produce audible change
 
-**Engine contributions** start as standalone instruments, not as XOlokun integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/xomnibus_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
+**Engine contributions** start as standalone instruments, not as XOceanus integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/xomnibus_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
 
 **Documentation** — if something confused you, fix it. The Field Guide, sound design guides, and scripture benefit from perspectives other than the original author's.
 
@@ -122,8 +122,8 @@ If your contribution touches coupling:
 
 ## Response Time
 
-XOlokun is a solo-developer project. PRs are reviewed on a best-effort basis — typically within 1-2 weeks. Please be patient and responsive to feedback. The depth rewards patience.
+XOceanus is a solo-developer project. PRs are reviewed on a best-effort basis — typically within 1-2 weeks. Please be patient and responsive to feedback. The depth rewards patience.
 
 ---
 
-*"XOlokun — for all."*
+*"XOceanus — for all."*

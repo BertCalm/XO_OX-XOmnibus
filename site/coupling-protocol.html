@@ -518,7 +518,7 @@ footer {
     <div class="article-meta-item">Version<span style="color: var(--coupling);">0.1 — Public Draft</span></div>
     <div class="article-meta-item">Published<span>2026-03-22</span></div>
     <div class="article-meta-item">Public Types<span>3 (Sympathetic / Complementary / Responsive)</span></div>
-    <div class="article-meta-item">Reference Implementation<span>XOlokun — 15 types</span></div>
+    <div class="article-meta-item">Reference Implementation<span>XOceanus — 15 types</span></div>
   </div>
 </header>
 
@@ -564,7 +564,7 @@ Where MIDI describes <em>what</em> to play and audio busses carry <em>what was p
 </blockquote>
 
 <p class="reveal">
-Version 0.1 of this specification defines three public coupling types, a binary message format for transmitting coupling data between engines, and a three-tier compliance model for implementors. The reference implementation is <strong>XOlokun</strong> &mdash; a free open-source multi-engine synthesizer by XO_OX Designs implementing all three public types plus eleven extended types (14 total).
+Version 0.1 of this specification defines three public coupling types, a binary message format for transmitting coupling data between engines, and a three-tier compliance model for implementors. The reference implementation is <strong>XOceanus</strong> &mdash; a free open-source multi-engine synthesizer by XO_OX Designs implementing all three public types plus eleven extended types (14 total).
 </p>
 
 <div class="article-divider reveal"></div>
@@ -851,7 +851,7 @@ COUPLING_COMPLIANCE: Full-v0.1   <span class="c-comment">// all 3 types, listen 
 <h2 class="reveal" id="reference">Reference Implementation</h2>
 
 <p class="reveal">
-<strong>XOlokun</strong> is the reference implementation of this protocol. All 76 engines are Level 3 compliant for the three public types. The C++ contract lives in <code>Source/Core/SynthEngine.h</code>:
+<strong>XOceanus</strong> is the reference implementation of this protocol. All 76 engines are Level 3 compliant for the three public types. The C++ contract lives in <code>Source/Core/SynthEngine.h</code>:
 </p>
 
 <div class="code-block reveal"><span class="c-comment">// Speaker interface — emit coupling signal</span>
@@ -864,12 +864,12 @@ COUPLING_COMPLIANCE: Full-v0.1   <span class="c-comment">// all 3 types, listen 
                                <span class="c-type">int</span> numSamples) = <span class="c-num">0</span>;</div>
 
 <p class="reveal">
-XOlokun implements 15 coupling types: the 3 public types defined here plus 12 extended types. The three public types map to underlying XOlokun mechanisms as follows:
+XOceanus implements 15 coupling types: the 3 public types defined here plus 12 extended types. The three public types map to underlying XOceanus mechanisms as follows:
 </p>
 
 <div style="overflow-x:auto;" class="reveal">
   <table class="spec-table">
-    <thead><tr><th>Public Type</th><th>XOlokun Mechanism</th><th>Description</th></tr></thead>
+    <thead><tr><th>Public Type</th><th>XOceanus Mechanism</th><th>Description</th></tr></thead>
     <tbody>
       <tr><td>0x01 Sympathetic</td><td>PitchToPitch + FilterToFilter</td><td>Applied bilaterally</td></tr>
       <tr><td>0x02 Complementary</td><td>AmpToChoke + RhythmToBlend</td><td>Applied inversely</td></tr>
@@ -927,7 +927,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
 
 <div class="faq-item reveal">
   <div class="faq-q">Can coupling routes be bidirectional?</div>
-  <div class="faq-a">Yes &mdash; via two separate routes, one from A to B and one from B to A, each with its own type and amount. The XOlokun <code>KnotTopology</code> extended type implements a special case where bidirectionality is architecturally enforced: neither engine can be decoupled without destroying both routes.</div>
+  <div class="faq-a">Yes &mdash; via two separate routes, one from A to B and one from B to A, each with its own type and amount. The XOceanus <code>KnotTopology</code> extended type implements a special case where bidirectionality is architecturally enforced: neither engine can be decoupled without destroying both routes.</div>
 </div>
 
 <div class="faq-item reveal">
@@ -937,7 +937,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
 
 <div class="faq-item reveal">
   <div class="faq-q">Is this open source?</div>
-  <div class="faq-a">The protocol specification is published under CC BY 4.0. The reference implementation (XOlokun) is open source under its own repository license. Third parties may implement the protocol without restriction.</div>
+  <div class="faq-a">The protocol specification is published under CC BY 4.0. The reference implementation (XOceanus) is open source under its own repository license. Third parties may implement the protocol without restriction.</div>
 </div>
 
 <div class="faq-item reveal">
@@ -956,7 +956,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
       <tr>
         <td>0.1</td>
         <td style="color:var(--text-dim); font-family:inherit; font-size:0.88rem; white-space:nowrap;">2026-03-22</td>
-        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 16-byte packet format. Three compliance levels. Reference implementation: XOlokun v1.x (76 engines, 15 types).</td>
+        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 16-byte packet format. Three compliance levels. Reference implementation: XOceanus v1.x (76 engines, 15 types).</td>
       </tr>
     </tbody>
   </table>
@@ -966,7 +966,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
 
 <div class="reveal" style="padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; border-left: 3px solid var(--gold);">
   <p style="font-size:0.8rem; color:var(--text-faint); margin-bottom:0.5rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em;">XO_OX Coupling Protocol v0.1</p>
-  <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem;">Specification licensed under CC BY 4.0. Reference implementation at <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener" style="color:var(--coupling); text-decoration:none;">github.com/BertCalm/XO_OX-XOlokun</a>.</p>
+  <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem;">Specification licensed under CC BY 4.0. Reference implementation at <a href="https://github.com/BertCalm/XO_OX-XOceanus" rel="noopener" style="color:var(--coupling); text-decoration:none;">github.com/BertCalm/XO_OX-XOceanus</a>.</p>
   <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:0;">Published 2026-03-22 by XO_OX Designs.</p>
 </div>
 
@@ -974,7 +974,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
 
 <footer class="footer">
   <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
-  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOceanus">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>

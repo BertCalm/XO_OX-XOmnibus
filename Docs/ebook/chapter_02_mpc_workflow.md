@@ -97,7 +97,7 @@ XO_OX packs follow a consistent Q-Link philosophy across the fleet. While specif
 
 - **Q-Link 1 (CHARACTER)**: The core timbre control — often filter cutoff or the instrument's primary spectral brightness parameter. Turning up brightens and sharpens; turning down darkens and warms.
 - **Q-Link 2 (MOVEMENT)**: Modulation depth — LFO amount, vibrato depth, or rhythmic variation. Turning up adds animation; turning down creates a static, locked tone.
-- **Q-Link 3 (COUPLING)**: The cross-engine interaction parameter in XOlokun-sourced programs — controls how much the secondary engine influences the primary. In XPN packs this often maps to filter resonance or envelope attack.
+- **Q-Link 3 (COUPLING)**: The cross-engine interaction parameter in XOceanus-sourced programs — controls how much the secondary engine influences the primary. In XPN packs this often maps to filter resonance or envelope attack.
 - **Q-Link 4 (SPACE)**: Reverb or delay send amount, or release time. Controls how much the sound fills the room.
 
 > **Kai's Tip:** The most powerful Q-Link technique is automation. Record your sequence first, then hold the Record button and arm Q-Link recording, then turn the knobs as the sequence plays. The MPC records every knob movement as automation data attached to the track. You can draw fills, filter sweeps, and dynamic builds into your sequence without touching a single sample file.

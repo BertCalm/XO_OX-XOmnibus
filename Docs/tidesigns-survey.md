@@ -1,9 +1,9 @@
 # TIDEsigns — Situational Brief
 **Author:** Marina, Creative Director, TIDEsigns
 **Date:** 2026-03-27
-**Subject:** XOlokun JUCE Plugin UI — Phase 1 Survey
+**Subject:** XOceanus JUCE Plugin UI — Phase 1 Survey
 **Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
-**Reference mockup:** `Docs/mockups/xolokun-v05-accurate.html`
+**Reference mockup:** `Docs/mockups/xoceanus-v05-accurate.html`
 
 ---
 
@@ -11,11 +11,11 @@
 
 ### Component Inventory
 
-The Gallery Model UI is built as a 3-column layout managed by `ColumnLayoutManager.h`. All components live under `Source/UI/Gallery/`. The orchestrating file is `Source/UI/XOlokunEditor.h`.
+The Gallery Model UI is built as a 3-column layout managed by `ColumnLayoutManager.h`. All components live under `Source/UI/Gallery/`. The orchestrating file is `Source/UI/XOceanusEditor.h`.
 
 | Component | File | Size | Status |
 |-----------|------|------|--------|
-| Main editor + layout | `XOlokunEditor.h` | ~850 lines | Active |
+| Main editor + layout | `XOceanusEditor.h` | ~850 lines | Active |
 | Column layout math | `ColumnLayoutManager.h` | ~8 KB | Active |
 | Engine tile (Col A) | `CompactEngineTile.h` | ~32 KB | Recently reworked |
 | Engine detail (Col B) | `EngineDetailPanel.h` | ~21 KB | Active |
@@ -58,7 +58,7 @@ The past two days have seen ~25 targeted UI commits, all under `fix(UI)` or `fea
 
 ## 2. What the Vision Says (v05 Mockup)
 
-The v05 HTML mockup (`xolokun-v05-accurate.html`) defines a dark-mode-first plugin at **1100×700 px** with these precise specifications:
+The v05 HTML mockup (`xoceanus-v05-accurate.html`) defines a dark-mode-first plugin at **1100×700 px** with these precise specifications:
 
 ### Color System (Dark Mode Canonical)
 - Shell: `#0E0E10` (bg)
@@ -70,7 +70,7 @@ The v05 HTML mockup (`xolokun-v05-accurate.html`) defines a dark-mode-first plug
 - Accent (OBRIX Reef Jade): `#1E8B7E` — used as the *demo* accent throughout
 
 ### Header (52px)
-Left to right: logo SVG (two overlapping circles, teal + gold) → brand text ("XOlokun" / "XO_OX Designs") → ENGINES button → **DepthZoneDial (36×36)** → **5 macro knobs** (CHAR/MOVE/COUP/SPACE/VOL in a grouped pill container, centered, auto-expanding) → right cluster: CI/CM/P/PS/DK icon buttons (24×24) → preset nav (◀ name ▶) → EXPORT button (gold fill, dark text) → A/B toggle → CPU meter → MIDI dot.
+Left to right: logo SVG (two overlapping circles, teal + gold) → brand text ("XOceanus" / "XO_OX Designs") → ENGINES button → **DepthZoneDial (36×36)** → **5 macro knobs** (CHAR/MOVE/COUP/SPACE/VOL in a grouped pill container, centered, auto-expanding) → right cluster: CI/CM/P/PS/DK icon buttons (24×24) → preset nav (◀ name ▶) → EXPORT button (gold fill, dark text) → A/B toggle → CPU meter → MIDI dot.
 
 The mockup explicitly shows **all 5 icon buttons active** in the header right cluster (CI, CM, P, PS, DK). This conflicts with the current code which parks most of them off-screen.
 
@@ -154,11 +154,11 @@ Current code has FIRE/XOSEND/ECHO CUT/PANIC buttons that are `setVisible(false)`
 The tile comment says "Porthole and creature painting removed 2026-03-27. Member kept so that any future re-introduction of animated sprites has a ready drop-in home." The `CreatureState` struct remains. The v05 mockup has no porthole or creature. This is code hygiene, not a visual gap.
 
 **G13 — GalleryLookAndFeel targets v04 mockup, not v05**
-Line 9 of `GalleryLookAndFeel.h` reads: `// Matched to xolokun-v04-polished.html prototype exactly.` The canonical reference is now v05. The LookAndFeel reference comment is stale. Whether the v04→v05 delta affects JLAF overrides needs audit.
+Line 9 of `GalleryLookAndFeel.h` reads: `// Matched to xoceanus-v04-polished.html prototype exactly.` The canonical reference is now v05. The LookAndFeel reference comment is stale. Whether the v04→v05 delta affects JLAF overrides needs audit.
 
 ### Minor Gaps (polish level)
 
-**G14 — Logo SVG: XOlokun circles vs. XO-OX rings**
+**G14 — Logo SVG: XOceanus circles vs. XO-OX rings**
 The v05 mockup shows a specific SVG: two overlapping circles (teal + gold fill + outline) at `cx=9,cy=9,r=7` and `cx=17,cy=17,r=7`. The JUCE editor paints the logo procedurally. Whether it matches this exact SVG geometry needs visual verification.
 
 **G15 — Export button: gold fill with dark text**
@@ -232,10 +232,10 @@ Convene with project lead to resolve Light vs. Dark mode default. Document the v
 
 | Path | Role |
 |------|------|
-| `Docs/mockups/xolokun-v05-accurate.html` | Canonical design target |
-| `Docs/mockups/xolokun-v04-polished.html` | Prior reference (partially stale) |
+| `Docs/mockups/xoceanus-v05-accurate.html` | Canonical design target |
+| `Docs/mockups/xoceanus-v04-polished.html` | Prior reference (partially stale) |
 | `Docs/ui-components-dimensions-2026-03-26.md` | Dimension spec sheet (mostly current, some v04 residue) |
-| `Source/UI/XOlokunEditor.h` | Main window + resized() layout orchestration |
+| `Source/UI/XOceanusEditor.h` | Main window + resized() layout orchestration |
 | `Source/UI/GalleryColors.h` | Color system (at UI/, not Gallery/) |
 | `Source/UI/Gallery/GalleryLookAndFeel.h` | JUCE widget overrides (references v04) |
 | `Source/UI/Gallery/ColumnLayoutManager.h` | Master layout constants |

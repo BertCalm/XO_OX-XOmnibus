@@ -34,9 +34,9 @@ The result is a single pad surface that behaves differently depending on how har
 
 ## 5.2 The XO_OX Coupling Trick on MPC — Q-Link to Recreate Coupling Depth in Hardware
 
-XOlokun coupling — where one engine modulates another's parameters — doesn't exist in standalone MPC workflow. The MPC doesn't know about OUROBOROS feeding OPAL's grain size. But you can approximate the *experience* of coupling with Q-Link assignments, and in some cases the result is more performable than the plugin version.
+XOceanus coupling — where one engine modulates another's parameters — doesn't exist in standalone MPC workflow. The MPC doesn't know about OUROBOROS feeding OPAL's grain size. But you can approximate the *experience* of coupling with Q-Link assignments, and in some cases the result is more performable than the plugin version.
 
-**The principle**: Coupling in XOlokun creates parameter relationships — as one parameter rises, another rises or falls in tandem. On MPC, a single Q-Link can be assigned to multiple parameters across multiple programs simultaneously. One knob, multiple targets, one gesture.
+**The principle**: Coupling in XOceanus creates parameter relationships — as one parameter rises, another rises or falls in tandem. On MPC, a single Q-Link can be assigned to multiple parameters across multiple programs simultaneously. One knob, multiple targets, one gesture.
 
 **Setting up a coupling-style Q-Link:**
 

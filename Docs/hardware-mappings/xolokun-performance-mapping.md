@@ -1,6 +1,6 @@
-# XOlokun Performance Mapping — Meta-Controller Design
+# XOceanus Performance Mapping — Meta-Controller Design
 
-**Scope:** XOlokun-level hardware control — engine selection, coupling routing, and per-engine macro pass-through
+**Scope:** XOceanus-level hardware control — engine selection, coupling routing, and per-engine macro pass-through
 **Coupling System:** MegaCouplingMatrix (15 types incl. KnotTopology + TriangularCoupling)
 **Engine Slots:** 4 simultaneous engines (A, B, C, D)
 
@@ -8,10 +8,10 @@
 
 ## Overview
 
-XOlokun is a multi-engine synthesizer. The hardware performance mapping operates at two levels:
+XOceanus is a multi-engine synthesizer. The hardware performance mapping operates at two levels:
 
 1. **Engine Level** — per-engine parameters (see individual engine mapping files)
-2. **XOlokun Level** — engine selection, coupling amount, coupling type, per-engine volume/mute, macro pass-through
+2. **XOceanus Level** — engine selection, coupling amount, coupling type, per-engine volume/mute, macro pass-through
 
 This document covers Level 2 exclusively. For Level 1, see:
 - `obrix-hardware-mapping.md`
@@ -23,7 +23,7 @@ This document covers Level 2 exclusively. For Level 1, see:
 ## Core Concepts
 
 ### 4 Engine Slots
-XOlokun runs 4 engine slots simultaneously: **Slot A**, **B**, **C**, **D**.
+XOceanus runs 4 engine slots simultaneously: **Slot A**, **B**, **C**, **D**.
 Each slot can hold any of the 73 registered engines.
 
 ### Coupling Architecture
@@ -36,8 +36,8 @@ Coupling connects pairs of engine slots:
 
 ### Macro Pass-Through
 Each engine exposes 4 macros (CHARACTER/MOVEMENT/COUPLING/SPACE).
-XOlokun's performance layer can override or blend with per-engine macro values.
-When a XOlokun-level macro is engaged, it broadcasts to the active engine's macro.
+XOceanus's performance layer can override or blend with per-engine macro values.
+When a XOceanus-level macro is engaged, it broadcasts to the active engine's macro.
 
 ---
 
@@ -63,12 +63,12 @@ When a XOlokun-level macro is engaged, it broadcasts to the active engine's macr
 
 ---
 
-## Push 2/3 — XOlokun Meta Layer
+## Push 2/3 — XOceanus Meta Layer
 
 ### Philosophy
-Push's User mode gives full 8×8 pad matrix + 8 knobs per row at XOlokun level. The top two rows of pads are the engine/coupling command surface. The lower 6 rows remain for note playing (auto-routed to the active engine's preferred mode).
+Push's User mode gives full 8×8 pad matrix + 8 knobs per row at XOceanus level. The top two rows of pads are the engine/coupling command surface. The lower 6 rows remain for note playing (auto-routed to the active engine's preferred mode).
 
-### XOlokun Command Surface (Top 2 Pad Rows)
+### XOceanus Command Surface (Top 2 Pad Rows)
 
 ```
 ROW 8 (top) — Engine Selection + Status
@@ -86,9 +86,9 @@ ROW 7 — Coupling Controls
 └────────┴────────┴────────┴────────┴────────┴────────┴────────┴────────┘
 ```
 
-### XOlokun Knob Layer (8 knobs at top)
+### XOceanus Knob Layer (8 knobs at top)
 
-**XOlokun Knob Row — Meta Performance**
+**XOceanus Knob Row — Meta Performance**
 ```
 ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
 │  Eng A   │  Eng B   │  Eng C   │  Eng D   │ Coup A→B │ Coup B→A │ Coup A→C │ Master   │
@@ -97,7 +97,7 @@ ROW 7 — Coupling Controls
 └──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
 ```
 
-**Secondary XOlokun Knob Row** (accessed via XOlokun Page 2):
+**Secondary XOceanus Knob Row** (accessed via XOceanus Page 2):
 ```
 ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
 │  Eng A   │  Eng A   │  Eng A   │  Eng A   │  Eng B   │  Eng B   │  Eng B   │  Eng B   │
@@ -110,7 +110,7 @@ ROW 7 — Coupling Controls
 
 ### Playing Surface (Rows 1–6, 6×8 = 48 pads)
 
-In XOlokun multi-engine mode, the pad surface routes to the **active engine** (selected via Row 8 pad):
+In XOceanus multi-engine mode, the pad surface routes to the **active engine** (selected via Row 8 pad):
 - If Slot A is active (lit): chromatic or drum mode of Engine A
 - If multiple engines are selected: note-on sends to all selected slots simultaneously
 
@@ -129,21 +129,21 @@ Types cycle through: Amplitude → FM → Filter → Envelope → Ring → Sync 
 
 ---
 
-## Maschine — XOlokun Meta Layer
+## Maschine — XOceanus Meta Layer
 
 ### Philosophy
-Maschine's 4 Group buttons (A–D) map directly to XOlokun's 4 engine slots. This is an intuitive 1:1 mapping — Group A = Engine Slot A, etc. The 16 pads beneath each active Group play notes in the active engine's mode. Global Smart Strips handle coupling.
+Maschine's 4 Group buttons (A–D) map directly to XOceanus's 4 engine slots. This is an intuitive 1:1 mapping — Group A = Engine Slot A, etc. The 16 pads beneath each active Group play notes in the active engine's mode. Global Smart Strips handle coupling.
 
 ### Group → Engine Slot Mapping
 
-| Maschine Group | XOlokun Slot | Default Engine |
+| Maschine Group | XOceanus Slot | Default Engine |
 |---------------|-------------|----------------|
 | Group A | Slot A | OBRIX |
 | Group B | Slot B | ONSET |
 | Group C | Slot C | OPERA |
 | Group D | Slot D | (any 4th engine) |
 
-### Smart Strips — XOlokun Level
+### Smart Strips — XOceanus Level
 
 | Strip | Assignment | Notes |
 |-------|------------|-------|
@@ -156,24 +156,24 @@ Maschine's 4 Group buttons (A–D) map directly to XOlokun's 4 engine slots. Thi
 | Strip 7 | Coupling A→B Type | Step through 15 types |
 | Strip 8 | Master Volume | Global output |
 
-### Knob Pages — XOlokun Level
+### Knob Pages — XOceanus Level
 
-**XOlokun Page 1 — Coupling Matrix**
+**XOceanus Page 1 — Coupling Matrix**
 | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 |
 |----|----|----|----|----|----|----|-----|
 | A→B Amt | A→B Type | B→A Amt | B→A Type | A→C Amt | C→A Amt | B→C Amt | C→B Amt |
 
-**XOlokun Page 2 — Engine Volumes + Mutes**
+**XOceanus Page 2 — Engine Volumes + Mutes**
 | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 |
 |----|----|----|----|----|----|----|-----|
 | Eng A Vol | Eng B Vol | Eng C Vol | Eng D Vol | Mute A | Mute B | Mute C | Mute D |
 
-**XOlokun Page 3 — Engine A Macros**
+**XOceanus Page 3 — Engine A Macros**
 | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 |
 |----|----|----|----|----|----|----|-----|
 | A: CHAR | A: MOVE | A: COUP | A: SPACE | B: CHAR | B: MOVE | B: COUP | B: SPACE |
 
-**XOlokun Page 4 — Engine C + D Macros**
+**XOceanus Page 4 — Engine C + D Macros**
 | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 |
 |----|----|----|----|----|----|----|-----|
 | C: CHAR | C: MOVE | C: COUP | C: SPACE | D: CHAR | D: MOVE | D: COUP | D: SPACE |
@@ -190,13 +190,13 @@ When Group C is selected: 16 pads play Engine C (OPERA) in chromatic mode
 
 ---
 
-## Generic MIDI CC Map — XOlokun Level
+## Generic MIDI CC Map — XOceanus Level
 
 ### Design Notes
-- These CCs operate at the XOlokun layer — above individual engine CCs
+- These CCs operate at the XOceanus layer — above individual engine CCs
 - Engine-level CCs (see per-engine maps) use CC01–CC31 for each engine
-- XOlokun-level CCs use CC80–CC119 to avoid conflicts
-- If your controller is limited to CC01–CC127, use channels 1–4 for engines A–D respectively, and reserve channel 16 for XOlokun-level control
+- XOceanus-level CCs use CC80–CC119 to avoid conflicts
+- If your controller is limited to CC01–CC127, use channels 1–4 for engines A–D respectively, and reserve channel 16 for XOceanus-level control
 
 | CC# | Assignment | Name | Range Notes |
 |-----|-----------|------|-------------|
@@ -274,7 +274,7 @@ Maschine:
 └── Knob pages: Deep parameter editing
 
 Push (slaved as MIDI controller):
-├── 8 top knobs: XOlokun-level meta controls
+├── 8 top knobs: XOceanus-level meta controls
 └── Rows 1–8: Performance note surface
 ```
 
@@ -346,11 +346,11 @@ When OPERA Drama is high (locked partials), the coupling pushes OBRIX toward JI 
 
 ---
 
-## XOlokun Performance Philosophy
+## XOceanus Performance Philosophy
 
-The goal of the XOlokun performance layer is to make complex cross-engine interactions feel like one instrument, not three separate synths routed through a mixer. When the coupling amounts are balanced and the types are well-chosen, moving a single coupling knob can fundamentally transform the relationship between engines — from independent voices to deeply entangled organisms.
+The goal of the XOceanus performance layer is to make complex cross-engine interactions feel like one instrument, not three separate synths routed through a mixer. When the coupling amounts are balanced and the types are well-chosen, moving a single coupling knob can fundamentally transform the relationship between engines — from independent voices to deeply entangled organisms.
 
-The best XOlokun performances treat the coupling layer as a musical instrument in itself:
+The best XOceanus performances treat the coupling layer as a musical instrument in itself:
 - Low coupling = independent engines, each with their own character
 - Medium coupling = symbiotic — each engine flavors the others
 - High coupling = entangled — the engines lose individual identity and become a single, breathing system

@@ -257,10 +257,10 @@ Kit overview (Groups A–H):
 | CC30 | `perc_v{n}_level` | Active Voice Level | 0–127 |
 | CC31 | `perc_v{n}_pan` | Active Voice Pan | 64=center, bipolar |
 | **Coupling Bus** | | | |
-| CC80 | xolokun coupling A→B | Coupling Out | see xolokun map |
-| CC81 | xolokun coupling B→A | Coupling In | see xolokun map |
-| CC82 | xolokun coupling type | Coupling Type | 0–14 |
-| CC83 | xolokun coupling bypass | Bypass | 0=active, 127=bypass |
+| CC80 | xoceanus coupling A→B | Coupling Out | see xoceanus map |
+| CC81 | xoceanus coupling B→A | Coupling In | see xoceanus map |
+| CC82 | xoceanus coupling type | Coupling Type | 0–14 |
+| CC83 | xoceanus coupling bypass | Bypass | 0=active, 127=bypass |
 
 ### Recommended Mod Wheel Routing
 - **Default:** `perc_macro_mutate` × 2 depth (mod wheel doubles MUTATE range)

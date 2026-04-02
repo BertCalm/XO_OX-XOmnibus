@@ -1,6 +1,6 @@
-# XOlokun Spatial Architecture — Where Every Feature Lives
+# XOceanus Spatial Architecture — Where Every Feature Lives
 
-> **Status:** SUPERSEDED — This is the Phase 1 draft. Canonical version: `xolokun-spatial-architecture-v1.md` (post-10-panel review).
+> **Status:** SUPERSEDED — This is the Phase 1 draft. Canonical version: `xoceanus-spatial-architecture-v1.md` (post-10-panel review).
 > **Date:** 2026-03-24
 > **Authors:** Ringleader + UIX Design Studio
 > **Purpose:** Prove that every planned feature (326 cataloged) has a specific home in the UI before any visual polish is applied.
@@ -55,7 +55,7 @@ At 1100×700pt, our total area is **770,000 px²**. After chrome (header 52pt + 
 
 ### The Problem No Synth Has Solved
 
-Most synths have 2-3 sound sources (oscillators). XOlokun has **4 simultaneous engine slots** drawn from a pool of **76 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
+Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous engine slots** drawn from a pool of **76 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
 
 ### What We Can Learn from Competitors
 
@@ -68,7 +68,7 @@ Most synths have 2-3 sound sources (oscillators). XOlokun has **4 simultaneous e
 | **Omnisphere** | Layer A/B tabs, massive browser, FX page | 2 layers | Deep browser, rich FX | Tabbed = you forget what the other layer is doing |
 | **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 76 engines with different structures |
 
-### The XOlokun Answer: Hybrid Stack + Context Strip
+### The XOceanus Answer: Hybrid Stack + Context Strip
 
 **Core insight:** We need to see ALL 4 engine slots simultaneously (like a mixer), but we can't show all params for all 4 engines at once (that's 200-400 knobs). The solution:
 
@@ -564,13 +564,13 @@ When OBRIX is selected, Column B transforms:
 
 ### OBRIX Pocket (Standalone App)
 
-The TE Pocket Operator-inspired OBRIX Pocket is a **separate product** — a standalone iPhone/iPad app. It doesn't need to fit inside the XOlokun plugin window. It gets its own layout:
+The TE Pocket Operator-inspired OBRIX Pocket is a **separate product** — a standalone iPhone/iPad app. It doesn't need to fit inside the XOceanus plugin window. It gets its own layout:
 
 - **iPhone portrait:** 4 large knobs (TE PO-style) + brick palette at top + minimal visualization
 - **iPhone landscape:** Full brick stack view + 8 knobs
 - **iPad:** Full OBRIX experience with brick drag-and-drop
 
-This is a separate design project. The XOlokun plugin needs to support OBRIX well, but the Pocket is an independent product with its own constraints.
+This is a separate design project. The XOceanus plugin needs to support OBRIX well, but the Pocket is an independent product with its own constraints.
 
 ---
 
@@ -578,7 +578,7 @@ This is a separate design project. The XOlokun plugin needs to support OBRIX wel
 
 ### How Unknown Future Features Get Incorporated
 
-Every feature in XOlokun can be classified into one of 6 **Feature Shapes**:
+Every feature in XOceanus can be classified into one of 6 **Feature Shapes**:
 
 | Shape | Description | UI Home | Example |
 |-------|------------|---------|---------|
@@ -706,7 +706,7 @@ CLICK SLOT with OBRIX loaded → Column B shows Brick Stack View
 ### Lessons Applied to Our Layout
 1. **Knob spacing:** Minimum 56pt center-to-center for main knobs, 40pt for section knobs, 28pt for detail grid
 2. **Section borders:** Each CollapsibleSection has a subtle top border + color accent dot (already implemented in code)
-3. **Hero visualization:** The Coupling Visualizer in the Overview IS our "wavetable display" — it's the hero visual that defines XOlokun's identity
+3. **Hero visualization:** The Coupling Visualizer in the Overview IS our "wavetable display" — it's the hero visual that defines XOceanus's identity
 4. **Persistent overview:** The engine rack (Column A) is always visible, like Vital's oscillator display
 
 ---

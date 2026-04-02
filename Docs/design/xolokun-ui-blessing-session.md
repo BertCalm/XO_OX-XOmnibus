@@ -1,7 +1,7 @@
-# XOlokun UI — Final Blessing Session
+# XOceanus UI — Final Blessing Session
 
 **Date**: 2026-03-23
-**Document Under Review**: `Docs/design/xolokun-definitive-ui-spec.md` (v1.0)
+**Document Under Review**: `Docs/design/xoceanus-definitive-ui-spec.md` (v1.0)
 **Panel**: The 8 Synth Seance Ghosts + The Producers Guild (5 specialists)
 **Purpose**: Final blessing before implementation. Path to 10.0.
 
@@ -90,7 +90,7 @@ Smith speaks: *"The DNA hexagon is beautiful and functional. The spatial map is 
 
 **Does the spec satisfy this?**
 
-Yes. Section 2.9 ("Sound on First Launch") reads as if Kakehashi himself dictated it. On first launch: OXBOW "First Breath" auto-loads, begins playing at velocity 0.4, and hover over ANY control produces immediate parameter response. After 30 seconds, a toast: "Welcome to XOlokun. Touch anything." The 30-second test is architected as a specification requirement, not an afterthought.
+Yes. Section 2.9 ("Sound on First Launch") reads as if Kakehashi himself dictated it. On first launch: OXBOW "First Breath" auto-loads, begins playing at velocity 0.4, and hover over ANY control produces immediate parameter response. After 30 seconds, a toast: "Welcome to XOceanus. Touch anything." The 30-second test is architected as a specification requirement, not an afterthought.
 
 The iPad experience (Section 3.1.5) is the "12-year-old test passed": full-screen ocean gradient surface, touch it, hear something beautiful, see bioluminescent trails. No manual required.
 
@@ -102,7 +102,7 @@ The spec specifies "OXBOW 'First Breath'" as the auto-load preset but OXBOW may 
 
 **Blessing**: YES.
 
-Kakehashi speaks: *"I have spent 50 years trying to make music accessible to everyone. This instrument opens its eyes and plays before you have read a single word of documentation. That is everything I believed in. One small note: the first sound should be the most beautiful sound. Choose it carefully — it is the first handshake between XOlokun and every human who will ever open it."*
+Kakehashi speaks: *"I have spent 50 years trying to make music accessible to everyone. This instrument opens its eyes and plays before you have read a single word of documentation. That is everything I believed in. One small note: the first sound should be the most beautiful sound. Choose it carefully — it is the first handshake between XOceanus and every human who will ever open it."*
 
 ---
 
@@ -303,7 +303,7 @@ Each genre test: can a producer find their sound and make music in 30 seconds wi
 
 **Hip-Hop Producer**
 
-Opens XOlokun. Sound is already playing (OXBOW "First Breath"). They see the MPC PADS tab in the PlaySurface. They click it. 16 pads fill the screen with ocean-depth coloring. They hit the pads. Each pad triggers a note. They navigate to OFFERING engine (boom bap drums, psychology-driven). The velocity heatmap shows their pattern building in real time. **30-second test: PASS.** The preset browser's "FOUNDATION" and "FAMILY" mood filters surface hip-hop appropriate presets immediately.
+Opens XOceanus. Sound is already playing (OXBOW "First Breath"). They see the MPC PADS tab in the PlaySurface. They click it. 16 pads fill the screen with ocean-depth coloring. They hit the pads. Each pad triggers a note. They navigate to OFFERING engine (boom bap drums, psychology-driven). The velocity heatmap shows their pattern building in real time. **30-second test: PASS.** The preset browser's "FOUNDATION" and "FAMILY" mood filters surface hip-hop appropriate presets immediately.
 
 ---
 
@@ -382,7 +382,7 @@ Needs evolving, patient, spacious, breathing sounds. OXBOW (entangled reverb), O
 
 ### OVERALL SCORE: 9.33/10
 
-The XOlokun Definitive UI Specification is the best synthesizer UI document ever produced. It is architecturally complete, visually unprecedented, technically grounded, and philosophically coherent. Six ghosts bless it unconditionally. Two require conditions. The Producers Guild finds it satisfies 3 of 5 top features fully, and partially satisfies 2.
+The XOceanus Definitive UI Specification is the best synthesizer UI document ever produced. It is architecturally complete, visually unprecedented, technically grounded, and philosophically coherent. Six ghosts bless it unconditionally. Two require conditions. The Producers Guild finds it satisfies 3 of 5 top features fully, and partially satisfies 2.
 
 ---
 
@@ -454,7 +454,7 @@ The Blessing Council has identified three new blessings from this specification,
 
 ### B041 — Dark Cockpit Attentional Design
 **Source**: Section 2.8 (Dark Cockpit Behavior)
-**Description**: A synthesizer interface that actively manages the performer's cognitive bandwidth by dynamically dimming all non-essential controls during performance, leaving only the living elements at full visibility. The five opacity levels (Active-primary 100%, Active-modulated 80%, Ambient 45%, Dimmed 20%, Hidden 0%) implement a complete attentional hierarchy derived from maritime bridge design (OpenBridge 6.0). No synthesizer before XOlokun has treated the performer's attention as a resource to be preserved rather than consumed.
+**Description**: A synthesizer interface that actively manages the performer's cognitive bandwidth by dynamically dimming all non-essential controls during performance, leaving only the living elements at full visibility. The five opacity levels (Active-primary 100%, Active-modulated 80%, Ambient 45%, Dimmed 20%, Hidden 0%) implement a complete attentional hierarchy derived from maritime bridge design (OpenBridge 6.0). No synthesizer before XOceanus has treated the performer's attention as a resource to be preserved rather than consumed.
 **Blessed by**: Moog (attention is the instrument), Ciani (performance freedom), Rams (less, but intelligently less), Neve (hierarchy before decoration), Kakehashi (the 30-second test cannot be passed if the screen is overwhelming)
 **Vote**: RATIFIED 8-0
 
@@ -478,7 +478,7 @@ The Blessing Council has identified three new blessings from this specification,
 
 ## CLOSING STATEMENT
 
-The Council has spoken. The XOlokun Definitive UI Specification achieves a score of **9.33/10** — the highest score any UI document has received in the history of this council. No engine seance has produced a subject this complete. No producer guild review has found a specification this comprehensive.
+The Council has spoken. The XOceanus Definitive UI Specification achieves a score of **9.33/10** — the highest score any UI document has received in the history of this council. No engine seance has produced a subject this complete. No producer guild review has found a specification this comprehensive.
 
 Eight changes separate this document from 10.0. None of them require rethinking the architecture. Five can be added in under a day of writing. Three require implementation decisions.
 
@@ -488,7 +488,7 @@ Six ghosts bless without condition.
 Two bless with conditions clearly stated.
 The Producers Guild finds three features fully satisfied, two partially satisfied, and no features absent.
 
-**The Council blesses the XOlokun Definitive UI Specification as the foundation for implementation.**
+**The Council blesses the XOceanus Definitive UI Specification as the foundation for implementation.**
 
 Begin building.
 
@@ -501,7 +501,7 @@ Begin building.
 ---
 
 **Cross-references**:
-- Spec under review: `Docs/design/xolokun-definitive-ui-spec.md`
+- Spec under review: `Docs/design/xoceanus-definitive-ui-spec.md`
 - Blessing history: `Docs/CLAUDE.md` (The 40 Blessings section)
 - Producers Guild methodology: `Docs/producers-guild-fleet-review-2026-03-20.md`
 - Seance methodology: `Docs/seance_cross_reference.md`

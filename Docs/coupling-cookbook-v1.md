@@ -1,4 +1,4 @@
-# XOlokun Coupling Cookbook — Volume I
+# XOceanus Coupling Cookbook — Volume I
 **Version:** 1.0
 **Date:** 2026-03-24
 **Author:** XO_OX Designs
@@ -6,15 +6,15 @@
 
 ---
 
-> *"Every synth gives you a sound. XOlokun gives you a relationship."*
+> *"Every synth gives you a sound. XOceanus gives you a relationship."*
 
 ---
 
 ## Introduction
 
-Most synthesis is about what a single engine can do. XOlokun is about what happens in the space between two engines — the third sound that neither engine could make alone. That sound is coupling.
+Most synthesis is about what a single engine can do. XOceanus is about what happens in the space between two engines — the third sound that neither engine could make alone. That sound is coupling.
 
-This cookbook is a recipe library for producers. It contains 20 working coupling recipes across eight genres, a complete reference for all 15 coupling types, and the principles that separate musical coupling from technical noise. Every recipe has been designed against the XOlokun engine fleet and cross-referenced against actual coupling presets.
+This cookbook is a recipe library for producers. It contains 20 working coupling recipes across eight genres, a complete reference for all 15 coupling types, and the principles that separate musical coupling from technical noise. Every recipe has been designed against the XOceanus engine fleet and cross-referenced against actual coupling presets.
 
 Coupling is not effects routing. It is not layering. It is not sidechain compression. It is one engine rewriting another engine's synthesis in real time. The drum teaches the bass when to breathe. The chaos attractor tells the harmonic grid where to go. The granular cloud is the instruction the echo chain follows.
 
@@ -24,7 +24,7 @@ Start here. Go deep.
 
 ## Part I — The 15 Coupling Types: A Field Guide
 
-XOlokun implements 15 coupling types in the `MegaCouplingMatrix`. They are organized below by character: subtle (control-rate), aggressive (audio-rate), and the special cases (KnotTopology and TriangularCoupling).
+XOceanus implements 15 coupling types in the `MegaCouplingMatrix`. They are organized below by character: subtle (control-rate), aggressive (audio-rate), and the special cases (KnotTopology and TriangularCoupling).
 
 ### Recommended Amount Ranges
 - **Whisper** (0.05–0.15): Barely perceptible. Use when you want the coupling to live under the mix and surface only when the source gets loud.
@@ -207,7 +207,7 @@ Only push to Possession when you want the coupling to be the primary character o
 
 ### 2. The feliX-Oscar Polarity
 
-XOlokun's aquatic mythology centers on two poles: feliX (the neon tetra — bright, social, crystalline) and Oscar (the axolotl — warm, regenerative, tactile). Every engine sits somewhere on this axis. Understanding the polarity of your source and target engines tells you whether their coupling will create tension or resonance.
+XOceanus's aquatic mythology centers on two poles: feliX (the neon tetra — bright, social, crystalline) and Oscar (the axolotl — warm, regenerative, tactile). Every engine sits somewhere on this axis. Understanding the polarity of your source and target engines tells you whether their coupling will create tension or resonance.
 
 **Tension coupling:** feliX-pole engine → Oscar-pole engine (or vice versa)
 - ODDFELIX → OVERDUB: crystalline transients driving warm tape echo. The coupling creates a productive friction — the brightness of the source fights the warmth of the target. Interesting in moderation.
@@ -269,7 +269,7 @@ If CPU is tight, use control-rate types for live performance routes and reserve 
 
 ### How to Read a Recipe
 
-- **Engine A / Engine B:** Load these into any two of XOlokun's four engine slots.
+- **Engine A / Engine B:** Load these into any two of XOceanus's four engine slots.
 - **Coupling Amount:** Set the Depth slider for the specified route.
 - **Direction:** A→B means Engine A is source, Engine B is target. Bidirectional = KnotTopology (both directions simultaneously).
 - **Sweet Spot:** The parameter range where the coupling sounds most musical.
@@ -282,7 +282,7 @@ If CPU is tight, use control-rate types for live performance routes and reserve 
 ---
 
 #### Recipe 01 — "Drum Teaches Bass"
-*The foundational XOlokun coupling demonstration.*
+*The foundational XOceanus coupling demonstration.*
 
 | Field | Detail |
 |-------|--------|
@@ -853,6 +853,6 @@ Start with `Amp->Filter` at 0.30 and two engines you already know. Find the spac
 
 ---
 
-*XOlokun — for all*
+*XOceanus — for all*
 *XO_OX Designs*
 *2026-03-24*

@@ -3,7 +3,7 @@
 **Date**: 2026-03-23
 **Status**: Design Complete — Ready for Implementation
 **Participants**: The Visionary (L1-L5), UIX Design Studio (Ulf/Issea/Xavier/Lucy), Kai (MPC), Producers Guild, Synth Seance Ghosts
-**Scope**: Three play surfaces + expression controllers for XOlokun (AU, Standalone, iPad)
+**Scope**: Three play surfaces + expression controllers for XOceanus (AU, Standalone, iPad)
 
 ---
 
@@ -133,7 +133,7 @@ class XOuijaComponent : public juce::Component, private juce::Timer
 
 ### 2.6 Kai — MPC Integration
 
-The XOuija maps to MPC keygroup programs. When an XOlokun XPM program is loaded on MPC, the XOuija's X-axis pitch range corresponds to the keygroup's zone layout. The Planchette shows which MPC zone the current pitch falls into:
+The XOuija maps to MPC keygroup programs. When an XOceanus XPM program is loaded on MPC, the XOuija's X-axis pitch range corresponds to the keygroup's zone layout. The Planchette shows which MPC zone the current pitch falls into:
 
 ```
 Planchette overlay when XPM mode active:
@@ -155,7 +155,7 @@ On MPCe (MPC Live III), the XOuija maps to the XY pad on the hardware. The quad-
 
 ### 3.1 Concept
 
-A 4x4 velocity-sensitive pad grid that is 1:1 compatible with MPC pad layouts. This is not a decorative representation — it IS the MPC pad bank rendered in the XOlokun visual language. Pad numbering, velocity curves, and note mapping match MPC conventions exactly.
+A 4x4 velocity-sensitive pad grid that is 1:1 compatible with MPC pad layouts. This is not a decorative representation — it IS the MPC pad bank rendered in the XOceanus visual language. Pad numbering, velocity curves, and note mapping match MPC conventions exactly.
 
 ### 3.2 Pad Layout
 
@@ -277,16 +277,16 @@ This is the section that makes or breaks XPM compatibility.
 | 15 | 57 | Crash 2 | Fx 3 |
 | 16 | 51 | Ride 1 | Fx 4 |
 
-**Velocity curves must match MPC exactly.** The MPC's logarithmic curve (called "Curve 2" in MPC software) uses `v = 127 * pow(input/127, 0.6)`. Our "Logarithmic" curve must produce identical output or drum programs will feel different when played on XOlokun vs. MPC hardware.
+**Velocity curves must match MPC exactly.** The MPC's logarithmic curve (called "Curve 2" in MPC software) uses `v = 127 * pow(input/127, 0.6)`. Our "Logarithmic" curve must produce identical output or drum programs will feel different when played on XOceanus vs. MPC hardware.
 
 **MPCe quad-corner integration:**
-On MPC Live III / MPC Key 61, each pad has four corners. XOlokun maps this to:
+On MPC Live III / MPC Key 61, each pad has four corners. XOceanus maps this to:
 - **Top-left corner**: CHARACTER macro (M1)
 - **Top-right corner**: MOVEMENT macro (M2)
 - **Bottom-left corner**: COUPLING macro (M3)
 - **Bottom-right corner**: SPACE macro (M4)
 
-Pressing a pad corner on MPCe sends the note at full velocity PLUS a CC value for the corresponding macro. XOlokun receives both and routes accordingly. The visual pad in XOlokun shows the quad-corner zones as subtle diagonal lines when in "MPCe mode":
+Pressing a pad corner on MPCe sends the note at full velocity PLUS a CC value for the corresponding macro. XOceanus receives both and routes accordingly. The visual pad in XOceanus shows the quad-corner zones as subtle diagonal lines when in "MPCe mode":
 
 ```
 +----------+
@@ -306,7 +306,7 @@ Pressing a pad corner on MPCe sends the note at full velocity PLUS a CC value fo
 - `<MuteGroup>` in XPM maps to our choke group system
 
 **30-second test (Kai):**
-Load an MPC XPM drum program into XOlokun. Play the 16-pad grid. Every pad should trigger the correct sample at the correct velocity response. Switch to Bank B. Pads should update. If a beatmaker can load their MPC kit and play it without reading documentation, the implementation is correct.
+Load an MPC XPM drum program into XOceanus. Play the 16-pad grid. Every pad should trigger the correct sample at the correct velocity response. Switch to Bank B. Pads should update. If a beatmaker can load their MPC kit and play it without reading documentation, the implementation is correct.
 
 ---
 
@@ -418,11 +418,11 @@ On MPC hardware without a keyboard (MPC Live, MPC One), the pad grid is the prim
 
 ### 4.7 Correlation with MIDI Keyboard Input
 
-When an external MIDI keyboard sends notes to XOlokun:
+When an external MIDI keyboard sends notes to XOceanus:
 - The Seaboard surface shows each held note as a lit key
 - If the external controller sends MPE data, all three expression dimensions are visualized (pitch bend shown as horizontal glow offset, slide as vertical fill gradient, pressure as color intensity)
 - If the external controller sends standard MIDI (no MPE), only note-on/off and channel aftertouch are visualized
-- The user can play the on-screen keyboard AND the external keyboard simultaneously — XOlokun merges both streams
+- The user can play the on-screen keyboard AND the external keyboard simultaneously — XOceanus merges both streams
 
 ---
 
@@ -512,7 +512,7 @@ This is the coupling performance system's crossfader (from `CouplingPerformanceP
 
 #### 5.6.2 Tide Controller (Aquatic LFO)
 
-A novel expression controller unique to XOlokun. A circular controller showing a simulated water surface that responds to touch:
+A novel expression controller unique to XOceanus. A circular controller showing a simulated water surface that responds to touch:
 
 - **Tap center**: Creates a ripple that modulates the assigned parameter in a decaying sine wave.
 - **Drag**: Creates a continuous wave whose amplitude = distance from center and rate = drag speed.
@@ -617,11 +617,11 @@ This is not strictly an expression controller — it is a performance tool for l
 
 ### 6.3 MPCe (MPC Live III / MPC Key 61)
 
-XOlokun running as a plugin on MPC hardware:
+XOceanus running as a plugin on MPC hardware:
 - The 4x4 physical pads map directly to the MPC 16-Pad Grid surface
 - The Q-Link knobs map to: Knob 1 = M1 (CHARACTER), Knob 2 = M2 (MOVEMENT), Knob 3 = M3 (COUPLING), Knob 4 = M4 (SPACE)
 - The touch strip on MPC Live III maps to the Pitch Bend strip
-- The MPC's XY pad (if present on MPC Key 61) maps to the XOlokun XY Pad
+- The MPC's XY pad (if present on MPC Key 61) maps to the XOceanus XY Pad
 - The 7" touchscreen shows a simplified version of the play surface (no trails, no ripples — performance first)
 
 ---
@@ -789,9 +789,9 @@ Three play surfaces for a synthesizer. This is where everyone lives — the sunl
 
 ### 9.2 Level 1: Logical Extension — The Instrument-Within-the-Instrument
 
-**VISIONARY**: The play surface is not a UI component. It is a *second instrument* that lives inside XOlokun. The engine is one instrument (the sound generator). The play surface is another (the performance interface). When you couple them, you get a third thing that neither could produce alone.
+**VISIONARY**: The play surface is not a UI component. It is a *second instrument* that lives inside XOceanus. The engine is one instrument (the sound generator). The play surface is another (the performance interface). When you couple them, you get a third thing that neither could produce alone.
 
-Think about it: a Stradivarius and a bow are two separate instruments. Neither makes sound alone. The musician's body is a third instrument. XOlokun has the engine (Strad), the play surface (bow), and the performer (body). We are designing the bow.
+Think about it: a Stradivarius and a bow are two separate instruments. Neither makes sound alone. The musician's body is a third instrument. XOceanus has the engine (Strad), the play surface (bow), and the performer (body). We are designing the bow.
 
 The XOuija Planchette is not a cursor — it is the bow. It has its own physics, its own memory (warm trails), its own personality (idle drift). The bow affects the sound as much as the strings do.
 
@@ -959,7 +959,7 @@ For each surface, there is one test that determines if the implementation is cor
 | Phase 2 | `XOuijaComponent` (basic: pitch/expression, no Planchette AI) | 3 days | Phase 1 |
 | Phase 3 | `SeaboardKeyboard` (basic: notes + pitch bend, no full MPE) | 3 days | Phase 1 |
 | Phase 4 | `ExpressionPanel` (all 7 controllers) | 2 days | Phase 1 |
-| Phase 5 | Mount into `XOlokunEditor`, wire MIDI output | 1 day | Phase 1-4 |
+| Phase 5 | Mount into `XOceanusEditor`, wire MIDI output | 1 day | Phase 1-4 |
 | Phase 6 | `TideController` water sim | 1 day | Phase 4 |
 | Phase 7 | Full MPE on Seaboard + external MIDI visualization | 2 days | Phase 3 |
 | Phase 8 | Planchette idle drift + engine sensitivity map | 2 days | Phase 2 |

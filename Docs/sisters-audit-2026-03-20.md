@@ -33,7 +33,7 @@ The declared guide is sound. The problem is adherence.
 
 **Preset generation.** Once a Guru Bin retreat produces sweet spots and parameter guidance, generating 150 `.xometa` files is mechanical — parameter interpolation, mood distribution, naming. This is Haiku territory. The parallel background agent pattern (feedback-parallel-preset-agents.md) is correct and already captures this insight, but it is not consistently applied. Sessions still run large preset batches in main context at Sonnet.
 
-**Build integration tasks.** Adding a new engine to `XOlokunProcessor.cpp`, `PresetManager.h`, `XOlokunEditor.h`, and `CMakeLists.txt` follows a documented template. The morning plan for 2026-03-20 explicitly tags this as "Sonnet, ~15 min." That is correct. However, when the same task appears mid-session after a Guru Bin or seance block, the model context is already Opus and it stays there.
+**Build integration tasks.** Adding a new engine to `XOceanusProcessor.cpp`, `PresetManager.h`, `XOceanusEditor.h`, and `CMakeLists.txt` follows a documented template. The morning plan for 2026-03-20 explicitly tags this as "Sonnet, ~15 min." That is correct. However, when the same task appears mid-session after a Guru Bin or seance block, the model context is already Opus and it stays there.
 
 **Documentation updates.** The `/historical-society` skill and end-of-session MEMORY.md updates are Haiku-grade tasks dressed as Sonnet work. These can be dispatched as background agents at the end of every session without occupying main context.
 
@@ -199,7 +199,7 @@ MEMORY.md hit 206 lines against a 200-line limit. The growth pattern reveals the
 
 ### Documentation That Is Missing
 
-**Per-engine decision log.** Why does OVERBITE use plain param IDs (`filter_cutoff`) instead of prefixed ones (`poss_filter_cutoff`)? The answer is "342 presets already use plain names" — but this lives only in MEMORY.md as a one-line note. An XOlokun adapter author discovering this inconsistency has no way to find the rationale without full context search. Each engine with a non-standard convention should have a `decisions.md` in its engine directory.
+**Per-engine decision log.** Why does OVERBITE use plain param IDs (`filter_cutoff`) instead of prefixed ones (`poss_filter_cutoff`)? The answer is "342 presets already use plain names" — but this lives only in MEMORY.md as a one-line note. An XOceanus adapter author discovering this inconsistency has no way to find the rationale without full context search. Each engine with a non-standard convention should have a `decisions.md` in its engine directory.
 
 **Oxport one-click orchestrator spec.** `Tools/oxport.py` exists (8-stage pipeline). The P1 roadmap item "Oxport One-Click" is listed as "(M effort)" in the oxport-tool-suite.md memory file but no spec exists. The sprint report shows the orchestrator was built, but the dry-run preflight is not invoked in any session.
 
@@ -229,7 +229,7 @@ The morning plan is valuable but inconsistently authored and easily loses model-
 
 **Recommendation 4: Consolidate preset count and seance count to one authoritative script.**
 
-Three different counts for presets appear across MEMORY.md, the fleet health dashboard, and session sprint reports. Run one script at session start and end: count `.xometa` files in `Presets/XOlokun/`, count seance verdict files in `Docs/seances/`, compare both against registered engine count. Output a 4-line health summary. Paste it into MEMORY.md at session close. All other counts are stale by definition.
+Three different counts for presets appear across MEMORY.md, the fleet health dashboard, and session sprint reports. Run one script at session start and end: count `.xometa` files in `Presets/XOceanus/`, count seance verdict files in `Docs/seances/`, compare both against registered engine count. Output a 4-line health summary. Paste it into MEMORY.md at session close. All other counts are stale by definition.
 
 **Recommendation 5: Implement Vol 2 scope discipline from day one.**
 
@@ -269,11 +269,11 @@ The audit found four different preset counts in active documentation:
 | Source | Count | Date | Method |
 |--------|-------|------|--------|
 | `fleet_health_2026_03_20.md` | 21,918 | 2026-03-20 | File count per engine directory |
-| `sweep_report_2026_03_20.md` | 15,199 | 2026-03-20 | `.xometa` files under `Presets/XOlokun/` |
+| `sweep_report_2026_03_20.md` | 15,199 | 2026-03-20 | `.xometa` files under `Presets/XOceanus/` |
 | `sprint_report_2026-03-18.md` | 13,550 | 2026-03-18 | `.xometa` files at that point in time |
 | `MEMORY.md` | ~15,200 | 2026-03-20 | Manual estimate |
 
-The 21,918 figure (fleet health) likely double-counts or includes JSON presets in engine subdirectories. The 15,199 sweep figure is the most methodologically rigorous (single directory, single extension). **15,199 is the figure to use.** The fleet health script should be corrected to count only `Presets/XOlokun/**/*.xometa`.
+The 21,918 figure (fleet health) likely double-counts or includes JSON presets in engine subdirectories. The 15,199 sweep figure is the most methodologically rigorous (single directory, single extension). **15,199 is the figure to use.** The fleet health script should be corrected to count only `Presets/XOceanus/**/*.xometa`.
 
 Seance count discrepancy: CLAUDE.md says "30 seances complete (2026-03-19)" but the fleet health dashboard shows 13 engines with seance verdicts. The 30 figure likely refers to the pre-March-14 Prism Sweep scope of 24 original engines + 5 Constellation + OBRIX (total 30 — the count before the 12 new engines were added). The current fleet health dashboard is the authoritative source: 13 engines have verdict files in `Docs/seances/`. The other 29 are pending.
 

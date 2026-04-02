@@ -1,4 +1,4 @@
-# XOlokun Community Interactions
+# XOceanus Community Interactions
 
 **XO_OX — March 2026**
 **"The deep is more interesting when you explore it together."**
@@ -15,7 +15,7 @@ The community isn't an audience. It's the expedition crew. Every interaction sho
 
 ### The Concept
 
-Hidden codes scattered across the XOlokun ecosystem — in blog posts, social media, community channels, even inside preset names. Enter a Dive Code on the site or in the plugin, and something happens: a mystery preset appears, a secret creature reveals itself, a hidden page unlocks.
+Hidden codes scattered across the XOceanus ecosystem — in blog posts, social media, community channels, even inside preset names. Enter a Dive Code on the site or in the plugin, and something happens: a mystery preset appears, a secret creature reveals itself, a hidden page unlocks.
 
 ### Types of Dive Codes
 
@@ -25,7 +25,7 @@ Hidden codes scattered across the XOlokun ecosystem — in blog posts, social me
 | **Creature Codes** | Whispered in Discord/Patreon | A hidden creature identity card with lore | `PRAYA` → reveals the XOxytocin siphonophore deep lore page |
 | **Coupling Codes** | Inside preset names (first letters spell a code) | A coupling recipe that produces an impossible sound | Load presets "Abyss" + "Rise" + "Current" → first letters spell `ARC` → secret coupling demo |
 | **Konami Deep** | ↑↑↓↓←→←→BA on the homepage | The entire site inverts to a "deep mode" with hidden content visible | Bioluminescent creatures glow brighter, secret nav links appear |
-| **Seasonal Codes** | Social media during events | Time-limited mystery gifts | New Year: `DESCENT2027` → 12 presets (one per month of XOlokun's first year) |
+| **Seasonal Codes** | Social media during events | Time-limited mystery gifts | New Year: `DESCENT2027` → 12 presets (one per month of XOceanus's first year) |
 | **Collaborative Codes** | Parts distributed to different community members | Only works when assembled from multiple people's pieces | 4 people each have 1/4 of a code → must combine in Discord to unlock a quad preview |
 
 ### Implementation
@@ -187,9 +187,9 @@ A page where anyone can propose a new engine concept:
 Annual (or biannual) community engine-building competition:
 
 1. **SDK published** with full documentation + Professor Oscar tutorials
-2. **Challenge announced**: "Build an XOlokun engine. Any synthesis concept. 90 days."
+2. **Challenge announced**: "Build an XOceanus engine. Any synthesis concept. 90 days."
 3. **Submissions reviewed** by the Synth Seance (ghost council evaluates, just like internal engines)
-4. **Winner's engine** gets integrated into XOlokun as an official engine
+4. **Winner's engine** gets integrated into XOceanus as an official engine
 5. **Runner-ups** get featured in the SDK showcase
 
 Prize structure:
@@ -299,7 +299,7 @@ Scheduled community events:
 
 ### Bioluminescence Exchange — Custom Themes
 
-Users can create custom UI color themes for their XOlokun installation:
+Users can create custom UI color themes for their XOceanus installation:
 
 - Choose your own bioluminescence colors for each engine
 - Share themes on the community gallery
@@ -362,7 +362,7 @@ Every interaction circles back to three principles:
 2. **Generosity** — Everything of value eventually becomes free. Contributions are recognized. "Omnibus — For All."
 3. **Community as Ecosystem** — Like the ocean itself, the community is interconnected. One person's preset becomes another's inspiration. One person's engine idea becomes everyone's instrument.
 
-The best synthesizer communities (Elektronauts, the Surge Discord, the Vital community) aren't built on features — they're built on the feeling that you belong to something alive. XOlokun's community should feel like diving into a reef: overwhelming at first, then endlessly fascinating, with new life around every coral.
+The best synthesizer communities (Elektronauts, the Surge Discord, the Vital community) aren't built on features — they're built on the feeling that you belong to something alive. XOceanus's community should feel like diving into a reef: overwhelming at first, then endlessly fascinating, with new life around every coral.
 
 ---
 

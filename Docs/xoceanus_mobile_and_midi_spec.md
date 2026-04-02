@@ -1,4 +1,4 @@
-# XOlokun — Mobile Layout, Touch Interaction & MIDI Controller Specification
+# XOceanus — Mobile Layout, Touch Interaction & MIDI Controller Specification
 
 **Version:** 1.0
 **Author:** XO_OX Designs
@@ -9,7 +9,7 @@
 **Status:** Specification Complete — Ready for Implementation
 
 **Related Documents:**
-- `xolokun_technical_design_system.md` — authoritative design system (Gallery Model, color, typography, components)
+- `xoceanus_technical_design_system.md` — authoritative design system (Gallery Model, color, typography, components)
 - `xo_signature_playsurface_spec.md` — PlaySurface zones, modes, and interaction model (desktop reference)
 
 ---
@@ -20,7 +20,7 @@
 
 Mobile is not a scaled-down desktop. It is a different relationship with the instrument. A laptop sits on a desk — the producer reaches toward it. A phone or tablet rests in the hands — the instrument wraps around the producer. This changes everything: the hierarchy of controls, the size of targets, the role of gesture, and the meaning of space on screen.
 
-XOlokun mobile treats the phone and tablet as first-class instruments, not compromised views of a desktop application.
+XOceanus mobile treats the phone and tablet as first-class instruments, not compromised views of a desktop application.
 
 ### 1.2 Touch is Better Than Mouse
 
@@ -235,7 +235,7 @@ In Intuitive mode, the bottom section defaults to the Preset Browser. In Advance
 
 ### 4.3 iPad Split View / Slide Over
 
-XOlokun supports iPadOS multitasking:
+XOceanus supports iPadOS multitasking:
 
 | Mode | Behavior |
 |------|----------|
@@ -478,7 +478,7 @@ This section applies to both desktop (macOS) and mobile (iOS/iPadOS) via CoreMID
 
 ### 8.1 MIDI Learn
 
-Any automatable parameter in XOlokun can be bound to an external MIDI controller via MIDI Learn.
+Any automatable parameter in XOceanus can be bound to an external MIDI controller via MIDI Learn.
 
 **Workflow:**
 1. Right-click (desktop) or long-press (mobile) on any knob, slider, or button
@@ -500,11 +500,11 @@ Any automatable parameter in XOlokun can be bound to an external MIDI controller
 
 ### 8.2 MPE (MIDI Polyphonic Expression)
 
-XOlokun supports full MPE via both MIDI 2.0 and legacy MPE (MCM — MPE Configuration Message).
+XOceanus supports full MPE via both MIDI 2.0 and legacy MPE (MCM — MPE Configuration Message).
 
 **Per-Note Expression Mapping:**
 
-| MPE Dimension | XOlokun Target | PlaySurface Equivalent |
+| MPE Dimension | XOceanus Target | PlaySurface Equivalent |
 |---------------|----------------|----------------------|
 | Per-note pitch bend | Fretless Y-axis | Pitch glide |
 | Per-note pressure | Velocity / aftertouch | Touch force |
@@ -512,7 +512,7 @@ XOlokun supports full MPE via both MIDI 2.0 and legacy MPE (MCM — MPE Configur
 
 **MPE Controller Compatibility:**
 
-MPE controllers map 1:1 to Fretless mode. When an MPE controller is detected, XOlokun automatically suggests switching to Fretless mode (user can decline).
+MPE controllers map 1:1 to Fretless mode. When an MPE controller is detected, XOceanus automatically suggests switching to Fretless mode (user can decline).
 
 **Zone Configuration:**
 
@@ -538,7 +538,7 @@ These default mappings are active out of the box. All are overridable via MIDI L
 
 ### 8.4 Controller Presets
 
-Pre-configured MIDI mappings for common hardware. Selectable from Settings > MIDI > Controller Preset. Each preset auto-maps the controller's physical controls to XOlokun parameters.
+Pre-configured MIDI mappings for common hardware. Selectable from Settings > MIDI > Controller Preset. Each preset auto-maps the controller's physical controls to XOceanus parameters.
 
 | Controller | Pad Mapping | Knob/Fader Mapping | Special |
 |-----------|-------------|-------------------|---------|
@@ -645,7 +645,7 @@ When Eco mode is active (forced for 3-engine on iPad, optional otherwise):
 |-----------|---------------|
 | State save | Full parameter state + active engine config + preset name serialized via `AUAudioUnit.fullState` |
 | State restore | Deserialize and apply — engine activation, parameter values, MIDI mappings |
-| Preset browsing | Native XOlokun preset browser within AUv3 view (not host preset menu) |
+| Preset browsing | Native XOceanus preset browser within AUv3 view (not host preset menu) |
 | User presets | AUv3 user preset API supported — host can save/recall independently |
 
 ### 10.3 Audio + MIDI
@@ -686,7 +686,7 @@ XPN export on mobile is a secondary feature. The primary export workflow is on d
 │  Render Engine (background thread)       │
 │                                          │
 │  AVAudioEngine (offline render mode)     │
-│  ├── XOlokun AU instance (internal)    │
+│  ├── XOceanus AU instance (internal)    │
 │  ├── Render MIDI sequence per note      │
 │  ├── Write to WAV via ExtAudioFile      │
 │  └── Progress callback to UI            │

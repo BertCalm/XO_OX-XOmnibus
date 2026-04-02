@@ -2,7 +2,7 @@
 ## Master Catalogue — All Design Assets Across the Pipeline
 
 **Version**: 1.0 — 2026-03-23
-**Scope**: XOlokun (desktop plugin), Outshine/Originate (companion tools), XO-OX.org (website), audio-xpm-creator (web app), iOS AUv3/Standalone
+**Scope**: XOceanus (desktop plugin), Outshine/Originate (companion tools), XO-OX.org (website), audio-xpm-creator (web app), iOS AUv3/Standalone
 **Maintained by**: UIX Design Studio (Ulf, Issea, Xavier, Lucy)
 **Target lookup time**: Under 10 seconds for any asset
 
@@ -12,7 +12,7 @@
 
 1. **Find by category** — use the section headers below (Fonts, Figma Kits, Knobs, etc.)
 2. **Find by use case** — see the [Quick-Access Tables](#quick-access-tables) at the bottom
-3. **Find by product** — each asset lists "Relevance to XOlokun" with specific component names
+3. **Find by product** — each asset lists "Relevance to XOceanus" with specific component names
 4. **Status codes**:
    - `ADOPTED` — in active use in production files
    - `REVIEW` — acquired, not yet evaluated for fit
@@ -45,11 +45,11 @@
 
 ## 1. FONTS
 
-> All fonts below are for display/header/body use. For XOlokun production, Space Grotesk + Inter + JetBrains Mono are the canonical three. Others are REVIEW/REFERENCE for the iOS app, XO-OX.org headers, or future expansions.
+> All fonts below are for display/header/body use. For XOceanus production, Space Grotesk + Inter + JetBrains Mono are the canonical three. Others are REVIEW/REFERENCE for the iOS app, XO-OX.org headers, or future expansions.
 
 ---
 
-### 1.1 ADOPTED — Production Fonts (XOlokun / Outshine / Site)
+### 1.1 ADOPTED — Production Fonts (XOceanus / Outshine / Site)
 
 | Name | Weights | Format | License | Use | Location |
 |------|---------|--------|---------|-----|----------|
@@ -57,7 +57,7 @@
 | **Inter** | Light, Regular, Medium, SemiBold (300–600) | WOFF2/TTF (Google Fonts CDN) | OFL (free) | Body copy (12pt Regular), form field labels (11pt Medium), descriptions, tooltips, site body text | Google Fonts CDN — embedded via BinaryData in JUCE |
 | **JetBrains Mono** | Light, Regular, Medium (300–500) | WOFF2/TTF (Google Fonts CDN) | OFL (free) | All numeric values (11pt Regular): Hz, dB, MIDI notes, BPM, sample counts, parameter readouts | Google Fonts CDN — embedded via BinaryData in JUCE |
 
-**Note**: These three are referenced in both the JUCE plugin (`Docs/design/xolokun_ui_master_spec_v2.md`) and the site (`Site/design-tokens.css`, `Docs/mockups/xolokun-main-ui.html`). Always embed via `BinaryData` — never rely on system installation.
+**Note**: These three are referenced in both the JUCE plugin (`Docs/design/xoceanus_ui_master_spec_v2.md`) and the site (`Site/design-tokens.css`, `Docs/mockups/xoceanus-main-ui.html`). Always embed via `BinaryData` — never rely on system installation.
 
 ---
 
@@ -84,7 +84,7 @@
 
 | Name | Weights | Format | License | Style | Relevance | Location |
 |------|---------|--------|---------|-------|-----------|----------|
-| **Nebulica** (additional OTF) | Thin, ExtraLight, Black (full 9-weight family) | OTF | Commercial (Ui8) | Geometric, futuristic sans | Strong for XOlokun nameplate and premium headers | `~/Downloads/nebulica_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
+| **Nebulica** (additional OTF) | Thin, ExtraLight, Black (full 9-weight family) | OTF | Commercial (Ui8) | Geometric, futuristic sans | Strong for XOceanus nameplate and premium headers | `~/Downloads/nebulica_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
 | **Brate** | Light, Regular, Medium, SemiBold, Bold (5 weights) | OTF | Commercial (Ui8) | Clean geometric sans, wide tracking | Body alternative for large display; good at 48–72px | `~/Downloads/Brate/` |
 | **Fonzy** | Thin, Light, Regular, Bold, Outline (5 weights) | OTF | Commercial (Ui8) | Rounded geometric, playful-but-clean | iOS app UI candidate — warm character, legible | `~/Downloads/fonzy_sans_serif_5_font_family_pack_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
 | **Immani 2** | Full variable family | OTF/TTF | Commercial (Ui8) | Modern variable sans | Variable font experiments; axis testing | `~/Downloads/immani_2_font_family_pack_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/` |
@@ -169,7 +169,7 @@
 - **Style**: Mobile-optimized dark UI, touch-friendly hit targets
 - **Status**: REVIEW
 - **Relevance**: iOS AUv3/Standalone app — this is the primary mobile reference. Touch targets, thumb zones, haptic-friendly controls.
-- **Note**: Includes mod wheel — directly applicable to iOS XOlokun expression controls
+- **Note**: Includes mod wheel — directly applicable to iOS XOceanus expression controls
 
 ### 2.7 Solar-Gray Kit 07 — Minimal Light/Gray Theme
 - **Location**: `~/Downloads/Audio UI/FIGMA-KITS/Solar-Gray-Kit-07/`
@@ -201,7 +201,7 @@
 | Name | Location | Source | Status | Notes |
 |------|----------|--------|--------|-------|
 | **AiDEA – Smart SaaS Dashboard** | `~/Downloads/AiDEA – Smart SaaS Dashboard UI Kit.fig` | Ui8 | REVIEW | Dashboard components; relevant to Outshine pipeline view |
-| **Aura AI Assistant Mobile App** | `~/Downloads/Aura Ai Assistant Mobile App UI Kit.fig` | Ui8 | REVIEW | Mobile AI assistant patterns; iOS XOlokun UX reference |
+| **Aura AI Assistant Mobile App** | `~/Downloads/Aura Ai Assistant Mobile App UI Kit.fig` | Ui8 | REVIEW | Mobile AI assistant patterns; iOS XOceanus UX reference |
 | **Floma – Go Fluent** | `~/Downloads/Floma - Go Fluent Go Floma.fig` | Ui8 | REVIEW | Motion/animation-first design system |
 | **Kids Game UI** | `~/Downloads/Kids Game.fig` | Unknown | REFERENCE | Playful UI patterns; may inspire aquarium interactivity |
 | **Source Fusion AI 1.1** | `~/Downloads/Source Fusion AI 1.1.fig` | Ui8 | REVIEW | AI interface patterns; Originate export flow |
@@ -426,7 +426,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 | **Kit-28** | Background, Big Knob, Middle Knob, Small Knob, Button, Slider, Wheel | Full-featured compact kit | `KITS/kit-28/` |
 | **Kit-30** | Background, Big Knob, Small Knob, Slider | Minimal 4-component set | `KITS/Kit-30/` |
 
-**Recommended kits by XOlokun use case**:
+**Recommended kits by XOceanus use case**:
 - **PlaySurface macro knobs**: Kit-07 (illuminated) or Kit-01 (metal)
 - **Engine preset selector**: Kit-17 (LED) or Kit-14 (glass)
 - **iOS AUv3 app**: Kit-04 (colorful, distinct states) or Kit-14 (glass, premium)
@@ -440,7 +440,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 | **Hero Gradients v1** | 36 images | PNG + JPG | Abstract hero backgrounds | XO-OX.org hero sections, engine card backgrounds | REVIEW | `~/Downloads/Hero Gradients v1/` |
 | **Hero Gradients v2** | 32 images | PNG + JPG | Abstract hero — v2 variants | Continuation of v1; more options for site sections | REVIEW | `~/Downloads/Hero Gradients v2/` |
 | **Galactic Gradients** | 1 folder + ~28 images | PNG + JPG | Space/cosmic blue-purple gradients | Deep ocean / abyss engine aesthetics; XOceanDeep, XOabyss backgrounds | REVIEW | `~/Downloads/Galactic Gradients/` |
-| **Cubic Glass Gradient** | Small set | PNG | Glassmorphism cubes | Glass-panel UI surface exploration; XOlokun glass effects | REVIEW | `~/Downloads/Cubic Glass Gradient/` |
+| **Cubic Glass Gradient** | Small set | PNG | Glassmorphism cubes | Glass-panel UI surface exploration; XOceanus glass effects | REVIEW | `~/Downloads/Cubic Glass Gradient/` |
 | **Holographic Series 13–24** | 12 images | PNG | Holographic foil textures | Premium material backgrounds; special edition UI surfaces | REVIEW | `~/Downloads/templify_holographic_13-24_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/` |
 | **Holographic Series (set 2)** | 12 images | PNG | Holographic variant set | Same series, additional frames | REVIEW | `~/Downloads/templify_holographic_13-24_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0(1)/` |
 | **Ultimate Pack of HERO Gradients** | Figma source | `.fig` | Curated gradient library with Figma swatches | Full gradient system in Figma; best for design token extraction | REVIEW | `~/Downloads/Ultimate pack of HERO gradients.fig` |
@@ -489,7 +489,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 - **Contains**: 13 themed component sets:
   - Flat, Paper, Wood, Stone, Metal, Hologram, Gradient, Glass, Pumpkin, MysticWood, Papernote, Metalworks, Runewood
   - Plus: Cursors, Misc, License
-- **Relevance**: The Glass (08), Metal (05), Hologram (06) themes directly align with XOlokun aesthetic. Stone (04) and Wood (03) relevant for organic engine surfaces.
+- **Relevance**: The Glass (08), Metal (05), Hologram (06) themes directly align with XOceanus aesthetic. Stone (04) and Wood (03) relevant for organic engine surfaces.
 - **Status**: REVIEW
 - **Format**: Sprite sheets per component per theme
 
@@ -528,7 +528,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 - **Location**: `~/Downloads/ezyzip_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/`
 - **Contains**: `Recording Studio UI Pack.fig` + `Studio Record UI/` folder
-- **Relevance**: HIGHEST relevance to audio product design — recording studio panels directly applicable to XOlokun transport controls, Outshine layout
+- **Relevance**: HIGHEST relevance to audio product design — recording studio panels directly applicable to XOceanus transport controls, Outshine layout
 - **Status**: REVIEW (evaluate this first among the Ui8 fig files)
 
 ---
@@ -548,8 +548,8 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 | File | Path | Purpose |
 |------|------|---------|
-| **Master UI Spec v2** | `Docs/design/xolokun_ui_master_spec_v2.md` | Complete component specs, all panels |
-| **Design Guidelines** | `Docs/design/xolokun_design_guidelines.md` | Methodology and constraints |
+| **Master UI Spec v2** | `Docs/design/xoceanus_ui_master_spec_v2.md` | Complete component specs, all panels |
+| **Design Guidelines** | `Docs/design/xoceanus_design_guidelines.md` | Methodology and constraints |
 | **Accessibility Audit** | `Docs/design/accessibility-audit.md` | WCAG compliance notes |
 | **Button System Spec** | `Docs/design/button-system-spec.md` | Full button state matrix |
 | **Input State Matrix** | `Docs/design/input-state-matrix.md` | 7-state form input system |
@@ -590,7 +590,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 | File | Path | Description | Status |
 |------|------|-------------|--------|
-| **XOlokun Main UI Mockup v3** | `~/Documents/GitHub/XO_OX-XOmnibus/Docs/mockups/xomnibus-main-ui.html` | Interactive HTML prototype, Rounds 51–120. Full engine data model, knob drag, oscilloscope canvas, coupling matrix, ADSR paths, preset navigation, dark/light mode toggle. Uses Space Grotesk + Inter + JetBrains Mono via Google Fonts CDN. | ADOPTED — primary interactive reference |
+| **XOceanus Main UI Mockup v3** | `~/Documents/GitHub/XO_OX-XOmnibus/Docs/mockups/xomnibus-main-ui.html` | Interactive HTML prototype, Rounds 51–120. Full engine data model, knob drag, oscilloscope canvas, coupling matrix, ADSR paths, preset navigation, dark/light mode toggle. Uses Space Grotesk + Inter + JetBrains Mono via Google Fonts CDN. | ADOPTED — primary interactive reference |
 | **Outshine Prototype** | `~/Documents/GitHub/audio-xpm-creator/Docs/mockups/outshine-prototype.html` | OUTSHINE window wireframe | REVIEW |
 
 ---
@@ -695,9 +695,9 @@ All files follow naming convention: `[section]-[descriptor].png` at `~/[filename
 
 | Product Surface | Primary Assets | Secondary |
 |-----------------|---------------|-----------|
-| **XOlokun Engine Panel** | Kit-01 or Kit-07 knobs, design-tokens.css | Knob-Set-08/09 |
-| **XOlokun Coupling View** | PlaySurface screenshots, coupling-ui-architecture doc | Figma FLOW modals |
-| **XOlokun PlaySurface** | Kit-07 illuminated, Button-01 | Light Set-01 |
+| **XOceanus Engine Panel** | Kit-01 or Kit-07 knobs, design-tokens.css | Knob-Set-08/09 |
+| **XOceanus Coupling View** | PlaySurface screenshots, coupling-ui-architecture doc | Figma FLOW modals |
+| **XOceanus PlaySurface** | Kit-07 illuminated, Button-01 | Light Set-01 |
 | **Outshine (plugin)** | design spec OUTSHINE_ORIGINATE.md, Metal Slider Set 02 | Mantine sliders |
 | **Originate (export)** | design spec, FLOW toasts | Mantine modals |
 | **XO-OX.org** | Nebulica, Chrys, Hero Gradients, aquarium screenshots | FLOW page templates |

@@ -1,6 +1,6 @@
-# XOlokun Fleet Preset Census
+# XOceanus Fleet Preset Census
 **Date**: 2026-03-21
-**Source**: `Presets/XOlokun/` — all `.xometa` files
+**Source**: `Presets/XOceanus/` — all `.xometa` files
 
 ---
 

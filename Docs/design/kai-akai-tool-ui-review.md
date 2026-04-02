@@ -1,6 +1,6 @@
 # Kai Android Team — AKAI/XPN Tool UI Review
 **Date:** 2026-03-23
-**Subject:** Outshine, Originate, Oxport — UI Compatibility with XOlokun's Rebirth Aesthetic
+**Subject:** Outshine, Originate, Oxport — UI Compatibility with XOceanus's Rebirth Aesthetic
 **Mandate:** "The XPN suite Akai wishes they could have created."
 **Androids deployed:** Rex, Vibe, Scout, Atlas, Sage
 
@@ -11,9 +11,9 @@
 We read three artifacts before writing a single opinion:
 1. `Docs/mockups/outshine-prototype.html` — the living prototype
 2. `DESIGN_SPECIFICATION_OUTSHINE_ORIGINATE.md` — the UIX Studio spec (Ulf/Issea/Xavier)
-3. `Docs/xolokun_master_specification.md` / `Docs/design/xomnibus_ui_master_spec_v2.md` — XOlokun's Rebirth design language
+3. `Docs/xoceanus_master_specification.md` / `Docs/design/xomnibus_ui_master_spec_v2.md` — XOceanus's Rebirth design language
 
-The UIX Studio did excellent foundational work. This review is not a rejection of that work. It is a calibration pass: aligning Outshine/Originate/Oxport to the full weight of XOlokun's Rebirth aesthetic, MPC format realities, and the MPCe 3D pad competitive window. Several findings are [CRITICAL] with production consequences; most are [IMPROVEMENT] or [STYLE].
+The UIX Studio did excellent foundational work. This review is not a rejection of that work. It is a calibration pass: aligning Outshine/Originate/Oxport to the full weight of XOceanus's Rebirth aesthetic, MPC format realities, and the MPCe 3D pad competitive window. Several findings are [CRITICAL] with production consequences; most are [IMPROVEMENT] or [STYLE].
 
 ---
 
@@ -51,7 +51,7 @@ The XPN spec makes `ZonePlay` velocity switching (1) and round-robin cycle (0) m
 
 #### R05 [STYLE] — "WAV files, folders, XPN packs" Drop Zone Text
 
-The empty-state drop zone advertises "XPN packs" as an input source. This is correct behavior for re-editing existing instruments, but "XPN pack" is Akai's brand term. For XOlokun's positioning as "the XPN suite Akai wishes they could have built," we should own our vocabulary. Prefer: `WAV files, folders, or .xpn archives`.
+The empty-state drop zone advertises "XPN packs" as an input source. This is correct behavior for re-editing existing instruments, but "XPN pack" is Akai's brand term. For XOceanus's positioning as "the XPN suite Akai wishes they could have built," we should own our vocabulary. Prefer: `WAV files, folders, or .xpn archives`.
 
 ---
 
@@ -79,13 +79,13 @@ The Auto Mode panel (A2) shows classification properties (Type, Root, Transient,
 
 #### V03 [IMPROVEMENT] — Rebirth Mode Has No UI Presence
 
-Seance Blessing B040 — Rebirth Mode (engines as transfer functions) is "genuine innovation." But Rebirth Mode is completely absent from all wireframes. This is the most differentiated capability: using XOlokun's 71-engine fleet as processing/synthesis tools to reshape samples. It should not be buried in settings.
+Seance Blessing B040 — Rebirth Mode (engines as transfer functions) is "genuine innovation." But Rebirth Mode is completely absent from all wireframes. This is the most differentiated capability: using XOceanus's 71-engine fleet as processing/synthesis tools to reshape samples. It should not be buried in settings.
 
 **Fix:** Add a "Rebirth" toggle button in the header bar next to `Auto Mode / Design Mode`. When enabled, the Auto Classification panel gains a row: `Rebirth: OSPREY (Coastal Processing)` with a small engine accent color swatch. The Export button changes label to `Export Reborn XPN Pack`. This single UI addition communicates the product's uniqueness to every user who opens Outshine.
 
 #### V04 [STYLE] — Velocity Layer Palette Is Not Using the Zone Color System
 
-The Velocity tab (implied by the wireframe) presumably uses generic color for velocity layer visualization. The existing 12-color zone palette from the spec (`Reef Jade`, `Crate Yellow`, `Axolotl Pink`, etc.) should be applied to velocity layers, using the same hue-sequence per zone. This makes the instrument feel like it belongs to the XOlokun family rather than being a standalone utility.
+The Velocity tab (implied by the wireframe) presumably uses generic color for velocity layer visualization. The existing 12-color zone palette from the spec (`Reef Jade`, `Crate Yellow`, `Axolotl Pink`, etc.) should be applied to velocity layers, using the same hue-sequence per zone. This makes the instrument feel like it belongs to the XOceanus family rather than being a standalone utility.
 
 #### V05 [STYLE] — "Contextual Preset Generation" (VIS-007) Deserves a UI Hook
 
@@ -128,43 +128,43 @@ The Export Complete state says "INSTRUMENT READY." MPC users call these "program
 
 ---
 
-### [ATLAS] — XOlokun Design Language Integration
+### [ATLAS] — XOceanus Design Language Integration
 
-**Domain:** Does everything match XOlokun's Rebirth aesthetic (dark mode, XO Gold, depth-zone gradients, APERTURE/Space Grotesk typography)? Does it feel like a sibling?
+**Domain:** Does everything match XOceanus's Rebirth aesthetic (dark mode, XO Gold, depth-zone gradients, APERTURE/Space Grotesk typography)? Does it feel like a sibling?
 
-#### A01 [CRITICAL] — The Current Prototype Is Dark Mode Only; XOlokun Is Light Mode Default
+#### A01 [CRITICAL] — The Current Prototype Is Dark Mode Only; XOceanus Is Light Mode Default
 
-The prototype (`outshine-prototype.html`) is built entirely in dark mode: `--xo-bg-base: #1A1A1A`, `--xo-bg-panel: #242424`. XOlokun's Rebirth design language specifies **light mode as the default** with dark mode as a toggle. The Gallery Model is a "warm white shell `#F8F6F3` framing engine accent colors."
+The prototype (`outshine-prototype.html`) is built entirely in dark mode: `--xo-bg-base: #1A1A1A`, `--xo-bg-panel: #242424`. XOceanus's Rebirth design language specifies **light mode as the default** with dark mode as a toggle. The Gallery Model is a "warm white shell `#F8F6F3` framing engine accent colors."
 
-This is not a preference conflict — it is a product decision. When Outshine launches from XOlokun's menu bar, it should inherit XOlokun's current mode (light or dark). Opening a dark Outshine from a light XOlokun window creates a jarring ownership break.
+This is not a preference conflict — it is a product decision. When Outshine launches from XOceanus's menu bar, it should inherit XOceanus's current mode (light or dark). Opening a dark Outshine from a light XOceanus window creates a jarring ownership break.
 
 **Fix:**
 - Implement both light and dark themes using the design token system from the UIX Studio spec (the spec correctly defined both — the prototype only implemented dark).
 - Light mode tokens: `bg-window: #F8F6F3`, `bg-panel: #EFEDE9`, `bg-card: #FFFFFF`.
 - The XO Gold header (`#E9C46A`) is a brand constant — identical in both modes.
-- Mode should be read from XOlokun's `AppearancePreference` on launch and respond to system dark mode changes via `NSAppearance` / JUCE's appearance observer.
+- Mode should be read from XOceanus's `AppearancePreference` on launch and respond to system dark mode changes via `NSAppearance` / JUCE's appearance observer.
 
 #### A02 [CRITICAL] — Typography: Space Grotesk vs. APERTURE
 
-The UIX Studio spec and prototype correctly use Space Grotesk (XOlokun's display typeface). The CLAUDE.md mentions "APERTURE font" in relation to XOlokun's new design language. Clarification needed: if APERTURE is the Rebirth-era typographic direction, then the tool headers (`OUTSHINE`, `ORIGINATE`) should use APERTURE for the title word, with Space Grotesk for all body labels. If APERTURE is not yet finalized or licensed, Space Grotesk remains correct for now.
+The UIX Studio spec and prototype correctly use Space Grotesk (XOceanus's display typeface). The CLAUDE.md mentions "APERTURE font" in relation to XOceanus's new design language. Clarification needed: if APERTURE is the Rebirth-era typographic direction, then the tool headers (`OUTSHINE`, `ORIGINATE`) should use APERTURE for the title word, with Space Grotesk for all body labels. If APERTURE is not yet finalized or licensed, Space Grotesk remains correct for now.
 
-**Current state:** The prototype uses Space Grotesk at 13px SemiBold for the window title — visually correct for the XOlokun family. No action required unless APERTURE is confirmed and licensed.
+**Current state:** The prototype uses Space Grotesk at 13px SemiBold for the window title — visually correct for the XOceanus family. No action required unless APERTURE is confirmed and licensed.
 
 #### A03 [IMPROVEMENT] — Depth-Zone Gradients Are Missing from Zone Colors
 
-XOlokun's aquatic mythology assigns visual materials based on depth (surface/abyss). The Outshine zone color palette (12 colors: Reef Jade, Crate Yellow, Axolotl Pink, etc.) is the correct XOlokun color language. But the current prototype uses these colors as flat fills. XOlokun's Tactile Mandate states: "Nothing is truly flat. Use subtle gradients, inner shadows, and easing curves." Zone blocks in the keyboard map should have a 1px inner shadow on the top edge (Issea's recommendation from the UIX spec — already documented; needs implementing) and a subtle 2% lightness gradient top-to-bottom.
+XOceanus's aquatic mythology assigns visual materials based on depth (surface/abyss). The Outshine zone color palette (12 colors: Reef Jade, Crate Yellow, Axolotl Pink, etc.) is the correct XOceanus color language. But the current prototype uses these colors as flat fills. XOceanus's Tactile Mandate states: "Nothing is truly flat. Use subtle gradients, inner shadows, and easing curves." Zone blocks in the keyboard map should have a 1px inner shadow on the top edge (Issea's recommendation from the UIX spec — already documented; needs implementing) and a subtle 2% lightness gradient top-to-bottom.
 
-#### A04 [IMPROVEMENT] — The Coupling Blending UI Needs XOlokun's Living Gold Corridor
+#### A04 [IMPROVEMENT] — The Coupling Blending UI Needs XOceanus's Living Gold Corridor
 
-Blessing B041 — Coupling-Inspired Sample Blending — is the most profound differentiator in Outshine. When two samples are coupled-blended, the visual language should reference XOlokun's Living Gold Corridor: a gold arc or bridge between the two source panel entries, pulsing at the blend rate. This is a single JUCE OpenGL or CoreGraphics arc drawn between two list rows. It communicates immediately that Outshine's blending is not a crossfader — it is the same coupling technology that powers XOlokun's engine interactions.
+Blessing B041 — Coupling-Inspired Sample Blending — is the most profound differentiator in Outshine. When two samples are coupled-blended, the visual language should reference XOceanus's Living Gold Corridor: a gold arc or bridge between the two source panel entries, pulsing at the blend rate. This is a single JUCE OpenGL or CoreGraphics arc drawn between two list rows. It communicates immediately that Outshine's blending is not a crossfader — it is the same coupling technology that powers XOceanus's engine interactions.
 
 #### A05 [IMPROVEMENT] — The Header Bar Should Show Engine Accent Color When Rebirth Is Active
 
 When Rebirth Mode is engaged with a specific engine (e.g., OSPREY — Azulejo Blue `#1B4F8A`), the XO Gold header bar should subtly blend the engine's accent color into the gradient: `linear-gradient(90deg, #EDD08A 0%, blend(#E9C46A, #1B4F8A, 0.15) 100%)`. This is a 1-line CSS change in the prototype and a trivial JUCE gradient override. It signals "this instrument was forged through OSPREY" at a glance.
 
-#### A06 [STYLE] — Outshine's Window Should Be Launchable from XOlokun's File Menu
+#### A06 [STYLE] — Outshine's Window Should Be Launchable from XOceanus's File Menu
 
-The integration path requires a `Tools > Open Outshine...` menu item in XOlokun's menu bar (JUCE `MenuBarModel`). The window should open as a floating panel, not a separate application. On macOS, this means `juce::DialogWindow` with `NSWindowStyleMaskFullSizeContentView` (as specified by Xavier in the UIX doc). The Outshine window should respond to XOlokun's window focus changes: dim to 90% opacity when XOlokun is not frontmost.
+The integration path requires a `Tools > Open Outshine...` menu item in XOceanus's menu bar (JUCE `MenuBarModel`). The window should open as a floating panel, not a separate application. On macOS, this means `juce::DialogWindow` with `NSWindowStyleMaskFullSizeContentView` (as specified by Xavier in the UIX doc). The Outshine window should respond to XOceanus's window focus changes: dim to 90% opacity when XOceanus is not frontmost.
 
 ---
 
@@ -200,7 +200,7 @@ MPC Live III has 16 programs per project by default (extendable to 64). A single
 
 ## Kai's Unified Recommendations
 
-### 1. Outshine UI — Updates Required for XOlokun Rebirth Aesthetic
+### 1. Outshine UI — Updates Required for XOceanus Rebirth Aesthetic
 
 **Tier 1 — Must Fix Before Ship (Blocking)**
 
@@ -208,7 +208,7 @@ MPC Live III has 16 programs per project by default (extendable to 64). A single
 |---|---------|--------|
 | R01 | KeyTrack toggle must not exist | Replace with read-only lock badge |
 | R02 | VelStart gap UI missing | Add velocity ladder with split validation |
-| A01 | Dark mode only; XOlokun is light mode default | Implement full light/dark theme switching |
+| A01 | Dark mode only; XOceanus is light mode default | Implement full light/dark theme switching |
 | SC01 | No MPCe quad-corner assignment panel | Add 5th tab "MPCe Layout" with 4×4 grid |
 | SG01 | Cover art only shows 120×120 preview | Confirm both 2000×2000 and 1000×1000 generated |
 
@@ -266,9 +266,9 @@ The 10-stage Oxport pipeline (`oxport.py`) is a sophisticated production tool. I
 
 **The Oxport Dashboard — Concept**
 
-A dedicated panel accessible from XOlokun's menu: `Tools > Oxport Dashboard`. It is a single-window monitoring and launch interface, not a configuration editor. Configuration remains in `.oxbuild` files (correct architecture — producers can edit YAML, engineers configure via CLI).
+A dedicated panel accessible from XOceanus's menu: `Tools > Oxport Dashboard`. It is a single-window monitoring and launch interface, not a configuration editor. Configuration remains in `.oxbuild` files (correct architecture — producers can edit YAML, engineers configure via CLI).
 
-**Dashboard Layout (900×600px, XOlokun design language):**
+**Dashboard Layout (900×600px, XOceanus design language):**
 
 ```
 ╔══════════════════════════════════════════════════════════════════════╗
@@ -315,7 +315,7 @@ A dedicated panel accessible from XOlokun's menu: `Tools > Oxport Dashboard`. It
 Producers unfamiliar with YAML should not have to hand-edit `.oxbuild` files. A 4-step wizard (accessible from the Oxport Dashboard "New Pack..." button) walks through: engine selection, preset count target, velocity layer count, profile selection, and output path. Generates a valid `.oxbuild` file. No DSP changes required — pure UI.
 
 #### [SCOUT] — Pack Preview Player
-Before exporting a full pack, producers need to hear representative samples. A "Preview Mode" in Oxport Dashboard: plays 8 auto-selected presets (one per mood) through XOlokun's engine via BlackHole loopback, without writing any files. Confirms the pack sounds correct before a 4-minute render. Critical for the competitive window — saves iteration time.
+Before exporting a full pack, producers need to hear representative samples. A "Preview Mode" in Oxport Dashboard: plays 8 auto-selected presets (one per mood) through XOceanus's engine via BlackHole loopback, without writing any files. Confirms the pack sounds correct before a 4-minute render. Critical for the competitive window — saves iteration time.
 
 #### [REX] — XPN Diff Tool
 When updating an existing pack (v1.0 → v1.1), there is no way to see what changed in the XPM structure. A diff view in the Oxport Dashboard comparing two `.xpn` archives (side-by-side tree with highlighted differences in zone ranges, velocity splits, sample names) would be standard tooling for any professional pack publisher. Native Instruments' tools have this; Akai's don't. Another first-mover opportunity.
@@ -334,7 +334,7 @@ Hex reports: no path to running Outshine or Originate as standalone plugins on M
 |----------|------|-------|-----------|
 | 1 | Remove KeyTrack toggle → read-only badge | Dev | Yes — XPN correctness |
 | 2 | Add VelStart validation UI to Velocity tab | Dev | Yes — XPN correctness |
-| 3 | Implement light mode theme (Outshine prototype) | Dev | Yes — XOlokun sibling |
+| 3 | Implement light mode theme (Outshine prototype) | Dev | Yes — XOceanus sibling |
 | 4 | Change Originate default sample rate to 44100 | Dev | Yes — MPC hardware |
 | 5 | Add MPCe Layout tab (4×4 pad grid) to Outshine | Dev | Yes — competitive window |
 | 6 | Confirm cover art generates both 2000×2000 + 1000×1000 | Dev | Yes — MPC display |
@@ -356,7 +356,7 @@ The UIX Studio (Ulf, Issea, Xavier) built a strong foundation. The bones are cor
 The delta between those two things is not a redesign. It is:
 - Golden Rule enforcement (Rex's domain — 3 changes)
 - MPCe tab (Scout's competitive mandate — 1 new tab)
-- Light mode implementation (Atlas's XOlokun fidelity mandate — theme switch already specified, not yet built)
+- Light mode implementation (Atlas's XOceanus fidelity mandate — theme switch already specified, not yet built)
 - 44.1kHz default correction (Sage's hardware truth — 1 settings change)
 - The Oxport Dashboard (a new tool that wraps an existing tool in a face that producers can use)
 

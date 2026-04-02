@@ -24,7 +24,7 @@ Before writing a single parameter, know these things:
 
 | Question | Where to Find the Answer |
 |----------|-------------------------|
-| What is this engine's sonic thesis? | `Docs/xolokun_sound_design_guides.md` or the engine's concept brief in `Docs/concepts/` |
+| What is this engine's sonic thesis? | `Docs/xoceanus_sound_design_guides.md` or the engine's concept brief in `Docs/concepts/` |
 | What are its key parameters? | Sound design guide → "Key Parameters" section |
 | What does M1–M4 control? | Sound design guide → "Macros" section |
 | What coupling does it send/receive? | `Docs/coupling_audit.md` |
@@ -141,7 +141,7 @@ DNA is the most important metadata — it powers preset search, morphing, and br
 
 ### DNA Formulas (approximate)
 
-These formulas are **conceptual** — they use generic names. Replace with engine-specific parameter names when computing by hand (e.g., `snap_filterCutoff` for ODDFELIX, `odyssey_filterCutoff` for ODYSSEY — see `Docs/xolokun_sound_design_guides.md`). For automated computation, use `python3 Tools/compute_preset_dna.py`.
+These formulas are **conceptual** — they use generic names. Replace with engine-specific parameter names when computing by hand (e.g., `snap_filterCutoff` for ODDFELIX, `odyssey_filterCutoff` for ODYSSEY — see `Docs/xoceanus_sound_design_guides.md`). For automated computation, use `python3 Tools/compute_preset_dna.py`.
 
 ```
 brightness  = (filterCutoff / 20000) * 0.7 + (harmonicRichness) * 0.3
@@ -257,14 +257,14 @@ Check `Docs/sonic_dna_audit.md` for gaps. When adding a preset:
 - 2–3 words, maximum 30 characters
 - Evocative and poetic — describe the feeling, not the mechanism
 - No synth jargon ("FM pad", "wavetable sweep", "filter cutoff")
-- No duplicates — check existing names in `Presets/XOlokun/`
+- No duplicates — check existing names in `Presets/XOceanus/`
 - No slashes, colons, or special characters except spaces and hyphens
 
 **Good names:** "Warm Amber Fog", "Neon Tetra Chase", "Drift Between Worlds", "Copper Kettle", "Still Water Moon"
 **Bad names:** "OBLONG FM Pad", "Preset_003", "Filter Sweep Bass", "Warm/Dark/Slow"
 
 ### File Location
-`Presets/XOlokun/{Mood}/{name_slug}.xometa`
+`Presets/XOceanus/{Mood}/{name_slug}.xometa`
 
 Where `name_slug` = name with spaces replaced by `_`:
 - "Warm Amber Fog" → `Warm_Amber_Fog.xometa`

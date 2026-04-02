@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Coupling Explainer — What Happens When Engines Talk | XO_OX Field Guide</title>
-<meta name="description" content="The definitive guide to XOlokun's coupling system. 15 types. 76 engines. One idea: when synthesis engines can genuinely influence each other, sounds emerge that cannot be made any other way.">
+<meta name="description" content="The definitive guide to XOceanus's coupling system. 15 types. 76 engines. One idea: when synthesis engines can genuinely influence each other, sounds emerge that cannot be made any other way.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -766,7 +766,7 @@ footer {
 <meta name="twitter:title" content="The Coupling Explainer — XO_OX Field Guide">
 <meta name="twitter:description" content="What happens when two synthesis engines are allowed to genuinely talk to each other. 15 coupling types. Free synthesizer. Open source.">
 <meta name="twitter:image" content="https://xo-ox.org/assets/og-coupling-explainer.png">
-<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="../feed.xml">
+<link rel="alternate" type="application/rss+xml" title="XOceanus Signal" href="../feed.xml">
 <link rel="stylesheet" href="../design-tokens.css">
 </head>
 <body>
@@ -795,7 +795,7 @@ footer {
   <div class="article-hero-label">Field Guide &mdash; The Definitive Reference</div>
   <h1>The Coupling <em>Explainer</em></h1>
   <p class="article-hero-sub">
-    Most synthesizers give you sounds. XOlokun gives you relationships. When one engine's behavior reshapes another engine's synthesis in real time, at the DSP level, something emerges that neither engine could produce alone. This is what coupling is. This is why it matters. And this is how all 15 types work.
+    Most synthesizers give you sounds. XOceanus gives you relationships. When one engine's behavior reshapes another engine's synthesis in real time, at the DSP level, something emerges that neither engine could produce alone. This is what coupling is. This is why it matters. And this is how all 15 types work.
   </p>
   <div class="article-meta">
     <div class="article-meta-item">System<span style="color: var(--coupling);">MegaCouplingMatrix &mdash; 15 Types</span></div>
@@ -824,7 +824,7 @@ This is coupling. It is not layering. It is not mixing. It is not modular routin
 
 <blockquote class="reveal">
   <p>The space between two engines is where the most interesting sounds live.</p>
-  <span class="attribution">XOlokun Design Principle</span>
+  <span class="attribution">XOceanus Design Principle</span>
 </blockquote>
 
 <div class="article-divider reveal"></div>
@@ -832,7 +832,7 @@ This is coupling. It is not layering. It is not mixing. It is not modular routin
 <h2 class="reveal">Where Coupling Comes From</h2>
 
 <p class="reveal">
-XOlokun's coupling system traces directly to the mythology at the heart of the project. In the beginning of the XO_OX universe, there were two creatures: <strong class="article-felix">feliX</strong> the neon tetra and <strong class="article-oscar">Oscar</strong> the axolotl.
+XOceanus's coupling system traces directly to the mythology at the heart of the project. In the beginning of the XO_OX universe, there were two creatures: <strong class="article-felix">feliX</strong> the neon tetra and <strong class="article-oscar">Oscar</strong> the axolotl.
 </p>
 
 <p class="reveal">
@@ -844,11 +844,11 @@ XOlokun's coupling system traces directly to the mythology at the heart of the p
 </p>
 
 <p class="reveal">
-When feliX and Oscar coupled for the first time &mdash; transient met sustain, surface met depth, X met O &mdash; the XO_OX universe was born. Every one of the 76 engines in XOlokun is a species that evolved from that primordial coupling. OddfeliX (feliX himself) and OddOscar (Oscar himself) are still in the fleet, still coupled to each other by default, still producing sounds that neither engine makes alone. The brand mark &mdash; <strong>XO_OX</strong> &mdash; is their names interleaved.
+When feliX and Oscar coupled for the first time &mdash; transient met sustain, surface met depth, X met O &mdash; the XO_OX universe was born. Every one of the 76 engines in XOceanus is a species that evolved from that primordial coupling. OddfeliX (feliX himself) and OddOscar (Oscar himself) are still in the fleet, still coupled to each other by default, still producing sounds that neither engine makes alone. The brand mark &mdash; <strong>XO_OX</strong> &mdash; is their names interleaved.
 </p>
 
 <p class="reveal">
-Every engine in XOlokun has a <em>feliX-Oscar polarity</em>: its position on the vertical axis between feliX's sky and Oscar's ocean floor. This isn't a quality judgment &mdash; surface isn't better than deep. It's a position. The most interesting coupling patches almost always pair engines at different depths, creating a vertical span that neither engine occupies alone.
+Every engine in XOceanus has a <em>feliX-Oscar polarity</em>: its position on the vertical axis between feliX's sky and Oscar's ocean floor. This isn't a quality judgment &mdash; surface isn't better than deep. It's a position. The most interesting coupling patches almost always pair engines at different depths, creating a vertical span that neither engine occupies alone.
 </p>
 
 <div class="polarity-column reveal" aria-label="feliX-Oscar polarity spectrum from surface to deep">
@@ -901,7 +901,7 @@ The difference is the <em>grain</em> and the <em>depth</em> of the interaction.
 </p>
 
 <p class="reveal">
-<strong>Grain:</strong> A sidechain compressor operates at buffer rate &mdash; typically every 64 or 128 samples. By the time it computes a gain reduction value and applies it, several milliseconds have passed. XOlokun's control-rate coupling types (10 of 15) operate at this same block rate, but they route into synthesis parameters rather than gain stages. The other 5 types &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong>, and <strong>KnotTopology</strong> &mdash; operate sample by sample. At 48kHz, that is 48,000 interactions per second. Engine A's audio is not modulating Engine B's parameters. It <em>is</em> Engine B's synthesis input, at audio rate, in real time.
+<strong>Grain:</strong> A sidechain compressor operates at buffer rate &mdash; typically every 64 or 128 samples. By the time it computes a gain reduction value and applies it, several milliseconds have passed. XOceanus's control-rate coupling types (10 of 15) operate at this same block rate, but they route into synthesis parameters rather than gain stages. The other 5 types &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong>, and <strong>KnotTopology</strong> &mdash; operate sample by sample. At 48kHz, that is 48,000 interactions per second. Engine A's audio is not modulating Engine B's parameters. It <em>is</em> Engine B's synthesis input, at audio rate, in real time.
 </p>
 
 <p class="reveal">
@@ -1277,7 +1277,7 @@ The most useful heuristic: <em>couple a high-feliX source into an Oscar-leaning 
   <li><strong>ONSET &rarr; OVERBITE:</strong> The percussive surface shaping the anglerfish's lure and bite.</li>
   <li><strong>OPENSKY &rarr; OCEANDEEP:</strong> The full water column. Euphoric shimmer modulating abyssal 808 sub-bass.</li>
   <li><strong>OPERA &rarr; ORGANON:</strong> The vocal engine feeding the metabolic organism. The prophet feeding the chemotroph.</li>
-  <li><strong>ODDFELIX &rarr; ODDOSCAR:</strong> The original coupling. The neon tetra's transient dart, the axolotl's patient response. Every engine pair in XOlokun is an evolved version of this relationship.</li>
+  <li><strong>ODDFELIX &rarr; ODDOSCAR:</strong> The original coupling. The neon tetra's transient dart, the axolotl's patient response. Every engine pair in XOceanus is an evolved version of this relationship.</li>
 </ul>
 
 <p class="reveal">
@@ -1289,7 +1289,7 @@ The inverse also works, with different results. An Oscar-side source (OUROBOROS,
 <h2 class="reveal">The Architecture: How It Actually Works</h2>
 
 <p class="reveal">
-For those who want the technical picture: XOlokun's coupling runs through the <strong>MegaCouplingMatrix</strong>, which handles up to 64 concurrent routes across four engine slots. Each route specifies a source engine, a target engine, a coupling type, and an amount.
+For those who want the technical picture: XOceanus's coupling runs through the <strong>MegaCouplingMatrix</strong>, which handles up to 64 concurrent routes across four engine slots. Each route specifies a source engine, a target engine, a coupling type, and an amount.
 </p>
 
 <p class="reveal">
@@ -1334,7 +1334,7 @@ Some of the most interesting discoveries happen at the wrong settings. An amount
 </p>
 
 <div class="article-lore reveal">
-  <p>Every sound in XOlokun lives somewhere in the water column between feliX's sky and Oscar's floor. The coupling system is the current. It moves things between depths that would never touch on their own. The comb jelly doesn't hand the anglerfish a signal. The comb jelly's neural pulse changes the water around it. The anglerfish, suspended in that same water, responds &mdash; its filter opens, its pitch drifts, its character shifts in ways that are entirely its own but inextricable from the comb jelly's presence. That shared water is the coupling. You cannot record it and play it back without both creatures present. It is alive only while both are running.</p>
+  <p>Every sound in XOceanus lives somewhere in the water column between feliX's sky and Oscar's floor. The coupling system is the current. It moves things between depths that would never touch on their own. The comb jelly doesn't hand the anglerfish a signal. The comb jelly's neural pulse changes the water around it. The anglerfish, suspended in that same water, responds &mdash; its filter opens, its pitch drifts, its character shifts in ways that are entirely its own but inextricable from the comb jelly's presence. That shared water is the coupling. You cannot record it and play it back without both creatures present. It is alive only while both are running.</p>
 </div>
 
 <div class="article-divider reveal"></div>
@@ -1342,7 +1342,7 @@ Some of the most interesting discoveries happen at the wrong settings. An amount
 <h2 class="reveal">The First Three Things to Try</h2>
 
 <p class="reveal">
-If you have XOlokun open right now, or when you do:
+If you have XOceanus open right now, or when you do:
 </p>
 
 <ul class="reveal">
@@ -1358,15 +1358,15 @@ Each of these is a different conversation between engines. The first is a whispe
 <div class="article-divider reveal"></div>
 
 <!-- ═══════════ CTA ═══════════ -->
-<div class="cta-block reveal" role="complementary" aria-label="Get XOlokun and join the community">
+<div class="cta-block reveal" role="complementary" aria-label="Get XOceanus and join the community">
   <h3>Find Your Space Between</h3>
-  <p>XOlokun is free and open-source. 76 engines. 15 coupling types. ~17,250 factory presets. Every coupling discovery you make is a sound that doesn't exist anywhere else. Share what you find.</p>
+  <p>XOceanus is free and open-source. 76 engines. 15 coupling types. ~17,250 factory presets. Every coupling discovery you make is a sound that doesn't exist anywhere else. Share what you find.</p>
   <div class="cta-links">
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" class="cta-link primary">Download XOlokun &mdash; Free</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOceanus" class="cta-link primary">Download XOceanus &mdash; Free</a>
     <a href="../aquarium.html" class="cta-link secondary">Explore the Aquarium</a>
     <a href="../expedition.html" class="cta-link secondary">Join the Expedition</a>
   </div>
-  <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-faint);">Share your coupling discoveries at <strong style="color: var(--text-dim);">#XOlokun</strong> or post them in the Expedition forum. The most interesting patches posted to the community become Field Guide features.</p>
+  <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-faint);">Share your coupling discoveries at <strong style="color: var(--text-dim);">#XOceanus</strong> or post them in the Expedition forum. The most interesting patches posted to the community become Field Guide features.</p>
 </div>
 
 <p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
@@ -1380,14 +1380,14 @@ Each of these is a different conversation between engines. The first is a whispe
 <footer>
   <div class="footer-logo">XO_OX</div>
   <div class="footer-links">
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOceanus">GitHub</a>
     <a href="https://www.patreon.com/cw/XO_OX">Patreon</a>
     <a href="../expedition.html">Expedition</a>
     <a href="../guide.html">Field Guide</a>
     <a href="../community.html">Community</a>
   </div>
   <div class="footer-copy">
-    &copy; 2026 XO_OX Designs. Free &amp; open-source. Synthesis from the deepest place. <em>XOlokun &mdash; for all.</em>
+    &copy; 2026 XO_OX Designs. Free &amp; open-source. Synthesis from the deepest place. <em>XOceanus &mdash; for all.</em>
   </div>
 </footer>
 

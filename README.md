@@ -1,8 +1,8 @@
-# XOlokun
+# XOceanus
 
 **Synthesis from the deepest place.**
 
-XOlokun is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 76 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
+XOceanus is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 76 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
 
 ## Why It Exists
 
@@ -10,11 +10,11 @@ Every synthesizer you've ever used lives on the surface.
 
 Waveforms you can name. Parameters you can see. Sounds adjacent to sounds you've heard before. The surface is well-mapped and safe, and most music lives there.
 
-XOlokun is not the surface.
+XOceanus is not the surface.
 
-XOlokun is named for Olokun — the Yoruba orisha of the abyssal deep, keeper of the ocean floor's unfathomable wealth. The place where pressure doesn't destroy; it *transforms*. Where creatures don't reflect light because there is none. They generate their own.
+XOceanus is named for Olokun — the Yoruba orisha of the abyssal deep, keeper of the ocean floor's unfathomable wealth. The place where pressure doesn't destroy; it *transforms*. Where creatures don't reflect light because there is none. They generate their own.
 
-Each engine in XOlokun is one of these creatures. Every preset is bioluminescent. And when engines *couple* — when one engine's rhythm becomes another's breath, when one creature's chaos feeds another's metabolism — you reach sounds that only exist in the deep.
+Each engine in XOceanus is one of these creatures. Every preset is bioluminescent. And when engines *couple* — when one engine's rhythm becomes another's breath, when one creature's chaos feeds another's metabolism — you reach sounds that only exist in the deep.
 
 This is not a feature. This is the ecology.
 
@@ -84,7 +84,7 @@ Fifteen coupling types. Each engine was designed knowing the others exist. The c
 
 **Judged by impossible standards.** Every engine was submitted to a ghost council of eight synthesizer pioneers — Moog, Buchla, Smith, Kakehashi, Pearlman, Vangelis, Schulze, Tomita — and scored against their standards. Fleet average: 8.8/10. Fleet leader OXYTOCIN: 9.5/10. The doctrines they handed down (velocity must shape timbre; every declared parameter must affect audio output; an engine that cannot breathe is a photograph) became engineering commandments.
 
-**Free because it has to be.** MIT-licensed. No subscriptions. No dongles. No artificial scarcity. A kid in Lagos. A retiree in Osaka. A bedroom producer in Detroit. A sound design student in Berlin. The deep ocean doesn't check credentials before letting you dive. XOlokun doesn't either.
+**Free because it has to be.** MIT-licensed. No subscriptions. No dongles. No artificial scarcity. A kid in Lagos. A retiree in Osaka. A bedroom producer in Detroit. A sound design student in Berlin. The deep ocean doesn't check credentials before letting you dive. XOceanus doesn't either.
 
 ## Coupling System
 
@@ -126,7 +126,7 @@ cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 
 # Validate (macOS)
-auval -v aumu Xolk XoOx
+auval -v aumu Xocn XoOx
 ```
 
 ## Formats
@@ -138,15 +138,15 @@ auval -v aumu Xolk XoOx
 
 ## Documentation
 
-- `Docs/xolokun_master_specification.md` — the single source of truth
-- `Docs/xolokun_sound_design_guides.md` — per-engine sound design
+- `Docs/xoceanus_master_specification.md` — the single source of truth
+- `Docs/xoceanus_sound_design_guides.md` — per-engine sound design
 - `scripture/the-scripture.md` — the Book of Bin (Guru Bin's accumulated DSP wisdom)
 - `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines
 - `site/` — the web presence at [XO-OX.org](https://xo-ox.org)
 
 ## The Expedition
 
-XOlokun is free. The Expedition unlocks more of it — together.
+XOceanus is free. The Expedition unlocks more of it — together.
 
 **24 Kitchen Collection engines** (organs, pianos, bass, strings, pads, EPs) are released as community Patreon milestones are reached. When the milestone is hit, the engines are free for everyone. Permanently. No one gets left behind.
 
@@ -169,4 +169,4 @@ Read `CONTRIBUTING.md` for full details. The short version:
 
 *XO_OX Designs — [xo-ox.org](https://xo-ox.org)*
 
-*"XOlokun — for all."*
+*"XOceanus — for all."*

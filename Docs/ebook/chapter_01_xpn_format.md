@@ -36,15 +36,15 @@ ONSET_808_Reborn_v1.0/
 
 That's it. The XPN format is a ZIP archive containing three things: a manifest file (`expansion.json`), a folder of XPM program files, and a folder of WAV samples. The artwork folder is optional but you should always include it.
 
-**This is not a streaming format.** The MPC does not connect back to XO_OX's servers. There is no generative component, no live synthesis, no real-time parameter control happening inside the expansion pack itself. Everything is pre-rendered audio. The samples were produced by running XOlokun's synthesizer engines in an offline audio rendering context, capturing the output to WAV files, and packaging those WAV files into this archive.
+**This is not a streaming format.** The MPC does not connect back to XO_OX's servers. There is no generative component, no live synthesis, no real-time parameter control happening inside the expansion pack itself. Everything is pre-rendered audio. The samples were produced by running XOceanus's synthesizer engines in an offline audio rendering context, capturing the output to WAV files, and packaging those WAV files into this archive.
 
-This distinction matters. When you load an XO_OX expansion pack on your MPC, you are loading audio files that were rendered from the same synthesis engines you could run yourself in the XOlokun plugin. The difference is that in XOlokun, the synthesis happens in real time — every parameter can be adjusted, every coupling relationship is live, every LFO is running. In the XPN pack, all of that has been captured at a single point in time (or, for velocity layers, at several carefully chosen points in time) and frozen as audio.
+This distinction matters. When you load an XO_OX expansion pack on your MPC, you are loading audio files that were rendered from the same synthesis engines you could run yourself in the XOceanus plugin. The difference is that in XOceanus, the synthesis happens in real time — every parameter can be adjusted, every coupling relationship is live, every LFO is running. In the XPN pack, all of that has been captured at a single point in time (or, for velocity layers, at several carefully chosen points in time) and frozen as audio.
 
 **The MPC reads it like a library.** When you navigate to an expansion pack in the MPC's browser, the firmware reads `expansion.json` to get the pack metadata and program list, then lets you browse the individual `.xpm` programs. When you load a program, the MPC reads the `.xpm` file to understand the pad-to-sample mapping, velocity layer configuration, envelope settings, and Q-Link assignments. The actual sample audio lives in the WAV files in the `Samples/` directory.
 
-Nothing about this process involves the XOlokun plugin. The XPN pack is completely standalone. You can take an XPN pack and load it on any Akai MPC hardware running firmware 2.x or later without any plugins installed.
+Nothing about this process involves the XOceanus plugin. The XPN pack is completely standalone. You can take an XPN pack and load it on any Akai MPC hardware running firmware 2.x or later without any plugins installed.
 
-**Why this matters for production workflow:** Understanding that XPN packs are frozen audio means understanding their strengths and limits. The strength: you get exactly the sound that was designed, with precisely calibrated velocity layers, envelope settings that were tested on actual hardware, and Q-Link assignments that have been laid out for ergonomic performance. The limit: if you want to reach into the underlying synthesis and change the filter model, you need to go back to XOlokun. The expansion pack gives you the sound; the plugin gives you the source.
+**Why this matters for production workflow:** Understanding that XPN packs are frozen audio means understanding their strengths and limits. The strength: you get exactly the sound that was designed, with precisely calibrated velocity layers, envelope settings that were tested on actual hardware, and Q-Link assignments that have been laid out for ergonomic performance. The limit: if you want to reach into the underlying synthesis and change the filter model, you need to go back to XOceanus. The expansion pack gives you the sound; the plugin gives you the source.
 
 For most producers, this is exactly the right tradeoff. You want to make music, not fiddle with synthesis parameters. Load the pack, play the pads, route it into your sequence, done.
 
@@ -401,7 +401,7 @@ Keygroup programs are where `KeyTrack=True` is non-negotiable (see Golden Rule #
 - Stem exports
 - Rhythmic audio content that should stretch to the project tempo
 
-XO_OX does not currently generate Clip programs from XOlokun renders. The Oxport pipeline is focused on Drum and Keygroup formats. Clip programs are a potential V2 addition for loop-based collection releases.
+XO_OX does not currently generate Clip programs from XOceanus renders. The Oxport pipeline is focused on Drum and Keygroup formats. Clip programs are a potential V2 addition for loop-based collection releases.
 
 **The distinction matters for pack design decisions.** A OVERDUB patch that you want producers to play melodically → Keygroup program. The same OVERDUB engine rendered as a one-bar evolving loop → Clip program. A cymbal pad with no pitch intention → Drum program. Getting the type wrong means the producer's workflow breaks: they cannot pitch a drum program instrument, cannot use a keygroup program for one-shots efficiently, and cannot time-stretch a drum program.
 
@@ -419,7 +419,7 @@ A minimal valid manifest:
   "name": "ONSET 808 Reborn",
   "vendor": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "8-voice percussion synthesis from XOlokun ONSET engine. Electric Blue drums designed for modern hip-hop and electronic production.",
+  "description": "8-voice percussion synthesis from XOceanus ONSET engine. Electric Blue drums designed for modern hip-hop and electronic production.",
   "tags": ["drums", "percussion", "808", "electronic", "hip-hop"],
   "targetHardware": ["MPC Live II", "MPC One", "MPC Key 61", "MPC Live III"],
   "sampleRate": 44100,
@@ -484,7 +484,7 @@ XO_OX uses a custom extension namespace within `expansion.json` to carry metadat
 }
 ```
 
-MPC firmware ignores any fields it does not recognize, so the `_xo_ox` block is silently passed over on hardware. But it is there for XO_OX tooling (the website, the Oxport pipeline, future XOlokun integration) to read.
+MPC firmware ignores any fields it does not recognize, so the `_xo_ox` block is silently passed over on hardware. But it is there for XO_OX tooling (the website, the Oxport pipeline, future XOceanus integration) to read.
 
 ### Version Numbering
 
@@ -558,13 +558,13 @@ The practical implication for pack design now: engineer your sample architecture
 
 ## 1.8 The Oxport Pipeline
 
-Knowing the XPN format is one thing. Producing a complete, tested, hardware-verified XPN pack from scratch is another. XO_OX developed the Oxport pipeline — a collection of Python tools in the `/Tools/` directory of the XOlokun repository — to automate the mechanical parts of pack production while keeping human judgment in the loop for the parts that require it.
+Knowing the XPN format is one thing. Producing a complete, tested, hardware-verified XPN pack from scratch is another. XO_OX developed the Oxport pipeline — a collection of Python tools in the `/Tools/` directory of the XOceanus repository — to automate the mechanical parts of pack production while keeping human judgment in the loop for the parts that require it.
 
 The tools are designed to be run individually or orchestrated by the `oxport.py` master script.
 
 ### The Tools
 
-**`xpn_render_spec.py`** — The front door. Given an XOlokun engine name and preset, generates a JSON render specification: what notes to render, at what velocities, what sample rate, how long each sample should be, whether to render mono or stereo, whether loops are needed, and what the expected DNA profile is. This spec drives all subsequent stages.
+**`xpn_render_spec.py`** — The front door. Given an XOceanus engine name and preset, generates a JSON render specification: what notes to render, at what velocities, what sample rate, how long each sample should be, whether to render mono or stereo, whether loops are needed, and what the expected DNA profile is. This spec drives all subsequent stages.
 
 ```bash
 python3 Tools/xpn_render_spec.py \
@@ -573,7 +573,7 @@ python3 Tools/xpn_render_spec.py \
   --output render_specs/onset_808reborn.json
 ```
 
-**`xpn_sample_categorizer.py`** — Takes a folder of raw WAV files (your rendered output from XOlokun or any offline renderer) and sorts them into the expected directory structure with correct naming conventions. Reads the render spec to know what to expect. Flags any missing or incorrectly named files.
+**`xpn_sample_categorizer.py`** — Takes a folder of raw WAV files (your rendered output from XOceanus or any offline renderer) and sorts them into the expected directory structure with correct naming conventions. Reads the render spec to know what to expect. Flags any missing or incorrectly named files.
 
 ```bash
 python3 Tools/xpn_sample_categorizer.py \
@@ -680,9 +680,9 @@ Hardware validation cannot be skipped. Load the XPN on actual MPC hardware befor
 
 ## Summary: What This Chapter Covers
 
-By now you know what XPN actually is (a ZIP archive, not magic), how to read an XPM file (XML with a logical hierarchy), which three rules must never be broken and exactly why each one matters, how to architect velocity layers for expressive musical results, when to choose drum programs versus keygroup programs, what goes in the manifest, what changed in MPC 3.x, and how the Oxport pipeline automates the path from XOlokun engine to MPC pad.
+By now you know what XPN actually is (a ZIP archive, not magic), how to read an XPM file (XML with a logical hierarchy), which three rules must never be broken and exactly why each one matters, how to architect velocity layers for expressive musical results, when to choose drum programs versus keygroup programs, what goes in the manifest, what changed in MPC 3.x, and how the Oxport pipeline automates the path from XOceanus engine to MPC pad.
 
-Chapter 2 goes deeper into workflow: how samples are actually rendered from XOlokun engines, how key range decisions are made, and how to bring an entire ONSET drum kit export from concept to hardware in a documented, repeatable process.
+Chapter 2 goes deeper into workflow: how samples are actually rendered from XOceanus engines, how key range decisions are made, and how to bring an entire ONSET drum kit export from concept to hardware in a documented, repeatable process.
 
 Before you get there, though, memorize the three rules. Post them above your monitor. Set them as your phone wallpaper if necessary. The format will forgive a lot of imprecision. It will not forgive `KeyTrack=False` in a keygroup, a non-zero `RootNote` hardcode, or a ghost-trigger-inducing empty layer. Those bugs are invisible until playback, which means they will show up in front of an audience.
 
@@ -699,4 +699,4 @@ Know them. Live them.
 
 **Chapter word count: approximately 5,200 words**
 
-**Chapter continues in:** Chapter 2 — XOlokun to MPC Workflow (Kai)
+**Chapter continues in:** Chapter 2 — XOceanus to MPC Workflow (Kai)

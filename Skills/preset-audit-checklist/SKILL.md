@@ -43,11 +43,11 @@ Read these files for the target engine:
 
 | Source | Path | What You Learn |
 |--------|------|---------------|
-| Sound Design Guide | `Docs/xolokun_sound_design_guides.md` → engine section | Key parameters, macro mapping, sonic thesis |
+| Sound Design Guide | `Docs/xoceanus_sound_design_guides.md` → engine section | Key parameters, macro mapping, sonic thesis |
 | Seance Verdict | `Docs/seances/{engine}_seance_verdict.md` | Ghost feedback, current score, P0/P1 concerns |
 | Seance Cross-Reference | `Docs/seances/seance_cross_reference.md` → engine row | Score, blessings, violations, bugs |
 | Engine Source | `Source/Engines/{Engine}/{Engine}Engine.h` | Actual parameter IDs, DSP architecture |
-| Existing Presets | `Presets/XOlokun/` (grep for engine name) | Current library size, mood coverage |
+| Existing Presets | `Presets/XOceanus/` (grep for engine name) | Current library size, mood coverage |
 | Retreat Notes | `scripture/retreats/{engine}_retreat.md` (if exists) | Guru refinement history, parameter wisdom |
 
 ### 1B. Engine Profile Card
@@ -106,7 +106,7 @@ If the tool isn't available, manually verify:
 These checks catch issues the basic schema validation misses:
 
 - [ ] **Empty parameter blocks**: Each engine listed in `parameters` must have ≥1 non-macro parameter key. A block containing only `macro_*` keys or 0 keys means the preset loads as a silent init patch. **Flag: P0.**
-- [ ] **Mood field/folder consistency**: The `mood` value in JSON must match the parent folder name. A preset in `Presets/XOlokun/Atmosphere/` with `"mood": "Flux"` is miscategorized. **Flag: P1.**
+- [ ] **Mood field/folder consistency**: The `mood` value in JSON must match the parent folder name. A preset in `Presets/XOceanus/Atmosphere/` with `"mood": "Flux"` is miscategorized. **Flag: P1.**
 - [ ] **No legacy DNA fields**: If `sonic_dna` or `sonicDNA` exists alongside `dna`, the preset has schema migration debt. Strip legacy fields, keep `dna`. **Flag: P1.**
 - [ ] **Coupling state clarity**: Three states exist — distinguish them:
   - `coupling` key missing entirely → P1 (add `{"pairs": []}`)
@@ -238,7 +238,7 @@ Thresholds have a ±0.1 MARGINAL band. Values outside MARGINAL = FAIL. Fleet aud
 - [ ] 2-3 words, ≤ 30 characters
 - [ ] Evocative — references feeling, place, atmosphere, or mythology (not mechanism)
 - [ ] No synth jargon ("FM pad", "wavetable sweep", "filter bass")
-- [ ] No duplicates across entire `Presets/XOlokun/` tree
+- [ ] No duplicates across entire `Presets/XOceanus/` tree
 - [ ] Name matches the sound — play it, read the name, ask "does this fit?"
 
 **Good:** "Twilight Entanglement", "Copper Kettle", "Abyssal Meditation", "Neon Tetra Chase"
@@ -422,7 +422,7 @@ aggression:  min=___ max=___
 python3 Tools/validate_presets.py --check-duplicates
 ```
 
-Or manually: no two presets share the same name across the entire `Presets/XOlokun/` tree.
+Or manually: no two presets share the same name across the entire `Presets/XOceanus/` tree.
 
 ### 5D. Preset Count Health
 
@@ -620,19 +620,19 @@ This eliminates hundreds of false positives from legacy schema debt. Skip for si
 
 ### Step 1: Read the engine's sound design guide section
 ```
-Read: Docs/xolokun_sound_design_guides.md → {engine} section
+Read: Docs/xoceanus_sound_design_guides.md → {engine} section
 Read: Source/Engines/{Engine}/{Engine}Engine.h → parameter list
 ```
 
 ### Step 2: Gather all presets
 ```
-Glob: Presets/XOlokun/**/*{engine}*.xometa
-Glob: Presets/XOlokun/**/*.xometa → grep for engine name in "engines" array
+Glob: Presets/XOceanus/**/*{engine}*.xometa
+Glob: Presets/XOceanus/**/*.xometa → grep for engine name in "engines" array
 ```
 
 ### Step 3: Run schema validation + structural integrity
 ```bash
-python3 Tools/validate_presets.py Presets/XOlokun/
+python3 Tools/validate_presets.py Presets/XOceanus/
 ```
 Then manually check Phase 2A+ items: empty param blocks, mood/folder consistency, legacy DNA fields, coupling state, intra-engine param consistency. These are the highest-value checks that the validator misses.
 

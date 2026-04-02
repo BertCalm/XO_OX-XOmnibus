@@ -2,7 +2,7 @@
 
 **Invoke with:** `/skill-friction-detective [scan | audit | repair <skill-name> | link]`
 **Status:** LIVE
-**Purpose:** Meta-skill that actively detects friction, frustration, silent failures, and inefficiencies across the XOlokun skill library — then repairs, enhances, links, and optimizes the affected skills.
+**Purpose:** Meta-skill that actively detects friction, frustration, silent failures, and inefficiencies across the XOceanus skill library — then repairs, enhances, links, and optimizes the affected skills.
 
 ---
 

@@ -6,7 +6,7 @@
 
 The XPN format is more documented than it appears, and less complicated than it looks. Most of the complexity exists to support edge cases — multi-articulation instrument libraries, 16-layer velocity stacks, round-robin cycle groups across 88 notes — that you will not need for your first pack. The core format, the part you need to produce a functional, playable pack from scratch, reduces to about a dozen fields and three rules. Learn those first. The rest is refinement.
 
-This chapter is written for pack designers, not consumers. If you want to understand what you are loading onto your MPC, Chapter 1 covers the format from the reading side. If you want to build your own packs — from your own samples, your own XOlokun renders, or your own field recordings — this chapter walks the full path from raw audio files to a validated `.xpn` bundle that loads cleanly on hardware.
+This chapter is written for pack designers, not consumers. If you want to understand what you are loading onto your MPC, Chapter 1 covers the format from the reading side. If you want to build your own packs — from your own samples, your own XOceanus renders, or your own field recordings — this chapter walks the full path from raw audio files to a validated `.xpn` bundle that loads cleanly on hardware.
 
 I am going to be precise about the things that matter and not waste your time on the things that do not. When I say a rule is critical, it is because violating it produces a failure mode I have personally diagnosed more than once. The failures are repeatable, and so are the fixes.
 
@@ -16,7 +16,7 @@ I am going to be precise about the things that matter and not waste your time on
 
 **You want to build packs, not just consume them.** That might mean:
 
-- You have rendered audio from XOlokun and want to package it for MPC use
+- You have rendered audio from XOceanus and want to package it for MPC use
 - You have a sample library you have recorded or collected and want to organize it as a playable instrument
 - You are a sound designer who wants to sell or share custom packs in the Seed+Grow community program
 - You are a producer who wants to package a signature set of sounds so you can recall your exact tone on any MPC
@@ -31,7 +31,7 @@ What this chapter does not cover: the full XPM schema reference (see Appendix A)
 
 ## 7.2 The Oxport Pipeline Overview
 
-Oxport is a suite of Python tools living in `Tools/` at the root of the XOlokun repository. The main entry point is:
+Oxport is a suite of Python tools living in `Tools/` at the root of the XOceanus repository. The main entry point is:
 
 ```bash
 python3 Tools/oxport.py run --config my_pack_config.json
@@ -39,11 +39,11 @@ python3 Tools/oxport.py run --config my_pack_config.json
 
 When you call `oxport.py run`, the pipeline executes in eight ordered stages:
 
-**Stage 1: Render Spec Generation.** Oxport reads your config JSON and produces a render specification: which root notes to render, how many velocity layers, what sample rate, whether loop points should be detected or authored. If you are working from pre-rendered samples rather than live XOlokun renders, this stage is effectively a validation pass — it confirms that your existing samples match the spec before anything is built.
+**Stage 1: Render Spec Generation.** Oxport reads your config JSON and produces a render specification: which root notes to render, how many velocity layers, what sample rate, whether loop points should be detected or authored. If you are working from pre-rendered samples rather than live XOceanus renders, this stage is effectively a validation pass — it confirms that your existing samples match the spec before anything is built.
 
 **Stage 2: Sample Categorization.** Your raw audio files are organized into the canonical folder structure (`/Samples/{program_name}/{velocity_zone}/`) and renamed to the XO_OX naming convention (`{ProgramName}_{RootNote}_{VelMin}_{VelMax}.wav`). If your files are already organized, this stage confirms the organization and reports any missing zones or inconsistent naming.
 
-**Stage 3: DNA Badge Assignment.** Each program receives a 6D Sonic DNA badge computed from the engine parameters or, for non-XOlokun samples, inferred from acoustic analysis. You can override computed values with explicit values in the config. This stage writes a `.xometa` companion file for each program — this file follows the program into the manifest and is used by the pack browser for filtering.
+**Stage 3: DNA Badge Assignment.** Each program receives a 6D Sonic DNA badge computed from the engine parameters or, for non-XOceanus samples, inferred from acoustic analysis. You can override computed values with explicit values in the config. This stage writes a `.xometa` companion file for each program — this file follows the program into the manifest and is used by the pack browser for filtering.
 
 **Stage 4: XPM Generation.** For each program in your config, Oxport generates the XML `.xpm` file. This is the most format-sensitive stage. The generator handles key zone calculation, velocity layer stacking, envelope defaults, LFO stubs, FX chain stubs, and Q-Link assignments. Most of the Three Golden Rules (Section 7.5) are enforced here — if your config violates them, this stage will warn you.
 
@@ -137,7 +137,7 @@ Supported root note formats: `C2`, `C#2`, `Db2`, `A#2`, `Bb2`. Flats and sharps 
 **Step 3: Run Oxport.**
 
 ```bash
-cd /path/to/XO_OX-XOlokun
+cd /path/to/XO_OX-XOceanus
 python3 Tools/oxport.py run --config ./my_pack_config.json --output ./dist/MyFirstPack_v1.0.0.xpn
 ```
 

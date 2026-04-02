@@ -1,26 +1,26 @@
 # Architect Audit — Sessions 8–9
 **Date:** 2026-03-24
 **Auditor:** The Architect (governance audit mode)
-**Scope:** All work done in Sessions 8–9 (XOlokun rebrand, OXYTOCIN engine #48, OUTLOOK engine #49, UI research, Guru Bin Albatross retreat, build fixes, site/docs updates)
+**Scope:** All work done in Sessions 8–9 (XOceanus rebrand, OXYTOCIN engine #48, OUTLOOK engine #49, UI research, Guru Bin Albatross retreat, build fixes, site/docs updates)
 **Overall Health Score:** 8.6/10
 
 ---
 
 ## Executive Summary
 
-The ecosystem is in strong structural health. The XOlokun rename is complete and consistent across all source files. Both new engines (OXYTOCIN, OUTLOOK) are correctly integrated. The build is clean. Seven issues were found — five are minor (P2) documentation/organization inconsistencies. One issue was fixed automatically during this audit. No P0 (blocking) issues exist.
+The ecosystem is in strong structural health. The XOceanus rename is complete and consistent across all source files. Both new engines (OXYTOCIN, OUTLOOK) are correctly integrated. The build is clean. Seven issues were found — five are minor (P2) documentation/organization inconsistencies. One issue was fixed automatically during this audit. No P0 (blocking) issues exist.
 
 ---
 
 ## Category Results
 
-### 1. XOlokun Rename Integrity — PASS
+### 1. XOceanus Rename Integrity — PASS
 
 **Checks:**
 - Non-namespace `XOmnibus` references in `Source/` (excluding historical/namespace): **0** — CLEAN
 - `CMakeLists.txt` XOmnibus references (non-comment): **0** — CLEAN
 - `CLAUDE.md` rename note: Present in line 3 — CLEAN
-- AU component at `~/Library/Audio/Plug-Ins/Components/XOlokun.component`: **EXISTS** — CLEAN
+- AU component at `~/Library/Audio/Plug-Ins/Components/XOceanus.component`: **EXISTS** — CLEAN
 - `namespace xomnibus` remaining in Source: **0** — CLEAN
 - `xomnibus::` using declarations: **0** — CLEAN
 - Total XOmnibus/xomnibus in all Source files: **0** — CLEAN
@@ -39,7 +39,7 @@ The ecosystem is in strong structural health. The XOlokun rename is complete and
 ninja: no work to do.
 ```
 
-The build reports zero work to do, confirming the last committed state compiled cleanly. **73 `registerEngine()` calls** present in `XOlokunProcessor.cpp` — matches the claimed 73-engine count.
+The build reports zero work to do, confirming the last committed state compiled cleanly. **73 `registerEngine()` calls** present in `XOceanusProcessor.cpp` — matches the claimed 73-engine count.
 
 **Verdict:** PASS
 
@@ -48,17 +48,17 @@ The build reports zero work to do, confirming the last committed state compiled 
 ### 3. XOxytocin Integration — PASS
 
 **Checks:**
-- `OxytocinAdapter.h` included in `XOlokunProcessor.cpp`: YES
+- `OxytocinAdapter.h` included in `XOceanusProcessor.cpp`: YES
 - Engine registered in `EngineRegistry`: YES (`"Oxytocin"`)
 - Engine files in `Source/Engines/Oxytocin/`: **11 files** — healthy
 - `frozenPrefixForEngine` entry: `{ "Oxytocin", "oxy" }` — PRESENT (B015 CLEAR)
 - Engine name in `kValidEngineNames`: PRESENT (line 52)
-- Preset count under `Presets/XOlokun/Oxytocin/`: **130 presets** across 8 mood subfolders
+- Preset count under `Presets/XOceanus/Oxytocin/`: **130 presets** across 8 mood subfolders
 - Preset format: correct `.xometa` schema with `oxy_` prefixed parameters
 - Seance score: 9.5/10 — NEW FLEET LEADER (B040, unanimous)
 
 **One structural anomaly found (P2 — organization inconsistency):**
-OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Presets/XOlokun/Oxytocin/<Mood>/*.xometa`). All 72 other engines store presets directly in mood directories (`Presets/XOlokun/<Mood>/<Engine>_*.xometa`). The `scanPresetDirectory()` function uses fully recursive `findChildFiles(..., true, ...)` so all 130 presets **will load correctly** — this is not a runtime bug. However, it creates an organizational inconsistency that will confuse future contributors.
+OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Presets/XOceanus/Oxytocin/<Mood>/*.xometa`). All 72 other engines store presets directly in mood directories (`Presets/XOceanus/<Mood>/<Engine>_*.xometa`). The `scanPresetDirectory()` function uses fully recursive `findChildFiles(..., true, ...)` so all 130 presets **will load correctly** — this is not a runtime bug. However, it creates an organizational inconsistency that will confuse future contributors.
 
 **Impact:** None on functionality. P2 cosmetic/organizational.
 
@@ -70,8 +70,8 @@ OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Preset
 
 **Checks:**
 - `site/design-tokens.css` XOmnibus refs: **0** — CLEAN
-- `site/design-tokens.css` XOlokun refs: **3** — expected (section header + brand comment)
-- New Section 11 (XOlokun Depth System) added: 47 lines of depth/bioluminescence tokens
+- `site/design-tokens.css` XOceanus refs: **3** — expected (section header + brand comment)
+- New Section 11 (XOceanus Depth System) added: 47 lines of depth/bioluminescence tokens
 
 **Note:** Section 11 is in the **uncommitted** `site/design-tokens.css`. This is valid work-in-progress; the tokens are internally consistent and use the correct depth metaphor vocabulary (abyssal, pelagic, hadal, bioluminescent). No issues with content.
 
@@ -82,7 +82,7 @@ OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Preset
 ### 5. Preset Integrity — PASS
 
 **Checks:**
-- Total presets in `Presets/XOlokun/`: **17,251** `.xometa` files
+- Total presets in `Presets/XOceanus/`: **17,251** `.xometa` files
 - XOmnibus references in preset files: **0** — CLEAN
 - Oxytocin preset format: Valid schema — `schema_version`, `mood`, `engines`, `parameters.Oxytocin`, `oxy_` param keys all correct
 - Outlook preset format: Valid schema — `engines: ["Outlook"]`, mood field correct, `sonicDNA` present
@@ -98,7 +98,7 @@ OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Preset
 ### 6. Documentation Consistency — PARTIAL PASS (P2 issues)
 
 **CLAUDE.md:**
-- XOlokun references: **8** — correct
+- XOceanus references: **8** — correct
 - XOmnibus references: **1** — the single historical note on line 3 ("Formerly XOmnibus") — correct and intentional
 - Engine count: **73** — ACCURATE
 - Coupling types: **15** (incl. KnotTopology + TriangularCoupling) — ACCURATE
@@ -107,21 +107,21 @@ OXYTOCIN is the **only engine** with its own top-level preset subfolder (`Preset
 - Rename documented: YES (line 3)
 
 **Site (site/aquarium.html):**
-- XOlokun references: **6** — correct
+- XOceanus references: **6** — correct
 - XOmnibus references: **0** — CLEAN
 
 **P2 Issue — Seance count inaccuracy in CLAUDE.md:**
 CLAUDE.md line 326 and 403 say **"71 engines seanced"**. The seance cross-reference says 73 total, 71 seanced, OSMOSIS not seanced. But OUTLOOK has a seance score (7.1/10 → 8.0 post-fix) documented in `seance_cross_reference.md`. If OUTLOOK counts as seanced, the correct number is **72 seanced** (73 total − 1 OSMOSIS). The "71" figure predates the OUTLOOK seance and was not updated when OUTLOOK's post-fix review was recorded.
 
 **P2 Issue — Legacy filename:**
-`Docs/xomnibus_sound_design_guides.md` retains the old brand name in its filename. This is a private documentation file (not user-facing), but it should eventually be renamed to `xolokun_sound_design_guides.md` for consistency. The content has been extended (390+ new lines for Kitchen Collection engines) and is current.
+`Docs/xomnibus_sound_design_guides.md` retains the old brand name in its filename. This is a private documentation file (not user-facing), but it should eventually be renamed to `xoceanus_sound_design_guides.md` for consistency. The content has been extended (390+ new lines for Kitchen Collection engines) and is current.
 
 **P2 Issue — Uncommitted docs:**
 5 modified files and 3 untracked files are not yet committed:
-- Modified: `Docs/seance_cross_reference.md`, `Docs/xolokun-brand-packet.md`, `Docs/xomnibus_sound_design_guides.md`, `Source/Engines/OceanDeep/OceanDeepEngine.h`, `site/design-tokens.css`
-- Untracked: `Docs/xolokun-community-interactions.md`, `Docs/xolokun-morning-briefing-2026-03-24.md`, `site/freebies.html`
+- Modified: `Docs/seance_cross_reference.md`, `Docs/xoceanus-brand-packet.md`, `Docs/xomnibus_sound_design_guides.md`, `Source/Engines/OceanDeep/OceanDeepEngine.h`, `site/design-tokens.css`
+- Untracked: `Docs/xoceanus-community-interactions.md`, `Docs/xoceanus-morning-briefing-2026-03-24.md`, `site/freebies.html`
 
-The OceanDeep change (`namespace xomnibus → namespace xolokun`) is a valid rename fix. All other changes appear to be valid session work. These should be committed.
+The OceanDeep change (`namespace xomnibus → namespace xoceanus`) is a valid rename fix. All other changes appear to be valid session work. These should be committed.
 
 **Verdict:** PARTIAL PASS — all factual content is accurate; seance count is stale by 1; one legacy filename; uncommitted work needs a commit.
 
@@ -162,8 +162,8 @@ Recent commits are clean and well-described:
 ```
 47c828f54 Kai AKAI tool UI review: Outshine/Originate/Oxport redesign
 6913a6163 Fix OutlookEngine FastMath build error
-ecfdc4f22 Rename XOmnibus → XOlokun
-7c1d091a4 The Rebirth: UI research, PlaySurface design, asset registry, XOlokun rebrand review
+ecfdc4f22 Rename XOmnibus → XOceanus
+7c1d091a4 The Rebirth: UI research, PlaySurface design, asset registry, XOceanus rebrand review
 17fdf0b7c Merge branch 'claude/add-engine-skill-visionary-4pFVP'
 ```
 
@@ -204,10 +204,10 @@ Both engines appear in `kValidEngineNames`. Both are registered in `EngineRegist
 | ID | Category | Issue | Recommended Fix |
 |----|----------|-------|-----------------|
 | P2-001 | Documentation | Seance count in CLAUDE.md said 71 but should be 72 (OUTLOOK is seanced; only OSMOSIS is not) | **FIXED AUTOMATICALLY** — Updated lines 326 and 403 in `CLAUDE.md` |
-| P2-002 | Organization | `Docs/xomnibus_sound_design_guides.md` filename uses old brand name | Eventually rename to `xolokun_sound_design_guides.md`; update any internal cross-references |
-| P2-003 | Organization | OXYTOCIN presets use engine-subfolder structure (`Presets/XOlokun/Oxytocin/<Mood>/`) while all other engines use mood-level structure (`Presets/XOlokun/<Mood>/`) | Not urgent — scan is recursive so presets load. Future new engine presets should use mood-level organization. Document this as "Oxytocin exception" or migrate presets to standard structure in a future clean-up pass |
+| P2-002 | Organization | `Docs/xomnibus_sound_design_guides.md` filename uses old brand name | Eventually rename to `xoceanus_sound_design_guides.md`; update any internal cross-references |
+| P2-003 | Organization | OXYTOCIN presets use engine-subfolder structure (`Presets/XOceanus/Oxytocin/<Mood>/`) while all other engines use mood-level structure (`Presets/XOceanus/<Mood>/`) | Not urgent — scan is recursive so presets load. Future new engine presets should use mood-level organization. Document this as "Oxytocin exception" or migrate presets to standard structure in a future clean-up pass |
 | P2-004 | Git | 6 modified + 3 untracked files are uncommitted (including valid OceanDeep namespace fix and session docs) | Commit all session work in a single "Session 8-9 follow-up: docs, rename cleanup, depth tokens" commit |
-| P2-005 | Documentation | `Docs/xolokun-morning-briefing-2026-03-24.md` references `Presets/XOmnibus/Atmosphere/Osmosis_First_Breath.xometa` as the path for a fix — but the actual path is `Presets/XOlokun/Atmosphere/Osmosis_First_Breath.xometa`. The fix was applied correctly (the file exists at the XOlokun path), but the briefing document has the wrong path recorded. | Informational only — the actual preset is correct. The briefing doc can be updated for accuracy but is not ship-blocking. |
+| P2-005 | Documentation | `Docs/xoceanus-morning-briefing-2026-03-24.md` references `Presets/XOmnibus/Atmosphere/Osmosis_First_Breath.xometa` as the path for a fix — but the actual path is `Presets/XOceanus/Atmosphere/Osmosis_First_Breath.xometa`. The fix was applied correctly (the file exists at the XOceanus path), but the briefing document has the wrong path recorded. | Informational only — the actual preset is correct. The briefing doc can be updated for accuracy but is not ship-blocking. |
 
 ---
 
@@ -219,7 +219,7 @@ Both engines appear in `kValidEngineNames`. Both are registered in `EngineRegist
 | Blessings (B001–B015) | CLEAR | All 15 blessings intact. B015: OXYTOCIN + OUTLOOK both registered in frozenPrefixForEngine |
 | Debates (DB001–DB004) | SURFACED (DB001) | OUTLOOK uses 8-wave procedural shapes (not file-loading). Touches DB001 (wavetable approach) — consistent with fleet norm, not a new violation |
 | Architecture | CLEAR | No per-sample allocation detected; namespace rename complete; no std::tan/pow/sin in per-sample loops identified |
-| Brand | CLEAR | Rename complete. XOlokun identity strong. Depth System tokens in design-tokens.css coherent with mythology |
+| Brand | CLEAR | Rename complete. XOceanus identity strong. Depth System tokens in design-tokens.css coherent with mythology |
 
 ---
 
@@ -227,11 +227,11 @@ Both engines appear in `kValidEngineNames`. Both are registered in `EngineRegist
 
 | Change | Province | Status | Notes |
 |--------|----------|--------|-------|
-| XOlokun rename (Source, CMake, CSS, presets) | Brand, Architecture | APPROVED — COMPLETE | Zero legacy refs remain in code |
+| XOceanus rename (Source, CMake, CSS, presets) | Brand, Architecture | APPROVED — COMPLETE | Zero legacy refs remain in code |
 | OXYTOCIN engine #48 integration | Doctrine, B015 | APPROVED — COMPLETE | 130 presets, 9.5/10, fleet leader |
 | OUTLOOK engine #49 integration | Doctrine, B015 | APPROVED — COMPLETE | 18 presets, 8.0/10 post-fix |
 | TriangularCoupling (#15) added | Architecture | APPROVED — COMPLETE | Documented in CLAUDE.md line 14 |
-| OceanDeep namespace xomnibus→xolokun | Brand | APPROVED — UNCOMMITTED | Valid fix; needs commit |
+| OceanDeep namespace xomnibus→xoceanus | Brand | APPROVED — UNCOMMITTED | Valid fix; needs commit |
 | Depth System tokens (Section 11) | Brand | APPROVED — UNCOMMITTED | Coherent with aquatic mythology |
 | Seance count: 71→72 | Documentation | APPROVED — AUTO-FIXED | OUTLOOK is seanced; CLAUDE.md updated to 72 |
 
