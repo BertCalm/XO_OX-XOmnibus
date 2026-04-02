@@ -429,6 +429,12 @@ struct ParamSnapshot
     float atAmt          = 0.5f;
     float velToFilter    = 0.4f;
     float velToEffort    = 0.3f;
+
+    // D002 Standard Macros (4)
+    float macroCharacter = 0.5f;  // M1: drama sweep (Kuramoto coupling strength)
+    float macroMovement  = 0.5f;  // M2: LFO1 rate boost
+    float macroCoupling  = 0.5f;  // M3: coupling send level
+    float macroSpace     = 0.5f;  // M4: filter cutoff sweep (spectral openness)
 };
 
 //==============================================================================
@@ -710,6 +716,24 @@ public:
         params.push_back (std::make_unique<FloatParam> (
             juce::ParameterID ("opera_velToEffort", 1), "Vel->Effort",
             NR (0.0f, 1.0f, 0.001f), 0.3f));
+
+        // --- D002 Standard Macros (M1-M4) ---
+        // CHARACTER (M1): sweeps drama (Kuramoto coupling strength / timbral intensity)
+        params.push_back (std::make_unique<FloatParam> (
+            juce::ParameterID ("opera_macroCharacter", 1), "Opera Macro CHARACTER",
+            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        // MOVEMENT (M2): boosts LFO1 rate for expressive motion
+        params.push_back (std::make_unique<FloatParam> (
+            juce::ParameterID ("opera_macroMovement", 1), "Opera Macro MOVEMENT",
+            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        // COUPLING (M3): scales coupling send level (standard PlaySurface target)
+        params.push_back (std::make_unique<FloatParam> (
+            juce::ParameterID ("opera_macroCoupling", 1), "Opera Macro COUPLING",
+            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        // SPACE (M4): sweeps filter cutoff for spatial openness
+        params.push_back (std::make_unique<FloatParam> (
+            juce::ParameterID ("opera_macroSpace", 1), "Opera Macro SPACE",
+            NR (0.0f, 1.0f, 0.001f), 0.5f));
     }
 
     //==========================================================================
@@ -774,6 +798,10 @@ public:
         p_atAmt         = apvts.getRawParameterValue ("opera_atAmt");
         p_velToFilter   = apvts.getRawParameterValue ("opera_velToFilter");
         p_velToEffort   = apvts.getRawParameterValue ("opera_velToEffort");
+        p_macroCharacter = apvts.getRawParameterValue ("opera_macroCharacter");
+        p_macroMovement  = apvts.getRawParameterValue ("opera_macroMovement");
+        p_macroCoupling  = apvts.getRawParameterValue ("opera_macroCoupling");
+        p_macroSpace     = apvts.getRawParameterValue ("opera_macroSpace");
     }
 
     //==========================================================================
@@ -832,6 +860,18 @@ public:
         // STEP 2: ParamSnapshot — read all params ONCE per block
         // ------------------------------------------------------------------
         cacheParamSnapshot();
+
+        // ------------------------------------------------------------------
+        // STEP 2b: Apply D002 Standard Macros as bipolar offsets (centred at 0.5)
+        // M1 CHARACTER: drama offset ±0.4 (Kuramoto coupling strength / timbral intensity)
+        // M2 MOVEMENT:  LFO1 rate scaled by up to 4× (2^±1)
+        // M3 COUPLING:  coupling send level (stored; used by coupling output path)
+        // M4 SPACE:     filter cutoff offset ±5000 Hz
+        // ------------------------------------------------------------------
+        snap_.drama       = std::clamp (snap_.drama       + (snap_.macroCharacter - 0.5f) * 0.8f,  0.0f, 1.0f);
+        snap_.lfo1Rate    = std::clamp (snap_.lfo1Rate    * std::pow (4.0f, snap_.macroMovement - 0.5f), 0.01f, 20.0f);
+        snap_.filterCutoff = std::clamp (snap_.filterCutoff + (snap_.macroSpace - 0.5f) * 10000.0f, 20.0f, 20000.0f);
+        // macroCoupling (M3) is used by the coupling output read path; no snap modification needed.
 
         // ------------------------------------------------------------------
         // STEP 3: Configure LFOs for this block
@@ -1626,6 +1666,12 @@ private:
         snap_.atAmt         = p_atAmt->load();
         snap_.velToFilter   = p_velToFilter->load();
         snap_.velToEffort   = p_velToEffort->load();
+
+        // D002 Standard Macros (M1-M4) — applied in renderBlock as bipolar offsets
+        snap_.macroCharacter = (p_macroCharacter != nullptr) ? p_macroCharacter->load() : 0.5f;
+        snap_.macroMovement  = (p_macroMovement  != nullptr) ? p_macroMovement->load()  : 0.5f;
+        snap_.macroCoupling  = (p_macroCoupling  != nullptr) ? p_macroCoupling->load()  : 0.5f;
+        snap_.macroSpace     = (p_macroSpace     != nullptr) ? p_macroSpace->load()     : 0.5f;
     }
 
     //==========================================================================
@@ -1749,6 +1795,12 @@ private:
     std::atomic<float>* p_atAmt         = nullptr;
     std::atomic<float>* p_velToFilter   = nullptr;
     std::atomic<float>* p_velToEffort   = nullptr;
+
+    // D002 Standard Macros (M1-M4)
+    std::atomic<float>* p_macroCharacter = nullptr;  // opera_macroCharacter — M1: drama sweep
+    std::atomic<float>* p_macroMovement  = nullptr;  // opera_macroMovement  — M2: LFO1 rate boost
+    std::atomic<float>* p_macroCoupling  = nullptr;  // opera_macroCoupling  — M3: coupling send
+    std::atomic<float>* p_macroSpace     = nullptr;  // opera_macroSpace     — M4: filter cutoff sweep
 };
 
 } // namespace opera

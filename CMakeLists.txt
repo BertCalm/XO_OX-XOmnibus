@@ -159,6 +159,12 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Onset/OnsetEngine.cpp
     Source/Engines/Overworld/OverworldEngine.h
     Source/Engines/Overworld/OverworldEngine.cpp
+    Source/Engines/Overworld/dsp/BitCrusher.h
+    Source/Engines/Overworld/dsp/FIREcho.h
+    Source/Engines/Overworld/dsp/GlitchEngine.h
+    Source/Engines/Overworld/dsp/SVFilter.h
+    Source/Engines/Overworld/engine/Parameters.h
+    Source/Engines/Overworld/engine/VoicePool.h
     Source/Engines/Opal/OpalDSP.h
     Source/Engines/Opal/OpalEngine.h
     Source/Engines/Opal/OpalEngine.cpp
@@ -237,8 +243,22 @@ target_sources(XOceanus PRIVATE
     # Concept Phase — Standalone Adapters (Phase 4)
     Source/Engines/Overlap/XOverlapAdapter.h
     Source/Engines/Overlap/XOverlapAdapter.cpp
+    Source/Engines/Overlap/DSP/Bioluminescence.h
+    Source/Engines/Overlap/DSP/Entrainment.h
+    Source/Engines/Overlap/DSP/FastMath.h
+    Source/Engines/Overlap/DSP/FDN.h
+    Source/Engines/Overlap/DSP/KnotMatrix.h
+    Source/Engines/Overlap/DSP/ParamSnapshot.h
+    Source/Engines/Overlap/DSP/PostFX.h
+    Source/Engines/Overlap/DSP/Voice.h
     Source/Engines/Outwit/XOutwitAdapter.h
     Source/Engines/Outwit/XOutwitAdapter.cpp
+    Source/Engines/Outwit/DSP/AmpEnvelope.h
+    Source/Engines/Outwit/DSP/ArmChannel.h
+    Source/Engines/Outwit/DSP/DenReverb.h
+    Source/Engines/Outwit/DSP/FastMath.h
+    Source/Engines/Outwit/DSP/InkCloud.h
+    Source/Engines/Outwit/DSP/ParamSnapshot.h
 
     Source/Engines/Ombre/OmbreEngine.h
     Source/Engines/Ombre/OmbreEngine.cpp
@@ -391,15 +411,23 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Overcast/OvercastEngine.h
 
     # Kitchen Collection — Fusion (EP) engines
+    Source/Engines/Oasis/OasisEngine.h
     Source/Engines/Oasis/OasisEngine.cpp
+    Source/Engines/Oddfellow/OddfellowEngine.h
     Source/Engines/Oddfellow/OddfellowEngine.cpp
+    Source/Engines/Onkolo/OnkoloEngine.h
     Source/Engines/Onkolo/OnkoloEngine.cpp
+    Source/Engines/Opcode/OpcodeEngine.h
     Source/Engines/Opcode/OpcodeEngine.cpp
 
     # Kitchen Collection — Garden (Strings) engines
+    Source/Engines/Orchard/OrchardEngine.h
     Source/Engines/Orchard/OrchardEngine.cpp
+    Source/Engines/Osier/OsierEngine.h
     Source/Engines/Osier/OsierEngine.cpp
+    Source/Engines/Overgrow/OvergrowEngine.h
     Source/Engines/Overgrow/OvergrowEngine.cpp
+    Source/Engines/Oxalis/OxalisEngine.h
     Source/Engines/Oxalis/OxalisEngine.cpp
 
     # Psychology Boom Bap Drum Synthesis

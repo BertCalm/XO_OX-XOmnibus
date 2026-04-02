@@ -887,6 +887,23 @@ public:
         // Level
         const float level          = (pLevel != nullptr) ? pLevel->load() : 0.8f;
 
+        // D002 Standard Macros — read once per block
+        const float macroCharacter = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.5f;
+        const float macroMovement  = (pMacroMovement  != nullptr) ? pMacroMovement->load()  : 0.5f;
+        const float macroCoupling  = (pMacroCoupling  != nullptr) ? pMacroCoupling->load()  : 0.5f;
+        const float macroSpace     = (pMacroSpace     != nullptr) ? pMacroSpace->load()     : 0.5f;
+
+        // Apply macros as bipolar offsets/scalars centred at 0.5
+        // M1 CHARACTER: shift filter cutoff ±5000 Hz around its base value
+        const float effFilterCut  = clamp (filterCut + (macroCharacter - 0.5f) * 10000.0f, 20.0f, 20000.0f);
+        // M2 MOVEMENT: scale LFO1 rate (0.5 = unity, 1.0 = 4×, 0.0 = 0.25×)
+        const float effLfoRate    = clamp (lfoRate * std::pow (4.0f, macroMovement - 0.5f), 0.01f, 20.0f);
+        // M3 COUPLING: scale coupling send level (0.5 = unity)
+        const float effCoupling   = macroCoupling;   // 0–1 scaler applied at coupling output
+        // M4 SPACE: blend reverb mix toward 1.0 (additive, capped at 1.0)
+        const float effReverbMix  = clamp (reverbMix + (macroSpace - 0.5f) * 0.8f, 0.0f, 1.0f);
+        (void) effCoupling; // used by coupling output path
+
         // Voice
         const int voiceMode        = (pVoiceMode != nullptr) ? static_cast<int> (pVoiceMode->load()) : 0;
         const float glideAmt       = (pGlide != nullptr) ? pGlide->load() : 0.0f;
@@ -952,7 +969,7 @@ public:
         shimmerAmt = clamp (shimmerAmt + atPressure * 0.35f, 0.0f, 1.0f);
 
         // Setup LFO
-        lfo.setRate (lfoRate, srf);
+        lfo.setRate (effLfoRate, srf);
         // DSP FIX: Shape varies by destination for timbral variety (was sine-only).
         // Pitch→Sine (smooth pitch wobble), Filter→Triangle (organic sweep), Amp→Saw (rhythmic pulse).
         static constexpr int kLfoShapeByDest[] = { 0, 1, 2 }; // Sine, Triangle, Saw
@@ -961,7 +978,7 @@ public:
 
         // DSP FIX: LFO2 — complementary modulation on non-targeted axis.
         // Rate = 1/4 of main (slow organic movement), Triangle shape.
-        lfo2.setRate (std::max (0.05f, lfoRate * 0.25f), srf);
+        lfo2.setRate (std::max (0.05f, effLfoRate * 0.25f), srf);
         lfo2.setShape (1); // Triangle
         bool hasLfo2 = lfoDepth > 0.05f;
 
@@ -1111,7 +1128,7 @@ public:
                 // --- Filter A (LP 12/24 dB) ---
                 float envVal = voice.ampEnv.process();
 
-                float cutoffMod = filterCut;
+                float cutoffMod = effFilterCut;
 
                 // Envelope to filter
                 if (std::abs (filterEnv) > 0.001f)
@@ -1235,9 +1252,9 @@ public:
         // Applied to the full block after the per-sample voice loop. The reverb
         // processStereo() call is in-place on the outputCache arrays, which were
         // pre-allocated in prepare(). No heap allocation occurs here.
-        if (reverbMix > 0.0001f)
+        if (effReverbMix > 0.0001f)
             reverb.processStereo (outputCacheL.data(), outputCacheR.data(),
-                                  numSamples, reverbSize, reverbMix);
+                                  numSamples, reverbSize, effReverbMix);
 
         // Write output cache to shared mix buffer
         for (int sample = 0; sample < numSamples; ++sample)
@@ -1512,6 +1529,24 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "drift_polyphony", 1 }, "Drift Polyphony",
             juce::StringArray { "1", "2", "4", "8" }, 3));
+
+        // --- D002 Standard Macros (M1-M4) ---
+        // CHARACTER (M1): sweeps filter brightness via filterCutoff offset
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_macroCharacter", 1 }, "Drift Macro CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        // MOVEMENT (M2): boosts LFO1 rate for motion intensity
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_macroMovement", 1 }, "Drift Macro MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        // COUPLING (M3): scales coupling send gain (standard target for coupling routes)
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_macroCoupling", 1 }, "Drift Macro COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        // SPACE (M4): scales reverb mix for spatial depth
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_macroSpace", 1 }, "Drift Macro SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
     }
 
 public:
@@ -1562,6 +1597,10 @@ public:
         pVoiceMode     = apvts.getRawParameterValue ("drift_voiceMode");
         pGlide         = apvts.getRawParameterValue ("drift_glide");
         pPolyphony     = apvts.getRawParameterValue ("drift_polyphony");
+        pMacroCharacter = apvts.getRawParameterValue ("drift_macroCharacter");
+        pMacroMovement  = apvts.getRawParameterValue ("drift_macroMovement");
+        pMacroCoupling  = apvts.getRawParameterValue ("drift_macroCoupling");
+        pMacroSpace     = apvts.getRawParameterValue ("drift_macroSpace");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1782,6 +1821,11 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
+    // D002 Standard Macros (M1-M4)
+    std::atomic<float>* pMacroCharacter = nullptr;  // drift_macroCharacter — M1: filter cutoff sweep
+    std::atomic<float>* pMacroMovement  = nullptr;  // drift_macroMovement  — M2: LFO1 rate boost
+    std::atomic<float>* pMacroCoupling  = nullptr;  // drift_macroCoupling  — M3: coupling send offset
+    std::atomic<float>* pMacroSpace     = nullptr;  // drift_macroSpace     — M4: reverb mix blend
 };
 
 } // namespace xoceanus
