@@ -194,6 +194,19 @@ public:
         updateRouteLabels();
     }
 
+    // #390: ESC dismisses any active modal dialog owned by this panel.
+    // AlertWindow already binds ESC to its Cancel button, but this override
+    // ensures ESC works even when focus is on the panel rather than the dialog.
+    bool keyPressed (const juce::KeyPress& key) override
+    {
+        if (key == juce::KeyPress::escapeKey)
+        {
+            juce::ModalComponentManager::getInstance()->cancelAllModalComponents();
+            return true;
+        }
+        return false;
+    }
+
     // Call from editor timer or on engine change to keep route labels current.
     void refresh()
     {

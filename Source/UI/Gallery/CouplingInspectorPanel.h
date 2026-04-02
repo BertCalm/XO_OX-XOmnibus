@@ -241,6 +241,21 @@ public:
     ~CouplingInspectorPanel() override = default;
 
     //==========================================================================
+    // #390: ESC dismisses any active modal dialog owned by this panel.
+    // JUCE AlertWindows already bind ESC to their Cancel button, but adding
+    // this override ensures ESC is handled even if focus sits on the panel
+    // rather than the dialog.
+    bool keyPressed (const juce::KeyPress& key) override
+    {
+        if (key == juce::KeyPress::escapeKey)
+        {
+            juce::ModalComponentManager::getInstance()->cancelAllModalComponents();
+            return true;
+        }
+        return false;
+    }
+
+    //==========================================================================
     // W20: Stop the miniViz timer when this panel is hidden, restart when shown.
     // Prevents the CouplingVisualizer animation timer from running off-screen.
     void visibilityChanged() override
