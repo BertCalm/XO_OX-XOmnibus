@@ -71,6 +71,7 @@ public:
     void processBlock (float* L, float* R, int numSamples,
                        float bifurcation, float driveBase, float speed, float mix)
     {
+        if (sr <= 0.0f) return;
         if (mix < 0.001f) return;
 
         // Lorenz system parameters (classic values: σ=10, ρ=28, β=8/3)
@@ -157,7 +158,7 @@ public:
             float outR = tiltStateR * (1.0f - tiltBlend) + satR * tiltBlend;
 
             // --- DC blocker ---
-            float dcCoeff = 1.0f - (6.28318f * 5.0f / sr);
+            float dcCoeff = std::exp (-6.28318f * 5.0f / sr); // matched-Z transform
             float dcOutL = outL - dcPrevL + dcStateL * dcCoeff;
             float dcOutR = outR - dcPrevR + dcStateR * dcCoeff;
             dcPrevL = outL;
