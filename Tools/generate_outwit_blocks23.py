@@ -11,7 +11,7 @@ Usage:
 import json, sys
 from pathlib import Path
 
-BASE   = Path(__file__).parent.parent / "Presets" / "XOlokun"
+BASE   = Path(__file__).parent.parent / "Presets" / "XOceanus"
 AUTHOR = "XO_OX Designs"
 DATE   = "2026-03-18"
 DRY    = "--dry-run" in sys.argv

@@ -348,7 +348,7 @@ def parse_args():
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Output directory for .xometa files. Default: Presets/XOlokun/Entangled/ relative to repo root.",
+        help="Output directory for .xometa files. Default: Presets/XOceanus/Entangled/ relative to repo root.",
     )
     parser.add_argument(
         "--dry-run",
@@ -382,7 +382,7 @@ def resolve_output_dir(output_dir_arg: str) -> pathlib.Path:
     # Try to locate repo root relative to this script
     script_dir = pathlib.Path(__file__).resolve().parent
     repo_root = script_dir.parent
-    candidate = repo_root / "Presets" / "XOlokun" / "Entangled"
+    candidate = repo_root / "Presets" / "XOceanus" / "Entangled"
     return candidate
 
 

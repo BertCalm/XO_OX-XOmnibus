@@ -17,7 +17,7 @@ STRIFE/LOVE interaction axis, Split/Layer/Duo voice modes.
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOceanus")
 
 # ── OUIE defaults (53 params) ────────────────────────────────────────────────
 # Derived from OuieEngine.h parameter registration (addParametersImpl)

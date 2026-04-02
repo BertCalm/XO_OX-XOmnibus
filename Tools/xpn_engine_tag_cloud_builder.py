@@ -2,7 +2,7 @@
 """
 xpn_engine_tag_cloud_builder.py
 
-Aggregate preset tags across the XOlokun fleet and generate:
+Aggregate preset tags across the XOceanus fleet and generate:
   - Per-engine top-15 tags with ASCII bar chart
   - Fleet-wide top-30 tags
   - Orphan tags (appear only once across fleet)
@@ -12,7 +12,7 @@ Usage:
   python3 Tools/xpn_engine_tag_cloud_builder.py
   python3 Tools/xpn_engine_tag_cloud_builder.py --engine Drift
   python3 Tools/xpn_engine_tag_cloud_builder.py --min-tags 3
-  python3 Tools/xpn_engine_tag_cloud_builder.py --presets-dir /path/to/Presets/XOlokun
+  python3 Tools/xpn_engine_tag_cloud_builder.py --presets-dir /path/to/Presets/XOceanus
 """
 
 import argparse
@@ -215,16 +215,16 @@ def run(args):
 
 def main():
     default_presets = (
-        Path(__file__).parent.parent / "Presets" / "XOlokun"
+        Path(__file__).parent.parent / "Presets" / "XOceanus"
     )
 
     parser = argparse.ArgumentParser(
-        description="Generate tag frequency clouds for the XOlokun preset fleet."
+        description="Generate tag frequency clouds for the XOceanus preset fleet."
     )
     parser.add_argument(
         "--presets-dir",
         default=str(default_presets),
-        help="Path to Presets/XOlokun directory (default: auto-detected relative to script)",
+        help="Path to Presets/XOceanus directory (default: auto-detected relative to script)",
     )
     parser.add_argument(
         "--engine",

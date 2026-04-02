@@ -21,7 +21,7 @@ import re
 from datetime import date
 
 TODAY = date.today().isoformat()
-PRESETS_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Presets", "XOlokun")
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Presets", "XOceanus")
 
 
 def snake(name: str) -> str:
@@ -1133,7 +1133,7 @@ def main():
             path = write_preset(mood, p)
             written.append(os.path.basename(path))
             total += 1
-        print(f"[{corner_name}] wrote {len(written)} presets → Presets/XOlokun/{mood}/")
+        print(f"[{corner_name}] wrote {len(written)} presets → Presets/XOceanus/{mood}/")
         for w in written:
             print(f"  {w}")
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Duplicate Detector — Catch copy-paste presets across the library.
+XOceanus Preset Duplicate Detector — Catch copy-paste presets across the library.
 
 Detects:
   1. Exact name duplicates (case-insensitive) within the same engine's files — ERROR
@@ -102,11 +102,11 @@ def load_presets(presets_dir: Path, engine_filter, mood_filter) -> list:
             continue
 
         p = Path(path)
-        # Derive mood from directory structure: Presets/XOlokun/<mood>/...
+        # Derive mood from directory structure: Presets/XOceanus/<mood>/...
         parts = p.parts
         mood_from_path = ""
         for i, part in enumerate(parts):
-            if part == "XOlokun" and i + 1 < len(parts):
+            if part == "XOceanus" and i + 1 < len(parts):
                 mood_from_path = parts[i + 1]
                 break
 
@@ -375,7 +375,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Detect duplicate or near-duplicate .xometa presets."
     )
-    parser.add_argument("presets_dir", help="Path to presets root (e.g. Presets/XOlokun)")
+    parser.add_argument("presets_dir", help="Path to presets root (e.g. Presets/XOceanus)")
     parser.add_argument("--engine", default=None, help="Filter to a specific engine name")
     parser.add_argument("--mood", default=None, help="Filter to a specific mood")
     parser.add_argument("--dna-threshold", type=float, default=0.1,

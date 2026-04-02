@@ -6,7 +6,7 @@ Usage:
     python3 generate_submerged_presets.py --dry-run # explicit dry-run
     python3 generate_submerged_presets.py --apply   # write files
 
-Step 1: Scan Presets/XOlokun/Submerged/ for engines that already have presets.
+Step 1: Scan Presets/XOceanus/Submerged/ for engines that already have presets.
 Step 2: For each engine with 0 Submerged presets, generate 3 evocative presets
         with appropriate Submerged DNA and macro parameters.
 """
@@ -373,7 +373,7 @@ def preset_filename(engine: str, word1: str, word2: str) -> str:
 # ── Report + apply ────────────────────────────────────────────────────────────
 
 def run(apply: bool, repo_root: str) -> None:
-    submerged_dir = os.path.join(repo_root, "Presets", "XOlokun", "Submerged")
+    submerged_dir = os.path.join(repo_root, "Presets", "XOceanus", "Submerged")
 
     if not os.path.isdir(submerged_dir):
         print(f"ERROR: Submerged directory not found: {submerged_dir}", file=sys.stderr)
@@ -387,7 +387,7 @@ def run(apply: bool, repo_root: str) -> None:
     total_engines_with = len([e for e in ALL_ENGINES if counts.get(e, 0) > 0])
 
     print("=" * 64)
-    print("  XOlokun — Submerged Preset Gap Report")
+    print("  XOceanus — Submerged Preset Gap Report")
     print("=" * 64)
     print(f"  Preset directory : {submerged_dir}")
     print(f"  Total presets    : {total_existing}")
@@ -486,7 +486,7 @@ def main() -> None:
         "--apply",
         action="store_true",
         default=False,
-        help="Write preset files to Presets/XOlokun/Submerged/.",
+        help="Write preset files to Presets/XOceanus/Submerged/.",
     )
     args = parser.parse_args()
 

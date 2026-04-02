@@ -2,17 +2,17 @@
 """
 xpn_preset_browser.py — Terminal browser for .xometa preset files.
 
-Scan a directory tree of XOlokun .xometa presets and explore them via
+Scan a directory tree of XOceanus .xometa presets and explore them via
 five modes: list (filtered), search (keyword), dna (sorted by dimension),
 show (full detail), and random (selection helper).
 
 Usage:
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ list --engine ONSET
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ list --engine ONSET --mood Foundation --min-brightness 0.5
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ search --query "bass heavy"
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ dna --engine OBLONG --sort brightness
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ show --preset "Iron Hat"
-    python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ random --engine OPAL --count 5
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ list --engine ONSET
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ list --engine ONSET --mood Foundation --min-brightness 0.5
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ search --query "bass heavy"
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ dna --engine OBLONG --sort brightness
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ show --preset "Iron Hat"
+    python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ random --engine OPAL --count 5
 """
 
 import argparse
@@ -334,12 +334,12 @@ def add_dna_filters(parser: argparse.ArgumentParser) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Terminal browser for XOlokun .xometa preset files.",
+        description="Terminal browser for XOceanus .xometa preset files.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument("--presets-dir", default="./Presets/XOlokun/",
-                        help="Root directory to scan for .xometa files (default: ./Presets/XOlokun/)")
+    parser.add_argument("--presets-dir", default="./Presets/XOceanus/",
+                        help="Root directory to scan for .xometa files (default: ./Presets/XOceanus/)")
 
     subs = parser.add_subparsers(dest="command", required=True)
 

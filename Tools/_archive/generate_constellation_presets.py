@@ -5,7 +5,7 @@ Generate 530 .xometa presets for the Family Constellation engines.
 Distribution: ~16 per mood + 4 hero presets per engine.
 
 Usage: python3 generate_constellation_presets.py
-Output: Presets/XOlokun/{mood}/*.xometa
+Output: Presets/XOceanus/{mood}/*.xometa
 """
 
 import json, os, random, math
@@ -13,7 +13,7 @@ from datetime import date
 
 random.seed(42)  # reproducible
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), '..', 'Presets', 'XOlokun')
+PRESET_DIR = os.path.join(os.path.dirname(__file__), '..', 'Presets', 'XOceanus')
 MOODS = ['Foundation', 'Atmosphere', 'Entangled', 'Prism', 'Flux', 'Aether']
 TODAY = str(date.today())
 

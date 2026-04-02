@@ -21,7 +21,7 @@ OceanDeep — Abyssal Bass Synthesizer
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOceanus")
 
 # ── OCEANDEEP defaults (25 params) ──────────────────────────────────────────
 DEFAULTS = {

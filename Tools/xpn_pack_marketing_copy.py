@@ -233,7 +233,7 @@ def gen_product_description(
         f"The collection centres on {long_phrase}, with presets spanning {mood_list}. "
         f"Every patch carries a full 6D Sonic DNA profile, four mapped macros, and deep "
         f"velocity sensitivity, so expression comes without effort.\n\n"
-        f"Engines: {engine_list}. Designed for Akai MPC Live and MPC X, and the XOlokun AU/VST3 plugin. "
+        f"Engines: {engine_list}. Designed for Akai MPC Live and MPC X, and the XOceanus AU/VST3 plugin. "
         f"Drop it in and play — no menu-diving, no compromise."
     )
     return desc
@@ -255,7 +255,7 @@ def gen_short_description(
     return (
         f"{pack_name}: {preset_count} {short_adj} presets across {engine_list}. "
         f"Four macros, full DNA, velocity-expressive. "
-        f"Ready for MPC and XOlokun. No compromise."
+        f"Ready for MPC and XOceanus. No compromise."
     )
 
 
@@ -279,7 +279,7 @@ def gen_feature_bullets(
         f"✦ {mood_count} mood categor{'ies' if mood_count != 1 else 'y'} — {', '.join(list(moods.keys())[:3])}",
         f"✦ 6D Sonic DNA on every preset — {long_phrase}",
         f"✦ Four mapped macros (CHARACTER, MOVEMENT, COUPLING, SPACE) on every patch",
-        f"✦ Velocity-expressive, MPC-ready, XOlokun AU/VST3 compatible",
+        f"✦ Velocity-expressive, MPC-ready, XOceanus AU/VST3 compatible",
     ]
     return bullets
 

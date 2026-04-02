@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OBBLIGATO coupling presets for XOlokun.
+"""Generate OBBLIGATO coupling presets for XOceanus.
 
 Fills the coupling heatmap gap: OBBLIGATO (Rascal Coral #FF8A7A, dual wind
 engine with BOND macro, obbl_ prefix) had ZERO coupling presets.
@@ -8,7 +8,7 @@ Generates:
   - 4 Constellation pairs  × 4 presets = 16  (OHM, ORPHICA, OTTONI, OLE)
   - 12 legacy pairs        × 3 presets = 36  (OPAL, ORACLE, OBLONG, ODYSSEY,
     OCEANIC, OVERDUB, ORBITAL, ORGANON, OSPREY, ORIGAMI, OBLIQUE, OWLFISH)
-  Total: 52 presets → Presets/XOlokun/Entangled/
+  Total: 52 presets → Presets/XOceanus/Entangled/
 """
 
 import argparse
@@ -359,12 +359,12 @@ def generate_presets(seed: int, count_legacy: int, count_constellation: int) -> 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate OBBLIGATO coupling presets for XOlokun."
+        description="Generate OBBLIGATO coupling presets for XOceanus."
     )
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Override output directory (default: Presets/XOlokun/Entangled/ relative to repo root)",
+        help="Override output directory (default: Presets/XOceanus/Entangled/ relative to repo root)",
     )
     parser.add_argument(
         "--dry-run",
@@ -394,7 +394,7 @@ def main():
         out_dir = Path(args.output_dir)
     else:
         repo_root = Path(__file__).resolve().parent.parent
-        out_dir = repo_root / "Presets" / "XOlokun" / "Entangled"
+        out_dir = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     presets = generate_presets(
         seed=args.seed,

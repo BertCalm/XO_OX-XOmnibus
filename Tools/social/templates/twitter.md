@@ -28,7 +28,7 @@ Variables available in all templates:
 {engine_a} + {engine_b} — {why_it_works_short}
 
 Full recipe: {reddit_link}
-#XOlokun #synthesis #SoundDesign
+#XOceanus #synthesis #SoundDesign
 
 ## Twilight Zone
 
@@ -38,4 +38,4 @@ Coupling discovery this week: {recipe_name}
 "{why_it_works_short}"
 
 Full recipe with setup tips: {reddit_link}
-#XOlokun #synthesis
+#XOceanus #synthesis

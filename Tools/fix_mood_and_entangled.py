@@ -3,7 +3,7 @@
 fix_mood_and_entangled.py
 
 Fix 1: Mood/Folder Mismatch
-  For every .xometa in Presets/XOlokun/ (not _quarantine/), if the JSON
+  For every .xometa in Presets/XOceanus/ (not _quarantine/), if the JSON
   `mood` field doesn't match the parent folder name, update the `mood` field
   to match the folder name.  Skips non-standard mood folders.
 
@@ -28,7 +28,7 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 STANDARD_MOODS = {
     "Foundation",

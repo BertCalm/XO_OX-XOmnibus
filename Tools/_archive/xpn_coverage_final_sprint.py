@@ -11,7 +11,7 @@ import math
 from itertools import combinations
 from pathlib import Path
 
-ENTANGLED_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun" / "Entangled"
+ENTANGLED_DIR = Path(__file__).parent.parent / "Presets" / "XOceanus" / "Entangled"
 
 ALL_ENGINES = [
     "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",

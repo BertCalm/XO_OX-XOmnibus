@@ -13,7 +13,7 @@ random.seed(42)
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Prism"
+    "Presets", "XOceanus", "Prism"
 )
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

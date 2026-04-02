@@ -336,8 +336,8 @@ def build_entangled_preset(corner, variant_idx):
 # ---------------------------------------------------------------------------
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FLUX_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Flux")
-ENT_DIR  = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
+FLUX_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Flux")
+ENT_DIR  = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 
 def main():

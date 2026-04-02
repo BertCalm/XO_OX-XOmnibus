@@ -7,7 +7,7 @@ APVTS parameter IDs — applyPreset() silently ignores them. Keeping them is mis
 and bloats preset files unnecessarily.
 
 This script removes those 4 keys from every engine block in every .xometa file under
-Presets/XOlokun/, writing the cleaned JSON back in-place (preserving indent=2 style).
+Presets/XOceanus/, writing the cleaned JSON back in-place (preserving indent=2 style).
 
 Usage:
     python3 Tools/fix_preset_macros.py [--dry-run]
@@ -62,10 +62,10 @@ def process_file(path: Path, dry_run: bool) -> int:
 def main():
     dry_run = "--dry-run" in sys.argv
 
-    # Locate the Presets/XOlokun directory relative to this script.
+    # Locate the Presets/XOceanus directory relative to this script.
     script_dir = Path(__file__).resolve().parent
     repo_root = script_dir.parent
-    presets_root = repo_root / "Presets" / "XOlokun"
+    presets_root = repo_root / "Presets" / "XOceanus"
 
     if not presets_root.is_dir():
         print(f"ERROR: Presets directory not found: {presets_root}")

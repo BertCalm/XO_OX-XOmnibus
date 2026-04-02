@@ -63,8 +63,8 @@ def process_preset(fpath: str, dry_run: bool) -> bool:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Replace DSP jargon in preset names.")
-    parser.add_argument("root", nargs="?", default="Presets/XOlokun",
-                        help="Root directory to scan (default: Presets/XOlokun)")
+    parser.add_argument("root", nargs="?", default="Presets/XOceanus",
+                        help="Root directory to scan (default: Presets/XOceanus)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Print changes without writing files")
     args = parser.parse_args()

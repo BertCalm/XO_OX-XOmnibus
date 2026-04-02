@@ -1,5 +1,5 @@
 #pragma once
-// MinimalEngine — XOlokun SDK starting template
+// MinimalEngine — XOceanus SDK starting template
 //
 // The smallest possible engine: one mono sine voice, one pitch parameter.
 // Every line here is intentional — start by reading it, then replace things.
@@ -15,12 +15,12 @@
 // For a complete worked example with coupling, LFOs, macros, and all 6 Doctrines:
 //   SDK/examples/HelloEngine/HelloEngine.h
 
-#include <xolokun/SynthEngine.h>
-#include <xolokun/EngineModule.h>
+#include <xoceanus/SynthEngine.h>
+#include <xoceanus/EngineModule.h>
 #include <cmath>
 #include <array>
 
-class MinimalEngine : public xolokun::SynthEngine
+class MinimalEngine : public xoceanus::SynthEngine
 {
 public:
     void prepare (double sampleRate, int /*maxBlockSize*/) override
@@ -36,7 +36,7 @@ public:
         activeNote = -1;
     }
 
-    void renderBlock (xolokun::StereoBuffer& buffer, const xolokun::MidiEventList& midi) override
+    void renderBlock (xoceanus::StereoBuffer& buffer, const xoceanus::MidiEventList& midi) override
     {
         // Process MIDI
         for (int i = 0; i < midi.numEvents; ++i)
@@ -68,7 +68,7 @@ public:
         }
     }
 
-    std::vector<xolokun::ParameterDef> getParameterDefs() const override
+    std::vector<xoceanus::ParameterDef> getParameterDefs() const override
     {
         // Add one entry per parameter. Format:
         //   { "prefix_name", "Display Name", minVal, maxVal, defaultVal, step, skew }
@@ -93,7 +93,7 @@ public:
 
     std::string getEngineId() const override { return "Minimal"; }
 
-    xolokun::Colour getAccentColour() const override
+    xoceanus::Colour getAccentColour() const override
     {
         return { 100, 200, 150 };
     }
@@ -110,10 +110,10 @@ private:
 };
 
 //==============================================================================
-// Export — XOlokun loads this engine by finding these two C symbols.
+// Export — XOceanus loads this engine by finding these two C symbols.
 // Change the strings to match your engine; keep the class name in sync.
 //==============================================================================
-XOLOKUN_EXPORT_ENGINE (MinimalEngine,
+XOCEANUS_EXPORT_ENGINE (MinimalEngine,
                         "Minimal",
                         "Minimal Sine Engine",
                         "min_",

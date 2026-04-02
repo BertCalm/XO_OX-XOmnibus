@@ -639,7 +639,7 @@ def main():
                         help="Print filenames without writing")
     parser.add_argument(
         "--output-dir",
-        default=str(Path(__file__).parent.parent / "Presets" / "XOlokun" / "Entangled"),
+        default=str(Path(__file__).parent.parent / "Presets" / "XOceanus" / "Entangled"),
         help="Output directory for .xometa files",
     )
     args = parser.parse_args()

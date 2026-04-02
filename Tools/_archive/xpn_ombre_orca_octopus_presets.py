@@ -372,13 +372,13 @@ def safe_filename(name: str) -> str:
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate OMBRE / ORCA / OCTOPUS solo preset stubs for XOlokun."
+        description="Generate OMBRE / ORCA / OCTOPUS solo preset stubs for XOceanus."
     )
     parser.add_argument(
         "--output-dir",
-        default="Presets/XOlokun/",
+        default="Presets/XOceanus/",
         help="Root preset directory. Mood subdirs will be created inside. "
-             "(default: Presets/XOlokun/)",
+             "(default: Presets/XOceanus/)",
     )
     parser.add_argument(
         "--dry-run",

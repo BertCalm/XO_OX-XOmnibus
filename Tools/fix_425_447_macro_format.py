@@ -33,7 +33,7 @@ import json
 import sys
 from pathlib import Path
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 STANDARD_LABELS = ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
 OFFERING_LABELS = ["DIG", "CITY", "FLIP", "DUST"]
 

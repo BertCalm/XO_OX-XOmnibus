@@ -52,7 +52,7 @@ Tools for WAV rendering and audio conversion.
 
 ### oxport_render.py (386 lines)
 **Category**: RENDER
-**Description**: Fleet Render Automation. Automates WAV rendering from XOlokun by sending MIDI to the plugin and recording audio output via loopback (BlackHole on macOS).
+**Description**: Fleet Render Automation. Automates WAV rendering from XOceanus by sending MIDI to the plugin and recording audio output via loopback (BlackHole on macOS).
 **Key Features**:
   - MIDI-based rendering to audio interface
   - BlackHole loopback support
@@ -723,7 +723,7 @@ The following tools are likely one-off utilities, legacy code, or specialized ge
 - **fix_mood_and_entangled.py** (320 lines) — Legacy mood/entanglement fixes
 - **rename_dna_coded_presets.py** (126 lines) — Legacy naming scheme
 - **preset_migration_sprint1.py** (330 lines) — Migration from old preset format
-- **xolokun_preset_migration.py** (686 lines) — Migration to current format
+- **xoceanus_preset_migration.py** (686 lines) — Migration to current format
 
 ### Specialized Generators (Archive)
 - **generate_presets_overlap_outwit.py** (1238 lines) — OVERLAP/OUTWIT specialized generator

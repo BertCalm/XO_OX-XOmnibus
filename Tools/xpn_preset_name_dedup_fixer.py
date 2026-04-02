@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_name_dedup_fixer.py — Fix preset name collisions across the XOlokun fleet.
+xpn_preset_name_dedup_fixer.py — Fix preset name collisions across the XOceanus fleet.
 
 Detects duplicate preset names (case-insensitive) and proposes rename strategies:
   1. Rename each file by appending the engine name: "Tidal Lock" → "Tidal Lock (Orbital)"
@@ -10,9 +10,9 @@ Detects duplicate preset names (case-insensitive) and proposes rename strategies
 Dry run by default. Use --apply to write changes.
 
 Usage:
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun --apply
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun --apply --backup
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus --apply
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus --apply --backup
 
 Exit code: 0 always (advisory tool; CI can gate on 0 duplicates separately).
 """
@@ -171,15 +171,15 @@ def load_presets(presets_dir: Path) -> list[dict]:
                 print(f"  [WARN] Could not parse {fpath}: {exc}", file=sys.stderr)
                 continue
 
-            # Infer mood from directory structure (…/Presets/XOlokun/<mood>/…)
+            # Infer mood from directory structure (…/Presets/XOceanus/<mood>/…)
             parts = fpath.parts
             mood = "Unknown"
             try:
-                xolokun_idx = next(
-                    i for i, p in enumerate(parts) if p == "XOlokun"
+                xoceanus_idx = next(
+                    i for i, p in enumerate(parts) if p == "XOceanus"
                 )
-                if xolokun_idx + 1 < len(parts):
-                    mood = parts[xolokun_idx + 1]
+                if xoceanus_idx + 1 < len(parts):
+                    mood = parts[xoceanus_idx + 1]
             except StopIteration:
                 pass
 
@@ -392,18 +392,18 @@ def apply_renames(renames: list[dict], backup: bool) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Detect and fix duplicate preset names across the XOlokun fleet.",
+        description="Detect and fix duplicate preset names across the XOceanus fleet.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   # Dry run — show all proposed renames (default)
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus
 
   # Apply renames in-place
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun --apply
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus --apply
 
   # Apply with .xometa.bak backups
-  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOlokun --apply --backup
+  python xpn_preset_name_dedup_fixer.py --presets-dir Presets/XOceanus --apply --backup
 
 Exit code: always 0 (advisory tool).
         """,
@@ -411,8 +411,8 @@ Exit code: always 0 (advisory tool).
     parser.add_argument(
         "--presets-dir",
         type=Path,
-        default=Path("Presets/XOlokun"),
-        help="Root directory to scan for .xometa files (default: Presets/XOlokun)",
+        default=Path("Presets/XOceanus"),
+        help="Root directory to scan for .xometa files (default: Presets/XOceanus)",
     )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(

@@ -5,10 +5,10 @@ Recommends the best engine pairs for new Entangled/coupling presets based on
 sonic DNA compatibility, feliX/Oscar affinity rules, and existing coverage gaps.
 
 Usage:
-    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOlokun/
-    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOlokun/ --engine OPAL
-    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOlokun/ --top 30
-    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOlokun/ --output recommendations.txt
+    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOceanus/
+    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOceanus/ --engine OPAL
+    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOceanus/ --top 30
+    python xpn_coupling_pair_recommender.py --preset-dir ./Presets/XOceanus/ --output recommendations.txt
 """
 
 import argparse
@@ -399,7 +399,7 @@ def scan_entangled_coverage(preset_dir: Path) -> dict:
 
     entangled_dirs = [
         preset_dir / "Entangled",
-        preset_dir / "XOlokun" / "Entangled",
+        preset_dir / "XOceanus" / "Entangled",
     ]
     search_roots = [d for d in entangled_dirs if d.exists()]
     if not search_roots:
@@ -593,7 +593,7 @@ def parse_args():
     )
     p.add_argument(
         "--preset-dir", required=True, type=Path,
-        help="Root preset directory (e.g. ./Presets/XOlokun/)",
+        help="Root preset directory (e.g. ./Presets/XOceanus/)",
     )
     p.add_argument(
         "--engine", default=None,

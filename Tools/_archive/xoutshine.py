@@ -844,7 +844,7 @@ def apply_fade_guards(channels: List[List[float]], sr: int,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Rebirth Mode — XOlokun-style DSP Transforms
+# Rebirth Mode — XOceanus-style DSP Transforms
 # ─────────────────────────────────────────────────────────────────────────────
 
 def rebirth_saturate(channels: List[List[float]], sr: int,
@@ -1070,7 +1070,7 @@ def rebirth_transform(sample_info, channels: List[List[float]], sr: int,
                        intensity: float = 0.7) -> List[List[float]]:
     """⚠️  DEPRECATED: Rebirth Mode in the Python CLI is a prototype implementation.
     Production Rebirth Mode with proper gain staging, preview, and engine-inspired
-    FX chains is available in the XOlokun desktop app (Phase 1B).
+    FX chains is available in the XOceanus desktop app (Phase 1B).
     This CLI implementation will be removed in a future release.
 
     Apply a rebirth engine profile to audio channels.
@@ -1281,7 +1281,7 @@ def enhance(samples: List[SampleInfo], work_dir: str,
     (fade length, saturation, round-robin variation width, loop detection) are
     shaped by the sample's Sonic DNA fingerprint.
 
-    When rebirth is True, samples are reprocessed through XOlokun-style DSP
+    When rebirth is True, samples are reprocessed through XOceanus-style DSP
     transforms instead of preserving original character. Each round-robin
     variation gets different randomized parameters within the engine profile's
     ranges, creating natural variation like re-recording through analog gear.
@@ -2022,9 +2022,9 @@ Rebirth engines: OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB
 
     # Rebirth Mode flags
     parser.add_argument("--rebirth", action="store_true",
-                        help="[DEPRECATED] Enable Rebirth Mode: reprocess samples through XOlokun-style "
+                        help="[DEPRECATED] Enable Rebirth Mode: reprocess samples through XOceanus-style "
                              "DSP transforms. DEPRECATED — Production Rebirth Mode with proper gain staging, "
-                             "preview, and engine-inspired FX chains is available in the XOlokun desktop app "
+                             "preview, and engine-inspired FX chains is available in the XOceanus desktop app "
                              "(Phase 1B). This CLI implementation will be removed in a future release.")
     parser.add_argument("--rebirth-engine", default="OBESE",
                         choices=list(REBIRTH_PROFILES.keys()),

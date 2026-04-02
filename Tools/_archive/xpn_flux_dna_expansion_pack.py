@@ -18,7 +18,7 @@ import sys
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Flux"
+    "Presets", "XOceanus", "Flux"
 )
 
 # Engine name -> macro parameter key prefix mapping

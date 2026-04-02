@@ -2,13 +2,13 @@
 """
 xpn_engine_preset_gap_reporter.py
 
-Gap report tool for XO_OX XOlokun engine presets.
+Gap report tool for XO_OX XOceanus engine presets.
 Analyzes mood/DNA coverage for a specific engine and generates
 prescription suggestions for missing zones.
 
 Usage:
-    python xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOlokun
-    python xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOlokun --output gap_report.md
+    python xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOceanus
+    python xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOceanus --output gap_report.md
 """
 
 import argparse
@@ -452,13 +452,13 @@ def render_report(engine: str, presets: list[dict], analysis: dict, gaps: dict,
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate a DNA/mood gap report for an XO_OX XOlokun engine.",
+        description="Generate a DNA/mood gap report for an XO_OX XOceanus engine.",
     )
     parser.add_argument("--engine", required=True, help="Engine name, e.g. OPAL")
     parser.add_argument(
         "--preset-dir",
-        default="Presets/XOlokun",
-        help="Path to XOlokun preset directory (default: Presets/XOlokun)",
+        default="Presets/XOceanus",
+        help="Path to XOceanus preset directory (default: Presets/XOceanus)",
     )
     parser.add_argument(
         "--output",

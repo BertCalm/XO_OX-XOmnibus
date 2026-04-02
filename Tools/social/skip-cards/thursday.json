@@ -1,7 +1,7 @@
 [
   {
     "depth": "midnight",
-    "text": "For the builders: XOlokun ships with a full SDK in SDK/include/xolokun/. JUCE-free headers. Build your own engine, plug it in. KnotTopology included. github.com/XO-OX",
+    "text": "For the builders: XOceanus ships with a full SDK in SDK/include/xoceanus/. JUCE-free headers. Build your own engine, plug it in. KnotTopology included. github.com/XO-OX",
     "platform": "reddit",
     "tone": "developer-facing",
     "notes": "Good for r/gameaudio, r/DSP, audio dev communities"
@@ -15,7 +15,7 @@
   },
   {
     "depth": "surface",
-    "text": "🌊 Every engine in XOlokun has a character. The coupling gives them a relationship. What character are you drawn to today? #XOlokun",
+    "text": "🌊 Every engine in XOceanus has a character. The coupling gives them a relationship. What character are you drawn to today? #XOceanus",
     "platform": "twitter",
     "tone": "brand character",
     "notes": "Light engagement post, points at engine identity"

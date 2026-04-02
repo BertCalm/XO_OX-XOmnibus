@@ -2,7 +2,7 @@
 """
 xpn_hot_sparse_preset_pack.py
 
-Generates Hot Sparse quadrant preset stubs (.xometa) for XOlokun engines.
+Generates Hot Sparse quadrant preset stubs (.xometa) for XOceanus engines.
 
 The warmth/density quadrant strategy needs "Hot Sparse" presets
 (warmth 0.75–1.0, density 0.0–0.25) — intimate acoustic, solo cello character,
@@ -497,10 +497,10 @@ def build_preset(engine_key: str, preset_name: str, rng: random.Random) -> dict:
 
 def parse_args():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Atmosphere"
+    default_output = repo_root / "Presets" / "XOceanus" / "Atmosphere"
 
     parser = argparse.ArgumentParser(
-        description="Generate Hot Sparse quadrant preset stubs (warmth≥0.75, density≤0.25) for XOlokun.",
+        description="Generate Hot Sparse quadrant preset stubs (warmth≥0.75, density≤0.25) for XOceanus.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -570,7 +570,7 @@ def main() -> None:
 
     target = len(engines) * count
 
-    print("XOlokun Hot Sparse Preset Pack")
+    print("XOceanus Hot Sparse Preset Pack")
     print(f"  Quadrant    : warmth 0.75–1.0, density 0.0–0.25")
     print(f"  Mood        : Atmosphere")
     print(f"  Engines     : {', '.join(engines)}")

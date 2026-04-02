@@ -14,8 +14,8 @@ Flux engines  : OPTIC, OBLIQUE, OVERWORLD, ONSET, OCTOPUS, OUTWIT,
 Usage:
     python3 Tools/xpn_prism_flux_bright_extreme_pack.py
 
-Output: Presets/XOlokun/Prism/*.xometa  (30 files)
-        Presets/XOlokun/Flux/*.xometa   (30 files)
+Output: Presets/XOceanus/Prism/*.xometa  (30 files)
+        Presets/XOceanus/Flux/*.xometa   (30 files)
 Skip if file already exists.
 """
 
@@ -27,8 +27,8 @@ import random
 random.seed(0xBEEF)  # reproducible
 
 REPO_ROOT = os.path.join(os.path.dirname(__file__), "..")
-PRISM_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Prism")
-FLUX_DIR  = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Flux")
+PRISM_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Prism")
+FLUX_DIR  = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Flux")
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 

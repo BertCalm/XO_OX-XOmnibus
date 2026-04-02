@@ -3,7 +3,7 @@
 xpn_founding_pair_deep_expansion.py
 
 Deepens coupling coverage for ODDFELIX (OddfeliX, snap_) and ODDOSCAR (OddOscar, morph_)
-— the founding pair and anchor engines of XOlokun. Generates 84 Entangled presets covering
+— the founding pair and anchor engines of XOceanus. Generates 84 Entangled presets covering
 7 partner engines × 2 founding engines × 3 coupling variants each.
 
 Batches:
@@ -26,7 +26,7 @@ import os
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Entangled"
+    "Presets", "XOceanus", "Entangled"
 )
 
 # ── DNA baselines ────────────────────────────────────────────────────────────

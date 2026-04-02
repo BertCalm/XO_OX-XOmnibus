@@ -1,6 +1,6 @@
 # XO_OX Tools — XPN Export Pipeline
 
-Python toolchain for building MPC-compatible `.xpn` expansion packs from XOlokun presets.
+Python toolchain for building MPC-compatible `.xpn` expansion packs from XOceanus presets.
 
 ---
 
@@ -18,11 +18,11 @@ Python toolchain for building MPC-compatible `.xpn` expansion packs from XOlokun
 
 ## BlackHole Setup
 
-BlackHole is a virtual audio loopback used to record XOlokun output directly.
+BlackHole is a virtual audio loopback used to record XOceanus output directly.
 
 1. Download BlackHole 2ch from https://existential.audio/blackhole/
 2. Install and restart audio
-3. In XOlokun (standalone): set Audio Output → BlackHole 2ch
+3. In XOceanus (standalone): set Audio Output → BlackHole 2ch
 4. In oxport: pass `--audio-device BlackHole` (or `BlackHole 2ch`)
 
 ---
@@ -73,7 +73,7 @@ Oxytocin     Outlook      Obiont
 
 Channels in render spec files are **0-indexed**:
 
-- `0` = MIDI channel 1 (what MPC and XOlokun call "Channel 1")
+- `0` = MIDI channel 1 (what MPC and XOceanus call "Channel 1")
 - `15` = MIDI channel 16
 
 ---
@@ -105,4 +105,4 @@ Skip stages with `--skip stage1,stage2`.
 - **Normalization is RMS-based** by default. Install `pyloudnorm` for true ITU-R BS.1770 LUFS: `pip install pyloudnorm`.
 - **No resume capability**: if the pipeline fails mid-run, re-run from scratch or use `--skip` to bypass completed stages manually.
 - **Coupling is lost in XPN export**: Entangled mood presets and coupling routes cannot be encoded in MPC XPM format. The pipeline warns when it encounters them.
-- **BlackHole required for real-time rendering**: the `build` command records XOlokun audio via loopback; you must have XOlokun open with BlackHole as the audio output.
+- **BlackHole required for real-time rendering**: the `build` command records XOceanus audio via loopback; you must have XOceanus open with BlackHole as the audio output.

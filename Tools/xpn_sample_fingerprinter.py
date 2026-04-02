@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_sample_fingerprinter.py — WAV sample deduplication and provenance tracking
-XO_OX XOlokun Tools Suite
+XO_OX XOceanus Tools Suite
 
 Generates multi-tier fingerprints for WAV files:
   Tier 1: Exact hash (MD5 of raw audio data bytes)

@@ -1,6 +1,6 @@
-# XOlokun Sustainable Social Engine
+# XOceanus Sustainable Social Engine
 
-Automated content pipeline for XOlokun's social presence.
+Automated content pipeline for XOceanus's social presence.
 All scripts use Python stdlib only — no pip installs required.
 
 ---
@@ -136,7 +136,7 @@ Get a webhook URL: Discord server → Channel Settings → Integrations → Webh
 
 Optional overrides:
 ```bash
-export DISCORD_USERNAME="XOlokun"   # Bot display name
+export DISCORD_USERNAME="XOceanus"   # Bot display name
 export DISCORD_AVATAR_URL="..."     # Bot avatar
 ```
 
@@ -244,7 +244,7 @@ The pipeline enforces cross-platform references automatically:
 These are set in `format_posts.py` at the top:
 ```python
 REDDIT_LINK  = "reddit.com/r/XO_OX"
-DISCORD_LINK = "discord.gg/xolokun"
+DISCORD_LINK = "discord.gg/xoceanus"
 PATREON_LINK = "patreon.com/cw/XO_OX"
 ```
 Update these when channels are finalized.

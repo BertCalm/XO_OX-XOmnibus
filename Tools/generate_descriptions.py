@@ -2,7 +2,7 @@
 """
 generate_descriptions.py
 
-Generates evocative 1-2 sentence descriptions for XOlokun presets that are
+Generates evocative 1-2 sentence descriptions for XOceanus presets that are
 missing them.
 
 Usage:
@@ -17,7 +17,7 @@ import json
 import pathlib
 import sys
 
-PRESETS_ROOT = pathlib.Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = pathlib.Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 
 def generate_description(name: str, mood: str, engines: list, dna: dict, tags: list) -> str:
@@ -234,7 +234,7 @@ def run(apply: bool, sample_count: int = 15):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate descriptions for XOlokun presets that are missing them."
+        description="Generate descriptions for XOceanus presets that are missing them."
     )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(

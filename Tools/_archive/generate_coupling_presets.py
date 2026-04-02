@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate cross-engine coupling presets for XOlokun.
+"""Generate cross-engine coupling presets for XOceanus.
 
 Fills gaps in coupling coverage identified by validate_presets.py.
 Focuses on pairs involving newer engines (Overworld, Overbite, Organon, Ouroboros)
@@ -11,7 +11,7 @@ Each preset pairs two engines with a musically meaningful coupling type.
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 
 
 def make_coupling_preset(name, mood, desc, tags, engine_a, engine_b,

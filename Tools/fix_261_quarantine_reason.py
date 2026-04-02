@@ -4,7 +4,7 @@ fix_261_quarantine_reason.py — Add default quarantine_reason to quarantined pr
 
 Closes issue #261.
 
-3,991 presets in Presets/XOlokun/_quarantine/ lack a ``quarantine_reason``
+3,991 presets in Presets/XOceanus/_quarantine/ lack a ``quarantine_reason``
 field, making triage impossible without inspecting each file individually.
 This script adds ``"quarantine_reason": "legacy_uncategorized"`` to any
 quarantined preset that does not already have the field.
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 QUARANTINE_ROOT = (
-    Path(__file__).parent.parent / "Presets" / "XOlokun" / "_quarantine"
+    Path(__file__).parent.parent / "Presets" / "XOceanus" / "_quarantine"
 )
 DEFAULT_REASON = "legacy_uncategorized"
 

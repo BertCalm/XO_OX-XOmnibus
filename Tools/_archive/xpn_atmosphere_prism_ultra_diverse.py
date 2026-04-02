@@ -4,7 +4,7 @@ Generate 80 presets: 40 Atmosphere + 40 Prism
 Each preset has 4 extreme DNA dimensions + 2 midrange dimensions.
 8 corner combos × 5 presets per mood.
 
-Output: Presets/XOlokun/Atmosphere/ and Presets/XOlokun/Prism/
+Output: Presets/XOceanus/Atmosphere/ and Presets/XOceanus/Prism/
 """
 
 import json
@@ -134,7 +134,7 @@ def safe_filename(name):
 
 
 def generate_section(mood, corners, suffix, engine_cycle, coupling_cycle):
-    out_dir = os.path.join(REPO_ROOT, 'Presets', 'XOlokun', mood)
+    out_dir = os.path.join(REPO_ROOT, 'Presets', 'XOceanus', mood)
     os.makedirs(out_dir, exist_ok=True)
 
     written = 0
@@ -199,12 +199,12 @@ def main():
     print(f"Total:      {atm_written + pri_written} written, {atm_skipped + pri_skipped} skipped")
 
     # Verify output dirs
-    atm_dir = os.path.join(REPO_ROOT, 'Presets', 'XOlokun', 'Atmosphere')
-    pri_dir = os.path.join(REPO_ROOT, 'Presets', 'XOlokun', 'Prism')
+    atm_dir = os.path.join(REPO_ROOT, 'Presets', 'XOceanus', 'Atmosphere')
+    pri_dir = os.path.join(REPO_ROOT, 'Presets', 'XOceanus', 'Prism')
     atm_count = len([f for f in os.listdir(atm_dir) if f.endswith('.xometa') and not os.path.isdir(os.path.join(atm_dir, f))])
     pri_count = len([f for f in os.listdir(pri_dir) if f.endswith('.xometa') and not os.path.isdir(os.path.join(pri_dir, f))])
-    print(f"\nTotal .xometa in Presets/XOlokun/Atmosphere/: {atm_count}")
-    print(f"Total .xometa in Presets/XOlokun/Prism/:      {pri_count}")
+    print(f"\nTotal .xometa in Presets/XOceanus/Atmosphere/: {atm_count}")
+    print(f"Total .xometa in Presets/XOceanus/Prism/:      {pri_count}")
 
 
 if __name__ == '__main__':

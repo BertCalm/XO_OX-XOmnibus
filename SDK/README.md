@@ -1,8 +1,8 @@
-# XOlokun Engine SDK
+# XOceanus Engine SDK
 
-Build your own XOlokun engine — no JUCE required.
+Build your own XOceanus engine — no JUCE required.
 
-The SDK lets anyone write a custom synthesis engine that loads into XOlokun
+The SDK lets anyone write a custom synthesis engine that loads into XOceanus
 at runtime, participates in the coupling matrix, and appears in the UI alongside
 the 76 factory engines.
 
@@ -28,12 +28,12 @@ clang++ -std=c++17 -I SDK/include -fvisibility=hidden -shared -fPIC \
 
 ## What Is an Engine?
 
-An **engine** is a self-contained synthesizer module. XOlokun hosts up to 4 engines
+An **engine** is a self-contained synthesizer module. XOceanus hosts up to 4 engines
 simultaneously and routes audio + modulation between them through the
 **MegaCouplingMatrix** (15 coupling types).
 
 Every engine:
-- Implements the `xolokun::SynthEngine` interface
+- Implements the `xoceanus::SynthEngine` interface
 - Declares its own namespaced parameters (`prefix_paramName`)
 - Responds to MIDI (note on/off, velocity, aftertouch, mod wheel, pitch bend)
 - Sends audio for other engines to use as modulation
@@ -46,10 +46,10 @@ Every engine:
 ```
 SDK/
   include/
-    xolokun/
+    xoceanus/
       SynthEngine.h       — the interface (inherit this)
       CouplingTypes.h     — 15 coupling type enums
-      EngineModule.h      — XOLOKUN_EXPORT_ENGINE macro
+      EngineModule.h      — XOCEANUS_EXPORT_ENGINE macro
   examples/
     HelloEngine/
       HelloEngine.h       — complete "Hello World" engine (start here)
@@ -67,9 +67,9 @@ SDK/
 ## The SynthEngine Interface
 
 ```cpp
-#include <xolokun/SynthEngine.h>
+#include <xoceanus/SynthEngine.h>
 
-class MyEngine : public xolokun::SynthEngine
+class MyEngine : public xoceanus::SynthEngine
 {
 public:
     // Lifecycle
@@ -78,34 +78,34 @@ public:
     void releaseResources() override;          // optional but expected
 
     // Audio — MUST be real-time safe (no alloc, no I/O, no locks)
-    void renderBlock (xolokun::StereoBuffer& buffer,
-                      const xolokun::MidiEventList& midi) override;
+    void renderBlock (xoceanus::StereoBuffer& buffer,
+                      const xoceanus::MidiEventList& midi) override;
 
     // Coupling
     float getSampleForCoupling (int channel, int sampleIndex) const override;
-    void  applyCouplingInput   (xolokun::CouplingType type, float amount,
+    void  applyCouplingInput   (xoceanus::CouplingType type, float amount,
                                 const float* sourceBuffer, int numSamples) override;
 
     // Parameters
-    std::vector<xolokun::ParameterDef> getParameterDefs() const override;
+    std::vector<xoceanus::ParameterDef> getParameterDefs() const override;
     void  setParameter (const std::string& id, float value) override;
     float getParameter (const std::string& id) const override;
 
     // Identity
     std::string       getEngineId()       const override;
-    xolokun::Colour  getAccentColour()   const override;
+    xoceanus::Colour  getAccentColour()   const override;
     int               getMaxVoices()      const override;
     int               getActiveVoiceCount() const override;
 };
 ```
 
-Full documentation: `SDK/include/xolokun/SynthEngine.h`
+Full documentation: `SDK/include/xoceanus/SynthEngine.h`
 
 ---
 
 ## The 6 Doctrines
 
-Every XOlokun engine must satisfy all 6 Doctrines. The validation script checks these
+Every XOceanus engine must satisfy all 6 Doctrines. The validation script checks these
 automatically. Engines that fail any Doctrine will not be admitted to the registry.
 
 | ID | Doctrine | Minimum Requirement |
@@ -121,7 +121,7 @@ automatically. Engines that fail any Doctrine will not be admitted to the regist
 
 ## Coupling System
 
-XOlokun routes audio and modulation between engines through the **MegaCouplingMatrix**.
+XOceanus routes audio and modulation between engines through the **MegaCouplingMatrix**.
 Your engine participates in two roles:
 
 ### Sending (making yourself available as a modulation source)
@@ -166,7 +166,7 @@ void applyCouplingInput (CouplingType type, float amount,
 | `AmpToChoke` | Source amplitude ducks/chokes receiver |
 | `EnvToDecay` | Source envelope modulates receiver's decay time |
 | `PitchToPitch` | Source pitch transposes receiver (harmony) |
-| ... | See `SDK/include/xolokun/CouplingTypes.h` for all 15 |
+| ... | See `SDK/include/xoceanus/CouplingTypes.h` for all 15 |
 
 ---
 
@@ -208,12 +208,12 @@ These are not suggestions. Violating them causes dropouts and crashes.
 
 ## Exporting Your Engine
 
-The `XOLOKUN_EXPORT_ENGINE` macro generates the two C functions XOlokun needs to
+The `XOCEANUS_EXPORT_ENGINE` macro generates the two C functions XOceanus needs to
 load your engine as a shared library:
 
 ```cpp
 // At file scope (outside any class or namespace):
-XOLOKUN_EXPORT_ENGINE (
+XOCEANUS_EXPORT_ENGINE (
     MyEngine,         // C++ class name
     "Onyx",           // Engine ID (unique O-word)
     "Onyx Engine",    // Display name
@@ -236,7 +236,7 @@ python3 SDK/tools/validate_engine.py path/to/YourEngine.h
 
 The validator checks:
 - All `SynthEngine` virtual methods implemented
-- `XOLOKUN_EXPORT_ENGINE` macro present
+- `XOCEANUS_EXPORT_ENGINE` macro present
 - Parameter naming convention (`prefix_name`)
 - D001–D006 doctrine patterns
 - No banned audio-thread operations (allocation, I/O, locks)
@@ -262,14 +262,14 @@ Start with MinimalEngine if you want the smallest possible scaffolding.
 
 ## Submitting to the Registry
 
-To have your engine included in a future XOlokun release:
+To have your engine included in a future XOceanus release:
 
 1. Run `validate_engine.py` — zero FAIL results required
 2. Write at least 10 factory presets in `.xometa` format
 3. Choose an O-word engine ID not already registered (see CLAUDE.md engine table)
-4. Open a pull request to `BertCalm/XO_OX-XOlokun` with:
+4. Open a pull request to `BertCalm/XO_OX-XOceanus` with:
    - Engine `.h` file in `SDK/community/{EngineName}/`
-   - At least 10 presets in `Presets/XOlokun/{mood}/`
+   - At least 10 presets in `Presets/XOceanus/{mood}/`
    - A brief description (what it sounds like, what makes it interesting)
 
 ---
@@ -287,5 +287,5 @@ V1 engines will continue loading without modification until at least V2.
 
 - `SDK/examples/HelloEngine/README.md` — detailed build + doctrine walkthrough
 - `Source/Core/SynthEngine.h` — JUCE-native interface (for built-in engines)
-- `Docs/xolokun_new_engine_process.md` — full process guide (ideation → integration)
-- `Docs/xolokun_master_specification.md` — authoritative product specification
+- `Docs/xoceanus_new_engine_process.md` — full process guide (ideation → integration)
+- `Docs/xoceanus_master_specification.md` — authoritative product specification

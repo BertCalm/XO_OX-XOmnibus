@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OddfeliX (ODDFELIX) and OddOscar (ODDOSCAR) coupling presets for XOlokun.
+"""Generate OddfeliX (ODDFELIX) and OddOscar (ODDOSCAR) coupling presets for XOceanus.
 
 The founding sibling pair — feliX the neon tetra (clinical/bright, snap_ prefix) meets
 Oscar the axolotl (warm/organic, morph_ prefix).  Together they define the core feliX-Oscar
@@ -414,12 +414,12 @@ def build_presets(rng: random.Random, external_count: int = 3) -> list[dict]:
 # ---------------------------------------------------------------------------
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate OddfeliX + OddOscar coupling presets for XOlokun.",
+        description="Generate OddfeliX + OddOscar coupling presets for XOceanus.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_out = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     parser.add_argument(
         "--output-dir",

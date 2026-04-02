@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OUTWIT×OVERLAP Entangled coupling preset stubs for XOlokun.
+"""Generate OUTWIT×OVERLAP Entangled coupling preset stubs for XOceanus.
 
 Seeds Entangled coupling coverage for the two newest installed engines:
   - OUTWIT   (Giant Pacific Octopus 8-arm Wolfram CA,  owit_ prefix)
@@ -415,10 +415,10 @@ def build_presets(rng: random.Random) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate OUTWIT×OVERLAP Entangled coupling presets for XOlokun."
+        description="Generate OUTWIT×OVERLAP Entangled coupling presets for XOceanus."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_out = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     parser.add_argument(
         "--output-dir",

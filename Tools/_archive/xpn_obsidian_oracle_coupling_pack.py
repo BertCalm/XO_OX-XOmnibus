@@ -444,14 +444,14 @@ def build_presets(rng):
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate OBSIDIAN × ORACLE coupling presets for XOlokun."
+        description="Generate OBSIDIAN × ORACLE coupling presets for XOceanus."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = str(repo_root / "Presets" / "XOlokun" / "Entangled")
+    default_out = str(repo_root / "Presets" / "XOceanus" / "Entangled")
 
     parser.add_argument(
         "--output-dir", default=default_out,
-        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOceanus/Entangled/)",
     )
     parser.add_argument(
         "--dry-run", action="store_true",

@@ -55,7 +55,7 @@ def print_week_summary(content: dict, week_dir: Path) -> None:
     recipe = content.get("recipe") or {}
 
     print(f"\n{sep}")
-    print(f"  XOlokun Weekly Assembly — {wid} (Week #{wnum})")
+    print(f"  XOceanus Weekly Assembly — {wid} (Week #{wnum})")
     print(sep)
     print(f"  Commits:        {cc}")
     print(f"  New presets:    {pc}")
@@ -115,7 +115,7 @@ def post_surface_to_discord(week_dir: Path) -> bool:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Master weekly content generation for XOlokun social pipeline.",
+        description="Master weekly content generation for XOceanus social pipeline.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

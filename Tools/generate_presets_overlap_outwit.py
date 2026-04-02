@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Generator
+XOceanus Preset Generator
   OVERLAP : 106 remaining (to reach 150 total)
   OUTWIT  : 50 Block 1
 
@@ -12,7 +12,7 @@ Usage:
 import json, sys
 from pathlib import Path
 
-BASE   = Path(__file__).parent.parent / "Presets" / "XOlokun"
+BASE   = Path(__file__).parent.parent / "Presets" / "XOceanus"
 AUTHOR = "XO_OX Designs"
 DATE   = "2026-03-18"
 DRY    = "--dry-run" in sys.argv
@@ -1207,7 +1207,7 @@ OUTWIT_PRESETS = [
 
 def main():
     print(f"\n{'='*60}")
-    print(f"  XOlokun Preset Generator {'(DRY RUN) ' if DRY else ''}")
+    print(f"  XOceanus Preset Generator {'(DRY RUN) ' if DRY else ''}")
     print(f"  OVERLAP: {len(OVERLAP_PRESETS)} presets")
     print(f"  OUTWIT:  {len(OUTWIT_PRESETS)} presets")
     print(f"{'='*60}\n")

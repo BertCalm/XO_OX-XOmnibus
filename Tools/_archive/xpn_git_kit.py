@@ -39,7 +39,7 @@ Output: XPN Drum Program ZIP + commit_report.txt
 CLI:
   python xpn_git_kit.py --repo . --output ./out/ --max-commits 200
   python xpn_git_kit.py --repo /path/to/repo --output ./out/
-  python xpn_git_kit.py --repo XO_OX-XOlokun --output ./out/
+  python xpn_git_kit.py --repo XO_OX-XOceanus --output ./out/
 """
 
 import argparse

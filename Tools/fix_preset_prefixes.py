@@ -113,7 +113,7 @@ def process_file(path: Path) -> tuple[bool, int]:
 
 
 def main():
-    preset_root = Path(__file__).parent.parent / "Presets" / "XOlokun"
+    preset_root = Path(__file__).parent.parent / "Presets" / "XOceanus"
     if not preset_root.exists():
         print(f"ERROR: Preset root not found: {preset_root}", file=sys.stderr)
         sys.exit(1)

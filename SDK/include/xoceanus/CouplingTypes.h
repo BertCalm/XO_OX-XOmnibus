@@ -1,8 +1,8 @@
 #pragma once
-// xolokun-engine-sdk — CouplingTypes.h
+// xoceanus-engine-sdk — CouplingTypes.h
 // Standalone header — no JUCE dependency.
 //
-// Coupling is the signature feature of XOlokun: two engines running in parallel,
+// Coupling is the signature feature of XOceanus: two engines running in parallel,
 // each modulating the other in real time. A CouplingType describes the nature of
 // that relationship — what signal flows from the source engine and how the
 // destination engine interprets it.
@@ -11,7 +11,7 @@
 // to each engine's applyCouplingInput(). Engine developers declare which types
 // they respond to; all others are silently ignored.
 
-namespace xolokun {
+namespace xoceanus {
 
 /// The channel through which one engine modulates another.
 ///
@@ -79,4 +79,4 @@ inline const char* couplingTypeName (CouplingType t)
     return "Unknown";
 }
 
-} // namespace xolokun
+} // namespace xoceanus

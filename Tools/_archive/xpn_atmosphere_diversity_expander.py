@@ -8,7 +8,7 @@ Generates 60 Atmosphere presets targeting underrepresented extreme zones:
   - dense-atmosphere (15):      density 0.80-0.95, warmth 0.55-0.80, brightness 0.20-0.45
   - aggressive-atmosphere (15): aggression 0.72-0.90, movement 0.65-0.85, density 0.50-0.75
 
-Saves to Presets/XOlokun/Atmosphere/. Skips existing files.
+Saves to Presets/XOceanus/Atmosphere/. Skips existing files.
 """
 
 import json
@@ -18,7 +18,7 @@ from pathlib import Path
 
 random.seed(42)
 
-OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun" / "Atmosphere"
+OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOceanus" / "Atmosphere"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def r(lo, hi, decimals=3):

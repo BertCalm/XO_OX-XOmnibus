@@ -563,7 +563,7 @@ def resolve_presets_dir(cli_dir) -> Path:
     script_dir = Path(__file__).resolve().parent
     candidates = [
         script_dir.parent / "Presets",
-        script_dir.parent / "Presets" / "XOlokun",
+        script_dir.parent / "Presets" / "XOceanus",
         script_dir / "Presets",
     ]
     for c in candidates:

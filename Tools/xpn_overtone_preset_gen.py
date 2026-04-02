@@ -20,7 +20,7 @@ Continued fraction constants:
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOceanus")
 
 # -- OVERTONE defaults (26 params) ------------------------------------------------
 DEFAULTS = {

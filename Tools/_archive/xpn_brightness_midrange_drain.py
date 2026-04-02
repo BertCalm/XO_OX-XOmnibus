@@ -14,8 +14,8 @@ import random
 import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOUNDATION_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Foundation")
-ATMOSPHERE_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Atmosphere")
+FOUNDATION_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Foundation")
+ATMOSPHERE_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Atmosphere")
 
 random.seed(42)  # reproducible
 

@@ -4,7 +4,7 @@
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 DATE = "2026-03-10"
 
 

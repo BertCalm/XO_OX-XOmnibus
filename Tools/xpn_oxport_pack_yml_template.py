@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Optional
 
 # ---------------------------------------------------------------------------
-# Known XOlokun engines (canonical short names)
+# Known XOceanus engines (canonical short names)
 # ---------------------------------------------------------------------------
 KNOWN_ENGINES = {
     "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",
@@ -282,7 +282,7 @@ def config_from_spec(spec_path: Path, overrides: dict) -> dict:
         val = dna_raw.get(key)
         dna[key] = round(float(val), 3) if isinstance(val, (int, float)) else DNA_DEFAULTS[key]
 
-    preset_dir = pack.get("preset_dir") or spec.get("preset_dir") or "Presets/XOlokun/Foundation"
+    preset_dir = pack.get("preset_dir") or spec.get("preset_dir") or "Presets/XOceanus/Foundation"
     output_dir = pack.get("output_dir") or spec.get("output_dir") or "build/packs"
     tags_raw = pack.get("tags") or spec.get("tags") or []
 
@@ -315,7 +315,7 @@ def config_defaults(overrides: dict) -> dict:
         "author": "XO_OX",
         "primary_engines": engines,
         "secondary_engines": [],
-        "preset_dir": "Presets/XOlokun/Foundation",
+        "preset_dir": "Presets/XOceanus/Foundation",
         "engine_filter": engines,
         "output_dir": "build/packs",
         "dna": dict(DNA_DEFAULTS),

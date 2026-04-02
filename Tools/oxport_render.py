@@ -2,7 +2,7 @@
 """
 oxport_render.py — Fleet Render Automation (Phase 1)
 
-Automates WAV rendering from XOlokun by sending MIDI to the plugin
+Automates WAV rendering from XOceanus by sending MIDI to the plugin
 and recording audio output via loopback (BlackHole on macOS).
 
 Requirements:
@@ -260,7 +260,7 @@ def _preflight_check(device_index, sample_rate: int, midi_port, midi_channel: in
         test_peak = float(np.max(np.abs(test_rec)))
         print(f"    Test note peak: {test_peak:.6f} ({20*math.log10(max(test_peak, 1e-10)):.1f} dBFS)")
         if test_peak < noise_floor * 2:
-            print("  [PREFLIGHT FAIL] No signal from test note! Check: XOlokun running? BlackHole routing? MIDI port?")
+            print("  [PREFLIGHT FAIL] No signal from test note! Check: XOceanus running? BlackHole routing? MIDI port?")
             raise RuntimeError("Pre-flight failed: no audio signal detected from test note")
         print("  [PREFLIGHT PASS] Audio chain verified.\n")
     else:
@@ -441,13 +441,13 @@ def dry_run(jobs: list[dict], output_dir: str):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Oxport Fleet Render — automate WAV rendering from XOlokun via MIDI + loopback audio",
+        description="Oxport Fleet Render — automate WAV rendering from XOceanus via MIDI + loopback audio",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   python3 oxport_render.py --list-ports
   python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/
-  python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/ --midi-port "XOlokun" --audio-device "BlackHole"
+  python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/ --midi-port "XOceanus" --audio-device "BlackHole"
   python3 oxport_render.py --dry-run --spec render_spec.json
 
 Render spec JSON format:

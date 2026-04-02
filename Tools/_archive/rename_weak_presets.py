@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-rename_weak_presets.py — Fleet-wide preset name elevation for XO_OX-XOlokun
+rename_weak_presets.py — Fleet-wide preset name elevation for XO_OX-XOceanus
 
 Elevates generic/functional preset names to evocative, atmospheric alternatives
 aligned with the XO_OX brand identity and aquatic mythology.

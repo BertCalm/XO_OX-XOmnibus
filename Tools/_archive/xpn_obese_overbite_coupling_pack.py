@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OBESE + OVERBITE coupling pack for XOlokun.
+"""Generate OBESE + OVERBITE coupling pack for XOceanus.
 
 OBESE  — Hot Pink #FF1493, Mojo control B015, fat saturation engine, fat_ prefix
 OVERBITE — Fang White #F0EDE8, Five-Macro system B008, bass-forward character, poss_ prefix
@@ -9,7 +9,7 @@ Generates 53 presets total:
   - 24 OBESE new pairs (8 partners × 3 presets each)
   - 24 OVERBITE new pairs (8 partners × 3 presets each)
 
-All presets written to Presets/XOlokun/Entangled/.
+All presets written to Presets/XOceanus/Entangled/.
 """
 
 import argparse
@@ -38,7 +38,7 @@ DNA = {
     "OSTERIA":   {"brightness": 0.4,  "warmth": 0.75, "movement": 0.45, "density": 0.7,  "space": 0.6,  "aggression": 0.45},
 }
 
-# Engine name → XOlokun engine key (used in "engines" array and coupling pairs)
+# Engine name → XOceanus engine key (used in "engines" array and coupling pairs)
 ENGINE_KEY = {
     "OBESE":     "XObese",
     "OVERBITE":  "XOverbite",
@@ -363,16 +363,16 @@ def deduplicate_names(presets: list) -> list:
 
 def main():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_output = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Generate OBESE + OVERBITE coupling pack presets for XOlokun."
+        description="Generate OBESE + OVERBITE coupling pack presets for XOceanus."
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=default_output,
-        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOceanus/Entangled/)",
     )
     parser.add_argument(
         "--dry-run",

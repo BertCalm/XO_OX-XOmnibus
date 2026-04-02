@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-daily_signal.py — Daily scripture verse auto-poster for XOlokun.
+daily_signal.py — Daily scripture verse auto-poster for XOceanus.
 
 Reads all .md files in scripture/retreats/ and scripture/the-scripture.md,
 extracts verse candidates (20–280 chars), rotates through them without repeats,
@@ -45,7 +45,7 @@ VERSE_MAX = 280
 # ─── Format templates ─────────────────────────────────────────────────────────
 FORMAT_TEMPLATES = {
     "plain": "{verse}",
-    "twitter": '"{verse}"\n— Guru Bin, The Book of Bin\n#XOlokun #synthesis #SoundDesign',
+    "twitter": '"{verse}"\n— Guru Bin, The Book of Bin\n#XOceanus #synthesis #SoundDesign',
     "discord": (
         "**Daily Signal** 🐚\n"
         "━━━━━━━━━━━━━━━━━━━━━\n"
@@ -236,7 +236,7 @@ def log_to_file(verse: str, fmt: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Output a daily scripture verse for XOlokun social channels.",
+        description="Output a daily scripture verse for XOceanus social channels.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

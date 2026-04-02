@@ -285,7 +285,7 @@ def render_revenue_table(results: dict, pack_price: float) -> None:
 
 def print_fleet_summary(engines: int, packs_planned: int, pack_price: float) -> None:
     print("  FLEET STATS")
-    print(f"  Engines in XOlokun : {engines}")
+    print(f"  Engines in XOceanus : {engines}")
     print(f"  Packs planned       : {packs_planned}")
     print(f"  Pack price (default): {fmt_dollar(pack_price)}")
     print(f"  Premium pack price  : {fmt_dollar(DEFAULT_PACK_PRICE_PREMIUM)}")

@@ -17,7 +17,7 @@ random.seed(42)
 
 PRESETS_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Aether"
+    "Presets", "XOceanus", "Aether"
 )
 
 AETHER_ENGINES = [
@@ -208,7 +208,7 @@ def main():
           f"mean={sum(space_values)/len(space_values):.3f}")
 
     aet_spc_files = [f for f in os.listdir(PRESETS_DIR) if "AET_SPC" in f]
-    print(f"\nAET_SPC files in Presets/XOlokun/Aether/: {len(aet_spc_files)}")
+    print(f"\nAET_SPC files in Presets/XOceanus/Aether/: {len(aet_spc_files)}")
     for f in sorted(aet_spc_files)[:10]:
         print(f"  {f}")
     if len(aet_spc_files) > 10:

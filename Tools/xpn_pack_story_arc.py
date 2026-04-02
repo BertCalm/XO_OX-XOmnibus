@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Pack Story Arc Validator
+XOceanus Pack Story Arc Validator
 
 Validates the narrative journey of a pack by analysing how preset DNA values
 evolve across a 4-act structure (Setup → Development → Climax → Resolution).
@@ -344,7 +344,7 @@ def build_report(
     lines = []
 
     lines.append("=" * 72)
-    lines.append("XOlokun Pack Story Arc Report")
+    lines.append("XOceanus Pack Story Arc Report")
     lines.append(f"Directory : {preset_dir}")
     lines.append(f"Presets   : {len(presets)}")
     lines.append(f"Coherence : {coherence}/100")
@@ -442,7 +442,7 @@ def optimised_order(presets: list[dict]) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Validate the story arc of an XOlokun preset pack."
+        description="Validate the story arc of an XOceanus preset pack."
     )
     parser.add_argument(
         "--preset-dir",

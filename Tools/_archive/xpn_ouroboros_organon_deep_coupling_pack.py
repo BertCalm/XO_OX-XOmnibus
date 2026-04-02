@@ -15,7 +15,7 @@ Generates:
   - 20 ORGANON presets paired with other engines
 Total: ~48 presets. Skips files that already exist.
 
-Output: Presets/XOlokun/Entangled/
+Output: Presets/XOceanus/Entangled/
 """
 
 import json
@@ -24,7 +24,7 @@ import sys
 
 ENTANGLED_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Entangled"
+    "Presets", "XOceanus", "Entangled"
 )
 
 # ---------------------------------------------------------------------------

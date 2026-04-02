@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_auto_dna.py — Automatically computes XOlokun 6D Sonic DNA values from WAV audio.
+xpn_auto_dna.py — Automatically computes XOceanus 6D Sonic DNA values from WAV audio.
 
 Analyzes a WAV file using only stdlib + wave module (no librosa, no numpy).
 Delegates brightness/warmth/aggression to xpn_classify_instrument feature
@@ -294,7 +294,7 @@ def scan_directory(dir_path: str) -> dict:
 def main():
     parser = argparse.ArgumentParser(
         description=(
-            "xpn_auto_dna — compute XOlokun 6D Sonic DNA from WAV audio (stdlib only)\n\n"
+            "xpn_auto_dna — compute XOceanus 6D Sonic DNA from WAV audio (stdlib only)\n\n"
             "Single file:  python xpn_auto_dna.py sample.wav\n"
             "Directory:    python xpn_auto_dna.py ./stems/"
         ),

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Smoke Test (#57)
+XOceanus Preset Smoke Test (#57)
 
 Fast, CI-friendly sanity check: load every .xometa, verify required schema
 fields are present and well-formed, and report any files that fail.
@@ -114,7 +114,7 @@ def check_preset(path: str) -> list[str]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="XOlokun preset smoke test")
+    parser = argparse.ArgumentParser(description="XOceanus preset smoke test")
     parser.add_argument(
         "--presets-dir",
         default=DEFAULT_PRESETS_DIR,

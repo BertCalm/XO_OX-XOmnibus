@@ -1,8 +1,8 @@
 """
-xpn_params_sidecar_spec.py — XOlokun params_sidecar.json generator and validator.
+xpn_params_sidecar_spec.py — XOceanus params_sidecar.json generator and validator.
 
-Bridges MPC XPN programs with XOlokun .xometa presets via a companion sidecar file.
-When a user opens an XPN pack in XOlokun, the sidecar auto-loads the matching engine
+Bridges MPC XPN programs with XOceanus .xometa presets via a companion sidecar file.
+When a user opens an XPN pack in XOceanus, the sidecar auto-loads the matching engine
 preset for each program, linking sample pack character to synthesis engine character.
 
 CANONICAL SCHEMA (V1 — pack-level sidecar)
@@ -23,7 +23,7 @@ Schema:
   {
     "version": "1.0",
     "pack_name": "ONSET Drum Essentials",
-    "xolokun_version_min": "1.0.0",
+    "xoceanus_version_min": "1.0.0",
     "mappings": [
       {
         "program_file": "Kick Hard.xpm",       // bare filename, no path
@@ -92,7 +92,7 @@ def jaccard(a: set[str], b: set[str]) -> float:
 def read_program_engine(xpm_path: Path) -> str | None:
     """
     Try to extract an engine hint from an XPM file.
-    XOlokun-exported XPMs may embed an <Engine> element or a comment.
+    XOceanus-exported XPMs may embed an <Engine> element or a comment.
     Falls back to None if not found (caller should use directory/naming heuristics).
     """
     try:
@@ -220,7 +220,7 @@ def generate_sidecar(
     output_path: Path,
     threshold: float = 0.4,
     pack_name: str | None = None,
-    xolokun_version_min: str = "1.0.0",
+    xoceanus_version_min: str = "1.0.0",
 ) -> dict:
     """Generate params_sidecar.json and write to output_path. Returns the dict."""
     if not pack_dir.is_dir():
@@ -241,7 +241,7 @@ def generate_sidecar(
     sidecar = {
         "version": "1.0",
         "pack_name": pack_name or pack_dir.name,
-        "xolokun_version_min": xolokun_version_min,
+        "xoceanus_version_min": xoceanus_version_min,
         "mappings": mappings,
     }
 
@@ -284,7 +284,7 @@ def validate_sidecar(
         return False
 
     # --- Top-level keys ---
-    required_top = ("version", "pack_name", "xolokun_version_min", "mappings")
+    required_top = ("version", "pack_name", "xoceanus_version_min", "mappings")
     for key in required_top:
         if key not in data:
             errors.append(f"Missing top-level key: '{key}'")
@@ -433,7 +433,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="XOlokun params_sidecar.json generator and validator.",
+        description="XOceanus params_sidecar.json generator and validator.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

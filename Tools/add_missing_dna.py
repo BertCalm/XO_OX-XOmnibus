@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun — Auto-Populate Missing Sonic DNA Blocks
+XOceanus — Auto-Populate Missing Sonic DNA Blocks
 
 Finds every .xometa preset that is missing a `sonic_dna` block (or `dna` block)
 and writes plausible 6D values derived from heuristics:
@@ -413,7 +413,7 @@ def main() -> int:
     sep = "=" * 70
 
     print(sep)
-    print("XOlokun — Add Missing Sonic DNA Blocks")
+    print("XOceanus — Add Missing Sonic DNA Blocks")
     print(f"Mode: {'DRY RUN (no files written)' if dry_run else 'LIVE (files will be modified)'}")
     print(sep)
 

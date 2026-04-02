@@ -1,7 +1,7 @@
 #pragma once
-// xolokun-engine-sdk — SynthEngine.h
+// xoceanus-engine-sdk — SynthEngine.h
 //
-// This is the contract. Every engine in XOlokun — all 73 built-in engines and
+// This is the contract. Every engine in XOceanus — all 73 built-in engines and
 // every community engine loaded at runtime — implements this interface.
 //
 // The boundary is deliberately JUCE-free so community developers can build,
@@ -13,7 +13,7 @@
 //   juce::String              →  std::string
 //   juce::Colour              →  Colour          (uint8 RGBA)
 //
-// When an engine runs inside XOlokun, a thin adapter layer converts between
+// When an engine runs inside XOceanus, a thin adapter layer converts between
 // these SDK types and JUCE's native types. The adapter is invisible to engine
 // authors — you write against this interface and it just works.
 
@@ -23,7 +23,7 @@
 #include <vector>
 #include <memory>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Plain types — no JUCE dependency
@@ -95,7 +95,7 @@ struct ParameterDef {
 };
 
 //==============================================================================
-// SynthEngine — the interface every XOlokun engine implements.
+// SynthEngine — the interface every XOceanus engine implements.
 //==============================================================================
 class SynthEngine
 {
@@ -122,7 +122,7 @@ public:
 
     //--- Coupling (Cross-Engine Modulation) -----------------------------------
     //
-    // Coupling is what makes XOlokun more than a multi-timbral host. Engines
+    // Coupling is what makes XOceanus more than a multi-timbral host. Engines
     // send audio and modulation signals to each other in real time through the
     // MegaCouplingMatrix. Two roles:
     //
@@ -177,4 +177,4 @@ public:
     virtual int getActiveVoiceCount() const { return 0; }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

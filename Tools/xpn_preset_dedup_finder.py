@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_dedup_finder.py — Find duplicate and near-duplicate presets across the XOlokun fleet.
+xpn_preset_dedup_finder.py — Find duplicate and near-duplicate presets across the XOceanus fleet.
 
 Goes beyond cosine similarity: targets exact structural duplicates using three independent signals.
 
@@ -11,9 +11,9 @@ Detection modes:
   all       — Run all three modes (default)
 
 Usage:
-  python xpn_preset_dedup_finder.py --presets-dir Presets/XOlokun
-  python xpn_preset_dedup_finder.py --presets-dir Presets/XOlokun --mode dna
-  python xpn_preset_dedup_finder.py --presets-dir Presets/XOlokun --fix-names
+  python xpn_preset_dedup_finder.py --presets-dir Presets/XOceanus
+  python xpn_preset_dedup_finder.py --presets-dir Presets/XOceanus --mode dna
+  python xpn_preset_dedup_finder.py --presets-dir Presets/XOceanus --fix-names
 
 Exit codes:
   0 — No duplicates found (clean)
@@ -51,15 +51,15 @@ def load_presets(presets_dir: Path) -> list[dict]:
                 print(f"  [WARN] Could not parse {fpath}: {exc}", file=sys.stderr)
                 continue
 
-            # Infer mood from directory structure (…/Presets/XOlokun/<mood>/…)
+            # Infer mood from directory structure (…/Presets/XOceanus/<mood>/…)
             parts = fpath.parts
             mood = "Unknown"
             try:
-                xolokun_idx = next(
-                    i for i, p in enumerate(parts) if p == "XOlokun"
+                xoceanus_idx = next(
+                    i for i, p in enumerate(parts) if p == "XOceanus"
                 )
-                if xolokun_idx + 1 < len(parts):
-                    mood = parts[xolokun_idx + 1]
+                if xoceanus_idx + 1 < len(parts):
+                    mood = parts[xoceanus_idx + 1]
             except StopIteration:
                 pass
 
@@ -313,14 +313,14 @@ def fix_names(name_groups: list[dict], presets_dir: Path, dry_run: bool = False)
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Find exact duplicate presets across the XOlokun fleet.",
+        description="Find exact duplicate presets across the XOceanus fleet.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
     p.add_argument(
         "--presets-dir",
-        default="Presets/XOlokun",
-        help="Root directory containing .xometa preset files (default: Presets/XOlokun)",
+        default="Presets/XOceanus",
+        help="Root directory containing .xometa preset files (default: Presets/XOceanus)",
     )
     p.add_argument(
         "--mode",

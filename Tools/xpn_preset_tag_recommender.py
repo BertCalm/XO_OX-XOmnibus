@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Tag Recommender
+XOceanus Preset Tag Recommender
 
 Recommends tags for .xometa presets based on Sonic DNA, mood, and engine —
 ensuring consistent, meaningful tagging across the fleet.
@@ -345,7 +345,7 @@ def format_report(reports: list[dict], verbose: bool = False) -> str:
     missing= [r for r in reports if r.get("status") == "missing"]
 
     lines.append("=" * 70)
-    lines.append("XOlokun Preset Tag Recommender — Report")
+    lines.append("XOceanus Preset Tag Recommender — Report")
     lines.append("=" * 70)
     lines.append(f"Presets scanned : {total}")
     lines.append(f"  Errors        : {len(errors)}")

@@ -32,7 +32,7 @@ import re
 import sys
 
 REPO_ROOT = pathlib.Path(__file__).parent.parent
-PRESET_DIR = REPO_ROOT / "Presets" / "XOlokun"
+PRESET_DIR = REPO_ROOT / "Presets" / "XOceanus"
 
 # ---------------------------------------------------------------------------
 # Detection patterns

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-engine_registry.py — Single source of truth for all 76 XOlokun engine names
+engine_registry.py — Single source of truth for all 76 XOceanus engine names
 and their frozen parameter prefixes.
 
 Synced to Source/Core/PresetManager.h: validEngineNames + frozenPrefixForEngine.

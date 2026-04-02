@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Library Gap Fill Generator
+XOceanus Library Gap Fill Generator
 Targets: Overdub/Prism, Odyssey missing moods, OddOscar missing moods,
          ONSET coupling presets, OddfeliX thin moods.
 """
@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
 
 SCHEMA = {
     "schema_version": 1,

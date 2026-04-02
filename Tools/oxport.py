@@ -75,7 +75,7 @@ from typing import Optional
 # ---------------------------------------------------------------------------
 TOOLS_DIR = Path(__file__).parent.resolve()
 REPO_ROOT = TOOLS_DIR.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
 
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
@@ -2176,7 +2176,7 @@ def cmd_build(args) -> int:
     velocity_values = rendering.get("velocity_values", [20, 50, 90, 127])
     render_spec_override = rendering.get("render_spec_override")
     # preset_load_ms: how long to wait after MIDI program change before recording.
-    # 200ms default is too tight for XOlokun with 50+ presets — use 400ms or set
+    # 200ms default is too tight for XOceanus with 50+ presets — use 400ms or set
     # rendering.preset_load_ms in the .oxbuild spec.
     preset_load_ms = rendering.get("preset_load_ms", 400)
     # Average per-voice duration for disk estimate (matches oxport_render defaults).
@@ -2276,7 +2276,7 @@ def cmd_build(args) -> int:
                     # ── BANK ORDERING FIX ──────────────────────────────────────
                     # select_presets() returns presets in farthest-point-sampling
                     # (diversity) order.  MIDI program change N must load the Nth
-                    # preset in XOlokun's preset browser.  XOlokun loads presets
+                    # preset in XOceanus's preset browser.  XOceanus loads presets
                     # via JUCE File::findChildFiles (alphabetical path order on
                     # macOS HFS+/APFS).  The selector's scan_presets() also uses
                     # sorted(Path.rglob()), which sorts by Path parts (part-wise
@@ -2289,7 +2289,7 @@ def cmd_build(args) -> int:
                         key=lambda p: Path(p.get("path", "")),
                     )
                     print(
-                        f"         ✓ Bank order aligned to XOlokun browser "
+                        f"         ✓ Bank order aligned to XOceanus browser "
                         f"(Path-part sort, matches selector + JUCE findChildFiles)"
                     )
 
@@ -2360,7 +2360,7 @@ def cmd_build(args) -> int:
 
         # SELECT → RENDER wiring: inject program numbers from selected_presets.
         # When SELECT produced a preset list, each preset is rendered as a separate program:
-        # program number = 0-based index of that preset in the XOlokun bank as loaded.
+        # program number = 0-based index of that preset in the XOceanus bank as loaded.
         # The render spec defines the note-layout (which MIDI note → which drum voice).
         # We clone that layout once per selected preset, patching in the program number
         # so oxport_render sends the correct MIDI PC before recording each preset's voices.

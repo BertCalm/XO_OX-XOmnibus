@@ -34,7 +34,7 @@ PERMITTED USES
     as part of an original work.
   • Distribute and sell finished musical works (songs, albums, sync licenses,
     game audio, film scores) that incorporate these samples.
-  • Use within the XOlokun synthesis engine or any host DAW freely and
+  • Use within the XOceanus synthesis engine or any host DAW freely and
     without restriction.
   • Include transformed samples in sample packs you create, provided the
     XO_OX source samples are not extractable in their original or near-original
@@ -48,7 +48,7 @@ PROHIBITED USES
     sample library, sound pack, or preset bank.
   • Claiming authorship or ownership of the original samples.
   • Using these samples in any product that competes directly with XO_OX
-    expansion packs or the XOlokun instrument.
+    expansion packs or the XOceanus instrument.
 
 ATTRIBUTION
 -----------
@@ -88,7 +88,7 @@ PERMITTED USES
     provided attribution is given and no charge is made for the samples alone.
   • Share this pack with other producers, post it on forums, include it in
     free producer resource bundles — with attribution.
-  • Use within the XOlokun synthesis engine or any host DAW freely.
+  • Use within the XOceanus synthesis engine or any host DAW freely.
 
 PROHIBITED USES
 ---------------
@@ -139,7 +139,7 @@ EXCLUSIVE RIGHTS GRANTED
     sound design, instruments, or tools for personal/internal use.
   • Full commercial exploitation of any finished work containing these
     samples, including sublicensing finished works to third parties.
-  • Use within the XOlokun synthesis engine or any host DAW freely.
+  • Use within the XOceanus synthesis engine or any host DAW freely.
 
 EXCLUSIVITY SCOPE
 -----------------

@@ -2,7 +2,7 @@
 """
 XPN Coupling Recipe Cards — XO_OX Designs
 Bundles coupling metadata INTO XPN packs so producers know how to recreate
-live engine coupling from XOlokun inside their DAW.
+live engine coupling from XOceanus inside their DAW.
 
 XPN format is static audio. When a coupled preset is exported, the XPN only
 captures the rendered output — the live modulation relationship between engines
@@ -20,7 +20,7 @@ Collection routing:
 
 Usage:
     # All coupled presets in a mood folder
-    python xpn_coupling_recipes.py --presets ./Presets/XOlokun/Entangled/ \\
+    python xpn_coupling_recipes.py --presets ./Presets/XOceanus/Entangled/ \\
                                    --output ./coupling_recipes/
 
     # Single preset
@@ -196,7 +196,7 @@ class CouplingRecipe:
     setup_instructions: list[str]
     xpn_note: str = (
         "This XPN pack captures the static audio output of the coupled preset. "
-        "Load XOlokun with this coupling configuration to hear the live version."
+        "Load XOceanus with this coupling configuration to hear the live version."
     )
     source_file: str = ""               # relative path to .xometa
     coupling_intensity: str = ""
@@ -209,7 +209,7 @@ class CouplingRecipe:
 def _extract_macro_positions(preset: dict) -> dict[str, float]:
     """
     Pull M1–M4 values from a preset's parameters block.
-    XOlokun stores macros under each engine's parameter dict as
+    XOceanus stores macros under each engine's parameter dict as
     '{prefix}_macro_{name}'. We scan all engines and collect the first
     four distinct macro values we find.
     """
@@ -239,7 +239,7 @@ def _build_setup_instructions(
 ) -> list[str]:
     """
     Produce numbered plain-English setup instructions a producer can follow
-    inside XOlokun to recreate the coupling.
+    inside XOceanus to recreate the coupling.
     """
     steps: list[str] = []
     step = 1
@@ -430,7 +430,7 @@ def scan_preset_folder(
 # Pre-defined coupling matrices for XO_OX collections.
 # These represent the canonical coupling architecture for each collection set.
 # Producers loading a collection XPN can use these as reference when building
-# their own XOlokun session.
+# their own XOceanus session.
 
 COLLECTION_ROUTING_TABLES: dict[str, dict] = {
     "kitchen": {
@@ -474,7 +474,7 @@ COLLECTION_ROUTING_TABLES: dict[str, dict] = {
         ],
         "xpn_note": (
             "Kitchen collection XPNs contain rendered output from each engine slot. "
-            "Load all engines in XOlokun and apply the Fusion routing to hear "
+            "Load all engines in XOceanus and apply the Fusion routing to hear "
             "the live interactive version."
         ),
     },
@@ -529,7 +529,7 @@ COLLECTION_ROUTING_TABLES: dict[str, dict] = {
         ],
         "xpn_note": (
             "Travel collection XPNs are rendered per-engine. "
-            "Load all four Travel sets plus Sable Island in XOlokun and apply "
+            "Load all four Travel sets plus Sable Island in XOceanus and apply "
             "Trade Wind routing for the full live cross-modulation experience."
         ),
     },
@@ -569,7 +569,7 @@ COLLECTION_ROUTING_TABLES: dict[str, dict] = {
         ],
         "xpn_note": (
             "Artwork collection XPNs capture each engine's voice independently. "
-            "Load the full color quad in XOlokun and apply Complementary Color routing "
+            "Load the full color quad in XOceanus and apply Complementary Color routing "
             "for the live painting-in-motion experience."
         ),
     },

@@ -55,7 +55,7 @@ ENGINE_PREFIX = {
     "OVERWORLD": "ow_",
 }
 
-# Display name used in the engines array (matches XOlokun registration)
+# Display name used in the engines array (matches XOceanus registration)
 ENGINE_NAME = {
     "OCEANIC":   "XOceanic",
     "OCELOT":    "XOcelot",
@@ -327,16 +327,16 @@ def build_preset_plan(count: int, rng: random.Random) -> list[dict]:
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_output = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Generate OCEANIC + OCELOT coupling presets for XOlokun."
+        description="Generate OCEANIC + OCELOT coupling presets for XOceanus."
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=default_output,
-        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOceanus/Entangled/)",
     )
     parser.add_argument(
         "--dry-run",

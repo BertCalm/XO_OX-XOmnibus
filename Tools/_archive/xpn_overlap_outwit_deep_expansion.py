@@ -3,7 +3,7 @@
 xpn_overlap_outwit_deep_expansion.py
 
 Generates 84 Entangled mood .xometa presets covering new coupling pairs for
-OVERLAP and OUTWIT — the two newest XOlokun engines.
+OVERLAP and OUTWIT — the two newest XOceanus engines.
 
 Target pairs (6 presets each):
   OVERLAP × {ORGANON, OUROBOROS, OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC} = 42
@@ -33,7 +33,7 @@ from pathlib import Path
 
 SEED = 2026_03_16
 OUTPUT_DIR = (
-    Path(__file__).resolve().parent.parent / "Presets" / "XOlokun" / "Entangled"
+    Path(__file__).resolve().parent.parent / "Presets" / "XOceanus" / "Entangled"
 )
 
 COUPLING_TYPES = [

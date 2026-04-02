@@ -3,7 +3,7 @@
 xpn_flux_ultra_diverse.py
 Generates 80 Flux presets with FOUR extreme DNA dimensions each.
 16 batches of 5 presets covering all extreme DNA combos.
-Output: Presets/XOlokun/Flux/
+Output: Presets/XOceanus/Flux/
 """
 
 import json
@@ -15,7 +15,7 @@ random.seed(42)
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Flux")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Flux")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-compile_digest.py — Monthly digest compiler for XOlokun.
+compile_digest.py — Monthly digest compiler for XOceanus.
 
 Reads the last 4 weeks of output/week-{N}/ directories and compiles
 a Patreon-ready monthly digest. Also supports custom date ranges.
@@ -210,13 +210,13 @@ def render_patreon_digest(data: dict, month_label: str) -> str:
     for crumb in data["breadcrumbs"]:
         crumbs_block += f"> {crumb.get('content', '').splitlines()[0]}\n"
 
-    digest = f"""# XOlokun Monthly Dispatch — {month_label}
+    digest = f"""# XOceanus Monthly Dispatch — {month_label}
 
 *{data['week_count']} weeks | {week_range}*
 
 ---
 
-## This Month in XOlokun
+## This Month in XOceanus
 
 This month we shipped **{data['total_commits']} commits** across the fleet and added **{data['total_presets']} new presets** to the factory library.
 
@@ -246,8 +246,8 @@ This month we shipped **{data['total_commits']} commits** across the fleet and a
 
 ---
 
-*XOlokun — for all. Free and open-source.*
-*patreon.com/cw/XO_OX | discord.gg/xolokun | reddit.com/r/XO_OX*
+*XOceanus — for all. Free and open-source.*
+*patreon.com/cw/XO_OX | discord.gg/xoceanus | reddit.com/r/XO_OX*
 """
     return digest.strip()
 
@@ -264,7 +264,7 @@ def render_discord_digest(data: dict, month_label: str) -> str:
 
     verse = data["verses"][0] if data["verses"] else "The deep is quiet."
 
-    return f"""**XOlokun Monthly Dispatch — {month_label}** 🐚
+    return f"""**XOceanus Monthly Dispatch — {month_label}** 🐚
 
 {data['week_count']} weeks | {data['total_commits']} commits | {data['total_presets']} new presets
 
@@ -280,7 +280,7 @@ Full dispatch on Patreon → patreon.com/cw/XO_OX"""
 def render_plain_digest(data: dict, month_label: str) -> str:
     """Plain text version."""
     return (
-        f"XOlokun Monthly Dispatch — {month_label}\n"
+        f"XOceanus Monthly Dispatch — {month_label}\n"
         f"Weeks: {', '.join(data['week_ids'])}\n"
         f"Commits: {data['total_commits']}  |  New presets: {data['total_presets']}\n"
         f"Recipes: {', '.join(r.get('name', '?') for r in data['recipes']) or 'none'}\n"

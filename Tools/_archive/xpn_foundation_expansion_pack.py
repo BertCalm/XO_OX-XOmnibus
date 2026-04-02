@@ -8,7 +8,7 @@ Series:
   - Anchor Tone (20): warm, stable — warmth 0.6-0.9, density 0.5-0.8, movement 0.2-0.5
   - Work Horse (20): reliable utility — brightness varies, density 0.6-0.9, movement 0.4-0.7
 
-Writes to Presets/XOlokun/Foundation/. Skips existing files.
+Writes to Presets/XOceanus/Foundation/. Skips existing files.
 """
 
 import json
@@ -17,7 +17,7 @@ import sys
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Foundation"
+    "Presets", "XOceanus", "Foundation"
 )
 
 CREATED_DATE = "2026-03-16"
@@ -537,7 +537,7 @@ WORK_HORSE = [
 # ---------------------------------------------------------------------------
 
 def build_preset(name, engine, description, dna, parameters, tags, series_tags):
-    """Build a .xometa dict in the canonical XOlokun format."""
+    """Build a .xometa dict in the canonical XOceanus format."""
     return {
         "schema_version": 1,
         "name": name.replace("_", " "),

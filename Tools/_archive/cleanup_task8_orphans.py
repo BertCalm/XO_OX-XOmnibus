@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Task 8: Triage 1,189 orphan presets.
 
-Orphan directories: Presets/Foundation/, Presets/Entangled/, etc. (not under Presets/XOlokun/)
+Orphan directories: Presets/Foundation/, Presets/Entangled/, etc. (not under Presets/XOceanus/)
 - If duplicate of canonical preset, delete orphan
-- If unique, move to Presets/XOlokun/{mood}/
+- If unique, move to Presets/XOceanus/{mood}/
 - Fix "OCELOT" -> "Ocelot" in engine references
 """
 
@@ -12,10 +12,10 @@ import glob
 import os
 import shutil
 
-PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
-CANONICAL_ROOT = os.path.join(PRESETS_ROOT, "XOlokun")
+PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+CANONICAL_ROOT = os.path.join(PRESETS_ROOT, "XOceanus")
 
-# Orphan directories (top-level mood folders that aren't XOlokun)
+# Orphan directories (top-level mood folders that aren't XOceanus)
 ORPHAN_DIRS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Drift"]
 
 
@@ -177,7 +177,7 @@ def main():
     total_orphans = sum(orphan_count.values())
     print(f"  TOTAL orphans: {total_orphans}")
     print(f"Deleted duplicates: {deleted_dupes}")
-    print(f"Moved unique to XOlokun/: {moved_unique}")
+    print(f"Moved unique to XOceanus/: {moved_unique}")
     print(f"OCELOT->Ocelot fixed (orphans): {ocelot_fixed}")
     print(f"OCELOT->Ocelot fixed (canonical): {ocelot_canonical}")
     print(f"Errors: {errors}")

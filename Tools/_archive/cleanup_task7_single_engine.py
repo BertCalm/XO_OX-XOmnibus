@@ -9,7 +9,7 @@ import json
 import glob
 import os
 
-PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
 
 
 def pick_mood_from_dna(dna):

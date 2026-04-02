@@ -5,7 +5,7 @@ to the canonical BobEngine schema.
 
 Problem: 167 presets were authored against the old XOblong/BobEngine standalone
 parameter schema (unprefixed, e.g. `oscA_wave`, `flt_cutoff`, `env_attack`) before
-the `bob_` prefix convention was enforced in XOlokun.
+the `bob_` prefix convention was enforced in XOceanus.
 
 This script:
 1. Finds all .xometa files with Oblong or Bob engine blocks

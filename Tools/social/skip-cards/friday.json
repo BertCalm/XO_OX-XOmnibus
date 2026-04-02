@@ -8,7 +8,7 @@
   },
   {
     "depth": "surface",
-    "text": "Made something with XOlokun this week? Share it. We'll boost it. #XOlokun",
+    "text": "Made something with XOceanus this week? Share it. We'll boost it. #XOceanus",
     "platform": "twitter",
     "tone": "user-generated content prompt",
     "notes": "Good for building community content volume"
@@ -22,7 +22,7 @@
   },
   {
     "depth": "midnight",
-    "text": "Weekly build complete. Commits in the log, presets in the registry. The fleet is ready. See you Sunday for the next assembly. #XOlokun",
+    "text": "Weekly build complete. Commits in the log, presets in the registry. The fleet is ready. See you Sunday for the next assembly. #XOceanus",
     "platform": "discord",
     "tone": "ritual / community pacing",
     "notes": "Close the week. Set the expectation of Sunday assembly."

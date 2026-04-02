@@ -19,7 +19,7 @@ Identity: XOpenSky — The Flying Fish | Sunburst #FF8C00 | Gallery: OPENSKY
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOceanus")
 
 # ── OPENSKY defaults (50 params from OpenSkyEngine.h) ────────────────────────
 DEFAULTS = {

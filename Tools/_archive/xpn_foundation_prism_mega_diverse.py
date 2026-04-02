@@ -13,8 +13,8 @@ from datetime import date
 random.seed(42)
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOUNDATION_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Foundation")
-PRISM_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Prism")
+FOUNDATION_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Foundation")
+PRISM_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Prism")
 
 # DNA dimension value ranges
 XLOW_RANGE = (0.02, 0.13)

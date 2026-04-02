@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Tag Normalizer — Standardize tags across .xometa preset files
+XOceanus Preset Tag Normalizer — Standardize tags across .xometa preset files
 
 Scans .xometa files, normalizes tags to canonical lowercase vocabulary,
 maps known variants/misspellings, flags unknowns, and optionally applies changes.
@@ -320,7 +320,7 @@ def audit(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Normalize tags across XOlokun .xometa preset files."
+        description="Normalize tags across XOceanus .xometa preset files."
     )
     parser.add_argument(
         "presets_dir",

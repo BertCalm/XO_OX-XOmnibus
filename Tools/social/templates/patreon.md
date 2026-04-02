@@ -2,7 +2,7 @@
 
 ## Midnight Zone
 
-# XOlokun — Week {week_num} Update
+# XOceanus — Week {week_num} Update
 
 *{week_id}*
 
@@ -38,6 +38,6 @@
 
 ---
 
-*XOlokun — for all. Free and open-source.*
+*XOceanus — for all. Free and open-source.*
 *Discuss on Discord: {discord_link}*
 *Join the Reddit community: {reddit_link}*

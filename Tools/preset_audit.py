@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exhaustive .xometa preset quality audit for XOlokun."""
+"""Exhaustive .xometa preset quality audit for XOceanus."""
 
 import json
 import os
@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
-PRESET_ROOT = PROJECT_ROOT / "Presets" / "XOlokun"
+PRESET_ROOT = PROJECT_ROOT / "Presets" / "XOceanus"
 MAX_NAME_LEN = 30
 DNA_DIMS = {"brightness", "warmth", "movement", "density", "space", "aggression"}
 REQUIRED_FIELDS = ["mood", "tags", "author", "dna", "macroLabels", "engines", "parameters"]
@@ -24,9 +24,9 @@ def get_preset_name(data, path):
     return Path(path).stem
 
 def main():
-    # Collect all .xometa files under Presets/XOlokun
+    # Collect all .xometa files under Presets/XOceanus
     all_files = sorted(PRESET_ROOT.rglob("*.xometa"))
-    print(f"Total .xometa files under Presets/XOlokun: {len(all_files)}")
+    print(f"Total .xometa files under Presets/XOceanus: {len(all_files)}")
     print("=" * 80)
 
     # Load all presets
@@ -318,10 +318,10 @@ def main():
             print(f"    - \"{name}\": {issue}")
 
     # =========================================================================
-    # 8. ORPHAN PRESETS (outside Presets/XOlokun/)
+    # 8. ORPHAN PRESETS (outside Presets/XOceanus/)
     # =========================================================================
     print("\n" + "=" * 80)
-    print("8. ORPHAN PRESETS (outside Presets/XOlokun/)")
+    print("8. ORPHAN PRESETS (outside Presets/XOceanus/)")
     print("=" * 80)
 
     orphans = []

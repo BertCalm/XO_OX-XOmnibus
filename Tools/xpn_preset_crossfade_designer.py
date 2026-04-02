@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_crossfade_designer.py — Crossfade Chain Designer for XOlokun / MPC
+xpn_preset_crossfade_designer.py — Crossfade Chain Designer for XOceanus / MPC
 
 Designs "crossfade chains" — sequences of presets where consecutive pairs can be
 smoothly morphed on MPC using Q-Link knobs. Useful for live performance and packs
@@ -172,7 +172,7 @@ def render_chain_report(chain: list[dict], length: int) -> str:
     """Full ASCII report for the chain."""
     lines = []
     lines.append("=" * 70)
-    lines.append(f"  XOlokun Crossfade Chain  ({len(chain)} presets)")
+    lines.append(f"  XOceanus Crossfade Chain  ({len(chain)} presets)")
     lines.append("=" * 70)
     lines.append("")
 

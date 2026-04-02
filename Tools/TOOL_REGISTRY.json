@@ -45,7 +45,7 @@
     {
       "file": "generate_presets_overlap_outwit.py",
       "category": "preset-design",
-      "description": "XOlokun preset generator for OVERLAP (106 presets) and OUTWIT Block 1 (50 presets)",
+      "description": "XOceanus preset generator for OVERLAP (106 presets) and OUTWIT Block 1 (50 presets)",
       "status": "active"
     },
     {
@@ -56,7 +56,7 @@
     {
       "file": "oxport_render.py",
       "category": "xpn-export",
-      "description": "Fleet render automation \u2014 WAV rendering from XOlokun via MIDI + audio loopback (BlackHole on macOS)",
+      "description": "Fleet render automation \u2014 WAV rendering from XOceanus via MIDI + audio loopback (BlackHole on macOS)",
       "status": "active"
     },
     {
@@ -1039,7 +1039,7 @@
     {
       "file": "dedup_preset_names.py",
       "category": "preset-tools",
-      "description": "Find and fix duplicate preset names across the XOlokun fleet.",
+      "description": "Find and fix duplicate preset names across the XOceanus fleet.",
       "status": "active"
     },
     {
@@ -1063,7 +1063,7 @@
     {
       "file": "generate_descriptions.py",
       "category": "preset-tools",
-      "description": "Generate evocative 1-2 sentence descriptions for XOlokun presets that are missing them.",
+      "description": "Generate evocative 1-2 sentence descriptions for XOceanus presets that are missing them.",
       "status": "active"
     },
     {
@@ -1081,7 +1081,7 @@
     {
       "file": "migrate_simplified_presets.py",
       "category": "utility",
-      "description": "Converts agent-written simplified preset format to the canonical XOlokun .xometa schema.",
+      "description": "Converts agent-written simplified preset format to the canonical XOceanus .xometa schema.",
       "status": "active"
     },
     {
@@ -1135,7 +1135,7 @@
     {
       "file": "preset_migration_sprint1.py",
       "category": "utility",
-      "description": "XOlokun .xometa Preset Migration Sprint 1 \u2014 applies 7 P0/P1 fixes across all preset files.",
+      "description": "XOceanus .xometa Preset Migration Sprint 1 \u2014 applies 7 P0/P1 fixes across all preset files.",
       "status": "active"
     },
     {

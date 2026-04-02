@@ -7,7 +7,7 @@ Categories:
   - 20 Dark Aether:     space 0.75-1.0, brightness 0.0-0.2, density 0.3-0.6
   - 20 Shifting Aether: space 0.7-0.95, movement 0.6-0.85, warmth varies
 
-Output: Presets/XOlokun/Aether/  (skips existing files)
+Output: Presets/XOceanus/Aether/  (skips existing files)
 
 Parameter prefixes are frozen per CLAUDE.md engine table — never guess prefixes.
 """
@@ -17,7 +17,7 @@ import os
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Aether"
+    "Presets", "XOceanus", "Aether"
 )
 
 # ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 import json, sys
 from pathlib import Path
 
-PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 # Engine prefix → engine name mapping (for nesting flat params)
 PREFIX_TO_ENGINE = {

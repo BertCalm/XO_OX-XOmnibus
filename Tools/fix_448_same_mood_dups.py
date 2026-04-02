@@ -17,7 +17,7 @@ import json
 import sys
 from pathlib import Path
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 # Mapping: filepath (relative to PRESETS_ROOT) → new "name" field value.
 # File on disk keeps its filename; only the internal "name" field changes.

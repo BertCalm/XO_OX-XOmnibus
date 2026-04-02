@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """fix_duplicate_names.py — Disambiguate same-mood duplicate preset names.
 
-Scans all .xometa files under Presets/XOlokun/{mood}/ and finds presets
+Scans all .xometa files under Presets/XOceanus/{mood}/ and finds presets
 that share the same name within the same mood folder. For each duplicate,
 appends the first engine name in parens to make it unique:
 
@@ -148,10 +148,10 @@ def main() -> None:
                         help="Print what would change without writing any files")
     args = parser.parse_args()
 
-    # Resolve the Presets/XOlokun directory relative to this script's repo root.
+    # Resolve the Presets/XOceanus directory relative to this script's repo root.
     script_dir = Path(__file__).resolve().parent
     repo_root = script_dir.parent
-    presets_root = repo_root / "Presets" / "XOlokun"
+    presets_root = repo_root / "Presets" / "XOceanus"
 
     if not presets_root.is_dir():
         print(f"ERROR: preset root not found: {presets_root}", file=sys.stderr)

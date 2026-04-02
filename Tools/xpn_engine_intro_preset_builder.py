@@ -11,7 +11,7 @@ Targets: OSTINATO, OPENSKY, OCEANDEEP, OUIE
 Usage:
     python xpn_engine_intro_preset_builder.py --engine OSTINATO
     python xpn_engine_intro_preset_builder.py --engine OPENSKY --count 10
-    python xpn_engine_intro_preset_builder.py --engine OCEANDEEP --output-dir Presets/XOlokun/
+    python xpn_engine_intro_preset_builder.py --engine OCEANDEEP --output-dir Presets/XOceanus/
     python xpn_engine_intro_preset_builder.py --engine OUIE --dry-run
 """
 
@@ -347,7 +347,7 @@ Engines:
 Examples:
   python xpn_engine_intro_preset_builder.py --engine OSTINATO
   python xpn_engine_intro_preset_builder.py --engine OPENSKY --count 15
-  python xpn_engine_intro_preset_builder.py --engine OUIE --output-dir Presets/XOlokun/ --dry-run
+  python xpn_engine_intro_preset_builder.py --engine OUIE --output-dir Presets/XOceanus/ --dry-run
         """,
     )
     parser.add_argument(

@@ -219,7 +219,7 @@ def main():
 
     script_dir = Path(__file__).resolve().parent
     repo_root = script_dir.parent
-    presets_root = repo_root / "Presets" / "XOlokun"
+    presets_root = repo_root / "Presets" / "XOceanus"
 
     if not presets_root.is_dir():
         print(f"ERROR: Presets directory not found: {presets_root}", file=sys.stderr)

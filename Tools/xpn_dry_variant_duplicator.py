@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent.resolve()
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
 
 # Parameter suffixes that indicate FX send levels (engine-agnostic)
 FX_SEND_PATTERNS = [

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Breeder — Genetic Sound Design
+XOceanus Preset Breeder — Genetic Sound Design
 
 Breeds two parent presets together using crossover + mutation to produce
 offspring presets. Uses the Sonic DNA system for intelligent breeding.
@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 from datetime import date
 
-PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOceanus"
 OUTPUT_DIR = PRESET_DIR  # offspring go into the main library
 TODAY = date.today().isoformat()
 

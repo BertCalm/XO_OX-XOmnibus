@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_fleet_dna_diversity_report.py
-Deep DNA diversity analysis of the full XOlokun preset fleet.
+Deep DNA diversity analysis of the full XOceanus preset fleet.
 
 Diagnoses WHY fleet diversity is low and prescribes targeted fills.
 Stdlib only: json, os, math, argparse, pathlib, statistics
@@ -347,12 +347,12 @@ def print_dim_analysis(da: dict, n_fleet: int) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Deep DNA diversity analysis of the XOlokun preset fleet."
+        description="Deep DNA diversity analysis of the XOceanus preset fleet."
     )
     parser.add_argument(
         "--presets-dir",
         type=pathlib.Path,
-        default=pathlib.Path(__file__).parent.parent / "Presets" / "XOlokun",
+        default=pathlib.Path(__file__).parent.parent / "Presets" / "XOceanus",
         help="Root directory containing .xometa preset files.",
     )
     parser.add_argument(
@@ -374,7 +374,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    print_section("XOlokun Fleet DNA Diversity Report")
+    print_section("XOceanus Fleet DNA Diversity Report")
     print(f"  Presets dir : {args.presets_dir}")
     if args.engine:
         print(f"  Engine filter: {args.engine}")

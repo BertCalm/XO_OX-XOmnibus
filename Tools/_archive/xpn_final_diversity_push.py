@@ -11,8 +11,8 @@ import os
 import random
 
 # Output base directory
-BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun"
-PRESETS_DIR = os.path.join(BASE_DIR, "Presets", "XOlokun")
+BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus"
+PRESETS_DIR = os.path.join(BASE_DIR, "Presets", "XOceanus")
 
 MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
 
@@ -212,11 +212,11 @@ def main():
     print()
     print(f"  TOTAL        : {total_written:3d} written, {total_skipped:2d} skipped")
     print()
-    print("Confirming output paths use Presets/XOlokun/{mood}/:")
+    print("Confirming output paths use Presets/XOceanus/{mood}/:")
     for mood in MOODS:
         sample_dir = os.path.join(PRESETS_DIR, mood)
         files = [f for f in os.listdir(sample_dir) if f.endswith(".xometa")]
-        print(f"  Presets/XOlokun/{mood}/ — {len(files)} total .xometa files")
+        print(f"  Presets/XOceanus/{mood}/ — {len(files)} total .xometa files")
     print()
     print("DNA corners covered per mood:")
     for corner in DNA_CORNERS:

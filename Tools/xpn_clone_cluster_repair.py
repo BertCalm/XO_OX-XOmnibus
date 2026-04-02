@@ -2,7 +2,7 @@
 """
 xpn_clone_cluster_repair.py
 ----------------------------
-Identifies and repairs DNA clone clusters in the XOlokun preset fleet.
+Identifies and repairs DNA clone clusters in the XOceanus preset fleet.
 
 A "clone cluster" is a group of 2+ presets where all 6 DNA dimensions
 (brightness, warmth, movement, density, space, aggression) are within

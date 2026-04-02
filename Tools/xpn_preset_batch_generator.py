@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_batch_generator.py — Batch .xometa preset generator for XOlokun engines.
+xpn_preset_batch_generator.py — Batch .xometa preset generator for XOceanus engines.
 
 Generates preset files systematically covering the DNA space using three strategies:
   grid      — Latin hypercube sampling (even distribution across DNA space)
@@ -320,7 +320,7 @@ def generate_batch(spec: Dict, seed: Optional[int], dry_run: bool) -> None:
     spread: float = spec.get("spread", 0.25)
     felix_bias: float = spec.get("felix_bias", 0.5)
     name_prefix: str = spec.get("name_prefix", engine.capitalize())
-    output_dir: Path = Path(spec.get("output_dir", "Presets/XOlokun"))
+    output_dir: Path = Path(spec.get("output_dir", "Presets/XOceanus"))
     macro_labels: list[str] = spec.get(
         "macro_labels", ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
     )
@@ -414,7 +414,7 @@ def _print_dry_run(presets: List[Dict]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Batch .xometa preset generator for XOlokun engines.",
+        description="Batch .xometa preset generator for XOceanus engines.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
@@ -495,7 +495,7 @@ def main() -> None:
     print(f"Strategy: {strategy}")
     print(f"Seed   : {args.seed if args.seed is not None else 'not set (non-deterministic)'}")
     if not args.dry_run:
-        print(f"Output : {spec.get('output_dir', 'Presets/XOlokun')}")
+        print(f"Output : {spec.get('output_dir', 'Presets/XOceanus')}")
     print()
 
     generate_batch(spec=spec, seed=args.seed, dry_run=args.dry_run)

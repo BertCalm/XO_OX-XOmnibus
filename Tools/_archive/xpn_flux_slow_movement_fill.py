@@ -4,7 +4,7 @@ xpn_flux_slow_movement_fill.py
 Generates 60 Flux presets with movement-XLOW (≤ 0.13) to counterweight
 the kinetic skew in Flux (movement-XHIGH was 40.9% of the mood).
 
-12 corners × 5 variants = 60 presets, all saved to Presets/XOlokun/Flux/
+12 corners × 5 variants = 60 presets, all saved to Presets/XOceanus/Flux/
 """
 
 import json
@@ -14,7 +14,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_DIR = REPO_ROOT / "Presets" / "XOlokun" / "Flux"
+OUTPUT_DIR = REPO_ROOT / "Presets" / "XOceanus" / "Flux"
 
 FLUX_ENGINES = [
     "OUROBOROS", "ORACLE", "ORGANON", "ORIGAMI", "OPTIC",

@@ -2,7 +2,7 @@
 """
 xpn_space_expander.py
 
-Generates presets at both extremes of the space dimension to improve XOlokun fleet
+Generates presets at both extremes of the space dimension to improve XOceanus fleet
 diversity. The fleet DNA report found "space" is moderate in distribution; this tool
 fills the intimate (0.0–0.15) and vast (0.85–1.0) extremes.
 
@@ -666,7 +666,7 @@ def parse_args():
     repo_root = Path(__file__).resolve().parent.parent
 
     parser = argparse.ArgumentParser(
-        description="Generate space-extreme preset stubs for XOlokun engines.",
+        description="Generate space-extreme preset stubs for XOceanus engines.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -674,7 +674,7 @@ def parse_args():
         "--output-dir",
         type=Path,
         default=None,
-        help="Directory to write .xometa files (default: auto-selected per band: Presets/XOlokun/Flux or Aether)",
+        help="Directory to write .xometa files (default: auto-selected per band: Presets/XOceanus/Flux or Aether)",
     )
     parser.add_argument(
         "--dry-run",
@@ -748,7 +748,7 @@ def _output_dir_for_band(band: str, repo_root: Path, override: Optional[Path]) -
     if override is not None:
         return override
     mood = BAND_MOOD[band]
-    return repo_root / "Presets" / "XOlokun" / mood
+    return repo_root / "Presets" / "XOceanus" / mood
 
 
 def main() -> None:
@@ -764,7 +764,7 @@ def main() -> None:
     engines = resolve_engines(args.engines, band_filter)
     count = max(1, args.count)
 
-    print("XOlokun Space Expander")
+    print("XOceanus Space Expander")
     print(f"  Bands       : {', '.join(bands_to_run)}")
     print(f"  Engines     : {', '.join(engines)}")
     print(f"  Count/band  : {count}")

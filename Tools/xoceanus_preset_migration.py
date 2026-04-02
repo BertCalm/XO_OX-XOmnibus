@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xolokun_preset_migration.py — Two-pass preset migration for XOlokun .xometa files.
+xoceanus_preset_migration.py — Two-pass preset migration for XOceanus .xometa files.
 
 Pass 1 (structural fixes):
   - Bare-list coupling → {"pairs": [...]}
@@ -13,10 +13,10 @@ Pass 2 (coupling type remapping):
   - Arrow-notation aliases are already valid; only truly invalid strings are mapped
 
 Usage:
-  python3 Tools/xolokun_preset_migration.py --preset-dir Presets/XOlokun --dry-run --all
-  python3 Tools/xolokun_preset_migration.py --preset-dir Presets/XOlokun --execute --all
-  python3 Tools/xolokun_preset_migration.py --preset-dir Presets/XOlokun --execute --pass 1
-  python3 Tools/xolokun_preset_migration.py --preset-dir Presets/XOlokun --execute --pass 2
+  python3 Tools/xoceanus_preset_migration.py --preset-dir Presets/XOceanus --dry-run --all
+  python3 Tools/xoceanus_preset_migration.py --preset-dir Presets/XOceanus --execute --all
+  python3 Tools/xoceanus_preset_migration.py --preset-dir Presets/XOceanus --execute --pass 1
+  python3 Tools/xoceanus_preset_migration.py --preset-dir Presets/XOceanus --execute --pass 2
 """
 
 import argparse
@@ -627,12 +627,12 @@ def run_migration(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="XOlokun preset migration: structural fixes + coupling type remapping."
+        description="XOceanus preset migration: structural fixes + coupling type remapping."
     )
     parser.add_argument(
         "--preset-dir",
-        default="Presets/XOlokun",
-        help="Root directory of .xometa presets (default: Presets/XOlokun)",
+        default="Presets/XOceanus",
+        help="Root directory of .xometa presets (default: Presets/XOceanus)",
     )
 
     mode_group = parser.add_mutually_exclusive_group(required=True)

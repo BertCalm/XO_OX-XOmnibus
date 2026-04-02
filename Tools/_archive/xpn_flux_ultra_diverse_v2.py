@@ -3,7 +3,7 @@
 xpn_flux_ultra_diverse_v2.py
 Generates 80 Flux mood presets with extreme DNA diversity.
 16 corner combinations × 5 variants = 80 presets.
-Output: Presets/XOlokun/Flux/
+Output: Presets/XOceanus/Flux/
 """
 
 import json
@@ -14,7 +14,7 @@ import random
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT  = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Flux")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Flux")
 
 VALID_ENGINES = [
     "OUROBOROS", "ORACLE", "ORGANON", "ORIGAMI", "OPTIC",

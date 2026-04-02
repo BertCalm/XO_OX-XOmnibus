@@ -24,7 +24,7 @@ VALID_COUPLING_TYPES = [
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOlokun", "Prism"
+    "Presets", "XOceanus", "Prism"
 )
 
 def xlow_brightness():

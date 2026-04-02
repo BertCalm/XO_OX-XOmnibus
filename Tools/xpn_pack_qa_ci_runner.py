@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-xpn_pack_qa_ci_runner.py — Single-command CI quality gate for the XOlokun preset fleet.
+xpn_pack_qa_ci_runner.py — Single-command CI quality gate for the XOceanus preset fleet.
 
 Orchestrates all major validation checks and reports a unified PASS/FAIL verdict.
 Designed to be run before every push.
 
 Usage:
     python Tools/xpn_pack_qa_ci_runner.py
-    python Tools/xpn_pack_qa_ci_runner.py --presets-dir Presets/XOlokun
+    python Tools/xpn_pack_qa_ci_runner.py --presets-dir Presets/XOceanus
     python Tools/xpn_pack_qa_ci_runner.py --fast
     python Tools/xpn_pack_qa_ci_runner.py --report report.json
     python Tools/xpn_pack_qa_ci_runner.py --tools-dir /path/to/Tools
@@ -246,7 +246,7 @@ def run_check(check: dict, args: argparse.Namespace, tools_dir: Path) -> dict:
 def print_banner(args: argparse.Namespace) -> None:
     mode_tag = " [FAST]" if args.fast else ""
     print(colorize(f"\n{'='*62}", ANSI_BOLD))
-    print(colorize(f"  XOlokun Pack QA CI Runner{mode_tag}", ANSI_BOLD))
+    print(colorize(f"  XOceanus Pack QA CI Runner{mode_tag}", ANSI_BOLD))
     print(colorize(f"{'='*62}", ANSI_BOLD))
     if args.presets_dir:
         print(f"  Presets dir : {args.presets_dir}")
@@ -353,7 +353,7 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=None,
         metavar="DIR",
-        help="Path to Presets/XOlokun/ (auto-detected if not set).",
+        help="Path to Presets/XOceanus/ (auto-detected if not set).",
     )
     p.add_argument(
         "--tools-dir",
@@ -390,10 +390,10 @@ def auto_detect_paths(args: argparse.Namespace) -> None:
         args.tools_dir = script_path.parent
 
     if args.presets_dir is None:
-        # Walk up from Tools/ to find repo root, then look for Presets/XOlokun
+        # Walk up from Tools/ to find repo root, then look for Presets/XOceanus
         repo_root = args.tools_dir.parent
         candidates = [
-            repo_root / "Presets" / "XOlokun",
+            repo_root / "Presets" / "XOceanus",
             repo_root / "Presets",
         ]
         for c in candidates:

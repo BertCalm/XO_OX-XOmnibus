@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_family_portrait_generator.py — XOlokun Family Portrait Preset Generator
+xpn_family_portrait_generator.py — XOceanus Family Portrait Preset Generator
 
 Generates "Family Portrait" presets — curated groupings of 3–5 engines that tell
 a coherent sonic story. Unlike coupling presets, portraits have no modulation routes;
@@ -27,7 +27,7 @@ import pathlib
 import random
 
 # ---------------------------------------------------------------------------
-# 6D Sonic DNA baselines for all 34 registered XOlokun engines
+# 6D Sonic DNA baselines for all 34 registered XOceanus engines
 # ---------------------------------------------------------------------------
 ENGINE_DNA: dict[str, dict[str, float]] = {
     # Foundation / character voices
@@ -340,12 +340,12 @@ def _write_preset(preset: dict, output_dir: pathlib.Path, dry_run: bool) -> str:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate XOlokun Family Portrait presets (2 variants per concept).",
+        description="Generate XOceanus Family Portrait presets (2 variants per concept).",
     )
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Destination directory (default: <repo>/Presets/XOlokun/Family/)",
+        help="Destination directory (default: <repo>/Presets/XOceanus/Family/)",
     )
     parser.add_argument(
         "--dry-run",
@@ -369,9 +369,9 @@ def _parse_args() -> argparse.Namespace:
 def _resolve_output_dir(arg) -> pathlib.Path:
     if arg:
         return pathlib.Path(arg)
-    # Default: <repo root>/Presets/XOlokun/Family/
+    # Default: <repo root>/Presets/XOceanus/Family/
     repo_root = pathlib.Path(__file__).parent.parent
-    return repo_root / "Presets" / "XOlokun" / "Family"
+    return repo_root / "Presets" / "XOceanus" / "Family"
 
 
 def main() -> None:

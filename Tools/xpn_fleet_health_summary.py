@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-xpn_fleet_health_summary.py — XOlokun Fleet Health Dashboard
+xpn_fleet_health_summary.py — XOceanus Fleet Health Dashboard
 
 Single-pass summary of the entire .xometa preset library.
 Produces a clean, columnar text report (no ASCII charts).
 
 Usage:
-    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOlokun
-    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOlokun --output summary.txt
-    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOlokun --json
+    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOceanus
+    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOceanus --output summary.txt
+    python xpn_fleet_health_summary.py --preset-dir ../Presets/XOceanus --json
 """
 
 import argparse
@@ -166,7 +166,7 @@ def build_report(stats: dict) -> str:
 
     # ── Header ────────────────────────────────────────────────────────────────
     lines.append("╔══════════════════════════════════════════════════════════╗")
-    lines.append("║          XOlokun Fleet Health Summary                  ║")
+    lines.append("║          XOceanus Fleet Health Summary                  ║")
     lines.append("╚══════════════════════════════════════════════════════════╝")
 
     # ── Overview ──────────────────────────────────────────────────────────────
@@ -290,7 +290,7 @@ def build_json(stats: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="XOlokun fleet health dashboard — single pass over all .xometa files."
+        description="XOceanus fleet health dashboard — single pass over all .xometa files."
     )
     parser.add_argument(
         "--preset-dir",

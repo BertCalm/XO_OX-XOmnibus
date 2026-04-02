@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Generate XOnset .xometa preset files for the XOlokun gallery."""
+"""Generate XOnset .xometa preset files for the XOceanus gallery."""
 
 import json
 import os
 from datetime import date
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 
 # Default voice values (matching kVoiceCfg in OnsetEngine.h)
 VOICE_DEFAULTS = {

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate XOuroboros .xometa preset files for XOlokun.
+"""Generate XOuroboros .xometa preset files for XOceanus.
 
 Ouroboros is a chaotic attractor oscillator with 4 topologies (Lorenz, Rössler,
 Chua, Aizawa). Only 8 parameters but immense sonic range from stable tones to
@@ -20,7 +20,7 @@ import random
 
 random.seed(77)
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 
 DEFAULTS = {
     "ouro_topology": 0,

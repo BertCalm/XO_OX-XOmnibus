@@ -13,7 +13,7 @@ Tiers:
   storm-atmosphere (15): aggression 0.75–0.92  (driving, weather-system)
 
 Even aggressive presets should feel like a weather system, not a drum machine.
-Writes to Presets/XOlokun/Atmosphere/. Skips existing files.
+Writes to Presets/XOceanus/Atmosphere/. Skips existing files.
 """
 
 import json
@@ -22,7 +22,7 @@ import sys
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "..", "Presets", "XOlokun", "Atmosphere"
+    "..", "Presets", "XOceanus", "Atmosphere"
 )
 
 # ---------------------------------------------------------------------------

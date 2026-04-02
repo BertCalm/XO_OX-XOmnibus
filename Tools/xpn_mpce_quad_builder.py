@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MPCe Quad-Corner Builder — XOlokun Engine Preset → 3D Pad Program Generator
+MPCe Quad-Corner Builder — XOceanus Engine Preset → 3D Pad Program Generator
 
 PURPOSE:
     Build MPCe-native programs that use the quad-corner 3D pad system
@@ -8,7 +8,7 @@ PURPOSE:
     assigned to its corners (NW / NE / SW / SE). Sliding a finger across
     the pad crossfades between the four corner presets in real time.
 
-    This tool takes an XOlokun engine name and a directory of .xometa
+    This tool takes an XOceanus engine name and a directory of .xometa
     preset files, then:
 
     1. Reads each preset's 6D Sonic DNA and macro defaults.
@@ -39,13 +39,13 @@ SPECULATIVE FORMAT:
 USAGE:
     python xpn_mpce_quad_builder.py \\
         --engine OPAL \\
-        --presets-dir ../Presets/XOlokun/opal/ \\
+        --presets-dir ../Presets/XOceanus/opal/ \\
         --output-dir ./output/ \\
         --pad-count 16
 
     python xpn_mpce_quad_builder.py \\
         --engine OVERLAP \\
-        --presets-dir ../Presets/XOlokun/overlap/ \\
+        --presets-dir ../Presets/XOceanus/overlap/ \\
         --output-dir ./output/ \\
         --pad-count 4 \\
         --no-speculative
@@ -453,7 +453,7 @@ def main():
     parser.add_argument(
         "--engine",
         required=True,
-        help="XOlokun engine name (e.g. OPAL, OVERLAP, ONSET, OCEANIC)",
+        help="XOceanus engine name (e.g. OPAL, OVERLAP, ONSET, OCEANIC)",
     )
     parser.add_argument(
         "--presets-dir",

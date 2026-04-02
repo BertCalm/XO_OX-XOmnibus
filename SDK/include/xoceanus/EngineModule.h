@@ -1,27 +1,27 @@
 #pragma once
-// xolokun-engine-sdk — EngineModule.h
+// xoceanus-engine-sdk — EngineModule.h
 //
 // Community engines ship as shared libraries (.dylib / .so / .dll).
-// XOlokun loads them at runtime and calls two C functions it expects to find:
+// XOceanus loads them at runtime and calls two C functions it expects to find:
 //
-//   xolokun_create_engine()  — allocates and returns a new SynthEngine instance
-//   xolokun_engine_info()    — returns metadata without constructing the engine
+//   xoceanus_create_engine()  — allocates and returns a new SynthEngine instance
+//   xoceanus_engine_info()    — returns metadata without constructing the engine
 //                              (used for display names, accent colours, etc.)
 //
-// The XOLOKUN_EXPORT_ENGINE macro generates both functions from a single line.
+// The XOCEANUS_EXPORT_ENGINE macro generates both functions from a single line.
 // Drop this at file scope (outside any class or namespace) in your .h file:
 //
-//   #include <xolokun/EngineModule.h>
-//   XOLOKUN_EXPORT_ENGINE (MyEngine, "Onyx", "Onyx Engine",
+//   #include <xoceanus/EngineModule.h>
+//   XOCEANUS_EXPORT_ENGINE (MyEngine, "Onyx", "Onyx Engine",
 //                           "onyx_", 0x1E, 0x8B, 0x7E, "1.0.0", "Your Studio")
 
 #include "SynthEngine.h"
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
-/// Metadata returned by xolokun_engine_info() without constructing the engine.
-/// XOlokun reads this to populate the engine browser, UI headers, and registry.
+/// Metadata returned by xoceanus_engine_info() without constructing the engine.
+/// XOceanus reads this to populate the engine browser, UI headers, and registry.
 struct EngineMetadata
 {
     char id[64]          {};  ///< Engine ID string, e.g. "Onyx"
@@ -38,33 +38,33 @@ struct EngineMetadata
     int sdkVersion = 1;       ///< SDK ABI version — bumped on breaking interface changes
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 
 //==============================================================================
 // Export macros
 //==============================================================================
 
 #ifdef _WIN32
-  #define XOLOKUN_EXPORT extern "C" __declspec(dllexport)
+  #define XOCEANUS_EXPORT extern "C" __declspec(dllexport)
 #else
-  #define XOLOKUN_EXPORT extern "C" __attribute__((visibility("default")))
+  #define XOCEANUS_EXPORT extern "C" __attribute__((visibility("default")))
 #endif
 
 /// Convenience macro: define both C export functions for your engine.
 ///
-/// @param EngineClass   Your C++ class (must inherit xolokun::SynthEngine)
+/// @param EngineClass   Your C++ class (must inherit xoceanus::SynthEngine)
 /// @param id            Engine ID string (must be unique, use an O-word)
 /// @param displayName   Display name for UI
 /// @param prefix        Parameter prefix (e.g. "me_")
 /// @param r, g, b       Accent colour RGB (0-255)
 /// @param ver           Version string (e.g. "1.0.0")
 /// @param author        Author name
-#define XOLOKUN_EXPORT_ENGINE(EngineClass, id, displayName, prefix, r, g, b, ver, author) \
-    XOLOKUN_EXPORT std::unique_ptr<xolokun::SynthEngine> xolokun_create_engine()         \
+#define XOCEANUS_EXPORT_ENGINE(EngineClass, id, displayName, prefix, r, g, b, ver, author) \
+    XOCEANUS_EXPORT std::unique_ptr<xoceanus::SynthEngine> xoceanus_create_engine()         \
     {                                                                                       \
         return std::make_unique<EngineClass>();                                              \
     }                                                                                       \
-    XOLOKUN_EXPORT void xolokun_engine_info (xolokun::EngineMetadata* out)                \
+    XOCEANUS_EXPORT void xoceanus_engine_info (xoceanus::EngineMetadata* out)                \
     {                                                                                       \
         if (!out) return;                                                                   \
         std::memset (out, 0, sizeof (*out));                                                \

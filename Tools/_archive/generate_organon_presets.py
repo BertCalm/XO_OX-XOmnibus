@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Generate 120 XOrganon factory presets for XOlokun."""
+"""Generate 120 XOrganon factory presets for XOceanus."""
 
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 DATE = "2026-03-10"
 
 # Parameter ranges for reference:

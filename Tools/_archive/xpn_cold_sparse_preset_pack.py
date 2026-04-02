@@ -2,7 +2,7 @@
 """
 xpn_cold_sparse_preset_pack.py
 
-Generates Cold Sparse quadrant preset stubs (.xometa) for XOlokun engines.
+Generates Cold Sparse quadrant preset stubs (.xometa) for XOceanus engines.
 
 The warmth/density balance doc prescribed a "Cold Sparse" quadrant
 (warmth 0.0–0.25, density 0.0–0.25) — single crystal sine, clinical plucks,
@@ -559,10 +559,10 @@ def build_preset(engine_key: str, preset_name: str, rng: random.Random) -> dict:
 
 def parse_args():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Prism"
+    default_output = repo_root / "Presets" / "XOceanus" / "Prism"
 
     parser = argparse.ArgumentParser(
-        description="Generate Cold Sparse quadrant preset stubs (warmth≤0.25, density≤0.25) for XOlokun.",
+        description="Generate Cold Sparse quadrant preset stubs (warmth≤0.25, density≤0.25) for XOceanus.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -632,7 +632,7 @@ def main() -> None:
 
     target = len(engines) * count
 
-    print("XOlokun Cold Sparse Preset Pack")
+    print("XOceanus Cold Sparse Preset Pack")
     print(f"  Quadrant    : warmth 0.0–0.25, density 0.0–0.25")
     print(f"  Mood        : Prism")
     print(f"  Engines     : {', '.join(engines)}")

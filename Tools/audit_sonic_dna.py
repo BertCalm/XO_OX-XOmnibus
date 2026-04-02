@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Sonic DNA Coverage Auditor
+XOceanus Sonic DNA Coverage Auditor
 
 Scans all .xometa preset files and audits the 6D sonic DNA coverage per engine:
   [brightness, warmth, movement, density, space, aggression]
@@ -28,7 +28,7 @@ PRESET_DIR = REPO_ROOT / "Presets"
 
 DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
-# All 34 registered engines in XOlokun
+# All 34 registered engines in XOceanus
 ALL_ENGINES = [
     "OddfeliX", "OddOscar", "XOverdub", "XOdyssey", "XOblong", "XObese",
     "XOnset", "XOverworld", "XOpal", "XOrbital", "XOrganon", "XOuroboros",
@@ -139,7 +139,7 @@ def print_report(engine_dna_map: dict, missing_dna_paths: list[str], presets: li
     sep2 = "-" * 90
 
     print(sep)
-    print("XOlokun Sonic DNA Coverage Audit")
+    print("XOceanus Sonic DNA Coverage Audit")
     print(sep)
     print(f"Total presets scanned:       {len(presets) + len(missing_dna_paths)}")
     print(f"Presets with complete DNA:   {len(presets)}")

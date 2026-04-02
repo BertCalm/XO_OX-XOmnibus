@@ -18,7 +18,7 @@ from pathlib import Path
 random.seed(42)
 
 REPO_ROOT = Path(__file__).parent.parent
-PRESETS_BASE = REPO_ROOT / "Presets" / "XOlokun"
+PRESETS_BASE = REPO_ROOT / "Presets" / "XOceanus"
 
 COUPLING_TYPES = [
     "FREQUENCY_SHIFT", "AMPLITUDE_MOD", "FILTER_MOD", "PITCH_SYNC",

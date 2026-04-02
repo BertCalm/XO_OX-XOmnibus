@@ -184,7 +184,7 @@ def build_report(
     total = len(presets)
 
     lines.append("=" * 72)
-    lines.append("  XO_OX XOlokun — Sonic DNA Clustering Report")
+    lines.append("  XO_OX XOceanus — Sonic DNA Clustering Report")
     lines.append("=" * 72)
     lines.append(f"  Preset directory : {preset_dir}")
     lines.append(f"  Total presets    : {total}")

@@ -13,7 +13,7 @@ import shutil
 import sys
 from pathlib import Path
 
-PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 # ---------------------------------------------------------------------------
 # Replacement map: "Bob" word → audible descriptor

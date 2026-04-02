@@ -6,7 +6,7 @@ Generate 100 Entangled presets with movement-XLOW (≤ 0.13) and extreme
 DNA vectors to push cosine diversity higher in the fleet.
 
 20 corners × 5 variants = 100 presets, all saved to
-Presets/XOlokun/Entangled/ with ENT3 suffix naming.
+Presets/XOceanus/Entangled/ with ENT3 suffix naming.
 """
 
 import json
@@ -22,7 +22,7 @@ random.seed(42)
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_DIR = REPO_ROOT / "Presets" / "XOlokun" / "Entangled"
+OUTPUT_DIR = REPO_ROOT / "Presets" / "XOceanus" / "Entangled"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 TODAY = "2026-03-16"

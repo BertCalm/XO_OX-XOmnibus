@@ -5,19 +5,19 @@ Generates render_spec.json files for the oxport pipeline.
 
 Reads .xometa preset files and produces a complete render specification:
 which presets to render, at which MIDI notes, velocities, and durations.
-This bridges the gap between XOlokun presets and the oxport pipeline.
+This bridges the gap between XOceanus presets and the oxport pipeline.
 
 Usage:
     # Generate spec for all ONSET presets in Foundation mood
     python3 xpn_render_spec_generator.py \\
-        --presets-dir ./Presets/XOlokun/ \\
+        --presets-dir ./Presets/XOceanus/ \\
         --engine ONSET \\
         --pack-name "Machine Gun Reef" \\
         --mood Foundation
 
     # Specific preset list, JSON output
     python3 xpn_render_spec_generator.py \\
-        --presets-dir ./Presets/XOlokun/ \\
+        --presets-dir ./Presets/XOceanus/ \\
         --engine ONSET \\
         --pack-name "Tide Pack" \\
         --mood Foundation \\

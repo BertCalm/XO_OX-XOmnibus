@@ -850,7 +850,7 @@ def artwork_color_science(engine_name: str) -> dict:
 
 def engine_standalone_profile(engine_id: str) -> dict:
     """
-    Generate a liner notes profile for an existing XOlokun engine.
+    Generate a liner notes profile for an existing XOceanus engine.
     References the engine table in CLAUDE.md for accent colors and prefixes.
     """
     known = {
@@ -1216,7 +1216,7 @@ def engine_standalone_profile(engine_id: str) -> dict:
             "cultural_context": (
                 "Biological modeling in synthesis has always been aspirational — most bio-inspired "
                 "synths use the metaphor without the math. XOrganon uses the math. The engine "
-                "is the first in XOlokun to earn a Blessing for publishable academic novelty, "
+                "is the first in XOceanus to earn a Blessing for publishable academic novelty, "
                 "and it still makes music you can dance to."
             ),
             "use_cases": [
@@ -1699,10 +1699,10 @@ def build_all_engines_notes() -> list:
     sections = []
     sections.append(_section(
         "collection_intro",
-        collection="XOlokun Engine Library",
+        collection="XOceanus Engine Library",
         title="XO_OX Designs — Complete Engine Library",
         body=(
-            "XOlokun is a free, open-source multi-engine synthesizer platform. "
+            "XOceanus is a free, open-source multi-engine synthesizer platform. "
             "Each engine is a character instrument with a distinct sonic identity, "
             "cultural heritage, and coupling role. This document is the liner notes "
             "for the full engine library — all engines, all creatures, all stories. "
@@ -1946,7 +1946,7 @@ def main():
         engine_id = args.engine.upper()
         doc = LinerNotesDoc(
             pack_name=f"XO_OX — {engine_id} Engine",
-            collection="XOlokun",
+            collection="XOceanus",
             quad=None,
             sections=build_engine_notes(engine_id),
         )
@@ -1977,7 +1977,7 @@ def main():
         sections = build_all_engines_notes()
         doc = LinerNotesDoc(
             pack_name="XO_OX — Complete Engine Library",
-            collection="XOlokun",
+            collection="XOceanus",
             quad=None,
             sections=sections,
         )

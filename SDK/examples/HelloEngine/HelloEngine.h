@@ -1,7 +1,7 @@
 #pragma once
-// HelloEngine — XOlokun SDK "Hello World" engine
+// HelloEngine — XOceanus SDK "Hello World" engine
 //
-// A complete, minimal engine demonstrating every XOlokun integration contract:
+// A complete, minimal engine demonstrating every XOceanus integration contract:
 //   - SynthEngine interface (all virtual methods)
 //   - 4 parameters with hlo_ prefix
 //   - 4 macros mapped to parameters
@@ -19,8 +19,8 @@
 // Read me before editing:
 //   SDK/examples/HelloEngine/README.md
 
-#include <xolokun/SynthEngine.h>
-#include <xolokun/EngineModule.h>
+#include <xoceanus/SynthEngine.h>
+#include <xoceanus/EngineModule.h>
 #include <cmath>
 #include <array>
 #include <atomic>
@@ -32,7 +32,7 @@ namespace {
 
 //==============================================================================
 // Tiny helper — flush denormals.
-// Required in all feedback/filter paths per XOlokun Architecture Rules.
+// Required in all feedback/filter paths per XOceanus Architecture Rules.
 //==============================================================================
 inline float flushDenormal (float x)
 {
@@ -179,7 +179,7 @@ struct HelloVoice
 //==============================================================================
 // HelloEngine — the main engine class.
 //==============================================================================
-class HelloEngine : public xolokun::SynthEngine
+class HelloEngine : public xoceanus::SynthEngine
 {
 public:
     //==========================================================================
@@ -230,8 +230,8 @@ public:
     // AUDIO
     //==========================================================================
 
-    void renderBlock (xolokun::StereoBuffer& buffer,
-                      const xolokun::MidiEventList& midi) override
+    void renderBlock (xoceanus::StereoBuffer& buffer,
+                      const xoceanus::MidiEventList& midi) override
     {
         const int ns = buffer.numSamples;
         if (!buffer.left || !buffer.right || ns <= 0) return;
@@ -378,12 +378,12 @@ public:
 
     // Receive: accumulate modulation from another engine.
     // Only AmpToFilter is handled; others are no-ops for this engine.
-    void applyCouplingInput (xolokun::CouplingType type,
+    void applyCouplingInput (xoceanus::CouplingType type,
                              float amount,
                              const float* sourceBuffer,
                              int numSamples) override
     {
-        if (type == xolokun::CouplingType::AmpToFilter && sourceBuffer)
+        if (type == xoceanus::CouplingType::AmpToFilter && sourceBuffer)
         {
             // Compute RMS amplitude of source block
             float rms = 0.0f;
@@ -402,7 +402,7 @@ public:
     // D004: every declared parameter must affect audio output.
     // D001: velocity shapes timbre (done in voice DSP).
     // D002: modulation present (LFO breathes filter, mod wheel, aftertouch).
-    std::vector<xolokun::ParameterDef> getParameterDefs() const override
+    std::vector<xoceanus::ParameterDef> getParameterDefs() const override
     {
         return {
             // id              name           min    max     default  step   skew
@@ -440,7 +440,7 @@ public:
     std::string getEngineId() const override { return "Hello"; }
 
     // Hello Green — a welcoming, accessible accent colour.
-    xolokun::Colour getAccentColour() const override { return { 0x4C, 0xAF, 0x50 }; }
+    xoceanus::Colour getAccentColour() const override { return { 0x4C, 0xAF, 0x50 }; }
 
     int getMaxVoices() const override { return kMaxVoices; }
 
@@ -496,7 +496,7 @@ private:
 //==============================================================================
 // Export for dynamic loading
 //==============================================================================
-XOLOKUN_EXPORT_ENGINE (HelloEngine,
+XOCEANUS_EXPORT_ENGINE (HelloEngine,
                         "Hello",
                         "Hello Engine",
                         "hlo_",

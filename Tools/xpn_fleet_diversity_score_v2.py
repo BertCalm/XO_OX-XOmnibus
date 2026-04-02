@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 xpn_fleet_diversity_score_v2.py
-Fleet diversity analysis of the full XOlokun preset fleet.
+Fleet diversity analysis of the full XOceanus preset fleet.
 
-Scans all .xometa files in Presets/XOlokun/{mood}/ directories.
+Scans all .xometa files in Presets/XOceanus/{mood}/ directories.
 Reads sonic_dna block (with dna as fallback) for each preset.
 Computes:
   - Fleet diversity score (mean cosine distance, sampled)
@@ -296,12 +296,12 @@ def build_snapshot(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="XOlokun fleet diversity score v2 — cosine-distance based analysis."
+        description="XOceanus fleet diversity score v2 — cosine-distance based analysis."
     )
     parser.add_argument(
         "--presets-dir",
         type=pathlib.Path,
-        default=pathlib.Path(__file__).parent.parent / "Presets" / "XOlokun",
+        default=pathlib.Path(__file__).parent.parent / "Presets" / "XOceanus",
         help="Root directory containing mood subdirectories with .xometa files.",
     )
     parser.add_argument(

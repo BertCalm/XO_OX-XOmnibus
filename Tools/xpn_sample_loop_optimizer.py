@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_sample_loop_optimizer.py — XO_OX XOlokun Tool
+xpn_sample_loop_optimizer.py — XO_OX XOceanus Tool
 Analyzes WAV files for loop optimization.
 Finds good loop points for sustained instrument samples and validates existing loop markers.
 
@@ -307,7 +307,7 @@ def build_report(wav_path: Path, fmt: dict, samples: list,
                  smpl_info: dict | None, top_n: int) -> str:
     lines = []
     lines.append("=" * 60)
-    lines.append("XPN Sample Loop Optimizer — XO_OX XOlokun")
+    lines.append("XPN Sample Loop Optimizer — XO_OX XOceanus")
     lines.append("=" * 60)
     lines.append(f"File       : {wav_path.name}")
     lines.append(f"Sample rate: {fmt['sample_rate']} Hz")
@@ -369,7 +369,7 @@ def build_report(wav_path: Path, fmt: dict, samples: list,
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Analyze WAV files for loop optimization (XO_OX XOlokun)."
+        description="Analyze WAV files for loop optimization (XO_OX XOceanus)."
     )
     parser.add_argument("wav_file", type=Path, help="Path to .wav file.")
     parser.add_argument("--output", type=Path, default=None,

@@ -6,7 +6,7 @@ Generate 80 Entangled presets in the "scorching dense" zone:
   warmth >= 0.87  AND  density >= 0.75
 
 16 pairs × 5 presets each = 80 total.
-Saves to Presets/XOlokun/Entangled/. Skips if file already exists.
+Saves to Presets/XOceanus/Entangled/. Skips if file already exists.
 
 Pairs:
   OVERDUB×OBLONG, OBESE×ORGANON, ODDOSCAR×OBLONG, OVERDUB×OPAL,
@@ -20,7 +20,7 @@ import os
 import random
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 random.seed(77)
 

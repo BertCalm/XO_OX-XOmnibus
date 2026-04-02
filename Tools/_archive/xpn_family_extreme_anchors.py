@@ -9,7 +9,7 @@ import json
 import os
 from pathlib import Path
 
-OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun" / "Family"
+OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOceanus" / "Family"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Engine macro labels — canonical per engine identity

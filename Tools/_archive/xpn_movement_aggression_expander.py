@@ -16,7 +16,7 @@ import os
 import random
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRESETS_DIR = os.path.join(BASE, "Presets", "XOlokun")
+PRESETS_DIR = os.path.join(BASE, "Presets", "XOceanus")
 
 # ---------------------------------------------------------------------------
 # Preset definitions: (name, engine, movement, aggression, brightness, warmth,

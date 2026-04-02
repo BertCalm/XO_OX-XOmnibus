@@ -8,7 +8,7 @@ Generates:
   - 24 OCTOPUS presets paired with each of 24 partner engines
   - 24 OMBRE presets paired with same 24 partner engines
 
-Total: ~56 presets written to Presets/XOlokun/Entangled/
+Total: ~56 presets written to Presets/XOceanus/Entangled/
 Skips files that already exist.
 """
 
@@ -20,7 +20,7 @@ from datetime import date
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 TODAY = str(date.today())
 VERSION = "1.0.0"

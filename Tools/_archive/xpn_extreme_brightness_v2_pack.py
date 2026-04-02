@@ -2,9 +2,9 @@
 """
 xpn_extreme_brightness_v2_pack.py
 
-Generates 60 extreme-brightness preset stubs for XOlokun:
-  - 30 Ultra-Bright (brightness 0.85–1.0) → Presets/XOlokun/Prism/
-  - 30 Ultra-Dark  (brightness 0.0–0.15)  → Presets/XOlokun/Aether/
+Generates 60 extreme-brightness preset stubs for XOceanus:
+  - 30 Ultra-Bright (brightness 0.85–1.0) → Presets/XOceanus/Prism/
+  - 30 Ultra-Dark  (brightness 0.0–0.15)  → Presets/XOceanus/Aether/
 
 Goal: populate currently-empty extreme brightness zones to fix fleet diversity score.
 Fleet analysis shows 85.4% of presets cluster in the 0.55–0.75 midrange.
@@ -21,8 +21,8 @@ import pathlib
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 REPO_ROOT   = SCRIPT_DIR.parent
-PRISM_DIR   = REPO_ROOT / "Presets" / "XOlokun" / "Prism"
-AETHER_DIR  = REPO_ROOT / "Presets" / "XOlokun" / "Aether"
+PRISM_DIR   = REPO_ROOT / "Presets" / "XOceanus" / "Prism"
+AETHER_DIR  = REPO_ROOT / "Presets" / "XOceanus" / "Aether"
 
 # ---------------------------------------------------------------------------
 # Engine macro labels — pulled from doctrine docs where known

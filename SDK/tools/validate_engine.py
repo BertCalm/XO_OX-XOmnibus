@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_engine.py — XOlokun SDK Engine Validator
+validate_engine.py — XOceanus SDK Engine Validator
 =====================================================
 
 Reads an engine .h file and checks compliance with:
@@ -49,7 +49,7 @@ class ValidationReport:
 
     def print_report(self):
         print()
-        print(f"  XOlokun Engine Validator")
+        print(f"  XOceanus Engine Validator")
         print(f"  File: {self.path}")
         print(f"  {'=' * 60}")
 
@@ -146,14 +146,14 @@ def check_interface(text: str, report: ValidationReport):
                    f"No '{name}()' found. Every SynthEngine must implement this method.")
 
     # Inherits from SynthEngine
-    inherits = has_pattern(text, r':\s*(?:public\s+)?(?:xolokun::)?SynthEngine')
+    inherits = has_pattern(text, r':\s*(?:public\s+)?(?:xoceanus::)?SynthEngine')
     report.add(cat, "inherits SynthEngine", inherits,
-               "Class must inherit from xolokun::SynthEngine (or SynthEngine with namespace using).")
+               "Class must inherit from xoceanus::SynthEngine (or SynthEngine with namespace using).")
 
     # Export macro
-    has_export = has_pattern(text, r'XOLOKUN_EXPORT_ENGINE\s*\(')
-    report.add(cat, "XOLOKUN_EXPORT_ENGINE macro", has_export,
-               "Missing XOLOKUN_EXPORT_ENGINE() at file scope. Engines must be dynamically loadable.")
+    has_export = has_pattern(text, r'XOCEANUS_EXPORT_ENGINE\s*\(')
+    report.add(cat, "XOCEANUS_EXPORT_ENGINE macro", has_export,
+               "Missing XOCEANUS_EXPORT_ENGINE() at file scope. Engines must be dynamically loadable.")
 
     # getSampleForCoupling (optional but strongly recommended for coupling sends)
     has_coupling_send = has_pattern(text, r'\bgetSampleForCoupling\s*\(')
@@ -541,7 +541,7 @@ def validate(path: str) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Validate an XOlokun engine header",
+        description="Validate an XOceanus engine header",
         epilog="Example: python3 validate_engine.py SDK/examples/HelloEngine/HelloEngine.h",
     )
     parser.add_argument("file", help="Path to the engine .h file")

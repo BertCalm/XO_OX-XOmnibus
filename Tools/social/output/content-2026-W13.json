@@ -16,7 +16,7 @@
       {
         "hash": "05698838b0601482bb360f02230bd37fe3502e25",
         "date": "2026-03-25",
-        "message": "Split XOlokunEditor.h into 17 Gallery components + add UI Wiring Manifest"
+        "message": "Split XOceanusEditor.h into 17 Gallery components + add UI Wiring Manifest"
       },
       {
         "hash": "c0841ac631f6ffa5d29e7cc9898369550850c698",
@@ -206,7 +206,7 @@
       {
         "hash": "59d8c70c5ec0b17c340dc321c6de66a26a4d2c82",
         "date": "2026-03-23",
-        "message": "XOlokun Definitive UI Specification — 1,773 lines"
+        "message": "XOceanus Definitive UI Specification — 1,773 lines"
       },
       {
         "hash": "47c828f54b6c25342c81bb6b3533ff3e0bbb8da3",
@@ -221,12 +221,12 @@
       {
         "hash": "ecfdc4f22ee84821ffe723a6b87a9ca77add9c22",
         "date": "2026-03-23",
-        "message": "Rename XOmnibus → XOlokun"
+        "message": "Rename XOmnibus → XOceanus"
       },
       {
         "hash": "7c1d091a4aa32fd8e54b253e4b6f6a043f04c03f",
         "date": "2026-03-23",
-        "message": "The Rebirth: UI research, PlaySurface design, asset registry, XOlokun rebrand review"
+        "message": "The Rebirth: UI research, PlaySurface design, asset registry, XOceanus rebrand review"
       },
       {
         "hash": "17fdf0b7c72c23fe7e09b3c5031457f146cb8603",
@@ -1989,7 +1989,7 @@
         "message": "Add comprehensive launch readiness audit — 12-domain review"
       }
     ],
-    "summary": "• Fix MIDI Learn persistence and DAW automation gesture brackets\n• Fix two P0 audio-thread safety violations found in Quantum Audit\n• Split XOlokunEditor.h into 17 Gallery components + add UI Wiring Manifest\n• Save session state: wiring sprint mandate + purpose statement\n• V0.4 polished plugin prototype: end-state visual design at 1100×700\n• iPad landscape end-state prototype: drawer-based touch-optimized layout\n• Expand battle plan: +150 tracks (300 total) across Opus/Sonnet/Haiku\n• Full MIDI Learn system: right-click any knob to map CC\n• MPC hardware end-state prototype: 800×480 touch-first 2-column layout\n• iPhone end-state prototype: 4-tab iOS app with TE PO-inspired macros",
+    "summary": "• Fix MIDI Learn persistence and DAW automation gesture brackets\n• Fix two P0 audio-thread safety violations found in Quantum Audit\n• Split XOceanusEditor.h into 17 Gallery components + add UI Wiring Manifest\n• Save session state: wiring sprint mandate + purpose statement\n• V0.4 polished plugin prototype: end-state visual design at 1100×700\n• iPad landscape end-state prototype: drawer-based touch-optimized layout\n• Expand battle plan: +150 tracks (300 total) across Opus/Sonnet/Haiku\n• Full MIDI Learn system: right-click any knob to map CC\n• MPC hardware end-state prototype: 800×480 touch-first 2-column layout\n• iPhone end-state prototype: 4-tab iOS app with TE PO-inspired macros",
     "commit_count": 397
   },
   "presets": {

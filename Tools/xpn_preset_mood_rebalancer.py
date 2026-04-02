@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Mood Rebalancer
+XOceanus Preset Mood Rebalancer
 
 Analyzes mood distribution across .xometa presets for an engine and suggests/applies
-mood reassignments to achieve a healthier balance across the 7 XOlokun moods.
+mood reassignments to achieve a healthier balance across the 7 XOceanus moods.
 
 Usage:
     python xpn_preset_mood_rebalancer.py <presets_dir> [--engine FILTER] [--suggest] [--apply] [--format text|json]
@@ -260,7 +260,7 @@ def render_apply_text(applied: int, failed: int) -> None:
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="Analyze and rebalance XOlokun preset mood distribution"
+        description="Analyze and rebalance XOceanus preset mood distribution"
     )
     parser.add_argument("presets_dir",
                         help="Root directory to scan for .xometa files (recursive)")

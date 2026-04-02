@@ -327,7 +327,7 @@ def parse_args():
         description="Generate OCELOT + ORBITAL coupling preset stubs."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_out = repo_root / "Presets" / "XOceanus" / "Entangled"
     parser.add_argument(
         "--output-dir",
         type=Path,

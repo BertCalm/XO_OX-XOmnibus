@@ -21,7 +21,7 @@ import random
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(__file__),
-    "..", "Presets", "XOlokun", "Entangled"
+    "..", "Presets", "XOceanus", "Entangled"
 )
 
 # ---------------------------------------------------------------------------

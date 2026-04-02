@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_kit_layering_advisor.py — XO_OX XOlokun Tool
+xpn_kit_layering_advisor.py — XO_OX XOceanus Tool
 
 Analyzes a set of WAV files (presumed to be velocity variants of the same hit)
 and advises on optimal MPC keygroup velocity layering strategies.

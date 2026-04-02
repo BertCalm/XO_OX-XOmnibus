@@ -21,9 +21,9 @@ Modes:
 Usage:
     python xpn_curiosity_engine.py --mode contradiction --seed-dna '{"aggression": 0.9}' --pads 16
     python xpn_curiosity_engine.py --mode extremes --engine ONSET
-    python xpn_curiosity_engine.py --mode forbidden --presets ./Presets/XOlokun/
+    python xpn_curiosity_engine.py --mode forbidden --presets ./Presets/XOceanus/
     python xpn_curiosity_engine.py --mode perceptual --output ./kits/
-    python xpn_curiosity_engine.py --mode mutate --preset ./Presets/XOlokun/Foundation/Opal_Crystal_Drift.xometa --n 20
+    python xpn_curiosity_engine.py --mode mutate --preset ./Presets/XOceanus/Foundation/Opal_Crystal_Drift.xometa --n 20
     python xpn_curiosity_engine.py --mode all --output ./curiosity_output/
 """
 
@@ -40,7 +40,7 @@ from typing import Optional
 # ---------------------------------------------------------------------------
 
 REPO_ROOT   = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
 
 # ---------------------------------------------------------------------------
 # DNA dimensions and helpers

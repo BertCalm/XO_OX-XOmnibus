@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate XOverworld .xometa preset files for XOlokun.
+"""Generate XOverworld .xometa preset files for XOceanus.
 
 Overworld is a multi-era chip synthesis engine (NES + FM/Genesis + SNES).
 Generates 40 presets across all 6 moods, covering:
@@ -16,7 +16,7 @@ import random
 
 random.seed(84)
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOceanus")
 
 DEFAULTS = {
     "ow_ERA": 0.0, "ow_ERA_Y": 0.0, "ow_VOICE_MODE": 0,

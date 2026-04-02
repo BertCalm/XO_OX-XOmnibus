@@ -39,7 +39,7 @@ PATREON_LINK_PLACEHOLDER = "{patreon_link}"
 
 # Real links (update when channels are live)
 REDDIT_LINK  = "reddit.com/r/XO_OX"
-DISCORD_LINK = "discord.gg/xolokun"
+DISCORD_LINK = "discord.gg/xoceanus"
 PATREON_LINK = "patreon.com/cw/XO_OX"
 
 DEPTH_ZONES = ["surface", "twilight", "midnight", "abyss"]

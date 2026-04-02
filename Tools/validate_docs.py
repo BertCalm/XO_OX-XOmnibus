@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_docs.py — XOlokun documentation consistency checker.
+validate_docs.py — XOceanus documentation consistency checker.
 
 Reads canonical product stats from Tools/project_stats.json and scans
 public-facing docs for stale values. Exits non-zero if inconsistencies
@@ -45,9 +45,9 @@ CHECKED_DOCS = [
     "site/index.html",
     "site/field-guide/the-coupling-explainer.html",
     "site/press-kit/index.html",
-    "Docs/design/xolokun-definitive-ui-spec.md",
-    "Docs/design/xolokun-spatial-architecture.md",
-    "Docs/design/xolokun-ui-blessing-session.md",
+    "Docs/design/xoceanus-definitive-ui-spec.md",
+    "Docs/design/xoceanus-spatial-architecture.md",
+    "Docs/design/xoceanus-ui-blessing-session.md",
     "Docs/design/xomnibus_design_guidelines.md",
     "Docs/design/xomnibus_ui_master_spec_v2.md",
 ]

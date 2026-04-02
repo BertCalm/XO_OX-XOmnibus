@@ -339,10 +339,10 @@ def write_stub(stub: dict, output_dir: Path) -> Path:
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
+    default_output = repo_root / "Presets" / "XOceanus" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Generate Constellation coupling .xometa stubs for XOlokun."
+        description="Generate Constellation coupling .xometa stubs for XOceanus."
     )
     parser.add_argument(
         "--output-dir",

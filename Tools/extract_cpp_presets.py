@@ -3,7 +3,7 @@
 Universal C++ → .xometa Preset Extractor
 
 Extracts factory presets from XOverdub, XOdyssey, and XOblong C++ source
-files and converts them to the unified .xometa format for XOlokun.
+files and converts them to the unified .xometa format for XOceanus.
 
 Each engine uses a different C++ pattern:
   - XOverdub:   setParam(a, paramId, value) inside lambdas
@@ -26,7 +26,7 @@ from datetime import date
 # ---------------------------------------------------------------------------
 
 REPO_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = REPO_ROOT / "Presets" / "XOlokun"
+OUTPUT_DIR = REPO_ROOT / "Presets" / "XOceanus"
 TODAY = date.today().isoformat()
 
 ENGINE_SOURCES = {
@@ -42,7 +42,7 @@ MACRO_LABELS = {
     "XOblong": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
 }
 
-# Category → XOlokun mood mapping (from mega_tool_preset_philosophy.md)
+# Category → XOceanus mood mapping (from mega_tool_preset_philosophy.md)
 MOOD_MAP = {
     # XOverdub
     "Dub Bass":         "Foundation",
@@ -615,7 +615,7 @@ def main():
             (OUTPUT_DIR / mood).mkdir(exist_ok=True)
 
     print("=" * 60)
-    print("XOlokun C++ Preset Extractor")
+    print("XOceanus C++ Preset Extractor")
     print(f"Output: {OUTPUT_DIR}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE'}")
     print("=" * 60)

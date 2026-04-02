@@ -2,7 +2,7 @@
 
 • Fix MIDI Learn persistence and DAW automation gesture brackets
 • Fix two P0 audio-thread safety violations found in Quantum Audit
-• Split XOlokunEditor.h into 17 Gallery components + add UI Wiring Manifest
+• Split XOceanusEditor.h into 17 Gallery components + add UI Wiring Manifest
 • Save session state: wiring sprint mandate + purpose statement
 • V0.4 polished plugin prototype: end-state visual design at 1100×700
 • iPad landscape end-state prototype: drawer-based touch-optimized layout

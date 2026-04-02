@@ -14,7 +14,7 @@ Environment variables:
     DISCORD_WEBHOOK_URL  — required (set in shell or .env sourced before running)
 
 Optional env vars:
-    DISCORD_USERNAME     — override the bot display name (default: XOlokun)
+    DISCORD_USERNAME     — override the bot display name (default: XOceanus)
     DISCORD_AVATAR_URL   — override the bot avatar URL
 
 Exit codes:
@@ -41,7 +41,7 @@ OUTPUT_DIR   = SOCIAL_DIR / "output"
 LOG_FILE     = OUTPUT_DIR / "discord-webhook.log"
 
 # Default bot identity
-DEFAULT_USERNAME   = "XOlokun"
+DEFAULT_USERNAME   = "XOceanus"
 DEFAULT_AVATAR_URL = ""  # empty = Discord default
 
 # Discord webhook API endpoint is provided via env var
@@ -84,7 +84,7 @@ def post_to_discord(
             data=data,
             headers={
                 "Content-Type":  "application/json",
-                "User-Agent":    "XOlokun-SocialBot/1.0",
+                "User-Agent":    "XOceanus-SocialBot/1.0",
             },
             method="POST",
         )

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOlokun Preset Schema Fixer — Fleet-Wide .xometa Repair
+XOceanus Preset Schema Fixer — Fleet-Wide .xometa Repair
 
 Fixes:
   1. Missing schema_version (adds 1)
@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 from collections import Counter
 
-PRESET_DIR = Path(__file__).resolve().parent.parent / "Presets" / "XOlokun"
+PRESET_DIR = Path(__file__).resolve().parent.parent / "Presets" / "XOceanus"
 
 DEFAULT_MACRO_LABELS = ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
 DEFAULT_AUTHOR = "XO_OX Designs"
@@ -262,7 +262,7 @@ def main():
         return 1
 
     print("=" * 60)
-    print("XOlokun Preset Schema Fixer")
+    print("XOceanus Preset Schema Fixer")
     print("=" * 60)
     print(f"Scanning: {PRESET_DIR}")
     print(f"Found: {len(files)} preset files")

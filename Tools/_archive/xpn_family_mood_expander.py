@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""XPN Family Mood Expander — generate Family mood presets for XOlokun.
+"""XPN Family Mood Expander — generate Family mood presets for XOceanus.
 
 Family is the 7th mood: curated multi-engine "family portrait" presets that
 blend 2-4 engines in a unified sound. NOT coupling modulation routes — these
@@ -111,7 +111,7 @@ FAMILY_CONCEPTS = [
         "story":    (
             "OBLONG, ONSET, and OBESE — the rhythm section. Bob lays the harmonic "
             "foundation, Onset drives the pulse, Obese saturates everything with "
-            "hot-pink character. The trio that holds the whole XOlokun together."
+            "hot-pink character. The trio that holds the whole XOceanus together."
         ),
         "variants": [
             {
@@ -327,7 +327,7 @@ FAMILY_CONCEPTS = [
             "OHM, ORPHICA, OBBLIGATO, OTTONI, and OLE — all five Constellation "
             "engines in one room. Hippy Dad jam, microsound harp, dual wind, "
             "triple brass, and Afro-Latin trio. The fastest-built family "
-            "in XOlokun history, now gathered for their first group portrait."
+            "in XOceanus history, now gathered for their first group portrait."
         ),
         "variants": [
             {
@@ -582,10 +582,10 @@ def safe_filename(name: str) -> str:
 
 def parse_args() -> argparse.Namespace:
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOlokun" / "Family"
+    default_output = repo_root / "Presets" / "XOceanus" / "Family"
 
     p = argparse.ArgumentParser(
-        description="Generate Family mood presets for XOlokun.",
+        description="Generate Family mood presets for XOceanus.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

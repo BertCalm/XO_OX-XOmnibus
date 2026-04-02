@@ -1,7 +1,7 @@
 {
   "_meta": {
     "tool": "xpn_engine_dna_profile_builder",
-    "description": "Authoritative 6D Sonic DNA fingerprint per XOlokun engine",
+    "description": "Authoritative 6D Sonic DNA fingerprint per XOceanus engine",
     "sort_order": "felix_score descending (most feliX → most Oscar)",
     "dna_dimensions": [
       "brightness",

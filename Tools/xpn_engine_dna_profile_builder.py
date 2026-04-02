@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_engine_dna_profile_builder.py — XO_OX XOlokun Engine DNA Profile Builder
+xpn_engine_dna_profile_builder.py — XO_OX XOceanus Engine DNA Profile Builder
 
 Loads all .xometa presets, groups by engine, and computes an authoritative
 6D Sonic DNA fingerprint per engine: mean, min/max range, std dev, feliX/Oscar
@@ -11,9 +11,9 @@ Output:
   - Human-readable report table: engine_profiles.txt (or stdout)
 
 Usage:
-  python xpn_engine_dna_profile_builder.py --preset-dir Presets/XOlokun
+  python xpn_engine_dna_profile_builder.py --preset-dir Presets/XOceanus
   python xpn_engine_dna_profile_builder.py \\
-      --preset-dir Presets/XOlokun \\
+      --preset-dir Presets/XOceanus \\
       --output-json Docs/engine_dna_profiles.json \\
       --output-report engine_profiles.txt
 """
@@ -233,7 +233,7 @@ def build_profiles(groups: dict[str, list[dict]]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 REPORT_HEADER = (
-    "XO_OX XOlokun — Engine DNA Profile Report\n"
+    "XO_OX XOceanus — Engine DNA Profile Report\n"
     "==========================================\n"
     "Sorted: most feliX (1.0) → most Oscar (0.0)\n"
     "Versatility: mean std-dev across 6 DNA dims (higher = more varied)\n"
@@ -340,7 +340,7 @@ def fleet_summary(profiles: list[dict]) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build 6D Sonic DNA profiles for every XOlokun engine.",
+        description="Build 6D Sonic DNA profiles for every XOceanus engine.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -393,7 +393,7 @@ def main() -> None:
     output = {
         "_meta": {
             "tool": "xpn_engine_dna_profile_builder",
-            "description": "Authoritative 6D Sonic DNA fingerprint per XOlokun engine",
+            "description": "Authoritative 6D Sonic DNA fingerprint per XOceanus engine",
             "sort_order": "felix_score descending (most feliX → most Oscar)",
             "dna_dimensions": DNA_DIMS,
             "felix_score_formula": "(brightness - warmth + 1) / 2",

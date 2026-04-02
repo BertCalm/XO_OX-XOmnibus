@@ -18,7 +18,7 @@ import json
 import sys
 from pathlib import Path
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 
 def fix_preset(data: dict) -> tuple[dict, list[str]]:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_fleet_mood_balancer.py — Analyze mood distribution across the XOlokun preset fleet
+xpn_fleet_mood_balancer.py — Analyze mood distribution across the XOceanus preset fleet
 and recommend which moods need more presets to reach balance.
 
 Usage:
@@ -275,7 +275,7 @@ def print_recommendations(rows: List[dict], actual_total: int, target_total: int
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="xpn_fleet_mood_balancer",
-        description="Analyze mood distribution across the XOlokun preset fleet.",
+        description="Analyze mood distribution across the XOceanus preset fleet.",
     )
     parser.add_argument(
         "--presets-dir",

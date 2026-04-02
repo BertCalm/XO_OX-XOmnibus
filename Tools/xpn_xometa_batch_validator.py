@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_xometa_batch_validator.py
-Validates all .xometa preset files in a directory against the XOlokun preset schema.
+Validates all .xometa preset files in a directory against the XOceanus preset schema.
 
 Usage:
     python xpn_xometa_batch_validator.py <dir> [--strict] [--fix] [--format text|json] [--output report.txt]
@@ -238,7 +238,7 @@ def format_text_report(results: list[PresetResult], strict: bool = False) -> str
     total = len(results)
 
     lines.append("=" * 70)
-    lines.append("XOlokun .xometa Batch Validator")
+    lines.append("XOceanus .xometa Batch Validator")
     lines.append("=" * 70)
     lines.append(f"Scanned : {total} files")
     lines.append(f"PASS    : {pass_count}")
@@ -311,7 +311,7 @@ def format_json_report(results: list[PresetResult], strict: bool = False) -> str
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Validate XOlokun .xometa preset files against the preset schema.",
+        description="Validate XOceanus .xometa preset files against the preset schema.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exit codes:

@@ -3,7 +3,7 @@
 import json
 from pathlib import Path
 
-PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESET_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 DRIFT_PARAMS = ["drift_attack", "drift_decay", "drift_release"]
 RANGES = {"drift_attack": 2.0, "drift_decay": 5.0, "drift_release": 5.0}
 

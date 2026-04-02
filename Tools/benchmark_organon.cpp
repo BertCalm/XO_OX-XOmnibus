@@ -16,11 +16,11 @@
 #include <cstring>
 
 // Inline the DSP components we need to benchmark
-namespace xolokun {
+namespace xoceanus {
     #include "../Source/DSP/FastMath.h"
 }
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Minimal standalone benchmark of the RK4 modal array (the CPU-critical path)

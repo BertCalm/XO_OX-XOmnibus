@@ -11,7 +11,7 @@ import json
 import glob
 import os
 
-PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
 converted_flat = 0
 converted_routes = 0
 converted_hybrid = 0

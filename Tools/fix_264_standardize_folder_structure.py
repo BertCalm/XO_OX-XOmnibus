@@ -30,7 +30,7 @@ import shutil
 import sys
 from pathlib import Path
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOceanus"
 
 # Default: migrate the four moods that the issue identified as flat
 DEFAULT_MOODS = ["Foundation", "Flux", "Aether", "Organic"]

@@ -6,7 +6,7 @@ Rhythm/chip engine trio:
   ONSET     prefix: perc_  accent: Electric Blue #0066FF
   OVERWORLD prefix: ow_    accent: Neon Green #39FF14
 
-Outputs ~66 presets to Presets/XOlokun/Entangled/.
+Outputs ~66 presets to Presets/XOceanus/Entangled/.
 Skips any file that already exists.
 """
 
@@ -14,7 +14,7 @@ import json
 import os
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
+ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 # ---------------------------------------------------------------------------
 # DNA baselines

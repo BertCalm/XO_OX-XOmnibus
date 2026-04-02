@@ -9,7 +9,7 @@ import glob
 import os
 import re
 
-PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
 
 # Known engine names for inference from filenames
 KNOWN_ENGINES = [

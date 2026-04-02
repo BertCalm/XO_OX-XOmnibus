@@ -1,8 +1,8 @@
-**[XOlokun] Weekly Coupling Recipe — Drum Teaches Bass**
+**[XOceanus] Weekly Coupling Recipe — Drum Teaches Bass**
 
 Hi all,
 
-Sharing this week's coupling recipe from the XOlokun cookbook. These are all free to use — the plugin is open source.
+Sharing this week's coupling recipe from the XOceanus cookbook. These are all free to use — the plugin is open source.
 
 ---
 
@@ -26,8 +26,8 @@ ONSET's kick transients drive three simultaneous processes on OVERBITE: the filt
 
 ---
 
-XOlokun is a free, open-source multi-engine synthesizer with ONSET and OVERBITE among 73 registered engines. Coupling lets one engine rewrite another in real time.
+XOceanus is a free, open-source multi-engine synthesizer with ONSET and OVERBITE among 73 registered engines. Coupling lets one engine rewrite another in real time.
 
 Download + source: github.com/XO-OX
 Reddit community: reddit.com/r/XO_OX
-Discord: discord.gg/xolokun
+Discord: discord.gg/xoceanus

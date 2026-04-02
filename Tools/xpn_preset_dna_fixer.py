@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_dna_fixer.py — XOlokun Sonic DNA Auto-Repair Tool
+xpn_preset_dna_fixer.py — XOceanus Sonic DNA Auto-Repair Tool
 
 Scans .xometa preset files recursively and repairs incomplete or inconsistent
 6D Sonic DNA blocks:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-extract_content.py — Weekly content extraction for XOlokun's Sustainable Social Engine.
+extract_content.py — Weekly content extraction for XOceanus's Sustainable Social Engine.
 
 Reads git log, preset counts, coupling cookbook recipes, scripture verses, and
 breadcrumb notes from this week. Outputs a structured JSON file for format_posts.py.
@@ -32,7 +32,7 @@ OUTPUT_DIR   = SOCIAL_DIR / "output"
 SCRIPTURE_FILE   = PROJECT_ROOT / "scripture" / "the-scripture.md"
 RETREATS_DIR     = PROJECT_ROOT / "scripture" / "retreats"
 COOKBOOK_FILE    = PROJECT_ROOT / "Docs" / "coupling-cookbook-v1.md"
-PRESETS_ROOT     = PROJECT_ROOT / "Presets" / "XOlokun"
+PRESETS_ROOT     = PROJECT_ROOT / "Presets" / "XOceanus"
 BREADCRUMBS_DIR  = SOCIAL_DIR / "breadcrumbs"
 
 
@@ -358,7 +358,7 @@ def extract(target_week: str | None = None, dry_run: bool = False) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Extract weekly content for XOlokun social pipeline.",
+        description="Extract weekly content for XOceanus social pipeline.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
