@@ -360,6 +360,17 @@ struct CouplingPair {
 };
 
 //==============================================================================
+// A single macro target — one parameter controlled by a global macro knob.
+// Each preset stores up to 4 macro slots (CHARACTER/MOVEMENT/COUPLING/SPACE),
+// and each slot can route to multiple engine parameters.
+struct MacroTarget {
+    juce::String engineName;   // Canonical engine ID (e.g. "Onset", "Obrix")
+    juce::String paramId;      // Frozen parameter ID (e.g. "perc_noiseLevel")
+    float depthMin = 0.0f;     // Parameter value when macro is at 0.0
+    float depthMax = 1.0f;     // Parameter value when macro is at 1.0
+};
+
+//==============================================================================
 // Complete preset data as loaded from a .xometa file.
 struct PresetData {
     int schemaVersion = 1;
@@ -370,12 +381,15 @@ struct PresetData {
     juce::String version;
     juce::String description;
     juce::StringArray tags;
-    juce::StringArray macroLabels;         // 4 labels
+    juce::StringArray macroLabels;         // 4 labels: CHARACTER, MOVEMENT, COUPLING, SPACE
     juce::String couplingIntensity;        // None|Subtle|Moderate|Deep
     float tempo = 0.0f;                    // 0 if not tempo-dependent
     PresetDNA dna;
     std::map<juce::String, juce::var> parametersByEngine;  // engine name -> params object
     std::vector<CouplingPair> couplingPairs;
+    // Macro target routing: [0]=CHARACTER [1]=MOVEMENT [2]=COUPLING [3]=SPACE.
+    // Each slot holds zero or more parameter targets that the macro sweeps.
+    std::array<std::vector<MacroTarget>, 4> macroTargets;
     juce::var sequencerData;               // Raw JSON, undefined if no sequencer
 
     // Source file for navigation purposes (empty for programmatic presets)
@@ -549,6 +563,32 @@ public:
             root->setProperty("sequencer", preset.sequencerData);
         else
             root->setProperty("sequencer", juce::var());
+
+        // macroTargets — 4-element array, one entry per macro slot.
+        // Each element is an array of { engineName, paramId, depthMin, depthMax } objects.
+        // Always written (even when all slots are empty) so the field is present in every
+        // saved preset and loaders never need to fabricate a fallback value.
+        {
+            static const juce::StringArray macroSlotNames {
+                "CHARACTER", "MOVEMENT", "COUPLING", "SPACE"
+            };
+            juce::var macroTargetsArray;
+            for (int slot = 0; slot < 4; ++slot)
+            {
+                juce::var slotArray;
+                for (const auto& mt : preset.macroTargets[static_cast<size_t>(slot)])
+                {
+                    auto* mtObj = new juce::DynamicObject();
+                    mtObj->setProperty("engineName", mt.engineName);
+                    mtObj->setProperty("paramId",    mt.paramId);
+                    mtObj->setProperty("depthMin",   static_cast<double>(mt.depthMin));
+                    mtObj->setProperty("depthMax",   static_cast<double>(mt.depthMax));
+                    slotArray.append(juce::var(mtObj));
+                }
+                macroTargetsArray.append(slotArray);
+            }
+            root->setProperty("macroTargets", macroTargetsArray);
+        }
 
         return juce::JSON::toString(juce::var(root), false);
     }
@@ -943,6 +983,58 @@ private:
         else
         {
             out.sequencerData = juce::var();
+        }
+
+        // macroTargets — optional; old presets without this field load with empty targets.
+        // Format: 4-element array of arrays, each inner array holds target objects:
+        //   { "engineName": "Onset", "paramId": "perc_noiseLevel", "depthMin": 0.0, "depthMax": 1.0 }
+        // Slot order: [0]=CHARACTER [1]=MOVEMENT [2]=COUPLING [3]=SPACE.
+        for (auto& slot : out.macroTargets)
+            slot.clear();
+
+        if (obj->hasProperty("macroTargets"))
+        {
+            auto macroTargetsVar = obj->getProperty("macroTargets");
+            if (macroTargetsVar.isArray())
+            {
+                auto* outerArr = macroTargetsVar.getArray();
+                int numSlots = std::min(4, static_cast<int>(outerArr->size()));
+                for (int slot = 0; slot < numSlots; ++slot)
+                {
+                    const auto& slotVar = (*outerArr)[static_cast<size_t>(slot)];
+                    if (!slotVar.isArray())
+                        continue;
+
+                    for (const auto& targetVar : *slotVar.getArray())
+                    {
+                        if (!targetVar.isObject())
+                            continue;
+                        auto* targetObj = targetVar.getDynamicObject();
+                        if (targetObj == nullptr)
+                            continue;
+
+                        MacroTarget mt;
+                        mt.engineName = resolveEngineAlias(targetObj->getProperty("engineName").toString());
+                        mt.paramId    = targetObj->getProperty("paramId").toString();
+
+                        // depthMin/depthMax: default to 0/1 if absent or malformed
+                        auto depthMinVar = targetObj->getProperty("depthMin");
+                        auto depthMaxVar = targetObj->getProperty("depthMax");
+                        mt.depthMin = (depthMinVar.isDouble() || depthMinVar.isInt())
+                                          ? static_cast<float>(depthMinVar) : 0.0f;
+                        mt.depthMax = (depthMaxVar.isDouble() || depthMaxVar.isInt())
+                                          ? static_cast<float>(depthMaxVar) : 1.0f;
+
+                        // Only store targets whose engine and param IDs are non-empty.
+                        // We intentionally do NOT validate engineName against validEngineNames
+                        // here: third-party or future engines may define targets that load
+                        // before their engine is registered. MacroSystem is responsible for
+                        // silently skipping targets it cannot resolve at apply-time.
+                        if (mt.engineName.isNotEmpty() && mt.paramId.isNotEmpty())
+                            out.macroTargets[static_cast<size_t>(slot)].push_back(std::move(mt));
+                    }
+                }
+            }
         }
 
         return true;
