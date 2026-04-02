@@ -580,3 +580,85 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         COMMENT "Building XOceanus installer package..."
     )
 endif()
+
+# ==============================================================================
+# CMake install() rules — closes #407
+#
+# Usage:
+#   cmake --install build                      (install to /usr/local by default)
+#   cmake --install build --prefix ~/my-prefix
+#
+# Installed layout:
+#   ${prefix}/lib/AU/XOceanus.component        (macOS AU plugin bundle)
+#   ${prefix}/bin/XOceanus                     (Standalone application)
+#   ${prefix}/share/XOceanus/Presets/          (factory presets)
+# ==============================================================================
+if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    # AU plugin bundle
+    install(
+        DIRECTORY "$<TARGET_BUNDLE_DIR:XOceanus_AU>"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/AU"
+        USE_SOURCE_PERMISSIONS
+    )
+
+    # Standalone application
+    install(
+        TARGETS XOceanus_Standalone
+        BUNDLE DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
+        RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
+    )
+else()
+    # Non-macOS: install standalone executable and shared-library plugin (VST3)
+    install(
+        TARGETS XOceanus_Standalone
+        RUNTIME DESTINATION bin
+    )
+    install(
+        DIRECTORY "$<TARGET_FILE_DIR:XOceanus_VST3>/XOceanus.vst3"
+        DESTINATION lib/vst3
+        OPTIONAL
+    )
+endif()
+
+# Factory presets (platform-independent)
+install(
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/Presets/"
+    DESTINATION "share/XOceanus/Presets"
+)
+
+# ==============================================================================
+# CPack configuration — closes #407
+#
+# On macOS: produces a .dmg containing the AU bundle + Standalone app.
+# On other platforms: produces a .tar.gz.
+#
+# Usage:
+#   cd build && cpack               (auto-detects generator)
+#   cd build && cpack -G DragNDrop  (explicit .dmg)
+#   cd build && cpack -G TGZ        (explicit .tar.gz)
+# ==============================================================================
+set(CPACK_PACKAGE_NAME              "XOceanus")
+set(CPACK_PACKAGE_VENDOR            "XO_OX Designs")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "XOceanus — 76-engine synthesizer platform")
+set(CPACK_PACKAGE_VERSION_MAJOR     ${PROJECT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR     ${PROJECT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH     ${PROJECT_VERSION_PATCH})
+set(CPACK_PACKAGE_VERSION           "${PROJECT_VERSION}")
+set(CPACK_RESOURCE_FILE_LICENSE     "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "XOceanus")
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    # DragNDrop creates a .dmg with the AU bundle and Standalone side-by-side.
+    set(CPACK_GENERATOR "DragNDrop")
+    set(CPACK_DMG_VOLUME_NAME   "XOceanus ${PROJECT_VERSION}")
+    set(CPACK_DMG_FORMAT        "UDZO")   # zlib-compressed, read-write
+    set(CPACK_DMG_DS_STORE_SETUP_SCRIPT
+        "${CMAKE_CURRENT_SOURCE_DIR}/Installer/dmg_setup.scpt"
+    )
+    # Also make a .pkg available as an alternative generator
+    set(CPACK_PRODUCTBUILD_IDENTIFIER "com.xo-ox.xoceanus")
+else()
+    set(CPACK_GENERATOR "TGZ")
+endif()
+
+include(CPack)
