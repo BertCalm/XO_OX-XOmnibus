@@ -631,12 +631,10 @@ public:
             : 1.0f;
 
         // === FLASH gesture trigger (detect rising edge) ===
-        bool flashFired = false;
         if (flashTrig > 0.5f && prevFlashTrig <= 0.5f)
         {
             gestureLevel = 1.0f;
             gesturePhase = 0.0f;
-            flashFired = true;
         }
         prevFlashTrig = flashTrig;
 
@@ -784,6 +782,10 @@ public:
                         default: break;
                     }
                 }
+
+                // wtPosMod (target 5) and fxMixMod (target 7) are routed but not yet
+                // applied to DSP — suppress unused-variable warnings until wired.
+                (void)wtPosMod; (void)fxMixMod;
 
                 // --- Macro modulation (Guru Bin remapping) ---
                 // CHARACTER: cutoff + exponential fold depth + resonance boost
