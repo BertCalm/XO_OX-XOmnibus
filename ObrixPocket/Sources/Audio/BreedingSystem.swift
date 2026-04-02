@@ -36,7 +36,15 @@ struct BreedingPair: Codable, Identifiable {
         wiredDays >= 7
     }
 
-    /// Whether the pair is in cooldown from recent breeding
+    /// Whether the pair is in cooldown from recent breeding.
+    ///
+    /// Cooldown state is derived from `lastBreedingDate` (a `Date`) compared against
+    /// `Date()` — it is purely computed and requires no separate persistence.
+    ///
+    /// Correctness depends on `BreedingManager.restore()` being called at app launch
+    /// so that `lastBreedingDate` is populated from the persisted `pairs` array.
+    /// Without that call the pairs array would be empty and all cooldowns would be lost.
+    /// `restore()` is wired in `ObrixPocketApp.onAppear` for returning users (#378/#384).
     var isInCooldown: Bool {
         guard let lastBreeding = lastBreedingDate else { return false }
         let daysSince = Calendar.current.dateComponents([.day], from: lastBreeding, to: Date()).day ?? 0
@@ -297,6 +305,10 @@ final class BreedingManager: ObservableObject {
         // FIX 3: Notify seasonal event manager of a successful breeding
         seasonalEventManager?.recordBreedingSuccess()
 
+        // Persist immediately after a successful breed so that `lastBreedingDate`
+        // (which drives cooldown) survives a force-quit between breed() and the
+        // next .background save.  This is the defence-in-depth complement to
+        // restore() being called at launch (#384).
         save()
         return occupant
     }
