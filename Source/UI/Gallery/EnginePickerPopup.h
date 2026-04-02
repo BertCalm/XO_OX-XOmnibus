@@ -145,7 +145,16 @@ public:
         addAndMakeVisible(countLabel);
 
         updateFilter();
-        setSize(340, 420);
+
+        // #180 HiDPI scaling: scale the popup dimensions by the primary display's
+        // device-pixel ratio so the component occupies the same physical screen area
+        // on Retina/HiDPI displays and pill labels remain ≥12pt effective size.
+        {
+            const auto* display = juce::Desktop::getInstance().getDisplays().getPrimaryDisplay();
+            const float scale = (display != nullptr) ? juce::jmax(1.0f, (float)display->scale) : 1.0f;
+            setSize(juce::roundToInt(340.0f * scale),
+                    juce::roundToInt(420.0f * scale));
+        }
 
         // Focus the search field immediately so the user can start typing.
         // SafePointer guards against the rare case where the CallOutBox dismisses
