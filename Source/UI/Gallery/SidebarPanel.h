@@ -76,17 +76,9 @@ public:
 
         setWantsKeyboardFocus(true);
 
-        // ── Placeholder labels (C2 – C6) ─────────────────────────────────────
-        setupPlaceholder(couplePlaceholder,   "Coupling Inspector — Coming Soon",
-                         "C2: Route visualizer, type selector, BAKE/CLR controls");
-        setupPlaceholder(fxPlaceholder,       "FX Inspector — Coming Soon",
-                         "C3: Per-slot FX chain, wet/dry, inline expansion");
-        setupPlaceholder(playPlaceholder,     "Play Panel — Coming Soon",
-                         "C4: Macro strips, Mod Wheel, Tide Controller, scale selector");
-        setupPlaceholder(exportPlaceholder,   "Export — Coming Soon",
-                         "C5: XPN pack builder, program selector, render queue");
-        setupPlaceholder(settingsPlaceholder, "Settings — Coming Soon",
-                         "C6: Theme, resize limits, MIDI channel, about");
+        // ── Preset placeholder (C1 only) — shown until setPresetManager() wires the real browser ──
+        setupPlaceholder(presetPlaceholder, "Preset Browser",
+                         "C1: Loading preset browser…");
 
         // ── Content area accessibility ────────────────────────────────────────
         contentArea.setTitle("Sidebar content area");
@@ -128,7 +120,6 @@ public:
             exportPanel = std::make_unique<ExportTabPanel>(proc);
             contentArea.addChildComponent(*exportPanel);
             exportPanel->setVisible(activeTab == Export);
-            exportPlaceholder.setVisible(false); // live panel replaces placeholder
         }
 
         if (outshineSidebar == nullptr)
@@ -143,7 +134,6 @@ public:
             couplingPanel = std::make_unique<CouplingInspectorPanel>(proc);
             contentArea.addChildComponent(*couplingPanel);
             couplingPanel->setVisible(activeTab == Couple);
-            couplePlaceholder.setVisible(false);
         }
 
         if (fxPanel == nullptr)
@@ -151,7 +141,6 @@ public:
             fxPanel = std::make_unique<FXInspectorPanel>(proc.getAPVTS());
             contentArea.addChildComponent(*fxPanel);
             fxPanel->setVisible(activeTab == FX);
-            fxPlaceholder.setVisible(false);
         }
 
         if (playPanel == nullptr)
@@ -159,7 +148,6 @@ public:
             playPanel = std::make_unique<PlayControlPanel>(proc);
             contentArea.addChildComponent(*playPanel);
             playPanel->setVisible(activeTab == Play);
-            playPlaceholder.setVisible(false);
         }
 
         if (settingsPanel == nullptr)
@@ -167,12 +155,10 @@ public:
             settingsPanel = std::make_unique<SettingsPanel>(proc);
             contentArea.addChildComponent(*settingsPanel);
             settingsPanel->setVisible(activeTab == Settings);
-            settingsPlaceholder.setVisible(false);
         }
 
         resized();
 
-        // Restore previously selected tab now that all content panels are live (#199).
         // Restore previously selected tab now that all content panels are live (#199).
         {
             juce::PropertiesFile::Options opts;
@@ -230,23 +216,11 @@ public:
         presetPlaceholder.setVisible(!havePresetBrowser && t == Preset);
 
         if (couplingPanel) couplingPanel->setVisible(t == Couple);
-        couplePlaceholder.setVisible(t == Couple && !couplingPanel);
-
         if (fxPanel) fxPanel->setVisible(t == FX);
-        fxPlaceholder.setVisible(t == FX && !fxPanel);
-
         if (playPanel) playPanel->setVisible(t == Play);
-        playPlaceholder.setVisible(t == Play && !playPanel);
-
-        bool haveExportPanel = (exportPanel != nullptr);
-        if (haveExportPanel)
-            exportPanel->setVisible(t == Export);
-        exportPlaceholder.setVisible(!haveExportPanel && t == Export);
-
+        if (exportPanel) exportPanel->setVisible(t == Export);
         if (outshineSidebar) outshineSidebar->setVisible(false); // always hidden — off-screen
-
         if (settingsPanel) settingsPanel->setVisible(t == Settings);
-        settingsPlaceholder.setVisible(t == Settings && !settingsPanel);
 
         // Refresh coupling data whenever the Couple tab becomes active
         if (t == Couple && couplingPanel)
@@ -458,11 +432,6 @@ public:
             settingsPanel->setBounds(inner);
 
         presetPlaceholder.setBounds(inner);
-        couplePlaceholder.setBounds(inner);
-        fxPlaceholder.setBounds(inner);
-        playPlaceholder.setBounds(inner);
-        exportPlaceholder.setBounds(inner);
-        settingsPlaceholder.setBounds(inner);
     }
 
     //==========================================================================
@@ -540,13 +509,8 @@ private:
     // C6 — Settings (constructed lazily when setProcessor() is called)
     std::unique_ptr<SettingsPanel>          settingsPanel;
 
-    // V1 placeholder labels for C2 – C6
-    juce::Label presetPlaceholder;   // shown when presetBrowser is null
-    juce::Label couplePlaceholder;
-    juce::Label fxPlaceholder;
-    juce::Label playPlaceholder;
-    juce::Label exportPlaceholder;   // shown when exportPanel is null
-    juce::Label settingsPlaceholder;
+    // Preset placeholder — shown when presetBrowser is null (before setPresetManager() is called)
+    juce::Label presetPlaceholder;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SidebarPanel)
 };
