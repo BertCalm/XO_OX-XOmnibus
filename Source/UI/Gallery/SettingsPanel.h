@@ -162,6 +162,16 @@ public:
         // ── 3. MPE ───────────────────────────────────────────────────────────
         auto& apvts = processor.getAPVTS();
 
+        // Guard: log a diagnostic warning when the APVTS has not registered MPE
+        // parameters.  This surfaces headless/test instantiations that silently
+        // skip all MPE UI, making the omission visible in the debug console.
+        if (apvts.getParameter("mpe_enabled") == nullptr)
+        {
+            DBG("[SettingsPanel] APVTS does not contain 'mpe_enabled'. "
+                "MPE section will display a placeholder. "
+                "Register mpe_* parameters in createParameterLayout() to enable MPE UI.");
+        }
+
         // mpe_enabled — AudioParameterBool → ButtonAttachment
         if (apvts.getParameter("mpe_enabled") != nullptr)
         {
