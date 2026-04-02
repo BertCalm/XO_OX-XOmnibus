@@ -184,7 +184,8 @@ public:
         }
 
         buf = applyChain (buf, dryBuf, workingSR, profile,
-                          settings.intensity, velocityNorm, analysis, rng,
+                          settings.intensity, settings.chaosAmount,
+                          velocityNorm, analysis, rng,
                           [&reportProgress] (float chainFrac) {
                               reportProgress (0.25f + chainFrac * 0.55f);
                           });
@@ -497,6 +498,7 @@ private:
                                          double                           sampleRate,
                                          const RebirthProfile&            profile,
                                          float                            intensity,
+                                         float                            chaosAmount,
                                          float                            velocityNorm,
                                          const AnalysisResult&            analysis,
                                          juce::Random&                    rng,
@@ -690,8 +692,8 @@ private:
                     // profile-defined burst level.  Each +1.0 of chaosAmount lifts the
                     // burst by up to +12 dB and extends burst length by up to +20 ms,
                     // creating audible textural variation that scales with user intent.
-                    const float chaosBurstDb  = settings.chaosAmount * 12.0f;   // 0 → +12 dB
-                    const float chaosLengthMs = settings.chaosAmount * 20.0f;   // 0 → +20 ms
+                    const float chaosBurstDb  = chaosAmount * 12.0f;   // 0 → +12 dB
+                    const float chaosLengthMs = chaosAmount * 20.0f;   // 0 → +20 ms
 
                     float finalBurstDb = (burstLevelDb < 0.0f ? burstLevelDb : -24.0f)
                                         + chaosBurstDb;
@@ -838,40 +840,117 @@ private:
                 //--------------------------------------------------------------
                 case RebirthDSPModuleID::LFOModulator:
                 {
-                    // Phase 1B: LFO modulation is noted as a TODO in the spec.
-                    // Implementation-lite: apply a slow sinusoidal AM on the buffer
-                    // to produce the desired subtle movement.  Deep per-module LFO
-                    // parameter routing (FormantResonator centre-freq, AllpassDiffuser
-                    // delay time) is deferred to Phase 1C (CHAOS + advanced controls).
-                    //
-                    // FUTURE(Phase 1C): Route LFO output to target module parameters
-                    // based on cfg.params["target"]:
-                    //   0.0 = FormantResonator centre frequencies (±depth Hz)
-                    //   1.0 = AllpassDiffuser delay times (±depth ms)
-                    //
-                    // Phase 1B approximation: gentle tremolo AM to create perceptible
-                    // movement without parameter routing infrastructure.
-                    float rate  = resolveVelocityParam (cfg, "rate",  velocityNorm);
-                    float depth = resolveVelocityParam (cfg, "depth", velocityNorm);
+                    // Per-destination LFO routing (#178).
+                    // cfg.params["target"] selects the destination:
+                    //   0.0 = Filter sweep — modulate AllpassDiffuser feedback (filter-sweep effect)
+                    //   1.0 = Pitch mod   — Doppler-style read-pointer modulation (subtle pitch vibrato)
+                    //   2.0 = Pan sweep   — L/R amplitude differential (circular pan sweep)
+                    // Default (no "target" key) — backward-compatible tremolo AM.
+                    float rate   = resolveVelocityParam (cfg, "rate",  velocityNorm);
+                    float depth  = resolveVelocityParam (cfg, "depth", velocityNorm);
+                    float target = -1.0f;   // sentinel = no target key
+                    {
+                        auto it = cfg.params.find ("target");
+                        if (it != cfg.params.end()) target = it->second;
+                    }
 
                     if (rate  <= 0.0f) rate  = 0.3f;
                     if (depth <= 0.0f) depth = 1.0f;
 
-                    // Normalise depth to a fractional AM depth (0 = no modulation,
-                    // 1 = ±100% — we scale so max depth ≈ ±20% AM)
-                    float amDepth = juce::jlimit (0.0f, 0.2f, depth / 250.0f);
-                    float phaseInc = 2.0f * juce::MathConstants<float>::pi
-                                   * rate / (float) sampleRate;
-                    float phase = 0.0f;
+                    const float twoPi    = juce::MathConstants<float>::twoPi;
+                    const float phaseInc = twoPi * rate / (float) sampleRate;
 
-                    for (int i = 0; i < numSamps; ++i)
+                    if (target >= 0.0f && target < 0.5f)
                     {
-                        float lfoVal = 1.0f + amDepth * std::sin (phase);
-                        L[i] *= lfoVal;
-                        R[i] *= lfoVal;
-                        phase += phaseInc;
-                        if (phase > juce::MathConstants<float>::twoPi)
-                            phase -= juce::MathConstants<float>::twoPi;
+                        // ── target 0.0: Filter sweep ─────────────────────────────────
+                        // Modulate AllpassDiffuser feedback across a ±gSwing range centred
+                        // on 0.6.  Coefficients are updated every 64 samples to avoid
+                        // per-sample buffer reallocations.  Achieves a rich chorusing /
+                        // filter-sweep effect suitable for OVERWASH and OPERA profiles.
+                        float gSwing = juce::jlimit (0.0f, 0.25f, depth / 250.0f);
+                        constexpr int kSub = 64;
+                        float phase = 0.0f;
+
+                        for (int off = 0; off < numSamps; off += kSub)
+                        {
+                            int   block  = std::min (kSub, numSamps - off);
+                            float midPhase = phase + phaseInc * (float) (off + block / 2);
+                            float lfoVal   = std::sin (midPhase);
+                            float g = juce::jlimit (-0.9f, 0.9f, 0.6f + gSwing * lfoVal);
+                            allpassDiffuser.setFeedbackAll (g);
+                            allpassDiffuser.processBlock (L + off, R + off, block);
+                        }
+                    }
+                    else if (target >= 0.5f && target < 1.5f)
+                    {
+                        // ── target 1.0: Pitch mod ────────────────────────────────────
+                        // Accumulate LFO into a circular read-pointer over a 256-sample
+                        // buffer.  Max pitch deviation ≈ ±(depth/250) semitones.
+                        // Reads with linear interpolation; result blended 30% in to keep
+                        // the effect subtle and prevent phase cancellation artefacts.
+                        constexpr int kPitchBufSize = 256;
+                        // Use static thread_local so the pipeline worker thread keeps
+                        // its own state but no heap allocation happens here.
+                        static thread_local float pitchBuf[kPitchBufSize] = {};
+                        static thread_local int   pitchWritePos = 0;
+
+                        float semitoneSwing = juce::jlimit (0.0f, 2.0f, depth / 250.0f);
+                        float maxRateOffset = (std::pow (2.0f, semitoneSwing / 12.0f) - 1.0f);
+                        float phase   = 0.0f;
+                        float readPtr = static_cast<float> (pitchWritePos);
+
+                        for (int i = 0; i < numSamps; ++i)
+                        {
+                            pitchBuf[pitchWritePos] = (L[i] + R[i]) * 0.5f;
+                            pitchWritePos = (pitchWritePos + 1) % kPitchBufSize;
+
+                            float lfoVal  = std::sin (phase);
+                            float rateOff = 1.0f + maxRateOffset * lfoVal;
+
+                            int   ri0    = static_cast<int> (readPtr) % kPitchBufSize;
+                            int   ri1    = (ri0 + 1) % kPitchBufSize;
+                            float frac   = readPtr - std::floor (readPtr);
+                            float interp = pitchBuf[ri0] * (1.0f - frac) + pitchBuf[ri1] * frac;
+
+                            // 30% blend keeps the pitch vibrato subtle
+                            L[i] = L[i] * 0.7f + interp * 0.3f;
+                            R[i] = R[i] * 0.7f + interp * 0.3f;
+
+                            readPtr  = std::fmod (readPtr + rateOff, static_cast<float> (kPitchBufSize));
+                            phase   += phaseInc;
+                            if (phase > twoPi) phase -= twoPi;
+                        }
+                    }
+                    else if (target >= 1.5f && target < 2.5f)
+                    {
+                        // ── target 2.0: Pan sweep ────────────────────────────────────
+                        // Sinusoidal L/R amplitude differential for smooth circular pan.
+                        float panDepth = juce::jlimit (0.0f, 0.5f, depth / 250.0f);
+                        float phase    = 0.0f;
+
+                        for (int i = 0; i < numSamps; ++i)
+                        {
+                            float panPos = panDepth * std::sin (phase);
+                            L[i] *= (1.0f - panPos);
+                            R[i] *= (1.0f + panPos);
+                            phase += phaseInc;
+                            if (phase > twoPi) phase -= twoPi;
+                        }
+                    }
+                    else
+                    {
+                        // ── Backward-compatible tremolo AM (no target key) ────────────
+                        float amDepth = juce::jlimit (0.0f, 0.2f, depth / 250.0f);
+                        float phase   = 0.0f;
+
+                        for (int i = 0; i < numSamps; ++i)
+                        {
+                            float lfoVal = 1.0f + amDepth * std::sin (phase);
+                            L[i] *= lfoVal;
+                            R[i] *= lfoVal;
+                            phase += phaseInc;
+                            if (phase > twoPi) phase -= twoPi;
+                        }
                     }
                     break;
                 }
