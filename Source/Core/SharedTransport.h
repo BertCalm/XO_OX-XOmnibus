@@ -40,9 +40,9 @@ public:
         barPosition.store (0.0);
         timeSigNumerator.store (4);
         timeSigDenominator.store (4);
-        samplesPerBeat.store (44100.0 / 2.0); // 120 BPM at 44.1 kHz
+        samplesPerBeat.store (0.0); // computed on first processBlock once sr is known
         syncMode.store (SyncMode::Auto);
-        cachedSampleRate.store (44100.0);
+        cachedSampleRate.store (0.0); // set in processBlock; 0 until prepare is called
     }
 
     //==========================================================================
@@ -53,6 +53,7 @@ public:
     void processBlock (int numSamples, double sampleRate,
                        const juce::AudioPlayHead::PositionInfo* hostPosition)
     {
+        if (sampleRate <= 0.0) return;
         cachedSampleRate.store (sampleRate, std::memory_order_release);
 
         const auto mode = syncMode.load (std::memory_order_acquire);
@@ -246,12 +247,12 @@ private:
     std::atomic<double> barPosition    { 0.0 };
     std::atomic<int>    timeSigNumerator   { 4 };
     std::atomic<int>    timeSigDenominator { 4 };
-    std::atomic<double> samplesPerBeat { 22050.0 }; // 120 BPM @ 44100 Hz
+    std::atomic<double> samplesPerBeat { 0.0 }; // computed on first processBlock once sr is known
 
     std::atomic<SyncMode> syncMode { SyncMode::Auto };
 
     // Atomic — written on audio thread in processBlock(), read by setBPM() on message thread.
-    std::atomic<double> cachedSampleRate { 44100.0 };
+    std::atomic<double> cachedSampleRate { 0.0 }; // 0 until processBlock is called with a valid sr
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SharedTransport)
 };

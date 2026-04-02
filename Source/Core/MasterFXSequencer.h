@@ -130,6 +130,11 @@ public:
     /// @param inputRMS     RMS level of the input signal (for envelope follower)
     void updateBlock (double ppqPosition, double bpm, int numSamples, float inputRMS)
     {
+        if (sr <= 0.0)
+        {
+            modValue1 = modValue2 = smoothedMod1 = smoothedMod2 = 0.0f;
+            return;
+        }
         if (!enabled)
         {
             modValue1 = 0.0f;
@@ -341,7 +346,7 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kMaxSteps = 16;
 
-    double sr = 44100.0;
+    double sr = 0.0;
 
     // State
     int currentStep = 0;
