@@ -399,7 +399,7 @@ public:
                 }
 
                 // Terroir: regional circuit flavor as tonal bias (D004 fix — all 4 regions active).
-                // 0.0=West Coast cool, 0.33=East Coast grit, 0.66=UK mid-forward, 1.0=Japanese transparent.
+                // 0.0=West Coast cool, 0.4=UK mid-forward, 0.7=East Coast grit, 0.98=Japanese transparent.
                 if (pTerroir > 0.01f && pTerroir < 0.4f)
                 {
                     // West Coast (Capitol, Western Recorders): darker, cooler top end
