@@ -57,7 +57,10 @@ public:
         couplingAmpToFilterMod_  = 0.0f;
         couplingAmpToPitchMod_   = 0.0f;
         couplingAudioToFMMod_    = 0.0f;
-        couplingTriangularMod_   = 0.0f;
+        couplingIntimacyMod_     = 0.0f;
+        couplingPassionMod_      = 0.0f;
+        couplingCommitmentMod_   = 0.0f;
+        lastLoveState_           = {};
     }
 
     //-- Audio -------------------------------------------------------------------
@@ -104,12 +107,17 @@ public:
                 snap_.entanglement = std::clamp (snap_.entanglement + couplingAudioToFMMod_ * 0.4f,
                                                  0.0f, 1.0f);
 
-            // TriangularCoupling (#15) → modulate I/P/C from source engine's love triangle
-            if (couplingTriangularMod_ != 0.0f)
+            // TriangularCoupling (#15) → modulate I/P/C independently from source
+            // engine's actual love-triangle state (fixes #420: semantic mismatch).
+            // couplingIntimacyMod_/PassionMod_/CommitmentMod_ are populated by
+            // applyTriangularCouplingInput(), which receives the source's real I/P/C
+            // values from MegaCouplingMatrix rather than a generic RMS signal.
+            if (couplingIntimacyMod_ != 0.0f || couplingPassionMod_ != 0.0f
+                || couplingCommitmentMod_ != 0.0f)
             {
-                snap_.intimacy   = std::clamp (snap_.intimacy   + couplingTriangularMod_ * 0.3f, 0.0f, 1.0f);
-                snap_.passion    = std::clamp (snap_.passion    + couplingTriangularMod_ * 0.2f, 0.0f, 1.0f);
-                snap_.commitment = std::clamp (snap_.commitment + couplingTriangularMod_ * 0.15f, 0.0f, 1.0f);
+                snap_.intimacy   = std::clamp (snap_.intimacy   + couplingIntimacyMod_,   0.0f, 1.0f);
+                snap_.passion    = std::clamp (snap_.passion    + couplingPassionMod_,     0.0f, 1.0f);
+                snap_.commitment = std::clamp (snap_.commitment + couplingCommitmentMod_,  0.0f, 1.0f);
             }
         }
 
@@ -131,11 +139,18 @@ public:
 
         analyzeForSilenceGate (buffer, numSamples);
 
+        // Cache current love-triangle state for getLoveTriangleState() reads.
+        // Stored after renderBlock so any engine routing TriangularCoupling FROM
+        // Oxytocin receives this block's effective I/P/C values next block.
+        lastLoveState_ = { snap_.intimacy, snap_.passion, snap_.commitment };
+
         // Reset per-block coupling accumulators
         couplingAmpToFilterMod_  = 0.0f;
         couplingAmpToPitchMod_   = 0.0f;
         couplingAudioToFMMod_    = 0.0f;
-        couplingTriangularMod_   = 0.0f;
+        couplingIntimacyMod_     = 0.0f;
+        couplingPassionMod_      = 0.0f;
+        couplingCommitmentMod_   = 0.0f;
     }
 
     //-- Coupling ----------------------------------------------------------------
@@ -174,20 +189,47 @@ public:
                 break;
 
             case CouplingType::KnotTopology:
-                // KnotTopology (#14): bidirectional entanglement — also bleeds triangle state
-                couplingTriangularMod_ += rms * amount;
+                // KnotTopology (#14): bidirectional entanglement — treated as AmpToFilter
+                // (processKnotRoute already dispatches as AmpToFilter, but in case a
+                // direct call arrives, map it to filter modulation).
+                couplingAmpToFilterMod_ += rms * amount;
                 break;
 
-            case CouplingType::TriangularCoupling:
-                // TriangularCoupling (#15): source love-triangle state bleeds into this engine.
-                // I/P/C values from the source modulate this engine's corresponding components.
-                couplingTriangularMod_ += rms * amount;
-                break;
+            // TriangularCoupling (#15) is NOT handled here — it is routed through
+            // applyTriangularCouplingInput() which carries separate I/P/C values.
+            // The MegaCouplingMatrix calls applyTriangularCouplingInput() directly
+            // for TriangularCoupling routes, bypassing applyCouplingInput() entirely.
 
             default:
                 // Other coupling types accepted but not yet mapped — expand as needed.
                 break;
         }
+    }
+
+    // TriangularCoupling source accessor (fixes #420).
+    // Returns the effective I/P/C values from the most recently rendered block.
+    // The MegaCouplingMatrix calls this on Oxytocin when it is the SOURCE of a
+    // TriangularCoupling route, then forwards the state to the destination engine.
+    LoveTriangleState getLoveTriangleState() const override
+    {
+        return lastLoveState_;
+    }
+
+    // TriangularCoupling destination handler (fixes #420 + #434).
+    // Receives per-component I/P/C modulation from the source engine's love-triangle
+    // state, rather than a generic RMS scalar.  Each component modulates its
+    // corresponding Oxytocin love parameter independently.
+    //
+    // Scaling factors:
+    //   Intimacy  × 0.3  — slow-building warmth; large coefficient for warmth accumulation
+    //   Passion   × 0.2  — transient excitement; moderate coefficient
+    //   Commitment× 0.15 — stable baseline; smallest coefficient to avoid parameter lock-up
+    void applyTriangularCouplingInput (LoveTriangleState state, float amount) override
+    {
+        if (std::abs (amount) < 0.001f) return;
+        couplingIntimacyMod_   += state.I * amount * 0.3f;
+        couplingPassionMod_    += state.P * amount * 0.2f;
+        couplingCommitmentMod_ += state.C * amount * 0.15f;
     }
 
     //-- Parameters --------------------------------------------------------------
@@ -336,7 +378,14 @@ private:
     float couplingAmpToFilterMod_ = 0.0f;
     float couplingAmpToPitchMod_  = 0.0f;
     float couplingAudioToFMMod_   = 0.0f;
-    float couplingTriangularMod_  = 0.0f;
+    // TriangularCoupling (#15) — per-component modulators (replaces scalar couplingTriangularMod_).
+    // Populated by applyTriangularCouplingInput(); consumed and reset in renderBlock().
+    float couplingIntimacyMod_    = 0.0f;
+    float couplingPassionMod_     = 0.0f;
+    float couplingCommitmentMod_  = 0.0f;
+    // Last rendered block's effective love-triangle state, exposed via getLoveTriangleState()
+    // so that downstream TriangularCoupling routes receive real I/P/C values.
+    LoveTriangleState lastLoveState_ {};
 
     std::atomic<int> activeVoiceCount_ { 0 };
 };

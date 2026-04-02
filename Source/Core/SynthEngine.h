@@ -100,6 +100,41 @@ public:
                                    const float* sourceBuffer,
                                    int numSamples) = 0;
 
+    // Love-triangle state (Sternberg Triangular Theory) for TriangularCoupling.
+    //
+    // Engines that implement love-triangle DSP (currently only XOxytocin) override
+    // this to expose their per-block effective I/P/C values.  The MegaCouplingMatrix
+    // calls this on the SOURCE engine when routing a TriangularCoupling connection,
+    // then passes the result to applyTriangularCouplingInput() on the destination.
+    //
+    // Default: returns {0, 0, 0} so that non-Oxytocin sources produce silence on
+    // the love-triangle channel — which is semantically correct (a drum machine has
+    // no intimacy state to bleed).
+    struct LoveTriangleState { float I = 0.0f; float P = 0.0f; float C = 0.0f; };
+    virtual LoveTriangleState getLoveTriangleState() const { return {}; }
+
+    // Receive a TriangularCoupling input carrying separate I/P/C values from the
+    // source engine.  Engines that understand love-triangle DSP (XOxytocin) override
+    // this to route I → intimacy, P → passion, C → commitment modulators.
+    //
+    // Default implementation maps the coupling to AmpToFilter semantics using the
+    // mean of (I + P + C) / 3, so every engine produces *some* audible response
+    // rather than silently ignoring the route (fixes #434).
+    //
+    // amount is the route's amount scalar (0.0–1.0).
+    virtual void applyTriangularCouplingInput(LoveTriangleState state, float amount)
+    {
+        // Generic fallback: treat mean love-triangle energy as an amplitude signal
+        // and forward it to this engine's AmpToFilter handler via a single-sample
+        // source buffer, mimicking the established block-rate modulation contract.
+        const float mean = (state.I + state.P + state.C) / 3.0f;
+        const float scaled = mean * amount;
+        // Re-enter applyCouplingInput with AmpToFilter and a 1-sample buffer.
+        // This delegates to the engine's own AmpToFilter implementation without
+        // requiring any per-engine changes.
+        applyCouplingInput(CouplingType::AmpToFilter, 1.0f, &scaled, 1);
+    }
+
     //-- Parameters ------------------------------------------------------------
 
     // Return the engine's parameter layout with namespaced IDs.

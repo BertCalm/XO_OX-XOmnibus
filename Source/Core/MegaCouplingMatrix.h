@@ -109,7 +109,8 @@ public:
     //
     // Only audio-rate types can cause within-block feedback loops:
     //   AudioToFM, AudioToRing, AudioToBuffer, AudioToWavetable.
-    //   TriangularCoupling is also audio-rate for the same reason.
+    //   TriangularCoupling is block-rate (applyTriangularCouplingInput path) and
+    //   therefore cannot create within-block feedback loops; it is excluded.
     //
     // Control-rate types (AmpToFilter, AmpToPitch, LFOToPitch, EnvToMorph,
     // EnvToDecay, PitchToPitch, FilterToFilter, AmpToChoke, RhythmToBlend)
@@ -257,24 +258,30 @@ public:
                 continue;
             }
 
-            // TriangularCoupling (#15) semantic note (#419):
-            // At the matrix level, TriangularCoupling is processed as a generic
-            // audio-rate signal (stereo-to-mono mixdown → applyCouplingInput).
-            // The 3-band Sternberg semantics (Intimacy/Passion/Commitment) are
-            // implemented inside OxytocinAdapter::applyCouplingInput(), which maps
-            // the incoming RMS to all three love components with per-component
-            // scaling (×0.3 / ×0.2 / ×0.15). This is correct V1 behaviour:
-            // the matrix is transport-agnostic; semantics live in the receiver.
-            // Future engines may decode the RMS into band-specific signals if
-            // needed — OxytocinEngine exposes the encoded bands via channel
-            // offsets (bandA=ch0 intimacy, bandB=ch1 passion, bandC=ch2 commitment,
-            // bandD=ch3 memory) in getSampleForCoupling(). Closes #419.
+            // TriangularCoupling (#15) semantic path (fixes #420 + #434):
+            // Extract the source engine's love-triangle state (I/P/C) via
+            // getLoveTriangleState().  For Oxytocin sources this returns the
+            // actual effective Intimacy/Passion/Commitment values; for all other
+            // engines it returns {0,0,0} (a drum machine has no love state).
+            //
+            // The state is delivered to the destination via applyTriangularCouplingInput()
+            // rather than the generic applyCouplingInput() path.  This bypasses the
+            // RMS-only encoding used by the old audio-rate path (fixed #420) and
+            // ensures every destination engine receives a meaningful signal via the
+            // default AmpToFilter fallback in SynthEngine::applyTriangularCouplingInput()
+            // rather than silently dropping the route (fixed #434).
+            if (route.type == CouplingType::TriangularCoupling)
+            {
+                SynthEngine::LoveTriangleState state = source->getLoveTriangleState();
+                dest->applyTriangularCouplingInput(state, route.amount);
+                continue;
+            }
+
             const bool isAudioRoute =
                 route.type == CouplingType::AudioToWavetable
              || route.type == CouplingType::AudioToFM
              || route.type == CouplingType::AudioToRing
-             || route.type == CouplingType::AudioToBuffer
-             || route.type == CouplingType::TriangularCoupling;
+             || route.type == CouplingType::AudioToBuffer;
 
             // AudioToBuffer routes bypass the mono mixdown — they require true
             // stereo and write directly into the destination's AudioRingBuffer.
@@ -437,13 +444,14 @@ private:
     // therefore create within-block feedback loops when cycles exist.
     // KnotTopology is intentionally excluded — it is bidirectional by design
     // and energy-preserving; blocking it would destroy valid patches.
+    // TriangularCoupling is now block-rate (routed via applyTriangularCouplingInput,
+    // not via the audio-sample buffer path), so it is excluded here.
     static bool isAudioRateType(CouplingType type) noexcept
     {
         return type == CouplingType::AudioToFM
             || type == CouplingType::AudioToRing
             || type == CouplingType::AudioToBuffer
-            || type == CouplingType::AudioToWavetable
-            || type == CouplingType::TriangularCoupling;
+            || type == CouplingType::AudioToWavetable;
     }
 
     // DFS reachability check over the current audio-rate route graph.
