@@ -26,7 +26,7 @@ struct OhmObedFM {
     static constexpr float kRatios[8][2] = {
         {1,1},{3,2},{5,4},{2,1},{5,3},{7,4},{9,5},{11,6}
     };
-    float phase=0, modPhase=0, envLevel=0, sr=44100;
+    float phase=0, modPhase=0, envLevel=0, sr=0;
     void prepare(double s){sr=(float)s;} void reset(){phase=modPhase=envLevel=0;}
     void trigger(){envLevel=1.0f;}
     float tick(float freq, int ratio, float index, float attack, float decay){
@@ -48,7 +48,7 @@ constexpr float OhmObedFM::kRatios[8][2];
 
 // Theremin interference
 struct OhmInLaw {
-    float phase=0, wobPhase=0, sr=44100;
+    float phase=0, wobPhase=0, sr=0;
     void prepare(double s){sr=(float)s;} void reset(){phase=wobPhase=0;}
     float tick(float freq, float scale, float wobble){
         wobPhase+=0.3f/sr; if(wobPhase>=1)wobPhase-=1;
@@ -60,7 +60,7 @@ struct OhmInLaw {
 
 // Glass harmonica partial generator
 struct OhmGlassPartial {
-    float phase=0, sr=44100;
+    float phase=0, sr=0;
     void prepare(double s){sr=(float)s;} void reset(){phase=0;}
     float tick(float freq, float brightness){
         // Higher brightness = higher partials emphasized
@@ -84,7 +84,7 @@ struct OhmSpectralFreeze {
 
 // Granular scatter for in-law interference
 struct OhmGrainEngine {
-    float grainPhase = 0, grainEnv = 0, grainFreq = 440, sr = 44100;
+    float grainPhase = 0, grainEnv = 0, grainFreq = 440, sr = 0;
     float scatterPhase = 0;
     int grainCounter = 0, grainLen = 0;
     uint32_t seed = 33333u;
@@ -123,7 +123,7 @@ struct OhmGrainEngine {
 struct OhmDelay {
     std::vector<float> bufL, bufR;
     int writePos = 0, maxLen = 0;
-    float sr = 44100;
+    float sr = 0;
 
     void prepare(double sampleRate, int maxSamples) {
         sr = (float)sampleRate;
@@ -223,7 +223,7 @@ struct OhmAdapterVoice {
     FamilySympatheticBank symp; FamilyOrganicDrift drift;
     PickExciter pick; BowExciter bow; OhmObedFM obed; OhmInLaw inlaw;
     OhmGlassPartial glass; OhmSpectralFreeze specFreeze; OhmGrainEngine grain;
-    float lastOut=0, sr=44100;
+    float lastOut=0, sr=0;
 
     // Voice-steal crossfade (5 ms linear fade-out before new note starts)
     float stealFadeGain = 1.0f;
@@ -630,7 +630,7 @@ public:
 private:
     SilenceGate silenceGate;
     static constexpr int kVoices=12;
-    double sr=44100;
+    double sr=0;
     std::array<OhmAdapterVoice,kVoices> voices;
     int nextV=0; // activeCount promoted to base class activeVoiceCount_
     float lastSampleL=0, lastSampleR=0;

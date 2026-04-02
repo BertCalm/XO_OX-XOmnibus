@@ -241,7 +241,7 @@ private:
     }
 
     std::array<FormantFilter, kNumFormants> formants;
-    float    sr             = 44100.0f;
+    float    sr             = 0.0f;
     float    callEnvSample  = -1.0f;   // -1 = idle; >=0 = position in current call
     float    callTimer      = 0.0f;
     uint32_t noiseSeed      = 0xDEADBEEF;

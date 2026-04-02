@@ -220,7 +220,7 @@ public:
 private:
     static constexpr float kPi = 3.14159265358979323846f;
 
-    double sr = 44100.0;
+    double sr = 0.0;
     std::array<float, kBufferSize> chopBuffer{};
     int   writeHead      = 0;
     float readHead       = 0.0f;

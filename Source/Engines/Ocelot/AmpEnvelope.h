@@ -81,7 +81,7 @@ public:
     float getLevel() const  { return level; }
 
 private:
-    double sr          = 44100.0;
+    double sr          = 0.0;
     State  state       = State::Idle;
     float  level       = 0.0f;
     float  attackTime  = 10.0f;

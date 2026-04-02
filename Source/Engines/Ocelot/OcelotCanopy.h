@@ -162,7 +162,7 @@ public:
     float getLastSpectral() const   { return lastSpectral; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     std::array<float, kMaxPartials> partialPhases;
     std::array<float, 4096> shimmerBuffer; // ~93ms at 44.1k
     float shimmerReadHead   = 0.0f;

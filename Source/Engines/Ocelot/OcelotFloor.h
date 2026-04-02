@@ -164,7 +164,7 @@ private:
     //  State (pre-allocated for ALL 6 models -- no audio-thread allocation)
     // ====================================================================
 
-    float sr = 44100.0f;
+    float sr = 0.0f;
     bool active = false;
     float amplitude = 0.0f;
     float lastAmplitude = 0.0f;

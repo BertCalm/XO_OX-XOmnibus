@@ -258,7 +258,7 @@ private:
     std::array<float, kMaxBlockSize> emergentL, emergentR;
 
     // ── State ──────────────────────────────────────────────────────────
-    double sr           = 44100.0;
+    double sr           = 0.0;
     bool   active       = false;
     int    noteNumber   = -1;
     float  velocity     = 0.0f;    // D001: stored at noteOn for filter env computation

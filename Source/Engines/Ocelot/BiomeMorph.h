@@ -117,8 +117,8 @@ public:
     bool isTransitioning() const    { return active; }
 
 private:
-    double sr = 44100.0;
-    int crossfadeSamples = 8820; // 200ms at 44.1k
+    double sr = 0.0;
+    int crossfadeSamples = 8820; // 200ms at 44.1k — updated in prepare()
     int crossfadePos     = 0;
     bool active          = false;
 

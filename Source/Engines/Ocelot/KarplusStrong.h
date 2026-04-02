@@ -80,7 +80,7 @@ struct KarplusStrong
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f;
     std::array<float, kMaxDelay> delay{};
     int writePos = 0;
     float periodF = 100.0f;

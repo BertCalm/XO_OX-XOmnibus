@@ -188,7 +188,7 @@ public:
     double getPhaseInc() const noexcept { return basePhaseInc; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     double phase = 0.0;
     double basePhaseInc = 0.0;
     int wave = 0;
@@ -370,7 +370,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     double phase = 0.0;
     double phaseInc = 0.0;
     double baseFreq = 440.0;
@@ -422,7 +422,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     double phase = 0.0;
     double phaseInc = 0.0;
 };
@@ -487,7 +487,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     double phase = 0.0;
     double phaseInc = 0.0;
     int shape = 0;
@@ -580,8 +580,8 @@ public:
     }
 
 private:
-    double sr = 44100.0;
-    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
+    double sr = 0.0;
+    float invSR = 0.0f;  // set by prepare()
     float pinkState[3] = {};
     float brownState = 0.0f;
     float hissState = 0.0f;
@@ -820,7 +820,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f;
     std::vector<float> bufL, bufR;
     int writePos = 0;
     float lfoPhase = 0.0f;
@@ -907,7 +907,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f;
     std::vector<float> bufL, bufR;
     int writePos = 0;
     float filterStateL = 0.0f, filterStateR = 0.0f;
@@ -995,7 +995,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f;
     std::vector<float> combBuf[kNumCombs];
     int combLen[kNumCombs]  = { 1557, 1617, 1491, 1422 };
     int combPos[kNumCombs]  = {};
@@ -1079,8 +1079,8 @@ public:
     }
 
 private:
-    double sr = 44100.0;
-    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
+    double sr = 0.0;
+    float invSR = 0.0f;  // set by prepare()
     float phase = 0.0f;
     float rate = 1.0f;
     int shape = 0;
@@ -2936,8 +2936,8 @@ private:
     // Voice allocation delegated to VoiceAllocator::findFreeVoice() — called in noteOn().
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;
+    float srf = 0.0f;
     std::array<BiteVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;  // Monotonic counter for VoiceAllocator LRU stealing
 

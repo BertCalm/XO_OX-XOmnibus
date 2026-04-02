@@ -133,7 +133,7 @@ public:
     }
 
 private:
-    double lastSampleRate = 44100.0;
+    double lastSampleRate = 0.0;
     std::array<OcelotVoice, kMaxVoices> voices;
 };
 

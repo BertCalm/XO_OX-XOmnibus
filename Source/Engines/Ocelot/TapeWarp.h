@@ -61,7 +61,7 @@ struct TapeWarp
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f;
     std::array<float, kDelaySize> delay{};
     int writePos = 0;
     float lfoPhase = 0.0f;

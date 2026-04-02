@@ -208,7 +208,7 @@ private:
     xolokun::PolyAftertouch aftertouch;
     std::vector<float> outputCacheL, outputCacheR;
     juce::AudioProcessorValueTreeState* apvtsRef = nullptr;
-    double sr = 44100.0;
+    double sr = 0.0;
     int maxBlock = 512;
 
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
