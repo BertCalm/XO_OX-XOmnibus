@@ -82,8 +82,16 @@ public:
         addAndMakeVisible(countLabel);
 
         updateFilter();
+        // #194: preferred initial size; layout is responsive and will reflow
+        // correctly at any width ≥ kMinWidth via resized().
         setSize(380, 340);
     }
+
+    //==========================================================================
+    // Minimum size constants — callers (e.g. SidebarPanel) can read these to
+    // enforce a floor and prevent clipping of the search row or mood pills.
+    static constexpr int kMinWidth  = 280;
+    static constexpr int kMinHeight = 240;
 
     // juce::ListBoxModel interface
     int getNumRows() override { return (int)filtered.size(); }
