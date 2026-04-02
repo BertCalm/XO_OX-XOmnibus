@@ -697,7 +697,20 @@ final class AudioEngineManager: ObservableObject {
         do {
             // Start with playback — switch to playAndRecord when mic is needed (catch)
             try session.setCategory(.playback)
-            try session.setPreferredIOBufferDuration(0.005) // 5ms = 256 samples at 48kHz
+            // 11.6 ms ≈ 512 samples @ 44100 Hz (was 5 ms / 256 samples).
+            // 5 ms is too aggressive for older devices (iPhone X, iPad 6th gen) running
+            // complex coupling patches — it causes buffer underruns.  11.6 ms is the
+            // standard "safe" buffer size that avoids dropouts on all supported hardware.
+            // The user can override via "audio.bufferSize" in AudioSettingsView:
+            //   0 = 11.6 ms (default, ~512 samples), 1 = 5.8 ms (~256), 2 = 23.2 ms (~1024)
+            let bufferSizeIndex = UserDefaults.standard.integer(forKey: "audio.bufferSize")
+            let preferredBufferDuration: TimeInterval
+            switch bufferSizeIndex {
+            case 1:  preferredBufferDuration = 0.0058  // ~256 samples — low-latency, higher risk
+            case 2:  preferredBufferDuration = 0.0232  // ~1024 samples — safe on all hardware
+            default: preferredBufferDuration = 0.0116  // ~512 samples — recommended default
+            }
+            try session.setPreferredIOBufferDuration(preferredBufferDuration)
             let preferredRate: Double = UserDefaults.standard.integer(forKey: "audio.sampleRate") == 1 ? 48000.0 : 44100.0
             try session.setPreferredSampleRate(preferredRate)
             // setActive(true) is deferred to start() — called just before JUCE bridge starts

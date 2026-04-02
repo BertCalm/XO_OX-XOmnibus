@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <cstring>
 #include <vector>
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
 //  OCEANDEEP ENGINE — Abyssal Bass Synthesizer
-//  XOlokun Engine Module | Accent: Trench Violet #2D0A4E
+//  XOceanus Engine Module | Accent: Trench Violet #2D0A4E
 //
 //  Creature: Anglerfish / Gulper Eel — bottom-of-the-water-column predator
 //  Habitat:  THE HADAL ZONE — 6,000–11,000 m depth, perpetual darkness,
@@ -416,7 +416,7 @@ public:
     ~OceandeepEngine() = default;
 
     //--------------------------------------------------------------------------
-    // Static parameter registration (called by XOlokunProcessor)
+    // Static parameter registration (called by XOceanusProcessor)
     //--------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -1012,4 +1012,4 @@ private:
     std::atomic<float>* p_filterEnvAmt   = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

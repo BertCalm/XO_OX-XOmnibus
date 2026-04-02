@@ -12,14 +12,26 @@ struct AudioSettingsView: View {
     @AppStorage("audio.limiterEnabled")    private var limiterEnabled: Bool = true
     @AppStorage("audio.proMode")           private var proMode: Bool = false
     @AppStorage("audio.sampleRate")        private var sampleRateIndex: Int = 0   // 0=44.1k, 1=48k
+    /// IO buffer size preference.  0 = 11.6 ms (default), 1 = 5.8 ms (low-latency), 2 = 23.2 ms (safe).
+    @AppStorage("audio.bufferSize")        private var bufferSizeIndex: Int = 0
 
     // MARK: - UI State
 
     @State private var showSampleRateConfirm = false
     @State private var pendingSampleRateIndex: Int? = nil
+    @State private var showBufferSizeConfirm = false
+    @State private var pendingBufferSizeIndex: Int? = nil
 
     // Sample rate options
     private let sampleRates = ["44.1 kHz", "48 kHz"]
+
+    // Buffer size options (label, approximate latency description)
+    private let bufferSizeLabels = ["11.6 ms", "5.8 ms", "23.2 ms"]
+    private let bufferSizeDescriptions = [
+        "Recommended — stable on all devices",
+        "Low-latency — older devices may drop",
+        "Safest — highest latency"
+    ]
 
     var body: some View {
         ZStack {
