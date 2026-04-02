@@ -26,6 +26,11 @@ final class PerformanceMonitor {
     /// Audio buffer underrun counter (incremented by audio engine)
     var bufferUnderruns: Int = 0
 
+    /// Retained reference to the periodic monitoring timer.
+    /// Storing the reference allows it to be cancelled on demand (stopMonitoring / deinit)
+    /// and prevents the timer from firing indefinitely after the monitor is released.
+    private var monitoringTimer: Timer?
+
     /// Log current state (debug only)
     func logState() {
         #if DEBUG
@@ -34,12 +39,25 @@ final class PerformanceMonitor {
         #endif
     }
 
-    /// Start periodic monitoring (every 30 seconds)
+    /// Start periodic monitoring (every 30 seconds in debug builds).
+    /// Safe to call multiple times — stops any existing timer first.
     func startMonitoring() {
         #if DEBUG
-        Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+        stopMonitoring()
+        let timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
             self?.logState()
         }
+        monitoringTimer = timer
         #endif
+    }
+
+    /// Stop the periodic monitoring timer.
+    func stopMonitoring() {
+        monitoringTimer?.invalidate()
+        monitoringTimer = nil
+    }
+
+    deinit {
+        stopMonitoring()
     }
 }
