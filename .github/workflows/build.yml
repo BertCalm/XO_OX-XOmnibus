@@ -51,9 +51,13 @@ jobs:
         if: always()
         run: |
           echo "## Test Results" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          cat build/test_output.txt >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          if [ -f build/test_output.txt ]; then
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cat build/test_output.txt >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "_No test output file found — no tests were run or ctest did not produce output._" >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Verify AU component
         run: |
