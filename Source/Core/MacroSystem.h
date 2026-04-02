@@ -337,6 +337,114 @@ public:
     }
 
     //--------------------------------------------------------------------------
+    // Session state serialization — closes #313
+    //--------------------------------------------------------------------------
+
+    // Serialize current macro targets and labels to an XmlElement named "MacroTargets".
+    // Call from getStateInformation() to persist live macro wiring across DAW sessions.
+    //
+    // Format:
+    //   <MacroTargets>
+    //     <Macro index="0" label="CHARACTER">
+    //       <Target engineId="OddfeliX" parameterId="snap_morph" min="0" max="1"
+    //               inverted="0" coupling="0" routeSlot="-1"/>
+    //       ...
+    //     </Macro>
+    //     ...
+    //   </MacroTargets>
+    //
+    std::unique_ptr<juce::XmlElement> getState() const
+    {
+        auto root = std::make_unique<juce::XmlElement>("MacroTargets");
+
+        for (int m = 0; m < NumMacros; ++m)
+        {
+            auto* macroElem = root->createNewChildElement("Macro");
+            macroElem->setAttribute("index", m);
+            macroElem->setAttribute("label",  labels[static_cast<size_t>(m)]);
+
+            // Hold the lock briefly to snapshot targets on the message thread.
+            // getState() must only be called from the message thread
+            // (inside getStateInformation).
+            const auto& slot = macroSlots[static_cast<size_t>(m)];
+            juce::SpinLock::ScopedLockType lock(
+                const_cast<juce::SpinLock&>(slot.lock));
+
+            for (const auto& t : slot.targets)
+            {
+                auto* te = macroElem->createNewChildElement("Target");
+                te->setAttribute("engineId",   t.engineId);
+                te->setAttribute("parameterId", t.parameterId);
+                te->setAttribute("min",         static_cast<double>(t.minValue));
+                te->setAttribute("max",         static_cast<double>(t.maxValue));
+                te->setAttribute("inverted",    t.inverted ? 1 : 0);
+                te->setAttribute("coupling",    t.isCouplingTarget ? 1 : 0);
+                te->setAttribute("routeSlot",   t.couplingRouteSlot);
+            }
+        }
+
+        return root;
+    }
+
+    // Restore macro targets and labels from an XmlElement previously produced by
+    // getState(). Idempotent: missing/malformed data is silently skipped.
+    // Call from setStateInformation() after engines are loaded so that
+    // parameter pointers can be resolved in setTargets().
+    void setState(const juce::XmlElement* root)
+    {
+        if (root == nullptr || root->getTagName() != "MacroTargets")
+            return;
+
+        clearAllTargets();
+
+        for (auto* macroElem : root->getChildIterator())
+        {
+            if (macroElem->getTagName() != "Macro")
+                continue;
+
+            const int m = macroElem->getIntAttribute("index", -1);
+            if (!isValidIndex(m))
+                continue;
+
+            // Restore label
+            juce::String lbl = macroElem->getStringAttribute("label");
+            if (lbl.isNotEmpty())
+                labels[static_cast<size_t>(m)] = lbl;
+
+            // Collect targets
+            std::vector<MacroTarget> targets;
+            for (auto* te : macroElem->getChildIterator())
+            {
+                if (te->getTagName() != "Target")
+                    continue;
+
+                MacroTarget t;
+                t.engineId          = te->getStringAttribute("engineId");
+                t.parameterId       = te->getStringAttribute("parameterId");
+                t.minValue          = static_cast<float>(te->getDoubleAttribute("min", 0.0));
+                t.maxValue          = static_cast<float>(te->getDoubleAttribute("max", 1.0));
+                t.inverted          = te->getIntAttribute("inverted", 0) != 0;
+                t.isCouplingTarget  = te->getIntAttribute("coupling",  0) != 0;
+                t.couplingRouteSlot = te->getIntAttribute("routeSlot", -1);
+
+                // Basic validation before accepting
+                if (t.isCouplingTarget)
+                {
+                    if (isValidCouplingSlot(t.couplingRouteSlot))
+                        targets.push_back(std::move(t));
+                }
+                else if (t.parameterId.isNotEmpty())
+                {
+                    targets.push_back(std::move(t));
+                }
+            }
+
+            if (!targets.empty())
+                setTargets(m, std::move(targets));
+        }
+    }
+
+    //--------------------------------------------------------------------------
     // Preset loading
     //--------------------------------------------------------------------------
 

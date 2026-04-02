@@ -2259,6 +2259,13 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
         juce::String cmStateJson = juce::JSON::toString(chordMachine.serializeState());
         xml->setAttribute("chordMachineState", cmStateJson);
 
+        // FIX 7 — Save MacroSystem target wiring (closes #313).
+        // Macro targets are in-memory only; without this they vanish on reload.
+        // getState() serialises targets + labels to a child XmlElement so the
+        // existing XML tree owns the lifetime — no raw-pointer leaks.
+        if (auto macroElem = macroSystem_.getState())
+            xml->addChildElement(macroElem.release());
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -2343,6 +2350,12 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
                     xml->getStringAttribute("chordMachineState"));
                 chordMachine.restoreState(cmState);
             }
+
+            // FIX 7 — Restore MacroSystem target wiring (closes #313).
+            // Must run after engines are loaded (FIX 1 above) so that
+            // APVTS parameter pointers for engine params are valid when
+            // setTargets() caches them inside setState().
+            macroSystem_.setState(xml->getChildByName("MacroTargets"));
         }
 
         // FIX 5 — Restore MIDI learn mappings from the ValueTree child that
