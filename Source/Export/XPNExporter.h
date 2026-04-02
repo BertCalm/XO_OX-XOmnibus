@@ -1138,8 +1138,51 @@ private:
         if (!writer)
             return { false, "Cannot create WAV writer for: " + file.getFullPathName() };
 
-        if (!writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples()))
-            return { false, "Failed to write audio data: " + file.getFullPathName() };
+        // Fix #243: Apply TPDF (Triangular Probability Density Function) dither
+        // before quantization when writing 16-bit output. TPDF dither adds
+        // triangular noise of ±1 LSB peak-to-peak, formed as the sum of two
+        // independent uniform random values in [-0.5, +0.5) LSB. This converts
+        // quantization distortion (audible harmonic aliasing in quiet tails) into
+        // flat-spectrum white noise, which is perceptually far less objectionable.
+        // 1 LSB at 16-bit = 1 / 32768 ≈ 3.05e-5 in normalised float.
+        // 24-bit output does not need dither (quantization noise is inaudible).
+        if (bitDepth == 16)
+        {
+            const float lsb = 1.0f / 32768.0f;
+            juce::AudioBuffer<float> dithered (buffer.getNumChannels(), buffer.getNumSamples());
+
+            // Per-channel TPDF: two independent LCG values, differenced to form
+            // the triangle distribution. Separate state per channel keeps
+            // L and R uncorrelated (important for stereo imaging at low levels).
+            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            {
+                const float* src = buffer.getReadPointer (ch);
+                float* dst       = dithered.getWritePointer (ch);
+                uint32_t rng     = static_cast<uint32_t> (0x12345678u ^ (uint32_t)ch * 0xDEADBEEFu);
+
+                for (int i = 0; i < buffer.getNumSamples(); ++i)
+                {
+                    // LCG step 1
+                    rng = rng * 1664525u + 1013904223u;
+                    float r1 = (static_cast<float> (rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
+
+                    // LCG step 2
+                    rng = rng * 1664525u + 1013904223u;
+                    float r2 = (static_cast<float> (rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
+
+                    // Triangular noise: sum of two uniform ∈ [-0.5, +0.5) → ∈ [-1, +1) LSBs
+                    dst[i] = src[i] + (r1 + r2) * lsb;
+                }
+            }
+
+            if (!writer->writeFromAudioSampleBuffer (dithered, 0, dithered.getNumSamples()))
+                return { false, "Failed to write audio data: " + file.getFullPathName() };
+        }
+        else
+        {
+            if (!writer->writeFromAudioSampleBuffer (buffer, 0, buffer.getNumSamples()))
+                return { false, "Failed to write audio data: " + file.getFullPathName() };
+        }
 
         return { true, {} };
     }
