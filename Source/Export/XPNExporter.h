@@ -860,7 +860,7 @@ private:
         OfflineRenderContext ctx;
 
         if (!sharedApvts)
-            return ctx; // No APVTS — caller will get a silent render
+            return ctx; // No APVTS — ctx.valid will be false; renderNoteToWav() returns an error
 
         // Apply preset parameters to the shared APVTS.
         // Atomic stores are thread-safe; see setAPVTS() comment above.
@@ -930,7 +930,7 @@ private:
 
     // Render a single note using the offline engine context.
     // ctx must have been prepared via buildOfflineContext() for this preset.
-    // If ctx.valid is false (no APVTS available), writes a silent placeholder.
+    // If ctx.valid is false (no APVTS available), returns an error — never writes silent audio.
     IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
@@ -943,8 +943,11 @@ private:
 
         if (!ctx.valid)
         {
-            // No APVTS — write silent placeholder and continue
-            return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+            // No APVTS — cannot render real audio. Return an error instead of
+            // writing a silent placeholder that would corrupt the export silently.
+            DBG("XPNExporter::renderNoteToWav — ctx.valid is false (no APVTS). Aborting render.");
+            jassertfalse;
+            return { false, "Render context is invalid: APVTS was not set before export" };
         }
 
         // Reset all engine voices for a clean note render
