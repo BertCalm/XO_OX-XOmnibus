@@ -783,7 +783,7 @@ public:
 
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        currentSampleRate.store (sampleRate, std::memory_order_relaxed);
+        currentSampleRate.store (sampleRate, std::memory_order_release);
         currentBlockSize = maxBlockSize;
         noteCounter = 0;
         currentTopology = AttractorTopology::Lorenz;
@@ -878,7 +878,7 @@ public:
         // D005: update breathing LFO rate from ouro_breathRate parameter (once per block),
         // then tick it to get the current modulation value.
         const float breathRateHz = paramBreathRate ? paramBreathRate->load() : 0.08f;
-        breathingLFO.setRate (breathRateHz, static_cast<float> (currentSampleRate.load (std::memory_order_relaxed)));
+        breathingLFO.setRate (breathRateHz, static_cast<float> (currentSampleRate.load (std::memory_order_acquire)));
         const float breathLFO = breathingLFO.process();  // [-1, +1] sine at user-controlled rate
 
         // Apply macros as additive offsets to core params before use:
@@ -1027,7 +1027,7 @@ public:
                     // Begin 50ms crossfade (smooth topology transition)
                     voice.crossfading = true;
                     voice.crossfadeGain = 0.0f;
-                    int crossfadeSamples = static_cast<int> (currentSampleRate.load (std::memory_order_relaxed) * 0.050);
+                    int crossfadeSamples = static_cast<int> (currentSampleRate.load (std::memory_order_acquire) * 0.050);
                     voice.crossfadeStep = 1.0f / static_cast<float> (crossfadeSamples);
                 }
 
@@ -1286,21 +1286,27 @@ public:
                 outputRight = fastTanh (outputRight);
 
                 //--------------------------------------------------------------
-                // ENVELOPE
+                // ENVELOPE + VOICE STEAL CROSSFADE
+                // Fix #578: when a voice is being stolen, use only the steal
+                // fade for attenuation — do not also multiply by the release
+                // envelope gain. Applying both paths simultaneously causes a
+                // double-attenuation click on noteOff+steal.
                 //--------------------------------------------------------------
                 float envelopeGain = voice.advanceEnvelope();
-                outputLeft  *= envelopeGain * voice.velocity;
-                outputRight *= envelopeGain * voice.velocity;
 
-                //--------------------------------------------------------------
-                // VOICE STEAL CROSSFADE
-                //--------------------------------------------------------------
                 if (voice.stealFadeStep > 0.0f)
                 {
+                    // Steal fade active — use only stealFadeGain, skip envelope
                     voice.stealFadeGain -= voice.stealFadeStep;
                     if (voice.stealFadeGain <= 0.0f) { voice.active = false; continue; }
-                    outputLeft  *= voice.stealFadeGain;
-                    outputRight *= voice.stealFadeGain;
+                    outputLeft  *= voice.stealFadeGain * voice.velocity;
+                    outputRight *= voice.stealFadeGain * voice.velocity;
+                }
+                else
+                {
+                    // Normal path — envelope attenuation only
+                    outputLeft  *= envelopeGain * voice.velocity;
+                    outputRight *= envelopeGain * voice.velocity;
                 }
 
                 //--------------------------------------------------------------
@@ -1607,14 +1613,14 @@ private:
                     freeSlot = i;
                 }
             }
-            voices[freeSlot].beginStealFade (currentSampleRate.load (std::memory_order_relaxed));
+            voices[freeSlot].beginStealFade (currentSampleRate.load (std::memory_order_acquire));
         }
 
         // Set topology on new voice
         voices[freeSlot].attractorA.topology = currentTopology;
         voices[freeSlot].syncedAttractor.topology = currentTopology;
 
-        voices[freeSlot].noteOn (note, velocity, noteCounter, currentSampleRate.load (std::memory_order_relaxed));
+        voices[freeSlot].noteOn (note, velocity, noteCounter, currentSampleRate.load (std::memory_order_acquire));
     }
 
     void handleNoteOff (int note) noexcept
