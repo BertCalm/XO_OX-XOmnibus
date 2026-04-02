@@ -106,6 +106,25 @@ public:
                 "AudioToBuffer", "KnotTopology", "TriangularCoupling"
             }, 1);
             card.typeBox.setTextWhenNoChoicesAvailable ("No types");
+            // Tooltip explains each coupling type so users unfamiliar with the
+            // coupling taxonomy can understand the routing without external docs
+            // (addresses #389: coupling cards lack per-type explanation).
+            card.typeBox.setTooltip (
+                "AmpToFilter: source amplitude \xe2\x86\x92 target filter cutoff | "
+                "AmpToPitch: source amplitude \xe2\x86\x92 target pitch | "
+                "LFOToPitch: source LFO \xe2\x86\x92 target pitch | "
+                "EnvToMorph: source envelope \xe2\x86\x92 target morph/wavetable | "
+                "AudioToFM: source audio drives FM depth in target | "
+                "AudioToRing: source audio ring-modulates target | "
+                "FilterToFilter: source filter output \xe2\x86\x92 target filter | "
+                "AmpToChoke: source amplitude chokes (silences) target | "
+                "RhythmToBlend: source gate rhythm \xe2\x86\x92 target blend | "
+                "EnvToDecay: source envelope \xe2\x86\x92 target decay time | "
+                "PitchToPitch: source pitch interval detunes target | "
+                "AudioToWavetable: source audio \xe2\x86\x92 target wavetable position | "
+                "AudioToBuffer: source audio fills target grain/buffer pool | "
+                "KnotTopology: topological knot matrix routing (Orbweave) | "
+                "TriangularCoupling: 3-engine circular modulation loop");
             card.typeBox.setColour (juce::ComboBox::backgroundColourId,
                                     GalleryColors::get (GalleryColors::raised()));
             card.typeBox.setColour (juce::ComboBox::outlineColourId,
