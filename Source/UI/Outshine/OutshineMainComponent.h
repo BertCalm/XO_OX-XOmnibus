@@ -55,8 +55,9 @@ public:
             onGrainsChanged(paths);
         };
 
-        autoMode->getZoneMap().onZoneClicked = [](int /*grainIndex*/) {
-            // In Phase 1A: no scrolling action — just a click event placeholder
+        autoMode->getZoneMap().onZoneClicked = [this](int grainIndex) {
+            // Scroll the grain strip to the clicked zone and highlight the chip (#169).
+            grainStrip->highlightGrain(grainIndex);
         };
 
         exportBar->onExportClicked = [this](const juce::String& pearlName,

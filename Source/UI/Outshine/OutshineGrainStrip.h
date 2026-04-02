@@ -54,12 +54,59 @@ public:
 
     juce::StringArray getGrainPaths() const { return grainPaths; }
 
+    /** Scroll the strip so that the chip at 'index' is visible and highlight it
+        briefly with an accent border.  Called from OutshineZoneMap::onZoneClicked
+        so that clicking a zone in the zone map reveals the corresponding grain chip.
+        Safe to call with out-of-range indices — silently ignored. */
+    void highlightGrain (int index)
+    {
+        if (index < 0 || index >= chips.size()) return;
+
+        // Record the new highlight index and repaint (chip paint path checks this).
+        highlightedChipIndex = index;
+        repaint();
+
+        // Scroll the viewport so the chip is visible.
+        if (auto* chip = chips[index])
+        {
+            auto chipBounds = chip->getBounds();
+            scrollContainer.setViewPosition (
+                juce::jmax (0, chipBounds.getX() - kChipGap), 0);
+        }
+
+        // Clear the highlight after 800 ms so it doesn't persist indefinitely.
+        juce::Timer::callAfterDelay (800, [safeThis = juce::Component::SafePointer<OutshineGrainStrip>(this)]()
+        {
+            if (safeThis != nullptr)
+            {
+                safeThis->highlightedChipIndex = -1;
+                safeThis->repaint();
+            }
+        });
+    }
+
     void paint(juce::Graphics& g) override
     {
         g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
         // Top border separator
         g.setColour(GalleryColors::get(GalleryColors::borderGray()));
         g.drawLine(0, 0, (float)getWidth(), 0, 1.0f);
+
+        // Draw accent ring around the highlighted chip (set by highlightGrain()).
+        if (highlightedChipIndex >= 0 && highlightedChipIndex < chips.size())
+        {
+            if (auto* chip = chips[highlightedChipIndex])
+            {
+                // getBounds() is relative to chipHolder; convert to scrollContainer viewport.
+                auto chipBoundsInHolder = chip->getBounds();
+                auto viewPos = scrollContainer.getViewPosition();
+                auto chipInView = chipBoundsInHolder.translated(-viewPos.x, 0);
+                auto chipInStrip = chipInView.translated(scrollContainer.getX(), scrollContainer.getY());
+
+                g.setColour(GalleryColors::get(GalleryColors::xoGold).withAlpha(0.9f));
+                g.drawRoundedRectangle(chipInStrip.toFloat().expanded(2.0f), 4.0f, 2.0f);
+            }
+        }
     }
 
     void resized() override
@@ -150,7 +197,8 @@ private:
     juce::Component            chipHolder;
     juce::OwnedArray<juce::TextButton> chips;
     juce::Label                countLabel;
-    int                        focusedChipIndex { -1 };
+    int                        focusedChipIndex    { -1 };
+    int                        highlightedChipIndex { -1 };  // set by highlightGrain(), cleared after 800ms
 
     static constexpr int kChipH    = 28;
     static constexpr int kChipGap  = 4;
