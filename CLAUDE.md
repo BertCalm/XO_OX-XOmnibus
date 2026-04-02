@@ -373,7 +373,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
 - Seance review of Guild plan: `Docs/seance-review-guild-plan-2026-03-20.md`
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
-- Cross-reference: `Docs/seance_cross_reference.md`
+- Cross-reference: `Docs/seances/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
 
 ### The 6 Doctrines
@@ -508,7 +508,7 @@ When a new engine is registered, update **all four** of these sections in CLAUDE
 
 Then update these external files:
 - `Docs/xomnibus_master_specification.md` section 3.1 engine table (add row)
-- `Docs/seance_cross_reference.md` (add seance row after the seance is run)
+- `Docs/seances/seance_cross_reference.md` (add seance row after the seance is run)
 - `Source/XOlokunProcessor.cpp` (register the engine)
 - `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
 

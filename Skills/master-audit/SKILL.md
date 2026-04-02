@@ -131,14 +131,14 @@ grep -rl '"type".*"STUB"\|"STUB".*"type"' Presets/ 2>/dev/null
 
 ## Phase 5: Seance Coverage
 
-Check `Docs/seance_cross_reference.md`:
-- How many of 42 engines have seance verdicts?
+Check `Docs/seances/seance_cross_reference.md`:
+- How many of 76 engines have seance verdicts?
 - Any engines with score < 7.0 (candidates for improvement)?
 - Any unresolved P0 bugs?
 
 ```bash
-grep -c "^|" Docs/seance_cross_reference.md  # count seance rows
-grep "P0" Docs/seance_cross_reference.md | grep -v "None\|fixed"  # open P0s
+grep -c "^|" Docs/seances/seance_cross_reference.md  # count seance rows
+grep "P0" Docs/seances/seance_cross_reference.md | grep -v "None\|fixed"  # open P0s
 ```
 
 ---

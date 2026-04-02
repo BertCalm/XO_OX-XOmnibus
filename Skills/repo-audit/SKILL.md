@@ -162,11 +162,11 @@ grep -l "RESOLVED\|BLESSED\|Blessing" Docs/seances/*.md 2>/dev/null
 
 ```bash
 # Count seance rows
-grep -c "^| [A-Z]" Docs/seance_cross_reference.md
+grep -c "^| [A-Z]" Docs/seances/seance_cross_reference.md
 
 # List engine directories without a seance row
 ls Source/Engines/ | while read engine; do
-  grep -qi "$engine" Docs/seance_cross_reference.md || echo "MISSING SEANCE: $engine"
+  grep -qi "$engine" Docs/seances/seance_cross_reference.md || echo "MISSING SEANCE: $engine"
 done
 ```
 
@@ -266,7 +266,7 @@ These files must exist:
 [ -f Docs/GOVERNANCE.md ] && echo "OK: GOVERNANCE.md" || echo "MISSING: Docs/GOVERNANCE.md"
 [ -f Docs/MANIFEST.md ] && echo "OK: MANIFEST.md" || echo "MISSING: Docs/MANIFEST.md"
 [ -f Docs/documentation_health_plan.md ] && echo "OK: health plan" || echo "MISSING"
-[ -f Docs/seance_cross_reference.md ] && echo "OK: seance cross-ref" || echo "MISSING"
+[ -f Docs/seances/seance_cross_reference.md ] && echo "OK: seance cross-ref" || echo "MISSING"
 [ -f Docs/prism_sweep_final_report.md ] && echo "OK: prism sweep" || echo "MISSING"
 ```
 

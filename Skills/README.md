@@ -35,7 +35,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 
 | Skill | Invoke | Purpose | Source |
 |-------|--------|---------|--------|
-| synth-seance | `/synth-seance` | Ghost council evaluation of engine quality against 6 doctrines and 15 blessings | `Docs/seance_cross_reference.md` |
+| synth-seance | `/synth-seance` | Ghost council evaluation of engine quality against 6 doctrines and 15 blessings | `Docs/seances/seance_cross_reference.md` |
 | post-engine-completion-checklist | `/post-engine-completion-checklist` | 5-point audit after engine completion: CLAUDE.md accuracy, XOlokun sync, knowledge compendium, memory/satellite, playbook | `Docs/knowledge_tree_update_12i.md` |
 | producers-guild | `/producers-guild` | 12 genre specialist + PM + market research product review | `Docs/2026-03-14-session-readout.md` |
 
@@ -82,7 +82,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
 - `Docs/how_to_write_a_xolokun_adapter.md` — Adapter writing guide
 - `Docs/xolokun_new_engine_process.md` — New engine development process
-- `Docs/seance_cross_reference.md` — All engine seance scores + D-violations + P0 bugs
+- `Docs/seances/seance_cross_reference.md` — All engine seance scores + D-violations + P0 bugs
 
 ---
 

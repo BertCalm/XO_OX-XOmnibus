@@ -141,7 +141,7 @@ auval -v aumu Xolk XoOx
 - `Docs/xolokun_master_specification.md` — the single source of truth
 - `Docs/xolokun_sound_design_guides.md` — per-engine sound design
 - `scripture/the-scripture.md` — the Book of Bin (Guru Bin's accumulated DSP wisdom)
-- `Docs/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines
+- `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines
 - `site/` — the web presence at [XO-OX.org](https://xo-ox.org)
 
 ## The Expedition

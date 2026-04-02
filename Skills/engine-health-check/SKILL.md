@@ -174,7 +174,7 @@ Open `Docs/coupling_audit.md` and find the engine. Check:
 
 ## Phase 3: Known Bug Check
 
-Check `Docs/seance_cross_reference.md` for the engine row. Look for P0 bugs:
+Check `Docs/seances/seance_cross_reference.md` for the engine row. Look for P0 bugs:
 
 | Bug ID | Description | Status to Verify |
 |--------|-------------|-----------------|
@@ -183,7 +183,7 @@ Check `Docs/seance_cross_reference.md` for the engine row. Look for P0 bugs:
 | P0-03 | ORIGAMI STFT race condition if blockSize < 512 | Check blockSize guard |
 | P0-04 | OBSIDIAN formant param ID collision | Check pFormantResonance ≠ pFormantIntensity |
 
-**Note:** These P0 bugs were identified during seance (2026-03-14). Some may already be resolved. Always cross-reference `Docs/seance_cross_reference.md` for the current open/fixed status before flagging them as active issues.
+**Note:** These P0 bugs were identified during seance (2026-03-14). Some may already be resolved. Always cross-reference `Docs/seances/seance_cross_reference.md` for the current open/fixed status before flagging them as active issues.
 
 ---
 

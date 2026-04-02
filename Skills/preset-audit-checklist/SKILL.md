@@ -45,7 +45,7 @@ Read these files for the target engine:
 |--------|------|---------------|
 | Sound Design Guide | `Docs/xolokun_sound_design_guides.md` → engine section | Key parameters, macro mapping, sonic thesis |
 | Seance Verdict | `Docs/seances/{engine}_seance_verdict.md` | Ghost feedback, current score, P0/P1 concerns |
-| Seance Cross-Reference | `Docs/seance_cross_reference.md` → engine row | Score, blessings, violations, bugs |
+| Seance Cross-Reference | `Docs/seances/seance_cross_reference.md` → engine row | Score, blessings, violations, bugs |
 | Engine Source | `Source/Engines/{Engine}/{Engine}Engine.h` | Actual parameter IDs, DSP architecture |
 | Existing Presets | `Presets/XOlokun/` (grep for engine name) | Current library size, mood coverage |
 | Retreat Notes | `scripture/retreats/{engine}_retreat.md` (if exists) | Guru refinement history, parameter wisdom |

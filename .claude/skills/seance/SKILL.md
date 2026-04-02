@@ -10,13 +10,13 @@ Conduct a formal seance evaluation of engine **$ARGUMENTS** against the ghost pa
 
 ## Background
 
-Read `Docs/seance_cross_reference.md` for the full seance methodology and previous findings. 29 seances have been completed across all registered engines. This skill runs a fresh evaluation or re-evaluation.
+Read `Docs/seances/seance_cross_reference.md` for the full seance methodology and previous findings. 29 seances have been completed across all registered engines. This skill runs a fresh evaluation or re-evaluation.
 
 ## Setup
 
 1. Resolve the engine name to its Source directory in `Source/Engines/`.
 2. Read all `.h` files in that engine directory.
-3. Read any existing seance findings for this engine in `Docs/seance_cross_reference.md`.
+3. Read any existing seance findings for this engine in `Docs/seances/seance_cross_reference.md`.
 4. Read any synthesis guides (e.g., `Docs/{engine}_synthesis_guide.md` if it exists).
 5. Count presets using this engine in `Presets/XOlokun/`.
 
