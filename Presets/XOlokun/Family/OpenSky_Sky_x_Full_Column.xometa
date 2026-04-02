@@ -3,8 +3,7 @@
   "name": "Sky x Full Column",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "OceanDeep"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -21,8 +21,7 @@
     "warmth": 0.425
   },
   "engines": [
-    "Outwit",
-    "Obese"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

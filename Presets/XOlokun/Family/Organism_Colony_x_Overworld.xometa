@@ -3,8 +3,7 @@
   "name": "Colony x Overworld",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Overworld"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

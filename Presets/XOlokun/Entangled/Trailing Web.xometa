@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Opal grain density drives OVERLAP diffusion rate — the more fragments, the wider the frond-web",
   "engines": [
-    "Overlap",
-    "Opal"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

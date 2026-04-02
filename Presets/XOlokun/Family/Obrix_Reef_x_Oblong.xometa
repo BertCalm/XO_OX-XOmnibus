@@ -3,8 +3,7 @@
   "name": "Reef x Oblong",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Oblong"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

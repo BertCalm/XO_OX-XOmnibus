@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Ombre memory/forgetting gradient sets OUTWIT mutation probability — what fades reshapes the pattern",
   "engines": [
-    "Outwit",
-    "Ombre"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

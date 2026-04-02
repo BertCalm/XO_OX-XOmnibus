@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Orca breach transient scatters OVERLAP pre-delay — the apex impact opens the room instantaneously",
   "engines": [
-    "Overlap",
-    "Orca"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

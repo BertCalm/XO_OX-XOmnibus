@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Odyssey tidal swell expands OVERLAP room size — tide and tail rise together toward the horizon",
   "engines": [
-    "Overlap",
-    "Odyssey"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

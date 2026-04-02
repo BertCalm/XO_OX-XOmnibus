@@ -3,8 +3,7 @@
   "name": "Colony x Oracle",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Oracle"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

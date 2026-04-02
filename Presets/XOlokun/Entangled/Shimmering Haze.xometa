@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Oscar axolotl morph depth drives OVERLAP diffusion density — the more the morph, the denser the web",
   "engines": [
-    "Overlap",
-    "OddOscar"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

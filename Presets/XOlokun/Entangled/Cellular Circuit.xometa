@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Oblong's unstable tuning modulates OUTWIT arm pitch spread — wobble becomes pattern drift",
   "engines": [
-    "Outwit",
-    "Oblong"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

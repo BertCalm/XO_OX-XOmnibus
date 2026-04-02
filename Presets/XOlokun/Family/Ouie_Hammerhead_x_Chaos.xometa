@@ -3,8 +3,7 @@
   "name": "Hammerhead x Chaos",
   "mood": "Family",
   "engines": [
-    "Ouie",
-    "Ouroboros"
+    "Ouie"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

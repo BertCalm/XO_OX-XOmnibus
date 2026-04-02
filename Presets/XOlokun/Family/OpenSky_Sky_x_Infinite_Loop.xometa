@@ -3,8 +3,7 @@
   "name": "Sky x Infinite Loop",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Ouroboros"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

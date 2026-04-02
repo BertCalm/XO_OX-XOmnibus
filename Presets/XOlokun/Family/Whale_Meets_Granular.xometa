@@ -22,8 +22,7 @@
     "warmth": 0.7
   },
   "engines": [
-    "Obese",
-    "Opal"
+    "Obese"
   ],
   "macroLabels": [
     "MASS",

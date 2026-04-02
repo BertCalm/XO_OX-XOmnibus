@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Orca echolocation data seeds OUTWIT initial row — sonar clicks become Wolfram seed patterns",
   "engines": [
-    "Outwit",
-    "Orca"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

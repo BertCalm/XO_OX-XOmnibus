@@ -3,8 +3,7 @@
   "name": "Trench x Knot",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Overlap"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

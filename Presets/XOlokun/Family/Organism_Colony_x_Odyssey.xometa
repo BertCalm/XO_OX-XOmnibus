@@ -3,8 +3,7 @@
   "name": "Colony x Odyssey",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Odyssey"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

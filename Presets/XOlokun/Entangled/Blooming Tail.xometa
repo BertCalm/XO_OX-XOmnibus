@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoes in the FDN's first bounce",
   "engines": [
-    "Overlap",
-    "Oracle"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

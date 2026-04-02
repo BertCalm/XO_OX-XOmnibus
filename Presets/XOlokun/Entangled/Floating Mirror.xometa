@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Overdub spring reverb feeds OVERLAP FDN input — two reverb characters layered into one endless space",
   "engines": [
-    "Overlap",
-    "Overdub"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

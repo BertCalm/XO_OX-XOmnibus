@@ -3,8 +3,7 @@
   "name": "Fire x Chip",
   "mood": "Family",
   "engines": [
-    "Ostinato",
-    "Overworld"
+    "Ostinato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

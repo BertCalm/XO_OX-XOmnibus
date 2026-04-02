@@ -3,8 +3,7 @@
   "name": "Reef x Origami",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Origami"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

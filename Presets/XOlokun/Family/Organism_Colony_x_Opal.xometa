@@ -3,8 +3,7 @@
   "name": "Colony x Opal",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Opal"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

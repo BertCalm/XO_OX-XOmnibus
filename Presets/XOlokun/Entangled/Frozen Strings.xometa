@@ -3,8 +3,7 @@
   "name": "Frozen Strings",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "OddfeliX"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

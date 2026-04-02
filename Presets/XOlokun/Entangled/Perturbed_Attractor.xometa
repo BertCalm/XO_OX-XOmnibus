@@ -22,8 +22,7 @@
     "warmth": 0.4
   },
   "engines": [
-    "Ouroboros",
-    "Onset"
+    "Ouroboros"
   ],
   "macroLabels": [
     "MACHINE",

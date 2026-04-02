@@ -3,8 +3,7 @@
   "name": "Trench x Drums",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Onset"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

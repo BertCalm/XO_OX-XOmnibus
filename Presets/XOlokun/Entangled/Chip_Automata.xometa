@@ -21,8 +21,7 @@
     "warmth": 0.35
   },
   "engines": [
-    "Outwit",
-    "Overworld"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

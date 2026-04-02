@@ -3,8 +3,7 @@
   "name": "Onset Orbweave Impulse",
   "mood": "Entangled",
   "engines": [
-    "Onset",
-    "Orbweave"
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

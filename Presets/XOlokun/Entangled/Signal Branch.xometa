@@ -21,8 +21,7 @@
     "warmth": 0.264
   },
   "engines": [
-    "Outwit",
-    "Oracle"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

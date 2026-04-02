@@ -3,8 +3,7 @@
   "name": "Reef x Organon",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Organon"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

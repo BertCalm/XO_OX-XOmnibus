@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Ottoni GROW macro drives OUTWIT branch complexity — brass growth as arm proliferation",
   "engines": [
-    "Outwit",
-    "Ottoni"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

@@ -3,8 +3,7 @@
   "name": "Sky x Folded Light",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Origami"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Colony x Overbite",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Overbite"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

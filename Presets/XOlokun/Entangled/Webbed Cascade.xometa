@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Overworld chip glitch triggers OVERLAP scatter burst — pixels dissolve into reverb fronds",
   "engines": [
-    "Overlap",
-    "Overworld"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

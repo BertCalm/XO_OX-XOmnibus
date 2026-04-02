@@ -3,8 +3,7 @@
   "name": "Trench x Chip",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Overworld"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

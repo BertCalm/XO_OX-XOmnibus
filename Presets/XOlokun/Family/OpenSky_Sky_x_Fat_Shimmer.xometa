@@ -3,8 +3,7 @@
   "name": "Sky x Fat Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Obese"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

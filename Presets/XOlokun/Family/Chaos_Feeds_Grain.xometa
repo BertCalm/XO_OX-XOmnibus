@@ -22,8 +22,7 @@
     "warmth": 0.5
   },
   "engines": [
-    "Ouroboros",
-    "Opal"
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",

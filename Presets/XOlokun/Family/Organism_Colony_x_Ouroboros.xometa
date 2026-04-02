@@ -3,8 +3,7 @@
   "name": "Colony x Ouroboros",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Ouroboros"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

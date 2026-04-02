@@ -3,8 +3,7 @@
   "name": "Trench x Reef",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Obrix"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

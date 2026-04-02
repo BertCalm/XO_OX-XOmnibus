@@ -3,8 +3,7 @@
   "name": "Tape Cell",
   "mood": "Entangled",
   "engines": [
-    "Organon",
-    "Overdub"
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

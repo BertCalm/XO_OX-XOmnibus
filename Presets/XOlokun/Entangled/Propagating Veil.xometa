@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Ouroboros loop phase modulates OVERLAP decay length — the coil's rotation is the reverb's clock",
   "engines": [
-    "Overlap",
-    "Ouroboros"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

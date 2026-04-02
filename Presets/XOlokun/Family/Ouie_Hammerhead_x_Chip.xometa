@@ -3,8 +3,7 @@
   "name": "Hammerhead x Chip",
   "mood": "Family",
   "engines": [
-    "Ouie",
-    "Overworld"
+    "Ouie"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

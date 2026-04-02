@@ -3,8 +3,7 @@
   "name": "Onset Injection Protocol",
   "mood": "Entangled",
   "engines": [
-    "Onset",
-    "Ouroboros"
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

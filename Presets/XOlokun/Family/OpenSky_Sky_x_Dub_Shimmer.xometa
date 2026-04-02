@@ -3,8 +3,7 @@
   "name": "Sky x Dub Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Overdub"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

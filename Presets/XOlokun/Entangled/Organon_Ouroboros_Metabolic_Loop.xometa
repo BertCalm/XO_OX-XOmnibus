@@ -3,8 +3,7 @@
   "name": "Metabolic Loop",
   "mood": "Entangled",
   "engines": [
-    "Organon",
-    "Ouroboros"
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

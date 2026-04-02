@@ -3,8 +3,7 @@
   "name": "Onset Akan Assembly",
   "mood": "Entangled",
   "engines": [
-    "Onset",
-    "Oware"
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

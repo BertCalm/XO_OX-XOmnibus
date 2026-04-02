@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "OLE groove displacement rhythmically pumps OVERLAP modulation — the rhythm section rides the reverb",
   "engines": [
-    "Overlap",
-    "Ole"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

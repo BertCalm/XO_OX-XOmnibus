@@ -3,8 +3,7 @@
   "name": "Reef x Overworld",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Overworld"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

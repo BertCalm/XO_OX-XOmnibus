@@ -3,8 +3,7 @@
   "name": "Colony x Oceanic",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Oceanic"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

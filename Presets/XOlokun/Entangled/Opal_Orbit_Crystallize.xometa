@@ -3,8 +3,7 @@
   "name": "Opal Orbit Crystallize",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Orbital"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Osmosis First Breath",
   "mood": "Atmosphere",
   "engines": [
-    "Osmosis",
-    "Origami"
+    "Osmosis"
   ],
   "parameters": {
     "Osmosis": {

@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Ottoni bell sustain feeds OVERLAP decay time — brass ring and FDN tail merge into one shimmer",
   "engines": [
-    "Overlap",
-    "Ottoni"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

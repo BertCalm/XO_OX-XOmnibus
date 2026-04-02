@@ -3,8 +3,7 @@
   "name": "Prediction Metabolism",
   "mood": "Entangled",
   "engines": [
-    "Organon",
-    "Oracle"
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

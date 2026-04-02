@@ -3,8 +3,7 @@
   "name": "Nautilus x Opal",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Opal"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

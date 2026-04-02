@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter",
   "engines": [
-    "Overlap",
-    "Onset"
+    "Overlap"
   ],
   "macroLabels": [
     "MACHINE",

@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Opal grain scatter probability feeds OUTWIT cell density — granular fragments birth cellular population",
   "engines": [
-    "Outwit",
-    "Opal"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

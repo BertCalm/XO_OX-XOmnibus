@@ -3,8 +3,7 @@
   "name": "Trench x Metabolism",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Organon"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

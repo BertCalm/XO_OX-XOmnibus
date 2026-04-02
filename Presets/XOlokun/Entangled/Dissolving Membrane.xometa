@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Ombre dual-narrative crossfade modulates OVERLAP early/late mix — memory and forgetting blend in time",
   "engines": [
-    "Overlap",
-    "Ombre"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

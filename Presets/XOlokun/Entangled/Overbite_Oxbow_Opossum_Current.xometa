@@ -5,14 +5,14 @@
       {
         "amount": 0.14,
         "couplingType": "AMP_TO_FILTER",
-        "description": "BELLY amplitude feeds OXBOW entanglement depth \u2014 body becomes room",
+        "description": "BELLY amplitude feeds OXBOW entanglement depth — body becomes room",
         "sourceEngine": "Overbite",
         "targetEngine": "Oxbow"
       }
     ]
   },
   "couplingIntensity": "Subtle",
-  "description": "OVERBITE BELLY 0.78 entangled with OXBOW Chiasmus FDN reverb. BELLY warmth feeds OXBOW's entanglement matrix \u2014 the body of the animal becomes the room. OXBOW entanglement cross-correlates OVERBITE's sub against its own tonal decay. The opossum's heartbeat resonating through a still pool.",
+  "description": "OVERBITE BELLY 0.78 entangled with OXBOW Chiasmus FDN reverb. BELLY warmth feeds OXBOW's entanglement matrix — the body of the animal becomes the room. OXBOW entanglement cross-correlates OVERBITE's sub against its own tonal decay. The opossum's heartbeat resonating through a still pool.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.28,
@@ -22,8 +22,7 @@
     "warmth": 0.82
   },
   "engines": [
-    "Overbite",
-    "Oxbow"
+    "Overbite"
   ],
   "macroLabels": [
     "BELLY",

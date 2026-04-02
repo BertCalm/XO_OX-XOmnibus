@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "OHM commune warmth modulates OUTWIT evolve rate — the slower the jam, the slower the cellular drift",
   "engines": [
-    "Outwit",
-    "Ohm"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

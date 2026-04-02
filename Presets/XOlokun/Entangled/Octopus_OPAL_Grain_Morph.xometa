@@ -3,8 +3,7 @@
   "name": "OPAL Grain Morph",
   "mood": "Entangled",
   "engines": [
-    "Octopus",
-    "Opal"
+    "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

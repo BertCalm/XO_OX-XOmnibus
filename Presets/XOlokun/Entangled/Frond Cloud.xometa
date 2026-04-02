@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Oblong instability shapes OVERLAP modulation depth — the more unstable, the more the tail wanders",
   "engines": [
-    "Overlap",
-    "Oblong"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

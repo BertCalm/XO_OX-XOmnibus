@@ -3,8 +3,7 @@
   "name": "Opal Obrix Granular Shred",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Obrix"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Sky x Reef Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Obrix"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

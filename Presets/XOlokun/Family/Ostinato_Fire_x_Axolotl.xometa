@@ -3,8 +3,7 @@
   "name": "Fire x Axolotl",
   "mood": "Family",
   "engines": [
-    "Ostinato",
-    "OddOscar"
+    "Ostinato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

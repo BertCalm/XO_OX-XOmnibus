@@ -3,8 +3,7 @@
   "name": "Reef x Ouroboros",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Ouroboros"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

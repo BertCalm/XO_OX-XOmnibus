@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Obbligato dual wind BOND macro sets OUTWIT cell birth/death balance — the bond between winds is cellular life",
   "engines": [
-    "Outwit",
-    "Obbligato"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

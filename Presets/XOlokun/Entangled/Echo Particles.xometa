@@ -3,8 +3,7 @@
   "name": "Echo Particles",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Overdub"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

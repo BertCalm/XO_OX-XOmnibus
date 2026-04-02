@@ -3,8 +3,7 @@
   "name": "Nautilus x Overlap",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Overlap"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

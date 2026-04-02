@@ -3,8 +3,7 @@
   "name": "Fat Cloud",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Obese"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Overworld ERA state selects OUTWIT rule set — each chip era carries a different cellular DNA",
   "engines": [
-    "Outwit",
-    "Overworld"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

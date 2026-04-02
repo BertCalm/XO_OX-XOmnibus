@@ -3,8 +3,7 @@
   "name": "Nautilus x Oceanic",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Oceanic"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

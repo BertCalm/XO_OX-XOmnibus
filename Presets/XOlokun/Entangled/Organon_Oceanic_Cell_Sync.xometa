@@ -3,8 +3,7 @@
   "name": "Oceanic Cell Sync",
   "mood": "Entangled",
   "engines": [
-    "Organon",
-    "Oceanic"
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

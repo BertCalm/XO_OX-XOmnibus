@@ -5,14 +5,14 @@
       {
         "amount": 0.16,
         "couplingType": "AUDIO_TO_FM",
-        "description": "ONSET percussive transients FM-modulate OVERBITE OscB \u2014 drum hit warps the teeth",
+        "description": "ONSET percussive transients FM-modulate OVERBITE OscB — drum hit warps the teeth",
         "sourceEngine": "Onset",
         "targetEngine": "Overbite"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "OVERBITE BITE 0.65 coupled with ONSET velocity events via AudioToFM \u2014 ONSET's percussive transients FM-modulate OVERBITE's OscB. Every drum hit warps the teeth. The moment the opossum hears a snap \u2014 body goes rigid, harmonics scatter. SCURRY 0.35 ready to flee.",
+  "description": "OVERBITE BITE 0.65 coupled with ONSET velocity events via AudioToFM — ONSET's percussive transients FM-modulate OVERBITE's OscB. Every drum hit warps the teeth. The moment the opossum hears a snap — body goes rigid, harmonics scatter. SCURRY 0.35 ready to flee.",
   "dna": {
     "aggression": 0.55,
     "brightness": 0.58,
@@ -22,8 +22,7 @@
     "warmth": 0.38
   },
   "engines": [
-    "Overbite",
-    "Onset"
+    "Overbite"
   ],
   "macroLabels": [
     "BELLY",

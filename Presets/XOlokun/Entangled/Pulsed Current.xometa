@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "OLE DRAMA macro triggers OUTWIT rule catastrophe — the drama climax rewrites the cellular law",
   "engines": [
-    "Outwit",
-    "Ole"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

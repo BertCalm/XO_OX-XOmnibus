@@ -3,8 +3,7 @@
   "name": "Granular Enzyme",
   "mood": "Entangled",
   "engines": [
-    "Organon",
-    "Opal"
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

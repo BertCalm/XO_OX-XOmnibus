@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Octopus ink cloud opacity sets OVERLAP damping — the denser the cloud, the darker the tail",
   "engines": [
-    "Overlap",
-    "Octopus"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

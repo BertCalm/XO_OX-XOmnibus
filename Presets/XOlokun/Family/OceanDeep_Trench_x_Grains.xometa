@@ -3,8 +3,7 @@
   "name": "Trench x Grains",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Opal"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

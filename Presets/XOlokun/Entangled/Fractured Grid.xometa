@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "XOctopus chromatophore signal feeds OUTWIT rule mutation — color-shift logic mirrors cellular rule change",
   "engines": [
-    "Outwit",
-    "Octopus"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

@@ -3,8 +3,7 @@
   "name": "Sky x Ascension Arc",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Orbital"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

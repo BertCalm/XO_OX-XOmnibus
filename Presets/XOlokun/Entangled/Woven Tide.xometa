@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Overdub tape delay time modulates OUTWIT generation clock — temporal smear, cellular memory",
   "engines": [
-    "Outwit",
-    "Overdub"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

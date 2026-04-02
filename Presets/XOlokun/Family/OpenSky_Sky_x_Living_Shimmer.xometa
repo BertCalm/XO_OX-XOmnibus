@@ -3,8 +3,7 @@
   "name": "Sky x Living Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Organon"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

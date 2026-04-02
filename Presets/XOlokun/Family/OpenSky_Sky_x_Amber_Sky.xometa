@@ -3,8 +3,7 @@
   "name": "Sky x Amber Sky",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Oblong"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

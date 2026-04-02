@@ -21,8 +21,7 @@
     "warmth": 0.525
   },
   "engines": [
-    "Outwit",
-    "Ohm"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

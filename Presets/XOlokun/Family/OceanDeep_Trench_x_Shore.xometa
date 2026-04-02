@@ -3,8 +3,7 @@
   "name": "Trench x Shore",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Osprey"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

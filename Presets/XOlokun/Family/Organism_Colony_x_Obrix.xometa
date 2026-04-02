@@ -3,8 +3,7 @@
   "name": "Colony x Obrix",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Obrix"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

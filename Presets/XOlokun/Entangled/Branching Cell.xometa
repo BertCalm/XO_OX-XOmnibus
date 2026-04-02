@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Neon tetra flicker speed clocks OUTWIT generation steps — the fish's swim cycle is the cellular tick",
   "engines": [
-    "Outwit",
-    "OddfeliX"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

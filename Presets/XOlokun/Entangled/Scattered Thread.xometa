@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Onset drum transients trigger OUTWIT rule mutations — every hit reshapes the cellular law",
   "engines": [
-    "Outwit",
-    "Onset"
+    "Outwit"
   ],
   "macroLabels": [
     "MACHINE",

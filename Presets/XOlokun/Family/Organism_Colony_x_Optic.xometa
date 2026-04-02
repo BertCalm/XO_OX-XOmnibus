@@ -3,8 +3,7 @@
   "name": "Colony x Optic",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Optic"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

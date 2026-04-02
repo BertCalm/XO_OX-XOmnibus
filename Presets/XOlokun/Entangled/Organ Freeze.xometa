@@ -3,8 +3,7 @@
   "name": "Organ Freeze",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Organon"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

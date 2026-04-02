@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Oscar's gill-pulse modulates OUTWIT arm count — axolotl respiration shapes the automata's reach",
   "engines": [
-    "Outwit",
-    "OddOscar"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

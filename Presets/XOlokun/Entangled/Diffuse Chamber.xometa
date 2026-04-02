@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "OHM commune drift rate syncs OVERLAP modulation rate — the jam's slow tempo rocks the FDN",
   "engines": [
-    "Overlap",
-    "Ohm"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

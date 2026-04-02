@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Organon metabolic rate drives OUTWIT evolve speed — biological rhythm as cellular engine",
   "engines": [
-    "Outwit",
-    "Organon"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

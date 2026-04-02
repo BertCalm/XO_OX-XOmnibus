@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Odyssey tidal phase clocks OUTWIT generation — the tide turns, the automata evolves",
   "engines": [
-    "Outwit",
-    "Odyssey"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

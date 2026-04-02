@@ -3,8 +3,7 @@
   "name": "Hammerhead x Dub",
   "mood": "Family",
   "engines": [
-    "Ouie",
-    "Overdub"
+    "Ouie"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

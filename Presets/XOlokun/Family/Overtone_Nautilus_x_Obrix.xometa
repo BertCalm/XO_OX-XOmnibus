@@ -3,8 +3,7 @@
   "name": "Nautilus x Obrix",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Obrix"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

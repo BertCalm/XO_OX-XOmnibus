@@ -3,8 +3,7 @@
   "name": "Sky x Shimmer Grains",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Opal"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

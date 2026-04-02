@@ -21,8 +21,7 @@
     "warmth": 0.762
   },
   "engines": [
-    "Overlap",
-    "Obsidian"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

@@ -3,8 +3,7 @@
   "name": "Trench x Drift",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Odyssey"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

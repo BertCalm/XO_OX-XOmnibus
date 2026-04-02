@@ -3,8 +3,7 @@
   "name": "Drift Morph Vocal",
   "mood": "Entangled",
   "engines": [
-    "Odyssey",
-    "OddOscar"
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

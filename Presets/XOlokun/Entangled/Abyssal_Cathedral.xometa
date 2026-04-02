@@ -21,8 +21,7 @@
     "warmth": 0.575
   },
   "engines": [
-    "Overlap",
-    "Owlfish"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

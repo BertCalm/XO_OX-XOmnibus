@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Organon pipe resonance propagates through OVERLAP — the cathedral breathes inside the jellyfish",
   "engines": [
-    "Overlap",
-    "Organon"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

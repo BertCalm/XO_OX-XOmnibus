@@ -3,8 +3,7 @@
   "name": "Nautilus x Origami",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Origami"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

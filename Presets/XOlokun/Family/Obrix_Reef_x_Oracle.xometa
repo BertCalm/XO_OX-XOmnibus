@@ -3,8 +3,7 @@
   "name": "Reef x Oracle",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Oracle"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

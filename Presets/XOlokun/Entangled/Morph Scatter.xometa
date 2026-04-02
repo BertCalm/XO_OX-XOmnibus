@@ -3,8 +3,7 @@
   "name": "Morph Scatter",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "OddOscar"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

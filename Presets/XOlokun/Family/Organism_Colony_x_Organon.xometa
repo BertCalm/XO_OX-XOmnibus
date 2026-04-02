@@ -3,8 +3,7 @@
   "name": "Colony x Organon",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Organon"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

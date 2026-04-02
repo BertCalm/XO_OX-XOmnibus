@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Oracle harmonic breakpoints seed OUTWIT Wolfram rules — prophecy encoded as cellular law",
   "engines": [
-    "Outwit",
-    "Oracle"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

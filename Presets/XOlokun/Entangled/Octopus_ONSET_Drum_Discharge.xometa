@@ -3,8 +3,7 @@
   "name": "ONSET Drum Discharge",
   "mood": "Entangled",
   "engines": [
-    "Octopus",
-    "Onset"
+    "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

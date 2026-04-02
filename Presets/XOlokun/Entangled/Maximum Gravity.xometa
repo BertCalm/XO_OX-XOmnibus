@@ -22,7 +22,6 @@
     "warmth": 0.75
   },
   "engines": [
-    "Obese",
     "Overbite"
   ],
   "legacy": {

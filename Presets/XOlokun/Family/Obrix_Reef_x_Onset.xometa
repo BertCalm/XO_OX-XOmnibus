@@ -3,8 +3,7 @@
   "name": "Reef x Onset",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Onset"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

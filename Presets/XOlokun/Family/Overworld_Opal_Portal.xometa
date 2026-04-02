@@ -22,8 +22,7 @@
     "warmth": 0.55
   },
   "engines": [
-    "Overworld",
-    "Opal"
+    "Overworld"
   ],
   "macroLabels": [
     "ERA",

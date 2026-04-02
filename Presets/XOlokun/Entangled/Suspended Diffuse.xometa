@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider",
   "engines": [
-    "Overlap",
-    "Obbligato"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

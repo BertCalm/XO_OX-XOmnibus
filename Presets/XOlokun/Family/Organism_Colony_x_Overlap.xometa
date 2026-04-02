@@ -3,8 +3,7 @@
   "name": "Colony x Overlap",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Overlap"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Bass Breath",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Overbite"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Reef x Oceanic",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Oceanic"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

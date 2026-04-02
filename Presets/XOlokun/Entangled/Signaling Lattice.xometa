@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Orphica microsound event density clocks OUTWIT — each grain becomes a cellular timestep",
   "engines": [
-    "Outwit",
-    "Orphica"
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",

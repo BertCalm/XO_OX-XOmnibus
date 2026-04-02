@@ -3,8 +3,7 @@
   "name": "NES Shimmer",
   "mood": "Entangled",
   "engines": [
-    "Opal",
-    "Overworld"
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

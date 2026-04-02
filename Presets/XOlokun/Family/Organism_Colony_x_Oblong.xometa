@@ -3,8 +3,7 @@
   "name": "Colony x Oblong",
   "mood": "Family",
   "engines": [
-    "Organism",
-    "Oblong"
+    "Organism"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

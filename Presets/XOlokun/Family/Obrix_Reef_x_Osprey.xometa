@@ -3,8 +3,7 @@
   "name": "Reef x Osprey",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Osprey"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

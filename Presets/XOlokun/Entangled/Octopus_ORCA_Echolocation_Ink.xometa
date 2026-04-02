@@ -3,8 +3,7 @@
   "name": "ORCA Echolocation Ink",
   "mood": "Entangled",
   "engines": [
-    "Octopus",
-    "Orca"
+    "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

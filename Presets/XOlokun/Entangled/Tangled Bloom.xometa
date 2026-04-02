@@ -13,8 +13,7 @@
   "couplingIntensity": "Moderate",
   "description": "Orphica pluck brightness modulates OVERLAP filter cutoff — string attack shapes the reverb tone",
   "engines": [
-    "Overlap",
-    "Orphica"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

@@ -3,8 +3,7 @@
   "name": "OVERDUB Tape Ink",
   "mood": "Entangled",
   "engines": [
-    "Octopus",
-    "Overdub"
+    "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

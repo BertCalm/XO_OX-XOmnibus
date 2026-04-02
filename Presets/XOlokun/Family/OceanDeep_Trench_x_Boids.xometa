@@ -3,8 +3,7 @@
   "name": "Trench x Boids",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Oceanic"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

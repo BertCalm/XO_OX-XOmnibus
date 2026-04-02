@@ -3,8 +3,7 @@
   "name": "Reef x Odyssey",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Odyssey"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

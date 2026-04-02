@@ -3,8 +3,7 @@
   "name": "Trench x Dub",
   "mood": "Family",
   "engines": [
-    "OceanDeep",
-    "Overdub"
+    "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

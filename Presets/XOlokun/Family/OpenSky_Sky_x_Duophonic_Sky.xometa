@@ -3,8 +3,7 @@
   "name": "Sky x Duophonic Sky",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Ouie"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

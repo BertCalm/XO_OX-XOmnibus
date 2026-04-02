@@ -3,8 +3,7 @@
   "name": "Fire x Dub",
   "mood": "Family",
   "engines": [
-    "Ostinato",
-    "Overdub"
+    "Ostinato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

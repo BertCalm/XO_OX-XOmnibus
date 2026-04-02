@@ -3,8 +3,7 @@
   "name": "Nautilus x Ouroboros",
   "mood": "Family",
   "engines": [
-    "Overtone",
-    "Ouroboros"
+    "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

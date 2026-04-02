@@ -29,8 +29,7 @@
     "warmth": 0.4
   },
   "engines": [
-    "Ocelot",
-    "Orca"
+    "Ocelot"
   ],
   "macroLabels": [
     "PROWL",

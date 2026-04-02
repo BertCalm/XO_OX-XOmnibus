@@ -3,8 +3,7 @@
   "name": "Reef x Overlap",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Overlap"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

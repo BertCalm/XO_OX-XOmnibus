@@ -13,8 +13,7 @@
   "couplingIntensity": "Deep",
   "description": "Neon tetra spectral brightness modulates OVERLAP filter cutoff — fin flash tunes the reverb color",
   "engines": [
-    "Overlap",
-    "OddfeliX"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

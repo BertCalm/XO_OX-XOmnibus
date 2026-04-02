@@ -3,8 +3,7 @@
   "name": "Sky x Shore Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Osprey"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

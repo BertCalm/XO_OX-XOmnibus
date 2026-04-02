@@ -21,8 +21,7 @@
     "warmth": 0.625
   },
   "engines": [
-    "Overlap",
-    "Osteria"
+    "Overlap"
   ],
   "macroLabels": [
     "CHARACTER",

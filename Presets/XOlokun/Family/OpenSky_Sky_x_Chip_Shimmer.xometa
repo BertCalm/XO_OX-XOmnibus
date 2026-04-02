@@ -3,8 +3,7 @@
   "name": "Sky x Chip Shimmer",
   "mood": "Family",
   "engines": [
-    "OpenSky",
-    "Overworld"
+    "OpenSky"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,8 +3,7 @@
   "name": "Reef x Opal",
   "mood": "Family",
   "engines": [
-    "Obrix",
-    "Opal"
+    "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
