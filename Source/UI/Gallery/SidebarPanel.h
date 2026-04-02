@@ -17,8 +17,7 @@
 //   Enter/Space — activate focused tab
 //   Tab         — exit tab bar to content area
 //
-// V1: each non-Preset tab shows a placeholder label.
-//     PRESET tab embeds PresetBrowser (must be wired via setPresetManager()).
+// All six tabs are live: wire setPresetManager() then setProcessor() from the editor.
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
@@ -72,11 +71,7 @@ public:
             // Click handler — capture index by value
             btn->onClick = [this, i] { selectTab(static_cast<Tab>(i)); };
 
-            // PLAY tab hidden — redundant with PlaySurface pop-out
-            if (i == Play)
-                btn->setVisible(false);
-            else
-                addAndMakeVisible(btn);
+            addAndMakeVisible(btn);
         }
 
         setWantsKeyboardFocus(true);
@@ -178,7 +173,7 @@ public:
         resized();
 
         // Restore previously selected tab now that all content panels are live (#199).
-        // Skip if the persisted index is the invisible PLAY tab (4) — fall back to Preset.
+        // Restore previously selected tab now that all content panels are live (#199).
         {
             juce::PropertiesFile::Options opts;
             opts.applicationName     = "XOceanus";
@@ -186,8 +181,7 @@ public:
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
             const int saved = settings.getIntValue("sidebarTab", static_cast<int>(Preset));
-            const int safeIndex = (saved == static_cast<int>(Play)) ? static_cast<int>(Preset) : saved;
-            selectTab(static_cast<Tab>(juce::jlimit(0, static_cast<int>(NumTabs) - 1, safeIndex)));
+            selectTab(static_cast<Tab>(juce::jlimit(0, static_cast<int>(NumTabs) - 1, saved)));
         }
     }
 
@@ -299,9 +293,8 @@ public:
             const int direction = (key == juce::KeyPress::rightKey) ? 1 : -1;
             int next = static_cast<int>(activeTab) + direction;
             next = (next + n) % n;
-            // Skip invisible tabs (e.g. PLAY, index 4) — cycling must only land
-            // on visible tabs (#202, #205).  Guard against infinite loop by capping
-            // iterations at NumTabs.
+            // Skip invisible tabs — cycling must only land on visible tabs (#202, #205).
+            // Guard against infinite loop by capping iterations at NumTabs.
             for (int guard = 0; guard < n; ++guard)
             {
                 if (tabButtons[next] != nullptr && tabButtons[next]->isVisible())
