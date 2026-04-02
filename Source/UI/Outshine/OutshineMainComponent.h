@@ -125,15 +125,15 @@ public:
     {
         auto area = getLocalBounds();
 
+        // ── Proportional bottom strip heights: clamp to 12% of window each ──
+        // Prevents grainStrip or exportBar from dominating small windows.
+        const int maxStripH  = juce::jmax (20, area.getHeight() / 8);
+        const int actualExportH = juce::jmin (kExportBarH,  maxStripH);
+        const int actualGrainH  = juce::jmin (kGrainStripH, maxStripH);
+
         // Export bar always pinned at bottom
-        auto exportBarArea = area.removeFromBottom(kExportBarH);
-        auto grainArea     = area.removeFromBottom(kGrainStripH);
-
-        exportBar->setBounds(exportBarArea);
-        grainStrip->setBounds(grainArea);
-
-        // Preview player: small button in auto mode area
-        // (positioned by autoMode internally in Phase 1B; for now, just below grain strip)
+        exportBar->setBounds  (area.removeFromBottom (actualExportH));
+        grainStrip->setBounds (area.removeFromBottom (actualGrainH));
 
         // Remaining area split by state
         if (uiState == OutshineState::Shell)
@@ -142,6 +142,7 @@ public:
             shellState->setVisible(true);
             inputPanel->setVisible(false);
             autoMode->setVisible(false);
+            previewPlayer->setVisible(false);
         }
         else if (uiState == OutshineState::Input)
         {
@@ -149,19 +150,25 @@ public:
             shellState->setVisible(false);
             inputPanel->setVisible(true);
             autoMode->setVisible(false);
+            previewPlayer->setVisible(false);
         }
         else // Preview or Exporting
         {
-            auto left  = area.removeFromLeft(area.getWidth() / 2);
-            inputPanel->setBounds(left);
-            autoMode->setBounds(area);
+            // 40/60 split: input panel (left) / auto mode (right).
+            // Minimum 300px for auto mode so its controls don't clip.
+            int autoW  = juce::jmax (300, area.getWidth() * 2 / 5);
+            auto right = area.removeFromRight (autoW);
+            inputPanel->setBounds (area);   // remaining left portion
+            autoMode->setBounds   (right);
             shellState->setVisible(false);
             inputPanel->setVisible(true);
             autoMode->setVisible(true);
 
-            // Preview player floats in the autoMode area
-            previewPlayer->setBounds(area.getX() + area.getWidth() - 128,
-                                     area.getY() + 4, 120, 32);
+            // Preview player: pin to top-right corner of autoMode area,
+            // proportional width (min 80, max 140) and fixed 32px height.
+            int pvW = juce::jlimit (80, 140, right.getWidth() / 3);
+            previewPlayer->setBounds (right.getRight() - pvW - 4,
+                                      right.getY() + 4, pvW, 32);
         }
     }
 
