@@ -217,6 +217,12 @@ public:
     /// Call once per block. Uses the same step from the parent MasterFXSequencer.
     std::array<ModOutput, kMaxLanes> getModValues (int currentStep) const
     {
+        if (sr <= 0.0)
+        {
+            std::array<ModOutput, kMaxLanes> empty;
+            for (auto& o : empty) { o.target = MasterFXSequencer::Target::None; o.value = 0.0f; }
+            return empty;
+        }
         std::array<ModOutput, kMaxLanes> output;
 
         for (int l = 0; l < kMaxLanes; ++l)
@@ -337,7 +343,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;
     std::array<Lane, kMaxLanes> lanes;
     uint32_t randState = 0xCAFEBABE;
 
