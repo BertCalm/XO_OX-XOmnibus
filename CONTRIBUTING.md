@@ -9,12 +9,9 @@ Here's how the deep works.
 XOlokun requires:
 - **CMake** 3.22+
 - **Ninja** build system
-- **C++17** compiler (Xcode on macOS, GCC/Clang on Linux)
+- **Xcode Command Line Tools** (macOS) or **GCC/Clang** (Linux) — C++17 required
 - **JUCE** 8.0.4+ (included as submodule — `git submodule update --init --recursive`)
-- **Node.js** 20 via fnm (for tooling scripts):
-  ```bash
-  eval "$(fnm env)" && fnm use 20
-  ```
+- **Python** 3.9+ (optional — for `Tools/` preset management and XPN export scripts)
 
 ### Build
 
