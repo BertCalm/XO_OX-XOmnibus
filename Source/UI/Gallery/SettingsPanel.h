@@ -151,13 +151,13 @@ public:
         // runtime flag is live from the first frame, not just after the first toggle.
         A11y::setReducedMotion(settingsFile->getBoolValue("reducedMotion", false));
 
-        // High-Contrast placeholder label (future)
+        // High-Contrast placeholder label (future) — hidden until feature ships (#172)
         highContrastNote.setText("High Contrast — coming soon",
                                  juce::dontSendNotification);
         highContrastNote.setFont(GalleryFonts::body(10.0f));
         highContrastNote.setColour(juce::Label::textColourId,
                                    GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
-        content.addAndMakeVisible(highContrastNote);
+        content.addChildComponent(highContrastNote); // invisible; use addAndMakeVisible when feature ships
 
         // ── 3. MPE ───────────────────────────────────────────────────────────
         auto& apvts = processor.getAPVTS();
