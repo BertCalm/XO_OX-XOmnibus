@@ -185,9 +185,11 @@ namespace GalleryColors {
     inline juce::Colour goldDim()  { return juce::Colour(get(xoGold)).withAlpha(0.14f); }
     inline juce::Colour goldGlow() { return juce::Colour(get(xoGold)).withAlpha(0.28f); }
 
-    /** Ensures minimum visibility on dark backgrounds.
-        Preserves hue/saturation but lifts luminance if contrast < 3:1 on Dark::bg. */
-    static inline juce::Colour ensureMinContrast(juce::Colour c, float minRatio = 3.0f) noexcept
+    /** Ensures minimum WCAG AA contrast on dark backgrounds.
+        Preserves hue/saturation but lifts luminance if contrast < 4.5:1 on Dark::bg.
+        4.5:1 meets WCAG AA for normal text (under 18pt / 14pt bold) — #211.
+        Pass minRatio = 3.0f explicitly for large-text-only contexts. */
+    static inline juce::Colour ensureMinContrast(juce::Colour c, float minRatio = 4.5f) noexcept
     {
         // Relative luminance of Dark::bg (#0E0E10) ≈ 0.0046
         constexpr float bgLum = 0.0046f;
