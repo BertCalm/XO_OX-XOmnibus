@@ -298,7 +298,7 @@ public:
             int next = static_cast<int>(activeTab) + direction;
             next = (next + n) % n;
             // Skip invisible tabs (e.g. PLAY, index 4) — cycling must only land
-            // on visible tabs (#205).  Guard against infinite loop by capping
+            // on visible tabs (#202, #205).  Guard against infinite loop by capping
             // iterations at NumTabs.
             for (int guard = 0; guard < n; ++guard)
             {
