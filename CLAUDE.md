@@ -13,7 +13,7 @@ and mutate into sounds impossible with any single synth. **76 engines** are regi
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK, OBIONT, OKEANOS, OUTFLOW
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** ~17,250 factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
+- **Presets:** ~17,300 factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — dark mode default. Engine accent colors frame the interface.
 
@@ -271,7 +271,7 @@ See `Docs/xoceanus_name_migration_reference.md` for the full mapping and gotchas
 
 - **CMake ≥ 3.22**, **Ninja**, **Xcode Command Line Tools** required
 - JUCE 8 lives in `Libs/JUCE/` (fetched automatically via FetchContent if absent)
-- AU plugin code: `aumu Xolk XoOx` — used for auval and DAW identification
+- AU plugin code: `aumu Xocn XoOx` — used for auval and DAW identification
 - `OSX_ARCHITECTURES` must be set **before** `project()` in CMakeLists.txt (universal binary)
 - Use `apvts.processor` not `getProcessor()` in JUCE 8
 - `atomic.load()` required for jmax; `1`-param `keyPressed` override
@@ -294,7 +294,7 @@ cmake -B build-ios -G Xcode \
 cmake --build build-ios --config Release
 
 # Validate AU (run after every macOS build)
-auval -v aumu Xolk XoOx
+auval -v aumu Xocn XoOx
 ```
 
 ## XPN Export (MPC Compatibility)
@@ -367,7 +367,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 
 ## Seance Findings
 
-**72 engines seanced** (original 47 by 2026-03-21; Kitchen Collection 24 in batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23; OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced — 76 total registered) — All built engines except OSMOSIS/OBIONT/OKEANOS/OUTFLOW seanced. OXYTO: 9.5/10 — NEW FLEET LEADER (B040 Note Duration, unanimous). OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B038 (Psychology-as-DSP) RATIFIED 8-0, B039 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. B037 (Three-Timescale Conductor) confirmed. P0 FIXED: OperaSVF block-rate coefficient cache committed (2026-03-22). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All original 47 engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
+**72 engines seanced** (original 47 by 2026-03-21; Kitchen Collection 24 in batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23; OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced — 76 total registered; OBIONT/OKEANOS/OUTFLOW have presets but seance pending) — All built engines except OSMOSIS/OBIONT/OKEANOS/OUTFLOW seanced. OXYTO: 9.5/10 — NEW FLEET LEADER (B040 Note Duration, unanimous). OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B038 (Psychology-as-DSP) RATIFIED 8-0, B039 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. B037 (Three-Timescale Conductor) confirmed. P0 FIXED: OperaSVF block-rate coefficient cache committed (2026-03-22). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All original 47 engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -447,7 +447,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-22 fixes)**: ~8.0 (ORIGAMI) to 9.5 (OXYTO). Fleet avg ~8.8. **72 engines seanced (76 total − 4 not yet seanced: OSMOSIS, OBIONT, OKEANOS, OUTFLOW). OXYTO 9.5/10 (new fleet leader). OUTLOOK 7.1→8.0/10 (P0-01–04 fixed 2026-03-23). OPERA 8.85/10 (P0 fixed 2026-03-22, 3 UX fixes for 9.0+).** Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
+- **Seance score range (post 2026-03-22 fixes)**: ~8.0 (ORIGAMI) to 9.5 (OXYTO). Fleet avg ~8.8. **72 engines seanced (76 total − 4 not yet seanced: OSMOSIS, OBIONT, OKEANOS, OUTFLOW; OBIONT/OKEANOS/OUTFLOW have presets, seance pending). OXYTO 9.5/10 (new fleet leader). OUTLOOK 7.1→8.0/10 (P0-01–04 fixed 2026-03-23). OPERA 8.85/10 (P0 fixed 2026-03-22, 3 UX fixes for 9.0+).** Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/24 original Prism Sweep engines (Optic intentionally exempt). Coverage for 52 newer engines not yet systematically audited.
 - **D006 mod wheel coverage**: 22/22 original Prism Sweep MIDI-capable engines (Round 12C completed the last 7 engines). Coverage for newer engines not yet audited.
@@ -520,7 +520,6 @@ Full process: `Docs/xoceanus_new_engine_process.md`
 
 - Full doc inventory: `Docs/MANIFEST.md`
 - Documentation governance: `Docs/GOVERNANCE.md`
-- Documentation improvement plan: `Docs/documentation_health_plan.md`
 - Master specification: `Docs/xoceanus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
 - Community strategy: `Docs/community-strategy-v2.md`

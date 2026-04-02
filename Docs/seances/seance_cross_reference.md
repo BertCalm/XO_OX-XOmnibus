@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-03-24 — All 73 engines added; 72 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23); OSMOSIS design-only (not yet seanced)
+**Updated:** 2026-04-01 — All 76 engines added; 72 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23); OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -77,6 +77,16 @@
 |--------|-------------|-------|--------------|---------|--------------|-----------------|
 | XOxytocin | OXYTOCIN | 9.5/10 — NEW FLEET LEADER | B040 Note Duration as Synthesis Parameter (unanimous) | None identified (all 3 pre-build flags resolvable) | None (concept seance: all doctrines PASS at design level) | "Note duration as emotional state is not a novelty — it is an instrument design philosophy. The causal chain is honest physics." — Buchla |
 | XOutlook | OUTLOOK | See Original Fleet above | — | — | — | — |
+
+---
+
+### Late-Registered Engines 74–76 (Added 2026-03-28 to 2026-03-31)
+
+| Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
+|--------|-------------|-------|--------------|---------|--------------|-----------------|
+| XObiont | OBIONT | NOT SEANCED | Cellular automata oscillator — 1D Wolfram CA spatial projection + cosine readout + anti-extinction | N/A | N/A | "OBIONT awaits its seance. CA oscillator with 8-voice poly and anti-extinction mechanism. Added 2026-03-28, presets exist, seance pending." |
+| XOkeanos | OKEANOS | NOT SEANCED | Titan ocean warmth engine — warmth-focused synthesis, OKEANOS prefix registered | N/A | N/A | "OKEANOS awaits its seance. Added 2026-03-31. Note: prefix `okan_` registered; OKEANOS name distinct from deprecated XOCEANUS engine prefix. Seance pending." |
+| XOutflow | OUTFLOW | NOT SEANCED | Deep storm current engine — current-speed synthesis, indigo depth color | N/A | N/A | "OUTFLOW awaits its seance. Added 2026-03-31, presets exist, seance pending." |
 
 ---
 
@@ -158,7 +168,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-03-23 — All 73 Engines)
+## Seance Score Ranking (Updated 2026-04-01 — All 76 Engines)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -270,6 +280,9 @@
 | Engine | Verdict | Notes |
 |--------|---------|-------|
 | OSMOSIS | NOT SEANCED | Design-confirmed 2026-03-21. External audio membrane engine. Build pending. |
+| OBIONT | NOT SEANCED | Added 2026-03-28. CA oscillator, 8-voice poly, anti-extinction. Presets exist; seance pending. |
+| OKEANOS | NOT SEANCED | Added 2026-03-31. Titan ocean warmth engine. Presets exist; seance pending. Note OKEANOS prefix `okan_` is distinct from platform name XOceanus. |
+| OUTFLOW | NOT SEANCED | Added 2026-03-31. Deep storm current engine. Presets exist; seance pending. |
 | ORGANISM | 8.1 (Docs) / 7.2 (re-seance) | CA filter cutoff patched 2026-03-20. Score uncertain post-patch. |
 | OVERTONE | 8.1 (Docs) / 7.6 (re-seance) | Pi table patch applied 2026-03-20. Nyquist anti-alias patched. |
 | ODDFELIX | ~C+ (original) | Graded as letter grade by ghost council; see ~8.5 post-fix estimate. |

@@ -72,7 +72,7 @@ This is not a feature. This is the ecology.
 | Offering | Mantis Shrimp | Psychology-driven boom bap — Berlyne curiosity + 5 city modes |
 | Oxytocin | Praya dubia Siphonophore | Circuit-modeling × Sternberg's Triangular Theory of Love |
 | Outlook | Horizon Drifter | Dual wavetable horizon scan + parallax stereo |
-| *(+24 Kitchen Collection engines)* | *Various aquatic creatures* | Organs, pianos, bass, strings, pads, EPs — released as community milestones are reached |
+| *(+27 additional engines)* | *Various aquatic creatures* | Organs, pianos, bass, strings, pads, EPs — released as community milestones are reached |
 
 ## What Makes This Different
 
@@ -141,14 +141,14 @@ auval -v aumu Xocn XoOx
 - `Docs/xoceanus_master_specification.md` — the single source of truth
 - `Docs/xoceanus_sound_design_guides.md` — per-engine sound design
 - `scripture/the-scripture.md` — the Book of Bin (Guru Bin's accumulated DSP wisdom)
-- `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines
+- `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines (OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced)
 - `site/` — the web presence at [XO-OX.org](https://xo-ox.org)
 
 ## The Expedition
 
 XOceanus is free. The Expedition unlocks more of it — together.
 
-**24 Kitchen Collection engines** (organs, pianos, bass, strings, pads, EPs) are released as community Patreon milestones are reached. When the milestone is hit, the engines are free for everyone. Permanently. No one gets left behind.
+**27 additional engines** (organs, pianos, bass, strings, pads, EPs) are released as community Patreon milestones are reached. When the milestone is hit, the engines are free for everyone. Permanently. No one gets left behind.
 
 Join the expedition: [patreon.com/cw/XO_OX](https://www.patreon.com/cw/XO_OX)
 
