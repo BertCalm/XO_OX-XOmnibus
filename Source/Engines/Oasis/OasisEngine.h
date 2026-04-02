@@ -20,7 +20,7 @@
 //      Culling). Ecological Memory means the ecosystem evolves — perfect
 //      playing makes it rigid, imperfect playing makes it bloom.
 //
-//  Accent: Bioluminescent Cyan #00FFFF
+//  Accent: Desert Spring Teal #00827F
 //  Parameter prefix: oas_
 //
 //==============================================================================
