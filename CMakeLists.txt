@@ -534,6 +534,7 @@ add_executable(XOceanusTests
     Tests/PipelineTests/FullPipelineTests.cpp
     Tests/ParameterSweepTests/ParameterSweepTests.cpp
     Tests/BenchmarkTests/CPUBenchmarkTests.cpp
+    Tests/RegressionTests/AudioRegressionTests.cpp
 )
 
 # FamilyWaveguideTest is a standalone executable (has its own main())

@@ -17,6 +17,7 @@
 #include "PipelineTests/FullPipelineTests.h"
 #include "ParameterSweepTests/ParameterSweepTests.h"
 #include "BenchmarkTests/CPUBenchmarkTests.h"
+#include "RegressionTests/AudioRegressionTests.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_gui_basics/juce_gui_basics.h>
@@ -46,6 +47,7 @@ int main()
     totalFailures += pipeline_tests::runAll();
     totalFailures += param_sweep_tests::runAll();
     totalFailures += cpu_benchmark_tests::runAll();
+    totalFailures += audio_regression_tests::runAll();
 
     std::cout << "\n##################################################\n";
     if (totalFailures == 0)
