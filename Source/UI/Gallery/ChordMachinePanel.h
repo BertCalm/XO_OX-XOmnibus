@@ -312,6 +312,40 @@ public:
         }
     }
 
+    //==========================================================================
+    // Accessibility: expose per-step state to screen readers.
+    // JUCE routes getAccessibleDescription() through the component's
+    // AccessibilityHandler; we update it in timerCallback so the current
+    // sequencer step is always announced.
+    juce::String buildStepDescription() const
+    {
+        auto& cm       = processor.getChordMachine();
+        int   curStep  = cm.getCurrentStep();
+        bool  seqOn    = cm.isSequencerRunning();
+
+        juce::String desc = "Chord Machine sequencer";
+        if (seqOn)
+            desc += ", playing, step " + juce::String(curStep + 1) + " of 16";
+        else
+            desc += ", stopped";
+
+        // Summarise active steps for screen readers
+        juce::StringArray activeNotes;
+        for (int s = 0; s < 16; ++s)
+        {
+            auto step = cm.getStep(s);
+            if (step.active && step.rootNote >= 0)
+                activeNotes.add("S" + juce::String(s + 1) + ":"
+                                + ChordMachine::midiNoteToName(step.rootNote));
+        }
+        if (activeNotes.isEmpty())
+            desc += ", no active steps";
+        else
+            desc += ", active steps: " + activeNotes.joinIntoString(" ");
+
+        return desc;
+    }
+
 private:
     void timerCallback() override
     {
@@ -320,6 +354,10 @@ private:
         if (step != lastPaintedStep)
         {
             lastPaintedStep = step;
+            // Update accessible description so screen readers announce the
+            // current step position without needing separate focusable children
+            // for each painted step cell (addresses #392).
+            setDescription(buildStepDescription());
             repaint();
         }
     }

@@ -51,6 +51,17 @@ public:
     explicit ObrixDetailPanel(XOceanusProcessor& proc, MIDILearnManager* midiLearn = nullptr)
         : apvts(proc.getAPVTS()), learnManager(midiLearn)
     {
+        // Accessibility: mark this as a keyboard focus container so screen
+        // readers group the knobs by their visual sections (addresses #392).
+        // Section headers are drawn in paint() and cannot be focusable themselves,
+        // but the container grouping ensures screen readers announce "OBRIX Reef
+        // parameter panel" before navigating the child knobs.
+        setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
+        setTitle("OBRIX Engine Parameters");
+        setDescription("Reef modular synth: 81 parameters across 10 sections "
+                       "(Sources, Reef Ecology, Harmonic Field, Environmental, "
+                       "Amp Envelope, Modulators, Post-Mix, FX, Stateful, Global)");
+
         const juce::Colour accent = juce::Colour(kReefJade);
 
         // ── Helpers ──────────────────────────────────────────────────────────
