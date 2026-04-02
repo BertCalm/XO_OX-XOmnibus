@@ -836,15 +836,10 @@ inline PresetData breed (const PresetData& parentA,
             PresetDNA altDNA      = (fA >= fB) ? parentB.dna : parentA.dna;
 
             // Build a remapped copy of altParams using dominant engine prefix.
-            // frozenPrefixForEngine() already returns a trailing underscore for all
-            // engines, so we must not append another "_" — doing so produces double
-            // underscores ("oven__", "wash__") for KC engines. normalizePrefix()
-            // ensures exactly one trailing underscore regardless of the return value.
-            auto normalizePrefix = [](const juce::String& p) -> juce::String {
-                return p.endsWithChar('_') ? p : p + "_";
-            };
-            juce::String domPrefix = normalizePrefix (frozenPrefixForEngine (domEng));
-            juce::String altPrefix = normalizePrefix (frozenPrefixForEngine (altEng));
+            // frozenPrefixForEngine() returns prefix with trailing underscore for
+            // all engines (normalized in #126), so direct use is safe.
+            juce::String domPrefix = frozenPrefixForEngine (domEng);
+            juce::String altPrefix = frozenPrefixForEngine (altEng);
             auto* remapped         = new juce::DynamicObject();
 
             if (altParams.isObject())

@@ -570,10 +570,10 @@ add_test(NAME XOceanusTests COMMAND XOceanusTests)
 # ==============================================================================
 # Installer package (macOS only)
 # Builds Installer/XOceanus-Installer.pkg using pkgbuild + productbuild.
-# Usage:  cmake --build build --target package
+# Usage:  cmake --build build --target installer
 # ==============================================================================
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    add_custom_target(package
+    add_custom_target(installer
         COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/Installer/build_pkg.sh ${CMAKE_BUILD_TYPE}
         DEPENDS XOceanus_AU XOceanus_Standalone
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}

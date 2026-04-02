@@ -165,6 +165,8 @@ public:
 
         if (localCfg.supabaseUrl.isEmpty())
             return { false, {}, "Vault not configured" };
+        if (! requireHttps (localCfg.supabaseUrl))
+            return { false, {}, "HTTPS required" };
 
         // Parse recipe to extract metadata for the row
         auto recipe = juce::JSON::parse (recipeJSON);
@@ -243,6 +245,8 @@ public:
 
         if (localCfg.supabaseUrl.isEmpty())
             return { {}, 0, 0, false, "Vault not configured" };
+        if (! requireHttps (localCfg.supabaseUrl))
+            return { {}, 0, 0, false, "HTTPS required" };
 
         // Call the vault-search Edge Function
         juce::String endpoint = localCfg.supabaseUrl + "/functions/v1/vault-search?";
@@ -308,6 +312,8 @@ public:
 
         if (localCfg.supabaseUrl.isEmpty())
             return { false, {}, {}, "Vault not configured" };
+        if (! requireHttps (localCfg.supabaseUrl))
+            return { false, {}, {}, "HTTPS required" };
 
         // PostgREST query: select single row by recipe_id
         juce::String endpoint = localCfg.supabaseUrl + "/rest/v1/shared_recipes"
@@ -354,6 +360,7 @@ public:
         }
 
         if (localCfg.supabaseUrl.isEmpty()) return false;
+        if (! requireHttps (localCfg.supabaseUrl)) return false;
 
         auto body = std::make_unique<juce::DynamicObject>();
         body->setProperty ("recipeId", recipeId);
@@ -386,6 +393,8 @@ public:
         }
 
         if (localCfg.supabaseUrl.isEmpty() || localCfg.authorToken.isEmpty())
+            return false;
+        if (! requireHttps (localCfg.supabaseUrl))
             return false;
 
         // PostgREST DELETE with filter
@@ -432,6 +441,12 @@ private:
     std::atomic<bool> destroyed_ { false };
     mutable std::mutex configMutex;
     VaultConfig cfg;
+
+    // Enforce TLS-only connections — reject any non-HTTPS URL.
+    static bool requireHttps (const juce::String& url)
+    {
+        return url.startsWithIgnoreCase ("https://");
+    }
 
     static juce::String supabaseHeaders (const VaultConfig& c)
     {

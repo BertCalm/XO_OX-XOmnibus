@@ -83,7 +83,15 @@ public:
 
         // ── Voice count ────────────────────────────────────────────────────────
         auto* eng = processor.getEngine(slot);
-        int newCount = eng ? eng->getActiveVoiceCount() : 0;
+
+        // Ghost/empty slot: only check if an engine appeared, skip all polling (#188)
+        if (!eng)
+        {
+            if (hasEngine) { refresh(); }
+            return;
+        }
+
+        int newCount = eng->getActiveVoiceCount();
         if (newCount != voiceCount)
         {
             voiceCount = newCount;

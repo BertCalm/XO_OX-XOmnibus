@@ -114,110 +114,107 @@ inline juce::String resolveEngineAlias(const juce::String& name)
 
 // Frozen parameter prefix for each canonical engine ID.
 // These NEVER change — parameter IDs are stable across releases.
-// Returns the frozen parameter prefix for the given engine. Original fleet
-// prefixes omit the trailing underscore (e.g. "snap", "morph"). Kitchen
-// Collection prefixes include it (e.g. "oven_", "ochre_", "wash_"). Callers
-// constructing parameter IDs should check for trailing underscore before
-// appending one.
+// All prefixes include the trailing underscore (e.g. "snap_", "oven_").
+// Callers can concatenate directly: prefix + paramName → "snap_filterCutoff".
 inline juce::String frozenPrefixForEngine(const juce::String& engineId)
 {
     static const std::map<juce::String, juce::String> prefixes {
-        { "OddfeliX",   "snap"    },
-        { "OddOscar",   "morph"   },
-        { "Overdub",     "dub"     },
-        { "Odyssey",     "drift"   },
-        { "Oblong",      "bob"     },
-        { "Obese",       "fat"     },
-        { "Overbite",    "poss"    },
-        { "Onset",       "perc"    },
-        { "Overworld",   "ow"      },
-        { "Opal",        "opal"    },
-        { "Orbital",     "orb"     },
-        { "Organon",     "organon" },
-        { "Ouroboros",   "ouro"    },
-        { "Obsidian",    "obsidian"},
-        { "Origami",     "origami" },
-        { "Oracle",      "oracle"  },
-        { "Obscura",     "obscura" },
-        { "Oceanic",     "ocean"   },
-        { "Optic",       "optic"   },
-        { "Oblique",     "oblq"    },
-        { "Ocelot",      "ocelot"  },
-        { "Osprey",      "osprey"  },
-        { "Osteria",     "osteria" },
-        { "Owlfish",     "owl"     },
-        { "Ohm",         "ohm"     },
-        { "Orphica",     "orph"    },
-        { "Obbligato",   "obbl"    },
-        { "Ottoni",      "otto"    },
-        { "Ole",         "ole"     },
-        { "Ombre",       "ombre"   },
-        { "Orca",        "orca"    },
-        { "Octopus",     "octo"    },
-        { "Overlap",     "olap"    },
-        { "Outwit",      "owit"    },
+        { "OddfeliX",   "snap_"     },
+        { "OddOscar",   "morph_"    },
+        { "Overdub",     "dub_"      },
+        { "Odyssey",     "drift_"    },
+        { "Oblong",      "bob_"      },
+        { "Obese",       "fat_"      },
+        { "Overbite",    "poss_"     },
+        { "Onset",       "perc_"     },
+        { "Overworld",   "ow_"       },
+        { "Opal",        "opal_"     },
+        { "Orbital",     "orb_"      },
+        { "Organon",     "organon_"  },
+        { "Ouroboros",   "ouro_"     },
+        { "Obsidian",    "obsidian_" },
+        { "Origami",     "origami_"  },
+        { "Oracle",      "oracle_"   },
+        { "Obscura",     "obscura_"  },
+        { "Oceanic",     "ocean_"    },
+        { "Optic",       "optic_"    },
+        { "Oblique",     "oblq_"     },
+        { "Ocelot",      "ocelot_"   },
+        { "Osprey",      "osprey_"   },
+        { "Osteria",     "osteria_"  },
+        { "Owlfish",     "owl_"      },
+        { "Ohm",         "ohm_"      },
+        { "Orphica",     "orph_"     },
+        { "Obbligato",   "obbl_"     },
+        { "Ottoni",      "otto_"     },
+        { "Ole",         "ole_"      },
+        { "Ombre",       "ombre_"    },
+        { "Orca",        "orca_"     },
+        { "Octopus",     "octo_"     },
+        { "Overlap",     "olap_"     },
+        { "Outwit",      "owit_"     },
         // V1 Concept Engines
-        { "OpenSky",     "sky"     },
-        { "Ostinato",    "osti"    },
-        { "OceanDeep",   "deep"    },
-        { "Ouie",        "ouie"    },
+        { "OpenSky",     "sky_"      },
+        { "Ostinato",    "osti_"     },
+        { "OceanDeep",   "deep_"     },
+        { "Ouie",        "ouie_"     },
         // Flagship
-        { "Obrix",       "obrix"   },
+        { "Obrix",       "obrix_"    },
         // V2 Theorem Engines
-        { "Orbweave",    "weave"   },
-        { "Overtone",    "over"    },
-        { "Organism",    "org"     },
+        { "Orbweave",    "weave_"    },
+        { "Overtone",    "over_"     },
+        { "Organism",    "org_"      },
         // Singularity Engines
-        { "Oxbow",       "oxb"     },
-        { "Oware",       "owr"     },
+        { "Oxbow",       "oxb_"      },
+        { "Oware",       "owr_"      },
         // Kuramoto Vocal Synthesis
-        { "Opera",       "opera"   },
+        { "Opera",       "opera_"    },
         // Psychology-Driven Boom Bap Drums
-        { "Offering",    "ofr"     },
+        { "Offering",    "ofr_"      },
         // Chef Quad Collection
-        { "Oto",         "oto"     },
-        { "Octave",      "oct"     },
-        { "Oleg",        "oleg"    },
-        { "Otis",        "otis"    },
+        { "Oto",         "oto_"      },
+        { "Octave",      "oct_"      },
+        { "Oleg",        "oleg_"     },
+        { "Otis",        "otis_"     },
         // KITCHEN Quad Collection
-        { "Oven",        "oven_"   },
-        { "Ochre",       "ochre_"  },
-        { "Obelisk",     "obel_"   },
-        { "Opaline",     "opal2_"  },
+        { "Oven",        "oven_"     },
+        { "Ochre",       "ochre_"    },
+        { "Obelisk",     "obel_"     },
+        { "Opaline",     "opal2_"    },
         // CELLAR Quad Collection
-        { "Ogre",        "ogre_"   },
-        { "Olate",       "olate_"  },
-        { "Oaken",       "oaken_"  },
-        { "Omega",       "omega_"  },
+        { "Ogre",        "ogre_"     },
+        { "Olate",       "olate_"    },
+        { "Oaken",       "oaken_"    },
+        { "Omega",       "omega_"    },
         // GARDEN Quad Collection
-        { "Orchard",     "orch_"   },
-        { "Overgrow",    "grow_"   },
-        { "Osier",       "osier_"  },
-        { "Oxalis",      "oxal_"   },
+        { "Orchard",     "orch_"     },
+        { "Overgrow",    "grow_"     },
+        { "Osier",       "osier_"    },
+        { "Oxalis",      "oxal_"     },
         // BROTH Quad Collection
-        { "Overwash",    "wash_"   },
-        { "Overworn",    "worn_"   },
-        { "Overflow",    "flow_"   },
-        { "Overcast",    "cast_"   },
+        { "Overwash",    "wash_"     },
+        { "Overworn",    "worn_"     },
+        { "Overflow",    "flow_"     },
+        { "Overcast",    "cast_"     },
         // FUSION Quad Collection
-        { "Okeanos",     "okan_"   },  // Frozen prefix matches actual engine prefix (was oasis_)
-        { "Oddfellow",   "oddf_"   },
-        { "Onkolo",      "onko_"   },
-        { "Opcode",      "opco_"   },
+        { "Okeanos",     "okan_"     },
+        { "Oddfellow",   "oddf_"     },
+        { "Onkolo",      "onko_"     },
+        { "Opcode",      "opco_"     },
         // Membrane Collection
-        { "Osmosis",     "osmo_"   },
+        { "Osmosis",     "osmo_"     },
         // Love Triangle Circuit Synth
-        { "Oxytocin",    "oxy_"    },
+        { "Oxytocin",    "oxy_"      },
         // Panoramic Visionary Synth
-        { "Outlook",     "look_"   },
+        { "Outlook",     "look_"     },
         // Dual Engine Integration
-        { "Oasis",       "oas_"    },
-        { "Outflow",     "out_"    },
+        { "Oasis",       "oas_"      },
+        { "Outflow",     "out_"      },
         // Cellular Automata Oscillator
-        { "Obiont",      "obnt_"   },
+        { "Obiont",      "obnt_"     },
     };
     auto it = prefixes.find(engineId);
-    return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
+    return (it != prefixes.end()) ? it->second : juce::String();
 }
 
 // Resolve legacy per-parameter aliases for OddfeliX (Snap) engine.
