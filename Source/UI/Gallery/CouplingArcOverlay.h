@@ -76,9 +76,15 @@ public:
             tileCenters[static_cast<size_t>(slot)] = centre;
     }
 
+    // Fix #387: dirty-flag gating + adaptive timer rate.
+    // When no coupling routes are active, poll at 1 Hz (coupling route changes
+    // happen at human interaction rate, ~1 Hz). When active routes exist, run
+    // at 30 Hz for smooth arc animation. This eliminates ~29 wasted polling
+    // cycles/second during idle (no coupling set up).
     void timerCallback() override
     {
         if (!isVisible()) return;
+
         // P1 fix: skip repaint when no active routes exist — avoids full
         // 1100×700 overlay redraw at 30Hz when the matrix is empty.
         // P26 fix: cache the routes here so paint() doesn't call getRoutes() again.
@@ -89,8 +95,21 @@ public:
             if (r.active && r.amount >= 0.001f)
             { hasActive = true; break; }
         }
+
         if (hasActive)
+        {
+            // Wake to 30 Hz if we were in idle polling mode
+            if (getTimerInterval() != 33)
+                startTimerHz(30);
             repaint();
+        }
+        else
+        {
+            // Step down to 1 Hz idle polling when no routes are active — coupling
+            // route changes are a deliberate user action, not a continuous stream.
+            if (getTimerInterval() == 33)
+                startTimerHz(1);
+        }
     }
 
     void paint(juce::Graphics& g) override

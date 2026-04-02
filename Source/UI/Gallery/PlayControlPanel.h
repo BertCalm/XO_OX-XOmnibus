@@ -175,6 +175,7 @@ public:
     //==========================================================================
     void mouseDown(const juce::MouseEvent& e) override
     {
+        wakeTimer(); // fix #387: wake adaptive timer on interaction
         if (e.mods.isRightButtonDown()) return;
 
         if (expressionStripBounds().contains(e.position.toInt()))
@@ -230,10 +231,14 @@ public:
 
     //==========================================================================
     // Timer — 30 Hz tick; meter refresh every 3rd tick (10 Hz)
+    // Fix #387: dirty-flag gating — track idle ticks and step down to 1 Hz
+    // after ~2 seconds of no state change, stepping back up to 30 Hz on any
+    // activity. This eliminates ~58 wasted ticks/second when transport is stable.
     //==========================================================================
     void timerCallback() override
     {
         ++tickCount;
+        bool anyChange = false;
 
         // ── Pitch bend spring physics (every tick = 30 Hz) ────────────────────
         if (pitchBendSpringActive && !xyDragging)
@@ -249,6 +254,7 @@ public:
             // Optionally send MIDI pitch bend to the collector
             sendPitchBendMidi(pitchBendPos);
             repaint(expressionStripBounds());
+            anyChange = true;
         }
 
         // ── Macro meter refresh (every 3rd tick ≈ 10 Hz) ─────────────────────
@@ -277,8 +283,36 @@ public:
             }
 
             if (changed)
+            {
                 repaint();
+                anyChange = true;
+            }
         }
+
+        // ── Adaptive timer rate (fix #387) ────────────────────────────────────
+        // After ~60 ticks (~2s) of no change, drop to 1 Hz polling to save CPU.
+        // Wake back to 30 Hz on any state change (including mouse events via
+        // the wakeTimer() helper called from mouse handlers).
+        if (anyChange)
+        {
+            idleTickCount = 0;
+            if (getTimerInterval() != 33)   // currently in 1 Hz mode → wake up
+                startTimerHz(30);
+        }
+        else
+        {
+            ++idleTickCount;
+            if (idleTickCount > 60 && getTimerInterval() == 33)
+                startTimerHz(1); // step down to 1 Hz idle polling
+        }
+    }
+
+    // Call from mouse event handlers to wake the timer back to 30 Hz
+    void wakeTimer()
+    {
+        idleTickCount = 0;
+        if (getTimerInterval() != 33)
+            startTimerHz(30);
     }
 
 private:
@@ -852,6 +886,9 @@ private:
 
     // Timer tick counter for 10 Hz gating inside 30 Hz timer
     int tickCount = 0;
+
+    // Fix #387: idle tick counter for adaptive timer rate (30 Hz → 1 Hz after ~2s idle)
+    int idleTickCount = 0;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayControlPanel)
 };

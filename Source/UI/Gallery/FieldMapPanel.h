@@ -54,7 +54,32 @@ public:
         ++headIdx;
     }
 
-    void timerCallback() override { if (!isVisible()) return; repaint(); }
+    // Fix #387: dirty-flag gating — only repaint when note buffer has changed
+    // (new note arrived) or when there are still visible dots that are actively
+    // fading (lastNoteTime within the 240s fade window). Stops all repaints when
+    // the canvas has been empty for more than 4 minutes.
+    void timerCallback() override
+    {
+        if (!isVisible()) return;
+
+        // Always repaint if new notes have been added since last tick
+        if (headIdx != lastRepaintHeadIdx)
+        {
+            lastRepaintHeadIdx = headIdx;
+            lastNoteActivityTime = juce::Time::getCurrentTime();
+            repaint();
+            return;
+        }
+
+        // Continue repainting while dots are still fading (up to 240s after last note)
+        constexpr double kFadeWindowSeconds = 240.0;
+        if (headIdx > 0 &&
+            (juce::Time::getCurrentTime() - lastNoteActivityTime).inSeconds() < kFadeWindowSeconds)
+        {
+            repaint();
+        }
+        // else: buffer empty or all dots fully faded — skip repaint
+    }
 
     void paint(juce::Graphics& g) override
     {
@@ -142,6 +167,10 @@ private:
     std::array<NoteEvent, kMaxEvents> events {};
     size_t headIdx = 0;
     juce::Time sessionStart;
+
+    // Fix #387: dirty-flag state for timerCallback gating
+    size_t lastRepaintHeadIdx = 0;            // headIdx value at last repaint
+    juce::Time lastNoteActivityTime;           // time of last note addition
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FieldMapPanel)
 };
