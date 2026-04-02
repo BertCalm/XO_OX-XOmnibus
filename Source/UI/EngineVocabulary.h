@@ -228,11 +228,13 @@ private:
             //------------------------------------------------------------------
             { "overworld", {
                 { "ow_era",              "ERA"     },
-                // Macros
-                { "ow_macroCharacter",   "ERA"     },
-                { "ow_macroMovement",    "PULSE"   },
-                { "ow_macroCoupling",    "SYNC"    },
-                { "ow_macroSpace",       "SPACE"   },
+                // Macros -- keyed on actual registered param IDs (fixes #305).
+                // Overworld registers ow_macroEra/Crush/Glitch/Space, not the
+                // generic macroCharacter/Movement/Coupling/Space names.
+                { "ow_macroEra",         "ERA"     },  // M1 CHARACTER
+                { "ow_macroCrush",       "CRUSH"   },  // M2 MOVEMENT
+                { "ow_macroGlitch",      "GLITCH"  },  // M3 COUPLING
+                { "ow_macroSpace",       "SPACE"   },  // M4 SPACE
             }},
 
             //------------------------------------------------------------------

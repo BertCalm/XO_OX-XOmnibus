@@ -516,6 +516,16 @@ public:
             case CouplingType::LFOToPitch:    couplingPitchMod += val * 2.0f; break;
             case CouplingType::AmpToPitch:    couplingPitchMod += val; break;
             case CouplingType::EnvToMorph:    couplingBodyMod += val; break;
+            case CouplingType::AmpToChoke:
+                // Adversarial coupling: competing engine's amplitude suppresses OVEN.
+                // Accumulate absolute RMS of the incoming buffer for this block.
+                {
+                    float sum = 0.0f;
+                    for (int i = 0; i < numSamples; ++i)
+                        sum += buf[i] * buf[i];
+                    couplingAmpChoke += std::sqrt (sum / static_cast<float> (numSamples)) * amount;
+                }
+                break;
             default: break;
         }
     }
@@ -623,6 +633,7 @@ public:
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBodyMod = 0.0f;
+        couplingAmpChoke = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
@@ -648,15 +659,22 @@ public:
         float scaledDecay = pAmpDecay * sustainScale;
         float scaledRelease = pAmpRelease * (0.5f + sustainScale * 0.5f);
 
-        // ADVERSARIAL COUPLING PREP STUBS — Kitchen Quad V2 targets.
-        // competition: cast iron's massive acoustic impedance (36.72 MRayl) under duress.
-        //   At max, output saturation = cast iron piano suppressing smaller instruments.
-        //   V2 target: cross-engine amplitude competition (XOven suppresses weaker bodies).
+        // ADVERSARIAL COUPLING — Kitchen Quad competitive suppression.
+        // competition (oven_competition): scales how strongly an incoming AmpToChoke signal
+        //   from a competing engine ducks OVEN's output amplitude.
+        //   At 0.0 (default): no effect — fully backward compatible.
+        //   At 1.0: a full-level competing engine can suppress OVEN down to a 0.1 floor.
+        //   Self-saturation (tanh) below models OVEN's own impedance under duress.
         // couplingResonance: sympathetic drive boost when coupled to another Kitchen engine.
         //   V2 target: impedance-transmission coupling (T = 4*Z1*Z2/(Z1+Z2)^2) per engine pair.
-        // Both parameters produce audible DSP output now; behaviour will deepen in V2.
         float competitionLevel = loadP (paramCompetition, 0.0f);
         float couplingResLevel = loadP (paramCouplingRes, 0.0f);
+
+        // Compute amplitude suppression from adversarial coupling this block.
+        // couplingAmpChoke is the RMS-scaled signal accumulated in applyCouplingInput().
+        // suppression = 1.0 - competition * clamp(choke, 0, 1), floored at 0.1.
+        const float chokeScale = competitionLevel * std::min (couplingAmpChoke, 1.0f);
+        const float ampSuppression = 1.0f - 0.9f * chokeScale;  // floor at 0.1 when choke=1 & comp=1
 
         // Apply LFO rate/shape once per block
         for (auto& voice : voices)
@@ -798,9 +816,17 @@ public:
             mixL += sympatheticOut * 0.5f;  // center-ish in stereo
             mixR += sympatheticOut * 0.5f;
 
-            // Competition: adversarial soft saturation (cast iron under duress)
+            // Competition: adversarial coupling — two effects combined:
+            //   1. Amplitude suppression: incoming AmpToChoke signal (scaled by competitionLevel)
+            //      ducks OVEN's output. Floor at 0.1 so OVEN is never fully silenced.
+            //   2. Self-saturation: cast iron's massive impedance under duress — tanh softclip.
             if (competitionLevel > 0.01f)
             {
+                // Apply cross-engine amplitude suppression (adversarial coupling, Issue #111)
+                mixL *= ampSuppression;
+                mixR *= ampSuppression;
+
+                // Self-saturation: cast iron body absorbing and re-radiating under competition
                 mixL = fastTanh (mixL * (1.0f + competitionLevel * 3.0f)) / (1.0f + competitionLevel * 3.0f);
                 mixR = fastTanh (mixR * (1.0f + competitionLevel * 3.0f)) / (1.0f + competitionLevel * 3.0f);
             }
@@ -1043,7 +1069,7 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
         params.push_back (std::make_unique<PI> (juce::ParameterID { "oven_lfo2Shape", 1 }, "Oven LFO2 Shape", 0, 4, 0));
 
-        // === Competition (adversarial coupling stub) ===
+        // === Competition (adversarial coupling — AmpToChoke suppression) ===
         params.push_back (std::make_unique<PF> (juce::ParameterID { "oven_competition", 1 }, "Oven Competition",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "oven_couplingResonance", 1 }, "Oven Coupling Resonance",
@@ -1108,6 +1134,7 @@ private:
 
     // Coupling state
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingBodyMod = 0.0f;
+    float couplingAmpChoke = 0.0f;   // accumulated RMS from AmpToChoke inputs this block
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
 
     // Parameter pointers
