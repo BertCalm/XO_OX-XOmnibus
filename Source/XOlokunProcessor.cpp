@@ -86,6 +86,9 @@
 #include "Engines/Outflow/OutflowEngine.h"
 // Cellular Automata Oscillator — OBIONT (engine #74)
 #include "Engines/Obiont/ObiontEngine.h"
+#include "DSP/Effects/MathFXChain.h"
+#include "DSP/Effects/BoutiqueFXChain.h"
+#include "DSP/Effects/AquaticFXSuite.h"
 #include "DSP/ThreadInit.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
@@ -644,6 +647,12 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OasisEngine::addParameters(params);
     OutflowEngine::addParameters(params);
 
+    // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──
+    // MathFXChain and BoutiqueFXChain use the shared params vector.
+    // All mix parameters default to 0 — bypassed at zero CPU until user enables them.
+    xolokun::MathFXChain::addParameters(params);
+    xolokun::BoutiqueFXChain::addParameters(params);
+
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
     // These are ephemeral live-performance controls that overlay preset coupling.
@@ -1174,7 +1183,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("mpe_slideTarget", 1), "MPE Slide Target",
         juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)", "Macro 2 (MOVEMENT)" }, 0));
 
-    return { params.begin(), params.end() };
+    // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
+    // rather than the shared params vector, so it must be called after constructing
+    // the ParameterLayout from the vector.
+    juce::AudioProcessorValueTreeState::ParameterLayout layout (
+        params.begin(), params.end());
+    xolokun::AquaticFXSuite::addParameters (layout);
+    return layout;
 }
 
 // SRO: Engine-specific silence gate hold times.

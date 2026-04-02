@@ -26,6 +26,9 @@
 #include "../DSP/Effects/ParametricEQ.h"
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
+#include "../DSP/Effects/AquaticFXSuite.h"
+#include "../DSP/Effects/MathFXChain.h"
+#include "../DSP/Effects/BoutiqueFXChain.h"
 #include "MasterFXSequencer.h"
 #include "ShaperRegistry.h"
 #include <juce_audio_processors/juce_audio_processors.h>
@@ -36,7 +39,7 @@ namespace xolokun {
 //==============================================================================
 // MasterFXChain — Post-mix master effects for XOlokun.
 //
-// Signal chain (24 stages, fixed order):
+// Signal chain (27 stages, fixed order):
 //   0.  Bus Shapers       — ShaperRegistry bus slots [0-1] process the mixed bus
 //                           before all other master stages (Oxide/Observe by default).
 //                           Shapers are loaded via loadBusShaper()/loadInsertShaper().
@@ -60,6 +63,12 @@ namespace xolokun {
 //   18. Psychoacoustic Width — Haas + complementary comb decorrelation
 //   19. Bus Compressor    — Single-band output glue (parallel blend)
 //   19.5 Parametric EQ   — 4-band surgical EQ (shelf + 2×peak + shelf)
+//   19.6 AquaticFXSuite  — 6 aquatic stages: Fathom+Drift+Tide+Reef+Surface+Biolume
+//                           (bypassed by default — all mix params default 0)
+//   19.7 MathFXChain     — 4 math stages: Entropy+Voronoi+Quantum+Attractor
+//                           (bypassed by default — all mix params default 0)
+//   19.8 BoutiqueFXChain — 4 boutique stages: Anomaly+Archive+Cathedral+Submersion
+//                           (bypassed by default — all mix params default 0)
 //   20. Brickwall Limiter — True-peak safety limiter (1ms lookahead, ∞:1)
 //   21. DC Blocker        — 10 Hz HPF removes any residual DC offset
 //   22. Sequenced Mod     — Rhythmic parameter animation (non-audio)
@@ -186,6 +195,16 @@ public:
 
         // Stage 19.5: Parametric EQ (post-compressor, pre-limiter)
         parametricEQ.prepare (sampleRate);
+
+        // Stage 19.6: AquaticFXSuite (bypassed by default — all mix params default 0)
+        aquaticFX.prepare (sampleRate, samplesPerBlock);
+        aquaticFX.cacheParameterPointers (apvts);
+
+        // Stage 19.7: MathFXChain (bypassed by default — all mix params default 0)
+        mathFX.prepare (sampleRate);
+
+        // Stage 19.8: BoutiqueFXChain (bypassed by default — all mix params default 0)
+        boutiqueFX.prepare (sampleRate);
 
         // Stage 20: Brickwall Limiter
         limiter.prepare (sampleRate, samplesPerBlock);
@@ -412,6 +431,18 @@ public:
         // Stage 20: Brickwall Limiter
         const float limCeiling   = pLimCeiling   ? pLimCeiling->load()   : -0.3f;
         const float limRelease   = pLimRelease   ? pLimRelease->load()   : 50.0f;
+
+        // Stage 19.7: MathFXChain param snapshot
+        const float mfx_ecMix    = pMfxEcMix     ? pMfxEcMix->load()     : 0.0f;
+        const float mfx_vsMix    = pMfxVsMix     ? pMfxVsMix->load()     : 0.0f;
+        const float mfx_qsMix    = pMfxQsMix     ? pMfxQsMix->load()     : 0.0f;
+        const float mfx_adMix    = pMfxAdMix     ? pMfxAdMix->load()     : 0.0f;
+
+        // Stage 19.8: BoutiqueFXChain param snapshot
+        const float bfx_anMix    = pBfxAnMix     ? pBfxAnMix->load()     : 0.0f;
+        const float bfx_daMix    = pBfxDaMix     ? pBfxDaMix->load()     : 0.0f;
+        const float bfx_acMix    = pBfxAcMix     ? pBfxAcMix->load()     : 0.0f;
+        const float bfx_smMix    = pBfxSmMix     ? pBfxSmMix->load()     : 0.0f;
 
         // Stage 22: Sequencer
         const float seqEnabled   = pSeqEnabled   ? pSeqEnabled->load()   : 0.0f;
@@ -924,6 +955,90 @@ public:
         }
 
         // ====================================================================
+        // Stage 19.6: AquaticFXSuite (Fathom+Drift+Tide+Reef+Surface+Biolume)
+        // Bypassed by default — all aqua_ mix params default to 0.
+        // ====================================================================
+        aquaticFX.processBlock (L, R, numSamples, bpm);
+
+        // ====================================================================
+        // Stage 19.7: MathFXChain (Entropy+Voronoi+Quantum+Attractor)
+        // Only dispatches to a sub-stage when its mix > 0.001 (zero-CPU bypass).
+        // Read all 16 params for the four sub-stages.
+        // ====================================================================
+        {
+            const bool mathActive = (mfx_ecMix > 0.001f || mfx_vsMix > 0.001f
+                                  || mfx_qsMix > 0.001f || mfx_adMix > 0.001f);
+            if (mathActive)
+            {
+                mathFX.processBlock (
+                    L, R, numSamples,
+                    // Entropy Cooler
+                    pMfxEcStability ? pMfxEcStability->load() : 0.5f,
+                    pMfxEcCoolRate  ? pMfxEcCoolRate->load()  : 0.3f,
+                    pMfxEcThreshold ? pMfxEcThreshold->load() : 0.5f,
+                    mfx_ecMix,
+                    // Voronoi Shatter
+                    pMfxVsCrystallize ? pMfxVsCrystallize->load() : 0.0f,
+                    pMfxVsTension     ? pMfxVsTension->load()     : 0.5f,
+                    pMfxVsGrainSize   ? pMfxVsGrainSize->load()   : 30.0f,
+                    mfx_vsMix,
+                    // Quantum Smear
+                    pMfxQsObservation ? pMfxQsObservation->load() : 0.3f,
+                    pMfxQsFeedback    ? pMfxQsFeedback->load()    : 0.4f,
+                    pMfxQsDelayCenter ? pMfxQsDelayCenter->load() : 150.0f,
+                    mfx_qsMix,
+                    // Attractor Drive
+                    pMfxAdBifurcation ? pMfxAdBifurcation->load() : 0.3f,
+                    pMfxAdDriveBase   ? pMfxAdDriveBase->load()   : 0.3f,
+                    pMfxAdSpeed       ? pMfxAdSpeed->load()       : 0.3f,
+                    mfx_adMix);
+            }
+        }
+
+        // ====================================================================
+        // Stage 19.8: BoutiqueFXChain (Anomaly+Archive+Cathedral+Submersion)
+        // Only dispatches to a sub-stage when its mix > 0.001 (zero-CPU bypass).
+        // ====================================================================
+        {
+            const bool boutiqueActive = (bfx_anMix > 0.001f || bfx_daMix > 0.001f
+                                      || bfx_acMix > 0.001f || bfx_smMix > 0.001f);
+            if (boutiqueActive)
+            {
+                boutiqueFX.processBlock (
+                    L, R, numSamples,
+                    // Anomaly Engine
+                    pBfxAnTextureBlend ? pBfxAnTextureBlend->load() : 0.5f,
+                    pBfxAnReverbSize   ? pBfxAnReverbSize->load()   : 0.5f,
+                    pBfxAnTremoloRate  ? pBfxAnTremoloRate->load()  : 2.0f,
+                    pBfxAnTimeSlip     ? (pBfxAnTimeSlip->load() > 0.5f) : false,
+                    pBfxAnSlipSpeed    ? pBfxAnSlipSpeed->load()    : 0.0f,
+                    bfx_anMix,
+                    // Dissolving Archive
+                    pBfxDaChance    ? pBfxDaChance->load()    : 0.0f,
+                    pBfxDaDissolve  ? pBfxDaDissolve->load()  : 0.0f,
+                    pBfxDaGrainMix  ? pBfxDaGrainMix->load()  : 0.5f,
+                    pBfxDaReverbMix ? pBfxDaReverbMix->load() : 0.3f,
+                    bfx_daMix,
+                    // Artifact Cathedral
+                    pBfxAcPacketLoss ? pBfxAcPacketLoss->load() : 0.0f,
+                    pBfxAcBitCrush   ? pBfxAcBitCrush->load()   : 0.0f,
+                    pBfxAcDarkMix    ? pBfxAcDarkMix->load()    : 0.5f,
+                    pBfxAcSunMix     ? pBfxAcSunMix->load()     : 0.5f,
+                    pBfxAcModDepth   ? pBfxAcModDepth->load()   : 0.3f,
+                    pBfxAcDecay      ? pBfxAcDecay->load()      : 0.5f,
+                    pBfxAcFreeze     ? (pBfxAcFreeze->load() > 0.5f) : false,
+                    bfx_acMix,
+                    // Submersion Engine
+                    pBfxSmStages  ? static_cast<int> (pBfxSmStages->load())  : 4,
+                    pBfxSmLFORate ? pBfxSmLFORate->load() : 0.5f,
+                    pBfxSmLFODepth ? pBfxSmLFODepth->load() : 0.5f,
+                    pBfxSmLoopFB  ? pBfxSmLoopFB->load()  : 0.3f,
+                    pBfxSmClock   ? pBfxSmClock->load()   : 0.5f,
+                    bfx_smMix);
+            }
+        }
+
+        // ====================================================================
         // Stage 20: Brickwall Limiter (always active — safety net)
         // ====================================================================
         limiter.setCeiling (limCeiling);
@@ -981,6 +1096,9 @@ public:
         psychoWidth.reset();
         compressor.reset();
         parametricEQ.reset();
+        aquaticFX.reset();
+        mathFX.reset();
+        boutiqueFX.reset();
         limiter.reset();
         dcBlocker.reset();
         sequencer.reset();
@@ -1186,10 +1304,55 @@ private:
         pSeqPattern   = apvts.getRawParameterValue ("master_seqPattern");
         pSeqEnvFollow = apvts.getRawParameterValue ("master_seqEnvFollow");
         pSeqEnvAmt    = apvts.getRawParameterValue ("master_seqEnvAmount");
+
+        // Stage 19.7: MathFXChain param pointers (prefixed mfx_)
+        pMfxEcStability   = apvts.getRawParameterValue ("mfx_ecStability");
+        pMfxEcCoolRate    = apvts.getRawParameterValue ("mfx_ecCoolRate");
+        pMfxEcThreshold   = apvts.getRawParameterValue ("mfx_ecThreshold");
+        pMfxEcMix         = apvts.getRawParameterValue ("mfx_ecMix");
+        pMfxVsCrystallize = apvts.getRawParameterValue ("mfx_vsCrystallize");
+        pMfxVsTension     = apvts.getRawParameterValue ("mfx_vsTension");
+        pMfxVsGrainSize   = apvts.getRawParameterValue ("mfx_vsGrainSize");
+        pMfxVsMix         = apvts.getRawParameterValue ("mfx_vsMix");
+        pMfxQsObservation = apvts.getRawParameterValue ("mfx_qsObservation");
+        pMfxQsFeedback    = apvts.getRawParameterValue ("mfx_qsFeedback");
+        pMfxQsDelayCenter = apvts.getRawParameterValue ("mfx_qsDelayCenter");
+        pMfxQsMix         = apvts.getRawParameterValue ("mfx_qsMix");
+        pMfxAdBifurcation = apvts.getRawParameterValue ("mfx_adBifurcation");
+        pMfxAdDriveBase   = apvts.getRawParameterValue ("mfx_adDriveBase");
+        pMfxAdSpeed       = apvts.getRawParameterValue ("mfx_adSpeed");
+        pMfxAdMix         = apvts.getRawParameterValue ("mfx_adMix");
+
+        // Stage 19.8: BoutiqueFXChain param pointers (prefixed bfx_)
+        pBfxAnTextureBlend = apvts.getRawParameterValue ("bfx_anTextureBlend");
+        pBfxAnReverbSize   = apvts.getRawParameterValue ("bfx_anReverbSize");
+        pBfxAnTremoloRate  = apvts.getRawParameterValue ("bfx_anTremoloRate");
+        pBfxAnTimeSlip     = apvts.getRawParameterValue ("bfx_anTimeSlip");
+        pBfxAnSlipSpeed    = apvts.getRawParameterValue ("bfx_anSlipSpeed");
+        pBfxAnMix          = apvts.getRawParameterValue ("bfx_anMix");
+        pBfxDaChance       = apvts.getRawParameterValue ("bfx_daChance");
+        pBfxDaDissolve     = apvts.getRawParameterValue ("bfx_daDissolve");
+        pBfxDaGrainMix     = apvts.getRawParameterValue ("bfx_daGrainMix");
+        pBfxDaReverbMix    = apvts.getRawParameterValue ("bfx_daReverbMix");
+        pBfxDaMix          = apvts.getRawParameterValue ("bfx_daMix");
+        pBfxAcPacketLoss   = apvts.getRawParameterValue ("bfx_acPacketLoss");
+        pBfxAcBitCrush     = apvts.getRawParameterValue ("bfx_acBitCrush");
+        pBfxAcDarkMix      = apvts.getRawParameterValue ("bfx_acDarkMix");
+        pBfxAcSunMix       = apvts.getRawParameterValue ("bfx_acSunMix");
+        pBfxAcModDepth     = apvts.getRawParameterValue ("bfx_acModDepth");
+        pBfxAcDecay        = apvts.getRawParameterValue ("bfx_acDecay");
+        pBfxAcFreeze       = apvts.getRawParameterValue ("bfx_acFreeze");
+        pBfxAcMix          = apvts.getRawParameterValue ("bfx_acMix");
+        pBfxSmStages       = apvts.getRawParameterValue ("bfx_smStages");
+        pBfxSmLFORate      = apvts.getRawParameterValue ("bfx_smLFORate");
+        pBfxSmLFODepth     = apvts.getRawParameterValue ("bfx_smLFODepth");
+        pBfxSmLoopFB       = apvts.getRawParameterValue ("bfx_smLoopFB");
+        pBfxSmClock        = apvts.getRawParameterValue ("bfx_smClock");
+        pBfxSmMix          = apvts.getRawParameterValue ("bfx_smMix");
     }
 
     //--------------------------------------------------------------------------
-    // DSP processors (19 stages + sequencer)
+    // DSP processors (22 stages + sequencer)
     Saturator            saturator;          // 1
     Corroder             corroder;           // 2
     VibeKnob             vibeKnob;           // 3
@@ -1215,6 +1378,9 @@ private:
     PsychoacousticWidth  psychoWidth;        // 18
     Compressor           compressor;         // 19
     ParametricEQ         parametricEQ;       // 19.5 — 4-band surgical EQ
+    AquaticFXSuite       aquaticFX;          // 19.6 — Aquatic suite (bypassed by default)
+    MathFXChain          mathFX;             // 19.7 — Math suite (bypassed by default)
+    BoutiqueFXChain      boutiqueFX;         // 19.8 — Boutique suite (bypassed by default)
     BrickwallLimiter     limiter;            // 20 — Safety
     DCBlocker            dcBlocker;          // 21 — Safety
     MasterFXSequencer    sequencer;          // 22
@@ -1395,6 +1561,49 @@ private:
     std::atomic<float>* pSeqPattern  = nullptr;
     std::atomic<float>* pSeqEnvFollow = nullptr;
     std::atomic<float>* pSeqEnvAmt   = nullptr;
+    // Stage 19.7: MathFXChain (mfx_ prefix)
+    std::atomic<float>* pMfxEcStability   = nullptr;
+    std::atomic<float>* pMfxEcCoolRate    = nullptr;
+    std::atomic<float>* pMfxEcThreshold   = nullptr;
+    std::atomic<float>* pMfxEcMix         = nullptr;
+    std::atomic<float>* pMfxVsCrystallize = nullptr;
+    std::atomic<float>* pMfxVsTension     = nullptr;
+    std::atomic<float>* pMfxVsGrainSize   = nullptr;
+    std::atomic<float>* pMfxVsMix         = nullptr;
+    std::atomic<float>* pMfxQsObservation = nullptr;
+    std::atomic<float>* pMfxQsFeedback    = nullptr;
+    std::atomic<float>* pMfxQsDelayCenter = nullptr;
+    std::atomic<float>* pMfxQsMix         = nullptr;
+    std::atomic<float>* pMfxAdBifurcation = nullptr;
+    std::atomic<float>* pMfxAdDriveBase   = nullptr;
+    std::atomic<float>* pMfxAdSpeed       = nullptr;
+    std::atomic<float>* pMfxAdMix         = nullptr;
+    // Stage 19.8: BoutiqueFXChain (bfx_ prefix)
+    std::atomic<float>* pBfxAnTextureBlend = nullptr;
+    std::atomic<float>* pBfxAnReverbSize   = nullptr;
+    std::atomic<float>* pBfxAnTremoloRate  = nullptr;
+    std::atomic<float>* pBfxAnTimeSlip     = nullptr;
+    std::atomic<float>* pBfxAnSlipSpeed    = nullptr;
+    std::atomic<float>* pBfxAnMix          = nullptr;
+    std::atomic<float>* pBfxDaChance       = nullptr;
+    std::atomic<float>* pBfxDaDissolve     = nullptr;
+    std::atomic<float>* pBfxDaGrainMix     = nullptr;
+    std::atomic<float>* pBfxDaReverbMix    = nullptr;
+    std::atomic<float>* pBfxDaMix          = nullptr;
+    std::atomic<float>* pBfxAcPacketLoss   = nullptr;
+    std::atomic<float>* pBfxAcBitCrush     = nullptr;
+    std::atomic<float>* pBfxAcDarkMix      = nullptr;
+    std::atomic<float>* pBfxAcSunMix       = nullptr;
+    std::atomic<float>* pBfxAcModDepth     = nullptr;
+    std::atomic<float>* pBfxAcDecay        = nullptr;
+    std::atomic<float>* pBfxAcFreeze       = nullptr;
+    std::atomic<float>* pBfxAcMix          = nullptr;
+    std::atomic<float>* pBfxSmStages       = nullptr;
+    std::atomic<float>* pBfxSmLFORate      = nullptr;
+    std::atomic<float>* pBfxSmLFODepth     = nullptr;
+    std::atomic<float>* pBfxSmLoopFB       = nullptr;
+    std::atomic<float>* pBfxSmClock        = nullptr;
+    std::atomic<float>* pBfxSmMix          = nullptr;
 };
 
 } // namespace xolokun
