@@ -47,6 +47,7 @@ struct StandardLFO
     /// Rates below 0.005 Hz are clamped (D005 floor = 200-second cycle).
     void setRate (float hz, float sampleRate) noexcept
     {
+        if (sampleRate <= 0.0f) return;
         hz = std::max (hz, 0.005f);  // D005 floor: prevents divide-by-zero and enforces 200s min cycle
         phaseInc = hz / sampleRate;
     }
@@ -197,6 +198,7 @@ struct BreathingLFO
     /// Default maxRate of 2.0 Hz covers macro-scaled ranges.
     void setRate (float hz, float sampleRate, float maxRate = 2.0f) noexcept
     {
+        if (sampleRate <= 0.0f) return;
         constexpr float kMinRate = 0.005f;  // D005 floor: 200-second cycle
         float clampedHz = hz;
         if (clampedHz < kMinRate) clampedHz = kMinRate;

@@ -184,6 +184,7 @@ public:
     // resonance: Q factor 1.0–20.0   — higher = narrower, more ringy
     void setParams (float frequency, float resonance)
     {
+        if (sr <= 0.0f) return;
         // SRO: fastSin/fastCos replace std:: trig (called per-sample from exciters)
         float w0    = 2.0f * 3.14159265f * frequency / sr;
         float cosw0 = fastCos (w0);

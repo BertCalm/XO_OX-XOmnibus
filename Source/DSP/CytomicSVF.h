@@ -56,6 +56,7 @@ public:
     void setCoefficients (float cutoffHz, float resonance, float sampleRate,
                           float shelfGainDb = 0.0f) noexcept
     {
+        if (sampleRate <= 0.0f) return;
         // Clamp cutoff to safe range: [20 Hz, just below Nyquist]
         float nyquistLimit = sampleRate * 0.49f;
         float fc = cutoffHz;
@@ -100,6 +101,7 @@ public:
     /// Accurate to ~0.03% for cutoff < 0.25 × sampleRate.
     void setCoefficients_fast (float cutoffHz, float resonance, float sampleRate) noexcept
     {
+        if (sampleRate <= 0.0f) return;
         float nyquistLimit = sampleRate * 0.49f;
         float fc = cutoffHz;
         if (fc < 20.0f)        fc = 20.0f;
