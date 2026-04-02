@@ -304,12 +304,14 @@ public:
         // Dark theme background — match the elevated surface behind the sidebar
         g.fillAll (get (surface()));
 
-        // ── Section label at top ─────────────────────────────────────────────
+        // ── Section label at top — width proportional to component so text
+        //    does not clip on narrow/resized windows (addresses #391).
         g.setFont (GalleryFonts::display (11.0f));
         g.setColour (get (t1()));
         g.drawText ("COUPLING ROUTES",
-                    juce::Rectangle<int> (kCardMargin, 6, 180, 20),
-                    juce::Justification::centredLeft);
+                    juce::Rectangle<int> (kCardMargin, 6,
+                                          getWidth() - kCardMargin * 2, 20),
+                    juce::Justification::centredLeft, true);
 
         // ── Route card backgrounds ─────────────────────────────────────────────
         int y = 28;

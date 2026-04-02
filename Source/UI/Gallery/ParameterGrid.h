@@ -567,11 +567,21 @@ private:
         lk->label = std::make_unique<juce::Label>();
         lk->label->setText(slot.shortLabel, juce::dontSendNotification);
         // Knob labels: 9px mono, T2 for better readability
-        lk->label->setFont(GalleryFonts::value(9.0f));
+        const juce::Font labelFont = GalleryFonts::value(9.0f);
+        lk->label->setFont(labelFont);
         lk->label->setColour(juce::Label::textColourId,
                              GalleryColors::get(GalleryColors::t2()));
         lk->label->setJustificationType(juce::Justification::centred);
         lk->label->setInterceptsMouseClicks(false, false);
+        // If the label text is wider than kCellW the knob already has a tooltip
+        // via rp->getName(). Add the full parameter name as a tooltip on the
+        // label too so text that clips on narrow windows is still accessible
+        // (addresses #391: ParameterGrid labels clip on narrow panels).
+        {
+            float textW = labelFont.getStringWidthFloat(slot.shortLabel);
+            if (textW > (float)kCellW)
+                lk->label->setTooltip(rp->getName(64));
+        }
         addAndMakeVisible(*lk->label);
 
         // ── SliderAttachment (must come AFTER knob + label exist) ────────────
