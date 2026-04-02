@@ -113,6 +113,7 @@ public:
             bandRMS_[i] = 0.0f;
         membraneLPStateL_ = 0.0f;
         membraneLPStateR_ = 0.0f;
+        couplingPermeabilityOffset_ = 0.0f; // fix #303
         lfo_.reset();
         for (auto& f : bandLP_) f.reset();
         for (auto& f : bandHP_) f.reset();
@@ -152,7 +153,9 @@ public:
         reactivitySmoother_.set(pReactivity_ ? pReactivity_->load() : 0.5f);
         memorySmoother_.set(pMemory_ ? pMemory_->load() : 0.3f);
 
-        const float permeability = permeabilitySmoother_.process();
+        // Fix #303: add coupling-driven offset to base permeability, clamped to [0, 1]
+        const float permeability = juce::jlimit(0.0f, 1.0f,
+            permeabilitySmoother_.process() + couplingPermeabilityOffset_);
         const float selectivity  = selectivitySmoother_.process();
         const float reactivity   = reactivitySmoother_.process();
         const float memory       = memorySmoother_.process();
@@ -277,11 +280,40 @@ public:
         return (channel == 0) ? couplingSampleL_ : couplingSampleR_;
     }
 
-    void applyCouplingInput(CouplingType /*type*/, float /*amount*/,
-                            const float* /*sourceBuffer*/, int /*numSamples*/) override
+    // Fix #303: wire coupling input to membrane permeability modulation.
+    // The coupling signal's block RMS is computed and blended into a
+    // couplingPermeabilityOffset_ accumulator, which renderBlock() adds to the
+    // base permeability value before clamping to [0, 1].
+    //
+    // Effect: an engine coupled into Osmosis raises the membrane permeability —
+    // more external signal passes through (wet blend increases) as the coupled
+    // engine becomes louder. This creates a natural call-and-response dynamic:
+    // the membrane opens when something is pushing against it.
+    //
+    // Reactivity (osmo_reactivity) controls how quickly the offset tracks the
+    // incoming coupling RMS by reusing the same attack coefficient used for the
+    // envelope follower. amount [0, 1] scales the maximum modulation depth
+    // so the coupling route strength drives the permeability sensitivity.
+    void applyCouplingInput(CouplingType /*type*/, float amount,
+                            const float* sourceBuffer, int numSamples) override
     {
-        // Osmosis is a coupling source. Phase 2 will add membrane perturbation
-        // from coupled engines.
+        if (!sourceBuffer || numSamples <= 0 || amount <= 0.0f)
+        {
+            // Decay toward zero when no active coupling arrives
+            couplingPermeabilityOffset_ *= 0.999f;
+            return;
+        }
+
+        // Compute block RMS of incoming coupling signal
+        float sumSq = 0.0f;
+        for (int i = 0; i < numSamples; ++i)
+            sumSq += sourceBuffer[i] * sourceBuffer[i];
+        const float rms = std::sqrt(sumSq / static_cast<float>(numSamples));
+
+        // Smooth toward the new target using a 50ms one-pole attack
+        const float coeff = std::exp(-1.0f / (static_cast<float>(sr_) * 0.050f));
+        const float target = rms * amount; // amount ∈ [0,1] scales depth
+        couplingPermeabilityOffset_ = coeff * couplingPermeabilityOffset_ + (1.0f - coeff) * target;
     }
 
     //-- Parameters ------------------------------------------------------------
@@ -391,6 +423,10 @@ private:
     // Coupling output cache
     float couplingSampleL_ = 0.0f;
     float couplingSampleR_ = 0.0f;
+
+    // Fix #303: coupling input offset — adds to base permeability so incoming
+    // coupling signals open the membrane proportionally to their amplitude.
+    float couplingPermeabilityOffset_ = 0.0f;
 
     // Parameter pointers
     std::atomic<float>* pPermeability_ = nullptr;
