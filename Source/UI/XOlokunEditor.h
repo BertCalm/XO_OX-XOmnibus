@@ -442,19 +442,38 @@ public:
             statusBar.setCpuVisible(sp->isCpuMetersVisible());
         }
 
-        // Auto-select slot 0 on startup — skip the overview landing page.
-        // Direct visibility (no animation) to ensure interactive from first frame.
-        if (processor.getEngine(0) != nullptr)
+        // Restore editor UI state from the last session (#357, #314).
+        // Override the default slot=0 with the persisted selection.
+        cockpitBypass_ = processor.getPersistedCockpitBypass();
+        signalFlowActiveSection = processor.getPersistedSignalFlowSection();
+
         {
-            selectedSlot = 0;
-            tiles[0]->setSelected(true);
-            if (detail.loadSlot(0))
+            const int restoredSlot = processor.getPersistedSelectedSlot();
+            const int slotToShow   = (restoredSlot >= 0 && restoredSlot < XOlokunProcessor::MaxSlots
+                                      && processor.getEngine(restoredSlot) != nullptr)
+                                     ? restoredSlot : -1;
+
+            // Auto-select on startup — skip the overview landing page.
+            // Direct visibility (no animation) to ensure interactive from first frame.
+            const int effectiveSlot = (slotToShow >= 0) ? slotToShow
+                                    : (processor.getEngine(0) != nullptr ? 0 : -1);
+
+            if (effectiveSlot >= 0)
             {
-                overview.setVisible(false);
-                detail.setAlpha(1.0f);
-                detail.setVisible(true);
-                couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                masterFXStrip.setAccentColour(processor.getEngine(0)->getAccentColour());
+                selectedSlot = effectiveSlot;
+                if (effectiveSlot < kNumPrimarySlots)
+                    tiles[effectiveSlot]->setSelected(true);
+                else
+                    ghostTile.setSelected(true);
+                if (detail.loadSlot(effectiveSlot))
+                {
+                    overview.setVisible(false);
+                    detail.setAlpha(1.0f);
+                    detail.setVisible(true);
+                    couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                    if (auto* eng = processor.getEngine(effectiveSlot))
+                        masterFXStrip.setAccentColour(eng->getAccentColour());
+                }
             }
         }
 
@@ -539,6 +558,7 @@ public:
         if (key == juce::KeyPress('b') || key == juce::KeyPress('B'))
         {
             cockpitBypass_ = !cockpitBypass_;
+            processor.setPersistedCockpitBypass(cockpitBypass_); // persist for session restore (#357)
             repaint();
             return true;
         }
@@ -582,6 +602,7 @@ public:
                 if (sfHitRects[static_cast<size_t>(i)].contains(e.position))
                 {
                     signalFlowActiveSection = i;
+                    processor.setPersistedSignalFlowSection(i); // persist for session restore (#357)
                     scrollDetailPanelToSection(i);
                     repaint(signalFlowStripBounds);
                     return;
@@ -1037,6 +1058,9 @@ private:
         selectedSlot = slot;
         signalFlowActiveSection  = 0; // Reset to SRC1 on engine switch (SHOULD A1-06)
         signalFlowHoveredSection = -1;
+        // Persist slot selection for session restore (#357)
+        processor.setPersistedSelectedSlot(selectedSlot);
+        processor.setPersistedSignalFlowSection(signalFlowActiveSection);
         repaint(signalFlowStripBounds);
         depthDial.setSlot(juce::jlimit(0, 3, slot)); // DepthDial tracks the selected slot
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
@@ -1109,6 +1133,7 @@ private:
     void showOverview()
     {
         selectedSlot = -1;
+        processor.setPersistedSelectedSlot(-1); // persist for session restore (#357)
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
         ghostTile.setSelected(false);
@@ -1140,6 +1165,7 @@ private:
     void showChordMachine()
     {
         selectedSlot = -1;
+        processor.setPersistedSelectedSlot(-1); // persist for session restore (#357)
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
         ghostTile.setSelected(false);
@@ -1174,6 +1200,7 @@ private:
     void showPerformanceView()
     {
         selectedSlot = -1;
+        processor.setPersistedSelectedSlot(-1); // persist for session restore (#357)
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
         ghostTile.setSelected(false);

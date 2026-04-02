@@ -60,6 +60,11 @@ public:
         scaleCombo.setVisible(false);           // driven through custom paint
         addAndMakeVisible(scaleCombo);
 
+        // Restore persisted scale choice from the last DAW session (#314).
+        // Use persist=false to avoid immediately writing back the restored value
+        // (the processor already holds the correct index).
+        setScaleIndex(processor.getPlayScaleIndex(), /*persist=*/false);
+
         // ── Accessibility ─────────────────────────────────────────────────────
         A11y::setup(*this, "Play Control Panel",
                     "Expression strips, macro meters, XY pad, and scale selector for performance.");
@@ -100,10 +105,14 @@ public:
     }
 
     // Force the scale selector to a specific index (0-based).
-    void setScaleIndex(int index)
+    // When persist=true (default), the new index is written back to the
+    // processor so it survives DAW session reload (#314).
+    void setScaleIndex(int index, bool persist = true)
     {
         scaleIndex = juce::jlimit(0, kNumScales - 1, index);
         scaleCombo.setSelectedItemIndex(scaleIndex, juce::dontSendNotification);
+        if (persist)
+            processor.setPlayScaleIndex(scaleIndex);
         repaint();
     }
 

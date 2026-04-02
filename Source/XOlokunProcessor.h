@@ -302,6 +302,29 @@ public:
     // Safe to call from any thread.
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
 
+    // ── Editor UI state persistence (closes #314, #357) ───────────────────────
+    // These fields are written on the message thread by the editor/sidebar and
+    // read back during setStateInformation to restore UI state.  They are plain
+    // ints/bools — no audio-thread access — so no atomics are needed.
+
+    // PlaySurface scale selector index (#314): 0=Chromatic … 6=Mixolydian.
+    // PlayControlPanel calls setPlayScaleIndex / getPlayScaleIndex via its
+    // processor reference.
+    void setPlayScaleIndex(int idx) noexcept { persistedPlayScaleIndex = idx; }
+    int  getPlayScaleIndex() const noexcept  { return persistedPlayScaleIndex; }
+
+    // Editor tile focus (#357-a): selected slot (-1 = overview).
+    void setPersistedSelectedSlot(int slot) noexcept { persistedSelectedSlot = slot; }
+    int  getPersistedSelectedSlot() const noexcept   { return persistedSelectedSlot; }
+
+    // Signal flow active section (#357-b): 0=SRC1 … 5=OUT.
+    void setPersistedSignalFlowSection(int sec) noexcept { persistedSignalFlowSection = sec; }
+    int  getPersistedSignalFlowSection() const noexcept  { return persistedSignalFlowSection; }
+
+    // Dark Cockpit bypass (#357-c): true = bypass (hold full opacity).
+    void setPersistedCockpitBypass(bool v) noexcept { persistedCockpitBypass = v; }
+    bool getPersistedCockpitBypass() const noexcept { return persistedCockpitBypass; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -547,6 +570,13 @@ private:
         }
         ccOutputTail_.store(tail, std::memory_order_release);
     }
+
+    // ── Editor UI state storage (closes #314, #357) ──────────────────────────
+    // Written on the message thread only.  No audio-thread access — plain ints.
+    int  persistedPlayScaleIndex     = 0;     // #314: PlayControlPanel scale selector
+    int  persistedSelectedSlot       = -1;    // #357: editor tile focus (-1 = overview)
+    int  persistedSignalFlowSection  = 0;     // #357: signal flow active section
+    bool persistedCockpitBypass      = false; // #357: Dark Cockpit bypass state
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)
 };
