@@ -49,6 +49,7 @@
 
 #include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
+#include "../GalleryColors.h"  // A11y::prefersReducedMotion() — unified reduced-motion helper (#223)
 #include <atomic>
 
 #if JUCE_MAC
