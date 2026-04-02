@@ -369,6 +369,16 @@ public:
         const float macroSurface = (pMacroSurface != nullptr) ? pMacroSurface->load() : 0.0f;
         const float macroDepth   = (pMacroDepth != nullptr)   ? pMacroDepth->load()   : 0.0f;
 
+        // Standard M1–M4 aliases (additive on top of thematic macros above)
+        const float macroCharacter = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.0f;
+        const float macroMovement  = (pMacroMovement  != nullptr) ? pMacroMovement->load()  : 0.0f;
+        const float macroCoupling  = (pMacroCoupling  != nullptr) ? pMacroCoupling->load()  : 0.0f;
+        const float macroSpace     = (pMacroSpace     != nullptr) ? pMacroSpace->load()     : 0.0f;
+
+        // Coupling send offset from M3 COUPLING — used downstream by the coupling bus
+        const float effCouplingLevel = std::max (0.0f, std::min (1.0f, macroCoupling * 0.5f));
+        (void) effCouplingLevel;  // suppress warning until coupling bus routing is wired
+
         // M1 DART: sharper transient (+40% snap), shorter decay (-30% time)
         // The neon tetra's fastest dart — maximum attack, minimum hang time
         const float effectiveSnap  = std::max (0.0f, std::min (1.0f, snapAmount + macroDart * 0.4f));
@@ -377,16 +387,23 @@ public:
         // M2 SCHOOL: wider unison detune (+20 cents) — a school of tetras, not one
         const float effectiveDetune = std::max (0.0f, std::min (50.0f, detuneCents + macroSchool * 20.0f));
 
-        // M3 SURFACE: brighter filter (+4kHz cutoff), more resonance (+0.3)
-        // Moving toward the sunlit surface of the water column
-        const float effectiveCutoff    = std::max (20.0f, std::min (20000.0f, filterCutoff + macroSurface * 4000.0f));
+        // M3 SURFACE + M1 CHARACTER: brighter filter (+4 kHz cutoff each axis), more resonance
+        // Moving toward the sunlit surface of the water column.
+        // CHARACTER also sweeps brightness independently so MacroSystem knob works alone.
+        const float effectiveCutoff    = std::max (20.0f, std::min (20000.0f,
+            filterCutoff + macroSurface * 4000.0f + macroCharacter * 4000.0f));
         const float effectiveResonance = std::max (0.0f, std::min (1.0f, filterResonance + macroSurface * 0.3f));
 
-        // M4 DEPTH: increases unison stereo spread — descending the water column
+        // M4 DEPTH + M4 SPACE: increases unison stereo spread — descending the water column
         // widens the stereo image, like feliX diving deeper into a wider, more
         // spacious acoustic environment.
         // D004 fix: macroDepth now modulates unison pan spread (kUnisonPanSpread target)
-        const float effectivePanSpread = std::max (0.0f, std::min (1.0f, 0.3f + macroDepth * 0.7f));
+        const float effectivePanSpread = std::max (0.0f, std::min (1.0f,
+            0.3f + macroDepth * 0.7f + macroSpace * 0.7f));
+
+        // M2 MOVEMENT: LFO rate boost (×1 to ×4) so MacroSystem MOVEMENT knob animates Snap
+        const float effectiveLfoRate = std::max (0.01f, std::min (20.0f,
+            lfoRate * (1.0f + macroMovement * 3.0f)));
 
         // ---- Process MIDI events --------------------------------------------
 
@@ -459,9 +476,10 @@ public:
         // Rate = user snap_lfoRate (0.01–20 Hz, default 4 Hz for neon tetra dart energy).
         // D006: aftertouch boosts LFO rate up to +8 Hz — faster tail-flick under pressure.
         // DART macro adds further speed boost (×2 at max DART) for maximum agitation.
-        const double effectiveLfoRateHz = static_cast<double> (lfoRate)
+        // MOVEMENT macro pre-multiplies the base rate (effectiveLfoRate already incorporates it).
+        const double effectiveLfoRateHz = static_cast<double> (effectiveLfoRate)
                                         + static_cast<double> (atPressure) * 8.0
-                                        + static_cast<double> (macroDart) * static_cast<double> (lfoRate);
+                                        + static_cast<double> (macroDart) * static_cast<double> (effectiveLfoRate);
         lfoPhase += (effectiveLfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi) lfoPhase -= juce::MathConstants<double>::twoPi;
 
@@ -925,6 +943,26 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "snap_macroDepth", 1 }, "Snap Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        // ---- Standard M1–M4 aliases (CHARACTER / MOVEMENT / COUPLING / SPACE) ----
+        // These are the fleet-standard macro identifiers wired by MacroSystem.
+        // They additively combine with the thematic macros above on the same targets:
+        //   CHARACTER → snap_filterCutoff sweep (+4 kHz, same axis as macroSurface)
+        //   MOVEMENT  → snap_lfoRate boost (×1 to ×4, distinct from macroDart decay target)
+        //   COUPLING  → coupling send level offset (+0 to +0.5)
+        //   SPACE     → unison pan spread (+0 to +0.7, same axis as macroDepth)
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroCharacter", 1 }, "Snap Macro CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroMovement", 1 }, "Snap Macro MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroCoupling", 1 }, "Snap Macro COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroSpace", 1 }, "Snap Macro SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
     //==========================================================================
@@ -954,6 +992,10 @@ public:
         pMacroSchool  = apvts.getRawParameterValue ("snap_macroSchool");
         pMacroSurface = apvts.getRawParameterValue ("snap_macroSurface");
         pMacroDepth   = apvts.getRawParameterValue ("snap_macroDepth");
+        pMacroCharacter = apvts.getRawParameterValue ("snap_macroCharacter");
+        pMacroMovement  = apvts.getRawParameterValue ("snap_macroMovement");
+        pMacroCoupling  = apvts.getRawParameterValue ("snap_macroCoupling");
+        pMacroSpace     = apvts.getRawParameterValue ("snap_macroSpace");
     }
 
     //==========================================================================
@@ -1174,6 +1216,11 @@ private:
     std::atomic<float>* pMacroSchool  = nullptr;
     std::atomic<float>* pMacroSurface = nullptr;
     std::atomic<float>* pMacroDepth   = nullptr;
+    // Standard M1–M4 aliases — wired by MacroSystem
+    std::atomic<float>* pMacroCharacter = nullptr;  // snap_macroCharacter — M1: filter cutoff sweep
+    std::atomic<float>* pMacroMovement  = nullptr;  // snap_macroMovement  — M2: LFO rate boost
+    std::atomic<float>* pMacroCoupling  = nullptr;  // snap_macroCoupling  — M3: coupling send offset
+    std::atomic<float>* pMacroSpace     = nullptr;  // snap_macroSpace     — M4: pan spread offset
 };
 
 } // namespace xolokun

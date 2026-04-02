@@ -1074,6 +1074,12 @@ public:
         const int maxPoly          = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 8;
 
+        // M1–M4 macro reads (0–1 range)
+        const float macroCharacter = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.0f;
+        const float macroMovement  = (pMacroMovement  != nullptr) ? pMacroMovement->load()  : 0.0f;
+        const float macroCoupling  = (pMacroCoupling  != nullptr) ? pMacroCoupling->load()  : 0.0f;
+        const float macroSpace     = (pMacroSpace     != nullptr) ? pMacroSpace->load()     : 0.0f;
+
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
@@ -1081,13 +1087,25 @@ public:
         // Compute BobMode macro targets
         BobModeTargets bob = computeBobMode (bobModeVal);
 
-        // Effective values (user params + bob macro additive)
+        // Effective values (user params + bob macro additive + M1–M4 macro additive)
+        // CHARACTER sweeps filter cutoff up to +6000 Hz on top of the user value
+        const float effFltCutoff = clamp (fltCutoff + macroCharacter * 6000.0f, 20.0f, 20000.0f);
+        // MOVEMENT boosts LFO1 rate (×1 at 0, ×4 at full)
+        const float effLfo1Rate  = clamp (lfo1Rate * (1.0f + macroMovement * 3.0f), 0.01f, 20.0f);
+        // COUPLING offsets the outgoing send level (+0 to +0.5) — used downstream by coupling bus
+        const float effCouplingLevel = clamp (macroCoupling * 0.5f, 0.0f, 1.0f);
+        // SPACE adds texture level for room/space character
+        const float effMacroSpaceTex = macroSpace * 0.5f;
+
         float effDrift = clamp (oscA_drift + bob.oscDrift, 0.0f, 1.0f);
         // D006: aftertouch adds up to +0.3 filter character/warmth (sensitivity 0.3)
         float effChar = clamp (fltChar + bob.filterChar + atPressure * 0.3f, 0.0f, 1.0f);
-        float effTexLevel = clamp (texLevel + bob.texLevel, 0.0f, 1.0f);
+        float effTexLevel = clamp (texLevel + bob.texLevel + effMacroSpaceTex, 0.0f, 1.0f);
         float effLfoDepth = clamp (lfo1Depth + bob.modDepth * 0.3f, 0.0f, 1.0f);
         float effDustAmt = clamp (dustAmount + bob.fxDepth * 0.3f, 0.0f, 1.0f);
+
+        // Suppress unused-variable warning when coupling bus routing is not yet wired
+        (void) effCouplingLevel;
 
         // --- Process MIDI ---
         for (const auto metadata : midi)
@@ -1176,8 +1194,8 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // CuriosityEngine tick
-                voice.curiosity.setLFO1Rate (lfo1Rate);
+                // CuriosityEngine tick — effLfo1Rate incorporates the M2 MOVEMENT macro boost
+                voice.curiosity.setLFO1Rate (effLfo1Rate);
                 voice.curiosity.setLFO1Depth (effLfoDepth);
                 voice.curiosity.setLFO1Shape (lfo1Shape);
                 voice.curiosity.setCurMode (curMode);
@@ -1244,8 +1262,8 @@ public:
                 float motEnvVal = voice.motionEnv.process();
                 float motMod = (motEnvVal * 2.0f - 1.0f) * motDepth;
 
-                // Filter
-                float cutoffMod = fltCutoff;
+                // Filter — effFltCutoff incorporates the M1 CHARACTER macro offset
+                float cutoffMod = effFltCutoff;
                 // Motion envelope to filter — D001: velocity scales filter envelope depth
                 if (std::abs (fltEnvAmt) > 0.001f)
                     cutoffMod += fltEnvAmt * motMod * voice.velocity * 5000.0f;
@@ -1505,6 +1523,24 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "bob_polyphony", 1 }, "Bob Polyphony",
             juce::StringArray { "1", "2", "4", "8" }, 3));
+
+        // --- Macros (M1–M4: CHARACTER / MOVEMENT / COUPLING / SPACE) ---
+        // CHARACTER → filter cutoff sweep (+0 to +6000 Hz over the user value)
+        // MOVEMENT  → LFO1 rate multiplier (×1 to ×4 boost)
+        // COUPLING  → coupling send amount offset (+0 to +0.5)
+        // SPACE     → texture level offset (+0 to +0.5 adds room character)
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "bob_macroCharacter", 1 }, "Bob Macro CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "bob_macroMovement", 1 }, "Bob Macro MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "bob_macroCoupling", 1 }, "Bob Macro COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "bob_macroSpace", 1 }, "Bob Macro SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 
 public:
@@ -1551,6 +1587,10 @@ public:
         pVoiceMode    = apvts.getRawParameterValue ("bob_voiceMode");
         pGlide        = apvts.getRawParameterValue ("bob_glide");
         pPolyphony    = apvts.getRawParameterValue ("bob_polyphony");
+        pMacroCharacter = apvts.getRawParameterValue ("bob_macroCharacter");
+        pMacroMovement  = apvts.getRawParameterValue ("bob_macroMovement");
+        pMacroCoupling  = apvts.getRawParameterValue ("bob_macroCoupling");
+        pMacroSpace     = apvts.getRawParameterValue ("bob_macroSpace");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1743,6 +1783,10 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
+    std::atomic<float>* pMacroCharacter = nullptr;  // bob_macroCharacter — M1: filter cutoff sweep
+    std::atomic<float>* pMacroMovement  = nullptr;  // bob_macroMovement  — M2: LFO1 rate boost
+    std::atomic<float>* pMacroCoupling  = nullptr;  // bob_macroCoupling  — M3: coupling send offset
+    std::atomic<float>* pMacroSpace     = nullptr;  // bob_macroSpace     — M4: texture level offset
 };
 
 } // namespace xolokun
