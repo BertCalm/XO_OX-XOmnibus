@@ -13,7 +13,7 @@ The five community features listed below are planned post-launch, not launch-day
 | Feature | Phase | Target | Code Status |
 |---------|-------|--------|-------------|
 | `.xcoupling` Protocol + GitHub Registry | Phase 2 (Month 2) | Separate GitHub repo + format spec | TODO: create spec + seed repo |
-| Alignment Rite Audio Quiz | Phase 2 (Month 2-3) | Site page at `/alignment` | TODO: HTML + quiz logic + local persistence |
+| Alignment Rite Audio Quiz | Phase 2 (Month 2-3) | `site/character-lab-v4.html` serves as the current implementation; rename/redirect to `/alignment` when ready for public launch | Character Lab variants exist (v2–v4). Use character-lab-v4.html as the live implementation until a dedicated alignment-rite.html is created. |
 | Discord Creature Bots (DeepBot, Professor Oscar) | Phase 2 (Month 2+) | Discord bot service | TODO: extend `Tools/social/discord_webhook.py` |
 | Community Challenge System | Phase 2 (Month 1-2) | Challenge submission workflow | TODO: define submission format + review process |
 | Newsletter / Email Capture | Not planned | Not planned — "For All" principle | Intentionally absent per strategy |
@@ -339,7 +339,9 @@ The mythology is not metaphor. The mythology is mechanism. Each item below descr
 
 **Alignment Rite Audio Quiz:** A short interactive experience on the site. Users listen to audio examples and indicate which sounds resonate. The quiz assigns a creature persona based on the pattern of responses. This is the moment where "I downloaded a synth" becomes "I have a creature in the water column." The assignment is permanent (locally stored) and gives the user something to identify with in Discord and on the site.
 
-Completing the Alignment Rite and sharing the result is how a patron's creature becomes visible at the `/expedition` milestone tracker — a Spawning Event.
+> **Implementation note:** `site/character-lab-v4.html` is the current working implementation of this mechanic. It can serve as the Alignment Rite at launch. A dedicated `alignment-rite.html` (or redirect from `/alignment`) can be created later if a distinct URL is needed for marketing purposes. Do not block Phase 2 on a new HTML file — wire `character-lab-v4.html` into the Spawning Event flow instead.
+
+Completing the Alignment Rite (via the Character Lab or a dedicated page) and sharing the result is how a patron's creature becomes visible at the `/expedition` milestone tracker — a Spawning Event.
 
 ### Tier 5 — Month 6+ (Requires Community Data to Build)
 
@@ -490,7 +492,7 @@ None of this requires anything beyond the 12-hour weekly budget. It requires tha
 | Charitable commitments at specific milestones | Deferred until milestones are plausible | Public commitments made too early create strain or broken promises |
 | Community Descent (Discord depth tiers) | Month 3+ | Five channels at launch; tiers added only when existing channels are consistently active |
 | DeepBot + Professor Oscar Bot | Month 2+ | Launch-day bots require development time better spent on the plugin |
-| Creature-persona bots | Month 2+ (post-Alignment Rite) | Requires Alignment Rite to be live; build in sequence |
+| Creature-persona bots | Month 2+ (post-Alignment Rite) | Requires Alignment Rite to be live; use character-lab-v4.html as the implementation; build in sequence |
 | 7 rings → "community that builds a product" framing | Removed from opening | Do not lead with Ring 7 framing; lead with sounds |
 
 ---
