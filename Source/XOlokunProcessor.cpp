@@ -2217,9 +2217,11 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
-        // FIX 4 — State schema version (bump when format changes).
-        // v1 = legacy (no slot/coupling/CM data); v2 = slots + coupling + CM.
-        xml->setAttribute("stateVersion", 2);
+        // FIX 4 / Fix #315 — State schema version (bump when format changes).
+        // v1 = legacy (no slot/coupling/CM data)
+        // v2 = slots + coupling + CM + mutes
+        // v3 = + macroTargets + playScaleIndex + editorUIState (this build)
+        xml->setAttribute("stateVersion", 3);
 
         // FIX 1 — Save engine slot selections so DAW session recall restores
         // the loaded engine layout.  An empty string means the slot is empty.
@@ -2266,6 +2268,15 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
         if (auto macroElem = macroSystem_.getState())
             xml->addChildElement(macroElem.release());
 
+        // FIX 8 — Save PlaySurface scale selector index (closes #314).
+        xml->setAttribute("playScaleIndex", persistedPlayScaleIndex);
+
+        // FIX 9 — Save editor UI state: selectedSlot, signalFlowActiveSection,
+        // cockpitBypass (closes #357).
+        xml->setAttribute("editorSelectedSlot",      persistedSelectedSlot);
+        xml->setAttribute("editorSignalFlowSection", persistedSignalFlowSection);
+        xml->setAttribute("editorCockpitBypass",     persistedCockpitBypass ? 1 : 0);
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -2278,9 +2289,33 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
         hasRestoredState = true;  // Mark that saved state exists — skip default-engine load in prepareToPlay.
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
 
-        // FIX 4 — Read schema version so we can gate new restore blocks
-        // against legacy saves that predate v2 (no slot/coupling/CM data).
-        const int stateVersion = xml->getIntAttribute("stateVersion", 1);
+        // FIX 4 / Fix #315 — Read schema version and apply forward migrations so
+        // old sessions load safely into newer builds.
+        //
+        // Migration dispatch — each migrateVxToVy() mutates the XML in-place and
+        // applies safe defaults for any new fields that did not exist in that version.
+        // Migrations are additive-only: they never remove data, only add defaults.
+        //
+        // v1 → v2: slot selections, coupling routes, ChordMachine, slot mutes were
+        //          not persisted in v1. Default: empty slots, no routes, default CM.
+        // v2 → v3: macroTargets, playScaleIndex, editorUIState added. Defaults:
+        //          no macro targets, scale 0 (Chromatic), no editor overrides.
+        //
+        // To add a new schema version in future:
+        //   1. Bump stateVersion in getStateInformation() (above).
+        //   2. Add a new migration block: if (loadedVersion < N+1) { /* apply defaults */ }
+        //   3. Restore the new fields below inside the stateVersion >= N+1 guard.
+        const int loadedVersion = xml->getIntAttribute("stateVersion", 1);
+
+        // v1 → v2: no structural XML transform needed — the restore guards below
+        // already gate on stateVersion >= 2 and fall back to defaults for absent attrs.
+
+        // v2 → v3: macroTargets, playScaleIndex, editorUIState.
+        // If missing (v2 save), the existing attribute-read fallbacks (0 / -1 / false)
+        // are already the correct defaults, so no explicit XML patching is required.
+
+        // Alias so existing >= 2 guards compile unchanged.
+        const int stateVersion = loadedVersion;
 
         if (stateVersion >= 2)
         {
@@ -2381,6 +2416,17 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
             if (uiStateTree.isValid() && onSetXOuijaState)
                 onSetXOuijaState (uiStateTree);
         }
+
+        // FIX 8 — Restore PlaySurface scale selector index (closes #314).
+        // Default 0 (Chromatic) matches PlayControlPanel init state — safe for
+        // old sessions that predate this field.
+        persistedPlayScaleIndex = xml->getIntAttribute("playScaleIndex", 0);
+
+        // FIX 9 — Restore editor UI state (closes #357).
+        // The editor reads these via getPersistedXxx() after construction.
+        persistedSelectedSlot      = xml->getIntAttribute("editorSelectedSlot",      -1);
+        persistedSignalFlowSection = xml->getIntAttribute("editorSignalFlowSection",  0);
+        persistedCockpitBypass     = xml->getIntAttribute("editorCockpitBypass",      0) != 0;
     }
 }
 
