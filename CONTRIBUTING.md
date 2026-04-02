@@ -108,7 +108,7 @@ Additional conventions:
 - 6D Sonic DNA filled in: brightness, warmth, movement, density, space, aggression
 - All four macros must produce audible change
 
-**Engine contributions** start as standalone instruments, not as XOceanus integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/xomnibus_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
+**Engine contributions** start as standalone instruments, not as XOceanus integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/xolokun_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
 
 **Documentation** — if something confused you, fix it. The Field Guide, sound design guides, and scripture benefit from perspectives other than the original author's.
 
