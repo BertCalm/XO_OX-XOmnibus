@@ -49,6 +49,7 @@ public:
 
     void processBlock (float* left, float* right, int numSamples)
     {
+        if (bufferSize <= 0) return;
         if (mix < 0.001f || smear < 0.001f)
             return;
 
