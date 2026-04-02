@@ -1445,6 +1445,69 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             static_cast<int>(cachedParams.mpeSlideTarget->load())));
     }
 
+    // ── External MIDI Clock sync (#359) ──────────────────────────────────────
+    // Scan incoming MIDI for system real-time messages (0xF8 Clock, 0xFA Start,
+    // 0xFB Continue, 0xFC Stop).  These are single-byte messages that arrive
+    // interleaved with note data and do not carry a channel.
+    //
+    // BPM derivation:  MIDI Clock fires 24 times per quarter note.  Six pulses
+    // equal one 16th note.  We measure the elapsed samples between consecutive
+    // step boundaries and compute:
+    //   BPM = (sampleRate * 60) / (intervalSamples * 4)
+    // A one-pole smoothing filter (α ≈ 0.3) reduces jitter without adding
+    // significant latency.
+    {
+        for (const auto& meta : midi)
+        {
+            const auto& msg   = meta.getMessage();
+            const int   spos  = meta.samplePosition;
+            const double absoluteTime = midiClockBlockOffset_ + spos;
+
+            if (msg.isMidiClock())   // 0xF8
+            {
+                if (chordMachine.receiveMidiClockPulse())
+                {
+                    // Step boundary: derive BPM from elapsed samples since last step
+                    if (midiClockLastStepTime_ >= 0.0)
+                    {
+                        const double intervalSamples = absoluteTime - midiClockLastStepTime_;
+                        if (intervalSamples > 0.0)
+                        {
+                            // intervalSamples = samples per 16th note
+                            // BPM = (SR * 60) / (intervalSamples * 4)
+                            const float rawBPM = static_cast<float>(
+                                getSampleRate() * 60.0 / (intervalSamples * 4.0));
+                            // Clamp to sensible range before smoothing
+                            const float clampedBPM = juce::jlimit(20.0f, 300.0f, rawBPM);
+                            // One-pole smoothing (α ≈ 0.3 — fast enough for live feel)
+                            midiClockDerivedBPM_ = 0.7f * midiClockDerivedBPM_
+                                                 + 0.3f * clampedBPM;
+                        }
+                    }
+                    midiClockLastStepTime_ = absoluteTime;
+                    chordMachine.advanceExternalClockStep(midiClockDerivedBPM_);
+                }
+            }
+            else if (msg.isMidiStart())    // 0xFA
+            {
+                midiClockLastStepTime_ = absoluteTime;
+                chordMachine.receiveMidiStart();
+            }
+            else if (msg.isMidiContinue()) // 0xFB
+            {
+                chordMachine.receiveMidiContinue();
+            }
+            else if (msg.isMidiStop())     // 0xFC
+            {
+                chordMachine.receiveMidiStop();
+            }
+        }
+        // Advance the running sample-time accumulator by this block's length.
+        // Done after scanning so spos values within the block are relative to
+        // midiClockBlockOffset_ (i.e. absoluteTime = offset + spos).
+        midiClockBlockOffset_ += numSamples;
+    }
+
     // DAW host transport sync
     if (auto* playHead = getPlayHead())
     {

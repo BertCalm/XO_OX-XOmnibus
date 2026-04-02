@@ -578,6 +578,17 @@ private:
     int  persistedSignalFlowSection  = 0;     // #357: signal flow active section
     bool persistedCockpitBypass      = false; // #357: Dark Cockpit bypass state
 
+    // ── External MIDI Clock state — audio thread only (closes #359) ──────────
+    // Used to derive BPM from incoming 0xF8 pulses.
+    // lastClockSampleTime: the processBlock-local sample position of the most
+    //   recent 0xF8 pulse, accumulated across blocks via blockSampleOffset.
+    // midiClockBlockOffset: running sample count from the start of the current
+    //   DAW-session, advanced by numSamples each block.
+    // midiClockIntervalSamples: smoothed inter-16th-note interval (6 pulses).
+    double midiClockBlockOffset_   = 0.0;   // total samples elapsed (audio thread only)
+    double midiClockLastStepTime_  = -1.0;  // sample time of last step boundary, or -1
+    float  midiClockDerivedBPM_    = 122.0f; // current BPM derived from external clock
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)
 };
 

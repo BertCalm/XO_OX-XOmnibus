@@ -424,6 +424,75 @@ public:
     void setStepVelocity (int step, float v) { if (step >= 0 && step < NumSteps) steps[step].velocity = v; }
     StepData getStep (int step) const        { return (step >= 0 && step < NumSteps) ? steps[step] : StepData{}; }
 
+    // ── External MIDI Clock sync (#359) ───────────────────────────────────────
+    //
+    // Call these from the processor's processBlock when MIDI system real-time
+    // messages are received in the incoming MIDI buffer.  All methods are
+    // audio-thread safe (no allocations, no blocking).
+    //
+    // MIDI Clock (0xF8): arrives 24 times per quarter note.  Each call
+    //   advances the internal pulse counter.  After 6 pulses (one 16th note),
+    //   the processor measures elapsed samples → derives BPM, then calls
+    //   advanceExternalClockStep() to advance the sequencer step.
+    //
+    // MIDI Start (0xFA): reset sequencer to step 0 and start running.
+    // MIDI Continue (0xFB): resume from current position.
+    // MIDI Stop (0xFC): stop the sequencer.
+
+    // Receive one MIDI clock pulse.  Call every time a 0xF8 message arrives.
+    // Returns true when 6 pulses have accumulated (= one 16th note boundary),
+    // which is the caller's cue to advance the sequencer step.
+    bool receiveMidiClockPulse() noexcept
+    {
+        ++externalClockPulseCount;
+        if (externalClockPulseCount >= 6)   // 24 PPQN / 4 = 6 pulses per 16th
+        {
+            externalClockPulseCount = 0;
+            return true;  // step boundary
+        }
+        return false;
+    }
+
+    // Advance sequencer by one 16th-note step using the provided derived BPM.
+    // Call from the processor when receiveMidiClockPulse() returns true.
+    // derivedBPM must be > 0.
+    void advanceExternalClockStep (float derivedBPM) noexcept
+    {
+        if (derivedBPM > 0.0f)
+            bpm.store (derivedBPM, std::memory_order_relaxed);
+
+        // Advance the step counter and reset timing so the sequencer aligns
+        // to the external clock boundary rather than its own internal timer.
+        seqCurrentStep = (seqCurrentStep + 1) % NumSteps;
+        if (seqCurrentStep == 0)
+            applyEnoMutations();
+
+        // Set seqSamplesUntilStep to 0 so processSequencerMode fires
+        // at the next call (the event is injected at sample 0 of that block).
+        seqSamplesUntilStep = 0;
+    }
+
+    // MIDI Start (0xFA): reset to step 0 and begin running.
+    void receiveMidiStart() noexcept
+    {
+        externalClockPulseCount = 0;
+        resetSequencer();   // resets to step 15 → first advance → step 0
+        sequencerRunning.store (true, std::memory_order_relaxed);
+    }
+
+    // MIDI Continue (0xFB): resume from current position.
+    void receiveMidiContinue() noexcept
+    {
+        sequencerRunning.store (true, std::memory_order_relaxed);
+    }
+
+    // MIDI Stop (0xFC): halt the sequencer.
+    void receiveMidiStop() noexcept
+    {
+        sequencerRunning.store (false, std::memory_order_relaxed);
+        needsSeqReset.store (true, std::memory_order_relaxed);
+    }
+
     // DAW sync: call from processor before processBlock when host transport is available
     void syncToHost (double ppqPosition, double hostBPM, bool hostPlaying)
     {
@@ -1066,6 +1135,9 @@ private:
     uint32_t enoRngState = 42;         // xorshift32 seed
 
     double sr = 44100.0;
+
+    // External MIDI clock state (#359) — audio thread only
+    int externalClockPulseCount = 0;  // 0–5; resets to 0 at each 16th-note boundary
 };
 
 } // namespace xolokun
