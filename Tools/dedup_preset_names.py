@@ -2,10 +2,20 @@
 """
 dedup_preset_names.py — Find and fix duplicate preset names across the XOceanus fleet.
 
+Scans ALL mood subdirectories under Presets/XOceanus/ so cross-mood duplicates are
+caught (fixes #236 — 824 cross-mood duplicates reported when 388 unique names appeared
+in 2+ moods). Cross-mood duplicates were fully resolved by prior dedup passes; this
+script is the ongoing guard to prevent regressions.
+
 Usage:
   python dedup_preset_names.py             # dry-run (default)
   python dedup_preset_names.py --dry-run   # explicit dry-run
   python dedup_preset_names.py --apply     # write changes to disk
+
+Strategy for disambiguating duplicates:
+  - The first file (alphabetical path order) keeps its original name.
+  - Each subsequent duplicate is renamed: "Base Name (EngineName)"
+  - If that is also taken, roman numerals are appended: "Base Name (EngineName II)"
 """
 
 import argparse
