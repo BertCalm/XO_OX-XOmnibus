@@ -206,20 +206,23 @@ public:
 
     ~CouplingVisualizer() override { stopTimer(); }
 
-    //-- Lifecycle --------------------------------------------------------------
+    //-- Lifecycle (message thread only) ----------------------------------------
 
     void start()
     {
+        JUCE_ASSERT_MESSAGE_THREAD
         startTimerHz (reducedMotion ? 10 : 30);
     }
 
     void stop()
     {
+        JUCE_ASSERT_MESSAGE_THREAD
         stopTimer();
     }
 
     void setReducedMotion (bool enabled)
     {
+        JUCE_ASSERT_MESSAGE_THREAD
         reducedMotion = enabled;
         if (isTimerRunning()) start();
     }
@@ -227,16 +230,20 @@ public:
     /// Call this from the audio thread (processBlock) to feed per-route RMS.
     /// Index must match the order routes appear in MegaCouplingMatrix::getRoutes().
     /// This is the ONLY method that may be called from the audio thread.
+    /// Thread safety: uses std::atomic<float>::store(relaxed) — no locks.
     void setRouteRMS (int routeIndex, float rms) noexcept
     {
+        // NOTE: intentionally no JUCE_ASSERT_MESSAGE_THREAD — audio thread call site.
         if (routeIndex >= 0 && routeIndex < kMaxRMSSlots)
             routeRMS[static_cast<size_t> (routeIndex)].store (
                 rms, std::memory_order_relaxed);
     }
 
     /// Force a route list refresh (call after external route mutations).
+    /// Must be called from the message thread.
     void refresh()
     {
+        JUCE_ASSERT_MESSAGE_THREAD
         cachedRoutes = couplingMatrix.getRoutes();
         repaint();
     }
