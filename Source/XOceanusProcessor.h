@@ -14,6 +14,7 @@
 #include "Core/PresetManager.h"
 #include "Core/CouplingPresetManager.h"
 #include "Core/MacroSystem.h"
+#include "Core/BrothCoordinator.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
@@ -553,6 +554,10 @@ private:
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
+    void processBrothCoupling(std::array<SynthEngine*, MaxSlots>& enginePtrs);
+
+    // BROTH quad coordinator — stateless helper, no heap allocation
+    BrothCoordinator brothCoordinator_;
 
     // Drain the CC output queue into the MIDI output buffer.
     // Called from the audio thread at the end of processBlock.

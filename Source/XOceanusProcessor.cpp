@@ -1946,6 +1946,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // Apply family bleed between Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE)
     processFamilyBleed(enginePtrs);
 
+    // Apply BROTH quad multi-timescale diffusion coupling
+    // (OVERWASH / OVERWORN / OVERFLOW / OVERCAST — Kitchen Collection Pads)
+    processBrothCoupling(enginePtrs);
+
     // Mix all engine outputs to master — skip muted slots.
     const float masterVol = cachedParams.masterVolume->load();
 
@@ -2132,6 +2136,53 @@ void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& e
             }
         }
     }
+}
+
+void XOceanusProcessor::processBrothCoupling(std::array<SynthEngine*, MaxSlots>& enginePtrs)
+{
+    // Locate all four BROTH engines. Bail out early if any is absent — coupling
+    // only activates when the full quad is loaded (same semantics as the Ghost Slot).
+    OverwashEngine* overwash = nullptr;
+    OverwornEngine* overworn = nullptr;
+    OverflowEngine* overflow = nullptr;
+    OvercastEngine* overcast = nullptr;
+
+    for (auto* eng : enginePtrs)
+    {
+        if (!eng) continue;
+        const juce::String id = eng->getEngineId();
+        if      (id == BrothCoordinator::kOverwash) overwash = static_cast<OverwashEngine*>(eng);
+        else if (id == BrothCoordinator::kOverworn) overworn = static_cast<OverwornEngine*>(eng);
+        else if (id == BrothCoordinator::kOverflow) overflow = static_cast<OverflowEngine*>(eng);
+        else if (id == BrothCoordinator::kOvercast) overcast = static_cast<OvercastEngine*>(eng);
+    }
+
+    // All four must be present for BROTH coupling to activate.
+    if (!overwash || !overworn || !overflow || !overcast)
+        return;
+
+    // ── Read OVERWORN's exported state ────────────────────────────────────────
+    // OVERWORN is the "broth pot": it accumulates session-long reduction state
+    // (spectral mass evaporating from high bands to low) and exports it so the
+    // sibling engines can react to the age and concentration of the session.
+    const float sessionAge        = overworn->getSessionAge();
+    const float concentrateDark   = overworn->getConcentrateDark();
+    const float totalSpectralMass = overworn->getTotalSpectralMass();
+
+    // ── OVERWORN → OVERWASH ────────────────────────────────────────────────────
+    // As the broth reduces (sessionAge rises), the diffusion medium grows more
+    // viscous — OVERWASH's high-frequency diffusion slows accordingly.
+    overwash->setBrothSessionAge(sessionAge);
+
+    // ── OVERWORN → OVERFLOW ────────────────────────────────────────────────────
+    // A concentrated, caramelised broth (high concentrateDark) is denser and
+    // builds pressure faster — OVERFLOW's effective threshold drops.
+    overflow->setBrothConcentrateDark(concentrateDark);
+
+    // ── OVERWORN → OVERCAST ────────────────────────────────────────────────────
+    // Depleted spectral mass means fewer available nucleation sites for ice
+    // crystals — OVERCAST's crystal brightness scales with remaining spectral mass.
+    overcast->setBrothSpectralMass(totalSpectralMass);
 }
 
 void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
