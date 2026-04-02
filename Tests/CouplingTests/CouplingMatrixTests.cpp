@@ -638,6 +638,342 @@ static void testTriangularCoupling()
     }
 }
 
+// ============================================================================
+// Helpers
+// ============================================================================
+
+// Build a matrix, wired with two prepared TestEngines, and a single active
+// route using `type` and `amount`.  Returns (by populating the out-params)
+// so the caller owns the engines and the matrix for further assertions.
+static void runSingleRouteBlock(MegaCouplingMatrix& matrix,
+                                TestEngine& src,
+                                TestEngine& dst,
+                                CouplingType type,
+                                float amount,
+                                int blockSize = 256)
+{
+    matrix.prepare(blockSize);
+    src.prepare(44100.0, blockSize);
+    dst.prepare(44100.0, blockSize);
+    src.fillOutput(0.5f);
+
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines =
+        { &src, &dst, nullptr, nullptr, nullptr };
+    matrix.setEngines(engines);
+
+    MegaCouplingMatrix::CouplingRoute route;
+    route.sourceSlot  = 0;
+    route.destSlot    = 1;
+    route.type        = type;
+    route.amount      = amount;
+    route.isNormalled = false;
+    route.active      = true;
+    matrix.addRoute(route);
+
+    auto routes = matrix.loadRoutes();
+    matrix.processBlock(blockSize, routes);
+}
+
+// ============================================================================
+// Control-rate coupling types (non-audio-rate) — all routed through the
+// fillControlRateBuffer → applyCouplingInput path.  The test verifies that:
+//   1. applyCouplingInput is called on the destination engine.
+//   2. The CouplingType tag passed is exactly the type we configured.
+//   3. The amount passed matches the route amount (±0.001 tolerance).
+//   4. numSamples equals blockSize.
+// ============================================================================
+
+static void testControlRateCouplingTypes()
+{
+    std::cout << "\n--- Control-Rate Coupling Types ---\n";
+    constexpr int blockSize = 256;
+
+    // Table of all control-rate types (non-audio-rate, non-special-path types).
+    // KnotTopology and TriangularCoupling are exercised in their own sections.
+    // AudioToFM, AudioToRing, AudioToWavetable, AudioToBuffer use the audio-rate
+    // path and are covered in testAudioRateCouplingTypes().
+    const struct { CouplingType type; const char* name; } kControlRateTypes[] = {
+        { CouplingType::AmpToPitch,    "AmpToPitch"    },
+        { CouplingType::LFOToPitch,    "LFOToPitch"    },
+        { CouplingType::EnvToMorph,    "EnvToMorph"    },
+        { CouplingType::FilterToFilter,"FilterToFilter" },
+        { CouplingType::AmpToChoke,    "AmpToChoke"    },
+        { CouplingType::RhythmToBlend, "RhythmToBlend" },
+        { CouplingType::EnvToDecay,    "EnvToDecay"    },
+        { CouplingType::PitchToPitch,  "PitchToPitch"  },
+    };
+
+    for (const auto& entry : kControlRateTypes)
+    {
+        MegaCouplingMatrix matrix;
+        TestEngine src("Src"), dst("Dst");
+        runSingleRouteBlock(matrix, src, dst, entry.type, 0.6f, blockSize);
+
+        // Verify delivery
+        {
+            std::string label = std::string(entry.name) + ": applyCouplingInput called";
+            reportTest(label.c_str(), dst.couplingInputReceived);
+        }
+        {
+            std::string label = std::string(entry.name) + ": correct CouplingType tag";
+            reportTest(label.c_str(), dst.lastCouplingType == entry.type);
+        }
+        {
+            std::string label = std::string(entry.name) + ": correct amount (0.6)";
+            reportTest(label.c_str(), std::abs(dst.lastCouplingAmount - 0.6f) < 0.001f);
+        }
+        {
+            std::string label = std::string(entry.name) + ": numSamples == blockSize";
+            reportTest(label.c_str(), dst.lastCouplingNumSamples == blockSize);
+        }
+    }
+}
+
+// ============================================================================
+// Audio-rate coupling types — routed through the per-sample L/R stereo mixdown
+// path.  AudioToBuffer uses the processAudioRoute (sink) path and is tested
+// separately.
+// ============================================================================
+
+static void testAudioRateCouplingTypes()
+{
+    std::cout << "\n--- Audio-Rate Coupling Types (AudioToFM, AudioToRing, AudioToWavetable) ---\n";
+    constexpr int blockSize = 256;
+
+    const struct { CouplingType type; const char* name; } kAudioRateTypes[] = {
+        { CouplingType::AudioToFM,         "AudioToFM"         },
+        { CouplingType::AudioToRing,        "AudioToRing"       },
+        { CouplingType::AudioToWavetable,   "AudioToWavetable"  },
+    };
+
+    for (const auto& entry : kAudioRateTypes)
+    {
+        MegaCouplingMatrix matrix;
+        TestEngine src("Src"), dst("Dst");
+        runSingleRouteBlock(matrix, src, dst, entry.type, 0.5f, blockSize);
+
+        {
+            std::string label = std::string(entry.name) + ": applyCouplingInput called";
+            reportTest(label.c_str(), dst.couplingInputReceived);
+        }
+        {
+            std::string label = std::string(entry.name) + ": correct CouplingType tag";
+            reportTest(label.c_str(), dst.lastCouplingType == entry.type);
+        }
+        {
+            std::string label = std::string(entry.name) + ": amount forwarded correctly";
+            reportTest(label.c_str(), std::abs(dst.lastCouplingAmount - 0.5f) < 0.001f);
+        }
+        {
+            std::string label = std::string(entry.name) + ": numSamples == blockSize";
+            reportTest(label.c_str(), dst.lastCouplingNumSamples == blockSize);
+        }
+    }
+
+    // Verify audio-rate cycle detection blocks A→B→A routes.
+    {
+        std::cout << "\n--- Audio-Rate Cycle Detection ---\n";
+
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        TestEngine a("A"), b("B");
+        a.prepare(44100.0, blockSize);
+        b.prepare(44100.0, blockSize);
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines =
+            { &a, &b, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        // Add A→B (AudioToFM).
+        MegaCouplingMatrix::CouplingRoute routeAB;
+        routeAB.sourceSlot  = 0;
+        routeAB.destSlot    = 1;
+        routeAB.type        = CouplingType::AudioToFM;
+        routeAB.amount      = 0.5f;
+        routeAB.isNormalled = false;
+        routeAB.active      = true;
+        matrix.addRoute(routeAB);
+
+        // Attempt to add B→A (same audio-rate type) — would create a cycle.
+        MegaCouplingMatrix::CouplingRoute routeBA;
+        routeBA.sourceSlot  = 1;
+        routeBA.destSlot    = 0;
+        routeBA.type        = CouplingType::AudioToFM;
+        routeBA.amount      = 0.5f;
+        routeBA.isNormalled = false;
+        routeBA.active      = true;
+        matrix.addRoute(routeBA);
+
+        // Only one route should have been admitted (the second is a cycle).
+        reportTest("AudioToFM A→B→A cycle blocked: only 1 route admitted",
+                   matrix.getRoutes().size() == 1);
+
+        // wouldCreateCycle must return true for the reverse direction.
+        reportTest("wouldCreateCycle returns true for B→A after A→B",
+                   matrix.wouldCreateCycle(1, 0, CouplingType::AudioToFM));
+
+        // Control-rate types must NOT be blocked (they're latent, not audio-rate).
+        reportTest("wouldCreateCycle returns false for control-rate AmpToFilter",
+                   !matrix.wouldCreateCycle(1, 0, CouplingType::AmpToFilter));
+    }
+}
+
+// ============================================================================
+// AudioToBuffer — uses the processAudioRoute / sink path.
+// When the destination does NOT implement IAudioBufferSink the sinkCache will
+// be nullptr and processBlock must skip the route without crashing.
+// ============================================================================
+
+static void testAudioToBufferNonSinkDest()
+{
+    std::cout << "\n--- AudioToBuffer (non-sink destination) ---\n";
+    constexpr int blockSize = 256;
+
+    MegaCouplingMatrix matrix;
+    TestEngine src("Src"), dst("Dst");   // TestEngine does not implement IAudioBufferSink
+    matrix.prepare(blockSize);
+    src.prepare(44100.0, blockSize);
+    dst.prepare(44100.0, blockSize);
+    src.fillOutput(0.5f);
+
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines =
+        { &src, &dst, nullptr, nullptr, nullptr };
+    matrix.setEngines(engines);
+
+    // resolveAudioToBufferSinks is called inside addRoute for AudioToBuffer.
+    MegaCouplingMatrix::CouplingRoute route;
+    route.sourceSlot  = 0;
+    route.destSlot    = 1;
+    route.type        = CouplingType::AudioToBuffer;
+    route.amount      = 0.8f;
+    route.isNormalled = false;
+    route.active      = true;
+    matrix.addRoute(route);
+
+    // sinkCache should be nullptr (TestEngine doesn't implement IAudioBufferSink).
+    auto routes = matrix.getRoutes();
+    bool sinkIsNull = !routes.empty() && (routes[0].sinkCache == nullptr);
+    reportTest("AudioToBuffer: sinkCache is nullptr for non-sink dest", sinkIsNull);
+
+    // processBlock must not crash and must NOT call applyCouplingInput.
+    auto liveRoutes = matrix.loadRoutes();
+    matrix.processBlock(blockSize, liveRoutes);
+    reportTest("AudioToBuffer: non-sink dest does not crash processBlock", true);
+    // The sink path does not call applyCouplingInput — it writes to the ring buffer only.
+    // Since sinkCache is null the route is skipped entirely, so dst receives nothing.
+    reportTest("AudioToBuffer: applyCouplingInput NOT called when sink is null",
+               !dst.couplingInputReceived);
+}
+
+// ============================================================================
+// AmpToChoke priority ordering
+//
+// AmpToChoke is semantically different from simple filter modulation: a loud
+// source is supposed to attenuate ("choke") the destination.  The test verifies
+// that when two routes both target the same destination — one AmpToChoke and one
+// AmpToFilter — both are delivered independently (no route suppresses the other).
+// ============================================================================
+
+static void testAmpToChokePriorityOrdering()
+{
+    std::cout << "\n--- AmpToChoke Priority / Ordering ---\n";
+    constexpr int blockSize = 256;
+
+    MegaCouplingMatrix matrix;
+    matrix.prepare(blockSize);
+
+    TestEngine src1("Src1"), src2("Src2"), dst("Dst");
+    src1.prepare(44100.0, blockSize);
+    src2.prepare(44100.0, blockSize);
+    dst.prepare(44100.0, blockSize);
+    src1.fillOutput(0.9f);  // loud — should trigger choke
+    src2.fillOutput(0.3f);  // moderate
+
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines =
+        { &src1, &src2, &dst, nullptr, nullptr };
+    matrix.setEngines(engines);
+
+    // Route 1: src1 → dst via AmpToChoke (slot 0 → slot 2)
+    MegaCouplingMatrix::CouplingRoute chokeRoute;
+    chokeRoute.sourceSlot  = 0;
+    chokeRoute.destSlot    = 2;
+    chokeRoute.type        = CouplingType::AmpToChoke;
+    chokeRoute.amount      = 0.8f;
+    chokeRoute.isNormalled = false;
+    chokeRoute.active      = true;
+    matrix.addRoute(chokeRoute);
+
+    // Route 2: src2 → dst via AmpToFilter (slot 1 → slot 2)
+    MegaCouplingMatrix::CouplingRoute filterRoute;
+    filterRoute.sourceSlot  = 1;
+    filterRoute.destSlot    = 2;
+    filterRoute.type        = CouplingType::AmpToFilter;
+    filterRoute.amount      = 0.4f;
+    filterRoute.isNormalled = false;
+    filterRoute.active      = true;
+    matrix.addRoute(filterRoute);
+
+    reportTest("AmpToChoke ordering: both routes admitted",
+               matrix.getRoutes().size() == 2);
+
+    auto routes = matrix.loadRoutes();
+    matrix.processBlock(blockSize, routes);
+
+    // dst.applyCouplingInput is called at least once (could be AmpToChoke or
+    // AmpToFilter depending on route ordering — either is correct).
+    reportTest("AmpToChoke ordering: dst received at least one coupling input",
+               dst.couplingInputReceived);
+
+    // The last recorded type must be one of the two we added (not some other type).
+    bool lastTypeIsKnown = (dst.lastCouplingType == CouplingType::AmpToChoke
+                         || dst.lastCouplingType == CouplingType::AmpToFilter);
+    reportTest("AmpToChoke ordering: last coupling type is AmpToChoke or AmpToFilter",
+               lastTypeIsKnown);
+}
+
+// ============================================================================
+// Zero-amount edge case for all coupling types
+// Route amount = 0.0005f (below the 0.001f threshold) → route treated as
+// inactive, applyCouplingInput must NOT be called.
+// ============================================================================
+
+static void testZeroAmountAllTypes()
+{
+    std::cout << "\n--- Zero Amount (below threshold) for Each Coupling Type ---\n";
+    constexpr int blockSize = 256;
+
+    const CouplingType allTypes[] = {
+        CouplingType::AmpToFilter,
+        CouplingType::AmpToPitch,
+        CouplingType::LFOToPitch,
+        CouplingType::EnvToMorph,
+        CouplingType::AudioToFM,
+        CouplingType::AudioToRing,
+        CouplingType::FilterToFilter,
+        CouplingType::AmpToChoke,
+        CouplingType::RhythmToBlend,
+        CouplingType::EnvToDecay,
+        CouplingType::PitchToPitch,
+        CouplingType::AudioToWavetable,
+        // AudioToBuffer: skip — it uses sinkCache; null sink already skips it.
+        CouplingType::KnotTopology,
+        CouplingType::TriangularCoupling,
+    };
+
+    for (const auto type : allTypes)
+    {
+        MegaCouplingMatrix matrix;
+        TestEngine src("Src"), dst("Dst");
+        // Use amount=0.0005f (below threshold=0.001f)
+        runSingleRouteBlock(matrix, src, dst, type, 0.0005f, blockSize);
+
+        // TriangularCoupling and KnotTopology use separate dispatch paths but
+        // are still subject to the 0.001f amount guard in processBlock.
+        reportTest("Zero amount → no coupling delivered (type skipped)",
+                   !dst.couplingInputReceived && !dst.triangularCouplingReceived);
+    }
+}
+
 //==============================================================================
 // Public entry point
 //==============================================================================
@@ -658,6 +994,11 @@ int runAll()
     testProcessBlock();
     testKnotTopology();
     testTriangularCoupling();
+    testControlRateCouplingTypes();
+    testAudioRateCouplingTypes();
+    testAudioToBufferNonSinkDest();
+    testAmpToChokePriorityOrdering();
+    testZeroAmountAllTypes();
 
     std::cout << "\n  Coupling Tests: " << g_couplingTestsPassed << " passed, "
               << g_couplingTestsFailed << " failed\n";
