@@ -250,6 +250,7 @@ public:
     void processBlock (juce::AudioBuffer<float>& buffer, int numSamples,
                        double ppqPosition = -1.0, double bpm = 0.0)
     {
+        juce::ScopedNoDenormals noDenormals;
         if (!pSatDrive || buffer.getNumChannels() < 2)
             return;
 
@@ -267,7 +268,7 @@ public:
         // Stage 2: Corroder
         const float corrMix      = pCorrMix      ? pCorrMix->load()      : 0.0f;
         const float corrBits     = pCorrBits     ? pCorrBits->load()     : 24.0f;
-        const float corrSR       = pCorrSR       ? pCorrSR->load()       : 44100.0f;
+        const float corrSR       = pCorrSR       ? pCorrSR->load()       : static_cast<float>(sr);
         const float corrFM       = pCorrFM       ? pCorrFM->load()       : 0.0f;
         const float corrTone     = pCorrTone     ? pCorrTone->load()     : 1.0f;
 
