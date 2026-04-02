@@ -68,7 +68,7 @@ Inputs:   --axiom "F"
           --iterations 3
           --pads 16               (number of pads to distribute across)
           --bars 2                (output length in bars)
-          --engine [XOlokun engine name]  (optional: render samples per pad)
+          --engine [XOceanus engine name]  (optional: render samples per pad)
           --output kit_name.xpm
 Outputs:  XPM file with trigger sequence encoded in step sequencer
           JSON metadata: { axiom, rules, iterations, seed_bar, velocity_map }
@@ -433,7 +433,7 @@ When multiple pads are tuned in near-unison and triggered simultaneously, the su
 **Practical kit construction:**
 
 1. Solve the constraint optimization for a given tempo
-2. Render 16 short pitched samples from an XOlokun engine at the 16 target frequencies
+2. Render 16 short pitched samples from an XOceanus engine at the 16 target frequencies
 3. Assemble into XPM
 4. The "rhythm" of this kit is implicit in its tuning, not in a step sequencer pattern
 
@@ -578,7 +578,7 @@ The 16 selected pads are the "most representative" samples of the entire 200-sam
 
 **Practical application:**
 
-Given 200 renders from a single XOlokun engine (say, 200 OPAL patches run through XOptic), automatically select the best 16 for a starter kit. The math guarantees the 16 pads cover the timbral range of the engine without redundancy.
+Given 200 renders from a single XOceanus engine (say, 200 OPAL patches run through XOptic), automatically select the best 16 for a starter kit. The math guarantees the 16 pads cover the timbral range of the engine without redundancy.
 
 **Oxport Tool Spec:**
 
@@ -634,7 +634,7 @@ B(P, θᵢ) = D(P, θᵢ+ε) / D(P, θᵢ-ε)   (asymmetry ratio)
 B >> 1 or << 1 means bifurcation near θᵢ
 ```
 
-Bifurcation parameters are the most expressive mod targets. This provides a formal basis for selecting which parameters to assign to XOlokun macro knobs.
+Bifurcation parameters are the most expressive mod targets. This provides a formal basis for selecting which parameters to assign to XOceanus macro knobs.
 
 **Compression as preset quality metric:**
 
@@ -708,6 +708,6 @@ Total estimated effort for all 9 tools: ~26 development days.
 
 ---
 
-*Hex notes: the CA and L-System tools can ship as standalone scripts today — no audio pipeline dependency, no XOlokun integration required. Prototype them first; validate the mathematical output before investing in the render pipeline.*
+*Hex notes: the CA and L-System tools can ship as standalone scripts today — no audio pipeline dependency, no XOceanus integration required. Prototype them first; validate the mathematical output before investing in the render pipeline.*
 
 *Atlas notes: the MDL/entropy tools are the highest-leverage items for the existing Oxport workflow. If XOptic ships first and produces fingerprint.json, the MDL kit tool becomes a 1-day add-on, not a 3-day project.*

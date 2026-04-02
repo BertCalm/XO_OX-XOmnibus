@@ -1,7 +1,7 @@
 # Preset Naming Elevation — Fleet-Wide
 
 **Date:** March 2026
-**Scope:** All XOlokun preset categories (Aether, Atmosphere, Foundation, Prism, Flux, Entangled)
+**Scope:** All XOceanus preset categories (Aether, Atmosphere, Foundation, Prism, Flux, Entangled)
 **Tool:** `Tools/rename_weak_presets.py`
 
 ---

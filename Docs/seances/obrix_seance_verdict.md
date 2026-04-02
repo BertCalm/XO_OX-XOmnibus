@@ -48,7 +48,7 @@
 
 ## The Prophecy
 
-OBRIX is architecture waiting for its voice. The brick-pool modular philosophy is genuinely novel within XOlokun — a meta-engine that becomes a different instrument depending on what bricks are active and what engines are coupled. But without factory presets demonstrating the coupling states, without a default patch that sounds inviting on first keypress, and without filter key tracking for cross-register consistency, the architecture's promise remains invisible. 
+OBRIX is architecture waiting for its voice. The brick-pool modular philosophy is genuinely novel within XOceanus — a meta-engine that becomes a different instrument depending on what bricks are active and what engines are coupled. But without factory presets demonstrating the coupling states, without a default patch that sounds inviting on first keypress, and without filter key tracking for cross-register consistency, the architecture's promise remains invisible. 
 
 The Brick Drop release strategy — new bricks every 2-4 weeks — is the right long game. The ghosts urge: ship fewer bricks more beautifully before shipping more bricks quickly. The first preset library should be a curated gallery of 7-15 scenes, not a catalog of configurations. One scene: dawn breaking over open water.
 

@@ -139,7 +139,7 @@ This is not a slip — this is realistic. V1 ships March 23. CHEF ships August 1
 - Run every recipe through the 8-point accessibility audit (per `recipe-design-process.md`)
 - Conceptual taste test: read each recipe aloud
 - Layout: PDF master (free), EPUB structure (Patreon), print-on-demand spec (Tier 4)
-- Deep-link all preset names to XOlokun (URL scheme)
+- Deep-link all preset names to XOceanus (URL scheme)
 - Write Signal post: "The Chef Quad Is Here" (announcement copy)
 - Write Field Guide post: Chronicle deep dive on adversarial coupling (editorial voice)
 
@@ -510,7 +510,7 @@ The Complete Kitchen is not a new book — it is a curation, indexing, and bindi
 ### Adoption Scenarios at CHEF Launch (August 2026)
 
 Assumptions at August 2026:
-- XOlokun has been public for 5 months
+- XOceanus has been public for 5 months
 - Target community size: 2,000–5,000 active users
 - Patreon community: 100–300 patrons (realistic for 5-month solo dev)
 

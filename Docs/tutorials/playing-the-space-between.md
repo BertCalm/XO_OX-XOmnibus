@@ -1,15 +1,15 @@
 # Playing the Space Between
-## A Producer's Guide to XOlokun Coupling Performance
+## A Producer's Guide to XOceanus Coupling Performance
 
 ---
 
 ## 1. The Space Between
 
-Every synth gives you a sound. XOlokun gives you a *relationship*.
+Every synth gives you a sound. XOceanus gives you a *relationship*.
 
 When you load two engines and draw a coupling route between them, something happens that neither engine could produce alone. Engine A begins sending a signal — its amplitude, its envelope, its LFO, its raw audio — and Engine B begins responding. The character of Engine B changes. It breathes differently. It filters differently. It decays differently. And what you hear is no longer Engine A or Engine B. It is the space between them.
 
-This is what coupling means in XOlokun. Not layering. Not mixing. Not routing audio in parallel. *Coupling* — one engine's behavior reshaping another engine's synthesis in real time, at a structural level.
+This is what coupling means in XOceanus. Not layering. Not mixing. Not routing audio in parallel. *Coupling* — one engine's behavior reshaping another engine's synthesis in real time, at a structural level.
 
 The aquatic mythology helps here. Think of two creatures sharing the same current. The comb jelly does not hand the anglerfish a signal. The comb jelly's neural pulse changes the water around it. The anglerfish, suspended in that same water, responds to the change — its filter opens, its pitch drifts, its character shifts in ways that are entirely its own but inextricable from the comb jelly's presence. That relationship, that shared water, is the coupling.
 
@@ -21,7 +21,7 @@ You cannot record the space between two engines and play it back without both en
 
 ### Loading Two Engines
 
-XOlokun gives you four engine slots in the main view. Each slot is a node in the visual Coupling Matrix. For your first coupling, start with two:
+XOceanus gives you four engine slots in the main view. Each slot is a node in the visual Coupling Matrix. For your first coupling, start with two:
 
 1. Load ONSET (or any engine with a strong rhythmic output) into Slot 1.
 2. Load OVERBITE (or any engine with a filter-driven character) into Slot 2.
@@ -70,7 +70,7 @@ You have just built a sidechain-coupled bass that does not duck — it breathes.
 
 ## 3. The 14 Coupling Types — A Field Guide
 
-XOlokun implements 14 coupling types, organized here by character. Some are subtle currents; some are full possession.
+XOceanus implements 14 coupling types, organized here by character. Some are subtle currents; some are full possession.
 
 ### Subtle — Control-Rate Modulation
 
@@ -166,7 +166,7 @@ Similarly, OUROBOROS can run "dry" in the mix while its four output channels (st
 
 ### Using Coupling for Sound Design vs. Live Performance
 
-In sound design contexts, coupling amount is a fixed parameter — you find the sweet spot where the two engines sound right together and leave the route at that depth. The Entangled mood presets in XOlokun are all designed this way: coupling routes pre-set to their Dialogue intensity (0.45–0.55), chosen for a specific musical effect.
+In sound design contexts, coupling amount is a fixed parameter — you find the sweet spot where the two engines sound right together and leave the route at that depth. The Entangled mood presets in XOceanus are all designed this way: coupling routes pre-set to their Dialogue intensity (0.45–0.55), chosen for a specific musical effect.
 
 In performance contexts, coupling depth becomes a live gesture. Neither end of the range is "wrong." Zero coupling = two independent engines. Full coupling = one engine possessing another. Your performance is the motion between those states.
 
@@ -238,7 +238,7 @@ Two engines with complementary relationships to time and scatter.
 
 ### Recipe C: The Metabolic Pair — ORACLE and ORGANON
 
-Two engines that share the deepest intellectual coupling in XOlokun.
+Two engines that share the deepest intellectual coupling in XOceanus.
 
 **Engines:** ORACLE (Slot 1, source), ORGANON (Slot 2, target)
 
@@ -312,9 +312,9 @@ Use BAKE at the end of a sound design session to commit your exploration. Use it
 
 ## Closing Note
 
-Coupling is not a feature. It is the argument that XOlokun makes about synthesis.
+Coupling is not a feature. It is the argument that XOceanus makes about synthesis.
 
-Most instruments give you one voice. XOlokun gives you a conversation. The 14 coupling types are 14 different ways that engines can share a current — from a gentle filter modulation that you might miss on first listen, to a full KnotTopology entanglement that makes two engines inseparable.
+Most instruments give you one voice. XOceanus gives you a conversation. The 14 coupling types are 14 different ways that engines can share a current — from a gentle filter modulation that you might miss on first listen, to a full KnotTopology entanglement that makes two engines inseparable.
 
 The space between two engines is where the most unexpected sounds live. It is also where the most useful ones live: the kick drum that teaches the bass how to breathe, the chaos attractor that turns a grid into a groove, the organism that adapts to what it is fed.
 
@@ -322,5 +322,5 @@ Start with `Amp->Filter` at 0.30 and two engines you already know. Find the spac
 
 ---
 
-*XOlokun — for all*
+*XOceanus — for all*
 *XO_OX Designs*

@@ -12,7 +12,7 @@ Social proof is earned in sequence — skip a rung and the next one collapses.
 Join as a participant, not a promoter. Answer questions about MPC workflow, sample management, and XPN format edge cases. Contribute before you ask for anything. Budget 20–30 substantive replies before mentioning XO_OX at all. This rung costs time, not money.
 
 **Rung 2 — Free ONSET pack as proof of quality** (weeks 3–6, overlapping)
-A free drum pack is the lowest-friction proof of concept. ONSET's 8 synthesis voices (Kick, Snare, CHat, OHat, Clap, Tom, Perc, FX) make it inherently showcase-ready. Ship the pack with a brief "how it was made" note — the synthesis engine behind it, the design philosophy. This separates it from a generic free pack and plants the XOlokun story. Target: 200–500 downloads before any paid launch.
+A free drum pack is the lowest-friction proof of concept. ONSET's 8 synthesis voices (Kick, Snare, CHat, OHat, Clap, Tom, Perc, FX) make it inherently showcase-ready. Ship the pack with a brief "how it was made" note — the synthesis engine behind it, the design philosophy. This separates it from a generic free pack and plants the XOceanus story. Target: 200–500 downloads before any paid launch.
 
 **Rung 3 — 3–5 demo videos showing real beats** (weeks 4–8)
 Not tutorials. Not feature walkthroughs. Beats — finished, loop-able, watchable in 60–90 seconds. Show the MPC screen, show the pads triggering, let the music speak. Each video is evidence that the packs work in a real workflow. Ideal format: "beat from scratch using only XO_OX packs." Post to YouTube (permanent) and clip for Reels/Shorts (reach).
@@ -70,7 +70,7 @@ Space posts 1–2 weeks apart. Rush this and it reads as a campaign. Let it brea
 
 **At 50 members**: the server needs a host, not a moderator. Post a beat, ask a question, reply to everyone. Activity is manufactured until it isn't.
 
-**At 500 members**: add `#engine-deep-dive` (XOlokun synthesis discussion) and `#beta-testing`. The community starts generating its own threads — your job shifts from starting conversations to surfacing the best ones.
+**At 500 members**: add `#engine-deep-dive` (XOceanus synthesis discussion) and `#beta-testing`. The community starts generating its own threads — your job shifts from starting conversations to surfacing the best ones.
 
 **At 5000 members**: add regional channels, genre channels, or instrument-specific channels only if organic demand exists. Do not over-architect early. A quiet channel is worse than no channel.
 

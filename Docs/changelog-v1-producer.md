@@ -1,10 +1,10 @@
-# XOlokun V1 — Release Notes
+# XOceanus V1 — Release Notes
 
 **XO_OX Designs | March 2026**
 
 ---
 
-Welcome to XOlokun V1 — a synthesizer built around a single idea: what happens when 71 distinct sonic personalities share the same room, listen to each other, and argue?
+Welcome to XOceanus V1 — a synthesizer built around a single idea: what happens when 71 distinct sonic personalities share the same room, listen to each other, and argue?
 
 This is our biggest release. Here is everything that is in it.
 
@@ -12,7 +12,7 @@ This is our biggest release. Here is everything that is in it.
 
 ## 71 Engines
 
-XOlokun ships with 71 registered synthesis engines. Every one of them has a name, a character, a color, and a sound that cannot come from anywhere else. They range from familiar territory to things we are still not entirely sure how to describe.
+XOceanus ships with 71 registered synthesis engines. Every one of them has a name, a character, a color, and a sound that cannot come from anywhere else. They range from familiar territory to things we are still not entirely sure how to describe.
 
 If you started counting engines at 22 and wondered where the rest came from — this is where.
 
@@ -50,7 +50,7 @@ Two voices, eight algorithms apiece, and a STRIFE/LOVE interaction axis that gov
 ### ORBWEAVE — Kelp Knot Purple
 *The Topological Knot.*
 
-ORBWEAVE treats audio signal as something that can be threaded, knotted, and woven through itself. It is the first engine in XOlokun built specifically around the KnotTopology coupling type — connections that flow both directions simultaneously. Seance score 8.4/10.
+ORBWEAVE treats audio signal as something that can be threaded, knotted, and woven through itself. It is the first engine in XOceanus built specifically around the KnotTopology coupling type — connections that flow both directions simultaneously. Seance score 8.4/10.
 
 ### OVERTONE — Spectral Ice
 *The Nautilus.*
@@ -97,7 +97,7 @@ Four environment generators for sounds that need to exist in a specific kind of 
 
 ### ~21,918 Factory Presets
 
-XOlokun V1 ships with more than 21,000 presets in `.xometa` format across eight moods:
+XOceanus V1 ships with more than 21,000 presets in `.xometa` format across eight moods:
 
 **Foundation** — the architecture. Dry, fundamental, structural.
 **Atmosphere** — space and movement. The environment around the note.
@@ -114,7 +114,7 @@ Every preset carries a 6D Sonic DNA fingerprint: brightness, warmth, movement, d
 
 Beginning with V1, XO_OX is introducing the **Guru Bin Pilgrimage** — a curated tier of presets that go deeper than the factory library.
 
-**Awakening presets** (included in XOlokun, free): 10 per engine. Gold visual treatment. These are the hero sounds — the ones that show each engine at its most essential.
+**Awakening presets** (included in XOceanus, free): 10 per engine. Gold visual treatment. These are the hero sounds — the ones that show each engine at its most essential.
 
 **Transcendental presets** (premium, released in volumes): 15–20 per engine. Deeper exploration of each engine's character. Released alongside lore booklets documenting how and why the sounds were designed.
 
@@ -124,7 +124,7 @@ Volume 1 covers OBRIX, OSTINATO, OPENSKY, OCEANDEEP, and OUIE. The OBRIX Transce
 
 ## Coupling — 13 Types
 
-Cross-engine modulation in XOlokun works through the MegaCouplingMatrix. V1 ships with 13 coupling types, including the new **KnotTopology** — the first bidirectional coupling type, introduced alongside ORBWEAVE.
+Cross-engine modulation in XOceanus works through the MegaCouplingMatrix. V1 ships with 13 coupling types, including the new **KnotTopology** — the first bidirectional coupling type, introduced alongside ORBWEAVE.
 
 The other 12 types cover amplitude-to-filter, amplitude-to-pitch, LFO-to-pitch, envelope-to-morph, audio-to-FM, audio-to-ring, filter-to-filter, amplitude-to-choke, rhythm-to-blend, envelope-to-decay, pitch-to-pitch, and audio-to-wavetable.
 
@@ -134,17 +134,17 @@ Coupling presets live in the Entangled mood. 18 factory coupling presets ship at
 
 ## The SDK — For Developers
 
-XOlokun V1 ships with a public SDK at `SDK/include/xolokun/`.
+XOceanus V1 ships with a public SDK at `SDK/include/xoceanus/`.
 
-The SDK is JUCE-free. If you want to build an engine that runs inside XOlokun, you do not need to link against JUCE — only the XOlokun SDK headers. The SDK includes the `SynthEngine` interface, all 13 `CouplingType` definitions, the `EngineModule` base contract, and a minimal engine template.
+The SDK is JUCE-free. If you want to build an engine that runs inside XOceanus, you do not need to link against JUCE — only the XOceanus SDK headers. The SDK includes the `SynthEngine` interface, all 13 `CouplingType` definitions, the `EngineModule` base contract, and a minimal engine template.
 
-Third-party engines follow the same rules as first-party engines: parameter IDs are namespaced, presets use `.xometa` format, and DSP lives in inline headers. The full process is documented in `Docs/xolokun_new_engine_process.md`.
+Third-party engines follow the same rules as first-party engines: parameter IDs are namespaced, presets use `.xometa` format, and DSP lives in inline headers. The full process is documented in `Docs/xoceanus_new_engine_process.md`.
 
 ---
 
 ## Expression and Playability
 
-Every engine in XOlokun has velocity-to-timbre routing. Velocity does not just change volume — it opens filters, shifts harmonic content, and triggers envelope curves differently depending on how hard you play.
+Every engine in XOceanus has velocity-to-timbre routing. Velocity does not just change volume — it opens filters, shifts harmonic content, and triggers envelope curves differently depending on how hard you play.
 
 All MIDI-capable engines have aftertouch (23/23) and mod wheel (22/22) wired to meaningful destinations. These are not mappings to generic parameters. Each engine's expression inputs are routed to the parameter that makes the most sense for that character.
 
@@ -178,13 +178,13 @@ A 12-round quality sweep ran across the original engine fleet before the new eng
 
 *[Historical note: This section describes the state at V1 draft (2026-03-21), when 42 engines were registered. The fleet has since grown to 76 engines. The narrative below is preserved as written.]*
 
-XOlokun started as a question: what if every character instrument in the XO_OX family could speak at the same time, through each other?
+XOceanus started as a question: what if every character instrument in the XO_OX family could speak at the same time, through each other?
 
 42 engines is not where we planned to land. It is where the question led. There are still engines we have not built yet. There are coupling types we have not written. There are sounds that only become possible when two specific engines are routed into each other in a configuration nobody has tried.
 
-That is what XOlokun V1 is. The starting condition.
+That is what XOceanus V1 is. The starting condition.
 
 ---
 
-*XO_OX Designs — XOlokun V1 — March 2026*
+*XO_OX Designs — XOceanus V1 — March 2026*
 *xo-ox.org*

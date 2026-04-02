@@ -177,7 +177,7 @@ All engines use the full shared DSP library:
 | XOlate engine | `Source/Engines/Olate/OlateEngine.h` |
 | XOaken engine | `Source/Engines/Oaken/OakenEngine.h` |
 | XOmega engine | `Source/Engines/Omega/OmegaEngine.h` |
-| Presets (40 total) | `Presets/XOlokun/{mood}/{Engine}_{Name}.xometa` |
+| Presets (40 total) | `Presets/XOceanus/{mood}/{Engine}_{Name}.xometa` |
 | Visionary concept | `Docs/concepts/cellar-quad-visionary.md` |
 | CPU strategy | `Docs/concepts/kitchen-cpu-optimization-strategy.md` |
 | This architecture doc | `Docs/cellar-quad-architecture.md` |

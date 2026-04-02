@@ -1,9 +1,9 @@
-# XOlokun — Master Specification
+# XOceanus — Master Specification
 
 **Version:** 1.0
 **Author:** XO_OX Designs
 **Date:** 2026-03-20
-**Status:** AUTHORITATIVE — This document is the single source of truth for XOlokun architecture, design, and implementation. All other spec documents are subordinate references.
+**Status:** AUTHORITATIVE — This document is the single source of truth for XOceanus architecture, design, and implementation. All other spec documents are subordinate references.
 
 ---
 
@@ -13,22 +13,22 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Domain | Authoritative Source | Status |
 |--------|---------------------|--------|
-| Product identity & brand | `xolokun_brand_identity_and_launch.md` | Locked |
-| Visual design system | `xolokun_technical_design_system.md` | Locked |
-| Preset format & taxonomy | `xolokun_preset_spec_for_builder.md` | Locked |
-| Engine modules | `xo_mega_tool_engine_catalog.md` | Locked (rename to XOlokun) |
+| Product identity & brand | `xoceanus_brand_identity_and_launch.md` | Locked |
+| Visual design system | `xoceanus_technical_design_system.md` | Locked |
+| Preset format & taxonomy | `xoceanus_preset_spec_for_builder.md` | Locked |
+| Engine modules | `xo_mega_tool_engine_catalog.md` | Locked (rename to XOceanus) |
 | Chaining architecture | `xo_mega_tool_chaining_architecture.md` | Locked |
 | PlaySurface | `xo_signature_playsurface_spec.md` | Locked |
 | XPN export | `xo_mega_tool_xpn_export.md` | Locked |
 | XOnset integration | `xo_mega_tool_xonset_integration.md` | Locked |
-| Mobile & MIDI | `xolokun_mobile_and_midi_spec.md` | Locked |
-| Repo structure | `xolokun_repo_structure.md` | Locked |
+| Mobile & MIDI | `xoceanus_mobile_and_midi_spec.md` | Locked |
+| Repo structure | `xoceanus_repo_structure.md` | Locked |
 | Development strategy | `xo_mega_tool_dev_strategy.md` | Locked |
 | .xometa schema | `xometa_schema.json` | Locked |
 
 **Superseded documents** (replaced by the specs above — do not use):
-- `xo_mega_tool_preset_system.md` — superseded by `xolokun_preset_spec_for_builder.md`
-- `xo_mega_tool_visual_identity.md` — superseded by `xolokun_technical_design_system.md`
+- `xo_mega_tool_preset_system.md` — superseded by `xoceanus_preset_spec_for_builder.md`
+- `xo_mega_tool_visual_identity.md` — superseded by `xoceanus_technical_design_system.md`
 
 **Living intelligence documents** (not foundation specs — authoritative for their domains):
 
@@ -38,7 +38,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 | `seances/seance_cross_reference.md` | Engine health, seance scores, D-violations, P0 bugs | Updated after each seance |
 | `prism_sweep_final_report.md` | 12-round quality history, doctrine resolution | Immutable historical record |
 | `fleet_health_2026_03_20.md` | Current fleet status snapshot | Latest: 2026-03-20 |
-| `xolokun_landscape_2026.md` | Grand survey baseline (2026-03-14) | Pre-sweep; see fleet_health for current |
+| `xoceanus_landscape_2026.md` | Grand survey baseline (2026-03-14) | Pre-sweep; see fleet_health for current |
 | `GOVERNANCE.md` | Update policies, SLAs, naming conventions | See before any doc update |
 | `MANIFEST.md` | Full documentation inventory | Discovery starting point |
 
@@ -46,9 +46,9 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ## 1. Product Identity
 
-### 1.1 What XOlokun Is
+### 1.1 What XOceanus Is
 
-**XOlokun** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 73 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOceanus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 73 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -68,9 +68,9 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 All XO_OX instruments follow the **XO + O-word** pattern:
 - OddfeliX/OddOscar, XOverdub, XOdyssey, XOblong, XObese, XOnset
-- XOlokun continues the pattern as the platform instrument
+- XOceanus continues the pattern as the platform instrument
 
-**Detail:** `xolokun_brand_identity_and_launch.md`
+**Detail:** `xoceanus_brand_identity_and_launch.md`
 
 ---
 
@@ -78,9 +78,9 @@ All XO_OX instruments follow the **XO + O-word** pattern:
 
 ### 2.1 Development Strategy: Interface-First Hybrid (Option C)
 
-The `SynthEngine` interface is defined now. Each existing instrument wraps its internals behind this interface via a thin adapter layer. Standalone products continue shipping independently. The XOlokun merge is a mechanical integration step, not a rewrite.
+The `SynthEngine` interface is defined now. Each existing instrument wraps its internals behind this interface via a thin adapter layer. Standalone products continue shipping independently. The XOceanus merge is a mechanical integration step, not a rewrite.
 
-**Core insight:** OddfeliX/OddOscar is already a miniature XOlokun — two engines, a coupling matrix, shared FX. XOlokun generalizes that pattern from 2 engines to N.
+**Core insight:** OddfeliX/OddOscar is already a miniature XOceanus — two engines, a coupling matrix, shared FX. XOceanus generalizes that pattern from 2 engines to N.
 
 ### 2.2 The SynthEngine Interface
 
@@ -98,7 +98,7 @@ public:
                             juce::MidiBuffer& midi,
                             int numSamples) = 0;
 
-    // Coupling (the XOlokun differentiator)
+    // Coupling (the XOceanus differentiator)
     virtual float getSampleForCoupling(int channel, int sampleIndex) const = 0;
     virtual void applyCouplingInput(CouplingType type,
                                    float amount,
@@ -156,7 +156,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 76 engines.
+The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 76 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -458,7 +458,7 @@ A post-mix effects chain that processes the combined output of all active engine
 
 ### 6.1 The Gallery Model
 
-XOlokun is a **gallery**. Each engine is an **exhibition**.
+XOceanus is a **gallery**. Each engine is an **exhibition**.
 
 The platform provides a clean, neutral space — warm white walls, consistent typography, predictable navigation — that frames whatever art is on display. Engine accent colors fill only the engine panel interior. The shell never changes.
 
@@ -469,7 +469,7 @@ The platform provides a clean, neutral space — warm white walls, consistent ty
 
 ### 6.2 Dark Mode Default
 
-XOlokun defaults to **dark mode**. This is a deliberate choice:
+XOceanus defaults to **dark mode**. This is a deliberate choice:
 - Dark mode is the primary performance environment — studio, stage, and late-night sessions
 - Engine accent colors are most vivid against the dark shell
 - Light mode is available as a toggle for bright environments and marketing screenshots
@@ -584,7 +584,7 @@ xl:           32px  (between engine panels)
 - GPU-accelerated transforms only (translate, scale, opacity)
 - Reduce motion mode available (accessibility)
 
-**Detail:** `xolokun_technical_design_system.md`
+**Detail:** `xoceanus_technical_design_system.md`
 
 ---
 
@@ -711,7 +711,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 |------|--------|----------|
 | **Foundation** | Bass, drums, rhythmic anchors | Neon Tetra Blue `#00A6D6` |
 | **Atmosphere** | Pads, drones, washes, textures | Axolotl Gill Pink `#E8839B` |
-| **Entangled** | Cross-coupled, reactive — the XOlokun signature | Gold `#E9C46A` |
+| **Entangled** | Cross-coupled, reactive — the XOceanus signature | Gold `#E9C46A` |
 | **Prism** | Leads, keys, bells, melodic, articulate | Silver `#B8C4CC` |
 | **Flux** | Glitchy, unstable, experimental, lo-fi | Crimson `#C0392B` |
 | **Aether** | Cinematic, transcendent, ambient, spiritual | Indigo `#4A3680` |
@@ -833,7 +833,7 @@ Cross-engine presets additionally:
 | XOnset | 85 | Spec only | N/A |
 | **Total in .xometa** | **519** | **All fingerprinted with DNA** | |
 
-**Detail:** `xolokun_preset_spec_for_builder.md`, `xometa_schema.json`
+**Detail:** `xoceanus_preset_spec_for_builder.md`, `xometa_schema.json`
 
 ---
 
@@ -993,7 +993,7 @@ Touch is the superior input for the PlaySurface. Mobile is where the PlaySurface
 | Arturia KeyLab | Keys + faders + pads |
 | MPE Controller | Linnstrument, Seaboard, Sensel |
 
-**Detail:** `xolokun_mobile_and_midi_spec.md`
+**Detail:** `xoceanus_mobile_and_midi_spec.md`
 
 ---
 
@@ -1002,7 +1002,7 @@ Touch is the superior input for the PlaySurface. Mobile is where the PlaySurface
 ### 11.1 Monorepo Layout
 
 ```
-XOlokun/
+XOceanus/
 ├── CLAUDE.md                     # Agent project guide
 ├── CMakeLists.txt                # Top-level build
 ├── Source/
@@ -1027,7 +1027,7 @@ XOlokun/
 │   │   ├── FastMath.h            # Shared fast math (exp, tanh)
 │   │   └── Effects/              # Shared FX modules
 │   ├── UI/
-│   │   ├── XOlokunLookAndFeel.h # Gallery Model implementation
+│   │   ├── XOceanusLookAndFeel.h # Gallery Model implementation
 │   │   ├── PlaySurface/          # PlaySurface components
 │   │   ├── CouplingStrip/        # Coupling visualization
 │   │   ├── PresetBrowser/        # Mood-based browser
@@ -1035,9 +1035,9 @@ XOlokun/
 │   ├── Export/
 │   │   ├── XPNExporter.h         # MPC export pipeline
 │   │   └── WAVRenderer.h         # Offline rendering
-│   └── XOlokunProcessor.h/.cpp  # Main processor
+│   └── XOceanusProcessor.h/.cpp  # Main processor
 ├── Presets/
-│   └── XOlokun/
+│   └── XOceanus/
 │       ├── Foundation/           # .xometa files by mood
 │       ├── Atmosphere/
 │       ├── Entangled/
@@ -1079,15 +1079,15 @@ cmake --build build-ios --config Release
 
 | Phase | Action | Duration |
 |-------|--------|----------|
-| 1 | Create XOlokun repo, scaffold structure, copy shared DSP | Week 1 |
+| 1 | Create XOceanus repo, scaffold structure, copy shared DSP | Week 1 |
 | 2 | Implement SynthEngine interface, wrap OddfeliX/OddOscar (ODDFELIX+ODDOSCAR) | Weeks 2-4 |
 | 3 | Wrap XOverdub (OVERDUB), implement MegaCouplingMatrix | Weeks 5-7 |
 | 4 | Wrap remaining engines (ODYSSEY, OBLONG, OBESE) | Weeks 8-11 |
 | 5 | Build ONSET, PlaySurface, preset browser, mobile layouts | Weeks 12-14 |
 
-**Existing repos are archived, not deleted.** Each becomes read-only with a README pointing to XOlokun.
+**Existing repos are archived, not deleted.** Each becomes read-only with a README pointing to XOceanus.
 
-**Detail:** `xolokun_repo_structure.md`
+**Detail:** `xoceanus_repo_structure.md`
 
 ---
 
@@ -1168,10 +1168,10 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 | Document | Path |
 |----------|------|
-| **This master spec** | `synth_playbook/docs/xolokun_master_specification.md` |
-| Brand identity | `synth_playbook/docs/xolokun_brand_identity_and_launch.md` |
-| Technical design system | `synth_playbook/docs/xolokun_technical_design_system.md` |
-| Preset system (builder) | `synth_playbook/docs/xolokun_preset_spec_for_builder.md` |
+| **This master spec** | `synth_playbook/docs/xoceanus_master_specification.md` |
+| Brand identity | `synth_playbook/docs/xoceanus_brand_identity_and_launch.md` |
+| Technical design system | `synth_playbook/docs/xoceanus_technical_design_system.md` |
+| Preset system (builder) | `synth_playbook/docs/xoceanus_preset_spec_for_builder.md` |
 | .xometa schema | `synth_playbook/docs/xometa_schema.json` |
 | .xometa examples | `synth_playbook/docs/xometa_examples.json` |
 | Engine catalog | `synth_playbook/docs/xo_mega_tool_engine_catalog.md` |
@@ -1179,8 +1179,8 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 | PlaySurface | `synth_playbook/docs/xo_signature_playsurface_spec.md` |
 | XPN export | `synth_playbook/docs/xo_mega_tool_xpn_export.md` |
 | XOnset integration | `synth_playbook/docs/xo_mega_tool_xonset_integration.md` |
-| Mobile & MIDI | `synth_playbook/docs/xolokun_mobile_and_midi_spec.md` |
-| Repo structure | `synth_playbook/docs/xolokun_repo_structure.md` |
+| Mobile & MIDI | `synth_playbook/docs/xoceanus_mobile_and_midi_spec.md` |
+| Repo structure | `synth_playbook/docs/xoceanus_repo_structure.md` |
 | Development strategy | `synth_playbook/docs/xo_mega_tool_dev_strategy.md` |
 | Feasibility study | `synth_playbook/docs/xo_mega_tool_feasibility.md` |
 | XOnset engine spec | `synth_playbook/docs/xonset_percussive_engine_spec.md` |
@@ -1200,7 +1200,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 | Asset | Path |
 |-------|------|
-| Migrated .xometa presets | `Presets/XOlokun/{mood}/*.xometa` |
+| Migrated .xometa presets | `Presets/XOceanus/{mood}/*.xometa` |
 | Legacy .xocmeta presets | `Presets/Factory/*.xocmeta` |
 
 ---
@@ -1227,7 +1227,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 ### 17.1 OBRIX — Modular Brick Synth (Added 2026-03-19, Wave 1 Complete)
 
-**Identity:** Baby brother of XOlokun — a living reef that grows over time. Teaching instrument that ships as a Standard Brick Kit and grows via periodic brick drops (5-40 LOC each). Gallery code: OBRIX. Accent: Reef Jade `#1E8B7E`. Prefix: `obrix_`.
+**Identity:** Baby brother of XOceanus — a living reef that grows over time. Teaching instrument that ships as a Standard Brick Kit and grows via periodic brick drops (5-40 LOC each). Gallery code: OBRIX. Accent: Reef Jade `#1E8B7E`. Prefix: `obrix_`.
 
 **Architectural Core — The Constructive Collision:**
 - Proc 1 processes Source 1 independently (Src1 → Proc1 → mix)
@@ -1257,4 +1257,4 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 ---
 
-*This document is the single source of truth for XOlokun. All implementation should reference this spec. For deep dives into specific domains, follow the references to the detailed specification documents listed in Section 15.*
+*This document is the single source of truth for XOceanus. All implementation should reference this spec. For deep dives into specific domains, follow the references to the detailed specification documents listed in Section 15.*

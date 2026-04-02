@@ -1,7 +1,7 @@
 # Fleet Health Dashboard — March 24, 2026
 
 **Produced by:** Fleet Inspector (overnight autonomous session)
-**Data sources:** `Source/Engines/` (ground-truth file counts), `Presets/XOlokun/` (JSON-parsed recursive file counts), `scripture/retreats/` + `Docs/guru-bin-retreats/` (retreat cross-reference), `Docs/seances/` + `Docs/fleet-seance-scores-2026-03-20.md` (seance scores)
+**Data sources:** `Source/Engines/` (ground-truth file counts), `Presets/XOceanus/` (JSON-parsed recursive file counts), `scripture/retreats/` + `Docs/guru-bin-retreats/` (retreat cross-reference), `Docs/seances/` + `Docs/fleet-seance-scores-2026-03-20.md` (seance scores)
 **Methodology:** All counts are from actual file system reads and JSON parsing — not from memory or documentation. Seance scores reflect latest available verdict; estimates are flagged.
 
 ---
@@ -74,7 +74,7 @@
 | 6 | Morph | **OddOscar** | 3 | YES | — | 444 | NO | ~8.5 est. (post-fix 2026-03-21) |
 | 7 | Snap | **OddfeliX** | 3 | YES | — | 531 | NO | ~8.5 est. (post-fix 2026-03-21) |
 
-### B — Native XOlokun Engines (Alphabetical by Dir)
+### B — Native XOceanus Engines (Alphabetical by Dir)
 
 | # | Dir | Canonical ID | Src Files | Engine.h | Adapter | Presets | Retreat | Seance Score |
 |---|-----|-------------|:---------:|:--------:|:-------:|--------:|:-------:|-------------|
@@ -150,7 +150,7 @@
 ## Health Flags
 
 ### FLAG 1 — Engines with Adapter Only (No Engine.h)
-These engines live in standalone repos; XOlokun communicates through adapter files only.
+These engines live in standalone repos; XOceanus communicates through adapter files only.
 
 | Engine (Dir) | Canonical ID | Adapter File | Notes |
 |--------------|-------------|-------------|-------|
@@ -199,7 +199,7 @@ These engines have NO retreat document in either `scripture/retreats/` or `Docs/
 | Ottoni | 222 | 7.2 | MED |
 
 ### FLAG 4 — BROTH Coordinator Not Written (Critical Architecture Debt)
-**All 4 BROTH engines (Overwash, Overworn, Overflow, Overcast) run independently.** The coordinator that pumps values between them (`setBrothSessionAge()`, `getConcentrateDark()`, `setSpectralMass()`, etc.) was never implemented in `XOlokunProcessor.cpp`. The cross-engine flavor chemistry exists only in individual engines waiting for the coordinator. This is the single most impactful missing piece of code in the fleet.
+**All 4 BROTH engines (Overwash, Overworn, Overflow, Overcast) run independently.** The coordinator that pumps values between them (`setBrothSessionAge()`, `getConcentrateDark()`, `setSpectralMass()`, etc.) was never implemented in `XOceanusProcessor.cpp`. The cross-engine flavor chemistry exists only in individual engines waiting for the coordinator. This is the single most impactful missing piece of code in the fleet.
 
 ### FLAG 5 — Engines NOT SEANCED (2)
 - **Osmosis** — design-phase only; 1 preset; not shipped
@@ -381,7 +381,7 @@ The 6 designed companion FX engines (fXAdversary, fXResonance, fXGravity, fXGrow
 ## Priority Actions (Derived from This Audit)
 
 ### P0 — Blocks any release
-1. **Write BROTH coordinator** in `XOlokunProcessor.cpp` — `setBrothSessionAge()` / `getConcentrateDark()` / `getSpectralMass()` calls. All 4 BROTH engines are currently isolated. (Overwash, Overworn, Overflow, Overcast)
+1. **Write BROTH coordinator** in `XOceanusProcessor.cpp` — `setBrothSessionAge()` / `getConcentrateDark()` / `getSpectralMass()` calls. All 4 BROTH engines are currently isolated. (Overwash, Overworn, Overflow, Overcast)
 2. **Fix Ogre soil bug** — body filter double-pass discards first result; `ogre_soil` has zero audio effect
 3. **Wire Ochre LFO2** — no mod targets connected; D002 FAIL and D004 FAIL
 4. **Fix Obelisk 3 dead params** — blocks fleet-quality certification
@@ -425,7 +425,7 @@ The 6 designed companion FX engines (fXAdversary, fXResonance, fXGravity, fXGrow
 
 ## Adapter / Integration Status
 
-Only 4 engines have dedicated `*Adapter.h` files (for standalone-repo engines integrated into XOlokun):
+Only 4 engines have dedicated `*Adapter.h` files (for standalone-repo engines integrated into XOceanus):
 
 | Engine | Adapter Files | Integration Status |
 |--------|-------------|-------------------|
@@ -438,4 +438,4 @@ All remaining 69 engines are natively implemented within this repo.
 
 ---
 
-*Dashboard generated 2026-03-24. All file counts sourced from filesystem reads. All preset counts from recursive JSON parsing of `Presets/XOlokun/` excluding `_quarantine/`. Seance scores from `Docs/seances/` and `Docs/fleet-seance-scores-2026-03-20.md`; estimates are flagged. This is the canonical ground-truth document for fleet state as of March 24, 2026.*
+*Dashboard generated 2026-03-24. All file counts sourced from filesystem reads. All preset counts from recursive JSON parsing of `Presets/XOceanus/` excluding `_quarantine/`. Seance scores from `Docs/seances/` and `Docs/fleet-seance-scores-2026-03-20.md`; estimates are flagged. This is the canonical ground-truth document for fleet state as of March 24, 2026.*

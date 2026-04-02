@@ -8,7 +8,7 @@
 
 Fleet Render Automation (renderNoteToWav() in JUCE) is the production multiplier that makes a pack economy viable. Without it, sound design is $2/hr equivalent output. With it, $166-333/hr. This roadmap assumes render automation ships in April 2026 alongside the first pack. If it slips, Q2 packs slip with it — do not hand-render 500 samples.
 
-Current fleet: 39 engines in XOlokun (as of 2026-03-19: OSTINATO, OPENSKY, OCEANDEEP, OUIE DSP-complete 2026-03-18; OBRIX added 2026-03-19). 39 engines total is the addressable V1 catalog.
+Current fleet: 39 engines in XOceanus (as of 2026-03-19: OSTINATO, OPENSKY, OCEANDEEP, OUIE DSP-complete 2026-03-18; OBRIX added 2026-03-19). 39 engines total is the addressable V1 catalog.
 
 Distribution stack Year 1: Gumroad (primary), Patreon (subscription layer), MPC-Forums (free seeding). MPCe 3D pad packs carry a 25% premium — that window is open now and closes in 6-12 months as competitors catch up.
 

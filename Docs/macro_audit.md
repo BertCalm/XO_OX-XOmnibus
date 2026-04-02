@@ -1,4 +1,4 @@
-# Macro Audit — XOlokun 8-Engine Survey (2026-03-14)
+# Macro Audit — XOceanus 8-Engine Survey (2026-03-14)
 
 **Doctrine:** D002 — Modulation Is the Lifeblood
 **Standard:** M1-M4 (or equivalent) must produce audible, musically meaningful change in every preset.
@@ -66,9 +66,9 @@ A macro that modulates a parameter by less than 5% (scaling < 0.05) is effective
 
 **File:** `Source/Engines/Overworld/OverworldEngine.h`
 
-**Problem:** The OverworldEngine adapter had zero macro parameters. The XOverworld standalone binary defines all its parameters via `xoverworld::addParameters()` but that function never included XOlokun macros. From an XOlokun performance perspective, turning the 4 macro knobs on an OVERWORLD slot produced zero audio change.
+**Problem:** The OverworldEngine adapter had zero macro parameters. The XOverworld standalone binary defines all its parameters via `xoverworld::addParameters()` but that function never included XOceanus macros. From an XOceanus performance perspective, turning the 4 macro knobs on an OVERWORLD slot produced zero audio change.
 
-**Solution:** 4 new parameters declared directly in `addParameters()` of the XOlokun adapter (after the `xoverworld::addParameters()` delegate call), attached in `attachParameters()`, and applied at the top of `renderBlock()` before FX units are configured:
+**Solution:** 4 new parameters declared directly in `addParameters()` of the XOceanus adapter (after the `xoverworld::addParameters()` delegate call), attached in `attachParameters()`, and applied at the top of `renderBlock()` before FX units are configured:
 
 | Macro | Param ID | Before | After (at max) | Scaling |
 |-------|----------|--------|----------------|---------|

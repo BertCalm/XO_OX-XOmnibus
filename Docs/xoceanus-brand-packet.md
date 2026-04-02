@@ -1,4 +1,4 @@
-# XOlokun Brand Packet
+# XOceanus Brand Packet
 
 **XO_OX — March 2026**
 **Prepared by: RAC (Ringleader × Architect × Consultant)**
@@ -9,19 +9,19 @@
 
 ### Etymology
 
-**XOlokun** = XO + Olokun
+**XOceanus** = XO + Olokun
 
 **Olokun** (oh-LOH-koon) is the Yoruba and Edo orisha of the deep ocean — not the crashing waves or the sunlit shallows, but the abyssal depths where sunlight dies and pressure forges new forms of life. Olokun is the keeper of the ocean floor's unfathomable wealth. In Yoruba cosmology, Olokun is so vast and powerful that they were bound to the sea floor by seven chains, lest their rising flood the earth.
 
 **XO** is the brand mark of XO_OX — the kiss and the hug, the crossing of opposites, the embrace of polarity. feliX and Oscar. The X that marks the meeting point.
 
-**XOlokun** is what happens when you descend past the surface of synthesis into the deep — where engines couple like deep-sea creatures in symbiosis, where presets evolve under pressure, where sound itself becomes bioluminescent.
+**XOceanus** is what happens when you descend past the surface of synthesis into the deep — where engines couple like deep-sea creatures in symbiosis, where presets evolve under pressure, where sound itself becomes bioluminescent.
 
 ### Why This Name
 
 - **The old name** meant "everything bus" — a transportation metaphor. Utilitarian. Accurate but soulless.
-- **XOlokun** means "the deep place where treasure lives" — a mythological claim. It doesn't describe a feature; it promises an experience.
-- The aquatic mythology was always there (creature identities, water column placement, depth-as-complexity). XOlokun doesn't add mythology — it admits that the mythology was the product all along.
+- **XOceanus** means "the deep place where treasure lives" — a mythological claim. It doesn't describe a feature; it promises an experience.
+- The aquatic mythology was always there (creature identities, water column placement, depth-as-complexity). XOceanus doesn't add mythology — it admits that the mythology was the product all along.
 
 ### Cultural Note
 
@@ -37,7 +37,7 @@ The old name is gone. The philosophy stays.
 - **Universal.** Every culture, every socioeconomic class, every skill level. A kid in Lagos. A retiree in Osaka. A bedroom producer in Detroit. A sound design student in Berlin. Everyone needs and deserves music and the ability to create.
 - **For you. For me. For them. For her. For him. For us.**
 
-XOlokun is the product. Omnibus is the promise. The deep ocean doesn't check your credentials before letting you dive. It's the same pressure, the same darkness, the same bioluminescence — for everyone.
+XOceanus is the product. Omnibus is the promise. The deep ocean doesn't check your credentials before letting you dive. It's the same pressure, the same darkness, the same bioluminescence — for everyone.
 
 Every piece of content, every learning resource, every preset, every tool exists to lower the barrier. Not to gate. Not to gatekeep. Not to create insiders and outsiders. To open the deep to all.
 
@@ -49,7 +49,7 @@ This is not a marketing position. This is the reason the project exists.
 
 ### The Pitch (30 seconds)
 
-*XOlokun is a synthesis platform from XO_OX where every engine is a creature from the deep ocean. Each one evolved for its depth. Each one luminous in its own way. And when you couple them together — when one engine's rhythm becomes another's breath — you reach sounds that only exist in the deep.*
+*XOceanus is a synthesis platform from XO_OX where every engine is a creature from the deep ocean. Each one evolved for its depth. Each one luminous in its own way. And when you couple them together — when one engine's rhythm becomes another's breath — you reach sounds that only exist in the deep.*
 
 ### The Story
 
@@ -57,11 +57,11 @@ Every synthesizer you've ever used lives on the surface.
 
 Waveforms you can see. Parameters you can name. Sounds you've heard before — or at least sounds adjacent to sounds you've heard before. The surface is well-mapped. The surface is safe. The surface is where most music lives, and there's nothing wrong with that.
 
-XOlokun is not the surface.
+XOceanus is not the surface.
 
-XOlokun is what's underneath. The place where light bends, then fails entirely. Where pressure doesn't destroy — it *transforms*. Where creatures don't reflect light because there is none; they generate their own. They're bioluminescent. They glow from within.
+XOceanus is what's underneath. The place where light bends, then fails entirely. Where pressure doesn't destroy — it *transforms*. Where creatures don't reflect light because there is none; they generate their own. They're bioluminescent. They glow from within.
 
-Each engine in XOlokun is one of these creatures. OBRIX is a living reef — modular, crystalline, teeming with harmonic life. OUROBOROS is the deep-dwelling serpent — chaotic, self-devouring, mathematically precise in its disorder. OWARE is the ancestral drum carved from the ocean floor — tuned to the memory of the earth. OXYTOCIN is the bonding agent — circuit-bent warmth that connects everything it touches.
+Each engine in XOceanus is one of these creatures. OBRIX is a living reef — modular, crystalline, teeming with harmonic life. OUROBOROS is the deep-dwelling serpent — chaotic, self-devouring, mathematically precise in its disorder. OWARE is the ancestral drum carved from the ocean floor — tuned to the memory of the earth. OXYTOCIN is the bonding agent — circuit-bent warmth that connects everything it touches.
 
 Alone, each engine is a complete instrument. But this isn't about alone.
 
@@ -69,9 +69,9 @@ This is about *coupling*.
 
 Coupling is what happens when one engine feeds into another. Not mixing — not two audio streams summed together. Coupling. Where ONSET's transient attack modulates ORGANON's metabolism in real time. Where OPERA's vocal formants ride the chaos of OUROBOROS's strange attractor. Where the deep bass creature couples with the surface-skimming pad and the sound they produce together exists nowhere else in the universe.
 
-No other synthesizer can do this. Not because it's hard to implement — it is. But because no one else has built an ocean of engines that were *designed* to couple. Every engine in XOlokun evolved knowing the others exist. The coupling system isn't a feature — it's the ecology.
+No other synthesizer can do this. Not because it's hard to implement — it is. But because no one else has built an ocean of engines that were *designed* to couple. Every engine in XOceanus evolved knowing the others exist. The coupling system isn't a feature — it's the ecology.
 
-**XOlokun. Synthesis from the deepest place.**
+**XOceanus. Synthesis from the deepest place.**
 
 ---
 
@@ -132,7 +132,7 @@ Every engine has a unique glow — visible in the engine picker, in the coupling
 | **Space Grotesk** | 500, 700 | Headlines, engine names, navigation | Geometric precision. The architecture of the deep — structured, intentional, engineered. |
 | **Inter** | 400, 500, 600 | Body text, UI labels, descriptions | Clarity under pressure. Readable at any depth. |
 | **JetBrains Mono** | 400 | Parameter values, preset data, code | The measurement instruments. Exact. Unambiguous. |
-| **Display face (TBD)** | — | "XOlokun" logotype only | A weathered serif or custom letterform that feels carved by water. The logo should feel *found*, not designed. |
+| **Display face (TBD)** | — | "XOceanus" logotype only | A weathered serif or custom letterform that feels carved by water. The logo should feel *found*, not designed. |
 
 ### Texture Language
 
@@ -188,7 +188,7 @@ This is the one. It works on every level:
 | Be specific about sound | Be vague about capability |
 | Acknowledge depth (complexity) honestly | Pretend everything is easy |
 
-**Brand voice in one sentence**: XOlokun speaks like a deep-sea marine biologist who also makes beats — precise, wondering, slightly obsessed, never pretentious.
+**Brand voice in one sentence**: XOceanus speaks like a deep-sea marine biologist who also makes beats — precise, wondering, slightly obsessed, never pretentious.
 
 ---
 
@@ -273,12 +273,12 @@ The weekly drip that keeps value flowing between milestones:
 | Page | URL | Purpose |
 |------|-----|---------|
 | **Home** | `/` | The descent begins |
-| **XOlokun** | `/xolokun` | Product page |
+| **XOceanus** | `/xoceanus` | Product page |
 | **Aquarium** | `/aquarium` | Playable creature gallery |
 | **Field Guide** | `/field-guide` | "Dispatches from the Deep" (blog) |
 | **Expedition** | `/expedition` | Patreon + community hub |
 | **Signal** | `/signal` → rebrand as **Sonar** | News/updates as pings from the deep |
-| **Download** | `/download` | Get XOlokun |
+| **Download** | `/download` | Get XOceanus |
 
 ### Home Page Concept — "The Descent"
 
@@ -286,7 +286,7 @@ The homepage IS the brand. No hero image. No product screenshot. An experience.
 
 **On load**: Black screen. Silence. A faint bioluminescent glow appears in the center. It pulses. The text fades in:
 
-> **XOlokun**
+> **XOceanus**
 > *Synthesis from the deepest place.*
 
 **On scroll**: The user descends. Background shifts through the depth gradient — Surface → Mesopelagic → Bathypelagic → Abyssal. Creatures appear at their depth levels — first many small ones (prolific engines), then fewer, larger ones (flagships), until at the bottom:
@@ -300,7 +300,7 @@ The homepage IS the brand. No hero image. No product screenshot. An experience.
 
 This homepage doesn't look like any synth plugin website. It looks like a descent into the Mariana Trench. That's the gasp.
 
-### Product Page — `/xolokun`
+### Product Page — `/xoceanus`
 
 Depth gradient from surface to abyss. Each scroll section reveals an engine creature at its depth:
 
@@ -349,17 +349,17 @@ Rebrand the blog as expedition dispatches:
 ### Pre-Launch Sequence
 
 **Week -2: Teaser**
-- Social posts: just the word **XOlokun** in gold on black. No explanation. No context. Let people ask.
+- Social posts: just the word **XOceanus** in gold on black. No explanation. No context. Let people ask.
 - Second post: the depth gradient with creature silhouettes. Still no words.
 - Third post: *"Synthesis from the deepest place."* — just the tagline.
 
 **Week -1: Reveal**
 - 60-second video: the homepage descent experience, screen-recorded. No voiceover. The descent, the glow, the creatures, the coupling demo. End card: *"The deep opens. [Date]."*
-- Field Guide dispatch: *"What is XOlokun?"* — the full brand narrative as the first post under the new name.
+- Field Guide dispatch: *"What is XOceanus?"* — the full brand narrative as the first post under the new name.
 - Patreon post: the Expedition framework reveal.
 
 **Launch Day: "The Deep Opens"**
-- Product page live at `/xolokun`
+- Product page live at `/xoceanus`
 - V1 download available
 - First MPCe pack drops simultaneously (mpce-perc-001)
 - Aquarium goes live (Phase 0)
@@ -378,7 +378,7 @@ Don't demo individual engines. Demo coupling.
 
 The 60-second demo: ONSET's kick drum modulates OUROBOROS's strange attractor in real time while OPERA's vowel formants ride the chaos and OBRIX's reef harmonics crystallize above everything. The camera slowly descends through the depth gradient as the sound builds. Four creatures coupling. One sound that only exists in the deep.
 
-End card: *"This is coupling. Only in XOlokun."*
+End card: *"This is coupling. Only in XOceanus."*
 
 ---
 
@@ -386,16 +386,16 @@ End card: *"This is coupling. Only in XOlokun."*
 
 ### One-Sentence Position
 
-**XOlokun is the first synthesizer where engines don't just coexist — they couple. Real-time cross-paradigm synthesis coupling across 25+ engines, each one a creature from the deep ocean of sound.**
+**XOceanus is the first synthesizer where engines don't just coexist — they couple. Real-time cross-paradigm synthesis coupling across 25+ engines, each one a creature from the deep ocean of sound.**
 
 ### Competitor Counter-Positioning
 
-| Competitor | Their Strength | XOlokun's Counter |
+| Competitor | Their Strength | XOceanus's Counter |
 |-----------|---------------|-------------------|
-| **Omnisphere** | 14,000 polished presets, brand trust | *"Omnisphere is a library. XOlokun is an ecosystem. Libraries are browsed. Ecosystems evolve."* |
-| **Serum** | Visual wavetable, EDM standard | *"Serum is one engine, perfected. XOlokun is 25 engines that talk to each other."* |
-| **Vital** | Free, open source, great UI | *"Vital is Serum, free. XOlokun is something that doesn't exist yet."* |
-| **Pigments** | 4 engines, polished UX | *"Pigments layers engines. XOlokun couples them. The difference is everything."* |
+| **Omnisphere** | 14,000 polished presets, brand trust | *"Omnisphere is a library. XOceanus is an ecosystem. Libraries are browsed. Ecosystems evolve."* |
+| **Serum** | Visual wavetable, EDM standard | *"Serum is one engine, perfected. XOceanus is 25 engines that talk to each other."* |
+| **Vital** | Free, open source, great UI | *"Vital is Serum, free. XOceanus is something that doesn't exist yet."* |
+| **Pigments** | 4 engines, polished UX | *"Pigments layers engines. XOceanus couples them. The difference is everything."* |
 
 ### The Unconventional Angle
 
@@ -407,16 +407,16 @@ One coupling demo where you hear an impossible sound is worth more than 73 engin
 
 ## IX. The XO_OX Brand (Parent)
 
-XOlokun is the flagship product. XO_OX is the studio.
+XOceanus is the flagship product. XO_OX is the studio.
 
-| Element | XO_OX (Studio) | XOlokun (Product) |
+| Element | XO_OX (Studio) | XOceanus (Product) |
 |---------|----------------------|-------------------|
 | **Tone** | The makers. Warm, precise, obsessed. | The instrument. Deep, mythological, alive. |
 | **Color** | XO Gold `#E9C46A` on warm dark `#1A1A2E` | XO Gold on Abyssal `#080B1A` |
 | **Voice** | *"We build instruments that think."* | *"Synthesis from the deepest place."* |
-| **Logo** | XO_OX wordmark (geometric, balanced) | XOlokun logotype (organic, deep, found) |
+| **Logo** | XO_OX wordmark (geometric, balanced) | XOceanus logotype (organic, deep, found) |
 
-**XO_OX** — no "Designs." The palindrome is the brand. Clean, symmetric, confident. XO_OX can make other products. XOlokun is the deep ocean one. But for now, XOlokun IS XO_OX to the world.
+**XO_OX** — no "Designs." The palindrome is the brand. Clean, symmetric, confident. XO_OX can make other products. XOceanus is the deep ocean one. But for now, XOceanus IS XO_OX to the world.
 
 ---
 
@@ -426,19 +426,19 @@ XOlokun is the flagship product. XO_OX is the studio.
 - [x] Brand rename commits (other terminal — in progress)
 - [x] Brand packet written (this document)
 - [ ] Define exact V1 engine list (25 curated + OBRIX + 6-8 FX)
-- [ ] Render mpce-perc-001 (pipeline ready, needs BlackHole + XOlokun open)
-- [ ] Update Patreon with XOlokun name + Expedition framing
+- [ ] Render mpce-perc-001 (pipeline ready, needs BlackHole + XOceanus open)
+- [ ] Update Patreon with XOceanus name + Expedition framing
 
 ### This Month
 - [ ] Homepage redesign: "The Descent" concept → implementation
-- [ ] Aquarium integration with XOlokun brand + bioluminescence
+- [ ] Aquarium integration with XOceanus brand + bioluminescence
 - [ ] Field Guide rebrand: "Dispatches from the Deep"
 - [ ] Expedition page (Patreon milestone tracker)
 - [ ] First weekly freebie content prepared
 - [ ] Build Sentinel verification after all rename commits
 
 ### Before Launch
-- [ ] Logo/logotype design — custom letterform for "XOlokun"
+- [ ] Logo/logotype design — custom letterform for "XOceanus"
 - [ ] Coupling demo video — the jaw-drop moment
 - [ ] Press kit (brand packet subset for media)
 - [ ] Community seeding plan (Elektronauts, Gearspace, Reddit, Discord)

@@ -1,4 +1,4 @@
-# XOlokun — Sound Design Guide
+# XOceanus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
 *Covers 71 of 76 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-23.*
 
@@ -1013,7 +1013,7 @@ Prismatic light bouncing off mirrors. A dual oscillator with wavefolder (grit) f
 
 ## 4-Slot Combo Recipes
 
-XOlokun supports 4 simultaneous engines. Here are proven combinations:
+XOceanus supports 4 simultaneous engines. Here are proven combinations:
 
 ### The Dub Station
 `ODDFELIX + OVERDUB + ODYSSEY + OPTIC`
@@ -1388,7 +1388,7 @@ All voices run a pluck/strum exciter into a Karplus-Strong waveguide loop. Voice
 
 ### Coupling
 
-Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. Best coupling use: route OBBLIGATO's amplitude into OLE's `EnvToMorph` — wind duet dynamics drive strum intensity in real time. OLE's wide stereo field (especially at high ISLA) makes it a natural L/R anchor in a four-engine XOlokun setup.
+Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. Best coupling use: route OBBLIGATO's amplitude into OLE's `EnvToMorph` — wind duet dynamics drive strum intensity in real time. OLE's wide stereo field (especially at high ISLA) makes it a natural L/R anchor in a four-engine XOceanus setup.
 
 ---
 
@@ -2332,7 +2332,7 @@ MIDI Note (sets root pitch) → Cellular Automaton (16-cell, 256 rules, circular
 **Aquatic mythology:** The Coral Reef — billions of individual polyps (bricks) building complex three-dimensional structure through simple local chemistry. OBRIX sits in the shallow productive zone (0–50m): where light, nutrients, and competition create the most complex ecosystems. Every brick is an independent sound source; the reef is their aggregate.
 
 ### Identity
-A modular synthesis engine built from discrete "bricks" — independent oscillator/filter/amplifier units that can be combined, competed, and coupled. OBRIX has 79 parameters organized into five DSP layers: core brick synthesis, Harmonic Field (just intonation attraction/repulsion), Environmental parameters (temperature/pressure/current/turbidity), Brick Ecology (competition/symbiosis between bricks), and Stateful Synthesis (cumulative stress/bleaching history). No other XOlokun engine models the *history* of notes played — OBRIX has memory.
+A modular synthesis engine built from discrete "bricks" — independent oscillator/filter/amplifier units that can be combined, competed, and coupled. OBRIX has 79 parameters organized into five DSP layers: core brick synthesis, Harmonic Field (just intonation attraction/repulsion), Environmental parameters (temperature/pressure/current/turbidity), Brick Ecology (competition/symbiosis between bricks), and Stateful Synthesis (cumulative stress/bleaching history). No other XOceanus engine models the *history* of notes played — OBRIX has memory.
 
 ### Signal Flow
 MIDI Note → Voice Allocation (8 voices, brick mode) → Source 1 + Source 2 (independent oscillator units: saw/square/tri/noise/sine/FM) → Harmonic Field (per-voice JI attractor/repulsor: 3-limit/5-limit/7-limit ratio tables, IIR convergence) → Brick Ecology (competition: cross-amplitude suppression; symbiosis: noise→FM cross-coupling) → Filter Envelope (velocity-scaled D001 path, stress/bleach offset) → State Layer (stress accumulator +900Hz, bleach accumulator -700Hz — both persist across notes) → FX Chain (serial or parallel: AquaticFX + MathFX + BoutiqueFX slots) → Output.
@@ -3711,7 +3711,7 @@ Clavinet D6 physical model — rubber pad strikes a tensioned string, dual magne
 ## 69. OPERA — XOpera
 **Aria Gold `#D4AF37` · Prefix: `opera_` · 8 voices**
 
-Kuramoto-coupled additive-vocal synthesis — the first XOlokun engine with autonomous narrative intent (Blessing B035). Partials are synchronized via the Kuramoto phase-coupling model; the degree of synchronization (order parameter R) directly controls the stereo field: coherent partials spread wide, chaotic partials collapse to center (B036). EmotionalMemory stores partial phases at note-off and recalls them within a 500ms window, so the next note "wakes up knowing where it was" (B037, named Vangelis in source code). Conductor arc (ArcMode) provides an autonomous dramatic arc — four arc shapes configurable over `opera_arcTime` seconds, with ±5% jitter for organic variation. Seance score: 8.85/10.
+Kuramoto-coupled additive-vocal synthesis — the first XOceanus engine with autonomous narrative intent (Blessing B035). Partials are synchronized via the Kuramoto phase-coupling model; the degree of synchronization (order parameter R) directly controls the stereo field: coherent partials spread wide, chaotic partials collapse to center (B036). EmotionalMemory stores partial phases at note-off and recalls them within a 500ms window, so the next note "wakes up knowing where it was" (B037, named Vangelis in source code). Conductor arc (ArcMode) provides an autonomous dramatic arc — four arc shapes configurable over `opera_arcTime` seconds, with ±5% jitter for organic variation. Seance score: 8.85/10.
 
 ### Macros
 
@@ -3764,7 +3764,7 @@ Kuramoto-coupled additive-vocal synthesis — the first XOlokun engine with auto
 ## 70. OSMOSIS — XOsmosis
 **Surface Tension Silver `#C0C0C0` · Prefix: `osmo_` · Analysis engine (no synthesis output)**
 
-External audio membrane analysis engine — the only XOlokun engine that produces no synthesis output. `isAnalysisEngine()` returns true. Instead, OSMOSIS analyzes an external audio input (sidechain or live input) and produces coupling data that other engines can receive: envelope follower (one-pole attack/release tracking amplitude), zero-crossing pitch detection (fundamental frequency estimate), and four spectral RMS bands (sub/lo-mid/hi-mid/presence). Membrane LP filter optionally colors the audio pass-through for tonal integration. Biological framing: OSMOSIS is a semi-permeable membrane — it selects which aspects of an external signal pass into the XOlokun ecosystem.
+External audio membrane analysis engine — the only XOceanus engine that produces no synthesis output. `isAnalysisEngine()` returns true. Instead, OSMOSIS analyzes an external audio input (sidechain or live input) and produces coupling data that other engines can receive: envelope follower (one-pole attack/release tracking amplitude), zero-crossing pitch detection (fundamental frequency estimate), and four spectral RMS bands (sub/lo-mid/hi-mid/presence). Membrane LP filter optionally colors the audio pass-through for tonal integration. Biological framing: OSMOSIS is a semi-permeable membrane — it selects which aspects of an external signal pass into the XOceanus ecosystem.
 
 ### Macros
 
@@ -3797,7 +3797,7 @@ External audio membrane analysis engine — the only XOlokun engine that produce
 - **Drum sidechain coupling:** Route kick+snare through OSMOSIS. Band 1 (sub) from the kick drives OGRE's `ogre_subLevel`. Band 3 (hi-mid) from snare drives OVERFLOW's pressure accumulator. The drum mix becomes the modulator for the synth mix.
 - **Pitch tracking:** OSMOSIS's zero-crossing pitch output can drive `LFOToPitch` on any engine. Route a bass guitar and have OLATE's filter cutoff track the bass note in real time.
 - **Temporal memory:** `osmo_memory` 0.6 — coupling data holds after the external signal drops out. Used to create delayed responses where the synth reacts to where the external signal *was*, not where it is.
-- **Live performance:** OSMOSIS is the bridge between live instruments and XOlokun in performance. A drummer triggers the synthesis world; a guitarist's pitch becomes a modulation source.
+- **Live performance:** OSMOSIS is the bridge between live instruments and XOceanus in performance. A drummer triggers the synthesis world; a guitarist's pitch becomes a modulation source.
 
 ### Recommended Pairings
 - **+ OVERFLOW (pressure):** Route dense live ensemble through OSMOSIS — the ensemble density builds OVERFLOW's pressure accumulator. The live band creates the pressure release.

@@ -412,7 +412,7 @@ Ghost council: Buchla would call this epochal. He did his own preparations. The 
 
 Coupling weight between KITCHEN engines is computed from the material transmission coefficient T = 4Z₁Z₂/(Z₁+Z₂)². This means: coupling is not a free parameter you set arbitrarily. The physics of the materials dictates how much energy can cross between them. Iron-to-glass couples at 0.38. Stone-to-glass couples at 0.98. You cannot make cast iron couple to glass as strongly as stone couples to glass — the physics won't allow it.
 
-**The paradigm claim:** This is the first coupling system in XOlokun where the coupling depth is constrained by material physics rather than by user preference. The engines know each other. The material knows its partner.
+**The paradigm claim:** This is the first coupling system in XOceanus where the coupling depth is constrained by material physics rather than by user preference. The engines know each other. The material knows its partner.
 
 Ghost council angle: this will be controversial. Smith and Pearlman will worry about user control being taken away. Buchla will say "the material doesn't lie." Resolution: the T value sets the *maximum* coupling possible — users can reduce from there, but not exceed it. The physics sets the ceiling, not the floor.
 
@@ -459,7 +459,7 @@ When the 5th slot unlocks with all four KITCHEN materials loaded, the Fusion eng
 
 ## Summary for DSP Design
 
-The KITCHEN quad needs four things that don't exist in XOlokun yet:
+The KITCHEN quad needs four things that don't exist in XOceanus yet:
 
 1. **Modal resonator bank** — second-order IIR filters in parallel, parameterized from material tables rather than tuned by ear. 32-64 resonators per engine. Material tables derived from literature.
 

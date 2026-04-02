@@ -34,7 +34,7 @@
 
 1. **XO word:** XOceanDeep ✓ — Ocean Deep: the absolute floor of the water column, Oscar's throne room
 2. **One-sentence thesis:** "XOceanDeep is an abyssal bass engine where 808 rumble meets bioluminescent creatures in the crushing darkness of 10,000 leagues under the sea — sunken treasure that will shiver your timbers." ✓
-3. **Sound only this can make:** Sub bass with physical pressure modeling — the frequency doesn't just go low, it feels heavy. Creature sounds that dart through the dark with bioluminescent flash transients. Shipwreck textures that creak and groan under pressure. No other XOlokun engine combines geological bass weight with alien deep-sea creature behavior. ✓
+3. **Sound only this can make:** Sub bass with physical pressure modeling — the frequency doesn't just go low, it feels heavy. Creature sounds that dart through the dark with bioluminescent flash transients. Shipwreck textures that creak and groan under pressure. No other XOceanus engine combines geological bass weight with alien deep-sea creature behavior. ✓
 
 ---
 

@@ -1,4 +1,4 @@
-# XOlokun Sprint Report — 2026-03-18
+# XOceanus Sprint Report — 2026-03-18
 
 **Branch:** `v1-launch-prep`
 **Status:** ROADMAP COMPLETE — ready for boutique engine design
@@ -44,7 +44,7 @@ All `.xometa` files now use canonical mixed-case engine names (e.g. `"Origami"` 
 
 ### 4. Sound Design Guide: 40/40 Complete
 
-`Docs/xolokun_sound_design_guides.md` — all 6 new engines documented:
+`Docs/xoceanus_sound_design_guides.md` — all 6 new engines documented:
 
 - **Section 31:** OPENSKY (`sky_` prefix, 30 params — euphoric shimmer, pure feliX)
 - **Section 32:** OSTINATO (`osti_` prefix, 18 params + 8 pattern step bools — communal drum circle)
@@ -129,7 +129,7 @@ Flat WAVs → xpn_sample_categorizer.py → classified kit
 ## What's Next
 
 ### Immediate (unblocking XPN packs)
-1. **Record WAV stems** — Open XOlokun standalone, render individual ONSET voice hits at 4 velocity levels + ODYSSEY multi-samples + OPAL texture beds. ~3-4 hours. Unblocks both packs.
+1. **Record WAV stems** — Open XOceanus standalone, render individual ONSET voice hits at 4 velocity levels + ODYSSEY multi-samples + OPAL texture beds. ~3-4 hours. Unblocks both packs.
 2. **Run preset name validator** before the session — confirm spec preset IDs (`perc_kick_solid`, `drift_lead_bright`, etc.) exist in the library.
 3. **Oxport preflight** — `python Tools/oxport.py --dry-run` to check what's missing pre-session.
 
@@ -154,4 +154,4 @@ First boutique engine: **OSTINATO** (top candidate — Voice + custom FX in 5th 
 
 ---
 
-*Generated 2026-03-18 | XOlokun v1-launch-prep branch*
+*Generated 2026-03-18 | XOceanus v1-launch-prep branch*

@@ -29,7 +29,7 @@ The BROTH quad is a family of 4 cooperative pad engines with fundamentally diffe
 - **Voice count**: 8 polyphonic
 - **Params**: 30 (9 core + 4 filter + 4 amp ADSR + 4 filt ADSR + 4 LFO + 1 level + 4 macros)
 - **DSP chain**: 16-partial oscillator bank (richness-controlled) → ReductionState spectral envelope → Maillard distortion → umami fundamental boost → LP filter → amp envelope → stereo
-- **Key behavior**: The most radical engine in XOlokun. ReductionState persists across the session. High frequencies evaporate first, then mids. Fundamentals concentrate (umami). Playing accelerates reduction. Quiet long tones add character without accelerating. Only "Start Fresh" resets.
+- **Key behavior**: The most radical engine in XOceanus. ReductionState persists across the session. High frequencies evaporate first, then mids. Fundamentals concentrate (umami). Playing accelerates reduction. Quiet long tones add character without accelerating. Only "Start Fresh" resets.
 - **ReductionState fields**: sessionAge, spectralMass[8], concentrateDark, umamiBed, volatileAromatics
 - **Presets**: 10 (Fresh Stock, Hour One, Quick Fond, Demi-Glace, Consomme, Bone Broth, Volatile Bright, Reduction Drone, Mid-Session, Maillard Fire)
 

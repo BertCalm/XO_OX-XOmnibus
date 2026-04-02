@@ -92,7 +92,7 @@ Each month runs on a four-week cycle. This is the default rhythm; special months
 
 **Theme:** Introduction + ONSET starter kit
 
-- **Week 1 Dev Diary:** The XO_OX origin post — what XOlokun is, what the Patreon is for, what the plan is for 2026. No hype. Just the actual story.
+- **Week 1 Dev Diary:** The XO_OX origin post — what XOceanus is, what the Patreon is for, what the plan is for 2026. No hype. Just the actual story.
 - **Week 2 Drop:** Free ONSET Starter Kit — 20 drum kits, one per voice type (Kick / Snare / CHat / OHat / Clap / Tom / Perc / FX + 12 full machine kits). Public + Listener early access.
 - **Week 3 Technical:** Kitchen Essentials collection teaser — the architecture (Voice × FX Recipe × Wildcard), the 6 quads, why culinary metaphor maps cleanly to synthesis. Preview audio for 2 quad combinations.
 - **Week 4 Roundup:** First Patreon poll launched — which Kitchen Essentials engine should ship first? Results in May.
@@ -118,7 +118,7 @@ Each month runs on a four-week cycle. This is the default rhythm; special months
 
 - **Week 1 Dev Diary:** feliX vs. Oscar — why a neon tetra and an axolotl are the right mascots for synthesis polarity. The full mythology.
 - **Week 2 Drop:** feliX-Oscar Coupling SIGNAL pack (Listener+) — ODDFELIX × ODDOSCAR paired kits demonstrating the polarity axis at 5 coupling intensities.
-- **Week 3 Technical:** Preset evolution demo video — one ODDFELIX patch evolving into an ODDOSCAR patch through 4 stages of COUPLING macro movement. Screen capture, live XOlokun session, no script.
+- **Week 3 Technical:** Preset evolution demo video — one ODDFELIX patch evolving into an ODDOSCAR patch through 4 stages of COUPLING macro movement. Screen capture, live XOceanus session, no script.
 - **Week 4 Roundup:** Community challenge announced — submit your own ODDFELIX/ODDOSCAR coupling patch. Best 5 get included in a bonus Patreon-only pack in July.
 
 **Producer+ extras:** FORM pack — OPENSKY/OCEANDEEP concept preview patches (rendered audio, not beta builds). First preview of the feliX-Oscar axis in the context of V1 scope.
@@ -207,7 +207,7 @@ Each month runs on a four-week cycle. This is the default rhythm; special months
 
 **Length:** 5–10 minutes per video. No padding, no filler. Stop when the content is done.
 
-**Format:** Unscripted dev diary style. Screen capture of XOlokun running in standalone mode, with MPC hardware visible or audible in the background. One topic per video; do not combine topics.
+**Format:** Unscripted dev diary style. Screen capture of XOceanus running in standalone mode, with MPC hardware visible or audible in the background. One topic per video; do not combine topics.
 
 **Production standard:** OBS or QuickTime screen capture, system audio for plugin output, built-in mic acceptable for voice. No professional editing required. Jump cuts to remove long pauses are fine. No intro animations, no outros with subscribe prompts.
 

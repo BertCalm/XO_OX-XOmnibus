@@ -95,7 +95,7 @@ The full `xpn_*.py` inventory as of session end:
 
 | Tool | Purpose |
 |------|---------|
-| `xpn_coupling_recipes.py` | Generates XPN coupling-aware keygroup programs where sample selection follows XOlokun coupling route logic |
+| `xpn_coupling_recipes.py` | Generates XPN coupling-aware keygroup programs where sample selection follows XOceanus coupling route logic |
 | `xpn_coupling_docs_generator.py` | Emits per-engine coupling documentation (which targets are compatible, what modulation types are accepted) |
 | `xpn_setlist_builder.py` | Assembles a live-performance setlist document from a fleet of packs, ordering by energy curve and key compatibility |
 | `xpn_community_qa.py` | Community-facing QA checklist generator; produces a fillable checklist for beta testers and forum reviewers |
@@ -231,7 +231,7 @@ All four V1 concept engines have approved identity cards, design specs, and pres
 
 ### P1 — Utility Engine DSP Builds
 
-10 utility engines have concepts but no source code (from `utility_engine_concepts.md` and related docs). These are not registered in XOlokun yet. Exact list in `utility_engine_concepts.md` and `utility_engine_rapper_bundle.md`.
+10 utility engines have concepts but no source code (from `utility_engine_concepts.md` and related docs). These are not registered in XOceanus yet. Exact list in `utility_engine_concepts.md` and `utility_engine_rapper_bundle.md`.
 
 ### P2 — Auto DNA Calibration
 

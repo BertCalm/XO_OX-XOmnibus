@@ -10,7 +10,7 @@ expansion studios. It identifies Oxport's unique capabilities, capability gaps v
 the critical fleet render bottleneck, a 12-month v2 vision, and the open source strategy question.
 
 "Oxport" is the umbrella name for all tooling under `Tools/` — Python scripts, the `oxport.py`
-orchestrator, and the `XPNExporter.h` C++ export module inside XOlokun.
+orchestrator, and the `XPNExporter.h` C++ export module inside XOceanus.
 
 ---
 
@@ -151,7 +151,7 @@ for in-browser streaming before purchase.
 
 **What Oxport does**: `xpn_preview_generator.py` exists in the tool suite but generates preview
 metadata (suggested clip points, waveform envelope data) — not an actual rendered MP3 or WAV.
-The actual audio render requires a manual step through XOlokun standalone or a DAW.
+The actual audio render requires a manual step through XOceanus standalone or a DAW.
 
 **Gap**: Buyers on Gumroad or the future XO-OX.org store cannot hear a pack before purchase
 without the user manually recording and uploading audio clips. The 20 hero preset audio clips
@@ -210,7 +210,7 @@ Every Oxport tool operates on XPM/XPN metadata and sample files. None of them ca
 sample audio itself. When a new pack requires rendered audio — a new drum hit, a synthesized
 one-shot, a multi-sampled keygroup — the workflow is:
 
-1. Open XOlokun standalone
+1. Open XOceanus standalone
 2. Navigate to the target engine and preset
 3. Trigger the note manually (or via MIDI)
 4. Record the output in a DAW (Logic, Ableton)
@@ -305,7 +305,7 @@ Oxport from a metadata pipeline into a complete end-to-end production system.
 ### The Question
 
 Should Oxport tools (`Tools/*.py` and `Source/Export/XPNExporter.h`) be released as open source?
-The XOlokun plugin itself is already open source (the CLAUDE.md describes it as
+The XOceanus plugin itself is already open source (the CLAUDE.md describes it as
 "free, open-source"). The tools are less clearly defined.
 
 ### Arguments For Open Source
@@ -334,7 +334,7 @@ not format tooling — they are XO_OX's brand intelligence. Releasing these woul
 well-resourced competitor to clone the curatorial framework without the years of conceptual
 development behind it.
 
-**`renderNoteToWav()` has real competitive value once built.** A working headless XOlokun
+**`renderNoteToWav()` has real competitive value once built.** A working headless XOceanus
 renderer would be a meaningful engineering asset. It should not be open-sourced until the
 competitive landscape is better understood.
 
@@ -348,7 +348,7 @@ competitive landscape is better understood.
 | **Hold** | Render pipeline: `XPNExporter.h` render methods, `renderNoteToWav()` | Hold until V2 |
 
 A dedicated `oxport-tools` GitHub repository can host the Open tier with MIT license.
-The Hold-tier tools remain in the XOlokun monorepo.
+The Hold-tier tools remain in the XOceanus monorepo.
 
 ---
 

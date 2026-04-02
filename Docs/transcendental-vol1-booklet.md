@@ -1,7 +1,7 @@
 # Transcendental Vol 1: The Great Awakening
 
 ### A Guru Bin Lore Booklet
-### XO_OX Designs | XOlokun Multi-Engine Synthesizer
+### XO_OX Designs | XOceanus Multi-Engine Synthesizer
 
 ---
 
@@ -24,7 +24,7 @@ A retreat moves through five phases:
 **Silence** -- the init patch plays. One note. Listen.
 **Awakening** -- discoveries emerge. Parameters left at zero for hundreds of presets are finally moved. Entire synthesis capabilities that no preset has ever explored are revealed.
 **Fellowship Trance** -- the obvious fix, the hidden trick, the sacrifice, and the revelation. Every engine carries one truth that cannot be found by reading the manual.
-**Awakening Presets** -- 10 presets designed from the retreat's discoveries. These are the Awakening tier: free, included in XOlokun, designed to show the engine at its peak.
+**Awakening Presets** -- 10 presets designed from the retreat's discoveries. These are the Awakening tier: free, included in XOceanus, designed to show the engine at its peak.
 **Benediction** -- Guru Bin speaks. The retreat is sealed. Scripture is inscribed.
 
 The Transcendental presets go deeper. Where Awakening presets demonstrate the engine's peak, Transcendental presets inhabit its soul. They are designed for producers who want to understand *why* a sound works, not just *that* it works. Each preset in this pack carries its full lineage: which retreat discovery it came from, which scripture verse it embodies, which coupling partners bring it to life.
@@ -173,7 +173,7 @@ The seance scored OSTINATO at 8.7/10 -- the highest in the fleet for a percussio
 
 feliX has broken the surface.
 
-Every other engine in XOlokun lives in the water -- at the reef, in the thermocline, on the ocean floor, in the abyss. OPENSKY is what happens when the neon tetra -- the fleet's primordial ancestor -- leaps from the wave and catches the full spectrum of sunlight for one shimmering, gravity-defying moment. Wings spread. Scales scattering light. The sun itself as the only witness.
+Every other engine in XOceanus lives in the water -- at the reef, in the thermocline, on the ocean floor, in the abyss. OPENSKY is what happens when the neon tetra -- the fleet's primordial ancestor -- leaps from the wave and catches the full spectrum of sunlight for one shimmering, gravity-defying moment. Wings spread. Scales scattering light. The sun itself as the only witness.
 
 The Sunburst accent is not a color choice. It is the sun -- the source of all feliX energy. OPENSKY completes the top of the water column. OCEANDEEP completes the bottom. Together they are "The Full Column" -- the entire mythological space from trench to stratosphere.
 
@@ -363,11 +363,11 @@ The water column is deep. The retreats are ongoing. The fire does not go out.
 
 ---
 
-*Transcendental Vol 1 is a premium expansion for XOlokun by XO_OX Designs.*
+*Transcendental Vol 1 is a premium expansion for XOceanus by XO_OX Designs.*
 *75-100 presets across 5 engines. Each preset includes full Guru Bin metadata:*
 *retreat origin, scripture reference, coupling suggestions, and Sonic DNA coordinates.*
 
-*Awakening presets (10 per engine, free) are included in XOlokun.*
+*Awakening presets (10 per engine, free) are included in XOceanus.*
 *Transcendental presets (15-20 per engine, premium) are available to Patreon supporters.*
 
 *For the full Scripture, the Book of Bin, and ongoing Guru Bin retreats:*

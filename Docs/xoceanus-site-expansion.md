@@ -1,4 +1,4 @@
-# XOlokun Site Expansion — XO-OX.org
+# XOceanus Site Expansion — XO-OX.org
 
 **XO_OX — March 2026**
 **Prepared by: RAC (Ringleader × Architect × Consultant)**
@@ -16,7 +16,7 @@ XO-OX.org is not a product page. It is the *home* of the Omnibus philosophy — 
 | Page | URL | Purpose |
 |------|-----|---------|
 | **Home** | `/` | The Descent (see brand packet) |
-| **XOlokun** | `/xolokun` | Product page — the instrument |
+| **XOceanus** | `/xoceanus` | Product page — the instrument |
 | **Aquarium** | `/aquarium` | Playable creature gallery |
 | **Learn** | `/learn` | Professor Oscar's Academy |
 | **Freebies** | `/freebies` | Weekly gifts gallery + downloads |
@@ -25,7 +25,7 @@ XO-OX.org is not a product page. It is the *home* of the Omnibus philosophy — 
 | **Lore** | `/lore` | Mythology vault — the Book of Bin, creature stories |
 | **Expedition** | `/expedition` | Patreon + community hub |
 | **Sonar** | `/sonar` | News/updates (née Signal) |
-| **Download** | `/download` | Get XOlokun |
+| **Download** | `/download` | Get XOceanus |
 | **Community** | `/community` | Open source, for all, contributor hub |
 
 ---
@@ -48,7 +48,7 @@ The learning path is a literal descent into the ocean:
 
 *"Welcome to the tidepools. Everything here is small, alive, and wonderful."*
 
-| Lesson | Concept | XOlokun Connection |
+| Lesson | Concept | XOceanus Connection |
 |--------|---------|-------------------|
 | What is sound? | Vibration, frequency, amplitude | "Sound is pressure waves — just like the ocean" |
 | Your first noise | Play with a simple oscillator | Load a Foundation preset, turn one knob |
@@ -62,7 +62,7 @@ The learning path is a literal descent into the ocean:
 
 *"The shallows are warm and bright. You can see the bottom. Let's learn to swim."*
 
-| Lesson | Concept | XOlokun Connection |
+| Lesson | Concept | XOceanus Connection |
 |--------|---------|-------------------|
 | Oscillators explained | Waveforms, harmonics | How each engine generates its initial sound |
 | Envelopes: ADSR | Attack, Decay, Sustain, Release | "An envelope is how a sound is born, lives, and fades" |
@@ -75,9 +75,9 @@ The learning path is a literal descent into the ocean:
 
 *"The open water is vast. No walls. No floor visible. This is where sound design lives."*
 
-| Lesson | Concept | XOlokun Connection |
+| Lesson | Concept | XOceanus Connection |
 |--------|---------|-------------------|
-| Modulation matrix | Routing, sources, destinations | XOlokun's per-engine modulation |
+| Modulation matrix | Routing, sources, destinations | XOceanus's per-engine modulation |
 | FM synthesis | Frequency modulation basics | ORACLE's GENDY approach |
 | Granular synthesis | Grains, density, position | OPAL's AudioToBuffer system |
 | Subtractive synthesis | Classic analog modeling | The traditional engine approach |
@@ -89,7 +89,7 @@ The learning path is a literal descent into the ocean:
 
 *"Below the sunlight zone. Your eyes adjust. You start to see things no one on the surface imagines."*
 
-| Lesson | Concept | XOlokun Connection |
+| Lesson | Concept | XOceanus Connection |
 |--------|---------|-------------------|
 | Coupling fundamentals | Why coupling matters | The 15 coupling types explained |
 | Cross-paradigm synthesis | Combining synthesis methods | ONSET → ORGANON modulation |
@@ -102,15 +102,15 @@ The learning path is a literal descent into the ocean:
 
 *"The deepest trench. Crushing pressure. Alien life. This is where the math lives."*
 
-| Lesson | Concept | XOlokun Connection |
+| Lesson | Concept | XOceanus Connection |
 |--------|---------|-------------------|
 | DSP fundamentals | Sample rate, Nyquist, quantization | Why sampleRate matters (never hardcode 44100) |
 | Filter design | IIR, FIR, biquad coefficients | exp(-2πfc/sr) matched-Z, not Euler approximation |
-| Oscillator anti-aliasing | PolyBLEP, BLIT, oversampling | How XOlokun engines avoid aliasing |
+| Oscillator anti-aliasing | PolyBLEP, BLIT, oversampling | How XOceanus engines avoid aliasing |
 | Voice allocation | Stealing, priority, polyphony | VoiceAllocator.h — LRU + release-priority |
 | Variational Free Energy | ORGANON's metabolism model | Publishable-grade DSP explained |
 | Kuramoto synchronization | OPERA's conductor system | Phase coupling mathematics |
-| Building your own engine | The XOlokun engine SDK | SDK headers, coupling interface, integration |
+| Building your own engine | The XOceanus engine SDK | SDK headers, coupling interface, integration |
 
 ### Pedagogical Principles
 
@@ -178,13 +178,13 @@ Patreon patrons don't get *different* content — they get it *one week early*. 
 
 ### Concept
 
-A beautiful, respectful archive of every cultural, scientific, musical, and technological influence that shaped XOlokun. This is not a bibliography — it's a living tribute. Every influence gets a proper page with context, history, and the specific way it informed XOlokun's design.
+A beautiful, respectful archive of every cultural, scientific, musical, and technological influence that shaped XOceanus. This is not a bibliography — it's a living tribute. Every influence gets a proper page with context, history, and the specific way it informed XOceanus's design.
 
 ### Categories
 
 #### Musical Pioneers
 
-| Influence | Connection to XOlokun | Engine(s) |
+| Influence | Connection to XOceanus | Engine(s) |
 |-----------|----------------------|-----------|
 | **Bob Moog** | Voltage-controlled subtractive synthesis, the concept of the modular | Multiple — the modular heritage is in every engine's parameter architecture |
 | **Don Buchla** | West Coast synthesis, timbre as a first-class parameter | ORACLE (Buchla ghost gave 10/10 at seance) |
@@ -198,7 +198,7 @@ A beautiful, respectful archive of every cultural, scientific, musical, and tech
 
 #### Scientific Foundations
 
-| Influence | Connection to XOlokun | Where It Lives |
+| Influence | Connection to XOceanus | Where It Lives |
 |-----------|----------------------|----------------|
 | **Joseph Fourier** | Harmonic decomposition — all sound as sum of sine waves | Every oscillator in the fleet |
 | **Hermann von Helmholtz** | Psychoacoustics — how we perceive timbre | OFFERING's Berlyne/Wundt DSP |
@@ -211,7 +211,7 @@ A beautiful, respectful archive of every cultural, scientific, musical, and tech
 
 #### Cultural Traditions
 
-| Influence | Connection to XOlokun | How We Honor It |
+| Influence | Connection to XOceanus | How We Honor It |
 |-----------|----------------------|-----------------|
 | **Yoruba cosmology** | Olokun — deity of the deep ocean, hidden wealth | The name itself. Treated with gravity, not as decoration. |
 | **Akan culture** | Oware game, goldweight symbolism | OWARE engine — academic citations (Chaigne 1997), not appropriation |
@@ -227,7 +227,7 @@ Each influence gets a **card** with:
 - Portrait or illustration
 - Name and dates
 - 2-3 sentence description of their work
-- The specific XOlokun connection — which engine, which concept, which design decision
+- The specific XOceanus connection — which engine, which concept, which design decision
 - "Explore further" links to external resources
 
 The page itself is organized as a **depth chart** — earlier/foundational influences at the surface, deeper/more specific influences further down. The visual metaphor of descent continues.
@@ -240,7 +240,7 @@ The page itself is organized as a **depth chart** — earlier/foundational influ
 
 ### Concept
 
-The mythology of XOlokun — the Book of Bin, creature stories, the water column atlas, the feliX-Oscar polarity system — collected in one beautiful, explorable archive. This is where the world-building lives.
+The mythology of XOceanus — the Book of Bin, creature stories, the water column atlas, the feliX-Oscar polarity system — collected in one beautiful, explorable archive. This is where the world-building lives.
 
 ### Sections
 
@@ -309,7 +309,7 @@ This is not a checkbox. This is the reason the project exists:
 >
 > *The "Omnibus" in our DNA means: for you, for me, for them, for her, for him, for us. Every culture. Every class. Every skill level. Every age.*
 >
-> *Music creation has been gatekept by expensive tools, exclusive communities, and insider knowledge for too long. XOlokun is free. The code is open. The lessons are free. The presets are free. The only cost is curiosity.*
+> *Music creation has been gatekept by expensive tools, exclusive communities, and insider knowledge for too long. XOceanus is free. The code is open. The lessons are free. The presets are free. The only cost is curiosity.*
 >
 > *If you can hear, you can make music. If you can't hear, you can feel it. The deep ocean doesn't check your credentials. Neither do we.*
 

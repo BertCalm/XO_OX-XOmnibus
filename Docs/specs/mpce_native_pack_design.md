@@ -110,7 +110,7 @@ SW: Body Hit           │ SE: Flam / Layered
 
 #### Architecture 4: Coupling State Corners
 
-For packs that showcase XOlokun coupling expressivity — designed for XOlokun VST3 users in MPC Desktop 3.5+.
+For packs that showcase XOceanus coupling expressivity — designed for XOceanus VST3 users in MPC Desktop 3.5+.
 
 ```
 NW: Engine Solo        │ NE: Coupling Light

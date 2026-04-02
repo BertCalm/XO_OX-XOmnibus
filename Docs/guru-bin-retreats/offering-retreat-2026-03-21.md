@@ -19,7 +19,7 @@
 
 ## Pre-Retreat State
 
-OFFERING arrived in XOlokun on 2026-03-21 as engine #46. It is unlike any other engine in the fleet in one fundamental respect: it does not synthesize tones, pads, or sustained sounds. It synthesizes the event of a drum hit — the first 5 milliseconds of acoustic energy that define what a sound IS before any processing shapes what it becomes.
+OFFERING arrived in XOceanus on 2026-03-21 as engine #46. It is unlike any other engine in the fleet in one fundamental respect: it does not synthesize tones, pads, or sustained sounds. It synthesizes the event of a drum hit — the first 5 milliseconds of acoustic energy that define what a sound IS before any processing shapes what it becomes.
 
 Its architecture rests on three published psychological frameworks translated into real-time DSP. Berlyne (1960) discovered the inverted-U hedonic curve: zero novelty is boring, maximum novelty is overwhelming, and the sweet spot lies at moderate unpredictability. Wundt (1874) found this curve is asymmetric — the drop from overstimulation is steeper than the rise from understimulation. Csikszentmihalyi (1975) formalized the Flow State: the groove where challenge exactly matches skill. In OFFERING's implementation, these three researchers govern which parameters change between drum hits, how many parameters change simultaneously, and what fraction of hits feel familiar versus new.
 

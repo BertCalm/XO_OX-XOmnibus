@@ -1,4 +1,4 @@
-# XOlokun Fleet Status Snapshots
+# XOceanus Fleet Status Snapshots
 
 Running history of key fleet metrics. Most recent entry first.
 
@@ -69,7 +69,7 @@ Running history of key fleet metrics. Most recent entry first.
 
 ### Key milestones reached by this date
 
-- **31 engines** registered + installed in XOlokun; auval PASS (2026-03-15)
+- **31 engines** registered + installed in XOceanus; auval PASS (2026-03-15)
 - **Prism Sweep**: ALL 12 rounds complete
 - **Constellation Fast Track**: ALL 5 seances complete (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) — `836e85a`
 - **OVERLAP + OUTWIT**: Phase 4 complete (2026-03-15); installed + auval PASS

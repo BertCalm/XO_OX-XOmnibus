@@ -99,7 +99,7 @@ XOuroboros produces sounds that are fundamentally impossible through any other s
 
 Ouroboros is self-sufficient — his feedback loops mean he barely needs external input. But feeding him external audio through the velocity injection system creates runaway transformations: the injected signal perturbs the attractor's trajectory, pushing it into new regions of phase space it would never have reached on its own. Feed OddfeliX's transients and the attractor jolts between orbits. Feed XOrganon's metabolic output and the chaos becomes biologically modulated. Feed another Ouroboros and the two attractors entangle — coupled chaotic systems exhibiting synchronization phenomena.
 
-As a source, Ouroboros provides four channels of coupling material: stereo audio (L/R) plus the raw attractor velocities (dx/dt, dy/dt). The velocity outputs are unique in XOlokun — they represent the instantaneous rate of change of the chaotic system, producing modulation signals with the same never-repeating character as the audio output but at a different timescale. These make extraordinary modulation sources for any engine that accepts EnvToMorph or AmpToFilter coupling.
+As a source, Ouroboros provides four channels of coupling material: stereo audio (L/R) plus the raw attractor velocities (dx/dt, dy/dt). The velocity outputs are unique in XOceanus — they represent the instantaneous rate of change of the chaotic system, producing modulation signals with the same never-repeating character as the audio output but at a different timescale. These make extraordinary modulation sources for any engine that accepts EnvToMorph or AmpToFilter coupling.
 
 He is the engine of creation. Handle with care.
 

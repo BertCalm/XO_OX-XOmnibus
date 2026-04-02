@@ -69,7 +69,7 @@ Erhu vibrato modulates both pitch (±30–80 cents) and amplitude (±5–15%) in
 | `erhu_scratch` | Bow Scratch | 0.0–1.0 | 0.2 | Pre-tone noise excitation level. |
 | `erhu_portamento` | Portamento | 0.0–500 ms | 30 ms | Glide time between notes. |
 
-### 1.5 Coupling Potential with Existing XOlokun Engines
+### 1.5 Coupling Potential with Existing XOceanus Engines
 
 - **OPAL (Granular)**: Erhu sustain textures fed into OPAL's grain cloud creates ethereal string beds. Coupling axis: Erhu provides the melodic seed; OPAL smears it into atmosphere.
 - **OVERDUB (Dub Synth)**: Tape delay on erhu creates the "echoing voice in a canyon" archetype. OVERDUB's spring reverb is physically appropriate (erhu + chamber resonance).
@@ -152,7 +152,7 @@ Model circular breathing as a rhythmic amplitude modulation applied to the press
 | `didge_bore_resonance` | Bore Resonance | 0.0–1.0 | 0.7 | Waveguide feedback strength. |
 | `didge_sub_drone` | Sub Drone | 0.0–1.0 | 0.3 | Subharmonic (octave-below) blend. |
 
-### 2.5 Coupling Potential with Existing XOlokun Engines
+### 2.5 Coupling Potential with Existing XOceanus Engines
 
 - **ORGANISM (Concept/V2)**: Cellular automata generative rhythms driving didgeridoo breath patterns — the drone becomes a living, evolving entity.
 - **OHM**: Natural pairing. OHM's just-intonation drone harmonics and didgeridoo's harmonic series overlap almost perfectly. Together: primal acoustic resonance system.
@@ -230,7 +230,7 @@ Model the floating bridge shimmer as a very low-index FM modulation (modulation 
 | `oud_maqam` | Maqam Scale | Off/Rast/Bayati/Hijaz/Saba | Off | Pitch quantization mode. |
 | `oud_attack_click` | Attack Click | 0.0–1.0 | 0.4 | Plectrum transient emphasis. |
 
-### 3.5 Coupling Potential with Existing XOlokun Engines
+### 3.5 Coupling Potential with Existing XOceanus Engines
 
 - **OPAL**: Granular processing of oud sustain creates Middle Eastern ambient textures. The oud's warm mid-range feeds beautifully into grain clouds.
 - **OTTONI (Triple Brass)**: Unexpected coupling: oud melodic lines against brass pads creates orchestral Arabic fusion textures.
@@ -306,7 +306,7 @@ The bend envelope shape is asymmetric: fast attack (press before pluck) with slo
 | `gzheng_gliss_speed` | Gliss Speed | 20–500 ms | 80 ms | Glissando cascade rate. |
 | `gzheng_string_count` | String Voices | 4–12 | 8 | Active polyphony. |
 
-### 4.5 Coupling Potential with Existing XOlokun Engines
+### 4.5 Coupling Potential with Existing XOceanus Engines
 
 - **OPAL**: Guzheng's long sustain tails feed beautifully into granular processing. The bend-and-release technique creates pitch-gliding grains that sound uniquely alive.
 - **ONSET**: Guzheng's pluck transient paired with ONSET's percussion creates a hybrid "plucked percussion" texture. Coupling axis: ONSET handles the attack impulse, guzheng provides the pitched sustain.
@@ -396,7 +396,7 @@ A small FDN (4x4) with tuned delay times (1–15ms) creates the metallic shimmer
 | `hpan_mode_coupling` | Mode Coupling | 0.0–1.0 | 0.3 | Cross-mode energy transfer. |
 | `hpan_maker_style` | Maker Style | PANArt/Saraz/Yishama/Free | PANArt | Inharmonic ratio preset. |
 
-### 5.5 Coupling Potential with Existing XOlokun Engines
+### 5.5 Coupling Potential with Existing XOceanus Engines
 
 - **OPAL**: Handpan's long inharmonic sustain + OPAL's granular processing creates shimmering ambient clouds. A very high-value coupling.
 - **OVERLAP**: The knot-topology FDN's metallic diffusion character is almost custom-made for handpan — OVERLAP's own metallic decay extends the handpan's sustain in a physically coherent way.
@@ -487,7 +487,7 @@ void triggerShake(float velocity) {
 | `ankl_ensemble_spread` | Ensemble Spread | 0.0–1.0 | 0.3 | Detuning spread across ensemble. |
 | `ankl_warmth` | Warmth | 0.0–1.0 | 0.5 | Low-pass character of bamboo material. |
 
-### 6.5 Coupling Potential with Existing XOlokun Engines
+### 6.5 Coupling Potential with Existing XOceanus Engines
 
 - **ONSET**: Angklung's rhythmic rattle character pairs naturally with ONSET's percussion voices. Coupling axis: ONSET provides the rhythmic foundation while angklung adds melodic percussion color.
 - **OLE (Afro-Latin trio)**: Angklung's Indonesian origin and OLE's Afro-Latin character both belong to non-Western percussion traditions — a "Global South Percussion" coupling with strong ensemble character.
@@ -584,7 +584,7 @@ Expose meend range (0–4 semitones), meend speed, and meend curve (linear vs. e
 | `sitar_string_decay` | String Decay | 1.0–5.0 s | 2.5 | Main string T60. |
 | `sitar_body_warmth` | Body Warmth | 0.0–1.0 | 0.5 | Gourd body resonance. |
 
-### 7.5 Coupling Potential with Existing XOlokun Engines
+### 7.5 Coupling Potential with Existing XOceanus Engines
 
 - **OPAL**: The sympathetic string halo feeds naturally into granular processing — OPAL's grain clouds can extend the taraf resonance into infinite sustain. This is the highest-value coupling in this document.
 - **OVERLAP (FDN Reverb)**: The sitar's natural acoustic space (Indian classical concert halls) is long and reverberant. OVERLAP extends the sympathetic resonance appropriately.
@@ -677,7 +677,7 @@ float excitation = lpNoise * bachiLevel + pluckImpulse * (1.0f - bachiLevel);
 | `sham_portamento` | Portamento | 0–200 ms | 0 | Fretless glide. |
 | `sham_string_spacing` | String Spacing | 0.0–1.0 | 0.5 | Chord voicing spread (all 3 strings). |
 
-### 8.5 Coupling Potential with Existing XOlokun Engines
+### 8.5 Coupling Potential with Existing XOceanus Engines
 
 - **ONSET**: The shamisen's percussive bachi attack and ONSET's drum voices create a hybrid drum-melodic instrument. Coupling axis: ONSET handles kick/snare, shamisen handles melodic hits.
 - **OUTWIT (CA Synthesis)**: Cellular automata patterns driving shamisen string triggering creates algorithmic koto-like compositions — a generative Japanese music system.
@@ -699,7 +699,7 @@ On the sawari specifically: `sham_sawari_level` scales from 0.15 at velocity 1 t
 
 ## Priority Engines for V2 Collections
 
-The following ranking evaluates each instrument across two axes: **DSP complexity** (total engineering effort, novel algorithm requirements) and **XOlokun coupling potential** (how well the engine's character meshes with existing engines to produce valuable new textures).
+The following ranking evaluates each instrument across two axes: **DSP complexity** (total engineering effort, novel algorithm requirements) and **XOceanus coupling potential** (how well the engine's character meshes with existing engines to produce valuable new textures).
 
 | Rank | Instrument | DSP Complexity | Coupling Potential | Recommend First? |
 |---|---|---|---|---|
@@ -714,11 +714,11 @@ The following ranking evaluates each instrument across two axes: **DSP complexit
 
 ### Recommendation: Build Sitar, Handpan, and Erhu First
 
-**Sitar** is the highest-priority engine. The sympathetic string bank is a unique DSP architecture that no existing XOlokun engine replicates. Its coupling with OPAL (granular sympathetic extension), OHM (drone + raga), and OUTWIT (generative raga via cellular automata) is extremely high-value. The jawari comb filter and meend portamento are novel algorithms that will differentiate the engine strongly. Sitar also anchors the Artwork Collection's Color Quad A (Erhu / Didgeridoo / Oud / Guzheng cluster), suggesting a V2 South/East Asian instrument release cohort.
+**Sitar** is the highest-priority engine. The sympathetic string bank is a unique DSP architecture that no existing XOceanus engine replicates. Its coupling with OPAL (granular sympathetic extension), OHM (drone + raga), and OUTWIT (generative raga via cellular automata) is extremely high-value. The jawari comb filter and meend portamento are novel algorithms that will differentiate the engine strongly. Sitar also anchors the Artwork Collection's Color Quad A (Erhu / Didgeridoo / Oud / Guzheng cluster), suggesting a V2 South/East Asian instrument release cohort.
 
-**Handpan** is the second priority. Modal synthesis of inharmonic partials is an underrepresented algorithm in XOlokun — most existing engines use waveguides or subtractive synthesis. The handpan engine would be the first true modal synthesis engine in the fleet, opening a new DSP category. Its coupling with OVERLAP (FDN metallic diffusion) is near-perfect, and the instrument has massive contemporary appeal in ambient and electronic music. The relatively contained parameter set means faster development despite the novel algorithm. The `hpan_maker_style` preset system also creates a natural preset differentiation axis (PANArt vs. Saraz vs. free-tuned).
+**Handpan** is the second priority. Modal synthesis of inharmonic partials is an underrepresented algorithm in XOceanus — most existing engines use waveguides or subtractive synthesis. The handpan engine would be the first true modal synthesis engine in the fleet, opening a new DSP category. Its coupling with OVERLAP (FDN metallic diffusion) is near-perfect, and the instrument has massive contemporary appeal in ambient and electronic music. The relatively contained parameter set means faster development despite the novel algorithm. The `hpan_maker_style` preset system also creates a natural preset differentiation axis (PANArt vs. Saraz vs. free-tuned).
 
-**Erhu** is third. The Hiller-Ruiz bowing physics model is the most complex single algorithm in this document, but the erhu's coupling potential with OPAL, OVERDUB, and OVERLAP makes it a high-return investment. The erhu's vocal expressiveness and continuous timbral trajectory will enable expressive melodic playing that no current XOlokun engine provides — this is a genuine gap in the fleet's voice roster. It anchors the "bowed string" voice archetype required by the Collections, and its snakeskin membrane formant bank connects architecturally with OBBLIGATO's wind formant modeling.
+**Erhu** is third. The Hiller-Ruiz bowing physics model is the most complex single algorithm in this document, but the erhu's coupling potential with OPAL, OVERDUB, and OVERLAP makes it a high-return investment. The erhu's vocal expressiveness and continuous timbral trajectory will enable expressive melodic playing that no current XOceanus engine provides — this is a genuine gap in the fleet's voice roster. It anchors the "bowed string" voice archetype required by the Collections, and its snakeskin membrane formant bank connects architecturally with OBBLIGATO's wind formant modeling.
 
 **Deferred to V3 consideration**: Didgeridoo (the 10-12 pole LPC vocal tract model is the second-most complex algorithm in this set; better to tackle after bowing physics is solved in Erhu) and Angklung (lowest coupling potential and narrowest appeal in isolation — a stronger future option is a single "Bamboo Ensemble" engine combining angklung, bamboo flute, and bamboo percussion into one architecture, maximizing the material's character without spending a full engine slot on rattle alone).
 

@@ -64,7 +64,7 @@ The constellation distributes a complete orchestral+world palette across a famil
 
 ## 3. Family Coupling Matrix — Named Relationship Routes
 
-Every constellation edge has a specific, named coupling route that reflects the family relationship. These go beyond generic XOlokun coupling types — they're family-specific interactions.
+Every constellation edge has a specific, named coupling route that reflects the family relationship. These go beyond generic XOceanus coupling types — they're family-specific interactions.
 
 ### Constellation Edges (adjacent pairs)
 
@@ -91,7 +91,7 @@ Every constellation edge has a specific, named coupling route that reflects the 
 
 ## 4. Cross-Engine Macro Bleed
 
-When 2+ constellation engines are loaded in XOlokun, their signature macros subtly influence each other. The influence is ±10-15% parameter nudge — felt but not overpowering. Because that's what families do.
+When 2+ constellation engines are loaded in XOceanus, their signature macros subtly influence each other. The influence is ±10-15% parameter nudge — felt but not overpowering. Because that's what families do.
 
 ### Bleed Routes
 
@@ -215,7 +215,7 @@ A unique preset sub-category within Entangled that requires 2+ constellation eng
 
 ## 7. The Family Portrait — Visual Easter Egg
 
-When all 5 constellation engines are loaded simultaneously in XOlokun, the Gallery UI reveals a hidden **Family Portrait** animation:
+When all 5 constellation engines are loaded simultaneously in XOceanus, the Gallery UI reveals a hidden **Family Portrait** animation:
 
 **The scene:** A cross-section of the water column. Five aquatic species at their correct depths:
 

@@ -1,4 +1,4 @@
-# XOlokun Patreon Strategy — "The Expedition"
+# XOceanus Patreon Strategy — "The Expedition"
 
 **XO_OX — March 2026**
 **Prepared by: RAC (Ringleader × Architect × Consultant)**
@@ -96,7 +96,7 @@ When a milestone is reached, the celebration is a **Depth Event**:
 - Patreon: thank you post with patron roll call
 
 **Day 1 — Release**:
-- Engines available in XOlokun update
+- Engines available in XOceanus update
 - 40+ new presets distributed across moods
 - Field Guide: "Dispatches from the Deep — [Quad] Discovered"
 - Creature Atlas: 4 new entries
@@ -229,7 +229,7 @@ These are aspirational but they set a visible roadmap. The community knows: the 
 
 > **The Expedition Begins**
 >
-> XOlokun is free. The code is open. The presets are free. The lessons are free. But building the deep ocean takes time, and time costs money.
+> XOceanus is free. The code is open. The presets are free. The lessons are free. But building the deep ocean takes time, and time costs money.
 >
 > The Expedition is how we fund the dive. Every patron is an explorer who helps us go deeper. And everything we find in the deep — every engine, every preset, every lesson — eventually surfaces for everyone.
 >
@@ -252,7 +252,7 @@ These are aspirational but they set a visible roadmap. The community knows: the 
 >
 > [Threshold] explorers. The [depth zone] opens.
 >
-> [4 engine names] are now free in XOlokun for everyone.
+> [4 engine names] are now free in XOceanus for everyone.
 > [Number] new presets. [Number] coupling recipes. New creatures in the atlas.
 >
 > This is what "for all" looks like.

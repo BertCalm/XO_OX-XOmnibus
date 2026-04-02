@@ -40,7 +40,7 @@ or a manual sign-off sheet — no item ships amber.
 
 ### Metadata Consistency
 - [ ] Pack `version` in `expansion.json` matches `bundle_manifest.json` and README front-matter
-- [ ] Engine name in manifest matches the canonical engine name in the XOlokun engine table
+- [ ] Engine name in manifest matches the canonical engine name in the XOceanus engine table
 - [ ] Tier field is one of: `SIGNAL`, `FORM`, or `DOCTRINE`
 - [ ] `author` field is `XO_OX` (not a personal name or placeholder)
 - [ ] No placeholder strings (`TODO`, `TBD`, `FIXME`) anywhere in JSON or XPM files
@@ -84,7 +84,7 @@ or a manual sign-off sheet — no item ships amber.
 
 ### Product Metadata
 - [ ] Pack tier clearly stated: `SIGNAL` (free/intro), `FORM` (mid), or `DOCTRINE` (flagship)
-- [ ] Engine compatibility listed: which XOlokun engines the pack was designed for
+- [ ] Engine compatibility listed: which XOceanus engines the pack was designed for
 - [ ] Minimum firmware version stated if the pack uses MPC 3.x-only features
 - [ ] Version number follows semantic convention: `MAJOR.MINOR.PATCH` (e.g., `1.0.0` for first release)
 - [ ] Changelog present if this is an update to a previously released pack

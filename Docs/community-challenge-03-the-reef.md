@@ -48,7 +48,7 @@ The challenge is named "The Reef" because a reef isn't a decoration on the ocean
 
 Use the Aquatic FX Suite as the instrument, not the finish.
 
-The Aquatic FX chain in XOlokun — Reef, Fathom, Drift, Tide — is usually the last thing people touch. A bit of space, a little warmth, done. This challenge is about using those four stages as load-bearing structural elements: the reason your sound is what it is, not the gloss on top of it.
+The Aquatic FX chain in XOceanus — Reef, Fathom, Drift, Tide — is usually the last thing people touch. A bit of space, a little warmth, done. This challenge is about using those four stages as load-bearing structural elements: the reason your sound is what it is, not the gloss on top of it.
 
 **Your challenge:**
 

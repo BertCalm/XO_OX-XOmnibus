@@ -362,7 +362,7 @@ Neither tradition dissolves into the other. Both maintain identity — their sep
 
 ---
 
-## 6. XOlokun Integration
+## 6. XOceanus Integration
 
 ### 6.1 MegaCouplingMatrix Compatibility
 

@@ -58,7 +58,7 @@ weight as if orbiting a central spectral point, fulfilling the engine's "Circlin
   - Wraps safely using `std::fmod` + bounds check
   - Applies `snap.eraDriftDepth * 0.35f * sin(eraPhase * 2π)` to `targetEra`
 
-**Effect:** The ERA triangle now drifts autonomously in the XOlokun adapter, matching the
+**Effect:** The ERA triangle now drifts autonomously in the XOceanus adapter, matching the
 behaviour that already existed in the standalone XOverworld instrument. Chip timbres breathe
 between console eras — the nautilus drifting between its own chambers.
 

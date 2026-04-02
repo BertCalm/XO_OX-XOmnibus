@@ -43,7 +43,7 @@ meaning no ghost params remain in any of the three engines.
 
 **Wave 1 — Old unprefixed XOdyssey standalone schema (196 presets):**
 These presets were authored against the XOdyssey v1 standalone schema, before the
-`drift_` prefix convention was adopted for XOlokun. All core osc, filter, envelope,
+`drift_` prefix convention was adopted for XOceanus. All core osc, filter, envelope,
 LFO, and FX parameters used unprefixed or standalone-namespaced names.
 
 Key ghost → canonical mappings applied:
@@ -82,7 +82,7 @@ Keys dropped (no canonical equivalent in current DriftEngine):
 - `env_filter_*` (4 params) — no separate filter envelope in canonical schema
 - `lfo_1_shape` — shape not exposed in canonical schema
 - `mod_1/2_source/dest/amount` (6 params) — mod matrix not in canonical schema
-- `macro_journey` — macro renamed/restructured at XOlokun level
+- `macro_journey` — macro renamed/restructured at XOceanus level
 - `tidal_depth`, `tidal_rate` — tidal pulse not in canonical schema
 - `fracture_enable`, `fracture_intensity`, `fracture_rate` — fracture not in schema
 - `reverb_enable/size/mix/damping` — embedded FX not in canonical schema
@@ -124,7 +124,7 @@ Three presets had old params with `drift_` prepended (partial prior migration):
 ### Ghost params found (50 unique ghost keys across 167 presets)
 
 **Root cause:** Presets authored against the old XOblong/BobEngine standalone schema
-before the `bob_` prefix was enforced in XOlokun. All parameters used unprefixed
+before the `bob_` prefix was enforced in XOceanus. All parameters used unprefixed
 or short-prefixed names.
 
 Key ghost → canonical mappings applied:
@@ -185,7 +185,7 @@ Keys dropped (no canonical equivalent in current BobEngine):
 ### Ghost params found (32 unique ghost keys across 41 presets)
 
 **Root cause:** Presets authored against the old XOverdub standalone schema before
-the `dub_` prefix convention was enforced in XOlokun.
+the `dub_` prefix convention was enforced in XOceanus.
 
 Key ghost → canonical mappings applied:
 - `osc_wave` → `dub_oscWave`
@@ -295,11 +295,11 @@ python3 Tools/fix_dub_presets.py [--dry-run]
 ## Caveats and Data Loss
 
 Ghost params that were dropped (no canonical mapping) represent features that existed
-in the standalone instrument but were not carried over into the XOlokun engine adapter.
+in the standalone instrument but were not carried over into the XOceanus engine adapter.
 The most significant losses by volume:
 
 **Drift (1,353 dropped instances):** Embedded FX (reverb, delay, chorus, phaser) were
-the largest category — these existed in the standalone XOdyssey but the XOlokun DriftEngine
+the largest category — these existed in the standalone XOdyssey but the XOceanus DriftEngine
 adapter does not expose them as engine-level parameters. Also dropped: the 8-slot mod matrix,
 filter B (formant filter beyond `formantMorph`/`formantMix`), tidal pulse, fracture,
 and miscellaneous standalone macros.

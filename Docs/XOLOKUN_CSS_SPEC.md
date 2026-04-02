@@ -1,6 +1,6 @@
-# XOlokun V04 Polished — Complete CSS Design Specification
+# XOceanus V04 Polished — Complete CSS Design Specification
 
-Reference: `Docs/mockups/xolokun-v04-polished.html`
+Reference: `Docs/mockups/xoceanus-v04-polished.html`
 
 **Date**: 2026-03-26
 **Version**: 1.0

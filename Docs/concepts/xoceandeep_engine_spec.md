@@ -20,7 +20,7 @@ The deep ocean isn't just "low frequency." It's pressure, darkness, alien biolog
 **Sound family:** Bass / Sub / Dark Texture / Creature FX
 **Max voices:** 8
 **CPU budget:** < 12%
-**Gallery gap filled:** No existing XOlokun engine models bass as physical pressure with deep-sea creature behavior. BITE has character stages. OBESE has oscillator count. DUB has space. OceanDeep has the weight of the entire ocean.
+**Gallery gap filled:** No existing XOceanus engine models bass as physical pressure with deep-sea creature behavior. BITE has character stages. OBESE has oscillator count. DUB has space. OceanDeep has the weight of the entire ocean.
 
 ---
 

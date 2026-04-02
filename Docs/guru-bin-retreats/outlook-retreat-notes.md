@@ -99,8 +99,8 @@ To complete this retreat:
    - R3: Parameter Refinements (use table above)
    - R4: Two-Second Audition Test
    - R5: 10 Awakening Presets (use plan above, write full .xometa files)
-3. Write 10 .xometa preset files to `Presets/XOlokun/{mood}/` directories
+3. Write 10 .xometa preset files to `Presets/XOceanus/{mood}/` directories
 4. Commit and push to branch
 
 Template: Follow `Docs/guru-bin-retreats/offering-retreat-2026-03-21.md` R1-R5 structure.
-Existing presets at `Presets/XOlokun/{mood}/OUTLOOK_*.xometa` for format reference.
+Existing presets at `Presets/XOceanus/{mood}/OUTLOOK_*.xometa` for format reference.

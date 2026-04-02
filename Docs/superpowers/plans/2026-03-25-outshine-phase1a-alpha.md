@@ -1370,7 +1370,7 @@ feat(Outshine): staged public API — analyzeGrains() + exportPearl() + cancel +
 After all 8 tasks are applied:
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOceanus
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
 cmake --build build 2>&1 | grep -E "error:|warning:" | head -40
 ```

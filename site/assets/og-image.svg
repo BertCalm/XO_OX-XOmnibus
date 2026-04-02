@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <!-- XOlokun social share og:image placeholder (1200x630) -->
+  <!-- XOceanus social share og:image placeholder (1200x630) -->
   <!-- Replace with final artwork before launch -->
   <rect width="1200" height="630" fill="#1A1A2E"/>
   <!-- Gradient background -->
@@ -21,7 +21,7 @@
   <rect x="0" y="580" width="1200" height="4" fill="url(#gold)" opacity="0.8"/>
   <!-- Main logotype -->
   <text x="600" y="260" font-family="'Space Grotesk', system-ui, sans-serif" font-size="96" font-weight="700"
-        fill="#E9C46A" text-anchor="middle" letter-spacing="-2">XOlokun</text>
+        fill="#E9C46A" text-anchor="middle" letter-spacing="-2">XOceanus</text>
   <!-- Tagline -->
   <text x="600" y="330" font-family="'Inter', system-ui, sans-serif" font-size="28" font-weight="300"
         fill="#F0EDE8" text-anchor="middle" opacity="0.85">for all</text>

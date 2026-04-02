@@ -967,7 +967,7 @@ All 23 engines with audio DSP now have aftertouch wired. Summary below.
 
 **D006 ("Expression Input Is Not Optional") is FULLY SATISFIED fleet-wide.**
 
-All 23 audio-DSP engines in XOlokun have:
+All 23 audio-DSP engines in XOceanus have:
 - Velocity → timbre wiring (filter brightness, harmonic content, or equivalent)
 - At least one CC expression input (channel pressure / aftertouch)
 

@@ -9,7 +9,7 @@
 ## Summary
 
 Phase 2 makes OpalEngine the first live receiver of the `AudioToBuffer` coupling type.
-Any engine in the XOlokun slot grid can now stream its stereo output directly into
+Any engine in the XOceanus slot grid can now stream its stereo output directly into
 OPAL's internal grain buffer, allowing the granulator to continuously shred another
 engine's audio in real time.
 

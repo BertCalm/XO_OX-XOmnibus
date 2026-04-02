@@ -12,7 +12,7 @@
 - **Gallery code:** OPAL
 - **Thesis:** XOpal is a granular synthesis engine that fragments any sound into time-scattered particles — from smooth stretched clouds to shattered glass.
 - **Sound family:** Texture / Pad / Ambient / FX hybrid
-- **Unique capability:** Real-time granulation of the XOlokun coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This doesn't exist elsewhere.
+- **Unique capability:** Real-time granulation of the XOceanus coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This doesn't exist elsewhere.
 
 ---
 
@@ -23,7 +23,7 @@
 - **Why granular serves the character:**
   An opal shifts color depending on how you look at it — the same light, scattered differently. Granular synthesis does exactly this to sound: the same audio fragment, scattered across pitch, time, and space. The character isn't in the oscillators; it's in the *scattering*.
 - **The coupling thesis:**
-  Alone, XOpal has its own oscillator bank as grain source. But its real voice is as a *transformer* — it takes a living engine's output (OVERWORLD, ODYSSEY, OBLONG) and applies time to it. Every XOlokun engine becomes richer when it can be scattered.
+  Alone, XOpal has its own oscillator bank as grain source. But its real voice is as a *transformer* — it takes a living engine's output (OVERWORLD, ODYSSEY, OBLONG) and applies time to it. Every XOceanus engine becomes richer when it can be scattered.
 
 ---
 
@@ -31,7 +31,7 @@
 
 1. **XO word:** XOpal ✓ — Opal: precious stone, iridescent shifting, layered mineral structure
 2. **One-sentence thesis:** "XOpal is a granular synthesis engine that fragments any sound into time-scattered particles — from smooth stretched clouds to shattered glass." ✓
-3. **Sound only this can make:** Real-time granulation of chip synthesis audio — NES pulses scattered through 300ms grain clouds with pitch scatter ±5 semitones. No DAW plugin or other synth in the XOlokun gallery does this. ✓
+3. **Sound only this can make:** Real-time granulation of chip synthesis audio — NES pulses scattered through 300ms grain clouds with pitch scatter ±5 semitones. No DAW plugin or other synth in the XOceanus gallery does this. ✓
 
 ---
 
@@ -153,7 +153,7 @@ All 4 macros produce audible, significant change at every point in their range i
 | `EnvToMorph` | Source envelope → grain size | Attack shapes → grain size variation |
 | `LFOToPitch` | Source LFO → pitch scatter | Cross-engine modulation of the scatter width |
 
-**Primary coupling:** `AudioToWavetable` — this is the reason OPAL exists in XOlokun. Every engine feeding into OPAL creates a unique "engine through time" voice.
+**Primary coupling:** `AudioToWavetable` — this is the reason OPAL exists in XOceanus. Every engine feeding into OPAL creates a unique "engine through time" voice.
 
 ### OPAL as Source (sending to other engines)
 

@@ -21,7 +21,7 @@ Session 2026-03-21 (continued across three context windows).
 **OPERA Engine — Engine #45 Integrated**
 - Kuramoto vocal synthesis: additive partials + phase synchrony + formant breath
 - Files: KuramotoField.h, OperaPartialBank.h, OperaBreathEngine.h, OperaConductor.h, ReactiveStage.h, OperaEngine.h, OperaAdapter.h/.cpp
-- Registered in XOlokunProcessor.cpp + PresetManager.h
+- Registered in XOceanusProcessor.cpp + PresetManager.h
 - 180 factory presets across 8 moods (macros: DRAMA/VOICE/CHORUS/STAGE)
 - **Build + auval PASS** (45 engines)
 
@@ -137,5 +137,5 @@ These untracked files are experiment stubs — not part of any current sprint:
 - `Source/Engines/Oto/OtoEngine.h` (Kitchen Collection concept)
 - `Docs/octave-engine-architecture.md`, `Docs/oleg-engine-architecture.md`
 - `Docs/cookbooks/`, `Docs/kitchen-collection-release-calendar.md` (V2 concept docs)
-- `Presets/XOlokun/Deep/`, `Presets/XOlokun/Ethereal/`, `Presets/XOlokun/Kinetic/`, `Presets/XOlokun/Luminous/`, `Presets/XOlokun/Organic/` (non-standard mood dirs)
+- `Presets/XOceanus/Deep/`, `Presets/XOceanus/Ethereal/`, `Presets/XOceanus/Kinetic/`, `Presets/XOceanus/Luminous/`, `Presets/XOceanus/Organic/` (non-standard mood dirs)
 - `Docs/playing-the-space-between-tutorial.md` (duplicate of `Docs/tutorials/` version)

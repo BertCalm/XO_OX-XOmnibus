@@ -5,7 +5,7 @@
 
 ## Principles
 
-1. **Core XOlokun is free and open source.** This doesn't change.
+1. **Core XOceanus is free and open source.** This doesn't change.
 2. **No "free forever" promises.** Content scope may evolve with sustainability needs.
 3. **Revenue funds creation, not gates access.** Money enables more content — it doesn't lock existing content behind paywalls.
 4. **Transparency.** Users know what's free, what costs money, and why.
@@ -40,7 +40,7 @@
 - Hand-crafted engines that go beyond the free fleet in scope, polish, and preset depth
 - Voice + custom FX + deep sound design guide + 300+ presets
 - OSTINATO is the first candidate (communal drum circle, firelight character)
-- Designed to feel like a standalone instrument that happens to live inside XOlokun
+- Designed to feel like a standalone instrument that happens to live inside XOceanus
 
 **What makes them worth paying for:**
 - 2-3x the preset count of free engines (300+ vs 100-150)
@@ -57,9 +57,9 @@
 Khan Sultan's highest-value insight: the SDK isn't for 1,000 amateur engine creators — it's for embedding XO_OX DSP into other products.
 
 **Targets:**
-- **Splice / Landr / ADSR** — XOlokun engines as in-app sound design tools
+- **Splice / Landr / ADSR** — XOceanus engines as in-app sound design tools
 - **Music education platforms** — OBRIX as licensed educational module
-- **Loop/sample vendors** — XOlokun-compatible preset packs as a distribution format
+- **Loop/sample vendors** — XOceanus-compatible preset packs as a distribution format
 - **YouTube education creators** — branded OBRIX tutorials with license fee
 
 **What they get:**
@@ -78,7 +78,7 @@ Khan Sultan's highest-value insight: the SDK isn't for 1,000 amateur engine crea
 - 50-100 rendered samples + programs + cover art + liner notes
 
 **What makes them worth paying for:**
-- Pre-rendered — no XOlokun required (works on any MPC)
+- Pre-rendered — no XOceanus required (works on any MPC)
 - Professional mixing/mastering on rendered samples
 - Genre-specific velocity curves and kit layouts
 - Curated by Guru Bin (quality bar is high)
@@ -89,7 +89,7 @@ Khan Sultan's highest-value insight: the SDK isn't for 1,000 amateur engine crea
 
 ## What Stays Free (Non-Negotiable)
 
-- XOlokun core (all 34+ V1 engines)
+- XOceanus core (all 34+ V1 engines)
 - All factory presets (11,000+)
 - OBRIX Level 1 (core synthesis toy box)
 - OBRIX training mode (Professor Oscar)

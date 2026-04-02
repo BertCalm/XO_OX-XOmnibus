@@ -50,9 +50,9 @@ Q-Links are **program-level only** in standard XPM. They cannot reference indivi
 
 ## 2. Design Philosophy
 
-**Primary principle:** Q1–Q4 should map to the four XOlokun macros wherever the macro hierarchy survives the XPN render:
+**Primary principle:** Q1–Q4 should map to the four XOceanus macros wherever the macro hierarchy survives the XPN render:
 
-| Q-Link | XOlokun Macro | Underlying behavior |
+| Q-Link | XOceanus Macro | Underlying behavior |
 |---|---|---|
 | Q1 | CHARACTER | Filter cutoff / tone / drive — defines the instrument's identity |
 | Q2 | MOVEMENT | Pitch, LFO rate, or envelope decay — things that change over time |

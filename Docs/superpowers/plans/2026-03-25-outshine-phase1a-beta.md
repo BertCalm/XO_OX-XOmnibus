@@ -47,7 +47,7 @@ Source/UI/Outshine/    (NEW directory — all files)
 ├── OutshineExportBar.h
 └── OutshinePreviewPlayer.h
 
-Source/UI/XOlokunEditor.h  (MODIFY — wire sidebar panel)
+Source/UI/XOceanusEditor.h  (MODIFY — wire sidebar panel)
 ```
 
 ---
@@ -164,12 +164,12 @@ private:
 #include "../GalleryColors.h"
 #include "OutshineMainComponent.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineDocumentWindow : public juce::DocumentWindow
 {
 public:
-    explicit OutshineDocumentWindow(XOlokunProcessor& processorRef)
+    explicit OutshineDocumentWindow(XOceanusProcessor& processorRef)
         : juce::DocumentWindow("OUTSHINE",
                                juce::Colour(GalleryColors::Light::shellWhite),
                                juce::DocumentWindow::closeButton)
@@ -211,7 +211,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineDocumentWindow)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Key constraints:**
@@ -254,7 +254,7 @@ enum class OutshineState { Shell, Input, Preview, Exporting };
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-#include "../../Core/XOlokunProcessor.h"   // processor reference
+#include "../../Core/XOceanusProcessor.h"   // processor reference
 #include "../../Export/XOutshine.h"
 #include "OutshineShellState.h"
 #include "OutshineInputPanel.h"
@@ -262,12 +262,12 @@ enum class OutshineState { Shell, Input, Preview, Exporting };
 #include "OutshineAutoMode.h"
 #include "OutshineExportBar.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineMainComponent : public juce::Component
 {
 public:
-    explicit OutshineMainComponent(XOlokunProcessor& processorRef);
+    explicit OutshineMainComponent(XOceanusProcessor& processorRef);
     ~OutshineMainComponent() override;
 
     // Called by OutshineDocumentWindow before delete
@@ -295,7 +295,7 @@ private:
                      ExportFormat format,
                      const juce::File& outputPath);
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     XOutshine outshine;
     OutshineSettings currentSettings;
     OutshineState uiState { OutshineState::Shell };
@@ -315,7 +315,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMainComponent)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`resized()` — Mode A/B responsive layout:**
@@ -395,7 +395,7 @@ auto callback = [safeThis = juce::Component::SafePointer<OutshineMainComponent>(
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineShellState : public juce::Component,
                            public juce::FileDragAndDropTarget
@@ -426,7 +426,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineShellState)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`paint()` implementation:**
@@ -537,7 +537,7 @@ void OutshineShellState::filesDropped(const juce::StringArray& files, int, int)
 #include "../GalleryColors.h"
 #include "OutshineFolderBrowser.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineInputPanel : public juce::Component,
                            public juce::FileDragAndDropTarget,
@@ -588,7 +588,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineInputPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`resized()` — Mode A/B breakpoint:**
@@ -696,7 +696,7 @@ selectAllBtn.onClick = [this]() {
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 struct FolderEntry
 {
@@ -750,7 +750,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineFolderBrowser)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Constructor:**
@@ -1004,7 +1004,7 @@ juce::String OutshineFolderBrowser::getFormattedDuration(const juce::File& wavFi
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineGrainStrip : public juce::Component
 {
@@ -1052,7 +1052,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineGrainStrip)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`rebuildChips()`:**
@@ -1156,7 +1156,7 @@ void OutshineGrainStrip::resized()
 #include "OutshineMPEPanel.h"
 #include "../../Export/XOutshine.h"   // AnalyzedSample, UpgradedProgram
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineAutoMode : public juce::Component
 {
@@ -1196,7 +1196,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineAutoMode)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`buildSummaryGrid()`:** 4 pairs of labels (left-aligned label, right-aligned value). Font: `GalleryFonts::body(12.0f)` for labels, `GalleryFonts::value(12.0f)` for values.
@@ -1289,7 +1289,7 @@ void OutshineAutoMode::resized()
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"   // AnalyzedSample
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineZoneMap : public juce::Component,
                         public juce::TooltipClient
@@ -1336,7 +1336,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineZoneMap)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`setSamples()`:** Compute zone boundaries using the midpoint rule (see spec Section 6, Stage 6). Sort samples by `detectedMidiNote`. For each sample: `lowMidi = midpoint(root[i-1], root[i])` rounded down; `highMidi = midpoint(root[i], root[i+1]) - 1`. Edge zones: low boundary of first zone is `kMidiLow`, high boundary of last zone is `kMidiHigh`.
@@ -1433,7 +1433,7 @@ void OutshineZoneMap::paint(juce::Graphics& g)
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 enum class MPECategory { Melodic, Drum };
 
@@ -1476,7 +1476,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMPEPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Melodic defaults:**
@@ -1593,7 +1593,7 @@ void OutshineMPEPanel::paintRoute(juce::Graphics& g, const MPERoute& route,
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"   // ExportFormat enum
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineExportBar : public juce::Component
 {
@@ -1643,7 +1643,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineExportBar)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Constructor:**
@@ -1848,7 +1848,7 @@ ExportFormat getSelectedFormat() const
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"   // AnalyzedSample
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshinePreviewPlayer : public juce::Component,
                               private juce::Timer
@@ -1889,7 +1889,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshinePreviewPlayer)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Constructor:**
@@ -2013,11 +2013,11 @@ void OutshinePreviewPlayer::stopPlayback()
 
 ---
 
-### Task 12: Wire OutshineSidebarPanel to XOlokunEditor
+### Task 12: Wire OutshineSidebarPanel to XOceanusEditor
 
 **Files modified:**
 - `Source/UI/Outshine/OutshineSidebarPanel.h` (new)
-- `Source/UI/XOlokunEditor.h` (modify)
+- `Source/UI/XOceanusEditor.h` (modify)
 
 **Purpose:** Column C EXPORT tab gets a mini drop zone, status label, and "Open the Oyster" button. Dropping on the mini zone opens the full window AND auto-triggers CLASSIFY + ANALYZE. Double-launch guarded via `SafePointer<OutshineDocumentWindow>`.
 
@@ -2028,15 +2028,15 @@ void OutshinePreviewPlayer::stopPlayback()
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "OutshineDocumentWindow.h"
-#include "../../Core/XOlokunProcessor.h"
+#include "../../Core/XOceanusProcessor.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineSidebarPanel : public juce::Component,
                              public juce::FileDragAndDropTarget
 {
 public:
-    explicit OutshineSidebarPanel(XOlokunProcessor& processorRef)
+    explicit OutshineSidebarPanel(XOceanusProcessor& processorRef)
         : processor(processorRef)
     {
         setWantsKeyboardFocus(false);
@@ -2061,7 +2061,7 @@ private:
     void launchOutshine();
     void launchWithGrains(const juce::StringArray& filePaths);
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     juce::Component::SafePointer<OutshineDocumentWindow> outshineWindow;
 
     juce::Label       headerLabel;
@@ -2080,7 +2080,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineSidebarPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **`buildLayout()`:**
@@ -2163,7 +2163,7 @@ void OutshineSidebarPanel::filesDropped(const juce::StringArray& files, int, int
         if (file.hasFileExtension(".xpn"))
         {
             // Show upgrade warning toast before opening
-            // useToastStore equivalent in XOlokun: call global toast utility
+            // useToastStore equivalent in XOceanus: call global toast utility
             juce::AlertWindow::showMessageBoxAsync(
                 juce::MessageBoxIconType::InfoIcon,
                 "XPN Upgrade",
@@ -2240,10 +2240,10 @@ void OutshineSidebarPanel::resized()
 }
 ```
 
-**XOlokunEditor.h modification:** In the Column C EXPORT tab construction, add:
+**XOceanusEditor.h modification:** In the Column C EXPORT tab construction, add:
 
 ```cpp
-// In XOlokunEditor.h — within EXPORT tab setup
+// In XOceanusEditor.h — within EXPORT tab setup
 // Add as a private member:
 std::unique_ptr<OutshineSidebarPanel> outshineSidebarPanel;
 
@@ -2253,7 +2253,7 @@ outshineSidebarPanel = std::make_unique<OutshineSidebarPanel>(processor);
 exportTabContent->addAndMakeVisible(*outshineSidebarPanel);
 ```
 
-Include guard: `#include "Outshine/OutshineSidebarPanel.h"` in `XOlokunEditor.h`.
+Include guard: `#include "Outshine/OutshineSidebarPanel.h"` in `XOceanusEditor.h`.
 
 **Commit message:** `feat(outshine): wire OutshineSidebarPanel to EXPORT tab — drop triggers auto-analyze, double-launch guard`
 

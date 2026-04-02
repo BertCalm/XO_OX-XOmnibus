@@ -1,8 +1,8 @@
 # TIDEsigns — Phase 3 Design Specification
 **Author:** Marina, Creative Director, TIDEsigns
 **Date:** 2026-03-27
-**Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
-**Reference:** `Docs/mockups/xolokun-v05-accurate.html`
+**Repo:** `~/Documents/GitHub/XO_OX-XOceanus/`
+**Reference:** `Docs/mockups/xoceanus-v05-accurate.html`
 **Input:** `Docs/tidesigns-audit.md` — Phase 2 findings, 8 Criticals fixed, remaining items below.
 
 ---
@@ -20,11 +20,11 @@ The user clicks any section label in the strip (SRC1 / SRC2 / FILTER / SHAPER / 
 
 ### Spec
 
-**File: `Source/UI/XOlokunEditor.h`**
+**File: `Source/UI/XOceanusEditor.h`**
 
 The signal flow strip is currently rendered entirely inside `paint()` (lines 670–723) with no mouse regions and a hardcoded `activeSection = 0`. It must be refactored into a proper component or be hit-tested via `mouseDown` on the editor.
 
-**Step 1 — Add state to XOlokunEditor.**
+**Step 1 — Add state to XOceanusEditor.**
 
 Add a member variable:
 ```cpp
@@ -83,7 +83,7 @@ The v05 mockup HTML (line 1616–1626) uses `SRC1 / SRC2 / FILTER / SHAPER / FX 
 
 **Step 6 — `scrollDetailPanelToSection(int sectionIndex)`.**
 
-Add a method to `XOlokunEditor` that looks up the `EngineDetailPanel`'s viewport and scrolls it to the matching `ParameterGrid::Section`:
+Add a method to `XOceanusEditor` that looks up the `EngineDetailPanel`'s viewport and scrolls it to the matching `ParameterGrid::Section`:
 
 ```cpp
 void scrollDetailPanelToSection(int sfIndex)
@@ -188,7 +188,7 @@ juce::String slotName(int slotIdx) const
 }
 ```
 
-The `processor` reference is already a member (`XOlokunProcessor& processor`). `getEngine(int slot)` is already called in the constructor lambda (line 38). This is a one-line logic fix.
+The `processor` reference is already a member (`XOceanusProcessor& processor`). `getEngine(int slot)` is already called in the constructor lambda (line 38). This is a one-line logic fix.
 
 **Fix 2 — Engine accent color on active route left bar.**
 
@@ -261,7 +261,7 @@ Each FX chip has an accent-colored indicator dot that communicates whether the s
 
 **Fix 1 — Reduce strip height from 96px to 68px.**
 
-**File: `Source/UI/XOlokunEditor.h` line 1266**
+**File: `Source/UI/XOceanusEditor.h` line 1266**
 
 Change:
 ```cpp
@@ -337,7 +337,7 @@ The SEQ section currently has a `seqToggle` button (22px high) and an ADV button
 
 **File references:**
 - `Source/UI/Gallery/MasterFXSection.h` — all layout and paint changes
-- `Source/UI/XOlokunEditor.h` line 1266 — constant change only
+- `Source/UI/XOceanusEditor.h` line 1266 — constant change only
 
 ### Priority
 MUST (Fix 1 — height), SHOULD (Fix 2+3 — chip appearance), SHOULD (Fix 4 — SEQ)
@@ -432,11 +432,11 @@ No duplicate labels. No stale references. Consistent separator and border stylin
 
 Change:
 ```cpp
-// Matched to xolokun-v04-polished.html prototype exactly.
+// Matched to xoceanus-v04-polished.html prototype exactly.
 ```
 to:
 ```cpp
-// Matched to xolokun-v05-accurate.html prototype exactly.
+// Matched to xoceanus-v05-accurate.html prototype exactly.
 ```
 
 Priority: MUST (prevents future contributors from matching wrong prototype)
@@ -479,7 +479,7 @@ Priority: NICE
 
 **P5-04 — Remove dead `kMacroKnobsRowH` constant (C3-06)**
 
-**File: `Source/UI/XOlokunEditor.h` line 1268**
+**File: `Source/UI/XOceanusEditor.h` line 1268**
 
 Remove:
 ```cpp
@@ -539,7 +539,7 @@ Priority: SHOULD
 
 **P5-08 — Subtitle font size 8px → 10px (C1-07)**
 
-**File: `Source/UI/XOlokunEditor.h` line 599**
+**File: `Source/UI/XOceanusEditor.h` line 599**
 
 Change:
 ```cpp
@@ -558,7 +558,7 @@ Priority: NICE
 
 The PLAY tab is hidden in the sidebar tab bar (`SidebarPanel.h` line 73–75). Users looking for PlaySurface will not find it. Two mitigations:
 
-1. **File: `Source/UI/XOlokunEditor.h`** — add a tooltip to the PLAY header button (wherever `playBtn` is constructed):
+1. **File: `Source/UI/XOceanusEditor.h`** — add a tooltip to the PLAY header button (wherever `playBtn` is constructed):
    ```cpp
    playBtn.setTooltip("Open PlaySurface — 4-zone performance interface (PS)");
    ```
@@ -612,7 +612,7 @@ See Area 3, Fix 1. This is the same item.
 
 **P5-13 — Resolve dark mode default comment contradiction (C1-08)**
 
-**File: `Source/UI/XOlokunEditor.h` line 90**
+**File: `Source/UI/XOceanusEditor.h` line 90**
 
 Change comment:
 ```cpp
@@ -631,17 +631,17 @@ Priority: NICE
 
 | ID | Area | Priority | File | Change |
 |----|------|----------|------|--------|
-| A1-01 | Signal Flow — state | MUST | `XOlokunEditor.h` | Add `signalFlowActiveSection` member, `sfHitRects` array |
-| A1-02 | Signal Flow — mouse | MUST | `XOlokunEditor.h` | `mouseDown` hit-test on strip bounds |
-| A1-03 | Signal Flow — paint | MUST | `XOlokunEditor.h` | Use `signalFlowActiveSection`; accent color for active; T2 for hover |
+| A1-01 | Signal Flow — state | MUST | `XOceanusEditor.h` | Add `signalFlowActiveSection` member, `sfHitRects` array |
+| A1-02 | Signal Flow — mouse | MUST | `XOceanusEditor.h` | `mouseDown` hit-test on strip bounds |
+| A1-03 | Signal Flow — paint | MUST | `XOceanusEditor.h` | Use `signalFlowActiveSection`; accent color for active; T2 for hover |
 | A1-04 | Signal Flow — scroll | MUST | `ParameterGrid.h` | Add `scrollToSection(Section)` public method |
 | A1-05 | Signal Flow — scroll wiring | MUST | `EngineDetailPanel.h` | Add `scrollToSection(Section)` that delegates to grid |
-| A1-06 | Signal Flow — reset | SHOULD | `XOlokunEditor.h` | Reset `signalFlowActiveSection=0` in `selectSlot()` |
+| A1-06 | Signal Flow — reset | SHOULD | `XOceanusEditor.h` | Reset `signalFlowActiveSection=0` in `selectSlot()` |
 | A2-01 | Coupling — engine names | MUST | `CouplingInspectorPanel.h` | `slotName()` uses `processor.getEngine(slot)->getEngineId()` |
 | A2-02 | Coupling — accent bar | SHOULD | `CouplingInspectorPanel.h` | Active route left bar uses source engine accent color |
 | A2-03 | Coupling — colored summary | MUST | `CouplingInspectorPanel.h` | Src/tgt names drawn in respective engine accent colors |
 | A2-04 | Coupling — height use | SHOULD | `CouplingInspectorPanel.h` | Tighten collapsed card height; add routing hint text |
-| A3-01 | MasterFX — height | MUST | `XOlokunEditor.h:1266` | `kMasterFXH` 96→68 |
+| A3-01 | MasterFX — height | MUST | `XOceanusEditor.h:1266` | `kMasterFXH` 96→68 |
 | A3-02 | MasterFX — knob resize | MUST | `MasterFXSection.h` | Knob 36→28px, ADV 14→12px to fit 68px strip |
 | A3-03 | MasterFX — chip pills | SHOULD | `MasterFXSection.h` | Per-section pill backgrounds replacing single fill |
 | A3-04 | MasterFX — indicator dots | SHOULD | `MasterFXSection.h` | 6px accent dot per section (active/bypassed states) |
@@ -652,15 +652,15 @@ Priority: NICE
 | P5-01 | Polish — LnF comment | MUST | `GalleryLookAndFeel.h:9` | Update v04 → v05 reference |
 | P5-02 | Polish — tab bar height | MUST | `SidebarPanel.h:428` | `kTabBarH` 38 → 32 |
 | P5-03 | Polish — tab comment | NICE | `SidebarPanel.h:9` | Fix "XO Gold" comment to "engine accent" |
-| P5-04 | Polish — dead constant | SHOULD | `XOlokunEditor.h:1268` | Remove `kMacroKnobsRowH` |
+| P5-04 | Polish — dead constant | SHOULD | `XOceanusEditor.h:1268` | Remove `kMacroKnobsRowH` |
 | P5-05 | Polish — miniViz parking | SHOULD | `CouplingInspectorPanel.h:417` | Remove redundant `setBounds(0,-200,…)` |
 | P5-06 | Polish — Outshine parking | SHOULD | `SidebarPanel.h:399` | Replace `(-4000,-4000)` with `setVisible(false)` |
 | P5-07 | Polish — CreatureState | SHOULD | `CompactEngineTile.h:17-23` | Remove dead struct |
-| P5-08 | Polish — subtitle font | NICE | `XOlokunEditor.h:599` | 8px → 10px |
-| P5-09 | Polish — PLAY discovery | SHOULD | `XOlokunEditor.h`, `SettingsPanel.h` | Add tooltip + settings row for PlaySurface |
+| P5-08 | Polish — subtitle font | NICE | `XOceanusEditor.h:599` | 8px → 10px |
+| P5-09 | Polish — PLAY discovery | SHOULD | `XOceanusEditor.h`, `SettingsPanel.h` | Add tooltip + settings row for PlaySurface |
 | P5-10 | Polish — tile tooltip | SHOULD | `CompactEngineTile.h:47` | "Click to open engine detail" |
 | P5-11 | Polish — dead loadEngine | SHOULD | `EngineDetailPanel.h:138` | Remove `macroHero.loadEngine()` call |
-| P5-13 | Polish — dark mode comment | NICE | `XOlokunEditor.h:90` | Fix contradiction in comment |
+| P5-13 | Polish — dark mode comment | NICE | `XOceanusEditor.h:90` | Fix contradiction in comment |
 
 ---
 

@@ -75,7 +75,7 @@ The SYNAPSE coupling through phase nudge (`synapsePhaseNudge += sourceDensity * 
 
 The mono legato implementation is architecturally clean: `setGlideTarget()` updates pitch targets without resetting CA tape, oscillator phase, or step envelope. This means legato transitions preserve the arm's computational history -- the octopus remembers where its tentacles were.
 
-**Warning**: The step rate synchronization system (`owit_stepSync`, `owit_stepDiv`) is parameterized and cached but the adapter never reads host BPM. The step division table is declared (`1/32` through `2/1`) but there is no `processBlock` host transport lookup. These 2 parameters are functionally dead in the current XOlokun gallery context. This is a minor D004 violation -- the parameters exist, are declared, but cannot produce their intended effect without host transport integration.
+**Warning**: The step rate synchronization system (`owit_stepSync`, `owit_stepDiv`) is parameterized and cached but the adapter never reads host BPM. The step division table is declared (`1/32` through `2/1`) but there is no `processBlock` host transport lookup. These 2 parameters are functionally dead in the current XOceanus gallery context. This is a minor D004 violation -- the parameters exist, are declared, but cannot produce their intended effect without host transport integration.
 
 **Score**: 8.5 / 10 (up from 7.5)
 
@@ -262,7 +262,7 @@ The engine is the fleet's philosophical flagship. It is the only instrument wher
 
 ## Preset Schema Warning
 
-The "Maximum Entropy" preset (`Presets/XOlokun/Aether/Outwit_Maximum_Entropy.xometa`) contains parameter names that do not match the current parameter layout: `owit_chaos`, `owit_density`, `owit_filterCutoff`, `owit_feedbackAmt`, `owit_mutationRate`, `owit_rule`, `owit_sync`, `owit_armBalance`, `owit_armSpread`, `owit_macroChaos`, `owit_macroCharacter`, `owit_macroCoupling`, `owit_macroSpace`, `owit_lfoDepth`, `owit_lfoRate`. These map to a pre-integration schema and would silently fail to load, leaving all parameters at default. This preset needs migration to the current `owit_arm{N}*` parameter layout, or it should be regenerated.
+The "Maximum Entropy" preset (`Presets/XOceanus/Aether/Outwit_Maximum_Entropy.xometa`) contains parameter names that do not match the current parameter layout: `owit_chaos`, `owit_density`, `owit_filterCutoff`, `owit_feedbackAmt`, `owit_mutationRate`, `owit_rule`, `owit_sync`, `owit_armBalance`, `owit_armSpread`, `owit_macroChaos`, `owit_macroCharacter`, `owit_macroCoupling`, `owit_macroSpace`, `owit_lfoDepth`, `owit_lfoRate`. These map to a pre-integration schema and would silently fail to load, leaving all parameters at default. This preset needs migration to the current `owit_arm{N}*` parameter layout, or it should be regenerated.
 
 ---
 

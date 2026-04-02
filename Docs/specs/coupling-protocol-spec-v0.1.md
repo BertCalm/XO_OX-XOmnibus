@@ -4,13 +4,13 @@
 **Status:** Release Candidate
 **Date:** 2026-03-22
 **Author:** XO_OX Designs
-**Repository:** https://github.com/BertCalm/XO_OX-XOlokun
+**Repository:** https://github.com/BertCalm/XO_OX-XOceanus
 
 ---
 
 ## Abstract
 
-The XO_OX Coupling Protocol defines a lightweight standard for real-time, directed communication between independent synthesis engines. It specifies how one engine's live behavior — its amplitude, envelope shape, or spectral content — can continuously modulate parameters on another engine, creating emergent musical relationships that neither engine could produce in isolation. Version 0.1 publishes three core coupling types (Sympathetic, Complementary, and Responsive), a binary message format for control-rate packet transmission, and a three-tier compliance model for hosts and engine implementors. The reference implementation is XOlokun, a free open-source multi-engine synthesizer by XO_OX Designs, which implements all three public types plus eleven additional extended types.
+The XO_OX Coupling Protocol defines a lightweight standard for real-time, directed communication between independent synthesis engines. It specifies how one engine's live behavior — its amplitude, envelope shape, or spectral content — can continuously modulate parameters on another engine, creating emergent musical relationships that neither engine could produce in isolation. Version 0.1 publishes three core coupling types (Sympathetic, Complementary, and Responsive), a binary message format for control-rate packet transmission, and a three-tier compliance model for hosts and engine implementors. The reference implementation is XOceanus, a free open-source multi-engine synthesizer by XO_OX Designs, which implements all three public types plus eleven additional extended types.
 
 ---
 
@@ -314,9 +314,9 @@ COUPLING_COMPLIANCE: Full-v0.1
 
 ## 6. Reference Implementation
 
-**XOlokun** (https://github.com/BertCalm/XO_OX-XOlokun) is the reference implementation of this protocol.
+**XOceanus** (https://github.com/BertCalm/XO_OX-XOceanus) is the reference implementation of this protocol.
 
-XOlokun implements 76 engines across the original fleet, Kitchen Collection, and Singularity Collection. The three v0.1 public types are supported across the fleet; individual engine compliance declarations are available in engine metadata. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
+XOceanus implements 76 engines across the original fleet, Kitchen Collection, and Singularity Collection. The three v0.1 public types are supported across the fleet; individual engine compliance declarations are available in engine metadata. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
 
 ```cpp
 // Speaker interface — emit coupling signal
@@ -331,7 +331,7 @@ virtual void applyCouplingInput (CouplingType type,
 
 The `MegaCouplingMatrix` in `Source/Core/MegaCouplingMatrix.h` is the host matrix: it manages routes, performs envelope following on source audio, and delivers packets to target engines at block boundaries.
 
-XOlokun implements 14 coupling types internally. Three are published in this v0.1 specification. The extended types within XOlokun are not part of this specification and are not documented here. Implementors may develop their own types in the `0x80`–`0xEF` private range using the extension mechanism defined in Section 7.
+XOceanus implements 14 coupling types internally. Three are published in this v0.1 specification. The extended types within XOceanus are not part of this specification and are not documented here. Implementors may develop their own types in the `0x80`–`0xEF` private range using the extension mechanism defined in Section 7.
 
 ---
 
@@ -372,7 +372,7 @@ Future spec versions may extend `CouplingPacket` by appending fields after `rese
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.1 | 2026-03-22 | Initial public specification. Defines types 0x01–0x03 (Sympathetic, Complementary, Responsive). 16-byte packet format. Three compliance levels (L1 Listener, L2 Speaker, L3 Full). Reference implementation: XOlokun. |
+| 0.1 | 2026-03-22 | Initial public specification. Defines types 0x01–0x03 (Sympathetic, Complementary, Responsive). 16-byte packet format. Three compliance levels (L1 Listener, L2 Speaker, L3 Full). Reference implementation: XOceanus. |
 
 ---
 
@@ -405,4 +405,4 @@ COUPLING_COMPLIANCE: Full-v0.1     // both, all 3 types; L3
 
 *XO_OX Coupling Protocol v0.1 — Release Candidate 2026-03-22 by XO_OX Designs*
 *Specification licensed under CC BY 4.0*
-*Reference implementation: https://github.com/BertCalm/XO_OX-XOlokun*
+*Reference implementation: https://github.com/BertCalm/XO_OX-XOceanus*

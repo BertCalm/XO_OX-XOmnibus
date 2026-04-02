@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development to implement this plan task-by-task.
 
-**Goal:** Implement engine-inspired FX chain Rebirth Mode for Outshine — 5 profiles that transform producer samples through DSP chains encoding each XOlokun engine's sonic character.
+**Goal:** Implement engine-inspired FX chain Rebirth Mode for Outshine — 5 profiles that transform producer samples through DSP chains encoding each XOceanus engine's sonic character.
 
 **Architecture:** 3 new header files (RebirthDSP.h, RebirthProfiles.h, RebirthPipeline.h) in Source/Export/. Pipeline: resample → LUFS normalize → audio analysis → FX chain (per-profile) → gain compensate → true-peak limit. Wraps existing DSP modules from Source/DSP/Effects/. No SynthEngine instantiation — DSP chains inspired by engines, not live engine routing.
 
@@ -38,7 +38,7 @@
   #include <complex>
   #include <vector>
 
-  namespace xolokun {
+  namespace xoceanus {
 
   //==============================================================================
   // SoftClipGuard — Inline inter-stage headroom limiter.
@@ -68,7 +68,7 @@
 
 - [ ] **Step 1.2 — AllpassDiffuser**
 
-  Append the `AllpassDiffuser` class to `RebirthDSP.h` inside the `xolokun` namespace, before the closing `}`.
+  Append the `AllpassDiffuser` class to `RebirthDSP.h` inside the `xoceanus` namespace, before the closing `}`.
 
   ```cpp
   //==============================================================================
@@ -565,7 +565,7 @@
       float z2_[kNumFormants][2] = {};
   };
 
-  } // namespace xolokun
+  } // namespace xoceanus
   ```
 
   Build verify: `cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build`
@@ -595,7 +595,7 @@
   #include <cmath>
   #include <vector>
 
-  namespace xolokun {
+  namespace xoceanus {
 
   //==============================================================================
   // RebirthLUFS — ITU-R BS.1770-4 K-weighted integrated loudness measurement.
@@ -754,7 +754,7 @@
       return (float) integrated;
   }
 
-  } // namespace xolokun
+  } // namespace xoceanus
   ```
 
   Build verify: `cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build`
@@ -787,7 +787,7 @@
   #include <utility>
   #include <vector>
 
-  namespace xolokun {
+  namespace xoceanus {
 
   //==============================================================================
   // RebirthProfileID — The 5 engine-inspired transformation profiles.
@@ -1137,7 +1137,7 @@
       }
   }
 
-  } // namespace xolokun
+  } // namespace xoceanus
   ```
 
   Build verify: `cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build`
@@ -1181,7 +1181,7 @@
   #include <functional>
   #include <vector>
 
-  namespace xolokun {
+  namespace xoceanus {
 
   //==============================================================================
   // AnalysisResult — audio feature vector computed from a sample buffer.
@@ -2076,7 +2076,7 @@
 
   ```python
   """
-  NOTE: Prototype implementation. Production Rebirth Mode is in the XOlokun desktop app.
+  NOTE: Prototype implementation. Production Rebirth Mode is in the XOceanus desktop app.
   The Python CLI Rebirth profiles (OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB) are deprecated
   as of Phase 1B (2026-03-25) and will not receive further updates.
   """
@@ -2084,7 +2084,7 @@
 
   Verify: `python3 Tools/xoutshine.py --help` still runs without errors (Python syntax check only).
 
-  Commit: `GATE-02: Deprecate Python CLI Rebirth Mode — direct users to XOlokun desktop app`
+  Commit: `GATE-02: Deprecate Python CLI Rebirth Mode — direct users to XOceanus desktop app`
 
 ---
 
@@ -2114,7 +2114,7 @@
   //==============================================================================
 
   // Minimal JUCE stubs: include only headers that compile standalone.
-  // The Tests/ CMakeLists.txt links against the XOlokun test target which
+  // The Tests/ CMakeLists.txt links against the XOceanus test target which
   // provides JUCE module includes via target_include_directories.
   #include "../../Source/Export/RebirthDSP.h"
   #include "../../Source/Export/RebirthProfiles.h"
@@ -2124,7 +2124,7 @@
   #include <iostream>
   #include <string>
 
-  namespace xolokun {
+  namespace xoceanus {
 
   //------------------------------------------------------------------------------
   // Test helpers
@@ -2289,11 +2289,11 @@
       ASSERT_TRUE(autoProfileForCategory(SampleCategory::Unknown) == RebirthProfileID::OBRIX);
   }
 
-  } // namespace xolokun
+  } // namespace xoceanus
 
   int main()
   {
-      using namespace xolokun;
+      using namespace xoceanus;
       std::cout << "Running Rebirth DSP tests...\n";
 
       test_softClip();
@@ -2321,7 +2321,7 @@
 
   ```cmake
   cmake_minimum_required(VERSION 3.15)
-  project(XOlokunTests LANGUAGES CXX)
+  project(XOceanusTests LANGUAGES CXX)
 
   set(CMAKE_CXX_STANDARD 17)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)

@@ -37,7 +37,7 @@
 - **URL:** https://github.com/sudara/melatonin_blur
 - **What it is:** Cross-platform CPU blur and shadow compositing library for JUCE. Uses Accelerate on macOS and Intel IPP on Windows. 10-30x faster than naive Stack Blur. Enables "100s of shadows" in complex vector UIs without resorting to deprecated OpenGL on macOS.
 - **License:** MIT
-- **Relevance:** Direct enabler for XOlokun Gallery Model's layered glow effects, engine card hover states, and the coupling arc visualizer. The aquarium site's CSS glow effects use blur heavily — this is the native JUCE equivalent.
+- **Relevance:** Direct enabler for XOceanus Gallery Model's layered glow effects, engine card hover states, and the coupling arc visualizer. The aquarium site's CSS glow effects use blur heavily — this is the native JUCE equivalent.
 - **Priority:** P0 — integrate for engine accent glow rendering
 
 ### 1.4 melatonin_inspector (sudara)
@@ -51,14 +51,14 @@
 - **URL:** https://github.com/sudara/pamplejuce
 - **What it is:** JUCE 8 + CMake + Ninja audio plugin project template. Includes Catch2 testing, Pluginval, GitHub Actions CI, macOS notarization, Azure Trusted Signing. 686 stars. MIT licensed. Updated within the last 2 months.
 - **License:** MIT
-- **Relevance:** XOlokun already uses CMake + Ninja. This template codifies CI/CD best practices that our build pipeline should mirror — particularly the notarization flow and pluginval integration for AU validation.
+- **Relevance:** XOceanus already uses CMake + Ninja. This template codifies CI/CD best practices that our build pipeline should mirror — particularly the notarization flow and pluginval integration for AU validation.
 - **Priority:** P1 — audit our GHA pipeline against Pamplejuce's workflow
 
 ### 1.6 Surge XT (surge-synthesizer)
 - **URL:** https://github.com/surge-synthesizer/surge
 - **What it is:** Free, open-source hybrid synthesizer, fully JUCE-based. Complete rewrite of all widgets and UI components using custom JUCE LookAndFeel. Live skin system with community skin library. Accessible UI (screen reader support). One of the largest open-source JUCE codebases.
 - **License:** GPL-3.0
-- **Relevance:** Best-in-class reference for large-fleet JUCE UI patterns. Their skin XML system is conceptually adjacent to our Gallery Model color-per-engine approach. Study their accessibility implementation for XOlokun V1.1+.
+- **Relevance:** Best-in-class reference for large-fleet JUCE UI patterns. Their skin XML system is conceptually adjacent to our Gallery Model color-per-engine approach. Study their accessibility implementation for XOceanus V1.1+.
 - **Priority:** P1 — architectural study, not direct adoption
 
 ### 1.7 Vital Synthesizer (mtytel)
@@ -72,7 +72,7 @@
 - **URL:** https://github.com/JoshMarler/react-juce
 - **What it is:** Hybrid C++/JavaScript framework for building JUCE plugin UIs in React.js. Uses Duktape (JS engine), Yoga (flexbox layout), and bridges to juce::Component tree. Used in production by Creative Intent's Remnant plugin.
 - **License:** MIT
-- **Relevance:** High relevance for the iOS AUv3 UI work and any future web-facing XOlokun companion. Our CLAUDE.md already references a JUCE + React/Typescript architecture (WebUISynth); react-juce is the more mature path. Evaluate against the `tomduncalf/WebUISynth` approach.
+- **Relevance:** High relevance for the iOS AUv3 UI work and any future web-facing XOceanus companion. Our CLAUDE.md already references a JUCE + React/Typescript architecture (WebUISynth); react-juce is the more mature path. Evaluate against the `tomduncalf/WebUISynth` approach.
 - **Priority:** P2 — evaluate for iOS AUv3 UI layer
 
 ### 1.9 WebUISynth (tomduncalf)
@@ -125,7 +125,7 @@
 - **URL:** https://github.com/Alchemist0823/three.quarks
 - **What it is:** High-performance particle system and VFX engine for Three.js. GPU-accelerated. Supports emitter types, force fields (attractors, turbulence, gravity, vortex), collision, trail renderers. Designed for games and interactive experiences.
 - **License:** MIT
-- **Relevance:** Direct candidate for the aquarium bioluminescence particle effects and the coupling arc visualizer. Force field attractors are semantically aligned with XOlokun coupling — particles that "flow between engines" represent signal routing visually.
+- **Relevance:** Direct candidate for the aquarium bioluminescence particle effects and the coupling arc visualizer. Force field attractors are semantically aligned with XOceanus coupling — particles that "flow between engines" represent signal routing visually.
 - **Priority:** P0 — prototype aquarium particle layer with force-field attractors as coupling metaphor
 
 ### 2.6 three-nebula (creativelifeform)
@@ -171,7 +171,7 @@
 - **URL:** https://www.figma.com/community/file/1120992547387371994/seasynth-synthesizer-instrument-ui-kits
 - **What it is:** Full synthesizer software UI concept and component kit. Inspired by ROLI Seaboard and Vital. Includes knobs, sliders, XY pads, keyboard, waveform display, modulation routing matrix, dark skin.
 - **License:** Figma Community (free)
-- **Relevance:** Single most relevant Figma file for XOlokun UI work. The ROLI-inspired continuous keyboard and XY pad directly inform our PlaySurface fretless zone. The modulation matrix panel is a reference for our Coupling Strip UI redesign.
+- **Relevance:** Single most relevant Figma file for XOceanus UI work. The ROLI-inspired continuous keyboard and XY pad directly inform our PlaySurface fretless zone. The modulation matrix panel is a reference for our Coupling Strip UI redesign.
 - **Priority:** P0 — duplicate and use as component reference for Gallery Model + PlaySurface
 
 ### 3.2 Synthesizer VSTi — Plugin Interface Mockup
@@ -206,7 +206,7 @@
 - **URL:** https://www.figma.com/community/file/1362930821190233244/music-gui-ui-kit
 - **What it is:** Highly detailed DAW-style GUI kit based on Ableton's UI conventions. Includes clip launcher grid, mixer channel strips, automation lanes, transport controls.
 - **License:** Figma Community (free)
-- **Relevance:** Reference for the Coupling Performance System's "live set" view (Phase B PerformanceViewPanel). The clip-launcher grid metaphor could extend to coupling preset launching from within XOlokun.
+- **Relevance:** Reference for the Coupling Performance System's "live set" view (Phase B PerformanceViewPanel). The clip-launcher grid metaphor could extend to coupling preset launching from within XOceanus.
 - **Priority:** P2 — reference for Performance View panel
 
 ---
@@ -231,7 +231,7 @@
 - **URL:** https://github.com/euwbah/microtonal-seaboard
 - **What it is:** Maps microtonal split-key tunings onto ROLI Seaboard RISE/Block. Reads CC74 (Slide dimension) to distinguish vertical key sections. Outputs MPE-style MIDI to virtual port.
 - **License:** MIT
-- **Relevance:** Implementation reference for our PlaySurface fretless zone, where vertical position on a zone maps to microtonal pitch offset. The CC74 → pitch subdivision mapping is directly applicable to XOlokun PlaySurface Zone 2 (Fretless).
+- **Relevance:** Implementation reference for our PlaySurface fretless zone, where vertical position on a zone maps to microtonal pitch offset. The CC74 → pitch subdivision mapping is directly applicable to XOceanus PlaySurface Zone 2 (Fretless).
 - **Priority:** P2 — implementation reference for fretless zone pitch math
 
 ### 4.4 pianosnake/isomorphic-keyboards
@@ -245,7 +245,7 @@
 - **URL:** https://github.com/000masa000/hexatone
 - **What it is:** Browser-based MIDI isomorphic keyboard with hexagonal layout. WebMIDI output. Touch-enabled.
 - **License:** MIT
-- **Relevance:** Hex grid controller directly relevant to the XOlokun PlaySurface's isomorphic mode. The visual hex tessellation pattern is also aesthetically aligned with ORBWEAVE's knot topology diagrams.
+- **Relevance:** Hex grid controller directly relevant to the XOceanus PlaySurface's isomorphic mode. The visual hex tessellation pattern is also aesthetically aligned with ORBWEAVE's knot topology diagrams.
 - **Priority:** P2 — reference implementation for hex grid input
 
 ---
@@ -256,14 +256,14 @@
 - **URL:** https://github.com/benc-uk/touchmidi
 - **What it is:** Flexible HTML5 touch-based control surface for MIDI. XY pads, sliders, buttons, knobs, all configurable via JSON layout files. WebMIDI output. Live demo at code.benco.io/touchmidi/. XY pads map each axis to independent CC values.
 - **License:** MIT
-- **Relevance:** Direct reference for the aquarium's web controller interface. The JSON layout config maps cleanly to our APVTS parameter scheme. Could serve as a browser-based performance controller for XOlokun standalone until a native iOS app is built.
-- **Priority:** P1 — adapt for web companion controller for XOlokun
+- **Relevance:** Direct reference for the aquarium's web controller interface. The JSON layout config maps cleanly to our APVTS parameter scheme. Could serve as a browser-based performance controller for XOceanus standalone until a native iOS app is built.
+- **Priority:** P1 — adapt for web companion controller for XOceanus
 
 ### 5.2 Open Stage Control (jean-emmanuel)
 - **URL:** https://framagit.org/open-stage-control/open-stage-control (mirrored: https://github.com/jean-emmanuel/open-stage-control)
 - **What it is:** Libre modular OSC/MIDI controller. Node/Electron server + Chrome client. Includes XY pads, sliders, matrices, canvas widgets with custom JS. Bi-directional OSC. Used by live performers and installation artists worldwide.
 - **License:** GPL-3.0
-- **Relevance:** Study its XY canvas widget implementation for our coupling XY performance interface. The bi-directional OSC pattern is relevant if we add OSC support to XOlokun standalone. Note: now hosted on Framagit, not GitHub.
+- **Relevance:** Study its XY canvas widget implementation for our coupling XY performance interface. The bi-directional OSC pattern is relevant if we add OSC support to XOceanus standalone. Note: now hosted on Framagit, not GitHub.
 - **Priority:** P2 — study canvas widget XY implementation
 
 ### 5.3 Korg NTS-3 Kaoss Pad logueSDK
@@ -281,14 +281,14 @@
 - **URL:** https://github.com/matthieu-cervera/IACHM
 - **What it is:** Real-time music player using phone accelerometric and gyroscopic data. Max/MSP core + Python + deep learning gesture classifier. Maps physical movement to music playback parameters.
 - **License:** MIT
-- **Relevance:** Motion-to-music pipeline reference. Our iOS AUv3 build could expose accelerometer/gyroscope data as macro sources (CHARACTER, MOVEMENT, COUPLING, SPACE), turning phone tilt into live performance gestures within XOlokun.
+- **Relevance:** Motion-to-music pipeline reference. Our iOS AUv3 build could expose accelerometer/gyroscope data as macro sources (CHARACTER, MOVEMENT, COUPLING, SPACE), turning phone tilt into live performance gestures within XOceanus.
 - **Priority:** P2 — architecture reference for iOS gesture-as-macro
 
 ### 6.2 Apple Silicon Accelerometer (olvvier)
 - **URL:** https://github.com/olvvier/apple-silicon-accelerometer
 - **What it is:** Reads the undocumented MEMS accelerometer + gyroscope on Apple Silicon MacBooks via IOKit HID. Maps motion data to arbitrary parameters (demonstrated with keyboard sounds).
 - **License:** MIT
-- **Relevance:** XOlokun standalone (macOS) could expose MacBook accelerometer as a live performance gesture source. Tilting the laptop modifies COUPLING or SPACE macro. Niche but memorable as a demo/feature.
+- **Relevance:** XOceanus standalone (macOS) could expose MacBook accelerometer as a live performance gesture source. Tilting the laptop modifies COUPLING or SPACE macro. Niche but memorable as a demo/feature.
 - **Priority:** P3 — novelty feature, low priority
 
 ### 6.3 tonaljs/tonal
@@ -393,14 +393,14 @@
 - **URL:** https://www.figma.com/community/file/1003274936198410603/dark-mode-designsystem
 - **What it is:** Full design system built for dark/light mode with 200+ adaptable components. Updated April 2025. Desktop/tablet optimized.
 - **License:** Figma Community (free)
-- **Relevance:** Token reference for XOlokun dark mode toggle. Our Gallery Model is light-mode-first, but the dark mode variant needs a systematic color token approach — this file provides the reference architecture.
+- **Relevance:** Token reference for XOceanus dark mode toggle. Our Gallery Model is light-mode-first, but the dark mode variant needs a systematic color token approach — this file provides the reference architecture.
 - **Priority:** P2 — dark mode token architecture reference
 
 ### 8.4 Untitled UI (Figma + React)
 - **URL:** https://www.untitledui.com
 - **What it is:** Premium Figma UI kit + React component library. Color variable system for dark mode. Supports Figma Config 2025 features. One-click dark mode across entire component library.
 - **License:** Commercial (free tier available for Figma)
-- **Relevance:** Highest quality dark mode component reference. The one-click dark mode architecture (CSS variable override per theme) is the exact approach we should take for XOlokun dark mode toggle.
+- **Relevance:** Highest quality dark mode component reference. The one-click dark mode architecture (CSS variable override per theme) is the exact approach we should take for XOceanus dark mode toggle.
 - **Priority:** P2 — dark mode architecture reference (study free tier)
 
 ### 8.5 VCV Rack source (VCVRack/Rack)
@@ -465,7 +465,7 @@
 
 These are the highest-priority items that should drive immediate work:
 
-1. **melatonin_blur** — Integrate into XOlokun JUCE build for engine glow rendering. Direct 10-30x blur speedup enables the accent-color glow halos on engine cards.
+1. **melatonin_blur** — Integrate into XOceanus JUCE build for engine glow rendering. Direct 10-30x blur speedup enables the accent-color glow halos on engine cards.
 
 2. **Vital synthesizer UI** — Deep-study session: how they handle animated wavetable display and coupling/mod visualizer. Extract patterns for our coupling arc in the Gallery Model.
 

@@ -256,7 +256,7 @@ When `osti_entrainmentRate` is 0, correction is 0 — pure free drift. When 1, c
 
 ## 5. feliX/Oscar Polarity
 
-OSTINATO is the most explicitly communal engine in the XOlokun gallery. Its feliX/Oscar axis maps directly onto two musical philosophies of percussion:
+OSTINATO is the most explicitly communal engine in the XOceanus gallery. Its feliX/Oscar axis maps directly onto two musical philosophies of percussion:
 
 **feliX pole — tight, locked, mathematical polyrhythm.** Patterns interlocked at perfect phase relationships. Ewe bell patterns where the timeline governs everything. Steve Reich's phase music at its most rigorous. The GATHER macro at maximum. Every player in formation.
 
@@ -356,7 +356,7 @@ Selecting a seat opens a panel showing its synthesis parameters, pattern editor,
 
 The fire at the center is not decorative — it pulses to the global accent, grows with the CEREMONY macro, and flickers with the CHAOS macro. It is the visual center of gravity of the circle.
 
-**Color palette:** Warm charcoal brown `#2C2216`, firelight orange `#E8701A`, cream text `#F5EFE0`. Nighttime around a fire. The only XOlokun engine with a dark-dominant UI panel — appropriate for the ceremony.
+**Color palette:** Warm charcoal brown `#2C2216`, firelight orange `#E8701A`, cream text `#F5EFE0`. Nighttime around a fire. The only XOceanus engine with a dark-dominant UI panel — appropriate for the ceremony.
 
 ---
 

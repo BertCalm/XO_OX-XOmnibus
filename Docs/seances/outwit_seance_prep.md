@@ -211,7 +211,7 @@ The council may grant this as a sub-component of the CA blessing, or as a distin
 
 2. **SOLVE target DNA parameters**: Are `owit_targetBrightness` through `owit_targetAggression` wired to the GA fitness function in the adapter? These are the six most conceptually important parameters in the engine — if dead, it is a critical D004 failure.
 
-3. **Tempo sync completeness**: Does `owit_stepSync` correctly read host BPM and apply `owit_stepDiv`? This requires host transport access in the XOlokun context. Several engines have had issues with this in the gallery context even when it worked correctly standalone.
+3. **Tempo sync completeness**: Does `owit_stepSync` correctly read host BPM and apply `owit_stepDiv`? This requires host transport access in the XOceanus context. Several engines have had issues with this in the gallery context even when it worked correctly standalone.
 
 4. **Per-arm parameter diversity in presets**: The engine has 56 per-arm parameters. Do the 150 presets meaningfully exploit per-arm diversity (different rules, lengths, pitches, wave shapes per arm), or do many presets set all 8 arms to the same values with only slight variations? Flat per-arm preset design would undermine the engine's core premise.
 
@@ -223,7 +223,7 @@ The council may grant this as a sub-component of the CA blessing, or as a distin
 
 8. **CA initialization at note-on**: When a note is retriggered, does the CA grid reinitialize from a single center cell (canonical Wolfram start) or continue from its current state? The choice fundamentally affects the "attack character" of the engine. Continuation means each note attack is different based on history; reinit means attacks are predictable.
 
-9. **Monophonic voice model justification**: `getMaxVoices() = 1` makes OUTWIT fully monophonic in XOlokun gallery contexts. Is this artistically correct for the Giant Pacific Octopus creature identity (which hunts alone), or does it limit the engine's usability in ensemble presets?
+9. **Monophonic voice model justification**: `getMaxVoices() = 1` makes OUTWIT fully monophonic in XOceanus gallery contexts. Is this artistically correct for the Giant Pacific Octopus creature identity (which hunts alone), or does it limit the engine's usability in ensemble presets?
 
 ---
 

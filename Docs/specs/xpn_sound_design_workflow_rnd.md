@@ -56,7 +56,7 @@ DNA drift (see Common Mistakes) is almost always caused by designing presets wit
 
 ---
 
-## 4. XOlokun Preset Design Tips
+## 4. XOceanus Preset Design Tips
 
 **ONSET** (drum kit engine): Each preset is a full kit across 8 voices. Design the kick and snare first — they set the kit's physical character. Use the MACHINE macro to sweep between analog and digital textures before touching individual voice params. Export test kits early; the voice-to-pad mapping is where most ONSET QA failures originate.
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>XOlokun V0.3 Wireframe Prototype</title>
+<title>XOceanus V0.3 Wireframe Prototype</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Courier New', monospace; background: #ddd; padding: 20px; font-size: 11px; }
@@ -20,7 +20,7 @@
   .test-label { color: #aaa; font-size: 10px; }
 
   /* Main shell */
-  #xolokun-shell {
+  #xoceanus-shell {
     width: 1100px;
     background: #f8f6f3;
     border: 2px solid #999;
@@ -687,7 +687,7 @@
   <button onclick="setColBView('export-panel')">[Export Panel]</button>
 </div>
 
-<div id="xolokun-shell" style="display:flex; flex-direction:column;">
+<div id="xoceanus-shell" style="display:flex; flex-direction:column;">
 
   <!-- HEADER 52pt -->
   <div id="header">
@@ -1423,7 +1423,7 @@
             <div class="settings-row"><span>Temperament</span><select style="font-size:9px; font-family:monospace;"><option>Equal</option><option>Just Intonation</option><option>Import Scala...</option></select></div>
           </div>
           <div class="settings-section" style="font-size:8px; color:#aaa;">
-            XOlokun V1.0 · "for all"<br>
+            XOceanus V1.0 · "for all"<br>
             © XO_OX Designs 2026<br>
             AU ID: aumu Xolk XoOx<br>
             73 engines registered
@@ -1532,7 +1532,7 @@
     <button class="status-perf">🔒 PERF LOCK</button>
   </div>
 
-</div><!-- /xolokun-shell -->
+</div><!-- /xoceanus-shell -->
 
 <!-- ENGINE BROWSER OVERLAY -->
 <div id="engine-browser-overlay" onclick="if(event.target===this)hideEngineBrowser()">
@@ -1646,7 +1646,7 @@ let currentWindowH = 700;
 function setSize(w, h) {
   currentWindowW = w;
   currentWindowH = h;
-  const shell = document.getElementById('xolokun-shell');
+  const shell = document.getElementById('xoceanus-shell');
   shell.style.width = w + 'px';
 
   // Update button states
@@ -1839,7 +1839,7 @@ function toggleAB(el) {
 function showCouplingPopover(e) {
   const pop = document.getElementById('coupling-popover');
   const rect = e.target.getBoundingClientRect();
-  const shellRect = document.getElementById('xolokun-shell').getBoundingClientRect();
+  const shellRect = document.getElementById('xoceanus-shell').getBoundingClientRect();
   pop.style.left = (rect.left - shellRect.left + 24) + 'px';
   pop.style.top = (rect.top - shellRect.top + 24) + 'px';
   pop.classList.add('visible');

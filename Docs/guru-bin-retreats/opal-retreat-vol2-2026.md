@@ -104,7 +104,7 @@ The `opal_externalMix` parameter (0.0–1.0) blends the internal grain source wi
 
 The external audio arrives via `receiveAudioBuffer()` — called by MegaCouplingMatrix when an AudioToBuffer coupling route is active. The external signal is mono-summed (L+R × 0.5) before entering the grain buffer.
 
-**What this enables:** Any engine in XOlokun can be granularized in real time. OBRIX's complex harmonic output, fed into OPAL via AudioToBuffer with externalMix=1.0, becomes OPAL's grain source. The granular parameters then process OBRIX's audio: scatter its components in time, pitch-shift individual grains independently, freeze a spectral moment and play it forward as a sustained cloud. The result is a granular layer that carries OBRIX's harmonic DNA but has been temporally and spectrally transformed.
+**What this enables:** Any engine in XOceanus can be granularized in real time. OBRIX's complex harmonic output, fed into OPAL via AudioToBuffer with externalMix=1.0, becomes OPAL's grain source. The granular parameters then process OBRIX's audio: scatter its components in time, pitch-shift individual grains independently, freeze a spectral moment and play it forward as a sustained cloud. The result is a granular layer that carries OBRIX's harmonic DNA but has been temporally and spectrally transformed.
 
 **Setting up AudioToBuffer coupling in a preset:**
 - Set `opal_source` = 5 (Coupling) — tells the grain scheduler to use the coupling level parameter

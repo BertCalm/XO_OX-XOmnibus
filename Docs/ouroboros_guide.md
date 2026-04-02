@@ -559,7 +559,7 @@ Orbit Smash (ODDFELIX), Chaos Metabolism (ORGANON), Manifold Drift (ODYSSEY), Ve
 
 ## Summary: What Makes OUROBOROS Special
 
-OUROBOROS is the only engine in the XOlokun gallery that generates audio by solving physics
+OUROBOROS is the only engine in the XOceanus gallery that generates audio by solving physics
 equations — not by processing a waveform, not by scanning a wavetable, not by filtering noise.
 The sound is the solution to a mathematical system. It has no fundamental waveform because it has
 no fundamental period — the Leash creates one from above, without altering the equations below.

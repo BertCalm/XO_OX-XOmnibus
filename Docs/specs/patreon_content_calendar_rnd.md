@@ -88,7 +88,7 @@ The model is straightforward: give away enough that the value is obvious at ever
 **Pack (T2 free):** Signature Keys — melodic lead programs from OddfeliX (neon tetra precision) and OddOscar (axolotl warmth). Keygroup format, full velocity layer treatment.
 
 **Posts:**
-1. **Deep-dive: OddfeliX + OddOscar** — the origin of the feliX-Oscar axis, how the two characters shape everything else in XOlokun.
+1. **Deep-dive: OddfeliX + OddOscar** — the origin of the feliX-Oscar axis, how the two characters shape everything else in XOceanus.
 2. **Making of Signature Keys** — why these two engines were chosen first for keygroup format, what the render process exposed.
 3. **T1 exclusive: April Challenge Results** — showcase community submissions, Kai's notes on what stood out.
 4. **First community challenge results post** — public-facing, links to showcase tracks.
@@ -205,7 +205,7 @@ The model is straightforward: give away enough that the value is obvious at ever
 **Pack:** No paid pack — futures month.
 
 **Posts:**
-1. **V2 teaser** — first public signal of where XOlokun goes in Version 2. Concepts, not commitments.
+1. **V2 teaser** — first public signal of where XOceanus goes in Version 2. Concepts, not commitments.
 2. **Community feedback round** — structured questionnaire for patrons: what worked in 2026, what's missing, what they want built next.
 3. **T1 exclusive: The debates we're not settled on** — the ongoing design tensions inside XO_OX, the questions we're still arguing about.
 
@@ -259,7 +259,7 @@ The Patreon launch should not go live before this threshold is reached or public
 >
 > [1 paragraph: what patrons get — the three tiers summarized plainly, the break-even logic explained without embarrassment]
 >
-> [1 paragraph: what this is not — not a Kickstarter, not a subscription to access features that should be free, not a paywall around the core instrument. XOlokun stays free. The Patreon is for people who want to go deeper.]
+> [1 paragraph: what this is not — not a Kickstarter, not a subscription to access features that should be free, not a paywall around the core instrument. XOceanus stays free. The Patreon is for people who want to go deeper.]
 >
 > [Call to action: link to tiers, link to ONSET Drum Essentials as first free pack, link to Field Guide for context]
 

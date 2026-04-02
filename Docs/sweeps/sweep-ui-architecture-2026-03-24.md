@@ -1,16 +1,16 @@
-# XOlokun UI Architecture Sweep
+# XOceanus UI Architecture Sweep
 **Date:** 2026-03-24
 **Purpose:** "What exists" baseline for the Rebirth implementation.
-**Source file audited:** `Source/UI/XOlokunEditor.h` (3,936 lines)
+**Source file audited:** `Source/UI/XOceanusEditor.h` (3,936 lines)
 **Total UI source:** 11,649 lines across 19 header files in `Source/UI/`
 
 ---
 
 ## Part 1: Component Hierarchy
 
-### Classes Defined in XOlokunEditor.h
+### Classes Defined in XOceanusEditor.h
 
-All classes live inside the `namespace xolokun {}` block.
+All classes live inside the `namespace xoceanus {}` block.
 
 | Class | Type | Lines (approx) |
 |-------|------|----------------|
@@ -29,13 +29,13 @@ All classes live inside the `namespace xolokun {}` block.
 | `ChordMachinePanel` | `juce::Component + juce::Timer` | 299 |
 | `PerformanceViewPanel` | `juce::Component` | 526 |
 | `CouplingArcOverlay` | `juce::Component + juce::Timer` | 145 |
-| `XOlokunEditor` | `juce::AudioProcessorEditor + juce::Timer` | 484 |
+| `XOceanusEditor` | `juce::AudioProcessorEditor + juce::Timer` | 484 |
 
 **Total classes in this one file: 16**
 
 ---
 
-### XOlokunEditor Member Variables (Component Instances)
+### XOceanusEditor Member Variables (Component Instances)
 
 ```
 std::array<std::unique_ptr<CompactEngineTile>, MaxSlots>   tiles         (4 instances)
@@ -132,7 +132,7 @@ Contains:
 
 ## Part 2: The Hidden Visualization Components
 
-These three components exist as fully implemented headers but are **not mounted in XOlokunEditor at all**. They are not `#include`d by `XOlokunEditor.h` and do not appear in any `addAndMakeVisible()` call.
+These three components exist as fully implemented headers but are **not mounted in XOceanusEditor at all**. They are not `#include`d by `XOceanusEditor.h` and do not appear in any `addAndMakeVisible()` call.
 
 ### PlaySurface (`Source/UI/PlaySurface/`)
 
@@ -142,7 +142,7 @@ These three components exist as fully implemented headers but are **not mounted 
 | `ToucheExpression.h` | 212 |
 | **Total** | **1,303** |
 
-**Status: UNCONNECTED.** Not referenced anywhere in `XOlokunEditor.h`. The PlaySurface is the 4-zone unified playing interface described in CLAUDE.md (Zone 1: 4×4 Pad Grid / Fretless / Drum, Zone 2: Orbit, Zone 3: Expression Strip, Zone 4: Control Rail) and has its own coordinate system (`PS::kDesktopW = 1060, kDesktopH = 344`) — it's designed for a _different_ window size than the editor's 880×562. Blessings B041 (Dark Cockpit Attentional Design), B042 (Planchette as Autonomous Entity), and B043 (Gesture Trail as Modulation Source) live here.
+**Status: UNCONNECTED.** Not referenced anywhere in `XOceanusEditor.h`. The PlaySurface is the 4-zone unified playing interface described in CLAUDE.md (Zone 1: 4×4 Pad Grid / Fretless / Drum, Zone 2: Orbit, Zone 3: Expression Strip, Zone 4: Control Rail) and has its own coordinate system (`PS::kDesktopW = 1060, kDesktopH = 344`) — it's designed for a _different_ window size than the editor's 880×562. Blessings B041 (Dark Cockpit Attentional Design), B042 (Planchette as Autonomous Entity), and B043 (Gesture Trail as Modulation Source) live here.
 
 ### CouplingVisualizer (`Source/UI/CouplingVisualizer/`)
 
@@ -150,7 +150,7 @@ These three components exist as fully implemented headers but are **not mounted 
 |------|-------|
 | `CouplingVisualizer.h` | 1,104 |
 
-**Status: UNCONNECTED.** Not referenced in `XOlokunEditor.h`. This is described as a "drop-in replacement for CouplingStripEditor inside PerformanceViewPanel" — but the actual PerformanceViewPanel uses `CouplingStripEditor` (191 lines, the simpler component). The CouplingVisualizer is the full diamond-layout graph with per-type coloring from `CouplingTypeColors` namespace, drag-to-add-route interaction, audio-thread RMS atomics for arc brightness, and a designed performance budget of <1ms/frame at 30Hz.
+**Status: UNCONNECTED.** Not referenced in `XOceanusEditor.h`. This is described as a "drop-in replacement for CouplingStripEditor inside PerformanceViewPanel" — but the actual PerformanceViewPanel uses `CouplingStripEditor` (191 lines, the simpler component). The CouplingVisualizer is the full diamond-layout graph with per-type coloring from `CouplingTypeColors` namespace, drag-to-add-route interaction, audio-thread RMS atomics for arc brightness, and a designed performance budget of <1ms/frame at 30Hz.
 
 **Why it's not mounted:** It was designed as a replacement but never swapped in. The PerformanceViewPanel constructor hardcodes `CouplingStripEditor`.
 
@@ -160,7 +160,7 @@ These three components exist as fully implemented headers but are **not mounted 
 |------|-------|
 | `OpticVisualizer.h` | 475 |
 
-**Status: UNCONNECTED.** Not referenced in `XOlokunEditor.h`. This is a 4-mode Winamp/Milkdrop-style visualizer (Scope / Spectrum / Milkdrop / Particles) designed to read from `OpticEngine::getModOutputs()`. It has WCAG-compliant reduced-motion support and CRT-style phosphor green theming. It's a standalone component — there is no UI surface in the current editor to mount it.
+**Status: UNCONNECTED.** Not referenced in `XOceanusEditor.h`. This is a 4-mode Winamp/Milkdrop-style visualizer (Scope / Spectrum / Milkdrop / Particles) designed to read from `OpticEngine::getModOutputs()`. It has WCAG-compliant reduced-motion support and CRT-style phosphor green theming. It's a standalone component — there is no UI surface in the current editor to mount it.
 
 ---
 
@@ -337,12 +337,12 @@ Usage is consistent throughout the file. No hardcoded JUCE default font calls ob
 | `CouplingArcOverlay` | 30 Hz | Pulse animation for active arcs | Full editor-sized overlay repaint |
 | `CompactEngineTile` × 4 | 10 Hz each | Voice count polling per slot | 4 tile repaints at 10 Hz |
 | `ChordMachinePanel` | 10 Hz | Step highlight (only when step changes) | Conditional — good |
-| `XOlokunEditor` | 1 Hz | Fallback tile refresh + fieldMap drain | 4 tiles + overview |
+| `XOceanusEditor` | 1 Hz | Fallback tile refresh + fieldMap drain | 4 tiles + overview |
 
 **Total active timer callbacks (all panels loaded, performance view hidden):**
 - 30 Hz: FieldMapPanel + CouplingArcOverlay = 2 timers = 60 callbacks/sec
 - 10 Hz: 4 × CompactEngineTile = 4 timers = 40 callbacks/sec
-- 1 Hz: XOlokunEditor = 1 callback/sec
+- 1 Hz: XOceanusEditor = 1 callback/sec
 - **Total: ~101 timer callbacks/second at steady state**
 
 When ChordMachinePanel is visible: +10 Hz = 111 callbacks/sec.
@@ -353,7 +353,7 @@ When ChordMachinePanel is visible: +10 Hz = 111 callbacks/sec.
 
 `CouplingArcOverlay::paint()` calls `processor.getCouplingMatrix().getRoutes()` every frame (presumably an `atomic_load` of a shared_ptr). With no active routes it returns early, but the atomic load still happens 30 times/second.
 
-`XOlokunEditor::timerCallback()` at 1 Hz:
+`XOceanusEditor::timerCallback()` at 1 Hz:
 - Calls `tiles[i]->refresh()` × 4 (which calls `processor.getEngine(i)` × 4)
 - Calls `overview.refresh()` if detail is not visible (which calls `getRoutes()` for the coupling route count)
 - Drains note events via `processor.drainNoteEvents()`
@@ -374,7 +374,7 @@ The `themeToggleBtn` onClick handler (lines 3537–3550) calls `repaint()` on **
 
 | File | Lines | Status |
 |------|-------|--------|
-| `XOlokunEditor.h` | 3,936 | Active — the entire current UI |
+| `XOceanusEditor.h` | 3,936 | Active — the entire current UI |
 | `CouplingVisualizer/CouplingVisualizer.h` | 1,104 | **Unconnected** |
 | `PlaySurface/PlaySurface.h` | 1,091 | **Unconnected** |
 | `ExportDialog/ExportDialog.h` | 1,089 | **Unconnected** |
@@ -396,14 +396,14 @@ The `themeToggleBtn` onClick handler (lines 3537–3550) calls `repaint()` on **
 | `PerformanceViewPanel.h` | 5 | Active — forwarding header only |
 | **Total** | **11,649** | |
 
-**Active code: ~4,336 lines** (XOlokunEditor.h + EngineVocabulary.h + CouplingStripEditor.h + PerformanceViewPanel.h)
+**Active code: ~4,336 lines** (XOceanusEditor.h + EngineVocabulary.h + CouplingStripEditor.h + PerformanceViewPanel.h)
 **Unconnected code: ~7,313 lines** (66% of UI source is written but not mounted)
 
 ---
 
 ## Part 9: Layout Constants
 
-From `XOlokunEditor` (lines 3907–3912):
+From `XOceanusEditor` (lines 3907–3912):
 
 ```cpp
 static constexpr int kHeaderH   = 50;    // Top header bar

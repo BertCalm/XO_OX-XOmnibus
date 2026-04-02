@@ -1,6 +1,6 @@
 # Preset Library Deep Audit — 2026-03-24
 
-**Scope:** All 17,251 `.xometa` presets in `Presets/XOlokun/`
+**Scope:** All 17,251 `.xometa` presets in `Presets/XOceanus/`
 **Methodology:** Full-corpus Python analysis (no sampling). Each finding section states the exact
 count, the severity, and the remediation path.
 
@@ -53,7 +53,7 @@ preset-architect skill template.
 
 ```python
 import json, glob
-for f in glob.glob("Presets/XOlokun/**/*.xometa", recursive=True):
+for f in glob.glob("Presets/XOceanus/**/*.xometa", recursive=True):
     d = json.load(open(f))
     if 'schema_version' not in d:
         d['schema_version'] = 1
@@ -280,7 +280,7 @@ was updated to enforce it. The violations are concentrated in older original-fle
 **`.xocoupling` files found: 0**
 
 No `.xocoupling` files exist anywhere in `Presets/`. The 18 coupling demo presets designed
-in Phase D (2026-03-22) were committed as standard `.xometa` files in `Presets/XOlokun/Coupling/`,
+in Phase D (2026-03-22) were committed as standard `.xometa` files in `Presets/XOceanus/Coupling/`,
 not as `.xocoupling` binaries.
 
 The `CouplingPresetManager.h` (589 lines, `.xocoupling` format) is implemented in code but

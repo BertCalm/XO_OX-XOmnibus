@@ -26,7 +26,7 @@ The fix requires suppressing all three simultaneously: subMix to zero, reverb mi
 body resonator cold.
 
 #### 1. Cold Resonance
-- **File:** `Presets/XOlokun/Foundation/Owlfish_Cold_Resonance.xometa`
+- **File:** `Presets/XOceanus/Foundation/Owlfish_Cold_Resonance.xometa`
 - **Gap closed:** warmth LOW (min was 0.35) + space LOW (min was 0.40)
 - **DNA:** brightness 0.62, warmth **0.12**, movement 0.15, density 0.22, space **0.18**, aggression 0.28
 - **Character:** All subharmonics silenced (`owl_subMix: 0.0`, all subLevels 0), mixtur reduced to 0.12 for
@@ -34,7 +34,7 @@ body resonator cold.
   size 0.05 / mix 0.04, grain cloud off. A cold metallic click with air but no warmth.
 
 #### 2. Abyssal Silence
-- **File:** `Presets/XOlokun/Foundation/Owlfish_Abyssal_Silence.xometa`
+- **File:** `Presets/XOceanus/Foundation/Owlfish_Abyssal_Silence.xometa`
 - **Gap closed:** warmth LOW (pushes below 0.35) + space LOW (pushes below 0.40)
 - **DNA:** brightness 0.70, warmth **0.08**, movement 0.08, density 0.12, space **0.14**, aggression 0.15
 - **Character:** Absolute minimum configuration — mixtur at 0.05, pure fundamental waveform, no sub,
@@ -50,7 +50,7 @@ detuning, and saturation. Both gaps are closed by pushing in the opposite direct
 active, sub off, detune near-zero, saturation off, filter wide open.
 
 #### 3. Frost Shard
-- **File:** `Presets/XOlokun/Foundation/Obese_Frost_Shard.xometa`
+- **File:** `Presets/XOceanus/Foundation/Obese_Frost_Shard.xometa`
 - **Gap closed:** warmth LOW (min was 0.35) + density LOW (min was 0.35)
 - **DNA:** brightness 0.65, warmth **0.10**, movement 0.05, density **0.14**, space 0.20, aggression 0.35
 - **Character:** Only one oscillator group active (`fat_groupMix: 0.15`), sub level zero, mojo drift zero,
@@ -58,7 +58,7 @@ active, sub off, detune near-zero, saturation off, filter wide open.
   zero harmonic flesh — cold as the engine can get.
 
 #### 4. Wire Strike
-- **File:** `Presets/XOlokun/Foundation/Obese_Wire_Strike.xometa`
+- **File:** `Presets/XOceanus/Foundation/Obese_Wire_Strike.xometa`
 - **Gap closed:** warmth LOW (pushes below 0.35) + density LOW (pushes below 0.35)
 - **DNA:** brightness 0.72, warmth **0.08**, movement 0.10, density **0.10**, space 0.22, aggression 0.55
 - **Character:** Percussive single-hit — sub off, groupMix 0.10, stereo width 0.05 (effectively mono),
@@ -74,7 +74,7 @@ but existing presets all sit in the warmer, more complex morph territory. Closin
 parking morph at zero, cutting the filter low, and suppressing sub and drift.
 
 #### 5. Dark Thread
-- **File:** `Presets/XOlokun/Atmosphere/OddOscar_Dark_Thread.xometa`
+- **File:** `Presets/XOceanus/Atmosphere/OddOscar_Dark_Thread.xometa`
 - **Gap closed:** brightness LOW (min was 0.35) + density LOW (min was 0.35)
 - **DNA:** brightness **0.10**, warmth 0.25, movement 0.05, density **0.08**, space 0.22, aggression 0.02
 - **Character:** Pure sine morph position (0.0), filter cutoff at 400 Hz (passes only the fundamental +
@@ -82,7 +82,7 @@ parking morph at zero, cutting the filter low, and suppressing sub and drift.
   frequency — one note, no harmonics, no movement. Maximum darkness the morph engine can produce.
 
 #### 6. Cave Breath
-- **File:** `Presets/XOlokun/Atmosphere/OddOscar_Cave_Breath.xometa`
+- **File:** `Presets/XOceanus/Atmosphere/OddOscar_Cave_Breath.xometa`
 - **Gap closed:** brightness LOW (pushes below 0.35) + density LOW (pushes below 0.35)
 - **DNA:** brightness **0.12**, warmth 0.28, movement 0.08, density **0.12**, space 0.30, aggression 0.02
 - **Character:** Morph at 0.05 (essentially sine), very slow bloom attack (2.5s), filter at 550 Hz,
@@ -100,7 +100,7 @@ elasticity (breakpoints bounce hard near the amplitude extremes) and a logistic 
 (smooth, bright), this reaches the upper-register capability the engine actually has.
 
 #### 7. Solar Flare
-- **File:** `Presets/XOlokun/Prism/Oracle_Solar_Flare.xometa`
+- **File:** `Presets/XOceanus/Prism/Oracle_Solar_Flare.xometa`
 - **Gap closed:** brightness HIGH (max was 0.75, below 0.7 threshold)
 - **DNA:** brightness **0.85**, warmth 0.18, movement 0.72, density 0.42, space 0.50, aggression 0.55
 - **Character:** 8 breakpoints (fewer = faster per-cycle evolution) with maximum time step (0.82),
@@ -119,7 +119,7 @@ supports violent elastic conflict when voices are stretched across maximally opp
 stretch pushes aggression to 0.78.
 
 #### 8. Storm Assembly
-- **File:** `Presets/XOlokun/Flux/Osteria_Storm_Assembly.xometa`
+- **File:** `Presets/XOceanus/Flux/Osteria_Storm_Assembly.xometa`
 - **Gap closed:** aggression HIGH (max was 0.60, below 0.7 threshold)
 - **DNA:** brightness 0.58, warmth 0.50, movement 0.82, density 0.72, space 0.45, aggression **0.78**
 - **Character:** Bass on Atlantic (0.2) vs. Rhythm on Southern (3.8) — maximum cultural conflict in

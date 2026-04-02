@@ -1,7 +1,7 @@
 # TIDEsigns QDD Full-Fleet UI/UX Audit — 2026-03-29
 
 ## Overview
-- **Target:** XOlokun Desktop Plugin — 86 UI files, 76 engines, ~1.5MB source
+- **Target:** XOceanus Desktop Plugin — 86 UI files, 76 engines, ~1.5MB source
 - **Method:** RAC (Ringleader + Architect + Consultant) × TIDEsigns × QDD
 - **Phases:** 5 (Foundation → Core Components → Subsystems → Engine-Specific → Cross-Cutting)
 - **Subagent dispatches:** 34 parallel audits
@@ -46,7 +46,7 @@
 | Tile arcs | CompactEngineTile.h | Hardcoded → macroValues[k] |
 | Coupling dots | CompactEngineTile.h | paintCouplingDots() now called |
 | Knob focus ring | GalleryKnob.h | focusGained/focusLost added |
-| Preset arrows | XOlokunEditor.h | Stubs → PresetManager nav |
+| Preset arrows | XOceanusEditor.h | Stubs → PresetManager nav |
 | Coupling labels | OverviewPanel.h + CouplingChainView.h | KnotTopology + 2 siblings |
 | q classifier | ParameterGrid.h | contains("q") → exact match |
 | MACRO keywords | ParameterGrid.h | space/character/movement exact match |
@@ -57,7 +57,7 @@
 | Empty state | EnginePickerPopup.h | "No engines match" label |
 | Pill labels | EnginePickerPopup.h | SYN→Synth etc + tooltips |
 | AB Compare | ABCompare.h | New loads → B slot |
-| sfHitRects | XOlokunEditor.h | paint() → resized() |
+| sfHitRects | XOceanusEditor.h | paint() → resized() |
 
 ### Commit 2: c01948faa — Phase 3 (10 fixes, 8 files)
 
@@ -163,12 +163,12 @@
 - 25 simultaneous timers, 569 callbacks/sec at peak
 - CouplingVisualizer: unconditional 30Hz repaint (highest waste)
 - DrumPadGrid: 32 Font constructions per frame
-- XOlokunEditor: 42 string-width measurements per repaint
+- XOceanusEditor: 42 string-width measurements per repaint
 - Cinematic mode: colA=0 bypasses minimum guards
 
 ## Phase 5: Dead Code
 
-- 10 parked-but-wired components in XOlokunEditor
+- 10 parked-but-wired components in XOceanusEditor
 - paintMacroBars: 35 lines, zero callers
 - CreatureRenderer.h: 311 lines, zero callers
 - cachedDashedPath: computed in resized(), unused in paint()
@@ -226,7 +226,7 @@
 
 ### Wave 7: Performance
 - Cache Fonts in DrumPadGrid, ObrixDetailPanel paint
-- Cache string widths in XOlokunEditor paint
+- Cache string widths in XOceanusEditor paint
 - Gate DepthZoneDial timer on visibility
 - Reduce CouplingVisualizer repaint frequency
 

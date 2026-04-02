@@ -25,7 +25,7 @@
 
 **The sound it makes:** A groove that grooves AND speaks. The snare hit is "sh" but it hits like a snare. The kick is "buh" — you feel the low-end thump and hear the bilabial plosive simultaneously. Sequences start to form half-heard words, phantom syllables, rhythmic speech that lives between language and percussion.
 
-**XOlokun engine:** OVERDUB — the voice/send architecture is perfect for routing phoneme samples through tape delay and spring reverb, creating "echo speech" textures where the phonemes blur into linguistic reverb tails.
+**XOceanus engine:** OVERDUB — the voice/send architecture is perfect for routing phoneme samples through tape delay and spring reverb, creating "echo speech" textures where the phonemes blur into linguistic reverb tails.
 
 ---
 
@@ -52,7 +52,7 @@
 
 **The sound it makes:** Played at appropriate monitoring levels, this kit makes the room feel alive. The chest pad feels like a heartbeat from outside the body. The vestibular pad creates a sensation of slight tilt or rotation. The gut pad is silence that is also not silence — you feel it before you hear it.
 
-**XOlokun engine:** ONSET — the drum synthesis engine's per-voice physical modeling can be tuned to sub-bass resonance profiles for each body zone. The SPACE macro becomes a body-cavity size control.
+**XOceanus engine:** ONSET — the drum synthesis engine's per-voice physical modeling can be tuned to sub-bass resonance profiles for each body zone. The SPACE macro becomes a body-cavity size control.
 
 ---
 
@@ -84,7 +84,7 @@
 
 **The sound it makes:** Pad 1 is a sharp geological snap. By Pad 6 you hear the year breathing. By Pad 10 you can feel time in the sample — it sounds ancient. Pad 14 is the sound of everything that has ever happened, in one second. Used together in a groove, you are literally playing geological time.
 
-**XOlokun engine:** OVERLAP (Lion's Mane FDN) — the feedback delay network creates the sense of time scales overlapping and echoing. The SPREAD macro becomes a temporal dispersion control.
+**XOceanus engine:** OVERLAP (Lion's Mane FDN) — the feedback delay network creates the sense of time scales overlapping and echoing. The SPREAD macro becomes a temporal dispersion control.
 
 ---
 
@@ -109,7 +109,7 @@
 
 **The sound it makes:** Corrupted pads sound damaged in technically specific ways — not random noise but structured, patterned corruption. The corrected versions are clean but you can hear the artifact-removal as a kind of texture. Playing both velocities together creates a call-and-response between failure and repair.
 
-**XOlokun engine:** OUTWIT (Wolfram CA) — the cellular automaton rules mirror error-correction in structure: local rules that propagate corrections globally, emergent coherence from simple error-detection logic.
+**XOceanus engine:** OUTWIT (Wolfram CA) — the cellular automaton rules mirror error-correction in structure: local rules that propagate corrections globally, emergent coherence from simple error-detection logic.
 
 ---
 
@@ -136,7 +136,7 @@
 
 **The sound it makes:** Each protein hit has a signature shape — ATP synthase literally rotates (spinning granular texture), collagen triple-helix has three interlocking melodic threads, the spike protein conformational change has a violent snap followed by a slow lock. The grooves feel biological — purposeful but non-linear.
 
-**XOlokun engine:** OPAL (granular) — granular synthesis is ideal for trajectory-based sonification. Each grain represents a conformational state; grain density = folding rate; grain pitch = local energy.
+**XOceanus engine:** OPAL (granular) — granular synthesis is ideal for trajectory-based sonification. Each grain represents a conformational state; grain density = folding rate; grain pitch = local energy.
 
 ---
 
@@ -164,15 +164,15 @@
 
 **The sound it makes:** Unsettling mechanical precision. The quote-stuffing burst is a machine gun of tightly spaced identical hits. The flash crash is a sound that drops out from under you. The VWAP algo sounds like a metronome that breathes — nearly perfect but not quite. Producers using this kit are sonically engaging with the actual infrastructure of capitalism.
 
-**XOlokun engine:** ONSET (drum synthesis) — the machine-gun precision of HFT translates perfectly to ONSET's MACHINE macro, with PUNCH controlling attack transient intensity and MUTATE introducing the stochastic variation of real market noise.
+**XOceanus engine:** ONSET (drum synthesis) — the machine-gun precision of HFT translates perfectly to ONSET's MACHINE macro, with PUNCH controlling attack transient intensity and MUTATE introducing the stochastic variation of real market noise.
 
 ---
 
 ## 27. Cellular Automaton Presets (OUTWIT Integration Kit)
 
-**Core Concept:** OUTWIT (XOlokun's 8-arm Wolfram CA engine) generates patterns in real-time. This kit captures 16 different elementary CA rule sets as separate keygroup zones — each zone is a rendered OUTWIT performance at a specific rule number. Rule 30 = zone C3–D3. Rule 110 = D3–E3. Wolfram's complete set of 256 elementary 1D automata compressed into a playable instrument. The mathematics of emergence, chromatically mapped.
+**Core Concept:** OUTWIT (XOceanus's 8-arm Wolfram CA engine) generates patterns in real-time. This kit captures 16 different elementary CA rule sets as separate keygroup zones — each zone is a rendered OUTWIT performance at a specific rule number. Rule 30 = zone C3–D3. Rule 110 = D3–E3. Wolfram's complete set of 256 elementary 1D automata compressed into a playable instrument. The mathematics of emergence, chromatically mapped.
 
-**Why only recently possible:** OUTWIT itself was completed March 2026. The rule-space is well-documented (Wolfram's NKS, 2002) but sonification as an XPN instrument requires the engine to exist first. The concept of capturing engine states as static XPN exports for use outside XOlokun is new — bridging generative synthesis with sample playback.
+**Why only recently possible:** OUTWIT itself was completed March 2026. The rule-space is well-documented (Wolfram's NKS, 2002) but sonification as an XPN instrument requires the engine to exist first. The concept of capturing engine states as static XPN exports for use outside XOceanus is new — bridging generative synthesis with sample playback.
 
 **XPN/XPM implementation:**
 - Keygroup zones, C1–C6, 16 zones total:
@@ -198,7 +198,7 @@
 
 **The sound it makes:** Each rule has an unmistakably distinct character. Rule 30 sounds like radio static from a broken galaxy — totally unpredictable but with a specific timbre. Rule 110 has recurring glitches that feel like they mean something. Rule 90 sounds like it was designed by a mathematician — perfectly self-similar at every zoom level. Playing the zones chromatically creates CA-generated melody.
 
-**XOlokun engine:** OUTWIT natively. This kit is a portable snapshot of OUTWIT's rule-space for MPC users who don't have XOlokun.
+**XOceanus engine:** OUTWIT natively. This kit is a portable snapshot of OUTWIT's rule-space for MPC users who don't have XOceanus.
 
 ---
 
@@ -228,7 +228,7 @@
 
 **The sound it makes:** Quiet, specific, alive. The dinoflagellate wave builds like applause from a million tiny hands. The anglerfish pulse is a slow, insistent heartbeat from the deep. The siphonophore wave sounds like nothing else — a sound that travels through the sample laterally, one side to the other, because the organism is thirty feet long.
 
-**XOlokun engine:** ORPHICA (microsound harp, siphonophore) — designed around colonial organism communication. The colonial structure of ORPHICA's microsound architecture mirrors bioluminescent colony behavior.
+**XOceanus engine:** ORPHICA (microsound harp, siphonophore) — designed around colonial organism communication. The colonial structure of ORPHICA's microsound architecture mirrors bioluminescent colony behavior.
 
 ---
 
@@ -257,7 +257,7 @@
 
 **The sound it makes:** NYC's 1 Train is an anxious, off-the-grid rhythm that occasionally locks for four bars then stumbles. Tokyo's Yamanote is a perfect loop with industrial precision — this is what on-time feels like as music. London's Central is deeper, older, more groaning. These are city rhythms. Playing them together is playing three cities at once.
 
-**XOlokun engine:** OBBLIGATO (dual wind, obligatory structure) — transit is the obligatory infrastructure of urban life. OBBLIGATO's BOND macro controls how tightly the rhythmic lines couple.
+**XOceanus engine:** OBBLIGATO (dual wind, obligatory structure) — transit is the obligatory infrastructure of urban life. OBBLIGATO's BOND macro controls how tightly the rhythmic lines couple.
 
 ---
 
@@ -284,7 +284,7 @@
 
 **The sound it makes:** Filtered in ways that EQ cannot reproduce — because these aren't EQ curves, they're spatial transfer functions. The Poisson spot sounds eerie: a perfect, bright, impossibly present sound in the place where there should be nothing. The corner diffraction has a spatial smear that no plugin produces.
 
-**XOlokun engine:** OVERLAP (FDN reverb, Lion's Mane topology) — the FDN's delay network can be configured to emulate acoustic shadow geometries, with delay lengths encoding obstacle distances.
+**XOceanus engine:** OVERLAP (FDN reverb, Lion's Mane topology) — the FDN's delay network can be configured to emulate acoustic shadow geometries, with delay lengths encoding obstacle distances.
 
 ---
 
@@ -307,7 +307,7 @@
 
 **The sound it makes:** A delta wave pad at 2Hz is a pulse so slow it doesn't feel like rhythm — it feels like breathing. Sleep spindles are identifiable once heard: bursts of smooth, rising-falling oscillation. K-complexes hit like a body flinch. A groove made of these sounds inhabits the listener's nervous system differently from conventional drums.
 
-**XOlokun engine:** OHM (drone/sustain, Hippy Dad) — the MEDDLING/COMMUNE axis maps perfectly to the sleep stage spectrum. Deep COMMUNE = delta. Peak MEDDLING = beta.
+**XOceanus engine:** OHM (drone/sustain, Hippy Dad) — the MEDDLING/COMMUNE axis maps perfectly to the sleep stage spectrum. Deep COMMUNE = delta. Peak MEDDLING = beta.
 
 ---
 
@@ -335,7 +335,7 @@
 
 **The sound it makes:** The Old-Growth kit has depth — each pad feels like it belongs to something larger. The Mother Tree pad fills the room. The stress-signal pads are sharp interruptions of a baseline calm. The plantation kit is musically impoverished compared to old-growth, which is intentional — that IS the ecological message.
 
-**XOlokun engine:** ORGANISM (cellular automata, Coral Colony) — generative networks with local communication rules mapping exactly to fungal network dynamics.
+**XOceanus engine:** ORGANISM (cellular automata, Coral Colony) — generative networks with local communication rules mapping exactly to fungal network dynamics.
 
 ---
 
@@ -366,7 +366,7 @@
 
 **The sound it makes:** Plasma sounds like nothing biological. The reconnection snap is a singular, physical, final event — like breaking a stick, but the stick is a magnetic field line the size of Earth. Chorus emissions are beautiful: naturally ascending chirps that sound like they were composed. Whistlers descend like slow musical glissandi. This kit sounds alien and musical simultaneously.
 
-**XOlokun engine:** OBBLIGATO (dual wind, obligatory resonance) — the obligatory coupling between field lines during reconnection parallels OBBLIGATO's BOND macro, which controls coupling strength between two resonant systems.
+**XOceanus engine:** OBBLIGATO (dual wind, obligatory resonance) — the obligatory coupling between field lines during reconnection parallels OBBLIGATO's BOND macro, which controls coupling strength between two resonant systems.
 
 ---
 
@@ -392,7 +392,7 @@
 
 **The sound it makes:** Spelling the word "music" produces a specific five-bar phrase. Spelling "rhythm" gives a different phrase. Common words have characteristic feels based on their letter shapes. Words with many L's (position 1+2+3) are kick-heavy. Words with many S's (position 2+3+4) are snare-heavy. The kit rewards producers who think about language.
 
-**XOlokun engine:** OLE (Afro-Latin trio, DRAMA macro) — polyrhythmic rhythmic cell combinations are the core of Afro-Latin music theory, and Braille patterns as rhythmic cells maps well to this lineage.
+**XOceanus engine:** OLE (Afro-Latin trio, DRAMA macro) — polyrhythmic rhythmic cell combinations are the core of Afro-Latin music theory, and Braille patterns as rhythmic cells maps well to this lineage.
 
 ---
 
@@ -416,7 +416,7 @@
 
 **The sound it makes:** A tuning system derived from physics rather than culture. The intervals are slightly unfamiliar — not quite just intonation, not quite equal temperament, not quite anything named. Melodies in this scale feel both mathematical and organic. The "trap frequency" pads create sudden harmonic destabilizations — the sound of something falling out of the sound.
 
-**XOlokun engine:** OSTINATO (communal drum circle, rhythmic layering) — the standing wave patterns in acoustic levitation are essentially a rhythmic/spatial system where stability requires specific relationships, mirroring OSTINATO's polyrhythmic coordination.
+**XOceanus engine:** OSTINATO (communal drum circle, rhythmic layering) — the standing wave patterns in acoustic levitation are essentially a rhythmic/spatial system where stability requires specific relationships, mirroring OSTINATO's polyrhythmic coordination.
 
 ---
 
@@ -449,7 +449,7 @@
 
 **The sound it makes:** Playing all 16 pads softly (1950) sounds like a functioning planetary system — varied, complex, balanced. Playing all 16 pads hard (2023) sounds like the same system in distress — flatter, noisier, more chaotic, harmonically degraded. A producer can literally play the Anthropocene. The most political drum kit ever made.
 
-**XOlokun engine:** OPENSKY (euphoric shimmer, pure feliX) / OCEANDEEP (abyssal bass, pure Oscar) used in contrast — the tension between feliX ascending and Oscar descending is the climate crisis in XO_OX mythological terms.
+**XOceanus engine:** OPENSKY (euphoric shimmer, pure feliX) / OCEANDEEP (abyssal bass, pure Oscar) used in contrast — the tension between feliX ascending and Oscar descending is the climate crisis in XO_OX mythological terms.
 
 ---
 
@@ -478,7 +478,7 @@
 
 **The sound it makes:** A bass line played in this kit IS the resonant architecture of the built human world. The Eiffel Tower has a distinctly lighter, crisper attack than the Burj Khalifa's massive concrete weight. The Tacoma Narrows (pre-collapse) has a specific tuning that preceded failure — playing that note carries historical weight. The kit is a tuned instrument where the pitches are not arbitrary.
 
-**XOlokun engine:** OTTONI (triple brass, GROW macro) — brass resonance and architectural structural resonance are both standing-wave phenomena in cylindrical/conical geometries. OTTONI's tube resonance parameters map to structural mode shapes.
+**XOceanus engine:** OTTONI (triple brass, GROW macro) — brass resonance and architectural structural resonance are both standing-wave phenomena in cylindrical/conical geometries. OTTONI's tube resonance parameters map to structural mode shapes.
 
 ---
 
@@ -515,7 +515,7 @@
 
 **The sound it makes:** The Haitian Creole pads are rhythmically French but harmonically West African — you can hear the collision. Tok Pisin reduplication creates natural stutter rhythms. Gullah has a specific slow dignity in its prosody that no other English-derived language has. These are the sounds of how language survives under pressure — which is also a description of what good music does.
 
-**XOlokun engine:** OLE (Afro-Latin trio, DRAMA macro) — cultural contact, synthesis, and the DRAMA macro's celebration of hybrid intensity directly map to language contact dynamics.
+**XOceanus engine:** OLE (Afro-Latin trio, DRAMA macro) — cultural contact, synthesis, and the DRAMA macro's celebration of hybrid intensity directly map to language contact dynamics.
 
 ---
 
@@ -547,7 +547,7 @@
 
 **The sound it makes:** Playing C3 then D3 on this kit is not a major second. It's two different cultures' A — and they beat together. Playing the full chromatic range is like hearing the world trying to agree on a note and failing, beautifully. Used melodically, this kit creates a tuning-system-shift texture that no equal-tempered instrument can approach.
 
-**XOlokun engine:** OVERTONE (continued fractions spectral engine, The Nautilus) — Theorem-approved engine whose core concept is deriving pitches from number-theoretic relationships, exactly the mathematical diversity this kit explores.
+**XOceanus engine:** OVERTONE (continued fractions spectral engine, The Nautilus) — Theorem-approved engine whose core concept is deriving pitches from number-theoretic relationships, exactly the mathematical diversity this kit explores.
 
 ---
 
@@ -580,7 +580,7 @@
 
 **The sound it makes:** Pad 1 is near silence. Pad 4 is a naturally generated rhythm — a sound that pulses at a frequency determined by fluid physics, not by any musical intention. By Pad 8 you're in turbulence: a specific, physically correct noise that is not random but statistically structured. Pad 16 is the sound of the universe's default background process — energy moving from large to small, endlessly.
 
-**XOlokun engine:** OUTWIT (8-arm Wolfram CA) — turbulence and cellular automata share the same mathematical deep structure: deterministic local rules producing complex non-repeating global behavior. The CA arms of OUTWIT are a discrete-space CFD simulation.
+**XOceanus engine:** OUTWIT (8-arm Wolfram CA) — turbulence and cellular automata share the same mathematical deep structure: deterministic local rules producing complex non-repeating global behavior. The CA arms of OUTWIT are a discrete-space CFD simulation.
 
 ---
 
@@ -621,7 +621,7 @@
 
 **4. Physics as tuning system (35, 37, 39, 40):** Acoustic levitation frequencies, building resonances, tuning system diversity, and fluid dynamics — four kits where the laws of physics generate musical scales and rhythms directly.
 
-**5. The XOlokun–XPN bridge (27):** The OUTWIT CA kit is a uniquely XO_OX concept — capturing a generative engine's rule-space as a portable sample kit. This is the beginning of a larger "engine archives" concept.
+**5. The XOceanus–XPN bridge (27):** The OUTWIT CA kit is a uniquely XO_OX concept — capturing a generative engine's rule-space as a portable sample kit. This is the beginning of a larger "engine archives" concept.
 
 **6. Ecological urgency (32, 36):** Mycorrhizal networks and climate data are not just sound design concepts — they carry content. A producer using Climate Data Kit is making a statement. The kit is a political instrument.
 

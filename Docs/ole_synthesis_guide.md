@@ -69,7 +69,7 @@ ISLA is tropical space — stereo width and environmental air. It adds to the st
 
 ## Family Coupling
 
-OLE accepts `LFOToPitch` for external pitch wobble, `AmpToFilter` for damping control, and `EnvToMorph` to scale exciter intensity. OLE's most interesting coupling use case is as a DRAMA recipient: route OBBLIGATO's amplitude output into OLE's `EnvToMorph` slot. When the wind duet plays loudly, OLE's strum intensity rises — the string trio responds to the winds. Combine with DRAMA automation to have the husbands arrive at the exact moment the winds reach their crescendo. OLE's wide stereo field (especially with high ISLA) makes it a natural left/right spread anchor in a four-engine XOlokun setup.
+OLE accepts `LFOToPitch` for external pitch wobble, `AmpToFilter` for damping control, and `EnvToMorph` to scale exciter intensity. OLE's most interesting coupling use case is as a DRAMA recipient: route OBBLIGATO's amplitude output into OLE's `EnvToMorph` slot. When the wind duet plays loudly, OLE's strum intensity rises — the string trio responds to the winds. Combine with DRAMA automation to have the husbands arrive at the exact moment the winds reach their crescendo. OLE's wide stereo field (especially with high ISLA) makes it a natural left/right spread anchor in a four-engine XOceanus setup.
 
 ## Tips & Tricks
 

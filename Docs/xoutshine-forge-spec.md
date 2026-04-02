@@ -49,7 +49,7 @@ When code and this spec conflict, **this spec wins** until a new spec version is
 ### 1.2.1 Implementation Note (2026-03-25)
 
 The Python CLI (`Tools/xoutshine.py`) is the **PROTOTYPE** implementation. The C++ header
-(`Source/Export/XOutshine.h`) is the **CANONICAL** implementation for the XOlokun desktop
+(`Source/Export/XOutshine.h`) is the **CANONICAL** implementation for the XOceanus desktop
 application. When behavior diverges, the C++ implementation is authoritative. The Python CLI
 may be used for batch processing and testing but is not the primary delivery path.
 
@@ -516,7 +516,7 @@ Append `_gen` to SampleName filenames so generated layers are distinguishable fr
 ### 5.1 Storage Model: Pre-rendered Variants
 
 XOutshine uses **pre-rendered variants** stored as distinct WAV files. This guarantees MPC
-standalone compatibility without requiring the XOlokun plugin.
+standalone compatibility without requiring the XOceanus plugin.
 
 Each round-robin variant is a unique WAV file with micro-variations applied at render time.
 The existing naming convention is extended:
@@ -632,7 +632,7 @@ character at large intervals (a soprano voice transposed +1 octave becomes a chi
 transposed down 2 octaves loses its harmonic brightness entirely).
 
 The formant metadata system tracks the "safe transposition range" per zone and stores formant
-center frequencies so future tools (XOlokun runtime, iOS player) can apply formant correction.
+center frequencies so future tools (XOceanus runtime, iOS player) can apply formant correction.
 
 ### 6.2 Formant Metadata Struct
 
@@ -647,7 +647,7 @@ struct FormantMetadata
     float safeTransposeSemitonesDown = 12.0f;  // Max safe downward transposition
 
     bool  formantLock    = false;   // True = preserve formants during transposition
-                                    // (requires XOlokun runtime — MPC standalone ignores)
+                                    // (requires XOceanus runtime — MPC standalone ignores)
     float formantShiftDb = 0.0f;    // Manual formant boost/cut at root note (dB)
 };
 ```
@@ -685,7 +685,7 @@ category defaults above.
 ### 6.5 XPM Annotation for Formants
 
 MPC does not have native formant metadata fields. Store formant data as an XML comment block
-in the XPM `<Keygroup>` element, readable by XOlokun runtime and future tools:
+in the XPM `<Keygroup>` element, readable by XOceanus runtime and future tools:
 
 ```xml
 <Keygroup index="0">
@@ -700,7 +700,7 @@ in the XPM `<Keygroup>` element, readable by XOlokun runtime and future tools:
 ```
 
 The `<!-- XO:Formant ... -->` comment format is the extension namespace. MPC firmware ignores
-comments. XOlokun parser reads them via regex match on `XO:Formant`.
+comments. XOceanus parser reads them via regex match on `XO:Formant`.
 
 ---
 
@@ -708,18 +708,18 @@ comments. XOlokun parser reads them via regex match on `XO:Formant`.
 
 ### 7.1 FX Architecture Context
 
-XOlokun has a 25-stage MasterFX chain. When XOriginate exports a preset to XPN, it renders the
+XOceanus has a 25-stage MasterFX chain. When XOriginate exports a preset to XPN, it renders the
 FX chain baked into the WAV files. XOutshine's use case is different: it processes **external
-samples** that have no XOlokun FX chain. The FX routing metadata system defines which FX stages
-(from the XOlokun MasterFX indices) should be applied in the enhancement pass when Outshine is
-running inside the XOlokun desktop application.
+samples** that have no XOceanus FX chain. The FX routing metadata system defines which FX stages
+(from the XOceanus MasterFX indices) should be applied in the enhancement pass when Outshine is
+running inside the XOceanus desktop application.
 
 **Two deployment contexts:**
 
 | Context | FX Application |
 |---------|---------------|
 | Standalone xoutshine.py CLI | FX baked into WAV during ENHANCE (no runtime FX) |
-| XOlokun desktop app | FX applied via MasterFXChain at playback time (not baked) |
+| XOceanus desktop app | FX applied via MasterFXChain at playback time (not baked) |
 
 ### 7.2 FX Routing Metadata Struct
 
@@ -779,7 +779,7 @@ Stages 0–21 are the original MasterFX chain. Stages 22–24 are the Singularit
 ### 7.4 Category-to-FX Recommendations
 
 Default FX chain snapshots per SampleCategory, applied during ENHANCE when running inside
-XOlokun desktop (not baked in standalone CLI):
+XOceanus desktop (not baked in standalone CLI):
 
 | Category | Recommended Stages | Rationale |
 |----------|--------------------|-----------|
@@ -863,7 +863,7 @@ struct ExpressionMapping
 
 ### 8.2 MPCe Quad-Corner Assignment Metadata
 
-The MPCe 3D pads (MPCe = MPC expanded with XOlokun 3D pad surface) use a quad-corner assignment
+The MPCe 3D pads (MPCe = MPC expanded with XOceanus 3D pad surface) use a quad-corner assignment
 system: each corner of the pad surface maps to a parameter. The DESIGN stage annotates programs
 with the intended quad-corner assignments for the MPCe runtime.
 
@@ -1215,7 +1215,7 @@ This example shows a single zone (C0–G9) with a pad and organ source, crossfad
     <QLink4><Destination>Reverb</Destination><Amount>70</Amount><Label>SPACE</Label></QLink4>
   </QLinkAssignment>
 
-  <!-- XO metadata (ignored by MPC firmware, read by XOlokun runtime) -->
+  <!-- XO metadata (ignored by MPC firmware, read by XOceanus runtime) -->
   <!-- XO:FXRouting global="true" stages="1,3,13,16"
        1_reef_depth="0.30" 3_drift_rate="0.15" 3_drift_depth="0.10"
        13_comp_threshold="-12.0" 16_limit_ceiling="-0.30" -->
@@ -1430,7 +1430,7 @@ This example shows a single zone (C0–G9) with a pad and organ source, crossfad
 
 ### 11.1 What MPC Hardware Natively Supports
 
-These features work on MPC standalone with no XOlokun plugin required:
+These features work on MPC standalone with no XOceanus plugin required:
 
 | Feature | Native MPC Support | Notes |
 |---------|-------------------|-------|
@@ -1448,10 +1448,10 @@ These features work on MPC standalone with no XOlokun plugin required:
 | CycleGroup | YES | Firmware ≥ 2.10 |
 | Multi-keygroup zones (multiple Keygroup elements) | YES | Firmware ≥ 2.10 |
 
-### 11.2 Features Requiring XOlokun Runtime
+### 11.2 Features Requiring XOceanus Runtime
 
 These features are stored as XO-namespace XML comments in XPM files. MPC firmware ignores them.
-The XOlokun MPC desktop app or iOS player reads and activates them:
+The XOceanus MPC desktop app or iOS player reads and activates them:
 
 | Feature | XO Comment Tag | MPC Standalone Behavior |
 |---------|---------------|------------------------|
@@ -1463,8 +1463,8 @@ The XOlokun MPC desktop app or iOS player reads and activates them:
 
 ### 11.3 Graceful Degradation Guarantee
 
-Every XOutshine program MUST sound acceptable on MPC standalone without XOlokun. The baked WAV
-files carry all the musical value. XOlokun features are enhancements, not dependencies.
+Every XOutshine program MUST sound acceptable on MPC standalone without XOceanus. The baked WAV
+files carry all the musical value. XOceanus features are enhancements, not dependencies.
 
 This means:
 - All velocity layers must be musically coherent even without formant correction.

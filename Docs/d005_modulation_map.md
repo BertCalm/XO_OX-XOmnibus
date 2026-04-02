@@ -124,13 +124,13 @@ const float morphMod = morphPosition
 
 ---
 
-### 3. Overworld (XOlokun Adapter)
+### 3. Overworld (XOceanus Adapter)
 
 **Identity:** Chip synthesis — NES/FM Genesis/SNES and 3 more. ERA triangle crossfade.
 
 **Why it fails D005:** The standalone XOverworld instrument has a fully-implemented ERA Drift LFO
 (`ow_eraDriftRate`, range 0.0–4.0 Hz, 4 shapes: Orbit/Triangle/Pendulum/Wander) that continuously
-modulates the ERA triangle position. However, the XOlokun adapter (`OverworldEngine.h`) does not
+modulates the ERA triangle position. However, the XOceanus adapter (`OverworldEngine.h`) does not
 implement this functionality. The adapter passes `eraDriftRate/Depth/Shape` values to the
 `xoverworld::VoicePool` via `applyParams(snap)`, but the `voicePool.applyParams()` method stores
 snapshot values without advancing any phase accumulator. No `eraPhase` member exists in
@@ -139,7 +139,7 @@ snapshot values without advancing any phase accumulator. No `eraPhase` member ex
 The standalone's ERA drift lives in `PluginProcessor.cpp` (lines 267–355), which advances
 `eraPhase` at `snap.eraDriftRate * numSamples / sr` and applies orbit/triangle/pendulum/wander
 shapes to `era`/`eraY` before passing them to the voice pool. This logic is entirely absent from
-the XOlokun adapter.
+the XOceanus adapter.
 
 **Existing infrastructure:** The adapter already has `eraSmooth` and `eraYSmooth` IIR smoothing
 applied per-sample in `renderBlock`. Adding an `eraPhase` float and copying the ~60 lines of

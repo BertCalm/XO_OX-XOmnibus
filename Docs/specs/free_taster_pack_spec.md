@@ -1,11 +1,11 @@
 # XO_OX Free Taster Pack — Specification
 
-> Status: SPEC READY | Price: FREE (bundled with XOlokun)
+> Status: SPEC READY | Price: FREE (bundled with XOceanus)
 > 5 programs from 5 engines. The funnel from free synth to paid packs.
 
 ## Philosophy
 
-Every XOlokun user who also owns an MPC gets an immediate taste of what
+Every XOceanus user who also owns an MPC gets an immediate taste of what
 XO_OX sounds like on hardware. This pack ships BEFORE the paid ONSET pack.
 It is the conversion funnel.
 
@@ -40,7 +40,7 @@ Total: ~243 WAVs + 1 stem
 ## Pack README (ships with the .xpn)
 
 "Welcome to XO_OX. These 5 programs were synthesized by 5 of the 34 engines
-in XOlokun — a free, open-source multi-engine synthesizer.
+in XOceanus — a free, open-source multi-engine synthesizer.
 
 Every sound in this pack was born from algorithms, not samples. The drums
 shift character with your touch. The bass responds to how hard you play.
@@ -52,6 +52,6 @@ More packs at xo-ox.org/packs"
 
 ## Distribution
 
-- Ships inside the XOlokun installer (macOS .pkg, iOS TestFlight)
+- Ships inside the XOceanus installer (macOS .pkg, iOS TestFlight)
 - Also available as standalone .xpn download at xo-ox.org/packs
 - No payment, no signup, no email gate

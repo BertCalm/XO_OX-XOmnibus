@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "XOlokun Preset (.xometa)",
-  "description": "Universal preset format for the XOlokun multi-engine platform. Single source of truth — replaces per-engine C++ presets and .xocmeta files.",
+  "title": "XOceanus Preset (.xometa)",
+  "description": "Universal preset format for the XOceanus multi-engine platform. Single source of truth — replaces per-engine C++ presets and .xocmeta files.",
   "type": "object",
   "required": ["schema_version", "name", "mood", "engines", "author", "version", "parameters"],
   "properties": {
@@ -13,7 +13,7 @@
     "name": {
       "type": "string",
       "maxLength": 30,
-      "description": "Display name — unique across the entire XOlokun library"
+      "description": "Display name — unique across the entire XOceanus library"
     },
     "mood": {
       "type": "string",
@@ -37,7 +37,7 @@
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "XOlokun version this preset was created with"
+      "description": "XOceanus version this preset was created with"
     },
     "description": {
       "type": "string",
@@ -81,7 +81,7 @@
       "properties": {
         "sourceInstrument": {
           "type": ["string", "null"],
-          "description": "Original instrument name (null for new XOlokun presets)"
+          "description": "Original instrument name (null for new XOceanus presets)"
         },
         "sourceCategory": {
           "type": ["string", "null"],

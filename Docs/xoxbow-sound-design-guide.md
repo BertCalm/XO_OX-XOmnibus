@@ -30,7 +30,7 @@ This produces a stereo field with a structural relationship that no width knob o
 
 ### The Oxbow Eel
 
-In the aquatic taxonomy of XOlokun, OXBOW belongs to the Twilight Zone (200–1000m depth). This is the mesopelagic layer where sunlight fades to nothing but life persists in darkness. The electric eel navigates this zone via electrosensory organs — not sight, but field detection. Sound in OXBOW behaves the same way: it is not heard so much as sensed, felt in the stereo field as presence rather than definition.
+In the aquatic taxonomy of XOceanus, OXBOW belongs to the Twilight Zone (200–1000m depth). This is the mesopelagic layer where sunlight fades to nothing but life persists in darkness. The electric eel navigates this zone via electrosensory organs — not sight, but field detection. Sound in OXBOW behaves the same way: it is not heard so much as sensed, felt in the stereo field as presence rather than definition.
 
 The Eel is Oscar-dominant. OXBOW rewards patience, long listening, and willingness to let sound dissolve. The exciter fires, the river rushes in, and then the lake takes over.
 

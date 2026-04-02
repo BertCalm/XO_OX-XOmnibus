@@ -48,14 +48,14 @@ Wave 4 (integration — depends on all above):
 | CREATE | `Source/UI/PlaySurface/XOuijaPanel.h` | XOuija surface + Planchette + GestureButtonBar + GoodbyeButton. All JUCE components. |
 | CREATE | `Source/UI/PlaySurface/KeysMode.h` | Seaboard-style 2-octave keyboard with scroll and expression. |
 | MODIFY | `Source/UI/PlaySurface/PlaySurface.h` | Remove OrbitPathZone + PerformancePads, restructure layout, integrate XOuija + KeysMode. |
-| MODIFY | `Source/XOlokunProcessor.h` | Add CC output queue struct + push/drain methods, flip `producesMidi()` to true. |
-| MODIFY | `Source/XOlokunProcessor.cpp` | Drain CC queue at end of `processBlock()`. |
+| MODIFY | `Source/XOceanusProcessor.h` | Add CC output queue struct + push/drain methods, flip `producesMidi()` to true. |
+| MODIFY | `Source/XOceanusProcessor.cpp` | Drain CC queue at end of `processBlock()`. |
 | CREATE | `Tests/PlaySurfaceTests/HarmonicFieldTests.h` | Test declarations for HarmonicField. |
 | CREATE | `Tests/PlaySurfaceTests/HarmonicFieldTests.cpp` | Full TDD tests for circle-of-fifths logic. |
 | CREATE | `Tests/PlaySurfaceTests/GestureTrailTests.h` | Test declarations for GestureTrailBuffer. |
 | CREATE | `Tests/PlaySurfaceTests/GestureTrailTests.cpp` | Full TDD tests for trail buffer + freeze + interference. |
 | MODIFY | `Tests/run_tests.cpp` | Add `playsurface_tests::runAll()` to test runner. |
-| MODIFY | `CMakeLists.txt` | Add new test source files to XOlokunTests target. |
+| MODIFY | `CMakeLists.txt` | Add new test source files to XOceanusTests target. |
 
 ---
 
@@ -108,7 +108,7 @@ static void reportTest(const char* name, bool passed)
 static void testCircleOfFifths()
 {
     std::cout << "\n--- HarmonicField: Circle of Fifths ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     // C is at center (position 0.5)
     reportTest("C at center X=0.5",
@@ -144,7 +144,7 @@ static void testCircleOfFifths()
 static void testFifthsDistance()
 {
     std::cout << "\n--- HarmonicField: Fifths Distance ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     reportTest("C to C = 0", HarmonicField::fifthsDistance(0, 0) == 0);
     reportTest("C to G = 1", HarmonicField::fifthsDistance(0, 7) == 1);
@@ -159,7 +159,7 @@ static void testFifthsDistance()
 static void testTensionColor()
 {
     std::cout << "\n--- HarmonicField: Tension Coloring ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     auto [r0, g0, b0] = HarmonicField::tensionColor(0); // home = teal
     reportTest("home key is teal (r < 0.2)",  r0 < 0.25f);
@@ -178,7 +178,7 @@ static void testTensionColor()
 static void testScaleMembership()
 {
     std::cout << "\n--- HarmonicField: Scale Membership ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     // C major: C D E F G A B
     reportTest("C in C major",  HarmonicField::isInKey(60, 0)); // C4
@@ -196,7 +196,7 @@ static void testScaleMembership()
 static void testQuantizeToNearest()
 {
     std::cout << "\n--- HarmonicField: Quantize to Nearest ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     // C# in C major should quantize to C or D
     int q1 = HarmonicField::quantizeToNearest(61, 0); // C#4 in C major
@@ -216,7 +216,7 @@ static void testQuantizeToNearest()
 static void testMarkerProperties()
 {
     std::cout << "\n--- HarmonicField: Marker Properties ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     // Home key marker: 100% size, 100% opacity
     auto [size0, opacity0] = HarmonicField::markerProperties(0);
@@ -267,17 +267,17 @@ Modify `Tests/run_tests.cpp` — add include and call:
 totalFailed += playsurface_tests::runAll();
 ```
 
-Modify `CMakeLists.txt` — add the new test source files to the `XOlokunTests` target's source list:
+Modify `CMakeLists.txt` — add the new test source files to the `XOceanusTests` target's source list:
 
 ```cmake
-# Add to XOlokunTests target_sources:
+# Add to XOceanusTests target_sources:
 Tests/PlaySurfaceTests/HarmonicFieldTests.cpp
 ```
 
 - [ ] **Step 4: Build and verify tests fail**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOceanus
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build 2>&1 | tail -20
 ```
@@ -296,7 +296,7 @@ Create `Source/UI/PlaySurface/HarmonicField.h`:
 #include <algorithm>
 #include <tuple>
 
-namespace xolokun {
+namespace xoceanus {
 
 // Pure-logic harmonic field utilities for XOuija.
 // No JUCE dependency — colors returned as RGB float triples.
@@ -472,7 +472,7 @@ struct HarmonicField
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **Note:** The `markerArcOffset` method has a bug (dead code). Delete it — `markerArcY` is the correct implementation. The subagent should only include `markerArcY`.
@@ -480,10 +480,10 @@ struct HarmonicField
 - [ ] **Step 6: Build and run tests — verify all pass**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOceanus
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-./build/XOlokunTests
+./build/XOceanusTests
 ```
 
 Expected: All HarmonicField tests pass (`[PASS]` for every test).
@@ -548,7 +548,7 @@ static void reportTest(const char* name, bool passed)
 static void testPushAndCount()
 {
     std::cout << "\n--- GestureTrailBuffer: Push & Count ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer buf;
     reportTest("empty buffer count = 0", buf.count() == 0);
@@ -565,7 +565,7 @@ static void testPushAndCount()
 static void testRingBufferWrap()
 {
     std::cout << "\n--- GestureTrailBuffer: Ring Wrap ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer buf;
     // Push 256 points
@@ -586,7 +586,7 @@ static void testRingBufferWrap()
 static void testFreeze()
 {
     std::cout << "\n--- GestureTrailBuffer: Freeze ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer buf;
     buf.push(0.1f, 0.2f, 0.3f, 1.0);
@@ -611,7 +611,7 @@ static void testFreeze()
 static void testReplay()
 {
     std::cout << "\n--- GestureTrailBuffer: Replay ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer buf;
     // 3 points with timestamps 0.0, 0.5, 1.0
@@ -637,7 +637,7 @@ static void testReplay()
 static void testTwoTrailInterference()
 {
     std::cout << "\n--- GestureTrailBuffer: Two-Trail Interference ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer a, b;
     a.push(0.3f, 0.8f, 0.0f, 0.0);
@@ -668,7 +668,7 @@ static void testTwoTrailInterference()
 static void testClear()
 {
     std::cout << "\n--- GestureTrailBuffer: Clear ---\n";
-    using namespace xolokun;
+    using namespace xoceanus;
 
     GestureTrailBuffer buf;
     buf.push(0.5f, 0.5f, 0.5f, 1.0);
@@ -709,7 +709,7 @@ Add to `Tests/run_tests.cpp`:
 totalFailed += gesture_trail_tests::runAll();
 ```
 
-Add to `CMakeLists.txt` XOlokunTests sources:
+Add to `CMakeLists.txt` XOceanusTests sources:
 
 ```cmake
 Tests/PlaySurfaceTests/GestureTrailTests.cpp
@@ -736,7 +736,7 @@ Create `Source/UI/PlaySurface/GestureTrailBuffer.h`:
 #include <tuple>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 // B043: Gesture Trail as First-Class Modulation Source
 // 256-tuple ring buffer with freeze/replay and two-trail interference.
@@ -858,7 +858,7 @@ private:
     bool isFrozen_ = false;
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 **IMPORTANT — Bug in the code above:** The `freeze()` method has a name collision (uses `frozen_` as both array and bool). The subagent must fix this: use `frozenBuffer_` for the array and `isFrozen_` for the bool. The corrected `freeze()`:
@@ -876,7 +876,7 @@ void freeze()
 - [ ] **Step 6: Build and run tests — verify all pass**
 
 ```bash
-cmake --build build && ./build/XOlokunTests
+cmake --build build && ./build/XOceanusTests
 ```
 
 Expected: All GestureTrail tests pass.
@@ -896,21 +896,21 @@ git commit -m "feat(PlaySurface): add GestureTrailBuffer — B043 ring buffer, f
 ### Task 3: CC Output Infrastructure
 
 **Files:**
-- Modify: `Source/XOlokunProcessor.h`
-- Modify: `Source/XOlokunProcessor.cpp`
+- Modify: `Source/XOceanusProcessor.h`
+- Modify: `Source/XOceanusProcessor.cpp`
 
 The processor currently returns `false` from `producesMidi()` and has no CC output path. This task adds a lock-free SPSC (single-producer, single-consumer) ring queue for CC events and drains it at the end of `processBlock()`.
 
 - [ ] **Step 1: Read the current processor files**
 
-Read `Source/XOlokunProcessor.h` and `Source/XOlokunProcessor.cpp` to understand the current `processBlock` structure and where to add the drain call. Look for:
+Read `Source/XOceanusProcessor.h` and `Source/XOceanusProcessor.cpp` to understand the current `processBlock` structure and where to add the drain call. Look for:
 - The `producesMidi()` method (should be line ~106)
 - The end of `processBlock()` in the .cpp file
 - Existing `playSurfaceMidiCollector` usage pattern
 
-- [ ] **Step 2: Add CCOutputQueue struct to XOlokunProcessor.h**
+- [ ] **Step 2: Add CCOutputQueue struct to XOceanusProcessor.h**
 
-Add this inside the `XOlokunProcessor` class (private section), alongside the existing `NoteMapEvent` ring buffer:
+Add this inside the `XOceanusProcessor` class (private section), alongside the existing `NoteMapEvent` ring buffer:
 
 ```cpp
 // ── CC Output Queue (XOuija → MIDI out) ──
@@ -971,7 +971,7 @@ bool producesMidi() const override { return true; }
 
 - [ ] **Step 4: Drain CC queue at end of processBlock**
 
-In `Source/XOlokunProcessor.cpp`, find the end of `processBlock()` (before the final `}`) and add:
+In `Source/XOceanusProcessor.cpp`, find the end of `processBlock()` (before the final `}`) and add:
 
 ```cpp
 // Drain XOuija CC output into MIDI output buffer
@@ -990,7 +990,7 @@ Expected: Build succeeds. Auval passes (the CC queue is empty by default, so no 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add Source/XOlokunProcessor.h Source/XOlokunProcessor.cpp
+git add Source/XOceanusProcessor.h Source/XOceanusProcessor.cpp
 git commit -m "feat(Processor): add CC output queue for XOuija — SPSC ring, producesMidi=true"
 ```
 
@@ -1026,7 +1026,7 @@ Key specs to implement (from Sections 3.2–3.6):
 #include "GestureTrailBuffer.h"
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 // Forward declarations for nested classes added in later tasks
 class Planchette;
@@ -1174,7 +1174,7 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 - [ ] **Step 2: Include XOuijaPanel in PlaySurface.h to verify it compiles**
@@ -1902,7 +1902,7 @@ Create `Source/UI/PlaySurface/KeysMode.h`:
 #include "HarmonicField.h"
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 // KEYS Mode — Seaboard-style 2-octave scrollable keyboard
 // Spec: Section 8.4
@@ -2157,7 +2157,7 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 - [ ] **Step 2: Add Keys to NoteInputZone::Mode enum**
@@ -2559,10 +2559,10 @@ In `PlaySurface`, store a pointer to the processor and wire the callback:
 
 ```cpp
 // Add member:
-XOlokunProcessor* processor_ = nullptr;
+XOceanusProcessor* processor_ = nullptr;
 
 // Add setter:
-void setProcessor(XOlokunProcessor* p) { processor_ = p; }
+void setProcessor(XOceanusProcessor* p) { processor_ = p; }
 
 // In constructor, after creating xouijaPanel_:
 xouijaPanel_.onCCOutput = [this](uint8_t cc, uint8_t value)
@@ -2639,7 +2639,7 @@ git commit -m "feat(PlaySurface): wire CC 85-90 output + CC input for remote pla
 - [ ] **Step 1: Clean build**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOceanus
 rm -rf build
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build 2>&1 | tail -20
@@ -2650,7 +2650,7 @@ Expected: 0 errors. Warnings are acceptable.
 - [ ] **Step 2: Run tests**
 
 ```bash
-./build/XOlokunTests
+./build/XOceanusTests
 ```
 
 Expected: All HarmonicField and GestureTrail tests pass. All existing tests still pass.
@@ -2665,7 +2665,7 @@ Expected: `AU VALIDATION SUCCEEDED`.
 
 - [ ] **Step 4: Visual smoke test**
 
-Open XOlokun in a DAW or standalone, open PlaySurface, and verify:
+Open XOceanus in a DAW or standalone, open PlaySurface, and verify:
 - XOuija panel appears on the left with circle-of-fifths markers
 - Planchette drifts when idle, springs to touch, holds briefly after release
 - Trail renders during drag

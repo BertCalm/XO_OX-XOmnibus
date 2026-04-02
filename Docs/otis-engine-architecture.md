@@ -197,5 +197,5 @@ Output + Coupling Cache
 ## File Locations
 
 - Engine: `Source/Engines/Otis/OtisEngine.h`
-- Presets: `Presets/XOlokun/{mood}/Otis_*.xometa`
+- Presets: `Presets/XOceanus/{mood}/Otis_*.xometa`
 - Architecture: `Docs/otis-engine-architecture.md` (this file)

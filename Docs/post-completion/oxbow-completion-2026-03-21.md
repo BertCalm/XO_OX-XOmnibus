@@ -9,12 +9,12 @@
 
 ## 1. Engine Registration — PASS
 
-Registered in `Source/XOlokunProcessor.cpp` at line 228, under the comment "Singularity Collection — OXBOW (entangled reverb synth engine)":
+Registered in `Source/XOceanusProcessor.cpp` at line 228, under the comment "Singularity Collection — OXBOW (entangled reverb synth engine)":
 
 ```cpp
-static bool registered_Oxbow = xolokun::EngineRegistry::instance().registerEngine(
-    "Oxbow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OxbowEngine>();
+static bool registered_Oxbow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OxbowEngine>();
     });
 ```
 
@@ -111,9 +111,9 @@ PASS.
 
 ## 6. Sound Design Guide Entry — MISSING (ACTION REQUIRED)
 
-The `Docs/xolokun_sound_design_guides.md` currently has 39 numbered entries ending at **## 38. OUIE**. OXBOW is not present. The CLAUDE.md Key Files entry still reads "34 of 34 engines in unified guide" — this count is stale (44 engines registered; guide covers 38).
+The `Docs/xoceanus_sound_design_guides.md` currently has 39 numbered entries ending at **## 38. OUIE**. OXBOW is not present. The CLAUDE.md Key Files entry still reads "34 of 34 engines in unified guide" — this count is stale (44 engines registered; guide covers 38).
 
-**Action required:** Add entry "## 39. OXBOW — Entangled Reverb Synthesis" to `Docs/xolokun_sound_design_guides.md`.
+**Action required:** Add entry "## 39. OXBOW — Entangled Reverb Synthesis" to `Docs/xoceanus_sound_design_guides.md`.
 
 Draft content for the entry is provided at the end of this document (see Appendix A).
 
@@ -154,7 +154,7 @@ All 4 macros produce audible, dramatic change. The naming is identity-coherent: 
 
 | Check | Status |
 |-------|--------|
-| 1. Engine registered in XOlokunProcessor.cpp | PASS |
+| 1. Engine registered in XOceanusProcessor.cpp | PASS |
 | 2. CLAUDE.md updated | PASS |
 | 3. Parameter prefix frozen (`oxb_`) | PASS |
 | 4. Preset count (150) and mood distribution | PASS |
@@ -254,4 +254,4 @@ OXBOW is a space engine, not a character engine — you play into it, not throug
 
 ---
 
-*Checklist authored 2026-03-21. Next action: run `/synth-seance` on OXBOW, then add Appendix A entry to `Docs/xolokun_sound_design_guides.md`.*
+*Checklist authored 2026-03-21. Next action: run `/synth-seance` on OXBOW, then add Appendix A entry to `Docs/xoceanus_sound_design_guides.md`.*

@@ -867,7 +867,7 @@ Everything in Sections 2–11 of this document is Phase 1 scope. Summary checkli
 - Network MIDI (rtpMIDI) for CC-level communication
 - BLE MIDI as fallback for Bluetooth proximity use
 - OSC channel for high-resolution gyro/pressure data (float, exceeds 7-bit MIDI fidelity)
-- Auto-discovery via Bonjour/mDNS — phone appears as "XOlokun Controller" on local network
+- Auto-discovery via Bonjour/mDNS — phone appears as "XOceanus Controller" on local network
 - Desktop mirror: remote planchette position displayed as a second ghost planchette on desktop XOuija surface
 - Graceful degradation: if OSC unavailable → fall back to MIDI-only CC 85–90
 - Two players: two phones can each control a planchette; their trails can freeze and create interference (B043 two-trail mode over network)

@@ -246,7 +246,7 @@ The features are strong. The naming needs a translation layer:
 - Global environmental modulation lands. Film/TV composers adopt it immediately as a scene-change tool.
 - First "ecosystem performance" videos appear — producers automating temperature and pressure as primary performance gestures rather than traditional filter sweeps.
 - Modular synth community recognizes EcosystemHost as "global CV bus with character" and begins advocating.
-- XOlokun preset library expands with "ecosystem-aware" presets across all engines (not just OBRIX) that respond to OBRIX's environmental params.
+- XOceanus preset library expands with "ecosystem-aware" presets across all engines (not just OBRIX) that respond to OBRIX's environmental params.
 
 **Month 7-9: Category Recognition**
 - Music tech press begins using "ecosystem synthesis" as a descriptor. First comparison articles: "Ecosystem Synthesis vs. Generative: What is the difference?"
@@ -268,13 +268,13 @@ The features are strong. The naming needs a translation layer:
 
 3. **Ecosystem Field Guide Series** — 5-part blog series on ecosystem synthesis as a practice. Content marketing that establishes XO_OX as the authority on a category it created.
 
-4. **Ecosystem Engine Design Principles** — SDK documentation for third-party developers building ecosystem-aware engines. Positions XOlokun as a platform, not just a plugin.
+4. **Ecosystem Engine Design Principles** — SDK documentation for third-party developers building ecosystem-aware engines. Positions XOceanus as a platform, not just a plugin.
 
 5. **"Reef of the Week"** — Community content series where producers share their ecosystem configurations. Low-effort to produce, high engagement, builds community around the unique feature.
 
 ### The 12-Month Verdict
 
-If ecosystem synthesis catches on, OBRIX becomes the flagship reason to use XOlokun over any single-engine synth. The moat is not a feature list — it is 5 waves of biological complexity that cannot be replicated by adding a "global macro" knob. Competitors will attempt surface-level imitations. The depth of OBRIX's stateful, ecological, multi-wave architecture will be evident in the results.
+If ecosystem synthesis catches on, OBRIX becomes the flagship reason to use XOceanus over any single-engine synth. The moat is not a feature list — it is 5 waves of biological complexity that cannot be replicated by adding a "global macro" knob. Competitors will attempt surface-level imitations. The depth of OBRIX's stateful, ecological, multi-wave architecture will be evident in the results.
 
 The risk is not that the concept fails technically. The risk is that the concept fails communicationally — that the biology vocabulary creates a perception barrier that prevents producers from discovering the workflow benefits. The Foreseer's strongest recommendation: **invest as much in the translation layer (tutorials, guides, producer-friendly naming) as in the DSP.**
 

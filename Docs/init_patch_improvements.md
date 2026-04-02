@@ -14,7 +14,7 @@ The seance split on doctrine:
 - **Vangelis + Kakehashi position:** A synthesizer player must be rewarded immediately. The first sound you hear shapes everything that follows. If the init sounds like a test tone, you have told the player their time doesn't matter.
 - **Schulze position:** A blank canvas is honest. The init patch is a diagnostic — does the engine work? The player should discover the beauty themselves.
 
-**Resolution for XOlokun:** Performance instruments need immediate beauty; experimental instruments may benefit from neutral starts.
+**Resolution for XOceanus:** Performance instruments need immediate beauty; experimental instruments may benefit from neutral starts.
 
 The practical test used: **Does the init patch make someone say "oh, that's interesting" within the first 3 seconds — on white keys, without prior knowledge of the engine?**
 
@@ -41,7 +41,7 @@ The practical test used: **Does the init patch make someone say "oh, that's inte
 
 **Root cause:** Zero Foundation presets. The only existing preset ("Thunderforce") is maximum FM aggression at ERA 0.5/0.95 — it skips straight to Flux energy and never shows the chip-blending story.
 
-The seance verdict: *"The ERA triangle arrives at the XOlokun dock with no luggage."* The B009 blessing is the ERA triangle (a 2D timbral crossfade that Buchla/Schulze/Vangelis/Pearlman all praised). No preset demonstrated it in a welcoming way.
+The seance verdict: *"The ERA triangle arrives at the XOceanus dock with no luggage."* The B009 blessing is the ERA triangle (a 2D timbral crossfade that Buchla/Schulze/Vangelis/Pearlman all praised). No preset demonstrated it in a welcoming way.
 
 **What makes the new init better:**
 - ERA X and Y both at 0.5 — the barycentric center, where all three chip architectures contribute equally

@@ -1,4 +1,4 @@
-# XOlokun V1 Launch Plan
+# XOceanus V1 Launch Plan
 **Status:** ACTIVE PLANNING DOCUMENT
 **Date:** 2026-03-20
 **Product State:** 46 engines | ~22,000+ presets | Build PASS | auval PASS
@@ -32,11 +32,11 @@ Define this first. Everything else flows from it.
 
 ### Elevator Pitch (1 sentence)
 
-> XOlokun is a free, open-source synthesizer with 42 unique engines — from granular and physical modeling to cellular automata and spectral synthesis — that couple together in real time to produce sounds no single synth can make.
+> XOceanus is a free, open-source synthesizer with 42 unique engines — from granular and physical modeling to cellular automata and spectral synthesis — that couple together in real time to produce sounds no single synth can make.
 
 ### Short Description (1 paragraph)
 
-> XOlokun is a free plugin for macOS with 46 synthesis engines, ~22,000 factory presets, and a cross-engine coupling system that lets any engine modulate any other. Each engine is a distinct synthesis paradigm — a granular cloud sampler, a dub delay machine, a cellular automaton, a spectral engine driven by continued fractions, a hammerhead duophonic synth. Load four at once, wire them together, and hear what happens when an onset generator drives the filter of a reverb-drenched pad. The core is MIT-licensed and always free. Premium content (Guru Bin Transcendental packs, boutique engines) funds continued development. XO_OX Designs is one person, building in public.
+> XOceanus is a free plugin for macOS with 46 synthesis engines, ~22,000 factory presets, and a cross-engine coupling system that lets any engine modulate any other. Each engine is a distinct synthesis paradigm — a granular cloud sampler, a dub delay machine, a cellular automaton, a spectral engine driven by continued fractions, a hammerhead duophonic synth. Load four at once, wire them together, and hear what happens when an onset generator drives the filter of a reverb-drenched pad. The core is MIT-licensed and always free. Premium content (Guru Bin Transcendental packs, boutique engines) funds continued development. XO_OX Designs is one person, building in public.
 
 ### Full Press Release Draft
 
@@ -44,15 +44,15 @@ Define this first. Everything else flows from it.
 
 **FOR IMMEDIATE RELEASE**
 
-**XO_OX Designs Ships XOlokun: 46 Synthesis Engines, ~22,000 Presets, Free**
+**XO_OX Designs Ships XOceanus: 46 Synthesis Engines, ~22,000 Presets, Free**
 
-*March [DATE], 2026 — XO_OX Designs today released XOlokun V1.0, a free, open-source multi-engine synthesizer plugin for macOS. XOlokun brings together 42 distinct synthesis paradigms in a single plugin — from classic subtractive and FM through granular, physical modeling, cellular automata, and spectral synthesis — with a cross-engine coupling system that allows any engine to modulate any other in real time.*
+*March [DATE], 2026 — XO_OX Designs today released XOceanus V1.0, a free, open-source multi-engine synthesizer plugin for macOS. XOceanus brings together 42 distinct synthesis paradigms in a single plugin — from classic subtractive and FM through granular, physical modeling, cellular automata, and spectral synthesis — with a cross-engine coupling system that allows any engine to modulate any other in real time.*
 
 *The plugin ships with approximately 22,000 factory presets across 8 mood categories, organized by a 6-dimensional Sonic DNA system that lets users browse by character rather than category. All synthesis, all presets, and all coupling features are permanently free.*
 
 *"The kid who grew up making music in Fruity Loops demos — who couldn't save, who had to finish songs in one sitting — is building the free instrument so the next generation can use a top-of-the-line plugin," said the developer behind XO_OX Designs. "No barriers. No paywalls. Better than what money can buy."*
 
-*XOlokun is distributed under the MIT license. The plugin currently supports macOS AU format, with AUv3 (iOS) and VST3 planned. Download is available at XO-OX.org.*
+*XOceanus is distributed under the MIT license. The plugin currently supports macOS AU format, with AUv3 (iOS) and VST3 planned. Download is available at XO-OX.org.*
 
 *Key features at launch:*
 *- 42 synthesis engines, each with distinct DSP character and aquatic mythology identity*
@@ -70,25 +70,25 @@ Define this first. Everything else flows from it.
 
 ### Key Differentiators vs. Competition
 
-| Competitor | Their strength | XOlokun answer |
+| Competitor | Their strength | XOceanus answer |
 |---|---|---|
 | Vital / Surge XT | Polished, single-engine free synths | 46 engines, coupling between them — different category |
 | Omnisphere | Huge preset library, cinematic | Free (Omnisphere is $500), open source, user-extensible |
 | Pigments | Multi-engine, beautiful UI | MIT, 46 engines vs. 4, coupling as core synthesis, not FX |
-| u-he Hive / Diva | Professional analog emulation | XOlokun is character-driven, not emulation — and free |
-| Native Instruments Kontakt | Ecosystem, sample library | XOlokun generates synthesis from scratch, no samples needed |
+| u-he Hive / Diva | Professional analog emulation | XOceanus is character-driven, not emulation — and free |
+| Native Instruments Kontakt | Ecosystem, sample library | XOceanus generates synthesis from scratch, no samples needed |
 
 **The position no one else occupies:** A synthesis ecosystem — not a synth — where the engines are the instruments and the coupling between them is the compositional tool. Free. Open. 42 paradigms.
 
 ### Social Media Templates
 
 **Short (280 chars / Twitter/X):**
-> XOlokun V1.0 is out. 46 synthesis engines. ~22,000 presets. Cross-engine coupling. MIT license. Free.
+> XOceanus V1.0 is out. 46 synthesis engines. ~22,000 presets. Cross-engine coupling. MIT license. Free.
 >
 > Download: XO-OX.org
 
 **Medium (Instagram caption / Reddit body):**
-> XOlokun V1.0 ships today.
+> XOceanus V1.0 ships today.
 >
 > 42 synthesis engines in one plugin: granular, FM, physical modeling, cellular automata, spectral, dub delay, chip synth, wavetable, and 34 more. Each engine has its own aquatic mythology identity, Sonic DNA fingerprint, and coupling compatibility.
 >
@@ -99,7 +99,7 @@ Define this first. Everything else flows from it.
 > Free. Forever. XO-OX.org
 
 **Long (forum post / community seed):**
-> I've been building XOlokun for [X months] — a free, open-source multi-engine synth for macOS. It shipped today and I wanted to share it here because this community has been a reference point throughout development.
+> I've been building XOceanus for [X months] — a free, open-source multi-engine synth for macOS. It shipped today and I wanted to share it here because this community has been a reference point throughout development.
 >
 > **What it is:** 42 synthesis engines in one plugin, each with distinct DSP character. Not variations of the same oscillator topology — 42 genuinely different paradigms. ORGANISM is a cellular automaton (Wolfram elementary CA rules driving oscillators). ORACLE is GENDY stochastic synthesis with Maqam tuning. OWLFISH is a Mixtur-Trautonium oscillator. OBRIX is a modular brick synthesis system. ORGANON uses Variational Free Energy metabolism as a control signal. Each one is its own thing.
 >
@@ -165,7 +165,7 @@ These are non-negotiable blockers from the Board. Check each off:
 
 **Press Kit Contents**
 Prepare a `/press-kit/` folder at XO-OX.org with:
-- `xolokun-logo-light.svg` + `xolokun-logo-dark.svg`
+- `xoceanus-logo-light.svg` + `xoceanus-logo-dark.svg`
 - `hero-coupling-view.png` (4K, light mode, 4 engines loaded, coupling active)
 - `preset-browser-dna.png` (4K, Sonic DNA radar visible)
 - Screenshots of 5-6 distinct engines showing accent color variety
@@ -184,8 +184,8 @@ The goal in the pre-launch window is to plant the concept, not announce the prod
 | T-5 | Field Guide: publish "The Water Column Atlas" or "What is Coupling?" post — educational, no sales pitch | XO-OX.org + Signal feed | Blog post |
 | T-4 | Engine spotlight: OBRIX — the modular brick engine. Screenshot + 1-paragraph description | Twitter/X | Static image |
 | T-3 | Engine spotlight: ORACLE — GENDY stochastic + Maqam tuning. Audio clip | Instagram + Twitter/X | Short audio clip |
-| T-2 | "Tomorrow." — minimal, one word, XOlokun logo | All channels | Logo image |
-| T-1 | "XOlokun. Tomorrow. Free. XO-OX.org" | All channels | Clean link card |
+| T-2 | "Tomorrow." — minimal, one word, XOceanus logo | All channels | Logo image |
+| T-1 | "XOceanus. Tomorrow. Free. XO-OX.org" | All channels | Clean link card |
 
 ### Community Seeding — Pre-Launch Contacts
 
@@ -215,7 +215,7 @@ Launch day begins at 9:00 AM your local time. All times are relative to that anc
 | 9:00 AM | **XO-OX.org Download page goes live** | Site | The source of truth |
 | 9:05 AM | **GitHub repo goes public** | GitHub | Public release, tag v1.0.0 |
 | 9:10 AM | **Patreon page live** | Patreon | With Tier 1 ($3), Tier 2 ($8), Tier 3 ($20) active |
-| 9:15 AM | Post to **Twitter/X** — short template | Twitter/X | "XOlokun V1.0 is out. [link]" |
+| 9:15 AM | Post to **Twitter/X** — short template | Twitter/X | "XOceanus V1.0 is out. [link]" |
 | 9:20 AM | Post to **Instagram** — medium template | Instagram | Screenshot + medium copy |
 | 9:25 AM | Post to **r/synthesizers** | Reddit | Full forum-style post — see long template |
 | 9:35 AM | Post to **r/edmproduction** | Reddit | Same post, slightly reframed for production angle |
@@ -224,12 +224,12 @@ Launch day begins at 9:00 AM your local time. All times are relative to that anc
 | 10:15 AM | Post to **Elektronauts** | Elektronauts | Frame around hardware integration + XPN/MPC angle |
 | 10:30 AM | Post to **Gearspace** | Gearspace | Digital instruments / software synths subforum |
 | 10:45 AM | Post to **Discord** — #announcements (XO_OX server) | Discord | Pin the post |
-| 11:00 AM | Post **Signal feed update** on XO-OX.org | Site | "XOlokun V1.0 is live" with download link |
+| 11:00 AM | Post **Signal feed update** on XO-OX.org | Site | "XOceanus V1.0 is live" with download link |
 | 11:30 AM | **Barry OB's team posts** — coordinated but independently phrased | All their channels | Not simultaneous with your posts — stagger by 2 hours |
 | 12:00 PM | Begin monitoring and responding to comments | All channels | Every comment in first 6 hours is critical for algorithm |
 | 2:00 PM | Send **outreach emails to press** — Sonic State, Bedroom Producers Blog, Attack Magazine | Email | Short pitch: "I shipped this today, here's the press kit" |
-| 4:00 PM | Post launch **Field Guide article**: "XOlokun V1.0 — What shipped and what's next" | XO-OX.org + Signal | Honest accounting, roadmap tease |
-| 6:00 PM | **YouTube** — upload the "What is XOlokun?" 60-second trailer | YouTube | Short-form, hook in first 5 seconds |
+| 4:00 PM | Post launch **Field Guide article**: "XOceanus V1.0 — What shipped and what's next" | XO-OX.org + Signal | Honest accounting, roadmap tease |
+| 6:00 PM | **YouTube** — upload the "What is XOceanus?" 60-second trailer | YouTube | Short-form, hook in first 5 seconds |
 | 8:00 PM | End-of-day check: download count, biggest threads, any P0 bugs reported | All channels | Identify if hotfix needed |
 
 ### Channel-by-Channel Posting Plan
@@ -249,7 +249,7 @@ Launch day begins at 9:00 AM your local time. All times are relative to that anc
 - Monitor comments for the first 6 hours, reply to every question
 
 **Elektronauts**
-- Frame around hardware producers: XPN export means XOlokun presets run on your MPC without a computer
+- Frame around hardware producers: XPN export means XOceanus presets run on your MPC without a computer
 - Lead with ONSET (percussion), OBRIX (modular bricks), the MPC workflow
 - Elektronauts regulars are skeptical of software — be direct, not hype-forward
 
@@ -269,8 +269,8 @@ Launch day begins at 9:00 AM your local time. All times are relative to that anc
 - Set up the initial channel structure (see Discord structure in Community section)
 
 **YouTube**
-- 60-second "What is XOlokun?" trailer — the hook video
-- Title: "XOlokun — 42 Synthesis Engines, Free" (SEO-first)
+- 60-second "What is XOceanus?" trailer — the hook video
+- Title: "XOceanus — 42 Synthesis Engines, Free" (SEO-first)
 - Description: full short description + download link in first 3 lines
 - Tags: free synth plugin, free vst, open source synthesizer, multi-engine synth
 
@@ -326,7 +326,7 @@ The Field Guide has 14 published posts and 16 planned. Launch creates an opportu
 
 | Week | Field Guide Content | Signal Update |
 |---|---|---|
-| T+1 | "XOlokun V1.0 — What shipped and what's next" | Launch day stats, top threads, first patch reports |
+| T+1 | "XOceanus V1.0 — What shipped and what's next" | Launch day stats, top threads, first patch reports |
 | T+2 | "The Coupling System Explained" — full technical walkthrough of MegaCouplingMatrix | Community Challenge #1 announcement |
 | T+3 | Engine deep-dive: OBRIX — modular bricks, coral reef mythology, Wave 3 architecture | Engine spotlight: OBRIX Awakening presets live |
 | T+4 | Engine deep-dive: ORACLE — GENDY stochastic, Maqam tuning, Buchla blessing | — |
@@ -378,7 +378,7 @@ INFORMATION
 
 COMMUNITY
   #general                — open chat
-  #show-your-work         — tracks + patches made with XOlokun
+  #show-your-work         — tracks + patches made with XOceanus
   #preset-sharing         — post .xometa files, coupling patches
   #coupling-experiments   — cross-engine discovery (the signature channel)
 

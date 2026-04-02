@@ -7,7 +7,7 @@
 ## What Is This?
 
 TIDE TABLES is the gateway pack for the XO_OX synthesizer library.
-It brings three of XOlokun's flagship engines — **ONSET**, **ODYSSEY**, and **OPAL** —
+It brings three of XOceanus's flagship engines — **ONSET**, **ODYSSEY**, and **OPAL** —
 into a single, free MPC expansion you can load today.
 
 No samples. No loops. Every sound is synthesized in real time by the engines themselves.
@@ -100,17 +100,17 @@ This is the **Entangled mood**. No engine operates alone.
 
 TIDE TABLES is fully synthesized — no sample content, no licensing restrictions.
 Every pad responds to velocity, mod wheel, and aftertouch exactly as it would
-inside XOlokun on a desktop. The engines are the same code running on the same DSP.
+inside XOceanus on a desktop. The engines are the same code running on the same DSP.
 
 The pack is also a map. Each program is a door into a different engine.
 Play Coastal Drums, then open Deep Water and hear what happens when all three
-engines lock together. That's what XOlokun is built for.
+engines lock together. That's what XOceanus is built for.
 
 ---
 
 ## Want More?
 
-TIDE TABLES is a taste. The full XOlokun library contains **34+ engines**,
+TIDE TABLES is a taste. The full XOceanus library contains **34+ engines**,
 2,550+ factory presets, and the complete XO_OX water column mythology.
 
 Visit **[xo-ox.org](https://xo-ox.org)** to learn more, or join Patreon at the Signal tier
@@ -121,7 +121,7 @@ to receive new packs as they're released.
 ## Credits
 
 All sounds: XO_OX
-Engines: ONSET, ODYSSEY, OPAL (XOlokun)
+Engines: ONSET, ODYSSEY, OPAL (XOceanus)
 Format: Akai MPC Expansion (.xpn)
 Released: 2026-03-16
 License: Free for personal and commercial use

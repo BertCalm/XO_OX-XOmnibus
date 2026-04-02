@@ -67,7 +67,7 @@ MEADOW scales both the reverb mix and delay feedback simultaneously, placing the
 
 ## Family Coupling
 
-OHM was designed for the Constellation Family slot in XOlokun. It accepts `LFOToPitch` (external pitch mod in semitones, useful for wobble from ORPHICA or OBBLIGATO), `AmpToFilter` (raises damping, shortening sustain — try from OTTONI's brass attacks), and `EnvToMorph` (scales exciter intensity — let OBBLIGATO's breath envelope drive OHM's pick energy for a breath-controlled pluck). OHM outputs a gentle, complex signal well-suited to modulate other engines' filter or morph parameters via amplitude coupling.
+OHM was designed for the Constellation Family slot in XOceanus. It accepts `LFOToPitch` (external pitch mod in semitones, useful for wobble from ORPHICA or OBBLIGATO), `AmpToFilter` (raises damping, shortening sustain — try from OTTONI's brass attacks), and `EnvToMorph` (scales exciter intensity — let OBBLIGATO's breath envelope drive OHM's pick energy for a breath-controlled pluck). OHM outputs a gentle, complex signal well-suited to modulate other engines' filter or morph parameters via amplitude coupling.
 
 ## Tips & Tricks
 

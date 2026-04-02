@@ -88,7 +88,7 @@
 
 **Strengths:**
 - The STRIFE/LOVE HAMMER axis is one of the most expressive single-parameter gestures in the entire fleet. Sweeping from cross-FM destruction to spectral blend harmony through a single macro (or live aftertouch) gives the player a full emotional narrative in one movement. Aftertouch wired directly to HAMMER makes this gesture performable in real time — a rare and excellent design decision.
-- The duophonic architecture (exactly 2 voices, Split/Layer/Duo modes, each with independent algorithm selection from 8 options) gives OUIE the widest timbral contrast of any engine in the fleet. A voice running VA against a voice running Karplus-Strong, interacting through ring modulation, is a sound no other XOlokun engine can produce alone.
+- The duophonic architecture (exactly 2 voices, Split/Layer/Duo modes, each with independent algorithm selection from 8 options) gives OUIE the widest timbral contrast of any engine in the fleet. A voice running VA against a voice running Karplus-Strong, interacting through ring modulation, is a sound no other XOceanus engine can produce alone.
 - AMPULLAE macro scaling velocity sensitivity (velScale range 0.3–1.0) is a genuinely useful meta-control — it lets a preset dial in exactly how dynamically responsive the engine is, from consistent (low AMPULLAE) to hyper-sensitive (high AMPULLAE).
 
 **Concerns:**
@@ -120,4 +120,4 @@
 3. **OCEANDEEP** — Add acoustic citations to waveguide body resonance comments if D003 compliance is desired; confirm bioluminescent exciter probability and pitch sweep are not orphaned DSP paths.
 4. **OUIE** — Lower LFO1 rate floor from 0.01 Hz to 0.005 Hz for consistency; audit mod envelope routing.
 
-*Full fleet context: `Docs/seance_cross_reference.md` | Master spec: `Docs/xolokun_master_specification.md`*
+*Full fleet context: `Docs/seance_cross_reference.md` | Master spec: `Docs/xoceanus_master_specification.md`*

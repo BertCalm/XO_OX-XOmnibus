@@ -84,7 +84,7 @@ The following 10 posts are sequenced for maximum flywheel impact across April–
 **Sequence rationale:** Competitive positioning and SEO. The MPCe is new hardware with low competition in the content space. XO_OX can establish authority on MPCe-native design before anyone else does. Supports the SEO term "MPCe native packs."
 
 ### Post 5 — "How Coupling Works: 12 Types Explained"
-**Sequence rationale:** Technical authority. Coupling is the feature that no other MPC pack creator has — this post makes that visible to producers who have not yet understood what XOlokun does that nothing else does.
+**Sequence rationale:** Technical authority. Coupling is the feature that no other MPC pack creator has — this post makes that visible to producers who have not yet understood what XOceanus does that nothing else does.
 
 ### Post 6 — "The DNA Badge: Reading XO_OX Presets Like a Map"
 **Sequence rationale:** Tool education. Once `/packs/` is redesigned with DNA badge filtering, this post gives producers the vocabulary to use the filter. Also functions as brand onboarding for anyone who bought a pack and wants to understand the preset system.
@@ -138,7 +138,7 @@ XO_OX should build content clusters around the following search terms, prioritiz
 | MPCe native packs | Near zero | No other studio is using this framing; XO_OX can define the category |
 | XPN format tutorial | Near zero | Technical niche with no authoritative resource; one strong post dominates |
 | feliX-Oscar spectrum | Zero | XO_OX coined this; any search for it should land here |
-| XOlokun synthesis | Zero | Brand-specific; own it by default |
+| XOceanus synthesis | Zero | Brand-specific; own it by default |
 
 ### Tier 2 — Build Authority (moderate competition, 3–6 month timeline)
 

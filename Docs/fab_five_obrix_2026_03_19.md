@@ -7,11 +7,11 @@
 
 ## Phase 1: The Walk-Through
 
-OBRIX is at a fascinating inflection point. Three waves of DSP development are complete, 174 factory presets exist across all 7 moods, the seance council scored it 7.2/10 with a roadmap to 9.4/10. The architecture is genuinely novel within XOlokun -- a brick-pool modular synth where you snap ocean bricks together. The Constructive Collision signal flow (split processing, post-mix insert) is a real design idea, not just a topology.
+OBRIX is at a fascinating inflection point. Three waves of DSP development are complete, 174 factory presets exist across all 7 moods, the seance council scored it 7.2/10 with a roadmap to 9.4/10. The architecture is genuinely novel within XOceanus -- a brick-pool modular synth where you snap ocean bricks together. The Constructive Collision signal flow (split processing, post-mix insert) is a real design idea, not just a topology.
 
 What is working: the brick pool metaphor is coherent, the signal flow is correct, the DSP is solid (CytomicSVF, PolyBLEP, matched-Z spatial filters), Wave 3 additions (Drift Bus, Journey Mode, Spatial) add genuine depth. 174 presets with evocative names. Coupling architecture with brick complexity output is clever.
 
-What needs the Fab Five: the code carries visible signs of being built in waves -- naming inconsistencies between Wave 1 and Wave 3, the header comment growing but not restructured, internal helpers that lack the poetic quality of the best XOlokun engines (compare ONSET's creature identity header). The brick metaphor is stated but not deeply threaded through the code itself.
+What needs the Fab Five: the code carries visible signs of being built in waves -- naming inconsistencies between Wave 1 and Wave 3, the header comment growing but not restructured, internal helpers that lack the poetic quality of the best XOceanus engines (compare ONSET's creature identity header). The brick metaphor is stated but not deeply threaded through the code itself.
 
 ---
 
@@ -32,7 +32,7 @@ Compare OBRIX's opening:
 // A runtime-configurable synthesis toy box where you snap "ocean bricks"
 // together to build sound.
 ```
-To ONSET's opening, which tells a creature story: where it lives in the water column, what it does, what sonic lineage it draws from. OBRIX reads like a product spec. The "baby brother of XOlokun" line diminishes the engine's identity -- flagship engines do not call themselves baby brothers.
+To ONSET's opening, which tells a creature story: where it lives in the water column, what it does, what sonic lineage it draws from. OBRIX reads like a product spec. The "baby brother of XOceanus" line diminishes the engine's identity -- flagship engines do not call themselves baby brothers.
 
 **Recommendation**: Rewrite the header as a creature identity block. OBRIX is a coral reef: a living structure that grows by accretion, each polyp (brick) a simple organism that creates complex architecture through accumulation. The reef does not design itself -- it emerges. This is the story.
 
@@ -239,11 +239,11 @@ The header says "Ocean Bricks: The Living Reef" and the naming convention (Shell
 This is the difference between mythology that is *bolted on* and mythology that is *grown through*. The code does not need to be renamed (parameter IDs are frozen), but the story could be more present in comments, method names, and internal documentation.
 
 **2. The "baby brother" framing undermines the flagship identity.**
-Line 18: "OBRIX is the baby brother of XOlokun." This is humble but wrong for a flagship engine. OBRIX should be framed as a reef -- an ecosystem within the ecosystem. A reef is not a baby anything; it is a foundational structure that supports entire worlds of life. The framing should be: OBRIX is the substrate. Other engines are the creatures that live on it.
+Line 18: "OBRIX is the baby brother of XOceanus." This is humble but wrong for a flagship engine. OBRIX should be framed as a reef -- an ecosystem within the ecosystem. A reef is not a baby anything; it is a foundational structure that supports entire worlds of life. The framing should be: OBRIX is the substrate. Other engines are the creatures that live on it.
 
 **Recommendation**: Replace "baby brother" with language that positions OBRIX as the reef that supports the fleet:
 ```
-OBRIX is the living reef of XOlokun -- a substrate engine that grows through
+OBRIX is the living reef of XOceanus -- a substrate engine that grows through
 periodic brick drops, accumulating new organisms (source types, processor modes,
 effect algorithms) like a reef accumulates coral. Each brick is simple; the
 architecture they create together is complex, alive, and unique to each player.

@@ -1,4 +1,4 @@
-# Sustainable Social Engine — XOlokun
+# Sustainable Social Engine — XOceanus
 
 **Date:** March 25, 2026
 **Status:** Approved — Barry OB stress test + Visionary escalation
@@ -250,7 +250,7 @@ Every Wednesday, one post with a deliberate gap.
 - Missing parameter in a coupling recipe: `"[REDACTED] → filter cutoff produces the pressure effect. What is it?"`
 - Redacted word in a scripture verse: `"The ██████ coupling type is the one you earn, not the one you choose."`
 - Incomplete coupling chain: `"OBRIX → ORBWEAVE → [?] — what completes this chain?"`
-- Deliberately wrong claim: `"Fun fact: XOlokun has 72 engines." (it has 73)` — watch how fast the community corrects it
+- Deliberately wrong claim: `"Fun fact: XOceanus has 72 engines." (it has 73)` — watch how fast the community corrects it
 
 **What happens next:**
 Community fills the gap. XO_OX responds to the best answer with a follow-up that goes one layer deeper. This converts passive consumption to active participation. The community member who fills the gap tells other people they did it.
@@ -335,7 +335,7 @@ Before any template runs, write 500 words. Not for publication. For calibration.
 **The three questions:**
 
 **1. Who am I talking to?**
-Synthesis nerds who have not heard of XOlokun. They know what coupling is, or they are curious enough to learn. They are probably using Vital, Serum, Surge, or hardware. They are frustrated that synthesis is either too simple (preset-only) or too inaccessible (modular). They want something with depth that does not require a PhD to navigate. They have heard that XOlokun has 73 engines and want to know if that is real or marketing.
+Synthesis nerds who have not heard of XOceanus. They know what coupling is, or they are curious enough to learn. They are probably using Vital, Serum, Surge, or hardware. They are frustrated that synthesis is either too simple (preset-only) or too inaccessible (modular). They want something with depth that does not require a PhD to navigate. They have heard that XOceanus has 73 engines and want to know if that is real or marketing.
 
 **2. What should they feel?**
 Curiosity. Not sold-to. The difference: sold-to means you already know the answer and are persuading. Curiosity means you are sharing something you found genuinely interesting and leaving room for them to find it too. A person who feels sold-to bounces. A person who feels curious clicks deeper.

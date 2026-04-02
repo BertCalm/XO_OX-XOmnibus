@@ -75,7 +75,7 @@ Line 734: `v.filterEnv.setADSR(0.001f, 0.3f, 0.0f, 0.5f)` — attack 1ms, decay 
 | Velocity Expressiveness (D001) | 9.0 | Three parallel paths from velocity. Mode amplitude shaping is mode-index weighted. Mallet bounce on soft strikes adds physical authenticity. |
 | Modulation Coverage (D002/D005/D006) | 6.5 | Aftertouch and mod wheel are both wired and meaningful. Macros all functional. Two LFOs are completely dead (BUG-1). shimmerLFO rate hardcoded (BUG-2). Thermal drift saves D005. |
 | Parameter Integrity (D004) | 6.0 | 20 of 26 params wired. 6 LFO params declared and dead. 23% parameter deadweight is the single largest quality gap in this engine. |
-| Architecture Originality | 9.0 | Per-mode sympathetic resonance with `lastOutput` readback cache is novel fleet-wide. Material continuum with four tables + tri-segment morph + decay exponent is the most complete material model in XOlokun. Thermal personality grid is genuinely fresh. |
+| Architecture Originality | 9.0 | Per-mode sympathetic resonance with `lastOutput` readback cache is novel fleet-wide. Material continuum with four tables + tri-segment morph + decay exponent is the most complete material model in XOceanus. Thermal personality grid is genuinely fresh. |
 | Identity Coherence | 9.0 | "Sunken oware board + coral + bronze barnacles" is specific and evocative. Seven pillars map one-to-one to code structures. Balinese shimmer in Hz not cents is culturally accurate. Buzz membrane at 300 Hz for gourd body is ethnographically grounded. |
 
 **Final Score: 8.4/10**

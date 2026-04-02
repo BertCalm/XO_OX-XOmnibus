@@ -10,7 +10,7 @@
 
 ## 1. Gap Analysis Summary
 
-The coupling density heatmap reveals the current state plainly: **105 of 561 engine pairs (18.7%)** have at least one Entangled preset. That leaves **456 uncovered pairs** — a significant blind spot in the mood that is supposed to define XOlokun as a coupled ecosystem rather than a collection of isolated engines.
+The coupling density heatmap reveals the current state plainly: **105 of 561 engine pairs (18.7%)** have at least one Entangled preset. That leaves **456 uncovered pairs** — a significant blind spot in the mood that is supposed to define XOceanus as a coupled ecosystem rather than a collection of isolated engines.
 
 **Most richly coupled legacy engines** (covered in the most pairs): OPAL, OBSIDIAN, DRIFT, ONSET, FAT. These engines benefited from early Prism Sweep attention and tend to appear in cross-genre contexts naturally.
 
@@ -18,7 +18,7 @@ The coupling density heatmap reveals the current state plainly: **105 of 561 eng
 
 **Constellation engines (OHM, ORPHICA, OBBLIGATO, OTTONI, OLE)** are the most critical gap. OBBLIGATO has zero coupling presets. OHM, ORPHICA, OTTONI, and OLE each have fewer than three pairs covered. The five Constellation engines together represent 5 × 30 = 150 potential pairs (Constellation × all others) plus 10 intra-Constellation pairs — roughly 160 pairs, all of which are essentially empty.
 
-The Entangled mood is the proof-of-concept for the XOlokun doctrine. Without dense coupling coverage, the mood reads sparse and the inter-engine relationships that define the ecosystem's identity remain invisible to users.
+The Entangled mood is the proof-of-concept for the XOceanus doctrine. Without dense coupling coverage, the mood reads sparse and the inter-engine relationships that define the ecosystem's identity remain invisible to users.
 
 ---
 

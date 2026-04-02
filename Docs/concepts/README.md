@@ -32,7 +32,7 @@ These engines exist as compiled plugins. Briefs capture the mythology retrofitte
 | File | Engine | Gallery Code | Status | Thesis |
 |------|--------|-------------|--------|--------|
 | `xoceanic_concept_brief.md` | XOceanic | OCEANIC | Complete — standalone built | String ensemble synth paired with a bioluminescent effects processor — strings provide warmth, the pedalboard reveals colors hiding inside them. |
-| `xoceanic_integration_spec.md` | XOceanic (XOlokun spec) | OCEANIC | Integration spec | Paraphonic string ensemble + effects-as-revelation. XOlokun adapter spec. |
+| `xoceanic_integration_spec.md` | XOceanic (XOceanus spec) | OCEANIC | Integration spec | Paraphonic string ensemble + effects-as-revelation. XOceanus adapter spec. |
 | `xoceanic_master_spec.md` | XOceanic (full build spec) | OCEANIC | Master build reference | Full parameter layout, DSP chain, and preset library spec. |
 | `xocelot_concept_brief.md` | XOcelot | CELOT | Phase 1 architecture complete | Canopy-layered sample-mangling synthesizer — sonic rainforest where floor/understory/canopy strata feed each other. |
 | `xopal_concept_brief.md` | XOpal | OPAL | Approved for Phase 1 | Granular synthesis engine that fragments any sound into time-scattered particles — smooth stretched clouds to shattered glass. |
@@ -91,8 +91,8 @@ Retroactive mythology applied to the founding feliX-Oscar polarity that underlie
 
 | File | Subject | Description |
 |------|---------|-------------|
-| `aquatic_master_fx_concept.md` | Aquatic Master FX Suite ("The Aquarium") | Six master effects themed around water phenomena — the sonic environment all XOlokun engines pass through. Concept approved, pending DSP implementation. |
-| `xo_chord_machine_design.md` | XO Chord Machine | World-class design for distributing chord voicings across XOlokun's 4 engine slots — each chord tone shaped by a different synthesis character. The feature that makes 4-slot architecture musically inevitable. |
+| `aquatic_master_fx_concept.md` | Aquatic Master FX Suite ("The Aquarium") | Six master effects themed around water phenomena — the sonic environment all XOceanus engines pass through. Concept approved, pending DSP implementation. |
+| `xo_chord_machine_design.md` | XO Chord Machine | World-class design for distributing chord voicings across XOceanus's 4 engine slots — each chord tone shaped by a different synthesis character. The feature that makes 4-slot architecture musically inevitable. |
 | `xorphica_family_constellation_ecosystem.md` | XOrphica Family Constellation | Five engines. Five splits. Five macros. Five species. One family system — ecosystem design for the ORPHICA engine cluster. |
 
 ---
@@ -101,7 +101,7 @@ Retroactive mythology applied to the founding feliX-Oscar polarity that underlie
 
 - **Phase 1 architecture docs** for approved engines live in `../` (parent Docs folder), named `<engine>_phase1_architecture.md` or `<engine>_architecture_blueprint.md`
 - **Design specs** (full parameter layout) live in `../` named `<engine>_design_spec.md`
-- **Integration specs** for XOlokun adapter layer live in the individual instrument repos under `docs/xolokun_integration_spec.md`
+- **Integration specs** for XOceanus adapter layer live in the individual instrument repos under `docs/xoceanus_integration_spec.md`
 - **Aquatic mythology** master doc: `../xo_ox_aquatic_mythology.md`
-- **Engine roadmap**: `../xolokun_engine_roadmap_v3.md` (canonical) and `../xolokun_engine_roadmap.md` (older)
-- **New engine process**: `../xolokun_new_engine_process.md`
+- **Engine roadmap**: `../xoceanus_engine_roadmap_v3.md` (canonical) and `../xoceanus_engine_roadmap.md` (older)
+- **New engine process**: `../xoceanus_new_engine_process.md`

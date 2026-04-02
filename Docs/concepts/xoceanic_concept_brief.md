@@ -227,7 +227,7 @@ All parameter IDs use `oceanic_` prefix. Key parameters (~65 estimated):
 |-------|-------|----------|----------|
 | M1 | DEPTH | `oceanic_pedalMix` + `oceanic_ensemble` + `oceanic_chromDepth` | 0=pure dry Solina warmth. 1=full chromatophore processing. **The revealer.** How much hidden color do you want to see? |
 | M2 | CURRENT | `oceanic_chromRate` + `oceanic_chromSeparation` + `oceanic_tideWarp` + `oceanic_scatterDensity` | Speed and complexity of the organic modulation. 0=still water. 1=churning deep current. |
-| M3 | COUPLING | Reserved for XOlokun coupling amount. In standalone: crossfade between string ensemble and external audio (coupling input as grain/freeze source) | **The portal** — how much of another engine enters the pedalboard. |
+| M3 | COUPLING | Reserved for XOceanus coupling amount. In standalone: crossfade between string ensemble and external audio (coupling input as grain/freeze source) | **The portal** — how much of another engine enters the pedalboard. |
 | M4 | ABYSS | `oceanic_abyssMix` + `oceanic_abyssDecay` + `oceanic_mirrorMix` + `oceanic_separation` | Spatial depth. 0=close, intimate strings. 1=infinite shimmering abyss. |
 
 All 4 macros produce audible, significant change at every point in their range in every preset.

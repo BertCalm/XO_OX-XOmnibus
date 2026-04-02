@@ -17,7 +17,7 @@ Round 9G expanded Oracle, Overworld, OCELOT, and Optic to ≥10 presets each. Th
 | Osteria    | 0      | 10    | +10 inaugural presets |
 | Osprey     | 0      | 10    | +10 inaugural presets |
 
-**20 new presets total.** OSTERIA and OSPREY were the last two engines with zero XOlokun-native presets. That gap is now closed.
+**20 new presets total.** OSTERIA and OSPREY were the last two engines with zero XOceanus-native presets. That gap is now closed.
 
 ---
 
@@ -136,7 +136,7 @@ Two multi-engine presets introduced:
 | Osteria   | 9           | 10  |
 | Osprey    | 9           | 10  |
 
-**Zero engines with 0 presets in the XOlokun fleet.** All 26 roadmap engines with implemented DSP now have at least one XOlokun-native preset.
+**Zero engines with 0 presets in the XOceanus fleet.** All 26 roadmap engines with implemented DSP now have at least one XOceanus-native preset.
 
 ---
 

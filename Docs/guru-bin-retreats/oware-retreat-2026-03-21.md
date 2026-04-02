@@ -20,7 +20,7 @@
 
 ## Pre-Retreat State
 
-OWARE arrived in XOlokun on 2026-03-20 alongside OXBOW, designed as a tuned percussion synthesizer rooted in three academic citations: Chaigne & Doutaut (1997) mallet contact model, Rossing (2000) gamelan modal ratios, and Fletcher & Rossing (1998) marimba and vibraphone data. Its post-seance score of 9.2/10 made it the joint highest-scoring engine in the fleet of 44.
+OWARE arrived in XOceanus on 2026-03-20 alongside OXBOW, designed as a tuned percussion synthesizer rooted in three academic citations: Chaigne & Doutaut (1997) mallet contact model, Rossing (2000) gamelan modal ratios, and Fletcher & Rossing (1998) marimba and vibraphone data. Its post-seance score of 9.2/10 made it the joint highest-scoring engine in the fleet of 44.
 
 The Guru Bin session refined two key parameters before this retreat: buzz default moved from 0.0 to 0.15 (the mirliton is OWARE's most culturally distinctive feature; hiding it at zero buried the engine's identity), and shimmerRate default moved from 6.0 Hz to 4.0 Hz (4.0 Hz sits at the center of the traditional Balinese ombak range of 3–7 Hz). Two LFO bugs were fixed in the same session: LFO1 now correctly modulates brightness, LFO2 now correctly modulates material. The sympathetic coupling gain was raised from 0.03 to 0.10 — the previous value was inaudible at all but maximum sympathy; at 0.10 you can hear voices singing to each other when they share mode frequencies.
 
@@ -477,7 +477,7 @@ At fast playing: rapid 16th-note passages will not perceive drift as pitch varia
 
 **Optimization in place:** The sympathetic resonance coupling uses a sparse precomputed table rather than O(V² × M²) per-sample brute force, reducing per-sample coupling from 512 checks per voice to a maximum of 32. The silence gate bypasses the entire render loop between phrases.
 
-**CPU guidance:** For Aether mood ambient presets (8 voices active, bowl material, long decay, high sympathy), expect approximately 15–25% CPU utilization on a modern Apple Silicon Mac. For staccato Foundation presets (short decay, few simultaneous voices), expect 3–8% CPU. In ensemble contexts with multiple XOlokun engines active, prefer short-decay OWARE configurations.
+**CPU guidance:** For Aether mood ambient presets (8 voices active, bowl material, long decay, high sympathy), expect approximately 15–25% CPU utilization on a modern Apple Silicon Mac. For staccato Foundation presets (short decay, few simultaneous voices), expect 3–8% CPU. In ensemble contexts with multiple XOceanus engines active, prefer short-decay OWARE configurations.
 
 ---
 

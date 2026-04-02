@@ -199,7 +199,7 @@ This isn't decoration. This is *architecture expressed as mythology*. The signal
 
 ### What's Missing
 
-**The reef needs a creation myth.** Why does OBRIX exist? The identity card says "baby brother of XOlokun" and "modular brick synthesis." But the *story* is richer than that: OBRIX exists because XOlokun has 39 engines, each with a fixed identity. A saber-toothed anglerfish. A jellyfish. An octopus. But the reef itself — the *ecosystem* — has no voice. OBRIX is the ecosystem speaking. It's not one creature. It's the place where creatures *live*. The reef doesn't have a fixed form — it grows, it adapts, it responds to its inhabitants.
+**The reef needs a creation myth.** Why does OBRIX exist? The identity card says "baby brother of XOceanus" and "modular brick synthesis." But the *story* is richer than that: OBRIX exists because XOceanus has 39 engines, each with a fixed identity. A saber-toothed anglerfish. A jellyfish. An octopus. But the reef itself — the *ecosystem* — has no voice. OBRIX is the ecosystem speaking. It's not one creature. It's the place where creatures *live*. The reef doesn't have a fixed form — it grows, it adapts, it responds to its inhabitants.
 
 That's the creation myth: **OBRIX is not an instrument. It is a habitat.**
 
@@ -236,7 +236,7 @@ That's the creation myth: **OBRIX is not an instrument. It is a habitat.**
 | ADSR comment | *(none)* | Historical lineage + musical meaning |
 | FX code structure | 100-line switch | 3 named methods (applyDelay/Chorus/Reverb) |
 | Coupling comment | "Smith: architectural complexity signal" | Full explanation of brick complexity as coupling metadata |
-| Identity story | "Baby brother of XOlokun" | "OBRIX is not an instrument. It is a habitat." |
+| Identity story | "Baby brother of XOceanus" | "OBRIX is not an instrument. It is a habitat." |
 | FLASH mythology | *(none)* | Chromatophore flash — 4 types mapped to reef biology |
 | Preset library | 0 presets | 5 signature recipes designed from DSP (ready for `/preset-forge`) |
 | Brick Drop narrative | Product updates | Seasonal reef growth events |

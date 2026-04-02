@@ -119,7 +119,7 @@ The instrument falls in love with the performer. Across a session, the circuit l
 
 **The five legend lineages are genuinely in the DSP**, not in the marketing. RE-201 thermal resistance model (Steinhart-Hart), MS-20 Sallen-Key topology, Moog four-pole cascade — these are citations, not names. This satisfies D003 with authority.
 
-**TriangularCoupling** adds a new protocol primitive to the fleet — the first coupling type that carries semantic structure. This alone justifies the engine's existence in the XOlokun network.
+**TriangularCoupling** adds a new protocol primitive to the fleet — the first coupling type that carries semantic structure. This alone justifies the engine's existence in the XOceanus network.
 
 **The aquatic mythology (anglerfish) is perfectly matched**. The biology of permanent physical fusion maps without distortion to the Commitment circuit model. This is the first engine in the fleet where the mythology is not illustrative but *analogically exact*.
 

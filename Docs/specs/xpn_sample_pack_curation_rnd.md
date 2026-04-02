@@ -68,17 +68,17 @@ XO_OX does not make reference content. Reference content is what everyone else a
 
 ## Section 2: Recording and Sourcing Philosophy
 
-### 2.1 Synthesis-First: XOlokun as Primary Source
+### 2.1 Synthesis-First: XOceanus as Primary Source
 
-XOlokun-rendered samples are the primary source for all XO_OX packs. The character is architectural — built into the synthesis engine, not applied afterward. This is the competitive advantage: no other sample pack company has access to this sound source.
+XOceanus-rendered samples are the primary source for all XO_OX packs. The character is architectural — built into the synthesis engine, not applied afterward. This is the competitive advantage: no other sample pack company has access to this sound source.
 
 **What synthesis-first means in practice:**
 - Drum hits: rendered from ONSET using physical modeling parameters at the preset level
 - Melodic one-shots: rendered from character engines (OBLONG, OBESE, OPAL, ORACLE, etc.) at specific preset points
 - Atmospheres: rendered from ORIGAMI, ORACLE, OCEANIC, ORBITAL at defined parameter states
-- Loops: recorded from live XOlokun sessions, not constructed from layered one-shots
+- Loops: recorded from live XOceanus sessions, not constructed from layered one-shots
 
-**Source preservation rule:** When a sample comes from XOlokun, log the engine, preset name, and key parameter states at time of render. This enables versioning, variation packs, and auditability. Minimum log format:
+**Source preservation rule:** When a sample comes from XOceanus, log the engine, preset name, and key parameter states at time of render. This enables versioning, variation packs, and auditability. Minimum log format:
 ```
 ENGINE: OBLONG
 PRESET: Amber Chord Wide

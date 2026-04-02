@@ -1,6 +1,6 @@
 # Claude Code Skills Reference Library
 
-> Curated for **XO_OX Designs / XOlokun** — C++ audio plugin development, DSP, CMake, cross-platform builds (AU/VST3/AUv3), preset management, and multi-engine architecture.
+> Curated for **XO_OX Designs / XOceanus** — C++ audio plugin development, DSP, CMake, cross-platform builds (AU/VST3/AUv3), preset management, and multi-engine architecture.
 
 ---
 
@@ -8,11 +8,11 @@
 
 1. [Cross-Environment Compatibility](#cross-environment-compatibility)
 2. [Skill System Quick Reference](#skill-system-quick-reference)
-3. [Recommended Skills for XOlokun](#recommended-skills-for-xolokun)
+3. [Recommended Skills for XOceanus](#recommended-skills-for-xoceanus)
 4. [Community Skill Collections](#community-skill-collections)
 5. [Skill Registries & Marketplaces](#skill-registries--marketplaces)
 6. [Curated Awesome Lists](#curated-awesome-lists)
-7. [Building Custom XOlokun Skills](#building-custom-xolokun-skills)
+7. [Building Custom XOceanus Skills](#building-custom-xoceanus-skills)
 8. [Security Notes](#security-notes)
 
 ---
@@ -103,14 +103,14 @@ Reference `supporting-file.md` for details.  <!-- placeholder: replace with actu
 
 ---
 
-## Recommended Skills for XOlokun
+## Recommended Skills for XOceanus
 
 ### Tier 1 — High-Impact, Install First
 
 #### 1. obra/superpowers
 - **URL:** https://github.com/obra/superpowers
 - **What:** Agentic development methodology — TDD (red-green-refactor), systematic 4-phase debugging, structured planning, git worktree management, code review
-- **Why for XOlokun:** Enforces discipline on a 29-engine codebase. Tests must fail before implementation. Architecture review triggers after 3 failed fix attempts. Git worktree support for parallel engine work.
+- **Why for XOceanus:** Enforces discipline on a 29-engine codebase. Tests must fail before implementation. Architecture review triggers after 3 failed fix attempts. Git worktree support for parallel engine work.
 - **Companion:** https://github.com/obra/superpowers-marketplace
 - **Quality:** Gold standard. Cited in every major curated list. Composable, self-evolving.
 
@@ -118,13 +118,13 @@ Reference `supporting-file.md` for details.  <!-- placeholder: replace with actu
 - **URL:** https://github.com/Jeffallan/claude-skills
 - **Docs:** https://jeffallan.github.io/claude-skills/skills/language/cpp-pro/
 - **What:** Senior C++ engineer persona — C++20/23, concepts, ranges, coroutines, template metaprogramming, SFINAE, type traits, CRTP, smart pointers, custom allocators, move semantics, RAII, SIMD, atomics, lock-free programming, CMake, Conan, sanitizers, clang-tidy, cppcheck, Catch2, GoogleTest
-- **Why for XOlokun:** Directly covers the tech stack. DSP code benefits from SIMD, lock-free, and sanitizer expertise. CMake build guidance.
+- **Why for XOceanus:** Directly covers the tech stack. DSP code benefits from SIMD, lock-free, and sanitizer expertise. CMake build guidance.
 - **66 total skills** across 12 categories (languages, frameworks, infrastructure, security, testing)
 
 #### 3. juce-dev Plugin
 - **Source:** https://danielraffel.me/2026/03/06/a-claude-code-plugin-for-building-juce-audio-plugins/
 - **What:** JUCE plugin scaffolding, CMake project generation, Xcode config, code signing, Metal GPU UI
-- **Why for XOlokun:** AU/VST3/AUv3 plugin development patterns. CMake scaffold for audio plugins. Xcode/code signing workflow.
+- **Why for XOceanus:** AU/VST3/AUv3 plugin development patterns. CMake scaffold for audio plugins. Xcode/code signing workflow.
 - **Invoke:** `/juce-dev:create "Plugin Name"`
 
 ### Tier 2 — Strong Additions
@@ -134,13 +134,13 @@ Reference `supporting-file.md` for details.  <!-- placeholder: replace with actu
 - **What:** 177 production-ready skills across 9 domains. Senior Architect, QA, DevOps, SecOps, Code Reviewer roles. 254 Python automation scripts (stdlib-only).
 - **Stars:** 4,400+ (most starred community library)
 - **Install:** `/plugin marketplace add alirezarezvani/claude-skills`
-- **Why for XOlokun:** Architect + QA roles for engine design review. Python scripts complement the existing Tools/ directory.
+- **Why for XOceanus:** Architect + QA roles for engine design review. Python scripts complement the existing Tools/ directory.
 
 #### 5. Trail of Bits — Security Skills
 - **URL:** https://github.com/trailofbits/skills
 - **Curated (code-reviewed):** https://github.com/trailofbits/skills-curated
 - **What:** Vulnerability detection, audit workflows, constant-time analysis, differential security review with git history
-- **Why for XOlokun:** Plugin code runs in DAW host processes — security matters. Curated repo is staff-reviewed for safety.
+- **Why for XOceanus:** Plugin code runs in DAW host processes — security matters. Curated repo is staff-reviewed for safety.
 
 #### 6. Code Review Skills
 - **aidankinzett/claude-git-pr-skill:** https://github.com/aidankinzett/claude-git-pr-skill — PR review with pending reviews, code suggestions, user approval flow
@@ -161,7 +161,7 @@ Reference `supporting-file.md` for details.  <!-- placeholder: replace with actu
 #### 9. Anthropic Official Skills
 - **URL:** https://github.com/anthropics/skills (37.5k stars)
 - **17 official skills:** algorithmic-art, brand-guidelines, canvas-design, claude-api, doc-coauthoring, docx, frontend-design, internal-comms, mcp-builder, pdf, pptx, **skill-creator**, theme-factory, web-artifacts-builder, webapp-testing, xlsx
-- **Key skill:** `skill-creator` — interactively guides you through building new skills (useful for creating custom XOlokun skills)
+- **Key skill:** `skill-creator` — interactively guides you through building new skills (useful for creating custom XOceanus skills)
 
 ---
 
@@ -206,9 +206,9 @@ Reference `supporting-file.md` for details.  <!-- placeholder: replace with actu
 
 ---
 
-## Building Custom XOlokun Skills
+## Building Custom XOceanus Skills
 
-No audio DSP skill exists in the community. XOlokun has unique requirements that warrant custom skills. These should live in `.claude/skills/` (project-level) for cross-environment compatibility.
+No audio DSP skill exists in the community. XOceanus has unique requirements that warrant custom skills. These should live in `.claude/skills/` (project-level) for cross-environment compatibility.
 
 ### Recommended Custom Skills to Build
 
@@ -216,7 +216,7 @@ No audio DSP skill exists in the community. XOlokun has unique requirements that
 Run the 6 Doctrines against any engine. Checks velocity→timbre (D001), modulation (D002), physics rigor (D003), dead parameters (D004), LFO breathing (D005), and expression input (D006).
 
 #### `/new-xo-engine` — Engine Creation Wizard
-Already referenced in CLAUDE.md. Walk through ideation, architecture, scaffold, and integration. Encode the rules from `Docs/xolokun_new_engine_process.md`.
+Already referenced in CLAUDE.md. Walk through ideation, architecture, scaffold, and integration. Encode the rules from `Docs/xoceanus_new_engine_process.md`.
 
 #### `/preset-audit` — Preset Health Check
 Validate all 2,369 presets: schema compliance, DNA coverage, duplicate detection, macro effectiveness, naming conventions.
@@ -289,4 +289,4 @@ Report findings with file:line references and PASS/FAIL per doctrine.
 ---
 
 *Last updated: 2026-03-15*
-*Compiled for XO_OX Designs — XOlokun multi-engine synthesizer platform*
+*Compiled for XO_OX Designs — XOceanus multi-engine synthesizer platform*

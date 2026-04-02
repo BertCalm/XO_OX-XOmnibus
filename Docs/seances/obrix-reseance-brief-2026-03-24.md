@@ -209,7 +209,7 @@ Wave 5's Reef Residency (`obrix_reefResident`) is a more sophisticated coupling 
 
 **Ghost most likely to have strong opinion:** Smith (coupling architecture), Kakehashi (accessibility and discoverability), Pearlman (normalled defaults).
 
-### Question 3: Should OBRIX be the V1 demo patch — and what would make it the patch that sells XOlokun?
+### Question 3: Should OBRIX be the V1 demo patch — and what would make it the patch that sells XOceanus?
 
 OBRIX is designated the V1 flagship. The V1 release is titled "The Deep Opens" and ships OBRIX + 6-8 FX engines + 20-25 curated fleet engines. The demo patch — the one that plays on the website, the one that users hear first, the one in every video — will likely be an OBRIX preset.
 

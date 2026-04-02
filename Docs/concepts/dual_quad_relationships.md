@@ -188,4 +188,4 @@ These would extend the dual-quad system into a multi-quad combinatorial space. D
 
 ---
 
-*Part of XOlokun by XO_OX Designs*
+*Part of XOceanus by XO_OX Designs*

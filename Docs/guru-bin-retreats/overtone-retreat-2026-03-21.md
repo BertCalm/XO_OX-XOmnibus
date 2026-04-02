@@ -19,7 +19,7 @@
 
 ## Pre-Retreat State
 
-OVERTONE was added to XOlokun on 2026-03-20, one of four engines integrated in a single session alongside ORBWEAVE, ORGANISM, and OWARE. Its seance score of 8.1/10 places it in the fleet's upper tier — all six doctrines pass, B028 (Continued Fraction Convergent Synthesis) is blessed by unanimous council, and the parameter library is extensive. It arrived with a large factory preset count distributed across all eight moods.
+OVERTONE was added to XOceanus on 2026-03-20, one of four engines integrated in a single session alongside ORBWEAVE, ORGANISM, and OWARE. Its seance score of 8.1/10 places it in the fleet's upper tier — all six doctrines pass, B028 (Continued Fraction Convergent Synthesis) is blessed by unanimous council, and the parameter library is extensive. It arrived with a large factory preset count distributed across all eight moods.
 
 The seance identified OVERTONE as the engine most dependent on producer education. Its primary synthesis dimension — the convergent depth — has no analogy in standard synthesis. A producer encountering it for the first time may adjust it, notice that "something changes," but not understand *what* changes or *why*. The timbre is genuinely novel: irrational-ratio partials produce beating patterns that are not musical intervals in any standard tuning system, not pure inharmonic noise, but something between — an organic, mathematical shimmer that belongs to neither the harmonic nor the noise worlds.
 

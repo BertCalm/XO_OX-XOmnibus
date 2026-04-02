@@ -48,11 +48,11 @@ Key innovation: Integrates as oxport pipeline stage before export — catches ba
 
 **`xpn_optic_fingerprint.py`** — Offline mirror of XOptic's 8-band spectral analyser. Produces a JSON fingerprint per WAV that records spectral centroid, per-band energy, and timbral balance.
 CLI: `python xpn_optic_fingerprint.py --wavs-dir ./wavs --output fingerprints.json`
-Key innovation: Pure Python mirror of the C++ OpticBandAnalyzer — no XOlokun required for batch analysis.
+Key innovation: Pure Python mirror of the C++ OpticBandAnalyzer — no XOceanus required for batch analysis.
 
-**`xpn_coupling_recipes.py`** — Embeds coupling metadata INTO XPN packs as a JSON sidecar, so producers can recreate XOlokun live engine coupling signals from sample data alone.
+**`xpn_coupling_recipes.py`** — Embeds coupling metadata INTO XPN packs as a JSON sidecar, so producers can recreate XOceanus live engine coupling signals from sample data alone.
 CLI: `python xpn_coupling_recipes.py --pack-dir ./pack --source ENGINE --target ENGINE --recipe NAME`
-Key innovation: The first XPN tool to encode XOlokun coupling topology as portable pack metadata.
+Key innovation: The first XPN tool to encode XOceanus coupling topology as portable pack metadata.
 
 **`xpn_liner_notes.py`** — Auto-generates cultural, historical, and sonic-philosophy metadata for XPN expansion packs. Produces HTML/Markdown liner notes embedded in the ZIP.
 CLI: `python xpn_liner_notes.py --engine OPAL --pack-name "Forest Rain" --output ./out`
@@ -312,7 +312,7 @@ The following can all be executed in standard Sonnet sessions without Opus escal
 ### Priority 1 — Git Hygiene
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOlokun
+cd ~/Documents/GitHub/XO_OX-XOceanus
 git status
 git add Tools/xpn_*.py Tools/oxport.py Docs/specs/ Docs/ebook/
 git commit -m "Add 29 Oxport tools + 5 eBook chapters + 38 R&D specs (overnight session 2026-03-16)"

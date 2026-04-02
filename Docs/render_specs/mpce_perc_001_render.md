@@ -144,7 +144,7 @@ python Tools/xpn_sample_audit.py renders/mpce_perc_001/
 # 2. Build MPCe XPM (quad-corner program)
 python Tools/xpn_mpce_quad_builder.py \
     --engine ONSET \
-    --presets-dir Presets/XOlokun/ \
+    --presets-dir Presets/XOceanus/ \
     --output-dir output/mpce_perc_001/
 
 # 3. Build standard XPM (velocity-layered fallback)
@@ -158,7 +158,7 @@ python Tools/xpn_intent_generator.py \
     --pack-name "XO_OX MPCe Percussion Vol. 1" \
     --engine ONSET \
     --corner-pattern dynamic_expression \
-    --presets-dir Presets/XOlokun/ \
+    --presets-dir Presets/XOceanus/ \
     --output output/mpce_perc_001/xpn_intent.json
 
 # 5. Copy MPCE_SETUP.md

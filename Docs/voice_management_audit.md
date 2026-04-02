@@ -78,7 +78,7 @@
 **Before:** `VoicePool::findFreeOrSteal()` returned a pointer and `noteOn()` overwrote the voice with zero fade-out. Hard click on every steal at full polyphony.
 **After:** `findFreeOrSteal()` sets `target->stealFadeGain = 1.0f` before returning. `Voice::process()` decrements `stealFadeGain` at the 5ms rate and multiplies output by `(1.0 - stealFadeGain)`, so the outgoing signal fades out while the new note's attack ramps up.
 
-**Note:** The Overworld fix lands in the external repo `~/Documents/GitHub/XOverworld/src/engine/` because `OverworldEngine.h` in XOlokun is a thin adapter that includes `VoicePool.h` via `target_include_directories`.
+**Note:** The Overworld fix lands in the external repo `~/Documents/GitHub/XOverworld/src/engine/` because `OverworldEngine.h` in XOceanus is a thin adapter that includes `VoicePool.h` via `target_include_directories`.
 
 ### Osprey — ACCEPTABLE (no legato)
 - **Max voices:** 8 (fixed).
@@ -94,7 +94,7 @@
 ### Rank 1 (Worst): Overworld
 **Problems (before fix):**
 1. Round-robin stealing with **zero crossfade** — stolen voices are hard-cut mid-sustain, causing audible clicks on voice-full polyphony.
-2. No legato or glide wired through the XOlokun adapter.
+2. No legato or glide wired through the XOceanus adapter.
 3. Steal policy ignores voice amplitude — could steal a loud, ringing voice just because the counter points at it.
 
 **Fixed:** `stealFadeGain` member added to `Voice`; `VoicePool::findFreeOrSteal()` sets it to 1.0 on steal; `Voice::process()` applies 5ms ramp. Files changed:
@@ -107,7 +107,7 @@
 2. No legato or voice mode selection.
 
 **Fixed:** `OcelotVoice::noteOn()` captures the outgoing `lastAmplitude` into `stealFadeGain` before reinitializing. The `renderBlock()` loop decrements `stealFadeGain` and applies it as `envGain *= (1.0 - stealFadeGain)` over a 5ms window. Files changed:
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Ocelot/OcelotVoice.h`
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/Ocelot/OcelotVoice.h`
 
 ### Rank 3: Morph (OddOscar)
 **Problems (before fix):**
@@ -115,7 +115,7 @@
 2. No portamento/glide parameter.
 
 **Fixed:** Added `morph_voiceMode` (Poly/Mono/Legato choice) and `morph_glide` (0–2s float) parameters. Added `currentFrequency`, `targetFrequency`, `glideCoefficient` to `MorphVoice`. Updated `noteOn()` to handle all three modes. Updated render loop to glide via `voice.currentFrequency` instead of computing from `noteNumber` per-sample (poly mode is semantically identical since `currentFrequency == targetFrequency` with `glideCoefficient=1.0`). Files changed:
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Morph/MorphEngine.h`
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/Morph/MorphEngine.h`
 
 ---
 
@@ -148,7 +148,7 @@ Orbital has no `voiceMode` parameter. As a 64-partial additive engine, mono use 
 Snap is explicitly percussive (no sustain stage). No legato is expected or appropriate.
 
 ### Overworld adapter glide
-The standalone XOverworld does not have a `ow_glide` pitch portamento parameter (it has `ow_eraPortaTime` for ERA position glide, which is different). Adding pitch portamento requires: (1) storing per-voice previous frequency in `Voice`, (2) adding `ow_glide` to the XOlokun parameter layout, (3) passing it through `applyParams`. Medium effort, low urgency.
+The standalone XOverworld does not have a `ow_glide` pitch portamento parameter (it has `ow_eraPortaTime` for ERA position glide, which is different). Adding pitch portamento requires: (1) storing per-voice previous frequency in `Voice`, (2) adding `ow_glide` to the XOceanus parameter layout, (3) passing it through `applyParams`. Medium effort, low urgency.
 
 ### Ocelot steal policy — quietest vs. LRU
 The quietest-amplitude policy is musically correct for a textural engine (preserves loud voices). With the crossfade fix, the click is resolved. No further change needed on the selection policy itself.
@@ -183,7 +183,7 @@ Both gaps identified in Section 5 (Remaining Gaps) during Round 9D have been res
 4. All existing Poly presets are unaffected — `oblq_voiceMode` defaults to 0 (Poly).
 
 **Files changed:**
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Oblique/ObliqueEngine.h`
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/Oblique/ObliqueEngine.h`
 
 **New parameters:**
 
@@ -205,7 +205,7 @@ Both gaps identified in Section 5 (Remaining Gaps) during Round 9D have been res
 5. In `initializeVoice()`: signature gains `float glideTimeSec = 0.0f`. When `glideTime > 0` and the voice has a valid previous frequency, `glideCoefficient` is computed from the IIR formula instead of being hardcoded to 1.0. When `glideTime == 0`, `currentGlideFrequency` is snapped to `frequency` and `glideCoefficient = 1.0f` (unchanged behaviour for all existing presets).
 
 **Files changed:**
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Osprey/OspreyEngine.h`
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/Osprey/OspreyEngine.h`
 
 **New parameters:**
 

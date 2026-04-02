@@ -1,4 +1,4 @@
-# XOlokun V1 Technical Changelog
+# XOceanus V1 Technical Changelog
 
 **Date Range:** March 2026 (2026-03-01 through 2026-03-20)
 **Branch:** main
@@ -58,7 +58,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 | Wave 1 lock-in | `6b9f5a465` | Documentation, seance prep, preset constraints established |
 | Wave 2 | `7fecdff44` | FM synthesis; filter feedback; real wavetable import; unison detune; 60 params |
 | Wave 3 | `b4f2e0e31` | Drift Bus; Journey parameter; Spatial field; 65 params total; Fab Five score 8.9/10 |
-| DSP embed | `38dc70bf3` | Overlap/Outwit/Overworld DSP copied into XOlokun — sibling repo dependencies removed |
+| DSP embed | `38dc70bf3` | Overlap/Outwit/Overworld DSP copied into XOceanus — sibling repo dependencies removed |
 
 ---
 
@@ -67,7 +67,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 ### Aquatic FX Suite (V1.1) — `Source/DSP/Effects/AquaticFXSuite.h`
 **Commit:** `217f4c209` (2026-03-18)
 - 6 water-themed master effects: Reef, Fathom, Drift, Tide + 2 additional
-- Master FX slot; plugs into XOlokunProcessor post-mix chain
+- Master FX slot; plugs into XOceanusProcessor post-mix chain
 
 ### Mathematical FX Chain — `Source/DSP/Effects/MathFXChain.h`
 **Commit:** `cf6ab75c0` (2026-03-18)
@@ -86,7 +86,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 ## SDK — Phase 1
 
 **Commit:** `8f7cd9fa6` (2026-03-18)
-**Location:** `SDK/include/xolokun/`
+**Location:** `SDK/include/xoceanus/`
 
 - `SynthEngine.h` — JUCE-free engine interface
 - `CouplingTypes.h` — 13 coupling type definitions
@@ -182,7 +182,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 | Change | Commit | Detail |
 |--------|--------|--------|
 | OVERLAP/OUTWIT CMake include paths | `f4c1842a5` | Added `Source/` prefix to include paths; fixed JUCE 8 header |
-| Register ORBWEAVE + OBRIX | `a689222b4` | Both engines registered in XOlokunProcessor.cpp |
+| Register ORBWEAVE + OBRIX | `a689222b4` | Both engines registered in XOceanusProcessor.cpp |
 | Fix missing addParameters() | `a689222b4` | 6 engines (OBRIX, OSTINATO, OUIE, OVERTONE, ORGANISM, ORBWEAVE) had missing `addParameters()` calls |
 | DSP embedding | `38dc70bf3` | XOverlap/XOutwit/XOverworld DSP copied inline — zero sibling repo dependencies |
 | Oscar Rive gating | per CLAUDE.md | `XO_HAS_RIVE` + `XO_HAS_OSCAR` CMake flags — builds cleanly without rive-cpp |
@@ -215,13 +215,13 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 | Sprint report | `Docs/sprint_report_2026-03-18.md` |
 | Morning plan | `Docs/morning_plan_2026-03-20.md` |
 | Docs INDEX | `Docs/INDEX.md` — 164+ files catalogued |
-| SDK Phase 1 | `SDK/include/xolokun/` |
+| SDK Phase 1 | `SDK/include/xoceanus/` |
 
 ---
 
 ## Engine Registration Summary (V1 Final)
 
-**73 engines registered** in `Source/XOlokunProcessor.cpp` *(historical — fleet grew to 76 with OBIONT + 2 additional engines post-2026-03-23)*
+**73 engines registered** in `Source/XOceanusProcessor.cpp` *(historical — fleet grew to 76 with OBIONT + 2 additional engines post-2026-03-23)*
 
 | Category | Engines |
 |----------|---------|
@@ -242,7 +242,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 - SNAP `AmpToFilter` — highest-value unimplemented coupling wire
 - OCELOT + OWLFISH `applyCouplingInput` stubs
 - Drift FX gap — 1,353 standalone XOdyssey FX params not yet exposed in DriftEngine adapter
-- `juce::Font(name,size,style)` — 5 deprecation warnings in XOlokunEditor.h (pre-existing)
+- `juce::Font(name,size,style)` — 5 deprecation warnings in XOceanusEditor.h (pre-existing)
 - `float→int` implicit conversion — 1 warning in MasterFXSequencer.h (pre-existing)
 - Orbweave preset library: 0 presets on fleet dashboard (note: 297 presets were merged but may not be reflected in dashboard scan)
 

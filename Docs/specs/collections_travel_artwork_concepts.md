@@ -302,7 +302,7 @@ ORCHID           —         —         —           —
 
 **Amber (Oxblood × Ochre)**: Red bow meets ochre pluck. The erhu sustains notes indefinitely; the oud's notes decay. This temporal asymmetry is the coupling's character — the erhu holds while the oud calls. The combination suggests Silk Road musical exchange (China and the Middle East sharing musical vocabulary through trade routes that both instruments have been traveling for over a thousand years).
 
-**Silk (Oxblood × Orchid)**: Erhu and guzheng are both Chinese instruments, both string-based, but occupy different positional roles in Chinese music — the erhu as the singing voice, the guzheng as the harmonic landscape. The coupling is the original Chinese chamber ensemble. In XOlokun context: the erhu's bow attack against the guzheng's glissandi creates a texture that was designed for exactly this combination over two thousand years of music.
+**Silk (Oxblood × Orchid)**: Erhu and guzheng are both Chinese instruments, both string-based, but occupy different positional roles in Chinese music — the erhu as the singing voice, the guzheng as the harmonic landscape. The coupling is the original Chinese chamber ensemble. In XOceanus context: the erhu's bow attack against the guzheng's glissandi creates a texture that was designed for exactly this combination over two thousand years of music.
 
 **Earth (Onyx × Ochre)**: Drone and pluck. The didgeridoo's continuous breath and the oud's decaying plucks create a rhythmic relationship determined entirely by how the oud phrases against the drone. This is ancient music theory: the drone as the fixed ground, the melodic instrument as everything that moves against it.
 

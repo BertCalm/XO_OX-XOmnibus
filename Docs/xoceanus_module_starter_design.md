@@ -1,4 +1,4 @@
-# XOlokun — Module Starter Design
+# XOceanus — Module Starter Design
 
 **Status:** Design
 **Date:** 2026-03-10

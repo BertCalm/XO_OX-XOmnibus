@@ -1,4 +1,4 @@
-# XOlokun Documentation Manifest
+# XOceanus Documentation Manifest
 **Last Updated:** 2026-03-31
 **Purpose:** Canonical inventory of all major documentation — purpose, audience, authority level, and currency status.
 
@@ -12,7 +12,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
 | `../CLAUDE.md` | Master project guide for Claude agents and contributors | Agents, all contributors | Engine registry, blessings, debates, doctrines, architecture rules | ✅ Current (2026-03-24) |
-| `xomnibus_master_specification.md` | Full technical architecture | Engineers, contributors | All architectural decisions, coupling system, preset schema | ✅ Current (2026-03-20) |
+| `xoceanus_master_specification.md` | Full technical architecture | Engineers, contributors | All architectural decisions, coupling system, preset schema | ✅ Current (2026-03-20) |
 
 ---
 
@@ -33,15 +33,15 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
 | `xoutshine-forge-spec.md` | XOutshine universal instrument forge format spec | Export engineers, pipeline devs | SampleCategory enum, multi-source keygroups, velocity strategies, RR spec, formant metadata, FX routing, 9-stage pipeline, XPM examples, MPC constraints | ✅ Current (2026-03-22, v1.0) |
-| `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 72/76 engines (72 unique engine sections; 4 pending: OSMOSIS, OBIONT + 2 others added post-2026-03-24) |
-| `xomnibus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
-| `xomnibus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |
+| `xoceanus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 72/76 engines (72 unique engine sections; 4 pending: OSMOSIS, OBIONT + 2 others added post-2026-03-24) |
+| `xoceanus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
+| `xoceanus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |
 | `fleet_health_2026_03_20.md` | Current fleet status | All | Post-sweep health metrics | ✅ Current (generated 2026-03-20) |
 | `fleet-audit/documentation_health_plan.md` | Doc improvement roadmap | All contributors | What needs fixing in docs | ✅ Current |
 | `fathom-qdd-level5-fleet-certification-2026-03-29.md` | FATHOM × QDD Level 5 pre-launch fleet certification | Engineers, sound designers, agents | 76-engine audit results, 20-agent findings, 47 CRITs, ship-ready list, launch blockers | ✅ Current (2026-03-29) |
 | `fathom-fleet-report-2026-03-29.md` | FATHOM brutal sonic audit — all 76 engines + DSP library | Sound designers, agents | Per-engine sonic quality verdicts, FATHOM scores, systemic issues | ✅ Current (2026-03-29) |
 | `tidesigns-audit.md` | TIDEsigns QDD full-fleet UI/UX audit | UI engineers, agents | 450+ findings, 8-wave fix sequence, tier priorities, score history | ✅ Current (2026-03-29) |
-| `xolokun-fleet-inventory-2026-03-28.md` | Complete engine fleet inventory — all 73+ engines | All contributors, agents | Engine roster, build status, preset counts, seance scores | ✅ Current (2026-03-28) |
+| `xoceanus-fleet-inventory-2026-03-28.md` | Complete engine fleet inventory — all 73+ engines | All contributors, agents | Engine roster, build status, preset counts, seance scores | ✅ Current (2026-03-28) |
 | `export-architecture.md` | Export Pyramid architecture — ORIGINATE → OUTSHINE → OXPORT | Export engineers, pipeline devs | Three-tool export chain design, tool responsibilities, data flow | ✅ Current (2026-03-29) |
 | `../Skills/*/SKILL.md` | Per-skill procedure guides | Agents | Workflow execution | ✅ Most current; see each file's metadata |
 
@@ -57,7 +57,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 | `guild/*.md` | Producer guild + specialist review records | Immutable once committed |
 | `../scripture/the-scripture.md` | Empirical wisdom from development | Living but archival in spirit |
 
-**Note:** Original 24 seance verdicts (2026-03-14, ODDFELIX through OWLFISH) exist only in aggregated form in `xomnibus_landscape_2026.md`. Individual verdict files not yet back-generated.
+**Note:** Original 24 seance verdicts (2026-03-14, ODDFELIX through OWLFISH) exist only in aggregated form in `xoceanus_landscape_2026.md`. Individual verdict files not yet back-generated.
 
 ---
 
@@ -65,8 +65,8 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 
 | Document | Original Purpose | Why Archived | Canonical Replacement |
 |----------|-----------------|-------------|----------------------|
-| `xo_mega_tool_preset_system.md` | Original preset system spec | Superseded | `xomnibus_preset_spec_for_builder.md` |
-| `xo_mega_tool_visual_identity.md` | Original visual identity spec | Superseded | `xomnibus_technical_design_system.md` |
+| `xo_mega_tool_preset_system.md` | Original preset system spec | Superseded | `xoceanus_preset_spec_for_builder.md` |
+| `xo_mega_tool_visual_identity.md` | Original visual identity spec | Superseded | `xoceanus_technical_design_system.md` |
 | `plans/v1-launch-plan.md` | V1 launch roadmap | V1 complete | `prism_sweep_final_report.md` |
 | `plans/2026-03-12-xostinato-design.md` | XOSTINATO design | Engine shipped 2026-03-18 | `seances/ostinato_seance_verdict.md` |
 
@@ -78,7 +78,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 |-----------|----------|--------|
 | `Docs/` root | Core specs, master docs | ✅ Well-maintained |
 | `Docs/design/` | 15 UI/design spec files incl. spatial architecture V1, pixel-art creature spec, definitive UI spec, playsurface design, accessibility, button/toast/input-state systems, asset registry, Figma compendium | ✅ Active (2026-03-22 to 2026-03-24) |
-| `Docs/seances/` | 24 seance verdict files (newest engines) | ✅ Active; original 24 (pre-sweep) exist only in aggregated form in `xomnibus_landscape_2026.md` |
+| `Docs/seances/` | 24 seance verdict files (newest engines) | ✅ Active; original 24 (pre-sweep) exist only in aggregated form in `xoceanus_landscape_2026.md` |
 | `Docs/concepts/` | Engine concept briefs (historical mythology) | ✅ Complete archive |
 | `Docs/plans/` | Product roadmaps | ⚠️ Mixed active/completed, needs status headers |
 | `Docs/specs/` | 162 R&D + active specs | ⚠️ Disorganized; future sprint to sort active/archive |

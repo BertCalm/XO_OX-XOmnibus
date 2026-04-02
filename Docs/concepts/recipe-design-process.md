@@ -217,7 +217,7 @@ If any answer is no, revise.
 
 ### Combined E-Book Per Quad Release
 - Interleaved: engine chapter → its recipes → next engine
-- URL scheme deep links: tap a preset name → XOlokun opens it
+- URL scheme deep links: tap a preset name → XOceanus opens it
 - Total per quad: ~100-120 pages
 - Format: PDF (free), EPUB (Patreon), print-on-demand (premium)
 

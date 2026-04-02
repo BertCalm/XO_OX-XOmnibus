@@ -27,4 +27,4 @@
 
 ---
 
-*Part of XOlokun by XO_OX Designs*
+*Part of XOceanus by XO_OX Designs*

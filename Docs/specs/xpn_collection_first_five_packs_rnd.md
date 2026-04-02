@@ -73,7 +73,7 @@ OPAL is the granular engine — it reads source material as a cloud of overlappi
 Atmosphere 35%, Flux 25%, Aether 20%, Entangled 10%, Foundation 10%
 
 ### Must-subscribe value
-There is no loop-based equivalent to a well-designed granular pad. PHOSPHOR occupies a space on the MPC that sample packs cannot — these are living textures, not recordings. The pack demonstrates that XOlokun is a sound design instrument, not a sample playback machine.
+There is no loop-based equivalent to a well-designed granular pad. PHOSPHOR occupies a space on the MPC that sample packs cannot — these are living textures, not recordings. The pack demonstrates that XOceanus is a sound design instrument, not a sample playback machine.
 
 ### Tools required
 - `xpn_keygroup_export.py` — full chromatic keygroup mapping (OPAL is melodic)
@@ -112,7 +112,7 @@ Each program is built around a dominant engine, with the secondary engine used a
 Foundation 25%, Atmosphere 25%, Flux 20%, Prism 15%, Aether 15%
 
 ### Must-subscribe value
-Lo-fi is one of the most searched MPC pack categories. CARBON PAPER answers that demand with synthesis rather than recordings, meaning every preset is unique to XOlokun. The OVERDUB spring reverb (Seance B004, praised by Vangelis + Tomita) is the sonic proof point — it sounds unlike any convolution reverb.
+Lo-fi is one of the most searched MPC pack categories. CARBON PAPER answers that demand with synthesis rather than recordings, meaning every preset is unique to XOceanus. The OVERDUB spring reverb (Seance B004, praised by Vangelis + Tomita) is the sonic proof point — it sounds unlike any convolution reverb.
 
 ### Tools required
 - `xpn_keygroup_export.py` — melodic programs use keygroup format
@@ -169,7 +169,7 @@ This pack unlocks ONSET's non-drum potential — something TIDE TABLES deliberat
 
 ### Concept
 
-WATER COLUMN is the argument for Deep Water. Every other pack demonstrates one engine or a tight pairing. This pack demonstrates what XOlokun uniquely enables: coupling presets where two or three engines modulate each other, all 7 moods represented, maximum variety from a single pack. A producer who loads this and explores for an hour understands what the platform is. It should be the last free sample that convinces them to subscribe.
+WATER COLUMN is the argument for Deep Water. Every other pack demonstrates one engine or a tight pairing. This pack demonstrates what XOceanus uniquely enables: coupling presets where two or three engines modulate each other, all 7 moods represented, maximum variety from a single pack. A producer who loads this and explores for an hour understands what the platform is. It should be the last free sample that convinces them to subscribe.
 
 The pack name references the XO_OX water column mythology — engines mapped across depth zones from surface to trench — and provides the narrative spine for the cover art and liner notes.
 

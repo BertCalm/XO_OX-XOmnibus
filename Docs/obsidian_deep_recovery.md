@@ -132,7 +132,7 @@ The `phaseDistortionEnvelope` (ADSR) modulates how much PD depth is applied. Par
 | Obsidian Eruption | Flux | Evolving, LFO-driven unstable, PD bloom |
 | Glass Shard Coupling | Entangled | AudioToFM + AmpToFilter coupling-ready |
 
-**Total Obsidian presets in XOlokun**: 8 (previously 0 using actual `obsidian_` parameters)
+**Total Obsidian presets in XOceanus**: 8 (previously 0 using actual `obsidian_` parameters)
 
 Note: The two presets named "Obsidian Clave" (Foundation) and "Obsidian Drone" (Atmosphere) that existed prior use OddfeliX and Odyssey engines respectively — they are thematically named but do not use the Obsidian engine.
 

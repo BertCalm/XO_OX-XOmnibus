@@ -21,7 +21,7 @@
 
 ## Pre-Retreat State
 
-ONSET arrived in the fleet with 162 factory presets — the deepest drum synthesis library in the Vol 2 cohort. It is the engine most referenced in coupling routes throughout XOlokun: OUROBOROS's B003 Injection Protocol names ONSET as its primary disruption source; OCEANIC's murmuration cascade responds to ONSET via RhythmToBlend; OWARE's sympathetic resonance network can receive rhythmic events from ONSET's tuned percussion modes. ONSET is the percussion event generator of the fleet — the engine that tells time.
+ONSET arrived in the fleet with 162 factory presets — the deepest drum synthesis library in the Vol 2 cohort. It is the engine most referenced in coupling routes throughout XOceanus: OUROBOROS's B003 Injection Protocol names ONSET as its primary disruption source; OCEANIC's murmuration cascade responds to ONSET via RhythmToBlend; OWARE's sympathetic resonance network can receive rhythmic events from ONSET's tuned percussion modes. ONSET is the percussion event generator of the fleet — the engine that tells time.
 
 The factory library covers ONSET's range with breadth. Foundation has 80+ kits representing every acoustic archetype. Flux has evolving, unstable kits. Submerged has three deep percussive textures. What it does not fully demonstrate is ONSET in its structural role: the coupling-source engine whose velocity output, spectral content, and rhythmic event density are specifically calibrated to feed OUROBOROS, OCEANIC, ORBWEAVE, and ORGANISM. These coupling-source presets are the most important additions of Vol 2.
 

@@ -1,7 +1,7 @@
 # XO_OX Mega-Tool — Unified Visual Identity Specification
 
 > ⚠️ **SUPERSEDED — DO NOT USE**
-> This document was replaced by `Docs/xolokun_technical_design_system.md`.
+> This document was replaced by `Docs/xoceanus_technical_design_system.md`.
 > Kept for historical reference only. Content may be outdated or incorrect.
 
 **Version:** 1.0

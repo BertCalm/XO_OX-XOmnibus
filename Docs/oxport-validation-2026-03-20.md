@@ -1,7 +1,7 @@
 # Oxport Validation Report — 2026-03-20
 
 **Auditor**: Claude Code
-**Repo**: `~/Documents/GitHub/XO_OX-XOlokun/`
+**Repo**: `~/Documents/GitHub/XO_OX-XOceanus/`
 **Scope**: XPN export pipeline readiness for V1 shipping
 
 ---
@@ -62,7 +62,7 @@ The validator checks all Rex Golden Rules: ZIP structure (`Expansions/`, `Progra
 
 ## Existing .xpn Files
 
-**None found.** A full search of the XOlokun repo and the MPC Expansions library found zero `.xpn` archives. The XObese expansion exists at `~/Library/Application Support/Akai/MPC/Expansions/com.xo-ox.xobese/` (2,931 files — .xpm + .WAV in flat layout) but was assembled manually via `fix_xobese_xpms.py` and is not a `.xpn` archive.
+**None found.** A full search of the XOceanus repo and the MPC Expansions library found zero `.xpn` archives. The XObese expansion exists at `~/Library/Application Support/Akai/MPC/Expansions/com.xo-ox.xobese/` (2,931 files — .xpm + .WAV in flat layout) but was assembled manually via `fix_xobese_xpms.py` and is not a `.xpn` archive.
 
 ---
 
@@ -131,9 +131,9 @@ All entries use `"status": "active"`. Registry does not track installation/depen
 ## Blocking Issues for V1 Shipping
 
 ### BLOCKER 1 — No WAV Samples (Hard Dependency)
-The pipeline from stage 2 onward (categorize, expand, qa, smart_trim, export, preview, package) requires rendered WAV samples. These must come from manually recording XOlokun plugin output or from `oxport_render.py` (Fleet Render Automation). No WAVs exist in the repo.
+The pipeline from stage 2 onward (categorize, expand, qa, smart_trim, export, preview, package) requires rendered WAV samples. These must come from manually recording XOceanus plugin output or from `oxport_render.py` (Fleet Render Automation). No WAVs exist in the repo.
 
-**Resolution path**: Either (a) install `mido`, `python-rtmidi`, `sounddevice` and run `oxport_render.py` with XOlokun open and BlackHole configured, or (b) manually render a pilot set of WAVs for one engine (recommend Onset as the drum-engine test case) and run `oxport.py run --engine Onset --wavs-dir ./wavs/onset/ --output-dir ./dist/`.
+**Resolution path**: Either (a) install `mido`, `python-rtmidi`, `sounddevice` and run `oxport_render.py` with XOceanus open and BlackHole configured, or (b) manually render a pilot set of WAVs for one engine (recommend Onset as the drum-engine test case) and run `oxport.py run --engine Onset --wavs-dir ./wavs/onset/ --output-dir ./dist/`.
 
 ### BLOCKER 2 — Fleet Render Dependencies Not Installed
 `oxport_render.py` requires `mido`, `python-rtmidi`, and `sounddevice`. None are installed. The `requirements.txt` incorrectly states "None currently required."

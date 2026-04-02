@@ -32,7 +32,7 @@
 
 1. **XO word:** XOstinato ✓ — Ostinato: a repeating musical pattern, the heartbeat of every drum circle
 2. **One-sentence thesis:** "XOstinato is a communal drum circle engine where 8 physically-modeled world percussion instruments play interlocking ostinato patterns — and you can sit down and join." ✓
-3. **Sound only this can make:** A self-playing world drum circle with physically-modeled instruments reacting to each other — djembe call triggering doumbek response while taiko provides thunder underneath. No DAW plugin or XOlokun engine does this. ✓
+3. **Sound only this can make:** A self-playing world drum circle with physically-modeled instruments reacting to each other — djembe call triggering doumbek response while taiko provides thunder underneath. No DAW plugin or XOceanus engine does this. ✓
 
 ---
 

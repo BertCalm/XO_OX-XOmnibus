@@ -301,7 +301,7 @@ No issue here.
 
 The `cp_*_amount` parameter is bipolar (range -1.0 to 1.0). `convertTo0to1(-1.0)` should return 0.0 and `convertTo0to1(1.0)` should return 1.0, assuming the APVTS range is [-1, 1]. This is correct.
 
-No issue here, but depends on the `cp_*_amount` parameter being declared with range [-1.0, 1.0] in the APVTS layout. If it was accidentally declared as [0.0, 1.0], negative amounts would be clamped to 0. This should be verified in `XOlokunProcessor.cpp` where `cp_*_amount` parameters are declared.
+No issue here, but depends on the `cp_*_amount` parameter being declared with range [-1.0, 1.0] in the APVTS layout. If it was accidentally declared as [0.0, 1.0], negative amounts would be clamped to 0. This should be verified in `XOceanusProcessor.cpp` where `cp_*_amount` parameters are declared.
 
 ### 5.6 `deletePreset()` — iterator invalidation after erase
 
@@ -371,6 +371,6 @@ No issues in CouplingCrossfader for TriangularCoupling.
 3. **M01** — Change `route.amount < 0.001f` to `std::abs(route.amount) < 0.001f` in `processBlock()`. One character change.
 4. **M02** — Change `numSamples` to `limit` in the `applyCouplingInput()` call at line 189. One word change.
 5. **L01** — Delete the `invRatio` declaration at line 281.
-6. **H04** — Review the `setEngines()` call site in `XOlokunProcessor.cpp`. If hot-swap can occur during audio rendering, add synchronization.
+6. **H04** — Review the `setEngines()` call site in `XOceanusProcessor.cpp`. If hot-swap can occur during audio rendering, add synchronization.
 
 Items H01–H03 are the most impactful: they cause silent data loss in preset files for three coupling types, including KnotTopology which is used in factory Entangled mood presets.

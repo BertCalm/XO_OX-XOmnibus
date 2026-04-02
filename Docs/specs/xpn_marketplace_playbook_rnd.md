@@ -13,7 +13,7 @@ MPC expansion packs (.xpn bundles) can be distributed across several channels, e
 - **Splice** — subscription-driven sample discovery; high volume, low per-unit revenue, good for building audience
 - **Beatstars** — producer-facing marketplace; strong for loops and one-shots, large user base
 - **Gumroad** — direct sales with minimal fees; full pricing control, requires driving your own traffic
-- **XO-OX.org** — direct-to-fan, highest margin, deepest brand expression, native home for XOlokun-integrated packs
+- **XO-OX.org** — direct-to-fan, highest margin, deepest brand expression, native home for XOceanus-integrated packs
 
 ---
 
@@ -49,9 +49,9 @@ Recommended path: build sales history and community reputation through direct ch
 
 XO_OX enters a market where most expansion packs are generic sample collections with no coherent identity. The competitive advantages as of March 2026:
 
-- **MPCe-native design** — XOlokun-integrated packs are built specifically for the MPC ecosystem. No confirmed competitor is operating at this integration depth as of this date.
+- **MPCe-native design** — XOceanus-integrated packs are built specifically for the MPC ecosystem. No confirmed competitor is operating at this integration depth as of this date.
 - **Sonic DNA metadata** — machine-readable tonal fingerprints embedded in pack metadata enable future intelligent search and coupling workflows that generic packs cannot support
-- **XOlokun coupling** — packs are designed for multi-engine use across the 31-engine constellation; a drums pack designed with ONSET, OPAL, and OVERDUB coupling in mind is structurally richer than a flat sample library
+- **XOceanus coupling** — packs are designed for multi-engine use across the 31-engine constellation; a drums pack designed with ONSET, OPAL, and OVERDUB coupling in mind is structurally richer than a flat sample library
 - **Brand mythology** — the aquatic creature system, feliX-Oscar polarity axis, and Field Guide give buyers a narrative to participate in, not just a product to purchase
 - **Quality bar** — every pack passes Doctrine-level seance review (6 doctrines: soul preservation, musical velocity, emotional engine distinctness, dry variants, invisible intelligence, stereo width). This is a production standard, not a marketing claim.
 

@@ -9,7 +9,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 | File | Location |
 |------|----------|
 | `CLAUDE.md` (audio-xpm-creator) | `$HOME/CLAUDE.md` |
-| `CLAUDE.md` (XOlokun) | `XO_OX-XOmnibus/CLAUDE.md` |
+| `CLAUDE.md` (XOceanus) | `XO_OX-XOceanus/CLAUDE.md` |
 | `CLAUDE.md` (XOzone) | `XO_OX-XOzone-Instrument/CLAUDE.md` |
 | `CLAUDE.md` (XOxytocin) | `XOxytocin/CLAUDE.md` |
 
@@ -49,7 +49,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 
 ---
 
-## File 2: `XO_OX-XOmnibus/CLAUDE.md` (XOlokun)
+## File 2: `XO_OX-XOceanus/CLAUDE.md` (XOceanus)
 
 **Score: 78/100 → 88/100 after fixes**
 
@@ -71,7 +71,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 5. **V1 scope not documented**: Revised scope (28-34 engines, OBRIX flagship + curated selection) is in MEMORY.md and a standalone doc but not in CLAUDE.md
 6. **Kitchen Collection missing as section**: 24 engines across 6 quads, all retreats complete, not summarized anywhere actionable in CLAUDE.md
 7. **community-strategy-v2.md not referenced**: New community strategy doc exists in Docs/ but not linked
-8. **xomnibus_* doc filenames**: All `Docs/xomnibus_*.md` references are intentionally preserved (files still named with xomnibus prefix — not a bug, flagged only for awareness)
+8. **xoceanus_* doc filenames**: All `Docs/xoceanus_*.md` references are intentionally preserved (files still named with xoceanus prefix — not a bug, flagged only for awareness)
 
 ### Changes Applied
 
@@ -103,7 +103,7 @@ Autonomous overnight audit of all CLAUDE.md files across the XO_OX ecosystem.
 - Minor: macOS build missing `-G Ninja` (uses default generator)
 
 ### Changes Applied
-None. Scores are acceptable and this is a standalone instrument (lower priority than XOlokun). Issues are low-severity.
+None. Scores are acceptable and this is a standalone instrument (lower priority than XOceanus). Issues are low-severity.
 
 ---
 
@@ -121,12 +121,12 @@ None. Scores are acceptable and this is a standalone instrument (lower priority 
 | Actionability | 13/15 | 13/15 | Post-build checklist is actionable |
 
 ### Issues Found
-1. **5x "XOmnibus" references**: All stale — engine was integrated into XOlokun (renamed 2026-03-24)
+1. **5x "XOceanus" references**: All stale — engine was integrated into XOceanus (renamed 2026-03-24)
 2. **Seance status stale**: Said "Not yet run" — seance completed 2026-03-22 at 9.5/10 (fleet leader)
 3. **Preset count stale**: Said 120, actual on-disk count is 130
 
 ### Changes Applied
-1. All 5 occurrences of "XOmnibus" replaced with "XOlokun"
+1. All 5 occurrences of "XOceanus" replaced with "XOceanus"
 2. Seance row updated: "Not yet run" → "9.5/10 — Fleet leader (B040 Note Duration, unanimous). Run 2026-03-22."
 3. Preset count updated: 120 → 130
 
@@ -137,17 +137,17 @@ None. Scores are acceptable and this is a standalone instrument (lower priority 
 | File | Changes |
 |------|---------|
 | `$HOME/CLAUDE.md` | Added `npm run dev` + `npm run build` to Environment |
-| `XO_OX-XOmnibus/CLAUDE.md` | Fixed preset count; added Environment section with JUCE gotchas + AU ID; added auval command; added V1 Scope section; added Kitchen Collection section; expanded Documentation Index |
-| `XOxytocin/CLAUDE.md` | Replaced 5x XOmnibus → XOlokun; updated seance status (9.5/10); updated preset count (120 → 130) |
+| `XO_OX-XOceanus/CLAUDE.md` | Fixed preset count; added Environment section with JUCE gotchas + AU ID; added auval command; added V1 Scope section; added Kitchen Collection section; expanded Documentation Index |
+| `XOxytocin/CLAUDE.md` | Replaced 5x XOceanus → XOceanus; updated seance status (9.5/10); updated preset count (120 → 130) |
 | `XO_OX-XOzone-Instrument/CLAUDE.md` | No changes (standalone instrument, acceptable baseline) |
 
 ---
 
 ## Remaining Gaps (Not Fixed — Require Manual Decision)
 
-1. **XOlokun Seance Findings prose (lines 363+)**: ~400-word changelog-style paragraph. Accurate but extremely dense — consider splitting into a table. Not changed because it's a historical record and reducing it risks losing traceability.
+1. **XOceanus Seance Findings prose (lines 363+)**: ~400-word changelog-style paragraph. Accurate but extremely dense — consider splitting into a table. Not changed because it's a historical record and reducing it risks losing traceability.
 
-2. **`Docs/xomnibus_*.md` filenames**: 20 doc files still named with `xomnibus_` prefix. CLAUDE.md links to them correctly (files exist). Renaming would be a separate task requiring updates to all cross-references.
+2. **`Docs/xoceanus_*.md` filenames**: 20 doc files still named with `xoceanus_` prefix. CLAUDE.md links to them correctly (files exist). Renaming would be a separate task requiring updates to all cross-references.
 
 3. **XOddCouple auval command**: Not added — AU ID not verified from CMakeLists; would require reading the XOzone repo's build config.
 

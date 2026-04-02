@@ -273,8 +273,8 @@ instead, which loads XPN packs natively.
 
 ### 6.2 iOS-Specific Considerations
 
-- **AUv3 hosting**: MPC for iOS can load XOlokun as an AUv3 instrument. This is a separate feature
-  from XPN pack loading — XPN packs provide samples/programs, XOlokun AUv3 provides the synth engine.
+- **AUv3 hosting**: MPC for iOS can load XOceanus as an AUv3 instrument. This is a separate feature
+  from XPN pack loading — XPN packs provide samples/programs, XOceanus AUv3 provides the synth engine.
   Both can coexist in an iOS project.
 - **File access**: XPN pack installation on iOS goes through the Files app or cloud provider.
   Pack archive (.xpn ZIP) must be well-formed with correct directory structure — sloppy path handling

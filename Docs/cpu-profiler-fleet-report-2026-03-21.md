@@ -1,4 +1,4 @@
-# XOlokun Fleet CPU Profiler Report
+# XOceanus Fleet CPU Profiler Report
 **Date**: 2026-03-21
 **Scope**: 70 engines (46 original + 24 Kitchen Collection)
 **Method**: Static analysis of all engine `.h` files — transcendentals, divisions, memory allocations, filter counts, voice polyphony
@@ -237,7 +237,7 @@ for (int c = 0; c < 4; ++c) {
 ### Fix 7 — OCELOT: Replace Canopy partial synthesis sin with wavetable
 **Files**: `OcelotCanopy.h:91, 114`
 **Issue**: `std::sin` called per sample for partial synthesis in `OcelotCanopy`. Multiple partials accumulate. `OcelotUnderstory.h:127` also uses `std::sin` for a per-sample oscillator.
-**Fix**: Ocelot already uses `fastSin` in `OcelotEmergent.h` and `OcelotVoice.h` (SRO complete). Apply the same `xolokun::fastSin()` to Canopy and Understory. This is a 3-line change per site.
+**Fix**: Ocelot already uses `fastSin` in `OcelotEmergent.h` and `OcelotVoice.h` (SRO complete). Apply the same `xoceanus::fastSin()` to Canopy and Understory. This is a 3-line change per site.
 **Savings**: ~3-6 sin/sample per active voice → **~200-400 cycles/voice/sample** saved.
 
 ---

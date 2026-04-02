@@ -833,4 +833,4 @@ For web-based preset browser, documentation site, or any web component:
 
 ---
 
-*This document was compiled from all design-related sources in the XO_OX-XOmnibus repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*
+*This document was compiled from all design-related sources in the XO_OX-XOceanus repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*

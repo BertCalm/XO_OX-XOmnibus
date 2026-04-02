@@ -5,7 +5,7 @@
 
 ## Overview
 
-XOlokun ships with 34 registered engines + 4 V1 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE).
+XOceanus ships with 34 registered engines + 4 V1 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE).
 No XPN packs exist yet. This document answers: which engines get packs first, in what order, and why.
 
 A pack is a curated `.xpn` bundle — programs, kits, and/or keygroup instruments — built from an
@@ -51,7 +51,7 @@ engine — you lose the producer before they trust the brand.
 **Tier 4 — Texture & Atmosphere** (fourth priority): Specialized, slower burn, more discerning audience.
 - OCELOT, OBSCURA, OBSIDIAN, ORIGAMI, OSPREY, OSTERIA, OCEANIC, OWLFISH, OHM, ORPHICA
 
-**Tier 5 — Coupling / Context-Dependent** (fifth priority): Best experienced inside XOlokun, harder
+**Tier 5 — Coupling / Context-Dependent** (fifth priority): Best experienced inside XOceanus, harder
 to represent standalone.
 - OUROBOROS, OBLIQUE, OPTIC, OMBRE, ODDFELIX, ODDOSCAR, OCTOPUS, ORCA, OUTWIT, OVERLAP
 
@@ -280,7 +280,7 @@ Quaternary audience. Value: complexity, environmental sound, systems that evolve
 
 ## 5. V1 Concept Engine Packs
 
-These four engines had their DSP completed on 2026-03-18 and are now installed in XOlokun.
+These four engines had their DSP completed on 2026-03-18 and are now installed in XOceanus.
 Their pack strategies below were planned before DSP and remain valid — preset libraries still need building.
 
 ### Polarity Pair Strategy — OPENSKY + OCEANDEEP

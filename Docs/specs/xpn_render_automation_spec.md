@@ -34,7 +34,7 @@ capability to `oxport.py` via a new `render` pipeline stage.
 It must **not**:
 
 - Allocate on the audio thread (offline context — no constraint, but stay consistent)
-- Access the live `XOlokunProcessor` instance (render is fully self-contained)
+- Access the live `XOceanusProcessor` instance (render is fully self-contained)
 - Assume 44100 Hz (derive from `RenderParams::sampleRate`)
 - Block the message thread
 
@@ -255,11 +255,11 @@ target_link_libraries(XPNRenderCLI PRIVATE
     juce::juce_audio_formats
     juce::juce_audio_processors
     juce::juce_core
-    XOlokunEngines)   # shared static lib containing all engine objects
+    XOceanusEngines)   # shared static lib containing all engine objects
 ```
 
-`XOlokunEngines` is a new `add_library(XOlokunEngines STATIC ...)` target that
-compiles all engine `.cpp` stubs and `EngineRegistry.cpp`. The main XOlokun AU/VST3
+`XOceanusEngines` is a new `add_library(XOceanusEngines STATIC ...)` target that
+compiles all engine `.cpp` stubs and `EngineRegistry.cpp`. The main XOceanus AU/VST3
 target and `XPNRenderCLI` both link against it, avoiding duplicate compilation.
 
 ### 4.4 CLI Usage
@@ -290,7 +290,7 @@ may exist), `2` = manifest parse error or missing preset.
 #include "../Core/PresetManager.h"
 #include <juce_core/juce_core.h>
 
-namespace xolokun {
+namespace xoceanus {
 
 struct ManifestEntry {
     int         note;
@@ -312,7 +312,7 @@ struct RenderManifest {
 RenderManifest parseManifest(const juce::File& manifestFile);
 int            runCLI(int argc, char** argv);
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 ---
@@ -353,7 +353,7 @@ int            runCLI(int argc, char** argv);
 Field rules:
 
 - `engine` — canonical engine ID from `EngineRegistry` (e.g. `"ONSET"`, `"OPAL"`)
-- `preset` — exact name matching a `.xometa` file in `Presets/XOlokun/`
+- `preset` — exact name matching a `.xometa` file in `Presets/XOceanus/`
 - `sampleRate` — `44100` or `48000`; default `44100`
 - `bitDepth` — `16` or `24`; default `24`
 - `stereo` — default `true`
@@ -514,7 +514,7 @@ a known limitation; revisit in Phase 2.
 ## 9. Build Integration
 
 The new `XPNRenderCLI` target must be added to `CMakeLists.txt`. It shares all engine
-source via the `XOlokunEngines` static library target. No engine `.h` files change.
+source via the `XOceanusEngines` static library target. No engine `.h` files change.
 
 Estimated `CMakeLists.txt` additions: ~30 lines.
 
@@ -541,12 +541,12 @@ The Opus sessions are required because:
    no static mutable state (thread safety for parallel workers). Some engines may
    cache DSP tables in static locals — these need `std::call_once` guards.
 
-3. **APVTS construction for standalone use.** The live `XOlokunProcessor` constructs
+3. **APVTS construction for standalone use.** The live `XOceanusProcessor` constructs
    a merged APVTS with all 34 engine layouts. For headless rendering, a single-engine
-   APVTS is needed. The merge logic in `XOlokunProcessor::createParameterLayout()`
+   APVTS is needed. The merge logic in `XOceanusProcessor::createParameterLayout()`
    must be extractable into a reusable helper.
 
-4. **CMake refactor.** Extracting `XOlokunEngines` as a shared static library
+4. **CMake refactor.** Extracting `XOceanusEngines` as a shared static library
    requires touching the build system carefully — the main AU/VST3 target must
    continue to work without regressions.
 
@@ -566,5 +566,5 @@ The Opus sessions are required because:
       fleet render for ONSET in under 60 seconds on an M1 Mac
 - [ ] `oxport.py ONSET "Iron Hat"` runs end-to-end with `render` stage active and
       produces a valid `.xpn` bundle
-- [ ] `auval` result for the main XOlokun AU is unchanged after CMake refactor
+- [ ] `auval` result for the main XOceanus AU is unchanged after CMake refactor
 - [ ] No engine produces silence for its canonical root note at velocity 100

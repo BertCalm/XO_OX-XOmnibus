@@ -29,7 +29,7 @@ The existing PlaySurface code is a **solid foundation with significant gaps**. T
 | `TideController` | **NOT BUILT** | Spec written | Phase 6 — 1 day |
 | `PlaySurfaceContainer` | **NOT BUILT** | Spec written | Phase 1 — part of MPCPadGrid phase |
 
-**PlaySurface.h is not mounted in `XOlokunEditor.h`** — only `MobilePlaySurface.h` includes `PlaySurface.h`. The desktop surface is not yet visible in the plugin UI.
+**PlaySurface.h is not mounted in `XOceanusEditor.h`** — only `MobilePlaySurface.h` includes `PlaySurface.h`. The desktop surface is not yet visible in the plugin UI.
 
 ---
 
@@ -181,7 +181,7 @@ The spec (section 5.3) describes the XY Pad as having configurable axis labels (
 
 ### 2.3 Bug: `onPositionChanged` Output Not Wired to MIDI/Parameters
 
-`OrbitPathZone` calls `onPositionChanged(x, y)` with normalized values. But in `PlaySurface`, **no callback is set**. The `getNoteInput()`, `getOrbitPath()`, `getStrip()`, `getPerfPads()` accessors exist, but no wiring happens inside `PlaySurface` — callers must set these callbacks externally. Since `PlaySurface.h` is not included in `XOlokunEditor.h`, the callbacks are never set. The OrbitPath produces no audio output.
+`OrbitPathZone` calls `onPositionChanged(x, y)` with normalized values. But in `PlaySurface`, **no callback is set**. The `getNoteInput()`, `getOrbitPath()`, `getStrip()`, `getPerfPads()` accessors exist, but no wiring happens inside `PlaySurface` — callers must set these callbacks externally. Since `PlaySurface.h` is not included in `XOceanusEditor.h`, the callbacks are never set. The OrbitPath produces no audio output.
 
 ### 2.4 Missing: Lock Mode Spring on Release
 
@@ -309,7 +309,7 @@ The four modes (Intensity/Timbral/Spatial/Expression) change the label and color
 
 ### 5.6 Missing: Not Wired to Any MIDI CC or Parameter
 
-`ToucheExpression` is defined in its own file and never included in `XOlokunEditor.h`. It is not mounted anywhere in the desktop plugin UI. The callbacks (`onExpressionChanged`, `onTouchBegin`, `onTouchEnd`) are never connected to any parameter or MIDI CC.
+`ToucheExpression` is defined in its own file and never included in `XOceanusEditor.h`. It is not mounted anywhere in the desktop plugin UI. The callbacks (`onExpressionChanged`, `onTouchBegin`, `onTouchEnd`) are never connected to any parameter or MIDI CC.
 
 ---
 
@@ -532,7 +532,7 @@ This is the definitive map of what the spec says should exist vs. what is implem
 | iPad haptics for scale-tone crossings | §6.2 | NOT BUILT | Phase 9 |
 | iPad two-finger octave swipe | §6.2 | NOT BUILT | Phase 9 |
 | Surface persistence in preset | §7.2 | NOT BUILT | Phase 5 |
-| PlaySurface mounted in XOlokunEditor | — | NOT MOUNTED | Phase 5 |
+| PlaySurface mounted in XOceanusEditor | — | NOT MOUNTED | Phase 5 |
 
 ### Bugs in Existing Code
 
@@ -561,7 +561,7 @@ This is the definitive map of what the spec says should exist vs. what is implem
 
 ### 11.1 The `PlaySurface.h` is Orphaned
 
-`PlaySurface.h` is only included by `MobilePlaySurface.h` (which imports it but doesn't use most of it — it reimplements similar functionality independently). `XOlokunEditor.h` does not include `PlaySurface.h`. The desktop plugin currently has **no play surface** mounted in its UI.
+`PlaySurface.h` is only included by `MobilePlaySurface.h` (which imports it but doesn't use most of it — it reimplements similar functionality independently). `XOceanusEditor.h` does not include `PlaySurface.h`. The desktop plugin currently has **no play surface** mounted in its UI.
 
 This is understandable as Phase 0 (foundation code exists, mounting is Phase 5 in the spec), but it means no integration testing has been possible.
 
@@ -645,7 +645,7 @@ Based on severity and dependency order:
 
 ### P0 Fixes (Required Before Any Integration Testing)
 
-1. **Wire MIDI output pipeline** — Add `juce::MidiMessageCollector*` to `PlaySurface`, call `addMessageToQueue()` from all note-on/off handlers. Mount `PlaySurface` in `XOlokunEditor`. Without this, nothing sounds.
+1. **Wire MIDI output pipeline** — Add `juce::MidiMessageCollector*` to `PlaySurface`, call `addMessageToQueue()` from all note-on/off handlers. Mount `PlaySurface` in `XOceanusEditor`. Without this, nothing sounds.
 
 2. **Fix fretless axis** — Swap X/Y in `handleFretlessTouch()`. X = pitch (left=low, right=high), Y = expression (bottom=0, top=1). This requires rearchitecting the fretless rendering too (currently a vertical strip, needs to be a 2D surface).
 
@@ -676,7 +676,7 @@ Based on severity and dependency order:
 14. `ExpressionPanel` with all 7 controllers wired to APVTS
 
 ### Phase 5 (1 day)
-15. Mount all components in `XOlokunEditor`, wire MIDI output, add surface state to `.xometa`
+15. Mount all components in `XOceanusEditor`, wire MIDI output, add surface state to `.xometa`
 
 ### Phases 6–10 (remaining 12 days)
 Per the spec's Appendix D.
@@ -693,7 +693,7 @@ The PlaySurface foundation is architecturally solid and aesthetically on-brand. 
 4. **Five of the eight spec components are not yet built** (XOuija, MPCPadGrid, Seaboard, ExpressionPanel, TideController, PlaySurfaceContainer)
 5. **The desktop PlaySurface is not mounted** in the plugin editor
 
-The path to "most playable virtual instrument ever created" is clear and has a known timeline (~22 days of implementation). The foundation is ready. The spec is signed off. The Blessings B042 (Planchette as Autonomous Entity) and B043 (Gesture Trail as Modulation Source) are genuinely novel and will differentiate XOlokun from every other play surface on the market when implemented.
+The path to "most playable virtual instrument ever created" is clear and has a known timeline (~22 days of implementation). The foundation is ready. The spec is signed off. The Blessings B042 (Planchette as Autonomous Entity) and B043 (Gesture Trail as Modulation Source) are genuinely novel and will differentiate XOceanus from every other play surface on the market when implemented.
 
 The critical first step is wiring MIDI output so that any of the existing surfaces can actually produce sound.
 

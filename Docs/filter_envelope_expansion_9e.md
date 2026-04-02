@@ -1,5 +1,5 @@
 # Filter Envelope Expansion — Round 9E
-## XOlokun Fleet | 2026-03-14
+## XOceanus Fleet | 2026-03-14
 ### D001 Doctrine: "Velocity Must Shape Timbre"
 
 This document records the 6 engines fixed in Round 9E. These engines were identified in

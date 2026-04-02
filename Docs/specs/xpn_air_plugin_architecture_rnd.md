@@ -30,17 +30,17 @@ MyPack.xpn.zip
 └── plugin_bundle/
     ├── manifest.json
     ├── AU/
-    │   └── XOlokun.component      (macOS AU)
+    │   └── XOceanus.component      (macOS AU)
     └── VST3/
-        └── XOlokun.vst3/          (cross-platform VST3)
+        └── XOceanus.vst3/          (cross-platform VST3)
 ```
 
 ### `plugin_bundle/manifest.json`
 
 ```json
 {
-  "plugin_name": "XOlokun",
-  "plugin_id": "XO_OX.XOlokun",
+  "plugin_name": "XOceanus",
+  "plugin_id": "XO_OX.XOceanus",
   "version": "1.0.0",
   "formats": ["AU", "VST3"],
   "minimum_mpc_software": "3.4.0",
@@ -88,24 +88,24 @@ This flow mirrors AIR's model. It requires MPC Software support for the `plugin_
 
 ---
 
-## 3. XOlokun-as-XPN-Plugin Path
+## 3. XOceanus-as-XPN-Plugin Path
 
-XOlokun is the natural companion plugin for XO_OX packs. The user flow would be:
+XOceanus is the natural companion plugin for XO_OX packs. The user flow would be:
 
 1. User downloads XO_OX expansion (e.g., XObese Character Pack).
-2. MPC Software detects XOlokun is not installed.
-3. Prompts: "This expansion was designed for XOlokun. Install the free companion plugin?"
-4. XOlokun installs to AU/VST3 locations.
-5. Expansion Programs reference XOlokun engines directly via plugin parameter blocks.
+2. MPC Software detects XOceanus is not installed.
+3. Prompts: "This expansion was designed for XOceanus. Install the free companion plugin?"
+4. XOceanus installs to AU/VST3 locations.
+5. Expansion Programs reference XOceanus engines directly via plugin parameter blocks.
 
 **What blocks this today:**
 
 - **MPC OS sandboxing**: Hardware MPC units run a locked embedded Linux environment. Third-party plugin installation is not exposed to users. AIR plugins on hardware are pre-baked into firmware images — XO_OX cannot replicate this without an OEM deal with Akai.
-- **AU validation**: macOS requires all AU plugins to pass `auval` and be code-signed with a valid Developer ID. XOlokun currently passes `auval` but must be notarized for distribution outside the Mac App Store. Notarization is achievable but requires an active Apple Developer account ($99/yr) and hardened runtime entitlements.
+- **AU validation**: macOS requires all AU plugins to pass `auval` and be code-signed with a valid Developer ID. XOceanus currently passes `auval` but must be notarized for distribution outside the Mac App Store. Notarization is achievable but requires an active Apple Developer account ($99/yr) and hardened runtime entitlements.
 - **VST3 signing**: Windows VST3 distribution has no mandatory signing requirement, but MPC Software may whitelist or validate plugins by vendor.
 - **MPC Software plugin discovery**: MPC Software scans standard AU/VST3 paths. A bundled installer dropping binaries into those paths would work for desktop, but Akai would need to whitelist the `plugin_bundle` expansion key in a Software update for the prompt flow to work at all.
 
-**Near-term feasible path**: Ship XOlokun as a standalone free download with a landing page linked from pack metadata. No firmware changes needed. The `params_sidecar` approach (Section 4) handles the preset bridge.
+**Near-term feasible path**: Ship XOceanus as a standalone free download with a landing page linked from pack metadata. No firmware changes needed. The `params_sidecar` approach (Section 4) handles the preset bridge.
 
 ---
 
@@ -125,7 +125,7 @@ Programs/
 ```json
 {
   "xo_ox_version": "1.0",
-  "target_plugin": "XO_OX.XOlokun",
+  "target_plugin": "XO_OX.XOceanus",
   "engine": "OVERBITE",
   "preset_name": "Concrete Jaw",
   "params": {
@@ -147,9 +147,9 @@ Programs/
 }
 ```
 
-XOlokun would expose a **Sidecar Import** feature: scan a directory for `params_sidecar.json` files, parse them, and load the named preset into the matching engine. This is entirely within XOlokun's control — no MPC firmware changes required.
+XOceanus would expose a **Sidecar Import** feature: scan a directory for `params_sidecar.json` files, parse them, and load the named preset into the matching engine. This is entirely within XOceanus's control — no MPC firmware changes required.
 
-The sidecar functions as a "preset import protocol": the XPN pack ships sounds, the sidecar ships the engine voice character, and a user with XOlokun installed gets both layers automatically.
+The sidecar functions as a "preset import protocol": the XPN pack ships sounds, the sidecar ships the engine voice character, and a user with XOceanus installed gets both layers automatically.
 
 ---
 
@@ -158,8 +158,8 @@ The sidecar functions as a "preset import protocol": the XPN pack ships sounds, 
 | Component | Effort Level | Buildable Now? | Blocker |
 |---|---|---|---|
 | `params_sidecar.json` spec (finalize format) | Sonnet | Yes | None |
-| XOlokun sidecar importer (scan + load) | Sonnet | Yes | None |
-| XOlokun notarization + signed distribution | Sonnet | Yes (process) | Apple Dev account |
+| XOceanus sidecar importer (scan + load) | Sonnet | Yes | None |
+| XOceanus notarization + signed distribution | Sonnet | Yes (process) | Apple Dev account |
 | `plugin_bundle/manifest.json` spec | Sonnet | Yes (spec only) | None |
 | MPC Software `plugin_bundle` key support | Firmware | No | Akai cooperation |
 | Hardware MPC plugin install flow | Firmware | No | Akai OEM deal |
@@ -167,8 +167,8 @@ The sidecar functions as a "preset import protocol": the XPN pack ships sounds, 
 
 **Recommended sequence:**
 1. Ship `params_sidecar.json` in all XO_OX packs immediately — zero external dependencies.
-2. Build XOlokun sidecar importer as a V1.1 feature.
-3. Pursue Apple notarization so XOlokun can distribute as a signed free download linked from pack pages.
+2. Build XOceanus sidecar importer as a V1.1 feature.
+3. Pursue Apple notarization so XOceanus can distribute as a signed free download linked from pack pages.
 4. Monitor MPC Software changelog for third-party plugin bundle support — file a feature request with Akai.
 5. Full `plugin_bundle/` ZIP architecture is the V2 target, contingent on MPC Software support.
 

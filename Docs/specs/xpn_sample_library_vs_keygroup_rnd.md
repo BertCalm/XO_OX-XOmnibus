@@ -14,7 +14,7 @@ MPC XPN packs can contain six program types. Each has a distinct identity in the
 
 **MIDI Program** — Sends MIDI to an external device or plugin. Not relevant for sample-based XO_OX packs.
 
-**Plugin Program** — Hosts an MPC-native VST/AU. Relevant for the future XOlokun MPC plugin path but not for sample XPN packs.
+**Plugin Program** — Hosts an MPC-native VST/AU. Relevant for the future XOceanus MPC plugin path but not for sample XPN packs.
 
 **CV Program** — Eurorack CV/gate output. Not relevant here.
 

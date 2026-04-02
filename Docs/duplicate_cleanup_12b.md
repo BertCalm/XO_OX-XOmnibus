@@ -22,9 +22,9 @@
 
 | File | Engine | Resolution |
 |------|--------|------------|
-| `Presets/XOlokun/Entangled/Event_Horizon.xometa` | Ouroboros (Rössler) | **RENAMED** → "Rössler Injection" |
-| `Presets/XOlokun/Aether/Event Horizon.xometa` | Ouroboros (Lorenz) | **RENAMED** → "Lorenz Void" |
-| `Presets/XOlokun/Aether/Event_Horizon.xometa` | Odyssey (deep space pad) | **RENAMED** → "Past the Point" |
+| `Presets/XOceanus/Entangled/Event_Horizon.xometa` | Ouroboros (Rössler) | **RENAMED** → "Rössler Injection" |
+| `Presets/XOceanus/Aether/Event Horizon.xometa` | Ouroboros (Lorenz) | **RENAMED** → "Lorenz Void" |
+| `Presets/XOceanus/Aether/Event_Horizon.xometa` | Odyssey (deep space pad) | **RENAMED** → "Past the Point" |
 | `Presets/Drift/Climax/02_Event_Horizon.xometa` | Odyssey (Climax demo) | **KEPT** — canonical demo identity |
 
 Rationale: The Climax demo "Event Horizon" is a deliberate identity and the most distinctive use of the name. The Ouroboros Lorenz version became "Lorenz Void" (more precise), the Rössler version became "Rössler Injection" (describes its heavy injection parameter), and the generic Odyssey pad became "Past the Point."
@@ -33,8 +33,8 @@ Rationale: The Climax demo "Event Horizon" is a deliberate identity and the most
 
 | File | Engine | Resolution |
 |------|--------|------------|
-| `Presets/XOlokun/Entangled/Butterfly Effect.xometa` | Ouroboros (Lorenz butterfly) | **KEPT** — canonical name match |
-| `Presets/XOlokun/Atmosphere/Butterfly_Effect.xometa` | Ouroboros (moderate chaos pad) | **RENAMED** → "Strange Attractor" → "Lorenz Haze" |
+| `Presets/XOceanus/Entangled/Butterfly Effect.xometa` | Ouroboros (Lorenz butterfly) | **KEPT** — canonical name match |
+| `Presets/XOceanus/Atmosphere/Butterfly_Effect.xometa` | Ouroboros (moderate chaos pad) | **RENAMED** → "Strange Attractor" → "Lorenz Haze" |
 
 Note: "Strange Attractor" itself became a duplicate (there was already an Ouroboros Aether preset with that name), so the Atmosphere version was renamed to "Lorenz Haze."
 

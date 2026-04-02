@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-The XOlokun fleet has 20 engines below the 8.0 threshold. The issues fall into recurring patterns:
+The XOceanus fleet has 20 engines below the 8.0 threshold. The issues fall into recurring patterns:
 
 1. **Modulation starvation** — Many engines have only a single sine LFO or a hardcoded breathing LFO. Producers need shape-selectable LFOs with sync, rate, and depth controls.
 2. **Missing filter envelopes** — Several engines lack independent filter ADSR, making classic bass plucks, acid lines, and evolving pads impossible.

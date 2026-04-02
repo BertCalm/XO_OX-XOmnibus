@@ -11,12 +11,12 @@
 | Check | Result |
 |-------|--------|
 | CMake configure | PASS |
-| Plugin build (XOlokun AU) | FAIL — 11 unique errors |
-| Test build (XOlokunTests) | FAIL — included in overall error count |
+| Plugin build (XOceanus AU) | FAIL — 11 unique errors |
+| Test build (XOceanusTests) | FAIL — included in overall error count |
 | auval `aumu Xolk XoOx` | PASS (using previously installed component) |
-| Source XOmnibus references | CLEAN — 0 in Source/ or CMakeLists.txt |
-| Docs XOmnibus references | Informational only — 8 files, all intentional or historical |
-| CMakeLists.txt VERSION | PASS — `project(XOlokun VERSION 1.0.0)` matches expected |
+| Source XOceanus references | CLEAN — 0 in Source/ or CMakeLists.txt |
+| Docs XOceanus references | Informational only — 8 files, all intentional or historical |
+| CMakeLists.txt VERSION | PASS — `project(XOceanus VERSION 1.0.0)` matches expected |
 | Engine directory count | PASS — 73 directories in Source/Engines/ |
 
 ---
@@ -24,12 +24,12 @@
 ## Step 1: Build State
 
 Build directory exists at `build/` with prior artifacts:
-- `build/XOlokun_artefacts/AU/XOlokun.component` — built artefact
-- `build/XOlokun_artefacts/Standalone/` — built artefact
-- `build/libXOlokun_SharedCode.a` — shared code library
+- `build/XOceanus_artefacts/AU/XOceanus.component` — built artefact
+- `build/XOceanus_artefacts/Standalone/` — built artefact
+- `build/libXOceanus_SharedCode.a` — shared code library
 
 The AU component is also installed at:
-`~/Library/Audio/Plug-Ins/Components/XOlokun.component` (installed 2026-03-24 16:36)
+`~/Library/Audio/Plug-Ins/Components/XOceanus.component` (installed 2026-03-24 16:36)
 
 ---
 
@@ -45,7 +45,7 @@ Output: Clean configure with no errors. Rive runtime not found (expected — opt
 
 ### cmake --build build — FAIL
 
-Build stopped with errors. The XOlokun AU/Standalone target and the XOlokunTests target both fail to compile to completion.
+Build stopped with errors. The XOceanus AU/Standalone target and the XOceanusTests target both fail to compile to completion.
 
 **Total compiler output: 171 warnings and at least 11 unique errors.**
 
@@ -82,11 +82,11 @@ juce::ScopedNoDenormals noDenormals;
 
 **Errors:**
 
-1. `XDrip.h:278` — `engine->setParameterValue(paramId, value)` — method `setParameterValue` does not exist on `xolokun::SynthEngine`. The correct method name must be checked in `Source/Core/SynthEngine.h`.
+1. `XDrip.h:278` — `engine->setParameterValue(paramId, value)` — method `setParameterValue` does not exist on `xoceanus::SynthEngine`. The correct method name must be checked in `Source/Core/SynthEngine.h`.
 
 2. `ExportDialog.h:321` — Unknown type name `PreviewAudioSource`. This class is referenced but not defined or included anywhere in the visible headers.
 
-3. `ExportDialog.h:373, 377, 380, 814, 838, 938` — `presetManager.library` is a **private** member of `xolokun::PresetManager`. Direct access is attempted from `ExportDialog`. The correct public accessor is `presetManager.getLibrary()` (returns `const std::vector<PresetData>&`), which is already declared in `PresetManager.h` at line 605.
+3. `ExportDialog.h:373, 377, 380, 814, 838, 938` — `presetManager.library` is a **private** member of `xoceanus::PresetManager`. Direct access is attempted from `ExportDialog`. The correct public accessor is `presetManager.getLibrary()` (returns `const std::vector<PresetData>&`), which is already declared in `PresetManager.h` at line 605.
 
 4. `ExportDialog.h:410` — `no viable overloaded '='` — likely a consequence of one of the above type errors causing a cascading failure on an assignment.
 
@@ -100,9 +100,9 @@ juce::ScopedNoDenormals noDenormals;
 
 ---
 
-### Error Group C — `XOlokunEditor.h` PopupMenu API (P0)
+### Error Group C — `XOceanusEditor.h` PopupMenu API (P0)
 
-**File:** `Source/UI/XOlokunEditor.h`, line 69
+**File:** `Source/UI/XOceanusEditor.h`, line 69
 
 ```cpp
 int result = menu.show();
@@ -120,7 +120,7 @@ Error: `no member named 'show'` in `juce::PopupMenu`.
 
 **PASS** — `auval -v aumu Xolk XoOx`
 
-The installed component at `~/Library/Audio/Plug-Ins/Components/XOlokun.component` (from the prior build on 2026-03-24 16:36) validated successfully across all test suites:
+The installed component at `~/Library/Audio/Plug-Ins/Components/XOceanus.component` (from the prior build on 2026-03-24 16:36) validated successfully across all test suites:
 
 - Render tests at 11025 / 44100 / 48000 / 96000 / 192000 Hz: PASS
 - 137-frame and 4096-frame block sizes: PASS
@@ -137,27 +137,27 @@ Note: auval ran on the component from the previous build session. Because the cu
 
 ---
 
-## Step 5: XOmnibus Rename Audit
+## Step 5: XOceanus Rename Audit
 
 ### Source files (`Source/`, `CMakeLists.txt`)
 **CLEAN — 0 references.** The rename is complete in all compilable source code.
 
 ### Documentation files (`Docs/`, `CLAUDE.md`, `README.md`)
-8 files contain the string "XOmnibus":
+8 files contain the string "XOceanus":
 
 | File | Nature | Action needed? |
 |------|--------|----------------|
-| `CLAUDE.md` | Line 3: "Formerly XOmnibus. Renamed to XOlokun 2026-03-24." | No — intentional rename note |
-| `Docs/design/xomnibus_design_guidelines.md` | Filename uses old name; footer says "compiled from xomnibus repo on 2026-03-17" | Low priority — file rename optional |
+| `CLAUDE.md` | Line 3: "Formerly XOceanus. Renamed to XOceanus 2026-03-24." | No — intentional rename note |
+| `Docs/design/xoceanus_design_guidelines.md` | Filename uses old name; footer says "compiled from xoceanus repo on 2026-03-17" | Low priority — file rename optional |
 | `Docs/design/asset-registry.md` | Reference to old name in historical context | Low priority |
 | `Docs/fleet-audit/architect-audit-session-9.md` | Audit log from the rename session; references are historical | No action needed |
 | `Docs/sweeps/sweep-*.md` (4 files) | Sweep reports from 2026-03-24 that mention the transition | No action needed — historical |
-| `Docs/launch-battle-plan.md` | 3 references to "Update XO-OX.org branding from XOmnibus to XOlokun" as TODO items | These are open action items — intentional |
+| `Docs/launch-battle-plan.md` | 3 references to "Update XO-OX.org branding from XOceanus to XOceanus" as TODO items | These are open action items — intentional |
 
-**Verdict:** No source-breaking XOmnibus references remain. Docs references are either intentional historical notes, open TODOs already tracked, or informational sweep logs. No action blocking build.
+**Verdict:** No source-breaking XOceanus references remain. Docs references are either intentional historical notes, open TODOs already tracked, or informational sweep logs. No action blocking build.
 
 ### Preset files
-**CLEAN — 0 references** to "XOmnibus" in any `.xometa` preset file.
+**CLEAN — 0 references** to "XOceanus" in any `.xometa` preset file.
 
 ### JSON config files
 Build cache only (`build/CMakeFiles/InstallScripts.json`, `build/Libs/JUCE/tools/CMakeFiles/InstallScripts.json`) — auto-generated, not under source control. No action needed.
@@ -178,7 +178,7 @@ Build cache only (`build/CMakeFiles/InstallScripts.json`, `build/Libs/JUCE/tools
 
 ## CMakeLists.txt VERSION Check
 
-`project(XOlokun VERSION 1.0.0 LANGUAGES C CXX)` — **PASS**. Matches the version documented in CLAUDE.md history notes.
+`project(XOceanus VERSION 1.0.0 LANGUAGES C CXX)` — **PASS**. Matches the version documented in CLAUDE.md history notes.
 
 ---
 
@@ -209,7 +209,7 @@ These warnings exist in the current build but do not prevent compilation of non-
 
 3. **`XDrip.h:278`** — Correct `engine->setParameterValue(...)` to match the actual method name in `SynthEngine.h`.
 
-4. **`XOlokunEditor.h:69`** — Replace `menu.show()` with the JUCE 8 compliant call. For a synchronous context menu, use `PopupMenu::show(const PopupMenu&)` static method or `showMenuAsync` with a lambda capturing the needed state.
+4. **`XOceanusEditor.h:69`** — Replace `menu.show()` with the JUCE 8 compliant call. For a synchronous context menu, use `PopupMenu::show(const PopupMenu&)` static method or `showMenuAsync` with a lambda capturing the needed state.
 
 ### P1 — Investigate before V1 release
 
@@ -217,7 +217,7 @@ These warnings exist in the current build but do not prevent compilation of non-
 
 ### P2 — Low priority housekeeping
 
-6. Consider renaming `Docs/design/xomnibus_design_guidelines.md` to `xolokun_design_guidelines.md` for consistency.
+6. Consider renaming `Docs/design/xoceanus_design_guidelines.md` to `xoceanus_design_guidelines.md` for consistency.
 7. Remove `JUCE_DISPLAY_SPLASH_SCREEN=0` from `target_compile_definitions` — it generates a compiler message and has no effect in JUCE 8.
 
 ---
@@ -237,4 +237,4 @@ This gives the AU identifier `aumu Xolk XoOx`, confirmed by auval PASS.
 
 ---
 
-*Build Sentinel — XOlokun v1.0.0 — 2026-03-24*
+*Build Sentinel — XOceanus v1.0.0 — 2026-03-24*

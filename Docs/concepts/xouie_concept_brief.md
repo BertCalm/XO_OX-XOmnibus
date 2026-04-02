@@ -146,7 +146,7 @@ The HAMMER macro is a bipolar axis:
 | 0.75 | Spectral averaging, gentle harmonic lock | Warm, sympathetic — brothers agreeing |
 | 1.0 (Full LOVE) | Full spectral blend + unison thicken | Fused, massive, consonant — brothers as one |
 
-The STRIFE side uses the same FM/ring mod primitives that already exist in XOlokun DSP.
+The STRIFE side uses the same FM/ring mod primitives that already exist in XOceanus DSP.
 The LOVE side uses spectral averaging and detuned unison stacking — proven techniques.
 
 ---

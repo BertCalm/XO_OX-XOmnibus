@@ -1,4 +1,4 @@
-# XOlokun Post-Fix Re-Seance Scoring
+# XOceanus Post-Fix Re-Seance Scoring
 **Generated:** 2026-03-20
 **Scope:** 20 engines that received DSP fixes this session
 **Method:** Quick DSP audit — read current source, verify fix presence, evaluate D001–D006

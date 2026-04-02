@@ -26,7 +26,7 @@ Round 12I updated the Synth Seance knowledge tree at `~/.claude/skills/synth-sea
 - Added `RESOLVED` status to header (Rounds 3B + 7D)
 - Added Resolution Status section documenting the two-stage fix (5 individual params + 12 macro parameters across 3 engines)
 - Dave Smith's final resolution quote added
-- Clarified that open XOdyssey/XOpal cases are standalone instrument debt, not XOlokun adapter debt
+- Clarified that open XOdyssey/XOpal cases are standalone instrument debt, not XOceanus adapter debt
 
 **D005** (`doctrines/D005-engines-must-breathe.md`):
 - Added `RESOLVED` status to header (Rounds 5A + 8A + 8B)

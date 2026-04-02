@@ -1,4 +1,4 @@
-# XOlokun Launch Battle Plan — Path to 10/10
+# XOceanus Launch Battle Plan — Path to 10/10
 
 ## Top 50 Opus Tracks (Creative / Architecture / Design)
 
@@ -40,16 +40,16 @@
 
 ### XPN / Outshine / Originate
 29. Design the Oxport Dashboard companion tool (Kai's recommendation)
-30. Redesign the Outshine UI to match XOlokun's Rebirth aesthetic
+30. Redesign the Outshine UI to match XOceanus's Rebirth aesthetic
 31. Design the "Send to MPC" USB workflow
 32. Design the MPCe quad-corner assignment panel
 
 ### Brand & Launch
-33. Write the XOlokun cultural acknowledgment (Olokun orisha) — get external review
+33. Write the XOceanus cultural acknowledgment (Olokun orisha) — get external review
 34. Design the V1 launch sequence — press kit, timeline, announcement
 35. Design the Patreon tier benefits with the new brand
-36. Write the first 3 Field Guide posts for XOlokun launch
-37. Design the XO-OX.org rebrand from XOmnibus to XOlokun
+36. Write the first 3 Field Guide posts for XOceanus launch
+37. Design the XO-OX.org rebrand from XOceanus to XOceanus
 
 ### Architecture
 38. Design the JUCE LookAndFeel architecture for the Rebirth (Lucy consult)
@@ -68,15 +68,15 @@
 ### Community & Growth
 48. Artist Collaboration framework — design the first collab workflow
 49. Community strategy for launch — Barry OB's team deployment plan
-50. Design the XOlokun tutorial/onboarding for first-time users
+50. Design the XOceanus tutorial/onboarding for first-time users
 
 ---
 
 ## Top 50 Sonnet Tracks (Implementation / Build / Documentation)
 
 ### UI Implementation
-1. Implement the CouplingVisualizer as XOlokunEditor's default center panel
-2. Mount the PlaySurface in XOlokunEditor (it's built, just hidden)
+1. Implement the CouplingVisualizer as XOceanusEditor's default center panel
+2. Mount the PlaySurface in XOceanusEditor (it's built, just hidden)
 3. Mount the ExportDialog (it's built, no button to open it)
 4. Mount the full PresetBrowser (with DNA "Find Similar", replaces stripped version)
 5. Fix the 7 missing moods in the preset browser filter (hardcoded 9 → 16)
@@ -87,7 +87,7 @@
 10. Implement color-coded parameter sections (OSC/FILTER/MOD/FX)
 
 ### PlaySurface Implementation
-11. Wire PlaySurface MidiMessageCollector to XOlokunProcessor's MIDI input
+11. Wire PlaySurface MidiMessageCollector to XOceanusProcessor's MIDI input
 12. Build MPCPadGrid component (16 pads, MPC note mapping, velocity curves, 4 banks)
 13. Build SeaboardKeyboard component (MPE, per-note pitch/slide/pressure)
 14. Build ExpressionPanel (mod wheel, pitch bend, XY pad, macro strips)
@@ -113,20 +113,20 @@
 30. Add Sonic DNA mini-radar per sample in Outshine Auto Mode
 31. Build the Oxport Dashboard visual companion
 32. Implement the "Send to MPC" USB copy workflow
-33. Fix the Outshine/Originate aesthetic to match XOlokun dark theme
+33. Fix the Outshine/Originate aesthetic to match XOceanus dark theme
 
 ### Site & Web
 34. Populate the 24 Kitchen Collection creature sprites for aquarium
-35. Build the XOlokun cultural acknowledgment About page
-36. Update XO-OX.org branding from XOmnibus to XOlokun
-37. Build the Patreon tier page with XOlokun branding
-38. Implement the Field Guide template for XOlokun posts
+35. Build the XOceanus cultural acknowledgment About page
+36. Update XO-OX.org branding from XOceanus to XOceanus
+37. Build the Patreon tier page with XOceanus branding
+38. Implement the Field Guide template for XOceanus posts
 39. Build the XPN pack download page
 
 ### Documentation
 40. Write the JUCE implementation guide based on definitive UI spec Appendix D
 41. Write the PlaySurface MIDI integration guide
-42. Update the master specification for XOlokun
+42. Update the master specification for XOceanus
 43. Write the V1 changelog from all session git logs
 44. Document all 36 Blessed + 3 Provisional + 4 Candidate blessings with evidence
 
@@ -143,7 +143,7 @@
 ## Top 50 Haiku Tracks (Search / Read / Data / Git)
 
 ### Codebase Health
-1. Count exact engine registration in XOlokunProcessor.cpp (verify 73)
+1. Count exact engine registration in XOceanusProcessor.cpp (verify 73)
 2. Count exact preset count per engine per mood (distribution report)
 3. Verify all 73 engines have entries in CLAUDE.md Engine Modules table
 4. Verify all 73 engines have entries in frozenPrefixForEngine
@@ -156,13 +156,13 @@
 
 ### Git & History
 11. Generate git stats (commits per day, lines added/removed)
-12. List all commits since the XOlokun rename
+12. List all commits since the XOceanus rename
 13. Verify no uncommitted files on main
 14. Check for any lingering merge conflict markers in source
 15. List all branches and their status (stale, merged, active)
 16. Verify the remote branch `claude/dual-engine-integration-uBjia` is up to date
-17. Count total .xometa files in Presets/XOlokun/
-18. Verify preset symlink at ~/Library/Application Support/XO_OX/XOlokun/Presets
+17. Count total .xometa files in Presets/XOceanus/
+18. Verify preset symlink at ~/Library/Application Support/XO_OX/XOceanus/Presets
 19. Check for any files larger than 1MB that shouldn't be in git
 20. Verify .gitignore covers build/, *.component, *.app
 
@@ -182,7 +182,7 @@
 31. Verify MEMORY.md is under 200 lines
 32. Count total memory files
 33. List all skills with their trigger counts from session logs
-34. Verify all skill descriptions mention "XOlokun" (not just "XOmnibus")
+34. Verify all skill descriptions mention "XOceanus" (not just "XOceanus")
 35. Check for any duplicate memory files
 36. Verify blessing reclassification is committed
 37. Check that Pixel's wishlist is up to date with latest Ui8 purchases
@@ -197,8 +197,8 @@
 44. Check all site HTML files for valid structure
 45. Count presets in quarantine (are any recoverable?)
 46. List engines with <50 presets (thin coverage)
-47. Verify Oxytocin's 130 presets are in Presets/XOlokun/Oxytocin/
-48. Check for any presets still referencing "XOmnibus" in metadata
+47. Verify Oxytocin's 130 presets are in Presets/XOceanus/Oxytocin/
+48. Check for any presets still referencing "XOceanus" in metadata
 49. Verify coupling presets (.xocoupling) if any exist
 50. Generate a preset mood distribution pie chart data (counts per mood)
 
@@ -248,10 +248,10 @@ Numbers 51–100
 79. Curate the V1 "Sound on First Launch" preset chain — the 5 coupling presets that ship as the first user experience: (1) OXBOW+OPERA Entangle, (2) ONSET+OFFERING Gravity, (3) OBRIX+OUROBOROS Phase, (4) OPENSKY+ORBWEAVE Knot, (5) ORGANON+ORGANISM Adversarial. Write all 5 .xometa coupling preset specs.
 80. Write Field Guide post #4: "The 15 Coupling Types Explained" — practical producer guide with audio examples, what each type sounds like, which engine pairs work best. Target: 3,500 words, 15 audio examples. This is the most-searched topic for new users.
 81. Write Field Guide post #5: "Inside OBRIX — Reef Residency and the 5 Waves of a Synthesizer" — deep dive on OBRIX's 5-wave architecture. Covers Brick Independence (B016), Biophonic Synthesis, and Reef Residency. Target: 4,000 words with signal flow diagrams.
-82. Write Field Guide post #6: "XOlokun for Producers — 5 Genre Starter Templates" — hip-hop (ONSET+OFFERING), ambient (OXBOW+OPERA), drum & bass (ONSET+OBRIX), cinematic (ORGANON+OPENSKY), lo-fi (OWARE+OVERDUB). Coupling presets for each template included.
+82. Write Field Guide post #6: "XOceanus for Producers — 5 Genre Starter Templates" — hip-hop (ONSET+OFFERING), ambient (OXBOW+OPERA), drum & bass (ONSET+OBRIX), cinematic (ORGANON+OPENSKY), lo-fi (OWARE+OVERDUB). Coupling presets for each template included.
 83. Design the Patreon content calendar for Month 1 post-launch: Week 1 (release announcement + OBRIX deep dive), Week 2 (first patron-exclusive preset pack 50 presets), Week 3 (Kitchen Collection preview video), Week 4 (community poll: which Kitchen quad unlocks first). Include exact post copy and asset list.
 84. Design the V1 press kit: one-paragraph product description, 5 key differentiators (not feature lists — differentiators), 3 quote-ready sound designer endorsements, 6 hero screenshots spec (exact scenes), video script outline (90-second demo). Write all copy.
-85. Design the XO-OX.org XOlokun rebrand: homepage hero section copy, aquarium page intro text (73 engines, ocean mythology frame), Field Guide landing page restructure. Write all copy. No design tool needed — pure content.
+85. Design the XO-OX.org XOceanus rebrand: homepage hero section copy, aquarium page intro text (73 engines, ocean mythology frame), Field Guide landing page restructure. Write all copy. No design tool needed — pure content.
 
 #### Architecture, Community & Growth
 
@@ -260,7 +260,7 @@ Numbers 51–100
 88. Design the Coupling Recipe system: define what a "recipe" is (engine pair + coupling type + macro positions + intent description), format spec for a .xorecipe file, the 5 starter recipes that ship with V1. Write the format spec and all 5 recipes.
 89. Design the XPN Pack product page for mpce-perc-001: pack name, tagline, 3 demo clips spec, track list (8 kits), pricing, download CTA. Write all copy for the XO-OX.org page.
 90. Design the community launch strategy for Discord server: channel structure (announcements / releases / sound-design / presets / coupling / field-guide / off-topic), moderation roles, Week 1 content calendar (5 seeding posts), first community challenge brief ("make a track with OBRIX + one coupling"). Write channel descriptions and Week 1 posts.
-91. Design the JUCE LookAndFeel architecture: class hierarchy (XOlokunLookAndFeel extends juce::LookAndFeel_V4), override list (drawRotarySlider, drawButtonBackground, drawComboBox, drawTabButton, drawScrollbar — minimum 12 overrides needed), font loading strategy (Space Grotesk via BinaryData), color token mapping from design-tokens.css to juce::Colours. Produce the class skeleton with all method signatures.
+91. Design the JUCE LookAndFeel architecture: class hierarchy (XOceanusLookAndFeel extends juce::LookAndFeel_V4), override list (drawRotarySlider, drawButtonBackground, drawComboBox, drawTabButton, drawScrollbar — minimum 12 overrides needed), font loading strategy (Space Grotesk via BinaryData), color token mapping from design-tokens.css to juce::Colours. Produce the class skeleton with all method signatures.
 92. Design the iOS AUv3 UI adaptation strategy: which components require touch-target expansion (44pt minimum), which layouts collapse (3-column → 2-column on iPad portrait), which features defer to V2 (CinematicMode, Depth-Zone Browser), what the minimum viable iPad layout looks like at 1024×768pt. Produce a 3-tier feature matrix (V1 iOS / V1.1 iOS / V2 iOS).
 93. Design the progressive disclosure onboarding for first-time users: 5-step contextual tooltip sequence (Step 1: "This is OBRIX — turn macro M1 CHARACTER", Step 2: "This is a coupling arc — click it", Step 3: "Browse presets by mood", Step 4: "Load a second engine", Step 5: "You're ready"). Write all tooltip copy and trigger conditions.
 94. Design the V1.1 feature slate: per-knob mod rings and drag-from-source-to-target gestures (deferred from V1 per §3.2), Constellation View (25% push), Spatial Preset Navigation (25% push). For each: one-paragraph scope, 3 acceptance criteria, estimated session count.
@@ -268,7 +268,7 @@ Numbers 51–100
 96. Producers Guild review of the V1 launch preset list: do the 5 coupling presets (track #79) pass the 30-second test for hip-hop, ambient, electronic, cinematic, and experimental producers? Score each 1–10 and list required changes.
 97. Design the Instrument Browser filter taxonomy: define all instrument-type values (DRUMS, BASS, PADS, KEYS, LEAD, FX, TEXTURE, GENERATOR, MODIFIER) and assign each of the 73 engines to exactly one type. Produce the mapping table. This is required for the preset browser filter pill row.
 98. Design the OBRIX Flagship launch campaign: the OBRIX page on XO-OX.org (hero text, 5 feature callouts, audio player embed), the announcement post copy for all channels (Discord / Patreon / social), the 30-second promo video script. This is the V1 hero product.
-99. Design the XOlokun "Living Manual" glassmorphism tooltip system: trigger conditions (hover 1.2s on any labeled control), tooltip anatomy (parameter name, current value, range, plain-language description, one-line coupling suggestion), positioning rules (avoid clipping at window edges). Write tooltip copy for the 20 most-touched parameters.
+99. Design the XOceanus "Living Manual" glassmorphism tooltip system: trigger conditions (hover 1.2s on any labeled control), tooltip anatomy (parameter name, current value, range, plain-language description, one-line coupling suggestion), positioning rules (avoid clipping at window edges). Write tooltip copy for the 20 most-touched parameters.
 100. Retrospective design review of V1 scope: given the 326 features in the spatial architecture, identify the 10 highest-risk items that could delay V1 ship, rank by likelihood × impact, and propose mitigation for each. Produce a risk register.
 
 ---
@@ -278,7 +278,7 @@ Numbers 51–100
 
 #### V1 Spatial Architecture — JUCE Implementation
 
-51. Implement `XOlokunLookAndFeel` class in `Source/UI/XOlokunLookAndFeel.h/.cpp` — override `drawRotarySlider` for 3 knob sizes (80/50/36pt), load Space Grotesk + Inter + JetBrains Mono via BinaryData, map all design-token colors to `juce::Colour` constants. This is the prerequisite for all UI work.
+51. Implement `XOceanusLookAndFeel` class in `Source/UI/XOceanusLookAndFeel.h/.cpp` — override `drawRotarySlider` for 3 knob sizes (80/50/36pt), load Space Grotesk + Inter + JetBrains Mono via BinaryData, map all design-token colors to `juce::Colour` constants. This is the prerequisite for all UI work.
 52. Implement `EngineRackPanel` in `Source/UI/EngineRackPanel.h` — Column A 260pt, 4 slot tiles, each tile shows on/off toggle + engine name + waveform thumbnail + CPU% badge. Wire to `EngineRegistry` for slot load/unload events. Tile height 90pt, gap 4pt.
 53. Implement the `EngineDetailPanel` base class in `Source/UI/EngineDetailPanel.h` — sticky 88pt macro strip (top), 32pt signal flow diagram, scrollable section container, sticky waveform+ADSR strip (bottom). Wire to active slot selection in `EngineRackPanel`. This is the Column B base for all engines.
 54. Implement `CollapsibleParamSection` component in `Source/UI/CollapsibleParamSection.h` — section header with expand/collapse chevron, hero knobs (3 knobs @ 50pt), secondary knobs hidden until expanded, smooth 150ms height animation. Used by all standard engines for OSC/FILTER/MOD/FX sections.
@@ -293,7 +293,7 @@ Numbers 51–100
 
 61. Implement `MPCPadGrid` component in `Source/UI/PlaySurface/MPCPadGrid.h` — 4×4 grid of 16 pads, pad size scales with container (minimum 44×44pt), velocity-sensitive color fill on hit (accent color at full velocity, 20% opacity at minimum velocity), 4 bank buttons (A/B/C/D) switching MIDI note offset. Wire to `PlaySurface` MIDI output.
 62. Implement MIDI learn for all PlaySurface controls in `Source/UI/PlaySurface/MidiLearnManager.h` — right-click any knob/slider → "Assign MIDI CC" → wait for CC input → bind. Store assignments in plugin state via `getStateInformation`. Clear binding via right-click → "Remove MIDI CC". Required for live performance setup.
-63. Implement `getStateInformation` and `setStateInformation` in `Source/XOlokunProcessor.cpp` — serialize active engine slot assignments, all parameter values, coupling routes (type + amount + depth), macro positions, and PlaySurface MIDI CC assignments to a `juce::MemoryBlock`. Verify round-trip with Logic Pro session save/restore.
+63. Implement `getStateInformation` and `setStateInformation` in `Source/XOceanusProcessor.cpp` — serialize active engine slot assignments, all parameter values, coupling routes (type + amount + depth), macro positions, and PlaySurface MIDI CC assignments to a `juce::MemoryBlock`. Verify round-trip with Logic Pro session save/restore.
 64. Implement the A/B preset comparison system in `Source/Core/PresetManager.h` — `storeAPreset()` / `storeBPreset()` / `swapAB()` / `getActiveSlot()` methods, A/B toggle button in header, visual indicator (A or B) in header preset name display. State A and B persist across preset browser navigation until explicitly overwritten.
 65. Implement `DAWAutomationExporter` in `Source/Core/DAWAutomationExporter.h` — expose the 65 automation-eligible params as named JUCE `AudioProcessorParameter` entries with proper `getName()`, `getLabel()`, `getDefaultValue()`. Params must appear correctly named in Logic Pro / Ableton automation lane dropdowns. Audit all 65 params against the master spec §6 table.
 66. Implement the `EngineDetailPanel` for ONSET (111 params) — 8-voice drum grid hero (280pt), voice rows (type icon + algo selector + 6 mini knobs), section nav [DRUM][OSC][FILT][MOD][FX], sticky macros top, sticky waveform+ADSR bottom. This is the hardest custom panel — implement and verify at 960pt minimum window width.
@@ -319,21 +319,21 @@ Numbers 51–100
 
 81. Write a regression test for `MegaCouplingMatrix` accumulator reset: instantiate 2 engines in test harness, set ENTANGLE coupling, render 512 samples, call `reset()`, verify all coupling accumulator values return to zero within 1 sample. Add to `Tests/CouplingTests.cpp`.
 82. Write a regression test for `PresetManager` round-trip: load each of the 73 engines' first preset, serialize via `getStateInformation`, deserialize via `setStateInformation`, verify all param values match within `1e-5f`. Fail test if any engine has >0 mismatched params.
-83. Implement per-engine CPU display in slot tiles: in `EngineRackPanel`, each tile shows `cpu_X.X%` badge, updated every 500ms via a `juce::HighResolutionTimer`. Read CPU cost from `XOlokunProcessor`'s per-engine render time tracking (add if missing). Badge turns amber at >5% CPU, red at >10%.
+83. Implement per-engine CPU display in slot tiles: in `EngineRackPanel`, each tile shows `cpu_X.X%` badge, updated every 500ms via a `juce::HighResolutionTimer`. Read CPU cost from `XOceanusProcessor`'s per-engine render time tracking (add if missing). Badge turns amber at >5% CPU, red at >10%.
 84. Implement `PresetPreviewThumbnail` in `Source/UI/PresetPreviewThumbnail.h`: a 24×24pt DNA radar (`juce::Path` hexagon with 6 axis points scaled by DNA values), rendered once per preset and cached as a `juce::Image`. Used in preset browser cards. Must render without blocking main thread — generate on background thread, invalidate on load.
 85. Implement the MIDI learn persistence fix: ensure all CC assignments survive plugin state save/restore — serialize `MidiLearnManager` bindings inside `getStateInformation` as a JSON array `[{param_id, cc_number}]`, deserialize in `setStateInformation`. Write a unit test: bind CC 7 to `obrix_src1Type`, save state, clear bindings, restore state, verify CC 7 still maps to `obrix_src1Type`.
 86. Implement scale quantization for the XOuija fretless surface in `Source/UI/PlaySurface/XOuijaPlanchette.h`: add `QuantizationMode` enum (Free / Scale / Chord), scale snap uses nearest semitone within selected scale, snap strength (0.0 = free, 1.0 = locked). Wire `ouie_interval` param (B026) as the active interval for chord mode.
 87. Implement the `InstrumentTypeFilter` for the preset browser: add `"instrument_type"` field to `.xometa` schema, write a migration script `Tools/migrate_instrument_type.py` that assigns instrument type to all ~17,250 presets based on engine ID lookup table (from Opus track #97). Wire filter pill row in `PresetBrowserTab`.
-88. Implement DAW session state round-trip verification script `Tools/verify_session_roundtrip.py`: open XOlokun in Logic Pro (via AppleScript), load a test preset, save session, close, reopen, verify all parameter values via OSC or stdout log. This is the manual QA script until automated testing is feasible.
+88. Implement DAW session state round-trip verification script `Tools/verify_session_roundtrip.py`: open XOceanus in Logic Pro (via AppleScript), load a test preset, save session, close, reopen, verify all parameter values via OSC or stdout log. This is the manual QA script until automated testing is feasible.
 89. Implement `TouchRippleLayer` in `Source/UI/PlaySurface/TouchRippleLayer.h`: on MPCPadGrid hit, spawn a `juce::Component` overlay that expands a filled circle from pad center (engine accent color, alpha fades 0.6→0 over 120ms), `juce::Timer`-driven animation at 60fps. Multiple simultaneous ripples supported.
 90. Implement the `GlassTooltip` (Living Manual) in `Source/UI/GlassTooltip.h`: `juce::Component` overlay with `glassmorphism` look (blurred background via `juce::Image` snapshot + white overlay at 12% opacity), appears after 1.2s hover on any `juce::Slider`/`juce::Button`, shows param name + current value + plain-language description. Positions itself to avoid window edge clipping. Wire to 20 most-touched params first.
-91. Implement WCAG AA contrast enforcement in `XOlokunLookAndFeel`: for any text drawn on an engine accent color background, compute luminance contrast ratio (WCAG formula), if <4.5:1 override text color to white or `#1A1A1A`. Add a compile-time static assert table for all 73 accent colors — fail build if any accent color produces <4.5:1 contrast with both white and gallery-white `#F8F6F3`.
+91. Implement WCAG AA contrast enforcement in `XOceanusLookAndFeel`: for any text drawn on an engine accent color background, compute luminance contrast ratio (WCAG formula), if <4.5:1 override text color to white or `#1A1A1A`. Add a compile-time static assert table for all 73 accent colors — fail build if any accent color produces <4.5:1 contrast with both white and gallery-white `#F8F6F3`.
 92. Implement `SessionStateManager` in `Source/Core/SessionStateManager.h`: on plugin editor close, serialize active engine configuration (slot assignments + param values + coupling routes + macro positions) to `juce::PropertiesFile` under key `"lastSession"`. On editor open, offer "Restore last session?" toast with Yes/No buttons. Restore calls `setStateInformation` on the stored blob.
 93. Implement the `EngineHotSwap` 50ms crossfade in `Source/Core/EngineRegistry.h`: when `swapEngine(slot, newEngineId)` is called, start a 50ms linear crossfade between old and new engine audio output on the audio thread (read from both, blend by crossfade position). Use atomic float for crossfade position. Verify no clicks in the swap using an offline render test.
 94. Fix the `frozenPrefixForEngine` missing entries: audit `Source/Core/PresetManager.h` `frozenPrefixForEngine` map — add entries for all 73 engines (OUTLOOK `look_`, OXYTOCIN `oxy_`, all Kitchen Collection engines). Run `Tools/verify_prefix_coverage.py` to confirm 73/73. This is a P0 for preset loading correctness.
 95. Implement `PresetsAutoSave` in `Source/Core/PresetManager.h`: after any parameter change (debounced 2s), save current state to `juce::PropertiesFile` key `"unsavedPreset"`. On next launch, if `"unsavedPreset"` exists and differs from loaded preset, show: "You have unsaved changes from your last session. Restore?" If yes, call `setStateInformation` on stored state.
 96. Implement iOS AUv3 responsive layout in `Source/UI/iOS/iOSLayoutManager.h`: at window width <768pt (iPhone / small iPad), collapse Column A to icon-only strip (40pt), Column C hidden (tab accessible via slide-in panel), Column B takes remaining width. At width ≥768pt (iPad landscape), restore 3-column layout with compressed proportions (180/360/230). All touch targets ≥44pt enforced via `setBoundsConstrained`.
-97. Implement the `PresetSetManager` in `Source/Core/PresetSetManager.h`: a "Set" is a named ordered list of presets (like a playlist), stored in `.xoset` JSON files under `Presets/XOlokun/Sets/`. Right-click preset card → "Add to Set" → popover with existing sets + "New Set...". "Add to Set" also wires to the MIDI program change handler (set position = program number). V1 ships 5 factory sets (one per coupling preset chain from track #79).
+97. Implement the `PresetSetManager` in `Source/Core/PresetSetManager.h`: a "Set" is a named ordered list of presets (like a playlist), stored in `.xoset` JSON files under `Presets/XOceanus/Sets/`. Right-click preset card → "Add to Set" → popover with existing sets + "New Set...". "Add to Set" also wires to the MIDI program change handler (set position = program number). V1 ships 5 factory sets (one per coupling preset chain from track #79).
 98. Implement `ObrixBrickStackView` (Signal Flow Variant B) in `Source/UI/EngineDetail/ObrixBrickStackPanel.h`: visual slot-flow diagram for OBRIX showing src1→src2→filter→shaper→fx chain as connected block nodes (each block 48×32pt, connector arrows), block labels from active `obrix_src*Type` param values, clicking a block scrolls to that section in Engine Detail. Drag block to reorder (if routing allows).
 99. Implement the `CouplingInspector` Column C tab in `Source/UI/CouplingInspectorTab.h`: scrollable list of all active coupling routes (source engine name → target engine name → type badge → amount slider → depth slider), "Add Route" button at bottom that opens a 3-step wizard (pick source slot → pick target slot → pick type from 15). Live-syncs with `MiniCouplingGraph` arc highlights.
 100. Implement `MPC800Layout` in `Source/UI/MPC800Layout.h`: 2-column layout for 800×480pt MPC hardware viewport, Column A 260pt (engine rack), Column B 540pt (engine detail only, no Column C), tab row for Preset/FX/Export in Column B footer strip (32pt). All controls scaled to 44pt minimum touch target. This is the dedicated MPC One/Live II layout.
@@ -345,29 +345,29 @@ Numbers 51–100
 
 #### Feature Coverage & Implementation Audit
 
-51. Read `Docs/design/xolokun-spatial-architecture-v1.md` in full and count the total number of explicitly listed features or UI components — verify it matches the "326 features" claim. List any features with no clear implementation home in `Source/UI/`.
+51. Read `Docs/design/xoceanus-spatial-architecture-v1.md` in full and count the total number of explicitly listed features or UI components — verify it matches the "326 features" claim. List any features with no clear implementation home in `Source/UI/`.
 52. Search `Source/UI/` for all existing `.h` files — list them with line counts. Identify which spatial architecture components already have stubs vs. which need to be created from scratch. This determines the true scope of Sonnet UI tracks.
 53. Read `Source/Core/MegaCouplingMatrix.h` — count the number of coupling type enum values. Verify exactly 15 are defined (incl. KnotTopology + TriangularCoupling). List any that exist in the enum but have no implementation in the coupling accumulation logic.
 54. Search `Source/Engines/` for all engines that do NOT have a corresponding `EngineDetailPanel` override (i.e., they fall back to the generic panel). This determines how many of the 17 custom engine panels are missing vs. already implemented.
 55. Read `Source/Core/PresetManager.h` — verify `frozenPrefixForEngine` has entries for all 73 engine IDs. List any missing. Also verify `validEngineNames` contains all 73. Output a diff between expected (from CLAUDE.md) and actual.
-56. Search all `.xometa` files in `Presets/XOlokun/` for any that contain `"XOmnibus"` in their metadata fields — these need updating to `"XOlokun"` post-rename. Count them and list the first 10 as a sample.
-57. Read `Source/XOlokunProcessor.cpp` — list all engines registered via `REGISTER_ENGINE()`. Count them. Identify any engine in CLAUDE.md's registered list that is NOT registered in the processor (unregistered engines cannot be loaded by users).
+56. Search all `.xometa` files in `Presets/XOceanus/` for any that contain `"XOceanus"` in their metadata fields — these need updating to `"XOceanus"` post-rename. Count them and list the first 10 as a sample.
+57. Read `Source/XOceanusProcessor.cpp` — list all engines registered via `REGISTER_ENGINE()`. Count them. Identify any engine in CLAUDE.md's registered list that is NOT registered in the processor (unregistered engines cannot be loaded by users).
 58. Search `Source/UI/` for all uses of hardcoded pixel values (e.g., `setBounds(x, y, 260, 90)`) — these should be replaced with design-token constants. Count occurrences and list the top 10 files by hardcoded-value density.
 59. Read `Source/Core/EngineRegistry.h` — verify the `engineType` metadata field exists (DRUMS/BASS/PADS/etc.) for the auto-expand PlaySurface logic. If the field is missing, note which struct/class needs the new field.
 60. Search `Source/DSP/` for all `ScopedNoDenormals` insertions — list which engines/DSP units have it and which are missing. Cross-reference against the list of engines with feedback/filter paths (OUROBOROS, ORBWEAVE, OVERLAP, ORGANON, OXBOW at minimum).
 
 #### Preset & DNA Coverage Audit
 
-61. Count `.xometa` files per engine in `Presets/XOlokun/` — produce a ranked list from most to fewest presets. Flag any engine with <10 presets. Compare against the "thin coverage engines expanded in Rounds 8–11" claim in CLAUDE.md.
-62. Read 10 random `.xometa` files from `Presets/XOlokun/Foundation/` — verify each has all 6 Sonic DNA fields (brightness, warmth, movement, density, space, aggression) and all 4 macro values (M1–M4). Report any missing fields.
-63. Search `Presets/XOlokun/` for all `.xometa` files where the `"instrument_type"` field is absent or empty. Count them — this is the backlog for the `Tools/migrate_instrument_type.py` script (Sonnet track #87).
+61. Count `.xometa` files per engine in `Presets/XOceanus/` — produce a ranked list from most to fewest presets. Flag any engine with <10 presets. Compare against the "thin coverage engines expanded in Rounds 8–11" claim in CLAUDE.md.
+62. Read 10 random `.xometa` files from `Presets/XOceanus/Foundation/` — verify each has all 6 Sonic DNA fields (brightness, warmth, movement, density, space, aggression) and all 4 macro values (M1–M4). Report any missing fields.
+63. Search `Presets/XOceanus/` for all `.xometa` files where the `"instrument_type"` field is absent or empty. Count them — this is the backlog for the `Tools/migrate_instrument_type.py` script (Sonnet track #87).
 64. Count total `.xometa` presets per mood across all 15 mood folders. Report the distribution. Identify which moods have <50 presets (underpopulated) and which have >3,000 (may need curation).
 65. Search all `.xometa` files for any preset name exceeding 30 characters — these violate the naming rule in CLAUDE.md. Count violations and list the top 10 longest names.
-66. Read `Presets/XOlokun/Coupling/` — count the `.xometa` files that define multi-engine coupling configurations. Verify each references exactly 2–4 engine IDs in the `"engines"` array and has at least 1 coupling route in `"couplingRoutes"`.
-67. Search `Presets/XOlokun/` for any presets with duplicate names across all moods (same `"name"` value in two or more files). Count duplicates. CLAUDE.md claims 0 duplicates — verify.
-68. Count total preset files in `Presets/XOlokun/` across all mood subdirectories. Verify the total is approximately 17,250. Report exact count and note any discrepancy with the CLAUDE.md figure.
-69. Read `Presets/XOlokun/` for the OXYTOCIN engine — count how many of the claimed 130 presets are actually present on disk. List which mood folders they appear in.
-70. List all engines where the Guitar Bin retreat has NOT yet produced preset files in `Presets/XOlokun/` — specifically check for any of the 16 Kitchen Collection engines (OTO, OCTAVE, OLEG, OTIS, OVEN, OCHRE, OBELISK, OPALINE, OGRE, OLATE, OAKEN, OMEGA, ORCHARD, OVERGROW, OSIER, OXALIS) with fewer than 10 presets.
+66. Read `Presets/XOceanus/Coupling/` — count the `.xometa` files that define multi-engine coupling configurations. Verify each references exactly 2–4 engine IDs in the `"engines"` array and has at least 1 coupling route in `"couplingRoutes"`.
+67. Search `Presets/XOceanus/` for any presets with duplicate names across all moods (same `"name"` value in two or more files). Count duplicates. CLAUDE.md claims 0 duplicates — verify.
+68. Count total preset files in `Presets/XOceanus/` across all mood subdirectories. Verify the total is approximately 17,250. Report exact count and note any discrepancy with the CLAUDE.md figure.
+69. Read `Presets/XOceanus/` for the OXYTOCIN engine — count how many of the claimed 130 presets are actually present on disk. List which mood folders they appear in.
+70. List all engines where the Guitar Bin retreat has NOT yet produced preset files in `Presets/XOceanus/` — specifically check for any of the 16 Kitchen Collection engines (OTO, OCTAVE, OLEG, OTIS, OVEN, OCHRE, OBELISK, OPALINE, OGRE, OLATE, OAKEN, OMEGA, ORCHARD, OVERGROW, OSIER, OXALIS) with fewer than 10 presets.
 
 #### Coupling, Accent Color & Keyboard Shortcut Audits
 
@@ -384,26 +384,26 @@ Numbers 51–100
 
 #### Git, Build & Repository Hygiene
 
-81. Run `git log --oneline --since="2026-03-24" --until="2026-03-25"` — list all commits made today. Verify the XOlokun rename commit is present and the commit message references the B042 candidate blessing.
-82. Search the entire repo for any remaining occurrences of `"XOmnibus"` in non-documentation `.cpp` or `.h` source files (post-rename). List file paths and line numbers. These are code-level rename oversights.
-83. Search `Source/` for any `#include` of a file path containing `XOmnibus` (old include guards or paths) — list them. These would cause build failures when file names are fully updated.
+81. Run `git log --oneline --since="2026-03-24" --until="2026-03-25"` — list all commits made today. Verify the XOceanus rename commit is present and the commit message references the B042 candidate blessing.
+82. Search the entire repo for any remaining occurrences of `"XOceanus"` in non-documentation `.cpp` or `.h` source files (post-rename). List file paths and line numbers. These are code-level rename oversights.
+83. Search `Source/` for any `#include` of a file path containing `XOceanus` (old include guards or paths) — list them. These would cause build failures when file names are fully updated.
 84. Read `CMakeLists.txt` — verify `VERSION 1.0.0` is set (CLAUDE.md mentions this was a P0 fix). Also verify `OSX_ARCHITECTURES` appears before `project()`. List any other CMake issues found.
 85. Search `Source/UI/` for any raw `new` allocations without corresponding `delete` or `std::unique_ptr` ownership — a proxy audit for memory leaks. List top 10 occurrences by file. This feeds the ExportDialog memory leak fix (Sonnet track #73).
 86. Count total `.h` files in `Source/Engines/` — verify the count matches the expected structure (each of 73 engines has at least 1 `.h` file: EngineAdapter or EngineEngine). List any engines with 0 `.h` files in their subdirectory.
 87. Read `Source/Engines/Overworld/OverworldEngine.h` — identify the specific build error flagged in P0 list ("stub files only, 6 headers, no processor/CMake"). Output the exact error if detectable from file content (missing method, wrong return type, etc.).
 88. Search `Source/DSP/` for `exp(-2*PI*fc/sr)` vs `w/(w+1)` IIR coefficient patterns — verify all filter coefficient computations use the matched-Z formula (`exp(-2*PI*fc/sr)`) and not the Euler approximation (`w/(w+1)`). List any violations.
 89. Search all `.xometa` files for any `"sampleRate": 44100` hardcoded values — these violate the "never hardcode 44100" architecture rule. Count violations. They should read from the session's actual sample rate at load time.
-90. Read `Docs/MANIFEST.md` — count total documents listed. Verify `Docs/design/xolokun-spatial-architecture-v1.md` is listed. Identify any documents in `Docs/` that are NOT in the manifest (orphaned docs).
+90. Read `Docs/MANIFEST.md` — count total documents listed. Verify `Docs/design/xoceanus-spatial-architecture-v1.md` is listed. Identify any documents in `Docs/` that are NOT in the manifest (orphaned docs).
 
 #### Skills, Memory & Documentation Audits
 
 91. Read all files in `~/.claude/projects/-Users-joshuacramblet/memory/` — list every memory file by name and line count. Verify MEMORY.md is under 200 lines (per Haiku track #31 from original plan). If MEMORY.md exceeds 200 lines, identify the 5 sections that could be trimmed or archived.
 92. Read `Skills/README.md` — verify all 19 skill entries match actual files in `Skills/*/SKILL.md`. List any skills in the README that don't have a corresponding file on disk, and any files on disk not listed in the README.
-93. Search `~/.claude/skills/` for any skill file that still mentions "XOmnibus" (not "XOlokun") in its description or trigger instructions. List them — these need updating post-rename (per Haiku track #34 from original plan).
+93. Search `~/.claude/skills/` for any skill file that still mentions "XOceanus" (not "XOceanus") in its description or trigger instructions. List them — these need updating post-rename (per Haiku track #34 from original plan).
 94. Read `Docs/seance_cross_reference.md` — count the number of engines with completed seance entries. Verify it matches "72 engines seanced" (73 total minus OSMOSIS). List any engine in CLAUDE.md's registered list missing from the cross-reference.
 95. Search `Docs/seances/` and `scripture/seances/` — count total seance verdict documents. Verify count matches the cross-reference. List any seance files that don't match a known engine name (orphaned verdicts).
 96. Read `Docs/fleet-seance-scores-2026-03-20.md` — extract the list of engines with seance score <8.0. Verify the list matches CLAUDE.md's claim that "all original 47 engines at 8.0+ target". List any below 8.0.
-97. Count the number of `.xometa` files in `Presets/XOlokun/` that contain `"couplingRoutes"` with at least one entry — these are true coupling presets. Verify at least 5 exist (per the factory coupling preset chain from Opus track #79).
+97. Count the number of `.xometa` files in `Presets/XOceanus/` that contain `"couplingRoutes"` with at least one entry — these are true coupling presets. Verify at least 5 exist (per the factory coupling preset chain from Opus track #79).
 98. Read `Docs/v1-scope-revision-2026-03-23.md` — extract the exact list of 20–25 engines included in V1. Verify all listed engines have: (a) a seance verdict, (b) at least 10 presets, (c) an entry in `frozenPrefixForEngine`. Report any that fail one or more checks.
 99. Search `Source/Export/` — list all `.h` files and their stated purposes. Verify the XPN export pipeline has handlers for the 3 critical XPM rules (KeyTrack=True, RootNote=0, empty layer VelStart=0) in at least one of these files.
-100. Read `Docs/xomnibus_master_specification.md` sections 1 and 3.1 — verify the engine count in the spec matches 73. Note the date last updated. If the spec still says "XOmnibus" anywhere in its title or headers (post rename), flag those lines.
+100. Read `Docs/xoceanus_master_specification.md` sections 1 and 3.1 — verify the engine count in the spec matches 73. Note the date last updated. If the spec still says "XOceanus" anywhere in its title or headers (post rename), flag those lines.

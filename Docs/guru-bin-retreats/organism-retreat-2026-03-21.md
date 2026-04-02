@@ -18,7 +18,7 @@
 
 ## Pre-Retreat State
 
-ORGANISM was added to XOlokun on 2026-03-20, the same session that introduced OXBOW and OWARE. It arrived with presets concentrated primarily in the Flux mood — appropriate for a chaotic generative engine, but incomplete as a full-spectrum library. Unlike OXBOW's 9.0/10 opening score, ORGANISM is an engine that requires patience to evaluate. Its quality emerges over time, not on first contact.
+ORGANISM was added to XOceanus on 2026-03-20, the same session that introduced OXBOW and OWARE. It arrived with presets concentrated primarily in the Flux mood — appropriate for a chaotic generative engine, but incomplete as a full-spectrum library. Unlike OXBOW's 9.0/10 opening score, ORGANISM is an engine that requires patience to evaluate. Its quality emerges over time, not on first contact.
 
 This retreat begins from the recognition that cellular automata are fundamentally misunderstood as synthesis tools when they are treated as random noise generators. They are not random. Wolfram Rule 30 — one of ORGANISM's eight curated rules — produces output indistinguishable from white noise despite being entirely deterministic. Rule 110 is known to be computationally universal: any computation that can be performed by a Turing machine can be performed by Rule 110 on an appropriate initial state. Rule 90 produces perfect Sierpinski triangle fractals. These are not chaos. They are order at a scale larger than the window of observation.
 

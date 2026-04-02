@@ -55,7 +55,7 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 
 | Tool                            | Purpose                                                        | CLI Usage                                                                                            |
 | ------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| audit_sonic_dna.py              | XOlokun Sonic DNA Coverage Auditor                            | python3 audit_sonic_dna.py [--verbose]                                                               |
+| audit_sonic_dna.py              | XOceanus Sonic DNA Coverage Auditor                            | python3 audit_sonic_dna.py [--verbose]                                                               |
 | xpn_collection_arc_validator.py | XO_OX Collection Arc Validator                                 | python xpn_collection_arc_validator.py <collection_dir> [--format text|json] [--strict]              |
 | xpn_community_qa.py             | Headless QA orchestrator for XO_OX community pack submissions. | python xpn_community_qa.py --submission pack.submission.zip [--discord-output] [--strict]            |
 | xpn_coupling_preset_auditor.py  | Coupling quality auditor for .xometa preset files.             | python xpn_coupling_preset_auditor.py <presets_dir>                                                  |
@@ -102,15 +102,15 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 | ------------------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | breed_presets.py                     | Genetic Sound Design                                                      | python3 breed_presets.py "Parent A Name" "Parent B Name" [--offspring N] [--mutation-rate 0.15]      |
 | generate_constellation_presets.py    | Generate 530 .xometa presets for the Family Constellation engines.        | python3 generate_constellation_presets.py                                                            |
-| generate_coupling_presets.py         | Generate cross-engine coupling presets for XOlokun.                      | python generate_coupling_presets.py                                                                  |
-| generate_library_fills.py            | XOlokun Library Gap Fill Generator                                       | python generate_library_fills.py                                                                     |
-| generate_onset_presets.py            | Generate XOnset .xometa preset files for the XOlokun gallery.            | python generate_onset_presets.py                                                                     |
-| generate_opal_presets.py             | Generate 100 XOpal factory presets for XOlokun.                          | python generate_opal_presets.py                                                                      |
+| generate_coupling_presets.py         | Generate cross-engine coupling presets for XOceanus.                      | python generate_coupling_presets.py                                                                  |
+| generate_library_fills.py            | XOceanus Library Gap Fill Generator                                       | python generate_library_fills.py                                                                     |
+| generate_onset_presets.py            | Generate XOnset .xometa preset files for the XOceanus gallery.            | python generate_onset_presets.py                                                                     |
+| generate_opal_presets.py             | Generate 100 XOpal factory presets for XOceanus.                          | python generate_opal_presets.py                                                                      |
 | generate_organon_coupling_presets.py | Generate cross-engine coupling presets featuring Organon + other engines. | python generate_organon_coupling_presets.py                                                          |
-| generate_organon_presets.py          | Generate 120 XOrganon factory presets for XOlokun.                       | python generate_organon_presets.py                                                                   |
-| generate_ouroboros_presets.py        | Generate XOuroboros .xometa preset files for XOlokun.                    | python generate_ouroboros_presets.py                                                                 |
-| generate_overbite_presets.py         | Generate XOverbite .xometa preset files for XOlokun.                     | python generate_overbite_presets.py                                                                  |
-| generate_overworld_presets.py        | Generate XOverworld .xometa preset files for XOlokun.                    | python generate_overworld_presets.py                                                                 |
+| generate_organon_presets.py          | Generate 120 XOrganon factory presets for XOceanus.                       | python generate_organon_presets.py                                                                   |
+| generate_ouroboros_presets.py        | Generate XOuroboros .xometa preset files for XOceanus.                    | python generate_ouroboros_presets.py                                                                 |
+| generate_overbite_presets.py         | Generate XOverbite .xometa preset files for XOceanus.                     | python generate_overbite_presets.py                                                                  |
+| generate_overworld_presets.py        | Generate XOverworld .xometa preset files for XOceanus.                    | python generate_overworld_presets.py                                                                 |
 | generate_preset_params.py            | Generate DSP parameter values for all factory .xocmeta presets.           | python generate_preset_params.py                                                                     |
 | xpn_changelog_generator.py           | XO_OX Designs                                                             | python xpn_changelog_generator.py --diff-mode --old v1.0.xpn --new v1.1.xpn                          |
 | xpn_choke_group_designer.py          | XO_OX Choke Group Designer                                                | # Analyze current choke assignments                                                                  |
@@ -132,13 +132,13 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 | Tool                          | Purpose                                                                 | CLI Usage                                                                                            |
 | ----------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | add_missing_dna.py            | Auto-Populate Missing Sonic DNA Blocks                                  | python3 Tools/add_missing_dna.py --dry-run    # preview only, no writes                              |
-| apply_renames.py              | Bulk rename script for XOlokun preset files, documentation, and tools. | python apply_renames.py                                                                              |
+| apply_renames.py              | Bulk rename script for XOceanus preset files, documentation, and tools. | python apply_renames.py                                                                              |
 | fix_bob_presets.py            | Migrate XOblong (Oblong/Bob) preset parameters                          | python3 Tools/fix_bob_presets.py [--dry-run]                                                         |
 | fix_drift_presets.py          | Migrate XOdyssey (Odyssey/Drift) preset parameters                      | python3 Tools/fix_drift_presets.py [--dry-run]                                                       |
 | fix_dub_presets.py            | Migrate XOverdub (Overdub/Dub) preset parameters                        | python3 Tools/fix_dub_presets.py [--dry-run]                                                         |
 | fix_overworld_presets.py      | fix_overworld_presets.py                                                | python fix_overworld_presets.py                                                                      |
 | fix_xobese_xpms.py            | Patches broken keygroup programs to match MPC conventions.              | python3 fix_xobese_xpms.py [--dry-run]                                                               |
-| migrate_xocmeta_to_xometa.py  | OddfeliX .xocmeta → XOlokun .xometa Migration Script                   | python3 migrate_xocmeta_to_xometa.py [--dry-run]                                                     |
+| migrate_xocmeta_to_xometa.py  | OddfeliX .xocmeta → XOceanus .xometa Migration Script                   | python3 migrate_xocmeta_to_xometa.py [--dry-run]                                                     |
 | xpn_bulk_metadata_editor.py   | XO_OX Designs                                                           | python xpn_bulk_metadata_editor.py                                                                   |
 | xpn_entangled_preset_fixer.py | Add second-engine coupling to single-engine Entangled presets           | python xpn_entangled_preset_fixer.py <presets_dir> [--engine FILTER] [--dry-run] [--apply] [--format |
 | xpn_pack_version_bumper.py    | XO_OX Designs                                                           | python xpn_pack_version_bumper.py <pack.xpn> --bump patch|minor|major                                |
@@ -168,7 +168,7 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 | find_missing_dna.py         | Find Presets Missing Sonic DNA Blocks           | python3 Tools/find_missing_dna.py                                                  |
 | xpn_auto_root_detect.py     | Auto-detect fundamental pitch of a WAV sample.  | python xpn_auto_root_detect.py sample.wav [--verbose]                              |
 | xpn_classify_instrument.py  | Rule-based instrument classifier for WAV audio. | python xpn_classify_instrument.py audio.wav                                        |
-| xpn_preset_browser.py       | Terminal browser for .xometa preset files.      | python xpn_preset_browser.py --presets-dir ./Presets/XOlokun/ list --engine ONSET |
+| xpn_preset_browser.py       | Terminal browser for .xometa preset files.      | python xpn_preset_browser.py --presets-dir ./Presets/XOceanus/ list --engine ONSET |
 | xpn_preset_search_engine.py | Full-text search across .xometa preset library  | python xpn_preset_search_engine.py <presets_dir> <query> [options]                 |
 
 
@@ -176,13 +176,13 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 
 | Tool                           | Purpose                                                             | CLI Usage                                                                                            |
 | ------------------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| compute_preset_dna.py          | XOlokun Sonic DNA Fingerprint Generator                            | python3 compute_preset_dna.py [--dry-run] [--report]                                                 |
+| compute_preset_dna.py          | XOceanus Sonic DNA Fingerprint Generator                            | python3 compute_preset_dna.py [--dry-run] [--report]                                                 |
 | extract_cpp_presets.py         | Universal C++ → .xometa Preset Extractor                            | python3 extract_cpp_presets.py [--engine xoverdub|xodyssey|xoblongbob|all] [--dry-run]               |
-| rename_weak_presets.py         | Fleet-wide preset name elevation for XO_OX-XOlokun                 | python3 rename_weak_presets.py --dry-run    # preview all changes                                    |
+| rename_weak_presets.py         | Fleet-wide preset name elevation for XO_OX-XOceanus                 | python3 rename_weak_presets.py --dry-run    # preview all changes                                    |
 | validate_presets.py            | Comprehensive .xometa Quality Assurance                             | python3 validate_presets.py [--fix] [--report] [--strict]                                            |
 | xpn_adaptive_velocity.py       | Auto-shapes velocity curves in XPM files based on                   | python xpn_adaptive_velocity.py --xpm input.xpm --stems ./stems/ --output output.xpm                 |
 | xpn_attractor_kit.py           | XO_OX Designs                                                       | python xpn_attractor_kit.py --attractor lorenz --preset classic --output ./out/                      |
-| xpn_auto_dna.py                | Automatically computes XOlokun 6D Sonic DNA values from WAV audio. | python xpn_auto_dna.py sample.wav                                                                    |
+| xpn_auto_dna.py                | Automatically computes XOceanus 6D Sonic DNA values from WAV audio. | python xpn_auto_dna.py sample.wav                                                                    |
 | xpn_braille_rhythm_kit.py      | XO_OX Designs                                                       | python xpn_braille_rhythm_kit.py "hello world" --output ./kits/                                      |
 | xpn_ca_presets_kit.py          | XO_OX Designs                                                       | python xpn_ca_presets_kit.py --output ./kits/                                                        |
 | xpn_choke_group_assigner.py    | Assign choke/mute groups to drum XPM programs.                      | python xpn_choke_group_assigner.py --xpm drum_kit.xpm --preset onset                                 |
@@ -210,7 +210,7 @@ Each entry shows: **tool name**, purpose summary, and CLI usage pattern.
 | xpn_pendulum_kit.py            | XO_OX Designs                                                       | python xpn_pendulum_kit.py --preset synchronized --output ./out/                                     |
 | xpn_poetry_kit.py              | XO_OX Designs                                                       | python xpn_poetry_kit.py --poem shakespeare --output ./out/                                          |
 | xpn_preset_dna_recalibrator.py | XPN Preset DNA Recalibrator                                         | python xpn_preset_dna_recalibrator.py <presets_dir> [--engine FILTER]                                |
-| xpn_preset_mood_rebalancer.py  | XOlokun Preset Mood Rebalancer                                     | python xpn_preset_mood_rebalancer.py <presets_dir> [--engine FILTER] [--suggest] [--apply] [--format |
+| xpn_preset_mood_rebalancer.py  | XOceanus Preset Mood Rebalancer                                     | python xpn_preset_mood_rebalancer.py <presets_dir> [--engine FILTER] [--suggest] [--apply] [--format |
 | xpn_program_type_classifier.py | XPN program type classifier.                                        | python xpn_program_type_classifier.py <pack.xpn> [--format text|json] [--verbose]                    |
 | xpn_sample_rename_batch.py     | XO_OX Designs                                                       | # Dry-run with auto-naming (engine inferred from pack metadata or --engine flag)                     |
 | xpn_seismograph_kit.py         | XO_OX Designs                                                       | python xpn_seismograph_kit.py --dataset tohoku --output ./out/                                       |
@@ -240,7 +240,7 @@ All files in `Docs/specs/`. Title extracted from first `#` heading.
 | field_guide_posts_pipeline.md           | Field Guide Posts Pipeline — Drafts & Status                         |
 | fleet_render_automation_spec.md         | Fleet Render Automation — Technical Specification                    |
 | generative_kit_architectures_rnd.md     | Generative Kit Architectures R&D                                     |
-| juce_to_mpc_workflow_rnd.md             | JUCE to MPC Workflow: XOlokun to XPN Pack                           |
+| juce_to_mpc_workflow_rnd.md             | JUCE to MPC Workflow: XOceanus to XPN Pack                           |
 | kit_curation_innovation_rnd.md          | Kit Curation Innovation — R&D Session                                |
 | kit_innovation_master_roadmap.md        | Kit Innovation Master Roadmap                                        |
 | live_performance_xpn_rnd.md             | Live Performance XPN — R&D Session                                   |
@@ -270,10 +270,10 @@ All files in `Docs/specs/`. Title extracted from first `#` heading.
 | patreon_content_calendar_rnd.md         | Patreon Content Calendar & Tier Strategy — R&D                       |
 | session_handoff_2026-03-16.md           | XPN Tool Suite — Session Handoff                                     |
 | site_content_strategy_rnd.md            | XO-OX.org Content Strategy — R&D                                     |
-| sound_design_best_practices_xpn.md      | XOlokun — Sound Design Best Practices for XPN/MPC Export            |
+| sound_design_best_practices_xpn.md      | XOceanus — Sound Design Best Practices for XPN/MPC Export            |
 | unconventional_kit_ideas_21_40.md       | Unconventional Kit/Keygroup Concepts — Ideas 21–40                   |
 | unconventional_xpn_strategies.md        | Unconventional XPN/XPM Output Strategies                             |
-| utility_engine_concepts.md              | XOlokun Utility Engine Concepts — R&D Brainstorm                    |
+| utility_engine_concepts.md              | XOceanus Utility Engine Concepts — R&D Brainstorm                    |
 | utility_engine_rapper_bundle.md         | The Rappers — V1 Utility Engine Bundle                               |
 | velocity_science_rnd.md                 | Velocity Science R&D — MPC XPN Pack Design                           |
 | world_instrument_dsp_research.md        | World Instrument DSP Research — Collections Preparation              |

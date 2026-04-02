@@ -2,7 +2,7 @@
 **Author:** Marina, Creative Director, TIDEsigns
 **Date:** 2026-03-27
 **Subject:** XOceanus JUCE Plugin UI — Phase 1 Survey
-**Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
+**Repo:** `~/Documents/GitHub/XO_OX-XOceanus/`
 **Reference mockup:** `Docs/mockups/xoceanus-v05-accurate.html`
 
 ---
@@ -186,7 +186,7 @@ Web mockups are the *source of truth for the desktop JUCE UI*, not a separate de
 ## 5. Initial Risk Flags
 
 **R01 — Light vs. Dark Mode Brand Contradiction**
-`CLAUDE.md` and `xomnibus_master_specification.md` both declare "light mode is the default." `GalleryColors.h` hardcodes `static bool dark = true`. The v05 mockup is dark-mode-only. This is an unresolved brand contradiction. Resolving it requires a policy decision: is v05 the new canonical brand (dark-first), or must the JUCE default be flipped back to light with dark as a toggle? **Any design work that doesn't resolve this first will be revisited.**
+`CLAUDE.md` and `xoceanus_master_specification.md` both declare "light mode is the default." `GalleryColors.h` hardcodes `static bool dark = true`. The v05 mockup is dark-mode-only. This is an unresolved brand contradiction. Resolving it requires a policy decision: is v05 the new canonical brand (dark-first), or must the JUCE default be flipped back to light with dark as a toggle? **Any design work that doesn't resolve this first will be revisited.**
 
 **R02 — GalleryLookAndFeel references v04, not v05**
 The JLAF comment says it matches v04. Delta between v04 and v05 is undocumented. Any LookAndFeel override that was tuned to v04 pixel-perfect may have silent regressions against v05. A systematic v04→v05 diff of the HTML mockups should precede any JLAF work.

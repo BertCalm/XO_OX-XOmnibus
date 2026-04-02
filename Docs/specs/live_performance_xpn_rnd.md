@@ -9,7 +9,7 @@
 
 Every XPN pack ever shipped assumes the same temporal relationship to performance: the producer selects a kit before the set, loads it, and plays it. The kit is inert. It does not know what time it is, what room it is in, how many people are listening, or what the producer has been playing for the last four bars. It is a photograph of a sound design decision made weeks ago in a studio.
 
-XOlokun has 34 synthesis engines, a 6D Sonic DNA system, Monster Rancher source-material scanning, a Curiosity Engine, cross-engine coupling, and 2,496 presets across 7 moods. None of this infrastructure has been leveraged to make a kit that CHANGES during performance — that is aware of the room, the crowd, the history of the set, or the timbral gaps in the current mix.
+XOceanus has 34 synthesis engines, a 6D Sonic DNA system, Monster Rancher source-material scanning, a Curiosity Engine, cross-engine coupling, and 2,496 presets across 7 moods. None of this infrastructure has been leveraged to make a kit that CHANGES during performance — that is aware of the room, the crowd, the history of the set, or the timbral gaps in the current mix.
 
 This document is about closing that gap. Not speculatively. Concretely. Every concept below has a defined XPM implementation path, specific parameter recommendations, and a named Oxport tool wherever new tooling is required.
 
@@ -214,7 +214,7 @@ The inversion logic mirrors `invert_dna_dimensions()` already in `xpn_curiosity_
 
 **Generation Time Estimate**
 
-With numpy/scipy available and pre-rendered WAV assets (no real-time render), the pipeline above runs in under 10 seconds on a 2021 M1 MacBook Air. The bottleneck is the Curiosity Engine mutation scoring, which evaluates 8 candidates × 6 DNA dimensions — trivial computation. If real-time rendering via XOlokun is required (offline render of 8 voice channels), add 20–40 seconds per kit on Apple Silicon.
+With numpy/scipy available and pre-rendered WAV assets (no real-time render), the pipeline above runs in under 10 seconds on a 2021 M1 MacBook Air. The bottleneck is the Curiosity Engine mutation scoring, which evaluates 8 candidates × 6 DNA dimensions — trivial computation. If real-time rendering via XOceanus is required (offline render of 8 voice channels), add 20–40 seconds per kit on Apple Silicon.
 
 ---
 
@@ -664,15 +664,15 @@ Total size for three tiers with `--performance-optimized`: approximately 120–1
 
 ---
 
-## Section 4: Novel XPN Kit Types Only Possible With XOlokun
+## Section 4: Novel XPN Kit Types Only Possible With XOceanus
 
 ### 4.1 The Coupled Live Kit
 
-**Why This Kit Could Not Exist Before XOlokun**
+**Why This Kit Could Not Exist Before XOceanus**
 
 Standard XPN kits are acoustically independent. Pad 1's sample has no relationship to Pad 2's sample beyond what a human producer decided during sound design. The samples are static artifacts. They do not communicate with each other during playback.
 
-XOlokun's MegaCouplingMatrix enables cross-engine modulation in real-time during synthesis. When ONSET's kick voice is rendered offline with ORBITAL's envelope coupled to OPAL's grain density, the rendered WAV contains an acoustic event that could not have been produced by any single engine. More importantly, the causal relationships encoded in the coupling can be preserved across a multi-pad kit if the rendering strategy makes them explicit.
+XOceanus's MegaCouplingMatrix enables cross-engine modulation in real-time during synthesis. When ONSET's kick voice is rendered offline with ORBITAL's envelope coupled to OPAL's grain density, the rendered WAV contains an acoustic event that could not have been produced by any single engine. More importantly, the causal relationships encoded in the coupling can be preserved across a multi-pad kit if the rendering strategy makes them explicit.
 
 **The Coupled Pad System**
 
@@ -710,7 +710,7 @@ This is the first commercial drum kit format that encodes causal acoustic relati
 
 **Render Strategy — Specific Parameters**
 
-Each coupled state requires a dedicated offline render from XOlokun with specific coupling configurations. The `xpn_coupling_recipes.py` tool (already in Tools/) handles coupling recipe selection. The new requirement is a render orchestration layer:
+Each coupled state requires a dedicated offline render from XOceanus with specific coupling configurations. The `xpn_coupling_recipes.py` tool (already in Tools/) handles coupling recipe selection. The new requirement is a render orchestration layer:
 
 ```python
 # Pseudo-code for coupled state render orchestration
@@ -848,7 +848,7 @@ New tools specified in this document:
 |------|-----------|---------|
 | `xpn_evolution_builder.py` | New tool | Temporal kit morphing — interpolated snapshot sets |
 | `xpn_setlist_builder.py` | New tool | Pre-load all set kits, RAM budget report, swap guide |
-| `xpn_coupled_kit_renderer.py` | New tool | Coupled pad systems from XOlokun coupling states |
+| `xpn_coupled_kit_renderer.py` | New tool | Coupled pad systems from XOceanus coupling states |
 | `xpn_negative_space_kit.py` | New tool | 16-band spectral fill kit generation |
 | `xpn_drum_export.py` | `--performance-optimized` | Auto-trim, mono conversion, 16-bit dither, normalization |
 | `xpn_drum_export.py` | `--venue-size [bedroom\|club\|festival]` | Three-tier spectral shaping for playback context |

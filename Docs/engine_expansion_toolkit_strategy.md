@@ -1,6 +1,6 @@
 # Engine Expansion Toolkit — Post-V1 Strategy
 
-> How XOlokun grows from 34 engines to an open ecosystem,
+> How XOceanus grows from 34 engines to an open ecosystem,
 > and how we give people an ocean of toy bricks to learn synthesis by building.
 
 ---
@@ -18,14 +18,14 @@ while opening the door to growth. Three expansion channels:
 **Same process as V1.** Ideation → Architect → Sandbox → Integration.
 
 What changes post-V1:
-- **Engine identity review before build.** The landscape doc (`xolokun_landscape_2026.md`)
+- **Engine identity review before build.** The landscape doc (`xoceanus_landscape_2026.md`)
   maps occupied sonic territory. New first-party engines must fill genuine gaps, not
   overlap existing coverage. Run the seance cross-reference before greenlighting.
 - **Versioned engine registry.** Engines added post-V1 ship in point releases.
   The registry gains a `sinceVersion` field so preset files can declare minimum
   version requirements.
 - **Backward-compatible preset loading.** If a preset references an engine that
-  doesn't exist in the user's version, XOlokun shows a clear message ("This preset
+  doesn't exist in the user's version, XOceanus shows a clear message ("This preset
   requires engine OSTINATO, available in v1.2") rather than silently failing.
 
 ### Channel B: Community Engines (Third-Party)
@@ -54,16 +54,16 @@ making it *safe* and *discoverable*. **The architecture below is the V2 target.*
 Community Engine (.dylib / .framework / .so)
     │
     ├── Implements SynthEngine interface
-    ├── Exports C factory function: xolokun_create_engine()
-    ├── Exports C metadata function: xolokun_engine_info()
+    ├── Exports C factory function: xoceanus_create_engine()
+    ├── Exports C metadata function: xoceanus_engine_info()
     │       → returns: id, name, accent color, param prefix,
     │         coupling types accepted, version, author
-    └── Ships as loadable module (not compiled into XOlokun)
+    └── Ships as loadable module (not compiled into XOceanus)
 
-XOlokun Host
+XOceanus Host
     │
-    ├── Scans ~/Library/XOlokun/Engines/ (macOS)
-    │   └── ~/.local/share/XOlokun/Engines/ (Linux)
+    ├── Scans ~/Library/XOceanus/Engines/ (macOS)
+    │   └── ~/.local/share/XOceanus/Engines/ (Linux)
     ├── Loads modules at startup (not on audio thread)
     ├── Validates interface version compatibility
     ├── REQUIRED: Code signing + notarization (macOS) / Authenticode (Windows)
@@ -78,12 +78,12 @@ Community engines must run with verifiable trust boundaries:
 | Constraint | How |
 |-----------|-----|
 | Code signing | Mandatory — Apple Developer ID + notarization (macOS) |
-| Interface version check | Engine declares `XOLOKUN_API_VERSION` — reject mismatches |
+| Interface version check | Engine declares `XOCEANUS_API_VERSION` — reject mismatches |
 | Parameter namespace collision | Reject if prefix collides with existing engine |
 | Engine ID collision | Reject duplicate IDs |
 | Process isolation | Separate audio process + IPC (latency ~1-5ms) — prevents memory corruption |
 | Resource limits | Engines declare max voices and max buffer size in metadata |
-| No UI injection | Community engines have no UI access — XOlokun auto-generates controls from parameter layout |
+| No UI injection | Community engines have no UI access — XOceanus auto-generates controls from parameter layout |
 
 **What community engines CAN do:**
 - Full DSP (any synthesis technique)
@@ -102,24 +102,24 @@ Community engines must run with verifiable trust boundaries:
 ### Channel C: OBRIX — The Synthesis Toy Box (see Part 3)
 
 **XObrix** — ocean bricks you snap together to build sound. Not an external SDK
-but a playable synthesis sandbox inside XOlokun itself. A toy you learn from,
+but a playable synthesis sandbox inside XOceanus itself. A toy you learn from,
 guided by Professor Oscar. Details in Part 3.
 
 ---
 
-## Part 2: XOlokun Engine SDK
+## Part 2: XOceanus Engine SDK
 
 ### What Ships
 
 A standalone package that lets developers build community engines:
 
 ```
-xolokun-engine-sdk/
+xoceanus-engine-sdk/
 ├── include/
-│   ├── xolokun/SynthEngine.h        ← interface (read-only, canonical)
-│   ├── xolokun/CouplingTypes.h      ← enum + helpers
-│   ├── xolokun/ParameterTypes.h     ← param creation helpers
-│   └── xolokun/EngineModule.h       ← C export macros
+│   ├── xoceanus/SynthEngine.h        ← interface (read-only, canonical)
+│   ├── xoceanus/CouplingTypes.h      ← enum + helpers
+│   ├── xoceanus/ParameterTypes.h     ← param creation helpers
+│   └── xoceanus/EngineModule.h       ← C export macros
 ├── templates/
 │   ├── MinimalEngine/                 ← sine osc, 1 param (pitch)
 │   ├── SubtractiveEngine/            ← osc→filter→amp, full macro set
@@ -149,7 +149,7 @@ xolokun-engine-sdk/
 
 2. **Template-driven.** `generate-scaffold` asks 5 questions (engine name, param prefix,
    synthesis type, voice count, coupling types) and produces a compilable, testable,
-   XOlokun-loadable engine in under a minute.
+   XOceanus-loadable engine in under a minute.
 
 3. **Validation before submission.** `validate-engine` runs the 6 Doctrines as automated
    checks where possible:
@@ -174,7 +174,7 @@ xolokun-engine-sdk/
 
 ### Distribution
 
-- **GitHub repo:** `XO_OX/xolokun-engine-sdk` (MIT license)
+- **GitHub repo:** `XO_OX/xoceanus-engine-sdk` (MIT license)
 - **Community engines:** Curated gallery on xoox.design with ratings + downloads
 - **Submission:** PR to a community-engines registry repo with `validate-engine` output
 
@@ -187,7 +187,7 @@ xolokun-engine-sdk/
 **OBRIX** — ocean bricks for synthesis. Snap pieces together like coral building
 a reef. Hear what happens. Learn by building. It's a toy box pulled from the sea.
 
-XObrix is a registered engine in XOlokun — it occupies a slot just like ODDFELIX
+XObrix is a registered engine in XOceanus — it occupies a slot just like ODDFELIX
 or ORBITAL. But instead of a fixed signal path, its graph is runtime-configurable
 from a curated set of building blocks. Because it's a standard engine, you can run
 up to 4 OBRIX instances simultaneously in the 4 engine slots — each with a completely
@@ -235,7 +235,7 @@ FM texture into ORBITAL's wavetable position. The user has effectively designed
 a custom multi-engine synthesizer from toy bricks — no code, no SDK, just play.
 
 Each slot's OBRIX configuration saves independently in `.xometa` presets. A
-4-slot preset with 3 OBRIX instances and 1 ORBITAL is a perfectly valid XOlokun
+4-slot preset with 3 OBRIX instances and 1 ORBITAL is a perfectly valid XOceanus
 preset file.
 
 ### Building Blocks (Curated, Not Infinite)
@@ -347,7 +347,7 @@ class ObrixEngine : public SynthEngine {
   between the UI thread writing routing parameters and the audio thread reading them.
 - **Denormal protection (Board D6 mandate).** All feedback paths in the brick DSP
   (comb filter, feedback delay, wavefolder, ring mod) must include denormal flush:
-  `if (std::abs(v) < 1e-30f) v = 0.0f;` — required by XOlokun Architecture Rules.
+  `if (std::abs(v) < 1e-30f) v = 0.0f;` — required by XOceanus Architecture Rules.
 - **Patch state is parameters.** The routing matrix is stored as integer parameters
   (`obrix_source1_type`, `obrix_mod1_target`, `obrix_mod1_depth`, etc.). This means
   patches are standard `.xometa` presets and participate in the full preset system.
@@ -365,23 +365,23 @@ class ObrixEngine : public SynthEngine {
 The preset library for OBRIX IS the learning path:
 
 ```
-Presets/XOlokun/Foundation/
+Presets/XOceanus/Foundation/
     OBRIX - Bare Sine.xometa          ← just a sine wave, nothing else
     OBRIX - First Filter.xometa       ← sine + LP filter
     OBRIX - Envelope Shapes.xometa    ← sine + filter + env (try changing ADSR)
     OBRIX - Add Movement.xometa       ← above + LFO on cutoff
     OBRIX - Two Oscillators.xometa    ← saw + square, detuned
 
-Presets/XOlokun/Atmosphere/
+Presets/XOceanus/Atmosphere/
     OBRIX - Pad From Scratch.xometa   ← wavetable + filter + chorus + slow LFO
     OBRIX - Evolving Texture.xometa   ← two sources, cross-modulated
 
-Presets/XOlokun/Entangled/
+Presets/XOceanus/Entangled/
     OBRIX - Coupled Pair.xometa       ← 2 OBRIX slots, coupled via AmpToFilter
     OBRIX - Brick Orchestra.xometa    ← 3 OBRIX slots, each with different role
     OBRIX - Meets Orbital.xometa      ← OBRIX slot 1 + ORBITAL slot 2, coupled
 
-Presets/XOlokun/Flux/
+Presets/XOceanus/Flux/
     OBRIX - Pluck Lab.xometa          ← fast env experiments
     OBRIX - Noise Drum.xometa         ← noise + BP filter + fast amp env
 ```
@@ -1411,7 +1411,7 @@ LEVEL 3: "THE RIFT" (ships ~12 months post-launch)
 ├── New brick types: Physical modeling string/membrane, Formant source
 ├── New modulator: Chaos/Lorenz attractor, Markov chain sequencer
 ├── New effect: Shimmer reverb, Spectral morph
-├── Cross-engine bricks: bricks that reference other XOlokun engines
+├── Cross-engine bricks: bricks that reference other XOceanus engines
 │   (e.g., an "Orbital Resonator" brick that uses Orbital's group envelope)
 ├── New Easter eggs: 5 Rift-exclusive combos
 ├── BOSS: THE ABYSS — "build a sound using two instances that couldn't exist with one"
@@ -1529,7 +1529,7 @@ It's a real, usable, weird, wonderful brick. The final gift.
   potential, new Boss challenges for the community to discuss.
 - **Development is sustainable.** Each level is 4-6 new brick types + 5 Easter
   eggs + 1 Boss. Scoped, predictable, shippable.
-- **Cross-engine bricks (Level 3+) deepen the XOlokun ecosystem.** Once OBRIX
+- **Cross-engine bricks (Level 3+) deepen the XOceanus ecosystem.** Once OBRIX
   can reference other engines' DSP, it becomes the gateway drug for the entire
   platform. "I love this Orbital Resonator brick — what's the full Orbital
   engine like?"
@@ -1611,12 +1611,12 @@ When you discover an Easter egg on Pocket:
 
 ```
 BrixBox storage:
-├── Local: ~/Library/XOlokun/BrixBox/brixbox.json
+├── Local: ~/Library/XOceanus/BrixBox/brixbox.json
 │   ├── discovered: ["CHAIN_SAW_MAN", "DEEP_SEA_DIVER", ...]
 │   ├── collected: { "tide_pool_machines": ["preset1", "preset2", ...] }
 │   ├── stats: { bricksPlaced: 1247, combosTried: 318 }
 │   └── syncToken: "..." (for cloud sync)
-├── iCloud: com.xoox.xolokun/BrixBox/
+├── iCloud: com.xoox.xoceanus/BrixBox/
 └── Merge strategy: union (never lose discoveries)
 ```
 
@@ -1636,7 +1636,7 @@ Two models, depending on platform constraints:
 **Model A: In-app download (preferred)**
 - Pack metadata lives on xoox.design/api/brixpacks
 - User taps "Get Pack" in OBRIX → downloads preset folder + Easter egg
-  definitions → unpacks to `Presets/XOlokun/BrixPacks/{packName}/`
+  definitions → unpacks to `Presets/XOceanus/BrixPacks/{packName}/`
 - No app update required. Works on macOS, iOS.
 
 **Model B: App update bundle (fallback for App Store restrictions)**
@@ -1688,7 +1688,7 @@ combos become packs → packs bring users back → more combos → repeat.
 ### Post-V1 Track A: Infrastructure (SDK)
 - **Engine version metadata** — `sinceVersion` in registry, graceful missing-engine handling
 - **SDK extraction** — pull `SynthEngine.h` + `CouplingTypes.h` into standalone headers with no JUCE types in the interface boundary
-- **Ship `xolokun-engine-sdk` repo** — templates, validate-engine CLI, test harness
+- **Ship `xoceanus-engine-sdk` repo** — templates, validate-engine CLI, test harness
 - **Parameter namespace registry** — prevent collisions
 - **Dynamic engine loading deferred to V2** (per Board D2 security resolution)
 
@@ -1727,7 +1727,7 @@ combos become packs → packs bring users back → more combos → repeat.
 ### V1.6 (Level 3: The Rift — ~12 months post-OBRIX)
 - **New brick types:** Physical modeling string/membrane, Formant source,
   Chaos/Lorenz attractor, Markov chain sequencer, Shimmer reverb, Spectral morph
-- **Cross-engine bricks** — bricks that use other XOlokun engines' DSP
+- **Cross-engine bricks** — bricks that use other XOceanus engines' DSP
   (Orbital Resonator, Ouroboros Feedback, etc.)
 - **5 new Easter eggs** (Rift-exclusive)
 - **Boss: THE ABYSS** — "build a sound using two instances that couldn't exist with one"

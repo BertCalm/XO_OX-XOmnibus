@@ -140,7 +140,7 @@ Should be referenced by: `/uix-design-studio` (currently describes Pixel as righ
 
 **The site architecture reference is likely stale.** The Current site structure lists four files (`index.html`, `packs.html`, `guide.html`, individual guide posts) but from MEMORY.md, the site has evolved significantly (VQ 002 aquarium phase, 7 pages confirmed). The Atelier should not maintain a site structure list inline — it should read the actual files each session per the Gather State step. The inline list creates a false sense of stability.
 
-**The design system section contradicts CLAUDE.md.** CLAUDE.md and the XOlokun design spec are consistent: "Light mode is the primary presentation. Dark mode is a toggle." But the Atelier's design system says "Light mode primary, dark mode toggle" — which matches. However, Pixel's wishlist says "XO_OX is dark-theme-first" for asset evaluation criteria. This is a contradiction across the cluster. One of these is wrong. CLAUDE.md is the authority; the site is light-mode-first, and Pixel's wishlist criterion should be updated to reflect this.
+**The design system section contradicts CLAUDE.md.** CLAUDE.md and the XOceanus design spec are consistent: "Light mode is the primary presentation. Dark mode is a toggle." But the Atelier's design system says "Light mode primary, dark mode toggle" — which matches. However, Pixel's wishlist says "XO_OX is dark-theme-first" for asset evaluation criteria. This is a contradiction across the cluster. One of these is wrong. CLAUDE.md is the authority; the site is light-mode-first, and Pixel's wishlist criterion should be updated to reflect this.
 
 **The Atelier's Pixel is a different character from the UIX skill's Pixel Rabbit.** The Atelier describes Pixel as "HT's right hand on interface decisions" for the web. `pixel-rabbit.md` describes Pixel as "the design asset curator for the UIX Design Studio and the Atelier." These two Pixel descriptions are compatible but subtly different in role. The Atelier's Pixel is a web UX designer; the pixel-rabbit is an asset curator. This needs clarification — either Pixel is two-hats in one (web designer in the Atelier context, asset curator in the UIX/acquisition context), or the names should be differentiated.
 
@@ -192,7 +192,7 @@ Should be referenced by: `/uix-design-studio` (missing), `/fab-five` (not presen
 
 **No reference to the Atelier.** When F5 (Storyteller) or F1 (Stylist) finds that the website doesn't reflect the product identity, the natural escalation is `/atelier` — but this is not stated.
 
-**The Walk-Through step (Phase 1) reads "Browse the codebase"** but gives no specific files to read for the XO_OX context. For new users of the skill, this is vague. A brief note pointing to `Docs/xolokun_master_specification.md` and `Docs/figma-asset-compendium.md` as starting points would help.
+**The Walk-Through step (Phase 1) reads "Browse the codebase"** but gives no specific files to read for the XO_OX context. For new users of the skill, this is vague. A brief note pointing to `Docs/xoceanus_master_specification.md` and `Docs/figma-asset-compendium.md` as starting points would help.
 
 ### Recommendations
 
@@ -292,7 +292,7 @@ The following table maps wiring that should exist but currently does not:
 
 **File:** `~/.claude/skills/uix-design-studio/pixel-rabbit.md`, line 27
 **Current:** "XO_OX is dark-theme-first"
-**Correct:** CLAUDE.md and the XOlokun design spec define the Gallery Model as light-mode default with dark mode toggle. The site is light-mode-first. Pixel's evaluation criterion for downloaded assets should read: "Does it include a light mode variant? (XO_OX is light-mode-first — Gallery Model warm white shell. Dark mode toggle exists but is secondary.)"
+**Correct:** CLAUDE.md and the XOceanus design spec define the Gallery Model as light-mode default with dark mode toggle. The site is light-mode-first. Pixel's evaluation criterion for downloaded assets should read: "Does it include a light mode variant? (XO_OX is light-mode-first — Gallery Model warm white shell. Dark mode toggle exists but is secondary.)"
 
 This contradiction would cause Pixel to reject or deprioritize assets that the UIX Studio, Atelier, and Board would actually want (light-mode components for the JUCE plugin and web presence).
 

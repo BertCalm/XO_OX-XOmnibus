@@ -5,20 +5,20 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 ## Architecture & Specs
 
-- [xomnibus_master_specification.md](xomnibus_master_specification.md) — Master spec for XOlokun platform
-- [XOmnibus_Master_Architecture- Volume 2.md.txt](XOmnibus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
-- [xomnibus_repo_structure.md](xomnibus_repo_structure.md) — Directory and file organization
-- [xomnibus_technical_design_system.md](xomnibus_technical_design_system.md) — Technical design patterns
-- [xomnibus_new_engine_process.md](xomnibus_new_engine_process.md) — How to add a new engine
-- [xomnibus_preset_spec_for_builder.md](xomnibus_preset_spec_for_builder.md) — Preset schema for builders
+- [xoceanus_master_specification.md](xoceanus_master_specification.md) — Master spec for XOceanus platform
+- [XOceanus_Master_Architecture- Volume 2.md.txt](XOceanus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
+- [xoceanus_repo_structure.md](xoceanus_repo_structure.md) — Directory and file organization
+- [xoceanus_technical_design_system.md](xoceanus_technical_design_system.md) — Technical design patterns
+- [xoceanus_new_engine_process.md](xoceanus_new_engine_process.md) — How to add a new engine
+- [xoceanus_preset_spec_for_builder.md](xoceanus_preset_spec_for_builder.md) — Preset schema for builders
 - [xometa_schema.json](specs/xometa_schema.json) — .xometa JSON schema definition
 - [xometa_examples.json](specs/xometa_examples.json) — .xometa example files
-- [xomnibus_module_starter_design.md](xomnibus_module_starter_design.md) — Module starter patterns
-- [xomnibus_mobile_and_midi_spec.md](xomnibus_mobile_and_midi_spec.md) — iOS/MIDI specification
-- [xomnibus_mobile_implementation_strategy.md](xomnibus_mobile_implementation_strategy.md) — iOS implementation strategy
-- [xomnibus_recipe_system_design.md](xomnibus_recipe_system_design.md) — Recipe/coupling system design
-- [xomnibus_name_migration_reference.md](xomnibus_name_migration_reference.md) — Engine name migration reference
-- [how_to_write_a_xomnibus_adapter.md](how_to_write_a_xomnibus_adapter.md) — Adapter authoring guide
+- [xoceanus_module_starter_design.md](xoceanus_module_starter_design.md) — Module starter patterns
+- [xoceanus_mobile_and_midi_spec.md](xoceanus_mobile_and_midi_spec.md) — iOS/MIDI specification
+- [xoceanus_mobile_implementation_strategy.md](xoceanus_mobile_implementation_strategy.md) — iOS implementation strategy
+- [xoceanus_recipe_system_design.md](xoceanus_recipe_system_design.md) — Recipe/coupling system design
+- [xoceanus_name_migration_reference.md](xoceanus_name_migration_reference.md) — Engine name migration reference
+- [how_to_write_a_xoceanus_adapter.md](how_to_write_a_xoceanus_adapter.md) — Adapter authoring guide
 - [oscar_rive_spec.md](oscar_rive_spec.md) — Rive/Oscar UI animation spec
 - [xo_signature_playsurface_spec.md](xo_signature_playsurface_spec.md) — PlaySurface spec
 - [shore_system_spec.md](shore_system_spec.md) — Shore system (Osprey/Osteria) spec
@@ -38,7 +38,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [oracle_synthesis_guide.md](oracle_synthesis_guide.md) — ORACLE synthesis guide
 - [overlap_synthesis_guide.md](overlap_synthesis_guide.md) — OVERLAP synthesis guide
 - [outwit_synthesis_guide.md](outwit_synthesis_guide.md) — OUTWIT synthesis guide
-- [xomnibus_sound_design_guides.md](xomnibus_sound_design_guides.md) — Cross-engine sound design
+- [xoceanus_sound_design_guides.md](xoceanus_sound_design_guides.md) — Cross-engine sound design
 - [organon_vfe_guide.md](organon_vfe_guide.md) — ORGANON VFE guide
 - [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md) — ONSET XVC demo guide
 - [MPC_Controller_Setup.md](MPC_Controller_Setup.md) — MPC controller setup
@@ -82,13 +82,13 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 ## Roadmaps & Launch Planning
 
-- [xomnibus_engine_roadmap_v3.md](xomnibus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
-- [xomnibus_engine_roadmap.md](xomnibus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
-- [xomnibus_v2_roadmap.md](xomnibus_v2_roadmap.md) — V2 roadmap
-- [xomnibus_launch_audit_2026.md](xomnibus_launch_audit_2026.md) — Launch audit 2026
-- [xomnibus_landscape_2026.md](xomnibus_landscape_2026.md) — Competitive landscape 2026
+- [xoceanus_engine_roadmap_v3.md](xoceanus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
+- [xoceanus_engine_roadmap.md](xoceanus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
+- [xoceanus_v2_roadmap.md](xoceanus_v2_roadmap.md) — V2 roadmap
+- [xoceanus_launch_audit_2026.md](xoceanus_launch_audit_2026.md) — Launch audit 2026
+- [xoceanus_landscape_2026.md](xoceanus_landscape_2026.md) — Competitive landscape 2026
 - [release_readiness_12k.md](release_readiness_12k.md) — Release readiness report (12k)
-- [xomnibus_brand_identity_and_launch.md](xomnibus_brand_identity_and_launch.md) — Brand identity & launch strategy
+- [xoceanus_brand_identity_and_launch.md](xoceanus_brand_identity_and_launch.md) — Brand identity & launch strategy
 - [funding_plan.md](funding_plan.md) — Funding strategy
 - [engine_expansion_toolkit_strategy.md](engine_expansion_toolkit_strategy.md) — Engine expansion strategy
 
@@ -150,7 +150,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [build_verification_11j.md](build-logs/build_verification_11j.md) — Build verification round 11j
 - [build_verification_12j.md](build-logs/build_verification_12j.md) — Build verification round 12j
 - [v007_journey_demo_report.md](v007_journey_demo_report.md) — v0.0.7 journey demo report
-- [xomnibus_volume2_review.md](xomnibus_volume2_review.md) — Volume 2 review
+- [xoceanus_volume2_review.md](xoceanus_volume2_review.md) — Volume 2 review
 
 ---
 
@@ -253,7 +253,7 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 - [concepts/xodyssey_concept_brief.md](concepts/xodyssey_concept_brief.md) — ODYSSEY concept
 - [concepts/xohm_concept_brief.md](concepts/xohm_concept_brief.md) — OHM concept
 - [concepts/xole_concept_brief.md](concepts/xole_concept_brief.md) — OLE concept
-- [concepts/xomnibus_collections_vision.md](concepts/xomnibus_collections_vision.md) — Collections vision
+- [concepts/xoceanus_collections_vision.md](concepts/xoceanus_collections_vision.md) — Collections vision
 - [concepts/xonset_concept_brief.md](concepts/xonset_concept_brief.md) — ONSET concept
 - [concepts/xopal_concept_brief.md](concepts/xopal_concept_brief.md) — OPAL concept
 
@@ -332,10 +332,10 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 
 ## UI & Design Specs (`design/`)
 
-- [design/xolokun-spatial-architecture-v1.md](design/xolokun-spatial-architecture-v1.md) — **V1 (canonical)**: Spatial architecture post-10-panel review — every feature gets an address before visual polish
-- [design/xolokun-spatial-architecture.md](design/xolokun-spatial-architecture.md) — **DRAFT (Phase 1)**: Earlier spatial architecture draft (superseded by V1 above)
+- [design/xoceanus-spatial-architecture-v1.md](design/xoceanus-spatial-architecture-v1.md) — **V1 (canonical)**: Spatial architecture post-10-panel review — every feature gets an address before visual polish
+- [design/xoceanus-spatial-architecture.md](design/xoceanus-spatial-architecture.md) — **DRAFT (Phase 1)**: Earlier spatial architecture draft (superseded by V1 above)
 - [design/pixel-art-creature-spec.md](design/pixel-art-creature-spec.md) — Pixel art creature specification for engine identity icons
-- [design/xolokun-definitive-ui-spec.md](design/xolokun-definitive-ui-spec.md) — Definitive UI specification
+- [design/xoceanus-definitive-ui-spec.md](design/xoceanus-definitive-ui-spec.md) — Definitive UI specification
 - [design/playsurface-design-spec.md](design/playsurface-design-spec.md) — PlaySurface zone/mode design spec
 - [design/accessibility-audit.md](design/accessibility-audit.md) — Accessibility audit
 - [design/button-system-spec.md](design/button-system-spec.md) — Button system specification
@@ -344,15 +344,15 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 - [design/outshine-empty-state.md](design/outshine-empty-state.md) — Outshine empty state design
 - [design/asset-registry.md](design/asset-registry.md) — Figma component + font asset registry
 - [design/kai-akai-tool-ui-review.md](design/kai-akai-tool-ui-review.md) — Kai/AKAI tool UI review (Outshine/Originate/Oxport)
-- [design/xolokun-ui-blessing-session.md](design/xolokun-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
-- [design/xomnibus_design_guidelines.md](design/xomnibus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
-- [design/xomnibus_ui_master_spec_v2.md](design/xomnibus_ui_master_spec_v2.md) — UI master spec v2 (XOlokun Rebirth design language)
+- [design/xoceanus-ui-blessing-session.md](design/xoceanus-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
+- [design/xoceanus_design_guidelines.md](design/xoceanus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
+- [design/xoceanus_ui_master_spec_v2.md](design/xoceanus_ui_master_spec_v2.md) — UI master spec v2 (XOceanus Rebirth design language)
 
 ---
 
 ## Research Compendium (`research/`)
 
-Continuous scanning for open-source resources relevant to XOlokun: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
+Continuous scanning for open-source resources relevant to XOceanus: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
 
 - [research/continuous-scan-2026-03-24.md](sweeps/continuous-scan-2026-03-24.md) — **Scan 2026-03-24**: 42 resources across 8 domains. P0 finds: melatonin_blur, Vital UI, three.quarks+ocean shader, audioMotion-analyzer, SeaSynth Figma, WeAreROLI/mpejs, tonaljs, shadcn/ui.
 

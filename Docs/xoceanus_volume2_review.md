@@ -1,11 +1,11 @@
-# XOlokun Volume 2 — Architecture Review, Feasibility Assessment & Revised Roadmap
+# XOceanus Volume 2 — Architecture Review, Feasibility Assessment & Revised Roadmap
 
 **Reviewer:** Claude Code (Architecture Review)
 **Date:** 2026-03-11
-**Source Document:** `Docs/XOlokun_Master_Architecture- Volume 2.md.txt`
+**Source Document:** `Docs/XOceanus_Master_Architecture- Volume 2.md.txt`
 **Status:** REVIEW — requires approval before any implementation
 
-**Governing principle:** The existing master specification (`Docs/xolokun_master_specification.md`) and implemented codebase take precedence over Volume 2 in all conflicts.
+**Governing principle:** The existing master specification (`Docs/xoceanus_master_specification.md`) and implemented codebase take precedence over Volume 2 in all conflicts.
 
 ---
 

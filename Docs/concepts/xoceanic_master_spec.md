@@ -46,7 +46,7 @@ The Chromatophore Modulator ties the entire pedalboard together into a single li
 All notes share one filter and one envelope. Chords blend into a single timbral mass — you hear *one instrument playing a chord*, not *several instruments playing notes*. This is a feature, not a limitation. It's why Solina string pads feel fundamentally different from polyphonic pads.
 
 ### Pillar 5: Coupling as Revelation
-In XOlokun, any engine's audio can enter the chromatophore pedalboard. OVERWORLD's chip audio scattered through SCATTER. ODYSSEY's Climax frozen by FREEZE. OVERBITE's bass warped by TIDE. The pedalboard reveals hidden colors in *any* engine — this is OCEANIC's gallery role.
+In XOceanus, any engine's audio can enter the chromatophore pedalboard. OVERWORLD's chip audio scattered through SCATTER. ODYSSEY's Climax frozen by FREEZE. OVERBITE's bass warped by TIDE. The pedalboard reveals hidden colors in *any* engine — this is OCEANIC's gallery role.
 
 ---
 
@@ -607,7 +607,7 @@ Pattern shapes:
 |-------|-------|----------------|-------|----------------|
 | M1 | DEPTH | `pedalMix` ↑, `ensemble` ↑, `chromDepth` ↑, `abyssMix` slight ↑ | ease_in_out | **The revealer.** How much hidden color do you want to see? 0=pure dry Solina warmth. 1=full chromatophore bioluminescence. |
 | M2 | CURRENT | `chromRate` ↑, `chromSeparation` ↑, `tideWarp` ↑, `scatterDensity` ↑, `drift` ↑ | ease_in | **The motion.** 0=still deep water. 1=churning current. Controls speed and complexity of all organic modulation. |
-| M3 | COUPLING | `couplingLevel` ↑, `freezeMix` context, `scatterMix` context | linear | **The portal.** In XOlokun: scales coupling input depth. In standalone: could control internal feedback routing. |
+| M3 | COUPLING | `couplingLevel` ↑, `freezeMix` context, `scatterMix` context | linear | **The portal.** In XOceanus: scales coupling input depth. In standalone: could control internal feedback routing. |
 | M4 | ABYSS | `abyssMix` ↑, `abyssDecay` ↑, `mirrorMix` ↑, `outputWidth` ↑, `separation` ↑ | ease_out | **The space.** 0=close, intimate string ensemble. 1=infinite shimmering ocean abyss. |
 
 ### Macro Design Rules
@@ -618,7 +618,7 @@ Pattern shapes:
 
 ---
 
-## Section 15: Coupling Interface (XOlokun Integration)
+## Section 15: Coupling Interface (XOceanus Integration)
 
 ### getSampleForCoupling()
 Returns: post-pedalboard stereo output, cached per sample.
@@ -666,7 +666,7 @@ This is the fully processed signal — string ensemble + all active effects. Oth
 | Voice stealing | N/A — no voices to steal |
 | Legato | N/A — all notes share the same envelope |
 | Portamento | Not applicable (paraphonic — notes don't glide) |
-| getMaxVoices() return | 1 (for XOlokun CPU budgeting — it's one paraphonic "voice") |
+| getMaxVoices() return | 1 (for XOceanus CPU budgeting — it's one paraphonic "voice") |
 | getActiveVoiceCount() return | Count of currently held MIDI notes |
 
 ### CPU Profile

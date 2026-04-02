@@ -1,7 +1,7 @@
 # OBRIX Brick Drop Strategy
 
 **Filed**: 2026-03-19
-**Identity**: OBRIX is the baby brother of XOlokun — a living reef that grows over time
+**Identity**: OBRIX is the baby brother of XOceanus — a living reef that grows over time
 **Mythology**: Baby coral polyp that builds its reef brick by brick. Reef Jade #1E8B7E.
 
 ---
@@ -36,7 +36,7 @@ Each drop includes 3-4 bricks + 10-15 new presets + Field Guide blog post.
 
 ## Fleet as Brick Quarry
 
-Every XOlokun engine contains DSP that can be miniaturized into an OBRIX brick:
+Every XOceanus engine contains DSP that can be miniaturized into an OBRIX brick:
 
 ### Source Bricks (from existing engines)
 | Brick | Donor Engine | LOC | Description |

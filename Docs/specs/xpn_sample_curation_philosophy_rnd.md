@@ -61,7 +61,7 @@ Before a sample is confirmed for inclusion, ask one question: is this substantia
 
 Run `xpn_sample_fingerprinter.py` against the full catalog before finalizing any pack. Near-duplicate detection catches the obvious failures — a reskinned version of an existing kick, a pad that shares spectral DNA with three sounds already in OPAL. The goal is a catalog where every sample earns its unique position.
 
-The target is 80% original content: XOlokun engine renders or custom recordings. The remaining 20% is ceiling, not standard.
+The target is 80% original content: XOceanus engine renders or custom recordings. The remaining 20% is ceiling, not standard.
 
 ---
 
@@ -82,9 +82,9 @@ If four consecutive velocity layers sound like the same sample at four gain stag
 
 The sourcing hierarchy is fixed. Exceptions require explicit justification.
 
-1. **XOlokun engine renders** — the primary source, using the renderNoteToWav() pipeline once available. Every pack should be a product of the instrument ecosystem.
+1. **XOceanus engine renders** — the primary source, using the renderNoteToWav() pipeline once available. Every pack should be a product of the instrument ecosystem.
 2. **Custom recordings** — field recording, acoustic instruments, hardware synths captured in controlled conditions. Original material that cannot exist anywhere else.
-3. **Pre-recorded samples processed through XOlokun engines** — source material transformed through the engine signal chain. The transformation must be audible and meaningful, not cosmetic.
+3. **Pre-recorded samples processed through XOceanus engines** — source material transformed through the engine signal chain. The transformation must be audible and meaningful, not cosmetic.
 4. **Stock library samples** — last resort, limited to texture and FX layers only. Never for primary kit voices (kick, snare, hat). Document source and license in the pack manifest.
 
 The goal of this hierarchy is a catalog that sounds like XO_OX made it — not a catalog that sounds like XO_OX assembled it.

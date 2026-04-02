@@ -116,7 +116,7 @@ If you're on MPC Live II, One, Key 61, or Force, the **Standard** program is inc
 
 ## About XO_OX Designs
 
-XO_OX Designs makes instruments that think differently about sound. Our XOlokun platform
+XO_OX Designs makes instruments that think differently about sound. Our XOceanus platform
 houses 44 synthesis engines that can couple, collide, and mutate into sounds impossible
 with any single synth.
 

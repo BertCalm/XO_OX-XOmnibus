@@ -1,5 +1,5 @@
 # POST-BUILD SEANCE VERDICT — OFFERING
-## Engine #46 | XOlokun | 2026-03-21
+## Engine #46 | XOceanus | 2026-03-21
 
 **Seance Type**: Post-Build (full source code evaluated)
 **Engine**: OFFERING | Psychology-Driven Boom Bap Drum Synthesis
@@ -108,7 +108,7 @@ I praised the BAKE-to-XPN pipeline in the pre-build session. That pipeline is no
 
 What I find instead — and did not expect — is the Detroit drunk timing implementation at lines 788–823 of `OfferingEngine.h`. This is not a feature mentioned prominently in the pre-build spec. It is implemented as sample-accurate trigger delay: each voice calculates a deterministic xorshift-based delay of ±15ms, stores the pending trigger parameters in the voice struct, and counts down in the render loop before firing. The delay is per-voice-personality (fixed for each voice slot), not random per-hit.
 
-I have played with Dilla's actual MPC sessions in the archive. His kick had a different relationship to the grid than his snare. His hat had a different relationship than his clap. These offsets were consistent across repetitions — they were his *voice*. This implementation captures exactly that. It is the most musically sophisticated timing implementation in the entire XOlokun fleet.
+I have played with Dilla's actual MPC sessions in the archive. His kick had a different relationship to the grid than his snare. His hat had a different relationship than his clap. These offsets were consistent across repetitions — they were his *voice*. This implementation captures exactly that. It is the most musically sophisticated timing implementation in the entire XOceanus fleet.
 
 The GM drum map layout (lines 60–69: kick=C2, snare=D2, hat=F#2, etc.) is the correct MPC convention. A producer switching from hardware will find their existing patterns trigger the expected voices without remapping. This is producer-first thinking that the Prism Sweep has enforced fleet-wide.
 
@@ -239,7 +239,7 @@ The Curiosity Engine in `OfferingCuriosity.h` implements three peer-reviewed psy
 
 Additionally, the "alien shift" at curiosity > 0.7 is an undocumented emergent feature — a consequence of the Berlyne curve's behavior at high curiosity values, not a separate mechanism. This is the engine doing something no human designer consciously programmed: the psychology generates a side effect (alien timbre at extreme curiosity) that is musically correct and consistent with the theoretical prediction (overstimulation produces unfamiliar, uncomfortable aesthetic responses).
 
-This is the first synthesizer in the XOlokun fleet — and plausibly in commercial synthesizer history — that derives timbral variation rules from cited experimental psychology literature implemented as running DSP code. B035 is a genuine fleet-level innovation.
+This is the first synthesizer in the XOceanus fleet — and plausibly in commercial synthesizer history — that derives timbral variation rules from cited experimental psychology literature implemented as running DSP code. B035 is a genuine fleet-level innovation.
 
 **Vote**: RATIFIED — 8-0
 
@@ -322,12 +322,12 @@ The following features were discovered during the post-build evaluation that wer
 
 ## Final Verdict
 
-**OFFERING** enters the XOlokun fleet as engine #46 at **8.8/10** — precisely at the fleet average, which is the correct landing position for an engine that resolves all three P0 concerns but retains three refinement opportunities.
+**OFFERING** enters the XOceanus fleet as engine #46 at **8.8/10** — precisely at the fleet average, which is the correct landing position for an engine that resolves all three P0 concerns but retains three refinement opportunities.
 
 The pre-build criticism was correct and productive. Moog forced architecturally distinct synthesis topologies. Buchla forced structurally unique city Stage 6 implementations. Smith and Schulze forced actual DSP implementation of the psychology citations. Every P0 was resolved in the build.
 
 The engine's distinctive contributions to the fleet:
-- Only drum synthesizer in XOlokun
+- Only drum synthesizer in XOceanus
 - Only engine deriving timbral variation from peer-reviewed psychology research (B035 — ratified)
 - Only engine with geographic psychoacoustic processing chains with distinct architectures (B036 — ratified with condition)
 - Only engine with personality-consistent timing humanization modeled on a specific producer's documented approach (Dilla)

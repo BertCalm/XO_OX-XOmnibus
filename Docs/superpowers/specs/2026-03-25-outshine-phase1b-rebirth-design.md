@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-Rebirth Mode transforms producer samples through engine-inspired DSP chains, producing "reborn" instruments where each XOlokun engine's sonic character shapes the sample's timbre. The sample IS the primary audio source — it flows through the FX chain and comes out transformed. The engine's DSP acts as a transfer function on the sample.
+Rebirth Mode transforms producer samples through engine-inspired DSP chains, producing "reborn" instruments where each XOceanus engine's sonic character shapes the sample's timbre. The sample IS the primary audio source — it flows through the FX chain and comes out transformed. The engine's DSP acts as a transfer function on the sample.
 
 **What Rebirth is NOT:**
 - NOT routing samples through live SynthEngine instances (the coupling system is parameter modulation, not audio-through — this was proven non-viable in QDD LVL1-3 review)
@@ -32,7 +32,7 @@ Option B (Engine-Inspired FX Chain) was blessed unanimously (8-0) by the Ghost C
 
 ### 1.2 Relationship to Python CLI
 
-The Python CLI (`Tools/xoutshine.py`) has an existing Rebirth Mode with 5 profiles (OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB) using approximate DSP transforms. The C++ Phase 1B is a **new system sharing the pipeline architecture but with different, more sophisticated DSP algorithms.** The Python CLI Rebirth is deprecated as of Phase 1B. The Python CLI docstring must be updated to state: "Prototype implementation. Production Rebirth Mode is in the XOlokun desktop app."
+The Python CLI (`Tools/xoutshine.py`) has an existing Rebirth Mode with 5 profiles (OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB) using approximate DSP transforms. The C++ Phase 1B is a **new system sharing the pipeline architecture but with different, more sophisticated DSP algorithms.** The Python CLI Rebirth is deprecated as of Phase 1B. The Python CLI docstring must be updated to state: "Prototype implementation. Production Rebirth Mode is in the XOceanus desktop app."
 
 ---
 
@@ -88,7 +88,7 @@ Source/Export/
 The pipeline is a **generic DSP chain executor**. It reads a profile configuration and executes the chain. There MUST be no `if (profile == OBRIX)` conditional logic in the pipeline. Profiles are data structures that the pipeline iterates.
 
 ```cpp
-namespace xolokun {
+namespace xoceanus {
 
 struct RebirthSettings {
     RebirthProfileID profileId = RebirthProfileID::OBRIX;
@@ -164,7 +164,7 @@ struct AnalysisResult {
     float durationS;         // seconds
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 ### 3.2 RebirthProfiles.h
@@ -172,7 +172,7 @@ struct AnalysisResult {
 Profiles are defined as data structures: arrays of `{DSPModuleID, parameters}` tuples. The pipeline iterates them generically. Some profiles may require DSP modules defined in `RebirthDSP.h` (e.g., OPERA's FFT formant estimator). This is acceptable — adding a new profile that requires a novel algorithm requires adding that algorithm to `RebirthDSP.h`.
 
 ```cpp
-namespace xolokun {
+namespace xoceanus {
 
 enum class RebirthProfileID {
     OBRIX,      // Character — multi-band saturation + comb filters + ecological reverb
@@ -217,7 +217,7 @@ struct RebirthProfile {
 // Returns the built-in profile for the given ID
 const RebirthProfile& getRebirthProfile(RebirthProfileID id);
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 ### 3.3 RebirthDSP.h
@@ -666,7 +666,7 @@ Implementation MUST NOT begin until these gates are cleared:
 ```python
 """
 ...
-NOTE: Prototype implementation. Production Rebirth Mode is in the XOlokun desktop app.
+NOTE: Prototype implementation. Production Rebirth Mode is in the XOceanus desktop app.
 The Python CLI Rebirth profiles (OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB) are deprecated
 as of Phase 1B (2026-03-25) and will not receive further updates.
 ...

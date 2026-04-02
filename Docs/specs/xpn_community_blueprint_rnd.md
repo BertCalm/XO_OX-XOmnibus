@@ -9,7 +9,7 @@ This document is the complete blueprint for launching and sustaining the XO_OX p
 from Discord server architecture through the community-contributed pack pipeline through the creator
 economy. It is the canonical planning reference for community infrastructure decisions.
 
-**Goal**: Build the most craft-conscious MPC/XOlokun sample community on the internet. Not the
+**Goal**: Build the most craft-conscious MPC/XOceanus sample community on the internet. Not the
 largest — the most curated, most technically excellent, most creatively ambitious.
 
 ---
@@ -32,7 +32,7 @@ XO_OX Designs
 ├─ COMMUNITY
 │   ├─ #general               — open conversation, introductions
 │   ├─ #mpc-tips              — workflow, hardware setup, MPC OS questions
-│   ├─ #xolokun-beta         — Beta role only: pre-release feedback channel
+│   ├─ #xoceanus-beta         — Beta role only: pre-release feedback channel
 │   └─ #showcase              — post tracks, videos, screenshots using XO_OX packs
 │
 ├─ PACKS
@@ -56,7 +56,7 @@ XO_OX Designs
 | **Listener** | Default on join | Read all public channels |
 | **Producer** | Self-assigned via bot (`/role producer`) | Post in #preset-sharing, #showcase, #mpc-tips |
 | **Pack Creator** | Assigned after first accepted community submission | Post in #community-submissions, visible credit badge |
-| **XO_OX Beta** | Direct invite from XO_OX (10-30 members) | Access #xolokun-beta; NDA acknowledgment required |
+| **XO_OX Beta** | Direct invite from XO_OX (10-30 members) | Access #xoceanus-beta; NDA acknowledgment required |
 | **Moderator** | XO_OX-appointed | Manage messages, timeout, review #community-submissions |
 
 **Design principle**: Roles gate posting, not reading. Lurkers can see everything. Friction only
@@ -76,7 +76,7 @@ Required fields:
 | Creator handle | Text | Must match Discord handle |
 | Pack name | Text | Max 40 chars, must be original |
 | Pack ZIP URL | URL | Google Drive / Dropbox / WeTransfer link |
-| Target engine(s) | Multi-select | All 34 registered XOlokun engines listed |
+| Target engine(s) | Multi-select | All 34 registered XOceanus engines listed |
 | Mood tags | Multi-select | Foundation / Atmosphere / Entangled / Prism / Flux / Aether / Family |
 | BPM range | Text | Optional for tonal packs |
 | Sample origin declaration | Checkbox | "All samples are original or cleared for commercial use" |
@@ -242,7 +242,7 @@ Format: title = the feature, body = use case description.
 Requests fall into three categories:
 1. **Pack requests** — new engine themes, moods, or genre focuses → added to pack roadmap
 2. **Format requests** — XPN structure, QLink defaults, kit modes → forwarded to Tools/ backlog
-3. **Engine feature requests** — parameter additions → filed as engine issues in XOlokun repo
+3. **Engine feature requests** — parameter additions → filed as engine issues in XOceanus repo
 
 ### 4.3 Feedback → Pack Design Decision
 
@@ -363,7 +363,7 @@ This is the primary acquisition mechanism for Month 0.
 **Quality floor:**
 - Automated QA score ≥ 70/100 (enforced by `xpn_community_qa.py`)
 - Minimum 5 presets per submission
-- All presets must load without error in the target XOlokun version
+- All presets must load without error in the target XOceanus version
 
 **Attribution:**
 - All samples derived from external sources (even cleared) must be noted in `LICENSE.txt`
@@ -423,7 +423,7 @@ each month becomes the Patron Exclusive — guaranteed audience and revenue.
 Quarterly, XO_OX publishes a poll (Discord + Patreon) with 3–5 engine concepts from the open
 design pool (OSTINATO, OPENSKY, OCEANDEEP, OUIE, and future V2 concepts). Patron votes count 3×
 vs. free member votes. The winning concept gets:
-- Priority slot in the XOlokun engine roadmap
+- Priority slot in the XOceanus engine roadmap
 - A dedicated community pack challenge on launch
 - The voting community gets credited in the engine's identity card as "Championed by the XO_OX
   Community"

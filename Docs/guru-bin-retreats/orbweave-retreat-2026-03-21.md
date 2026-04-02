@@ -19,7 +19,7 @@
 
 ## Pre-Retreat State
 
-ORBWEAVE arrived in XOlokun on 2026-03-20, one of three engines added in the same session as OVERTONE and ORGANISM. It carries two Blessings — B021 and B022 — a concentration of novel insight rare even by XOlokun standards. The Knot Phase Coupling Matrix (B021) is an original DSP design: no commercial synthesizer uses topological braid theory as a coupling architecture. The MACRO KNOT system (B022) extends this further by allowing real-time morphing between topologies, treating the traversal of knot space as a first-class performance gesture.
+ORBWEAVE arrived in XOceanus on 2026-03-20, one of three engines added in the same session as OVERTONE and ORGANISM. It carries two Blessings — B021 and B022 — a concentration of novel insight rare even by XOceanus standards. The Knot Phase Coupling Matrix (B021) is an original DSP design: no commercial synthesizer uses topological braid theory as a coupling architecture. The MACRO KNOT system (B022) extends this further by allowing real-time morphing between topologies, treating the traversal of knot space as a first-class performance gesture.
 
 The engine arrived with a factory library spanning all major mood categories and a corrected default for `weave_braidDepth` — originally 0.5, now 0.2. This correction is not cosmetic. At default, ORBWEAVE sounds almost like four independent oscillators. The coupling is present but subtle. A producer must deliberately raise braid depth to engage the full character of the topology. This is correct behavior: the knot structure is something you enter, not something you are dropped into.
 
@@ -672,7 +672,7 @@ In Poly8 mode, each voice runs its own independent 4-strand coupling system. Two
 
 ## Phase R8: CPU Profile
 
-ORBWEAVE's DSP load is moderate by XOlokun standards. The primary cost is the per-sample phase coupling computation: for each active voice, the inner loop computes 12 multiply-adds (4 strands × 3 non-self coefficients) plus 4 fastSin calls per sample. With 8 voices active in Poly8 mode at 48kHz: approximately 1,600 such operations per millisecond of audio per active voice.
+ORBWEAVE's DSP load is moderate by XOceanus standards. The primary cost is the per-sample phase coupling computation: for each active voice, the inner loop computes 12 multiply-adds (4 strands × 3 non-self coefficients) plus 4 fastSin calls per sample. With 8 voices active in Poly8 mode at 48kHz: approximately 1,600 such operations per millisecond of audio per active voice.
 
 Comparative estimate: ORBWEAVE at 8 voices ≈ 8–12% CPU on an Apple M-series chip — approximately 1.5× the load of a standard 4-oscillator polyphonic synth at the same polyphony. Three FX slots active with reverb add approximately 2–3% additional load.
 
@@ -696,7 +696,7 @@ ORBWEAVE as a **coupling destination** accepts pitch, filter, and amp signals. A
 - OPAL → ORBWEAVE (AmpToFilter): Granular density modulates ORBWEAVE's filter, linking grain cloud density to topological brightness
 - OUROBOROS → ORBWEAVE (AmpToPitch): The chaotic attractor's amplitude drives ORBWEAVE's pitch modulation — chaos shapes topology
 
-The Knot Phase Coupling Matrix (B021) is the architectural foundation for the KnotTopology coupling type in the XOlokun SDK — allowing third-party engines to receive topology-routed signals as a formal coupling interface. ORBWEAVE is the reference implementation.
+The Knot Phase Coupling Matrix (B021) is the architectural foundation for the KnotTopology coupling type in the XOceanus SDK — allowing third-party engines to receive topology-routed signals as a formal coupling interface. ORBWEAVE is the reference implementation.
 
 ---
 

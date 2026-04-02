@@ -23,7 +23,7 @@ Living coral. Not the skeletal calcium carbonate that tourists mistake for rock,
 
 The BobSnoutFilter is the coral's relationship with the water passing over it. Four modes -- Snout LP, Snout BP, Snout Form, and Snout Soft -- each represent a different way the coral interacts with current. The formant mode is the coral mouth, shaping passing frequencies into vowel-like resonances. The Curiosity LFO system -- with its five behavior modes (Sniff, Wander, Investigate, Twitch, Nap) -- is the coral's nervous system, responding to stimulation with the slow, exploratory movements of an organism that has no brain but somehow still seems curious. Bob does not compute modulation. Bob sniffs, wanders, investigates, twitches, and naps.
 
-The amber accent color is the coral itself at golden hour -- warm, honeyed, alive in the last light of the day. Bob is Oscar's architecture. He is the reef that every other species depends on, the structure that turns open water into habitat. Without the reef, the ocean is just water. Without Bob, XOlokun is just synthesizers.
+The amber accent color is the coral itself at golden hour -- warm, honeyed, alive in the last light of the day. Bob is Oscar's architecture. He is the reef that every other species depends on, the structure that turns open water into habitat. Without the reef, the ocean is just water. Without Bob, XOceanus is just synthesizers.
 
 ---
 

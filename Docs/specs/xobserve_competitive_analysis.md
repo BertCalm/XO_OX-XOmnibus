@@ -9,7 +9,7 @@
 ## Overview
 
 XObserve is a parametric EQ where every band carries a feliX↔Oscar character axis, aquatic zone
-framing, Tide LFO modulation per band, and XOlokun coupling I/O. The technical design is complete.
+framing, Tide LFO modulation per band, and XOceanus coupling I/O. The technical design is complete.
 This document answers: *how does XObserve stand relative to the EQ landscape, and where should it
 sharpen?*
 
@@ -124,7 +124,7 @@ audience, AIR Pro EQ is the baseline every user will compare against — even un
 4. **Coupling input.** No bundled MPC EQ receives modulation from other instruments. XObserve's
    `AmpToFilter` coupling from ONSET means a kick trigger can duck Band 1 gain with transformer-
    colored release — all without touching automation. This is a workflow-level leap for MPC users
-   who build beats inside XOlokun.
+   who build beats inside XOceanus.
 
 5. **Oxport bake path.** When an MPC producer exports a kit via XPN tools, XObserve's EQ curve
    bakes into the rendered samples, preserving the character of the EQ even in MPC-native playback
@@ -172,7 +172,7 @@ vs-latency tradeoff. This is a design refinement opportunity — see §5.
 **XObserve's position relative to Pro-Q 3:** Not a replacement. Pro-Q 3 is a mixing engineer's
 precision instrument. XObserve is a sound designer's tonal sculptor. The user who wants Pro-Q 3
 wants transparency; the user who wants XObserve wants character and movement. These are different
-intents. In the XOlokun context, XObserve should be positioned as what you reach for when the
+intents. In the XOceanus context, XObserve should be positioned as what you reach for when the
 sound needs to become something else, not just be corrected.
 
 **Design note:** The masking display from Pro-Q 3 is genuinely useful for mixing. XObserve's
@@ -333,17 +333,17 @@ literally breathes between two personalities. Call this the "Living Console" pre
 This has no parallel in any EQ product on the market. The standard paradigm for dynamic/sidechain
 EQ is: audio signal comes in, sidechain signal (internal or external) controls gain reduction.
 XObserve's coupling system adds a third paradigm: a synthesis engine directly drives the EQ curve
-via the XOlokun MegaCouplingMatrix. The ONSET kick trigger doesn't just duck Band 1 — it can
+via the XOceanus MegaCouplingMatrix. The ONSET kick trigger doesn't just duck Band 1 — it can
 simultaneously modulate the Tide depth of Band 4 via `AudioToFM`, sweep the character of Band 6
 via `EnvToMorph`, and gate the entire Mix via `RhythmToBlend`. All at once. From one coupling route.
 
 **What this enables that nothing else does:** The EQ becomes a performance instrument. In an
-XOlokun patch where ONSET drives XObserve, the groove of the beat shapes the tonal character
+XOceanus patch where ONSET drives XObserve, the groove of the beat shapes the tonal character
 of the pad running through the EQ. The pad doesn't just get cut/boosted by the kick — it
 responds to the kick's rhythm by changing its harmonic character in real time. This is synthesis-
 level expressiveness applied to what is normally a static mix tool.
 
-### 3.5 XOlokun Ecosystem Integration
+### 3.5 XOceanus Ecosystem Integration
 
 XObserve is not designed to compete with standalone EQ plugins for mixing engineers. It is
 designed to be the spectral shaping layer in a synthesis and performance ecosystem. The technical
@@ -353,7 +353,7 @@ source for whatever engine is generating that signal. This closes a feedback loo
 standalone EQ product even considers.
 
 **The architectural uniqueness:** XObserve is simultaneously an FX processor and a spectral
-analysis engine that participates in the XOlokun coupling network. It is more analogous to a
+analysis engine that participates in the XOceanus coupling network. It is more analogous to a
 sensor node in a modular signal graph than to a traditional insert effect. No bundled DAW EQ
 comes close to this conceptual territory.
 
@@ -400,10 +400,10 @@ of-life enhancement. If it adds to the count, it is worth it; the technical desi
 
 Kirchhoff-EQ and Pro-Q 3 both support feeding a second audio signal into the spectrum analyzer
 for reference comparison (masking visualization). This is genuinely useful for mix work. However,
-it requires inter-plugin communication that is outside the XOlokun coupling system and would
+it requires inter-plugin communication that is outside the XOceanus coupling system and would
 add considerable complexity.
 
-**Recommended:** Log for V2. Not V1 scope. The XOlokun coupling system's spectral centroid
+**Recommended:** Log for V2. Not V1 scope. The XOceanus coupling system's spectral centroid
 output (ch2) is already a rudimentary form of this, sufficient for V1.
 
 ### 4.2 XObserve Features That Overlap in Boring Ways
@@ -521,7 +521,7 @@ contexts in a producer's workflow:
 
 A producer who builds beats on MPC hardware and then finishes in Ableton, Logic, or Bitwig is
 the XObserve user. They already know AIR Pro EQ from the hardware side. When they bring their
-project into the DAW and want to add EQ that understands the XOlokun signal chain — where ONSET
+project into the DAW and want to add EQ that understands the XOceanus signal chain — where ONSET
 is triggering drums, OPAL is generating pads, DUB is adding tape delay — XObserve is the natural
 post-processing layer because it participates in the coupling network. AIR Pro EQ cannot do this
 because it has no coupling interface.
@@ -539,7 +539,7 @@ Yes, for the following tasks:
 2. **Sidechain/dynamic shaping tied to ONSET patterns.** This is a category AIR Pro EQ cannot
    address at all. XObserve via coupling is the only tool in the ecosystem that can do this.
 
-3. **Preset-driven sound design.** A sound designer building an XOlokun patch wants EQ presets
+3. **Preset-driven sound design.** A sound designer building an XOceanus patch wants EQ presets
    that are part of the instrument's personality, not afterthought corrective tools. XObserve's
    150 factory presets are sound design presets, not corrective EQ templates.
 
@@ -562,7 +562,7 @@ implications:
 
 **1. The bake path closes the feedback loop.**
 
-When XObserve bakes its EQ curve into XPN samples, the exported kit sounds like the XOlokun
+When XObserve bakes its EQ curve into XPN samples, the exported kit sounds like the XOceanus
 preset even in standalone MPC hardware. This means a producer can design a full ONSET + XObserve
 patch in the DAW, export via Oxport, and play the resulting .xpn kit on MPC hardware with the
 EQ character preserved. AIR Pro EQ cannot do this — you can't export "AIR Pro EQ baked into

@@ -2,10 +2,10 @@
 
 **Scope**: Validation of 4 design documents created in Sessions 8-9
 **Documents checked**:
-1. `Docs/design/xolokun-definitive-ui-spec.md` (1,773 lines)
+1. `Docs/design/xoceanus-definitive-ui-spec.md` (1,773 lines)
 2. `Docs/design/playsurface-design-spec.md` (971 lines)
 3. `Docs/design/asset-registry.md` (1,005 lines)
-4. `Docs/design/xolokun-ui-blessing-session.md` (507 lines)
+4. `Docs/design/xoceanus-ui-blessing-session.md` (507 lines)
 
 **Status key**: CONFIRMED / WARNING / ERROR / NOTE
 
@@ -83,7 +83,7 @@ All JUCE classes referenced are valid JUCE 7/8 APIs:
 - `juce::AudioProcessorValueTreeState::SliderAttachment` — valid
 - `UIImpactFeedbackGenerator(.light)`, `UIImpactFeedbackGenerator(.medium)` — valid iOS APIs
 
-**NOTE**: The spec references "Melatonin Blur JUCE library" (Section 1.1.1, Section 2.4.1) as an option for frosted glass effects. This is a real third-party JUCE library but is NOT in the JUCE standard library. Its use requires a dependency that is not tracked in any CMakeLists.txt or dependency manifest in the repo. The spec also provides a software fallback (`juce::Image::rescaled()` blur approximation), so this is a design-time dependency, not a hard runtime requirement. Recommend noting this external dependency in `Docs/design/xolokun-definitive-ui-spec.md` or in `CMakeLists.txt` if the frosted glass path is chosen.
+**NOTE**: The spec references "Melatonin Blur JUCE library" (Section 1.1.1, Section 2.4.1) as an option for frosted glass effects. This is a real third-party JUCE library but is NOT in the JUCE standard library. Its use requires a dependency that is not tracked in any CMakeLists.txt or dependency manifest in the repo. The spec also provides a software fallback (`juce::Image::rescaled()` blur approximation), so this is a design-time dependency, not a hard runtime requirement. Recommend noting this external dependency in `Docs/design/xoceanus-definitive-ui-spec.md` or in `CMakeLists.txt` if the frosted glass path is chosen.
 
 **CONFIRMED** — All standard JUCE class references are valid. One untracked optional dependency (Melatonin Blur).
 
@@ -169,7 +169,7 @@ All three surfaces (XOuija, MPC Pads, Seaboard) have platform-specific notes for
 
 ### MPC Velocity Curve Discrepancy
 
-**WARNING**: Section 3.8 states "The MPC's logarithmic curve (called 'Curve 2' in MPC software) uses `v = 127 * pow(input/127, 0.6)`." However, Section 3.4 defines XOlokun's "Logarithmic" curve as `v = log(1 + input*9) / log(10)`.
+**WARNING**: Section 3.8 states "The MPC's logarithmic curve (called 'Curve 2' in MPC software) uses `v = 127 * pow(input/127, 0.6)`." However, Section 3.4 defines XOceanus's "Logarithmic" curve as `v = log(1 + input*9) / log(10)`.
 
 These are different mathematical functions and will produce different output values. The spec states both must match for authentic MPC feel, but only provides the MPC formula in Section 3.8 — the "Curve 2 equivalence" requirement contradicts defining a different logarithmic formula in Section 3.4.
 
@@ -216,19 +216,19 @@ The spec claims "93 styles" of individual knobs. A count of all entries in the k
 
 **CONFIRMED** — 93 knobs are catalogued. The count is correct.
 
-### Path Naming Inconsistency — XOlokun vs XOmnibus
+### Path Naming Inconsistency — XOceanus vs XOceanus
 
-**ERROR**: Multiple paths in the asset registry use the repository name `XO_OX-XOlokun` (the renamed version), but the actual repository on disk is `XO_OX-XOmnibus`:
+**ERROR**: Multiple paths in the asset registry use the repository name `XO_OX-XOceanus` (the renamed version), but the actual repository on disk is `XO_OX-XOceanus`:
 
-- `~/Documents/GitHub/XO_OX-XOlokun/Site/design-tokens.css` → should be `XO_OX-XOmnibus/Site/design-tokens.css`
-- `~/Documents/GitHub/XO_OX-XOlokun/Site/engine-creature-map.json` → same issue
-- `~/Documents/GitHub/XO_OX-XOlokun/Site/fonts/HINOAloraglyphs.otf` → same issue
-- `~/Documents/GitHub/XO_OX-XOlokun/Docs/mockups/xolokun-main-ui.html` → same issue
-- `~/Documents/GitHub/XO_OX-XOlokun/Site/img/led/` → same issue
+- `~/Documents/GitHub/XO_OX-XOceanus/Site/design-tokens.css` → should be `XO_OX-XOceanus/Site/design-tokens.css`
+- `~/Documents/GitHub/XO_OX-XOceanus/Site/engine-creature-map.json` → same issue
+- `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/HINOAloraglyphs.otf` → same issue
+- `~/Documents/GitHub/XO_OX-XOceanus/Docs/mockups/xoceanus-main-ui.html` → same issue
+- `~/Documents/GitHub/XO_OX-XOceanus/Site/img/led/` → same issue
 
-All five paths use `XO_OX-XOlokun` which does not match the actual repo directory `XO_OX-XOmnibus`. The CLAUDE.md notes the product was renamed from XOmnibus to XOlokun on 2026-03-24, but the repo folder itself has not been renamed (still at `~/Documents/GitHub/XO_OX-XOmnibus/`). These paths would fail at implementation time.
+All five paths use `XO_OX-XOceanus` which does not match the actual repo directory `XO_OX-XOceanus`. The CLAUDE.md notes the product was renamed from XOceanus to XOceanus on 2026-03-24, but the repo folder itself has not been renamed (still at `~/Documents/GitHub/XO_OX-XOceanus/`). These paths would fail at implementation time.
 
-**Recommended fix**: Update all 5 instances in asset-registry.md §12 and §13 from `XO_OX-XOlokun` to `XO_OX-XOmnibus`.
+**Recommended fix**: Update all 5 instances in asset-registry.md §12 and §13 from `XO_OX-XOceanus` to `XO_OX-XOceanus`.
 
 ### Engine Color Count Discrepancy
 
@@ -283,10 +283,10 @@ Docs/design/
   outshine-empty-state.md
   playsurface-design-spec.md
   toast-notification-system.md
-  xolokun-definitive-ui-spec.md
-  xolokun-ui-blessing-session.md
-  xomnibus_design_guidelines.md
-  xomnibus_ui_master_spec_v2.md
+  xoceanus-definitive-ui-spec.md
+  xoceanus-ui-blessing-session.md
+  xoceanus_design_guidelines.md
+  xoceanus_ui_master_spec_v2.md
 ```
 
 The `ui-producer-needs.md` referenced in the checklist is absent. The blessing session itself (Part II) defines the 5 top features inline: (1) Acoustic Preset Browser with DNA — 24/25, (2) 2D Sonic Space Engine Navigator — 21/25, (3) Performance Lock Mode — 19/25, (4) Live Modulation Visibility — 18/25, (5) Sound Character Search — 17/25. These can only be validated against the blessing session itself (they are self-referential). The source document that originally produced these priority scores is not on disk.
@@ -388,7 +388,7 @@ UI Spec Section 2.5.3 lists 15 coupling types: "Amplitude, Filter, Pitch, Ring, 
 |---|----------|---------|-------|
 | C1 | UI Spec | §4.1.1 | `#9E7C2E` on `#F8F6F3` calculates to 3.6:1, NOT 4.8:1 — false WCAG AA claim for gold text on light background |
 | C2 | UI Spec | §1.3 | `SensorManager` is an Android API. iOS gyroscope uses `CMMotionManager` (Core Motion) |
-| C3 | Asset Registry | §12, §13 | 5 file paths use `XO_OX-XOlokun` repo name — actual disk directory is `XO_OX-XOmnibus` |
+| C3 | Asset Registry | §12, §13 | 5 file paths use `XO_OX-XOceanus` repo name — actual disk directory is `XO_OX-XOceanus` |
 
 ### Warnings (should fix before shipping)
 
@@ -397,7 +397,7 @@ UI Spec Section 2.5.3 lists 15 coupling types: "Amplitude, Filter, Pitch, Ring, 
 | W1 | UI Spec | §4.1.1 | `#777570` secondary text on light shell calculates to 4.3:1, not 4.7:1 — fails AA for normal text |
 | W2 | UI Spec | §4.1.1 | Several other contrast ratios are slightly off (10.4:1 stated as 7.2:1, 1.5:1 stated as 2.4:1) — errors are conservative (actual contrast is equal or better) except for C1 and W1 |
 | W3 | PlaySurface | §4.3 | MPE Lower Zone specified as "channels 2-8, 7 voices" — needs clarification that this is a constrained zone, not the MPE standard default (which is channels 2-16, 15 voices) |
-| W4 | PlaySurface | §3.4 + §3.8 | Two different logarithmic velocity curve formulas given; the "XOlokun Logarithmic" curve must match the MPC Curve 2 formula for authentic feel |
+| W4 | PlaySurface | §3.4 + §3.8 | Two different logarithmic velocity curve formulas given; the "XOceanus Logarithmic" curve must match the MPC Curve 2 formula for authentic feel |
 | W5 | Asset Registry | §12.1 + Quick-Access | Engine color count says 71; CLAUDE.md and UI Spec say 73 — OXYTOCIN and OUTLOOK colors may be missing from `design-tokens.css` |
 | W6 | UI Spec | §2.4.1 | Melatonin Blur JUCE library used for frosted glass — untracked external dependency |
 | W7 | PlaySurface ↔ UI Spec | §2.6.5 vs §5.1 | Mod Wheel height: UI Spec says 120pt, PlaySurface Spec says 160pt |

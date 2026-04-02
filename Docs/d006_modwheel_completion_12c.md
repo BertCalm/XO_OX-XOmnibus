@@ -80,10 +80,10 @@ across the entire fleet.
 ## Build Verification
 
 ```
-cmake --build build --target XOlokun_All
+cmake --build build --target XOceanus_All
 ```
 
-**Result:** PASS — 66/66 targets, 0 errors, 0 warnings related to mod wheel changes. AU component installed to `$HOME/Library/Audio/Plug-Ins/Components/XOlokun.component`.
+**Result:** PASS — 66/66 targets, 0 errors, 0 warnings related to mod wheel changes. AU component installed to `$HOME/Library/Audio/Plug-Ins/Components/XOceanus.component`.
 
 ---
 

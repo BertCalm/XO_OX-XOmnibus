@@ -108,7 +108,7 @@ Fleet average: **8.1/10** | Ship-ready (≥9.0): **10 engines (13%)**
 | Engine Registration | 7.0 | OASIS + OUTFLOW params missing from APVTS |
 | Export Pipeline | 7.5 | No shaper parity |
 | AI System | 8.0 | Clean |
-| XOlokunProcessor | 8.0 | currentSampleRate data race |
+| XOceanusProcessor | 8.0 | currentSampleRate data race |
 
 ---
 
@@ -126,7 +126,7 @@ Fleet average: **8.1/10** | Ship-ready (≥9.0): **10 engines (13%)**
 10. OxideShaper: Lorenz attractor no NaN guard
 11. OxideShaper: Tape mode HF rolloff is complete no-op
 12. ObserveShaper: Iron emulation mono-only
-13. XOlokunProcessor: currentSampleRate data race
+13. XOceanusProcessor: currentSampleRate data race
 
 ## TIER 1: CPU BOMBS (~25 engines)
 

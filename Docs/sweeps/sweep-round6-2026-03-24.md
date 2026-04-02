@@ -26,7 +26,7 @@
 
 **Actual state (confirmed by `git log -- Source/Engines/Ouroboros/OuroborosEngine.h`):** An end-of-block reset was already present at lines 1323-1327 of `renderBlock()`, added in the earlier "Fleet-wide audit fixes" commit (prior to Round 5).
 
-**Call-order clarification (from `XOlokunProcessor.cpp`):** The MegaCouplingMatrix calls `applyCouplingInput()` inside `couplingMatrix.processBlock()` which runs AFTER all `renderBlock()` calls in the same `processBlock()`. This means:
+**Call-order clarification (from `XOceanusProcessor.cpp`):** The MegaCouplingMatrix calls `applyCouplingInput()` inside `couplingMatrix.processBlock()` which runs AFTER all `renderBlock()` calls in the same `processBlock()`. This means:
 - `applyCouplingInput()` fills accumulators with values derived from block N audio output
 - These values are consumed by `renderBlock()` in block N+1
 - The end-of-block reset zeros accumulators so the next `applyCouplingInput()` starts fresh

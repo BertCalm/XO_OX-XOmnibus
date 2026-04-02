@@ -155,7 +155,7 @@ For XO_OX packs, pre-assign pad colors that reflect the engine accent color. Exa
 "chat":  { ..., "pad_color": (180, 220, 255)},   # blue-white for hi-freq
 "ohat":  { ..., "pad_color": (140, 200, 255)},   # lighter blue for open air
 ```
-For keygroup programs, the pad color should match the XOlokun engine accent color
+For keygroup programs, the pad color should match the XOceanus engine accent color
 (e.g., ONSET = Electric Blue `#0066FF` → R=0, G=102, B=255).
 
 ---
@@ -747,7 +747,7 @@ Plugin programs expose parameters to Q-Links through a parameter binding mechani
 
 The `PluginParam:` prefix distinguishes plugin parameter targets from native MPC sample parameters.
 
-**OXPORT ACTION ITEM 14:** If XOlokun ships as a VST3 plugin compatible with MPC Desktop 3.5+,
+**OXPORT ACTION ITEM 14:** If XOceanus ships as a VST3 plugin compatible with MPC Desktop 3.5+,
 document the standard Q-Link parameter binding for each engine. Use the 4-macro convention
 (CHARACTER, MOVEMENT, COUPLING, SPACE) mapped to Q-Links 1–4 as the Oxport standard for
 plugin programs. Create an Oxport template `xpn_plugin_program.py` for when standalone VST3
@@ -1065,7 +1065,7 @@ All action items from Sections 1–5, consolidated with priority ratings.
 
 **OX-15: Plugin Program Template (OXPORT ACTION ITEM 14)**
 - New file: `Tools/xpn_plugin_program.py`
-- Template for `<Program type="Plugin">` targeting XOlokun VST3
+- Template for `<Program type="Plugin">` targeting XOceanus VST3
 - 4-macro → Q-Link 1–4 binding as standard
 - Hold pending standalone VST3 announcement on MPC hardware
 

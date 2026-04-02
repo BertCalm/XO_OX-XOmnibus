@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-24
 **Branch:** main
-**Plugin:** XOlokun (`aumu / Xolk / XoOx`)
+**Plugin:** XOceanus (`aumu / Xolk / XoOx`)
 
 ---
 
@@ -17,44 +17,44 @@ cmake --build build       →   PASS
   Warnings: 552
 ```
 
-Build completed all 133 targets including `XOlokun_AU`, `XOlokun_Standalone`, and `XOlokunTests`.
+Build completed all 133 targets including `XOceanus_AU`, `XOceanus_Standalone`, and `XOceanusTests`.
 
 ---
 
 ## Step 2: Binary Identity
 
-### AU Component (`~/Library/Audio/Plug-Ins/Components/XOlokun.component`)
+### AU Component (`~/Library/Audio/Plug-Ins/Components/XOceanus.component`)
 
 | Field | Value |
 |-------|-------|
-| `CFBundleName` | `XOlokun` |
-| `CFBundleDisplayName` | `XOlokun` |
-| `CFBundleIdentifier` | `com.xo-ox.xolokun` |
+| `CFBundleName` | `XOceanus` |
+| `CFBundleDisplayName` | `XOceanus` |
+| `CFBundleIdentifier` | `com.xo-ox.xoceanus` |
 | `CFBundleVersion` | `1.0.0` |
 | `type` | `aumu` |
 | `subtype` | `Xolk` |
 | `manufacturer` | `XoOx` |
-| `name` | `XO_OX Designs: XOlokun` |
+| `name` | `XO_OX Designs: XOceanus` |
 | Architecture | `Mach-O 64-bit bundle arm64` |
 | Binary size | **30 MB** (30,303,616 bytes) |
 | Timestamp | `Mar 24 09:37` — matches this build session |
 
-### Standalone App (`build/XOlokun_artefacts/Standalone/XOlokun.app`)
+### Standalone App (`build/XOceanus_artefacts/Standalone/XOceanus.app`)
 
 | Field | Value |
 |-------|-------|
-| `CFBundleDisplayName` | `XOlokun` |
-| `CFBundleIdentifier` | `com.xo-ox.xolokun` |
+| `CFBundleDisplayName` | `XOceanus` |
+| `CFBundleIdentifier` | `com.xo-ox.xoceanus` |
 | `CFBundlePackageType` | `APPL` |
 | Architecture | `Mach-O 64-bit executable arm64` |
 | Binary size | **33 MB** |
 | Timestamp | `Mar 24 09:37` |
 
-Note: Standalone lives at `build/XOlokun_artefacts/Standalone/XOlokun.app` (not under a `Release/` or `Debug/` subdirectory as expected — this is a Ninja/CMake artefact path difference from Xcode builds, not an issue).
+Note: Standalone lives at `build/XOceanus_artefacts/Standalone/XOceanus.app` (not under a `Release/` or `Debug/` subdirectory as expected — this is a Ninja/CMake artefact path difference from Xcode builds, not an issue).
 
-### Old XOmnibus Component
+### Old XOceanus Component
 
-`~/Library/Audio/Plug-Ins/Components/XOmnibus.component` **WAS PRESENT** — removed during this sweep.
+`~/Library/Audio/Plug-Ins/Components/XOceanus.component` **WAS PRESENT** — removed during this sweep.
 
 ---
 
@@ -89,7 +89,7 @@ auval -v aumu Xolk XoOx
 ## Step 4: Engine Registration Count
 
 ```
-grep -c "registered_\|registerEngine" Source/XOlokunProcessor.cpp
+grep -c "registered_\|registerEngine" Source/XOceanusProcessor.cpp
 → 73
 ```
 
@@ -100,7 +100,7 @@ Matches CLAUDE.md claim of **73 engines**. All 73 use `static bool registered_*`
 ## Step 5: Parameter Count
 
 ```
-grep -c "addParameter\|addParameters" Source/XOlokunProcessor.cpp
+grep -c "addParameter\|addParameters" Source/XOceanusProcessor.cpp
 → 69
 ```
 
@@ -112,8 +112,8 @@ This count reflects call-sites, not total parameter count (engines register thei
 
 | Artefact | Size |
 |---------|------|
-| AU component (`~/Library/.../XOlokun.component/Contents/MacOS/XOlokun`) | 30 MB |
-| Standalone app (`build/.../XOlokun.app/Contents/MacOS/XOlokun`) | 33 MB |
+| AU component (`~/Library/.../XOceanus.component/Contents/MacOS/XOceanus`) | 30 MB |
+| Standalone app (`build/.../XOceanus.app/Contents/MacOS/XOceanus`) | 33 MB |
 
 Size differential (AU vs Standalone) is expected — Standalone includes the JUCE GUI host shell.
 
@@ -121,13 +121,13 @@ Size differential (AU vs Standalone) is expected — Standalone includes the JUC
 
 ## Step 7: Old Component Cleanup
 
-`XOmnibus.component` was still installed. **Removed** during this sweep.
+`XOceanus.component` was still installed. **Removed** during this sweep.
 
 ```
-rm -rf ~/Library/Audio/Plug-Ins/Components/XOmnibus.component  → DONE
+rm -rf ~/Library/Audio/Plug-Ins/Components/XOceanus.component  → DONE
 ```
 
-No `XOmnibus.component` remains. Only `XOlokun.component` is installed.
+No `XOceanus.component` remains. Only `XOceanus.component` is installed.
 
 ---
 
@@ -202,7 +202,7 @@ Ocelot is the clear outlier at 68 warnings — primarily unused variables and pa
 | AU installed timestamp | PASS | Matches this build session |
 | auval | **PASS** | All 16 subtests pass; renders at 11025/44100/48000/96000/192000 Hz |
 | Engine count | PASS | 73 registered, matches spec |
-| Old XOmnibus.component | REMOVED | Was still installed; now gone |
+| Old XOceanus.component | REMOVED | Was still installed; now gone |
 | Warnings | 552 — see findings | No errors; 3 actionable items |
 
 ### P-Level Action Items from This Sweep

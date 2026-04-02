@@ -4,9 +4,9 @@
 
 **Goal:** Build the shared physical-modeling DSP library (`Source/DSP/FamilyWaveguide.h`) that all 5 XOrphica Family Constellation engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) will use.
 
-**Architecture:** All components are header-only, allocation-free, namespace `xolokun`. FamilyWaveguide.h contains 5 waveguide primitives (delay line, damping filter, body resonance, sympathetic bank, organic drift) plus 7 engine-specific exciters. Every exciter seeds a FamilyDelayLine; the delay line + FamilyDampingFilter in the feedback path forms the Karplus-Strong resonator core. FamilyBodyResonance and FamilySympatheticBank add timbral richness post-resonator.
+**Architecture:** All components are header-only, allocation-free, namespace `xoceanus`. FamilyWaveguide.h contains 5 waveguide primitives (delay line, damping filter, body resonance, sympathetic bank, organic drift) plus 7 engine-specific exciters. Every exciter seeds a FamilyDelayLine; the delay line + FamilyDampingFilter in the feedback path forms the Karplus-Strong resonator core. FamilyBodyResonance and FamilySympatheticBank add timbral richness post-resonator.
 
-**Tech Stack:** C++17, inline `.h` headers, `namespace xolokun`, no JUCE dependency (pure DSP), FastMath.h (`flushDenormal`, `fastTanh`) as the only dep.
+**Tech Stack:** C++17, inline `.h` headers, `namespace xoceanus`, no JUCE dependency (pure DSP), FastMath.h (`flushDenormal`, `fastTanh`) as the only dep.
 
 ---
 
@@ -41,7 +41,7 @@
 #include <array>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Constellation.
@@ -120,7 +120,7 @@ private:
 - [ ] **Step 2: Verify file exists**
 
 ```bash
-ls -la /path/to/XO_OX-XOlokun/Source/DSP/FamilyWaveguide.h
+ls -la /path/to/XO_OX-XOceanus/Source/DSP/FamilyWaveguide.h
 ```
 
 Expected: file present, non-zero size.
@@ -808,7 +808,7 @@ private:
     FamilyDampingFilter frictionLP;
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 ```
 
 ---
@@ -847,7 +847,7 @@ struct TestResult {
 // Helper: run a Karplus-Strong loop for N samples, return max amplitude and whether it decayed
 struct KSResult { float peak; float finalAmp; bool noNaN; };
 
-KSResult runKS(xolokun::FamilyDelayLine& dl, xolokun::FamilyDampingFilter& df,
+KSResult runKS(xoceanus::FamilyDelayLine& dl, xoceanus::FamilyDampingFilter& df,
                float delayLen, int numSamples, float damping) {
     float peak = 0.0f;
     float finalAmp = 0.0f;
@@ -879,7 +879,7 @@ int main() {
     // Test 1: FamilyDelayLine prepare and basic write/read
     // -------------------------------------------------------------------
     {
-        xolokun::FamilyDelayLine dl;
+        xoceanus::FamilyDelayLine dl;
         dl.prepare(static_cast<int>(SR) + 4);
         dl.write(1.0f);
         for (int i = 0; i < 10; ++i) dl.write(0.0f);
@@ -891,8 +891,8 @@ int main() {
     // Test 2: Karplus-Strong loop produces non-zero peak and decays
     // -------------------------------------------------------------------
     {
-        xolokun::FamilyDelayLine dl;
-        xolokun::FamilyDampingFilter df;
+        xoceanus::FamilyDelayLine dl;
+        xoceanus::FamilyDampingFilter df;
         dl.prepare(static_cast<int>(SR) + 4);
         df.prepare();
 
@@ -910,7 +910,7 @@ int main() {
     // Test 3: PluckExciter fires non-zero, goes silent after burst
     // -------------------------------------------------------------------
     {
-        xolokun::PluckExciter pe;
+        xoceanus::PluckExciter pe;
         pe.prepare(SR);
         pe.trigger(2.0f); // 2 ms burst
         float maxOut = 0.0f;
@@ -932,7 +932,7 @@ int main() {
     // Test 4: StrumExciter fires multiple strings staggered
     // -------------------------------------------------------------------
     {
-        xolokun::StrumExciter se;
+        xoceanus::StrumExciter se;
         se.prepare(SR);
         se.trigger(4, 5.0f, 1.0f); // 4 strings, 5ms apart, down strum
         float maxOut = 0.0f;
@@ -950,7 +950,7 @@ int main() {
     // Test 5: PickExciter fires, non-zero
     // -------------------------------------------------------------------
     {
-        xolokun::PickExciter pe;
+        xoceanus::PickExciter pe;
         pe.prepare(SR);
         pe.trigger(1.5f);
         float maxOut = 0.0f;
@@ -968,7 +968,7 @@ int main() {
     // Test 6: AirJetExciter continuous output at breathPressure=1
     // -------------------------------------------------------------------
     {
-        xolokun::AirJetExciter ae;
+        xoceanus::AirJetExciter ae;
         ae.prepare(SR);
         float maxOut = 0.0f;
         bool anyNaN = false;
@@ -990,7 +990,7 @@ int main() {
     // Test 7: ReedExciter continuous, odd-harmonic saturation
     // -------------------------------------------------------------------
     {
-        xolokun::ReedExciter re;
+        xoceanus::ReedExciter re;
         re.prepare(SR);
         float maxOut = 0.0f;
         bool anyNaN = false;
@@ -1007,7 +1007,7 @@ int main() {
     // Test 8: LipBuzzExciter oscillates at given frequency
     // -------------------------------------------------------------------
     {
-        xolokun::LipBuzzExciter le;
+        xoceanus::LipBuzzExciter le;
         le.prepare(SR);
         float maxOut = 0.0f;
         bool anyNaN = false;
@@ -1024,7 +1024,7 @@ int main() {
     // Test 9: BowExciter — output when pressure+speed nonzero
     // -------------------------------------------------------------------
     {
-        xolokun::BowExciter be;
+        xoceanus::BowExciter be;
         be.prepare(SR);
         float maxOut = 0.0f;
         bool anyNaN = false;
@@ -1046,7 +1046,7 @@ int main() {
     // Test 10: FamilyBodyResonance resonates at set frequency
     // -------------------------------------------------------------------
     {
-        xolokun::FamilyBodyResonance br;
+        xoceanus::FamilyBodyResonance br;
         br.prepare(SR);
         br.setParams(440.0f, 5.0f);
         float maxOut = 0.0f;
@@ -1065,7 +1065,7 @@ int main() {
     // Test 11: FamilySympatheticBank — output when input present
     // -------------------------------------------------------------------
     {
-        xolokun::FamilySympatheticBank sb;
+        xoceanus::FamilySympatheticBank sb;
         sb.prepare(SR, 512);
         sb.tune(440.0f);
         float maxOut = 0.0f;
@@ -1084,7 +1084,7 @@ int main() {
     // Test 12: FamilyOrganicDrift — output within ±1 semitone range
     // -------------------------------------------------------------------
     {
-        xolokun::FamilyOrganicDrift od;
+        xoceanus::FamilyOrganicDrift od;
         od.prepare(SR);
         float maxDrift = 0.0f;
         bool anyNaN = false;
@@ -1113,7 +1113,7 @@ cmake_minimum_required(VERSION 3.15)
 project(FamilyWaveguideTest LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
-# Adjust path if running from XO_OX-XOlokun root
+# Adjust path if running from XO_OX-XOceanus root
 add_executable(FamilyWaveguideTest FamilyWaveguideTest.cpp)
 target_include_directories(FamilyWaveguideTest PRIVATE ${CMAKE_SOURCE_DIR}/..)
 ```
@@ -1121,7 +1121,7 @@ target_include_directories(FamilyWaveguideTest PRIVATE ${CMAKE_SOURCE_DIR}/..)
 - [ ] **Step 3: Build the test**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOlokun/Tests
+cd ~/Documents/GitHub/XO_OX-XOceanus/Tests
 mkdir -p build && cd build
 cmake .. -DCMAKE_CXX_STANDARD=17
 make
@@ -1158,14 +1158,14 @@ Expected output:
 - [ ] **Step 1: Stage and commit**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOlokun
+cd ~/Documents/GitHub/XO_OX-XOceanus
 git add Source/DSP/FamilyWaveguide.h Tests/FamilyWaveguideTest.cpp Tests/CMakeLists.txt
 git commit -m "feat(SP1): add FamilyWaveguide.h — shared physical modeling DSP for XOrphica Constellation
 
 5 waveguide primitives: FamilyDelayLine (Lagrange interp), FamilyDampingFilter (1-pole LP),
 FamilyBodyResonance (biquad), FamilySympatheticBank (8 comb filters), FamilyOrganicDrift (dual-LFO wander).
 7 exciters: Pluck, Strum, Pick, AirJet, Reed, LipBuzz, Bow.
-All components: header-only, allocation-free, denormal-safe, namespace xolokun.
+All components: header-only, allocation-free, denormal-safe, namespace xoceanus.
 Standalone C++ test: 20 assertions, all pass (no JUCE required).
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
@@ -1180,6 +1180,6 @@ After SP1 is complete, the build sequence continues:
 - **SP2 + SP3 in parallel:** XOhm and XOrphica standalone instruments (both use FamilyWaveguide.h)
 - **SP4 + SP5 in parallel:** XObbligato and XOttoni standalone instruments
 - **SP6:** XOlé standalone instrument (most complex — benefits from prior learning)
-- **SP7:** Constellation XOlokun integration (5 adapters, macro bleed, Family Dinner presets, Obed easter egg)
+- **SP7:** Constellation XOceanus integration (5 adapters, macro bleed, Family Dinner presets, Obed easter egg)
 
 Each engine follows the pattern: `/new-xo-project` scaffold → Parameters.h → FamilyWaveguide integration → voice architecture → FX chains → macros → UI → 50 presets → auval + QA → commit.

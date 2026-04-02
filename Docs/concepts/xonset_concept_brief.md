@@ -89,7 +89,7 @@ MASTER CHAIN:
 
 ## Signature Sound
 
-XOnset is the only engine in XOlokun that models percussion from physics rather than sampling it. The dual-layer architecture -- analog circuit models (BridgedT, NoiseBurst, Metallic) blended with algorithmic synthesis (FM, Modal, Karplus-Strong, Phase Distortion) -- means every drum hit exists on a continuum between "familiar analog machine" and "alien synthesized percussion." The blend knob per voice is the key: at zero, you get an 808 kick; at one, you get an FM percussion hit tuned to the same frequency; in between, you get something that has never existed in hardware. The Cross-Voice Coupling system then lets these eight voices react to each other, creating kit-wide behaviors that evolve with every hit.
+XOnset is the only engine in XOceanus that models percussion from physics rather than sampling it. The dual-layer architecture -- analog circuit models (BridgedT, NoiseBurst, Metallic) blended with algorithmic synthesis (FM, Modal, Karplus-Strong, Phase Distortion) -- means every drum hit exists on a continuum between "familiar analog machine" and "alien synthesized percussion." The blend knob per voice is the key: at zero, you get an 808 kick; at one, you get an FM percussion hit tuned to the same frequency; in between, you get something that has never existed in hardware. The Cross-Voice Coupling system then lets these eight voices react to each other, creating kit-wide behaviors that evolve with every hit.
 
 ---
 

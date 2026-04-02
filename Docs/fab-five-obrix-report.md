@@ -231,7 +231,7 @@ maintained.
 
 ### Remaining Recommendations
 
-- **Sound design guide entry**: The `Docs/xolokun_sound_design_guides.md` audit note confirms
+- **Sound design guide entry**: The `Docs/xoceanus_sound_design_guides.md` audit note confirms
   OBRIX is missing an entry (along with ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE). A guide
   entry would take the historical lineage and brick mythology and turn it into a 500-word player
   document. Recommended for the Tutorial Studio pass.
@@ -263,7 +263,7 @@ maintained.
 
 ### Preset Files
 
-**Folder**: `Presets/XOlokun/Foundation/`
+**Folder**: `Presets/XOceanus/Foundation/`
 
 | Old Name | New Name | File |
 |----------|----------|------|
@@ -293,7 +293,7 @@ audio content creation.
 2. **Missing moods**: Crystalline, Deep, Ethereal (high fit), Kinetic, Luminous, Organic (medium
    fit) have zero OBRIX presets. Three presets per mood = 18 presets total for the first pass.
 
-3. **Sound design guide entry** in `Docs/xolokun_sound_design_guides.md`: OBRIX is listed as one
+3. **Sound design guide entry** in `Docs/xoceanus_sound_design_guides.md`: OBRIX is listed as one
    of 6 missing engines. One focused writing session closes this.
 
 ### Medium Priority

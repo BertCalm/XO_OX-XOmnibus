@@ -6,7 +6,7 @@
 
 ## Overview
 
-XOlokun ships with 34 registered engines — all seanced, all doctrine-compliant — plus 4 V1 concept engines pending DSP build (OSTINATO, OPENSKY, OCEANDEEP, OUIE). Expansion pack production must be sequenced to maximize momentum: early packs should have obvious MPC workflow fit, strong sonic identity, and broad producer appeal. Later packs can serve narrower audiences once the catalog has established trust.
+XOceanus ships with 34 registered engines — all seanced, all doctrine-compliant — plus 4 V1 concept engines pending DSP build (OSTINATO, OPENSKY, OCEANDEEP, OUIE). Expansion pack production must be sequenced to maximize momentum: early packs should have obvious MPC workflow fit, strong sonic identity, and broad producer appeal. Later packs can serve narrower audiences once the catalog has established trust.
 
 This spec defines readiness tiers, production order, collection arcs, and coupling pack opportunities for the full 2026 calendar.
 

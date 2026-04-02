@@ -2,17 +2,17 @@
 
 **Date:** 2026-03-14
 **Status:** Approved
-**Scope:** 7 sub-projects building 5 family engines from shared DSP through full XOlokun integration
+**Scope:** 7 sub-projects building 5 family engines from shared DSP through full XOceanus integration
 
 ---
 
 ## Goal
 
-Build all 5 XOrphica Family Constellation engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) as standalone instruments, integrate them into XOlokun, implement the family ecosystem features (macro bleed, family coupling, Family Dinner presets, Obed easter egg), and deliver production-quality documentation and QA.
+Build all 5 XOrphica Family Constellation engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) as standalone instruments, integrate them into XOceanus, implement the family ecosystem features (macro bleed, family coupling, Family Dinner presets, Obed easter egg), and deliver production-quality documentation and QA.
 
 ## Architecture
 
-All 5 engines share a `FamilyWaveguide.h` DSP core (delay line + damping + body resonance + sympathetic bank + organic drift) with engine-specific exciters. Each engine is built standalone first (AU + Standalone), then integrated via thin adapter into XOlokun. The family ecosystem features (cross-engine macro bleed, named coupling routes) are added in the final integration phase.
+All 5 engines share a `FamilyWaveguide.h` DSP core (delay line + damping + body resonance + sympathetic bank + organic drift) with engine-specific exciters. Each engine is built standalone first (AU + Standalone), then integrated via thin adapter into XOceanus. The family ecosystem features (cross-engine macro bleed, named coupling routes) are added in the final integration phase.
 
 ## Tech Stack
 
@@ -28,7 +28,7 @@ All 5 engines share a `FamilyWaveguide.h` DSP core (delay line + damping + body 
 
 ### SP1: FamilyWaveguide.h — Shared DSP Library
 
-**Location:** `~/Documents/GitHub/XO_OX-XOlokun/Source/DSP/FamilyWaveguide.h`
+**Location:** `~/Documents/GitHub/XO_OX-XOceanus/Source/DSP/FamilyWaveguide.h`
 **Lines:** ~600-800
 **Dependencies:** FastMath.h (existing)
 
@@ -169,16 +169,16 @@ All 5 engines share a `FamilyWaveguide.h` DSP core (delay line + damping + body 
 
 ---
 
-### SP7: Constellation Integration into XOlokun
+### SP7: Constellation Integration into XOceanus
 
-**Location:** `~/Documents/GitHub/XO_OX-XOlokun/`
+**Location:** `~/Documents/GitHub/XO_OX-XOceanus/`
 **Dependencies:** SP1-SP6 all complete
 
 **Build phases:**
 1. Write 5 adapters implementing `SynthEngine` interface
 2. Register all 5 engines via `REGISTER_ENGINE()` macro
 3. Add to CMakeLists.txt
-4. Copy all presets to `Presets/XOlokun/{mood}/`
+4. Copy all presets to `Presets/XOceanus/{mood}/`
 5. Implement family coupling matrix (named relationship routes)
 6. Implement cross-engine macro bleed system
 7. Create Family Dinner preset category (30 multi-engine presets)

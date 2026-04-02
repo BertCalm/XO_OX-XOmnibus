@@ -36,7 +36,7 @@ XOptic lives in feliX's shallows because bioluminescence is a surface phenomenon
 
 ## DSP Architecture (As Built)
 
-XOptic is unique in the XOlokun gallery: it generates no audio of its own. It is a pure modulation engine — an analyzer and rhythm generator that processes incoming sound and outputs control signals through the coupling matrix. Zero voices. Zero oscillators. Pure signal intelligence.
+XOptic is unique in the XOceanus gallery: it generates no audio of its own. It is a pure modulation engine — an analyzer and rhythm generator that processes incoming sound and outputs control signals through the coupling matrix. Zero voices. Zero oscillators. Pure signal intelligence.
 
 **8-Band Spectral Analyzer (OpticBandAnalyzer):** Cascaded Cytomic SVF bandpass filter pairs split incoming audio into 8 frequency bands (Sub 20-80Hz, Bass 80-200Hz, Lo-Mid 200-500Hz, Mid 500-1kHz, Hi-Mid 1-4kHz, Presence 4-8kHz, Brilliance 8-16kHz, Air 16-20kHz). Each band's energy is tracked via rectification and envelope follower lowpass filters (~30Hz cutoff for smooth tracking). The analyzer computes spectral centroid (energy-weighted average band position, normalized 0-1) and spectral flux (rate of change of total energy) per sample — all without FFT overhead.
 
@@ -54,7 +54,7 @@ XOptic is unique in the XOlokun gallery: it generates no audio of its own. It is
 
 ## Signature Sound
 
-XOptic has no sound of its own — and that is its signature. Its presence is felt through the behavior of every other engine it touches. When Optic is active and coupled, the entire XOlokun patch begins to pulse and breathe in response to its own audio output. Bass energy from Obese drives filter sweeps on Odyssey. Transient spikes from Onset trigger envelope resets on Oblong. The AutoPulse adds a subliminal trance heartbeat that makes static pads feel alive. Optic is the nervous system of the colony — invisible, essential, the reason everything moves together.
+XOptic has no sound of its own — and that is its signature. Its presence is felt through the behavior of every other engine it touches. When Optic is active and coupled, the entire XOceanus patch begins to pulse and breathe in response to its own audio output. Bass energy from Obese drives filter sweeps on Odyssey. Transient spikes from Onset trigger envelope resets on Oblong. The AutoPulse adds a subliminal trance heartbeat that makes static pads feel alive. Optic is the nervous system of the colony — invisible, essential, the reason everything moves together.
 
 ---
 

@@ -1,4 +1,4 @@
-# XOlokun Community Strategy — Building a Movement
+# XOceanus Community Strategy — Building a Movement
 
 **XO_OX — March 2026**
 **"Omnibus — For All" isn't a tagline. It's an operating system.**
@@ -7,7 +7,7 @@
 
 ## The Thesis
 
-XOlokun is not a product with a community. It's a community that builds a product. The synthesizer is the artifact; the movement is the point. Every person who downloads XOlokun, shares a preset, writes a tutorial, or tells a friend is participating in the thesis: *music creation belongs to everyone.*
+XOceanus is not a product with a community. It's a community that builds a product. The synthesizer is the artifact; the movement is the point. Every person who downloads XOceanus, shares a preset, writes a tutorial, or tells a friend is participating in the thesis: *music creation belongs to everyone.*
 
 The community strategy operates across seven rings, from the intimate (the plugin itself) to the expansive (the global music creation movement).
 
@@ -15,7 +15,7 @@ The community strategy operates across seven rings, from the intimate (the plugi
 
 ## Ring 1: Inside the Plugin — "The Living Instrument"
 
-The community starts the moment someone opens XOlokun. The plugin itself should feel inhabited.
+The community starts the moment someone opens XOceanus. The plugin itself should feel inhabited.
 
 ### In-Plugin Community Features
 
@@ -50,7 +50,7 @@ The community starts the moment someone opens XOlokun. The plugin itself should 
 
 ## Ring 2: The Site — "Base Camp"
 
-*(Detailed in xolokun-community-interactions.md and xolokun-site-expansion.md)*
+*(Detailed in xoceanus-community-interactions.md and xoceanus-site-expansion.md)*
 
 The site is base camp for the expedition. Key community surfaces:
 
@@ -84,7 +84,7 @@ The Discord server IS the reef. Channels are themed as depth zones:
 | `#creature-den` | Engine-specific discussion (one thread per engine) |
 | `#sonar-ping` | Bot-driven activity feed |
 | `#the-deep` | Advanced DSP, SDK, engine building |
-| `#showcase` | Share music made with XOlokun |
+| `#showcase` | Share music made with XOceanus |
 
 **Expedition Channels (Patreon-linked):**
 | Channel | Access | Purpose |
@@ -143,13 +143,13 @@ The server should feel different from typical producer Discord servers:
 
 ### Content Pillars
 
-1. **"Only in XOlokun"** — Sounds impossible anywhere else. The coupling demo. Short, punchy, jaw-dropping.
+1. **"Only in XOceanus"** — Sounds impossible anywhere else. The coupling demo. Short, punchy, jaw-dropping.
 2. **"From the Deep"** — Lore, mythology, creature reveals. The brand story, told in fragments.
 3. **"For All"** — Accessibility content. Professor Oscar teaching. Kids making their first sound. Community stories.
 4. **"Behind the Deep"** — Dev process, DSP explanations, design decisions. Transparency.
 5. **"Community Spotlight"** — Showcasing what the community creates. Their presets, their music, their discoveries.
 
-### The "Only in XOlokun" Video Format
+### The "Only in XOceanus" Video Format
 
 The hero content type: 60-second videos that make people stop scrolling.
 
@@ -185,22 +185,22 @@ Build relationships with music production content creators:
 - Direct line to dev for questions/feedback
 - Their presets featured in the factory library (with credit)
 - Monthly "Creator Kit" — pre-made assets (graphics, presets, talking points) for their content
-- Not exclusive — they can cover anything, not just XOlokun
+- Not exclusive — they can cover anything, not just XOceanus
 
 **Tier 2: Community Voices** (20-50 creators)
 - Free Diver Patreon tier
 - Early access to weekly freebies
-- Retweet/share guarantee for their XOlokun content
+- Retweet/share guarantee for their XOceanus content
 - Listed on the "Voices from the Deep" community page
 
 **Tier 3: Open** (anyone)
 - Free Explorer Patreon tier for anyone who makes content
 - Community preset gallery feature for their work
-- Simple sign-up: "You made a video about XOlokun? Thank you. Here's Explorer access."
+- Simple sign-up: "You made a video about XOceanus? Thank you. Here's Explorer access."
 
 ### Creator Content Kits
 
-Monthly packages that make it easy for creators to make XOlokun content:
+Monthly packages that make it easy for creators to make XOceanus content:
 
 - 5-10 curated presets designed to sound impressive in demos
 - Screen recording-friendly UI settings
@@ -213,7 +213,7 @@ Monthly packages that make it easy for creators to make XOlokun content:
 
 For creators who livestream:
 
-- XOlokun StreamDeck plugin (if feasible): one-button preset switching for live demos
+- XOceanus StreamDeck plugin (if feasible): one-button preset switching for live demos
 - Chat command integration: viewers type `!preset [name]` → creator loads it
 - "Community Coupling" stream format: viewers suggest engine pairs, creator tries them live
 
@@ -223,7 +223,7 @@ For creators who livestream:
 
 ### Professor Oscar in Schools
 
-Partner with music education programs to bring XOlokun into classrooms:
+Partner with music education programs to bring XOceanus into classrooms:
 
 **The Pitch to Educators:**
 - Free, open-source — no licensing cost for schools
@@ -246,7 +246,7 @@ Free community workshops for young people:
 - 2-hour format: "Make Your First Sound"
 - Held at community spaces, libraries, schools, music stores
 - Led by community volunteers (trained with a workshop guide)
-- Every participant leaves with: XOlokun installed, their first preset saved, a "Tidepool Explorer" badge
+- Every participant leaves with: XOceanus installed, their first preset saved, a "Tidepool Explorer" badge
 - No cost. No equipment needed beyond a laptop.
 
 ### Partnerships
@@ -279,7 +279,7 @@ Free community workshops for young people:
 This is the outermost ring — the reason all the other rings exist.
 
 **The Open Source Commitment:**
-- XOlokun's code is and will remain open source
+- XOceanus's code is and will remain open source
 - Anyone can fork, modify, learn from, or build upon it
 - Contributions are welcomed from anywhere in the world
 - The SDK enables anyone to build an engine
@@ -297,7 +297,7 @@ At certain patron milestones, XO_OX commits to giving back:
 
 | Milestone | Charitable Action |
 |-----------|------------------|
-| 100 patrons | Donate 10 refurbished laptops with XOlokun pre-installed to a youth music program |
+| 100 patrons | Donate 10 refurbished laptops with XOceanus pre-installed to a youth music program |
 | 500 patrons | Fund a "Tidepool Workshop" series in 5 underserved communities |
 | 1,000 patrons | Create a scholarship for a student to study music technology |
 | 5,000 patrons | Establish the "Omnibus Fund" — annual grants for music creation accessibility projects |
@@ -309,7 +309,7 @@ This isn't performative. This is the logical endpoint of "For All." If music cre
 Quarterly, the community collaborates on an album:
 
 - Theme announced (e.g., "Sounds of the Twilight Zone," "Coupling Stories," "Hadal Compositions")
-- Anyone can submit a track (made with XOlokun)
+- Anyone can submit a track (made with XOceanus)
 - Community votes on the tracklist
 - Album released on Bandcamp (free/name-your-price)
 - All proceeds go to the Omnibus Fund

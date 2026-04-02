@@ -588,7 +588,7 @@ simmer. The high frequencies go first, bleached by time the way stock loses its 
 first. The sound becomes warmer, darker, more concentrated. A subtle saturation replaces what's
 lost — intensity where breadth used to be. By the end of a long session the signal is reduced to
 its essence: deep, thick, fundamental. Hit reset and the broth starts fresh — full-spectrum,
-patient, with the whole session ahead of it. fXReduction is the only effect in XOlokun that
+patient, with the whole session ahead of it. fXReduction is the only effect in XOceanus that
 knows how long you've been playing.*
 
 ### Pseudocode

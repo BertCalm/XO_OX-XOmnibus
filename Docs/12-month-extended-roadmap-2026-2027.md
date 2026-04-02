@@ -1,9 +1,9 @@
-# XO_OX / XOlokun — Extended Release Roadmap
+# XO_OX / XOceanus — Extended Release Roadmap
 ## Months 7–12: October 2026 – March 2027
 
 **Companion to:** `Docs/6-month-release-calendar-2026.md`
 **Created:** 2026-03-20
-**Scope:** Weeks 27–52 of the XOlokun year — the V2 Collections era, KNOT coupling, community expansion, and the 1-year anniversary arc.
+**Scope:** Weeks 27–52 of the XOceanus year — the V2 Collections era, KNOT coupling, community expansion, and the 1-year anniversary arc.
 
 ---
 
@@ -57,14 +57,14 @@ By the end of Month 6 (late September 2026), the following should be true:
 | Target | Metric | Timing |
 |--------|--------|--------|
 | M1 | 500 Patreon subscribers | End of Month 7 (Oct 2026) |
-| M2 | 25,000 XOlokun downloads | End of Month 7 |
+| M2 | 25,000 XOceanus downloads | End of Month 7 |
 | M3 | $5,000/month gross revenue | Month 8 (Nov 2026) |
 | M4 | 100 community-submitted presets accepted into Field Guide showcase | Month 9 |
 | M5 | 1,000 Patreon subscribers | End of Month 9 (Dec 2026) |
 | M6 | $10,000/month gross revenue | Month 10 (Jan 2027) |
 | M7 | 3 active third-party SDK developers | Month 10 |
 | M8 | All 3 V2 collections shipped | Month 11 (Feb 2027) |
-| M9 | 50,000 total XOlokun downloads | Month 12 (Mar 2027) |
+| M9 | 50,000 total XOceanus downloads | Month 12 (Mar 2027) |
 | M10 | V2 vision publicly announced | Month 12 (Mar 2027 anniversary) |
 
 ---
@@ -91,7 +91,7 @@ By the end of Month 6 (late September 2026), the following should be true:
 ### Theme: "Collections Open"
 *Kitchen Essentials is V2. The free era ends here. The boutique era begins.*
 
-**Revenue strategy:** First paid collection launch ($39–49). Patreon Transcendental Vol 3 ships. Free tier remains XOlokun core + Awakening presets. The message: "XOlokun is free forever. The depth costs."
+**Revenue strategy:** First paid collection launch ($39–49). Patreon Transcendental Vol 3 ships. Free tier remains XOceanus core + Awakening presets. The message: "XOceanus is free forever. The depth costs."
 
 **Milestone target:** 500 Patreon subscribers. Kitchen Essentials revenue covers 1 month of development.
 
@@ -144,11 +144,11 @@ XPN Pack #3 — "The Kitchen Frequency."
 
 **Secondary** `COMM`
 Community Preset Showcase Event #1 — "Best of the First Six Months."
-- Open call: submit your best XOlokun preset (factory or original)
+- Open call: submit your best XOceanus preset (factory or original)
 - 10 winners featured in next Field Guide post
 - Top 3 get Guru Bin Transcendental tier for free (1 month Patreon)
 
-**Narrative:** *"Six months of XOlokun. Thousands of presets. What has the community built? Let's find out."*
+**Narrative:** *"Six months of XOceanus. Thousands of presets. What has the community built? Let's find out."*
 
 ---
 
@@ -206,7 +206,7 @@ KNOT Demonstration Engine — **OKNOTTED** (working name, owner to decide).
 - Concept: Möbius strip synthesis — a voice that folds back on itself
 - Every parameter has a natural "partner parameter" that can be KNOT-linked to any external engine
 - Gallery code: TBD | Accent: Linking Plum `#8E4585` (shares KNOT's topology accent)
-- This becomes engine #43 in XOlokun
+- This becomes engine #43 in XOceanus
 
 **Secondary** `CONTENT`
 Field Guide post: "KNOT Coupling — When Two Engines Become One." Includes interactive diagram of linking number behavior.
@@ -288,7 +288,7 @@ Signal post: Travel collection launch. Field Guide post: "The Vessel Pairs — H
 Holiday Gifting Campaign.
 - Patreon "gift a month" feature activated (if platform supports it)
 - "Give someone an engine" social campaign — share your favorite preset + tag a friend
-- Discord holiday listening party: 2-hour curated XOlokun playback
+- Discord holiday listening party: 2-hour curated XOceanus playback
 
 **Narrative:** *"The best 100 sounds from a year of 43 engines. Free. No strings. Just sound."*
 
@@ -304,7 +304,7 @@ Year in Review — Field Guide annual post.
 - What the seance system taught us about synthesis quality
 
 **Secondary** `CONTENT`
-Signal post: Year in Review summary (shorter, more personal). Social: 12 days of XOlokun (one engine highlight per day, Dec 25 – Jan 5).
+Signal post: Year in Review summary (shorter, more personal). Social: 12 days of XOceanus (one engine highlight per day, Dec 25 – Jan 5).
 
 **Narrative:** *"A year of building a new kind of synthesizer. Here's what we learned."*
 
@@ -363,15 +363,15 @@ Field Guide post: "V1.5 — What Changed, Why It Matters." Technical + philosoph
 
 **Primary** `SDK`
 SDK Phase 2 — Third-Party Developer Toolkit.
-Building on SDK Phase 1 (`SDK/include/xolokun/` — JUCE-free SynthEngine.h + CouplingTypes.h + EngineModule.h):
+Building on SDK Phase 1 (`SDK/include/xoceanus/` — JUCE-free SynthEngine.h + CouplingTypes.h + EngineModule.h):
 - Sample third-party engine shipped alongside SDK (proof of concept, full source)
 - Developer documentation site (static, linked from XO-OX.org)
-- `CONTRIBUTING_ENGINE.md` — step-by-step guide for building a JUCE-free engine that integrates with XOlokun
+- `CONTRIBUTING_ENGINE.md` — step-by-step guide for building a JUCE-free engine that integrates with XOceanus
 - Engine review process: what it takes to get a community engine added to the gallery
 - SDK Phase 2 adds: MIDI mapping helpers, preset schema validators, coupling compatibility matrix
 
 **Secondary** `CONTENT`
-Field Guide post: "Building for XOlokun — A Developer's Introduction."
+Field Guide post: "Building for XOceanus — A Developer's Introduction."
 
 **Narrative:** *"The first engine XO_OX didn't build. Here's how it was made."*
 
@@ -447,7 +447,7 @@ Field Guide post: "Color as Synthesis — How Artwork/Color Was Designed."
 
 **Primary** `COMM`
 Community Preset Pack — "The Flock Vol 1."
-- First community-contributed preset pack in XOlokun history
+- First community-contributed preset pack in XOceanus history
 - 50 presets curated from community submissions (open call ran through Month 9-10)
 - Barry OB curation process applied: each preset earns entry by passing a quality bar, not just by being submitted
 - Released as free bonus for all Patreon supporters (any tier)
@@ -467,14 +467,14 @@ Field Guide post: "The Flock Speaks — How We Curated Vol 1 of the Community Pa
 **Primary** `COMM`
 Artist Collaboration Series — Launch.
 - First 2 of 5 artists go live: custom Guru Bin preset packs in their name
-- Each artist pack: 10-15 presets, artist bio, "How I Use XOlokun" short essay
+- Each artist pack: 10-15 presets, artist bio, "How I Use XOceanus" short essay
 - Available on XO-OX.org and Patreon (artist packs: $10 each / included in Studio Pass)
 - Artists promoted across all XO_OX channels
 
 **Secondary** `CONTENT`
 Signal post: Artist series launch. Field Guide long-form interview with first artist.
 
-**Narrative:** *"XOlokun was designed for a specific kind of musician. Here they are."*
+**Narrative:** *"XOceanus was designed for a specific kind of musician. Here they are."*
 
 ---
 
@@ -498,27 +498,27 @@ Guru Bin Transcendental Vol 6 — Original Fleet Vol 2 (continued).
 
 ## MONTH 12 — March 2027
 ### Theme: "Anniversary + V2 Vision"
-*One year of XOlokun. The community retrospective. The next chapter announced.*
+*One year of XOceanus. The community retrospective. The next chapter announced.*
 
 **Revenue strategy:** Anniversary bundle (all-time best deal — 3 collections + all Guru Bin vols + Studio Pass discounted). V2 vision is an announcement, not a product — it creates desire for the next purchase cycle. Photography / Synesthesia Engine concept revealed (vision only, no ship date).
 
-**Milestone target:** 50,000 total XOlokun downloads. V2 architecture announced. Community is emotionally invested in what comes next.
+**Milestone target:** 50,000 total XOceanus downloads. V2 architecture announced. Community is emotionally invested in what comes next.
 
 ---
 
 ### Week 47 — Mar 1–7 `CONTENT` `COMM`
 
 **Primary** `CONTENT`
-Anniversary Countdown: "7 Days of XOlokun."
+Anniversary Countdown: "7 Days of XOceanus."
 - One engine deep-dive per day for 7 days (social + Signal)
 - Each post focuses on the engine's origin story, seance journey, and best preset
 - Day 7 is the anniversary post: full year retrospective
 
 **Secondary** `COMM`
 Community retrospective: "What Did You Build?"
-- Open call for community to share XOlokun patches, recordings, and compositions
+- Open call for community to share XOceanus patches, recordings, and compositions
 - Top submissions featured in anniversary post
-- Discord listening party: 3 hours of community-made XOlokun music
+- Discord listening party: 3 hours of community-made XOceanus music
 
 **Narrative:** *"One year. 43+ engines. Tens of thousands of presets. Let's hear what was made."*
 
@@ -597,8 +597,8 @@ V1.5.x stability and housekeeping release.
 **Secondary** `COMM` + `SDK`
 Year Two community kickoff.
 - SDK Developer Jam: 30-day challenge to build a community engine
-- First prize: paid artist collaboration, engine integrated into XOlokun gallery
-- Field Guide post: "How to Build an XOlokun Engine — A Beginner's Guide"
+- First prize: paid artist collaboration, engine integrated into XOceanus gallery
+- Field Guide post: "How to Build an XOceanus Engine — A Beginner's Guide"
 
 **Narrative:** *"Year One is closed. Year Two is open."*
 
@@ -675,4 +675,4 @@ These engines are not committed but are the strongest candidates for V2 expansio
 
 ---
 
-*This document covers Months 7–12 of the XO_OX release year. For Months 1–6 (March–September 2026), see `Docs/6-month-release-calendar-2026.md`. For the full product philosophy, see `Docs/xolokun_master_specification.md`.*
+*This document covers Months 7–12 of the XO_OX release year. For Months 1–6 (March–September 2026), see `Docs/6-month-release-calendar-2026.md`. For the full product philosophy, see `Docs/xoceanus_master_specification.md`.*

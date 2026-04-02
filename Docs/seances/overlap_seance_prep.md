@@ -138,7 +138,7 @@ All 41 parameters are declared with corresponding DSP targets in the architectur
 
 Three independent slow-modulation mechanisms. OVERLAP has exceptional D005 compliance on paper — the entrainment system means voice phases themselves drift slowly toward and away from lock, creating emergent breathing that doesn't require an explicit LFO at all.
 
-**Examiner note**: Verify `lfo1Phase` and `lfo2Phase` advance per block in adapter code (not just in the standalone engine). Several past engines had LFO state not advancing in the XOlokun context.
+**Examiner note**: Verify `lfo1Phase` and `lfo2Phase` advance per block in adapter code (not just in the standalone engine). Several past engines had LFO state not advancing in the XOceanus context.
 
 ---
 

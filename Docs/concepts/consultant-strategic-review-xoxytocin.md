@@ -238,7 +238,7 @@ TriangularCoupling should not ship as just an XOxytocin-specific coupling type. 
 
 This positions the innovation as platform architecture, not engine feature. It also makes the SDK more compelling to the B2B audience.
 
-**Action**: Before V1.2, document TriangularCoupling in `SDK/include/xolokun/` alongside KnotTopology. Write one SDK Field Guide post explaining how to use it. This turns a single-engine innovation into a platform story.
+**Action**: Before V1.2, document TriangularCoupling in `SDK/include/xoceanus/` alongside KnotTopology. Write one SDK Field Guide post explaining how to use it. This turns a single-engine innovation into a platform story.
 
 ### Recommendation 5: Create the "Love Triangle" Community Ritual
 **Impact: Medium**
@@ -295,7 +295,7 @@ This ritual should be formalized before launch: create a template for sharing (c
 
 ### Action Item R-004: TriangularCoupling SDK Documentation
 
-**What**: Document TriangularCoupling as a first-class SDK pattern in `SDK/include/xolokun/`. Write: type specification (3 spectral bands, backward compat behavior), usage guide for third-party engine developers, one Field Guide post titled "TriangularCoupling: Encoding Emotional State in Audio." Link from SDK README.
+**What**: Document TriangularCoupling as a first-class SDK pattern in `SDK/include/xoceanus/`. Write: type specification (3 spectral bands, backward compat behavior), usage guide for third-party engine developers, one Field Guide post titled "TriangularCoupling: Encoding Emotional State in Audio." Link from SDK README.
 
 **Who**: Claude Code
 

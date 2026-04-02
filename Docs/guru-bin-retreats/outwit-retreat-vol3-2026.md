@@ -19,7 +19,7 @@
 
 ## Retreat Design Brief
 
-OUTWIT has 647 presets, but almost all of them use a **legacy parameter format** from before the XOlokun per-arm parameter architecture was implemented. The legacy presets use `owit_rule` (single global rule), `owit_armBalance`, `owit_mutationRate`, `owit_feedbackAmt` — parameters that no longer exist in the current adapter. The current architecture defines 8 independent arms, each with its own rule (0–255), length (4–64 cells), level, pitch offset, filter cutoff, waveform (Saw/Pulse/Sine), and pan position.
+OUTWIT has 647 presets, but almost all of them use a **legacy parameter format** from before the XOceanus per-arm parameter architecture was implemented. The legacy presets use `owit_rule` (single global rule), `owit_armBalance`, `owit_mutationRate`, `owit_feedbackAmt` — parameters that no longer exist in the current adapter. The current architecture defines 8 independent arms, each with its own rule (0–255), length (4–64 cells), level, pitch offset, filter cutoff, waveform (Saw/Pulse/Sine), and pan position.
 
 The existing presets that use the current architecture are a small minority — primarily the Entangled presets created since the adapter was built. The Transcendental Vol 3 chapter is therefore, in a specific sense, the *first genuine retreat* into the current OUTWIT architecture. The territory is almost entirely unexplored.
 

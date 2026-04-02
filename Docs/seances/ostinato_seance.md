@@ -44,7 +44,7 @@
 
 ## Sonic Identity
 
-OSTINATO occupies territory no other XOlokun engine touches: **communal world percussion with emergent inter-voice behavior.** The engine's unique voice is the space between drummers — the way eight performers in a circle begin to respond to each other, not because they were told to, but because they hear each other.
+OSTINATO occupies territory no other XOceanus engine touches: **communal world percussion with emergent inter-voice behavior.** The engine's unique voice is the space between drummers — the way eight performers in a circle begin to respond to each other, not because they were told to, but because they hear each other.
 
 **What it can make that nothing else can:**
 - An automatic world drum circle that continues playing when you stop

@@ -16,13 +16,13 @@ Both quads are registered and included in the build. Neither has been seanced be
 
 ### BROTH Cooperative Coupling: BROKEN in Production
 
-The BROTH cooperative coupling architecture is elegant in design but **not wired in XOlokunProcessor.cpp**. Each engine exposes setters and getters:
+The BROTH cooperative coupling architecture is elegant in design but **not wired in XOceanusProcessor.cpp**. Each engine exposes setters and getters:
 - `OverwornEngine::getSessionAge()`, `getConcentrateDark()`, `getSpectralMass()`
 - `OverwashEngine::setBrothSessionAge(float)`
 - `OverflowEngine::setBrothConcentrateDark(float)`
 - `OvercastEngine::setBrothSpectralMass(float)`
 
-A search of `XOlokunProcessor.cpp` finds **zero calls** to any `setBroth*` or `getSessionAge/getConcentrate/getSpectralMass` methods. The BROTH coordinator that was supposed to pump values between engines after each `renderBlock` was never written. The four engines run completely independently. The cross-engine flavor chemistry — Overwash becoming more viscous as Overworn reduces, Overflow's threshold dropping as the broth concentrates, Overcast seeding dark crystals from reduced spectral mass — exists only in the individual engines, waiting for a coordinator that does not exist.
+A search of `XOceanusProcessor.cpp` finds **zero calls** to any `setBroth*` or `getSessionAge/getConcentrate/getSpectralMass` methods. The BROTH coordinator that was supposed to pump values between engines after each `renderBlock` was never written. The four engines run completely independently. The cross-engine flavor chemistry — Overwash becoming more viscous as Overworn reduces, Overflow's threshold dropping as the broth concentrates, Overcast seeding dark crystals from reduced spectral mass — exists only in the individual engines, waiting for a coordinator that does not exist.
 
 **This is the single most important finding of this seance.**
 
@@ -46,7 +46,7 @@ What does not work: **the reset parameter** has a subtle race-condition-style bu
 
 ### FUSION SpectralFingerprint: Correct Architecture, Cosmetic Issue
 
-The `SpectralFingerprint` struct is defined four times (once per engine header) guarded by `#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED`. This is correct preprocessor practice but creates a maintenance problem: if the struct ever changes in one file, the guard prevents the update from propagating. The struct should live in a shared header (`Source/DSP/SpectralFingerprint.h`) and all four engines should include it.
+The `SpectralFingerprint` struct is defined four times (once per engine header) guarded by `#ifndef XOCEANUS_SPECTRAL_FINGERPRINT_DEFINED`. This is correct preprocessor practice but creates a maintenance problem: if the struct ever changes in one file, the guard prevents the update from propagating. The struct should live in a shared header (`Source/DSP/SpectralFingerprint.h`) and all four engines should include it.
 
 The struct content is sound. The 38-float / 152-byte claim in the architecture doc is correct (8 + 8 + 10 named floats + 2 padding = 28 floats = 112 bytes by my count, not 152). The doc is wrong but the code itself does not hardcode 152 bytes anywhere — it is metadata, not a binary protocol — so this is a documentation bug, not a runtime bug.
 
@@ -497,7 +497,7 @@ None at this time. The Wurlitzer physical model is strong but not novel enough o
 
 ### P1 (Important Before Launch)
 
-4. **Build the BROTH coordinator.** The four engines need a central dispatch (likely in XOlokunProcessor) that after each block calls: `overwash.setBrothSessionAge(overworn.getSessionAge())`, `overflow.setBrothConcentrateDark(overworn.getConcentrateDark())`, `overcast.setBrothSpectralMass(overworn.getTotalSpectralMass())`. This is perhaps 15 lines of code and unlocks the entire cooperative chemistry.
+4. **Build the BROTH coordinator.** The four engines need a central dispatch (likely in XOceanusProcessor) that after each block calls: `overwash.setBrothSessionAge(overworn.getSessionAge())`, `overflow.setBrothConcentrateDark(overworn.getConcentrateDark())`, `overcast.setBrothSpectralMass(overworn.getTotalSpectralMass())`. This is perhaps 15 lines of code and unlocks the entire cooperative chemistry.
 
 5. **Overworn: Implement infusion.** When `voice.isInfusion == true`, do not apply the heat multiplier and briefly re-energize upper spectral bands.
 

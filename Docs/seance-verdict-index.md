@@ -1,4 +1,4 @@
-# XOlokun Fleet Seance Verdict Index
+# XOceanus Fleet Seance Verdict Index
 **Compiled:** 2026-03-24 (Seance Oracle — overnight autonomous session)
 **Sources:** `Docs/fleet-seance-scores-2026-03-20.md`, `Docs/seances/seance_cross_reference.md`, all individual seance files in `Docs/seances/` and `scripture/seances/`, Kitchen Collection batch verdicts, post-build seances for OPERA/OFFERING, OXBOW/OWARE seances, OXYTOCIN concept seance
 **Scope:** 76 engines registered — 72 seanced, 4 not yet seanced (OSMOSIS — design-only; OBIONT, OSIER, OVERFLOW — recently added)
@@ -93,7 +93,7 @@ Sorted by most authoritative/most recent score, descending. Post-fix estimated s
 | OVERDUB | — | **7.4/10** | 2026-03-14 | B004 Spring Reverb | "The send/return architecture is brilliant but the LFO is a sine wave dressed in burlap." | Single sine LFO; D002 partial (resolved) | `Docs/seances/outwit_seance_verdict.md` |
 | OVERGROW | — | **7.5/10** | 2026-03-21 | Growth Rate Synthesis via Verhulst logistic curve | "The growth equation is Verhulst's logistic curve applied to harmonic content. No other engine grows its timbre from first principles." — Smith | D002 partial: growth rate LFO could be deeper; velocity range narrow | `Docs/seances/seance-cellar-garden-verdict.md` |
 | ODYSSEY | — | **7.6/10** | 2026-03-14 | V007 Climax Paradigm | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." (resolved in presets) | — (dead mod sources wired; AT/MW live) | `Docs/seances/seance_cross_reference.md` |
-| OVERWORLD | — | **7.6/10** | 2026-03-14 | B009 ERA Triangle | "The ERA triangle arrives at the XOlokun dock with no luggage." (D001 + D005 + D006 resolved) | — | `Docs/seances/seance_cross_reference.md` |
+| OVERWORLD | — | **7.6/10** | 2026-03-14 | B009 ERA Triangle | "The ERA triangle arrives at the XOceanus dock with no luggage." (D001 + D005 + D006 resolved) | — | `Docs/seances/seance_cross_reference.md` |
 | OHM | — | **7.6/10** | 2026-03-14 | — | "The Dad ensemble knows which instrument to play — and then plays them all in the center." | Mono voice summing; D001 partial (intensity not brightness) | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OVERTONE | — | **7.6/10** (re-seance) | 2026-03-20 | B028 Continued Fraction Convergent Synthesis | "The convergent tables are not decoration — they ARE the synthesis." — Buchla | Pi table spectral collapse at low depth; 1-voice only; Nyquist patched | `Docs/seances/overtone_seance_verdict.md`; `scripture/seances/overtone-seance-2026-03-20.md` |
 | OCEANDEEP | — | **7.8/10** | 2026-03-20 | B029 Hydrostatic Compressor; B030 Bioluminescent Exciter; B031 Darkness Filter Ceiling | "The pressure is physics, not a compressor." — Moog | No independent filter ADSR; missing pitch bend | `Docs/seances/oceandeep_seance_verdict.md` |
@@ -208,7 +208,7 @@ All 43 ratified blessings sorted by ID. Fleet-spanning blessings marked **[FLEET
 | KC-P0-02 | OLATE | olate_terroir dead for 0.7–1.0 range (East Coast + Japanese regions) | OlateEngine.h — implement DSP for 2 missing terroir regions |
 | KC-P0-03 | OVERWASH | wash_interference / spectralField[32] declared but never written or read | OverwashEngine.h renderBlock — populate spectralField from voice output |
 | KC-P0-04 | OCHRE | (void) lfo2Val — LFO2 computed but explicitly discarded | OchreEngine.h — wire lfo2Val to synthesis target |
-| KC-P0-05 | BROTH (system) | BROTH cooperative coupling not wired in XOlokunProcessor.cpp | XOlokunProcessor.cpp — write BROTH coordinator in renderBlock |
+| KC-P0-05 | BROTH (system) | BROTH cooperative coupling not wired in XOceanusProcessor.cpp | XOceanusProcessor.cpp — write BROTH coordinator in renderBlock |
 | KC-P0-06 | OTO | Organ crossfade (prevOrganGain/prevOrganModel) declared, never written | OtoEngine.h renderBlock — implement crossfade |
 | KC-P0-07 | OTO | Melodica fundamental unaliased sawtooth above C5 | OtoEngine.h — PolyBLEP sawtooth for Melodica partial 0 |
 | KC-P0-08 | OCTAVE + OTIS | Leslie Doppler: amplitude modulation only, no pitch modulation | OctaveEngine.h / OtisEngine.h — add pitch modulation to Leslie model |

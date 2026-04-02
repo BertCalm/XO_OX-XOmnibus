@@ -113,7 +113,7 @@ of behavioral tendencies derived from source code and seance findings.
     "preset_count": "integer — factory preset count at genome creation time",
     "seance_score": "float|null — ghost council score, null if unscored",
     "guru_bin_retreat": "boolean — has a completed Guru Bin retreat doc",
-    "version_added": "string — XOlokun version shipped in (e.g., 'V1.0')"
+    "version_added": "string — XOceanus version shipped in (e.g., 'V1.0')"
   }
 }
 ```

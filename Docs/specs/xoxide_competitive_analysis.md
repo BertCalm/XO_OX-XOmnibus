@@ -51,7 +51,7 @@ This is a well-executed single-insert character tool. It solves a real problem f
 
 **Lorenz chaos modulation of character position.** Flavor Pro has no temporal evolution engine. XOxide's LFO can drive the XY position itself through organic Lorenz attractor paths — the character itself mutates over time in ways no simple LFO could produce. This is not automation; it's intrinsic motion.
 
-**XOlokun coupling architecture.** Flavor Pro is an isolated insert. XOxide emits its post-compression gain reduction value as a coupling signal, emits detected transient envelopes as `EnvToMorph` for driving other engines (e.g., ODYSSEY morph), and accepts `AmpToFilter` sidechaining to auto-duck `oxide_y`. Flavor Pro has none of this. XOxide is a node in the XOlokun network, not a standalone island.
+**XOceanus coupling architecture.** Flavor Pro is an isolated insert. XOxide emits its post-compression gain reduction value as a coupling signal, emits detected transient envelopes as `EnvToMorph` for driving other engines (e.g., ODYSSEY morph), and accepts `AmpToFilter` sidechaining to auto-duck `oxide_y`. Flavor Pro has none of this. XOxide is a node in the XOceanus network, not a standalone island.
 
 **Sub enhancement with pitch tracking.** Flavor Pro has no sub synthesis capability. XOxide's Stage 4 adds an octave-down sine tracking the input fundamental — this is psychoacoustic bass enhancement derived from Waves MaxxBass methodology, not just low-shelf EQ. Flavor Pro cannot extend the sub register of a thin pad.
 
@@ -254,9 +254,9 @@ At Y=0 with all stages at Surface, XOxide should consume near-zero CPU — it be
 
 ### How XOxide Differs from Flavor Pro in the MPC Workflow
 
-**Insert position**: Flavor Pro is designed as a per-track insert — you use it on one pad or one program at a time. XOxide's `AudioToBuffer` coupling means it can sit in a parallel XOlokun slot and process the mixed output of multiple engines simultaneously. In practice: put ONSET (drums) in Slot 1, OVERDUB (bass dub) in Slot 2, XOxide in Slot 3 coupled to both — XOxide colours the sub-mix of an entire section, not just a single sound.
+**Insert position**: Flavor Pro is designed as a per-track insert — you use it on one pad or one program at a time. XOxide's `AudioToBuffer` coupling means it can sit in a parallel XOceanus slot and process the mixed output of multiple engines simultaneously. In practice: put ONSET (drums) in Slot 1, OVERDUB (bass dub) in Slot 2, XOxide in Slot 3 coupled to both — XOxide colours the sub-mix of an entire section, not just a single sound.
 
-This is not a workflow Flavor Pro can support. Flavor Pro is always a point insert. XOxide can be a section processor within the XOlokun architecture.
+This is not a workflow Flavor Pro can support. Flavor Pro is always a point insert. XOxide can be a section processor within the XOceanus architecture.
 
 **Live performance use**: The XY pad is a physical performance controller. MIDI CC mod wheel → `oxide_y` means a producer performing live can push the depth pedal and drive the entire section from transparent polish to heavy transformation in real time. Flavor Pro's intensity knob can be automated but it doesn't have the same gestural quality — you're adjusting a single parameter, not navigating a character philosophy.
 
@@ -276,7 +276,7 @@ XOxide's processing chain can be approximated in rendered XPN samples for produc
 - Compression (Stage 3): The compressor's response depends on the playback dynamics, not just the source signal. A baked compressed sample will respond differently when velocity-varied during MPC playback vs. having XOxide compress each hit in real time.
 - Stereo Field + Haas (Stage 5): Haas micro-delay bakes fine, but M/S width processing interacts with the playback context. Baked width is static; real-time width responds to the source's stereo content dynamically.
 
-**Recommendation for Oxport integration**: When an XOxide preset is selected in an XOlokun export session, the Oxport pipeline should:
+**Recommendation for Oxport integration**: When an XOxide preset is selected in an XOceanus export session, the Oxport pipeline should:
 1. Bake Stages 1, 2, 4, 6 into the rendered samples (character is preserved at zero CPU cost during MPC playback)
 2. Include a Flavor Pro preset recommendation for the compression character (Stage 3) as a separate note in the XPN bundle metadata — producers can approximate the dynamic processing character with MPC's native Flavor Pro at playback time
 3. Flag whether Stage 5 stereo width was significant; if `oxide_stereoWidth > 1.3`, recommend the producer apply width in the MPC mixer rather than baking (baked width can be problematic in multi-layer velocity stacks)

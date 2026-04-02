@@ -2,7 +2,7 @@
 
 ## Overview
 
-Three tools handle sample export in XOlokun, each at a different level:
+Three tools handle sample export in XOceanus, each at a different level:
 
 ```
 ORIGINATE  ← UI wizard (desktop app)

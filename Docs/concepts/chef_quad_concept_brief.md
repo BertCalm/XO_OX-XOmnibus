@@ -89,4 +89,4 @@ When two or more chefs occupy slots simultaneously, they **compete** rather than
 
 ---
 
-*Part of XOlokun by XO_OX Designs*
+*Part of XOceanus by XO_OX Designs*

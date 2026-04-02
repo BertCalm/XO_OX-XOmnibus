@@ -6,7 +6,7 @@ Tools built/upgraded: 7 | Specs written: 3 | Skill created: 1 | Memory files upd
 
 ---
 
-## Tools (~/Documents/GitHub/XO_OX-XOlokun/Tools/)
+## Tools (~/Documents/GitHub/XO_OX-XOceanus/Tools/)
 
 | File | Status | What Changed |
 |------|--------|-------------|
@@ -19,7 +19,7 @@ Tools built/upgraded: 7 | Specs written: 3 | Skill created: 1 | Memory files upd
 | `xpn_cover_art.py` | COMMITTED | 23 new engine definitions (21 to 44) |
 | `xpn_optic_fingerprint.py` | DOES NOT EXIST | Was being built by another agent — never completed or saved |
 
-## Specs (~/Documents/GitHub/XO_OX-XOlokun/Docs/specs/)
+## Specs (~/Documents/GitHub/XO_OX-XOceanus/Docs/specs/)
 
 | File | Status | Content |
 |------|--------|---------|
@@ -71,7 +71,7 @@ Tools built/upgraded: 7 | Specs written: 3 | Skill created: 1 | Memory files upd
 The following tracked files have unstaged modifications (from `git diff`):
 
 - `CLAUDE.md` — engine table updates
-- `Docs/xolokun_sound_design_guides.md`
+- `Docs/xoceanus_sound_design_guides.md`
 - 15 preset `.xometa` files across all 7 moods
 - 6 engine `.h` files (Obsidian, Octopus, Ombre, Orca, Origami, Osteria)
 - `scripture/retreats/oceanic-retreat.md`

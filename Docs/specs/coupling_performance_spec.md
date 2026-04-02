@@ -316,7 +316,7 @@ Not designed here — requires fundamental re-architecture of the slot system.
 4. Add crossfade engine for type switching
 
 ### Phase B: UI (V1.2)
-1. Wire CouplingStripEditor into XOlokunEditor
+1. Wire CouplingStripEditor into XOceanusEditor
 2. Build PerformanceViewPanel
 3. Add "P" toggle button
 4. Route detail controls (type dropdown, depth slider)

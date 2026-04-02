@@ -6,7 +6,7 @@
 
 ## Overview
 
-Guru Bin Transcendental Vol 2 covers the six original standalone instruments that were complete before XOlokun existed. These are the engines that built the XO_OX vocabulary from the ground up — the instruments that proved the design philosophy was real before a fleet gave it context.
+Guru Bin Transcendental Vol 2 covers the six original standalone instruments that were complete before XOceanus existed. These are the engines that built the XO_OX vocabulary from the ground up — the instruments that proved the design philosophy was real before a fleet gave it context.
 
 They are not the newest engines. They are the original ones.
 
@@ -304,7 +304,7 @@ This is the final blocker before XPN pack delivery. The design and preset work c
   - [ ] ODYSSEY retreat written (not yet started)
   - [ ] ONSET retreat written (not yet started)
   - [ ] OPAL retreat written (not yet started)
-- [ ] 90–120 Transcendental presets written and committed to `Presets/XOlokun/`
+- [ ] 90–120 Transcendental presets written and committed to `Presets/XOceanus/`
   - [ ] OBLONG: 15–18 new Transcendental presets
   - [ ] OVERBITE: 15–18 new Transcendental presets
   - [ ] OVERDUB: 15–18 new Transcendental presets

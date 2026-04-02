@@ -11,7 +11,7 @@
 
 **Issea:** ORIGINATE is quieter. It is the moment after the making — the contemplation before release. The artist reviewing work before it leaves the studio. There is a ceremony to export. The UI should honor that pause.
 
-**Xavier:** Both windows live in the shadow of XOmnibus. They must feel like siblings, not orphans. Same family. Same bones. But each has its own character — OUTSHINE active and welcoming, ORIGINATE focused and ceremonial.
+**Xavier:** Both windows live in the shadow of XOceanus. They must feel like siblings, not orphans. Same family. Same bones. But each has its own character — OUTSHINE active and welcoming, ORIGINATE focused and ceremonial.
 
 ---
 

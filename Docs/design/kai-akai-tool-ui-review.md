@@ -11,7 +11,7 @@
 We read three artifacts before writing a single opinion:
 1. `Docs/mockups/outshine-prototype.html` — the living prototype
 2. `DESIGN_SPECIFICATION_OUTSHINE_ORIGINATE.md` — the UIX Studio spec (Ulf/Issea/Xavier)
-3. `Docs/xoceanus_master_specification.md` / `Docs/design/xomnibus_ui_master_spec_v2.md` — XOceanus's Rebirth design language
+3. `Docs/xoceanus_master_specification.md` / `Docs/design/xoceanus_ui_master_spec_v2.md` — XOceanus's Rebirth design language
 
 The UIX Studio did excellent foundational work. This review is not a rejection of that work. It is a calibration pass: aligning Outshine/Originate/Oxport to the full weight of XOceanus's Rebirth aesthetic, MPC format realities, and the MPCe 3D pad competitive window. Several findings are [CRITICAL] with production consequences; most are [IMPROVEMENT] or [STYLE].
 

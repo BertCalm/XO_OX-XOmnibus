@@ -1,8 +1,8 @@
-# XOlokun Community Strategy v2 — "The Deep Opens"
+# XOceanus Community Strategy v2 — "The Deep Opens"
 
 **Date:** March 24, 2026
 **Status:** Approved — Barry OB audit + Khan Sultan stress test + Visionary escalation
-**Supersedes:** `Docs/xolokun-community-strategy.md` (v1)
+**Supersedes:** `Docs/xoceanus-community-strategy.md` (v1)
 
 ---
 
@@ -45,7 +45,7 @@ v2 applies the Wedge Model: one focused point of entry, pressure held until some
 
 ### What This Positioning Is Not
 
-Do not lead with "a community that builds a product." That framing is Ring 7 thinking applied to a Ring 1 moment. On day one, the product is the product. The community is downstream of the product being excellent. Someone discovers XOlokun because it makes sounds they cannot make anywhere else. They stay because other people who care about the same thing are here. They contribute because contributing feels like participation in something larger than a software download.
+Do not lead with "a community that builds a product." That framing is Ring 7 thinking applied to a Ring 1 moment. On day one, the product is the product. The community is downstream of the product being excellent. Someone discovers XOceanus because it makes sounds they cannot make anywhere else. They stay because other people who care about the same thing are here. They contribute because contributing feels like participation in something larger than a software download.
 
 The mythology is not the marketing hook. The mythology is the gathering gravity that keeps people on owned properties — the site, the Discord, the Field Guide — instead of dispersing to third-party communities where XO_OX has no presence.
 
@@ -62,19 +62,19 @@ v1 described seven rings expanding simultaneously. The Wedge Model replaces that
 This phase is preparation, not community building. Nothing launches publicly here. Everything here prevents a cold-launch disaster.
 
 **Platform infrastructure:**
-- Reddit account created. Minimum 50 karma earned through genuine participation in r/synthesizers, r/edmproduction, r/mpcusers before making a single post about XOlokun. An account with zero history that appears on launch day to post about XOlokun reads as spam. An account with a track record reads as a community member.
+- Reddit account created. Minimum 50 karma earned through genuine participation in r/synthesizers, r/edmproduction, r/mpcusers before making a single post about XOceanus. An account with zero history that appears on launch day to post about XOceanus reads as spam. An account with a track record reads as a community member.
 - KVR product listing submitted 3 days before launch. KVR processes listings on its own schedule. Submit early or the listing does not exist when the launch traffic arrives.
 - Twitter/X account with 10+ posts before launch day. No follower counts required — just evidence of a voice.
 - Discord server created with 5 water-column channels (see Section 4), seeded with 8-10 messages from the dev account. The server should feel inhabited on day one, not empty on day one.
 - Patreon tiers verified and functional (Explorer / Diver / Abyssal).
 
 **Relationships:**
-- 3 mid-tier YouTube creator relationships established (5K-50K subscribers). Not partnerships, not formal agreements — just genuine conversations. Creators in this range are reachable. Creators above 100K are not, until XOlokun has a track record.
+- 3 mid-tier YouTube creator relationships established (5K-50K subscribers). Not partnerships, not formal agreements — just genuine conversations. Creators in this range are reachable. Creators above 100K are not, until XOceanus has a track record.
 - Personal DMs to 20-30 synthesis enthusiasts (found via KVR, r/synthesizers, Elektronauts) offering beta access. These become the first 50.
 
 **Content:**
 - The Coupling Explainer published on the site. This is the single reference document that explains what coupling is, why it matters, and how it works. Every future piece of content — social posts, tutorials, creator videos — links back to this document. It does not need to be long. It needs to be definitive.
-- Civilization Manifesto page on the site. This is the mythology entry point. Not a marketing page — a statement of what XOlokun believes music creation should be. This is what people share when they want to explain "what XO_OX is" to someone who hasn't heard of it.
+- Civilization Manifesto page on the site. This is the mythology entry point. Not a marketing page — a statement of what XOceanus believes music creation should be. This is what people share when they want to explain "what XO_OX is" to someone who hasn't heard of it.
 
 ### Phase 1 — The Reef Core (Launch → Day 30)
 
@@ -99,7 +99,7 @@ This takes approximately 3 hours to execute if all accounts and assets are prepa
 **Community budget for Phase 1:**
 - 12 hours per week maximum — hard ceiling, not an aspiration
 - 4 hours Discord (check-ins, responses, Message in a Bottle posts)
-- 4 hours Reddit (participation in synthesis communities, not just XOlokun promotion)
+- 4 hours Reddit (participation in synthesis communities, not just XOceanus promotion)
 - 2 hours KVR / Elektronauts / Gearspace
 - 2 hours Twitter/X
 
@@ -117,20 +117,20 @@ Phase 2 only begins if Phase 1 has produced genuine activity. "Genuine activity"
 If those conditions are not met at day 30, extend Phase 1. Do not move to Phase 2 on a calendar schedule.
 
 **When Phase 2 conditions are met:**
-- `.xcoupling` file format released + GitHub coupling-registry opened with 10 seed recipes authored by the dev. This is the collaboration infrastructure that distinguishes XOlokun from every other synthesis community. The file format is simple. The registry is a GitHub repo. Community members submit PRs.
+- `.xcoupling` file format released + GitHub coupling-registry opened with 10 seed recipes authored by the dev. This is the collaboration infrastructure that distinguishes XOceanus from every other synthesis community. The file format is simple. The registry is a GitHub repo. Community members submit PRs.
 - Alignment Rite audio quiz on site. A short interactive quiz that uses audio examples to identify which engine cluster a user resonates with, then assigns them a creature persona. This is the mythology activation mechanic — the moment where "I downloaded a synth" becomes "I have a creature."
 - First community challenge: "The Corridor" — one prompt, one week, submit a preset that uses at least one coupling. Winning preset enters the factory library with creator credit.
 - Patreon transparent budget breakdown posted publicly: "Here is what one month of supporter contributions funds. Here is where the money went." One post, honest numbers, no fluff.
 - YouTube begins: one coupling demonstration video every 2 weeks. Not a tutorial series. Not a polished production. A single coupling, explained.
 - Creator program: ONE creator partnership, not a formal program. Find one creator whose audience is synthesis enthusiasts and give them Abyssal access, early engine previews, and a direct line. Watch what happens. Repeat if it works.
-- Community album announced: quarterly, voluntary, anyone can submit a track made with XOlokun.
+- Community album announced: quarterly, voluntary, anyone can submit a track made with XOceanus.
 
 ---
 
 ## 3. Platform Strategy — Ranked by Solo Dev ROI
 
 ### 1. Reddit (4-5 hours/week)
-Primary discovery channel. This is where synthesis enthusiasts congregate, ask questions, and recommend tools to each other. XO_OX earns presence here by being a genuine participant in synthesis discussion — not by promoting XOlokun. When XOlokun comes up naturally, or when XO_OX posts about a specific coupling discovery or sound design technique, the community receives it as contribution rather than advertising.
+Primary discovery channel. This is where synthesis enthusiasts congregate, ask questions, and recommend tools to each other. XO_OX earns presence here by being a genuine participant in synthesis discussion — not by promoting XOceanus. When XOceanus comes up naturally, or when XO_OX posts about a specific coupling discovery or sound design technique, the community receives it as contribution rather than advertising.
 
 **Subreddits:** r/synthesizers, r/edmproduction, r/mpcusers, r/synthesizers, r/WeAreTheMusicMakers
 
@@ -210,11 +210,11 @@ Format: "The deep has a gift. `KNOTMATRIX` — 48 hours only."
 
 ### Monthly Challenge
 
-One prompt. One week to submit. Simple criteria (e.g., "uses at least one coupling," "under 4 engines"). Winning preset enters the factory library with creator credit permanently. This is the highest-value incentive available — the creator's work becomes part of XOlokun's shipped product, credited.
+One prompt. One week to submit. Simple criteria (e.g., "uses at least one coupling," "under 4 engines"). Winning preset enters the factory library with creator credit permanently. This is the highest-value incentive available — the creator's work becomes part of XOceanus's shipped product, credited.
 
 ### Quarterly Community Album
 
-Theme announced at the start of each quarter. Anyone can submit a track made with XOlokun. Community votes on the tracklist. Album released on Bandcamp at free/name-your-price. All contributors credited. The album is the artifact that turns "I use XOlokun" into "I am part of the XOlokun community."
+Theme announced at the start of each quarter. Anyone can submit a track made with XOceanus. Community votes on the tracklist. Album released on Bandcamp at free/name-your-price. All contributors credited. The album is the artifact that turns "I use XOceanus" into "I am part of the XOceanus community."
 
 ---
 
@@ -232,7 +232,7 @@ Content → clear CTA → Discord → welcome → first patch shared → challen
 
 **Rules for every piece of content:**
 - One clear action at the end. Not three options. One.
-- The action is either: "Join the Discord" or "Download XOlokun" or "Support on Patreon."
+- The action is either: "Join the Discord" or "Download XOceanus" or "Support on Patreon."
 - Field Guide posts end with a Discord invite and a specific reason to join ("This week's freebie drops in `#sunlight-zone`").
 - Signal posts end with a download link or a coupling recipe reference.
 - The Patreon link appears after someone has spent time in Discord — not as the first ask.
@@ -329,11 +329,11 @@ The mythology is not metaphor. The mythology is mechanism. Each item below descr
 
 ### Tier 2 — This Week
 
-**Civilization Manifesto (site page):** One page. States what XOlokun believes music creation should be. Not a feature list. Not a product description. A statement of values that people can share when they want to explain "what XO_OX is." This page is the mythology entry point for people who arrived via product discovery and stayed for the idea.
+**Civilization Manifesto (site page):** One page. States what XOceanus believes music creation should be. Not a feature list. Not a product description. A statement of values that people can share when they want to explain "what XO_OX is." This page is the mythology entry point for people who arrived via product discovery and stayed for the idea.
 
 ### Tier 3 — Month 2 (One Sprint)
 
-**.xcoupling Protocol + GitHub Registry:** A simple, open file format for sharing coupling recipes between XOlokun users. A GitHub repository where community members can submit coupling recipes as PRs. The dev seeds the registry with 10 recipes to establish the format and demonstrate what a good submission looks like. This is the collaboration infrastructure that has no equivalent in any other synthesis community. Sharing a coupling recipe is sharing a creative discovery that cannot be made in any other instrument.
+**.xcoupling Protocol + GitHub Registry:** A simple, open file format for sharing coupling recipes between XOceanus users. A GitHub repository where community members can submit coupling recipes as PRs. The dev seeds the registry with 10 recipes to establish the format and demonstrate what a good submission looks like. This is the collaboration infrastructure that has no equivalent in any other synthesis community. Sharing a coupling recipe is sharing a creative discovery that cannot be made in any other instrument.
 
 ### Tier 4 — Month 2-3 (Two Weekends)
 
@@ -396,7 +396,7 @@ At 90 days, 20-50 patrons at average $6-8/month (2% of Discord members) is a rea
 
 ### Risk 3 — Wrong First Community (MEDIUM)
 
-**Description:** The first wave of Discord members is MPC users who want sample packs and drum kits, not synthesis enthusiasts who want to explore coupling and 76 engines. These users have valid needs that XOlokun may partially serve, but they will not become the coupling-evangelists who drive organic growth.
+**Description:** The first wave of Discord members is MPC users who want sample packs and drum kits, not synthesis enthusiasts who want to explore coupling and 76 engines. These users have valid needs that XOceanus may partially serve, but they will not become the coupling-evangelists who drive organic growth.
 
 **Intervention:**
 - Source the nucleus community explicitly from synthesis enthusiasts. r/synthesizers, KVR, Elektronauts are the right seeding grounds. r/mpcusers is secondary — relevant but not primary.
@@ -414,9 +414,9 @@ When making any decision about community strategy, apply this test:
 
 1. Does this serve the music? If a mechanic does not ultimately produce better music — by helping users make better sounds, discover new techniques, or connect with the right creative community — it should not exist.
 
-2. Does this serve the mythology? The water column, the creatures, the Alignment Rite, the Spawning Events — these are mechanisms, not decoration. They serve the music by creating a gathering gravity that keeps users connected to each other and to XOlokun across time.
+2. Does this serve the mythology? The water column, the creatures, the Alignment Rite, the Spawning Events — these are mechanisms, not decoration. They serve the music by creating a gathering gravity that keeps users connected to each other and to XOceanus across time.
 
-3. Does this serve the community? Community serves the music and the mythology. It does not replace them. A community that forms around XOlokun because of marketing, without the music being exceptional, will not hold. The community is the downstream consequence of the first two things being right.
+3. Does this serve the community? Community serves the music and the mythology. It does not replace them. A community that forms around XOceanus because of marketing, without the music being exceptional, will not hold. The community is the downstream consequence of the first two things being right.
 
 An initiative that serves the community but not the music is a distraction. An initiative that serves the mythology but not the music is decoration. An initiative that serves all three is worth building.
 
@@ -430,7 +430,7 @@ A sustainable weekly cadence for a solo developer with shipping responsibilities
 
 - Discord check-ins: 2-3 per day, 5-10 minutes each
 - Twitter: 3-5 posts per week (milestone updates, Dive Codes, coupling discoveries, honest numbers)
-- Reddit: 1 substantive session per week (participate in discussions, not just post about XOlokun)
+- Reddit: 1 substantive session per week (participate in discussions, not just post about XOceanus)
 - Field Guide / Signal post: 1 post per 2 weeks (not every week — quality over cadence)
 - Patreon dev update: 1 post per month
 - Message in a Bottle: daily, but this takes 2 minutes (find preset, post in Discord, done)
@@ -472,7 +472,7 @@ Month 1-3: slow. Very slow. This is normal. Most community building feels like t
 
 Month 3-6: the compounding starts. Reddit threads get found via search. KVR posts get referenced in forum discussions. YouTube videos from Phase 1 outreach start to appear. The Discord develops regular participants.
 
-Month 6-12: if the music is excellent and the weekly heartbeat has not been missed, the flywheel is running. Community creates content. Content attracts community. Creators find an audience they did not have before. XOlokun gets mentioned in the same threads as Vital and Surge.
+Month 6-12: if the music is excellent and the weekly heartbeat has not been missed, the flywheel is running. Community creates content. Content attracts community. Creators find an audience they did not have before. XOceanus gets mentioned in the same threads as Vital and Surge.
 
 None of this requires anything beyond the 12-hour weekly budget. It requires that budget to be protected, consistent, and focused.
 

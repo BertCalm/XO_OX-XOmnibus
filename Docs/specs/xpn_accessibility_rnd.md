@@ -57,7 +57,7 @@ The $9–35 range is already accessible for most producers. For those who can't 
 
 **Monthly free preset drop**: One standalone .xpn preset released free on the first of each month. Hosted on GitHub releases (no Gumroad friction). Rotates across engines to expose the breadth of XO_OX. Twelve free presets per year adds up to a meaningful free library.
 
-**GitHub-hosted singles**: Permanent free presets in the `XO_OX-XOlokun` repo under a `FreePresets/` directory. Low maintenance, discoverable via GitHub search, builds goodwill in communities that distrust paywalls.
+**GitHub-hosted singles**: Permanent free presets in the `XO_OX-XOceanus` repo under a `FreePresets/` directory. Low maintenance, discoverable via GitHub search, builds goodwill in communities that distrust paywalls.
 
 **ONSET flagship stays free**: The existing ONSET flagship pack as a permanent free entry point is the strongest single move. Keep it free, keep it updated. It functions as the best advertisement for paid packs.
 

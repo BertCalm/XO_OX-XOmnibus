@@ -2,7 +2,7 @@
 
 **Date:** March 2026
 **Status:** Phase 1 — Architecture designed, pending scaffold
-**Engine location:** `Source/Engines/Orbital/OrbitalEngine.h` (native XOlokun engine, self-contained)
+**Engine location:** `Source/Engines/Orbital/OrbitalEngine.h` (native XOceanus engine, self-contained)
 
 ---
 
@@ -36,7 +36,7 @@ OrbitalEngine            — SynthEngine impl: MIDI, coupling, params, render
 | Max partials per voice | 64 |
 | Max simultaneous partials | 384 (6 × 64) |
 | CPU budget | <15% without FM, <20% with FM @ 44100Hz, 512 block |
-| DSP location | `Source/Engines/Orbital/OrbitalEngine.h` (inline, native XOlokun) |
+| DSP location | `Source/Engines/Orbital/OrbitalEngine.h` (inline, native XOceanus) |
 
 ---
 
@@ -1103,7 +1103,7 @@ Output (stereo)
 |------|--------|
 | `CMakeLists.txt` | Add `Source/Engines/Orbital/OrbitalEngine.cpp` to target sources |
 | `Source/Core/PresetManager.h` | Add `"Orbital"`, `"XOrbital"` to `validEngineNames` |
-| `Source/XOlokunProcessor.cpp` | `#include "Engines/Orbital/OrbitalEngine.h"` |
+| `Source/XOceanusProcessor.cpp` | `#include "Engines/Orbital/OrbitalEngine.h"` |
 
 ### 15.3 PresetManager Update (Blocking Prerequisite)
 
@@ -1132,10 +1132,10 @@ inline const juce::StringArray validEngineNames {
    - Parameter registration (35 params)
    - Coupling (9 types accepted)
 3. Write 3-line `.cpp` stub
-4. Update `CMakeLists.txt`, `PresetManager.h`, `XOlokunProcessor.cpp`
+4. Update `CMakeLists.txt`, `PresetManager.h`, `XOceanusProcessor.cpp`
 5. Build verification
 
-**Gate:** Loads in XOlokun, produces sine partials, morph works, MIDI triggers voices.
+**Gate:** Loads in XOceanus, produces sine partials, morph works, MIDI triggers voices.
 
 ### Phase 3 — Formant Filter + Group Envelopes + FM
 

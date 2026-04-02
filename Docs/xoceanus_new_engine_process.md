@@ -1,6 +1,6 @@
-# XOlokun — New Engine Development Process
+# XOceanus — New Engine Development Process
 
-**Purpose:** Define the process for designing, building, and integrating new synth engine modules into XOlokun — starting as independent sandboxes, ending as first-class gallery exhibitions.
+**Purpose:** Define the process for designing, building, and integrating new synth engine modules into XOceanus — starting as independent sandboxes, ending as first-class gallery exhibitions.
 
 **Invoke via Claude Code:** `/new-xo-engine`
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-Every XOlokun engine started as a standalone instrument. That workflow is intentional — independent development gives you creative freedom, fast iteration, and a shippable product at every stage. XOlokun integration happens *after* the instrument has found its voice.
+Every XOceanus engine started as a standalone instrument. That workflow is intentional — independent development gives you creative freedom, fast iteration, and a shippable product at every stage. XOceanus integration happens *after* the instrument has found its voice.
 
 This process codifies that path so new engines are **born standalone, designed for coupling**.
 
@@ -28,7 +28,7 @@ This process codifies that path so new engines are **born standalone, designed f
 └─────────────────────────────────────────────────────────┘
 ```
 
-You can stop at Phase 2 and ship a standalone instrument. Phases 3-4 slot it into XOlokun.
+You can stop at Phase 2 and ship a standalone instrument. Phases 3-4 slot it into XOceanus.
 
 ---
 
@@ -139,7 +139,7 @@ The existing protocol (`synth_playbook/agent_skills/synth_architect_protocol.md`
 - Preset strategy
 - Implementation roadmap
 
-### 1.2 Additional XOlokun-Specific Requirements
+### 1.2 Additional XOceanus-Specific Requirements
 
 On top of the standard architect protocol, define:
 
@@ -223,7 +223,7 @@ src/
 
 1. **DSP in headers.** All audio code lives in `.h` files. This makes it trivially portable.
 
-2. **ParamSnapshot pattern.** Cache parameter pointers once per block. The adapter will map XOlokun APVTS params to the same snapshot struct.
+2. **ParamSnapshot pattern.** Cache parameter pointers once per block. The adapter will map XOceanus APVTS params to the same snapshot struct.
 
 3. **No UI coupling in DSP.** The engine should work with just parameters — no direct UI references in the audio path.
 
@@ -247,7 +247,7 @@ Use the playbook protocols as needed:
 - `Run CPU Profiling Protocol` — performance check
 - `Run Product Identity Protocol` — sharpen the character
 
-### 2.4 Preset Design (XOlokun-Ready from Day One)
+### 2.4 Preset Design (XOceanus-Ready from Day One)
 
 Even in standalone mode, design presets in `.xometa` format:
 
@@ -274,7 +274,7 @@ Even in standalone mode, design presets in `.xometa` format:
 }
 ```
 
-**Why now?** When you integrate into XOlokun, these presets copy directly into `Presets/XOlokun/{mood}/`. No migration needed.
+**Why now?** When you integrate into XOceanus, these presets copy directly into `Presets/XOceanus/{mood}/`. No migration needed.
 
 ### 2.5 Decision Gate
 
@@ -295,15 +295,15 @@ Even in standalone mode, design presets in `.xometa` format:
 
 ### 3.1 Write the Adapter
 
-The adapter is a thin wrapper that maps your standalone engine to the XOlokun `SynthEngine` interface. It lives in your standalone repo at `src/adapter/XO_____Adapter.h`:
+The adapter is a thin wrapper that maps your standalone engine to the XOceanus `SynthEngine` interface. It lives in your standalone repo at `src/adapter/XO_____Adapter.h`:
 
 ```cpp
 #pragma once
 #include "../engine/VoicePool.h"
 #include "../engine/ParamSnapshot.h"
-#include <xolokun/SynthEngine.h>
+#include <xoceanus/SynthEngine.h>
 
-class XO_____Adapter : public xolokun::SynthEngine {
+class XO_____Adapter : public xoceanus::SynthEngine {
 public:
     // Identity
     juce::String getEngineId() const override { return "ShortName"; }
@@ -342,17 +342,17 @@ public:
         return couplingBuffer.getSample(channel, sampleIndex);
     }
 
-    void applyCouplingInput(xolokun::CouplingType type,
+    void applyCouplingInput(xoceanus::CouplingType type,
                            float amount,
                            const float* sourceBuffer,
                            int numSamples) override
     {
         // Map coupling types to your engine's parameters
         switch (type) {
-            case xolokun::CouplingType::AmpToFilter:
+            case xoceanus::CouplingType::AmpToFilter:
                 // Modulate your filter cutoff by source amplitude
                 break;
-            case xolokun::CouplingType::AudioToFM:
+            case xoceanus::CouplingType::AudioToFM:
                 // Feed source audio into your FM input
                 break;
             // ... handle other relevant types
@@ -377,14 +377,14 @@ private:
 
 ### 3.2 Write the Integration Spec
 
-Create `docs/xolokun_integration_spec.md` in your standalone repo:
+Create `docs/xoceanus_integration_spec.md` in your standalone repo:
 
 ```markdown
-# [XO_____] — XOlokun Integration Spec
+# [XO_____] — XOceanus Integration Spec
 
 ## Engine Identity
 - **Engine ID:** "ShortName"
-- **XOlokun Short Name:** [ALL CAPS, e.g., "POSS"]
+- **XOceanus Short Name:** [ALL CAPS, e.g., "POSS"]
 - **Accent Color:** #______
 - **Max Voices:** N
 - **CPU Budget:** <X% single, <28% in dual-engine preset
@@ -437,7 +437,7 @@ Create `docs/xolokun_integration_spec.md` in your standalone repo:
 
 ### 3.3 Test Coupling Locally
 
-Before integrating into XOlokun, verify the adapter works:
+Before integrating into XOceanus, verify the adapter works:
 1. The adapter compiles against the `SynthEngine.h` header
 2. `getSampleForCoupling()` returns valid samples (not NaN, not silence when playing)
 3. `applyCouplingInput()` produces audible modulation for each supported type
@@ -456,16 +456,16 @@ Before integrating into XOlokun, verify the adapter works:
 
 ## Phase 4: Gallery Install — "Hang It on the Wall"
 
-**Goal:** Register the engine in XOlokun and verify end-to-end.
+**Goal:** Register the engine in XOceanus and verify end-to-end.
 **Time:** 1-2 hours
-**Output:** New engine live in XOlokun
+**Output:** New engine live in XOceanus
 
 ### 4.1 Copy Engine Source
 
-Copy the DSP headers and adapter into XOlokun:
+Copy the DSP headers and adapter into XOceanus:
 
 ```
-XO_OX-XOlokun/
+XO_OX-XOceanus/
 └── Source/
     └── Engines/
         └── ShortName/
@@ -492,13 +492,13 @@ That's it. The macro registers the engine factory at program start.
 
 ### 4.3 Add to CMakeLists.txt
 
-Add the new engine source files to XOlokun's CMake target.
+Add the new engine source files to XOceanus's CMake target.
 
 ### 4.4 Copy Presets
 
 ```bash
 cp -r ~/Documents/GitHub/XO_____/Presets/*.xometa \
-      ~/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun/{mood}/
+      ~/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus/{mood}/
 ```
 
 Presets are already in `.xometa` format with the right parameter namespace — they just work.
@@ -515,9 +515,9 @@ This fingerprints the new presets and injects DNA vectors for similarity search.
 
 Add the new engine to:
 - `CLAUDE.md` — engine modules table
-- `Docs/xolokun_master_specification.md` — engine catalog
-- `Docs/xolokun_technical_design_system.md` — visual DNA table, accent color
-- `Docs/xolokun_brand_identity_and_launch.md` — engine sub-mark
+- `Docs/xoceanus_master_specification.md` — engine catalog
+- `Docs/xoceanus_technical_design_system.md` — visual DNA table, accent color
+- `Docs/xoceanus_brand_identity_and_launch.md` — engine sub-mark
 
 ### 4.7 Design Cross-Engine Presets
 
@@ -530,7 +530,7 @@ Now the fun part — create presets that couple the new engine with existing one
 ### 4.8 Verification Checklist
 
 ```
-[ ] Adapter compiles in XOlokun build
+[ ] Adapter compiles in XOceanus build
 [ ] Engine appears in EngineRegistry
 [ ] Single-engine presets load and play correctly
 [ ] All 4 macros produce audible change
@@ -550,7 +550,7 @@ Now the fun part — create presets that couple the new engine with existing one
 ## The Dual-Target Architecture — Why It Works
 
 ```
-                    STANDALONE                          XOLOKUN
+                    STANDALONE                          XOCEANUS
                     ─────────                           ────────
                     ┌──────────────┐                    ┌──────────────┐
   Your DSP ──────► │ VoicePool.h  │ ◄── same files ──► │ VoicePool.h  │
@@ -566,14 +566,14 @@ Now the fun part — create presets that couple the new engine with existing one
                            │                                   │
                            ▼                                   ▼
                     ┌──────────────┐                    ┌──────────────┐
-  Host ───────────► │ AU/VST3 host │                    │ XOlokun     │
+  Host ───────────► │ AU/VST3 host │                    │ XOceanus     │
                     │ (standalone) │                    │ (gallery)    │
                     └──────────────┘                    └──────────────┘
 ```
 
 The DSP is **identical** in both targets. Only the wrapper changes. This means:
-- Bug fixes in standalone automatically apply in XOlokun
-- New features in standalone are available in XOlokun after a file copy
+- Bug fixes in standalone automatically apply in XOceanus
+- New features in standalone are available in XOceanus after a file copy
 - The standalone product continues to exist independently
 - You never have to "port" anything — it's already there
 
@@ -581,7 +581,7 @@ The DSP is **identical** in both targets. Only the wrapper changes. This means:
 
 ## Quick Reference: What's Different from Pure Standalone
 
-| Aspect | Pure Standalone | XOlokun-Ready Standalone |
+| Aspect | Pure Standalone | XOceanus-Ready Standalone |
 |--------|----------------|--------------------------|
 | Parameter IDs | Any format | Namespaced: `{short}_{param}` |
 | Preset format | Any | `.xometa` from day one |

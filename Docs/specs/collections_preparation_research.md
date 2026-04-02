@@ -1,6 +1,6 @@
 # Collections Build Preparation Research
 
-*March 2026 | 68 engines across 3 collections | V2 Paid Expansion Packs for XOlokun*
+*March 2026 | 68 engines across 3 collections | V2 Paid Expansion Packs for XOceanus*
 
 ---
 
@@ -19,7 +19,7 @@
 
 ### 1.1 The Engine Adapter Pattern
 
-Every XOlokun engine implements the `SynthEngine` interface (`Source/Core/SynthEngine.h`). The contract:
+Every XOceanus engine implements the `SynthEngine` interface (`Source/Core/SynthEngine.h`). The contract:
 
 ```
 prepare(sampleRate, maxBlockSize)   -- allocate buffers
@@ -51,7 +51,7 @@ getEngineId() / getAccentColour() / getMaxVoices()
    ```
 3. Add source files to `CMakeLists.txt`
 4. Engine appears in `EngineRegistry` automatically at static init time
-5. Copy `.xometa` presets to `Presets/XOlokun/{mood}/`
+5. Copy `.xometa` presets to `Presets/XOceanus/{mood}/`
 6. Run `Tools/compute_preset_dna.py` for Sonic DNA fingerprinting
 7. Update `CLAUDE.md` engine table, master spec, and design system docs
 
@@ -73,7 +73,7 @@ The APVTS merges all engine layouts. With 34 engines currently registered, that 
 
 ### 1.4 The 5th Slot Architecture
 
-The current `XOlokunProcessor` has `MaxSlots = 4` with a fixed-size array:
+The current `XOceanusProcessor` has `MaxSlots = 4` with a fixed-size array:
 ```cpp
 std::array<std::shared_ptr<SynthEngine>, MaxSlots> engines;
 std::array<CrossfadeState, MaxSlots> crossfades;
@@ -179,7 +179,7 @@ Existing modules in `Source/DSP/` available to all engines:
 
 ### 2.2 JUCE Implementation Patterns for Kitchen Engines
 
-Based on existing XOlokun engines, each Kitchen engine should follow this structure:
+Based on existing XOceanus engines, each Kitchen engine should follow this structure:
 
 ```
 Source/Engines/{Name}/

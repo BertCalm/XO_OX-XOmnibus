@@ -77,7 +77,7 @@ All UI elements use the engine accent color at varying alpha/tint levels:
 
 ## Window Chrome
 
-- Custom title bar (not native OS): dark bg #161618, "XOlokun — PlaySurface" in center
+- Custom title bar (not native OS): dark bg #161618, "XOceanus — PlaySurface" in center
 - PIN button in title bar for always-on-top toggle
 - macOS traffic light dots (close/minimize/maximize)
 - Window default: 720x520, resizable 320-1200, always-on-top by default

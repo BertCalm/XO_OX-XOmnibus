@@ -1,4 +1,4 @@
-# XOlokun Documentation Governance
+# XOceanus Documentation Governance
 
 **Created:** 2026-03-20
 **Purpose:** Policy document — when to update which file, authority levels, SLAs, and maintenance ownership.
@@ -9,9 +9,9 @@
 
 | Level | Documents | Description |
 |-------|-----------|-------------|
-| **L1 — Canonical** | `CLAUDE.md`, `Docs/xolokun_master_specification.md` | Single source of truth. Must be updated within 24h of any material change. |
+| **L1 — Canonical** | `CLAUDE.md`, `Docs/xoceanus_master_specification.md` | Single source of truth. Must be updated within 24h of any material change. |
 | **L2 — Living Index** | `Docs/seances/seance_cross_reference.md`, `Docs/MANIFEST.md`, `Skills/README.md` | Accurate indexes. Must stay in sync with L1. |
-| **L3 — Reference** | `Docs/xolokun_sound_design_guides.md`, `Skills/*/SKILL.md`, `Docs/fleet_health_*.md` | Deep reference. Updated per engine/feature cycle. |
+| **L3 — Reference** | `Docs/xoceanus_sound_design_guides.md`, `Skills/*/SKILL.md`, `Docs/fleet_health_*.md` | Deep reference. Updated per engine/feature cycle. |
 | **L4 — Historical** | `Docs/prism_sweep_*.md`, `Docs/seances/*.md`, `Docs/guild/*.md` | Immutable once committed. Archival value. |
 | **L5 — Archive** | `Docs/plans/`, `Docs/specs/archive/`, superseded docs | Completed or obsolete. Add status headers, do not delete. |
 
@@ -24,11 +24,11 @@
 | Document | Update Required | Timing | Notes |
 |----------|----------------|--------|-------|
 | `CLAUDE.md` | ✅ Required | Within 24h | Add to engine list, engine table, parameter prefix table |
-| `Docs/xolokun_master_specification.md` | ✅ Required | Within 24h | Section 3.1 engine table, section 3 coupling if new type added |
-| `Source/XOlokunProcessor.cpp` | ✅ Required | On integration | Register engine, add to addParameters, SilencePeriod if needed |
+| `Docs/xoceanus_master_specification.md` | ✅ Required | Within 24h | Section 3.1 engine table, section 3 coupling if new type added |
+| `Source/XOceanusProcessor.cpp` | ✅ Required | On integration | Register engine, add to addParameters, SilencePeriod if needed |
 | `Source/Core/PresetManager.h` | ✅ Required | On integration | Add to validEngineNames, frozenPrefixForEngine |
 | `Docs/seances/seance_cross_reference.md` | ✅ Required | After seance | Add seance row with score, blessings, D-violations, quote |
-| `Docs/xolokun_sound_design_guides.md` | ✅ Required | Within 1 week | Add per-engine guide section |
+| `Docs/xoceanus_sound_design_guides.md` | ✅ Required | Within 1 week | Add per-engine guide section |
 | `Skills/README.md` | ⚠️ If skill changes | On skill creation | Only if a new skill was created for the engine |
 | `CMakeLists.txt` | ✅ Required | On integration | Add .h and .cpp to source list |
 
@@ -38,9 +38,9 @@
 |----------|----------------|--------|
 | `Source/Core/SynthEngine.h` (CouplingType enum) | ✅ Required | On implementation |
 | `CLAUDE.md` line "14 coupling types" | ✅ Required | Within 24h |
-| `Docs/xolokun_master_specification.md` section 4.1 | ✅ Required | Within 24h |
+| `Docs/xoceanus_master_specification.md` section 4.1 | ✅ Required | Within 24h |
 | `Skills/coupling-interaction-cookbook/SKILL.md` | ✅ Required | Within 1 week |
-| `Docs/xolokun_new_engine_process.md` appendix | ⚠️ If notable | Within 1 week |
+| `Docs/xoceanus_new_engine_process.md` appendix | ⚠️ If notable | Within 1 week |
 
 ### Scenario: New Blessing Confirmed (Ghost Council)
 
@@ -103,8 +103,8 @@
 
 ### Deprecated (Don't Update, Add Archive Header Instead)
 
-- `Docs/xo_mega_tool_preset_system.md` — superseded by `Docs/xolokun_preset_spec_for_builder.md`
-- `Docs/xo_mega_tool_visual_identity.md` — superseded by `Docs/xolokun_technical_design_system.md`
+- `Docs/xo_mega_tool_preset_system.md` — superseded by `Docs/xoceanus_preset_spec_for_builder.md`
+- `Docs/xo_mega_tool_visual_identity.md` — superseded by `Docs/xoceanus_technical_design_system.md`
 - Any `Docs/plans/` file with `STATUS: COMPLETED`
 
 ---

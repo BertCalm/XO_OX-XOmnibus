@@ -48,7 +48,7 @@ The challenge is named "The Corridor" because a corridor isn't a room — it's t
 
 Two engines. One coupling route. Make the seam between them audible.
 
-The coupling system in XOlokun is 14 routing types that let one engine drive another's filter, pitch, morph, FM input, or physical parameters in real time. The Field Guide post on this drops this week (xo-ox.org/field-guide). But reading about it is different from designing with it.
+The coupling system in XOceanus is 14 routing types that let one engine drive another's filter, pitch, morph, FM input, or physical parameters in real time. The Field Guide post on this drops this week (xo-ox.org/field-guide). But reading about it is different from designing with it.
 
 **Your challenge:**
 

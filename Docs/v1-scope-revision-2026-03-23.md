@@ -1,4 +1,4 @@
-# XOlokun V1 Scope Revision
+# XOceanus V1 Scope Revision
 **Date:** 2026-03-23
 **Status:** LIVING DOCUMENT — no hard release deadline; quality before ship
 **Supersedes:** `Docs/plans/v1-launch-plan.md`, `Docs/v1-launch-plan-2026-03-20.md`
@@ -123,7 +123,7 @@ Before any public distribution, the following must all be true:
 - [ ] All 6 Doctrines resolved fleet-wide for V1 engines
 - [ ] No unresolved P0 DSP bugs in any V1 engine
 - [ ] Kitchen Collection preset expansion complete (all KC engines ≥ 100 presets)
-- [ ] BROTH coordinator written in `XOlokunProcessor.cpp` (if any BROTH engine is in V1)
+- [ ] BROTH coordinator written in `XOceanusProcessor.cpp` (if any BROTH engine is in V1)
 - [ ] Build PASS + auval PASS
 - [ ] `Docs/seance_cross_reference.md` complete for all V1 engines
 - [ ] `Docs/MANIFEST.md` reflects all V1 documentation

@@ -1,9 +1,9 @@
-# XOlokun Board Governance Audit — 2026-03-24
+# XOceanus Board Governance Audit — 2026-03-24
 
 **Prepared by:** XO_OX Board of Directors (Overnight Audit Session)
 **Scope:** V1 Launch Readiness — 4 Pillars: Brand, Security, Standards, Launch
 **Date:** 2026-03-24
-**Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
+**Repo:** `~/Documents/GitHub/XO_OX-XOceanus/`
 
 ---
 
@@ -11,12 +11,12 @@
 
 | ID | Pillar | Finding | Severity | Status |
 |----|--------|---------|----------|--------|
-| B-001 | Brand | "XOmnibus" in `CONTRIBUTING.md` auval commands (old AU code, wrong case) | P1 | Open |
-| B-002 | Brand | `site/updates.html` has one XOmnibus reference — in correct narrative context | P3 | Informational |
-| B-003 | Brand | `Docs/design/xomnibus_design_guidelines.md` — filename and one footer line use old name | P3 | Open |
+| B-001 | Brand | "XOceanus" in `CONTRIBUTING.md` auval commands (old AU code, wrong case) | P1 | Open |
+| B-002 | Brand | `site/updates.html` has one XOceanus reference — in correct narrative context | P3 | Informational |
+| B-003 | Brand | `Docs/design/xoceanus_design_guidelines.md` — filename and one footer line use old name | P3 | Open |
 | B-004 | Brand | `site/index.html` missing Space Grotesk font — loaded only on aquarium and updates pages | P2 | Open |
 | B-005 | Brand | AU identifier still `Xomn` / `XoOx` — CMakeLists updated to `Xolk`; docs not yet updated | P1 | Partially Resolved |
-| B-006 | Brand | Source code and CMakeLists are fully XOlokun-clean (0 XOmnibus references) | — | PASS |
+| B-006 | Brand | Source code and CMakeLists are fully XOceanus-clean (0 XOceanus references) | — | PASS |
 | B-007 | Brand | design-tokens.css fully reflects brand packet: Abyssal `#080B1A`, XO Gold `#E9C46A`, depth system, all 3 typefaces | — | PASS |
 | S-001 | Security | No hardcoded API keys, secrets, or tokens found in source code | — | PASS |
 | S-002 | Security | `SecureKeyStore.h` uses AES-256 + macOS Keychain — architecture is sound | — | PASS |
@@ -27,16 +27,16 @@
 | T-001 | Standards | 18 engine directories missing `.cpp` stub files (header-only is correct per architecture rules) | — | PASS (by design) |
 | T-002 | Standards | Engine file naming is inconsistent: `OperaAdapter.cpp` vs `ObrixEngine.cpp` vs `OsmosisEngine.h` | P2 | Open |
 | T-003 | Standards | Preset schema is consistent across sampled files (`schema_version`, `name`, `mood`, `dna`, `macroLabels`) | — | PASS |
-| T-004 | Standards | `Presets/XOlokun/Oxytocin/` is a stray directory with mood-based subdirectories — not a valid mood dir | P2 | Open |
+| T-004 | Standards | `Presets/XOceanus/Oxytocin/` is a stray directory with mood-based subdirectories — not a valid mood dir | P2 | Open |
 | T-005 | Standards | `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` all exist. GitHub issue templates exist. | — | PASS |
 | T-006 | Standards | `CONTRIBUTING.md` cites `auval -v aumu Xomn Xoox` — both wrong code (`Xomn` not `Xolk`) and wrong case (`Xoox` not `XoOx`) | P1 | Open |
 | L-001 | Launch | V1 launch plan `v1-launch-plan-2026-03-20.md` hard gates are all still "PENDING" as-written in that doc | P0 | Needs verification |
 | L-002 | Launch | No V1.0 git tag exists — only `archive/v1-launch-prep` tag | P0 | Open |
-| L-003 | Launch | Download page: `site/index.html` links to GitHub releases (`BertCalm/XO_OX-XOlokun/releases`) — no release exists | P0 | Open |
+| L-003 | Launch | Download page: `site/index.html` links to GitHub releases (`BertCalm/XO_OX-XOceanus/releases`) — no release exists | P0 | Open |
 | L-004 | Launch | Patreon URL (`www.patreon.com/cw/XO_OX`) appears 43 times across site HTML. Per MEMORY.md this IS the live URL — but `Docs/patreon-url-sweep-2026-03-20.md` still documents it as placeholder | P2 | Needs verification |
 | L-005 | Launch | No press kit folder exists at `site/press-kit/` — required by v1-launch-plan | P1 | Open |
 | L-006 | Launch | No hero preset audio clips on site — 71 required (Phase 0 aquarium), 5 required for download page | P1 | Open |
-| L-007 | Launch | `Presets/XOlokun/` has 16 mood directories (including the stray `Oxytocin/` dir) vs spec's 15 canonical moods | P2 | Open |
+| L-007 | Launch | `Presets/XOceanus/` has 16 mood directories (including the stray `Oxytocin/` dir) vs spec's 15 canonical moods | P2 | Open |
 
 ---
 
@@ -52,34 +52,34 @@ auval -v aumu Xomn Xoox
 
 This is wrong on two counts:
 
-1. **Wrong plugin code**: `CMakeLists.txt` now uses `PLUGIN_CODE Xolk` (changed as part of the XOlokun rename, per `Docs/rebrand-xolokun-rac-review.md`). The correct auval command is `aumu Xolk XoOx`.
+1. **Wrong plugin code**: `CMakeLists.txt` now uses `PLUGIN_CODE Xolk` (changed as part of the XOceanus rename, per `Docs/rebrand-xoceanus-rac-review.md`). The correct auval command is `aumu Xolk XoOx`.
 2. **Wrong case**: `Xoox` should be `XoOx`. The four-character codes are case-sensitive. The build verification log (`Docs/build-logs/build_verification_11j.md`) explicitly flags this: "codes documented elsewhere as `XOmn`/`XOox` do not match the binary — use `Xomn`/`XoOx`." The code has now moved to `Xolk` and case must be `XoOx`.
 
 This is a P1 because any contributor following CONTRIBUTING.md will run a failing auval command and may incorrectly conclude the build is broken.
 
 **Fix required:** Update `CONTRIBUTING.md` lines 29 and 81 to `auval -v aumu Xolk XoOx`.
 
-Also update all docs that still cite `aumu Xomn XoOx` — these are now stale post-rename: `Docs/v1-launch-plan-2026-03-20.md` (line 139), `Docs/plans/xomnibus_v1_launch_master_plan.md`, and `Docs/build-logs/` files.
+Also update all docs that still cite `aumu Xomn XoOx` — these are now stale post-rename: `Docs/v1-launch-plan-2026-03-20.md` (line 139), `Docs/plans/xoceanus_v1_launch_master_plan.md`, and `Docs/build-logs/` files.
 
 ---
 
-### Finding B-002 — P3: updates.html XOmnibus reference is intentional
+### Finding B-002 — P3: updates.html XOceanus reference is intentional
 
 `site/updates.html` line 752:
 
-> "The old name was XOmnibus. It meant 'everything bus' — a transportation metaphor. Accurate. Utilitarian. Completely wrong."
+> "The old name was XOceanus. It meant 'everything bus' — a transportation metaphor. Accurate. Utilitarian. Completely wrong."
 
 This is **correct brand narrative** — the rename story. No action required. Verified as intentional.
 
 ---
 
-### Finding B-003 — P3: xomnibus_design_guidelines.md filename and footer
+### Finding B-003 — P3: xoceanus_design_guidelines.md filename and footer
 
-`Docs/design/xomnibus_design_guidelines.md` has one XOmnibus occurrence in its own footer (line 836):
+`Docs/design/xoceanus_design_guidelines.md` has one XOceanus occurrence in its own footer (line 836):
 
-> *"This document was compiled from all design-related sources in the XO_OX-XOmnibus repo on 2026-03-17."*
+> *"This document was compiled from all design-related sources in the XO_OX-XOceanus repo on 2026-03-17."*
 
-The filename itself (`xomnibus_design_guidelines.md`) predates the rename. The document is internal-only (not linked from the site) and has been superseded by `Docs/design/xolokun-definitive-ui-spec.md`. No public exposure. Recommend renaming the file and updating the footer in a cleanup pass, but this is not ship-blocking.
+The filename itself (`xoceanus_design_guidelines.md`) predates the rename. The document is internal-only (not linked from the site) and has been superseded by `Docs/design/xoceanus-definitive-ui-spec.md`. No public exposure. Recommend renaming the file and updating the footer in a cleanup pass, but this is not ship-blocking.
 
 ---
 
@@ -112,10 +112,10 @@ PLUGIN_CODE Xolk
 
 However, multiple documentation files still reference the old `Xomn` code as authoritative (not as historical records):
 - `Docs/v1-launch-plan-2026-03-20.md` line 139: `auval -v aumu Xomn XoOx`
-- `Docs/plans/xomnibus_v1_launch_master_plan.md` lines 29, 288, 338
+- `Docs/plans/xoceanus_v1_launch_master_plan.md` lines 29, 288, 338
 - `Docs/build-logs/build_verification_12j.md` (could confuse contributors checking historical context)
 
-The `Docs/rebrand-xolokun-rac-review.md` correctly documents the change from `Xomn` to `Xolk` and the rationale ("Must never change again after V1"). The source of truth is correct; the documentation is stale.
+The `Docs/rebrand-xoceanus-rac-review.md` correctly documents the change from `Xomn` to `Xolk` and the rationale ("Must never change again after V1"). The source of truth is correct; the documentation is stale.
 
 **Verdict on AU identifier change:** The `Xomn` → `Xolk` change is correctly locked pre-V1. Post-V1 this code must never change.
 
@@ -123,7 +123,7 @@ The `Docs/rebrand-xolokun-rac-review.md` correctly documents the change from `Xo
 
 ### Findings B-006, B-007 — PASS
 
-Source code is fully XOlokun-clean: zero XOmnibus references across all `Source/` files. CMakeLists.txt uses `XOlokun` throughout.
+Source code is fully XOceanus-clean: zero XOceanus references across all `Source/` files. CMakeLists.txt uses `XOceanus` throughout.
 
 The `design-tokens.css` fully reflects the brand packet's visual identity:
 - Abyssal `#080B1A` — present as `--xo-abyssal`
@@ -218,24 +218,24 @@ DNA fields (brightness, warmth, movement, density, space, aggression) are unifor
 
 ---
 
-### Finding T-004 — P2: Stray `Presets/XOlokun/Oxytocin/` directory
+### Finding T-004 — P2: Stray `Presets/XOceanus/Oxytocin/` directory
 
 The canonical preset mood directories (per CLAUDE.md and the product spec) are 15: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic.
 
-`Presets/XOlokun/` contains a 16th directory: `Oxytocin/`. Inspection reveals this is itself a nested structure containing mood-based subdirectories (`Atmosphere/`, `Entangled/`, `Ethereal/`, `Flux/`, `Foundation/`, `Kinetic/`, `Luminous/`, `Submerged/`) with preset `.xometa` files inside them. This is a **non-standard layout** — OXYTOCIN presets that should be in the canonical mood directories are instead organized under a per-engine subdirectory.
+`Presets/XOceanus/` contains a 16th directory: `Oxytocin/`. Inspection reveals this is itself a nested structure containing mood-based subdirectories (`Atmosphere/`, `Entangled/`, `Ethereal/`, `Flux/`, `Foundation/`, `Kinetic/`, `Luminous/`, `Submerged/`) with preset `.xometa` files inside them. This is a **non-standard layout** — OXYTOCIN presets that should be in the canonical mood directories are instead organized under a per-engine subdirectory.
 
 This creates two problems:
 1. The preset browser will likely not surface these presets unless it explicitly handles this nested path format.
 2. It sets a precedent for per-engine directories that conflicts with the mood-based organizational scheme all other presets follow.
 
-**Fix:** Flatten the Oxytocin presets — move `Presets/XOlokun/Oxytocin/Atmosphere/*.xometa` → `Presets/XOlokun/Atmosphere/`, and so on for each mood, then remove the empty `Oxytocin/` directory.
+**Fix:** Flatten the Oxytocin presets — move `Presets/XOceanus/Oxytocin/Atmosphere/*.xometa` → `Presets/XOceanus/Atmosphere/`, and so on for each mood, then remove the empty `Oxytocin/` directory.
 
 ---
 
 ### Finding T-005 — PASS
 
 Community infrastructure files verified present and substantive:
-- `README.md`: Complete — XOlokun branding, 73-engine table, mythology narrative, mission statement. No stale XOmnibus references.
+- `README.md`: Complete — XOceanus branding, 73-engine table, mythology narrative, mission statement. No stale XOceanus references.
 - `CONTRIBUTING.md`: Present with build setup, environment instructions, preset submission guidelines. (Note B-001 above for the auval command error.)
 - `SECURITY.md`: Present with responsible disclosure process, scope, and supported versions.
 - `CODE_OF_CONDUCT.md`: Contributor Covenant — complete, with enforcement contact `conduct@xo-ox.org`.
@@ -280,7 +280,7 @@ Per the launch plan, "GitHub repo goes public" and "tag v1.0.0" happen at 9:05 A
 
 The download button in `site/index.html` links to:
 ```
-https://github.com/BertCalm/XO_OX-XOlokun/releases
+https://github.com/BertCalm/XO_OX-XOceanus/releases
 ```
 
 This page will show "no releases" until the tag is created. The link must be live before users are sent to it.
@@ -291,7 +291,7 @@ This page will show "no releases" until the tag is created. The link must be liv
 
 The download section in `site/index.html` (line 2585) links to:
 ```
-https://github.com/BertCalm/XO_OX-XOlokun/releases
+https://github.com/BertCalm/XO_OX-XOceanus/releases
 ```
 
 As of this audit there are no public GitHub releases at that URL. The download CTA is the single most critical user action the site exists to drive. A broken download link on launch day is a P0 — any coverage or traffic directed to the site will hit a dead end.
@@ -314,7 +314,7 @@ The site uses `https://www.patreon.com/cw/XO_OX` (43 occurrences across site HTM
 ### Finding L-005 — P1: Press kit does not exist on site
 
 The v1-launch-plan requires a `/press-kit/` folder at XO-OX.org containing:
-- `xolokun-logo-light.svg` + `xolokun-logo-dark.svg`
+- `xoceanus-logo-light.svg` + `xoceanus-logo-dark.svg`
 - Hero screenshots (4K)
 - `one-sheet.pdf`
 - `fact-sheet.md`
@@ -336,7 +336,7 @@ This is a manual task that cannot be automated. It requires Logic Pro sessions a
 
 ### Finding L-007 — P2: Stray preset directory creates 16th mood
 
-See T-004. The `Presets/XOlokun/Oxytocin/` directory is the direct symptom. Beyond the organizational issue, if the product lists 15 moods but the filesystem has 16 directories, any script or UI that builds a mood list from the filesystem will display "Oxytocin" as a mood — which it is not.
+See T-004. The `Presets/XOceanus/Oxytocin/` directory is the direct symptom. Beyond the organizational issue, if the product lists 15 moods but the filesystem has 16 directories, any script or UI that builds a mood list from the filesystem will display "Oxytocin" as a mood — which it is not.
 
 ---
 
@@ -361,19 +361,19 @@ See T-004. The `Presets/XOlokun/Oxytocin/` directory is the direct symptom. Beyo
 9. **B-004** Add Space Grotesk to `site/index.html` Google Fonts link.
 10. **S-004** Expand `.gitignore` with missing credential file patterns.
 11. **T-002** Document the `{Name}Engine.h` naming standard in CONTRIBUTING.md. Note Opera as a documented exception.
-12. **T-004 / L-007** Flatten `Presets/XOlokun/Oxytocin/` nested structure into the canonical 15 mood directories.
+12. **T-004 / L-007** Flatten `Presets/XOceanus/Oxytocin/` nested structure into the canonical 15 mood directories.
 13. **L-004** Verify Patreon URL is live and tiers are active. Update launch plan gate status.
 
 ### P3 — Nice to Have
 
 14. **B-002** No action required on `updates.html` — narrative context is correct.
-15. **B-003** Rename `Docs/design/xomnibus_design_guidelines.md` to `xolokun_design_guidelines.md` and update its footer in a cleanup pass.
+15. **B-003** Rename `Docs/design/xoceanus_design_guidelines.md` to `xoceanus_design_guidelines.md` and update its footer in a cleanup pass.
 
 ---
 
 ## Overall Assessment
 
-The product is architecturally solid and the brand rename is substantially complete. Source code and the CSS design system are fully aligned with the XOlokun brand. Community infrastructure (README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue templates) is in place — a genuine strength relative to the launch plan's concern.
+The product is architecturally solid and the brand rename is substantially complete. Source code and the CSS design system are fully aligned with the XOceanus brand. Community infrastructure (README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue templates) is in place — a genuine strength relative to the launch plan's concern.
 
 The primary V1 launch risk is not technical quality — it is readiness infrastructure: no GitHub release exists, the download link is dead, no press kit exists, and no audio clips are recorded. These are all actionable and none require code changes. The competitive window (month 5 of 6-12) makes urgency appropriate.
 

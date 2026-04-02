@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
 **Updated:** 2026-03-24 — All 73 engines added; 72 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23); OSMOSIS design-only (not yet seanced)
-**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
+**Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
 ---
@@ -24,7 +24,7 @@
 | XOuroboros | OUROBOROS | Production-ready (~9.0 est.) | B003 Leash + B007 Velocity Coupling | None | D003 compliant — most rigorous engine | "Lorenz, Rossler, Chua, Aizawa — this engine cites its sources. It is science." |
 | XOceanic | OCEANIC | 7.1/10 | B013 Chromatophore Modulator | None | D001: zero velocity response at all (resolved Round 9E) | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." |
 | XOdyssey | ODYSSEY | 7.6/10 | V007 Climax Paradigm | None | D004: crossFmDepth dead (fixed); AfterTouch/ModWheel never fed (resolved) | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." |
-| XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only (resolved); D005: no LFO in adapter (FIXED: eraPhase 0–4 Hz) | "The ERA triangle arrives at the XOlokun dock with no luggage." |
+| XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only (resolved); D005: no LFO in adapter (FIXED: eraPhase 0–4 Hz) | "The ERA triangle arrives at the XOceanus dock with no luggage." |
 | XOppossum | OVERBITE | Full approval (~9.2 est.) | B008 Five-Macro System | None | None (best expression in fleet) | "These macros are not parameters — they are survival strategies." |
 | XOwlfish | OWLFISH | 7.1/10 | B014 Mixtur-Trautonium Oscillator | None | D004: owl_morphGlide dead (FIXED); D005: zero LFOs (FIXED: grainLfoPhase 0.05 Hz) | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." |
 | XObese | OBESE | 6.6/10 → ~8.5 est. (post-fix 2026-03-21) | B015 Mojo Control | None | D002 + D005: zero LFOs (FIXED: fat_lfo1Rate/Depth/Target added); D006: no CC (resolved) | "The Mojo axis is unique in synthesis history — a continuous analog↔digital spectrum — and nothing modulates it." |
@@ -308,7 +308,7 @@
 | KC-P0-02 | OLATE | olate_terroir dead for 0.7–1.0 range (East Coast + Japanese regions) | OlateEngine.h — implement DSP for 2 missing terroir regions | **FIXED** — East Coast (0.7–0.98) + Japanese (0.98+) branches live |
 | KC-P0-03 | OVERWASH | wash_interference / spectralField[32] declared but never written or read | OverwashEngine.h renderBlock — populate spectralField from voice output | Open |
 | KC-P0-04 | OCHRE | (void) lfo2Val — LFO2 computed but explicitly discarded | OchreEngine.h — wire lfo2Val to a synthesis target | **FIXED** — D004 fix comment at line 739, caramel modulation wired |
-| KC-P0-05 | BROTH | setBrothSessionAge/getSessionAge/getConcentrate/getSpectralMass exist but no coordinator calls them | XOlokunProcessor.cpp — write BROTH coordinator in renderBlock | Open |
+| KC-P0-05 | BROTH | setBrothSessionAge/getSessionAge/getConcentrate/getSpectralMass exist but no coordinator calls them | XOceanusProcessor.cpp — write BROTH coordinator in renderBlock | Open |
 | KC-P0-06 | OTO | Organ crossfade (prevOrganGain/prevOrganModel) declared, never written or read | OtoEngine.h renderBlock — implement crossfade | **FIXED** — BUG-1 fix at line 604, 50ms crossfade working |
 | KC-P0-07 | OTO | Melodica fundamental unaliased sawtooth above C5 | OtoEngine.h — PolyBLEP sawtooth for Melodica partial 0 | Open |
 | KC-P0-08 | OTIS | Leslie Doppler: amplitude modulation only, no pitch modulation (OCTAVE is pipe organ, no Leslie) | OtisEngine.h — add pitch modulation to Leslie model | **FIXED** — delay-buffer Doppler in OtisEngine.h; OCTAVE attribution was incorrect (no Leslie in pipe organ) |
@@ -375,7 +375,7 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 | D004: oblq_percDecay discarded | 3B | clickDecay now passed to ObliqueBounce::fireClick() |
 | D001: Filter envelope added | 7B | oblq_filterEnvDepth parameter; velocity × envelope sweeps SVF cutoff by up to +7000 Hz |
 | Preset expansion 6→16 | 7C | 10 new presets covering Foundation, Atmosphere, Prism, Flux, Entangled moods |
-| Macros wired: FOLD, BOUNCE, COLOR, SPACE | 7D | All 4 XOlokun standard macros produce audible change |
+| Macros wired: FOLD, BOUNCE, COLOR, SPACE | 7D | All 4 XOceanus standard macros produce audible change |
 | D006: Aftertouch + Mod Wheel | 7F | Channel pressure → prism mix depth (+0.3); CC1 mod wheel → prism color spread (+0.3) |
 | D005: Prism LFO | 8A | obliqueLfoPhase double accumulator; 0.2 Hz sine modulates prismColor ±0.15 |
 | D001: Velocity-to-fold | 8A | velocityFoldAmount = effectiveOscFold + velocity × 0.25 |
@@ -423,6 +423,6 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 
 ---
 
-*See `Docs/xolokun_landscape_2026.md` Section 8 for the full priority work queue across all refinement rounds.*
+*See `Docs/xoceanus_landscape_2026.md` Section 8 for the full priority work queue across all refinement rounds.*
 *See `Docs/fleet-seance-scores-2026-03-20.md` for the full tiered ranking table with ghost-by-ghost detail.*
 *See `Docs/post-fix-rescoring-2026-03-20.md` for all 2026-03-21 recovery estimates.*

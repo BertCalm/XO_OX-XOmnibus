@@ -153,7 +153,7 @@ expressive ghost notes") or compare design philosophies across packs.
   },
 
   "provenance": {
-    "xolokun_version": "1.0",
+    "xoceanus_version": "1.0",
     "source_presets": [],
     "quad_builder_version": "1.0",
     "render_spec": "render_specs/mpce_perc_001_render.json",
@@ -195,7 +195,7 @@ How the WAVs were produced. Enables quality verification and re-rendering.
 Non-MPCe users get the standard pack; MPCe users get the quad-corner experience.
 
 ### `provenance` — Where this came from
-Links back to XOlokun source presets, the render spec, and which Vision Quests
+Links back to XOceanus source presets, the render spec, and which Vision Quests
 informed the design. The audit trail.
 
 ---

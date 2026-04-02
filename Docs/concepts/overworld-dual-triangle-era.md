@@ -1,7 +1,7 @@
 # OVERWORLD V2 Concept: Dual Triangle ERA System
 **Origin:** Guru Bin Retreat conversation — 2026-03-15
 **Status:** Design concept, not yet implemented
-**Scope:** XOverworld V2 / XOlokun OVERWORLD engine upgrade
+**Scope:** XOverworld V2 / XOceanus OVERWORLD engine upgrade
 
 ---
 

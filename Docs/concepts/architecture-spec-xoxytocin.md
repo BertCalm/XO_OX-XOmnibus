@@ -604,7 +604,7 @@ Build-phase D004 audit must confirm all 27 timbral parameters are wired before s
 1. **Position the Dragonfish, not the heart** — lead with biological extremity and circuit physics credentials, not Valentine's Day framing. Every external communication centers the dragonfish and circuit physics within the first two paragraphs.
 2. **Build the First-Date-to-Consummate demo** — 3–5 min audio/video showing cold circuit through each love type into Fuse checkpoint. No narration. This demo gates the V1.2 launch.
 3. **Run Guru Bin Retreat before V1.2** — 10 Awakening + 16–20 Transcendental presets. Best Guru Bin content opportunity in the fleet.
-4. **Pitch TriangularCoupling as SDK feature** — document in `SDK/include/xolokun/` as first-class platform innovation alongside KnotTopology. Write one SDK Field Guide post.
+4. **Pitch TriangularCoupling as SDK feature** — document in `SDK/include/xoceanus/` as first-class platform innovation alongside KnotTopology. Write one SDK Field Guide post.
 5. **Create "Love Triangle" community ritual** — "What's your love triangle?" shareable triangle screenshot format. Discord channel "my-triangle". 5 seed examples from alpha testers before launch.
 
 **Content pipeline rating: 9.5/10** — highest in fleet. Estimated 8–12 Field Guide articles seedable from concept alone. Patreon exclusive opportunities: "Relationship Sessions" video series, Lineage Pack, Transcendental tier presets.
@@ -613,7 +613,7 @@ Build-phase D004 audit must confirm all 27 timbral parameters are wired before s
 
 ---
 
-## 12. XOlokun Integration Spec
+## 12. XOceanus Integration Spec
 
 ### 12.1 Files Required
 
@@ -645,9 +645,9 @@ REGISTER_ENGINE(OxytocinEngine, "OXYTO")
 
 ### 12.4 External Files
 
-- `Docs/xolokun_master_specification.md` section 3.1: add OXYTO row
+- `Docs/xoceanus_master_specification.md` section 3.1: add OXYTO row
 - `Docs/seance_cross_reference.md`: add seance row after post-build seance
-- `Source/XOlokunProcessor.cpp`: register engine
+- `Source/XOceanusProcessor.cpp`: register engine
 - `Source/Core/PresetManager.h`: add `"OXYTO"` to `validEngineNames` and `"oxy_"` to `frozenPrefixForEngine`
 
 ### 12.5 Shared DSP Utilities
@@ -824,9 +824,9 @@ These items must be completed or verified before the post-build seance:
 - [ ] 14 Guru Bin seed presets implemented as .xometa files
 - [ ] Accent color confirmed Synapse Violet `#9B5DE5` (not Circuit Rose)
 - [ ] CLAUDE.md updated (4 sections)
-- [ ] Docs/xolokun_master_specification.md updated (engine table row)
+- [ ] Docs/xoceanus_master_specification.md updated (engine table row)
 - [ ] Docs/seance_cross_reference.md prepared for post-build entry
-- [ ] Source/XOlokunProcessor.cpp: REGISTER_ENGINE(OxytocinEngine, "OXYTO")
+- [ ] Source/XOceanusProcessor.cpp: REGISTER_ENGINE(OxytocinEngine, "OXYTO")
 - [ ] Source/Core/PresetManager.h: "OXYTO" added to validEngineNames, "oxy_" to frozenPrefixForEngine
 - [ ] D004 audit: all 27 timbral parameters confirmed wired before seance
 - [ ] Post-build seance scheduled (target score: 9.7–9.8)

@@ -29,7 +29,7 @@ contributor_email: "contact@example.com"
 target_engines: [OPAL, DRIFT]   # XO_OX engine names
 mood_tags: [Atmosphere, Flux]
 bpm_range: [85, 130]            # optional for tonal packs
-xo_ox_version: "1.0"           # XOlokun version targeted
+xo_ox_version: "1.0"           # XOceanus version targeted
 ```
 
 Cover art: 1400×1400px minimum, PNG or JPG, no embedded ICC profiles, no third-party logos, no AI-generated art (declared via pack.yaml `art_origin: original`).
@@ -63,7 +63,7 @@ After automated QA passes, a curator runs through this checklist (target: 15 min
 3. **Sample clearance declaration** — Confirm LICENSE.txt is signed and `art_origin` field is present. Flag any sample names that suggest third-party sources (e.g. `rhodes_xxx.wav`).
 4. **Engine coupling integrity** — If presets reference coupling targets (e.g. OPAL→DUB), verify the coupling params exist in the .xometa and make sense musically.
 5. **Cover art vibe check** — Does it fit XO_OX visual language? No drop shadows, no stock photo collages. Should feel like it belongs in the Aquarium.
-6. **Playability pass** — Load 3–5 presets in XOlokun and play them. Do they respond musically to velocity and mod wheel?
+6. **Playability pass** — Load 3–5 presets in XOceanus and play them. Do they respond musically to velocity and mod wheel?
 7. **Pack cohesion** — Do the presets belong together? A pack should feel like a world, not a random collection.
 
 Curator leaves inline comments in a review YAML file and either approves, requests revision (with specific notes), or rejects.

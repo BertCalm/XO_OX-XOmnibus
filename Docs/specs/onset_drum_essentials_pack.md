@@ -41,9 +41,9 @@
 # 1. Install dependencies
 pip install mido python-rtmidi sounddevice
 
-# 2. Start XOlokun (standalone or in DAW)
+# 2. Start XOceanus (standalone or in DAW)
 # 3. Install BlackHole (macOS loopback): brew install blackhole-2ch
-# 4. Route XOlokun audio output to BlackHole
+# 4. Route XOceanus audio output to BlackHole
 
 # 5. List available ports
 python3 Tools/oxport_render.py --list-ports
@@ -52,7 +52,7 @@ python3 Tools/oxport_render.py --list-ports
 python3 Tools/oxport_render.py \
   --spec Tools/onset_render_spec.json \
   --output-dir ./wavs/onset/ \
-  --midi-port "XOlokun" \
+  --midi-port "XOceanus" \
   --audio-device "BlackHole"
 
 # 7. Run the full Oxport pipeline

@@ -59,9 +59,9 @@ The launch of an Atlas Bundle is a catalog milestone, not just a sale. It warran
 
 ## 6. Second-Order Effects — The Pack-to-Plugin Pipeline
 
-Producers who buy an XPN pack and work with it long enough will eventually ask: how was this made? The answer is XOlokun. This conversion path is real but currently implicit. Making it explicit doubles its value.
+Producers who buy an XPN pack and work with it long enough will eventually ask: how was this made? The answer is XOceanus. This conversion path is real but currently implicit. Making it explicit doubles its value.
 
-Every pack README should include a single sentence: "These presets were built with XOlokun. If you want to design your own, start here." Link to a dedicated landing page — not the main product page — that speaks directly to the pack buyer: "You already know what XOlokun sounds like. Now build with it."
+Every pack README should include a single sentence: "These presets were built with XOceanus. If you want to design your own, start here." Link to a dedicated landing page — not the main product page — that speaks directly to the pack buyer: "You already know what XOceanus sounds like. Now build with it."
 
 The pack catalog is, in this reading, a long-form demo program. Every XPN release is an audition for the plugin. The strategy is not to upsell aggressively but to make the path legible at the moment of maximum curiosity — which is inside the pack, when the producer is already inside the sound.
 

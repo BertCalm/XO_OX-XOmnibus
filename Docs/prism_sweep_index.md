@@ -1,7 +1,7 @@
 # Prism Sweep — Master Index
-*XO_OX-XOlokun | Initiated: 2026-03-14 | Status: Round 12 of 12 (complete — sweep finished)*
+*XO_OX-XOceanus | Initiated: 2026-03-14 | Status: Round 12 of 12 (complete — sweep finished)*
 
-The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem. Each round adds agents (1→12), each more granular than the last. Every round produces artifacts (docs, fixes, presets) that the next round reads. The sweep was initiated after all 24 Synth Seances were completed and their findings consolidated into the knowledge tree.
+The Prism Sweep is a 12-round progressive quality sweep of the XOceanus ecosystem. Each round adds agents (1→12), each more granular than the last. Every round produces artifacts (docs, fixes, presets) that the next round reads. The sweep was initiated after all 24 Synth Seances were completed and their findings consolidated into the knowledge tree.
 
 ---
 
@@ -9,7 +9,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 
 | Round | Agents | Theme | Status | Artifacts |
 |-------|--------|-------|--------|-----------|
-| 1 | 1 | Grand survey — full ecosystem landscape | ✅ Complete | [xomnibus_landscape_2026.md](xomnibus_landscape_2026.md) |
+| 1 | 1 | Grand survey — full ecosystem landscape | ✅ Complete | [xoceanus_landscape_2026.md](xoceanus_landscape_2026.md) |
 | 2 | 2 | Code health + seance cross-reference | ✅ Complete | [code_health_report.md](fleet-audit/code_health_report.md), [seance_cross_reference.md](seances/seance_cross_reference.md) |
 | 3 | 3 | P0 bugs, D004 dead params, preset schema audit | ✅ Complete | [p0_fixes_applied.md](p0_fixes_applied.md), [d004_fixes_applied.md](d004_fixes_applied.md), [preset_schema_audit.md](preset_schema_audit.md) |
 | 4 | 4 | Expression map, D005 map, preset renames, coupling audit | ✅ Complete | [d006_expression_map.md](d006_expression_map.md), [d005_modulation_map.md](d005_modulation_map.md), [preset_schema_fixes.md](preset_schema_fixes.md), [coupling_audit.md](coupling_audit.md) |
@@ -139,7 +139,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 #### Build Verification (Round 8H) — `Docs/build_verification_8h.md`
 | Target | Result |
 |--------|--------|
-| Main XOlokun build | PASS |
+| Main XOceanus build | PASS |
 | XPNExporter | 4 pre-existing errors noted (not regressions) |
 
 #### XPNExporter Build Fix (Round 9B) — `Docs/build_verification_8h.md`
@@ -155,7 +155,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 |--------|--------|
 | LFO added | Formant breathing LFO at 0.1 Hz — D005 compliance |
 | D001 velocity → PD depth | Velocity now scales phase distortion depth (timbre, not just amplitude) |
-| Preset count | 0 OBSIDIAN-native presets → **8** (first-ever OBSIDIAN presets in the XOlokun fleet) |
+| Preset count | 0 OBSIDIAN-native presets → **8** (first-ever OBSIDIAN presets in the XOceanus fleet) |
 | Score estimate | 6.6 → **8.2 / 10** (near-complete recovery) |
 
 #### Organon Prefix Audit (Round 9C) — `Docs/organon_prefix_audit.md`
@@ -351,7 +351,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 | OBSIDIAN | 0 | 8 | +8 (first-ever OBSIDIAN presets) |
 | **Total** | **22** | **70** | **+48** |
 
-**40 new presets across 4 thin-coverage engines + 8 inaugural OBSIDIAN presets.** OBSIDIAN was the last engine with zero XOlokun-native presets — that gap is now closed.
+**40 new presets across 4 thin-coverage engines + 8 inaugural OBSIDIAN presets.** OBSIDIAN was the last engine with zero XOceanus-native presets — that gap is now closed.
 
 #### Bob Aggression Expansion (Round 10C) — `Docs/bob_aggression_expansion.md`
 - 10 new high-drive presets added for Oblong (Bob) engine
@@ -372,7 +372,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 | Obscura | 0 | 10 | +10 | First-ever Obscura presets in fleet |
 | **Total** | — | — | **+20** | — |
 
-**Obscura was the last engine with zero XOlokun-native presets — that gap is now closed.**
+**Obscura was the last engine with zero XOceanus-native presets — that gap is now closed.**
 
 #### Preset Quality Pass — Renames (Round 11H) — `Docs/preset_quality_pass_11h.md`
 | Category | Count | Examples |
@@ -556,4 +556,4 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOlokun ecosystem
 
 ---
 
-*Last updated: Round 12 of 12 — COMPLETE. All 12 rounds of the Prism Sweep are done. XOlokun v1.0 is build-ready.*
+*Last updated: Round 12 of 12 — COMPLETE. All 12 rounds of the Prism Sweep are done. XOceanus v1.0 is build-ready.*

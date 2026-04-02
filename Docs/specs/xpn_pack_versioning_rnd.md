@@ -187,7 +187,7 @@ If `xpn_packager.py` detects that a pack uses a feature associated with a minimu
 
 A single file at repo root tracks the entire pack fleet.
 
-**Location**: `~/Documents/GitHub/XO_OX-XOlokun/pack_registry.json`
+**Location**: `~/Documents/GitHub/XO_OX-XOceanus/pack_registry.json`
 
 ### 6.1 Schema
 

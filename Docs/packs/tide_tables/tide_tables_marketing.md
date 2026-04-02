@@ -14,7 +14,7 @@ TIDE TABLES is a free pack built for that moment:
 the moment you load something new, hit the first pad, and already know
 you're going to use this.
 
-Three of XOlokun's most distinctive engines — ONSET, ODYSSEY, OPAL —
+Three of XOceanus's most distinctive engines — ONSET, ODYSSEY, OPAL —
 assembled into four programs. No demos. No watermarks. No strings.
 Just load it and play.
 
@@ -47,7 +47,7 @@ No engine operates alone.
 
 ### Call to Action
 
-TIDE TABLES is free because everyone deserves to hear what XOlokun can do
+TIDE TABLES is free because everyone deserves to hear what XOceanus can do
 before they decide whether to go deeper.
 
 If these four programs feel like enough, keep them. Play them. Build with them.

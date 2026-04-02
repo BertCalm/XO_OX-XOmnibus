@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Engine Registration in XOlokunProcessor.cpp
+## 1. Engine Registration in XOceanusProcessor.cpp
 
 **STATUS: PASS**
 
@@ -14,9 +14,9 @@
 - Registration block at line 232–235:
   ```cpp
   // OWARE — tuned percussion synthesizer (wood/metal material continuum)
-  static bool registered_Oware = xolokun::EngineRegistry::instance().registerEngine(
-      "Oware", []() -> std::unique_ptr<xolokun::SynthEngine> {
-          return std::make_unique<xolokun::OwareEngine>();
+  static bool registered_Oware = xoceanus::EngineRegistry::instance().registerEngine(
+      "Oware", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+          return std::make_unique<xoceanus::OwareEngine>();
   ```
 - Engine ID string: `"Oware"` (matches preset `"engines": ["Oware"]` convention)
 
@@ -113,9 +113,9 @@ OWARE **produces** coupling output via `getSampleForCoupling()` — returns ster
 
 **STATUS: MISSING — action required**
 
-`Docs/xolokun_sound_design_guides.md` contains 0 references to OWARE. The engine was added 2026-03-20; the guides doc was last confirmed at "34 of 34 engines" before OWARE's addition.
+`Docs/xoceanus_sound_design_guides.md` contains 0 references to OWARE. The engine was added 2026-03-20; the guides doc was last confirmed at "34 of 34 engines" before OWARE's addition.
 
-**Action required:** Add OWARE section to `Docs/xolokun_sound_design_guides.md`.
+**Action required:** Add OWARE section to `Docs/xoceanus_sound_design_guides.md`.
 
 Suggested section outline:
 - The 7 Pillars (Material Continuum, Mallet Physics, Sympathetic Resonance, Resonator Body, Buzz Membrane, Breathing Gamelan, Thermal Drift)
@@ -173,12 +173,12 @@ Internal parameter display names (in engine): `MATERIAL`, `MALLET`, `COUPLING`, 
 
 | Item | Status | Action |
 |---|---|---|
-| 1. XOlokunProcessor.cpp registration | PASS | None |
+| 1. XOceanusProcessor.cpp registration | PASS | None |
 | 2. CLAUDE.md updated | PASS | None |
 | 3. Parameter prefix frozen (owr_) | PASS | None |
 | 4. Preset count (20, 5 moods) | PARTIAL | Add Aether/Family/Submerged presets (9 needed) |
 | 5. Coupling interface | PASS | None |
-| 6. Sound design guide entry | MISSING | Add OWARE section to xolokun_sound_design_guides.md |
+| 6. Sound design guide entry | MISSING | Add OWARE section to xoceanus_sound_design_guides.md |
 | 7. Seance status | NOT SEANCED | Schedule seance — see pre-seance notes above |
 | 8. Macro assignments | PASS | None |
 

@@ -717,7 +717,7 @@ Delay lengths chosen as primes to minimize metallic resonances: 1051, 1213, 1399
 ### 11.1 SynthEngine Implementation
 
 ```cpp
-class OuieEngine : public xolokun::SynthEngine {
+class OuieEngine : public xoceanus::SynthEngine {
 public:
     juce::String getEngineId() const override { return "Ouie"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0x70, 0x80, 0x90); }
@@ -842,7 +842,7 @@ Presets are `.xometa` JSON with 6D Sonic DNA.
 - Sub oscillator per-voice
 - Unison stack (1-4) per-voice
 - 72 additional factory presets (80 total)
-- XOlokun SynthEngine adapter
+- XOceanus SynthEngine adapter
 - Coupling interface (5 receive types, 1 send)
 
 ### Nice-to-Have (Phase 4+)
@@ -914,7 +914,7 @@ Presets are `.xometa` JSON with 6D Sonic DNA.
 - [ ] Algorithm selector per voice (8 options with smooth/rough grouping)
 - [ ] HAMMER macro as central feature knob
 
-### Phase 5: XOlokun Integration
+### Phase 5: XOceanus Integration
 - [ ] `OuieAdapter.h` implementing `SynthEngine`
 - [ ] Coupling interface wiring
 - [ ] Cross-engine preset showcases
@@ -958,7 +958,7 @@ Presets are `.xometa` JSON with 6D Sonic DNA.
 │   ├── preset/
 │   │   └── OuiePresetManager.h   // .xometa loading/saving
 │   └── adapter/
-│       └── OuieAdapter.h         // XOlokun SynthEngine adapter
+│       └── OuieAdapter.h         // XOceanus SynthEngine adapter
 ├── Presets/
 │   └── Factory/
 │       ├── Brotherly Love/       // 15 presets
@@ -969,7 +969,7 @@ Presets are `.xometa` JSON with 6D Sonic DNA.
 │       └── Coupling/             // 8 presets (+ 8 hero distributed above)
 └── docs/
     ├── xouie_phase1_architecture.md  // This document
-    └── xolokun_integration_spec.md  // Phase 3
+    └── xoceanus_integration_spec.md  // Phase 3
 ```
 
 ---

@@ -36,7 +36,7 @@
 
 ## 1. Overview
 
-Outshine is a sample instrument forge integrated into XOlokun. It converts raw audio samples (grains) into fully mapped, MPE-ready instrument programs (pearls) — keygroup or drum — packaged as `.xpn` archives compatible with MPC hardware.
+Outshine is a sample instrument forge integrated into XOceanus. It converts raw audio samples (grains) into fully mapped, MPE-ready instrument programs (pearls) — keygroup or drum — packaged as `.xpn` archives compatible with MPC hardware.
 
 **Phase 1A scope:** Auto-classification, melodic keygroup builder, MPE expression routing, and XPN export. This is the functional daily-driver: drop samples, get instruments.
 
@@ -258,13 +258,13 @@ void launchOutshine()
 #include "../../Export/XOutshine.h"
 
 // WRONG — do not include the editor header
-// #include "../XOlokunEditor.h"  ← circular dependency
+// #include "../XOceanusEditor.h"  ← circular dependency
 ```
 
 ### Constructor Signature
 
 ```cpp
-explicit OutshineWindow(XOlokunProcessor& processorRef);
+explicit OutshineWindow(XOceanusProcessor& processorRef);
 ```
 
 The processor reference provides engine access for MPE routing and export pipeline integration.

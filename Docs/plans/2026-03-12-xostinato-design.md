@@ -30,7 +30,7 @@ A self-playing world drum circle where 8 physically-modeled instruments from dif
 
 1. **XO word:** XOstinato — an ostinato is a repeating musical pattern, the heartbeat of every drum circle ✓
 2. **One-sentence thesis:** "XOstinato is a communal drum circle engine where 8 physically-modeled world percussion instruments play interlocking ostinato patterns — and you can sit down and join." ✓
-3. **Sound only this can make:** A self-playing, physically-modeled world drum circle with inter-seat interaction — djembe, tabla, and taiko players reacting to each other's accents in real time. No DAW plugin or XOlokun engine does this. ✓
+3. **Sound only this can make:** A self-playing, physically-modeled world drum circle with inter-seat interaction — djembe, tabla, and taiko players reacting to each other's accents in real time. No DAW plugin or XOceanus engine does this. ✓
 
 ---
 
@@ -268,7 +268,7 @@ Pattern playing → User hits MIDI note mapped to seat
 
 ---
 
-## Coupling Matrix (XOlokun)
+## Coupling Matrix (XOceanus)
 
 ### OSTINATO as Target (receiving)
 
@@ -315,7 +315,7 @@ Pattern playing → User hits MIDI note mapped to seat
 | Festival | 20 | Maximum energy. 6-8 seats, high FIRE, raucous and joyful |
 | Meditation | 15 | Tongue drum, frame drum, sparse, peaceful, breathing |
 | Conversation | 15 | High CIRCLE macro. Call-response, seats reacting to each other |
-| Coupling Showcase | 10 | Designed for XOlokun pairings |
+| Coupling Showcase | 10 | Designed for XOceanus pairings |
 
 ### Heritage Circle Presets (honoring traditions)
 

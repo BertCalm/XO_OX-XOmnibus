@@ -78,7 +78,7 @@ Each cookbook is produced during the quad's editorial window (2-3 weeks before r
 ### Photography Direction (for future)
 - Warm, lived-in aesthetic (not sterile food photography)
 - Show the cooking process, not just the finished plate
-- Include the XOlokun UI in frame where natural (iPad on kitchen counter)
+- Include the XOceanus UI in frame where natural (iPad on kitchen counter)
 - Natural light preferred
 
 ### Cultural Advisory

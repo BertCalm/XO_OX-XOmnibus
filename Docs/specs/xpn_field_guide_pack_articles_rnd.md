@@ -203,7 +203,7 @@ they fill space, create intimacy, resist definition. OVERDUB, OHM, OPAL, and OCE
 Oscar sounds are often described as "organic" or "alive."
 
 **4. The Axis in Practice — 34 Engines Mapped**
-A visual or textual spectrum mapping all 34 XOlokun engines on the feliX-Oscar axis. (This is
+A visual or textual spectrum mapping all 34 XOceanus engines on the feliX-Oscar axis. (This is
 publishable as an infographic companion to the post.) Where ONSET sits (feliX-dominant in Kick/Snare,
 Oscar-dominant in FX/Perc). Where OUROBOROS sits (deeply Oscar — the chaos engine). Where OVERWORLD
 sits (era-dependent: NES/SNES lean feliX, Genesis/SPC lean Oscar).
@@ -473,7 +473,7 @@ developers can build on it. Here is why — and what the tools actually do.
 ### Key Sections
 
 **1. What Oxport Is**
-The XPN tool suite in `Tools/` is the complete pipeline that takes XOlokun synthesis engine output
+The XPN tool suite in `Tools/` is the complete pipeline that takes XOceanus synthesis engine output
 and produces shipping-quality MPC expansion packs. 8 tools: drum export, keygroup export, kit
 expander, bundle builder, cover art, packager, sample categorizer, render spec. Open source,
 Python-based, documented.
@@ -509,7 +509,7 @@ infrastructure for a higher-quality MPC expansion pack ecosystem.
 
 **6. The Future of the Pipeline**
 V2 priorities: adaptive intelligence (tools that learn from producer feedback which velocity curves
-work for which genres), automatic MPCe quad-corner assignment, and integration with XOlokun's
+work for which genres), automatic MPCe quad-corner assignment, and integration with XOceanus's
 AUv3 engine for real-time render-to-XPN (synthesis snapshot on demand). How community contributions
 to Oxport accelerate the V2 roadmap.
 

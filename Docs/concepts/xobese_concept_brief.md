@@ -86,7 +86,7 @@ VOICE (up to 6 polyphony -- CPU-limited by 13 oscillators per voice)
 
 ## Signature Sound
 
-XObese is the only engine in XOlokun that stacks thirteen oscillators per voice across four stereo-panned groups, each with its own ZDF ladder filter. The result is a wall of sound that has physical width -- not stereo widening as an effect, but genuine multi-source stereo content. The Mojo drift system gives the wall organic movement: at high Mojo values, the thirteen oscillators drift independently like a choir that never quite locks into perfect unison, producing a shimmering, living mass. Combined with the morphable waveform (continuous Sine-to-Saw-to-Square-to-Noise blend), XObese can produce everything from vast, warm pads to crushing industrial leads, but it always sounds massive.
+XObese is the only engine in XOceanus that stacks thirteen oscillators per voice across four stereo-panned groups, each with its own ZDF ladder filter. The result is a wall of sound that has physical width -- not stereo widening as an effect, but genuine multi-source stereo content. The Mojo drift system gives the wall organic movement: at high Mojo values, the thirteen oscillators drift independently like a choir that never quite locks into perfect unison, producing a shimmering, living mass. Combined with the morphable waveform (continuous Sine-to-Saw-to-Square-to-Noise blend), XObese can produce everything from vast, warm pads to crushing industrial leads, but it always sounds massive.
 
 ---
 

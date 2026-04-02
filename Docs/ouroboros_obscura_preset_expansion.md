@@ -105,25 +105,25 @@ Full palette from first presets: warmth 0.08–0.80, brightness 0.15–0.92, agg
 ## File Locations
 
 ### OUROBOROS (new)
-- `Presets/XOlokun/Aether/Ouro_Thermal_Drone.xometa`
-- `Presets/XOlokun/Aether/Ouro_Aizawa_Mobile.xometa`
-- `Presets/XOlokun/Aether/Ouro_Rossler_Spiral.xometa`
-- `Presets/XOlokun/Aether/Ouro_Velocity_Fist.xometa`
-- `Presets/XOlokun/Aether/Ouro_Orbit_Crystal.xometa`
-- `Presets/XOlokun/Flux/Ouro_Lorenz_Lead.xometa`
-- `Presets/XOlokun/Flux/Ouro_Chua_Clang.xometa`
-- `Presets/XOlokun/Flux/Ouro_Hard_Synced_Chord.xometa`
-- `Presets/XOlokun/Flux/Ouro_Serpent_Strain.xometa`
-- `Presets/XOlokun/Flux/Ouro_Leash_Loosen.xometa`
+- `Presets/XOceanus/Aether/Ouro_Thermal_Drone.xometa`
+- `Presets/XOceanus/Aether/Ouro_Aizawa_Mobile.xometa`
+- `Presets/XOceanus/Aether/Ouro_Rossler_Spiral.xometa`
+- `Presets/XOceanus/Aether/Ouro_Velocity_Fist.xometa`
+- `Presets/XOceanus/Aether/Ouro_Orbit_Crystal.xometa`
+- `Presets/XOceanus/Flux/Ouro_Lorenz_Lead.xometa`
+- `Presets/XOceanus/Flux/Ouro_Chua_Clang.xometa`
+- `Presets/XOceanus/Flux/Ouro_Hard_Synced_Chord.xometa`
+- `Presets/XOceanus/Flux/Ouro_Serpent_Strain.xometa`
+- `Presets/XOceanus/Flux/Ouro_Leash_Loosen.xometa`
 
 ### OBSCURA (new — first-ever presets)
-- `Presets/XOlokun/Foundation/Obscura_Plucked_String.xometa`
-- `Presets/XOlokun/Foundation/Obscura_Bowed_Cello.xometa`
-- `Presets/XOlokun/Foundation/Obscura_Bell_Strike.xometa`
-- `Presets/XOlokun/Foundation/Obscura_Membrane_Hit.xometa`
-- `Presets/XOlokun/Foundation/Obscura_Glass_Rod.xometa`
-- `Presets/XOlokun/Atmosphere/Obscura_Mantle_Drone.xometa`
-- `Presets/XOlokun/Atmosphere/Obscura_Timbral_Breath.xometa`
-- `Presets/XOlokun/Atmosphere/Obscura_Decay_Sculpture.xometa`
-- `Presets/XOlokun/Atmosphere/Obscura_Deep_Resonance.xometa`
-- `Presets/XOlokun/Atmosphere/Obscura_Random_Hadal.xometa`
+- `Presets/XOceanus/Foundation/Obscura_Plucked_String.xometa`
+- `Presets/XOceanus/Foundation/Obscura_Bowed_Cello.xometa`
+- `Presets/XOceanus/Foundation/Obscura_Bell_Strike.xometa`
+- `Presets/XOceanus/Foundation/Obscura_Membrane_Hit.xometa`
+- `Presets/XOceanus/Foundation/Obscura_Glass_Rod.xometa`
+- `Presets/XOceanus/Atmosphere/Obscura_Mantle_Drone.xometa`
+- `Presets/XOceanus/Atmosphere/Obscura_Timbral_Breath.xometa`
+- `Presets/XOceanus/Atmosphere/Obscura_Decay_Sculpture.xometa`
+- `Presets/XOceanus/Atmosphere/Obscura_Deep_Resonance.xometa`
+- `Presets/XOceanus/Atmosphere/Obscura_Random_Hadal.xometa`

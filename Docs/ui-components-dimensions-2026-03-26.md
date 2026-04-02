@@ -1,7 +1,7 @@
-# XOlokun UI Components — Dimensions & Layout Specifications
+# XOceanus UI Components — Dimensions & Layout Specifications
 
 **Report Generated:** 2026-03-26
-**Codebase:** XO_OX-XOmnibus (Gallery Model)
+**Codebase:** XO_OX-XOceanus (Gallery Model)
 **Primary Files Analyzed:**
 - `Source/UI/Gallery/ParameterGrid.h` (knob grid)
 - `Source/UI/Gallery/StatusBar.h` (bottom strip)
@@ -9,7 +9,7 @@
 - `Source/UI/Gallery/HeaderIndicators.h` (CPU meter, MIDI indicator)
 - `Source/UI/Gallery/SidebarPanel.h` (Column C tabbed sidebar)
 - `Source/UI/Gallery/ColumnLayoutManager.h` (master layout manager)
-- `Source/UI/XOlokunEditor.h` (main window + layout orchestration)
+- `Source/UI/XOceanusEditor.h` (main window + layout orchestration)
 
 ---
 
@@ -23,7 +23,7 @@
 
 | Component | Width | Height | Notes |
 |-----------|-------|--------|-------|
-| **Header** | full | 52 px | Surface layer bg, XO logo mark (30×30px centered), "XOlokun" title |
+| **Header** | full | 52 px | Surface layer bg, XO logo mark (30×30px centered), "XOceanus" title |
 | **Status Bar** | full | 28 px | Bottom strip, trigger pads + status labels + slot dots + lock button |
 | **PlaySurface** | full | 220 px | Floating performance interface (when visible, collapses if body < 320px) |
 | **FieldMap** | Column B | 65 px | Bottom strip of Column B (wavetable visualizer, etc.) |
@@ -356,7 +356,7 @@ Divider:                natural from setBounds() calls
 ```
 ┌─────────────────────────────────────────────────────┐ y=0
 │           HEADER (52px)                             │
-│  [Logo] "XOlokun"  [ENGINES▾] [CM] [P] [PS] [DK]   │
+│  [Logo] "XOceanus"  [ENGINES▾] [CM] [P] [PS] [DK]   │
 ├──────────────┬──────────────────────────┬───────────┤ y=52
 │              │                          │           │
 │  Column A    │      Column B            │ Column C  │
@@ -463,7 +463,7 @@ Dots:       56px wide, right-aligned before lock (34px reserved)
 | `PresetBrowserPanel.h` | Preset modal browser | pillH=20, rowHeight=32 |
 | `HeaderIndicators.h` | CPU meter + MIDI flash | dotR=4, flashDecay=0.15/tick |
 | `SidebarPanel.h` | Column C tabbed sidebar | kTabBarH=38, kUnderlineH=2 |
-| `XOlokunEditor.h` | Main editor window | setSize(1100,700), resizeLimits 960-1600 |
+| `XOceanusEditor.h` | Main editor window | setSize(1100,700), resizeLimits 960-1600 |
 | `GalleryColors.h` | Theme + colors (external) | Dark mode: surface=`#1A1A1C`, shell=`#0E0E10` |
 | `GalleryFonts.h` | Typography (external) | display(), body(), value() helpers |
 

@@ -336,7 +336,7 @@ Audit the initial-letter distribution before finalizing. Aim for no more than tw
 
 ### 7.1 The Two Contexts
 
-`.xometa` presets are the source format — viewed in XOlokun plugin, on desktop, in catalog listings. Maximum 30 characters. Full evocative name in this context.
+`.xometa` presets are the source format — viewed in XOceanus plugin, on desktop, in catalog listings. Maximum 30 characters. Full evocative name in this context.
 
 XPM programs are the MPC export format — viewed on MPC hardware screen. Maximum 20 characters.
 

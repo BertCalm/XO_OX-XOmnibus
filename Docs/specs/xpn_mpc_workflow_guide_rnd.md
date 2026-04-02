@@ -78,16 +78,16 @@ Enable NOTE REPEAT, set to 1/16 or 1/32, and hold a pad with light pressure. Gra
 
 ### 4. Using Entangled / Coupling Presets
 
-Some XO_OX packs include **Entangled** programs — presets that use the COUPLING macro to route one engine's output as a modulation source into another. These require **XOlokun** running as a plugin.
+Some XO_OX packs include **Entangled** programs — presets that use the COUPLING macro to route one engine's output as a modulation source into another. These require **XOceanus** running as a plugin.
 
 **Standalone MPC (no DAW)**
-XOlokun cannot run natively on MPC standalone. Entangled presets in standalone mode will function as standard programs — the COUPLING macro affects internal modulation only, not engine-to-engine routing.
+XOceanus cannot run natively on MPC standalone. Entangled presets in standalone mode will function as standard programs — the COUPLING macro affects internal modulation only, not engine-to-engine routing.
 
 **Plugin mode (MPC connected to DAW)**
 1. Open MPC Software in **Plugin** mode inside your DAW (Ableton, Logic, etc.).
-2. Load XOlokun on a separate instrument track. Set its MIDI input to the MPC's virtual MIDI output port.
+2. Load XOceanus on a separate instrument track. Set its MIDI input to the MPC's virtual MIDI output port.
 3. On the MPC pad bank, assign the Entangled program pads to send MIDI to that port.
-4. Route XOlokun audio output back into the DAW mixer or directly into the MPC via the audio input if using hardware loopback.
+4. Route XOceanus audio output back into the DAW mixer or directly into the MPC via the audio input if using hardware loopback.
 5. COUPLING (Q3) now controls the live engine-to-engine interaction in real time.
 
 This setup is most practical for studio sessions. For live use without a DAW, treat Entangled programs as standard programs.
@@ -118,15 +118,15 @@ In MPC standalone, go to MENU → Export → Bounce Song/Section. Select stems p
 **Live recording from MPC audio output**
 Connect MPC Main Out (L/R or individual outs) to your audio interface. Record directly into DAW as audio. For stems, use MPC's individual outputs — assign each drum voice to a dedicated output in Program Edit → Output. XO_OX drum programs label outputs by voice name.
 
-**MIDI file export and DAW reimport with XOlokun**
-In MPC, go to File → Export → MIDI. Select the sequence or pattern. In your DAW, import the MIDI file and route it to XOlokun on an instrument track. The MIDI note layout from XO_OX drum programs maps directly to XOlokun's drum engine pad layout — no remapping needed.
+**MIDI file export and DAW reimport with XOceanus**
+In MPC, go to File → Export → MIDI. Select the sequence or pattern. In your DAW, import the MIDI file and route it to XOceanus on an instrument track. The MIDI note layout from XO_OX drum programs maps directly to XOceanus's drum engine pad layout — no remapping needed.
 
 **Stem export workflow summary**
 1. MPC → Export → Individual Tracks (WAV stems)
 2. Import stems into DAW
 3. Import corresponding MIDI from MPC
-4. Load XOlokun on a parallel instrument track for live plugin layering over the rendered stems
-5. Automate XOlokun Q-Links (CHARACTER/MOVEMENT/COUPLING/SPACE) via DAW automation lanes for final mix movement
+4. Load XOceanus on a parallel instrument track for live plugin layering over the rendered stems
+5. Automate XOceanus Q-Links (CHARACTER/MOVEMENT/COUPLING/SPACE) via DAW automation lanes for final mix movement
 
 ---
 

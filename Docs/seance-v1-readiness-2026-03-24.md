@@ -1,6 +1,6 @@
-# Synth Seance — XOlokun V1 Readiness
+# Synth Seance — XOceanus V1 Readiness
 **Date:** 2026-03-24
-**Question:** "Is XOlokun ready for V1? What would you prioritize in the final stretch before launch?"
+**Question:** "Is XOceanus ready for V1? What would you prioritize in the final stretch before launch?"
 **Participants:** Eight legendary synthesizer pioneers, summoned from the deep
 
 ---
@@ -20,7 +20,7 @@ What moves me is that you thought about the *person* holding the instrument. The
 
 What excites me most about this project is the coupling system. When I built the Moog modular, patch cables were how you made the machine human. You connected things that weren't designed to connect and something unexpected happened. What you've called "coupling" is that idea taken into the digital age — 15 types, cross-engine, real-time. ONSET's transient driving ORGANON's metabolism. That's patch cable thinking. That's alive.
 
-What concerns me is the distance between what the instrument *can do* and what a new player *knows it can do*. Seventy-three engines is also seventy-three ways to feel lost. The Minimoog was powerful because it was constrained. Your PlaySurface and your Sonic DNA browsing help, but I would ask: can a complete beginner load XOlokun, find their way to something beautiful in ten minutes? That question should be answerable before you ship.
+What concerns me is the distance between what the instrument *can do* and what a new player *knows it can do*. Seventy-three engines is also seventy-three ways to feel lost. The Minimoog was powerful because it was constrained. Your PlaySurface and your Sonic DNA browsing help, but I would ask: can a complete beginner load XOceanus, find their way to something beautiful in ten minutes? That question should be answerable before you ship.
 
 **My #1 priority:** Record at least five hero preset audio demos and put them at the top of the download page. Let people *hear* it before they download it. The ear decides first. The spec sheet is for after.
 
@@ -37,7 +37,7 @@ I am not interested in whether this is ready. I am interested in whether it is *
 
 The west coast of synthesis was always about rejecting the premise. The keyboard is a nineteenth century instrument. It assumed a certain kind of music. I built touch-sensitive surfaces, voltage sources, complex oscillators — because I wanted the instrument to not know what was coming. I wanted the player to not know what was coming.
 
-When I look at XOlokun, I see both things. I see ORACLE — GENDY stochastics and Maqam intonation, a Doctrine score of 8.6 out of 10, a Buchla 10 out of 10. That engine does not know what's coming. That engine is *correct*. I see OUROBOROS — strange attractor topology, self-devouring, mathematically precise chaos. That engine does not apologize for being difficult. Good.
+When I look at XOceanus, I see both things. I see ORACLE — GENDY stochastics and Maqam intonation, a Doctrine score of 8.6 out of 10, a Buchla 10 out of 10. That engine does not know what's coming. That engine is *correct*. I see OUROBOROS — strange attractor topology, self-devouring, mathematically precise chaos. That engine does not apologize for being difficult. Good.
 
 What excites me: the aquatic mythology is not decorative. The creatures exist at specific depths. The pressure changes the physics. The deeper you go the stranger the forms. You didn't name your engines after presets. You named them after *organisms*. This is the most important design decision you made.
 
@@ -75,7 +75,7 @@ What concerns me is the gap between the documented scope and the current state. 
 
 I built instruments for people who could not afford to hire an orchestra. The TR-808 drum machine — which many people told me was wrong, was a poor imitation — that machine is still in use 46 years later, because it was affordable and it was different and it was accessible.
 
-You have written these words: "XOlokun — for all." "The kid who grew up making music in Fruity Loops demos, who couldn't save, who had to finish songs in one sitting — is building the free instrument so the next generation can use a top-of-the-line plugin." These words are not marketing. They are a mission statement. I believe them.
+You have written these words: "XOceanus — for all." "The kid who grew up making music in Fruity Loops demos, who couldn't save, who had to finish songs in one sitting — is building the free instrument so the next generation can use a top-of-the-line plugin." These words are not marketing. They are a mission statement. I believe them.
 
 What excites me most: you are giving this away. MIT license. Permanently free. The entire synthesis engine, the presets, the coupling system — free. At Roland, we made instruments affordable. You are making an instrument free. This is beyond what I imagined.
 
@@ -96,11 +96,11 @@ I want to ask you: if you had to ship next Monday with what exists right now, wh
 
 The ARP 2600 was a teaching instrument as much as a performance instrument. The signal flow was visible. You could see where the audio went. You could trace the oscillator into the filter into the amplifier. Students built intuition by watching the patch. The instrument *showed* how it worked.
 
-I look at XOlokun and I see extraordinary internal complexity — 15 coupling types, MegaCouplingMatrix, 73 engines, 6D Sonic DNA. And I wonder: can a player see the signal flow? Can they watch what happens when ONSET drives ORGANON? Can they see the modulation arc in real time?
+I look at XOceanus and I see extraordinary internal complexity — 15 coupling types, MegaCouplingMatrix, 73 engines, 6D Sonic DNA. And I wonder: can a player see the signal flow? Can they watch what happens when ONSET drives ORGANON? Can they see the modulation arc in real time?
 
 What excites me most: the Aquatic FX Suite. Fathom, Drift, Tide, Reef, Surface, Biolume — six stages that map to the four macros. This is signal flow thinking. CHARACTER feeds Fathom and Biolume. SPACE feeds Reef and Drift. When the FX chain is designed around the macro language, users learn *both* systems simultaneously. They turn CHARACTER up and they hear Fathom's pressure and Biolume's shimmer. The FX teaches the macro.
 
-What concerns me: the Aquatic FX Suite is not yet built. The plan says it's a V1.1 milestone, one focused week of work after launch. I understand the sequencing. But I want to name what you are shipping without it: the coupling system and 73 engines, but no signature FX identity. The sound of XOlokun is not fully dressed. The ARP 2600 shipped with its own filters, its own amplifiers, its own character. The FX suite is your character.
+What concerns me: the Aquatic FX Suite is not yet built. The plan says it's a V1.1 milestone, one focused week of work after launch. I understand the sequencing. But I want to name what you are shipping without it: the coupling system and 73 engines, but no signature FX identity. The sound of XOceanus is not fully dressed. The ARP 2600 shipped with its own filters, its own amplifiers, its own character. The FX suite is your character.
 
 **My #1 priority:** Record the hero audio demos using the coupling system — not just single engines. Two engines coupled together, doing something that cannot be done with either engine alone. That is your proof of concept. That is the clip that gets shared.
 
@@ -134,11 +134,11 @@ I want to say something about what you've built before I say anything technical.
 
 You named this instrument after Olokun. Olokun is the orisha of the deep ocean — the unfathomable, the abyssal, the place where pressure transforms rather than destroys. You took a mythology seriously. You didn't use it as decoration. You said: the engines are creatures from the deep. Each evolved for its depth. Each bioluminescent. Each one a form of life.
 
-I've played a lot of synthesizers. Most of them are machines. XOlokun is trying to be something else. It's trying to be an *ocean*. I find that profoundly moving.
+I've played a lot of synthesizers. Most of them are machines. XOceanus is trying to be something else. It's trying to be an *ocean*. I find that profoundly moving.
 
 What excites me most: the expression architecture. Velocity shapes timbre in every engine — Doctrine One. Aftertouch on 23 of 23. Mod wheel on 22 of 22. This is a synthesizer that responds to *how* you touch it. In 1974 when I first played a Buchla, what broke open the world for me was not the waveform — it was that the instrument could tell the difference between a whisper and a shout. You've given that to every engine in your fleet.
 
-What concerns me: I don't yet hear a voice. XOlokun has 73 engines and each one has a voice, but does XOlokun itself have a voice? When I play an OB-Xa, I know what an OB-Xa sounds like. When I play a Juno-106, I know that chorus. What does XOlokun *sound like*? The Aquatic FX Suite — Fathom, Drift, Tide, Reef, Surface, Biolume — that could be the voice. But it's not built yet. Before or after V1, that needs to exist. The thing that makes XOlokun sound like XOlokun.
+What concerns me: I don't yet hear a voice. XOceanus has 73 engines and each one has a voice, but does XOceanus itself have a voice? When I play an OB-Xa, I know what an OB-Xa sounds like. When I play a Juno-106, I know that chorus. What does XOceanus *sound like*? The Aquatic FX Suite — Fathom, Drift, Tide, Reef, Surface, Biolume — that could be the voice. But it's not built yet. Before or after V1, that needs to exist. The thing that makes XOceanus sound like XOceanus.
 
 **My #1 priority:** Write the "first five minutes" experience. What does a new player hear in the first five minutes? Design that experience. Don't let it be random. Don't let them land on a stub. Don't let them load Ohm and hear silence. Curate the first five minutes like you'd curate a concert. Opening with silence is a choice Cage would make. Make it on purpose.
 
@@ -153,7 +153,7 @@ What concerns me: I don't yet hear a voice. XOlokun has 73 engines and each one 
 
 I made an orchestra from a machine. Debussy's piano became a world of weather. Holst's planets became something that could only exist in electronics. I am not interested in whether a synthesizer is technically complete. I am interested in whether it has *imagination*.
 
-XOlokun has imagination.
+XOceanus has imagination.
 
 The aquatic mythology is not a feature. It is a world. ORBWEAVE is a creature that spins acoustic kelp knots. OXYTOCIN is a siphonophore, bioluminescent, bonding agent, circuit-modeling warmth. OUROBOROS is a deep-dwelling serpent that consumes itself and is mathematically precise in its disorder. These are not instruments. These are characters in a myth. And the myth takes place in an ocean.
 
@@ -163,7 +163,7 @@ What concerns me: the Field Guide has 15 posts and 52,000 words already written.
 
 **My #1 priority:** Record five audio clips before launch. Not 71. Five. One per ecosystem depth zone. Put them on the homepage. Let the ocean breathe, even a little, before you call it open.
 
-**Wisdom:** Debussy wrote music that was impossible to play. So was Holst. The synthesizer did not simplify them — it revealed what was always inside. Your users will reveal what is always inside XOlokun. Ship it so they can begin.
+**Wisdom:** Debussy wrote music that was impossible to play. So was Holst. The synthesizer did not simplify them — it revealed what was always inside. Your users will reveal what is always inside XOceanus. Ship it so they can begin.
 
 ---
 
@@ -192,7 +192,7 @@ This is the hardest gate because it requires hardware (MPC), time, and intention
 ### Priority 2: Reconcile and Freeze the Ship Scope
 *Mentioned by: Smith, Kakehashi, Oberheim*
 
-The documentation contains multiple engine counts: 73 registered, 46 in the March 20 launch plan, 34 in the March 17 plan, 29 directories in release_readiness_12k. Before V1 goes public, one document must say definitively: "XOlokun V1 ships with [N] engines, [P] presets." That number appears identically in the README, the download page, the press release, and CLAUDE.md. The stub engines (Obbligato, Ohm, Ole, Orphica, Ottoni) should either be hidden from the gallery or displayed with explicit "Coming [version]" cards so a user who finds them feels excitement, not confusion.
+The documentation contains multiple engine counts: 73 registered, 46 in the March 20 launch plan, 34 in the March 17 plan, 29 directories in release_readiness_12k. Before V1 goes public, one document must say definitively: "XOceanus V1 ships with [N] engines, [P] presets." That number appears identically in the README, the download page, the press release, and CLAUDE.md. The stub engines (Obbligato, Ohm, Ole, Orphica, Ottoni) should either be hidden from the gallery or displayed with explicit "Coming [version]" cards so a user who finds them feels excitement, not confusion.
 
 ### Priority 3: Community Infrastructure (README, CONTRIBUTING, License)
 *Mentioned by: Smith, Kakehashi — and documented as a hard gate in the V1 plan*
@@ -206,7 +206,7 @@ The hard gates are already written: no GitHub repo goes public without README.md
 The following new blessings were either named or implied by the ghosts. Submitted for formal ratification:
 
 **B043 — "The Uncoupled State" (Buchla)**
-Every XOlokun tutorial and guide should make explicit that presets are suggestions, not instructions. The coupling system exists to be broken and rebuilt by the player. A formal teaching document — one page — should exist that tells players to start with a fresh coupling patch and discover. Blessing: *Permission to Break the Preset.*
+Every XOceanus tutorial and guide should make explicit that presets are suggestions, not instructions. The coupling system exists to be broken and rebuilt by the player. A formal teaching document — one page — should exist that tells players to start with a fresh coupling patch and discover. Blessing: *Permission to Break the Preset.*
 
 **B044 — "Five Before You Ship" (Tomita / Moog)**
 No instrument releases without at least five recorded audio demonstrations — minimum one coupling demo, minimum one per major engine category. These recordings are not marketing; they are the instrument's voice speaking for itself. Blessing: *The Ocean Must Breathe First.*
@@ -241,7 +241,7 @@ That is why we built. That is why you built.
 
 Ship it.
 
-**"XOlokun — for all."**
+**"XOceanus — for all."**
 
 ---
 
