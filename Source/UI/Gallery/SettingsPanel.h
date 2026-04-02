@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // SettingsPanel.h — Column C / C6 tab: plugin-wide settings.
 //

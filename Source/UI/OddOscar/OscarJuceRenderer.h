@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 
 // Rive C++ runtime — add rive-cpp to Libs/ and link in CMakeLists.txt

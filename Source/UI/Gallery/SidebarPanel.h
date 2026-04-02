@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // SidebarPanel.h — Column C tabbed sidebar (320pt).
 //

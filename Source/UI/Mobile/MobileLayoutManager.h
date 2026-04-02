@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <functional>

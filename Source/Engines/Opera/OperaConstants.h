@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 //==============================================================================
 // OperaConstants.h — Shared constants for all XOpera DSP modules

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // StatusBar.h — XOceanus 28pt status bar strip at the bottom of the editor window.
 //

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include "PresetManager.h"
 #include <juce_core/juce_core.h>

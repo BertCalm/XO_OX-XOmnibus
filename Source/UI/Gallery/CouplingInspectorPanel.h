@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // CouplingInspectorPanel.h — C2 "COUPLE" tab content for SidebarPanel (320pt wide).
 //

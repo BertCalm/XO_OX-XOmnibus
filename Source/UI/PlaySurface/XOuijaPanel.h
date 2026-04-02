@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 
 /*
@@ -1217,26 +1219,14 @@ public:
     }
 
     /** Query the OS and update the planchette's reduced-motion flag accordingly.
-        Safe to call at construction time — uses only pure C (CFPreferences on
-        macOS) or returns false on unsupported platforms. */
+        Delegates to A11y::prefersReducedMotion() — the unified platform helper in
+        GalleryColors.h — rather than reading CFPreferences directly (#223).
+        Covers macOS ("reduceMotion" / com.apple.universalaccess), iOS
+        (UIAccessibility.isReduceMotionEnabled via HapticEngine_iOS.mm bridge),
+        and the in-app SettingsPanel override. */
     void syncReducedMotionFromSystem()
     {
-#if JUCE_MAC
-        Boolean keyExists = false;
-        Boolean val = CFPreferencesGetAppBooleanValue (
-            CFSTR ("reduceMotion"),
-            CFSTR ("com.apple.universalaccess"),
-            &keyExists);
-        planchette_.setReducedMotion (keyExists && static_cast<bool> (val));
-#else
-        // iOS: call through the ObjC++ bridge declared in GalleryColors.h and
-        // implemented in HapticEngine_iOS.mm. On all other non-Mac platforms, default false.
-#if JUCE_IOS
-        planchette_.setReducedMotion (xoceanus::a11y_platform::isReduceMotionEnabled());
-#else
-        planchette_.setReducedMotion (false);
-#endif
-#endif
+        planchette_.setReducedMotion (A11y::prefersReducedMotion());
     }
 
     /** Drive circleX from an external source (e.g. incoming CC 85). */

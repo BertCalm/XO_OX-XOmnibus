@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // MiniCouplingGraph.h — Mini coupling node diagram for the bottom of Column A.
 //

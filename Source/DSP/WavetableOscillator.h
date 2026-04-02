@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
 #pragma once
 // WavetableOscillator.h — Multi-frame wavetable oscillator with morph, cubic Hermite
 // interpolation, and band-limited basic shape generation.
