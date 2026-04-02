@@ -31,7 +31,7 @@ void check (bool condition, const char* name, const char* msg)
 // Run a Karplus-Strong loop for numSamples. Returns peak and final amplitude.
 struct KSResult { float peak; float finalAmp; bool noNaN; };
 
-KSResult runKS (xolokun::FamilyDelayLine& dl, xolokun::FamilyDampingFilter& df,
+KSResult runKS (xoceanus::FamilyDelayLine& dl, xoceanus::FamilyDampingFilter& df,
                 float delayLen, int numSamples, float damping)
 {
     float peak = 0.0f, finalAmp = 0.0f;
@@ -63,7 +63,7 @@ int main()
     // A wrong formula would produce large discontinuities at integer frac values.
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilyDelayLine dl;
+        xoceanus::FamilyDelayLine dl;
         dl.prepare (512);
         // Write a simple ramp so we can predict expected values
         for (int i = 0; i < 200; ++i)
@@ -87,7 +87,7 @@ int main()
     // 1. FamilyDelayLine — basic read is finite
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilyDelayLine dl;
+        xoceanus::FamilyDelayLine dl;
         dl.prepare (static_cast<int> (SR) + 8);
         dl.write (1.0f);
         for (int i = 0; i < 10; ++i) dl.write (0.0f);
@@ -99,8 +99,8 @@ int main()
     // 2. Karplus-Strong loop — no NaN
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilyDelayLine  dl;
-        xolokun::FamilyDampingFilter df;
+        xoceanus::FamilyDelayLine  dl;
+        xoceanus::FamilyDampingFilter df;
         dl.prepare (static_cast<int> (SR) + 8);
         df.prepare();
         // Seed with impulse
@@ -116,7 +116,7 @@ int main()
     // 3. PluckExciter — fires, decays, goes silent
     // -----------------------------------------------------------------------
     {
-        xolokun::PluckExciter pe;
+        xoceanus::PluckExciter pe;
         pe.prepare (SR);
         pe.trigger (2.0f);
         float maxOut = 0.0f;
@@ -138,7 +138,7 @@ int main()
     // 4. StrumExciter — multi-string staggered output
     // -----------------------------------------------------------------------
     {
-        xolokun::StrumExciter se;
+        xoceanus::StrumExciter se;
         se.prepare (SR);
         se.trigger (4, 5.0f, 1.0f);
         float maxOut = 0.0f;
@@ -156,7 +156,7 @@ int main()
     // 5. PickExciter — attack burst, non-zero
     // -----------------------------------------------------------------------
     {
-        xolokun::PickExciter pe;
+        xoceanus::PickExciter pe;
         pe.prepare (SR);
         pe.trigger (1.5f);
         float maxOut = 0.0f;
@@ -174,7 +174,7 @@ int main()
     // 6. AirJetExciter — sound at full breath, near-silent at zero
     // -----------------------------------------------------------------------
     {
-        xolokun::AirJetExciter ae;
+        xoceanus::AirJetExciter ae;
         ae.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -195,7 +195,7 @@ int main()
     // 7. ReedExciter — continuous output at breathPressure > 0
     // -----------------------------------------------------------------------
     {
-        xolokun::ReedExciter re;
+        xoceanus::ReedExciter re;
         re.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -212,7 +212,7 @@ int main()
     // 8. LipBuzzExciter — oscillates at given frequency
     // -----------------------------------------------------------------------
     {
-        xolokun::LipBuzzExciter le;
+        xoceanus::LipBuzzExciter le;
         le.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -229,7 +229,7 @@ int main()
     // 9. BowExciter — non-zero with pressure, silent at zero pressure
     // -----------------------------------------------------------------------
     {
-        xolokun::BowExciter be;
+        xoceanus::BowExciter be;
         be.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -250,7 +250,7 @@ int main()
     // 10. FamilyBodyResonance — resonates from impulse, no NaN
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilyBodyResonance br;
+        xoceanus::FamilyBodyResonance br;
         br.prepare (SR);
         br.setParams (440.0f, 5.0f);
         float maxOut = 0.0f;
@@ -268,7 +268,7 @@ int main()
     // 11. FamilySympatheticBank — sympathetic bloom after input
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilySympatheticBank sb;
+        xoceanus::FamilySympatheticBank sb;
         sb.prepare (SR, 512);
         sb.tune (440.0f);
         float maxOut = 0.0f;
@@ -287,7 +287,7 @@ int main()
     // 12. FamilyOrganicDrift — output within ±1 semitone, non-zero
     // -----------------------------------------------------------------------
     {
-        xolokun::FamilyOrganicDrift od;
+        xoceanus::FamilyOrganicDrift od;
         od.prepare (SR);
         float maxDrift = 0.0f;
         bool  anyNaN   = false;

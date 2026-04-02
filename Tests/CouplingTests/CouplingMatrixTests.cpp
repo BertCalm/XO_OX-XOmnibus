@@ -17,7 +17,7 @@
 #include <array>
 #include <cmath>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Test infrastructure

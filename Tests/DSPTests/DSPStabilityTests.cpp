@@ -60,11 +60,11 @@
 #include <functional>
 #include <algorithm>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Engine registration for the test binary.
-// The main plugin registers engines in XOlokunProcessor.cpp via static init.
+// The main plugin registers engines in XOceanusProcessor.cpp via static init.
 // We must register them here for the standalone test executable.
 //==============================================================================
 

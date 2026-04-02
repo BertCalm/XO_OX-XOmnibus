@@ -14,7 +14,7 @@
 #include <cmath>
 #include <string>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Test infrastructure (local to this TU)

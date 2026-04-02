@@ -38,7 +38,7 @@
 #include <memory>
 #include <limits>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Test infrastructure

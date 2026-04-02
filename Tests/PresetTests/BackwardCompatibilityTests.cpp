@@ -37,7 +37,7 @@
 #include <utility>
 #include <vector>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 namespace backward_compat_tests {
 

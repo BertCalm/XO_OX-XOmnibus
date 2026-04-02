@@ -107,7 +107,7 @@
 #include <algorithm>
 #include <numeric>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // JUCE 8 compatibility: ParameterLayout is not iterable.

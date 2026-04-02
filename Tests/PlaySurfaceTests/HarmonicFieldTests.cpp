@@ -15,7 +15,7 @@
 #include <string>
 #include <tuple>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Test infrastructure

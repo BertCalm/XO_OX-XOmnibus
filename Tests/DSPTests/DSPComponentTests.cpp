@@ -35,7 +35,7 @@
 #include <numeric>
 #include <vector>
 
-using namespace xolokun;
+using namespace xoceanus;
 
 namespace dsp_component_tests {
 
