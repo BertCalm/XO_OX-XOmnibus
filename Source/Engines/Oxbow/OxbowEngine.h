@@ -128,10 +128,10 @@ public:
         extRingMod = 0.0f;
         lastSampleL = lastSampleR = 0.0f;
 
-        // Pre-delay buffer
+        // Pre-delay buffer — fix #176: derive size from the buffer itself so
+        // predelaySize can never fall out of sync with predelayBuf.size().
         int predelaySamples = static_cast<int> (0.2 * sr) + 1;
         predelayBuf.assign (static_cast<size_t> (predelaySamples), 0.0f);
-        predelaySize = predelaySamples;
         predelayPos = 0;
 
         // Silence gate: 500ms hold (reverb-tail category)
@@ -307,9 +307,9 @@ public:
         float excLength = pExcDecay * (0.5f + currentVelocity * 0.5f);
         float excDecayFinal = fastExp (-6.9078f / (excLength * srF));
 
-        // Pre-delay in samples
+        // Pre-delay in samples — clamp against actual buffer size (fix #176)
         float predelaySamples = clamp (effectivePredelay * 0.001f * srF,
-                                        0.0f, static_cast<float> (predelaySize - 1));
+                                        0.0f, static_cast<float> ((int)predelayBuf.size() - 1));
 
         // Convergence envelope coefficients
         float convAttack = smoothCoeffFromTime (0.01f, srF);
@@ -353,9 +353,10 @@ public:
 
             // === PRE-DELAY ===
             predelayBuf[static_cast<size_t> (predelayPos)] = exciterSample;
-            int readPos = (predelayPos - static_cast<int> (predelaySamples) + predelaySize) % predelaySize;
+            const int predelayBufSize = (int)predelayBuf.size(); // fix #176: always in sync
+            int readPos = (predelayPos - static_cast<int> (predelaySamples) + predelayBufSize) % predelayBufSize;
             float fdnInput = predelayBuf[static_cast<size_t> (readPos)];
-            predelayPos = (predelayPos + 1) % predelaySize;
+            predelayPos = (predelayPos + 1) % predelayBufSize;
 
             // === 8-CHANNEL CHIASMUS FDN ===
             // Read from all 8 delay lines.
@@ -754,9 +755,9 @@ private:
     float peakEnergy = 0.0001f;
     float currentEnergy = 0.0f;
 
-    // Pre-delay
+    // Pre-delay — fix #176: predelaySize removed; use predelayBuf.size() directly
+    // to prevent the two values from diverging after a prepare() call.
     std::vector<float> predelayBuf;
-    int predelaySize = 0;
     int predelayPos = 0;
 
     // Size scaling
