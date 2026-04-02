@@ -59,6 +59,14 @@ jobs:
             echo "_No test output file found — no tests were run or ctest did not produce output._" >> $GITHUB_STEP_SUMMARY
           fi
 
+      - name: Extract version and SHA
+        id: meta
+        run: |
+          VERSION=$(grep -m1 'project(XOceanus VERSION' CMakeLists.txt | sed 's/.*VERSION \([0-9.]*\).*/\1/')
+          SHA=$(git rev-parse --short HEAD)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
       - name: Verify AU component
         run: |
           if [ ! -d "build/XOceanus_artefacts/Release/AU/XOceanus.component" ]; then
@@ -86,11 +94,11 @@ jobs:
       - name: Upload AU component
         uses: actions/upload-artifact@v4
         with:
-          name: XOceanus-AU
+          name: XOceanus-AU-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
           path: build/XOceanus_artefacts/Release/AU/XOceanus.component
 
       - name: Upload Standalone app
         uses: actions/upload-artifact@v4
         with:
-          name: XOceanus-Standalone
+          name: XOceanus-Standalone-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
           path: build/XOceanus_artefacts/Release/Standalone/XOceanus.app

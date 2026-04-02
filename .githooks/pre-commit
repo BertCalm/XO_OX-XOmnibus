@@ -2,33 +2,30 @@
 # XOceanus pre-commit hook
 # Checks: compile (incremental), dead-param guard, audio-thread lint, clang-format
 #
-# Skip with:  git commit --no-verify
-# Install:    git config core.hooksPath .githooks
+# Activate: git config core.hooksPath .githooks
+# Skip with: git commit --no-verify
 #
 # Designed to complete in < 30 seconds on incremental builds.
+# ninja only recompiles changed translation units — no full rebuilds.
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 STAGED_CPP=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(cpp|h)$' || true)
 
 # ─────────────────────────────────────────────
-# 1. COMPILE CHECK (incremental, AU target only)
+# 1. COMPILE CHECK (incremental via ninja -j4)
 # ─────────────────────────────────────────────
 if [ -n "$STAGED_CPP" ]; then
-  if [ -d "$REPO_ROOT/build" ]; then
-    echo "[pre-commit] Compile check (XOlokun_AU)…"
-    BUILD_OUT=$(cmake --build "$REPO_ROOT/build" --target XOlokun_AU 2>&1 | tail -5)
-    BUILD_EXIT=${PIPESTATUS[0]:-$?}
-    # cmake --build exits non-zero on error; capture it after the pipe
-    if ! cmake --build "$REPO_ROOT/build" --target XOlokun_AU > /dev/null 2>&1; then
-      echo "[pre-commit] FAIL — compile error:"
-      cmake --build "$REPO_ROOT/build" --target XOlokun_AU 2>&1 | tail -10
-      echo "Fix the compile error or use --no-verify to skip."
+  if [ -f "$REPO_ROOT/build/build.ninja" ]; then
+    echo "[pre-commit] Compile check (ninja incremental)..."
+    if ! ninja -C "$REPO_ROOT/build" -j4 2>&1 | tail -10; then
+      echo "[pre-commit] FAIL — compile error. Fix the error or use --no-verify to skip."
       exit 1
     fi
     echo "[pre-commit] Compile: OK"
   else
-    echo "[pre-commit] WARN — build/ not found, skipping compile check (run cmake -B build first)"
+    echo "[pre-commit] WARN — build/build.ninja not found, skipping compile check."
+    echo "[pre-commit]        Run: cmake -B build -G Ninja && cmake --build build"
   fi
 fi
 

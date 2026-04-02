@@ -532,6 +532,7 @@ add_executable(XOceanusTests
     Tests/PlaySurfaceTests/HarmonicFieldTests.cpp
     Tests/PlaySurfaceTests/GestureTrailTests.cpp
     Tests/PipelineTests/FullPipelineTests.cpp
+    Tests/ParameterSweepTests/ParameterSweepTests.cpp
 )
 
 # FamilyWaveguideTest is a standalone executable (has its own main())
