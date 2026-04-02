@@ -20,6 +20,21 @@ cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
+### Pre-commit Hooks
+
+XOceanus ships a pre-commit hook that catches compile errors, dead parameters (D004), and audio-thread violations before they reach CI:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The hook runs in < 30 seconds on incremental builds and is skippable with `git commit --no-verify` when needed. Checks performed:
+
+1. **Compile** — incremental `cmake --build build --target XOlokun_AU` on staged `.h`/`.cpp` files
+2. **Dead-param guard** — flags `(void)param;` casts in engine files (D004 violation)
+3. **Audio-thread lint** — bans `new`/`delete`/`malloc`/`free`, `push_back`/`resize`, `std::mutex`, `juce::String` construction, and file I/O inside `renderBlock`
+4. **clang-format** — runs `clang-format --dry-run --Werror` on staged files (requires `clang-format` on `$PATH`)
+
 ### Validate (macOS)
 
 ```bash

@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+# XOceanus pre-commit hook
+# Checks: compile (incremental), dead-param guard, audio-thread lint, clang-format
+#
+# Skip with:  git commit --no-verify
+# Install:    git config core.hooksPath .githooks
+#
+# Designed to complete in < 30 seconds on incremental builds.
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+STAGED_CPP=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(cpp|h)$' || true)
+
+# ─────────────────────────────────────────────
+# 1. COMPILE CHECK (incremental, AU target only)
+# ─────────────────────────────────────────────
+if [ -n "$STAGED_CPP" ]; then
+  if [ -d "$REPO_ROOT/build" ]; then
+    echo "[pre-commit] Compile check (XOlokun_AU)…"
+    BUILD_OUT=$(cmake --build "$REPO_ROOT/build" --target XOlokun_AU 2>&1 | tail -5)
+    BUILD_EXIT=${PIPESTATUS[0]:-$?}
+    # cmake --build exits non-zero on error; capture it after the pipe
+    if ! cmake --build "$REPO_ROOT/build" --target XOlokun_AU > /dev/null 2>&1; then
+      echo "[pre-commit] FAIL — compile error:"
+      cmake --build "$REPO_ROOT/build" --target XOlokun_AU 2>&1 | tail -10
+      echo "Fix the compile error or use --no-verify to skip."
+      exit 1
+    fi
+    echo "[pre-commit] Compile: OK"
+  else
+    echo "[pre-commit] WARN — build/ not found, skipping compile check (run cmake -B build first)"
+  fi
+fi
+
+# ─────────────────────────────────────────────
+# 2. DEAD PARAM GUARD
+#    Flags new `(void)param;` casts in engine files (common dead-param hack)
+# ─────────────────────────────────────────────
+ENGINE_STAGED=$(echo "$STAGED_CPP" | grep -E 'Source/Engines/' || true)
+if [ -n "$ENGINE_STAGED" ]; then
+  DEAD_PARAMS=""
+  while IFS= read -r file; do
+    [ -z "$file" ] && continue
+    FULL="$REPO_ROOT/$file"
+    [ -f "$FULL" ] || continue
+    # Grep for (void) casts on parameter variables inside renderBlock context
+    MATCHES=$(grep -n '(void)' "$FULL" | grep -E '\(void\)\s*(param|p[A-Z]|\w+Param|\w+_param)' || true)
+    if [ -n "$MATCHES" ]; then
+      DEAD_PARAMS="$DEAD_PARAMS\n  $file:\n$(echo "$MATCHES" | sed 's/^/    /')"
+    fi
+  done <<< "$ENGINE_STAGED"
+
+  if [ -n "$DEAD_PARAMS" ]; then
+    echo "[pre-commit] WARN — possible dead parameter(s) found (D004 violation):"
+    echo -e "$DEAD_PARAMS"
+    echo "[pre-commit] Wire these parameters to DSP or use --no-verify to override."
+    exit 1
+  fi
+  echo "[pre-commit] Dead-param guard: OK"
+fi
+
+# ─────────────────────────────────────────────
+# 3. AUDIO THREAD LINT
+#    Bans heap allocation, mutex, and file I/O inside renderBlock methods
+# ─────────────────────────────────────────────
+BANNED_PATTERNS=(
+  # Heap allocation
+  '\bnew\b'
+  '\bdelete\b'
+  '\bmalloc\b'
+  '\bfree\b('
+  # Dynamic containers (common accidental allocation)
+  '\.push_back\s*('
+  '\.resize\s*('
+  '\.emplace_back\s*('
+  # Synchronization primitives
+  '\bstd::mutex\b'
+  '\.lock\(\)'
+  '\.unlock\(\)'
+  '\bstd::lock_guard\b'
+  '\bstd::unique_lock\b'
+  # String construction (allocates)
+  '\bjuce::String\s*('
+  '\bstd::string\s*('
+  # File I/O
+  '\bfopen\b'
+  '\bstd::ifstream\b'
+  '\bstd::ofstream\b'
+  '\bstd::fstream\b'
+)
+
+if [ -n "$ENGINE_STAGED" ]; then
+  THREAD_VIOLATIONS=""
+  while IFS= read -r file; do
+    [ -z "$file" ] && continue
+    FULL="$REPO_ROOT/$file"
+    [ -f "$FULL" ] || continue
+
+    # Extract renderBlock body (heuristic: lines between renderBlock signature and matching brace)
+    # We scan the whole file but only flag hits within a function named renderBlock
+    IN_RENDER=0
+    BRACE_DEPTH=0
+    LINE_NUM=0
+    while IFS= read -r line; do
+      LINE_NUM=$((LINE_NUM + 1))
+      if echo "$line" | grep -qE 'renderBlock\s*\('; then
+        IN_RENDER=1
+      fi
+      if [ $IN_RENDER -eq 1 ]; then
+        OPENS=$(echo "$line" | grep -o '{' | wc -l | tr -d ' ')
+        CLOSES=$(echo "$line" | grep -o '}' | wc -l | tr -d ' ')
+        BRACE_DEPTH=$((BRACE_DEPTH + OPENS - CLOSES))
+        # Check each banned pattern
+        for pat in "${BANNED_PATTERNS[@]}"; do
+          if echo "$line" | grep -qE "$pat"; then
+            THREAD_VIOLATIONS="$THREAD_VIOLATIONS\n  $file:$LINE_NUM: $line"
+            break
+          fi
+        done
+        if [ $BRACE_DEPTH -le 0 ] && [ $LINE_NUM -gt 1 ]; then
+          IN_RENDER=0
+          BRACE_DEPTH=0
+        fi
+      fi
+    done < "$FULL"
+  done <<< "$ENGINE_STAGED"
+
+  if [ -n "$THREAD_VIOLATIONS" ]; then
+    echo "[pre-commit] FAIL — audio thread violations in renderBlock:"
+    echo -e "$THREAD_VIOLATIONS"
+    echo "[pre-commit] Never allocate memory, lock mutexes, or do I/O on the audio thread."
+    echo "[pre-commit] Use --no-verify to override (add a comment explaining why it is safe)."
+    exit 1
+  fi
+  echo "[pre-commit] Audio thread lint: OK"
+fi
+
+# ─────────────────────────────────────────────
+# 4. CLANG-FORMAT CHECK (staged .cpp/.h only)
+# ─────────────────────────────────────────────
+if [ -n "$STAGED_CPP" ] && command -v clang-format &> /dev/null; then
+  FORMAT_FAIL=0
+  while IFS= read -r file; do
+    [ -z "$file" ] && continue
+    FULL="$REPO_ROOT/$file"
+    [ -f "$FULL" ] || continue
+    if ! clang-format --dry-run --Werror "$FULL" 2>/dev/null; then
+      echo "[pre-commit] clang-format violation: $file"
+      FORMAT_FAIL=1
+    fi
+  done <<< "$STAGED_CPP"
+  if [ $FORMAT_FAIL -ne 0 ]; then
+    echo "[pre-commit] FAIL — run: clang-format -i <file> then re-stage"
+    exit 1
+  fi
+  echo "[pre-commit] clang-format: OK"
+elif [ -n "$STAGED_CPP" ]; then
+  echo "[pre-commit] WARN — clang-format not found, skipping format check"
+fi
+
+echo "[pre-commit] All checks passed."
+exit 0
