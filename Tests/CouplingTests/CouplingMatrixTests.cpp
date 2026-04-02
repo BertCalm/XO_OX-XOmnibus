@@ -63,6 +63,9 @@ public:
         lastCouplingType = CouplingType::AmpToFilter;
         lastCouplingAmount = 0.0f;
         lastCouplingNumSamples = 0;
+        triangularCouplingReceived = false;
+        lastTriangularState = {};
+        lastTriangularAmount = 0.0f;
     }
 
     void renderBlock(juce::AudioBuffer<float>& /*buffer*/,
@@ -89,6 +92,17 @@ public:
         lastCouplingNumSamples = numSamples;
     }
 
+    // Override applyTriangularCouplingInput to track state for assertions.
+    // Also calls the base-class fallback so we can verify that path works too.
+    void applyTriangularCouplingInput(LoveTriangleState state, float amount) override
+    {
+        triangularCouplingReceived = true;
+        lastTriangularState = state;
+        lastTriangularAmount = amount;
+        // Invoke the default AmpToFilter fallback so applyCouplingInput is exercised.
+        SynthEngine::applyTriangularCouplingInput(state, amount);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         return {};
@@ -112,9 +126,28 @@ public:
     float lastCouplingAmount = 0.0f;
     int lastCouplingNumSamples = 0;
 
+    // TriangularCoupling state for assertions
+    bool triangularCouplingReceived = false;
+    LoveTriangleState lastTriangularState {};
+    float lastTriangularAmount = 0.0f;
+
 private:
     juce::String engineId;
     std::vector<float> outputBuffer;
+};
+
+// Test engine that simulates an Oxytocin-like source with real I/P/C state.
+class OxytocinLikeTestEngine : public TestEngine
+{
+public:
+    OxytocinLikeTestEngine() : TestEngine("OxytocinLike") {}
+
+    void setLoveState(float I, float P, float C) { loveState = { I, P, C }; }
+
+    LoveTriangleState getLoveTriangleState() const override { return loveState; }
+
+private:
+    LoveTriangleState loveState { 0.7f, 0.5f, 0.3f };
 };
 
 //==============================================================================
@@ -378,6 +411,233 @@ static void testProcessBlock()
     }
 }
 
+// Tests for KnotTopology bidirectional coupling (issue #434)
+static void testKnotTopology()
+{
+    std::cout << "\n--- KnotTopology Bidirectional Coupling ---\n";
+    constexpr int blockSize = 256;
+
+    // KnotTopology must call applyCouplingInput on BOTH engines (bidirectional).
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        TestEngine src("Src"), dst("Dst");
+        src.prepare(44100.0, blockSize);
+        dst.prepare(44100.0, blockSize);
+        src.fillOutput(0.5f);
+        dst.fillOutput(0.3f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        MegaCouplingMatrix::CouplingRoute route;
+        route.sourceSlot = 0;
+        route.destSlot = 1;
+        route.type = CouplingType::KnotTopology;
+        route.amount = 0.6f;
+        route.isNormalled = false;
+        route.active = true;
+        matrix.addRoute(route);
+
+        auto routes = matrix.loadRoutes();
+        matrix.processBlock(blockSize, routes);
+
+        // processKnotRoute dispatches as AmpToFilter in both directions.
+        // Both engines must have received coupling input.
+        reportTest("KnotTopology: dest engine receives coupling",
+                   dst.couplingInputReceived);
+        reportTest("KnotTopology: src engine also receives coupling (bidirectional)",
+                   src.couplingInputReceived);
+        // processKnotRoute passes CouplingType::AmpToFilter to each engine.
+        reportTest("KnotTopology: dest receives AmpToFilter semantics",
+                   dst.lastCouplingType == CouplingType::AmpToFilter);
+        reportTest("KnotTopology: src receives AmpToFilter semantics",
+                   src.lastCouplingType == CouplingType::AmpToFilter);
+    }
+
+    // KnotTopology self-route must be a no-op (no crash, no coupling).
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        TestEngine eng("Self");
+        eng.prepare(44100.0, blockSize);
+        eng.fillOutput(0.5f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &eng, nullptr, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        // Self-route should be blocked by addRoute's guard.
+        MegaCouplingMatrix::CouplingRoute selfRoute;
+        selfRoute.sourceSlot = 0;
+        selfRoute.destSlot = 0;
+        selfRoute.type = CouplingType::KnotTopology;
+        selfRoute.amount = 0.5f;
+        selfRoute.isNormalled = false;
+        selfRoute.active = true;
+        matrix.addRoute(selfRoute);
+
+        reportTest("KnotTopology: self-route blocked by addRoute",
+                   matrix.getRoutes().empty());
+    }
+
+    // KnotTopology scales with linking number encoded in amount.
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        TestEngine src("Src"), dst("Dst");
+        src.prepare(44100.0, blockSize);
+        dst.prepare(44100.0, blockSize);
+        src.fillOutput(0.5f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        // amount=1.0 → linkingNum=5, scaledAmount=1.0
+        MegaCouplingMatrix::CouplingRoute route;
+        route.sourceSlot = 0;
+        route.destSlot = 1;
+        route.type = CouplingType::KnotTopology;
+        route.amount = 1.0f;
+        route.isNormalled = false;
+        route.active = true;
+        matrix.addRoute(route);
+
+        auto routes = matrix.loadRoutes();
+        matrix.processBlock(blockSize, routes);
+
+        // scaledAmount = linkingNum(5) / 5 = 1.0
+        reportTest("KnotTopology: linking number 5 yields scaledAmount=1.0",
+                   std::abs(dst.lastCouplingAmount - 1.0f) < 0.01f);
+    }
+}
+
+// Tests for TriangularCoupling semantic I/P/C routing (issues #420 and #434)
+static void testTriangularCoupling()
+{
+    std::cout << "\n--- TriangularCoupling Semantic I/P/C Routing ---\n";
+    constexpr int blockSize = 256;
+
+    // TriangularCoupling must call applyTriangularCouplingInput, NOT applyCouplingInput.
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        OxytocinLikeTestEngine src;
+        TestEngine dst("Dst");
+        src.prepare(44100.0, blockSize);
+        dst.prepare(44100.0, blockSize);
+        src.setLoveState(0.8f, 0.6f, 0.4f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        MegaCouplingMatrix::CouplingRoute route;
+        route.sourceSlot = 0;
+        route.destSlot = 1;
+        route.type = CouplingType::TriangularCoupling;
+        route.amount = 0.5f;
+        route.isNormalled = false;
+        route.active = true;
+        matrix.addRoute(route);
+
+        auto routes = matrix.loadRoutes();
+        matrix.processBlock(blockSize, routes);
+
+        // applyTriangularCouplingInput must have been called.
+        reportTest("TriangularCoupling: applyTriangularCouplingInput called on dest",
+                   dst.triangularCouplingReceived);
+        // Source I/P/C must be passed intact to the destination.
+        reportTest("TriangularCoupling: source I state forwarded correctly",
+                   std::abs(dst.lastTriangularState.I - 0.8f) < 0.001f);
+        reportTest("TriangularCoupling: source P state forwarded correctly",
+                   std::abs(dst.lastTriangularState.P - 0.6f) < 0.001f);
+        reportTest("TriangularCoupling: source C state forwarded correctly",
+                   std::abs(dst.lastTriangularState.C - 0.4f) < 0.001f);
+        reportTest("TriangularCoupling: route amount forwarded correctly",
+                   std::abs(dst.lastTriangularAmount - 0.5f) < 0.001f);
+    }
+
+    // Default fallback (non-Oxytocin dest): applyTriangularCouplingInput must
+    // re-enter applyCouplingInput with AmpToFilter semantics (fixes #434).
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        OxytocinLikeTestEngine src;
+        TestEngine dst("GenericDst");
+        src.prepare(44100.0, blockSize);
+        dst.prepare(44100.0, blockSize);
+        src.setLoveState(0.7f, 0.5f, 0.3f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        MegaCouplingMatrix::CouplingRoute route;
+        route.sourceSlot = 0;
+        route.destSlot = 1;
+        route.type = CouplingType::TriangularCoupling;
+        route.amount = 1.0f;
+        route.isNormalled = false;
+        route.active = true;
+        matrix.addRoute(route);
+
+        // Reset so we can observe only the fallback-triggered applyCouplingInput call.
+        dst.couplingInputReceived = false;
+
+        auto routes = matrix.loadRoutes();
+        matrix.processBlock(blockSize, routes);
+
+        // The default SynthEngine::applyTriangularCouplingInput must have forwarded
+        // a signal via applyCouplingInput(AmpToFilter, ...) — proving non-Oxytocin
+        // engines receive audible modulation and are not silently dropped (#434).
+        reportTest("TriangularCoupling fallback: non-Oxytocin dest gets AmpToFilter",
+                   dst.couplingInputReceived);
+        reportTest("TriangularCoupling fallback: forwarded as AmpToFilter type",
+                   dst.lastCouplingType == CouplingType::AmpToFilter);
+    }
+
+    // Non-Oxytocin source: getLoveTriangleState returns {0,0,0}.
+    // TriangularCoupling from a non-love-triangle engine must still call
+    // applyTriangularCouplingInput (not silently skip), but with zero I/P/C.
+    {
+        MegaCouplingMatrix matrix;
+        matrix.prepare(blockSize);
+
+        TestEngine src("GenericSrc");  // getLoveTriangleState returns {0,0,0}
+        TestEngine dst("Dst");
+        src.prepare(44100.0, blockSize);
+        dst.prepare(44100.0, blockSize);
+        src.fillOutput(0.5f);
+
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+        matrix.setEngines(engines);
+
+        MegaCouplingMatrix::CouplingRoute route;
+        route.sourceSlot = 0;
+        route.destSlot = 1;
+        route.type = CouplingType::TriangularCoupling;
+        route.amount = 0.8f;
+        route.isNormalled = false;
+        route.active = true;
+        matrix.addRoute(route);
+
+        auto routes = matrix.loadRoutes();
+        matrix.processBlock(blockSize, routes);
+
+        // applyTriangularCouplingInput still called (not skipped).
+        reportTest("TriangularCoupling: non-Oxytocin source still calls dest handler",
+                   dst.triangularCouplingReceived);
+        // State is {0,0,0} because generic sources have no love state.
+        reportTest("TriangularCoupling: non-Oxytocin source yields zero I/P/C",
+                   dst.lastTriangularState.I == 0.0f
+                   && dst.lastTriangularState.P == 0.0f
+                   && dst.lastTriangularState.C == 0.0f);
+    }
+}
+
 //==============================================================================
 // Public entry point
 //==============================================================================
@@ -396,6 +656,8 @@ int runAll()
     testPrepare();
     testRouteManagement();
     testProcessBlock();
+    testKnotTopology();
+    testTriangularCoupling();
 
     std::cout << "\n  Coupling Tests: " << g_couplingTestsPassed << " passed, "
               << g_couplingTestsFailed << " failed\n";
