@@ -28,7 +28,10 @@ public:
         A11y::setup(playC4Btn, "Play C4", "Preview the instrument at middle C, velocity 100. Space to activate.");
         addAndMakeVisible(playC4Btn);
 
-        setSize(120, 32);
+        // Advisory initial size — parent should call setBounds() to resize.
+        // Use font metrics so the component is appropriately sized at any DPI/scale.
+        const int btnH = juce::roundToInt(GalleryFonts::body(12.0f).getHeight() * 2.2f);
+        setSize(juce::roundToInt(btnH * 3.75f), btnH);
     }
 
     ~OutshinePreviewPlayer() override

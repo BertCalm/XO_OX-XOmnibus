@@ -16,6 +16,9 @@ public:
         setWantsKeyboardFocus(false);
         A11y::setup(*this, "Export Bar", "Pearl name, export format, and export controls");
         buildControls();
+        // Initial size is advisory only — parent container calls setBounds().
+        // Use proportional defaults so the bar is usable at any DPI. The
+        // previous hard-coded 900×60 appeared at half-size on 2x Retina displays.
         setSize(900, 60);
     }
 
@@ -110,6 +113,14 @@ public:
 
     void resized() override
     {
+        // Derive button widths from the component's own width so they scale on
+        // HiDPI/Retina.  The previous hardcoded 80/140/120 px looked cramped on
+        // 2x displays.  Proportions: cancel ≈ 9%, export ≈ 16%, badge ≈ 13%.
+        const int w          = getWidth();
+        const int cancelW    = juce::jmax(64, (int)(w * 0.09f));
+        const int exportW    = juce::jmax(110, (int)(w * 0.16f));
+        const int badgeW     = juce::jmax(90,  (int)(w * 0.13f));
+
         auto area = getLocalBounds().reduced(8, 0);
         area.removeFromBottom(kBarH);
 
@@ -120,12 +131,12 @@ public:
         formatSelector.setBounds(controlRow.removeFromLeft(kFormatW).reduced(0, 2));
         controlRow.removeFromLeft(8);
 
-        cancelBtn.setBounds(controlRow.removeFromRight(80).reduced(0, 2));
+        cancelBtn.setBounds(controlRow.removeFromRight(cancelW).reduced(0, 2));
         controlRow.removeFromRight(4);
-        exportBtn.setBounds(controlRow.removeFromRight(140).reduced(0, 2));
+        exportBtn.setBounds(controlRow.removeFromRight(exportW).reduced(0, 2));
         controlRow.removeFromRight(8);
 
-        unverifiedBadge.setBounds(controlRow.removeFromRight(120).reduced(0, 4));
+        unverifiedBadge.setBounds(controlRow.removeFromRight(badgeW).reduced(0, 4));
         controlRow.removeFromRight(8);
 
         auto labelArea = area.reduced(0, 2);

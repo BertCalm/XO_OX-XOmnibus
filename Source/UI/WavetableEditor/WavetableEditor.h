@@ -134,8 +134,11 @@ public:
     void resized() override
     {
         auto bounds = getLocalBounds();
-        const int controlH = 28;
-        const int btnW     = 32;
+        // Derive control heights from the font to scale correctly on HiDPI/Retina.
+        // The previous hardcoded 28/32 px were fine at 1x but too small at 2x.
+        // Round up to an even number so pixels stay sharp.
+        const int controlH = juce::roundToInt(GalleryFonts::body(12.0f).getHeight() * 2.0f + 4);
+        const int btnW     = juce::roundToInt(GalleryFonts::body(12.0f).getHeight() * 2.4f);
         const int gap      = 4;
 
         // Bottom controls strip
