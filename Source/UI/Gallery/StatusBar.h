@@ -341,10 +341,14 @@ public:
              || dynamic_cast<juce::ComboBox*>(focused) != nullptr)
                 return false;
 
-            if (key == juce::KeyPress('z')) { if (bar.onFire)    bar.onFire();    return true; }
-            if (key == juce::KeyPress('x')) { if (bar.onXoSend)  bar.onXoSend();  return true; }
-            if (key == juce::KeyPress('c')) { if (bar.onEchoCut) bar.onEchoCut(); return true; }
-            if (key == juce::KeyPress('v')) { if (bar.onPanic)   bar.onPanic();   return true; }
+            // #208: Only fire trigger-pad shortcuts when the corresponding button
+            // is both visible and enabled.  Hidden pads (fireBtn/xoSendBtn/echoCutBtn
+            // are setVisible(false) by default) must not produce MIDI output while
+            // the user is navigating or typing elsewhere in the UI.
+            if (key == juce::KeyPress('z')) { if (bar.onFire    && bar.fireBtn.isVisible()    && bar.fireBtn.isEnabled())    { bar.onFire();    return true; } }
+            if (key == juce::KeyPress('x')) { if (bar.onXoSend  && bar.xoSendBtn.isVisible()  && bar.xoSendBtn.isEnabled())  { bar.onXoSend();  return true; } }
+            if (key == juce::KeyPress('c')) { if (bar.onEchoCut && bar.echoCutBtn.isVisible() && bar.echoCutBtn.isEnabled()) { bar.onEchoCut(); return true; } }
+            if (key == juce::KeyPress('v')) { if (bar.onPanic   && bar.panicBtn.isVisible()   && bar.panicBtn.isEnabled())   { bar.onPanic();   return true; } }
             return false;
         }
 
