@@ -15,7 +15,7 @@ using EngineFactory = std::function<std::unique_ptr<SynthEngine>()>;
 //==============================================================================
 // EngineRegistry — Manages engine type registration and the 5 active slots.
 //
-// Engines register at compile time via REGISTER_ENGINE macro.
+// Engines register centrally in XOceanusProcessor.cpp.
 // The processor loads/swaps engines at runtime with 50ms crossfade.
 //
 // Slot 4 (the 5th slot, 0-indexed) is the "Ghost Slot" — it materialises in
@@ -137,19 +137,5 @@ private:
     EngineRegistry() = default;
     std::unordered_map<std::string, EngineFactory> factories;
 };
-
-//==============================================================================
-// REGISTER_ENGINE macro — convenience for engines whose class name matches
-// their canonical engine ID. Currently unused: XOceanus registers all engines
-// centrally in XOceanusProcessor.cpp with explicit canonical IDs (e.g.
-// "OddfeliX" → SnapEngine) because class names don't match engine IDs.
-//
-#define REGISTER_ENGINE(EngineClass) \
-    static bool registered_##EngineClass = \
-        xoceanus::EngineRegistry::instance().registerEngine( \
-            #EngineClass, \
-            []() -> std::unique_ptr<xoceanus::SynthEngine> { \
-                return std::make_unique<EngineClass>(); \
-            })
 
 } // namespace xoceanus

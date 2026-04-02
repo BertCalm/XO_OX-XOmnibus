@@ -16,7 +16,7 @@ namespace xoceanus {
 // feliX = surgical, minimum phase, zero color.
 // Oscar = transformer iron, tanh saturation, harmonic richness.
 //
-// Each band: freq, gain, Q, type, character, bypass, dynamic enable, tide enable
+// Each band: freq, gain, Q, type, character, bypass, tide enable
 // Global: input/output gain, mix, phase mode, analyzer, oversampling, coupling
 //
 // Gallery code: OBSERVE | Accent: Spectral Amber #E8A020 | Prefix: obs_
@@ -48,9 +48,6 @@ struct ObserveBand
     float rmsEnergy = 0.0f;
     float rmsSmooth = 0.0f;
 
-    // Dynamic EQ state
-    float dynEnvelope = 0.0f;
-
     void reset()
     {
         filter.reset();
@@ -59,7 +56,6 @@ struct ObserveBand
         tidePhase = 0.0f;
         tideOut = 0.0f;
         rmsEnergy = rmsSmooth = 0.0f;
-        dynEnvelope = 0.0f;
     }
 };
 
