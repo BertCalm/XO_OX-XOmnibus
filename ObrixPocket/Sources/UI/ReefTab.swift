@@ -16,7 +16,10 @@ struct ReefTab: View {
     @StateObject private var encounterManager = RandomEncounterManager()
 
     @State private var reefScene: ReefScene?
-    @State private var gridRefreshTimer: Timer?
+    /// Debounce token for reef-grid refreshes triggered by objectWillChange.
+    /// Using DispatchWorkItem avoids allocating a new Timer object on every
+    /// store notification (which happens on every note-on during play).
+    @State private var gridRefreshWorkItem: DispatchWorkItem?
     @State private var activeSourceSlot: Int?
     @State private var selectedSlot: Int?
 
@@ -52,13 +55,16 @@ struct ReefTab: View {
                         )
                         .frame(maxWidth: .infinity, maxHeight: .infinity)  // Center in available space
                         .onReceive(reefStore.objectWillChange) { _ in
-                            gridRefreshTimer?.invalidate()
-                            let t = Timer(timeInterval: 0.15, repeats: false) { [weak self] _ in
-                                guard let self else { return }
+                            // Cancel the previous pending refresh before scheduling a new one.
+                            // DispatchWorkItem is a plain Swift value type — no Objective-C
+                            // Timer allocation on every notification, eliminating GC pressure
+                            // during active play when objectWillChange fires on each note-on.
+                            gridRefreshWorkItem?.cancel()
+                            let work = DispatchWorkItem { [weak reefScene] in
                                 reefScene?.refreshGrid()
                             }
-                            RunLoop.main.add(t, forMode: .common)
-                            gridRefreshTimer = t
+                            gridRefreshWorkItem = work
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: work)
                         }
                 } else {
                     VStack(spacing: 8) {
@@ -285,8 +291,8 @@ struct ReefTab: View {
             ambientManager.stop()
             ambientResumeTimer?.invalidate()
             ambientResumeTimer = nil
-            gridRefreshTimer?.invalidate()
-            gridRefreshTimer = nil
+            gridRefreshWorkItem?.cancel()
+            gridRefreshWorkItem = nil
         }
         .fullScreenCover(isPresented: $showPerformanceMode) {
             PerformanceMode(activeSourceSlot: activeSourceSlot ?? firstSourceSlot)
