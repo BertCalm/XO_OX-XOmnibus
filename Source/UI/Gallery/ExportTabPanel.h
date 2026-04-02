@@ -109,6 +109,41 @@ public:
     ~ExportTabPanel() override = default;
 
     //==========================================================================
+    // setExportProgress — call from the export pipeline (on the message thread)
+    // to drive the progress bar.  Pass progress in [0, 1]; a value < 0 signals
+    // completion and resets the bar.
+    //
+    // Typical call sequence from the pipeline:
+    //   panel->setExportProgress(0.0, "Starting…");
+    //   panel->setExportProgress(0.33, "Rendering samples…");
+    //   panel->setExportProgress(0.66, "Building XPN…");
+    //   panel->setExportProgress(1.0, "Done");
+    //   panel->setExportProgress(-1.0, "Export complete");
+    void setExportProgress(double progress, const juce::String& stageText = {})
+    {
+        jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
+
+        if (progress < 0.0)
+        {
+            // Completion: hide bar, reset state
+            exportInProgress = false;
+            progressValue    = 0.0;
+            progressBar.setVisible(false);
+            statusLabel.setText(stageText.isEmpty() ? "Export complete" : stageText,
+                                juce::dontSendNotification);
+        }
+        else
+        {
+            exportInProgress = true;
+            progressValue    = juce::jlimit(0.0, 1.0, progress);
+            progressBar.setVisible(true);
+            if (stageText.isNotEmpty())
+                statusLabel.setText(stageText, juce::dontSendNotification);
+        }
+        repaint();
+    }
+
+    //==========================================================================
     // Call after preset or engine changes to update the kit info display.
     void refresh()
     {
