@@ -443,7 +443,7 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Ochre"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFB87333); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFCC7722); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
