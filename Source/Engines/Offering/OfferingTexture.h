@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingTexture.h — Stochastic Micro-Texture Layer (DUST)
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  Simulates the analog medium chain of crate digging:
 //    Vinyl crackle (Poisson impulse noise)
@@ -21,7 +21,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OfferingTexture — Micro-texture processor applied per-voice after transient.
@@ -196,4 +196,4 @@ private:
     float wobblePhase_ = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

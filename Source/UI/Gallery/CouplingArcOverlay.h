@@ -1,10 +1,10 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingArcOverlay — transparent component drawn on top of the tile sidebar.
@@ -14,7 +14,7 @@ namespace xolokun {
 // transparent to mouse events; clicks pass through to the tiles beneath.
 //
 // Usage:
-//   - Construct with the XOlokunProcessor reference.
+//   - Construct with the XOceanusProcessor reference.
 //   - Call setTileCenter(slot, centre) after tile bounds are set in resized().
 //   - Add to the editor and set its bounds to cover the full editor area.
 //   - The 30Hz timer drives continuous repaint; no other refresh needed.
@@ -55,7 +55,7 @@ namespace xolokun {
 class CouplingArcOverlay : public juce::Component, private juce::Timer
 {
 public:
-    explicit CouplingArcOverlay(XOlokunProcessor& proc) : processor(proc)
+    explicit CouplingArcOverlay(XOceanusProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through to tiles beneath
         cachedRoutes.reserve(16); // Fix #14: pre-allocate to avoid reallocation at steady state
@@ -68,7 +68,7 @@ public:
 
     ~CouplingArcOverlay() override { stopTimer(); }
 
-    // Called by XOlokunEditor::resized() once tile positions are finalised.
+    // Called by XOceanusEditor::resized() once tile positions are finalised.
     // Centre is in the LOCAL coordinate space of this overlay component.
     void setTileCenter(int slot, juce::Point<float> centre)
     {
@@ -310,7 +310,7 @@ private:
     static constexpr int NumParticlesPerArc = 12; // particles per unique arc pair
     static constexpr int MaxArcSlots        = 12; // must match arcMap / arcPairs size
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters {};
     float pulsePhase[MaxArcSlots] {}; // one phase accumulator per unique arc pair
 
@@ -323,4 +323,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingArcOverlay)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

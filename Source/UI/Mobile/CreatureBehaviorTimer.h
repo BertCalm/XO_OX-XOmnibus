@@ -1,7 +1,7 @@
 #pragma once
 //==============================================================================
 // CreatureBehaviorTimer.h
-// XOlokun — JUCE timer that polls OBRIX parameters and drives reef creature
+// XOceanus — JUCE timer that polls OBRIX parameters and drives reef creature
 // states via ReefBridge.
 //
 // Design:
@@ -41,7 +41,7 @@
 #include <atomic>
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CreatureDriver — Specifies how a single creature maps to a parameter.
@@ -227,4 +227,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CreatureBehaviorTimer)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

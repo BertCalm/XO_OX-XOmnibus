@@ -1,6 +1,6 @@
-#include "XOlokunProcessor.h"
-// XOlokunEditor.h is intentionally NOT included here. createEditor() is
-// implemented in Source/UI/XOlokunEditor.cpp to keep the UI include chain
+#include "XOceanusProcessor.h"
+// XOceanusEditor.h is intentionally NOT included here. createEditor() is
+// implemented in Source/UI/XOceanusEditor.cpp to keep the UI include chain
 // (ExportDialog → XPNVelocityCurves, CouplingVisualizer → GalleryColors, etc.)
 // out of this translation unit and avoid circular include complications.
 #include "Engines/Snap/SnapEngine.h"
@@ -94,360 +94,360 @@
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
 // Legacy names ("Snap", "Morph", etc.) are resolved by resolveEngineAlias() in PresetManager.h.
-static bool registered_OddfeliX = xolokun::EngineRegistry::instance().registerEngine(
-    "OddfeliX", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::SnapEngine>();
+static bool registered_OddfeliX = xoceanus::EngineRegistry::instance().registerEngine(
+    "OddfeliX", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::SnapEngine>();
     });
-static bool registered_OddOscar = xolokun::EngineRegistry::instance().registerEngine(
-    "OddOscar", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::MorphEngine>();
+static bool registered_OddOscar = xoceanus::EngineRegistry::instance().registerEngine(
+    "OddOscar", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::MorphEngine>();
     });
-static bool registered_Overdub = xolokun::EngineRegistry::instance().registerEngine(
-    "Overdub", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::DubEngine>();
+static bool registered_Overdub = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overdub", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::DubEngine>();
     });
-static bool registered_Odyssey = xolokun::EngineRegistry::instance().registerEngine(
-    "Odyssey", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::DriftEngine>();
+static bool registered_Odyssey = xoceanus::EngineRegistry::instance().registerEngine(
+    "Odyssey", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::DriftEngine>();
     });
-static bool registered_Oblong = xolokun::EngineRegistry::instance().registerEngine(
-    "Oblong", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::BobEngine>();
+static bool registered_Oblong = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oblong", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::BobEngine>();
     });
-static bool registered_Obese = xolokun::EngineRegistry::instance().registerEngine(
-    "Obese", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::FatEngine>();
+static bool registered_Obese = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obese", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::FatEngine>();
     });
-static bool registered_Onset = xolokun::EngineRegistry::instance().registerEngine(
-    "Onset", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OnsetEngine>();
+static bool registered_Onset = xoceanus::EngineRegistry::instance().registerEngine(
+    "Onset", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OnsetEngine>();
     });
-static bool registered_Overworld = xolokun::EngineRegistry::instance().registerEngine(
-    "Overworld", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OverworldEngine>();
+static bool registered_Overworld = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overworld", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OverworldEngine>();
     });
-static bool registered_Opal = xolokun::EngineRegistry::instance().registerEngine(
-    "Opal", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OpalEngine>();
+static bool registered_Opal = xoceanus::EngineRegistry::instance().registerEngine(
+    "Opal", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OpalEngine>();
     });
-static bool registered_Overbite = xolokun::EngineRegistry::instance().registerEngine(
-    "Overbite", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::BiteEngine>();
+static bool registered_Overbite = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overbite", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::BiteEngine>();
     });
-static bool registered_Organon = xolokun::EngineRegistry::instance().registerEngine(
-    "Organon", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrganonEngine>();
+static bool registered_Organon = xoceanus::EngineRegistry::instance().registerEngine(
+    "Organon", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrganonEngine>();
     });
-static bool registered_Ocelot = xolokun::EngineRegistry::instance().registerEngine(
-    "Ocelot", []() -> std::unique_ptr<xolokun::SynthEngine> {
+static bool registered_Ocelot = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ocelot", []() -> std::unique_ptr<xoceanus::SynthEngine> {
         return std::make_unique<xocelot::OcelotEngine>();
     });
-static bool registered_Ouroboros = xolokun::EngineRegistry::instance().registerEngine(
-    "Ouroboros", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OuroborosEngine>();
+static bool registered_Ouroboros = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ouroboros", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OuroborosEngine>();
     });
-static bool registered_Obsidian = xolokun::EngineRegistry::instance().registerEngine(
-    "Obsidian", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObsidianEngine>();
+static bool registered_Obsidian = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obsidian", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObsidianEngine>();
     });
-static bool registered_Origami = xolokun::EngineRegistry::instance().registerEngine(
-    "Origami", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrigamiEngine>();
+static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
+    "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrigamiEngine>();
     });
-static bool registered_Oracle = xolokun::EngineRegistry::instance().registerEngine(
-    "Oracle", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OracleEngine>();
+static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oracle", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OracleEngine>();
     });
-static bool registered_Obscura = xolokun::EngineRegistry::instance().registerEngine(
-    "Obscura", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObscuraEngine>();
+static bool registered_Obscura = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obscura", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObscuraEngine>();
     });
-static bool registered_Oceanic = xolokun::EngineRegistry::instance().registerEngine(
-    "Oceanic", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OceanicEngine>();
+static bool registered_Oceanic = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oceanic", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OceanicEngine>();
     });
-static bool registered_Optic = xolokun::EngineRegistry::instance().registerEngine(
-    "Optic", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OpticEngine>();
+static bool registered_Optic = xoceanus::EngineRegistry::instance().registerEngine(
+    "Optic", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OpticEngine>();
     });
-static bool registered_Oblique = xolokun::EngineRegistry::instance().registerEngine(
-    "Oblique", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObliqueEngine>();
+static bool registered_Oblique = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oblique", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObliqueEngine>();
     });
-static bool registered_Orbital = xolokun::EngineRegistry::instance().registerEngine(
-    "Orbital", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrbitalEngine>();
+static bool registered_Orbital = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orbital", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrbitalEngine>();
     });
-static bool registered_Osprey = xolokun::EngineRegistry::instance().registerEngine(
-    "Osprey", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OspreyEngine>();
+static bool registered_Osprey = xoceanus::EngineRegistry::instance().registerEngine(
+    "Osprey", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OspreyEngine>();
     });
-static bool registered_Osteria = xolokun::EngineRegistry::instance().registerEngine(
-    "Osteria", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OsteriaEngine>();
+static bool registered_Osteria = xoceanus::EngineRegistry::instance().registerEngine(
+    "Osteria", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OsteriaEngine>();
     });
-static bool registered_Owlfish = xolokun::EngineRegistry::instance().registerEngine(
-    "Owlfish", []() -> std::unique_ptr<xolokun::SynthEngine> {
+static bool registered_Owlfish = xoceanus::EngineRegistry::instance().registerEngine(
+    "Owlfish", []() -> std::unique_ptr<xoceanus::SynthEngine> {
         return std::make_unique<xowlfish::OwlfishEngine>();
     });
-static bool registered_Ohm = xolokun::EngineRegistry::instance().registerEngine(
-    "Ohm", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OhmEngine>();
+static bool registered_Ohm = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ohm", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OhmEngine>();
     });
-static bool registered_Orphica = xolokun::EngineRegistry::instance().registerEngine(
-    "Orphica", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrphicaEngine>();
+static bool registered_Orphica = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orphica", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrphicaEngine>();
     });
-static bool registered_Obbligato = xolokun::EngineRegistry::instance().registerEngine(
-    "Obbligato", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObbligatoEngine>();
+static bool registered_Obbligato = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obbligato", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObbligatoEngine>();
     });
-static bool registered_Ottoni = xolokun::EngineRegistry::instance().registerEngine(
-    "Ottoni", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OttoniEngine>();
+static bool registered_Ottoni = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ottoni", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OttoniEngine>();
     });
-static bool registered_Ole = xolokun::EngineRegistry::instance().registerEngine(
-    "Ole", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OleEngine>();
+static bool registered_Ole = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ole", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OleEngine>();
     });
-static bool registered_Overlap = xolokun::EngineRegistry::instance().registerEngine(
-    "Overlap", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::XOverlapEngine>();
+static bool registered_Overlap = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overlap", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::XOverlapEngine>();
     });
-static bool registered_Outwit = xolokun::EngineRegistry::instance().registerEngine(
-    "Outwit", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::XOutwitEngine>();
+static bool registered_Outwit = xoceanus::EngineRegistry::instance().registerEngine(
+    "Outwit", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::XOutwitEngine>();
     });
-static bool registered_Ombre = xolokun::EngineRegistry::instance().registerEngine(
-    "Ombre", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OmbreEngine>();
+static bool registered_Ombre = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ombre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OmbreEngine>();
     });
-static bool registered_Orca = xolokun::EngineRegistry::instance().registerEngine(
-    "Orca", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrcaEngine>();
+static bool registered_Orca = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orca", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrcaEngine>();
     });
-static bool registered_Octopus = xolokun::EngineRegistry::instance().registerEngine(
-    "Octopus", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OctopusEngine>();
+static bool registered_Octopus = xoceanus::EngineRegistry::instance().registerEngine(
+    "Octopus", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OctopusEngine>();
     });
 // V1 Concept Engines — OPENSKY
-static bool registered_OpenSky = xolokun::EngineRegistry::instance().registerEngine(
-    "OpenSky", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OpenSkyEngine>();
+static bool registered_OpenSky = xoceanus::EngineRegistry::instance().registerEngine(
+    "OpenSky", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OpenSkyEngine>();
     });
 // V1 Concept Engines — OSTINATO
-static bool registered_Ostinato = xolokun::EngineRegistry::instance().registerEngine(
-    "Ostinato", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OstinatoEngine>();
+static bool registered_Ostinato = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ostinato", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OstinatoEngine>();
     });
 // V1 Concept Engines — OCEANDEEP
-static bool registered_OceanDeep = xolokun::EngineRegistry::instance().registerEngine(
-    "OceanDeep", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OceandeepEngine>();
+static bool registered_OceanDeep = xoceanus::EngineRegistry::instance().registerEngine(
+    "OceanDeep", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OceandeepEngine>();
     });
 // V1 Concept Engines — OUIE
-static bool registered_Ouie = xolokun::EngineRegistry::instance().registerEngine(
-    "Ouie", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OuieEngine>();
+static bool registered_Ouie = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ouie", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OuieEngine>();
     });
 // Flagship — OBRIX (modular brick synthesis)
-static bool registered_Obrix = xolokun::EngineRegistry::instance().registerEngine(
-    "Obrix", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObrixEngine>();
+static bool registered_Obrix = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obrix", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObrixEngine>();
     });
 // Theorem Engine — ORBWEAVE (topological knot coupling)
-static bool registered_Orbweave = xolokun::EngineRegistry::instance().registerEngine(
-    "Orbweave", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrbweaveEngine>();
+static bool registered_Orbweave = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orbweave", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrbweaveEngine>();
     });
 // Theorem Engine — OVERTONE (continued fraction spectral synthesis)
-static bool registered_Overtone = xolokun::EngineRegistry::instance().registerEngine(
-    "Overtone", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OvertoneEngine>();
+static bool registered_Overtone = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overtone", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OvertoneEngine>();
     });
 // Theorem Engine — ORGANISM (cellular automata generative synthesis)
-static bool registered_Organism = xolokun::EngineRegistry::instance().registerEngine(
-    "Organism", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrganismEngine>();
+static bool registered_Organism = xoceanus::EngineRegistry::instance().registerEngine(
+    "Organism", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrganismEngine>();
     });
 // Singularity Collection — OXBOW (entangled reverb synth engine)
-static bool registered_Oxbow = xolokun::EngineRegistry::instance().registerEngine(
-    "Oxbow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OxbowEngine>();
+static bool registered_Oxbow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OxbowEngine>();
     });
 // OWARE — tuned percussion synthesizer (wood/metal material continuum)
-static bool registered_Oware = xolokun::EngineRegistry::instance().registerEngine(
-    "Oware", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OwareEngine>();
+static bool registered_Oware = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oware", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OwareEngine>();
     });
 // OPERA — additive-vocal Kuramoto synchronicity engine (Humpback Whale / SOFAR)
-static bool registered_Opera = xolokun::EngineRegistry::instance().registerEngine(
-    "Opera", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OperaAdapter>();
+static bool registered_Opera = xoceanus::EngineRegistry::instance().registerEngine(
+    "Opera", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OperaAdapter>();
     });
 // OFFERING — psychology-driven boom bap drum synthesis (Mantis Shrimp / Rubble Zone)
-static bool registered_Offering = xolokun::EngineRegistry::instance().registerEngine(
-    "Offering", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OfferingEngine>();
+static bool registered_Offering = xoceanus::EngineRegistry::instance().registerEngine(
+    "Offering", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OfferingEngine>();
     });
 // Chef Quad Collection — OTO (tape & circuit-bent heritage)
-static bool registered_Oto = xolokun::EngineRegistry::instance().registerEngine(
-    "Oto", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OtoEngine>();
+static bool registered_Oto = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oto", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OtoEngine>();
     });
 // Chef Quad Collection — OCTAVE (harmonic interval synthesis)
-static bool registered_Octave = xolokun::EngineRegistry::instance().registerEngine(
-    "Octave", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OctaveEngine>();
+static bool registered_Octave = xoceanus::EngineRegistry::instance().registerEngine(
+    "Octave", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OctaveEngine>();
     });
 // Chef Quad Collection — OLEG (folk/modal string synthesis)
-static bool registered_Oleg = xolokun::EngineRegistry::instance().registerEngine(
-    "Oleg", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OlegEngine>();
+static bool registered_Oleg = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oleg", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OlegEngine>();
     });
 // Chef Quad Collection — OTIS (soul/funk synthesis)
-static bool registered_Otis = xolokun::EngineRegistry::instance().registerEngine(
-    "Otis", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OtisEngine>();
+static bool registered_Otis = xoceanus::EngineRegistry::instance().registerEngine(
+    "Otis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OtisEngine>();
     });
 // KITCHEN Quad Collection — OVEN
-static bool registered_Oven = xolokun::EngineRegistry::instance().registerEngine(
-    "Oven", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OvenEngine>();
+static bool registered_Oven = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oven", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OvenEngine>();
     });
 // KITCHEN Quad Collection — OCHRE
-static bool registered_Ochre = xolokun::EngineRegistry::instance().registerEngine(
-    "Ochre", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OchreEngine>();
+static bool registered_Ochre = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ochre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OchreEngine>();
     });
 // KITCHEN Quad Collection — OBELISK
-static bool registered_Obelisk = xolokun::EngineRegistry::instance().registerEngine(
-    "Obelisk", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObeliskEngine>();
+static bool registered_Obelisk = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obelisk", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObeliskEngine>();
     });
 // KITCHEN Quad Collection — OPALINE
-static bool registered_Opaline = xolokun::EngineRegistry::instance().registerEngine(
-    "Opaline", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OpalineEngine>();
+static bool registered_Opaline = xoceanus::EngineRegistry::instance().registerEngine(
+    "Opaline", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OpalineEngine>();
     });
 // CELLAR Quad Collection — OGRE
-static bool registered_Ogre = xolokun::EngineRegistry::instance().registerEngine(
-    "Ogre", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OgreEngine>();
+static bool registered_Ogre = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ogre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OgreEngine>();
     });
 // CELLAR Quad Collection — OLATE
-static bool registered_Olate = xolokun::EngineRegistry::instance().registerEngine(
-    "Olate", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OlateEngine>();
+static bool registered_Olate = xoceanus::EngineRegistry::instance().registerEngine(
+    "Olate", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OlateEngine>();
     });
 // CELLAR Quad Collection — OAKEN
-static bool registered_Oaken = xolokun::EngineRegistry::instance().registerEngine(
-    "Oaken", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OakenEngine>();
+static bool registered_Oaken = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oaken", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OakenEngine>();
     });
 // CELLAR Quad Collection — OMEGA
-static bool registered_Omega = xolokun::EngineRegistry::instance().registerEngine(
-    "Omega", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OmegaEngine>();
+static bool registered_Omega = xoceanus::EngineRegistry::instance().registerEngine(
+    "Omega", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OmegaEngine>();
     });
 // GARDEN Quad Collection — ORCHARD
-static bool registered_Orchard = xolokun::EngineRegistry::instance().registerEngine(
-    "Orchard", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OrchardEngine>();
+static bool registered_Orchard = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orchard", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OrchardEngine>();
     });
 // GARDEN Quad Collection — OVERGROW
-static bool registered_Overgrow = xolokun::EngineRegistry::instance().registerEngine(
-    "Overgrow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OvergrowEngine>();
+static bool registered_Overgrow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overgrow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OvergrowEngine>();
     });
 // GARDEN Quad Collection — OSIER
-static bool registered_Osier = xolokun::EngineRegistry::instance().registerEngine(
-    "Osier", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OsierEngine>();
+static bool registered_Osier = xoceanus::EngineRegistry::instance().registerEngine(
+    "Osier", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OsierEngine>();
     });
 // GARDEN Quad Collection — OXALIS
-static bool registered_Oxalis = xolokun::EngineRegistry::instance().registerEngine(
-    "Oxalis", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OxalisEngine>();
+static bool registered_Oxalis = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oxalis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OxalisEngine>();
     });
 // BROTH Quad Collection — OVERWASH
-static bool registered_Overwash = xolokun::EngineRegistry::instance().registerEngine(
-    "Overwash", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OverwashEngine>();
+static bool registered_Overwash = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overwash", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OverwashEngine>();
     });
 // BROTH Quad Collection — OVERWORN
-static bool registered_Overworn = xolokun::EngineRegistry::instance().registerEngine(
-    "Overworn", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OverwornEngine>();
+static bool registered_Overworn = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overworn", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OverwornEngine>();
     });
 // BROTH Quad Collection — OVERFLOW
-static bool registered_Overflow = xolokun::EngineRegistry::instance().registerEngine(
-    "Overflow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OverflowEngine>();
+static bool registered_Overflow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overflow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OverflowEngine>();
     });
 // BROTH Quad Collection — OVERCAST
-static bool registered_Overcast = xolokun::EngineRegistry::instance().registerEngine(
-    "Overcast", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OvercastEngine>();
+static bool registered_Overcast = xoceanus::EngineRegistry::instance().registerEngine(
+    "Overcast", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OvercastEngine>();
     });
 // FUSION Quad Collection — OKEANOS (formerly Oasis, renamed to free ID for ecosystem engine)
-static bool registered_Okeanos = xolokun::EngineRegistry::instance().registerEngine(
-    "Okeanos", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OkeanosEngine>();
+static bool registered_Okeanos = xoceanus::EngineRegistry::instance().registerEngine(
+    "Okeanos", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OkeanosEngine>();
     });
 // FUSION Quad Collection — OASIS (bioluminescent ecosystem engine)
-static bool registered_Oasis = xolokun::EngineRegistry::instance().registerEngine(
-    "Oasis", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OasisEngine>();
+static bool registered_Oasis = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oasis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OasisEngine>();
     });
 // FUSION Quad Collection — ODDFELLOW
-static bool registered_Oddfellow = xolokun::EngineRegistry::instance().registerEngine(
-    "Oddfellow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OddfellowEngine>();
+static bool registered_Oddfellow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oddfellow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OddfellowEngine>();
     });
 // FUSION Quad Collection — ONKOLO
-static bool registered_Onkolo = xolokun::EngineRegistry::instance().registerEngine(
-    "Onkolo", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OnkoloEngine>();
+static bool registered_Onkolo = xoceanus::EngineRegistry::instance().registerEngine(
+    "Onkolo", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OnkoloEngine>();
     });
 // FUSION Quad Collection — OPCODE
-static bool registered_Opcode = xolokun::EngineRegistry::instance().registerEngine(
-    "Opcode", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OpcodeEngine>();
+static bool registered_Opcode = xoceanus::EngineRegistry::instance().registerEngine(
+    "Opcode", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OpcodeEngine>();
     });
 // Membrane Collection — OSMOSIS (engine #47, external audio membrane)
-static bool registered_Osmosis = xolokun::EngineRegistry::instance().registerEngine(
-    "Osmosis", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OsmosisEngine>();
+static bool registered_Osmosis = xoceanus::EngineRegistry::instance().registerEngine(
+    "Osmosis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OsmosisEngine>();
     });
 // OXYTOCIN — circuit-modeling love-triangle synth, Engine #48 (Synapse Violet)
-static bool registered_Oxytocin = xolokun::EngineRegistry::instance().registerEngine(
-    "Oxytocin", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OxytocinAdapter>();
+static bool registered_Oxytocin = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oxytocin", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OxytocinAdapter>();
     });
 // OUTLOOK — panoramic visionary synth (Albatross / Surface Soarer)
-static bool registered_Outlook = xolokun::EngineRegistry::instance().registerEngine(
-    "Outlook", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OutlookEngine>();
+static bool registered_Outlook = xoceanus::EngineRegistry::instance().registerEngine(
+    "Outlook", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OutlookEngine>();
     });
 // Dual Engine Integration — OUTFLOW (Predictive Spatial Vacuum, engine #49)
-static bool registered_Outflow = xolokun::EngineRegistry::instance().registerEngine(
-    "Outflow", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::OutflowEngine>();
+static bool registered_Outflow = xoceanus::EngineRegistry::instance().registerEngine(
+    "Outflow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::OutflowEngine>();
     });
 // Cellular Automata Oscillator — OBIONT (engine #74)
-static bool registered_Obiont = xolokun::EngineRegistry::instance().registerEngine(
-    "Obiont", []() -> std::unique_ptr<xolokun::SynthEngine> {
-        return std::make_unique<xolokun::ObiontEngine>();
+static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEngine(
+    "Obiont", []() -> std::unique_ptr<xoceanus::SynthEngine> {
+        return std::make_unique<xoceanus::ObiontEngine>();
     });
 
-namespace xolokun {
+namespace xoceanus {
 
-XOlokunProcessor::XOlokunProcessor()
+XOceanusProcessor::XOceanusProcessor()
     : AudioProcessor(BusesProperties()
                      .withInput("Input", juce::AudioChannelSet::stereo(), false)
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
-      apvts(*this, nullptr, "XOlokunParams", createParameterLayout()),
+      apvts(*this, nullptr, "XOceanusParams", createParameterLayout()),
       macroSystem_(apvts),
       couplingPresetManager(apvts, [this](int slot) -> juce::String {
           auto* eng = getEngine(slot);
@@ -464,9 +464,9 @@ XOlokunProcessor::XOlokunProcessor()
     couplingPresetManager.scanDirectory(CouplingPresetManager::getDefaultDirectory());
 }
 
-XOlokunProcessor::~XOlokunProcessor() = default;
+XOceanusProcessor::~XOceanusProcessor() = default;
 
-bool XOlokunProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+bool XOceanusProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 {
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
@@ -477,7 +477,7 @@ bool XOlokunProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
     return true;
 }
 
-void XOlokunProcessor::cacheParameterPointers()
+void XOceanusProcessor::cacheParameterPointers()
 {
     cachedParams.masterVolume    = apvts.getRawParameterValue("masterVolume");
     cachedParams.cmEnabled       = apvts.getRawParameterValue("cm_enabled");
@@ -524,7 +524,7 @@ void XOlokunProcessor::cacheParameterPointers()
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
-    XOlokunProcessor::createParameterLayout()
+    XOceanusProcessor::createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
@@ -650,8 +650,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──
     // MathFXChain and BoutiqueFXChain use the shared params vector.
     // All mix parameters default to 0 — bypassed at zero CPU until user enables them.
-    xolokun::MathFXChain::addParameters(params);
-    xolokun::BoutiqueFXChain::addParameters(params);
+    xoceanus::MathFXChain::addParameters(params);
+    xoceanus::BoutiqueFXChain::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
@@ -1188,7 +1188,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // the ParameterLayout from the vector.
     juce::AudioProcessorValueTreeState::ParameterLayout layout (
         params.begin(), params.end());
-    xolokun::AquaticFXSuite::addParameters (layout);
+    xoceanus::AquaticFXSuite::addParameters (layout);
     return layout;
 }
 
@@ -1225,7 +1225,7 @@ static float silenceGateHoldMs(const juce::String& engineId)
     return 200.0f;
 }
 
-void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
+void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     // Guard against non-compliant hosts or test harnesses passing invalid values.
     if (sampleRate <= 0.0) sampleRate = 44100.0;
@@ -1303,7 +1303,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     familySlots_.ensureStorageAllocated(MaxSlots);
 }
 
-void XOlokunProcessor::releaseResources()
+void XOceanusProcessor::releaseResources()
 {
     for (int i = 0; i < MaxSlots; ++i)
     {
@@ -1314,10 +1314,10 @@ void XOlokunProcessor::releaseResources()
     masterFX.reset();
 }
 
-void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
+void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                                       juce::MidiBuffer& midi)
 {
-    xolokun::dsp::initAudioThreadOnce();  // ARM64 FPCR.FZ — see ThreadInit.h
+    xoceanus::dsp::initAudioThreadOnce();  // ARM64 FPCR.FZ — see ThreadInit.h
     juce::ScopedNoDenormals noDenormals;
     const int numSamples = buffer.getNumSamples();
 
@@ -2071,7 +2071,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     drainCCOutput(midi, numSamples);
 }
 
-void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
+void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
 {
     // Identify which slots hold Constellation family engines
     static const juce::StringArray kFamilyIds = { "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole" };
@@ -2134,7 +2134,7 @@ void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& en
     }
 }
 
-void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
+void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
 {
     if (slot < 0 || slot >= MaxSlots)
         return;
@@ -2196,7 +2196,7 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
 }
 
-void XOlokunProcessor::unloadEngine(int slot)
+void XOceanusProcessor::unloadEngine(int slot)
 {
     if (slot < 0 || slot >= MaxSlots)
         return;
@@ -2232,7 +2232,7 @@ void XOlokunProcessor::unloadEngine(int slot)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
 }
 
-SynthEngine* XOlokunProcessor::getEngine(int slot) const
+SynthEngine* XOceanusProcessor::getEngine(int slot) const
 {
     if (slot >= 0 && slot < MaxSlots)
     {
@@ -2242,9 +2242,9 @@ SynthEngine* XOlokunProcessor::getEngine(int slot) const
     return nullptr;
 }
 
-// createEditor() is implemented in Source/UI/XOlokunEditor.cpp
+// createEditor() is implemented in Source/UI/XOceanusEditor.cpp
 
-void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
+void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     // Append supplementary state to the APVTS ValueTree *before* converting
     // to XML so that all extra children are included in the binary blob.
@@ -2344,7 +2344,7 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
     }
 }
 
-void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
+void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
@@ -2493,7 +2493,7 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
     }
 }
 
-void XOlokunProcessor::applyPreset(const PresetData& preset)
+void XOceanusProcessor::applyPreset(const PresetData& preset)
 {
     // Each engine's params are stored under its engine name key.
     // Inner param names may be full APVTS IDs (e.g. "opal_source") or
@@ -2515,7 +2515,7 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
             // string — skip them. Renamed params map to their canonical ID.
             if (fullId.startsWith("snap_"))
             {
-                fullId = xolokun::resolveSnapParamAlias(fullId);
+                fullId = xoceanus::resolveSnapParamAlias(fullId);
                 if (fullId.isEmpty())
                     continue;  // param was removed — skip silently
             }
@@ -2525,7 +2525,7 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
             // canonical Gen 4 APVTS IDs and drops params with no equivalent.
             if (fullId.startsWith("poss_"))
             {
-                fullId = xolokun::resolveBiteParamAlias(fullId);
+                fullId = xoceanus::resolveBiteParamAlias(fullId);
                 if (fullId.isEmpty())
                     continue;  // param was removed — skip silently
             }
@@ -2576,7 +2576,7 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
     }
 
     // Restore coupling routes from preset data.
-    // This is the primary differentiator for XOlokun — coupling routes MUST
+    // This is the primary differentiator for XOceanus — coupling routes MUST
     // be restored when a preset is applied, or the patch will sound wrong.
     //
     // Strategy:
@@ -2741,10 +2741,10 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
     }
 }
 
-} // namespace xolokun
+} // namespace xoceanus
 
 // Plugin entry point
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new xolokun::XOlokunProcessor();
+    return new xoceanus::XOceanusProcessor();
 }

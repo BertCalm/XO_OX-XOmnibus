@@ -28,7 +28,7 @@
 
 namespace xoverworld {
 
-using namespace xolokun;
+using namespace xoceanus;
 
 //==============================================================================
 // Shared helpers

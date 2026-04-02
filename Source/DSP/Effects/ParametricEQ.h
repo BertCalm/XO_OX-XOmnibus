@@ -5,7 +5,7 @@
 #include "../ParameterSmoother.h"
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ParametricEQ — 4-band master parametric equaliser.
@@ -56,7 +56,7 @@ public:
     {
         sr = static_cast<float> (sampleRate);
 
-        // Initialise smoothers — 5 ms is the XOlokun fleet standard
+        // Initialise smoothers — 5 ms is the XOceanus fleet standard
         for (int b = 0; b < kNumBands; ++b)
         {
             smoothFreq[b].prepare (sr, 0.005f);
@@ -255,4 +255,4 @@ private:
     bool  settled = false;  // true once all smoothers have converged
 };
 
-} // namespace xolokun
+} // namespace xoceanus

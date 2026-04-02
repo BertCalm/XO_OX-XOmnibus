@@ -24,10 +24,10 @@
 #include <cmath>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 // FastMath functions (flushDenormal, fastTanh, fastSin, fastExp, clamp, lerp)
-// are free functions in the xolokun namespace, included via FastMath.h.
+// are free functions in the xoceanus namespace, included via FastMath.h.
 
 //==============================================================================
 // FatNoiseGen — xorshift32 PRNG for noise oscillator.
@@ -719,7 +719,7 @@ public:
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0) return;
 
-        // -- XOlokun macros (MOJO, GRIT, SIZE, CRUSH) — read first, used below ---
+        // -- XOceanus macros (MOJO, GRIT, SIZE, CRUSH) — read first, used below ---
         const float macroMojo  = (pMacroMojo  != nullptr) ? pMacroMojo->load()  : 0.0f;
         const float macroGrit  = (pMacroGrit  != nullptr) ? pMacroGrit->load()  : 0.0f;
         const float macroSize  = (pMacroSize  != nullptr) ? pMacroSize->load()  : 0.0f;
@@ -1348,7 +1348,7 @@ public:
             juce::ParameterID { "fat_lfo2Depth", 1 }, "Fat LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
 
-        // XOlokun standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // XOceanus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
         //
         // M1 MOJO (CHARACTER): pushes mojo axis toward analog — more drift + soft-clip.
@@ -1412,7 +1412,7 @@ public:
         pVoiceMode   = apvts.getRawParameterValue ("fat_voiceMode");
         pGlide       = apvts.getRawParameterValue ("fat_glide");
         pPolyphony   = apvts.getRawParameterValue ("fat_polyphony");
-        // XOlokun macros
+        // XOceanus macros
         pMacroMojo   = apvts.getRawParameterValue ("fat_macroMojo");
         pMacroGrit   = apvts.getRawParameterValue ("fat_macroGrit");
         pMacroSize   = apvts.getRawParameterValue ("fat_macroSize");
@@ -1599,7 +1599,7 @@ private:
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
 
-    // XOlokun macros (MOJO, GRIT, SIZE, CRUSH)
+    // XOceanus macros (MOJO, GRIT, SIZE, CRUSH)
     std::atomic<float>* pMacroMojo  = nullptr;
     std::atomic<float>* pMacroGrit  = nullptr;
     std::atomic<float>* pMacroSize  = nullptr;
@@ -1620,4 +1620,4 @@ private:
     std::atomic<float>* pLfo2Depth = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

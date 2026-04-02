@@ -3,7 +3,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // RebirthLUFS — ITU-R BS.1770-4 K-weighted integrated loudness measurement.
@@ -162,4 +162,4 @@ inline float computeIntegratedLUFS (const juce::AudioBuffer<float>& buffer,
     return (float) integrated;
 }
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingTransient.h — Per-Type Drum Synthesis Models
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  8 distinct drum synthesis topologies — each type has unique signal flow,
 //  not shared oscillators with different parameter values.
@@ -25,7 +25,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OfferingNoiseGen — xorshift32 PRNG for percussion noise generation.
@@ -642,4 +642,4 @@ private:
     OfferingOnePole hp_;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

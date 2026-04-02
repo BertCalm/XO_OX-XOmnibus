@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OpcodeEngine.h — XOpcode | "Algorithm, 1983"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOpcode is the DX7 electric piano that defined a decade. The
@@ -57,7 +57,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 #ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 #define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
@@ -805,4 +805,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

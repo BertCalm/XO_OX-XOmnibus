@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OrcaEngine — Apex Predator Synthesis.
@@ -564,7 +564,7 @@ public:
                 // LFO1 scans wavetable position slowly (the "dialect" evolving)
                 float wtPos = clamp (smoothedWTPos + lfo1Val * 0.3f + modLevel * pWTScanRate * 0.5f, 0.0f, 1.0f);
                 voice.wtOsc.setPosition (wtPos);
-                float mpeFreqOrc = voice.glide.getFreq() * xolokun::fastPow2 (voice.mpeExpression.pitchBendSemitones / 12.0f)
+                float mpeFreqOrc = voice.glide.getFreq() * xoceanus::fastPow2 (voice.mpeExpression.pitchBendSemitones / 12.0f)
                                                          * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 voice.wtOsc.setFrequency (mpeFreqOrc, srf);
 
@@ -1363,4 +1363,4 @@ private:
     std::atomic<float>* paramMacroSpace = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

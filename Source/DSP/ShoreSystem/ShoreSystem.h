@@ -3,7 +3,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ShoreSystem — Shared coastal region model for OSPREY and OSTERIA engines.
@@ -397,4 +397,4 @@ inline ShoreRhythm morphRhythm (const ShoreMorphState& m) noexcept
     };
 }
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OtisEngine.h — XOtis | "The Soul Organ"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOtis is the gospel fish — a golden humphead parrotfish that swims
@@ -63,7 +63,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Hammond drawbar footage ratios — the harmonic series of the B3.
@@ -1513,4 +1513,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

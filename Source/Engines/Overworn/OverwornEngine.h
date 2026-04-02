@@ -13,12 +13,12 @@
 #include <cmath>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
 //  OVERWORN ENGINE — Spectral Reduction Pad (Erosion)
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOverworn is a sauce reducing on a stove. It begins rich — full of
@@ -874,4 +874,4 @@ private:
     std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

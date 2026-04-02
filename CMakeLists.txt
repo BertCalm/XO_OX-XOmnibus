@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 # Universal binary — must be set BEFORE project() (closes #167)
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Universal binary")
 
-project(XOlokun VERSION 1.0.0 LANGUAGES C CXX)
+project(XOceanus VERSION 1.0.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -76,7 +76,7 @@ endif()
 
 # Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values),
 # Overbit (engine nameplate display). All embedded as C++ binary data via JUCE.
-juce_add_binary_data(XOlokunFont
+juce_add_binary_data(XOceanusFont
     NAMESPACE "FontData"
     SOURCES
     Assets/fonts/SpaceGrotesk-Bold.otf
@@ -88,13 +88,13 @@ juce_add_binary_data(XOlokunFont
     Assets/fonts/Overbit-Regular.otf
 )
 
-juce_add_plugin(XOlokun
+juce_add_plugin(XOceanus
     COMPANY_NAME "XO_OX Designs"
     PLUGIN_MANUFACTURER_CODE XoOx
-    PLUGIN_CODE Xolk
+    PLUGIN_CODE Xocn
     FORMATS ${XO_FORMATS}
-    PRODUCT_NAME "XOlokun"
-    BUNDLE_ID "com.xo-ox.xolokun"
+    PRODUCT_NAME "XOceanus"
+    BUNDLE_ID "com.xo-ox.xoceanus"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
@@ -105,7 +105,7 @@ juce_add_plugin(XOlokun
 
 # Source files — only list files that exist.
 # As new modules are built, add them here.
-target_sources(XOlokun PRIVATE
+target_sources(XOceanus PRIVATE
     # Core (interface + infrastructure)
     Source/Core/SynthEngine.h
     Source/Core/EngineRegistry.h
@@ -313,8 +313,8 @@ target_sources(XOlokun PRIVATE
     Source/Core/MIDILearnManager.h
 
     # UI (Gallery Model)
-    Source/UI/XOlokunEditor.cpp
-    Source/UI/XOlokunEditor.h
+    Source/UI/XOceanusEditor.cpp
+    Source/UI/XOceanusEditor.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
@@ -424,13 +424,13 @@ target_sources(XOlokun PRIVATE
     Source/Engines/Outlook/OutlookEngine.cpp
 
     # Main processor
-    Source/XOlokunProcessor.h
-    Source/XOlokunProcessor.cpp
+    Source/XOceanusProcessor.h
+    Source/XOceanusProcessor.cpp
 )
 
 # Oscar animated companion — requires Rive runtime
 if(XO_HAS_RIVE)
-    target_sources(XOlokun PRIVATE
+    target_sources(XOceanus PRIVATE
         Source/UI/OddOscar/OscarAnimState.h
         Source/UI/OddOscar/OscarJuceRenderer.h
         Source/UI/OddOscar/OscarRiveComponent.h
@@ -438,18 +438,18 @@ if(XO_HAS_RIVE)
 endif()
 
 # XOverworld DSP headers — embedded in Source/Engines/Overworld/
-target_include_directories(XOlokun PRIVATE
+target_include_directories(XOceanus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
 # XOverlap and XOutwit DSP headers — embedded in Source/Engines/{Overlap,Outwit}/DSP/
 # FastMath.h stubs forward to the shared Source/DSP/FastMath.h via #include "DSP/FastMath.h".
 # That path requires Source/ in the search path.
-target_include_directories(XOlokun PRIVATE
+target_include_directories(XOceanus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source"
 )
 
-target_compile_definitions(XOlokun PUBLIC
+target_compile_definitions(XOceanus PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
@@ -458,30 +458,30 @@ target_compile_definitions(XOlokun PUBLIC
 # JUCE_VST3_CAN_REPLACE_VST2 is only relevant when building VST3.
 # Guard it to avoid confusion when VST3 is not in XO_FORMATS.
 if(XOLOKUN_BUILD_VST3)
-    target_compile_definitions(XOlokun PUBLIC JUCE_VST3_CAN_REPLACE_VST2=0)
+    target_compile_definitions(XOceanus PUBLIC JUCE_VST3_CAN_REPLACE_VST2=0)
 endif()
 
-target_link_libraries(XOlokun PRIVATE
+target_link_libraries(XOceanus PRIVATE
     juce::juce_audio_utils
     juce::juce_audio_processors
     juce::juce_dsp
     juce::juce_gui_extra
-    XOlokunFont
+    XOceanusFont
 )
 if(XO_HAS_RIVE)
-    target_link_libraries(XOlokun PRIVATE rive)
-    target_compile_definitions(XOlokun PRIVATE XO_HAS_RIVE=1)
+    target_link_libraries(XOceanus PRIVATE rive)
+    target_compile_definitions(XOceanus PRIVATE XO_HAS_RIVE=1)
 endif()
 if(XO_HAS_OSCAR)
-    target_link_libraries(XOlokun PRIVATE OscarRivData)
-    target_compile_definitions(XOlokun PRIVATE XO_HAS_OSCAR=1)
+    target_link_libraries(XOceanus PRIVATE OscarRivData)
+    target_compile_definitions(XOceanus PRIVATE XO_HAS_OSCAR=1)
 endif()
 
 if(XO_MOBILE)
-    target_link_libraries(XOlokun PRIVATE
+    target_link_libraries(XOceanus PRIVATE
         juce::juce_audio_plugin_client
     )
-    target_link_libraries(XOlokun PRIVATE
+    target_link_libraries(XOceanus PRIVATE
         "-framework CoreMotion"
         "-framework CoreHaptics"
         "-framework AVFoundation"
@@ -492,7 +492,7 @@ endif()
 # ==============================================================================
 # Tests (standalone console application, no audio device or GUI required)
 # ==============================================================================
-add_executable(XOlokunTests
+add_executable(XOceanusTests
     Tests/run_tests.cpp
     Tests/DSPTests/DSPStabilityTests.cpp
     Tests/DSPTests/DSPComponentTests.cpp
@@ -516,12 +516,12 @@ target_include_directories(FamilyWaveguideTest PRIVATE Source Source/DSP)
 target_link_libraries(FamilyWaveguideTest PRIVATE juce::juce_core)
 add_test(NAME FamilyWaveguideTest COMMAND FamilyWaveguideTest)
 
-target_include_directories(XOlokunTests PRIVATE
+target_include_directories(XOceanusTests PRIVATE
     Source
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
-target_link_libraries(XOlokunTests PRIVATE
+target_link_libraries(XOceanusTests PRIVATE
     juce::juce_core
     juce::juce_audio_basics
     juce::juce_audio_formats
@@ -529,7 +529,7 @@ target_link_libraries(XOlokunTests PRIVATE
     juce::juce_gui_basics
 )
 
-target_compile_definitions(XOlokunTests PRIVATE
+target_compile_definitions(XOceanusTests PRIVATE
     JUCE_STANDALONE_APPLICATION=1
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
@@ -537,18 +537,18 @@ target_compile_definitions(XOlokunTests PRIVATE
 )
 
 enable_testing()
-add_test(NAME XOlokunTests COMMAND XOlokunTests)
+add_test(NAME XOceanusTests COMMAND XOceanusTests)
 
 # ==============================================================================
 # Installer package (macOS only)
-# Builds Installer/XOlokun-Installer.pkg using pkgbuild + productbuild.
+# Builds Installer/XOceanus-Installer.pkg using pkgbuild + productbuild.
 # Usage:  cmake --build build --target package
 # ==============================================================================
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     add_custom_target(package
         COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/Installer/build_pkg.sh ${CMAKE_BUILD_TYPE}
-        DEPENDS XOlokun_AU XOlokun_Standalone
+        DEPENDS XOceanus_AU XOceanus_Standalone
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMENT "Building XOlokun installer package..."
+        COMMENT "Building XOceanus installer package..."
     )
 endif()

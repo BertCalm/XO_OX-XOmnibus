@@ -3,11 +3,11 @@
 #include "../../Core/PresetManager.h"
 #include "../Gallery/GalleryLookAndFeel.h"
 // NOTE: GalleryColors, GalleryFonts, A11y, and PresetData are defined in
-// XOlokunEditor.h, which includes this file.  The circular include is avoided
+// XOceanusEditor.h, which includes this file.  The circular include is avoided
 // intentionally — those symbols are already in scope when this header is
-// compiled as part of XOlokunEditor.h.
+// compiled as part of XOceanusEditor.h.
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PresetBrowser — Searchable, filterable browser for 10,028+ factory presets.
@@ -108,7 +108,7 @@ public:
         addAndMakeVisible(statusLabel);
 
         setTitle("Preset Browser");
-        setDescription("Browse, search, and filter XOlokun presets by mood and sonic DNA");
+        setDescription("Browse, search, and filter XOceanus presets by mood and sonic DNA");
         setWantsKeyboardFocus(true);
 
         applyFilters();
@@ -475,4 +475,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowser)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -7,12 +7,12 @@
 #include <utility>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // RebirthProfileID — The 5 engine-inspired transformation profiles.
 //
-// Each profile encodes the sonic character of a XOlokun engine as a
+// Each profile encodes the sonic character of a XOceanus engine as a
 // standalone DSP chain that transforms producer samples. The sample is always
 // the primary audio source — the engine DSP acts as a transfer function.
 //
@@ -543,4 +543,4 @@ inline RebirthProfileID autoProfileForCategory (SampleCategory cat)
     }
 }
 
-} // namespace xolokun
+} // namespace xoceanus

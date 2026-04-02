@@ -1,7 +1,7 @@
 #pragma once
 // GalleryColors.h — Gallery Model color, font, and accessibility utilities.
 //
-// Extracted from XOlokunEditor.h so that UI sub-components (CouplingVisualizer,
+// Extracted from XOceanusEditor.h so that UI sub-components (CouplingVisualizer,
 // ExportDialog, PresetBrowser …) can include this header directly rather than
 // the full editor header, which would create circular include chains.
 //
@@ -21,12 +21,12 @@
 #if JUCE_IOS
 // Forward declaration of the Objective-C++ bridge for UIAccessibility.isReduceMotionEnabled.
 // Definition lives in HapticEngine_iOS.mm, compiled only on iOS.
-namespace xolokun::a11y_platform {
+namespace xoceanus::a11y_platform {
     bool isReduceMotionEnabled();
 }
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 namespace GalleryColors {
 
     // Theme state — dark by default (dark mode is the primary presentation).
@@ -35,7 +35,7 @@ namespace GalleryColors {
     // which was shared across all plugin instances in the same DAW process.
     // This has been replaced with a per-instance registry:
     //
-    //   - XOlokunEditor registers itself with setInstanceDarkMode(editorPtr, val)
+    //   - XOceanusEditor registers itself with setInstanceDarkMode(editorPtr, val)
     //     in its constructor (reads PropertiesFile for the saved preference) and
     //     calls unregisterInstance(editorPtr) in its destructor.
     //   - Before painting, each editor calls setActiveDarkModeContext(editorPtr)
@@ -63,7 +63,7 @@ namespace GalleryColors {
         return ptr;
     }
 
-    // Called by XOlokunEditor constructor / setDarkMode() and SettingsPanel.
+    // Called by XOceanusEditor constructor / setDarkMode() and SettingsPanel.
     inline void setInstanceDarkMode(void* editorPtr, bool value)
     {
         instanceRegistry()[editorPtr] = value;
@@ -72,7 +72,7 @@ namespace GalleryColors {
             activeEditorContext() = editorPtr;
     }
 
-    // Called by XOlokunEditor destructor.
+    // Called by XOceanusEditor destructor.
     inline void unregisterInstance(void* editorPtr)
     {
         instanceRegistry().erase(editorPtr);
@@ -80,7 +80,7 @@ namespace GalleryColors {
             activeEditorContext() = nullptr;
     }
 
-    // Called by XOlokunEditor::paint() (or resized/visibilityChanged) to set
+    // Called by XOceanusEditor::paint() (or resized/visibilityChanged) to set
     // the per-instance context before any child component queries darkMode().
     inline void setActiveDarkModeContext(void* editorPtr)
     {
@@ -119,7 +119,7 @@ namespace GalleryColors {
         constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
     }
 
-    // Dark palette (matched to xolokun-v05-accurate.html CSS variables exactly)
+    // Dark palette (matched to xoceanus-v05-accurate.html CSS variables exactly)
     namespace Dark {
         // Core backgrounds
         static constexpr uint32_t bg          = 0xFF0E0E10;  // --bg (plugin shell)
@@ -445,9 +445,9 @@ namespace A11y {
         return keyExists && static_cast<bool>(val);
 #elif JUCE_IOS
         // UIAccessibility.isReduceMotionEnabled — implemented in HapticEngine_iOS.mm
-        // via xolokun::a11y_platform::isReduceMotionEnabled() bridge function.
+        // via xoceanus::a11y_platform::isReduceMotionEnabled() bridge function.
         // The definition is in that .mm file compiled only on iOS.
-        return xolokun::a11y_platform::isReduceMotionEnabled();
+        return xoceanus::a11y_platform::isReduceMotionEnabled();
 #else
         return false;
 #endif
@@ -455,4 +455,4 @@ namespace A11y {
 
 } // namespace A11y
 
-} // namespace xolokun
+} // namespace xoceanus

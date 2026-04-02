@@ -3,7 +3,7 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AdvancedFXPanel — generic advanced parameter popup for any FX section.
@@ -76,4 +76,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AdvancedFXPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

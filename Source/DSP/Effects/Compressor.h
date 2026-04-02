@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Compressor — Dynamics compressor with sidechain input.
@@ -12,7 +12,7 @@ namespace xolokun {
 //   - Threshold, ratio, attack, release, makeup gain
 //   - Soft knee for smooth gain transitions
 //   - Peak detection with attack/release envelope follower
-//   - External sidechain input for cross-engine ducking (key XOlokun feature)
+//   - External sidechain input for cross-engine ducking (key XOceanus feature)
 //   - Gain reduction metering for UI display
 //   - Denormal protection on envelope state
 //
@@ -106,7 +106,7 @@ public:
 
     //--------------------------------------------------------------------------
     /// Process a stereo block using an external sidechain signal for detection.
-    /// This enables cross-engine ducking — a key XOlokun coupling feature.
+    /// This enables cross-engine ducking — a key XOceanus coupling feature.
     /// @param left    Left channel buffer (modified in-place).
     /// @param right   Right channel buffer (modified in-place).
     /// @param scLeft  Sidechain left channel buffer (read-only).
@@ -253,4 +253,4 @@ private:
     float gainReductionDb = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

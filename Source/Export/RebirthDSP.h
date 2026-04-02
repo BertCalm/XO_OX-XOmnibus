@@ -7,7 +7,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SoftClipGuard — Inline inter-stage headroom limiter.
@@ -129,8 +129,8 @@ public:
                 pR = (pR + 1) % delaySamps;
 
                 // Denormal protection
-                yL = xolokun::flushDenormal(yL);
-                yR = xolokun::flushDenormal(yR);
+                yL = xoceanus::flushDenormal(yL);
+                yR = xoceanus::flushDenormal(yR);
 
                 xL = yL;
                 xR = yR;
@@ -548,4 +548,4 @@ private:
     float z2_[kNumFormants][2] = {};
 };
 
-} // namespace xolokun
+} // namespace xoceanus

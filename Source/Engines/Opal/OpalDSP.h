@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../../DSP/FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 namespace XOpal {
 
 //==============================================================================
@@ -790,4 +790,4 @@ inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout
 }
 
 } // namespace XOpal
-} // namespace xolokun
+} // namespace xoceanus

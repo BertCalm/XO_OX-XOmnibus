@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
 #include "CouplingChainView.h"
 #include "CockpitHost.h"
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -41,7 +41,7 @@ inline juce::String couplingTypeLabel(CouplingType t)
 class OverviewPanel : public juce::Component
 {
 public:
-    explicit OverviewPanel(XOlokunProcessor& proc)
+    explicit OverviewPanel(XOceanusProcessor& proc)
         : processor(proc), chainView(proc)
     {
         addAndMakeVisible(chainView);
@@ -53,7 +53,7 @@ public:
     void refresh()
     {
         cachedActiveEngines.clear();
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
         {
             auto* eng = processor.getEngine(i);
             if (eng) cachedActiveEngines.push_back({eng->getEngineId(), eng->getAccentColour()});
@@ -410,7 +410,7 @@ public:
     }
 
 private:
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     CouplingChainView chainView;
     // Cached state — updated in refresh(), never in paint()
     std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
@@ -427,4 +427,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

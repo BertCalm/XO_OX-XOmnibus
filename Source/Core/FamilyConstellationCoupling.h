@@ -6,7 +6,7 @@
 #include <functional>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // FamilyConstellationCoupling
@@ -200,4 +200,4 @@ public:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

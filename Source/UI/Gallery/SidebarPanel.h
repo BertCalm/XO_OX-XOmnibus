@@ -20,8 +20,8 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-// PresetBrowser.h is included by XOlokunEditor.h before SidebarPanel.h,
-// so xolokun::PresetBrowser is already declared.  Guard the direct include
+// PresetBrowser.h is included by XOceanusEditor.h before SidebarPanel.h,
+// so xoceanus::PresetBrowser is already declared.  Guard the direct include
 // so this header can also be compiled standalone without the full editor chain.
 #ifndef XOLOKUN_PRESET_BROWSER_INCLUDED
 #define XOLOKUN_PRESET_BROWSER_INCLUDED
@@ -34,7 +34,7 @@
 #include "ExportTabPanel.h"
 #include "../Outshine/OutshineSidebarPanel.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SidebarPanel — tabbed Column C browser/inspector panel.
@@ -124,7 +124,7 @@ public:
     // C2–C4, C6 panels (CouplingInspector, FXInspector, PlayControl, Settings).
     // Call once from the editor after setPresetManager(), passing the processor.
     // Safe to call repeatedly — construction is guarded.
-    void setProcessor(XOlokunProcessor& proc)
+    void setProcessor(XOceanusProcessor& proc)
     {
         if (exportPanel == nullptr)
         {
@@ -179,7 +179,7 @@ public:
         // Skip if the persisted index is the invisible PLAY tab (4) — fall back to Preset.
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
+            opts.applicationName     = "XOceanus";
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
@@ -261,7 +261,7 @@ public:
         // Persist tab selection across sessions (#199).
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
+            opts.applicationName     = "XOceanus";
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
@@ -556,4 +556,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SidebarPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

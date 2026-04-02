@@ -7,7 +7,7 @@
 #include "TouchForce_iOS.h"
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Touch phase mirrors UITouch phases but is platform-agnostic.
@@ -359,8 +359,8 @@ private:
     float queryHardwareForce(const juce::MouseEvent& e) const
     {
 #if JUCE_IOS
-        if (xolokun::touch_force::isForceAvailable())
-            return xolokun::touch_force::getForceForTouch(e.source.getIndex());
+        if (xoceanus::touch_force::isForceAvailable())
+            return xoceanus::touch_force::getForceForTouch(e.source.getIndex());
 #else
         juce::ignoreUnused(e);
 #endif
@@ -477,4 +477,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

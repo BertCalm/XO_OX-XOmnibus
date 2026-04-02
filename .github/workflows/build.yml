@@ -1,4 +1,4 @@
-name: Build XOlokun
+name: Build XOceanus
 
 on:
   push:
@@ -57,28 +57,28 @@ jobs:
 
       - name: Verify AU component
         run: |
-          if [ ! -d "build/XOlokun_artefacts/Release/AU/XOlokun.component" ]; then
+          if [ ! -d "build/XOceanus_artefacts/Release/AU/XOceanus.component" ]; then
             echo "ERROR: AU component not found"
             exit 1
           fi
-          echo "AU component found at build/XOlokun_artefacts/Release/AU/XOlokun.component"
+          echo "AU component found at build/XOceanus_artefacts/Release/AU/XOceanus.component"
 
       - name: Verify Standalone app
         run: |
-          if [ ! -d "build/XOlokun_artefacts/Release/Standalone/XOlokun.app" ]; then
+          if [ ! -d "build/XOceanus_artefacts/Release/Standalone/XOceanus.app" ]; then
             echo "ERROR: Standalone app not found"
             exit 1
           fi
-          echo "Standalone app found at build/XOlokun_artefacts/Release/Standalone/XOlokun.app"
+          echo "Standalone app found at build/XOceanus_artefacts/Release/Standalone/XOceanus.app"
 
       - name: Upload AU component
         uses: actions/upload-artifact@v4
         with:
-          name: XOlokun-AU
-          path: build/XOlokun_artefacts/Release/AU/XOlokun.component
+          name: XOceanus-AU
+          path: build/XOceanus_artefacts/Release/AU/XOceanus.component
 
       - name: Upload Standalone app
         uses: actions/upload-artifact@v4
         with:
-          name: XOlokun-Standalone
-          path: build/XOlokun_artefacts/Release/Standalone/XOlokun.app
+          name: XOceanus-Standalone
+          path: build/XOceanus_artefacts/Release/Standalone/XOceanus.app

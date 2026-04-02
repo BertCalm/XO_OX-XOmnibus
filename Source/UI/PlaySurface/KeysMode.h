@@ -8,7 +8,7 @@
 
     Spec Section 8.4 -- KeysMode (Desktop)
 
-    Namespace: xolokun
+    Namespace: xoceanus
     JUCE 8, C++17
 */
 
@@ -21,7 +21,7 @@
 #include "HarmonicField.h"
 #include "../GalleryColors.h"  // theme-aware color accessors (#393)
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 /**
@@ -508,4 +508,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KeysMode)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -1,11 +1,11 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../EngineVocabulary.h"
 #include "../GalleryColors.h"
 #include "MidiLearnMouseListener.h"
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -19,7 +19,7 @@ namespace xolokun
 class MacroHeroStrip : public juce::Component
 {
 public:
-    explicit MacroHeroStrip(XOlokunProcessor& proc) : processor(proc) {}
+    explicit MacroHeroStrip(XOceanusProcessor& proc) : processor(proc) {}
 
     // Remove MIDI learn mouse listeners from their sliders before the
     // unique_ptrs are destroyed — prevents use-after-free if a Slider still
@@ -195,7 +195,7 @@ public:
 private:
     static constexpr int kHeaderH = 22;
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     juce::String       engineName;
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
     int                numMacros = 0;
@@ -210,4 +210,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroHeroStrip)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-// SpecializedWidgets.h — V1-required shared UI components for XOlokun.
+// SpecializedWidgets.h — V1-required shared UI components for XOceanus.
 //
 // Components:
 //   NamedModeSelector — horizontal pill row for choice parameters with meaningful
@@ -16,12 +16,12 @@
 //
 // Both components:
 //   • Use GalleryColors / GalleryFonts / A11y from GalleryColors.h
-//   • Live in namespace xolokun
+//   • Live in namespace xoceanus
 //   • Use APVTS attachments (ComboBoxAttachment / SliderAttachment)
 //   • Work at any width — fully responsive layout
 //   • Header-only (.h)
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //  NamedModeSelector
@@ -521,4 +521,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BipolarAxisBar)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace xolokun {
+namespace xoceanus {
 
 //------------------------------------------------------------------------------
 // Sample classification — shared between XOutshine and RebirthProfiles.
@@ -68,4 +68,4 @@ inline const char* categoryName (SampleCategory c)
     }
 }
 
-} // namespace xolokun
+} // namespace xoceanus

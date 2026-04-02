@@ -6,7 +6,7 @@
 #include "../GalleryColors.h"
 #include "ModSourceHandle.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ModRoute — a single modulation assignment: one source → one parameter.
@@ -532,12 +532,12 @@ private:
 //
 // Usage
 // ─────
-//   // In XOlokunEditor constructor:
+//   // In XOceanusEditor constructor:
 //   modRouter = std::make_unique<DragDropModRouter>(apvts, modModel);
 //   addAndMakeVisible(*modRouter);
 //   modRouter->toFront(false);
 //
-//   // In XOlokunEditor::resized():
+//   // In XOceanusEditor::resized():
 //   modRouter->setBounds(getLocalBounds());
 //
 class DragDropModRouter : public juce::Component,
@@ -1008,4 +1008,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DragDropModRouter)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

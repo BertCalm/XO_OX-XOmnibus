@@ -94,7 +94,7 @@
 //
 //  ===========================================================================
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AttractorTopology — Enum for the four chaotic ODE systems.
@@ -1692,4 +1692,4 @@ private:
     std::atomic<float>* paramMacroSpace = nullptr;  // SPACE:     damping + rate + phi
 };
 
-} // namespace xolokun
+} // namespace xoceanus

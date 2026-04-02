@@ -1,6 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 #include "MacroHeroStrip.h"
 #include "ParameterGrid.h"
@@ -11,7 +11,7 @@
 #include "SpecializedDisplays.h"
 #include "SpecializedWidgets.h"
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -96,7 +96,7 @@ private:
 class EngineDetailPanel : public juce::Component
 {
 public:
-    explicit EngineDetailPanel(XOlokunProcessor& proc)
+    explicit EngineDetailPanel(XOceanusProcessor& proc)
         : processor(proc), macroHero(proc), waveformDisplay(proc)
     {
         addAndMakeVisible(macroHero);
@@ -117,7 +117,7 @@ public:
     }
 
     // Scroll the parameter grid viewport to a given section (MUST A1-05).
-    // Called by XOlokunEditor::scrollDetailPanelToSection().
+    // Called by XOceanusEditor::scrollDetailPanelToSection().
     void scrollToSection(ParameterGrid::Section s)
     {
         if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
@@ -474,7 +474,7 @@ private:
     static constexpr int kHeaderH = 38;
     static constexpr int kHeroH   = 88; // height of the macro hero strip
 
-    XOlokunProcessor&  processor;
+    XOceanusProcessor&  processor;
     MacroHeroStrip     macroHero;
     WaveformDisplay    waveformDisplay;
     ADSRDisplay        adsrDisplay;
@@ -501,4 +501,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -1,5 +1,5 @@
 #pragma once
-// HeaderIndicators.h — XOlokun header utility strip indicators.
+// HeaderIndicators.h — XOceanus header utility strip indicators.
 //
 // Components:
 //   CPUMeter              — compact text display showing current CPU usage %.
@@ -14,7 +14,7 @@
 //                           MIDI Learn active: amber #F5C97A pulse at ~2Hz.
 //                           30Hz internal timer drives decay and learn pulse.
 //
-// Integration contract (XOlokunEditor::timerCallback, ~30Hz):
+// Integration contract (XOceanusEditor::timerCallback, ~30Hz):
 //   cpuMeter.setCpuPercent(pct);
 //   processor.drainNoteEvents([&](auto& e) {
 //       midiIndicator.flash(accentColorForSlot(e.slot));
@@ -24,7 +24,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CPUMeter
@@ -47,7 +47,7 @@ public:
         A11y::setup(*this, "CPU Meter", "Shows current CPU usage", false);
     }
 
-    // Called from XOlokunEditor::timerCallback() (message thread, ~1Hz is fine).
+    // Called from XOceanusEditor::timerCallback() (message thread, ~1Hz is fine).
     void setCpuPercent(float pct)
     {
         // Clamp to [0, 100] — guard against instrumentation edge cases.
@@ -236,4 +236,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MIDIActivityIndicator)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

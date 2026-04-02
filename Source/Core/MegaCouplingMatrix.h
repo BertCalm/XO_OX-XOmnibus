@@ -9,7 +9,7 @@
 #include <memory>
 #include <string>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // MegaCouplingMatrix — Cross-engine modulation routing.
@@ -323,7 +323,7 @@ public:
 
     //-- Hot-swap coupling integrity -------------------------------------------
 
-    // Called by XOlokunProcessor::loadEngine() after an engine swap on `slot`.
+    // Called by XOceanusProcessor::loadEngine() after an engine swap on `slot`.
     //
     // AudioToBuffer routes require the destination to implement IAudioBufferSink.
     // Any other engine as dest cannot receive the route — it is marked inactive
@@ -687,4 +687,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

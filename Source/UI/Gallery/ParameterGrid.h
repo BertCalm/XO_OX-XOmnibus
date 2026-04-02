@@ -1,6 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../EngineVocabulary.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
@@ -8,7 +8,7 @@
 #include "CockpitHost.h"
 #include <set>
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -122,7 +122,7 @@ public:
     // does NOT create any GalleryKnob / Label / SliderAttachment yet.
     // midiLearn: optional — when non-null every knob gets a right-click MIDI
     // learn context menu and shows visual feedback (amber ring / green badge).
-    ParameterGrid(XOlokunProcessor& proc_,
+    ParameterGrid(XOceanusProcessor& proc_,
                   const juce::String& engId,
                   const juce::String& enginePrefix,
                   juce::Colour accentColour_,
@@ -700,7 +700,7 @@ private:
     std::set<Section> collapsedSections;
 
     // ── Construction-time state captured for lazy creation ───────────────────
-    XOlokunProcessor& proc;
+    XOceanusProcessor& proc;
     juce::Colour      accentColour;
     MIDILearnManager* midiLearn = nullptr;
 
@@ -735,4 +735,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

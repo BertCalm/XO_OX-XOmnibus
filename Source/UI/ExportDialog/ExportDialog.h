@@ -11,7 +11,7 @@
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"   // GalleryColors, prefixForEngine (no editor circular dep)
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ExportDialog — XPN export workflow UI with Gallery Model styling,
@@ -940,7 +940,7 @@ private:
 
                 XOriginate::BundleConfig config;
                 config.name = bundleName;
-                config.bundleId = "com.xo-ox.xolokun." + config.name.toLowerCase().replace(" ", "-");
+                config.bundleId = "com.xo-ox.xoceanus." + config.name.toLowerCase().replace(" ", "-");
                 config.outputDir = dialog.outputDir;
                 config.outputDir.createDirectory();
 
@@ -1098,4 +1098,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ExportDialog)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

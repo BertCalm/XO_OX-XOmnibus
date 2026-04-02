@@ -4,7 +4,7 @@
 #include "../CytomicSVF.h"
 #include "../StandardLFO.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // fXObscura — "Chiaroscuro" boutique effect.
@@ -382,4 +382,4 @@ private:
     float mix            = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

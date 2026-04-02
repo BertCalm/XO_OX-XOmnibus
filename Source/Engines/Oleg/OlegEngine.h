@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OlegEngine.h — XOleg | "The Sacred Bellows"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOleg is the amber organ — a sacred instrument from the Baltic and
@@ -81,7 +81,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Organ Model Constants
@@ -1256,4 +1256,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -7,7 +7,7 @@
 //==============================================================================
 // XOverworld — Parameter IDs, ParamSnapshot, and parameter registration.
 //
-// Self-contained copy housed in Source/Engines/Overworld/ so XOlokun does not
+// Self-contained copy housed in Source/Engines/Overworld/ so XOceanus does not
 // need the sibling XOverworld repository on disk.
 //
 // Parameter prefix: ow_

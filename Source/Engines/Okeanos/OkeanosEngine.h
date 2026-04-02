@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OkeanosEngine.h — XOkeanos | "The Spice Route Rhodes"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOkeanos is the Rhodes electric piano that traveled the Spice Route —
@@ -53,7 +53,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
@@ -825,4 +825,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

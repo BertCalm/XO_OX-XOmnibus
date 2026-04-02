@@ -2,27 +2,27 @@
 #include <functional>
 
 //==============================================================================
-// AudioSession_iOS — AVAudioSession management bridge for XOlokun iOS.
+// AudioSession_iOS — AVAudioSession management bridge for XOceanus iOS.
 //
 // Standalone mode only. In AUv3 mode the host owns the audio session and
 // configure() is a no-op (detected via .appex bundle path).
 //
 // Usage:
 //   // On app launch (main thread):
-//   xolokun::audio_session::configure();
-//   xolokun::audio_session::handleInterruption([](bool began) {
+//   xoceanus::audio_session::configure();
+//   xoceanus::audio_session::handleInterruption([](bool began) {
 //       if (began) myEngine.pause(); else myEngine.resume();
 //   });
-//   xolokun::audio_session::handleRouteChange([]() {
+//   xoceanus::audio_session::handleRouteChange([]() {
 //       myEngine.updateOutputRouting();
 //   });
 //
 //   // Query at any time:
-//   float sr  = xolokun::audio_session::currentSampleRate();
-//   int   buf = xolokun::audio_session::currentBufferSize();
+//   float sr  = xoceanus::audio_session::currentSampleRate();
+//   int   buf = xoceanus::audio_session::currentBufferSize();
 //
 //   // On app termination:
-//   xolokun::audio_session::shutdown();
+//   xoceanus::audio_session::shutdown();
 //
 // Thread safety:
 //   All functions must be called from the main thread.
@@ -33,7 +33,7 @@
 //
 #if JUCE_IOS
 
-namespace xolokun::audio_session {
+namespace xoceanus::audio_session {
 
 //==============================================================================
 // configure() — Activate the AVAudioSession for standalone synth use.
@@ -102,6 +102,6 @@ int currentBufferSize();
 //
 void shutdown();
 
-} // namespace xolokun::audio_session
+} // namespace xoceanus::audio_session
 
 #endif // JUCE_IOS

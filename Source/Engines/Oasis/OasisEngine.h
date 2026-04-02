@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OasisEngine.h — XOasis | "The Spice Route Rhodes"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOasis is an entropy-driven bioluminescent ecosystem. It actively
@@ -35,7 +35,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
@@ -75,7 +75,7 @@ struct SpectralFingerprint
 // two-argument process() that applies per-partial pickup gains in-line.
 // Named with Oasis prefix to avoid collision with OkeanosEngine's
 // RhodesToneGenerator (which uses integer harmonic ratios and a simpler
-// 1-argument process). Both live in namespace xolokun; same guard name
+// 1-argument process). Both live in namespace xoceanus; same guard name
 // would cause the Okeanos version to win.
 //
 // References:
@@ -1332,4 +1332,4 @@ private:
     static float clamp (float v, float lo, float hi) { return v < lo ? lo : (v > hi ? hi : v); }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

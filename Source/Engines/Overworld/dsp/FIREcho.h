@@ -29,7 +29,7 @@
 
 namespace xoverworld {
 
-using namespace xolokun;
+using namespace xoceanus;
 
 class FIREcho {
 public:

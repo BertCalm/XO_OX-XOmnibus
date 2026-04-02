@@ -3,7 +3,7 @@
 #include <cstdint>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Corroder — Digital erosion / degradation processor.
@@ -192,4 +192,4 @@ private:
     float mix = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

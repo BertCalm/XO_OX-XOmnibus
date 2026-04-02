@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // WavetableScanMode — PPG Wave-inspired harsh-digital wavetable scanning.
@@ -211,4 +211,4 @@ private:
     static constexpr float kPi = 3.14159265358979f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

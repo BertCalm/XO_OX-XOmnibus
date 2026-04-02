@@ -4,7 +4,7 @@
 
 #if XO_MOBILE
 // Forward declarations — implemented in HapticEngine_iOS.mm
-namespace xolokun::haptic_platform {
+namespace xoceanus::haptic_platform {
     void prepareImpact(int style);
     void fireImpact(int style, float intensity);
     void fireNotification(int type);
@@ -12,7 +12,7 @@ namespace xolokun::haptic_platform {
 }
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // HapticEngine — Contextual tactile feedback for musical events.
@@ -155,4 +155,4 @@ private:
     #endif
 };
 
-} // namespace xolokun
+} // namespace xoceanus

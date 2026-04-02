@@ -12,7 +12,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // MobilePlaySurface — Touch-optimized PlaySurface for iOS.
@@ -47,7 +47,7 @@ public:
     {
 #if JUCE_IOS
         // Use display-synced animation instead of timer
-        xolokun::display_link::start([this](double timestamp, double targetTimestamp) {
+        xoceanus::display_link::start([this](double timestamp, double targetTimestamp) {
             juce::ignoreUnused(timestamp, targetTimestamp);
             // Same work as timerCallback but display-synced
             updatePhysics();
@@ -55,7 +55,7 @@ public:
             updateHeatmap();
             repaint();
         });
-        xolokun::display_link::setPreferredFrameRate(60); // 60Hz default, 30Hz under CPU pressure
+        xoceanus::display_link::setPreferredFrameRate(60); // 60Hz default, 30Hz under CPU pressure
 #else
         startTimerHz(30);  // Desktop fallback: animation tick for trails, momentum, heatmap decay
 #endif
@@ -64,7 +64,7 @@ public:
     ~MobilePlaySurface() override
     {
 #if JUCE_IOS
-        xolokun::display_link::stop();
+        xoceanus::display_link::stop();
 #else
         stopTimer();
 #endif
@@ -569,7 +569,7 @@ public:
     void reducedAnimationMode(bool reduced)
     {
 #if JUCE_IOS
-        xolokun::display_link::setPreferredFrameRate(reduced ? 30 : 60);
+        xoceanus::display_link::setPreferredFrameRate(reduced ? 30 : 60);
 #else
         if (reduced) startTimerHz(15); else startTimerHz(30);
 #endif
@@ -823,4 +823,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include "../GalleryColors.h"
 #include "MidiLearnMouseListener.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // GalleryKnob — juce::Slider subclass that adds:
@@ -134,4 +134,4 @@ static inline void enableKnobReset (GalleryKnob& knob,
     }
 }
 
-} // namespace xolokun
+} // namespace xoceanus

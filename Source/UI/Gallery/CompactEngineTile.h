@@ -1,13 +1,13 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 #include "WaveformDisplay.h"
 #include "EnginePickerPopup.h"
 #include "CockpitHost.h"
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -28,7 +28,7 @@ class CompactEngineTile : public juce::Component, public juce::SettableTooltipCl
 public:
     std::function<void(int)> onSelect; // called with slot index when clicked
 
-    CompactEngineTile(XOlokunProcessor& proc, int slotIndex)
+    CompactEngineTile(XOceanusProcessor& proc, int slotIndex)
         : processor(proc), slot(slotIndex), miniWave(proc)
     {
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
@@ -646,7 +646,7 @@ private:
             getScreenBounds(), nullptr);
     }
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     int slot;
     juce::String engineId;
     juce::Colour accent;
@@ -680,4 +680,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CompactEngineTile)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

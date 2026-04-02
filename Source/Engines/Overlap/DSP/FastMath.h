@@ -3,7 +3,7 @@
 //==============================================================================
 // FastMath.h — xoverlap namespace forwarding header
 //
-// Re-exports the shared XOlokun FastMath functions under the xoverlap
+// Re-exports the shared XOceanus FastMath functions under the xoverlap
 // namespace so that XOverlapAdapter.h can call xoverlap::flushDenormal,
 // xoverlap::fastSin, etc. without modification.
 //==============================================================================
@@ -12,22 +12,22 @@
 
 namespace xoverlap {
 
-using xolokun::flushDenormal;
-using xolokun::fastExp;
-using xolokun::fastTanh;
-using xolokun::fastSin;
-using xolokun::fastCos;
-using xolokun::fastTan;
-using xolokun::fastLog2;
-using xolokun::fastPow2;
-using xolokun::midiToFreq;
-using xolokun::midiToFreqTune;
-using xolokun::dbToGain;
-using xolokun::gainToDb;
-using xolokun::clamp;
-using xolokun::lerp;
-using xolokun::smoothstep;
-using xolokun::smoothCoeffFromTime;
-using xolokun::softClip;
+using xoceanus::flushDenormal;
+using xoceanus::fastExp;
+using xoceanus::fastTanh;
+using xoceanus::fastSin;
+using xoceanus::fastCos;
+using xoceanus::fastTan;
+using xoceanus::fastLog2;
+using xoceanus::fastPow2;
+using xoceanus::midiToFreq;
+using xoceanus::midiToFreqTune;
+using xoceanus::dbToGain;
+using xoceanus::gainToDb;
+using xoceanus::clamp;
+using xoceanus::lerp;
+using xoceanus::smoothstep;
+using xoceanus::smoothCoeffFromTime;
+using xoceanus::softClip;
 
 } // namespace xoverlap

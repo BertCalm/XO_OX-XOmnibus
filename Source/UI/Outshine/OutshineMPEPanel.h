@@ -2,7 +2,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 enum class MPECategory { Melodic, Drum };
 
@@ -147,4 +147,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMPEPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

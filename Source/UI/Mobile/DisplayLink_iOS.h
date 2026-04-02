@@ -3,7 +3,7 @@
 
 //==============================================================================
 // DisplayLink_iOS — CADisplayLink bridge for display-synchronized animation
-//                   callbacks in XOlokun JUCE Components.
+//                   callbacks in XOceanus JUCE Components.
 //
 // Wraps CADisplayLink (iOS) in a C++ API that delivers per-frame callbacks on
 // the JUCE message thread, making it safe to call repaint() or manipulate
@@ -11,19 +11,19 @@
 //
 // Usage:
 //   // On the message thread — start callbacks at the native display rate:
-//   xolokun::display_link::start([](double ts, double targetTs)
+//   xoceanus::display_link::start([](double ts, double targetTs)
 //   {
 //       myComponent.repaint();
 //   });
 //
 //   // Request ProMotion rate (iPad Pro / iPhone 15 Pro):
-//   xolokun::display_link::setPreferredFrameRate(120);
+//   xoceanus::display_link::setPreferredFrameRate(120);
 //
 //   // Query the actual hardware refresh rate:
-//   int hz = xolokun::display_link::displayRefreshRate();  // 60 or 120
+//   int hz = xoceanus::display_link::displayRefreshRate();  // 60 or 120
 //
 //   // Stop when the component is hidden or destroyed:
-//   xolokun::display_link::stop();
+//   xoceanus::display_link::stop();
 //
 // Threading model:
 //   CADisplayLink fires on the main run loop (main thread). The bridge bounces
@@ -44,7 +44,7 @@
 //
 #if JUCE_IOS
 
-namespace xolokun { namespace display_link {
+namespace xoceanus { namespace display_link {
 
 //==============================================================================
 // start() — Attach a CADisplayLink to the main run loop and begin delivering
@@ -117,7 +117,7 @@ void setPreferredFrameRate(int fps);
 //
 int displayRefreshRate();
 
-}} // namespace xolokun::display_link
+}} // namespace xoceanus::display_link
 
 #else  // !JUCE_IOS — no-op stubs for macOS builds
 //==============================================================================
@@ -126,7 +126,7 @@ int displayRefreshRate();
 //
 #include <functional>
 
-namespace xolokun { namespace display_link {
+namespace xoceanus { namespace display_link {
 
 inline void start(std::function<void(double, double)>) {}
 inline void stop()                                      {}
@@ -134,6 +134,6 @@ inline bool isRunning()                                 { return false; }
 inline void setPreferredFrameRate(int)                  {}
 inline int  displayRefreshRate()                        { return 60; }
 
-}} // namespace xolokun::display_link
+}} // namespace xoceanus::display_link
 
 #endif // JUCE_IOS

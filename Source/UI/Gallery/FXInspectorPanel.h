@@ -4,9 +4,9 @@
 #include "GalleryKnob.h"
 
 // Forward-declare to avoid including the full processor header here.
-namespace xolokun { class XOlokunProcessor; }
+namespace xoceanus { class XOceanusProcessor; }
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // FXInspectorPanel — Column C / C3 (FX) tab content.
@@ -564,4 +564,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FXInspectorPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

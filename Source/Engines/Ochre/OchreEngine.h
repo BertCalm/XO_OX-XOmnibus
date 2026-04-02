@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OchreEngine.h — XOchre | "The Copper Upright"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOchre is the copper-framed upright piano in the room where you
@@ -82,7 +82,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Copper Upright Piano — Modal ratio table
@@ -173,7 +173,7 @@ struct OchreHammerModel
             {
                 float driven = out * (1.0f + caramelAmount * 4.0f);
                 out = out * (1.0f - caramelAmount * 0.5f)
-                    + xolokun::fastTanh (driven) * caramelAmount * 0.5f;
+                    + xoceanus::fastTanh (driven) * caramelAmount * 0.5f;
             }
         }
         else
@@ -1059,4 +1059,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

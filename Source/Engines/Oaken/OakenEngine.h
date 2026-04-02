@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OakenEngine.h — XOaken | "The Cured Wood"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOaken is the acoustic bass resting in the cellar — the upright bass,
@@ -54,7 +54,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OakenExciter — Three playing styles for the acoustic bass:
@@ -855,4 +855,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

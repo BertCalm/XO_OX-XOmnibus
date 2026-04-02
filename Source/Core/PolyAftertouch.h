@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "../DSP/FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PolyAftertouch — CS-80-inspired per-voice aftertouch modulation.
@@ -244,4 +244,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

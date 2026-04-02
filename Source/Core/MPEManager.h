@@ -4,7 +4,7 @@
 #include <atomic>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Per-voice MPE expression state.
@@ -41,7 +41,7 @@ enum class MPEZoneLayout : int
 };
 
 //==============================================================================
-// MPEManager — Central MPE state manager for XOlokun.
+// MPEManager — Central MPE state manager for XOceanus.
 //
 // Sits between raw MIDI input and engine voice allocation.
 // Parses per-channel pitch bend, pressure, and CC74 into per-note
@@ -269,4 +269,4 @@ private:
     std::atomic<int> slideTarget { static_cast<int>(ExpressionTarget::FilterCutoff) };
 };
 
-} // namespace xolokun
+} // namespace xoceanus

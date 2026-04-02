@@ -5,7 +5,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PageRSequencer — Fairlight CMI Page R-inspired visual step sequencer.
@@ -348,4 +348,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

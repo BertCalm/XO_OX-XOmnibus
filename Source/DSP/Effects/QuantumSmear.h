@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // QuantumSmear — "Superposition" delay/reverb with probabilistic echo timing.
@@ -218,4 +218,4 @@ private:
     uint32_t rng = 2147001325u;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

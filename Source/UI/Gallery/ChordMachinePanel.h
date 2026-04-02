@@ -1,9 +1,9 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ChordMachinePanel — visual interface for the Chord Machine.
@@ -14,7 +14,7 @@ namespace xolokun {
 class ChordMachinePanel : public juce::Component, private juce::Timer
 {
 public:
-    explicit ChordMachinePanel (XOlokunProcessor& proc)
+    explicit ChordMachinePanel (XOceanusProcessor& proc)
         : processor (proc)
     {
         setTitle ("Chord Machine");
@@ -94,7 +94,7 @@ public:
             // W13 fix: do NOT call applyPattern() directly from the UI thread —
             // it races with the audio thread reading steps[].active.
             // Instead, write the APVTS parameter; processBlock() syncs it via
-            // chordMachine.applyPattern() on every block (W12 fix, XOlokunProcessor.cpp).
+            // chordMachine.applyPattern() on every block (W12 fix, XOceanusProcessor.cpp).
             auto idx = patternBox.getSelectedItemIndex();
             if (auto* p = processor.getAPVTS().getParameter ("cm_seq_pattern"))
             {
@@ -328,7 +328,7 @@ private:
     static constexpr int kGridH   = 70;
     static constexpr int kKnobH   = 90;
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     juce::TextButton enableBtn, seqBtn, enoBtn;
     juce::ComboBox paletteBox, voicingBox, patternBox, velCurveBox;
@@ -339,4 +339,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ChordMachinePanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

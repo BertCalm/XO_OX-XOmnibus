@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
 
 // clang-format off
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ObrixDetailPanel — flagship custom hierarchical UI for the OBRIX engine.
@@ -46,7 +46,7 @@ public:
     // This panel is only instantiated when an OBRIX engine is loaded, so the
     // eager cost is acceptable and avoids deferred-allocation race conditions.
     // ──────────────────────────────────────────────────────────────────────────
-    explicit ObrixDetailPanel(XOlokunProcessor& proc, MIDILearnManager* midiLearn = nullptr)
+    explicit ObrixDetailPanel(XOceanusProcessor& proc, MIDILearnManager* midiLearn = nullptr)
         : apvts(proc.getAPVTS()), learnManager(midiLearn)
     {
         const juce::Colour accent = juce::Colour(kReefJade);
@@ -989,5 +989,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ObrixDetailPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 // clang-format on

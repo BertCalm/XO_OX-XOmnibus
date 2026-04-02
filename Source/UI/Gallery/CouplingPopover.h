@@ -1,11 +1,11 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingPopover — inline control panel for one MegaCouplingMatrix route.
@@ -23,13 +23,13 @@ namespace xolokun {
 //   Row 5 [148–176] Target selector (ComboBoxAttachment → cp_rN_target)
 //   (component height snapped to 176 to fit; CallOutBox sizes itself around us)
 //
-// Constructor: CouplingPopover(XOlokunProcessor& proc, int routeIndex)
+// Constructor: CouplingPopover(XOceanusProcessor& proc, int routeIndex)
 //   routeIndex is 1–4, mapping to parameter IDs cp_r1_* … cp_r4_*
 //
 class CouplingPopover : public juce::Component
 {
 public:
-    CouplingPopover(XOlokunProcessor& proc, int routeIndex)
+    CouplingPopover(XOceanusProcessor& proc, int routeIndex)
         : route(routeIndex)
     {
         jassert(route >= 1 && route <= 4);
@@ -261,7 +261,7 @@ private:
 class CouplingArcHitTester : public juce::Component
 {
 public:
-    explicit CouplingArcHitTester(XOlokunProcessor& proc) : processor(proc)
+    explicit CouplingArcHitTester(XOceanusProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(true, false);
         setPaintingIsUnclipped(true);
@@ -373,10 +373,10 @@ private:
             this);
     }
 
-    XOlokunProcessor&          processor;
+    XOceanusProcessor&          processor;
     std::vector<ClickableArc>  clickableArcs;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingArcHitTester)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

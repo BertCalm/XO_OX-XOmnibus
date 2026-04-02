@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OsierEngine.h — XOsier | "The Herb Garden"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOsier is the carefully tended herb garden — intimate, precise, every
@@ -51,7 +51,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Quartet role identity — each voice has distinct tonal character
@@ -777,4 +777,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

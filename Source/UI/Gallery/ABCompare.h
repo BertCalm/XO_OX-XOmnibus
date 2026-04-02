@@ -1,5 +1,5 @@
 #pragma once
-// ABCompare.h — A/B Preset Comparison widget for the XOlokun header.
+// ABCompare.h — A/B Preset Comparison widget for the XOceanus header.
 //
 // Two small toggle buttons (A and B) that let the user instantly switch between
 // two stored preset states — a pro workflow feature for comparing sound design
@@ -29,22 +29,22 @@
 // Architecture constraints:
 //   • Header-only (.h) — no .cpp
 //   • Depends on GalleryColors.h (GalleryColors, GalleryFonts, A11y namespaces)
-//   • Depends on XOlokunProcessor.h (getStateInformation / setStateInformation)
+//   • Depends on XOceanusProcessor.h (getStateInformation / setStateInformation)
 //   • State capture/restore is synchronous on the message thread
 //   • No memory allocation during capture beyond MemoryBlock reallocation
 
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class ABCompare : public juce::Component
 {
 public:
     //==========================================================================
-    explicit ABCompare(XOlokunProcessor& proc)
+    explicit ABCompare(XOceanusProcessor& proc)
         : processor(proc)
     {
         A11y::setup(*this,
@@ -319,7 +319,7 @@ private:
     }
 
     //==========================================================================
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     bool abActive  = false;  // A/B mode is enabled
     bool showingA  = true;   // currently displaying A (true) or B (false)
@@ -333,4 +333,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ABCompare)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SampleZone — Multi-zone sample mapping for SamplerVoice.
@@ -275,4 +275,4 @@ private:
     int rrCounters_[kMaxGroups] {};
 };
 
-} // namespace xolokun
+} // namespace xoceanus

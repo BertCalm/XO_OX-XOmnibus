@@ -86,7 +86,7 @@ struct ModOffsets
 };
 
 //==============================================================================
-// Simple ADSR Envelope (self-contained, mirrors XOlokun FilterEnvelope)
+// Simple ADSR Envelope (self-contained, mirrors XOceanus FilterEnvelope)
 // Linear attack, exponential decay/release. Denormal-safe.
 //==============================================================================
 
@@ -192,7 +192,7 @@ private:
 };
 
 //==============================================================================
-// Simple LFO (self-contained, mirrors XOlokun StandardLFO)
+// Simple LFO (self-contained, mirrors XOceanus StandardLFO)
 // Sine wave only for this engine's use. D005 compliant floor.
 //==============================================================================
 
@@ -1373,7 +1373,7 @@ public:
     //
     // These are documented for the preset/macro system to route.
     // The engine itself does not contain a macro processor — it relies on
-    // parameter automation from the host or XOlokun macro strip.
+    // parameter automation from the host or XOceanus macro strip.
     //==========================================================================
 
 private:

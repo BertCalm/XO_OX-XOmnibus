@@ -17,7 +17,7 @@
 
 namespace xoverworld {
 
-using namespace xolokun;
+using namespace xoceanus;
 
 class BitCrusher {
 public:

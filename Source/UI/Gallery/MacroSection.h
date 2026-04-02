@@ -5,7 +5,7 @@
 #include "MidiLearnMouseListener.h"
 #include "CockpitHost.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class MacroSection : public juce::Component
 {
@@ -133,7 +133,7 @@ public:
     }
 
     // Wire MIDI Learn to each macro knob and master.
-    // Call after construction (from XOlokunEditor) so the attachment already exists.
+    // Call after construction (from XOceanusEditor) so the attachment already exists.
     void setupMidiLearn(MIDILearnManager& mgr)
     {
         static const char* ids[4] = { "macro1", "macro2", "macro3", "macro4" };
@@ -160,4 +160,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroSection)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

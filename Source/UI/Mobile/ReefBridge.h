@@ -2,7 +2,7 @@
 
 //==============================================================================
 // ReefBridge.h
-// XOlokun — C++ interface to the SpriteKit reef scene for OBRIX Pocket.
+// XOceanus — C++ interface to the SpriteKit reef scene for OBRIX Pocket.
 //
 // Architecture:
 //   JUCE handles audio + controls (bottom ~40% of screen).
@@ -31,7 +31,7 @@
 
 #if JUCE_IOS
 
-namespace xolokun { namespace reef_bridge {
+namespace xoceanus { namespace reef_bridge {
 
 //==============================================================================
 // Creature state enum matching CreatureDriverMap.json state labels.
@@ -162,11 +162,11 @@ bool captureReefSnapshot(const char* outputPath);
 // Returns true after a successful initialize() and before shutdown().
 bool isInitialized();
 
-}} // namespace xolokun::reef_bridge
+}} // namespace xoceanus::reef_bridge
 
 #else // !JUCE_IOS  — no-op stubs for macOS builds
 
-namespace xolokun { namespace reef_bridge {
+namespace xoceanus { namespace reef_bridge {
 
 enum class CreatureState : int {
     Sleeping = 0, Idle = 1, Curious = 2, Excited = 3, Singing = 4
@@ -198,6 +198,6 @@ inline bool captureReefSnapshot([[maybe_unused]] const char* outputPath)
 { return false; }
 inline bool isInitialized() { return false; }
 
-}} // namespace xolokun::reef_bridge
+}} // namespace xoceanus::reef_bridge
 
 #endif // JUCE_IOS

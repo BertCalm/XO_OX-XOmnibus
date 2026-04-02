@@ -4,7 +4,7 @@
 #include "../Engines/Onset/OnsetEngine.h"
 #include "XPNCoverArt.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // XPNDrumExporter — C++ port of Tools/xpn_drum_export.py.
@@ -723,4 +723,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // LushReverb — FATHOM-designed 8-tap Hadamard FDN algorithmic reverb.
@@ -629,4 +629,4 @@ private:
     float lastSize    = -1.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

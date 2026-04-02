@@ -415,7 +415,7 @@ public:
                     float entFB = snap.feedback * (1.0f + boostedC * entAmt);
                     entFB = std::clamp (entFB, 0.0f, 0.95f);
                     fbSample *= entFB;
-                    fbSample = xolokun::flushDenormal(fbSample);
+                    fbSample = xoceanus::flushDenormal(fbSample);
                     break;
                 }
 

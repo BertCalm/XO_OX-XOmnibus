@@ -16,7 +16,7 @@
 // Arc animation: 0.3 Hz pulse. Alpha oscillates in [0.35, 0.60].
 // Timer rate: 5 Hz (low visual priority — miniature widget).
 //
-// Integration (XOlokunEditor):
+// Integration (XOceanusEditor):
 //   addAndMakeVisible(miniCouplingGraph);
 //   // In resized(), after tile bounds are set:
 //   miniCouplingGraph.setBounds(columnA.removeFromBottom(80));
@@ -26,19 +26,19 @@
 //       miniCouplingGraph.setNodeCenter(i, tiles[i].getBounds().getCentreY());
 
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/SynthEngine.h"
 #include "../GalleryColors.h"
 #include "CockpitHost.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class MiniCouplingGraph : public juce::Component, private juce::Timer
 {
 public:
-    explicit MiniCouplingGraph(XOlokunProcessor& proc)
+    explicit MiniCouplingGraph(XOceanusProcessor& proc)
         : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through; read-only diagram
@@ -56,7 +56,7 @@ public:
     ~MiniCouplingGraph() override { stopTimer(); }
 
     //--------------------------------------------------------------------------
-    // Called by XOlokunEditor::resized() (and timerCallback) to keep node
+    // Called by XOceanusEditor::resized() (and timerCallback) to keep node
     // positions aligned with tile centres. Only the Y coordinate is variable;
     // X is fixed to the horizontal centre of this component.
     void setNodeCenter(int slot, float y)
@@ -275,7 +275,7 @@ private:
         juce::Colour color;
     };
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     // Vertical centres for the 5 slot nodes (local Y in this component's space).
     // Updated via setNodeCenter(); X is always centred on the component width.
@@ -295,4 +295,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MiniCouplingGraph)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

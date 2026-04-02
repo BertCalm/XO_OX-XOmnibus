@@ -3,7 +3,7 @@
 #include <cstring>
 #include <atomic>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SilenceGate — Zero-idle bypass for inactive engine slots.
@@ -183,4 +183,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ComplexOscillator — Buchla 259-inspired bidirectional FM oscillator.
@@ -296,4 +296,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

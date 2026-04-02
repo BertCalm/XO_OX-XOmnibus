@@ -15,7 +15,7 @@
 
 #include <memory>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OscarRiveComponent — Oscar the axolotl, animated via Rive state machine.
@@ -511,11 +511,11 @@ private:
     uint64_t                     frameCount     = 0;
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 
 #else // !XO_HAS_RIVE — stub component (no animation, no Rive dependency)
 
-namespace xolokun {
+namespace xoceanus {
 
 class OscarRiveComponent : public juce::Component
 {
@@ -527,6 +527,6 @@ public:
     void stop() {}
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 
 #endif // XO_HAS_RIVE

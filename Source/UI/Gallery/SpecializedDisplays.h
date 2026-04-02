@@ -5,18 +5,18 @@
 #include "MidiLearnMouseListener.h"
 
 //==============================================================================
-// SpecializedDisplays.h — V1-required bespoke display components for XOlokun.
+// SpecializedDisplays.h — V1-required bespoke display components for XOceanus.
 //
 //   TriangleXYPad      — equilateral-triangle 2D XY pad (OVERWORLD ERA, OXYTOCIN love triangle)
 //   ConductorArcDisplay — OPERA autonomous dramatic arc visualizer + playhead
 //   FiveMacroDisplay    — OVERBITE 5-macro row (BELLY/BITE/SCURRY/TRASH/PLAY DEAD)
 //
-// Header-only. All classes live in namespace xolokun.
+// Header-only. All classes live in namespace xoceanus.
 // Include order: GalleryColors.h → GalleryKnob.h → MidiLearnMouseListener.h
 // (already satisfied above).
 //==============================================================================
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -761,4 +761,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FiveMacroDisplay)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

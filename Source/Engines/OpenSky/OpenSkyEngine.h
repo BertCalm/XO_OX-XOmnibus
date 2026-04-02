@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OpenSkyEngine.h — XOpenSky | "The Soaring High"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOpenSky is the sunlit surface — the place where light breaks through
@@ -71,7 +71,7 @@
 #include <cstring>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -1437,4 +1437,4 @@ private:
     std::atomic<float>* pModSlot2Amt     = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

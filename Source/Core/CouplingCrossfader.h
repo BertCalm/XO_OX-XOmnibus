@@ -3,7 +3,7 @@
 #include <array>
 #include <atomic>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingCrossfader — Smooth transitions when switching coupling types in
@@ -301,4 +301,4 @@ private:
     std::atomic<double> currentSampleRate { 0.0 };
 };
 
-} // namespace xolokun
+} // namespace xoceanus

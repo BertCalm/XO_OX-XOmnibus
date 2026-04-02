@@ -1,5 +1,5 @@
 #pragma once
-// EnginePickerPopup.h — Searchable engine selection component for XOlokun.
+// EnginePickerPopup.h — Searchable engine selection component for XOceanus.
 //
 // Replaces the flat PopupMenu engine list with:
 //   - Text search across engine name, category, and archetype description
@@ -8,7 +8,7 @@
 //   - 8px accent color dot + engine name + category badge per row
 //
 // Designed to be shown in a juce::CallOutBox:
-//   auto* popup = new xolokun::EnginePickerPopup();
+//   auto* popup = new xoceanus::EnginePickerPopup();
 //   popup->onEngineSelected = [this](const juce::String& id) { ... };
 //   juce::CallOutBox::launchAsynchronously(std::unique_ptr<Component>(popup),
 //                                          targetBounds, parentComp);
@@ -19,7 +19,7 @@
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Lightweight LookAndFeel override so category pill buttons render with a
@@ -749,4 +749,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EnginePickerPopup)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

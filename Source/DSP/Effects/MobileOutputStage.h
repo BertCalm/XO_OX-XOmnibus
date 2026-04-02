@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // MobileOutputStage — Psychoacoustic output processing for iPhone speakers.
@@ -375,7 +375,7 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 
 //==============================================================================
 // Integration guide — ObrixBridge.mm
@@ -412,7 +412,7 @@ private:
 // Notes:
 //   - No new parameters are exposed through the APVTS — Brick Weight is a
 //     device-level control, not a preset parameter. It lives in UserDefaults.
-//   - On desktop fleet engines (macOS XOlokun), mobileMode remains false so
+//   - On desktop fleet engines (macOS XOceanus), mobileMode remains false so
 //     MobileOutputStage is a literal no-op; no #ifdef guards needed in callers.
 //   - reset() is safe to call from the audio thread (no allocation).
 //==============================================================================

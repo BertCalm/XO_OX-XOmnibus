@@ -1,7 +1,7 @@
 #pragma once
 #include "AudioRingBuffer.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // IAudioBufferSink — implemented by any engine that can receive an
@@ -50,4 +50,4 @@ public:
                                      bool frozen) noexcept = 0;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

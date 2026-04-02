@@ -120,7 +120,7 @@ public:
         // Apply pitch bend: temporarily scale baseFreq by bend ratio for this block
         const float savedBaseFreq = baseFreq;
         if (snap.pitchBendSemitones != 0.0f)
-            baseFreq *= xolokun::fastPow2(snap.pitchBendSemitones / 12.0f);
+            baseFreq *= xoceanus::fastPow2(snap.pitchBendSemitones / 12.0f);
 
         int model = std::clamp(snap.floorModel, 0, 5);
 
@@ -209,13 +209,13 @@ private:
     // SRO: Use shared flushDenormal from FastMath.h
     inline static float flushDenormal(float x)
     {
-        return xolokun::flushDenormal(x);
+        return xoceanus::flushDenormal(x);
     }
 
     inline static float midiToFreq(int note)
     {
         // SRO: fastPow2 replaces std::pow (called on noteOn, not per-sample)
-        return 440.0f * xolokun::fastPow2((note - 69) / 12.0f);
+        return 440.0f * xoceanus::fastPow2((note - 69) / 12.0f);
     }
 
     // Simple 1-pole lowpass for brightness tilt on output
@@ -280,7 +280,7 @@ private:
         {
             // Pitch sweep: frequency modulation decaying from noteOn
             // SRO: fastExp replaces std::exp (per-sample sweep decay)
-            float sweepMul = 1.0f + sweepAmount * xolokun::fastExp(-sweepPhase * 6.0f);
+            float sweepMul = 1.0f + sweepAmount * xoceanus::fastExp(-sweepPhase * 6.0f);
             sweepPhase += sweepDecayPerSample;
 
             // Update KS frequency with sweep
@@ -335,7 +335,7 @@ private:
         float svfCutoff = baseFreq * 2.0f;
         svfCutoff = std::clamp(svfCutoff, 100.0f, sr * 0.45f);
         // SRO: fastSin replaces std::sin (SVF coefficient)
-        float svfF = 2.0f * xolokun::fastSin(kPi * svfCutoff / sr);
+        float svfF = 2.0f * xoceanus::fastSin(kPi * svfCutoff / sr);
         svfF = std::clamp(svfF, 0.001f, 0.999f);
 
         // Biome modifiers
@@ -365,7 +365,7 @@ private:
             // Pitch bend: upward sweep decaying from noteOn
             float bendSemitones = cuicaBendEnv * tension * 12.0f * bendScale;
             // SRO: fastPow2 replaces std::pow for semitone-to-ratio (per-sample)
-            float freq = baseFreq * xolokun::fastPow2(bendSemitones / 12.0f);
+            float freq = baseFreq * xoceanus::fastPow2(bendSemitones / 12.0f);
 
             // Winter: noise modulate frequency
             if (noiseModAmt > 0.0f)
@@ -380,11 +380,11 @@ private:
             cuicaPhase += freq / sr;
             if (cuicaPhase >= 1.0f) cuicaPhase -= 1.0f;
             // SRO: fastSin replaces std::sin (per-sample oscillator)
-            float osc = xolokun::fastSin(kTwoPi * cuicaPhase);
+            float osc = xoceanus::fastSin(kTwoPi * cuicaPhase);
 
             // Amplitude decay with damping
             // SRO: fastExp replaces std::exp (per-sample amplitude decay)
-            float ampDecay = xolokun::fastExp(-static_cast<float>(i) * damp * 0.0001f);
+            float ampDecay = xoceanus::fastExp(-static_cast<float>(i) * damp * 0.0001f);
             osc *= currentVelocity * ampDecay;
 
             // Inline SVF bandpass for squealing quality
@@ -393,7 +393,7 @@ private:
             cuicaBpState += svfF * h;
             cuicaLpState += svfF * cuicaBpState;
             // SRO: fastTanh replaces std::tanh (per-sample saturation)
-            cuicaBpState = xolokun::fastTanh(cuicaBpState);
+            cuicaBpState = xoceanus::fastTanh(cuicaBpState);
             cuicaBpState = flushDenormal(cuicaBpState);
             cuicaLpState = flushDenormal(cuicaLpState);
 

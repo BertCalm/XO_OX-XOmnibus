@@ -13,7 +13,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -54,7 +54,7 @@ namespace xolokun {
 //      -> Amplitude Envelope * Velocity * Crossfade
 //      -> Stereo Voice Sum -> Master Level -> Output
 //
-//  Coupling (XOlokun inter-engine modulation):
+//  Coupling (XOceanus inter-engine modulation):
 //    Output: post-filter stereo audio via getSampleForCoupling (ch0=L, ch1=R)
 //            envelope follower on ch2 for amplitude-driven coupling
 //    Input:  AudioToFM    -> modulates PD depth (external audio drives timbre)
@@ -88,7 +88,7 @@ static constexpr int kLutPhaseSteps   = 512;
 
 
 // ObsidianADSR and ObsidianLFO have been replaced by StandardADSR and StandardLFO
-// from Source/DSP/. Use xolokun::StandardADSR and xolokun::StandardLFO directly.
+// from Source/DSP/. Use xoceanus::StandardADSR and xoceanus::StandardLFO directly.
 
 
 //==============================================================================
@@ -173,7 +173,7 @@ struct ObsidianVoice
 //
 //  ObsidianEngine — The Main Engine Class
 //
-//  Implements the SynthEngine interface for XOlokun integration.
+//  Implements the SynthEngine interface for XOceanus integration.
 //  All DSP is inline per project convention — the .cpp file is a stub.
 //
 //  Parameter prefix: obsidian_
@@ -319,7 +319,7 @@ public:
         const float glideTimeSeconds      = loadParam (pGlideTime, 0.0f);
         const float paramFormantIntensity = loadParam (pFormantIntensity, 0.0f);
 
-        // XOlokun standard macros: CHARACTER, MOVEMENT, COUPLING, SPACE
+        // XOceanus standard macros: CHARACTER, MOVEMENT, COUPLING, SPACE
         const float macroCharacter        = loadParam (pMacroCharacter, 0.0f);
         const float macroMovement         = loadParam (pMacroMovement, 0.0f);
         const float macroCoupling         = loadParam (pMacroCoupling, 0.0f);
@@ -436,7 +436,7 @@ public:
 
         // ---- Update per-voice filter coefficients once per block ----
         // Updating filter coefficients per-block (not per-sample) is an
-        // intentional CPU/quality tradeoff per XOlokun Architecture Rules.
+        // intentional CPU/quality tradeoff per XOceanus Architecture Rules.
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
@@ -945,7 +945,7 @@ public:
             juce::ParameterID { "obsidian_glide", 1 }, "Obsidian Glide",
             juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
 
-        // ---- XOlokun Standard Macros ----
+        // ---- XOceanus Standard Macros ----
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "obsidian_macroCharacter", 1 }, "Obsidian Macro CHARACTER",
@@ -1006,7 +1006,7 @@ public:
         // ---- Formant intensity ----
         pFormantIntensity      = apvts.getRawParameterValue ("obsidian_formantIntensity");
 
-        // ---- XOlokun macros ----
+        // ---- XOceanus macros ----
         pMacroCharacter        = apvts.getRawParameterValue ("obsidian_macroCharacter");
         pMacroMovement         = apvts.getRawParameterValue ("obsidian_macroMovement");
         pMacroCoupling         = apvts.getRawParameterValue ("obsidian_macroCoupling");
@@ -1449,11 +1449,11 @@ private:
     std::atomic<float>* pGlideTime            = nullptr;
     std::atomic<float>* pFormantIntensity     = nullptr;
 
-    // XOlokun macros
+    // XOceanus macros
     std::atomic<float>* pMacroCharacter       = nullptr;
     std::atomic<float>* pMacroMovement        = nullptr;
     std::atomic<float>* pMacroCoupling        = nullptr;
     std::atomic<float>* pMacroSpace           = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

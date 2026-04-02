@@ -2,7 +2,7 @@
 #include <cmath>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // DCBlocker — End-of-chain DC offset removal.
@@ -84,4 +84,4 @@ private:
     float prevOutL = 0.0f, prevOutR = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

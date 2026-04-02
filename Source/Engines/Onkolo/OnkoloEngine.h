@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OnkoloEngine.h — XOnkolo | "The Diaspora Clavinet"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOnkolo is the Clavinet that remembers the thumb piano. Named for
@@ -51,7 +51,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 #ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 #define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
@@ -762,4 +762,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

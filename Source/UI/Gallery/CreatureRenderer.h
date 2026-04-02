@@ -3,7 +3,7 @@
 #include <cmath>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CreatureRenderer — procedural per-engine creature sprites for CompactEngineTile
@@ -312,4 +312,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE (CreatureRenderer)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

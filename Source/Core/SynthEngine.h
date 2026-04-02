@@ -4,7 +4,7 @@
 #include "../DSP/SRO/SilenceGate.h"
 #include <atomic>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Coupling types supported by the MegaCouplingMatrix.
@@ -51,7 +51,7 @@ enum class CouplingType {
 // The SynthEngine interface.
 //
 // Every engine module (ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, etc.) implements
-// this interface. The XOlokunProcessor holds up to 4 active engines and
+// this interface. The XOceanusProcessor holds up to 4 active engines and
 // connects them through the MegaCouplingMatrix.
 //
 // Design contract:
@@ -85,7 +85,7 @@ public:
                             juce::MidiBuffer& midi,
                             int numSamples) = 0;
 
-    //-- Coupling (the XOlokun differentiator) --------------------------------
+    //-- Coupling (the XOceanus differentiator) --------------------------------
 
     // Return the most recent output sample for coupling reads.
     // Called per-sample by the MegaCouplingMatrix during tight coupling.
@@ -229,7 +229,7 @@ protected:
     SilenceGate silenceGate;
 
 public:
-    /// Helper: call from XOlokunProcessor to feed the silence gate after renderBlock().
+    /// Helper: call from XOceanusProcessor to feed the silence gate after renderBlock().
     void analyzeForSilenceGate(const juce::AudioBuffer<float>& buffer, int numSamples)
     {
         const float* L = buffer.getReadPointer(0);
@@ -238,4 +238,4 @@ public:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -4,7 +4,7 @@
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingStripEditor — Visual editor for MegaCouplingMatrix routes.
@@ -189,4 +189,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingStripEditor)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

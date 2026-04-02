@@ -2,10 +2,10 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// GlideProcessor — Shared portamento/glide for the XOlokun fleet.
+// GlideProcessor — Shared portamento/glide for the XOceanus fleet.
 //
 // Consolidates the frequency-domain glide pattern found across 35+ engines.
 // Operates in Hz space rather than MIDI note space, matching the analog VCO
@@ -129,4 +129,4 @@ struct GlideProcessor
     float coeff       = 1.0f;   // 1.0 = instant (no glide)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

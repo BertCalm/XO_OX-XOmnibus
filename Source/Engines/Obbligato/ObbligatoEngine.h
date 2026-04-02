@@ -46,7 +46,7 @@
 // Parameter prefix: obbl_
 //==============================================================================
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ObbligatoAdapterVoice — single polyphonic voice
@@ -1009,4 +1009,4 @@ private:
     std::atomic<float>* pMWind_  = nullptr;  // obbl_macroWind
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -4,7 +4,7 @@
 #include "../GalleryColors.h"
 #include "GalleryLookAndFeel.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PresetBrowserPanel — full preset browser shown in a CallOutBox.
@@ -294,4 +294,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

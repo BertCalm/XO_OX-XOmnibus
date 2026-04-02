@@ -2,15 +2,15 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "OutshineDocumentWindow.h"
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineSidebarPanel : public juce::Component,
                              public juce::FileDragAndDropTarget
 {
 public:
-    explicit OutshineSidebarPanel(XOlokunProcessor& processorRef)
+    explicit OutshineSidebarPanel(XOceanusProcessor& processorRef)
         : processor(processorRef)
     {
         setWantsKeyboardFocus(false);
@@ -163,7 +163,7 @@ private:
         }
     }
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     juce::Component::SafePointer<OutshineDocumentWindow> outshineWindow;
 
     juce::Label       statusLabel;
@@ -180,4 +180,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineSidebarPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

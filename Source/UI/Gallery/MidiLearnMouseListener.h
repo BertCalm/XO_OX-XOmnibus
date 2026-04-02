@@ -3,7 +3,7 @@
 #include "../GalleryColors.h"
 #include "../../Core/MIDILearnManager.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // MidiLearnMouseListener — right-click context menu for MIDI Learn on any Slider.
@@ -96,4 +96,4 @@ inline MidiLearnMouseListener* attachMidiLearn(juce::Slider& slider,
     return ml;
 }
 
-} // namespace xolokun
+} // namespace xoceanus

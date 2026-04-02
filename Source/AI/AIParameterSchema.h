@@ -5,7 +5,7 @@
 #include <optional>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AIParameterSchema — Structured parameter knowledge for the AI assistant.
@@ -1139,4 +1139,4 @@ inline AIParameterSchema buildDefaultSchema()
     return schema;
 }
 
-} // namespace xolokun
+} // namespace xoceanus

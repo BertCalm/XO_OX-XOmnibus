@@ -10,12 +10,12 @@
 #include <cstdint>
 #include <algorithm>
 #include <cstring>
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
 //  OBIONT ENGINE — Cellular Automata Oscillator
-//  XOlokun Engine Module | Accent: Bioluminescent Amber #E8A030
+//  XOceanus Engine Module | Accent: Bioluminescent Amber #E8A030
 //
 //  Creature: The XObiont — a colonial organism (like a siphonophore) whose body
 //            IS the waveform. Individual cells follow simple local rules; the
@@ -975,7 +975,7 @@ public:
     ~ObiontEngine() = default;
 
     // -------------------------------------------------------------------------
-    // Static parameter registration (called by XOlokunProcessor)
+    // Static parameter registration (called by XOceanusProcessor)
     // -------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -1562,4 +1562,4 @@ private:
     std::atomic<float>* p_macroCoupling   = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

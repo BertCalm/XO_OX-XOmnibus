@@ -13,12 +13,12 @@
 #include <cmath>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
 //  OVERWASH ENGINE — Spectral Diffusion Pad
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOverwash is ink in water — the moment pigment meets solvent and begins
@@ -842,4 +842,4 @@ private:
     std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

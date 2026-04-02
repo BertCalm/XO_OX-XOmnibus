@@ -5,7 +5,7 @@
 #include <deque>
 #include <cassert>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // StructuralUndoManager — Undo/redo for non-APVTS state changes.
@@ -24,7 +24,7 @@ namespace xolokun {
 //    are grouped by beginTransaction() / endTransaction() into one undo step.
 //    Open transactions accumulate commands; closing commits them atomically.
 //  • Pure / passive: the manager does NOT execute undo or redo itself. It
-//    returns the commands that the caller (XOlokunProcessor) must apply to
+//    returns the commands that the caller (XOceanusProcessor) must apply to
 //    EngineRegistry and MegaCouplingMatrix. This keeps the manager testable in
 //    isolation and free of dependency on the processor or audio thread.
 //  • Circular history: a fixed-capacity deque (default 50 steps) prevents
@@ -35,7 +35,7 @@ namespace xolokun {
 //  • Redo invalidation: any new recording while there are redo steps collapses
 //    the redo stack (standard DAW behaviour).
 //
-// Usage example (in XOlokunProcessor)
+// Usage example (in XOceanusProcessor)
 // --------------------------------------
 //   structuralUndo.beginTransaction ("Swap slot 0 to Overdub");
 //   structuralUndo.recordEngineSwap (0, "OddfeliX", "Overdub");
@@ -551,4 +551,4 @@ struct StructuralCommandDispatcher {
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

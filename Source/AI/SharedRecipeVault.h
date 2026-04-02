@@ -4,7 +4,7 @@
 #include <mutex>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SharedRecipeVault — Opt-in community recipe sharing.
@@ -33,7 +33,7 @@ namespace xolokun {
 //   - Featured: XO_OX-curated "Staff Picks" from community submissions
 //   - Remix: Download a community recipe, modify it, re-share as remix
 //   - Ratings: Simple thumbs-up system (no comments to moderate)
-//   - Versioning: Recipes track which XOlokun version they were created with
+//   - Versioning: Recipes track which XOceanus version they were created with
 //
 // Integration with CommunityInsights:
 //   - Popular shared recipes inform factory preset priorities
@@ -55,7 +55,7 @@ public:
         juce::String mood;              // Mood category
         juce::StringArray engines;      // Engine IDs used
         juce::StringArray tags;         // User-defined tags
-        juce::String appVersion;        // XOlokun version it was created with
+        juce::String appVersion;        // XOceanus version it was created with
         int thumbsUp = 0;
         bool isStaffPick = false;
         bool isRemix = false;
@@ -584,4 +584,4 @@ private:
     };
 };
 
-} // namespace xolokun
+} // namespace xoceanus

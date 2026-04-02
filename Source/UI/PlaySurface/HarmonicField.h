@@ -7,7 +7,7 @@
     tension coloring, scale membership, and marker properties for the XOuija
     harmonic navigation system.
 
-    Namespace: xolokun
+    Namespace: xoceanus
     C++ standard: C++17
 */
 
@@ -17,7 +17,7 @@
 #include <tuple>
 #include <utility>
 
-namespace xolokun {
+namespace xoceanus {
 
 struct HarmonicField
 {
@@ -219,4 +219,4 @@ struct HarmonicField
 // require out-of-class definitions. Providing them causes ODR violations when
 // this header is included in multiple translation units. They have been removed.
 
-} // namespace xolokun
+} // namespace xoceanus

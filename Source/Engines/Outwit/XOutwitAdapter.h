@@ -1,7 +1,7 @@
 #pragma once
 
 //==============================================================================
-// XOutwitAdapter.h — XOlokun adapter for XOutwit (OUTWIT)
+// XOutwitAdapter.h — XOceanus adapter for XOutwit (OUTWIT)
 //
 // 8-arm Wolfram cellular automaton synthesizer. Giant Pacific Octopus —
 // eight independent voice-channels each running their own Wolfram rule (0-255).
@@ -11,7 +11,7 @@
 // Parameter prefix: owit_ | Macros: M1=SOLVE, M2=SYNAPSE, M3=CHROMATOPHORE, M4=DEN
 // Coupling output: 9 types supported
 //
-// XOlokun integration: DSP headers resolved via target_include_directories
+// XOceanus integration: DSP headers resolved via target_include_directories
 // pointing to XOutwit/Source/ — see CMakeLists.txt.
 //==============================================================================
 
@@ -29,7 +29,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 class XOutwitEngine : public SynthEngine {
 public:
@@ -331,7 +331,7 @@ public:
     }
 
     //==========================================================================
-    // W07 fix: addParameters — called by XOlokunProcessor::createParameterLayout()
+    // W07 fix: addParameters — called by XOceanusProcessor::createParameterLayout()
     // to register all owit_ params in the shared APVTS.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -858,4 +858,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

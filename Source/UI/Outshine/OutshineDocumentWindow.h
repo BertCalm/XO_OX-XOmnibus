@@ -3,12 +3,12 @@
 #include "../GalleryColors.h"
 #include "OutshineMainComponent.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineDocumentWindow : public juce::DocumentWindow
 {
 public:
-    explicit OutshineDocumentWindow(XOlokunProcessor& processorRef)
+    explicit OutshineDocumentWindow(XOceanusProcessor& processorRef)
         : juce::DocumentWindow("OUTSHINE",
                                juce::Colour(GalleryColors::get(GalleryColors::shellWhite())),
                                juce::DocumentWindow::closeButton)
@@ -50,4 +50,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineDocumentWindow)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

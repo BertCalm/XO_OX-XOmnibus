@@ -2,4 +2,4 @@
 #include "../../Core/EngineRegistry.h"
 
 using xowlfish::OwlfishEngine;
-// Registration is centralized in XOlokunProcessor.cpp.
+// Registration is centralized in XOceanusProcessor.cpp.

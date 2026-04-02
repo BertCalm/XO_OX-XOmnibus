@@ -17,7 +17,7 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OPAL CONSTANTS
@@ -258,11 +258,11 @@ private:
     int bufferSize = 176400; // default for 44.1k
 };
 
-// OpalADSR replaced by xolokun::StandardADSR (Source/DSP/StandardADSR.h).
+// OpalADSR replaced by xoceanus::StandardADSR (Source/DSP/StandardADSR.h).
 // StandardADSR::retriggerFrom() provides the legato retrigger behaviour
 // previously implemented in OpalADSR::retriggerFromCurrent().
 
-// OpalLFO replaced by xolokun::StandardLFO (Source/DSP/StandardLFO.h).
+// OpalLFO replaced by xoceanus::StandardLFO (Source/DSP/StandardLFO.h).
 // Shape 5 (Stepped = quantized sine) is handled inline in processLFO() below,
 // which wraps StandardLFO and falls back to the stepped formula for shape == 5.
 
@@ -792,7 +792,7 @@ private:
 };
 
 //==============================================================================
-// OpalEngine — XOpal granular synthesis engine for XOlokun.
+// OpalEngine — XOpal granular synthesis engine for XOceanus.
 //
 // Signal chain:
 //   OSC / AudioToWavetable → GrainBuffer (4s ring)
@@ -2386,4 +2386,4 @@ private:
     std::atomic<float>* pLevel          = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

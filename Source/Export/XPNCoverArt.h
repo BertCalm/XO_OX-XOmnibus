@@ -3,7 +3,7 @@
 #include <cmath>
 #include <random>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // XPNCoverArt — Procedural cover art generator for MPC expansion packs.
@@ -708,4 +708,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

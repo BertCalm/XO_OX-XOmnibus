@@ -18,13 +18,13 @@
 #include "RebirthProfiles.h"
 #include "RebirthPipeline.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //  XOutshine — Sample Pack Upgrade Engine
 //  "Outshine the original."
 //
-//  Integrated into the XOlokun desktop application. Ingests any WAV samples
+//  Integrated into the XOceanus desktop application. Ingests any WAV samples
 //  or XPN archives and upgrades them into production-quality, expressive,
 //  dynamic MPC instruments — without leaving the plugin.
 //
@@ -1676,4 +1676,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

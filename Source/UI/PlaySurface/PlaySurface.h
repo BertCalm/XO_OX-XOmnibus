@@ -9,18 +9,18 @@
 #include "HarmonicField.h"
 #include "XOuijaPanel.h"
 
-// Forward declaration — PlaySurface stores a pointer to XOlokunProcessor so it
+// Forward declaration — PlaySurface stores a pointer to XOceanusProcessor so it
 // can forward XOuija CC output events.  We also include the processor header
 // here so the inline wireOnCCOutput() lambda can call pushCCOutput() without
-// requiring callers to pre-include it.  XOlokunProcessor.h has no UI includes
+// requiring callers to pre-include it.  XOceanusProcessor.h has no UI includes
 // so there is no circular dependency.
-namespace xolokun { class XOlokunProcessor; }
-#include "../../XOlokunProcessor.h"
+namespace xoceanus { class XOceanusProcessor; }
+#include "../../XOceanusProcessor.h"
 
 #include "GestureTrailBuffer.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Helper: lighten a colour toward white by [amount] (0=no change, 1=white)
@@ -87,7 +87,7 @@ public:
 
     //----------------------------------------------------------------------
     // P0-1: MIDI pipeline wiring.
-    // Set this pointer (owned externally, e.g. by XOlokunProcessor) before
+    // Set this pointer (owned externally, e.g. by XOceanusProcessor) before
     // any interaction. When set, note-on/off messages are enqueued into the
     // collector for thread-safe delivery to the audio thread instead of
     // firing the raw std::function callbacks.
@@ -1281,10 +1281,10 @@ public:
     ~PlaySurface() override { stopTimer(); }
 
     // ── Task 12: Processor wiring ─────────────────────────────────────────────
-    // Call setProcessor() from XOlokunEditor after construction so that XOuija
+    // Call setProcessor() from XOceanusEditor after construction so that XOuija
     // CC output events (CC 85-90) are forwarded to the audio thread via the
     // processor's lock-free CC queue.  The processor pointer is NOT owned here.
-    void setProcessor (XOlokunProcessor* p)
+    void setProcessor (XOceanusProcessor* p)
     {
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
@@ -1322,7 +1322,7 @@ public:
     }
 
     // Handle incoming CC for remote planchette control.
-    // Call this from XOlokunEditor::handleIncomingMidi() to allow external
+    // Call this from XOceanusEditor::handleIncomingMidi() to allow external
     // hardware controllers to drive the XOuija planchette.
     //
     //   CC 86 — influence depth  (0-127 → 0.0-1.0)
@@ -1347,7 +1347,7 @@ public:
     }
 
     // P0-1: Wire the MIDI pipeline.
-    // Call this from XOlokunEditor after construction, passing the processor's
+    // Call this from XOceanusEditor after construction, passing the processor's
     // MidiMessageCollector.  Once set, all note-on/off events from the PlaySurface
     // are delivered to the audio thread via the collector rather than the raw
     // std::function callbacks.
@@ -1361,7 +1361,7 @@ public:
     }
 
     // Engine Accent Adaptive: propagate accent colour to all four zones.
-    // Call this from XOlokunEditor::timerCallback() when the active engine changes.
+    // Call this from XOceanusEditor::timerCallback() when the active engine changes.
     void setAccentColour(juce::Colour c)
     {
         if (c == accentColour) return; // B1: early-return guard — skip repaints if unchanged
@@ -1502,7 +1502,7 @@ private:
     juce::Colour accentColour { 0xFFE9C46A }; // Default: XO Gold
 
     // ── Task 12: processor pointer for CC output forwarding ──────────────────
-    XOlokunProcessor* processor_       = nullptr;
+    XOceanusProcessor* processor_       = nullptr;
     bool              driftToggleState_ = false;  // CC 90 state — used by Task 13
 
     NoteInputZone      noteInput;
@@ -1530,7 +1530,7 @@ private:
 // user can expand horizontally to reveal more OrbitPath space, but the pad grid
 // itself always self-centers as squares.
 //
-// Usage in XOlokunEditor:
+// Usage in XOceanusEditor:
 //   std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
 //
 //   // Create lazily on first toggle press:
@@ -1557,7 +1557,7 @@ public:
     static constexpr int kMaxH      = 900;
 
     // Optional callback fired when the window is closed/hidden by the user.
-    // XOlokunEditor uses this to sync the "PS" toggle button state.
+    // XOceanusEditor uses this to sync the "PS" toggle button state.
     std::function<void()> onClosed;
 
     PlaySurfaceWindow()
@@ -1628,4 +1628,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaySurfaceWindow)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

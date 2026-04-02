@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ObrixEngine — Ocean Bricks: The Living Reef
@@ -2066,4 +2066,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

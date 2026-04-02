@@ -8,7 +8,7 @@
 #include <optional>
 #include <deque>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SoundAssistant — Provider-agnostic AI assistant for sound design.
@@ -712,8 +712,8 @@ private:
                     root->setProperty ("messages", messages);
 
                     root->setProperty ("system",
-                        "You are XOlokun Sound Architect, an expert sound design assistant for "
-                        "XOlokun, a multi-engine synthesizer with 76 engines and 15 coupling types. "
+                        "You are XOceanus Sound Architect, an expert sound design assistant for "
+                        "XOceanus, a multi-engine synthesizer with 76 engines and 15 coupling types. "
                         "RESPOND WITH VALID JSON ONLY. No markdown code fences, no explanation text "
                         "outside the JSON. The user prompt contains a PARAMETER REFERENCE section — "
                         "use ONLY the parameter IDs listed there. Every value you return will be "
@@ -730,7 +730,7 @@ private:
                     auto* sysMsg = new juce::DynamicObject();
                     sysMsg->setProperty ("role", "system");
                     sysMsg->setProperty ("content",
-                        "You are XOlokun Sound Architect, an expert sound design assistant. "
+                        "You are XOceanus Sound Architect, an expert sound design assistant. "
                         "RESPOND WITH VALID JSON ONLY — no markdown, no text outside JSON. "
                         "Use ONLY parameter IDs from the PARAMETER REFERENCE in the user prompt. "
                         "Prefer sweet-spot values. All values will be validated against the schema.");
@@ -770,7 +770,7 @@ private:
 
     static juce::String buildSystemContext()
     {
-        return "XOlokun is a multi-engine synthesizer with 76 engines, 15 coupling types, "
+        return "XOceanus is a multi-engine synthesizer with 76 engines, 15 coupling types, "
                "an 18-stage master FX chain, and 4 macros (M1=CHARACTER, M2=MOVEMENT, "
                "M3=COUPLING, M4=SPACE). "
                "Master FX stages: Saturator, Corroder, VibeKnob(-1=sweet,+1=grit), "
@@ -842,7 +842,7 @@ private:
         // Inject the enriched interpretation from NaturalLanguageInterpreter
         prompt += interpretation.enrichedPrompt;
 
-        prompt += "Generate a complete XOlokun recipe as JSON with these EXACT fields:\n"
+        prompt += "Generate a complete XOceanus recipe as JSON with these EXACT fields:\n"
                "{\n"
                "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
                "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
@@ -1045,7 +1045,7 @@ private:
                       "- The genre conventions and production style\n"
                       "Match the ESSENCE and CHARACTER, not a literal recreation.\n"
                       "Explain in the 'explanation' field what characteristics you identified "
-                      "and how you translated them to XOlokun parameters.\n\n";
+                      "and how you translated them to XOceanus parameters.\n\n";
         }
         else if (interpretation.confidence < 0.4f)
         {
@@ -1066,7 +1066,7 @@ private:
         }
 
         // Same JSON format as textToRecipe
-        prompt += "Generate a complete XOlokun recipe as JSON with these EXACT fields:\n"
+        prompt += "Generate a complete XOceanus recipe as JSON with these EXACT fields:\n"
                   "{\n"
                   "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
                   "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
@@ -1633,4 +1633,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

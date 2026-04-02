@@ -13,14 +13,14 @@
 // Visual polish pass (2026-03-27): dark theme, route card info density, gold BAKE.
 
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/CouplingPresetManager.h"
 #include "../CouplingVisualizer/CouplingVisualizer.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingInspectorPanel
@@ -29,7 +29,7 @@ class CouplingInspectorPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit CouplingInspectorPanel (XOlokunProcessor& proc)
+    explicit CouplingInspectorPanel (XOceanusProcessor& proc)
         : processor (proc),
           apvts     (proc.getAPVTS()),
           miniViz   (proc.getCouplingMatrix(),
@@ -861,7 +861,7 @@ private:
     //==========================================================================
     // Members
     //==========================================================================
-    XOlokunProcessor&                    processor;
+    XOceanusProcessor&                    processor;
     juce::AudioProcessorValueTreeState&  apvts;
 
     // Mini coupling graph (top 120pt)
@@ -878,4 +878,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CouplingInspectorPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

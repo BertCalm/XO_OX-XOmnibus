@@ -14,7 +14,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -655,7 +655,7 @@ public:
 
         // =====================================================================
         // ParamSnapshot — cache all APVTS parameter values once per block.
-        // This pattern (used across all XOlokun engines) avoids atomic loads
+        // This pattern (used across all XOceanus engines) avoids atomic loads
         // per sample, which is critical at 128 formant filters peak load.
         // =====================================================================
 
@@ -1953,4 +1953,4 @@ private:
     StandardLFO userLFO;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

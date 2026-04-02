@@ -4,7 +4,7 @@
 // See Docs/export-architecture.md for the full architecture.
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Export/XOutshine.h"
 #include "OutshineShellState.h"
 #include "OutshineInputPanel.h"
@@ -13,14 +13,14 @@
 #include "OutshineExportBar.h"
 #include "OutshinePreviewPlayer.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 enum class OutshineState { Shell, Input, Preview, Exporting };
 
 class OutshineMainComponent : public juce::Component
 {
 public:
-    explicit OutshineMainComponent(XOlokunProcessor& /*processorRef*/)
+    explicit OutshineMainComponent(XOceanusProcessor& /*processorRef*/)
     {
         setWantsKeyboardFocus(true);
         A11y::setup(*this, "Outshine Main", "Sample instrument forge — drag, analyze, export");
@@ -334,4 +334,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMainComponent)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

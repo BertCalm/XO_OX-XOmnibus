@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OutflowEngine.h — XOutflow | "The Predictive Spatial Engine"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOutflow is a generative fluid-dynamics spatial engine that anticipates
@@ -34,7 +34,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class OutflowEngine : public SynthEngine
@@ -640,4 +640,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

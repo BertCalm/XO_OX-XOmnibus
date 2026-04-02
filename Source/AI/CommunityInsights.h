@@ -5,12 +5,12 @@
 #include <atomic>
 #include <mutex>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CommunityInsights — Anonymous telemetry to understand what users create.
 //
-// Captures anonymized aggregate data about how XOlokun is used:
+// Captures anonymized aggregate data about how XOceanus is used:
 //   - Which engines are popular (by slot frequency)
 //   - Which coupling types resonate with users
 //   - What kinds of sounds people are designing (Sonic DNA distributions)
@@ -612,4 +612,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

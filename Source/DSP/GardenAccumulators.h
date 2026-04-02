@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  GardenAccumulators.h — Shared Evolutionary State for the GARDEN Quad
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  Implements the three accumulator dimensions from the Visionary concept:
 //    W (Warmth)    — leaky integrator, rises with sustained playing
@@ -23,7 +23,7 @@
 #include <cstdint>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Session Season — timbral phenological state
@@ -329,4 +329,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

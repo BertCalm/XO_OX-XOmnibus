@@ -11,7 +11,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -1223,4 +1223,4 @@ private:
     std::atomic<float>* pMacroSpace     = nullptr;  // snap_macroSpace     — M4: pan spread offset
 };
 
-} // namespace xolokun
+} // namespace xoceanus

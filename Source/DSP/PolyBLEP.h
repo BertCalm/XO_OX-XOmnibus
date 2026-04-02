@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PolyBLEP — Band-limited oscillator with polynomial BLEP anti-aliasing.
@@ -292,4 +292,4 @@ private:
                                       // leak bias; derived in setFrequency()
 };
 
-} // namespace xolokun
+} // namespace xoceanus

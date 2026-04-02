@@ -2,10 +2,10 @@
 #include "FastMath.h"
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// PitchBendUtil — Shared pitch bend processing for the XOlokun fleet.
+// PitchBendUtil — Shared pitch bend processing for the XOceanus fleet.
 //
 // Consolidates the MIDI pitch wheel → frequency ratio pipeline found across
 // 10+ engines. Three functions cover the full chain:
@@ -62,4 +62,4 @@ struct PitchBendUtil
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

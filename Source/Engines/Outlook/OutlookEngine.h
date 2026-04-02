@@ -11,7 +11,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OutlookEngine — "Panoramic Visionary" synth engine.
@@ -426,7 +426,7 @@ public:
 
     //-- Parameters -------------------------------------------------------------
 
-    // W07 fix: addParameters — called by XOlokunProcessor::createParameterLayout()
+    // W07 fix: addParameters — called by XOceanusProcessor::createParameterLayout()
     // to register all look_ params in the shared APVTS.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -890,4 +890,4 @@ private:
     std::atomic<float>* pAftertouchDep  = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

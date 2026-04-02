@@ -22,10 +22,10 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "../../Core/PresetManager.h"
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../ExportDialog/ExportDialog.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ExportTabPanel
@@ -34,7 +34,7 @@ class ExportTabPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit ExportTabPanel(XOlokunProcessor& proc)
+    explicit ExportTabPanel(XOceanusProcessor& proc)
         : processor(proc)
     {
         // ── Format selector pills ─────────────────────────────────────────────
@@ -282,7 +282,7 @@ private:
     static constexpr int kNumFormats    = 3;
 
     //==========================================================================
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     // Kit info (cached strings painted directly — no child labels needed)
     juce::String      kitNameCache;
@@ -421,4 +421,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ExportTabPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include <atomic>
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SensorManager — Accelerometer, gyroscope, and motion integration.
@@ -224,7 +224,7 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 
 // ---------------------------------------------------------------------------
 // sensor_platform — iOS platform bridge forward declarations
@@ -244,8 +244,8 @@ namespace sensor_platform {
 
 // Start motion updates feeding into |sm| using the supplied Config.
 // |sm| must outlive the motion update session.
-void startMotionUpdates(xolokun::SensorManager* sm,
-                        const xolokun::SensorManager::Config& config);
+void startMotionUpdates(xoceanus::SensorManager* sm,
+                        const xoceanus::SensorManager::Config& config);
 
 // Stop all motion updates and release CMMotionManager resources.
 void stopMotionUpdates();

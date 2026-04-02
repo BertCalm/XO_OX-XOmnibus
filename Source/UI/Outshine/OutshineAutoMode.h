@@ -6,7 +6,7 @@
 #include "../../Export/XOutshine.h"
 #include "../../Export/RebirthProfiles.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineAutoMode : public juce::Component,
                          private juce::Button::Listener,
@@ -107,18 +107,8 @@ public:
         g.setFont(GalleryFonts::display(12.0f));
         g.drawText("REBIRTH MODE", labelAfterToggle, juce::Justification::centredLeft);
 
-        // Spectrum View placeholder (below all panels)
-        auto remaining = getLocalBounds().reduced(kPad);
-        remaining.removeFromTop(kHeaderH + kSummaryH + 8 + kZoneMapH + 8 + kMPEH + 8
-                                + 4 + kToggleH + kProfileH + kSliderH + kDescH + kWarnH + 12);
-        if (remaining.getHeight() > 20)
-        {
-            g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.2f));
-            g.drawRoundedRectangle(remaining.toFloat().reduced(4), 6.0f, 1.0f);
-            g.setColour(GalleryColors::get(GalleryColors::textMid()).withAlpha(0.35f));
-            g.setFont(GalleryFonts::body(11.0f));
-            g.drawText("Spectrum View \xe2\x80\x94 Phase 1B", remaining, juce::Justification::centred);
-        }
+        // Spectrum View placeholder — hidden until Phase 1B ships (#158)
+        // (previously rendered "Spectrum View — Phase 1B" visible to users)
     }
 
     void resized() override
@@ -490,4 +480,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineAutoMode)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

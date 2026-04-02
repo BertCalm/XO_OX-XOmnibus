@@ -8,10 +8,10 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// OhmEngine — XOlokun adapter for XOhm (OHM).
+// OhmEngine — XOceanus adapter for XOhm (OHM).
 //
 // Dad (physical modeling) + In-Laws (spectral interference) + Obed (FM).
 // MEDDLING + COMMUNE dual-axis interaction system.
@@ -672,4 +672,4 @@ private:
     std::atomic<float>*mJam=nullptr, *mMeddling=nullptr, *mCommune=nullptr, *mMeadow=nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

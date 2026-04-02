@@ -3,7 +3,7 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // BrickwallLimiter — True-peak brick-wall limiter for end-of-chain safety.
@@ -183,4 +183,4 @@ private:
     float releaseMs = 50.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

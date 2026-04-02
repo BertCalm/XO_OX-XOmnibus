@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AnomalyEngine — Multi-textural generator + harmonic tremolo-verb + time-slip.
@@ -249,4 +249,4 @@ private:
     float slipFadeGain = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

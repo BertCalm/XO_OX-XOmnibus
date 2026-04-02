@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OpalineEngine.h — XOpaline | "The Porcelain Bell"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOpaline is the teacup you play with a spoon — a porcelain ramekin
@@ -12,7 +12,7 @@
 //
 //  ENGINE CONCEPT:
 //      Glass and porcelain modal synthesis. The MOST DELICATE engine in the
-//      XOlokun fleet — where XOven is massive and dark, XOpaline is tiny
+//      XOceanus fleet — where XOven is massive and dark, XOpaline is tiny
 //      and crystalline. Four instruments (Celesta, Toy Piano, Glass Harp,
 //      Porcelain Cups) each with distinct modal ratios and decay profiles.
 //      The defining mechanic: FRAGILITY. Hard velocity can crack the sound,
@@ -81,7 +81,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Modal ratio tables — per instrument type.
@@ -1066,4 +1066,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

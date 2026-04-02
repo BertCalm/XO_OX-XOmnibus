@@ -2,7 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-namespace xolokun
+namespace xoceanus
 {
 
 //==============================================================================
@@ -96,7 +96,7 @@ public:
             : GalleryColors::shellWhite()));
         g.fillRect(b);
 
-        // Zone bands (bottom=Midnight, top=Sunlit — matching XOlokun ecology)
+        // Zone bands (bottom=Midnight, top=Sunlit — matching XOceanus ecology)
         struct ZoneBand { float yNormStart, yNormEnd; juce::uint32 rgba; float alpha; };
         const ZoneBand bands[] = {
             { 0.80f, 1.00f, 0xFF48CAE4, 0.04f },  // Sunlit   — top 20%
@@ -175,4 +175,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FieldMapPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

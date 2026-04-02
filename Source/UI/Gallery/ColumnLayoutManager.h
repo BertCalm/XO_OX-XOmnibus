@@ -1,11 +1,11 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 
-namespace xolokun {
+namespace xoceanus {
 
 // ColumnLayoutManager — computes all zone rectangles for the 3-column + header
 // + status bar + PlaySurface layout. Pure data struct, no JUCE Component inheritance.
-// Used by XOlokunEditor::resized() to get bounds for all zones.
+// Used by XOceanusEditor::resized() to get bounds for all zones.
 //
 // Default proportions at 1100x700:
 //   Header: 52pt
@@ -190,4 +190,4 @@ private:
     juce::Rectangle<int> fieldMapBounds;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

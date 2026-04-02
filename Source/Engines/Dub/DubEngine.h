@@ -13,7 +13,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // DubNoiseGen — xorshift32 PRNG for noise oscillator and flutter modulation.
@@ -101,7 +101,7 @@ private:
 };
 
 // DubAdsrEnvelope replaced by StandardADSR (Source/DSP/StandardADSR.h).
-// All call sites updated to use xolokun::StandardADSR directly.
+// All call sites updated to use xoceanus::StandardADSR directly.
 
 // DubLFO replaced by StandardLFO (Source/DSP/StandardLFO.h).
 // StandardLFO has identical waveforms (Sine=0, Triangle=1, Saw=2, Square=3, S&H=4)
@@ -372,7 +372,7 @@ struct DubVoice
     DubNoiseGen noise;
 
     // Envelopes
-    xolokun::StandardADSR ampEnv;
+    xoceanus::StandardADSR ampEnv;
     DubPitchEnvelope pitchEnv;
 
     // Filter
@@ -1250,4 +1250,4 @@ private:
     std::atomic<float>* pPolyphony = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OtoEngine.h -- XOto | "The Breath Between Worlds"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOto (音 = "sound" in Japanese) is the first of the Chef Quad --
@@ -58,7 +58,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Aitake cluster chord partial ratios for Sho (from gagaku tuning theory).
@@ -1069,4 +1069,4 @@ private:
     std::atomic<float>* paramMacroD       = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

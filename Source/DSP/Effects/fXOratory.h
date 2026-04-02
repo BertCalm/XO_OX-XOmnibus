@@ -5,7 +5,7 @@
 #include "../CytomicSVF.h"
 #include "../StandardLFO.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // fXOratory — "Poetic Meter" boutique effect.
@@ -388,4 +388,4 @@ private:
     bool  bypassed_        = true;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // GalleryLookAndFeel — Gallery Model visual language (WCAG 2.1 AA compliant)
@@ -493,4 +493,4 @@ public:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

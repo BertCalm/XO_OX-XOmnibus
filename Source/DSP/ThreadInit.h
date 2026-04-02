@@ -3,7 +3,7 @@
 //==============================================================================
 // ThreadInit.h — Audio thread denormal prevention via CPU control registers.
 //
-// XOlokun CLAUDE.md: "Denormal protection required in all feedback/filter paths"
+// XOceanus CLAUDE.md: "Denormal protection required in all feedback/filter paths"
 //
 // WHY THIS EXISTS
 // ---------------
@@ -33,12 +33,12 @@
 //
 // WHERE TO CALL
 // -------------
-// In XOlokunProcessor::processBlock (Source/XOlokunProcessor.cpp, line ~1173):
+// In XOceanusProcessor::processBlock (Source/XOceanusProcessor.cpp, line ~1173):
 //
-//   void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
+//   void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 //                                       juce::MidiBuffer& midi)
 //   {
-//       xolokun::dsp::initAudioThreadOnce();   // <-- ADD THIS (first line of body)
+//       xoceanus::dsp::initAudioThreadOnce();   // <-- ADD THIS (first line of body)
 //       juce::ScopedNoDenormals noDenormals;   // keep for x86 scoped guard
 //       ...
 //   }
@@ -48,7 +48,7 @@
 //
 // RELATIONSHIP TO FastMath.h
 // --------------------------
-// xolokun::flushDenormal(float) in FastMath.h provides per-sample bitcast
+// xoceanus::flushDenormal(float) in FastMath.h provides per-sample bitcast
 // flushing on individual state variables. That guard can remain active in
 // Debug builds (#ifndef NDEBUG) as belt-and-suspenders validation. In Release
 // builds, FPCR.FZ / MXCSR DAZ+FTZ make the per-sample call a no-op because
@@ -62,7 +62,7 @@
     #include <immintrin.h>
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 namespace dsp {
 
 //==============================================================================
@@ -106,7 +106,7 @@ static inline void initAudioThread() noexcept
 
 #else
     // Unsupported platform (e.g. WASM, unknown architecture) — no-op.
-    // The per-sample xolokun::flushDenormal() in FastMath.h remains the
+    // The per-sample xoceanus::flushDenormal() in FastMath.h remains the
     // only denormal guard on these platforms.
     (void)0;
 #endif
@@ -121,7 +121,7 @@ static inline void initAudioThread() noexcept
 ///
 /// Usage:
 ///   // At the top of a worker thread entry point:
-///   xolokun::dsp::ScopedAudioThreadInit audioInit;
+///   xoceanus::dsp::ScopedAudioThreadInit audioInit;
 ///
 /// For processBlock specifically, prefer initAudioThreadOnce() to avoid the
 /// (trivial) overhead of the flag read on every block.
@@ -147,12 +147,12 @@ struct ScopedAudioThreadInit
 /// render scenarios where separate worker threads need their own FPCR set,
 /// call initAudioThread() directly at thread entry (e.g. via ScopedAudioThreadInit).
 ///
-/// Usage in XOlokunProcessor.cpp:
+/// Usage in XOceanusProcessor.cpp:
 ///
-///   void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
+///   void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 ///                                       juce::MidiBuffer& midi)
 ///   {
-///       xolokun::dsp::initAudioThreadOnce(); // ARM64 FPCR.FZ + x86 MXCSR DAZ+FTZ
+///       xoceanus::dsp::initAudioThreadOnce(); // ARM64 FPCR.FZ + x86 MXCSR DAZ+FTZ
 ///       juce::ScopedNoDenormals noDenormals; // x86 scoped guard (belt-and-suspenders)
 ///       ...
 ///   }
@@ -163,4 +163,4 @@ inline void initAudioThreadOnce() noexcept
 }
 
 } // namespace dsp
-} // namespace xolokun
+} // namespace xoceanus

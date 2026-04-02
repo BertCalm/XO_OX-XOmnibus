@@ -11,7 +11,7 @@
 
 namespace xocelot {
 
-class OcelotEngine final : public xolokun::SynthEngine
+class OcelotEngine final : public xoceanus::SynthEngine
 {
 public:
     OcelotEngine() = default;
@@ -68,7 +68,7 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
             else if (msg.isPitchWheel())
-                pitchBendNorm = xolokun::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+                pitchBendNorm = xoceanus::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // Biome crossfade: trigger BiomeMorph in all voices when biome param changes.
@@ -143,7 +143,7 @@ public:
         return 0.0f;
     }
 
-    void applyCouplingInput(xolokun::CouplingType type,
+    void applyCouplingInput(xoceanus::CouplingType type,
                             float amount,
                             const float* /*sourceBuffer*/,
                             int /*numSamples*/) override
@@ -153,27 +153,27 @@ public:
         // most ecologically coherent stratum parameter.
         switch (type)
         {
-            case xolokun::CouplingType::AmpToFilter:
+            case xoceanus::CouplingType::AmpToFilter:
                 // Partner amplitude (e.g. ONSET drum hits) opens canopy spectral filter.
                 // Sensitivity 0.25: prevents filter blow-out from loud percussive partners.
                 couplingFilterMod = std::clamp(couplingFilterMod + amount * 0.25f, -0.5f, 0.5f);
                 break;
 
-            case xolokun::CouplingType::LFOToPitch:
-            case xolokun::CouplingType::AmpToPitch:
-            case xolokun::CouplingType::PitchToPitch:
+            case xoceanus::CouplingType::LFOToPitch:
+            case xoceanus::CouplingType::AmpToPitch:
+            case xoceanus::CouplingType::PitchToPitch:
                 // Partner pitch/LFO modulates ecosystem depth — more signal flow between strata.
                 // Cross-stratum coupling deepens when another engine's melodic content arrives.
                 couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, 0.0f, 0.5f);
                 break;
 
-            case xolokun::CouplingType::EnvToMorph:
+            case xoceanus::CouplingType::EnvToMorph:
                 // External envelope sweeps floor tension — pluck character changes with
                 // the dynamics of the partner engine (feliX's darts make the floor tighter).
                 couplingFloorMod = std::clamp(couplingFloorMod + amount * 0.2f, -0.3f, 0.3f);
                 break;
 
-            case xolokun::CouplingType::EnvToDecay:
+            case xoceanus::CouplingType::EnvToDecay:
                 // External envelope decays → density decreases (space opens up between strata).
                 couplingDensityMod = std::clamp(couplingDensityMod - amount * 0.15f, -0.3f, 0.0f);
                 break;
@@ -202,10 +202,10 @@ public:
     int   getActiveVoiceCount()    const override { return voicePool.activeVoiceCount(); }
 
 private:
-    xolokun::SilenceGate silenceGate;
+    xoceanus::SilenceGate silenceGate;
     OcelotVoicePool voicePool;
     OcelotParamSnapshot snapshot;
-    xolokun::PolyAftertouch aftertouch;
+    xoceanus::PolyAftertouch aftertouch;
     std::vector<float> outputCacheL, outputCacheR;
     juce::AudioProcessorValueTreeState* apvtsRef = nullptr;
     double sr = 0.0;

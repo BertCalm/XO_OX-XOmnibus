@@ -5,7 +5,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ObserveShaper — The Mantis Shrimp
@@ -457,4 +457,4 @@ private:
     std::atomic<float>* pBandTideTarget[kNumBands] {};
 };
 
-} // namespace xolokun
+} // namespace xoceanus

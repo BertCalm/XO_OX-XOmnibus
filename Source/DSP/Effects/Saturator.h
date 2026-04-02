@@ -2,7 +2,7 @@
 #include <cmath>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Saturator — Multi-mode saturation/distortion processor.
@@ -233,4 +233,4 @@ private:
     float dcPrevOutput = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

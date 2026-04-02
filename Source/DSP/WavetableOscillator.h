@@ -20,7 +20,7 @@
 #include <algorithm>
 #include "FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // WavetableOscillator — Wavetable oscillator with crossfade morphing.
@@ -381,4 +381,4 @@ private:
     static constexpr float k2Pi = 6.28318530718f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

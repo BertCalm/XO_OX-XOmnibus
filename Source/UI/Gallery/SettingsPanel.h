@@ -23,20 +23,20 @@
 #include "GalleryLookAndFeel.h"
 
 // Forward-declare processor so we can take a reference.
-// The full definition is in XOlokunProcessor.h, which is included by the editor
+// The full definition is in XOceanusProcessor.h, which is included by the editor
 // before SidebarPanel.h and thus before this header.
-namespace xolokun { class XOlokunProcessor; }
+namespace xoceanus { class XOceanusProcessor; }
 
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class SettingsPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit SettingsPanel(XOlokunProcessor& proc)
+    explicit SettingsPanel(XOceanusProcessor& proc)
         : processor(proc)
     {
         // ── Viewport + inner content component ───────────────────────────────
@@ -52,13 +52,13 @@ public:
         // can safely call settingsFile->setValue() without a null deref.
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
+            opts.applicationName     = "XOceanus";
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             settingsFile = std::make_unique<juce::PropertiesFile>(opts);
         }
         // Restore persisted dark mode preference (default true — dark mode is brand default).
-        // Note: XOlokunEditor also reads this early in its constructor so that all
+        // Note: XOceanusEditor also reads this early in its constructor so that all
         // setColour() calls during construction use the correct theme.  Both reads
         // open the same file and produce the same value; the editor's read wins
         // because it happens first.
@@ -302,7 +302,7 @@ public:
         content.addAndMakeVisible(shortcutsLabel);
 
         // ── 6. ABOUT ─────────────────────────────────────────────────────────
-        aboutNameLabel.setText("XOlokun", juce::dontSendNotification);
+        aboutNameLabel.setText("XOceanus", juce::dontSendNotification);
         aboutNameLabel.setFont(GalleryFonts::display(16.0f));
         aboutNameLabel.setColour(juce::Label::textColourId,
                                  GalleryColors::get(GalleryColors::textDark()));
@@ -741,7 +741,7 @@ private:
     };
 
     //==========================================================================
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     MIDILearnManager* midiLearnMgr = nullptr;
     bool              perfLocked   = false;
 
@@ -823,4 +823,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SettingsPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

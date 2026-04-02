@@ -6,10 +6,10 @@
 #include <set>
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// Valid engine names — all registered XOlokun engines.
+// Valid engine names — all registered XOceanus engines.
 inline const juce::StringArray validEngineNames {
     // All engine IDs start with O (brand convention)
     "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
@@ -247,7 +247,7 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
 
 // Resolve legacy per-parameter aliases for Overbite (Bite) engine.
 // The engine accumulated 4 generations of parameter naming across its life as a
-// standalone plugin (XOppossum) and XOlokun integration. Returns the canonical
+// standalone plugin (XOppossum) and XOceanus integration. Returns the canonical
 // param ID (poss_-prefixed, matching BiteEngine.h frozen APVTS IDs), or an empty
 // String if the param has no canonical equivalent and should be dropped silently.
 inline juce::String resolveBiteParamAlias(const juce::String& paramId)
@@ -310,7 +310,7 @@ inline juce::String resolveBiteParamAlias(const juce::String& paramId)
 }
 
 // Valid moods — 15 browsing categories plus User.
-// Must match the 15 mood directories under Presets/XOlokun/ and CLAUDE.md.
+// Must match the 15 mood directories under Presets/XOceanus/ and CLAUDE.md.
 inline const juce::StringArray validMoods {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged",
     "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
@@ -364,7 +364,7 @@ struct CouplingPair {
 // Each preset stores up to 4 macro slots (CHARACTER/MOVEMENT/COUPLING/SPACE),
 // and each slot can route to multiple engine parameters.
 //
-// NOTE: Named PresetMacroTarget to avoid collision with xolokun::MacroTarget
+// NOTE: Named PresetMacroTarget to avoid collision with xoceanus::MacroTarget
 // in MacroSystem.h, which is the live-runtime modulation struct.
 struct PresetMacroTarget {
     juce::String engineName;   // Canonical engine ID (e.g. "Onset", "Obrix")
@@ -401,7 +401,7 @@ struct PresetData {
 
 //==============================================================================
 // PresetManager — Loading, saving, browsing, and DNA-powered search for
-// the XOlokun .xometa preset format.
+// the XOceanus .xometa preset format.
 //
 // Design contract:
 //   - UI-thread only. No audio-thread calls.
@@ -1101,4 +1101,4 @@ private:
     std::vector<Listener*> listeners;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

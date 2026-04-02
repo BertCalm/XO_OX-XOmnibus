@@ -1,9 +1,9 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // WaveformDisplay — Full oscilloscope for EngineDetailPanel (200×80pt).
@@ -20,7 +20,7 @@ class WaveformDisplay : public juce::Component, private juce::Timer
 public:
     static constexpr size_t kDisplaySamples = 256;
 
-    explicit WaveformDisplay(XOlokunProcessor& proc)
+    explicit WaveformDisplay(XOceanusProcessor& proc)
         : processor(proc)
     {
         waveformBuffer.fill(0.0f);
@@ -170,7 +170,7 @@ public:
     }
 
 private:
-    XOlokunProcessor&                  processor;
+    XOceanusProcessor&                  processor;
     std::array<float, kDisplaySamples> waveformBuffer {};
     int                                currentSlot = 0;
     juce::Colour                       accent;
@@ -193,7 +193,7 @@ class MiniWaveform : public juce::Component, private juce::Timer
 public:
     static constexpr size_t kMiniSamples = 64;
 
-    explicit MiniWaveform(XOlokunProcessor& proc)
+    explicit MiniWaveform(XOceanusProcessor& proc)
         : processor(proc)
     {
         miniBuffer.fill(0.0f);
@@ -287,7 +287,7 @@ public:
     }
 
 private:
-    XOlokunProcessor&               processor;
+    XOceanusProcessor&               processor;
     std::array<float, kMiniSamples> miniBuffer {};
     int                             currentSlot = 0;
     juce::Colour                    accent;
@@ -296,4 +296,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MiniWaveform)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

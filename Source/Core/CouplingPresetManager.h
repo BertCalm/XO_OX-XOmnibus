@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // BakedCouplingState — Snapshot of the coupling performance overlay.
@@ -498,7 +498,7 @@ public:
     {
         auto appDir = juce::File::getSpecialLocation(
             juce::File::userApplicationDataDirectory)
-            .getChildFile("XOlokun")
+            .getChildFile("XOceanus")
             .getChildFile("CouplingPresets");
 
         if (!appDir.isDirectory())
@@ -587,4 +587,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

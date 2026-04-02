@@ -5,7 +5,7 @@
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshinePreviewPlayer : public juce::Component,
                               private juce::Timer
@@ -173,4 +173,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshinePreviewPlayer)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

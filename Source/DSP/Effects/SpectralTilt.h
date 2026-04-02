@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SpectralTilt — Cascaded shelving filter that shifts spectral energy up or down.
@@ -158,4 +158,4 @@ private:
     // SRO: uses shared flushDenormal from FastMath.h
 };
 
-} // namespace xolokun
+} // namespace xoceanus

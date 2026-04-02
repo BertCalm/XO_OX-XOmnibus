@@ -6,7 +6,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OpticVisualizer — Winamp/Milkdrop-inspired audio-reactive visualizer.
@@ -497,4 +497,4 @@ private:
     std::array<Particle, kNumParticles> particles;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OrchardEngine.h — XOrchard | "The Cultivated Grove"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOrchard is the managed orchard — rows of trees planted in deliberate
@@ -53,7 +53,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PolyBLEP sawtooth oscillator — anti-aliased via polynomial bandlimited step
@@ -749,4 +749,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

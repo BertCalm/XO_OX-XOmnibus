@@ -13,7 +13,7 @@
 #include <cmath>
 #include <mutex>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SoundShapeClassifier — Analyzes preset DNA + engines to determine optimal
@@ -54,7 +54,7 @@ public:
 
             if (upper == "OVERWORLD" || upper == "XOVERWORLD")
             {
-                // Drum kit mode is an XOlokun-level param stored under the engine name
+                // Drum kit mode is an XOceanus-level param stored under the engine name
                 auto it = preset.parametersByEngine.find(eng);
                 if (it != preset.parametersByEngine.end())
                     if (auto* obj = it->second.getDynamicObject())
@@ -120,7 +120,7 @@ private:
 };
 
 //==============================================================================
-// XOriginate — Renders XOlokun presets to WAV samples and packages them
+// XOriginate — Renders XOceanus presets to WAV samples and packages them
 // as MPC-compatible .xpn expansion packs.
 //
 // IMPORTANT: All rendering runs on a worker thread (never the audio thread).
@@ -236,10 +236,10 @@ public:
     };
 
     struct BundleConfig {
-        juce::String name;                     // e.g. "XOlokun - Foundation"
+        juce::String name;                     // e.g. "XOceanus - Foundation"
         juce::String manufacturer = "XO_OX Designs";
         juce::String version      = "1.0.0";
-        juce::String bundleId;                 // e.g. "com.xo-ox.xolokun.foundation"
+        juce::String bundleId;                 // e.g. "com.xo-ox.xoceanus.foundation"
         juce::String description;
         juce::String coverEngine;              // Engine ID for cover art style (e.g. "ONSET")
         juce::File   outputDir;
@@ -932,7 +932,7 @@ private:
     IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
-        xolokun::dsp::ScopedAudioThreadInit audioInit;
+        xoceanus::dsp::ScopedAudioThreadInit audioInit;
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
@@ -1046,7 +1046,7 @@ private:
     IOResult renderCoupledNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                                     const RenderSettings& settings, const juce::File& outputFile)
     {
-        xolokun::dsp::ScopedAudioThreadInit audioInit;
+        xoceanus::dsp::ScopedAudioThreadInit audioInit;
         // If no coupling matrix, fall back to standard render
         if (!ctx.couplingMatrix)
             return renderNoteToWav(ctx, note, velocity, settings, outputFile);
@@ -1324,4 +1324,4 @@ private:
 // Backward-compatibility alias — use XOriginate in new code
 using XPNExporter = XOriginate;
 
-} // namespace xolokun
+} // namespace xoceanus

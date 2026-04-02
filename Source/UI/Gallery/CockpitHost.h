@@ -1,10 +1,10 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// CockpitHost — abstract interface implemented by XOlokunEditor.
+// CockpitHost — abstract interface implemented by XOceanusEditor.
 //
 // CockpitHost is intentionally NOT a juce::Component subclass to avoid a
 // virtual-inheritance diamond conflict with juce::AudioProcessorEditor.
@@ -43,4 +43,4 @@ protected:
     ~CockpitHost() = default;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

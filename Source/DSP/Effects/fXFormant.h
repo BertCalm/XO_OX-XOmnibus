@@ -5,7 +5,7 @@
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // fXFormant — Membrane Collection formant filter.
@@ -177,4 +177,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

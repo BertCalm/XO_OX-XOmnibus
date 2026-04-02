@@ -32,7 +32,7 @@
 //   Source/DSP/Effects/SpectralTilt.h      — class SpectralTilt
 //   Source/DSP/Effects/LushReverb.h        — class LushReverb
 //
-// Namespace: xolokun
+// Namespace: xoceanus
 //==============================================================================
 
 #include <juce_audio_basics/juce_audio_basics.h>
@@ -53,7 +53,7 @@
 #include <cmath>
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AnalysisResult — 4-metric feature vector computed from the normalised buffer.
@@ -1005,4 +1005,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

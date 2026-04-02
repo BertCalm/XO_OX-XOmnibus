@@ -1,16 +1,16 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/PresetManager.h"
 #include "../PresetBrowser/PresetBrowser.h"
 #include "../GalleryColors.h"
 #include "MacroSection.h"
 
-namespace xolokun {
+namespace xoceanus {
 
-// PresetBrowser is included at the top of this file (before namespace xolokun {)
+// PresetBrowser is included at the top of this file (before namespace xoceanus {)
 // to avoid the nested-namespace problem.  The class is available here as
-// xolokun::PresetBrowser.
+// xoceanus::PresetBrowser.
 
 //==============================================================================
 // NavButtonLookAndFeel — Space Grotesk SemiBold (Bold) with 0.16em letter-spacing
@@ -49,7 +49,7 @@ public:
     // browser selection). The editor uses this to notify ABCompare.
     std::function<void()> onPresetLoaded;
 
-    PresetBrowserStrip(XOlokunProcessor& proc)
+    PresetBrowserStrip(XOceanusProcessor& proc)
         : processor(proc)
     {
         prevBtn.setButtonText("<");
@@ -190,7 +190,7 @@ private:
             getTopLevelComponent());
     }
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     NavButtonLookAndFeel navLAF;   // Space Grotesk + 0.16em kerning for prev/next
     juce::TextButton prevBtn, nextBtn, browseBtn;
     juce::Label nameLabel;
@@ -199,4 +199,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserStrip)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

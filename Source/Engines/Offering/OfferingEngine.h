@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingEngine.h — XOffering | "The Crate Digger"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOffering is the Mantis Shrimp — a hyper-perceptive crustacean living
@@ -52,7 +52,7 @@
 #include <cstring>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Voice slot MIDI note mapping — GM drum map standard positions.
@@ -1037,4 +1037,4 @@ private:
     std::atomic<float>* paramMacroDust_ = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../CouplingVisualizer/CouplingVisualizer.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PerformanceViewPanel — real-time coupling performance interface.
@@ -29,7 +29,7 @@ namespace xolokun {
 class PerformanceViewPanel : public juce::Component
 {
 public:
-    PerformanceViewPanel (XOlokunProcessor& proc)
+    PerformanceViewPanel (XOceanusProcessor& proc)
         : processor (proc),
           apvts (proc.getAPVTS()),
           couplingVisualizer (proc.getCouplingMatrix(),
@@ -514,7 +514,7 @@ private:
     static constexpr int kNumRoutes   = 4;
     static constexpr float kStripRatio = 0.40f;
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     juce::AudioProcessorValueTreeState& apvts;
 
     // Left panel: full-graph coupling visualizer (replaces CouplingStripEditor)
@@ -556,4 +556,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PerformanceViewPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

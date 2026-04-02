@@ -1,6 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../XOlokunProcessor.h"
+#include "../XOceanusProcessor.h"
 #include "../Core/EngineRegistry.h"
 #include "EngineVocabulary.h"
 // GalleryColors.h provides GalleryColors, GalleryFonts, A11y — must come before
@@ -12,8 +12,8 @@
 // Define before inclusion so the stub is skipped (full def is already above).
 #define XOLOKUN_GALLERY_COLORS_DEFINED 1
 #include "PlaySurface/PlaySurface.h"
-// PresetBrowser.h opens its own namespace xolokun { } block — must be included
-// at file scope (before our namespace xolokun { below) to avoid nesting.
+// PresetBrowser.h opens its own namespace xoceanus { } block — must be included
+// at file scope (before our namespace xoceanus { below) to avoid nesting.
 #include "PresetBrowser/PresetBrowser.h"
 
 // ── Extracted Gallery components ──────────────────────────────────────
@@ -46,14 +46,14 @@
 #include "Gallery/MiniCouplingGraph.h"
 #include "Gallery/CockpitHost.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 // GalleryColors, GalleryFonts, and A11y are provided by GalleryColors.h
 // (included above).  Their definitions are canonical in that file; they are
-// available here via the xolokun:: namespace that GalleryColors.h opens.
+// available here via the xoceanus:: namespace that GalleryColors.h opens.
 
 //==============================================================================
-// XOlokunEditor — Gallery Model plugin window.
+// XOceanusEditor — Gallery Model plugin window.
 //
 // Layout:
 //   ┌─────────────────────────────────────┐
@@ -70,12 +70,12 @@ namespace xolokun {
 // Transition: 150ms opacity cross-fade via juce::ComponentAnimator
 // when switching between overview and engine detail, or between engines.
 //
-class XOlokunEditor : public juce::AudioProcessorEditor,
+class XOceanusEditor : public juce::AudioProcessorEditor,
                        public CockpitHost,  // B041: Dark Cockpit opacity interface
                        private juce::Timer
 {
 public:
-    explicit XOlokunEditor(XOlokunProcessor& proc)
+    explicit XOceanusEditor(XOceanusProcessor& proc)
         : AudioProcessorEditor(proc),
           processor(proc),
           overview(proc),
@@ -96,7 +96,7 @@ public:
         // setColour() calls use the correct theme from the start.
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
+            opts.applicationName     = "XOceanus";
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile earlySettings(opts);
@@ -247,7 +247,7 @@ public:
                 playSurfaceWindow->getPlaySurface().repaint();
             // Persist preference so the theme survives plugin reload (#215).
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
+            opts.applicationName     = "XOceanus";
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
@@ -314,7 +314,7 @@ public:
 
         // Scan factory preset directory
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                             .getChildFile("Application Support/XO_OX/XOlokun/Presets");
+                             .getChildFile("Application Support/XO_OX/XOceanus/Presets");
         if (presetDir.isDirectory())
             proc.getPresetManager().scanPresetDirectory(presetDir);
         presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
@@ -449,7 +449,7 @@ public:
 
         {
             const int restoredSlot = processor.getPersistedSelectedSlot();
-            const int slotToShow   = (restoredSlot >= 0 && restoredSlot < XOlokunProcessor::MaxSlots
+            const int slotToShow   = (restoredSlot >= 0 && restoredSlot < XOceanusProcessor::MaxSlots
                                       && processor.getEngine(restoredSlot) != nullptr)
                                      ? restoredSlot : -1;
 
@@ -480,13 +480,13 @@ public:
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);
-        setTitle ("XOlokun Synthesizer");
+        setTitle ("XOceanus Synthesizer");
         setDescription ("Multi-engine synthesizer with cross-engine coupling. "
                         "Keys 1-4 select engine slots, Escape returns to overview.");
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
-    ~XOlokunEditor() override
+    ~XOceanusEditor() override
     {
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
@@ -722,7 +722,7 @@ public:
         // Engine name — T1 text, vertically stacked in 52px header (shifted right by 34px)
         g.setColour(get(t1()));
         g.setFont(GalleryFonts::display(12.0f));
-        g.drawText("XOlokun",
+        g.drawText("XOceanus",
                    juce::Rectangle<int>(48, 6, 100, 20),
                    juce::Justification::centredLeft);
 
@@ -903,7 +903,7 @@ public:
         presetBrowser.setBounds(0, -200, 0, 0);        presetBrowser.setVisible(false);
 
         // ── Left: Logo (painted) + ENGINES button + preset nav ─────────────
-        header.removeFromLeft(150); // logo rings + "XOlokun" / "XO_OX Designs" text
+        header.removeFromLeft(150); // logo rings + "XOceanus" / "XO_OX Designs" text
         enginesBtn.setBounds(header.removeFromLeft(74).withSizeKeepingCentre(70, 22));
 
         // Preset nav arrows — just after ENGINES button
@@ -1075,7 +1075,7 @@ private:
         auto& anim = juce::Desktop::getInstance().getAnimator();
 
         // SafePointer prevents crash if editor is destroyed during animation
-        juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+        juce::Component::SafePointer<XOceanusEditor> safeThis(this);
 
         if (detail.isVisible())
         {
@@ -1147,7 +1147,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -1177,7 +1177,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -1214,7 +1214,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -1273,14 +1273,14 @@ private:
         // The timerCallback will keep it updated, but it may not have fired yet at this point.
         {
             juce::Colour accent(0xFFE9C46A);
-            if (selectedSlot >= 0 && selectedSlot < XOlokunProcessor::MaxSlots)
+            if (selectedSlot >= 0 && selectedSlot < XOceanusProcessor::MaxSlots)
             {
                 if (auto* eng = processor.getEngine(selectedSlot))
                     accent = eng->getAccentColour();
             }
             else
             {
-                for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+                for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
                     if (auto* eng = processor.getEngine(i)) { accent = eng->getAccentColour(); break; }
             }
             playSurfaceWindow->getPlaySurface().setAccentColour(accent);
@@ -1358,11 +1358,11 @@ private:
         // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
         // XO Gold is used as fallback when no engine occupies the slot.
         static const juce::Colour kXOGold = juce::Colour(0xFFE9C46A);
-        processor.drainNoteEvents([&](const XOlokunProcessor::NoteMapEvent& ev)
+        processor.drainNoteEvents([&](const XOceanusProcessor::NoteMapEvent& ev)
         {
             juce::Colour colour = kXOGold;
             // MaxSlots now includes the Ghost Slot (4) — safe to query all 5.
-            if (ev.slot >= 0 && ev.slot < XOlokunProcessor::MaxSlots)
+            if (ev.slot >= 0 && ev.slot < XOceanusProcessor::MaxSlots)
             {
                 if (auto* eng = processor.getEngine(ev.slot))
                     colour = eng->getAccentColour();
@@ -1448,14 +1448,14 @@ private:
         {
             static const juce::Colour kXOGoldAccent(0xFFE9C46A);
             juce::Colour accent = kXOGoldAccent;
-            if (selectedSlot >= 0 && selectedSlot < XOlokunProcessor::MaxSlots)
+            if (selectedSlot >= 0 && selectedSlot < XOceanusProcessor::MaxSlots)
             {
                 if (auto* eng = processor.getEngine(selectedSlot))
                     accent = eng->getAccentColour();
             }
             else
             {
-                for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+                for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
                 {
                     if (auto* eng = processor.getEngine(i))
                     {
@@ -1523,7 +1523,7 @@ private:
             // Dematerialise: fade out, then hide and recompute layout.
             anim.animateComponent(&ghostTile, ghostTile.getBounds(),
                                   0.0f, 100, false, 1.0, 0.0);
-            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Timer::callAfterDelay(120, [safeThis]()
             {
                 if (safeThis == nullptr) return;
@@ -1535,7 +1535,7 @@ private:
         }
     }
 
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
@@ -1593,7 +1593,7 @@ private:
 
     ColumnLayoutManager layout;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

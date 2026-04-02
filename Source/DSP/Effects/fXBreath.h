@@ -6,7 +6,7 @@
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // fXBreath — Membrane Collection organic air texture.
@@ -107,7 +107,7 @@ public:
             // One-pole envelope follower
             const float coeff = (mono > envState_) ? attack : release;
             envState_ = coeff * envState_ + (1.0f - coeff) * mono;
-            envState_ = xolokun::flushDenormal(envState_);
+            envState_ = xoceanus::flushDenormal(envState_);
 
             // Scale by sensitivity: sensitivity=0 → 1x, sensitivity=1 → 10x (clamped)
             const float envScaled = std::min (envState_ * (1.0f + sensitivity_ * 9.0f), 1.0f);
@@ -160,4 +160,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

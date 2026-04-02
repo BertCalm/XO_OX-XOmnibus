@@ -31,7 +31,7 @@
     B043 — Trail-to-DSP wiring: TrailModulator exposes trail_length and
            trail_velocity as normalized 0-1 modulation outputs. Updated in
            mouseDrag via updateTrailModulator(). Host reads via getTrailModulator().
-    Namespace: xolokun
+    Namespace: xoceanus
     JUCE 8, C++17
 */
 
@@ -58,12 +58,12 @@
 // Implemented in HapticEngine_iOS.mm; also forward-declared in GalleryColors.h.
 // Duplicated here so XOuijaPanel.h can call syncReducedMotionFromSystem() without
 // requiring a full GalleryColors.h include.
-namespace xolokun::a11y_platform {
+namespace xoceanus::a11y_platform {
     bool isReduceMotionEnabled();
 }
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // TrailModulator (B043 — Gesture Trail as First-Class Modulation Source)
@@ -1232,7 +1232,7 @@ public:
         // iOS: call through the ObjC++ bridge declared in GalleryColors.h and
         // implemented in HapticEngine_iOS.mm. On all other non-Mac platforms, default false.
 #if JUCE_IOS
-        planchette_.setReducedMotion (xolokun::a11y_platform::isReduceMotionEnabled());
+        planchette_.setReducedMotion (xoceanus::a11y_platform::isReduceMotionEnabled());
 #else
         planchette_.setReducedMotion (false);
 #endif
@@ -2125,4 +2125,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (XOuijaPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

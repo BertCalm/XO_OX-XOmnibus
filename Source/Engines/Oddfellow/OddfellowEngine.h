@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OddfellowEngine.h — XOddfellow | "The Night Market Wurlitzer"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOddfellow is the Wurlitzer electric piano that lives in the night
@@ -51,7 +51,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 // Forward declaration — SpectralFingerprint defined in OkeanosEngine.h
 // All FUSION engines share the same struct definition.
@@ -744,4 +744,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

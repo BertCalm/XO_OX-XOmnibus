@@ -14,7 +14,7 @@
 //   • Macro writes: getAPVTS().getParameter("macroN")->setValueNotifyingHost(v)
 //   • Pitch bend: spring-return physics at 30 Hz tick in timerCallback
 //   • Uses GalleryColors, GalleryFonts, A11y from GalleryColors.h
-//   • Requires XOlokunProcessor.h (for getAPVTS() and getMidiCollector())
+//   • Requires XOceanusProcessor.h (for getAPVTS() and getMidiCollector())
 //
 // Scale selector stores state internally for V1; setScaleIndex(int) / getScaleIndex()
 // let the parent (SidebarPanel / PlaySurface bridge) wire it later.
@@ -23,11 +23,11 @@
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <array>
 #include <cmath>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 #include "SpecializedWidgets.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PlayControlPanel
@@ -37,7 +37,7 @@ class PlayControlPanel : public juce::Component,
 {
 public:
     //==========================================================================
-    explicit PlayControlPanel(XOlokunProcessor& proc)
+    explicit PlayControlPanel(XOceanusProcessor& proc)
         : processor(proc)
     {
         // ── Scale selector ────────────────────────────────────────────────────
@@ -333,7 +333,7 @@ private:
 
     static constexpr int kNumScales       = 7;
 
-    // Macro parameter IDs — must match MacroSection and XOlokunProcessor layout
+    // Macro parameter IDs — must match MacroSection and XOceanusProcessor layout
     static constexpr const char* macroParamIds[4] = {
         "macro1", "macro2", "macro3", "macro4"
     };
@@ -863,7 +863,7 @@ private:
     //==========================================================================
     // State
     //==========================================================================
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     // Expression strip state
     float modWheelPos          = 0.0f;   // 0..1 (normalized, 0 = no mod, 1 = max)
@@ -893,4 +893,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayControlPanel)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -2,7 +2,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 class OutshineGrainStrip : public juce::Component
 {
@@ -158,4 +158,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineGrainStrip)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

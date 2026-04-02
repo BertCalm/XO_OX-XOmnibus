@@ -2,7 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ModSourceId — canonical IDs for all drag-source modulation types.
@@ -265,4 +265,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ModSourceHandle)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

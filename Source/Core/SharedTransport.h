@@ -3,7 +3,7 @@
 #include <atomic>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SharedTransport — Unified timing/transport for all engines.
@@ -254,4 +254,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SharedTransport)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

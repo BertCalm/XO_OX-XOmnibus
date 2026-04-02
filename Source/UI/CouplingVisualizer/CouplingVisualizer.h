@@ -7,7 +7,7 @@
 #include <atomic>
 #include <functional>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // CouplingVisualizer — full-panel graph view of cross-engine modulation routing.
@@ -1231,4 +1231,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CouplingVisualizer)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

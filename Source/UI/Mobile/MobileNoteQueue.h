@@ -23,7 +23,7 @@
 // All methods are noexcept.
 //==============================================================================
 
-namespace xolokun {
+namespace xoceanus {
 
 //------------------------------------------------------------------------------
 // MobileNoteEvent
@@ -307,4 +307,4 @@ private:
     int64_t maxDurationMs_ = kDefaultMaxDurMs;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

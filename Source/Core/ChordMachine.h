@@ -6,10 +6,10 @@
 #include <climits>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// Chord Machine — distributes chord voicings across XOlokun's 4 primary engine slots.
+// Chord Machine — distributes chord voicings across XOceanus's 4 primary engine slots.
 //
 // One MIDI note in → 4 engine-specific MIDI notes out (primary slots only).
 // Each slot voices a different chord tone through its own synthesis engine.
@@ -22,10 +22,10 @@ namespace xolokun {
 //
 // kChordSlots: the number of primary engine slots (fixed at 4).
 // The outputMidi array size is parameterised via kOutputMidiSlots so that the
-// caller (XOlokunProcessor) can pass the full MaxSlots array — ChordMachine
+// caller (XOceanusProcessor) can pass the full MaxSlots array — ChordMachine
 // only writes into indices 0..kChordSlots-1.
 static constexpr int kChordSlots       = 4;   // number of chord voices / primary slots
-static constexpr int kOutputMidiSlots  = 5;   // output array size = XOlokunProcessor::MaxSlots
+static constexpr int kOutputMidiSlots  = 5;   // output array size = XOceanusProcessor::MaxSlots
 //
 
 //==============================================================================
@@ -1140,4 +1140,4 @@ private:
     int externalClockPulseCount = 0;  // 0–5; resets to 0 at each 16th-note boundary
 };
 
-} // namespace xolokun
+} // namespace xoceanus

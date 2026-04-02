@@ -5,7 +5,7 @@
 #include "MidiLearnMouseListener.h"
 #include "AdvancedFXPanel.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // MasterFXSection — 6-section FX strip with primary knobs per section +
@@ -152,7 +152,7 @@ public:
                 knobs[i].removeMouseListener(fxLearnListeners[i].get());
     }
 
-    // Called by XOlokunEditor when the active engine changes, so indicator dots
+    // Called by XOceanusEditor when the active engine changes, so indicator dots
     // use the correct accent colour.  Must be called on the message thread.
     void setAccentColour(juce::Colour c)
     {
@@ -348,7 +348,7 @@ public:
     }
 
     // Wire MIDI Learn to each primary FX knob.
-    // Call from XOlokunEditor after construction.
+    // Call from XOceanusEditor after construction.
     void setupMidiLearn(MIDILearnManager& mgr)
     {
         static const char* ids[kNumPrimaryKnobs] = {
@@ -404,4 +404,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MasterFXSection)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -51,7 +51,7 @@ struct OriginateConfig
 };
 
 // Originate orchestrates the UI wizard flow.
-// For the actual DSP, see XOutshine.h (xolokun::XOutshineEngine).
+// For the actual DSP, see XOutshine.h (xoceanus::XOutshineEngine).
 // For batch CLI export, see Tools/oxport.py.
 
 } // namespace xo

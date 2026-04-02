@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OctaveEngine.h — XOctave | "The Four Cathedrals"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOctave is the stone cathedral submerged at the continental shelf — four
@@ -65,7 +65,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Cavaille-Coll drawbar harmonic amplitudes — from Audsley "The Art of Organ
@@ -1053,4 +1053,4 @@ private:
     std::atomic<float>* paramCompetition = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // DubDelay — Stereo ping-pong delay with HP-filtered feedback path.
@@ -207,4 +207,4 @@ private:
     float hpPrevInputR = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

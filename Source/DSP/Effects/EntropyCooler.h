@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // EntropyCooler — "Smart" lowpass filter governed by competing math systems.
@@ -241,4 +241,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

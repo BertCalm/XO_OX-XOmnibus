@@ -35,7 +35,7 @@ namespace opera {
 // FastMath — 1024-entry sine/cosine lookup table + utilities
 //
 // Table-based lookup for inner-loop partial rendering. The polynomial fastSin
-// from XOlokun is great for general use, but with up to 48 partials per voice
+// from XOceanus is great for general use, but with up to 48 partials per voice
 // times 8 voices, a table lookup saves meaningful CPU.
 //==============================================================================
 

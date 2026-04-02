@@ -118,8 +118,8 @@ public:
         // Soft-clip the mix to prevent hard distortion when multiple voices sum
         for (int i = 0; i < numSamples; ++i)
         {
-            outL[i] = xolokun::fastTanh(outL[i]);
-            outR[i] = xolokun::fastTanh(outR[i]);
+            outL[i] = xoceanus::fastTanh(outL[i]);
+            outR[i] = xoceanus::fastTanh(outR[i]);
         }
 
         return std::sqrt(totalSumSq / static_cast<float>(kMaxVoices));

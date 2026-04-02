@@ -6,7 +6,7 @@
 #include <cmath>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ToucheExpression — Ondes Martenot-inspired dedicated expression zone.
@@ -254,4 +254,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

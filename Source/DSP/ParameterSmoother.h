@@ -2,7 +2,7 @@
 #include "FastMath.h"
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ParameterSmoother — One-pole smoothing for zipper-free parameter automation.
@@ -10,7 +10,7 @@ namespace xolokun {
 // Consolidates the smoothing pattern found across 13+ engines. The algorithm:
 //   smoothed += (target - smoothed) * coeff
 //
-// Default time constant: 5ms (the XOlokun fleet standard). Fast enough to
+// Default time constant: 5ms (the XOceanus fleet standard). Fast enough to
 // track knob movements without audible latency; slow enough to suppress the
 // zipper noise caused by stepped parameter changes at audio rate.
 //
@@ -114,4 +114,4 @@ private:
     ParameterSmoother smoother;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

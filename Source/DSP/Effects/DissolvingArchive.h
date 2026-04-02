@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // DissolvingArchive — Persistent memory buffer with stochastic grain extraction.
@@ -245,4 +245,4 @@ private:
     float diffFilt[4] {};
 };
 
-} // namespace xolokun
+} // namespace xoceanus

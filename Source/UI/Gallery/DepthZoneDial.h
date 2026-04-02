@@ -1,5 +1,5 @@
 #pragma once
-// DepthZoneDial.h — Circular engine browser dial for the XOlokun header.
+// DepthZoneDial.h — Circular engine browser dial for the XOceanus header.
 //
 // A 48×48pt circular dial that lets the user browse engines by dragging
 // clockwise/counterclockwise through the water-column depth order:
@@ -27,12 +27,12 @@
 //   };
 
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 #include "EnginePickerPopup.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class DepthZoneDial : public juce::Component,
@@ -45,7 +45,7 @@ public:
     std::function<void(const juce::String& engineId)> onEngineSelected;
 
     //==========================================================================
-    explicit DepthZoneDial(XOlokunProcessor& proc)
+    explicit DepthZoneDial(XOceanusProcessor& proc)
         : processor(proc)
     {
         A11y::setup(*this,
@@ -574,7 +574,7 @@ private:
 
     //==========================================================================
     // State
-    XOlokunProcessor& processor;
+    XOceanusProcessor& processor;
 
     int          currentSlot      = 0;
     juce::String currentEngineId;
@@ -597,4 +597,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DepthZoneDial)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

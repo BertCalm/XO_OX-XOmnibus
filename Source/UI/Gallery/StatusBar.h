@@ -1,11 +1,11 @@
 #pragma once
-// StatusBar.h — XOlokun 28pt status bar strip at the bottom of the editor window.
+// StatusBar.h — XOceanus 28pt status bar strip at the bottom of the editor window.
 //
 // Layout (left → right):
 //   [FIRE] [XOSEND] [ECHO CUT] [PANIC]  |  BPM · Voices · CPU  |  [●][●][●][●]  [🔒]
 //
 // Trigger pads fire performance actions via std::function callbacks.
-// Status values (BPM, voice count, CPU) are pushed by XOlokunEditor::timerCallback().
+// Status values (BPM, voice count, CPU) are pushed by XOceanusEditor::timerCallback().
 // Slot dots are updated via setSlotActive() from the same timer.
 //
 // Keyboard shortcuts (Z/X/C/V) are intercepted via an inner KeyListener, which
@@ -19,14 +19,14 @@
 #include "../GalleryColors.h"
 #include "ColumnLayoutManager.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class StatusBar : public juce::Component
 {
 public:
     //==========================================================================
-    // Public callbacks — wired to processor actions in XOlokunEditor constructor
+    // Public callbacks — wired to processor actions in XOceanusEditor constructor
     std::function<void()> onFire;
     std::function<void()> onXoSend;
     std::function<void()> onEchoCut;
@@ -141,7 +141,7 @@ public:
     }
 
     //==========================================================================
-    // Status update API — called from XOlokunEditor::timerCallback()
+    // Status update API — called from XOceanusEditor::timerCallback()
 
     void setVoiceCount(int count)
     {
@@ -158,7 +158,7 @@ public:
     }
 
     // setCpuVisible() — show or hide the CPU label + update.
-    // Called from XOlokunEditor when the "CPU Meters" settings toggle changes.
+    // Called from XOceanusEditor when the "CPU Meters" settings toggle changes.
     void setCpuVisible(bool visible)
     {
         cpuLabel.setVisible(visible);
@@ -292,7 +292,7 @@ public:
     bool isLocked() const noexcept { return lockBtn.getToggleState(); }
 
     // setCockpitBypass() — show/hide a small COCKPIT: ON/OFF badge in paint().
-    // Called from XOlokunEditor::timerCallback() (and from the 'B' keypress handler
+    // Called from XOceanusEditor::timerCallback() (and from the 'B' keypress handler
     // via repaint trigger) so the indicator stays in sync.
     void setCockpitBypass(bool bypassed)
     {
@@ -366,7 +366,7 @@ public:
     juce::KeyListener* getKeyListener() { return &shortcutListener; }
 
 private:
-    static constexpr int kNumSlots = XOlokunProcessor::MaxSlots; // 5 (4 primary + Ghost Slot)
+    static constexpr int kNumSlots = XOceanusProcessor::MaxSlots; // 5 (4 primary + Ghost Slot)
 
     // ── Trigger pad buttons ──────────────────────────────────────────────────
     juce::TextButton fireBtn;
@@ -400,4 +400,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StatusBar)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

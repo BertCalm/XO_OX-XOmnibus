@@ -11,7 +11,7 @@
   #include <juce_cryptography/juce_cryptography.h>
 #endif
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SecureKeyStore — Encrypted storage for user-provided AI API keys.
@@ -84,7 +84,7 @@ public:
         auto dataLen  = plaintextKey.getNumBytesAsUTF8();
 
         // Build the base query dict (identifies the existing item, if any)
-        CFStringRef serviceRef = CFSTR ("com.xo-ox.xolokun");
+        CFStringRef serviceRef = CFSTR ("com.xo-ox.xoceanus");
         CFStringRef accountRef = CFStringCreateWithCString (
             kCFAllocatorDefault, account.toRawUTF8(), kCFStringEncodingUTF8);
 
@@ -161,7 +161,7 @@ public:
         // ---- macOS / iOS: read from platform Keychain -------------------
         auto account = keychainAccount (provider);
 
-        CFStringRef serviceRef = CFSTR ("com.xo-ox.xolokun");
+        CFStringRef serviceRef = CFSTR ("com.xo-ox.xoceanus");
         CFStringRef accountRef = CFStringCreateWithCString (
             kCFAllocatorDefault, account.toRawUTF8(), kCFStringEncodingUTF8);
 
@@ -239,7 +239,7 @@ public:
 #if JUCE_MAC || JUCE_IOS
         auto account = keychainAccount (provider);
 
-        CFStringRef serviceRef = CFSTR ("com.xo-ox.xolokun");
+        CFStringRef serviceRef = CFSTR ("com.xo-ox.xoceanus");
         CFStringRef accountRef = CFStringCreateWithCString (
             kCFAllocatorDefault, account.toRawUTF8(), kCFStringEncodingUTF8);
 
@@ -274,7 +274,7 @@ public:
 #if JUCE_MAC || JUCE_IOS
         auto account = keychainAccount (provider);
 
-        CFStringRef serviceRef = CFSTR ("com.xo-ox.xolokun");
+        CFStringRef serviceRef = CFSTR ("com.xo-ox.xoceanus");
         CFStringRef accountRef = CFStringCreateWithCString (
             kCFAllocatorDefault, account.toRawUTF8(), kCFStringEncodingUTF8);
 
@@ -370,7 +370,7 @@ private:
         juce::String material;
         material += juce::SystemStats::getComputerName();
         material += juce::SystemStats::getUniqueDeviceID();
-        material += "XOlokun_KeyStore_v1";  // App-specific salt
+        material += "XOceanus_KeyStore_v1";  // App-specific salt
         material += juce::String (juce::SystemStats::getOperatingSystemType());
 
         juce::SHA256 hash (material.toUTF8());
@@ -415,7 +415,7 @@ private:
         auto dir = juce::File::getSpecialLocation (
             juce::File::userApplicationDataDirectory)
             .getChildFile ("XO_OX")
-            .getChildFile ("XOlokun")
+            .getChildFile ("XOceanus")
             .getChildFile ("keys");
 
         dir.createDirectory();
@@ -452,4 +452,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SecureKeyStore)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

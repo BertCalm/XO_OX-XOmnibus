@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
 //  OVERTONE ENGINE — Spectral Additive Synthesis via Continued Fractions
-//  XOlokun Engine Module | Accent: Spectral Ice #A8D8EA
+//  XOceanus Engine Module | Accent: Spectral Ice #A8D8EA
 //
 //  Creature: The Nautilus — mid-column dweller, logarithmic spiral.
 //  Habitat:  THE MESOPELAGIC ZONE — 200–1000 m depth, twilight diffusion,
@@ -407,7 +407,7 @@ public:
     ~OvertoneEngine() = default;
 
     //--------------------------------------------------------------------------
-    // Static parameter registration (called by XOlokunProcessor)
+    // Static parameter registration (called by XOceanusProcessor)
     //--------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -963,4 +963,4 @@ private:
     std::atomic<float>* p_macroSpace    = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

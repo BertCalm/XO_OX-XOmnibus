@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OmegaEngine.h — XOmega | "The Distillation"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOmega is the still in the cellar — copper and glass, heat and
@@ -60,7 +60,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OmegaFMOperator — Single sine-wave FM operator with phase accumulation and feedback.
@@ -728,4 +728,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

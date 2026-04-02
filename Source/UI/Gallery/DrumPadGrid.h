@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
 
 // clang-format off
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // DrumPadGrid — V1-REQUIRED shared component for percussion engines.
@@ -47,7 +47,7 @@ class DrumPadGrid : public juce::Component,
 {
 public:
     // ── Construction ──────────────────────────────────────────────────────────
-    DrumPadGrid(XOlokunProcessor& proc_,
+    DrumPadGrid(XOceanusProcessor& proc_,
                 const juce::String& enginePrefix_,
                 juce::Colour accentColour_,
                 int numVoices_ = 8)
@@ -652,7 +652,7 @@ private:
 
     // ── Members ───────────────────────────────────────────────────────────────
 
-    XOlokunProcessor& proc;
+    XOceanusProcessor& proc;
     juce::String      enginePrefix;
     juce::Colour      accentColour;
     int               numVoices;
@@ -676,5 +676,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DrumPadGrid)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
 // clang-format on

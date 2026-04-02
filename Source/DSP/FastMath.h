@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cstring>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // FastMath — Denormal-safe fast math approximations for real-time DSP.
@@ -246,4 +246,4 @@ inline float softClip (float x)
     return x - (x * x * x) * (1.0f / 3.375f);  // 3.375 = 1.5^3
 }
 
-} // namespace xolokun
+} // namespace xoceanus

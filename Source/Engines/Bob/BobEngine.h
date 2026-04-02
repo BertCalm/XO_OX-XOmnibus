@@ -13,7 +13,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // BobNoiseGen — xorshift32 PRNG (replaces juce::Random for RT-safe noise).
@@ -1789,4 +1789,4 @@ private:
     std::atomic<float>* pMacroSpace     = nullptr;  // bob_macroSpace     — M4: texture level offset
 };
 
-} // namespace xolokun
+} // namespace xoceanus

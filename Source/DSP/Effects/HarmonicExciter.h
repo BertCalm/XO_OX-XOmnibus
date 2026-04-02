@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // HarmonicExciter — Parallel saturation on isolated high-frequency content.
@@ -187,4 +187,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

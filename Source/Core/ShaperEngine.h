@@ -2,7 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../DSP/SRO/SilenceGate.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // ShaperEngine — The Utility Engine Interface
@@ -92,4 +92,4 @@ private:
     bool bypassed = false;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

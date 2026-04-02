@@ -4,7 +4,7 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // PsychoacousticWidth — Perceptual stereo widening via Haas effect +
@@ -155,4 +155,4 @@ private:
     // SRO: uses shared flushDenormal from FastMath.h
 };
 
-} // namespace xolokun
+} // namespace xoceanus

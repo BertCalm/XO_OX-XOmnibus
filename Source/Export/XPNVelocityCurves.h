@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // XPN Velocity Curves — shared by XOriginate and XOutshine.
@@ -84,4 +84,4 @@ inline float renderVelocityForLayer (int layerIndex, int totalLayers,
     return splits[(size_t)layerIndex].normVel;
 }
 
-} // namespace xolokun
+} // namespace xoceanus

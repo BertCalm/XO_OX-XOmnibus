@@ -3,10 +3,10 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// StandardLFO — Shared low-frequency oscillator for the XOlokun fleet.
+// StandardLFO — Shared low-frequency oscillator for the XOceanus fleet.
 //
 // Consolidates the identical LFO pattern found in 21+ engines into a single
 // implementation. Supports 5 standard waveform shapes, sample-rate-correct
@@ -220,4 +220,4 @@ private:
     static constexpr float kTwoPi = 6.28318530717958647692f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // AttractorDrive — Chaotic saturation engine following a Lorenz attractor.
@@ -196,4 +196,4 @@ private:
     float dcPrevL = 0.0f, dcPrevR = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

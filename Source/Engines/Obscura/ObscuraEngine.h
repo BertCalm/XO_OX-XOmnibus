@@ -13,7 +13,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 //
@@ -69,7 +69,7 @@ namespace xolokun {
 //    - Dual ADSR envelopes: amplitude + physics excitation
 //    - Mono/Legato/Poly4/Poly8 voice modes with LRU stealing + 5ms crossfade
 //    - 2 LFOs (Sine/Tri/Saw/Square/S&H) -> scan width + excite position
-//    - Full XOlokun coupling support
+//    - Full XOceanus coupling support
 //
 //  Coupling:
 //    - Output: post-output stereo audio via getSampleForCoupling
@@ -514,7 +514,7 @@ public:
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block.
         // This avoids repeated atomic loads in the per-sample loop (the
-        // XOlokun ParamSnapshot pattern -- see Architecture Rules).
+        // XOceanus ParamSnapshot pattern -- see Architecture Rules).
         //----------------------------------------------------------------------
 
         // -- Core Physics --
@@ -1183,7 +1183,7 @@ public:
             juce::ParameterID { "obscura_initShape", 1 }, "Obscura Init Shape",
             juce::StringArray { "Sine", "Saw", "Random", "Flat" }, 0));
 
-        //-- Macros (XOlokun standard M1-M4) ----------------------------------
+        //-- Macros (XOceanus standard M1-M4) ----------------------------------
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "obscura_macroCharacter", 1 }, "Obscura Macro CHARACTER",
@@ -1734,4 +1734,4 @@ private:
     std::atomic<float>* pMacroSpace     = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

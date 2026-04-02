@@ -8,7 +8,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OxbowEngine — "Entangled Reverb" synth engine.
@@ -801,4 +801,4 @@ private:
     std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -29,7 +29,7 @@
 #include "../GalleryColors.h"
 #include "../../DSP/WavetableOscillator.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // WavetableEditor
@@ -499,4 +499,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WavetableEditor)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

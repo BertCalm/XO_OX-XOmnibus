@@ -34,10 +34,10 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// MasterFXChain — Post-mix master effects for XOlokun.
+// MasterFXChain — Post-mix master effects for XOceanus.
 //
 // Signal chain (27 stages, fixed order):
 //   0.  Bus Shapers       — ShaperRegistry bus slots [0-1] process the mixed bus
@@ -1606,4 +1606,4 @@ private:
     std::atomic<float>* pBfxSmMix          = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

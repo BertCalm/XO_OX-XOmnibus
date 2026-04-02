@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // SubmersionEngine — Variable-stage APF cascade + micro-looper + master clock.
@@ -180,4 +180,4 @@ private:
     float prevSampleR = 0.0f;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

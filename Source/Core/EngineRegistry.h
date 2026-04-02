@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Factory function type for creating engine instances.
@@ -138,16 +138,16 @@ private:
 
 //==============================================================================
 // REGISTER_ENGINE macro — convenience for engines whose class name matches
-// their canonical engine ID. Currently unused: XOlokun registers all engines
-// centrally in XOlokunProcessor.cpp with explicit canonical IDs (e.g.
+// their canonical engine ID. Currently unused: XOceanus registers all engines
+// centrally in XOceanusProcessor.cpp with explicit canonical IDs (e.g.
 // "OddfeliX" → SnapEngine) because class names don't match engine IDs.
 //
 #define REGISTER_ENGINE(EngineClass) \
     static bool registered_##EngineClass = \
-        xolokun::EngineRegistry::instance().registerEngine( \
+        xoceanus::EngineRegistry::instance().registerEngine( \
             #EngineClass, \
-            []() -> std::unique_ptr<xolokun::SynthEngine> { \
+            []() -> std::unique_ptr<xoceanus::SynthEngine> { \
                 return std::make_unique<EngineClass>(); \
             })
 
-} // namespace xolokun
+} // namespace xoceanus

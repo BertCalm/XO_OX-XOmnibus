@@ -3,7 +3,7 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../GalleryColors.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 struct FolderEntry
 {
@@ -230,4 +230,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineFolderBrowser)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

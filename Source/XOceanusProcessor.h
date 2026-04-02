@@ -18,7 +18,7 @@
 #include <array>
 #include <memory>
 
-namespace xolokun {
+namespace xoceanus {
 
 // ── Per-slot waveform FIFO ─────────────────────────────────────────────────
 // Lock-free SPSC ring: audio thread writes (push), UI thread reads
@@ -89,11 +89,11 @@ struct WaveformFifo
     }
 };
 
-class XOlokunProcessor : public juce::AudioProcessor
+class XOceanusProcessor : public juce::AudioProcessor
 {
 public:
-    XOlokunProcessor();
-    ~XOlokunProcessor() override;
+    XOceanusProcessor();
+    ~XOceanusProcessor() override;
 
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -103,7 +103,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "XOlokun"; }
+    const juce::String getName() const override { return "XOceanus"; }
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return true; }
     double getTailLengthSeconds() const override { return 22.0; }
@@ -589,7 +589,7 @@ private:
     double midiClockLastStepTime_  = -1.0;  // sample time of last step boundary, or -1
     float  midiClockDerivedBPM_    = 122.0f; // current BPM derived from external clock
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusProcessor)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

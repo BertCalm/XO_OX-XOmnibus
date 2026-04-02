@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  ObeliskEngine.h — XObelisk | "The Cold Monolith"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XObelisk is a monolith of cold marble standing in salt water,
@@ -71,7 +71,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Stone mode ratio tables — INHARMONIC partial spacing.
@@ -1204,4 +1204,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -3,7 +3,7 @@
 #include <array>
 #include "../FastMath.h"
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // FrequencyShifter — Shifts all frequencies by a fixed Hz offset.
@@ -268,4 +268,4 @@ private:
     Mode mode = Mode::Up;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -1,7 +1,7 @@
 #pragma once
 
 //==============================================================================
-// XOverlapAdapter.h — XOlokun adapter for XOverlap (OVERLAP)
+// XOverlapAdapter.h — XOceanus adapter for XOverlap (OVERLAP)
 //
 // 6-voice knot-topology FDN synthesizer.
 // Lion's Mane jellyfish signal tangling through Feedback Delay Networks.
@@ -11,7 +11,7 @@
 // 41 canonical olap_ parameters. Gallery code: OVERLAP.
 // Accent: Bioluminescent Cyan-Green #00FFB4
 //
-// XOlokun integration: DSP headers resolved via target_include_directories
+// XOceanus integration: DSP headers resolved via target_include_directories
 // pointing to XOverlap/Source/ — see CMakeLists.txt.
 //==============================================================================
 
@@ -33,7 +33,7 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 class XOverlapEngine : public SynthEngine
@@ -370,7 +370,7 @@ public:
                 right *= (1.0f + extRingMod);
             }
 
-            // i. Accumulate into buffer (XOlokun handles clearing — never overwrite)
+            // i. Accumulate into buffer (XOceanus handles clearing — never overwrite)
             outL[sample] += left;
             if (outR != nullptr)
                 outR[sample] += right;
@@ -399,7 +399,7 @@ public:
             }
         }
 
-        // Count active voices for XOlokun voice display
+        // Count active voices for XOceanus voice display
         { int c = 0; for (auto& v : voices) if (v.isActive()) ++c; activeVoiceCount_.store(c, std::memory_order_relaxed); }
 
         const float* rL = buffer.getReadPointer(0);
@@ -452,7 +452,7 @@ public:
     }
 
     //==========================================================================
-    // W07 fix: addParameters — called by XOlokunProcessor::createParameterLayout()
+    // W07 fix: addParameters — called by XOceanusProcessor::createParameterLayout()
     // to register all olap_ params in the shared APVTS.  Must mirror the body of
     // createParameterLayout() exactly so the audio thread sees these params.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -891,4 +891,4 @@ private:
 
 constexpr float XOverlapEngine::kPanPositions[6];
 
-} // namespace xolokun
+} // namespace xoceanus

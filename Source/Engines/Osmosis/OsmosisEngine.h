@@ -8,10 +8,10 @@
 #include <array>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// OsmosisEngine — the membrane between XOlokun and the outside world.
+// OsmosisEngine — the membrane between XOceanus and the outside world.
 //
 // Receives external audio via setExternalInput(). Analyzes envelope, pitch,
 // and spectral content. Produces coupling signals that let other engines
@@ -121,7 +121,7 @@ public:
         for (auto& f : bandHP2_) f.reset();
     }
 
-    //-- External audio injection (called by XOlokunProcessor) ----------------
+    //-- External audio injection (called by XOceanusProcessor) ----------------
     void setExternalInput(const float* left, const float* right, int numSamples)
     {
         externalBufferL_ = left;
@@ -317,7 +317,7 @@ public:
     }
 
     //-- Parameters ------------------------------------------------------------
-    // addParameters — called by XOlokunProcessor::createParameterLayout()
+    // addParameters — called by XOceanusProcessor::createParameterLayout()
     // to register all osmo_ params in the shared APVTS.
     // Note: macro1-4 duplicate registrations removed — each param registered once.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -556,4 +556,4 @@ private:
     }
 };
 
-} // namespace xolokun
+} // namespace xoceanus

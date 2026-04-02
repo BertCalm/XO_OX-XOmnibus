@@ -18,7 +18,7 @@
 #include <utility>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // TrailPoint
@@ -189,4 +189,4 @@ private:
     bool isFrozen_    = false;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

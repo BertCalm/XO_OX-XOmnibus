@@ -8,7 +8,7 @@
 #include <array>
 #include <cmath>
 
-namespace xolokun {
+namespace xoceanus {
 
 struct OttoniAdapterVoice {
     bool active=false; int note=0; float vel=0, freq=440, ampEnv=0, sr=44100;
@@ -505,4 +505,4 @@ private:
     int   delWr=0;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

@@ -20,7 +20,7 @@
 //   juce::String label = EngineVocabulary::labelFor("Opera", "opera_drama", "DRAMA");
 //==============================================================================
 
-namespace xolokun {
+namespace xoceanus {
 
 struct EngineVocabulary
 {
@@ -350,4 +350,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE (EngineVocabulary)
 };
 
-} // namespace xolokun
+} // namespace xoceanus

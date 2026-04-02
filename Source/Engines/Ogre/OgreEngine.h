@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OgreEngine.h — XOgre | "The Root Cellar"
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOgre is the deep earth beneath the kitchen — root vegetables grown in
@@ -57,7 +57,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // Sub-harmonic generator — frequency divider producing an octave-down signal
@@ -661,4 +661,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xolokun
+} // namespace xoceanus

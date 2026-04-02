@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingCity.h — 5 City Psychoacoustic Processing Chains
-//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
+//  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  Each city is a complete processing chain representing a boom bap archetype:
 //
@@ -24,7 +24,7 @@
 #include <cstring>
 #include <algorithm>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
 // OfferingCompressor — Simple envelope-following compressor for city chains.
@@ -520,4 +520,4 @@ private:
     OfferingCityChain chains_[5];
 };
 
-} // namespace xolokun
+} // namespace xoceanus

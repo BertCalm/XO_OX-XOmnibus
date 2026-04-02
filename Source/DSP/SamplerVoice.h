@@ -8,13 +8,13 @@
 #include <algorithm>
 #include <array>
 
-namespace xolokun {
+namespace xoceanus {
 
 //==============================================================================
-// SamplerVoice — Polyphonic sample playback voice for the XOlokun fleet.
+// SamplerVoice — Polyphonic sample playback voice for the XOceanus fleet.
 //
 // Provides studio-quality sample playback within the zero-allocation audio
-// thread contract required of all XOlokun DSP modules.
+// thread contract required of all XOceanus DSP modules.
 //
 // Features:
 //   - Mono and stereo sample loading (non-audio thread only)
@@ -539,4 +539,4 @@ private:
     float    stealCoeffBase_ = 1.0f;  // computed in prepare()
 };
 
-} // namespace xolokun
+} // namespace xoceanus

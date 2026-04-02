@@ -1,9 +1,9 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../../XOlokunProcessor.h"
+#include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
-namespace xolokun {
+namespace xoceanus {
 
 // Local couplingTypeLabel — avoids circular include with OverviewPanel.h
 #ifndef XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
@@ -43,7 +43,7 @@ inline juce::String couplingTypeLabel(CouplingType t)
 // arc is marked with a small curved arrow.
 //
 // Usage:
-//   - Construct with the XOlokunProcessor reference.
+//   - Construct with the XOceanusProcessor reference.
 //   - Call refresh() from OverviewPanel::refresh() or an editor timer.
 //   - Set bounds to 520×48 (or proportionally scaled).
 //   - No timer needed — refreshed externally; no allocation in paint().
@@ -63,7 +63,7 @@ inline juce::String couplingTypeLabel(CouplingType t)
 class CouplingChainView : public juce::Component
 {
 public:
-    explicit CouplingChainView(XOlokunProcessor& proc)
+    explicit CouplingChainView(XOceanusProcessor& proc)
         : processor(proc)
     {
         setInterceptsMouseClicks(false, false);
@@ -80,7 +80,7 @@ public:
 
         // ── 1. Collect active engines ordered by slot ────────────────────────
         // MaxSlots is 5 (4 primary + Ghost Slot); guard both processor and spec.
-        constexpr int kMaxSlots = XOlokunProcessor::MaxSlots; // 5 as of 2026-03-25
+        constexpr int kMaxSlots = XOceanusProcessor::MaxSlots; // 5 as of 2026-03-25
 
         struct SlotInfo {
             int            slot;
@@ -444,7 +444,7 @@ private:
         juce::Colour  linkColor;
     };
 
-    XOlokunProcessor&        processor;
+    XOceanusProcessor&        processor;
     std::vector<ChainNode>   nodes;  // ordered engine chain
     std::vector<ChainLink>   links;  // links[i] connects nodes[i] → nodes[i+1]
     bool                     hasCycle = false;
@@ -515,4 +515,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingChainView)
 };
 
-} // namespace xolokun
+} // namespace xoceanus
