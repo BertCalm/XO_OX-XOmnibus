@@ -72,7 +72,36 @@ struct CouplingRecipe: Codable, Identifiable {
 /// Resonant pairs mirror CouplingAffinity.highAffinityPairs exactly (12 pairs).
 /// When all 12 resonant pairs are discovered, `isMasterAlchemist` returns true.
 ///
-/// Persistence: UserDefaults under key "cookbookRecipes".
+/// ## Persistence: UserDefaults
+///
+/// Cookbook recipes are currently stored in `UserDefaults` (key: `"cookbookRecipes"`).
+/// All other heavyweight persistent data in this app uses GRDB (`DatabaseManager`).
+/// This split has the following known limitations:
+///
+/// - **iCloud backup inconsistency**: `UserDefaults` is synced via iCloud key-value
+///   store only when the app explicitly configures `NSUbiquitousKeyValueStore`.
+///   The standard `UserDefaults` store is NOT included in iCloud document backups,
+///   so cookbook progress may not survive a device restore from iCloud backup.
+/// - **Backup/restore completeness**: A full reef backup (e.g. `.xoreef` export)
+///   does not include cookbook recipes because they live outside GRDB.
+/// - **Maintenance split**: any schema evolution (adding fields to `CouplingRecipe`)
+///   requires UserDefaults migration logic separate from GRDB migration infrastructure.
+///
+/// ## TODO: Migrate to GRDB
+///
+/// When GRDB migration is undertaken, follow this plan:
+///   1. Create a `cookbook_recipes` GRDB table mirroring `CouplingRecipe` fields.
+///   2. In `DatabaseManager.migrate()`, add a migration step that reads the
+///      `"cookbookRecipes"` UserDefaults key, decodes it, and inserts all records
+///      into GRDB (one-time, idempotent — skip rows that already exist by `id`).
+///   3. After successful migration, delete the `"cookbookRecipes"` UserDefaults key.
+///   4. Replace `save()` / `restore()` below with GRDB read/write calls.
+///   5. Remove `CookbookManager.shared` singleton — inject via environment instead.
+///
+/// Until that migration is done, the UserDefaults store is authoritative.  This
+/// comment exists to ensure the limitation is visible to future developers.
+///
+/// Related issue: #292
 final class CookbookManager: ObservableObject {
 
     // MARK: - Shared singleton
