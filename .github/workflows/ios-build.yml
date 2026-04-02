@@ -1,0 +1,83 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ios-build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          # Pin to the exact commit SHA for JUCE 8.0.4 to prevent supply chain attacks
+          # via force-pushed tags. SHA verified 2026-03-30 against juce-framework/JUCE tag 8.0.4.
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+
+      - name: Configure CMake for iOS
+        run: |
+          cmake -B build-ios -G Xcode \
+            -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=16.0
+
+      - name: Build for iOS Simulator
+        # Build against the simulator SDK so no provisioning profile is required on CI.
+        # -arch arm64 targets Apple Silicon simulators (available on macos-latest runners).
+        run: |
+          cmake --build build-ios --config Release -- \
+            -sdk iphonesimulator \
+            -arch arm64
+
+      - name: Extract version and SHA
+        id: meta
+        run: |
+          VERSION=$(grep -m1 'project(XOceanus VERSION' CMakeLists.txt | sed 's/.*VERSION \([0-9.]*\).*/\1/')
+          SHA=$(git rev-parse --short HEAD)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Verify AUv3 appex
+        run: |
+          AUEXT="build-ios/XOceanus_artefacts/Release/AUv3/XOceanus.appex"
+          if [ ! -d "$AUEXT" ]; then
+            echo "ERROR: AUv3 appex not found at $AUEXT"
+            exit 1
+          fi
+          echo "AUv3 appex found at $AUEXT"
+
+      - name: Verify Standalone app
+        run: |
+          STANDALONE="build-ios/XOceanus_artefacts/Release/Standalone/XOceanus.app"
+          if [ ! -d "$STANDALONE" ]; then
+            echo "ERROR: Standalone app not found at $STANDALONE"
+            exit 1
+          fi
+          echo "Standalone app found at $STANDALONE"
+
+      - name: Upload AUv3 appex
+        uses: actions/upload-artifact@v4
+        with:
+          name: XOceanus-AUv3-iOS-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
+          path: build-ios/XOceanus_artefacts/Release/AUv3/XOceanus.appex
+
+      - name: Upload Standalone app
+        uses: actions/upload-artifact@v4
+        with:
+          name: XOceanus-Standalone-iOS-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
+          path: build-ios/XOceanus_artefacts/Release/Standalone/XOceanus.app

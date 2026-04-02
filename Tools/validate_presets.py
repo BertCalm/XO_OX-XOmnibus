@@ -31,7 +31,8 @@ import os
 from pathlib import Path
 from collections import defaultdict, Counter
 
-PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOceanus"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets"
+PRESET_DIR = PRESETS_ROOT  # scan all subdirectories under Presets/
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -207,29 +208,41 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
         if jargon_found:
             result.warn(f"Name contains jargon words {jargon_found}: '{name}'")
 
-    # mood
+    # mood (required hard error per spec)
     mood = data.get("mood")
-    if not mood or mood not in VALID_MOODS:
-        result.warn(f"Invalid mood '{mood}', expected one of {VALID_MOODS}")
+    if not mood or not isinstance(mood, str) or not mood.strip():
+        result.error("Missing or empty required field: mood")
+    elif mood not in VALID_MOODS:
+        result.error(f"Invalid mood '{mood}' — must be one of: {', '.join(sorted(VALID_MOODS))}")
 
-    # engines
+    # engines (required: array of non-empty strings, at least 1 entry)
     engines = data.get("engines")
     if not engines or not isinstance(engines, list) or len(engines) == 0:
-        result.error("Missing or empty required field: engines")
+        result.error("Missing or empty required field: engines (array with at least 1 entry)")
+        engines = []
     else:
         if len(engines) > 3:
             result.warn(f"Too many engines ({len(engines)}), max 3")
-        for eng in engines:
-            if eng not in VALID_ENGINES:
+        for i, eng in enumerate(engines):
+            if not isinstance(eng, str) or not eng.strip():
+                result.error(f"engines[{i}] must be a non-empty string engine name")
+            elif eng not in VALID_ENGINES:
                 result.warn(f"Unknown engine name: '{eng}'")
 
-    # parameters
+    # parameters (required: object; each engine in engines[] must have a key)
     params = data.get("parameters")
     if params is None:
         result.error("Missing required field: parameters")
     elif not isinstance(params, dict):
         result.error("parameters must be a JSON object")
     else:
+        # Cross-check: every declared engine must have an entry in parameters
+        for eng in engines:
+            if isinstance(eng, str) and eng not in params:
+                result.error(f"parameters is missing key for engine '{eng}'")
+            elif isinstance(eng, str) and not isinstance(params.get(eng), dict):
+                result.error(f"parameters['{eng}'] must be an object")
+
         # Check for NaN/Inf in parameter values
         for eng_name, eng_params in params.items():
             if not isinstance(eng_params, dict):
@@ -272,26 +285,38 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
     else:
         result.warn(f"DNA is not an object: {type(dna)}")
 
+    # --- Macros object (warn if missing; standard keys are CHARACTER/MOVEMENT/COUPLING/SPACE) ---
+    macros_obj = data.get("macros")
+    if macros_obj is None:
+        result.warn("'macros' object is missing")
+    elif not isinstance(macros_obj, dict):
+        result.warn(f"'macros' is not an object: {type(macros_obj)}")
+    else:
+        std_keys = {"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"}
+        missing_std = std_keys - set(macros_obj.keys())
+        if missing_std:
+            result.warn(f"'macros' is missing standard keys: {sorted(missing_std)} (engine-specific labels are OK)")
+
     # --- Macro labels ---
-    macros = data.get("macroLabels")
-    if macros is None:
+    macro_labels = data.get("macroLabels")
+    if macro_labels is None:
         result.warn("Missing macroLabels")
         if do_fix:
             data["macroLabels"] = ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
             result.fix("Added default macroLabels")
             modified = True
-    elif not isinstance(macros, list):
-        result.warn(f"macroLabels is not an array: {type(macros)}")
+    elif not isinstance(macro_labels, list):
+        result.warn(f"macroLabels is not an array: {type(macro_labels)}")
     else:
-        if len(macros) != 4:
-            result.warn(f"macroLabels has {len(macros)} items, expected 4")
-            if do_fix and len(macros) < 4:
+        if len(macro_labels) != 4:
+            result.warn(f"macroLabels has {len(macro_labels)} items, expected 4")
+            if do_fix and len(macro_labels) < 4:
                 defaults = ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
-                while len(macros) < 4:
-                    macros.append(defaults[len(macros)])
+                while len(macro_labels) < 4:
+                    macro_labels.append(defaults[len(macro_labels)])
                 result.fix(f"Padded macroLabels to 4")
                 modified = True
-        for i, label in enumerate(macros):
+        for i, label in enumerate(macro_labels):
             if not label or not isinstance(label, str) or len(label.strip()) == 0:
                 result.warn(f"Empty macro label at index {i}")
 
