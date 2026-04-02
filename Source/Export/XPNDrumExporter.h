@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../Core/PresetManager.h"
+#include "../Engines/Onset/OnsetEngine.h"
 #include "XPNCoverArt.h"
 
 namespace xolokun {
@@ -314,94 +315,135 @@ private:
     }
 
     //==========================================================================
-    // Drum hit rendering (placeholder — same pattern as XPNExporter)
+    // Drum hit rendering — ONSET engine DSP (Phase 1: direct DSP primitives)
+    //
+    // Instantiates OnsetVoice, reads per-voice preset parameters (or falls back
+    // to engine defaults), triggers the voice, and renders sample-by-sample.
+    // This is the same DSP path the live engine uses: BridgedTOsc / NoiseBurst /
+    // MetallicOsc (Layer X) blended with FM / Modal / KarplusStrong / PhaseDist
+    // (Layer O), per-voice amp envelope, transient designer, voice filter, and
+    // character stage (grit + warmth).
+    //
+    // Phase 2 TODO: route through the full OnsetEngine (with XVC coupling,
+    // reverb/delay FX, master filter) to capture the complete preset character.
     //==========================================================================
 
     IOResult renderDrumHit(const PresetData& preset, int note, float velocity,
                            const DrumExportConfig& config, const juce::File& outputFile)
     {
-        int totalSamples = (int)((config.renderSeconds + config.tailSeconds) * config.sampleRate);
+        // ---- 1. Resolve voice index from MIDI note via kVoiceCfg ----
+        // kVoiceCfg is a constexpr table inside OnsetEngine — access it through
+        // the engine's public static interface by matching on midiNote.
+        // Voice 0=Kick(36), 1=Snare(38), 2=HH-C(42), 3=HH-O(46),
+        //       4=Clap(39),  5=Tom(45),  6=PercA(37), 7=PercB(44)
+        // Alternate kick note: 35 → voice 0.
+        static constexpr int kNumVoices = 8;
+        struct VoiceCfg {
+            int circuit; int defaultAlgorithm; int midiNote;
+            float baseFreq; float defaultBlend; float defaultDecay; bool isClap;
+        };
+        static constexpr VoiceCfg kVoiceDefs[kNumVoices] = {
+            { 0, 1, 36,   55.0f, 0.2f, 0.5f,  false },  // Kick
+            { 1, 0, 38,  180.0f, 0.5f, 0.3f,  false },  // Snare
+            { 2, 0, 42, 8000.0f, 0.7f, 0.05f, false },  // HH-C
+            { 2, 0, 46, 8000.0f, 0.7f, 0.4f,  false },  // HH-O
+            { 1, 3, 39, 1200.0f, 0.4f, 0.25f, true  },  // Clap
+            { 0, 1, 45,  110.0f, 0.3f, 0.4f,  false },  // Tom
+            { 0, 2, 37,  220.0f, 0.6f, 0.3f,  false },  // PercA
+            { 2, 1, 44,  440.0f, 0.8f, 0.35f, false },  // PercB
+        };
+        int voiceIdx = -1;
+        for (int i = 0; i < kNumVoices; ++i)
+        {
+            if (kVoiceDefs[i].midiNote == note) { voiceIdx = i; break; }
+        }
+        if (voiceIdx < 0 && note == 35) voiceIdx = 0;  // alternate kick note
+        if (voiceIdx < 0) voiceIdx = 0;  // fallback: render as kick for unmapped notes
 
+        const auto& vcfg = kVoiceDefs[voiceIdx];
+
+        // ---- 2. Read per-voice parameters from preset (with defaults) ----
+        // Parameter keys: "perc_v{N}_{param}" where N is 1-based voice index.
+        // Stored in preset.parametersByEngine["Onset"] as a JSON object.
+        // Fall back to kVoiceDefs defaults when a parameter is absent.
+        auto extractParam = [&](const juce::String& key, float fallback) -> float
+        {
+            const auto it = preset.parametersByEngine.find("Onset");
+            if (it == preset.parametersByEngine.end()) return fallback;
+            const auto& params = it->second;
+            if (params.isObject() && params.hasProperty(key))
+            {
+                auto v = params[key];
+                if (v.isDouble() || v.isInt()) return (float)(double)v;
+            }
+            return fallback;
+        };
+
+        juce::String vPre = "perc_v" + juce::String(voiceIdx + 1) + "_";
+        float blend     = extractParam(vPre + "blend",     vcfg.defaultBlend);
+        float pitch     = extractParam(vPre + "pitch",     0.0f);
+        float decay     = extractParam(vPre + "decay",     vcfg.defaultDecay);
+        float tone      = extractParam(vPre + "tone",      0.5f);
+        float snap      = extractParam(vPre + "snap",      0.3f);
+        float body      = extractParam(vPre + "body",      0.5f);
+        float character = extractParam(vPre + "character", 0.0f);
+        int   algoMode  = (int)extractParam(vPre + "algoMode",
+                                            (float)vcfg.defaultAlgorithm);
+        int   envShape  = (int)extractParam(vPre + "envShape", 0.0f);
+        float grit      = extractParam("perc_char_grit",   0.0f);
+        float warmth    = extractParam("perc_char_warmth", preset.dna.warmth * 0.4f);
+
+        // Clamp algoMode to valid range [0, 3]
+        algoMode = juce::jlimit(0, 3, algoMode);
+        envShape = juce::jlimit(0, 2, envShape);
+
+        // ---- 3. Build and prepare an OnsetVoice ----
+        OnsetVoice voice;
+        voice.circuitType = vcfg.circuit;
+        voice.isClap      = vcfg.isClap;
+        voice.baseFreq    = vcfg.baseFreq;
+        voice.voiceIndex  = voiceIdx;
+        voice.prepare(config.sampleRate);
+
+        // ---- 4. Trigger the voice ----
+        voice.triggerVoice(velocity, blend, algoMode,
+                           pitch, decay, tone,
+                           snap, body, character, envShape);
+
+        // ---- 5. Precompute equal-power blend gains (same as live engine) ----
+        constexpr float halfPi = 1.5707963267948966f;
+        float blendGainX = std::cos(blend * halfPi);
+        float blendGainO = std::sin(blend * halfPi);
+
+        // ---- 6. Prepare character stage ----
+        OnsetCharacterStage charStage;
+        charStage.prepare(config.sampleRate);
+        charStage.setWarmth(warmth);
+
+        // ---- 7. Render sample-by-sample ----
+        int totalSamples = (int)((config.renderSeconds + config.tailSeconds) * config.sampleRate);
         juce::AudioBuffer<float> buffer(2, totalSamples);
         buffer.clear();
 
-        // Percussive synthesis stub: generates a short transient shaped by
-        // preset DNA values. Real ONSET engine integration will replace this,
-        // but at least we output actual audio instead of silence.
-
-        double freq = 440.0 * std::pow(2.0, (note - 69) / 12.0);
-        double phase = 0.0;
-        double phaseInc = freq / config.sampleRate * juce::MathConstants<double>::twoPi;
-
-        // Very short percussive envelope: sharp attack, fast decay
-        float attackTime  = 0.001f + preset.dna.density * 0.005f;   // 1ms to 6ms
-        float decayTime   = 0.05f  + preset.dna.space   * 0.4f;    // 50ms to 450ms
-        int attackSamples = juce::jmax(1, (int)(attackTime * (float)config.sampleRate));
-        int decaySamples  = (int)(decayTime * (float)config.sampleRate);
-
-        // Noise transient click amount from aggression
-        float noiseAmt = preset.dna.aggression * 0.6f;
-        int noiseSamples = (int)(0.005f * (float)config.sampleRate);  // 5ms noise burst
-
-        // Harmonic content from brightness (fewer for drums)
-        int numHarmonics = 1 + (int)(preset.dna.brightness * 4);  // 1-5 harmonics
-        float warmth = preset.dna.warmth;
-
-        // Simple PRNG for noise (deterministic per note for reproducibility)
-        uint32_t rng = (uint32_t)(note * 7919 + 12345);
-
         for (int i = 0; i < totalSamples; ++i)
         {
-            // Percussive envelope: attack then exponential-ish decay
-            float env = 0.0f;
-            if (i < attackSamples)
-                env = (float)i / (float)attackSamples;
-            else
-            {
-                int decayPos = i - attackSamples;
-                if (decayPos < decaySamples)
-                {
-                    float t = (float)decayPos / (float)decaySamples;
-                    env = (1.0f - t) * (1.0f - t);  // quadratic decay
-                }
-            }
+            if (!voice.active) break;  // early-out once voice is silent
 
-            // Tonal component: additive synthesis
-            float sample = 0.0f;
-            for (int h = 1; h <= numHarmonics; ++h)
-            {
-                float harmonicAmp = 1.0f / (float)(h * h)
-                    * (1.0f - warmth * 0.5f * (h > 1 ? 1.0f : 0.0f));
-                sample += harmonicAmp * (float)std::sin(phase * h);
-            }
+            float sample = voice.processSample(blendGainX, blendGainO, algoMode);
 
-            // Noise transient at the start
-            if (i < noiseSamples && noiseAmt > 0.0f)
-            {
-                rng = rng * 1664525u + 1013904223u;
-                float noise = ((float)(rng & 0xFFFF) / 32768.0f - 1.0f) * noiseAmt;
-                float noiseEnv = 1.0f - (float)i / (float)noiseSamples;
-                sample += noise * noiseEnv;
-            }
-
-            // Apply envelope + velocity
-            sample *= env * velocity * 0.5f;
-
-            // Stereo with slight spread from movement
-            float spread = preset.dna.movement * 0.2f;
-            float left  = sample * (1.0f + spread * (float)std::sin(phase * 0.1));
-            float right = sample * (1.0f - spread * (float)std::sin(phase * 0.1));
+            // Character stage: grit (tanh saturation) + warmth (LP filter)
+            float left  = sample;
+            float right = sample;
+            charStage.process(left, right, grit, warmth);
 
             buffer.setSample(0, i, left);
             buffer.setSample(1, i, right);
-
-            phase += phaseInc;
         }
 
-        // Peak normalize to -0.3 dBFS
+        // ---- 8. Peak normalize to -0.3 dBFS ----
         normalizeBuffer(buffer, -0.3f);
 
-        // Optional preview generation
+        // ---- 9. Optional preview generation ----
         if (config.generatePreviews)
         {
             auto previewFile = outputFile.getParentDirectory().getChildFile(
