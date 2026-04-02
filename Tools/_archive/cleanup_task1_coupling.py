@@ -11,7 +11,7 @@ import json
 import glob
 import os
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 converted_flat = 0
 converted_routes = 0
 converted_hybrid = 0

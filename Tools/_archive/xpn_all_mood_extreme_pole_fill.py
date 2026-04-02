@@ -20,7 +20,8 @@ import math
 
 random.seed(42)
 
-BASE = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE = os.path.join(_REPO_ROOT, "Presets", "XOceanus")
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 

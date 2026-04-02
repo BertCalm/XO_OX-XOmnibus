@@ -160,9 +160,10 @@ def fix_preset(path: Path) -> int:
 
 def main():
     # Search both the XOceanus Presets directory and the XOverworld Factory directory
+    _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     search_dirs = [
-        Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets"),
-        Path("/Users/joshuacramblet/Documents/GitHub/XOverworld/Presets"),
+        Path(os.path.join(_REPO_ROOT, "Presets")),
+        Path(os.path.join(os.path.dirname(_REPO_ROOT), "XOverworld", "Presets")),
     ]
 
     total_files = 0

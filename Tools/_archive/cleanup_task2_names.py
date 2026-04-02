@@ -13,7 +13,7 @@ import random
 
 random.seed(42)  # reproducible
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 
 # Name generation pools based on DNA dimensions
 BRIGHT_COLD = ["Crystal", "Glass", "Ice", "Frost", "Silver", "Prism", "Quartz", "Mirror", "Arctic", "Chrome"]
@@ -129,7 +129,7 @@ def main():
             if name:
                 all_names.add(name)
             files_data.append((filepath, data))
-        except:
+        except (json.JSONDecodeError, OSError):
             pass
 
     renamed_dna = 0

@@ -12,7 +12,7 @@ import glob
 import os
 import shutil
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 CANONICAL_ROOT = os.path.join(PRESETS_ROOT, "XOceanus")
 
 # Orphan directories (top-level mood folders that aren't XOceanus)
@@ -63,7 +63,7 @@ def get_canonical_names():
             name = data.get('name', '')
             if name:
                 names[name.lower()] = filepath
-        except:
+        except (json.JSONDecodeError, OSError):
             pass
     return names
 
@@ -149,7 +149,7 @@ def main():
                 with open(filepath, 'w') as f:
                     json.dump(data, f, indent=2, ensure_ascii=False)
                     f.write('\n')
-        except:
+        except OSError:
             pass
 
     # Clean up empty orphan dirs

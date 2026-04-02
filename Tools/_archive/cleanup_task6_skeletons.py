@@ -9,7 +9,7 @@ import glob
 import os
 import re
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 
 # Known engine names for inference from filenames
 KNOWN_ENGINES = [

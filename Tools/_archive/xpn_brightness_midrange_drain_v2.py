@@ -15,7 +15,8 @@ import random
 
 random.seed(42)
 
-BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = _REPO_ROOT
 
 ENGINES = [
     "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",

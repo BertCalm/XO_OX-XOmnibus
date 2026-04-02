@@ -70,8 +70,11 @@ public:
     //-- Slot Management -------------------------------------------------------
 
     // Load a shaper into an insert slot (0-3). Pass empty string to clear.
+    // MUST be called from the message thread (or prepareToPlay) — never from the audio thread.
     void loadInsert (int slot, const std::string& shaperId, double sampleRate, int maxBlockSize)
     {
+        jassert (! juce::MessageManager::existsAndIsCurrentThread()
+                 || juce::MessageManager::getInstance()->isThisTheMessageThread());
         jassert (slot >= 0 && slot < MaxInserts);
         if (shaperId.empty())
         {
@@ -87,8 +90,11 @@ public:
     }
 
     // Load a shaper into a bus slot (0-1). Pass empty string to clear.
+    // MUST be called from the message thread (or prepareToPlay) — never from the audio thread.
     void loadBus (int slot, const std::string& shaperId, double sampleRate, int maxBlockSize)
     {
+        jassert (! juce::MessageManager::existsAndIsCurrentThread()
+                 || juce::MessageManager::getInstance()->isThisTheMessageThread());
         jassert (slot >= 0 && slot < MaxBus);
         if (shaperId.empty())
         {

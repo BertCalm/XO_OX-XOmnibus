@@ -9,7 +9,7 @@ import glob
 import os
 from collections import defaultdict
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
             name = data.get('name', '')
             if name:
                 names_map[name.lower()].append((name, filepath))
-        except:
+        except (json.JSONDecodeError, OSError):
             pass
 
     # Find groups with different casings
@@ -59,7 +59,7 @@ def main():
                         json.dump(data, f, indent=2, ensure_ascii=False)
                         f.write('\n')
                     fixed += 1
-                except:
+                except OSError:
                     pass
 
     print(f"=== Task 5: Fix Case-Insensitive Name Dupes ===")

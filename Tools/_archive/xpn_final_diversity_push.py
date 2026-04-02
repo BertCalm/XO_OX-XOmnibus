@@ -11,7 +11,8 @@ import os
 import random
 
 # Output base directory
-BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = _REPO_ROOT
 PRESETS_DIR = os.path.join(BASE_DIR, "Presets", "XOceanus")
 
 MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]

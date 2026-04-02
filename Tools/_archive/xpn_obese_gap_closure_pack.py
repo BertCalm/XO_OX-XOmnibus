@@ -10,7 +10,8 @@ DNA: high density (0.7-1.0), high warmth (0.6-0.9), variable aggression.
 import json
 import os
 
-ENTANGLED_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus/Entangled"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ENTANGLED_DIR = os.path.join(_REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 PRESETS = [
     # ── ORGANON (pipe organ harmonics) ─────────────────────────────────────

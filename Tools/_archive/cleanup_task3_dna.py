@@ -8,7 +8,7 @@ import json
 import glob
 import os
 
-PRESETS_ROOT = "/home/user/XO_OX-XOceanus/Presets"
+PRESETS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Presets")
 
 MOOD_DEFAULTS = {
     "Foundation":  {"brightness": 0.5, "warmth": 0.5, "movement": 0.3, "density": 0.5, "space": 0.4, "aggression": 0.3},

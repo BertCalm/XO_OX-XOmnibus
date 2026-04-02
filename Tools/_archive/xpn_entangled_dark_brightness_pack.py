@@ -15,7 +15,8 @@ import json
 import os
 import random
 
-OUTPUT_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus/Entangled"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUTPUT_DIR = os.path.join(_REPO_ROOT, "Presets", "XOceanus", "Entangled")
 
 COUPLING_TYPES = [
     "FILTER_MOD", "PITCH_MOD", "AMP_MOD", "ENVELOPE_SHARE",

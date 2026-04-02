@@ -643,7 +643,8 @@ def build_preset(name: str, engine_id: str, space: float,
 # Main generation logic
 # ---------------------------------------------------------------------------
 
-PRESET_BASE = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PRESET_BASE = Path(os.path.join(_REPO_ROOT, "Presets", "XOceanus"))
 
 BAND_CONFIG = {
     "intimate": {

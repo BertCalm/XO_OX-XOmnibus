@@ -22,8 +22,9 @@ import random
 
 random.seed(42)  # Reproducible output
 
-FOUNDATION_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus/Foundation"
-PRISM_DIR      = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Presets/XOceanus/Prism"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+FOUNDATION_DIR = os.path.join(_REPO_ROOT, "Presets", "XOceanus", "Foundation")
+PRISM_DIR      = os.path.join(_REPO_ROOT, "Presets", "XOceanus", "Prism")
 
 FOUNDATION_ENGINES = ["ODDFELIX", "ODDOSCAR", "OBLONG", "ONSET", "OVERDUB", "ODYSSEY", "OVERWORLD", "OPAL"]
 PRISM_ENGINES      = ["OPTIC", "OBLIQUE", "ORIGAMI", "ORACLE", "OVERWORLD", "OBLONG", "ONSET", "ORBITAL"]
