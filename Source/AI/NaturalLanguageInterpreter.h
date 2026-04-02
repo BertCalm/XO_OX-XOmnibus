@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-#include "../Core/RecipeEngine.h"
+#include "RecipeEngine.h"
 #include <juce_core/juce_core.h>
 #include <map>
 #include <vector>

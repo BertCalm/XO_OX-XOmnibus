@@ -4,7 +4,7 @@
 #include "SecureKeyStore.h"
 #include "AIParameterSchema.h"
 #include "NaturalLanguageInterpreter.h"
-#include "../Core/RecipeEngine.h"
+#include "RecipeEngine.h"
 #include <juce_core/juce_core.h>
 #include <functional>
 #include <optional>

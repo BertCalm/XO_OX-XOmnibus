@@ -31,6 +31,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
     endif()
 endif()
 
+# Build options
+option(XOCEANUS_BUILD_AI "Build AI sound assistant subsystem" OFF)
+
 # Platform detection
 # iOS build: cmake -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios-toolchain.cmake
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
@@ -455,6 +458,21 @@ target_sources(XOceanus PRIVATE
     Source/XOceanusProcessor.h
     Source/XOceanusProcessor.cpp
 )
+
+# AI Sound Assistant (disabled by default — opt-in via -DXOCEANUS_BUILD_AI=ON)
+# Files live in Source/AI/. RecipeEngine.h was moved from Source/Core/ to Source/AI/
+# on 2026-04-01 (closes #575).
+if(XOCEANUS_BUILD_AI)
+    target_sources(XOceanus PRIVATE
+        Source/AI/SoundAssistant.h
+        Source/AI/AIParameterSchema.h
+        Source/AI/NaturalLanguageInterpreter.h
+        Source/AI/SecureKeyStore.h
+        Source/AI/SharedRecipeVault.h
+        Source/AI/CommunityInsights.h
+        Source/AI/RecipeEngine.h
+    )
+endif()
 
 # Oscar animated companion — requires Rive runtime
 if(XO_HAS_RIVE)
