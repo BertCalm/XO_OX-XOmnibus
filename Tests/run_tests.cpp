@@ -14,6 +14,7 @@
 #include "DoctrineTests/DoctrineTests.h"
 #include "PlaySurfaceTests/HarmonicFieldTests.h"
 #include "PlaySurfaceTests/GestureTrailTests.h"
+#include "PipelineTests/FullPipelineTests.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_gui_basics/juce_gui_basics.h>
@@ -40,6 +41,7 @@ int main()
     totalFailures += doctrine_tests::runAll();
     totalFailures += playsurface_tests::runAll();
     totalFailures += gesture_trail_tests::runAll();
+    totalFailures += pipeline_tests::runAll();
 
     std::cout << "\n##################################################\n";
     if (totalFailures == 0)
