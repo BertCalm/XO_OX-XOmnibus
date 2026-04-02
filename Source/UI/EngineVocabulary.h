@@ -214,11 +214,12 @@ private:
                 { "oxy_lfo_shape",         "LFO1 SH" },
                 { "oxy_lfo2_rate",         "LFO2 RT" },
                 { "oxy_lfo2_depth",        "LFO2 DP" },
-                // Macros
-                { "oxy_macroCharacter",    "INTIMCY" },
-                { "oxy_macroMovement",     "PASSION" },
-                { "oxy_macroCoupling",     "COMMIT"  },
-                { "oxy_macroSpace",        "SPACE"   },
+                // Macros: Oxytocin has no oxy_macro* params (fixes #306).
+                // The four expressive controls above ARE the M1-M4 macros:
+                //   M1 CHARACTER = oxy_intimacy   (already mapped -> "INTIMCY")
+                //   M2 MOVEMENT  = oxy_passion    (already mapped -> "PASSION")
+                //   M3 COUPLING  = oxy_commitment (already mapped -> "COMMIT")
+                //   M4 SPACE     = oxy_entanglement (already mapped -> "ENTANGL")
             }},
 
             //------------------------------------------------------------------
