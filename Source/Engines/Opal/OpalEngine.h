@@ -856,11 +856,12 @@ public:
         for (auto& s : couplingBufL) s = 0.0f;
         for (auto& s : couplingBufR) s = 0.0f;
 
-        // AudioToBuffer: 4 per-slot ring buffers (~186ms each at 44.1kHz).
-        // Using kOpalExternalBufferSeconds (not kOpalBufferSeconds) so external
-        // inputs get a smaller dedicated window separate from the 4s grain buffer.
+        // AudioToBuffer: 4 per-slot ring buffers (kOpalExternalBufferSamples each).
+        // Using a fixed sample count (not seconds) so external inputs get a
+        // SR-independent window separate from the 4s grain buffer.
         for (auto& rb : inputBuffers)
-            rb.prepare (static_cast<int> (sampleRate), kOpalExternalBufferSeconds);
+            rb.prepare (static_cast<int> (sampleRate),
+                        static_cast<float> (kOpalExternalBufferSamples) / static_cast<float> (sampleRate));
 
         // Per-block external audio cache (blended in renderBlock grain source path)
         extAudioBufL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -2283,14 +2284,14 @@ private:
     //
     // 4 per-slot stereo ring buffers. MegaCouplingMatrix::processAudioRoute() holds a
     // pointer to the slot-matching buffer and calls pushBlock() before renderBlock().
-    // Each buffer is ~186ms at 44.1kHz (kOpalExternalBufferSeconds = 8192 / 44100).
+    // Each buffer holds kOpalExternalBufferSamples = 8192 samples (~186ms at 44.1kHz, ~170ms at 48kHz).
     //
     // Slot assignment mirrors MegaCouplingMatrix source slot indices (0–3).
     // A source in slot 2 pushes into inputBuffers[2]; OpalEngine blends [0..3] in
     // receiveAudioBuffer(), summing contributions before writing to grainBuffer.
     //
-    static constexpr int   kOpalInputSlots          = 4;
-    static constexpr float kOpalExternalBufferSeconds = 8192.0f / 44100.0f; // ~186ms
+    static constexpr int kOpalInputSlots           = 4;
+    static constexpr int kOpalExternalBufferSamples = 8192; // buffer size in samples; duration scales with SR
 
     std::array<AudioRingBuffer, kOpalInputSlots> inputBuffers;
 

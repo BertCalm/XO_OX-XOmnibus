@@ -1258,6 +1258,7 @@ public:
 private:
     //--------------------------------------------------------------------------
     static constexpr int kMaxVoices = 8;
+    static_assert(kMaxVoices > 1, "Oasis pan spread divides by kMaxVoices-1");
     static constexpr int kCanopyTaps = 6;
 
     double sr_ = 44100.0;

@@ -220,7 +220,7 @@ public:
                 // Exponential release — eliminates the "soft note releases fast"
                 // bug from linear subtraction on small ampEnv values.
                 if(v.releasing){
-                    float releaseCoeff=1.0f-(1.0f/(v.sr*0.3f));
+                    float releaseCoeff = std::exp(-1.0f / (v.sr * 0.3f));
                     v.ampEnv*=releaseCoeff;
                 }
                 v.ampEnv=flushDenormal(v.ampEnv);

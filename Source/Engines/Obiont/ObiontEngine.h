@@ -989,7 +989,8 @@ public:
         };
 
         // --- CA control ---
-        params.push_back(std::make_unique<PI>(P("obnt_mode",1),    "Mode",     0, 1, 0));
+        // TODO: restore range to {0,1} when 2D Life CA mode is production-ready
+        params.push_back(std::make_unique<PI>(P("obnt_mode",1),    "Mode",     0, 0, 0));
         params.push_back(std::make_unique<PI>(P("obnt_rule",1),    "Rule",     0, 255, 90));
         params.push_back(std::make_unique<PF>(P("obnt_ruleMorph",1), "Rule Morph",
             nr(0.f, 1.f), 0.f));
