@@ -75,11 +75,6 @@
       "status": "active"
     },
     {
-      "file": "xoutshine.py",
-      "category": "general",
-      "status": "active"
-    },
-    {
       "file": "xpn_adaptive_velocity.py",
       "category": "velocity-tools",
       "status": "active"
@@ -627,11 +622,6 @@
       "status": "active"
     },
     {
-      "file": "xpn_per_mood_gap_report.py",
-      "category": "fleet-analytics",
-      "status": "active"
-    },
-    {
       "file": "xpn_performance_map_builder.py",
       "category": "general",
       "status": "active"
@@ -1055,12 +1045,6 @@
       "status": "active"
     },
     {
-      "file": "generate_broth_presets.py",
-      "category": "preset-design",
-      "description": "Generate 40 BROTH quad awakening preset .xometa files for Overwash, Overworn, Overflow, Overcast (10 each).",
-      "status": "active"
-    },
-    {
       "file": "generate_descriptions.py",
       "category": "preset-tools",
       "description": "Generate evocative 1-2 sentence descriptions for XOceanus presets that are missing them.",
@@ -1184,6 +1168,72 @@
       "file": "xpn_qa_decision_log.py",
       "category": "oxport-core",
       "description": "QA Substitution Decision Log for XO_OX Pack Builds \u2014 records every accept/reject/substitute decision made during a pack build for audit trail.",
+      "status": "active"
+    },
+    {
+      "file": "engine_registry.py",
+      "category": "utility",
+      "description": "Single source of truth for all 76 XOceanus engine names and their frozen parameter prefixes. Imported by many Tools/ scripts for engine ID validation.",
+      "status": "active"
+    },
+    {
+      "file": "test_oxport_core.py",
+      "category": "tests",
+      "description": "Core unit tests for oxport pipeline functions (RMS, dB math, struct encoding). Run via xpn_full_qa_runner.py or directly with pytest.",
+      "status": "active"
+    },
+    {
+      "file": "test_oxport_e2e.py",
+      "category": "tests",
+      "description": "End-to-end integration tests for the oxport pipeline. Tests full SELECT\u2192RENDER\u2192ASSEMBLE\u2192VALIDATE flow with test fixtures.",
+      "status": "active"
+    },
+    {
+      "file": "test_oxport_fuzz.py",
+      "category": "tests",
+      "description": "Fuzz tests for the oxport pipeline \u2014 random inputs, boundary conditions, malformed data. Catches silent failures and edge cases.",
+      "status": "active"
+    },
+    {
+      "file": "test_oxport_perceptual.py",
+      "category": "tests",
+      "description": "Perceptual quality tests for exported XPN packs \u2014 checks loudness levels, dynamic range, and spectral balance of rendered samples.",
+      "status": "active"
+    },
+    {
+      "file": "test_oxport_xpm.py",
+      "category": "tests",
+      "description": "Unit tests for XPM XML generation \u2014 validates KeyTrack=True, RootNote=0, VelStart=0, and zone layout correctness.",
+      "status": "active"
+    },
+    {
+      "file": "test_preset_smoke.py",
+      "category": "tests",
+      "description": "Fast CI-friendly smoke test (#57) \u2014 loads every .xometa, verifies required schema fields, mood/DNA values, and catches broken presets quickly.",
+      "status": "active"
+    },
+    {
+      "file": "validate_docs.py",
+      "category": "ci",
+      "description": "Documentation consistency checker \u2014 reads canonical product stats from project_stats.json and scans public-facing docs for stale values. CI-ready (exits non-zero on inconsistencies).",
+      "status": "active"
+    },
+    {
+      "file": "xpn_complement_renderer.py",
+      "category": "xpn-export",
+      "description": "Generates complement renders \u2014 fills frequency/DNA gaps in a pack by computing what sonic dimensions are underrepresented and selecting presets to balance them.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_perceptual_validator.py",
+      "category": "oxport-core",
+      "description": "Perceptual WAV quality validator \u2014 used by the QA stage to check that rendered samples meet loudness, dynamic range, and spectral balance targets.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_provenance.py",
+      "category": "xpn-export",
+      "description": "XPN pack provenance tracker \u2014 records the origin, authorship, and generation history of presets within a pack for audit and attribution.",
       "status": "active"
     }
   ]

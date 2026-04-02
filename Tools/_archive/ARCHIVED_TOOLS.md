@@ -21,6 +21,29 @@ See `Docs/export-architecture.md` for the full Export Pyramid architecture.
 
 ---
 
+## Files Moved (Phase E, 2026-03-31 — Issue #94)
+
+14 one-shot numbered-fix and migration scripts. All have no `__main__`, are not imported by any other tool, and represent completed single-issue patches.
+
+| File | Reason |
+|------|--------|
+| `fix_261_quarantine_reason.py` | Closes #261 — adds default quarantine_reason to quarantined presets. One-time fix, already applied. |
+| `fix_264_standardize_folder_structure.py` | Closes #264 — standardizes preset folder structure. One-time fix, already applied. |
+| `fix_425_447_macro_format.py` | Closes #425, #447 — fixes deprecated macro format and missing macroLabels. One-time fix. |
+| `fix_428_phantom_engine_declarations.py` | Closes #428 — removes phantom engine declarations. One-time fix. |
+| `fix_446_macro_prefix_migration.py` | Closes #446 — restores macro parameter values stripped by fix_preset_macros.py. One-time recovery. |
+| `fix_448_same_mood_dups.py` | Closes #448 — fixes 8 same-mood duplicate preset names. One-time fix. |
+| `fix_drift_adsr_units.py` | One-time ADSR unit normalization for Drift engine. Superseded by preset schema validation. |
+| `fix_duplicate_names.py` | One-time duplicate name sweep. Superseded by `xpn_preset_duplicate_detector.py`. |
+| `fix_f4_audit.py` | F4 sound designer audit fixes — one-time rename and tier assignment pass. |
+| `fix_preset_jargon.py` | One-time preset name jargon cleanup. Superseded by `xpn_preset_name_generator.py`. |
+| `fix_preset_macros.py` | One-time macro dict migration (v1 → v2 format). Superseded by `validate_presets.py`. |
+| `fix_preset_schema.py` | One-time schema migration runner. Superseded by `xoceanus_preset_migration.py` (now also archived). |
+| `migrate_onset_macro_labels.py` | One-time ONSET macro label migration. Engine-specific, already applied. |
+| `xoceanus_preset_migration.py` | Two-pass coupling/schema migration (bare-list fix, key renaming, couplingIntensity normalization). Applied 2026-03-22. Superseded by `validate_presets.py` + `xpn_xometa_schema_version_migrator.py`. |
+
+---
+
 ## Files Moved (Phase D, 2026-03-29)
 
 | File | Reason |
