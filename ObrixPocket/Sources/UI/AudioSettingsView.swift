@@ -66,6 +66,18 @@ struct AudioSettingsView: View {
         } message: {
             Text("The audio engine will restart. Any unsaved reef changes will be preserved.")
         }
+        .confirmationDialog(
+            "Change Buffer Size?",
+            isPresented: $showBufferSizeConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Switch to \(pendingBufferSizeIndex.map { bufferSizeLabels[$0] } ?? "")") {
+                if let idx = pendingBufferSizeIndex { bufferSizeIndex = idx }
+            }
+            Button("Cancel", role: .cancel) { pendingBufferSizeIndex = nil }
+        } message: {
+            Text("The audio engine will restart to apply the new buffer size.")
+        }
     }
 
     // MARK: - Header
@@ -165,7 +177,7 @@ struct AudioSettingsView: View {
     private var engineSection: some View {
         SettingsSection(title: "ENGINE") {
             VStack(spacing: DesignTokens.spacing8) {
-                // Label row
+                // --- Sample Rate ---
                 HStack {
                     Text("Sample Rate")
                         .font(DesignTokens.bodyMedium(13))
@@ -176,7 +188,6 @@ struct AudioSettingsView: View {
                         .foregroundColor(DesignTokens.reefJade)
                 }
 
-                // Segmented picker
                 Picker("Sample Rate", selection: Binding(
                     get: { sampleRateIndex },
                     set: { newIndex in
@@ -195,6 +206,41 @@ struct AudioSettingsView: View {
                 Text("Restart required to apply. 44.1 kHz is standard for music production.")
                     .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.2))
+
+                Divider()
+                    .background(Color.white.opacity(0.06))
+                    .padding(.vertical, DesignTokens.spacing4)
+
+                // --- IO Buffer Size ---
+                HStack {
+                    Text("Buffer Size")
+                        .font(DesignTokens.bodyMedium(13))
+                        .foregroundColor(.white.opacity(0.8))
+                    Spacer()
+                    Text(bufferSizeLabels[bufferSizeIndex])
+                        .font(DesignTokens.mono(12))
+                        .foregroundColor(DesignTokens.reefJade)
+                }
+
+                Picker("Buffer Size", selection: Binding(
+                    get: { bufferSizeIndex },
+                    set: { newIndex in
+                        if newIndex != bufferSizeIndex {
+                            pendingBufferSizeIndex = newIndex
+                            showBufferSizeConfirm = true
+                        }
+                    }
+                )) {
+                    ForEach(0..<bufferSizeLabels.count, id: \.self) { idx in
+                        Text(bufferSizeLabels[idx]).tag(idx)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Text(bufferSizeDescriptions[bufferSizeIndex])
+                    .font(DesignTokens.body(10))
+                    .foregroundColor(.white.opacity(0.2))
+                    .animation(.easeInOut(duration: 0.15), value: bufferSizeIndex)
             }
         }
     }
