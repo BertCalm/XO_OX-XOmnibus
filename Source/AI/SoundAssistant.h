@@ -614,6 +614,23 @@ private:
         void run() override
         {
             auto url = getEndpointURL();
+
+            // HTTPS enforcement: never transmit API keys over a plaintext connection.
+            // getEndpointURL() returns hardcoded https:// URLs, but guard defensively
+            // in case a future code path supplies a custom endpoint.
+            if (! url.startsWithIgnoreCase ("https://"))
+            {
+                SecureKeyStore::secureWipePublic (apiKey_);
+                auto cb = std::move (callback_);
+                auto err = juce::String ("HTTPS required: refusing to transmit API key over non-HTTPS URL");
+                juce::MessageManager::callAsync ([cb, err, destroyedFlag = destroyedFlag_]() {
+                    if (! destroyedFlag->load())
+                        cb ({}, err);
+                });
+                juce::MessageManager::callAsync ([this]() { delete this; });
+                return;
+            }
+
             auto body = buildRequestBody();
             auto headers = buildHeaders();
 
