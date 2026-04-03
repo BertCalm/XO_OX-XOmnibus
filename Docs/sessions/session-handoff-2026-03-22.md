@@ -70,7 +70,7 @@ a863d4088  Add Oware to CMakeLists.txt + Opera engine scaffold
 | Fleet avg score | ~8.8/10 |
 | Engines at 9.0+ | 5 (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0) |
 | Total Blessings | 34 |
-| Presets | ~18,000+ |
+| Presets | ~17,300 |
 | OPERA presets | 180 (first-pass factory library) |
 | Build | AU PASS, auval PASS |
 

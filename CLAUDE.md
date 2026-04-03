@@ -327,7 +327,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 76-engine fleet is personal; V1 gating is public release only. See `Docs/plans/v1-scope-revision-2026-03-23.md`.
 
-**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. See `Docs/plans/patreon-milestone-model.md`.
+**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked.
 
 ## Kitchen Collection (24 engines across 6 quads)
 

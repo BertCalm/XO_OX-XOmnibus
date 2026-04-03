@@ -6,7 +6,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 ## Architecture & Specs
 
 - [xoceanus_master_specification.md](specs/xoceanus_master_specification.md) — Master spec for XOceanus platform
-- [XOceanus_Master_Architecture- Volume 2.md.txt](XOceanus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
+- [XOceanus_Master_Architecture- Volume 2.md.txt](specs/XOmnibus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
 - [xoceanus_repo_structure.md](specs/xoceanus_repo_structure.md) — Directory and file organization
 - [xoceanus_technical_design_system.md](specs/xoceanus_technical_design_system.md) — Technical design patterns
 - [xoceanus_new_engine_process.md](specs/xoceanus_new_engine_process.md) — How to add a new engine
@@ -332,10 +332,10 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 
 ## UI & Design Specs (`design/`)
 
-- [design/xoceanus-spatial-architecture-v1.md](design/xoceanus-spatial-architecture-v1.md) — **V1 (canonical)**: Spatial architecture post-10-panel review — every feature gets an address before visual polish
-- [design/xoceanus-spatial-architecture.md](design/xoceanus-spatial-architecture.md) — **DRAFT (Phase 1)**: Earlier spatial architecture draft (superseded by V1 above)
+- [design/xolokun-spatial-architecture-v1.md](design/xolokun-spatial-architecture-v1.md) — **V1 (canonical)**: Spatial architecture post-10-panel review — every feature gets an address before visual polish
+- [design/xolokun-spatial-architecture.md](design/xolokun-spatial-architecture.md) — **DRAFT (Phase 1)**: Earlier spatial architecture draft (superseded by V1 above)
 - [design/pixel-art-creature-spec.md](design/pixel-art-creature-spec.md) — Pixel art creature specification for engine identity icons
-- [design/xoceanus-definitive-ui-spec.md](design/xoceanus-definitive-ui-spec.md) — Definitive UI specification
+- [design/xolokun-definitive-ui-spec.md](design/xolokun-definitive-ui-spec.md) — Definitive UI specification
 - [design/playsurface-design-spec.md](design/playsurface-design-spec.md) — PlaySurface zone/mode design spec
 - [design/accessibility-audit.md](design/accessibility-audit.md) — Accessibility audit
 - [design/button-system-spec.md](design/button-system-spec.md) — Button system specification
@@ -344,9 +344,9 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 - [design/outshine-empty-state.md](design/outshine-empty-state.md) — Outshine empty state design
 - [design/asset-registry.md](design/asset-registry.md) — Figma component + font asset registry
 - [design/kai-akai-tool-ui-review.md](design/kai-akai-tool-ui-review.md) — Kai/AKAI tool UI review (Outshine/Originate/Oxport)
-- [design/xoceanus-ui-blessing-session.md](design/xoceanus-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
-- [design/xoceanus_design_guidelines.md](design/xoceanus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
-- [design/xoceanus_ui_master_spec_v2.md](design/xoceanus_ui_master_spec_v2.md) — UI master spec v2 (XOceanus Rebirth design language)
+- [design/xolokun-ui-blessing-session.md](design/xolokun-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
+- [design/xomnibus_design_guidelines.md](design/xomnibus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
+- [design/xomnibus_ui_master_spec_v2.md](design/xomnibus_ui_master_spec_v2.md) — UI master spec v2 (XOceanus Rebirth design language)
 
 ---
 
