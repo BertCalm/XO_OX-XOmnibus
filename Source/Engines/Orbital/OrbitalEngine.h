@@ -4,6 +4,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/CytomicSVF.h"
@@ -380,6 +381,9 @@ public:
         p_macroCoupling = apvts.getRawParameterValue("orb_macroCoupling");
         p_macroSpace = apvts.getRawParameterValue("orb_macroSpace");
         p_voiceMode = apvts.getRawParameterValue("orb_voiceMode");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "orb_");
     }
 
     //==========================================================================
@@ -527,7 +531,7 @@ public:
         const float ampDecay = p_ampDecay->load();
         const float ampSustain = p_ampSustain->load();
         const float ampRelease = p_ampRelease->load();
-        const float volume = p_volume->load();
+        const float volume = juce::jlimit(0.05f, 1.5f, p_volume->load() + orbModLevelOffset);
         // Round 11D: voice mode (0=Poly, 1=Mono, 2=Legato)
         const int voiceMode = (p_voiceMode != nullptr) ? static_cast<int>(p_voiceMode->load()) : 0;
 
@@ -580,7 +584,7 @@ public:
         }
 
         //-- Consume + reset coupling accumulators ------------------------------
-        const float pitchOffset = externalPitchMod + pitchBendNorm * 2.0f;
+        const float pitchOffset = externalPitchMod + pitchBendNorm * 2.0f + orbModPitchOffset;
         const float morphOffset = externalMorphMod;
         const float filterOffset = externalFilterMod;
         const float fmAudioAmount = externalFmMod;
@@ -609,7 +613,7 @@ public:
         }
         const float filterEnvBoost = filterEnvDepth * peakVelEnv * kFilterEnvMaxHz;
 
-        const float effectiveCutoff = juce::jlimit(20.0f, 20000.0f, filterCutoff + filterOffset + filterEnvBoost);
+        float effectiveCutoff = juce::jlimit(20.0f, 20000.0f, filterCutoff + filterOffset + filterEnvBoost);
 
         //-- Process MIDI -------------------------------------------------------
         for (const auto& meta : midi)
@@ -680,6 +684,29 @@ public:
         const float atPressure = aftertouch.getSmoothedPressure(0);
         // Sensitivity 0.3: full pressure moves morph up to +0.3 toward profile B
         effectiveMorph = juce::jlimit(0.0f, 1.0f, effectiveMorph + atPressure * 0.3f);
+
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=Morph, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;  // Orbital LFO is spectral drift — not easily sampled here
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: filter cutoff offset (±6000 Hz)
+            effectiveCutoff = juce::jlimit(20.0f, 20000.0f, effectiveCutoff + mDst[1] * 6000.0f);
+            // dst 2: morph position offset
+            effectiveMorph = juce::jlimit(0.0f, 1.0f, effectiveMorph + mDst[2] * 0.5f);
+            // dst 3: pitch offset in semitones (applied below in voice freq)
+            orbModPitchOffset = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset
+            orbModLevelOffset = mDst[4] * 0.5f;
+        }
 
         //-- Cache filter coefficients once per block ---------------------------
         // Computing filter coefficients per block (not per sample) saves ~3%
@@ -1429,6 +1456,10 @@ private:
                                                                      NR(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(std::make_unique<juce::AudioParameterFloat>(P{"orb_macroSpace", 1}, "Orbital Space",
                                                                      NR(0.0f, 1.0f, 0.001f), 0.3f));
+
+        // D002 mod matrix — 4-slot source→destination routing
+        static const juce::StringArray kOrbModDests {"Off", "Filter Cutoff", "Morph", "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "orb_", "Orbital", kOrbModDests);
     }
 
     //==========================================================================
@@ -1541,6 +1572,11 @@ private:
     std::atomic<float>* p_macroSpace = nullptr;
     // Round 11D: voice mode (0=Poly, 1=Mono, 2=Legato)
     std::atomic<float>* p_voiceMode = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float orbModPitchOffset = 0.0f;
+    float orbModLevelOffset = 0.0f;
 };
 
 } // namespace xoceanus

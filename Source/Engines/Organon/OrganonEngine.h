@@ -53,6 +53,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
@@ -1078,6 +1079,29 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=MetabolicRate, 2=SignalFlux, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: metabolic rate offset (±3 Hz range, matching mod wheel sensitivity)
+            metabolicRate = std::clamp(metabolicRate + mDst[1] * 3.0f, 0.1f, 10.0f);
+            // dst 2: signal flux offset
+            signalFlux = std::clamp(signalFlux + mDst[2] * 0.3f, 0.0f, 1.0f);
+            // dst 3: pitch offset in semitones
+            organonModPitchOffset = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset
+            organonModLevelOffset = mDst[4] * 0.5f;
+        }
+
         // ---- LOCK-IN: Sync metabolic rate to SharedTransport tempo ----
         // lockIn 0.0 = free-running metabolic rate (the organism breathes at its own pace).
         // lockIn 1.0 = fully quantized to nearest beat subdivision (the organism
@@ -1313,7 +1337,7 @@ public:
                 // ---- ANABOLISM: reconstruct harmonic content ----
                 float fundamental =
                     (midiToFreq(voice.noteNumber) + externalPitchModulation * 20.0f) // +/-10 semitones at mod +/-0.5
-                    * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                    * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + organonModPitchOffset);
                 if (fundamental < 20.0f)
                     fundamental = 20.0f; // Below 20Hz is inaudible
 
@@ -1367,6 +1391,13 @@ public:
                 mixR += sample * (1.0f + stereoSpread);
 
                 ++voiceIndex;
+            }
+
+            // D002 mod matrix — Amp Level destination scales final mix
+            {
+                const float levelScale = juce::jlimit(0.05f, 1.5f, 1.0f + organonModLevelOffset);
+                mixL *= levelScale;
+                mixR *= levelScale;
             }
 
             // Cache output for coupling reads by partner engines
@@ -1528,6 +1559,9 @@ public:
         paramMacroSpectrum = apvts.getRawParameterValue("organon_macroSpectrum");
         paramMacroCoupling = apvts.getRawParameterValue("organon_macroCoupling");
         paramMacroSpace = apvts.getRawParameterValue("organon_macroSpace");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "organon_");
     }
 
 private:
@@ -1635,6 +1669,10 @@ private:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("organon_macroSpace", 1),
                                                                      "Organon Macro SPACE",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+        // D002 mod matrix — 4-slot source→destination routing
+        static const juce::StringArray kOrganonModDests {"Off", "Metabolic Rate", "Signal Flux", "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "organon_", "Organon", kOrganonModDests);
     }
 
     //==========================================================================
@@ -1758,6 +1796,11 @@ private:
     std::atomic<float>* paramLockIn = nullptr;
     std::atomic<float>* paramMembrane = nullptr;
     std::atomic<float>* paramNoiseColor = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float organonModPitchOffset = 0.0f; // ±12 semitone pitch modulation
+    float organonModLevelOffset = 0.0f; // ±0.5 amplitude scale offset
 };
 
 } // namespace xoceanus

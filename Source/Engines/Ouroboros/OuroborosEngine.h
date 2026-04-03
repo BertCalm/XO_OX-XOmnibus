@@ -8,6 +8,7 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/ModMatrix.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -1006,8 +1007,32 @@ public:
         // Wheel creates counterpoint to aftertouch: one loosens chaos, the other reins it in.
         // D004 macros feed into effectiveChaos/effectiveLeash via the *Raw intermediates
         // computed above. Aftertouch and coupling accumulators layer on top.
-        float effectiveChaos = clamp(effectiveChaosRaw + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
-        float effectiveLeash = clamp(effectiveLeashRaw - atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
+        // D002: mod matrix — evaluate 4 routing slots and accumulate destination offsets
+        // Destinations: 0=Off, 1=ChaosIndex, 2=Leash, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = breathLFO;     // LFO1 (reuse breathing LFO)
+            mSrc.lfo2       = 0.0f;          // LFO2 (not wired separately)
+            mSrc.env        = 0.0f;          // Envelope (no global env in Ouroboros)
+            mSrc.velocity   = 0.0f;          // Velocity (voice-level, skip at block scope)
+            mSrc.keyTrack   = 0.0f;          // Key Track
+            mSrc.modWheel   = modWheelAmount; // Mod Wheel
+            mSrc.aftertouch = atPressure;    // Aftertouch
+
+            float mDst[5] = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: chaos index offset (±0.4)
+            ouroModChaosOffset = mDst[1] * 0.4f;
+            // dst 2: leash offset (±0.4)
+            ouroModLeashOffset = mDst[2] * 0.4f;
+            // dst 3: pitch offset in semitones (±12)
+            ouroModPitchOffset = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset (±0.5)
+            ouroModLevelOffset = mDst[4] * 0.5f;
+        }
+
+        float effectiveChaos = clamp(effectiveChaosRaw + couplingChaosModulation + atPressure * 0.3f + ouroModChaosOffset, 0.0f, 1.0f);
+        float effectiveLeash = clamp(effectiveLeashRaw - atPressure * 0.3f + modWheelAmount * 0.4f + ouroModLeashOffset, 0.0f, 1.0f);
 
         //----------------------------------------------------------------------
         // Precompute 3D-to-stereo projection rotation matrix.
@@ -1077,7 +1102,7 @@ public:
                 // effectiveRate includes MOVEMENT and SPACE macro scaling
                 float targetFrequency = (voice.noteNumber >= 0) ? midiToFreq(voice.noteNumber) : effectiveRate;
                 targetFrequency += couplingPitchModulation * 20.0f; // +/- 20 Hz pitch mod range
-                targetFrequency *= PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                targetFrequency *= PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + ouroModPitchOffset);
                 if (targetFrequency < 20.0f)
                     targetFrequency = 20.0f; // Sub-audible floor
 
@@ -1392,6 +1417,13 @@ public:
                 voiceSumRight += outputRight;
             }
 
+            // D002 mod matrix — Amp Level destination scales final mix
+            {
+                const float levelScale = juce::jlimit(0.05f, 1.5f, 1.0f + ouroModLevelOffset);
+                voiceSumLeft *= levelScale;
+                voiceSumRight *= levelScale;
+            }
+
             //------------------------------------------------------------------
             // Cache output for coupling (4 channels: L, R, dx/dt, dy/dt)
             //------------------------------------------------------------------
@@ -1550,6 +1582,7 @@ public:
         paramMacroMove = apvts.getRawParameterValue("ouro_macroMove");
         paramMacroCoup = apvts.getRawParameterValue("ouro_macroCoup");
         paramMacroSpace = apvts.getRawParameterValue("ouro_macroSpace");
+        modMatrix.attachParameters(apvts, "ouro_");
     }
 
 private:
@@ -1635,6 +1668,12 @@ private:
         // Default 0.4 provides an audible but musical velocity sensitivity.
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID("ouro_velTimbre", 1), "Vel Timbre", juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+
+        // D002: 4-slot mod matrix — route LFO/Env/Vel/Wheel to key synthesis destinations
+        static const juce::StringArray kOuroModDests {
+            "Off", "Chaos Index", "Leash", "Pitch", "Amp Level"
+        };
+        ModMatrix<4>::addParameters(params, "ouro_", "Ouroboros", kOuroModDests);
     }
 
     //==========================================================================
@@ -1754,6 +1793,13 @@ private:
     std::atomic<float>* paramMacroMove = nullptr;  // MOVEMENT:  rate + phi + injection
     std::atomic<float>* paramMacroCoup = nullptr;  // COUPLING:  leash + injection + theta
     std::atomic<float>* paramMacroSpace = nullptr; // SPACE:     damping + rate + phi
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float ouroModChaosOffset = 0.0f; // ±0.4 chaos index modulation
+    float ouroModLeashOffset = 0.0f; // ±0.4 leash modulation
+    float ouroModPitchOffset = 0.0f; // ±12 semitone pitch modulation
+    float ouroModLevelOffset = 0.0f; // ±0.5 amplitude scale offset
 };
 
 } // namespace xoceanus

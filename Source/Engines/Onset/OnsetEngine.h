@@ -59,6 +59,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
@@ -1934,9 +1935,28 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=MasterLevel, 2=PunchMacro, 3=MutateMacro, 4=SpaceMacro
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            percModLevelOffset  = mDst[1] * 0.5f;
+            percModPunchOffset  = mDst[2] * 0.4f;
+            percModMutateOffset = mDst[3] * 0.4f;
+            percModSpaceOffset  = mDst[4] * 0.4f;
+        }
+
         // M2 PUNCH: bias snap and body (0=soft, 1=aggressive)
         // D006: aftertouch adds up to +0.3 to PUNCH macro (sensitivity 0.3)
-        mPunch = clamp(mPunch + atPressure * 0.3f, 0.0f, 1.0f);
+        mPunch = clamp(mPunch + atPressure * 0.3f + percModPunchOffset, 0.0f, 1.0f);
         float punchBias = (mPunch - 0.5f) * 0.6f;
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -1946,8 +1966,8 @@ public:
 
         // M4 MUTATE: per-block random drift on blend + character
         // D006: mod wheel scales MUTATE depth — wheel at max doubles drift range.
-        // Sensitivity: +1.0 additive multiplier at full wheel (0.0–1.0 → ×1.0–×2.0).
-        mMutate = clamp(mMutate * (1.0f + modWheelAmount), 0.0f, 1.0f);
+        // D002: percModMutateOffset adds mod matrix contribution
+        mMutate = clamp(mMutate * (1.0f + modWheelAmount) + percModMutateOffset, 0.0f, 1.0f);
         if (mMutate > 0.01f)
         {
             for (int v = 0; v < kNumVoices; ++v)
@@ -2009,8 +2029,8 @@ public:
         const float lofiSteps = std::pow(2.0f, pLofiBits);
         const float lofiInvSteps = 1.0f / lofiSteps;
 
-        // M3 SPACE macro: drives reverb mix + delay feedback
-        float mSpace = macroSpace ? macroSpace->load() : 0.0f;
+        // M3 SPACE macro: drives reverb mix + delay feedback (percModSpaceOffset adds D002 contribution)
+        float mSpace = clamp((macroSpace ? macroSpace->load() : 0.0f) + percModSpaceOffset, 0.0f, 1.0f);
         pRevMix = clamp(pRevMix + mSpace * 0.6f, 0.0f, 1.0f);
         pDelFb = clamp(pDelFb + mSpace * 0.3f, 0.0f, 0.95f);
 
@@ -2135,8 +2155,9 @@ public:
             fxReverb.process(sumL, sumR, pRevSize, pRevDecay, pRevMix);
             fxLoFi.process(sumL, sumR, lofiSteps, lofiInvSteps, pLofiMix);
 
-            sumL *= masterLevel;
-            sumR *= masterLevel;
+            const float effectiveMasterLevel = clamp(masterLevel + percModLevelOffset, 0.05f, 1.5f);
+            sumL *= effectiveMasterLevel;
+            sumR *= effectiveMasterLevel;
 
             outL[s] += sumL;
             if (outR)
@@ -2249,6 +2270,9 @@ public:
         fxReverbMix = apvts.getRawParameterValue("perc_fx_reverb_mix");
         fxLofiBits = apvts.getRawParameterValue("perc_fx_lofi_bits");
         fxLofiMix = apvts.getRawParameterValue("perc_fx_lofi_mix");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "perc_");
     }
 
     //-- Identity ----------------------------------------------------------------
@@ -2342,6 +2366,13 @@ private:
     // D006: mod wheel (CC#1) — scales MUTATE macro depth
     float modWheelAmount = 0.0f;
     float pitchBendNorm = 0.0f;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float percModLevelOffset  = 0.0f;
+    float percModPunchOffset  = 0.0f;
+    float percModMutateOffset = 0.0f;
+    float percModSpaceOffset  = 0.0f;
 
     //-- MIDI note to voice mapping ----------------------------------------------
     // Maps incoming MIDI notes to voice indices using the GM drum map.
@@ -2491,6 +2522,10 @@ private:
 
         params.push_back(std::make_unique<Float>(juce::ParameterID("perc_fx_lofi_mix", 1), "Perc LoFi Mix",
                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+        // D002 mod matrix — 4-slot source→destination routing
+        static const juce::StringArray kPercModDests {"Off", "Master Level", "Punch Macro", "Mutate Macro", "Space Macro"};
+        ModMatrix<4>::addParameters(params, "perc_", "Onset", kPercModDests);
     }
 };
 

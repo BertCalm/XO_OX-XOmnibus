@@ -4,6 +4,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 
@@ -124,6 +125,10 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"ow_drumMode", 1}, "Overworld Drum Mode",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 1.0f), 0.0f));
+
+        // D002 mod matrix — 4-slot source→destination routing
+        static const juce::StringArray kOwModDests {"Off", "ERA X", "Glitch Mix", "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "ow_", "Overworld", kOwModDests);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -243,6 +248,9 @@ public:
         p_filterEnvDepth = apvts.getRawParameterValue("ow_filterEnvDepth");
 
         p_drumMode = apvts.getRawParameterValue("ow_drumMode");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "ow_");
     }
 
     //-- Audio -----------------------------------------------------------------
@@ -283,8 +291,9 @@ public:
         const float effectiveCrushMix = juce::jlimit(0.0f, 1.0f, snap.crushMix + macCrush * 0.85f);
         const float effectiveGlitchAmt = juce::jlimit(0.0f, 1.0f, snap.glitchAmount + macGlitch * 0.9f);
         // D006: mod wheel adds up to +0.4 to glitch mix (CC#1 introduces chip artifacts progressively)
+        // D002: owModGlitchOffset adds mod matrix contribution
         const float effectiveGlitchMix =
-            juce::jlimit(0.0f, 1.0f, snap.glitchMix + macGlitch * 0.8f + modWheelAmount * 0.4f);
+            juce::jlimit(0.0f, 1.0f, snap.glitchMix + macGlitch * 0.8f + modWheelAmount * 0.4f + owModGlitchOffset);
         const float effectiveEchoMix = juce::jlimit(0.0f, 1.0f, snap.echoMix + macSpace * 0.7f);
 
         // D001: filter envelope — simple one-pole decay tracks note-on velocity.
@@ -313,7 +322,7 @@ public:
             filter.setMode(snap.filterType);
             filter.setCutoff(
                 juce::jlimit(20.0f, 20000.0f,
-                             snap.filterCutoff * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f) +
+                             snap.filterCutoff * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + owModPitchOffset) +
                                  externalFilterMod + filterEnvBoost));
             filter.setResonance(snap.filterReso);
         }
@@ -371,6 +380,29 @@ public:
         // Full pressure adds up to +0.2 to targetEraY, nudging the triangle toward SNES.
         // Clamped to [0.0, 1.0] so it never exceeds valid ERA range.
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=ERA_X, 2=GlitchMix, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: ERA X offset (chip blend position)
+            owModEraOffset   = mDst[1] * 0.5f;
+            // dst 2: glitch mix offset
+            owModGlitchOffset = mDst[2] * 0.4f;
+            // dst 3: pitch offset in semitones (applied via snap.pitchBend in voicePool)
+            owModPitchOffset = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset
+            owModLevelOffset = mDst[4] * 0.5f;
+        }
+
         // D005 fix: minimal LFO added — advance ERA drift phase and apply
         if (snap.eraDriftRate > 0.001f)
         {
@@ -379,10 +411,10 @@ public:
         if (eraPhase >= 1.0f)
             eraPhase -= 1.0f;
 
-        // ERA portamento: one-pole IIR smoothing
+        // ERA portamento: one-pole IIR smoothing (owModEraOffset adds D002 mod matrix contribution)
         float targetEra =
             juce::jlimit(0.0f, 1.0f,
-                         snap.era + externalEraMod +
+                         snap.era + externalEraMod + owModEraOffset +
                              snap.eraDriftDepth * 0.35f * fastSin(eraPhase * juce::MathConstants<float>::twoPi));
         float targetEraY = juce::jlimit(0.0f, 1.0f, snap.eraY + externalEraYMod + atPressure * 0.2f);
 
@@ -410,7 +442,7 @@ public:
             sample = glitch.process(sample);
             sample = echo.process(sample);
 
-            sample *= snap.masterVol;
+            sample *= juce::jlimit(0.05f, 1.5f, snap.masterVol + owModLevelOffset);
 
             // DSP Fix Wave 2B: Stereo widening — Haas-style micro-delay for width.
             // OVERWORLD's VoicePool is mono by design (chip engines sum to one channel).
@@ -724,6 +756,13 @@ private:
     float filterEnvLevel = 0.0f; // decays per-block, set to velocity on noteOn
 
     std::atomic<float>* p_drumMode = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float owModEraOffset    = 0.0f;
+    float owModGlitchOffset = 0.0f;
+    float owModPitchOffset  = 0.0f;
+    float owModLevelOffset  = 0.0f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverworldEngine)
 };
