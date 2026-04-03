@@ -8,7 +8,7 @@
   "presets": [
     {
       "name": "Cascading Tangle",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Cascading Tangle.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Entangled/Cascading Tangle.xometa",
       "dna": {
         "brightness": 0.497,
         "warmth": 0.5,
@@ -21,7 +21,7 @@
     },
     {
       "name": "Bass Drum Engine",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Onset/Bass_Drum_Engine.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Entangled/Onset/Bass_Drum_Engine.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.75,
@@ -34,7 +34,7 @@
     },
     {
       "name": "Twin Engine",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Onset/Twin_Engine.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Entangled/Onset/Twin_Engine.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.5,
@@ -47,7 +47,7 @@
     },
     {
       "name": "Bitcrushed Fur",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Bitcrushed Fur.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/Bitcrushed Fur.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.65,
@@ -60,7 +60,7 @@
     },
     {
       "name": "Dusty Circuits",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Dusty_Circuits.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/Dusty_Circuits.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.7,
@@ -73,7 +73,7 @@
     },
     {
       "name": "Quantum Kit",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Quantum_Kit.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/Quantum_Kit.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -86,7 +86,7 @@
     },
     {
       "name": "Tape Machine",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Tape_Machine.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/Tape_Machine.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.75,
@@ -99,7 +99,7 @@
     },
     {
       "name": "First Choke",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/XVC/First_Choke.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/XVC/First_Choke.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.55,
@@ -112,7 +112,7 @@
     },
     {
       "name": "808 Ghost Circuit",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/808_Ghost_Circuit.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/808_Ghost_Circuit.xometa",
       "dna": {
         "brightness": 0.4,
         "warmth": 0.65,
@@ -125,7 +125,7 @@
     },
     {
       "name": "808 Reborn",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/808_Reborn.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/808_Reborn.xometa",
       "dna": {
         "brightness": 0.35,
         "warmth": 0.75,
@@ -138,7 +138,7 @@
     },
     {
       "name": "Analog Heart",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Analog_Heart.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Analog_Heart.xometa",
       "dna": {
         "brightness": 0.4,
         "warmth": 0.7,
@@ -151,7 +151,7 @@
     },
     {
       "name": "Boom Bap OG",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Boom_Bap_OG.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Boom_Bap_OG.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.65,
@@ -164,7 +164,7 @@
     },
     {
       "name": "Cajon Box",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Cajon_Box.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Cajon_Box.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.6,
@@ -177,7 +177,7 @@
     },
     {
       "name": "Dancehall Fire",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Dancehall_Fire.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Dancehall_Fire.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -190,7 +190,7 @@
     },
     {
       "name": "Djembe Circuit",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Djembe_Circuit.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Djembe_Circuit.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.65,
@@ -203,7 +203,7 @@
     },
     {
       "name": "Drill Pressure",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Drill_Pressure.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Drill_Pressure.xometa",
       "dna": {
         "brightness": 0.4,
         "warmth": 0.55,
@@ -216,7 +216,7 @@
     },
     {
       "name": "Garage Two Step",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Garage_Two_Step.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Garage_Two_Step.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -229,7 +229,7 @@
     },
     {
       "name": "House Classic",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/House_Classic.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/House_Classic.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.55,
@@ -242,7 +242,7 @@
     },
     {
       "name": "Punch Mode",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Punch_Mode.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Punch_Mode.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -255,7 +255,7 @@
     },
     {
       "name": "Reggaeton Dem",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Reggaeton_Dem.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Reggaeton_Dem.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -268,7 +268,7 @@
     },
     {
       "name": "SP1200 Grit",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/SP1200_Grit.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/SP1200_Grit.xometa",
       "dna": {
         "brightness": 0.35,
         "warmth": 0.7,
@@ -281,7 +281,7 @@
     },
     {
       "name": "Saturated",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Saturated.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Saturated.xometa",
       "dna": {
         "brightness": 0.4,
         "warmth": 0.8,
@@ -294,7 +294,7 @@
     },
     {
       "name": "Trap Bounce",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Trap_Bounce.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Trap_Bounce.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.6,
@@ -307,7 +307,7 @@
     },
     {
       "name": "Boom Bap Clap",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Boom_Bap_Clap.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Boom_Bap_Clap.xometa",
       "dna": {
         "brightness": 0.52,
         "warmth": 0.58,
@@ -320,7 +320,7 @@
     },
     {
       "name": "Brush Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Brush_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Brush_Snare.xometa",
       "dna": {
         "brightness": 0.38,
         "warmth": 0.7,
@@ -333,7 +333,7 @@
     },
     {
       "name": "Conga Slap",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Conga_Slap.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Conga_Slap.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.55,
@@ -346,7 +346,7 @@
     },
     {
       "name": "Cowbell Muted",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Cowbell_Muted.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Cowbell_Muted.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.52,
@@ -359,7 +359,7 @@
     },
     {
       "name": "Crack Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Crack_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Crack_Snare.xometa",
       "dna": {
         "brightness": 0.58,
         "warmth": 0.55,
@@ -372,7 +372,7 @@
     },
     {
       "name": "Dusty Hat",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Dusty_Hat.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Dusty_Hat.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.55,
@@ -385,7 +385,7 @@
     },
     {
       "name": "Finger Snap",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Finger_Snap.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Finger_Snap.xometa",
       "dna": {
         "brightness": 0.48,
         "warmth": 0.55,
@@ -398,7 +398,7 @@
     },
     {
       "name": "Ghost Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Ghost_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Ghost_Snare.xometa",
       "dna": {
         "brightness": 0.35,
         "warmth": 0.65,
@@ -411,7 +411,7 @@
     },
     {
       "name": "Layered Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Layered_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Layered_Snare.xometa",
       "dna": {
         "brightness": 0.52,
         "warmth": 0.6,
@@ -424,7 +424,7 @@
     },
     {
       "name": "Lo-Fi Hat",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_LoFi_Hat.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_LoFi_Hat.xometa",
       "dna": {
         "brightness": 0.35,
         "warmth": 0.62,
@@ -437,7 +437,7 @@
     },
     {
       "name": "Low Tom",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Low_Tom.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Low_Tom.xometa",
       "dna": {
         "brightness": 0.35,
         "warmth": 0.7,
@@ -450,7 +450,7 @@
     },
     {
       "name": "Mid Tom",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Mid_Tom.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Mid_Tom.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.6,
@@ -463,7 +463,7 @@
     },
     {
       "name": "Open Hat Tension",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Open_Hat_Tension.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Open_Hat_Tension.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.52,
@@ -476,7 +476,7 @@
     },
     {
       "name": "Pedal Hat",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Pedal_Hat.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Pedal_Hat.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.58,
@@ -489,7 +489,7 @@
     },
     {
       "name": "Punchy Kick",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Punchy_Kick.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Punchy_Kick.xometa",
       "dna": {
         "brightness": 0.42,
         "warmth": 0.65,
@@ -502,7 +502,7 @@
     },
     {
       "name": "Rim Click",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Rim_Click.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Rim_Click.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.52,
@@ -515,7 +515,7 @@
     },
     {
       "name": "Round Kick",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Round_Kick.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Round_Kick.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.8,
@@ -528,7 +528,7 @@
     },
     {
       "name": "Shaker Dust",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Shaker_Dust.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Shaker_Dust.xometa",
       "dna": {
         "brightness": 0.48,
         "warmth": 0.55,
@@ -541,7 +541,7 @@
     },
     {
       "name": "Sizzle Hat",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Sizzle_Hat.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Sizzle_Hat.xometa",
       "dna": {
         "brightness": 0.5,
         "warmth": 0.55,
@@ -554,7 +554,7 @@
     },
     {
       "name": "Snap Clap",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Snap_Clap.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Snap_Clap.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.52,
@@ -567,7 +567,7 @@
     },
     {
       "name": "Tambourine Shake",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tambourine_Shake.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Tambourine_Shake.xometa",
       "dna": {
         "brightness": 0.52,
         "warmth": 0.55,
@@ -580,7 +580,7 @@
     },
     {
       "name": "Tight Machine Hat",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tight_Machine_Hat.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Tight_Machine_Hat.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,
@@ -593,7 +593,7 @@
     },
     {
       "name": "Tight Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tight_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Tight_Snare.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.52,
@@ -606,7 +606,7 @@
     },
     {
       "name": "Vinyl Clap",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Clap.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Vinyl_Clap.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.62,
@@ -619,7 +619,7 @@
     },
     {
       "name": "Vinyl Kick",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Kick.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Vinyl_Kick.xometa",
       "dna": {
         "brightness": 0.32,
         "warmth": 0.75,
@@ -632,7 +632,7 @@
     },
     {
       "name": "Vinyl Snare",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Snare.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Vinyl_Snare.xometa",
       "dna": {
         "brightness": 0.4,
         "warmth": 0.65,
@@ -645,7 +645,7 @@
     },
     {
       "name": "Wood Block",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Wood_Block.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset_Wood_Block.xometa",
       "dna": {
         "brightness": 0.48,
         "warmth": 0.58,

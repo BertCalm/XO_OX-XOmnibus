@@ -30,7 +30,7 @@ git config core.hooksPath .githooks
 
 The hook runs in < 30 seconds on incremental builds and is skippable with `git commit --no-verify` when needed. Checks performed:
 
-1. **Compile** — incremental `cmake --build build --target XOlokun_AU` on staged `.h`/`.cpp` files
+1. **Compile** — incremental `cmake --build build --target XOceanus_AU` on staged `.h`/`.cpp` files
 2. **Dead-param guard** — flags `(void)param;` casts in engine files (D004 violation)
 3. **Audio-thread lint** — bans `new`/`delete`/`malloc`/`free`, `push_back`/`resize`, `std::mutex`, `juce::String` construction, and file I/O inside `renderBlock`
 4. **clang-format** — runs `clang-format --dry-run --Werror` on staged files (requires `clang-format` on `$PATH`)
@@ -123,7 +123,7 @@ Additional conventions:
 - 6D Sonic DNA filled in: brightness, warmth, movement, density, space, aggression
 - All four macros must produce audible change
 
-**Engine contributions** start as standalone instruments, not as XOceanus integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/xolokun_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
+**Engine contributions** start as standalone instruments, not as XOceanus integrations. Build the engine with its own character and reason to exist. Then write a thin adapter implementing `SynthEngine`. See `Docs/specs/xoceanus_new_engine_process.md` and invoke `/new-xo-engine` if you're working in the XO_OX development environment.
 
 **Documentation** — if something confused you, fix it. The Field Guide, sound design guides, and scripture benefit from perspectives other than the original author's.
 

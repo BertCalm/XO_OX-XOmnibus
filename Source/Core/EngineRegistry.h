@@ -40,13 +40,13 @@ public:
     // No concurrent access is possible under the current architecture.
     // If this changes (e.g., dynamic plugin loading), add a mutex.
 
-    // Register an engine type (called at static init via REGISTER_ENGINE).
+    // Register an engine type (called at static init via named static bool in XOceanusProcessor.cpp).
     // Returns false if an engine with this ID is already registered.
     bool registerEngine(const std::string& id, EngineFactory factory)
     {
         if (factories.count(id) > 0)
         {
-            jassertfalse; // Duplicate engine ID — check REGISTER_ENGINE calls
+            jassertfalse; // Duplicate engine ID — check static registration in XOceanusProcessor.cpp
             return false;
         }
         factories[id] = std::move(factory);

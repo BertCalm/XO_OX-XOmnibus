@@ -1,4 +1,4 @@
-# XOlokun Server Setup — Supabase
+# XOceanus Server Setup — Supabase
 
 This sets up the backend for **CommunityInsights** (anonymous telemetry) and
 **SharedRecipeVault** (community recipe sharing).
@@ -11,7 +11,7 @@ Total time: ~15 minutes. No server to manage. Free tier handles thousands of use
 
 1. Go to [supabase.com](https://supabase.com) and sign up (free)
 2. Click **New Project**
-3. Name it `xolokun` (or whatever you like)
+3. Name it `xoceanus` (or whatever you like)
 4. Set a strong database password (save it somewhere)
 5. Choose a region close to your users
 6. Wait ~2 minutes for provisioning
@@ -81,7 +81,7 @@ curl "https://abcdefg.supabase.co/functions/v1/vault-search?page=0&pageSize=5" \
   -H "apikey: YOUR_ANON_KEY"
 ```
 
-## 5. Configure XOlokun
+## 5. Configure XOceanus
 
 In your C++ code (e.g., in the processor or editor initialization):
 
@@ -160,7 +160,7 @@ notifications when interesting things happen:
 ## Architecture Summary
 
 ```
-XOlokun App (C++)
+XOceanus App (C++)
   │
   ├── CommunityInsights ──POST──→ Supabase PostgREST ──→ insight_batches table
   │                                                        └── Dashboard views
@@ -181,5 +181,5 @@ Supabase free tier includes:
 - 500K Edge Function invocations / month
 - Unlimited API requests
 
-This comfortably handles tens of thousands of XOlokun users. If you outgrow
+This comfortably handles tens of thousands of XOceanus users. If you outgrow
 it, Supabase Pro is $25/month with 8 GB storage and 250 GB bandwidth.

@@ -26,7 +26,7 @@
 17. Implement B041 (Dark Cockpit) — design the opacity hierarchy system
 18. Implement B042 (Planchette autonomy) — design Lissajous + spring + warm memory behavior
 19. Implement B043 (Gesture Trail as modulation) — design the DSP signal path from ring buffer
-20. Design the Constellation View (25% push) — 73 engines as interactive star chart
+20. Design the Constellation View (25% push) — 76 engines as interactive star chart
 21. Design Spatial Preset Navigation (25% push) — 19K presets as continuous 2D map
 22. Design the Emotion-Responsive UI (25% push) — color temperature adapts to audio
 23. Design the "Sound on First Launch" init preset — which engines, which coupling, what sound
@@ -132,7 +132,7 @@
 
 ### Testing & QA
 45. Run auval at all 5 sample rates (11025/44100/48000/96000/192000)
-46. Test preset loading for all 73 engines (1 preset per engine minimum)
+46. Test preset loading for all 76 engines (1 preset per engine minimum)
 47. Test coupling between all 15 types with 2 engines each
 48. Test PlaySurface MIDI output in GarageBand
 49. Build a CI/CD pipeline for automated build + auval on push
@@ -145,14 +145,14 @@
 ### Codebase Health
 1. Count exact engine registration in XOceanusProcessor.cpp (verify 73)
 2. Count exact preset count per engine per mood (distribution report)
-3. Verify all 73 engines have entries in CLAUDE.md Engine Modules table
-4. Verify all 73 engines have entries in frozenPrefixForEngine
-5. Verify all 73 engines have entries in validEngineNames
+3. Verify all 76 engines have entries in CLAUDE.md Engine Modules table
+4. Verify all 76 engines have entries in frozenPrefixForEngine
+5. Verify all 76 engines have entries in validEngineNames
 6. Count total lines of code in Source/ (baseline metric)
 7. Count total lines in each engine (complexity ranking)
 8. List all engines still missing Guru Bin retreats
 9. List all engines missing seance verdicts (should be only OSMOSIS)
-10. Verify design-tokens.css has all 73 engine accent colors
+10. Verify design-tokens.css has all 76 engine accent colors
 
 ### Git & History
 11. Generate git stats (commits per day, lines added/removed)
@@ -251,7 +251,7 @@ Numbers 51–100
 82. Write Field Guide post #6: "XOceanus for Producers — 5 Genre Starter Templates" — hip-hop (ONSET+OFFERING), ambient (OXBOW+OPERA), drum & bass (ONSET+OBRIX), cinematic (ORGANON+OPENSKY), lo-fi (OWARE+OVERDUB). Coupling presets for each template included.
 83. Design the Patreon content calendar for Month 1 post-launch: Week 1 (release announcement + OBRIX deep dive), Week 2 (first patron-exclusive preset pack 50 presets), Week 3 (Kitchen Collection preview video), Week 4 (community poll: which Kitchen quad unlocks first). Include exact post copy and asset list.
 84. Design the V1 press kit: one-paragraph product description, 5 key differentiators (not feature lists — differentiators), 3 quote-ready sound designer endorsements, 6 hero screenshots spec (exact scenes), video script outline (90-second demo). Write all copy.
-85. Design the XO-OX.org XOceanus rebrand: homepage hero section copy, aquarium page intro text (73 engines, ocean mythology frame), Field Guide landing page restructure. Write all copy. No design tool needed — pure content.
+85. Design the XO-OX.org XOceanus rebrand: homepage hero section copy, aquarium page intro text (76 engines, ocean mythology frame), Field Guide landing page restructure. Write all copy. No design tool needed — pure content.
 
 #### Architecture, Community & Growth
 
@@ -266,7 +266,7 @@ Numbers 51–100
 94. Design the V1.1 feature slate: per-knob mod rings and drag-from-source-to-target gestures (deferred from V1 per §3.2), Constellation View (25% push), Spatial Preset Navigation (25% push). For each: one-paragraph scope, 3 acceptance criteria, estimated session count.
 95. Seance the V1 spatial architecture spec itself: convene the ghost council to review the 3-column layout, column proportions (260/520/320), the coupling arc popover resolution, and the PlaySurface auto-expand behavior. Produce a verdict with 3 demanded changes and 3 blessings.
 96. Producers Guild review of the V1 launch preset list: do the 5 coupling presets (track #79) pass the 30-second test for hip-hop, ambient, electronic, cinematic, and experimental producers? Score each 1–10 and list required changes.
-97. Design the Instrument Browser filter taxonomy: define all instrument-type values (DRUMS, BASS, PADS, KEYS, LEAD, FX, TEXTURE, GENERATOR, MODIFIER) and assign each of the 73 engines to exactly one type. Produce the mapping table. This is required for the preset browser filter pill row.
+97. Design the Instrument Browser filter taxonomy: define all instrument-type values (DRUMS, BASS, PADS, KEYS, LEAD, FX, TEXTURE, GENERATOR, MODIFIER) and assign each of the 76 engines to exactly one type. Produce the mapping table. This is required for the preset browser filter pill row.
 98. Design the OBRIX Flagship launch campaign: the OBRIX page on XO-OX.org (hero text, 5 feature callouts, audio player embed), the announcement post copy for all channels (Discord / Patreon / social), the 30-second promo video script. This is the V1 hero product.
 99. Design the XOceanus "Living Manual" glassmorphism tooltip system: trigger conditions (hover 1.2s on any labeled control), tooltip anatomy (parameter name, current value, range, plain-language description, one-line coupling suggestion), positioning rules (avoid clipping at window edges). Write tooltip copy for the 20 most-touched parameters.
 100. Retrospective design review of V1 scope: given the 326 features in the spatial architecture, identify the 10 highest-risk items that could delay V1 ship, rank by likelihood × impact, and propose mitigation for each. Produce a risk register.
@@ -318,7 +318,7 @@ Numbers 51–100
 #### Regression Tests & QA
 
 81. Write a regression test for `MegaCouplingMatrix` accumulator reset: instantiate 2 engines in test harness, set ENTANGLE coupling, render 512 samples, call `reset()`, verify all coupling accumulator values return to zero within 1 sample. Add to `Tests/CouplingTests.cpp`.
-82. Write a regression test for `PresetManager` round-trip: load each of the 73 engines' first preset, serialize via `getStateInformation`, deserialize via `setStateInformation`, verify all param values match within `1e-5f`. Fail test if any engine has >0 mismatched params.
+82. Write a regression test for `PresetManager` round-trip: load each of the 76 engines' first preset, serialize via `getStateInformation`, deserialize via `setStateInformation`, verify all param values match within `1e-5f`. Fail test if any engine has >0 mismatched params.
 83. Implement per-engine CPU display in slot tiles: in `EngineRackPanel`, each tile shows `cpu_X.X%` badge, updated every 500ms via a `juce::HighResolutionTimer`. Read CPU cost from `XOceanusProcessor`'s per-engine render time tracking (add if missing). Badge turns amber at >5% CPU, red at >10%.
 84. Implement `PresetPreviewThumbnail` in `Source/UI/PresetPreviewThumbnail.h`: a 24×24pt DNA radar (`juce::Path` hexagon with 6 axis points scaled by DNA values), rendered once per preset and cached as a `juce::Image`. Used in preset browser cards. Must render without blocking main thread — generate on background thread, invalidate on load.
 85. Implement the MIDI learn persistence fix: ensure all CC assignments survive plugin state save/restore — serialize `MidiLearnManager` bindings inside `getStateInformation` as a JSON array `[{param_id, cc_number}]`, deserialize in `setStateInformation`. Write a unit test: bind CC 7 to `obrix_src1Type`, save state, clear bindings, restore state, verify CC 7 still maps to `obrix_src1Type`.
@@ -330,7 +330,7 @@ Numbers 51–100
 91. Implement WCAG AA contrast enforcement in `XOceanusLookAndFeel`: for any text drawn on an engine accent color background, compute luminance contrast ratio (WCAG formula), if <4.5:1 override text color to white or `#1A1A1A`. Add a compile-time static assert table for all 73 accent colors — fail build if any accent color produces <4.5:1 contrast with both white and gallery-white `#F8F6F3`.
 92. Implement `SessionStateManager` in `Source/Core/SessionStateManager.h`: on plugin editor close, serialize active engine configuration (slot assignments + param values + coupling routes + macro positions) to `juce::PropertiesFile` under key `"lastSession"`. On editor open, offer "Restore last session?" toast with Yes/No buttons. Restore calls `setStateInformation` on the stored blob.
 93. Implement the `EngineHotSwap` 50ms crossfade in `Source/Core/EngineRegistry.h`: when `swapEngine(slot, newEngineId)` is called, start a 50ms linear crossfade between old and new engine audio output on the audio thread (read from both, blend by crossfade position). Use atomic float for crossfade position. Verify no clicks in the swap using an offline render test.
-94. Fix the `frozenPrefixForEngine` missing entries: audit `Source/Core/PresetManager.h` `frozenPrefixForEngine` map — add entries for all 73 engines (OUTLOOK `look_`, OXYTOCIN `oxy_`, all Kitchen Collection engines). Run `Tools/verify_prefix_coverage.py` to confirm 73/73. This is a P0 for preset loading correctness.
+94. Fix the `frozenPrefixForEngine` missing entries: audit `Source/Core/PresetManager.h` `frozenPrefixForEngine` map — add entries for all 76 engines (OUTLOOK `look_`, OXYTOCIN `oxy_`, all Kitchen Collection engines). Run `Tools/verify_prefix_coverage.py` to confirm 76/76. This is a P0 for preset loading correctness.
 95. Implement `PresetsAutoSave` in `Source/Core/PresetManager.h`: after any parameter change (debounced 2s), save current state to `juce::PropertiesFile` key `"unsavedPreset"`. On next launch, if `"unsavedPreset"` exists and differs from loaded preset, show: "You have unsaved changes from your last session. Restore?" If yes, call `setStateInformation` on stored state.
 96. Implement iOS AUv3 responsive layout in `Source/UI/iOS/iOSLayoutManager.h`: at window width <768pt (iPhone / small iPad), collapse Column A to icon-only strip (40pt), Column C hidden (tab accessible via slide-in panel), Column B takes remaining width. At width ≥768pt (iPad landscape), restore 3-column layout with compressed proportions (180/360/230). All touch targets ≥44pt enforced via `setBoundsConstrained`.
 97. Implement the `PresetSetManager` in `Source/Core/PresetSetManager.h`: a "Set" is a named ordered list of presets (like a playlist), stored in `.xoset` JSON files under `Presets/XOceanus/Sets/`. Right-click preset card → "Add to Set" → popover with existing sets + "New Set...". "Add to Set" also wires to the MIDI program change handler (set position = program number). V1 ships 5 factory sets (one per coupling preset chain from track #79).
@@ -349,7 +349,7 @@ Numbers 51–100
 52. Search `Source/UI/` for all existing `.h` files — list them with line counts. Identify which spatial architecture components already have stubs vs. which need to be created from scratch. This determines the true scope of Sonnet UI tracks.
 53. Read `Source/Core/MegaCouplingMatrix.h` — count the number of coupling type enum values. Verify exactly 15 are defined (incl. KnotTopology + TriangularCoupling). List any that exist in the enum but have no implementation in the coupling accumulation logic.
 54. Search `Source/Engines/` for all engines that do NOT have a corresponding `EngineDetailPanel` override (i.e., they fall back to the generic panel). This determines how many of the 17 custom engine panels are missing vs. already implemented.
-55. Read `Source/Core/PresetManager.h` — verify `frozenPrefixForEngine` has entries for all 73 engine IDs. List any missing. Also verify `validEngineNames` contains all 73. Output a diff between expected (from CLAUDE.md) and actual.
+55. Read `Source/Core/PresetManager.h` — verify `frozenPrefixForEngine` has entries for all 76 engine IDs. List any missing. Also verify `validEngineNames` contains all 73. Output a diff between expected (from CLAUDE.md) and actual.
 56. Search all `.xometa` files in `Presets/XOceanus/` for any that contain `"XOceanus"` in their metadata fields — these need updating to `"XOceanus"` post-rename. Count them and list the first 10 as a sample.
 57. Read `Source/XOceanusProcessor.cpp` — list all engines registered via `REGISTER_ENGINE()`. Count them. Identify any engine in CLAUDE.md's registered list that is NOT registered in the processor (unregistered engines cannot be loaded by users).
 58. Search `Source/UI/` for all uses of hardcoded pixel values (e.g., `setBounds(x, y, 260, 90)`) — these should be replaced with design-token constants. Count occurrences and list the top 10 files by hardcoded-value density.
@@ -371,7 +371,7 @@ Numbers 51–100
 
 #### Coupling, Accent Color & Keyboard Shortcut Audits
 
-71. Read `Docs/design/design-tokens.css` — extract all 73 engine accent color hex values. Compute WCAG contrast ratio against gallery-white `#F8F6F3` for each. List any below 3.0:1 (insufficient for large text) and any below 4.5:1 (insufficient for normal text). This feeds the Sonnet WCAG enforcement track (#91).
+71. Read `Docs/design/design-tokens.css` — extract all 76 engine accent color hex values. Compute WCAG contrast ratio against gallery-white `#F8F6F3` for each. List any below 3.0:1 (insufficient for large text) and any below 4.5:1 (insufficient for normal text). This feeds the Sonnet WCAG enforcement track (#91).
 72. Search `Source/Engines/*/` headers for the `CouplingType` enum entries each engine declares it accepts (likely via a method like `getSupportedCouplingTypes()`). Verify the declared types match the documentation in `Docs/` coupling type tables. List any mismatches.
 73. Read `Skills/coupling-interaction-cookbook/SKILL.md` — extract the engine pair compatibility table. Count unique engine pairs listed. Verify at least 1 pair exists for each of the 15 coupling types.
 74. Search `Source/UI/` for keyboard shortcut registrations (likely `keyPressed`, `KeyPress`, or `ApplicationCommandManager` usage). List all registered shortcuts. Cross-reference against the shortcut list in Sonnet track #80 — identify any conflicts (same key mapped twice).
@@ -389,7 +389,7 @@ Numbers 51–100
 83. Search `Source/` for any `#include` of a file path containing `XOceanus` (old include guards or paths) — list them. These would cause build failures when file names are fully updated.
 84. Read `CMakeLists.txt` — verify `VERSION 1.0.0` is set (CLAUDE.md mentions this was a P0 fix). Also verify `OSX_ARCHITECTURES` appears before `project()`. List any other CMake issues found.
 85. Search `Source/UI/` for any raw `new` allocations without corresponding `delete` or `std::unique_ptr` ownership — a proxy audit for memory leaks. List top 10 occurrences by file. This feeds the ExportDialog memory leak fix (Sonnet track #73).
-86. Count total `.h` files in `Source/Engines/` — verify the count matches the expected structure (each of 73 engines has at least 1 `.h` file: EngineAdapter or EngineEngine). List any engines with 0 `.h` files in their subdirectory.
+86. Count total `.h` files in `Source/Engines/` — verify the count matches the expected structure (each of 76 engines has at least 1 `.h` file: EngineAdapter or EngineEngine). List any engines with 0 `.h` files in their subdirectory.
 87. Read `Source/Engines/Overworld/OverworldEngine.h` — identify the specific build error flagged in P0 list ("stub files only, 6 headers, no processor/CMake"). Output the exact error if detectable from file content (missing method, wrong return type, etc.).
 88. Search `Source/DSP/` for `exp(-2*PI*fc/sr)` vs `w/(w+1)` IIR coefficient patterns — verify all filter coefficient computations use the matched-Z formula (`exp(-2*PI*fc/sr)`) and not the Euler approximation (`w/(w+1)`). List any violations.
 89. Search all `.xometa` files for any `"sampleRate": 44100` hardcoded values — these violate the "never hardcode 44100" architecture rule. Count violations. They should read from the session's actual sample rate at load time.

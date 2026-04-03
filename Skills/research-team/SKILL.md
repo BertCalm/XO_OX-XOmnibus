@@ -3,21 +3,21 @@
 **Invoke with:** `/research-team`
 **Status:** LIVE
 **Last Updated:** 2026-03-24 | **Version:** 1.0 | **Next Review:** Monthly or when new engines are added
-**Purpose:** Multi-specialist research team that scours open-source projects, academic papers, commercial synths, game engines, scientific visualization, generative art, and physical simulation libraries for ideas, techniques, reusable components, and inspiration to continuously elevate XOmnibus in every dimension — DSP, UI, playability, architecture, and creative identity.
+**Purpose:** Multi-specialist research team that scours open-source projects, academic papers, commercial synths, game engines, scientific visualization, generative art, and physical simulation libraries for ideas, techniques, reusable components, and inspiration to continuously elevate XOceanus in every dimension — DSP, UI, playability, architecture, and creative identity.
 
 ---
 
 ## When to Use This Skill
 
 Use this skill when:
-- Evaluating an open-source project or repo for ideas XOmnibus can borrow, remix, or learn from
+- Evaluating an open-source project or repo for ideas XOceanus can borrow, remix, or learn from
 - Hunting for solutions to a specific DSP, UI, or architecture challenge
 - Scouting for cross-domain inspiration (physics, biology, game engines, scientific viz, generative art)
 - Auditing what the fleet is missing that the state of the art already has
 - Building or expanding the Research Compendium (`Docs/open_source_reference_guide.md`)
 - Preparing for a new engine design and need prior art research
 - Reviewing a batch of repos or links provided by the user
-- Autonomously discovering new open-source projects relevant to XOmnibus
+- Autonomously discovering new open-source projects relevant to XOceanus
 
 ---
 
@@ -27,7 +27,7 @@ Six specialists, each with a distinct lens. When analyzing any source, **all six
 
 ### 1. DSP Scout
 
-**Mission:** Find algorithms, techniques, and optimizations that could improve XOmnibus engine sound quality, CPU efficiency, or creative range.
+**Mission:** Find algorithms, techniques, and optimizations that could improve XOceanus engine sound quality, CPU efficiency, or creative range.
 
 **Looks for:**
 - Oscillator techniques (polyBLEP, BLIT, wavetable interpolation, spectral morphing)
@@ -42,7 +42,7 @@ Six specialists, each with a distinct lens. When analyzing any source, **all six
 - Parameter smoothing approaches (linear ramp vs. one-pole IIR vs. circular buffer)
 - Academic citations and papers behind DSP implementations
 
-**Maps findings to:** Specific XOmnibus engines, DSP library (`Source/DSP/`), Doctrines (D001-D006)
+**Maps findings to:** Specific XOceanus engines, DSP library (`Source/DSP/`), Doctrines (D001-D006)
 
 ### 2. UI Hunter
 
@@ -66,7 +66,7 @@ Six specialists, each with a distinct lens. When analyzing any source, **all six
 
 ### 3. Architecture Analyst
 
-**Mission:** Study code structure, threading models, memory management, plugin hosting patterns, and build systems that could improve XOmnibus reliability and maintainability.
+**Mission:** Study code structure, threading models, memory management, plugin hosting patterns, and build systems that could improve XOceanus reliability and maintainability.
 
 **Looks for:**
 - Audio thread safety patterns (lock-free queues, FIFO, worker threads, semaphores)
@@ -85,10 +85,10 @@ Six specialists, each with a distinct lens. When analyzing any source, **all six
 
 ### 4. Competitive Intelligence
 
-**Mission:** Track what commercial and high-profile open-source synths are doing that XOmnibus should know about — features, UX patterns, market positioning, user expectations.
+**Mission:** Track what commercial and high-profile open-source synths are doing that XOceanus should know about — features, UX patterns, market positioning, user expectations.
 
 **Looks for:**
-- Feature gaps: things users expect in 2026 that XOmnibus doesn't have yet
+- Feature gaps: things users expect in 2026 that XOceanus doesn't have yet
 - UX standards: interaction patterns that have become industry norms
 - Market trends: what synthesis methods are gaining popularity
 - Preset ecosystem patterns: how other synths organize and distribute presets
@@ -108,7 +108,7 @@ Six specialists, each with a distinct lens. When analyzing any source, **all six
 **Looks for:**
 - **Directly usable (BSD/MIT/Apache/LGPL):** Libraries, modules, utilities that can be linked or included without licensing issues
 - **Study-only (GPL):** Algorithms and techniques that must be independently reimplemented
-- **Dependency candidates:** Libraries that could replace custom XOmnibus code with battle-tested alternatives
+- **Dependency candidates:** Libraries that could replace custom XOceanus code with battle-tested alternatives
 - **SDK integration opportunities:** Code that could enhance the third-party engine SDK
 
 **License classification:**
@@ -168,7 +168,7 @@ When seeking solutions to a specific challenge:
 
 When expanding the Compendium proactively:
 
-1. **Identify gaps** — which XOmnibus engines/features have the least research coverage?
+1. **Identify gaps** — which XOceanus engines/features have the least research coverage?
 2. **Search for relevant projects** on GitHub, KVR, academic repositories
 3. **Analyze and catalog** through all 6 lenses
 4. **Add to Compendium** with proper categorization
@@ -178,10 +178,10 @@ When expanding the Compendium proactively:
 
 When exploring non-audio domains:
 
-1. **Start from an XOmnibus concept** (e.g., ORGANISM's cellular automata)
+1. **Start from an XOceanus concept** (e.g., ORGANISM's cellular automata)
 2. **Search adjacent domains** (biology, game dev, computational art)
 3. **Identify transferable techniques** (data structures, algorithms, visual patterns)
-4. **Map to XOmnibus applications** with concrete implementation suggestions
+4. **Map to XOceanus applications** with concrete implementation suggestions
 5. **Add to Compendium** under Cross-Domain section
 
 ---
@@ -198,19 +198,19 @@ Every research finding follows this structure:
 **Domain:** [Audio / Game Engine / Science / Art / Biology / etc.]
 
 #### DSP Ideas
-- [Specific technique] — [Which XOmnibus engine/component benefits] — [Priority P0-P3]
+- [Specific technique] — [Which XOceanus engine/component benefits] — [Priority P0-P3]
 
 #### UI Ideas
-- [Specific pattern] — [Which XOmnibus UI component benefits] — [Priority P0-P3]
+- [Specific pattern] — [Which XOceanus UI component benefits] — [Priority P0-P3]
 
 #### Architecture Ideas
-- [Specific pattern] — [Which XOmnibus system benefits] — [Priority P0-P3]
+- [Specific pattern] — [Which XOceanus system benefits] — [Priority P0-P3]
 
 #### Reusable Components
 - [Component name] — [License] — [Integration complexity: Drop-in / Adapter / Reimplement]
 
 #### Cross-Domain Inspiration
-- [Concept] — [How it maps to XOmnibus] — [Priority P0-P3]
+- [Concept] — [How it maps to XOceanus] — [Priority P0-P3]
 ```
 
 ### Priority Levels
@@ -231,7 +231,7 @@ All research lives in `Docs/open_source_reference_guide.md` — the single sourc
 ### Compendium Structure
 
 ```
-# XOmnibus Open-Source Research Compendium
+# XOceanus Open-Source Research Compendium
 
 ## Priority Action Items (P0-P3)
 ## DSP Reference Library
@@ -274,7 +274,7 @@ All research lives in `Docs/open_source_reference_guide.md` — the single sourc
 
 1. **Never delete entries** — mark deprecated findings as `[SUPERSEDED by X]`
 2. **Date all additions** — every entry gets a `(added YYYY-MM-DD)` tag
-3. **Link back to engines** — every finding must reference at least one XOmnibus engine, system, or concept
+3. **Link back to engines** — every finding must reference at least one XOceanus engine, system, or concept
 4. **Track implementation** — when a finding is implemented, mark it `[IMPLEMENTED in engine/component]`
 5. **Review quarterly** — re-evaluate P2/P3 items for promotion or archival
 
@@ -322,7 +322,7 @@ All research lives in `Docs/open_source_reference_guide.md` — the single sourc
 ## Research Ethics
 
 - **Always attribute** — every finding links back to its source
-- **Respect licenses** — never suggest copying GPL code into XOmnibus without explicit reimplementation
-- **Credit ideas** — when an XOmnibus feature is inspired by external work, note the inspiration in code comments
-- **Give back** — when XOmnibus develops novel techniques, consider open-sourcing them for the community
+- **Respect licenses** — never suggest copying GPL code into XOceanus without explicit reimplementation
+- **Credit ideas** — when an XOceanus feature is inspired by external work, note the inspiration in code comments
+- **Give back** — when XOceanus develops novel techniques, consider open-sourcing them for the community
 - **Stay curious** — the best ideas come from the most unexpected places (OpenBridge → OCEANDEEP UI)

@@ -678,7 +678,7 @@ jobs:
       - name: Build
         run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build
       - name: auval
-        run: auval -v aumu Xomn XoOx
+        run: auval -v aumu Xocn XoOx
 
   build-ios:
     runs-on: macos-14

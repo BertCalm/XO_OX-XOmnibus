@@ -401,7 +401,7 @@ End card: *"This is coupling. Only in XOceanus."*
 
 Don't compete on preset count. Don't compete on UI polish (Pigments will win that today). Compete on **the thing no one else can do**: cross-engine coupling.
 
-One coupling demo where you hear an impossible sound is worth more than 73 engine spec sheets. Make them hear something they've never heard. Then explain why it can only happen here.
+One coupling demo where you hear an impossible sound is worth more than 76 engine spec sheets. Make them hear something they've never heard. Then explain why it can only happen here.
 
 ---
 

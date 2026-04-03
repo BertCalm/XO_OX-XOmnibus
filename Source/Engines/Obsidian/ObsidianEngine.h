@@ -8,6 +8,7 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
@@ -427,6 +428,26 @@ public:
         const float atPressure = aftertouch.getSmoothedPressure(0);
         // Sensitivity 0.3: full pressure adds up to +0.3 formant intensity
         effectiveFormant = clamp(effectiveFormant + atPressure * 0.3f, 0.0f, 1.0f);
+
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel, 5=PDDepth
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f; // LFO ticked per-voice
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            obsidianModCutoffOffset = mDst[1] * 5000.0f;
+            obsidianModPitchOffset  = mDst[3] * 12.0f;
+            obsidianModLevelOffset  = mDst[4] * 0.5f;
+            obsidianModPDDepthOffset = mDst[5] * 0.3f;
+        }
+        effectiveCutoff = clamp(effectiveCutoff + obsidianModCutoffOffset, 20.0f, 20000.0f);
 
         // D005: engine-level "stone breathing" formant LFO — 0.1 Hz sine, ±15% formant blend.
         // This creates a slow vowel drift (A→E→O cycle) across the polyphonic field —
@@ -976,6 +997,11 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"obsidian_macroSpace", 1}, "Obsidian Macro SPACE",
             juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kObsidianModDests {"Off", "Filter Cutoff", "LFO1 Rate", "Pitch", "Amp Level",
+                                                           "PD Depth"};
+        ModMatrix<4>::addParameters(params, "obsidian_", "Obsidian", kObsidianModDests);
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1026,6 +1052,7 @@ public:
         pMacroMovement = apvts.getRawParameterValue("obsidian_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("obsidian_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("obsidian_macroSpace");
+        modMatrix.attachParameters(apvts, "obsidian_");
     }
 
     //==========================================================================
@@ -1459,6 +1486,13 @@ private:
     std::atomic<float>* pMacroMovement = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;
     std::atomic<float>* pMacroSpace = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float obsidianModCutoffOffset  = 0.0f;
+    float obsidianModPitchOffset   = 0.0f;
+    float obsidianModLevelOffset   = 0.0f;
+    float obsidianModPDDepthOffset = 0.0f;
 };
 
 } // namespace xoceanus

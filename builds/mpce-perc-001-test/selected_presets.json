@@ -8,7 +8,7 @@
   "presets": [
     {
       "name": "Tape Machine",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Tape_Machine.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Flux/Onset/Tape_Machine.xometa",
       "dna": {
         "brightness": 0.3,
         "warmth": 0.75,
@@ -21,7 +21,7 @@
     },
     {
       "name": "Boom Bap OG",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Boom_Bap_OG.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Boom_Bap_OG.xometa",
       "dna": {
         "brightness": 0.45,
         "warmth": 0.65,
@@ -34,7 +34,7 @@
     },
     {
       "name": "Garage Two Step",
-      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Garage_Two_Step.xometa",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus/Foundation/Onset/Garage_Two_Step.xometa",
       "dna": {
         "brightness": 0.55,
         "warmth": 0.5,

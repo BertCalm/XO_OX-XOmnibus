@@ -441,7 +441,7 @@ cmake --build build
 
 **AU validation:**
 ```bash
-auval -v aumu Xomn Xoox  # Replace with your plugin codes
+auval -v aumu Xocn XoOx  # Replace with your plugin codes
 ```
 
 **Smoke tests to run manually:**

@@ -300,7 +300,7 @@ Community members "attune" to a specific engine. Not advocacy with obligations. 
 
 **Spreadsheet MVP.** Discord channel `#attuned-guides`. No formal SLA. The only requirement is genuine time spent with the engine.
 
-**"THE AQUARIUM IS FULL" milestone:** When all 73 engines have at least one attuned guide. Post this as a community achievement when it happens. It is a measurable signal that the community has depth.
+**"THE AQUARIUM IS FULL" milestone:** When all 76 engines have at least one attuned guide. Post this as a community achievement when it happens. It is a measurable signal that the community has depth.
 
 ---
 
@@ -335,7 +335,7 @@ Before any template runs, write 500 words. Not for publication. For calibration.
 **The three questions:**
 
 **1. Who am I talking to?**
-Synthesis nerds who have not heard of XOceanus. They know what coupling is, or they are curious enough to learn. They are probably using Vital, Serum, Surge, or hardware. They are frustrated that synthesis is either too simple (preset-only) or too inaccessible (modular). They want something with depth that does not require a PhD to navigate. They have heard that XOceanus has 73 engines and want to know if that is real or marketing.
+Synthesis nerds who have not heard of XOceanus. They know what coupling is, or they are curious enough to learn. They are probably using Vital, Serum, Surge, or hardware. They are frustrated that synthesis is either too simple (preset-only) or too inaccessible (modular). They want something with depth that does not require a PhD to navigate. They have heard that XOceanus has 76 engines and want to know if that is real or marketing.
 
 **2. What should they feel?**
 Curiosity. Not sold-to. The difference: sold-to means you already know the answer and are persuading. Curiosity means you are sharing something you found genuinely interesting and leaving room for them to find it too. A person who feels sold-to bounces. A person who feels curious clicks deeper.

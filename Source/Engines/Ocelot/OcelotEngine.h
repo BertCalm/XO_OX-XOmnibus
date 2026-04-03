@@ -4,6 +4,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "OcelotVoicePool.h"
@@ -96,8 +97,31 @@ public:
         snapshot.ecosystemDepth =
             std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
 
-        // Pitch bend: ±2 semitones (propagated to strata via snapshot)
-        snapshot.pitchBendSemitones = pitchBendNorm * 2.0f;
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=EcosystemDepth, 2=CanopyShimmer, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: ecosystem depth offset (cross-stratum coupling)
+            snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + mDst[1] * 0.4f, 0.0f, 1.0f);
+            // dst 2: canopy shimmer offset
+            snapshot.canopyShimmer = std::clamp(snapshot.canopyShimmer + mDst[2] * 0.5f, 0.0f, 1.0f);
+            // dst 4: amplitude level scale (stored for voice rendering — applied as 1+offset scale)
+            snapshot.modMatrixLevelOffset = mDst[4] * 0.5f;
+            // dst 3: stored separately; applied after pitchBendSemitones is set below
+            ocelotModPitchOffset = mDst[3] * 12.0f;
+        }
+
+        // Pitch bend: ±2 semitones (propagated to strata via snapshot; mod matrix adds extra)
+        snapshot.pitchBendSemitones = pitchBendNorm * 2.0f + ocelotModPitchOffset;
 
         // Apply coupling input mods (accumulated by applyCouplingInput since last block).
         // Each mod is added to the snapshot field and clamped, then reset to zero.
@@ -200,6 +224,9 @@ public:
     {
         apvtsRef = &apvts;
         // snapshot.updateFrom() is called each renderBlock, using the stored reference
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "ocelot_");
     }
 
     // ── Identity ─────────────────────────────────────────

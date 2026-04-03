@@ -12,7 +12,7 @@
 | Check | Status | Notes |
 |-------|--------|-------|
 | Main XOceanus AU builds without errors | ✅ | 0 errors — Round 11J verified. 7 forward-reference `atPressure` bugs fixed in Bob/Bite/Onset/Opal/Ouroboros. |
-| auval passes for AU target (`auval -v aumu Xomn XoOx`) | ✅ | PASS — all render, MIDI, and parameter scheduling tests pass. Note: codes are `Xomn`/`XoOx` (case-sensitive). |
+| auval passes for AU target (`auval -v aumu Xocn XoOx`) | ✅ | PASS — all render, MIDI, and parameter scheduling tests pass. Note: codes are `Xocn`/`XoOx` (case-sensitive). |
 | Test target (`XOceanusTests`) compiles | ⚠️ | 2 pre-existing errors in `XPNExporter.h:633-634` — `juce_audio_formats` module not linked in test target. Main AU build unaffected. Deferred. |
 | No new warnings vs. baseline (Round 8H: 7 warnings) | ✅ | Still 7 warnings post-Round 11J. All pre-existing: `JUCE_DISPLAY_SPLASH_SCREEN` (1), `float→int` implicit conversion in `MasterFXSequencer.h:203` (1), deprecated `juce::Font(name,size,style)` in `XOceanusEditor.h:129-133` (5). Zero new warnings. |
 | Binary size reasonable | ✅ | 8.9 MB (AU bundle). Build time ~38s full rebuild. |

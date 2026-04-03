@@ -669,7 +669,7 @@ Priority: NICE
 After each batch of changes:
 
 1. `cmake --build build` — confirm zero new errors/warnings
-2. `auval -v aumu Xolk XoOx` — confirm AU validation pass
+2. `auval -v aumu Xocn XoOx` — confirm AU validation pass
 3. Manual check: click each signal flow label → ParameterGrid scrolls to correct section
 4. Manual check: COUPLE tab → collapsed route cards show real engine names in accent colors
 5. Manual check: MasterFX strip fits within 68px with no overlapping knob labels

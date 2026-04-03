@@ -18,6 +18,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
@@ -793,9 +794,9 @@ public:
         const float ampS = (pAmpSustain != nullptr) ? pAmpSustain->load() : 0.8f;
         const float ampR = (pAmpRelease != nullptr) ? pAmpRelease->load() : 0.15f;
 
-        // M3 SIZE macro: opens filter cutoff (+6000 Hz) for massive stacks
+        // M3 SIZE macro: opens filter cutoff (+6000 Hz) for massive stacks; D002 mod matrix adds further offset
         const float fltCutoff =
-            clamp(((pFltCutoff != nullptr) ? pFltCutoff->load() : 2000.0f) + macroSize * 6000.0f, 20.0f, 18000.0f);
+            clamp(((pFltCutoff != nullptr) ? pFltCutoff->load() : 2000.0f) + macroSize * 6000.0f + fatModCutoffOffset, 20.0f, 18000.0f);
         const float fltReso = (pFltReso != nullptr) ? pFltReso->load() : 0.2f;
         // M2 GRIT macro: increases filter drive (+0.3) for more inter-stage saturation
         const float fltDrive =
@@ -835,8 +836,10 @@ public:
         const float lfo1Depth = (pLfo1Depth != nullptr) ? pLfo1Depth->load() : 0.15f;
         const int lfo1Target = (pLfo1Target != nullptr) ? static_cast<int>(pLfo1Target->load()) : 0;
         // Update BreathingLFO rate per-block for all voices (rate is block-constant).
+        // D002: fatModLfo1RateOffset uses previous block's value (one-block delay is inaudible at LFO rates).
+        const float effectiveLfo1Rate = clamp(lfo1Rate + fatModLfo1RateOffset, 0.005f, 8.0f);
         for (auto& voice : voices)
-            voice.breathingLFO.setRate(lfo1Rate, static_cast<float>(sr));
+            voice.breathingLFO.setRate(effectiveLfo1Rate, static_cast<float>(sr));
 
         // D002: 2nd LFO — read once per block, advance block-rate.
         // Saw waveform (rising ramp) creates a characteristic gliding filter sweep.
@@ -977,13 +980,33 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel, 5=Mojo
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            fatModCutoffOffset  = mDst[1] * 5000.0f;
+            fatModLfo1RateOffset = mDst[2] * 4.0f;
+            fatModPitchOffset   = mDst[3] * 12.0f;
+            fatModLevelOffset   = mDst[4] * 0.5f;
+            fatModMojoOffset    = mDst[5] * 0.3f;
+        }
+
         // D006: aftertouch pushes mojo toward analog end of spectrum (sensitivity 0.3).
         // Higher pressure = more analog drift + soft-clip saturation on all oscillators.
         // This is Blessing B015 in action: the Mojo orthogonal axis becomes touch-sensitive.
         // D006: mod wheel also boosts mojo up to +0.5 at full wheel (classic Moog expression; sensitivity 0.5)
         // M1 MOJO macro already added to analogAmount above; aftertouch + mod wheel also contribute
         const float effectiveMojo =
-            clamp(mojo + macroMojo * 0.5f + atPressure * 0.3f + modWheelValue * 0.5f, 0.0f, 1.0f);
+            clamp(mojo + macroMojo * 0.5f + atPressure * 0.3f + modWheelValue * 0.5f + fatModMojoOffset, 0.0f, 1.0f);
         analogAmount = effectiveMojo; // update after MIDI loop once atPressure is known
 
         // Consume coupling accumulators
@@ -1043,8 +1066,8 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // Pitch mod (coupling) + pitch bend
-                float freq = baseFreq * fastExp(pitchMod * (0.693147f / 12.0f)) *
+                // Pitch mod (coupling + mod matrix) + pitch bend
+                float freq = baseFreq * fastExp((pitchMod + fatModPitchOffset) * (0.693147f / 12.0f)) *
                              PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 // Filter envelope
@@ -1191,9 +1214,10 @@ public:
                 peakEnv = std::max(peakEnv, envVal);
             }
 
-            // Apply level + soft limit
-            float outL = fastTanh(mixL * level);
-            float outR = fastTanh(mixR * level);
+            // Apply level + soft limit (D002: mod matrix level offset)
+            const float effectiveLevel = clamp(level + fatModLevelOffset, 0.05f, 1.5f);
+            float outL = fastTanh(mixL * effectiveLevel);
+            float outR = fastTanh(mixR * effectiveLevel);
 
             outputCacheL[static_cast<size_t>(sample)] = outL;
             outputCacheR[static_cast<size_t>(sample)] = outR;
@@ -1416,6 +1440,11 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"fat_macroCrush", 1}, "Fat CRUSH",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kFatModDests {"Off", "Filter Cutoff", "LFO1 Rate", "Pitch", "Amp Level",
+                                                      "Mojo"};
+        ModMatrix<4>::addParameters(params, "fat_", "Fat", kFatModDests);
     }
 
 public:
@@ -1469,6 +1498,7 @@ public:
         // D002: 2nd LFO
         pLfo2Rate = apvts.getRawParameterValue("fat_lfo2Rate");
         pLfo2Depth = apvts.getRawParameterValue("fat_lfo2Depth");
+        modMatrix.attachParameters(apvts, "fat_");
     }
 
 private:
@@ -1661,6 +1691,14 @@ private:
     // Rate floor 0.005 Hz satisfies D005 (≤ 0.01 Hz).
     double lfo2Phase = 0.0;  // [0, 1) normalized phase
     float lfo2Output = 0.0f; // cached saw output [-1, +1]
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float fatModCutoffOffset   = 0.0f;
+    float fatModLfo1RateOffset = 0.0f;
+    float fatModPitchOffset    = 0.0f;
+    float fatModLevelOffset    = 0.0f;
+    float fatModMojoOffset     = 0.0f;
     std::atomic<float>* pLfo2Rate = nullptr;
     std::atomic<float>* pLfo2Depth = nullptr;
 };

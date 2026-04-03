@@ -155,7 +155,7 @@ struct OchreHammerModel
         {
             float phase = static_cast<float>(sampleCounter) / static_cast<float>(contactSamples);
             // Half-sine pulse (hammer contact force envelope)
-            float pulse = std::sin(phase * 3.14159265f) * vel;
+            float pulse = fastSin(phase * 3.14159265f) * vel;
 
             // Noise component (felt texture / copper surface irregularity)
             noiseState = noiseState * 1664525u + 1013904223u;

@@ -260,6 +260,14 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // ---- Hoist block-rate smooth coefficients outside per-sample loop ----
+        // These depend only on fixed time constants and sample rate — computing
+        // them per-sample via fastExp was unnecessary CPU work (#616 fix).
+        const float blockAttackCoeff  = smoothCoeffFromTime(0.001f, srF_);
+        const float blockReleaseCoeff = smoothCoeffFromTime(0.02f,  srF_);
+        const float blockVacAttackBase = 0.01f + (1.0f - pVacuumAttack) * 0.09f; // vacAttack base (pVacuumAttack constant per block)
+        const float blockVacCoeff     = smoothCoeffFromTime(blockVacAttackBase, srF_);
+
         for (int i = 0; i < numSamples; ++i)
         {
             // === EXCITER ===
@@ -287,8 +295,8 @@ public:
             // === BAYESIAN ENVELOPE PREDICTION ===
             // Simple predictive envelope: one-pole follower + linear predictor
             float absInput = std::fabs(exciterSample);
-            float attackCoeff = smoothCoeffFromTime(0.001f, srF_);
-            float releaseCoeff = smoothCoeffFromTime(0.02f, srF_);
+            float attackCoeff  = blockAttackCoeff;
+            float releaseCoeff = blockReleaseCoeff;
             float envCoeff = (absInput > envFollower_) ? attackCoeff : releaseCoeff;
             envFollower_ = envFollower_ + envCoeff * (absInput - envFollower_);
             envFollower_ = flushDenormal(envFollower_);
@@ -321,10 +329,8 @@ public:
                 vacuumTarget = clamp(vacuumTarget, 0.0f, 1.0f);
             }
 
-            // Smooth VCA (fast attack, medium release)
-            float vacAttack = 0.01f + (1.0f - pVacuumAttack) * 0.09f;
-            float vacCoeff = smoothCoeffFromTime(vacAttack, srF_);
-            vacuumVCA_ = vacuumVCA_ + vacCoeff * (vacuumTarget - vacuumVCA_);
+            // Smooth VCA (fast attack, medium release) — coefficient is block-rate (blockVacCoeff)
+            vacuumVCA_ = vacuumVCA_ + blockVacCoeff * (vacuumTarget - vacuumVCA_);
             vacuumVCA_ = flushDenormal(vacuumVCA_);
 
             // Apply vacuum to delayed signal

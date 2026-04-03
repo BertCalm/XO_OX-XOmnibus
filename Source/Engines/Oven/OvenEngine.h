@@ -214,7 +214,7 @@ struct OvenHammerModel
         if (sampleCounter < contactSamples)
         {
             float phase = static_cast<float>(sampleCounter) / static_cast<float>(contactSamples);
-            float pulse = std::sin(phase * 3.14159265f) * peakAmplitude;
+            float pulse = fastSin(phase * 3.14159265f) * peakAmplitude;
 
             // Noise component (Maillard "char")
             noiseState = noiseState * 1664525u + 1013904223u;
@@ -228,7 +228,7 @@ struct OvenHammerModel
         {
             int rebPhase = sampleCounter - reboundSample;
             float phase = static_cast<float>(rebPhase) / static_cast<float>(contactSamples / 2);
-            out += std::sin(phase * 3.14159265f) * reboundAmp;
+            out += fastSin(phase * 3.14159265f) * reboundAmp;
         }
 
         // End condition

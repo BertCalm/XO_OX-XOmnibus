@@ -106,6 +106,10 @@ struct OcelotParamSnapshot
     // ── Pitch Bend ────────────────────────────────
     float pitchBendSemitones = 0.0f; // ±2 semitones (set by engine from MIDI pitch wheel)
 
+    // ── D002 Mod Matrix runtime offsets ───────────
+    // Set by OcelotEngine::renderBlock() mod matrix apply block; consumed by OcelotVoicePool.
+    float modMatrixLevelOffset = 0.0f; // ±0.5 amplitude scale offset
+
     // Update all fields from APVTS — call once per processBlock, before any DSP.
     // NOTE: ParamIDs constants have the same names as struct fields, so we must
     // use explicit xocelot::ParamIDs:: qualification to avoid member shadowing.

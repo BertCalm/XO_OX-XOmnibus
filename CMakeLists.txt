@@ -43,8 +43,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
 else()
     set(XO_MOBILE OFF)
     # VST3 is a V2 target (tracked in #98). Add "VST3" to XO_FORMATS here when
-    # VST3 work begins. Pass -DXOLOKUN_BUILD_VST3=ON to enable before that lands.
-    if(XOLOKUN_BUILD_VST3)
+    # VST3 work begins. Pass -DXOCEANUS_BUILD_VST3=ON to enable before that lands.
+    if(XOCEANUS_BUILD_VST3)
         set(XO_FORMATS AU Standalone VST3)
     else()
         set(XO_FORMATS AU Standalone)
@@ -503,7 +503,7 @@ target_compile_definitions(XOceanus PUBLIC
 
 # JUCE_VST3_CAN_REPLACE_VST2 is only relevant when building VST3.
 # Guard it to avoid confusion when VST3 is not in XO_FORMATS.
-if(XOLOKUN_BUILD_VST3)
+if(XOCEANUS_BUILD_VST3)
     target_compile_definitions(XOceanus PUBLIC JUCE_VST3_CAN_REPLACE_VST2=0)
 endif()
 
@@ -540,10 +540,9 @@ endif()
 # which supplies the test runner main(). No external install required.
 # ==============================================================================
 include(FetchContent)
-FetchContent_Declare(
-    Catch2
+FetchContent_Declare(Catch2
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG        v3.5.2
+    GIT_TAG        v3.5.3
 )
 FetchContent_MakeAvailable(Catch2)
 

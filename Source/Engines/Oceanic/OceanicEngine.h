@@ -5,6 +5,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
@@ -403,6 +404,31 @@ public:
         // Higher pressure = particles scatter further from their neighbors = faster color shift.
         effectiveSep = clamp(effectiveSep + atPressure * 0.25f, 0.0f, 1.0f);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=Separation, 2=Cohesion, 3=Pitch, 4=AmpLevel, 5=Tether
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;  // Oceanic LFO values are per-voice (boid-level)
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: separation offset (boid scatter radius)
+            effectiveSep = clamp(effectiveSep + mDst[1] * 0.4f, 0.0f, 1.0f);
+            // dst 2: cohesion offset (boid school tightness)
+            effectiveCoh = clamp(effectiveCoh + mDst[2] * 0.4f, 0.0f, 1.0f);
+            // dst 3: pitch offset in semitones
+            oceanModPitchOffset   = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset (applied at output)
+            oceanModLevelOffset   = mDst[4] * 0.5f;
+            // dst 5: tether offset
+            effectiveTeth = clamp(effectiveTeth + mDst[5] * 0.4f, 0.0f, 1.0f);
+        }
+
         // Apply murmuration trigger to all active voices
         if (trigMurmuration)
         {
@@ -539,8 +565,8 @@ public:
                         }
                     }
 
-                    // Attractor targets: MIDI note * sub-flock ratio * pitch bend
-                    const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                    // Attractor targets: MIDI note * sub-flock ratio * pitch bend (+ mod matrix pitch)
+                    const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + oceanModPitchOffset);
                     float attractorLogFreq[4];
                     for (int f = 0; f < 4; ++f)
                     {
@@ -877,15 +903,16 @@ public:
                 peakEnv = std::max(peakEnv, ampLevel);
             }
 
-            // Write to output buffer
+            // Write to output buffer (apply mod matrix level offset)
+            const float levelScale = juce::jlimit(0.05f, 1.5f, 1.0f + oceanModLevelOffset);
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample(0, sample, mixL);
-                buffer.addSample(1, sample, mixR);
+                buffer.addSample(0, sample, mixL * levelScale);
+                buffer.addSample(1, sample, mixR * levelScale);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample(0, sample, (mixL + mixR) * 0.5f);
+                buffer.addSample(0, sample, (mixL + mixR) * 0.5f * levelScale);
             }
 
             // Cache for coupling reads
@@ -1086,6 +1113,11 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"ocean_macroSpace", 1}, "Oceanic Macro SPACE",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kOceanicModDests {"Off", "Separation", "Cohesion", "Pitch", "Amp Level",
+                                                          "Tether"};
+        ModMatrix<4>::addParameters(params, "ocean_", "Oceanic", kOceanicModDests);
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1123,6 +1155,9 @@ public:
         pMacroMovement = apvts.getRawParameterValue("ocean_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("ocean_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("ocean_macroSpace");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "ocean_");
     }
 
     //==========================================================================
@@ -1381,6 +1416,11 @@ private:
     std::atomic<float>* pMacroMovement = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;
     std::atomic<float>* pMacroSpace = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float oceanModPitchOffset   = 0.0f;
+    float oceanModLevelOffset   = 0.0f;
 };
 
 } // namespace xoceanus

@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --quiet numpy || true  # Optional — tests skip if unavailable
+          pip install numpy==1.26.4
 
       - name: Run core tests
         working-directory: Tools

@@ -9,6 +9,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
@@ -971,6 +972,26 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFORate, 3=Pitch, 4=AmpLevel, 5=Shimmer
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f; // LFO not yet ticked this block
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            driftModCutoffOffset  = mDst[1] * 5000.0f;
+            driftModLfoRateOffset = mDst[2] * 8.0f;
+            driftModPitchOffset   = mDst[3] * 12.0f;
+            driftModLevelOffset   = mDst[4] * 0.5f;
+            driftModShimmerOffset = mDst[5] * 0.5f;
+        }
+
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
         externalPitchMod = 0.0f;
@@ -981,10 +1002,10 @@ public:
 
         // D006: aftertouch pushes Prism Shimmer deeper — sensitivity 0.35
         // Full pressure adds up to +0.35 shimmer (the JOURNEY macro analog: more shimmer = more Alien)
-        shimmerAmt = clamp(shimmerAmt + atPressure * 0.35f, 0.0f, 1.0f);
+        shimmerAmt = clamp(shimmerAmt + atPressure * 0.35f + driftModShimmerOffset, 0.0f, 1.0f);
 
         // Setup LFO
-        lfo.setRate(effLfoRate, srf);
+        lfo.setRate(clamp(effLfoRate + driftModLfoRateOffset, 0.01f, 30.0f), srf);
         // DSP FIX: Shape varies by destination for timbral variety (was sine-only).
         // Pitch→Sine (smooth pitch wobble), Filter→Triangle (organic sweep), Amp→Saw (rhythmic pulse).
         static constexpr int kLfoShapeByDest[] = {0, 1, 2}; // Sine, Triangle, Saw
@@ -1089,7 +1110,7 @@ public:
                 float driftSemitones = driftVal * 0.5f; // ±0.5 semitones max
 
                 // Total pitch modulation: drift + LFO + coupling + pitch bend
-                float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f;
+                float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f + driftModPitchOffset;
                 float pitchMul = fastExp(totalPitchSemi * (0.693147f / 12.0f));
 
                 float freqA = baseFreqA * pitchMul;
@@ -1156,7 +1177,7 @@ public:
                 // --- Filter A (LP 12/24 dB) ---
                 float envVal = voice.ampEnv.process();
 
-                float cutoffMod = effFilterCut;
+                float cutoffMod = effFilterCut + driftModCutoffOffset;
 
                 // Envelope to filter
                 if (std::abs(filterEnv) > 0.001f)
@@ -1262,9 +1283,10 @@ public:
                 peakEnv = std::max(peakEnv, envVal);
             }
 
-            // Apply engine level
-            float outL = mixL * level;
-            float outR = mixR * level;
+            // Apply engine level (D002: mod matrix level offset)
+            const float effectiveLevel = clamp(level + driftModLevelOffset, 0.05f, 1.5f);
+            float outL = mixL * effectiveLevel;
+            float outR = mixR * effectiveLevel;
 
             // Soft limiter
             outL = fastTanh(outL);
@@ -1572,6 +1594,11 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"drift_macroSpace", 1}, "Drift Macro SPACE",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kDriftModDests {"Off", "Filter Cutoff", "LFO Rate", "Pitch", "Amp Level",
+                                                        "Shimmer"};
+        ModMatrix<4>::addParameters(params, "drift_", "Drift", kDriftModDests);
     }
 
 public:
@@ -1626,6 +1653,7 @@ public:
         pMacroMovement = apvts.getRawParameterValue("drift_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("drift_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("drift_macroSpace");
+        modMatrix.attachParameters(apvts, "drift_");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1855,6 +1883,14 @@ private:
     std::atomic<float>* pMacroMovement = nullptr;  // drift_macroMovement  — M2: LFO1 rate boost
     std::atomic<float>* pMacroCoupling = nullptr;  // drift_macroCoupling  — M3: coupling send offset
     std::atomic<float>* pMacroSpace = nullptr;     // drift_macroSpace     — M4: reverb mix blend
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float driftModCutoffOffset  = 0.0f;
+    float driftModLfoRateOffset = 0.0f;
+    float driftModPitchOffset   = 0.0f;
+    float driftModLevelOffset   = 0.0f;
+    float driftModShimmerOffset = 0.0f;
 };
 
 } // namespace xoceanus

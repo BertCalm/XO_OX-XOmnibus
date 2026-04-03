@@ -655,10 +655,10 @@ If a permission is denied:
 | Apple rejects location usage | Medium | High | Submit minimal music app first, add location in update. |
 | Battery drain from location | Medium | Medium | Significant-change only. Test on oldest supported device. |
 | Scope creep | HIGH | High | Each phase has a gate. Don't start next phase until gate passes. |
-| Binary size too large | Medium | Medium | Ship OBRIX only (not 73 engines). Target <80MB. |
+| Binary size too large | Medium | Medium | Ship OBRIX only (not 76 engines). Target <80MB. |
 
 ## 16. What This Does NOT Include
-- No 73 engines on iOS (desktop only)
+- No 76 engines on iOS (desktop only)
 - No DAW integration / AUv3
 - No preset library browser (desktop feature)
 - No coupling inspector UI (desktop feature)

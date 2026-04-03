@@ -6,6 +6,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/FilterEnvelope.h"
 #include "../../DSP/ParameterSmoother.h"
+#include "../../DSP/FastMath.h"
 #include <cmath>
 #include <array>
 #include <algorithm>
@@ -184,6 +185,18 @@ public:
         float bandSumSq[4] = {0.0f, 0.0f, 0.0f, 0.0f};
         int bandCount = 0;
 
+        // ---- Compute membrane LP coefficient once at block-rate ----
+        // LFO rate is low (≤~5 Hz); re-computing the one-pole coefficient
+        // every sample via std::exp is the #1 CPU hot-spot in this engine.
+        // Using fastExp with the LFO's current phase value gives imperceptible
+        // difference while removing a transcendental from the per-sample path.
+        {
+            const float effPhase = lfo_.phase + lfo_.phaseOffset;
+            const float lfoValBlock = fastSin((effPhase >= 1.0f ? effPhase - 1.0f : effPhase) * 6.28318530718f);
+            const float effectiveCutoffBlock = membraneBaseFreq * (1.0f + lfoValBlock * kLfoDepth);
+            membraneLPCoeff_ = fastExp(-2.0f * 3.14159265f * effectiveCutoffBlock / static_cast<float>(sr_));
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             // Read external input (or silence if none)
@@ -226,11 +239,8 @@ public:
             bandSumSq[3] += b3 * b3;
             ++bandCount;
 
-            // ---- LFO → modulate membrane cutoff ----
-            const float lfoVal = lfo_.process();
-            const float effectiveCutoff = membraneBaseFreq * (1.0f + lfoVal * kLfoDepth);
-            // Use matched-Z one-pole coefficient (CLAUDE.md: exp(-2π·fc/sr))
-            membraneLPCoeff_ = std::exp(-2.0f * 3.14159265f * effectiveCutoff / static_cast<float>(sr_));
+            // ---- LFO → advance phase per-sample (coefficient computed at block-rate above) ----
+            lfo_.process(); // advance LFO state; membraneLPCoeff_ is refreshed at block-rate
 
             // ---- Membrane filter (one-pole LP for pass-through coloring) ----
             // Also run right channel through same coefficient

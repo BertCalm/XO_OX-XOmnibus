@@ -453,8 +453,8 @@ struct OperaPartialBank
         for (int f = 0; f < 5; ++f)
         {
             // Log interpolation for frequencies — perceptually even
-            float logA = std::log(vowelA.freq[f]);
-            float logB = std::log(vowelB.freq[f]);
+            float logA = std::log(std::max(20.0f, vowelA.freq[f]));
+            float logB = std::log(std::max(20.0f, vowelB.freq[f]));
             result.freq[f] = std::exp(FastMath::lerp(logA, logB, morphPosition));
 
             // Linear interpolation for bandwidths

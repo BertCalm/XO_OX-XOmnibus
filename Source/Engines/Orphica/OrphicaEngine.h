@@ -603,7 +603,7 @@ public:
             for (int i = 0; i < ns; ++i)
             {
                 subPhaseL = std::fmod(subPhaseL + subInc, 1.0f);
-                float sub = std::sin(subPhaseL * 6.2831853f) * pSub * 0.3f;
+                float sub = fastSin(subPhaseL * 6.2831853f) * pSub * 0.3f;
                 lowBufL[i] += sub;
                 lowBufR[i] += sub;
             }

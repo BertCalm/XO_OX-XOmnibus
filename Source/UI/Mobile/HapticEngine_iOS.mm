@@ -114,7 +114,7 @@ namespace
 // haptic_platform implementation
 // ---------------------------------------------------------------------------
 
-namespace xolokun::haptic_platform
+namespace xoceanus::haptic_platform
 {
 
 // Warms up the Taptic Engine for the given impact style so the first fire
@@ -205,7 +205,7 @@ void fireSelection()
     }
 }
 
-} // namespace xolokun::haptic_platform
+} // namespace xoceanus::haptic_platform
 
 // ---------------------------------------------------------------------------
 // A11y platform bridge — UIAccessibility.isReduceMotionEnabled
@@ -213,7 +213,7 @@ void fireSelection()
 // Declared as xolokun::a11y_platform::isReduceMotionEnabled() in GalleryColors.h.
 // Reads the system-level "Reduce Motion" accessibility setting via UIAccessibility.
 // Returns true when the user has enabled Settings > Accessibility > Reduce Motion.
-namespace xolokun::a11y_platform {
+namespace xoceanus::a11y_platform {
 
 bool isReduceMotionEnabled()
 {
@@ -223,6 +223,6 @@ bool isReduceMotionEnabled()
     }
 }
 
-} // namespace xolokun::a11y_platform
+} // namespace xoceanus::a11y_platform
 
 #endif // JUCE_IOS

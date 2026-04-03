@@ -4,6 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <array>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -36,7 +37,7 @@ struct TapeWarp
         lfoPhase += lfoRate / sr;
         if (lfoPhase > 1.0f)
             lfoPhase -= 1.0f;
-        float lfo = std::sin(lfoPhase * 2.0f * kPi);
+        float lfo = xoceanus::fastSin(lfoPhase * 2.0f * kPi);
 
         // Modulated delay in samples (0–8ms flutter range)
         float delayMs = wobble * 8.0f * (0.5f + 0.5f * lfo);

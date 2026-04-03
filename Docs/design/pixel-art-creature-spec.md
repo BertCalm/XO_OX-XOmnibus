@@ -1,7 +1,7 @@
 # XOceanus Pixel Art Creature Sprite Spec
 
 **Date:** 2026-03-24
-**Purpose:** Asset generation guide for 71 engine creature sprites (feliX + Oscar have 3D renders)
+**Purpose:** Asset generation guide for 74 engine creature sprites (feliX + Oscar have 3D renders)
 
 ---
 
@@ -42,7 +42,7 @@ Generate for V1.1/V1.2 content drops.
 
 ---
 
-## Complete Creature List (73 Engines)
+## Complete Creature List (76 Engines)
 
 ### Hero Pair (3D Renders — DONE)
 

@@ -323,7 +323,7 @@ Olokun's domains are: the deep ocean, mystery, hidden wealth, transformation, th
 
 ### Why the Name Fits
 
-XOceanus names a synthesizer that lives in the deep. Its architecture — 73 engines, the coupling system, the depth zones of the aquatic mythology, the unknowable emergent sounds that arise when engines couple — maps directly onto Olokun's attributes:
+XOceanus names a synthesizer that lives in the deep. Its architecture — 76 engines, the coupling system, the depth zones of the aquatic mythology, the unknowable emergent sounds that arise when engines couple — maps directly onto Olokun's attributes:
 
 - **The unknowable floor:** You cannot hear all of XOceanus at once. Coupling creates sounds no single preset or engine can predict. Like the ocean floor: real, present, but impossible to fully surface.
 - **Depth zones:** The Aquatic Collection's own mythology (Sunlit, Twilight, Midnight, Hadal zones) mirrors Olokun's domain precisely. This is not retrofitted — the aquatic DNA was already in the instrument.

@@ -10,6 +10,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/GlideProcessor.h"
 #include <array>
 #include <cmath>
@@ -657,6 +658,29 @@ public:
         // D006: mod wheel adds up to +0.4 maqam gravity at full wheel (stronger scale attraction; sensitivity 0.4)
         effectiveGravity = clamp(effectiveGravity + modWheelValue * 0.4f, 0.0f, 1.0f);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=MaqamGravity, 2=LFORate, 3=Pitch, 4=AmpLevel, 5=DriftDepth
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;   // Oracle LFO values are per-voice; use 0 at block level
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: Maqam gravity offset (±0.4 range — matches the existing mod wheel sensitivity)
+            effectiveGravity = clamp(effectiveGravity + mDst[1] * 0.4f, 0.0f, 1.0f);
+            // dst 3: pitch offset in semitones (±12)
+            oracleModPitchOffset   = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset
+            oracleModLevelOffset   = mDst[4] * 0.5f;
+            // dst 5: drift depth offset — capped to avoid instability
+            effectiveDrift = clamp(effectiveDrift + mDst[5] * 0.3f, 0.0f, 1.0f);
+        }
+
         float peakEnvelopeLevel = 0.0f;
 
         // ===== PER-SAMPLE RENDER LOOP =====
@@ -690,7 +714,7 @@ public:
                 }
 
                 // --- Glide (portamento) ---
-                float frequency = voice.glide.process() * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float frequency = voice.glide.process() * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + oracleModPitchOffset);
 
                 // --- Envelopes ---
                 float amplitudeLevel = voice.amplitudeEnvelope.process();
@@ -808,8 +832,9 @@ public:
             }
 
             // --- Master output ---
-            float finalL = mixL * masterLevel;
-            float finalR = mixR * masterLevel;
+            const float effectiveMasterLevel = juce::jlimit(0.05f, 1.5f, masterLevel + oracleModLevelOffset);
+            float finalL = mixL * effectiveMasterLevel;
+            float finalR = mixR * effectiveMasterLevel;
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
@@ -1044,6 +1069,12 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"oracle_velDriftDepth", 1}, "Oracle Vel Drift",
             juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.3f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        // Oracle has no filter — replace Filter Cutoff with Maqam Gravity (scale attraction strength)
+        static const juce::StringArray kOracleModDests {"Off", "Maqam Gravity", "LFO Rate", "Pitch", "Amp Level",
+                                                         "Drift Depth"};
+        ModMatrix<4>::addParameters(params, "oracle_", "Oracle", kOracleModDests);
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1084,6 +1115,7 @@ public:
         pMacroDrift = apvts.getRawParameterValue("oracle_macroDrift");
 
         pVelDriftDepth = apvts.getRawParameterValue("oracle_velDriftDepth");
+        modMatrix.attachParameters(apvts, "oracle_");
     }
 
     //==========================================================================
@@ -1669,6 +1701,11 @@ private:
 
     // D001: velocity-to-timbre
     std::atomic<float>* pVelDriftDepth = nullptr; // Velocity → stochastic drift depth
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float oracleModPitchOffset  = 0.0f;
+    float oracleModLevelOffset  = 0.0f;
 };
 
 } // namespace xoceanus

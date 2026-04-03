@@ -5,118 +5,118 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 ## Architecture & Specs
 
-- [xoceanus_master_specification.md](xoceanus_master_specification.md) — Master spec for XOceanus platform
+- [xoceanus_master_specification.md](specs/xoceanus_master_specification.md) — Master spec for XOceanus platform
 - [XOceanus_Master_Architecture- Volume 2.md.txt](XOceanus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
-- [xoceanus_repo_structure.md](xoceanus_repo_structure.md) — Directory and file organization
-- [xoceanus_technical_design_system.md](xoceanus_technical_design_system.md) — Technical design patterns
-- [xoceanus_new_engine_process.md](xoceanus_new_engine_process.md) — How to add a new engine
-- [xoceanus_preset_spec_for_builder.md](xoceanus_preset_spec_for_builder.md) — Preset schema for builders
+- [xoceanus_repo_structure.md](specs/xoceanus_repo_structure.md) — Directory and file organization
+- [xoceanus_technical_design_system.md](specs/xoceanus_technical_design_system.md) — Technical design patterns
+- [xoceanus_new_engine_process.md](specs/xoceanus_new_engine_process.md) — How to add a new engine
+- [xoceanus_preset_spec_for_builder.md](specs/xoceanus_preset_spec_for_builder.md) — Preset schema for builders
 - [xometa_schema.json](specs/xometa_schema.json) — .xometa JSON schema definition
 - [xometa_examples.json](specs/xometa_examples.json) — .xometa example files
-- [xoceanus_module_starter_design.md](xoceanus_module_starter_design.md) — Module starter patterns
-- [xoceanus_mobile_and_midi_spec.md](xoceanus_mobile_and_midi_spec.md) — iOS/MIDI specification
-- [xoceanus_mobile_implementation_strategy.md](xoceanus_mobile_implementation_strategy.md) — iOS implementation strategy
-- [xoceanus_recipe_system_design.md](xoceanus_recipe_system_design.md) — Recipe/coupling system design
-- [xoceanus_name_migration_reference.md](xoceanus_name_migration_reference.md) — Engine name migration reference
-- [how_to_write_a_xoceanus_adapter.md](how_to_write_a_xoceanus_adapter.md) — Adapter authoring guide
-- [oscar_rive_spec.md](oscar_rive_spec.md) — Rive/Oscar UI animation spec
-- [xo_signature_playsurface_spec.md](xo_signature_playsurface_spec.md) — PlaySurface spec
-- [shore_system_spec.md](shore_system_spec.md) — Shore system (Osprey/Osteria) spec
+- [xoceanus_module_starter_design.md](specs/xoceanus_module_starter_design.md) — Module starter patterns
+- [xoceanus_mobile_and_midi_spec.md](specs/xoceanus_mobile_and_midi_spec.md) — iOS/MIDI specification
+- [xoceanus_mobile_implementation_strategy.md](specs/xoceanus_mobile_implementation_strategy.md) — iOS implementation strategy
+- [xoceanus_recipe_system_design.md](specs/xoceanus_recipe_system_design.md) — Recipe/coupling system design
+- [xoceanus_name_migration_reference.md](specs/xoceanus_name_migration_reference.md) — Engine name migration reference
+- [how_to_write_a_xoceanus_adapter.md](specs/how_to_write_a_xoceanus_adapter.md) — Adapter authoring guide
+- [oscar_rive_spec.md](design/oscar_rive_spec.md) — Rive/Oscar UI animation spec
+- [xo_signature_playsurface_spec.md](design/xo_signature_playsurface_spec.md) — PlaySurface spec
+- [shore_system_spec.md](specs/shore_system_spec.md) — Shore system (Osprey/Osteria) spec
 
 ---
 
 ## Engine Guides & Synthesis Documentation
 
-- [ohm_synthesis_guide.md](ohm_synthesis_guide.md) — OHM synthesis guide
-- [orphica_synthesis_guide.md](orphica_synthesis_guide.md) — ORPHICA synthesis guide
-- [obbligato_synthesis_guide.md](obbligato_synthesis_guide.md) — OBBLIGATO synthesis guide
-- [ottoni_synthesis_guide.md](ottoni_synthesis_guide.md) — OTTONI synthesis guide
-- [ole_synthesis_guide.md](ole_synthesis_guide.md) — OLE synthesis guide
-- [ouroboros_guide.md](ouroboros_guide.md) — OUROBOROS synthesis guide
-- [obscura_synthesis_guide.md](obscura_synthesis_guide.md) — OBSCURA synthesis guide
-- [optic_synthesis_guide.md](optic_synthesis_guide.md) — OPTIC synthesis guide
-- [oracle_synthesis_guide.md](oracle_synthesis_guide.md) — ORACLE synthesis guide
-- [overlap_synthesis_guide.md](overlap_synthesis_guide.md) — OVERLAP synthesis guide
-- [outwit_synthesis_guide.md](outwit_synthesis_guide.md) — OUTWIT synthesis guide
-- [xoceanus_sound_design_guides.md](xoceanus_sound_design_guides.md) — Cross-engine sound design
-- [organon_vfe_guide.md](organon_vfe_guide.md) — ORGANON VFE guide
-- [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md) — ONSET XVC demo guide
-- [MPC_Controller_Setup.md](MPC_Controller_Setup.md) — MPC controller setup
+- [ohm_synthesis_guide.md](engines/ohm_synthesis_guide.md) — OHM synthesis guide
+- [orphica_synthesis_guide.md](engines/orphica_synthesis_guide.md) — ORPHICA synthesis guide
+- [obbligato_synthesis_guide.md](engines/obbligato_synthesis_guide.md) — OBBLIGATO synthesis guide
+- [ottoni_synthesis_guide.md](engines/ottoni_synthesis_guide.md) — OTTONI synthesis guide
+- [ole_synthesis_guide.md](engines/ole_synthesis_guide.md) — OLE synthesis guide
+- [ouroboros_guide.md](engines/ouroboros_guide.md) — OUROBOROS synthesis guide
+- [obscura_synthesis_guide.md](engines/obscura_synthesis_guide.md) — OBSCURA synthesis guide
+- [optic_synthesis_guide.md](engines/optic_synthesis_guide.md) — OPTIC synthesis guide
+- [oracle_synthesis_guide.md](engines/oracle_synthesis_guide.md) — ORACLE synthesis guide
+- [overlap_synthesis_guide.md](engines/overlap_synthesis_guide.md) — OVERLAP synthesis guide
+- [outwit_synthesis_guide.md](engines/outwit_synthesis_guide.md) — OUTWIT synthesis guide
+- [xoceanus_sound_design_guides.md](specs/xoceanus_sound_design_guides.md) — Cross-engine sound design
+- [organon_vfe_guide.md](engines/organon_vfe_guide.md) — ORGANON VFE guide
+- [onset_xvc_demo_guide.md](engines/onset_xvc_demo_guide.md) — ONSET XVC demo guide
+- [MPC_Controller_Setup.md](tutorials/MPC_Controller_Setup.md) — MPC controller setup
 
 ---
 
 ## Engine Architecture & Design Docs
 
-- [xo_ouroboros_phase1_architecture.md](xo_ouroboros_phase1_architecture.md) — OUROBOROS architecture
-- [xo_ouroboros_integration_spec.md](xo_ouroboros_integration_spec.md) — OUROBOROS integration spec
-- [xonset_architecture_blueprint.md](xonset_architecture_blueprint.md) — ONSET architecture
-- [xonset_percussive_engine_spec.md](xonset_percussive_engine_spec.md) — ONSET percussive engine spec
-- [xopal_phase1_architecture.md](xopal_phase1_architecture.md) — OPAL architecture
-- [xocelot_phase1_architecture.md](xocelot_phase1_architecture.md) — OCELOT architecture
-- [xorbital_architecture_blueprint.md](xorbital_architecture_blueprint.md) — ORBITAL architecture
-- [xosprey_architecture_blueprint.md](xosprey_architecture_blueprint.md) — OSPREY architecture
-- [xosteria_architecture_blueprint.md](xosteria_architecture_blueprint.md) — OSTERIA architecture
-- [xouie_phase1_architecture.md](xouie_phase1_architecture.md) — OUIE architecture
-- [xoverbite_parameter_architecture.md](xoverbite_parameter_architecture.md) — OVERBITE parameters
-- [audio_to_buffer_implementation.md](audio_to_buffer_implementation.md) — AudioToBuffer coupling implementation
-- [audio_to_buffer_phase2.md](audio_to_buffer_phase2.md) — AudioToBuffer phase 2
-- [audio_to_buffer_phase3_spec.md](audio_to_buffer_phase3_spec.md) — AudioToBuffer phase 3 spec
-- [drift_option_b_implementation.md](drift_option_b_implementation.md) — DRIFT option B implementation
-- [opal_juce_verification_checklist.md](opal_juce_verification_checklist.md) — OPAL JUCE verification
+- [xo_ouroboros_phase1_architecture.md](engines/xo_ouroboros_phase1_architecture.md) — OUROBOROS architecture
+- [xo_ouroboros_integration_spec.md](engines/xo_ouroboros_integration_spec.md) — OUROBOROS integration spec
+- [xonset_architecture_blueprint.md](engines/xonset_architecture_blueprint.md) — ONSET architecture
+- [xonset_percussive_engine_spec.md](engines/xonset_percussive_engine_spec.md) — ONSET percussive engine spec
+- [xopal_phase1_architecture.md](engines/xopal_phase1_architecture.md) — OPAL architecture
+- [xocelot_phase1_architecture.md](engines/xocelot_phase1_architecture.md) — OCELOT architecture
+- [xorbital_architecture_blueprint.md](engines/xorbital_architecture_blueprint.md) — ORBITAL architecture
+- [xosprey_architecture_blueprint.md](engines/xosprey_architecture_blueprint.md) — OSPREY architecture
+- [xosteria_architecture_blueprint.md](engines/xosteria_architecture_blueprint.md) — OSTERIA architecture
+- [xouie_phase1_architecture.md](engines/xouie_phase1_architecture.md) — OUIE architecture
+- [xoverbite_parameter_architecture.md](specs/xoverbite_parameter_architecture.md) — OVERBITE parameters
+- [audio_to_buffer_implementation.md](specs/audio_to_buffer_implementation.md) — AudioToBuffer coupling implementation
+- [audio_to_buffer_phase2.md](specs/audio_to_buffer_phase2.md) — AudioToBuffer phase 2
+- [audio_to_buffer_phase3_spec.md](specs/audio_to_buffer_phase3_spec.md) — AudioToBuffer phase 3 spec
+- [drift_option_b_implementation.md](sessions/drift_option_b_implementation.md) — DRIFT option B implementation
+- [opal_juce_verification_checklist.md](engines/opal_juce_verification_checklist.md) — OPAL JUCE verification
 
 ---
 
 ## Engine Design Reviews (Some Orphaned)
 
-- [xo_organon_design_review.md](xo_organon_design_review.md) — ORGANON design review
-- [xo_organon_phase1_architecture.md](xo_organon_phase1_architecture.md) — ORGANON architecture
-- [xobscura_design_spec.md](xobscura_design_spec.md) — OBSCURA design spec
-- [xobsidian_design_spec.md](xobsidian_design_spec.md) — OBSIDIAN design spec
-- [xoceanic_design_spec.md](xoceanic_design_spec.md) — OCEANIC design spec
-- [xoracle_design_spec.md](xoracle_design_spec.md) — ORACLE design spec
-- [xorigami_design_spec.md](xorigami_design_spec.md) — ORIGAMI design spec
-- [xo_oscillum_phase1_architecture.md](xo_oscillum_phase1_architecture.md) — **Orphaned**: Oscillum engine not integrated. Retained for historical reference.
-- [xo_orbit_design_review.md](xo_orbit_design_review.md) — **Orphaned**: Orbit engine not integrated. Retained for historical reference.
+- [xo_organon_design_review.md](engines/xo_organon_design_review.md) — ORGANON design review
+- [xo_organon_phase1_architecture.md](engines/xo_organon_phase1_architecture.md) — ORGANON architecture
+- [xobscura_design_spec.md](engines/xobscura_design_spec.md) — OBSCURA design spec
+- [xobsidian_design_spec.md](engines/xobsidian_design_spec.md) — OBSIDIAN design spec
+- [xoceanic_design_spec.md](engines/xoceanic_design_spec.md) — OCEANIC design spec
+- [xoracle_design_spec.md](engines/xoracle_design_spec.md) — ORACLE design spec
+- [xorigami_design_spec.md](engines/xorigami_design_spec.md) — ORIGAMI design spec
+- [xo_oscillum_phase1_architecture.md](engines/xo_oscillum_phase1_architecture.md) — **Orphaned**: Oscillum engine not integrated. Retained for historical reference.
+- [xo_orbit_design_review.md](engines/xo_orbit_design_review.md) — **Orphaned**: Orbit engine not integrated. Retained for historical reference.
 
 ---
 
 ## Roadmaps & Launch Planning
 
-- [xoceanus_engine_roadmap_v3.md](xoceanus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
-- [xoceanus_engine_roadmap.md](xoceanus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
-- [xoceanus_v2_roadmap.md](xoceanus_v2_roadmap.md) — V2 roadmap
-- [xoceanus_launch_audit_2026.md](xoceanus_launch_audit_2026.md) — Launch audit 2026
-- [xoceanus_landscape_2026.md](xoceanus_landscape_2026.md) — Competitive landscape 2026
-- [release_readiness_12k.md](release_readiness_12k.md) — Release readiness report (12k)
-- [xoceanus_brand_identity_and_launch.md](xoceanus_brand_identity_and_launch.md) — Brand identity & launch strategy
-- [funding_plan.md](funding_plan.md) — Funding strategy
-- [engine_expansion_toolkit_strategy.md](engine_expansion_toolkit_strategy.md) — Engine expansion strategy
+- [xoceanus_engine_roadmap_v3.md](plans/xoceanus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
+- [xoceanus_engine_roadmap.md](plans/xoceanus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
+- [xoceanus_v2_roadmap.md](plans/xoceanus_v2_roadmap.md) — V2 roadmap
+- [xoceanus_launch_audit_2026.md](plans/xoceanus_launch_audit_2026.md) — Launch audit 2026
+- [xoceanus_landscape_2026.md](plans/xoceanus_landscape_2026.md) — Competitive landscape 2026
+- [release_readiness_12k.md](fleet-audit/release_readiness_12k.md) — Release readiness report (12k)
+- [xoceanus_brand_identity_and_launch.md](plans/xoceanus_brand_identity_and_launch.md) — Brand identity & launch strategy
+- [funding_plan.md](plans/funding_plan.md) — Funding strategy
+- [engine_expansion_toolkit_strategy.md](engines/engine_expansion_toolkit_strategy.md) — Engine expansion strategy
 
 ---
 
 ## Coupling & Preset System
 
-- [coupling_audit.md](coupling_audit.md) — Coupling system audit
-- [coupling_expansion_12e.md](coupling_expansion_12e.md) — Coupling expansion (round 12e)
-- [coupling_fixes_5c.md](coupling_fixes_5c.md) — Coupling fixes (round 5c)
-- [coupling_preset_library.md](coupling_preset_library.md) — Coupling preset library
+- [coupling_audit.md](fleet-audit/coupling_audit.md) — Coupling system audit
+- [coupling_expansion_12e.md](fleet-audit/coupling_expansion_12e.md) — Coupling expansion (round 12e)
+- [coupling_fixes_5c.md](fleet-audit/coupling_fixes_5c.md) — Coupling fixes (round 5c)
+- [coupling_preset_library.md](fleet-audit/coupling_preset_library.md) — Coupling preset library
 - [seance_cross_reference.md](seances/seance_cross_reference.md) — Cross-reference of seance verdicts
-- [preset_expansion_10h.md](preset_expansion_10h.md) — Preset expansion (10h)
-- [preset_expansion_9g.md](preset_expansion_9g.md) — Preset expansion (9g)
-- [preset_gap_analysis.md](preset_gap_analysis.md) — Preset gap analysis
-- [preset_naming_elevation.md](preset_naming_elevation.md) — Preset naming standards
-- [preset_quality_pass_11h.md](preset_quality_pass_11h.md) — Preset quality pass (11h)
-- [preset_schema_audit.md](preset_schema_audit.md) — Preset schema audit
-- [preset_schema_fixes.md](preset_schema_fixes.md) — Preset schema fixes
-- [preset_schema_migration_5e.md](preset_schema_migration_5e.md) — Preset schema migration (5e)
+- [preset_expansion_10h.md](fleet-audit/preset_expansion_10h.md) — Preset expansion (10h)
+- [preset_expansion_9g.md](fleet-audit/preset_expansion_9g.md) — Preset expansion (9g)
+- [preset_gap_analysis.md](fleet-audit/preset_gap_analysis.md) — Preset gap analysis
+- [preset_naming_elevation.md](fleet-audit/preset_naming_elevation.md) — Preset naming standards
+- [preset_quality_pass_11h.md](fleet-audit/preset_quality_pass_11h.md) — Preset quality pass (11h)
+- [preset_schema_audit.md](fleet-audit/preset_schema_audit.md) — Preset schema audit
+- [preset_schema_fixes.md](fleet-audit/preset_schema_fixes.md) — Preset schema fixes
+- [preset_schema_migration_5e.md](fleet-audit/preset_schema_migration_5e.md) — Preset schema migration (5e)
 <!-- preset_fleet_coverage.md — planned but not yet created -->
-- [sonic_dna_audit.md](sonic_dna_audit.md) — Sonic DNA coverage audit
-- [sonic_dna_backfill.md](sonic_dna_backfill.md) — Sonic DNA backfill
-- [sonic_dna_validation_11i.md](sonic_dna_validation_11i.md) — Sonic DNA validation (11i)
-- [dna_gap_fill_12a.md](dna_gap_fill_12a.md) — DNA gap fill (12a)
-- [mood_distribution_audit_12f.md](mood_distribution_audit_12f.md) — Mood distribution audit (12f)
-- [duplicate_cleanup_12b.md](duplicate_cleanup_12b.md) — Duplicate preset cleanup (12b)
-- [ouroboros_obscura_preset_expansion.md](ouroboros_obscura_preset_expansion.md) — OUROBOROS/OBSCURA expansion
+- [sonic_dna_audit.md](fleet-audit/sonic_dna_audit.md) — Sonic DNA coverage audit
+- [sonic_dna_backfill.md](fleet-audit/sonic_dna_backfill.md) — Sonic DNA backfill
+- [sonic_dna_validation_11i.md](fleet-audit/sonic_dna_validation_11i.md) — Sonic DNA validation (11i)
+- [dna_gap_fill_12a.md](fleet-audit/dna_gap_fill_12a.md) — DNA gap fill (12a)
+- [mood_distribution_audit_12f.md](fleet-audit/mood_distribution_audit_12f.md) — Mood distribution audit (12f)
+- [duplicate_cleanup_12b.md](fleet-audit/duplicate_cleanup_12b.md) — Duplicate preset cleanup (12b)
+- [ouroboros_obscura_preset_expansion.md](engines/ouroboros_obscura_preset_expansion.md) — OUROBOROS/OBSCURA expansion
 
 ---
 
@@ -126,18 +126,18 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 <!-- technical_debt_catalog.md — planned but not yet created -->
 <!-- haiku-maintenance-plan.md — planned but not yet created -->
 <!-- site_audit.md — planned but not yet created -->
-- [prism_sweep_final_report.md](prism_sweep_final_report.md) — Prism sweep final report
-- [prism_sweep_index.md](prism_sweep_index.md) — Prism sweep index
+- [prism_sweep_final_report.md](sweeps/prism_sweep_final_report.md) — Prism sweep final report
+- [prism_sweep_index.md](sweeps/prism_sweep_index.md) — Prism sweep index
 - [flywheel-2026-03-15.md](concepts/flywheel-2026-03-15.md) — Flywheel improvement report (2026-03-15)
-- [filter_envelope_audit.md](filter_envelope_audit.md) — Filter/envelope audit
-- [filter_envelope_expansion_9e.md](filter_envelope_expansion_9e.md) — Filter/envelope expansion (9e)
-- [macro_audit.md](macro_audit.md) — Macro parameter audit
-- [parameter_curve_audit.md](parameter_curve_audit.md) — Parameter curve audit
-- [voice_management_audit.md](voice_management_audit.md) — Voice management audit
-- [voice_mode_completion_11d.md](voice_mode_completion_11d.md) — Voice mode completion (11d)
-- [organon_prefix_audit.md](organon_prefix_audit.md) — ORGANON prefix audit
-- [drift_fx_gap_analysis.md](drift_fx_gap_analysis.md) — DRIFT FX gap analysis
-- [knowledge_tree_update_12i.md](knowledge_tree_update_12i.md) — Knowledge tree update (12i)
+- [filter_envelope_audit.md](fleet-audit/filter_envelope_audit.md) — Filter/envelope audit
+- [filter_envelope_expansion_9e.md](fleet-audit/filter_envelope_expansion_9e.md) — Filter/envelope expansion (9e)
+- [macro_audit.md](fleet-audit/macro_audit.md) — Macro parameter audit
+- [parameter_curve_audit.md](fleet-audit/parameter_curve_audit.md) — Parameter curve audit
+- [voice_management_audit.md](fleet-audit/voice_management_audit.md) — Voice management audit
+- [voice_mode_completion_11d.md](fleet-audit/voice_mode_completion_11d.md) — Voice mode completion (11d)
+- [organon_prefix_audit.md](engines/organon_prefix_audit.md) — ORGANON prefix audit
+- [drift_fx_gap_analysis.md](sessions/drift_fx_gap_analysis.md) — DRIFT FX gap analysis
+- [knowledge_tree_update_12i.md](fleet-audit/knowledge_tree_update_12i.md) — Knowledge tree update (12i)
 - [2026-03-14-session-readout.md](sessions/2026-03-14-session-readout.md) — Session readout 2026-03-14
 
 ---
@@ -149,8 +149,8 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [build_verification_8h.md](build-logs/build_verification_8h.md) — Build verification round 8h
 - [build_verification_11j.md](build-logs/build_verification_11j.md) — Build verification round 11j
 - [build_verification_12j.md](build-logs/build_verification_12j.md) — Build verification round 12j
-- [v007_journey_demo_report.md](v007_journey_demo_report.md) — v0.0.7 journey demo report
-- [xoceanus_volume2_review.md](xoceanus_volume2_review.md) — Volume 2 review
+- [v007_journey_demo_report.md](sessions/v007_journey_demo_report.md) — v0.0.7 journey demo report
+- [xoceanus_volume2_review.md](plans/xoceanus_volume2_review.md) — Volume 2 review
 
 ---
 
@@ -169,35 +169,35 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 
 ## Doctrine Fixes & Fix Reports
 
-- [p0_fixes_applied.md](p0_fixes_applied.md) — P0 doctrine fixes applied
-- [d004_fixes_applied.md](d004_fixes_applied.md) — D004 fixes
-- [d005_fixes_applied.md](d005_fixes_applied.md) — D005 fixes
-- [d005_modulation_map.md](d005_modulation_map.md) — D005 modulation map
-- [d006_aftertouch_fixes.md](d006_aftertouch_fixes.md) — D006 aftertouch fixes
-- [d006_expression_map.md](d006_expression_map.md) — D006 expression map
-- [d006_modwheel_completion_11e.md](d006_modwheel_completion_11e.md) — D006 modwheel completion (11e)
-- [d006_modwheel_completion_12c.md](d006_modwheel_completion_12c.md) — D006 modwheel completion (12c)
-- [d006_modwheel_fixes.md](d006_modwheel_fixes.md) — D006 modwheel fixes
-- [bob_aggression_expansion.md](bob_aggression_expansion.md) — OblongBob aggression expansion
-- [init_patch_improvements.md](init_patch_improvements.md) — Init patch improvements
+- [p0_fixes_applied.md](sessions/p0_fixes_applied.md) — P0 doctrine fixes applied
+- [d004_fixes_applied.md](sessions/d004_fixes_applied.md) — D004 fixes
+- [d005_fixes_applied.md](sessions/d005_fixes_applied.md) — D005 fixes
+- [d005_modulation_map.md](sessions/d005_modulation_map.md) — D005 modulation map
+- [d006_aftertouch_fixes.md](sessions/d006_aftertouch_fixes.md) — D006 aftertouch fixes
+- [d006_expression_map.md](sessions/d006_expression_map.md) — D006 expression map
+- [d006_modwheel_completion_11e.md](sessions/d006_modwheel_completion_11e.md) — D006 modwheel completion (11e)
+- [d006_modwheel_completion_12c.md](sessions/d006_modwheel_completion_12c.md) — D006 modwheel completion (12c)
+- [d006_modwheel_fixes.md](sessions/d006_modwheel_fixes.md) — D006 modwheel fixes
+- [bob_aggression_expansion.md](engines/bob_aggression_expansion.md) — OblongBob aggression expansion
+- [init_patch_improvements.md](sessions/init_patch_improvements.md) — Init patch improvements
 
 ---
 
 ## Deep Recovery Docs
 
-- [oblique_deep_recovery.md](oblique_deep_recovery.md) — OBLIQUE deep recovery
-- [oblique_expansion.md](oblique_expansion.md) — OBLIQUE expansion
-- [ocelot_deep_recovery.md](ocelot_deep_recovery.md) — OCELOT deep recovery
-- [obsidian_deep_recovery.md](obsidian_deep_recovery.md) — OBSIDIAN deep recovery
+- [oblique_deep_recovery.md](engines/oblique_deep_recovery.md) — OBLIQUE deep recovery
+- [oblique_expansion.md](engines/oblique_expansion.md) — OBLIQUE expansion
+- [ocelot_deep_recovery.md](engines/ocelot_deep_recovery.md) — OCELOT deep recovery
+- [obsidian_deep_recovery.md](engines/obsidian_deep_recovery.md) — OBSIDIAN deep recovery
 
 ---
 
 ## XPN & MPC Export Tools
 
-- [xpn_tools_readme.md](xpn_tools_readme.md) — XPN/Oxport tool suite README
-- [xpn_sound_shape_rendering.md](xpn_sound_shape_rendering.md) — XPN sound shape rendering spec
-- [tool_doctrines.md](tool_doctrines.md) — Tool Doctrines T001-T006
-- [mpc_ebook_outline.md](mpc_ebook_outline.md) — MPC ebook outline
+- [xpn_tools_readme.md](specs/xpn_tools_readme.md) — XPN/Oxport tool suite README
+- [xpn_sound_shape_rendering.md](specs/xpn_sound_shape_rendering.md) — XPN sound shape rendering spec
+- [tool_doctrines.md](doctrines/tool_doctrines.md) — Tool Doctrines T001-T006
+- [mpc_ebook_outline.md](tutorials/mpc_ebook_outline.md) — MPC ebook outline
 
 ---
 
@@ -205,22 +205,22 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 
 > **Historical**: "XO Mega Tool" was the original name for what became the Oxport pipeline. These docs reflect early architecture thinking.
 
-- [xo_mega_tool_chaining_architecture.md](xo_mega_tool_chaining_architecture.md) — Tool chaining architecture
-- [xo_mega_tool_dev_strategy.md](xo_mega_tool_dev_strategy.md) — Development strategy
-- [xo_mega_tool_engine_catalog.md](xo_mega_tool_engine_catalog.md) — Engine catalog for tools
-- [xo_mega_tool_feasibility.md](xo_mega_tool_feasibility.md) — Feasibility analysis
-- [xo_mega_tool_preset_system.md](xo_mega_tool_preset_system.md) — Preset system design
-- [xo_mega_tool_visual_identity.md](xo_mega_tool_visual_identity.md) — Visual identity
-- [xo_mega_tool_xonset_integration.md](xo_mega_tool_xonset_integration.md) — ONSET integration
-- [xo_mega_tool_xpn_export.md](xo_mega_tool_xpn_export.md) — XPN export
+- [xo_mega_tool_chaining_architecture.md](specs/xo_mega_tool_chaining_architecture.md) — Tool chaining architecture
+- [xo_mega_tool_dev_strategy.md](specs/xo_mega_tool_dev_strategy.md) — Development strategy
+- [xo_mega_tool_engine_catalog.md](specs/xo_mega_tool_engine_catalog.md) — Engine catalog for tools
+- [xo_mega_tool_feasibility.md](specs/xo_mega_tool_feasibility.md) — Feasibility analysis
+- [xo_mega_tool_preset_system.md](specs/xo_mega_tool_preset_system.md) — Preset system design
+- [xo_mega_tool_visual_identity.md](specs/xo_mega_tool_visual_identity.md) — Visual identity
+- [xo_mega_tool_xonset_integration.md](specs/xo_mega_tool_xonset_integration.md) — ONSET integration
+- [xo_mega_tool_xpn_export.md](specs/xo_mega_tool_xpn_export.md) — XPN export
 
 ---
 
 ## Brand & Identity
 
-- [engine_identity_cards.md](engine_identity_cards.md) — Engine identity card reference
-- [xo_ox_aquatic_mythology.md](xo_ox_aquatic_mythology.md) — Aquatic mythology full doc
-- [claude_code_skills_reference.md](claude_code_skills_reference.md) — Claude Code skills reference
+- [engine_identity_cards.md](engines/engine_identity_cards.md) — Engine identity card reference
+- [xo_ox_aquatic_mythology.md](mythology/xo_ox_aquatic_mythology.md) — Aquatic mythology full doc
+- [claude_code_skills_reference.md](specs/claude_code_skills_reference.md) — Claude Code skills reference
 
 ---
 
@@ -253,7 +253,7 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 - [concepts/xodyssey_concept_brief.md](concepts/xodyssey_concept_brief.md) — ODYSSEY concept
 - [concepts/xohm_concept_brief.md](concepts/xohm_concept_brief.md) — OHM concept
 - [concepts/xole_concept_brief.md](concepts/xole_concept_brief.md) — OLE concept
-- [concepts/xoceanus_collections_vision.md](concepts/xoceanus_collections_vision.md) — Collections vision
+- [concepts/xomnibus_collections_vision.md](concepts/xomnibus_collections_vision.md) — Collections vision
 - [concepts/xonset_concept_brief.md](concepts/xonset_concept_brief.md) — ONSET concept
 - [concepts/xopal_concept_brief.md](concepts/xopal_concept_brief.md) — OPAL concept
 

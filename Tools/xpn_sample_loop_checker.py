@@ -519,7 +519,14 @@ def main() -> int:
         # Extract pack
         try:
             with zipfile.ZipFile(xpn_path, "r") as zf:
-                zf.extractall(tmpdir)
+                dest = Path(tmpdir).resolve()
+                for member in zf.infolist():
+                    target = (dest / member.filename).resolve()
+                    if not target.is_relative_to(dest):
+                        raise ValueError(
+                            f"ZipSlip blocked: {member.filename!r} escapes {dest}"
+                        )
+                    zf.extract(member, dest)
         except zipfile.BadZipFile:
             print(f"ERROR: Not a valid .xpn (zip) file: {xpn_path}", file=sys.stderr)
             return 1

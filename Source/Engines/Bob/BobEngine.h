@@ -9,6 +9,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
@@ -1150,14 +1151,33 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            bobModCutoffOffset  = mDst[1] * 5000.0f;
+            bobModLfo1RateOffset = mDst[2] * 8.0f;
+            bobModPitchOffset   = mDst[3] * 12.0f;
+            bobModLevelOffset   = mDst[4] * 0.5f;
+        }
+
         // Compute BobMode macro targets
         BobModeTargets bob = computeBobMode(bobModeVal);
 
         // Effective values (user params + bob macro additive + M1–M4 macro additive)
-        // CHARACTER sweeps filter cutoff up to +6000 Hz on top of the user value
-        const float effFltCutoff = clamp(fltCutoff + macroCharacter * 6000.0f, 20.0f, 20000.0f);
-        // MOVEMENT boosts LFO1 rate (×1 at 0, ×4 at full)
-        const float effLfo1Rate = clamp(lfo1Rate * (1.0f + macroMovement * 3.0f), 0.01f, 20.0f);
+        // CHARACTER sweeps filter cutoff up to +6000 Hz on top of the user value; D002 mod matrix adds further offset
+        const float effFltCutoff = clamp(fltCutoff + macroCharacter * 6000.0f + bobModCutoffOffset, 20.0f, 20000.0f);
+        // MOVEMENT boosts LFO1 rate (×1 at 0, ×4 at full); D002 mod matrix adds further offset
+        const float effLfo1Rate = clamp(lfo1Rate * (1.0f + macroMovement * 3.0f) + bobModLfo1RateOffset, 0.01f, 20.0f);
         // COUPLING offsets the outgoing send level (+0 to +0.5) — used downstream by coupling bus
         const float effCouplingLevel = clamp(macroCoupling * 0.5f, 0.0f, 1.0f);
         // SPACE adds texture level for room/space character
@@ -1293,9 +1313,9 @@ public:
                 // Curiosity modulates filter cutoff
                 lfoCutoffMod += curOut.curiosity * 0.5f;
 
-                // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE + pitch bend
+                // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE + pitch bend + mod matrix
                 float totalPitch =
-                    lfoPitchMod * 2.0f + pitchMod + voice.mpeExpression.pitchBendSemitones + pitchBendNorm * 2.0f;
+                    lfoPitchMod * 2.0f + pitchMod + voice.mpeExpression.pitchBendSemitones + pitchBendNorm * 2.0f + bobModPitchOffset;
                 float freq = baseFreq * fastExp(totalPitch * (0.693147f / 12.0f));
 
                 // OscA
@@ -1380,9 +1400,10 @@ public:
                 peakEnv = std::max(peakEnv, envVal);
             }
 
-            // Apply level + soft limit
-            float outL = fastTanh(mixL * level);
-            float outR = fastTanh(mixR * level);
+            // Apply level + soft limit (D002: mod matrix level offset)
+            const float effectiveLevel = clamp(level + bobModLevelOffset, 0.05f, 1.5f);
+            float outL = fastTanh(mixL * effectiveLevel);
+            float outR = fastTanh(mixR * effectiveLevel);
 
             outputCacheL[static_cast<size_t>(sample)] = outL;
             outputCacheR[static_cast<size_t>(sample)] = outR;
@@ -1612,6 +1633,10 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroSpace", 1},
                                                                      "Bob Macro SPACE",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kBobModDests {"Off", "Filter Cutoff", "LFO1 Rate", "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "bob_", "Bob", kBobModDests);
     }
 
 public:
@@ -1662,6 +1687,7 @@ public:
         pMacroMovement = apvts.getRawParameterValue("bob_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("bob_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("bob_macroSpace");
+        modMatrix.attachParameters(apvts, "bob_");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1862,6 +1888,13 @@ private:
     std::atomic<float>* pMacroMovement = nullptr;  // bob_macroMovement  — M2: LFO1 rate boost
     std::atomic<float>* pMacroCoupling = nullptr;  // bob_macroCoupling  — M3: coupling send offset
     std::atomic<float>* pMacroSpace = nullptr;     // bob_macroSpace     — M4: texture level offset
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float bobModCutoffOffset   = 0.0f;
+    float bobModLfo1RateOffset = 0.0f;
+    float bobModPitchOffset    = 0.0f;
+    float bobModLevelOffset    = 0.0f;
 };
 
 } // namespace xoceanus

@@ -41,7 +41,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 | `fathom-qdd-level5-fleet-certification-2026-03-29.md` | FATHOM × QDD Level 5 pre-launch fleet certification | Engineers, sound designers, agents | 76-engine audit results, 20-agent findings, 47 CRITs, ship-ready list, launch blockers | ✅ Current (2026-03-29) |
 | `fathom-fleet-report-2026-03-29.md` | FATHOM brutal sonic audit — all 76 engines + DSP library | Sound designers, agents | Per-engine sonic quality verdicts, FATHOM scores, systemic issues | ✅ Current (2026-03-29) |
 | `tidesigns-audit.md` | TIDEsigns QDD full-fleet UI/UX audit | UI engineers, agents | 450+ findings, 8-wave fix sequence, tier priorities, score history | ✅ Current (2026-03-29) |
-| `xoceanus-fleet-inventory-2026-03-28.md` | Complete engine fleet inventory — all 73+ engines | All contributors, agents | Engine roster, build status, preset counts, seance scores | ✅ Current (2026-03-28) |
+| `xoceanus-fleet-inventory-2026-03-28.md` | Complete engine fleet inventory — all 76 engines | All contributors, agents | Engine roster, build status, preset counts, seance scores | ✅ Current (2026-03-28) |
 | `export-architecture.md` | Export Pyramid architecture — ORIGINATE → OUTSHINE → OXPORT | Export engineers, pipeline devs | Three-tool export chain design, tool responsibilities, data flow | ✅ Current (2026-03-29) |
 | `../Skills/*/SKILL.md` | Per-skill procedure guides | Agents | Workflow execution | ✅ Most current; see each file's metadata |
 

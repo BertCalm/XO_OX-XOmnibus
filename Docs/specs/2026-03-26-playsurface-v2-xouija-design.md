@@ -201,7 +201,7 @@ The planchette is not a cursor. It is a persistent entity on the board with its 
 | Interior text | Current key + influence% e.g. "G · 42%" |
 | Text style | Georgia italic, ~10px, engine accent color at 85% opacity |
 
-- Engine accent color is supplied at runtime by the active engine. Each of the 73 engines has its own accent color registered in the engine metadata.
+- Engine accent color is supplied at runtime by the active engine. Each of the 76 engines has its own accent color registered in the engine metadata.
 - The planchette renders above all XOuija surface elements (z-order: surface texture < markers < trail < planchette).
 
 ### 4.2 Lissajous Idle Drift

@@ -192,7 +192,7 @@ namespace
 // touch_force implementation
 // ---------------------------------------------------------------------------
 
-namespace xolokun { namespace touch_force {
+namespace xoceanus { namespace touch_force {
 
 void install()
 {
@@ -310,6 +310,6 @@ bool isForceAvailable()
     return gForceAvailable.load(std::memory_order_relaxed);
 }
 
-}} // namespace xolokun::touch_force
+}} // namespace xoceanus::touch_force
 
 #endif // JUCE_IOS

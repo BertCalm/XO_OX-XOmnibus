@@ -541,7 +541,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 | File | Path | Status | Notes |
 |------|------|--------|-------|
-| **design-tokens.css** | `~/Documents/GitHub/XO_OX-XOceanus/Site/design-tokens.css` | CANONICAL | 10 sections: Global Brand, Depth Zones, 73 Engine Colors, Anatomy, Glass Formula, PlaySurface, Typography, Type Scale (10 tokens), Spacing, Animation |
+| **design-tokens.css** | `~/Documents/GitHub/XO_OX-XOceanus/Site/design-tokens.css` | CANONICAL | 10 sections: Global Brand, Depth Zones, 76 Engine Colors, Anatomy, Glass Formula, PlaySurface, Typography, Type Scale (10 tokens), Spacing, Animation |
 | **engine-creature-map.json** | `~/Documents/GitHub/XO_OX-XOceanus/Site/engine-creature-map.json` | CANONICAL | Engine name → mythology mapping → accent color |
 
 ### 12.2 Design Documentation (all in `Docs/design/`)

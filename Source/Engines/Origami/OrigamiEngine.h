@@ -10,6 +10,7 @@
 #include "../../DSP/GlideProcessor.h"
 #include "../../DSP/ParameterSmoother.h"
 #include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -626,7 +627,25 @@ public:
         const float atPressure = aftertouch.getSmoothedPressure(0);
         // Sensitivity 0.3: full pressure adds up to +0.3 fold depth (denser spectral folding)
         // D006: mod wheel also adds up to +0.3 fold depth (sensitivity 0.3)
+        // D002: mod matrix fold depth offset also applied below
         effectiveFoldDepth = clamp(effectiveFoldDepth + atPressure * 0.3f + modWheelValue * 0.3f, 0.0f, 1.0f);
+
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel, 5=FoldDepth
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // Apply fold depth offset (dst 5)
+            effectiveFoldDepth = clamp(effectiveFoldDepth + mDst[5] * 0.5f, 0.0f, 1.0f);
+        }
 
         // Set smoother targets for this block
         smoothFoldPoint.set(effectiveFoldPoint);
@@ -1065,6 +1084,11 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"origami_macroSpace", 1}, "Origami Macro SPACE",
             juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kOrigamiModDests {"Off", "Filter Cutoff", "LFO1 Rate", "Pitch", "Amp Level",
+                                                          "Fold Depth"};
+        ModMatrix<4>::addParameters(params, "origami_", "Origami", kOrigamiModDests);
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1110,6 +1134,7 @@ public:
         pMacroMotion = apvts.getRawParameterValue("origami_macroMotion");
         pMacroCoupling = apvts.getRawParameterValue("origami_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("origami_macroSpace");
+        modMatrix.attachParameters(apvts, "origami_");
     }
 
     //==========================================================================
@@ -1902,6 +1927,9 @@ private:
     std::atomic<float>* pMacroMotion = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;
     std::atomic<float>* pMacroSpace = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
 };
 
 } // namespace xoceanus

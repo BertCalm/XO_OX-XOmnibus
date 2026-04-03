@@ -156,7 +156,7 @@ void applyFrameRatePreference()
 //==============================================================================
 // Public API implementation
 //
-namespace xolokun { namespace display_link {
+namespace xoceanus { namespace display_link {
 
 //------------------------------------------------------------------------------
 void start(std::function<void(double, double)> callback)
@@ -248,6 +248,6 @@ int displayRefreshRate()
     return (int)screen.maximumFramesPerSecond;
 }
 
-}} // namespace xolokun::display_link
+}} // namespace xoceanus::display_link
 
 #endif // JUCE_IOS

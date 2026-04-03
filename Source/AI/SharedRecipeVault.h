@@ -196,7 +196,7 @@ public:
         row->setProperty("title", title);
         row->setProperty("description", description);
         row->setProperty("author_name", localCfg.displayName);
-        row->setProperty("author_token", localCfg.authorToken);
+        // author_token sent via x-author-token header only — never in body (prevents log exposure)
         row->setProperty("mood", mood);
         row->setProperty("engines", enginesArray);
         row->setProperty("tags", tagsArray);
@@ -324,6 +324,21 @@ public:
             return {false, {}, {}, "Vault not configured"};
         if (!requireHttps(localCfg.supabaseUrl))
             return {false, {}, {}, "HTTPS required"};
+
+        // Validate recipeId format before URL construction
+        static const auto isValidId = [](const juce::String& id) -> bool {
+            if (id.length() < 8 || id.length() > 64) return false;
+            for (int i = 0; i < id.length(); ++i)
+            {
+                auto c = id[i];
+                if (! (juce::CharacterFunctions::isLetterOrDigit(c) || c == '-'))
+                    return false;
+            }
+            return true;
+        };
+
+        if (! isValidId(recipeId))
+            return {false, {}, {}, "Invalid recipe ID format"};
 
         // PostgREST query: select single row by recipe_id
         juce::String endpoint = localCfg.supabaseUrl +

@@ -77,7 +77,7 @@ Pick a track or group of tracks. Each entry has enough context for a fresh Claud
 
 #### O9 — VQ-UI-004: Engine Personality 🟢 P2
 **Skill:** `/visionary`
-**Instructions:** Each of the 73 engines should LOOK different. Define how accent color, signal flow variant, custom hero widgets, and background texture combine to give each engine visual identity. Not just color — structure. Output: personality spec for 5 reference engines (OBRIX, ONSET, OPERA, OXYTOCIN, OUROBOROS).
+**Instructions:** Each of the 76 engines should LOOK different. Define how accent color, signal flow variant, custom hero widgets, and background texture combine to give each engine visual identity. Not just color — structure. Output: personality spec for 5 reference engines (OBRIX, ONSET, OPERA, OXYTOCIN, OUROBOROS).
 
 #### O10 — VQ-UI-005: Aquarium as Interface ⚪ P3
 **Skill:** `/visionary`
@@ -120,7 +120,7 @@ Pick a track or group of tracks. Each entry has enough context for a fresh Claud
 **Instructions:** Design the DSP signal path from the ring buffer (256 x/y/velocity/time tuples) to a modulation output. Trail becomes a replayable, freezable, coupleable signal. Two performers' trails create interference patterns. Output: signal flow diagram + parameter spec.
 
 #### O20 — Design Constellation View ⚪ P3
-**Instructions:** 73 engines as interactive star chart. Engine position determined by sonic DNA centroid. Proximity = coupling compatibility. Click to load. Zoom/pan navigation. 25% push feature — may defer to V1.1.
+**Instructions:** 76 engines as interactive star chart. Engine position determined by sonic DNA centroid. Proximity = coupling compatibility. Click to load. Zoom/pan navigation. 25% push feature — may defer to V1.1.
 
 #### O21 — Design Spatial Preset Navigation ⚪ P3
 **Instructions:** ~17K presets as continuous 2D map. Position = 6D DNA projected to 2D (t-SNE or UMAP). Browse by dragging. Cluster visualization shows mood regions. 25% push — may defer.
@@ -337,7 +337,7 @@ Each of the following requires reading the corresponding engine header first.
 **Instructions:** OXBOW Slot 1 + OPERA Slot 2, ENTANGLE coupling at 0.35, macro positions defined. What the user hears in first 3 seconds. Write .xometa spec + fallback hard-coded init params.
 
 #### O77 — Depth-Zone Engine Browser (73 creatures) 🟢 P2
-**Instructions:** Assign all 73 engines to ocean zones. Hover tooltip, click to load. Produce zone-to-engine assignment table.
+**Instructions:** Assign all 76 engines to ocean zones. Hover tooltip, click to load. Produce zone-to-engine assignment table.
 
 #### O78 — OBRIX Pocket Standalone Design 🟢 P2
 **Prereqs:** Read `~/.claude/projects/-Users-joshuacramblet/memory/obrix-pocket-design.md`
@@ -407,7 +407,7 @@ Each of the following requires reading the corresponding engine header first.
 **Instructions:** Score the 5 coupling presets from O79 for 5 genres. 1-10 each + required changes.
 
 #### O97 — Instrument Browser Filter Taxonomy 🟡 P1
-**Instructions:** Assign each of 73 engines to exactly one type (DRUMS/BASS/PADS/KEYS/LEAD/FX/TEXTURE/GENERATOR/MODIFIER). Required for preset browser filter.
+**Instructions:** Assign each of 76 engines to exactly one type (DRUMS/BASS/PADS/KEYS/LEAD/FX/TEXTURE/GENERATOR/MODIFIER). Required for preset browser filter.
 
 #### O98 — OBRIX Flagship Launch Campaign 🟢 P2
 **Instructions:** OBRIX page on XO-OX.org, announcement copy, 30s promo video script.
@@ -588,7 +588,7 @@ Each of the following requires reading the corresponding engine header first.
 #### S45 — Run auval at 5 Sample Rates 🟡 P1
 **Instructions:** `auval -v aumu Xolk XoOx` at 11025/44100/48000/96000/192000 Hz. Record pass/fail for each. Fix any failures.
 
-#### S46 — Test Preset Loading for All 73 Engines 🟡 P1
+#### S46 — Test Preset Loading for All 76 Engines 🟡 P1
 **Instructions:** For each engine, load its first preset via PresetManager, verify no crash, verify param values populated. Script: iterate engines, load first .xometa, report failures.
 
 #### S47 — Test All 15 Coupling Types 🟢 P2
@@ -736,7 +736,7 @@ See S50.
 
 #### S82 — Regression Test: PresetManager Round-Trip 🟡 P1
 **File:** `Tests/PresetTests.cpp` (create)
-**Instructions:** For each of 73 engines: load first preset, serialize, deserialize, verify all params match ±1e-5f. Fail on any mismatch.
+**Instructions:** For each of 76 engines: load first preset, serialize, deserialize, verify all params match ±1e-5f. Fail on any mismatch.
 
 #### S83 — Per-Engine CPU Display 🟢 P2
 **Instructions:** CPU% badge in slot tiles, updated 500ms. Amber >5%, red >10%.
@@ -777,7 +777,7 @@ See S17.
 
 #### S94 — Fix frozenPrefixForEngine Missing Entries 🔴 P0
 **File:** `Source/Core/PresetManager.h`
-**Instructions:** Audit frozenPrefixForEngine map. Add entries for ALL 73 engines (OUTLOOK `look_`, OXYTOCIN `oxy_`, all Kitchen Collection). Run `Tools/verify_prefix_coverage.py`. **P0 for preset loading.**
+**Instructions:** Audit frozenPrefixForEngine map. Add entries for ALL 76 engines (OUTLOOK `look_`, OXYTOCIN `oxy_`, all Kitchen Collection). Run `Tools/verify_prefix_coverage.py`. **P0 for preset loading.**
 
 #### S95 — PresetsAutoSave 🟢 P2
 **Instructions:** After param change (debounced 2s), save to PropertiesFile. On next launch, offer restore if differs.
@@ -812,8 +812,8 @@ All Haiku tracks are read-only audits. Run them as verification passes. Most can
 #### H2 — Preset Count per Engine per Mood 🟢 P2
 **Command:** Count .xometa files in `Presets/XOceanus/{mood}/{engine}/` for all combinations. Output distribution table.
 
-#### H3 — Verify 73 Engines in CLAUDE.md Table 🔴 P0
-**Command:** Count rows in Engine Modules table in `CLAUDE.md`. Must be 73. List any missing.
+#### H3 — Verify 76 Engines in CLAUDE.md Table 🔴 P0
+**Command:** Count rows in Engine Modules table in `CLAUDE.md`. Must be 76. List any missing.
 
 #### H4 — Verify 73 in frozenPrefixForEngine 🔴 P0
 **File:** `Source/Core/PresetManager.h`

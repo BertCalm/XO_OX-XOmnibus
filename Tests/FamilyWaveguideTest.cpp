@@ -1,7 +1,7 @@
 // FamilyWaveguideTest.cpp
 // Standalone C++ test for FamilyWaveguide.h — no JUCE required.
 //
-// Build from XO_OX-XOlokun root:
+// Build from XO_OX-XOceanus root:
 //   mkdir -p Tests/build && cd Tests/build
 //   cmake .. -DCMAKE_CXX_STANDARD=17 && make
 //   ./FamilyWaveguideTest

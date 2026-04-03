@@ -1016,10 +1016,10 @@ public:
         // Phi rotates around Y-axis (tilts X/Z plane).
         // effectiveThetaRaw / effectivePhiRaw already include macro offsets.
         //----------------------------------------------------------------------
-        float cosTheta = std::cos(effectiveThetaRaw + couplingThetaModulation);
-        float sinTheta = std::sin(effectiveThetaRaw + couplingThetaModulation);
-        float cosPhi = std::cos(effectivePhiRaw);
-        float sinPhi = std::sin(effectivePhiRaw);
+        float cosTheta = fastCos(effectiveThetaRaw + couplingThetaModulation);
+        float sinTheta = fastSin(effectiveThetaRaw + couplingThetaModulation);
+        float cosPhi = fastCos(effectivePhiRaw);
+        float sinPhi = fastSin(effectivePhiRaw);
 
         //----------------------------------------------------------------------
         // Damping coefficient for LP accumulator.
@@ -1065,7 +1065,7 @@ public:
                     // Begin 50ms crossfade (smooth topology transition)
                     voice.crossfading = true;
                     voice.crossfadeGain = 0.0f;
-                    int crossfadeSamples = static_cast<int>(currentSampleRate.load(std::memory_order_acquire) * 0.050);
+                    int crossfadeSamples = std::max(1, static_cast<int>(currentSampleRate.load(std::memory_order_acquire) * 0.050f));
                     voice.crossfadeStep = 1.0f / static_cast<float>(crossfadeSamples);
                 }
 

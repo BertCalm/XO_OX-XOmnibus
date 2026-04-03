@@ -9,6 +9,7 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ModMatrix.h"
 #include <array>
 #include <cmath>
 
@@ -508,17 +509,18 @@ public:
         //   DEPTH: opens filter cutoff up to +6000 Hz (surface from the deep).
         //   SPACE: multiplies attack time by 1× to 4× (slow atmospheric bloom).
         const float effectiveDetune = detuneCents + macroDrift * 30.0f;
+
         // D002: LFO1 sweeps filter cutoff ±(depth × 3000 Hz) — the primary gill-flutter tremolo.
         // LFO2 (triangle, slow) provides the secondary long-arc cutoff evolution.
         const float lfo1CutoffMod = lfo1Output * lfo1Depth * 3000.0f;
         const float lfo2CutoffMod = lfo2Output * lfo2Depth * 4000.0f;
         const float effectiveCutoff =
-            std::min(20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod);
+            std::min(20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod + morphModCutoffOffset);
         const float effectiveAttack = attackTime * (1.0f + macroSpace * 3.0f);
 
-        // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel)
+        // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel) + mod matrix
         float effectiveMorph =
-            std::max(0.0f, std::min(3.0f, morphPosition + morphModulation + modWheelMorphOffset + macroBloom * 1.5f));
+            std::max(0.0f, std::min(3.0f, morphPosition + morphModulation + modWheelMorphOffset + macroBloom * 1.5f + morphModMorphOffset));
 
         //----------------------------------------------------------------------
         // MIDI event processing
@@ -596,6 +598,25 @@ public:
         //----------------------------------------------------------------------
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
+
+        // D002 mod matrix — apply per-block after all sources are known.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=MorphPosition, 3=LFO1Rate(unused here), 4=Pitch, 5=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = lfo1Output;
+            mSrc.lfo2       = lfo2Output;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelMorphOffset / 3.0f; // normalise back to 0..1
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            morphModCutoffOffset = mDst[1] * 5000.0f;
+            morphModMorphOffset  = mDst[2] * 1.0f;
+            morphModPitchOffset  = mDst[4] * 12.0f;
+            morphModLevelOffset  = mDst[5] * 0.5f;
+        }
 
         //----------------------------------------------------------------------
         // Reset coupling accumulators (consumed this block, accumulated fresh
@@ -683,7 +704,7 @@ public:
                 // In Poly mode with glideCoefficient=1.0, currentFrequency == targetFrequency
                 // so behavior is identical to the previous per-sample noteNumber lookup.
                 float baseFrequency =
-                    voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                    voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + morphModPitchOffset);
 
                 for (int i = 0; i < 3; ++i)
                 {
@@ -771,8 +792,9 @@ public:
             //-- Master output: tanh soft clip ---------------------------------
             // Prevents hard clipping in dense 16-voice pads — the tanh curve
             // gracefully compresses peaks while preserving musicality.
-            float outputLeft = fastTanh(mixLeft * outputLevel);
-            float outputRight = fastTanh(mixRight * outputLevel);
+            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, outputLevel + morphModLevelOffset);
+            float outputLeft = fastTanh(mixLeft * effectiveLevel);
+            float outputRight = fastTanh(mixRight * effectiveLevel);
 
             if (buffer.getNumChannels() >= 2)
             {
@@ -995,6 +1017,11 @@ private:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_macroSpace", 1}, "Morph SPACE",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kMorphModDests {"Off", "Filter Cutoff", "Morph Position",
+                                                        "LFO1 Rate", "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "morph_", "Morph", kMorphModDests);
     }
 
 public:
@@ -1026,6 +1053,7 @@ public:
         // D002: LFO2 (secondary slow arc triangle — filter cutoff)
         paramLfo2Rate = apvts.getRawParameterValue("morph_lfo2Rate");
         paramLfo2Depth = apvts.getRawParameterValue("morph_lfo2Depth");
+        modMatrix.attachParameters(apvts, "morph_");
     }
 
     //==========================================================================
@@ -1277,6 +1305,13 @@ private:
     // D002: LFO2 parameters (secondary slow arc triangle)
     std::atomic<float>* paramLfo2Rate = nullptr;
     std::atomic<float>* paramLfo2Depth = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float morphModCutoffOffset = 0.0f;
+    float morphModMorphOffset  = 0.0f;
+    float morphModPitchOffset  = 0.0f;
+    float morphModLevelOffset  = 0.0f;
 };
 
 } // namespace xoceanus

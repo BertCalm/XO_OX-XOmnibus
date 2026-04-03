@@ -10,6 +10,7 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ModMatrix.h"
 #include <array>
 #include <cmath>
 
@@ -468,9 +469,12 @@ public:
         // D006: aftertouch boosts LFO rate up to +8 Hz — faster tail-flick under pressure.
         // DART macro adds further speed boost (×2 at max DART) for maximum agitation.
         // MOVEMENT macro pre-multiplies the base rate (effectiveLfoRate already incorporates it).
+        // D002: mod matrix LFO1 rate offset (snapModLfo1RateOffset) uses the previous block's value
+        //       (one-block delay is imperceptible at LFO rates).
         const double effectiveLfoRateHz = static_cast<double>(effectiveLfoRate) +
                                           static_cast<double>(atPressure) * 8.0 +
-                                          static_cast<double>(macroDart) * static_cast<double>(effectiveLfoRate);
+                                          static_cast<double>(macroDart) * static_cast<double>(effectiveLfoRate) +
+                                          static_cast<double>(snapModLfo1RateOffset);
         lfoPhase += (effectiveLfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi)
             lfoPhase -= juce::MathConstants<double>::twoPi;
@@ -488,12 +492,39 @@ public:
         float lfo2Stereo =
             static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0) * lfo2Depth; // ±lfo2Depth pan offset
 
+        // D002 mod matrix — compute per-block source values and apply to destinations.
+        // Destinations (indices match kSnapModDests): 0=Off,1=FilterCutoff,2=LFO1Depth,3=LFO1Rate,4=Pitch,5=AmpLevel
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1      = static_cast<float>(std::sin(lfoPhase));
+            mSrc.lfo2      = static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0);
+            mSrc.env       = 0.0f; // Snap is percussive — no sustained envelope to expose here
+            mSrc.velocity  = 0.0f; // velocity applied per-voice; kept at 0 for block-rate slots
+            mSrc.keyTrack  = 0.0f;
+            mSrc.modWheel  = modWheelValue;
+            mSrc.aftertouch= atPressure;
+            float mDst[6]  = {};
+            modMatrix.apply(mSrc, mDst);
+            // mDst[1] = FilterCutoff offset (normalised ±1, scale by ±5kHz)
+            snapModCutoffOffset  = mDst[1] * 5000.0f;
+            // mDst[2] = LFO1Depth additive offset (normalised ±1, scale by ±0.3)
+            snapModLfo1DepthOffset = mDst[2] * 0.3f;
+            // mDst[3] = LFO1Rate additive offset (normalised ±1, scale by ±10 Hz)
+            snapModLfo1RateOffset  = mDst[3] * 10.0f;
+            // mDst[4] = Pitch offset (normalised ±1, scale by ±12 semitones)
+            snapModPitchOffset    = mDst[4] * 12.0f;
+            // mDst[5] = Amp Level (normalised ±1, scale by ±0.5)
+            snapModLevelOffset    = mDst[5] * 0.5f;
+        }
+
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
         const float effectiveBpfCenter = std::max(
             20.0f,
-            std::min(20000.0f, effectiveCutoff * (1.0f + effectiveLfoDepth * (float)std::sin(lfoPhase)) * cutoffMod +
+            std::min(20000.0f, (effectiveCutoff + snapModCutoffOffset) *
+                                   (1.0f + (effectiveLfoDepth + snapModLfo1DepthOffset) * (float)std::sin(lfoPhase)) *
+                                   cutoffMod +
                                    atPressure * 0.3f * 6000.0f));
 
         // D006: mod wheel adds up to +0.4 resonance — more ring/peak with wheel (sensitivity 0.4)
@@ -576,7 +607,7 @@ public:
                 voice.pitchSweepPhase += kPitchSweepRate / sampleRateFloat;
                 float sweepProgress = std::min(voice.pitchSweepPhase, 1.0f);
                 float currentMidiNote = voice.currentPitch * (1.0f - sweepProgress) + voice.targetPitch * sweepProgress;
-                currentMidiNote += pitchModulation;
+                currentMidiNote += pitchModulation + snapModPitchOffset;
 
                 // CPU fix: only call midiToHz when pitch changes by more than 0.01 semitones.
                 // midiToHz calls std::pow — expensive per sample per voice.
@@ -722,8 +753,10 @@ public:
 
             // ---- Write to output buffer -------------------------------------
             // DSP FIX: Apply LFO2 stereo pan wobble — subtle lateral movement
-            float finalLeft = (mixLeft * (1.0f + lfo2Stereo) + mixRight * (-lfo2Stereo * 0.5f)) * outputLevel;
-            float finalRight = (mixRight * (1.0f - lfo2Stereo) + mixLeft * (lfo2Stereo * 0.5f)) * outputLevel;
+            // D002: mod matrix level offset clamped to [0.05, 1.5] to prevent silence or clipping.
+            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, outputLevel + snapModLevelOffset);
+            float finalLeft = (mixLeft * (1.0f + lfo2Stereo) + mixRight * (-lfo2Stereo * 0.5f)) * effectiveLevel;
+            float finalRight = (mixRight * (1.0f - lfo2Stereo) + mixLeft * (lfo2Stereo * 0.5f)) * effectiveLevel;
 
             if (buffer.getNumChannels() >= 2)
             {
@@ -953,6 +986,11 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"snap_macroSpace", 1}, "Snap Macro SPACE",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kSnapModDests {"Off", "Filter Cutoff", "LFO1 Depth", "LFO1 Rate",
+                                                       "Pitch", "Amp Level"};
+        ModMatrix<4>::addParameters(params, "snap_", "Snap", kSnapModDests);
     }
 
     //==========================================================================
@@ -986,6 +1024,7 @@ public:
         pMacroMovement = apvts.getRawParameterValue("snap_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("snap_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("snap_macroSpace");
+        modMatrix.attachParameters(apvts, "snap_");
     }
 
     //==========================================================================
@@ -1159,6 +1198,14 @@ private:
     // D005 fix: autonomous LFO
     double lfoPhase = 0.0;  // BPF center drift accumulator (0.15-0.6 Hz, scales with DART)
     double lfo2Phase = 0.0; // DSP FIX: stereo pan wobble LFO (0.08 Hz triangle)
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float snapModCutoffOffset   = 0.0f; // Hz offset applied to effective filter cutoff
+    float snapModLfo1DepthOffset = 0.0f; // additive depth offset for LFO1
+    float snapModLfo1RateOffset  = 0.0f; // Hz additive offset for LFO1 rate
+    float snapModPitchOffset    = 0.0f; // semitone offset applied to each voice note
+    float snapModLevelOffset    = 0.0f; // additive offset for output level
 
     // ---- D006 Aftertouch — pressure opens BPF cutoff for brightness on pressure ----
     PolyAftertouch aftertouch;

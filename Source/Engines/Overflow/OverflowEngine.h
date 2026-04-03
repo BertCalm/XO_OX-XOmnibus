@@ -325,6 +325,8 @@ public:
 
         int valveTypeInt = static_cast<int>(pValveType + 0.5f);
 
+        if (numSamples <= 0) { buffer.clear(); return; }
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 

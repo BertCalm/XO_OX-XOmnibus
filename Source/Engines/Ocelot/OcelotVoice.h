@@ -97,6 +97,7 @@ public:
     // Returns this block's RMS energy (used for coupling).
     float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap)
     {
+        if (numSamples <= 0) return 0.0f;
         if (!active && !ampEnv.isActive())
             return 0.0f;
 

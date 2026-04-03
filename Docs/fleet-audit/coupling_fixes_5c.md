@@ -39,6 +39,6 @@
 ## Verification checklist
 
 - [ ] Build passes (no new compiler errors in either engine)
-- [ ] `auval -v aumu XOmn Xoox` passes
+- [ ] `auval -v aumu Xocn XoOx` passes
 - [ ] ONSET → SNAP AmpToFilter coupling: kick transient visibly modulates SNAP BPF center in preset browser
 - [ ] OPAL → any engine tight coupling (AudioToFM): waveform modulation is time-accurate (no 1-block latency offset)

@@ -2,6 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
@@ -690,6 +691,31 @@ public:
             effectiveStiffness = clamp(effectiveStiffness + atPressure * 0.25f, 0.0f, 1.0f);
         }
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=Stiffness, 2=Damping, 3=Pitch, 4=AmpLevel, 5=Nonlinearity
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;  // Obscura LFO values are per-voice
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            // dst 1: stiffness offset
+            effectiveStiffness = clamp(effectiveStiffness + mDst[1] * 0.4f, 0.0f, 1.0f);
+            // dst 2: damping offset
+            effectiveDamping = clamp(effectiveDamping + mDst[2] * 0.4f, 0.0f, 1.0f);
+            // dst 3: pitch offset in semitones (stored for per-voice glide application)
+            obscuraModPitchOffset   = mDst[3] * 12.0f;
+            // dst 4: amplitude level offset
+            obscuraModLevelOffset   = mDst[4] * 0.5f;
+            // dst 5: nonlinearity offset
+            effectiveNonlinearity = clamp(effectiveNonlinearity + mDst[5] * 0.4f, 0.0f, 1.0f);
+        }
+
         //----------------------------------------------------------------------
         // Apply coupling impulse to all active voices (if triggered by
         // another engine via RhythmToBlend coupling)
@@ -885,7 +911,7 @@ public:
                 // The scanner reads the chain's shape at audio rate, producing
                 // the output waveform. Scanner frequency = MIDI note frequency,
                 // so the chain's displacement pattern becomes the waveform.
-                float scannerFreq = voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float scannerFreq = voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + obscuraModPitchOffset);
                 float scannerIncrement = scannerFreq / sampleRateFloat;
 
                 // Left channel: forward scan
@@ -937,9 +963,10 @@ public:
                 peakEnvelopeLevel = std::max(peakEnvelopeLevel, amplitudeLevel);
             }
 
-            // Apply master level
-            float finalLeft = mixLeft * paramMasterLevel;
-            float finalRight = mixRight * paramMasterLevel;
+            // Apply master level (with mod matrix level offset)
+            const float effectiveMasterLevel = juce::jlimit(0.05f, 1.5f, paramMasterLevel + obscuraModLevelOffset);
+            float finalLeft = mixLeft * effectiveMasterLevel;
+            float finalRight = mixRight * effectiveMasterLevel;
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
@@ -1178,6 +1205,11 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"obscura_macroSpace", 1}, "Obscura Macro SPACE",
             juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kObscuraModDests {"Off", "Stiffness", "Damping", "Pitch", "Amp Level",
+                                                          "Nonlinearity"};
+        ModMatrix<4>::addParameters(params, "obscura_", "Obscura", kObscuraModDests);
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1225,6 +1257,9 @@ public:
         pMacroMovement = apvts.getRawParameterValue("obscura_macroMovement");
         pMacroCoupling = apvts.getRawParameterValue("obscura_macroCoupling");
         pMacroSpace = apvts.getRawParameterValue("obscura_macroSpace");
+
+        // D002 mod matrix
+        modMatrix.attachParameters(apvts, "obscura_");
     }
 
     //==========================================================================
@@ -1686,6 +1721,11 @@ private:
     std::atomic<float>* pMacroMovement = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;
     std::atomic<float>* pMacroSpace = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float obscuraModPitchOffset   = 0.0f;
+    float obscuraModLevelOffset   = 0.0f;
 };
 
 } // namespace xoceanus

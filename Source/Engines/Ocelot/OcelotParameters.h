@@ -3,6 +3,7 @@
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
+#include "../../DSP/ModMatrix.h"
 
 namespace xocelot
 {
@@ -235,6 +236,11 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
     // ── Coupling ─────────────────────────────────
     F(couplingLevel, "Coupling Level", 0.0f, 1.0f, 0.0f);
     C(couplingBus, "Coupling Bus", Enums::couplingBus, 0);
+
+    // ── D002 Mod Matrix — 4-slot source→destination routing ──────────────
+    // Destinations: ecosystem depth, canopy shimmer, pitch, amp level
+    static const juce::StringArray kOcelotModDests {"Off", "Ecosystem Depth", "Canopy Shimmer", "Pitch", "Amp Level"};
+    xoceanus::ModMatrix<4>::addParameters(p, "ocelot_", "Ocelot", kOcelotModDests);
 }
 
 // ── Standalone Parameter Layout (wraps addParameters) ────

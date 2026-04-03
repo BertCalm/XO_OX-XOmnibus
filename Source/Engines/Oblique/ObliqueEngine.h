@@ -426,8 +426,8 @@ public:
 
             // Equal-power pan law using cos/sin (constant-power stereo placement)
             float panPosition = lerp(0.5f, facetPanPositions[i], prismParams.stereoWidth);
-            float panGainL = std::cos(panPosition * kHalfPi);
-            float panGainR = std::sin(panPosition * kHalfPi);
+            float panGainL = fastCos(panPosition * kHalfPi);
+            float panGainR = fastSin(panPosition * kHalfPi);
 
             wetL += coloredSample * facetLevel * panGainL;
             wetR += coloredSample * facetLevel * panGainR;

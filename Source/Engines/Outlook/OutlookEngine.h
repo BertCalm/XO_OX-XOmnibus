@@ -8,6 +8,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/StandardADSR.h"
+#include "../../DSP/FastMath.h"
 #include <array>
 #include <vector>
 #include <cmath>
@@ -736,9 +737,9 @@ private:
         case 0: // Sine → scan adds odd harmonics (sine is already BL — no PolyBLEP needed)
         {
             const float p = static_cast<float>(useOsc2 ? v.phase2 : v.phase1);
-            const float sine = std::sin(p * juce::MathConstants<float>::twoPi);
-            const float h3 = std::sin(p * juce::MathConstants<float>::twoPi * 3.0f) * 0.333f;
-            const float h5 = std::sin(p * juce::MathConstants<float>::twoPi * 5.0f) * 0.2f;
+            const float sine = fastSin(p * juce::MathConstants<float>::twoPi);
+            const float h3 = fastSin(p * juce::MathConstants<float>::twoPi * 3.0f) * 0.333f;
+            const float h5 = fastSin(p * juce::MathConstants<float>::twoPi * 5.0f) * 0.2f;
             float base = sine + s * (h3 + h5);
             base /= (1.0f + s * 0.533f);
             return base;
@@ -769,7 +770,7 @@ private:
             if (s > 0.001f)
             {
                 const float p = static_cast<float>(useOsc2 ? v.phase2 : v.phase1);
-                const float h2 = std::sin(p * juce::MathConstants<float>::twoPi * 2.0f) * 0.5f;
+                const float h2 = fastSin(p * juce::MathConstants<float>::twoPi * 2.0f) * 0.5f;
                 return (saw + s * h2) / (1.0f + s * 0.5f);
             }
             return saw;
@@ -818,14 +819,14 @@ private:
         {
             const float p = static_cast<float>(useOsc2 ? v.phase2 : v.phase1);
             const float formantFreq = 1.0f + s * 4.0f;
-            return std::sin(p * juce::MathConstants<float>::twoPi) *
-                   std::sin(p * juce::MathConstants<float>::twoPi * formantFreq);
+            return fastSin(p * juce::MathConstants<float>::twoPi) *
+                   fastSin(p * juce::MathConstants<float>::twoPi * formantFreq);
         }
 
         default:
         {
             const float p = static_cast<float>(useOsc2 ? v.phase2 : v.phase1);
-            return std::sin(p * juce::MathConstants<float>::twoPi);
+            return fastSin(p * juce::MathConstants<float>::twoPi);
         }
         }
     }
@@ -852,7 +853,7 @@ private:
     int delayWritePos = 0;
 
     // Reverb buffer (4-tap allpass diffusion)
-    static constexpr int kReverbBufSize = 4096;
+    static constexpr int kReverbBufSize = 16384; // supports up to ~176kHz (largest tap 3079 * 4x)
     std::array<float, kReverbBufSize> reverbBuf{};
     int reverbWritePos = 0;
 

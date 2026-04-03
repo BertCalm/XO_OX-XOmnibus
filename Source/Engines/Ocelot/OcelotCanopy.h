@@ -7,6 +7,7 @@
 #include <array>
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -79,7 +80,7 @@ public:
         float wavefold = std::clamp(snap.canopyWavefold + mod.canopyMorphMod, 0.0f, 1.0f);
 
         // Breathe rate (modulated by biome period multiplier)
-        float breatheRate = 0.3f / biome.canopyBreathePeriod;
+        float breatheRate = 0.3f / std::max(0.01f, biome.canopyBreathePeriod);
 
         float detune = std::clamp(snap.canopyDetune + mod.canopyMorphMod * 0.3f, 0.0f, 1.0f);
         float sumSq = 0.0f;
@@ -91,7 +92,7 @@ public:
             breathePhase += breatheRate / static_cast<float>(sr);
             if (breathePhase > 1.0f)
                 breathePhase -= 1.0f;
-            float breathe = 0.5f + 0.5f * std::sin(breathePhase * juce::MathConstants<float>::twoPi);
+            float breathe = 0.5f + 0.5f * xoceanus::fastSin(breathePhase * juce::MathConstants<float>::twoPi);
 
             // Sum partials
             float sample = 0.0f;
@@ -113,7 +114,7 @@ public:
                 if (partialPhases[static_cast<size_t>(p)] > 1.0f)
                     partialPhases[static_cast<size_t>(p)] -= 1.0f;
 
-                float s = std::sin(partialPhases[static_cast<size_t>(p)] * juce::MathConstants<float>::twoPi);
+                float s = xoceanus::fastSin(partialPhases[static_cast<size_t>(p)] * juce::MathConstants<float>::twoPi);
                 sample += s * partialLevel;
                 spectralSum += partialFreq * partialLevel;
             }

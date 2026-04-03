@@ -204,14 +204,14 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
-See `Docs/xoceanus_name_migration_reference.md` for the full mapping and gotchas.
+See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and gotchas.
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
-| `Docs/xoceanus_master_specification.md` | **THE** single source of truth |
-| `Docs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
+| `Docs/specs/xoceanus_master_specification.md` | **THE** single source of truth |
+| `Docs/specs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -228,7 +228,7 @@ See `Docs/xoceanus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
 | `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xoceanus_sound_design_guides.md` | Sound design guide |
+| `Docs/specs/xoceanus_sound_design_guides.md` | Sound design guide |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -311,7 +311,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Invoke:** `/new-xo-engine` — walks through ideation, architecture, scaffold, and integration prep.
 
-**Full process:** `Docs/xoceanus_new_engine_process.md`
+**Full process:** `Docs/specs/xoceanus_new_engine_process.md`
 
 **Quick rules for XOceanus-ready standalone development:**
 - Parameter IDs use `{shortname}_{paramName}` format from day one
@@ -325,9 +325,9 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## V1 Scope — "The Deep Opens"
 
-V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 76-engine fleet is personal; V1 gating is public release only. See `Docs/v1-scope-revision-2026-03-23.md`.
+V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 76-engine fleet is personal; V1 gating is public release only. See `Docs/plans/v1-scope-revision-2026-03-23.md`.
 
-**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. See `Docs/patreon-milestone-model.md`.
+**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. See `Docs/plans/patreon-milestone-model.md`.
 
 ## Kitchen Collection (24 engines across 6 quads)
 
@@ -342,7 +342,7 @@ All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 | Broth (Pads) | Multi-timescale diffusion | OVERWASH, OVERWORN, OVERFLOW, OVERCAST | Retreat complete |
 | Fusion (EP) | Spectral Fingerprint Cache | OASIS, ODDFELLOW, ONKOLO, OPCODE | Retreat complete |
 
-161 awakening presets written across the 16 KC engines. Community strategy: `Docs/community-strategy-v2.md`.
+161 awakening presets written across the 16 KC engines. Community strategy: `Docs/plans/community-strategy-v2.md`.
 
 ## OBRIX — Wave 5: Reef Residency (2026-03-21)
 
@@ -369,11 +369,11 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 ## Seance Findings
 
 **72 engines seanced** (original 47 by 2026-03-21; Kitchen Collection 24 in batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23; OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced — 76 total registered; OBIONT/OKEANOS/OUTFLOW have presets but seance pending) — All built engines except OSMOSIS/OBIONT/OKEANOS/OUTFLOW seanced. OXYTO: 9.5/10 — NEW FLEET LEADER (B040 Note Duration, unanimous). OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B038 (Psychology-as-DSP) RATIFIED 8-0, B039 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. B037 (Three-Timescale Conductor) confirmed. P0 FIXED: OperaSVF block-rate coefficient cache committed (2026-03-22). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All original 47 engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
-- Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
-- Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
-- Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
-- Seance review of Guild plan: `Docs/seance-review-guild-plan-2026-03-20.md`
-- Grand Survey: `Docs/xoceanus_landscape_2026.md`
+- Fleet scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
+- Post-fix rescoring: `Docs/fleet-audit/post-fix-rescoring-2026-03-20.md`
+- Producer's Guild review: `Docs/fleet-audit/producers-guild-fleet-review-2026-03-20.md`
+- Seance review of Guild plan: `Docs/seances/seance-review-guild-plan-2026-03-20.md`
+- Grand Survey: `Docs/plans/xoceanus_landscape_2026.md`
 - Cross-reference: `Docs/seances/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
 
@@ -464,7 +464,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
 - ~15,500 presets (was 10,028 at sweep completion), 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
-- **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
+- **Full history**: `Docs/sweeps/prism_sweep_final_report.md` | Master index: `Docs/sweeps/prism_sweep_index.md`
 
 ---
 
@@ -508,12 +508,12 @@ When a new engine is registered, update **all four** of these sections in CLAUDE
 4. **Key Files table** (if the engine has a notable architecture worth linking) — add `| Source/Engines/Name/NameEngine.h | Brief description |`
 
 Then update these external files:
-- `Docs/xoceanus_master_specification.md` section 3.1 engine table (add row)
+- `Docs/specs/xoceanus_master_specification.md` section 3.1 engine table (add row)
 - `Docs/seances/seance_cross_reference.md` (add seance row after the seance is run)
 - `Source/XOceanusProcessor.cpp` (register the engine)
 - `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
 
-Full process: `Docs/xoceanus_new_engine_process.md`
+Full process: `Docs/specs/xoceanus_new_engine_process.md`
 
 ---
 
@@ -521,21 +521,21 @@ Full process: `Docs/xoceanus_new_engine_process.md`
 
 - Full doc inventory: `Docs/MANIFEST.md`
 - Documentation governance: `Docs/GOVERNANCE.md`
-- Master specification: `Docs/xoceanus_master_specification.md`
+- Master specification: `Docs/specs/xoceanus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
-- Community strategy: `Docs/community-strategy-v2.md`
-- V1 scope: `Docs/v1-scope-revision-2026-03-23.md`
-- Kitchen Collection release calendar: `Docs/kitchen-collection-release-calendar.md`
-- Fleet seance scores: `Docs/fleet-seance-scores-2026-03-20.md`
+- Community strategy: `Docs/plans/community-strategy-v2.md`
+- V1 scope: `Docs/plans/v1-scope-revision-2026-03-23.md`
+- Kitchen Collection release calendar: `Docs/plans/kitchen-collection-release-calendar.md`
+- Fleet seance scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
 
 ---
 
 ## Development Workflow
 
-1. Read the master spec (`Docs/xoceanus_master_specification.md`) before making changes
+1. Read the master spec (`Docs/specs/xoceanus_master_specification.md`) before making changes
 2. Plan before coding — produce architecture + QA plan first
 3. All engines must implement the `SynthEngine` interface
 4. Parameter IDs are namespaced by engine (e.g., `snap_filterCutoff`, `dub_sendAmount`)
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
-7. For new engines, follow the process in `Docs/xoceanus_new_engine_process.md`
+7. For new engines, follow the process in `Docs/specs/xoceanus_new_engine_process.md`

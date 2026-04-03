@@ -614,7 +614,15 @@ def run_qa(submission_path: Path, script_dir: Path, strict: bool) -> dict:
         extract_root.mkdir()
         try:
             with zipfile.ZipFile(submission_path, "r") as zf:
-                zf.extractall(extract_root)
+                # Safe extraction — prevent ZipSlip path traversal
+                dest = Path(extract_root).resolve()
+                for member in zf.infolist():
+                    target = (dest / member.filename).resolve()
+                    if not target.is_relative_to(dest):
+                        raise ValueError(
+                            f"ZipSlip blocked: {member.filename!r} escapes {dest}"
+                        )
+                    zf.extract(member, dest)
         except Exception as exc:
             report["fatal"] = f"Failed to extract ZIP: {exc}"
             return report

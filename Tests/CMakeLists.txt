@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(FamilyWaveguideTest FamilyWaveguideTest.cpp)
 
-# Source/DSP/FamilyWaveguide.h is relative to XO_OX-XOlokun root (one level up)
+# Source/DSP/FamilyWaveguide.h is relative to XO_OX-XOceanus root (one level up)
 target_include_directories(FamilyWaveguideTest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-# Strict warnings + -Werror to match XOlokun quality gate (closes #408).
+# Strict warnings + -Werror to match XOceanus quality gate (closes #408).
 # Same exceptions as root CMakeLists.txt: unused-parameter and
 # deprecated-declarations are suppressed to avoid noise from JUCE callbacks.
 target_compile_options(FamilyWaveguideTest PRIVATE

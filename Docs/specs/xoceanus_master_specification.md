@@ -48,7 +48,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOceanus Is
 
-**XOceanus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 73 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOceanus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 76 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -58,7 +58,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Value | Expression |
 |-------|------------|
-| **Character** | 1000 presets with evocative names, not "Init Patch 47" |
+| **Character** | 17,300+ presets with evocative names, not "Init Patch 47" |
 | **Coupling** | Cross-engine modulation is the defining differentiator |
 | **Openness** | Open source, community presets, documented architecture |
 | **Craft** | Each engine was a standalone instrument first |
@@ -127,8 +127,12 @@ Inspired by the Moog Matriarch's 90 pre-wired patch points:
 
 ### 2.4 Engine Registry
 
+> **Note (2026-03-24):** The `REGISTER_ENGINE` macro shown below was removed. Engines now register
+> via static boolean initializers directly in `Source/XOceanusProcessor.cpp`. The macro is preserved
+> here for historical reference only.
+
 ```cpp
-// Factory pattern — engines register at compile time
+// Factory pattern — engines register at compile time (REMOVED — see note above)
 #define REGISTER_ENGINE(EngineClass) \
     static bool registered_##EngineClass = \
         EngineRegistry::instance().registerEngine( \
@@ -231,7 +235,7 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OLEG** | XOleg | Theatre Red `#C0392B` | `oleg_` |
 | **OTIS** | XOtis | Gospel Gold `#D4A017` | `otis_` |
 | **OVEN** | XOven | Steinway Ebony `#1C1C1C` | `oven_` |
-| **OCHRE** | XOchre | Upright Oak `#9C6B30` | `ochre_` |
+| **OCHRE** | XOchre | Ochre Pigment `#CC7722` | `ochre_` |
 | **OBELISK** | XObelisk | Grand Ivory `#FFFFF0` | `obel_` |
 | **OPALINE** | XOpaline | Prepared Rust `#B7410E` | `opal2_` |
 | **OGRE** | XOgre | Sub Bass Black `#0D0D0D` | `ogre_` |
@@ -245,15 +249,15 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OVERWASH** | XOverwash | Tide Foam White `#F0F8FF` | `wash_` |
 | **OVERWORN** | XOverworn | Worn Felt Grey `#808080` | `worn_` |
 | **OVERFLOW** | XOverflow | Deep Current Blue `#1A3A5C` | `flow_` |
-| **OVERCAST** | XOvercast | Storm Cloud Slate `#708090` | `cast_` |
-| **OASIS** | XOasis | Desert Spring Teal `#00827F` | `oasis_` |
+| **OVERCAST** | XOvercast | Light Slate Gray `#778899` | `cast_` |
+| **OASIS** | XOasis | Desert Spring Teal `#00827F` | `oas_` |
 | **ODDFELLOW** | XOddfellow | Fusion Copper `#B87333` | `oddf_` |
 | **ONKOLO** | XOnkolo | Spectral Amber `#FFBF00` | `onko_` |
-| **OPCODE** | XOpcode | Circuit Green `#39FF14` | `opco_` |
+| **OPCODE** | XOpcode | Cadet Blue `#5F9EA0` | `opco_` |
 | **OXYTOCIN** | XOxytocin | Synapse Violet `#9B5DE5` | `oxy_` |
 | **OUTLOOK** | XOutlook | Horizon Indigo `#4169E1` | `look_` |
 | **OBIONT** | XObiont | Bioluminescent Amber `#E8A030` | `obnt_` |
-| **OKEANOS** | XOkeanos | Cardamom Gold `#C49B3F` | `oasis_` |
+| **OKEANOS** | XOkeanos | Cardamom Gold `#C49B3F` | `okan_` |
 | **OUTFLOW** | XOutflow | Deep Storm Indigo `#1A1A40` | `out_` |
 
 ### 3.2 Engine Visual Identity
@@ -323,7 +327,7 @@ ombre_blend            // OMBRE engine
 
 ## 4. Coupling Matrix
 
-### 4.1 Coupling Types (14)
+### 4.1 Coupling Types (15)
 
 ```cpp
 enum class CouplingType {
@@ -1107,9 +1111,9 @@ The MVP ships with:
 ### 12.2 v1.0 Target
 
 - All 76 engines wrapped and integrated
-- Full coupling matrix (12 types)
+- Full coupling matrix (15 types)
 - PlaySurface (all 3 modes)
-- 1000 factory presets with DNA fingerprints
+- 17,000+ factory presets with DNA fingerprints
 - Preset morphing and breeding
 - XPN export
 - macOS + iOS (AUv3)

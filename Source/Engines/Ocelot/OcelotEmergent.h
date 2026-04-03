@@ -58,6 +58,7 @@ public:
     float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
                       const BiomeProfile& biome, const struct StrataModulation& mod)
     {
+        if (numSamples <= 0) return 0.0f;
         if (!active)
         {
             std::fill(outL, outL + numSamples, 0.0f);

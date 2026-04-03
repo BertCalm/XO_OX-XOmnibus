@@ -43,12 +43,12 @@
 
 @property (nonatomic, strong) CMMotionManager*      motionManager;
 @property (nonatomic, strong) NSOperationQueue*     motionQueue;
-@property (nonatomic, assign) xolokun::SensorManager* sensorManager;  // non-owning
+@property (nonatomic, assign) xoceanus::SensorManager* sensorManager;  // non-owning
 @property (nonatomic, assign) NSTimeInterval        lastTimestamp;     // previous callback ts
 @property (nonatomic, assign) int                   nominalHz;         // mirrors Config::updateRateHz
 @property (nonatomic, assign) BOOL                  gyroAvailable;
 
-- (instancetype)initWithSensorManager:(xolokun::SensorManager*)sm
+- (instancetype)initWithSensorManager:(xoceanus::SensorManager*)sm
                            nominalHz:(int)hz;
 
 - (void)startUpdates;
@@ -58,7 +58,7 @@
 
 @implementation XOMotionManagerHelper
 
-- (instancetype)initWithSensorManager:(xolokun::SensorManager*)sm
+- (instancetype)initWithSensorManager:(xoceanus::SensorManager*)sm
                            nominalHz:(int)hz
 {
     self = [super init];
@@ -107,7 +107,7 @@
                 if (!strongSelf || !motion || error)
                     return;
 
-                xolokun::SensorManager* sm = strongSelf.sensorManager;
+                xoceanus::SensorManager* sm = strongSelf.sensorManager;
                 if (!sm)
                     return;
 
@@ -173,7 +173,7 @@
                 if (!strongSelf || !data || error)
                     return;
 
-                xolokun::SensorManager* sm = strongSelf.sensorManager;
+                xoceanus::SensorManager* sm = strongSelf.sensorManager;
                 if (!sm)
                     return;
 
@@ -226,8 +226,8 @@ static XOMotionManagerHelper* s_helper = nil;
 // Start motion updates feeding into |sm|.
 // |sm|    — the SensorManager instance to receive feed* calls.
 // |config| — the Config struct; updateRateHz and motionEnabled are read here.
-void startMotionUpdates(xolokun::SensorManager* sm,
-                        const xolokun::SensorManager::Config& config)
+void startMotionUpdates(xoceanus::SensorManager* sm,
+                        const xoceanus::SensorManager::Config& config)
 {
     if (!config.motionEnabled || !sm)
         return;

@@ -124,6 +124,21 @@ def _validate_job(job: dict) -> None:
     if wavs_dir and ".." in Path(wavs_dir).parts:
         raise ValueError(f"Path traversal in wavs_dir: {wavs_dir!r}")
 
+    # Validate version (semver or dotted-numeric)
+    version = str(job.get("version", ""))
+    if version and not re.match(r'^\d+(\.\d+){0,3}$', version):
+        raise ValueError(f"Invalid version format: {version!r}")
+
+    # Validate collection (safe filesystem characters)
+    collection = str(job.get("collection", ""))
+    if collection and not re.match(r'^[\w .()\-]+$', collection):
+        raise ValueError(f"Invalid collection name: {collection!r}")
+
+    # Validate choke_preset (alphanumeric + underscore/hyphen)
+    choke_preset = str(job.get("choke_preset", ""))
+    if choke_preset and not re.match(r'^[\w\-]+$', choke_preset):
+        raise ValueError(f"Invalid choke_preset: {choke_preset!r}")
+
 
 # ---------------------------------------------------------------------------
 # Command builder
@@ -193,10 +208,14 @@ def run_job(job: dict, output_base_dir: Path, dry_run: bool) -> JobResult:
             cmd,
             capture_output=True,
             text=True,
+            timeout=600,
         )
         result.exit_code = proc.returncode
         stderr_lines = proc.stderr.splitlines()
         result.stderr_tail = stderr_lines[-10:] if len(stderr_lines) > 10 else stderr_lines
+    except subprocess.TimeoutExpired:
+        result.exit_code = 1
+        result.stderr_tail = ["Job timed out after 600 seconds"]
     except Exception as exc:
         result.exit_code = 1
         result.stderr_tail = [f"Exception launching subprocess: {exc}"]

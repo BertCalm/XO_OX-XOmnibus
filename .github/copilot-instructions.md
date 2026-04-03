@@ -6,7 +6,7 @@ Full project context lives in [`CLAUDE.md`](../CLAUDE.md) at the repo root. Read
 
 - **Language:** C++ (JUCE framework), AU/VST3 audio plugin
 - **Engine naming:** All engines follow the `XO + O-word` pattern (ONSET, OWARE, OXYTOCIN, etc.)
-- **Presets:** `.xometa` JSON format with 6D Sonic DNA; stored in `Presets/XOlokun/`
+- **Presets:** `.xometa` JSON format with 6D Sonic DNA; stored in `Presets/XOceanus/`
 - **Dark mode default:** UI palette uses dark-primary design; light mode is a toggle
 - **No audio-thread allocations:** Never allocate memory on the audio thread
 - **Sample rate:** Always derive from `AudioProcessor::getSampleRate()` — never hardcode 44100

@@ -66,7 +66,7 @@ void updateHardwareMetrics()
 //==============================================================================
 // Public API implementation.
 //
-namespace xolokun::audio_session {
+namespace xoceanus::audio_session {
 
 void configure()
 {
@@ -321,6 +321,6 @@ void shutdown()
     g_bufferSize.store(0,    std::memory_order_relaxed);
 }
 
-} // namespace xolokun::audio_session
+} // namespace xoceanus::audio_session
 
 #endif // JUCE_IOS

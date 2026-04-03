@@ -281,7 +281,7 @@ namespace
 // reef_bridge implementation
 // ---------------------------------------------------------------------------
 
-namespace xolokun::reef_bridge {
+namespace xoceanus::reef_bridge {
 
 void initialize(float reefViewHeight)
 {
@@ -627,6 +627,6 @@ bool isInitialized()
     return gInitialized;
 }
 
-} // namespace xolokun::reef_bridge
+} // namespace xoceanus::reef_bridge
 
 #endif // JUCE_IOS

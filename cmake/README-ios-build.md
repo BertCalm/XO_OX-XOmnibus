@@ -1,4 +1,4 @@
-# XOlokun — iOS Build Guide
+# XOceanus — iOS Build Guide
 
 Toolchain file: `cmake/ios-toolchain.cmake`
 
@@ -65,10 +65,10 @@ cmake --build build-ios-sim-x64 --config Debug
 After CMake configure, open the generated project directly in Xcode:
 
 ```bash
-open build-ios/XOlokun.xcodeproj
+open build-ios/XOceanus.xcodeproj
 ```
 
-From Xcode you can select a device/simulator, set the active scheme (XOlokun_AUv3 or XOlokun_Standalone), and use Product → Run.
+From Xcode you can select a device/simulator, set the active scheme (XOceanus_AUv3 or XOceanus_Standalone), and use Product → Run.
 
 ---
 
@@ -80,7 +80,7 @@ From Xcode you can select a device/simulator, set the active scheme (XOlokun_AUv
 | `IOS_DEPLOYMENT_TARGET` | `15.0` | Minimum iOS version |
 | `DEVELOPMENT_TEAM` | `XXXXXXXXXX` (placeholder) | 10-char Apple Team ID |
 | `CODE_SIGN_IDENTITY` | `iPhone Developer` (device) or `-` (sim) | Signing certificate name |
-| `PRODUCT_BUNDLE_IDENTIFIER` | `com.xo-ox.xolokun` | Bundle ID override |
+| `PRODUCT_BUNDLE_IDENTIFIER` | `com.xo-ox.xoceanus` | Bundle ID override |
 
 ---
 

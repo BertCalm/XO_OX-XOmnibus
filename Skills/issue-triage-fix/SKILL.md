@@ -392,5 +392,5 @@ Before marking `/issue-triage-fix` complete for a session:
 ## Related Docs
 
 - `Docs/GOVERNANCE.md` — Authority hierarchy for issue prioritization
-- `Docs/xolokun_master_specification.md` — Source of truth for correct counts/specs
+- `Docs/xoceanus_master_specification.md` — Source of truth for correct counts/specs
 - `CLAUDE.md` — Canonical engine list, parameter prefixes, architecture rules

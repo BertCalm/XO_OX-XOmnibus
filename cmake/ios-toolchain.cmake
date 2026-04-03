@@ -1,5 +1,5 @@
 # =============================================================================
-# ios-toolchain.cmake — XOlokun iOS Cross-Compilation Toolchain
+# ios-toolchain.cmake — XOceanus iOS Cross-Compilation Toolchain
 # =============================================================================
 #
 # Supports:
@@ -15,7 +15,7 @@
 #     [-DIOS_DEPLOYMENT_TARGET=15.0] \
 #     [-DDEVELOPMENT_TEAM=YOUR10CHARID] \
 #     [-DCODE_SIGN_IDENTITY="iPhone Developer"] \
-#     [-DPRODUCT_BUNDLE_IDENTIFIER=com.xo-ox.xolokun]
+#     [-DPRODUCT_BUNDLE_IDENTIFIER=com.xo-ox.xoceanus]
 #
 # The default IOS_PLATFORM is OS (physical device, arm64).
 # Switch to SIMULATORARM64 for Apple Silicon host, SIMULATOR64 for Intel host.
@@ -210,14 +210,14 @@ endif()
 
 # =============================================================================
 # 8. Bundle identifier stub
-#    Override: -DPRODUCT_BUNDLE_IDENTIFIER=com.yourcompany.xolokun
+#    Override: -DPRODUCT_BUNDLE_IDENTIFIER=com.yourcompany.xoceanus
 #    This is also set in CMakeLists.txt via BUNDLE_ID on juce_add_plugin(), so
 #    the toolchain value serves as a fallback for ancillary targets (tests, etc).
 # =============================================================================
 
 if(NOT DEFINED PRODUCT_BUNDLE_IDENTIFIER)
-    set(PRODUCT_BUNDLE_IDENTIFIER "com.xo-ox.xolokun" CACHE STRING
-        "App/plugin bundle identifier. Override: -DPRODUCT_BUNDLE_IDENTIFIER=com.yourco.xolokun")
+    set(PRODUCT_BUNDLE_IDENTIFIER "com.xo-ox.xoceanus" CACHE STRING
+        "App/plugin bundle identifier. Override: -DPRODUCT_BUNDLE_IDENTIFIER=com.yourco.xoceanus")
 endif()
 
 set(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER
@@ -259,7 +259,7 @@ endif()
 set(CMAKE_XCODE_ATTRIBUTE_APPLICATION_EXTENSION_API_ONLY "YES" CACHE STRING "" FORCE)
 
 # =============================================================================
-# 12. Swift — disabled (XOlokun is pure C++/JUCE; no Swift sources)
+# 12. Swift — disabled (XOceanus is pure C++/JUCE; no Swift sources)
 # =============================================================================
 
 set(CMAKE_XCODE_ATTRIBUTE_SWIFT_OPTIMIZATION_LEVEL "-Onone" CACHE STRING "" FORCE)
@@ -287,7 +287,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 # 15. Suppress noisy legacy deprecation warnings from SDK headers
 #     (iOS 26 SDK deprecates some Carbon-era CoreMIDI calls; JUCE still uses
 #     them internally — suppress at the toolchain level so they don't bury
-#     XOlokun diagnostics.)
+#     XOceanus diagnostics.)
 # =============================================================================
 
 set(CMAKE_XCODE_ATTRIBUTE_GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS "NO" CACHE STRING "" FORCE)
@@ -297,7 +297,7 @@ set(CMAKE_XCODE_ATTRIBUTE_GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS "NO" CACHE STRING 
 # =============================================================================
 
 message(STATUS "──────────────────────────────────────────────────")
-message(STATUS " XOlokun iOS Toolchain configured")
+message(STATUS " XOceanus iOS Toolchain configured")
 message(STATUS "  Platform  : ${IOS_PLATFORM} (${_XO_IOS_ARCHS})")
 message(STATUS "  MinOS     : ${IOS_DEPLOYMENT_TARGET}")
 message(STATUS "  SDK       : ${_XO_IOS_SYSROOT}")

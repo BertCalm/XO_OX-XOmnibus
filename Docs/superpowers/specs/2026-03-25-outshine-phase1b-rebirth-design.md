@@ -556,7 +556,7 @@ The dimmed "Rebirth Mode — Phase 1B" teaser in `OutshineAutoMode.h` becomes ac
 │  ⚠ OVERWASH not recommended for drums            │  ← Material mismatch warning (contextual)
 │                                                  │
 │  ▸ Advanced Controls — Phase 1C                  │  ← Collapsed, greyed out
-│  ▸ Expert Mode: All 73 Engines — Phase 1C        │  ← Collapsed, greyed out
+│  ▸ Expert Mode: All 76 Engines — Phase 1C        │  ← Collapsed, greyed out
 └─────────────────────────────────────────────────┘
 ```
 
@@ -680,7 +680,7 @@ as of Phase 1B (2026-03-25) and will not receive further updates.
 | # | Limitation | Phase |
 |---|-----------|-------|
 | 1 | CHAOS mode is design-only, not implemented | Phase 1C |
-| 2 | Expert mode (all 73 engines) not available | Phase 1C |
+| 2 | Expert mode (all 76 engines) not available | Phase 1C |
 | 3 | Per-parameter advanced controls not exposed | Phase 1C |
 | 4 | Session save/load for Rebirth settings | Phase 1C |
 | 5 | XPN upgrade pipeline (import → re-process → re-export) | Phase 1B (separate task) |

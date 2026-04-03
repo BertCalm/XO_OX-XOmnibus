@@ -173,7 +173,7 @@ private:
             wobblePhase_ -= 1.0f;
 
         // Sinusoidal drift with noise modulation
-        float drift = std::sin(wobblePhase_ * 6.2831853f);
+        float drift = fastSin(wobblePhase_ * 6.2831853f);
         drift += noise_.process() * 0.3f; // add randomness
 
         // Apply as amplitude modulation (simulates speed variation)

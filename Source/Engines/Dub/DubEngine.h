@@ -10,6 +10,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/ModMatrix.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
@@ -614,14 +615,33 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
 
+        // D002 mod matrix — apply per-block.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=LFORate, 3=Pitch, 4=AmpLevel, 5=DelayMix
+        {
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = lfo.process(); // advance LFO once for mod matrix, then reset in block loop
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressure;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            dubModCutoffOffset = mDst[1] * 5000.0f;
+            dubModLfoRateOffset = mDst[2] * 8.0f;
+            dubModPitchOffset   = mDst[3] * 12.0f;
+            dubModLevelOffset   = mDst[4] * 0.5f;
+        }
+
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
         externalPitchMod = 0.0f;
         float filterMod = externalFilterMod;
         externalFilterMod = 0.0f;
 
-        // Setup LFO — main LFO rate/depth from params
-        lfo.setRate(lfoRate, srf);
+        // Setup LFO — main LFO rate/depth from params (D002 mod matrix rate offset applied)
+        lfo.setRate(juce::jlimit(0.01f, 30.0f, lfoRate + dubModLfoRateOffset), srf);
         bool hasLfo = lfoDepth > 0.001f;
 
         // DSP FIX: Secondary LFO — autonomous triangle modulation on the
@@ -710,7 +730,7 @@ public:
                 float pitchOffset = voice.pitchEnv.process();
                 float driftCents = voice.drift.process(driftAmt);
                 float totalSemitones =
-                    pitchOffset + driftCents / 100.0f + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f;
+                    pitchOffset + driftCents / 100.0f + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f + dubModPitchOffset;
                 float freq = baseFreq * fastExp(totalSemitones * (0.693147f / 12.0f));
 
                 // Generate oscillators
@@ -726,9 +746,9 @@ public:
                 float noiseOut = voice.noise.process() * noiseLevel;
                 float raw = oscOut + subOut + noiseOut;
 
-                // Filter with envelope + LFO + coupling modulation
+                // Filter with envelope + LFO + coupling + mod matrix modulation
                 float envVal = voice.ampEnv.process();
-                float cutoffMod = filterCut;
+                float cutoffMod = filterCut + dubModCutoffOffset;
 
                 if (std::abs(filterEnv) > 0.001f)
                 {
@@ -820,9 +840,10 @@ public:
             outL = fastTanh(outL);
             outR = fastTanh(outR);
 
-            // Apply engine level
-            outL *= level;
-            outR *= level;
+            // Apply engine level (D002: mod matrix level offset)
+            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, level + dubModLevelOffset);
+            outL *= effectiveLevel;
+            outR *= effectiveLevel;
 
             // Update output cache for coupling reads
             outputCacheL[static_cast<size_t>(sample)] = outL;
@@ -1050,6 +1071,11 @@ public:
 
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID{"dub_polyphony", 1}, "Dub Polyphony", juce::StringArray{"1", "2", "4", "8"}, 3));
+
+        // D002 mod matrix — 4 user-configurable source→destination slots
+        static const juce::StringArray kDubModDests {"Off", "Filter Cutoff", "LFO Rate", "Pitch", "Amp Level",
+                                                      "Delay Mix"};
+        ModMatrix<4>::addParameters(params, "dub_", "Dub", kDubModDests);
     }
 
 public:
@@ -1091,6 +1117,7 @@ public:
         pVoiceMode = apvts.getRawParameterValue("dub_voiceMode");
         pGlide = apvts.getRawParameterValue("dub_glide");
         pPolyphony = apvts.getRawParameterValue("dub_polyphony");
+        modMatrix.attachParameters(apvts, "dub_");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1269,6 +1296,13 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    ModMatrix<4> modMatrix;
+    float dubModCutoffOffset  = 0.0f;
+    float dubModLfoRateOffset = 0.0f;
+    float dubModPitchOffset   = 0.0f;
+    float dubModLevelOffset   = 0.0f;
 };
 
 } // namespace xoceanus

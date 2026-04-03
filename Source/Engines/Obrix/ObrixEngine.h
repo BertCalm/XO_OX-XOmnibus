@@ -343,6 +343,8 @@ public:
         for (auto& fx : fxSlots)
             fx.prepare(sr);
         buildWavetables();
+        // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
+        reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
         // SRO SilenceGate: complex reef ecology has reverb tails — 500ms hold
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
     }
@@ -574,7 +576,7 @@ public:
             // Parasite mode: high-frequency content via 1-pole HP at 2kHz
             if (reefResident == 3)
             {
-                float hpCoeff = std::exp(-kTwoPi * 2000.0f / sr);
+                float hpCoeff = reefHpCoeff_; // cached in prepare() — avoids std::exp on audio thread
                 float hfSumSq = 0.0f;
                 for (int i = 0; i < reefCouplingBufLen_; ++i)
                 {
@@ -2159,6 +2161,7 @@ private:
     float reefCouplingHpFilt_ = 0.0f;            // 1-pole HP filter state for HF extraction
     float reefCouplingBufPrev_ = 0.0f;           // previous sample for HP difference equation
     float reefCouplingHfRms_ = 0.0f;             // smoothed high-frequency RMS (parasite bleach)
+    float reefHpCoeff_ = 0.0f;                   // cached 1-pole HP coefficient at 2kHz (computed in prepare)
 
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
