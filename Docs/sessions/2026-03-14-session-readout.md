@@ -129,7 +129,7 @@
 ## Platform Snapshot
 - **24 engine modules** (7 core DSP-complete, 17 additional at varying stages)
 - **1,625 factory presets** across 6 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether)
-- **12 coupling types** in MegaCouplingMatrix (per-sample, lock-free, 64 routes max)
+- **15 coupling types** in MegaCouplingMatrix (per-sample, lock-free, 64 routes max)
 - **4 simultaneous engine slots** with 50ms hot-swap crossfade
 - **PlaySurface**: 4 zones (NoteInput, OrbitPath, PerformanceStrip, PerformancePads)
 - **XPN/MPC export pipeline**: drum programs + keygroup programs + cover art + bundle builder

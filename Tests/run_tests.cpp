@@ -1,5 +1,5 @@
 /*
-    XOlokun Test Runner
+    XOceanus Test Runner
     ====================
     Main entry point that runs all test suites and reports aggregate results.
     Returns 0 on success (all tests pass), non-zero on failure.
@@ -30,7 +30,7 @@ int main()
 
     std::cout << "\n";
     std::cout << "##################################################\n";
-    std::cout << "#          XOlokun Test Suite                    #\n";
+    std::cout << "#          XOceanus Test Suite                   #\n";
     std::cout << "##################################################\n";
 
     int totalFailures = 0;

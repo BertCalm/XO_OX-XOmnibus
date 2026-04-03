@@ -18,10 +18,10 @@ The XOceanus documentation ecosystem is active and well-intentioned but carries 
 ## Phase 1 — Accuracy Fixes (EXECUTE IMMEDIATELY)
 
 ### P1.1 Coupling Types Count
-**Problem:** Code has 14 coupling types (SynthEngine.h:11–37), CLAUDE.md says 13, master spec says 12.
-**Root cause:** AudioToBuffer added Round 7, KnotTopology added for ORBWEAVE; neither updated in docs.
-**Fix:** Update CLAUDE.md "13 coupling types" → 14. Update master spec section 4.1 to include both missing types.
-**Files:** CLAUDE.md line 12, xoceanus_master_specification.md section 4.1
+**Problem:** Code has 15 coupling types (SynthEngine.h:11–37), CLAUDE.md says 15, master spec was 12.
+**Root cause:** AudioToBuffer added Round 7, KnotTopology added for ORBWEAVE, TriangularCoupling added for OXYTOCIN; none were updated in docs at the time.
+**Fix:** CLAUDE.md now correctly states 15 coupling types. Update master spec section 4.1 to include all 15 types.
+**Files:** CLAUDE.md (resolved), xoceanus_master_specification.md section 4.1
 
 ### P1.2 Preset Count
 **Problem:** CLAUDE.md says "~15,200" but actual count is 15,542.

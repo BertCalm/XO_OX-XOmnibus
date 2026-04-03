@@ -68,9 +68,9 @@ You have just built a sidechain-coupled bass that does not duck — it breathes.
 
 ---
 
-## 3. The 14 Coupling Types — A Field Guide
+## 3. The 15 Coupling Types — A Field Guide
 
-XOceanus implements 14 coupling types, organized here by character. Some are subtle currents; some are full possession.
+XOceanus implements 15 coupling types, organized here by character. Some are subtle currents; some are full possession.
 
 ### Subtle — Control-Rate Modulation
 
@@ -314,7 +314,7 @@ Use BAKE at the end of a sound design session to commit your exploration. Use it
 
 Coupling is not a feature. It is the argument that XOceanus makes about synthesis.
 
-Most instruments give you one voice. XOceanus gives you a conversation. The 14 coupling types are 14 different ways that engines can share a current — from a gentle filter modulation that you might miss on first listen, to a full KnotTopology entanglement that makes two engines inseparable.
+Most instruments give you one voice. XOceanus gives you a conversation. The 15 coupling types are 15 different ways that engines can share a current — from a gentle filter modulation that you might miss on first listen, to a full KnotTopology entanglement that makes two engines inseparable.
 
 The space between two engines is where the most unexpected sounds live. It is also where the most useful ones live: the kick drum that teaches the bass how to breathe, the chaos attractor that turns a grid into a groove, the organism that adapts to what it is fed.
 

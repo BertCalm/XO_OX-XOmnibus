@@ -331,7 +331,7 @@ virtual void applyCouplingInput (CouplingType type,
 
 The `MegaCouplingMatrix` in `Source/Core/MegaCouplingMatrix.h` is the host matrix: it manages routes, performs envelope following on source audio, and delivers packets to target engines at block boundaries.
 
-XOceanus implements 14 coupling types internally. Three are published in this v0.1 specification. The extended types within XOceanus are not part of this specification and are not documented here. Implementors may develop their own types in the `0x80`–`0xEF` private range using the extension mechanism defined in Section 7.
+XOceanus implements 15 coupling types internally (3 public + 12 extended). Three are published in this v0.1 specification. The extended types within XOceanus are not part of this specification and are not documented here. Implementors may develop their own types in the `0x80`–`0xEF` private range using the extension mechanism defined in Section 7.
 
 ---
 

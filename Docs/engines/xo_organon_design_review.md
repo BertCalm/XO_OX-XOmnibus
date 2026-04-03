@@ -235,4 +235,4 @@ The concept is genuinely innovative and aligns with XOceanus's identity. The gap
 
 ---
 
-*Reviewed against XOceanus master specification v1, SynthEngine interface, MegaCouplingMatrix (12 coupling types), and existing engine implementations (ODDFELIX, OVERDUB, ONSET).*
+*Reviewed against XOceanus master specification v1, SynthEngine interface, MegaCouplingMatrix (15 coupling types), and existing engine implementations (ODDFELIX, OVERDUB, ONSET).*

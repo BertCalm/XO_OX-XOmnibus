@@ -37,7 +37,7 @@
 | Document | Update Required | Timing |
 |----------|----------------|--------|
 | `Source/Core/SynthEngine.h` (CouplingType enum) | ✅ Required | On implementation |
-| `CLAUDE.md` line "14 coupling types" | ✅ Required | Within 24h |
+| `CLAUDE.md` line "15 coupling types" | ✅ Required | Within 24h |
 | `Docs/xoceanus_master_specification.md` section 4.1 | ✅ Required | Within 24h |
 | `Skills/coupling-interaction-cookbook/SKILL.md` | ✅ Required | Within 1 week |
 | `Docs/xoceanus_new_engine_process.md` appendix | ⚠️ If notable | Within 1 week |

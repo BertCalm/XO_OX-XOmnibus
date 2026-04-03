@@ -31,7 +31,7 @@ OUTSHINE evolving from drum-focused sample pack upgrader to universal Sample Ins
 |----|----------|------|
 | B039 | **Sonic DNA System**: 6D audio fingerprint driving intelligent pipeline decisions | RATIFIED 8-0 |
 | B040 | **Rebirth Mode: Engines as Transfer Functions**: 71-engine fleet becomes synthesis + processing | RATIFIED 6-0 (2 abstain) |
-| B041 | **Coupling-Inspired Sample Blending**: 14 coupling types applied to sample layers | RATIFIED 5-0 (3 abstain — vision, not implementation yet) |
+| B041 | **Coupling-Inspired Sample Blending**: 15 coupling types applied to sample layers | RATIFIED 5-0 (3 abstain — vision, not implementation yet) |
 
 ### New Doctrines
 

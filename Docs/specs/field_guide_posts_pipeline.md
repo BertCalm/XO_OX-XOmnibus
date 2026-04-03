@@ -95,7 +95,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 6 — "Coupling Deep Dive: Building a Sound That No Single Engine Can Make"
 
-**Summary:** A practical workshop post, not a conceptual explainer. Takes one coupling combination — DRIFT→OPAL (the Odyssey-to-Opal coupling, one of the 12 documented coupling types) — and builds a complete sound from scratch, showing every decision. The post demonstrates what coupling produces that layering cannot: not two sounds playing simultaneously, but one sound that could not exist without both engines. Covers the coupling strip UI, the 12 coupling types with their musical use cases, and the specific settings that produced the most successful Entangled mood presets in the factory library. Includes a secondary example: OPAL→OVERDUB for the classic granular-dub texture. The post is designed to be the resource that converts a producer who has bought XOceanus but has not engaged with coupling into a coupling user. The transition from "I just use one engine at a time" to "I always build in pairs" is the key conversion this post drives.
+**Summary:** A practical workshop post, not a conceptual explainer. Takes one coupling combination — DRIFT→OPAL (the Odyssey-to-Opal coupling, one of the 15 coupling types) — and builds a complete sound from scratch, showing every decision. The post demonstrates what coupling produces that layering cannot: not two sounds playing simultaneously, but one sound that could not exist without both engines. Covers the coupling strip UI, the 15 coupling types with their musical use cases, and the specific settings that produced the most successful Entangled mood presets in the factory library. Includes a secondary example: OPAL→OVERDUB for the classic granular-dub texture. The post is designed to be the resource that converts a producer who has bought XOceanus but has not engaged with coupling into a coupling user. The transition from "I just use one engine at a time" to "I always build in pairs" is the key conversion this post drives.
 
 **Product tie-in:** XOceanus coupling system; Entangled mood presets; Patreon source files opportunity.
 **Target word count:** 3,500
@@ -249,13 +249,13 @@ The following 10 posts were identified during the 2026-03-16 content strategy R&
 
 ---
 
-### New Post 5 — "How Coupling Works: 12 Types Explained"
+### New Post 5 — "How Coupling Works: 15 Types Explained"
 
-**Summary:** The definitive technical reference for XOceanus coupling. The post opens with the distinction between layering (two sounds playing simultaneously) and coupling (one sound that cannot exist without two engines). Then walks through all 12 coupling types in the MegaCouplingMatrix — for each type: what it does, which engines support it, what it sounds like, and one practical example with two specific engines. The 12 types are not named here pending confirmation from `Docs/coupling_audit.md`, but the post covers the full range from pitch modulation coupling through filter coupling through envelope coupling through feedback coupling. The final section covers the coupling strip UI: how to route a coupling, how to adjust depth, and the three most common mistakes producers make when setting up coupling for the first time. Designed to be the reference a producer bookmarks after their first successful coupling session. Also functions as an SEO target for "synthesis coupling" and "cross-engine modulation."
+**Summary:** The definitive technical reference for XOceanus coupling. The post opens with the distinction between layering (two sounds playing simultaneously) and coupling (one sound that cannot exist without two engines). Then walks through all 15 coupling types in the MegaCouplingMatrix — for each type: what it does, which engines support it, what it sounds like, and one practical example with two specific engines. The 15 types are not named here pending confirmation from `Docs/coupling_audit.md`, but the post covers the full range from pitch modulation coupling through filter coupling through envelope coupling through feedback coupling. The final section covers the coupling strip UI: how to route a coupling, how to adjust depth, and the three most common mistakes producers make when setting up coupling for the first time. Designed to be the reference a producer bookmarks after their first successful coupling session. Also functions as an SEO target for "synthesis coupling" and "cross-engine modulation."
 
 **Product tie-in:** XOceanus coupling system; Entangled mood presets; coupling preset library.
 **Target word count:** 4,000
-**Production dependencies:** `coupling_audit.md` for accurate 12-type enumeration; audio examples for each coupling type; coupling strip UI screenshots.
+**Production dependencies:** `coupling_audit.md` for accurate 15-type enumeration; audio examples for each coupling type; coupling strip UI screenshots.
 
 ---
 

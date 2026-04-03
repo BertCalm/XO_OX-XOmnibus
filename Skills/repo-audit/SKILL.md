@@ -101,8 +101,8 @@ grep -rn "10,000\|15,000\|15,200\|15,500\|10,028" Docs/ Skills/ README.md CLAUDE
 # Mood count (should be 8 everywhere)
 grep -rn "7 mood\|7 categories\|7 moods" Docs/ Skills/ README.md CLAUDE.md
 
-# Coupling type count (should be 14)
-grep -rn "12 coupling\|13 coupling\|Coupling Types (12)\|Coupling Types (13)" Docs/ CLAUDE.md
+# Coupling type count (should be 15)
+grep -rn "12 coupling\|13 coupling\|14 coupling\|Coupling Types (12)\|Coupling Types (13)\|Coupling Types (14)" Docs/ CLAUDE.md
 ```
 
 ### 2.2 Engine Table Completeness

@@ -77,7 +77,7 @@ The Performance View has three sections:
 
 **Right: Route Detail Panel** — Four route slots, each with:
 - **ON toggle** — activates or deactivates this route
-- **Type dropdown** — all 14 coupling types (AudioToFM, KnotTopology, AmpToFilter, etc.)
+- **Type dropdown** — all 15 coupling types (AudioToFM, KnotTopology, AmpToFilter, etc.)
 - **Depth slider** — bipolar, −1.0 to +1.0. Negative values invert the coupling: AmpToFilter with negative depth means loud source *closes* the filter rather than opening it.
 - **Source and Target slot selectors** — which of the four engine slots is source, which is destination
 

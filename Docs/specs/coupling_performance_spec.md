@@ -115,7 +115,7 @@ if (crossfadeActive) {
 }
 ```
 
-**CPU impact:** ~2x coupling CPU during crossfade windows (50ms). At 14 coupling types × 4 routes, worst case is negligible. Coupling evaluation is already lightweight (control-rate decimation).
+**CPU impact:** ~2x coupling CPU during crossfade windows (50ms). At 15 coupling types × 4 routes, worst case is negligible. Coupling evaluation is already lightweight (control-rate decimation).
 
 ### 3.3 Type Safety Classification
 

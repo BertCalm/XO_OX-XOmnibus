@@ -1,6 +1,6 @@
 # /coupling-design — Cross-Engine Modulation Route Design
 
-Guided workflow for designing modulation routes through the MegaCouplingMatrix. 12 coupling types × 20 engines = massive design space — this skill navigates it.
+Guided workflow for designing modulation routes through the MegaCouplingMatrix. 15 coupling types × 20 engines = massive design space — this skill navigates it.
 
 ## Usage
 

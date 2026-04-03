@@ -313,7 +313,7 @@ The pipeline produces content. Content compounds.
 | 4 weekly posts | Monthly digest (Patreon) | End of month, 20 min assembly |
 | 4 monthly digests | Quarterly "State of the Deep" (all platforms) | End of quarter |
 | Deep Descent season | Reddit anthology post | Week 8 of each season |
-| 12 coupling recipes | Coupling Cookbook update | Quarterly |
+| 15 coupling recipes | Coupling Cookbook update | Quarterly |
 | Scripture verses | Daily Signal queue | Ongoing |
 | Breadcrumbs | Dev log posts | Weekly |
 

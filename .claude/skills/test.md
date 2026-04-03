@@ -76,7 +76,7 @@ Parse these into structured results.
 | Suite | File | What It Validates |
 |-------|------|-------------------|
 | DSP Stability | `Tests/DSPTests/DSPStabilityTests.h` | FastMath, CytomicSVF, PolyBLEP, engine rendering (no NaN/Inf/denormal) |
-| Coupling | `Tests/CouplingTests/CouplingMatrixTests.h` | MegaCouplingMatrix routing, 12 coupling types |
+| Coupling | `Tests/CouplingTests/CouplingMatrixTests.h` | MegaCouplingMatrix routing, 15 coupling types |
 | Preset | `Tests/PresetTests/PresetRoundTripTests.h` | .xometa load → save → compare round-trip fidelity |
 
 ## Notes

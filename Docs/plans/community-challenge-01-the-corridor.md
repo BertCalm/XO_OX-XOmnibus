@@ -64,7 +64,7 @@ Load any 2 engines. Wire them together with any coupling type. The patch needs t
 
 This challenge runs for two weeks. Drop your entries in #challenge-the-corridor.
 
-Some starting points if you're stuck: the Field Guide post covers all 14 coupling types with specific parameter recommendations. The coupling amount sweet spot is almost always 0.08–0.20. The most musical coupling patches are usually the most restrained ones.
+Some starting points if you're stuck: the Field Guide post covers all 15 coupling types with specific parameter recommendations. The coupling amount sweet spot is almost always 0.08–0.20. The most musical coupling patches are usually the most restrained ones.
 
 xo-ox.org — free download, MIT license.
 
