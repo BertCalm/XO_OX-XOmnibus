@@ -220,9 +220,9 @@ struct OchreMode
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
         float r = std::exp(-3.14159265f * bw / sampleRate);
-        a1 = 2.0f * r * std::cos(w);
+        a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
-        b0 = (1.0f - r * r) * std::sin(w);
+        b0 = (1.0f - r * r) * fastSin(w);
         freq = freqHz;
         cachedQ = q;
     }
@@ -864,8 +864,8 @@ public:
         // Pan: slight random spread for intimate stereo image
         float pan = 0.5f + (static_cast<float>(note - 60) / 48.0f) * 0.3f;
         pan = std::clamp(pan, 0.1f, 0.9f);
-        v.panL = std::cos(pan * 1.5707963f);
-        v.panR = std::sin(pan * 1.5707963f);
+        v.panL = fastCos(pan * 1.5707963f);
+        v.panR = fastSin(pan * 1.5707963f);
 
         // Rebuild sympathetic network
         rebuildSympathetics();

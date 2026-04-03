@@ -148,7 +148,7 @@ struct OrphicaMicrosound
             {
                 // Hann window
                 float phase = static_cast<float>(gr.length - gr.remaining) / static_cast<float>(gr.length);
-                float window = 0.5f * (1.0f - std::cos(2.0f * 3.14159265f * phase));
+                float window = 0.5f * (1.0f - fastCos(2.0f * 3.14159265f * phase));
 
                 int rp = gr.readPos % kBufSize;
                 if (rp < 0)

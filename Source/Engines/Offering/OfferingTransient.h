@@ -167,8 +167,8 @@ struct OfferingBandpass
     {
         float safeQ = std::max(0.1f, q); // #608: clamp Q to prevent div-by-zero in alpha
         float w0 = 2.0f * 3.14159265f * centerHz / sampleRate;
-        float sinW0 = std::sin(w0);
-        float cosW0 = std::cos(w0);
+        float sinW0 = xoceanus::fastSin(w0);
+        float cosW0 = xoceanus::fastCos(w0);
         float alpha = sinW0 / (2.0f * safeQ);
 
         float a0inv = 1.0f / (1.0f + alpha);
@@ -588,7 +588,7 @@ private:
         phase_ += phaseInc;
         if (phase_ >= 1.0f)
             phase_ -= 1.0f;
-        float resonance = bp1_.process(std::sin(phase_ * 6.2831853f));
+        float resonance = bp1_.process(xoceanus::fastSin(phase_ * 6.2831853f));
 
         return (click * 0.7f + resonance * 0.5f) * env;
     }

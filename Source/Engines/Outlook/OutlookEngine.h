@@ -317,9 +317,9 @@ public:
                 const float spread = std::clamp(noteNorm * parallaxTotal, 0.0f, 1.0f);
                 // Equal-power complementary panning
                 const float panAngle = spread * 0.4f * (1.0f + lfo2Val * 0.1f);
-                const float gainL = std::cos(panAngle * juce::MathConstants<float>::halfPi);
+                const float gainL = fastCos(panAngle * juce::MathConstants<float>::halfPi);
                 const float gainR =
-                    std::sin(panAngle * juce::MathConstants<float>::halfPi + juce::MathConstants<float>::halfPi * 0.5f);
+                    fastSin(panAngle * juce::MathConstants<float>::halfPi + juce::MathConstants<float>::halfPi * 0.5f);
 
                 mixL += monoOut * gainL;
                 mixR += monoOut * gainR;

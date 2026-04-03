@@ -3,6 +3,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -23,7 +24,7 @@ struct ModalResonator
         constexpr float kPi = 3.14159265358979323846f;
         freq = std::clamp(freq, 20.0f, sr * 0.45f);
         q = std::max(0.5f, q);
-        a1 = 2.0f * std::cos(2.0f * kPi * freq / sr);
+        a1 = 2.0f * xoceanus::fastCos(2.0f * kPi * freq / sr);
         b0 = 1.0f / q;
         gain = g;
     }

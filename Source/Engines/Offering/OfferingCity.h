@@ -405,7 +405,7 @@ private:
         shimmerPhase_ += 0.1f / sr_;
         if (shimmerPhase_ >= 1.0f)
             shimmerPhase_ -= 1.0f;
-        float shimmer = std::sin(shimmerPhase_ * 6.2831853f) * intensity * 0.02f;
+        float shimmer = xoceanus::fastSin(shimmerPhase_ * 6.2831853f) * intensity * 0.02f;
         out = out * (1.0f + shimmer);
 
         // Stage 4: Tape stop — occasional micro pitch drop
@@ -509,8 +509,8 @@ public:
 
             // Equal-power crossfade
             float halfPi = 1.5707963f;
-            float gainA = std::cos(cityBlend * halfPi);
-            float gainB = std::sin(cityBlend * halfPi);
+            float gainA = xoceanus::fastCos(cityBlend * halfPi);
+            float gainB = xoceanus::fastSin(cityBlend * halfPi);
             for (int i = 0; i < safeSamples; ++i)
                 buffer[i] = buffer[i] * gainA + shadow[i] * gainB;
         }

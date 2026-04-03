@@ -284,9 +284,9 @@ struct OpalineMode
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
         float r = std::exp(-3.14159265f * bw / sampleRate);
-        a1 = 2.0f * r * std::cos(w);
+        a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
-        b0 = (1.0f - r * r) * std::sin(w);
+        b0 = (1.0f - r * r) * fastSin(w);
         freq = freqHz;
     }
 
@@ -877,8 +877,8 @@ public:
         // Stereo pan: spread voices across stereo field
         float pan = (static_cast<float>(idx) - 3.5f) / 4.0f; // [-0.875, 0.875]
         pan *= 0.7f;                                         // narrow the field slightly
-        v.panL = std::cos((pan + 1.0f) * 0.25f * 3.14159265f);
-        v.panR = std::sin((pan + 1.0f) * 0.25f * 3.14159265f);
+        v.panL = fastCos((pan + 1.0f) * 0.25f * 3.14159265f);
+        v.panR = fastSin((pan + 1.0f) * 0.25f * 3.14159265f);
     }
 
     void noteOff(int note) noexcept

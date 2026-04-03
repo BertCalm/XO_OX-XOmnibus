@@ -368,8 +368,8 @@ public:
         for (int v = 0; v < 8; ++v)
         {
             float angle = (snap.voice[v].pan + 1.0f) * 0.25f * 3.14159265f;
-            precomputedPanL[v] = std::cos(angle);
-            precomputedPanR[v] = std::sin(angle);
+            precomputedPanL[v] = fastCos(angle);
+            precomputedPanR[v] = fastSin(angle);
         }
 
         for (int s = 0; s < safeSamples; ++s)

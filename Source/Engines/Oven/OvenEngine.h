@@ -951,8 +951,8 @@ public:
         float normNote = (static_cast<float>(note) - 36.0f) / 60.0f; // A1=36 to C8=96
         normNote = std::clamp(normNote, 0.0f, 1.0f);
         float panAngle = (normNote - 0.5f) * 0.6f; // +-0.3 spread (subtle, realistic)
-        v.panL = std::cos((0.5f + panAngle * 0.5f) * 3.14159265f * 0.5f) * 1.414f;
-        v.panR = std::sin((0.5f + panAngle * 0.5f) * 3.14159265f * 0.5f) * 1.414f;
+        v.panL = fastCos((0.5f + panAngle * 0.5f) * 3.14159265f * 0.5f) * 1.414f;
+        v.panR = fastSin((0.5f + panAngle * 0.5f) * 3.14159265f * 0.5f) * 1.414f;
 
         // LFO phase stagger
         v.lfo1.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));

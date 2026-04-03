@@ -10,6 +10,7 @@
 #include "BiomeMorph.h"
 #include "BitCrusher.h"
 #include "TapeWarp.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -122,7 +123,7 @@ public:
                     oscPhase -= 1.0f;
 
                 float saw = oscPhase * 2.0f - 1.0f;
-                float sine = std::sin(oscPhase * 2.0f * kPi);
+                float sine = xoceanus::fastSin(oscPhase * 2.0f * kPi);
                 // Blend: 70% saw, 30% sine for a rich but simple tone
                 float oscSample = saw * 0.7f + sine * 0.3f;
 
