@@ -360,6 +360,7 @@ private:
     float processSVF(float input, float cutoffHz, float resonance, int type) noexcept
     {
         // TPT SVF — see Zavalishin "The Art of VA Filter Design"
+        cutoffHz = std::min(cutoffHz, 0.499f / invSr);  // #604: clamp fc < Nyquist before tan to prevent overflow
         float f = xoutwit::fastTan(3.14159265f * cutoffHz * invSr);
         float q = std::max(0.5f, 0.5f + resonance * 9.5f); // map [0,1] -> [0.5, 10]
         float r = 1.0f / q;

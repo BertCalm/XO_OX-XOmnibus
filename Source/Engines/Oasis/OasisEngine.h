@@ -995,7 +995,7 @@ public:
             // === CANOPY DELAY NETWORK (Granular Swarm) ===
             float canopyOutL = 0.0f;
             float canopyOutR = 0.0f;
-            int activeTaps = 1 + static_cast<int> (pSwarmDensity * (kCanopyTaps - 1));
+            int activeTaps = std::max (1, 1 + static_cast<int> (pSwarmDensity * (kCanopyTaps - 1)));  // #606: guard NaN/negative from atomic param
 
             for (int t = 0; t < activeTaps; ++t)
             {

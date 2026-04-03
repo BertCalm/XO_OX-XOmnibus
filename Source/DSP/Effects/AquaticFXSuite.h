@@ -1039,6 +1039,7 @@ private:
                     float apPrev = apStateR;
                     apStateR = flushDenormal (-apG * shimR + apStateL + apG * apStateR);
                     apStateL = shimR;
+                    if (std::abs (apStateL) < 1e-15f) apStateL = 0.0f;  // #607: flush apStateL denormals
                     shimR = apG * shimR + apPrev;
                     shimR = shimR * spread + shimL * (1.0f - spread);
                 }

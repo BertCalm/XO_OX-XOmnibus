@@ -149,10 +149,11 @@ struct OfferingBandpass
 {
     void setParams (float centerHz, float q, float sampleRate) noexcept
     {
+        float safeQ = std::max (0.1f, q);  // #608: clamp Q to prevent div-by-zero in alpha
         float w0 = 2.0f * 3.14159265f * centerHz / sampleRate;
         float sinW0 = std::sin (w0);
         float cosW0 = std::cos (w0);
-        float alpha = sinW0 / (2.0f * q);
+        float alpha = sinW0 / (2.0f * safeQ);
 
         float a0inv = 1.0f / (1.0f + alpha);
         b0_ = (alpha) * a0inv;

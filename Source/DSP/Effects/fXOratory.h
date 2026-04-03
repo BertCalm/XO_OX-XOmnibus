@@ -145,6 +145,8 @@ public:
     /// Process stereo audio in-place.
     void processBlock (float* L, float* R, int numSamples)
     {
+        juce::ScopedNoDenormals noDenormals;  // #602: flush denormals in SVF/feedback path
+
         if (mix < 0.001f)
         {
             if (!bypassed_)
@@ -159,7 +161,7 @@ public:
         const float srF = static_cast<float> (sr);
 
         // Active taps for current pattern
-        int numActive = patterns[pattern].numTaps;
+        int numActive = std::max (1, patterns[pattern].numTaps);  // #605: guard div-by-zero in gainComp
 
         for (int i = 0; i < numSamples; ++i)
         {

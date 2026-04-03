@@ -61,8 +61,9 @@ struct KarplusStrong
         delay[static_cast<size_t>(writePos)] = filtered;
         writePos = (writePos + 1) % kMaxDelay;
 
-        // Denormal flush
-        if (std::abs(prevFiltered) < 1.0e-15f) prevFiltered = 0.0f;
+        // Denormal flush — threshold at actual IEEE 754 denormal boundary (~1.2e-38)
+        // #609: 1e-15 was 23 orders too high; use 1e-38 to avoid flushing audible signal
+        if (std::abs(prevFiltered) < 1.0e-38f) prevFiltered = 0.0f;
 
         return interpolated;  // return pre-filter for brighter output; filtered is feedback
     }
