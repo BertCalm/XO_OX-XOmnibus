@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-01 — All 76 engines added; 72 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23); OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced
+**Updated:** 2026-04-03 — All 76 engines added; 74 seanced (ORGANISM re-seanced 8.7/10, OVERTONE re-seanced 8.9/10, OKEANOS first seance 8.6/10, OSMOSIS first seance 7.4/10 — all 2026-04-03); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -42,8 +42,8 @@
 | XOctopus | OCTOPUS | 8.3/10 | 8-arm prime-ratio LFO system (never phase-locks) | None | D006: no aftertouch (FIXED commit c261a81) | "Eight arms reach into every parameter — but the skin never responds to the player's touch." |
 | XOstinato | OSTINATO | 8.0/10 → 8.7/10 (re-seance 2026-03-20) | B016 Communal Ghost Trigger; B017 Modal Membrane Synthesis; B018 Circular Topology Coupling; B019 96 World Rhythm Patterns; B020 Live Override | D004 exciterMix dead (FIXED 2026-03-19) | D002: 1 hardcoded LFO, no user control (ongoing) | "Eight seats, and the seats listen to each other." — Buchla |
 | XOrbweave | ORBWEAVE | 8.4/10 | B021 Knot Phase Coupling; B022 MACRO KNOT Continuous Topology Morphing | None | None (all D001–D006 PASS) | "The Torus P/Q parameter lets the player navigate knot theory in real time. This is what synthesis should aspire to." — Buchla |
-| XOvertone | OVERTONE | 8.1/10 → 7.6/10 (re-seance) | B028 Continued Fraction Convergent Synthesis | P0: reverb comb lengths hardcoded (patched 2026-03-20) | Pi table spectral collapse at low depth (partial fix); 1-voice only | "The convergent tables are not decoration — they ARE the synthesis." — Buchla |
-| XOrganism | ORGANISM | 8.1/10 → 7.2/10 (re-seance) | OrgScopeHistory moving-average system | None | CA parameter jumps 3200 Hz cutoff (CRITICAL — patched 2026-03-20); LCG seed 16-bit only | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
+| XOvertone | OVERTONE | 8.1/10 → 7.6/10 → **8.9/10** (re-seance 2026-04-03) | B028 Continued Fraction Convergent Synthesis | SR-scaled reverb (FIXED); Pi table dead zone (FIXED); filter env on note-on (ADDED); over_filterRes wired (FIXED); lerp interpolation (ADDED) | 1-voice only (ongoing) | "The convergent tables are not decoration — they ARE the synthesis." — Buchla |
+| XOrganism | ORGANISM | 8.1/10 → 7.2/10 → **8.7/10** (re-seance 2026-04-03) | OrgScopeHistory moving-average system; B028-adjacent: per-note XOR seed | CytomicSVF replacing biquad (FIXED); SR-scaled reverb (FIXED); PolyBLEP oscillators (ADDED); pitch bend (FIXED); 397 presets | No key tracking (ongoing); scope ceiling 16 | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
 | XOutlook | OUTLOOK | 7.1/10 → ~8.0 (post-fix 2026-03-23) | B039 candidate: Parallax Stereo Field (conditional) | P0-OUTLOOK-01–04 fixed 2026-03-23 | D004: look_delayMix/macroCoupling were dead (FIXED) | "The parallax stereo field is genuinely novel — note pitch as stereo depth. But the horizon scan is inert for 5/8 waveforms." — Buchla |
 | XOhm | OHM | 7.6/10 | None | None | D001 partial (intensity not brightness); mono voice summing | "The Dad ensemble knows which instrument to play — and then plays them all in the center." |
 | XOrphica | ORPHICA | 8.0/10 → ~8.7 est. (post-fix 2026-03-21) | None | None | kBufSize 186ms too short (FIXED: extended to 1 s); D001 partial (FIXED: velocity→body resonance frequency wired) | "The granular pluck is beautiful — and it runs out of memory before the note blooms." |
@@ -67,7 +67,7 @@
 | XOware | OWARE | 8.4/10 → 9.2/10 (post-fix) | B032 Mallet Articulation Stack; B033 Living Tuning Grid; B034 Per-Mode Sympathetic Network | LFO2 computed but not applied (FIXED); filter env decay hardcoded (FIXED); shimmerRate param wired | None post-fix | "The Akan tuning is not approximation — it is the actual harmonic series. The material knows what it is." — Moog |
 | XOpera | OPERA | 8.7/10 → 8.85/10 (post-build 2026-03-22) | B035 OperaConductor Autonomous Arc; B036 Coherence-Driven Spatial Panning; B037 EmotionalMemory Phase Persistence | arcMode defaulted to Manual (FIXED); OperaSVF block-rate coefficient cache (P0 FIXED 2026-03-22) | opera_chorus ghost param (D004-adjacent, resolved) | "The stereo field is not an effect — it is a mathematical readout of synchronization. The Kuramoto order parameter R is the panning control." — Buchla |
 | XOffering | OFFERING | 7.9/10 (pre-build) → 8.8/10 (post-build 2026-03-21) | B038 Psychology-as-DSP (ratified 8-0); B039 City-as-Processing-Chain (ratified 6-2) | 3 dead params fixed post-seance; Tom double-sat fixed | D001 velocity audit pending (path to 9.0) | "The curiosity curve at 0.7 is not a transition — it is a phase change. The alien shift is an emergent theoretical consequence." — Buchla |
-| XOsmosis | OSMOSIS | NOT SEANCED — Design Phase | External audio membrane engine; fXChimera headline FX | N/A | N/A | "OSMOSIS is the ear of the fleet. Design confirmed 2026-03-21. Build pending." |
+| XOsmosis | OSMOSIS | **7.4/10** (first seance 2026-04-03) | 4-band spectral split (sub/lo-mid/mid/high RMS as coupling outputs); Fix #303 coupling-to-permeability; matched-Z envelope follower | None identified | D002/D005 partial (no LFO rate control — fixed 0.5 Hz); D006 intentional N/A (analysis engine, OPTIC precedent) | "The membrane opens when something pushes against it from the synthesis side." — Smith |
 
 ---
 
@@ -85,7 +85,7 @@
 | Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
 |--------|-------------|-------|--------------|---------|--------------|-----------------|
 | XObiont | OBIONT | NOT SEANCED | Cellular automata oscillator — 1D Wolfram CA spatial projection + cosine readout + anti-extinction | N/A | N/A | "OBIONT awaits its seance. CA oscillator with 8-voice poly and anti-extinction mechanism. Added 2026-03-28, presets exist, seance pending." |
-| XOkeanos | OKEANOS | NOT SEANCED | Titan ocean warmth engine — warmth-focused synthesis, OKEANOS prefix registered | N/A | N/A | "OKEANOS awaits its seance. Added 2026-03-31. Note: prefix `okan_` registered; OKEANOS name distinct from deprecated XOCEANUS engine prefix. Seance pending." |
+| XOkeanos | OKEANOS | **8.6/10** (first seance 2026-04-03) | Physical tine-and-pickup Rhodes model (RhodesToneGenerator + RhodesPickupModel + RhodesAmpStage); SpectralFingerprint API for FUSION coupling; Migration parameter (cultural absorption via coupled Kitchen engines) | None identified | None (all D001–D006 PASS); FUSION coupling requires all 4 Kitchen engines loaded for full effect | "The Spice Route Rhodes knows what it has visited. The migration encodes the journey." — Buchla |
 | XOutflow | OUTFLOW | NOT SEANCED | Deep storm current engine — current-speed synthesis, indigo depth color | N/A | N/A | "OUTFLOW awaits its seance. Added 2026-03-31, presets exist, seance pending." |
 
 ---
