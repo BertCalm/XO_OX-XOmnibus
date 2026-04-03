@@ -207,7 +207,7 @@ def test_check_dependencies_raises_on_missing_required():
     from oxport import _check_dependencies, PipelineContext
     import types
 
-    ctx = PipelineContext(engine="Onset", output_dir=__import__("pathlib").Path("/tmp/test_oxport_deps"))
+    ctx = PipelineContext(engine="Onset", output_dir=__import__("pathlib").Path(tempfile.gettempdir()) / "test_oxport_deps")
     ctx.dry_run = True
 
     # Temporarily shadow one required module with an unimportable sentinel
@@ -783,7 +783,7 @@ def test_complement_chain_skips_non_artwork_engine():
 
     # Use a known non-Artwork engine
     assert "Onset" not in ARTWORK_ENGINES, "Onset should not be an Artwork engine"
-    ctx = PipelineContext(engine="Onset", output_dir=Path("/tmp/test_oxport_cc"))
+    ctx = PipelineContext(engine="Onset", output_dir=Path(tempfile.gettempdir()) / "test_oxport_cc")
     ctx.dry_run = True
 
     # Must not raise — should print SKIP and return

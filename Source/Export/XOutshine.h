@@ -1222,7 +1222,7 @@ private:
             for (const auto& l : rrs)
             {
                 xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
-                xml << "          <SampleName>" << l->filename << "</SampleName>\n";
+                xml << "          <SampleName>" << xmlEscape(l->filename) << "</SampleName>\n";
                 xml << "          <VelStart>" << splits[v].start << "</VelStart>\n";
                 xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
                 xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";
@@ -1341,7 +1341,7 @@ private:
                 for (const auto* l : rrs)
                 {
                     xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
-                    xml << "          <SampleName>" << l->filename << "</SampleName>\n";
+                    xml << "          <SampleName>" << xmlEscape(l->filename) << "</SampleName>\n";
                     xml << "          <VelStart>" << splits[v].start << "</VelStart>\n";
                     xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
                     xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";

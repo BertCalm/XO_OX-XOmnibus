@@ -275,7 +275,7 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
         # Also check flat presets in mood dir
         for xmeta in sorted(mood_dir.glob("*.xometa")):
             try:
-                with open(xmeta) as f:
+                with open(xmeta, encoding='utf-8', errors='replace') as f:
                     data = json.load(f)
                 engines = data.get("engines", [])
                 if isinstance(engines, str):
@@ -305,7 +305,7 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
             # Check for Entangled mood or coupling data — coupling is lost in XPN export
             _preset_data = {}
             try:
-                with open(xmeta) as _f:
+                with open(xmeta, encoding='utf-8', errors='replace') as _f:
                     _preset_data = json.load(_f)
             except (json.JSONDecodeError, OSError):
                 pass
@@ -333,7 +333,7 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
                 if not resolved.is_relative_to(ctx.specs_dir.resolve()):
                     print(f'[WARN] Path escape blocked: {spec_path}', file=sys.stderr)
                 else:
-                    with open(spec_path, "w") as f:
+                    with open(spec_path, "w", encoding='utf-8') as f:
                         json.dump(spec, f, indent=2)
 
             print(f"      {spec['preset_name']}  ({spec['wav_count']} WAVs, {spec['program_type']})")
@@ -1761,7 +1761,7 @@ def _write_state(ctx: PipelineContext, failed_stage: Optional[str] = None):
     state_path = ctx.build_dir / ".oxport_state.json"
     try:
         ctx.build_dir.mkdir(parents=True, exist_ok=True)
-        with open(state_path, "w") as f:
+        with open(state_path, "w", encoding='utf-8') as f:
             json.dump(state, f, indent=2)
     except OSError:
         pass  # non-critical
@@ -1825,7 +1825,7 @@ def cmd_status(args) -> int:
     print(BANNER)
     for state_path in states:
         try:
-            with open(state_path) as f:
+            with open(state_path, encoding='utf-8', errors='replace') as f:
                 state = json.load(f)
         except (json.JSONDecodeError, OSError) as e:
             print(f"  [WARN] Could not read {state_path}: {e}")
@@ -1964,7 +1964,7 @@ def cmd_validate(args) -> int:
                 vp_cmd.append("--strict")
             vp_cmd.append("--report")
 
-            result = subprocess.run(vp_cmd)
+            result = subprocess.run(vp_cmd, timeout=300)
             vp_rc = result.returncode
 
             if vp_rc != 0:
@@ -1988,7 +1988,7 @@ def cmd_validate(args) -> int:
             if args.strict:
                 xv_cmd.append("--strict")
 
-            result = subprocess.run(xv_cmd)
+            result = subprocess.run(xv_cmd, timeout=300)
             xv_rc = result.returncode
 
             if xv_rc != 0:
@@ -2125,7 +2125,7 @@ def cmd_build(args) -> int:
         print(f"ERROR: .oxbuild file not found: {oxbuild_path}", file=sys.stderr)
         return 1
 
-    with open(oxbuild_path) as f:
+    with open(oxbuild_path, encoding='utf-8', errors='replace') as f:
         spec = json.load(f)
 
     # Validate required fields
@@ -2218,7 +2218,7 @@ def cmd_build(args) -> int:
             try:
                 # Try yaml first, fall back to json-compatible parsing
                 import yaml
-                with open(profile_path) as pf:
+                with open(profile_path, encoding='utf-8', errors='replace') as pf:
                     profile = yaml.safe_load(pf)
             except ImportError:
                 # Fallback: read as text for display, skip structured access
@@ -2306,7 +2306,7 @@ def cmd_build(args) -> int:
 
                     # Save selection manifest
                     manifest_path = output_dir / "selected_presets.json"
-                    with open(manifest_path, "w") as f:
+                    with open(manifest_path, "w", encoding='utf-8') as f:
                         json.dump({
                             "profile": profile_id,
                             "engine": engine,
@@ -2333,7 +2333,7 @@ def cmd_build(args) -> int:
                             "choke_groups": {},
                         }
                         dna_path = output_dir / "pack_dna.json"
-                        with open(dna_path, "w") as f:
+                        with open(dna_path, "w", encoding='utf-8') as f:
                             json.dump(pack_dna_data, f, indent=2)
                         print(f"         ✓ pack_dna.json written (pack average from {len(selected_presets)} presets)")
 
@@ -2457,7 +2457,7 @@ def cmd_build(args) -> int:
 
                         # Save the wired render manifest for auditability
                         wired_manifest_path = output_dir / "render_manifest.json"
-                        with open(wired_manifest_path, "w") as _wm:
+                        with open(wired_manifest_path, "w", encoding='utf-8') as _wm:
                             json.dump({
                                 "source_spec": str(spec_path),
                                 "selected_presets_count": len(selected_presets),
@@ -2662,7 +2662,7 @@ def cmd_build(args) -> int:
                     intent_data["provenance"]["build_time"] = build_time
 
                 intent_path = output_dir / "xpn_intent.json"
-                with open(intent_path, "w") as f:
+                with open(intent_path, "w", encoding='utf-8') as f:
                     json.dump(intent_data, f, indent=2)
                 print(f"         ✓ Written: {intent_path}")
             except ImportError:
@@ -2691,7 +2691,7 @@ def cmd_build(args) -> int:
                 shutil.copy2(template_path, dest)
                 # Embed experiment ID as footer comment
                 if experiment_id:
-                    with open(dest, "a") as f:
+                    with open(dest, "a", encoding='utf-8') as f:
                         f.write(f"\n\n<!-- experiment_id: {experiment_id} -->\n")
                         f.write(f"<!-- build_time: {build_time} -->\n")
                 print(f"         ✓ Written: {dest}")
@@ -2720,7 +2720,7 @@ def cmd_build(args) -> int:
                 pack_dna_path = output_dir / "pack_dna.json"
                 if pack_dna_path.exists():
                     try:
-                        with open(pack_dna_path) as _f:
+                        with open(pack_dna_path, encoding='utf-8', errors='replace') as _f:
                             _pd = json.load(_f)
                         _avg = _pd.get("pack_average", {})
                         sonic_dna.update({k: v for k, v in _avg.items()
@@ -2850,7 +2850,7 @@ def cmd_build(args) -> int:
 
                     # Save report as JSON
                     report_path = output_dir / "validation_report.json"
-                    with open(report_path, "w") as f:
+                    with open(report_path, "w", encoding='utf-8') as f:
                         json.dump(report, f, indent=2)
                     print(f"         ✓ Report: {report_path}")
 
@@ -2895,7 +2895,7 @@ def cmd_build(args) -> int:
                     manifest_path = output_dir / "render_manifest.json"
                     if manifest_path.exists():
                         try:
-                            with open(manifest_path) as _mf:
+                            with open(manifest_path, encoding='utf-8', errors='replace') as _mf:
                                 _manifest = json.load(_mf)
                             expected = _manifest.get("total_jobs", 0)
                             if expected and len(all_wavs) != expected:
@@ -2936,7 +2936,7 @@ def cmd_build(args) -> int:
         "output_dir": str(output_dir),
     }
     log_path = output_dir / "build.log.json"
-    with open(log_path, "w") as f:
+    with open(log_path, "w", encoding='utf-8') as f:
         json.dump(build_log, f, indent=2)
 
     print()

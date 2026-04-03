@@ -328,7 +328,7 @@ def test_fuzz_context_empty_engine():
     from oxport import PipelineContext
     from pathlib import Path
 
-    ctx = PipelineContext(engine="", output_dir=Path("/tmp/fuzz_test_empty"))
+    ctx = PipelineContext(engine="", output_dir=Path(tempfile.gettempdir()) / "fuzz_test_empty")
     # Access all computed properties — none should raise
     _ = ctx.is_drum_engine
     _ = ctx.preset_slug
@@ -343,7 +343,7 @@ def test_fuzz_context_special_chars_in_engine():
     from oxport import PipelineContext
     from pathlib import Path
 
-    ctx = PipelineContext(engine="My Engine/v2.0", output_dir=Path("/tmp/fuzz_test_special"))
+    ctx = PipelineContext(engine="My Engine/v2.0", output_dir=Path(tempfile.gettempdir()) / "fuzz_test_special")
     _ = ctx.is_drum_engine
     _ = ctx.preset_slug
     _ = ctx.build_dir
@@ -354,7 +354,7 @@ def test_fuzz_context_unicode_engine():
     from oxport import PipelineContext
     from pathlib import Path
 
-    ctx = PipelineContext(engine="音楽🎹エンジン", output_dir=Path("/tmp/fuzz_test_unicode"))
+    ctx = PipelineContext(engine="音楽🎹エンジン", output_dir=Path(tempfile.gettempdir()) / "fuzz_test_unicode")
     _ = ctx.is_drum_engine
     _ = ctx.preset_slug
     _ = ctx.build_dir
@@ -365,7 +365,7 @@ def test_fuzz_context_very_long_engine():
     from oxport import PipelineContext
     from pathlib import Path
 
-    ctx = PipelineContext(engine="X" * 1000, output_dir=Path("/tmp/fuzz_test_long"))
+    ctx = PipelineContext(engine="X" * 1000, output_dir=Path(tempfile.gettempdir()) / "fuzz_test_long")
     _ = ctx.is_drum_engine
     _ = ctx.preset_slug
     _ = ctx.build_dir
@@ -393,7 +393,7 @@ def test_fuzz_context_preset_filter_special_chars():
     from pathlib import Path
 
     ctx = PipelineContext(engine="Onset",
-                         output_dir=Path("/tmp/fuzz_test_pf"),
+                         output_dir=Path(tempfile.gettempdir()) / "fuzz_test_pf",
                          preset_filter="808 Reborn/v2.0\x00<test>")
     slug = ctx.preset_slug
     assert isinstance(slug, str)
@@ -406,7 +406,7 @@ def test_fuzz_context_all_optional_params_empty():
     from pathlib import Path
 
     ctx = PipelineContext(engine="Onset",
-                         output_dir=Path("/tmp/fuzz_test_opts"),
+                         output_dir=Path(tempfile.gettempdir()) / "fuzz_test_opts",
                          wavs_dir=None,
                          preset_filter=None,
                          pack_name=None)
@@ -560,7 +560,7 @@ def test_fuzz_apply_gain_nonexistent_file():
 
     raised = False
     try:
-        _apply_gain_db(Path("/tmp/nonexistent_fuzz_99999.wav"), 6.0)
+        _apply_gain_db(Path(tempfile.gettempdir()) / "nonexistent_fuzz_99999.wav", 6.0)
     except (OSError, ValueError):
         raised = True
     assert raised, "_apply_gain_db on missing file must raise OSError or ValueError"
@@ -675,7 +675,7 @@ def test_fuzz_rms_nonexistent_file():
     from oxport import _compute_rms_db
     from pathlib import Path
 
-    rms = _compute_rms_db(Path("/tmp/nonexistent_fuzz_rms_99999.wav"))
+    rms = _compute_rms_db(Path(tempfile.gettempdir()) / "nonexistent_fuzz_rms_99999.wav")
     assert rms == float("-inf"), (
         f"Expected -inf for nonexistent file, got {rms}"
     )
@@ -917,10 +917,10 @@ def test_fuzz_context_drum_engine_flag():
     from oxport import PipelineContext
     from pathlib import Path
 
-    ctx_drum = PipelineContext(engine="Onset", output_dir=Path("/tmp/fuzz"))
+    ctx_drum = PipelineContext(engine="Onset", output_dir=Path(tempfile.gettempdir()) / "fuzz")
     assert ctx_drum.is_drum_engine is True
 
-    ctx_keys = PipelineContext(engine="Odyssey", output_dir=Path("/tmp/fuzz"))
+    ctx_keys = PipelineContext(engine="Odyssey", output_dir=Path(tempfile.gettempdir()) / "fuzz")
     assert ctx_keys.is_drum_engine is False
 
 
