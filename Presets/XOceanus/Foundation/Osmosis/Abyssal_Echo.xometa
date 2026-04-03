@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Echo",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum coloring depth — near-full permeability with minimal selectivity. The membrane swallows nearly all high-frequency content, leaving a cavernous low-end impression of whatever passes through. Long memory creates an echo that outlives the source signal. The external world becomes a deep sea ghost of itself. Pair with OceanDeep for pressure-stack coupling.",
+  "tags": [
+    "deep",
+    "abyssal",
+    "cavernous",
+    "warm",
+    "coupling-source",
+    "long-tail",
+    "low-end"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.9,
+      "osmo_selectivity": 0.03,
+      "osmo_reactivity": 0.25,
+      "osmo_memory": 0.9
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.8,
+    "space": 0.75,
+    "aggression": 0.12
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Warm Diffusion",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Heavy low-pass coloring — the membrane acts as a gentle sunlit haze. External audio emerges darker and warmer, high frequencies swallowed by the surface tension.",
+  "tags": [
+    "foundation",
+    "warm",
+    "low-pass",
+    "dark",
+    "texture"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.75,
+      "osmo_selectivity": 0.05,
+      "osmo_reactivity": 0.35,
+      "osmo_memory": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.85,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.1
+  }
+}

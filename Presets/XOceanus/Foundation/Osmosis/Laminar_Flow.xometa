@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Laminar Flow",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Perfectly smooth envelope tracking with a mid-low selectivity for a dark-velvet coloring. Reactivity balanced at the threshold between transient fidelity and smoothing. The membrane sustains its reading with long memory — coupling output is a continuous, authoritative signal of the external signal's energy. The ideal foundation for sustained pad coupling chains.",
+  "tags": [
+    "foundation",
+    "smooth",
+    "sustained",
+    "coupling-source",
+    "pad",
+    "velvet"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.6,
+      "osmo_selectivity": 0.2,
+      "osmo_reactivity": 0.45,
+      "osmo_memory": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.78,
+    "movement": 0.2,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.08
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Thin Membrane",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A nearly transparent membrane — external audio passes through almost uncolored. Minimal filtering, fast tracking. The outside world barely knows a membrane is there.",
+  "tags": [
+    "foundation",
+    "transparent",
+    "pass-through",
+    "subtle",
+    "analysis"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.1,
+      "osmo_selectivity": 0.85,
+      "osmo_reactivity": 0.8,
+      "osmo_memory": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.15,
+    "space": 0.3,
+    "aggression": 0.1
+  }
+}

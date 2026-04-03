@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Osmotic Pressure",
+  "mood": "Organic",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Medium-high permeability with moderate selectivity. The LFO membrane breathing creates a naturally alive, organic tremolo-like coloring on the pass-through. Reactivity is biological — neither too fast nor too slow. Memory long enough to sustain coupling pressure between transients. The engine at its most lifelike: a living membrane responding to sound the way skin responds to light.",
+  "tags": [
+    "organic",
+    "alive",
+    "tremolo",
+    "breathing",
+    "coupling-source",
+    "biological",
+    "natural"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.68,
+      "osmo_selectivity": 0.38,
+      "osmo_reactivity": 0.55,
+      "osmo_memory": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.22
+  }
+}

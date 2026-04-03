@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Wave",
+  "mood": "Kinetic",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mid-selectivity with strong permeability and high reactivity. The membrane ruptures on loud transients and seals almost instantly. Produces coupling bursts that behave like underwater pressure shockwaves.",
+  "tags": [
+    "kinetic",
+    "transient",
+    "burst",
+    "coupling-source",
+    "percussive"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.7,
+      "osmo_selectivity": 0.5,
+      "osmo_reactivity": 0.9,
+      "osmo_memory": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.88,
+    "density": 0.45,
+    "space": 0.3,
+    "aggression": 0.72
+  }
+}

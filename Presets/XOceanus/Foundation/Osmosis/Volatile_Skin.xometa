@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Volatile Skin",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High reactivity, low memory — the membrane tears and heals rapidly with every transient. Coupling output is aggressive and percussive. Feed this into an engine with fast filter response for violent call-and-response.",
+  "tags": [
+    "flux",
+    "aggressive",
+    "percussive",
+    "reactive",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.55,
+      "osmo_selectivity": 0.6,
+      "osmo_reactivity": 0.88,
+      "osmo_memory": 0.08
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.3,
+    "movement": 0.85,
+    "density": 0.4,
+    "space": 0.25,
+    "aggression": 0.82
+  }
+}

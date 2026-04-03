@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Shear Force",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High reactivity with moderate memory — the membrane shears on attack but sustains the residual coupling energy for a beat or two. High selectivity means only bright air-band content passes into the colored output. Coupling output rides the sharp-attack sustained-decay shape that makes a snare crack feel like a shockwave. The defining aggressive Osmosis configuration: use when you want the outside world to hit hard and linger.",
+  "tags": [
+    "flux",
+    "shear",
+    "attack",
+    "sustained",
+    "coupling-source",
+    "snare",
+    "aggressive",
+    "bright"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.5,
+      "osmo_selectivity": 0.75,
+      "osmo_reactivity": 0.85,
+      "osmo_memory": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.82,
+    "density": 0.42,
+    "space": 0.28,
+    "aggression": 0.88
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Breach Protocol",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum aggression configuration — near-instant attack, near-zero memory, high selectivity keeping the membrane oscillating at bright frequencies. The membrane breaches violently on every transient and collapses just as fast. Coupling output is a staccato burst signal. Use in parallel with a fast-envelope engine for synchronized attack brutality.",
+  "tags": [
+    "flux",
+    "aggressive",
+    "staccato",
+    "attack",
+    "coupling-source",
+    "brutal",
+    "bright"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.45,
+      "osmo_selectivity": 0.8,
+      "osmo_reactivity": 1.0,
+      "osmo_memory": 0.02
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.15,
+    "movement": 0.97,
+    "density": 0.35,
+    "space": 0.15,
+    "aggression": 0.95
+  }
+}

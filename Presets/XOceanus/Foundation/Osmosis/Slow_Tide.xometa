@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Slow Tide",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum memory — the envelope follower holds its breath for nearly a full second. Coupling signals emerge as slow oceanic swells rather than transient spikes. Perfect for sustain-based coupling targets.",
+  "tags": [
+    "foundation",
+    "slow",
+    "sustain",
+    "coupling-source",
+    "envelope"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.5,
+      "osmo_selectivity": 0.4,
+      "osmo_reactivity": 0.2,
+      "osmo_memory": 0.95
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.15,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.05
+  }
+}

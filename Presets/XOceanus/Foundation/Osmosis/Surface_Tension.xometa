@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Surface Tension",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The default starting point — balanced membrane at neutral settings. Equal blend of dry and filtered, midrange selectivity. Where exploration begins.",
+  "tags": [
+    "foundation",
+    "balanced",
+    "neutral",
+    "init",
+    "starting-point"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.5,
+      "osmo_selectivity": 0.5,
+      "osmo_reactivity": 0.5,
+      "osmo_memory": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.4,
+    "space": 0.45,
+    "aggression": 0.2
+  }
+}

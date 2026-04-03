@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "High Pass Ghost",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Selectivity cranked to maximum — the membrane filter sits near 18 kHz, leaving only the ghost of air and shimmer in the pass-through signal. Sub-bass coupling signals emerge from the filtered output.",
+  "tags": [
+    "atmosphere",
+    "air",
+    "shimmer",
+    "high-frequency",
+    "ghost"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.65,
+      "osmo_selectivity": 0.97,
+      "osmo_reactivity": 0.5,
+      "osmo_memory": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.1,
+    "movement": 0.45,
+    "density": 0.2,
+    "space": 0.65,
+    "aggression": 0.3
+  }
+}
