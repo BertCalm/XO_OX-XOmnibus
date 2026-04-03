@@ -325,19 +325,9 @@ public:
         if (!requireHttps(localCfg.supabaseUrl))
             return {false, {}, {}, "HTTPS required"};
 
-        // Validate recipeId format before URL construction
-        static const auto isValidId = [](const juce::String& id) -> bool {
-            if (id.length() < 8 || id.length() > 64) return false;
-            for (int i = 0; i < id.length(); ++i)
-            {
-                auto c = id[i];
-                if (! (juce::CharacterFunctions::isLetterOrDigit(c) || c == '-'))
-                    return false;
-            }
-            return true;
-        };
-
-        if (! isValidId(recipeId))
+        // Validate recipeId as UUID before URL construction (#635 — injection guard).
+        // Accepts standard 8-4-4-4-12 UUID format (e.g. "f47ac10b-58cc-4372-a567-0e02b2c3d479").
+        if (! isValidUuid(recipeId))
             return {false, {}, {}, "Invalid recipe ID format"};
 
         // PostgREST query: select single row by recipe_id
@@ -425,6 +415,10 @@ public:
         if (!requireHttps(localCfg.supabaseUrl))
             return false;
 
+        // Validate recipeId as UUID before URL construction (#635 — injection guard).
+        if (! isValidUuid(recipeId))
+            return false;
+
         // PostgREST DELETE with filter
         juce::String endpoint = localCfg.supabaseUrl +
                                 "/rest/v1/shared_recipes"
@@ -471,6 +465,28 @@ private:
 
     // Enforce TLS-only connections — reject any non-HTTPS URL.
     static bool requireHttps(const juce::String& url) { return url.startsWithIgnoreCase("https://"); }
+
+    /// Validate that id is a canonical UUID (8-4-4-4-12 hex, case-insensitive).
+    /// Rejects any string that could inject unexpected path segments or query params
+    /// when interpolated into a PostgREST URL (#635).
+    static bool isValidUuid(const juce::String& id)
+    {
+        // UUID format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (36 chars)
+        if (id.length() != 36) return false;
+        const int dashPositions[] = { 8, 13, 18, 23 };
+        for (int pos : dashPositions)
+            if (id[pos] != '-') return false;
+        for (int i = 0; i < 36; ++i)
+        {
+            if (i == 8 || i == 13 || i == 18 || i == 23) continue;
+            auto c = id[i];
+            const bool isHex = (c >= '0' && c <= '9') ||
+                               (c >= 'a' && c <= 'f') ||
+                               (c >= 'A' && c <= 'F');
+            if (!isHex) return false;
+        }
+        return true;
+    }
 
     static juce::String supabaseHeaders(const VaultConfig& c)
     {
