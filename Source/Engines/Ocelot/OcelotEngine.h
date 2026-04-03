@@ -100,7 +100,7 @@ public:
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=EcosystemDepth, 2=CanopyShimmer, 3=Pitch, 4=AmpLevel
         {
-            ModMatrix<4>::Sources mSrc;
+            xoceanus::ModMatrix<4>::Sources mSrc;
             mSrc.lfo1       = 0.0f;
             mSrc.lfo2       = 0.0f;
             mSrc.env        = 0.0f;
@@ -258,6 +258,10 @@ private:
     float couplingEcosystemMod = 0.0f; // LFO/Amp/PitchToPitch → ecosystemDepth +0–0.5
     float couplingFloorMod = 0.0f;     // EnvToMorph → floorTension ±0.3
     float couplingDensityMod = 0.0f;   // EnvToDecay → density -0–0.3
+
+    // D002 mod matrix — 4-slot configurable modulation routing
+    xoceanus::ModMatrix<4> modMatrix;
+    float ocelotModPitchOffset = 0.0f;
 };
 
 } // namespace xocelot

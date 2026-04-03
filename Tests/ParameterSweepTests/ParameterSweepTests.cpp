@@ -55,7 +55,7 @@
 #include "Engines/Octopus/OctopusEngine.h"
 #include "Engines/Ostinato/OstinatoEngine.h"
 #include "Engines/OpenSky/OpenSkyEngine.h"
-#include "Engines/OceanDeep/OceandeepEngine.h"
+#include "Engines/OceanDeep/OceanDeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
 #include "Engines/Obrix/ObrixEngine.h"
 #include "Engines/Orbweave/OrbweaveEngine.h"
@@ -173,7 +173,7 @@ static bool sweep_hasNaNOrInf(const juce::AudioBuffer<float>& buf, int numSample
     return false;
 }
 
-static float sweep_computeZCR(const juce::AudioBuffer<float>& buf, int numSamples)
+[[maybe_unused]] static float sweep_computeZCR(const juce::AudioBuffer<float>& buf, int numSamples)
 {
     if (numSamples < 2)
         return 0.0f;
