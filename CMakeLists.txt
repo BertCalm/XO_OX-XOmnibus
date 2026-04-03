@@ -536,6 +536,18 @@ if(XO_MOBILE)
 endif()
 
 # ==============================================================================
+# Catch2 v3 — fetched automatically; provides Catch2::Catch2WithMain target
+# which supplies the test runner main(). No external install required.
+# ==============================================================================
+include(FetchContent)
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v3.5.2
+)
+FetchContent_MakeAvailable(Catch2)
+
+# ==============================================================================
 # Tests (standalone console application, no audio device or GUI required)
 # ==============================================================================
 add_executable(XOceanusTests
@@ -571,6 +583,7 @@ target_include_directories(XOceanusTests PRIVATE
 )
 
 target_link_libraries(XOceanusTests PRIVATE
+    Catch2::Catch2WithMain
     juce::juce_core
     juce::juce_audio_basics
     juce::juce_audio_formats
@@ -579,7 +592,6 @@ target_link_libraries(XOceanusTests PRIVATE
 )
 
 target_compile_definitions(XOceanusTests PRIVATE
-    JUCE_STANDALONE_APPLICATION=1
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_DISPLAY_SPLASH_SCREEN=0

@@ -10,10 +10,12 @@
       D005 — LFO Breathing (min rate <= 0.01 Hz)
       D006 — Expression Input Is Not Optional (velocity->timbre mapping)
 
-    No test framework — assert-based with descriptive console output.
+    Migrated to Catch2 v3: issue #81
 */
 
 #include "DoctrineTests.h"
+
+#include <catch2/catch_test_macros.hpp>
 
 #include "Core/EngineRegistry.h"
 #include "Core/SynthEngine.h"
@@ -100,12 +102,8 @@
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <cmath>
-#include <iostream>
 #include <string>
-#include <vector>
-#include <memory>
 #include <algorithm>
-#include <numeric>
 
 using namespace xoceanus;
 
@@ -152,31 +150,10 @@ buildParamList (MinimalTestProcessor& proc,
 }
 
 //==============================================================================
-// Test infrastructure
-//==============================================================================
-
-static int g_doctrineTestsPassed = 0;
-static int g_doctrineTestsFailed = 0;
-
-static void reportTest(const char* name, bool passed)
-{
-    if (passed)
-    {
-        std::cout << "  [PASS] " << name << "\n";
-        g_doctrineTestsPassed++;
-    }
-    else
-    {
-        std::cout << "  [FAIL] " << name << "\n";
-        g_doctrineTestsFailed++;
-    }
-}
-
-//==============================================================================
 // Helper: compute RMS of a stereo buffer
 //==============================================================================
 
-static float computeRMS(const juce::AudioBuffer<float>& buffer, int numSamples)
+static float doc_computeRMS(const juce::AudioBuffer<float>& buffer, int numSamples)
 {
     double sumSq = 0.0;
     int totalSamples = 0;
@@ -199,7 +176,7 @@ static float computeRMS(const juce::AudioBuffer<float>& buffer, int numSamples)
 // Higher zero-crossing rate = brighter timbre.
 //==============================================================================
 
-static float computeZeroCrossingRate(const juce::AudioBuffer<float>& buffer, int numSamples)
+static float doc_computeZeroCrossingRate(const juce::AudioBuffer<float>& buffer, int numSamples)
 {
     if (numSamples < 2) return 0.0f;
 
@@ -257,19 +234,10 @@ static juce::AudioBuffer<float> renderWithVelocity(SynthEngine& engine,
 
 //==============================================================================
 // D001 — Velocity Must Shape Timbre (not just amplitude)
-//
-// For each engine, render a note at velocity 0.2 and at velocity 1.0.
-// Normalize both to the same RMS, then compare zero-crossing rates.
-// If the engine only scales amplitude, the ZCR will be identical after
-// normalization. If it shapes timbre (filter, harmonics), ZCR will differ.
-//
-// Optic is intentionally exempt (visual engine, no audio output).
 //==============================================================================
 
-static void testD001_VelocityShapesTimbre()
+TEST_CASE("Doctrine D001 - velocity shapes output for all engines", "[doctrine][d001]")
 {
-    std::cout << "\n--- D001: Velocity Must Shape Timbre ---\n";
-
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
     std::sort(ids.begin(), ids.end());
@@ -280,95 +248,67 @@ static void testD001_VelocityShapesTimbre()
 
     for (const auto& id : ids)
     {
+        INFO("Engine: " << id);
+
         // Optic is a visual engine — intentionally exempt from audio doctrine
         if (id == "Optic") continue;
 
-        auto engineLow = registry.createEngine(id);
+        auto engineLow  = registry.createEngine(id);
         auto engineHigh = registry.createEngine(id);
-        if (!engineLow || !engineHigh)
-        {
-            std::string msg = "D001 " + id + ": engine creation failed";
-            reportTest(msg.c_str(), false);
-            continue;
-        }
+        REQUIRE(engineLow  != nullptr);
+        REQUIRE(engineHigh != nullptr);
 
-        auto bufLow = renderWithVelocity(*engineLow, 0.2f, numBlocks, blockSize, sampleRate);
+        auto bufLow  = renderWithVelocity(*engineLow,  0.2f, numBlocks, blockSize, sampleRate);
         auto bufHigh = renderWithVelocity(*engineHigh, 1.0f, numBlocks, blockSize, sampleRate);
 
         int totalSamples = numBlocks * blockSize;
-        float rmsLow = computeRMS(bufLow, totalSamples);
-        float rmsHigh = computeRMS(bufHigh, totalSamples);
+        float rmsLow  = doc_computeRMS(bufLow,  totalSamples);
+        float rmsHigh = doc_computeRMS(bufHigh, totalSamples);
 
-        // If both are silent, skip (engine might need APVTS to produce sound)
-        if (rmsLow < 1e-7f && rmsHigh < 1e-7f)
-        {
-            std::string msg = "D001 " + id + ": velocity->timbre (skipped — silent without APVTS)";
-            reportTest(msg.c_str(), true);
-            continue;
-        }
+        // Both silent → engine needs APVTS to produce sound; skip gracefully
+        if (rmsLow < 1e-7f && rmsHigh < 1e-7f) continue;
 
-        // Compute zero-crossing rates for timbral comparison
-        float zcrLow = computeZeroCrossingRate(bufLow, totalSamples);
-        float zcrHigh = computeZeroCrossingRate(bufHigh, totalSamples);
-
-        // If either is near-silent, the velocity at least affects amplitude strongly
+        // If either extreme is near-silent, amplitude ratio is the check
         if (rmsLow < 1e-6f || rmsHigh < 1e-6f)
         {
-            float ampRatio = (rmsHigh > rmsLow) ? rmsHigh / std::max(rmsLow, 1e-10f)
-                                                  : rmsLow / std::max(rmsHigh, 1e-10f);
-            std::string msg = "D001 " + id + ": velocity affects output (amplitude ratio " +
-                              std::to_string(ampRatio) + ")";
-            reportTest(msg.c_str(), ampRatio > 1.5f);
+            float ampRatio = (rmsHigh > rmsLow)
+                ? rmsHigh / std::max(rmsLow,  1e-10f)
+                : rmsLow  / std::max(rmsHigh, 1e-10f);
+            CHECK(ampRatio > 1.5f);
             continue;
         }
 
-        // Compare ZCR difference. Any measurable difference indicates timbral shaping.
-        float zcrDiff = std::abs(zcrHigh - zcrLow);
-        float zcrAvg = (zcrHigh + zcrLow) * 0.5f;
+        float zcrLow  = doc_computeZeroCrossingRate(bufLow,  totalSamples);
+        float zcrHigh = doc_computeZeroCrossingRate(bufHigh, totalSamples);
+        float zcrDiff    = std::abs(zcrHigh - zcrLow);
+        float zcrAvg     = (zcrHigh + zcrLow) * 0.5f;
         float zcrRelDiff = (zcrAvg > 0.001f) ? zcrDiff / zcrAvg : 0.0f;
 
-        // Also check amplitude ratio — velocity should affect *something*
-        float ampRatio = rmsHigh / std::max(rmsLow, 1e-10f);
+        float ampRatio   = rmsHigh / std::max(rmsLow, 1e-10f);
+        bool timbralDiff  = zcrRelDiff > 0.01f;
+        bool amplitudeDiff = ampRatio  > 1.2f;
 
-        // Pass if timbral difference OR strong amplitude difference
-        bool timbralDiff = zcrRelDiff > 0.01f;  // >1% ZCR change
-        bool amplitudeDiff = ampRatio > 1.2f;
-
-        std::string msg = "D001 " + id + ": velocity shapes output (ZCR diff=" +
-                          std::to_string(zcrRelDiff) + ", amp ratio=" +
-                          std::to_string(ampRatio) + ")";
-        reportTest(msg.c_str(), timbralDiff || amplitudeDiff);
+        CHECK((timbralDiff || amplitudeDiff));
     }
 }
 
 //==============================================================================
 // D002 — Modulation is the Lifeblood
-//
-// Check each engine has mod matrix slots by inspecting the parameter layout
-// for parameters containing "mod" or "matrix" or "lfo" (case-insensitive).
-// The doctrine requires: >= 2 LFOs, mod wheel/aftertouch, 4+ mod slots.
-// We verify at least 2 modulation-related parameters exist.
 //==============================================================================
 
-static void testD002_ModulationLifeblood()
+TEST_CASE("Doctrine D002 - all engines have modulation parameters", "[doctrine][d002]")
 {
-    std::cout << "\n--- D002: Modulation is the Lifeblood ---\n";
-
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
     std::sort(ids.begin(), ids.end());
 
     for (const auto& id : ids)
     {
-        auto engine = registry.createEngine(id);
-        if (!engine)
-        {
-            std::string msg = "D002 " + id + ": engine creation failed";
-            reportTest(msg.c_str(), false);
-            continue;
-        }
+        INFO("Engine: " << id);
 
-        // Count modulation-related parameters
+        auto engine = registry.createEngine(id);
+        REQUIRE(engine != nullptr);
+
         int modParamCount = 0;
         int lfoParamCount = 0;
 
@@ -381,70 +321,71 @@ static void testD002_ModulationLifeblood()
             {
                 auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
                 if (!withId) continue;
-                std::string paramId = withId->getParameterID().toStdString();
-
-                // Convert to lowercase for matching
-                std::string lower = paramId;
+                std::string lower = withId->getParameterID().toStdString();
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
-                if (lower.find("mod") != std::string::npos ||
-                    lower.find("matrix") != std::string::npos ||
-                    lower.find("macro") != std::string::npos ||
-                    lower.find("aftertouch") != std::string::npos ||
-                    lower.find("expression") != std::string::npos)
+                if (lower.find("mod")         != std::string::npos ||
+                    lower.find("matrix")      != std::string::npos ||
+                    lower.find("macro")       != std::string::npos ||
+                    lower.find("aftertouch")  != std::string::npos ||
+                    lower.find("expression")  != std::string::npos)
                 {
                     modParamCount++;
                 }
                 if (lower.find("lfo") != std::string::npos)
-                {
                     lfoParamCount++;
-                }
             }
         }
 
-        // D002 requires modulation infrastructure: at least some mod-related params
-        std::string msg = "D002 " + id + ": has modulation params (mod=" +
-                          std::to_string(modParamCount) + ", lfo=" +
-                          std::to_string(lfoParamCount) + ")";
-        reportTest(msg.c_str(), (modParamCount + lfoParamCount) >= 2);
+        CHECK((modParamCount + lfoParamCount) >= 2);
     }
 }
 
 //==============================================================================
 // D004 — Dead Parameters Are Broken Promises
-//
-// For each engine:
-//   1. Create the engine, get its parameter list
-//   2. For each parameter: render audio at default, then at min, then at max
-//   3. Verify the output differs for at least one of min/max vs default
-//
-// Since we cannot wire APVTS in the test binary, this test performs structural
-// validation: every engine must declare parameters, and each parameter must
-// have a valid range (min != max). Full parameter-affects-audio testing is
-// deferred to integration tests that wire a complete APVTS.
 //==============================================================================
 
-static void testD004_NoDeadParameters()
+TEST_CASE("Doctrine D004 - all engines declare parameters", "[doctrine][d004]")
 {
-    std::cout << "\n--- D004: No Dead Parameters ---\n";
-
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
     std::sort(ids.begin(), ids.end());
 
     for (const auto& id : ids)
     {
+        INFO("Engine: " << id);
+
         auto engine = registry.createEngine(id);
-        if (!engine)
-        {
-            std::string msg = "D004 " + id + ": engine creation failed";
-            reportTest(msg.c_str(), false);
-            continue;
-        }
+        REQUIRE(engine != nullptr);
 
         int totalParams = 0;
-        int validRangeParams = 0;
+
+        {
+            MinimalTestProcessor proc;
+            std::unique_ptr<juce::AudioProcessorValueTreeState> apvts;
+            const auto& params = buildParamList(proc, apvts, engine->createParameterLayout());
+            totalParams = params.size();
+        }
+
+        CHECK(totalParams > 0);
+    }
+}
+
+TEST_CASE("Doctrine D004 - no degenerate (zero-range) parameters in any engine", "[doctrine][d004]")
+{
+    auto& registry = EngineRegistry::instance();
+    auto ids = registry.getRegisteredIds();
+    std::sort(ids.begin(), ids.end());
+
+    for (const auto& id : ids)
+    {
+        INFO("Engine: " << id);
+
+        auto engine = registry.createEngine(id);
+        REQUIRE(engine != nullptr);
+
         int degenerateParams = 0;
+        int totalParams = 0;
 
         {
             MinimalTestProcessor proc;
@@ -456,79 +397,41 @@ static void testD004_NoDeadParameters()
                 if (!param) continue;
                 totalParams++;
 
-                // Check that the parameter has a non-degenerate range
                 auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param);
-                auto* intParam = dynamic_cast<juce::AudioParameterInt*>(param);
-                auto* choiceParam = dynamic_cast<juce::AudioParameterChoice*>(param);
-                auto* boolParam = dynamic_cast<juce::AudioParameterBool*>(param);
-
                 if (floatParam)
                 {
                     auto range = floatParam->getNormalisableRange();
-                    if (std::abs(range.end - range.start) > 1e-10f)
-                        validRangeParams++;
-                    else
+                    if (std::abs(range.end - range.start) <= 1e-10f)
                         degenerateParams++;
-                }
-                else if (intParam || choiceParam || boolParam)
-                {
-                    // These always have a meaningful range
-                    validRangeParams++;
-                }
-                else
-                {
-                    // Unknown param type — count as valid (conservative)
-                    validRangeParams++;
                 }
             }
         }
 
-        // Engine must declare parameters
-        {
-            std::string msg = "D004 " + id + ": declares parameters (" +
-                              std::to_string(totalParams) + " total)";
-            reportTest(msg.c_str(), totalParams > 0);
-        }
-
-        // No degenerate (zero-range) parameters
         if (totalParams > 0)
-        {
-            std::string msg = "D004 " + id + ": no degenerate params (" +
-                              std::to_string(degenerateParams) + " zero-range)";
-            reportTest(msg.c_str(), degenerateParams == 0);
-        }
+            CHECK(degenerateParams == 0);
     }
 }
 
 //==============================================================================
 // D005 — LFO Breathing
-//
-// Every engine needs at least one LFO with rate floor <= 0.01 Hz.
-// We check parameter layouts for LFO rate parameters and verify their
-// minimum value (denormalized) is <= 0.01.
 //==============================================================================
 
-static void testD005_LFOBreathing()
+TEST_CASE("Doctrine D005 - engines with LFO rate params have floor <= 0.01 Hz", "[doctrine][d005]")
 {
-    std::cout << "\n--- D005: LFO Breathing (min rate <= 0.01 Hz) ---\n";
-
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
     std::sort(ids.begin(), ids.end());
 
     for (const auto& id : ids)
     {
+        INFO("Engine: " << id);
+
         auto engine = registry.createEngine(id);
-        if (!engine)
-        {
-            std::string msg = "D005 " + id + ": engine creation failed";
-            reportTest(msg.c_str(), false);
-            continue;
-        }
+        REQUIRE(engine != nullptr);
 
         bool hasLFORateParam = false;
-        bool hasSlowLFO = false;
-        bool hasLFOParam = false;
+        bool hasSlowLFO      = false;
+        bool hasLFOParam     = false;
 
         {
             MinimalTestProcessor proc;
@@ -539,31 +442,25 @@ static void testD005_LFOBreathing()
             {
                 auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
                 if (!withId) continue;
-                std::string paramId = withId->getParameterID().toStdString();
-
-                std::string lower = paramId;
+                std::string lower = withId->getParameterID().toStdString();
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
-                // Track any LFO-related parameter
                 if (lower.find("lfo") != std::string::npos)
                     hasLFOParam = true;
 
-                // Look for LFO rate parameters specifically
                 bool isLFORate = (lower.find("lfo") != std::string::npos &&
-                                 (lower.find("rate") != std::string::npos ||
-                                  lower.find("freq") != std::string::npos ||
+                                 (lower.find("rate")  != std::string::npos ||
+                                  lower.find("freq")  != std::string::npos ||
                                   lower.find("speed") != std::string::npos));
 
                 if (isLFORate)
                 {
                     hasLFORateParam = true;
-
                     auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param);
                     if (floatParam)
                     {
                         auto range = floatParam->getNormalisableRange();
-                        float minHz = range.start;
-                        if (minHz <= 0.01f)
+                        if (range.start <= 0.01f)
                             hasSlowLFO = true;
                     }
                 }
@@ -572,31 +469,23 @@ static void testD005_LFOBreathing()
 
         if (hasLFORateParam)
         {
-            std::string msg = "D005 " + id + ": LFO rate param with floor <= 0.01 Hz";
-            reportTest(msg.c_str(), hasSlowLFO);
+            // Engine exposes an LFO rate parameter — verify it can breathe slowly
+            CHECK(hasSlowLFO);
         }
         else
         {
-            // Engine may have hardcoded LFOs (common pattern in XOlokun).
-            // We verify the engine at least has LFO-related parameters or
-            // provides autonomous modulation through other means.
-            std::string msg = "D005 " + id + ": has LFO infrastructure (param or built-in)";
-            reportTest(msg.c_str(), hasLFOParam || hasLFORateParam);
+            // Engine may have hardcoded LFOs; verify at least some LFO infrastructure exists
+            CHECK((hasLFOParam || hasLFORateParam));
         }
     }
 }
 
 //==============================================================================
 // D006 — Expression Input Is Not Optional
-//
-// Verify velocity->timbre mapping exists by comparing output at different
-// velocities. Also check for aftertouch/mod-wheel related parameters.
 //==============================================================================
 
-static void testD006_ExpressionInput()
+TEST_CASE("Doctrine D006 - all engines respond to velocity", "[doctrine][d006]")
 {
-    std::cout << "\n--- D006: Expression Input Is Not Optional ---\n";
-
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
     std::sort(ids.begin(), ids.end());
@@ -607,32 +496,27 @@ static void testD006_ExpressionInput()
 
     for (const auto& id : ids)
     {
+        INFO("Engine: " << id);
+
         // Optic is intentionally exempt (visual engine)
         if (id == "Optic") continue;
 
-        auto engine = registry.createEngine(id);
-        if (!engine)
-        {
-            std::string msg = "D006 " + id + ": engine creation failed";
-            reportTest(msg.c_str(), false);
-            continue;
-        }
-
-        // Check 1: Velocity response
-        auto engineLow = registry.createEngine(id);
+        auto engineLow  = registry.createEngine(id);
         auto engineHigh = registry.createEngine(id);
+        REQUIRE(engineLow  != nullptr);
+        REQUIRE(engineHigh != nullptr);
 
-        auto bufLow = renderWithVelocity(*engineLow, 0.1f, numBlocks, blockSize, sampleRate);
+        auto bufLow  = renderWithVelocity(*engineLow,  0.1f, numBlocks, blockSize, sampleRate);
         auto bufHigh = renderWithVelocity(*engineHigh, 1.0f, numBlocks, blockSize, sampleRate);
 
         int totalSamples = numBlocks * blockSize;
-        float rmsLow = computeRMS(bufLow, totalSamples);
-        float rmsHigh = computeRMS(bufHigh, totalSamples);
+        float rmsLow  = doc_computeRMS(bufLow,  totalSamples);
+        float rmsHigh = doc_computeRMS(bufHigh, totalSamples);
 
         bool velocityResponse = false;
         if (rmsLow < 1e-7f && rmsHigh < 1e-7f)
         {
-            // Silent — can't test without APVTS, pass gracefully
+            // Silent without APVTS — pass gracefully
             velocityResponse = true;
         }
         else
@@ -641,10 +525,23 @@ static void testD006_ExpressionInput()
             velocityResponse = (rmsRatio > 1.1f) || (std::abs(rmsHigh - rmsLow) > 1e-5f);
         }
 
-        std::string msg1 = "D006 " + id + ": velocity response";
-        reportTest(msg1.c_str(), velocityResponse);
+        CHECK(velocityResponse);
+    }
+}
 
-        // Check 2: Expression parameters exist (aftertouch, mod wheel, expression)
+TEST_CASE("Doctrine D006 - all engines have expression/velocity parameters", "[doctrine][d006]")
+{
+    auto& registry = EngineRegistry::instance();
+    auto ids = registry.getRegisteredIds();
+    std::sort(ids.begin(), ids.end());
+
+    for (const auto& id : ids)
+    {
+        INFO("Engine: " << id);
+
+        auto engine = registry.createEngine(id);
+        REQUIRE(engine != nullptr);
+
         bool hasExpressionParam = false;
 
         {
@@ -660,17 +557,17 @@ static void testD006_ExpressionInput()
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
                 if (lower.find("aftertouch") != std::string::npos ||
-                    lower.find("modwheel") != std::string::npos ||
-                    lower.find("mod_wheel") != std::string::npos ||
+                    lower.find("modwheel")   != std::string::npos ||
+                    lower.find("mod_wheel")  != std::string::npos ||
                     lower.find("expression") != std::string::npos ||
-                    lower.find("pressure") != std::string::npos ||
-                    lower.find("velocity") != std::string::npos ||
-                    lower.find("velscale") != std::string::npos ||
-                    lower.find("vel_scale") != std::string::npos ||
-                    lower.find("velsens") != std::string::npos ||
-                    lower.find("vel_sens") != std::string::npos ||
-                    lower.find("at_") != std::string::npos ||
-                    lower.find("mw_") != std::string::npos)
+                    lower.find("pressure")   != std::string::npos ||
+                    lower.find("velocity")   != std::string::npos ||
+                    lower.find("velscale")   != std::string::npos ||
+                    lower.find("vel_scale")  != std::string::npos ||
+                    lower.find("velsens")    != std::string::npos ||
+                    lower.find("vel_sens")   != std::string::npos ||
+                    lower.find("at_")        != std::string::npos ||
+                    lower.find("mw_")        != std::string::npos)
                 {
                     hasExpressionParam = true;
                     break;
@@ -678,37 +575,11 @@ static void testD006_ExpressionInput()
             }
         }
 
-        std::string msg2 = "D006 " + id + ": has expression/velocity parameters";
-        reportTest(msg2.c_str(), hasExpressionParam);
+        CHECK(hasExpressionParam);
     }
 }
 
-//==============================================================================
-// Public entry point
-//==============================================================================
-
+// Backward-compat shim
 namespace doctrine_tests {
-
-int runAll()
-{
-    g_doctrineTestsPassed = 0;
-    g_doctrineTestsFailed = 0;
-
-    std::cout << "\n========================================\n";
-    std::cout << "  Doctrine Tests (D001-D006)\n";
-    std::cout << "========================================\n";
-    std::cout << "  D003 (Physics Citation) skipped — cannot automate\n";
-
-    testD001_VelocityShapesTimbre();
-    testD002_ModulationLifeblood();
-    testD004_NoDeadParameters();
-    testD005_LFOBreathing();
-    testD006_ExpressionInput();
-
-    std::cout << "\n  Doctrine Tests: " << g_doctrineTestsPassed << " passed, "
-              << g_doctrineTestsFailed << " failed\n";
-
-    return g_doctrineTestsFailed;
-}
-
+int runAll() { return 0; }
 } // namespace doctrine_tests
