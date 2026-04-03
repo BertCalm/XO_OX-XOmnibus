@@ -1,9 +1,7 @@
 # XOlokun — Git line-ending normalization
 # Ensures consistent LF line endings in the repository regardless of contributor OS.
-
 # Default: normalise all text files to LF on commit
 * text=auto eol=lf
-
 # Explicitly text files
 *.cpp       text eol=lf
 *.h         text eol=lf
@@ -26,14 +24,13 @@ CMakeLists.txt text eol=lf
 .gitignore  text eol=lf
 .editorconfig text eol=lf
 .gitattributes text eol=lf
-
 # Binary files — never diff or modify
 *.wav       binary
 *.WAV       binary
 *.aiff      binary
 *.mp3       binary
 *.ogg       binary
-*.png       binary
+*.png filter=lfs diff=lfs merge=lfs -text
 *.jpg       binary
 *.jpeg      binary
 *.gif       binary
