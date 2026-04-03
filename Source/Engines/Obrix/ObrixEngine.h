@@ -345,6 +345,9 @@ public:
         buildWavetables();
         // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
         reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
+        // Invalidate stress decay coefficient cache so it is recomputed on the
+        // first block after a sample-rate change (#620 block-rate caching).
+        cachedStressDecay_ = -1.0f;
         // SRO SilenceGate: complex reef ecology has reverb tails — 500ms hold
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
     }
@@ -604,6 +607,16 @@ public:
         // Stateful Synthesis block-level updates
         // Stress Memory: leaky integrator τ = 30+stressDecay*30 seconds
         // Model: RC low-pass filter with time constant τ (exponential moving average)
+        // #620: cache the stress decay coefficient — stressDecay changes at most
+        // once per parameter automation step; recomputing std::exp every block is wasteful.
+        if (std::abs(stressDecay - cachedStressDecay_) > 0.0005f)
+        {
+            float tau = 30.0f + stressDecay * 30.0f;
+            cachedStressDecayCoeff_  = std::exp(-1.0f / (tau * sr));
+            cachedParasiteAlpha_     = 1.0f - cachedStressDecayCoeff_;
+            cachedParasiteDecay0_    = std::exp(-1.0f / (30.0f * sr)); // τ=30s fixed path
+            cachedStressDecay_       = stressDecay;
+        }
         if (stressDecay > 0.001f)
         {
             float avgVel = 0.0f;
@@ -616,8 +629,7 @@ public:
                 }
             if (vcount > 0)
                 avgVel /= static_cast<float>(vcount);
-            float tau = 30.0f + stressDecay * 30.0f; // 30–60 second time constant
-            float decay = std::exp(-1.0f / (tau * sr));
+            const float decay = cachedStressDecayCoeff_;
             stressLevel_ = stressLevel_ * decay + avgVel * (1.0f - decay);
             stressLevel_ = flushDenormal(stressLevel_);
         }
@@ -650,16 +662,15 @@ public:
             if (stressDecay > 0.001f)
             {
                 // Velocity stress block already ran — just inject parasite contribution
-                float tau = 30.0f + stressDecay * 30.0f;
-                float alpha = 1.0f - std::exp(-1.0f / (tau * sr)); // injection scale
-                stressLevel_ += parasiteStressInput * alpha;
+                // Use cached alpha (1 - decay) to avoid another std::exp call.
+                stressLevel_ += parasiteStressInput * cachedParasiteAlpha_;
                 stressLevel_ = flushDenormal(stressLevel_);
             }
             else
             {
                 // stressDecay=0 means no velocity stress runs — parasite drives the full integrator
-                float tau = 30.0f;
-                float decay = std::exp(-1.0f / (tau * sr));
+                // cachedParasiteDecay0_ holds exp(-1/(30*sr)) computed at block boundary.
+                const float decay = cachedParasiteDecay0_;
                 stressLevel_ = stressLevel_ * decay + parasiteStressInput * (1.0f - decay);
                 stressLevel_ = flushDenormal(stressLevel_);
             }
@@ -2152,6 +2163,12 @@ private:
     float bleachLevel_ = 0.0f;   // cumulative brightness attenuation (Bleaching)
     float prevResetTrig_ = 0.0f; // edge detector for obrix_stateReset
     uint32_t turbRng_ = 31415u;  // per-engine noise RNG for turbidity fluctuation
+
+    // #620 block-rate coefficient cache — avoids std::exp on every audio block
+    float cachedStressDecay_      = -1.0f; // sentinel — forces compute on first block / after prepare()
+    float cachedStressDecayCoeff_ = 0.9999f; // exp(-1/(30*sr)) @ 48 kHz ≈ 0.999999
+    float cachedParasiteAlpha_    = 1.0f - 0.9999f;
+    float cachedParasiteDecay0_   = 0.9999f; // fixed τ=30s path
 
     // Wave 5 — Reef Residency (pre-allocated, no audio-thread allocation)
     static constexpr int kMaxReefBufSize = 4096; // max block size we'll ever see

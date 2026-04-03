@@ -732,6 +732,10 @@ public:
             else
                 voice.lpf.setMode(CytomicSVF::Mode::LowPass);
             voice.hpf.setMode(CytomicSVF::Mode::HighPass);
+
+            // #620: HPF cutoff is constant within the block — set coefficients
+            // once here rather than per-sample to avoid redundant trig inside the loop.
+            voice.hpf.setCoefficients_fast(filterHPCutoff, 0.0f, srf);
         }
 
         float peakEnv = 0.0f;
@@ -864,7 +868,7 @@ public:
                 float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
 
                 voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
-                voice.hpf.setCoefficients_fast(filterHPCutoff, 0.0f, srf);
+                // HPF coefficients are set once per block (block-rate setup above)
 
                 // Apply filters (series: HP -> LP for bright tonal shaping)
                 float filteredL = voice.hpf.processSample(voiceL);

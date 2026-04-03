@@ -96,6 +96,11 @@ public:
         lfo_.setRate(0.5f, static_cast<float>(sr_));
         lfo_.reset();
 
+        // Invalidate cached envelope-follower coefficients so they are
+        // recomputed on the first block after a sample-rate change.
+        cachedReactivity_ = -1.0f;
+        cachedMemory_     = -1.0f;
+
         prepareSilenceGate(sr_, maxBlockSize, 500.0f);
 
         externalBufferL_ = nullptr;
@@ -166,11 +171,22 @@ public:
         const float reactivity = reactivitySmoother_.process();
         const float memory = memorySmoother_.process();
 
-        // Envelope follower coefficients from reactivity
+        // Envelope follower coefficients from reactivity — cached to avoid
+        // std::exp on the audio thread every block.  Recompute only when the
+        // smoothed reactivity or memory value has drifted by more than 0.002
+        // (≈ one 7-bit MIDI step), which is inaudible for these slow time-constants.
         const float attackMs = 1.0f + (1.0f - reactivity) * 49.0f; // 1–50 ms
         const float releaseMs = 10.0f + memory * 990.0f;           // 10–1000 ms
-        const float attackCoeff = std::exp(-1.0f / (static_cast<float>(sr_) * attackMs * 0.001f));
-        const float releaseCoeff = std::exp(-1.0f / (static_cast<float>(sr_) * releaseMs * 0.001f));
+        if (std::abs(reactivity - cachedReactivity_) > 0.002f ||
+            std::abs(memory    - cachedMemory_)     > 0.002f)
+        {
+            cachedAttackCoeff_  = std::exp(-1.0f / (static_cast<float>(sr_) * attackMs  * 0.001f));
+            cachedReleaseCoeff_ = std::exp(-1.0f / (static_cast<float>(sr_) * releaseMs * 0.001f));
+            cachedReactivity_   = reactivity;
+            cachedMemory_       = memory;
+        }
+        const float attackCoeff  = cachedAttackCoeff_;
+        const float releaseCoeff = cachedReleaseCoeff_;
 
         // Membrane filter base frequency from selectivity (200 Hz – 18.2 kHz)
         const float membraneBaseFreq = 200.0f + selectivity * 18000.0f;
@@ -445,6 +461,12 @@ private:
     ParameterSmoother selectivitySmoother_;
     ParameterSmoother reactivitySmoother_;
     ParameterSmoother memorySmoother_;
+
+    // Cached envelope-follower coefficients (#620 block-rate caching)
+    float cachedAttackCoeff_  = 0.99f; // default ~44 ms @ 48 kHz
+    float cachedReleaseCoeff_ = 0.99f;
+    float cachedReactivity_   = -1.0f; // sentinel — forces compute on first block
+    float cachedMemory_       = -1.0f;
 
     // LFO (modulates membrane cutoff)
     StandardLFO lfo_;
