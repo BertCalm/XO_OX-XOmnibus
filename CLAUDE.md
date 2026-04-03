@@ -251,6 +251,7 @@ See `Docs/xoceanus_name_migration_reference.md` for the full mapping and gotchas
 | `Presets/XOceanus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
 | `Docs/` | All specification documents |
+| `Source/AI/` | AI sound assistant subsystem (SoundAssistant, NaturalLanguageInterpreter, AIParameterSchema, SecureKeyStore, SharedRecipeVault, CommunityInsights, RecipeEngine) — gated behind `XOCEANUS_BUILD_AI` CMake option (default OFF). See `Docs/ai-subsystem.md`. |
 
 ## Preset System
 
