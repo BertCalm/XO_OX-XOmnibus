@@ -9,7 +9,8 @@
 #include "XOceanusEditor.h"
 #include "../XOceanusProcessor.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 juce::AudioProcessorEditor* XOceanusProcessor::createEditor()
 {

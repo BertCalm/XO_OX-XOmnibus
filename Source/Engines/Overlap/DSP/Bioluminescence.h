@@ -27,34 +27,39 @@
 #include <array>
 #include <cmath>
 
-namespace xoverlap {
+namespace xoverlap
+{
 
 //==============================================================================
 class Bioluminescence
 {
 public:
     //==========================================================================
-    void prepare (double sampleRate) noexcept
+    void prepare(double sampleRate) noexcept
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
 
         // Clear circular buffer
-        buffer.fill (0.0f);
+        buffer.fill(0.0f);
         writeHead = 0;
 
         // Initialise modulator phases with slightly spread initial angles
         for (int i = 0; i < kTaps; ++i)
         {
-            modPhase[i] = static_cast<float> (i) / static_cast<float> (kTaps);
+            modPhase[i] = static_cast<float>(i) / static_cast<float>(kTaps);
             // Each modulator runs at a slightly different rate (detuned)
             // base rate ≈ 0.3 Hz; offset per tap ≈ 0.07 Hz
-            modRate[i] = (0.3f + static_cast<float> (i) * 0.07f) / sr;
+            modRate[i] = (0.3f + static_cast<float>(i) * 0.07f) / sr;
         }
     }
 
     //==========================================================================
     // Stereo output pair returned by processStereo()
-    struct StereoSample { float left; float right; };
+    struct StereoSample
+    {
+        float left;
+        float right;
+    };
 
     //==========================================================================
     // process() — produce one bioluminescent shimmer sample (mono, legacy).
@@ -62,9 +67,9 @@ public:
     // fdnMono:   mono mix of FDN outputs
     // delayBase: FDN delay base in ms (taps are harmonically derived from this)
     // amount:    wet gain [0, 1]
-    float process (float fdnMono, float delayBase, float amount) noexcept
+    float process(float fdnMono, float delayBase, float amount) noexcept
     {
-        auto s = processStereo (fdnMono, delayBase, amount);
+        auto s = processStereo(fdnMono, delayBase, amount);
         return (s.left + s.right) * 0.5f;
     }
 
@@ -77,46 +82,50 @@ public:
     // fdnMono:   mono mix of FDN outputs
     // delayBase: FDN delay base in ms (taps are harmonically derived from this)
     // amount:    wet gain [0, 1]
-    StereoSample processStereo (float fdnMono, float delayBase, float amount) noexcept
+    StereoSample processStereo(float fdnMono, float delayBase, float amount) noexcept
     {
         if (amount < 0.001f)
         {
             // Still write to buffer to keep it fresh
-            buffer[static_cast<size_t> (writeHead)] = flushDenormal (fdnMono);
-            if (++writeHead >= kBufLen) writeHead = 0;
-            return { 0.0f, 0.0f };
+            buffer[static_cast<size_t>(writeHead)] = flushDenormal(fdnMono);
+            if (++writeHead >= kBufLen)
+                writeHead = 0;
+            return {0.0f, 0.0f};
         }
 
         // Write input to circular buffer
-        buffer[static_cast<size_t> (writeHead)] = flushDenormal (fdnMono);
+        buffer[static_cast<size_t>(writeHead)] = flushDenormal(fdnMono);
 
         float sumL = 0.0f;
         float sumR = 0.0f;
-        float baseOffset = std::max (1.0f, delayBase * 0.001f * sr);
+        float baseOffset = std::max(1.0f, delayBase * 0.001f * sr);
 
         for (int i = 0; i < kTaps; ++i)
         {
             // Tap offset: i-th harmonic of baseOffset (primes give inharmonic shimmer)
             float tapOffset = baseOffset * kTapRatios[i];
-            int   tapInt    = static_cast<int> (tapOffset);
-            float tapFrac   = tapOffset - static_cast<float> (tapInt);
+            int tapInt = static_cast<int>(tapOffset);
+            float tapFrac = tapOffset - static_cast<float>(tapInt);
 
             // Linear interpolation between two adjacent buffer positions
             int rp1 = writeHead - tapInt;
             int rp2 = rp1 - 1;
-            while (rp1 < 0) rp1 += kBufLen;
-            while (rp2 < 0) rp2 += kBufLen;
+            while (rp1 < 0)
+                rp1 += kBufLen;
+            while (rp2 < 0)
+                rp2 += kBufLen;
             rp1 %= kBufLen;
             rp2 %= kBufLen;
-            float tapSample = buffer[static_cast<size_t> (rp1)] * (1.0f - tapFrac)
-                            + buffer[static_cast<size_t> (rp2)] * tapFrac;
+            float tapSample =
+                buffer[static_cast<size_t>(rp1)] * (1.0f - tapFrac) + buffer[static_cast<size_t>(rp2)] * tapFrac;
 
             // Modulate tap amplitude with slowly-drifting sine
-            float modAmp = 0.5f + 0.5f * fastSin (modPhase[i] * 6.28318530f);
+            float modAmp = 0.5f + 0.5f * fastSin(modPhase[i] * 6.28318530f);
 
             // Advance modulator phase
             modPhase[i] += modRate[i];
-            if (modPhase[i] >= 1.0f) modPhase[i] -= 1.0f;
+            if (modPhase[i] >= 1.0f)
+                modPhase[i] -= 1.0f;
 
             float tapOut = tapSample * modAmp;
 
@@ -129,35 +138,36 @@ public:
         }
 
         // Advance write head
-        if (++writeHead >= kBufLen) writeHead = 0;
+        if (++writeHead >= kBufLen)
+            writeHead = 0;
 
         // Normalise by tap count and apply amount
-        float scale = amount * 0.35f / static_cast<float> (kTaps);
-        return { flushDenormal (sumL * scale), flushDenormal (sumR * scale) };
+        float scale = amount * 0.35f / static_cast<float>(kTaps);
+        return {flushDenormal(sumL * scale), flushDenormal(sumR * scale)};
     }
 
 private:
     //==========================================================================
-    static constexpr int   kTaps   = 7;
-    static constexpr int   kBufLen = 8192;  // ~186ms at 44.1kHz — enough for any delayBase
+    static constexpr int kTaps = 7;
+    static constexpr int kBufLen = 8192; // ~186ms at 44.1kHz — enough for any delayBase
 
     // Near-prime tap ratio multipliers for inharmonic shimmer character
-    static constexpr float kTapRatios[kTaps] = { 1.0f, 1.31f, 1.71f, 2.09f, 2.61f, 3.19f, 3.89f };
+    static constexpr float kTapRatios[kTaps] = {1.0f, 1.31f, 1.71f, 2.09f, 2.61f, 3.19f, 3.89f};
 
     // Per-tap stereo panning gains (constant-power approximation).
     // Odd-indexed taps are left-biased (L=0.75, R=0.25), even-indexed are
     // right-biased (L=0.25, R=0.75). This alternating spread transforms the
     // bioluminescence from a mono overlay into a spatial phenomenon.
-    static constexpr float kTapPanL[kTaps] = { 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f };
-    static constexpr float kTapPanR[kTaps] = { 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f };
+    static constexpr float kTapPanL[kTaps] = {0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f};
+    static constexpr float kTapPanR[kTaps] = {0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f};
 
-    float sr        = 44100.0f;
+    float sr = 44100.0f;
 
-    std::array<float, kBufLen> buffer {};
-    int                        writeHead = 0;
+    std::array<float, kBufLen> buffer{};
+    int writeHead = 0;
 
-    std::array<float, kTaps> modPhase {};
-    std::array<float, kTaps> modRate  {};
+    std::array<float, kTaps> modPhase{};
+    std::array<float, kTaps> modRate{};
 };
 
 } // namespace xoverlap

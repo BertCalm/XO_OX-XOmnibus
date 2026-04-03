@@ -5,7 +5,8 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xowlfish {
+namespace xowlfish
+{
 
 //==============================================================================
 // MicroGranular -- Ultra-short predatory grain engine (DIET).
@@ -25,7 +26,7 @@ namespace xowlfish {
 class MicroGranular
 {
 public:
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         reset();
@@ -50,16 +51,17 @@ public:
     /// density01:  0 -> 10 grains/sec, 1 -> 200 grains/sec
     /// pitch01:    0 -> 0 semitones scatter, 1 -> 12 semitones scatter
     /// feedRate01: 0 -> 0.1x write speed, 1 -> 2.0x write speed
-    void setParams (float size01, float density01, float pitch01, float feedRate01)
+    void setParams(float size01, float density01, float pitch01, float feedRate01)
     {
         // Grain size: 2ms to 10ms in samples
         float grainMs = 2.0f + size01 * 8.0f;
-        grainSizeSamples = static_cast<int> (grainMs * 0.001f * static_cast<float> (sr));
-        if (grainSizeSamples < 4) grainSizeSamples = 4;
+        grainSizeSamples = static_cast<int>(grainMs * 0.001f * static_cast<float>(sr));
+        if (grainSizeSamples < 4)
+            grainSizeSamples = 4;
 
         // Grain density: 10 to 200 grains/sec -> spawn interval in samples
         float density = 10.0f + density01 * 190.0f;
-        spawnInterval = static_cast<float> (sr) / density;
+        spawnInterval = static_cast<float>(sr) / density;
 
         // Pitch scatter: 0 to 12 semitones
         pitchScatterSemitones = pitch01 * 12.0f;
@@ -69,7 +71,7 @@ public:
     }
 
     /// Feed one sample into the capture buffer.
-    void writeSample (float input)
+    void writeSample(float input)
     {
         // Fractional write position for feed rate control
         writePhase += feedRateMultiplier;
@@ -100,20 +102,21 @@ public:
         float output = 0.0f;
         for (int i = 0; i < kMaxGrains; ++i)
         {
-            if (!grains[i].active) continue;
+            if (!grains[i].active)
+                continue;
 
             Grain& g = grains[i];
 
             // Read from buffer with linear interpolation
-            int posInt = static_cast<int> (g.position);
-            float frac = g.position - static_cast<float> (posInt);
+            int posInt = static_cast<int>(g.position);
+            float frac = g.position - static_cast<float>(posInt);
             int idx0 = posInt & (kBufferSize - 1);
             int idx1 = (posInt + 1) & (kBufferSize - 1);
             float sample = buffer[idx0] + frac * (buffer[idx1] - buffer[idx0]);
 
             // Hann window: 0.5 * (1 - cos(2*pi*t)) where t = windowPhase (0->1)
             constexpr float twoPi = 6.28318530717958647692f;
-            float window = 0.5f * (1.0f - fastCos (g.windowPhase * twoPi));
+            float window = 0.5f * (1.0f - fastCos(g.windowPhase * twoPi));
 
             output += sample * window * g.amplitude;
 
@@ -126,34 +129,34 @@ public:
                 g.active = false;
         }
 
-        return flushDenormal (output);
+        return flushDenormal(output);
     }
 
 private:
     static constexpr int kBufferSize = 4096;
-    static constexpr int kMaxGrains  = 16;
+    static constexpr int kMaxGrains = 16;
 
     float buffer[kBufferSize] = {};
-    int   writePos = 0;
+    int writePos = 0;
     float writePhase = 0.0f;
 
     struct Grain
     {
-        float position    = 0.0f;    // read position in buffer (fractional)
-        float phaseInc    = 1.0f;    // playback rate
-        float windowPhase = 0.0f;    // 0->1 over grain lifetime
-        float windowInc   = 0.0f;    // per-sample window advance
-        float amplitude   = 1.0f;
-        bool  active      = false;
+        float position = 0.0f;    // read position in buffer (fractional)
+        float phaseInc = 1.0f;    // playback rate
+        float windowPhase = 0.0f; // 0->1 over grain lifetime
+        float windowInc = 0.0f;   // per-sample window advance
+        float amplitude = 1.0f;
+        bool active = false;
     };
     Grain grains[kMaxGrains];
 
-    double   sr = 44100.0;
-    float    spawnCounter = 0.0f;
-    float    spawnInterval = 4410.0f;   // samples between spawns
-    int      grainSizeSamples = 200;
-    float    pitchScatterSemitones = 0.0f;
-    float    feedRateMultiplier = 1.0f;
+    double sr = 44100.0;
+    float spawnCounter = 0.0f;
+    float spawnInterval = 4410.0f; // samples between spawns
+    int grainSizeSamples = 200;
+    float pitchScatterSemitones = 0.0f;
+    float feedRateMultiplier = 1.0f;
 
     // Simple LCG random (audio-thread safe, no std::random)
     uint32_t rngState = 12345;
@@ -161,7 +164,7 @@ private:
     float nextRandom()
     {
         rngState = rngState * 1664525u + 1013904223u;
-        return static_cast<float> (rngState) / static_cast<float> (0xFFFFFFFFu);
+        return static_cast<float>(rngState) / static_cast<float>(0xFFFFFFFFu);
     }
 
     void spawnGrain()
@@ -176,23 +179,23 @@ private:
                 break;
             }
         }
-        if (slot < 0) return;  // all slots full
+        if (slot < 0)
+            return; // all slots full
 
         Grain& g = grains[slot];
 
         // Random start position within the recent buffer content
         // Read from somewhere behind the write head
-        float offset = nextRandom() * static_cast<float> (kBufferSize - grainSizeSamples);
-        g.position = static_cast<float> ((writePos - static_cast<int> (offset)
-                      + kBufferSize) & (kBufferSize - 1));
+        float offset = nextRandom() * static_cast<float>(kBufferSize - grainSizeSamples);
+        g.position = static_cast<float>((writePos - static_cast<int>(offset) + kBufferSize) & (kBufferSize - 1));
 
         // Per-grain pitch scatter: random offset in semitones
         float randomOffset = nextRandom() * pitchScatterSemitones;
-        g.phaseInc = std::pow (2.0f, randomOffset / 12.0f);
+        g.phaseInc = std::pow(2.0f, randomOffset / 12.0f);
 
         // Window advances from 0 to 1 over grainSizeSamples
         g.windowPhase = 0.0f;
-        g.windowInc = 1.0f / static_cast<float> (grainSizeSamples);
+        g.windowInc = 1.0f / static_cast<float>(grainSizeSamples);
 
         g.amplitude = 1.0f;
         g.active = true;

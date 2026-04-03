@@ -3,7 +3,8 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 // ColumnLayoutManager — computes all zone rectangles for the 3-column + header
 // + status bar + PlaySurface layout. Pure data struct, no JUCE Component inheritance.
@@ -32,30 +33,30 @@ struct ColumnLayoutManager
 {
     // ── Configuration ──────────────────────────────────────────
     // Prototype: 52px header
-    static constexpr int kHeaderH          = 52;
-    static constexpr int kStatusBarH       = 28;
-    static constexpr int kPlaySurfaceH     = 220;
-    static constexpr int kFieldMapH        = 80;
+    static constexpr int kHeaderH = 52;
+    static constexpr int kStatusBarH = 28;
+    static constexpr int kPlaySurfaceH = 220;
+    static constexpr int kFieldMapH = 80;
 
     // Default column widths at reference width (1100)
-    static constexpr int kRefWidth         = 1100;
-    static constexpr int kDefaultColA      = 260;
-    static constexpr int kDefaultColB      = 520;
-    static constexpr int kDefaultColC      = 320;
+    static constexpr int kRefWidth = 1100;
+    static constexpr int kDefaultColA = 260;
+    static constexpr int kDefaultColB = 520;
+    static constexpr int kDefaultColC = 320;
 
     // Minimum column widths (below which content is unusable)
-    static constexpr int kMinColA          = 180;
-    static constexpr int kMinColB          = 400;
-    static constexpr int kMinColC          = 48;   // icon strip when collapsed
-    static constexpr int kMinBodyH         = 320;  // auto-collapse PlaySurface threshold
+    static constexpr int kMinColA = 180;
+    static constexpr int kMinColB = 400;
+    static constexpr int kMinColC = 48;   // icon strip when collapsed
+    static constexpr int kMinBodyH = 320; // auto-collapse PlaySurface threshold
 
     // MPC hardware breakpoint
-    static constexpr int kMpcMaxWidth      = 800;
+    static constexpr int kMpcMaxWidth = 800;
 
     // ── State ──────────────────────────────────────────────────
-    bool playSurfaceVisible  = false;
-    bool columnCCollapsed    = false;
-    bool cinematicMode       = false;
+    bool playSurfaceVisible = false;
+    bool columnCCollapsed = false;
+    bool cinematicMode = false;
 
     // ── Compute ────────────────────────────────────────────────
     // Call this with the editor's total width and height.
@@ -66,11 +67,11 @@ struct ColumnLayoutManager
         totalH = totalHeight;
 
         // Header and status bar are fixed height
-        headerBounds    = { 0, 0, totalW, kHeaderH };
-        statusBarBounds = { 0, totalH - kStatusBarH, totalW, kStatusBarH };
+        headerBounds = {0, 0, totalW, kHeaderH};
+        statusBarBounds = {0, totalH - kStatusBarH, totalW, kStatusBarH};
 
         // Body region: between header and status bar
-        int bodyTop    = kHeaderH;
+        int bodyTop = kHeaderH;
         int bodyBottom = totalH - kStatusBarH;
 
         // PlaySurface: at bottom of body, above status bar
@@ -81,19 +82,20 @@ struct ColumnLayoutManager
             {
                 // Auto-collapse: not enough room for columns + PlaySurface
                 playSurfaceAutoCollapsed = true;
-                playSurfaceBounds = { 0, totalH, totalW, kPlaySurfaceH }; // parked fully off-screen (consistent with hidden case)
+                playSurfaceBounds = {0, totalH, totalW,
+                                     kPlaySurfaceH}; // parked fully off-screen (consistent with hidden case)
             }
             else
             {
                 playSurfaceAutoCollapsed = false;
-                playSurfaceBounds = { 0, bodyBottom - kPlaySurfaceH, totalW, kPlaySurfaceH };
+                playSurfaceBounds = {0, bodyBottom - kPlaySurfaceH, totalW, kPlaySurfaceH};
                 bodyBottom -= kPlaySurfaceH;
             }
         }
         else
         {
             playSurfaceAutoCollapsed = false;
-            playSurfaceBounds = { 0, totalH, totalW, kPlaySurfaceH }; // parked below window
+            playSurfaceBounds = {0, totalH, totalW, kPlaySurfaceH}; // parked below window
         }
 
         int bodyH = bodyBottom - bodyTop;
@@ -124,9 +126,9 @@ struct ColumnLayoutManager
         {
             // Normal 3-column proportional
             float scale = static_cast<float>(totalW) / kRefWidth;
-            colAWidth   = std::max(kMinColA, static_cast<int>(kDefaultColA * scale));
-            colCWidth   = std::max(kMinColC, static_cast<int>(kDefaultColC * scale));
-            colBWidth   = totalW - colAWidth - colCWidth;
+            colAWidth = std::max(kMinColA, static_cast<int>(kDefaultColA * scale));
+            colCWidth = std::max(kMinColC, static_cast<int>(kDefaultColC * scale));
+            colBWidth = totalW - colAWidth - colCWidth;
 
             // Ensure Column B never goes below minimum
             if (colBWidth < kMinColB)
@@ -147,30 +149,30 @@ struct ColumnLayoutManager
         }
 
         // Column bounds
-        columnABounds = { 0,                    bodyTop, colAWidth, bodyH };
-        columnBBounds = { colAWidth,             bodyTop, colBWidth, bodyH };
-        columnCBounds = { colAWidth + colBWidth, bodyTop, colCWidth, bodyH };
+        columnABounds = {0, bodyTop, colAWidth, bodyH};
+        columnBBounds = {colAWidth, bodyTop, colBWidth, bodyH};
+        columnCBounds = {colAWidth + colBWidth, bodyTop, colCWidth, bodyH};
 
         // FieldMap hidden — full Column B height available for panel
-        fieldMapBounds = { 0, -200, 0, 0 };
-        columnBPanelBounds = { colAWidth, bodyTop, colBWidth, bodyH };
+        fieldMapBounds = {0, -200, 0, 0};
+        columnBPanelBounds = {colAWidth, bodyTop, colBWidth, bodyH};
         if (columnBPanelBounds.getHeight() < 0)
             columnBPanelBounds.setHeight(0);
     }
 
     // ── Accessors ──────────────────────────────────────────────
-    juce::Rectangle<int> getHeader()        const { return headerBounds; }
-    juce::Rectangle<int> getStatusBar()     const { return statusBarBounds; }
-    juce::Rectangle<int> getColumnA()       const { return columnABounds; }
-    juce::Rectangle<int> getColumnB()       const { return columnBBounds; }
-    juce::Rectangle<int> getColumnBPanel()  const { return columnBPanelBounds; }
-    juce::Rectangle<int> getColumnC()       const { return columnCBounds; }
-    juce::Rectangle<int> getPlaySurface()   const { return playSurfaceBounds; }
-    juce::Rectangle<int> getFieldMap()      const { return fieldMapBounds; }
+    juce::Rectangle<int> getHeader() const { return headerBounds; }
+    juce::Rectangle<int> getStatusBar() const { return statusBarBounds; }
+    juce::Rectangle<int> getColumnA() const { return columnABounds; }
+    juce::Rectangle<int> getColumnB() const { return columnBBounds; }
+    juce::Rectangle<int> getColumnBPanel() const { return columnBPanelBounds; }
+    juce::Rectangle<int> getColumnC() const { return columnCBounds; }
+    juce::Rectangle<int> getPlaySurface() const { return playSurfaceBounds; }
+    juce::Rectangle<int> getFieldMap() const { return fieldMapBounds; }
 
     bool isPlaySurfaceAutoCollapsed() const { return playSurfaceAutoCollapsed; }
-    bool isMpcMode()        const { return !cinematicMode && totalW <= kMpcMaxWidth; }
-    bool isCinematic()      const { return cinematicMode; }
+    bool isMpcMode() const { return !cinematicMode && totalW <= kMpcMaxWidth; }
+    bool isCinematic() const { return cinematicMode; }
     bool isColumnCVisible() const { return colCWidth > kMinColC; }
 
     int getColumnAWidth() const { return colAWidth; }

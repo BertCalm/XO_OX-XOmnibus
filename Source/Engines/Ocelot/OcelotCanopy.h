@@ -8,7 +8,8 @@
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
 
-namespace xocelot {
+namespace xocelot
+{
 
 // OcelotCanopy — Spectral Additive Pad Synth
 //
@@ -36,22 +37,20 @@ public:
         shimmerWriteHead = 0;
         breathePhase = 0.0f;
         lastAmplitude = 0.0f;
-        lastSpectral  = 0.0f;
+        lastSpectral = 0.0f;
     }
 
     void noteOn(int midiNote, float velocity)
     {
-        baseNote     = midiNote;
+        baseNote = midiNote;
         baseVelocity = velocity;
-        active       = true;
+        active = true;
     }
 
     void noteOff() { active = false; }
 
-    float renderBlock(float* outL, float* outR, int numSamples,
-                      const OcelotParamSnapshot& snap,
-                      const BiomeProfile& biome,
-                      const struct StrataModulation& mod)
+    float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                      const BiomeProfile& biome, const struct StrataModulation& mod)
     {
         if (!active)
         {
@@ -62,14 +61,15 @@ public:
 
         // Base frequency from MIDI note + pitch bend
         float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
-        float baseFreq = 440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f + snap.pitchBendSemitones) / 12.0f);
+        float baseFreq =
+            440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f + snap.pitchBendSemitones) / 12.0f);
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);
 
         // Shimmer: clamp user value with biome additive, hard cap at kMaxShimmerFeedback
         float shimmerAmt = std::clamp(snap.canopyShimmer + mod.canopyShimmerMod, 0.0f, 1.0f);
-        float shimmerFB  = shimmerAmt * kMaxShimmerFeedback;
+        float shimmerFB = shimmerAmt * kMaxShimmerFeedback;
 
         // Spectral filter position (modulated by floor via matrix)
         float spectralPos = std::clamp(snap.canopySpectralFilter + mod.canopyFilterMod, 0.0f, 1.0f);
@@ -81,15 +81,16 @@ public:
         // Breathe rate (modulated by biome period multiplier)
         float breatheRate = 0.3f / biome.canopyBreathePeriod;
 
-        float detune     = std::clamp(snap.canopyDetune + mod.canopyMorphMod * 0.3f, 0.0f, 1.0f);
-        float sumSq      = 0.0f;
-        float spectralSum= 0.0f;
+        float detune = std::clamp(snap.canopyDetune + mod.canopyMorphMod * 0.3f, 0.0f, 1.0f);
+        float sumSq = 0.0f;
+        float spectralSum = 0.0f;
 
         for (int i = 0; i < numSamples; ++i)
         {
             // Breathe LFO
             breathePhase += breatheRate / static_cast<float>(sr);
-            if (breathePhase > 1.0f) breathePhase -= 1.0f;
+            if (breathePhase > 1.0f)
+                breathePhase -= 1.0f;
             float breathe = 0.5f + 0.5f * std::sin(breathePhase * juce::MathConstants<float>::twoPi);
 
             // Sum partials
@@ -97,8 +98,7 @@ public:
             for (int p = 0; p < numPartials; ++p)
             {
                 float harmonic = static_cast<float>(p + 1);
-                float partialFreq = baseFreq * harmonic
-                                  * (1.0f + detune * (p % 2 == 0 ? 0.001f : -0.001f));
+                float partialFreq = baseFreq * harmonic * (1.0f + detune * (p % 2 == 0 ? 0.001f : -0.001f));
 
                 // Apply biome partial tilt (negative = boost lows, positive = boost highs)
                 float partialLevel = 1.0f / harmonic;
@@ -113,8 +113,7 @@ public:
                 if (partialPhases[static_cast<size_t>(p)] > 1.0f)
                     partialPhases[static_cast<size_t>(p)] -= 1.0f;
 
-                float s = std::sin(partialPhases[static_cast<size_t>(p)]
-                                   * juce::MathConstants<float>::twoPi);
+                float s = std::sin(partialPhases[static_cast<size_t>(p)] * juce::MathConstants<float>::twoPi);
                 sample += s * partialLevel;
                 spectralSum += partialFreq * partialLevel;
             }
@@ -126,8 +125,10 @@ public:
             if (wavefold > 0.01f)
             {
                 float threshold = 1.0f - wavefold * 0.85f;
-                while (sample > threshold)  sample = threshold * 2.0f - sample;
-                while (sample < -threshold) sample = -threshold * 2.0f - sample;
+                while (sample > threshold)
+                    sample = threshold * 2.0f - sample;
+                while (sample < -threshold)
+                    sample = -threshold * 2.0f - sample;
             }
 
             // Shimmer feedback (pitch-shifted +1 octave, read from delay buffer)
@@ -139,8 +140,8 @@ public:
             shimmerReadHead += 0.5f;
             if (shimmerReadHead >= static_cast<float>(shimmerBuffer.size()))
                 shimmerReadHead -= static_cast<float>(shimmerBuffer.size());
-            float shimmerSample = shimmerBuffer[static_cast<size_t>(
-                static_cast<int>(shimmerReadHead) % static_cast<int>(shimmerBuffer.size()))];
+            float shimmerSample = shimmerBuffer[static_cast<size_t>(static_cast<int>(shimmerReadHead) %
+                                                                    static_cast<int>(shimmerBuffer.size()))];
 
             sample += shimmerSample * shimmerFB;
 
@@ -149,32 +150,32 @@ public:
 
             outL[i] = sample;
             outR[i] = sample * (1.0f + detune * 0.1f); // slight stereo spread via detune
-            sumSq  += sample * sample;
+            sumSq += sample * sample;
         }
 
         lastAmplitude = std::sqrt(sumSq / static_cast<float>(numSamples));
-        lastSpectral  = (numSamples > 0 && lastAmplitude > 0.001f)
-                       ? std::clamp(spectralSum / (static_cast<float>(numSamples) * 10000.0f), 0.0f, 1.0f)
-                       : 0.0f;
+        lastSpectral = (numSamples > 0 && lastAmplitude > 0.001f)
+                           ? std::clamp(spectralSum / (static_cast<float>(numSamples) * 10000.0f), 0.0f, 1.0f)
+                           : 0.0f;
         return lastAmplitude;
     }
 
-    bool  isActive() const          { return active; }
-    float getLastAmplitude() const  { return lastAmplitude; }
-    float getLastSpectral() const   { return lastSpectral; }
+    bool isActive() const { return active; }
+    float getLastAmplitude() const { return lastAmplitude; }
+    float getLastSpectral() const { return lastSpectral; }
 
 private:
     double sr = 0.0;
     std::array<float, kMaxPartials> partialPhases;
     std::array<float, 4096> shimmerBuffer; // ~93ms at 44.1k
-    float shimmerReadHead   = 0.0f;
-    int   shimmerWriteHead  = 0;
-    float breathePhase      = 0.0f;
-    float lastAmplitude     = 0.0f;
-    float lastSpectral      = 0.0f;
-    bool  active            = false;
-    int   baseNote          = 60;
-    float baseVelocity      = 0.8f;
+    float shimmerReadHead = 0.0f;
+    int shimmerWriteHead = 0;
+    float breathePhase = 0.0f;
+    float lastAmplitude = 0.0f;
+    float lastSpectral = 0.0f;
+    bool active = false;
+    int baseNote = 60;
+    float baseVelocity = 0.8f;
 };
 
 } // namespace xocelot

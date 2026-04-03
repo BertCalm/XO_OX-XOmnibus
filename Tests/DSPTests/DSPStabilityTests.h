@@ -1,5 +1,6 @@
 #pragma once
 
-namespace dsp_tests {
-    int runAll();
+namespace dsp_tests
+{
+int runAll();
 }

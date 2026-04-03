@@ -48,7 +48,8 @@
 #include "Gallery/MiniCouplingGraph.h"
 #include "Gallery/CockpitHost.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 // GalleryColors, GalleryFonts, and A11y are provided by GalleryColors.h
 // (included above).  Their definitions are canonical in that file; they are
@@ -73,21 +74,14 @@ namespace xoceanus {
 // when switching between overview and engine detail, or between engines.
 //
 class XOceanusEditor : public juce::AudioProcessorEditor,
-                       public CockpitHost,  // B041: Dark Cockpit opacity interface
+                       public CockpitHost, // B041: Dark Cockpit opacity interface
                        private juce::Timer
 {
 public:
     explicit XOceanusEditor(XOceanusProcessor& proc)
-        : AudioProcessorEditor(proc),
-          processor(proc),
-          overview(proc),
-          detail(proc),
-          chordPanel(proc),
-          performancePanel(proc),
-          macros(proc.getAPVTS()),
-          masterFXStrip(proc.getAPVTS()),
-          presetBrowser(proc),
-          ghostTile(proc, 4)   // Ghost Slot — 5th tile, slot index 4
+        : AudioProcessorEditor(proc), processor(proc), overview(proc), detail(proc), chordPanel(proc),
+          performancePanel(proc), macros(proc.getAPVTS()), masterFXStrip(proc.getAPVTS()), presetBrowser(proc),
+          ghostTile(proc, 4) // Ghost Slot — 5th tile, slot index 4
     {
         // Dark mode is primary; SettingsPanel restores user's saved preference.
         laf = std::make_unique<GalleryLookAndFeel>();
@@ -98,8 +92,8 @@ public:
         // setColour() calls use the correct theme from the start.
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOceanus";
-            opts.filenameSuffix      = "settings";
+            opts.applicationName = "XOceanus";
+            opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile earlySettings(opts);
             GalleryColors::darkMode() = earlySettings.getBoolValue("darkMode", true);
@@ -145,8 +139,8 @@ public:
         enginesBtn.setTooltip("Select engine for focused slot");
         // Style: T2 text (secondary color), matches prototype .engines-btn — use theme-aware accessors
         enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
-        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
-        A11y::setup (enginesBtn, "Engines Button", "Open engine selection for the focused slot");
+        enginesBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
+        A11y::setup(enginesBtn, "Engines Button", "Open engine selection for the focused slot");
         enginesBtn.onClick = [this]
         {
             // Open the engine picker for the focused slot
@@ -159,7 +153,7 @@ public:
         addAndMakeVisible(cmToggleBtn);
         cmToggleBtn.setButtonText("CM");
         cmToggleBtn.setTooltip("Chord Machine — generative chord sequencer");
-        A11y::setup (cmToggleBtn, "Chord Machine Toggle", "Toggle the chord machine sequencer panel");
+        A11y::setup(cmToggleBtn, "Chord Machine Toggle", "Toggle the chord machine sequencer panel");
         cmToggleBtn.setClickingTogglesState(true);
         cmToggleBtn.onClick = [this]
         {
@@ -176,7 +170,7 @@ public:
         addAndMakeVisible(perfToggleBtn);
         perfToggleBtn.setButtonText("P");
         perfToggleBtn.setTooltip("Performance View — real-time coupling control");
-        A11y::setup (perfToggleBtn, "Performance View Toggle", "Toggle the coupling performance panel");
+        A11y::setup(perfToggleBtn, "Performance View Toggle", "Toggle the coupling performance panel");
         perfToggleBtn.setClickingTogglesState(true);
         perfToggleBtn.onClick = [this]
         {
@@ -193,8 +187,8 @@ public:
         addAndMakeVisible(cinematicToggleBtn);
         cinematicToggleBtn.setButtonText("CI");
         cinematicToggleBtn.setTooltip("Cinematic Mode — collapse side columns so Column B fills full width (key: M)");
-        A11y::setup (cinematicToggleBtn, "Cinematic Mode Toggle",
-                     "Toggle cinematic mode: collapse Columns A and C so Column B fills the full width");
+        A11y::setup(cinematicToggleBtn, "Cinematic Mode Toggle",
+                    "Toggle cinematic mode: collapse Columns A and C so Column B fills the full width");
         cinematicToggleBtn.setClickingTogglesState(true);
         cinematicToggleBtn.onClick = [this]
         {
@@ -205,9 +199,9 @@ public:
         // "PS" toggle button — PlaySurface popup window (4-zone performance interface)
         addAndMakeVisible(surfaceToggleBtn);
         surfaceToggleBtn.setButtonText("PS");
-        surfaceToggleBtn.setTooltip("PlaySurface — floating 4-zone performance interface (pads, orbit, strip, triggers)");
-        A11y::setup (surfaceToggleBtn, "PlaySurface Toggle",
-                     "Show or hide the PlaySurface popup window");
+        surfaceToggleBtn.setTooltip(
+            "PlaySurface — floating 4-zone performance interface (pads, orbit, strip, triggers)");
+        A11y::setup(surfaceToggleBtn, "PlaySurface Toggle", "Show or hide the PlaySurface popup window");
         surfaceToggleBtn.setClickingTogglesState(true);
         surfaceToggleBtn.onClick = [this]
         {
@@ -223,7 +217,7 @@ public:
         addAndMakeVisible(themeToggleBtn);
         themeToggleBtn.setButtonText("DK");
         themeToggleBtn.setTooltip("Toggle dark/light theme");
-        A11y::setup (themeToggleBtn, "Dark Mode Toggle", "Switch between light and dark theme");
+        A11y::setup(themeToggleBtn, "Dark Mode Toggle", "Switch between light and dark theme");
         themeToggleBtn.setClickingTogglesState(true);
         themeToggleBtn.onClick = [this]
         {
@@ -249,8 +243,8 @@ public:
                 playSurfaceWindow->getPlaySurface().repaint();
             // Persist preference so the theme survives plugin reload (#215).
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOceanus";
-            opts.filenameSuffix      = "settings";
+            opts.applicationName = "XOceanus";
+            opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
             settings.setValue("darkMode", newState);
@@ -292,26 +286,20 @@ public:
         settingsBtn.setTooltip("Settings");
         A11y::setup(settingsBtn, "Settings", "Open settings panel");
         settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
-        settingsBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
-        settingsBtn.onClick = [this]
-        {
-            sidebar.selectTab(SidebarPanel::Settings);
-        };
+        settingsBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
+        settingsBtn.onClick = [this] { sidebar.selectTab(SidebarPanel::Settings); };
 
         // Export button — launches ExportDialog as a CallOutBox
         addAndMakeVisible(exportBtn);
         exportBtn.setButtonText("XPN");
         exportBtn.setTooltip("Export presets as MPC-compatible XPN expansion pack");
-        A11y::setup (exportBtn, "Export", "Open export dialog to build XPN expansion packs");
+        A11y::setup(exportBtn, "Export", "Open export dialog to build XPN expansion packs");
         exportBtn.onClick = [this]
         {
-            juce::CallOutBox::launchAsynchronously(
-                std::make_unique<ExportDialog>(
-                    processor.getPresetManager(),
-                    &processor.getAPVTS(),
-                    &processor.getCouplingMatrix()),
-                exportBtn.getScreenBounds(),
-                getTopLevelComponent());
+            juce::CallOutBox::launchAsynchronously(std::make_unique<ExportDialog>(processor.getPresetManager(),
+                                                                                  &processor.getAPVTS(),
+                                                                                  &processor.getCouplingMatrix()),
+                                                   exportBtn.getScreenBounds(), getTopLevelComponent());
         };
 
         // Scan factory preset directory
@@ -331,14 +319,13 @@ public:
 
         // W01: Wire trigger-pad callbacks.
         // onPanic: sends All Notes Off on all 16 MIDI channels via the MidiCollector.
-        statusBar.onFire    = [this] { processor.fireChordMachine(); };
-        statusBar.onXoSend  = [this] { processor.triggerCouplingBurst(); };
+        statusBar.onFire = [this] { processor.fireChordMachine(); };
+        statusBar.onXoSend = [this] { processor.triggerCouplingBurst(); };
         statusBar.onEchoCut = [this] { processor.killDelayTails(); };
-        statusBar.onPanic   = [this]
+        statusBar.onPanic = [this]
         {
             for (int ch = 1; ch <= 16; ++ch)
-                processor.getMidiCollector()
-                    .addMessageToQueue(juce::MidiMessage::allNotesOff(ch));
+                processor.getMidiCollector().addMessageToQueue(juce::MidiMessage::allNotesOff(ch));
         };
 
         // ── Tier 1 Gallery components ─────────────────────────────────────────
@@ -364,9 +351,7 @@ public:
         // after the first poll cycle that finds nothing pending.
         // CQ16: setLearnCompleteCallback fires from a non-message thread — marshal to message thread.
         proc.getMIDILearnManager().setLearnCompleteCallback(
-            [this](const juce::String&, int) {
-                juce::MessageManager::callAsync([this] { startTimerHz(30); });
-            });
+            [this](const juce::String&, int) { juce::MessageManager::callAsync([this] { startTimerHz(30); }); });
 
         // ── DepthZoneDial wiring ──────────────────────────────────────────────
         // Default to slot 0 — updated in selectSlot() when the user picks a tile.
@@ -375,8 +360,7 @@ public:
         {
             // selectedSlot tracks the currently focused slot (-1 = overview).
             // When no tile is selected, the dial operates on slot 0.
-            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots)
-                           ? selectedSlot : 0;
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
             processor.loadEngine(slot, engineId.toStdString());
             if (slot < kNumPrimarySlots && tiles[slot])
                 tiles[slot]->refresh();
@@ -392,7 +376,8 @@ public:
             abCompare.onPresetLoaded();
             // Refresh all primary tiles so engine names/accents update immediately.
             for (int i = 0; i < kNumPrimarySlots; ++i)
-                if (tiles[i]) tiles[i]->refresh();
+                if (tiles[i])
+                    tiles[i]->refresh();
             // Refresh detail panel if it is currently visible.
             if (detail.isVisible())
                 detail.loadSlot(selectedSlot);
@@ -402,18 +387,19 @@ public:
         // CQ02: callback fires from the audio thread — marshal all UI calls to the message thread.
         proc.onEngineChanged = [this](int slot)
         {
-            juce::MessageManager::callAsync([this, slot]
-            {
-                if (slot >= 0 && slot < kNumPrimarySlots)
-                    tiles[slot]->refresh();
-                else if (slot == 4)
-                    ghostTile.refresh();
-                overview.refresh();
-                if (performancePanel.isVisible())
-                    performancePanel.refresh();
-                // Re-evaluate ghost tile visibility whenever any slot changes.
-                checkCollectionUnlock();
-            });
+            juce::MessageManager::callAsync(
+                [this, slot]
+                {
+                    if (slot >= 0 && slot < kNumPrimarySlots)
+                        tiles[slot]->refresh();
+                    else if (slot == 4)
+                        ghostTile.refresh();
+                    overview.refresh();
+                    if (performancePanel.isVisible())
+                        performancePanel.refresh();
+                    // Re-evaluate ghost tile visibility whenever any slot changes.
+                    checkCollectionUnlock();
+                });
         };
 
         setSize(1100, 700);
@@ -431,15 +417,9 @@ public:
         {
             sp->setMidiLearnManager(&proc.getMIDILearnManager());
             // W02: Wire Performance Lock callback — syncs StatusBar lock button visual state.
-            sp->onPerformanceLockChanged = [this](bool locked)
-            {
-                statusBar.setLocked(locked);
-            };
+            sp->onPerformanceLockChanged = [this](bool locked) { statusBar.setLocked(locked); };
             // #226: Wire CPU Meters toggle — live visibility control on StatusBar.
-            sp->onCpuMetersVisibilityChanged = [this](bool visible)
-            {
-                statusBar.setCpuVisible(visible);
-            };
+            sp->onCpuMetersVisibilityChanged = [this](bool visible) { statusBar.setCpuVisible(visible); };
             // Apply persisted CPU meters visibility at startup.
             statusBar.setCpuVisible(sp->isCpuMetersVisible());
         }
@@ -451,14 +431,14 @@ public:
 
         {
             const int restoredSlot = processor.getPersistedSelectedSlot();
-            const int slotToShow   = (restoredSlot >= 0 && restoredSlot < XOceanusProcessor::MaxSlots
-                                      && processor.getEngine(restoredSlot) != nullptr)
-                                     ? restoredSlot : -1;
+            const int slotToShow = (restoredSlot >= 0 && restoredSlot < XOceanusProcessor::MaxSlots &&
+                                    processor.getEngine(restoredSlot) != nullptr)
+                                       ? restoredSlot
+                                       : -1;
 
             // Auto-select on startup — skip the overview landing page.
             // Direct visibility (no animation) to ensure interactive from first frame.
-            const int effectiveSlot = (slotToShow >= 0) ? slotToShow
-                                    : (processor.getEngine(0) != nullptr ? 0 : -1);
+            const int effectiveSlot = (slotToShow >= 0) ? slotToShow : (processor.getEngine(0) != nullptr ? 0 : -1);
 
             if (effectiveSlot >= 0)
             {
@@ -482,9 +462,9 @@ public:
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);
-        setTitle ("XOceanus Synthesizer");
-        setDescription ("Multi-engine synthesizer with cross-engine coupling. "
-                        "Keys 1-4 select engine slots, Escape returns to overview.");
+        setTitle("XOceanus Synthesizer");
+        setDescription("Multi-engine synthesizer with cross-engine coupling. "
+                       "Keys 1-4 select engine slots, Escape returns to overview.");
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
@@ -587,10 +567,10 @@ public:
     void lookAndFeelChanged() override
     {
         enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
-        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
+        enginesBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
         // P0-4: Settings gear — T3 text, re-apply on theme change
         settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
-        settingsBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
+        settingsBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
         // Re-apply any other explicit setColour() calls that use theme-aware values here.
     }
 
@@ -646,14 +626,10 @@ public:
         // Map signal flow index → ParameterGrid::Section
         // SRC1→OSC, SRC2→OSC, FILTER→FILTER, SHAPER→MOD, FX→FX, OUT→OTHER
         static const ParameterGrid::Section kSfToSection[] = {
-            ParameterGrid::Section::OSC,
-            ParameterGrid::Section::OSC,
-            ParameterGrid::Section::FILTER,
-            ParameterGrid::Section::MOD,
-            ParameterGrid::Section::FX,
-            ParameterGrid::Section::OTHER
-        };
-        if (sfIndex < 0 || sfIndex >= 6) return;
+            ParameterGrid::Section::OSC, ParameterGrid::Section::OSC, ParameterGrid::Section::FILTER,
+            ParameterGrid::Section::MOD, ParameterGrid::Section::FX,  ParameterGrid::Section::OTHER};
+        if (sfIndex < 0 || sfIndex >= 6)
+            return;
         detail.scrollToSection(kSfToSection[sfIndex]);
     }
 
@@ -701,12 +677,12 @@ public:
         // Two stroke rings with filled center dots; overlap ~8px horizontally.
         // Left circle: Reef Jade (#1E8B7E), Right circle: XO Gold (#E9C46A)
         {
-            const float circR    = 7.0f;            // ring radius
-            const float dotR     = 2.5f;            // center dot radius
-            const float strokeW  = 1.5f;            // ring stroke width
-            const float cx1      = 14.0f + circR;   // center x of left circle
-            const float cx2      = cx1 + 8.0f;      // center x of right circle (offset 8px)
-            const float cy       = (float)(headerH / 2);  // vertically centred in header
+            const float circR = 7.0f;              // ring radius
+            const float dotR = 2.5f;               // center dot radius
+            const float strokeW = 1.5f;            // ring stroke width
+            const float cx1 = 14.0f + circR;       // center x of left circle
+            const float cx2 = cx1 + 8.0f;          // center x of right circle (offset 8px)
+            const float cy = (float)(headerH / 2); // vertically centred in header
 
             // Left ring — Reef Jade stroke
             g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
@@ -725,24 +701,22 @@ public:
         // Logo mark ends at ~cx2 + circR = 14 + 7 + 8 + 7 = 36px; start text at 48px.
         // Text area extends to half the header width to avoid overlap with controls.
         {
-            const int textX    = 48;
+            const int textX = 48;
             const int textMaxW = getWidth() / 2 - textX;
-            const int nameH    = juce::roundToInt(headerH * 0.38f);
-            const int nameY    = juce::roundToInt(headerH * 0.12f);
-            const int subH     = juce::roundToInt(headerH * 0.27f);
-            const int subY     = juce::roundToInt(headerH * 0.52f);
+            const int nameH = juce::roundToInt(headerH * 0.38f);
+            const int nameY = juce::roundToInt(headerH * 0.12f);
+            const int subH = juce::roundToInt(headerH * 0.27f);
+            const int subY = juce::roundToInt(headerH * 0.52f);
 
             g.setColour(get(t1()));
             g.setFont(GalleryFonts::display(12.0f));
-            g.drawText("XOceanus",
-                       juce::Rectangle<int>(textX, nameY, textMaxW, nameH),
+            g.drawText("XOceanus", juce::Rectangle<int>(textX, nameY, textMaxW, nameH),
                        juce::Justification::centredLeft);
 
             // Subtitle — "XO_OX Designs" at 10px, T3 color
             g.setColour(get(t3()));
             g.setFont(GalleryFonts::body(10.0f));
-            g.drawText("XO_OX Designs",
-                       juce::Rectangle<int>(textX, subY, textMaxW, subH),
+            g.drawText("XO_OX Designs", juce::Rectangle<int>(textX, subY, textMaxW, subH),
                        juce::Justification::centredLeft);
         }
 
@@ -799,8 +773,7 @@ public:
                 auto font = GalleryFonts::body(12.0f);
                 if (font.getStringWidth(presetName) > nameW - 8)
                 {
-                    while (truncated.length() > 1 &&
-                           font.getStringWidth(truncated + "...") > nameW - 8)
+                    while (truncated.length() > 1 && font.getStringWidth(truncated + "...") > nameW - 8)
                         truncated = truncated.dropLastCharacters(1);
                     truncated += "...";
                 }
@@ -816,16 +789,15 @@ public:
 
             // Subtle gradient background: rgba(255,255,255,0.015) → transparent
             {
-                juce::ColourGradient grad(
-                    juce::Colour(0xFFFFFFFF).withAlpha(0.015f), stripBounds.getX(), stripBounds.getY(),
-                    juce::Colour(0x00FFFFFF),                    stripBounds.getX(), stripBounds.getBottom(),
-                    false);
+                juce::ColourGradient grad(juce::Colour(0xFFFFFFFF).withAlpha(0.015f), stripBounds.getX(),
+                                          stripBounds.getY(), juce::Colour(0x00FFFFFF), stripBounds.getX(),
+                                          stripBounds.getBottom(), false);
                 g.setGradientFill(grad);
                 g.fillRect(stripBounds);
             }
 
             // Section labels: SRC1 → SRC2 → FILTER → SHAPER → FX → OUT
-            static const juce::String kSections[] = { "SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT" };
+            static const juce::String kSections[] = {"SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT"};
             static const int kNumSections = 6;
             const int activeSection = signalFlowActiveSection;
 
@@ -854,7 +826,7 @@ public:
 
             for (int i = 0; i < kNumSections; ++i)
             {
-                bool active  = (i == activeSection);
+                bool active = (i == activeSection);
                 bool hovered = (!active && i == signalFlowHoveredSection);
                 g.setFont(GalleryFonts::value(8.5f));
 
@@ -886,8 +858,7 @@ public:
                     g.setColour(get(t3()));
                     juce::String arrow(juce::CharPointer_UTF8(" \xe2\x86\x92 "));
                     float aW = g.getCurrentFont().getStringWidthFloat(arrow);
-                    g.drawText(arrow,
-                               juce::Rectangle<float>(startX, cy - 8.0f, aW + 2.0f, 16.0f),
+                    g.drawText(arrow, juce::Rectangle<float>(startX, cy - 8.0f, aW + 2.0f, 16.0f),
                                juce::Justification::centredLeft, false);
                     startX += aW;
                 }
@@ -911,9 +882,12 @@ public:
         auto header = layout.getHeader();
 
         // Park legacy header widgets that are never shown in the header.
-        depthDial.setBounds(0, -100, 0, 0);           depthDial.setVisible(false);
-        abCompare.setBounds(0, -100, 0, 0);            abCompare.setVisible(false);
-        presetBrowser.setBounds(0, -200, 0, 0);        presetBrowser.setVisible(false);
+        depthDial.setBounds(0, -100, 0, 0);
+        depthDial.setVisible(false);
+        abCompare.setBounds(0, -100, 0, 0);
+        abCompare.setVisible(false);
+        presetBrowser.setBounds(0, -200, 0, 0);
+        presetBrowser.setVisible(false);
 
         // ── Left: Logo (painted) + ENGINES button + preset nav ─────────────
         header.removeFromLeft(150); // logo rings + "XOceanus" / "XO_OX Designs" text
@@ -962,23 +936,19 @@ public:
         int tileH = colA.getHeight() / kNumPrimarySlots;
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
-            int h = (i == kNumPrimarySlots - 1)
-                    ? colA.getBottom() - (colA.getY() + i * tileH)
-                    : tileH;
+            int h = (i == kNumPrimarySlots - 1) ? colA.getBottom() - (colA.getY() + i * tileH) : tileH;
             tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH, colA.getWidth(), h);
         }
 
         // Ghost tile — positioned below tile[3] when visible, zero-height when hidden.
         if (ghostTile.isVisible())
         {
-            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH,
-                                colA.getWidth(), tileH);
+            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH, colA.getWidth(), tileH);
         }
         else
         {
             // Park off-screen (zero height) — no layout impact when hidden.
-            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH,
-                                colA.getWidth(), 0);
+            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH, colA.getWidth(), 0);
         }
 
         // ── Column B — Panel stack + MasterFX strip + FieldMap ───────────────
@@ -997,28 +967,28 @@ public:
         // always have valid geometry — even before the first paint() call or after
         // a resize that hasn't triggered a repaint yet.
         {
-            static const juce::String kSFSections[] = { "SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT" };
+            static const juce::String kSFSections[] = {"SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT"};
             static const int kNumSFSections = 6;
 
             auto font = GalleryFonts::value(8.5f);
-            const float hPad    = 12.0f;
-            const float usableW = (float) signalFlowStripBounds.getWidth() - hPad * 2.0f;
-            const float cy      = (float) signalFlowStripBounds.getCentreY();
+            const float hPad = 12.0f;
+            const float usableW = (float)signalFlowStripBounds.getWidth() - hPad * 2.0f;
+            const float cy = (float)signalFlowStripBounds.getCentreY();
 
             // Mirror the centering logic from paint(): total text + arrow widths
-            juce::String arrow (juce::CharPointer_UTF8 (" \xe2\x86\x92 "));
+            juce::String arrow(juce::CharPointer_UTF8(" \xe2\x86\x92 "));
             float totalTextW = 0.0f;
             for (int i = 0; i < kNumSFSections; ++i)
-                totalTextW += font.getStringWidthFloat (kSFSections[i]);
-            const float arrowW = font.getStringWidthFloat (arrow);
+                totalTextW += font.getStringWidthFloat(kSFSections[i]);
+            const float arrowW = font.getStringWidthFloat(arrow);
             const float totalW = totalTextW + arrowW * (kNumSFSections - 1);
-            float startX = (float) signalFlowStripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
+            float startX = (float)signalFlowStripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
 
             for (int i = 0; i < kNumSFSections; ++i)
             {
-                float secW = font.getStringWidthFloat (kSFSections[i]);
+                float secW = font.getStringWidthFloat(kSFSections[i]);
                 sfHitRects[static_cast<size_t>(i)] =
-                    juce::Rectangle<float> (startX, cy - 8.0f, secW + 6.0f, 16.0f).expanded (4.0f, 4.0f);
+                    juce::Rectangle<float>(startX, cy - 8.0f, secW + 6.0f, 16.0f).expanded(4.0f, 4.0f);
                 startX += secW;
                 if (i < kNumSFSections - 1)
                     startX += arrowW;
@@ -1032,7 +1002,8 @@ public:
         performancePanel.setBounds(colBPanel);
 
         // FieldMap hidden — 80px reclaimed for parameter sections
-        fieldMap.setBounds(0, -200, 0, 0);            fieldMap.setVisible(false);
+        fieldMap.setBounds(0, -200, 0, 0);
+        fieldMap.setVisible(false);
 
         // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
         sidebar.setBounds(layout.getColumnC());
@@ -1069,7 +1040,7 @@ private:
             return; // already showing this one
 
         selectedSlot = slot;
-        signalFlowActiveSection  = 0; // Reset to SRC1 on engine switch (SHOULD A1-06)
+        signalFlowActiveSection = 0; // Reset to SRC1 on engine switch (SHOULD A1-06)
         signalFlowHoveredSection = -1;
         // Persist slot selection for session restore (#357)
         processor.setPersistedSelectedSlot(selectedSlot);
@@ -1094,52 +1065,60 @@ private:
         {
             // Cross-fade: fade out → swap → fade in
             anim.fadeOut(&detail, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [safeThis, slot]
-            {
-                if (safeThis == nullptr) return;
-                auto& self = *safeThis;
-                if (slot != self.selectedSlot) return;  // CQ17: user clicked elsewhere during fade
-                if (self.detail.loadSlot(slot))
+            juce::Timer::callAfterDelay(
+                kFadeMs,
+                [safeThis, slot]
                 {
-                    self.overview.setVisible(false);
-                    self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                    self.detail.setAlpha(0.0f);
-                    self.detail.setVisible(true);
-                    juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                    if (auto* eng = self.processor.getEngine(slot))
-                        self.masterFXStrip.setAccentColour(eng->getAccentColour());
-                }
-                else
-                {
-                    self.showOverview();
-                }
-            });
+                    if (safeThis == nullptr)
+                        return;
+                    auto& self = *safeThis;
+                    if (slot != self.selectedSlot)
+                        return; // CQ17: user clicked elsewhere during fade
+                    if (self.detail.loadSlot(slot))
+                    {
+                        self.overview.setVisible(false);
+                        self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                        self.detail.setAlpha(0.0f);
+                        self.detail.setVisible(true);
+                        juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                        if (auto* eng = self.processor.getEngine(slot))
+                            self.masterFXStrip.setAccentColour(eng->getAccentColour());
+                    }
+                    else
+                    {
+                        self.showOverview();
+                    }
+                });
         }
         else
         {
             // Fade out overview, fade in detail
             anim.fadeOut(&overview, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [safeThis, slot]
-            {
-                if (safeThis == nullptr) return;
-                auto& self = *safeThis;
-                if (slot != self.selectedSlot) return;  // CQ17: user clicked elsewhere during fade
-                if (self.detail.loadSlot(slot))
+            juce::Timer::callAfterDelay(
+                kFadeMs,
+                [safeThis, slot]
                 {
-                    self.overview.setVisible(false);
-                    self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                    self.detail.setAlpha(0.0f);
-                    self.detail.setVisible(true);
-                    juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                    if (auto* eng = self.processor.getEngine(slot))
-                        self.masterFXStrip.setAccentColour(eng->getAccentColour());
-                }
-                else
-                {
-                    self.overview.setAlpha(1.0f);
-                    self.overview.setVisible(true);
-                }
-            });
+                    if (safeThis == nullptr)
+                        return;
+                    auto& self = *safeThis;
+                    if (slot != self.selectedSlot)
+                        return; // CQ17: user clicked elsewhere during fade
+                    if (self.detail.loadSlot(slot))
+                    {
+                        self.overview.setVisible(false);
+                        self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                        self.detail.setAlpha(0.0f);
+                        self.detail.setVisible(true);
+                        juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                        if (auto* eng = self.processor.getEngine(slot))
+                            self.masterFXStrip.setAccentColour(eng->getAccentColour());
+                    }
+                    else
+                    {
+                        self.overview.setAlpha(1.0f);
+                        self.overview.setVisible(true);
+                    }
+                });
         }
     }
 
@@ -1154,24 +1133,28 @@ private:
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
-                                  : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
-                                  : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
-                                  : nullptr;
+        juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
+                                    : chordPanel.isVisible()       ? static_cast<juce::Component*>(&chordPanel)
+                                    : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
+                                                                   : nullptr;
         if (outgoing)
         {
             juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
-            {
-                if (safeThis == nullptr) return;
-                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
-                safeThis->overview.setAlpha(0.0f);
-                safeThis->overview.setVisible(true);
-                safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
-                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
-            });
+            juce::Timer::callAfterDelay(
+                kFadeMs,
+                [safeThis, safeOutgoing]
+                {
+                    if (safeThis == nullptr)
+                        return;
+                    if (safeOutgoing != nullptr)
+                        safeOutgoing->setVisible(false);
+                    safeThis->overview.setAlpha(0.0f);
+                    safeThis->overview.setVisible(true);
+                    safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
+                    juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
+                });
         }
     }
 
@@ -1184,23 +1167,27 @@ private:
         ghostTile.setSelected(false);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
-                                  : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
-                                  : overview.isVisible() ? static_cast<juce::Component*>(&overview)
-                                  : nullptr;
+        juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
+                                    : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
+                                    : overview.isVisible()         ? static_cast<juce::Component*>(&overview)
+                                                                   : nullptr;
         if (outgoing)
         {
             juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
-            {
-                if (safeThis == nullptr) return;
-                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
-                safeThis->chordPanel.setAlpha(0.0f);
-                safeThis->chordPanel.setVisible(true);
-                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel, kFadeMs);
-            });
+            juce::Timer::callAfterDelay(kFadeMs,
+                                        [safeThis, safeOutgoing]
+                                        {
+                                            if (safeThis == nullptr)
+                                                return;
+                                            if (safeOutgoing != nullptr)
+                                                safeOutgoing->setVisible(false);
+                                            safeThis->chordPanel.setAlpha(0.0f);
+                                            safeThis->chordPanel.setVisible(true);
+                                            juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
+                                                                                              kFadeMs);
+                                        });
         }
         else
         {
@@ -1221,23 +1208,27 @@ private:
         performancePanel.refresh();
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
-                                  : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
-                                  : overview.isVisible() ? static_cast<juce::Component*>(&overview)
-                                  : nullptr;
+        juce::Component* outgoing = detail.isVisible()       ? static_cast<juce::Component*>(&detail)
+                                    : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
+                                    : overview.isVisible()   ? static_cast<juce::Component*>(&overview)
+                                                             : nullptr;
         if (outgoing)
         {
             juce::Component::SafePointer<XOceanusEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
-            {
-                if (safeThis == nullptr) return;
-                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
-                safeThis->performancePanel.setAlpha(0.0f);
-                safeThis->performancePanel.setVisible(true);
-                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->performancePanel, kFadeMs);
-            });
+            juce::Timer::callAfterDelay(kFadeMs,
+                                        [safeThis, safeOutgoing]
+                                        {
+                                            if (safeThis == nullptr)
+                                                return;
+                                            if (safeOutgoing != nullptr)
+                                                safeOutgoing->setVisible(false);
+                                            safeThis->performancePanel.setAlpha(0.0f);
+                                            safeThis->performancePanel.setVisible(true);
+                                            juce::Desktop::getInstance().getAnimator().fadeIn(
+                                                &safeThis->performancePanel, kFadeMs);
+                                        });
         }
         else
         {
@@ -1264,23 +1255,20 @@ private:
             playSurfaceWindow = std::make_unique<PlaySurfaceWindow>();
             // F10: Propagate LookAndFeel to all child components in the popup tree.
             if (laf)
-                playSurfaceWindow->setLookAndFeel (laf.get());
+                playSurfaceWindow->setLookAndFeel(laf.get());
             // Wire MIDI: PlaySurface note events flow through the processor's
             // MidiMessageCollector, drained into processBlock each audio callback.
-            playSurfaceWindow->getPlaySurface()
-                .setMidiCollector (&processor.getMidiCollector(), 1);
+            playSurfaceWindow->getPlaySurface().setMidiCollector(&processor.getMidiCollector(), 1);
             // Wire processor callbacks: XOuija CC output forwarding + state
             // persist/restore across DAW sessions (closes #147).
-            playSurfaceWindow->getPlaySurface().setProcessor (&processor);
+            playSurfaceWindow->getPlaySurface().setProcessor(&processor);
             // Sync the PS toggle button when the window is closed by the user.
             playSurfaceWindow->onClosed = [this]
-            {
-                surfaceToggleBtn.setToggleState(false, juce::dontSendNotification);
-            };
+            { surfaceToggleBtn.setToggleState(false, juce::dontSendNotification); };
         }
 
-        playSurfaceWindow->setVisible (true);
-        playSurfaceWindow->toFront (true);
+        playSurfaceWindow->setVisible(true);
+        playSurfaceWindow->toFront(true);
 
         // P2-4: Set accent immediately so there is no 1-frame XO Gold flash on first open.
         // The timerCallback will keep it updated, but it may not have fired yet at this point.
@@ -1294,7 +1282,11 @@ private:
             else
             {
                 for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
-                    if (auto* eng = processor.getEngine(i)) { accent = eng->getAccentColour(); break; }
+                    if (auto* eng = processor.getEngine(i))
+                    {
+                        accent = eng->getAccentColour();
+                        break;
+                    }
             }
             playSurfaceWindow->getPlaySurface().setAccentColour(accent);
         }
@@ -1303,7 +1295,7 @@ private:
     void hidePlaySurface()
     {
         if (playSurfaceWindow != nullptr)
-            playSurfaceWindow->setVisible (false);
+            playSurfaceWindow->setVisible(false);
     }
 
     void timerCallback() override
@@ -1371,19 +1363,20 @@ private:
         // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
         // XO Gold is used as fallback when no engine occupies the slot.
         static const juce::Colour kXOGold = juce::Colour(0xFFE9C46A);
-        processor.drainNoteEvents([&](const XOceanusProcessor::NoteMapEvent& ev)
-        {
-            juce::Colour colour = kXOGold;
-            // MaxSlots now includes the Ghost Slot (4) — safe to query all 5.
-            if (ev.slot >= 0 && ev.slot < XOceanusProcessor::MaxSlots)
+        processor.drainNoteEvents(
+            [&](const XOceanusProcessor::NoteMapEvent& ev)
             {
-                if (auto* eng = processor.getEngine(ev.slot))
-                    colour = eng->getAccentColour();
-            }
-            if (fieldMap.isVisible())
-                fieldMap.addNote(ev.midiNote, ev.velocity, colour);
-            midiIndicator.flash(colour); // flash on every incoming note event
-        });
+                juce::Colour colour = kXOGold;
+                // MaxSlots now includes the Ghost Slot (4) — safe to query all 5.
+                if (ev.slot >= 0 && ev.slot < XOceanusProcessor::MaxSlots)
+                {
+                    if (auto* eng = processor.getEngine(ev.slot))
+                        colour = eng->getAccentColour();
+                }
+                if (fieldMap.isVisible())
+                    fieldMap.addNote(ev.midiNote, ev.velocity, colour);
+                midiIndicator.flash(colour); // flash on every incoming note event
+            });
 
         // ── Status Bar updates ────────────────────────────────────────────────
         // Sum voice counts across all active slots and update slot indicator dots.
@@ -1493,9 +1486,9 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (52) and ColumnLayoutManager::kFieldMapH (80).
-    static constexpr int kMasterFXH        = 68;  // MasterFX compact strip at bottom of Column B
-    static constexpr int kSignalFlowStripH = 28;  // P0-12: signal flow breadcrumb strip
-    static constexpr int kFadeMs           = 150; // Panel cross-fade duration (ms)
+    static constexpr int kMasterFXH = 68;        // MasterFX compact strip at bottom of Column B
+    static constexpr int kSignalFlowStripH = 28; // P0-12: signal flow breadcrumb strip
+    static constexpr int kFadeMs = 150;          // Panel cross-fade duration (ms)
     // kNumPrimarySlots: the 4 slots always visible (indices 0-3).
     // The Ghost Slot (index 4) is conditional — managed by checkCollectionUnlock().
     static constexpr int kNumPrimarySlots = 4;
@@ -1518,7 +1511,7 @@ private:
             ids[static_cast<size_t>(i)] = eng ? eng->getEngineId() : juce::String();
         }
 
-        const auto collection  = EngineRegistry::detectCollection(ids);
+        const auto collection = EngineRegistry::detectCollection(ids);
 
         // Guard (#188): only animate the ghost slot if every engine ID in the
         // matched collection is actually registered in the picker table.
@@ -1539,8 +1532,8 @@ private:
             }
         }
 
-        const bool shouldShow  = allRegistered;
-        auto& anim             = juce::Desktop::getInstance().getAnimator();
+        const bool shouldShow = allRegistered;
+        auto& anim = juce::Desktop::getInstance().getAnimator();
 
         if (shouldShow && !ghostTile.isVisible())
         {
@@ -1548,23 +1541,23 @@ private:
             ghostTile.setAlpha(0.0f);
             ghostTile.setVisible(true);
             resized(); // give the ghost tile its bounds before animating
-            anim.animateComponent(&ghostTile, ghostTile.getBounds(),
-                                  1.0f, 500, false, 1.0, 0.0);
+            anim.animateComponent(&ghostTile, ghostTile.getBounds(), 1.0f, 500, false, 1.0, 0.0);
         }
         else if (!shouldShow && ghostTile.isVisible())
         {
             // Dematerialise: fade out, then hide and recompute layout.
-            anim.animateComponent(&ghostTile, ghostTile.getBounds(),
-                                  0.0f, 100, false, 1.0, 0.0);
+            anim.animateComponent(&ghostTile, ghostTile.getBounds(), 0.0f, 100, false, 1.0, 0.0);
             juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-            juce::Timer::callAfterDelay(120, [safeThis]()
-            {
-                if (safeThis == nullptr) return;
-                if (safeThis->ghostTile.getAlpha() < 0.05f)
-                    safeThis->ghostTile.setVisible(false);
-                // resized() is NOT called here — hiding a zero-height off-screen
-                // tile has no visual impact on the 4 primary tiles.
-            });
+            juce::Timer::callAfterDelay(120,
+                                        [safeThis]()
+                                        {
+                                            if (safeThis == nullptr)
+                                                return;
+                                            if (safeThis->ghostTile.getAlpha() < 0.05f)
+                                                safeThis->ghostTile.setVisible(false);
+                                            // resized() is NOT called here — hiding a zero-height off-screen
+                                            // tile has no visual impact on the 4 primary tiles.
+                                        });
         }
     }
 
@@ -1572,50 +1565,50 @@ private:
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
-    FieldMapPanel          fieldMap;
-    OverviewPanel          overview;
-    EngineDetailPanel      detail;
-    ChordMachinePanel      chordPanel;
-    PerformanceViewPanel   performancePanel;
-    MacroSection           macros;
-    MasterFXSection        masterFXStrip;
-    PresetBrowserStrip     presetBrowser;
+    FieldMapPanel fieldMap;
+    OverviewPanel overview;
+    EngineDetailPanel detail;
+    ChordMachinePanel chordPanel;
+    PerformanceViewPanel performancePanel;
+    MacroSection macros;
+    MasterFXSection masterFXStrip;
+    PresetBrowserStrip presetBrowser;
     // Ghost Slot tile — declared after presetBrowser to match constructor MIL order.
     // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
-    CompactEngineTile      ghostTile;
-    juce::TextButton       enginesBtn;
-    juce::TextButton       cinematicToggleBtn;
-    juce::TextButton       cmToggleBtn;
-    juce::TextButton       perfToggleBtn;
-    juce::TextButton       surfaceToggleBtn;
-    juce::TextButton       themeToggleBtn;
-    juce::TextButton       exportBtn;
+    CompactEngineTile ghostTile;
+    juce::TextButton enginesBtn;
+    juce::TextButton cinematicToggleBtn;
+    juce::TextButton cmToggleBtn;
+    juce::TextButton perfToggleBtn;
+    juce::TextButton surfaceToggleBtn;
+    juce::TextButton themeToggleBtn;
+    juce::TextButton exportBtn;
     // P0-3: Slim inline preset nav
-    juce::TextButton       presetPrevBtn;
-    juce::TextButton       presetNextBtn;
+    juce::TextButton presetPrevBtn;
+    juce::TextButton presetNextBtn;
     // P0-4: Settings gear button
-    juce::TextButton       settingsBtn;
+    juce::TextButton settingsBtn;
     // PlaySurface lives in a floating DocumentWindow popup (created lazily on first show).
     std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
-    CouplingArcOverlay     couplingArcs { processor };
-    CouplingArcHitTester   couplingHitTester { processor };
-    SidebarPanel           sidebar;
-    StatusBar              statusBar;
+    CouplingArcOverlay couplingArcs{processor};
+    CouplingArcHitTester couplingHitTester{processor};
+    SidebarPanel sidebar;
+    StatusBar statusBar;
 
     // ── Tier 1 Gallery components ─────────────────────────────────────────────
-    DepthZoneDial          depthDial    { processor };
-    ABCompare              abCompare    { processor };
-    CPUMeter               cpuMeter;
-    MIDIActivityIndicator  midiIndicator;
-    MiniCouplingGraph      miniCouplingGraph { processor };
+    DepthZoneDial depthDial{processor};
+    ABCompare abCompare{processor};
+    CPUMeter cpuMeter;
+    MIDIActivityIndicator midiIndicator;
+    MiniCouplingGraph miniCouplingGraph{processor};
 
     int selectedSlot = -1;
 
     // Signal flow strip interaction state (MUST A1-01)
-    int signalFlowActiveSection  = 0;  // 0=SRC1 … 5=OUT
-    int signalFlowHoveredSection = -1; // -1 = none hovered
+    int signalFlowActiveSection = 0;                  // 0=SRC1 … 5=OUT
+    int signalFlowHoveredSection = -1;                // -1 = none hovered
     std::array<juce::Rectangle<float>, 6> sfHitRects; // populated in resized(), read in paint() and mouse handlers
-    juce::Rectangle<int> signalFlowStripBounds;        // set in resized()
+    juce::Rectangle<int> signalFlowStripBounds;       // set in resized()
 
     // Dark Cockpit B041: current UI opacity derived from note activity.
     // 0.15 (ghost, silent) → 1.0 (fully lit, maximum activity).

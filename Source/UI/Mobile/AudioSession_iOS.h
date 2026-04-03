@@ -35,7 +35,8 @@
 //
 #if JUCE_IOS
 
-namespace xoceanus::audio_session {
+namespace xoceanus::audio_session
+{
 
 //==============================================================================
 // configure() — Activate the AVAudioSession for standalone synth use.

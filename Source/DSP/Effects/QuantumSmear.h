@@ -7,7 +7,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // QuantumSmear — "Superposition" delay/reverb with probabilistic echo timing.
@@ -35,14 +36,14 @@ class QuantumSmear
 public:
     QuantumSmear() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
 
         // Delay buffer: ~600ms max
-        int maxDelay = static_cast<int> (sr * 0.6f) + 1;
-        delayBufL.assign (static_cast<size_t> (maxDelay), 0.0f);
-        delayBufR.assign (static_cast<size_t> (maxDelay), 0.0f);
+        int maxDelay = static_cast<int>(sr * 0.6f) + 1;
+        delayBufL.assign(static_cast<size_t>(maxDelay), 0.0f);
+        delayBufR.assign(static_cast<size_t>(maxDelay), 0.0f);
         delayWritePos = 0;
 
         // Multi-tap read positions (8 quantum taps)
@@ -67,8 +68,8 @@ public:
 
     void reset()
     {
-        std::fill (delayBufL.begin(), delayBufL.end(), 0.0f);
-        std::fill (delayBufR.begin(), delayBufR.end(), 0.0f);
+        std::fill(delayBufL.begin(), delayBufL.end(), 0.0f);
+        std::fill(delayBufR.begin(), delayBufR.end(), 0.0f);
         delayWritePos = 0;
         peanoStep = 0;
         airyStateL = airyStateR = 0.0f;
@@ -76,20 +77,21 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    void processBlock (float* L, float* R, int numSamples,
-                       float observation, float feedback, float delayCenterMs, float mix)
+    void processBlock(float* L, float* R, int numSamples, float observation, float feedback, float delayCenterMs,
+                      float mix)
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+            return;
 
-        int bufSize = static_cast<int> (delayBufL.size());
-        if (bufSize < 2) return;
+        int bufSize = static_cast<int>(delayBufL.size());
+        if (bufSize < 2)
+            return;
 
         // Center delay in samples
-        int centerDelay = std::max (1, std::min (bufSize - 1,
-            static_cast<int> (delayCenterMs * 0.001f * sr)));
+        int centerDelay = std::max(1, std::min(bufSize - 1, static_cast<int>(delayCenterMs * 0.001f * sr)));
 
         // Feedback clamped for stability
-        feedback = std::min (0.95f, std::max (0.0f, feedback));
+        feedback = std::min(0.95f, std::max(0.0f, feedback));
 
         // Observation controls the probability spread:
         // 0 = wide spread (quantum blur), 1 = collapsed to center (solid delay)
@@ -101,18 +103,18 @@ public:
         for (int t = 0; t < kNumTaps; ++t)
         {
             // Distribute taps around center delay
-            float normalizedPos = (static_cast<float> (t) / static_cast<float> (kNumTaps - 1)) * 2.0f - 1.0f;
+            float normalizedPos = (static_cast<float>(t) / static_cast<float>(kNumTaps - 1)) * 2.0f - 1.0f;
 
             // |Ψ|² = Gaussian envelope: exp(-x²/2σ²)
             float sigma = 0.1f + spread * 2.0f;
-            float psi2 = std::exp (-normalizedPos * normalizedPos / (2.0f * sigma * sigma));
+            float psi2 = std::exp(-normalizedPos * normalizedPos / (2.0f * sigma * sigma));
 
             tapWeights[t] = psi2;
             totalWeight += psi2;
 
             // Tap offset: spread around center delay
-            int offsetSpread = static_cast<int> (static_cast<float> (centerDelay) * spread * normalizedPos);
-            tapOffsets[t] = std::max (1, std::min (bufSize - 1, centerDelay + offsetSpread));
+            int offsetSpread = static_cast<int>(static_cast<float>(centerDelay) * spread * normalizedPos);
+            tapOffsets[t] = std::max(1, std::min(bufSize - 1, centerDelay + offsetSpread));
         }
 
         // Normalize weights
@@ -133,20 +135,20 @@ public:
             for (int t = 0; t < kNumTaps; ++t)
             {
                 int readPos = (delayWritePos - tapOffsets[t] + bufSize) % bufSize;
-                wetL += delayBufL[static_cast<size_t> (readPos)] * tapWeights[t];
-                wetR += delayBufR[static_cast<size_t> (readPos)] * tapWeights[t];
+                wetL += delayBufL[static_cast<size_t>(readPos)] * tapWeights[t];
+                wetR += delayBufR[static_cast<size_t>(readPos)] * tapWeights[t];
             }
 
             // --- Peano curve: rotate which tap gets feedback emphasis ---
             // This ensures the reverb texture evolves continuously
             int peanoTap = peanoStep % kNumTaps;
-            float peanoBoost = 1.0f + 0.3f * (static_cast<float> ((peanoStep / kNumTaps) % 3) / 2.0f);
+            float peanoBoost = 1.0f + 0.3f * (static_cast<float>((peanoStep / kNumTaps) % 3) / 2.0f);
 
             // Slightly emphasize the Peano-selected tap
-            float peanoWetL = delayBufL[static_cast<size_t> (
-                (delayWritePos - tapOffsets[peanoTap] + bufSize) % bufSize)];
-            float peanoWetR = delayBufR[static_cast<size_t> (
-                (delayWritePos - tapOffsets[peanoTap] + bufSize) % bufSize)];
+            float peanoWetL =
+                delayBufL[static_cast<size_t>((delayWritePos - tapOffsets[peanoTap] + bufSize) % bufSize)];
+            float peanoWetR =
+                delayBufR[static_cast<size_t>((delayWritePos - tapOffsets[peanoTap] + bufSize) % bufSize)];
             wetL += peanoWetL * 0.15f * peanoBoost;
             wetR += peanoWetR * 0.15f * peanoBoost;
 
@@ -156,7 +158,7 @@ public:
             // --- Airy function diffusion (spectral blur on output) ---
             // Approximated as allpass-like filter with frequency-dependent phase
             float airyFreq = 1000.0f + (1.0f - observation) * 3000.0f;
-            float airyCoeff = 1.0f - std::exp (-6.28318f * airyFreq / sr);
+            float airyCoeff = 1.0f - std::exp(-6.28318f * airyFreq / sr);
 
             float airyInL = wetL;
             float airyInR = wetR;
@@ -180,16 +182,16 @@ public:
             float fbR = R[s] + wetR * feedback;
 
             // Soft clip feedback to prevent runaway
-            fbL = fastTanh (fbL);
-            fbR = fastTanh (fbR);
+            fbL = fastTanh(fbL);
+            fbR = fastTanh(fbR);
 
-            delayBufL[static_cast<size_t> (delayWritePos)] = flushDenormal (fbL);
-            delayBufR[static_cast<size_t> (delayWritePos)] = flushDenormal (fbR);
+            delayBufL[static_cast<size_t>(delayWritePos)] = flushDenormal(fbL);
+            delayBufR[static_cast<size_t>(delayWritePos)] = flushDenormal(fbR);
 
             delayWritePos = (delayWritePos + 1) % bufSize;
 
-            wetL = flushDenormal (wetL);
-            wetR = flushDenormal (wetR);
+            wetL = flushDenormal(wetL);
+            wetR = flushDenormal(wetR);
 
             L[s] = L[s] * (1.0f - mix) + wetL * mix;
             R[s] = R[s] * (1.0f - mix) + wetR * mix;
@@ -206,8 +208,8 @@ private:
     int delayWritePos = 0;
 
     // Quantum tap state
-    float tapWeights[kNumTaps] {};
-    int tapOffsets[kNumTaps] {};
+    float tapWeights[kNumTaps]{};
+    int tapOffsets[kNumTaps]{};
 
     // Peano curve state
     int peanoStep = 0;

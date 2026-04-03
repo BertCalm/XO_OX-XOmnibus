@@ -6,7 +6,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // EntropyCooler — "Smart" lowpass filter governed by competing math systems.
@@ -36,18 +37,20 @@ class EntropyCooler
 public:
     EntropyCooler() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
 
         // Heat equation state (2-stage 1-pole cascade for steeper roll-off)
-        for (auto& s : heatStateL) s = 0.0f;
-        for (auto& s : heatStateR) s = 0.0f;
+        for (auto& s : heatStateL)
+            s = 0.0f;
+        for (auto& s : heatStateR)
+            s = 0.0f;
 
         // Entropy analysis window (short — ~5ms)
-        entropyWindowSize = std::max (32, static_cast<int> (sr * 0.005f));
-        entropyBufL.assign (static_cast<size_t> (entropyWindowSize), 0.0f);
-        entropyBufR.assign (static_cast<size_t> (entropyWindowSize), 0.0f);
+        entropyWindowSize = std::max(32, static_cast<int>(sr * 0.005f));
+        entropyBufL.assign(static_cast<size_t>(entropyWindowSize), 0.0f);
+        entropyBufR.assign(static_cast<size_t>(entropyWindowSize), 0.0f);
         entropyWritePos = 0;
 
         // Demon state
@@ -62,15 +65,17 @@ public:
         dcPrevR = 0.0f;
 
         smoothedEntropy = 0.0f;
-        dcCoeff_ = (sampleRate > 0.0f) ? 1.0f - (6.28318f * 5.0f / static_cast<float> (sampleRate)) : 0.995f;
+        dcCoeff_ = (sampleRate > 0.0f) ? 1.0f - (6.28318f * 5.0f / static_cast<float>(sampleRate)) : 0.995f;
     }
 
     void reset()
     {
-        for (auto& s : heatStateL) s = 0.0f;
-        for (auto& s : heatStateR) s = 0.0f;
-        std::fill (entropyBufL.begin(), entropyBufL.end(), 0.0f);
-        std::fill (entropyBufR.begin(), entropyBufR.end(), 0.0f);
+        for (auto& s : heatStateL)
+            s = 0.0f;
+        for (auto& s : heatStateR)
+            s = 0.0f;
+        std::fill(entropyBufL.begin(), entropyBufL.end(), 0.0f);
+        std::fill(entropyBufR.begin(), entropyBufR.end(), 0.0f);
         entropyWritePos = 0;
         demonActiveL = 0.0f;
         demonActiveR = 0.0f;
@@ -80,20 +85,20 @@ public:
 
     //--------------------------------------------------------------------------
     // Process stereo block in-place.
-    void processBlock (float* L, float* R, int numSamples,
-                       float stability, float coolRate, float threshold, float mix)
+    void processBlock(float* L, float* R, int numSamples, float stability, float coolRate, float threshold, float mix)
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+            return;
 
         // Heat equation diffusion coefficient: higher coolRate = more smoothing
         // α∇²u approximated as 1-pole LP with coefficient proportional to coolRate
-        float heatCoeff = 1.0f - std::exp (-6.28318f * (200.0f + coolRate * 6000.0f) / sr);
+        float heatCoeff = 1.0f - std::exp(-6.28318f * (200.0f + coolRate * 6000.0f) / sr);
 
         // Demon heat injection intensity
         float demonPower = stability * 0.6f;
 
         // Entropy smoothing coefficient
-        float entSmooth = 1.0f - std::exp (-6.28318f * 15.0f / sr);
+        float entSmooth = 1.0f - std::exp(-6.28318f * 15.0f / sr);
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -103,8 +108,8 @@ public:
             // --- Record into entropy analysis buffer ---
             if (!entropyBufL.empty())
             {
-                entropyBufL[static_cast<size_t> (entropyWritePos)] = dryL;
-                entropyBufR[static_cast<size_t> (entropyWritePos)] = dryR;
+                entropyBufL[static_cast<size_t>(entropyWritePos)] = dryL;
+                entropyBufR[static_cast<size_t>(entropyWritePos)] = dryR;
                 entropyWritePos = (entropyWritePos + 1) % entropyWindowSize;
             }
 
@@ -138,8 +143,8 @@ public:
 
             // Demon attack/release envelope
             float demonTarget = demonTriggered ? 1.0f : 0.0f;
-            float demonAttack = 1.0f - std::exp (-1.0f / (0.002f * sr));  // 2ms
-            float demonRelease = 1.0f - std::exp (-1.0f / (0.05f * sr));  // 50ms
+            float demonAttack = 1.0f - std::exp(-1.0f / (0.002f * sr)); // 2ms
+            float demonRelease = 1.0f - std::exp(-1.0f / (0.05f * sr)); // 50ms
             float demonCoeff = (demonTarget > demonActiveL) ? demonAttack : demonRelease;
             demonActiveL += (demonTarget - demonActiveL) * demonCoeff;
             demonActiveL = flushDenormal(demonActiveL);
@@ -156,12 +161,12 @@ public:
                 float hfR = dryR - cooledR;
 
                 rng = rng * 1664525u + 1013904223u;
-                float noiseL = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+                float noiseL = static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f;
                 rng = rng * 1664525u + 1013904223u;
-                float noiseR = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+                float noiseR = static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f;
 
-                float heatL = hfL + noiseL * std::fabs (dryL) * 0.15f;
-                float heatR = hfR + noiseR * std::fabs (dryR) * 0.15f;
+                float heatL = hfL + noiseL * std::fabs(dryL) * 0.15f;
+                float heatR = hfR + noiseR * std::fabs(dryR) * 0.15f;
 
                 wetL += heatL * demonActiveL * demonPower;
                 wetR += heatR * demonActiveR * demonPower;
@@ -175,8 +180,8 @@ public:
             dcStateL = flushDenormal(outL);
             dcStateR = flushDenormal(outR);
 
-            outL = flushDenormal (outL);
-            outR = flushDenormal (outR);
+            outL = flushDenormal(outL);
+            outR = flushDenormal(outR);
 
             L[s] = dryL * (1.0f - mix) + outL * mix;
             R[s] = dryR * (1.0f - mix) + outR * mix;
@@ -187,16 +192,16 @@ private:
     float sr = 44100.0f;
 
     // Heat equation filter state (2-stage cascade, stereo)
-    float heatStateL[2] {};
-    float heatStateR[2] {};
+    float heatStateL[2]{};
+    float heatStateR[2]{};
 
     // Entropy analysis
     std::vector<float> entropyBufL, entropyBufR;
     int entropyWindowSize = 256;
     int entropyWritePos = 0;
     float smoothedEntropy = 0.0f;
-    float cachedEntropy = 0.0f;      // Last computed entropy value (updated every kEntropyInterval samples)
-    int entropySampleCounter = 0;    // Counts samples since last entropy recompute
+    float cachedEntropy = 0.0f;   // Last computed entropy value (updated every kEntropyInterval samples)
+    int entropySampleCounter = 0; // Counts samples since last entropy recompute
 
     // Demon state
     float demonActiveL = 0.0f;
@@ -213,31 +218,32 @@ private:
     // Returns 0.0 (silence/DC) to ~4.0 (maximum complexity/noise).
     float computeEntropy() const
     {
-        if (entropyBufL.empty()) return 0.0f;
+        if (entropyBufL.empty())
+            return 0.0f;
 
         constexpr int kBins = 16;
-        int counts[kBins] {};
+        int counts[kBins]{};
         int total = entropyWindowSize;
 
         for (int i = 0; i < total; ++i)
         {
             // Map sample to bin: clamp to ±1, quantize to 0..15
-            float sample = (entropyBufL[static_cast<size_t> (i)]
-                          + entropyBufR[static_cast<size_t> (i)]) * 0.5f;
-            sample = std::max (-1.0f, std::min (1.0f, sample));
-            int bin = static_cast<int> ((sample + 1.0f) * 0.5f * static_cast<float> (kBins - 1));
-            bin = std::max (0, std::min (kBins - 1, bin));
+            float sample = (entropyBufL[static_cast<size_t>(i)] + entropyBufR[static_cast<size_t>(i)]) * 0.5f;
+            sample = std::max(-1.0f, std::min(1.0f, sample));
+            int bin = static_cast<int>((sample + 1.0f) * 0.5f * static_cast<float>(kBins - 1));
+            bin = std::max(0, std::min(kBins - 1, bin));
             counts[bin]++;
         }
 
         // H = -Σ p(x) * log2(p(x))
         float H = 0.0f;
-        float invTotal = 1.0f / static_cast<float> (total);
+        float invTotal = 1.0f / static_cast<float>(total);
         for (int b = 0; b < kBins; ++b)
         {
-            if (counts[b] == 0) continue;
-            float p = static_cast<float> (counts[b]) * invTotal;
-            H -= p * std::log2 (p);
+            if (counts[b] == 0)
+                continue;
+            float p = static_cast<float>(counts[b]) * invTotal;
+            H -= p * std::log2(p);
         }
         return H;
     }

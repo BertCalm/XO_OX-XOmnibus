@@ -1,5 +1,6 @@
 #pragma once
 
-namespace doctrine_tests {
-    int runAll();
+namespace doctrine_tests
+{
+int runAll();
 }

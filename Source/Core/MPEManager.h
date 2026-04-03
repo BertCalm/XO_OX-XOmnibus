@@ -6,7 +6,8 @@
 #include <atomic>
 #include <cmath>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Per-voice MPE expression state.
@@ -15,10 +16,10 @@ namespace xoceanus {
 //==============================================================================
 struct MPEVoiceExpression
 {
-    int midiChannel = 0;            // MIDI channel this voice was triggered on
+    int midiChannel = 0;             // MIDI channel this voice was triggered on
     float pitchBendSemitones = 0.0f; // Per-note pitch offset in semitones
     float pressure = 0.0f;           // Per-note pressure / aftertouch (0..1)
-    float slide = 0.0f;             // Per-note slide / CC74 / brightness (0..1)
+    float slide = 0.0f;              // Per-note slide / CC74 / brightness (0..1)
     bool sustainHeld = false;        // Sustain pedal state for this channel
 
     void reset() noexcept
@@ -36,10 +37,10 @@ struct MPEVoiceExpression
 //==============================================================================
 enum class MPEZoneLayout : int
 {
-    Off = 0,    // Standard MIDI (no MPE — all channels treated equally)
-    Lower,      // Lower zone: master = ch1, members = ch2-16
-    Upper,      // Upper zone: master = ch16, members = ch1-15
-    Both        // Both zones (split keyboard)
+    Off = 0, // Standard MIDI (no MPE — all channels treated equally)
+    Lower,   // Lower zone: master = ch1, members = ch2-16
+    Upper,   // Upper zone: master = ch16, members = ch1-15
+    Both     // Both zones (split keyboard)
 };
 
 //==============================================================================
@@ -99,15 +100,9 @@ public:
 
     //-- Lifecycle -------------------------------------------------------------
 
-    void prepare(double /*sampleRate*/, int /*maxBlockSize*/)
-    {
-        resetAllChannels();
-    }
+    void prepare(double /*sampleRate*/, int /*maxBlockSize*/) { resetAllChannels(); }
 
-    void reset()
-    {
-        resetAllChannels();
-    }
+    void reset() { resetAllChannels(); }
 
     //-- Audio-thread processing -----------------------------------------------
 
@@ -240,16 +235,21 @@ public:
     bool isMasterChannel(int midiChannel) const noexcept
     {
         auto layout = getZoneLayout();
-        if (layout == MPEZoneLayout::Off) return false;
-        if (layout == MPEZoneLayout::Lower && midiChannel == 1) return true;
-        if (layout == MPEZoneLayout::Upper && midiChannel == 16) return true;
-        if (layout == MPEZoneLayout::Both && (midiChannel == 1 || midiChannel == 16)) return true;
+        if (layout == MPEZoneLayout::Off)
+            return false;
+        if (layout == MPEZoneLayout::Lower && midiChannel == 1)
+            return true;
+        if (layout == MPEZoneLayout::Upper && midiChannel == 16)
+            return true;
+        if (layout == MPEZoneLayout::Both && (midiChannel == 1 || midiChannel == 16))
+            return true;
         return false;
     }
 
     bool isMemberChannel(int midiChannel) const noexcept
     {
-        if (!isMPEEnabled()) return false;
+        if (!isMPEEnabled())
+            return false;
         return !isMasterChannel(midiChannel);
     }
 
@@ -264,11 +264,11 @@ private:
     std::array<MPEVoiceExpression, kNumChannels> channelExpression;
 
     // Configuration (atomics for cross-thread access)
-    std::atomic<int> zoneLayout { static_cast<int>(MPEZoneLayout::Off) };
-    std::atomic<int> pitchBendRange { 48 };  // Default: 48 semitones (Roli Seaboard default)
-    std::atomic<int> mpeEnabled { 0 };
-    std::atomic<int> pressureTarget { static_cast<int>(ExpressionTarget::FilterCutoff) };
-    std::atomic<int> slideTarget { static_cast<int>(ExpressionTarget::FilterCutoff) };
+    std::atomic<int> zoneLayout{static_cast<int>(MPEZoneLayout::Off)};
+    std::atomic<int> pitchBendRange{48}; // Default: 48 semitones (Roli Seaboard default)
+    std::atomic<int> mpeEnabled{0};
+    std::atomic<int> pressureTarget{static_cast<int>(ExpressionTarget::FilterCutoff)};
+    std::atomic<int> slideTarget{static_cast<int>(ExpressionTarget::FilterCutoff)};
 };
 
 } // namespace xoceanus

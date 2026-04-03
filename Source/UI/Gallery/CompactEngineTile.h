@@ -30,12 +30,11 @@ class CompactEngineTile : public juce::Component, public juce::SettableTooltipCl
 public:
     std::function<void(int)> onSelect; // called with slot index when clicked
 
-    CompactEngineTile(XOceanusProcessor& proc, int slotIndex)
-        : processor(proc), slot(slotIndex), miniWave(proc)
+    CompactEngineTile(XOceanusProcessor& proc, int slotIndex) : processor(proc), slot(slotIndex), miniWave(proc)
     {
-        A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
-                     "Click to open engine detail, right-click for options");
-        setExplicitFocusOrder (slotIndex + 1);
+        A11y::setup(*this, "Engine Slot " + juce::String(slotIndex + 1),
+                    "Click to open engine detail, right-click for options");
+        setExplicitFocusOrder(slotIndex + 1);
         // miniWave is kept as a member for potential future use but hidden —
         // waveform is now painted directly in paint() per the mockup spec.
         addChildComponent(miniWave); // add but invisible
@@ -64,13 +63,13 @@ public:
 
         isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
-        engineId  = newId;
+        engineId = newId;
         setTooltip(hasEngine ? "Click to open engine detail \xe2\x80\x94 right-click for options"
                              : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
-        accent    = hasEngine ? eng->getAccentColour()
-                              : GalleryColors::get(GalleryColors::emptySlot());
+        accent = hasEngine ? eng->getAccentColour() : GalleryColors::get(GalleryColors::emptySlot());
         miniWave.setSlot(slot);
-        if (eng) miniWave.setAccentColour(eng->getAccentColour());
+        if (eng)
+            miniWave.setAccentColour(eng->getAccentColour());
         // Sync mute state from processor so tile visual matches processor state
         // after preset load, session restore, or any external state change.
         isMuted = processor.isSlotMuted(slot);
@@ -87,7 +86,10 @@ public:
         // Ghost/empty slot: only check if an engine appeared, skip all polling (#188)
         if (!eng)
         {
-            if (hasEngine) { refresh(); }
+            if (hasEngine)
+            {
+                refresh();
+            }
             return;
         }
 
@@ -123,46 +125,46 @@ public:
         {
             couplingCheckCounter = 0;
             auto routes = processor.getCouplingMatrix().getRoutes();
-            int modCount   = 0; // LFO/Env/Amp/Filter/Pitch/Rhythm
+            int modCount = 0;   // LFO/Env/Amp/Filter/Pitch/Rhythm
             int audioCount = 0; // AudioTo*
-            int knotCount  = 0; // KnotTopology
+            int knotCount = 0;  // KnotTopology
             for (const auto& r : routes)
             {
-                if (!r.active) continue;
-                if (r.sourceSlot != slot && r.destSlot != slot) continue;
+                if (!r.active)
+                    continue;
+                if (r.sourceSlot != slot && r.destSlot != slot)
+                    continue;
 
                 switch (r.type)
                 {
-                    case CouplingType::AudioToFM:
-                    case CouplingType::AudioToRing:
-                    case CouplingType::AudioToWavetable:
-                    case CouplingType::AudioToBuffer:
-                        audioCount = juce::jmin(audioCount + 1, 4);
-                        break;
-                    case CouplingType::KnotTopology:
-                        knotCount = juce::jmin(knotCount + 1, 4);
-                        break;
-                    default:
-                        modCount = juce::jmin(modCount + 1, 4);
-                        break;
+                case CouplingType::AudioToFM:
+                case CouplingType::AudioToRing:
+                case CouplingType::AudioToWavetable:
+                case CouplingType::AudioToBuffer:
+                    audioCount = juce::jmin(audioCount + 1, 4);
+                    break;
+                case CouplingType::KnotTopology:
+                    knotCount = juce::jmin(knotCount + 1, 4);
+                    break;
+                default:
+                    modCount = juce::jmin(modCount + 1, 4);
+                    break;
                 }
             }
             int totalDots = juce::jmin(modCount + audioCount + knotCount, 4);
-            if (totalDots != couplingDotCount
-                || modCount   != couplingModCount
-                || audioCount != couplingAudioCount
-                || knotCount  != couplingKnotCount)
+            if (totalDots != couplingDotCount || modCount != couplingModCount || audioCount != couplingAudioCount ||
+                knotCount != couplingKnotCount)
             {
-                couplingDotCount   = totalDots;
-                couplingModCount   = modCount;
+                couplingDotCount = totalDots;
+                couplingModCount = modCount;
                 couplingAudioCount = audioCount;
-                couplingKnotCount  = knotCount;
+                couplingKnotCount = knotCount;
                 needsRepaint = true;
             }
-
         }
 
-        if (needsRepaint) repaint();
+        if (needsRepaint)
+            repaint();
     }
 
     // Mockup-matched tile: accent bar + header row + macro knobs + waveform + footer + CPU bar.
@@ -180,7 +182,8 @@ public:
             {
                 if (cachedCockpitHost_ != nullptr)
                     opacity = cachedCockpitHost_->getCockpitOpacity();
-                if (opacity < 0.05f) return; // B041 performance optimization
+                if (opacity < 0.05f)
+                    return; // B041 performance optimization
             }
             g.setOpacity(opacity);
         }
@@ -202,8 +205,7 @@ public:
             g.setColour(juce::Colour(0x0AFFFFFF));
             g.fillRoundedRectangle(b, 4.0f);
             juce::ColourGradient grad(accent.withAlpha(0.09f), b.getX(), b.getCentreY(),
-                                      juce::Colours::transparentBlack,
-                                      b.getRight(), b.getCentreY(), false);
+                                      juce::Colours::transparentBlack, b.getRight(), b.getCentreY(), false);
             g.setGradientFill(grad);
             g.fillRoundedRectangle(b, 4.0f);
         }
@@ -222,7 +224,8 @@ public:
             g.setColour(get(xoGold).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText("LOADING...", b.toNearestInt(), juce::Justification::centred);
-            if (hasKeyboardFocus(true)) A11y::drawFocusRing(g, b, 8.0f);
+            if (hasKeyboardFocus(true))
+                A11y::drawFocusRing(g, b, 8.0f);
             return;
         }
 
@@ -230,9 +233,7 @@ public:
         {
             // Voice density for reactive alpha (accent bar, power button)
             const float kMaxVoices = 8.0f;
-            float voiceDensity = (voiceCount > 0)
-                ? juce::jmin(1.0f, std::sqrt((float)voiceCount / kMaxVoices))
-                : 0.0f;
+            float voiceDensity = (voiceCount > 0) ? juce::jmin(1.0f, std::sqrt((float)voiceCount / kMaxVoices)) : 0.0f;
             float stripAlpha = 0.38f + voiceDensity * 0.50f;
 
             // ── 1. Left accent bar ─────────────────────────────────────────
@@ -249,8 +250,7 @@ public:
                     {
                         float glowAlpha = (0.12f / (float)gx) * (stripAlpha * 1.4f);
                         g.setColour(accent.withAlpha(juce::jmin(glowAlpha, 0.18f)));
-                        g.fillRoundedRectangle(0.0f, -1.0f,
-                                               3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
+                        g.fillRoundedRectangle(0.0f, -1.0f, 3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
                     }
                 }
             }
@@ -259,17 +259,16 @@ public:
             // Slot number | engine name (flex) | power button
             // Row height: 14px, sits at content top
             {
-                const float rowH   = 14.0f;
-                const float rowY   = content.getY();
-                const float slotW  = 12.0f;
-                const float pwrW   = 16.0f;
-                const float pwrH   = 16.0f;
+                const float rowH = 14.0f;
+                const float rowY = content.getY();
+                const float slotW = 12.0f;
+                const float pwrW = 16.0f;
+                const float pwrH = 16.0f;
 
                 // Slot number — 9px mono, T3 color, 12px wide
                 g.setFont(GalleryFonts::value(9.0f));
                 g.setColour(GalleryColors::get(GalleryColors::t3()));
-                g.drawText(juce::String(slot + 1),
-                           (int)content.getX(), (int)rowY, (int)slotW, (int)rowH,
+                g.drawText(juce::String(slot + 1), (int)content.getX(), (int)rowY, (int)slotW, (int)rowH,
                            juce::Justification::centredLeft);
 
                 // Engine name — 14px Space Grotesk bold, uppercase, accent color
@@ -277,8 +276,7 @@ public:
                 float nameW = content.getWidth() - slotW - 3.0f - pwrW - 3.0f;
                 g.setFont(GalleryFonts::display(14.0f));
                 g.setColour(accent);
-                g.drawText(engineId.toUpperCase(),
-                           (int)nameX, (int)rowY, (int)nameW, (int)rowH,
+                g.drawText(engineId.toUpperCase(), (int)nameX, (int)rowY, (int)nameW, (int)rowH,
                            juce::Justification::centredLeft);
 
                 // Power button — 16×16 circle, right edge of content
@@ -287,14 +285,11 @@ public:
                 {
                     float pwrX = content.getRight() - pwrW;
                     float pwrY = rowY + (rowH - pwrH) * 0.5f;
-                    juce::Colour pwrColor = isMuted
-                        ? GalleryColors::get(GalleryColors::t3())
-                        : accent;
+                    juce::Colour pwrColor = isMuted ? GalleryColors::get(GalleryColors::t3()) : accent;
                     g.setColour(pwrColor);
                     g.drawEllipse(pwrX, pwrY, pwrW, pwrH, 1.0f);
                     g.setFont(GalleryFonts::value(8.0f));
-                    g.drawText(isMuted ? "o" : "I",
-                               (int)pwrX, (int)pwrY, (int)pwrW, (int)pwrH,
+                    g.drawText(isMuted ? "o" : "I", (int)pwrX, (int)pwrY, (int)pwrW, (int)pwrH,
                                juce::Justification::centred);
                 }
             }
@@ -303,28 +298,29 @@ public:
             // Waveform stretches to fill remaining space (most flexible element).
             // Top-down layout: header → knobs → waveform (stretches to bottom).
             // Mood dots, FX indicator, CPU bar removed — not functional yet, wasted space.
-            const float gap      = 4.0f;
+            const float gap = 4.0f;
             const float knobArcDiam = 40.0f;
-            const float knobLblH    = 10.0f;
-            const float knobRowH    = knobArcDiam + knobLblH;
+            const float knobLblH = 10.0f;
+            const float knobRowH = knobArcDiam + knobLblH;
 
-            float knobY   = content.getY() + 16.0f + gap;  // below header (16px for larger font)
+            float knobY = content.getY() + 16.0f + gap; // below header (16px for larger font)
             float waveTop = knobY + knobRowH + gap;
-            float waveH   = content.getBottom() - gap - waveTop;  // stretches to bottom
-            float waveY   = waveTop;
-            if (waveH < 10.0f) waveH = 10.0f;
+            float waveH = content.getBottom() - gap - waveTop; // stretches to bottom
+            float waveY = waveTop;
+            if (waveH < 10.0f)
+                waveH = 10.0f;
 
             // ── 3. Mini macro knobs row ──────────────────────────────────
             {
-                const float arcDiam   = knobArcDiam;
+                const float arcDiam = knobArcDiam;
                 const float arcRadius = arcDiam * 0.5f;
-                const float arcGap    = 5.0f;
-                const float arcStep   = arcDiam + arcGap;
+                const float arcGap = 5.0f;
+                const float arcStep = arcDiam + arcGap;
 
                 // Left-align knobs (matches mockup)
                 float kx = content.getX();
 
-                static const char* kLabels[4] = { "SRC1", "FILT", "ENV", "FX" };
+                static const char* kLabels[4] = {"SRC1", "FILT", "ENV", "FX"};
 
                 for (int k = 0; k < 4; ++k)
                 {
@@ -334,31 +330,29 @@ public:
                     // 270° arc sweep, starts at ~135° (bottom-left), sweeps CW
                     const float startAngle = juce::MathConstants<float>::pi * 0.75f;
                     const float sweepAngle = juce::MathConstants<float>::pi * 1.5f;
-                    const float fillPos    = macroValues[k];
+                    const float fillPos = macroValues[k];
 
                     // Track arc (T4 color, 2.0px)
                     juce::Path trackArc;
-                    trackArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f,
-                                           0.0f, startAngle, startAngle + sweepAngle, true);
+                    trackArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f, 0.0f, startAngle,
+                                           startAngle + sweepAngle, true);
                     g.setColour(GalleryColors::get(GalleryColors::t4()));
-                    g.strokePath(trackArc, juce::PathStrokeType(2.0f,
-                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
+                    g.strokePath(trackArc, juce::PathStrokeType(2.0f, juce::PathStrokeType::curved,
+                                                                juce::PathStrokeType::rounded));
 
                     // Fill arc (accent, 2.5px)
                     juce::Path fillArc;
-                    fillArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f,
-                                          0.0f, startAngle, startAngle + sweepAngle * fillPos, true);
+                    fillArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f, 0.0f, startAngle,
+                                          startAngle + sweepAngle * fillPos, true);
                     g.setColour(accent.withAlpha(0.85f));
-                    g.strokePath(fillArc, juce::PathStrokeType(2.5f,
-                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
+                    g.strokePath(fillArc, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
+                                                               juce::PathStrokeType::rounded));
 
                     // Label below arc (8px mono, T2 — lighter for legibility)
                     g.setFont(GalleryFonts::value(8.0f));
                     g.setColour(GalleryColors::get(GalleryColors::t2()));
-                    g.drawText(kLabels[k],
-                               (int)(kx - 2.0f), (int)(knobY + arcDiam + 1.0f),
-                               (int)(arcDiam + 4.0f), (int)knobLblH,
-                               juce::Justification::centred);
+                    g.drawText(kLabels[k], (int)(kx - 2.0f), (int)(knobY + arcDiam + 1.0f), (int)(arcDiam + 4.0f),
+                               (int)knobLblH, juce::Justification::centred);
 
                     kx += arcStep;
                 }
@@ -376,28 +370,30 @@ public:
 
                 // Waveform polyline — ~20 points, sine-ish, ±8px amplitude
                 {
-                    const int   kPoints    = 20;
-                    const float amplitude  = 8.0f;
-                    const float cy         = waveY + waveH * 0.5f;
-                    const float xStep      = waveW / (float)(kPoints - 1);
-                    const float phaseOff   = (float)(slot * 37) * 0.1f; // per-slot visual variation
+                    const int kPoints = 20;
+                    const float amplitude = 8.0f;
+                    const float cy = waveY + waveH * 0.5f;
+                    const float xStep = waveW / (float)(kPoints - 1);
+                    const float phaseOff = (float)(slot * 37) * 0.1f; // per-slot visual variation
 
                     juce::Path wavePath;
                     for (int i = 0; i < kPoints; ++i)
                     {
                         float px = waveX + (float)i * xStep;
-                        float t  = (float)i / (float)(kPoints - 1);
+                        float t = (float)i / (float)(kPoints - 1);
                         // Sine-ish with a second harmonic for organic feel
-                        float py = cy - amplitude * (0.65f * std::sin(t * juce::MathConstants<float>::twoPi + phaseOff)
-                                                    + 0.35f * std::sin(t * juce::MathConstants<float>::twoPi * 2.0f + phaseOff * 1.3f));
+                        float py =
+                            cy - amplitude *
+                                     (0.65f * std::sin(t * juce::MathConstants<float>::twoPi + phaseOff) +
+                                      0.35f * std::sin(t * juce::MathConstants<float>::twoPi * 2.0f + phaseOff * 1.3f));
                         if (i == 0)
                             wavePath.startNewSubPath(px, py);
                         else
                             wavePath.lineTo(px, py);
                     }
                     g.setColour(accent.withAlpha(0.7f));
-                    g.strokePath(wavePath, juce::PathStrokeType(1.2f,
-                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
+                    g.strokePath(wavePath, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
+                                                                juce::PathStrokeType::rounded));
                 }
             }
 
@@ -425,7 +421,7 @@ public:
                 juce::Path btnRect;
                 btnRect.addRoundedRectangle(btnX, btnY, btnW, btnH, btnR);
                 juce::PathStrokeType stroke(1.0f);
-                float dashPattern[] = { 4.0f, 3.0f };
+                float dashPattern[] = {4.0f, 3.0f};
                 juce::Path dashedBtn;
                 stroke.createDashedStroke(dashedBtn, btnRect, dashPattern, 2);
                 g.setColour(t4col.withAlpha(0.70f));
@@ -434,15 +430,12 @@ public:
 
             g.setFont(GalleryFonts::body(16.0f));
             g.setColour(t4col);
-            g.drawText("+", (int)btnX, (int)btnY, (int)btnW, (int)btnH,
-                       juce::Justification::centred);
+            g.drawText("+", (int)btnX, (int)btnY, (int)btnW, (int)btnH, juce::Justification::centred);
 
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(t4col.withAlpha(0.70f));
             float labelY = btnY + btnH + 4.0f;
-            g.drawText("Add engine",
-                       (int)(tileCx - 40.0f), (int)labelY, 80, 14,
-                       juce::Justification::centred);
+            g.drawText("Add engine", (int)(tileCx - 40.0f), (int)labelY, 80, 14, juce::Justification::centred);
         }
 
         // Focus ring (WCAG 2.4.7)
@@ -458,10 +451,7 @@ public:
 
     // Fix #7: cache CockpitHost pointer once when the component hierarchy is set up,
     // avoiding a dynamic_cast walk on every paint() call (O(depth) per frame).
-    void parentHierarchyChanged() override
-    {
-        cachedCockpitHost_ = CockpitHost::find(this);
-    }
+    void parentHierarchyChanged() override { cachedCockpitHost_ = CockpitHost::find(this); }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
     void mouseMove(const juce::MouseEvent& e) override
@@ -476,16 +466,17 @@ public:
         setMouseCursor(juce::MouseCursor::NormalCursor);
         repaint();
     }
-    void focusGained (juce::Component::FocusChangeType) override { repaint(); }
-    void focusLost   (juce::Component::FocusChangeType) override { repaint(); }
+    void focusGained(juce::Component::FocusChangeType) override { repaint(); }
+    void focusLost(juce::Component::FocusChangeType) override { repaint(); }
 
-    bool keyPressed (const juce::KeyPress& key) override
+    bool keyPressed(const juce::KeyPress& key) override
     {
         if (key == juce::KeyPress::returnKey || key == juce::KeyPress::spaceKey)
         {
             if (hasEngine)
             {
-                if (onSelect) onSelect (slot);
+                if (onSelect)
+                    onSelect(slot);
             }
             else
                 showLoadMenu();
@@ -530,8 +521,7 @@ public:
             {
                 // Target slot is occupied — warn user inline via item label
                 juce::String occupantName = targetEng->getEngineId().toUpperCase();
-                moveMenu.addItem(200 + i,
-                    "Replace " + occupantName + " in Slot " + juce::String(i + 1));
+                moveMenu.addItem(200 + i, "Replace " + occupantName + " in Slot " + juce::String(i + 1));
             }
             else
             {
@@ -541,26 +531,26 @@ public:
         menu.addSubMenu("Move to Slot", moveMenu);
 
         menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(this),
-            [this](int result)
-            {
-                if (result == 100)
-                    showLoadMenu();
-                else if (result == 101)
-                {
-                    processor.unloadEngine(slot);
-                }
-                else if (result >= 200 && result < 204)
-                {
-                    int targetSlot = result - 200;
-                    auto* eng = processor.getEngine(slot);
-                    if (eng != nullptr)
-                    {
-                        auto currentId = eng->getEngineId().toStdString();
-                        processor.loadEngine(targetSlot, currentId);
-                        processor.unloadEngine(slot);
-                    }
-                }
-            });
+                           [this](int result)
+                           {
+                               if (result == 100)
+                                   showLoadMenu();
+                               else if (result == 101)
+                               {
+                                   processor.unloadEngine(slot);
+                               }
+                               else if (result >= 200 && result < 204)
+                               {
+                                   int targetSlot = result - 200;
+                                   auto* eng = processor.getEngine(slot);
+                                   if (eng != nullptr)
+                                   {
+                                       auto currentId = eng->getEngineId().toStdString();
+                                       processor.loadEngine(targetSlot, currentId);
+                                       processor.unloadEngine(slot);
+                                   }
+                               }
+                           });
     }
 
     void mouseUp(const juce::MouseEvent& e) override
@@ -569,7 +559,7 @@ public:
             return;
 
         if (e.mods.isPopupMenu())
-            return;  // right-click handled by mouseDown
+            return; // right-click handled by mouseDown
 
         // Don't navigate to engine if mute toggle was clicked
         auto toggleBounds = getMuteToggleBounds();
@@ -578,7 +568,8 @@ public:
 
         if (hasEngine)
         {
-            if (onSelect) onSelect(slot);
+            if (onSelect)
+                onSelect(slot);
         }
         else
         {
@@ -586,7 +577,11 @@ public:
         }
     }
 
-    void setSelected(bool sel) { isSelected = sel; repaint(); }
+    void setSelected(bool sel)
+    {
+        isSelected = sel;
+        repaint();
+    }
 
 private:
     // ── Power button hit area ────────────────────────────────────────────────
@@ -597,9 +592,9 @@ private:
         // content right = getWidth() - 11; power button right-aligned there
         // content top = 9; header row height = 14; button centered in row
         int pwrRight = getWidth() - 11;
-        int pwrX     = pwrRight - 16;
-        int rowCy    = 9 + 7; // content top + half header row
-        return { pwrX - 4, rowCy - 12, 24, 24 };
+        int pwrX = pwrRight - 16;
+        int rowCy = 9 + 7; // content top + half header row
+        return {pwrX - 4, rowCy - 12, 24, 24};
     }
 
     // ── Coupling indicator dots ──────────────────────────────────────────────
@@ -609,19 +604,20 @@ private:
     //   Midnight Violet (#7B2FBE) — KnotTopology routes
     void paintCouplingDots(juce::Graphics& g, float startX, float startY) const
     {
-        if (!hasEngine || couplingDotCount == 0) return;
+        if (!hasEngine || couplingDotCount == 0)
+            return;
 
         // Build a color list: mod dots first, then audio, then knot
         juce::Colour dotColors[4];
         int idx = 0;
-        for (int i = 0; i < couplingModCount   && idx < 4; ++i, ++idx)
+        for (int i = 0; i < couplingModCount && idx < 4; ++i, ++idx)
             dotColors[idx] = juce::Colour(GalleryColors::xoGold); // XO Gold
         for (int i = 0; i < couplingAudioCount && idx < 4; ++i, ++idx)
             dotColors[idx] = juce::Colour(0xFF1B4F8A); // Twilight Blue
-        for (int i = 0; i < couplingKnotCount  && idx < 4; ++i, ++idx)
+        for (int i = 0; i < couplingKnotCount && idx < 4; ++i, ++idx)
             dotColors[idx] = juce::Colour(0xFF7B2FBE); // Midnight Violet
 
-        const float dotSize    = 4.0f;
+        const float dotSize = 4.0f;
         const float dotSpacing = 6.0f;
 
         for (int d = 0; d < couplingDotCount && d < 4; ++d)
@@ -640,40 +636,42 @@ private:
         auto safeThis = juce::Component::SafePointer<CompactEngineTile>(this);
         picker->onEngineSelected = [safeThis](const juce::String& engineId)
         {
-            if (safeThis == nullptr) return;
+            if (safeThis == nullptr)
+                return;
             safeThis->isLoading = true;
             safeThis->repaint();
             safeThis->processor.loadEngine(safeThis->slot, engineId.toStdString());
-            juce::Timer::callAfterDelay(0, [safeThis]
-            {
-                if (safeThis == nullptr) return;
-                if (safeThis->onSelect) safeThis->onSelect(safeThis->slot);
-            });
+            juce::Timer::callAfterDelay(0,
+                                        [safeThis]
+                                        {
+                                            if (safeThis == nullptr)
+                                                return;
+                                            if (safeThis->onSelect)
+                                                safeThis->onSelect(safeThis->slot);
+                                        });
         };
         picker->setSize(280, 400);
-        juce::CallOutBox::launchAsynchronously(
-            std::unique_ptr<juce::Component>(picker),
-            getScreenBounds(), nullptr);
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), getScreenBounds(), nullptr);
     }
 
     XOceanusProcessor& processor;
     int slot;
     juce::String engineId;
     juce::Colour accent;
-    bool hasEngine  = false;
+    bool hasEngine = false;
     bool isSelected = false;
-    bool isLoading  = false;
-    bool isMuted    = false; // synced to processor.slotMuted[] via setSlotMuted/isSlotMuted
-    int  voiceCount = 0;
+    bool isLoading = false;
+    bool isMuted = false; // synced to processor.slotMuted[] via setSlotMuted/isSlotMuted
+    int voiceCount = 0;
 
     // Macro bar values — updated in timerCallback at 10Hz
-    std::array<float, 4> macroValues {};
+    std::array<float, 4> macroValues{};
 
     // Coupling dot state — updated in timerCallback at 10Hz
-    int couplingDotCount   = 0;
-    int couplingModCount   = 0;
+    int couplingDotCount = 0;
+    int couplingModCount = 0;
     int couplingAudioCount = 0;
-    int couplingKnotCount  = 0;
+    int couplingKnotCount = 0;
 
     // P3 fix: tick counter to run coupling check only every 5th tick (2Hz effective)
     int couplingCheckCounter = 0;

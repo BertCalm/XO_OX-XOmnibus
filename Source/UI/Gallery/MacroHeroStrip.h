@@ -38,10 +38,9 @@ public:
 
     // Call after an engine slot is selected. Returns true if at least one
     // macro param was found and the strip should be shown.
-    bool loadEngine(const juce::String& engId, const juce::String& paramPrefix,
-                    juce::Colour accent)
+    bool loadEngine(const juce::String& engId, const juce::String& paramPrefix, juce::Colour accent)
     {
-        engineName   = engId;
+        engineName = engId;
         accentColour = accent;
 
         // Clear previous attachments (must happen before slider rebuild)
@@ -71,11 +70,9 @@ public:
                     // Derive short label: vocabulary override first, then
                     // everything after "_macro" → uppercase as fallback.
                     juce::String raw = rp->getParameterID().substring(macroPrefix.length());
-                    juce::String defaultLabel = raw.isEmpty()
-                        ? juce::String("M" + juce::String(foundIds.size()))
-                        : raw.toUpperCase();
-                    foundNames.add(EngineVocabulary::labelFor(
-                        engineName, rp->getParameterID(), defaultLabel));
+                    juce::String defaultLabel =
+                        raw.isEmpty() ? juce::String("M" + juce::String(foundIds.size())) : raw.toUpperCase();
+                    foundNames.add(EngineVocabulary::labelFor(engineName, rp->getParameterID(), defaultLabel));
                 }
             }
         }
@@ -98,11 +95,9 @@ public:
             {
                 pillars[i].setSliderStyle(juce::Slider::LinearVertical);
                 pillars[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-                pillars[i].setColour(juce::Slider::trackColourId,
-                                     accent.withAlpha(0.18f));
+                pillars[i].setColour(juce::Slider::trackColourId, accent.withAlpha(0.18f));
                 pillars[i].setColour(juce::Slider::thumbColourId, accent);
-                pillars[i].setColour(juce::Slider::backgroundColourId,
-                                     GalleryColors::get(GalleryColors::borderGray()));
+                pillars[i].setColour(juce::Slider::backgroundColourId, GalleryColors::get(GalleryColors::borderGray()));
                 pillars[i].setTooltip(foundNames[i]);
                 A11y::setup(pillars[i], foundNames[i]);
 
@@ -151,8 +146,8 @@ public:
 
         // Gradient overlay — subtle top-down highlight
         {
-            juce::ColourGradient overlay(juce::Colour(0x04FFFFFF), 0.0f, 0.0f,
-                                         juce::Colours::transparentBlack, 0.0f, b.getHeight(), false);
+            juce::ColourGradient overlay(juce::Colour(0x04FFFFFF), 0.0f, 0.0f, juce::Colours::transparentBlack, 0.0f,
+                                         b.getHeight(), false);
             g.setGradientFill(overlay);
             g.fillRoundedRectangle(b, 4.0f);
         }
@@ -164,8 +159,7 @@ public:
         // Engine name header line
         g.setColour(accentColour.darker(0.2f));
         g.setFont(GalleryFonts::display(11.0f));
-        g.drawText(engineName.toUpperCase() + "  —  MACROS",
-                   8, 3, getWidth() - 16, kHeaderH - 3,
+        g.drawText(engineName.toUpperCase() + "  —  MACROS", 8, 3, getWidth() - 16, kHeaderH - 3,
                    juce::Justification::centredLeft);
 
         // Thin separator under header
@@ -181,10 +175,10 @@ public:
         if (numMacros == 0)
             return;
 
-        const int labelH  = 14;
+        const int labelH = 14;
         const int sliderY = kHeaderH + 4;
         const int sliderH = getHeight() - sliderY - labelH - 4;
-        const int colW    = getWidth() / 4;
+        const int colW = getWidth() / 4;
 
         for (int i = 0; i < numMacros; ++i)
         {
@@ -198,13 +192,13 @@ private:
     static constexpr int kHeaderH = 22;
 
     XOceanusProcessor& processor;
-    juce::String       engineName;
-    juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
-    int                numMacros = 0;
-    MIDILearnManager*  learnManager = nullptr;
+    juce::String engineName;
+    juce::Colour accentColour{GalleryColors::get(GalleryColors::borderGray())};
+    int numMacros = 0;
+    MIDILearnManager* learnManager = nullptr;
 
     std::array<juce::Slider, 4> pillars;
-    std::array<juce::Label,  4> pillarLabels;
+    std::array<juce::Label, 4> pillarLabels;
     // Destruction order: listeners → attachments → sliders.
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attachments;
     std::vector<std::unique_ptr<MidiLearnMouseListener>> pillarLearnListeners;

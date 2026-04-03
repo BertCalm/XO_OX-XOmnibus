@@ -4,7 +4,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xocelot {
+namespace xocelot
+{
 
 // BitCrusher — bit depth quantization + sample rate decimation.
 // SP-1200 style: quantize to 2^bits levels, hold every Nth sample.
@@ -32,7 +33,11 @@ struct BitCrusher
         return holdSample;
     }
 
-    void reset() { holdSample = 0.0f; holdCounter = 0.0f; }
+    void reset()
+    {
+        holdSample = 0.0f;
+        holdCounter = 0.0f;
+    }
 };
 
 } // namespace xocelot

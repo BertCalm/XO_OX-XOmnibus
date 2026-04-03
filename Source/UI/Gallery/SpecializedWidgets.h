@@ -23,7 +23,8 @@
 //   • Work at any width — fully responsive layout
 //   • Header-only (.h)
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //  NamedModeSelector
@@ -63,14 +64,10 @@ public:
     // modeColors    — optional per-mode accent color vector; nullptr uses defaultAccent for all.
     // defaultAccent — engine accent colour used when modeColors is nullptr, or as fallback
     //                 when the modeColors vector is shorter than modeNames.
-    NamedModeSelector(juce::AudioProcessorValueTreeState& apvts,
-                      const juce::String&                  paramId,
-                      const juce::StringArray&              modeNames,
-                      const std::vector<juce::Colour>*      modeColors  = nullptr,
-                      juce::Colour                          defaultAccent = juce::Colour(GalleryColors::xoGold))
-        : pid(paramId),
-          names(modeNames),
-          accent(defaultAccent)
+    NamedModeSelector(juce::AudioProcessorValueTreeState& apvts, const juce::String& paramId,
+                      const juce::StringArray& modeNames, const std::vector<juce::Colour>* modeColors = nullptr,
+                      juce::Colour defaultAccent = juce::Colour(GalleryColors::xoGold))
+        : pid(paramId), names(modeNames), accent(defaultAccent)
     {
         // Copy per-mode colors (may be nullptr → empty)
         if (modeColors != nullptr)
@@ -89,15 +86,13 @@ public:
         addAndMakeVisible(combo);
 
         // APVTS attachment — full undo / redo + host automation support.
-        attachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
-            apvts, paramId, combo);
+        attachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(apvts, paramId, combo);
 
         // Observe combo changes (driven by host / undo) so we can repaint.
         combo.onChange = [this] { repaint(); };
 
         // Accessibility
-        A11y::setup(*this,
-                    juce::String("Mode selector: ") + paramId,
+        A11y::setup(*this, juce::String("Mode selector: ") + paramId,
                     juce::String("Use Left/Right arrow keys or click to select a mode."));
 
         // Optional small icon per mode — reserved for future use.
@@ -111,8 +106,7 @@ public:
             colors[(size_t)index] = c;
         else
         {
-            colors.resize((size_t)juce::jmax(index + 1, (int)colors.size()),
-                          accent);
+            colors.resize((size_t)juce::jmax(index + 1, (int)colors.size()), accent);
             colors[(size_t)index] = c;
         }
         repaint();
@@ -121,7 +115,8 @@ public:
     // Optional: set a 12×12 icon image shown to the left of the pill label.
     void setModeIcon(int index, const juce::Image& img)
     {
-        if (index < 0) return;
+        if (index < 0)
+            return;
         if (index >= (int)icons.size())
             icons.resize((size_t)(index + 1));
         icons[(size_t)index] = img;
@@ -131,7 +126,8 @@ public:
     //--------------------------------------------------------------------------
     void paint(juce::Graphics& g) override
     {
-        if (names.isEmpty()) return;
+        if (names.isEmpty())
+            return;
 
         int selected = getSelectedIndex();
         auto b = getLocalBounds().toFloat();
@@ -141,8 +137,8 @@ public:
         g.fillRoundedRectangle(b, 12.0f);
 
         int n = names.size();
-        float pillW  = b.getWidth() / static_cast<float>(n);
-        float pillH  = b.getHeight();
+        float pillW = b.getWidth() / static_cast<float>(n);
+        float pillH = b.getHeight();
 
         for (int i = 0; i < n; ++i)
         {
@@ -174,23 +170,19 @@ public:
             if (i < (int)icons.size() && icons[(size_t)i].isValid())
             {
                 float iconSz = 12.0f;
-                float iconY  = pill.getCentreY() - iconSz * 0.5f;
-                g.drawImage(icons[(size_t)i],
-                            juce::Rectangle<float>(textX, iconY, iconSz, iconSz),
+                float iconY = pill.getCentreY() - iconSz * 0.5f;
+                g.drawImage(icons[(size_t)i], juce::Rectangle<float>(textX, iconY, iconSz, iconSz),
                             juce::RectanglePlacement::centred);
                 textX += iconSz + 4.0f;
                 textW -= iconSz + 4.0f;
             }
 
             // Pill label
-            juce::Colour textCol = isActive
-                ? juce::Colours::white
-                : modeCol.withAlpha(0.60f);
+            juce::Colour textCol = isActive ? juce::Colours::white : modeCol.withAlpha(0.60f);
 
             g.setColour(textCol);
             g.setFont(GalleryFonts::label(juce::jmax(8.0f, pillH * 0.36f)));
-            g.drawText(names[i],
-                       juce::Rectangle<float>(textX, pill.getY(), textW, pill.getHeight()),
+            g.drawText(names[i], juce::Rectangle<float>(textX, pill.getY(), textW, pill.getHeight()),
                        juce::Justification::centred, true);
         }
 
@@ -201,10 +193,12 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        if (e.mods.isRightButtonDown()) return;
+        if (e.mods.isRightButtonDown())
+            return;
 
         int n = names.size();
-        if (n == 0) return;
+        if (n == 0)
+            return;
 
         float pillW = (float)getWidth() / (float)n;
         int clicked = (int)(e.position.x / pillW);
@@ -216,7 +210,8 @@ public:
     bool keyPressed(const juce::KeyPress& key) override
     {
         int n = names.size();
-        if (n == 0) return false;
+        if (n == 0)
+            return false;
 
         int current = getSelectedIndex();
         if (key == juce::KeyPress::leftKey)
@@ -260,20 +255,19 @@ private:
     }
 
     //──────────────────────────────────────────────────────────────────────
-    juce::String                        pid;
-    juce::StringArray                   names;
-    std::vector<juce::Colour>           colors;
-    std::vector<juce::Image>            icons;
-    juce::Colour                        accent;
+    juce::String pid;
+    juce::StringArray names;
+    std::vector<juce::Colour> colors;
+    std::vector<juce::Image> icons;
+    juce::Colour accent;
 
     // Attachment vehicle: hidden combo box owned by this component.
     // Declaration order: combo before attachment (attachment binds to combo).
-    juce::ComboBox                                                          combo;
+    juce::ComboBox combo;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> attachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(NamedModeSelector)
 };
-
 
 //==============================================================================
 //  BipolarAxisBar
@@ -315,27 +309,20 @@ public:
     // rightLabel — text shown at the right edge (positive pole name).
     // leftColor  — gradient/label colour for the negative side.
     // rightColor — gradient/label colour for the positive side.
-    BipolarAxisBar(juce::AudioProcessorValueTreeState& apvts,
-                   const juce::String&                  paramId,
-                   const juce::String&                  leftLabel,
-                   const juce::String&                  rightLabel,
-                   juce::Colour                         leftColor,
-                   juce::Colour                         rightColor)
-        : pid(paramId),
-          lblLeft(leftLabel),
-          lblRight(rightLabel),
-          colLeft(leftColor),
-          colRight(rightColor)
+    BipolarAxisBar(juce::AudioProcessorValueTreeState& apvts, const juce::String& paramId,
+                   const juce::String& leftLabel, const juce::String& rightLabel, juce::Colour leftColor,
+                   juce::Colour rightColor)
+        : pid(paramId), lblLeft(leftLabel), lblRight(rightLabel), colLeft(leftColor), colRight(rightColor)
     {
         // Determine the parameter's natural range so we can find the center.
         if (auto* rp = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(paramId)))
         {
             auto range = rp->getNormalisableRange();
-            paramMin   = range.start;
-            paramMax   = range.end;
+            paramMin = range.start;
+            paramMax = range.end;
             // Center: midpoint of the range (handles 0..1 and −1..+1 equally)
             paramCenter = (paramMin + paramMax) * 0.5;
-            defaultVal  = static_cast<double>(range.convertFrom0to1(rp->getDefaultValue()));
+            defaultVal = static_cast<double>(range.convertFrom0to1(rp->getDefaultValue()));
         }
 
         // Hidden slider — carries the SliderAttachment, never painted.
@@ -345,18 +332,15 @@ public:
         slider.setRange(paramMin, paramMax);
         addAndMakeVisible(slider);
 
-        attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            apvts, paramId, slider);
+        attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, paramId, slider);
 
         // Repaint when the slider value changes (driven by host / undo).
         slider.onValueChange = [this] { repaint(); };
 
         // Accessibility
-        A11y::setup(*this,
-                    juce::String("Bipolar axis: ") + leftLabel + " / " + rightLabel,
-                    juce::String("Drag left for ") + leftLabel +
-                    juce::String(", drag right for ") + rightLabel +
-                    juce::String(". Double-click or Cmd+click to reset to center."));
+        A11y::setup(*this, juce::String("Bipolar axis: ") + leftLabel + " / " + rightLabel,
+                    juce::String("Drag left for ") + leftLabel + juce::String(", drag right for ") + rightLabel +
+                        juce::String(". Double-click or Cmd+click to reset to center."));
     }
 
     //--------------------------------------------------------------------------
@@ -364,32 +348,31 @@ public:
     {
         using namespace GalleryColors;
 
-        auto b         = getLocalBounds().toFloat();
-        float barH     = b.getHeight();
-        float labelW   = juce::jmax(36.0f, barH * 2.0f);  // adaptive label width
-        float barX     = b.getX() + labelW;
+        auto b = getLocalBounds().toFloat();
+        float barH = b.getHeight();
+        float labelW = juce::jmax(36.0f, barH * 2.0f); // adaptive label width
+        float barX = b.getX() + labelW;
         float barRight = b.getRight() - labelW;
         float barWidth = barRight - barX;
-        if (barWidth < 4.0f) barWidth = 4.0f;
+        if (barWidth < 4.0f)
+            barWidth = 4.0f;
 
         // ── 1. Left label ─────────────────────────────────────────────────
         g.setFont(GalleryFonts::label(juce::jmax(7.0f, barH * 0.32f)));
         g.setColour(colLeft);
-        g.drawText(lblLeft,
-                   juce::Rectangle<float>(b.getX(), b.getY(), labelW - 4.0f, barH),
+        g.drawText(lblLeft, juce::Rectangle<float>(b.getX(), b.getY(), labelW - 4.0f, barH),
                    juce::Justification::centredRight, true);
 
         // ── 2. Right label ────────────────────────────────────────────────
         g.setColour(colRight);
-        g.drawText(lblRight,
-                   juce::Rectangle<float>(barRight + 4.0f, b.getY(), labelW - 4.0f, barH),
+        g.drawText(lblRight, juce::Rectangle<float>(barRight + 4.0f, b.getY(), labelW - 4.0f, barH),
                    juce::Justification::centredLeft, true);
 
         // ── 3. Bar track ─────────────────────────────────────────────────
-        float trackPad  = barH * 0.25f;
-        float trackY    = b.getY() + trackPad;
-        float trackH    = barH - trackPad * 2.0f;
-        float trackR    = trackH * 0.5f;
+        float trackPad = barH * 0.25f;
+        float trackY = b.getY() + trackPad;
+        float trackH = barH - trackPad * 2.0f;
+        float trackR = trackH * 0.5f;
 
         juce::Rectangle<float> track(barX, trackY, barWidth, trackH);
 
@@ -403,16 +386,12 @@ public:
         g.drawVerticalLine(juce::roundToInt(centerX), trackY, trackY + trackH);
 
         // ── 5. Gradient fill from center toward current value ─────────────
-        double val       = slider.getValue();
-        double normVal   = (paramMax > paramMin)
-                               ? (val - paramMin) / (paramMax - paramMin)
-                               : 0.5;
-        double normCenter = (paramMax > paramMin)
-                                ? (paramCenter - paramMin) / (paramMax - paramMin)
-                                : 0.5;
+        double val = slider.getValue();
+        double normVal = (paramMax > paramMin) ? (val - paramMin) / (paramMax - paramMin) : 0.5;
+        double normCenter = (paramMax > paramMin) ? (paramCenter - paramMin) / (paramMax - paramMin) : 0.5;
 
-        float fillStart  = (float)normCenter * barWidth;
-        float fillEnd    = (float)normVal    * barWidth;
+        float fillStart = (float)normCenter * barWidth;
+        float fillEnd = (float)normVal * barWidth;
 
         if (std::abs(fillEnd - fillStart) > 0.5f)
         {
@@ -420,19 +399,15 @@ public:
             float fw = std::abs(fillEnd - fillStart);
 
             bool isPositive = (val >= paramCenter);
-            juce::Colour fillNear = isPositive ? colRight.withAlpha(0.60f)
-                                               : colLeft.withAlpha(0.60f);
-            juce::Colour fillFar  = isPositive ? colRight.withAlpha(0.90f)
-                                               : colLeft.withAlpha(0.90f);
+            juce::Colour fillNear = isPositive ? colRight.withAlpha(0.60f) : colLeft.withAlpha(0.60f);
+            juce::Colour fillFar = isPositive ? colRight.withAlpha(0.90f) : colLeft.withAlpha(0.90f);
 
             // Gradient: more opaque toward the value tip, more transparent at center.
             juce::ColourGradient grad;
             if (isPositive)
-                grad = juce::ColourGradient(fillNear, fx, 0.0f,
-                                            fillFar,  fx + fw, 0.0f, false);
+                grad = juce::ColourGradient(fillNear, fx, 0.0f, fillFar, fx + fw, 0.0f, false);
             else
-                grad = juce::ColourGradient(fillFar,  fx, 0.0f,
-                                            fillNear, fx + fw, 0.0f, false);
+                grad = juce::ColourGradient(fillFar, fx, 0.0f, fillNear, fx + fw, 0.0f, false);
 
             g.setGradientFill(grad);
             g.fillRoundedRectangle(fx, trackY, fw, trackH, trackR);
@@ -440,15 +415,11 @@ public:
 
         // ── 6. Value indicator — 4 pt bright vertical bar at value position ─
         float indicatorX = barX + (float)normVal * barWidth;
-        float indHalfW   = 2.0f;
+        float indHalfW = 2.0f;
         juce::Colour indColor = (val >= paramCenter) ? colRight : colLeft;
 
         g.setColour(indColor.brighter(0.4f));
-        g.fillRoundedRectangle(indicatorX - indHalfW,
-                               trackY - 2.0f,
-                               indHalfW * 2.0f,
-                               trackH  + 4.0f,
-                               indHalfW);
+        g.fillRoundedRectangle(indicatorX - indHalfW, trackY - 2.0f, indHalfW * 2.0f, trackH + 4.0f, indHalfW);
 
         // ── 7. Focus ring (WCAG 2.4.7) ───────────────────────────────────
         if (hasKeyboardFocus(true))
@@ -457,7 +428,8 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        if (e.mods.isRightButtonDown()) return;
+        if (e.mods.isRightButtonDown())
+            return;
 
         // Cmd+click → reset to center (mirrors GalleryKnob pattern)
         if (e.mods.isCommandDown())
@@ -471,7 +443,8 @@ public:
 
     void mouseDrag(const juce::MouseEvent& e) override
     {
-        if (e.mods.isRightButtonDown()) return;
+        if (e.mods.isRightButtonDown())
+            return;
         setValueFromMouseX(e.position.x);
     }
 
@@ -492,11 +465,12 @@ private:
     // apply it via the slider → attachment → APVTS chain.
     void setValueFromMouseX(float mouseX)
     {
-        float labelW   = juce::jmax(36.0f, (float)getHeight() * 2.0f);
-        float barX     = labelW;
+        float labelW = juce::jmax(36.0f, (float)getHeight() * 2.0f);
+        float barX = labelW;
         float barRight = (float)getWidth() - labelW;
         float barWidth = barRight - barX;
-        if (barWidth < 1.0f) return;
+        if (barWidth < 1.0f)
+            return;
 
         float norm = juce::jlimit(0.0f, 1.0f, (mouseX - barX) / barWidth);
         double val = paramMin + norm * (paramMax - paramMin);
@@ -504,21 +478,21 @@ private:
     }
 
     //──────────────────────────────────────────────────────────────────────
-    juce::String                        pid;
-    juce::String                        lblLeft;
-    juce::String                        lblRight;
-    juce::Colour                        colLeft;
-    juce::Colour                        colRight;
+    juce::String pid;
+    juce::String lblLeft;
+    juce::String lblRight;
+    juce::Colour colLeft;
+    juce::Colour colRight;
 
-    double paramMin    = -1.0;
-    double paramMax    =  1.0;
-    double paramCenter =  0.0;
-    double defaultVal  =  0.0;
+    double paramMin = -1.0;
+    double paramMax = 1.0;
+    double paramCenter = 0.0;
+    double defaultVal = 0.0;
 
     // Attachment vehicle: hidden slider.
     // Declaration order: slider before attachment (attachment binds to slider).
-    juce::Slider                                                             slider;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>   attachment;
+    juce::Slider slider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BipolarAxisBar)
 };

@@ -118,34 +118,32 @@ using namespace xoceanus;
 
 struct MinimalTestProcessor : juce::AudioProcessor
 {
-    const juce::String getName() const override              { return "TestProcessor"; }
-    void prepareToPlay (double, int) override                {}
-    void releaseResources() override                         {}
-    void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
-    double getTailLengthSeconds() const override             { return 0.0; }
-    bool acceptsMidi() const override                        { return false; }
-    bool producesMidi() const override                       { return false; }
-    juce::AudioProcessorEditor* createEditor() override      { return nullptr; }
-    bool hasEditor() const override                          { return false; }
-    int getNumPrograms() override                            { return 1; }
-    int getCurrentProgram() override                         { return 0; }
-    void setCurrentProgram (int) override                    {}
-    const juce::String getProgramName (int) override         { return {}; }
-    void changeProgramName (int, const juce::String&) override {}
-    void getStateInformation (juce::MemoryBlock&) override   {}
-    void setStateInformation (const void*, int) override     {}
+    const juce::String getName() const override { return "TestProcessor"; }
+    void prepareToPlay(double, int) override {}
+    void releaseResources() override {}
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+    double getTailLengthSeconds() const override { return 0.0; }
+    bool acceptsMidi() const override { return false; }
+    bool producesMidi() const override { return false; }
+    juce::AudioProcessorEditor* createEditor() override { return nullptr; }
+    bool hasEditor() const override { return false; }
+    int getNumPrograms() override { return 1; }
+    int getCurrentProgram() override { return 0; }
+    void setCurrentProgram(int) override {}
+    const juce::String getProgramName(int) override { return {}; }
+    void changeProgramName(int, const juce::String&) override {}
+    void getStateInformation(juce::MemoryBlock&) override {}
+    void setStateInformation(const void*, int) override {}
 };
 
 // Build an APVTS from a ParameterLayout and return the flat param list.
 // The returned pointers are owned by `apvtsOut`; keep apvtsOut alive while
 // you use the list.
 static const juce::Array<juce::AudioProcessorParameter*>&
-buildParamList (MinimalTestProcessor& proc,
-                std::unique_ptr<juce::AudioProcessorValueTreeState>& apvtsOut,
-                juce::AudioProcessorValueTreeState::ParameterLayout layout)
+buildParamList(MinimalTestProcessor& proc, std::unique_ptr<juce::AudioProcessorValueTreeState>& apvtsOut,
+               juce::AudioProcessorValueTreeState::ParameterLayout layout)
 {
-    apvtsOut = std::make_unique<juce::AudioProcessorValueTreeState>(
-        proc, nullptr, "PARAMS", std::move (layout));
+    apvtsOut = std::make_unique<juce::AudioProcessorValueTreeState>(proc, nullptr, "PARAMS", std::move(layout));
     return proc.getParameters();
 }
 
@@ -167,7 +165,8 @@ static float doc_computeRMS(const juce::AudioBuffer<float>& buffer, int numSampl
         }
         totalSamples += numSamples;
     }
-    if (totalSamples == 0) return 0.0f;
+    if (totalSamples == 0)
+        return 0.0f;
     return static_cast<float>(std::sqrt(sumSq / totalSamples));
 }
 
@@ -178,14 +177,14 @@ static float doc_computeRMS(const juce::AudioBuffer<float>& buffer, int numSampl
 
 static float doc_computeZeroCrossingRate(const juce::AudioBuffer<float>& buffer, int numSamples)
 {
-    if (numSamples < 2) return 0.0f;
+    if (numSamples < 2)
+        return 0.0f;
 
     int crossings = 0;
     const float* data = buffer.getReadPointer(0);
     for (int i = 1; i < numSamples; ++i)
     {
-        if ((data[i] >= 0.0f && data[i - 1] < 0.0f) ||
-            (data[i] < 0.0f && data[i - 1] >= 0.0f))
+        if ((data[i] >= 0.0f && data[i - 1] < 0.0f) || (data[i] < 0.0f && data[i - 1] >= 0.0f))
         {
             crossings++;
         }
@@ -198,11 +197,8 @@ static float doc_computeZeroCrossingRate(const juce::AudioBuffer<float>& buffer,
 // returning the combined audio buffer.
 //==============================================================================
 
-static juce::AudioBuffer<float> renderWithVelocity(SynthEngine& engine,
-                                                     float velocity,
-                                                     int numBlocks,
-                                                     int blockSize,
-                                                     double sampleRate)
+static juce::AudioBuffer<float> renderWithVelocity(SynthEngine& engine, float velocity, int numBlocks, int blockSize,
+                                                   double sampleRate)
 {
     engine.prepare(sampleRate, blockSize);
     engine.reset();
@@ -251,42 +247,43 @@ TEST_CASE("Doctrine D001 - velocity shapes output for all engines", "[doctrine][
         INFO("Engine: " << id);
 
         // Optic is a visual engine — intentionally exempt from audio doctrine
-        if (id == "Optic") continue;
+        if (id == "Optic")
+            continue;
 
-        auto engineLow  = registry.createEngine(id);
+        auto engineLow = registry.createEngine(id);
         auto engineHigh = registry.createEngine(id);
-        REQUIRE(engineLow  != nullptr);
+        REQUIRE(engineLow != nullptr);
         REQUIRE(engineHigh != nullptr);
 
-        auto bufLow  = renderWithVelocity(*engineLow,  0.2f, numBlocks, blockSize, sampleRate);
+        auto bufLow = renderWithVelocity(*engineLow, 0.2f, numBlocks, blockSize, sampleRate);
         auto bufHigh = renderWithVelocity(*engineHigh, 1.0f, numBlocks, blockSize, sampleRate);
 
         int totalSamples = numBlocks * blockSize;
-        float rmsLow  = doc_computeRMS(bufLow,  totalSamples);
+        float rmsLow = doc_computeRMS(bufLow, totalSamples);
         float rmsHigh = doc_computeRMS(bufHigh, totalSamples);
 
         // Both silent → engine needs APVTS to produce sound; skip gracefully
-        if (rmsLow < 1e-7f && rmsHigh < 1e-7f) continue;
+        if (rmsLow < 1e-7f && rmsHigh < 1e-7f)
+            continue;
 
         // If either extreme is near-silent, amplitude ratio is the check
         if (rmsLow < 1e-6f || rmsHigh < 1e-6f)
         {
-            float ampRatio = (rmsHigh > rmsLow)
-                ? rmsHigh / std::max(rmsLow,  1e-10f)
-                : rmsLow  / std::max(rmsHigh, 1e-10f);
+            float ampRatio =
+                (rmsHigh > rmsLow) ? rmsHigh / std::max(rmsLow, 1e-10f) : rmsLow / std::max(rmsHigh, 1e-10f);
             CHECK(ampRatio > 1.5f);
             continue;
         }
 
-        float zcrLow  = doc_computeZeroCrossingRate(bufLow,  totalSamples);
+        float zcrLow = doc_computeZeroCrossingRate(bufLow, totalSamples);
         float zcrHigh = doc_computeZeroCrossingRate(bufHigh, totalSamples);
-        float zcrDiff    = std::abs(zcrHigh - zcrLow);
-        float zcrAvg     = (zcrHigh + zcrLow) * 0.5f;
+        float zcrDiff = std::abs(zcrHigh - zcrLow);
+        float zcrAvg = (zcrHigh + zcrLow) * 0.5f;
         float zcrRelDiff = (zcrAvg > 0.001f) ? zcrDiff / zcrAvg : 0.0f;
 
-        float ampRatio   = rmsHigh / std::max(rmsLow, 1e-10f);
-        bool timbralDiff  = zcrRelDiff > 0.01f;
-        bool amplitudeDiff = ampRatio  > 1.2f;
+        float ampRatio = rmsHigh / std::max(rmsLow, 1e-10f);
+        bool timbralDiff = zcrRelDiff > 0.01f;
+        bool amplitudeDiff = ampRatio > 1.2f;
 
         CHECK((timbralDiff || amplitudeDiff));
     }
@@ -320,15 +317,14 @@ TEST_CASE("Doctrine D002 - all engines have modulation parameters", "[doctrine][
             for (auto* param : params)
             {
                 auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
-                if (!withId) continue;
+                if (!withId)
+                    continue;
                 std::string lower = withId->getParameterID().toStdString();
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
-                if (lower.find("mod")         != std::string::npos ||
-                    lower.find("matrix")      != std::string::npos ||
-                    lower.find("macro")       != std::string::npos ||
-                    lower.find("aftertouch")  != std::string::npos ||
-                    lower.find("expression")  != std::string::npos)
+                if (lower.find("mod") != std::string::npos || lower.find("matrix") != std::string::npos ||
+                    lower.find("macro") != std::string::npos || lower.find("aftertouch") != std::string::npos ||
+                    lower.find("expression") != std::string::npos)
                 {
                     modParamCount++;
                 }
@@ -394,7 +390,8 @@ TEST_CASE("Doctrine D004 - no degenerate (zero-range) parameters in any engine",
 
             for (auto* param : params)
             {
-                if (!param) continue;
+                if (!param)
+                    continue;
                 totalParams++;
 
                 auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param);
@@ -430,8 +427,8 @@ TEST_CASE("Doctrine D005 - engines with LFO rate params have floor <= 0.01 Hz", 
         REQUIRE(engine != nullptr);
 
         bool hasLFORateParam = false;
-        bool hasSlowLFO      = false;
-        bool hasLFOParam     = false;
+        bool hasSlowLFO = false;
+        bool hasLFOParam = false;
 
         {
             MinimalTestProcessor proc;
@@ -441,7 +438,8 @@ TEST_CASE("Doctrine D005 - engines with LFO rate params have floor <= 0.01 Hz", 
             for (auto* param : params)
             {
                 auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
-                if (!withId) continue;
+                if (!withId)
+                    continue;
                 std::string lower = withId->getParameterID().toStdString();
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
@@ -449,9 +447,8 @@ TEST_CASE("Doctrine D005 - engines with LFO rate params have floor <= 0.01 Hz", 
                     hasLFOParam = true;
 
                 bool isLFORate = (lower.find("lfo") != std::string::npos &&
-                                 (lower.find("rate")  != std::string::npos ||
-                                  lower.find("freq")  != std::string::npos ||
-                                  lower.find("speed") != std::string::npos));
+                                  (lower.find("rate") != std::string::npos || lower.find("freq") != std::string::npos ||
+                                   lower.find("speed") != std::string::npos));
 
                 if (isLFORate)
                 {
@@ -499,18 +496,19 @@ TEST_CASE("Doctrine D006 - all engines respond to velocity", "[doctrine][d006]")
         INFO("Engine: " << id);
 
         // Optic is intentionally exempt (visual engine)
-        if (id == "Optic") continue;
+        if (id == "Optic")
+            continue;
 
-        auto engineLow  = registry.createEngine(id);
+        auto engineLow = registry.createEngine(id);
         auto engineHigh = registry.createEngine(id);
-        REQUIRE(engineLow  != nullptr);
+        REQUIRE(engineLow != nullptr);
         REQUIRE(engineHigh != nullptr);
 
-        auto bufLow  = renderWithVelocity(*engineLow,  0.1f, numBlocks, blockSize, sampleRate);
+        auto bufLow = renderWithVelocity(*engineLow, 0.1f, numBlocks, blockSize, sampleRate);
         auto bufHigh = renderWithVelocity(*engineHigh, 1.0f, numBlocks, blockSize, sampleRate);
 
         int totalSamples = numBlocks * blockSize;
-        float rmsLow  = doc_computeRMS(bufLow,  totalSamples);
+        float rmsLow = doc_computeRMS(bufLow, totalSamples);
         float rmsHigh = doc_computeRMS(bufHigh, totalSamples);
 
         bool velocityResponse = false;
@@ -552,22 +550,17 @@ TEST_CASE("Doctrine D006 - all engines have expression/velocity parameters", "[d
             for (auto* param : params)
             {
                 auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
-                if (!withId) continue;
+                if (!withId)
+                    continue;
                 std::string lower = withId->getParameterID().toStdString();
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
 
-                if (lower.find("aftertouch") != std::string::npos ||
-                    lower.find("modwheel")   != std::string::npos ||
-                    lower.find("mod_wheel")  != std::string::npos ||
-                    lower.find("expression") != std::string::npos ||
-                    lower.find("pressure")   != std::string::npos ||
-                    lower.find("velocity")   != std::string::npos ||
-                    lower.find("velscale")   != std::string::npos ||
-                    lower.find("vel_scale")  != std::string::npos ||
-                    lower.find("velsens")    != std::string::npos ||
-                    lower.find("vel_sens")   != std::string::npos ||
-                    lower.find("at_")        != std::string::npos ||
-                    lower.find("mw_")        != std::string::npos)
+                if (lower.find("aftertouch") != std::string::npos || lower.find("modwheel") != std::string::npos ||
+                    lower.find("mod_wheel") != std::string::npos || lower.find("expression") != std::string::npos ||
+                    lower.find("pressure") != std::string::npos || lower.find("velocity") != std::string::npos ||
+                    lower.find("velscale") != std::string::npos || lower.find("vel_scale") != std::string::npos ||
+                    lower.find("velsens") != std::string::npos || lower.find("vel_sens") != std::string::npos ||
+                    lower.find("at_") != std::string::npos || lower.find("mw_") != std::string::npos)
                 {
                     hasExpressionParam = true;
                     break;
@@ -580,6 +573,10 @@ TEST_CASE("Doctrine D006 - all engines have expression/velocity parameters", "[d
 }
 
 // Backward-compat shim
-namespace doctrine_tests {
-int runAll() { return 0; }
+namespace doctrine_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace doctrine_tests

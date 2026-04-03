@@ -33,17 +33,21 @@
 
 #if JUCE_IOS
 
-namespace xoceanus { namespace reef_bridge {
+namespace xoceanus
+{
+namespace reef_bridge
+{
 
 //==============================================================================
 // Creature state enum matching CreatureDriverMap.json state labels.
 //
-enum class CreatureState : int {
-    Sleeping  = 0,  // No recent param activity; creature rests/hides
-    Idle      = 1,  // Low param values; gentle ambient animation
-    Curious   = 2,  // Mid param values; creature investigates
-    Excited   = 3,  // High param values; energetic animation
-    Singing   = 4   // Note active — overrides all param-driven states
+enum class CreatureState : int
+{
+    Sleeping = 0, // No recent param activity; creature rests/hides
+    Idle = 1,     // Low param values; gentle ambient animation
+    Curious = 2,  // Mid param values; creature investigates
+    Excited = 3,  // High param values; energetic animation
+    Singing = 4   // Note active — overrides all param-driven states
 };
 
 //==============================================================================
@@ -78,8 +82,7 @@ void shutdown();
 // reefX / reefY:   Position within the reef scene's coordinate space.
 //                  (0,0) = bottom-left of the scene; reefX increases rightward.
 //
-void addCreature(int creatureId, const char* spriteSheetName,
-                 float reefX, float reefY);
+void addCreature(int creatureId, const char* spriteSheetName, float reefX, float reefY);
 
 // removeCreature() — Remove the creature node from the scene and release its
 // sprite resources.
@@ -111,12 +114,13 @@ void scrollReef(float offsetX);
 // Particle effects
 //==============================================================================
 
-enum class ParticleType : int {
-    TreasureChestShimmer    = 0,  // Gold shimmer burst from chest
+enum class ParticleType : int
+{
+    TreasureChestShimmer = 0,     // Gold shimmer burst from chest
     CreatureDiscoveryBubbles = 1, // Bubble trail on first creature reveal
-    DepthZoneTransition     = 2,  // Full-screen gradient wash on zone change
-    PadStrikeRipple         = 3,  // Underwater ripple from pad hit
-    BrickUnlockGlow         = 4   // Radial glow when a brick preset unlocks
+    DepthZoneTransition = 2,      // Full-screen gradient wash on zone change
+    PadStrikeRipple = 3,          // Underwater ripple from pad hit
+    BrickUnlockGlow = 4           // Radial glow when a brick preset unlocks
 };
 
 // emitParticles() — Spawn a particle effect at a reef-space position.
@@ -164,42 +168,55 @@ bool captureReefSnapshot(const char* outputPath);
 // Returns true after a successful initialize() and before shutdown().
 bool isInitialized();
 
-}} // namespace xoceanus::reef_bridge
+} // namespace reef_bridge
+} // namespace xoceanus
 
 #else // !JUCE_IOS  — no-op stubs for macOS builds
 
-namespace xoceanus { namespace reef_bridge {
+namespace xoceanus
+{
+namespace reef_bridge
+{
 
-enum class CreatureState : int {
-    Sleeping = 0, Idle = 1, Curious = 2, Excited = 3, Singing = 4
+enum class CreatureState : int
+{
+    Sleeping = 0,
+    Idle = 1,
+    Curious = 2,
+    Excited = 3,
+    Singing = 4
 };
 
-enum class ParticleType : int {
-    TreasureChestShimmer    = 0,
+enum class ParticleType : int
+{
+    TreasureChestShimmer = 0,
     CreatureDiscoveryBubbles = 1,
-    DepthZoneTransition     = 2,
-    PadStrikeRipple         = 3,
-    BrickUnlockGlow         = 4
+    DepthZoneTransition = 2,
+    PadStrikeRipple = 3,
+    BrickUnlockGlow = 4
 };
 
 inline void initialize([[maybe_unused]] float reefViewHeight) {}
 inline void shutdown() {}
-inline void addCreature([[maybe_unused]] int creatureId,
-                        [[maybe_unused]] const char* spriteSheetName,
-                        [[maybe_unused]] float reefX,
-                        [[maybe_unused]] float reefY) {}
+inline void addCreature([[maybe_unused]] int creatureId, [[maybe_unused]] const char* spriteSheetName,
+                        [[maybe_unused]] float reefX, [[maybe_unused]] float reefY)
+{
+}
 inline void removeCreature([[maybe_unused]] int creatureId) {}
-inline void setCreatureState([[maybe_unused]] int creatureId,
-                             [[maybe_unused]] CreatureState state) {}
+inline void setCreatureState([[maybe_unused]] int creatureId, [[maybe_unused]] CreatureState state) {}
 inline void scrollReef([[maybe_unused]] float offsetX) {}
-inline void emitParticles([[maybe_unused]] ParticleType type,
-                          [[maybe_unused]] float x,
-                          [[maybe_unused]] float y) {}
+inline void emitParticles([[maybe_unused]] ParticleType type, [[maybe_unused]] float x, [[maybe_unused]] float y) {}
 inline void setDepthZone([[maybe_unused]] int zoneIndex) {}
 inline bool captureReefSnapshot([[maybe_unused]] const char* outputPath)
-{ return false; }
-inline bool isInitialized() { return false; }
+{
+    return false;
+}
+inline bool isInitialized()
+{
+    return false;
+}
 
-}} // namespace xoceanus::reef_bridge
+} // namespace reef_bridge
+} // namespace xoceanus
 
 #endif // JUCE_IOS

@@ -55,7 +55,8 @@
 #include <cmath>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // AnalysisResult — 4-metric feature vector computed from the normalised buffer.
@@ -70,10 +71,10 @@ namespace xoceanus {
 //==============================================================================
 struct AnalysisResult
 {
-    float transientRatio   = 0.0f;  ///< 0.0 = sustained, 1.0 = sharp attack
+    float transientRatio = 0.0f;      ///< 0.0 = sustained, 1.0 = sharp attack
     float spectralCentroid = 1000.0f; ///< Hz — brightness indicator
-    float spectralFlatness = 0.5f;  ///< 0.0 = tonal, 1.0 = noise-like
-    float durationS        = 0.0f;  ///< seconds
+    float spectralFlatness = 0.5f;    ///< 0.0 = tonal, 1.0 = noise-like
+    float durationS = 0.0f;           ///< seconds
 };
 
 //==============================================================================
@@ -95,14 +96,14 @@ struct AnalysisResult
 class RebirthPipeline
 {
 public:
-    using ProgressCallback = std::function<void (float)>;
+    using ProgressCallback = std::function<void(float)>;
 
-    RebirthPipeline()  = default;
+    RebirthPipeline() = default;
     ~RebirthPipeline() = default;
 
     // Not copyable — contains atomic state
-    RebirthPipeline (const RebirthPipeline&)            = delete;
-    RebirthPipeline& operator= (const RebirthPipeline&) = delete;
+    RebirthPipeline(const RebirthPipeline&) = delete;
+    RebirthPipeline& operator=(const RebirthPipeline&) = delete;
 
     //==========================================================================
     // process() — Full offline rendering of one sample buffer.
@@ -121,84 +122,85 @@ public:
     //
     // Thread: worker thread only.  Never call from the audio thread.
     //==========================================================================
-    juce::AudioBuffer<float> process (const juce::AudioBuffer<float>& source,
-                                      double                           sourceSampleRate,
-                                      const RebirthSettings&           settings,
-                                      float                            velocityNorm,
-                                      juce::Random&                    rng,
-                                      ProgressCallback                 progress = nullptr)
+    juce::AudioBuffer<float> process(const juce::AudioBuffer<float>& source, double sourceSampleRate,
+                                     const RebirthSettings& settings, float velocityNorm, juce::Random& rng,
+                                     ProgressCallback progress = nullptr)
     {
-        cancelFlag_.store (false, std::memory_order_relaxed);
+        cancelFlag_.store(false, std::memory_order_relaxed);
 
         // Clamp velocity to [0, 1]
-        velocityNorm = juce::jlimit (0.0f, 1.0f, velocityNorm);
+        velocityNorm = juce::jlimit(0.0f, 1.0f, velocityNorm);
 
-        auto reportProgress = [&progress] (float p)
+        auto reportProgress = [&progress](float p)
         {
-            if (progress) progress (juce::jlimit (0.0f, 1.0f, p));
+            if (progress)
+                progress(juce::jlimit(0.0f, 1.0f, p));
         };
 
         // ── Stage 1: Resample ────────────────────────────────────────────────
-        auto buf = resampleBuffer (source, sourceSampleRate);
-        double workingSR = chooseTargetSR (sourceSampleRate);
-        reportProgress (0.10f);
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        auto buf = resampleBuffer(source, sourceSampleRate);
+        double workingSR = chooseTargetSR(sourceSampleRate);
+        reportProgress(0.10f);
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 2: Measure input LUFS ──────────────────────────────────────
-        float inputLUFS = computeIntegratedLUFS (buf, workingSR);
-        reportProgress (0.15f);
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        float inputLUFS = computeIntegratedLUFS(buf, workingSR);
+        reportProgress(0.15f);
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 3: Normalise to -18 dBFS LUFS ─────────────────────────────
-        normaliseToTarget (buf, inputLUFS, kNormalisationTargetLUFS);
-        reportProgress (0.20f);
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        normaliseToTarget(buf, inputLUFS, kNormalisationTargetLUFS);
+        reportProgress(0.20f);
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 4: Audio analysis ──────────────────────────────────────────
-        AnalysisResult analysis = analyzeAudio (buf, workingSR);
-        reportProgress (0.25f);
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        AnalysisResult analysis = analyzeAudio(buf, workingSR);
+        reportProgress(0.25f);
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 5: Keep a dry copy BEFORE the chain (for WetDryMix) ───────
         juce::AudioBuffer<float> dryBuf;
-        dryBuf.makeCopyOf (buf);
+        dryBuf.makeCopyOf(buf);
 
         // ── Stage 6: Execute FX chain ─────────────────────────────────────
-        const RebirthProfile& profile = getRebirthProfile (settings.profileId);
+        const RebirthProfile& profile = getRebirthProfile(settings.profileId);
         // Extend buffer by profile's tail time so reverb/diffusion decays fully
         {
-            int tailSamples = (int) std::ceil (profile.tailSeconds * workingSR);
+            int tailSamples = (int)std::ceil(profile.tailSeconds * workingSR);
             int totalSamples = buf.getNumSamples() + tailSamples;
-            juce::AudioBuffer<float> extended (buf.getNumChannels(), totalSamples);
+            juce::AudioBuffer<float> extended(buf.getNumChannels(), totalSamples);
             extended.clear();
             for (int ch = 0; ch < buf.getNumChannels(); ++ch)
-                extended.copyFrom (ch, 0, buf, ch, 0, buf.getNumSamples());
-            buf = std::move (extended);
+                extended.copyFrom(ch, 0, buf, ch, 0, buf.getNumSamples());
+            buf = std::move(extended);
 
             // Extend dryBuf to match (tail = silence)
-            juce::AudioBuffer<float> dryExtended (dryBuf.getNumChannels(), totalSamples);
+            juce::AudioBuffer<float> dryExtended(dryBuf.getNumChannels(), totalSamples);
             dryExtended.clear();
             for (int ch = 0; ch < dryBuf.getNumChannels(); ++ch)
-                dryExtended.copyFrom (ch, 0, dryBuf, ch, 0, dryBuf.getNumSamples());
-            dryBuf = std::move (dryExtended);
+                dryExtended.copyFrom(ch, 0, dryBuf, ch, 0, dryBuf.getNumSamples());
+            dryBuf = std::move(dryExtended);
         }
 
-        buf = applyChain (buf, dryBuf, workingSR, profile,
-                          settings.intensity, settings.chaosAmount,
-                          velocityNorm, analysis, rng,
-                          [&reportProgress] (float chainFrac) {
-                              reportProgress (0.25f + chainFrac * 0.55f);
-                          });
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        buf = applyChain(buf, dryBuf, workingSR, profile, settings.intensity, settings.chaosAmount, velocityNorm,
+                         analysis, rng,
+                         [&reportProgress](float chainFrac) { reportProgress(0.25f + chainFrac * 0.55f); });
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 7: Output LUFS compensation ───────────────────────────────
-        compensateGain (buf, workingSR, inputLUFS);
-        reportProgress (0.85f);
-        if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+        compensateGain(buf, workingSR, inputLUFS);
+        reportProgress(0.85f);
+        if (cancelFlag_.load(std::memory_order_relaxed))
+            return {};
 
         // ── Stage 8: True-peak limit at -1.0 dBTP ───────────────────────────
-        applyTruePeakLimit (buf, workingSR);
-        reportProgress (1.00f);
+        applyTruePeakLimit(buf, workingSR);
+        reportProgress(1.00f);
 
         return buf;
     }
@@ -211,21 +213,20 @@ public:
     //
     // velocityNorm is fixed at 0.7 (representative single layer).
     //==========================================================================
-    juce::AudioBuffer<float> preview (const juce::AudioBuffer<float>& source,
-                                      double                           sourceSampleRate,
-                                      const RebirthSettings&           settings)
+    juce::AudioBuffer<float> preview(const juce::AudioBuffer<float>& source, double sourceSampleRate,
+                                     const RebirthSettings& settings)
     {
         constexpr double kPreviewLengthS = 2.0;
-        int previewSamples = (int) std::ceil (kPreviewLengthS * sourceSampleRate);
+        int previewSamples = (int)std::ceil(kPreviewLengthS * sourceSampleRate);
 
         // Extract first 2 seconds (or the full buffer if shorter)
-        int numSamples = std::min (source.getNumSamples(), previewSamples);
-        juce::AudioBuffer<float> excerpt (source.getNumChannels(), numSamples);
+        int numSamples = std::min(source.getNumSamples(), previewSamples);
+        juce::AudioBuffer<float> excerpt(source.getNumChannels(), numSamples);
         for (int ch = 0; ch < source.getNumChannels(); ++ch)
-            excerpt.copyFrom (ch, 0, source, ch, 0, numSamples);
+            excerpt.copyFrom(ch, 0, source, ch, 0, numSamples);
 
-        juce::Random rng (12345); // Fixed seed for deterministic previews
-        return process (excerpt, sourceSampleRate, settings, 0.7f, rng, nullptr);
+        juce::Random rng(12345); // Fixed seed for deterministic previews
+        return process(excerpt, sourceSampleRate, settings, 0.7f, rng, nullptr);
     }
 
     //==========================================================================
@@ -235,22 +236,19 @@ public:
     // between FX chain modules.  Incomplete results are discarded (empty buffer
     // is returned to the caller).
     //==========================================================================
-    void cancel() noexcept
-    {
-        cancelFlag_.store (true, std::memory_order_relaxed);
-    }
+    void cancel() noexcept { cancelFlag_.store(true, std::memory_order_relaxed); }
 
 private:
     //==========================================================================
     // Internal constants
     //==========================================================================
     static constexpr double kNormalisationTargetLUFS = -18.0;
-    static constexpr double kTargetSR48              = 48000.0;
-    static constexpr double kTargetSR44              = 44100.0;
-    static constexpr float  kTruePeakCeilingDb       = -1.0f;
-    static constexpr int    kBlockSize               = 512;
+    static constexpr double kTargetSR48 = 48000.0;
+    static constexpr double kTargetSR44 = 44100.0;
+    static constexpr float kTruePeakCeilingDb = -1.0f;
+    static constexpr int kBlockSize = 512;
 
-    std::atomic<bool> cancelFlag_ { false };
+    std::atomic<bool> cancelFlag_{false};
 
     //==========================================================================
     // chooseTargetSR() — Decide the working sample rate.
@@ -258,10 +256,12 @@ private:
     // Keep source at 44100 or 48000 to avoid double-resampling if already at a
     // standard rate.  Everything else is resampled up to 48000.
     //==========================================================================
-    static double chooseTargetSR (double sourceSR) noexcept
+    static double chooseTargetSR(double sourceSR) noexcept
     {
-        if (std::abs (sourceSR - kTargetSR44) < 1.0) return kTargetSR44;
-        if (std::abs (sourceSR - kTargetSR48) < 1.0) return kTargetSR48;
+        if (std::abs(sourceSR - kTargetSR44) < 1.0)
+            return kTargetSR44;
+        if (std::abs(sourceSR - kTargetSR48) < 1.0)
+            return kTargetSR48;
         return kTargetSR48;
     }
 
@@ -274,25 +274,24 @@ private:
     //
     // If the source is already at the target SR, returns a copy unchanged.
     //==========================================================================
-    static juce::AudioBuffer<float> resampleBuffer (const juce::AudioBuffer<float>& source,
-                                                    double                           sourceSR)
+    static juce::AudioBuffer<float> resampleBuffer(const juce::AudioBuffer<float>& source, double sourceSR)
     {
-        double targetSR = chooseTargetSR (sourceSR);
+        double targetSR = chooseTargetSR(sourceSR);
 
         // Already at target? Return a copy.
-        if (std::abs (sourceSR - targetSR) < 1.0)
+        if (std::abs(sourceSR - targetSR) < 1.0)
         {
             juce::AudioBuffer<float> copy;
-            copy.makeCopyOf (source);
+            copy.makeCopyOf(source);
             return copy;
         }
 
-        double ratio         = targetSR / sourceSR;
-        int    numInputSamps = source.getNumSamples();
-        int    numOutSamps   = (int) std::ceil ((double) numInputSamps * ratio);
-        int    numCh         = source.getNumChannels();
+        double ratio = targetSR / sourceSR;
+        int numInputSamps = source.getNumSamples();
+        int numOutSamps = (int)std::ceil((double)numInputSamps * ratio);
+        int numCh = source.getNumChannels();
 
-        juce::AudioBuffer<float> output (numCh, numOutSamps);
+        juce::AudioBuffer<float> output(numCh, numOutSamps);
         output.clear();
 
         // juce::LagrangeInterpolator processes one channel at a time.
@@ -301,17 +300,13 @@ private:
             juce::LagrangeInterpolator interp;
             interp.reset();
 
-            const float* srcData = source.getReadPointer (ch);
-            float*       dstData = output.getWritePointer (ch);
+            const float* srcData = source.getReadPointer(ch);
+            float* dstData = output.getWritePointer(ch);
 
             // process() returns the number of input samples consumed.
             // We feed all input and let the interpolator handle the rest.
-            interp.process (1.0 / ratio,  // speed ratio (sourceSR / targetSR)
-                            srcData,
-                            dstData,
-                            numOutSamps,
-                            numInputSamps,
-                            0);
+            interp.process(1.0 / ratio, // speed ratio (sourceSR / targetSR)
+                           srcData, dstData, numOutSamps, numInputSamps, 0);
         }
 
         return output;
@@ -324,15 +319,14 @@ private:
     // Gain in dB = targetLUFS - inputLUFS.
     // If the input is silence (-100 dBFS sentinel), gain is left unchanged.
     //==========================================================================
-    static void normaliseToTarget (juce::AudioBuffer<float>& buf,
-                                   float                      inputLUFS,
-                                   double                     targetLUFS)
+    static void normaliseToTarget(juce::AudioBuffer<float>& buf, float inputLUFS, double targetLUFS)
     {
-        if (inputLUFS <= -99.0f) return;  // silence — do nothing
+        if (inputLUFS <= -99.0f)
+            return; // silence — do nothing
 
-        float gainDb  = (float) targetLUFS - inputLUFS;
-        float gainLin = juce::Decibels::decibelsToGain (gainDb);
-        buf.applyGain (gainLin);
+        float gainDb = (float)targetLUFS - inputLUFS;
+        float gainLin = juce::Decibels::decibelsToGain(gainDb);
+        buf.applyGain(gainLin);
     }
 
     //==========================================================================
@@ -356,46 +350,47 @@ private:
     //
     // durationS: buf.getNumSamples() / sampleRate.
     //==========================================================================
-    static AnalysisResult analyzeAudio (const juce::AudioBuffer<float>& buf,
-                                        double                           sampleRate)
+    static AnalysisResult analyzeAudio(const juce::AudioBuffer<float>& buf, double sampleRate)
     {
         AnalysisResult result;
-        int   numSamps = buf.getNumSamples();
-        int   numCh    = buf.getNumChannels();
+        int numSamps = buf.getNumSamples();
+        int numCh = buf.getNumChannels();
 
         if (numSamps == 0 || numCh == 0)
             return result;
 
-        result.durationS = (float) numSamps / (float) sampleRate;
+        result.durationS = (float)numSamps / (float)sampleRate;
 
         // ── Build mono sum ───────────────────────────────────────────────────
-        std::vector<float> mono ((size_t) numSamps, 0.0f);
+        std::vector<float> mono((size_t)numSamps, 0.0f);
         for (int ch = 0; ch < numCh; ++ch)
         {
-            const float* src = buf.getReadPointer (ch);
+            const float* src = buf.getReadPointer(ch);
             for (int i = 0; i < numSamps; ++i)
-                mono[(size_t) i] += src[i];
+                mono[(size_t)i] += src[i];
         }
-        float invCh = 1.0f / (float) numCh;
-        for (auto& s : mono) s *= invCh;
+        float invCh = 1.0f / (float)numCh;
+        for (auto& s : mono)
+            s *= invCh;
 
         // ── Transient ratio ──────────────────────────────────────────────────
         {
-            int seg0End = std::min ((int) std::ceil (0.010 * sampleRate), numSamps);
+            int seg0End = std::min((int)std::ceil(0.010 * sampleRate), numSamps);
             int seg1Beg = seg0End;
-            int seg1End = std::min ((int) std::ceil (0.100 * sampleRate), numSamps);
+            int seg1End = std::min((int)std::ceil(0.100 * sampleRate), numSamps);
 
-            auto rms = [&mono] (int start, int end) -> float
+            auto rms = [&mono](int start, int end) -> float
             {
-                if (end <= start) return 0.0f;
+                if (end <= start)
+                    return 0.0f;
                 double sum = 0.0;
                 for (int i = start; i < end; ++i)
-                    sum += (double) mono[(size_t) i] * (double) mono[(size_t) i];
-                return (float) std::sqrt (sum / (double) (end - start));
+                    sum += (double)mono[(size_t)i] * (double)mono[(size_t)i];
+                return (float)std::sqrt(sum / (double)(end - start));
             };
 
-            float rms0 = rms (0,       seg0End);
-            float rms1 = rms (seg1Beg, seg1End);
+            float rms0 = rms(0, seg0End);
+            float rms1 = rms(seg1Beg, seg1End);
 
             if (rms1 > 1e-9f)
             {
@@ -403,10 +398,10 @@ private:
                 // transientRatio = clamp(rms0/rms1, 0, 1) gives 0..1 range
                 // where 1.0 means attack segment is AT LEAST as loud as sustain.
                 float raw = rms0 / rms1;
-                result.transientRatio = juce::jlimit (0.0f, 1.0f, (raw - 1.0f) / 3.0f + 0.5f);
+                result.transientRatio = juce::jlimit(0.0f, 1.0f, (raw - 1.0f) / 3.0f + 0.5f);
                 // Mapping: ratio=1 → 0.5, ratio=4 → 1.0, ratio=0 → ~0.17
                 // Better: simple sigmoid-ish: clamp(raw / (raw + 1), 0, 1)
-                result.transientRatio = juce::jlimit (0.0f, 1.0f, raw / (raw + 1.0f));
+                result.transientRatio = juce::jlimit(0.0f, 1.0f, raw / (raw + 1.0f));
             }
             else
             {
@@ -422,50 +417,50 @@ private:
             if (numSamps >= kFFTSize)
             {
                 // Centre-ish window
-                int start = std::max (0, (numSamps - kFFTSize) / 2);
+                int start = std::max(0, (numSamps - kFFTSize) / 2);
 
-                std::vector<float> fftRe (kFFTSize, 0.0f);
-                std::vector<float> fftIm (kFFTSize, 0.0f);
+                std::vector<float> fftRe(kFFTSize, 0.0f);
+                std::vector<float> fftIm(kFFTSize, 0.0f);
                 for (int i = 0; i < kFFTSize; ++i)
                 {
-                    float w = 0.5f * (1.0f - std::cos (2.0f * juce::MathConstants<float>::pi
-                                                       * (float) i / (float) (kFFTSize - 1)));
-                    fftRe[(size_t) i] = mono[(size_t) (start + i)] * w;
+                    float w =
+                        0.5f *
+                        (1.0f - std::cos(2.0f * juce::MathConstants<float>::pi * (float)i / (float)(kFFTSize - 1)));
+                    fftRe[(size_t)i] = mono[(size_t)(start + i)] * w;
                 }
 
                 // Inline radix-2 FFT from RebirthDSP.h (avoids juce_dsp / <complex>)
-                inlineRadix2FFT (fftRe.data(), fftIm.data(), kFFTSize);
+                inlineRadix2FFT(fftRe.data(), fftIm.data(), kFFTSize);
 
                 int halfN = kFFTSize / 2;
-                float binHz = (float) sampleRate / (float) kFFTSize;
+                float binHz = (float)sampleRate / (float)kFFTSize;
 
-                double sumMagFreq    = 0.0;  // Sum(f_i * |X_i|)
-                double sumMag        = 0.0;  // Sum(|X_i|)
-                double sumLogMag     = 0.0;  // Sum(ln(|X_i| + eps))
+                double sumMagFreq = 0.0; // Sum(f_i * |X_i|)
+                double sumMag = 0.0;     // Sum(|X_i|)
+                double sumLogMag = 0.0;  // Sum(ln(|X_i| + eps))
                 constexpr float kEps = 1e-10f;
 
-                for (int i = 1; i < halfN; ++i)  // skip DC bin
+                for (int i = 1; i < halfN; ++i) // skip DC bin
                 {
-                    float re  = fftRe[(size_t) i];
-                    float im  = fftIm[(size_t) i];
-                    float mag = std::sqrt (re * re + im * im) + kEps;
-                    float hz  = (float) i * binHz;
+                    float re = fftRe[(size_t)i];
+                    float im = fftIm[(size_t)i];
+                    float mag = std::sqrt(re * re + im * im) + kEps;
+                    float hz = (float)i * binHz;
 
-                    sumMagFreq += (double) hz  * (double) mag;
-                    sumMag     += (double) mag;
-                    sumLogMag  += (double) std::log (mag);
+                    sumMagFreq += (double)hz * (double)mag;
+                    sumMag += (double)mag;
+                    sumLogMag += (double)std::log(mag);
                 }
 
-                int   validBins = halfN - 1;  // excluding DC
+                int validBins = halfN - 1; // excluding DC
                 if (sumMag > kEps)
                 {
-                    result.spectralCentroid = (float) (sumMagFreq / sumMag);
+                    result.spectralCentroid = (float)(sumMagFreq / sumMag);
 
                     // Flatness = geometric mean / arithmetic mean
-                    double geomMean  = std::exp (sumLogMag / (double) validBins);
-                    double arithMean = sumMag / (double) validBins;
-                    result.spectralFlatness = juce::jlimit (0.0f, 1.0f,
-                                                            (float) (geomMean / arithMean));
+                    double geomMean = std::exp(sumLogMag / (double)validBins);
+                    double arithMean = sumMag / (double)validBins;
+                    result.spectralFlatness = juce::jlimit(0.0f, 1.0f, (float)(geomMean / arithMean));
                 }
             }
             // If buffer < 2048 samples, leave defaults (1kHz centroid, 0.5 flatness)
@@ -493,69 +488,66 @@ private:
     // analysis-driven parameter adaptation; all other modules read their params
     // directly from the profile config.
     //==========================================================================
-    juce::AudioBuffer<float> applyChain (juce::AudioBuffer<float>       wet,
-                                         const juce::AudioBuffer<float>& dry,
-                                         double                           sampleRate,
-                                         const RebirthProfile&            profile,
-                                         float                            intensity,
-                                         float                            chaosAmount,
-                                         float                            velocityNorm,
-                                         const AnalysisResult&            analysis,
-                                         juce::Random&                    rng,
-                                         std::function<void (float)>      reportChainProgress)
+    juce::AudioBuffer<float> applyChain(juce::AudioBuffer<float> wet, const juce::AudioBuffer<float>& dry,
+                                        double sampleRate, const RebirthProfile& profile, float intensity,
+                                        float chaosAmount, float velocityNorm, const AnalysisResult& analysis,
+                                        juce::Random& rng, std::function<void(float)> reportChainProgress)
     {
         int numSamps = wet.getNumSamples();
-        int numCh    = wet.getNumChannels();
+        int numCh = wet.getNumChannels();
 
         // Ensure at least 2 channels for stereo processing.
         // If mono, duplicate to stereo before processing, then collapse after.
         bool wasMono = (numCh == 1);
         if (wasMono)
         {
-            juce::AudioBuffer<float> stereo (2, numSamps);
-            stereo.copyFrom (0, 0, wet, 0, 0, numSamps);
-            stereo.copyFrom (1, 0, wet, 0, 0, numSamps);
-            wet = std::move (stereo);
+            juce::AudioBuffer<float> stereo(2, numSamps);
+            stereo.copyFrom(0, 0, wet, 0, 0, numSamps);
+            stereo.copyFrom(1, 0, wet, 0, 0, numSamps);
+            wet = std::move(stereo);
             numCh = 2;
         }
 
-        int numModules = (int) profile.chain.size();
+        int numModules = (int)profile.chain.size();
 
         // ── Pre-allocate DSP modules to avoid per-block allocation ───────────
         // All modules are stack-allocated here (export thread, not audio thread).
-        Saturator         saturator;
-        Combulator        combulator;
-        Combulator        combulator2;  // OWARE sympathetic comb bank
+        Saturator saturator;
+        Combulator combulator;
+        Combulator combulator2; // OWARE sympathetic comb bank
         TransientDesigner transientDesigner;
-        AllpassDiffuser   allpassDiffuser;
-        FormantResonator  formantResonator;
-        NoiseBurst        noiseBurst;
-        SpectralTilt      spectralTilt;
-        LushReverb        lushReverb;
+        AllpassDiffuser allpassDiffuser;
+        FormantResonator formantResonator;
+        NoiseBurst noiseBurst;
+        SpectralTilt spectralTilt;
+        LushReverb lushReverb;
 
         // Biquad LP state (for BiquadLPFilter modules) — Direct Form II transposed
-        struct BiquadState { float z1L = 0.f, z2L = 0.f, z1R = 0.f, z2R = 0.f; };
+        struct BiquadState
+        {
+            float z1L = 0.f, z2L = 0.f, z1R = 0.f, z2R = 0.f;
+        };
         BiquadState biquadLP;
 
         // Prepare modules that need sampleRate
-        saturator.setDrive (0.0f); // will be reconfigured per-module
-        saturator.setMix (1.0f);
+        saturator.setDrive(0.0f); // will be reconfigured per-module
+        saturator.setMix(1.0f);
 
-        combulator.prepare (sampleRate);
-        combulator2.prepare (sampleRate);
-        transientDesigner.prepare (sampleRate);
-        allpassDiffuser.prepare (sampleRate, kBlockSize);
-        formantResonator.prepare (sampleRate, kBlockSize);
-        noiseBurst.prepare (sampleRate, kBlockSize);
-        spectralTilt.prepare (sampleRate);
-        lushReverb.prepare (sampleRate);
+        combulator.prepare(sampleRate);
+        combulator2.prepare(sampleRate);
+        transientDesigner.prepare(sampleRate);
+        allpassDiffuser.prepare(sampleRate, kBlockSize);
+        formantResonator.prepare(sampleRate, kBlockSize);
+        noiseBurst.prepare(sampleRate, kBlockSize);
+        spectralTilt.prepare(sampleRate);
+        lushReverb.prepare(sampleRate);
 
         // Track which Combulator instance to configure next (for OWARE 2-comb chain)
         int combulatorIndex = 0;
 
         // ── OWARE: pre-select Akan interval ratios from spectral centroid ────
         // Ratios are applied to both Combulator instances below when encountered.
-        float akanRatio2 = 2.0f,  akanRatio3 = 3.0f;   // Metal (default: 1–4kHz)
+        float akanRatio2 = 2.0f, akanRatio3 = 3.0f; // Metal (default: 1–4kHz)
         if (profile.id == RebirthProfileID::OWARE)
         {
             float centroid = analysis.spectralCentroid;
@@ -582,431 +574,448 @@ private:
         // ── Iterate chain ────────────────────────────────────────────────────
         for (int moduleIdx = 0; moduleIdx < numModules; ++moduleIdx)
         {
-            if (cancelFlag_.load (std::memory_order_relaxed)) return {};
+            if (cancelFlag_.load(std::memory_order_relaxed))
+                return {};
 
-            const DSPModuleConfig& cfg = profile.chain[(size_t) moduleIdx];
+            const DSPModuleConfig& cfg = profile.chain[(size_t)moduleIdx];
 
-            float* L = wet.getWritePointer (0);
-            float* R = wet.getWritePointer (1);
+            float* L = wet.getWritePointer(0);
+            float* R = wet.getWritePointer(1);
 
             switch (cfg.moduleId)
             {
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::Saturator:
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::Saturator:
+            {
+                float drive = resolveVelocityParam(cfg, "drive", velocityNorm);
+                float mode = resolveVelocityParam(cfg, "mode", velocityNorm);
+
+                Saturator::SaturationMode satMode = Saturator::SaturationMode::Tube;
+                int modeInt = (int)std::round(mode);
+                switch (modeInt)
                 {
-                    float drive = resolveVelocityParam (cfg, "drive", velocityNorm);
-                    float mode  = resolveVelocityParam (cfg, "mode",  velocityNorm);
-
-                    Saturator::SaturationMode satMode = Saturator::SaturationMode::Tube;
-                    int modeInt = (int) std::round (mode);
-                    switch (modeInt)
-                    {
-                        case 0:  satMode = Saturator::SaturationMode::Tube;     break;
-                        case 1:  satMode = Saturator::SaturationMode::Tape;     break;
-                        case 2:  satMode = Saturator::SaturationMode::Digital;  break;
-                        case 3:  satMode = Saturator::SaturationMode::FoldBack; break;
-                        default: satMode = Saturator::SaturationMode::Tube;     break;
-                    }
-
-                    saturator.setMode (satMode);
-                    saturator.setDrive (drive);
-                    saturator.setMix (1.0f);
-                    saturator.setOutputGain (1.0f);
-
-                    // Process block-by-block (pre-allocated kBlockSize block)
-                    for (int i = 0; i < numSamps; ++i)
-                    {
-                        L[i] = saturator.processSample (L[i]);
-                        R[i] = saturator.processSample (R[i]);
-                    }
+                case 0:
+                    satMode = Saturator::SaturationMode::Tube;
                     break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::SoftClipGuard:
-                {
-                    rebirthSoftClipBlock (L, numSamps);
-                    rebirthSoftClipBlock (R, numSamps);
+                case 1:
+                    satMode = Saturator::SaturationMode::Tape;
                     break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::Combulator:
-                {
-                    // Choose which Combulator instance to use
-                    Combulator& comb = (combulatorIndex == 0) ? combulator : combulator2;
-                    ++combulatorIndex;
-
-                    float feedback = resolveVelocityParam (cfg, "feedback", velocityNorm);
-                    float damping  = resolveVelocityParam (cfg, "damping",  velocityNorm);
-                    float mix      = resolveVelocityParam (cfg, "mix",      velocityNorm);
-
-                    comb.setFeedback (feedback);
-                    comb.setDamping (damping);
-                    comb.setMix (mix);
-
-                    // Tune fundamental to spectral centroid for resonance tracking.
-                    // Clamp to [20, 2000] Hz so comb delays are musically sensible.
-                    float centroidHz = juce::jlimit (20.0f, 2000.0f,
-                                                     analysis.spectralCentroid);
-                    comb.setFrequency (centroidHz);
-
-                    // OWARE: apply Akan interval ratios as semitone offsets.
-                    if (profile.id == RebirthProfileID::OWARE)
-                    {
-                        // Convert frequency ratios to semitone offsets:
-                        // semitones = 12 * log2(ratio)
-                        float semi2 = 12.0f * std::log2 (akanRatio2);
-                        float semi3 = 12.0f * std::log2 (akanRatio3);
-                        comb.setComb2Offset (semi2);
-                        comb.setComb3Offset (semi3);
-                    }
-
-                    comb.processBlock (L, R, numSamps);
+                case 2:
+                    satMode = Saturator::SaturationMode::Digital;
                     break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::TransientDesigner:
-                {
-                    float attack  = resolveVelocityParam (cfg, "attack",  velocityNorm);
-                    float sustain = resolveVelocityParam (cfg, "sustain", velocityNorm);
-                    float mix     = resolveVelocityParam (cfg, "mix",     velocityNorm);
-                    if (mix < 0.001f) mix = 1.0f; // default full mix if not specified
-
-                    transientDesigner.setAttack (attack);
-                    transientDesigner.setSustain (sustain);
-                    transientDesigner.setMix (mix);
-                    transientDesigner.processBlock (L, R, numSamps);
+                case 3:
+                    satMode = Saturator::SaturationMode::FoldBack;
                     break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::NoiseBurst:
-                {
-                    float burstLengthMs = resolveVelocityParam (cfg, "burstLengthMs", velocityNorm);
-                    float burstLevelDb  = resolveVelocityParam (cfg, "burstLevelDb",  velocityNorm);
-                    float hpfCutoffHz   = resolveVelocityParam (cfg, "hpfCutoffHz",   velocityNorm);
-
-                    // chaosAmount (0.0–1.0) adds extra noise energy on top of the
-                    // profile-defined burst level.  Each +1.0 of chaosAmount lifts the
-                    // burst by up to +12 dB and extends burst length by up to +20 ms,
-                    // creating audible textural variation that scales with user intent.
-                    const float chaosBurstDb  = chaosAmount * 12.0f;   // 0 → +12 dB
-                    const float chaosLengthMs = chaosAmount * 20.0f;   // 0 → +20 ms
-
-                    float finalBurstDb = (burstLevelDb < 0.0f ? burstLevelDb : -24.0f)
-                                        + chaosBurstDb;
-                    float finalLengthMs = (burstLengthMs > 0.0f ? burstLengthMs : 5.0f)
-                                         + chaosLengthMs;
-
-                    noiseBurst.setBurstLengthMs (finalLengthMs);
-                    noiseBurst.setBurstLevelDb  (finalBurstDb);
-                    noiseBurst.setHPFCutoffHz   (hpfCutoffHz   > 0.0f ? hpfCutoffHz   : 4000.0f);
-                    noiseBurst.triggerBurst();
-
-                    // Process in blocks matching pre-allocated size
-                    for (int offset = 0; offset < numSamps; offset += kBlockSize)
-                    {
-                        int block = std::min (kBlockSize, numSamps - offset);
-                        noiseBurst.processBlock (L + offset, R + offset, block);
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::AllpassDiffuser:
-                {
-                    float feedback = resolveVelocityParam (cfg, "feedback", velocityNorm);
-                    allpassDiffuser.setFeedbackAll (feedback);
-
-                    // Apply per-stage delay times from params if present
-                    for (int s = 0; s < AllpassDiffuser::kNumStages; ++s)
-                    {
-                        std::string key = "delayMs" + std::to_string (s);
-                        auto it = cfg.params.find (key);
-                        if (it != cfg.params.end())
-                            allpassDiffuser.setDelayMs (s, it->second);
-                    }
-
-                    for (int offset = 0; offset < numSamps; offset += kBlockSize)
-                    {
-                        int block = std::min (kBlockSize, numSamps - offset);
-                        allpassDiffuser.processBlock (L + offset, R + offset, block);
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::FormantResonator:
-                {
-                    float q   = resolveVelocityParam (cfg, "q",   velocityNorm);
-                    float mix = resolveVelocityParam (cfg, "mix", velocityNorm);
-
-                    // Analyse formants from the current (normalised) buffer state.
-                    // Use the original normalised buffer (wet at this point in chain)
-                    // — this captures the sample's actual spectral character.
-                    formantResonator.analyzeFormants (wet, sampleRate);
-                    formantResonator.setQ   (q   > 0.0f ? q   : 8.0f);
-                    formantResonator.setMix (mix > 0.0f ? mix : 0.4f);
-
-                    for (int offset = 0; offset < numSamps; offset += kBlockSize)
-                    {
-                        int block = std::min (kBlockSize, numSamps - offset);
-                        formantResonator.processBlock (L + offset, R + offset, block);
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::SpectralTilt:
-                {
-                    float tilt = resolveVelocityParam (cfg, "tilt", velocityNorm);
-                    spectralTilt.setTilt (tilt);
-                    spectralTilt.setMix (1.0f);
-                    spectralTilt.processBlock (L, R, numSamps);
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::BiquadLPFilter:
-                {
-                    // 2nd-order Butterworth LP, processed inline.
-                    // Pre-compute coefficients from resolved cutoff/Q.
-                    float cutoffHz = resolveVelocityParam (cfg, "cutoffHz", velocityNorm);
-                    float q        = resolveVelocityParam (cfg, "q",        velocityNorm);
-
-                    if (cutoffHz < 20.0f)  cutoffHz = 9000.0f; // default if missing
-                    if (q < 0.1f)          q        = 0.7071f; // Butterworth
-
-                    float srF = (float) sampleRate;
-                    float w0  = 2.0f * juce::MathConstants<float>::pi * cutoffHz / srF;
-                    float sinW0 = std::sin (w0);
-                    float cosW0 = std::cos (w0);
-                    float alpha = sinW0 / (2.0f * q);
-                    float a0inv = 1.0f / (1.0f + alpha);
-
-                    float b0 = (1.0f - cosW0) * 0.5f * a0inv;
-                    float b1 = (1.0f - cosW0) * a0inv;
-                    float b2 = b0;
-                    float a1 = -2.0f * cosW0 * a0inv;
-                    float a2 = (1.0f - alpha) * a0inv;
-
-                    // Transposed Direct Form II — process sample by sample
-                    for (int i = 0; i < numSamps; ++i)
-                    {
-                        // Left
-                        float yL       = b0 * L[i] + biquadLP.z1L;
-                        biquadLP.z1L   = b1 * L[i] - a1 * yL + biquadLP.z2L;
-                        biquadLP.z2L   = b2 * L[i] - a2 * yL;
-                        L[i] = yL;
-
-                        // Right
-                        float yR       = b0 * R[i] + biquadLP.z1R;
-                        biquadLP.z1R   = b1 * R[i] - a1 * yR + biquadLP.z2R;
-                        biquadLP.z2R   = b2 * R[i] - a2 * yR;
-                        R[i] = yR;
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::LushReverb:
-                {
-                    float roomSize = resolveVelocityParam (cfg, "roomSize", velocityNorm);
-                    float damping  = resolveVelocityParam (cfg, "damping",  velocityNorm);
-                    float mix      = resolveVelocityParam (cfg, "mix",      velocityNorm);
-
-                    if (roomSize < 0.0f) roomSize = 0.5f;
-                    if (damping  < 0.0f) damping  = 0.4f;
-                    if (mix      < 0.0f) mix      = 0.25f;
-
-                    lushReverb.setRoomSize (roomSize);
-                    lushReverb.setDamping  (damping);
-                    lushReverb.setWidth    (1.0f);
-                    lushReverb.setMix      (mix);
-
-                    // LushReverb has a 4-pointer API (inL, inR, outL, outR)
-                    // with safe in-place aliasing, so pass L,R,L,R.
-                    for (int offset = 0; offset < numSamps; offset += kBlockSize)
-                    {
-                        int block = std::min (kBlockSize, numSamps - offset);
-                        lushReverb.processBlock (L + offset, R + offset,
-                                                 L + offset, R + offset, block);
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::LFOModulator:
-                {
-                    // Per-destination LFO routing (#178).
-                    // cfg.params["target"] selects the destination:
-                    //   0.0 = Filter sweep — modulate AllpassDiffuser feedback (filter-sweep effect)
-                    //   1.0 = Pitch mod   — Doppler-style read-pointer modulation (subtle pitch vibrato)
-                    //   2.0 = Pan sweep   — L/R amplitude differential (circular pan sweep)
-                    // Default (no "target" key) — backward-compatible tremolo AM.
-                    float rate   = resolveVelocityParam (cfg, "rate",  velocityNorm);
-                    float depth  = resolveVelocityParam (cfg, "depth", velocityNorm);
-                    float target = -1.0f;   // sentinel = no target key
-                    {
-                        auto it = cfg.params.find ("target");
-                        if (it != cfg.params.end()) target = it->second;
-                    }
-
-                    if (rate  <= 0.0f) rate  = 0.3f;
-                    if (depth <= 0.0f) depth = 1.0f;
-
-                    const float twoPi    = juce::MathConstants<float>::twoPi;
-                    const float phaseInc = twoPi * rate / (float) sampleRate;
-
-                    if (target >= 0.0f && target < 0.5f)
-                    {
-                        // ── target 0.0: Filter sweep ─────────────────────────────────
-                        // Modulate AllpassDiffuser feedback across a ±gSwing range centred
-                        // on 0.6.  Coefficients are updated every 64 samples to avoid
-                        // per-sample buffer reallocations.  Achieves a rich chorusing /
-                        // filter-sweep effect suitable for OVERWASH and OPERA profiles.
-                        float gSwing = juce::jlimit (0.0f, 0.25f, depth / 250.0f);
-                        constexpr int kSub = 64;
-                        float phase = 0.0f;
-
-                        for (int off = 0; off < numSamps; off += kSub)
-                        {
-                            int   block  = std::min (kSub, numSamps - off);
-                            float midPhase = phase + phaseInc * (float) (off + block / 2);
-                            float lfoVal   = std::sin (midPhase);
-                            float g = juce::jlimit (-0.9f, 0.9f, 0.6f + gSwing * lfoVal);
-                            allpassDiffuser.setFeedbackAll (g);
-                            allpassDiffuser.processBlock (L + off, R + off, block);
-                        }
-                    }
-                    else if (target >= 0.5f && target < 1.5f)
-                    {
-                        // ── target 1.0: Pitch mod ────────────────────────────────────
-                        // Accumulate LFO into a circular read-pointer over a 256-sample
-                        // buffer.  Max pitch deviation ≈ ±(depth/250) semitones.
-                        // Reads with linear interpolation; result blended 30% in to keep
-                        // the effect subtle and prevent phase cancellation artefacts.
-                        constexpr int kPitchBufSize = 256;
-                        // Use static thread_local so the pipeline worker thread keeps
-                        // its own state but no heap allocation happens here.
-                        static thread_local float pitchBuf[kPitchBufSize] = {};
-                        static thread_local int   pitchWritePos = 0;
-
-                        float semitoneSwing = juce::jlimit (0.0f, 2.0f, depth / 250.0f);
-                        float maxRateOffset = (std::pow (2.0f, semitoneSwing / 12.0f) - 1.0f);
-                        float phase   = 0.0f;
-                        float readPtr = static_cast<float> (pitchWritePos);
-
-                        for (int i = 0; i < numSamps; ++i)
-                        {
-                            pitchBuf[pitchWritePos] = (L[i] + R[i]) * 0.5f;
-                            pitchWritePos = (pitchWritePos + 1) % kPitchBufSize;
-
-                            float lfoVal  = std::sin (phase);
-                            float rateOff = 1.0f + maxRateOffset * lfoVal;
-
-                            int   ri0    = static_cast<int> (readPtr) % kPitchBufSize;
-                            int   ri1    = (ri0 + 1) % kPitchBufSize;
-                            float frac   = readPtr - std::floor (readPtr);
-                            float interp = pitchBuf[ri0] * (1.0f - frac) + pitchBuf[ri1] * frac;
-
-                            // 30% blend keeps the pitch vibrato subtle
-                            L[i] = L[i] * 0.7f + interp * 0.3f;
-                            R[i] = R[i] * 0.7f + interp * 0.3f;
-
-                            readPtr  = std::fmod (readPtr + rateOff, static_cast<float> (kPitchBufSize));
-                            phase   += phaseInc;
-                            if (phase > twoPi) phase -= twoPi;
-                        }
-                    }
-                    else if (target >= 1.5f && target < 2.5f)
-                    {
-                        // ── target 2.0: Pan sweep ────────────────────────────────────
-                        // Sinusoidal L/R amplitude differential for smooth circular pan.
-                        float panDepth = juce::jlimit (0.0f, 0.5f, depth / 250.0f);
-                        float phase    = 0.0f;
-
-                        for (int i = 0; i < numSamps; ++i)
-                        {
-                            float panPos = panDepth * std::sin (phase);
-                            L[i] *= (1.0f - panPos);
-                            R[i] *= (1.0f + panPos);
-                            phase += phaseInc;
-                            if (phase > twoPi) phase -= twoPi;
-                        }
-                    }
-                    else
-                    {
-                        // ── Backward-compatible tremolo AM (no target key) ────────────
-                        float amDepth = juce::jlimit (0.0f, 0.2f, depth / 250.0f);
-                        float phase   = 0.0f;
-
-                        for (int i = 0; i < numSamps; ++i)
-                        {
-                            float lfoVal = 1.0f + amDepth * std::sin (phase);
-                            L[i] *= lfoVal;
-                            R[i] *= lfoVal;
-                            phase += phaseInc;
-                            if (phase > twoPi) phase -= twoPi;
-                        }
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::WetDryMix:
-                {
-                    // Blend the accumulated wet result with the pre-chain dry copy.
-                    // output = dry*(1 - intensity) + wet*intensity
-                    // intensity = 0.0: pass through dry (no transformation)
-                    // intensity = 1.0: full wet transformation
-                    float wet_gain = juce::jlimit (0.0f, 1.0f, intensity);
-                    float dry_gain = 1.0f - wet_gain;
-
-                    const float* dryL = dry.getReadPointer (0);
-                    const float* dryR = (dry.getNumChannels() > 1)
-                                       ? dry.getReadPointer (1)
-                                       : dry.getReadPointer (0);
-
-                    for (int i = 0; i < numSamps; ++i)
-                    {
-                        L[i] = dry_gain * dryL[i] + wet_gain * L[i];
-                        R[i] = dry_gain * dryR[i] + wet_gain * R[i];
-                    }
-                    break;
-                }
-
-                //--------------------------------------------------------------
-                case RebirthDSPModuleID::BrickwallLimiter:
-                {
-                    // BrickwallLimiter entries in the chain (if any) are handled
-                    // the same as the final pipeline limit stage, but with params.
-                    // In practice the profiles don't put BrickwallLimiter in chains —
-                    // the pipeline applies it at Stage 8 — but we support it for
-                    // completeness / future profiles.
-                    // Handled below in applyTruePeakLimit() with ceiling = -1 dBFS.
-                    break;
-                }
-
                 default:
-                    // Unknown module ID — skip silently, log in debug builds.
-                    jassertfalse;
+                    satMode = Saturator::SaturationMode::Tube;
                     break;
+                }
+
+                saturator.setMode(satMode);
+                saturator.setDrive(drive);
+                saturator.setMix(1.0f);
+                saturator.setOutputGain(1.0f);
+
+                // Process block-by-block (pre-allocated kBlockSize block)
+                for (int i = 0; i < numSamps; ++i)
+                {
+                    L[i] = saturator.processSample(L[i]);
+                    R[i] = saturator.processSample(R[i]);
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::SoftClipGuard:
+            {
+                rebirthSoftClipBlock(L, numSamps);
+                rebirthSoftClipBlock(R, numSamps);
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::Combulator:
+            {
+                // Choose which Combulator instance to use
+                Combulator& comb = (combulatorIndex == 0) ? combulator : combulator2;
+                ++combulatorIndex;
+
+                float feedback = resolveVelocityParam(cfg, "feedback", velocityNorm);
+                float damping = resolveVelocityParam(cfg, "damping", velocityNorm);
+                float mix = resolveVelocityParam(cfg, "mix", velocityNorm);
+
+                comb.setFeedback(feedback);
+                comb.setDamping(damping);
+                comb.setMix(mix);
+
+                // Tune fundamental to spectral centroid for resonance tracking.
+                // Clamp to [20, 2000] Hz so comb delays are musically sensible.
+                float centroidHz = juce::jlimit(20.0f, 2000.0f, analysis.spectralCentroid);
+                comb.setFrequency(centroidHz);
+
+                // OWARE: apply Akan interval ratios as semitone offsets.
+                if (profile.id == RebirthProfileID::OWARE)
+                {
+                    // Convert frequency ratios to semitone offsets:
+                    // semitones = 12 * log2(ratio)
+                    float semi2 = 12.0f * std::log2(akanRatio2);
+                    float semi3 = 12.0f * std::log2(akanRatio3);
+                    comb.setComb2Offset(semi2);
+                    comb.setComb3Offset(semi3);
+                }
+
+                comb.processBlock(L, R, numSamps);
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::TransientDesigner:
+            {
+                float attack = resolveVelocityParam(cfg, "attack", velocityNorm);
+                float sustain = resolveVelocityParam(cfg, "sustain", velocityNorm);
+                float mix = resolveVelocityParam(cfg, "mix", velocityNorm);
+                if (mix < 0.001f)
+                    mix = 1.0f; // default full mix if not specified
+
+                transientDesigner.setAttack(attack);
+                transientDesigner.setSustain(sustain);
+                transientDesigner.setMix(mix);
+                transientDesigner.processBlock(L, R, numSamps);
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::NoiseBurst:
+            {
+                float burstLengthMs = resolveVelocityParam(cfg, "burstLengthMs", velocityNorm);
+                float burstLevelDb = resolveVelocityParam(cfg, "burstLevelDb", velocityNorm);
+                float hpfCutoffHz = resolveVelocityParam(cfg, "hpfCutoffHz", velocityNorm);
+
+                // chaosAmount (0.0–1.0) adds extra noise energy on top of the
+                // profile-defined burst level.  Each +1.0 of chaosAmount lifts the
+                // burst by up to +12 dB and extends burst length by up to +20 ms,
+                // creating audible textural variation that scales with user intent.
+                const float chaosBurstDb = chaosAmount * 12.0f;  // 0 → +12 dB
+                const float chaosLengthMs = chaosAmount * 20.0f; // 0 → +20 ms
+
+                float finalBurstDb = (burstLevelDb < 0.0f ? burstLevelDb : -24.0f) + chaosBurstDb;
+                float finalLengthMs = (burstLengthMs > 0.0f ? burstLengthMs : 5.0f) + chaosLengthMs;
+
+                noiseBurst.setBurstLengthMs(finalLengthMs);
+                noiseBurst.setBurstLevelDb(finalBurstDb);
+                noiseBurst.setHPFCutoffHz(hpfCutoffHz > 0.0f ? hpfCutoffHz : 4000.0f);
+                noiseBurst.triggerBurst();
+
+                // Process in blocks matching pre-allocated size
+                for (int offset = 0; offset < numSamps; offset += kBlockSize)
+                {
+                    int block = std::min(kBlockSize, numSamps - offset);
+                    noiseBurst.processBlock(L + offset, R + offset, block);
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::AllpassDiffuser:
+            {
+                float feedback = resolveVelocityParam(cfg, "feedback", velocityNorm);
+                allpassDiffuser.setFeedbackAll(feedback);
+
+                // Apply per-stage delay times from params if present
+                for (int s = 0; s < AllpassDiffuser::kNumStages; ++s)
+                {
+                    std::string key = "delayMs" + std::to_string(s);
+                    auto it = cfg.params.find(key);
+                    if (it != cfg.params.end())
+                        allpassDiffuser.setDelayMs(s, it->second);
+                }
+
+                for (int offset = 0; offset < numSamps; offset += kBlockSize)
+                {
+                    int block = std::min(kBlockSize, numSamps - offset);
+                    allpassDiffuser.processBlock(L + offset, R + offset, block);
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::FormantResonator:
+            {
+                float q = resolveVelocityParam(cfg, "q", velocityNorm);
+                float mix = resolveVelocityParam(cfg, "mix", velocityNorm);
+
+                // Analyse formants from the current (normalised) buffer state.
+                // Use the original normalised buffer (wet at this point in chain)
+                // — this captures the sample's actual spectral character.
+                formantResonator.analyzeFormants(wet, sampleRate);
+                formantResonator.setQ(q > 0.0f ? q : 8.0f);
+                formantResonator.setMix(mix > 0.0f ? mix : 0.4f);
+
+                for (int offset = 0; offset < numSamps; offset += kBlockSize)
+                {
+                    int block = std::min(kBlockSize, numSamps - offset);
+                    formantResonator.processBlock(L + offset, R + offset, block);
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::SpectralTilt:
+            {
+                float tilt = resolveVelocityParam(cfg, "tilt", velocityNorm);
+                spectralTilt.setTilt(tilt);
+                spectralTilt.setMix(1.0f);
+                spectralTilt.processBlock(L, R, numSamps);
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::BiquadLPFilter:
+            {
+                // 2nd-order Butterworth LP, processed inline.
+                // Pre-compute coefficients from resolved cutoff/Q.
+                float cutoffHz = resolveVelocityParam(cfg, "cutoffHz", velocityNorm);
+                float q = resolveVelocityParam(cfg, "q", velocityNorm);
+
+                if (cutoffHz < 20.0f)
+                    cutoffHz = 9000.0f; // default if missing
+                if (q < 0.1f)
+                    q = 0.7071f; // Butterworth
+
+                float srF = (float)sampleRate;
+                float w0 = 2.0f * juce::MathConstants<float>::pi * cutoffHz / srF;
+                float sinW0 = std::sin(w0);
+                float cosW0 = std::cos(w0);
+                float alpha = sinW0 / (2.0f * q);
+                float a0inv = 1.0f / (1.0f + alpha);
+
+                float b0 = (1.0f - cosW0) * 0.5f * a0inv;
+                float b1 = (1.0f - cosW0) * a0inv;
+                float b2 = b0;
+                float a1 = -2.0f * cosW0 * a0inv;
+                float a2 = (1.0f - alpha) * a0inv;
+
+                // Transposed Direct Form II — process sample by sample
+                for (int i = 0; i < numSamps; ++i)
+                {
+                    // Left
+                    float yL = b0 * L[i] + biquadLP.z1L;
+                    biquadLP.z1L = b1 * L[i] - a1 * yL + biquadLP.z2L;
+                    biquadLP.z2L = b2 * L[i] - a2 * yL;
+                    L[i] = yL;
+
+                    // Right
+                    float yR = b0 * R[i] + biquadLP.z1R;
+                    biquadLP.z1R = b1 * R[i] - a1 * yR + biquadLP.z2R;
+                    biquadLP.z2R = b2 * R[i] - a2 * yR;
+                    R[i] = yR;
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::LushReverb:
+            {
+                float roomSize = resolveVelocityParam(cfg, "roomSize", velocityNorm);
+                float damping = resolveVelocityParam(cfg, "damping", velocityNorm);
+                float mix = resolveVelocityParam(cfg, "mix", velocityNorm);
+
+                if (roomSize < 0.0f)
+                    roomSize = 0.5f;
+                if (damping < 0.0f)
+                    damping = 0.4f;
+                if (mix < 0.0f)
+                    mix = 0.25f;
+
+                lushReverb.setRoomSize(roomSize);
+                lushReverb.setDamping(damping);
+                lushReverb.setWidth(1.0f);
+                lushReverb.setMix(mix);
+
+                // LushReverb has a 4-pointer API (inL, inR, outL, outR)
+                // with safe in-place aliasing, so pass L,R,L,R.
+                for (int offset = 0; offset < numSamps; offset += kBlockSize)
+                {
+                    int block = std::min(kBlockSize, numSamps - offset);
+                    lushReverb.processBlock(L + offset, R + offset, L + offset, R + offset, block);
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::LFOModulator:
+            {
+                // Per-destination LFO routing (#178).
+                // cfg.params["target"] selects the destination:
+                //   0.0 = Filter sweep — modulate AllpassDiffuser feedback (filter-sweep effect)
+                //   1.0 = Pitch mod   — Doppler-style read-pointer modulation (subtle pitch vibrato)
+                //   2.0 = Pan sweep   — L/R amplitude differential (circular pan sweep)
+                // Default (no "target" key) — backward-compatible tremolo AM.
+                float rate = resolveVelocityParam(cfg, "rate", velocityNorm);
+                float depth = resolveVelocityParam(cfg, "depth", velocityNorm);
+                float target = -1.0f; // sentinel = no target key
+                {
+                    auto it = cfg.params.find("target");
+                    if (it != cfg.params.end())
+                        target = it->second;
+                }
+
+                if (rate <= 0.0f)
+                    rate = 0.3f;
+                if (depth <= 0.0f)
+                    depth = 1.0f;
+
+                const float twoPi = juce::MathConstants<float>::twoPi;
+                const float phaseInc = twoPi * rate / (float)sampleRate;
+
+                if (target >= 0.0f && target < 0.5f)
+                {
+                    // ── target 0.0: Filter sweep ─────────────────────────────────
+                    // Modulate AllpassDiffuser feedback across a ±gSwing range centred
+                    // on 0.6.  Coefficients are updated every 64 samples to avoid
+                    // per-sample buffer reallocations.  Achieves a rich chorusing /
+                    // filter-sweep effect suitable for OVERWASH and OPERA profiles.
+                    float gSwing = juce::jlimit(0.0f, 0.25f, depth / 250.0f);
+                    constexpr int kSub = 64;
+                    float phase = 0.0f;
+
+                    for (int off = 0; off < numSamps; off += kSub)
+                    {
+                        int block = std::min(kSub, numSamps - off);
+                        float midPhase = phase + phaseInc * (float)(off + block / 2);
+                        float lfoVal = std::sin(midPhase);
+                        float g = juce::jlimit(-0.9f, 0.9f, 0.6f + gSwing * lfoVal);
+                        allpassDiffuser.setFeedbackAll(g);
+                        allpassDiffuser.processBlock(L + off, R + off, block);
+                    }
+                }
+                else if (target >= 0.5f && target < 1.5f)
+                {
+                    // ── target 1.0: Pitch mod ────────────────────────────────────
+                    // Accumulate LFO into a circular read-pointer over a 256-sample
+                    // buffer.  Max pitch deviation ≈ ±(depth/250) semitones.
+                    // Reads with linear interpolation; result blended 30% in to keep
+                    // the effect subtle and prevent phase cancellation artefacts.
+                    constexpr int kPitchBufSize = 256;
+                    // Use static thread_local so the pipeline worker thread keeps
+                    // its own state but no heap allocation happens here.
+                    static thread_local float pitchBuf[kPitchBufSize] = {};
+                    static thread_local int pitchWritePos = 0;
+
+                    float semitoneSwing = juce::jlimit(0.0f, 2.0f, depth / 250.0f);
+                    float maxRateOffset = (std::pow(2.0f, semitoneSwing / 12.0f) - 1.0f);
+                    float phase = 0.0f;
+                    float readPtr = static_cast<float>(pitchWritePos);
+
+                    for (int i = 0; i < numSamps; ++i)
+                    {
+                        pitchBuf[pitchWritePos] = (L[i] + R[i]) * 0.5f;
+                        pitchWritePos = (pitchWritePos + 1) % kPitchBufSize;
+
+                        float lfoVal = std::sin(phase);
+                        float rateOff = 1.0f + maxRateOffset * lfoVal;
+
+                        int ri0 = static_cast<int>(readPtr) % kPitchBufSize;
+                        int ri1 = (ri0 + 1) % kPitchBufSize;
+                        float frac = readPtr - std::floor(readPtr);
+                        float interp = pitchBuf[ri0] * (1.0f - frac) + pitchBuf[ri1] * frac;
+
+                        // 30% blend keeps the pitch vibrato subtle
+                        L[i] = L[i] * 0.7f + interp * 0.3f;
+                        R[i] = R[i] * 0.7f + interp * 0.3f;
+
+                        readPtr = std::fmod(readPtr + rateOff, static_cast<float>(kPitchBufSize));
+                        phase += phaseInc;
+                        if (phase > twoPi)
+                            phase -= twoPi;
+                    }
+                }
+                else if (target >= 1.5f && target < 2.5f)
+                {
+                    // ── target 2.0: Pan sweep ────────────────────────────────────
+                    // Sinusoidal L/R amplitude differential for smooth circular pan.
+                    float panDepth = juce::jlimit(0.0f, 0.5f, depth / 250.0f);
+                    float phase = 0.0f;
+
+                    for (int i = 0; i < numSamps; ++i)
+                    {
+                        float panPos = panDepth * std::sin(phase);
+                        L[i] *= (1.0f - panPos);
+                        R[i] *= (1.0f + panPos);
+                        phase += phaseInc;
+                        if (phase > twoPi)
+                            phase -= twoPi;
+                    }
+                }
+                else
+                {
+                    // ── Backward-compatible tremolo AM (no target key) ────────────
+                    float amDepth = juce::jlimit(0.0f, 0.2f, depth / 250.0f);
+                    float phase = 0.0f;
+
+                    for (int i = 0; i < numSamps; ++i)
+                    {
+                        float lfoVal = 1.0f + amDepth * std::sin(phase);
+                        L[i] *= lfoVal;
+                        R[i] *= lfoVal;
+                        phase += phaseInc;
+                        if (phase > twoPi)
+                            phase -= twoPi;
+                    }
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::WetDryMix:
+            {
+                // Blend the accumulated wet result with the pre-chain dry copy.
+                // output = dry*(1 - intensity) + wet*intensity
+                // intensity = 0.0: pass through dry (no transformation)
+                // intensity = 1.0: full wet transformation
+                float wet_gain = juce::jlimit(0.0f, 1.0f, intensity);
+                float dry_gain = 1.0f - wet_gain;
+
+                const float* dryL = dry.getReadPointer(0);
+                const float* dryR = (dry.getNumChannels() > 1) ? dry.getReadPointer(1) : dry.getReadPointer(0);
+
+                for (int i = 0; i < numSamps; ++i)
+                {
+                    L[i] = dry_gain * dryL[i] + wet_gain * L[i];
+                    R[i] = dry_gain * dryR[i] + wet_gain * R[i];
+                }
+                break;
+            }
+
+            //--------------------------------------------------------------
+            case RebirthDSPModuleID::BrickwallLimiter:
+            {
+                // BrickwallLimiter entries in the chain (if any) are handled
+                // the same as the final pipeline limit stage, but with params.
+                // In practice the profiles don't put BrickwallLimiter in chains —
+                // the pipeline applies it at Stage 8 — but we support it for
+                // completeness / future profiles.
+                // Handled below in applyTruePeakLimit() with ceiling = -1 dBFS.
+                break;
+            }
+
+            default:
+                // Unknown module ID — skip silently, log in debug builds.
+                jassertfalse;
+                break;
             }
 
             // Report per-module progress within the chain
-            reportChainProgress ((float) (moduleIdx + 1) / (float) numModules);
+            reportChainProgress((float)(moduleIdx + 1) / (float)numModules);
         }
 
         // ── Collapse stereo to mono if source was mono ───────────────────────
         if (wasMono)
         {
-            juce::AudioBuffer<float> mono (1, numSamps);
-            float* dst       = mono.getWritePointer (0);
-            const float* srcL = wet.getReadPointer (0);
-            const float* srcR = wet.getReadPointer (1);
+            juce::AudioBuffer<float> mono(1, numSamps);
+            float* dst = mono.getWritePointer(0);
+            const float* srcL = wet.getReadPointer(0);
+            const float* srcR = wet.getReadPointer(1);
             for (int i = 0; i < numSamps; ++i)
                 dst[i] = (srcL[i] + srcR[i]) * 0.5f;
             return mono;
@@ -1023,22 +1032,22 @@ private:
     // This keeps velocity layers perceptually consistent in level — the spectral
     // difference is what the player hears, not a loudness ramp.
     //==========================================================================
-    static void compensateGain (juce::AudioBuffer<float>& buf,
-                                 double                     sampleRate,
-                                 float                      targetLUFS)
+    static void compensateGain(juce::AudioBuffer<float>& buf, double sampleRate, float targetLUFS)
     {
-        if (targetLUFS <= -99.0f) return;  // silence in, silence out — nothing to do
+        if (targetLUFS <= -99.0f)
+            return; // silence in, silence out — nothing to do
 
-        float currentLUFS = computeIntegratedLUFS (buf, sampleRate);
-        if (currentLUFS <= -99.0f) return;
+        float currentLUFS = computeIntegratedLUFS(buf, sampleRate);
+        if (currentLUFS <= -99.0f)
+            return;
 
         float delta = targetLUFS - currentLUFS;
 
         // Only apply if outside the ±0.5 LU tolerance window
-        if (std::abs (delta) > 0.5f)
+        if (std::abs(delta) > 0.5f)
         {
-            float gainLin = juce::Decibels::decibelsToGain (delta);
-            buf.applyGain (gainLin);
+            float gainLin = juce::Decibels::decibelsToGain(delta);
+            buf.applyGain(gainLin);
         }
     }
 
@@ -1049,14 +1058,14 @@ private:
     // This is the final safety net preventing output clipping after gain
     // compensation.
     //==========================================================================
-    static void applyTruePeakLimit (juce::AudioBuffer<float>& buf,
-                                    double                     sampleRate)
+    static void applyTruePeakLimit(juce::AudioBuffer<float>& buf, double sampleRate)
     {
-        if (buf.getNumChannels() < 1 || buf.getNumSamples() == 0) return;
+        if (buf.getNumChannels() < 1 || buf.getNumSamples() == 0)
+            return;
 
         BrickwallLimiter limiter;
-        limiter.prepare (sampleRate, kBlockSize);
-        limiter.setCeiling (kTruePeakCeilingDb);
+        limiter.prepare(sampleRate, kBlockSize);
+        limiter.setCeiling(kTruePeakCeilingDb);
 
         int numSamps = buf.getNumSamples();
 
@@ -1065,35 +1074,35 @@ private:
         juce::AudioBuffer<float> work;
         if (wasMono)
         {
-            work.setSize (2, numSamps);
-            work.copyFrom (0, 0, buf, 0, 0, numSamps);
-            work.copyFrom (1, 0, buf, 0, 0, numSamps);
+            work.setSize(2, numSamps);
+            work.copyFrom(0, 0, buf, 0, 0, numSamps);
+            work.copyFrom(1, 0, buf, 0, 0, numSamps);
         }
         else
         {
-            work.makeCopyOf (buf);
+            work.makeCopyOf(buf);
         }
 
-        float* L = work.getWritePointer (0);
-        float* R = work.getWritePointer (1);
+        float* L = work.getWritePointer(0);
+        float* R = work.getWritePointer(1);
 
         for (int offset = 0; offset < numSamps; offset += kBlockSize)
         {
-            int block = std::min (kBlockSize, numSamps - offset);
-            limiter.processBlock (L + offset, R + offset, block);
+            int block = std::min(kBlockSize, numSamps - offset);
+            limiter.processBlock(L + offset, R + offset, block);
         }
 
         // Write back
         if (wasMono)
         {
-            float* dst = buf.getWritePointer (0);
+            float* dst = buf.getWritePointer(0);
             for (int i = 0; i < numSamps; ++i)
                 dst[i] = (L[i] + R[i]) * 0.5f;
         }
         else
         {
-            buf.copyFrom (0, 0, work, 0, 0, numSamps);
-            buf.copyFrom (1, 0, work, 1, 0, numSamps);
+            buf.copyFrom(0, 0, work, 0, 0, numSamps);
+            buf.copyFrom(1, 0, work, 1, 0, numSamps);
         }
     }
 };

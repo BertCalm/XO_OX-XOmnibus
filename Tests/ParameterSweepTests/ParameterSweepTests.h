@@ -1,5 +1,6 @@
 #pragma once
 
-namespace param_sweep_tests {
-    int runAll();
+namespace param_sweep_tests
+{
+int runAll();
 }

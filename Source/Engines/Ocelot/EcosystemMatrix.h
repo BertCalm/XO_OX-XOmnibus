@@ -5,7 +5,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xocelot {
+namespace xocelot
+{
 
 // EcosystemMatrix — dispatches the 12 typed cross-feed routes.
 //
@@ -22,42 +23,41 @@ namespace xocelot {
 
 struct StrataSignals
 {
-    float floorAmplitude   = 0.0f;  // RMS amplitude of Floor output this block
-    float floorTimbre      = 0.0f;  // brightness proxy (spectral centroid, 0-1)
+    float floorAmplitude = 0.0f;    // RMS amplitude of Floor output this block
+    float floorTimbre = 0.0f;       // brightness proxy (spectral centroid, 0-1)
     float understoryEnergy = 0.0f;  // RMS amplitude of Understory output
-    float understoryPitch  = 0.0f;  // dominant pitch of chop buffer (0-1, normalized)
-    float canopyAmplitude  = 0.0f;  // RMS amplitude of Canopy output
-    float canopySpectral   = 0.0f;  // spectral centroid of Canopy (0-1)
-    float emergentAmplitude= 0.0f;  // RMS of Emergent output
-    float emergentPattern  = 0.0f;  // rhythm density of Emergent calls (0-1)
+    float understoryPitch = 0.0f;   // dominant pitch of chop buffer (0-1, normalized)
+    float canopyAmplitude = 0.0f;   // RMS amplitude of Canopy output
+    float canopySpectral = 0.0f;    // spectral centroid of Canopy (0-1)
+    float emergentAmplitude = 0.0f; // RMS of Emergent output
+    float emergentPattern = 0.0f;   // rhythm density of Emergent calls (0-1)
 };
 
 struct StrataModulation
 {
     // Modulations APPLIED TO each stratum next block
-    float floorSwingMod    = 0.0f;  // additive swing offset
-    float floorDampingMod  = 0.0f;  // additive damping offset
-    float floorAccentMod   = 0.0f;  // multiplicative accent level (1.0 = no change)
+    float floorSwingMod = 0.0f;   // additive swing offset
+    float floorDampingMod = 0.0f; // additive damping offset
+    float floorAccentMod = 0.0f;  // multiplicative accent level (1.0 = no change)
 
-    float understoryChopRateMod  = 0.0f;  // chop rate division shift
-    float understoryGrainPosMod  = 0.0f;  // grain read position offset (0-1)
-    float understoryScatterMod   = 0.0f;  // scatter timing shift
+    float understoryChopRateMod = 0.0f; // chop rate division shift
+    float understoryGrainPosMod = 0.0f; // grain read position offset (0-1)
+    float understoryScatterMod = 0.0f;  // scatter timing shift
 
-    float canopyFilterMod  = 0.0f;  // additive spectral filter position
-    float canopyMorphMod   = 0.0f;  // additive wavefold depth
-    float canopyShimmerMod = 0.0f;  // additive shimmer depth
+    float canopyFilterMod = 0.0f;  // additive spectral filter position
+    float canopyMorphMod = 0.0f;   // additive wavefold depth
+    float canopyShimmerMod = 0.0f; // additive shimmer depth
 
-    float emergentTriggerMod = 0.0f;  // trigger gate (0-1 — combined threshold output)
-    float emergentPitchMod   = 0.0f;  // additive pitch offset
-    float emergentFormantMod = 0.0f;  // additive formant offset
+    float emergentTriggerMod = 0.0f; // trigger gate (0-1 — combined threshold output)
+    float emergentPitchMod = 0.0f;   // additive pitch offset
+    float emergentFormantMod = 0.0f; // additive formant offset
 };
 
 class EcosystemMatrix
 {
 public:
     // Process all 12 routes. ecosystemDepth scales the overall cross-feed intensity.
-    StrataModulation process(const StrataSignals& sig,
-                             const struct OcelotParamSnapshot& snap,
+    StrataModulation process(const StrataSignals& sig, const struct OcelotParamSnapshot& snap,
                              float ecosystemDepth) const
     {
         StrataModulation mod;
@@ -67,16 +67,16 @@ public:
         mod.canopyFilterMod += continuous(sig.floorAmplitude, snap.xfFloorCanopy);
 
         // Understory → Floor: swing
-        mod.floorSwingMod   += continuous(sig.understoryEnergy, snap.xfUnderFloor);
+        mod.floorSwingMod += continuous(sig.understoryEnergy, snap.xfUnderFloor);
 
         // Understory → Canopy: morph (wavefold)
-        mod.canopyMorphMod  += continuous(sig.understoryEnergy, snap.xfUnderCanopy);
+        mod.canopyMorphMod += continuous(sig.understoryEnergy, snap.xfUnderCanopy);
 
         // Understory → Emergent: pitch
         mod.emergentPitchMod += continuous(sig.understoryPitch, snap.xfUnderEmerg);
 
         // Canopy → Floor: damp
-        mod.floorDampingMod  += continuous(sig.canopySpectral, snap.xfCanopyFloor);
+        mod.floorDampingMod += continuous(sig.canopySpectral, snap.xfCanopyFloor);
 
         // Canopy → Understory: grain pos
         mod.understoryGrainPosMod += continuous(sig.canopyAmplitude, snap.xfCanopyUnder);
@@ -109,17 +109,15 @@ public:
 
 private:
     // Continuous: linear bipolar. source in [0,1], amount in [-1,1].
-    static float continuous(float source, float amount)
-    {
-        return source * amount;
-    }
+    static float continuous(float source, float amount) { return source * amount; }
 
     // Threshold: sigmoid, amount controls sensitivity threshold.
     // Positive amount: large amplitude fires.
     // Negative amount: silence fires (inverse — like animals going quiet).
     static float threshold(float source, float amount)
     {
-        if (std::abs(amount) < 0.001f) return 0.0f;
+        if (std::abs(amount) < 0.001f)
+            return 0.0f;
 
         // Invert source for negative amounts (inverse trigger)
         float s = (amount < 0.0f) ? (1.0f - source) : source;
@@ -138,7 +136,8 @@ private:
     // Negative: fast source = slow destination (opposition).
     static float rhythmic(float source, float amount)
     {
-        if (std::abs(amount) < 0.001f) return 0.0f;
+        if (std::abs(amount) < 0.001f)
+            return 0.0f;
         float direction = (amount >= 0.0f) ? 1.0f : -1.0f;
         return source * std::abs(amount) * direction;
     }
@@ -146,18 +145,18 @@ private:
     // Scale all modulation fields by ecosystem depth
     static void applyDepth(StrataModulation& mod, float depth)
     {
-        mod.floorSwingMod          *= depth;
-        mod.floorDampingMod        *= depth;
-        mod.floorAccentMod         *= depth;
-        mod.understoryChopRateMod  *= depth;
-        mod.understoryGrainPosMod  *= depth;
-        mod.understoryScatterMod   *= depth;
-        mod.canopyFilterMod        *= depth;
-        mod.canopyMorphMod         *= depth;
-        mod.canopyShimmerMod       *= depth;
-        mod.emergentTriggerMod     *= depth;
-        mod.emergentPitchMod       *= depth;
-        mod.emergentFormantMod     *= depth;
+        mod.floorSwingMod *= depth;
+        mod.floorDampingMod *= depth;
+        mod.floorAccentMod *= depth;
+        mod.understoryChopRateMod *= depth;
+        mod.understoryGrainPosMod *= depth;
+        mod.understoryScatterMod *= depth;
+        mod.canopyFilterMod *= depth;
+        mod.canopyMorphMod *= depth;
+        mod.canopyShimmerMod *= depth;
+        mod.emergentTriggerMod *= depth;
+        mod.emergentPitchMod *= depth;
+        mod.emergentFormantMod *= depth;
     }
 };
 

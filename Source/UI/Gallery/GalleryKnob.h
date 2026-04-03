@@ -5,7 +5,8 @@
 #include "../GalleryColors.h"
 #include "MidiLearnMouseListener.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // GalleryKnob — juce::Slider subclass that adds:
@@ -19,25 +20,25 @@ public:
     GalleryKnob() = default;
 
     // Store the denormalized default value for Cmd+click reset.
-    void setDefaultValue (double v) { defaultValue = v; }
+    void setDefaultValue(double v) { defaultValue = v; }
 
     // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
     // The caller must store the returned listener pointer in a unique_ptr vector.
     MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
     {
-        paramId      = pid;
+        paramId = pid;
         learnManager = &mgr;
-        auto* ml     = new MidiLearnMouseListener(pid, mgr);
+        auto* ml = new MidiLearnMouseListener(pid, mgr);
         addMouseListener(ml, false);
         return ml;
     }
 
     // WCAG 2.4.7 — repaint on focus change so the LookAndFeel focus ring
     // appears/disappears immediately when the user tabs to/from this knob.
-    void focusGained (FocusChangeType) override { repaint(); }
-    void focusLost   (FocusChangeType) override { repaint(); }
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType) override { repaint(); }
 
-    void mouseDown (const juce::MouseEvent& e) override
+    void mouseDown(const juce::MouseEvent& e) override
     {
         // Right-click is handled by MidiLearnMouseListener — don't swallow it here.
         if (e.mods.isRightButtonDown())
@@ -46,14 +47,13 @@ public:
         // Cmd+click (macOS Command key) → reset to default immediately.
         if (e.mods.isCommandDown())
         {
-            setValue (defaultValue, juce::sendNotificationAsync);
+            setValue(defaultValue, juce::sendNotificationAsync);
             return;
         }
-        juce::Slider::mouseDown (e);
+        juce::Slider::mouseDown(e);
     }
 
-    void mouseWheelMove(const juce::MouseEvent& e,
-                        const juce::MouseWheelDetails& w) override
+    void mouseWheelMove(const juce::MouseEvent& e, const juce::MouseWheelDetails& w) override
     {
         if (e.mods.isShiftDown() && getInterval() == 0.0)
         {
@@ -68,7 +68,7 @@ public:
         }
     }
 
-    void paint (juce::Graphics& g) override
+    void paint(juce::Graphics& g) override
     {
         juce::Slider::paint(g);
         drawMidiLearnOverlay(g);
@@ -77,14 +77,15 @@ public:
 private:
     void drawMidiLearnOverlay(juce::Graphics& g)
     {
-        if (!learnManager) return;
+        if (!learnManager)
+            return;
         bool isListening = learnManager->isLearning() && learnManager->getLearningParam() == paramId;
-        bool isMapped    = learnManager->hasMapping(paramId);
-        if (!isListening && !isMapped) return;
+        bool isMapped = learnManager->hasMapping(paramId);
+        if (!isListening && !isMapped)
+            return;
 
-        juce::Colour ringCol = isListening
-            ? juce::Colour(GalleryColors::xoGold)        // XO Gold while listening
-            : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
+        juce::Colour ringCol = isListening ? juce::Colour(GalleryColors::xoGold)        // XO Gold while listening
+                                           : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
 
         if (isListening)
         {
@@ -96,26 +97,24 @@ private:
             // already schedules repaints during MIDI learn mode.
         }
 
-        auto b  = getLocalBounds().toFloat().reduced(3.0f);
+        auto b = getLocalBounds().toFloat().reduced(3.0f);
         float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
         g.setColour(ringCol);
-        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
-                      r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
+        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r, r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
 
         // "ML" text badge — only on knobs >= 34px (hidden on header-size 32px knobs)
         if (isMapped && !isListening && getWidth() >= 34)
         {
             g.setFont(GalleryFonts::label(6.0f));
             g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
-            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
-                       juce::Justification::centred);
+            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9, juce::Justification::centred);
         }
     }
 
-    double            defaultValue = 0.0;
-    juce::String      paramId;
+    double defaultValue = 0.0;
+    juce::String paramId;
     MIDILearnManager* learnManager = nullptr;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GalleryKnob)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GalleryKnob)
 };
 
 //==============================================================================
@@ -124,15 +123,14 @@ private:
 //
 // Must be called AFTER SliderAttachment is created (the attachment sets the
 // slider range, which is needed to correctly interpret the default value).
-static inline void enableKnobReset (GalleryKnob& knob,
-                                    juce::AudioProcessorValueTreeState& apvts,
-                                    const juce::String& paramId)
+static inline void enableKnobReset(GalleryKnob& knob, juce::AudioProcessorValueTreeState& apvts,
+                                   const juce::String& paramId)
 {
-    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*> (apvts.getParameter (paramId)))
+    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(paramId)))
     {
-        double defaultVal = rp->getNormalisableRange().convertFrom0to1 (rp->getDefaultValue());
-        knob.setDefaultValue (defaultVal);
-        knob.setDoubleClickReturnValue (true, defaultVal);
+        double defaultVal = rp->getNormalisableRange().convertFrom0to1(rp->getDefaultValue());
+        knob.setDefaultValue(defaultVal);
+        knob.setDoubleClickReturnValue(true, defaultVal);
     }
 }
 

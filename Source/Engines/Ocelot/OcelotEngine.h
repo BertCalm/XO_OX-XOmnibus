@@ -11,7 +11,8 @@
 #include "OcelotParameters.h"
 #include <vector>
 
-namespace xocelot {
+namespace xocelot
+{
 
 class OcelotEngine final : public xoceanus::SynthEngine
 {
@@ -41,9 +42,7 @@ public:
     }
 
     // ── Audio ────────────────────────────────────────────
-    void renderBlock(juce::AudioBuffer<float>& buffer,
-                     juce::MidiBuffer& midi,
-                     int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         // 1. Update snapshot from APVTS (once per block)
@@ -57,8 +56,7 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                voicePool.noteOn(msg.getNoteNumber(),
-                                 msg.getFloatVelocity(), snapshot);
+                voicePool.noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), snapshot);
             }
             else if (msg.isNoteOff())
                 voicePool.noteOff(msg.getNoteNumber());
@@ -82,7 +80,11 @@ public:
             lastBiome = snapshot.biome;
         }
 
-        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
 
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
@@ -91,7 +93,8 @@ public:
         // (sensitivity 0.3). Full pressure adds up to +0.3 to ecosystemDepth, thickening the
         // 12-route EcosystemMatrix cross-feed between ocelot habitat strata.
         // D006: mod wheel also deepens ecosystem (+0–0.35) — strengthens cross-stratum pathways.
-        snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
+        snapshot.ecosystemDepth =
+            std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
 
         // Pitch bend: ±2 semitones (propagated to strata via snapshot)
         snapshot.pitchBendSemitones = pitchBendNorm * 2.0f;
@@ -133,21 +136,23 @@ public:
             outputCacheR[static_cast<size_t>(i)] = outR[i];
         }
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getNumChannels()>1?buffer.getReadPointer(1):buffer.getReadPointer(0), numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0),
+                                 buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : buffer.getReadPointer(0),
+                                 numSamples);
     }
 
     // ── Coupling ─────────────────────────────────────────
     float getSampleForCoupling(int channel, int sampleIndex) const override
     {
         auto si = static_cast<size_t>(sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
+        if (channel == 0 && si < outputCacheL.size())
+            return outputCacheL[si];
+        if (channel == 1 && si < outputCacheR.size())
+            return outputCacheR[si];
         return 0.0f;
     }
 
-    void applyCouplingInput(xoceanus::CouplingType type,
-                            float amount,
-                            const float* /*sourceBuffer*/,
+    void applyCouplingInput(xoceanus::CouplingType type, float amount, const float* /*sourceBuffer*/,
                             int /*numSamples*/) override
     {
         // Ocelot coupling: external modulation accumulates into snapshot fields
@@ -155,33 +160,33 @@ public:
         // most ecologically coherent stratum parameter.
         switch (type)
         {
-            case xoceanus::CouplingType::AmpToFilter:
-                // Partner amplitude (e.g. ONSET drum hits) opens canopy spectral filter.
-                // Sensitivity 0.25: prevents filter blow-out from loud percussive partners.
-                couplingFilterMod = std::clamp(couplingFilterMod + amount * 0.25f, -0.5f, 0.5f);
-                break;
+        case xoceanus::CouplingType::AmpToFilter:
+            // Partner amplitude (e.g. ONSET drum hits) opens canopy spectral filter.
+            // Sensitivity 0.25: prevents filter blow-out from loud percussive partners.
+            couplingFilterMod = std::clamp(couplingFilterMod + amount * 0.25f, -0.5f, 0.5f);
+            break;
 
-            case xoceanus::CouplingType::LFOToPitch:
-            case xoceanus::CouplingType::AmpToPitch:
-            case xoceanus::CouplingType::PitchToPitch:
-                // Partner pitch/LFO modulates ecosystem depth — more signal flow between strata.
-                // Cross-stratum coupling deepens when another engine's melodic content arrives.
-                couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, 0.0f, 0.5f);
-                break;
+        case xoceanus::CouplingType::LFOToPitch:
+        case xoceanus::CouplingType::AmpToPitch:
+        case xoceanus::CouplingType::PitchToPitch:
+            // Partner pitch/LFO modulates ecosystem depth — more signal flow between strata.
+            // Cross-stratum coupling deepens when another engine's melodic content arrives.
+            couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, 0.0f, 0.5f);
+            break;
 
-            case xoceanus::CouplingType::EnvToMorph:
-                // External envelope sweeps floor tension — pluck character changes with
-                // the dynamics of the partner engine (feliX's darts make the floor tighter).
-                couplingFloorMod = std::clamp(couplingFloorMod + amount * 0.2f, -0.3f, 0.3f);
-                break;
+        case xoceanus::CouplingType::EnvToMorph:
+            // External envelope sweeps floor tension — pluck character changes with
+            // the dynamics of the partner engine (feliX's darts make the floor tighter).
+            couplingFloorMod = std::clamp(couplingFloorMod + amount * 0.2f, -0.3f, 0.3f);
+            break;
 
-            case xoceanus::CouplingType::EnvToDecay:
-                // External envelope decays → density decreases (space opens up between strata).
-                couplingDensityMod = std::clamp(couplingDensityMod - amount * 0.15f, -0.3f, 0.0f);
-                break;
+        case xoceanus::CouplingType::EnvToDecay:
+            // External envelope decays → density decreases (space opens up between strata).
+            couplingDensityMod = std::clamp(couplingDensityMod - amount * 0.15f, -0.3f, 0.0f);
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
 
@@ -198,10 +203,10 @@ public:
     }
 
     // ── Identity ─────────────────────────────────────────
-    juce::String getEngineId()     const override { return "Ocelot"; }
+    juce::String getEngineId() const override { return "Ocelot"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFE0A060); }
-    int          getMaxVoices()    const override { return OcelotVoicePool::kMaxVoices; }
-    int   getActiveVoiceCount()    const override { return voicePool.activeVoiceCount(); }
+    int getMaxVoices() const override { return OcelotVoicePool::kMaxVoices; }
+    int getActiveVoiceCount() const override { return voicePool.activeVoiceCount(); }
 
 private:
     xoceanus::SilenceGate silenceGate;
@@ -215,17 +220,17 @@ private:
 
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
     float modWheelAmount = 0.0f;
-    float pitchBendNorm  = 0.0f;
+    float pitchBendNorm = 0.0f;
 
     // ---- Biome tracking — prevents redundant setBiomeTarget calls each block ----
-    int lastBiome = 0;  // 0=Jungle (matches BiomeMorph::prepare default)
+    int lastBiome = 0; // 0=Jungle (matches BiomeMorph::prepare default)
 
     // ---- Coupling accumulators — reset each block, accumulated by applyCouplingInput ----
     // Applied to snapshot in renderBlock before voice rendering.
-    float couplingFilterMod    = 0.0f;  // AmpToFilter → canopySpectralFilter ±0.5
-    float couplingEcosystemMod = 0.0f;  // LFO/Amp/PitchToPitch → ecosystemDepth +0–0.5
-    float couplingFloorMod     = 0.0f;  // EnvToMorph → floorTension ±0.3
-    float couplingDensityMod   = 0.0f;  // EnvToDecay → density -0–0.3
+    float couplingFilterMod = 0.0f;    // AmpToFilter → canopySpectralFilter ±0.5
+    float couplingEcosystemMod = 0.0f; // LFO/Amp/PitchToPitch → ecosystemDepth +0–0.5
+    float couplingFloorMod = 0.0f;     // EnvToMorph → floorTension ±0.3
+    float couplingDensityMod = 0.0f;   // EnvToDecay → density -0–0.3
 };
 
 } // namespace xocelot

@@ -5,7 +5,8 @@
 #include <cstring>
 #include <atomic>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SilenceGate — Zero-idle bypass for inactive engine slots.
@@ -63,47 +64,44 @@ class SilenceGate
 {
 public:
     static constexpr float kDefaultThresholdDb = -90.0f;
-    static constexpr float kHysteresisDb       =   6.0f;
-    static constexpr float kDefaultHoldMs      = 100.0f;
+    static constexpr float kHysteresisDb = 6.0f;
+    static constexpr float kDefaultHoldMs = 100.0f;
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) noexcept
+    void prepare(double sampleRate, int /*maxBlockSize*/) noexcept
     {
         sr = sampleRate;
-        setHoldTime (holdTimeMs);
+        setHoldTime(holdTimeMs);
         reset();
     }
 
     void reset() noexcept
     {
-        holdCounter     = 0;
-        bypassed.store (false, std::memory_order_relaxed);
-        peakLevel       = 0.0f;
+        holdCounter = 0;
+        bypassed.store(false, std::memory_order_relaxed);
+        peakLevel = 0.0f;
     }
 
     //--------------------------------------------------------------------------
     /// Set the silence threshold in dB (default: -90 dB).
-    void setThreshold (float thresholdDb) noexcept
+    void setThreshold(float thresholdDb) noexcept
     {
-        thresholdLinear   = dbToLinear (thresholdDb);
-        reopenLinear      = dbToLinear (thresholdDb + kHysteresisDb);
+        thresholdLinear = dbToLinear(thresholdDb);
+        reopenLinear = dbToLinear(thresholdDb + kHysteresisDb);
     }
 
     /// Set the hold time in milliseconds before bypass engages.
-    void setHoldTime (float ms) noexcept
+    void setHoldTime(float ms) noexcept
     {
         holdTimeMs = ms;
         // Convert ms to block-count assuming analyzeBlock called once per block
         // We store the hold in samples, then compare against accumulated silent samples
-        holdSamples = static_cast<int> (sr * ms * 0.001);
+        holdSamples = static_cast<int>(sr * ms * 0.001);
     }
 
     //--------------------------------------------------------------------------
     /// Returns true if the engine should skip all processing.
     /// Safe to call from audio thread (relaxed atomic).
-    bool isBypassed() const noexcept
-    {
-        return bypassed.load (std::memory_order_relaxed);
-    }
+    bool isBypassed() const noexcept { return bypassed.load(std::memory_order_relaxed); }
 
     /// Returns the current peak level (linear) for UI display.
     float getPeakLevel() const noexcept { return peakLevel; }
@@ -114,32 +112,34 @@ public:
     /// @param left   Left channel buffer (or mono).
     /// @param right  Right channel buffer (nullptr for mono engines).
     /// @param numSamples  Block size.
-    void analyzeBlock (const float* left, const float* right, int numSamples) noexcept
+    void analyzeBlock(const float* left, const float* right, int numSamples) noexcept
     {
         // Find peak absolute sample across both channels
         float peak = 0.0f;
         for (int i = 0; i < numSamples; ++i)
         {
-            float absL = std::fabs (left[i]);
-            if (absL > peak) peak = absL;
+            float absL = std::fabs(left[i]);
+            if (absL > peak)
+                peak = absL;
         }
         if (right != nullptr)
         {
             for (int i = 0; i < numSamples; ++i)
             {
-                float absR = std::fabs (right[i]);
-                if (absR > peak) peak = absR;
+                float absR = std::fabs(right[i]);
+                if (absR > peak)
+                    peak = absR;
             }
         }
 
         peakLevel = peak;
 
-        if (bypassed.load (std::memory_order_relaxed))
+        if (bypassed.load(std::memory_order_relaxed))
         {
             // Currently bypassed — check if signal exceeds reopen threshold
             if (peak > reopenLinear)
             {
-                bypassed.store (false, std::memory_order_relaxed);
+                bypassed.store(false, std::memory_order_relaxed);
                 holdCounter = 0;
             }
         }
@@ -150,7 +150,7 @@ public:
             {
                 holdCounter += numSamples;
                 if (holdCounter >= holdSamples)
-                    bypassed.store (true, std::memory_order_relaxed);
+                    bypassed.store(true, std::memory_order_relaxed);
             }
             else
             {
@@ -163,26 +163,23 @@ public:
     /// Force the gate open immediately. Call on note-on, preset change, etc.
     void wake() noexcept
     {
-        bypassed.store (false, std::memory_order_relaxed);
+        bypassed.store(false, std::memory_order_relaxed);
         holdCounter = 0;
     }
 
 private:
-    double sr          = 44100.0;
-    float holdTimeMs   = kDefaultHoldMs;
-    int holdSamples    = 4410;     // 100ms at 44.1kHz
-    int holdCounter    = 0;
+    double sr = 44100.0;
+    float holdTimeMs = kDefaultHoldMs;
+    int holdSamples = 4410; // 100ms at 44.1kHz
+    int holdCounter = 0;
 
-    float thresholdLinear = 3.16e-5f;  // -90 dB
-    float reopenLinear    = 6.31e-5f;  // -84 dB (threshold + hysteresis)
-    float peakLevel       = 0.0f;
+    float thresholdLinear = 3.16e-5f; // -90 dB
+    float reopenLinear = 6.31e-5f;    // -84 dB (threshold + hysteresis)
+    float peakLevel = 0.0f;
 
-    std::atomic<bool> bypassed { false };
+    std::atomic<bool> bypassed{false};
 
-    static float dbToLinear (float db) noexcept
-    {
-        return std::pow (10.0f, db / 20.0f);
-    }
+    static float dbToLinear(float db) noexcept { return std::pow(10.0f, db / 20.0f); }
 };
 
 } // namespace xoceanus

@@ -24,7 +24,8 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // OfferingCollage — Per-voice collage processor applied after texture layer.
@@ -35,7 +36,7 @@ namespace xoceanus {
 class OfferingCollage
 {
 public:
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
         sr_ = sampleRate;
         reset();
@@ -49,11 +50,11 @@ public:
     // stretch: time-stretch factor [0.5, 2.0]
     // ringMod: inter-layer ring mod depth [0, 1]
     //--------------------------------------------------------------------------
-    void trigger (int layers, float chop, float stretch, float ringMod) noexcept
+    void trigger(int layers, float chop, float stretch, float ringMod) noexcept
     {
-        layers_ = std::max (1, std::min (layers, kMaxLayers));
+        layers_ = std::max(1, std::min(layers, kMaxLayers));
         chop_ = chop;
-        stretch_ = std::max (0.5f, std::min (stretch, 2.0f));
+        stretch_ = std::max(0.5f, std::min(stretch, 2.0f));
         ringMod_ = ringMod;
         chopPhase_ = 0.0f;
         stretchReadPos_ = 0.0f;
@@ -64,8 +65,8 @@ public:
         // Seed layer offsets for variation
         for (int i = 0; i < kMaxLayers; ++i)
         {
-            layerPhaseOffsets_[i] = static_cast<float> (i) * 0.17f; // prime-ish spacing
-            layerGains_[i] = (i < layers_) ? (1.0f / static_cast<float> (layers_)) : 0.0f;
+            layerPhaseOffsets_[i] = static_cast<float>(i) * 0.17f; // prime-ish spacing
+            layerGains_[i] = (i < layers_) ? (1.0f / static_cast<float>(layers_)) : 0.0f;
         }
     }
 
@@ -73,14 +74,15 @@ public:
     // Process one sample through the collage chain.
     // Input is the post-texture transient sample.
     //--------------------------------------------------------------------------
-    float process (float input) noexcept
+    float process(float input) noexcept
     {
         // Store input in circular buffer for stretch/chop
         if (writePos_ < kBufferSize)
         {
             buffer_[writePos_] = input;
             writePos_++;
-            if (writePos_ >= kBufferSize) bufferFilled_ = true;
+            if (writePos_ >= kBufferSize)
+                bufferFilled_ = true;
         }
         sampleCount_++;
 
@@ -90,16 +92,16 @@ public:
         // FIX: Allow stretch after 64 samples (~1.3ms at 44.1kHz) instead of
         // waiting for full 4096-sample fill (~93ms). The previous gate
         // (bufferFilled_) caused the attack transient to bypass stretch entirely.
-        if (std::abs (stretch_ - 1.0f) > 0.01f && writePos_ >= 64)
-            out = processStretch (input);
+        if (std::abs(stretch_ - 1.0f) > 0.01f && writePos_ >= 64)
+            out = processStretch(input);
 
         // Apply chop simulation
         if (chop_ > 0.01f)
-            out = processChop (out);
+            out = processChop(out);
 
         // Apply layer stacking + ring mod (only for layers > 1)
         if (layers_ > 1)
-            out = processLayers (out);
+            out = processLayers(out);
 
         return out;
     }
@@ -111,7 +113,7 @@ public:
         chopPhase_ = 0.0f;
         stretchReadPos_ = 0.0f;
         sampleCount_ = 0;
-        std::fill (buffer_, buffer_ + kBufferSize, 0.0f);
+        std::fill(buffer_, buffer_ + kBufferSize, 0.0f);
     }
 
 private:
@@ -119,19 +121,19 @@ private:
     // Time-stretch: reads from buffer at altered rate.
     // stretch < 1.0 = compressed (faster playback), > 1.0 = stretched (slower).
     //--------------------------------------------------------------------------
-    float processStretch (float input) noexcept
+    float processStretch(float input) noexcept
     {
         // Read position advances at 1/stretch rate
         stretchReadPos_ += 1.0f / stretch_;
-        int readIdx = static_cast<int> (stretchReadPos_) % kBufferSize;
-        float frac = stretchReadPos_ - std::floor (stretchReadPos_);
+        int readIdx = static_cast<int>(stretchReadPos_) % kBufferSize;
+        float frac = stretchReadPos_ - std::floor(stretchReadPos_);
 
         // Linear interpolation for smooth stretch
         int nextIdx = (readIdx + 1) % kBufferSize;
         float stretched = buffer_[readIdx] * (1.0f - frac) + buffer_[nextIdx] * frac;
 
         // Crossfade between original and stretched
-        float stretchAmount = std::abs (stretch_ - 1.0f);
+        float stretchAmount = std::abs(stretch_ - 1.0f);
         return input * (1.0f - stretchAmount) + stretched * stretchAmount;
     }
 
@@ -139,12 +141,13 @@ private:
     // Chop simulation: rhythmic amplitude gating.
     // Creates the "chopped break" aesthetic of sample-based production.
     //--------------------------------------------------------------------------
-    float processChop (float input) noexcept
+    float processChop(float input) noexcept
     {
         // Chop rate: 4-32 Hz (faster chop at higher intensity)
         float chopRate = 4.0f + chop_ * 28.0f;
         chopPhase_ += chopRate / sr_;
-        if (chopPhase_ >= 1.0f) chopPhase_ -= 1.0f;
+        if (chopPhase_ >= 1.0f)
+            chopPhase_ -= 1.0f;
 
         // Square-ish gate with smooth edges to avoid clicks
         float gate;
@@ -153,13 +156,13 @@ private:
         {
             // Gate open — with smooth attack
             float attackPhase = chopPhase_ / (duty * 0.1f);
-            gate = std::min (1.0f, attackPhase);
+            gate = std::min(1.0f, attackPhase);
         }
         else
         {
             // Gate closing — with smooth release
             float releasePhase = (chopPhase_ - duty) / ((1.0f - duty) * 0.1f);
-            gate = std::max (0.0f, 1.0f - releasePhase);
+            gate = std::max(0.0f, 1.0f - releasePhase);
         }
 
         // Mix: chop=0 is bypass, chop=1 is full chop effect
@@ -170,16 +173,17 @@ private:
     // Layer stacking: creates variation by reading buffer at offset positions
     // and optionally ring-modulating between layers.
     //--------------------------------------------------------------------------
-    float processLayers (float input) noexcept
+    float processLayers(float input) noexcept
     {
         float sum = input * layerGains_[0]; // Layer 0 = original
 
         for (int i = 1; i < layers_; ++i)
         {
             // Read from buffer at offset position (creates temporal displacement)
-            int offset = static_cast<int> (layerPhaseOffsets_[i] * sr_ * 0.005f); // 0-5ms offsets
+            int offset = static_cast<int>(layerPhaseOffsets_[i] * sr_ * 0.005f); // 0-5ms offsets
             int readIdx = (sampleCount_ - offset) % kBufferSize;
-            if (readIdx < 0) readIdx += kBufferSize;
+            if (readIdx < 0)
+                readIdx += kBufferSize;
             float layerSample = buffer_[readIdx];
 
             // Apply ring modulation between layers if enabled

@@ -27,35 +27,37 @@
 // Forward-declare processor so we can take a reference.
 // The full definition is in XOceanusProcessor.h, which is included by the editor
 // before SidebarPanel.h and thus before this header.
-namespace xoceanus { class XOceanusProcessor; }
+namespace xoceanus
+{
+class XOceanusProcessor;
+}
 
 #include "../../XOceanusProcessor.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 class SettingsPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit SettingsPanel(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit SettingsPanel(XOceanusProcessor& proc) : processor(proc)
     {
         // ── Viewport + inner content component ───────────────────────────────
-        content.owner = this;          // back-pointer for paint callbacks
+        content.owner = this; // back-pointer for paint callbacks
         viewport.setViewedComponent(&content, false);
         viewport.setScrollBarsShown(true, false);
-        viewport.getVerticalScrollBar().setColour(
-            juce::ScrollBar::thumbColourId,
-            GalleryColors::get(GalleryColors::borderGray()));
+        viewport.getVerticalScrollBar().setColour(juce::ScrollBar::thumbColourId,
+                                                  GalleryColors::get(GalleryColors::borderGray()));
         addAndMakeVisible(viewport);
 
         // ── Persistent settings file — created FIRST so darkModeToggle.onClick
         // can safely call settingsFile->setValue() without a null deref.
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOceanus";
-            opts.filenameSuffix      = "settings";
+            opts.applicationName = "XOceanus";
+            opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             settingsFile = std::make_unique<juce::PropertiesFile>(opts);
         }
@@ -68,8 +70,7 @@ public:
 
         // ── 1. THEME ─────────────────────────────────────────────────────────
         styleToggle(darkModeToggle, "Dark Cockpit");
-        darkModeToggle.setToggleState(GalleryColors::darkMode(),
-                                      juce::dontSendNotification);
+        darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
         darkModeToggle.onClick = [this]
         {
             GalleryColors::darkMode() = darkModeToggle.getToggleState();
@@ -88,9 +89,8 @@ public:
 
         // CPU Meters toggle — default ON
         styleToggle(cpuMetersToggle, "CPU Meters");
-        cpuMetersToggle.setToggleState(
-            settingsFile->getBoolValue("cpuMetersVisible", true),
-            juce::dontSendNotification);
+        cpuMetersToggle.setToggleState(settingsFile->getBoolValue("cpuMetersVisible", true),
+                                       juce::dontSendNotification);
         cpuMetersToggle.onClick = [this]
         {
             bool visible = cpuMetersToggle.getToggleState();
@@ -111,9 +111,8 @@ public:
 
         // Coupling Arc Labels toggle — default ON
         styleToggle(couplingArcLabelsToggle, "Coupling Arc Labels");
-        couplingArcLabelsToggle.setToggleState(
-            settingsFile->getBoolValue("couplingArcLabels", true),
-            juce::dontSendNotification);
+        couplingArcLabelsToggle.setToggleState(settingsFile->getBoolValue("couplingArcLabels", true),
+                                               juce::dontSendNotification);
         couplingArcLabelsToggle.onClick = [this]
         {
             settingsFile->setValue("couplingArcLabels", couplingArcLabelsToggle.getToggleState());
@@ -135,9 +134,8 @@ public:
         // applied in parentHierarchyChanged() below, once the hierarchy exists.
         styleToggle(reducedMotionToggle, "Reduced Motion (WCAG 2.3.3)");
 
-        reducedMotionToggle.setToggleState(
-            settingsFile->getBoolValue("reducedMotion", false),
-            juce::dontSendNotification);
+        reducedMotionToggle.setToggleState(settingsFile->getBoolValue("reducedMotion", false),
+                                           juce::dontSendNotification);
         reducedMotionToggle.onClick = [this]
         {
             bool v = reducedMotionToggle.getToggleState();
@@ -154,8 +152,7 @@ public:
         A11y::setReducedMotion(settingsFile->getBoolValue("reducedMotion", false));
 
         // High-Contrast placeholder label (future) — hidden until feature ships (#172)
-        highContrastNote.setText("High Contrast — coming soon",
-                                 juce::dontSendNotification);
+        highContrastNote.setText("High Contrast — coming soon", juce::dontSendNotification);
         highContrastNote.setFont(GalleryFonts::body(10.0f));
         highContrastNote.setColour(juce::Label::textColourId,
                                    GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
@@ -189,13 +186,13 @@ public:
         if (apvts.getParameter("mpe_zone") != nullptr)
         {
             mpeZoneBox = std::make_unique<juce::ComboBox>();
-            mpeZoneBox->addItem("Off",   1);
+            mpeZoneBox->addItem("Off", 1);
             mpeZoneBox->addItem("Lower", 2);
             mpeZoneBox->addItem("Upper", 3);
-            mpeZoneBox->addItem("Both",  4);
+            mpeZoneBox->addItem("Both", 4);
             styleComboBox(*mpeZoneBox);
-            mpeZoneAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
-                apvts, "mpe_zone", *mpeZoneBox);
+            mpeZoneAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(apvts, "mpe_zone",
+                                                                                                     *mpeZoneBox);
             content.addAndMakeVisible(*mpeZoneLabel);
             content.addAndMakeVisible(*mpeZoneBox);
         }
@@ -203,18 +200,13 @@ public:
         // mpe_pitchBendRange — AudioParameterFloat → SliderAttachment
         if (apvts.getParameter("mpe_pitchBendRange") != nullptr)
         {
-            mpePBSlider = std::make_unique<juce::Slider>(
-                juce::Slider::LinearHorizontal, juce::Slider::TextBoxRight);
+            mpePBSlider = std::make_unique<juce::Slider>(juce::Slider::LinearHorizontal, juce::Slider::TextBoxRight);
             mpePBSlider->setRange(1.0, 96.0, 1.0);
             mpePBSlider->setTextValueSuffix(" st");
-            mpePBSlider->setColour(juce::Slider::textBoxTextColourId,
-                                   GalleryColors::get(GalleryColors::textMid()));
-            mpePBSlider->setColour(juce::Slider::textBoxBackgroundColourId,
-                                   juce::Colours::transparentBlack);
-            mpePBSlider->setColour(juce::Slider::textBoxOutlineColourId,
-                                   juce::Colours::transparentBlack);
-            mpePBSlider->setColour(juce::Slider::trackColourId,
-                                   GalleryColors::get(GalleryColors::xoGold));
+            mpePBSlider->setColour(juce::Slider::textBoxTextColourId, GalleryColors::get(GalleryColors::textMid()));
+            mpePBSlider->setColour(juce::Slider::textBoxBackgroundColourId, juce::Colours::transparentBlack);
+            mpePBSlider->setColour(juce::Slider::textBoxOutlineColourId, juce::Colours::transparentBlack);
+            mpePBSlider->setColour(juce::Slider::trackColourId, GalleryColors::get(GalleryColors::xoGold));
             mpePBAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, "mpe_pitchBendRange", *mpePBSlider);
             content.addAndMakeVisible(*mpePBLabel);
@@ -225,12 +217,12 @@ public:
         if (apvts.getParameter("mpe_pressureTarget") != nullptr)
         {
             mpePressureBox = std::make_unique<juce::ComboBox>();
-            mpePressureBox->addItem("Filter Cutoff",           1);
-            mpePressureBox->addItem("Volume",                  2);
-            mpePressureBox->addItem("Wavetable",               3);
-            mpePressureBox->addItem("FX Send",                 4);
-            mpePressureBox->addItem("Macro 1 (CHARACTER)",     5);
-            mpePressureBox->addItem("Macro 2 (MOVEMENT)",      6);
+            mpePressureBox->addItem("Filter Cutoff", 1);
+            mpePressureBox->addItem("Volume", 2);
+            mpePressureBox->addItem("Wavetable", 3);
+            mpePressureBox->addItem("FX Send", 4);
+            mpePressureBox->addItem("Macro 1 (CHARACTER)", 5);
+            mpePressureBox->addItem("Macro 2 (MOVEMENT)", 6);
             styleComboBox(*mpePressureBox);
             mpePressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, "mpe_pressureTarget", *mpePressureBox);
@@ -242,12 +234,12 @@ public:
         if (apvts.getParameter("mpe_slideTarget") != nullptr)
         {
             mpeSlideBox = std::make_unique<juce::ComboBox>();
-            mpeSlideBox->addItem("Filter Cutoff",           1);
-            mpeSlideBox->addItem("Volume",                  2);
-            mpeSlideBox->addItem("Wavetable",               3);
-            mpeSlideBox->addItem("FX Send",                 4);
-            mpeSlideBox->addItem("Macro 1 (CHARACTER)",     5);
-            mpeSlideBox->addItem("Macro 2 (MOVEMENT)",      6);
+            mpeSlideBox->addItem("Filter Cutoff", 1);
+            mpeSlideBox->addItem("Volume", 2);
+            mpeSlideBox->addItem("Wavetable", 3);
+            mpeSlideBox->addItem("FX Send", 4);
+            mpeSlideBox->addItem("Macro 1 (CHARACTER)", 5);
+            mpeSlideBox->addItem("Macro 2 (MOVEMENT)", 6);
             styleComboBox(*mpeSlideBox);
             mpeSlideAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, "mpe_slideTarget", *mpeSlideBox);
@@ -259,8 +251,7 @@ public:
         bool anyMpeParam = (mpeEnabledToggle != nullptr);
         if (!anyMpeParam)
         {
-            mpeNotConfigured.setText("Not yet configured",
-                                     juce::dontSendNotification);
+            mpeNotConfigured.setText("Not yet configured", juce::dontSendNotification);
             mpeNotConfigured.setFont(GalleryFonts::body(10.0f));
             mpeNotConfigured.setColour(juce::Label::textColourId,
                                        GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
@@ -278,8 +269,7 @@ public:
         };
         content.addAndMakeVisible(perfLockToggle);
 
-        perfLockNote.setText("Blocks param changes during performance",
-                             juce::dontSendNotification);
+        perfLockNote.setText("Blocks param changes during performance", juce::dontSendNotification);
         perfLockNote.setFont(GalleryFonts::body(9.5f));
         perfLockNote.setColour(juce::Label::textColourId,
                                GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
@@ -289,10 +279,8 @@ public:
         // The real table is painted in paintMidiTable().
         // "Clear All" button — wired once setMidiLearnManager() is called.
         clearAllBtn.setButtonText("Clear All");
-        clearAllBtn.setColour(juce::TextButton::buttonColourId,
-                              GalleryColors::get(GalleryColors::elevated()));
-        clearAllBtn.setColour(juce::TextButton::textColourOffId,
-                              GalleryColors::get(GalleryColors::textMid()));
+        clearAllBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        clearAllBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
         clearAllBtn.onClick = [this]
         {
             if (midiLearnMgr != nullptr)
@@ -304,11 +292,11 @@ public:
         content.addAndMakeVisible(clearAllBtn);
 
         // ── 7. KEYBOARD SHORTCUTS ────────────────────────────────────────────
-        shortcutsLabel.setText("Z \xe2\x80\x94 Fire Chord  \xc2\xb7  X \xe2\x80\x94 XO Send  \xc2\xb7  C \xe2\x80\x94 Echo Cut  \xc2\xb7  V \xe2\x80\x94 Panic",
+        shortcutsLabel.setText("Z \xe2\x80\x94 Fire Chord  \xc2\xb7  X \xe2\x80\x94 XO Send  \xc2\xb7  C \xe2\x80\x94 "
+                               "Echo Cut  \xc2\xb7  V \xe2\x80\x94 Panic",
                                juce::dontSendNotification);
         shortcutsLabel.setFont(GalleryFonts::value(9.0f));
-        shortcutsLabel.setColour(juce::Label::textColourId,
-                                 GalleryColors::get(GalleryColors::textMid()));
+        shortcutsLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         shortcutsLabel.setJustificationType(juce::Justification::centredLeft);
         shortcutsLabel.setInterceptsMouseClicks(false, false);
         content.addAndMakeVisible(shortcutsLabel);
@@ -316,8 +304,7 @@ public:
         // ── 6. ABOUT ─────────────────────────────────────────────────────────
         aboutNameLabel.setText("XOceanus", juce::dontSendNotification);
         aboutNameLabel.setFont(GalleryFonts::display(16.0f));
-        aboutNameLabel.setColour(juce::Label::textColourId,
-                                 GalleryColors::get(GalleryColors::textDark()));
+        aboutNameLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
         aboutNameLabel.setJustificationType(juce::Justification::centredLeft);
         content.addAndMakeVisible(aboutNameLabel);
 
@@ -332,20 +319,18 @@ public:
             aboutVersionLabel.setText(ver, juce::dontSendNotification);
         }
         aboutVersionLabel.setFont(GalleryFonts::value(10.0f));
-        aboutVersionLabel.setColour(juce::Label::textColourId,
-                                    GalleryColors::get(GalleryColors::textMid()));
+        aboutVersionLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         aboutVersionLabel.setJustificationType(juce::Justification::centredLeft);
         content.addAndMakeVisible(aboutVersionLabel);
 
         aboutMakerLabel.setText("XO_OX Designs", juce::dontSendNotification);
         aboutMakerLabel.setFont(GalleryFonts::body(10.0f));
-        aboutMakerLabel.setColour(juce::Label::textColourId,
-                                  GalleryColors::get(GalleryColors::textMid()));
+        aboutMakerLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         aboutMakerLabel.setJustificationType(juce::Justification::centredLeft);
         content.addAndMakeVisible(aboutMakerLabel);
 
         // Clickable URL labels
-        styleUrlLabel(aboutWebLabel,  "xo-ox.org",          "https://xo-ox.org");
+        styleUrlLabel(aboutWebLabel, "xo-ox.org", "https://xo-ox.org");
         styleUrlLabel(aboutPatreonLabel, "patreon.com/c/XO_OX", "https://www.patreon.com/c/XO_OX");
         content.addAndMakeVisible(aboutWebLabel);
         content.addAndMakeVisible(aboutPatreonLabel);
@@ -389,10 +374,7 @@ public:
     }
 
     //==========================================================================
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
-    }
+    void paint(juce::Graphics& g) override { g.fillAll(GalleryColors::get(GalleryColors::shellWhite())); }
 
     //==========================================================================
     // parentHierarchyChanged — called once the component is added to the UI tree.
@@ -402,8 +384,7 @@ public:
     void parentHierarchyChanged() override
     {
         // Sync toggle to the persisted (already-read) darkMode value.
-        darkModeToggle.setToggleState(GalleryColors::darkMode(),
-                                      juce::dontSendNotification);
+        darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
         // Apply theme to the top-level component tree now that we are in it.
         if (auto* top = getTopLevelComponent())
         {
@@ -417,30 +398,27 @@ public:
     // lookAndFeelChanged — refresh colour-dependent labels when theme switches.
     void lookAndFeelChanged() override
     {
-        darkModeToggle.setToggleState(GalleryColors::darkMode(),
-                                      juce::dontSendNotification);
+        darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
 
         // Re-apply theme-dependent colors that were set explicitly in the constructor.
         // Without this, toggle tick colors and the Clear All button background stay
         // stale when the user switches dark/light mode at runtime.
-        styleToggle(darkModeToggle,              "Dark Cockpit");
-        styleToggle(cpuMetersToggle,             "CPU Meters");
-        styleToggle(autoPlaySurfaceDrumsToggle,  "Auto-PlaySurface (Drums)");
-        styleToggle(couplingArcLabelsToggle,     "Coupling Arc Labels");
-        styleToggle(presetPreviewAudioToggle,    "Preset Preview Audio");
-        styleToggle(reducedMotionToggle,         "Reduced Motion (WCAG 2.3.3)");
-        styleToggle(perfLockToggle,              "Performance Lock");
+        styleToggle(darkModeToggle, "Dark Cockpit");
+        styleToggle(cpuMetersToggle, "CPU Meters");
+        styleToggle(autoPlaySurfaceDrumsToggle, "Auto-PlaySurface (Drums)");
+        styleToggle(couplingArcLabelsToggle, "Coupling Arc Labels");
+        styleToggle(presetPreviewAudioToggle, "Preset Preview Audio");
+        styleToggle(reducedMotionToggle, "Reduced Motion (WCAG 2.3.3)");
+        styleToggle(perfLockToggle, "Performance Lock");
         if (mpeEnabledToggle != nullptr)
             styleToggle(*mpeEnabledToggle, "MPE Enabled");
 
-        clearAllBtn.setColour(juce::TextButton::buttonColourId,
-                              GalleryColors::get(GalleryColors::elevated()));
-        clearAllBtn.setColour(juce::TextButton::textColourOffId,
-                              GalleryColors::get(GalleryColors::textMid()));
+        clearAllBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        clearAllBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
 
         // Refresh URL label color (dark/light link color differs)
-        styleUrlLabel(aboutWebLabel,     "xo-ox.org",            "https://xo-ox.org");
-        styleUrlLabel(aboutPatreonLabel, "patreon.com/c/XO_OX",  "https://www.patreon.com/c/XO_OX");
+        styleUrlLabel(aboutWebLabel, "xo-ox.org", "https://xo-ox.org");
+        styleUrlLabel(aboutPatreonLabel, "patreon.com/c/XO_OX", "https://www.patreon.com/c/XO_OX");
 
         repaint();
         content.repaint();
@@ -449,11 +427,11 @@ public:
 private:
     //==========================================================================
     // Layout constants
-    static constexpr int kPad        = 12;   // outer horizontal padding
-    static constexpr int kRowH       = 24;   // standard control row height
-    static constexpr int kHeaderH    = 18;   // section header height
-    static constexpr int kGap        = 6;    // gap between rows
-    static constexpr int kSectionGap = 12;   // gap between sections
+    static constexpr int kPad = 12;        // outer horizontal padding
+    static constexpr int kRowH = 24;       // standard control row height
+    static constexpr int kHeaderH = 18;    // section header height
+    static constexpr int kGap = 6;         // gap between rows
+    static constexpr int kSectionGap = 12; // gap between sections
 
     //==========================================================================
     // Helpers
@@ -462,25 +440,18 @@ private:
     void styleToggle(juce::ToggleButton& btn, const juce::String& text)
     {
         btn.setButtonText(text);
-        btn.setColour(juce::ToggleButton::textColourId,
-                      GalleryColors::get(GalleryColors::textDark()));
-        btn.setColour(juce::ToggleButton::tickColourId,
-                      GalleryColors::get(GalleryColors::xoGold));
-        btn.setColour(juce::ToggleButton::tickDisabledColourId,
-                      GalleryColors::get(GalleryColors::borderGray()));
+        btn.setColour(juce::ToggleButton::textColourId, GalleryColors::get(GalleryColors::textDark()));
+        btn.setColour(juce::ToggleButton::tickColourId, GalleryColors::get(GalleryColors::xoGold));
+        btn.setColour(juce::ToggleButton::tickDisabledColourId, GalleryColors::get(GalleryColors::borderGray()));
         btn.setWantsKeyboardFocus(true);
     }
 
     void styleComboBox(juce::ComboBox& cb)
     {
-        cb.setColour(juce::ComboBox::backgroundColourId,
-                     GalleryColors::get(GalleryColors::slotBg()));
-        cb.setColour(juce::ComboBox::outlineColourId,
-                     GalleryColors::get(GalleryColors::borderGray()));
-        cb.setColour(juce::ComboBox::textColourId,
-                     GalleryColors::get(GalleryColors::textDark()));
-        cb.setColour(juce::ComboBox::arrowColourId,
-                     GalleryColors::get(GalleryColors::textMid()));
+        cb.setColour(juce::ComboBox::backgroundColourId, GalleryColors::get(GalleryColors::slotBg()));
+        cb.setColour(juce::ComboBox::outlineColourId, GalleryColors::get(GalleryColors::borderGray()));
+        cb.setColour(juce::ComboBox::textColourId, GalleryColors::get(GalleryColors::textDark()));
+        cb.setColour(juce::ComboBox::arrowColourId, GalleryColors::get(GalleryColors::textMid()));
         cb.setTextWhenNothingSelected({});
     }
 
@@ -488,8 +459,7 @@ private:
     {
         lbl.setText(text, juce::dontSendNotification);
         lbl.setFont(GalleryFonts::body(10.0f));
-        lbl.setColour(juce::Label::textColourId,
-                      juce::Colour(GalleryColors::darkMode() ? 0xFF58A6FF : 0xFF0066CC));
+        lbl.setColour(juce::Label::textColourId, juce::Colour(GalleryColors::darkMode() ? 0xFF58A6FF : 0xFF0066CC));
         lbl.setInterceptsMouseClicks(true, false);
 
         // Open the URL on click via a mouseListener lambda approach.
@@ -513,8 +483,7 @@ private:
     // Draw a section header (ALL CAPS Space Grotesk Bold 10pt + separator line).
     // Called by ContentWithHeaders::paint() via the back-pointer to this class.
 
-    void drawSectionHeader(juce::Graphics& g, const juce::String& title,
-                           int x, int y, int w) const
+    void drawSectionHeader(juce::Graphics& g, const juce::String& title, int x, int y, int w) const
     {
         using namespace GalleryColors;
         // Separator line
@@ -524,8 +493,7 @@ private:
         // Label
         g.setFont(GalleryFonts::display(9.5f));
         g.setColour(get(textMid()));
-        g.drawText(title.toUpperCase(), x, y, w, kHeaderH - 4,
-                   juce::Justification::bottomLeft, false);
+        g.drawText(title.toUpperCase(), x, y, w, kHeaderH - 4, juce::Justification::bottomLeft, false);
     }
 
     //==========================================================================
@@ -539,8 +507,7 @@ private:
         {
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(get(textMid()).withAlpha(0.65f));
-            g.drawText("MIDI Learn: right-click any knob", x, y, w, kRowH,
-                       juce::Justification::centredLeft);
+            g.drawText("MIDI Learn: right-click any knob", x, y, w, kRowH, juce::Justification::centredLeft);
             return kRowH;
         }
 
@@ -549,8 +516,7 @@ private:
         {
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(get(textMid()).withAlpha(0.55f));
-            g.drawText("No MIDI mappings active", x, y, w, kRowH,
-                       juce::Justification::centredLeft);
+            g.drawText("No MIDI mappings active", x, y, w, kRowH, juce::Justification::centredLeft);
             return kRowH;
         }
 
@@ -568,16 +534,13 @@ private:
             // CC number — JetBrains Mono 10pt
             g.setFont(GalleryFonts::value(10.0f));
             g.setColour(get(textDark()));
-            g.drawText("CC " + juce::String(m.ccNumber),
-                       x + 4, rowY, 46, kRowH,
-                       juce::Justification::centredLeft, false);
+            g.drawText("CC " + juce::String(m.ccNumber), x + 4, rowY, 46, kRowH, juce::Justification::centredLeft,
+                       false);
 
             // Param ID — Inter 10pt, truncated
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(get(textMid()));
-            g.drawText(m.paramId,
-                       x + 54, rowY, w - 54 - 28, kRowH,
-                       juce::Justification::centredLeft, true);
+            g.drawText(m.paramId, x + 54, rowY, w - 54 - 28, kRowH, juce::Justification::centredLeft, true);
 
             rowY += kRowH;
         }
@@ -589,7 +552,7 @@ private:
     // component's total height so the viewport can scroll correctly.
     void layoutContent()
     {
-        const int w    = getWidth();
+        const int w = getWidth();
         const int inner = w - kPad * 2;
 
         int y = kGap;
@@ -620,11 +583,11 @@ private:
         // ── 1. THEME ─────────────────────────────────────────────────────────
         sectionY[0] = y;
         y += kHeaderH + kGap;
-        placeToggleRow(darkModeToggle);              // Dark Cockpit
-        placeToggleRow(cpuMetersToggle);             // CPU Meters
-        placeToggleRow(autoPlaySurfaceDrumsToggle);  // Auto-PlaySurface (Drums)
-        placeToggleRow(couplingArcLabelsToggle);     // Coupling Arc Labels
-        placeToggleRow(presetPreviewAudioToggle);    // Preset Preview Audio
+        placeToggleRow(darkModeToggle);             // Dark Cockpit
+        placeToggleRow(cpuMetersToggle);            // CPU Meters
+        placeToggleRow(autoPlaySurfaceDrumsToggle); // Auto-PlaySurface (Drums)
+        placeToggleRow(couplingArcLabelsToggle);    // Coupling Arc Labels
+        placeToggleRow(presetPreviewAudioToggle);   // Preset Preview Audio
 
         y += kSectionGap;
 
@@ -665,7 +628,7 @@ private:
         // ── 4. PERFORMANCE LOCK ───────────────────────────────────────────────
         sectionY[3] = y;
         y += kHeaderH + kGap;
-        placeToggleRow(perfLockToggle);   // button text serves as the label
+        placeToggleRow(perfLockToggle); // button text serves as the label
         perfLockNote.setBounds(kPad, y, inner, kRowH - 4);
         y += kRowH + kGap;
 
@@ -733,91 +696,85 @@ private:
             if (owner == nullptr)
                 return;
 
-            const int w     = getWidth();
+            const int w = getWidth();
             const int inner = w - SettingsPanel::kPad * 2;
 
-            static const char* kTitles[] = {
-                "Theme", "Accessibility", "MPE", "Performance", "MIDI Mappings", "About",
-                "Keyboard Shortcuts"
-            };
+            static const char* kTitles[] = {"Theme", "Accessibility",     "MPE", "Performance", "MIDI Mappings",
+                                            "About", "Keyboard Shortcuts"};
             for (int i = 0; i < 7; ++i)
-                owner->drawSectionHeader(g, kTitles[i],
-                                         SettingsPanel::kPad,
-                                         owner->sectionY[i],
-                                         inner);
+                owner->drawSectionHeader(g, kTitles[i], SettingsPanel::kPad, owner->sectionY[i], inner);
 
             // MIDI table
-            owner->paintMidiTable(g, SettingsPanel::kPad,
-                                   owner->midiTableY, inner);
+            owner->paintMidiTable(g, SettingsPanel::kPad, owner->midiTableY, inner);
         }
     };
 
     //==========================================================================
     XOceanusProcessor& processor;
     MIDILearnManager* midiLearnMgr = nullptr;
-    bool              perfLocked   = false;
+    bool perfLocked = false;
 
     // Layout tracking (set by layoutContent, read by paint callbacks)
-    int  sectionY[7]  = {};
-    int  midiTableY   = 0;
-    int  midiTableH   = 0;
+    int sectionY[7] = {};
+    int midiTableY = 0;
+    int midiTableH = 0;
 
     // Persistent settings (reduced motion, etc.)
     std::unique_ptr<juce::PropertiesFile> settingsFile;
 
     // Viewport + scrolled inner component
-    juce::Viewport      viewport;
-    ContentWithHeaders  content;
+    juce::Viewport viewport;
+    ContentWithHeaders content;
 
     // ── 1. Theme ─────────────────────────────────────────────────────────────
-    juce::ToggleButton darkModeToggle              { "Dark Cockpit" };
-    juce::ToggleButton cpuMetersToggle             { "CPU Meters" };
-    juce::ToggleButton autoPlaySurfaceDrumsToggle  { "Auto-PlaySurface (Drums)" };
-    juce::ToggleButton couplingArcLabelsToggle     { "Coupling Arc Labels" };
-    juce::ToggleButton presetPreviewAudioToggle    { "Preset Preview Audio" };
+    juce::ToggleButton darkModeToggle{"Dark Cockpit"};
+    juce::ToggleButton cpuMetersToggle{"CPU Meters"};
+    juce::ToggleButton autoPlaySurfaceDrumsToggle{"Auto-PlaySurface (Drums)"};
+    juce::ToggleButton couplingArcLabelsToggle{"Coupling Arc Labels"};
+    juce::ToggleButton presetPreviewAudioToggle{"Preset Preview Audio"};
 
     // ── 2. Accessibility ─────────────────────────────────────────────────────
-    juce::ToggleButton reducedMotionToggle { "Reduced Motion (WCAG 2.3.3)" };
-    juce::Label        highContrastNote;
+    juce::ToggleButton reducedMotionToggle{"Reduced Motion (WCAG 2.3.3)"};
+    juce::Label highContrastNote;
 
     // ── 3. MPE (all optional — present only if APVTS params exist) ───────────
-    std::unique_ptr<juce::ToggleButton>  mpeEnabledToggle;   // text embedded in button
+    std::unique_ptr<juce::ToggleButton> mpeEnabledToggle; // text embedded in button
     std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> mpeEnabledAttach;
 
-    std::unique_ptr<juce::ComboBox>      mpeZoneBox;
-    std::unique_ptr<juce::Label>         mpeZoneLabel      = makeParamLabel("Zone");
+    std::unique_ptr<juce::ComboBox> mpeZoneBox;
+    std::unique_ptr<juce::Label> mpeZoneLabel = makeParamLabel("Zone");
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> mpeZoneAttach;
 
-    std::unique_ptr<juce::Slider>        mpePBSlider;
-    std::unique_ptr<juce::Label>         mpePBLabel        = makeParamLabel("Pitch Bend");
+    std::unique_ptr<juce::Slider> mpePBSlider;
+    std::unique_ptr<juce::Label> mpePBLabel = makeParamLabel("Pitch Bend");
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mpePBAttach;
 
-    std::unique_ptr<juce::ComboBox>      mpePressureBox;
-    std::unique_ptr<juce::Label>         mpePressureLabel  = makeParamLabel("Pressure");
+    std::unique_ptr<juce::ComboBox> mpePressureBox;
+    std::unique_ptr<juce::Label> mpePressureLabel = makeParamLabel("Pressure");
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> mpePressureAttach;
 
-    std::unique_ptr<juce::ComboBox>      mpeSlideBox;
-    std::unique_ptr<juce::Label>         mpeSlideLabel     = makeParamLabel("Slide");
+    std::unique_ptr<juce::ComboBox> mpeSlideBox;
+    std::unique_ptr<juce::Label> mpeSlideLabel = makeParamLabel("Slide");
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> mpeSlideAttach;
 
-    juce::Label                          mpeNotConfigured;   // shown when no MPE params
+    juce::Label mpeNotConfigured; // shown when no MPE params
 
     // ── 4. Performance Lock ───────────────────────────────────────────────────
-    juce::ToggleButton perfLockToggle  { "Performance Lock" };
-    juce::Label        perfLockNote;
+    juce::ToggleButton perfLockToggle{"Performance Lock"};
+    juce::Label perfLockNote;
 
     // ── 5. MIDI Mappings (painted, not component rows) ────────────────────────
-    juce::TextButton   clearAllBtn;
+    juce::TextButton clearAllBtn;
 
     // ── 7. Keyboard Shortcuts (display-only) ─────────────────────────────────
-    juce::Label        shortcutsLabel;
+    juce::Label shortcutsLabel;
 
     // ── 6. About ─────────────────────────────────────────────────────────────
-    juce::Label        aboutNameLabel;
-    juce::Label        aboutVersionLabel;
-    juce::Label        aboutMakerLabel;
-    juce::Label        aboutWebLabel;
-    juce::Label        aboutPatreonLabel;
+    juce::Label aboutNameLabel;
+    juce::Label aboutVersionLabel;
+    juce::Label aboutMakerLabel;
+    juce::Label aboutWebLabel;
+    juce::Label aboutPatreonLabel;
 
     //==========================================================================
     // Factory helper — creates a right-aligned param name label.
@@ -826,8 +783,7 @@ private:
         auto lbl = std::make_unique<juce::Label>();
         lbl->setText(text, juce::dontSendNotification);
         lbl->setFont(GalleryFonts::body(11.0f));
-        lbl->setColour(juce::Label::textColourId,
-                       GalleryColors::get(GalleryColors::textMid()));
+        lbl->setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         lbl->setJustificationType(juce::Justification::centredLeft);
         return lbl;
     }

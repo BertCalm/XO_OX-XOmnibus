@@ -4,7 +4,8 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // VoiceAllocator — Shared voice allocation and stealing for the XOceanus fleet.
@@ -46,7 +47,7 @@ struct VoiceAllocator
     //   uint64_t startTime;
     //--------------------------------------------------------------------------
     template <typename VoiceArray>
-    static int findFreeVoice (VoiceArray& voices, int maxPolyphony) noexcept
+    static int findFreeVoice(VoiceArray& voices, int maxPolyphony) noexcept
     {
         // Pass 1: find inactive voice
         for (int i = 0; i < maxPolyphony; ++i)
@@ -77,8 +78,7 @@ struct VoiceAllocator
     // IsReleasingFn: callable(const Voice&) -> bool
     //--------------------------------------------------------------------------
     template <typename VoiceArray, typename IsReleasingFn>
-    static int findFreeVoicePreferRelease (VoiceArray& voices, int maxPolyphony,
-                                           IsReleasingFn isReleasing) noexcept
+    static int findFreeVoicePreferRelease(VoiceArray& voices, int maxPolyphony, IsReleasingFn isReleasing) noexcept
     {
         // Pass 1: find inactive voice
         for (int i = 0; i < maxPolyphony; ++i)
@@ -93,7 +93,7 @@ struct VoiceAllocator
 
         for (int i = 0; i < maxPolyphony; ++i)
         {
-            if (isReleasing (voices[i]) && voices[i].startTime < oldestReleaseTime)
+            if (isReleasing(voices[i]) && voices[i].startTime < oldestReleaseTime)
             {
                 oldestReleaseTime = voices[i].startTime;
                 bestRelease = i;
@@ -129,8 +129,7 @@ struct VoiceAllocator
     // IsCoupledFn: callable(int voiceIndex) -> bool
     //--------------------------------------------------------------------------
     template <typename VoiceArray, typename IsCoupledFn>
-    static int findFreeVoiceCouplingAware (VoiceArray& voices, int maxPolyphony,
-                                            IsCoupledFn isCoupledSource) noexcept
+    static int findFreeVoiceCouplingAware(VoiceArray& voices, int maxPolyphony, IsCoupledFn isCoupledSource) noexcept
     {
         // Pass 1: find inactive voice (no steal needed)
         for (int i = 0; i < maxPolyphony; ++i)
@@ -138,23 +137,23 @@ struct VoiceAllocator
                 return i;
 
         // Pass 2: LRU steal — prefer uncoupled voices; track coupled as fallback
-        int   bestUncoupled     = -1;
+        int bestUncoupled = -1;
         uint64_t oldestUncoupled = UINT64_MAX;
-        int   bestFallback      = 0;
-        uint64_t oldestFallback  = UINT64_MAX;
+        int bestFallback = 0;
+        uint64_t oldestFallback = UINT64_MAX;
 
         for (int i = 0; i < maxPolyphony; ++i)
         {
             if (voices[i].startTime < oldestFallback)
             {
                 oldestFallback = voices[i].startTime;
-                bestFallback   = i;
+                bestFallback = i;
             }
 
             if (!isCoupledSource(i) && voices[i].startTime < oldestUncoupled)
             {
                 oldestUncoupled = voices[i].startTime;
-                bestUncoupled   = i;
+                bestUncoupled = i;
             }
         }
 
@@ -166,7 +165,7 @@ struct VoiceAllocator
     // Count active voices. Useful for polyphony display and CPU budgeting.
     //--------------------------------------------------------------------------
     template <typename VoiceArray>
-    static int countActive (const VoiceArray& voices, int maxPolyphony) noexcept
+    static int countActive(const VoiceArray& voices, int maxPolyphony) noexcept
     {
         int count = 0;
         for (int i = 0; i < maxPolyphony; ++i)
@@ -180,7 +179,7 @@ struct VoiceAllocator
     // Voice must have `int currentNote` field.
     //--------------------------------------------------------------------------
     template <typename VoiceArray>
-    static int findVoiceForNote (const VoiceArray& voices, int maxPolyphony, int note) noexcept
+    static int findVoiceForNote(const VoiceArray& voices, int maxPolyphony, int note) noexcept
     {
         for (int i = 0; i < maxPolyphony; ++i)
             if (voices[i].active && voices[i].currentNote == note)

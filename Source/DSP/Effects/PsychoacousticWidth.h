@@ -6,7 +6,8 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // PsychoacousticWidth — Perceptual stereo widening via Haas effect +
@@ -34,37 +35,36 @@ class PsychoacousticWidth
 public:
     PsychoacousticWidth() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         // Max Haas delay: 30ms
-        maxDelay = static_cast<int> (sr * 0.035);
-        haasLine.resize (static_cast<size_t> (maxDelay + 1), 0.0f);
+        maxDelay = static_cast<int>(sr * 0.035);
+        haasLine.resize(static_cast<size_t>(maxDelay + 1), 0.0f);
         reset();
     }
 
-    void setWidth (float w)    { width    = std::clamp (w, 0.0f, 1.0f); }
-    void setHaasMs (float ms)  { haasMs   = std::clamp (ms, 0.1f, 30.0f); }
+    void setWidth(float w) { width = std::clamp(w, 0.0f, 1.0f); }
+    void setHaasMs(float ms) { haasMs = std::clamp(ms, 0.1f, 30.0f); }
     // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
-    void setCombFreq (float f)
+    void setCombFreq(float f)
     {
-        float clamped = std::clamp (f, 200.0f, 2000.0f);
-        if (std::abs (clamped - combFreq) > 0.01f)
+        float clamped = std::clamp(f, 200.0f, 2000.0f);
+        if (std::abs(clamped - combFreq) > 0.01f)
         {
             combFreq = clamped;
             recalcComb();
         }
     }
-    void setMonoSafe (float s) { monoSafe = std::clamp (s, 0.0f, 1.0f); }
-    void setMix (float m)      { mix      = std::clamp (m, 0.0f, 1.0f); }
+    void setMonoSafe(float s) { monoSafe = std::clamp(s, 0.0f, 1.0f); }
+    void setMix(float m) { mix = std::clamp(m, 0.0f, 1.0f); }
 
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
         if (mix < 0.001f || width < 0.001f)
             return;
 
-        const int delaySamples = std::max (1,
-            static_cast<int> (haasMs * 0.001f * static_cast<float> (sr)));
+        const int delaySamples = std::max(1, static_cast<int>(haasMs * 0.001f * static_cast<float>(sr)));
         const float widthScale = width;
 
         for (int i = 0; i < numSamples; ++i)
@@ -73,9 +73,9 @@ public:
             float dryR = right[i];
 
             // ---- Haas micro-delay on right channel ----
-            haasLine[static_cast<size_t> (haasWritePos)] = right[i];
+            haasLine[static_cast<size_t>(haasWritePos)] = right[i];
             int readPos = (haasWritePos - delaySamples + maxDelay + 1) % (maxDelay + 1);
-            float haasR = haasLine[static_cast<size_t> (readPos)];
+            float haasR = haasLine[static_cast<size_t>(readPos)];
             haasWritePos = (haasWritePos + 1) % (maxDelay + 1);
 
             // Blend between original and delayed based on width
@@ -83,15 +83,15 @@ public:
 
             // ---- Complementary comb decorrelation ----
             // L gets positive comb, R gets negative → sums to flat in mono
-            float combL = left[i]  + combFB * combStateL;
-            float combR = wideR    - combFB * combStateR; // Note: opposite sign
+            float combL = left[i] + combFB * combStateL;
+            float combR = wideR - combFB * combStateR; // Note: opposite sign
 
             combStateL = combL;
             combStateR = combR;
 
             // Scale comb contribution by width
-            float outL = left[i]  + widthScale * (combL - left[i]) * 0.3f;
-            float outR = wideR    + widthScale * (combR - wideR)   * 0.3f;
+            float outL = left[i] + widthScale * (combL - left[i]) * 0.3f;
+            float outR = wideR + widthScale * (combR - wideR) * 0.3f;
 
             // ---- Mono safety: check correlation ----
             if (monoSafe > 0.01f)
@@ -99,8 +99,8 @@ public:
                 float mono = (outL + outR) * 0.5f;
                 float originalMono = (dryL + dryR) * 0.5f;
                 // If mono sum loses too much energy, pull back toward dry
-                float monoEnergy = std::abs (mono);
-                float origEnergy = std::abs (originalMono) + 1e-10f;
+                float monoEnergy = std::abs(mono);
+                float origEnergy = std::abs(originalMono) + 1e-10f;
                 float ratio = monoEnergy / origEnergy;
 
                 if (ratio < 0.5f)
@@ -112,17 +112,17 @@ public:
             }
 
             // Denormal flush
-            combStateL = flushDenormal (combStateL);
-            combStateR = flushDenormal (combStateR);
+            combStateL = flushDenormal(combStateL);
+            combStateR = flushDenormal(combStateR);
 
-            left[i]  = dryL + mix * (outL - dryL);
+            left[i] = dryL + mix * (outL - dryL);
             right[i] = dryR + mix * (outR - dryR);
         }
     }
 
     void reset()
     {
-        std::fill (haasLine.begin(), haasLine.end(), 0.0f);
+        std::fill(haasLine.begin(), haasLine.end(), 0.0f);
         haasWritePos = 0;
         combStateL = combStateR = 0.0f;
         recalcComb();
@@ -130,11 +130,11 @@ public:
 
 private:
     double sr = 44100.0;
-    float width    = 0.5f;
-    float haasMs   = 8.0f;
+    float width = 0.5f;
+    float haasMs = 8.0f;
     float combFreq = 600.0f;
     float monoSafe = 0.5f;
-    float mix      = 1.0f;
+    float mix = 1.0f;
 
     // Haas delay line
     std::vector<float> haasLine;
@@ -148,10 +148,10 @@ private:
     void recalcComb()
     {
         // Comb feedback derived from frequency (higher freq = shorter comb = less coloring)
-        float delaySamples = static_cast<float> (sr) / combFreq;
-        (void) delaySamples; // Simple first-order comb uses feedback only
+        float delaySamples = static_cast<float>(sr) / combFreq;
+        (void)delaySamples;                                     // Simple first-order comb uses feedback only
         combFB = 0.3f * (1.0f - (combFreq - 200.0f) / 1800.0f); // Less FB at higher freq
-        combFB = std::clamp (combFB, 0.05f, 0.35f);
+        combFB = std::clamp(combFB, 0.05f, 0.35f);
     }
 
     // SRO: uses shared flushDenormal from FastMath.h

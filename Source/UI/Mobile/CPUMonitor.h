@@ -5,7 +5,8 @@
 #include <atomic>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CPUMonitor — Real-time audio thread CPU tracking and quality mitigation.
@@ -27,25 +28,28 @@ namespace xoceanus {
 //   - getLoad() / getQualityLevel() read from any thread
 //   - Callback for mitigation level changes fires on message thread
 //
-class CPUMonitor {
+class CPUMonitor
+{
 public:
     // Quality levels from full to most degraded
-    enum class QualityLevel {
-        Full,           // Normal operation
-        ReducedUI,      // UI animations throttled
-        ReducedMod,     // Mod matrix update rate halved
-        Eco,            // Oversampling off, FX simplified
-        VoiceReduced    // Voice count reduced
+    enum class QualityLevel
+    {
+        Full,        // Normal operation
+        ReducedUI,   // UI animations throttled
+        ReducedMod,  // Mod matrix update rate halved
+        Eco,         // Oversampling off, FX simplified
+        VoiceReduced // Voice count reduced
     };
 
-    struct Config {
-        float warningThreshold  = 0.70f;   // Show UI badge
-        float reducedUIAt       = 0.60f;   // Throttle animations
-        float reducedModAt      = 0.70f;   // Halve mod rate
-        float ecoAt             = 0.80f;   // Eco quality
-        float voiceReducedAt    = 0.90f;   // Voice reduction
-        float hysteresis        = 0.05f;   // Must drop this far below threshold to recover
-        float smoothingSeconds  = 1.0f;    // EMA time constant for load measurement
+    struct Config
+    {
+        float warningThreshold = 0.70f; // Show UI badge
+        float reducedUIAt = 0.60f;      // Throttle animations
+        float reducedModAt = 0.70f;     // Halve mod rate
+        float ecoAt = 0.80f;            // Eco quality
+        float voiceReducedAt = 0.90f;   // Voice reduction
+        float hysteresis = 0.05f;       // Must drop this far below threshold to recover
+        float smoothingSeconds = 1.0f;  // EMA time constant for load measurement
     };
 
     void setConfig(const Config& cfg) { config = cfg; }
@@ -53,18 +57,14 @@ public:
     //-- Audio thread interface --------------------------------------------------
 
     // Call at the START of the audio callback.
-    void beginBlock()
-    {
-        blockStartTicks = juce::Time::getHighResolutionTicks();
-    }
+    void beginBlock() { blockStartTicks = juce::Time::getHighResolutionTicks(); }
 
     // Call at the END of the audio callback.
     // bufferSize and sampleRate are needed to compute the available time budget.
     void endBlock(int bufferSize, double sampleRate)
     {
         const int64_t endTicks = juce::Time::getHighResolutionTicks();
-        const double elapsedSeconds = juce::Time::highResolutionTicksToSeconds(
-            endTicks - blockStartTicks);
+        const double elapsedSeconds = juce::Time::highResolutionTicksToSeconds(endTicks - blockStartTicks);
 
         const double budgetSeconds = static_cast<double>(bufferSize) / sampleRate;
         const float instantLoad = static_cast<float>(elapsedSeconds / budgetSeconds);
@@ -120,10 +120,7 @@ public:
     float getPeakLoad() const { return peakLoad.load(std::memory_order_relaxed); }
     void resetPeak() { peakLoad.store(0.0f, std::memory_order_relaxed); }
 
-    QualityLevel getQualityLevel() const
-    {
-        return qualityLevel.load(std::memory_order_relaxed);
-    }
+    QualityLevel getQualityLevel() const { return qualityLevel.load(std::memory_order_relaxed); }
 
     bool isWarning() const { return getLoad() >= config.warningThreshold; }
 
@@ -155,8 +152,10 @@ public:
     {
         // Base multiplier from engine count (per mobile spec)
         float engineFactor = 1.0f;
-        if (activeEngineCount == 2) engineFactor = 0.6f;
-        else if (activeEngineCount >= 3) engineFactor = 0.4f;
+        if (activeEngineCount == 2)
+            engineFactor = 0.6f;
+        else if (activeEngineCount >= 3)
+            engineFactor = 0.4f;
 
         // Further reduce if CPU is critical
         if (shouldReduceVoices())
@@ -167,7 +166,8 @@ public:
 
     //-- Platform budget ---------------------------------------------------------
 
-    struct PlatformBudget {
+    struct PlatformBudget
+    {
         int maxEngines;
         float maxCPU;
         bool ecoAvailable;
@@ -180,20 +180,20 @@ public:
         if (deviceClass == 0) // iPhone
         {
             if (activeEngines == 1)
-                return { 2, 0.25f, true };
-            return { 2, 0.45f, true };
+                return {2, 0.25f, true};
+            return {2, 0.45f, true};
         }
         else if (deviceClass == 1) // iPad
         {
             if (activeEngines <= 2)
-                return { 3, 0.35f, true };
-            return { 3, 0.50f, true };
+                return {3, 0.35f, true};
+            return {3, 0.50f, true};
         }
         else // iPad Pro
         {
             if (activeEngines <= 2)
-                return { 3, 0.35f, false };
-            return { 3, 0.50f, false };
+                return {3, 0.35f, false};
+            return {3, 0.50f, false};
         }
     }
 
@@ -201,19 +201,24 @@ private:
     Config config;
     int64_t blockStartTicks = 0;
 
-    std::atomic<float> smoothedLoad { 0.0f };
-    std::atomic<float> peakLoad { 0.0f };
-    std::atomic<QualityLevel> qualityLevel { QualityLevel::Full };
+    std::atomic<float> smoothedLoad{0.0f};
+    std::atomic<float> peakLoad{0.0f};
+    std::atomic<QualityLevel> qualityLevel{QualityLevel::Full};
 
     float thresholdForLevel(QualityLevel level) const
     {
         switch (level)
         {
-            case QualityLevel::Full:          return 0.0f;
-            case QualityLevel::ReducedUI:     return config.reducedUIAt;
-            case QualityLevel::ReducedMod:    return config.reducedModAt;
-            case QualityLevel::Eco:           return config.ecoAt;
-            case QualityLevel::VoiceReduced:  return config.voiceReducedAt;
+        case QualityLevel::Full:
+            return 0.0f;
+        case QualityLevel::ReducedUI:
+            return config.reducedUIAt;
+        case QualityLevel::ReducedMod:
+            return config.reducedModAt;
+        case QualityLevel::Eco:
+            return config.ecoAt;
+        case QualityLevel::VoiceReduced:
+            return config.voiceReducedAt;
         }
         return 0.0f;
     }

@@ -3,7 +3,8 @@
 #pragma once
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ControlRateReducer — Decimates modulation signals to control rate with
@@ -44,43 +45,37 @@ namespace xoceanus {
 template <int Ratio = 32>
 class ControlRateReducer
 {
-    static_assert ((Ratio & (Ratio - 1)) == 0, "Ratio must be a power of 2");
-    static_assert (Ratio >= 2 && Ratio <= 256, "Ratio must be in [2, 256]");
+    static_assert((Ratio & (Ratio - 1)) == 0, "Ratio must be a power of 2");
+    static_assert(Ratio >= 2 && Ratio <= 256, "Ratio must be in [2, 256]");
 
 public:
-    void prepare (double /*sampleRate*/) noexcept
-    {
-        reset();
-    }
+    void prepare(double /*sampleRate*/) noexcept { reset(); }
 
     void reset() noexcept
     {
         currentValue = 0.0f;
-        targetValue  = 0.0f;
-        increment    = 0.0f;
-        counter      = 0;
+        targetValue = 0.0f;
+        increment = 0.0f;
+        counter = 0;
     }
 
     //--------------------------------------------------------------------------
     /// Returns true if the modulation source should be evaluated at this sample.
-    bool shouldUpdate (int sampleIndex) const noexcept
-    {
-        return (sampleIndex & (Ratio - 1)) == 0;
-    }
+    bool shouldUpdate(int sampleIndex) const noexcept { return (sampleIndex & (Ratio - 1)) == 0; }
 
     /// Push a new control-rate value. Call when shouldUpdate() returns true.
-    void pushValue (float newValue) noexcept
+    void pushValue(float newValue) noexcept
     {
         currentValue = targetValue;
-        targetValue  = newValue;
-        increment    = (targetValue - currentValue) * kInvRatio;
-        counter      = 0;
+        targetValue = newValue;
+        increment = (targetValue - currentValue) * kInvRatio;
+        counter = 0;
     }
 
     /// Get the linearly interpolated value at the current sample position.
-    float getInterpolated (int /*sampleIndex*/) noexcept
+    float getInterpolated(int /*sampleIndex*/) noexcept
     {
-        float result = currentValue + increment * static_cast<float> (counter);
+        float result = currentValue + increment * static_cast<float>(counter);
         counter++;
         return result;
     }
@@ -90,9 +85,10 @@ public:
     /// Reads every Ratio-th sample, linearly interpolates the rest.
     /// @param buffer  Modulation signal buffer (numSamples long). Modified in-place.
     /// @param numSamples  Number of samples in the buffer.
-    void processBlock (float* buffer, int numSamples) noexcept
+    void processBlock(float* buffer, int numSamples) noexcept
     {
-        if (numSamples <= 0) return;
+        if (numSamples <= 0)
+            return;
 
         // Capture first sample before any writes to prevent aliasing if
         // the compiler reorders loads/stores during SIMD vectorization.
@@ -100,11 +96,11 @@ public:
         float prev = firstSample;
         for (int i = 0; i < numSamples; i += Ratio)
         {
-            float next = buffer[juce_min (i + Ratio, numSamples - 1)];
+            float next = buffer[juce_min(i + Ratio, numSamples - 1)];
             float step = (next - prev) * kInvRatio;
-            int end = juce_min (i + Ratio, numSamples);
+            int end = juce_min(i + Ratio, numSamples);
             for (int j = i; j < end; ++j)
-                buffer[j] = prev + step * static_cast<float> (j - i);
+                buffer[j] = prev + step * static_cast<float>(j - i);
             prev = next;
         }
     }
@@ -114,20 +110,22 @@ public:
     /// @param source     Full-rate modulation source (numSamples).
     /// @param dest       Output buffer for reduced/interpolated signal (numSamples).
     /// @param numSamples Number of samples.
-    void processBlock (const float* source, float* dest, int numSamples) noexcept
+    void processBlock(const float* source, float* dest, int numSamples) noexcept
     {
-        if (numSamples <= 0) return;
+        if (numSamples <= 0)
+            return;
 
         float prev = source[0];
         for (int i = 0; i < numSamples; i += Ratio)
         {
             int nextIdx = i + Ratio;
-            if (nextIdx >= numSamples) nextIdx = numSamples - 1;
+            if (nextIdx >= numSamples)
+                nextIdx = numSamples - 1;
             float next = source[nextIdx];
             float step = (next - prev) * kInvRatio;
             int end = (i + Ratio < numSamples) ? i + Ratio : numSamples;
             for (int j = i; j < end; ++j)
-                dest[j] = prev + step * static_cast<float> (j - i);
+                dest[j] = prev + step * static_cast<float>(j - i);
             prev = next;
         }
     }
@@ -135,15 +133,15 @@ public:
     static constexpr int getRatio() noexcept { return Ratio; }
 
 private:
-    static constexpr float kInvRatio = 1.0f / static_cast<float> (Ratio);
+    static constexpr float kInvRatio = 1.0f / static_cast<float>(Ratio);
 
     float currentValue = 0.0f;
-    float targetValue  = 0.0f;
-    float increment    = 0.0f;
-    int counter        = 0;
+    float targetValue = 0.0f;
+    float increment = 0.0f;
+    int counter = 0;
 
     // Minimal helper to avoid juce dependency in this header
-    static constexpr int juce_min (int a, int b) noexcept { return a < b ? a : b; }
+    static constexpr int juce_min(int a, int b) noexcept { return a < b ? a : b; }
 };
 
 } // namespace xoceanus

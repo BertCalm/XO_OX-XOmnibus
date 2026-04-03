@@ -21,12 +21,12 @@
 #include <algorithm>
 #include <cstdint>
 
-namespace xoutwit {
+namespace xoutwit
+{
 
 class InkCloud
 {
 public:
-
     //--------------------------------------------------------------------------
     // Called once per block (renderBlock) with current sampleRate + inkDecay param.
     // inkDecay [0.01, 0.5]: shorter = snappier burst
@@ -42,7 +42,8 @@ public:
     // Call on note-on. velocity [0,1], inkDepth [0,1] (owit_inkCloud param).
     void trigger(float velocity, float inkDepth) noexcept
     {
-        if (inkDepth < 0.001f) return;
+        if (inkDepth < 0.001f)
+            return;
         // Peak amplitude scales with velocity and depth
         envelope = velocity * inkDepth;
     }
@@ -80,12 +81,11 @@ public:
     bool isIdle() const noexcept { return envelope < 0.00001f; }
 
 private:
-
-    float sr         = 48000.0f;
-    float decayTime  = 0.08f;
+    float sr = 48000.0f;
+    float decayTime = 0.08f;
     float decayCoeff = 0.99f;
-    float envelope   = 0.0f;
-    float lpState    = 0.0f;
+    float envelope = 0.0f;
+    float lpState = 0.0f;
 
     uint32_t lfsr = 0xAB9F3C1Du;
 };

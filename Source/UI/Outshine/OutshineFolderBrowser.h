@@ -5,18 +5,18 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 struct FolderEntry
 {
-    juce::File   file;
-    bool         isDirectory { false };
+    juce::File file;
+    bool isDirectory{false};
     juce::String durationStr;
-    bool         selected { false };
+    bool selected{false};
 };
 
-class OutshineFolderBrowser : public juce::Component,
-                              private juce::ListBoxModel
+class OutshineFolderBrowser : public juce::Component, private juce::ListBoxModel
 {
 public:
     std::function<void(const juce::StringArray&)> onFilesConfirmed;
@@ -28,13 +28,13 @@ public:
         A11y::setup(*this, "File Browser", "Navigate folders and select WAV files");
 
         pathLabel.setFont(GalleryFonts::value(11.0f));
-        pathLabel.setColour(juce::Label::textColourId,
-                            GalleryColors::get(GalleryColors::textDark()));
+        pathLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
         addAndMakeVisible(pathLabel);
 
         backButton.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x86\x90")));
         A11y::setup(backButton, "Back", "Navigate to parent directory");
-        backButton.onClick = [this]() {
+        backButton.onClick = [this]()
+        {
             if (currentPath.getParentDirectory() != currentPath)
                 navigateTo(currentPath.getParentDirectory());
         };
@@ -43,8 +43,7 @@ public:
         fileList.setModel(this);
         fileList.setRowHeight(kRowH);
         fileList.setMultipleSelectionEnabled(true);
-        fileList.setColour(juce::ListBox::backgroundColourId,
-                           GalleryColors::get(GalleryColors::slotBg()));
+        fileList.setColour(juce::ListBox::backgroundColourId, GalleryColors::get(GalleryColors::slotBg()));
         A11y::setup(fileList, "Files", "List of files and folders");
         addAndMakeVisible(fileList);
 
@@ -102,7 +101,8 @@ private:
 
     void paintListBoxItem(int row, juce::Graphics& g, int w, int h, bool rowSelected) override
     {
-        if (row < 0 || row >= (int)entries.size()) return;
+        if (row < 0 || row >= (int)entries.size())
+            return;
         const auto& entry = entries[(size_t)row];
 
         if (rowSelected)
@@ -110,17 +110,15 @@ private:
         else
             g.fillAll(GalleryColors::get(GalleryColors::slotBg()));
 
-        juce::String icon = entry.isDirectory
-            ? juce::String(juce::CharPointer_UTF8("\xf0\x9f\x93\x81"))
-            : juce::String(juce::CharPointer_UTF8("\xf0\x9f\x8e\xb5"));
+        juce::String icon = entry.isDirectory ? juce::String(juce::CharPointer_UTF8("\xf0\x9f\x93\x81"))
+                                              : juce::String(juce::CharPointer_UTF8("\xf0\x9f\x8e\xb5"));
         g.setFont(GalleryFonts::body(12.0f));
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
         g.drawText(icon, 4, 0, 24, h, juce::Justification::centredLeft);
 
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
         g.setFont(GalleryFonts::body(12.0f));
-        g.drawText(entry.file.getFileName(), 32, 0, w - 80, h,
-                   juce::Justification::centredLeft, true);
+        g.drawText(entry.file.getFileName(), 32, 0, w - 80, h, juce::Justification::centredLeft, true);
 
         if (!entry.isDirectory)
         {
@@ -129,8 +127,7 @@ private:
 
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
             g.setFont(GalleryFonts::value(10.0f));
-            g.drawText(entries[(size_t)row].durationStr,
-                       w - 72, 0, 68, h, juce::Justification::centredRight);
+            g.drawText(entries[(size_t)row].durationStr, w - 72, 0, 68, h, juce::Justification::centredRight);
         }
 
         if (fileList.isRowSelected(row) && fileList.hasKeyboardFocus(true))
@@ -142,9 +139,11 @@ private:
 
     void listBoxItemClicked(int row, const juce::MouseEvent& e) override
     {
-        if (row < 0 || row >= (int)entries.size()) return;
+        if (row < 0 || row >= (int)entries.size())
+            return;
         const auto& entry = entries[(size_t)row];
-        if (entry.isDirectory) return;
+        if (entry.isDirectory)
+            return;
 
         if (e.mods.isShiftDown() && lastClickedRow >= 0)
         {
@@ -171,13 +170,14 @@ private:
 
     void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
     {
-        if (row < 0 || row >= (int)entries.size()) return;
+        if (row < 0 || row >= (int)entries.size())
+            return;
         const auto& entry = entries[(size_t)row];
 
         if (entry.isDirectory)
             navigateTo(entry.file);
         else if (onFilesConfirmed)
-            onFilesConfirmed({ entry.file.getFullPathName() });
+            onFilesConfirmed({entry.file.getFullPathName()});
     }
 
     void navigateTo(const juce::File& directory)
@@ -191,15 +191,15 @@ private:
         entries.clear();
 
         if (directory.getParentDirectory() != directory)
-            entries.push_back({ directory.getParentDirectory(), true, "..", false });
+            entries.push_back({directory.getParentDirectory(), true, "..", false});
 
         juce::RangedDirectoryIterator dirIt(directory, false, "*", juce::File::findDirectories);
         for (auto& entry : dirIt)
-            entries.push_back({ entry.getFile(), true, {}, false });
+            entries.push_back({entry.getFile(), true, {}, false});
 
         juce::RangedDirectoryIterator wavIt(directory, false, "*.wav;*.WAV", juce::File::findFiles);
         for (auto& entry : wavIt)
-            entries.push_back({ entry.getFile(), false, {}, false });
+            entries.push_back({entry.getFile(), false, {}, false});
 
         pathLabel.setText(directory.getFullPathName(), juce::dontSendNotification);
         fileList.deselectAllRows();
@@ -208,9 +208,9 @@ private:
 
     juce::String getFormattedDuration(const juce::File& wavFile) const
     {
-        std::unique_ptr<juce::AudioFormatReader> reader(
-            formatManager.createReaderFor(wavFile));
-        if (!reader) return "--:--";
+        std::unique_ptr<juce::AudioFormatReader> reader(formatManager.createReaderFor(wavFile));
+        if (!reader)
+            return "--:--";
 
         double durationS = (double)reader->lengthInSamples / reader->sampleRate;
         int mins = (int)(durationS / 60.0);
@@ -218,16 +218,16 @@ private:
         return juce::String(mins) + ":" + juce::String(secs, 1).paddedLeft('0', 4);
     }
 
-    juce::File                       currentPath;
+    juce::File currentPath;
     mutable std::vector<FolderEntry> entries;
-    juce::ListBox                    fileList;
-    juce::Label                      pathLabel;
-    juce::TextButton                 backButton { "<" };
+    juce::ListBox fileList;
+    juce::Label pathLabel;
+    juce::TextButton backButton{"<"};
     mutable juce::AudioFormatManager formatManager;
-    int                              lastClickedRow { -1 };
+    int lastClickedRow{-1};
 
     static constexpr int kPathBarH = 32;
-    static constexpr int kRowH     = 28;
+    static constexpr int kRowH = 28;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineFolderBrowser)
 };

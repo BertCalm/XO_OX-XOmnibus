@@ -5,30 +5,48 @@
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
-namespace xoceanus {
+namespace xoceanus
+{
 
 // Local couplingTypeLabel — avoids circular include with OverviewPanel.h
 #ifndef XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
 #define XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
 inline juce::String couplingTypeLabel(CouplingType t)
 {
-    switch (t) {
-        case CouplingType::AmpToFilter:      return "Amp->F";
-        case CouplingType::AmpToPitch:       return "Amp->P";
-        case CouplingType::LFOToPitch:       return "LFO->P";
-        case CouplingType::EnvToMorph:       return "Env->M";
-        case CouplingType::AudioToFM:        return "Au->FM";
-        case CouplingType::AudioToRing:      return "Ring";
-        case CouplingType::FilterToFilter:   return "F->F";
-        case CouplingType::AmpToChoke:       return "Choke";
-        case CouplingType::RhythmToBlend:    return "R->B";
-        case CouplingType::EnvToDecay:       return "Env->D";
-        case CouplingType::PitchToPitch:     return "P->P";
-        case CouplingType::AudioToWavetable: return "Au->W";
-        case CouplingType::AudioToBuffer:    return "Au->Buf";
-        case CouplingType::KnotTopology:     return "Knot";
-        case CouplingType::TriangularCoupling: return "Triangle";
-        default:                             return "?";
+    switch (t)
+    {
+    case CouplingType::AmpToFilter:
+        return "Amp->F";
+    case CouplingType::AmpToPitch:
+        return "Amp->P";
+    case CouplingType::LFOToPitch:
+        return "LFO->P";
+    case CouplingType::EnvToMorph:
+        return "Env->M";
+    case CouplingType::AudioToFM:
+        return "Au->FM";
+    case CouplingType::AudioToRing:
+        return "Ring";
+    case CouplingType::FilterToFilter:
+        return "F->F";
+    case CouplingType::AmpToChoke:
+        return "Choke";
+    case CouplingType::RhythmToBlend:
+        return "R->B";
+    case CouplingType::EnvToDecay:
+        return "Env->D";
+    case CouplingType::PitchToPitch:
+        return "P->P";
+    case CouplingType::AudioToWavetable:
+        return "Au->W";
+    case CouplingType::AudioToBuffer:
+        return "Au->Buf";
+    case CouplingType::KnotTopology:
+        return "Knot";
+    case CouplingType::TriangularCoupling:
+        return "Triangle";
+    default:
+        return "?";
     }
 }
 #endif
@@ -65,8 +83,7 @@ inline juce::String couplingTypeLabel(CouplingType t)
 class CouplingChainView : public juce::Component
 {
 public:
-    explicit CouplingChainView(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit CouplingChainView(XOceanusProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false);
         A11y::setup(*this, "Coupling Chain", "Shows the signal routing chain between coupled engines", false);
@@ -84,10 +101,11 @@ public:
         // MaxSlots is 5 (4 primary + Ghost Slot); guard both processor and spec.
         constexpr int kMaxSlots = XOceanusProcessor::MaxSlots; // 5 as of 2026-03-25
 
-        struct SlotInfo {
-            int            slot;
-            juce::String   name;
-            juce::Colour   accent;
+        struct SlotInfo
+        {
+            int slot;
+            juce::String name;
+            juce::Colour accent;
         };
         std::vector<SlotInfo> active;
         active.reserve(static_cast<size_t>(kMaxSlots));
@@ -96,7 +114,7 @@ public:
         {
             auto* eng = processor.getEngine(i);
             if (eng)
-                active.push_back({ i, eng->getEngineId(), eng->getAccentColour() });
+                active.push_back({i, eng->getEngineId(), eng->getAccentColour()});
         }
 
         if (active.empty())
@@ -111,19 +129,24 @@ public:
         // ─────────────────────────────────────────────────────────────────────
 
         // Map slot → SlotInfo for quick lookup
-        std::array<const SlotInfo*, kMaxSlots> bySlot {};
+        std::array<const SlotInfo*, kMaxSlots> bySlot{};
         for (const auto& s : active)
             bySlot[static_cast<size_t>(s.slot)] = &s;
 
         // Count how many active routes point INTO each slot
-        std::array<int, kMaxSlots> inDegree {};
+        std::array<int, kMaxSlots> inDegree{};
         for (const auto& r : routes)
         {
-            if (!r.active || r.amount < 0.001f) continue;
-            if (r.sourceSlot < 0 || r.sourceSlot >= kMaxSlots) continue;
-            if (r.destSlot   < 0 || r.destSlot   >= kMaxSlots) continue;
-            if (!bySlot[static_cast<size_t>(r.sourceSlot)]) continue;
-            if (!bySlot[static_cast<size_t>(r.destSlot)])   continue;
+            if (!r.active || r.amount < 0.001f)
+                continue;
+            if (r.sourceSlot < 0 || r.sourceSlot >= kMaxSlots)
+                continue;
+            if (r.destSlot < 0 || r.destSlot >= kMaxSlots)
+                continue;
+            if (!bySlot[static_cast<size_t>(r.sourceSlot)])
+                continue;
+            if (!bySlot[static_cast<size_t>(r.destSlot)])
+                continue;
             inDegree[static_cast<size_t>(r.destSlot)]++;
         }
 
@@ -145,8 +168,8 @@ public:
                 queue.push_back(s.slot);
         }
 
-        std::array<bool, kMaxSlots> visited {};
-        std::array<int,  kMaxSlots> tempDegree = inDegree;
+        std::array<bool, kMaxSlots> visited{};
+        std::array<int, kMaxSlots> tempDegree = inDegree;
 
         while (!queue.empty())
         {
@@ -155,18 +178,24 @@ public:
             int slot = *minIt;
             queue.erase(minIt);
 
-            if (visited[static_cast<size_t>(slot)]) continue;
+            if (visited[static_cast<size_t>(slot)])
+                continue;
             visited[static_cast<size_t>(slot)] = true;
             order.push_back(slot);
 
             // Reduce in-degree of slots this one routes to
             for (const auto& r : routes)
             {
-                if (!r.active || r.amount < 0.001f) continue;
-                if (r.sourceSlot != slot) continue;
-                if (r.destSlot < 0 || r.destSlot >= kMaxSlots) continue;
-                if (!bySlot[static_cast<size_t>(r.destSlot)]) continue;
-                if (visited[static_cast<size_t>(r.destSlot)]) continue;
+                if (!r.active || r.amount < 0.001f)
+                    continue;
+                if (r.sourceSlot != slot)
+                    continue;
+                if (r.destSlot < 0 || r.destSlot >= kMaxSlots)
+                    continue;
+                if (!bySlot[static_cast<size_t>(r.destSlot)])
+                    continue;
+                if (visited[static_cast<size_t>(r.destSlot)])
+                    continue;
 
                 tempDegree[static_cast<size_t>(r.destSlot)]--;
                 if (tempDegree[static_cast<size_t>(r.destSlot)] <= 0)
@@ -190,7 +219,7 @@ public:
         {
             const auto* info = bySlot[static_cast<size_t>(slot)];
             if (info)
-                nodes.push_back({ info->name, info->accent, slot });
+                nodes.push_back({info->name, info->accent, slot});
         }
 
         // ── 5. Build ChainLink list (one link per adjacent node pair) ────────
@@ -205,10 +234,12 @@ public:
             const MegaCouplingMatrix::CouplingRoute* best = nullptr;
             for (const auto& r : routes)
             {
-                if (!r.active || r.amount < 0.001f) continue;
-                bool connects = (r.sourceSlot == slotA && r.destSlot == slotB)
-                             || (r.sourceSlot == slotB && r.destSlot == slotA);
-                if (!connects) continue;
+                if (!r.active || r.amount < 0.001f)
+                    continue;
+                bool connects =
+                    (r.sourceSlot == slotA && r.destSlot == slotB) || (r.sourceSlot == slotB && r.destSlot == slotA);
+                if (!connects)
+                    continue;
                 if (!best || r.amount > best->amount)
                     best = &r;
             }
@@ -216,15 +247,15 @@ public:
             ChainLink lk;
             if (best)
             {
-                lk.typeLabel  = couplingTypeLabel(best->type);
-                lk.linkColor  = colorForCouplingType(best->type);
+                lk.typeLabel = couplingTypeLabel(best->type);
+                lk.linkColor = colorForCouplingType(best->type);
             }
             else
             {
                 // No explicit route between these adjacent nodes — show a neutral
                 // connector so the visual flow is preserved
-                lk.typeLabel  = {};
-                lk.linkColor  = juce::Colour(GalleryColors::borderGray());
+                lk.typeLabel = {};
+                lk.linkColor = juce::Colour(GalleryColors::borderGray());
             }
             links.push_back(lk);
         }
@@ -249,37 +280,33 @@ public:
         {
             g.setColour(get(textMid()));
             g.setFont(GalleryFonts::body(9.0f));
-            g.drawText("No signal chain",
-                       bounds.toNearestInt(),
-                       juce::Justification::centred);
+            g.drawText("No signal chain", bounds.toNearestInt(), juce::Justification::centred);
             return;
         }
 
         // ── Geometry constants ────────────────────────────────────────────────
         constexpr float kEngineNodeW = 64.0f;
-        constexpr float kFXNodeW     = 40.0f;
-        constexpr float kOUTNodeW    = 32.0f;
-        constexpr float kNodeH       = 32.0f;
-        constexpr float kGapW        = 32.0f;
-        constexpr float kCornerR     = 5.0f;
-        constexpr float kBorderW     = 2.0f;
-        constexpr float kBadgeR      = 8.0f;   // badge circle diameter
+        constexpr float kFXNodeW = 40.0f;
+        constexpr float kOUTNodeW = 32.0f;
+        constexpr float kNodeH = 32.0f;
+        constexpr float kGapW = 32.0f;
+        constexpr float kCornerR = 5.0f;
+        constexpr float kBorderW = 2.0f;
+        constexpr float kBadgeR = 8.0f; // badge circle diameter
 
         // Total chain width (engine nodes + gap/arrow segments + FX + OUT)
-        const int  N          = static_cast<int>(nodes.size());
-        const float totalW    = N * kEngineNodeW
-                              + (N - 1) * kGapW
-                              + kGapW + kFXNodeW   // gap → FX
-                              + kGapW + kOUTNodeW; // gap → OUT
+        const int N = static_cast<int>(nodes.size());
+        const float totalW = N * kEngineNodeW + (N - 1) * kGapW + kGapW + kFXNodeW // gap → FX
+                             + kGapW + kOUTNodeW;                                  // gap → OUT
 
         // Scale down if wider than component; clip at 0.5 minimum to stay legible
-        const float scale     = juce::jmax(0.5f, juce::jmin(1.0f, W / totalW));
-        const float nodeW     = kEngineNodeW * scale;
-        const float fxW       = kFXNodeW    * scale;
-        const float outW      = kOUTNodeW   * scale;
-        const float nodeH     = kNodeH      * scale;
-        const float gapW      = kGapW       * scale;
-        const float nodeY     = (H - nodeH) * 0.5f;
+        const float scale = juce::jmax(0.5f, juce::jmin(1.0f, W / totalW));
+        const float nodeW = kEngineNodeW * scale;
+        const float fxW = kFXNodeW * scale;
+        const float outW = kOUTNodeW * scale;
+        const float nodeH = kNodeH * scale;
+        const float gapW = kGapW * scale;
+        const float nodeY = (H - nodeH) * 0.5f;
 
         // ── Draw nodes + inter-node arrows ────────────────────────────────────
         float curX = (W - (N * nodeW + (N - 1) * gapW + gapW + fxW + gapW + outW)) * 0.5f;
@@ -298,8 +325,7 @@ public:
             // Engine name — Space Grotesk SemiBold, ALL CAPS, 9pt (scaled)
             g.setColour(get(textDark()));
             g.setFont(GalleryFonts::display(9.0f * scale));
-            g.drawFittedText(node.engineName.toUpperCase(),
-                             nr.reduced(kBadgeR * scale, 0.0f).toNearestInt(),
+            g.drawFittedText(node.engineName.toUpperCase(), nr.reduced(kBadgeR * scale, 0.0f).toNearestInt(),
                              juce::Justification::centred, 1);
 
             // Slot badge — small circle top-left corner, 8pt diameter
@@ -311,8 +337,7 @@ public:
                 g.fillEllipse(bx, by, bd, bd);
                 g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
                 g.setFont(GalleryFonts::value(7.0f * scale));
-                g.drawText(juce::String(node.slot + 1),
-                           (int)bx, (int)by, (int)bd, (int)bd,
+                g.drawText(juce::String(node.slot + 1), (int)bx, (int)by, (int)bd, (int)bd,
                            juce::Justification::centred);
             }
 
@@ -322,16 +347,14 @@ public:
             if (i < N - 1)
             {
                 const auto& lk = links[static_cast<size_t>(i)];
-                drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f,
-                          lk.linkColor, lk.typeLabel, scale);
+                drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f, lk.linkColor, lk.typeLabel, scale);
                 curX += gapW;
             }
         }
 
         // ── Arrow → FX node ───────────────────────────────────────────────────
         // Use XO Gold for the FX segment arrow
-        drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f,
-                  get(xoGold), {}, scale);
+        drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f, get(xoGold), {}, scale);
         curX += gapW;
 
         // FX node
@@ -348,8 +371,7 @@ public:
         curX += fxW;
 
         // ── Arrow → OUT node ──────────────────────────────────────────────────
-        drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f,
-                  get(textMid()), {}, scale);
+        drawArrow(g, curX, curX + gapW, nodeY + nodeH * 0.5f, get(textMid()), {}, scale);
         curX += gapW;
 
         // OUT node — speaker glyph drawn with paths
@@ -359,11 +381,11 @@ public:
             g.drawRoundedRectangle(outr, kCornerR * scale, kBorderW);
 
             // Simple speaker icon: rectangle body + triangle horn
-            const float cx  = curX + outW * 0.5f;
-            const float cy  = nodeY + nodeH * 0.5f;
+            const float cx = curX + outW * 0.5f;
+            const float cy = nodeY + nodeH * 0.5f;
             const float spW = outW * 0.28f;
             const float spH = nodeH * 0.32f;
-            const float lx  = cx - spW * 0.5f - spH * 0.7f;
+            const float lx = cx - spW * 0.5f - spH * 0.7f;
 
             g.setColour(get(textMid()));
 
@@ -373,12 +395,9 @@ public:
 
             // Horn triangle
             juce::Path horn;
-            horn.addTriangle(lx + spH * 0.7f, cy - spH * 0.5f,
-                             lx + spH * 0.7f, cy + spH * 0.5f,
-                             cx + spW,        cy + spH * 0.85f);
-            horn.addTriangle(lx + spH * 0.7f, cy - spH * 0.5f,
-                             cx + spW,        cy - spH * 0.85f,
-                             cx + spW,        cy + spH * 0.85f);
+            horn.addTriangle(lx + spH * 0.7f, cy - spH * 0.5f, lx + spH * 0.7f, cy + spH * 0.5f, cx + spW,
+                             cy + spH * 0.85f);
+            horn.addTriangle(lx + spH * 0.7f, cy - spH * 0.5f, cx + spW, cy - spH * 0.85f, cx + spW, cy + spH * 0.85f);
             g.fillPath(horn);
 
             // Sound wave arcs (2 concentric)
@@ -387,8 +406,7 @@ public:
             {
                 const float r = spH * 0.4f * wave;
                 juce::Path arc;
-                arc.addArc(arcX - r, cy - r, r * 2.0f, r * 2.0f,
-                           -0.55f, 0.55f, true);
+                arc.addArc(arcX - r, cy - r, r * 2.0f, r * 2.0f, -0.55f, 0.55f, true);
                 g.setColour(get(textMid()).withAlpha(0.55f));
                 g.strokePath(arc, juce::PathStrokeType(1.0f * scale));
             }
@@ -398,16 +416,14 @@ public:
         if (hasCycle && N > 1)
         {
             // Bracket from last engine node back to first, drawn below the strip
-            const float chainStartX = (W - (N * nodeW + (N - 1) * gapW
-                                            + gapW + fxW + gapW + outW)) * 0.5f;
+            const float chainStartX = (W - (N * nodeW + (N - 1) * gapW + gapW + fxW + gapW + outW)) * 0.5f;
             const float lastEngineEndX = chainStartX + N * nodeW + (N - 1) * gapW;
             const float markerY = nodeY + nodeH + 5.0f * scale;
 
             juce::Path cycleArc;
             cycleArc.startNewSubPath(chainStartX + nodeW * 0.5f, markerY);
-            cycleArc.cubicTo(chainStartX + nodeW * 0.5f, markerY + 8.0f * scale,
-                             lastEngineEndX - nodeW * 0.5f, markerY + 8.0f * scale,
-                             lastEngineEndX - nodeW * 0.5f, markerY);
+            cycleArc.cubicTo(chainStartX + nodeW * 0.5f, markerY + 8.0f * scale, lastEngineEndX - nodeW * 0.5f,
+                             markerY + 8.0f * scale, lastEngineEndX - nodeW * 0.5f, markerY);
 
             // Draw with Midnight Violet (cycle = knot-like entanglement)
             g.setColour(juce::Colour(0xFF7B2FBE).withAlpha(0.55f));
@@ -416,18 +432,14 @@ public:
             // Small arrowhead at the right end
             juce::Path cycleHead;
             const float hx = lastEngineEndX - nodeW * 0.5f;
-            cycleHead.addTriangle(hx, markerY,
-                                  hx - 4.0f, markerY + 4.0f,
-                                  hx - 4.0f, markerY - 4.0f);
+            cycleHead.addTriangle(hx, markerY, hx - 4.0f, markerY + 4.0f, hx - 4.0f, markerY - 4.0f);
             g.fillPath(cycleHead);
 
             // "CYCLE" micro-label centred below the arc
             g.setColour(juce::Colour(0xFF7B2FBE).withAlpha(0.70f));
             g.setFont(GalleryFonts::value(7.0f * scale));
-            g.drawText("CYCLE",
-                       (int)chainStartX, (int)(markerY + 10.0f * scale),
-                       (int)(lastEngineEndX - chainStartX), 10,
-                       juce::Justification::centred);
+            g.drawText("CYCLE", (int)chainStartX, (int)(markerY + 10.0f * scale), (int)(lastEngineEndX - chainStartX),
+                       10, juce::Justification::centred);
         }
     }
 
@@ -435,21 +447,23 @@ private:
     //===========================================================================
     // Cached chain data — populated in refresh(), read in paint()
 
-    struct ChainNode {
-        juce::String  engineName;
-        juce::Colour  accent;
-        int           slot;
+    struct ChainNode
+    {
+        juce::String engineName;
+        juce::Colour accent;
+        int slot;
     };
 
-    struct ChainLink {
-        juce::String  typeLabel;  // e.g. "Au->FM", "Ring" — empty = no route
-        juce::Colour  linkColor;
+    struct ChainLink
+    {
+        juce::String typeLabel; // e.g. "Au->FM", "Ring" — empty = no route
+        juce::Colour linkColor;
     };
 
-    XOceanusProcessor&        processor;
-    std::vector<ChainNode>   nodes;  // ordered engine chain
-    std::vector<ChainLink>   links;  // links[i] connects nodes[i] → nodes[i+1]
-    bool                     hasCycle = false;
+    XOceanusProcessor& processor;
+    std::vector<ChainNode> nodes; // ordered engine chain
+    std::vector<ChainLink> links; // links[i] connects nodes[i] → nodes[i+1]
+    bool hasCycle = false;
 
     //===========================================================================
     // Helpers (no allocation, called from paint())
@@ -460,30 +474,27 @@ private:
     {
         switch (t)
         {
-            case CouplingType::AudioToFM:
-            case CouplingType::AudioToRing:
-            case CouplingType::AudioToWavetable:
-            case CouplingType::AudioToBuffer:
-                return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
+        case CouplingType::AudioToFM:
+        case CouplingType::AudioToRing:
+        case CouplingType::AudioToWavetable:
+        case CouplingType::AudioToBuffer:
+            return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
 
-            case CouplingType::KnotTopology:
-                return juce::Colour(0xFF7B2FBE); // Midnight Violet — entanglement
+        case CouplingType::KnotTopology:
+            return juce::Colour(0xFF7B2FBE); // Midnight Violet — entanglement
 
-            case CouplingType::TriangularCoupling:
-                return juce::Colour(0xFFC9377A); // Hibiscus Pink — love triangle
+        case CouplingType::TriangularCoupling:
+            return juce::Colour(0xFFC9377A); // Hibiscus Pink — love triangle
 
-            default:
-                return juce::Colour(0xFFE9C46A); // XO Gold — modulation
+        default:
+            return juce::Colour(0xFFE9C46A); // XO Gold — modulation
         }
     }
 
     // Draw a horizontal arrow from x1 → x2 at vertical centre cy.
     // Optionally draws a JetBrains Mono label below the arrow midpoint.
     // All geometry is scale-adjusted.
-    void drawArrow(juce::Graphics& g,
-                   float x1, float x2, float cy,
-                   juce::Colour colour,
-                   const juce::String& label,
+    void drawArrow(juce::Graphics& g, float x1, float x2, float cy, juce::Colour colour, const juce::String& label,
                    float scale) const
     {
         constexpr float kArrowHeadH = 5.0f;
@@ -495,9 +506,7 @@ private:
 
         // Filled triangle arrowhead
         juce::Path head;
-        head.addTriangle(x2,      cy,
-                         x2 - ah, cy - ah * 0.65f,
-                         x2 - ah, cy + ah * 0.65f);
+        head.addTriangle(x2, cy, x2 - ah, cy - ah * 0.65f, x2 - ah, cy + ah * 0.65f);
         g.setColour(colour);
         g.fillPath(head);
 
@@ -507,9 +516,7 @@ private:
             const float midX = (x1 + x2) * 0.5f;
             g.setColour(colour.withAlpha(0.85f));
             g.setFont(GalleryFonts::value(7.0f * scale));
-            g.drawText(label,
-                       (int)(midX - 20.0f), (int)(cy + 3.0f * scale),
-                       40, (int)(10.0f * scale),
+            g.drawText(label, (int)(midX - 20.0f), (int)(cy + 3.0f * scale), 40, (int)(10.0f * scale),
                        juce::Justification::centred);
         }
     }

@@ -5,7 +5,8 @@
 #include <array>
 #include <atomic>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CouplingCrossfader — Smooth transitions when switching coupling types in
@@ -20,14 +21,15 @@ namespace xoceanus {
 //
 // Design ref: Docs/specs/coupling_performance_spec.md §3
 //
-class CouplingCrossfader {
+class CouplingCrossfader
+{
 public:
     static constexpr int MaxRouteSlots = 4;
 
     //-- Crossfade durations (in milliseconds) ---------------------------------
 
-    static constexpr float kDefaultCrossfadeMs = 50.0f;   // AudioToFM, AudioToRing, AudioToWavetable
-    static constexpr float kLongCrossfadeMs    = 100.0f;  // AudioToBuffer, KnotTopology
+    static constexpr float kDefaultCrossfadeMs = 50.0f; // AudioToFM, AudioToRing, AudioToWavetable
+    static constexpr float kLongCrossfadeMs = 100.0f;   // AudioToBuffer, KnotTopology
 
     //-- Lifecycle -------------------------------------------------------------
 
@@ -125,13 +127,11 @@ public:
     // Call this AFTER evaluating both coupling types for the block.
     // The crossfade progresses sample-by-sample for click-free transitions.
     //
-    void applyCrossfade(int routeIndex,
-                        const float* prevBuffer,
-                        const float* nextBuffer,
-                        float* outputBuffer,
+    void applyCrossfade(int routeIndex, const float* prevBuffer, const float* nextBuffer, float* outputBuffer,
                         int numSamples)
     {
-        if (currentSampleRate.load(std::memory_order_relaxed) <= 0.0) return;
+        if (currentSampleRate.load(std::memory_order_relaxed) <= 0.0)
+            return;
 
         if (prevBuffer == nullptr || nextBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0)
             return;
@@ -150,11 +150,9 @@ public:
         }
 
         // Convert duration from ms to samples.
-        const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
-        const float invDuration = (durationSamples > 0.0f)
-                                ? 1.0f / durationSamples
-                                : 1.0f;
+        const float durationSamples =
+            (slot.crossfadeDuration * 0.001f) * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
+        const float invDuration = (durationSamples > 0.0f) ? 1.0f / durationSamples : 1.0f;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -171,18 +169,14 @@ public:
             }
 
             // Linear crossfade: prev * (1 - fade) + next * fade
-            outputBuffer[i] = prevBuffer[i] * (1.0f - fade)
-                            + nextBuffer[i] * fade;
+            outputBuffer[i] = prevBuffer[i] * (1.0f - fade) + nextBuffer[i] * fade;
             slot.crossfadeProgress += 1.0f;
         }
     }
 
     // Convenience: in-place crossfade that blends prevBuffer into nextBuffer.
     // After this call, nextBuffer contains the crossfaded result.
-    void applyCrossfadeInPlace(int routeIndex,
-                               const float* prevBuffer,
-                               float* nextBuffer,
-                               int numSamples)
+    void applyCrossfadeInPlace(int routeIndex, const float* prevBuffer, float* nextBuffer, int numSamples)
     {
         applyCrossfade(routeIndex, prevBuffer, nextBuffer, nextBuffer, numSamples);
     }
@@ -201,8 +195,8 @@ public:
         if (!slot.crossfadeActive)
             return;
 
-        const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
+        const float durationSamples =
+            (slot.crossfadeDuration * 0.001f) * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
         slot.crossfadeProgress += static_cast<float>(numSamples);
 
         if (slot.crossfadeProgress >= durationSamples)
@@ -220,8 +214,8 @@ public:
         if (!slot.crossfadeActive)
             return 1.0f;
 
-        const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
+        const float durationSamples =
+            (slot.crossfadeDuration * 0.001f) * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
         if (durationSamples <= 0.0f)
             return 1.0f;
 
@@ -252,15 +246,15 @@ private:
     {
         switch (type)
         {
-            case CouplingType::AudioToFM:
-            case CouplingType::AudioToRing:
-            case CouplingType::AudioToWavetable:
-            case CouplingType::AudioToBuffer:
-            case CouplingType::KnotTopology:
-                return true;
+        case CouplingType::AudioToFM:
+        case CouplingType::AudioToRing:
+        case CouplingType::AudioToWavetable:
+        case CouplingType::AudioToBuffer:
+        case CouplingType::KnotTopology:
+            return true;
 
-            default:
-                return false;
+        default:
+            return false;
         }
     }
 
@@ -269,10 +263,8 @@ private:
     // buffer swap latency and bidirectional coupling respectively.
     static float getCrossfadeDuration(CouplingType prevType, CouplingType newType)
     {
-        if (prevType == CouplingType::AudioToBuffer
-         || newType == CouplingType::AudioToBuffer
-         || prevType == CouplingType::KnotTopology
-         || newType == CouplingType::KnotTopology)
+        if (prevType == CouplingType::AudioToBuffer || newType == CouplingType::AudioToBuffer ||
+            prevType == CouplingType::KnotTopology || newType == CouplingType::KnotTopology)
             return kLongCrossfadeMs;
 
         return kDefaultCrossfadeMs;
@@ -280,27 +272,28 @@ private:
 
     //-- Per-route crossfade state ---------------------------------------------
 
-    struct RouteSlot {
-        CouplingType currentType  = CouplingType::AmpToFilter;
+    struct RouteSlot
+    {
+        CouplingType currentType = CouplingType::AmpToFilter;
         CouplingType previousType = CouplingType::AmpToFilter;
-        float crossfadeProgress   = 0.0f;   // in samples
-        float crossfadeDuration   = 0.0f;   // in ms (converted to samples at use site)
-        bool  crossfadeActive     = false;
-        bool  initialized         = false;
+        float crossfadeProgress = 0.0f; // in samples
+        float crossfadeDuration = 0.0f; // in ms (converted to samples at use site)
+        bool crossfadeActive = false;
+        bool initialized = false;
 
         void reset()
         {
-            currentType      = CouplingType::AmpToFilter;
-            previousType     = CouplingType::AmpToFilter;
+            currentType = CouplingType::AmpToFilter;
+            previousType = CouplingType::AmpToFilter;
             crossfadeProgress = 0.0f;
             crossfadeDuration = 0.0f;
-            crossfadeActive  = false;
-            initialized      = false;
+            crossfadeActive = false;
+            initialized = false;
         }
     };
 
-    std::array<RouteSlot, MaxRouteSlots> slots {};
-    std::atomic<double> currentSampleRate { 0.0 };
+    std::array<RouteSlot, MaxRouteSlots> slots{};
+    std::atomic<double> currentSampleRate{0.0};
 };
 
 } // namespace xoceanus

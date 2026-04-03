@@ -4,7 +4,8 @@
 #include <cmath>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // DCBlocker — End-of-chain DC offset removal.
@@ -33,7 +34,7 @@ public:
     DCBlocker() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         updateCoefficient();
@@ -41,22 +42,22 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
         for (int i = 0; i < numSamples; ++i)
         {
             // Left channel
             float xL = L[i];
             float yL = xL - prevInL + coeff * prevOutL;
-            prevInL  = xL;
-            prevOutL = flushDenormal (yL);
+            prevInL = xL;
+            prevOutL = flushDenormal(yL);
             L[i] = yL;
 
             // Right channel
             float xR = R[i];
             float yR = xR - prevInR + coeff * prevOutR;
-            prevInR  = xR;
-            prevOutR = flushDenormal (yR);
+            prevInR = xR;
+            prevOutR = flushDenormal(yR);
             R[i] = yR;
         }
     }
@@ -74,15 +75,15 @@ private:
         // coeff = 1 - (2π × cutoffHz / sampleRate)
         // ~10 Hz cutoff: inaudible, catches all DC
         constexpr float cutoffHz = 10.0f;
-        coeff = 1.0f - (6.2831853f * cutoffHz / static_cast<float> (sr));
-        coeff = clamp (coeff, 0.9f, 0.9999f);
+        coeff = 1.0f - (6.2831853f * cutoffHz / static_cast<float>(sr));
+        coeff = clamp(coeff, 0.9f, 0.9999f);
     }
 
     double sr = 44100.0;
     float coeff = 0.9986f;
 
     // State
-    float prevInL  = 0.0f, prevInR  = 0.0f;
+    float prevInL = 0.0f, prevInR = 0.0f;
     float prevOutL = 0.0f, prevOutR = 0.0f;
 };
 

@@ -26,7 +26,8 @@
 #include <cstring>
 #include <algorithm>
 
-namespace opera {
+namespace opera
+{
 
 //==============================================================================
 // Cluster structure for acausal resonance detection
@@ -34,9 +35,9 @@ namespace opera {
 
 struct Cluster
 {
-    int   partials[kClusterMaxSize] = {};
-    int   size                      = 0;
-    float coherence                 = 0.0f;
+    int partials[kClusterMaxSize] = {};
+    int size = 0;
+    float coherence = 0.0f;
 };
 
 //==============================================================================
@@ -45,12 +46,12 @@ struct Cluster
 
 struct EmotionalMemory
 {
-    float    storedPhases[kMaxPartials] = {};
-    bool     storedLocked[kMaxPartials] = {};
-    float    storedR                    = 0.0f;
-    uint64_t releaseTimeSamples        = 0;
-    int      numPartials               = 0;
-    bool     valid                     = false;
+    float storedPhases[kMaxPartials] = {};
+    bool storedLocked[kMaxPartials] = {};
+    float storedR = 0.0f;
+    uint64_t releaseTimeSamples = 0;
+    int numPartials = 0;
+    bool valid = false;
 };
 
 //==============================================================================
@@ -59,39 +60,36 @@ struct EmotionalMemory
 
 struct KSmoother
 {
-    void prepare (float sampleRate, float timeSec) noexcept
+    void prepare(float sampleRate, float timeSec) noexcept
     {
         if (sampleRate <= 0.0f || timeSec <= 0.0f)
         {
             coeff = 1.0f;
             return;
         }
-        coeff = 1.0f - std::exp (-kTwoPi * (1.0f / timeSec) / sampleRate);
+        coeff = 1.0f - std::exp(-kTwoPi * (1.0f / timeSec) / sampleRate);
     }
 
-    void snapTo (float value) noexcept
+    void snapTo(float value) noexcept
     {
         currentValue = value;
-        targetValue  = value;
+        targetValue = value;
     }
 
-    void set (float target) noexcept
-    {
-        targetValue = target;
-    }
+    void set(float target) noexcept { targetValue = target; }
 
     float process() noexcept
     {
         currentValue += (targetValue - currentValue) * coeff;
-        currentValue = flushDenormal (currentValue);
+        currentValue = flushDenormal(currentValue);
         return currentValue;
     }
 
     float get() const noexcept { return currentValue; }
 
     float currentValue = 0.0f;
-    float targetValue  = 0.0f;
-    float coeff        = 1.0f;
+    float targetValue = 0.0f;
+    float coeff = 1.0f;
 };
 
 //==============================================================================
@@ -107,15 +105,15 @@ public:
 
     /// Call once from prepareToPlay with the host sample rate and the maximum
     /// number of partials this voice will ever use.
-    void prepare (double sampleRate, int maxPartials) noexcept
+    void prepare(double sampleRate, int maxPartials) noexcept
     {
-        sampleRate_  = static_cast<float> (sampleRate);
-        maxPartials_ = std::min (maxPartials, kMaxPartials);
-        dt_          = static_cast<float> (kKuraBlock) / sampleRate_;
+        sampleRate_ = static_cast<float>(sampleRate);
+        maxPartials_ = std::min(maxPartials, kMaxPartials);
+        dt_ = static_cast<float>(kKuraBlock) / sampleRate_;
 
         // Default smoother at 100ms (responseSpeed=0.5 maps here)
-        kSmoother_.prepare (sampleRate_, 0.1f);
-        kSmoother_.snapTo (0.0f);
+        kSmoother_.prepare(sampleRate_, 0.1f);
+        kSmoother_.snapTo(0.0f);
 
         reset();
     }
@@ -126,15 +124,15 @@ public:
     void reset() noexcept
     {
         orderParameter_ = 0.0f;
-        meanPhase_      = 0.0f;
-        blockCounter_   = 0;
-        numClusters_    = 0;
-        sampleCounter_  = 0;
+        meanPhase_ = 0.0f;
+        blockCounter_ = 0;
+        numClusters_ = 0;
+        sampleCounter_ = 0;
 
         for (int i = 0; i < kMaxPartials; ++i)
         {
             partialLocked_[i] = false;
-            clusterBoost_[i]  = 1.0f;
+            clusterBoost_[i] = 1.0f;
         }
     }
 
@@ -150,28 +148,25 @@ public:
     /// drama        — normalised drama parameter [0, 1], mapped to K = drama * Kmax
     /// resSens      — acausal resonance sensitivity [0, 1]
     /// responseSpeed — response speed parameter [0, 1] (logarithmic mapping)
-    void updateField (float*       theta,
-                      const float* omega,
-                      int          numPartials,
-                      float        drama,
-                      float        resSens,
-                      float        responseSpeed) noexcept
+    void updateField(float* theta, const float* omega, int numPartials, float drama, float resSens,
+                     float responseSpeed) noexcept
     {
-        numPartials = std::min (numPartials, maxPartials_);
-        if (numPartials < 2) return;
+        numPartials = std::min(numPartials, maxPartials_);
+        if (numPartials < 2)
+            return;
 
         //----------------------------------------------------------------------
         // Response speed: logarithmic mapping from 5ms (1.0) to 60s (0.0)
         //   t = 60.0 * 10^(-speed * 4.08)
         //   speed=0.0 -> 60s, speed=0.5 -> ~0.55s, speed=1.0 -> ~5ms
         //----------------------------------------------------------------------
-        float smootherTime = 60.0f * std::pow (10.0f, -responseSpeed * 4.08f);
+        float smootherTime = 60.0f * std::pow(10.0f, -responseSpeed * 4.08f);
 
         // FIX P0: only call prepare() when smootherTime changes; recalculating
         // the coefficient every 8 samples was resetting the ramp mid-glide.
-        if (std::abs (smootherTime - cachedSmootherTime_) > 0.0001f)
+        if (std::abs(smootherTime - cachedSmootherTime_) > 0.0001f)
         {
-            kSmoother_.prepare (sampleRate_, smootherTime);
+            kSmoother_.prepare(sampleRate_, smootherTime);
             cachedSmootherTime_ = smootherTime;
         }
 
@@ -179,7 +174,7 @@ public:
         // Target K from drama parameter
         //----------------------------------------------------------------------
         float targetK = drama * kKmax;
-        kSmoother_.set (targetK);
+        kSmoother_.set(targetK);
 
         // Advance the smoother by kKuraBlock samples to get effective K
         float Keff = 0.0f;
@@ -195,19 +190,19 @@ public:
 
         for (int i = 0; i < numPartials; ++i)
         {
-            sumCos += fastCos (theta[i]);
-            sumSin += fastSin (theta[i]);
+            sumCos += fastCos(theta[i]);
+            sumSin += fastSin(theta[i]);
         }
 
-        float invN = 1.0f / static_cast<float> (numPartials);
+        float invN = 1.0f / static_cast<float>(numPartials);
         float rCos = sumCos * invN;
         float rSin = sumSin * invN;
-        float r    = std::sqrt (rCos * rCos + rSin * rSin);
-        float psi  = std::atan2 (rSin, rCos);
+        float r = std::sqrt(rCos * rCos + rSin * rSin);
+        float psi = std::atan2(rSin, rCos);
 
         // Store for external queries (spatial panning, reactive stage)
         orderParameter_ = r;
-        meanPhase_       = psi;
+        meanPhase_ = psi;
 
         //----------------------------------------------------------------------
         // Step 2: Critical K threshold (Lorentzian distribution)
@@ -224,15 +219,17 @@ public:
         float omegaMax = omega[0];
         for (int i = 1; i < numPartials; ++i)
         {
-            if (omega[i] < omegaMin) omegaMin = omega[i];
-            if (omega[i] > omegaMax) omegaMax = omega[i];
+            if (omega[i] < omegaMin)
+                omegaMin = omega[i];
+            if (omega[i] > omegaMax)
+                omegaMax = omega[i];
         }
 
         // gamma = half-width of the frequency distribution
         // For a Lorentzian, the interquartile range ~ 2*gamma
         // We use the full range / 4 as a robust estimator for gamma
         float gamma = (omegaMax - omegaMin) / (4.0f * kTwoPi);
-        gamma = std::max (gamma, 0.01f);  // floor to prevent division weirdness
+        gamma = std::max(gamma, 0.01f); // floor to prevent division weirdness
 
         float Kc = 2.0f * gamma;
         float KcUnlock = Kc * kHysteresisRatio;
@@ -246,9 +243,10 @@ public:
             //------------------------------------------------------------------
             // Phase transition hysteresis: track per-partial lock state
             //------------------------------------------------------------------
-            float phaseDiff = std::fabs (psi - theta[i]);
+            float phaseDiff = std::fabs(psi - theta[i]);
             // Wrap to [0, pi]
-            if (phaseDiff > kPi) phaseDiff = kTwoPi - phaseDiff;
+            if (phaseDiff > kPi)
+                phaseDiff = kTwoPi - phaseDiff;
 
             // Lock: partial snaps when phase difference < pi/6 AND K >= Kc
             if (!partialLocked_[i] && phaseDiff < kLockPhaseThreshold && Keff >= Kc)
@@ -272,26 +270,28 @@ public:
             //   dtheta_i/dt = omega_i + K_eff * r * sin(psi - theta_i)
             //   theta_i += dtheta * dt
             //------------------------------------------------------------------
-            float dtheta = omega[i] + effectiveK * r * fastSin (psi - theta[i]);
+            float dtheta = omega[i] + effectiveK * r * fastSin(psi - theta[i]);
             theta[i] += dtheta * dt_;
 
             //------------------------------------------------------------------
             // Wrap phase to [0, 2*pi]
             //------------------------------------------------------------------
-            while (theta[i] > kTwoPi) theta[i] -= kTwoPi;
-            while (theta[i] < 0.0f)   theta[i] += kTwoPi;
+            while (theta[i] > kTwoPi)
+                theta[i] -= kTwoPi;
+            while (theta[i] < 0.0f)
+                theta[i] += kTwoPi;
         }
 
         //----------------------------------------------------------------------
         // Step 4: Acausal resonance cluster detection and boost
         //----------------------------------------------------------------------
-        detectAcausalClusters (theta, numPartials, resSens);
-        applyClusterBoost (numPartials, resSens);
+        detectAcausalClusters(theta, numPartials, resSens);
+        applyClusterBoost(numPartials, resSens);
 
         //----------------------------------------------------------------------
         // Advance global sample counter
         //----------------------------------------------------------------------
-        sampleCounter_ += static_cast<uint64_t> (kKuraBlock);
+        sampleCounter_ += static_cast<uint64_t>(kKuraBlock);
     }
 
     //==========================================================================
@@ -305,17 +305,19 @@ public:
     float getMeanPhase() const noexcept { return meanPhase_; }
 
     /// Whether partial i is in the locked (hysteresis) state.
-    bool isPartialLocked (int i) const noexcept
+    bool isPartialLocked(int i) const noexcept
     {
-        if (i < 0 || i >= kMaxPartials) return false;
+        if (i < 0 || i >= kMaxPartials)
+            return false;
         return partialLocked_[i];
     }
 
     /// Per-partial amplitude boost from acausal resonance clusters.
     /// Returns a linear gain multiplier (1.0 = no boost, up to ~2.0 = +6 dB).
-    float getClusterBoost (int i) const noexcept
+    float getClusterBoost(int i) const noexcept
     {
-        if (i < 0 || i >= kMaxPartials) return 1.0f;
+        if (i < 0 || i >= kMaxPartials)
+            return 1.0f;
         return clusterBoost_[i];
     }
 
@@ -323,10 +325,11 @@ public:
     int getNumClusters() const noexcept { return numClusters_; }
 
     /// Access detected cluster data (for visualization / coupling tap).
-    const Cluster& getCluster (int c) const noexcept
+    const Cluster& getCluster(int c) const noexcept
     {
-        static const Cluster empty {};
-        if (c < 0 || c >= numClusters_) return empty;
+        static const Cluster empty{};
+        if (c < 0 || c >= numClusters_)
+            return empty;
         return detectedClusters_[c];
     }
 
@@ -358,9 +361,9 @@ public:
     //==========================================================================
 
     /// Call on noteOff to store the current Kuramoto state into emotional memory.
-    void onNoteOff (const float* theta, const bool* locked, int numPartials) noexcept
+    void onNoteOff(const float* theta, const bool* locked, int numPartials) noexcept
     {
-        numPartials = std::min (numPartials, kMaxPartials);
+        numPartials = std::min(numPartials, kMaxPartials);
 
         for (int i = 0; i < numPartials; ++i)
         {
@@ -374,10 +377,10 @@ public:
             memory_.storedLocked[i] = false;
         }
 
-        memory_.storedR            = orderParameter_;
+        memory_.storedR = orderParameter_;
         memory_.releaseTimeSamples = sampleCounter_;
-        memory_.numPartials        = numPartials;
-        memory_.valid              = true;
+        memory_.numPartials = numPartials;
+        memory_.valid = true;
     }
 
     /// Convenience overload that reads lock state from internal array.
@@ -385,9 +388,9 @@ public:
     {
         // Caller must have valid theta somewhere — use stored phases if needed
         // This version stores whatever we have as the last known state.
-        memory_.storedR            = orderParameter_;
+        memory_.storedR = orderParameter_;
         memory_.releaseTimeSamples = sampleCounter_;
-        memory_.valid              = true;
+        memory_.valid = true;
 
         for (int i = 0; i < kMaxPartials; ++i)
             memory_.storedLocked[i] = partialLocked_[i];
@@ -395,17 +398,17 @@ public:
 
     /// Call on noteOn to blend stored emotional memory into the fresh phase array.
     /// theta is the freshly-initialised phase array that will be modified in-place.
-    void onNoteOn (float* theta, int numPartials) noexcept
+    void onNoteOn(float* theta, int numPartials) noexcept
     {
-        if (!memory_.valid) return;
+        if (!memory_.valid)
+            return;
 
-        numPartials = std::min (numPartials, kMaxPartials);
+        numPartials = std::min(numPartials, kMaxPartials);
 
         //----------------------------------------------------------------------
         // Compute elapsed time since release
         //----------------------------------------------------------------------
-        float elapsedMs = static_cast<float> (sampleCounter_ - memory_.releaseTimeSamples)
-                        / sampleRate_ * 1000.0f;
+        float elapsedMs = static_cast<float>(sampleCounter_ - memory_.releaseTimeSamples) / sampleRate_ * 1000.0f;
 
         if (elapsedMs > kEmotionalMemoryWindowMs)
         {
@@ -422,21 +425,23 @@ public:
         //   At t=500: blend = 0.0 (no recall)
         //----------------------------------------------------------------------
         float normTime = elapsedMs / kEmotionalMemoryWindowMs;
-        float blend    = std::max (0.0f, 1.0f - normTime * normTime);
+        float blend = std::max(0.0f, 1.0f - normTime * normTime);
 
         //----------------------------------------------------------------------
         // Blend stored phases toward the freshly-initialised phases.
         // For partials that were locked, restore lock state if blend is strong.
         //----------------------------------------------------------------------
-        int overlapCount = std::min (numPartials, memory_.numPartials);
+        int overlapCount = std::min(numPartials, memory_.numPartials);
 
         for (int i = 0; i < overlapCount; ++i)
         {
-            theta[i] = lerp (theta[i], memory_.storedPhases[i], blend);
+            theta[i] = lerp(theta[i], memory_.storedPhases[i], blend);
 
             // Wrap after interpolation
-            while (theta[i] > kTwoPi) theta[i] -= kTwoPi;
-            while (theta[i] < 0.0f)   theta[i] += kTwoPi;
+            while (theta[i] > kTwoPi)
+                theta[i] -= kTwoPi;
+            while (theta[i] < 0.0f)
+                theta[i] += kTwoPi;
 
             // Restore lock state if recall is strong enough
             if (blend > 0.5f)
@@ -446,16 +451,10 @@ public:
 
     /// Advance the internal sample counter by numSamples. Call this from the
     /// voice's per-sample loop (or pass the total samples processed).
-    void advanceSampleCounter (uint64_t numSamples) noexcept
-    {
-        sampleCounter_ += numSamples;
-    }
+    void advanceSampleCounter(uint64_t numSamples) noexcept { sampleCounter_ += numSamples; }
 
     /// Set the sample counter directly (for syncing with external timing).
-    void setSampleCounter (uint64_t count) noexcept
-    {
-        sampleCounter_ = count;
-    }
+    void setSampleCounter(uint64_t count) noexcept { sampleCounter_ = count; }
 
     /// Get the current sample counter (for emotional memory timing).
     uint64_t getSampleCounter() const noexcept { return sampleCounter_; }
@@ -473,11 +472,12 @@ private:
     //   - cluster size 3..5
     //==========================================================================
 
-    void detectAcausalClusters (const float* theta, int numPartials, float resSens) noexcept
+    void detectAcausalClusters(const float* theta, int numPartials, float resSens) noexcept
     {
         numClusters_ = 0;
 
-        if (numPartials < kClusterMinSize) return;
+        if (numPartials < kClusterMinSize)
+            return;
 
         //----------------------------------------------------------------------
         // Sensitivity threshold mapping:
@@ -485,13 +485,11 @@ private:
         //   resSens=1 -> threshold=0.1 (everything detects)
         //----------------------------------------------------------------------
         float sensitivityThreshold = (1.0f - resSens) * 0.8f + 0.1f;
-        float detectionBar         = 1.0f - sensitivityThreshold;  // local_r must exceed this
+        float detectionBar = 1.0f - sensitivityThreshold; // local_r must exceed this
 
         for (int start = 0; start <= numPartials - kClusterMinSize; ++start)
         {
-            for (int size = kClusterMinSize;
-                 size <= kClusterMaxSize && start + size <= numPartials;
-                 ++size)
+            for (int size = kClusterMinSize; size <= kClusterMaxSize && start + size <= numPartials; ++size)
             {
                 //--------------------------------------------------------------
                 // Compute local order parameter for partials [start, start+size)
@@ -501,14 +499,14 @@ private:
 
                 for (int k = 0; k < size; ++k)
                 {
-                    localCos += fastCos (theta[start + k]);
-                    localSin += fastSin (theta[start + k]);
+                    localCos += fastCos(theta[start + k]);
+                    localSin += fastSin(theta[start + k]);
                 }
 
-                float invSize = 1.0f / static_cast<float> (size);
-                float lc      = localCos * invSize;
-                float ls      = localSin * invSize;
-                float localR  = std::sqrt (lc * lc + ls * ls);
+                float invSize = 1.0f / static_cast<float>(size);
+                float lc = localCos * invSize;
+                float ls = localSin * invSize;
+                float localR = std::sqrt(lc * lc + ls * ls);
 
                 //--------------------------------------------------------------
                 // Cluster detected if:
@@ -521,7 +519,7 @@ private:
                     if (numClusters_ < kMaxClusters)
                     {
                         Cluster& c = detectedClusters_[numClusters_++];
-                        c.size      = size;
+                        c.size = size;
                         c.coherence = localR;
 
                         for (int k = 0; k < size; ++k)
@@ -533,8 +531,8 @@ private:
                     }
 
                     // Skip past this cluster — don't double-count partials
-                    start += size - 1;  // -1 because the outer loop will ++start
-                    break;  // take the first valid window size at this position
+                    start += size - 1; // -1 because the outer loop will ++start
+                    break;             // take the first valid window size at this position
                 }
             }
         }
@@ -552,7 +550,7 @@ private:
     //   At coherence=0.9, resSens=0.3: boost = 1.27 (+2.1 dB)
     //==========================================================================
 
-    void applyClusterBoost (int numPartials, float resSens) noexcept
+    void applyClusterBoost(int numPartials, float resSens) noexcept
     {
         // Reset all boost factors
         for (int i = 0; i < numPartials; ++i)
@@ -577,25 +575,25 @@ private:
     //==========================================================================
 
     // Sample rate and derived constants
-    float    sampleRate_  = 48000.0f;
-    int      maxPartials_ = kMaxPartials;
-    float    dt_          = static_cast<float> (kKuraBlock) / 48000.0f;
+    float sampleRate_ = 48000.0f;
+    int maxPartials_ = kMaxPartials;
+    float dt_ = static_cast<float>(kKuraBlock) / 48000.0f;
 
     // Order parameter (updated every kKuraBlock samples)
-    float    orderParameter_ = 0.0f;   // r(t) in [0, 1]
-    float    meanPhase_      = 0.0f;   // psi(t) in [-pi, pi]
+    float orderParameter_ = 0.0f; // r(t) in [0, 1]
+    float meanPhase_ = 0.0f;      // psi(t) in [-pi, pi]
 
     // Block update counter
-    int      blockCounter_   = 0;
+    int blockCounter_ = 0;
 
     // Global sample counter (for emotional memory timing)
-    uint64_t sampleCounter_  = 0;
+    uint64_t sampleCounter_ = 0;
 
     // Per-partial hysteresis lock state
-    bool     partialLocked_[kMaxPartials] = {};
+    bool partialLocked_[kMaxPartials] = {};
 
     // Per-partial cluster boost (linear gain, 1.0 = no boost)
-    float    clusterBoost_[kMaxPartials] = {};
+    float clusterBoost_[kMaxPartials] = {};
 
     // K smoother (response speed)
     KSmoother kSmoother_;
@@ -605,11 +603,11 @@ private:
     float cachedSmootherTime_ = -1.0f;
 
     // Acausal resonance clusters
-    Cluster  detectedClusters_[kMaxClusters] = {};
-    int      numClusters_ = 0;
+    Cluster detectedClusters_[kMaxClusters] = {};
+    int numClusters_ = 0;
 
     // Emotional memory
-    EmotionalMemory memory_ {};
+    EmotionalMemory memory_{};
 };
 
 } // namespace opera

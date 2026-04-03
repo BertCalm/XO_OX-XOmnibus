@@ -35,7 +35,8 @@
 //       Tools/oxport.py                             (batch CLI)
 //==============================================================================
 
-namespace xo {
+namespace xo
+{
 
 //------------------------------------------------------------------------------
 // OriginateConfig — parameters passed from the UI wizard to the DSP pipeline.
@@ -44,12 +45,12 @@ namespace xo {
 
 struct OriginateConfig
 {
-    juce::StringArray samplePaths;      // Input sample files (absolute paths)
-    juce::String      rebirthProfile;   // "auto", "obrix", "onset", "oware", "opera", "overwash"
-    juce::String      outputFormat;     // "xpn" (MPC instrument) or "folder" (WAV tree)
-    juce::File        outputDir;
-    bool autoDetectProfile = true;      // When true, ignores rebirthProfile and classifies samples
-    bool generatePreview   = true;      // Render a 4-bar preview loop before final export
+    juce::StringArray samplePaths; // Input sample files (absolute paths)
+    juce::String rebirthProfile;   // "auto", "obrix", "onset", "oware", "opera", "overwash"
+    juce::String outputFormat;     // "xpn" (MPC instrument) or "folder" (WAV tree)
+    juce::File outputDir;
+    bool autoDetectProfile = true; // When true, ignores rebirthProfile and classifies samples
+    bool generatePreview = true;   // Render a 4-bar preview loop before final export
 };
 
 // Originate orchestrates the UI wizard flow.

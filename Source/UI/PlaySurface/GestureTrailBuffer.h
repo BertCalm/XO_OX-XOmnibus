@@ -20,7 +20,8 @@
 #include <utility>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // TrailPoint
@@ -28,10 +29,10 @@ namespace xoceanus {
 
 struct TrailPoint
 {
-    float  x         = 0.0f;  // normalized 0.0–1.0
-    float  y         = 0.0f;  // normalized 0.0–1.0
-    float  velocity  = 0.0f;  // clamped 0.0–1.0
-    double timestamp = 0.0;   // seconds since plugin load (monotonic)
+    float x = 0.0f;         // normalized 0.0–1.0
+    float y = 0.0f;         // normalized 0.0–1.0
+    float velocity = 0.0f;  // clamped 0.0–1.0
+    double timestamp = 0.0; // seconds since plugin load (monotonic)
 };
 
 //==============================================================================
@@ -42,7 +43,7 @@ class GestureTrailBuffer
 {
 public:
     static constexpr int kBufferSize = 256;
-    static constexpr int kMask       = kBufferSize - 1;
+    static constexpr int kMask = kBufferSize - 1;
 
     GestureTrailBuffer() = default;
 
@@ -54,9 +55,9 @@ public:
     void push(float x, float y, float velocity, double timestamp)
     {
         TrailPoint pt;
-        pt.x         = x;
-        pt.y         = y;
-        pt.velocity  = std::max(0.0f, std::min(1.0f, velocity));
+        pt.x = x;
+        pt.y = y;
+        pt.velocity = std::max(0.0f, std::min(1.0f, velocity));
         pt.timestamp = timestamp;
 
         buffer_[head_] = pt;
@@ -89,7 +90,8 @@ public:
      */
     TrailPoint pointByAge(int age) const
     {
-        if (count_ == 0) return TrailPoint{};
+        if (count_ == 0)
+            return TrailPoint{};
         age = std::max(0, std::min(age, count_ - 1));
         int idx = (head_ - 1 - age + kBufferSize * 2) & kMask;
         return buffer_[idx];
@@ -98,8 +100,8 @@ public:
     /** Reset count to 0 and unfreeze. */
     void clear()
     {
-        count_    = 0;
-        head_     = 0;
+        count_ = 0;
+        head_ = 0;
         isFrozen_ = false;
         frozenCount_ = 0;
     }
@@ -112,16 +114,13 @@ public:
     void freeze()
     {
         frozenBuffer_ = buffer_;
-        frozenHead_   = head_;
-        frozenCount_  = count_;
-        isFrozen_     = true;
+        frozenHead_ = head_;
+        frozenCount_ = count_;
+        isFrozen_ = true;
     }
 
     /** Clear the frozen flag (live trail continues to update). */
-    void unfreeze()
-    {
-        isFrozen_ = false;
-    }
+    void unfreeze() { isFrozen_ = false; }
 
     bool isFrozen() const { return isFrozen_; }
 
@@ -148,7 +147,8 @@ public:
      */
     TrailPoint replayAt(float normalizedTime) const
     {
-        if (frozenCount_ == 0) return TrailPoint{};
+        if (frozenCount_ == 0)
+            return TrailPoint{};
 
         // Wrap t to [0, 1)
         float t = normalizedTime - std::floor(normalizedTime);
@@ -176,19 +176,19 @@ public:
         float x = a.x + b.x - 0.5f;
         x = std::max(0.0f, std::min(1.0f, x));
         float y = a.y * b.y;
-        return { x, y };
+        return {x, y};
     }
 
 private:
     std::array<TrailPoint, kBufferSize> buffer_{};
-    int head_  = 0;
+    int head_ = 0;
     int count_ = 0;
 
     // Frozen snapshot
     std::array<TrailPoint, kBufferSize> frozenBuffer_{};
-    int  frozenHead_  = 0;
-    int  frozenCount_ = 0;
-    bool isFrozen_    = false;
+    int frozenHead_ = 0;
+    int frozenCount_ = 0;
+    bool isFrozen_ = false;
 };
 
 } // namespace xoceanus

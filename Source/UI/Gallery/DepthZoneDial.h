@@ -34,11 +34,11 @@
 #include "../GalleryColors.h"
 #include "EnginePickerPopup.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
-class DepthZoneDial : public juce::Component,
-                      private juce::Timer
+class DepthZoneDial : public juce::Component, private juce::Timer
 {
 public:
     //==========================================================================
@@ -47,11 +47,9 @@ public:
     std::function<void(const juce::String& engineId)> onEngineSelected;
 
     //==========================================================================
-    explicit DepthZoneDial(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit DepthZoneDial(XOceanusProcessor& proc) : processor(proc)
     {
-        A11y::setup(*this,
-                    "Depth Zone Dial",
+        A11y::setup(*this, "Depth Zone Dial",
                     "Drag or scroll to browse engines in water-column order. "
                     "Click to open the full engine picker.");
 
@@ -77,15 +75,14 @@ public:
     {
         auto* eng = processor.getEngine(currentSlot);
 
-        juce::String newId      = eng ? juce::String(eng->getEngineId()) : juce::String{};
-        juce::Colour newAccent  = eng ? eng->getAccentColour()
-                                      : GalleryColors::get(GalleryColors::emptySlot());
+        juce::String newId = eng ? juce::String(eng->getEngineId()) : juce::String{};
+        juce::Colour newAccent = eng ? eng->getAccentColour() : GalleryColors::get(GalleryColors::emptySlot());
 
         if (newId == currentEngineId && newAccent == currentAccent)
             return; // nothing changed — skip repaint
 
         currentEngineId = newId;
-        currentAccent   = newAccent;
+        currentAccent = newAccent;
         // P7 fix: mark ring cache dirty so paint() will rebuild it once.
         ringCacheDirty = true;
 
@@ -111,11 +108,11 @@ public:
     //==========================================================================
     void paint(juce::Graphics& g) override
     {
-        const float cx    = getWidth()  * 0.5f;
-        const float cy    = getHeight() * 0.5f;
-        const float outer = kDialSize   * 0.5f;           // 24pt
-        const float inner = kInnerSize  * 0.5f;           // 18pt
-        const float ring  = outer - inner;                 // 6pt ring width
+        const float cx = getWidth() * 0.5f;
+        const float cy = getHeight() * 0.5f;
+        const float outer = kDialSize * 0.5f;  // 24pt
+        const float inner = kInnerSize * 0.5f; // 18pt
+        const float ring = outer - inner;      // 6pt ring width
 
         using namespace GalleryColors;
 
@@ -126,13 +123,11 @@ public:
         if (ringCacheDirty || !ringCache.isValid())
         {
             // Rebuild the ring into an off-screen image at device pixel resolution.
-            ringCache = juce::Image(juce::Image::ARGB,
-                                    getWidth() > 0 ? getWidth() : kDialSize,
-                                    getHeight() > 0 ? getHeight() : kDialSize,
-                                    true /* clearImage */);
+            ringCache = juce::Image(juce::Image::ARGB, getWidth() > 0 ? getWidth() : kDialSize,
+                                    getHeight() > 0 ? getHeight() : kDialSize, true /* clearImage */);
             juce::Graphics rg(ringCache);
 
-            const float rcx = ringCache.getWidth()  * 0.5f;
+            const float rcx = ringCache.getWidth() * 0.5f;
             const float rcy = ringCache.getHeight() * 0.5f;
 
             // Outer ring clip path
@@ -146,15 +141,11 @@ public:
                 rg.reduceClipRegion(ringPath);
 
                 // Multi-stop gradient: Sunlit (top) → Twilight (mid) → Midnight (bottom)
-                juce::ColourGradient grad(
-                    kSunlitColor,   rcx, rcy - outer,
-                    kMidnightColor, rcx, rcy + outer,
-                    false);
+                juce::ColourGradient grad(kSunlitColor, rcx, rcy - outer, kMidnightColor, rcx, rcy + outer, false);
                 grad.addColour(0.5, kTwilightColor);
                 rg.setGradientFill(grad);
-                rg.fillRect(juce::Rectangle<float>(0.0f, 0.0f,
-                                                   (float)ringCache.getWidth(),
-                                                   (float)ringCache.getHeight()));
+                rg.fillRect(
+                    juce::Rectangle<float>(0.0f, 0.0f, (float)ringCache.getWidth(), (float)ringCache.getHeight()));
             }
 
             // Subtle border on the outer ring edge
@@ -170,23 +161,19 @@ public:
         // ── Inner disc — engine accent color ─────────────────────────────────
         const bool hasEngine = currentEngineId.isNotEmpty();
 
-        juce::Colour discFill = hasEngine
-            ? currentAccent.withAlpha(0.82f)
-            : get(slotBg()).withAlpha(0.92f);
+        juce::Colour discFill = hasEngine ? currentAccent.withAlpha(0.82f) : get(slotBg()).withAlpha(0.92f);
 
         // Soft inner shadow / depth ring between outer ring and disc
         {
-            juce::ColourGradient shadow(
-                juce::Colours::black.withAlpha(0.22f), cx, cy - inner,
-                juce::Colours::transparentBlack,        cx, cy,
-                true); // radial
+            juce::ColourGradient shadow(juce::Colours::black.withAlpha(0.22f), cx, cy - inner,
+                                        juce::Colours::transparentBlack, cx, cy,
+                                        true); // radial
             juce::Graphics::ScopedSaveState ss(g);
-            g.reduceClipRegion(juce::Rectangle<float>(
-                cx - inner - 2.0f, cy - inner - 2.0f,
-                (inner + 2.0f) * 2.0f, (inner + 2.0f) * 2.0f).toNearestInt());
+            g.reduceClipRegion(juce::Rectangle<float>(cx - inner - 2.0f, cy - inner - 2.0f, (inner + 2.0f) * 2.0f,
+                                                      (inner + 2.0f) * 2.0f)
+                                   .toNearestInt());
             g.setGradientFill(shadow);
-            g.fillEllipse(cx - inner - 2.0f, cy - inner - 2.0f,
-                          (inner + 2.0f) * 2.0f, (inner + 2.0f) * 2.0f);
+            g.fillEllipse(cx - inner - 2.0f, cy - inner - 2.0f, (inner + 2.0f) * 2.0f, (inner + 2.0f) * 2.0f);
         }
 
         g.setColour(discFill);
@@ -194,10 +181,8 @@ public:
 
         // Specular highlight at top of inner disc (glass-dome effect)
         {
-            juce::ColourGradient spec(
-                juce::Colours::white.withAlpha(0.22f), cx, cy - inner + 2.0f,
-                juce::Colours::transparentWhite,        cx, cy,
-                false);
+            juce::ColourGradient spec(juce::Colours::white.withAlpha(0.22f), cx, cy - inner + 2.0f,
+                                      juce::Colours::transparentWhite, cx, cy, false);
             juce::Graphics::ScopedSaveState ss(g);
             juce::Path innerClip;
             innerClip.addEllipse(cx - inner, cy - inner, inner * 2.0f, inner * 2.0f);
@@ -211,9 +196,8 @@ public:
         g.drawEllipse(cx - inner, cy - inner, inner * 2.0f, inner * 2.0f, 1.0f);
 
         // ── Center label — engine short name ─────────────────────────────────
-        const juce::String label = hasEngine
-            ? currentEngineId.substring(0, 5).toUpperCase()
-            : juce::String(L"\u2014"); // em dash
+        const juce::String label =
+            hasEngine ? currentEngineId.substring(0, 5).toUpperCase() : juce::String(L"\u2014"); // em dash
 
         // Ensure legibility: use white on dark accents, dark on light accents.
         juce::Colour labelColor = [&]() -> juce::Colour
@@ -222,16 +206,12 @@ public:
                 return get(textMid()).withAlpha(0.55f);
             // Luminance-adaptive: threshold ~0.35
             const float lum = discFill.getPerceivedBrightness();
-            return lum > 0.50f
-                ? juce::Colours::black.withAlpha(0.75f)
-                : juce::Colours::white.withAlpha(0.92f);
+            return lum > 0.50f ? juce::Colours::black.withAlpha(0.75f) : juce::Colours::white.withAlpha(0.92f);
         }();
 
         g.setFont(GalleryFonts::display(9.0f));
         g.setColour(labelColor);
-        g.drawText(label,
-                   (int)(cx - inner), (int)(cy - inner),
-                   (int)(inner * 2.0f), (int)(inner * 2.0f),
+        g.drawText(label, (int)(cx - inner), (int)(cy - inner), (int)(inner * 2.0f), (int)(inner * 2.0f),
                    juce::Justification::centred, true);
 
         // ── Position dot on outer ring ────────────────────────────────────────
@@ -239,30 +219,25 @@ public:
         // the current engine sits.  It always stays in the middle of the ring.
         if (currentIndex >= 0 && !engineOrder.empty())
         {
-            const float fraction = static_cast<float>(currentIndex)
-                                   / static_cast<float>(engineOrder.size());
+            const float fraction = static_cast<float>(currentIndex) / static_cast<float>(engineOrder.size());
             // fraction 0.0 = Sunlit top, travels CW to 1.0 = back to top.
-            const float dotAngle = -juce::MathConstants<float>::halfPi
-                                   + fraction * juce::MathConstants<float>::twoPi;
-            const float dotR     = inner + ring * 0.5f; // midpoint of ring
-            const float dotCx    = cx + dotR * std::cos(dotAngle);
-            const float dotCy    = cy + dotR * std::sin(dotAngle);
+            const float dotAngle = -juce::MathConstants<float>::halfPi + fraction * juce::MathConstants<float>::twoPi;
+            const float dotR = inner + ring * 0.5f; // midpoint of ring
+            const float dotCx = cx + dotR * std::cos(dotAngle);
+            const float dotCy = cy + dotR * std::sin(dotAngle);
 
             // Bright dot — colour is derived from the zone at this position.
             juce::Colour dotColor = zoneColorForFraction(fraction).brighter(0.6f);
             g.setColour(juce::Colours::black.withAlpha(0.28f));
-            g.fillEllipse(dotCx - kDotRadius - 0.5f, dotCy - kDotRadius - 0.5f,
-                          (kDotRadius + 0.5f) * 2.0f, (kDotRadius + 0.5f) * 2.0f);
+            g.fillEllipse(dotCx - kDotRadius - 0.5f, dotCy - kDotRadius - 0.5f, (kDotRadius + 0.5f) * 2.0f,
+                          (kDotRadius + 0.5f) * 2.0f);
 
             g.setColour(dotColor);
-            g.fillEllipse(dotCx - kDotRadius, dotCy - kDotRadius,
-                          kDotRadius * 2.0f, kDotRadius * 2.0f);
+            g.fillEllipse(dotCx - kDotRadius, dotCy - kDotRadius, kDotRadius * 2.0f, kDotRadius * 2.0f);
 
             // Fine white inner specular
             g.setColour(juce::Colours::white.withAlpha(0.55f));
-            g.fillEllipse(dotCx - kDotRadius * 0.45f,
-                          dotCy - kDotRadius * 0.60f,
-                          kDotRadius * 0.90f,
+            g.fillEllipse(dotCx - kDotRadius * 0.45f, dotCy - kDotRadius * 0.60f, kDotRadius * 0.90f,
                           kDotRadius * 0.70f);
         }
 
@@ -292,9 +267,9 @@ public:
     {
         // Left-click with no drag → open EnginePickerPopup.
         // We set a flag and confirm on mouseUp only if drag didn't occur.
-        dragStartAngle     = angleFromEvent(e);
-        accumulatedDelta   = 0.0f;
-        isDragging         = false;
+        dragStartAngle = angleFromEvent(e);
+        accumulatedDelta = 0.0f;
+        isDragging = false;
         repaint();
     }
 
@@ -304,11 +279,13 @@ public:
         float delta = angle - dragStartAngle;
 
         // Wrap delta into [-π, π] to handle the ±π discontinuity.
-        while (delta >  juce::MathConstants<float>::pi) delta -= juce::MathConstants<float>::twoPi;
-        while (delta < -juce::MathConstants<float>::pi) delta += juce::MathConstants<float>::twoPi;
+        while (delta > juce::MathConstants<float>::pi)
+            delta -= juce::MathConstants<float>::twoPi;
+        while (delta < -juce::MathConstants<float>::pi)
+            delta += juce::MathConstants<float>::twoPi;
 
         accumulatedDelta += delta;
-        dragStartAngle    = angle;
+        dragStartAngle = angle;
 
         // Accumulate drag until threshold, then advance one step.
         const float kStep = juce::degreesToRadians(kSnapDegrees);
@@ -337,8 +314,7 @@ public:
         repaint();
     }
 
-    void mouseWheelMove(const juce::MouseEvent&,
-                        const juce::MouseWheelDetails& w) override
+    void mouseWheelMove(const juce::MouseEvent&, const juce::MouseWheelDetails& w) override
     {
         // Wheel up = previous (shallower/sunlit), wheel down = next (deeper/midnight).
         // We use a small accumulator to avoid over-firing on trackpad scroll.
@@ -391,8 +367,7 @@ private:
         const int n = static_cast<int>(engineOrder.size());
 
         // If no current engine, start from index 0.
-        int nextIndex = (currentIndex < 0) ? 0
-                                           : currentIndex + delta;
+        int nextIndex = (currentIndex < 0) ? 0 : currentIndex + delta;
 
         // Wrap around the full engine order list.
         nextIndex = ((nextIndex % n) + n) % n;
@@ -402,8 +377,8 @@ private:
             return;
 
         currentEngineId = newId;
-        currentIndex    = nextIndex;
-        currentAccent   = GalleryColors::accentForEngine(currentEngineId);
+        currentIndex = nextIndex;
+        currentAccent = GalleryColors::accentForEngine(currentEngineId);
 
         if (onEngineSelected)
             onEngineSelected(currentEngineId);
@@ -426,7 +401,7 @@ public:
             if (id == currentEngineId)
                 return;
             currentEngineId = id;
-            currentAccent   = GalleryColors::accentForEngine(id);
+            currentAccent = GalleryColors::accentForEngine(id);
 
             // Re-locate in order list.
             currentIndex = -1;
@@ -446,10 +421,7 @@ public:
         };
 
         juce::Rectangle<int> target = getScreenBounds();
-        juce::CallOutBox::launchAsynchronously(
-            std::unique_ptr<juce::Component>(picker),
-            target,
-            nullptr);
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), target, nullptr);
     }
 
 private:
@@ -493,38 +465,82 @@ private:
         // This table mirrors the zone assignments in EnginePickerPopup exactly.
         // Zone 0 = Sunlit | Zone 1 = Twilight | Zone 2 = Midnight
         static const std::pair<const char*, int> kZoneTable[] = {
-            { "Oto",        0 }, { "Octave",    0 }, { "Oleg",      0 }, { "Otis",      0 },
-            { "Obelisk",    0 }, { "Orchard",   0 }, { "Osier",     0 },
-            { "Overwash",   0 }, { "Overworld", 0 },
-            { "Oasis",      0 }, { "OddfeliX",  0 }, { "OddOscar",  0 },
-            { "Ohm",        0 }, { "Optic",     0 }, { "Opensky",   0 },
+            {"Oto", 0},
+            {"Octave", 0},
+            {"Oleg", 0},
+            {"Otis", 0},
+            {"Obelisk", 0},
+            {"Orchard", 0},
+            {"Osier", 0},
+            {"Overwash", 0},
+            {"Overworld", 0},
+            {"Oasis", 0},
+            {"OddfeliX", 0},
+            {"OddOscar", 0},
+            {"Ohm", 0},
+            {"Optic", 0},
+            {"Opensky", 0},
             // Twilight (1)
-            { "Oven",       1 }, { "Ochre",     1 }, { "Opaline",   1 },
-            { "Olate",      1 }, { "Oaken",     1 },
-            { "Overgrow",   1 }, { "Oxalis",    1 },
-            { "Overworn",   1 }, { "Overcast",  1 },
-            { "Oddfellow",  1 }, { "Onkolo",    1 }, { "Opcode",    1 },
-            { "Onset",      1 }, { "Offering",  1 }, { "Oware",     1 }, { "Ostinato",  1 },
-            { "Opera",      1 }, { "Obbligato", 1 },
-            { "Oblong",     1 }, { "Obese",     1 },
-            { "Organon",    1 }, { "Ottoni",    1 }, { "Ole",       1 },
-            { "Orphica",    1 }, { "Osprey",    1 }, { "Osteria",   1 },
-            { "Opal",       1 }, { "Orbital",   1 }, { "Origami",   1 },
-            { "Obscura",    1 }, { "Oblique",   1 }, { "Organism",  1 },
-            { "Overtone",   1 }, { "Outlook",   1 },
-            { "Oceanic",    1 }, { "Ocelot",    1 },
-            { "Ombre",      1 }, { "Odyssey",   1 }, { "Overdub",   1 },
-            { "Osmosis",    1 }, { "Outwit",    1 },
+            {"Oven", 1},
+            {"Ochre", 1},
+            {"Opaline", 1},
+            {"Olate", 1},
+            {"Oaken", 1},
+            {"Overgrow", 1},
+            {"Oxalis", 1},
+            {"Overworn", 1},
+            {"Overcast", 1},
+            {"Oddfellow", 1},
+            {"Onkolo", 1},
+            {"Opcode", 1},
+            {"Onset", 1},
+            {"Offering", 1},
+            {"Oware", 1},
+            {"Ostinato", 1},
+            {"Opera", 1},
+            {"Obbligato", 1},
+            {"Oblong", 1},
+            {"Obese", 1},
+            {"Organon", 1},
+            {"Ottoni", 1},
+            {"Ole", 1},
+            {"Orphica", 1},
+            {"Osprey", 1},
+            {"Osteria", 1},
+            {"Opal", 1},
+            {"Orbital", 1},
+            {"Origami", 1},
+            {"Obscura", 1},
+            {"Oblique", 1},
+            {"Organism", 1},
+            {"Overtone", 1},
+            {"Outlook", 1},
+            {"Oceanic", 1},
+            {"Ocelot", 1},
+            {"Ombre", 1},
+            {"Odyssey", 1},
+            {"Overdub", 1},
+            {"Osmosis", 1},
+            {"Outwit", 1},
             // Midnight (2)
-            { "Ogre",       2 }, { "Omega",     2 },
-            { "Overflow",   2 },
-            { "Obrix",      2 }, { "Oxytocin",  2 }, { "Overbite",  2 },
-            { "Ouroboros",  2 }, { "Oracle",    2 },
-            { "Obsidian",   2 }, { "Orbweave",  2 }, { "Oxbow",     2 },
-            { "Orca",       2 }, { "Octopus",   2 },
-            { "Owlfish",    2 }, { "Overlap",   2 },
-            { "Oceandeep",  2 }, { "Ouie",      2 },
-            { nullptr,      0 },  // sentinel
+            {"Ogre", 2},
+            {"Omega", 2},
+            {"Overflow", 2},
+            {"Obrix", 2},
+            {"Oxytocin", 2},
+            {"Overbite", 2},
+            {"Ouroboros", 2},
+            {"Oracle", 2},
+            {"Obsidian", 2},
+            {"Orbweave", 2},
+            {"Oxbow", 2},
+            {"Orca", 2},
+            {"Octopus", 2},
+            {"Owlfish", 2},
+            {"Overlap", 2},
+            {"Oceandeep", 2},
+            {"Ouie", 2},
+            {nullptr, 0}, // sentinel
         };
 
         const juce::String lower = engineId.toLowerCase();
@@ -554,47 +570,47 @@ private:
     // Compute the angle from the component centre to the mouse event position.
     float angleFromEvent(const juce::MouseEvent& e) const
     {
-        const float dx = e.position.x - getWidth()  * 0.5f;
+        const float dx = e.position.x - getWidth() * 0.5f;
         const float dy = e.position.y - getHeight() * 0.5f;
         return std::atan2(dy, dx);
     }
 
     //==========================================================================
     // Constants
-    static constexpr int   kDialSize     = 48;
-    static constexpr int   kInnerSize    = 36;
-    static constexpr float kDotRadius    = 2.0f;
-    static constexpr float kSnapDegrees  = 15.0f;
+    static constexpr int kDialSize = 48;
+    static constexpr int kInnerSize = 36;
+    static constexpr float kDotRadius = 2.0f;
+    static constexpr float kSnapDegrees = 15.0f;
     static constexpr float kWheelThreshold = 0.15f;
 
     // Depth-zone palette (matches EnginePickerPopup zone colours exactly).
     // inline static const (C++17) avoids ODR issues in header-only files while
     // sidestepping the constexpr question for non-trivially-constructible types.
-    inline static const juce::Colour kSunlitColor   { 0xFF48CAE4u };
-    inline static const juce::Colour kTwilightColor { 0xFF0096C7u };
-    inline static const juce::Colour kMidnightColor { 0xFF7B2FBEu };
+    inline static const juce::Colour kSunlitColor{0xFF48CAE4u};
+    inline static const juce::Colour kTwilightColor{0xFF0096C7u};
+    inline static const juce::Colour kMidnightColor{0xFF7B2FBEu};
 
     //==========================================================================
     // State
     XOceanusProcessor& processor;
 
-    int          currentSlot      = 0;
+    int currentSlot = 0;
     juce::String currentEngineId;
-    juce::Colour currentAccent    { GalleryColors::get(GalleryColors::emptySlot()) };
+    juce::Colour currentAccent{GalleryColors::get(GalleryColors::emptySlot())};
 
     // Sorted engine list for CW/CCW browsing
     std::vector<juce::String> engineOrder;
     int currentIndex = -1;
 
     // Drag state
-    float dragStartAngle   = 0.0f;
+    float dragStartAngle = 0.0f;
     float accumulatedDelta = 0.0f;
     float wheelAccumulator = 0.0f;
-    bool  isDragging       = false;
+    bool isDragging = false;
 
     // P7 fix: cached ring image — rebuilt only when engine changes (ringCacheDirty=true)
     juce::Image ringCache;
-    bool        ringCacheDirty = true;
+    bool ringCacheDirty = true;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DepthZoneDial)
 };

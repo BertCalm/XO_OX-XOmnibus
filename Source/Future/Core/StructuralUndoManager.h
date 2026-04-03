@@ -2,12 +2,13 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include <juce_core/juce_core.h>
-#include "SynthEngine.h"   // for CouplingType
+#include "SynthEngine.h" // for CouplingType
 #include <vector>
 #include <deque>
 #include <cassert>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // StructuralUndoManager — Undo/redo for non-APVTS state changes.
@@ -51,7 +52,8 @@ namespace xoceanus {
 // The applyStructuralCommand() helper on the processor interprets each command's
 // `type` and uses the `undo*` fields to revert the change.
 //
-class StructuralUndoManager {
+class StructuralUndoManager
+{
 public:
     //==========================================================================
     // StructuralCommand — atomic unit of reversible structural change.
@@ -62,41 +64,44 @@ public:
     //
     // The caller must inspect `type` to know which fields are populated.
     //
-    struct StructuralCommand {
-        enum class Type {
-            EngineSwap,        // A slot's engine type changed
-            CouplingAdd,       // A coupling route was added
-            CouplingRemove,    // A coupling route was removed
-            CouplingModify,    // A coupling route's amount was changed
-            PresetLoad         // A preset was loaded into a slot
+    struct StructuralCommand
+    {
+        enum class Type
+        {
+            EngineSwap,     // A slot's engine type changed
+            CouplingAdd,    // A coupling route was added
+            CouplingRemove, // A coupling route was removed
+            CouplingModify, // A coupling route's amount was changed
+            PresetLoad      // A preset was loaded into a slot
         };
 
         Type type;
 
         // --- EngineSwap fields ---
-        int            slot          = -1;
-        juce::String   oldEngine;   // engine that was in slot before swap  (undo → put this back)
-        juce::String   newEngine;   // engine that was put in slot by swap  (redo → put this back)
+        int slot = -1;
+        juce::String oldEngine; // engine that was in slot before swap  (undo → put this back)
+        juce::String newEngine; // engine that was put in slot by swap  (redo → put this back)
 
         // --- CouplingAdd / CouplingRemove / CouplingModify fields ---
-        int            sourceSlot   = -1;
-        int            destSlot     = -1;
-        CouplingType   couplingType = CouplingType::AmpToFilter;
-        float          oldAmount    = 0.0f;  // amount before (undo target)
-        float          newAmount    = 0.0f;  // amount after  (redo target)
+        int sourceSlot = -1;
+        int destSlot = -1;
+        CouplingType couplingType = CouplingType::AmpToFilter;
+        float oldAmount = 0.0f; // amount before (undo target)
+        float newAmount = 0.0f; // amount after  (redo target)
 
         // --- PresetLoad fields ---
         // slot reuses the slot field above
-        juce::String   oldPreset;   // preset name/ID that was active before load (undo)
-        juce::String   newPreset;   // preset name/ID that was loaded            (redo)
+        juce::String oldPreset; // preset name/ID that was active before load (undo)
+        juce::String newPreset; // preset name/ID that was loaded            (redo)
     };
 
     //==========================================================================
     // Transaction — a named group of StructuralCommands that undo as one step.
     //
-    struct Transaction {
-        juce::String                     description;
-        std::vector<StructuralCommand>   commands;
+    struct Transaction
+    {
+        juce::String description;
+        std::vector<StructuralCommand> commands;
     };
 
     //==========================================================================
@@ -105,10 +110,10 @@ public:
     StructuralUndoManager() = default;
 
     // Non-copyable, non-moveable — singleton-style ownership by the processor.
-    StructuralUndoManager(const StructuralUndoManager&)            = delete;
+    StructuralUndoManager(const StructuralUndoManager&) = delete;
     StructuralUndoManager& operator=(const StructuralUndoManager&) = delete;
-    StructuralUndoManager(StructuralUndoManager&&)                 = delete;
-    StructuralUndoManager& operator=(StructuralUndoManager&&)      = delete;
+    StructuralUndoManager(StructuralUndoManager&&) = delete;
+    StructuralUndoManager& operator=(StructuralUndoManager&&) = delete;
 
     //==========================================================================
     // Transaction control
@@ -120,10 +125,10 @@ public:
     void beginTransaction(const juce::String& description)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
-        jassert(!transactionOpen);  // Mismatched begin/end — fix the caller
+        jassert(!transactionOpen); // Mismatched begin/end — fix the caller
 
         if (transactionOpen)
-            endTransaction();       // release safety valve
+            endTransaction(); // release safety valve
 
         currentTransaction.description = description;
         currentTransaction.commands.clear();
@@ -136,7 +141,7 @@ public:
     void endTransaction()
     {
         JUCE_ASSERT_MESSAGE_THREAD;
-        jassert(transactionOpen);   // Mismatched begin/end — fix the caller
+        jassert(transactionOpen); // Mismatched begin/end — fix the caller
 
         if (!transactionOpen)
             return;
@@ -144,7 +149,7 @@ public:
         transactionOpen = false;
 
         if (currentTransaction.commands.empty())
-            return;   // nothing happened — don't pollute the undo stack
+            return; // nothing happened — don't pollute the undo stack
 
         // Invalidate redo stack (standard behaviour: new action cancels redo)
         redoStack.clear();
@@ -163,16 +168,14 @@ public:
     // Recording (call between beginTransaction / endTransaction)
 
     // Record that slot `slot` changed from engine `oldEngine` to `newEngine`.
-    void recordEngineSwap(int slot,
-                          const juce::String& oldEngine,
-                          const juce::String& newEngine)
+    void recordEngineSwap(int slot, const juce::String& oldEngine, const juce::String& newEngine)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
         jassert(transactionOpen);
 
         StructuralCommand cmd;
-        cmd.type      = StructuralCommand::Type::EngineSwap;
-        cmd.slot      = slot;
+        cmd.type = StructuralCommand::Type::EngineSwap;
+        cmd.slot = slot;
         cmd.oldEngine = oldEngine;
         cmd.newEngine = newEngine;
         appendCommand(std::move(cmd));
@@ -180,56 +183,52 @@ public:
 
     // Record that a new coupling route was added.
     // Undo removes it; redo re-adds it at `amount`.
-    void recordCouplingAdd(int sourceSlot, int destSlot,
-                           CouplingType couplingType, float amount)
+    void recordCouplingAdd(int sourceSlot, int destSlot, CouplingType couplingType, float amount)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
         jassert(transactionOpen);
 
         StructuralCommand cmd;
-        cmd.type        = StructuralCommand::Type::CouplingAdd;
-        cmd.sourceSlot  = sourceSlot;
-        cmd.destSlot    = destSlot;
+        cmd.type = StructuralCommand::Type::CouplingAdd;
+        cmd.sourceSlot = sourceSlot;
+        cmd.destSlot = destSlot;
         cmd.couplingType = couplingType;
-        cmd.oldAmount   = 0.0f;    // did not exist before
-        cmd.newAmount   = amount;
+        cmd.oldAmount = 0.0f; // did not exist before
+        cmd.newAmount = amount;
         appendCommand(std::move(cmd));
     }
 
     // Record that an existing coupling route was removed.
     // Undo re-adds it at `amount`; redo removes it again.
-    void recordCouplingRemove(int sourceSlot, int destSlot,
-                              CouplingType couplingType, float amount)
+    void recordCouplingRemove(int sourceSlot, int destSlot, CouplingType couplingType, float amount)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
         jassert(transactionOpen);
 
         StructuralCommand cmd;
-        cmd.type        = StructuralCommand::Type::CouplingRemove;
-        cmd.sourceSlot  = sourceSlot;
-        cmd.destSlot    = destSlot;
+        cmd.type = StructuralCommand::Type::CouplingRemove;
+        cmd.sourceSlot = sourceSlot;
+        cmd.destSlot = destSlot;
         cmd.couplingType = couplingType;
-        cmd.oldAmount   = amount;  // was at this amount before removal
-        cmd.newAmount   = 0.0f;   // now gone
+        cmd.oldAmount = amount; // was at this amount before removal
+        cmd.newAmount = 0.0f;   // now gone
         appendCommand(std::move(cmd));
     }
 
     // Record that an existing coupling route's amount changed.
     // Undo restores `oldAmount`; redo restores `newAmount`.
-    void recordCouplingModify(int sourceSlot, int destSlot,
-                              CouplingType couplingType,
-                              float oldAmount, float newAmount)
+    void recordCouplingModify(int sourceSlot, int destSlot, CouplingType couplingType, float oldAmount, float newAmount)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
         jassert(transactionOpen);
 
         StructuralCommand cmd;
-        cmd.type         = StructuralCommand::Type::CouplingModify;
-        cmd.sourceSlot   = sourceSlot;
-        cmd.destSlot     = destSlot;
+        cmd.type = StructuralCommand::Type::CouplingModify;
+        cmd.sourceSlot = sourceSlot;
+        cmd.destSlot = destSlot;
         cmd.couplingType = couplingType;
-        cmd.oldAmount    = oldAmount;
-        cmd.newAmount    = newAmount;
+        cmd.oldAmount = oldAmount;
+        cmd.newAmount = newAmount;
         appendCommand(std::move(cmd));
     }
 
@@ -237,16 +236,14 @@ public:
     // `oldPreset` is the name/ID that was active before; `newPreset` is what
     // was loaded. The processor is responsible for keeping track of the current
     // preset name so it can pass it here at record time.
-    void recordPresetLoad(int slot,
-                          const juce::String& oldPreset,
-                          const juce::String& newPreset)
+    void recordPresetLoad(int slot, const juce::String& oldPreset, const juce::String& newPreset)
     {
         JUCE_ASSERT_MESSAGE_THREAD;
         jassert(transactionOpen);
 
         StructuralCommand cmd;
-        cmd.type      = StructuralCommand::Type::PresetLoad;
-        cmd.slot      = slot;
+        cmd.type = StructuralCommand::Type::PresetLoad;
+        cmd.slot = slot;
         cmd.oldPreset = oldPreset;
         cmd.newPreset = newPreset;
         appendCommand(std::move(cmd));
@@ -262,7 +259,8 @@ public:
     // Returns empty string if canUndo() is false.
     juce::String getUndoDescription() const
     {
-        if (undoStack.empty()) return {};
+        if (undoStack.empty())
+            return {};
         return undoStack.back().description;
     }
 
@@ -270,17 +268,18 @@ public:
     // Returns empty string if canRedo() is false.
     juce::String getRedoDescription() const
     {
-        if (redoStack.empty()) return {};
+        if (redoStack.empty())
+            return {};
         return redoStack.back().description;
     }
 
     // Number of steps available to undo.
-    int getUndoDepth()  const noexcept { return static_cast<int>(undoStack.size()); }
+    int getUndoDepth() const noexcept { return static_cast<int>(undoStack.size()); }
 
     // Number of steps available to redo.
-    int getRedoDepth()  const noexcept { return static_cast<int>(redoStack.size()); }
+    int getRedoDepth() const noexcept { return static_cast<int>(redoStack.size()); }
 
-    int  getMaxHistory() const noexcept { return maxHistory; }
+    int getMaxHistory() const noexcept { return maxHistory; }
     void setMaxHistory(int max) noexcept
     {
         JUCE_ASSERT_MESSAGE_THREAD;
@@ -380,7 +379,7 @@ public:
         undoStack.clear();
         redoStack.clear();
         currentTransaction = {};
-        transactionOpen    = false;
+        transactionOpen = false;
     }
 
     // Returns true if a transaction is currently open. Useful for asserts in
@@ -418,19 +417,19 @@ private:
         {
             const auto& src = step.commands[static_cast<size_t>(i)];
             StructuralCommand inv;
-            inv.type         = invertedType(src.type);
-            inv.slot         = src.slot;
-            inv.sourceSlot   = src.sourceSlot;
-            inv.destSlot     = src.destSlot;
+            inv.type = invertedType(src.type);
+            inv.slot = src.slot;
+            inv.sourceSlot = src.sourceSlot;
+            inv.destSlot = src.destSlot;
             inv.couplingType = src.couplingType;
 
             // Swap old/new so the caller restores the previous state
-            inv.oldEngine    = src.newEngine;
-            inv.newEngine    = src.oldEngine;
-            inv.oldPreset    = src.newPreset;
-            inv.newPreset    = src.oldPreset;
-            inv.oldAmount    = src.newAmount;
-            inv.newAmount    = src.oldAmount;
+            inv.oldEngine = src.newEngine;
+            inv.newEngine = src.oldEngine;
+            inv.oldPreset = src.newPreset;
+            inv.newPreset = src.oldPreset;
+            inv.oldAmount = src.newAmount;
+            inv.newAmount = src.oldAmount;
 
             result.push_back(std::move(inv));
         }
@@ -457,23 +456,28 @@ private:
         using T = StructuralCommand::Type;
         switch (t)
         {
-            case T::CouplingAdd:    return T::CouplingRemove;
-            case T::CouplingRemove: return T::CouplingAdd;
-            case T::EngineSwap:     return T::EngineSwap;
-            case T::CouplingModify: return T::CouplingModify;
-            case T::PresetLoad:     return T::PresetLoad;
+        case T::CouplingAdd:
+            return T::CouplingRemove;
+        case T::CouplingRemove:
+            return T::CouplingAdd;
+        case T::EngineSwap:
+            return T::EngineSwap;
+        case T::CouplingModify:
+            return T::CouplingModify;
+        case T::PresetLoad:
+            return T::PresetLoad;
         }
-        return t;  // unreachable — silence compiler warning
+        return t; // unreachable — silence compiler warning
     }
 
     //==========================================================================
     // State
 
-    std::deque<Transaction> undoStack;          // index 0 = oldest, back = next to undo
-    std::deque<Transaction> redoStack;          // index 0 = oldest, back = next to redo
-    Transaction             currentTransaction;
-    bool                    transactionOpen = false;
-    int                     maxHistory      = 50;
+    std::deque<Transaction> undoStack; // index 0 = oldest, back = next to undo
+    std::deque<Transaction> redoStack; // index 0 = oldest, back = next to redo
+    Transaction currentTransaction;
+    bool transactionOpen = false;
+    int maxHistory = 50;
 };
 
 //==============================================================================
@@ -497,20 +501,19 @@ private:
 //   auto cmds = structuralUndo.undo();
 //   dispatcher.dispatch(cmds);
 //
-struct StructuralCommandDispatcher {
-    using SwapFn      = std::function<void(int slot, const juce::String& engineId)>;
-    using CouplingFn  = std::function<void(int sourceSlot, int destSlot,
-                                           CouplingType type, float amount)>;
-    using RemoveFn    = std::function<void(int sourceSlot, int destSlot, CouplingType type)>;
-    using ModifyFn    = std::function<void(int sourceSlot, int destSlot,
-                                           CouplingType type, float amount)>;
-    using PresetFn    = std::function<void(int slot, const juce::String& presetNameOrId)>;
+struct StructuralCommandDispatcher
+{
+    using SwapFn = std::function<void(int slot, const juce::String& engineId)>;
+    using CouplingFn = std::function<void(int sourceSlot, int destSlot, CouplingType type, float amount)>;
+    using RemoveFn = std::function<void(int sourceSlot, int destSlot, CouplingType type)>;
+    using ModifyFn = std::function<void(int sourceSlot, int destSlot, CouplingType type, float amount)>;
+    using PresetFn = std::function<void(int slot, const juce::String& presetNameOrId)>;
 
-    SwapFn      onEngineSwap;    // slot, newEngineId
-    CouplingFn  onCouplingAdd;   // sourceSlot, destSlot, type, amount
-    RemoveFn    onCouplingRemove;// sourceSlot, destSlot, type
-    ModifyFn    onCouplingModify;// sourceSlot, destSlot, type, newAmount
-    PresetFn    onPresetLoad;    // slot, presetNameOrId
+    SwapFn onEngineSwap;       // slot, newEngineId
+    CouplingFn onCouplingAdd;  // sourceSlot, destSlot, type, amount
+    RemoveFn onCouplingRemove; // sourceSlot, destSlot, type
+    ModifyFn onCouplingModify; // sourceSlot, destSlot, type, newAmount
+    PresetFn onPresetLoad;     // slot, presetNameOrId
 
     // Apply all commands in order. Missing handlers are silently skipped so
     // partial dispatch is safe during incremental integration.
@@ -521,33 +524,30 @@ struct StructuralCommandDispatcher {
         {
             switch (cmd.type)
             {
-                case T::EngineSwap:
-                    if (onEngineSwap)
-                        onEngineSwap(cmd.slot, cmd.newEngine);
-                    break;
+            case T::EngineSwap:
+                if (onEngineSwap)
+                    onEngineSwap(cmd.slot, cmd.newEngine);
+                break;
 
-                case T::CouplingAdd:
-                    if (onCouplingAdd)
-                        onCouplingAdd(cmd.sourceSlot, cmd.destSlot,
-                                      cmd.couplingType, cmd.newAmount);
-                    break;
+            case T::CouplingAdd:
+                if (onCouplingAdd)
+                    onCouplingAdd(cmd.sourceSlot, cmd.destSlot, cmd.couplingType, cmd.newAmount);
+                break;
 
-                case T::CouplingRemove:
-                    if (onCouplingRemove)
-                        onCouplingRemove(cmd.sourceSlot, cmd.destSlot,
-                                         cmd.couplingType);
-                    break;
+            case T::CouplingRemove:
+                if (onCouplingRemove)
+                    onCouplingRemove(cmd.sourceSlot, cmd.destSlot, cmd.couplingType);
+                break;
 
-                case T::CouplingModify:
-                    if (onCouplingModify)
-                        onCouplingModify(cmd.sourceSlot, cmd.destSlot,
-                                         cmd.couplingType, cmd.newAmount);
-                    break;
+            case T::CouplingModify:
+                if (onCouplingModify)
+                    onCouplingModify(cmd.sourceSlot, cmd.destSlot, cmd.couplingType, cmd.newAmount);
+                break;
 
-                case T::PresetLoad:
-                    if (onPresetLoad)
-                        onPresetLoad(cmd.slot, cmd.newPreset);
-                    break;
+            case T::PresetLoad:
+                if (onPresetLoad)
+                    onPresetLoad(cmd.slot, cmd.newPreset);
+                break;
             }
         }
     }

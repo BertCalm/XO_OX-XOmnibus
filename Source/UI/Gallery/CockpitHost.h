@@ -3,7 +3,8 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CockpitHost — abstract interface implemented by XOceanusEditor.
@@ -31,9 +32,7 @@ public:
     // O(depth) — typically 3-5 levels — safe to call from paint().
     static CockpitHost* find(juce::Component* start)
     {
-        for (auto* c = start ? start->getParentComponent() : nullptr;
-             c != nullptr;
-             c = c->getParentComponent())
+        for (auto* c = start ? start->getParentComponent() : nullptr; c != nullptr; c = c->getParentComponent())
         {
             if (auto* host = dynamic_cast<CockpitHost*>(c))
                 return host;

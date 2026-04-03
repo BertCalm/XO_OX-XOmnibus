@@ -24,37 +24,40 @@
 #include "../../../DSP/FastMath.h"
 #include <cstring>
 
-namespace xoverworld {
+namespace xoverworld
+{
 
 using namespace xoceanus;
 
-class GlitchEngine {
+class GlitchEngine
+{
 public:
     static constexpr int kBufLen = 96000; // 2s @ 48kHz; ample for any SR
 
-    GlitchEngine() {
-        std::memset(buf, 0, sizeof(buf));
-    }
+    GlitchEngine() { std::memset(buf, 0, sizeof(buf)); }
 
-    void prepare(float sampleRate) {
+    void prepare(float sampleRate)
+    {
         sr = sampleRate;
-        writePos    = 0;
-        readPos     = 0;
-        frozen      = false;
-        freezeLen   = 4096;
+        writePos = 0;
+        readPos = 0;
+        frozen = false;
+        freezeLen = 4096;
         retrigPhase = 0.0f;
         std::memset(buf, 0, sizeof(buf));
     }
 
     void setAmount(float a) { amount = a < 0.0f ? 0.0f : a > 1.0f ? 1.0f : a; }
-    void setType(int t)     { type   = t < 0 ? 0 : t > 12 ? 12 : t; }
-    void setRate(float r)   { rate   = r < 0.0f ? 0.0f : r > 1.0f ? 1.0f : r; }
-    void setDepth(float d)  { depth  = d < 0.0f ? 0.0f : d > 1.0f ? 1.0f : d; }
-    void setMix(float m)    { mix    = m < 0.0f ? 0.0f : m > 1.0f ? 1.0f : m; }
+    void setType(int t) { type = t < 0 ? 0 : t > 12 ? 12 : t; }
+    void setRate(float r) { rate = r < 0.0f ? 0.0f : r > 1.0f ? 1.0f : r; }
+    void setDepth(float d) { depth = d < 0.0f ? 0.0f : d > 1.0f ? 1.0f : d; }
+    void setMix(float m) { mix = m < 0.0f ? 0.0f : m > 1.0f ? 1.0f : m; }
 
-    float process(float x) {
+    float process(float x)
+    {
         // Below threshold: bypass all processing
-        if (amount < 0.1f || mix < 0.001f) {
+        if (amount < 0.1f || mix < 0.001f)
+        {
             // Continue writing into ring buffer (so freeze has fresh audio)
             buf[writePos] = x;
             writePos = (writePos + 1) % kBufLen;
@@ -65,7 +68,8 @@ public:
         // depth 0 → 512 samples (~11ms @ 44.1kHz), depth 1 → ~sr*0.25 (250ms)
         int maxFreezeLen = std::min((int)(sr * 0.25f), kBufLen - 1);
         freezeLen = 512 + (int)(depth * (float)(maxFreezeLen - 512));
-        if (freezeLen < 1) freezeLen = 1;
+        if (freezeLen < 1)
+            freezeLen = 1;
 
         // Retrigger rate: 0.5 Hz – 20 Hz
         float retrigHz = 0.5f + rate * 19.5f;
@@ -73,31 +77,40 @@ public:
 
         float glitchOut = x;
 
-        if (type == 0) {
+        if (type == 0)
+        {
             // --- Mode 0: Freeze / stutter ---
-            if (!frozen) {
+            if (!frozen)
+            {
                 // Fill buffer
                 buf[writePos] = x;
                 writePos = (writePos + 1) % kBufLen;
                 // Freeze when amount crosses threshold based on amount knob timing
                 // Higher amount = more likely to freeze this sample
                 float trigThresh = 1.0f - amount;
-                if (retrigPhase >= trigThresh) {
+                if (retrigPhase >= trigThresh)
+                {
                     retrigPhase -= trigThresh;
-                    frozen  = true;
+                    frozen = true;
                     readPos = (writePos - freezeLen + kBufLen) % kBufLen;
                 }
                 glitchOut = x;
-            } else {
+            }
+            else
+            {
                 // Loop the frozen section
                 glitchOut = buf[readPos];
                 readPos = (readPos + 1) % kBufLen;
-                if (readPos == writePos % kBufLen) {
+                if (readPos == writePos % kBufLen)
+                {
                     // End of frozen window — decide to unfreeze
-                    if (retrigPhase >= 1.0f) {
+                    if (retrigPhase >= 1.0f)
+                    {
                         retrigPhase -= 1.0f;
                         frozen = false;
-                    } else {
+                    }
+                    else
+                    {
                         // Re-loop same window
                         readPos = (writePos - freezeLen + kBufLen) % kBufLen;
                     }
@@ -106,54 +119,67 @@ public:
                 buf[writePos] = x;
                 writePos = (writePos + 1) % kBufLen;
             }
-
-        } else if (type == 1) {
+        }
+        else if (type == 1)
+        {
             // --- Mode 1: Reverse ---
             buf[writePos] = x;
             writePos = (writePos + 1) % kBufLen;
 
-            if (!frozen) {
-                if (retrigPhase >= 1.0f) {
+            if (!frozen)
+            {
+                if (retrigPhase >= 1.0f)
+                {
                     retrigPhase -= 1.0f;
-                    frozen  = true;
+                    frozen = true;
                     readPos = writePos; // start reading from current write head (newest)
                 }
                 glitchOut = x;
-            } else {
+            }
+            else
+            {
                 // Read backwards
                 readPos = (readPos - 1 + kBufLen) % kBufLen;
                 glitchOut = buf[readPos];
 
                 // Count how far we've gone back
                 int dist = (writePos - readPos + kBufLen) % kBufLen;
-                if (dist >= freezeLen) {
+                if (dist >= freezeLen)
+                {
                     frozen = false;
                 }
             }
-
-        } else if (type == 2) {
+        }
+        else if (type == 2)
+        {
             // --- Mode 2: Random retrigger ---
             buf[writePos] = x;
             writePos = (writePos + 1) % kBufLen;
 
-            if (retrigPhase >= 1.0f) {
+            if (retrigPhase >= 1.0f)
+            {
                 retrigPhase -= 1.0f;
-                frozen  = true;
+                frozen = true;
                 readPos = (writePos - freezeLen + kBufLen) % kBufLen;
             }
 
-            if (frozen) {
+            if (frozen)
+            {
                 glitchOut = buf[readPos];
                 readPos = (readPos + 1) % kBufLen;
                 int dist = (readPos - (writePos - freezeLen + kBufLen) % kBufLen + kBufLen) % kBufLen;
-                if (dist >= freezeLen) {
+                if (dist >= freezeLen)
+                {
                     frozen = false;
                 }
-            } else {
+            }
+            else
+            {
                 glitchOut = x;
             }
-
-        } else {
+        }
+        else
+        {
             // --- Types 3-12: Harmonic subdivisions of stutter ---
             // Type 3 = 1/2 period, type 4 = 1/3 period, ..., type 12 = 1/10 period
             int divisor = type - 1; // 2, 3, ..., 10
@@ -161,23 +187,30 @@ public:
             writePos = (writePos + 1) % kBufLen;
 
             int stutterLen = freezeLen / divisor;
-            if (stutterLen < 64) stutterLen = 64;
+            if (stutterLen < 64)
+                stutterLen = 64;
 
-            if (!frozen || retrigPhase >= 1.0f) {
-                if (retrigPhase >= 1.0f) retrigPhase -= 1.0f;
-                frozen  = true;
+            if (!frozen || retrigPhase >= 1.0f)
+            {
+                if (retrigPhase >= 1.0f)
+                    retrigPhase -= 1.0f;
+                frozen = true;
                 readPos = (writePos - stutterLen + kBufLen) % kBufLen;
             }
 
-            if (frozen) {
+            if (frozen)
+            {
                 glitchOut = buf[readPos];
                 readPos = (readPos + 1) % kBufLen;
                 int dist = (readPos - (writePos - stutterLen + kBufLen) % kBufLen + kBufLen) % kBufLen;
-                if (dist >= stutterLen) {
+                if (dist >= stutterLen)
+                {
                     // Re-loop the sub-period stutter window
                     readPos = (writePos - stutterLen + kBufLen) % kBufLen;
                 }
-            } else {
+            }
+            else
+            {
                 glitchOut = x;
             }
         }
@@ -190,18 +223,18 @@ public:
     }
 
 private:
-    float sr        = 44100.0f;
-    float amount    = 0.0f;
-    int   type      = 0;
-    float rate      = 0.3f;
-    float depth     = 0.5f;
-    float mix       = 0.0f;
+    float sr = 44100.0f;
+    float amount = 0.0f;
+    int type = 0;
+    float rate = 0.3f;
+    float depth = 0.5f;
+    float mix = 0.0f;
 
     float buf[kBufLen];
-    int   writePos  = 0;
-    int   readPos   = 0;
-    bool  frozen    = false;
-    int   freezeLen = 4096;
+    int writePos = 0;
+    int readPos = 0;
+    bool frozen = false;
+    int freezeLen = 4096;
     float retrigPhase = 0.0f;
 };
 

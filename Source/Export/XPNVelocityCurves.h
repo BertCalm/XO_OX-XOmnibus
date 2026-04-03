@@ -3,7 +3,8 @@
 #pragma once
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // XPN Velocity Curves — shared by XOriginate and XOutshine.
@@ -19,23 +20,22 @@ namespace xoceanus {
 
 struct VelocitySplit
 {
-    int   start;   // MIDI velocity range start (inclusive)
-    int   end;     // MIDI velocity range end (inclusive)
+    int start;     // MIDI velocity range start (inclusive)
+    int end;       // MIDI velocity range end (inclusive)
     float volume;  // Linear gain for this layer (0.0–1.0)
     float normVel; // Normalised velocity to use when rendering this layer (0.0–1.0)
 };
 
 enum class XPNVelocityCurve
 {
-    Musical,   // Expressive default — non-linear, wide soft range
-    BoomBap,   // Punchy 90s hip-hop — heavy bottom, explosive top
-    NeoSoul,   // Smooth — compressed range, gentle top
-    TrapHard,  // Thin ghost layers, huge hard hits
-    Linear,    // Uniform splits — diagnostic / utility use
+    Musical,  // Expressive default — non-linear, wide soft range
+    BoomBap,  // Punchy 90s hip-hop — heavy bottom, explosive top
+    NeoSoul,  // Smooth — compressed range, gentle top
+    TrapHard, // Thin ghost layers, huge hard hits
+    Linear,   // Uniform splits — diagnostic / utility use
 };
 
-inline std::vector<VelocitySplit> getVelocitySplits (XPNVelocityCurve curve,
-                                                      int numLayers = 4)
+inline std::vector<VelocitySplit> getVelocitySplits(XPNVelocityCurve curve, int numLayers = 4)
 {
     // Full 4-layer tables — trimmed to numLayers if fewer layers are requested.
     // When trimming, the last layer always extends to vel 127.
@@ -43,27 +43,22 @@ inline std::vector<VelocitySplit> getVelocitySplits (XPNVelocityCurve curve,
 
     switch (curve)
     {
-        case XPNVelocityCurve::BoomBap:
-            full = { {1,15,0.25f,0.12f}, {16,45,0.50f,0.35f},
-                     {46,85,0.78f,0.65f}, {86,127,1.00f,1.00f} };
-            break;
-        case XPNVelocityCurve::NeoSoul:
-            full = { {1,30,0.35f,0.20f}, {31,65,0.60f,0.47f},
-                     {66,95,0.80f,0.72f}, {96,127,0.95f,1.00f} };
-            break;
-        case XPNVelocityCurve::TrapHard:
-            full = { {1,10,0.20f,0.08f}, {11,35,0.55f,0.27f},
-                     {36,70,0.80f,0.60f}, {71,127,1.00f,1.00f} };
-            break;
-        case XPNVelocityCurve::Linear:
-            full = { {1,31,0.25f,0.25f}, {32,63,0.50f,0.50f},
-                     {64,95,0.75f,0.75f}, {96,127,1.00f,1.00f} };
-            break;
-        case XPNVelocityCurve::Musical:
-        default:
-            full = { {1,20,0.30f,0.16f}, {21,50,0.55f,0.40f},
-                     {51,90,0.75f,0.71f}, {91,127,0.95f,1.00f} };
-            break;
+    case XPNVelocityCurve::BoomBap:
+        full = {{1, 15, 0.25f, 0.12f}, {16, 45, 0.50f, 0.35f}, {46, 85, 0.78f, 0.65f}, {86, 127, 1.00f, 1.00f}};
+        break;
+    case XPNVelocityCurve::NeoSoul:
+        full = {{1, 30, 0.35f, 0.20f}, {31, 65, 0.60f, 0.47f}, {66, 95, 0.80f, 0.72f}, {96, 127, 0.95f, 1.00f}};
+        break;
+    case XPNVelocityCurve::TrapHard:
+        full = {{1, 10, 0.20f, 0.08f}, {11, 35, 0.55f, 0.27f}, {36, 70, 0.80f, 0.60f}, {71, 127, 1.00f, 1.00f}};
+        break;
+    case XPNVelocityCurve::Linear:
+        full = {{1, 31, 0.25f, 0.25f}, {32, 63, 0.50f, 0.50f}, {64, 95, 0.75f, 0.75f}, {96, 127, 1.00f, 1.00f}};
+        break;
+    case XPNVelocityCurve::Musical:
+    default:
+        full = {{1, 20, 0.30f, 0.16f}, {21, 50, 0.55f, 0.40f}, {51, 90, 0.75f, 0.71f}, {91, 127, 0.95f, 1.00f}};
+        break;
     }
 
     if (numLayers <= 0 || numLayers >= (int)full.size())
@@ -77,8 +72,7 @@ inline std::vector<VelocitySplit> getVelocitySplits (XPNVelocityCurve curve,
 }
 
 // Convenience: normalised render velocity for a given layer index
-inline float renderVelocityForLayer (int layerIndex, int totalLayers,
-                                     XPNVelocityCurve curve = XPNVelocityCurve::Musical)
+inline float renderVelocityForLayer(int layerIndex, int totalLayers, XPNVelocityCurve curve = XPNVelocityCurve::Musical)
 {
     auto splits = getVelocitySplits(curve, totalLayers);
     if (layerIndex < 0 || layerIndex >= (int)splits.size())

@@ -4,7 +4,8 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 class OutshineGrainStrip : public juce::Component
 {
@@ -19,8 +20,7 @@ public:
         scrollContainer.setViewedComponent(&chipHolder, false);
         addAndMakeVisible(countLabel);
         countLabel.setFont(GalleryFonts::value(11.0f));
-        countLabel.setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::textMid()));
+        countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         countLabel.setJustificationType(juce::Justification::centredRight);
     }
 
@@ -58,9 +58,10 @@ public:
         briefly with an accent border.  Called from OutshineZoneMap::onZoneClicked
         so that clicking a zone in the zone map reveals the corresponding grain chip.
         Safe to call with out-of-range indices — silently ignored. */
-    void highlightGrain (int index)
+    void highlightGrain(int index)
     {
-        if (index < 0 || index >= chips.size()) return;
+        if (index < 0 || index >= chips.size())
+            return;
 
         // Record the new highlight index and repaint (chip paint path checks this).
         highlightedChipIndex = index;
@@ -70,19 +71,19 @@ public:
         if (auto* chip = chips[index])
         {
             auto chipBounds = chip->getBounds();
-            scrollContainer.setViewPosition (
-                juce::jmax (0, chipBounds.getX() - kChipGap), 0);
+            scrollContainer.setViewPosition(juce::jmax(0, chipBounds.getX() - kChipGap), 0);
         }
 
         // Clear the highlight after 800 ms so it doesn't persist indefinitely.
-        juce::Timer::callAfterDelay (800, [safeThis = juce::Component::SafePointer<OutshineGrainStrip>(this)]()
-        {
-            if (safeThis != nullptr)
-            {
-                safeThis->highlightedChipIndex = -1;
-                safeThis->repaint();
-            }
-        });
+        juce::Timer::callAfterDelay(800,
+                                    [safeThis = juce::Component::SafePointer<OutshineGrainStrip>(this)]()
+                                    {
+                                        if (safeThis != nullptr)
+                                        {
+                                            safeThis->highlightedChipIndex = -1;
+                                            safeThis->repaint();
+                                        }
+                                    });
     }
 
     void paint(juce::Graphics& g) override
@@ -119,7 +120,8 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        if (grainPaths.isEmpty()) return false;
+        if (grainPaths.isEmpty())
+            return false;
 
         if (key == juce::KeyPress::leftKey)
         {
@@ -161,17 +163,13 @@ private:
             auto* chip = new juce::TextButton(shortName + "  " + juce::String(juce::CharPointer_UTF8("\xc3\x97")));
             chip->setSize(juce::roundToInt(GalleryFonts::body(12.0f).getStringWidthFloat(shortName)) + 48, kChipH);
             chip->setTopLeftPosition(x, (getHeight() - kChipH) / 2);
-            chip->setColour(juce::TextButton::buttonColourId,
-                            GalleryColors::get(GalleryColors::borderGray()));
-            chip->setColour(juce::TextButton::textColourOffId,
-                            GalleryColors::get(GalleryColors::textDark()));
+            chip->setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::borderGray()));
+            chip->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textDark()));
 
             int capturedIndex = i;
             chip->onClick = [this, capturedIndex]() { removeGrain(capturedIndex); };
 
-            A11y::setup(*chip,
-                        "Remove " + juce::File(grainPaths[i]).getFileName(),
-                        "Remove this grain from the strip");
+            A11y::setup(*chip, "Remove " + juce::File(grainPaths[i]).getFileName(), "Remove this grain from the strip");
 
             chipHolder.addAndMakeVisible(chip);
             chips.add(chip);
@@ -180,8 +178,7 @@ private:
 
         chipHolder.setSize(juce::jmax(x, scrollContainer.getWidth()), getHeight());
 
-        countLabel.setText(juce::String(grainPaths.size()) + " grain" +
-                           (grainPaths.size() == 1 ? "" : "s"),
+        countLabel.setText(juce::String(grainPaths.size()) + " grain" + (grainPaths.size() == 1 ? "" : "s"),
                            juce::dontSendNotification);
         repaint();
     }
@@ -192,18 +189,18 @@ private:
             onGrainsChanged(grainPaths);
     }
 
-    juce::StringArray          grainPaths;
-    juce::Viewport             scrollContainer;
-    juce::Component            chipHolder;
+    juce::StringArray grainPaths;
+    juce::Viewport scrollContainer;
+    juce::Component chipHolder;
     juce::OwnedArray<juce::TextButton> chips;
-    juce::Label                countLabel;
-    int                        focusedChipIndex    { -1 };
-    int                        highlightedChipIndex { -1 };  // set by highlightGrain(), cleared after 800ms
+    juce::Label countLabel;
+    int focusedChipIndex{-1};
+    int highlightedChipIndex{-1}; // set by highlightGrain(), cleared after 800ms
 
-    static constexpr int kChipH    = 28;
-    static constexpr int kChipGap  = 4;
+    static constexpr int kChipH = 28;
+    static constexpr int kChipGap = 4;
     static constexpr int kChipPadX = 8;
-    static constexpr int kCountW   = 72;
+    static constexpr int kCountW = 72;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineGrainStrip)
 };

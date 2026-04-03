@@ -6,12 +6,14 @@
 #include "../DSP/SRO/SilenceGate.h"
 #include <atomic>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Coupling types supported by the MegaCouplingMatrix.
 // Each defines how one engine's output modulates another engine's parameter.
-enum class CouplingType {
+enum class CouplingType
+{
     AmpToFilter,       // Engine A amplitude → Engine B filter cutoff
     AmpToPitch,        // Engine A amplitude → Engine B pitch
     LFOToPitch,        // Engine A LFO → Engine B pitch
@@ -63,7 +65,8 @@ enum class CouplingType {
 //   - applyCouplingInput() accumulates modulation; renderBlock() consumes it
 //   - createParameterLayout() returns engine-namespaced parameter IDs
 //
-class SynthEngine {
+class SynthEngine
+{
 public:
     virtual ~SynthEngine() = default;
 
@@ -83,9 +86,7 @@ public:
 
     // Render a block of audio into `buffer`. Process MIDI from `midi`.
     // Must be real-time safe: no allocation, no blocking, no exceptions.
-    virtual void renderBlock(juce::AudioBuffer<float>& buffer,
-                            juce::MidiBuffer& midi,
-                            int numSamples) = 0;
+    virtual void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) = 0;
 
     //-- Coupling (the XOceanus differentiator) --------------------------------
 
@@ -97,10 +98,7 @@ public:
     // Receive modulation from another engine via the coupling matrix.
     // Called before renderBlock() for block-level coupling,
     // or per-sample for tight coupling types (AudioToFM, AudioToRing).
-    virtual void applyCouplingInput(CouplingType type,
-                                   float amount,
-                                   const float* sourceBuffer,
-                                   int numSamples) = 0;
+    virtual void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) = 0;
 
     // Love-triangle state (Sternberg Triangular Theory) for TriangularCoupling.
     //
@@ -112,7 +110,12 @@ public:
     // Default: returns {0, 0, 0} so that non-Oxytocin sources produce silence on
     // the love-triangle channel — which is semantically correct (a drum machine has
     // no intimacy state to bleed).
-    struct LoveTriangleState { float I = 0.0f; float P = 0.0f; float C = 0.0f; };
+    struct LoveTriangleState
+    {
+        float I = 0.0f;
+        float P = 0.0f;
+        float C = 0.0f;
+    };
     virtual LoveTriangleState getLoveTriangleState() const { return {}; }
 
     // Receive a TriangularCoupling input carrying separate I/P/C values from the
@@ -141,8 +144,7 @@ public:
 
     // Return the engine's parameter layout with namespaced IDs.
     // Example: ODDFELIX engine returns "snap_filterCutoff", "snap_resonance", etc.
-    virtual juce::AudioProcessorValueTreeState::ParameterLayout
-        createParameterLayout() = 0;
+    virtual juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() = 0;
 
     // Cache raw parameter pointers from the shared APVTS.
     // Called once after the APVTS is constructed with all engine layouts merged.
@@ -223,7 +225,7 @@ protected:
     // Written on the audio thread (renderBlock), read on the UI thread
     // (getActiveVoiceCount). Use memory_order_relaxed — a one-block-late
     // display value is acceptable and no sequential consistency is required.
-    std::atomic<int> activeVoiceCount_ { 0 };
+    std::atomic<int> activeVoiceCount_{0};
 
     // SRO: SilenceGate instance — engines configure hold time in prepare().
     // Call silenceGate.prepare(sampleRate, maxBlockSize) in engine's prepare().

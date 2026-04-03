@@ -4,7 +4,8 @@
 #include "FastMath.h"
 #include <cmath>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ParameterSmoother — One-pole smoothing for zipper-free parameter automation.
@@ -36,7 +37,7 @@ namespace xoceanus {
 struct ParameterSmoother
 {
     /// Initialize with sample rate and optional time constant (default 5ms).
-    void prepare (float sampleRate, float timeSec = 0.005f) noexcept
+    void prepare(float sampleRate, float timeSec = 0.005f) noexcept
     {
         if (sampleRate <= 0.0f || timeSec <= 0.0f)
         {
@@ -44,19 +45,16 @@ struct ParameterSmoother
             return;
         }
         // Angular-frequency coefficient — see class comment for the full reasoning.
-        coeff = 1.0f - std::exp (-kTwoPi / (timeSec * sampleRate));
+        coeff = 1.0f - std::exp(-kTwoPi / (timeSec * sampleRate));
     }
 
     /// Set the target value. The smoother will approach this over time.
-    void set (float target) noexcept
-    {
-        targetValue = target;
-    }
+    void set(float target) noexcept { targetValue = target; }
 
     /// Set target and snap immediately (no smoothing). Use on init or preset load.
-    void snapTo (float value) noexcept
+    void snapTo(float value) noexcept
     {
-        targetValue  = value;
+        targetValue = value;
         currentValue = value;
     }
 
@@ -64,7 +62,7 @@ struct ParameterSmoother
     float process() noexcept
     {
         currentValue += (targetValue - currentValue) * coeff;
-        currentValue = flushDenormal (currentValue);
+        currentValue = flushDenormal(currentValue);
         if (std::fabs(currentValue - targetValue) < 1e-7f)
             currentValue = targetValue;
         return currentValue;
@@ -77,8 +75,8 @@ struct ParameterSmoother
     // State — public for snapshot/restore
     //--------------------------------------------------------------------------
     float currentValue = 0.0f;
-    float targetValue  = 0.0f;
-    float coeff        = 1.0f;
+    float targetValue = 0.0f;
+    float coeff = 1.0f;
 
 private:
     static constexpr float kTwoPi = 6.28318530717958647692f;
@@ -102,13 +100,10 @@ private:
 //==============================================================================
 struct SmoothedParam
 {
-    void prepare (float sampleRate, float timeSec = 0.005f) noexcept
-    {
-        smoother.prepare (sampleRate, timeSec);
-    }
+    void prepare(float sampleRate, float timeSec = 0.005f) noexcept { smoother.prepare(sampleRate, timeSec); }
 
-    void set (float target) noexcept { smoother.set (target); }
-    void snapTo (float value) noexcept { smoother.snapTo (value); }
+    void set(float target) noexcept { smoother.set(target); }
+    void snapTo(float value) noexcept { smoother.snapTo(value); }
     float next() noexcept { return smoother.process(); }
     float get() const noexcept { return smoother.get(); }
 

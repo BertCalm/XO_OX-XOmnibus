@@ -10,7 +10,8 @@
 #include <algorithm>
 #include <cmath>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // BakedCouplingState — Snapshot of the coupling performance overlay.
@@ -29,24 +30,24 @@ namespace xoceanus {
 //
 struct BakedCouplingState
 {
-    static constexpr int kMaxRoutes = CouplingCrossfader::MaxRouteSlots;  // 4
+    static constexpr int kMaxRoutes = CouplingCrossfader::MaxRouteSlots; // 4
 
     struct Route
     {
         bool active = false;
-        int couplingTypeIndex = 0;         // CouplingType enum index (0 = AmpToFilter)
-        float amount = 0.0f;               // -1.0 to 1.0 (bipolar)
-        int sourceSlot = 0;                 // 0-3
-        int targetSlot = 1;                 // 0-3
-        juce::String sourceEngineName;      // Canonical engine ID at bake time
-        juce::String targetEngineName;      // Canonical engine ID at bake time
+        int couplingTypeIndex = 0;     // CouplingType enum index (0 = AmpToFilter)
+        float amount = 0.0f;           // -1.0 to 1.0 (bipolar)
+        int sourceSlot = 0;            // 0-3
+        int targetSlot = 1;            // 0-3
+        juce::String sourceEngineName; // Canonical engine ID at bake time
+        juce::String targetEngineName; // Canonical engine ID at bake time
     };
 
-    juce::String name;                      // User-assigned preset name
-    juce::String description;               // Optional description
+    juce::String name;        // User-assigned preset name
+    juce::String description; // Optional description
     juce::String author = "User";
     std::array<Route, kMaxRoutes> routes;
-    std::array<float, 4> macroValues = {{ 0.5f, 0.5f, 0.5f, 0.5f }};  // Macro 1-4
+    std::array<float, 4> macroValues = {{0.5f, 0.5f, 0.5f, 0.5f}}; // Macro 1-4
 
     //==========================================================================
     // Serialization — to/from juce::var (JSON-compatible)
@@ -103,9 +104,9 @@ struct BakedCouplingState
         if (format.isNotEmpty() && format != "xo_coupling_preset")
             return state;
 
-        state.name        = obj->getProperty("name").toString();
+        state.name = obj->getProperty("name").toString();
         state.description = obj->getProperty("description").toString();
-        state.author      = obj->getProperty("author").toString();
+        state.author = obj->getProperty("author").toString();
         if (state.author.isEmpty())
             state.author = "User";
 
@@ -118,18 +119,19 @@ struct BakedCouplingState
             for (int i = 0; i < count; ++i)
             {
                 auto routeVar = (*arr)[i];
-                if (!routeVar.isObject()) continue;
+                if (!routeVar.isObject())
+                    continue;
                 auto* routeObj = routeVar.getDynamicObject();
-                if (!routeObj) continue;
+                if (!routeObj)
+                    continue;
 
                 auto& r = state.routes[static_cast<size_t>(i)];
-                r.active           = static_cast<bool>(routeObj->getProperty("active"));
+                r.active = static_cast<bool>(routeObj->getProperty("active"));
                 r.couplingTypeIndex = juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling),
                                                    static_cast<int>(routeObj->getProperty("type")));
-                r.amount           = juce::jlimit(-1.0f, 1.0f,
-                                                   static_cast<float>(routeObj->getProperty("amount")));
-                r.sourceSlot       = juce::jlimit(0, 3, static_cast<int>(routeObj->getProperty("sourceSlot")));
-                r.targetSlot       = juce::jlimit(0, 3, static_cast<int>(routeObj->getProperty("targetSlot")));
+                r.amount = juce::jlimit(-1.0f, 1.0f, static_cast<float>(routeObj->getProperty("amount")));
+                r.sourceSlot = juce::jlimit(0, 3, static_cast<int>(routeObj->getProperty("sourceSlot")));
+                r.targetSlot = juce::jlimit(0, 3, static_cast<int>(routeObj->getProperty("targetSlot")));
                 r.sourceEngineName = resolveEngineAlias(routeObj->getProperty("sourceEngine").toString());
                 r.targetEngineName = resolveEngineAlias(routeObj->getProperty("targetEngine").toString());
             }
@@ -142,8 +144,7 @@ struct BakedCouplingState
             auto* arr = macrosVar.getArray();
             int count = juce::jmin(4, static_cast<int>(arr->size()));
             for (int i = 0; i < count; ++i)
-                state.macroValues[static_cast<size_t>(i)] =
-                    juce::jlimit(0.0f, 1.0f, static_cast<float>((*arr)[i]));
+                state.macroValues[static_cast<size_t>(i)] = juce::jlimit(0.0f, 1.0f, static_cast<float>((*arr)[i]));
         }
 
         return state;
@@ -197,11 +198,9 @@ public:
     //--------------------------------------------------------------------------
     // Constructor requires APVTS reference (for reading/writing cp_* params)
     // and a function to resolve slot index → engine ID at bake time.
-    CouplingPresetManager(
-        juce::AudioProcessorValueTreeState& apvtsRef,
-        std::function<juce::String(int)> slotToEngineIdFn)
-        : apvts(apvtsRef),
-          getEngineIdForSlot(std::move(slotToEngineIdFn))
+    CouplingPresetManager(juce::AudioProcessorValueTreeState& apvtsRef,
+                          std::function<juce::String(int)> slotToEngineIdFn)
+        : apvts(apvtsRef), getEngineIdForSlot(std::move(slotToEngineIdFn))
     {
     }
 
@@ -226,9 +225,8 @@ public:
                 route.active = p->load() > 0.5f;
 
             if (auto* p = apvts.getRawParameterValue(prefix + "type"))
-                route.couplingTypeIndex = juce::jlimit(0,
-                    static_cast<int>(CouplingType::TriangularCoupling),
-                    juce::roundToInt(p->load()));
+                route.couplingTypeIndex =
+                    juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling), juce::roundToInt(p->load()));
 
             if (auto* p = apvts.getRawParameterValue(prefix + "amount"))
                 route.amount = juce::jlimit(-1.0f, 1.0f, p->load());
@@ -245,7 +243,7 @@ public:
         }
 
         // Capture macro values
-        static const char* macroIds[] = { "macro1", "macro2", "macro3", "macro4" };
+        static const char* macroIds[] = {"macro1", "macro2", "macro3", "macro4"};
         for (int i = 0; i < 4; ++i)
         {
             if (auto* p = apvts.getRawParameterValue(macroIds[i]))
@@ -297,14 +295,14 @@ public:
 
             // Write to APVTS via setValueNotifyingHost for DAW automation support
             setParam(prefix + "active", routeActive ? 1.0f : 0.0f);
-            setParam(prefix + "type",   static_cast<float>(route.couplingTypeIndex));
+            setParam(prefix + "type", static_cast<float>(route.couplingTypeIndex));
             setParam(prefix + "amount", route.amount);
             setParam(prefix + "source", static_cast<float>(sourceSlot));
             setParam(prefix + "target", static_cast<float>(targetSlot));
         }
 
         // Restore macros
-        static const char* macroIds[] = { "macro1", "macro2", "macro3", "macro4" };
+        static const char* macroIds[] = {"macro1", "macro2", "macro3", "macro4"};
         for (int i = 0; i < 4; ++i)
             setParam(macroIds[i], state.macroValues[static_cast<size_t>(i)]);
     }
@@ -318,12 +316,10 @@ public:
     // This is the "bake into preset" action — it makes the overlay permanent.
     std::vector<CouplingPair> overlayToCouplingPairs() const
     {
-        static const char* typeNames[] = {
-            "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
-            "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
-            "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
-            "AudioToBuffer", "KnotTopology", "TriangularCoupling"
-        };
+        static const char* typeNames[] = {"AmpToFilter",   "AmpToPitch",   "LFOToPitch",        "EnvToMorph",
+                                          "AudioToFM",     "AudioToRing",  "FilterToFilter",    "AmpToChoke",
+                                          "RhythmToBlend", "EnvToDecay",   "PitchToPitch",      "AudioToWavetable",
+                                          "AudioToBuffer", "KnotTopology", "TriangularCoupling"};
 
         std::vector<CouplingPair> pairs;
 
@@ -335,7 +331,7 @@ public:
             if (!activeParam || activeParam->load() <= 0.5f)
                 continue;
 
-            auto* typeParam   = apvts.getRawParameterValue(prefix + "type");
+            auto* typeParam = apvts.getRawParameterValue(prefix + "type");
             auto* amountParam = apvts.getRawParameterValue(prefix + "amount");
             auto* sourceParam = apvts.getRawParameterValue(prefix + "source");
             auto* targetParam = apvts.getRawParameterValue(prefix + "target");
@@ -347,10 +343,10 @@ public:
             if (std::abs(amount) < 0.001f)
                 continue;
 
-            int typeIdx   = juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling),
-                                          juce::roundToInt(typeParam->load()));
-            int srcSlot   = juce::jlimit(0, 3, juce::roundToInt(sourceParam->load()));
-            int tgtSlot   = juce::jlimit(0, 3, juce::roundToInt(targetParam->load()));
+            int typeIdx = juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling),
+                                       juce::roundToInt(typeParam->load()));
+            int srcSlot = juce::jlimit(0, 3, juce::roundToInt(sourceParam->load()));
+            int tgtSlot = juce::jlimit(0, 3, juce::roundToInt(targetParam->load()));
 
             juce::String srcEngine = getEngineIdForSlot(srcSlot);
             juce::String tgtEngine = getEngineIdForSlot(tgtSlot);
@@ -361,8 +357,8 @@ public:
             CouplingPair cp;
             cp.engineA = srcEngine;
             cp.engineB = tgtEngine;
-            cp.type    = typeNames[typeIdx];
-            cp.amount  = juce::jlimit(-1.0f, 1.0f, amount);
+            cp.type = typeNames[typeIdx];
+            cp.amount = juce::jlimit(-1.0f, 1.0f, amount);
             pairs.push_back(cp);
         }
 
@@ -413,8 +409,7 @@ public:
 
         library.clear();
 
-        for (const auto& file :
-             directory.findChildFiles(juce::File::findFiles, true, "*.xocoupling"))
+        for (const auto& file : directory.findChildFiles(juce::File::findFiles, true, "*.xocoupling"))
         {
             if (file.getSize() > kMaxCouplingFileSize)
                 continue;
@@ -430,11 +425,8 @@ public:
         }
 
         // Sort alphabetically by name
-        std::sort(library.begin(), library.end(),
-                  [](const LibraryEntry& a, const LibraryEntry& b)
-                  {
-                      return a.state.name.compareIgnoreCase(b.state.name) < 0;
-                  });
+        std::sort(library.begin(), library.end(), [](const LibraryEntry& a, const LibraryEntry& b)
+                  { return a.state.name.compareIgnoreCase(b.state.name) < 0; });
 
         notifyListeners();
     }
@@ -498,10 +490,9 @@ public:
     // Creates it if it doesn't exist.
     static juce::File getDefaultDirectory()
     {
-        auto appDir = juce::File::getSpecialLocation(
-            juce::File::userApplicationDataDirectory)
-            .getChildFile("XOceanus")
-            .getChildFile("CouplingPresets");
+        auto appDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
+                          .getChildFile("XOceanus")
+                          .getChildFile("CouplingPresets");
 
         if (!appDir.isDirectory())
             appDir.createDirectory();
@@ -521,9 +512,7 @@ public:
 
     void removeListener(Listener* l)
     {
-        listeners.erase(
-            std::remove(listeners.begin(), listeners.end(), l),
-            listeners.end());
+        listeners.erase(std::remove(listeners.begin(), listeners.end(), l), listeners.end());
     }
 
     //==========================================================================
@@ -573,8 +562,7 @@ private:
         for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)
         {
             juce::String slotEngine = getEngineIdForSlot(i);
-            if (slotEngine.isNotEmpty()
-                && resolveEngineAlias(slotEngine) == canonical)
+            if (slotEngine.isNotEmpty() && resolveEngineAlias(slotEngine) == canonical)
                 return i;
         }
         return -1;

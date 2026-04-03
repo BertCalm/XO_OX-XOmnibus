@@ -15,9 +15,16 @@
 #include "OutshineExportBar.h"
 #include "OutshinePreviewPlayer.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
-enum class OutshineState { Shell, Input, Preview, Exporting };
+enum class OutshineState
+{
+    Shell,
+    Input,
+    Preview,
+    Exporting
+};
 
 class OutshineMainComponent : public juce::Component
 {
@@ -31,8 +38,8 @@ public:
         shellState = std::make_unique<OutshineShellState>();
         inputPanel = std::make_unique<OutshineInputPanel>();
         grainStrip = std::make_unique<OutshineGrainStrip>();
-        autoMode   = std::make_unique<OutshineAutoMode>();
-        exportBar  = std::make_unique<OutshineExportBar>();
+        autoMode = std::make_unique<OutshineAutoMode>();
+        exportBar = std::make_unique<OutshineExportBar>();
         previewPlayer = std::make_unique<OutshinePreviewPlayer>();
 
         addAndMakeVisible(*shellState);
@@ -43,42 +50,30 @@ public:
         addAndMakeVisible(*previewPlayer);
 
         // Wire callbacks
-        shellState->onFilesDropped = [this](const juce::StringArray& files) {
-            onGrainsChanged(files);
-        };
+        shellState->onFilesDropped = [this](const juce::StringArray& files) { onGrainsChanged(files); };
 
-        inputPanel->onFilesSelected = [this](const juce::StringArray& files) {
-            grainStrip->addGrains(files);
-        };
+        inputPanel->onFilesSelected = [this](const juce::StringArray& files) { grainStrip->addGrains(files); };
 
-        grainStrip->onGrainsChanged = [this](const juce::StringArray& paths) {
-            onGrainsChanged(paths);
-        };
+        grainStrip->onGrainsChanged = [this](const juce::StringArray& paths) { onGrainsChanged(paths); };
 
-        autoMode->getZoneMap().onZoneClicked = [this](int grainIndex) {
+        autoMode->getZoneMap().onZoneClicked = [this](int grainIndex)
+        {
             // Scroll the grain strip to the clicked zone and highlight the chip (#169).
             grainStrip->highlightGrain(grainIndex);
         };
 
-        exportBar->onExportClicked = [this](const juce::String& pearlName,
-                                            ExportFormat format,
-                                            const juce::File& outputPath) {
-            onExportClicked(pearlName, format, outputPath);
-        };
+        exportBar->onExportClicked =
+            [this](const juce::String& pearlName, ExportFormat format, const juce::File& outputPath)
+        { onExportClicked(pearlName, format, outputPath); };
 
-        exportBar->onCancelClicked = [this]() {
-            cancelFlag = true;
-        };
+        exportBar->onCancelClicked = [this]() { cancelFlag = true; };
 
         // Initial state
         transitionToState(OutshineState::Shell);
         setSize(900, 660);
     }
 
-    ~OutshineMainComponent() override
-    {
-        cancelPipeline();
-    }
+    ~OutshineMainComponent() override { cancelPipeline(); }
 
     void cancelPipeline()
     {
@@ -107,19 +102,14 @@ public:
         runAnalysis(grainPaths);
     }
 
-    void onExportClicked(const juce::String& pearlName,
-                         ExportFormat format,
-                         const juce::File& outputPath)
+    void onExportClicked(const juce::String& pearlName, ExportFormat format, const juce::File& outputPath)
     {
         runPipeline(pearlName, format, outputPath);
     }
 
     OutshineExportBar& getExportBar() { return *exportBar; }
 
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
-    }
+    void paint(juce::Graphics& g) override { g.fillAll(GalleryColors::get(GalleryColors::shellWhite())); }
 
     void resized() override
     {
@@ -127,13 +117,13 @@ public:
 
         // ── Proportional bottom strip heights: clamp to 12% of window each ──
         // Prevents grainStrip or exportBar from dominating small windows.
-        const int maxStripH  = juce::jmax (20, area.getHeight() / 8);
-        const int actualExportH = juce::jmin (kExportBarH,  maxStripH);
-        const int actualGrainH  = juce::jmin (kGrainStripH, maxStripH);
+        const int maxStripH = juce::jmax(20, area.getHeight() / 8);
+        const int actualExportH = juce::jmin(kExportBarH, maxStripH);
+        const int actualGrainH = juce::jmin(kGrainStripH, maxStripH);
 
         // Export bar always pinned at bottom
-        exportBar->setBounds  (area.removeFromBottom (actualExportH));
-        grainStrip->setBounds (area.removeFromBottom (actualGrainH));
+        exportBar->setBounds(area.removeFromBottom(actualExportH));
+        grainStrip->setBounds(area.removeFromBottom(actualGrainH));
 
         // Remaining area split by state
         if (uiState == OutshineState::Shell)
@@ -156,19 +146,18 @@ public:
         {
             // 40/60 split: input panel (left) / auto mode (right).
             // Minimum 300px for auto mode so its controls don't clip.
-            int autoW  = juce::jmax (300, area.getWidth() * 2 / 5);
-            auto right = area.removeFromRight (autoW);
-            inputPanel->setBounds (area);   // remaining left portion
-            autoMode->setBounds   (right);
+            int autoW = juce::jmax(300, area.getWidth() * 2 / 5);
+            auto right = area.removeFromRight(autoW);
+            inputPanel->setBounds(area); // remaining left portion
+            autoMode->setBounds(right);
             shellState->setVisible(false);
             inputPanel->setVisible(true);
             autoMode->setVisible(true);
 
             // Preview player: pin to top-right corner of autoMode area,
             // proportional width (min 80, max 140) and fixed 32px height.
-            int pvW = juce::jlimit (80, 140, right.getWidth() / 3);
-            previewPlayer->setBounds (right.getRight() - pvW - 4,
-                                      right.getY() + 4, pvW, 32);
+            int pvW = juce::jlimit(80, 140, right.getWidth() / 3);
+            previewPlayer->setBounds(right.getRight() - pvW - 4, right.getY() + 4, pvW, 32);
         }
     }
 
@@ -220,65 +209,71 @@ private:
 
         // Background thread for analysis
         analysisComplete_.reset();
-        juce::Thread::launch([safeThis, paths, enginePtr, &cancelRef]() {
-            OutshineSettings settings;
-            OutshineProgress progress;
-            progress.cancelled = false;
+        juce::Thread::launch(
+            [safeThis, paths, enginePtr, &cancelRef]()
+            {
+                OutshineSettings settings;
+                OutshineProgress progress;
+                progress.cancelled = false;
 
-            auto callback = [safeThis](OutshineProgress& p) {
-                if (p.cancelled) return;
-                float prog  = p.overallProgress;
-                juce::String stg = p.stage;
-                juce::MessageManager::callAsync([safeThis, prog, stg]() {
-                    if (auto* w = safeThis.getComponent())
-                        w->getExportBar().setProgress(prog, stg);
-                });
-            };
-
-            bool success = false;
-            if (!cancelRef.load())
-                success = enginePtr->analyzeGrains(paths, settings, callback);
-
-            juce::MessageManager::callAsync([safeThis, success]() {
-                if (auto* w = safeThis.getComponent())
+                auto callback = [safeThis](OutshineProgress& p)
                 {
-                    if (success)
-                    {
-                        const auto& samples = w->outshine.getAnalyzedSamples();
-                        w->autoMode->populate(samples);
-                        w->previewPlayer->setSamples(samples);
+                    if (p.cancelled)
+                        return;
+                    float prog = p.overallProgress;
+                    juce::String stg = p.stage;
+                    juce::MessageManager::callAsync(
+                        [safeThis, prog, stg]()
+                        {
+                            if (auto* w = safeThis.getComponent())
+                                w->getExportBar().setProgress(prog, stg);
+                        });
+                };
 
-                        // Count unverified pitches
-                        int unverified = 0;
-                        for (const auto& s : samples)
-                            if (s.pitchConfidence < 0.15f)
-                                ++unverified;
-                        w->exportBar->setUnverifiedCount(unverified);
-                        w->exportBar->setReadyToExport(true);
+                bool success = false;
+                if (!cancelRef.load())
+                    success = enginePtr->analyzeGrains(paths, settings, callback);
 
-                        w->transitionToState(OutshineState::Preview);
-                    }
-                    else
+                juce::MessageManager::callAsync(
+                    [safeThis, success]()
                     {
-                        // Analysis failed or cancelled — stay in Input state
-                        w->exportBar->setProgress(0.0f, "Analysis failed");
-                    }
-                    w->analysisComplete_.signal();
-                }
-                else
-                {
-                    // Component was deleted — nothing to update, but still signal
-                    // (can't signal through safeThis; signal is stored on the object,
-                    // so if the object is gone there's nothing to signal — cancelPipeline
-                    // will time out gracefully at 500ms)
-                }
+                        if (auto* w = safeThis.getComponent())
+                        {
+                            if (success)
+                            {
+                                const auto& samples = w->outshine.getAnalyzedSamples();
+                                w->autoMode->populate(samples);
+                                w->previewPlayer->setSamples(samples);
+
+                                // Count unverified pitches
+                                int unverified = 0;
+                                for (const auto& s : samples)
+                                    if (s.pitchConfidence < 0.15f)
+                                        ++unverified;
+                                w->exportBar->setUnverifiedCount(unverified);
+                                w->exportBar->setReadyToExport(true);
+
+                                w->transitionToState(OutshineState::Preview);
+                            }
+                            else
+                            {
+                                // Analysis failed or cancelled — stay in Input state
+                                w->exportBar->setProgress(0.0f, "Analysis failed");
+                            }
+                            w->analysisComplete_.signal();
+                        }
+                        else
+                        {
+                            // Component was deleted — nothing to update, but still signal
+                            // (can't signal through safeThis; signal is stored on the object,
+                            // so if the object is gone there's nothing to signal — cancelPipeline
+                            // will time out gracefully at 500ms)
+                        }
+                    });
             });
-        });
     }
 
-    void runPipeline(const juce::String& pearlName,
-                     ExportFormat /*format*/,
-                     const juce::File& outputPath)
+    void runPipeline(const juce::String& pearlName, ExportFormat /*format*/, const juce::File& outputPath)
     {
         cancelFlag = false;
         transitionToState(OutshineState::Exporting);
@@ -289,57 +284,65 @@ private:
         auto& cancelRef = cancelFlag;
 
         analysisComplete_.reset();
-        juce::Thread::launch([safeThis, pearlName, outputPath, enginePtr, &cancelRef]() {
-            OutshineSettings settings;
+        juce::Thread::launch(
+            [safeThis, pearlName, outputPath, enginePtr, &cancelRef]()
+            {
+                OutshineSettings settings;
 
-            auto callback = [safeThis](OutshineProgress& p) {
-                if (p.cancelled) return;
-                float prog  = p.overallProgress;
-                juce::String stg = p.stage;
-                juce::MessageManager::callAsync([safeThis, prog, stg]() {
-                    if (auto* w = safeThis.getComponent())
-                        w->getExportBar().setProgress(prog, stg);
-                });
-            };
-
-            bool success = false;
-            if (!cancelRef.load())
-                success = enginePtr->exportPearl(outputPath, settings, callback);
-
-            juce::MessageManager::callAsync([safeThis, success, pearlName]() {
-                if (auto* w = safeThis.getComponent())
+                auto callback = [safeThis](OutshineProgress& p)
                 {
-                    if (success)
+                    if (p.cancelled)
+                        return;
+                    float prog = p.overallProgress;
+                    juce::String stg = p.stage;
+                    juce::MessageManager::callAsync(
+                        [safeThis, prog, stg]()
+                        {
+                            if (auto* w = safeThis.getComponent())
+                                w->getExportBar().setProgress(prog, stg);
+                        });
+                };
+
+                bool success = false;
+                if (!cancelRef.load())
+                    success = enginePtr->exportPearl(outputPath, settings, callback);
+
+                juce::MessageManager::callAsync(
+                    [safeThis, success, pearlName]()
                     {
-                        w->exportBar->setProgress(1.0f, "Pearl complete: " + pearlName);
-                    }
-                    else
-                    {
-                        w->exportBar->setProgress(0.0f, "Export failed");
-                    }
-                    w->transitionToState(OutshineState::Preview);
-                    w->analysisComplete_.signal();
-                }
+                        if (auto* w = safeThis.getComponent())
+                        {
+                            if (success)
+                            {
+                                w->exportBar->setProgress(1.0f, "Pearl complete: " + pearlName);
+                            }
+                            else
+                            {
+                                w->exportBar->setProgress(0.0f, "Export failed");
+                            }
+                            w->transitionToState(OutshineState::Preview);
+                            w->analysisComplete_.signal();
+                        }
+                    });
             });
-        });
     }
 
     XOutshine outshine;
-    OutshineState uiState { OutshineState::Shell };
+    OutshineState uiState{OutshineState::Shell};
 
-    std::unique_ptr<OutshineShellState>    shellState;
-    std::unique_ptr<OutshineInputPanel>    inputPanel;
-    std::unique_ptr<OutshineGrainStrip>    grainStrip;
-    std::unique_ptr<OutshineAutoMode>      autoMode;
-    std::unique_ptr<OutshineExportBar>     exportBar;
+    std::unique_ptr<OutshineShellState> shellState;
+    std::unique_ptr<OutshineInputPanel> inputPanel;
+    std::unique_ptr<OutshineGrainStrip> grainStrip;
+    std::unique_ptr<OutshineAutoMode> autoMode;
+    std::unique_ptr<OutshineExportBar> exportBar;
     std::unique_ptr<OutshinePreviewPlayer> previewPlayer;
 
     juce::StringArray currentGrains;
-    std::atomic<bool> cancelFlag { false };
-    juce::WaitableEvent analysisComplete_ { true }; // manualReset=true; reset() before launch, signal() at end
+    std::atomic<bool> cancelFlag{false};
+    juce::WaitableEvent analysisComplete_{true}; // manualReset=true; reset() before launch, signal() at end
 
-    static constexpr int kGrainStripH  = 40;
-    static constexpr int kExportBarH   = 60;
+    static constexpr int kGrainStripH = 40;
+    static constexpr int kExportBarH = 60;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMainComponent)
 };

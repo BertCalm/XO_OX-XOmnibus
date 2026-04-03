@@ -31,43 +31,43 @@ using namespace xoceanus;
 
 // Engine registration — idempotent; safe to call if already registered by
 // another test translation unit linked into the same binary.
-static bool reg_bench_Onset     = EngineRegistry::instance().registerEngine(
-    "Onset",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OnsetEngine>(); });
-static bool reg_bench_Obrix     = EngineRegistry::instance().registerEngine(
-    "Obrix",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObrixEngine>(); });
+static bool reg_bench_Onset = EngineRegistry::instance().registerEngine("Onset", []() -> std::unique_ptr<SynthEngine>
+                                                                        { return std::make_unique<OnsetEngine>(); });
+static bool reg_bench_Obrix = EngineRegistry::instance().registerEngine("Obrix", []() -> std::unique_ptr<SynthEngine>
+                                                                        { return std::make_unique<ObrixEngine>(); });
 static bool reg_bench_Ouroboros = EngineRegistry::instance().registerEngine(
     "Ouroboros", []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OuroborosEngine>(); });
 
-static constexpr double BENCH_SAMPLE_RATE      = 44100.0;
-static constexpr int    BENCH_BLOCK_SIZE        = 512;
-static constexpr int    BENCH_BLOCKS_PER_SECOND = 87; // ceil(44100 / 512)
-static constexpr double REALTIME_THRESHOLD      = 2.0;
+static constexpr double BENCH_SAMPLE_RATE = 44100.0;
+static constexpr int BENCH_BLOCK_SIZE = 512;
+static constexpr int BENCH_BLOCKS_PER_SECOND = 87; // ceil(44100 / 512)
+static constexpr double REALTIME_THRESHOLD = 2.0;
 
 struct BenchTestProcessor : juce::AudioProcessor
 {
-    const juce::String getName() const override              { return "BenchTestProcessor"; }
-    void prepareToPlay (double, int) override                {}
-    void releaseResources() override                         {}
-    void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
-    double getTailLengthSeconds() const override             { return 0.0; }
-    bool acceptsMidi() const override                        { return false; }
-    bool producesMidi() const override                       { return false; }
-    juce::AudioProcessorEditor* createEditor() override      { return nullptr; }
-    bool hasEditor() const override                          { return false; }
-    int getNumPrograms() override                            { return 1; }
-    int getCurrentProgram() override                         { return 0; }
-    void setCurrentProgram (int) override                    {}
-    const juce::String getProgramName (int) override         { return {}; }
-    void changeProgramName (int, const juce::String&) override {}
-    void getStateInformation (juce::MemoryBlock&) override   {}
-    void setStateInformation (const void*, int) override     {}
+    const juce::String getName() const override { return "BenchTestProcessor"; }
+    void prepareToPlay(double, int) override {}
+    void releaseResources() override {}
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+    double getTailLengthSeconds() const override { return 0.0; }
+    bool acceptsMidi() const override { return false; }
+    bool producesMidi() const override { return false; }
+    juce::AudioProcessorEditor* createEditor() override { return nullptr; }
+    bool hasEditor() const override { return false; }
+    int getNumPrograms() override { return 1; }
+    int getCurrentProgram() override { return 0; }
+    void setCurrentProgram(int) override {}
+    const juce::String getProgramName(int) override { return {}; }
+    void changeProgramName(int, const juce::String&) override {}
+    void getStateInformation(juce::MemoryBlock&) override {}
+    void setStateInformation(const void*, int) override {}
 };
 
 struct BenchResult
 {
-    double elapsedMs     = 0.0;
+    double elapsedMs = 0.0;
     double realtimeRatio = 0.0;
-    bool   ok            = false;
+    bool ok = false;
 };
 
 static BenchResult benchmarkEngine(const std::string& engineId)
@@ -75,11 +75,11 @@ static BenchResult benchmarkEngine(const std::string& engineId)
     BenchResult result;
 
     auto engine = EngineRegistry::instance().createEngine(engineId);
-    if (!engine) return result;
+    if (!engine)
+        return result;
 
     BenchTestProcessor proc;
-    juce::AudioProcessorValueTreeState apvts(
-        proc, nullptr, "PARAMS", engine->createParameterLayout());
+    juce::AudioProcessorValueTreeState apvts(proc, nullptr, "PARAMS", engine->createParameterLayout());
     engine->attachParameters(apvts);
 
     engine->prepare(BENCH_SAMPLE_RATE, BENCH_BLOCK_SIZE);
@@ -102,12 +102,11 @@ static BenchResult benchmarkEngine(const std::string& engineId)
     }
     const auto endTime = std::chrono::steady_clock::now();
 
-    const double elapsedSec =
-        std::chrono::duration<double>(endTime - startTime).count();
+    const double elapsedSec = std::chrono::duration<double>(endTime - startTime).count();
 
-    result.elapsedMs     = elapsedSec * 1000.0;
+    result.elapsedMs = elapsedSec * 1000.0;
     result.realtimeRatio = (elapsedSec > 0.0) ? (1.0 / elapsedSec) : 0.0;
-    result.ok            = true;
+    result.ok = true;
 
     return result;
 }
@@ -137,6 +136,10 @@ TEST_CASE("CPU Benchmark - OUROBOROS renders >= 2x realtime", "[benchmark][ourob
 }
 
 // Backward-compat shim
-namespace cpu_benchmark_tests {
-int runAll() { return 0; }
+namespace cpu_benchmark_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace cpu_benchmark_tests

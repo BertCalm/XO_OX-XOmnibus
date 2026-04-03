@@ -26,12 +26,19 @@ namespace xoceanus
 // a slot scrolls within kVisibilityMargin px of the visible area.  Slots that
 // scroll back out of range are torn down.  paint() and getRequiredHeight() still
 // use the full param list so scrolling geometry is always correct.
-class ParameterGrid : public juce::Component,
-                      private juce::Timer
+class ParameterGrid : public juce::Component, private juce::Timer
 {
 public:
     // ── Section identity ────────────────────────────────────────────────────
-    enum class Section { OSC, FILTER, MOD, FX, MACRO, OTHER };
+    enum class Section
+    {
+        OSC,
+        FILTER,
+        MOD,
+        FX,
+        MACRO,
+        OTHER
+    };
 
     // Classify a parameter by its inner name (part after prefix_).
     static Section classifyParam(const juce::String& inner)
@@ -42,37 +49,32 @@ public:
         // Precise match: startsWith("macro") catches macroCharacter/macroMovement/etc.
         // Exact-word fallbacks catch bare "character", "movement", "coupling", "space"
         // without false-positiving on qBassShore, qElastic, qHarmShore, qMemory, etc.
-        if (s.startsWith("macro") || s == "character" ||
-            s == "movement" || s == "coupling" ||
-            s == "space")
+        if (s.startsWith("macro") || s == "character" || s == "movement" || s == "coupling" || s == "space")
             return Section::MACRO;
 
         // OSC
-        if (s.contains("osc") || s.contains("wave") || s.contains("tune") ||
-            s.contains("pitch") || s.contains("detune") || s.contains("harm") ||
-            s.contains("partial") || s.contains("src"))
+        if (s.contains("osc") || s.contains("wave") || s.contains("tune") || s.contains("pitch") ||
+            s.contains("detune") || s.contains("harm") || s.contains("partial") || s.contains("src"))
             return Section::OSC;
 
         // FILTER
         // "q" is matched precisely: standalone param named "q", or prefixed/suffixed
         // with underscore (e.g. "q_resonance", "filter_q").  Bare s.contains("q")
         // was misclassifying OSTERIA params qBassShore/qHarmShore/qElastic/qMemory.
-        if (s.contains("filter") || s.contains("cutoff") || s.contains("reso") ||
-            s.contains("freq") || s.contains("filt") || s.contains("flt") ||
-            s.contains("svf") || s == "q" || s.startsWith("q_") || s.endsWith("_q"))
+        if (s.contains("filter") || s.contains("cutoff") || s.contains("reso") || s.contains("freq") ||
+            s.contains("filt") || s.contains("flt") || s.contains("svf") || s == "q" || s.startsWith("q_") ||
+            s.endsWith("_q"))
             return Section::FILTER;
 
         // MOD
-        if (s.contains("lfo") || s.contains("mod") || s.contains("env") ||
-            s.contains("attack") || s.contains("decay") || s.contains("sustain") ||
-            s.contains("release") || s.contains("rate") || s.contains("depth") ||
-            s.contains("amount") || s.contains("adsr"))
+        if (s.contains("lfo") || s.contains("mod") || s.contains("env") || s.contains("attack") ||
+            s.contains("decay") || s.contains("sustain") || s.contains("release") || s.contains("rate") ||
+            s.contains("depth") || s.contains("amount") || s.contains("adsr"))
             return Section::MOD;
 
         // FX
-        if (s.contains("delay") || s.contains("reverb") || s.contains("chorus") ||
-            s.contains("drive") || s.contains("sat") || s.contains("wet") ||
-            s.contains("dry") || s.contains("mix") || s.contains("fx") ||
+        if (s.contains("delay") || s.contains("reverb") || s.contains("chorus") || s.contains("drive") ||
+            s.contains("sat") || s.contains("wet") || s.contains("dry") || s.contains("mix") || s.contains("fx") ||
             s.contains("distort") || s.contains("compress"))
             return Section::FX;
 
@@ -84,12 +86,18 @@ public:
     {
         switch (s)
         {
-            case Section::OSC:    return juce::Colour(0xFF48CAE4); // Sunlit blue
-            case Section::FILTER: return juce::Colour(0xFFFF6B6B); // Warm red
-            case Section::MOD:    return juce::Colour(0xFF00FF41); // Phosphor green
-            case Section::FX:     return juce::Colour(0xFFBF40FF); // Prism violet
-            case Section::MACRO:  return juce::Colour(0xFFE9C46A); // XO Gold
-            default:              return juce::Colour(0xFF9E9B97); // text-muted
+        case Section::OSC:
+            return juce::Colour(0xFF48CAE4); // Sunlit blue
+        case Section::FILTER:
+            return juce::Colour(0xFFFF6B6B); // Warm red
+        case Section::MOD:
+            return juce::Colour(0xFF00FF41); // Phosphor green
+        case Section::FX:
+            return juce::Colour(0xFFBF40FF); // Prism violet
+        case Section::MACRO:
+            return juce::Colour(0xFFE9C46A); // XO Gold
+        default:
+            return juce::Colour(0xFF9E9B97); // text-muted
         }
     }
 
@@ -98,10 +106,10 @@ public:
     static juce::Colour sectionDotColour(int sectionIndex)
     {
         static constexpr uint32_t kDotColors[] = {
-            0xFFE9A84A,  // orange  (index 0 — OSC / first section)
-            0xFF00A6D6,  // blue    (index 1 — FILTER)
-            0xFF9B5DE5,  // purple  (index 2 — MOD)
-            0xFF1E8B7E,  // green   (index 3 — FX / MACRO / OTHER)
+            0xFFE9A84A, // orange  (index 0 — OSC / first section)
+            0xFF00A6D6, // blue    (index 1 — FILTER)
+            0xFF9B5DE5, // purple  (index 2 — MOD)
+            0xFF1E8B7E, // green   (index 3 — FX / MACRO / OTHER)
         };
         return juce::Colour(kDotColors[((unsigned)sectionIndex) % 4u]);
     }
@@ -110,12 +118,18 @@ public:
     {
         switch (s)
         {
-            case Section::OSC:    return "OSC";
-            case Section::FILTER: return "FILTER";
-            case Section::MOD:    return "MOD";
-            case Section::FX:     return "FX";
-            case Section::MACRO:  return "MACRO";
-            default:              return "OTHER";
+        case Section::OSC:
+            return "OSC";
+        case Section::FILTER:
+            return "FILTER";
+        case Section::MOD:
+            return "MOD";
+        case Section::FX:
+            return "FX";
+        case Section::MACRO:
+            return "MACRO";
+        default:
+            return "OTHER";
         }
     }
 
@@ -124,14 +138,9 @@ public:
     // does NOT create any GalleryKnob / Label / SliderAttachment yet.
     // midiLearn: optional — when non-null every knob gets a right-click MIDI
     // learn context menu and shows visual feedback (amber ring / green badge).
-    ParameterGrid(XOceanusProcessor& proc_,
-                  const juce::String& engId,
-                  const juce::String& enginePrefix,
-                  juce::Colour accentColour_,
-                  MIDILearnManager* midiLearn_ = nullptr)
-        : proc(proc_)
-        , accentColour(accentColour_)
-        , midiLearn(midiLearn_)
+    ParameterGrid(XOceanusProcessor& proc_, const juce::String& engId, const juce::String& enginePrefix,
+                  juce::Colour accentColour_, MIDILearnManager* midiLearn_ = nullptr)
+        : proc(proc_), accentColour(accentColour_), midiLearn(midiLearn_)
     {
         auto& rawParams = proc.getParameters(); // juce::AudioProcessor::getParameters()
         juce::String pfx = enginePrefix.endsWith("_") ? enginePrefix : (enginePrefix + "_");
@@ -149,33 +158,30 @@ public:
                     continue;
 
                 auto inner = pid.substring(pfx.length()); // e.g. "filterCutoff"
-                juce::String shortLabel = EngineVocabulary::labelFor(
-                    engId, pid, makeShortLabel(inner));
+                juce::String shortLabel = EngineVocabulary::labelFor(engId, pid, makeShortLabel(inner));
 
                 Section sec = classifyParam(inner);
-                buckets[static_cast<int>(sec)].push_back({ pid, shortLabel, sec });
+                buckets[static_cast<int>(sec)].push_back({pid, shortLabel, sec});
             }
         }
 
         // ── Flatten buckets → ordered param list; record section runs ───────
         // Display order: OSC, FILTER, MOD, FX, MACRO, OTHER
-        constexpr Section kOrder[] = {
-            Section::OSC, Section::FILTER, Section::MOD,
-            Section::FX,  Section::MACRO,  Section::OTHER
-        };
+        constexpr Section kOrder[] = {Section::OSC, Section::FILTER, Section::MOD,
+                                      Section::FX,  Section::MACRO,  Section::OTHER};
 
         for (auto orderedSec : kOrder)
         {
             auto& bucket = buckets[static_cast<int>(orderedSec)];
-            if (bucket.empty()) continue;
+            if (bucket.empty())
+                continue;
 
             int startIdx = (int)paramSlots.size();
 
             for (auto& entry : bucket)
                 paramSlots.push_back(entry);
 
-            sectionRuns.push_back({ orderedSec, startIdx,
-                                    (int)paramSlots.size() - startIdx });
+            sectionRuns.push_back({orderedSec, startIdx, (int)paramSlots.size() - startIdx});
         }
 
         // Pre-allocate live knob slots (all null at start)
@@ -191,12 +197,10 @@ public:
             {
                 auto inner = slot.pid.fromLastOccurrenceOf("_", false, false).toLowerCase();
                 juce::String pidLow = slot.pid.toLowerCase();
-                if (inner.contains("cutoff") || inner.contains("filter") ||
-                    inner.contains("flt")    || inner.contains("freq")   ||
-                    pidLow.contains("cutoff") || pidLow.contains("filtfreq"))
+                if (inner.contains("cutoff") || inner.contains("filter") || inner.contains("flt") ||
+                    inner.contains("freq") || pidLow.contains("cutoff") || pidLow.contains("filtfreq"))
                 {
-                    cachedCutoffParam_ = dynamic_cast<juce::RangedAudioParameter*>(
-                                             apvts.getParameter(slot.pid));
+                    cachedCutoffParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(slot.pid));
                     break;
                 }
             }
@@ -215,16 +219,14 @@ public:
     }
 
     // ── Viewport linkage ────────────────────────────────────────────────────
-    void setParentViewport(juce::Viewport* vp)
-    {
-        parentViewport = vp;
-    }
+    void setParentViewport(juce::Viewport* vp) { parentViewport = vp; }
 
     // ── Scroll viewport to the first occurrence of a section (MUST A1-04) ───
     // Iterates sectionRuns to compute the Y offset of target and scrolls.
     void scrollToSection(Section target)
     {
-        if (!parentViewport) return;
+        if (!parentViewport)
+            return;
         int y = kPad;
         for (auto& run : sectionRuns)
         {
@@ -266,9 +268,9 @@ public:
 
     void resized() override
     {
-        int cols    = juce::jmax(1, getWidth() / kCellW);
+        int cols = juce::jmax(1, getWidth() / kCellW);
         int offsetX = (getWidth() - cols * kCellW) / 2;
-        int y       = kPad;
+        int y = kPad;
 
         knobBounds.resize(paramSlots.size());
         int flatIdx = 0;
@@ -282,7 +284,7 @@ public:
                 // Section is collapsed — place all knobs off-screen so
                 // updateVisibleAttachments() will tear them down.
                 for (int i = 0; i < run.count; ++i, ++flatIdx)
-                    knobBounds[flatIdx] = { -1000, -1000 };
+                    knobBounds[flatIdx] = {-1000, -1000};
                 continue; // header strip only — no knob rows added to y
             }
 
@@ -290,10 +292,10 @@ public:
             {
                 int col = i % cols;
                 int row = i / cols;
-                int cx  = offsetX + col * kCellW;
-                int cy  = y + row * kCellH;
+                int cx = offsetX + col * kCellW;
+                int cy = y + row * kCellH;
 
-                knobBounds[flatIdx] = { cx, cy };
+                knobBounds[flatIdx] = {cx, cy};
 
                 // If the live knob already exists, update its bounds immediately
                 if (auto& lk = liveKnobs[flatIdx]; lk != nullptr)
@@ -320,7 +322,8 @@ public:
         float opacity = 1.0f;
         if (auto* host = CockpitHost::find(this))
             opacity = host->getCockpitOpacity();
-        if (opacity < 0.05f) return; // B041 performance optimization
+        if (opacity < 0.05f)
+            return; // B041 performance optimization
         g.setOpacity(opacity);
 
         // ── Parameter Terrain (Vision Quest 015) ─────────────────────────────
@@ -342,15 +345,15 @@ public:
             g.fillRect(getLocalBounds());
         }
 
-        int cols      = juce::jmax(1, getWidth() / kCellW);
-        int y         = kPad;
-        int secIdx    = 0; // used to cycle dot colors by display order
+        int cols = juce::jmax(1, getWidth() / kCellW);
+        int y = kPad;
+        int secIdx = 0; // used to cycle dot colors by display order
 
         for (auto& run : sectionRuns)
         {
-            juce::Colour dotCol  = sectionDotColour(secIdx);
+            juce::Colour dotCol = sectionDotColour(secIdx);
             juce::String secText = sectionName(run.sec);
-            bool collapsed       = collapsedSections.count(run.sec) > 0;
+            bool collapsed = collapsedSections.count(run.sec) > 0;
 
             // ── Section header background — visible shade difference from content ──
             {
@@ -364,8 +367,8 @@ public:
 
             // ── Color dot — 8×8px, 4-color cycling palette ────────────────────
             const int dotSize = 8;
-            const int dotX    = 10;
-            const int dotY    = y + (kHeaderRowH - dotSize) / 2;
+            const int dotX = 10;
+            const int dotY = y + (kHeaderRowH - dotSize) / 2;
             g.setColour(dotCol);
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
@@ -375,22 +378,19 @@ public:
             static const juce::Font kSectionFont =
                 juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
             // ▼ DOWNWARD-POINTING TRIANGLE (expanded)  ▸ RIGHT-POINTING (collapsed)
-            static const juce::String kArrowCollapsed (juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
-            static const juce::String kArrowExpanded  (juce::CharPointer_UTF8("\xe2\x96\xbc")); // ▼
+            static const juce::String kArrowCollapsed(juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
+            static const juce::String kArrowExpanded(juce::CharPointer_UTF8("\xe2\x96\xbc"));  // ▼
 
             g.setColour(GalleryColors::get(GalleryColors::t1())); // T1 primary text
             g.setFont(kSectionFont);
-            g.drawText(secText,
-                       dotX + dotSize + 6, y,
-                       getWidth() - dotX - dotSize - 16, kHeaderRowH,
+            g.drawText(secText, dotX + dotSize + 6, y, getWidth() - dotX - dotSize - 16, kHeaderRowH,
                        juce::Justification::centredLeft);
 
             // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
             {
                 g.setColour(GalleryColors::get(GalleryColors::t3()));
                 g.setFont(GalleryFonts::value(9.0f));
-                g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded,
-                           0, y, getWidth() - 10, kHeaderRowH,
+                g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded, 0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);
             }
 
@@ -428,8 +428,8 @@ public:
                 // Seed the animated height interpolation — start from current
                 // displayed height and glide to the new target over ~220ms.
                 currentAnimHeight_ = (float)getHeight();
-                targetAnimHeight_  = (float)getRequiredHeight(getWidth());
-                animating_         = true;
+                targetAnimHeight_ = (float)getRequiredHeight(getWidth());
+                animating_ = true;
                 startTimerHz(30); // fast repaint during animation
 
                 // Kick the layout immediately so knob off-screen positions are
@@ -479,7 +479,7 @@ private:
     {
         juce::String pid;
         juce::String shortLabel;
-        Section      sec;
+        Section sec;
     };
 
     // ── Live widget bundle — created/destroyed lazily ────────────────────────
@@ -490,14 +490,19 @@ private:
     //   4. knob
     struct LiveKnob
     {
-        std::unique_ptr<GalleryKnob>   knob;
-        std::unique_ptr<juce::Label>   label;
+        std::unique_ptr<GalleryKnob> knob;
+        std::unique_ptr<juce::Label> label;
         std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachment;
         std::unique_ptr<MidiLearnMouseListener> midiLearnListener;
     };
 
     // Section run descriptor — one entry per non-empty section, in display order
-    struct SectionRun { Section sec; int startIdx; int count; };
+    struct SectionRun
+    {
+        Section sec;
+        int startIdx;
+        int count;
+    };
 
     // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -514,7 +519,8 @@ private:
     // Must be called on the message thread.
     void destroyLiveKnob(std::unique_ptr<LiveKnob>& lk)
     {
-        if (!lk) return;
+        if (!lk)
+            return;
         // 1. Attachment must die before slider (it holds a reference to the slider)
         lk->attachment.reset();
         // 2. De-register the MIDI learn mouse listener from the knob BEFORE deleting
@@ -544,12 +550,12 @@ private:
         jassert(idx >= 0 && idx < (int)paramSlots.size());
         jassert(!liveKnobs[idx]);
 
-        auto& slot    = paramSlots[idx];
-        auto& apvts   = proc.getAPVTS();
+        auto& slot = paramSlots[idx];
+        auto& apvts = proc.getAPVTS();
         // L-NEW-03: O(n) APVTS lookup per knob creation. Cache param pointers at init time.
-        auto* rp      = dynamic_cast<juce::RangedAudioParameter*>(
-                            apvts.getParameter(slot.pid));
-        if (!rp) return; // should never happen
+        auto* rp = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(slot.pid));
+        if (!rp)
+            return; // should never happen
 
         auto lk = std::make_unique<LiveKnob>();
 
@@ -559,8 +565,7 @@ private:
         lk->knob->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
         lk->knob->setColour(juce::Slider::rotarySliderFillColourId, accentColour);
         lk->knob->setTooltip(rp->getName(64));
-        A11y::setup(*lk->knob, rp->getName(64),
-                    rp->getName(64) + " (" + slot.pid + ")");
+        A11y::setup(*lk->knob, rp->getName(64), rp->getName(64) + " (" + slot.pid + ")");
         addAndMakeVisible(*lk->knob);
 
         // ── Label ────────────────────────────────────────────────────────────
@@ -569,8 +574,7 @@ private:
         // Knob labels: 9px mono, T2 for better readability
         const juce::Font labelFont = GalleryFonts::value(9.0f);
         lk->label->setFont(labelFont);
-        lk->label->setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::t2()));
+        lk->label->setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t2()));
         lk->label->setJustificationType(juce::Justification::centred);
         lk->label->setInterceptsMouseClicks(false, false);
         // If the label text is wider than kCellW the knob already has a tooltip
@@ -586,8 +590,7 @@ private:
 
         // ── SliderAttachment (must come AFTER knob + label exist) ────────────
         lk->attachment =
-            std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                apvts, slot.pid, *lk->knob);
+            std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, slot.pid, *lk->knob);
 
         enableKnobReset(*lk->knob, apvts, slot.pid);
 
@@ -616,7 +619,8 @@ private:
     // Creates knobs that entered the padded-visible-rect, destroys those that left.
     void updateVisibleAttachments()
     {
-        if (knobBounds.empty()) return;
+        if (knobBounds.empty())
+            return;
 
         // Work out the visible rect in our own coordinate space.
         // If no viewport is set we treat the entire component as visible.
@@ -639,7 +643,8 @@ private:
 
         for (int i = 0; i < (int)paramSlots.size(); ++i)
         {
-            if (i >= (int)knobBounds.size()) break;
+            if (i >= (int)knobBounds.size())
+                break;
 
             auto [cx, cy] = knobBounds[i];
             juce::Rectangle<int> cellRect(cx, cy, kCellW, kCellH);
@@ -664,15 +669,14 @@ private:
         // a fixed 220ms duration at 30 Hz (~7 frames).
         if (animating_)
         {
-            constexpr float kDurMs   = 220.0f;
-            constexpr float kFps     = 30.0f;
-            const float     step     = std::abs(targetAnimHeight_ - currentAnimHeight_)
-                                       / (kDurMs / (1000.0f / kFps));
+            constexpr float kDurMs = 220.0f;
+            constexpr float kFps = 30.0f;
+            const float step = std::abs(targetAnimHeight_ - currentAnimHeight_) / (kDurMs / (1000.0f / kFps));
             if (step < 1.0f || std::abs(targetAnimHeight_ - currentAnimHeight_) < 1.0f)
             {
                 // Animation complete — snap to target and drop back to idle rate
                 currentAnimHeight_ = targetAnimHeight_;
-                animating_         = false;
+                animating_ = false;
                 startTimerHz(10);
             }
             else
@@ -688,7 +692,8 @@ private:
         }
 
         // ── Viewport scroll visibility update ────────────────────────────────
-        if (!parentViewport) return;
+        if (!parentViewport)
+            return;
         int viewY = parentViewport->getViewArea().getY();
         if (viewY != lastViewY_)
         {
@@ -700,11 +705,11 @@ private:
     // ── Layout constants ──────────────────────────────────────────────────────
     // Mockup v05: 36px knobs in 56×52 cells, ~8 cols in Column B's ~490px.
     // Header height 32px matches mockup spec (~32px section headers).
-    static constexpr int kCellW           = 56;
-    static constexpr int kCellH           = 52;
-    static constexpr int kKnobSize        = 36;
-    static constexpr int kPad             = 8;
-    static constexpr int kHeaderRowH      = 32;  // height of each section header strip
+    static constexpr int kCellW = 56;
+    static constexpr int kCellH = 52;
+    static constexpr int kKnobSize = 36;
+    static constexpr int kPad = 8;
+    static constexpr int kHeaderRowH = 32;        // height of each section header strip
     static constexpr int kVisibilityMargin = 120; // px preload margin for smooth scrolling
 
     // ── Collapse state — which sections are currently collapsed ──────────────
@@ -713,11 +718,11 @@ private:
 
     // ── Construction-time state captured for lazy creation ───────────────────
     XOceanusProcessor& proc;
-    juce::Colour      accentColour;
+    juce::Colour accentColour;
     MIDILearnManager* midiLearn = nullptr;
 
     // ── Parameter metadata (stable, never modified after construction) ────────
-    std::vector<ParamSlot>  paramSlots;  // flat ordered list of all params
+    std::vector<ParamSlot> paramSlots;   // flat ordered list of all params
     std::vector<SectionRun> sectionRuns; // ordered section descriptors
 
     // ── Live widget state (created/destroyed lazily) ──────────────────────────
@@ -725,7 +730,7 @@ private:
     std::vector<std::unique_ptr<LiveKnob>> liveKnobs;
 
     // ── Layout geometry (pre-computed in resized()) ───────────────────────────
-    std::vector<std::pair<int,int>> knobBounds; // (cx, cy) per slot
+    std::vector<std::pair<int, int>> knobBounds; // (cx, cy) per slot
 
     // ── Viewport reference ────────────────────────────────────────────────────
     juce::Viewport* parentViewport = nullptr;
@@ -741,8 +746,8 @@ private:
     // When a section header is clicked, currentAnimHeight_ glides to
     // targetAnimHeight_ over ~220ms at 30 Hz.
     float currentAnimHeight_ = 0.0f;
-    float targetAnimHeight_  = 0.0f;
-    bool  animating_         = false;
+    float targetAnimHeight_ = 0.0f;
+    bool animating_ = false;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };

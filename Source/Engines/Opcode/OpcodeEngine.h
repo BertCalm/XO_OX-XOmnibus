@@ -59,23 +59,24 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 #ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 #define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 struct SpectralFingerprint
 {
     float modalFrequencies[8] = {};
-    float modalAmplitudes[8]  = {};
-    float impedanceEstimate   = 0.5f;
-    float temperature         = 0.5f;
-    float spectralCentroid    = 1000.0f;
-    float activeVoiceCount    = 0.0f;
-    float fundamentalFreq     = 440.0f;
-    float rmsLevel            = 0.0f;
-    float harmonicDensity     = 0.5f;
-    float attackTransience    = 0.0f;
-    float padding[2]          = {};
+    float modalAmplitudes[8] = {};
+    float impedanceEstimate = 0.5f;
+    float temperature = 0.5f;
+    float spectralCentroid = 1000.0f;
+    float activeVoiceCount = 0.0f;
+    float fundamentalFreq = 440.0f;
+    float rmsLevel = 0.0f;
+    float harmonicDensity = 0.5f;
+    float attackTransience = 0.0f;
+    float padding[2] = {};
 };
 #endif
 
@@ -89,7 +90,7 @@ struct SpectralFingerprint
 //==============================================================================
 struct FMOperator
 {
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
         sr = sampleRate;
         phase = 0.0f;
@@ -98,26 +99,26 @@ struct FMOperator
 
     // Call this in noteOn and whenever pitch changes. Caches freqHz / sr so
     // the per-sample process() loop avoids an unnecessary division each sample.
-    void setFrequency (float freqHz) noexcept
-    {
-        cachedPhaseInc = (sr > 0.0f) ? (freqHz / sr) : 0.0f;
-    }
+    void setFrequency(float freqHz) noexcept { cachedPhaseInc = (sr > 0.0f) ? (freqHz / sr) : 0.0f; }
 
     // process() uses the cached phase increment. Pass freqHz=0 if the frequency
     // was already set via setFrequency(); the argument is ignored when nonzero
     // only if you explicitly want to override the cache per-call.
-    float process (float phaseModulation = 0.0f) noexcept
+    float process(float phaseModulation = 0.0f) noexcept
     {
         phase += cachedPhaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-        if (phase < 0.0f) phase += 1.0f;
+        if (phase >= 1.0f)
+            phase -= 1.0f;
+        if (phase < 0.0f)
+            phase += 1.0f;
 
         // FM: add phase modulation to the oscillator phase
         float effPhase = phase + phaseModulation;
         effPhase -= static_cast<float>(static_cast<int>(effPhase));
-        if (effPhase < 0.0f) effPhase += 1.0f;
+        if (effPhase < 0.0f)
+            effPhase += 1.0f;
 
-        return fastSin (effPhase * 6.28318530718f);
+        return fastSin(effPhase * 6.28318530718f);
     }
 
     void reset() noexcept
@@ -141,17 +142,25 @@ struct FMOperator
 //==============================================================================
 struct DXModulationEnvelope
 {
-    enum Stage { Idle, Attack, Decay1, Sustain, Release };
-
-    void prepare (float sampleRate) noexcept { sr = sampleRate; }
-
-    void setRates (float atkTime, float dk1Time, float susLevel, float relTime) noexcept
+    enum Stage
     {
-        if (sr <= 0.0f) return;
-        attackRate = 1.0f / (sr * std::max (atkTime, 0.0001f));
-        decay1Coeff = 1.0f - std::exp (-4.6f / (sr * std::max (dk1Time, 0.001f)));
-        sustainLevel = std::clamp (susLevel, 0.0f, 1.0f);
-        releaseCoeff = 1.0f - std::exp (-4.6f / (sr * std::max (relTime, 0.001f)));
+        Idle,
+        Attack,
+        Decay1,
+        Sustain,
+        Release
+    };
+
+    void prepare(float sampleRate) noexcept { sr = sampleRate; }
+
+    void setRates(float atkTime, float dk1Time, float susLevel, float relTime) noexcept
+    {
+        if (sr <= 0.0f)
+            return;
+        attackRate = 1.0f / (sr * std::max(atkTime, 0.0001f));
+        decay1Coeff = 1.0f - std::exp(-4.6f / (sr * std::max(dk1Time, 0.001f)));
+        sustainLevel = std::clamp(susLevel, 0.0f, 1.0f);
+        releaseCoeff = 1.0f - std::exp(-4.6f / (sr * std::max(relTime, 0.001f)));
     }
 
     void trigger() noexcept
@@ -162,7 +171,8 @@ struct DXModulationEnvelope
 
     void release() noexcept
     {
-        if (stage != Idle) stage = Release;
+        if (stage != Idle)
+            stage = Release;
     }
 
     void kill() noexcept
@@ -175,27 +185,36 @@ struct DXModulationEnvelope
     {
         switch (stage)
         {
-            case Idle: return 0.0f;
-            case Attack:
-                // Exponential approach to 1.0 — matches standard DX envelope character.
-                // Target slightly above 1.0 (1.02) ensures the threshold is crossed
-                // cleanly. Was linear (level += attackRate) which sounded abrupt.
-                level += (1.02f - level) * attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Decay1; }
-                return level;
-            case Decay1:
-                level -= (level - sustainLevel) * decay1Coeff;
-                level = flushDenormal (level);
-                if (std::abs (level - sustainLevel) < 0.002f)
-                    stage = Sustain;
-                return level;
-            case Sustain:
-                return level;
-            case Release:
-                level -= level * releaseCoeff;
-                level = flushDenormal (level);
-                if (level < 1e-6f) { level = 0.0f; stage = Idle; }
-                return level;
+        case Idle:
+            return 0.0f;
+        case Attack:
+            // Exponential approach to 1.0 — matches standard DX envelope character.
+            // Target slightly above 1.0 (1.02) ensures the threshold is crossed
+            // cleanly. Was linear (level += attackRate) which sounded abrupt.
+            level += (1.02f - level) * attackRate;
+            if (level >= 1.0f)
+            {
+                level = 1.0f;
+                stage = Decay1;
+            }
+            return level;
+        case Decay1:
+            level -= (level - sustainLevel) * decay1Coeff;
+            level = flushDenormal(level);
+            if (std::abs(level - sustainLevel) < 0.002f)
+                stage = Sustain;
+            return level;
+        case Sustain:
+            return level;
+        case Release:
+            level -= level * releaseCoeff;
+            level = flushDenormal(level);
+            if (level < 1e-6f)
+            {
+                level = 0.0f;
+                stage = Idle;
+            }
+            return level;
         }
         return 0.0f;
     }
@@ -225,13 +244,13 @@ struct OpcodeVoice
     GlideProcessor glide;
     FMOperator carrier;
     FMOperator modulator;
-    DXModulationEnvelope modEnv;     // Controls FM index over time
+    DXModulationEnvelope modEnv; // Controls FM index over time
     FilterEnvelope ampEnv;
     FilterEnvelope filterEnv;
     CytomicSVF svf;
     StandardLFO lfo1, lfo2;
 
-    float feedbackState = 0.0f;      // For feedback algorithm mode
+    float feedbackState = 0.0f; // For feedback algorithm mode
     float panL = 0.707f, panR = 0.707f;
 
     void reset() noexcept
@@ -260,7 +279,7 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Opcode"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF5F9EA0); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF5F9EA0); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -273,12 +292,14 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
         {
             const auto& v = voices[i];
-            if (!v.active) continue;
+            if (!v.active)
+                continue;
             voiceCount++;
             float freq = v.glide.getFreq();
             float amp = v.ampEnv.getLevel();
             rmsSum += amp * amp;
-            if (voiceCount <= 8) {
+            if (voiceCount <= 8)
+            {
                 fp.modalFrequencies[voiceCount - 1] = freq;
                 fp.modalAmplitudes[voiceCount - 1] = amp;
             }
@@ -287,11 +308,11 @@ public:
         }
 
         fp.activeVoiceCount = static_cast<float>(voiceCount);
-        fp.rmsLevel = std::sqrt (rmsSum / std::max (voiceCount, 1));
+        fp.rmsLevel = std::sqrt(rmsSum / std::max(voiceCount, 1));
         fp.spectralCentroid = (centroidDen > 0.001f) ? centroidNum / centroidDen : 2000.0f;
-        fp.impedanceEstimate = 0.2f;  // FM: clean, no physical impedance
+        fp.impedanceEstimate = 0.2f; // FM: clean, no physical impedance
         fp.temperature = fp.rmsLevel;
-        fp.harmonicDensity = 0.95f;   // FM: extremely harmonic (mathematical ratios)
+        fp.harmonicDensity = 0.95f; // FM: extremely harmonic (mathematical ratios)
         fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
 
         // attackTransience: FM attacks are bell-like — high transience at onset, fast decay.
@@ -300,18 +321,19 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
         {
             const auto& v = voices[i];
-            if (!v.active) continue;
+            if (!v.active)
+                continue;
             float level = v.ampEnv.getLevel();
             // DX EP attack: bright bell front in the first ~100ms (level rising)
             if (level < 0.4f)
                 attackEnergy += (0.4f - level) / 0.4f * v.velocity;
         }
-        fp.attackTransience = std::min (attackEnergy, 1.0f);
+        fp.attackTransience = std::min(attackEnergy, 1.0f);
 
         return fp;
     }
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
         srf = static_cast<float>(sr);
@@ -319,105 +341,121 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
         {
             voices[i].reset();
-            voices[i].carrier.prepare (srf);
-            voices[i].modulator.prepare (srf);
-            voices[i].modEnv.prepare (srf);
-            voices[i].ampEnv.prepare (srf);
-            voices[i].filterEnv.prepare (srf);
+            voices[i].carrier.prepare(srf);
+            voices[i].modulator.prepare(srf);
+            voices[i].modEnv.prepare(srf);
+            voices[i].ampEnv.prepare(srf);
+            voices[i].filterEnv.prepare(srf);
         }
 
-        smoothRatio.prepare (srf);
-        smoothIndex.prepare (srf);
-        smoothBrightness.prepare (srf);
-        smoothMigration.prepare (srf);
+        smoothRatio.prepare(srf);
+        smoothIndex.prepare(srf);
+        smoothBrightness.prepare(srf);
+        smoothMigration.prepare(srf);
 
-        prepareSilenceGate (sr, maxBlockSize, 500.0f);
+        prepareSilenceGate(sr, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices) v.reset();
+        for (auto& v : voices)
+            v.reset();
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
     }
 
-    float getSampleForCoupling (int channel, int sampleIndex) const override
+    float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        (void) sampleIndex;
+        (void)sampleIndex;
         return (channel == 0) ? couplingCacheL : couplingCacheR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                            const float* buf, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* buf, int numSamples) override
     {
-        if (!buf || numSamples <= 0) return;
+        if (!buf || numSamples <= 0)
+            return;
         float val = buf[numSamples - 1] * amount;
-        switch (type) {
-            case CouplingType::AmpToFilter:  couplingFilterMod += val * 2000.0f; break;
-            case CouplingType::LFOToPitch:   couplingPitchMod += val * 2.0f; break;
-            case CouplingType::AmpToPitch:   couplingPitchMod += val; break;
-            case CouplingType::EnvToMorph:   couplingIndexMod += val * 2.0f; break;
-            default: break;
+        switch (type)
+        {
+        case CouplingType::AmpToFilter:
+            couplingFilterMod += val * 2000.0f;
+            break;
+        case CouplingType::LFOToPitch:
+            couplingPitchMod += val * 2.0f;
+            break;
+        case CouplingType::AmpToPitch:
+            couplingPitchMod += val;
+            break;
+        case CouplingType::EnvToMorph:
+            couplingIndexMod += val * 2.0f;
+            break;
+        default:
+            break;
         }
     }
 
     //==========================================================================
     // Render
     //==========================================================================
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())          { noteOn (msg.getNoteNumber(), msg.getFloatVelocity()); wakeSilenceGate(); }
-            else if (msg.isNoteOff())    noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
-            else if (msg.isChannelPressure()) aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
+            if (msg.isNoteOn())
+            {
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity());
+                wakeSilenceGate();
+            }
+            else if (msg.isNoteOff())
+                noteOff(msg.getNoteNumber());
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            else if (msg.isChannelPressure())
+                aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
-        if (isSilenceGateBypassed()) {
-            buffer.clear (0, numSamples);
+        if (isSilenceGateBypassed())
+        {
+            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
 
-        auto loadP = [] (std::atomic<float>* p, float def) {
-            return p ? p->load (std::memory_order_relaxed) : def;
-        };
+        auto loadP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
 
-        const int   pAlgorithm   = static_cast<int>(loadP (paramAlgorithm, 0.0f));
-        const float pRatio       = loadP (paramRatio, 2.0f);
-        const float pIndex       = loadP (paramIndex, 0.7f);
-        const float pBrightness  = loadP (paramBrightness, 10000.0f);
-        const float pFeedback    = loadP (paramFeedback, 0.0f);
-        const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.3f);
-        const float pBendRange   = loadP (paramBendRange, 2.0f);
-        const float pMigration   = loadP (paramMigration, 0.0f);
-        const float pVelToIndex  = loadP (paramVelToIndex, 0.6f);
+        const int pAlgorithm = static_cast<int>(loadP(paramAlgorithm, 0.0f));
+        const float pRatio = loadP(paramRatio, 2.0f);
+        const float pIndex = loadP(paramIndex, 0.7f);
+        const float pBrightness = loadP(paramBrightness, 10000.0f);
+        const float pFeedback = loadP(paramFeedback, 0.0f);
+        const float pFilterEnvAmt = loadP(paramFilterEnvAmt, 0.3f);
+        const float pBendRange = loadP(paramBendRange, 2.0f);
+        const float pMigration = loadP(paramMigration, 0.0f);
+        const float pVelToIndex = loadP(paramVelToIndex, 0.6f);
 
-        const float macroChar    = loadP (paramMacroCharacter, 0.0f);
-        const float macroMove    = loadP (paramMacroMovement, 0.0f);
-        const float macroCoup    = loadP (paramMacroCoupling, 0.0f);
-        const float macroSpace   = loadP (paramMacroSpace, 0.0f);
+        const float macroChar = loadP(paramMacroCharacter, 0.0f);
+        const float macroMove = loadP(paramMacroMovement, 0.0f);
+        const float macroCoup = loadP(paramMacroCoupling, 0.0f);
+        const float macroSpace = loadP(paramMacroSpace, 0.0f);
 
         // D006: mod wheel -> index, aftertouch -> brightness
-        float effectiveIndex = std::clamp (pIndex + macroChar * 0.5f
-                                + modWheelAmount * 0.8f + couplingIndexMod, 0.0f, 5.0f);
-        float effectiveBright = std::clamp (pBrightness + macroMove * 5000.0f
-                                + aftertouchAmount * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
-        float effectiveRatio = std::clamp (pRatio + macroSpace * 2.0f, 0.5f, 16.0f);
+        float effectiveIndex =
+            std::clamp(pIndex + macroChar * 0.5f + modWheelAmount * 0.8f + couplingIndexMod, 0.0f, 5.0f);
+        float effectiveBright = std::clamp(
+            pBrightness + macroMove * 5000.0f + aftertouchAmount * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        float effectiveRatio = std::clamp(pRatio + macroSpace * 2.0f, 0.5f, 16.0f);
 
-        smoothRatio.set (effectiveRatio);
-        smoothIndex.set (effectiveIndex);
-        smoothBrightness.set (effectiveBright);
-        smoothMigration.set (std::clamp (pMigration + macroCoup * 0.5f, 0.0f, 1.0f));
+        smoothRatio.set(effectiveRatio);
+        smoothIndex.set(effectiveIndex);
+        smoothBrightness.set(effectiveBright);
+        smoothMigration.set(std::clamp(pMigration + macroCoup * 0.5f, 0.0f, 1.0f));
 
         couplingFilterMod = 0.0f;
         const float pitchCouplingVal = couplingPitchMod;
@@ -427,44 +465,46 @@ public:
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // LFO params
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f);
-        const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
-        const int   lfo1Shape = static_cast<int>(loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f);
-        const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
-        const int   lfo2Shape = static_cast<int>(loadP (paramLfo2Shape, 0.0f));
+        const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
+        const float lfo2Rate = loadP(paramLfo2Rate, 1.0f);
+        const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
+        const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
         for (auto& voice : voices)
         {
-            if (!voice.active) continue;
-            voice.lfo1.setRate (lfo1Rate, srf);
-            voice.lfo1.setShape (lfo1Shape);
-            voice.lfo2.setRate (lfo2Rate, srf);
-            voice.lfo2.setShape (lfo2Shape);
+            if (!voice.active)
+                continue;
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
         }
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         for (int s = 0; s < numSamples; ++s)
         {
-            float ratioNow    = smoothRatio.process();
-            float indexNow    = smoothIndex.process();
-            float brightNow   = smoothBrightness.process();
-            float migrationN  = smoothMigration.process();
+            float ratioNow = smoothRatio.process();
+            float indexNow = smoothIndex.process();
+            float brightNow = smoothBrightness.process();
+            float migrationN = smoothMigration.process();
 
             float mixL = 0.0f, mixR = 0.0f;
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + pitchCouplingVal);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
                 // LFO1 -> pitch vibrato (classic DX vibrato)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                freq *= PitchBendUtil::semitonesToFreqRatio (lfo1Val * 0.5f);
+                freq *= PitchBendUtil::semitonesToFreqRatio(lfo1Val * 0.5f);
 
                 // LFO2 -> FM index modulation
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -475,46 +515,46 @@ public:
 
                 // Velocity-sensitive FM index: harder = more harmonics
                 float velIndex = indexNow + voice.velocity * pVelToIndex * 2.0f;
-                velIndex = std::clamp (velIndex + lfo2Val * 0.5f, 0.0f, 8.0f);
+                velIndex = std::clamp(velIndex + lfo2Val * 0.5f, 0.0f, 8.0f);
 
                 // Effective FM index = base index * modulation envelope
                 float fmIndex = velIndex * modEnvLevel;
 
                 // Update cached phase increments — freq changes each sample due to glide/LFO/bend.
                 // This keeps the cache valid so process() stays O(1) with no per-sample division.
-                voice.carrier.setFrequency (freq);
-                voice.modulator.setFrequency (freq * ratioNow);
+                voice.carrier.setFrequency(freq);
+                voice.modulator.setFrequency(freq * ratioNow);
 
                 float fmOutput = 0.0f;
 
                 switch (pAlgorithm)
                 {
-                    case 0:  // Series: modulator → carrier (classic DX EP)
-                    {
-                        float modOut = voice.modulator.process();
-                        float phaseMod = modOut * fmIndex;
-                        fmOutput = voice.carrier.process (phaseMod);
-                        break;
-                    }
-                    case 1:  // Parallel: modulator + carrier (organ-like)
-                    {
-                        float modOut = voice.modulator.process();
-                        float carrOut = voice.carrier.process();
-                        fmOutput = carrOut + modOut * fmIndex * 0.5f;
-                        break;
-                    }
-                    case 2:  // Feedback: modulator feeds back into itself
-                    {
-                        float fbAmount = pFeedback * voice.feedbackState;
-                        float modOut = voice.modulator.process (fbAmount * 0.3f);
-                        // Saturation clamp: prevent feedback runaway at high pFeedback values.
-                        // fastTanh soft-clips feedbackState to roughly ±1.0, preserving
-                        // FM character while bounding the signal from growing unbounded.
-                        voice.feedbackState = fastTanh (modOut);
-                        float phaseMod = modOut * fmIndex;
-                        fmOutput = voice.carrier.process (phaseMod);
-                        break;
-                    }
+                case 0: // Series: modulator → carrier (classic DX EP)
+                {
+                    float modOut = voice.modulator.process();
+                    float phaseMod = modOut * fmIndex;
+                    fmOutput = voice.carrier.process(phaseMod);
+                    break;
+                }
+                case 1: // Parallel: modulator + carrier (organ-like)
+                {
+                    float modOut = voice.modulator.process();
+                    float carrOut = voice.carrier.process();
+                    fmOutput = carrOut + modOut * fmIndex * 0.5f;
+                    break;
+                }
+                case 2: // Feedback: modulator feeds back into itself
+                {
+                    float fbAmount = pFeedback * voice.feedbackState;
+                    float modOut = voice.modulator.process(fbAmount * 0.3f);
+                    // Saturation clamp: prevent feedback runaway at high pFeedback values.
+                    // fastTanh soft-clips feedbackState to roughly ±1.0, preserving
+                    // FM character while bounding the signal from growing unbounded.
+                    voice.feedbackState = fastTanh(modOut);
+                    float phaseMod = modOut * fmIndex;
+                    fmOutput = voice.carrier.process(phaseMod);
+                    break;
+                }
                 }
 
                 // Migration — subtle spectral enrichment from coupled engines
@@ -522,22 +562,25 @@ public:
                 {
                     // Add very subtle inharmonicity (what happens when FM travels
                     // through acoustic traditions)
-                    float migDetune = fastSin (voice.carrier.phase * 6.28318530718f * 1.003f)
-                                    * migrationN * 0.08f;
+                    float migDetune = fastSin(voice.carrier.phase * 6.28318530718f * 1.003f) * migrationN * 0.08f;
                     fmOutput += migDetune;
                 }
 
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
-                if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
+                if (!voice.ampEnv.isActive())
+                {
+                    voice.active = false;
+                    continue;
+                }
 
                 // Filter — FM EP benefits from gentle LP to tame aliasing at high index
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float velBright = voice.velocity * 3000.0f;
-                float cutoff = std::clamp (brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                voice.svf.setMode (CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients (cutoff, 0.1f, srf);
-                float filtered = voice.svf.processSample (fmOutput);
+                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
+                voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                voice.svf.setCoefficients(cutoff, 0.1f, srf);
+                float filtered = voice.svf.processSample(fmOutput);
 
                 float output = filtered * ampLevel;
 
@@ -546,85 +589,88 @@ public:
             }
 
             outL[s] = mixL;
-            if (outR) outR[s] = mixR;
+            if (outR)
+                outR[s] = mixR;
             couplingCacheL = mixL;
             couplingCacheR = mixR;
         }
 
         int count = 0;
-        for (const auto& v : voices) if (v.active) ++count;
-        activeVoiceCount.store (count);
-        analyzeForSilenceGate (buffer, numSamples);
+        for (const auto& v : voices)
+            if (v.active)
+                ++count;
+        activeVoiceCount.store(count);
+        analyzeForSilenceGate(buffer, numSamples);
     }
 
     //==========================================================================
     // Note management
     //==========================================================================
-    void noteOn (int note, float vel) noexcept
+    void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
+        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow (2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
 
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.glide.snapTo (freq);
+        v.glide.snapTo(freq);
         v.feedbackState = 0.0f;
 
-        v.carrier.prepare (srf);
+        v.carrier.prepare(srf);
         v.carrier.reset();
-        v.modulator.prepare (srf);
+        v.modulator.prepare(srf);
         v.modulator.reset();
 
         // Cache phase increments at note-on. renderBlock recomputes these when
         // pitch or ratio changes (glide, bend, LFO), so they are also updated
         // per-sample in the render loop when glide is active.
         float ratio = paramRatio ? paramRatio->load() : 2.0f;
-        v.carrier.setFrequency (freq);
-        v.modulator.setFrequency (freq * ratio);
+        v.carrier.setFrequency(freq);
+        v.modulator.setFrequency(freq * ratio);
 
         // Amp envelope params — read before mod env so release can be shared
-        float attack  = paramAttack  ? paramAttack->load()  : 0.005f;
-        float decay   = paramDecay   ? paramDecay->load()   : 1.0f;
+        float attack = paramAttack ? paramAttack->load() : 0.005f;
+        float decay = paramDecay ? paramDecay->load() : 1.0f;
         float sustain = paramSustain ? paramSustain->load() : 0.5f;
         float release = paramRelease ? paramRelease->load() : 0.6f;
 
         // Modulation envelope — fast attack, moderate decay to sustain.
         // Release is coupled to amp envelope release so mod index tails off
         // in sync with the amplitude (was hardcoded 0.3f — BUG FIX).
-        float modAtk = paramModAttack  ? paramModAttack->load()  : 0.001f;
-        float modDk  = paramModDecay   ? paramModDecay->load()   : 0.3f;
+        float modAtk = paramModAttack ? paramModAttack->load() : 0.001f;
+        float modDk = paramModDecay ? paramModDecay->load() : 0.3f;
         float modSus = paramModSustain ? paramModSustain->load() : 0.2f;
-        v.modEnv.prepare (srf);
-        v.modEnv.setRates (modAtk, modDk, modSus, release);
+        v.modEnv.prepare(srf);
+        v.modEnv.setRates(modAtk, modDk, modSus, release);
         v.modEnv.trigger();
 
         // Amp envelope
-        v.ampEnv.prepare (srf);
-        v.ampEnv.setADSR (attack, decay, sustain, release);
+        v.ampEnv.prepare(srf);
+        v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
         // Filter envelope — sustain is user-controlled via opco_filterSustain.
         // Default 0.0 preserves the classic DX EP behavior (filter closes fully after decay).
         // Non-zero sustain lets the filter hold open, giving smoother pad/string-like tones.
         float fltSus = paramFilterSustain ? paramFilterSustain->load() : 0.0f;
-        v.filterEnv.prepare (srf);
-        v.filterEnv.setADSR (0.001f, 0.4f + (1.0f - vel) * 0.4f, fltSus, 0.4f);
+        v.filterEnv.prepare(srf);
+        v.filterEnv.setADSR(0.001f, 0.4f + (1.0f - vel) * 0.4f, fltSus, 0.4f);
         v.filterEnv.triggerHard();
 
         v.svf.reset();
 
         // Stereo placement — keyboard position
         float pan = static_cast<float>(note - 36) / 60.0f;
-        pan = std::clamp (pan, 0.0f, 1.0f);
-        v.panL = std::cos (pan * 1.5707963f);
-        v.panR = std::sin (pan * 1.5707963f);
+        pan = std::clamp(pan, 0.0f, 1.0f);
+        v.panL = std::cos(pan * 1.5707963f);
+        v.panR = std::sin(pan * 1.5707963f);
     }
 
-    void noteOff (int note) noexcept
+    void noteOff(int note) noexcept
     {
         for (auto& v : voices)
         {
@@ -640,125 +686,125 @@ public:
     //==========================================================================
     // Parameters — 30 total
     //==========================================================================
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
 
         // FM core
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "opco_algorithm", 1 }, "Opcode Algorithm", 0, 2, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_ratio", 1 }, "Opcode Mod:Carrier Ratio",
-            juce::NormalisableRange<float> (0.5f, 16.0f, 0.01f), 2.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_index", 1 }, "Opcode FM Index",
-            juce::NormalisableRange<float> (0.0f, 5.0f, 0.01f), 0.7f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_feedback", 1 }, "Opcode Feedback",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_velToIndex", 1 }, "Opcode Velocity to Index",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"opco_algorithm", 1}, "Opcode Algorithm", 0, 2, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_ratio", 1}, "Opcode Mod:Carrier Ratio",
+                                              juce::NormalisableRange<float>(0.5f, 16.0f, 0.01f), 2.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_index", 1}, "Opcode FM Index",
+                                              juce::NormalisableRange<float>(0.0f, 5.0f, 0.01f), 0.7f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_feedback", 1}, "Opcode Feedback",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_velToIndex", 1}, "Opcode Velocity to Index",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
 
         // Brightness
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_brightness", 1 }, "Opcode Brightness",
-            juce::NormalisableRange<float> (200.0f, 20000.0f, 0.0f, 0.3f), 10000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_brightness", 1}, "Opcode Brightness",
+                                              juce::NormalisableRange<float>(200.0f, 20000.0f, 0.0f, 0.3f), 10000.0f));
 
         // Amp envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_attack", 1 }, "Opcode Attack",
-            juce::NormalisableRange<float> (0.001f, 0.5f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_decay", 1 }, "Opcode Decay",
-            juce::NormalisableRange<float> (0.05f, 8.0f, 0.0f, 0.4f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_sustain", 1 }, "Opcode Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_release", 1 }, "Opcode Release",
-            juce::NormalisableRange<float> (0.01f, 5.0f, 0.0f, 0.4f), 0.6f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_attack", 1}, "Opcode Attack",
+                                              juce::NormalisableRange<float>(0.001f, 0.5f, 0.0f, 0.3f), 0.005f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_decay", 1}, "Opcode Decay",
+                                              juce::NormalisableRange<float>(0.05f, 8.0f, 0.0f, 0.4f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_sustain", 1}, "Opcode Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_release", 1}, "Opcode Release",
+                                              juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.4f), 0.6f));
 
         // Modulation envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_modAttack", 1 }, "Opcode Mod Env Attack",
-            juce::NormalisableRange<float> (0.001f, 0.2f, 0.0f, 0.3f), 0.001f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_modDecay", 1 }, "Opcode Mod Env Decay",
-            juce::NormalisableRange<float> (0.01f, 3.0f, 0.0f, 0.4f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_modSustain", 1 }, "Opcode Mod Env Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_modAttack", 1}, "Opcode Mod Env Attack",
+                                              juce::NormalisableRange<float>(0.001f, 0.2f, 0.0f, 0.3f), 0.001f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_modDecay", 1}, "Opcode Mod Env Decay",
+                                              juce::NormalisableRange<float>(0.01f, 3.0f, 0.0f, 0.4f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_modSustain", 1}, "Opcode Mod Env Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_filterEnvAmt", 1 }, "Opcode Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_filterEnvAmt", 1}, "Opcode Filter Env Amount",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
         // opco_filterSustain: how much the filter envelope holds open after decay.
         // At 0.0 (default) the filter closes completely — the classic DX EP character.
         // At 1.0 the filter stays fully open after the decay sweep, enabling pad-like tones.
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_filterSustain", 1 }, "Opcode Filter Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_filterSustain", 1}, "Opcode Filter Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // FUSION
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_migration", 1 }, "Opcode Migration",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_migration", 1}, "Opcode Migration",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // Pitch
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_bendRange", 1 }, "Opcode Pitch Bend Range",
-            juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_bendRange", 1}, "Opcode Pitch Bend Range",
+                                              juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_macroCharacter", 1 }, "Opcode Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_macroMovement", 1 }, "Opcode Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_macroCoupling", 1 }, "Opcode Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_macroSpace", 1 }, "Opcode Macro SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_macroCharacter", 1}, "Opcode Macro CHARACTER",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_macroMovement", 1}, "Opcode Macro MOVEMENT",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_macroCoupling", 1}, "Opcode Macro COUPLING",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_macroSpace", 1}, "Opcode Macro SPACE",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // LFOs (D002/D005)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_lfo1Rate", 1 }, "Opcode LFO1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_lfo1Depth", 1 }, "Opcode LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "opco_lfo1Shape", 1 }, "Opcode LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_lfo2Rate", 1 }, "Opcode LFO2 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_lfo2Depth", 1 }, "Opcode LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "opco_lfo2Shape", 1 }, "Opcode LFO2 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_lfo1Rate", 1}, "Opcode LFO1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_lfo1Depth", 1}, "Opcode LFO1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"opco_lfo1Shape", 1}, "Opcode LFO1 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_lfo2Rate", 1}, "Opcode LFO2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"opco_lfo2Depth", 1}, "Opcode LFO2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"opco_lfo2Shape", 1}, "Opcode LFO2 Shape", 0, 4, 0));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramAlgorithm    = apvts.getRawParameterValue ("opco_algorithm");
-        paramRatio        = apvts.getRawParameterValue ("opco_ratio");
-        paramIndex        = apvts.getRawParameterValue ("opco_index");
-        paramFeedback     = apvts.getRawParameterValue ("opco_feedback");
-        paramVelToIndex   = apvts.getRawParameterValue ("opco_velToIndex");
-        paramBrightness   = apvts.getRawParameterValue ("opco_brightness");
-        paramAttack       = apvts.getRawParameterValue ("opco_attack");
-        paramDecay        = apvts.getRawParameterValue ("opco_decay");
-        paramSustain      = apvts.getRawParameterValue ("opco_sustain");
-        paramRelease      = apvts.getRawParameterValue ("opco_release");
-        paramModAttack    = apvts.getRawParameterValue ("opco_modAttack");
-        paramModDecay     = apvts.getRawParameterValue ("opco_modDecay");
-        paramModSustain   = apvts.getRawParameterValue ("opco_modSustain");
-        paramFilterEnvAmt     = apvts.getRawParameterValue ("opco_filterEnvAmt");
-        paramFilterSustain    = apvts.getRawParameterValue ("opco_filterSustain");
-        paramMigration        = apvts.getRawParameterValue ("opco_migration");
-        paramBendRange    = apvts.getRawParameterValue ("opco_bendRange");
-        paramMacroCharacter = apvts.getRawParameterValue ("opco_macroCharacter");
-        paramMacroMovement  = apvts.getRawParameterValue ("opco_macroMovement");
-        paramMacroCoupling  = apvts.getRawParameterValue ("opco_macroCoupling");
-        paramMacroSpace     = apvts.getRawParameterValue ("opco_macroSpace");
-        paramLfo1Rate     = apvts.getRawParameterValue ("opco_lfo1Rate");
-        paramLfo1Depth    = apvts.getRawParameterValue ("opco_lfo1Depth");
-        paramLfo1Shape    = apvts.getRawParameterValue ("opco_lfo1Shape");
-        paramLfo2Rate     = apvts.getRawParameterValue ("opco_lfo2Rate");
-        paramLfo2Depth    = apvts.getRawParameterValue ("opco_lfo2Depth");
-        paramLfo2Shape    = apvts.getRawParameterValue ("opco_lfo2Shape");
+        paramAlgorithm = apvts.getRawParameterValue("opco_algorithm");
+        paramRatio = apvts.getRawParameterValue("opco_ratio");
+        paramIndex = apvts.getRawParameterValue("opco_index");
+        paramFeedback = apvts.getRawParameterValue("opco_feedback");
+        paramVelToIndex = apvts.getRawParameterValue("opco_velToIndex");
+        paramBrightness = apvts.getRawParameterValue("opco_brightness");
+        paramAttack = apvts.getRawParameterValue("opco_attack");
+        paramDecay = apvts.getRawParameterValue("opco_decay");
+        paramSustain = apvts.getRawParameterValue("opco_sustain");
+        paramRelease = apvts.getRawParameterValue("opco_release");
+        paramModAttack = apvts.getRawParameterValue("opco_modAttack");
+        paramModDecay = apvts.getRawParameterValue("opco_modDecay");
+        paramModSustain = apvts.getRawParameterValue("opco_modSustain");
+        paramFilterEnvAmt = apvts.getRawParameterValue("opco_filterEnvAmt");
+        paramFilterSustain = apvts.getRawParameterValue("opco_filterSustain");
+        paramMigration = apvts.getRawParameterValue("opco_migration");
+        paramBendRange = apvts.getRawParameterValue("opco_bendRange");
+        paramMacroCharacter = apvts.getRawParameterValue("opco_macroCharacter");
+        paramMacroMovement = apvts.getRawParameterValue("opco_macroMovement");
+        paramMacroCoupling = apvts.getRawParameterValue("opco_macroCoupling");
+        paramMacroSpace = apvts.getRawParameterValue("opco_macroSpace");
+        paramLfo1Rate = apvts.getRawParameterValue("opco_lfo1Rate");
+        paramLfo1Depth = apvts.getRawParameterValue("opco_lfo1Depth");
+        paramLfo1Shape = apvts.getRawParameterValue("opco_lfo1Shape");
+        paramLfo2Rate = apvts.getRawParameterValue("opco_lfo2Rate");
+        paramLfo2Depth = apvts.getRawParameterValue("opco_lfo2Depth");
+        paramLfo2Shape = apvts.getRawParameterValue("opco_lfo2Shape");
     }
 
 private:
@@ -767,7 +813,7 @@ private:
 
     std::array<OpcodeVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount { 0 };
+    std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothRatio, smoothIndex, smoothBrightness, smoothMigration;
 

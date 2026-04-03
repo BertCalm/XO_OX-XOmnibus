@@ -109,15 +109,15 @@ TEST_CASE("WavetableOscillator - sawtooth and sine frames both have audible RMS"
     float rmsSaw = 0.0f, rmsSine = 0.0f;
     for (int i = 0; i < 1000; ++i)
     {
-        float s  = wtSaw.processSample();
+        float s = wtSaw.processSample();
         float si = wtSine.processSample();
-        rmsSaw  += s  * s;
+        rmsSaw += s * s;
         rmsSine += si * si;
     }
-    rmsSaw  = std::sqrt(rmsSaw  / 1000.0f);
+    rmsSaw = std::sqrt(rmsSaw / 1000.0f);
     rmsSine = std::sqrt(rmsSine / 1000.0f);
 
-    CHECK(rmsSaw  > 0.1f);
+    CHECK(rmsSaw > 0.1f);
     CHECK(rmsSine > 0.1f);
 }
 
@@ -380,6 +380,10 @@ TEST_CASE("ParameterSmoother - output is monotonically increasing toward target"
 
 // Backward-compat shim — no longer used by run_tests.cpp but kept
 // so any hypothetical direct callers don't break at link time.
-namespace dsp_component_tests {
-int runAll() { return 0; }
+namespace dsp_component_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace dsp_component_tests

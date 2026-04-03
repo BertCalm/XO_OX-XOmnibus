@@ -7,7 +7,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ArtifactCathedral — Dual-engine cinematic reverb with data-rot decay.
@@ -32,33 +33,33 @@ class ArtifactCathedral
 public:
     ArtifactCathedral() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
         float srScale = sr / 44100.0f;
 
         // Dark Side FDN (4-tap, pitch-shifted input)
-        static constexpr int kDarkLens[4] = { 1523, 1831, 2141, 2473 };
+        static constexpr int kDarkLens[4] = {1523, 1831, 2141, 2473};
         for (int i = 0; i < 4; ++i)
         {
-            int len = static_cast<int> (static_cast<float> (kDarkLens[i]) * srScale) + 1;
-            darkBuf[i].assign (static_cast<size_t> (len), 0.0f);
+            int len = static_cast<int>(static_cast<float>(kDarkLens[i]) * srScale) + 1;
+            darkBuf[i].assign(static_cast<size_t>(len), 0.0f);
             darkPos[i] = 0;
         }
 
         // Sun Side FDN (4-tap, modulated delay times)
-        static constexpr int kSunLens[4] = { 1367, 1693, 1997, 2311 };
+        static constexpr int kSunLens[4] = {1367, 1693, 1997, 2311};
         for (int i = 0; i < 4; ++i)
         {
-            int len = static_cast<int> (static_cast<float> (kSunLens[i]) * srScale) + 1;
-            sunBuf[i].assign (static_cast<size_t> (len), 0.0f);
+            int len = static_cast<int>(static_cast<float>(kSunLens[i]) * srScale) + 1;
+            sunBuf[i].assign(static_cast<size_t>(len), 0.0f);
             sunPos[i] = 0;
             sunEnvFollow[i] = 0.0f;
         }
 
         // Pitch shifter state (Dark Side: -12st = half speed read)
-        pitchBufL.assign (static_cast<size_t> (static_cast<int> (sr * 0.05f) + 1), 0.0f);
-        pitchBufR.assign (static_cast<size_t> (static_cast<int> (sr * 0.05f) + 1), 0.0f);
+        pitchBufL.assign(static_cast<size_t>(static_cast<int>(sr * 0.05f) + 1), 0.0f);
+        pitchBufR.assign(static_cast<size_t>(static_cast<int>(sr * 0.05f) + 1), 0.0f);
         pitchWritePos = 0;
         pitchReadPhase = 0.0f;
 
@@ -68,7 +69,7 @@ public:
         rng = 2654435761u;
 
         // Spectral freeze
-        freezeBuf.assign (kFreezeSize, 0.0f);
+        freezeBuf.assign(kFreezeSize, 0.0f);
         freezeActive = false;
         freezeReadPos = 0;
         freezeGain = 0.0f;
@@ -81,13 +82,13 @@ public:
     {
         for (int i = 0; i < 4; ++i)
         {
-            std::fill (darkBuf[i].begin(), darkBuf[i].end(), 0.0f);
-            std::fill (sunBuf[i].begin(), sunBuf[i].end(), 0.0f);
+            std::fill(darkBuf[i].begin(), darkBuf[i].end(), 0.0f);
+            std::fill(sunBuf[i].begin(), sunBuf[i].end(), 0.0f);
             darkPos[i] = sunPos[i] = 0;
             sunEnvFollow[i] = 0.0f;
         }
-        std::fill (pitchBufL.begin(), pitchBufL.end(), 0.0f);
-        std::fill (pitchBufR.begin(), pitchBufR.end(), 0.0f);
+        std::fill(pitchBufL.begin(), pitchBufL.end(), 0.0f);
+        std::fill(pitchBufR.begin(), pitchBufR.end(), 0.0f);
         pitchWritePos = 0;
         pitchReadPhase = 0.0f;
         packetLossCounter = 0;
@@ -99,11 +100,11 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    void processBlock (float* L, float* R, int numSamples,
-                       float packetLoss, float bitCrush, float darkMix, float sunMix,
-                       float modDepth, float decayTime, bool freezeTrigger, float mix)
+    void processBlock(float* L, float* R, int numSamples, float packetLoss, float bitCrush, float darkMix, float sunMix,
+                      float modDepth, float decayTime, bool freezeTrigger, float mix)
     {
-        if (mix < 0.001f && !freezeActive) return;
+        if (mix < 0.001f && !freezeActive)
+            return;
 
         float feedback = 0.3f + decayTime * 0.6f; // 0.3 to 0.9
 
@@ -112,7 +113,7 @@ public:
 
         // Bit crush: reduce from 32-bit to target
         float crushBits = 32.0f - bitCrush * 24.0f; // 32 down to 8
-        float crushLevels = std::pow (2.0f, crushBits);
+        float crushLevels = std::pow(2.0f, crushBits);
 
         // Handle freeze trigger
         if (freezeTrigger && !freezeActive)
@@ -120,14 +121,14 @@ public:
             // Capture current reverb tail into freeze buffer
             for (int i = 0; i < kFreezeSize; ++i)
             {
-                int darkLen = static_cast<int> (darkBuf[0].size());
+                int darkLen = static_cast<int>(darkBuf[0].size());
                 int readIdx = (darkPos[0] - kFreezeSize + i + darkLen) % darkLen;
-                float sample = (darkLen > 0) ? darkBuf[0][static_cast<size_t> (readIdx)] : 0.0f;
+                float sample = (darkLen > 0) ? darkBuf[0][static_cast<size_t>(readIdx)] : 0.0f;
 
                 // Hamming window
-                float w = 0.54f - 0.46f * std::cos (6.28318f * static_cast<float> (i)
-                          / static_cast<float> (kFreezeSize - 1));
-                freezeBuf[static_cast<size_t> (i)] = sample * w;
+                float w =
+                    0.54f - 0.46f * std::cos(6.28318f * static_cast<float>(i) / static_cast<float>(kFreezeSize - 1));
+                freezeBuf[static_cast<size_t>(i)] = sample * w;
             }
             freezeActive = true;
             freezeReadPos = 0;
@@ -136,7 +137,8 @@ public:
         else if (!freezeTrigger && freezeActive)
         {
             freezeGain *= 0.999f; // slow fade out
-            if (freezeGain < 0.001f) freezeActive = false;
+            if (freezeGain < 0.001f)
+                freezeActive = false;
         }
 
         for (int s = 0; s < numSamples; ++s)
@@ -151,22 +153,22 @@ public:
             float darkInput = 0.0f;
             if (darkMix > 0.001f)
             {
-                int pbSize = static_cast<int> (pitchBufL.size());
+                int pbSize = static_cast<int>(pitchBufL.size());
                 if (pbSize > 1)
                 {
-                    pitchBufL[static_cast<size_t> (pitchWritePos)] = mono;
+                    pitchBufL[static_cast<size_t>(pitchWritePos)] = mono;
                     pitchWritePos = (pitchWritePos + 1) % pbSize;
 
                     // Read at half speed = -12 semitones
                     pitchReadPhase += 0.5f;
-                    if (pitchReadPhase >= static_cast<float> (pbSize))
-                        pitchReadPhase -= static_cast<float> (pbSize);
+                    if (pitchReadPhase >= static_cast<float>(pbSize))
+                        pitchReadPhase -= static_cast<float>(pbSize);
 
-                    int idx = static_cast<int> (pitchReadPhase);
-                    float frac = pitchReadPhase - static_cast<float> (idx);
+                    int idx = static_cast<int>(pitchReadPhase);
+                    float frac = pitchReadPhase - static_cast<float>(idx);
                     int next = (idx + 1) % pbSize;
-                    darkInput = pitchBufL[static_cast<size_t> (idx)] * (1.0f - frac)
-                              + pitchBufL[static_cast<size_t> (next)] * frac;
+                    darkInput = pitchBufL[static_cast<size_t>(idx)] * (1.0f - frac) +
+                                pitchBufL[static_cast<size_t>(next)] * frac;
                 }
             }
 
@@ -179,21 +181,26 @@ public:
                 float tap[4];
                 for (int i = 0; i < 4; ++i)
                 {
-                    int len = static_cast<int> (darkBuf[i].size());
-                    if (len == 0) { tap[i] = 0.0f; continue; }
+                    int len = static_cast<int>(darkBuf[i].size());
+                    if (len == 0)
+                    {
+                        tap[i] = 0.0f;
+                        continue;
+                    }
                     int rp = (darkPos[i] - len + 1 + len) % len;
-                    tap[i] = darkBuf[i][static_cast<size_t> (rp)];
+                    tap[i] = darkBuf[i][static_cast<size_t>(rp)];
                 }
 
                 float tapSum = tap[0] + tap[1] + tap[2] + tap[3];
                 for (int i = 0; i < 4; ++i)
                 {
                     float fb = (tap[i] - 0.5f * tapSum) * feedback + darkInput;
-                    fb = applyDataRot (fb, crushLevels, lossProb);
-                    fb = flushDenormal (fastTanh (fb));
-                    int len = static_cast<int> (darkBuf[i].size());
-                    if (len > 0) darkBuf[i][static_cast<size_t> (darkPos[i])] = fb;
-                    darkPos[i] = (darkPos[i] + 1) % std::max (1, len);
+                    fb = applyDataRot(fb, crushLevels, lossProb);
+                    fb = flushDenormal(fastTanh(fb));
+                    int len = static_cast<int>(darkBuf[i].size());
+                    if (len > 0)
+                        darkBuf[i][static_cast<size_t>(darkPos[i])] = fb;
+                    darkPos[i] = (darkPos[i] + 1) % std::max(1, len);
                 }
                 darkOut = (tap[0] + tap[2]) * 0.5f * darkMix;
             }
@@ -205,36 +212,40 @@ public:
             if (sunMix > 0.001f)
             {
                 // Envelope follower on input
-                float envIn = std::fabs (mono);
+                float envIn = std::fabs(mono);
 
                 float tap[4];
                 for (int i = 0; i < 4; ++i)
                 {
-                    int len = static_cast<int> (sunBuf[i].size());
-                    if (len < 2) { tap[i] = 0.0f; continue; }
+                    int len = static_cast<int>(sunBuf[i].size());
+                    if (len < 2)
+                    {
+                        tap[i] = 0.0f;
+                        continue;
+                    }
 
                     // Modulate read position based on envelope
-                    float envCoeff = 1.0f - std::exp (-6.28318f * 10.0f / sr);
+                    float envCoeff = 1.0f - std::exp(-6.28318f * 10.0f / sr);
                     sunEnvFollow[i] += (envIn - sunEnvFollow[i]) * envCoeff;
-                    sunEnvFollow[i] = flushDenormal (sunEnvFollow[i]);
+                    sunEnvFollow[i] = flushDenormal(sunEnvFollow[i]);
 
-                    int modOffset = static_cast<int> (sunEnvFollow[i] * modDepth
-                                    * static_cast<float> (len) * 0.05f);
+                    int modOffset = static_cast<int>(sunEnvFollow[i] * modDepth * static_cast<float>(len) * 0.05f);
                     int readOff = len - 1 - modOffset;
-                    readOff = std::max (1, std::min (readOff, len - 1));
+                    readOff = std::max(1, std::min(readOff, len - 1));
                     int rp = (sunPos[i] - readOff + len) % len;
-                    tap[i] = sunBuf[i][static_cast<size_t> (rp)];
+                    tap[i] = sunBuf[i][static_cast<size_t>(rp)];
                 }
 
                 float tapSum = tap[0] + tap[1] + tap[2] + tap[3];
                 for (int i = 0; i < 4; ++i)
                 {
                     float fb = (tap[i] - 0.5f * tapSum) * feedback + mono;
-                    fb = applyDataRot (fb, crushLevels, lossProb);
-                    fb = flushDenormal (fastTanh (fb));
-                    int len = static_cast<int> (sunBuf[i].size());
-                    if (len > 0) sunBuf[i][static_cast<size_t> (sunPos[i])] = fb;
-                    sunPos[i] = (sunPos[i] + 1) % std::max (1, len);
+                    fb = applyDataRot(fb, crushLevels, lossProb);
+                    fb = flushDenormal(fastTanh(fb));
+                    int len = static_cast<int>(sunBuf[i].size());
+                    if (len > 0)
+                        sunBuf[i][static_cast<size_t>(sunPos[i])] = fb;
+                    sunPos[i] = (sunPos[i] + 1) % std::max(1, len);
                 }
                 sunOut = (tap[1] + tap[3]) * 0.5f * sunMix;
             }
@@ -245,7 +256,7 @@ public:
             float freezeOut = 0.0f;
             if (freezeActive)
             {
-                freezeOut = freezeBuf[static_cast<size_t> (freezeReadPos)] * freezeGain;
+                freezeOut = freezeBuf[static_cast<size_t>(freezeReadPos)] * freezeGain;
                 freezeReadPos = (freezeReadPos + 1) % kFreezeSize;
             }
 
@@ -264,13 +275,13 @@ private:
     float sr = 44100.0f;
 
     // --- Data Rot: packet loss + bit crush in feedback path ---
-    float applyDataRot (float sample, float crushLevels, float lossProb) noexcept
+    float applyDataRot(float sample, float crushLevels, float lossProb) noexcept
     {
         // Packet loss: zero 256-sample chunks stochastically
         if (packetLossCounter <= 0)
         {
             rng = rng * 1664525u + 1013904223u;
-            float roll = static_cast<float> (rng & 0xFFFF) / 65536.0f;
+            float roll = static_cast<float>(rng & 0xFFFF) / 65536.0f;
             packetLossGate = (roll >= lossProb);
             packetLossCounter = 256;
         }
@@ -282,7 +293,7 @@ private:
         // Bandwidth squeeze: reduce bit depth
         if (crushLevels < 65000.0f) // avoid no-op at full bit depth
         {
-            sample = std::round (sample * crushLevels) / crushLevels;
+            sample = std::round(sample * crushLevels) / crushLevels;
         }
 
         return sample;
@@ -290,12 +301,12 @@ private:
 
     // Dark Side FDN
     std::vector<float> darkBuf[4];
-    int darkPos[4] {};
+    int darkPos[4]{};
 
     // Sun Side FDN
     std::vector<float> sunBuf[4];
-    int sunPos[4] {};
-    float sunEnvFollow[4] {};
+    int sunPos[4]{};
+    float sunEnvFollow[4]{};
 
     // Pitch shifter (Dark Side -12st)
     std::vector<float> pitchBufL, pitchBufR;

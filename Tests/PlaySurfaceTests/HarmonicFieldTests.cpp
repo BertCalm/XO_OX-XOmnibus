@@ -22,12 +22,12 @@ using namespace xoceanus;
 
 TEST_CASE("HarmonicField - positionToKey maps positions to correct semitones", "[playsurface][harmonic]")
 {
-    CHECK(HarmonicField::positionToKey(0.5f)          == 0);  // C at center
-    CHECK(HarmonicField::positionToKey(7.0f / 12.0f)  == 7);  // G
-    CHECK(HarmonicField::positionToKey(5.0f / 12.0f)  == 5);  // F
-    CHECK(HarmonicField::positionToKey(0.0f)           == 6);  // Gb left edge
-    CHECK(HarmonicField::positionToKey(1.0f)           == 6);  // F# right edge (enharmonic)
-    CHECK(HarmonicField::positionToKey(8.0f / 12.0f)  == 2);  // D
+    CHECK(HarmonicField::positionToKey(0.5f) == 0);         // C at center
+    CHECK(HarmonicField::positionToKey(7.0f / 12.0f) == 7); // G
+    CHECK(HarmonicField::positionToKey(5.0f / 12.0f) == 5); // F
+    CHECK(HarmonicField::positionToKey(0.0f) == 6);         // Gb left edge
+    CHECK(HarmonicField::positionToKey(1.0f) == 6);         // F# right edge (enharmonic)
+    CHECK(HarmonicField::positionToKey(8.0f / 12.0f) == 2); // D
 }
 
 //==============================================================================
@@ -39,21 +39,21 @@ TEST_CASE("HarmonicField - fifthsOffset round-trips through position", "[playsur
     // Center: offset 0
     {
         float pos = HarmonicField::fifthsOffsetToPosition(0);
-        int   off = HarmonicField::positionToFifthsOffset(pos);
+        int off = HarmonicField::positionToFifthsOffset(pos);
         CHECK(std::abs(pos - 0.5f) < 1e-4f);
         CHECK(off == 0);
     }
     // Left edge: offset -6
     {
         float pos = HarmonicField::fifthsOffsetToPosition(-6);
-        int   off = HarmonicField::positionToFifthsOffset(pos);
+        int off = HarmonicField::positionToFifthsOffset(pos);
         CHECK(std::abs(pos - 0.0f) < 1e-4f);
         CHECK(off == -6);
     }
     // Right edge: offset +6
     {
         float pos = HarmonicField::fifthsOffsetToPosition(6);
-        int   off = HarmonicField::positionToFifthsOffset(pos);
+        int off = HarmonicField::positionToFifthsOffset(pos);
         CHECK(std::abs(pos - 1.0f) < 1e-4f);
         CHECK(off == 6);
     }
@@ -71,13 +71,13 @@ TEST_CASE("HarmonicField - fifthsOffset round-trips through position", "[playsur
 
 TEST_CASE("HarmonicField - fifthsDistance known values and properties", "[playsurface][harmonic]")
 {
-    CHECK(HarmonicField::fifthsDistance(0, 7) == 1);   // C↔G
-    CHECK(HarmonicField::fifthsDistance(7, 0) == 1);   // G↔C (symmetric)
-    CHECK(HarmonicField::fifthsDistance(0, 6) == 6);   // C↔F# (tritone = max)
-    CHECK(HarmonicField::fifthsDistance(6, 0) == 6);   // F#↔C (symmetric)
-    CHECK(HarmonicField::fifthsDistance(0, 0) == 0);   // C↔C (unison)
-    CHECK(HarmonicField::fifthsDistance(0, 5) == 1);   // C↔F
-    CHECK(HarmonicField::fifthsDistance(0, 2) == 2);   // C↔D
+    CHECK(HarmonicField::fifthsDistance(0, 7) == 1); // C↔G
+    CHECK(HarmonicField::fifthsDistance(7, 0) == 1); // G↔C (symmetric)
+    CHECK(HarmonicField::fifthsDistance(0, 6) == 6); // C↔F# (tritone = max)
+    CHECK(HarmonicField::fifthsDistance(6, 0) == 6); // F#↔C (symmetric)
+    CHECK(HarmonicField::fifthsDistance(0, 0) == 0); // C↔C (unison)
+    CHECK(HarmonicField::fifthsDistance(0, 5) == 1); // C↔F
+    CHECK(HarmonicField::fifthsDistance(0, 2) == 2); // C↔D
 
     // Always in [0, 6]
     bool allInRange = true;
@@ -85,7 +85,10 @@ TEST_CASE("HarmonicField - fifthsDistance known values and properties", "[playsu
         for (int b = 0; b < 12; ++b)
         {
             int d = HarmonicField::fifthsDistance(a, b);
-            if (d < 0 || d > 6) { allInRange = false; }
+            if (d < 0 || d > 6)
+            {
+                allInRange = false;
+            }
         }
     CHECK(allInRange);
 
@@ -182,10 +185,10 @@ TEST_CASE("HarmonicField - markerArcY parabolic arc properties", "[playsurface][
 {
     constexpr float amp = 8.0f;
 
-    CHECK(std::abs(HarmonicField::markerArcY(6, amp)  - (-amp)) < 1e-4f); // center → -amp
-    CHECK(std::abs(HarmonicField::markerArcY(0, amp)  - amp)     < 1e-4f); // left edge → +amp
-    CHECK(std::abs(HarmonicField::markerArcY(12, amp) - amp)     < 1e-4f); // right edge → +amp
-    CHECK(std::abs(HarmonicField::markerArcY(6)       - (-8.0f)) < 1e-4f); // default amp
+    CHECK(std::abs(HarmonicField::markerArcY(6, amp) - (-amp)) < 1e-4f); // center → -amp
+    CHECK(std::abs(HarmonicField::markerArcY(0, amp) - amp) < 1e-4f);    // left edge → +amp
+    CHECK(std::abs(HarmonicField::markerArcY(12, amp) - amp) < 1e-4f);   // right edge → +amp
+    CHECK(std::abs(HarmonicField::markerArcY(6) - (-8.0f)) < 1e-4f);     // default amp
 
     // Symmetric: idx=3 and idx=9 give same arcY
     CHECK(std::abs(HarmonicField::markerArcY(3, amp) - HarmonicField::markerArcY(9, amp)) < 1e-4f);
@@ -196,7 +199,8 @@ TEST_CASE("HarmonicField - markerArcY parabolic arc properties", "[playsurface][
     for (int i = 7; i <= 12; ++i)
     {
         float cur = HarmonicField::markerArcY(i, amp);
-        if (cur < prev) monotonic = false;
+        if (cur < prev)
+            monotonic = false;
         prev = cur;
     }
     CHECK(monotonic);
@@ -209,30 +213,30 @@ TEST_CASE("HarmonicField - markerArcY parabolic arc properties", "[playsurface][
 TEST_CASE("HarmonicField - isInKey C major membership", "[playsurface][harmonic]")
 {
     const int cRoot = 0;
-    CHECK(HarmonicField::isInKey(60, cRoot));   // C4
-    CHECK(HarmonicField::isInKey(62, cRoot));   // D4
-    CHECK(HarmonicField::isInKey(64, cRoot));   // E4
-    CHECK(HarmonicField::isInKey(65, cRoot));   // F4
-    CHECK(HarmonicField::isInKey(67, cRoot));   // G4
-    CHECK(HarmonicField::isInKey(69, cRoot));   // A4
-    CHECK(HarmonicField::isInKey(71, cRoot));   // B4
-    CHECK(!HarmonicField::isInKey(61, cRoot));  // C#
-    CHECK(!HarmonicField::isInKey(66, cRoot));  // F#
-    CHECK(!HarmonicField::isInKey(70, cRoot));  // Bb
-    CHECK(HarmonicField::isInKey(72, cRoot));   // C5 (octave independent)
+    CHECK(HarmonicField::isInKey(60, cRoot));  // C4
+    CHECK(HarmonicField::isInKey(62, cRoot));  // D4
+    CHECK(HarmonicField::isInKey(64, cRoot));  // E4
+    CHECK(HarmonicField::isInKey(65, cRoot));  // F4
+    CHECK(HarmonicField::isInKey(67, cRoot));  // G4
+    CHECK(HarmonicField::isInKey(69, cRoot));  // A4
+    CHECK(HarmonicField::isInKey(71, cRoot));  // B4
+    CHECK(!HarmonicField::isInKey(61, cRoot)); // C#
+    CHECK(!HarmonicField::isInKey(66, cRoot)); // F#
+    CHECK(!HarmonicField::isInKey(70, cRoot)); // Bb
+    CHECK(HarmonicField::isInKey(72, cRoot));  // C5 (octave independent)
 }
 
 TEST_CASE("HarmonicField - isInKey G major and isRoot checks", "[playsurface][harmonic]")
 {
     const int gRoot = 7;
-    CHECK(HarmonicField::isInKey(66, gRoot));   // F#
-    CHECK(HarmonicField::isInKey(67, gRoot));   // G
-    CHECK(HarmonicField::isInKey(60, gRoot));   // C (4th)
-    CHECK(!HarmonicField::isInKey(65, gRoot));  // F (not in G major)
+    CHECK(HarmonicField::isInKey(66, gRoot));  // F#
+    CHECK(HarmonicField::isInKey(67, gRoot));  // G
+    CHECK(HarmonicField::isInKey(60, gRoot));  // C (4th)
+    CHECK(!HarmonicField::isInKey(65, gRoot)); // F (not in G major)
 
-    CHECK(HarmonicField::isRoot(60, 0));        // C is root of C major
-    CHECK(!HarmonicField::isRoot(67, 0));       // G is not root of C major
-    CHECK(HarmonicField::isRoot(67, 7));        // G is root of G major
+    CHECK(HarmonicField::isRoot(60, 0));  // C is root of C major
+    CHECK(!HarmonicField::isRoot(67, 0)); // G is not root of C major
+    CHECK(HarmonicField::isRoot(67, 7));  // G is root of G major
 }
 
 //==============================================================================
@@ -244,14 +248,14 @@ TEST_CASE("HarmonicField - quantizeToNearest snaps to nearest diatonic note", "[
     const int cRoot = 0;
 
     int csResult = HarmonicField::quantizeToNearest(61, cRoot);
-    CHECK((csResult == 62 || csResult == 60));  // C# → D or C
+    CHECK((csResult == 62 || csResult == 60)); // C# → D or C
 
     CHECK(HarmonicField::quantizeToNearest(60, cRoot) == 60); // C unchanged
     CHECK(HarmonicField::quantizeToNearest(67, cRoot) == 67); // G unchanged
     CHECK(HarmonicField::quantizeToNearest(71, cRoot) == 71); // B unchanged
 
     int bbResult = HarmonicField::quantizeToNearest(70, cRoot);
-    CHECK((bbResult == 69 || bbResult == 71));  // Bb → A or B
+    CHECK((bbResult == 69 || bbResult == 71)); // Bb → A or B
 
     // Result always in key
     bool quantizeStaysInKey = true;
@@ -268,6 +272,10 @@ TEST_CASE("HarmonicField - quantizeToNearest snaps to nearest diatonic note", "[
 }
 
 // Backward-compat shim
-namespace playsurface_tests {
-int runAll() { return 0; }
+namespace playsurface_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace playsurface_tests

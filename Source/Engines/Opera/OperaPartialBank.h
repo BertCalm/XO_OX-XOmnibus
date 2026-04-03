@@ -31,7 +31,8 @@
 #include <cstring>
 #include <algorithm>
 
-namespace opera {
+namespace opera
+{
 
 //==============================================================================
 // FastMath — 1024-entry sine/cosine lookup table + utilities
@@ -41,14 +42,16 @@ namespace opera {
 // times 8 voices, a table lookup saves meaningful CPU.
 //==============================================================================
 
-namespace FastMath {
+namespace FastMath
+{
 
 //------------------------------------------------------------------------------
 // Sine lookup table — initialized once at static init time.
 // 1024 entries covering [0, 2*pi). Index = phase / (2*pi) * 1024.
 //------------------------------------------------------------------------------
 
-struct SinTable {
+struct SinTable
+{
     float table[kSinTableSize];
 
     SinTable() noexcept
@@ -76,7 +79,7 @@ inline float fastSin(float radians) noexcept
 
     // Normalize to [0, 1) period
     float phase = radians * (1.0f / kTwoPi);
-    phase -= std::floor(phase);  // wrap to [0, 1)
+    phase -= std::floor(phase); // wrap to [0, 1)
 
     float indexF = phase * static_cast<float>(kSinTableSize);
     int idx0 = static_cast<int>(indexF);
@@ -129,8 +132,10 @@ inline float lerp(float a, float b, float t) noexcept
 //------------------------------------------------------------------------------
 inline float fastExp(float x) noexcept
 {
-    if (x < -87.0f) return 0.0f;
-    if (x >  88.0f) return 3.4028235e+38f;
+    if (x < -87.0f)
+        return 0.0f;
+    if (x > 88.0f)
+        return 3.4028235e+38f;
     int32_t bits = static_cast<int32_t>(12102203.0f * x + 1065353216.0f);
     float result;
     std::memcpy(&result, &bits, sizeof(result));
@@ -154,11 +159,12 @@ inline float fastTan(float x) noexcept
 // amplitudes and panning are computed by OperaPartialBank.
 //==============================================================================
 
-struct PartialState {
-    float theta     = 0.0f;   // phase in radians (set by KuramotoField)
-    float omega     = 0.0f;   // natural angular frequency in rad/s
-    float amplitude = 0.0f;   // formant-weighted amplitude (computed here)
-    float pan       = 0.0f;   // stereo position [-1, 1] (computed here)
+struct PartialState
+{
+    float theta = 0.0f;     // phase in radians (set by KuramotoField)
+    float omega = 0.0f;     // natural angular frequency in rad/s
+    float amplitude = 0.0f; // formant-weighted amplitude (computed here)
+    float pan = 0.0f;       // stereo position [-1, 1] (computed here)
 
     // Independent phase accumulators for each unison layer (FIX: P0 unison phase)
     // Layer 0 mirrors theta for the base (no-spread) layer; layers 1-3 run
@@ -170,9 +176,10 @@ struct PartialState {
 // FormantProfile — F1-F5 center frequencies and bandwidths for a vowel.
 //==============================================================================
 
-struct FormantProfile {
-    float freq[5] = {};    // formant center frequencies (Hz)
-    float bw[5]   = {};    // formant bandwidths (Hz)
+struct FormantProfile
+{
+    float freq[5] = {}; // formant center frequencies (Hz)
+    float bw[5] = {};   // formant bandwidths (Hz)
 };
 
 //==============================================================================
@@ -180,7 +187,8 @@ struct FormantProfile {
 // Peterson & Barney (1952), Fant (1960) — from architecture_spec.md Section 4.1
 //==============================================================================
 
-struct FormantTable {
+struct FormantTable
+{
     static constexpr int kNumVowels = 6;
 
     FormantProfile profiles[kNumVowels];
@@ -188,41 +196,38 @@ struct FormantTable {
     FormantTable() noexcept
     {
         // A (ah) — Peterson & Barney averaged male/female
-        profiles[0] = {{ 730.0f, 1090.0f, 2440.0f, 3400.0f, 4500.0f },
-                        {  80.0f,   90.0f,  120.0f,  150.0f,  200.0f }};
+        profiles[0] = {{730.0f, 1090.0f, 2440.0f, 3400.0f, 4500.0f}, {80.0f, 90.0f, 120.0f, 150.0f, 200.0f}};
 
         // E (eh)
-        profiles[1] = {{ 530.0f, 1840.0f, 2480.0f, 3400.0f, 4500.0f },
-                        {  60.0f,   80.0f,  100.0f,  150.0f,  200.0f }};
+        profiles[1] = {{530.0f, 1840.0f, 2480.0f, 3400.0f, 4500.0f}, {60.0f, 80.0f, 100.0f, 150.0f, 200.0f}};
 
         // I (ee)
-        profiles[2] = {{ 270.0f, 2290.0f, 3010.0f, 3400.0f, 4500.0f },
-                        {  40.0f,   70.0f,  110.0f,  150.0f,  200.0f }};
+        profiles[2] = {{270.0f, 2290.0f, 3010.0f, 3400.0f, 4500.0f}, {40.0f, 70.0f, 110.0f, 150.0f, 200.0f}};
 
         // O (oh)
-        profiles[3] = {{ 570.0f,  840.0f, 2410.0f, 3400.0f, 4500.0f },
-                        {  70.0f,   80.0f,  120.0f,  150.0f,  200.0f }};
+        profiles[3] = {{570.0f, 840.0f, 2410.0f, 3400.0f, 4500.0f}, {70.0f, 80.0f, 120.0f, 150.0f, 200.0f}};
 
         // U (oo)
-        profiles[4] = {{ 300.0f,  870.0f, 2240.0f, 3400.0f, 4500.0f },
-                        {  50.0f,   60.0f,  100.0f,  150.0f,  200.0f }};
+        profiles[4] = {{300.0f, 870.0f, 2240.0f, 3400.0f, 4500.0f}, {50.0f, 60.0f, 100.0f, 150.0f, 200.0f}};
 
         // Alien — impossible for human vocal tract
-        profiles[5] = {{ 180.0f, 1560.0f, 3850.0f, 6200.0f, 8400.0f },
-                        { 120.0f,  200.0f,  300.0f,  400.0f,  500.0f }};
+        profiles[5] = {{180.0f, 1560.0f, 3850.0f, 6200.0f, 8400.0f}, {120.0f, 200.0f, 300.0f, 400.0f, 500.0f}};
     }
 
     inline const FormantProfile& operator[](int index) const noexcept
     {
-        return profiles[FastMath::clamp(static_cast<float>(index), 0.0f,
-                        static_cast<float>(kNumVowels - 1)) == static_cast<float>(index)
-                        ? index : 0];
+        return profiles[FastMath::clamp(static_cast<float>(index), 0.0f, static_cast<float>(kNumVowels - 1)) ==
+                                static_cast<float>(index)
+                            ? index
+                            : 0];
     }
 
     inline const FormantProfile& get(int index) const noexcept
     {
-        if (index < 0) index = 0;
-        if (index >= kNumVowels) index = kNumVowels - 1;
+        if (index < 0)
+            index = 0;
+        if (index >= kNumVowels)
+            index = kNumVowels - 1;
         return profiles[index];
     }
 };
@@ -255,20 +260,21 @@ inline const FormantTable& getFormantTable() noexcept
 //   5. Per block: call computeFormantWeights() then renderBlock()
 //==============================================================================
 
-struct OperaPartialBank {
+struct OperaPartialBank
+{
 
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
 
-    PartialState partials[kMaxPartials];    // per-partial phase/freq/amp/pan
-    float partialRatios[kMaxPartials];      // frequency ratios (may be non-harmonic)
-    float detuneOffsets[kMaxPartials];      // Lorentzian detune per partial
-    float formantWeights[kMaxPartials];     // cached formant amplitude weights
-    float nyquistGains[kMaxPartials];       // anti-aliasing fade per partial
+    PartialState partials[kMaxPartials]; // per-partial phase/freq/amp/pan
+    float partialRatios[kMaxPartials];   // frequency ratios (may be non-harmonic)
+    float detuneOffsets[kMaxPartials];   // Lorentzian detune per partial
+    float formantWeights[kMaxPartials];  // cached formant amplitude weights
+    float nyquistGains[kMaxPartials];    // anti-aliasing fade per partial
 
-    int   numPartials = 32;                 // active partial count [4, 48]
-    float sampleRate  = 48000.0f;
+    int numPartials = 32; // active partial count [4, 48]
+    float sampleRate = 48000.0f;
     float invSampleRate = 1.0f / 48000.0f;
 
     //--------------------------------------------------------------------------
@@ -280,7 +286,8 @@ struct OperaPartialBank {
         invSampleRate = 1.0f / sr;
 
         // Zero all state
-        for (int i = 0; i < kMaxPartials; ++i) {
+        for (int i = 0; i < kMaxPartials; ++i)
+        {
             partials[i] = {};
             partialRatios[i] = static_cast<float>(i + 1);
             detuneOffsets[i] = 0.0f;
@@ -299,9 +306,10 @@ struct OperaPartialBank {
 
     inline void computePartialRatios(const FormantProfile& formants, float f0) noexcept
     {
-        if (f0 < 1.0f) f0 = 1.0f;  // safety
+        if (f0 < 1.0f)
+            f0 = 1.0f; // safety
 
-        int harmonicCount = (numPartials * 3) / 4;  // 75% harmonic
+        int harmonicCount = (numPartials * 3) / 4; // 75% harmonic
 
         // When numPartials <= 16, all go to harmonic series
         if (numPartials <= 16)
@@ -313,23 +321,28 @@ struct OperaPartialBank {
 
         // Place formant-targeted partials near formant centers
         int placed = harmonicCount;
-        for (int f = 0; f < 5 && placed < numPartials; ++f) {
+        for (int f = 0; f < 5 && placed < numPartials; ++f)
+        {
             float targetRatio = formants.freq[f] / f0;
 
             // Nearest half-integer ratio (allows non-harmonic placement)
             float nearestRatio = std::round(targetRatio * 2.0f) * 0.5f;
-            if (nearestRatio < 1.0f) nearestRatio = 1.0f;
+            if (nearestRatio < 1.0f)
+                nearestRatio = 1.0f;
 
             // Check for duplicates (within 0.25 of existing)
             bool duplicate = false;
-            for (int i = 0; i < placed; ++i) {
-                if (std::fabs(partialRatios[i] - nearestRatio) < 0.25f) {
+            for (int i = 0; i < placed; ++i)
+            {
+                if (std::fabs(partialRatios[i] - nearestRatio) < 0.25f)
+                {
                     duplicate = true;
                     break;
                 }
             }
 
-            if (!duplicate && placed < numPartials) {
+            if (!duplicate && placed < numPartials)
+            {
                 partialRatios[placed++] = nearestRatio;
             }
         }
@@ -358,10 +371,11 @@ struct OperaPartialBank {
 
     inline void computeLorentzianDetune(float detuneAmount) noexcept
     {
-        for (int i = 0; i < kMaxPartials; ++i) {
+        for (int i = 0; i < kMaxPartials; ++i)
+        {
             // Deterministic hash of partial index (Knuth multiplicative hash)
             uint32_t hash = (static_cast<uint32_t>(i) * 2654435761u) >> 16;
-            float normalizedHash = static_cast<float>(hash & 0xFFFF) / 32768.0f - 1.0f;  // [-1, 1]
+            float normalizedHash = static_cast<float>(hash & 0xFFFF) / 32768.0f - 1.0f; // [-1, 1]
 
             // Lorentzian spread: tan(pi/2 * x) gives heavy tails
             // Use 0.48 * pi to avoid infinity at +/-1
@@ -386,7 +400,8 @@ struct OperaPartialBank {
 
     inline void initPartialFrequencies(float f0) noexcept
     {
-        for (int i = 0; i < numPartials; ++i) {
+        for (int i = 0; i < numPartials; ++i)
+        {
             float freqHz = f0 * partialRatios[i] * (1.0f + detuneOffsets[i]);
             partials[i].omega = kTwoPi * freqHz;
         }
@@ -402,14 +417,14 @@ struct OperaPartialBank {
     // Weight = sum over f of: formantGain[f] * exp(-0.5 * ((freq - fc) / (bw/2))^2)
     //==========================================================================
 
-    static constexpr float kFormantGain[5] = { 1.0f, 0.8f, 0.5f, 0.3f, 0.2f };
+    static constexpr float kFormantGain[5] = {1.0f, 0.8f, 0.5f, 0.3f, 0.2f};
 
     /// Compute the formant weight for a single frequency.
-    static inline float computeFormantWeight(float partialFreqHz,
-                                             const FormantProfile& profile) noexcept
+    static inline float computeFormantWeight(float partialFreqHz, const FormantProfile& profile) noexcept
     {
         float weight = 0.0f;
-        for (int f = 0; f < 5; ++f) {
+        for (int f = 0; f < 5; ++f)
+        {
             float fc = profile.freq[f];
             float bw = profile.bw[f];
 
@@ -429,14 +444,14 @@ struct OperaPartialBank {
     // Linear interpolation for bandwidths.
     //==========================================================================
 
-    static inline FormantProfile interpolateFormants(const FormantProfile& vowelA,
-                                                     const FormantProfile& vowelB,
+    static inline FormantProfile interpolateFormants(const FormantProfile& vowelA, const FormantProfile& vowelB,
                                                      float morphPosition) noexcept
     {
         FormantProfile result;
         morphPosition = FastMath::clamp(morphPosition, 0.0f, 1.0f);
 
-        for (int f = 0; f < 5; ++f) {
+        for (int f = 0; f < 5; ++f)
+        {
             // Log interpolation for frequencies — perceptually even
             float logA = std::log(vowelA.freq[f]);
             float logB = std::log(vowelB.freq[f]);
@@ -452,7 +467,8 @@ struct OperaPartialBank {
     /// Call once per block (or when vowel/formant params change).
     inline void computeFormantWeights(const FormantProfile& profile, float f0) noexcept
     {
-        for (int i = 0; i < numPartials; ++i) {
+        for (int i = 0; i < numPartials; ++i)
+        {
             float freqHz = f0 * partialRatios[i] * (1.0f + detuneOffsets[i]);
             formantWeights[i] = computeFormantWeight(freqHz, profile);
         }
@@ -475,10 +491,10 @@ struct OperaPartialBank {
     // Bipolar: use != 0, not > 0 (negative tilt sweeps downward).
     //==========================================================================
 
-    static inline float computeSpectralTilt(int partialIndex, int totalPartials,
-                                            float tilt) noexcept
+    static inline float computeSpectralTilt(int partialIndex, int totalPartials, float tilt) noexcept
     {
-        if (totalPartials <= 1) return 1.0f;
+        if (totalPartials <= 1)
+            return 1.0f;
 
         // Ratio in (0, 1] — partial 0 is always 1.0 (fundamental unaffected)
         float ratio = static_cast<float>(partialIndex + 1) / static_cast<float>(totalPartials);
@@ -488,7 +504,8 @@ struct OperaPartialBank {
 
         // pow(ratio, exponent) — use exp(log) for fractional exponents
         // Guard: ratio is always > 0 since partialIndex >= 0 and totalPartials >= 1
-        if (exponent == 0.0f) return 1.0f;
+        if (exponent == 0.0f)
+            return 1.0f;
         return std::exp(exponent * std::log(ratio));
     }
 
@@ -505,8 +522,7 @@ struct OperaPartialBank {
     // from the KuramotoField module.
     //==========================================================================
 
-    static inline float computePartialPan(int partialIdx, float theta_i,
-                                          float psi, float /*r*/,
+    static inline float computePartialPan(int partialIdx, float theta_i, float psi, float /*r*/,
                                           float widthParam) noexcept
     {
         // Note: r (order parameter) is accepted for API compatibility with the
@@ -528,7 +544,8 @@ struct OperaPartialBank {
         float edgeSign = (partialIdx & 1) ? -1.0f : 1.0f;
 
         // Alternating quadrants for richer spatial distribution
-        if (partialIdx & 2) edgeSign *= -0.7f;  // inner positions
+        if (partialIdx & 2)
+            edgeSign *= -0.7f; // inner positions
 
         float pan = edgeSign * (1.0f - coherence) * widthParam;
         return FastMath::clamp(pan, -1.0f, 1.0f);
@@ -545,10 +562,12 @@ struct OperaPartialBank {
 
     static inline float nyquistFade(float partialFreqHz, float sr) noexcept
     {
-        float nyquist  = sr * 0.5f;
+        float nyquist = sr * 0.5f;
         float fadeStart = nyquist * 0.9f;
-        if (partialFreqHz < fadeStart) return 1.0f;
-        if (partialFreqHz >= nyquist)  return 0.0f;
+        if (partialFreqHz < fadeStart)
+            return 1.0f;
+        if (partialFreqHz >= nyquist)
+            return 0.0f;
         return (nyquist - partialFreqHz) / (nyquist - fadeStart);
     }
 
@@ -556,7 +575,8 @@ struct OperaPartialBank {
     /// Call once per block or when frequencies change.
     inline void computeNyquistGains(float f0) noexcept
     {
-        for (int i = 0; i < numPartials; ++i) {
+        for (int i = 0; i < numPartials; ++i)
+        {
             float freqHz = f0 * partialRatios[i] * (1.0f + detuneOffsets[i]);
             nyquistGains[i] = nyquistFade(freqHz, sampleRate);
         }
@@ -588,30 +608,24 @@ struct OperaPartialBank {
     // Audio thread safe: no allocation, no blocking, no I/O.
     //==========================================================================
 
-    inline void renderBlock(float* outputL,
-                            float* outputR,
-                            int    numSamples,
-                            float  f0,
-                            float  tilt,
-                            float  widthParam,
-                            float  orderParameter,
-                            float  meanPhase,
-                            float  baseAmplitude) noexcept
+    inline void renderBlock(float* outputL, float* outputR, int numSamples, float f0, float tilt, float widthParam,
+                            float orderParameter, float meanPhase, float baseAmplitude) noexcept
     {
-        if (numPartials <= 0 || f0 < 1.0f) return;
+        if (numPartials <= 0 || f0 < 1.0f)
+            return;
 
         // Pre-compute per-partial constants (once per block, not per sample)
         // These are: formant weight * spectral tilt * nyquist fade * base amplitude
         float partialAmp[kMaxPartials];
         float partialPanVal[kMaxPartials];
 
-        for (int i = 0; i < numPartials; ++i) {
+        for (int i = 0; i < numPartials; ++i)
+        {
             float tiltGain = computeSpectralTilt(i, numPartials, tilt);
             partialAmp[i] = formantWeights[i] * tiltGain * nyquistGains[i] * baseAmplitude;
 
             // Compute spatial pan position from Kuramoto coherence
-            partialPanVal[i] = computePartialPan(i, partials[i].theta, meanPhase,
-                                                  orderParameter, widthParam);
+            partialPanVal[i] = computePartialPan(i, partials[i].theta, meanPhase, orderParameter, widthParam);
 
             // Cache into PartialState for external inspection
             partials[i].amplitude = partialAmp[i];
@@ -624,8 +638,9 @@ struct OperaPartialBank {
         float panL[kMaxPartials];
         float panR[kMaxPartials];
 
-        for (int i = 0; i < numPartials; ++i) {
-            float angle = (partialPanVal[i] + 1.0f) * 0.25f * kPi;  // [0, pi/2]
+        for (int i = 0; i < numPartials; ++i)
+        {
+            float angle = (partialPanVal[i] + 1.0f) * 0.25f * kPi; // [0, pi/2]
             panL[i] = FastMath::fastCos(angle);
             panR[i] = FastMath::fastSin(angle);
         }
@@ -639,13 +654,16 @@ struct OperaPartialBank {
         //----------------------------------------------------------------------
         // Inner loop: per-sample, sum all partials
         //----------------------------------------------------------------------
-        for (int s = 0; s < numSamples; ++s) {
+        for (int s = 0; s < numSamples; ++s)
+        {
             float sumL = 0.0f;
             float sumR = 0.0f;
 
-            for (int i = 0; i < numPartials; ++i) {
+            for (int i = 0; i < numPartials; ++i)
+            {
                 // Skip silent partials
-                if (partialAmp[i] < 1e-8f) {
+                if (partialAmp[i] < 1e-8f)
+                {
                     // Still advance phase to keep partial in sync
                     partials[i].theta += phaseInc[i];
                     continue;
@@ -669,10 +687,13 @@ struct OperaPartialBank {
 
         // Phase wrapping: keep theta in [0, 2*pi) to prevent float precision loss
         // Done once per block (not per sample) for efficiency
-        for (int i = 0; i < numPartials; ++i) {
+        for (int i = 0; i < numPartials; ++i)
+        {
             float& theta = partials[i].theta;
-            if (theta >= kTwoPi) theta -= kTwoPi * std::floor(theta / kTwoPi);
-            if (theta < 0.0f)    theta += kTwoPi;
+            if (theta >= kTwoPi)
+                theta -= kTwoPi * std::floor(theta / kTwoPi);
+            if (theta < 0.0f)
+                theta += kTwoPi;
         }
     }
 
@@ -683,15 +704,11 @@ struct OperaPartialBank {
     // and Nyquist gains in one call. Use this on note-on events.
     //==========================================================================
 
-    inline void setupForNote(float f0,
-                             int   activePartials,
-                             float detuneAmount,
-                             int   vowelAIndex,
-                             int   vowelBIndex,
+    inline void setupForNote(float f0, int activePartials, float detuneAmount, int vowelAIndex, int vowelBIndex,
                              float voiceMorph) noexcept
     {
         numPartials = FastMath::clamp(static_cast<float>(activePartials), 4.0f, 48.0f);
-        numPartials = static_cast<int>(numPartials);  // ensure integer
+        numPartials = static_cast<int>(numPartials); // ensure integer
 
         const auto& table = getFormantTable();
         const FormantProfile& vowelA = table.get(vowelAIndex);
@@ -724,10 +741,7 @@ struct OperaPartialBank {
     // stable within a note).
     //==========================================================================
 
-    inline void updateFormants(float f0,
-                               int   vowelAIndex,
-                               int   vowelBIndex,
-                               float voiceMorph) noexcept
+    inline void updateFormants(float f0, int vowelAIndex, int vowelBIndex, float voiceMorph) noexcept
     {
         const auto& table = getFormantTable();
         const FormantProfile& vowelA = table.get(vowelAIndex);
@@ -745,15 +759,16 @@ struct OperaPartialBank {
 
     inline void reset() noexcept
     {
-        for (int i = 0; i < kMaxPartials; ++i) {
-            partials[i].theta     = 0.0f;
-            partials[i].omega     = 0.0f;
+        for (int i = 0; i < kMaxPartials; ++i)
+        {
+            partials[i].theta = 0.0f;
+            partials[i].omega = 0.0f;
             partials[i].amplitude = 0.0f;
-            partials[i].pan       = 0.0f;
+            partials[i].pan = 0.0f;
             for (int u = 0; u < 4; ++u)
                 partials[i].layerTheta[u] = 0.0f;
-            formantWeights[i]     = 0.0f;
-            nyquistGains[i]       = 0.0f;
+            formantWeights[i] = 0.0f;
+            nyquistGains[i] = 0.0f;
         }
     }
 
@@ -763,7 +778,8 @@ struct OperaPartialBank {
 
     inline float getCurrentF0() const noexcept
     {
-        if (numPartials <= 0) return 0.0f;
+        if (numPartials <= 0)
+            return 0.0f;
         return partials[0].omega / kTwoPi;
     }
 
@@ -775,8 +791,10 @@ struct OperaPartialBank {
     inline float getMonoSample() const noexcept
     {
         float sum = 0.0f;
-        for (int i = 0; i < numPartials; ++i) {
-            if (partials[i].amplitude < 1e-8f) continue;
+        for (int i = 0; i < numPartials; ++i)
+        {
+            if (partials[i].amplitude < 1e-8f)
+                continue;
             sum += partials[i].amplitude * FastMath::fastSin(partials[i].theta);
         }
         return sum;

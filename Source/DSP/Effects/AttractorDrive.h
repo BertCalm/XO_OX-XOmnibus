@@ -5,7 +5,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // AttractorDrive — Chaotic saturation engine following a Lorenz attractor.
@@ -33,9 +34,9 @@ class AttractorDrive
 public:
     AttractorDrive() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
 
         // Lorenz initial conditions (near the attractor, not at origin)
         lx = 1.0f;
@@ -59,7 +60,9 @@ public:
 
     void reset()
     {
-        lx = 1.0f; ly = 1.0f; lz = 1.0f;
+        lx = 1.0f;
+        ly = 1.0f;
+        lz = 1.0f;
         logisticX = 0.5f;
         slewDrive = 0.0f;
         slewTilt = 0.0f;
@@ -68,19 +71,20 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    void processBlock (float* L, float* R, int numSamples,
-                       float bifurcation, float driveBase, float speed, float mix)
+    void processBlock(float* L, float* R, int numSamples, float bifurcation, float driveBase, float speed, float mix)
     {
-        if (sr <= 0.0f) return;
-        if (mix < 0.001f) return;
+        if (sr <= 0.0f)
+            return;
+        if (mix < 0.001f)
+            return;
 
         // Lorenz system parameters (classic values: σ=10, ρ=28, β=8/3)
         constexpr float sigma = 10.0f;
-        constexpr float rho   = 28.0f;
-        constexpr float beta  = 8.0f / 3.0f;
+        constexpr float rho = 28.0f;
+        constexpr float beta = 8.0f / 3.0f;
 
         // Clamp bifurcation to valid logistic map range
-        float r = std::max (1.0f, std::min (3.99f, 1.0f + bifurcation * 2.99f));
+        float r = std::max(1.0f, std::min(3.99f, 1.0f + bifurcation * 2.99f));
 
         // ODE integration step (scaled to audio rate).
         // Multiply by (sr / 44100.0f) so the Lorenz orbit completes the same physical
@@ -98,7 +102,7 @@ public:
             {
                 // Logistic map modulates integration speed
                 logisticX = r * logisticX * (1.0f - logisticX);
-                logisticX = std::max (0.001f, std::min (0.999f, logisticX));
+                logisticX = std::max(0.001f, std::min(0.999f, logisticX));
 
                 float dt = basedt * (0.5f + logisticX);
 
@@ -113,16 +117,16 @@ public:
 
                 // Safety clamp — Lorenz attractor is bounded but numerical
                 // errors can cause drift with Euler integration
-                lx = std::max (-50.0f, std::min (50.0f, lx));
-                ly = std::max (-50.0f, std::min (50.0f, ly));
-                lz = std::max (0.0f, std::min (60.0f, lz));
+                lx = std::max(-50.0f, std::min(50.0f, lx));
+                ly = std::max(-50.0f, std::min(50.0f, ly));
+                lz = std::max(0.0f, std::min(60.0f, lz));
             }
 
             // --- Map attractor coordinates to DSP parameters ---
             // X → drive: normalize from [-50,50] to [0,1], add base
             float attractorDrive = (lx + 50.0f) / 100.0f; // 0 to 1
             float totalDrive = driveBase + attractorDrive * 0.5f;
-            totalDrive = std::max (0.0f, std::min (2.0f, totalDrive));
+            totalDrive = std::max(0.0f, std::min(2.0f, totalDrive));
 
             // Y → slew rate: normalize, use as smoothing coefficient
             float attractorSlew = (ly + 50.0f) / 100.0f;
@@ -136,18 +140,18 @@ public:
             // --- Apply saturation with slew-limited drive ---
             float driveAmount = 1.0f + slewDrive * 8.0f; // 1x to 17x
 
-            float satL = fastTanh (L[s] * driveAmount);
-            float satR = fastTanh (R[s] * driveAmount);
+            float satL = fastTanh(L[s] * driveAmount);
+            float satR = fastTanh(R[s] * driveAmount);
 
             // Normalize back (tanh compresses, so compensate)
-            float compensation = 1.0f / std::max (0.3f, fastTanh (driveAmount * 0.7f));
+            float compensation = 1.0f / std::max(0.3f, fastTanh(driveAmount * 0.7f));
             satL *= compensation * 0.5f;
             satR *= compensation * 0.5f;
 
             // --- Spectral tilt (simple 1-pole shelving) ---
             // Positive tilt = brighter (less LP), negative = darker (more LP)
-            float tiltFreq = 2000.0f * std::pow (2.0f, slewTilt * 2.0f); // 500 Hz to 8 kHz
-            float tiltCoeff = 1.0f - std::exp (-6.28318f * tiltFreq / sr);
+            float tiltFreq = 2000.0f * std::pow(2.0f, slewTilt * 2.0f); // 500 Hz to 8 kHz
+            float tiltCoeff = 1.0f - std::exp(-6.28318f * tiltFreq / sr);
 
             tiltStateL += (satL - tiltStateL) * tiltCoeff;
             tiltStateR += (satR - tiltStateR) * tiltCoeff;
@@ -158,7 +162,7 @@ public:
             float outR = tiltStateR * (1.0f - tiltBlend) + satR * tiltBlend;
 
             // --- DC blocker ---
-            float dcCoeff = std::exp (-6.28318f * 5.0f / sr); // matched-Z transform
+            float dcCoeff = std::exp(-6.28318f * 5.0f / sr); // matched-Z transform
             float dcOutL = outL - dcPrevL + dcStateL * dcCoeff;
             float dcOutR = outR - dcPrevR + dcStateR * dcCoeff;
             dcPrevL = outL;
@@ -167,11 +171,11 @@ public:
             dcStateR = dcOutR;
 
             // --- Hard limiter (safety valve for chaotic runaway) ---
-            dcOutL = std::max (-1.0f, std::min (1.0f, dcOutL));
-            dcOutR = std::max (-1.0f, std::min (1.0f, dcOutR));
+            dcOutL = std::max(-1.0f, std::min(1.0f, dcOutL));
+            dcOutR = std::max(-1.0f, std::min(1.0f, dcOutR));
 
-            dcOutL = flushDenormal (dcOutL);
-            dcOutR = flushDenormal (dcOutR);
+            dcOutL = flushDenormal(dcOutL);
+            dcOutR = flushDenormal(dcOutR);
 
             L[s] = L[s] * (1.0f - mix) + dcOutL * mix;
             R[s] = R[s] * (1.0f - mix) + dcOutR * mix;

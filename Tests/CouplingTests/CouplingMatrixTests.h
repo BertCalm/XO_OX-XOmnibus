@@ -1,5 +1,6 @@
 #pragma once
 
-namespace coupling_tests {
-    int runAll();
+namespace coupling_tests
+{
+int runAll();
 }

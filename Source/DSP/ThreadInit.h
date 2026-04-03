@@ -61,11 +61,13 @@
 
 // SSE intrinsics for x86 MXCSR access
 #if defined(__SSE__) || defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__)
-    #include <immintrin.h>
+#include <immintrin.h>
 #endif
 
-namespace xoceanus {
-namespace dsp {
+namespace xoceanus
+{
+namespace dsp
+{
 
 //==============================================================================
 /// initAudioThread() — set hardware flush-to-zero flags on the calling thread.
@@ -91,7 +93,7 @@ static inline void initAudioThread() noexcept
     // FZ bit position: ARM DDI 0487 — FPCR bit [24] = FZ (Flush-to-Zero).
     constexpr uint64_t kFPCR_FZ = UINT64_C(0x01000000);
     const uint64_t fpcr = __builtin_arm_rsr64("fpcr");
-    if ((fpcr & kFPCR_FZ) == 0)                 // skip the write if already set
+    if ((fpcr & kFPCR_FZ) == 0) // skip the write if already set
         __builtin_arm_wsr64("fpcr", fpcr | kFPCR_FZ);
 
 #elif defined(__SSE__) || defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__)
@@ -129,11 +131,11 @@ static inline void initAudioThread() noexcept
 /// (trivial) overhead of the flag read on every block.
 struct ScopedAudioThreadInit
 {
-    ScopedAudioThreadInit() noexcept  { initAudioThread(); }
+    ScopedAudioThreadInit() noexcept { initAudioThread(); }
     ~ScopedAudioThreadInit() noexcept { /* intentionally does not restore flags */ }
 
     // Non-copyable — this is a one-shot thread-state mutator.
-    ScopedAudioThreadInit(const ScopedAudioThreadInit&)            = delete;
+    ScopedAudioThreadInit(const ScopedAudioThreadInit&) = delete;
     ScopedAudioThreadInit& operator=(const ScopedAudioThreadInit&) = delete;
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 
-namespace playsurface_tests {
-    int runAll();
+namespace playsurface_tests
+{
+int runAll();
 }

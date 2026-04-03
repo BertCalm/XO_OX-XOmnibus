@@ -6,51 +6,42 @@
 #include "../GalleryColors.h"
 #include "GalleryLookAndFeel.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // PresetBrowserPanel — full preset browser shown in a CallOutBox.
 // Provides mood tabs + name search + scrollable list.
 // Calls onPresetSelected callback when the user clicks a preset row.
-class PresetBrowserPanel : public juce::Component,
-                           public juce::ListBoxModel,
-                           public juce::Timer
+class PresetBrowserPanel : public juce::Component, public juce::ListBoxModel, public juce::Timer
 {
 public:
-    PresetBrowserPanel(const PresetManager& pm,
-                       std::function<void(const PresetData&)> onSelect)
+    PresetBrowserPanel(const PresetManager& pm, std::function<void(const PresetData&)> onSelect)
         : presetManager(pm), onPresetSelected(std::move(onSelect))
     {
         // Search field
         searchField.setTextToShowWhenEmpty("Search presets...",
                                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
         // Prototype: elevated bg, border, T1 text
-        searchField.setColour(juce::TextEditor::backgroundColourId,
-                              GalleryColors::get(GalleryColors::elevated()));
-        searchField.setColour(juce::TextEditor::outlineColourId,
-                              GalleryColors::border());
-        searchField.setColour(juce::TextEditor::textColourId,
-                              GalleryColors::get(GalleryColors::t1()));
+        searchField.setColour(juce::TextEditor::backgroundColourId, GalleryColors::get(GalleryColors::elevated()));
+        searchField.setColour(juce::TextEditor::outlineColourId, GalleryColors::border());
+        searchField.setColour(juce::TextEditor::textColourId, GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.onTextChange = [this] { startTimer(150); };
         addAndMakeVisible(searchField);
 
         // Mood filter buttons (ALL = index 0, then 15 moods)
-        static const char* moodLabels[] = {
-            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
-            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
-        };
+        static const char* moodLabels[] = {"ALL",      "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
+                                           "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
+                                           "Ethereal", "Kinetic",    "Luminous",   "Organic"};
         for (int i = 0; i < kNumMoods; ++i)
         {
             moodBtns[i].setButtonText(moodLabels[i]);
             moodBtns[i].setClickingTogglesState(false);
             // Prototype: transparent default bg, t3 text, gold-dim active bg + gold text
-            moodBtns[i].setColour(juce::TextButton::buttonColourId,
-                                  juce::Colours::transparentBlack);
-            moodBtns[i].setColour(juce::TextButton::textColourOffId,
-                                  GalleryColors::get(GalleryColors::t3()));
-            moodBtns[i].setColour(juce::TextButton::textColourOnId,
-                                  GalleryColors::get(GalleryColors::xoGold));
+            moodBtns[i].setColour(juce::TextButton::buttonColourId, juce::Colours::transparentBlack);
+            moodBtns[i].setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::t3()));
+            moodBtns[i].setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::xoGold));
             moodBtns[i].setColour(juce::TextButton::buttonOnColourId,
                                   GalleryColors::get(GalleryColors::xoGold).withAlpha(0.14f));
             moodBtns[i].onClick = [this, i]
@@ -69,17 +60,14 @@ public:
         listBox.setModel(this);
         listBox.setRowHeight(32); // Prototype: ~32px rows (7px padding + content)
         // Prototype: transparent bg (parent paints bg), subtle border
-        listBox.setColour(juce::ListBox::backgroundColourId,
-                          juce::Colours::transparentBlack);
-        listBox.setColour(juce::ListBox::outlineColourId,
-                          GalleryColors::border());
+        listBox.setColour(juce::ListBox::backgroundColourId, juce::Colours::transparentBlack);
+        listBox.setColour(juce::ListBox::outlineColourId, GalleryColors::border());
         listBox.setOutlineThickness(1);
         addAndMakeVisible(listBox);
 
         // Count label
         countLabel.setFont(GalleryFonts::label(8.5f));
-        countLabel.setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
+        countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
 
@@ -92,14 +80,13 @@ public:
     //==========================================================================
     // Minimum size constants — callers (e.g. SidebarPanel) can read these to
     // enforce a floor and prevent clipping of the search row or mood pills.
-    static constexpr int kMinWidth  = 280;
+    static constexpr int kMinWidth = 280;
     static constexpr int kMinHeight = 240;
 
     // juce::ListBoxModel interface
     int getNumRows() override { return (int)filtered.size(); }
 
-    void paintListBoxItem(int row, juce::Graphics& g,
-                          int w, int h, bool selected) override
+    void paintListBoxItem(int row, juce::Graphics& g, int w, int h, bool selected) override
     {
         if (row < 0 || row >= (int)filtered.size())
             return;
@@ -133,13 +120,16 @@ public:
             juce::Colour(0xFFC6E377), // Luminous    → Emergence Lime
             juce::Colour(0xFF228B22), // Organic     → Forest Green
         };
-        static const char* moodIds[] = {
-            "Foundation", "Atmosphere", "Entangled",  "Prism",   "Flux",     "Aether",   "Family",  "Submerged",
-            "Coupling",   "Crystalline","Deep",        "Ethereal","Kinetic",  "Luminous", "Organic"
-        };
+        static const char* moodIds[] = {"Foundation", "Atmosphere", "Entangled", "Prism",    "Flux",
+                                        "Aether",     "Family",     "Submerged", "Coupling", "Crystalline",
+                                        "Deep",       "Ethereal",   "Kinetic",   "Luminous", "Organic"};
         juce::Colour dot = get(borderGray());
         for (int mi = 0; mi < 15; ++mi)
-            if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
+            if (preset.mood == moodIds[mi])
+            {
+                dot = moodColors[mi];
+                break;
+            }
 
         // Prototype: 5×5px mood pip
         g.setColour(dot.withAlpha(0.7f));
@@ -148,8 +138,7 @@ public:
         // Preset name
         g.setColour(get(selected ? t1() : t2()));
         g.setFont(GalleryFonts::body(11.5f)); // Prototype: Inter 11.5px
-        g.drawText(preset.name, 22, 0, w - 36, h,
-                   juce::Justification::centredLeft, true);
+        g.drawText(preset.name, 22, 0, w - 36, h, juce::Justification::centredLeft, true);
 
         // Engine tag if multi-engine
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
@@ -164,7 +153,8 @@ public:
 
     juce::String getNameForRow(int row) override
     {
-        if (row < 0 || row >= (int)filtered.size()) return {};
+        if (row < 0 || row >= (int)filtered.size())
+            return {};
         const auto& p = filtered[(size_t)row];
         return p.name + (p.mood.isEmpty() ? "" : ", " + p.mood);
     }
@@ -181,13 +171,9 @@ public:
         selectRow(row);
     }
 
-    void returnKeyPressed(int lastRowSelected) override
-    {
-        selectRow(lastRowSelected);
-    }
+    void returnKeyPressed(int lastRowSelected) override { selectRow(lastRowSelected); }
 
     void selectedRowsChanged(int) override {}
-
 
     void paint(juce::Graphics& g) override
     {
@@ -209,9 +195,9 @@ public:
         // Mood pills — wrap into rows of ~6 per line
         // Prototype: flex-wrap, pill shapes (border-radius 10px), Inter 9px, 2px 8px padding
         {
-            const int pillH   = 20;
-            const int hGap    = 4;
-            const int vGap    = 4;
+            const int pillH = 20;
+            const int hGap = 4;
+            const int vGap = 4;
             int px = b.getX();
             int py = b.getY();
             const int maxX = b.getRight();
@@ -219,8 +205,9 @@ public:
             for (int i = 0; i < kNumMoods; ++i)
             {
                 // Measure pill width from text
-                int pillW = juce::jmax(32, juce::roundToInt(GalleryFonts::body(9.0f)
-                            .getStringWidthFloat(moodBtns[i].getButtonText())) + 18);
+                int pillW = juce::jmax(
+                    32,
+                    juce::roundToInt(GalleryFonts::body(9.0f).getStringWidthFloat(moodBtns[i].getButtonText())) + 18);
 
                 if (px + pillW > maxX && i > 0)
                 {
@@ -257,10 +244,9 @@ private:
 
     void updateFilter()
     {
-        static const char* moodNames[] = {
-            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
-            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
-        };
+        static const char* moodNames[] = {"",         "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
+                                          "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
+                                          "Ethereal", "Kinetic",    "Luminous",   "Organic"};
 
         auto query = searchField.getText().trim();
 
@@ -278,15 +264,12 @@ private:
 
         // Sort alphabetically within current filter
         std::sort(filtered.begin(), filtered.end(),
-                  [](const PresetData& a, const PresetData& b) {
-                      return a.name.compareIgnoreCase(b.name) < 0;
-                  });
+                  [](const PresetData& a, const PresetData& b) { return a.name.compareIgnoreCase(b.name) < 0; });
 
         listBox.updateContent();
         listBox.deselectAllRows();
 
-        countLabel.setText(juce::String(filtered.size()) + " presets",
-                           juce::dontSendNotification);
+        countLabel.setText(juce::String(filtered.size()) + " presets", juce::dontSendNotification);
     }
 
     static constexpr int kNumMoods = 16; // ALL + 15 moods

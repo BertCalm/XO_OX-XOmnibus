@@ -30,7 +30,8 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // OfferingVariationSet — Cached parameter offsets for one trigger event.
@@ -60,17 +61,14 @@ public:
     // Inverted-U: peak at x=0.5, minimum at 0 and 1.
     // Scaled to [0.2, 1.0] — even at extremes there's some variation.
     //--------------------------------------------------------------------------
-    static float berlyneCurve (float x) noexcept
-    {
-        return 0.2f + 0.8f * (4.0f * x * (1.0f - x));
-    }
+    static float berlyneCurve(float x) noexcept { return 0.2f + 0.8f * (4.0f * x * (1.0f - x)); }
 
     //--------------------------------------------------------------------------
     // Wundt Hedonic Curve → ofr_digComplexity
     // Asymmetric: slow ramp to peak at 0.6, sharper fall after.
     // Models Wundt's finding that overstimulation hurts more than understimulation.
     //--------------------------------------------------------------------------
-    static float wundtDensity (float x) noexcept
+    static float wundtDensity(float x) noexcept
     {
         if (x <= 0.6f)
             return x / 0.6f;
@@ -83,7 +81,7 @@ public:
     // Probability that next hit reuses previous variation set.
     // 0 = every hit different (chaos), 1 = every hit identical (hypnotic lock).
     //--------------------------------------------------------------------------
-    static float flowBalance (float x) noexcept
+    static float flowBalance(float x) noexcept
     {
         return x; // Linear — simplest is correct here
     }
@@ -98,26 +96,25 @@ public:
     //
     // Returns: variation offsets to apply to the voice's transient parameters.
     //--------------------------------------------------------------------------
-    OfferingVariationSet generateVariation (float curiosity, float complexity,
-                                            float flow, int voiceIndex) noexcept
+    OfferingVariationSet generateVariation(float curiosity, float complexity, float flow, int voiceIndex) noexcept
     {
-        voiceIndex = std::max (0, std::min (voiceIndex, 7));
+        voiceIndex = std::max(0, std::min(voiceIndex, 7));
 
         // Flow: decide whether to reuse last variation or generate new
-        float rng = nextRandom (voiceIndex);
-        if (rng < flowBalance (flow) && hasLastVariation_[voiceIndex])
+        float rng = nextRandom(voiceIndex);
+        if (rng < flowBalance(flow) && hasLastVariation_[voiceIndex])
         {
             // Reuse cached variation — creates the "locked groove" feel
             return lastVariations_[voiceIndex];
         }
 
         // Generate new variation using Berlyne + Wundt
-        float variationRange = berlyneCurve (curiosity);
-        float density = wundtDensity (complexity);
+        float variationRange = berlyneCurve(curiosity);
+        float density = wundtDensity(complexity);
 
         // How many of the 6 voice params to vary
-        int paramsToVary = static_cast<int> (density * 6.0f + 0.5f);
-        paramsToVary = std::max (0, std::min (paramsToVary, 6));
+        int paramsToVary = static_cast<int>(density * 6.0f + 0.5f);
+        paramsToVary = std::max(0, std::min(paramsToVary, 6));
 
         // High complexity = fewer params but wilder swings
         float variationIntensity = 1.0f;
@@ -127,17 +124,23 @@ public:
         OfferingVariationSet var;
 
         // Alien shift: above curiosity 0.7, base parameters shift toward unusual values
-        float alienShift = std::max (0.0f, (curiosity - 0.7f) / 0.3f);
+        float alienShift = std::max(0.0f, (curiosity - 0.7f) / 0.3f);
 
         // Randomly select which params to vary
-        if (paramsToVary > 0) var.tuneDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 2.0f;
-        if (paramsToVary > 1) var.decayDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 0.3f;
-        if (paramsToVary > 2) var.bodyDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 0.2f
-                                             - alienShift * 0.6f; // more noise at high curiosity
-        if (paramsToVary > 3) var.snapDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 0.3f;
-        if (paramsToVary > 4) var.pitchEnvDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 0.2f
-                                                 + alienShift * 0.4f; // wilder pitch at high curiosity
-        if (paramsToVary > 5) var.satDelta = randomDelta (voiceIndex) * variationRange * variationIntensity * 0.15f;
+        if (paramsToVary > 0)
+            var.tuneDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 2.0f;
+        if (paramsToVary > 1)
+            var.decayDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 0.3f;
+        if (paramsToVary > 2)
+            var.bodyDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 0.2f -
+                            alienShift * 0.6f; // more noise at high curiosity
+        if (paramsToVary > 3)
+            var.snapDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 0.3f;
+        if (paramsToVary > 4)
+            var.pitchEnvDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 0.2f +
+                                alienShift * 0.4f; // wilder pitch at high curiosity
+        if (paramsToVary > 5)
+            var.satDelta = randomDelta(voiceIndex) * variationRange * variationIntensity * 0.15f;
 
         // Cache for flow reuse
         lastVariations_[voiceIndex] = var;
@@ -150,7 +153,7 @@ public:
     {
         for (int i = 0; i < 8; ++i)
         {
-            rngState_[i] = static_cast<uint32_t> (i * 7919 + 1);
+            rngState_[i] = static_cast<uint32_t>(i * 7919 + 1);
             hasLastVariation_[i] = false;
             lastVariations_[i] = {};
         }
@@ -160,25 +163,22 @@ private:
     //--------------------------------------------------------------------------
     // Per-voice PRNG (xorshift32) for deterministic variation.
     //--------------------------------------------------------------------------
-    float nextRandom (int voice) noexcept
+    float nextRandom(int voice) noexcept
     {
         uint32_t& s = rngState_[voice];
         s ^= s << 13;
         s ^= s >> 17;
         s ^= s << 5;
-        return static_cast<float> (s) / 4294967296.0f; // [0, 1)
+        return static_cast<float>(s) / 4294967296.0f; // [0, 1)
     }
 
     // Returns random value in [-1, 1]
-    float randomDelta (int voice) noexcept
-    {
-        return nextRandom (voice) * 2.0f - 1.0f;
-    }
+    float randomDelta(int voice) noexcept { return nextRandom(voice) * 2.0f - 1.0f; }
 
     //--------------------------------------------------------------------------
     // Per-voice state
     //--------------------------------------------------------------------------
-    uint32_t rngState_[8] = { 1, 7920, 15839, 23758, 31677, 39596, 47515, 55434 };
+    uint32_t rngState_[8] = {1, 7920, 15839, 23758, 31677, 39596, 47515, 55434};
     OfferingVariationSet lastVariations_[8] = {};
     bool hasLastVariation_[8] = {};
 };

@@ -16,7 +16,8 @@
 #include <cstring>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -86,15 +87,15 @@ struct CrystalState
     static constexpr int kMaxPeaks = 16;
 
     // Frozen partial frequencies and amplitudes
-    float peakFreqs[kMaxPeaks]  = {};   // Hz
-    float peakAmps[kMaxPeaks]   = {};   // 0.0–1.0
-    float peakPhases[kMaxPeaks] = {};   // phase accumulators
-    int   numPeaks = 0;
+    float peakFreqs[kMaxPeaks] = {};  // Hz
+    float peakAmps[kMaxPeaks] = {};   // 0.0–1.0
+    float peakPhases[kMaxPeaks] = {}; // phase accumulators
+    int numPeaks = 0;
 
     // Crystallization progress per peak (0 = liquid, 1 = frozen)
     float crystalProgress[kMaxPeaks] = {};
 
-    bool  isFrozen = false;
+    bool isFrozen = false;
     float freezeTimer = 0.0f;    // seconds since freeze began
     float freezeDuration = 0.1f; // crystallization window length
 
@@ -103,10 +104,10 @@ struct CrystalState
         numPeaks = 0;
         isFrozen = false;
         freezeTimer = 0.0f;
-        std::fill (std::begin (peakFreqs), std::end (peakFreqs), 0.0f);
-        std::fill (std::begin (peakAmps), std::end (peakAmps), 0.0f);
-        std::fill (std::begin (peakPhases), std::end (peakPhases), 0.0f);
-        std::fill (std::begin (crystalProgress), std::end (crystalProgress), 0.0f);
+        std::fill(std::begin(peakFreqs), std::end(peakFreqs), 0.0f);
+        std::fill(std::begin(peakAmps), std::end(peakAmps), 0.0f);
+        std::fill(std::begin(peakPhases), std::end(peakPhases), 0.0f);
+        std::fill(std::begin(crystalProgress), std::end(crystalProgress), 0.0f);
     }
 };
 
@@ -117,11 +118,11 @@ struct OvercastVoice
 {
     static constexpr int kNumPartials = 16;
 
-    bool     active      = false;
-    uint64_t startTime   = 0;
-    int      currentNote = 60;
-    float    velocity    = 0.0f;
-    float    fundamental = 440.0f;
+    bool active = false;
+    uint64_t startTime = 0;
+    int currentNote = 60;
+    float velocity = 0.0f;
+    float fundamental = 440.0f;
 
     StandardADSR ampEnv;
 
@@ -132,9 +133,9 @@ struct OvercastVoice
     CrystalState crystal;
 
     // Transition mode state
-    int   transitionMode = 1;      // 0=instant, 1=crystal, 2=shatter
-    float shatterTimer   = 0.0f;   // for shatter mode silence gap
-    bool  inShatterGap   = false;
+    int transitionMode = 1;    // 0=instant, 1=crystal, 2=shatter
+    float shatterTimer = 0.0f; // for shatter mode silence gap
+    bool inShatterGap = false;
 
     CytomicSVF voiceFilter;
 
@@ -146,25 +147,24 @@ struct OvercastVoice
         shatterTimer = 0.0f;
         inShatterGap = false;
         voiceFilter.reset();
-        std::fill (std::begin (sourcePhase), std::end (sourcePhase), 0.0f);
+        std::fill(std::begin(sourcePhase), std::end(sourcePhase), 0.0f);
     }
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        ampEnv.prepare (sampleRate);
-        voiceFilter.setMode (CytomicSVF::Mode::LowPass);
+        ampEnv.prepare(sampleRate);
+        voiceFilter.setMode(CytomicSVF::Mode::LowPass);
         voiceFilter.reset();
     }
 
-    void noteOn (int note, float vel, float sr, uint64_t time,
-                 float freezeRate, int transMode, int numPeaks,
-                 float crystalSize, float latticeSnap) noexcept
+    void noteOn(int note, float vel, float sr, uint64_t time, float freezeRate, int transMode, int numPeaks,
+                float crystalSize, float latticeSnap) noexcept
     {
         active = true;
         currentNote = note;
         velocity = vel;
         startTime = time;
-        fundamental = 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) / 12.0f);
+        fundamental = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
         transitionMode = transMode;
 
         ampEnv.noteOn();
@@ -182,8 +182,7 @@ struct OvercastVoice
 
         // CAPTURE: identify nucleation sites from the fundamental harmonics
         // The number of peaks depends on velocity (D001)
-        int nPeaks = std::max (2, std::min (CrystalState::kMaxPeaks,
-                     static_cast<int> (numPeaks * (0.3f + vel * 0.7f))));
+        int nPeaks = std::max(2, std::min(CrystalState::kMaxPeaks, static_cast<int>(numPeaks * (0.3f + vel * 0.7f))));
 
         crystal.numPeaks = nPeaks;
         crystal.isFrozen = false;
@@ -192,7 +191,7 @@ struct OvercastVoice
 
         for (int p = 0; p < nPeaks; ++p)
         {
-            float harmonic = static_cast<float> (p + 1);
+            float harmonic = static_cast<float>(p + 1);
             float freq = fundamental * harmonic;
 
             // Crystal lattice snap: at high values, partials snap to
@@ -200,7 +199,7 @@ struct OvercastVoice
             if (latticeSnap > 0.0f)
             {
                 // Round to nearest integer harmonic
-                float nearestInt = std::round (harmonic);
+                float nearestInt = std::round(harmonic);
                 freq = fundamental * (harmonic + latticeSnap * (nearestInt - harmonic));
             }
 
@@ -213,21 +212,18 @@ struct OvercastVoice
             if (crystalSize > 0.5f)
             {
                 float sizeBoost = (crystalSize - 0.5f) * 2.0f;
-                crystal.peakAmps[p] *= (1.0f + sizeBoost * (1.0f - static_cast<float> (p) / nPeaks));
+                crystal.peakAmps[p] *= (1.0f + sizeBoost * (1.0f - static_cast<float>(p) / nPeaks));
             }
 
             // Preserve phases for continuity if instant mode
             if (transitionMode == 0)
-                crystal.crystalProgress[p] = 1.0f;  // instantly frozen
+                crystal.crystalProgress[p] = 1.0f; // instantly frozen
             else
-                crystal.crystalProgress[p] = 0.0f;  // will propagate
+                crystal.crystalProgress[p] = 0.0f; // will propagate
         }
     }
 
-    void noteOff() noexcept
-    {
-        ampEnv.noteOff();
-    }
+    void noteOff() noexcept { ampEnv.noteOff(); }
 };
 
 //==============================================================================
@@ -240,29 +236,29 @@ public:
 
     static constexpr int kMaxVoices = 8;
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srF = static_cast<float> (sampleRate);
+        srF = static_cast<float>(sampleRate);
         blockSize = maxBlockSize;
 
         for (auto& v : voices)
         {
-            v.prepare (srF);
+            v.prepare(srF);
             v.reset();
         }
 
-        lfo1.setShape (StandardLFO::Sine);
+        lfo1.setShape(StandardLFO::Sine);
         lfo1.reset();
-        lfo2.setShape (StandardLFO::SandH);  // S&H for crystalline randomness
+        lfo2.setShape(StandardLFO::SandH); // S&H for crystalline randomness
         lfo2.reset();
-        breathLfo.setRate (0.006f, srF);
+        breathLfo.setRate(0.006f, srF);
 
         noteCounter = 0;
         noiseRng = 0xDEADBEEF;
 
-        silenceGate.prepare (sr, maxBlockSize);
-        silenceGate.setHoldTime (500.0f);
+        silenceGate.prepare(sr, maxBlockSize);
+        silenceGate.setHoldTime(500.0f);
     }
 
     void releaseResources() override {}
@@ -277,21 +273,19 @@ public:
         extFilterMod = extRingMod = 0.0f;
     }
 
-    void renderBlock (juce::AudioBuffer<float>& buffer,
-                      juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
 
         // Read params early for noteOn configuration
-        float pFreezeRate  = pFreezeRateParam  ? pFreezeRateParam->load()  : 0.1f;
+        float pFreezeRate = pFreezeRateParam ? pFreezeRateParam->load() : 0.1f;
         float pCrystalSize = pCrystalSizeParam ? pCrystalSizeParam->load() : 0.5f;
-        float pNumPeaks    = pNumPeaksParam    ? pNumPeaksParam->load()    : 8.0f;
-        float pTransition  = pTransitionParam  ? pTransitionParam->load()  : 1.0f;
+        float pNumPeaks = pNumPeaksParam ? pNumPeaksParam->load() : 8.0f;
+        float pTransition = pTransitionParam ? pTransitionParam->load() : 1.0f;
         float pLatticeSnap = pLatticeSnapParam ? pLatticeSnapParam->load() : 0.3f;
 
-        int transMode = static_cast<int> (pTransition + 0.5f);
-        int numPeaks  = static_cast<int> (pNumPeaks + 0.5f);
+        int transMode = static_cast<int>(pTransition + 0.5f);
+        int numPeaks = static_cast<int>(pNumPeaks + 0.5f);
 
         // 1. Parse MIDI
         for (const auto& meta : midi)
@@ -300,24 +294,23 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                int idx = VoiceAllocator::findFreeVoicePreferRelease (
+                int idx = VoiceAllocator::findFreeVoicePreferRelease(
                     voices, kMaxVoices,
-                    [] (const OvercastVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
+                    [](const OvercastVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
 
-                voices[idx].noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                                    srF, ++noteCounter, pFreezeRate, transMode,
-                                    numPeaks, pCrystalSize, pLatticeSnap);
+                voices[idx].noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), srF, ++noteCounter, pFreezeRate,
+                                   transMode, numPeaks, pCrystalSize, pLatticeSnap);
             }
             else if (msg.isNoteOff())
             {
-                int idx = VoiceAllocator::findVoiceForNote (voices, kMaxVoices, msg.getNoteNumber());
-                if (idx >= 0) voices[idx].noteOff();
+                int idx = VoiceAllocator::findVoiceForNote(voices, kMaxVoices, msg.getNoteNumber());
+                if (idx >= 0)
+                    voices[idx].noteOff();
             }
             else if (msg.isAftertouch() || msg.isChannelPressure())
             {
-                aftertouch = msg.isAftertouch()
-                    ? msg.getAfterTouchValue() / 127.0f
-                    : msg.getChannelPressureValue() / 127.0f;
+                aftertouch =
+                    msg.isAftertouch() ? msg.getAfterTouchValue() / 127.0f : msg.getChannelPressureValue() / 127.0f;
             }
             else if (msg.isController() && msg.getControllerNumber() == 1)
             {
@@ -325,7 +318,7 @@ public:
             }
             else if (msg.isPitchWheel())
             {
-                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             }
         }
 
@@ -337,60 +330,59 @@ public:
         }
 
         // 3. Read remaining parameters
-        float pPurity      = pPurityParam      ? pPurityParam->load()      : 0.5f;
-        float pCrackle     = pCrackleParam     ? pCrackleParam->load()     : 0.4f;
-        float pShatterGap  = pShatterGapParam  ? pShatterGapParam->load()  : 0.1f;
+        float pPurity = pPurityParam ? pPurityParam->load() : 0.5f;
+        float pCrackle = pCrackleParam ? pCrackleParam->load() : 0.4f;
+        float pShatterGap = pShatterGapParam ? pShatterGapParam->load() : 0.1f;
         float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
-        float pFilterCut   = pFilterCutParam   ? pFilterCutParam->load()   : 8000.0f;
-        float pFilterRes   = pFilterResParam   ? pFilterResParam->load()   : 0.15f;
-        float pAmpA        = pAmpAParam        ? pAmpAParam->load()        : 0.005f;
-        float pAmpD        = pAmpDParam        ? pAmpDParam->load()        : 0.3f;
-        float pAmpS        = pAmpSParam        ? pAmpSParam->load()        : 1.0f;
-        float pAmpR        = pAmpRParam        ? pAmpRParam->load()        : 1.0f;
-        float pLfo1Rate    = pLfo1RateParam    ? pLfo1RateParam->load()    : 0.2f;
-        float pLfo1Depth   = pLfo1DepthParam   ? pLfo1DepthParam->load()   : 0.15f;
-        float pLfo2Rate    = pLfo2RateParam    ? pLfo2RateParam->load()    : 0.5f;
-        float pLfo2Depth   = pLfo2DepthParam   ? pLfo2DepthParam->load()   : 0.1f;
-        float pLevel       = pLevelParam       ? pLevelParam->load()       : 0.8f;
+        float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
+        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
+        float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.005f;
+        float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.3f;
+        float pAmpS = pAmpSParam ? pAmpSParam->load() : 1.0f;
+        float pAmpR = pAmpRParam ? pAmpRParam->load() : 1.0f;
+        float pLfo1Rate = pLfo1RateParam ? pLfo1RateParam->load() : 0.2f;
+        float pLfo1Depth = pLfo1DepthParam ? pLfo1DepthParam->load() : 0.15f;
+        float pLfo2Rate = pLfo2RateParam ? pLfo2RateParam->load() : 0.5f;
+        float pLfo2Depth = pLfo2DepthParam ? pLfo2DepthParam->load() : 0.1f;
+        float pLevel = pLevelParam ? pLevelParam->load() : 0.8f;
 
         // Macros
         float pMC = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
-        float pMM = pMacroMovementParam  ? pMacroMovementParam->load()  : 0.0f;
-        float pMK = pMacroCouplingParam  ? pMacroCouplingParam->load()  : 0.0f;
-        float pMS = pMacroSpaceParam     ? pMacroSpaceParam->load()     : 0.0f;
+        float pMM = pMacroMovementParam ? pMacroMovementParam->load() : 0.0f;
+        float pMK = pMacroCouplingParam ? pMacroCouplingParam->load() : 0.0f;
+        float pMS = pMacroSpaceParam ? pMacroSpaceParam->load() : 0.0f;
 
         // CHARACTER → purity
-        pPurity = clamp (pPurity + pMC * 0.4f, 0.0f, 1.0f);
+        pPurity = clamp(pPurity + pMC * 0.4f, 0.0f, 1.0f);
         // MOVEMENT → freeze rate + crackle
-        pCrackle = clamp (pCrackle + pMM * 0.3f, 0.0f, 1.0f);
+        pCrackle = clamp(pCrackle + pMM * 0.3f, 0.0f, 1.0f);
         // COUPLING → lattice snap sensitivity
-        pLatticeSnap = clamp (pLatticeSnap + pMK * 0.3f, 0.0f, 1.0f);
+        pLatticeSnap = clamp(pLatticeSnap + pMK * 0.3f, 0.0f, 1.0f);
         // SPACE → stereo width
-        pStereoWidth = clamp (pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
+        pStereoWidth = clamp(pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
 
         // D006: Mod wheel → purity
-        pPurity = clamp (pPurity + modWheel * 0.3f, 0.0f, 1.0f);
+        pPurity = clamp(pPurity + modWheel * 0.3f, 0.0f, 1.0f);
         // D006: Aftertouch → freeze speed
-        pFreezeRate = clamp (pFreezeRate - aftertouch * 0.08f, 0.02f, 0.2f);
+        pFreezeRate = clamp(pFreezeRate - aftertouch * 0.08f, 0.02f, 0.2f);
 
         // Coupling
-        pFilterCut = clamp (pFilterCut + extFilterMod, 50.0f, 16000.0f);
+        pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 16000.0f);
 
         // BROTH: brothSpectralMass affects crystal brightness.
         // Low spectralMass (reduced broth) = dark ice — reduce upper harmonic amplitudes.
         // Crystal seeds from a depleted broth produce fewer, darker nucleation sites.
         // Applied as a per-voice amplitude ceiling on peaks above the first (fundamental).
-        float brothDarkness = 1.0f - brothSpectralMass;  // 0=fresh/bright, 1=dark/spent
+        float brothDarkness = 1.0f - brothSpectralMass; // 0=fresh/bright, 1=dark/spent
 
-        lfo1.setRate (pLfo1Rate, srF);
-        lfo2.setRate (pLfo2Rate, srF);
+        lfo1.setRate(pLfo1Rate, srF);
+        lfo2.setRate(pLfo2Rate, srF);
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1
-                        ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         const float inverseSr = 1.0f / srF;
-        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // Determine if ANY voice is still crystallizing (not yet fully frozen).
         // LFOs are only active during crystallization — frozen = no evolution (concept).
@@ -413,8 +405,8 @@ public:
             float lfo2Raw = lfo2.process();
             float breathRaw = breathLfo.process();
             // Only apply LFO output during crystallization (frozen = no movement, per concept)
-            float lfo1Val   = anyCrystallizing ? lfo1Raw   : 0.0f;
-            float lfo2Val   = anyCrystallizing ? lfo2Raw   : 0.0f;
+            float lfo1Val = anyCrystallizing ? lfo1Raw : 0.0f;
+            float lfo2Val = anyCrystallizing ? lfo2Raw : 0.0f;
             float breathVal = anyCrystallizing ? breathRaw : 0.0f;
 
             float sampleL = 0.0f;
@@ -423,9 +415,10 @@ public:
             for (int v = 0; v < kMaxVoices; ++v)
             {
                 auto& voice = voices[v];
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
-                voice.ampEnv.setADSR (pAmpA, pAmpD, pAmpS, pAmpR);
+                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
                 float ampLevel = voice.ampEnv.process();
 
                 if (!voice.ampEnv.isActive())
@@ -451,13 +444,15 @@ public:
                         if (shatterProg < 0.3f)
                         {
                             // Noise burst (shards)
-                            noiseRng ^= noiseRng << 13; noiseRng ^= noiseRng >> 17; noiseRng ^= noiseRng << 5;
-                            float noise = (static_cast<float> (noiseRng & 0xFFFF) / 32768.0f - 1.0f);
+                            noiseRng ^= noiseRng << 13;
+                            noiseRng ^= noiseRng >> 17;
+                            noiseRng ^= noiseRng << 5;
+                            float noise = (static_cast<float>(noiseRng & 0xFFFF) / 32768.0f - 1.0f);
                             float shardGain = (1.0f - shatterProg / 0.3f) * 0.3f;
                             sampleL += noise * shardGain * ampLevel;
                             sampleR += noise * shardGain * ampLevel;
                         }
-                        continue;  // skip normal synthesis during gap
+                        continue; // skip normal synthesis during gap
                     }
                 }
 
@@ -467,21 +462,21 @@ public:
                 // creating wavering freeze fronts (fast↔slow) that sound like unstable crystal growth.
                 if (!crystal.isFrozen)
                 {
-                    float lfo2RateMod = 1.0f + lfo2Val * pLfo2Depth * 2.0f;  // range ~[0.8, 1.2] at full depth
-                    lfo2RateMod = clamp (lfo2RateMod, 0.5f, 2.0f);           // never reverse or stall
+                    float lfo2RateMod = 1.0f + lfo2Val * pLfo2Depth * 2.0f; // range ~[0.8, 1.2] at full depth
+                    lfo2RateMod = clamp(lfo2RateMod, 0.5f, 2.0f);           // never reverse or stall
                     crystal.freezeTimer += inverseSr * lfo2RateMod;
 
                     // Propagate crystallization from first peak outward
                     for (int p = 0; p < crystal.numPeaks; ++p)
                     {
                         // Propagation delay: peaks closer to fundamental freeze first
-                        float propagationDelay = static_cast<float> (p) * crystal.freezeDuration
-                                                 / static_cast<float> (crystal.numPeaks);
+                        float propagationDelay =
+                            static_cast<float>(p) * crystal.freezeDuration / static_cast<float>(crystal.numPeaks);
                         float localTime = crystal.freezeTimer - propagationDelay;
 
                         if (localTime > 0.0f)
                         {
-                            float progress = clamp (localTime / (crystal.freezeDuration * 0.5f), 0.0f, 1.0f);
+                            float progress = clamp(localTime / (crystal.freezeDuration * 0.5f), 0.0f, 1.0f);
                             crystal.crystalProgress[p] = progress;
                         }
                     }
@@ -501,12 +496,14 @@ public:
                 for (int p = 0; p < crystal.numPeaks; ++p)
                 {
                     float freq = crystal.peakFreqs[p] * pitchBendRatio;
-                    if (freq > srF * 0.49f || freq < 20.0f) continue;
+                    if (freq > srF * 0.49f || freq < 20.0f)
+                        continue;
 
                     crystal.peakPhases[p] += freq * inverseSr;
-                    if (crystal.peakPhases[p] >= 1.0f) crystal.peakPhases[p] -= 1.0f;
+                    if (crystal.peakPhases[p] >= 1.0f)
+                        crystal.peakPhases[p] -= 1.0f;
 
-                    float sine = fastSin (crystal.peakPhases[p] * 6.28318530718f);
+                    float sine = fastSin(crystal.peakPhases[p] * 6.28318530718f);
                     float amp = crystal.peakAmps[p];
 
                     // BROTH cooperative coupling: brothSpectralMass affects crystal darkness.
@@ -514,7 +511,7 @@ public:
                     // Higher harmonics (p > 0) are attenuated more by darkness.
                     // Peak 0 (fundamental) is fully preserved even in depleted broth.
                     if (p > 0)
-                        amp *= (1.0f - brothDarkness * 0.5f * (static_cast<float> (p) / crystal.numPeaks));
+                        amp *= (1.0f - brothDarkness * 0.5f * (static_cast<float>(p) / crystal.numPeaks));
 
                     float progress = crystal.crystalProgress[p];
 
@@ -522,21 +519,23 @@ public:
                     if (progress < 1.0f && progress > 0.0f)
                     {
                         // Rapid random amplitude modulation = crystal crackling
-                        noiseRng ^= noiseRng << 13; noiseRng ^= noiseRng >> 17; noiseRng ^= noiseRng << 5;
-                        float crackleNoise = (static_cast<float> (noiseRng & 0xFFFF) / 32768.0f - 1.0f);
+                        noiseRng ^= noiseRng << 13;
+                        noiseRng ^= noiseRng >> 17;
+                        noiseRng ^= noiseRng << 5;
+                        float crackleNoise = (static_cast<float>(noiseRng & 0xFFFF) / 32768.0f - 1.0f);
 
                         // Crackle intensity peaks in the middle of crystallization
-                        float crackleEnv = 4.0f * progress * (1.0f - progress);  // parabola
+                        float crackleEnv = 4.0f * progress * (1.0f - progress); // parabola
                         amp *= (1.0f + crackleNoise * pCrackle * crackleEnv);
 
                         // Frequency jitter during transition (liquid → solid)
                         float freqJitter = crackleNoise * (1.0f - progress) * 20.0f;
                         float jitteredFreq = freq + freqJitter;
-                        jitteredFreq = clamp (jitteredFreq, 20.0f, srF * 0.49f);
+                        jitteredFreq = clamp(jitteredFreq, 20.0f, srF * 0.49f);
 
                         // Re-compute sine with jittered frequency
                         float jitterPhase = crystal.peakPhases[p] + freqJitter * inverseSr;
-                        sine = fastSin (jitterPhase * 6.28318530718f);
+                        sine = fastSin(jitterPhase * 6.28318530718f);
                     }
 
                     // FROZEN STATE: no modulation, just clean locked partials
@@ -545,7 +544,8 @@ public:
                     {
                         // At high purity, only the strongest peaks survive
                         float purityThreshold = pPurity * 0.5f;
-                        if (amp < purityThreshold) amp *= (1.0f - pPurity);
+                        if (amp < purityThreshold)
+                            amp *= (1.0f - pPurity);
                     }
 
                     // D005: breathing modulates ONLY during crystallization
@@ -560,23 +560,21 @@ public:
 
                 // Normalize
                 if (crystal.numPeaks > 0)
-                    voiceSample *= (2.0f / static_cast<float> (crystal.numPeaks));
+                    voiceSample *= (2.0f / static_cast<float>(crystal.numPeaks));
 
                 // Per-voice filter
                 float voiceCutoff = pFilterCut;
                 // Frozen state: filter stays put. Crystallizing: filter sweeps
                 if (!crystal.isFrozen)
-                    voiceCutoff = clamp (voiceCutoff * crystal.freezeTimer / crystal.freezeDuration,
-                                         50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast (
-                    clamp (voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
-                voiceSample = voice.voiceFilter.processSample (voiceSample);
+                    voiceCutoff = clamp(voiceCutoff * crystal.freezeTimer / crystal.freezeDuration, 50.0f, srF * 0.49f);
+                voice.voiceFilter.setCoefficients_fast(clamp(voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
+                voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;
 
                 // Stereo: each voice gets a fixed position (frozen in space too)
-                float pan = 0.5f + (static_cast<float> (voice.currentNote - 60) * 0.025f) * pStereoWidth;
-                pan = clamp (pan, 0.0f, 1.0f);
+                float pan = 0.5f + (static_cast<float>(voice.currentNote - 60) * 0.025f) * pStereoWidth;
+                pan = clamp(pan, 0.0f, 1.0f);
 
                 sampleL += voiceSample * (1.0f - pan);
                 sampleR += voiceSample * pan;
@@ -585,203 +583,179 @@ public:
             sampleL *= pLevel;
             sampleR *= pLevel;
 
-            if (std::fabs (extRingMod) > 0.001f)
+            if (std::fabs(extRingMod) > 0.001f)
             {
                 sampleL *= (1.0f + extRingMod);
                 sampleR *= (1.0f + extRingMod);
             }
 
-            sampleL = softClip (sampleL);
-            sampleR = softClip (sampleR);
+            sampleL = softClip(sampleL);
+            sampleR = softClip(sampleR);
 
             lastSampleL = sampleL;
             lastSampleR = sampleR;
 
             outL[i] += sampleL;
-            if (outR) outR[i] += sampleR;
+            if (outR)
+                outR[i] += sampleR;
         }
 
         extFilterMod = 0.0f;
         extRingMod = 0.0f;
 
-        const float* rL = buffer.getReadPointer (0);
-        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr;
-        silenceGate.analyzeBlock (rL, rR, numSamples);
+        const float* rL = buffer.getReadPointer(0);
+        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(rL, rR, numSamples);
     }
 
     //-- Coupling ---------------------------------------------------------------
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? lastSampleL : lastSampleR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* sourceBuffer, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int /*numSamples*/) override
     {
         switch (type)
         {
-            case CouplingType::AmpToFilter:
-                extFilterMod = amount * 4000.0f;
-                break;
-            case CouplingType::AudioToRing:
-                extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
-                break;
-            default:
-                break;
+        case CouplingType::AmpToFilter:
+            extFilterMod = amount * 4000.0f;
+            break;
+        case CouplingType::AudioToRing:
+            extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
+            break;
+        default:
+            break;
         }
     }
 
     //-- BROTH Cooperative Coupling ---------------------------------------------
-    void setBrothSpectralMass (float mass) { brothSpectralMass = clamp (mass, 0.0f, 1.0f); }
+    void setBrothSpectralMass(float mass) { brothSpectralMass = clamp(mass, 0.0f, 1.0f); }
 
     //-- Parameters -------------------------------------------------------------
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
 
         // Core crystal parameters
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_freezeRate", 1 }, "Freeze Rate",
-            juce::NormalisableRange<float> (0.02f, 0.2f, 0.0f, 0.5f), 0.1f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_freezeRate", 1}, "Freeze Rate",
+                                              juce::NormalisableRange<float>(0.02f, 0.2f, 0.0f, 0.5f), 0.1f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_crystalSize", 1 }, "Crystal Size",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_crystalSize", 1}, "Crystal Size",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_numPeaks", 1 }, "Peak Count",
-            juce::NormalisableRange<float> (2.0f, 16.0f, 1.0f), 8.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_numPeaks", 1}, "Peak Count",
+                                              juce::NormalisableRange<float>(2.0f, 16.0f, 1.0f), 8.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_transition", 1 }, "Transition Mode",
-            juce::NormalisableRange<float> (0.0f, 2.0f, 1.0f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_transition", 1}, "Transition Mode",
+                                              juce::NormalisableRange<float>(0.0f, 2.0f, 1.0f), 1.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_latticeSnap", 1 }, "Lattice Snap",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_latticeSnap", 1}, "Lattice Snap",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_purity", 1 }, "Purity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_purity", 1}, "Purity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_crackle", 1 }, "Crackle",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_crackle", 1}, "Crackle",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_shatterGap", 1 }, "Shatter Gap",
-            juce::NormalisableRange<float> (0.01f, 0.5f, 0.0f, 0.5f), 0.1f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_shatterGap", 1}, "Shatter Gap",
+                                              juce::NormalisableRange<float>(0.01f, 0.5f, 0.0f, 0.5f), 0.1f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_stereoWidth", 1 }, "Stereo Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_stereoWidth", 1}, "Stereo Width",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_filterCutoff", 1 }, "Filter Cutoff",
-            juce::NormalisableRange<float> (50.0f, 16000.0f, 0.0f, 0.3f), 8000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_filterCutoff", 1}, "Filter Cutoff",
+                                              juce::NormalisableRange<float>(50.0f, 16000.0f, 0.0f, 0.3f), 8000.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_filterRes", 1 }, "Filter Resonance",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_filterRes", 1}, "Filter Resonance",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
         // Amp ADSR
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_ampAttack", 1 }, "Amp Attack",
-            juce::NormalisableRange<float> (0.001f, 2.0f, 0.0f, 0.3f), 0.005f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_ampAttack", 1}, "Amp Attack",
+                                              juce::NormalisableRange<float>(0.001f, 2.0f, 0.0f, 0.3f), 0.005f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_ampDecay", 1 }, "Amp Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_ampDecay", 1}, "Amp Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_ampSustain", 1 }, "Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_ampSustain", 1}, "Amp Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_ampRelease", 1 }, "Amp Release",
-            juce::NormalisableRange<float> (0.01f, 15.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_ampRelease", 1}, "Amp Release",
+                                              juce::NormalisableRange<float>(0.01f, 15.0f, 0.0f, 0.3f), 1.0f));
 
         // LFOs (active during crystallization window only)
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_lfo1Rate", 1 }, "LFO 1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_lfo1Rate", 1}, "LFO 1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.2f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_lfo1Depth", 1 }, "LFO 1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_lfo1Depth", 1}, "LFO 1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_lfo2Rate", 1 }, "LFO 2 Rate",
-            juce::NormalisableRange<float> (0.005f, 10.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_lfo2Rate", 1}, "LFO 2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 10.0f, 0.0f, 0.3f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_lfo2Depth", 1 }, "LFO 2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.1f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_lfo2Depth", 1}, "LFO 2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.1f));
 
         // Output
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_level", 1 }, "Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_level", 1}, "Level",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_macroCharacter", 1 }, "Character",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_macroCharacter", 1}, "Character",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_macroMovement", 1 }, "Movement",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_macroMovement", 1}, "Movement",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_macroCoupling", 1 }, "Coupling",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_macroCoupling", 1}, "Coupling",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "cast_macroSpace", 1 }, "Space",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"cast_macroSpace", 1}, "Space",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        pFreezeRateParam   = apvts.getRawParameterValue ("cast_freezeRate");
-        pCrystalSizeParam  = apvts.getRawParameterValue ("cast_crystalSize");
-        pNumPeaksParam     = apvts.getRawParameterValue ("cast_numPeaks");
-        pTransitionParam   = apvts.getRawParameterValue ("cast_transition");
-        pLatticeSnapParam  = apvts.getRawParameterValue ("cast_latticeSnap");
-        pPurityParam       = apvts.getRawParameterValue ("cast_purity");
-        pCrackleParam      = apvts.getRawParameterValue ("cast_crackle");
-        pShatterGapParam   = apvts.getRawParameterValue ("cast_shatterGap");
-        pStereoWidthParam  = apvts.getRawParameterValue ("cast_stereoWidth");
-        pFilterCutParam    = apvts.getRawParameterValue ("cast_filterCutoff");
-        pFilterResParam    = apvts.getRawParameterValue ("cast_filterRes");
-        pAmpAParam         = apvts.getRawParameterValue ("cast_ampAttack");
-        pAmpDParam         = apvts.getRawParameterValue ("cast_ampDecay");
-        pAmpSParam         = apvts.getRawParameterValue ("cast_ampSustain");
-        pAmpRParam         = apvts.getRawParameterValue ("cast_ampRelease");
-        pLfo1RateParam     = apvts.getRawParameterValue ("cast_lfo1Rate");
-        pLfo1DepthParam    = apvts.getRawParameterValue ("cast_lfo1Depth");
-        pLfo2RateParam     = apvts.getRawParameterValue ("cast_lfo2Rate");
-        pLfo2DepthParam    = apvts.getRawParameterValue ("cast_lfo2Depth");
-        pLevelParam        = apvts.getRawParameterValue ("cast_level");
-        pMacroCharacterParam = apvts.getRawParameterValue ("cast_macroCharacter");
-        pMacroMovementParam  = apvts.getRawParameterValue ("cast_macroMovement");
-        pMacroCouplingParam  = apvts.getRawParameterValue ("cast_macroCoupling");
-        pMacroSpaceParam     = apvts.getRawParameterValue ("cast_macroSpace");
+        pFreezeRateParam = apvts.getRawParameterValue("cast_freezeRate");
+        pCrystalSizeParam = apvts.getRawParameterValue("cast_crystalSize");
+        pNumPeaksParam = apvts.getRawParameterValue("cast_numPeaks");
+        pTransitionParam = apvts.getRawParameterValue("cast_transition");
+        pLatticeSnapParam = apvts.getRawParameterValue("cast_latticeSnap");
+        pPurityParam = apvts.getRawParameterValue("cast_purity");
+        pCrackleParam = apvts.getRawParameterValue("cast_crackle");
+        pShatterGapParam = apvts.getRawParameterValue("cast_shatterGap");
+        pStereoWidthParam = apvts.getRawParameterValue("cast_stereoWidth");
+        pFilterCutParam = apvts.getRawParameterValue("cast_filterCutoff");
+        pFilterResParam = apvts.getRawParameterValue("cast_filterRes");
+        pAmpAParam = apvts.getRawParameterValue("cast_ampAttack");
+        pAmpDParam = apvts.getRawParameterValue("cast_ampDecay");
+        pAmpSParam = apvts.getRawParameterValue("cast_ampSustain");
+        pAmpRParam = apvts.getRawParameterValue("cast_ampRelease");
+        pLfo1RateParam = apvts.getRawParameterValue("cast_lfo1Rate");
+        pLfo1DepthParam = apvts.getRawParameterValue("cast_lfo1Depth");
+        pLfo2RateParam = apvts.getRawParameterValue("cast_lfo2Rate");
+        pLfo2DepthParam = apvts.getRawParameterValue("cast_lfo2Depth");
+        pLevelParam = apvts.getRawParameterValue("cast_level");
+        pMacroCharacterParam = apvts.getRawParameterValue("cast_macroCharacter");
+        pMacroMovementParam = apvts.getRawParameterValue("cast_macroMovement");
+        pMacroCouplingParam = apvts.getRawParameterValue("cast_macroCoupling");
+        pMacroSpaceParam = apvts.getRawParameterValue("cast_macroSpace");
     }
 
     //-- Identity ---------------------------------------------------------------
@@ -790,14 +764,11 @@ public:
 
     juce::Colour getAccentColour() const override
     {
-        return juce::Colour (0xFFB0E0E6);  // Ice Blue
+        return juce::Colour(0xFFB0E0E6); // Ice Blue
     }
 
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override
-    {
-        return VoiceAllocator::countActive (voices, kMaxVoices);
-    }
+    int getActiveVoiceCount() const override { return VoiceAllocator::countActive(voices, kMaxVoices); }
 
 private:
     double sr = 44100.0;
@@ -812,42 +783,42 @@ private:
 
     uint32_t noiseRng = 0xDEADBEEF;
 
-    float aftertouch    = 0.0f;
-    float modWheel      = 0.0f;
+    float aftertouch = 0.0f;
+    float modWheel = 0.0f;
     float pitchBendNorm = 0.0f;
 
     float extFilterMod = 0.0f;
-    float extRingMod   = 0.0f;
-    float lastSampleL  = 0.0f;
-    float lastSampleR  = 0.0f;
+    float extRingMod = 0.0f;
+    float lastSampleL = 0.0f;
+    float lastSampleR = 0.0f;
 
     float brothSpectralMass = 1.0f;
 
     // Parameter pointers (24 params)
-    std::atomic<float>* pFreezeRateParam   = nullptr;
-    std::atomic<float>* pCrystalSizeParam  = nullptr;
-    std::atomic<float>* pNumPeaksParam     = nullptr;
-    std::atomic<float>* pTransitionParam   = nullptr;
-    std::atomic<float>* pLatticeSnapParam  = nullptr;
-    std::atomic<float>* pPurityParam       = nullptr;
-    std::atomic<float>* pCrackleParam      = nullptr;
-    std::atomic<float>* pShatterGapParam   = nullptr;
-    std::atomic<float>* pStereoWidthParam  = nullptr;
-    std::atomic<float>* pFilterCutParam    = nullptr;
-    std::atomic<float>* pFilterResParam    = nullptr;
-    std::atomic<float>* pAmpAParam         = nullptr;
-    std::atomic<float>* pAmpDParam         = nullptr;
-    std::atomic<float>* pAmpSParam         = nullptr;
-    std::atomic<float>* pAmpRParam         = nullptr;
-    std::atomic<float>* pLfo1RateParam     = nullptr;
-    std::atomic<float>* pLfo1DepthParam    = nullptr;
-    std::atomic<float>* pLfo2RateParam     = nullptr;
-    std::atomic<float>* pLfo2DepthParam    = nullptr;
-    std::atomic<float>* pLevelParam        = nullptr;
+    std::atomic<float>* pFreezeRateParam = nullptr;
+    std::atomic<float>* pCrystalSizeParam = nullptr;
+    std::atomic<float>* pNumPeaksParam = nullptr;
+    std::atomic<float>* pTransitionParam = nullptr;
+    std::atomic<float>* pLatticeSnapParam = nullptr;
+    std::atomic<float>* pPurityParam = nullptr;
+    std::atomic<float>* pCrackleParam = nullptr;
+    std::atomic<float>* pShatterGapParam = nullptr;
+    std::atomic<float>* pStereoWidthParam = nullptr;
+    std::atomic<float>* pFilterCutParam = nullptr;
+    std::atomic<float>* pFilterResParam = nullptr;
+    std::atomic<float>* pAmpAParam = nullptr;
+    std::atomic<float>* pAmpDParam = nullptr;
+    std::atomic<float>* pAmpSParam = nullptr;
+    std::atomic<float>* pAmpRParam = nullptr;
+    std::atomic<float>* pLfo1RateParam = nullptr;
+    std::atomic<float>* pLfo1DepthParam = nullptr;
+    std::atomic<float>* pLfo2RateParam = nullptr;
+    std::atomic<float>* pLfo2DepthParam = nullptr;
+    std::atomic<float>* pLevelParam = nullptr;
     std::atomic<float>* pMacroCharacterParam = nullptr;
-    std::atomic<float>* pMacroMovementParam  = nullptr;
-    std::atomic<float>* pMacroCouplingParam  = nullptr;
-    std::atomic<float>* pMacroSpaceParam     = nullptr;
+    std::atomic<float>* pMacroMovementParam = nullptr;
+    std::atomic<float>* pMacroCouplingParam = nullptr;
+    std::atomic<float>* pMacroSpaceParam = nullptr;
 };
 
 } // namespace xoceanus

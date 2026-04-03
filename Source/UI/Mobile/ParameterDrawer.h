@@ -5,7 +5,8 @@
 #include "MobileLayoutManager.h"
 #include "HapticEngine.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ParameterDrawer — iPhone bottom drawer for engine parameters.
@@ -25,13 +26,15 @@ namespace xoceanus {
 //   - Half: 8-12 key parameters grouped by section (Osc, Filter, Amp, FX)
 //   - Full: all parameters, scrollable, tabbed by engine
 //
-class ParameterDrawer : public juce::Component {
+class ParameterDrawer : public juce::Component
+{
 public:
-    enum class State {
-        Closed,     // Only handle bar visible (8pt)
-        Peek,       // Macro knobs + preset info (100pt)
-        Half,       // Key parameters (50% screen)
-        Full        // All parameters, scrollable (90% screen)
+    enum class State
+    {
+        Closed, // Only handle bar visible (8pt)
+        Peek,   // Macro knobs + preset info (100pt)
+        Half,   // Key parameters (50% screen)
+        Full    // All parameters, scrollable (90% screen)
     };
 
     ParameterDrawer()
@@ -79,10 +82,17 @@ public:
     {
         switch (currentState)
         {
-            case State::Closed: setState(State::Peek); break;
-            case State::Peek:   setState(State::Half); break;
-            case State::Half:   setState(State::Full); break;
-            case State::Full:   break;
+        case State::Closed:
+            setState(State::Peek);
+            break;
+        case State::Peek:
+            setState(State::Half);
+            break;
+        case State::Half:
+            setState(State::Full);
+            break;
+        case State::Full:
+            break;
         }
     }
 
@@ -90,10 +100,17 @@ public:
     {
         switch (currentState)
         {
-            case State::Closed: break;
-            case State::Peek:   setState(State::Closed); break;
-            case State::Half:   setState(State::Peek); break;
-            case State::Full:   setState(State::Half); break;
+        case State::Closed:
+            break;
+        case State::Peek:
+            setState(State::Closed);
+            break;
+        case State::Half:
+            setState(State::Peek);
+            break;
+        case State::Full:
+            setState(State::Half);
+            break;
         }
     }
 
@@ -115,7 +132,7 @@ public:
     void paint(juce::Graphics& g) override
     {
         // Drawer background
-        g.setColour(juce::Colour(0xFFF8F6F3));  // Gallery shell white
+        g.setColour(juce::Colour(0xFFF8F6F3)); // Gallery shell white
         g.fillRoundedRectangle(getLocalBounds().toFloat(), 12.0f);
 
         // Handle indicator (pill shape at top center)
@@ -123,7 +140,7 @@ public:
         float pillW = 36.0f, pillH = 4.0f;
         float pillX = handleBounds.getCentreX() - pillW * 0.5f;
         float pillY = 8.0f;
-        g.setColour(juce::Colour(0xFFDDDAD5));  // borderGray
+        g.setColour(juce::Colour(0xFFDDDAD5)); // borderGray
         g.fillRoundedRectangle(pillX, pillY, pillW, pillH, 2.0f);
     }
 
@@ -146,8 +163,8 @@ public:
 
         // Clamp to valid range
         float parentH = static_cast<float>(getParentHeight());
-        float minY = parentH * 0.1f;   // Full state: 90% visible
-        float maxY = parentH - handleBarHeight;  // Closed state
+        float minY = parentH * 0.1f;            // Full state: 90% visible
+        float maxY = parentH - handleBarHeight; // Closed state
 
         newY = juce::jlimit(minY, maxY, newY);
         setTopLeftPosition(getX(), static_cast<int>(newY));
@@ -166,12 +183,12 @@ public:
         float currentRatio = 1.0f - (static_cast<float>(getY()) / parentH);
 
         // Velocity-based: fast swipe overrides position
-        if (velocity < -80.0f)  // Fast swipe up
+        if (velocity < -80.0f) // Fast swipe up
         {
             advanceState();
             return;
         }
-        if (velocity > 80.0f)   // Fast swipe down
+        if (velocity > 80.0f) // Fast swipe down
         {
             retreatState();
             return;
@@ -192,10 +209,7 @@ public:
 
     // Set the component displayed in the drawer content area.
     // Typically a ParameterGrid or a tabbed engine parameter panel.
-    void setContent(juce::Component* content)
-    {
-        contentViewport.setViewedComponent(content, false);
-    }
+    void setContent(juce::Component* content) { contentViewport.setViewedComponent(content, false); }
 
     juce::Viewport& getViewport() { return contentViewport; }
 
@@ -219,10 +233,14 @@ private:
         float parentH = static_cast<float>(getParentHeight());
         switch (state)
         {
-            case State::Closed: return parentH - handleBarHeight;
-            case State::Peek:   return parentH - 100.0f;
-            case State::Half:   return parentH * 0.5f;
-            case State::Full:   return parentH * 0.1f;
+        case State::Closed:
+            return parentH - handleBarHeight;
+        case State::Peek:
+            return parentH - 100.0f;
+        case State::Half:
+            return parentH * 0.5f;
+        case State::Full:
+            return parentH * 0.1f;
         }
         return parentH - handleBarHeight;
     }
@@ -237,13 +255,12 @@ private:
 
         // Animate with JUCE Desktop::Animator
         auto& animator = juce::Desktop::getInstance().getAnimator();
-        animator.animateComponent(this,
-            getBounds().withY(static_cast<int>(targetY)),
-            1.0f,  // alpha
-            200,   // duration ms
-            false, // use proxy
-            0.0,   // start speed
-            0.0);  // end speed
+        animator.animateComponent(this, getBounds().withY(static_cast<int>(targetY)),
+                                  1.0f,  // alpha
+                                  200,   // duration ms
+                                  false, // use proxy
+                                  0.0,   // start speed
+                                  0.0);  // end speed
 
         if (haptics)
             haptics->fire(HapticEngine::Event::DrawerSnap);

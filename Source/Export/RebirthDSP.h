@@ -9,7 +9,8 @@
 #include <cmath>
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SoftClipGuard — Inline inter-stage headroom limiter.
@@ -17,17 +18,17 @@ namespace xoceanus {
 // (tanh(0.7)/tanh(0.7) = 1.0 at the normalization point).
 // Insert between any two stages that add gain to prevent hard clipping.
 //==============================================================================
-inline float rebirthSoftClip (float x) noexcept
+inline float rebirthSoftClip(float x) noexcept
 {
     constexpr float kDrive = 0.7f;
-    constexpr float kNorm  = 0.6043677f; // 1.0f / tanh(0.7f)
-    return std::tanh (x * kDrive) * kNorm;
+    constexpr float kNorm = 0.6043677f; // 1.0f / tanh(0.7f)
+    return std::tanh(x * kDrive) * kNorm;
 }
 
-inline void rebirthSoftClipBlock (float* data, int numSamples) noexcept
+inline void rebirthSoftClipBlock(float* data, int numSamples) noexcept
 {
     for (int i = 0; i < numSamples; ++i)
-        data[i] = rebirthSoftClip (data[i]);
+        data[i] = rebirthSoftClip(data[i]);
 }
 
 //==============================================================================
@@ -45,54 +46,56 @@ public:
     static constexpr int kNumStages = 4;
 
     // Default delay times (ms) — prime-ish ratios avoid comb resonance artifacts
-    static constexpr float kDefaultDelayMs[kNumStages] = { 7.1f, 11.3f, 17.9f, 23.7f };
+    static constexpr float kDefaultDelayMs[kNumStages] = {7.1f, 11.3f, 17.9f, 23.7f};
 
     AllpassDiffuser() = default;
 
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
         sr_ = sampleRate;
         for (int s = 0; s < kNumStages; ++s)
         {
-            delayMs_[s]   = kDefaultDelayMs[s];
-            feedback_[s]  = 0.6f;
+            delayMs_[s] = kDefaultDelayMs[s];
+            feedback_[s] = 0.6f;
         }
         allocateBuffers();
         reset();
     }
 
-    void setDelayMs (int stage, float ms)
+    void setDelayMs(int stage, float ms)
     {
-        jassert (stage >= 0 && stage < kNumStages);
-        delayMs_[stage] = juce::jlimit (0.5f, 500.0f, ms);
+        jassert(stage >= 0 && stage < kNumStages);
+        delayMs_[stage] = juce::jlimit(0.5f, 500.0f, ms);
         allocateBuffers();
     }
 
-    void setFeedback (int stage, float g)
+    void setFeedback(int stage, float g)
     {
-        jassert (stage >= 0 && stage < kNumStages);
-        feedback_[stage] = juce::jlimit (-0.99f, 0.99f, g);
+        jassert(stage >= 0 && stage < kNumStages);
+        feedback_[stage] = juce::jlimit(-0.99f, 0.99f, g);
     }
 
     // Set all-stage feedback uniformly (convenience for profile parameter application)
-    void setFeedbackAll (float g)
+    void setFeedbackAll(float g)
     {
         for (int s = 0; s < kNumStages; ++s)
-            feedback_[s] = juce::jlimit (-0.99f, 0.99f, g);
+            feedback_[s] = juce::jlimit(-0.99f, 0.99f, g);
     }
 
     void reset()
     {
         for (int s = 0; s < kNumStages; ++s)
         {
-            if (!bufL_[s].empty()) std::fill (bufL_[s].begin(), bufL_[s].end(), 0.0f);
-            if (!bufR_[s].empty()) std::fill (bufR_[s].begin(), bufR_[s].end(), 0.0f);
+            if (!bufL_[s].empty())
+                std::fill(bufL_[s].begin(), bufL_[s].end(), 0.0f);
+            if (!bufR_[s].empty())
+                std::fill(bufR_[s].begin(), bufR_[s].end(), 0.0f);
             posL_[s] = posR_[s] = 0;
         }
     }
 
     // Process a stereo block in-place.
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
         for (int i = 0; i < numSamples; ++i)
         {
@@ -122,12 +125,12 @@ public:
                 //   buf[pos] = v
                 float vL = xL - g * bL[pL];
                 float yL = bL[pL] + g * vL;
-                bL[pL]   = vL;
+                bL[pL] = vL;
                 pL = (pL + 1) % delaySamps;
 
                 float vR = xR - g * bR[pR];
                 float yR = bR[pR] + g * vR;
-                bR[pR]   = vR;
+                bR[pR] = vR;
                 pR = (pR + 1) % delaySamps;
 
                 // Denormal protection
@@ -138,7 +141,7 @@ public:
                 xR = yR;
             }
 
-            left[i]  = xL;
+            left[i] = xL;
             right[i] = xR;
         }
     }
@@ -148,17 +151,17 @@ private:
     {
         for (int s = 0; s < kNumStages; ++s)
         {
-            int samps = juce::jmax (1, (int) std::ceil (delayMs_[s] * 0.001 * sr_)) + 2;
+            int samps = juce::jmax(1, (int)std::ceil(delayMs_[s] * 0.001 * sr_)) + 2;
             delaySamples_[s] = samps;
-            bufL_[s].assign ((size_t) samps, 0.0f);
-            bufR_[s].assign ((size_t) samps, 0.0f);
+            bufL_[s].assign((size_t)samps, 0.0f);
+            bufR_[s].assign((size_t)samps, 0.0f);
         }
     }
 
     double sr_ = 44100.0;
-    float  delayMs_[kNumStages]     = { 7.1f, 11.3f, 17.9f, 23.7f };
-    float  feedback_[kNumStages]    = { 0.6f, 0.6f, 0.6f, 0.6f };
-    int    delaySamples_[kNumStages] = { 0, 0, 0, 0 };
+    float delayMs_[kNumStages] = {7.1f, 11.3f, 17.9f, 23.7f};
+    float feedback_[kNumStages] = {0.6f, 0.6f, 0.6f, 0.6f};
+    int delaySamples_[kNumStages] = {0, 0, 0, 0};
 
     std::vector<float> bufL_[kNumStages];
     std::vector<float> bufR_[kNumStages];
@@ -180,50 +183,49 @@ class NoiseBurst
 public:
     NoiseBurst() = default;
 
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
-        sr_          = sampleRate;
-        burstPhase_  = 0;
+        sr_ = sampleRate;
+        burstPhase_ = 0;
         burstActive_ = false;
         updateHPF();
         reset();
     }
 
     /// Length of the noise burst in milliseconds.
-    void setBurstLengthMs (float ms)
-    {
-        burstLengthMs_ = juce::jlimit (0.5f, 200.0f, ms);
-    }
+    void setBurstLengthMs(float ms) { burstLengthMs_ = juce::jlimit(0.5f, 200.0f, ms); }
 
     /// Level of the burst in dB (negative = attenuated).
-    void setBurstLevelDb (float db)
-    {
-        burstLevel_ = juce::Decibels::decibelsToGain (juce::jlimit (-60.0f, 0.0f, db));
-    }
+    void setBurstLevelDb(float db) { burstLevel_ = juce::Decibels::decibelsToGain(juce::jlimit(-60.0f, 0.0f, db)); }
 
     /// High-pass cutoff frequency for the noise burst.
-    void setHPFCutoffHz (float hz)
+    void setHPFCutoffHz(float hz)
     {
-        hpfCutoffHz_ = juce::jlimit (20.0f, 20000.0f, hz);
+        hpfCutoffHz_ = juce::jlimit(20.0f, 20000.0f, hz);
         updateHPF();
     }
 
     /// Call once to schedule a burst that will be injected on the next processBlock() call.
-    void triggerBurst() noexcept { burstPhase_ = 0; burstActive_ = true; }
+    void triggerBurst() noexcept
+    {
+        burstPhase_ = 0;
+        burstActive_ = true;
+    }
 
     void reset()
     {
-        burstPhase_  = 0;
+        burstPhase_ = 0;
         burstActive_ = false;
         hpfZ1L_ = hpfZ1R_ = 0.0f;
     }
 
     // Process stereo block in-place. Burst is mixed additively into the signal.
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
-        if (!burstActive_) return;
+        if (!burstActive_)
+            return;
 
-        int burstLenSamps = (int) std::ceil (burstLengthMs_ * 0.001 * sr_);
+        int burstLenSamps = (int)std::ceil(burstLengthMs_ * 0.001 * sr_);
 
         for (int i = 0; i < numSamples && burstActive_; ++i)
         {
@@ -235,18 +237,18 @@ public:
 
             // White noise via LCG
             rngState_ = rngState_ * 6364136223846793005ULL + 1442695040888963407ULL;
-            float noise = (float) (int32_t) (rngState_ >> 33) * (1.0f / 1073741824.0f);
+            float noise = (float)(int32_t)(rngState_ >> 33) * (1.0f / 1073741824.0f);
 
             // 1-pole HP filter: y[n] = x[n] - x[n-1] + coeff * y[n-1]
             float hpL = noise - hpfZ1L_ + hpfCoeff_ * hpfZ1L_;
-            hpfZ1L_  = noise;
+            hpfZ1L_ = noise;
             float hpR = noise - hpfZ1R_ + hpfCoeff_ * hpfZ1R_;
-            hpfZ1R_  = noise;
+            hpfZ1R_ = noise;
 
             // Amplitude envelope: linear decay over burst length
-            float env = 1.0f - (float) burstPhase_ / (float) burstLenSamps;
+            float env = 1.0f - (float)burstPhase_ / (float)burstLenSamps;
 
-            left[i]  += hpL * env * burstLevel_;
+            left[i] += hpL * env * burstLevel_;
             right[i] += hpR * env * burstLevel_;
 
             ++burstPhase_;
@@ -257,19 +259,19 @@ private:
     void updateHPF()
     {
         // 1-pole matched-Z HP coefficient
-        hpfCoeff_ = std::exp (-2.0f * juce::MathConstants<float>::pi * hpfCutoffHz_ / (float) sr_);
+        hpfCoeff_ = std::exp(-2.0f * juce::MathConstants<float>::pi * hpfCutoffHz_ / (float)sr_);
     }
 
-    double   sr_            = 44100.0;
-    float    burstLengthMs_ = 5.0f;
-    float    burstLevel_    = juce::Decibels::decibelsToGain (-24.0f);
-    float    hpfCutoffHz_   = 4000.0f;
-    float    hpfCoeff_      = 0.0f;
-    float    hpfZ1L_        = 0.0f;
-    float    hpfZ1R_        = 0.0f;
-    uint64_t rngState_      = 0xDEADBEEFCAFEBABEULL;
+    double sr_ = 44100.0;
+    float burstLengthMs_ = 5.0f;
+    float burstLevel_ = juce::Decibels::decibelsToGain(-24.0f);
+    float hpfCutoffHz_ = 4000.0f;
+    float hpfCoeff_ = 0.0f;
+    float hpfZ1L_ = 0.0f;
+    float hpfZ1R_ = 0.0f;
+    uint64_t rngState_ = 0xDEADBEEFCAFEBABEULL;
 
-    int  burstPhase_  = 0;
+    int burstPhase_ = 0;
     bool burstActive_ = false;
 };
 
@@ -282,7 +284,7 @@ private:
 //
 // Complexity: O(N log N). Sufficient for N=2048 formant analysis.
 //==============================================================================
-inline void inlineRadix2FFT (float* re, float* im, int N) noexcept
+inline void inlineRadix2FFT(float* re, float* im, int N) noexcept
 {
     // Bit-reversal permutation
     for (int i = 1, j = 0; i < N; ++i)
@@ -291,15 +293,19 @@ inline void inlineRadix2FFT (float* re, float* im, int N) noexcept
         for (; j & bit; bit >>= 1)
             j ^= bit;
         j ^= bit;
-        if (i < j) { std::swap (re[i], re[j]); std::swap (im[i], im[j]); }
+        if (i < j)
+        {
+            std::swap(re[i], re[j]);
+            std::swap(im[i], im[j]);
+        }
     }
 
     // Cooley-Tukey butterfly stages
     for (int len = 2; len <= N; len <<= 1)
     {
-        float angle = -2.0f * 3.14159265358979323846f / (float) len;
-        float wRe   = std::cos (angle);
-        float wIm   = std::sin (angle);
+        float angle = -2.0f * 3.14159265358979323846f / (float)len;
+        float wRe = std::cos(angle);
+        float wIm = std::sin(angle);
 
         for (int i = 0; i < N; i += len)
         {
@@ -314,8 +320,8 @@ inline void inlineRadix2FFT (float* re, float* im, int N) noexcept
                 float tRe = curRe * re[i + k + half] - curIm * im[i + k + half];
                 float tIm = curRe * im[i + k + half] + curIm * re[i + k + half];
 
-                re[i + k]        = uRe + tRe;
-                im[i + k]        = uIm + tIm;
+                re[i + k] = uRe + tRe;
+                im[i + k] = uIm + tIm;
                 re[i + k + half] = uRe - tRe;
                 im[i + k + half] = uIm - tIm;
 
@@ -348,14 +354,14 @@ class FormantResonator
 {
 public:
     static constexpr int kNumFormants = 4;
-    static constexpr int kFFTSize     = 2048;
+    static constexpr int kFFTSize = 2048;
 
     FormantResonator() = default;
 
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
-        sr_  = sampleRate;
-        q_   = 8.0f;
+        sr_ = sampleRate;
+        q_ = 8.0f;
         mix_ = 0.4f;
         // Default formant frequencies (vowel "ah" approximation)
         formantHz_[0] = 800.0f;
@@ -367,75 +373,81 @@ public:
     }
 
     /// Q of all resonators (4.0 = wide/warm, 16.0 = narrow/bright).
-    void setQ (float q)
+    void setQ(float q)
     {
-        q_ = juce::jlimit (0.5f, 50.0f, q);
+        q_ = juce::jlimit(0.5f, 50.0f, q);
         rebuildFilters();
     }
 
     /// Mix of resonator bank (0 = dry, 1 = full resonator output).
-    void setMix (float m) { mix_ = juce::jlimit (0.0f, 1.0f, m); }
+    void setMix(float m) { mix_ = juce::jlimit(0.0f, 1.0f, m); }
 
     /// Analyze a buffer to extract formant frequencies.
     /// Call this once before processBlock(). Uses the mono sum of the buffer.
-    void analyzeFormants (const juce::AudioBuffer<float>& buf, double /*sr*/)
+    void analyzeFormants(const juce::AudioBuffer<float>& buf, double /*sr*/)
     {
         int totalSamps = buf.getNumSamples();
-        int numCh      = buf.getNumChannels();
-        if (totalSamps < kFFTSize) return;
+        int numCh = buf.getNumChannels();
+        if (totalSamps < kFFTSize)
+            return;
 
         // Build mono sum into FFT input (use first kFFTSize samples from center-ish)
-        int startSamp = std::max (0, (totalSamps - kFFTSize) / 2);
-        std::vector<float> window (kFFTSize, 0.0f);
+        int startSamp = std::max(0, (totalSamps - kFFTSize) / 2);
+        std::vector<float> window(kFFTSize, 0.0f);
         for (int i = 0; i < kFFTSize; ++i)
         {
             float s = 0.0f;
             for (int ch = 0; ch < numCh; ++ch)
-                s += buf.getSample (ch, startSamp + i);
-            s /= (float) numCh;
+                s += buf.getSample(ch, startSamp + i);
+            s /= (float)numCh;
             // Hann window
-            float w = 0.5f * (1.0f - std::cos (2.0f * juce::MathConstants<float>::pi * (float) i / (float) (kFFTSize - 1)));
+            float w =
+                0.5f * (1.0f - std::cos(2.0f * juce::MathConstants<float>::pi * (float)i / (float)(kFFTSize - 1)));
             window[i] = s * w;
         }
 
         // Real FFT using inline radix-2 Cooley-Tukey (avoids juce_dsp / <complex>)
-        std::vector<float> fftRe (kFFTSize, 0.0f);
-        std::vector<float> fftIm (kFFTSize, 0.0f);
-        for (int i = 0; i < kFFTSize; ++i) fftRe[i] = window[i];
+        std::vector<float> fftRe(kFFTSize, 0.0f);
+        std::vector<float> fftIm(kFFTSize, 0.0f);
+        for (int i = 0; i < kFFTSize; ++i)
+            fftRe[i] = window[i];
 
-        inlineRadix2FFT (fftRe.data(), fftIm.data(), kFFTSize);
+        inlineRadix2FFT(fftRe.data(), fftIm.data(), kFFTSize);
 
         // Compute magnitude spectrum (first N/2 bins)
         int halfN = kFFTSize / 2;
-        std::vector<float> mag (halfN, 0.0f);
+        std::vector<float> mag(halfN, 0.0f);
         for (int i = 0; i < halfN; ++i)
         {
             float re = fftRe[i];
             float im = fftIm[i];
-            mag[i]   = std::sqrt (re * re + im * im);
+            mag[i] = std::sqrt(re * re + im * im);
         }
 
         // Simple peak picking: find top kNumFormants local maxima.
         // Min distance between peaks: 100 Hz in bin space.
-        float binHz     = (float) sr_ / (float) kFFTSize;
-        int   minBinGap = std::max (1, (int) (100.0f / binHz));
+        float binHz = (float)sr_ / (float)kFFTSize;
+        int minBinGap = std::max(1, (int)(100.0f / binHz));
 
         // Ignore DC and sub-100Hz bins
-        int minBin = std::max (1, (int) (100.0f / binHz));
+        int minBin = std::max(1, (int)(100.0f / binHz));
         int maxBin = halfN - 1;
 
-        struct Peak { int bin; float mag; };
+        struct Peak
+        {
+            int bin;
+            float mag;
+        };
         std::vector<Peak> peaks;
 
         for (int i = minBin + 1; i < maxBin - 1; ++i)
         {
             if (mag[i] > mag[i - 1] && mag[i] > mag[i + 1])
-                peaks.push_back ({ i, mag[i] });
+                peaks.push_back({i, mag[i]});
         }
 
         // Sort by magnitude descending
-        std::sort (peaks.begin(), peaks.end(),
-                   [] (const Peak& a, const Peak& b) { return a.mag > b.mag; });
+        std::sort(peaks.begin(), peaks.end(), [](const Peak& a, const Peak& b) { return a.mag > b.mag; });
 
         // Select top kNumFormants peaks with minimum bin gap enforcement
         std::vector<int> selectedBins;
@@ -443,26 +455,31 @@ public:
         {
             bool tooClose = false;
             for (int sel : selectedBins)
-                if (std::abs (p.bin - sel) < minBinGap) { tooClose = true; break; }
+                if (std::abs(p.bin - sel) < minBinGap)
+                {
+                    tooClose = true;
+                    break;
+                }
             if (!tooClose)
             {
-                selectedBins.push_back (p.bin);
-                if ((int) selectedBins.size() >= kNumFormants) break;
+                selectedBins.push_back(p.bin);
+                if ((int)selectedBins.size() >= kNumFormants)
+                    break;
             }
         }
 
         // Pad with default frequencies if fewer than kNumFormants peaks found
-        static const float kDefaults[kNumFormants] = { 800.0f, 1200.0f, 2500.0f, 3500.0f };
+        static const float kDefaults[kNumFormants] = {800.0f, 1200.0f, 2500.0f, 3500.0f};
         for (int i = 0; i < kNumFormants; ++i)
         {
-            if (i < (int) selectedBins.size())
-                formantHz_[i] = (float) selectedBins[i] * binHz;
+            if (i < (int)selectedBins.size())
+                formantHz_[i] = (float)selectedBins[i] * binHz;
             else
                 formantHz_[i] = kDefaults[i];
         }
 
         // Sort formants ascending (perceptual convention)
-        std::sort (formantHz_, formantHz_ + kNumFormants);
+        std::sort(formantHz_, formantHz_ + kNumFormants);
         rebuildFilters();
     }
 
@@ -475,9 +492,10 @@ public:
 
     // Process stereo block in-place. Each sample is fed through the parallel
     // resonator bank; outputs are summed and blended with the dry signal.
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
-        if (mix_ < 0.001f) return;
+        if (mix_ < 0.001f)
+            return;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -502,10 +520,10 @@ public:
             }
 
             // Normalize parallel sum (kNumFormants resonators)
-            wetL /= (float) kNumFormants;
-            wetR /= (float) kNumFormants;
+            wetL /= (float)kNumFormants;
+            wetR /= (float)kNumFormants;
 
-            left[i]  = dryL + mix_ * (wetL - dryL);
+            left[i] = dryL + mix_ * (wetL - dryL);
             right[i] = dryR + mix_ * (wetR - dryR);
         }
     }
@@ -517,26 +535,26 @@ private:
         // At resonance: gain = 1.0 (0 dB). Two zeros at DC and Nyquist.
         for (int f = 0; f < kNumFormants; ++f)
         {
-            float fc    = formantHz_[f];
-            float w0    = 2.0f * juce::MathConstants<float>::pi * fc / (float) sr_;
-            float alpha = std::sin (w0) / (2.0f * q_);
+            float fc = formantHz_[f];
+            float w0 = 2.0f * juce::MathConstants<float>::pi * fc / (float)sr_;
+            float alpha = std::sin(w0) / (2.0f * q_);
 
-            float cosW0  = std::cos (w0);
-            float a0inv  = 1.0f / (1.0f + alpha);
+            float cosW0 = std::cos(w0);
+            float a0inv = 1.0f / (1.0f + alpha);
 
-            b0_[f] =  alpha * a0inv;
-            b1_[f] =  0.0f;
+            b0_[f] = alpha * a0inv;
+            b1_[f] = 0.0f;
             b2_[f] = -alpha * a0inv;
             a1_[f] = -2.0f * cosW0 * a0inv;
-            a2_[f] =  (1.0f - alpha) * a0inv;
+            a2_[f] = (1.0f - alpha) * a0inv;
         }
     }
 
-    double sr_  = 44100.0;
-    float  q_   = 8.0f;
-    float  mix_ = 0.4f;
+    double sr_ = 44100.0;
+    float q_ = 8.0f;
+    float mix_ = 0.4f;
 
-    float formantHz_[kNumFormants] = { 800.0f, 1200.0f, 2500.0f, 3500.0f };
+    float formantHz_[kNumFormants] = {800.0f, 1200.0f, 2500.0f, 3500.0f};
 
     // Biquad coefficients per formant
     float b0_[kNumFormants] = {};

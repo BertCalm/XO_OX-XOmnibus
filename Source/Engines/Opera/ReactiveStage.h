@@ -32,7 +32,8 @@
 #include <algorithm>
 #include <vector>
 
-namespace opera {
+namespace opera
+{
 
 //==============================================================================
 /// ReactiveStage — Kuramoto-responsive FDN reverb.
@@ -55,10 +56,11 @@ public:
     /// @param sampleRate     Host sample rate (Hz). Never hardcoded to 44100.
     /// @param maxBlockSize   Maximum samples per processBlock call.
     //==========================================================================
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
-        sr = static_cast<float> (sampleRate);
-        if (sr <= 0.0f) sr = 48000.0f;
+        sr = static_cast<float>(sampleRate);
+        if (sr <= 0.0f)
+            sr = 48000.0f;
 
         invSr = 1.0f / sr;
 
@@ -68,23 +70,23 @@ public:
         for (int i = 0; i < kNumLines; ++i)
         {
             float scaledLen = kBaseDelayLengths48k[i] * (sr / 48000.0f);
-            delayLengths[i] = std::max (1, static_cast<int> (scaledLen + 0.5f));
+            delayLengths[i] = std::max(1, static_cast<int>(scaledLen + 0.5f));
         }
 
         // Pre-delay buffer: max 60ms
-        maxPreDelaySamples = static_cast<int> (0.06f * sr) + 1;
+        maxPreDelaySamples = static_cast<int>(0.06f * sr) + 1;
 
         // Allocate buffers. Each delay line needs enough capacity for the
         // longest possible delay (base length at max sample rate).
         // Add margin for pre-delay modulation.
-        int maxDelay = static_cast<int> (2200.0f * (sr / 48000.0f)) + 2;
+        int maxDelay = static_cast<int>(2200.0f * (sr / 48000.0f)) + 2;
         for (int i = 0; i < kNumLines; ++i)
         {
             bufferSizes[i] = maxDelay;
-            delayBuffers[i].assign (static_cast<size_t> (maxDelay), 0.0f);
+            delayBuffers[i].assign(static_cast<size_t>(maxDelay), 0.0f);
         }
 
-        preDelayBuffer.assign (static_cast<size_t> (maxPreDelaySamples), 0.0f);
+        preDelayBuffer.assign(static_cast<size_t>(maxPreDelaySamples), 0.0f);
 
         reset();
     }
@@ -96,12 +98,12 @@ public:
     {
         for (int i = 0; i < kNumLines; ++i)
         {
-            std::fill (delayBuffers[i].begin(), delayBuffers[i].end(), 0.0f);
+            std::fill(delayBuffers[i].begin(), delayBuffers[i].end(), 0.0f);
             writePos[i] = 0;
             dampState[i] = 0.0f;
         }
 
-        std::fill (preDelayBuffer.begin(), preDelayBuffer.end(), 0.0f);
+        std::fill(preDelayBuffer.begin(), preDelayBuffer.end(), 0.0f);
         preDelayWritePos = 0;
 
         // Smoothing state
@@ -117,13 +119,13 @@ public:
     /// @param stageAmount   opera_stage: 0.0 (dry) to 1.0 (full wet)
     /// @param orderParam    Kuramoto order parameter r(t): 0.0 to 1.0
     //==========================================================================
-    void processBlock (float* leftChannel, float* rightChannel,
-                       int numSamples, float stageAmount, float orderParam) noexcept
+    void processBlock(float* leftChannel, float* rightChannel, int numSamples, float stageAmount,
+                      float orderParam) noexcept
     {
         if (stageAmount <= 0.0001f || numSamples <= 0)
             return;
 
-        float wetMix = clamp (stageAmount, 0.0f, 1.0f);
+        float wetMix = clamp(stageAmount, 0.0f, 1.0f);
         float dryMix = 1.0f - wetMix;
 
         // ----------------------------------------------------------------
@@ -134,16 +136,15 @@ public:
         // The smoothing uses a simple one-pole filter advanced by the
         // block size, giving natural ~20ms response.
         // ----------------------------------------------------------------
-        float rTarget = clamp (orderParam, 0.0f, 1.0f);
+        float rTarget = clamp(orderParam, 0.0f, 1.0f);
 
         // One-pole smoothing coefficient (~20ms time constant)
-        float smoothCoeff = 1.0f - std::exp (-kTwoPi * 50.0f * invSr);
+        float smoothCoeff = 1.0f - std::exp(-kTwoPi * 50.0f * invSr);
 
         // Compute start-of-block and end-of-block order parameter
         float rStart = smoothedOrderParam;
         // Advance smoother by numSamples steps (geometric series closed form)
-        float rEnd = rTarget + (rStart - rTarget)
-                     * std::pow (1.0f - smoothCoeff, static_cast<float> (numSamples));
+        float rEnd = rTarget + (rStart - rTarget) * std::pow(1.0f - smoothCoeff, static_cast<float>(numSamples));
         smoothedOrderParam = rEnd;
 
         // Use midpoint for block-rate coefficient computation
@@ -163,10 +164,10 @@ public:
         float feedbackGain[kNumLines];
         for (int i = 0; i < kNumLines; ++i)
         {
-            float delayTimeSec = static_cast<float> (delayLengths[i]) * invSr;
-            feedbackGain[i] = std::pow (10.0f, -3.0f * delayTimeSec / effectiveRT60);
+            float delayTimeSec = static_cast<float>(delayLengths[i]) * invSr;
+            feedbackGain[i] = std::pow(10.0f, -3.0f * delayTimeSec / effectiveRT60);
             // Safety clamp: prevent runaway feedback
-            feedbackGain[i] = std::min (feedbackGain[i], 0.9995f);
+            feedbackGain[i] = std::min(feedbackGain[i], 0.9995f);
         }
 
         // ----------------------------------------------------------------
@@ -175,7 +176,7 @@ public:
         //   At high sync (r~1): 4000 Hz cutoff (dark, cathedral)
         // ----------------------------------------------------------------
         float dampingCutoff = 12000.0f - rSmooth * 8000.0f;
-        float dampCoeff = std::exp (-kTwoPi * dampingCutoff * invSr);
+        float dampCoeff = std::exp(-kTwoPi * dampingCutoff * invSr);
 
         // ----------------------------------------------------------------
         // Pre-delay: contracts at high sync (hall wraps around)
@@ -183,16 +184,16 @@ public:
         //   r=1: 10ms  (close, dense)
         // ----------------------------------------------------------------
         float preDelayMs = 10.0f + (1.0f - rSmooth) * 40.0f;
-        int preDelaySamples = static_cast<int> (preDelayMs * 0.001f * sr);
-        preDelaySamples = std::max (1, std::min (preDelaySamples, maxPreDelaySamples - 1));
+        int preDelaySamples = static_cast<int>(preDelayMs * 0.001f * sr);
+        preDelaySamples = std::max(1, std::min(preDelaySamples, maxPreDelaySamples - 1));
 
         // ----------------------------------------------------------------
         // Early reflection density: active line count
         //   r=0: 2 lines (sparse)
         //   r=1: 4 lines (dense)
         // ----------------------------------------------------------------
-        int activeLines = 2 + static_cast<int> (rSmooth * 2.0f);
-        activeLines = std::min (activeLines, kNumLines);
+        int activeLines = 2 + static_cast<int>(rSmooth * 2.0f);
+        activeLines = std::min(activeLines, kNumLines);
 
         // ----------------------------------------------------------------
         // Per-sample FDN processing
@@ -203,10 +204,11 @@ public:
             float inputMono = (leftChannel[n] + rightChannel[n]) * 0.5f;
 
             // Write to pre-delay and read back
-            preDelayBuffer[static_cast<size_t> (preDelayWritePos)] = inputMono;
+            preDelayBuffer[static_cast<size_t>(preDelayWritePos)] = inputMono;
             int preDelayReadPos = preDelayWritePos - preDelaySamples;
-            if (preDelayReadPos < 0) preDelayReadPos += maxPreDelaySamples;
-            float preDelayedInput = preDelayBuffer[static_cast<size_t> (preDelayReadPos)];
+            if (preDelayReadPos < 0)
+                preDelayReadPos += maxPreDelaySamples;
+            float preDelayedInput = preDelayBuffer[static_cast<size_t>(preDelayReadPos)];
             preDelayWritePos = (preDelayWritePos + 1) % maxPreDelaySamples;
 
             // 1. Read from delay lines
@@ -214,8 +216,9 @@ public:
             for (int i = 0; i < kNumLines; ++i)
             {
                 int rp = writePos[i] - delayLengths[i];
-                if (rp < 0) rp += bufferSizes[i];
-                read[i] = delayBuffers[i][static_cast<size_t> (rp)];
+                if (rp < 0)
+                    rp += bufferSizes[i];
+                read[i] = delayBuffers[i][static_cast<size_t>(rp)];
             }
 
             // Zero out inactive lines (early reflection density control)
@@ -237,7 +240,7 @@ public:
             {
                 // One-pole lowpass damping in each feedback path
                 dampState[i] = mixed[i] + (dampState[i] - mixed[i]) * dampCoeff;
-                dampState[i] = flushDenormal (dampState[i]);
+                dampState[i] = flushDenormal(dampState[i]);
 
                 // Apply RT60-derived feedback gain
                 float fb = dampState[i] * feedbackGain[i];
@@ -249,8 +252,7 @@ public:
                 float injection = (i < activeLines) ? preDelayedInput : 0.0f;
 
                 // Write: feedback + (gated) pre-delayed input
-                delayBuffers[i][static_cast<size_t> (writePos[i])] =
-                    flushDenormal (fb + injection);
+                delayBuffers[i][static_cast<size_t>(writePos[i])] = flushDenormal(fb + injection);
 
                 // Advance write pointer (wrap within buffer)
                 writePos[i] = (writePos[i] + 1) % bufferSizes[i];
@@ -262,19 +264,19 @@ public:
             float wetR = (read[1] + read[3]) * 0.5f;
 
             // 5. Mix dry/wet
-            leftChannel[n]  = leftChannel[n] * dryMix + wetL * wetMix;
+            leftChannel[n] = leftChannel[n] * dryMix + wetL * wetMix;
             rightChannel[n] = rightChannel[n] * dryMix + wetR * wetMix;
         }
     }
 
 private:
     //==========================================================================
-    static constexpr int   kNumLines = 4;
+    static constexpr int kNumLines = 4;
 
     // Prime-number delay lengths at 48kHz — chosen for maximal diffusion,
     // minimal sympathetic ringing. Each prime avoids integer relationships
     // that cause metallic coloration.
-    static constexpr int kBaseDelayLengths48k[kNumLines] = { 1423, 1637, 1879, 2089 };
+    static constexpr int kBaseDelayLengths48k[kNumLines] = {1423, 1637, 1879, 2089};
 
     // Hadamard feedback matrix (4x4, orthogonal, energy-preserving).
     // H4 = (1/2) * [[1,1,1,1],[1,-1,1,-1],[1,1,-1,-1],[1,-1,-1,1]]
@@ -282,14 +284,10 @@ private:
     // Orthogonality guarantees energy preservation (no buildup/decay
     // from the matrix itself — all decay comes from the absorption filters).
     static constexpr float kHadamard[kNumLines][kNumLines] = {
-        {  0.5f,  0.5f,  0.5f,  0.5f },
-        {  0.5f, -0.5f,  0.5f, -0.5f },
-        {  0.5f,  0.5f, -0.5f, -0.5f },
-        {  0.5f, -0.5f, -0.5f,  0.5f }
-    };
+        {0.5f, 0.5f, 0.5f, 0.5f}, {0.5f, -0.5f, 0.5f, -0.5f}, {0.5f, 0.5f, -0.5f, -0.5f}, {0.5f, -0.5f, -0.5f, 0.5f}};
 
     //==========================================================================
-    float sr    = 48000.0f;
+    float sr = 48000.0f;
     float invSr = 1.0f / 48000.0f;
 
     // Delay line lengths (in samples, scaled to actual sample rate)

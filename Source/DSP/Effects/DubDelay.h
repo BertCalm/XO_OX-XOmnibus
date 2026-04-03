@@ -6,7 +6,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // DubDelay — Stereo ping-pong delay with HP-filtered feedback path.
@@ -37,14 +38,14 @@ public:
     /// Prepare the delay for playback. Allocates buffers for the given sample rate.
     /// @param sampleRate  Current sample rate in Hz.
     /// @param maxBlockSize  Maximum expected block size (unused, reserved).
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
         sr = sampleRate;
 
         // Allocate circular buffers for max 2000ms + margin
-        int maxDelaySamples = static_cast<int> (sr * 2.1) + 1;
-        bufferL.assign (static_cast<size_t> (maxDelaySamples), 0.0f);
-        bufferR.assign (static_cast<size_t> (maxDelaySamples), 0.0f);
+        int maxDelaySamples = static_cast<int>(sr * 2.1) + 1;
+        bufferL.assign(static_cast<size_t>(maxDelaySamples), 0.0f);
+        bufferR.assign(static_cast<size_t>(maxDelaySamples), 0.0f);
         bufferSize = maxDelaySamples;
         writePos = 0;
 
@@ -60,43 +61,33 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set the delay time in milliseconds. Clamped to [1, 2000]ms.
-    void setDelayTime (float ms)
+    void setDelayTime(float ms)
     {
-        delayTimeMs = clamp (ms, 1.0f, 2000.0f);
+        delayTimeMs = clamp(ms, 1.0f, 2000.0f);
         tempoSyncEnabled = false;
     }
 
     /// Set feedback amount. Hard-limited to [0.0, 0.95] to prevent runaway.
-    void setFeedback (float fb)
-    {
-        feedback = clamp (fb, 0.0f, 0.95f);
-    }
+    void setFeedback(float fb) { feedback = clamp(fb, 0.0f, 0.95f); }
 
     /// Set wet/dry mix. 0.0 = fully dry, 1.0 = fully wet.
-    void setMix (float wet)
-    {
-        mix = clamp (wet, 0.0f, 1.0f);
-    }
+    void setMix(float wet) { mix = clamp(wet, 0.0f, 1.0f); }
 
     /// Enable or disable ping-pong stereo bounce.
-    void setPingPong (bool enabled)
-    {
-        pingPong = enabled;
-    }
+    void setPingPong(bool enabled) { pingPong = enabled; }
 
     /// Enable tempo-synced delay time. Overrides manual delay time.
     /// @param enabled  Whether tempo sync is active.
     /// @param bpm  Beats per minute (e.g. 120.0).
     /// @param division  Beat division (1.0 = quarter, 0.5 = eighth, 0.25 = sixteenth, etc.)
-    void setTempoSync (bool enabled, double bpm, float division)
+    void setTempoSync(bool enabled, double bpm, float division)
     {
         tempoSyncEnabled = enabled;
         if (enabled && bpm > 0.0)
         {
             // One beat = 60000 / bpm milliseconds
             double beatMs = 60000.0 / bpm;
-            delayTimeMs = clamp (static_cast<float> (beatMs * static_cast<double> (division)),
-                                 1.0f, 2000.0f);
+            delayTimeMs = clamp(static_cast<float>(beatMs * static_cast<double>(division)), 1.0f, 2000.0f);
         }
     }
 
@@ -108,19 +99,21 @@ public:
     /// @param leftOut  Output left channel buffer.
     /// @param rightOut Output right channel buffer.
     /// @param numSamples  Number of samples to process.
-    void processBlock (float* leftIn, float* rightIn,
-                       float* leftOut, float* rightOut, int numSamples)
+    void processBlock(float* leftIn, float* rightIn, float* leftOut, float* rightOut, int numSamples)
     {
         // Guard: if prepare() hasn't been called, pass audio through unchanged
-        if (bufferSize <= 0) return;  // was jassert — moved validation to prepare()
+        if (bufferSize <= 0)
+            return; // was jassert — moved validation to prepare()
 
-        float delaySamplesF = static_cast<float> (delayTimeMs * 0.001 * sr);
-        int delaySamples = static_cast<int> (delaySamplesF);
-        float frac = delaySamplesF - static_cast<float> (delaySamples);
+        float delaySamplesF = static_cast<float>(delayTimeMs * 0.001 * sr);
+        int delaySamples = static_cast<int>(delaySamplesF);
+        float frac = delaySamplesF - static_cast<float>(delaySamples);
 
         // Clamp to valid range
-        if (delaySamples < 1) delaySamples = 1;
-        if (delaySamples >= bufferSize - 1) delaySamples = bufferSize - 2;
+        if (delaySamples < 1)
+            delaySamples = 1;
+        if (delaySamples >= bufferSize - 1)
+            delaySamples = bufferSize - 2;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -131,10 +124,10 @@ public:
             int readPos0 = (writePos - delaySamples + bufferSize) % bufferSize;
             int readPos1 = (readPos0 - 1 + bufferSize) % bufferSize;
 
-            float delL = flushDenormal (lerp (bufferL[static_cast<size_t> (readPos0)],
-                                              bufferL[static_cast<size_t> (readPos1)], frac));
-            float delR = flushDenormal (lerp (bufferR[static_cast<size_t> (readPos0)],
-                                              bufferR[static_cast<size_t> (readPos1)], frac));
+            float delL = flushDenormal(
+                lerp(bufferL[static_cast<size_t>(readPos0)], bufferL[static_cast<size_t>(readPos1)], frac));
+            float delR = flushDenormal(
+                lerp(bufferR[static_cast<size_t>(readPos0)], bufferR[static_cast<size_t>(readPos1)], frac));
 
             // High-pass filter in feedback path (~80Hz) to prevent mud buildup
             // 1st-order HP: y[n] = hpCoeff * (y[n-1] + x[n] - x[n-1])
@@ -142,8 +135,8 @@ public:
             float hpOutR = hpCoeff * (hpStateR + delR - hpPrevInputR);
             hpPrevInputL = delL;
             hpPrevInputR = delR;
-            hpStateL = flushDenormal (hpOutL);
-            hpStateR = flushDenormal (hpOutR);
+            hpStateL = flushDenormal(hpOutL);
+            hpStateR = flushDenormal(hpOutR);
 
             float fbL = hpOutL * feedback;
             float fbR = hpOutR * feedback;
@@ -151,19 +144,19 @@ public:
             // Write to buffer: ping-pong cross-feeds L<->R, normal feeds L->L, R->R
             if (pingPong)
             {
-                bufferL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbR);
-                bufferR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbL);
+                bufferL[static_cast<size_t>(writePos)] = flushDenormal(inL + fbR);
+                bufferR[static_cast<size_t>(writePos)] = flushDenormal(inR + fbL);
             }
             else
             {
-                bufferL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbL);
-                bufferR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbR);
+                bufferL[static_cast<size_t>(writePos)] = flushDenormal(inL + fbL);
+                bufferR[static_cast<size_t>(writePos)] = flushDenormal(inR + fbR);
             }
 
             writePos = (writePos + 1) % bufferSize;
 
             // Mix dry/wet
-            leftOut[i]  = inL * (1.0f - mix) + delL * mix;
+            leftOut[i] = inL * (1.0f - mix) + delL * mix;
             rightOut[i] = inR * (1.0f - mix) + delR * mix;
         }
     }
@@ -172,8 +165,8 @@ public:
     /// Reset all delay state without reallocating buffers.
     void reset()
     {
-        std::fill (bufferL.begin(), bufferL.end(), 0.0f);
-        std::fill (bufferR.begin(), bufferR.end(), 0.0f);
+        std::fill(bufferL.begin(), bufferL.end(), 0.0f);
+        std::fill(bufferR.begin(), bufferR.end(), 0.0f);
         writePos = 0;
         hpStateL = 0.0f;
         hpStateR = 0.0f;
@@ -186,7 +179,7 @@ private:
     {
         // 1st-order high-pass at ~80Hz — matched-Z coefficient
         constexpr float hpFreq = 80.0f;
-        hpCoeff = flushDenormal (fastExp (-6.28318530718f * hpFreq / static_cast<float> (sr)));
+        hpCoeff = flushDenormal(fastExp(-6.28318530718f * hpFreq / static_cast<float>(sr)));
     }
 
     double sr = 44100.0;

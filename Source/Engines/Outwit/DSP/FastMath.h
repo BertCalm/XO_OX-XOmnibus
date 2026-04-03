@@ -12,24 +12,25 @@
 
 #include "../../../DSP/FastMath.h"
 
-namespace xoutwit {
+namespace xoutwit
+{
 
-using xoceanus::flushDenormal;
-using xoceanus::fastExp;
-using xoceanus::fastTanh;
-using xoceanus::fastSin;
+using xoceanus::clamp;
+using xoceanus::dbToGain;
 using xoceanus::fastCos;
-using xoceanus::fastTan;
+using xoceanus::fastExp;
 using xoceanus::fastLog2;
 using xoceanus::fastPow2;
+using xoceanus::fastSin;
+using xoceanus::fastTan;
+using xoceanus::fastTanh;
+using xoceanus::flushDenormal;
+using xoceanus::gainToDb;
+using xoceanus::lerp;
 using xoceanus::midiToFreq;
 using xoceanus::midiToFreqTune;
-using xoceanus::dbToGain;
-using xoceanus::gainToDb;
-using xoceanus::clamp;
-using xoceanus::lerp;
-using xoceanus::smoothstep;
 using xoceanus::smoothCoeffFromTime;
+using xoceanus::smoothstep;
 using xoceanus::softClip;
 
 } // namespace xoutwit

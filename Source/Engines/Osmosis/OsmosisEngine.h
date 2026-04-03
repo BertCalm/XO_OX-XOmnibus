@@ -10,7 +10,8 @@
 #include <array>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // OsmosisEngine — the membrane between XOceanus and the outside world.
@@ -48,7 +49,7 @@ public:
     //-- Identity --------------------------------------------------------------
     juce::String getEngineId() const override { return "Osmosis"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFC0C0C0); }
-    int getMaxVoices() const override { return 1; } // mono analysis engine
+    int getMaxVoices() const override { return 1; }         // mono analysis engine
     bool isAnalysisEngine() const override { return true; } // enables external audio routing without RTTI
 
     //-- Lifecycle -------------------------------------------------------------
@@ -117,10 +118,14 @@ public:
         membraneLPStateR_ = 0.0f;
         couplingPermeabilityOffset_ = 0.0f; // fix #303
         lfo_.reset();
-        for (auto& f : bandLP_) f.reset();
-        for (auto& f : bandHP_) f.reset();
-        for (auto& f : bandLP2_) f.reset();
-        for (auto& f : bandHP2_) f.reset();
+        for (auto& f : bandLP_)
+            f.reset();
+        for (auto& f : bandHP_)
+            f.reset();
+        for (auto& f : bandLP2_)
+            f.reset();
+        for (auto& f : bandHP2_)
+            f.reset();
     }
 
     //-- External audio injection (called by XOceanusProcessor) ----------------
@@ -137,9 +142,7 @@ public:
     const float* getBandRMS() const { return bandRMS_; }
 
     //-- Audio -----------------------------------------------------------------
-    void renderBlock(juce::AudioBuffer<float>& buffer,
-                     juce::MidiBuffer& /*midi*/,
-                     int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midi*/, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         // SilenceGate: early-out when no external audio is present
@@ -156,16 +159,16 @@ public:
         memorySmoother_.set(pMemory_ ? pMemory_->load() : 0.3f);
 
         // Fix #303: add coupling-driven offset to base permeability, clamped to [0, 1]
-        const float permeability = juce::jlimit(0.0f, 1.0f,
-            permeabilitySmoother_.process() + couplingPermeabilityOffset_);
-        const float selectivity  = selectivitySmoother_.process();
-        const float reactivity   = reactivitySmoother_.process();
-        const float memory       = memorySmoother_.process();
+        const float permeability =
+            juce::jlimit(0.0f, 1.0f, permeabilitySmoother_.process() + couplingPermeabilityOffset_);
+        const float selectivity = selectivitySmoother_.process();
+        const float reactivity = reactivitySmoother_.process();
+        const float memory = memorySmoother_.process();
 
         // Envelope follower coefficients from reactivity
-        const float attackMs  = 1.0f + (1.0f - reactivity) * 49.0f;   // 1–50 ms
-        const float releaseMs = 10.0f + memory * 990.0f;               // 10–1000 ms
-        const float attackCoeff  = std::exp(-1.0f / (static_cast<float>(sr_) * attackMs  * 0.001f));
+        const float attackMs = 1.0f + (1.0f - reactivity) * 49.0f; // 1–50 ms
+        const float releaseMs = 10.0f + memory * 990.0f;           // 10–1000 ms
+        const float attackCoeff = std::exp(-1.0f / (static_cast<float>(sr_) * attackMs * 0.001f));
         const float releaseCoeff = std::exp(-1.0f / (static_cast<float>(sr_) * releaseMs * 0.001f));
 
         // Membrane filter base frequency from selectivity (200 Hz – 18.2 kHz)
@@ -179,7 +182,7 @@ public:
 
         // Band RMS accumulators for this block
         float bandSumSq[4] = {0.0f, 0.0f, 0.0f, 0.0f};
-        int   bandCount    = 0;
+        int bandCount = 0;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -191,12 +194,10 @@ public:
             // ---- Envelope follower ----
             const float absL = std::fabs(inL);
             const float absR = std::fabs(inR);
-            envFollowerL_ = (absL > envFollowerL_)
-                ? attackCoeff  * envFollowerL_ + (1.0f - attackCoeff)  * absL
-                : releaseCoeff * envFollowerL_ + (1.0f - releaseCoeff) * absL;
-            envFollowerR_ = (absR > envFollowerR_)
-                ? attackCoeff  * envFollowerR_ + (1.0f - attackCoeff)  * absR
-                : releaseCoeff * envFollowerR_ + (1.0f - releaseCoeff) * absR;
+            envFollowerL_ = (absL > envFollowerL_) ? attackCoeff * envFollowerL_ + (1.0f - attackCoeff) * absL
+                                                   : releaseCoeff * envFollowerL_ + (1.0f - releaseCoeff) * absL;
+            envFollowerR_ = (absR > envFollowerR_) ? attackCoeff * envFollowerR_ + (1.0f - attackCoeff) * absR
+                                                   : releaseCoeff * envFollowerR_ + (1.0f - releaseCoeff) * absR;
             envFollowerL_ = (std::abs(envFollowerL_) < 1e-18f) ? 0.0f : envFollowerL_;
             envFollowerR_ = (std::abs(envFollowerR_) < 1e-18f) ? 0.0f : envFollowerR_;
 
@@ -210,11 +211,11 @@ public:
 
             // Band 1: HP200 → LP1k (lo-mid)
             const float hp200 = bandHP_[0].processSample(bandHP_[1].processSample(inL));
-            const float b1    = bandLP2_[0].processSample(bandLP2_[1].processSample(hp200));
+            const float b1 = bandLP2_[0].processSample(bandLP2_[1].processSample(hp200));
 
             // Band 2: HP1k → LP5k (mid)
             const float hp1k = bandHP2_[0].processSample(bandHP2_[1].processSample(inL));
-            const float b2   = bandLP3_[0].processSample(bandLP3_[1].processSample(hp1k));
+            const float b2 = bandLP3_[0].processSample(bandLP3_[1].processSample(hp1k));
 
             // Band 3: HP5k (high)
             const float b3 = bandHP3_[0].processSample(bandHP3_[1].processSample(inL));
@@ -240,7 +241,7 @@ public:
             membraneLPStateR_ = (std::abs(membraneLPStateR_) < 1e-18f) ? 0.0f : membraneLPStateR_;
 
             // ---- Output: blend dry external with filtered (permeability = wet/dry) ----
-            outL[i] = inL       * (1.0f - permeability) + membraneLPStateL_ * permeability;
+            outL[i] = inL * (1.0f - permeability) + membraneLPStateL_ * permeability;
             outR[i] = inR_forLP * (1.0f - permeability) + membraneLPStateR_ * permeability;
 
             // Cache for coupling
@@ -296,8 +297,7 @@ public:
     // incoming coupling RMS by reusing the same attack coefficient used for the
     // envelope follower. amount [0, 1] scales the maximum modulation depth
     // so the coupling route strength drives the permeability sensitivity.
-    void applyCouplingInput(CouplingType /*type*/, float amount,
-                            const float* sourceBuffer, int numSamples) override
+    void applyCouplingInput(CouplingType /*type*/, float amount, const float* sourceBuffer, int numSamples) override
     {
         if (!sourceBuffer || numSamples <= 0 || amount <= 0.0f)
         {
@@ -324,42 +324,36 @@ public:
     // Note: macro1-4 duplicate registrations removed — each param registered once.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_permeability", 1}, "PERMEABILITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_permeability", 1},
+                                                                     "PERMEABILITY",
+                                                                     juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_selectivity", 1}, "SELECTIVITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+            juce::ParameterID{"osmo_selectivity", 1}, "SELECTIVITY", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_reactivity", 1}, "REACTIVITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+            juce::ParameterID{"osmo_reactivity", 1}, "REACTIVITY", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_memory", 1}, "MEMORY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_memory", 1}, "MEMORY",
+                                                                     juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         juce::AudioProcessorValueTreeState::ParameterLayout layout;
 
-        layout.add(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_permeability", 1}, "PERMEABILITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_permeability", 1},
+                                                               "PERMEABILITY",
+                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        layout.add(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_selectivity", 1}, "SELECTIVITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_selectivity", 1}, "SELECTIVITY",
+                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        layout.add(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_reactivity", 1}, "REACTIVITY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_reactivity", 1}, "REACTIVITY",
+                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        layout.add(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"osmo_memory", 1}, "MEMORY",
-            juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_memory", 1}, "MEMORY",
+                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
         return layout;
     }
@@ -367,19 +361,19 @@ public:
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         pPermeability_ = apvts.getRawParameterValue("osmo_permeability");
-        pSelectivity_  = apvts.getRawParameterValue("osmo_selectivity");
-        pReactivity_   = apvts.getRawParameterValue("osmo_reactivity");
-        pMemory_       = apvts.getRawParameterValue("osmo_memory");
+        pSelectivity_ = apvts.getRawParameterValue("osmo_selectivity");
+        pReactivity_ = apvts.getRawParameterValue("osmo_reactivity");
+        pMemory_ = apvts.getRawParameterValue("osmo_memory");
     }
 
 private:
-    double sr_    = 44100.0;
+    double sr_ = 44100.0;
     int blockSize_ = 512;
 
     // External audio pointers (set per block by processor, NOT owned)
-    const float* externalBufferL_  = nullptr;
-    const float* externalBufferR_  = nullptr;
-    int          externalNumSamples_ = 0;
+    const float* externalBufferL_ = nullptr;
+    const float* externalBufferR_ = nullptr;
+    int externalNumSamples_ = 0;
 
     // Envelope follower state
     float envFollowerL_ = 0.0f;
@@ -388,13 +382,13 @@ private:
     // ---- Autocorrelation pitch detection ----
     // 2048-sample circular buffer (power of 2 — mask-based wrap is branchless)
     static constexpr int kAcBufSize = 2048;
-    std::array<float, kAcBufSize> acBuffer_ {};
+    std::array<float, kAcBufSize> acBuffer_{};
     int acBufPos_ = 0;
 
     // Pitch estimation is expensive — recompute every ~512 samples
     static constexpr int kPitchUpdateInterval = 512;
-    int   pitchUpdateCounter_ = 0;
-    float detectedPitch_      = 0.0f;
+    int pitchUpdateCounter_ = 0;
+    float detectedPitch_ = 0.0f;
 
     // ---- Band RMS ----
     float bandRMS_[4] = {};
@@ -405,20 +399,20 @@ private:
     // (analysing mono suffices for RMS; pass-through uses the separate one-pole membrane filter.)
 
     // Crossover 1: 200 Hz LP (Band 0 output)
-    CytomicSVF bandLP_[2];    // 2 cascaded LP @ 200 Hz (Linkwitz-Riley)
+    CytomicSVF bandLP_[2]; // 2 cascaded LP @ 200 Hz (Linkwitz-Riley)
     // Crossover 1: 200 Hz HP (feeds Bands 1+2+3)
-    CytomicSVF bandHP_[2];    // 2 cascaded HP @ 200 Hz
+    CytomicSVF bandHP_[2]; // 2 cascaded HP @ 200 Hz
     // Crossover 2: 1 kHz LP (Band 1 output, applied after HP200)
-    CytomicSVF bandLP2_[2];   // 2 cascaded LP @ 1 kHz
+    CytomicSVF bandLP2_[2]; // 2 cascaded LP @ 1 kHz
     // Crossover 2: 1 kHz HP (feeds Bands 2+3)
-    CytomicSVF bandHP2_[2];   // 2 cascaded HP @ 1 kHz
+    CytomicSVF bandHP2_[2]; // 2 cascaded HP @ 1 kHz
     // Crossover 3: 5 kHz LP (Band 2 output, applied after HP1k)
-    CytomicSVF bandLP3_[2];   // 2 cascaded LP @ 5 kHz
+    CytomicSVF bandLP3_[2]; // 2 cascaded LP @ 5 kHz
     // Crossover 3: 5 kHz HP (Band 3 output)
-    CytomicSVF bandHP3_[2];   // 2 cascaded HP @ 5 kHz
+    CytomicSVF bandHP3_[2]; // 2 cascaded HP @ 5 kHz
 
     // Membrane filter
-    float membraneLPCoeff_  = 0.0f;
+    float membraneLPCoeff_ = 0.0f;
     float membraneLPStateL_ = 0.0f;
     float membraneLPStateR_ = 0.0f;
 
@@ -432,9 +426,9 @@ private:
 
     // Parameter pointers
     std::atomic<float>* pPermeability_ = nullptr;
-    std::atomic<float>* pSelectivity_  = nullptr;
-    std::atomic<float>* pReactivity_   = nullptr;
-    std::atomic<float>* pMemory_       = nullptr;
+    std::atomic<float>* pSelectivity_ = nullptr;
+    std::atomic<float>* pReactivity_ = nullptr;
+    std::atomic<float>* pMemory_ = nullptr;
 
     // Smoothers
     ParameterSmoother permeabilitySmoother_;
@@ -501,8 +495,8 @@ private:
         const float sr = static_cast<float>(sr_);
 
         // Lag bounds for 50–2000 Hz
-        const int lagMin = static_cast<int>(sr / 2000.0f);  // ~22 samples @ 44.1k
-        const int lagMax = static_cast<int>(sr / 50.0f);    // ~882 samples @ 44.1k
+        const int lagMin = static_cast<int>(sr / 2000.0f); // ~22 samples @ 44.1k
+        const int lagMax = static_cast<int>(sr / 50.0f);   // ~882 samples @ 44.1k
 
         // Clamp to buffer capacity (leave half the buffer for the correlation window)
         const int maxUsableLag = kAcBufSize / 2 - 1;
@@ -516,7 +510,7 @@ private:
         const int windowLen = kAcBufSize / 2;
 
         float bestCorr = -1.0f;
-        int   bestLag  = clampedLagMin;
+        int bestLag = clampedLagMin;
 
         // Normalise r(0) first to avoid magnitude-dependent bias
         float r0 = 0.0f;
@@ -535,8 +529,8 @@ private:
             float corr = 0.0f;
             for (int n = 0; n < windowLen; ++n)
             {
-                const int idx0 = (acBufPos_ - windowLen + n           + kAcBufSize) & (kAcBufSize - 1);
-                const int idx1 = (acBufPos_ - windowLen + n + lag     + kAcBufSize) & (kAcBufSize - 1);
+                const int idx0 = (acBufPos_ - windowLen + n + kAcBufSize) & (kAcBufSize - 1);
+                const int idx1 = (acBufPos_ - windowLen + n + lag + kAcBufSize) & (kAcBufSize - 1);
                 corr += acBuffer_[idx0] * acBuffer_[idx1];
             }
             // Normalised correlation in [-1,+1]
@@ -544,7 +538,7 @@ private:
             if (normCorr > bestCorr)
             {
                 bestCorr = normCorr;
-                bestLag  = lag;
+                bestLag = lag;
             }
         }
 

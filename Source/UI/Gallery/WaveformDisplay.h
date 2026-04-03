@@ -5,7 +5,8 @@
 #include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // WaveformDisplay — Full oscilloscope for EngineDetailPanel (200×80pt).
@@ -22,8 +23,7 @@ class WaveformDisplay : public juce::Component, private juce::Timer
 public:
     static constexpr size_t kDisplaySamples = 256;
 
-    explicit WaveformDisplay(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit WaveformDisplay(XOceanusProcessor& proc) : processor(proc)
     {
         waveformBuffer.fill(0.0f);
         accent = GalleryColors::get(GalleryColors::xoGold);
@@ -47,10 +47,7 @@ public:
     }
 
     // Which engine slot to read waveform data from.
-    void setSlot(int slot) noexcept
-    {
-        currentSlot = slot;
-    }
+    void setSlot(int slot) noexcept { currentSlot = slot; }
 
     // Accent color used for the waveform stroke and center line.
     void setAccentColour(juce::Colour c)
@@ -63,7 +60,7 @@ public:
     void setEngineId(const juce::String& id)
     {
         engineId = id;
-        crtMode  = (id == "Optic");
+        crtMode = (id == "Optic");
         if (crtMode)
             accent = juce::Colour(0xFF00FF41); // Phosphor Green
         repaint();
@@ -74,15 +71,18 @@ public:
     {
         // NEVER allocate here — waveformBuffer is pre-allocated in the constructor.
         std::array<float, kDisplaySamples> newBuf;
-        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(),
-                                                          kDisplaySamples);
+        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(), kDisplaySamples);
 
         // P2 fix: only repaint when the waveform data actually changed —
         // spot-check 8 evenly-spaced samples to avoid a full 256-sample compare.
         bool changed = false;
         for (size_t i = 0; i < kDisplaySamples; i += 32)
         {
-            if (newBuf[i] != waveformBuffer[i]) { changed = true; break; }
+            if (newBuf[i] != waveformBuffer[i])
+            {
+                changed = true;
+                break;
+            }
         }
         waveformBuffer = newBuf;
         if (changed)
@@ -96,11 +96,11 @@ public:
         // Label removed: EngineDetailPanel already draws "OSCILLOSCOPE" in the
         // 12px label row immediately above this component (duplicate fix).
         // Waveform area is the full component bounds.
-        const auto waveArea  = bounds;
-        const float ww       = waveArea.getWidth();
-        const float wh       = waveArea.getHeight();
-        const float waveTop  = waveArea.getY();
-        const float midY     = waveTop + wh * 0.5f;
+        const auto waveArea = bounds;
+        const float ww = waveArea.getWidth();
+        const float wh = waveArea.getHeight();
+        const float waveTop = waveArea.getY();
+        const float midY = waveTop + wh * 0.5f;
 
         // ── Background — flat surface() fill ────────────────────────────────
         g.setColour(GalleryColors::get(GalleryColors::surface()));
@@ -114,7 +114,11 @@ public:
         bool allZero = true;
         for (const float s : waveformBuffer)
         {
-            if (s != 0.0f) { allZero = false; break; }
+            if (s != 0.0f)
+            {
+                allZero = false;
+                break;
+            }
         }
         if (allZero)
             return;
@@ -137,9 +141,7 @@ public:
                 wavePath.lineTo(x, y);
         }
 
-        const juce::PathStrokeType mainStroke(1.5f,
-                                              juce::PathStrokeType::curved,
-                                              juce::PathStrokeType::rounded);
+        const juce::PathStrokeType mainStroke(1.5f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded);
 
         // ── CRT glow pass (OPTIC only) ───────────────────────────────────────
         if (crtMode)
@@ -147,14 +149,12 @@ public:
             // First pass: wide, faint glow halo (2px extra radius via larger
             // stroke weight and high transparency).
             g.setColour(accent.withAlpha(0.25f));
-            g.strokePath(wavePath, juce::PathStrokeType(5.0f,
-                                                        juce::PathStrokeType::curved,
-                                                        juce::PathStrokeType::rounded));
+            g.strokePath(wavePath,
+                         juce::PathStrokeType(5.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
             // Second pass: tighter inner glow.
             g.setColour(accent.withAlpha(0.45f));
-            g.strokePath(wavePath, juce::PathStrokeType(3.0f,
-                                                        juce::PathStrokeType::curved,
-                                                        juce::PathStrokeType::rounded));
+            g.strokePath(wavePath,
+                         juce::PathStrokeType(3.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
         }
 
         // ── Main stroke ──────────────────────────────────────────────────────
@@ -172,13 +172,13 @@ public:
     }
 
 private:
-    XOceanusProcessor&                  processor;
-    std::array<float, kDisplaySamples> waveformBuffer {};
-    int                                currentSlot = 0;
-    juce::Colour                       accent;
-    juce::String                       engineId;
-    bool                               crtMode = false;
-    juce::Path                         wavePath; // P10: cached to avoid alloc per paint()
+    XOceanusProcessor& processor;
+    std::array<float, kDisplaySamples> waveformBuffer{};
+    int currentSlot = 0;
+    juce::Colour accent;
+    juce::String engineId;
+    bool crtMode = false;
+    juce::Path wavePath; // P10: cached to avoid alloc per paint()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(WaveformDisplay)
 };
@@ -195,8 +195,7 @@ class MiniWaveform : public juce::Component, private juce::Timer
 public:
     static constexpr size_t kMiniSamples = 64;
 
-    explicit MiniWaveform(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit MiniWaveform(XOceanusProcessor& proc) : processor(proc)
     {
         miniBuffer.fill(0.0f);
         accent = GalleryColors::get(GalleryColors::xoGold);
@@ -219,10 +218,7 @@ public:
     }
 
     // Which engine slot to read waveform data from.
-    void setSlot(int slot) noexcept
-    {
-        currentSlot = slot;
-    }
+    void setSlot(int slot) noexcept { currentSlot = slot; }
 
     // Accent color used for the waveform stroke.
     void setAccentColour(juce::Colour c)
@@ -236,15 +232,18 @@ public:
     {
         // NEVER allocate here — miniBuffer is pre-allocated in the constructor.
         std::array<float, kMiniSamples> newBuf;
-        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(),
-                                                          kMiniSamples);
+        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(), kMiniSamples);
 
         // P2 fix (MiniWaveform): spot-check 4 evenly-spaced samples; only
         // repaint when data actually changed to avoid 30Hz idle repaints.
         bool changed = false;
         for (size_t i = 0; i < kMiniSamples; i += 16)
         {
-            if (newBuf[i] != miniBuffer[i]) { changed = true; break; }
+            if (newBuf[i] != miniBuffer[i])
+            {
+                changed = true;
+                break;
+            }
         }
         miniBuffer = newBuf;
         if (changed)
@@ -258,12 +257,16 @@ public:
         bool allZero = true;
         for (const float s : miniBuffer)
         {
-            if (s != 0.0f) { allZero = false; break; }
+            if (s != 0.0f)
+            {
+                allZero = false;
+                break;
+            }
         }
         if (allZero)
             return;
 
-        const float h    = static_cast<float>(getHeight());
+        const float h = static_cast<float>(getHeight());
         const float midY = h * 0.5f;
 
         miniPath.clear();
@@ -271,8 +274,7 @@ public:
         for (int x = 0; x < iw; ++x)
         {
             // Downsample: map each output pixel to an input sample index.
-            const size_t idx = static_cast<size_t>(
-                x * static_cast<int>(kMiniSamples) / iw);
+            const size_t idx = static_cast<size_t>(x * static_cast<int>(kMiniSamples) / iw);
             // Use ?? 0 equivalent: guard the index, never rely on ||-coercion
             // of 0.0f (0.0 is a valid sample value — CLAUDE.md critical pattern).
             const float sample = juce::jlimit(-1.0f, 1.0f, miniBuffer[idx]);
@@ -289,11 +291,11 @@ public:
     }
 
 private:
-    XOceanusProcessor&               processor;
-    std::array<float, kMiniSamples> miniBuffer {};
-    int                             currentSlot = 0;
-    juce::Colour                    accent;
-    juce::Path                      miniPath; // P11: cached to avoid alloc per paint()
+    XOceanusProcessor& processor;
+    std::array<float, kMiniSamples> miniBuffer{};
+    int currentSlot = 0;
+    juce::Colour accent;
+    juce::Path miniPath; // P11: cached to avoid alloc per paint()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MiniWaveform)
 };

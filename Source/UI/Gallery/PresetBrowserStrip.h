@@ -8,7 +8,8 @@
 #include "../GalleryColors.h"
 #include "MacroSection.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 // PresetBrowser is included at the top of this file (before namespace xoceanus {)
 // to avoid the nested-namespace problem.  The class is available here as
@@ -20,8 +21,7 @@ namespace xoceanus {
 class NavButtonLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
-    void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
-                        bool /*isMouseOver*/, bool /*isButtonDown*/) override
+    void drawButtonText(juce::Graphics& g, juce::TextButton& btn, bool /*isMouseOver*/, bool /*isButtonDown*/) override
     {
         // Space Grotesk Bold at the button's height (clamped to 11–13px range)
         const float fontSize = juce::jlimit(11.0f, 13.0f, (float)btn.getHeight() * 0.55f);
@@ -30,29 +30,24 @@ public:
         // 0.16 ≈ 0.16em matches the CSS letter-spacing spec.
         f = f.withExtraKerningFactor(0.16f);
         g.setFont(f);
-        g.setColour(btn.findColour(btn.getToggleState()
-                        ? juce::TextButton::textColourOnId
-                        : juce::TextButton::textColourOffId)
-                       .withMultipliedAlpha(btn.isEnabled() ? 1.0f : 0.5f));
-        g.drawFittedText(btn.getButtonText(),
-                         btn.getLocalBounds(),
-                         juce::Justification::centred, 1, 1.0f);
+        g.setColour(
+            btn.findColour(btn.getToggleState() ? juce::TextButton::textColourOnId : juce::TextButton::textColourOffId)
+                .withMultipliedAlpha(btn.isEnabled() ? 1.0f : 0.5f));
+        g.drawFittedText(btn.getButtonText(), btn.getLocalBounds(), juce::Justification::centred, 1, 1.0f);
     }
 };
 
 //==============================================================================
 // PresetBrowserStrip — prev/next navigation + preset name display.
 // Lives in the editor header. Calls processor.applyPreset() on navigation.
-class PresetBrowserStrip : public juce::Component,
-                           private PresetManager::Listener
+class PresetBrowserStrip : public juce::Component, private PresetManager::Listener
 {
 public:
     // Fires on the message thread after any preset is applied (prev, next, or
     // browser selection). The editor uses this to notify ABCompare.
     std::function<void()> onPresetLoaded;
 
-    PresetBrowserStrip(XOceanusProcessor& proc)
-        : processor(proc)
+    PresetBrowserStrip(XOceanusProcessor& proc) : processor(proc)
     {
         prevBtn.setButtonText("<");
         nextBtn.setButtonText(">");
@@ -60,9 +55,9 @@ public:
         prevBtn.setTooltip("Previous preset");
         nextBtn.setTooltip("Next preset");
         browseBtn.setTooltip("Browse all presets by mood");
-        A11y::setup (prevBtn, "Previous Preset");
-        A11y::setup (nextBtn, "Next Preset");
-        A11y::setup (browseBtn, "Browse Presets", "Open preset browser by mood category");
+        A11y::setup(prevBtn, "Previous Preset");
+        A11y::setup(nextBtn, "Next Preset");
+        A11y::setup(browseBtn, "Browse Presets", "Open preset browser by mood category");
 
         // Apply Space Grotesk SemiBold + 0.16em letter-spacing to nav buttons
         prevBtn.setLookAndFeel(&navLAF);
@@ -70,17 +65,14 @@ public:
 
         for (auto* btn : {&prevBtn, &nextBtn, &browseBtn})
         {
-            btn->setColour(juce::TextButton::buttonColourId,
-                           GalleryColors::get(GalleryColors::shellWhite()));
-            btn->setColour(juce::TextButton::textColourOffId,
-                           GalleryColors::get(GalleryColors::textMid()));
+            btn->setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::shellWhite()));
+            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
             addAndMakeVisible(*btn);
         }
 
         nameLabel.setJustificationType(juce::Justification::centred);
         nameLabel.setFont(GalleryFonts::body(12.5f));
-        nameLabel.setColour(juce::Label::textColourId,
-                            GalleryColors::get(GalleryColors::textDark()));
+        nameLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
         nameLabel.setInterceptsMouseClicks(false, false);
         addAndMakeVisible(nameLabel);
 
@@ -92,7 +84,8 @@ public:
             processor.applyPreset(preset);
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
-            if (onPresetLoaded) onPresetLoaded();
+            if (onPresetLoaded)
+                onPresetLoaded();
         };
 
         nextBtn.onClick = [this]
@@ -103,7 +96,8 @@ public:
             processor.applyPreset(preset);
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
-            if (onPresetLoaded) onPresetLoaded();
+            if (onPresetLoaded)
+                onPresetLoaded();
         };
 
         browseBtn.onClick = [this] { openBrowser(); };
@@ -132,8 +126,7 @@ public:
         if (hasPresets)
         {
             auto name = pm.getCurrentPreset().name;
-            nameLabel.setText(name.isEmpty() ? "—" : name,
-                              juce::dontSendNotification);
+            nameLabel.setText(name.isEmpty() ? "—" : name, juce::dontSendNotification);
         }
         else
         {
@@ -144,19 +137,16 @@ public:
     void resized() override
     {
         auto b = getLocalBounds();
-        prevBtn.setBounds(b.removeFromLeft(30));   // UX11: widened from 22px for easier targeting
+        prevBtn.setBounds(b.removeFromLeft(30)); // UX11: widened from 22px for easier targeting
         browseBtn.setBounds(b.removeFromRight(30));
-        nextBtn.setBounds(b.removeFromRight(30));  // UX11: widened from 22px for easier targeting
+        nextBtn.setBounds(b.removeFromRight(30)); // UX11: widened from 22px for easier targeting
         nameLabel.setBounds(b);
     }
 
     void setMacroSection(MacroSection* ms) { macroSection = ms; }
 
 private:
-    void presetLoaded(const PresetData& preset) override
-    {
-        nameLabel.setText(preset.name, juce::dontSendNotification);
-    }
+    void presetLoaded(const PresetData& preset) override { nameLabel.setText(preset.name, juce::dontSendNotification); }
 
     void openBrowser()
     {
@@ -173,27 +163,26 @@ private:
         // All processor access now guarded through safeThis so the lambda is safe after strip death.
         browser->onPresetSelected = [safeThis](const PresetData& preset)
         {
-            if (safeThis == nullptr) return;
+            if (safeThis == nullptr)
+                return;
             safeThis->processor.getPresetManager().setCurrentPreset(preset);
             safeThis->processor.applyPreset(preset);
             safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
             if (safeThis->macroSection && !preset.macroLabels.isEmpty())
                 safeThis->macroSection->setLabels(preset.macroLabels);
-            if (safeThis->onPresetLoaded) safeThis->onPresetLoaded();
+            if (safeThis->onPresetLoaded)
+                safeThis->onPresetLoaded();
         };
 
         // Size: 560 wide × 520 tall — accommodates 48px rows, search bar,
         // mood filter strip, and the "Find Similar" DNA button at the bottom.
         browser->setSize(560, 520);
 
-        juce::CallOutBox::launchAsynchronously(
-            std::move(browser),
-            browseBtn.getScreenBounds(),
-            getTopLevelComponent());
+        juce::CallOutBox::launchAsynchronously(std::move(browser), browseBtn.getScreenBounds(), getTopLevelComponent());
     }
 
     XOceanusProcessor& processor;
-    NavButtonLookAndFeel navLAF;   // Space Grotesk + 0.16em kerning for prev/next
+    NavButtonLookAndFeel navLAF; // Space Grotesk + 0.16em kerning for prev/next
     juce::TextButton prevBtn, nextBtn, browseBtn;
     juce::Label nameLabel;
     MacroSection* macroSection = nullptr;

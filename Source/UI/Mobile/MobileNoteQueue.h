@@ -25,7 +25,8 @@
 // All methods are noexcept.
 //==============================================================================
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //------------------------------------------------------------------------------
 // MobileNoteEvent
@@ -33,11 +34,11 @@ namespace xoceanus {
 
 struct MobileNoteEvent
 {
-    int     midiNote;       // 0-127
-    float   velocity;       // 0.0-1.0  (0.0 on noteOff)
-    bool    noteOn;         // true = note-on, false = note-off
-    int     touchId;        // correlates Began/Ended pairs
-    int64_t timestampMs;    // monotonic (from juce::Time::currentTimeMillis())
+    int midiNote;        // 0-127
+    float velocity;      // 0.0-1.0  (0.0 on noteOff)
+    bool noteOn;         // true = note-on, false = note-off
+    int touchId;         // correlates Began/Ended pairs
+    int64_t timestampMs; // monotonic (from juce::Time::currentTimeMillis())
 };
 
 //------------------------------------------------------------------------------
@@ -52,10 +53,10 @@ public:
     MobileNoteQueue() noexcept = default;
 
     // Non-copyable, non-movable — atomics must not be relocated.
-    MobileNoteQueue(const MobileNoteQueue&)            = delete;
+    MobileNoteQueue(const MobileNoteQueue&) = delete;
     MobileNoteQueue& operator=(const MobileNoteQueue&) = delete;
-    MobileNoteQueue(MobileNoteQueue&&)                 = delete;
-    MobileNoteQueue& operator=(MobileNoteQueue&&)      = delete;
+    MobileNoteQueue(MobileNoteQueue&&) = delete;
+    MobileNoteQueue& operator=(MobileNoteQueue&&) = delete;
 
     //--------------------------------------------------------------------------
     // Producer side — message thread only
@@ -83,7 +84,7 @@ public:
                 // Advance tail to reclaim the evicted slot, visible to consumer.
                 tail_.store(advance(tail), std::memory_order_release);
                 overflow_.store(true, std::memory_order_relaxed);
-                return true;  // NoteOff was delivered (with eviction)
+                return true; // NoteOff was delivered (with eviction)
             }
             else
             {
@@ -109,7 +110,7 @@ public:
         const int tail = tail_.load(std::memory_order_relaxed);
 
         if (tail == head_.load(std::memory_order_acquire))
-            return false;  // Empty
+            return false; // Empty
 
         event = buffer_[static_cast<size_t>(tail)];
         tail_.store(advance(tail), std::memory_order_release);
@@ -133,15 +134,9 @@ public:
     //--------------------------------------------------------------------------
     // Diagnostics
     //--------------------------------------------------------------------------
-    bool hadOverflow() const noexcept
-    {
-        return overflow_.load(std::memory_order_relaxed);
-    }
+    bool hadOverflow() const noexcept { return overflow_.load(std::memory_order_relaxed); }
 
-    void clearOverflow() noexcept
-    {
-        overflow_.store(false, std::memory_order_relaxed);
-    }
+    void clearOverflow() noexcept { overflow_.store(false, std::memory_order_relaxed); }
 
 private:
     //--------------------------------------------------------------------------
@@ -149,19 +144,18 @@ private:
     // Index arithmetic: indices run 0..kCapacity-1; one slot is always kept
     // empty so that head == tail unambiguously means "empty" (not "full").
     //--------------------------------------------------------------------------
-    std::array<MobileNoteEvent, kCapacity> buffer_ {};
+    std::array<MobileNoteEvent, kCapacity> buffer_{};
 
     // head_ — next write position; owned by producer.
     // tail_ — next read position;  owned by consumer.
-    std::atomic<int>  head_     {0};
-    std::atomic<int>  tail_     {0};
-    std::atomic<bool> overflow_ {false};
+    std::atomic<int> head_{0};
+    std::atomic<int> tail_{0};
+    std::atomic<bool> overflow_{false};
 
     static int advance(int index) noexcept
     {
         // Branchless power-of-two wrap: kCapacity must be a power of 2.
-        static_assert((kCapacity & (kCapacity - 1)) == 0,
-                      "MobileNoteQueue::kCapacity must be a power of 2");
+        static_assert((kCapacity & (kCapacity - 1)) == 0, "MobileNoteQueue::kCapacity must be a power of 2");
         return (index + 1) & (kCapacity - 1);
     }
 };
@@ -180,8 +174,8 @@ private:
 class NoteLifetimeWatchdog
 {
 public:
-    static constexpr int     kMaxActive        = 32;
-    static constexpr int64_t kDefaultMaxDurMs  = 8000;
+    static constexpr int kMaxActive = 32;
+    static constexpr int64_t kDefaultMaxDurMs = 8000;
 
     NoteLifetimeWatchdog() noexcept
     {
@@ -189,7 +183,7 @@ public:
             n = {};
     }
 
-    NoteLifetimeWatchdog(const NoteLifetimeWatchdog&)            = delete;
+    NoteLifetimeWatchdog(const NoteLifetimeWatchdog&) = delete;
     NoteLifetimeWatchdog& operator=(const NoteLifetimeWatchdog&) = delete;
 
     //--------------------------------------------------------------------------
@@ -202,7 +196,7 @@ public:
         {
             if (n.alive && n.touchId == touchId)
             {
-                n.midiNote    = midiNote;
+                n.midiNote = midiNote;
                 n.startTimeMs = timestampMs;
                 return;
             }
@@ -212,25 +206,25 @@ public:
         {
             if (!n.alive)
             {
-                n.touchId    = touchId;
-                n.midiNote   = midiNote;
+                n.touchId = touchId;
+                n.midiNote = midiNote;
                 n.startTimeMs = timestampMs;
-                n.alive      = true;
+                n.alive = true;
                 return;
             }
         }
         // All slots occupied — evict oldest (prevents array from going stale).
-        int64_t oldest    = active_[0].startTimeMs;
-        int     oldestIdx = 0;
+        int64_t oldest = active_[0].startTimeMs;
+        int oldestIdx = 0;
         for (int i = 1; i < kMaxActive; ++i)
         {
             if (active_[i].startTimeMs < oldest)
             {
-                oldest    = active_[i].startTimeMs;
+                oldest = active_[i].startTimeMs;
                 oldestIdx = i;
             }
         }
-        active_[oldestIdx] = { touchId, midiNote, timestampMs, true };
+        active_[oldestIdx] = {touchId, midiNote, timestampMs, true};
     }
 
     //--------------------------------------------------------------------------
@@ -264,11 +258,11 @@ public:
 
             if ((currentTimeMs - n.startTimeMs) >= maxDurationMs_)
             {
-                MobileNoteEvent off {};
-                off.midiNote    = n.midiNote;
-                off.velocity    = 0.0f;
-                off.noteOn      = false;
-                off.touchId     = n.touchId;
+                MobileNoteEvent off{};
+                off.midiNote = n.midiNote;
+                off.velocity = 0.0f;
+                off.noteOn = false;
+                off.touchId = n.touchId;
                 off.timestampMs = currentTimeMs;
 
                 // pushNote() will force-push noteOff even if the queue is full
@@ -285,27 +279,28 @@ public:
     // Configuration
     //--------------------------------------------------------------------------
     void setMaxDuration(int64_t ms) noexcept { maxDurationMs_ = ms; }
-    int64_t getMaxDuration()  const noexcept { return maxDurationMs_; }
+    int64_t getMaxDuration() const noexcept { return maxDurationMs_; }
 
     // Number of currently tracked active notes (for diagnostics).
     int activeCount() const noexcept
     {
         int count = 0;
         for (const auto& n : active_)
-            if (n.alive) ++count;
+            if (n.alive)
+                ++count;
         return count;
     }
 
 private:
     struct ActiveNote
     {
-        int     touchId    = -1;
-        int     midiNote   = -1;
+        int touchId = -1;
+        int midiNote = -1;
         int64_t startTimeMs = 0;
-        bool    alive       = false;
+        bool alive = false;
     };
 
-    std::array<ActiveNote, kMaxActive> active_ {};
+    std::array<ActiveNote, kMaxActive> active_{};
     int64_t maxDurationMs_ = kDefaultMaxDurMs;
 };
 

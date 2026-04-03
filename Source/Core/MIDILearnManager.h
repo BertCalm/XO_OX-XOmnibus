@@ -6,7 +6,8 @@
 #include <vector>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // MIDILearnManager — Cross-platform MIDI controller mapping.
@@ -30,15 +31,17 @@ namespace xoceanus {
 //   - processMidi() on audio thread (reads mappings, writes parameter values)
 //   - Mapping mutations happen on message thread with lock-free swap
 //
-class MIDILearnManager {
+class MIDILearnManager
+{
 public:
-    struct MIDIMapping {
-        int ccNumber;                   // 0-127
-        int channel;                    // 0-15 (0 = omni — responds to any channel)
-        juce::String paramId;           // APVTS parameter ID (e.g., "snap_filterCutoff")
-        float rangeMin = 0.0f;          // Output range minimum
-        float rangeMax = 1.0f;          // Output range maximum
-        bool isPerPreset = false;       // true = saved with preset, false = global
+    struct MIDIMapping
+    {
+        int ccNumber;             // 0-127
+        int channel;              // 0-15 (0 = omni — responds to any channel)
+        juce::String paramId;     // APVTS parameter ID (e.g., "snap_filterCutoff")
+        float rangeMin = 0.0f;    // Output range minimum
+        float rangeMax = 1.0f;    // Output range maximum
+        bool isPerPreset = false; // true = saved with preset, false = global
     };
 
     using LearnCompleteCallback = std::function<void(const juce::String& paramId, int ccNumber)>;
@@ -62,10 +65,7 @@ public:
     bool isLearning() const { return learning; }
     juce::String getLearningParam() const { return learnTargetParam; }
 
-    void setLearnCompleteCallback(LearnCompleteCallback cb)
-    {
-        onLearnComplete = std::move(cb);
-    }
+    void setLearnCompleteCallback(LearnCompleteCallback cb) { onLearnComplete = std::move(cb); }
 
     //-- Mapping management (message thread) -------------------------------------
 
@@ -90,11 +90,9 @@ public:
 
         auto newMappings = std::make_shared<std::vector<MIDIMapping>>(*current);
         newMappings->erase(
-            std::remove_if(newMappings->begin(), newMappings->end(),
-                [&](const MIDIMapping& m) {
-                    return m.ccNumber == ccNumber
-                        && (m.channel == channel || m.channel == 0 || channel == 0);
-                }),
+            std::remove_if(
+                newMappings->begin(), newMappings->end(), [&](const MIDIMapping& m)
+                { return m.ccNumber == ccNumber && (m.channel == channel || m.channel == 0 || channel == 0); }),
             newMappings->end());
         std::atomic_store(&activeMappings, newMappings);
     }
@@ -106,18 +104,13 @@ public:
             return;
 
         auto newMappings = std::make_shared<std::vector<MIDIMapping>>(*current);
-        newMappings->erase(
-            std::remove_if(newMappings->begin(), newMappings->end(),
-                [&](const MIDIMapping& m) { return m.paramId == paramId; }),
-            newMappings->end());
+        newMappings->erase(std::remove_if(newMappings->begin(), newMappings->end(),
+                                          [&](const MIDIMapping& m) { return m.paramId == paramId; }),
+                           newMappings->end());
         std::atomic_store(&activeMappings, newMappings);
     }
 
-    void clearAllMappings()
-    {
-        std::atomic_store(&activeMappings,
-            std::make_shared<std::vector<MIDIMapping>>());
-    }
+    void clearAllMappings() { std::atomic_store(&activeMappings, std::make_shared<std::vector<MIDIMapping>>()); }
 
     std::vector<MIDIMapping> getMappings() const
     {
@@ -128,7 +121,8 @@ public:
     bool hasMapping(const juce::String& paramId) const
     {
         auto m = std::atomic_load(&activeMappings);
-        if (!m) return false;
+        if (!m)
+            return false;
         for (const auto& mapping : *m)
             if (mapping.paramId == paramId)
                 return true;
@@ -151,7 +145,7 @@ public:
                 continue;
 
             const int cc = msg.getControllerNumber();
-            const int ch = msg.getChannel();  // 1-16
+            const int ch = msg.getChannel(); // 1-16
             const float ccValue = static_cast<float>(msg.getControllerValue()) / 127.0f;
 
             // Learn mode: capture this CC for the target parameter
@@ -268,12 +262,12 @@ public:
         for (const auto& m : mappings)
         {
             juce::ValueTree child("Mapping");
-            child.setProperty("paramId",    m.paramId,                     nullptr);
-            child.setProperty("cc",         m.ccNumber,                    nullptr);
-            child.setProperty("channel",    m.channel,                     nullptr);
-            child.setProperty("rangeMin",   static_cast<double>(m.rangeMin), nullptr);
-            child.setProperty("rangeMax",   static_cast<double>(m.rangeMax), nullptr);
-            child.setProperty("perPreset",  m.isPerPreset,                 nullptr);
+            child.setProperty("paramId", m.paramId, nullptr);
+            child.setProperty("cc", m.ccNumber, nullptr);
+            child.setProperty("channel", m.channel, nullptr);
+            child.setProperty("rangeMin", static_cast<double>(m.rangeMin), nullptr);
+            child.setProperty("rangeMax", static_cast<double>(m.rangeMax), nullptr);
+            child.setProperty("perPreset", m.isPerPreset, nullptr);
             tree.appendChild(child, nullptr);
         }
         return tree;
@@ -296,17 +290,15 @@ public:
                 continue;
 
             MIDIMapping m;
-            m.paramId    = child["paramId"].toString();
-            m.ccNumber   = static_cast<int>(child["cc"]);
-            m.channel    = static_cast<int>(child["channel"]);
-            m.rangeMin   = static_cast<float>(static_cast<double>(child["rangeMin"]));
-            m.rangeMax   = static_cast<float>(static_cast<double>(child["rangeMax"]));
+            m.paramId = child["paramId"].toString();
+            m.ccNumber = static_cast<int>(child["cc"]);
+            m.channel = static_cast<int>(child["channel"]);
+            m.rangeMin = static_cast<float>(static_cast<double>(child["rangeMin"]));
+            m.rangeMax = static_cast<float>(static_cast<double>(child["rangeMax"]));
             m.isPerPreset = static_cast<bool>(child["perPreset"]);
 
             // Validate bounds before inserting — guard against corrupted saves.
-            if (m.ccNumber >= 0 && m.ccNumber <= 127
-             && m.channel  >= 0 && m.channel  <= 16
-             && m.paramId.isNotEmpty())
+            if (m.ccNumber >= 0 && m.ccNumber <= 127 && m.channel >= 0 && m.channel <= 16 && m.paramId.isNotEmpty())
             {
                 addMapping(m);
             }
@@ -319,26 +311,26 @@ public:
     void loadDefaultMappings()
     {
         // CC1 Mod Wheel → macro2: MOVEMENT
-        addMapping({ 1, 0, "macro2", 0.0f, 1.0f, false });
+        addMapping({1, 0, "macro2", 0.0f, 1.0f, false});
         // CC2 Breath → macro1: CHARACTER
-        addMapping({ 2, 0, "macro1", 0.0f, 1.0f, false });
+        addMapping({2, 0, "macro1", 0.0f, 1.0f, false});
         // CC11 Expression → macro4: SPACE
-        addMapping({ 11, 0, "macro4", 0.0f, 1.0f, false });
+        addMapping({11, 0, "macro4", 0.0f, 1.0f, false});
         // CC74 Brightness → macro1: CHARACTER (filter brightness proxy)
-        addMapping({ 74, 0, "macro1", 0.0f, 1.0f, false });
+        addMapping({74, 0, "macro1", 0.0f, 1.0f, false});
 
         // Coupling performance params (spec §6.1 — all undefined/unassigned CCs)
         // Amount params are bipolar (-1.0 to 1.0); CC centre (64/127 ≈ 0.504) maps to ~0.0 depth.
         // CC3 → cp_r1_amount: coupling route 1 depth
-        addMapping({ 3, 0, "cp_r1_amount", -1.0f, 1.0f, false });
+        addMapping({3, 0, "cp_r1_amount", -1.0f, 1.0f, false});
         // CC9 → cp_r2_amount: coupling route 2 depth
-        addMapping({ 9, 0, "cp_r2_amount", -1.0f, 1.0f, false });
+        addMapping({9, 0, "cp_r2_amount", -1.0f, 1.0f, false});
         // CC14 → cp_r3_amount: coupling route 3 depth
-        addMapping({ 14, 0, "cp_r3_amount", -1.0f, 1.0f, false });
+        addMapping({14, 0, "cp_r3_amount", -1.0f, 1.0f, false});
         // CC15 → cp_r4_amount: coupling route 4 depth
-        addMapping({ 15, 0, "cp_r4_amount", -1.0f, 1.0f, false });
+        addMapping({15, 0, "cp_r4_amount", -1.0f, 1.0f, false});
         // CC85 → cp_r1_type: coupling type sweep for route 1 (0 = AmpToFilter, 13 = KnotTopology)
-        addMapping({ 85, 0, "cp_r1_type", 0.0f, 13.0f, false });
+        addMapping({85, 0, "cp_r1_type", 0.0f, 13.0f, false});
     }
 
     void setPerPresetDefault(bool perPreset) { perPresetDefault = perPreset; }
@@ -350,11 +342,10 @@ private:
     bool perPresetDefault = false;
     LearnCompleteCallback onLearnComplete;
 
-    std::shared_ptr<std::vector<MIDIMapping>> activeMappings =
-        std::make_shared<std::vector<MIDIMapping>>();
+    std::shared_ptr<std::vector<MIDIMapping>> activeMappings = std::make_shared<std::vector<MIDIMapping>>();
 
-    std::atomic<int> pendingLearnCC { -1 };
-    std::atomic<int> pendingLearnChannel { 0 };
+    std::atomic<int> pendingLearnCC{-1};
+    std::atomic<int> pendingLearnChannel{0};
 };
 
 } // namespace xoceanus

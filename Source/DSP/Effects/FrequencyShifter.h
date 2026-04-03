@@ -5,7 +5,8 @@
 #include <array>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // FrequencyShifter — Shifts all frequencies by a fixed Hz offset.
@@ -41,16 +42,16 @@ class FrequencyShifter
 public:
     enum class Mode
     {
-        Up = 0,     ///< Upper sideband only (shift up)
-        Down,       ///< Lower sideband only (shift down)
-        Both,       ///< Both sidebands mixed (ring-mod character)
+        Up = 0, ///< Upper sideband only (shift up)
+        Down,   ///< Lower sideband only (shift down)
+        Both,   ///< Both sidebands mixed (ring-mod character)
         NumModes
     };
 
     FrequencyShifter() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         oscPhase = 0.0;
@@ -59,12 +60,8 @@ public:
         // 6th-order allpass design (3 stages per channel) for ~90° phase split
         // Coefficients from classic Hilbert transform design (Robert Bristow-Johnson)
         // These give good phase accuracy from ~20Hz to ~20kHz at 44.1kHz+
-        static constexpr float kCoeffsI[kNumStages] = {
-            0.6923878f, 0.9360654322959f, 0.9882295226860f
-        };
-        static constexpr float kCoeffsQ[kNumStages] = {
-            0.4021921162426f, 0.8561710882420f, 0.9722909545651f
-        };
+        static constexpr float kCoeffsI[kNumStages] = {0.6923878f, 0.9360654322959f, 0.9882295226860f};
+        static constexpr float kCoeffsQ[kNumStages] = {0.4021921162426f, 0.8561710882420f, 0.9722909545651f};
 
         for (int s = 0; s < kNumStages; ++s)
         {
@@ -88,45 +85,33 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set shift amount in Hz. [-1000, +1000]
-    void setShift (float hz)
-    {
-        shiftHz = clamp (hz, -1000.0f, 1000.0f);
-    }
+    void setShift(float hz) { shiftHz = clamp(hz, -1000.0f, 1000.0f); }
 
     /// Set wet/dry mix. [0, 1]
-    void setMix (float wet)
-    {
-        mix = clamp (wet, 0.0f, 1.0f);
-    }
+    void setMix(float wet) { mix = clamp(wet, 0.0f, 1.0f); }
 
     /// Set output mode.
-    void setMode (Mode m)
-    {
-        mode = m;
-    }
+    void setMode(Mode m) { mode = m; }
 
     /// Set feedback amount. [0, 0.9] — metallic self-oscillation.
-    void setFeedback (float fb)
-    {
-        feedback = clamp (fb, 0.0f, 0.9f);
-    }
+    void setFeedback(float fb) { feedback = clamp(fb, 0.0f, 0.9f); }
 
     //--------------------------------------------------------------------------
     /// Process stereo audio in-place.
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
         // SRO: Quadrature oscillator — zero trig per sample.
         // Compute rotation increment once per block using fastSin/fastCos,
         // then advance the oscillator with 4 multiplies + 2 adds per sample.
         // Periodic amplitude correction prevents drift accumulation.
-        float w = static_cast<float> (6.283185307179586 * static_cast<double> (shiftHz) / sr);
-        float cosInc = fastCos (w);
-        float sinInc = fastSin (w);
+        float w = static_cast<float>(6.283185307179586 * static_cast<double>(shiftHz) / sr);
+        float cosInc = fastCos(w);
+        float sinInc = fastSin(w);
 
         // Initialize quadrature state from current phase
-        float oscAngle = static_cast<float> (oscPhase * 6.283185307179586);
-        float cosOsc = fastCos (oscAngle);
-        float sinOsc = fastSin (oscAngle);
+        float oscAngle = static_cast<float>(oscPhase * 6.283185307179586);
+        float cosOsc = fastCos(oscAngle);
+        float sinOsc = fastSin(oscAngle);
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -136,8 +121,8 @@ public:
 
             // Hilbert transform: split each channel into I (in-phase) and Q (quadrature)
             float iL, qL, iR, qR;
-            hilbertTransform (inL, 0, iL, qL);
-            hilbertTransform (inR, 1, iR, qR);
+            hilbertTransform(inL, 0, iL, qL);
+            hilbertTransform(inR, 1, iR, qR);
 
             // Complex multiply: shift = I*cos - Q*sin (upper), I*cos + Q*sin (lower)
             float upL = iL * cosOsc - qL * sinOsc;
@@ -149,24 +134,24 @@ public:
             float wetL, wetR;
             switch (mode)
             {
-                case Mode::Up:
-                    wetL = upL;
-                    wetR = upR;
-                    break;
-                case Mode::Down:
-                    wetL = dnL;
-                    wetR = dnR;
-                    break;
-                case Mode::Both:
-                default:
-                    wetL = (upL + dnL) * 0.5f;
-                    wetR = (upR + dnR) * 0.5f;
-                    break;
+            case Mode::Up:
+                wetL = upL;
+                wetR = upR;
+                break;
+            case Mode::Down:
+                wetL = dnL;
+                wetR = dnR;
+                break;
+            case Mode::Both:
+            default:
+                wetL = (upL + dnL) * 0.5f;
+                wetR = (upR + dnR) * 0.5f;
+                break;
             }
 
             // Store feedback
-            fbStateL = flushDenormal (wetL);
-            fbStateR = flushDenormal (wetR);
+            fbStateL = flushDenormal(wetL);
+            fbStateR = flushDenormal(wetR);
 
             // Mix
             L[i] = L[i] * (1.0f - mix) + wetL * mix;
@@ -182,7 +167,7 @@ public:
             if ((i & 63) == 63)
             {
                 float mag2 = cosOsc * cosOsc + sinOsc * sinOsc;
-                float correction = 1.5f - 0.5f * mag2;  // Fast inverse sqrt approx
+                float correction = 1.5f - 0.5f * mag2; // Fast inverse sqrt approx
                 cosOsc *= correction;
                 sinOsc *= correction;
             }
@@ -190,9 +175,9 @@ public:
 
         // Update phase accumulator from quadrature state for next block.
         // atan2 is NOT in the per-sample loop — only once per block.
-        oscPhase = std::atan2 (static_cast<double> (sinOsc),
-                               static_cast<double> (cosOsc)) / 6.283185307179586;
-        if (oscPhase < 0.0) oscPhase += 1.0;
+        oscPhase = std::atan2(static_cast<double>(sinOsc), static_cast<double>(cosOsc)) / 6.283185307179586;
+        if (oscPhase < 0.0)
+            oscPhase += 1.0;
     }
 
     //--------------------------------------------------------------------------
@@ -215,15 +200,15 @@ private:
     //--------------------------------------------------------------------------
     /// Hilbert transform via two parallel allpass chains.
     /// The I chain delays by a flat group delay, the Q chain shifts phase by ~90°.
-    void hilbertTransform (float input, int ch, float& outI, float& outQ)
+    void hilbertTransform(float input, int ch, float& outI, float& outQ)
     {
         // I path: 3 cascaded 1st-order allpass filters
         float xI = input;
         for (int s = 0; s < kNumStages; ++s)
         {
             float y = coeffI[s] * (xI - apStateI[ch][s][1]) + apStateI[ch][s][0];
-            apStateI[ch][s][0] = flushDenormal (xI);
-            apStateI[ch][s][1] = flushDenormal (y);
+            apStateI[ch][s][0] = flushDenormal(xI);
+            apStateI[ch][s][1] = flushDenormal(y);
             xI = y;
         }
 
@@ -235,8 +220,8 @@ private:
         for (int s = 0; s < kNumStages; ++s)
         {
             float y = coeffQ[s] * (xQ - apStateQ[ch][s][1]) + apStateQ[ch][s][0];
-            apStateQ[ch][s][0] = flushDenormal (xQ);
-            apStateQ[ch][s][1] = flushDenormal (y);
+            apStateQ[ch][s][0] = flushDenormal(xQ);
+            apStateQ[ch][s][1] = flushDenormal(y);
             xQ = y;
         }
 
@@ -251,13 +236,13 @@ private:
     double oscPhase = 0.0;
 
     // Allpass coefficients for Hilbert transform
-    float coeffI[kNumStages] {};
-    float coeffQ[kNumStages] {};
+    float coeffI[kNumStages]{};
+    float coeffQ[kNumStages]{};
 
     // Allpass state [channel][stage][x/y]
-    float apStateI[2][kNumStages][2] {};
-    float apStateQ[2][kNumStages][2] {};
-    float prevInputI[2] {};
+    float apStateI[2][kNumStages][2]{};
+    float apStateQ[2][kNumStages][2]{};
+    float prevInputI[2]{};
 
     // Feedback state
     float fbStateL = 0.0f;

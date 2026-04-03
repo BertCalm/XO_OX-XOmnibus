@@ -4,7 +4,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xocelot {
+namespace xocelot
+{
 
 // ModalResonator — 2nd-order IIR bandpass resonator.
 // Building block for physical percussion models (agogo, kalimba, pandeiro, log drum).
@@ -21,9 +22,9 @@ struct ModalResonator
     {
         constexpr float kPi = 3.14159265358979323846f;
         freq = std::clamp(freq, 20.0f, sr * 0.45f);
-        q    = std::max(0.5f, q);
-        a1   = 2.0f * std::cos(2.0f * kPi * freq / sr);
-        b0   = 1.0f / q;
+        q = std::max(0.5f, q);
+        a1 = 2.0f * std::cos(2.0f * kPi * freq / sr);
+        b0 = 1.0f / q;
         gain = g;
     }
 
@@ -33,8 +34,10 @@ struct ModalResonator
         y2 = y1;
         y1 = y;
         // Denormal flush
-        if (std::abs(y1) < 1.0e-10f) y1 = 0.0f;
-        if (std::abs(y2) < 1.0e-10f) y2 = 0.0f;
+        if (std::abs(y1) < 1.0e-10f)
+            y1 = 0.0f;
+        if (std::abs(y2) < 1.0e-10f)
+            y2 = 0.0f;
         return y * gain;
     }
 

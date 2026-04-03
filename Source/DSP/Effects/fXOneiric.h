@@ -5,7 +5,8 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // fXfXOneiric — "Dream State" boutique effect.
@@ -50,26 +51,22 @@ public:
     fXOneiric() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate, int /*maxBlockSize*/)
+    void prepare(double sampleRate, int /*maxBlockSize*/)
     {
         sr = sampleRate;
 
         // Delay buffer: max 1500ms for long dream echoes
-        int maxSamples = static_cast<int> (sr * 1.5) + 1;
-        delayL.assign (static_cast<size_t> (maxSamples), 0.0f);
-        delayR.assign (static_cast<size_t> (maxSamples), 0.0f);
+        int maxSamples = static_cast<int>(sr * 1.5) + 1;
+        delayL.assign(static_cast<size_t>(maxSamples), 0.0f);
+        delayR.assign(static_cast<size_t>(maxSamples), 0.0f);
         bufferSize = maxSamples;
         writePos = 0;
 
         // Hilbert transform: 3-stage allpass network (I and Q channels)
         // Coefficients from Olli Niemitalo's design (90° phase difference
         // over ~20 Hz to ~20 kHz)
-        static constexpr float hilbertCoeffsI[kHilbertStages] = {
-            0.6923878f, 0.9360654f, 0.9882295f
-        };
-        static constexpr float hilbertCoeffsQ[kHilbertStages] = {
-            0.4021921f, 0.8561711f, 0.9722910f
-        };
+        static constexpr float hilbertCoeffsI[kHilbertStages] = {0.6923878f, 0.9360654f, 0.9882295f};
+        static constexpr float hilbertCoeffsQ[kHilbertStages] = {0.4021921f, 0.8561711f, 0.9722910f};
         for (int i = 0; i < kHilbertStages; ++i)
         {
             hCoeffI[i] = hilbertCoeffsI[i];
@@ -89,37 +86,37 @@ public:
 
     //--------------------------------------------------------------------------
     /// Delay time in ms (1-1500).
-    void setDelayTime (float ms) { delayTimeMs = clamp (ms, 1.0f, 1500.0f); }
+    void setDelayTime(float ms) { delayTimeMs = clamp(ms, 1.0f, 1500.0f); }
 
     /// Pitch shift per echo in Hz. Positive = ascending spiral, negative = descending.
-    void setShift (float hz) { shiftHz = clamp (hz, -500.0f, 500.0f); }
+    void setShift(float hz) { shiftHz = clamp(hz, -500.0f, 500.0f); }
 
     /// Feedback amount (0-0.92). Higher = more echoes = longer spiral.
-    void setFeedback (float fb) { feedback = clamp (fb, 0.0f, 0.92f); }
+    void setFeedback(float fb) { feedback = clamp(fb, 0.0f, 0.92f); }
 
     /// HF damping per repeat (0-1). Higher = darker echoes. Each repeat
     /// gets progressively softer in the highs, like sound fading into fog.
-    void setDamping (float d) { damping = clamp (d, 0.0f, 1.0f); }
+    void setDamping(float d) { damping = clamp(d, 0.0f, 1.0f); }
 
     /// Stereo spread: offsets the R channel delay slightly for width (0-1).
-    void setSpread (float s) { spread = clamp (s, 0.0f, 1.0f); }
+    void setSpread(float s) { spread = clamp(s, 0.0f, 1.0f); }
 
     /// Dry/wet mix (0-1).
-    void setMix (float m) { mix = clamp (m, 0.0f, 1.0f); }
+    void setMix(float m) { mix = clamp(m, 0.0f, 1.0f); }
 
     //--------------------------------------------------------------------------
     /// Process stereo audio in-place.
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
-        if (bufferSize <= 0 || mix < 0.001f) return;
+        if (bufferSize <= 0 || mix < 0.001f)
+            return;
 
-        float delaySamples = static_cast<float> (delayTimeMs * 0.001 * sr);
-        delaySamples = clamp (delaySamples, 1.0f, static_cast<float> (bufferSize - 2));
+        float delaySamples = static_cast<float>(delayTimeMs * 0.001 * sr);
+        delaySamples = clamp(delaySamples, 1.0f, static_cast<float>(bufferSize - 2));
 
         // R channel offset for stereo spread (up to 15ms)
-        float spreadOffset = spread * 0.015f * static_cast<float> (sr);
-        float delaySamplesR = clamp (delaySamples + spreadOffset,
-                                     1.0f, static_cast<float> (bufferSize - 2));
+        float spreadOffset = spread * 0.015f * static_cast<float>(sr);
+        float delaySamplesR = clamp(delaySamples + spreadOffset, 1.0f, static_cast<float>(bufferSize - 2));
 
         // Damping coefficient: one-pole LP in [0.15, 1.0] range
         float dampCoeff = 1.0f - damping * 0.85f;
@@ -128,7 +125,7 @@ public:
         double phaseInc = shiftHz / sr;
 
         // DC blocker coefficient (~30 Hz)
-        float dcCoeff = 1.0f - (188.5f / static_cast<float> (sr));  // 2*pi*30/sr
+        float dcCoeff = 1.0f - (188.5f / static_cast<float>(sr)); // 2*pi*30/sr
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -136,8 +133,8 @@ public:
             float inR = R[i];
 
             // Read from delay with linear interpolation
-            float delL = readDelay (delayL, delaySamples);
-            float delR = readDelay (delayR, delaySamplesR);
+            float delL = readDelay(delayL, delaySamples);
+            float delR = readDelay(delayR, delaySamplesR);
 
             // === Feedback path: frequency shift the delayed signal ===
 
@@ -149,28 +146,28 @@ public:
             {
                 // I chain (left)
                 float tmp = hI_L - hCoeffI[s] * hStateI_L[s];
-                hI_L = flushDenormal (hStateI_L[s] + hCoeffI[s] * tmp);
+                hI_L = flushDenormal(hStateI_L[s] + hCoeffI[s] * tmp);
                 hStateI_L[s] = tmp;
 
                 // Q chain (left)
                 tmp = hQ_L - hCoeffQ[s] * hStateQ_L[s];
-                hQ_L = flushDenormal (hStateQ_L[s] + hCoeffQ[s] * tmp);
+                hQ_L = flushDenormal(hStateQ_L[s] + hCoeffQ[s] * tmp);
                 hStateQ_L[s] = tmp;
 
                 // I chain (right)
                 tmp = hI_R - hCoeffI[s] * hStateI_R[s];
-                hI_R = flushDenormal (hStateI_R[s] + hCoeffI[s] * tmp);
+                hI_R = flushDenormal(hStateI_R[s] + hCoeffI[s] * tmp);
                 hStateI_R[s] = tmp;
 
                 // Q chain (right)
                 tmp = hQ_R - hCoeffQ[s] * hStateQ_R[s];
-                hQ_R = flushDenormal (hStateQ_R[s] + hCoeffQ[s] * tmp);
+                hQ_R = flushDenormal(hStateQ_R[s] + hCoeffQ[s] * tmp);
                 hStateQ_R[s] = tmp;
             }
 
             // Quadrature oscillator: complex rotation for frequency shift
-            float cosOsc = fastCos (static_cast<float> (oscPhase * 6.28318530718));
-            float sinOsc = fastSin (static_cast<float> (oscPhase * 6.28318530718));
+            float cosOsc = fastCos(static_cast<float>(oscPhase * 6.28318530718));
+            float sinOsc = fastSin(static_cast<float>(oscPhase * 6.28318530718));
 
             // Single-sideband modulation: output = I*cos - Q*sin (upper sideband)
             // For negative shift: output = I*cos + Q*sin (lower sideband)
@@ -187,27 +184,28 @@ public:
             }
 
             // Advance oscillator phase
-            oscPhase += std::fabs (phaseInc);
-            if (oscPhase >= 1.0) oscPhase -= 1.0;
+            oscPhase += std::fabs(phaseInc);
+            if (oscPhase >= 1.0)
+                oscPhase -= 1.0;
 
             // DC blocker (frequency shifting generates DC offset)
             float dcOutL = shiftedL - dcPrevL + dcCoeff * dcStateL;
             float dcOutR = shiftedR - dcPrevR + dcCoeff * dcStateR;
             dcPrevL = shiftedL;
             dcPrevR = shiftedR;
-            dcStateL = flushDenormal (dcOutL);
-            dcStateR = flushDenormal (dcOutR);
+            dcStateL = flushDenormal(dcOutL);
+            dcStateR = flushDenormal(dcOutR);
 
             // Damping LP in feedback path (each repeat gets darker)
-            dampStateL = flushDenormal (dampStateL + dampCoeff * (dcOutL - dampStateL));
-            dampStateR = flushDenormal (dampStateR + dampCoeff * (dcOutR - dampStateR));
+            dampStateL = flushDenormal(dampStateL + dampCoeff * (dcOutL - dampStateL));
+            dampStateR = flushDenormal(dampStateR + dampCoeff * (dcOutR - dampStateR));
 
             // Write to delay: input + shifted feedback
             float fbL = dampStateL * feedback;
             float fbR = dampStateR * feedback;
 
-            delayL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbL);
-            delayR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbR);
+            delayL[static_cast<size_t>(writePos)] = flushDenormal(inL + fbL);
+            delayR[static_cast<size_t>(writePos)] = flushDenormal(inR + fbR);
             writePos = (writePos + 1) % bufferSize;
 
             // Mix dry/wet
@@ -219,8 +217,8 @@ public:
     //--------------------------------------------------------------------------
     void reset()
     {
-        std::fill (delayL.begin(), delayL.end(), 0.0f);
-        std::fill (delayR.begin(), delayR.end(), 0.0f);
+        std::fill(delayL.begin(), delayL.end(), 0.0f);
+        std::fill(delayR.begin(), delayR.end(), 0.0f);
         writePos = 0;
         oscPhase = 0.0;
         dampStateL = dampStateR = 0.0f;
@@ -230,18 +228,19 @@ public:
     }
 
 private:
-    float readDelay (const std::vector<float>& buf, float delaySamples) const
+    float readDelay(const std::vector<float>& buf, float delaySamples) const
     {
-        int d = static_cast<int> (delaySamples);
-        float frac = delaySamples - static_cast<float> (d);
-        if (d < 1) d = 1;
-        if (d >= bufferSize - 1) d = bufferSize - 2;
+        int d = static_cast<int>(delaySamples);
+        float frac = delaySamples - static_cast<float>(d);
+        if (d < 1)
+            d = 1;
+        if (d >= bufferSize - 1)
+            d = bufferSize - 2;
 
         int r0 = (writePos - d + bufferSize) % bufferSize;
         int r1 = (r0 - 1 + bufferSize) % bufferSize;
 
-        return flushDenormal (lerp (buf[static_cast<size_t> (r0)],
-                                     buf[static_cast<size_t> (r1)], frac));
+        return flushDenormal(lerp(buf[static_cast<size_t>(r0)], buf[static_cast<size_t>(r1)], frac));
     }
 
     void resetHilbertState()
@@ -265,12 +264,12 @@ private:
     int writePos = 0;
 
     // Hilbert transform allpass coefficients and state
-    float hCoeffI[kHilbertStages] {};
-    float hCoeffQ[kHilbertStages] {};
-    float hStateI_L[kHilbertStages] {};
-    float hStateQ_L[kHilbertStages] {};
-    float hStateI_R[kHilbertStages] {};
-    float hStateQ_R[kHilbertStages] {};
+    float hCoeffI[kHilbertStages]{};
+    float hCoeffQ[kHilbertStages]{};
+    float hStateI_L[kHilbertStages]{};
+    float hStateQ_L[kHilbertStages]{};
+    float hStateI_R[kHilbertStages]{};
+    float hStateQ_R[kHilbertStages]{};
 
     // Quadrature oscillator
     double oscPhase = 0.0;
@@ -285,11 +284,11 @@ private:
 
     // Parameters
     float delayTimeMs = 350.0f;
-    float shiftHz     = 5.0f;
-    float feedback    = 0.6f;
-    float damping     = 0.3f;
-    float spread      = 0.3f;
-    float mix         = 0.0f;
+    float shiftHz = 5.0f;
+    float feedback = 0.6f;
+    float damping = 0.3f;
+    float spread = 0.3f;
+    float mix = 0.0f;
 };
 
 } // namespace xoceanus

@@ -20,7 +20,8 @@
 #include <array>
 #include <cmath>
 
-namespace xoverlap {
+namespace xoverlap
+{
 
 //==============================================================================
 class KnotMatrix
@@ -49,9 +50,9 @@ public:
     static Matrix trefoil() noexcept
     {
         // Hadamard-inspired 6×6 with 3-fold symmetry and unit-norm rows
-        const float s6   = 1.0f / std::sqrt (6.0f);
+        const float s6 = 1.0f / std::sqrt(6.0f);
         const float half = 0.5f;
-        const float q    = 0.5f;   // quaternion-like weight
+        const float q = 0.5f; // quaternion-like weight
 
         Matrix m{};
         // Circulant matrix with coupling kernel [1, r, r, -r, r, r] / ||
@@ -59,10 +60,12 @@ public:
         // Use a simple Hadamard-inspired rotation:
         // Each row i couples to (i+1)%6 with +w and (i+5)%6 with -w,
         // diagonal with d, forming a near-unitary skew-symmetric circulant.
-        const float d = 1.0f / std::sqrt (3.0f);
-        const float w = 1.0f / std::sqrt (3.0f);
-        const float x = 1.0f / std::sqrt (3.0f);
-        (void) s6; (void) half; (void) q;
+        const float d = 1.0f / std::sqrt(3.0f);
+        const float w = 1.0f / std::sqrt(3.0f);
+        const float x = 1.0f / std::sqrt(3.0f);
+        (void)s6;
+        (void)half;
+        (void)q;
 
         // Full Hadamard-normalized 6×6 trefoil circulant:
         //   diag = d, +1 hop = +w, -1 hop = -w, all others 0
@@ -71,9 +74,9 @@ public:
         {
             for (int j = 0; j < 6; ++j)
                 m[static_cast<size_t>(i)][static_cast<size_t>(j)] = 0.0f;
-            m[static_cast<size_t>(i)][static_cast<size_t>(i)]              = d;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 1) % 6)]   =  w;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 5) % 6)]   = -x;
+            m[static_cast<size_t>(i)][static_cast<size_t>(i)] = d;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + 1) % 6)] = w;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + 5) % 6)] = -x;
         }
         return m;
     }
@@ -87,9 +90,9 @@ public:
         // Alternating-sign variant of the trefoil:
         // Even rows: +w forward, -x backward
         // Odd rows:  -w forward, +x backward
-        const float d = 1.0f / std::sqrt (3.0f);
-        const float w = 1.0f / std::sqrt (3.0f);
-        const float x = 1.0f / std::sqrt (3.0f);
+        const float d = 1.0f / std::sqrt(3.0f);
+        const float w = 1.0f / std::sqrt(3.0f);
+        const float x = 1.0f / std::sqrt(3.0f);
 
         Matrix m{};
         for (int i = 0; i < 6; ++i)
@@ -98,9 +101,9 @@ public:
                 m[static_cast<size_t>(i)][static_cast<size_t>(j)] = 0.0f;
 
             float sign = (i % 2 == 0) ? 1.0f : -1.0f;
-            m[static_cast<size_t>(i)][static_cast<size_t>(i)]             =  d;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 1) % 6)]  =  sign * w;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 5) % 6)]  = -sign * x;
+            m[static_cast<size_t>(i)][static_cast<size_t>(i)] = d;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + 1) % 6)] = sign * w;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + 5) % 6)] = -sign * x;
         }
         return m;
     }
@@ -109,23 +112,29 @@ public:
     // Torus(p, q) — torus knot T(p,q). Winding numbers p and q determine
     // the inter-voice coupling distance and phase offset.
     // p and q must be coprime; if not, the result is a torus link.
-    static Matrix torus (int p, int q) noexcept
+    static Matrix torus(int p, int q) noexcept
     {
         // Clamp to valid range
-        if (p < 2) p = 2;
-        if (q < 2) q = 2;
-        if (p > 7) p = 7;
-        if (q > 7) q = 7;
+        if (p < 2)
+            p = 2;
+        if (q < 2)
+            q = 2;
+        if (p > 7)
+            p = 7;
+        if (q > 7)
+            q = 7;
 
         // Step size through 6 voices driven by (p mod 6) and (q mod 6)
         int stepP = p % 6;
         int stepQ = q % 6;
-        if (stepP == 0) stepP = 1;
-        if (stepQ == 0) stepQ = 1;
+        if (stepP == 0)
+            stepP = 1;
+        if (stepQ == 0)
+            stepQ = 1;
 
-        const float d  = 1.0f / std::sqrt (3.0f);
-        const float wp = 1.0f / std::sqrt (3.0f);
-        const float wq = 1.0f / std::sqrt (3.0f);
+        const float d = 1.0f / std::sqrt(3.0f);
+        const float wp = 1.0f / std::sqrt(3.0f);
+        const float wq = 1.0f / std::sqrt(3.0f);
 
         Matrix m{};
         for (int i = 0; i < 6; ++i)
@@ -133,9 +142,9 @@ public:
             for (int j = 0; j < 6; ++j)
                 m[static_cast<size_t>(i)][static_cast<size_t>(j)] = 0.0f;
 
-            m[static_cast<size_t>(i)][static_cast<size_t>(i)]                          =  d;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + stepP) % 6)]            =  wp;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 6 - stepQ) % 6)]       = -wq;
+            m[static_cast<size_t>(i)][static_cast<size_t>(i)] = d;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + stepP) % 6)] = wp;
+            m[static_cast<size_t>(i)][static_cast<size_t>((i + 6 - stepQ) % 6)] = -wq;
         }
         return m;
     }
@@ -144,9 +153,9 @@ public:
     // interpolate() — mix the target knot matrix with scaled identity at
     // depth 0 → identity only; depth 1 → full knot matrix.
     // This keeps the FDN stable at any depth while morphing topology.
-    static Matrix interpolate (const Matrix& target, float depth) noexcept
+    static Matrix interpolate(const Matrix& target, float depth) noexcept
     {
-        depth = std::max (0.0f, std::min (1.0f, depth));
+        depth = std::max(0.0f, std::min(1.0f, depth));
         float inv = 1.0f - depth;
 
         Matrix result{};
@@ -165,10 +174,16 @@ public:
     //==========================================================================
     // torusRatios() — per-voice delay ratios for torus knot T(p,q).
     // Six voices are assigned harmonic multiples derived from the winding numbers.
-    static std::array<float, 6> torusRatios (int p, int q) noexcept
+    static std::array<float, 6> torusRatios(int p, int q) noexcept
     {
-        if (p < 2) p = 2; if (p > 7) p = 7;
-        if (q < 2) q = 2; if (q > 7) q = 7;
+        if (p < 2)
+            p = 2;
+        if (p > 7)
+            p = 7;
+        if (q < 2)
+            q = 2;
+        if (q > 7)
+            q = 7;
 
         // Generate ratios by distributing voices along the p/q Lissajous structure.
         // ratio[i] = 1 + 0.1 * sin(2π * i * p / 6) * cos(2π * i * q / 6)
@@ -177,8 +192,8 @@ public:
         for (int i = 0; i < 6; ++i)
         {
             float angle = twoPi * static_cast<float>(i) / 6.0f;
-            float rp    = std::cos (static_cast<float>(p) * angle);
-            float rq    = std::sin (static_cast<float>(q) * angle);
+            float rp = std::cos(static_cast<float>(p) * angle);
+            float rq = std::sin(static_cast<float>(q) * angle);
             ratios[static_cast<size_t>(i)] = 1.0f + 0.12f * rp * rq;
         }
         return ratios;

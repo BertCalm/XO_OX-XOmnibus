@@ -24,11 +24,18 @@ class ADSRDisplay : public juce::Component
 public:
     void setValues(float attack, float decay, float sustain, float release)
     {
-        a = attack; d = decay; s = sustain; r = release;
+        a = attack;
+        d = decay;
+        s = sustain;
+        r = release;
         repaint();
     }
 
-    void setAccentColour(juce::Colour c) { accent = c; repaint(); }
+    void setAccentColour(juce::Colour c)
+    {
+        accent = c;
+        repaint();
+    }
 
     void paint(juce::Graphics& g) override
     {
@@ -48,33 +55,34 @@ public:
         float ySus = y0 - s * h;  // sustain level
 
         // Proportional widths (attack + decay take ~40%, sustain ~30%, release ~30%)
-        float aW = a * totalW * 0.3f + totalW * 0.05f;  // min 5% width
+        float aW = a * totalW * 0.3f + totalW * 0.05f; // min 5% width
         float dW = d * totalW * 0.15f + totalW * 0.05f;
         float rW = r * totalW * 0.25f + totalW * 0.05f;
         float sW = totalW - aW - dW - rW;
-        if (sW < 10.0f) sW = 10.0f;
+        if (sW < 10.0f)
+            sW = 10.0f;
 
         juce::Path curve;
-        curve.startNewSubPath(x0, y0);                          // start at bottom-left
-        curve.lineTo(x0 + aW, yTop);                            // attack peak
-        curve.lineTo(x0 + aW + dW, ySus);                       // decay to sustain
-        curve.lineTo(x0 + aW + dW + sW, ySus);                  // sustain hold
-        curve.lineTo(x0 + aW + dW + sW + rW, y0);               // release to zero
+        curve.startNewSubPath(x0, y0);            // start at bottom-left
+        curve.lineTo(x0 + aW, yTop);              // attack peak
+        curve.lineTo(x0 + aW + dW, ySus);         // decay to sustain
+        curve.lineTo(x0 + aW + dW + sW, ySus);    // sustain hold
+        curve.lineTo(x0 + aW + dW + sW + rW, y0); // release to zero
 
         // Draw the curve
         g.setColour(accent.withAlpha(0.7f));
-        g.strokePath(curve, juce::PathStrokeType(2.0f, juce::PathStrokeType::curved,
-                     juce::PathStrokeType::rounded));
+        g.strokePath(curve, juce::PathStrokeType(2.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
         // Draw dots at the 4 control points
-        auto drawDot = [&](float cx, float cy) {
+        auto drawDot = [&](float cx, float cy)
+        {
             g.setColour(accent.withAlpha(0.9f));
             g.fillEllipse(cx - 3, cy - 3, 6, 6);
         };
-        drawDot(x0 + aW, yTop);                     // attack peak
-        drawDot(x0 + aW + dW, ySus);                // decay end
-        drawDot(x0 + aW + dW + sW, ySus);           // sustain end
-        drawDot(x0 + aW + dW + sW + rW, y0);        // release end
+        drawDot(x0 + aW, yTop);              // attack peak
+        drawDot(x0 + aW + dW, ySus);         // decay end
+        drawDot(x0 + aW + dW + sW, ySus);    // sustain end
+        drawDot(x0 + aW + dW + sW + rW, y0); // release end
 
         // A D S R labels at bottom
         g.setFont(GalleryFonts::body(9.0f));
@@ -88,7 +96,7 @@ public:
 
 private:
     float a = 0.1f, d = 0.3f, s = 0.7f, r = 0.4f; // defaults
-    juce::Colour accent { 0xFF1E8B7E };
+    juce::Colour accent{0xFF1E8B7E};
 };
 
 //==============================================================================
@@ -98,8 +106,7 @@ private:
 class EngineDetailPanel : public juce::Component
 {
 public:
-    explicit EngineDetailPanel(XOceanusProcessor& proc)
-        : processor(proc), macroHero(proc), waveformDisplay(proc)
+    explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc)
     {
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
@@ -108,7 +115,8 @@ public:
         viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
-        A11y::setup(*this, "Engine Detail Panel", "Shows parameters for the selected engine. Press Escape to return to overview.");
+        A11y::setup(*this, "Engine Detail Panel",
+                    "Shows parameters for the selected engine. Press Escape to return to overview.");
     }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.
@@ -131,21 +139,22 @@ public:
     bool loadSlot(int slot)
     {
         auto* eng = processor.getEngine(slot);
-        if (!eng) return false;
+        if (!eng)
+            return false;
 
         // W11: Track whether the engine actually changed so we only reset scroll
         // position on a genuine engine switch (not on parameter-only refreshes).
         const bool engineChanged = (eng->getEngineId() != engineId);
 
-        engineId     = eng->getEngineId();
+        engineId = eng->getEngineId();
         accentColour = eng->getAccentColour();
 
         // P30: cache toUpperCase() result to avoid String alloc in paint().
         cachedEngineName = engineId.toUpperCase();
         // P29: cache header gradient — rebuilt here and in resized(), not in paint().
-        cachedHeaderGrad = juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                                GalleryColors::get(GalleryColors::shellWhite()),
-                                                (float)getWidth(), 0.0f, false);
+        cachedHeaderGrad =
+            juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                 GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
 
         // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
@@ -181,8 +190,7 @@ public:
         }
 
         // ── Percussion engines get a DrumPadGrid above the ParameterGrid ─────
-        bool isPercEngine = (engineId.equalsIgnoreCase("Onset") ||
-                             engineId.equalsIgnoreCase("Offering"));
+        bool isPercEngine = (engineId.equalsIgnoreCase("Onset") || engineId.equalsIgnoreCase("Offering"));
         if (isPercEngine)
         {
             int numVoices = 8; // both ONSET and OFFERING use 8 voices for now
@@ -198,16 +206,16 @@ public:
             auto* py = processor.getAPVTS().getParameter("ow_eraY");
             if (px && py)
             {
-                trianglePad = std::make_unique<TriangleXYPad>(
-                    processor.getAPVTS(),
-                    "ow_era",    // X param — ERA horizontal blend
-                    "ow_eraY",   // Y param — ERA vertical blend
-                    std::array<juce::String, 3>{{ "ANALOG", "DIGITAL", "HYBRID" }},
-                    std::array<juce::Colour, 3>{{
-                        juce::Colour(0xFF39FF14),  // Neon Green (OVERWORLD accent)
-                        juce::Colour(0xFFBF40FF),  // Prism Violet
-                        juce::Colour(GalleryColors::xoGold)   // XO Gold
-                    }});
+                trianglePad =
+                    std::make_unique<TriangleXYPad>(processor.getAPVTS(),
+                                                    "ow_era",  // X param — ERA horizontal blend
+                                                    "ow_eraY", // Y param — ERA vertical blend
+                                                    std::array<juce::String, 3>{{"ANALOG", "DIGITAL", "HYBRID"}},
+                                                    std::array<juce::Colour, 3>{{
+                                                        juce::Colour(0xFF39FF14), // Neon Green (OVERWORLD accent)
+                                                        juce::Colour(0xFFBF40FF), // Prism Violet
+                                                        juce::Colour(GalleryColors::xoGold) // XO Gold
+                                                    }});
                 addAndMakeVisible(*trianglePad);
             }
         }
@@ -219,16 +227,16 @@ public:
             auto* py = processor.getAPVTS().getParameter("oxy_passion");
             if (px && py)
             {
-                trianglePad = std::make_unique<TriangleXYPad>(
-                    processor.getAPVTS(),
-                    "oxy_intimacy",   // X param — Intimacy axis
-                    "oxy_passion",    // Y param — Passion axis
-                    std::array<juce::String, 3>{{ "RE-201", "MS-20", "MOOG" }},
-                    std::array<juce::Colour, 3>{{
-                        juce::Colour(0xFF9B5DE5),  // Synapse Violet (OXYTOCIN accent)
-                        juce::Colour(0xFFFF6B6B),  // Warm Red
-                        juce::Colour(GalleryColors::xoGold)   // XO Gold
-                    }});
+                trianglePad =
+                    std::make_unique<TriangleXYPad>(processor.getAPVTS(),
+                                                    "oxy_intimacy", // X param — Intimacy axis
+                                                    "oxy_passion",  // Y param — Passion axis
+                                                    std::array<juce::String, 3>{{"RE-201", "MS-20", "MOOG"}},
+                                                    std::array<juce::Colour, 3>{{
+                                                        juce::Colour(0xFF9B5DE5), // Synapse Violet (OXYTOCIN accent)
+                                                        juce::Colour(0xFFFF6B6B), // Warm Red
+                                                        juce::Colour(GalleryColors::xoGold) // XO Gold
+                                                    }});
                 addAndMakeVisible(*trianglePad);
             }
         }
@@ -250,8 +258,7 @@ public:
             if (processor.getAPVTS().getParameter("ocelot_biome"))
             {
                 modeSelector = std::make_unique<NamedModeSelector>(
-                    processor.getAPVTS(), "ocelot_biome",
-                    juce::StringArray{ "RAINFOREST", "SAVANNA", "TUNDRA", "REEF" },
+                    processor.getAPVTS(), "ocelot_biome", juce::StringArray{"RAINFOREST", "SAVANNA", "TUNDRA", "REEF"},
                     static_cast<const std::vector<juce::Colour>*>(nullptr),
                     juce::Colour(0xFFC5832B)); // Ocelot Tawny
                 addAndMakeVisible(*modeSelector);
@@ -264,11 +271,10 @@ public:
             {
                 if (auto* choice = dynamic_cast<juce::AudioParameterChoice*>(p))
                 {
-                    modeSelector = std::make_unique<NamedModeSelector>(
-                        processor.getAPVTS(), "oracle_maqam",
-                        choice->choices,
-                        static_cast<const std::vector<juce::Colour>*>(nullptr),
-                        juce::Colour(0xFF4B0082)); // Prophecy Indigo
+                    modeSelector =
+                        std::make_unique<NamedModeSelector>(processor.getAPVTS(), "oracle_maqam", choice->choices,
+                                                            static_cast<const std::vector<juce::Colour>*>(nullptr),
+                                                            juce::Colour(0xFF4B0082)); // Prophecy Indigo
                     addAndMakeVisible(*modeSelector);
                 }
             }
@@ -277,11 +283,11 @@ public:
         {
             if (processor.getAPVTS().getParameter("weave_knotType"))
             {
-                modeSelector = std::make_unique<NamedModeSelector>(
-                    processor.getAPVTS(), "weave_knotType",
-                    juce::StringArray{ "TREFOIL", "FIGURE-8", "TORUS", "SOLOMON" },
-                    static_cast<const std::vector<juce::Colour>*>(nullptr),
-                    juce::Colour(0xFF8E4585)); // Kelp Knot Purple (ORBWEAVE accent)
+                modeSelector =
+                    std::make_unique<NamedModeSelector>(processor.getAPVTS(), "weave_knotType",
+                                                        juce::StringArray{"TREFOIL", "FIGURE-8", "TORUS", "SOLOMON"},
+                                                        static_cast<const std::vector<juce::Colour>*>(nullptr),
+                                                        juce::Colour(0xFF8E4585)); // Kelp Knot Purple (ORBWEAVE accent)
                 addAndMakeVisible(*modeSelector);
             }
         }
@@ -291,11 +297,9 @@ public:
         {
             if (processor.getAPVTS().getParameter("ouie_macroHammer"))
             {
-                axisBar = std::make_unique<BipolarAxisBar>(
-                    processor.getAPVTS(), "ouie_macroHammer",
-                    "STRIFE", "LOVE",
-                    juce::Colour(0xFFFF2D2D),  // Ouroboros Red (strife)
-                    juce::Colour(0xFFFF69B4)); // Pink (love)
+                axisBar = std::make_unique<BipolarAxisBar>(processor.getAPVTS(), "ouie_macroHammer", "STRIFE", "LOVE",
+                                                           juce::Colour(0xFFFF2D2D),  // Ouroboros Red (strife)
+                                                           juce::Colour(0xFFFF69B4)); // Pink (love)
                 addAndMakeVisible(*axisBar);
             }
         }
@@ -304,11 +308,9 @@ public:
             // OBESE mojo axis: fat_mojo is the real parameter ID (not fat_satMojo).
             if (processor.getAPVTS().getParameter("fat_mojo"))
             {
-                axisBar = std::make_unique<BipolarAxisBar>(
-                    processor.getAPVTS(), "fat_mojo",
-                    "ANALOG", "DIGITAL",
-                    juce::Colour(0xFFE9A84A),  // Warm amber
-                    juce::Colour(0xFFBF40FF)); // Prism Violet
+                axisBar = std::make_unique<BipolarAxisBar>(processor.getAPVTS(), "fat_mojo", "ANALOG", "DIGITAL",
+                                                           juce::Colour(0xFFE9A84A),  // Warm amber
+                                                           juce::Colour(0xFFBF40FF)); // Prism Violet
                 addAndMakeVisible(*axisBar);
             }
         }
@@ -316,11 +318,9 @@ public:
         {
             if (processor.getAPVTS().getParameter("owr_material"))
             {
-                axisBar = std::make_unique<BipolarAxisBar>(
-                    processor.getAPVTS(), "owr_material",
-                    "SOFT", "HARD",
-                    juce::Colour(0xFF8B6914),  // Warm wood
-                    juce::Colour(0xFFC0C0C0)); // Metallic silver
+                axisBar = std::make_unique<BipolarAxisBar>(processor.getAPVTS(), "owr_material", "SOFT", "HARD",
+                                                           juce::Colour(0xFF8B6914),  // Warm wood
+                                                           juce::Colour(0xFFC0C0C0)); // Metallic silver
                 addAndMakeVisible(*axisBar);
             }
         }
@@ -364,8 +364,7 @@ public:
             // Engine name — 16px Space Grotesk bold, accent color
             g.setFont(GalleryFonts::display(16.0f));
             g.setColour(accentColour);
-            g.drawText(cachedEngineName,
-                       juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
+            g.drawText(cachedEngineName, juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
                        juce::Justification::centredLeft);
 
             // Thin accent line under header (2px)
@@ -378,10 +377,7 @@ public:
         {
             g.setFont(GalleryFonts::value(9.0f));
             g.setColour(get(t3()));
-            g.drawText("OSCILLOSCOPE",
-                       oscLabelBounds.withTrimmedLeft(8),
-                       juce::Justification::centredLeft,
-                       false);
+            g.drawText("OSCILLOSCOPE", oscLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
 
         // ── "ENVELOPE" label above ADSR display ───────────────────────────────
@@ -389,10 +385,7 @@ public:
         {
             g.setFont(GalleryFonts::value(9.0f));
             g.setColour(get(t3()));
-            g.drawText("ENVELOPE",
-                       envLabelBounds.withTrimmedLeft(8),
-                       juce::Justification::centredLeft,
-                       false);
+            g.drawText("ENVELOPE", envLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
     }
 
@@ -402,9 +395,9 @@ public:
         area.removeFromTop(kHeaderH);
 
         // P29: rebuild header gradient when width changes.
-        cachedHeaderGrad = juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                                GalleryColors::get(GalleryColors::shellWhite()),
-                                                (float)getWidth(), 0.0f, false);
+        cachedHeaderGrad =
+            juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                 GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
 
         // MacroHeroStrip hidden — macros are in the header row.
         macroHero.setBounds(0, 0, 0, 0);
@@ -417,16 +410,16 @@ public:
 
         // ── Bottom: labels (12px) + waveform/ADSR displays (70px) split 50/50 ──
         {
-            int waveH     = 70;
-            int labelH    = 12;
+            int waveH = 70;
+            int labelH = 12;
             auto bottomArea = area.removeFromBottom(waveH + labelH);
-            auto labelRow   = bottomArea.removeFromTop(labelH);
+            auto labelRow = bottomArea.removeFromTop(labelH);
             // Split label row: left = OSCILLOSCOPE, right = ENVELOPE
-            oscLabelBounds  = labelRow.removeFromLeft(labelRow.getWidth() / 2);
-            envLabelBounds  = labelRow; // painted in paint()
+            oscLabelBounds = labelRow.removeFromLeft(labelRow.getWidth() / 2);
+            envLabelBounds = labelRow; // painted in paint()
             // Split display row: left = waveformDisplay, right = adsrDisplay
             auto displayRow = bottomArea;
-            auto leftDisplay  = displayRow.removeFromLeft(displayRow.getWidth() / 2);
+            auto leftDisplay = displayRow.removeFromLeft(displayRow.getWidth() / 2);
             auto rightDisplay = displayRow;
             waveformDisplay.setBounds(leftDisplay.reduced(4, 2));
             adsrDisplay.setBounds(rightDisplay.reduced(4, 2));
@@ -474,27 +467,27 @@ public:
 
 private:
     static constexpr int kHeaderH = 38;
-    static constexpr int kHeroH   = 88; // height of the macro hero strip
+    static constexpr int kHeroH = 88; // height of the macro hero strip
 
-    XOceanusProcessor&  processor;
-    MacroHeroStrip     macroHero;
-    WaveformDisplay    waveformDisplay;
-    ADSRDisplay        adsrDisplay;
-    std::unique_ptr<ObrixDetailPanel>     obrixPanel;       // only created when OBRIX is loaded
-    std::unique_ptr<DrumPadGrid>          drumGrid;         // created for ONSET, OFFERING
-    std::unique_ptr<FiveMacroDisplay>     fiveMacroDisplay; // created for OVERBITE
-    std::unique_ptr<TriangleXYPad>        trianglePad;      // created for OVERWORLD, OXYTOCIN
-    std::unique_ptr<ConductorArcDisplay>  conductorArc;     // created for OPERA
-    std::unique_ptr<NamedModeSelector>    modeSelector;     // created for OVERWORLD, OCELOT, ORACLE, ORBWEAVE
-    std::unique_ptr<BipolarAxisBar>       axisBar;          // created for OUIE, OBESE, OWARE
-    juce::Viewport     viewport;
-    juce::String       engineId  { "—" };
-    juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
-    MIDILearnManager*  learnManager = nullptr;
+    XOceanusProcessor& processor;
+    MacroHeroStrip macroHero;
+    WaveformDisplay waveformDisplay;
+    ADSRDisplay adsrDisplay;
+    std::unique_ptr<ObrixDetailPanel> obrixPanel;       // only created when OBRIX is loaded
+    std::unique_ptr<DrumPadGrid> drumGrid;              // created for ONSET, OFFERING
+    std::unique_ptr<FiveMacroDisplay> fiveMacroDisplay; // created for OVERBITE
+    std::unique_ptr<TriangleXYPad> trianglePad;         // created for OVERWORLD, OXYTOCIN
+    std::unique_ptr<ConductorArcDisplay> conductorArc;  // created for OPERA
+    std::unique_ptr<NamedModeSelector> modeSelector;    // created for OVERWORLD, OCELOT, ORACLE, ORBWEAVE
+    std::unique_ptr<BipolarAxisBar> axisBar;            // created for OUIE, OBESE, OWARE
+    juce::Viewport viewport;
+    juce::String engineId{"—"};
+    juce::Colour accentColour{GalleryColors::get(GalleryColors::borderGray())};
+    MIDILearnManager* learnManager = nullptr;
     // P29: cached header gradient — rebuilt in loadSlot() and resized().
     juce::ColourGradient cachedHeaderGrad;
     // P30: cached uppercase engine name — set in loadSlot(), used in paint().
-    juce::String         cachedEngineName { "—" };
+    juce::String cachedEngineName{"—"};
     // Bounds for the "OSCILLOSCOPE" label painted above the waveform display.
     juce::Rectangle<int> oscLabelBounds;
     // Bounds for the "ENVELOPE" label painted above the ADSR display.

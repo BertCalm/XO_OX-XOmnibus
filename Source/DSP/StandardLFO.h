@@ -5,7 +5,8 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // StandardLFO — Shared low-frequency oscillator for the XOceanus fleet.
@@ -32,11 +33,11 @@ struct StandardLFO
     //--------------------------------------------------------------------------
     enum Shape : int
     {
-        Sine     = 0,
+        Sine = 0,
         Triangle = 1,
-        Saw      = 2,
-        Square   = 3,
-        SandH    = 4   // Sample & Hold (random value on phase wrap)
+        Saw = 2,
+        Square = 3,
+        SandH = 4 // Sample & Hold (random value on phase wrap)
     };
 
     //--------------------------------------------------------------------------
@@ -45,31 +46,23 @@ struct StandardLFO
 
     /// Set LFO rate in Hz. Sample rate is required for correct phase increment.
     /// Rates below 0.005 Hz are clamped (D005 floor = 200-second cycle).
-    void setRate (float hz, float sampleRate) noexcept
+    void setRate(float hz, float sampleRate) noexcept
     {
-        if (sampleRate <= 0.0f) return;
-        hz = std::max (hz, 0.005f);  // D005 floor: prevents divide-by-zero and enforces 200s min cycle
+        if (sampleRate <= 0.0f)
+            return;
+        hz = std::max(hz, 0.005f); // D005 floor: prevents divide-by-zero and enforces 200s min cycle
         phaseInc = hz / sampleRate;
     }
 
     /// Set waveform shape. Accepts int for direct parameter binding.
-    void setShape (int newShape) noexcept
-    {
-        shape = newShape;
-    }
+    void setShape(int newShape) noexcept { shape = newShape; }
 
     /// Set waveform shape from enum.
-    void setShape (Shape newShape) noexcept
-    {
-        shape = static_cast<int> (newShape);
-    }
+    void setShape(Shape newShape) noexcept { shape = static_cast<int>(newShape); }
 
     /// Set a fixed phase offset (0–1). Used for ensemble staggering:
     /// e.g., 4 voices with offsets 0.0, 0.25, 0.5, 0.75.
-    void setPhaseOffset (float offset) noexcept
-    {
-        phaseOffset = offset;
-    }
+    void setPhaseOffset(float offset) noexcept { phaseOffset = offset; }
 
     //--------------------------------------------------------------------------
     // Processing
@@ -80,53 +73,55 @@ struct StandardLFO
     {
         // Compute effective phase with offset
         float effPhase = phase + phaseOffset;
-        if (effPhase >= 1.0f) effPhase -= 1.0f;
+        if (effPhase >= 1.0f)
+            effPhase -= 1.0f;
 
         float out = 0.0f;
 
         switch (shape)
         {
-            case Sine:
-                out = fastSin (effPhase * kTwoPi);
-                break;
+        case Sine:
+            out = fastSin(effPhase * kTwoPi);
+            break;
 
-            case Triangle:
-                out = 4.0f * std::fabs (effPhase - 0.5f) - 1.0f;
-                break;
+        case Triangle:
+            out = 4.0f * std::fabs(effPhase - 0.5f) - 1.0f;
+            break;
 
-            case Saw:
-                out = 2.0f * effPhase - 1.0f;
-                break;
+        case Saw:
+            out = 2.0f * effPhase - 1.0f;
+            break;
 
-            case Square:
-                out = (effPhase < 0.5f) ? 1.0f : -1.0f;
-                break;
+        case Square:
+            out = (effPhase < 0.5f) ? 1.0f : -1.0f;
+            break;
 
-            case SandH:
+        case SandH:
+        {
+            // Detect phase wrap: generate new random value on each cycle.
+            // Uses Knuth TAOCP Vol. 2 LCG — deterministic, fast, no alloc.
+            // Track lastPhase explicitly — safe at audio-rate LFO speeds where
+            // phaseInc can be large (0.02+) and the old prev<0 check was fragile.
+            if (phase < lastPhase)
             {
-                // Detect phase wrap: generate new random value on each cycle.
-                // Uses Knuth TAOCP Vol. 2 LCG — deterministic, fast, no alloc.
-                // Track lastPhase explicitly — safe at audio-rate LFO speeds where
-                // phaseInc can be large (0.02+) and the old prev<0 check was fragile.
-                if (phase < lastPhase)
-                {
-                    rngState = rngState * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (rngState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
+                rngState = rngState * 1664525u + 1013904223u;
+                holdValue = static_cast<float>(rngState & 0xFFFF) / 32768.0f - 1.0f;
             }
+            out = holdValue;
+            break;
+        }
 
-            default:
-                out = fastSin (effPhase * kTwoPi);  // fallback to sine
-                break;
+        default:
+            out = fastSin(effPhase * kTwoPi); // fallback to sine
+            break;
         }
 
         // Advance phase accumulator — record lastPhase before wrapping so
         // S&H wrap detection sees the pre-wrap value next sample.
         lastPhase = phase;
         phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
+        if (phase >= 1.0f)
+            phase -= 1.0f;
 
         return out;
     }
@@ -138,26 +133,23 @@ struct StandardLFO
     /// Reset phase and S&H state. Call on voice init or note retrigger.
     void reset() noexcept
     {
-        phase     = 0.0f;
+        phase = 0.0f;
         lastPhase = 0.0f;
         holdValue = 0.0f;
     }
 
     /// Reset with a specific starting phase (0–1). Useful for voice staggering
     /// when you want each voice to start at a different point in the cycle.
-    void reset (float startPhase) noexcept
+    void reset(float startPhase) noexcept
     {
-        phase     = startPhase;
+        phase = startPhase;
         lastPhase = startPhase;
         holdValue = 0.0f;
     }
 
     /// Reseed the S&H PRNG. Default seed 12345u matches existing fleet behavior.
     /// Use different seeds per voice/instance to decorrelate S&H patterns.
-    void reseed (uint32_t seed) noexcept
-    {
-        rngState = seed;
-    }
+    void reseed(uint32_t seed) noexcept { rngState = seed; }
 
     /// Get current phase (0–1). Useful for phase-linked visualization.
     float getPhase() const noexcept { return phase; }
@@ -165,13 +157,13 @@ struct StandardLFO
     //--------------------------------------------------------------------------
     // State — public for snapshot/restore in undo system
     //--------------------------------------------------------------------------
-    float    phase       = 0.0f;
-    float    lastPhase   = 0.0f;  // Previous phase — used for S&H wrap detection
-    float    phaseInc    = 0.0f;
-    int      shape       = 0;
-    float    phaseOffset = 0.0f;
-    float    holdValue   = 0.0f;
-    uint32_t rngState    = 12345u;
+    float phase = 0.0f;
+    float lastPhase = 0.0f; // Previous phase — used for S&H wrap detection
+    float phaseInc = 0.0f;
+    int shape = 0;
+    float phaseOffset = 0.0f;
+    float holdValue = 0.0f;
+    uint32_t rngState = 12345u;
 
 private:
     static constexpr float kTwoPi = 6.28318530717958647692f;
@@ -196,28 +188,32 @@ struct BreathingLFO
 {
     /// Set breathing rate in Hz. Clamped to [0.005, maxRate].
     /// Default maxRate of 2.0 Hz covers macro-scaled ranges.
-    void setRate (float hz, float sampleRate, float maxRate = 2.0f) noexcept
+    void setRate(float hz, float sampleRate, float maxRate = 2.0f) noexcept
     {
-        if (sampleRate <= 0.0f) return;
-        constexpr float kMinRate = 0.005f;  // D005 floor: 200-second cycle
+        if (sampleRate <= 0.0f)
+            return;
+        constexpr float kMinRate = 0.005f; // D005 floor: 200-second cycle
         float clampedHz = hz;
-        if (clampedHz < kMinRate) clampedHz = kMinRate;
-        if (clampedHz > maxRate)  clampedHz = maxRate;
+        if (clampedHz < kMinRate)
+            clampedHz = kMinRate;
+        if (clampedHz > maxRate)
+            clampedHz = maxRate;
         phaseInc = clampedHz / sampleRate;
     }
 
     /// Advance one sample and return bipolar sine output [-1, +1].
     float process() noexcept
     {
-        float out = fastSin (phase * kTwoPi);
+        float out = fastSin(phase * kTwoPi);
         phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
+        if (phase >= 1.0f)
+            phase -= 1.0f;
         return out;
     }
 
     void reset() noexcept { phase = 0.0f; }
 
-    float phase    = 0.0f;
+    float phase = 0.0f;
     float phaseInc = 0.0f;
 
 private:

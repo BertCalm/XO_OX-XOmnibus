@@ -5,7 +5,8 @@
 #include <algorithm>
 #include <array>
 
-namespace xocelot {
+namespace xocelot
+{
 
 // KarplusStrong — plucked string model via delay line + 1-pole lowpass feedback.
 // Used by Berimbau model in OcelotFloor.
@@ -45,7 +46,7 @@ struct KarplusStrong
     // Process one sample. damping: 0 = no damping (infinite sustain), 1 = maximum damping.
     float process(float damping)
     {
-        int readPos  = (writePos - periodI + kMaxDelay) % kMaxDelay;
+        int readPos = (writePos - periodI + kMaxDelay) % kMaxDelay;
         int readPos2 = (readPos - 1 + kMaxDelay) % kMaxDelay;
 
         // Linear interpolation for fractional delay
@@ -54,7 +55,7 @@ struct KarplusStrong
         float interpolated = d0 + fracDelay * (d1 - d0);
 
         // 1-pole lowpass: mix between current and previous (damping controls cutoff)
-        float lpCoeff = 0.5f + damping * 0.48f;  // 0.5 (bright) → 0.98 (dark)
+        float lpCoeff = 0.5f + damping * 0.48f; // 0.5 (bright) → 0.98 (dark)
         float filtered = interpolated * (1.0f - lpCoeff) + prevFiltered * lpCoeff;
         prevFiltered = filtered;
 
@@ -63,9 +64,10 @@ struct KarplusStrong
 
         // Denormal flush — threshold at actual IEEE 754 denormal boundary (~1.2e-38)
         // #609: 1e-15 was 23 orders too high; use 1e-38 to avoid flushing audible signal
-        if (std::abs(prevFiltered) < 1.0e-38f) prevFiltered = 0.0f;
+        if (std::abs(prevFiltered) < 1.0e-38f)
+            prevFiltered = 0.0f;
 
-        return interpolated;  // return pre-filter for brighter output; filtered is feedback
+        return interpolated; // return pre-filter for brighter output; filtered is feedback
     }
 
     void reset()

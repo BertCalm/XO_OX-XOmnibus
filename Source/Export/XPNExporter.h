@@ -15,7 +15,8 @@
 #include <cmath>
 #include <mutex>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SoundShapeClassifier — Analyzes preset DNA + engines to determine optimal
@@ -24,17 +25,27 @@ namespace xoceanus {
 // 6 shapes: Transient, Sustained, Evolving, Bass, Texture, Rhythmic
 // Each shape maps to specific render durations, note strategies, and vel layers.
 //
-struct SoundShape {
-    enum class Type { Transient, Sustained, Evolving, Bass, Texture, Rhythmic };
+struct SoundShape
+{
+    enum class Type
+    {
+        Transient,
+        Sustained,
+        Evolving,
+        Bass,
+        Texture,
+        Rhythmic
+    };
 
-    Type  type           = Type::Sustained;
-    float holdSeconds    = 4.0f;
-    float tailSeconds    = 2.0f;
-    int   velocityLayers = 1;
-    const char* label    = "Sustained";
+    Type type = Type::Sustained;
+    float holdSeconds = 4.0f;
+    float tailSeconds = 2.0f;
+    int velocityLayers = 1;
+    const char* label = "Sustained";
 };
 
-class SoundShapeClassifier {
+class SoundShapeClassifier
+{
 public:
     static SoundShape classify(const PresetData& preset)
     {
@@ -49,9 +60,8 @@ public:
         for (const auto& eng : preset.engines)
         {
             auto upper = eng.toUpperCase();
-            if (upper == "ONSET"    || upper == "XONSET"    ||
-                upper == "OBRIX"    || upper == "XOBRIX"    ||
-                upper == "OSTINATO" || upper == "XOSTINATO")
+            if (upper == "ONSET" || upper == "XONSET" || upper == "OBRIX" || upper == "XOBRIX" || upper == "OSTINATO" ||
+                upper == "XOSTINATO")
                 return rhythmic();
 
             if (upper == "OVERWORLD" || upper == "XOVERWORLD")
@@ -64,8 +74,7 @@ public:
                             return rhythmic();
             }
 
-            if ((upper == "OUROBOROS" || upper == "XOUROBOROS") &&
-                dna.movement > 0.6f && dna.aggression > 0.5f)
+            if ((upper == "OUROBOROS" || upper == "XOUROBOROS") && dna.movement > 0.6f && dna.aggression > 0.5f)
                 return rhythmic();
         }
 
@@ -90,35 +99,17 @@ public:
     }
 
 private:
-    static SoundShape transient()
-    {
-        return { SoundShape::Type::Transient, 1.0f, 0.5f, 3, "Transient" };
-    }
+    static SoundShape transient() { return {SoundShape::Type::Transient, 1.0f, 0.5f, 3, "Transient"}; }
 
-    static SoundShape sustained()
-    {
-        return { SoundShape::Type::Sustained, 4.0f, 2.0f, 1, "Sustained" };
-    }
+    static SoundShape sustained() { return {SoundShape::Type::Sustained, 4.0f, 2.0f, 1, "Sustained"}; }
 
-    static SoundShape evolving()
-    {
-        return { SoundShape::Type::Evolving, 6.0f, 3.0f, 1, "Evolving" };
-    }
+    static SoundShape evolving() { return {SoundShape::Type::Evolving, 6.0f, 3.0f, 1, "Evolving"}; }
 
-    static SoundShape bass()
-    {
-        return { SoundShape::Type::Bass, 3.0f, 1.5f, 2, "Bass" };
-    }
+    static SoundShape bass() { return {SoundShape::Type::Bass, 3.0f, 1.5f, 2, "Bass"}; }
 
-    static SoundShape texture()
-    {
-        return { SoundShape::Type::Texture, 5.0f, 2.5f, 1, "Texture" };
-    }
+    static SoundShape texture() { return {SoundShape::Type::Texture, 5.0f, 2.5f, 1, "Texture"}; }
 
-    static SoundShape rhythmic()
-    {
-        return { SoundShape::Type::Rhythmic, 0.5f, 0.3f, 3, "Rhythmic" };
-    }
+    static SoundShape rhythmic() { return {SoundShape::Type::Rhythmic, 0.5f, 0.3f, 3, "Rhythmic"}; }
 };
 
 //==============================================================================
@@ -133,23 +124,25 @@ private:
 //   2. RootNote = 0         — MPC auto-detect convention
 //   3. Empty VelStart = 0   — prevents ghost triggering
 //
-class XOriginate {
+class XOriginate
+{
 public:
-
     //==========================================================================
     // Coupling Snapshot — freezes a live coupling state for composite export
     //==========================================================================
 
-    struct CouplingSnapshot {
-        struct CouplingRoute {
+    struct CouplingSnapshot
+    {
+        struct CouplingRoute
+        {
             int sourceSlot = -1;
             int destSlot = -1;
-            int couplingType = 0;  // maps to CouplingType enum
+            int couplingType = 0; // maps to CouplingType enum
             float amount = 0.0f;
         };
 
         std::vector<CouplingRoute> activeRoutes;
-        std::array<juce::String, MegaCouplingMatrix::MaxSlots> engineIds;  // engines in each slot
+        std::array<juce::String, MegaCouplingMatrix::MaxSlots> engineIds; // engines in each slot
         juce::String snapshotName;
 
         bool hasActiveCoupling() const { return !activeRoutes.empty(); }
@@ -161,22 +154,22 @@ public:
                 return "No active coupling";
 
             static const char* typeNames[] = {
-                "Amp>Filter", "Amp>Pitch", "LFO>Pitch", "Env>Morph",
-                "Audio>FM", "Audio>Ring", "Filter>Filter", "Amp>Choke",
-                "Rhythm>Blend", "Env>Decay", "Pitch>Pitch", "Audio>WT",
-                "Audio>Buffer", "Knot"
-            };
+                "Amp>Filter", "Amp>Pitch",    "LFO>Pitch", "Env>Morph",   "Audio>FM", "Audio>Ring",   "Filter>Filter",
+                "Amp>Choke",  "Rhythm>Blend", "Env>Decay", "Pitch>Pitch", "Audio>WT", "Audio>Buffer", "Knot"};
 
             juce::String summary;
             for (size_t i = 0; i < activeRoutes.size(); ++i)
             {
                 const auto& r = activeRoutes[i];
-                if (i > 0) summary += "; ";
+                if (i > 0)
+                    summary += "; ";
 
                 auto srcName = (r.sourceSlot >= 0 && r.sourceSlot < MegaCouplingMatrix::MaxSlots)
-                    ? engineIds[(size_t)r.sourceSlot] : juce::String("?");
+                                   ? engineIds[(size_t)r.sourceSlot]
+                                   : juce::String("?");
                 auto dstName = (r.destSlot >= 0 && r.destSlot < MegaCouplingMatrix::MaxSlots)
-                    ? engineIds[(size_t)r.destSlot] : juce::String("?");
+                                   ? engineIds[(size_t)r.destSlot]
+                                   : juce::String("?");
 
                 int typeIdx = juce::jlimit(0, 13, r.couplingType);
                 summary += srcName + " " + typeNames[typeIdx] + " " + dstName;
@@ -187,9 +180,7 @@ public:
 
     // Capture the current coupling state from the live matrix and registry.
     // Call from the message thread before starting an export.
-    static CouplingSnapshot captureCouplingState(
-        const EngineRegistry& registry,
-        const MegaCouplingMatrix& matrix)
+    static CouplingSnapshot captureCouplingState(const EngineRegistry& registry, const MegaCouplingMatrix& matrix)
     {
         CouplingSnapshot snapshot;
         auto matrixRoutes = matrix.getRoutes();
@@ -222,45 +213,54 @@ public:
     // Configuration
     //==========================================================================
 
-    struct RenderSettings {
-        double sampleRate    = 48000.0;
-        int    bitDepth      = 24;             // 16 or 24
-        int    numChannels   = 2;              // 1 = mono, 2 = stereo
-        float  renderSeconds = 4.0f;           // note hold time
-        float  tailSeconds   = 2.0f;           // after noteOff
-        float  normCeiling   = -0.3f;          // dBFS normalization target
-        int    velocityLayers = 1;             // 1-3
-        bool   useSoundShapes = false;         // auto-adjust per preset via SoundShapeClassifier
+    struct RenderSettings
+    {
+        double sampleRate = 48000.0;
+        int bitDepth = 24;           // 16 or 24
+        int numChannels = 2;         // 1 = mono, 2 = stereo
+        float renderSeconds = 4.0f;  // note hold time
+        float tailSeconds = 2.0f;    // after noteOff
+        float normCeiling = -0.3f;   // dBFS normalization target
+        int velocityLayers = 1;      // 1-3
+        bool useSoundShapes = false; // auto-adjust per preset via SoundShapeClassifier
 
         // Note sampling strategy
-        enum class NoteStrategy { EveryMinor3rd, Chromatic, EveryFifth, OctavesOnly };
+        enum class NoteStrategy
+        {
+            EveryMinor3rd,
+            Chromatic,
+            EveryFifth,
+            OctavesOnly
+        };
         NoteStrategy noteStrategy = NoteStrategy::EveryMinor3rd;
     };
 
-    struct BundleConfig {
-        juce::String name;                     // e.g. "XOceanus - Foundation"
+    struct BundleConfig
+    {
+        juce::String name; // e.g. "XOceanus - Foundation"
         juce::String manufacturer = "XO_OX Designs";
-        juce::String version      = "1.0.0";
-        juce::String bundleId;                 // e.g. "com.xo-ox.xoceanus.foundation"
+        juce::String version = "1.0.0";
+        juce::String bundleId; // e.g. "com.xo-ox.xoceanus.foundation"
         juce::String description;
-        juce::String coverEngine;              // Engine ID for cover art style (e.g. "ONSET")
-        juce::File   outputDir;
-        int          coverSeed    = 0;         // RNG seed for reproducible artwork
+        juce::String coverEngine; // Engine ID for cover art style (e.g. "ONSET")
+        juce::File outputDir;
+        int coverSeed = 0; // RNG seed for reproducible artwork
     };
 
     //==========================================================================
     // Progress callback
     //==========================================================================
 
-    struct Progress {
-        int    currentPreset = 0;
-        int    totalPresets  = 0;
-        int    currentNote   = 0;
-        int    totalNotes    = 0;
+    struct Progress
+    {
+        int currentPreset = 0;
+        int totalPresets = 0;
+        int currentNote = 0;
+        int totalNotes = 0;
         juce::String presetName;
-        juce::String soundShapeLabel;          // Sound Shape classification
-        float  overallProgress = 0.0f;         // 0-1
-        bool   cancelled = false;
+        juce::String soundShapeLabel; // Sound Shape classification
+        float overallProgress = 0.0f; // 0-1
+        bool cancelled = false;
     };
 
     using ProgressCallback = std::function<void(Progress&)>;
@@ -269,12 +269,13 @@ public:
     // Size estimation — call before export to inform the user
     //==========================================================================
 
-    struct SizeEstimate {
-        int64_t totalBytes       = 0;
-        int     totalWavFiles    = 0;
-        int     notesPerPreset   = 0;
-        int     samplesPerNote   = 0;
-        double  durationPerNote  = 0.0;        // seconds
+    struct SizeEstimate
+    {
+        int64_t totalBytes = 0;
+        int totalWavFiles = 0;
+        int notesPerPreset = 0;
+        int samplesPerNote = 0;
+        double durationPerNote = 0.0; // seconds
     };
 
     static SizeEstimate estimateExportSize(const RenderSettings& settings, int presetCount)
@@ -314,20 +315,18 @@ public:
     // Export entry point — call from worker thread
     //==========================================================================
 
-    struct ExportResult {
-        bool   success = false;
+    struct ExportResult
+    {
+        bool success = false;
         juce::String errorMessage;
-        juce::File   outputFile;
-        int    presetsExported = 0;
-        int    samplesRendered = 0;
+        juce::File outputFile;
+        int presetsExported = 0;
+        int samplesRendered = 0;
         int64_t totalSizeBytes = 0;
     };
 
-    ExportResult exportBundle(
-        const BundleConfig& config,
-        const RenderSettings& settings,
-        const std::vector<PresetData>& presets,
-        ProgressCallback progressCb = nullptr)
+    ExportResult exportBundle(const BundleConfig& config, const RenderSettings& settings,
+                              const std::vector<PresetData>& presets, ProgressCallback progressCb = nullptr)
     {
         ExportResult result;
         Progress progress;
@@ -345,9 +344,8 @@ public:
         // reserved chars before using it to construct directory paths.
         const auto safeBundleName = sanitizeFilename(config.name);
         auto finalBundleDir = config.outputDir.getChildFile(safeBundleName);
-        auto tempBundleDir = config.outputDir.getChildFile(
-            "." + safeBundleName + "_tmp_" +
-            juce::String(juce::Time::currentTimeMillis()));
+        auto tempBundleDir = config.outputDir.getChildFile("." + safeBundleName + "_tmp_" +
+                                                           juce::String(juce::Time::currentTimeMillis()));
 
         if (!tempBundleDir.createDirectory())
         {
@@ -363,7 +361,7 @@ public:
             return result;
         }
 
-        std::atomic<bool> cancelled { false };
+        std::atomic<bool> cancelled{false};
 
         for (int pi = 0; pi < (int)presets.size() && !cancelled.load(); ++pi)
         {
@@ -411,8 +409,7 @@ public:
                     float velocity = velocityForLayer(vel, effectiveSettings.velocityLayers);
                     auto wavFile = presetDir.getChildFile(wavFilename(preset.name, note, vel));
 
-                    auto wavResult = renderNoteToWav(ctx, note, velocity,
-                                                     effectiveSettings, wavFile);
+                    auto wavResult = renderNoteToWav(ctx, note, velocity, effectiveSettings, wavFile);
                     if (!wavResult.success)
                     {
                         renderFailed = true;
@@ -428,14 +425,14 @@ public:
                     {
                         progress.currentNote = notesDone;
                         progress.overallProgress =
-                            ((float)pi + (float)notesDone / (float)totalNotesForPreset)
-                            / (float)presets.size();
+                            ((float)pi + (float)notesDone / (float)totalNotesForPreset) / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
                             cancelled.store(true);
                     }
                 }
-                if (renderFailed) break;
+                if (renderFailed)
+                    break;
             }
 
             if (renderFailed)
@@ -470,13 +467,11 @@ public:
 
         // Generate cover art (procedural, engine-specific)
         auto coverEngine = config.coverEngine.isNotEmpty()
-            ? config.coverEngine
-            : (presets[0].engines.isEmpty() ? juce::String("DEFAULT")
-               : presets[0].engines[0]);
+                               ? config.coverEngine
+                               : (presets[0].engines.isEmpty() ? juce::String("DEFAULT") : presets[0].engines[0]);
 
-        auto coverResult = XPNCoverArt::generate(
-            coverEngine, config.name, tempBundleDir,
-            result.presetsExported, config.version, config.coverSeed);
+        auto coverResult = XPNCoverArt::generate(coverEngine, config.name, tempBundleDir, result.presetsExported,
+                                                 config.version, config.coverSeed);
 
         // Copy 1000x1000 as Preview.png (MPC convention)
         if (coverResult.success)
@@ -518,12 +513,9 @@ public:
     // Entangled export — renders coupled engine system as single composite
     //==========================================================================
 
-    ExportResult exportCoupledSnapshot(
-        const BundleConfig& config,
-        const RenderSettings& settings,
-        const CouplingSnapshot& snapshot,
-        const std::vector<PresetData>& presets,
-        ProgressCallback progressCb = nullptr)
+    ExportResult exportCoupledSnapshot(const BundleConfig& config, const RenderSettings& settings,
+                                       const CouplingSnapshot& snapshot, const std::vector<PresetData>& presets,
+                                       ProgressCallback progressCb = nullptr)
     {
         ExportResult result;
         Progress progress;
@@ -545,9 +537,8 @@ public:
         // Sanitize bundle name to prevent path traversal (issue #423).
         const auto safeBundleName = sanitizeFilename(config.name);
         auto finalBundleDir = config.outputDir.getChildFile(safeBundleName);
-        auto tempBundleDir = config.outputDir.getChildFile(
-            "." + safeBundleName + "_tmp_" +
-            juce::String(juce::Time::currentTimeMillis()));
+        auto tempBundleDir = config.outputDir.getChildFile("." + safeBundleName + "_tmp_" +
+                                                           juce::String(juce::Time::currentTimeMillis()));
 
         if (!tempBundleDir.createDirectory())
         {
@@ -563,7 +554,7 @@ public:
             return result;
         }
 
-        std::atomic<bool> cancelled { false };
+        std::atomic<bool> cancelled{false};
 
         for (int pi = 0; pi < (int)presets.size() && !cancelled.load(); ++pi)
         {
@@ -610,13 +601,11 @@ public:
                 for (int vel = 0; vel < effectiveSettings.velocityLayers && !cancelled.load(); ++vel)
                 {
                     float velocity = velocityForLayer(vel, effectiveSettings.velocityLayers);
-                    auto wavFile = presetDir.getChildFile(
-                        wavFilename(entangledName, note, vel));
+                    auto wavFile = presetDir.getChildFile(wavFilename(entangledName, note, vel));
 
                     // Render with coupling active — all engines interact,
                     // producing a single composite output
-                    auto wavResult = renderCoupledNoteToWav(
-                        ctx, note, velocity, effectiveSettings, wavFile);
+                    auto wavResult = renderCoupledNoteToWav(ctx, note, velocity, effectiveSettings, wavFile);
 
                     if (!wavResult.success)
                     {
@@ -633,14 +622,14 @@ public:
                     {
                         progress.currentNote = notesDone;
                         progress.overallProgress =
-                            ((float)pi + (float)notesDone / (float)totalNotesForPreset)
-                            / (float)presets.size();
+                            ((float)pi + (float)notesDone / (float)totalNotesForPreset) / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
                             cancelled.store(true);
                     }
                 }
-                if (renderFailed) break;
+                if (renderFailed)
+                    break;
             }
 
             if (renderFailed)
@@ -675,13 +664,11 @@ public:
 
         // Generate cover art
         auto coverEngine = config.coverEngine.isNotEmpty()
-            ? config.coverEngine
-            : (presets[0].engines.isEmpty() ? juce::String("DEFAULT")
-               : presets[0].engines[0]);
+                               ? config.coverEngine
+                               : (presets[0].engines.isEmpty() ? juce::String("DEFAULT") : presets[0].engines[0]);
 
-        auto coverResult = XPNCoverArt::generate(
-            coverEngine, config.name, tempBundleDir,
-            result.presetsExported, config.version, config.coverSeed);
+        auto coverResult = XPNCoverArt::generate(coverEngine, config.name, tempBundleDir, result.presetsExported,
+                                                 config.version, config.coverSeed);
 
         if (coverResult.success)
             coverResult.cover1000.copyFileTo(tempBundleDir.getChildFile("Preview.png"));
@@ -718,7 +705,8 @@ public:
     // Validation
     //==========================================================================
 
-    struct ValidationResult {
+    struct ValidationResult
+    {
         bool valid = true;
         juce::StringArray warnings;
         juce::StringArray errors;
@@ -743,12 +731,12 @@ public:
             if (val < 0.0f || val > 1.0f)
                 result.errors.add(juce::String("DNA ") + dim + " out of range: " + juce::String(val));
         };
-        checkDNA(preset.dna.brightness,  "brightness");
-        checkDNA(preset.dna.warmth,      "warmth");
-        checkDNA(preset.dna.movement,    "movement");
-        checkDNA(preset.dna.density,     "density");
-        checkDNA(preset.dna.space,       "space");
-        checkDNA(preset.dna.aggression,  "aggression");
+        checkDNA(preset.dna.brightness, "brightness");
+        checkDNA(preset.dna.warmth, "warmth");
+        checkDNA(preset.dna.movement, "movement");
+        checkDNA(preset.dna.density, "density");
+        checkDNA(preset.dna.space, "space");
+        checkDNA(preset.dna.aggression, "aggression");
 
         // Coupling validation
         for (const auto& cp : preset.couplingPairs)
@@ -784,13 +772,12 @@ public:
     }
 
 private:
-
     //==========================================================================
     // XPM Rules — hardcoded, non-negotiable
     //==========================================================================
-    static constexpr bool KEY_TRACK      = true;
-    static constexpr int  ROOT_NOTE      = 0;
-    static constexpr int  EMPTY_VEL_START = 0;
+    static constexpr bool KEY_TRACK = true;
+    static constexpr int ROOT_NOTE = 0;
+    static constexpr int EMPTY_VEL_START = 0;
 
     // Shared APVTS — injected via setAPVTS() before export.
     // Nullptr = default parameter values will be used (parameters won't match preset).
@@ -800,7 +787,8 @@ private:
     // Internal result types for error propagation
     //==========================================================================
 
-    struct IOResult {
+    struct IOResult
+    {
         bool success = true;
         juce::String error;
     };
@@ -830,18 +818,22 @@ private:
         std::vector<int> notes;
         switch (settings.noteStrategy)
         {
-            case RenderSettings::NoteStrategy::EveryMinor3rd:
-                for (int n = 24; n <= 96; n += 3) notes.push_back(n);
-                break;
-            case RenderSettings::NoteStrategy::Chromatic:
-                for (int n = 24; n <= 96; ++n) notes.push_back(n);
-                break;
-            case RenderSettings::NoteStrategy::EveryFifth:
-                for (int n = 24; n <= 96; n += 7) notes.push_back(n);
-                break;
-            case RenderSettings::NoteStrategy::OctavesOnly:
-                for (int n = 24; n <= 96; n += 12) notes.push_back(n);
-                break;
+        case RenderSettings::NoteStrategy::EveryMinor3rd:
+            for (int n = 24; n <= 96; n += 3)
+                notes.push_back(n);
+            break;
+        case RenderSettings::NoteStrategy::Chromatic:
+            for (int n = 24; n <= 96; ++n)
+                notes.push_back(n);
+            break;
+        case RenderSettings::NoteStrategy::EveryFifth:
+            for (int n = 24; n <= 96; n += 7)
+                notes.push_back(n);
+            break;
+        case RenderSettings::NoteStrategy::OctavesOnly:
+            for (int n = 24; n <= 96; n += 12)
+                notes.push_back(n);
+            break;
         }
         return notes;
     }
@@ -873,8 +865,10 @@ private:
                     juce::String paramId = prop.name.toString();
                     // Resolve OddfeliX legacy param aliases before writing
                     auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
-                        ? resolveSnapParamAlias(paramId) : paramId;
-                    if (canonical.isEmpty()) continue; // removed param
+                                         ? resolveSnapParamAlias(paramId)
+                                         : paramId;
+                    if (canonical.isEmpty())
+                        continue; // removed param
 
                     if (auto* raw = sharedApvts->getRawParameterValue(canonical))
                         raw->store((float)prop.value);
@@ -887,7 +881,8 @@ private:
         {
             auto canonical = resolveEngineAlias(engName);
             auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
-            if (!engine) continue;
+            if (!engine)
+                continue;
 
             engine->attachParameters(*sharedApvts);
             engine->prepare(sampleRate, kOfflineBlockSize);
@@ -911,10 +906,12 @@ private:
         {
             auto range = buffer.findMinMax(ch, 0, buffer.getNumSamples());
             float chPeak = juce::jmax(std::abs(range.getStart()), std::abs(range.getEnd()));
-            if (chPeak > peak) peak = chPeak;
+            if (chPeak > peak)
+                peak = chPeak;
         }
 
-        if (peak < 1e-8f) return; // silence, nothing to normalize
+        if (peak < 1e-8f)
+            return; // silence, nothing to normalize
 
         float targetGain = std::pow(10.0f, ceilingDb / 20.0f);
         float gain = targetGain / peak;
@@ -931,12 +928,12 @@ private:
     // Render a single note using the offline engine context.
     // ctx must have been prepared via buildOfflineContext() for this preset.
     // If ctx.valid is false (no APVTS available), returns an error — never writes silent audio.
-    IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
-                             const RenderSettings& settings, const juce::File& outputFile)
+    IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity, const RenderSettings& settings,
+                             const juce::File& outputFile)
     {
         xoceanus::dsp::ScopedAudioThreadInit audioInit;
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
-        int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
+        int holdSamples = (int)(settings.renderSeconds * settings.sampleRate);
 
         juce::AudioBuffer<float> buffer(settings.numChannels, totalSamples);
         buffer.clear();
@@ -947,7 +944,7 @@ private:
             // writing a silent placeholder that would corrupt the export silently.
             DBG("XPNExporter::renderNoteToWav — ctx.valid is false (no APVTS). Aborting render.");
             jassertfalse;
-            return { false, "Render context is invalid: APVTS was not set before export" };
+            return {false, "Render context is invalid: APVTS was not set before export"};
         }
 
         // Reset all engine voices for a clean note render
@@ -962,8 +959,7 @@ private:
         bool noteOffSent = false;
 
         juce::MidiBuffer noteOnMsg;
-        noteOnMsg.addEvent(
-            juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
+        noteOnMsg.addEvent(juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
 
         while (rendered < totalSamples)
         {
@@ -1007,10 +1003,8 @@ private:
     // Coupled offline render context — creates engines + coupling matrix
     //==========================================================================
 
-    OfflineRenderContext buildCoupledOfflineContext(
-        const PresetData& preset,
-        const CouplingSnapshot& snapshot,
-        double sampleRate)
+    OfflineRenderContext buildCoupledOfflineContext(const PresetData& preset, const CouplingSnapshot& snapshot,
+                                                    double sampleRate)
     {
         // Start with the standard context (creates engines, applies params)
         OfflineRenderContext ctx = buildOfflineContext(preset, sampleRate);
@@ -1035,7 +1029,7 @@ private:
             route.destSlot = snapRoute.destSlot;
             route.type = static_cast<CouplingType>(snapRoute.couplingType);
             route.amount = snapRoute.amount;
-            route.isNormalled = false;  // user-captured state
+            route.isNormalled = false; // user-captured state
             route.active = true;
             ctx.couplingMatrix->addRoute(route);
         }
@@ -1048,8 +1042,8 @@ private:
     // producing a single composite output per note.
     //==========================================================================
 
-    IOResult renderCoupledNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
-                                    const RenderSettings& settings, const juce::File& outputFile)
+    IOResult renderCoupledNoteToWav(OfflineRenderContext& ctx, int note, float velocity, const RenderSettings& settings,
+                                    const juce::File& outputFile)
     {
         xoceanus::dsp::ScopedAudioThreadInit audioInit;
         // If no coupling matrix, fall back to standard render
@@ -1057,7 +1051,7 @@ private:
             return renderNoteToWav(ctx, note, velocity, settings, outputFile);
 
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
-        int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
+        int holdSamples = (int)(settings.renderSeconds * settings.sampleRate);
 
         juce::AudioBuffer<float> buffer(settings.numChannels, totalSamples);
         buffer.clear();
@@ -1076,8 +1070,7 @@ private:
         bool noteOffSent = false;
 
         juce::MidiBuffer noteOnMsg;
-        noteOnMsg.addEvent(
-            juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
+        noteOnMsg.addEvent(juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
 
         while (rendered < totalSamples)
         {
@@ -1127,21 +1120,19 @@ private:
         return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
     }
 
-    static IOResult writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer,
-                             double sampleRate, int bitDepth)
+    static IOResult writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer, double sampleRate,
+                             int bitDepth)
     {
         file.deleteFile();
         auto stream = file.createOutputStream();
         if (!stream)
-            return { false, "Cannot create output stream: " + file.getFullPathName() };
+            return {false, "Cannot create output stream: " + file.getFullPathName()};
 
         juce::WavAudioFormat wav;
         auto writer = std::unique_ptr<juce::AudioFormatWriter>(
-            wav.createWriterFor(stream.release(), sampleRate,
-                               (unsigned int)buffer.getNumChannels(),
-                               bitDepth, {}, 0));
+            wav.createWriterFor(stream.release(), sampleRate, (unsigned int)buffer.getNumChannels(), bitDepth, {}, 0));
         if (!writer)
-            return { false, "Cannot create WAV writer for: " + file.getFullPathName() };
+            return {false, "Cannot create WAV writer for: " + file.getFullPathName()};
 
         // Fix #243: Apply TPDF (Triangular Probability Density Function) dither
         // before quantization when writing 16-bit output. TPDF dither adds
@@ -1154,50 +1145,50 @@ private:
         if (bitDepth == 16)
         {
             const float lsb = 1.0f / 32768.0f;
-            juce::AudioBuffer<float> dithered (buffer.getNumChannels(), buffer.getNumSamples());
+            juce::AudioBuffer<float> dithered(buffer.getNumChannels(), buffer.getNumSamples());
 
             // Per-channel TPDF: two independent LCG values, differenced to form
             // the triangle distribution. Separate state per channel keeps
             // L and R uncorrelated (important for stereo imaging at low levels).
             for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
             {
-                const float* src = buffer.getReadPointer (ch);
-                float* dst       = dithered.getWritePointer (ch);
-                uint32_t rng     = static_cast<uint32_t> (0x12345678u ^ (uint32_t)ch * 0xDEADBEEFu);
+                const float* src = buffer.getReadPointer(ch);
+                float* dst = dithered.getWritePointer(ch);
+                uint32_t rng = static_cast<uint32_t>(0x12345678u ^ (uint32_t)ch * 0xDEADBEEFu);
 
                 for (int i = 0; i < buffer.getNumSamples(); ++i)
                 {
                     // LCG step 1
                     rng = rng * 1664525u + 1013904223u;
-                    float r1 = (static_cast<float> (rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
+                    float r1 = (static_cast<float>(rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
 
                     // LCG step 2
                     rng = rng * 1664525u + 1013904223u;
-                    float r2 = (static_cast<float> (rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
+                    float r2 = (static_cast<float>(rng >> 8) / 16777216.0f) - 0.5f; // [-0.5, +0.5)
 
                     // Triangular noise: sum of two uniform ∈ [-0.5, +0.5) → ∈ [-1, +1) LSBs
                     dst[i] = src[i] + (r1 + r2) * lsb;
                 }
             }
 
-            if (!writer->writeFromAudioSampleBuffer (dithered, 0, dithered.getNumSamples()))
-                return { false, "Failed to write audio data: " + file.getFullPathName() };
+            if (!writer->writeFromAudioSampleBuffer(dithered, 0, dithered.getNumSamples()))
+                return {false, "Failed to write audio data: " + file.getFullPathName()};
         }
         else
         {
-            if (!writer->writeFromAudioSampleBuffer (buffer, 0, buffer.getNumSamples()))
-                return { false, "Failed to write audio data: " + file.getFullPathName() };
+            if (!writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples()))
+                return {false, "Failed to write audio data: " + file.getFullPathName()};
         }
 
-        return { true, {} };
+        return {true, {}};
     }
 
     //==========================================================================
     // XPM generation (keygroup program XML)
     //==========================================================================
 
-    IOResult writeXPM(const juce::File& file, const PresetData& preset,
-                      const std::vector<int>& notes, const RenderSettings& settings)
+    IOResult writeXPM(const juce::File& file, const PresetData& preset, const std::vector<int>& notes,
+                      const RenderSettings& settings)
     {
         // Canonical MPCVObject keygroup format — matches XOutshine and XPNDrumExporter
         juce::String xml;
@@ -1220,8 +1211,8 @@ private:
 
         for (int i = 0; i < (int)notes.size(); ++i)
         {
-            int note    = notes[(size_t)i];
-            int lowKey  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
+            int note = notes[(size_t)i];
+            int lowKey = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
             int highKey = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
 
             xml << "    <Keygroup index=\"" << i << "\">\n";
@@ -1235,9 +1226,9 @@ private:
                 xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
                 xml << "          <SampleName>" << xmlEscape(wavFilename(preset.name, note, v)) << "</SampleName>\n";
                 xml << "          <VelStart>" << velSplits[(size_t)v].start << "</VelStart>\n";
-                xml << "          <VelEnd>"   << velSplits[(size_t)v].end   << "</VelEnd>\n";
-                xml << "          <Volume>"   << juce::String(velSplits[(size_t)v].volume, 2) << "</Volume>\n";
-                xml << "          <RootNote>" << ROOT_NOTE  << "</RootNote>\n";
+                xml << "          <VelEnd>" << velSplits[(size_t)v].end << "</VelEnd>\n";
+                xml << "          <Volume>" << juce::String(velSplits[(size_t)v].volume, 2) << "</Volume>\n";
+                xml << "          <RootNote>" << ROOT_NOTE << "</RootNote>\n";
                 xml << "          <KeyTrack>" << (KEY_TRACK ? "True" : "False") << "</KeyTrack>\n";
                 xml << "          <TuneCoarse>0</TuneCoarse>\n";
                 xml << "          <TuneFine>0</TuneFine>\n";
@@ -1263,17 +1254,16 @@ private:
         xml << "</MPCVObject>\n";
 
         if (!file.replaceWithText(xml))
-            return { false, "Failed to write XPM: " + file.getFullPathName() };
+            return {false, "Failed to write XPM: " + file.getFullPathName()};
 
-        return { true, {} };
+        return {true, {}};
     }
 
     //==========================================================================
     // Manifest
     //==========================================================================
 
-    static IOResult writeManifest(const juce::File& bundleDir,
-                                  const BundleConfig& config, int presetCount)
+    static IOResult writeManifest(const juce::File& bundleDir, const BundleConfig& config, int presetCount)
     {
         juce::XmlElement manifest("Expansion");
         manifest.setAttribute("Name", config.name);
@@ -1285,9 +1275,9 @@ private:
 
         auto manifestFile = bundleDir.getChildFile("Manifest.xml");
         if (!manifest.writeTo(manifestFile))
-            return { false, "Failed to write Manifest.xml" };
+            return {false, "Failed to write Manifest.xml"};
 
-        return { true, {} };
+        return {true, {}};
     }
 
     //==========================================================================
@@ -1296,26 +1286,24 @@ private:
 
     static juce::String sanitizeFilename(const juce::String& name)
     {
-        juce::String result = name.replaceCharacters(" /\\:*?\"<>|", "__________")
-                                  .substring(0, 50);
+        juce::String result = name.replaceCharacters(" /\\:*?\"<>|", "__________").substring(0, 50);
         // After existing character stripping:
         result = result.trimCharactersAtStart(".").trimCharactersAtEnd(".");
-        if (result == ".." || result == ".") result = "unnamed";
-        if (result.isEmpty()) result = "unnamed";
+        if (result == ".." || result == ".")
+            result = "unnamed";
+        if (result.isEmpty())
+            result = "unnamed";
         return result;
     }
 
     static juce::String xmlEscape(const juce::String& s)
     {
-        return s.replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("\"", "&quot;");
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
     }
 
     static juce::String wavFilename(const juce::String& presetName, int note, int velLayer)
     {
-        static const char* noteNames[] = {"C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"};
+        static const char* noteNames[] = {"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
         int octave = note / 12 - 1;
         juce::String noteName = juce::String(noteNames[note % 12]) + juce::String(octave);
 

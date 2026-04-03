@@ -32,7 +32,8 @@ static bool allFinite(const juce::AudioBuffer<float>& buf, int numSamples)
     {
         const float* data = buf.getReadPointer(ch);
         for (int i = 0; i < numSamples; ++i)
-            if (!std::isfinite(data[i])) return false;
+            if (!std::isfinite(data[i]))
+                return false;
     }
     return true;
 }
@@ -74,8 +75,8 @@ static juce::MidiBuffer makeNoteOff(int channel, int note)
 TEST_CASE("Pipeline - SnapEngine no NaN/Inf in 1000 blocks", "[pipeline][stability]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
-    constexpr int    kNumBlocks  = 1000;
+    constexpr int kBlockSize = 512;
+    constexpr int kNumBlocks = 1000;
 
     auto engine = std::make_unique<SnapEngine>();
     engine->prepare(kSampleRate, kBlockSize);
@@ -84,15 +85,17 @@ TEST_CASE("Pipeline - SnapEngine no NaN/Inf in 1000 blocks", "[pipeline][stabili
 
     juce::AudioBuffer<float> buffer(2, kBlockSize);
     bool anyFiniteFailure = false;
-    bool receivedAudio    = false;
+    bool receivedAudio = false;
 
     {
         buffer.clear();
         juce::MidiBuffer noteOn = makeNoteOn(1, 60, 100);
         engine->wakeSilenceGate();
         engine->renderBlock(buffer, noteOn, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) anyFiniteFailure = true;
-        if (rmsOf(buffer, kBlockSize) > 1e-6f) receivedAudio = true;
+        if (!allFinite(buffer, kBlockSize))
+            anyFiniteFailure = true;
+        if (rmsOf(buffer, kBlockSize) > 1e-6f)
+            receivedAudio = true;
     }
 
     for (int b = 1; b < kNumBlocks && !anyFiniteFailure; ++b)
@@ -100,8 +103,13 @@ TEST_CASE("Pipeline - SnapEngine no NaN/Inf in 1000 blocks", "[pipeline][stabili
         buffer.clear();
         juce::MidiBuffer emptyMidi;
         engine->renderBlock(buffer, emptyMidi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) { anyFiniteFailure = true; break; }
-        if (rmsOf(buffer, kBlockSize) > 1e-6f) receivedAudio = true;
+        if (!allFinite(buffer, kBlockSize))
+        {
+            anyFiniteFailure = true;
+            break;
+        }
+        if (rmsOf(buffer, kBlockSize) > 1e-6f)
+            receivedAudio = true;
     }
 
     CHECK(!anyFiniteFailure);
@@ -115,11 +123,11 @@ TEST_CASE("Pipeline - SnapEngine no NaN/Inf in 1000 blocks", "[pipeline][stabili
 TEST_CASE("Pipeline - Snap+Bob AmpToFilter coupling no NaN/Inf in 1000 blocks", "[pipeline][coupling]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
-    constexpr int    kNumBlocks  = 1000;
+    constexpr int kBlockSize = 512;
+    constexpr int kNumBlocks = 1000;
 
     auto snapEngine = std::make_unique<SnapEngine>();
-    auto bobEngine  = std::make_unique<BobEngine>();
+    auto bobEngine = std::make_unique<BobEngine>();
 
     snapEngine->prepare(kSampleRate, kBlockSize);
     snapEngine->prepareSilenceGate(kSampleRate, kBlockSize, 200.0f);
@@ -131,14 +139,17 @@ TEST_CASE("Pipeline - Snap+Bob AmpToFilter coupling no NaN/Inf in 1000 blocks", 
     MegaCouplingMatrix matrix;
     matrix.prepare(kBlockSize, kSampleRate);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs =
-        { snapEngine.get(), bobEngine.get(), nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs = {snapEngine.get(), bobEngine.get(), nullptr,
+                                                                         nullptr, nullptr};
     matrix.setEngines(enginePtrs);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot = 0; route.destSlot = 1;
-    route.type = CouplingType::AmpToFilter; route.amount = 0.5f;
-    route.isNormalled = false; route.active = true;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.5f;
+    route.isNormalled = false;
+    route.active = true;
     matrix.addRoute(route);
 
     CHECK(matrix.getRoutes().size() == 1);
@@ -147,11 +158,13 @@ TEST_CASE("Pipeline - Snap+Bob AmpToFilter coupling no NaN/Inf in 1000 blocks", 
     juce::AudioBuffer<float> bobBuf(2, kBlockSize);
     juce::AudioBuffer<float> mixBuf(2, kBlockSize);
     bool anyFiniteFailure = false;
-    bool receivedAudio    = false;
+    bool receivedAudio = false;
 
     for (int b = 0; b < kNumBlocks && !anyFiniteFailure; ++b)
     {
-        snapBuf.clear(); bobBuf.clear(); mixBuf.clear();
+        snapBuf.clear();
+        bobBuf.clear();
+        mixBuf.clear();
 
         juce::MidiBuffer midiBlock;
         if (b == 0)
@@ -171,13 +184,18 @@ TEST_CASE("Pipeline - Snap+Bob AmpToFilter coupling no NaN/Inf in 1000 blocks", 
         {
             const float* sd = snapBuf.getReadPointer(ch);
             const float* bd = bobBuf.getReadPointer(ch);
-            float*       md = mixBuf.getWritePointer(ch);
+            float* md = mixBuf.getWritePointer(ch);
             for (int i = 0; i < kBlockSize; ++i)
                 md[i] = (sd[i] + bd[i]) * 0.5f;
         }
 
-        if (!allFinite(mixBuf, kBlockSize)) { anyFiniteFailure = true; break; }
-        if (rmsOf(mixBuf, kBlockSize) > 1e-6f) receivedAudio = true;
+        if (!allFinite(mixBuf, kBlockSize))
+        {
+            anyFiniteFailure = true;
+            break;
+        }
+        if (rmsOf(mixBuf, kBlockSize) > 1e-6f)
+            receivedAudio = true;
     }
 
     CHECK(!anyFiniteFailure);
@@ -191,11 +209,11 @@ TEST_CASE("Pipeline - Snap+Bob AmpToFilter coupling no NaN/Inf in 1000 blocks", 
 TEST_CASE("Pipeline - multi-route (AmpToFilter + LFOToPitch) no NaN/Inf in 100 blocks", "[pipeline][multi-route]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
-    constexpr int    kNumBlocks  = 100;
+    constexpr int kBlockSize = 512;
+    constexpr int kNumBlocks = 100;
 
     auto snapEngine = std::make_unique<SnapEngine>();
-    auto bobEngine  = std::make_unique<BobEngine>();
+    auto bobEngine = std::make_unique<BobEngine>();
 
     snapEngine->prepare(kSampleRate, kBlockSize);
     snapEngine->prepareSilenceGate(kSampleRate, kBlockSize, 200.0f);
@@ -207,20 +225,28 @@ TEST_CASE("Pipeline - multi-route (AmpToFilter + LFOToPitch) no NaN/Inf in 100 b
     MegaCouplingMatrix matrix;
     matrix.prepare(kBlockSize, kSampleRate);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs =
-        { snapEngine.get(), bobEngine.get(), nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs = {snapEngine.get(), bobEngine.get(), nullptr,
+                                                                         nullptr, nullptr};
     matrix.setEngines(enginePtrs);
 
     {
         MegaCouplingMatrix::CouplingRoute r;
-        r.sourceSlot = 0; r.destSlot = 1; r.type = CouplingType::AmpToFilter;
-        r.amount = 0.4f; r.isNormalled = false; r.active = true;
+        r.sourceSlot = 0;
+        r.destSlot = 1;
+        r.type = CouplingType::AmpToFilter;
+        r.amount = 0.4f;
+        r.isNormalled = false;
+        r.active = true;
         matrix.addRoute(r);
     }
     {
         MegaCouplingMatrix::CouplingRoute r;
-        r.sourceSlot = 0; r.destSlot = 1; r.type = CouplingType::LFOToPitch;
-        r.amount = 0.3f; r.isNormalled = false; r.active = true;
+        r.sourceSlot = 0;
+        r.destSlot = 1;
+        r.type = CouplingType::LFOToPitch;
+        r.amount = 0.3f;
+        r.isNormalled = false;
+        r.active = true;
         matrix.addRoute(r);
     }
 
@@ -233,7 +259,9 @@ TEST_CASE("Pipeline - multi-route (AmpToFilter + LFOToPitch) no NaN/Inf in 100 b
 
     for (int b = 0; b < kNumBlocks && !anyFiniteFailure; ++b)
     {
-        snapBuf.clear(); bobBuf.clear(); mixBuf.clear();
+        snapBuf.clear();
+        bobBuf.clear();
+        mixBuf.clear();
 
         juce::MidiBuffer midiBlock;
         if (b == 0)
@@ -253,12 +281,16 @@ TEST_CASE("Pipeline - multi-route (AmpToFilter + LFOToPitch) no NaN/Inf in 100 b
         {
             const float* sd = snapBuf.getReadPointer(ch);
             const float* bd = bobBuf.getReadPointer(ch);
-            float*       md = mixBuf.getWritePointer(ch);
+            float* md = mixBuf.getWritePointer(ch);
             for (int i = 0; i < kBlockSize; ++i)
                 md[i] = (sd[i] + bd[i]) * 0.5f;
         }
 
-        if (!allFinite(mixBuf, kBlockSize)) { anyFiniteFailure = true; break; }
+        if (!allFinite(mixBuf, kBlockSize))
+        {
+            anyFiniteFailure = true;
+            break;
+        }
     }
 
     CHECK(!anyFiniteFailure);
@@ -271,7 +303,7 @@ TEST_CASE("Pipeline - multi-route (AmpToFilter + LFOToPitch) no NaN/Inf in 100 b
 TEST_CASE("Pipeline - note-on/note-off cycle no NaN/Inf across lifecycle", "[pipeline][note-cycle]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
+    constexpr int kBlockSize = 512;
 
     auto engine = std::make_unique<SnapEngine>();
     engine->prepare(kSampleRate, kBlockSize);
@@ -285,16 +317,19 @@ TEST_CASE("Pipeline - note-on/note-off cycle no NaN/Inf across lifecycle", "[pip
     {
         buffer.clear();
         juce::MidiBuffer midi = (b == 0) ? makeNoteOn(1, 60, 100) : juce::MidiBuffer{};
-        if (b == 0) engine->wakeSilenceGate();
+        if (b == 0)
+            engine->wakeSilenceGate();
         engine->renderBlock(buffer, midi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) noteOnPhaseOK = false;
+        if (!allFinite(buffer, kBlockSize))
+            noteOnPhaseOK = false;
     }
 
     {
         buffer.clear();
         juce::MidiBuffer noteOffMidi = makeNoteOff(1, 60);
         engine->renderBlock(buffer, noteOffMidi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) noteOffPhaseOK = false;
+        if (!allFinite(buffer, kBlockSize))
+            noteOffPhaseOK = false;
     }
 
     for (int b = 0; b < 50; ++b)
@@ -302,7 +337,11 @@ TEST_CASE("Pipeline - note-on/note-off cycle no NaN/Inf across lifecycle", "[pip
         buffer.clear();
         juce::MidiBuffer emptyMidi;
         engine->renderBlock(buffer, emptyMidi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) { noteOffPhaseOK = false; break; }
+        if (!allFinite(buffer, kBlockSize))
+        {
+            noteOffPhaseOK = false;
+            break;
+        }
     }
 
     CHECK(noteOnPhaseOK);
@@ -316,11 +355,11 @@ TEST_CASE("Pipeline - note-on/note-off cycle no NaN/Inf across lifecycle", "[pip
 TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pipeline][knot]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
-    constexpr int    kNumBlocks  = 100;
+    constexpr int kBlockSize = 512;
+    constexpr int kNumBlocks = 100;
 
     auto snapEngine = std::make_unique<SnapEngine>();
-    auto bobEngine  = std::make_unique<BobEngine>();
+    auto bobEngine = std::make_unique<BobEngine>();
 
     snapEngine->prepare(kSampleRate, kBlockSize);
     snapEngine->prepareSilenceGate(kSampleRate, kBlockSize, 200.0f);
@@ -332,14 +371,17 @@ TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pi
     MegaCouplingMatrix matrix;
     matrix.prepare(kBlockSize, kSampleRate);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs =
-        { snapEngine.get(), bobEngine.get(), nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs = {snapEngine.get(), bobEngine.get(), nullptr,
+                                                                         nullptr, nullptr};
     matrix.setEngines(enginePtrs);
 
     MegaCouplingMatrix::CouplingRoute knotRoute;
-    knotRoute.sourceSlot = 0; knotRoute.destSlot = 1;
-    knotRoute.type = CouplingType::KnotTopology; knotRoute.amount = 0.5f;
-    knotRoute.isNormalled = false; knotRoute.active = true;
+    knotRoute.sourceSlot = 0;
+    knotRoute.destSlot = 1;
+    knotRoute.type = CouplingType::KnotTopology;
+    knotRoute.amount = 0.5f;
+    knotRoute.isNormalled = false;
+    knotRoute.active = true;
     matrix.addRoute(knotRoute);
 
     CHECK(matrix.getRoutes().size() == 1);
@@ -348,11 +390,13 @@ TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pi
     juce::AudioBuffer<float> bobBuf(2, kBlockSize);
     juce::AudioBuffer<float> mixBuf(2, kBlockSize);
     bool anyFiniteFailure = false;
-    bool receivedAudio    = false;
+    bool receivedAudio = false;
 
     for (int b = 0; b < kNumBlocks && !anyFiniteFailure; ++b)
     {
-        snapBuf.clear(); bobBuf.clear(); mixBuf.clear();
+        snapBuf.clear();
+        bobBuf.clear();
+        mixBuf.clear();
 
         juce::MidiBuffer midiBlock;
         if (b == 0)
@@ -364,7 +408,7 @@ TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pi
 
         juce::MidiBuffer emptyMidi;
         snapEngine->renderBlock(snapBuf, midiBlock, kBlockSize);
-        bobEngine->renderBlock(bobBuf,  emptyMidi,  kBlockSize);
+        bobEngine->renderBlock(bobBuf, emptyMidi, kBlockSize);
 
         auto routes = matrix.loadRoutes();
         matrix.processBlock(kBlockSize, routes);
@@ -373,13 +417,18 @@ TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pi
         {
             const float* sd = snapBuf.getReadPointer(ch);
             const float* bd = bobBuf.getReadPointer(ch);
-            float*       md = mixBuf.getWritePointer(ch);
+            float* md = mixBuf.getWritePointer(ch);
             for (int i = 0; i < kBlockSize; ++i)
                 md[i] = (sd[i] + bd[i]) * 0.5f;
         }
 
-        if (!allFinite(mixBuf, kBlockSize)) { anyFiniteFailure = true; break; }
-        if (rmsOf(mixBuf, kBlockSize) > 1e-6f) receivedAudio = true;
+        if (!allFinite(mixBuf, kBlockSize))
+        {
+            anyFiniteFailure = true;
+            break;
+        }
+        if (rmsOf(mixBuf, kBlockSize) > 1e-6f)
+            receivedAudio = true;
     }
 
     CHECK(!anyFiniteFailure);
@@ -393,7 +442,7 @@ TEST_CASE("Pipeline - KnotTopology bidirectional no NaN/Inf in 100 blocks", "[pi
 TEST_CASE("Pipeline - engine reset mid-playback no NaN/Inf before and after reset", "[pipeline][reset]")
 {
     constexpr double kSampleRate = 44100.0;
-    constexpr int    kBlockSize  = 512;
+    constexpr int kBlockSize = 512;
 
     auto engine = std::make_unique<SnapEngine>();
     engine->prepare(kSampleRate, kBlockSize);
@@ -407,9 +456,11 @@ TEST_CASE("Pipeline - engine reset mid-playback no NaN/Inf before and after rese
     {
         buffer.clear();
         juce::MidiBuffer midi = (b == 0) ? makeNoteOn(1, 60, 100) : juce::MidiBuffer{};
-        if (b == 0) engine->wakeSilenceGate();
+        if (b == 0)
+            engine->wakeSilenceGate();
         engine->renderBlock(buffer, midi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) preResetOK = false;
+        if (!allFinite(buffer, kBlockSize))
+            preResetOK = false;
     }
 
     engine->reset();
@@ -420,7 +471,11 @@ TEST_CASE("Pipeline - engine reset mid-playback no NaN/Inf before and after rese
         buffer.clear();
         juce::MidiBuffer midi = (b == 0) ? makeNoteOn(1, 72, 80) : juce::MidiBuffer{};
         engine->renderBlock(buffer, midi, kBlockSize);
-        if (!allFinite(buffer, kBlockSize)) { postResetOK = false; break; }
+        if (!allFinite(buffer, kBlockSize))
+        {
+            postResetOK = false;
+            break;
+        }
     }
 
     CHECK(preResetOK);
@@ -428,6 +483,10 @@ TEST_CASE("Pipeline - engine reset mid-playback no NaN/Inf before and after rese
 }
 
 // Backward-compat shim
-namespace pipeline_tests {
-int runAll() { return 0; }
+namespace pipeline_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace pipeline_tests

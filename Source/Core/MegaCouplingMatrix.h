@@ -11,7 +11,8 @@
 #include <memory>
 #include <string>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // MegaCouplingMatrix — Cross-engine modulation routing.
@@ -28,17 +29,19 @@ namespace xoceanus {
 //   - processBlock() reads the active route list on the audio thread.
 //   - No locks on the audio thread.
 //
-class MegaCouplingMatrix {
+class MegaCouplingMatrix
+{
 public:
-    static constexpr int MaxSlots = 5;  // 4 primary + 1 Ghost Slot
+    static constexpr int MaxSlots = 5; // 4 primary + 1 Ghost Slot
     static constexpr int MaxRoutes = 64;
 
-    struct CouplingRoute {
-        int sourceSlot;            // 0-4 (slot 4 = Ghost Slot)
-        int destSlot;              // 0-4 (slot 4 = Ghost Slot)
+    struct CouplingRoute
+    {
+        int sourceSlot; // 0-4 (slot 4 = Ghost Slot)
+        int destSlot;   // 0-4 (slot 4 = Ghost Slot)
         CouplingType type;
-        float amount;              // 0.0 to 1.0
-        bool isNormalled;          // true = default, false = user-defined
+        float amount;     // 0.0 to 1.0
+        bool isNormalled; // true = default, false = user-defined
         bool active = true;
 
         // AudioToBuffer sink cache — resolved on the message thread by
@@ -82,8 +85,7 @@ public:
     void setEngines(std::array<SynthEngine*, MaxSlots> engines)
     {
         for (int i = 0; i < MaxSlots; ++i)
-            activeEngines[static_cast<size_t>(i)].store(engines[static_cast<size_t>(i)],
-                                                         std::memory_order_release);
+            activeEngines[static_cast<size_t>(i)].store(engines[static_cast<size_t>(i)], std::memory_order_release);
     }
 
     // Get the engine pointers for the active slots (message thread — read-only).
@@ -91,10 +93,9 @@ public:
     // concurrently with setEngines() on the audio thread.
     std::array<SynthEngine*, MaxSlots> getActiveEngines() const
     {
-        std::array<SynthEngine*, MaxSlots> result {};
+        std::array<SynthEngine*, MaxSlots> result{};
         for (int i = 0; i < MaxSlots; ++i)
-            result[static_cast<size_t>(i)] =
-                activeEngines[static_cast<size_t>(i)].load(std::memory_order_acquire);
+            result[static_cast<size_t>(i)] = activeEngines[static_cast<size_t>(i)].load(std::memory_order_acquire);
         return result;
     }
 
@@ -145,8 +146,9 @@ public:
         // Single snapshot for the entire DFS traversal — prevents inconsistent
         // graph reads if another thread modifies routeList during recursion.
         auto snapshot = std::atomic_load(&routeList);
-        if (!snapshot) return false;
-        std::array<bool, MaxSlots> visited {};
+        if (!snapshot)
+            return false;
+        std::array<bool, MaxSlots> visited{};
         return dfsReachable(destSlot, sourceSlot, visited, *snapshot);
     }
 
@@ -181,19 +183,14 @@ public:
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
 
         newRoutes->erase(
-            std::remove_if(newRoutes->begin(), newRoutes->end(),
-                [&](const CouplingRoute& r) {
-                    return r.sourceSlot == sourceSlot
-                        && r.destSlot == destSlot
-                        && r.type == type
-                        && !r.isNormalled;
-                }),
+            std::remove_if(
+                newRoutes->begin(), newRoutes->end(), [&](const CouplingRoute& r)
+                { return r.sourceSlot == sourceSlot && r.destSlot == destSlot && r.type == type && !r.isNormalled; }),
             newRoutes->end());
 
         // Re-enable normalled route if it exists
         for (auto& r : *newRoutes)
-            if (r.sourceSlot == sourceSlot && r.destSlot == destSlot
-                && r.type == type && r.isNormalled)
+            if (r.sourceSlot == sourceSlot && r.destSlot == destSlot && r.type == type && r.isNormalled)
                 r.active = true;
 
         std::atomic_store(&routeList, newRoutes);
@@ -204,16 +201,12 @@ public:
     // Load the current route list once per audio callback.
     // Store the result in a local shared_ptr and pass it to processBlock()
     // to avoid repeated atomic reference count operations inside the block.
-    std::shared_ptr<std::vector<CouplingRoute>> loadRoutes() const
-    {
-        return std::atomic_load(&routeList);
-    }
+    std::shared_ptr<std::vector<CouplingRoute>> loadRoutes() const { return std::atomic_load(&routeList); }
 
     // Process all coupling routes for a block of audio.
     // Pass the shared_ptr obtained from loadRoutes() — avoids an atomic reload
     // (and its LOCK prefix) inside this method.
-    void processBlock(int numSamples,
-                      const std::shared_ptr<std::vector<CouplingRoute>>& routes)
+    void processBlock(int numSamples, const std::shared_ptr<std::vector<CouplingRoute>>& routes)
     {
         if (!routes || routes->empty())
             return;
@@ -224,8 +217,8 @@ public:
                 continue;
 
             // Bounds check slot indices to prevent OOB access
-            if (route.sourceSlot < 0 || route.sourceSlot >= MaxSlots
-                || route.destSlot < 0 || route.destSlot >= MaxSlots)
+            if (route.sourceSlot < 0 || route.sourceSlot >= MaxSlots || route.destSlot < 0 ||
+                route.destSlot >= MaxSlots)
                 continue;
 
             auto* source = activeEngines[static_cast<size_t>(route.sourceSlot)].load(std::memory_order_relaxed);
@@ -240,8 +233,7 @@ public:
             // delivery here prevents accumulation while the engine is idle.
             // AudioToBuffer routes are exempt: the ring buffer is the sink, not the
             // engine's accumulation vars, so delivery is always safe.
-            if (route.type != CouplingType::AudioToBuffer
-                && dest->isSilenceGateBypassed())
+            if (route.type != CouplingType::AudioToBuffer && dest->isSilenceGateBypassed())
                 continue;
 
             // Use pre-allocated scratch buffer (sized in prepare()).
@@ -280,10 +272,8 @@ public:
             }
 
             const bool isAudioRoute =
-                route.type == CouplingType::AudioToWavetable
-             || route.type == CouplingType::AudioToFM
-             || route.type == CouplingType::AudioToRing
-             || route.type == CouplingType::AudioToBuffer;
+                route.type == CouplingType::AudioToWavetable || route.type == CouplingType::AudioToFM ||
+                route.type == CouplingType::AudioToRing || route.type == CouplingType::AudioToBuffer;
 
             // AudioToBuffer routes bypass the mono mixdown — they require true
             // stereo and write directly into the destination's AudioRingBuffer.
@@ -299,8 +289,7 @@ public:
                 // Audio routes: per-sample stereo-to-mono mixdown (must stay audio rate)
                 for (int i = 0; i < limit; ++i)
                     couplingBuffer[static_cast<size_t>(i)] =
-                        (source->getSampleForCoupling(0, i)
-                       + source->getSampleForCoupling(1, i)) * 0.5f;
+                        (source->getSampleForCoupling(0, i) + source->getSampleForCoupling(1, i)) * 0.5f;
             }
             else
             {
@@ -312,8 +301,7 @@ public:
                 fillControlRateBuffer(source, limit);
             }
 
-            dest->applyCouplingInput(route.type, route.amount,
-                                    couplingBuffer.data(), limit);
+            dest->applyCouplingInput(route.type, route.amount, couplingBuffer.data(), limit);
         }
     }
 
@@ -348,14 +336,12 @@ public:
     // Must be called AFTER the processor's engines[slot] is updated, so we
     // can update activeEngines[slot] to match before resolving sink caches.
     // (W2 Audit CRITICAL-1: resolveAudioToBufferSinks was reading stale activeEngines)
-    void notifyCouplingMatrixOfSwap(int slot, const std::string& /*newEngineId*/,
-                                    SynthEngine* newEnginePtr = nullptr)
+    void notifyCouplingMatrixOfSwap(int slot, const std::string& /*newEngineId*/, SynthEngine* newEnginePtr = nullptr)
     {
         // Update our activeEngines cache for this slot so resolveAudioToBufferSinks
         // reads the CURRENT engine, not the stale one from the last setEngines() call.
         if (slot >= 0 && slot < MaxSlots)
-            activeEngines[static_cast<size_t>(slot)].store(
-                newEnginePtr, std::memory_order_release);
+            activeEngines[static_cast<size_t>(slot)].store(newEnginePtr, std::memory_order_release);
 
         // Re-resolve sink caches. This does the dynamic_cast on the message thread
         // and determines whether the new engine supports IAudioBufferSink.
@@ -402,7 +388,7 @@ public:
     //
     void resolveAudioToBufferSinks()
     {
-        auto engines = getActiveEngines();   // acquire loads — safe from message thread
+        auto engines = getActiveEngines(); // acquire loads — safe from message thread
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
 
@@ -414,14 +400,16 @@ public:
 
             if (r.destSlot < 0 || r.destSlot >= MaxSlots)
             {
-                if (r.sinkCache != nullptr) { r.sinkCache = nullptr; changed = true; }
+                if (r.sinkCache != nullptr)
+                {
+                    r.sinkCache = nullptr;
+                    changed = true;
+                }
                 continue;
             }
 
             auto* destEngine = engines[static_cast<size_t>(r.destSlot)];
-            auto* sink = (destEngine != nullptr)
-                ? dynamic_cast<IAudioBufferSink*>(destEngine)
-                : nullptr;
+            auto* sink = (destEngine != nullptr) ? dynamic_cast<IAudioBufferSink*>(destEngine) : nullptr;
 
             if (sink != r.sinkCache)
             {
@@ -450,10 +438,8 @@ private:
     // not via the audio-sample buffer path), so it is excluded here.
     static bool isAudioRateType(CouplingType type) noexcept
     {
-        return type == CouplingType::AudioToFM
-            || type == CouplingType::AudioToRing
-            || type == CouplingType::AudioToBuffer
-            || type == CouplingType::AudioToWavetable;
+        return type == CouplingType::AudioToFM || type == CouplingType::AudioToRing ||
+               type == CouplingType::AudioToBuffer || type == CouplingType::AudioToWavetable;
     }
 
     // DFS reachability check over the current audio-rate route graph.
@@ -468,11 +454,11 @@ private:
     // Called on the message thread only — receives a pre-snapshotted route vector
     // from wouldCreateCycle() to guarantee a consistent graph view across all
     // recursion depths.
-    bool dfsReachable(int from, int target,
-                      std::array<bool, MaxSlots>& visited,
+    bool dfsReachable(int from, int target, std::array<bool, MaxSlots>& visited,
                       const std::vector<CouplingRoute>& routes) const
     {
-        if (from == target) return true;
+        if (from == target)
+            return true;
         if (from < 0 || from >= MaxSlots || visited[static_cast<size_t>(from)])
             return false;
 
@@ -480,9 +466,7 @@ private:
 
         for (const auto& r : routes)
         {
-            if (r.sourceSlot == from
-                && isAudioRateType(r.type)
-                && r.type != CouplingType::KnotTopology)
+            if (r.sourceSlot == from && isAudioRateType(r.type) && r.type != CouplingType::KnotTopology)
             {
                 if (dfsReachable(r.destSlot, target, visited, routes))
                     return true;
@@ -491,11 +475,10 @@ private:
         return false;
     }
 
-    std::shared_ptr<std::vector<CouplingRoute>> routeList =
-        std::make_shared<std::vector<CouplingRoute>>();
-    std::array<std::atomic<SynthEngine*>, MaxSlots> activeEngines {};
-    std::vector<float> couplingBuffer;   // L / mono scratch — pre-allocated in prepare()
-    std::vector<float> couplingBufferR;  // R scratch for AudioToBuffer stereo push
+    std::shared_ptr<std::vector<CouplingRoute>> routeList = std::make_shared<std::vector<CouplingRoute>>();
+    std::array<std::atomic<SynthEngine*>, MaxSlots> activeEngines{};
+    std::vector<float> couplingBuffer;  // L / mono scratch — pre-allocated in prepare()
+    std::vector<float> couplingBufferR; // R scratch for AudioToBuffer stereo push
 
     //-- SRO: Control-rate buffer fill with linear interpolation ----------------
     //
@@ -518,8 +501,7 @@ private:
         {
             int blockEnd = std::min(blockStart + controlRateRatio, numSamples);
             // Read next control point (or last sample if at buffer end)
-            float nextVal = source->getSampleForCoupling(0,
-                std::min(blockEnd, numSamples - 1));
+            float nextVal = source->getSampleForCoupling(0, std::min(blockEnd, numSamples - 1));
 
             // Linearly interpolate between control points
             int blockLen = blockEnd - blockStart;
@@ -564,8 +546,7 @@ private:
     // Full design: Docs/xopal_phase1_architecture.md §15.4
     // Phase 2 summary: Docs/audio_to_buffer_phase2.md
     //
-    void processAudioRoute(SynthEngine* source, SynthEngine* dest,
-                           const CouplingRoute& route, int numSamples)
+    void processAudioRoute(SynthEngine* source, SynthEngine* dest, const CouplingRoute& route, int numSamples)
     {
         // Phase 2 cycle detection: skip self-routes.
         // A source slot routing to itself (AudioToBuffer with sourceSlot == destSlot)
@@ -575,12 +556,12 @@ private:
 
         // dest is retained as a parameter for caller symmetry with processKnotRoute
         // but is not used here — sink resolution now comes from route.sinkCache.
-        (void) dest;
+        (void)dest;
 
         // Step 1: fill stereo scratch buffers from source coupling cache.
         for (int i = 0; i < numSamples; ++i)
         {
-            couplingBuffer[static_cast<size_t>(i)]  = source->getSampleForCoupling(0, i);
+            couplingBuffer[static_cast<size_t>(i)] = source->getSampleForCoupling(0, i);
             couplingBufferR[static_cast<size_t>(i)] = source->getSampleForCoupling(1, i);
         }
 
@@ -614,8 +595,7 @@ private:
         // pushBlock() is lock-free and allocation-free. The level parameter
         // scales each written sample by route.amount (0.0–1.0).
         // Freeze state is managed internally by AudioRingBuffer::pushBlock().
-        rb->pushBlock(couplingBuffer.data(), couplingBufferR.data(),
-                      numSamples, route.amount);
+        rb->pushBlock(couplingBuffer.data(), couplingBufferR.data(), numSamples, route.amount);
 
         // Do NOT call dest->applyCouplingInput() — the ring buffer is the exclusive
         // sink for AudioToBuffer routes. OpalEngine reads from it during renderBlock().
@@ -653,8 +633,7 @@ private:
     // for both directions. KNOT modulation signals change slowly — no need for
     // audio-rate resolution.
     //
-    void processKnotRoute(SynthEngine* source, SynthEngine* dest,
-                          const CouplingRoute& route, int numSamples)
+    void processKnotRoute(SynthEngine* source, SynthEngine* dest, const CouplingRoute& route, int numSamples)
     {
         // Self-route guard: an engine cannot be KNOT-coupled to itself.
         if (route.sourceSlot == route.destSlot)
@@ -664,28 +643,21 @@ private:
         // linkingNum range: [1, 5] — maps amount 0.0→1.0 to integer 1→5.
         // Uses static_cast + 0.5f rounding instead of juce::roundToInt to avoid
         // JUCE dependency on the audio thread. NaN guard prevents UB on corrupt input.
-        const float rawLinking    = route.amount * 4.0f;
-        const int   linkingNum    = (std::isnan(rawLinking) ? 0
-                                     : static_cast<int>(rawLinking + 0.5f)) + 1;
-        const float scaledAmount  = static_cast<float>(linkingNum) / 5.0f;
+        const float rawLinking = route.amount * 4.0f;
+        const int linkingNum = (std::isnan(rawLinking) ? 0 : static_cast<int>(rawLinking + 0.5f)) + 1;
+        const float scaledAmount = static_cast<float>(linkingNum) / 5.0f;
 
         // Pass A: source → dest (standard direction).
         // Fill the control-rate buffer from source's coupling output cache,
         // then apply it to dest with AmpToFilter semantics.
         fillControlRateBuffer(source, numSamples);
-        dest->applyCouplingInput(CouplingType::AmpToFilter,
-                                 scaledAmount,
-                                 couplingBuffer.data(),
-                                 numSamples);
+        dest->applyCouplingInput(CouplingType::AmpToFilter, scaledAmount, couplingBuffer.data(), numSamples);
 
         // Pass B: dest → source (reverse direction — the KNOT difference).
         // Reuse the same scratch buffer (overwrite is safe; Pass A is done).
         // Apply the same scaledAmount so both directions are symmetric.
         fillControlRateBuffer(dest, numSamples);
-        source->applyCouplingInput(CouplingType::AmpToFilter,
-                                   scaledAmount,
-                                   couplingBuffer.data(),
-                                   numSamples);
+        source->applyCouplingInput(CouplingType::AmpToFilter, scaledAmount, couplingBuffer.data(), numSamples);
     }
 };
 

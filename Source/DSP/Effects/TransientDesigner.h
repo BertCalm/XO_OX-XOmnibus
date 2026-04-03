@@ -6,7 +6,8 @@
 #include <array>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // TransientDesigner — Attack/sustain shaping via envelope followers.
@@ -27,23 +28,23 @@ class TransientDesigner
 public:
     TransientDesigner() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         calcCrossover();
         reset();
     }
 
-    void setAttack (float a)  { attack  = std::clamp (a, -1.0f, 1.0f); }
-    void setSustain (float s) { sustain = std::clamp (s, -1.0f, 1.0f); }
-    void setMix (float m)     { mix     = std::clamp (m, 0.0f, 1.0f); }
+    void setAttack(float a) { attack = std::clamp(a, -1.0f, 1.0f); }
+    void setSustain(float s) { sustain = std::clamp(s, -1.0f, 1.0f); }
+    void setMix(float m) { mix = std::clamp(m, 0.0f, 1.0f); }
 
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
         if (mix < 0.001f)
             return;
 
-        const float attGain = attack * 12.0f;   // ±12dB range
+        const float attGain = attack * 12.0f; // ±12dB range
         const float susGain = sustain * 12.0f;
 
         for (int i = 0; i < numSamples; ++i)
@@ -52,7 +53,7 @@ public:
             float dryR = right[i];
 
             float mono = (left[i] + right[i]) * 0.5f;
-            float level = std::abs (mono);
+            float level = std::abs(mono);
 
             // Fast envelope (attack-sensitive, ~1ms)
             float fastCoeff = (level > envFast) ? fastAttack : fastRelease;
@@ -76,20 +77,20 @@ public:
                 gainDb += susGain * sustainLevel;
 
             // Limit gain range to prevent blowup
-            gainDb = std::clamp (gainDb, -24.0f, 24.0f);
+            gainDb = std::clamp(gainDb, -24.0f, 24.0f);
             // SRO: dbToGain replaces std::pow (per-sample hot path)
-            float gainLin = dbToGain (gainDb);
+            float gainLin = dbToGain(gainDb);
 
-            float wetL = left[i]  * gainLin;
+            float wetL = left[i] * gainLin;
             float wetR = right[i] * gainLin;
 
-            left[i]  = dryL + mix * (wetL - dryL);
+            left[i] = dryL + mix * (wetL - dryL);
             right[i] = dryR + mix * (wetR - dryR);
         }
 
         // SRO: uses shared flushDenormal from FastMath.h
-        envFast = flushDenormal (envFast);
-        envSlow = flushDenormal (envSlow);
+        envFast = flushDenormal(envFast);
+        envSlow = flushDenormal(envSlow);
     }
 
     void reset()
@@ -99,26 +100,26 @@ public:
 
         // Recalculate time constants
         // SRO: fastExp replaces std::exp (per-reset coefficient computation)
-        fastAttack  = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.001f));
-        fastRelease = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.010f));
-        slowAttack  = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.020f));
-        slowRelease = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.080f));
+        fastAttack = 1.0f - fastExp(-1.0f / (static_cast<float>(sr) * 0.001f));
+        fastRelease = 1.0f - fastExp(-1.0f / (static_cast<float>(sr) * 0.010f));
+        slowAttack = 1.0f - fastExp(-1.0f / (static_cast<float>(sr) * 0.020f));
+        slowRelease = 1.0f - fastExp(-1.0f / (static_cast<float>(sr) * 0.080f));
     }
 
 private:
     double sr = 44100.0;
-    float attack  = 0.0f;
+    float attack = 0.0f;
     float sustain = 0.0f;
-    float mix     = 1.0f;
+    float mix = 1.0f;
 
     // Envelope followers
     float envFast = 0.0f;
     float envSlow = 0.0f;
 
     // Coefficients
-    float fastAttack  = 0.0f;
+    float fastAttack = 0.0f;
     float fastRelease = 0.0f;
-    float slowAttack  = 0.0f;
+    float slowAttack = 0.0f;
     float slowRelease = 0.0f;
 
     void calcCrossover() { /* crossover reserved for future per-band mode */ }

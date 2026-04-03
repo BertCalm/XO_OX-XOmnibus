@@ -8,7 +8,8 @@
 #include "../GalleryColors.h"
 #include "ModSourceHandle.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ModRoute — a single modulation assignment: one source → one parameter.
@@ -26,10 +27,10 @@ namespace xoceanus {
 //
 struct ModRoute
 {
-    int          sourceId;    // cast to ModSourceId — stored as int for ValueTree compat
+    int sourceId;             // cast to ModSourceId — stored as int for ValueTree compat
     juce::String destParamId; // APVTS parameter ID of the destination
-    float        depth;       // -1.0 to +1.0
-    bool         bipolar;     // true = source range is ±1
+    float depth;              // -1.0 to +1.0
+    bool bipolar;             // true = source range is ±1
 };
 
 //==============================================================================
@@ -74,7 +75,7 @@ public:
     }
 
     int getRouteCount() const noexcept { return static_cast<int>(routes.size()); }
-    bool isFull()       const noexcept { return static_cast<int>(routes.size()) >= MaxRoutes; }
+    bool isFull() const noexcept { return static_cast<int>(routes.size()) >= MaxRoutes; }
 
     //==========================================================================
     // Mutations (message thread only)
@@ -87,10 +88,10 @@ public:
         // Update existing route with the same (source, dest) pair.
         for (int i = 0; i < static_cast<int>(routes.size()); ++i)
         {
-            if (routes[static_cast<size_t>(i)].sourceId  == sourceId
-             && routes[static_cast<size_t>(i)].destParamId == destParamId)
+            if (routes[static_cast<size_t>(i)].sourceId == sourceId &&
+                routes[static_cast<size_t>(i)].destParamId == destParamId)
             {
-                routes[static_cast<size_t>(i)].depth   = juce::jlimit(-1.0f, 1.0f, depth);
+                routes[static_cast<size_t>(i)].depth = juce::jlimit(-1.0f, 1.0f, depth);
                 routes[static_cast<size_t>(i)].bipolar = bipolar;
                 notifyListeners();
                 return i;
@@ -102,10 +103,10 @@ public:
             return -1;
 
         ModRoute r;
-        r.sourceId    = sourceId;
+        r.sourceId = sourceId;
         r.destParamId = destParamId;
-        r.depth       = juce::jlimit(-1.0f, 1.0f, depth);
-        r.bipolar     = bipolar;
+        r.depth = juce::jlimit(-1.0f, 1.0f, depth);
+        r.bipolar = bipolar;
         routes.push_back(r);
 
         notifyListeners();
@@ -126,8 +127,7 @@ public:
     {
         auto prevSize = routes.size();
         routes.erase(
-            std::remove_if(routes.begin(), routes.end(),
-                           [&](const ModRoute& r) { return r.destParamId == paramId; }),
+            std::remove_if(routes.begin(), routes.end(), [&](const ModRoute& r) { return r.destParamId == paramId; }),
             routes.end());
         if (routes.size() != prevSize)
             notifyListeners();
@@ -160,10 +160,10 @@ public:
         for (const auto& r : routes)
         {
             juce::ValueTree child("route");
-            child.setProperty("sourceId",    r.sourceId,    nullptr);
+            child.setProperty("sourceId", r.sourceId, nullptr);
             child.setProperty("destParamId", r.destParamId, nullptr);
-            child.setProperty("depth",       r.depth,       nullptr);
-            child.setProperty("bipolar",     r.bipolar,     nullptr);
+            child.setProperty("depth", r.depth, nullptr);
+            child.setProperty("bipolar", r.bipolar, nullptr);
             vt.addChild(child, -1, nullptr);
         }
         return vt;
@@ -196,10 +196,10 @@ public:
             bool bipolar = static_cast<bool>(int(child.getProperty("bipolar", 0)));
 
             ModRoute r;
-            r.sourceId    = srcInt;
+            r.sourceId = srcInt;
             r.destParamId = destId;
-            r.depth       = depth;
-            r.bipolar     = bipolar;
+            r.depth = depth;
+            r.bipolar = bipolar;
             routes.push_back(r);
         }
         notifyListeners();
@@ -208,14 +208,14 @@ public:
     //==========================================================================
     // Change listeners — UI components register here to redraw when routes change.
 
-    void addListener(juce::ChangeListener* l)    { broadcaster.addChangeListener(l); }
+    void addListener(juce::ChangeListener* l) { broadcaster.addChangeListener(l); }
     void removeListener(juce::ChangeListener* l) { broadcaster.removeChangeListener(l); }
 
 private:
     void notifyListeners() { broadcaster.sendChangeMessage(); }
 
-    std::vector<ModRoute>    routes;
-    juce::ChangeBroadcaster  broadcaster;
+    std::vector<ModRoute> routes;
+    juce::ChangeBroadcaster broadcaster;
 };
 
 //==============================================================================
@@ -239,27 +239,24 @@ private:
 //
 struct ModKnobOverlay
 {
-    static constexpr float kRotaryStart = -2.42f;  // rad — matches GalleryLookAndFeel
-    static constexpr float kRotaryEnd   =  2.42f;
-    static constexpr float kSweep       = kRotaryEnd - kRotaryStart; // total sweep (4.84 rad)
+    static constexpr float kRotaryStart = -2.42f; // rad — matches GalleryLookAndFeel
+    static constexpr float kRotaryEnd = 2.42f;
+    static constexpr float kSweep = kRotaryEnd - kRotaryStart; // total sweep (4.84 rad)
 
     // Draw all active mod arcs for `paramId`.
     // Call this from inside the knob's paint() function.
     // `bounds` should be the knob's local bounds in float coords.
-    static void paintModArcs(juce::Graphics& g,
-                             const juce::Rectangle<float>& bounds,
-                             const juce::String& paramId,
-                             float currentNormalisedValue,
-                             const ModRoutingModel& model)
+    static void paintModArcs(juce::Graphics& g, const juce::Rectangle<float>& bounds, const juce::String& paramId,
+                             float currentNormalisedValue, const ModRoutingModel& model)
     {
         auto routes = model.getRoutesForParam(paramId);
         if (routes.empty())
             return;
 
         float diameter = juce::jmin(bounds.getWidth(), bounds.getHeight());
-        float radius   = diameter * 0.5f;
-        float cx       = bounds.getCentreX();
-        float cy       = bounds.getCentreY();
+        float radius = diameter * 0.5f;
+        float cx = bounds.getCentreX();
+        float cy = bounds.getCentreY();
 
         // Arcs are drawn just outside the fill arc track (r + 3px)
         float arcRadius = radius - 3.0f + 4.5f;
@@ -276,7 +273,7 @@ struct ModKnobOverlay
             halfSweep = juce::jlimit(0.0f, kSweep * 0.5f, halfSweep);
 
             float arcStart = currentAngle;
-            float arcEnd   = currentAngle + (r.depth >= 0.0f ? halfSweep : -halfSweep);
+            float arcEnd = currentAngle + (r.depth >= 0.0f ? halfSweep : -halfSweep);
 
             // Ensure start < end for drawing
             if (arcStart > arcEnd)
@@ -284,24 +281,21 @@ struct ModKnobOverlay
 
             // Clamp to rotary sweep range
             arcStart = juce::jlimit(kRotaryStart, kRotaryEnd, arcStart);
-            arcEnd   = juce::jlimit(kRotaryStart, kRotaryEnd, arcEnd);
+            arcEnd = juce::jlimit(kRotaryStart, kRotaryEnd, arcEnd);
 
             if (arcEnd - arcStart < 0.02f)
                 continue; // too small to draw
 
             // Draw: glow pass (wide, transparent) then core pass
             juce::Path arc;
-            arc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
-                              arcStart, arcEnd, true);
+            arc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f, arcStart, arcEnd, true);
 
             // Glow
             g.setColour(srcColour.withAlpha(0.18f));
-            g.strokePath(arc, juce::PathStrokeType(4.5f, juce::PathStrokeType::curved,
-                                                    juce::PathStrokeType::rounded));
+            g.strokePath(arc, juce::PathStrokeType(4.5f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
             // Core
             g.setColour(srcColour.withAlpha(0.75f));
-            g.strokePath(arc, juce::PathStrokeType(1.8f, juce::PathStrokeType::curved,
-                                                    juce::PathStrokeType::rounded));
+            g.strokePath(arc, juce::PathStrokeType(1.8f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
         }
     }
 };
@@ -314,9 +308,7 @@ struct ModKnobOverlay
 //
 // Wire up with setModel() and call refresh() or listen for model changes.
 //
-class ModRouteListPanel : public juce::Component,
-                          public juce::ChangeListener,
-                          private juce::ListBoxModel
+class ModRouteListPanel : public juce::Component, public juce::ChangeListener, private juce::ListBoxModel
 {
 public:
     ModRouteListPanel()
@@ -324,10 +316,8 @@ public:
         listBox.setModel(this);
         listBox.setRowHeight(22);
         listBox.setMultipleSelectionEnabled(false);
-        listBox.setColour(juce::ListBox::backgroundColourId,
-                          juce::Colour(GalleryColors::elevated()));
-        listBox.setColour(juce::ListBox::outlineColourId,
-                          GalleryColors::border());
+        listBox.setColour(juce::ListBox::backgroundColourId, juce::Colour(GalleryColors::elevated()));
+        listBox.setColour(juce::ListBox::outlineColourId, GalleryColors::border());
         addAndMakeVisible(listBox);
 
         // Header label
@@ -380,13 +370,9 @@ public:
 
     //==========================================================================
     // ListBoxModel
-    int getNumRows() override
-    {
-        return static_cast<int>(cachedRoutes.size());
-    }
+    int getNumRows() override { return static_cast<int>(cachedRoutes.size()); }
 
-    void paintListBoxItem(int row, juce::Graphics& g,
-                          int width, int height, bool selected) override
+    void paintListBoxItem(int row, juce::Graphics& g, int width, int height, bool selected) override
     {
         if (row < 0 || row >= static_cast<int>(cachedRoutes.size()))
             return;
@@ -433,10 +419,7 @@ public:
             showContextMenu(row);
     }
 
-    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
-    {
-        showDepthEditor(row);
-    }
+    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override { showDepthEditor(row); }
 
 private:
     void showContextMenu(int row)
@@ -450,11 +433,13 @@ private:
         menu.addItem(2, "Remove Route");
 
         menu.showMenuAsync(juce::PopupMenu::Options{},
-            [this, row](int result)
-            {
-                if (result == 1) showDepthEditor(row);
-                if (result == 2 && model != nullptr) model->removeRoute(row);
-            });
+                           [this, row](int result)
+                           {
+                               if (result == 1)
+                                   showDepthEditor(row);
+                               if (result == 2 && model != nullptr)
+                                   model->removeRoute(row);
+                           });
     }
 
     void showDepthEditor(int row)
@@ -464,30 +449,32 @@ private:
 
         const auto& r = cachedRoutes[static_cast<size_t>(row)];
         auto* alert = new juce::AlertWindow("Set Modulation Depth",
-                                             "Enter depth for " + modSourceName(static_cast<ModSourceId>(r.sourceId))
-                                             + " -> " + r.destParamId,
-                                             juce::MessageBoxIconType::NoIcon);
+                                            "Enter depth for " + modSourceName(static_cast<ModSourceId>(r.sourceId)) +
+                                                " -> " + r.destParamId,
+                                            juce::MessageBoxIconType::NoIcon);
         alert->addTextEditor("depth", juce::String(r.depth, 3), "Depth (-1.0 to +1.0):");
-        alert->addButton("OK",     1, juce::KeyPress(juce::KeyPress::returnKey));
+        alert->addButton("OK", 1, juce::KeyPress(juce::KeyPress::returnKey));
         alert->addButton("Cancel", 0, juce::KeyPress(juce::KeyPress::escapeKey));
 
         // Capture `row` by value — safe because the alert lives longer than this lambda.
-        alert->enterModalState(true, juce::ModalCallbackFunction::create(
-            [this, row, alert](int result)
-            {
-                if (result == 1 && model != nullptr)
-                {
-                    auto depthStr = alert->getTextEditorContents("depth");
-                    float newDepth = depthStr.getFloatValue();
-                    model->setRouteDepth(row, newDepth);
-                }
-                delete alert;
-            }), false);
+        alert->enterModalState(true,
+                               juce::ModalCallbackFunction::create(
+                                   [this, row, alert](int result)
+                                   {
+                                       if (result == 1 && model != nullptr)
+                                       {
+                                           auto depthStr = alert->getTextEditorContents("depth");
+                                           float newDepth = depthStr.getFloatValue();
+                                           model->setRouteDepth(row, newDepth);
+                                       }
+                                       delete alert;
+                                   }),
+                               false);
     }
 
-    juce::ListBox        listBox;
-    juce::Label          headerLabel;
-    ModRoutingModel*     model       { nullptr };
+    juce::ListBox listBox;
+    juce::Label headerLabel;
+    ModRoutingModel* model{nullptr};
     std::vector<ModRoute> cachedRoutes;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ModRouteListPanel)
@@ -542,14 +529,11 @@ private:
 //   // In XOceanusEditor::resized():
 //   modRouter->setBounds(getLocalBounds());
 //
-class DragDropModRouter : public juce::Component,
-                          public juce::DragAndDropTarget,
-                          public juce::ChangeListener
+class DragDropModRouter : public juce::Component, public juce::DragAndDropTarget, public juce::ChangeListener
 {
 public:
     //==========================================================================
-    DragDropModRouter(juce::AudioProcessorValueTreeState& apvts, ModRoutingModel& model)
-        : apvts(apvts), model(model)
+    DragDropModRouter(juce::AudioProcessorValueTreeState& apvts, ModRoutingModel& model) : apvts(apvts), model(model)
     {
         setInterceptsMouseClicks(false, false); // idle = pass-through
         setBufferedToImage(false);              // no buffer — transparent most of the time
@@ -569,14 +553,10 @@ public:
 
         model.addListener(this);
 
-        A11y::setup(*this, "Modulation Router",
-                    "Drag source handles to parameter knobs to create modulation routes");
+        A11y::setup(*this, "Modulation Router", "Drag source handles to parameter knobs to create modulation routes");
     }
 
-    ~DragDropModRouter() override
-    {
-        model.removeListener(this);
-    }
+    ~DragDropModRouter() override { model.removeListener(this); }
 
     //==========================================================================
     // Layout
@@ -607,17 +587,16 @@ public:
         // ── Source handle strip (top edge, centered) ─────────────────────
         // Strip pill: each handle is 16×16 with 6px horizontal gap between them.
         // Total strip width: N * 16 + (N-1) * 6
-        const int n        = static_cast<int>(sourceHandles.size());
-        const int hW       = ModSourceHandle::kDiameter;
-        const int gap      = 6;
-        const int stripW   = n * hW + (n - 1) * gap;
+        const int n = static_cast<int>(sourceHandles.size());
+        const int hW = ModSourceHandle::kDiameter;
+        const int gap = 6;
+        const int stripW = n * hW + (n - 1) * gap;
         const int stripTop = 8;
 
         int xOffset = (b.getWidth() - stripW) / 2;
         for (int i = 0; i < n; ++i)
         {
-            sourceHandles[static_cast<size_t>(i)]->setBounds(
-                xOffset + i * (hW + gap), stripTop, hW, hW);
+            sourceHandles[static_cast<size_t>(i)]->setBounds(xOffset + i * (hW + gap), stripTop, hW, hW);
         }
     }
 
@@ -634,9 +613,9 @@ public:
         if (!DragPayload::isModSourceDrag(details.description))
             return;
 
-        dragActive    = true;
-        auto payload  = DragPayload::decode(details.description);
-        dragSourceId  = payload.sourceId;
+        dragActive = true;
+        auto payload = DragPayload::decode(details.description);
+        dragSourceId = payload.sourceId;
 
         // Source handle center in this component's coordinate space
         if (auto* srcComp = details.sourceComponent.getComponent())
@@ -658,10 +637,7 @@ public:
         repaint();
     }
 
-    void itemDragExit(const SourceDetails& /*details*/) override
-    {
-        resetDragState();
-    }
+    void itemDragExit(const SourceDetails& /*details*/) override { resetDragState(); }
 
     void itemDropped(const SourceDetails& details) override
     {
@@ -671,20 +647,17 @@ public:
             return;
         }
 
-        auto payload      = DragPayload::decode(details.description);
+        auto payload = DragPayload::decode(details.description);
         auto targetParamId = findParamIdUnderCursor(details.localPosition);
 
         if (targetParamId.isNotEmpty())
         {
             // Default: bipolar for LFOs, unipolar for performance sources
-            bool bipolar = (payload.sourceId == ModSourceId::LFO1
-                         || payload.sourceId == ModSourceId::LFO2
-                         || payload.sourceId == ModSourceId::Envelope);
+            bool bipolar = (payload.sourceId == ModSourceId::LFO1 || payload.sourceId == ModSourceId::LFO2 ||
+                            payload.sourceId == ModSourceId::Envelope);
 
-            model.addRoute(static_cast<int>(payload.sourceId),
-                           targetParamId,
-                           /* depth = */ 0.5f,
-                           bipolar);
+            model.addRoute(static_cast<int>(payload.sourceId), targetParamId,
+                           /* depth = */ 0.5f, bipolar);
         }
 
         resetDragState();
@@ -713,19 +686,16 @@ public:
 
             juce::Path connector;
             connector.startNewSubPath(dragSourcePos);
-            connector.cubicTo(
-                dragSourcePos.x, dragSourcePos.y + controlStrength,
-                dragCursorPos.x, dragCursorPos.y - controlStrength,
-                dragCursorPos.x, dragCursorPos.y);
+            connector.cubicTo(dragSourcePos.x, dragSourcePos.y + controlStrength, dragCursorPos.x,
+                              dragCursorPos.y - controlStrength, dragCursorPos.x, dragCursorPos.y);
 
             // Glow pass
             g.setColour(srcColour.withAlpha(0.15f));
-            g.strokePath(connector, juce::PathStrokeType(6.0f, juce::PathStrokeType::curved,
-                                                          juce::PathStrokeType::rounded));
+            g.strokePath(connector,
+                         juce::PathStrokeType(6.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
             // Core line — dashed
-            juce::PathStrokeType stroke(2.0f, juce::PathStrokeType::curved,
-                                         juce::PathStrokeType::rounded);
-            float dashLengths[] = { 5.0f, 4.0f };
+            juce::PathStrokeType stroke(2.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded);
+            float dashLengths[] = {5.0f, 4.0f};
             juce::Path dashedConnector;
             stroke.createDashedStroke(dashedConnector, connector, dashLengths, 2);
             g.setColour(srcColour.withAlpha(0.85f));
@@ -736,18 +706,16 @@ public:
         {
             const float cr = 7.0f;
             bool hasTarget = currentTargetParamId.isNotEmpty();
-            juce::Colour crossColour = hasTarget
-                ? juce::Colour(GalleryColors::xoGold).withAlpha(0.90f)
-                : srcColour.withAlpha(0.70f);
+            juce::Colour crossColour =
+                hasTarget ? juce::Colour(GalleryColors::xoGold).withAlpha(0.90f) : srcColour.withAlpha(0.70f);
 
             // Outer glow
             g.setColour(crossColour.withAlpha(0.25f));
-            g.fillEllipse(dragCursorPos.x - cr - 3.0f, dragCursorPos.y - cr - 3.0f,
-                          (cr + 3.0f) * 2.0f, (cr + 3.0f) * 2.0f);
+            g.fillEllipse(dragCursorPos.x - cr - 3.0f, dragCursorPos.y - cr - 3.0f, (cr + 3.0f) * 2.0f,
+                          (cr + 3.0f) * 2.0f);
             // Inner ring
             g.setColour(crossColour);
-            g.drawEllipse(dragCursorPos.x - cr, dragCursorPos.y - cr,
-                          cr * 2.0f, cr * 2.0f, 1.5f);
+            g.drawEllipse(dragCursorPos.x - cr, dragCursorPos.y - cr, cr * 2.0f, cr * 2.0f, 1.5f);
 
             if (hasTarget)
             {
@@ -763,9 +731,9 @@ public:
             if (auto* targetComp = findComponentForParam(currentTargetParamId))
             {
                 auto bounds = getLocalArea(targetComp, targetComp->getLocalBounds()).toFloat();
-                float r     = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f + 4.0f;
-                float cx    = bounds.getCentreX();
-                float cy    = bounds.getCentreY();
+                float r = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f + 4.0f;
+                float cx = bounds.getCentreX();
+                float cy = bounds.getCentreY();
 
                 // Double-ring highlight: glow + sharp border
                 g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.20f));
@@ -778,8 +746,7 @@ public:
                 g.setFont(GalleryFonts::label(9.0f));
                 g.setColour(juce::Colour(GalleryColors::xoGold));
                 g.drawText("+", static_cast<int>(cx) + static_cast<int>(r) - 8,
-                           static_cast<int>(cy) - static_cast<int>(r) - 12, 14, 14,
-                           juce::Justification::centred);
+                           static_cast<int>(cy) - static_cast<int>(r) - 12, 14, 14, juce::Justification::centred);
             }
         }
     }
@@ -791,8 +758,7 @@ public:
     // that has active mod routes.  Decouples the right-click logic from the
     // GalleryKnob subclass (so GalleryKnob stays simple).
     //
-    void showModDepthMenuForParam(const juce::String& paramId,
-                                  juce::Component* relativeTo)
+    void showModDepthMenuForParam(const juce::String& paramId, juce::Component* relativeTo)
     {
         auto routes = model.getRoutesForParam(paramId);
         if (routes.empty())
@@ -804,47 +770,43 @@ public:
         for (int i = 0; i < static_cast<int>(routes.size()); ++i)
         {
             const auto& r = routes[static_cast<size_t>(i)];
-            auto srcName  = modSourceName(static_cast<ModSourceId>(r.sourceId));
+            auto srcName = modSourceName(static_cast<ModSourceId>(r.sourceId));
             juce::String label = srcName + "   depth: " + juce::String(r.depth, 2);
             menu.addItem(100 + i, label);
         }
         menu.addSeparator();
         menu.addItem(200, "Remove All for This Parameter");
 
-        menu.showMenuAsync(
-            juce::PopupMenu::Options{}.withTargetComponent(relativeTo),
-            [this, paramId, routes](int result)
-            {
-                if (result >= 100 && result < 100 + static_cast<int>(routes.size()))
-                {
-                    // Find the actual index in the full model (not just per-param subset)
-                    int subIndex = result - 100;
-                    auto allRoutes = model.getRoutesCopy();
-                    const auto& targetRoute = routes[static_cast<size_t>(subIndex)];
+        menu.showMenuAsync(juce::PopupMenu::Options{}.withTargetComponent(relativeTo),
+                           [this, paramId, routes](int result)
+                           {
+                               if (result >= 100 && result < 100 + static_cast<int>(routes.size()))
+                               {
+                                   // Find the actual index in the full model (not just per-param subset)
+                                   int subIndex = result - 100;
+                                   auto allRoutes = model.getRoutesCopy();
+                                   const auto& targetRoute = routes[static_cast<size_t>(subIndex)];
 
-                    for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
-                    {
-                        if (allRoutes[static_cast<size_t>(j)].sourceId    == targetRoute.sourceId
-                         && allRoutes[static_cast<size_t>(j)].destParamId == targetRoute.destParamId)
-                        {
-                            showDepthEditorForRoute(j);
-                            break;
-                        }
-                    }
-                }
-                else if (result == 200)
-                {
-                    model.removeRoutesForParam(paramId);
-                }
-            });
+                                   for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
+                                   {
+                                       if (allRoutes[static_cast<size_t>(j)].sourceId == targetRoute.sourceId &&
+                                           allRoutes[static_cast<size_t>(j)].destParamId == targetRoute.destParamId)
+                                       {
+                                           showDepthEditorForRoute(j);
+                                           break;
+                                       }
+                                   }
+                               }
+                               else if (result == 200)
+                               {
+                                   model.removeRoutesForParam(paramId);
+                               }
+                           });
     }
 
     //==========================================================================
     // juce::ChangeListener — model has changed, repaint
-    void changeListenerCallback(juce::ChangeBroadcaster*) override
-    {
-        repaint();
-    }
+    void changeListenerCallback(juce::ChangeBroadcaster*) override { repaint(); }
 
 private:
     //==========================================================================
@@ -855,11 +817,11 @@ private:
             return;
 
         auto firstBounds = sourceHandles.front()->getBounds();
-        auto lastBounds  = sourceHandles.back()->getBounds();
+        auto lastBounds = sourceHandles.back()->getBounds();
 
-        float left   = static_cast<float>(firstBounds.getX()) - 10.0f;
-        float top    = static_cast<float>(firstBounds.getY()) - 5.0f;
-        float right  = static_cast<float>(lastBounds.getRight()) + 10.0f;
+        float left = static_cast<float>(firstBounds.getX()) - 10.0f;
+        float top = static_cast<float>(firstBounds.getY()) - 5.0f;
+        float right = static_cast<float>(lastBounds.getRight()) + 10.0f;
         float bottom = static_cast<float>(firstBounds.getBottom()) + 5.0f;
 
         juce::Rectangle<float> pill(left, top, right - left, bottom - top);
@@ -875,9 +837,7 @@ private:
         // "MOD" label to the left of handles
         g.setFont(GalleryFonts::label(7.5f));
         g.setColour(juce::Colour(GalleryColors::t3()));
-        g.drawText("MOD",
-                   static_cast<int>(left - 30), static_cast<int>(top),
-                   28, static_cast<int>(bottom - top),
+        g.drawText("MOD", static_cast<int>(left - 30), static_cast<int>(top), 28, static_cast<int>(bottom - top),
                    juce::Justification::centredRight);
     }
 
@@ -959,40 +919,40 @@ private:
 
         const auto& r = routes[static_cast<size_t>(routeIndex)];
         auto* alert = new juce::AlertWindow(
-            "Set Modulation Depth",
-            modSourceName(static_cast<ModSourceId>(r.sourceId))
-                + " -> " + r.destParamId,
+            "Set Modulation Depth", modSourceName(static_cast<ModSourceId>(r.sourceId)) + " -> " + r.destParamId,
             juce::MessageBoxIconType::NoIcon);
 
         alert->addTextEditor("depth", juce::String(r.depth, 3), "Depth (-1.0 to +1.0):");
-        alert->addButton("OK",     1, juce::KeyPress(juce::KeyPress::returnKey));
+        alert->addButton("OK", 1, juce::KeyPress(juce::KeyPress::returnKey));
         alert->addButton("Cancel", 0, juce::KeyPress(juce::KeyPress::escapeKey));
 
-        alert->enterModalState(true, juce::ModalCallbackFunction::create(
-            [this, routeIndex, alert](int result)
-            {
-                if (result == 1)
-                {
-                    float newDepth = alert->getTextEditorContents("depth").getFloatValue();
-                    model.setRouteDepth(routeIndex, newDepth);
-                }
-                delete alert;
-            }), false);
+        alert->enterModalState(true,
+                               juce::ModalCallbackFunction::create(
+                                   [this, routeIndex, alert](int result)
+                                   {
+                                       if (result == 1)
+                                       {
+                                           float newDepth = alert->getTextEditorContents("depth").getFloatValue();
+                                           model.setRouteDepth(routeIndex, newDepth);
+                                       }
+                                       delete alert;
+                                   }),
+                               false);
     }
 
     //==========================================================================
     void resetDragState()
     {
-        dragActive             = false;
-        dragSourceId           = ModSourceId::LFO1;
-        currentTargetParamId   = {};
+        dragActive = false;
+        dragSourceId = ModSourceId::LFO1;
+        currentTargetParamId = {};
         setInterceptsMouseClicks(false, false);
         repaint();
     }
 
     //==========================================================================
     juce::AudioProcessorValueTreeState& apvts;
-    ModRoutingModel&                    model;
+    ModRoutingModel& model;
 
     // Source handle strip
     std::vector<std::unique_ptr<ModSourceHandle>> sourceHandles;
@@ -1001,11 +961,11 @@ private:
     ModRouteListPanel routeListPanel;
 
     // Drag state
-    bool             dragActive           { false };
-    ModSourceId      dragSourceId         { ModSourceId::LFO1 };
-    juce::Point<float> dragSourcePos      {};
-    juce::Point<float> dragCursorPos      {};
-    juce::String     currentTargetParamId {};
+    bool dragActive{false};
+    ModSourceId dragSourceId{ModSourceId::LFO1};
+    juce::Point<float> dragSourcePos{};
+    juce::Point<float> dragCursorPos{};
+    juce::String currentTargetParamId{};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DragDropModRouter)
 };

@@ -29,18 +29,17 @@
 #include "../GalleryColors.h"
 #include "SpecializedWidgets.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // PlayControlPanel
 //==============================================================================
-class PlayControlPanel : public juce::Component,
-                         private juce::Timer
+class PlayControlPanel : public juce::Component, private juce::Timer
 {
 public:
     //==========================================================================
-    explicit PlayControlPanel(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit PlayControlPanel(XOceanusProcessor& proc) : processor(proc)
     {
         // ── Scale selector ────────────────────────────────────────────────────
         // V1: internal choice, not yet wired to an APVTS parameter.
@@ -51,15 +50,15 @@ public:
         // For now we build a standalone ComboBox directly since there is no
         // APVTS parameter for scale in V1.  The NamedModeSelector pattern is
         // preserved for future wiring via the setScaleParamId() method.
-        scaleCombo.addItem("Chromatic",   1);
-        scaleCombo.addItem("Major",       2);
-        scaleCombo.addItem("Minor",       3);
-        scaleCombo.addItem("Pentatonic",  4);
-        scaleCombo.addItem("Blues",       5);
-        scaleCombo.addItem("Dorian",      6);
-        scaleCombo.addItem("Mixolydian",  7);
+        scaleCombo.addItem("Chromatic", 1);
+        scaleCombo.addItem("Major", 2);
+        scaleCombo.addItem("Minor", 3);
+        scaleCombo.addItem("Pentatonic", 4);
+        scaleCombo.addItem("Blues", 5);
+        scaleCombo.addItem("Dorian", 6);
+        scaleCombo.addItem("Mixolydian", 7);
         scaleCombo.setSelectedItemIndex(0, juce::dontSendNotification);
-        scaleCombo.setVisible(false);           // driven through custom paint
+        scaleCombo.setVisible(false); // driven through custom paint
         addAndMakeVisible(scaleCombo);
 
         // Restore persisted scale choice from the last DAW session (#314).
@@ -77,15 +76,14 @@ public:
         startTimerHz(30);
     }
 
-    ~PlayControlPanel() override
-    {
-        stopTimer();
-    }
+    ~PlayControlPanel() override { stopTimer(); }
 
     void visibilityChanged() override
     {
-        if (isVisible()) startTimerHz(30);
-        else stopTimer();
+        if (isVisible())
+            startTimerHz(30);
+        else
+            stopTimer();
     }
 
     //==========================================================================
@@ -94,17 +92,11 @@ public:
 
     // Assign an APVTS parameter to the XY pad X axis.
     // Pass nullptr to clear the assignment.
-    void setXParam(juce::RangedAudioParameter* param) noexcept
-    {
-        xyXParam = param;
-    }
+    void setXParam(juce::RangedAudioParameter* param) noexcept { xyXParam = param; }
 
     // Assign an APVTS parameter to the XY pad Y axis.
     // Pass nullptr to clear the assignment.
-    void setYParam(juce::RangedAudioParameter* param) noexcept
-    {
-        xyYParam = param;
-    }
+    void setYParam(juce::RangedAudioParameter* param) noexcept { xyYParam = param; }
 
     // Force the scale selector to a specific index (0-based).
     // When persist=true (default), the new index is written back to the
@@ -137,8 +129,7 @@ public:
 
         // ── Divider ───────────────────────────────────────────────────────────
         g.setColour(get(borderGray()).withAlpha(0.4f));
-        g.drawHorizontalLine(exprBounds.getBottom() + kSectionGap / 2,
-                             8.0f, (float)getWidth() - 8.0f);
+        g.drawHorizontalLine(exprBounds.getBottom() + kSectionGap / 2, 8.0f, (float)getWidth() - 8.0f);
 
         // ── 2. Macro Meters ───────────────────────────────────────────────────
         auto macroBounds = macroMetersBounds();
@@ -146,8 +137,7 @@ public:
 
         // ── Divider ───────────────────────────────────────────────────────────
         g.setColour(get(borderGray()).withAlpha(0.4f));
-        g.drawHorizontalLine(macroBounds.getBottom() + kSectionGap / 2,
-                             8.0f, (float)getWidth() - 8.0f);
+        g.drawHorizontalLine(macroBounds.getBottom() + kSectionGap / 2, 8.0f, (float)getWidth() - 8.0f);
 
         // ── 3. XY Pad ─────────────────────────────────────────────────────────
         auto xyBounds = xyPadBounds();
@@ -155,8 +145,7 @@ public:
 
         // ── Divider ───────────────────────────────────────────────────────────
         g.setColour(get(borderGray()).withAlpha(0.4f));
-        g.drawHorizontalLine(xyBounds.getBottom() + kSectionGap / 2,
-                             8.0f, (float)getWidth() - 8.0f);
+        g.drawHorizontalLine(xyBounds.getBottom() + kSectionGap / 2, 8.0f, (float)getWidth() - 8.0f);
 
         // ── 4. Scale Selector ─────────────────────────────────────────────────
         auto scaleBounds = scaleSelectorBounds();
@@ -178,7 +167,8 @@ public:
     void mouseDown(const juce::MouseEvent& e) override
     {
         wakeTimer(); // fix #387: wake adaptive timer on interaction
-        if (e.mods.isRightButtonDown()) return;
+        if (e.mods.isRightButtonDown())
+            return;
 
         if (expressionStripBounds().contains(e.position.toInt()))
         {
@@ -201,7 +191,8 @@ public:
 
     void mouseDrag(const juce::MouseEvent& e) override
     {
-        if (e.mods.isRightButtonDown()) return;
+        if (e.mods.isRightButtonDown())
+            return;
 
         if (activeExprStrip != ExprStrip::None)
         {
@@ -225,10 +216,10 @@ public:
         if (activeExprStrip == ExprStrip::PitchBend)
             pitchBendSpringActive = true;
 
-        activeExprStrip  = ExprStrip::None;
-        macroMouseDrag   = false;
+        activeExprStrip = ExprStrip::None;
+        macroMouseDrag = false;
         activeMacroIndex = -1;
-        xyDragging       = false;
+        xyDragging = false;
     }
 
     //==========================================================================
@@ -249,7 +240,7 @@ public:
             pitchBendPos += (0.5f - pitchBendPos) * 0.15f;
             if (std::abs(pitchBendPos - 0.5f) < 0.002f)
             {
-                pitchBendPos       = 0.5f;
+                pitchBendPos = 0.5f;
                 pitchBendSpringActive = false;
             }
 
@@ -298,7 +289,7 @@ public:
         if (anyChange)
         {
             idleTickCount = 0;
-            if (getTimerInterval() != 33)   // currently in 1 Hz mode → wake up
+            if (getTimerInterval() != 33) // currently in 1 Hz mode → wake up
                 startTimerHz(30);
         }
         else
@@ -321,69 +312,59 @@ private:
     //==========================================================================
     // Layout constants (all in points, matching the 320pt panel width)
     //==========================================================================
-    static constexpr int kPanelW          = 320;
-    static constexpr int kExprStripH      = 160;   // Expression Strip total height
-    static constexpr int kStripW          = 28;    // Individual mod/pitch strip width
-    static constexpr int kStripH          = 140;   // Strip fill-bar height
-    static constexpr int kMacroH          = 48;    // Macro Meters total height
-    static constexpr int kMacroBarH       = 8;     // Per-bar height
-    static constexpr int kMacroGap        = 4;     // Gap between macro bars
-    static constexpr int kXYSize          = 160;   // XY Pad square size
-    static constexpr int kScaleH          = 28;    // Scale Selector height
-    static constexpr int kSectionGap      = 8;     // Vertical gap between sections
-    static constexpr int kPadTop          = 8;     // Top padding
+    static constexpr int kPanelW = 320;
+    static constexpr int kExprStripH = 160; // Expression Strip total height
+    static constexpr int kStripW = 28;      // Individual mod/pitch strip width
+    static constexpr int kStripH = 140;     // Strip fill-bar height
+    static constexpr int kMacroH = 48;      // Macro Meters total height
+    static constexpr int kMacroBarH = 8;    // Per-bar height
+    static constexpr int kMacroGap = 4;     // Gap between macro bars
+    static constexpr int kXYSize = 160;     // XY Pad square size
+    static constexpr int kScaleH = 28;      // Scale Selector height
+    static constexpr int kSectionGap = 8;   // Vertical gap between sections
+    static constexpr int kPadTop = 8;       // Top padding
 
-    static constexpr int kNumScales       = 7;
+    static constexpr int kNumScales = 7;
 
     // Macro parameter IDs — must match MacroSection and XOceanusProcessor layout
-    static constexpr const char* macroParamIds[4] = {
-        "macro1", "macro2", "macro3", "macro4"
-    };
+    static constexpr const char* macroParamIds[4] = {"macro1", "macro2", "macro3", "macro4"};
 
     // Macro display labels — short form matches MacroSection
-    static constexpr const char* macroLabels[4] = {
-        "CHAR", "MOVE", "COUP", "SPACE"
-    };
+    static constexpr const char* macroLabels[4] = {"CHAR", "MOVE", "COUP", "SPACE"};
 
     // Macro bar colors per spec
     const juce::Colour macroColors[4] = {
-        juce::Colour(0xFFE9C46A),   // M1 XO Gold
-        juce::Colour(0xFF00FF41),   // M2 Phosphor Green
-        juce::Colour(0xFFBF40FF),   // M3 Prism Violet
-        juce::Colour(0xFF00B4A0),   // M4 Teal
+        juce::Colour(0xFFE9C46A), // M1 XO Gold
+        juce::Colour(0xFF00FF41), // M2 Phosphor Green
+        juce::Colour(0xFFBF40FF), // M3 Prism Violet
+        juce::Colour(0xFF00B4A0), // M4 Teal
     };
 
     // Scale names
-    const juce::StringArray scaleNames {
-        "Chromatic", "Major", "Minor", "Pentatonic", "Blues", "Dorian", "Mixolydian"
-    };
+    const juce::StringArray scaleNames{"Chromatic", "Major", "Minor", "Pentatonic", "Blues", "Dorian", "Mixolydian"};
 
     //==========================================================================
     // Sub-region bounds helpers (relative to component origin, with top padding)
     //==========================================================================
-    juce::Rectangle<int> expressionStripBounds() const
-    {
-        return { 0, kPadTop, getWidth(), kExprStripH };
-    }
+    juce::Rectangle<int> expressionStripBounds() const { return {0, kPadTop, getWidth(), kExprStripH}; }
 
     juce::Rectangle<int> macroMetersBounds() const
     {
         int top = kPadTop + kExprStripH + kSectionGap;
-        return { 0, top, getWidth(), kMacroH };
+        return {0, top, getWidth(), kMacroH};
     }
 
     juce::Rectangle<int> xyPadBounds() const
     {
-        int top     = kPadTop + kExprStripH + kSectionGap + kMacroH + kSectionGap;
+        int top = kPadTop + kExprStripH + kSectionGap + kMacroH + kSectionGap;
         int centreX = getWidth() / 2 - kXYSize / 2;
-        return { centreX, top, kXYSize, kXYSize };
+        return {centreX, top, kXYSize, kXYSize};
     }
 
     juce::Rectangle<int> scaleSelectorBounds() const
     {
-        int top = kPadTop + kExprStripH + kSectionGap + kMacroH + kSectionGap
-                  + kXYSize + kSectionGap;
-        return { 0, top, getWidth(), kScaleH };
+        int top = kPadTop + kExprStripH + kSectionGap + kMacroH + kSectionGap + kXYSize + kSectionGap;
+        return {0, top, getWidth(), kScaleH};
     }
 
     //==========================================================================
@@ -412,23 +393,19 @@ private:
             accentCol = eng->getAccentColour();
 
         // ── Mod Wheel (left strip) ────────────────────────────────────────────
-        float modX   = bf.getCentreX() - kStripW * 2.0f - 8.0f;  // offset left of centre
+        float modX = bf.getCentreX() - kStripW * 2.0f - 8.0f; // offset left of centre
         float stripY = stripAreaY + (stripAreaH - kStripH) * 0.5f;
-        paintVerticalStrip(g, modX, stripY, kStripW, kStripH,
-                           modWheelPos, accentCol, "MOD");
+        paintVerticalStrip(g, modX, stripY, kStripW, kStripH, modWheelPos, accentCol, "MOD");
 
         // ── Pitch Bend (right strip) ──────────────────────────────────────────
         float pbX = bf.getCentreX() + 8.0f;
-        paintPitchBendStrip(g, pbX, stripY, kStripW, kStripH,
-                            pitchBendPos, accentCol, "BEND");
+        paintPitchBendStrip(g, pbX, stripY, kStripW, kStripH, pitchBendPos, accentCol, "BEND");
     }
 
     // Vertical fill strip (mod wheel style — fills from bottom)
-    void paintVerticalStrip(juce::Graphics& g,
-                            float x, float y, float w, float h,
-                            float normalizedValue,     // 0..1
-                            juce::Colour fillColor,
-                            const juce::String& label)
+    void paintVerticalStrip(juce::Graphics& g, float x, float y, float w, float h,
+                            float normalizedValue, // 0..1
+                            juce::Colour fillColor, const juce::String& label)
     {
         using namespace GalleryColors;
 
@@ -460,17 +437,14 @@ private:
         // Label below strip
         g.setFont(GalleryFonts::label(7.0f));
         g.setColour(get(textMid()));
-        g.drawText(label,
-                   juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
+        g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
     }
 
     // Pitch bend strip — center = no bend, spring-return visual
-    void paintPitchBendStrip(juce::Graphics& g,
-                              float x, float y, float w, float h,
-                              float normalizedPos,   // 0 = full down, 0.5 = centre, 1 = full up
-                              juce::Colour fillColor,
-                              const juce::String& label)
+    void paintPitchBendStrip(juce::Graphics& g, float x, float y, float w, float h,
+                             float normalizedPos, // 0 = full down, 0.5 = centre, 1 = full up
+                             juce::Colour fillColor, const juce::String& label)
     {
         using namespace GalleryColors;
 
@@ -492,8 +466,8 @@ private:
         // Fill from centre toward current position
         float handleY = y + h * (1.0f - juce::jlimit(0.0f, 1.0f, normalizedPos));
         float fillStart = juce::jmin(handleY, centreY);
-        float fillEnd   = juce::jmax(handleY, centreY);
-        float fillH     = fillEnd - fillStart;
+        float fillEnd = juce::jmax(handleY, centreY);
+        float fillH = fillEnd - fillStart;
 
         if (fillH > 1.0f)
         {
@@ -513,8 +487,7 @@ private:
         // Label below
         g.setFont(GalleryFonts::label(7.0f));
         g.setColour(get(textMid()));
-        g.drawText(label,
-                   juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
+        g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
     }
 
@@ -531,9 +504,9 @@ private:
         g.drawText("MACROS", bf.withHeight(10.0f), juce::Justification::centred, false);
 
         float barAreaY = bf.getY() + 11.0f;
-        float labelW   = 38.0f;   // width reserved for the left-side text label
-        float barX     = bf.getX() + labelW + 4.0f;
-        float barW     = bf.getWidth() - labelW - 12.0f;
+        float labelW = 38.0f; // width reserved for the left-side text label
+        float barX = bf.getX() + labelW + 4.0f;
+        float barW = bf.getWidth() - labelW - 12.0f;
 
         for (int i = 0; i < 4; ++i)
         {
@@ -543,9 +516,7 @@ private:
             // Label
             g.setFont(GalleryFonts::label(8.0f));
             g.setColour(col);
-            g.drawText(macroLabels[i],
-                       juce::Rectangle<float>(bf.getX() + 4.0f, rowY,
-                                              labelW - 4.0f, (float)kMacroBarH),
+            g.drawText(macroLabels[i], juce::Rectangle<float>(bf.getX() + 4.0f, rowY, labelW - 4.0f, (float)kMacroBarH),
                        juce::Justification::centredRight, false);
 
             // Track background
@@ -562,8 +533,7 @@ private:
 
             // Track outline
             g.setColour(col.withAlpha(0.30f));
-            g.drawRoundedRectangle(barX + 0.5f, rowY + 0.5f,
-                                   barW - 1.0f, (float)kMacroBarH - 1.0f, 3.0f, 0.75f);
+            g.drawRoundedRectangle(barX + 0.5f, rowY + 0.5f, barW - 1.0f, (float)kMacroBarH - 1.0f, 3.0f, 0.75f);
         }
     }
 
@@ -572,8 +542,8 @@ private:
     {
         using namespace GalleryColors;
 
-        auto bf    = bounds.toFloat();
-        float rad  = 8.0f;
+        auto bf = bounds.toFloat();
+        float rad = 8.0f;
 
         // Engine accent (fallback XO Gold)
         juce::Colour accentCol = juce::Colour(GalleryColors::xoGold);
@@ -591,7 +561,7 @@ private:
         g.setColour(get(borderGray()).withAlpha(0.22f));
         for (float frac : {0.25f, 0.50f, 0.75f})
         {
-            float lx = bf.getX() + bf.getWidth()  * frac;
+            float lx = bf.getX() + bf.getWidth() * frac;
             float ly = bf.getY() + bf.getHeight() * frac;
             // Vertical grid line
             g.drawLine(lx, bf.getY() + 4.0f, lx, bf.getBottom() - 4.0f, 1.0f);
@@ -600,8 +570,8 @@ private:
         }
 
         // Crosshair
-        float cx = bf.getX() + bf.getWidth()  * xyPos.x;
-        float cy = bf.getY() + bf.getHeight() * (1.0f - xyPos.y);  // y=0 at bottom
+        float cx = bf.getX() + bf.getWidth() * xyPos.x;
+        float cy = bf.getY() + bf.getHeight() * (1.0f - xyPos.y); // y=0 at bottom
 
         g.setColour(accentCol.withAlpha(0.35f));
         g.drawLine(cx, bf.getY() + 4.0f, cx, bf.getBottom() - 4.0f, 0.75f);
@@ -612,8 +582,7 @@ private:
         g.setColour(accentCol);
         g.fillEllipse(cx - circleR, cy - circleR, circleR * 2.0f, circleR * 2.0f);
         g.setColour(juce::Colours::white.withAlpha(0.6f));
-        g.drawEllipse(cx - circleR + 0.5f, cy - circleR + 0.5f,
-                      circleR * 2.0f - 1.0f, circleR * 2.0f - 1.0f, 1.0f);
+        g.drawEllipse(cx - circleR + 0.5f, cy - circleR + 0.5f, circleR * 2.0f - 1.0f, circleR * 2.0f - 1.0f, 1.0f);
 
         // "XY" unassigned watermark
         if (xyXParam == nullptr && xyYParam == nullptr)
@@ -635,7 +604,8 @@ private:
 
         auto bf = bounds.toFloat();
         int n = scaleNames.size();
-        if (n == 0) return;
+        if (n == 0)
+            return;
 
         float pillW = bf.getWidth() / (float)n;
         float pillH = bf.getHeight();
@@ -662,9 +632,7 @@ private:
                 g.drawRoundedRectangle(pill.reduced(0.5f), 10.0f, 1.0f);
             }
 
-            juce::Colour textCol = isActive
-                ? juce::Colours::white
-                : accent.withAlpha(0.55f);
+            juce::Colour textCol = isActive ? juce::Colours::white : accent.withAlpha(0.55f);
 
             g.setFont(GalleryFonts::label(juce::jmax(6.5f, pillH * 0.34f)));
             g.setColour(textCol);
@@ -680,7 +648,12 @@ private:
     //==========================================================================
 
     // ── Expression strip dispatch ─────────────────────────────────────────────
-    enum class ExprStrip { None, ModWheel, PitchBend };
+    enum class ExprStrip
+    {
+        None,
+        ModWheel,
+        PitchBend
+    };
     ExprStrip activeExprStrip = ExprStrip::None;
 
     void handleExpressionMouseDown(const juce::MouseEvent& e)
@@ -688,12 +661,12 @@ private:
         auto eb = expressionStripBounds().toFloat();
 
         // Determine which strip was hit
-        float modX  = eb.getCentreX() - kStripW * 2.0f - 8.0f;
-        float pbX   = eb.getCentreX() + 8.0f;
+        float modX = eb.getCentreX() - kStripW * 2.0f - 8.0f;
+        float pbX = eb.getCentreX() + 8.0f;
         float stripY = eb.getY() + 14.0f + (eb.getHeight() - 14.0f - kStripH) * 0.5f;
 
         juce::Rectangle<float> modRect(modX, stripY, (float)kStripW, (float)kStripH);
-        juce::Rectangle<float> pbRect (pbX,  stripY, (float)kStripW, (float)kStripH);
+        juce::Rectangle<float> pbRect(pbX, stripY, (float)kStripW, (float)kStripH);
 
         if (modRect.contains(e.position))
         {
@@ -702,7 +675,7 @@ private:
         }
         else if (pbRect.contains(e.position))
         {
-            activeExprStrip      = ExprStrip::PitchBend;
+            activeExprStrip = ExprStrip::PitchBend;
             pitchBendSpringActive = false;
             setPitchBendFromY(e.position.y, pbRect);
         }
@@ -730,8 +703,7 @@ private:
     void setModWheelFromY(float mouseY, juce::Rectangle<float> stripRect)
     {
         // Fill from bottom → y=bottom → 0, y=top → 1
-        float norm = 1.0f - juce::jlimit(0.0f, 1.0f,
-                    (mouseY - stripRect.getY()) / stripRect.getHeight());
+        float norm = 1.0f - juce::jlimit(0.0f, 1.0f, (mouseY - stripRect.getY()) / stripRect.getHeight());
         modWheelPos = norm;
 
         // Send to parameter if it exists, else send directly as MIDI CC1
@@ -754,8 +726,7 @@ private:
     void setPitchBendFromY(float mouseY, juce::Rectangle<float> stripRect)
     {
         // y=top → 1.0 (up bend), y=bottom → 0.0 (down bend), y=centre → 0.5
-        float norm = 1.0f - juce::jlimit(0.0f, 1.0f,
-                    (mouseY - stripRect.getY()) / stripRect.getHeight());
+        float norm = 1.0f - juce::jlimit(0.0f, 1.0f, (mouseY - stripRect.getY()) / stripRect.getHeight());
         pitchBendPos = norm;
         sendPitchBendMidi(norm);
         repaint(expressionStripBounds());
@@ -764,23 +735,23 @@ private:
     void sendPitchBendMidi(float normPos)
     {
         // normPos: 0..1 → 0x0000..0x3FFF, with 0.5 = centre (0x2000)
-        int pitchValue = juce::roundToInt(normPos * 16383.0f);   // 14-bit, 0x0000..0x3FFF
-        auto msg = juce::MidiMessage::pitchWheel(1, pitchValue - 8192);  // JUCE wants −8192..+8191
+        int pitchValue = juce::roundToInt(normPos * 16383.0f);          // 14-bit, 0x0000..0x3FFF
+        auto msg = juce::MidiMessage::pitchWheel(1, pitchValue - 8192); // JUCE wants −8192..+8191
         msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
         processor.getMidiCollector().addMessageToQueue(msg);
     }
 
     // ── Macro bar drag ────────────────────────────────────────────────────────
     int activeMacroIndex = -1;
-    bool macroMouseDrag  = false;
+    bool macroMouseDrag = false;
 
     void handleMacroMouseDown(const juce::MouseEvent& e)
     {
         auto mb = macroMetersBounds().toFloat();
         float barAreaY = mb.getY() + 11.0f;
-        float labelW   = 38.0f;
-        float barX     = mb.getX() + labelW + 4.0f;
-        float barW     = mb.getWidth() - labelW - 12.0f;
+        float labelW = 38.0f;
+        float barX = mb.getX() + labelW + 4.0f;
+        float barW = mb.getWidth() - labelW - 12.0f;
 
         for (int i = 0; i < 4; ++i)
         {
@@ -798,11 +769,12 @@ private:
 
     void handleMacroDrag(const juce::MouseEvent& e)
     {
-        if (activeMacroIndex < 0) return;
+        if (activeMacroIndex < 0)
+            return;
         auto mb = macroMetersBounds().toFloat();
         float labelW = 38.0f;
-        float barX   = mb.getX() + labelW + 4.0f;
-        float barW   = mb.getWidth() - labelW - 12.0f;
+        float barX = mb.getX() + labelW + 4.0f;
+        float barW = mb.getWidth() - labelW - 12.0f;
         applyMacroDrag(e.position.x, barX, barW, activeMacroIndex);
     }
 
@@ -827,10 +799,7 @@ private:
         updateXYFromMouse(e.position);
     }
 
-    void handleXYMouseDrag(const juce::MouseEvent& e)
-    {
-        updateXYFromMouse(e.position);
-    }
+    void handleXYMouseDrag(const juce::MouseEvent& e) { updateXYFromMouse(e.position); }
 
     void updateXYFromMouse(juce::Point<float> mousePos)
     {
@@ -838,7 +807,7 @@ private:
         float nx = juce::jlimit(0.0f, 1.0f, (mousePos.x - xyb.getX()) / xyb.getWidth());
         float ny = 1.0f - juce::jlimit(0.0f, 1.0f, (mousePos.y - xyb.getY()) / xyb.getHeight());
 
-        xyPos = { nx, ny };
+        xyPos = {nx, ny};
 
         if (xyXParam != nullptr)
             xyXParam->setValueNotifyingHost(nx);
@@ -852,12 +821,13 @@ private:
     void handleScaleMouseDown(const juce::MouseEvent& e)
     {
         auto sb = scaleSelectorBounds().toFloat();
-        int n   = scaleNames.size();
-        if (n == 0) return;
+        int n = scaleNames.size();
+        if (n == 0)
+            return;
 
-        float pillW  = sb.getWidth() / (float)n;
-        int clicked  = (int)((e.position.x - sb.getX()) / pillW);
-        clicked      = juce::jlimit(0, n - 1, clicked);
+        float pillW = sb.getWidth() / (float)n;
+        int clicked = (int)((e.position.x - sb.getX()) / pillW);
+        clicked = juce::jlimit(0, n - 1, clicked);
 
         setScaleIndex(clicked);
     }
@@ -868,20 +838,20 @@ private:
     XOceanusProcessor& processor;
 
     // Expression strip state
-    float modWheelPos          = 0.0f;   // 0..1 (normalized, 0 = no mod, 1 = max)
-    float pitchBendPos         = 0.5f;   // 0..1 (0.5 = centre = no bend)
-    bool  pitchBendSpringActive = false;
+    float modWheelPos = 0.0f;  // 0..1 (normalized, 0 = no mod, 1 = max)
+    float pitchBendPos = 0.5f; // 0..1 (0.5 = centre = no bend)
+    bool pitchBendSpringActive = false;
 
     // Macro meter values (raw 0..1, polled from APVTS every 10 Hz)
-    std::array<float, 4> macroValues { 0.0f, 0.0f, 0.0f, 0.0f };
+    std::array<float, 4> macroValues{0.0f, 0.0f, 0.0f, 0.0f};
 
     // XY pad state
-    juce::Point<float>         xyPos     { 0.5f, 0.5f };  // 0..1 on each axis
-    juce::RangedAudioParameter* xyXParam  = nullptr;       // assigned externally
-    juce::RangedAudioParameter* xyYParam  = nullptr;
+    juce::Point<float> xyPos{0.5f, 0.5f};           // 0..1 on each axis
+    juce::RangedAudioParameter* xyXParam = nullptr; // assigned externally
+    juce::RangedAudioParameter* xyYParam = nullptr;
 
     // Scale selector
-    int scaleIndex = 0;   // 0 = Chromatic (default)
+    int scaleIndex = 0; // 0 = Chromatic (default)
 
     // Scale combo (parked, invisible — drives internal scaleIndex)
     juce::ComboBox scaleCombo;

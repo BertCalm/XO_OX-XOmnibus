@@ -9,7 +9,8 @@
 #include "OcelotParamSnapshot.h"
 #include "../../DSP/FastMath.h"
 
-namespace xocelot {
+namespace xocelot
+{
 
 // OcelotVoicePool — 8-voice polyphonic pool with quietest-voice stealing.
 //
@@ -47,14 +48,14 @@ public:
         }
 
         // 2. All voices active — steal the quietest
-        int   stealIdx = 0;
-        float minAmp   = std::numeric_limits<float>::max();
+        int stealIdx = 0;
+        float minAmp = std::numeric_limits<float>::max();
         for (int i = 0; i < kMaxVoices; ++i)
         {
             float amp = voices[i].getLastAmplitude();
             if (amp < minAmp)
             {
-                minAmp   = amp;
+                minAmp = amp;
                 stealIdx = i;
             }
         }
@@ -80,7 +81,8 @@ public:
     void allNotesOff()
     {
         for (auto& v : voices)
-            if (v.isActive()) v.noteOff();
+            if (v.isActive())
+                v.noteOff();
     }
 
     // reset: hard-reset all voices — clear all state, filter memory, delay lines.
@@ -103,8 +105,7 @@ public:
     // renderBlock: accumulate all active voices into outL/outR.
     // Caller must clear outL/outR before calling.
     // Returns the post-mix mono RMS (for coupling getSampleForCoupling).
-    float renderBlock(float* outL, float* outR, int numSamples,
-                      const OcelotParamSnapshot& snap)
+    float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap)
     {
         float totalSumSq = 0.0f;
 
@@ -127,10 +128,12 @@ public:
         return std::sqrt(totalSumSq / static_cast<float>(kMaxVoices));
     }
 
-    int  activeVoiceCount() const
+    int activeVoiceCount() const
     {
         int n = 0;
-        for (const auto& v : voices) if (v.isActive()) ++n;
+        for (const auto& v : voices)
+            if (v.isActive())
+                ++n;
         return n;
     }
 

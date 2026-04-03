@@ -11,9 +11,10 @@
 #include "../../Core/PresetManager.h"
 #include "../../Core/EngineRegistry.h"
 #include "../../Core/MegaCouplingMatrix.h"
-#include "../GalleryColors.h"   // GalleryColors, prefixForEngine (no editor circular dep)
+#include "../GalleryColors.h" // GalleryColors, prefixForEngine (no editor circular dep)
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ExportDialog — XPN export workflow UI with Gallery Model styling,
@@ -27,12 +28,10 @@ namespace xoceanus {
 //   5. Progress display with per-note granularity
 //   6. Completion summary
 //
-class ExportDialog : public juce::Component,
-                     private juce::Timer
+class ExportDialog : public juce::Component, private juce::Timer
 {
 public:
-    ExportDialog(PresetManager& pm,
-                 juce::AudioProcessorValueTreeState* apvts = nullptr,
+    ExportDialog(PresetManager& pm, juce::AudioProcessorValueTreeState* apvts = nullptr,
                  MegaCouplingMatrix* couplingMatrix = nullptr)
         : presetManager(pm), dialogApvts(apvts), liveCouplingMatrix(couplingMatrix)
     {
@@ -122,7 +121,8 @@ public:
         if (!exporting)
         {
             auto estArea = getLocalBounds().reduced(12, 0);
-            estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH + kEntangledSectionH + kBundleSectionH + 4);
+            estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH +
+                                  kEntangledSectionH + kBundleSectionH + 4);
             estArea = estArea.removeFromTop(20);
             g.setFont(GalleryFonts::label(8.5f));
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
@@ -229,43 +229,47 @@ public:
     // Export quick profiles
     //==========================================================================
 
-    enum class ExportProfile { MPCStandard, Lightweight, MaxQuality };
+    enum class ExportProfile
+    {
+        MPCStandard,
+        Lightweight,
+        MaxQuality
+    };
 
     void applyProfile(ExportProfile profile)
     {
         switch (profile)
         {
-            case ExportProfile::MPCStandard:
-                strategyBox.setSelectedId(1);    // EveryMinor3rd
-                velLayersBox.setSelectedId(3);   // 3 layers
-                bitDepthBox.setSelectedId(2);    // 24-bit
-                sampleRateBox.setSelectedId(2);  // 48kHz
-                break;
-            case ExportProfile::Lightweight:
-                strategyBox.setSelectedId(4);    // OctavesOnly
-                velLayersBox.setSelectedId(1);   // 1 layer
-                bitDepthBox.setSelectedId(1);    // 16-bit
-                sampleRateBox.setSelectedId(1);  // 44.1kHz
-                break;
-            case ExportProfile::MaxQuality:
-                strategyBox.setSelectedId(2);    // Chromatic
-                velLayersBox.setSelectedId(3);   // 3 layers
-                bitDepthBox.setSelectedId(2);    // 24-bit
-                sampleRateBox.setSelectedId(2);  // 48kHz
-                break;
+        case ExportProfile::MPCStandard:
+            strategyBox.setSelectedId(1);   // EveryMinor3rd
+            velLayersBox.setSelectedId(3);  // 3 layers
+            bitDepthBox.setSelectedId(2);   // 24-bit
+            sampleRateBox.setSelectedId(2); // 48kHz
+            break;
+        case ExportProfile::Lightweight:
+            strategyBox.setSelectedId(4);   // OctavesOnly
+            velLayersBox.setSelectedId(1);  // 1 layer
+            bitDepthBox.setSelectedId(1);   // 16-bit
+            sampleRateBox.setSelectedId(1); // 44.1kHz
+            break;
+        case ExportProfile::MaxQuality:
+            strategyBox.setSelectedId(2);   // Chromatic
+            velLayersBox.setSelectedId(3);  // 3 layers
+            bitDepthBox.setSelectedId(2);   // 24-bit
+            sampleRateBox.setSelectedId(2); // 48kHz
+            break;
         }
         updateSizeEstimate();
     }
 
 private:
-
-    static constexpr int kHeaderH            = 36;
-    static constexpr int kPresetSectionH     = 140;
-    static constexpr int kPreviewSectionH    = 56;
-    static constexpr int kSettingsSectionH   = 100;
-    static constexpr int kEntangledSectionH  = 40;
-    static constexpr int kBundleSectionH     = 122;
-    static constexpr int kProgressH          = 44;
+    static constexpr int kHeaderH = 36;
+    static constexpr int kPresetSectionH = 140;
+    static constexpr int kPreviewSectionH = 56;
+    static constexpr int kSettingsSectionH = 100;
+    static constexpr int kEntangledSectionH = 40;
+    static constexpr int kBundleSectionH = 122;
+    static constexpr int kProgressH = 44;
 
     PresetManager& presetManager;
     juce::AudioProcessorValueTreeState* dialogApvts = nullptr;
@@ -273,42 +277,41 @@ private:
     std::unique_ptr<juce::Thread> exportThread;
 
     // Preset selection
-    juce::ListBox presetList { "PresetList" };
+    juce::ListBox presetList{"PresetList"};
 
     // Render settings
     juce::ComboBox strategyBox, velLayersBox, bitDepthBox, sampleRateBox;
 
     // Quick-profile buttons (surfaces ExportProfile enum to the user)
-    juce::TextButton profileMPCBtn     { "MPC Standard" };
-    juce::TextButton profileLightBtn   { "Lightweight" };
-    juce::TextButton profileMaxBtn     { "Max Quality" };
+    juce::TextButton profileMPCBtn{"MPC Standard"};
+    juce::TextButton profileLightBtn{"Lightweight"};
+    juce::TextButton profileMaxBtn{"Max Quality"};
 
     // Bundle config
     juce::TextEditor bundleNameField;
     juce::ComboBox coverEngineBox;
-    juce::ToggleButton soundShapeToggle { "Sound Shape Auto" };
+    juce::ToggleButton soundShapeToggle{"Sound Shape Auto"};
 
     // Output directory
-    juce::File outputDir { juce::File::getSpecialLocation(juce::File::userDesktopDirectory)
-                                       .getChildFile("XPN_Exports") };
+    juce::File outputDir{juce::File::getSpecialLocation(juce::File::userDesktopDirectory).getChildFile("XPN_Exports")};
     juce::Label outputDirLabel;
-    juce::TextButton outputDirBtn { "CHOOSE..." };
+    juce::TextButton outputDirBtn{"CHOOSE..."};
 
     // Size estimate
     juce::String sizeEstimateText = "Estimated size: calculating...";
 
     // Progress
-    juce::ProgressBar progressBar { progressValue };
+    juce::ProgressBar progressBar{progressValue};
     double progressValue = 0.0;
     juce::Label progressLabel;
 
     // Action buttons
-    juce::TextButton exportBtn { "EXPORT" };
-    juce::TextButton cancelBtn { "CANCEL" };
-    juce::TextButton validateBtn { "VALIDATE" };
+    juce::TextButton exportBtn{"EXPORT"};
+    juce::TextButton cancelBtn{"CANCEL"};
+    juce::TextButton validateBtn{"VALIDATE"};
 
     // Export state
-    std::atomic<bool> shouldCancel { false };
+    std::atomic<bool> shouldCancel{false};
     std::unique_ptr<juce::FileChooser> fileChooser;
 
     // Forward declaration — full definition below in the private section.
@@ -316,11 +319,11 @@ private:
 
     // XDrip preview
     XDrip previewDrip;
-    juce::TextButton previewPlayBtn { ">" };
+    juce::TextButton previewPlayBtn{">"};
     juce::Rectangle<int> previewWaveformBounds;
     std::vector<float> cachedThumbnail;
     bool previewPlaying = false;
-    std::atomic<int> previewPlaybackPos { 0 };
+    std::atomic<int> previewPlaybackPos{0};
     juce::AudioBuffer<float> previewAudioBuffer;
     std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
     std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
@@ -329,7 +332,7 @@ private:
 
     // Entangled mode — coupling snapshot export
     MegaCouplingMatrix* liveCouplingMatrix = nullptr;
-    juce::ToggleButton entangledToggle { "Entangled Mode" };
+    juce::ToggleButton entangledToggle{"Entangled Mode"};
     juce::Label entangledSummaryLabel;
     XOriginate::CouplingSnapshot capturedSnapshot;
 
@@ -349,12 +352,10 @@ private:
 
     void buildPreviewSection()
     {
-        previewPlayBtn.setColour(juce::TextButton::buttonColourId,
-                                  GalleryColors::get(GalleryColors::xoGold));
+        previewPlayBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::xoGold));
         previewPlayBtn.setColour(juce::TextButton::textColourOffId,
-                                  juce::Colour(GalleryColors::get(GalleryColors::textDark())));
-        A11y::setup(previewPlayBtn, "Preview Play",
-                    "Play a 2-second audio preview of the selected preset");
+                                 juce::Colour(GalleryColors::get(GalleryColors::textDark())));
+        A11y::setup(previewPlayBtn, "Preview Play", "Play a 2-second audio preview of the selected preset");
         addAndMakeVisible(previewPlayBtn);
 
         previewPlayBtn.onClick = [this]
@@ -376,12 +377,13 @@ private:
 
     void triggerPreviewForSelectedPreset()
     {
-        if (presetManager.getLibrary().empty()) return;
+        if (presetManager.getLibrary().empty())
+            return;
 
         // Use the selected preset, or the first one
-        int idx = (selectedPresetIndex >= 0 &&
-                   selectedPresetIndex < (int)presetManager.getLibrary().size())
-                      ? selectedPresetIndex : 0;
+        int idx = (selectedPresetIndex >= 0 && selectedPresetIndex < (int)presetManager.getLibrary().size())
+                      ? selectedPresetIndex
+                      : 0;
 
         const auto& preset = presetManager.getLibrary()[static_cast<size_t>(idx)];
         previewDrip.requestPreview(preset, dialogApvts);
@@ -397,7 +399,8 @@ private:
     void startPreviewPlayback()
     {
         previewAudioBuffer = previewDrip.getPreviewBuffer();
-        if (previewAudioBuffer.getNumSamples() == 0) return;
+        if (previewAudioBuffer.getNumSamples() == 0)
+            return;
 
         previewPlaybackPos.store(0);
         previewPlaying = true;
@@ -419,8 +422,8 @@ private:
         if (!isTimerRunning())
             startTimerHz(15);
 
-        juce::AccessibilityHandler::postAnnouncement(
-            "Playing preview", juce::AccessibilityHandler::AnnouncementPriority::medium);
+        juce::AccessibilityHandler::postAnnouncement("Playing preview",
+                                                     juce::AccessibilityHandler::AnnouncementPriority::medium);
     }
 
     void stopPreviewPlayback()
@@ -454,20 +457,18 @@ private:
         void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) override
         {
             info.clearActiveBufferRegion();
-            if (!dialog.previewPlaying) return;
+            if (!dialog.previewPlaying)
+                return;
 
             auto& src = dialog.previewAudioBuffer;
             int srcChannels = src.getNumChannels();
-            int srcSamples  = src.getNumSamples();
+            int srcSamples = src.getNumSamples();
             int pos = dialog.previewPlaybackPos.load();
 
             if (pos >= srcSamples)
             {
                 // Playback finished — schedule stop on message thread
-                juce::MessageManager::callAsync([&dialog = dialog]
-                {
-                    dialog.stopPreviewPlayback();
-                });
+                juce::MessageManager::callAsync([&dialog = dialog] { dialog.stopPreviewPlayback(); });
                 return;
             }
 
@@ -491,7 +492,8 @@ private:
 
     void paintPreviewWaveform(juce::Graphics& g)
     {
-        if (previewWaveformBounds.isEmpty()) return;
+        if (previewWaveformBounds.isEmpty())
+            return;
 
         auto area = previewWaveformBounds;
 
@@ -539,12 +541,11 @@ private:
             // Draw playback position indicator
             if (previewPlaying && previewAudioBuffer.getNumSamples() > 0)
             {
-                float progress = static_cast<float>(previewPlaybackPos.load())
-                                 / static_cast<float>(previewAudioBuffer.getNumSamples());
+                float progress = static_cast<float>(previewPlaybackPos.load()) /
+                                 static_cast<float>(previewAudioBuffer.getNumSamples());
                 float lineX = x0 + progress * w;
                 g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
-                g.drawLine(lineX, static_cast<float>(area.getY()),
-                           lineX, static_cast<float>(area.getBottom()), 1.5f);
+                g.drawLine(lineX, static_cast<float>(area.getY()), lineX, static_cast<float>(area.getBottom()), 1.5f);
             }
         }
         else if (dripState == XDrip::State::Error)
@@ -605,26 +606,23 @@ private:
         addAndMakeVisible(sampleRateBox);
 
         // Quick-profile buttons — one-click preset bundles for common use cases
-        auto styleProfile = [this](juce::TextButton& btn, const juce::String& a11yTitle,
-                                   const juce::String& a11yDesc)
+        auto styleProfile = [this](juce::TextButton& btn, const juce::String& a11yTitle, const juce::String& a11yDesc)
         {
-            btn.setColour(juce::TextButton::buttonColourId,
-                          GalleryColors::get(GalleryColors::borderGray()));
-            btn.setColour(juce::TextButton::textColourOffId,
-                          GalleryColors::get(GalleryColors::textDark()));
+            btn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::borderGray()));
+            btn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textDark()));
             A11y::setup(btn, a11yTitle, a11yDesc);
             addAndMakeVisible(btn);
         };
-        styleProfile(profileMPCBtn,   "MPC Standard Profile",
+        styleProfile(profileMPCBtn, "MPC Standard Profile",
                      "Standard MPC export: minor 3rds, 3 velocity layers, 24-bit, 48kHz");
         styleProfile(profileLightBtn, "Lightweight Profile",
                      "Compact export: octaves only, 1 velocity layer, 16-bit, 44.1kHz");
-        styleProfile(profileMaxBtn,   "Max Quality Profile",
+        styleProfile(profileMaxBtn, "Max Quality Profile",
                      "Chromatic export: chromatic, 3 velocity layers, 24-bit, 48kHz");
 
-        profileMPCBtn.onClick   = [this] { applyProfile(ExportProfile::MPCStandard);  };
-        profileLightBtn.onClick = [this] { applyProfile(ExportProfile::Lightweight);  };
-        profileMaxBtn.onClick   = [this] { applyProfile(ExportProfile::MaxQuality);   };
+        profileMPCBtn.onClick = [this] { applyProfile(ExportProfile::MPCStandard); };
+        profileLightBtn.onClick = [this] { applyProfile(ExportProfile::Lightweight); };
+        profileMaxBtn.onClick = [this] { applyProfile(ExportProfile::MaxQuality); };
     }
 
     void buildEntangledMode()
@@ -642,25 +640,21 @@ private:
             if (entangledToggle.getToggleState() && liveCouplingMatrix != nullptr)
             {
                 // Capture the live coupling state when the user enables entangled mode
-                capturedSnapshot = XOriginate::captureCouplingState(
-                    EngineRegistry::instance(), *liveCouplingMatrix);
+                capturedSnapshot = XOriginate::captureCouplingState(EngineRegistry::instance(), *liveCouplingMatrix);
 
                 if (capturedSnapshot.hasActiveCoupling())
                 {
-                    entangledSummaryLabel.setText(capturedSnapshot.getSummary(),
-                                                  juce::dontSendNotification);
+                    entangledSummaryLabel.setText(capturedSnapshot.getSummary(), juce::dontSendNotification);
                     juce::AccessibilityHandler::postAnnouncement(
-                        "Entangled mode enabled: " + juce::String(capturedSnapshot.activeRoutes.size())
-                        + " coupling routes captured",
+                        "Entangled mode enabled: " + juce::String(capturedSnapshot.activeRoutes.size()) +
+                            " coupling routes captured",
                         juce::AccessibilityHandler::AnnouncementPriority::medium);
                 }
                 else
                 {
-                    entangledSummaryLabel.setText("No active coupling routes",
-                                                  juce::dontSendNotification);
+                    entangledSummaryLabel.setText("No active coupling routes", juce::dontSendNotification);
                     juce::AccessibilityHandler::postAnnouncement(
-                        "No active coupling routes found",
-                        juce::AccessibilityHandler::AnnouncementPriority::medium);
+                        "No active coupling routes found", juce::AccessibilityHandler::AnnouncementPriority::medium);
                 }
             }
             else
@@ -672,8 +666,7 @@ private:
         };
 
         entangledSummaryLabel.setFont(GalleryFonts::label(7.5f));
-        entangledSummaryLabel.setColour(juce::Label::textColourId,
-                                         GalleryColors::get(GalleryColors::textMid()));
+        entangledSummaryLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         entangledSummaryLabel.setMinimumHorizontalScale(0.4f);
         A11y::setup(entangledSummaryLabel, "Coupling Summary",
                     "Shows active coupling routes that will be captured in the export");
@@ -703,9 +696,7 @@ private:
 
         // Output directory
         auto updateOutputLabel = [this]
-        {
-            outputDirLabel.setText(outputDir.getFullPathName(), juce::dontSendNotification);
-        };
+        { outputDirLabel.setText(outputDir.getFullPathName(), juce::dontSendNotification); };
         outputDirLabel.setFont(GalleryFonts::label(8.0f));
         outputDirLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         outputDirLabel.setMinimumHorizontalScale(0.5f);
@@ -713,61 +704,52 @@ private:
         addAndMakeVisible(outputDirLabel);
         updateOutputLabel();
 
-        outputDirBtn.setColour(juce::TextButton::buttonColourId,
-                               GalleryColors::get(GalleryColors::borderGray()));
-        outputDirBtn.setColour(juce::TextButton::textColourOffId,
-                               GalleryColors::get(GalleryColors::textDark()));
+        outputDirBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::borderGray()));
+        outputDirBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textDark()));
         A11y::setup(outputDirBtn, "Choose Output Folder", "Browse for the export destination folder");
         addAndMakeVisible(outputDirBtn);
 
         outputDirBtn.onClick = [this, updateOutputLabel]
         {
-            fileChooser = std::make_unique<juce::FileChooser>(
-                "Choose XPN Export Folder", outputDir, "", false);
-            fileChooser->launchAsync(
-                juce::FileBrowserComponent::openMode |
-                juce::FileBrowserComponent::canSelectDirectories,
-                [this, updateOutputLabel](const juce::FileChooser& fc)
-                {
-                    auto result = fc.getResult();
-                    if (result.isDirectory())
-                    {
-                        outputDir = result;
-                        updateOutputLabel();
-                        juce::AccessibilityHandler::postAnnouncement(
-                            "Output folder set to " + outputDir.getFullPathName(),
-                            juce::AccessibilityHandler::AnnouncementPriority::medium);
-                    }
-                });
+            fileChooser = std::make_unique<juce::FileChooser>("Choose XPN Export Folder", outputDir, "", false);
+            fileChooser->launchAsync(juce::FileBrowserComponent::openMode |
+                                         juce::FileBrowserComponent::canSelectDirectories,
+                                     [this, updateOutputLabel](const juce::FileChooser& fc)
+                                     {
+                                         auto result = fc.getResult();
+                                         if (result.isDirectory())
+                                         {
+                                             outputDir = result;
+                                             updateOutputLabel();
+                                             juce::AccessibilityHandler::postAnnouncement(
+                                                 "Output folder set to " + outputDir.getFullPathName(),
+                                                 juce::AccessibilityHandler::AnnouncementPriority::medium);
+                                         }
+                                     });
         };
     }
 
-    void buildSizeEstimate()
-    {
-        updateSizeEstimate();
-    }
+    void buildSizeEstimate() { updateSizeEstimate(); }
 
     void buildProgressSection()
     {
-        progressBar.setColour(juce::ProgressBar::foregroundColourId,
-                              GalleryColors::get(GalleryColors::xoGold));
+        progressBar.setColour(juce::ProgressBar::foregroundColourId, GalleryColors::get(GalleryColors::xoGold));
         addAndMakeVisible(progressBar);
 
         progressLabel.setFont(GalleryFonts::label(8.0f));
-        progressLabel.setColour(juce::Label::textColourId,
-                                GalleryColors::get(GalleryColors::textMid()));
+        progressLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         A11y::setup(progressLabel, "Export Progress", "Current export progress status");
         addAndMakeVisible(progressLabel);
     }
 
     void buildActionButtons()
     {
-        auto styleBtn = [this](juce::TextButton& btn, const juce::String& a11yTitle,
-                               const juce::String& a11yDesc, bool isPrimary)
+        auto styleBtn =
+            [this](juce::TextButton& btn, const juce::String& a11yTitle, const juce::String& a11yDesc, bool isPrimary)
         {
-            btn.setColour(juce::TextButton::buttonColourId,
-                          isPrimary ? GalleryColors::get(GalleryColors::xoGold)
-                                    : GalleryColors::get(GalleryColors::borderGray()));
+            btn.setColour(juce::TextButton::buttonColourId, isPrimary
+                                                                ? GalleryColors::get(GalleryColors::xoGold)
+                                                                : GalleryColors::get(GalleryColors::borderGray()));
             btn.setColour(juce::TextButton::textColourOffId,
                           isPrimary ? juce::Colour(GalleryColors::get(GalleryColors::textDark()))
                                     : GalleryColors::get(GalleryColors::textDark()));
@@ -800,16 +782,27 @@ private:
 
         switch (strategyBox.getSelectedId())
         {
-            case 1:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryMinor3rd; break;
-            case 2:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::Chromatic; break;
-            case 3:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryFifth; break;
-            case 4:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly; break;
-            default: break;
+        case 1:
+            s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryMinor3rd;
+            break;
+        case 2:
+            s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::Chromatic;
+            break;
+        case 3:
+            s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryFifth;
+            break;
+        case 4:
+            s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
+            break;
+        default:
+            break;
         }
 
         s.velocityLayers = velLayersBox.getSelectedId();
         s.bitDepth = (bitDepthBox.getSelectedId() == 1) ? 16 : 24;
-        s.sampleRate = (sampleRateBox.getSelectedId() == 1) ? 44100.0 : (sampleRateBox.getSelectedId() == 3) ? 96000.0 : 48000.0;
+        s.sampleRate = (sampleRateBox.getSelectedId() == 1)   ? 44100.0
+                       : (sampleRateBox.getSelectedId() == 3) ? 96000.0
+                                                              : 48000.0;
         s.useSoundShapes = soundShapeToggle.getToggleState();
 
         return s;
@@ -829,9 +822,8 @@ private:
         else
             sizeStr = juce::String(est.totalBytes / 1024.0, 1) + " KB";
 
-        sizeEstimateText = "Estimated: " + sizeStr + " | "
-            + juce::String(est.totalWavFiles) + " WAV files | "
-            + juce::String(est.notesPerPreset) + " notes/preset";
+        sizeEstimateText = "Estimated: " + sizeStr + " | " + juce::String(est.totalWavFiles) + " WAV files | " +
+                           juce::String(est.notesPerPreset) + " notes/preset";
 
         repaint();
     }
@@ -858,15 +850,13 @@ private:
                 msg += "\n\nWarnings:\n" + result.warnings.joinIntoString("\n");
         }
 
-        juce::AlertWindow::showMessageBoxAsync(
-            result.valid ? juce::MessageBoxIconType::InfoIcon
-                         : juce::MessageBoxIconType::WarningIcon,
-            "Pre-Export Validation", msg);
+        juce::AlertWindow::showMessageBoxAsync(result.valid ? juce::MessageBoxIconType::InfoIcon
+                                                            : juce::MessageBoxIconType::WarningIcon,
+                                               "Pre-Export Validation", msg);
 
         // Announce to screen readers
-        juce::AccessibilityHandler::postAnnouncement(
-            result.valid ? "Validation passed" : "Validation found errors",
-            juce::AccessibilityHandler::AnnouncementPriority::medium);
+        juce::AccessibilityHandler::postAnnouncement(result.valid ? "Validation passed" : "Validation found errors",
+                                                     juce::AccessibilityHandler::AnnouncementPriority::medium);
     }
 
     //==========================================================================
@@ -875,14 +865,14 @@ private:
 
     void startExport()
     {
-        if (exporting) return;
+        if (exporting)
+            return;
 
         auto bundleName = bundleNameField.getText().trim();
         if (bundleName.isEmpty())
         {
-            juce::AlertWindow::showMessageBoxAsync(
-                juce::MessageBoxIconType::WarningIcon,
-                "Missing Name", "Please enter a bundle name.");
+            juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon, "Missing Name",
+                                                   "Please enter a bundle name.");
             bundleNameField.grabKeyboardFocus();
             return;
         }
@@ -894,8 +884,8 @@ private:
         cancelBtn.setButtonText("CANCEL");
         progressValue = 0.0;
 
-        juce::AccessibilityHandler::postAnnouncement(
-            "Export started", juce::AccessibilityHandler::AnnouncementPriority::high);
+        juce::AccessibilityHandler::postAnnouncement("Export started",
+                                                     juce::AccessibilityHandler::AnnouncementPriority::high);
 
         startTimerHz(15); // UI refresh for progress
 
@@ -907,8 +897,7 @@ private:
             capturedCoverEngine = coverEngineBox.getText();
 
         // Capture entangled state on the message thread before launching worker
-        bool useEntangled = entangledToggle.getToggleState()
-                            && capturedSnapshot.hasActiveCoupling();
+        bool useEntangled = entangledToggle.getToggleState() && capturedSnapshot.hasActiveCoupling();
         auto snapshotCopy = useEntangled ? capturedSnapshot : XOriginate::CouplingSnapshot{};
 
         // Snapshot the preset library on the message thread before launching the worker.
@@ -919,18 +908,13 @@ private:
         // Export runs on a worker thread
         struct ExportThread : public juce::Thread
         {
-            ExportThread(ExportDialog& d,
-                         XOriginate::RenderSettings s,
-                         juce::String name,
-                         juce::String coverEng,
-                         bool entangled,
-                         XOriginate::CouplingSnapshot snap,
-                         std::vector<PresetData> presets)
-                : juce::Thread("XPN-Export"), dialog(d),
-                  settings(std::move(s)), bundleName(std::move(name)),
-                  coverEngine(std::move(coverEng)),
-                  useEntangled(entangled), snapshot(std::move(snap)),
-                  presetsCopy(std::move(presets)) {}
+            ExportThread(ExportDialog& d, XOriginate::RenderSettings s, juce::String name, juce::String coverEng,
+                         bool entangled, XOriginate::CouplingSnapshot snap, std::vector<PresetData> presets)
+                : juce::Thread("XPN-Export"), dialog(d), settings(std::move(s)), bundleName(std::move(name)),
+                  coverEngine(std::move(coverEng)), useEntangled(entangled), snapshot(std::move(snap)),
+                  presetsCopy(std::move(presets))
+            {
+            }
 
             void run() override
             {
@@ -964,12 +948,9 @@ private:
                 {
                     dialog.progressValue = (double)p.overallProgress;
 
-                    auto text = p.presetName
-                        + (useEntangled ? juce::String(" [Entangled]") : juce::String())
-                        + " — note "
-                        + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes)
-                        + " (" + juce::String(p.currentPreset) + "/"
-                        + juce::String(p.totalPresets) + ")";
+                    auto text = p.presetName + (useEntangled ? juce::String(" [Entangled]") : juce::String()) +
+                                " — note " + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes) + " (" +
+                                juce::String(p.currentPreset) + "/" + juce::String(p.totalPresets) + ")";
 
                     {
                         std::lock_guard<std::mutex> lock(dialog.progressTextMutex);
@@ -982,8 +963,7 @@ private:
 
                 XOriginate::ExportResult result;
                 if (useEntangled)
-                    result = exporter.exportCoupledSnapshot(config, settings, snapshot,
-                                                            presetsCopy, progressCb);
+                    result = exporter.exportCoupledSnapshot(config, settings, snapshot, presetsCopy, progressCb);
                 else
                     result = exporter.exportBundle(config, settings, presetsCopy, progressCb);
 
@@ -1000,18 +980,16 @@ private:
             std::vector<PresetData> presetsCopy;
         };
 
-        exportThread = std::make_unique<ExportThread>(*this, capturedSettings,
-                                                         capturedName, capturedCoverEngine,
-                                                         useEntangled, snapshotCopy,
-                                                         std::move(presetsCopy));
+        exportThread = std::make_unique<ExportThread>(*this, capturedSettings, capturedName, capturedCoverEngine,
+                                                      useEntangled, snapshotCopy, std::move(presetsCopy));
         exportThread->startThread();
     }
 
     void cancelExport()
     {
         shouldCancel.store(true);
-        juce::AccessibilityHandler::postAnnouncement(
-            "Cancelling export", juce::AccessibilityHandler::AnnouncementPriority::medium);
+        juce::AccessibilityHandler::postAnnouncement("Cancelling export",
+                                                     juce::AccessibilityHandler::AnnouncementPriority::medium);
     }
 
     // Timer callback for UI updates during export and preview
@@ -1025,8 +1003,8 @@ private:
             previewPlayBtn.setButtonText(">");
             repaint();
 
-            juce::AccessibilityHandler::postAnnouncement(
-                "Preview ready", juce::AccessibilityHandler::AnnouncementPriority::medium);
+            juce::AccessibilityHandler::postAnnouncement("Preview ready",
+                                                         juce::AccessibilityHandler::AnnouncementPriority::medium);
         }
         else if (dripState == XDrip::State::Rendering)
         {
@@ -1075,28 +1053,23 @@ private:
                 else
                     sizeStr = juce::String(exportResult.totalSizeBytes / 1024.0, 1) + " KB";
 
-                summary = "Export complete!\n\n"
-                    + juce::String(exportResult.presetsExported) + " presets, "
-                    + juce::String(exportResult.samplesRendered) + " samples\n"
-                    + "Total size: " + sizeStr + "\n"
-                    + "Location: " + exportResult.outputFile.getFullPathName();
+                summary = "Export complete!\n\n" + juce::String(exportResult.presetsExported) + " presets, " +
+                          juce::String(exportResult.samplesRendered) + " samples\n" + "Total size: " + sizeStr + "\n" +
+                          "Location: " + exportResult.outputFile.getFullPathName();
             }
             else
             {
                 summary = "Export failed: " + exportResult.errorMessage;
             }
 
-            progressLabel.setText(exportResult.success ? "Complete!" : "Failed",
-                                  juce::dontSendNotification);
+            progressLabel.setText(exportResult.success ? "Complete!" : "Failed", juce::dontSendNotification);
 
-            juce::AccessibilityHandler::postAnnouncement(
-                exportResult.success ? "Export complete" : "Export failed",
-                juce::AccessibilityHandler::AnnouncementPriority::high);
+            juce::AccessibilityHandler::postAnnouncement(exportResult.success ? "Export complete" : "Export failed",
+                                                         juce::AccessibilityHandler::AnnouncementPriority::high);
 
-            juce::AlertWindow::showMessageBoxAsync(
-                exportResult.success ? juce::MessageBoxIconType::InfoIcon
-                                     : juce::MessageBoxIconType::WarningIcon,
-                "XPN Export", summary);
+            juce::AlertWindow::showMessageBoxAsync(exportResult.success ? juce::MessageBoxIconType::InfoIcon
+                                                                        : juce::MessageBoxIconType::WarningIcon,
+                                                   "XPN Export", summary);
 
             exportFinished.store(false, std::memory_order_relaxed);
         }
@@ -1105,7 +1078,7 @@ private:
     // Shared state between export thread and UI
     std::mutex progressTextMutex;
     juce::String lastProgressText;
-    std::atomic<bool> exportFinished { false };
+    std::atomic<bool> exportFinished{false};
     XOriginate::ExportResult exportResult;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ExportDialog)

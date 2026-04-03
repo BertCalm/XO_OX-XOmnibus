@@ -16,13 +16,17 @@
 // here so the inline wireOnCCOutput() lambda can call pushCCOutput() without
 // requiring callers to pre-include it.  XOceanusProcessor.h has no UI includes
 // so there is no circular dependency.
-namespace xoceanus { class XOceanusProcessor; }
+namespace xoceanus
+{
+class XOceanusProcessor;
+}
 #include "../../XOceanusProcessor.h"
 
 #include "GestureTrailBuffer.h"
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Helper: lighten a colour toward white by [amount] (0=no change, 1=white)
@@ -33,51 +37,64 @@ static inline juce::Colour lightenColour(juce::Colour c, float amount)
 
 //==============================================================================
 // PlaySurface Constants
-namespace PS {
-    // V2 layout dimensions
-    static constexpr int kDesktopW     = 700;        // Narrower
-    static constexpr int kDesktopH     = 484;        // 420 (main) + 64 (strip)
-    static constexpr int kXOuijaW     = 165;        // XOuija panel width
-    static constexpr int kMainZoneH   = 420;        // Main content height
-    static constexpr int kStripH      = 64;         // Performance strip (matches kZone3H)
-    static constexpr int kHeaderH     = 28;         // Mode tab bar height
+namespace PS
+{
+// V2 layout dimensions
+static constexpr int kDesktopW = 700;  // Narrower
+static constexpr int kDesktopH = 484;  // 420 (main) + 64 (strip)
+static constexpr int kXOuijaW = 165;   // XOuija panel width
+static constexpr int kMainZoneH = 420; // Main content height
+static constexpr int kStripH = 64;     // Performance strip (matches kZone3H)
+static constexpr int kHeaderH = 28;    // Mode tab bar height
 
-    // V1 layout constants (kept for backward compatibility with any external references)
-    static constexpr int kZone1W       = 480;
-    static constexpr int kZone2W       = 200;
-    static constexpr int kZone4W       = 100;
-    static constexpr int kZone3H       = 64;        // same as kStripH
+// V1 layout constants (kept for backward compatibility with any external references)
+static constexpr int kZone1W = 480;
+static constexpr int kZone2W = 200;
+static constexpr int kZone4W = 100;
+static constexpr int kZone3H = 64; // same as kStripH
 
-    // Pad grid constants (unchanged)
-    static constexpr int   kPadCols      = 4;
-    static constexpr int   kPadRows      = 4;
-    static constexpr int   kNumPads      = kPadCols * kPadRows;
-    static constexpr float kPadGap       = 4.0f;  // pixel gap between adjacent pads
+// Pad grid constants (unchanged)
+static constexpr int kPadCols = 4;
+static constexpr int kPadRows = 4;
+static constexpr int kNumPads = kPadCols * kPadRows;
+static constexpr float kPadGap = 4.0f; // pixel gap between adjacent pads
 
-    // Animation
-    static constexpr float kVelDecay        = 0.92f;
-    static constexpr float kWarmMemoryDur   = 1.5f;  // seconds
-    static constexpr int   kStripTrailSize  = 45;
+// Animation
+static constexpr float kVelDecay = 0.92f;
+static constexpr float kWarmMemoryDur = 1.5f; // seconds
+static constexpr int kStripTrailSize = 45;
 
-    // Colors — performance accent tones (theme-independent)
-    static constexpr uint32_t kAmber       = 0xFFF5C97A;
-    static constexpr uint32_t kTerracotta  = 0xFFE07A5F;
-    static constexpr uint32_t kTeal        = 0xFF2A9D8F;
-    static constexpr uint32_t kFireGreen   = 0xFF4ADE80;
-    static constexpr uint32_t kPanicRed    = 0xFFEF4444;
+// Colors — performance accent tones (theme-independent)
+static constexpr uint32_t kAmber = 0xFFF5C97A;
+static constexpr uint32_t kTerracotta = 0xFFE07A5F;
+static constexpr uint32_t kTeal = 0xFF2A9D8F;
+static constexpr uint32_t kFireGreen = 0xFF4ADE80;
+static constexpr uint32_t kPanicRed = 0xFFEF4444;
 
-    // Surface and text tones — route through GalleryColors so light mode works.
-    // Call these functions instead of using the old constexpr values directly.
-    static inline juce::Colour surfaceBg()   { return GalleryColors::get(GalleryColors::surface()); }
-    static inline juce::Colour surfaceCard() { return GalleryColors::get(GalleryColors::elevated()); }
-    static inline juce::Colour textLight()   { return GalleryColors::get(GalleryColors::t1()); }
-    static inline juce::Colour textDim()     { return GalleryColors::get(GalleryColors::t2()); }
-
-    // MIDI
-    static constexpr int kBaseNote    = 48; // C3
-    static constexpr int kMinOctave   = -3;
-    static constexpr int kMaxOctave   = 3;
+// Surface and text tones — route through GalleryColors so light mode works.
+// Call these functions instead of using the old constexpr values directly.
+static inline juce::Colour surfaceBg()
+{
+    return GalleryColors::get(GalleryColors::surface());
 }
+static inline juce::Colour surfaceCard()
+{
+    return GalleryColors::get(GalleryColors::elevated());
+}
+static inline juce::Colour textLight()
+{
+    return GalleryColors::get(GalleryColors::t1());
+}
+static inline juce::Colour textDim()
+{
+    return GalleryColors::get(GalleryColors::t2());
+}
+
+// MIDI
+static constexpr int kBaseNote = 48; // C3
+static constexpr int kMinOctave = -3;
+static constexpr int kMaxOctave = 3;
+} // namespace PS
 
 //==============================================================================
 // Zone 1: Note Input — 4x4 velocity-sensitive pad grid
@@ -85,7 +102,13 @@ namespace PS {
 class NoteInputZone : public juce::Component
 {
 public:
-    enum class Mode { Pad, Fretless, Drum, Keys };
+    enum class Mode
+    {
+        Pad,
+        Fretless,
+        Drum,
+        Keys
+    };
 
     //----------------------------------------------------------------------
     // P0-1: MIDI pipeline wiring.
@@ -109,8 +132,12 @@ public:
 
     // Engine accent colour — set by PlaySurface::setAccentColour().
     // Default: XO Gold.
-    juce::Colour accentColour { 0xFFE9C46A };
-    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+    juce::Colour accentColour{0xFFE9C46A};
+    void setAccentColour(juce::Colour c)
+    {
+        accentColour = c;
+        repaint();
+    }
 
     // XOuija-reactive coloring state (Spec Section 8.2)
     // Updated by the XOuija planchette via PlaySurface::setHarmonicField().
@@ -130,40 +157,80 @@ public:
     //   Bank D: 84-99 (C6-D#7)
     // In Drum mode: bank selects an alternate drum kit offset (16 per bank).
     // kBaseNote (48) is unused in bank-aware mode; kept for legacy scale mode.
-    enum class Bank { A = 0, B = 1, C = 2, D = 3 };
-    void setBank(Bank b) { currentBank = b; scaleNotesDirty_ = true; repaint(); }
+    enum class Bank
+    {
+        A = 0,
+        B = 1,
+        C = 2,
+        D = 3
+    };
+    void setBank(Bank b)
+    {
+        currentBank = b;
+        scaleNotesDirty_ = true;
+        repaint();
+    }
     Bank getBank() const { return currentBank; }
 
     NoteInputZone()
     {
         // Scale options
         scales = {
-            { "Chromatic",    { 0,1,2,3,4,5,6,7,8,9,10,11 } },
-            { "Major",        { 0,2,4,5,7,9,11 } },
-            { "Minor",        { 0,2,3,5,7,8,10 } },
-            { "Dorian",       { 0,2,3,5,7,9,10 } },
-            { "Mixolydian",   { 0,2,4,5,7,9,10 } },
-            { "Pent Minor",   { 0,3,5,7,10 } },
-            { "Pent Major",   { 0,2,4,7,9 } },
-            { "Blues",         { 0,3,5,6,7,10 } },
-            { "Harm Minor",   { 0,2,3,5,7,8,11 } },
+            {"Chromatic", {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}},
+            {"Major", {0, 2, 4, 5, 7, 9, 11}},
+            {"Minor", {0, 2, 3, 5, 7, 8, 10}},
+            {"Dorian", {0, 2, 3, 5, 7, 9, 10}},
+            {"Mixolydian", {0, 2, 4, 5, 7, 9, 10}},
+            {"Pent Minor", {0, 3, 5, 7, 10}},
+            {"Pent Major", {0, 2, 4, 7, 9}},
+            {"Blues", {0, 3, 5, 6, 7, 10}},
+            {"Harm Minor", {0, 2, 3, 5, 7, 8, 11}},
         };
         currentScale = 0; // Chromatic
         rootKey = 0;      // C
         octaveOffset = 0;
     }
 
-    enum class ScaleMode { Off, Filter, Highlight };
+    enum class ScaleMode
+    {
+        Off,
+        Filter,
+        Highlight
+    };
     ScaleMode scaleMode = ScaleMode::Off;
     // P2-2: setter so callers don't access scaleMode directly
-    void setScaleMode(ScaleMode m) { scaleMode = m; scaleNotesDirty_ = true; repaint(); }
+    void setScaleMode(ScaleMode m)
+    {
+        scaleMode = m;
+        scaleNotesDirty_ = true;
+        repaint();
+    }
 
-    void setMode(Mode m) { mode = m; repaint(); }
+    void setMode(Mode m)
+    {
+        mode = m;
+        repaint();
+    }
     Mode getMode() const { return mode; }
-    void setOctave(int oct) { octaveOffset = juce::jlimit(PS::kMinOctave, PS::kMaxOctave, oct); scaleNotesDirty_ = true; repaint(); }
-    int  getOctave() const { return octaveOffset; }
-    void setScale(int idx) { currentScale = juce::jlimit(0, (int)scales.size() - 1, idx); scaleNotesDirty_ = true; repaint(); }
-    void setRootKey(int key) { rootKey = juce::jlimit(0, 11, key); scaleNotesDirty_ = true; repaint(); }
+    void setOctave(int oct)
+    {
+        octaveOffset = juce::jlimit(PS::kMinOctave, PS::kMaxOctave, oct);
+        scaleNotesDirty_ = true;
+        repaint();
+    }
+    int getOctave() const { return octaveOffset; }
+    void setScale(int idx)
+    {
+        currentScale = juce::jlimit(0, (int)scales.size() - 1, idx);
+        scaleNotesDirty_ = true;
+        repaint();
+    }
+    void setRootKey(int key)
+    {
+        rootKey = juce::jlimit(0, 11, key);
+        scaleNotesDirty_ = true;
+        repaint();
+    }
 
     void paint(juce::Graphics& g) override
     {
@@ -173,9 +240,8 @@ public:
         // Radial gradient background: accent @ 0.04 center → surfaceBg edge
         {
             float cx = b.getCentreX(), cy = b.getCentreY();
-            float r  = juce::jmax(b.getWidth(), b.getHeight()) * 0.7f;
-            juce::ColourGradient bg(accentColour.withAlpha(0.04f), cx, cy,
-                                    PS::surfaceBg(), cx + r, cy, true);
+            float r = juce::jmax(b.getWidth(), b.getHeight()) * 0.7f;
+            juce::ColourGradient bg(accentColour.withAlpha(0.04f), cx, cy, PS::surfaceBg(), cx + r, cy, true);
             g.setGradientFill(bg);
             g.fillRect(b);
         }
@@ -215,8 +281,13 @@ public:
         bool needsRepaint = false;
         for (auto& v : padVelocity)
         {
-            if (v > 0.01f) { v *= PS::kVelDecay; needsRepaint = true; }
-            else v = 0.0f;
+            if (v > 0.01f)
+            {
+                v *= PS::kVelDecay;
+                needsRepaint = true;
+            }
+            else
+                v = 0.0f;
         }
         // Warm memory aging
         for (auto& wm : warmMemory)
@@ -227,7 +298,8 @@ public:
                 needsRepaint = true;
             }
         }
-        if (needsRepaint) repaint();
+        if (needsRepaint)
+            repaint();
     }
 
 private:
@@ -238,8 +310,7 @@ private:
     {
         if (midiCollector)
         {
-            auto msg = juce::MidiMessage::noteOn(midiChannel, note,
-                                                  static_cast<float>(velocity));
+            auto msg = juce::MidiMessage::noteOn(midiChannel, note, static_cast<float>(velocity));
             msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
             midiCollector->addMessageToQueue(msg);
         }
@@ -281,30 +352,38 @@ private:
         }
     }
 
-    struct ScaleDef { const char* name; std::vector<int> intervals; };
-    struct WarmMemoryEntry { int pad = -1; float age = 99.0f; };
+    struct ScaleDef
+    {
+        const char* name;
+        std::vector<int> intervals;
+    };
+    struct WarmMemoryEntry
+    {
+        int pad = -1;
+        float age = 99.0f;
+    };
 
     Mode mode = Mode::Pad;
     Bank currentBank = Bank::A;
-    int  octaveOffset = 0;
-    int  currentScale = 0;
-    int  rootKey = 0;
-    int  lastNote = -1;
-    int  lastPad  = -1;   // pad index of the currently sounding note (for aftertouch geometry)
-    float lastFretlessVelocity_ = 0.75f;  // updated on each fretless touch; drives ring glow
+    int octaveOffset = 0;
+    int currentScale = 0;
+    int rootKey = 0;
+    int lastNote = -1;
+    int lastPad = -1;                    // pad index of the currently sounding note (for aftertouch geometry)
+    float lastFretlessVelocity_ = 0.75f; // updated on each fretless touch; drives ring glow
     std::vector<ScaleDef> scales;
-    std::array<float, PS::kNumPads> padVelocity {};
-    std::array<WarmMemoryEntry, 8> warmMemory {};
+    std::array<float, PS::kNumPads> padVelocity{};
+    std::array<WarmMemoryEntry, 8> warmMemory{};
     int warmMemIdx = 0;
 
     // Fix #35: scale note cache — 16 pre-computed notes for FILTER mode.
     // Marked mutable so const helpers can rebuild on demand.
-    mutable std::array<int, PS::kNumPads> cachedScaleNotes_ {};
+    mutable std::array<int, PS::kNumPads> cachedScaleNotes_{};
     mutable bool scaleNotesDirty_ = true;
 
     // XOuija harmonic field state (Spec Section 8.2)
-    int harmonicRootKey_ = 0;  // current key from XOuija (semitone 0-11)
-    int harmonicTension_ = 0;  // fifths distance from C for color temperature (0-6)
+    int harmonicRootKey_ = 0; // current key from XOuija (semitone 0-11)
+    int harmonicTension_ = 0; // fifths distance from C for color temperature (0-6)
 
     int midiNoteForPad(int pad) const
     {
@@ -318,10 +397,10 @@ private:
             //   Bank D = base + 48
             // Source: Akai MPC Bank A default, spec section 3.8.
             static constexpr int kDrumNotes[PS::kNumPads] = {
-                37, 36, 42, 82,  // row 0 (bottom): Kick A, Kick B, Snare A, Snare B
-                40, 38, 46, 44,  // row 1: Clap, Hat Closed, Hat Open, Ride
-                48, 47, 45, 43,  // row 2: Tom 1, Perc A, Perc B, Crash
-                49, 55, 57, 51,  // row 3 (top): Fx 1, Fx 2, Fx 3, Fx 4
+                37, 36, 42, 82, // row 0 (bottom): Kick A, Kick B, Snare A, Snare B
+                40, 38, 46, 44, // row 1: Clap, Hat Closed, Hat Open, Ride
+                48, 47, 45, 43, // row 2: Tom 1, Perc A, Perc B, Crash
+                49, 55, 57, 51, // row 3 (top): Fx 1, Fx 2, Fx 3, Fx 4
             };
             int bankOffset = (int)currentBank * 16;
             return juce::jlimit(0, 127, kDrumNotes[pad] + bankOffset);
@@ -335,7 +414,7 @@ private:
         // Each bank adds 16: A=36, B=52, C=68, D=84.
         // Layout: left-to-right within a row, bottom-to-top rows (MPC standard).
         // Octave offset still applies on top of the bank base.
-        static constexpr int kBankBase[4] = { 36, 52, 68, 84 };
+        static constexpr int kBankBase[4] = {36, 52, 68, 84};
         int row = pad / PS::kPadCols;
         int col = pad % PS::kPadCols;
         int rawNote = kBankBase[(int)currentBank] + (octaveOffset * 12) + (row * PS::kPadCols) + col;
@@ -344,7 +423,8 @@ private:
 
     int quantizeToScale(int note) const
     {
-        if (currentScale == 0) return note; // Chromatic
+        if (currentScale == 0)
+            return note; // Chromatic
         auto& intervals = scales[(size_t)currentScale].intervals;
         int best = note;
         int bestDist = 999;
@@ -353,9 +433,14 @@ private:
             for (int interval : intervals)
             {
                 int candidate = rootKey + interval + ((note / 12) + octSearch) * 12;
-                if (candidate < 0) continue; // P1-3: skip negative candidates
+                if (candidate < 0)
+                    continue; // P1-3: skip negative candidates
                 int dist = std::abs(candidate - note);
-                if (dist < bestDist) { bestDist = dist; best = candidate; }
+                if (dist < bestDist)
+                {
+                    bestDist = dist;
+                    best = candidate;
+                }
             }
         }
         return juce::jlimit(0, 127, best);
@@ -365,11 +450,13 @@ private:
     // Chromatic scale (index 0) always returns true.
     bool isNoteInScale(int note) const
     {
-        if (currentScale == 0) return true;
+        if (currentScale == 0)
+            return true;
         auto& intervals = scales[(size_t)currentScale].intervals;
         int relativeToRoot = ((note % 12) - rootKey + 12) % 12;
         for (auto interval : intervals)
-            if (interval == relativeToRoot) return true;
+            if (interval == relativeToRoot)
+                return true;
         return false;
     }
 
@@ -395,7 +482,7 @@ private:
 
     int computeScaleNoteForPad(int padIndex) const
     {
-        static constexpr int kBankBase[4] = { 36, 52, 68, 84 };
+        static constexpr int kBankBase[4] = {36, 52, 68, 84};
         int baseNote = kBankBase[(int)currentBank] + (octaveOffset * 12);
 
         if (currentScale == 0)
@@ -413,7 +500,11 @@ private:
             int relativeToRoot = ((n % 12) - rootKey + 12) % 12;
             bool inScale = false;
             for (auto interval : intervals)
-                if (interval == relativeToRoot) { inScale = true; break; }
+                if (interval == relativeToRoot)
+                {
+                    inScale = true;
+                    break;
+                }
             if (inScale)
             {
                 if (degree == padIndex)
@@ -437,15 +528,15 @@ private:
 
         // Square grid: match the same geometry used in paintPadGrid().
         // Account for inter-pad gaps when computing the maximum square pad size.
-        const float gap    = PS::kPadGap;
-        float availW = b.getWidth()  - (PS::kPadCols - 1) * gap;
+        const float gap = PS::kPadGap;
+        float availW = b.getWidth() - (PS::kPadCols - 1) * gap;
         float availH = b.getHeight() - (PS::kPadRows - 1) * gap;
-        float padSize  = juce::jmin(availW / PS::kPadCols, availH / PS::kPadRows);
-        float gridW    = padSize * PS::kPadCols + gap * (PS::kPadCols - 1);
-        float gridH    = padSize * PS::kPadRows + gap * (PS::kPadRows - 1);
-        float originX  = b.getX() + (b.getWidth()  - gridW) * 0.5f;
-        float originY  = b.getY() + (b.getHeight() - gridH) * 0.5f;
-        float stride   = padSize + gap;  // distance from one pad origin to the next
+        float padSize = juce::jmin(availW / PS::kPadCols, availH / PS::kPadRows);
+        float gridW = padSize * PS::kPadCols + gap * (PS::kPadCols - 1);
+        float gridH = padSize * PS::kPadRows + gap * (PS::kPadRows - 1);
+        float originX = b.getX() + (b.getWidth() - gridW) * 0.5f;
+        float originY = b.getY() + (b.getHeight() - gridH) * 0.5f;
+        float stride = padSize + gap; // distance from one pad origin to the next
 
         // Map mouse position into grid-local space, ignoring clicks outside the grid.
         float lx = (float)e.x - originX;
@@ -458,7 +549,7 @@ private:
                 fireAftertouch(lastNote, 0.0f);
                 fireNoteOff(lastNote);
                 lastNote = -1;
-                lastPad  = -1;
+                lastPad = -1;
             }
             return;
         }
@@ -488,10 +579,10 @@ private:
                 fireNoteOff(lastNote);
             }
             padVelocity[(size_t)pad] = velocity;
-            warmMemory[(size_t)warmMemIdx] = { pad, 0.0f };
+            warmMemory[(size_t)warmMemIdx] = {pad, 0.0f};
             warmMemIdx = (warmMemIdx + 1) % (int)warmMemory.size();
             lastNote = note;
-            lastPad  = pad;
+            lastPad = pad;
             fireNoteOn(note, velocity);
         }
         else if (!isDown && pad == lastPad && lastNote >= 0)
@@ -500,8 +591,8 @@ private:
             // Aftertouch pressure = Y position within the pad cell.
             // top of cell = maximum pressure (1.0), bottom = minimum (0.0).
             int displayRow2 = PS::kPadRows - 1 - row; // flip: row 0 is rendered at top
-            float padTopY2  = displayRow2 * stride;
-            float yInPad2   = juce::jlimit(0.0f, 1.0f, (ly - padTopY2) / padSize);
+            float padTopY2 = displayRow2 * stride;
+            float yInPad2 = juce::jlimit(0.0f, 1.0f, (ly - padTopY2) / padSize);
             // Top of pad → pressure 1.0; bottom → 0.0
             float pressure = juce::jlimit(0.0f, 1.0f, 1.0f - yInPad2);
             fireAftertouch(lastNote, pressure);
@@ -520,7 +611,7 @@ private:
 
         // Pitch from X: C1 (MIDI 24) → C7 (MIDI 96), 6-octave range
         float pitchF = 24.0f + xNorm * 72.0f;
-        int   note   = juce::jlimit(24, 96, quantizeToScale((int)pitchF));
+        int note = juce::jlimit(24, 96, quantizeToScale((int)pitchF));
 
         // Expression from Y: bottom=softest, top=brightest.  Used as the
         // initial velocity on touch-down AND as an ongoing expression signal.
@@ -531,7 +622,8 @@ private:
         if (isDown)
         {
             // Touch began: fire note-on at the initial Y-derived velocity.
-            if (lastNote >= 0) fireNoteOff(lastNote);
+            if (lastNote >= 0)
+                fireNoteOff(lastNote);
             lastNote = note;
             // Reset pitch bend to centre (8192 = no bend) before the new note.
             if (midiCollector)
@@ -557,8 +649,7 @@ private:
                 // (bend range assumed ±2 semitones; standard MIDI default).
                 static constexpr float kBendSemitones = 2.0f;
                 float bendSemitones = pitchF - (float)lastNote;
-                float bendNorm = juce::jlimit(-1.0f, 1.0f,
-                                              bendSemitones / kBendSemitones);
+                float bendNorm = juce::jlimit(-1.0f, 1.0f, bendSemitones / kBendSemitones);
                 // MIDI pitch wheel: 0=full down, 8192=centre, 16383=full up
                 int pitchWheelValue = 8192 + (int)(bendNorm * 8191.0f);
                 pitchWheelValue = juce::jlimit(0, 16383, pitchWheelValue);
@@ -582,16 +673,16 @@ private:
 
         // Enforce perfectly square pads (aspect-ratio: 1).
         // Subtract inter-pad gaps from available space before computing cell size.
-        const float gap  = kPadGap;
-        float availW = b.getWidth()  - (kPadCols - 1) * gap;
+        const float gap = kPadGap;
+        float availW = b.getWidth() - (kPadCols - 1) * gap;
         float availH = b.getHeight() - (kPadRows - 1) * gap;
         float padSize = juce::jmin(availW / kPadCols, availH / kPadRows);
-        float gridW   = padSize * kPadCols + gap * (kPadCols - 1);
-        float gridH   = padSize * kPadRows + gap * (kPadRows - 1);
+        float gridW = padSize * kPadCols + gap * (kPadCols - 1);
+        float gridH = padSize * kPadRows + gap * (kPadRows - 1);
         // Center the grid within the available component bounds
-        float originX = b.getX() + (b.getWidth()  - gridW) * 0.5f;
+        float originX = b.getX() + (b.getWidth() - gridW) * 0.5f;
         float originY = b.getY() + (b.getHeight() - gridH) * 0.5f;
-        float stride  = padSize + gap;  // distance from one pad origin to the next
+        float stride = padSize + gap; // distance from one pad origin to the next
 
         for (int row = 0; row < kPadRows; ++row)
         {
@@ -614,9 +705,9 @@ private:
 
                     // Hit pad: radial gradient from accent @ 0.42 center to accent @ 0.07 edge
                     float cx = padRect.getCentreX(), cy = padRect.getCentreY();
-                    float r  = padRect.getWidth() * 0.7f;
+                    float r = padRect.getWidth() * 0.7f;
                     juce::ColourGradient grad(accentColour.withAlpha(0.07f + vel * 0.35f), cx, cy,
-                                             accentColour.withAlpha(0.07f), cx + r, cy, true);
+                                              accentColour.withAlpha(0.07f), cx + r, cy, true);
                     g.setGradientFill(grad);
                     g.fillRoundedRectangle(padRect, 4.0f);
 
@@ -629,7 +720,7 @@ private:
                     // Determine scale visibility for this pad (only in Pad mode, not Drum)
                     int padNote = midiNoteForPad(pad);
                     bool inScale = (mode == Mode::Drum) || isNoteInScale(padNote);
-                    bool dimPad  = (scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !inScale);
+                    bool dimPad = (scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !inScale);
 
                     float borderAlpha = dimPad ? 0.08f : 0.18f;
 
@@ -643,10 +734,10 @@ private:
 
                     // Root key accent: XO Gold 2px bottom border
                     // P2-3: In HIGHLIGHT mode use quantized note for root detection
-                    int rootCheckNote = (scaleMode == ScaleMode::Highlight && mode != Mode::Drum)
-                                        ? quantizeToScale(padNote) : padNote;
-                    bool isRootPad = (scaleMode != ScaleMode::Off && mode != Mode::Drum
-                                      && (rootCheckNote % 12) == rootKey);
+                    int rootCheckNote =
+                        (scaleMode == ScaleMode::Highlight && mode != Mode::Drum) ? quantizeToScale(padNote) : padNote;
+                    bool isRootPad =
+                        (scaleMode != ScaleMode::Off && mode != Mode::Drum && (rootCheckNote % 12) == rootKey);
                     if (isRootPad)
                     {
                         juce::Colour xoGold(0xFFE9C46A);
@@ -663,7 +754,7 @@ private:
                 if (mode == Mode::Pad)
                 {
                     int midiNote = midiNoteForPad(pad);
-                    bool inKey  = HarmonicField::isInKey(midiNote, harmonicRootKey_);
+                    bool inKey = HarmonicField::isInKey(midiNote, harmonicRootKey_);
                     bool isRoot = HarmonicField::isRoot(midiNote, harmonicRootKey_);
 
                     auto [tr, tg, tb] = HarmonicField::tensionColor(harmonicTension_);
@@ -708,16 +799,16 @@ private:
 
                 // Note label
                 int note = midiNoteForPad(pad);
-                static const char* noteNames[] = {"C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"};
+                static const char* noteNames[] = {"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
                 juce::String label;
                 if (mode == Mode::Drum)
                 {
                     // P0-4: drum labels match MPC Bank A standard note table
                     static const char* drumNames[] = {
-                        "Kick A","Kick B","Snr A","Snr B",  // row 0 (bottom)
-                        "Clap","HH-C","HH-O","Ride",        // row 1
-                        "Tom 1","Perc A","Perc B","Crash",   // row 2
-                        "Fx 1","Fx 2","Fx 3","Fx 4",        // row 3 (top)
+                        "Kick A", "Kick B", "Snr A",  "Snr B", // row 0 (bottom)
+                        "Clap",   "HH-C",   "HH-O",   "Ride",  // row 1
+                        "Tom 1",  "Perc A", "Perc B", "Crash", // row 2
+                        "Fx 1",   "Fx 2",   "Fx 3",   "Fx 4",  // row 3 (top)
                     };
                     label = drumNames[pad];
                 }
@@ -725,8 +816,7 @@ private:
                 {
                     // P1-1: In HIGHLIGHT mode the fired note is quantized, so show
                     // the quantized note as the label so the display matches what plays.
-                    int displayNote = (scaleMode == ScaleMode::Highlight)
-                                      ? quantizeToScale(note) : note;
+                    int displayNote = (scaleMode == ScaleMode::Highlight) ? quantizeToScale(note) : note;
                     label = juce::String(noteNames[displayNote % 12]) + juce::String(displayNote / 12 - 1);
                 }
 
@@ -742,10 +832,9 @@ private:
 
         // Bank badge — top-right corner, accent-tinted
         {
-            static const char* kBankNames[] = { "A", "B", "C", "D" };
+            static const char* kBankNames[] = {"A", "B", "C", "D"};
             juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
-            auto badgeRect = juce::Rectangle<float>(
-                originX + gridW - 50.0f, originY, 48.0f, 16.0f);
+            auto badgeRect = juce::Rectangle<float>(originX + gridW - 50.0f, originY, 48.0f, 16.0f);
             g.setColour(accentColour.withAlpha(0.75f));
             g.setFont(GalleryFonts::display(9.0f));
             g.drawText(badge, badgeRect, juce::Justification::centredRight);
@@ -764,12 +853,12 @@ private:
 
         // ── Ocean depth background gradient (bottom=midnight, top=sunlit) ───
         {
-            juce::ColourGradient grad(juce::Colour(0xFF150820), b.getX(), b.getBottom(),  // Midnight base
-                                       juce::Colour(0xFF0A1F30), b.getX(), b.getY(), false);
-            grad.addColour(0.20, juce::Colour(0xFF7B2FBE).withAlpha(0.35f));   // Midnight zone
-            grad.addColour(0.45, juce::Colour(0xFF0D2744));                     // Twilight zone base
-            grad.addColour(0.72, juce::Colour(0xFF0096C7).withAlpha(0.5f));    // Twilight zone top
-            grad.addColour(0.85, juce::Colour(0xFF0D3550));                     // Sunlit base
+            juce::ColourGradient grad(juce::Colour(0xFF150820), b.getX(), b.getBottom(), // Midnight base
+                                      juce::Colour(0xFF0A1F30), b.getX(), b.getY(), false);
+            grad.addColour(0.20, juce::Colour(0xFF7B2FBE).withAlpha(0.35f)); // Midnight zone
+            grad.addColour(0.45, juce::Colour(0xFF0D2744));                  // Twilight zone base
+            grad.addColour(0.72, juce::Colour(0xFF0096C7).withAlpha(0.5f));  // Twilight zone top
+            grad.addColour(0.85, juce::Colour(0xFF0D3550));                  // Sunlit base
             g.setGradientFill(grad);
             g.fillRect(b);
         }
@@ -777,10 +866,10 @@ private:
         // Zone boundary lines — 0.30 alpha: more prominent than octave fret lines (0.35) to read as
         // structural zone dividers rather than just another fret line.
         {
-            float sunlitY   = b.getBottom() - b.getHeight() * 0.45f;  // 45% up = twilight boundary
-            float twilightY = b.getBottom() - b.getHeight() * 0.80f;  // 80% up = sunlit boundary
+            float sunlitY = b.getBottom() - b.getHeight() * 0.45f;   // 45% up = twilight boundary
+            float twilightY = b.getBottom() - b.getHeight() * 0.80f; // 80% up = sunlit boundary
             g.setColour(juce::Colour(0xFF0096C7).withAlpha(0.30f));
-            g.drawHorizontalLine((int)sunlitY,   b.getX(), b.getRight());
+            g.drawHorizontalLine((int)sunlitY, b.getX(), b.getRight());
             g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.30f));
             g.drawHorizontalLine((int)twilightY, b.getX(), b.getRight());
         }
@@ -791,17 +880,20 @@ private:
         for (int semi = 0; semi <= totalSemitones; ++semi)
         {
             float y = b.getBottom() - (float)semi / totalSemitones * b.getHeight();
-            float normY = 1.0f - (float)semi / totalSemitones;  // 0=top/sunlit, 1=bottom/midnight
+            float normY = 1.0f - (float)semi / totalSemitones; // 0=top/sunlit, 1=bottom/midnight
 
             // Choose zone color for this position
             juce::Colour zoneColor;
-            if (normY < 0.20f)      zoneColor = juce::Colour(0xFF48CAE4);   // Sunlit — cyan
-            else if (normY < 0.55f) zoneColor = juce::Colour(0xFF0096C7);   // Twilight — blue
-            else                     zoneColor = juce::Colour(0xFF7B2FBE);   // Midnight — violet
+            if (normY < 0.20f)
+                zoneColor = juce::Colour(0xFF48CAE4); // Sunlit — cyan
+            else if (normY < 0.55f)
+                zoneColor = juce::Colour(0xFF0096C7); // Twilight — blue
+            else
+                zoneColor = juce::Colour(0xFF7B2FBE); // Midnight — violet
 
             bool isOctave = (semi % 12 == 0);
-            bool isScaleNote = (currentScale == 0) ||
-                std::find(intervals.begin(), intervals.end(), semi % 12) != intervals.end();
+            bool isScaleNote =
+                (currentScale == 0) || std::find(intervals.begin(), intervals.end(), semi % 12) != intervals.end();
 
             if (isOctave)
             {
@@ -810,9 +902,8 @@ private:
                 int octNum = (24 + semi) / 12 - 1;
                 g.setFont(GalleryFonts::body(8.0f));
                 g.setColour(zoneColor.withAlpha(0.55f));
-                g.drawText("C" + juce::String(octNum),
-                    juce::Rectangle<float>(4, y - 10, 24, 12),
-                    juce::Justification::centredLeft);
+                g.drawText("C" + juce::String(octNum), juce::Rectangle<float>(4, y - 10, 24, 12),
+                           juce::Justification::centredLeft);
             }
             else if (isScaleNote)
             {
@@ -828,9 +919,12 @@ private:
             float normY = 1.0f - (float)(lastNote - 24) / totalSemitones;
 
             juce::Colour zoneColor;
-            if (normY < 0.20f)      zoneColor = juce::Colour(0xFF48CAE4);
-            else if (normY < 0.55f) zoneColor = juce::Colour(0xFF0096C7);
-            else                     zoneColor = juce::Colour(0xFF7B2FBE);
+            if (normY < 0.20f)
+                zoneColor = juce::Colour(0xFF48CAE4);
+            else if (normY < 0.55f)
+                zoneColor = juce::Colour(0xFF0096C7);
+            else
+                zoneColor = juce::Colour(0xFF7B2FBE);
 
             // Zone-colored guide line across the strip
             g.setColour(zoneColor.withAlpha(0.22f));
@@ -858,12 +952,10 @@ private:
             // Velocity arc indicator — 60° sweep at top of ring, alpha proportional to velocity
             {
                 const float arcSweepDeg = 60.0f;
-                const float startDeg    = 270.0f - arcSweepDeg * 0.5f; // centred at top (270° = 12 o'clock)
+                const float startDeg = 270.0f - arcSweepDeg * 0.5f; // centred at top (270° = 12 o'clock)
                 juce::Path arcPath;
-                arcPath.addArc(cx - ringR, noteY - ringR, ringR * 2, ringR * 2,
-                               juce::degreesToRadians(startDeg),
-                               juce::degreesToRadians(startDeg + arcSweepDeg),
-                               true);
+                arcPath.addArc(cx - ringR, noteY - ringR, ringR * 2, ringR * 2, juce::degreesToRadians(startDeg),
+                               juce::degreesToRadians(startDeg + arcSweepDeg), true);
                 g.setColour(accentColour.withAlpha(lastFretlessVelocity_ * 0.9f));
                 g.strokePath(arcPath, juce::PathStrokeType(3.0f));
             }
@@ -882,9 +974,16 @@ class PerformanceStrip : public juce::Component
 public:
     PerformanceStrip()
         // Cache font once — avoids per-paint Font construction (UIX Fix 1C)
-        : axisFont_ (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
-    {}
-    enum class StripMode { DubSpace, FilterSweep, Coupling, DubSiren };
+        : axisFont_(juce::Font(juce::FontOptions{}.withHeight(8.0f)))
+    {
+    }
+    enum class StripMode
+    {
+        DubSpace,
+        FilterSweep,
+        Coupling,
+        DubSiren
+    };
 
     std::function<void(float x, float y)> onPositionChanged;
 
@@ -895,8 +994,12 @@ public:
     }
 
     // Engine accent colour — set by PlaySurface::setAccentColour()
-    juce::Colour accentColour { 0xFFE9C46A };
-    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+    juce::Colour accentColour{0xFFE9C46A};
+    void setAccentColour(juce::Colour c)
+    {
+        accentColour = c;
+        repaint();
+    }
 
     void paint(juce::Graphics& g) override
     {
@@ -905,8 +1008,8 @@ public:
 
         // Background: linear gradient accent @ 0.08 top → accent @ 0.03 bottom
         {
-            juce::ColourGradient bg(accentColour.withAlpha(0.08f), b.getX(), b.getY(),
-                                    accentColour.withAlpha(0.03f), b.getX(), b.getBottom(), false);
+            juce::ColourGradient bg(accentColour.withAlpha(0.08f), b.getX(), b.getY(), accentColour.withAlpha(0.03f),
+                                    b.getX(), b.getBottom(), false);
             g.setGradientFill(bg);
             g.fillRect(b);
         }
@@ -914,10 +1017,10 @@ public:
         // Mode-specific tint overlay (preserves per-mode colour identity)
         {
             static constexpr uint32_t kStripModeTints[] = {
-                0xFF2D4D5A,  // DubSpace  — dark teal
-                0xFF00A6D6,  // FilterSweep — teal
-                0xFFE9C46A,  // Coupling — XO Gold
-                0xFFFF6B6B,  // DubSiren — warm red
+                0xFF2D4D5A, // DubSpace  — dark teal
+                0xFF00A6D6, // FilterSweep — teal
+                0xFFE9C46A, // Coupling — XO Gold
+                0xFFFF6B6B, // DubSiren — warm red
             };
             g.setColour(juce::Colour(kStripModeTints[(int)stripMode]).withAlpha(0.08f));
             g.fillRect(b);
@@ -938,7 +1041,8 @@ public:
         {
             int idx = (stripTrailHead - i + kStripTrailSize) % kStripTrailSize;
             auto& pt = stripTrail[idx];
-            if (pt.age > kWarmMemoryDur) continue;
+            if (pt.age > kWarmMemoryDur)
+                continue;
             float alpha = (1.0f - pt.age / kWarmMemoryDur) * 0.5f;
             float sx = gestureArea.getX() + pt.x * gestureArea.getWidth();
             float sy = gestureArea.getY() + (1.0f - pt.y) * gestureArea.getHeight();
@@ -968,22 +1072,30 @@ public:
 
         // Axis labels — 8px uppercase, 35% opacity, at the edges of gestureArea (Spec Section 9.4)
         // Mode-specific: X axis = bottom-left of gestureArea, Y axis = top-right of gestureArea
-        g.setFont(axisFont_);  // cached — avoids per-paint Font construction (UIX Fix 1C)
+        g.setFont(axisFont_); // cached — avoids per-paint Font construction (UIX Fix 1C)
         g.setColour(juce::Colours::white.withAlpha(0.35f));
-        static const char* xLabels[] = { "DELAY FB", "CUTOFF",  "SPREAD",  "PITCH" };
-        static const char* yLabels[] = { "REVERB",   "RESONANCE", "DEPTH", "SIREN DEPTH" };
+        static const char* xLabels[] = {"DELAY FB", "CUTOFF", "SPREAD", "PITCH"};
+        static const char* yLabels[] = {"REVERB", "RESONANCE", "DEPTH", "SIREN DEPTH"};
         g.drawText(xLabels[(int)stripMode], gestureArea.reduced(4), juce::Justification::bottomLeft);
         g.drawText(yLabels[(int)stripMode], gestureArea.reduced(4), juce::Justification::topRight);
     }
 
-    void mouseDown(const juce::MouseEvent& e) override { updateStrip(e); touching = true; }
-    void mouseDrag(const juce::MouseEvent& e) override { if (touching) updateStrip(e); }
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        updateStrip(e);
+        touching = true;
+    }
+    void mouseDrag(const juce::MouseEvent& e) override
+    {
+        if (touching)
+            updateStrip(e);
+    }
     void mouseUp(const juce::MouseEvent&) override
     {
         touching = false;
         // Record release position as spring-back start; reset elapsed to begin 250ms ease-out
-        springStartX_  = stripX;
-        springStartY_  = stripY;
+        springStartX_ = stripX;
+        springStartY_ = stripY;
         springElapsed_ = 0.0f;
     }
 
@@ -995,7 +1107,7 @@ public:
         {
             // Spring-back: 250ms quadratic ease-out (Spec Section 9.5)
             // kSpringDuration = 0.250s; timer runs at 30fps → each tick = 1/30s
-            constexpr float kSpringDuration = 0.250f;  // seconds
+            constexpr float kSpringDuration = 0.250f; // seconds
             float targetX = springTargets[(int)stripMode].x;
             float targetY = springTargets[(int)stripMode].y;
 
@@ -1013,7 +1125,8 @@ public:
         for (auto& pt : stripTrail)
         {
             pt.age += 1.0f / 30.0f;
-            if (pt.age < PS::kWarmMemoryDur) hasActiveTrail = true;
+            if (pt.age < PS::kWarmMemoryDur)
+                hasActiveTrail = true;
         }
 
         if (onPositionChanged)
@@ -1028,26 +1141,33 @@ public:
 private:
     StripMode stripMode = StripMode::DubSpace;
     float stripX = 0.3f, stripY = 0.2f;
-    bool  touching = false;
+    bool touching = false;
 
     // Cached font — initialized in constructor, avoids per-paint construction (UIX Fix 1C)
-    juce::Font axisFont_;  // 8px — gesture area axis labels
+    juce::Font axisFont_; // 8px — gesture area axis labels
 
     // Spring-back animation state (250ms ease-out)
-    float springElapsed_ = 999.0f;   // Start in "done" state
-    float springStartX_  = 0.3f;
-    float springStartY_  = 0.2f;
+    float springElapsed_ = 999.0f; // Start in "done" state
+    float springStartX_ = 0.3f;
+    float springStartY_ = 0.2f;
 
-    struct SpringTarget { float x, y; };
+    struct SpringTarget
+    {
+        float x, y;
+    };
     static constexpr SpringTarget springTargets[] = {
-        { 0.3f, 0.2f },  // DubSpace
-        { 0.3f, 0.3f },  // FilterSweep (cutoff ~1200Hz log)
-        { 0.3f, 0.15f }, // Coupling
-        { 0.5f, 0.5f },  // DubSiren (center)
+        {0.3f, 0.2f},  // DubSpace
+        {0.3f, 0.3f},  // FilterSweep (cutoff ~1200Hz log)
+        {0.3f, 0.15f}, // Coupling
+        {0.5f, 0.5f},  // DubSiren (center)
     };
 
-    struct TrailPoint { float x = 0.0f, y = 0.0f; float age = 99.0f; };
-    std::array<TrailPoint, PS::kStripTrailSize> stripTrail {};
+    struct TrailPoint
+    {
+        float x = 0.0f, y = 0.0f;
+        float age = 99.0f;
+    };
+    std::array<TrailPoint, PS::kStripTrailSize> stripTrail{};
     int stripTrailHead = 0;
 
     void updateStrip(const juce::MouseEvent& e)
@@ -1059,7 +1179,7 @@ private:
         stripX = juce::jlimit(0.0f, 1.0f, (gx - gestureArea.getX()) / gestureArea.getWidth());
         stripY = juce::jlimit(0.0f, 1.0f, 1.0f - (e.y - b.getY()) / b.getHeight());
 
-        stripTrail[(size_t)stripTrailHead] = { stripX, stripY, 0.0f };
+        stripTrail[(size_t)stripTrailHead] = {stripX, stripY, 0.0f};
         stripTrailHead = (stripTrailHead + 1) % PS::kStripTrailSize;
     }
 
@@ -1080,14 +1200,14 @@ class PlaySurface : public juce::Component, private juce::Timer
 public:
     PlaySurface()
     {
-        setTitle ("PlaySurface");
-        setDescription ("V2 performance interface: XOuija panel, note input / keys mode, performance strip");
-        setWantsKeyboardFocus (true);
+        setTitle("PlaySurface");
+        setDescription("V2 performance interface: XOuija panel, note input / keys mode, performance strip");
+        setWantsKeyboardFocus(true);
 
-        noteInput.setTitle ("Note Input Zone");
-        noteInput.setDescription ("Pad grid or fretless strip for note input");
-        strip.setTitle ("Performance Strip");
-        strip.setDescription ("Touch strip for filter sweeps, coupling, and dub effects");
+        noteInput.setTitle("Note Input Zone");
+        noteInput.setDescription("Pad grid or fretless strip for note input");
+        strip.setTitle("Performance Strip");
+        strip.setDescription("Touch strip for filter sweeps, coupling, and dub effects");
 
         addAndMakeVisible(noteInput);
         addAndMakeVisible(strip);
@@ -1100,7 +1220,7 @@ public:
         // Wire XOuija position changes -> pad and keys coloring
         xouijaPanel_.onPositionChanged = [this](float circleX, float /*influenceY*/)
         {
-            int key     = HarmonicField::positionToKey(circleX);
+            int key = HarmonicField::positionToKey(circleX);
             // Tension = distance from C (tonal center). This is intentional:
             // the XOuija circle measures harmonic distance from the global
             // reference, not from any transposed root.
@@ -1179,7 +1299,7 @@ public:
 
         // Bank selector buttons (A/B/C/D).
         // Selects the 16-note bank offset for Pad and Drum modes.
-        static const char* bankLabels[] = { "A", "B", "C", "D" };
+        static const char* bankLabels[] = {"A", "B", "C", "D"};
         for (int i = 0; i < 4; ++i)
         {
             bankButtons[i].setClickingTogglesState(true);
@@ -1191,10 +1311,7 @@ public:
 
         for (int i = 0; i < 4; ++i)
         {
-            bankButtons[i].onClick = [this, i]
-            {
-                noteInput.setBank(static_cast<NoteInputZone::Bank>(i));
-            };
+            bankButtons[i].onClick = [this, i] { noteInput.setBank(static_cast<NoteInputZone::Bank>(i)); };
         }
 
         // Scale mode button — cycles Off → Filter → Highlight → Off
@@ -1214,10 +1331,17 @@ public:
 
             ni.setScaleMode(next);
 
-            switch (ni.scaleMode) {
-                case NoteInputZone::ScaleMode::Off:       scaleModeBtn.setButtonText("SCL"); break;
-                case NoteInputZone::ScaleMode::Filter:    scaleModeBtn.setButtonText("FLT"); break;
-                case NoteInputZone::ScaleMode::Highlight: scaleModeBtn.setButtonText("HLT"); break;
+            switch (ni.scaleMode)
+            {
+            case NoteInputZone::ScaleMode::Off:
+                scaleModeBtn.setButtonText("SCL");
+                break;
+            case NoteInputZone::ScaleMode::Filter:
+                scaleModeBtn.setButtonText("FLT");
+                break;
+            case NoteInputZone::ScaleMode::Highlight:
+                scaleModeBtn.setButtonText("HLT");
+                break;
             }
         };
 
@@ -1248,10 +1372,10 @@ public:
                 //   2=Coupling  → Bank::Coupling
                 //   3=DubSiren  → Bank::Dub        (siren is a dub mode variant)
                 static constexpr GestureButtonBar::Bank kStripBankMap[] = {
-                    GestureButtonBar::Bank::Dub,        // DubSpace
-                    GestureButtonBar::Bank::XOuija,     // FilterSweep
-                    GestureButtonBar::Bank::Coupling,   // Coupling
-                    GestureButtonBar::Bank::Dub,        // DubSiren
+                    GestureButtonBar::Bank::Dub,      // DubSpace
+                    GestureButtonBar::Bank::XOuija,   // FilterSweep
+                    GestureButtonBar::Bank::Coupling, // Coupling
+                    GestureButtonBar::Bank::Dub,      // DubSiren
                 };
                 xouijaPanel_.activateGestureBank(kStripBankMap[i]);
             };
@@ -1259,15 +1383,19 @@ public:
 
         // F11: Explicit button colors — override default JUCE styling
         {
-            auto applyBtnColors = [](juce::TextButton& btn) {
-                btn.setColour(juce::TextButton::buttonColourId,   juce::Colour(0xFF2D2D2D));
+            auto applyBtnColors = [](juce::TextButton& btn)
+            {
+                btn.setColour(juce::TextButton::buttonColourId, juce::Colour(0xFF2D2D2D));
                 btn.setColour(juce::TextButton::buttonOnColourId, GalleryColors::get(GalleryColors::xoGold));
-                btn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFAAAAAA));
-                btn.setColour(juce::TextButton::textColourOnId,   GalleryColors::get(GalleryColors::textDark()));
+                btn.setColour(juce::TextButton::textColourOffId, juce::Colour(0xFFAAAAAA));
+                btn.setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
             };
-            for (int i = 0; i < 3; ++i) applyBtnColors(modeButtons[i]);
-            for (int i = 0; i < 4; ++i) applyBtnColors(bankButtons[i]);
-            for (int i = 0; i < 4; ++i) applyBtnColors(stripModeButtons[i]);
+            for (int i = 0; i < 3; ++i)
+                applyBtnColors(modeButtons[i]);
+            for (int i = 0; i < 4; ++i)
+                applyBtnColors(bankButtons[i]);
+            for (int i = 0; i < 4; ++i)
+                applyBtnColors(stripModeButtons[i]);
             applyBtnColors(octDownBtn);
             applyBtnColors(octUpBtn);
             applyBtnColors(scaleModeBtn);
@@ -1286,7 +1414,7 @@ public:
     // Call setProcessor() from XOceanusEditor after construction so that XOuija
     // CC output events (CC 85-90) are forwarded to the audio thread via the
     // processor's lock-free CC queue.  The processor pointer is NOT owned here.
-    void setProcessor (XOceanusProcessor* p)
+    void setProcessor(XOceanusProcessor* p)
     {
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
@@ -1303,15 +1431,9 @@ public:
         // Feature 1 — Register XOuija state persistence bridge callbacks.
         // The processor calls onGetXOuijaState() in getStateInformation() and
         // onSetXOuijaState() in setStateInformation().
-        processor_->onGetXOuijaState = [this]() -> juce::ValueTree
-        {
-            return xouijaPanel_.toValueTree();
-        };
+        processor_->onGetXOuijaState = [this]() -> juce::ValueTree { return xouijaPanel_.toValueTree(); };
 
-        processor_->onSetXOuijaState = [this](const juce::ValueTree& tree)
-        {
-            xouijaPanel_.fromValueTree(tree);
-        };
+        processor_->onSetXOuijaState = [this](const juce::ValueTree& tree) { xouijaPanel_.fromValueTree(tree); };
 
         // If the processor already has saved XOuija state in its APVTS tree
         // (e.g. setStateInformation was called before the PlaySurface window
@@ -1330,16 +1452,16 @@ public:
     //   CC 86 — influence depth  (0-127 → 0.0-1.0)
     //   CC 89 — home snap        (value==127 → reset planchette to centre)
     //   CC 90 — drift toggle     (future use; state stored but not yet consumed)
-    void handleIncomingCC (int cc, int value)
+    void handleIncomingCC(int cc, int value)
     {
         if (cc == 86)
         {
-            xouijaPanel_.setInfluenceDepth (value / 127.0f);
+            xouijaPanel_.setInfluenceDepth(value / 127.0f);
         }
         else if (cc == 89 && value == 127)
         {
-            xouijaPanel_.setCirclePosition  (0.5f);
-            xouijaPanel_.setInfluenceDepth  (0.5f);
+            xouijaPanel_.setCirclePosition(0.5f);
+            xouijaPanel_.setInfluenceDepth(0.5f);
         }
         else if (cc == 90)
         {
@@ -1356,17 +1478,18 @@ public:
     void setMidiCollector(juce::MidiMessageCollector* collector, int channel = 1)
     {
         noteInput.midiCollector = collector;
-        noteInput.midiChannel   = channel;
+        noteInput.midiChannel = channel;
         // V2: also wire KeysMode
         keysMode_.midiCollector = collector;
-        keysMode_.midiChannel   = channel;
+        keysMode_.midiChannel = channel;
     }
 
     // Engine Accent Adaptive: propagate accent colour to all four zones.
     // Call this from XOceanusEditor::timerCallback() when the active engine changes.
     void setAccentColour(juce::Colour c)
     {
-        if (c == accentColour) return; // B1: early-return guard — skip repaints if unchanged
+        if (c == accentColour)
+            return; // B1: early-return guard — skip repaints if unchanged
         accentColour = c;
         noteInput.setAccentColour(c);
         strip.setAccentColour(c);
@@ -1376,12 +1499,13 @@ public:
 
         // P2-1: also update header button "on" colours so mode/bank/strip buttons
         // reflect the current engine accent when toggled.
-        auto updateBtnAccent = [&](juce::TextButton& btn) {
-            btn.setColour(juce::TextButton::buttonOnColourId, c);
-        };
-        for (int i = 0; i < 3; ++i) updateBtnAccent(modeButtons[i]);
-        for (int i = 0; i < 4; ++i) updateBtnAccent(bankButtons[i]);
-        for (int i = 0; i < 4; ++i) updateBtnAccent(stripModeButtons[i]);
+        auto updateBtnAccent = [&](juce::TextButton& btn) { btn.setColour(juce::TextButton::buttonOnColourId, c); };
+        for (int i = 0; i < 3; ++i)
+            updateBtnAccent(modeButtons[i]);
+        for (int i = 0; i < 4; ++i)
+            updateBtnAccent(bankButtons[i]);
+        for (int i = 0; i < 4; ++i)
+            updateBtnAccent(stripModeButtons[i]);
         updateBtnAccent(octDownBtn);
         updateBtnAccent(octUpBtn);
         updateBtnAccent(scaleModeBtn);
@@ -1390,8 +1514,8 @@ public:
     }
 
     // Public zone accessors for wiring callbacks
-    NoteInputZone&     getNoteInput()  { return noteInput; }
-    PerformanceStrip&  getStrip()     { return strip; }
+    NoteInputZone& getNoteInput() { return noteInput; }
+    PerformanceStrip& getStrip() { return strip; }
 
     void resized() override
     {
@@ -1425,9 +1549,7 @@ public:
         strip.setBounds(bounds.removeFromBottom(PS::kStripH));
 
         // ── XOuija Panel — left column ───────────────────────────────────────
-        int ouijaW = std::clamp(PS::kXOuijaW,
-                                XOuijaPanel::kMinWidth,
-                                XOuijaPanel::kMaxWidth);
+        int ouijaW = std::clamp(PS::kXOuijaW, XOuijaPanel::kMinWidth, XOuijaPanel::kMaxWidth);
         xouijaPanel_.setBounds(bounds.removeFromLeft(ouijaW));
 
         // ── Note area — remaining space (NoteInputZone or KeysMode) ─────────
@@ -1443,10 +1565,7 @@ public:
             noteInput.setBounds(noteArea);
     }
 
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(PS::surfaceBg());
-    }
+    void paint(juce::Graphics& g) override { g.fillAll(PS::surfaceBg()); }
 
     // Re-apply theme-sensitive label colors whenever the global theme changes.
     void lookAndFeelChanged() override
@@ -1476,10 +1595,7 @@ public:
         return false;
     }
 
-    bool keyStateChanged(bool /*isKeyDown*/) override
-    {
-        return false;
-    }
+    bool keyStateChanged(bool /*isKeyDown*/) override { return false; }
 
 private:
     void timerCallback() override
@@ -1501,25 +1617,25 @@ private:
         };
     }
 
-    juce::Colour accentColour { 0xFFE9C46A }; // Default: XO Gold
+    juce::Colour accentColour{0xFFE9C46A}; // Default: XO Gold
 
     // ── Task 12: processor pointer for CC output forwarding ──────────────────
-    XOceanusProcessor* processor_       = nullptr;
-    bool              driftToggleState_ = false;  // CC 90 state — used by Task 13
+    XOceanusProcessor* processor_ = nullptr;
+    bool driftToggleState_ = false; // CC 90 state — used by Task 13
 
-    NoteInputZone      noteInput;
+    NoteInputZone noteInput;
 
     // V2 layout components
-    PerformanceStrip   strip;
-    XOuijaPanel        xouijaPanel_;
-    KeysMode           keysMode_;
+    PerformanceStrip strip;
+    XOuijaPanel xouijaPanel_;
+    KeysMode keysMode_;
 
     std::array<juce::TextButton, 3> modeButtons;
     std::array<juce::TextButton, 4> stripModeButtons;
-    std::array<juce::TextButton, 4> bankButtons;  // A / B / C / D bank selectors
+    std::array<juce::TextButton, 4> bankButtons; // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
-    juce::Label      octLabel;
-    juce::TextButton scaleModeBtn;  // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
+    juce::Label octLabel;
+    juce::TextButton scaleModeBtn; // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
 };
@@ -1551,39 +1667,36 @@ public:
     //----------------------------------------------------------------------
     // V2 popup dimensions: 700×484 (narrower, non-square — XOuija panel + pad grid)
     // Was 520×520 in V1.
-    static constexpr int kDefaultW  = PS::kDesktopW; // 700
-    static constexpr int kDefaultH  = PS::kDesktopH; // 484
-    static constexpr int kMinW      = 500;
-    static constexpr int kMinH      = 400;
-    static constexpr int kMaxW      = 1200;
-    static constexpr int kMaxH      = 900;
+    static constexpr int kDefaultW = PS::kDesktopW; // 700
+    static constexpr int kDefaultH = PS::kDesktopH; // 484
+    static constexpr int kMinW = 500;
+    static constexpr int kMinH = 400;
+    static constexpr int kMaxW = 1200;
+    static constexpr int kMaxH = 900;
 
     // Optional callback fired when the window is closed/hidden by the user.
     // XOceanusEditor uses this to sync the "PS" toggle button state.
     std::function<void()> onClosed;
 
     PlaySurfaceWindow()
-        : juce::DocumentWindow (
-              "PlaySurface",
-              PS::surfaceBg(),
-              juce::DocumentWindow::allButtons,
-              true /* addToDesktop */)
+        : juce::DocumentWindow("PlaySurface", PS::surfaceBg(), juce::DocumentWindow::allButtons,
+                               true /* addToDesktop */)
     {
-        setUsingNativeTitleBar (true);
-        setResizable (true, true);
-        setResizeLimits (kMinW, kMinH, kMaxW, kMaxH); // Was 320-1200 square in V1
+        setUsingNativeTitleBar(true);
+        setResizable(true, true);
+        setResizeLimits(kMinW, kMinH, kMaxW, kMaxH); // Was 320-1200 square in V1
 
         // Own the PlaySurface content component.
         // resizeToFitContent=false: we size the window explicitly via centreWithSize().
         auto* content = new PlaySurface();
-        setContentOwned (content, true);
+        setContentOwned(content, true);
 
         // Position initially centered on the main screen.
         // V2 default: 700×484 (was 520×520 in V1)
-        centreWithSize (kDefaultW, kDefaultH);
+        centreWithSize(kDefaultW, kDefaultH);
 
         // Performance tool window — keep it visible above the DAW.
-        setAlwaysOnTop (true);
+        setAlwaysOnTop(true);
     }
 
     ~PlaySurfaceWindow() override = default;
@@ -1599,35 +1712,34 @@ public:
 
     //----------------------------------------------------------------------
     // Returns a reference to the embedded PlaySurface for wiring MIDI etc.
-    PlaySurface& getPlaySurface()
-    {
-        return *static_cast<PlaySurface*>(getContentComponent());
-    }
+    PlaySurface& getPlaySurface() { return *static_cast<PlaySurface*>(getContentComponent()); }
 
     //----------------------------------------------------------------------
     // Closing hides the window rather than deleting it so MIDI state,
     // mode selections, and bank selections survive hide/show cycles.
     void closeButtonPressed() override
     {
-        setVisible (false);
-        if (onClosed) onClosed();
+        setVisible(false);
+        if (onClosed)
+            onClosed();
     }
 
     //----------------------------------------------------------------------
     // Escape key closes the popup (hides it).
-    bool keyPressed (const juce::KeyPress& key) override
+    bool keyPressed(const juce::KeyPress& key) override
     {
         if (key == juce::KeyPress::escapeKey)
         {
-            setVisible (false);
-            if (onClosed) onClosed();
+            setVisible(false);
+            if (onClosed)
+                onClosed();
             return true;
         }
-        return juce::DocumentWindow::keyPressed (key);
+        return juce::DocumentWindow::keyPressed(key);
     }
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaySurfaceWindow)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurfaceWindow)
 };
 
 } // namespace xoceanus

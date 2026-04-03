@@ -39,19 +39,17 @@
 #include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 class ABCompare : public juce::Component
 {
 public:
     //==========================================================================
-    explicit ABCompare(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit ABCompare(XOceanusProcessor& proc) : processor(proc)
     {
-        A11y::setup(*this,
-                    "A/B Compare",
-                    "Compare two preset states. Click A or B to enter compare mode.",
+        A11y::setup(*this, "A/B Compare", "Compare two preset states. Click A or B to enter compare mode.",
                     /*wantsKeyFocus=*/true);
     }
 
@@ -85,15 +83,13 @@ public:
         paintButton(g, btnABounds, "A",
                     /*isActive=*/abActive && showingA,
                     /*isStored=*/stateA.getSize() > 0,
-                    /*isA=*/true,
-                    cornerR);
+                    /*isA=*/true, cornerR);
 
         // ── B button ─────────────────────────────────────────────────────────
         paintButton(g, btnBBounds, "B",
                     /*isActive=*/abActive && !showingA,
                     /*isStored=*/stateB.getSize() > 0,
-                    /*isA=*/false,
-                    cornerR);
+                    /*isA=*/false, cornerR);
 
         // ── Focus ring (WCAG 2.4.7) ──────────────────────────────────────────
         if (hasKeyboardFocus(true))
@@ -105,19 +101,16 @@ public:
         // Total: 56 × 24pt.  A: 0-23, gap: 24-27, B: 28-55.
         // If the component is sized differently, scale proportionally.
         auto b = getLocalBounds();
-        const int gap    = 4;
-        const int btnW   = (b.getWidth() - gap) / 2;
-        const int btnH   = b.getHeight();
+        const int gap = 4;
+        const int btnW = (b.getWidth() - gap) / 2;
+        const int btnH = b.getHeight();
 
         btnABounds = b.removeFromLeft(btnW).toFloat();
         b.removeFromLeft(gap);
         btnBBounds = b.toFloat();
 
         // Use the actual integer height for the B bounds
-        btnBBounds = { btnABounds.getRight() + (float)gap,
-                       0.0f,
-                       (float)btnW,
-                       (float)btnH };
+        btnBBounds = {btnABounds.getRight() + (float)gap, 0.0f, (float)btnW, (float)btnH};
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -157,7 +150,7 @@ private:
             // Capture the current processor state into A (the "before" slot).
             abActive = true;
             captureState(stateA);
-            stateB.reset();   // B is empty until the user loads a different preset
+            stateB.reset(); // B is empty until the user loads a different preset
             showingA = true;
         }
         else if (clickedA)
@@ -224,13 +217,8 @@ private:
     //   isStored  — has captured state         → solid border
     //   !isStored — nothing captured yet       → dashed border, no fill
     //   isA       — true = A (XO Gold), false = B (silver)
-    void paintButton(juce::Graphics& g,
-                     juce::Rectangle<float> bounds,
-                     const juce::String& label,
-                     bool isActive,
-                     bool isStored,
-                     bool isA,
-                     float cornerR)
+    void paintButton(juce::Graphics& g, juce::Rectangle<float> bounds, const juce::String& label, bool isActive,
+                     bool isStored, bool isA, float cornerR)
     {
         using namespace GalleryColors;
 
@@ -238,16 +226,14 @@ private:
         if (isActive && isStored)
         {
             // Fully active: solid accent fill.
-            juce::Colour fill = isA ? juce::Colour(xoGold)
-                                    : juce::Colour(0xFFC0C0C0); // silver
+            juce::Colour fill = isA ? juce::Colour(xoGold) : juce::Colour(0xFFC0C0C0); // silver
             g.setColour(fill);
             g.fillRoundedRectangle(bounds, cornerR);
         }
         else if (!isActive && isStored)
         {
             // Stored but not currently showing: subtle tinted background.
-            juce::Colour base = isA ? juce::Colour(xoGold)
-                                    : juce::Colour(0xFFC0C0C0);
+            juce::Colour base = isA ? juce::Colour(xoGold) : juce::Colour(0xFFC0C0C0);
             g.setColour(base.withAlpha(0.18f));
             g.fillRoundedRectangle(bounds, cornerR);
         }
@@ -262,15 +248,12 @@ private:
         if (!isStored)
         {
             // Dashed border — signals "slot empty".
-            drawDashedBorder(g, bounds, cornerR,
-                             get(borderGray()).withAlpha(0.55f));
+            drawDashedBorder(g, bounds, cornerR, get(borderGray()).withAlpha(0.55f));
         }
         else
         {
-            juce::Colour borderCol = isActive
-                ? (isA ? juce::Colour(xoGold).darker(0.18f)
-                        : juce::Colour(0xFF909090))
-                : get(borderGray()).withAlpha(0.60f);
+            juce::Colour borderCol = isActive ? (isA ? juce::Colour(xoGold).darker(0.18f) : juce::Colour(0xFF909090))
+                                              : get(borderGray()).withAlpha(0.60f);
 
             g.setColour(borderCol);
             g.drawRoundedRectangle(bounds.reduced(0.5f), cornerR, 1.0f);
@@ -284,8 +267,7 @@ private:
         }
         else if (isStored)
         {
-            textCol = isA ? juce::Colour(xoGold).darker(0.25f)
-                          : juce::Colour(0xFF808080);
+            textCol = isA ? juce::Colour(xoGold).darker(0.25f) : juce::Colour(0xFF808080);
         }
         else
         {
@@ -300,10 +282,7 @@ private:
     // Approximate a dashed rounded-rect border using short line segments.
     // JUCE does not natively support dashed corners on rounded rectangles,
     // so we stroke the straight edges only and draw the corners solid.
-    static void drawDashedBorder(juce::Graphics& g,
-                                 juce::Rectangle<float> b,
-                                 float /*cornerR*/,
-                                 juce::Colour colour)
+    static void drawDashedBorder(juce::Graphics& g, juce::Rectangle<float> b, float /*cornerR*/, juce::Colour colour)
     {
         g.setColour(colour);
 
@@ -311,10 +290,8 @@ private:
         juce::Path p;
         p.addRoundedRectangle(b.reduced(0.5f), 5.0f);
 
-        float dashes[] = { 3.0f, 2.5f };
-        juce::PathStrokeType stroke(1.0f,
-                                    juce::PathStrokeType::mitered,
-                                    juce::PathStrokeType::butt);
+        float dashes[] = {3.0f, 2.5f};
+        juce::PathStrokeType stroke(1.0f, juce::PathStrokeType::mitered, juce::PathStrokeType::butt);
         juce::Path dashed;
         stroke.createDashedStroke(dashed, p, dashes, 2);
         g.fillPath(dashed);
@@ -323,11 +300,11 @@ private:
     //==========================================================================
     XOceanusProcessor& processor;
 
-    bool abActive  = false;  // A/B mode is enabled
-    bool showingA  = true;   // currently displaying A (true) or B (false)
+    bool abActive = false; // A/B mode is enabled
+    bool showingA = true;  // currently displaying A (true) or B (false)
 
-    juce::MemoryBlock stateA;   // captured processor state for slot A
-    juce::MemoryBlock stateB;   // captured processor state for slot B
+    juce::MemoryBlock stateA; // captured processor state for slot A
+    juce::MemoryBlock stateB; // captured processor state for slot B
 
     juce::Rectangle<float> btnABounds;
     juce::Rectangle<float> btnBBounds;

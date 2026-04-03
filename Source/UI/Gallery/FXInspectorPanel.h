@@ -6,9 +6,13 @@
 #include "GalleryKnob.h"
 
 // Forward-declare to avoid including the full processor header here.
-namespace xoceanus { class XOceanusProcessor; }
+namespace xoceanus
+{
+class XOceanusProcessor;
+}
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // FXInspectorPanel — Column C / C3 (FX) tab content.
@@ -31,35 +35,33 @@ class FXInspectorPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit FXInspectorPanel(juce::AudioProcessorValueTreeState& apvts)
-        : myApvts(apvts)
+    explicit FXInspectorPanel(juce::AudioProcessorValueTreeState& apvts) : myApvts(apvts)
     {
         // Define the 8 FX slots.  The first paramId in expandedParamIds is the
         // primary "mix" param shown in the collapsed strip; the remainder are
         // shown only when expanded.
         static const SlotDef defs[] = {
-            { "SATURATION",     "master_satDrive",      { "master_satDrive",    "master_satMode" } },
-            { "CORRUPTION",     "master_corrMix",       { "master_corrMix",     "master_corrBits",
-                                                          "master_corrSR",      "master_corrFM",
-                                                          "master_corrTone" } },
-            { "COMB",           "master_combMix",       { "master_combMix",     "master_combFreq",
-                                                          "master_combFeedback","master_combDamping" } },
-            { "FREQ SHIFT",     "master_fshiftMix",     { "master_fshiftHz",    "master_fshiftMix",
-                                                          "master_fshiftMode" } },
-            { "REVERB",         "master_reverbMix",     { "master_reverbSize",  "master_reverbMix" } },
-            { "COMPRESSOR",     "master_compMix",       { "master_compRatio",   "master_compAttack",
-                                                          "master_compRelease",  "master_compMix" } },
-            { "DELAY",          "master_delayMix",      { "master_delayTime",   "master_delayFeedback",
-                                                          "master_delayMix" } },
-            { "MODULATION",     "master_modMix",        { "master_modRate",     "master_modDepth",
-                                                          "master_modMix",      "master_modMode" } },
+            {"SATURATION", "master_satDrive", {"master_satDrive", "master_satMode"}},
+            {"CORRUPTION",
+             "master_corrMix",
+             {"master_corrMix", "master_corrBits", "master_corrSR", "master_corrFM", "master_corrTone"}},
+            {"COMB",
+             "master_combMix",
+             {"master_combMix", "master_combFreq", "master_combFeedback", "master_combDamping"}},
+            {"FREQ SHIFT", "master_fshiftMix", {"master_fshiftHz", "master_fshiftMix", "master_fshiftMode"}},
+            {"REVERB", "master_reverbMix", {"master_reverbSize", "master_reverbMix"}},
+            {"COMPRESSOR",
+             "master_compMix",
+             {"master_compRatio", "master_compAttack", "master_compRelease", "master_compMix"}},
+            {"DELAY", "master_delayMix", {"master_delayTime", "master_delayFeedback", "master_delayMix"}},
+            {"MODULATION", "master_modMix", {"master_modRate", "master_modDepth", "master_modMix", "master_modMode"}},
         };
 
         for (auto& d : defs)
         {
             auto& slot = slots.emplace_back();
-            slot.name           = d.name;
-            slot.mixParamId     = d.mixParamId;
+            slot.name = d.name;
+            slot.mixParamId = d.mixParamId;
             for (auto* id : d.expandedIds)
                 slot.expandedIds.add(id);
 
@@ -70,13 +72,12 @@ public:
             slot.mixKnob->setColour(juce::Slider::rotarySliderFillColourId,
                                     GalleryColors::get(GalleryColors::textMid()).withAlpha(0.70f));
             slot.mixKnob->setTooltip(juce::String(d.name) + " wet/dry mix");
-            A11y::setup(*slot.mixKnob, juce::String(d.name) + " Mix",
-                        "Wet/dry mix for " + juce::String(d.name));
+            A11y::setup(*slot.mixKnob, juce::String(d.name) + " Mix", "Wet/dry mix for " + juce::String(d.name));
             addAndMakeVisible(*slot.mixKnob);
 
             // Attachment must outlive the knob; stored in the slot's unique_ptr.
-            slot.mixAtt = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                apvts, d.mixParamId, *slot.mixKnob);
+            slot.mixAtt = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, d.mixParamId,
+                                                                                                 *slot.mixKnob);
             enableKnobReset(*slot.mixKnob, apvts, d.mixParamId);
         }
 
@@ -105,18 +106,12 @@ public:
         layoutSlots();
     }
 
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
-    }
+    void paint(juce::Graphics& g) override { g.fillAll(GalleryColors::get(GalleryColors::shellWhite())); }
 
     //==========================================================================
     // Returns the total content height required to display all slots at their
     // current expanded/collapsed state.  Useful for the parent to size us.
-    int getRequiredHeight() const
-    {
-        return computeInnerHeight();
-    }
+    int getRequiredHeight() const { return computeInnerHeight(); }
 
     //==========================================================================
     // Respond to clicks on slot headers and chevrons.  Because the slots are
@@ -136,7 +131,7 @@ public:
         {
             auto& slot = slots[static_cast<size_t>(index)];
             slot.expanded = true;
-            buildExpandedKnobs(slot);  // lazy construction
+            buildExpandedKnobs(slot); // lazy construction
         }
 
         // Reflow heights.
@@ -153,8 +148,7 @@ public:
         {
             auto target = targetBoundsForSlot(i);
             if (!A11y::prefersReducedMotion())
-                animator.animateComponent(slotCards[static_cast<size_t>(i)].get(),
-                                          target, 1.0f, 150, false, 0.0, 0.0);
+                animator.animateComponent(slotCards[static_cast<size_t>(i)].get(), target, 1.0f, 150, false, 0.0, 0.0);
             else
                 slotCards[static_cast<size_t>(i)]->setBounds(target);
         }
@@ -167,9 +161,9 @@ private:
     // SlotDef — compile-time definition for each FX slot.
     struct SlotDef
     {
-        const char*                name;
-        const char*                mixParamId;
-        std::vector<const char*>   expandedIds;
+        const char* name;
+        const char* mixParamId;
+        std::vector<const char*> expandedIds;
     };
 
     //==========================================================================
@@ -181,35 +175,19 @@ private:
         juce::String tail = pid.startsWith("master_") ? pid.substring(7) : pid;
 
         // Explicit short-name table (maps camelCase suffix → display label).
-        struct Entry { const char* suffix; const char* label; };
+        struct Entry
+        {
+            const char* suffix;
+            const char* label;
+        };
         static const Entry table[] = {
-            { "satDrive",       "DRIVE"  },
-            { "satMode",        "MODE"   },
-            { "corrMix",        "MIX"    },
-            { "corrBits",       "BITS"   },
-            { "corrSR",         "RATE"   },
-            { "corrFM",         "FM"     },
-            { "corrTone",       "TONE"   },
-            { "combMix",        "MIX"    },
-            { "combFreq",       "FREQ"   },
-            { "combFeedback",   "FB"     },
-            { "combDamping",    "DAMP"   },
-            { "fshiftHz",       "HZ"     },
-            { "fshiftMix",      "MIX"    },
-            { "fshiftMode",     "MODE"   },
-            { "reverbSize",     "SIZE"   },
-            { "reverbMix",      "MIX"    },
-            { "compRatio",      "RATIO"  },
-            { "compAttack",     "ATK"    },
-            { "compRelease",    "REL"    },
-            { "compMix",        "MIX"    },
-            { "delayTime",      "TIME"   },
-            { "delayFeedback",  "FB"     },
-            { "delayMix",       "MIX"    },
-            { "modRate",        "RATE"   },
-            { "modDepth",       "DEPTH"  },
-            { "modMix",         "MIX"    },
-            { "modMode",        "MODE"   },
+            {"satDrive", "DRIVE"},  {"satMode", "MODE"},     {"corrMix", "MIX"},      {"corrBits", "BITS"},
+            {"corrSR", "RATE"},     {"corrFM", "FM"},        {"corrTone", "TONE"},    {"combMix", "MIX"},
+            {"combFreq", "FREQ"},   {"combFeedback", "FB"},  {"combDamping", "DAMP"}, {"fshiftHz", "HZ"},
+            {"fshiftMix", "MIX"},   {"fshiftMode", "MODE"},  {"reverbSize", "SIZE"},  {"reverbMix", "MIX"},
+            {"compRatio", "RATIO"}, {"compAttack", "ATK"},   {"compRelease", "REL"},  {"compMix", "MIX"},
+            {"delayTime", "TIME"},  {"delayFeedback", "FB"}, {"delayMix", "MIX"},     {"modRate", "RATE"},
+            {"modDepth", "DEPTH"},  {"modMix", "MIX"},       {"modMode", "MODE"},
         };
         for (auto& e : table)
             if (tail == e.suffix)
@@ -222,26 +200,21 @@ private:
     // FXSlot — runtime state for a single FX slot card.
     struct FXSlot
     {
-        juce::String     name;
-        juce::String     mixParamId;
-        juce::StringArray expandedIds;     // all params shown when expanded
-        bool             expanded = false;
+        juce::String name;
+        juce::String mixParamId;
+        juce::StringArray expandedIds; // all params shown when expanded
+        bool expanded = false;
 
         // Collapsed strip — always alive.
-        std::unique_ptr<GalleryKnob>
-            mixKnob;
-        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>
-            mixAtt;
+        std::unique_ptr<GalleryKnob> mixKnob;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mixAtt;
 
         // Expanded knobs — created lazily, stored in destruction-safe order.
         // Attachments must be destroyed BEFORE knobs.
-        std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>>
-            paramAtts;
-        std::vector<std::unique_ptr<GalleryKnob>>
-            paramKnobs;
+        std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> paramAtts;
+        std::vector<std::unique_ptr<GalleryKnob>> paramKnobs;
         // Param labels shown below each expanded knob.
-        std::vector<std::unique_ptr<juce::Label>>
-            paramLabels;
+        std::vector<std::unique_ptr<juce::Label>> paramLabels;
 
         bool expandedKnobsBuilt = false;
 
@@ -264,8 +237,7 @@ private:
     class SlotCard : public juce::Component
     {
     public:
-        SlotCard(FXInspectorPanel& owner, int index)
-            : panel(owner), slotIndex(index) {}
+        SlotCard(FXInspectorPanel& owner, int index) : panel(owner), slotIndex(index) {}
 
         void mouseDown(const juce::MouseEvent& e) override
         {
@@ -300,16 +272,12 @@ private:
             // Bypass LED (7×7 circle, left-aligned)
             // Collapsed: XO Gold at moderate alpha so it's always visible.
             // Expanded:  full XO Gold, fully opaque.
-            float ledSize  = 7.0f;
-            float ledX     = headerR.getX() + 8.0f;
-            float ledY     = headerR.getCentreY() - ledSize * 0.5f;
-            g.setColour(slot.expanded
-                        ? get(xoGold)
-                        : get(xoGold).withAlpha(0.55f));
+            float ledSize = 7.0f;
+            float ledX = headerR.getX() + 8.0f;
+            float ledY = headerR.getCentreY() - ledSize * 0.5f;
+            g.setColour(slot.expanded ? get(xoGold) : get(xoGold).withAlpha(0.55f));
             g.fillEllipse(ledX, ledY, ledSize, ledSize);
-            g.setColour(slot.expanded
-                        ? get(xoGold).withAlpha(0.80f)
-                        : get(borderGray()).withAlpha(0.60f));
+            g.setColour(slot.expanded ? get(xoGold).withAlpha(0.80f) : get(borderGray()).withAlpha(0.60f));
             g.drawEllipse(ledX, ledY, ledSize, ledSize, 1.0f);
 
             // FX name label — Space Grotesk SemiBold 10pt
@@ -317,11 +285,7 @@ private:
             float nameW = headerR.getRight() - kChevronW - kMixKnobW - nameX - 4.0f;
             g.setColour(get(textDark()));
             g.setFont(GalleryFonts::display(10.0f));
-            g.drawText(slot.name,
-                       juce::Rectangle<float>(nameX,
-                                              headerR.getY(),
-                                              nameW,
-                                              static_cast<float>(kHeaderH)),
+            g.drawText(slot.name, juce::Rectangle<float>(nameX, headerR.getY(), nameW, static_cast<float>(kHeaderH)),
                        juce::Justification::centredLeft, true);
 
             // Chevron (right edge of header)
@@ -334,28 +298,24 @@ private:
             {
                 // Up chevron
                 chevron.startNewSubPath(cx - cs, cy + cs * 0.4f);
-                chevron.lineTo(cx,           cy - cs * 0.4f);
-                chevron.lineTo(cx + cs,       cy + cs * 0.4f);
+                chevron.lineTo(cx, cy - cs * 0.4f);
+                chevron.lineTo(cx + cs, cy + cs * 0.4f);
             }
             else
             {
                 // Down chevron
                 chevron.startNewSubPath(cx - cs, cy - cs * 0.4f);
-                chevron.lineTo(cx,           cy + cs * 0.4f);
-                chevron.lineTo(cx + cs,       cy - cs * 0.4f);
+                chevron.lineTo(cx, cy + cs * 0.4f);
+                chevron.lineTo(cx + cs, cy - cs * 0.4f);
             }
             g.strokePath(chevron,
-                         juce::PathStrokeType(1.5f,
-                                              juce::PathStrokeType::curved,
-                                              juce::PathStrokeType::rounded));
+                         juce::PathStrokeType(1.5f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
             // Divider between header and expanded area
             if (slot.expanded && getHeight() > kHeaderH)
             {
                 g.setColour(get(borderGray()).withAlpha(0.60f));
-                g.drawHorizontalLine(kHeaderH,
-                                     headerR.getX() + 4.0f,
-                                     b.getRight() - 4.0f);
+                g.drawHorizontalLine(kHeaderH, headerR.getX() + 4.0f, b.getRight() - 4.0f);
             }
         }
 
@@ -367,30 +327,27 @@ private:
             if (slot.mixKnob != nullptr)
             {
                 int ky = (kHeaderH - kMixKnobW) / 2;
-                slot.mixKnob->setBounds(getWidth() - kChevronW - kMixKnobW - 2,
-                                        ky,
-                                        kMixKnobW,
-                                        kMixKnobW);
+                slot.mixKnob->setBounds(getWidth() - kChevronW - kMixKnobW - 2, ky, kMixKnobW, kMixKnobW);
             }
 
             // Expanded param knobs — horizontal row below header
             if (slot.expanded && !slot.paramKnobs.empty())
             {
-                int n       = static_cast<int>(slot.paramKnobs.size());
-                int xArea   = getWidth() - 16;
-                int cellW   = xArea / n;
-                int kSize   = juce::jmin(cellW - 4, kExpandedKnobSize);
-                int startX  = 8;
+                int n = static_cast<int>(slot.paramKnobs.size());
+                int xArea = getWidth() - 16;
+                int cellW = xArea / n;
+                int kSize = juce::jmin(cellW - 4, kExpandedKnobSize);
+                int startX = 8;
                 // Centre the knob+label block vertically within the expanded area.
                 // Block height = kSize (knob) + 2px gap + kLabelH (label).
-                int blockH  = kSize + 2 + kLabelH;
-                int kTop    = kHeaderH + (kExpandedAreaH - blockH) / 2;
-                int lblTop  = kTop + kSize + 2;
+                int blockH = kSize + 2 + kLabelH;
+                int kTop = kHeaderH + (kExpandedAreaH - blockH) / 2;
+                int lblTop = kTop + kSize + 2;
 
                 for (int i = 0; i < n; ++i)
                 {
                     int cellX = startX + i * cellW;
-                    int kX    = cellX + (cellW - kSize) / 2;
+                    int kX = cellX + (cellW - kSize) / 2;
 
                     if (slot.paramKnobs[static_cast<size_t>(i)] != nullptr)
                         slot.paramKnobs[static_cast<size_t>(i)]->setBounds(kX, kTop, kSize, kSize);
@@ -398,23 +355,22 @@ private:
                     if (i < static_cast<int>(slot.paramLabels.size()) &&
                         slot.paramLabels[static_cast<size_t>(i)] != nullptr)
                     {
-                        slot.paramLabels[static_cast<size_t>(i)]->setBounds(
-                            cellX, lblTop, cellW, kLabelH);
+                        slot.paramLabels[static_cast<size_t>(i)]->setBounds(cellX, lblTop, cellW, kLabelH);
                     }
                 }
             }
         }
 
-        static constexpr int kHeaderH        = 32;
-        static constexpr int kMixKnobW       = 24;
-        static constexpr int kChevronW       = 22;
-        static constexpr int kExpandedAreaH  = 120;
+        static constexpr int kHeaderH = 32;
+        static constexpr int kMixKnobW = 24;
+        static constexpr int kChevronW = 22;
+        static constexpr int kExpandedAreaH = 120;
         static constexpr int kExpandedKnobSize = 36;
-        static constexpr int kLabelH         = 12;
+        static constexpr int kLabelH = 12;
 
     private:
         FXInspectorPanel& panel;
-        int               slotIndex;
+        int slotIndex;
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SlotCard)
     };
 
@@ -444,8 +400,7 @@ private:
             auto lbl = std::make_unique<juce::Label>();
             lbl->setText(shortLabelForParamId(pid), juce::dontSendNotification);
             lbl->setFont(GalleryFonts::value(11.0f));
-            lbl->setColour(juce::Label::textColourId,
-                           GalleryColors::get(GalleryColors::t2()));
+            lbl->setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t2()));
             lbl->setJustificationType(juce::Justification::centred);
             lbl->setInterceptsMouseClicks(false, false);
 
@@ -456,8 +411,7 @@ private:
                 slotCards[static_cast<size_t>(slotIdx)]->addAndMakeVisible(*lbl);
             }
 
-            auto att = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                myApvts, pid, *knob);
+            auto att = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(myApvts, pid, *knob);
             enableKnobReset(*knob, myApvts, pid);
 
             // Store atts first so they are destroyed before knobs.
@@ -502,10 +456,10 @@ private:
         int y = kTopPad;
         for (int i = 0; i < static_cast<int>(slots.size()); ++i)
         {
-            const auto& s  = slots[static_cast<size_t>(i)];
-            int          sh = slotHeight(s);
+            const auto& s = slots[static_cast<size_t>(i)];
+            int sh = slotHeight(s);
             if (i == index)
-                return { kCardInset, y, innerContent.getWidth() - kCardInset * 2, sh };
+                return {kCardInset, y, innerContent.getWidth() - kCardInset * 2, sh};
             y += sh + kSlotGap;
         }
         return {};
@@ -539,29 +493,29 @@ private:
     }
 
     //==========================================================================
-    static constexpr int kPanelWidth  = 320;
-    static constexpr int kCardInset   = 6;
-    static constexpr int kTopPad      = 8;
-    static constexpr int kBottomPad   = 12;
-    static constexpr int kSlotGap     = 4;
+    static constexpr int kPanelWidth = 320;
+    static constexpr int kCardInset = 6;
+    static constexpr int kTopPad = 8;
+    static constexpr int kBottomPad = 12;
+    static constexpr int kSlotGap = 4;
 
     //==========================================================================
     juce::AudioProcessorValueTreeState& myApvts;
 
     // FX slot data — owns knobs and attachments.
-    std::vector<FXSlot>                              slots;
+    std::vector<FXSlot> slots;
 
     // One SlotCard per slot — owned here, parented to innerContent.
-    std::vector<std::unique_ptr<SlotCard>>           slotCards;
+    std::vector<std::unique_ptr<SlotCard>> slotCards;
 
     // Inner scrollable surface — NOT owned by viewport (false flag in ctor).
-    juce::Component                                  innerContent;
+    juce::Component innerContent;
 
     // Viewport wraps innerContent.
-    juce::Viewport                                   viewport;
+    juce::Viewport viewport;
 
     // Animator for accordion transitions.
-    juce::ComponentAnimator                          animator;
+    juce::ComponentAnimator animator;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FXInspectorPanel)
 };

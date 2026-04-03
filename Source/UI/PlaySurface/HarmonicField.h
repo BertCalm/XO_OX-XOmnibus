@@ -19,7 +19,8 @@
 #include <tuple>
 #include <utility>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 struct HarmonicField
 {
@@ -31,15 +32,13 @@ struct HarmonicField
     // Entry = semitone offset from C (0=C, 1=C#, 2=D, 3=D#, 4=E, 5=F,
     //         6=F#, 7=G, 8=G#, 9=A, 10=A#, 11=B).
     // Order: Gb, Db, Ab, Eb, Bb, F, C, G, D, A, E, B, F#
-    static constexpr std::array<int, 13> kFifthsSemitones =
-        { 6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6 };
+    static constexpr std::array<int, 13> kFifthsSemitones = {6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6};
 
-    static constexpr std::array<const char*, 13> kNoteNames =
-        { "Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#" };
+    static constexpr std::array<const char*, 13> kNoteNames = {"Gb", "Db", "Ab", "Eb", "Bb", "F", "C",
+                                                               "G",  "D",  "A",  "E",  "B",  "F#"};
 
     // Major scale intervals (semitones from root): W W H W W W H
-    static constexpr std::array<int, 7> kMajorScale =
-        { 0, 2, 4, 5, 7, 9, 11 };
+    static constexpr std::array<int, 7> kMajorScale = {0, 2, 4, 5, 7, 9, 11};
 
     // =========================================================================
     // Circle of Fifths Mapping
@@ -119,7 +118,7 @@ struct HarmonicField
         // Anchor colors (normalized 0–1)
         constexpr float tealR = 0x2A / 255.0f, tealG = 0x9D / 255.0f, tealB = 0x8F / 255.0f;
         constexpr float goldR = 0xE9 / 255.0f, goldG = 0xC4 / 255.0f, goldB = 0x6A / 255.0f;
-        constexpr float redR  = 0xE0 / 255.0f, redG  = 0x7A / 255.0f, redB  = 0x5F / 255.0f;
+        constexpr float redR = 0xE0 / 255.0f, redG = 0x7A / 255.0f, redB = 0x5F / 255.0f;
 
         float r, g, b;
         if (fifthsDist <= 3)
@@ -139,7 +138,7 @@ struct HarmonicField
             b = goldB + t * (redB - goldB);
         }
 
-        return { r, g, b };
+        return {r, g, b};
     }
 
     // =========================================================================
@@ -154,10 +153,14 @@ struct HarmonicField
     static std::pair<float, float> markerProperties(int fifthsDist) noexcept
     {
         fifthsDist = std::max(0, std::min(6, fifthsDist));
-        if (fifthsDist == 0)          return { 1.00f, 1.00f };
-        if (fifthsDist <= 2)          return { 0.85f, 0.75f };
-        if (fifthsDist <= 4)          return { 0.70f, 0.50f };
-        /* fifthsDist 5 or 6 */       return { 0.65f, 0.50f };  // WCAG Fix 4: raised from {0.55, 0.35} to meet WCAG 1.4.11 non-text contrast 3:1
+        if (fifthsDist == 0)
+            return {1.00f, 1.00f};
+        if (fifthsDist <= 2)
+            return {0.85f, 0.75f};
+        if (fifthsDist <= 4)
+            return {0.70f, 0.50f};
+        /* fifthsDist 5 or 6 */ return {
+            0.65f, 0.50f}; // WCAG Fix 4: raised from {0.55, 0.35} to meet WCAG 1.4.11 non-text contrast 3:1
     }
 
     // =========================================================================
@@ -184,10 +187,11 @@ struct HarmonicField
     static bool isInKey(int midiNote, int rootKey) noexcept
     {
         int semitone = ((midiNote % 12) + 12) % 12;
-        int root     = ((rootKey  % 12) + 12) % 12;
+        int root = ((rootKey % 12) + 12) % 12;
         int interval = (semitone - root + 12) % 12;
         for (int s : kMajorScale)
-            if (s == interval) return true;
+            if (s == interval)
+                return true;
         return false;
     }
 
@@ -195,7 +199,7 @@ struct HarmonicField
     static bool isRoot(int midiNote, int rootKey) noexcept
     {
         int semitone = ((midiNote % 12) + 12) % 12;
-        int root     = ((rootKey  % 12) + 12) % 12;
+        int root = ((rootKey % 12) + 12) % 12;
         return semitone == root;
     }
 
@@ -204,13 +208,16 @@ struct HarmonicField
     // Otherwise, checks +1 and -1 semitone alternately, expanding outward.
     static int quantizeToNearest(int midiNote, int rootKey) noexcept
     {
-        if (isInKey(midiNote, rootKey)) return midiNote;
+        if (isInKey(midiNote, rootKey))
+            return midiNote;
 
         // Search outward symmetrically: ±1, ±2, ...
         for (int delta = 1; delta <= 6; ++delta)
         {
-            if (isInKey(midiNote + delta, rootKey)) return midiNote + delta;
-            if (isInKey(midiNote - delta, rootKey)) return midiNote - delta;
+            if (isInKey(midiNote + delta, rootKey))
+                return midiNote + delta;
+            if (isInKey(midiNote - delta, rootKey))
+                return midiNote - delta;
         }
         // Should never reach here for a valid 7-note scale
         return midiNote;

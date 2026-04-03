@@ -6,7 +6,8 @@
 #include "../CytomicSVF.h"
 #include "Saturator.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // fXfXOsmosis — "Membrane Transfer" boutique effect.
@@ -44,7 +45,7 @@ public:
     fXOsmosis() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
 
@@ -54,17 +55,17 @@ public:
 
         for (int b = 0; b < kNumBands; ++b)
         {
-            bandsL[b].setMode (CytomicSVF::Mode::BandPass);
-            bandsR[b].setMode (CytomicSVF::Mode::BandPass);
+            bandsL[b].setMode(CytomicSVF::Mode::BandPass);
+            bandsR[b].setMode(CytomicSVF::Mode::BandPass);
             bandsL[b].reset();
             bandsR[b].reset();
         }
 
         // Tape saturation: light drive for membrane nonlinearity
-        saturator.setMode (Saturator::SaturationMode::Tape);
-        saturator.setDrive (saturation);
-        saturator.setMix (1.0f);
-        saturator.setOutputGain (1.0f);
+        saturator.setMode(Saturator::SaturationMode::Tape);
+        saturator.setDrive(saturation);
+        saturator.setMix(1.0f);
+        saturator.setOutputGain(1.0f);
         saturator.reset();
 
         // Envelope follower state
@@ -74,39 +75,40 @@ public:
     //--------------------------------------------------------------------------
     /// Membrane tone: 0 = dark/submerged, 1 = bright/open.
     /// Shifts the center frequencies of the 3 filter bands upward.
-    void setMembraneTone (float tone)
+    void setMembraneTone(float tone)
     {
-        membraneTone = clamp (tone, 0.0f, 1.0f);
+        membraneTone = clamp(tone, 0.0f, 1.0f);
         updateBandFrequencies();
     }
 
     /// Reactivity: how much input dynamics open the pores (0-1).
     /// At 0, the membrane is static. At 1, loud signals fully open the filters.
-    void setReactivity (float r) { reactivity = clamp (r, 0.0f, 1.0f); }
+    void setReactivity(float r) { reactivity = clamp(r, 0.0f, 1.0f); }
 
     /// Base resonance of the membrane filters (0-1).
-    void setResonance (float r) { baseResonance = clamp (r, 0.0f, 0.85f); }
+    void setResonance(float r) { baseResonance = clamp(r, 0.0f, 0.85f); }
 
     /// Membrane nonlinearity / tape saturation amount (0-1).
-    void setSaturation (float s)
+    void setSaturation(float s)
     {
-        saturation = clamp (s, 0.0f, 1.0f);
-        saturator.setDrive (saturation);
+        saturation = clamp(s, 0.0f, 1.0f);
+        saturator.setDrive(saturation);
     }
 
     /// Dry/wet mix (0-1).
-    void setMix (float m) { mix = clamp (m, 0.0f, 1.0f); }
+    void setMix(float m) { mix = clamp(m, 0.0f, 1.0f); }
 
     //--------------------------------------------------------------------------
     /// Process stereo audio in-place.
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+            return;
 
         // Envelope follower coefficients (per-block, not per-sample)
         // Attack ~5ms, release ~80ms — fast enough to track transients
-        float attackCoeff  = smoothCoeffFromTime (0.005f, static_cast<float> (sr));
-        float releaseCoeff = smoothCoeffFromTime (0.08f, static_cast<float> (sr));
+        float attackCoeff = smoothCoeffFromTime(0.005f, static_cast<float>(sr));
+        float releaseCoeff = smoothCoeffFromTime(0.08f, static_cast<float>(sr));
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -114,12 +116,12 @@ public:
             float inR = R[i];
 
             // Envelope follower: peak detection on mono sum
-            float inputLevel = (std::fabs (inL) + std::fabs (inR)) * 0.5f;
+            float inputLevel = (std::fabs(inL) + std::fabs(inR)) * 0.5f;
             float envCoeff = (inputLevel > envState) ? attackCoeff : releaseCoeff;
-            envState = flushDenormal (envState + envCoeff * (inputLevel - envState));
+            envState = flushDenormal(envState + envCoeff * (inputLevel - envState));
 
             // Modulate resonance and brightness based on envelope
-            float envScaled = clamp (envState * 8.0f, 0.0f, 1.0f);  // normalize to usable range
+            float envScaled = clamp(envState * 8.0f, 0.0f, 1.0f); // normalize to usable range
             float dynResonance = baseResonance + reactivity * envScaled * (0.92f - baseResonance);
             float dynBrightness = envScaled * reactivity;
 
@@ -128,9 +130,9 @@ public:
             for (int b = 0; b < kNumBands; ++b)
             {
                 float freq = bandFreqs[b] * (1.0f + dynBrightness * 0.5f);
-                freq = clamp (freq, 20.0f, static_cast<float> (sr) * 0.49f);
-                bandsL[b].setCoefficients_fast (freq, dynResonance, static_cast<float> (sr));
-                bandsR[b].setCoefficients_fast (freq, dynResonance, static_cast<float> (sr));
+                freq = clamp(freq, 20.0f, static_cast<float>(sr) * 0.49f);
+                bandsL[b].setCoefficients_fast(freq, dynResonance, static_cast<float>(sr));
+                bandsR[b].setCoefficients_fast(freq, dynResonance, static_cast<float>(sr));
             }
 
             // Process through 3 parallel bandpass filters
@@ -139,15 +141,15 @@ public:
 
             for (int b = 0; b < kNumBands; ++b)
             {
-                wetL += bandsL[b].processSample (inL) * bandGains[b];
-                wetR += bandsR[b].processSample (inR) * bandGains[b];
+                wetL += bandsL[b].processSample(inL) * bandGains[b];
+                wetR += bandsR[b].processSample(inR) * bandGains[b];
             }
 
             // Tape saturation on the wet signal (membrane nonlinearity)
             if (saturation > 0.01f)
             {
-                wetL = saturator.processSample (wetL);
-                wetR = saturator.processSample (wetR);
+                wetL = saturator.processSample(wetL);
+                wetR = saturator.processSample(wetR);
             }
 
             // Compensate level — bandpass sum is naturally quieter
@@ -177,7 +179,7 @@ private:
     {
         // Three pores: low (200-600), mid (800-2400), high (3000-8000)
         // membraneTone shifts the whole range upward
-        float toneShift = 1.0f + membraneTone * 1.5f;  // 1.0× to 2.5×
+        float toneShift = 1.0f + membraneTone * 1.5f; // 1.0× to 2.5×
         bandFreqs[0] = 300.0f * toneShift;
         bandFreqs[1] = 1200.0f * toneShift;
         bandFreqs[2] = 4500.0f * toneShift;
@@ -196,8 +198,8 @@ private:
     // 3 stereo bandpass filter bands (the "membrane pores")
     CytomicSVF bandsL[kNumBands];
     CytomicSVF bandsR[kNumBands];
-    float bandFreqs[kNumBands] = { 300.0f, 1200.0f, 4500.0f };
-    float bandGains[kNumBands] = { 0.8f, 1.0f, 0.7f };
+    float bandFreqs[kNumBands] = {300.0f, 1200.0f, 4500.0f};
+    float bandGains[kNumBands] = {0.8f, 1.0f, 0.7f};
 
     // Tape saturator (membrane nonlinearity)
     Saturator saturator;
@@ -206,11 +208,11 @@ private:
     float envState = 0.0f;
 
     // Parameters
-    float membraneTone  = 0.5f;
-    float reactivity    = 0.5f;
+    float membraneTone = 0.5f;
+    float reactivity = 0.5f;
     float baseResonance = 0.4f;
-    float saturation    = 0.3f;
-    float mix           = 0.0f;
+    float saturation = 0.3f;
+    float mix = 0.0f;
 };
 
 } // namespace xoceanus

@@ -43,28 +43,30 @@
 #include <atomic>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CreatureDriver — Specifies how a single creature maps to a parameter.
 //
-struct CreatureDriver {
-    int   creatureId   = 0;
-    int   paramIndex   = 0;         // Index passed to ParamReader
+struct CreatureDriver
+{
+    int creatureId = 0;
+    int paramIndex = 0; // Index passed to ParamReader
 
     // State thresholds — normalised 0.0–1.0 parameter values.
     // Values below idleThreshold    → Idle (after wake-up from sleep)
     // Values in [curious, excited)  → Curious
     // Values >= excitedThreshold    → Excited
     // Note active                   → Singing (overrides all)
-    float idleThreshold    = 0.40f; // 0.00 – 0.40
+    float idleThreshold = 0.40f;    // 0.00 – 0.40
     float curiousThreshold = 0.65f; // 0.40 – 0.65
     float excitedThreshold = 0.90f; // 0.65 – 0.90
     // excitedThreshold and above  = Excited
 
     // Runtime state — do not set manually; managed by timerCallback.
-    reef_bridge::CreatureState currentState  = reef_bridge::CreatureState::Sleeping;
-    int64_t                    lastActivityMs = 0;
+    reef_bridge::CreatureState currentState = reef_bridge::CreatureState::Sleeping;
+    int64_t lastActivityMs = 0;
 };
 
 //==============================================================================
@@ -87,7 +89,7 @@ public:
     // block or perform I/O.  For APVTS parameters, getValue() is safe.
     // For note state, use an atomic set by the audio callback.
     //
-    using ParamReader    = std::function<float(int)>;
+    using ParamReader = std::function<float(int)>;
     using NoteActiveReader = std::function<bool()>;
 
     // -------------------------------------------------------------------------
@@ -97,7 +99,7 @@ public:
     void configure(ParamReader paramReader, NoteActiveReader noteReader)
     {
         paramReader_ = std::move(paramReader);
-        noteReader_  = std::move(noteReader);
+        noteReader_ = std::move(noteReader);
     }
 
     // -------------------------------------------------------------------------
@@ -115,33 +117,27 @@ public:
     // clearCreatures() — Remove all registered creature drivers.
     // Call when switching engines or rebuilding the reef layout.
     //
-    void clearCreatures()
-    {
-        numCreatures_ = 0;
-    }
+    void clearCreatures() { numCreatures_ = 0; }
 
     // -------------------------------------------------------------------------
     // setNoteActive() — Notify from the audio thread that a note started or
     // ended. The timer reads this atomically in the next tick.
     //
-    void setNoteActive(bool active)
-    {
-        noteActiveOverride_.store(active, std::memory_order_release);
-    }
+    void setNoteActive(bool active) { noteActiveOverride_.store(active, std::memory_order_release); }
 
     // -------------------------------------------------------------------------
     // start() / stop() — Timer lifecycle.
     //
     void start() { startTimerHz(30); }
-    void stop()  { stopTimer(); }
+    void stop() { stopTimer(); }
 
     // -------------------------------------------------------------------------
     // timerCallback() — Called at 30 Hz on the JUCE message thread.
     //
     void timerCallback() override
     {
-        const int64_t now       = juce::Time::currentTimeMillis();
-        const bool    noteActive = evaluateNoteActive();
+        const int64_t now = juce::Time::currentTimeMillis();
+        const bool noteActive = evaluateNoteActive();
 
         for (int i = 0; i < numCreatures_; ++i)
         {
@@ -151,8 +147,8 @@ public:
             if (noteActive)
             {
                 // SINGING override: note-on trumps all param-driven states.
-                newState          = reef_bridge::CreatureState::Singing;
-                c.lastActivityMs  = now;
+                newState = reef_bridge::CreatureState::Singing;
+                c.lastActivityMs = now;
             }
             else
             {
@@ -220,11 +216,11 @@ private:
     // -------------------------------------------------------------------------
     // Data
     //
-    std::array<CreatureDriver, kMaxCreatures> creatures_ {};
-    int                  numCreatures_      = 0;
-    ParamReader          paramReader_;
-    NoteActiveReader     noteReader_;
-    std::atomic<bool>    noteActiveOverride_ { false };
+    std::array<CreatureDriver, kMaxCreatures> creatures_{};
+    int numCreatures_ = 0;
+    ParamReader paramReader_;
+    NoteActiveReader noteReader_;
+    std::atomic<bool> noteActiveOverride_{false};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CreatureBehaviorTimer)
 };

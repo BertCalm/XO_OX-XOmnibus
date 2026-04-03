@@ -7,55 +7,72 @@
 #include <algorithm>
 #include "../../DSP/FastMath.h"
 
-namespace xoceanus {
-namespace XOpal {
+namespace xoceanus
+{
+namespace XOpal
+{
 
 //==============================================================================
 // Constants
 //==============================================================================
-static constexpr int MAX_CLOUD_COUNT  = 12;
-static constexpr int MAX_GRAIN_COUNT  = 32;
+static constexpr int MAX_CLOUD_COUNT = 12;
+static constexpr int MAX_GRAIN_COUNT = 32;
 static constexpr int GRAIN_BUFFER_SEC = 4;
-static constexpr int MAX_BUFFER_SIZE  = 192000 * GRAIN_BUFFER_SEC; // 768000 samples @ 192kHz (handles all common pro sample rates)
+static constexpr int MAX_BUFFER_SIZE =
+    192000 * GRAIN_BUFFER_SEC; // 768000 samples @ 192kHz (handles all common pro sample rates)
 
 //==============================================================================
 // Enums
 //==============================================================================
-enum class OscSource { Sine = 0, Saw, Pulse, Noise, TwoOsc, Coupling };
-enum class FilterMode { LowPass = 0, BandPass, HighPass };
+enum class OscSource
+{
+    Sine = 0,
+    Saw,
+    Pulse,
+    Noise,
+    TwoOsc,
+    Coupling
+};
+enum class FilterMode
+{
+    LowPass = 0,
+    BandPass,
+    HighPass
+};
 
 //==============================================================================
 // Parameter IDs — opal_ namespace
 //==============================================================================
-namespace ParamID {
-    static constexpr const char* SOURCE        = "opal_source";
-    static constexpr const char* GRAIN_SIZE    = "opal_grainSize";
-    static constexpr const char* DENSITY       = "opal_density";
-    static constexpr const char* POSITION      = "opal_position";
-    static constexpr const char* POS_SCATTER   = "opal_posScatter";
-    static constexpr const char* PITCH_SCATTER = "opal_pitchScatter";
-    static constexpr const char* PAN_SCATTER   = "opal_panScatter";
-    static constexpr const char* WINDOW        = "opal_window";
-    static constexpr const char* FREEZE        = "opal_freeze";
-    static constexpr const char* COUPLING_LEVEL = "opal_couplingLevel";
-    static constexpr const char* PULSE_WIDTH   = "opal_pulseWidth";
-    static constexpr const char* DETUNE_CENTS  = "opal_detuneCents";
-    static constexpr const char* FILTER_CUTOFF = "opal_filterCutoff";
-    static constexpr const char* FILTER_RESO   = "opal_filterReso";
-    static constexpr const char* FILTER_MODE   = "opal_filterMode";
-    static constexpr const char* SHIMMER       = "opal_shimmer";
-    static constexpr const char* FROST         = "opal_frost";
-    static constexpr const char* SMEAR         = "opal_smear";
-    static constexpr const char* REVERB_MIX    = "opal_reverbMix";
-    static constexpr const char* AMP_ATTACK    = "opal_ampAttack";
-    static constexpr const char* AMP_DECAY     = "opal_ampDecay";
-    static constexpr const char* AMP_SUSTAIN   = "opal_ampSustain";
-    static constexpr const char* AMP_RELEASE   = "opal_ampRelease";
-    static constexpr const char* MACRO_SCATTER = "opal_macroScatter";
-    static constexpr const char* MACRO_DRIFT   = "opal_macroDrift";
-    static constexpr const char* MACRO_COUPLING = "opal_macroCoupling";
-    static constexpr const char* MACRO_SPACE   = "opal_macroSpace";
-    static constexpr const char* MASTER_VOLUME = "opal_masterVolume";
+namespace ParamID
+{
+static constexpr const char* SOURCE = "opal_source";
+static constexpr const char* GRAIN_SIZE = "opal_grainSize";
+static constexpr const char* DENSITY = "opal_density";
+static constexpr const char* POSITION = "opal_position";
+static constexpr const char* POS_SCATTER = "opal_posScatter";
+static constexpr const char* PITCH_SCATTER = "opal_pitchScatter";
+static constexpr const char* PAN_SCATTER = "opal_panScatter";
+static constexpr const char* WINDOW = "opal_window";
+static constexpr const char* FREEZE = "opal_freeze";
+static constexpr const char* COUPLING_LEVEL = "opal_couplingLevel";
+static constexpr const char* PULSE_WIDTH = "opal_pulseWidth";
+static constexpr const char* DETUNE_CENTS = "opal_detuneCents";
+static constexpr const char* FILTER_CUTOFF = "opal_filterCutoff";
+static constexpr const char* FILTER_RESO = "opal_filterReso";
+static constexpr const char* FILTER_MODE = "opal_filterMode";
+static constexpr const char* SHIMMER = "opal_shimmer";
+static constexpr const char* FROST = "opal_frost";
+static constexpr const char* SMEAR = "opal_smear";
+static constexpr const char* REVERB_MIX = "opal_reverbMix";
+static constexpr const char* AMP_ATTACK = "opal_ampAttack";
+static constexpr const char* AMP_DECAY = "opal_ampDecay";
+static constexpr const char* AMP_SUSTAIN = "opal_ampSustain";
+static constexpr const char* AMP_RELEASE = "opal_ampRelease";
+static constexpr const char* MACRO_SCATTER = "opal_macroScatter";
+static constexpr const char* MACRO_DRIFT = "opal_macroDrift";
+static constexpr const char* MACRO_COUPLING = "opal_macroCoupling";
+static constexpr const char* MACRO_SPACE = "opal_macroSpace";
+static constexpr const char* MASTER_VOLUME = "opal_masterVolume";
 } // namespace ParamID
 
 //==============================================================================
@@ -63,13 +80,13 @@ namespace ParamID {
 //==============================================================================
 struct GrainParams
 {
-    float position      = 0.5f;
-    float posScatter    = 0.0f;
-    float grainSizeMs   = 100.0f;
-    float density       = 20.0f;
-    float pitchScatter  = 0.0f;
-    float panScatter    = 0.0f;
-    int   windowShape   = 0;
+    float position = 0.5f;
+    float posScatter = 0.0f;
+    float grainSizeMs = 100.0f;
+    float density = 20.0f;
+    float pitchScatter = 0.0f;
+    float panScatter = 0.0f;
+    int windowShape = 0;
     float peakAmplitude = 1.0f;
 };
 
@@ -85,19 +102,21 @@ public:
         phase = std::max(0.0f, std::min(1.0f, phase));
         switch (shape)
         {
-            case 0: return hann(phase);
-            case 1: return gaussian(phase);
-            case 2: return tukey(phase);
-            case 3: return 1.0f; // Rectangular
-            default: return hann(phase);
+        case 0:
+            return hann(phase);
+        case 1:
+            return gaussian(phase);
+        case 2:
+            return tukey(phase);
+        case 3:
+            return 1.0f; // Rectangular
+        default:
+            return hann(phase);
         }
     }
 
 private:
-    static float hann(float p) noexcept
-    {
-        return 0.5f * (1.0f - fastCos(6.283185307f * p));
-    }
+    static float hann(float p) noexcept { return 0.5f * (1.0f - fastCos(6.283185307f * p)); }
 
     static float gaussian(float p) noexcept
     {
@@ -122,30 +141,25 @@ private:
 class GrainBuffer
 {
 public:
-    GrainBuffer()
-    {
-        clear();
-    }
+    GrainBuffer() { clear(); }
 
     void clear() noexcept
     {
         std::memset(bufL, 0, sizeof(bufL));
         std::memset(bufR, 0, sizeof(bufR));
         writePos = 0;
-        length   = MAX_BUFFER_SIZE;
-        frozen   = false;
+        length = MAX_BUFFER_SIZE;
+        frozen = false;
     }
 
-    void setLength(int len) noexcept
-    {
-        length = std::max(1, std::min(MAX_BUFFER_SIZE, len));
-    }
+    void setLength(int len) noexcept { length = std::max(1, std::min(MAX_BUFFER_SIZE, len)); }
 
     void setFrozen(bool f) noexcept { frozen = f; }
 
     void write(float l, float r) noexcept
     {
-        if (frozen) return;
+        if (frozen)
+            return;
         bufL[writePos] = l;
         bufR[writePos] = r;
         writePos = (writePos + 1) % length;
@@ -174,11 +188,11 @@ public:
     int getLength() const noexcept { return length; }
 
 private:
-    float bufL[MAX_BUFFER_SIZE] {};
-    float bufR[MAX_BUFFER_SIZE] {};
-    int   writePos = 0;
-    int   length   = MAX_BUFFER_SIZE;
-    bool  frozen   = false;
+    float bufL[MAX_BUFFER_SIZE]{};
+    float bufR[MAX_BUFFER_SIZE]{};
+    int writePos = 0;
+    int length = MAX_BUFFER_SIZE;
+    bool frozen = false;
 };
 
 //==============================================================================
@@ -186,28 +200,27 @@ private:
 //==============================================================================
 struct GrainVoice
 {
-    bool  active       = false;
-    float position     = 0.0f;     // start position in buffer [0..1]
-    float phase        = 0.0f;     // progress through grain [0..1]
-    float phaseInc     = 0.001f;   // 1 / grainSizeSamples
-    float pitchRatio   = 1.0f;     // playback speed multiplier
-    float panL         = 0.707f;
-    float panR         = 0.707f;
-    int   windowShape  = 0;
-    float amplitude    = 1.0f;
+    bool active = false;
+    float position = 0.0f;   // start position in buffer [0..1]
+    float phase = 0.0f;      // progress through grain [0..1]
+    float phaseInc = 0.001f; // 1 / grainSizeSamples
+    float pitchRatio = 1.0f; // playback speed multiplier
+    float panL = 0.707f;
+    float panR = 0.707f;
+    int windowShape = 0;
+    float amplitude = 1.0f;
 
-    void start(float pos, float sizeSamples, float pitch,
-               float pL, float pR, int window, float amp) noexcept
+    void start(float pos, float sizeSamples, float pitch, float pL, float pR, int window, float amp) noexcept
     {
-        active      = true;
-        position    = pos;
-        phase       = 0.0f;
-        phaseInc    = (sizeSamples > 0.0f) ? (1.0f / sizeSamples) : 0.01f;
-        pitchRatio  = pitch;
-        panL        = pL;
-        panR        = pR;
+        active = true;
+        position = pos;
+        phase = 0.0f;
+        phaseInc = (sizeSamples > 0.0f) ? (1.0f / sizeSamples) : 0.01f;
+        pitchRatio = pitch;
+        panL = pL;
+        panR = pR;
         windowShape = window;
-        amplitude   = amp;
+        amplitude = amp;
     }
 };
 
@@ -247,12 +260,13 @@ public:
     }
 
     // Process all active grains, reading from buffer and writing to output
-    void processAll(const GrainBuffer& buffer, const WindowFunctions& windows,
-                    float* outL, float* outR, int numSamples) noexcept
+    void processAll(const GrainBuffer& buffer, const WindowFunctions& windows, float* outL, float* outR,
+                    int numSamples) noexcept
     {
         for (auto& g : grains)
         {
-            if (!g.active) continue;
+            if (!g.active)
+                continue;
 
             for (int n = 0; n < numSamples; ++n)
             {
@@ -284,12 +298,13 @@ public:
     {
         int count = 0;
         for (auto& g : grains)
-            if (g.active) ++count;
+            if (g.active)
+                ++count;
         return count;
     }
 
 private:
-    std::array<GrainVoice, MaxGrains> grains {};
+    std::array<GrainVoice, MaxGrains> grains{};
 };
 
 //==============================================================================
@@ -298,35 +313,41 @@ private:
 class CloudVoice
 {
 public:
-    bool  active     = false;
-    int   noteNumber = -1;
-    float velocity   = 0.0f;
-    float pitchRatio = 1.0f;  // derived from MIDI note
+    bool active = false;
+    int noteNumber = -1;
+    float velocity = 0.0f;
+    float pitchRatio = 1.0f; // derived from MIDI note
 
     // ADSR envelope state
-    enum class EnvStage { Attack, Decay, Sustain, Release, Off };
-    EnvStage envStage  = EnvStage::Off;
-    float    envLevel  = 0.0f;
-    float    envAttack = 0.01f, envDecay = 0.1f;
-    float    envSustain = 0.7f, envRelease = 0.3f;
+    enum class EnvStage
+    {
+        Attack,
+        Decay,
+        Sustain,
+        Release,
+        Off
+    };
+    EnvStage envStage = EnvStage::Off;
+    float envLevel = 0.0f;
+    float envAttack = 0.01f, envDecay = 0.1f;
+    float envSustain = 0.7f, envRelease = 0.3f;
 
     // Grain scheduling
-    float grainTimer   = 0.0f;   // countdown to next grain trigger
+    float grainTimer = 0.0f; // countdown to next grain trigger
 
-    void noteOn(int note, float vel,
-                float attack, float decay, float sustain, float release) noexcept
+    void noteOn(int note, float vel, float attack, float decay, float sustain, float release) noexcept
     {
-        active      = true;
-        noteNumber  = note;
-        velocity    = vel;
-        pitchRatio  = fastPow2((static_cast<float>(note) - 60.0f) / 12.0f);
-        envStage    = EnvStage::Attack;
-        envLevel    = 0.0f;
-        envAttack   = std::max(0.001f, attack);
-        envDecay    = std::max(0.001f, decay);
-        envSustain  = sustain;
-        envRelease  = std::max(0.001f, release);
-        grainTimer  = 0.0f;
+        active = true;
+        noteNumber = note;
+        velocity = vel;
+        pitchRatio = fastPow2((static_cast<float>(note) - 60.0f) / 12.0f);
+        envStage = EnvStage::Attack;
+        envLevel = 0.0f;
+        envAttack = std::max(0.001f, attack);
+        envDecay = std::max(0.001f, decay);
+        envSustain = sustain;
+        envRelease = std::max(0.001f, release);
+        grainTimer = 0.0f;
     }
 
     void noteOff() noexcept
@@ -341,40 +362,40 @@ public:
         float sr = static_cast<float>(sampleRate);
         switch (envStage)
         {
-            case EnvStage::Attack:
-                envLevel += 1.0f / (envAttack * sr);
-                if (envLevel >= 1.0f)
-                {
-                    envLevel = 1.0f;
-                    envStage = EnvStage::Decay;
-                }
-                break;
+        case EnvStage::Attack:
+            envLevel += 1.0f / (envAttack * sr);
+            if (envLevel >= 1.0f)
+            {
+                envLevel = 1.0f;
+                envStage = EnvStage::Decay;
+            }
+            break;
 
-            case EnvStage::Decay:
-                envLevel -= (1.0f - envSustain) / (envDecay * sr);
-                if (envLevel <= envSustain)
-                {
-                    envLevel = envSustain;
-                    envStage = EnvStage::Sustain;
-                }
-                break;
-
-            case EnvStage::Sustain:
+        case EnvStage::Decay:
+            envLevel -= (1.0f - envSustain) / (envDecay * sr);
+            if (envLevel <= envSustain)
+            {
                 envLevel = envSustain;
-                break;
+                envStage = EnvStage::Sustain;
+            }
+            break;
 
-            case EnvStage::Release:
-                envLevel -= envLevel / (envRelease * sr + 1.0f);
-                if (envLevel < 0.001f)
-                {
-                    envLevel = 0.0f;
-                    envStage = EnvStage::Off;
-                    active   = false;
-                }
-                break;
+        case EnvStage::Sustain:
+            envLevel = envSustain;
+            break;
 
-            case EnvStage::Off:
-                break;
+        case EnvStage::Release:
+            envLevel -= envLevel / (envRelease * sr + 1.0f);
+            if (envLevel < 0.001f)
+            {
+                envLevel = 0.0f;
+                envStage = EnvStage::Off;
+                active = false;
+            }
+            break;
+
+        case EnvStage::Off:
+            break;
         }
     }
 };
@@ -430,23 +451,21 @@ public:
         return nullptr;
     }
 
-    void setSharedParams(const GrainParams& p) noexcept
-    {
-        sharedParams = p;
-    }
+    void setSharedParams(const GrainParams& p) noexcept { sharedParams = p; }
 
     // Tick all clouds by one sample — schedule grains as needed
     template <int MaxGrains>
-    void tickOneSample(const GrainBuffer& buffer,
-                       const WindowFunctions& windows,
+    void tickOneSample(const GrainBuffer& buffer, const WindowFunctions& windows,
                        GrainPool<MaxGrains>& grainPool) noexcept
     {
         for (auto& c : clouds)
         {
-            if (!c.active) continue;
+            if (!c.active)
+                continue;
 
             c.tickEnvelope(sr);
-            if (!c.active) continue; // envelope finished
+            if (!c.active)
+                continue; // envelope finished
 
             // Grain scheduling: timer counts down, triggers new grain at 0
             c.grainTimer -= 1.0f;
@@ -458,7 +477,8 @@ public:
                 // Compute grain parameters with scatter
                 float pos = sharedParams.position + randomBipolar() * sharedParams.posScatter;
                 pos -= std::floor(pos);
-                if (pos < 0.0f) pos += 1.0f;
+                if (pos < 0.0f)
+                    pos += 1.0f;
 
                 float sizeSamples = sharedParams.grainSizeMs * 0.001f * static_cast<float>(sr);
                 sizeSamples = std::max(10.0f, sizeSamples);
@@ -475,8 +495,7 @@ public:
                 auto* grain = grainPool.allocate();
                 if (grain)
                 {
-                    grain->start(pos, sizeSamples, pitch,
-                                 panL, panR, sharedParams.windowShape,
+                    grain->start(pos, sizeSamples, pitch, panL, panR, sharedParams.windowShape,
                                  c.envLevel * c.velocity);
                 }
             }
@@ -487,12 +506,13 @@ public:
     {
         int count = 0;
         for (auto& c : clouds)
-            if (c.active) ++count;
+            if (c.active)
+                ++count;
         return count;
     }
 
 private:
-    std::array<CloudVoice, MAX_CLOUD_COUNT> clouds {};
+    std::array<CloudVoice, MAX_CLOUD_COUNT> clouds{};
     GrainParams sharedParams;
     double sr = 44100.0;
 
@@ -518,68 +538,70 @@ public:
         phase2 = 0.0;
     }
 
-    void generateSample(OscSource mode, float freqHz,
-                         float pulseWidth, float detuneCents,
-                         float& outL, float& outR) noexcept
+    void generateSample(OscSource mode, float freqHz, float pulseWidth, float detuneCents, float& outL,
+                        float& outR) noexcept
     {
         double inc1 = static_cast<double>(freqHz) / sr;
-        double inc2 = static_cast<double>(freqHz) * static_cast<double>(fastPow2(static_cast<float>(detuneCents) / 1200.0f)) / sr;
+        double inc2 =
+            static_cast<double>(freqHz) * static_cast<double>(fastPow2(static_cast<float>(detuneCents) / 1200.0f)) / sr;
 
         switch (mode)
         {
-            case OscSource::Sine:
-            {
-                // SRO: fastSin replaces std::sin (per-sample oscillator)
-                float s = fastSin(static_cast<float>(phase1 * 6.283185307f));
-                outL = outR = s;
-                phase1 += inc1;
-                break;
-            }
+        case OscSource::Sine:
+        {
+            // SRO: fastSin replaces std::sin (per-sample oscillator)
+            float s = fastSin(static_cast<float>(phase1 * 6.283185307f));
+            outL = outR = s;
+            phase1 += inc1;
+            break;
+        }
 
-            case OscSource::Saw:
-            {
-                float s = static_cast<float>(2.0 * phase1 - 1.0);
-                outL = outR = s;
-                phase1 += inc1;
-                break;
-            }
+        case OscSource::Saw:
+        {
+            float s = static_cast<float>(2.0 * phase1 - 1.0);
+            outL = outR = s;
+            phase1 += inc1;
+            break;
+        }
 
-            case OscSource::Pulse:
-            {
-                float s = (phase1 < static_cast<double>(pulseWidth)) ? 1.0f : -1.0f;
-                outL = outR = s;
-                phase1 += inc1;
-                break;
-            }
+        case OscSource::Pulse:
+        {
+            float s = (phase1 < static_cast<double>(pulseWidth)) ? 1.0f : -1.0f;
+            outL = outR = s;
+            phase1 += inc1;
+            break;
+        }
 
-            case OscSource::Noise:
-            {
-                noiseState = noiseState * 1103515245u + 12345u;
-                float s = (static_cast<float>(noiseState >> 16) / 32768.0f) - 1.0f;
-                outL = outR = s;
-                break;
-            }
+        case OscSource::Noise:
+        {
+            noiseState = noiseState * 1103515245u + 12345u;
+            float s = (static_cast<float>(noiseState >> 16) / 32768.0f) - 1.0f;
+            outL = outR = s;
+            break;
+        }
 
-            case OscSource::TwoOsc:
-            {
-                // SRO: fastSin replaces std::sin (per-sample oscillator)
-                float s1 = fastSin(static_cast<float>(phase1 * 6.283185307f));
-                float s2 = static_cast<float>(2.0 * phase2 - 1.0); // detuned saw
-                outL = s1;
-                outR = s2;
-                phase1 += inc1;
-                phase2 += inc2;
-                break;
-            }
+        case OscSource::TwoOsc:
+        {
+            // SRO: fastSin replaces std::sin (per-sample oscillator)
+            float s1 = fastSin(static_cast<float>(phase1 * 6.283185307f));
+            float s2 = static_cast<float>(2.0 * phase2 - 1.0); // detuned saw
+            outL = s1;
+            outR = s2;
+            phase1 += inc1;
+            phase2 += inc2;
+            break;
+        }
 
-            default:
-                outL = outR = 0.0f;
-                break;
+        default:
+            outL = outR = 0.0f;
+            break;
         }
 
         // Wrap phases
-        if (phase1 >= 1.0) phase1 -= 1.0;
-        if (phase2 >= 1.0) phase2 -= 1.0;
+        if (phase1 >= 1.0)
+            phase1 -= 1.0;
+        if (phase2 >= 1.0)
+            phase2 -= 1.0;
     }
 
 private:
@@ -597,8 +619,10 @@ class SVFilterStereo
 public:
     void reset() noexcept
     {
-        ic1eqL = 0.0f; ic2eqL = 0.0f;
-        ic1eqR = 0.0f; ic2eqR = 0.0f;
+        ic1eqL = 0.0f;
+        ic2eqL = 0.0f;
+        ic1eqR = 0.0f;
+        ic2eqR = 0.0f;
     }
 
     void setParams(double sampleRate, float cutoffHz, float resonance, FilterMode mode) noexcept
@@ -634,9 +658,12 @@ private:
 
         switch (fMode)
         {
-            case FilterMode::LowPass:  return v2;
-            case FilterMode::BandPass: return v1;
-            case FilterMode::HighPass: return input - k * v1 - v2;
+        case FilterMode::LowPass:
+            return v2;
+        case FilterMode::BandPass:
+            return v1;
+        case FilterMode::HighPass:
+            return input - k * v1 - v2;
         }
         return v2;
     }
@@ -653,10 +680,10 @@ private:
 //==============================================================================
 inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
 {
-    using juce::AudioParameterFloat;
     using juce::AudioParameterChoice;
-    using juce::ParameterID;
+    using juce::AudioParameterFloat;
     using juce::NormalisableRange;
+    using juce::ParameterID;
 
     // Source select
     params.push_back(std::make_unique<AudioParameterChoice>(
@@ -664,131 +691,108 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
         juce::StringArray{"Sine", "Saw", "Pulse", "Noise", "Two-Osc", "Coupling"}, 0));
 
     // Grain controls
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::GRAIN_SIZE, 1}, "Opal Grain Size",
-        NormalisableRange<float>(10.0f, 800.0f, 0.1f, 0.4f), 100.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::GRAIN_SIZE, 1}, "Opal Grain Size",
+                                                           NormalisableRange<float>(10.0f, 800.0f, 0.1f, 0.4f),
+                                                           100.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::DENSITY, 1}, "Opal Density",
-        NormalisableRange<float>(1.0f, 120.0f, 0.1f, 0.5f), 20.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::DENSITY, 1}, "Opal Density",
+                                                           NormalisableRange<float>(1.0f, 120.0f, 0.1f, 0.5f), 20.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::POSITION, 1}, "Opal Position",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::POSITION, 1}, "Opal Position",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
 
     // Scatter
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::POS_SCATTER, 1}, "Opal Pos Scatter",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.1f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::POS_SCATTER, 1}, "Opal Pos Scatter",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.1f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::PITCH_SCATTER, 1}, "Opal Pitch Scatter",
-        NormalisableRange<float>(0.0f, 24.0f, 0.01f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::PITCH_SCATTER, 1}, "Opal Pitch Scatter",
+                                                           NormalisableRange<float>(0.0f, 24.0f, 0.01f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::PAN_SCATTER, 1}, "Opal Pan Scatter",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::PAN_SCATTER, 1}, "Opal Pan Scatter",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
 
     // Window shape
-    params.push_back(std::make_unique<AudioParameterChoice>(
-        ParameterID{ParamID::WINDOW, 1}, "Opal Window",
-        juce::StringArray{"Hann", "Gaussian", "Tukey", "Rect"}, 0));
+    params.push_back(std::make_unique<AudioParameterChoice>(ParameterID{ParamID::WINDOW, 1}, "Opal Window",
+                                                            juce::StringArray{"Hann", "Gaussian", "Tukey", "Rect"}, 0));
 
     // Freeze
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::FREEZE, 1}, "Opal Freeze",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::FREEZE, 1}, "Opal Freeze",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
     // Coupling level
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::COUPLING_LEVEL, 1}, "Opal Coupling Level",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::COUPLING_LEVEL, 1},
+                                                           "Opal Coupling Level",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
     // Oscillator controls
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::PULSE_WIDTH, 1}, "Opal Pulse Width",
-        NormalisableRange<float>(0.05f, 0.95f, 0.01f), 0.5f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::PULSE_WIDTH, 1}, "Opal Pulse Width",
+                                                           NormalisableRange<float>(0.05f, 0.95f, 0.01f), 0.5f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::DETUNE_CENTS, 1}, "Opal Detune",
-        NormalisableRange<float>(0.0f, 50.0f, 0.1f), 7.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::DETUNE_CENTS, 1}, "Opal Detune",
+                                                           NormalisableRange<float>(0.0f, 50.0f, 0.1f), 7.0f));
 
     // Filter
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::FILTER_CUTOFF, 1}, "Opal Filter Cutoff",
-        NormalisableRange<float>(20.0f, 20000.0f, 0.1f, 0.3f), 8000.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::FILTER_CUTOFF, 1}, "Opal Filter Cutoff",
+                                                           NormalisableRange<float>(20.0f, 20000.0f, 0.1f, 0.3f),
+                                                           8000.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::FILTER_RESO, 1}, "Opal Filter Resonance",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.15f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::FILTER_RESO, 1},
+                                                           "Opal Filter Resonance",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.15f));
 
-    params.push_back(std::make_unique<AudioParameterChoice>(
-        ParameterID{ParamID::FILTER_MODE, 1}, "Opal Filter Mode",
-        juce::StringArray{"LP", "BP", "HP"}, 0));
+    params.push_back(std::make_unique<AudioParameterChoice>(ParameterID{ParamID::FILTER_MODE, 1}, "Opal Filter Mode",
+                                                            juce::StringArray{"LP", "BP", "HP"}, 0));
 
     // Character stages
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::SHIMMER, 1}, "Opal Shimmer",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::SHIMMER, 1}, "Opal Shimmer",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::FROST, 1}, "Opal Frost",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::FROST, 1}, "Opal Frost",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::SMEAR, 1}, "Opal Smear",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::SMEAR, 1}, "Opal Smear",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
     // Reverb
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::REVERB_MIX, 1}, "Opal Reverb Mix",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::REVERB_MIX, 1}, "Opal Reverb Mix",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
 
     // Amp envelope
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::AMP_ATTACK, 1}, "Opal Amp Attack",
-        NormalisableRange<float>(0.001f, 8.0f, 0.001f, 0.3f), 0.3f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::AMP_ATTACK, 1}, "Opal Amp Attack",
+                                                           NormalisableRange<float>(0.001f, 8.0f, 0.001f, 0.3f), 0.3f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::AMP_DECAY, 1}, "Opal Amp Decay",
-        NormalisableRange<float>(0.05f, 4.0f, 0.01f, 0.4f), 0.5f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::AMP_DECAY, 1}, "Opal Amp Decay",
+                                                           NormalisableRange<float>(0.05f, 4.0f, 0.01f, 0.4f), 0.5f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::AMP_SUSTAIN, 1}, "Opal Amp Sustain",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::AMP_SUSTAIN, 1}, "Opal Amp Sustain",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::AMP_RELEASE, 1}, "Opal Amp Release",
-        NormalisableRange<float>(0.05f, 8.0f, 0.01f, 0.3f), 1.5f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::AMP_RELEASE, 1}, "Opal Amp Release",
+                                                           NormalisableRange<float>(0.05f, 8.0f, 0.01f, 0.3f), 1.5f));
 
     // Macros (M1-M4)
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::MACRO_SCATTER, 1}, "Opal M1 Scatter",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::MACRO_SCATTER, 1}, "Opal M1 Scatter",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::MACRO_DRIFT, 1}, "Opal M2 Drift",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::MACRO_DRIFT, 1}, "Opal M2 Drift",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::MACRO_COUPLING, 1}, "Opal M3 Coupling",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::MACRO_COUPLING, 1}, "Opal M3 Coupling",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::MACRO_SPACE, 1}, "Opal M4 Space",
-        NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::MACRO_SPACE, 1}, "Opal M4 Space",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
     // Master volume
-    params.push_back(std::make_unique<AudioParameterFloat>(
-        ParameterID{ParamID::MASTER_VOLUME, 1}, "Opal Volume",
-        NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
+    params.push_back(std::make_unique<AudioParameterFloat>(ParameterID{ParamID::MASTER_VOLUME, 1}, "Opal Volume",
+                                                           NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
 }
 
 inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
     addParameters(params);
-    return { params.begin(), params.end() };
+    return {params.begin(), params.end()};
 }
 
 } // namespace XOpal

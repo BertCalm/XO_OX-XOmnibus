@@ -12,14 +12,16 @@
 
 #include "../../../DSP/FastMath.h"
 
-namespace xoverworld {
+namespace xoverworld
+{
 
 using namespace xoceanus;
 
-class SVFilter {
+class SVFilter
+{
 public:
-
-    void prepare(float sampleRate) {
+    void prepare(float sampleRate)
+    {
         sr = sampleRate;
         ic1eq = 0.0f;
         ic2eq = 0.0f;
@@ -27,26 +29,25 @@ public:
     }
 
     // mode: 0=LP, 1=HP, 2=BP, 3=Notch (notch = LP+HP passthrough)
-    void setMode(int m) {
-        mode = m;
-    }
+    void setMode(int m) { mode = m; }
 
     // cutoffHz: clamped to [20, Nyquist*0.49]
-    void setCutoff(float cutoffHz) {
+    void setCutoff(float cutoffHz)
+    {
         float nyq = sr * 0.49f;
-        fc = cutoffHz < 20.0f    ? 20.0f
-           : cutoffHz > nyq      ? nyq
-           : cutoffHz;
+        fc = cutoffHz < 20.0f ? 20.0f : cutoffHz > nyq ? nyq : cutoffHz;
         computeCoefficients();
     }
 
     // resonance: 0 = Butterworth (k=2), 1 = self-oscillation (k→0)
-    void setResonance(float res) {
+    void setResonance(float res)
+    {
         q = res < 0.0f ? 0.0f : res > 1.0f ? 1.0f : res;
         computeCoefficients();
     }
 
-    float process(float x) {
+    float process(float x)
+    {
         // TPT SVF kernel — Andy Simper's formulation:
         //   v1 = (x - ic1eq*(k + g) - ic2eq) / (1 + g*(k + g))
         //   ...derived from trapezoidal discretisation of analog SVF state equations.
@@ -63,25 +64,33 @@ public:
         ic1eq = flushDenormal(2.0f * v1 - ic1eq);
         ic2eq = flushDenormal(2.0f * v2 - ic2eq);
 
-        switch (mode) {
-            case 0:  return lp;   // Low Pass
-            case 1:  return hp;   // High Pass
-            case 2:  return bp;   // Band Pass
-            case 3:  return lp + hp; // Notch
-            default: return lp;
+        switch (mode)
+        {
+        case 0:
+            return lp; // Low Pass
+        case 1:
+            return hp; // High Pass
+        case 2:
+            return bp; // Band Pass
+        case 3:
+            return lp + hp; // Notch
+        default:
+            return lp;
         }
     }
 
     // Reset filter state (call on silence gaps to prevent tails)
-    void reset() {
+    void reset()
+    {
         ic1eq = 0.0f;
         ic2eq = 0.0f;
     }
 
 private:
-
-    void computeCoefficients() {
-        if (sr <= 0.0f) return;
+    void computeCoefficients()
+    {
+        if (sr <= 0.0f)
+            return;
         // Trapezoidal prewarped frequency:
         //   g = tan(π * fc / sr)
         // fastTan accurate to ~0.03% for |x| < π/4.
@@ -99,15 +108,15 @@ private:
         a1 = (denom > 1e-10f) ? 1.0f / denom : 1.0f;
     }
 
-    float sr    = 44100.0f;
-    float fc    = 8000.0f;   // current cutoff Hz
-    float q     = 0.3f;      // resonance [0,1]
-    int   mode  = 0;
+    float sr = 44100.0f;
+    float fc = 8000.0f; // current cutoff Hz
+    float q = 0.3f;     // resonance [0,1]
+    int mode = 0;
 
     // TPT coefficients (updated in computeCoefficients)
-    float g  = 0.0f;  // prewarped frequency
-    float k  = 1.4f;  // damping (k = 2 - 2*resonance)
-    float a1 = 1.0f;  // 1 / (1 + g*(g+k))
+    float g = 0.0f;  // prewarped frequency
+    float k = 1.4f;  // damping (k = 2 - 2*resonance)
+    float a1 = 1.0f; // 1 / (1 + g*(g+k))
 
     // Integrator state variables (ic = initial condition)
     float ic1eq = 0.0f;

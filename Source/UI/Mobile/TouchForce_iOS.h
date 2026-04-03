@@ -6,7 +6,10 @@
 
 #include <atomic>
 
-namespace xoceanus { namespace touch_force {
+namespace xoceanus
+{
+namespace touch_force
+{
 
 //==============================================================================
 // TouchForce_iOS — UITouch.force side-channel for MDTV Signal 3.
@@ -92,6 +95,7 @@ float getLastForce();
 /// returns false; MobileTouchHandler should then derive force from touch radius.
 bool isForceAvailable();
 
-}} // namespace xoceanus::touch_force
+} // namespace touch_force
+} // namespace xoceanus
 
 #endif // JUCE_IOS

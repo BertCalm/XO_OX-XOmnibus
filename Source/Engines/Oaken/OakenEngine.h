@@ -56,7 +56,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // OakenExciter — Three playing styles for the acoustic bass:
@@ -66,39 +67,40 @@ namespace xoceanus {
 //==============================================================================
 struct OakenExciter
 {
-    void trigger (float velocity, int exciterType, float baseFreq, float sampleRate) noexcept
+    void trigger(float velocity, int exciterType, float baseFreq, float sampleRate) noexcept
     {
         active = true;
         type = exciterType;
         sampleCounter = 0;
         vel = velocity;
 
-        noiseState = static_cast<uint32_t> (velocity * 65535.0f) + 54321u;
+        noiseState = static_cast<uint32_t>(velocity * 65535.0f) + 54321u;
 
         if (type == 0) // Pluck
         {
-            float periodSamples = sampleRate / std::max (baseFreq, 20.0f);
-            burstLength = static_cast<int> (periodSamples * 2.0f);
-            burstLength = std::max (burstLength, 16);
+            float periodSamples = sampleRate / std::max(baseFreq, 20.0f);
+            burstLength = static_cast<int>(periodSamples * 2.0f);
+            burstLength = std::max(burstLength, 16);
         }
         else if (type == 1) // Bow — sustained, active as long as note is held
         {
-            burstLength = 1 << 30;  // effectively infinite
+            burstLength = 1 << 30; // effectively infinite
             bowFilterState = 0.0f;
             // Bow LP cutoff depends on bow pressure (mapped from velocity)
             float fc = 400.0f + velocity * 1200.0f;
-            bowLPCoeff = 1.0f - std::exp (-2.0f * 3.14159265f * fc / sampleRate);
+            bowLPCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * fc / sampleRate);
         }
         else // Slap
         {
-            burstLength = static_cast<int> (sampleRate * 0.008f);  // 8ms burst
-            burstLength = std::max (burstLength, 16);
+            burstLength = static_cast<int>(sampleRate * 0.008f); // 8ms burst
+            burstLength = std::max(burstLength, 16);
         }
     }
 
-    float process (float bowPressure = 0.5f) noexcept
+    float process(float bowPressure = 0.5f) noexcept
     {
-        if (!active) return 0.0f;
+        if (!active)
+            return 0.0f;
 
         float out = 0.0f;
 
@@ -106,9 +108,9 @@ struct OakenExciter
         {
             if (sampleCounter < burstLength)
             {
-                float env = 1.0f - static_cast<float> (sampleCounter) / static_cast<float> (burstLength);
+                float env = 1.0f - static_cast<float>(sampleCounter) / static_cast<float>(burstLength);
                 noiseState = noiseState * 1664525u + 1013904223u;
-                float noise = (static_cast<float> (noiseState & 0xFFFF) / 32768.0f - 1.0f);
+                float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
                 out = noise * vel * env;
             }
             else
@@ -119,23 +121,23 @@ struct OakenExciter
         else if (type == 1) // Bow: sustained LP-filtered noise
         {
             noiseState = noiseState * 1664525u + 1013904223u;
-            float noise = (static_cast<float> (noiseState & 0xFFFF) / 32768.0f - 1.0f);
+            float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
             // Bow pressure controls energy injection
             float energy = noise * vel * bowPressure * 0.3f;
             bowFilterState += bowLPCoeff * (energy - bowFilterState);
-            out = flushDenormal (bowFilterState);
+            out = flushDenormal(bowFilterState);
         }
         else // Slap: click + burst
         {
             if (sampleCounter < burstLength)
             {
-                float clickPhase = static_cast<float> (sampleCounter) / static_cast<float> (burstLength);
+                float clickPhase = static_cast<float>(sampleCounter) / static_cast<float>(burstLength);
                 // Initial click — sharp transient
                 float click = (sampleCounter < 8) ? (1.0f - clickPhase * 8.0f) : 0.0f;
-                click = std::max (click, 0.0f);
+                click = std::max(click, 0.0f);
                 // Wider noise burst
                 noiseState = noiseState * 1664525u + 1013904223u;
-                float noise = (static_cast<float> (noiseState & 0xFFFF) / 32768.0f - 1.0f);
+                float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
                 float env = 1.0f - clickPhase;
                 out = (click * 2.0f + noise * env) * vel;
             }
@@ -151,7 +153,8 @@ struct OakenExciter
 
     void stopBow() noexcept
     {
-        if (type == 1) active = false;
+        if (type == 1)
+            active = false;
     }
 
     void reset() noexcept
@@ -162,7 +165,7 @@ struct OakenExciter
     }
 
     bool active = false;
-    int type = 0;  // 0=pluck, 1=bow, 2=slap
+    int type = 0; // 0=pluck, 1=bow, 2=slap
     int sampleCounter = 0;
     int burstLength = 512;
     float vel = 1.0f;
@@ -180,21 +183,18 @@ struct OakenKarplusString
 {
     static constexpr int kMaxDelay = 4096;
 
-    void setFrequency (float freqHz, float sampleRate) noexcept
+    void setFrequency(float freqHz, float sampleRate) noexcept
     {
         sr = sampleRate;
-        float periodSamples = sampleRate / std::max (freqHz, 20.0f);
-        delaySamples = std::min (periodSamples, static_cast<float> (kMaxDelay - 1));
+        float periodSamples = sampleRate / std::max(freqHz, 20.0f);
+        delaySamples = std::min(periodSamples, static_cast<float>(kMaxDelay - 1));
         // LP coefficient for string damping: higher = brighter, lower = duller
         // Relates to string tension: gut=dull, steel=bright
     }
 
-    void setDamping (float dampCoeff) noexcept
-    {
-        feedbackGain = dampCoeff;
-    }
+    void setDamping(float dampCoeff) noexcept { feedbackGain = dampCoeff; }
 
-    void setStringType (float stringTension) noexcept
+    void setStringType(float stringTension) noexcept
     {
         // String tension affects the feedback LP filter:
         // Gut (0) = low cutoff (warm, fast decay), Steel (0.5) = mid, Synthetic (1.0) = bright
@@ -203,11 +203,11 @@ struct OakenKarplusString
         // Previously used Euler approx 1/(1+1/(fc*0.00005)) which gave near-zero coefficients
         // for gut string tension (fc=1000 Hz), causing unrealistically fast decay.
         float safeSr = (sr > 0.0f) ? sr : 48000.0f;
-        stringLPCoeff = std::exp (-2.0f * 3.14159265f * fc / safeSr);
-        stringLPCoeff = std::clamp (stringLPCoeff, 0.01f, 0.99f);
+        stringLPCoeff = std::exp(-2.0f * 3.14159265f * fc / safeSr);
+        stringLPCoeff = std::clamp(stringLPCoeff, 0.01f, 0.99f);
     }
 
-    float process (float excitation) noexcept
+    float process(float excitation) noexcept
     {
         // Write excitation + feedback into delay line
         delayLine[writePos] = excitation + readFromDelay() * feedbackGain;
@@ -221,7 +221,7 @@ struct OakenKarplusString
 
     void reset() noexcept
     {
-        std::fill (delayLine.begin(), delayLine.end(), 0.0f);
+        std::fill(delayLine.begin(), delayLine.end(), 0.0f);
         writePos = 0;
         lpState = 0.0f;
     }
@@ -230,26 +230,27 @@ private:
     float readFromDelay() noexcept
     {
         // Linear interpolation for fractional delay
-        float readPos = static_cast<float> (writePos) - delaySamples;
-        if (readPos < 0.0f) readPos += kMaxDelay;
-        int r0 = static_cast<int> (readPos);
-        float frac = readPos - static_cast<float> (r0);
+        float readPos = static_cast<float>(writePos) - delaySamples;
+        if (readPos < 0.0f)
+            readPos += kMaxDelay;
+        int r0 = static_cast<int>(readPos);
+        float frac = readPos - static_cast<float>(r0);
         int r1 = (r0 + 1) % kMaxDelay;
         float raw = delayLine[r0] * (1.0f - frac) + delayLine[r1] * frac;
 
         // One-pole LP for string damping (averaging filter in classic KS)
         lpState += stringLPCoeff * (raw - lpState);
-        lpState = flushDenormal (lpState);
+        lpState = flushDenormal(lpState);
         return lpState;
     }
 
-    std::array<float, kMaxDelay> delayLine {};
+    std::array<float, kMaxDelay> delayLine{};
     int writePos = 0;
     float delaySamples = 100.0f;
     float feedbackGain = 0.99f;
     float stringLPCoeff = 0.5f;
     float lpState = 0.0f;
-    float sr = 48000.0f;  // cached from setFrequency for use in setStringType
+    float sr = 48000.0f; // cached from setFrequency for use in setStringType
 };
 
 //==============================================================================
@@ -258,38 +259,38 @@ private:
 //==============================================================================
 struct OakenBodyResonator
 {
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
         sr = sampleRate;
-        mode1.setMode (CytomicSVF::Mode::BandPass);
-        mode2.setMode (CytomicSVF::Mode::BandPass);
-        mode3.setMode (CytomicSVF::Mode::BandPass);
-        updateModes (0.5f);
+        mode1.setMode(CytomicSVF::Mode::BandPass);
+        mode2.setMode(CytomicSVF::Mode::BandPass);
+        mode3.setMode(CytomicSVF::Mode::BandPass);
+        updateModes(0.5f);
     }
 
-    void updateModes (float woodAge) noexcept
+    void updateModes(float woodAge) noexcept
     {
         // Wood age: 0=fresh bright wood, 1=old dark wood
         // Fresh: higher body resonances, wider bandwidth
         // Old: lower, narrower, more colored
         float m1f = 180.0f + woodAge * 40.0f;   // ~180-220 Hz
         float m2f = 520.0f + woodAge * 80.0f;   // ~520-600 Hz
-        float m3f = 1000.0f + woodAge * 200.0f;  // ~1000-1200 Hz
+        float m3f = 1000.0f + woodAge * 200.0f; // ~1000-1200 Hz
 
-        float q = 0.4f + woodAge * 0.3f;  // old wood = more resonant
+        float q = 0.4f + woodAge * 0.3f; // old wood = more resonant
 
-        mode1.setCoefficients (m1f, q, sr);
-        mode2.setCoefficients (m2f, q + 0.1f, sr);
-        mode3.setCoefficients (m3f, q - 0.1f, sr);
+        mode1.setCoefficients(m1f, q, sr);
+        mode2.setCoefficients(m2f, q + 0.1f, sr);
+        mode3.setCoefficients(m3f, q - 0.1f, sr);
     }
 
-    float process (float input, float bodyDepth) noexcept
+    float process(float input, float bodyDepth) noexcept
     {
-        if (bodyDepth < 0.001f) return input;
+        if (bodyDepth < 0.001f)
+            return input;
 
-        float body = mode1.processSample (input) * 0.5f
-                   + mode2.processSample (input) * 0.3f
-                   + mode3.processSample (input) * 0.2f;
+        float body =
+            mode1.processSample(input) * 0.5f + mode2.processSample(input) * 0.3f + mode3.processSample(input) * 0.2f;
 
         return input * (1.0f - bodyDepth) + body * bodyDepth;
     }
@@ -311,28 +312,25 @@ struct OakenBodyResonator
 //==============================================================================
 struct CuringModel
 {
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        curingLP.setMode (CytomicSVF::Mode::LowPass);
+        curingLP.setMode(CytomicSVF::Mode::LowPass);
         sr = sampleRate;
     }
 
-    void trigger() noexcept
-    {
-        curingAge = 0.0f;
-    }
+    void trigger() noexcept { curingAge = 0.0f; }
 
-    float process (float input, float curingRate, float dtSec) noexcept
+    float process(float input, float curingRate, float dtSec) noexcept
     {
         curingAge += dtSec;
 
         // Cutoff drops from 12kHz toward 1kHz as the note "cures" over time
-        float curingProgress = std::min (1.0f, curingAge * curingRate * 0.2f);
+        float curingProgress = std::min(1.0f, curingAge * curingRate * 0.2f);
         float cutoff = 12000.0f - curingProgress * 11000.0f;
-        cutoff = std::max (cutoff, 500.0f);
+        cutoff = std::max(cutoff, 500.0f);
 
-        curingLP.setCoefficients (cutoff, 0.3f, sr);
-        return curingLP.processSample (input);
+        curingLP.setCoefficients(cutoff, 0.3f, sr);
+        return curingLP.processSample(input);
     }
 
     void reset() noexcept
@@ -400,59 +398,68 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Oaken"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF9C6B30); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF9C6B30); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srf = static_cast<float> (sr);
+        srf = static_cast<float>(sr);
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
             voices[i].reset();
-            voices[i].ampEnv.prepare (srf);
-            voices[i].filterEnv.prepare (srf);
-            voices[i].body.prepare (srf);
-            voices[i].curing.prepare (srf);
+            voices[i].ampEnv.prepare(srf);
+            voices[i].filterEnv.prepare(srf);
+            voices[i].body.prepare(srf);
+            voices[i].curing.prepare(srf);
         }
 
-        smoothBowPressure.prepare (srf);
-        smoothStringTension.prepare (srf);
-        smoothBodyDepth.prepare (srf);
-        smoothBrightness.prepare (srf);
-        smoothWoodAge.prepare (srf);
-        smoothCuringRate.prepare (srf);
+        smoothBowPressure.prepare(srf);
+        smoothStringTension.prepare(srf);
+        smoothBodyDepth.prepare(srf);
+        smoothBrightness.prepare(srf);
+        smoothWoodAge.prepare(srf);
+        smoothCuringRate.prepare(srf);
 
-        prepareSilenceGate (sr, maxBlockSize, 500.0f);  // long acoustic tail
+        prepareSilenceGate(sr, maxBlockSize, 500.0f); // long acoustic tail
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices) v.reset();
+        for (auto& v : voices)
+            v.reset();
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
     }
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? couplingCacheL : couplingCacheR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                            const float* buf, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* buf, int numSamples) override
     {
-        if (!buf || numSamples <= 0) return;
+        if (!buf || numSamples <= 0)
+            return;
         float val = buf[numSamples - 1] * amount;
-        switch (type) {
-            case CouplingType::AmpToFilter:  couplingFilterMod += val * 2000.0f; break;
-            case CouplingType::LFOToPitch:   couplingPitchMod += val * 2.0f; break;
-            case CouplingType::AmpToPitch:   couplingPitchMod += val; break;
-            default: break;
+        switch (type)
+        {
+        case CouplingType::AmpToFilter:
+            couplingFilterMod += val * 2000.0f;
+            break;
+        case CouplingType::LFOToPitch:
+            couplingPitchMod += val * 2.0f;
+            break;
+        case CouplingType::AmpToPitch:
+            couplingPitchMod += val;
+            break;
+        default:
+            break;
         }
     }
 
@@ -460,67 +467,72 @@ public:
     // Render
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())          { noteOn (msg.getNoteNumber(), msg.getFloatVelocity()); wakeSilenceGate(); }
-            else if (msg.isNoteOff())    noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
-            else if (msg.isChannelPressure()) aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
+            if (msg.isNoteOn())
+            {
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity());
+                wakeSilenceGate();
+            }
+            else if (msg.isNoteOff())
+                noteOff(msg.getNoteNumber());
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            else if (msg.isChannelPressure())
+                aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
-        if (isSilenceGateBypassed()) {
-            buffer.clear (0, numSamples);
+        if (isSilenceGateBypassed())
+        {
+            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
 
-        auto loadP = [] (std::atomic<float>* p, float def) {
-            return p ? p->load (std::memory_order_relaxed) : def;
-        };
+        auto loadP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
 
-        const float pBowPressure  = loadP (paramBowPressure, 0.5f);
-        const float pStringTension = loadP (paramStringTension, 0.5f);
-        const float pBodyDepth    = loadP (paramBodyDepth, 0.5f);
-        const float pBrightness   = loadP (paramBrightness, 6000.0f);
-        const float pDamping      = loadP (paramDamping, 0.3f);
-        const float pWoodAge      = loadP (paramWoodAge, 0.5f);
-        const float pCuringRate   = loadP (paramCuringRate, 0.3f);
-        const float pRoom         = loadP (paramRoom, 0.3f);
-        const float pGlide        = loadP (paramGlide, 0.0f);
-        const float pAttack       = loadP (paramAttack, 0.005f);
-        const float pDecay        = loadP (paramDecay, 1.0f);
-        const float pSustain      = loadP (paramSustain, 0.6f);
-        const float pRelease      = loadP (paramRelease, 0.5f);
-        const float pFiltEnvAmt   = loadP (paramFilterEnvAmount, 0.3f);
-        const float pBendRange    = loadP (paramBendRange, 2.0f);
-        const float pGravity      = loadP (paramGravity, 0.5f);
+        const float pBowPressure = loadP(paramBowPressure, 0.5f);
+        const float pStringTension = loadP(paramStringTension, 0.5f);
+        const float pBodyDepth = loadP(paramBodyDepth, 0.5f);
+        const float pBrightness = loadP(paramBrightness, 6000.0f);
+        const float pDamping = loadP(paramDamping, 0.3f);
+        const float pWoodAge = loadP(paramWoodAge, 0.5f);
+        const float pCuringRate = loadP(paramCuringRate, 0.3f);
+        const float pRoom = loadP(paramRoom, 0.3f);
+        const float pGlide = loadP(paramGlide, 0.0f);
+        const float pAttack = loadP(paramAttack, 0.005f);
+        const float pDecay = loadP(paramDecay, 1.0f);
+        const float pSustain = loadP(paramSustain, 0.6f);
+        const float pRelease = loadP(paramRelease, 0.5f);
+        const float pFiltEnvAmt = loadP(paramFilterEnvAmount, 0.3f);
+        const float pBendRange = loadP(paramBendRange, 2.0f);
+        const float pGravity = loadP(paramGravity, 0.5f);
 
-        const float macroChar   = loadP (paramMacroCharacter, 0.0f);
-        const float macroMove   = loadP (paramMacroMovement, 0.0f);
-        const float macroCoup   = loadP (paramMacroCoupling, 0.0f);
-        const float macroSpace  = loadP (paramMacroSpace, 0.0f);
+        const float macroChar = loadP(paramMacroCharacter, 0.0f);
+        const float macroMove = loadP(paramMacroMovement, 0.0f);
+        const float macroCoup = loadP(paramMacroCoupling, 0.0f);
+        const float macroSpace = loadP(paramMacroSpace, 0.0f);
 
         // D006: mod wheel -> bow pressure, aftertouch -> string damping
-        float effectiveBowPressure = std::clamp (pBowPressure + modWheelAmount * 0.5f + macroChar * 0.3f, 0.0f, 1.0f);
-        float effectiveDamping = 0.95f + (1.0f - pDamping) * 0.049f;  // 0.95-0.999 feedback
-        effectiveDamping -= aftertouchAmount * 0.03f;  // aftertouch slightly damps
-        effectiveDamping = std::clamp (effectiveDamping, 0.9f, 0.999f);
+        float effectiveBowPressure = std::clamp(pBowPressure + modWheelAmount * 0.5f + macroChar * 0.3f, 0.0f, 1.0f);
+        float effectiveDamping = 0.95f + (1.0f - pDamping) * 0.049f; // 0.95-0.999 feedback
+        effectiveDamping -= aftertouchAmount * 0.03f;                // aftertouch slightly damps
+        effectiveDamping = std::clamp(effectiveDamping, 0.9f, 0.999f);
 
-        float effectiveBright = std::clamp (pBrightness + macroChar * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        float effectiveBright = std::clamp(pBrightness + macroChar * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
 
-        smoothBowPressure.set (effectiveBowPressure);
-        smoothStringTension.set (pStringTension);
-        smoothBodyDepth.set (std::clamp (pBodyDepth + macroSpace * 0.3f, 0.0f, 1.0f));
-        smoothBrightness.set (effectiveBright);
-        smoothWoodAge.set (pWoodAge);
-        smoothCuringRate.set (pCuringRate);
+        smoothBowPressure.set(effectiveBowPressure);
+        smoothStringTension.set(pStringTension);
+        smoothBodyDepth.set(std::clamp(pBodyDepth + macroSpace * 0.3f, 0.0f, 1.0f));
+        smoothBrightness.set(effectiveBright);
+        smoothWoodAge.set(pWoodAge);
+        smoothCuringRate.set(pCuringRate);
 
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -528,100 +540,107 @@ public:
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // LFO params — macroMove speeds both LFOs for more organic bowing movement
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f)  * (1.0f + macroMove * 2.0f);
-        const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
-        const int   lfo1Shape = static_cast<int> (loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f)  * (1.0f + macroMove * 2.0f);
-        const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
-        const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
+        const float lfo1Rate = loadP(paramLfo1Rate, 0.5f) * (1.0f + macroMove * 2.0f);
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
+        const float lfo2Rate = loadP(paramLfo2Rate, 1.0f) * (1.0f + macroMove * 2.0f);
+        const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
+        const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
         for (auto& voice : voices)
         {
-            if (!voice.active) continue;
-            voice.lfo1.setRate (lfo1Rate, srf);
-            voice.lfo1.setShape (lfo1Shape);
-            voice.lfo2.setRate (lfo2Rate, srf);
-            voice.lfo2.setShape (lfo2Shape);
-            voice.glide.setTime (pGlide, srf);
-            voice.ampEnv.setADSR (pAttack, pDecay, pSustain, pRelease);
+            if (!voice.active)
+                continue;
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
+            voice.glide.setTime(pGlide, srf);
+            voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
         }
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         const float dtSec = 1.0f / srf;
 
         for (int s = 0; s < numSamples; ++s)
         {
-            float bowPNow    = smoothBowPressure.process();
-            float strTNow    = smoothStringTension.process();
-            float bodyDNow   = smoothBodyDepth.process();
-            float brightNow  = smoothBrightness.process();
-            float woodANow   = smoothWoodAge.process();
+            float bowPNow = smoothBowPressure.process();
+            float strTNow = smoothStringTension.process();
+            float bodyDNow = smoothBodyDepth.process();
+            float brightNow = smoothBrightness.process();
+            float woodANow = smoothWoodAge.process();
             float curingRNow = smoothCuringRate.process();
 
             float mixL = 0.0f, mixR = 0.0f;
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
                 // Set string frequency and damping
-                voice.string.setFrequency (freq, srf);
-                voice.string.setDamping (effectiveDamping);
-                voice.string.setStringType (strTNow);
+                voice.string.setFrequency(freq, srf);
+                voice.string.setDamping(effectiveDamping);
+                voice.string.setStringType(strTNow);
 
                 // Get excitation signal
-                float excitation = voice.exciter.process (bowPNow);
+                float excitation = voice.exciter.process(bowPNow);
 
                 // Karplus-Strong string synthesis
-                float stringSample = voice.string.process (excitation);
+                float stringSample = voice.string.process(excitation);
 
                 // Wood body resonator
-                voice.body.updateModes (woodANow);
-                float bodied = voice.body.process (stringSample, bodyDNow);
+                voice.body.updateModes(woodANow);
+                float bodied = voice.body.process(stringSample, bodyDNow);
 
                 // Curing model: HF removal over sustain time
-                float cured = voice.curing.process (bodied, curingRNow, dtSec);
+                float cured = voice.curing.process(bodied, curingRNow, dtSec);
 
                 // Output brightness filter
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
-                float cutoff = std::clamp (brightNow + envMod + lfo1Val * 2000.0f
-                                           + lfo2Val * 2000.0f
-                                           + voice.velocity * 2000.0f, 200.0f, 20000.0f);
-                voice.outputFilter.setMode (CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients (cutoff, 0.3f, srf);
-                float filtered = voice.outputFilter.processSample (cured);
+                float cutoff =
+                    std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
+                               200.0f, 20000.0f);
+                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
+                float filtered = voice.outputFilter.processSample(cured);
 
                 // Room: simple one-pole reverb-like diffusion
                 // (scaled by pRoom — just adds a slight tail)
 
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
-                if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
+                if (!voice.ampEnv.isActive())
+                {
+                    voice.active = false;
+                    continue;
+                }
 
                 // Gravity mass
                 voice.noteHeldTime += dtSec;
-                voice.gravityMass = std::min (1.0f, voice.gravityMass + dtSec * 0.1f * pGravity);
+                voice.gravityMass = std::min(1.0f, voice.gravityMass + dtSec * 0.1f * pGravity);
 
                 float output = filtered * ampLevel * voice.velocity;
 
                 // Room bleed: wider stereo on higher room values
                 float roomSpread = pRoom * 0.15f;
-                float panOffset = (static_cast<float> ((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
+                float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
                 float panPos = 0.5f + panOffset;
-                mixL += output * std::cos (panPos * 1.5707963f);
-                mixR += output * std::sin (panPos * 1.5707963f);
+                mixL += output * std::cos(panPos * 1.5707963f);
+                mixR += output * std::sin(panPos * 1.5707963f);
             }
 
             outL[s] = mixL;
-            if (outR) outR[s] = mixR;
+            if (outR)
+                outR[s] = mixR;
             // macroCoup scales coupling output: higher coupling macro = stronger cross-engine signal
             const float coupGain = 1.0f + macroCoup * 1.5f;
             couplingCacheL = mixL * coupGain;
@@ -629,53 +648,55 @@ public:
         }
 
         int count = 0;
-        for (const auto& v : voices) if (v.active) ++count;
-        activeVoiceCount.store (count);
-        analyzeForSilenceGate (buffer, numSamples);
+        for (const auto& v : voices)
+            if (v.active)
+                ++count;
+        activeVoiceCount.store(count);
+        analyzeForSilenceGate(buffer, numSamples);
     }
 
     //==========================================================================
     // Note management
     //==========================================================================
 
-    void noteOn (int note, float vel) noexcept
+    void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
+        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
+        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
 
-        int exciterType = paramExciter ? static_cast<int> (paramExciter->load()) : 0;
+        int exciterType = paramExciter ? static_cast<int>(paramExciter->load()) : 0;
 
         v.reset();
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.glide.snapTo (freq);
+        v.glide.snapTo(freq);
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
 
         v.string.reset();
-        v.exciter.trigger (vel, exciterType, freq, srf);
-        v.body.prepare (srf);
-        v.curing.prepare (srf);
+        v.exciter.trigger(vel, exciterType, freq, srf);
+        v.body.prepare(srf);
+        v.curing.prepare(srf);
         v.curing.trigger();
 
-        v.ampEnv.prepare (srf);
-        v.filterEnv.prepare (srf);
+        v.ampEnv.prepare(srf);
+        v.filterEnv.prepare(srf);
 
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 1.0f;
         float sustain = paramSustain ? paramSustain->load() : 0.6f;
         float release = paramRelease ? paramRelease->load() : 0.5f;
-        v.ampEnv.setADSR (attack, decay, sustain, release);
+        v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
-        v.filterEnv.setADSR (0.001f, 0.3f, 0.0f, 0.4f);
+        v.filterEnv.setADSR(0.001f, 0.3f, 0.0f, 0.4f);
         v.filterEnv.triggerHard();
     }
 
-    void noteOff (int note) noexcept
+    void noteOff(int note) noexcept
     {
         for (auto& v : voices)
         {
@@ -692,121 +713,122 @@ public:
     // Parameters — 29 total
     //==========================================================================
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
 
         // Playing style
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oaken_exciter", 1 }, "Oaken Exciter", 0, 2, 0));
-            // 0=pluck, 1=bow, 2=slap
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_bowPressure", 1 }, "Oaken Bow Pressure",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_stringTension", 1 }, "Oaken String Tension",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));  // gut→steel→synthetic
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"oaken_exciter", 1}, "Oaken Exciter", 0, 2, 0));
+        // 0=pluck, 1=bow, 2=slap
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_bowPressure", 1}, "Oaken Bow Pressure",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_stringTension", 1}, "Oaken String Tension",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f)); // gut→steel→synthetic
 
         // Body
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_bodyDepth", 1 }, "Oaken Body Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_woodAge", 1 }, "Oaken Wood Age",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));  // fresh→old
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_room", 1 }, "Oaken Room",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));  // studio→jazz club→concert hall
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_bodyDepth", 1}, "Oaken Body Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_woodAge", 1}, "Oaken Wood Age",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f)); // fresh→old
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_room", 1}, "Oaken Room",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f),
+                                              0.3f)); // studio→jazz club→concert hall
 
         // Tone
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_brightness", 1 }, "Oaken Brightness",
-            juce::NormalisableRange<float> (200.0f, 20000.0f, 0.0f, 0.3f), 6000.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_damping", 1 }, "Oaken Damping",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_curingRate", 1 }, "Oaken Curing Rate",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_filterEnvAmount", 1 }, "Oaken Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_brightness", 1}, "Oaken Brightness",
+                                              juce::NormalisableRange<float>(200.0f, 20000.0f, 0.0f, 0.3f), 6000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_damping", 1}, "Oaken Damping",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_curingRate", 1}, "Oaken Curing Rate",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_filterEnvAmount", 1}, "Oaken Filter Env Amount",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
         // Amp Envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_attack", 1 }, "Oaken Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_decay", 1 }, "Oaken Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_sustain", 1 }, "Oaken Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_release", 1 }, "Oaken Release",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_attack", 1}, "Oaken Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.005f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_decay", 1}, "Oaken Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_sustain", 1}, "Oaken Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_release", 1}, "Oaken Release",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.5f));
 
         // Performance
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_glide", 1 }, "Oaken Glide",
-            juce::NormalisableRange<float> (0.0f, 5.0f, 0.0f, 0.3f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_bendRange", 1 }, "Oaken Pitch Bend Range",
-            juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_glide", 1}, "Oaken Glide",
+                                              juce::NormalisableRange<float>(0.0f, 5.0f, 0.0f, 0.3f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_bendRange", 1}, "Oaken Pitch Bend Range",
+                                              juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
 
         // Gravitational coupling
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_gravity", 1 }, "Oaken Gravity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_gravity", 1}, "Oaken Gravity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_macroCharacter", 1 }, "Oaken Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_macroMovement", 1 }, "Oaken Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_macroCoupling", 1 }, "Oaken Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_macroSpace", 1 }, "Oaken Macro SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_macroCharacter", 1}, "Oaken Macro CHARACTER",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_macroMovement", 1}, "Oaken Macro MOVEMENT",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_macroCoupling", 1}, "Oaken Macro COUPLING",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_macroSpace", 1}, "Oaken Macro SPACE",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // LFOs
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_lfo1Rate", 1 }, "Oaken LFO1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_lfo1Depth", 1 }, "Oaken LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oaken_lfo1Shape", 1 }, "Oaken LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_lfo2Rate", 1 }, "Oaken LFO2 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oaken_lfo2Depth", 1 }, "Oaken LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oaken_lfo2Shape", 1 }, "Oaken LFO2 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_lfo1Rate", 1}, "Oaken LFO1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_lfo1Depth", 1}, "Oaken LFO1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"oaken_lfo1Shape", 1}, "Oaken LFO1 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_lfo2Rate", 1}, "Oaken LFO2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oaken_lfo2Depth", 1}, "Oaken LFO2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"oaken_lfo2Shape", 1}, "Oaken LFO2 Shape", 0, 4, 0));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramExciter         = apvts.getRawParameterValue ("oaken_exciter");
-        paramBowPressure     = apvts.getRawParameterValue ("oaken_bowPressure");
-        paramStringTension   = apvts.getRawParameterValue ("oaken_stringTension");
-        paramBodyDepth       = apvts.getRawParameterValue ("oaken_bodyDepth");
-        paramWoodAge         = apvts.getRawParameterValue ("oaken_woodAge");
-        paramRoom            = apvts.getRawParameterValue ("oaken_room");
-        paramBrightness      = apvts.getRawParameterValue ("oaken_brightness");
-        paramDamping         = apvts.getRawParameterValue ("oaken_damping");
-        paramCuringRate      = apvts.getRawParameterValue ("oaken_curingRate");
-        paramFilterEnvAmount = apvts.getRawParameterValue ("oaken_filterEnvAmount");
-        paramAttack          = apvts.getRawParameterValue ("oaken_attack");
-        paramDecay           = apvts.getRawParameterValue ("oaken_decay");
-        paramSustain         = apvts.getRawParameterValue ("oaken_sustain");
-        paramRelease         = apvts.getRawParameterValue ("oaken_release");
-        paramGlide           = apvts.getRawParameterValue ("oaken_glide");
-        paramBendRange       = apvts.getRawParameterValue ("oaken_bendRange");
-        paramGravity         = apvts.getRawParameterValue ("oaken_gravity");
-        paramMacroCharacter  = apvts.getRawParameterValue ("oaken_macroCharacter");
-        paramMacroMovement   = apvts.getRawParameterValue ("oaken_macroMovement");
-        paramMacroCoupling   = apvts.getRawParameterValue ("oaken_macroCoupling");
-        paramMacroSpace      = apvts.getRawParameterValue ("oaken_macroSpace");
-        paramLfo1Rate        = apvts.getRawParameterValue ("oaken_lfo1Rate");
-        paramLfo1Depth       = apvts.getRawParameterValue ("oaken_lfo1Depth");
-        paramLfo1Shape       = apvts.getRawParameterValue ("oaken_lfo1Shape");
-        paramLfo2Rate        = apvts.getRawParameterValue ("oaken_lfo2Rate");
-        paramLfo2Depth       = apvts.getRawParameterValue ("oaken_lfo2Depth");
-        paramLfo2Shape       = apvts.getRawParameterValue ("oaken_lfo2Shape");
+        paramExciter = apvts.getRawParameterValue("oaken_exciter");
+        paramBowPressure = apvts.getRawParameterValue("oaken_bowPressure");
+        paramStringTension = apvts.getRawParameterValue("oaken_stringTension");
+        paramBodyDepth = apvts.getRawParameterValue("oaken_bodyDepth");
+        paramWoodAge = apvts.getRawParameterValue("oaken_woodAge");
+        paramRoom = apvts.getRawParameterValue("oaken_room");
+        paramBrightness = apvts.getRawParameterValue("oaken_brightness");
+        paramDamping = apvts.getRawParameterValue("oaken_damping");
+        paramCuringRate = apvts.getRawParameterValue("oaken_curingRate");
+        paramFilterEnvAmount = apvts.getRawParameterValue("oaken_filterEnvAmount");
+        paramAttack = apvts.getRawParameterValue("oaken_attack");
+        paramDecay = apvts.getRawParameterValue("oaken_decay");
+        paramSustain = apvts.getRawParameterValue("oaken_sustain");
+        paramRelease = apvts.getRawParameterValue("oaken_release");
+        paramGlide = apvts.getRawParameterValue("oaken_glide");
+        paramBendRange = apvts.getRawParameterValue("oaken_bendRange");
+        paramGravity = apvts.getRawParameterValue("oaken_gravity");
+        paramMacroCharacter = apvts.getRawParameterValue("oaken_macroCharacter");
+        paramMacroMovement = apvts.getRawParameterValue("oaken_macroMovement");
+        paramMacroCoupling = apvts.getRawParameterValue("oaken_macroCoupling");
+        paramMacroSpace = apvts.getRawParameterValue("oaken_macroSpace");
+        paramLfo1Rate = apvts.getRawParameterValue("oaken_lfo1Rate");
+        paramLfo1Depth = apvts.getRawParameterValue("oaken_lfo1Depth");
+        paramLfo1Shape = apvts.getRawParameterValue("oaken_lfo1Shape");
+        paramLfo2Rate = apvts.getRawParameterValue("oaken_lfo2Rate");
+        paramLfo2Depth = apvts.getRawParameterValue("oaken_lfo2Depth");
+        paramLfo2Shape = apvts.getRawParameterValue("oaken_lfo2Shape");
     }
 
 private:
@@ -815,7 +837,7 @@ private:
 
     std::array<OakenVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount { 0 };
+    std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothBowPressure, smoothStringTension;
     ParameterSmoother smoothBodyDepth, smoothBrightness;

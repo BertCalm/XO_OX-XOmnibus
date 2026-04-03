@@ -12,7 +12,8 @@
 #include "../../Core/SynthEngine.h"
 #include "OperaEngine.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 class OperaAdapter : public SynthEngine
 {
@@ -33,8 +34,7 @@ public:
     void releaseResources() override { engine_.releaseResources(); }
     void reset() override { engine_.reset(); }
 
-    void renderBlock(juce::AudioBuffer<float>& buffer,
-                     juce::MidiBuffer& midi, int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         for (const auto& metadata : midi)
@@ -61,8 +61,7 @@ public:
         return engine_.getSampleForCoupling(channel, sampleIndex);
     }
 
-    void applyCouplingInput(CouplingType type, float amount,
-                            const float* sourceBuffer, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) override
     {
         engine_.applyCouplingInput(static_cast<int>(type), amount, sourceBuffer, numSamples);
     }
@@ -72,10 +71,7 @@ public:
         return opera::OperaEngine::createParameterLayout();
     }
 
-    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
-    {
-        engine_.attachParameters(apvts);
-    }
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override { engine_.attachParameters(apvts); }
 
 private:
     opera::OperaEngine engine_;

@@ -29,56 +29,60 @@
 #include "../../../DSP/FastMath.h"
 #include <cstring>
 
-namespace xoverworld {
+namespace xoverworld
+{
 
 using namespace xoceanus;
 
-class FIREcho {
+class FIREcho
+{
 public:
     static constexpr int kBufLen = 96000; // 1s @ 96kHz
 
-    FIREcho() {
+    FIREcho()
+    {
         std::memset(delayBuf, 0, sizeof(delayBuf));
-        std::memset(firBuf,   0, sizeof(firBuf));
+        std::memset(firBuf, 0, sizeof(firBuf));
         // Default FIR: [0.7, 0, 0, 0, 0, 0, 0, 0] — clean attenuated echo
         firCoeffs[0] = 0.7f;
-        for (int i = 1; i < 8; ++i) firCoeffs[i] = 0.0f;
+        for (int i = 1; i < 8; ++i)
+            firCoeffs[i] = 0.0f;
     }
 
-    void prepare(float sampleRate) {
+    void prepare(float sampleRate)
+    {
         sr = sampleRate;
         writeHead = 0;
-        firHead   = 0;
-        dcState   = 0.0f;
+        firHead = 0;
+        dcState = 0.0f;
         std::memset(delayBuf, 0, sizeof(delayBuf));
-        std::memset(firBuf,   0, sizeof(firBuf));
+        std::memset(firBuf, 0, sizeof(firBuf));
         updateDelayLen();
     }
 
     // delay: 0-15 → maps to tap lengths (roughly doubling each step)
     // At 44.1kHz: 0=~8ms, 4=~50ms, 8=~200ms, 12=~700ms
-    void setDelay(int d) {
+    void setDelay(int d)
+    {
         delayIndex = d < 0 ? 0 : d > 15 ? 15 : d;
         updateDelayLen();
     }
 
     // feedback: capped to 0.95 to prevent infinite oscillation
-    void setFeedback(float f) {
-        feedback = f < 0.0f ? 0.0f : f > 0.95f ? 0.95f : f;
-    }
+    void setFeedback(float f) { feedback = f < 0.0f ? 0.0f : f > 0.95f ? 0.95f : f; }
 
     // mix: 0=dry, 1=fully wet
-    void setMix(float m) {
-        mix = m < 0.0f ? 0.0f : m > 1.0f ? 1.0f : m;
-    }
+    void setMix(float m) { mix = m < 0.0f ? 0.0f : m > 1.0f ? 1.0f : m; }
 
     // Update FIR coefficients for feedback tone shaping
-    void setFIRCoefficients(const float coeffs[8]) {
+    void setFIRCoefficients(const float coeffs[8])
+    {
         for (int i = 0; i < 8; ++i)
             firCoeffs[i] = coeffs[i];
     }
 
-    float process(float x) {
+    float process(float x)
+    {
         // 1. Read from delay line
         int readHead = (writeHead - delayLen + kBufLen) % kBufLen;
         float delayed = delayBuf[readHead];
@@ -109,20 +113,26 @@ public:
     }
 
 private:
-
-    void updateDelayLen() {
+    void updateDelayLen()
+    {
         // Map index 0-15 to delay lengths in samples.
         // Each step approximately doubles the time (like the SNES echo buffer).
         // Base: 350 samples (~8ms @ 44.1kHz), then ×2 per step.
         // Actual delays (44.1kHz): 350, 700, 1400, 2800, 5600, 11200, 22400, ...
         // Capped to kBufLen - 1.
         int baseSamples = (int)(sr * 0.008f); // 8ms at current SR
-        if (baseSamples < 64) baseSamples = 64;
+        if (baseSamples < 64)
+            baseSamples = 64;
 
         delayLen = baseSamples;
-        for (int i = 0; i < delayIndex; ++i) {
+        for (int i = 0; i < delayIndex; ++i)
+        {
             delayLen *= 2;
-            if (delayLen >= kBufLen) { delayLen = kBufLen - 1; break; }
+            if (delayLen >= kBufLen)
+            {
+                delayLen = kBufLen - 1;
+                break;
+            }
         }
 
         // Recompute DC block coefficient for current SR
@@ -131,19 +141,19 @@ private:
         dcBlockCoeff = fastExp(-twoPi * 10.0f / sr);
     }
 
-    float sr          = 44100.0f;
-    int   delayIndex  = 3;
-    int   delayLen    = 0;
-    float feedback    = 0.5f;
-    float mix         = 0.3f;
+    float sr = 44100.0f;
+    int delayIndex = 3;
+    int delayLen = 0;
+    float feedback = 0.5f;
+    float mix = 0.3f;
     float firCoeffs[8];
     float dcBlockCoeff = 0.9986f; // updated in updateDelayLen
 
     float delayBuf[kBufLen];
     float firBuf[8];
-    int   writeHead = 0;
-    int   firHead   = 0;
-    float dcState   = 0.0f; // DC block state variable
+    int writeHead = 0;
+    int firHead = 0;
+    float dcState = 0.0f; // DC block state variable
 };
 
 } // namespace xoverworld

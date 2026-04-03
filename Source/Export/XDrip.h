@@ -14,7 +14,8 @@
 #include <string>
 #include <unordered_map>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // XDrip — Lightweight background preview renderer for the ExportDialog.
@@ -33,13 +34,19 @@ namespace xoceanus {
 class XDrip
 {
 public:
-    enum class State { Idle, Rendering, Ready, Error };
+    enum class State
+    {
+        Idle,
+        Rendering,
+        Ready,
+        Error
+    };
 
-    static constexpr float kPreviewDurationS  = 2.0f;
-    static constexpr int   kPreviewNote        = 60;  // C3
-    static constexpr int   kPreviewVelocity    = 100;
-    static constexpr int   kThumbnailPoints    = 100;
-    static constexpr int   kBlockSize          = 512;
+    static constexpr float kPreviewDurationS = 2.0f;
+    static constexpr int kPreviewNote = 60; // C3
+    static constexpr int kPreviewVelocity = 100;
+    static constexpr int kThumbnailPoints = 100;
+    static constexpr int kBlockSize = 512;
 
     XDrip() = default;
 
@@ -57,8 +64,7 @@ public:
     /// Cancels any in-progress render before starting the new one.
     /// apvts may be nullptr (produces silent preview).
     /// sampleRate should match the host/interface rate (default 48000).
-    void requestPreview(const PresetData& preset,
-                        juce::AudioProcessorValueTreeState* apvts,
+    void requestPreview(const PresetData& preset, juce::AudioProcessorValueTreeState* apvts,
                         double sampleRate = 48000.0)
     {
         // Cancel any existing render
@@ -66,7 +72,7 @@ public:
         joinWorker();
 
         // Snapshot the preset data on the calling (message) thread
-        pendingPreset_    = preset;
+        pendingPreset_ = preset;
         pendingSampleRate_ = sampleRate;
 
         // Deep-copy all parameter values synchronously here so the worker
@@ -85,8 +91,10 @@ public:
                         {
                             juce::String paramId = prop.name.toString();
                             auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
-                                ? resolveSnapParamAlias(paramId) : paramId;
-                            if (canonical.isEmpty()) continue;
+                                                 ? resolveSnapParamAlias(paramId)
+                                                 : paramId;
+                            if (canonical.isEmpty())
+                                continue;
 
                             if (auto* raw = apvts->getRawParameterValue(canonical))
                                 pendingParams_[canonical.toStdString()] = raw->load();
@@ -103,10 +111,7 @@ public:
     }
 
     /// Cancel any in-progress render.
-    void cancel()
-    {
-        shouldCancel_.store(true);
-    }
+    void cancel() { shouldCancel_.store(true); }
 
     /// Current render state (lock-free read).
     State getState() const { return state_.load(); }
@@ -126,31 +131,29 @@ public:
         std::lock_guard<std::mutex> lock(bufferMutex_);
         if (state_.load() != State::Ready || renderBuffer_.getNumSamples() == 0)
             return {};
-        juce::AudioBuffer<float> copy(renderBuffer_.getNumChannels(),
-                                       renderBuffer_.getNumSamples());
+        juce::AudioBuffer<float> copy(renderBuffer_.getNumChannels(), renderBuffer_.getNumSamples());
         for (int ch = 0; ch < renderBuffer_.getNumChannels(); ++ch)
             copy.copyFrom(ch, 0, renderBuffer_, ch, 0, renderBuffer_.getNumSamples());
         return copy;
     }
 
 private:
-
     //==========================================================================
     // State
     //==========================================================================
 
-    std::atomic<State> state_ { State::Idle };
-    std::atomic<bool>  shouldCancel_ { false };
+    std::atomic<State> state_{State::Idle};
+    std::atomic<bool> shouldCancel_{false};
 
-    mutable std::mutex           bufferMutex_;
-    juce::AudioBuffer<float>     renderBuffer_;
-    std::vector<float>           thumbnail_;
+    mutable std::mutex bufferMutex_;
+    juce::AudioBuffer<float> renderBuffer_;
+    std::vector<float> thumbnail_;
 
     // Snapshot of the request (written on message thread before worker starts)
-    PresetData                                pendingPreset_;
-    double                                    pendingSampleRate_ = 48000.0;
+    PresetData pendingPreset_;
+    double pendingSampleRate_ = 48000.0;
     // Deep copy of parameter values — no raw pointer kept (Fix 3)
-    std::unordered_map<std::string, float>    pendingParams_;
+    std::unordered_map<std::string, float> pendingParams_;
 
     std::thread workerThread_;
 
@@ -173,10 +176,10 @@ private:
         pthread_setschedparam(pthread_self(), SCHED_OTHER, &sp);
 #endif
 
-        const double sr         = pendingSampleRate_;
-        const int totalSamples  = static_cast<int>(kPreviewDurationS * sr);
-        const int holdSamples   = static_cast<int>(1.5 * sr); // 1.5s hold, 0.5s tail
-        const int numChannels   = 2; // stereo preview (Fix 2)
+        const double sr = pendingSampleRate_;
+        const int totalSamples = static_cast<int>(kPreviewDurationS * sr);
+        const int holdSamples = static_cast<int>(1.5 * sr); // 1.5s hold, 0.5s tail
+        const int numChannels = 2;                          // stereo preview (Fix 2)
 
         // Build offline engine context
         auto ctx = buildPreviewContext(pendingPreset_, sr);
@@ -191,8 +194,7 @@ private:
         buffer.clear();
 
         // Prepare MIDI note-on
-        const uint8_t velocityByte = static_cast<uint8_t>(
-            juce::jlimit(0, 127, kPreviewVelocity));
+        const uint8_t velocityByte = static_cast<uint8_t>(juce::jlimit(0, 127, kPreviewVelocity));
 
         int rendered = 0;
         bool noteOffSent = false;
@@ -210,13 +212,11 @@ private:
             juce::MidiBuffer midi;
             if (rendered == 0)
             {
-                midi.addEvent(
-                    juce::MidiMessage::noteOn(1, kPreviewNote, velocityByte), 0);
+                midi.addEvent(juce::MidiMessage::noteOn(1, kPreviewNote, velocityByte), 0);
             }
             else if (!noteOffSent && rendered >= holdSamples)
             {
-                midi.addEvent(
-                    juce::MidiMessage::noteOff(1, kPreviewNote), 0);
+                midi.addEvent(juce::MidiMessage::noteOff(1, kPreviewNote), 0);
                 noteOffSent = true;
             }
 
@@ -245,7 +245,7 @@ private:
         {
             std::lock_guard<std::mutex> lock(bufferMutex_);
             renderBuffer_ = std::move(buffer);
-            thumbnail_    = std::move(thumb);
+            thumbnail_ = std::move(thumb);
         }
 
         state_.store(State::Ready);
@@ -274,7 +274,8 @@ private:
         {
             auto canonical = resolveEngineAlias(engName);
             auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
-            if (!engine) continue;
+            if (!engine)
+                continue;
 
             // NOTE: SynthEngine has no setParameterValue() — engines read params
             // via APVTS raw pointers cached in attachParameters(). For the offline
@@ -303,12 +304,13 @@ private:
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {
             auto range = buffer.findMinMax(ch, 0, buffer.getNumSamples());
-            float chPeak = juce::jmax(std::abs(range.getStart()),
-                                       std::abs(range.getEnd()));
-            if (chPeak > peak) peak = chPeak;
+            float chPeak = juce::jmax(std::abs(range.getStart()), std::abs(range.getEnd()));
+            if (chPeak > peak)
+                peak = chPeak;
         }
 
-        if (peak < 1e-8f) return; // silence
+        if (peak < 1e-8f)
+            return; // silence
 
         static constexpr float kCeilingDb = -0.3f;
         float targetGain = std::pow(10.0f, kCeilingDb / 20.0f);
@@ -325,7 +327,8 @@ private:
     static std::vector<float> generateThumbnail(const juce::AudioBuffer<float>& buffer)
     {
         std::vector<float> thumbnail(kThumbnailPoints, 0.0f);
-        if (buffer.getNumSamples() == 0) return thumbnail;
+        if (buffer.getNumSamples() == 0)
+            return thumbnail;
 
         const int totalSamples = buffer.getNumSamples();
         const int numCh = buffer.getNumChannels();
@@ -337,7 +340,7 @@ private:
         for (int i = 0; i < kThumbnailPoints; ++i)
         {
             int start = static_cast<int>(i * samplesPerPoint);
-            int end   = static_cast<int>((i + 1) * samplesPerPoint);
+            int end = static_cast<int>((i + 1) * samplesPerPoint);
             end = juce::jmin(end, totalSamples);
 
             float peak = 0.0f;
@@ -348,12 +351,14 @@ private:
                 for (int s = start; s < end; ++s)
                 {
                     float absVal = std::abs(data[s]);
-                    if (absVal > peak) peak = absVal;
+                    if (absVal > peak)
+                        peak = absVal;
                 }
             }
 
             thumbnail[static_cast<size_t>(i)] = peak;
-            if (peak > globalPeak) globalPeak = peak;
+            if (peak > globalPeak)
+                globalPeak = peak;
         }
 
         // Normalize to 0..1

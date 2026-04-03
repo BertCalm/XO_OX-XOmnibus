@@ -5,7 +5,8 @@
 #include <atomic>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SensorManager — Accelerometer, gyroscope, and motion integration.
@@ -32,11 +33,13 @@ namespace xoceanus {
 //   3. Call start() — begins CMMotionManager updates on iOS
 //   4. Call stop() before destroying the instance (or at plugin shutdown)
 //
-class SensorManager {
+class SensorManager
+{
 public:
     //-- Configuration -----------------------------------------------------------
 
-    struct Config {
+    struct Config
+    {
         bool motionEnabled = false;         // User opt-in (Settings > Motion Control)
         float deadZoneDegrees = 3.0f;       // Dead zone around neutral (+/-)
         float smoothingMs = 50.0f;          // EMA time constant
@@ -44,10 +47,11 @@ public:
         float sensitivityMultiplier = 1.0f; // 0.25x to 4.0x user-configurable
     };
 
-    enum class MotionMode {
-        Off,            // No motion modulation
-        Accelerometer,  // Tilt → filter/pitch
-        Gyroscope       // Rotation → Orbit Path XY
+    enum class MotionMode
+    {
+        Off,           // No motion modulation
+        Accelerometer, // Tilt → filter/pitch
+        Gyroscope      // Rotation → Orbit Path XY
     };
 
     void setConfig(const Config& cfg)
@@ -121,7 +125,7 @@ public:
             return;
 
         // Compute tilt in degrees relative to neutral
-        float tiltXDeg = (ax - neutralX) * 90.0f;  // Approximate: 1g ≈ 90°
+        float tiltXDeg = (ax - neutralX) * 90.0f; // Approximate: 1g ≈ 90°
         float tiltYDeg = (ay - neutralY) * 90.0f;
 
         // Apply dead zone
@@ -211,10 +215,10 @@ private:
     float gyroAccumX = 0.0f, gyroAccumY = 0.0f;
 
     // Atomic outputs (read by audio thread)
-    std::atomic<float> tiltX { 0.0f };
-    std::atomic<float> tiltY { 0.0f };
-    std::atomic<float> gyroX { 0.0f };
-    std::atomic<float> gyroY { 0.0f };
+    std::atomic<float> tiltX{0.0f};
+    std::atomic<float> tiltY{0.0f};
+    std::atomic<float> gyroX{0.0f};
+    std::atomic<float> gyroY{0.0f};
 
     static float applyDeadZone(float valueDeg, float deadZoneDeg)
     {
@@ -242,12 +246,12 @@ private:
 // targets, so there are no link errors on macOS/desktop builds.
 // ---------------------------------------------------------------------------
 #if JUCE_IOS
-namespace sensor_platform {
+namespace sensor_platform
+{
 
 // Start motion updates feeding into |sm| using the supplied Config.
 // |sm| must outlive the motion update session.
-void startMotionUpdates(xoceanus::SensorManager* sm,
-                        const xoceanus::SensorManager::Config& config);
+void startMotionUpdates(xoceanus::SensorManager* sm, const xoceanus::SensorManager::Config& config);
 
 // Stop all motion updates and release CMMotionManager resources.
 void stopMotionUpdates();

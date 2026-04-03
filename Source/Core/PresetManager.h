@@ -8,20 +8,17 @@
 #include <set>
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Valid engine names — all registered XOceanus engines.
-inline const juce::StringArray validEngineNames {
+inline const juce::StringArray validEngineNames{
     // All engine IDs start with O (brand convention)
-    "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
-    "Overdub", "Odyssey", "Oblong", "Obese", "Onset",
-    "Overworld", "Opal", "Orbital",
-    "Organon", "Ouroboros",
-    "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
-    "Ocelot", "Osprey", "Osteria", "Owlfish",
-    "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
-    "Optic", "Oblique", "Ombre", "Orca", "Octopus",
+    "OddfeliX", "OddOscar", // Mascots: feliX the neon tetra, Oscar the axolotl
+    "Overdub", "Odyssey", "Oblong", "Obese", "Onset", "Overworld", "Opal", "Orbital", "Organon", "Ouroboros",
+    "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic", "Ocelot", "Osprey", "Osteria", "Owlfish", "Ohm",
+    "Orphica", "Obbligato", "Ottoni", "Ole", "Optic", "Oblique", "Ombre", "Orca", "Octopus",
     // Phase 4 engines
     "Overlap", "Outwit",
     // V1 concept engines
@@ -59,52 +56,48 @@ inline const juce::StringArray validEngineNames {
     // Cellular Automata Oscillator
     "Obiont",
     // Legacy aliases (kept for backward preset compatibility)
-    "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
-    "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
-    "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami",
-    "XOracle", "XObscura", "XOceanic", "XOptic", "XOblique",
-    "XOverworld", "XOrca", "XOctopus",
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
-};
+    "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob", "XObese", "XOnset", "XOrbital", "XOrganon",
+    "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
+    "XOptic", "XOblique", "XOverworld", "XOrca", "XOctopus", "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"};
 
 // Resolve legacy engine name aliases to current canonical IDs.
 // Returns the input unchanged if it's already a current ID or unrecognized.
 inline juce::String resolveEngineAlias(const juce::String& name)
 {
-    static const std::map<juce::String, juce::String> aliases {
-        { "Snap",        "OddfeliX"  },
-        { "Morph",       "OddOscar"  },
-        { "Dub",         "Overdub"   },
-        { "Drift",       "Odyssey"   },
-        { "Bob",         "Oblong"    },
-        { "Fat",         "Obese"     },
-        { "Bite",        "Overbite"  },
-        { "XOddCouple",  "OddfeliX" },  // v0 name for Snap/feliX
-        { "XOverdub",    "Overdub"   },
-        { "XOdyssey",    "Odyssey"   },
-        { "XOblong",     "Oblong"    },
-        { "XOblongBob",  "Oblong"    },
-        { "XObese",      "Obese"     },
-        { "XOnset",      "Onset"     },
-        { "XOrbital",    "Orbital"   },
-        { "XOrganon",    "Organon"   },
-        { "XOuroboros",  "Ouroboros" },
-        { "XOpal",       "Opal"      },
-        { "XOpossum",    "Overbite"  },
-        { "XOverbite",   "Overbite"  },
-        { "XObsidian",   "Obsidian"  },
-        { "XOrigami",    "Origami"   },
-        { "XOracle",     "Oracle"    },
-        { "XObscura",    "Obscura"   },
-        { "XOceanic",    "Oceanic"   },
-        { "XOptic",      "Optic"     },
-        { "XOblique",    "Oblique"   },
-        { "XOverworld",  "Overworld" },
-        { "XOrca",       "Orca"      },
-        { "XOctopus",    "Octopus"   },
+    static const std::map<juce::String, juce::String> aliases{
+        {"Snap", "OddfeliX"},
+        {"Morph", "OddOscar"},
+        {"Dub", "Overdub"},
+        {"Drift", "Odyssey"},
+        {"Bob", "Oblong"},
+        {"Fat", "Obese"},
+        {"Bite", "Overbite"},
+        {"XOddCouple", "OddfeliX"}, // v0 name for Snap/feliX
+        {"XOverdub", "Overdub"},
+        {"XOdyssey", "Odyssey"},
+        {"XOblong", "Oblong"},
+        {"XOblongBob", "Oblong"},
+        {"XObese", "Obese"},
+        {"XOnset", "Onset"},
+        {"XOrbital", "Orbital"},
+        {"XOrganon", "Organon"},
+        {"XOuroboros", "Ouroboros"},
+        {"XOpal", "Opal"},
+        {"XOpossum", "Overbite"},
+        {"XOverbite", "Overbite"},
+        {"XObsidian", "Obsidian"},
+        {"XOrigami", "Origami"},
+        {"XOracle", "Oracle"},
+        {"XObscura", "Obscura"},
+        {"XOceanic", "Oceanic"},
+        {"XOptic", "Optic"},
+        {"XOblique", "Oblique"},
+        {"XOverworld", "Overworld"},
+        {"XOrca", "Orca"},
+        {"XOctopus", "Octopus"},
         // Phase 4 engine aliases
-        { "XOverlap",    "Overlap"   },
-        { "XOutwit",     "Outwit"    },
+        {"XOverlap", "Overlap"},
+        {"XOutwit", "Outwit"},
         // NOTE: "Oasis" → "Okeanos" alias removed — new Oasis engine (Fusion EP) now uses this name.
         // Old Okeanos presets should reference "Okeanos" directly.
     };
@@ -118,100 +111,100 @@ inline juce::String resolveEngineAlias(const juce::String& name)
 // Callers can concatenate directly: prefix + paramName → "snap_filterCutoff".
 inline juce::String frozenPrefixForEngine(const juce::String& engineId)
 {
-    static const std::map<juce::String, juce::String> prefixes {
-        { "OddfeliX",   "snap_"     },
-        { "OddOscar",   "morph_"    },
-        { "Overdub",     "dub_"      },
-        { "Odyssey",     "drift_"    },
-        { "Oblong",      "bob_"      },
-        { "Obese",       "fat_"      },
-        { "Overbite",    "poss_"     },
-        { "Onset",       "perc_"     },
-        { "Overworld",   "ow_"       },
-        { "Opal",        "opal_"     },
-        { "Orbital",     "orb_"      },
-        { "Organon",     "organon_"  },
-        { "Ouroboros",   "ouro_"     },
-        { "Obsidian",    "obsidian_" },
-        { "Origami",     "origami_"  },
-        { "Oracle",      "oracle_"   },
-        { "Obscura",     "obscura_"  },
-        { "Oceanic",     "ocean_"    },
-        { "Optic",       "optic_"    },
-        { "Oblique",     "oblq_"     },
-        { "Ocelot",      "ocelot_"   },
-        { "Osprey",      "osprey_"   },
-        { "Osteria",     "osteria_"  },
-        { "Owlfish",     "owl_"      },
-        { "Ohm",         "ohm_"      },
-        { "Orphica",     "orph_"     },
-        { "Obbligato",   "obbl_"     },
-        { "Ottoni",      "otto_"     },
-        { "Ole",         "ole_"      },
-        { "Ombre",       "ombre_"    },
-        { "Orca",        "orca_"     },
-        { "Octopus",     "octo_"     },
-        { "Overlap",     "olap_"     },
-        { "Outwit",      "owit_"     },
+    static const std::map<juce::String, juce::String> prefixes{
+        {"OddfeliX", "snap_"},
+        {"OddOscar", "morph_"},
+        {"Overdub", "dub_"},
+        {"Odyssey", "drift_"},
+        {"Oblong", "bob_"},
+        {"Obese", "fat_"},
+        {"Overbite", "poss_"},
+        {"Onset", "perc_"},
+        {"Overworld", "ow_"},
+        {"Opal", "opal_"},
+        {"Orbital", "orb_"},
+        {"Organon", "organon_"},
+        {"Ouroboros", "ouro_"},
+        {"Obsidian", "obsidian_"},
+        {"Origami", "origami_"},
+        {"Oracle", "oracle_"},
+        {"Obscura", "obscura_"},
+        {"Oceanic", "ocean_"},
+        {"Optic", "optic_"},
+        {"Oblique", "oblq_"},
+        {"Ocelot", "ocelot_"},
+        {"Osprey", "osprey_"},
+        {"Osteria", "osteria_"},
+        {"Owlfish", "owl_"},
+        {"Ohm", "ohm_"},
+        {"Orphica", "orph_"},
+        {"Obbligato", "obbl_"},
+        {"Ottoni", "otto_"},
+        {"Ole", "ole_"},
+        {"Ombre", "ombre_"},
+        {"Orca", "orca_"},
+        {"Octopus", "octo_"},
+        {"Overlap", "olap_"},
+        {"Outwit", "owit_"},
         // V1 Concept Engines
-        { "OpenSky",     "sky_"      },
-        { "Ostinato",    "osti_"     },
-        { "OceanDeep",   "deep_"     },
-        { "Ouie",        "ouie_"     },
+        {"OpenSky", "sky_"},
+        {"Ostinato", "osti_"},
+        {"OceanDeep", "deep_"},
+        {"Ouie", "ouie_"},
         // Flagship
-        { "Obrix",       "obrix_"    },
+        {"Obrix", "obrix_"},
         // V2 Theorem Engines
-        { "Orbweave",    "weave_"    },
-        { "Overtone",    "over_"     },
-        { "Organism",    "org_"      },
+        {"Orbweave", "weave_"},
+        {"Overtone", "over_"},
+        {"Organism", "org_"},
         // Singularity Engines
-        { "Oxbow",       "oxb_"      },
-        { "Oware",       "owr_"      },
+        {"Oxbow", "oxb_"},
+        {"Oware", "owr_"},
         // Kuramoto Vocal Synthesis
-        { "Opera",       "opera_"    },
+        {"Opera", "opera_"},
         // Psychology-Driven Boom Bap Drums
-        { "Offering",    "ofr_"      },
+        {"Offering", "ofr_"},
         // Chef Quad Collection
-        { "Oto",         "oto_"      },
-        { "Octave",      "oct_"      },
-        { "Oleg",        "oleg_"     },
-        { "Otis",        "otis_"     },
+        {"Oto", "oto_"},
+        {"Octave", "oct_"},
+        {"Oleg", "oleg_"},
+        {"Otis", "otis_"},
         // KITCHEN Quad Collection
-        { "Oven",        "oven_"     },
-        { "Ochre",       "ochre_"    },
-        { "Obelisk",     "obel_"     },
-        { "Opaline",     "opal2_"    },
+        {"Oven", "oven_"},
+        {"Ochre", "ochre_"},
+        {"Obelisk", "obel_"},
+        {"Opaline", "opal2_"},
         // CELLAR Quad Collection
-        { "Ogre",        "ogre_"     },
-        { "Olate",       "olate_"    },
-        { "Oaken",       "oaken_"    },
-        { "Omega",       "omega_"    },
+        {"Ogre", "ogre_"},
+        {"Olate", "olate_"},
+        {"Oaken", "oaken_"},
+        {"Omega", "omega_"},
         // GARDEN Quad Collection
-        { "Orchard",     "orch_"     },
-        { "Overgrow",    "grow_"     },
-        { "Osier",       "osier_"    },
-        { "Oxalis",      "oxal_"     },
+        {"Orchard", "orch_"},
+        {"Overgrow", "grow_"},
+        {"Osier", "osier_"},
+        {"Oxalis", "oxal_"},
         // BROTH Quad Collection
-        { "Overwash",    "wash_"     },
-        { "Overworn",    "worn_"     },
-        { "Overflow",    "flow_"     },
-        { "Overcast",    "cast_"     },
+        {"Overwash", "wash_"},
+        {"Overworn", "worn_"},
+        {"Overflow", "flow_"},
+        {"Overcast", "cast_"},
         // FUSION Quad Collection
-        { "Okeanos",     "okan_"     },
-        { "Oddfellow",   "oddf_"     },
-        { "Onkolo",      "onko_"     },
-        { "Opcode",      "opco_"     },
+        {"Okeanos", "okan_"},
+        {"Oddfellow", "oddf_"},
+        {"Onkolo", "onko_"},
+        {"Opcode", "opco_"},
         // Membrane Collection
-        { "Osmosis",     "osmo_"     },
+        {"Osmosis", "osmo_"},
         // Love Triangle Circuit Synth
-        { "Oxytocin",    "oxy_"      },
+        {"Oxytocin", "oxy_"},
         // Panoramic Visionary Synth
-        { "Outlook",     "look_"     },
+        {"Outlook", "look_"},
         // Dual Engine Integration
-        { "Oasis",       "oas_"      },
-        { "Outflow",     "out_"      },
+        {"Oasis", "oas_"},
+        {"Outflow", "out_"},
         // Cellular Automata Oscillator
-        { "Obiont",      "obnt_"     },
+        {"Obiont", "obnt_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
@@ -224,21 +217,20 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
 inline juce::String resolveSnapParamAlias(const juce::String& paramId)
 {
     // Renamed params: old ID -> canonical ID
-    static const std::map<juce::String, juce::String> renamed {
-        { "snap_resonance",    "snap_filterReso"      },
-        { "snap_filterEnvAmt", "snap_filterEnvDepth"  },
-        { "snap_filterEnv",    "snap_filterEnvDepth"  },
-        { "snap_snapAmount",   "snap_snap"             },
+    static const std::map<juce::String, juce::String> renamed{
+        {"snap_resonance", "snap_filterReso"},
+        {"snap_filterEnvAmt", "snap_filterEnvDepth"},
+        {"snap_filterEnv", "snap_filterEnvDepth"},
+        {"snap_snapAmount", "snap_snap"},
     };
     // Removed params: had no equivalent in the percussive engine redesign
-    static const std::set<juce::String> removed {
-        "snap_attack", "snap_sustain", "snap_release",
-        "snap_ampAttack", "snap_ampDecay", "snap_ampRelease", "snap_ampSustain",
-        "snap_oscShape", "snap_oscTune", "snap_snapTone",
+    static const std::set<juce::String> removed{
+        "snap_attack",     "snap_sustain",    "snap_release",  "snap_ampAttack", "snap_ampDecay",
+        "snap_ampRelease", "snap_ampSustain", "snap_oscShape", "snap_oscTune",   "snap_snapTone",
     };
 
     if (removed.count(paramId))
-        return {};  // empty = drop this param
+        return {}; // empty = drop this param
 
     auto it = renamed.find(paramId);
     return (it != renamed.end()) ? it->second : paramId;
@@ -252,57 +244,79 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
 inline juce::String resolveBiteParamAlias(const juce::String& paramId)
 {
     // Gen 3 → Gen 4 renames: abbreviated names → full APVTS IDs
-    static const std::map<juce::String, juce::String> renamed {
-        { "poss_fur",                "poss_furAmount"          },
-        { "poss_glide",              "poss_glideTime"          },
-        { "poss_gnash",              "poss_gnashAmount"        },
-        { "poss_gnashAmt",           "poss_gnashAmount"        },
-        { "poss_chew",               "poss_chewAmount"         },
-        { "poss_masterVolume",       "poss_level"              },
-        { "poss_outputLevel",        "poss_level"              },
-        { "poss_outputPan",          "poss_pan"                },
-        { "poss_oscAWave",           "poss_oscAWaveform"       },
-        { "poss_oscBWave",           "poss_oscBWaveform"       },
-        { "poss_subOct",             "poss_subOctave"          },
-        { "poss_filterEnvAmt",       "poss_filterEnvAmount"    },
-        { "poss_filtEnvAttack",      "poss_filterAttack"       },
-        { "poss_filtEnvDecay",       "poss_filterDecay"        },
-        { "poss_filtEnvSustain",     "poss_filterSustain"      },
-        { "poss_filtEnvRelease",     "poss_filterRelease"      },
-        { "poss_filter_cutoff",      "poss_filterCutoff"       },
-        { "poss_amp_sustain",        "poss_ampSustain"         },
-        { "poss_resonance",          "poss_filterReso"         },
-        { "poss_oscInteractionAmt",  "poss_oscInteractAmount"  },
-        { "poss_oscInteractionMode", "poss_oscInteractMode"    },
-        { "poss_drive",              "poss_driveAmount"        },
-        { "poss_weightAmt",          "poss_weightLevel"        },
+    static const std::map<juce::String, juce::String> renamed{
+        {"poss_fur", "poss_furAmount"},
+        {"poss_glide", "poss_glideTime"},
+        {"poss_gnash", "poss_gnashAmount"},
+        {"poss_gnashAmt", "poss_gnashAmount"},
+        {"poss_chew", "poss_chewAmount"},
+        {"poss_masterVolume", "poss_level"},
+        {"poss_outputLevel", "poss_level"},
+        {"poss_outputPan", "poss_pan"},
+        {"poss_oscAWave", "poss_oscAWaveform"},
+        {"poss_oscBWave", "poss_oscBWaveform"},
+        {"poss_subOct", "poss_subOctave"},
+        {"poss_filterEnvAmt", "poss_filterEnvAmount"},
+        {"poss_filtEnvAttack", "poss_filterAttack"},
+        {"poss_filtEnvDecay", "poss_filterDecay"},
+        {"poss_filtEnvSustain", "poss_filterSustain"},
+        {"poss_filtEnvRelease", "poss_filterRelease"},
+        {"poss_filter_cutoff", "poss_filterCutoff"},
+        {"poss_amp_sustain", "poss_ampSustain"},
+        {"poss_resonance", "poss_filterReso"},
+        {"poss_oscInteractionAmt", "poss_oscInteractAmount"},
+        {"poss_oscInteractionMode", "poss_oscInteractMode"},
+        {"poss_drive", "poss_driveAmount"},
+        {"poss_weightAmt", "poss_weightLevel"},
         // Numbered macros → named macros (positional: 1=Belly, 2=Bite, 3=Scurry, 4=Trash)
-        { "poss_macro1",             "poss_macroBelly"         },
-        { "poss_macro2",             "poss_macroBite"          },
-        { "poss_macro3",             "poss_macroScurry"        },
-        { "poss_macro4",             "poss_macroTrash"         },
+        {"poss_macro1", "poss_macroBelly"},
+        {"poss_macro2", "poss_macroBite"},
+        {"poss_macro3", "poss_macroScurry"},
+        {"poss_macro4", "poss_macroTrash"},
     };
     // Params with no canonical equivalent — removed or replaced by new architecture.
     // Gen 2 concept params, old per-engine coupling, ambiguous LFO/env params, etc.
-    static const std::set<juce::String> removed {
+    static const std::set<juce::String> removed{
         // Gen 2 concept params (standalone prototype era)
-        "poss_aggression", "poss_brightness", "poss_warmth",
-        "poss_couplingBus", "poss_couplingLevel", "poss_macroCoupling",
-        "poss_attack", "poss_release",
+        "poss_aggression",
+        "poss_brightness",
+        "poss_warmth",
+        "poss_couplingBus",
+        "poss_couplingLevel",
+        "poss_macroCoupling",
+        "poss_attack",
+        "poss_release",
         // Gen 2/3 params with no canonical equivalent
-        "poss_biteDepth", "poss_fangAttack", "poss_snapRelease",
-        "poss_couplingIn", "poss_couplingOut", "poss_coupling",
-        "poss_character", "poss_bite", "poss_delayMix",
-        "poss_reverbMix", "poss_space", "poss_movement",
-        "poss_lfoRate", "poss_lfoDepth", "poss_envAmount",
-        "poss_fmDepth", "poss_oscALevel", "poss_oscBLevel",
-        "poss_oscBDetune", "poss_oscBAsymmetry", "poss_oscAPulseWidth",
-        "poss_oscWave", "poss_noiseTransient", "poss_filtEnvVelScale",
-        "poss_sub_osc", "poss_subShape",
+        "poss_biteDepth",
+        "poss_fangAttack",
+        "poss_snapRelease",
+        "poss_couplingIn",
+        "poss_couplingOut",
+        "poss_coupling",
+        "poss_character",
+        "poss_bite",
+        "poss_delayMix",
+        "poss_reverbMix",
+        "poss_space",
+        "poss_movement",
+        "poss_lfoRate",
+        "poss_lfoDepth",
+        "poss_envAmount",
+        "poss_fmDepth",
+        "poss_oscALevel",
+        "poss_oscBLevel",
+        "poss_oscBDetune",
+        "poss_oscBAsymmetry",
+        "poss_oscAPulseWidth",
+        "poss_oscWave",
+        "poss_noiseTransient",
+        "poss_filtEnvVelScale",
+        "poss_sub_osc",
+        "poss_subShape",
     };
 
     if (removed.count(paramId))
-        return {};  // empty = drop this param
+        return {}; // empty = drop this param
 
     auto it = renamed.find(paramId);
     return (it != renamed.end()) ? it->second : paramId;
@@ -310,52 +324,47 @@ inline juce::String resolveBiteParamAlias(const juce::String& paramId)
 
 // Valid moods — 15 browsing categories plus User.
 // Must match the 15 mood directories under Presets/XOceanus/ and CLAUDE.md.
-inline const juce::StringArray validMoods {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged",
-    "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
-    "User"
-};
+inline const juce::StringArray validMoods{"Foundation", "Atmosphere", "Entangled", "Prism",       "Flux", "Aether",
+                                          "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep", "Ethereal",
+                                          "Kinetic",    "Luminous",   "Organic",   "User"};
 
 // Valid coupling intensity levels.
-inline const juce::StringArray validCouplingIntensities {
-    "None", "Low", "Medium", "High",
-    // Legacy aliases (kept for backward preset compatibility)
-    "Subtle", "Moderate", "Deep"
-};
+inline const juce::StringArray validCouplingIntensities{"None", "Low", "Medium", "High",
+                                                        // Legacy aliases (kept for backward preset compatibility)
+                                                        "Subtle", "Moderate", "Deep"};
 
 // Valid coupling pair types (string form as they appear in .xometa JSON).
 // Must match the CouplingType enum in SynthEngine.h 1:1.
 // Accepts both CamelCase (AmpToFilter) and arrow (Amp->Filter) formats.
-inline const juce::StringArray validCouplingTypes {
-    "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
-    "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
-    "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
-    "AudioToBuffer", "KnotTopology", "TriangularCoupling",
+inline const juce::StringArray validCouplingTypes{
+    "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph", "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
+    "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable", "AudioToBuffer", "KnotTopology",
+    "TriangularCoupling",
     // Legacy arrow-notation aliases
-    "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph",
-    "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
-    "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable",
-    "Audio->Buffer", "Knot->Topology", "Triangular->Coupling"
-};
+    "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph", "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
+    "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable", "Audio->Buffer", "Knot->Topology",
+    "Triangular->Coupling"};
 
 //==============================================================================
 // 6D Sonic DNA — fingerprint for similarity search, morphing, and breeding.
-struct PresetDNA {
+struct PresetDNA
+{
     float brightness = 0.5f;
-    float warmth     = 0.5f;
-    float movement   = 0.5f;
-    float density    = 0.5f;
-    float space      = 0.5f;
+    float warmth = 0.5f;
+    float movement = 0.5f;
+    float density = 0.5f;
+    float space = 0.5f;
     float aggression = 0.5f;
 };
 
 //==============================================================================
 // A single coupling pair — directional cross-engine modulation route.
-struct CouplingPair {
-    juce::String engineA;  // Source engine
-    juce::String engineB;  // Destination engine
-    juce::String type;     // e.g. "Amp->Filter"
-    float amount = 0.0f;   // -1.0 to +1.0
+struct CouplingPair
+{
+    juce::String engineA; // Source engine
+    juce::String engineB; // Destination engine
+    juce::String type;    // e.g. "Amp->Filter"
+    float amount = 0.0f;  // -1.0 to +1.0
 };
 
 //==============================================================================
@@ -365,34 +374,37 @@ struct CouplingPair {
 //
 // NOTE: Named PresetMacroTarget to avoid collision with xoceanus::MacroTarget
 // in MacroSystem.h, which is the live-runtime modulation struct.
-struct PresetMacroTarget {
-    juce::String engineName;   // Canonical engine ID (e.g. "Onset", "Obrix")
-    juce::String paramId;      // Frozen parameter ID (e.g. "perc_noiseLevel")
-    float depthMin = 0.0f;     // Parameter value when macro is at 0.0
-    float depthMax = 1.0f;     // Parameter value when macro is at 1.0
+struct PresetMacroTarget
+{
+    juce::String engineName; // Canonical engine ID (e.g. "Onset", "Obrix")
+    juce::String paramId;    // Frozen parameter ID (e.g. "perc_noiseLevel")
+    float depthMin = 0.0f;   // Parameter value when macro is at 0.0
+    float depthMax = 1.0f;   // Parameter value when macro is at 1.0
 };
 
 //==============================================================================
 // Complete preset data as loaded from a .xometa file.
-struct PresetData {
+struct PresetData
+{
     int schemaVersion = 1;
     juce::String name;
-    juce::String mood;                     // 15 moods: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|User
-    juce::StringArray engines;             // 1-5 engine names (MaxSlots = 5)
+    juce::String
+        mood; // 15 moods: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|User
+    juce::StringArray engines; // 1-5 engine names (MaxSlots = 5)
     juce::String author;
     juce::String version;
     juce::String description;
     juce::StringArray tags;
-    juce::StringArray macroLabels;         // 4 labels: CHARACTER, MOVEMENT, COUPLING, SPACE
-    juce::String couplingIntensity;        // None|Subtle|Moderate|Deep
-    float tempo = 0.0f;                    // 0 if not tempo-dependent
+    juce::StringArray macroLabels;  // 4 labels: CHARACTER, MOVEMENT, COUPLING, SPACE
+    juce::String couplingIntensity; // None|Subtle|Moderate|Deep
+    float tempo = 0.0f;             // 0 if not tempo-dependent
     PresetDNA dna;
-    std::map<juce::String, juce::var> parametersByEngine;  // engine name -> params object
+    std::map<juce::String, juce::var> parametersByEngine; // engine name -> params object
     std::vector<CouplingPair> couplingPairs;
     // Macro target routing: [0]=CHARACTER [1]=MOVEMENT [2]=COUPLING [3]=SPACE.
     // Each slot holds zero or more parameter targets that the macro sweeps.
     std::array<std::vector<PresetMacroTarget>, 4> macroTargets;
-    juce::var sequencerData;               // Raw JSON, undefined if no sequencer
+    juce::var sequencerData; // Raw JSON, undefined if no sequencer
 
     // Source file for navigation purposes (empty for programmatic presets)
     juce::File sourceFile;
@@ -408,11 +420,13 @@ struct PresetData {
 //   - Uses juce::JSON for all parsing/serialization.
 //   - Handles malformed presets gracefully — never crashes on bad data.
 //
-class PresetManager {
+class PresetManager
+{
 public:
     //--------------------------------------------------------------------------
     // Listener interface — notified when the active preset changes.
-    struct Listener {
+    struct Listener
+    {
         virtual ~Listener() = default;
         virtual void presetLoaded(const PresetData& preset) = 0;
     };
@@ -525,10 +539,10 @@ public:
         // dna
         auto* dnaObj = new juce::DynamicObject();
         dnaObj->setProperty("brightness", static_cast<double>(preset.dna.brightness));
-        dnaObj->setProperty("warmth",     static_cast<double>(preset.dna.warmth));
-        dnaObj->setProperty("movement",   static_cast<double>(preset.dna.movement));
-        dnaObj->setProperty("density",    static_cast<double>(preset.dna.density));
-        dnaObj->setProperty("space",      static_cast<double>(preset.dna.space));
+        dnaObj->setProperty("warmth", static_cast<double>(preset.dna.warmth));
+        dnaObj->setProperty("movement", static_cast<double>(preset.dna.movement));
+        dnaObj->setProperty("density", static_cast<double>(preset.dna.density));
+        dnaObj->setProperty("space", static_cast<double>(preset.dna.space));
         dnaObj->setProperty("aggression", static_cast<double>(preset.dna.aggression));
         root->setProperty("dna", juce::var(dnaObj));
 
@@ -571,9 +585,7 @@ public:
         // Always written (even when all slots are empty) so the field is present in every
         // saved preset and loaders never need to fabricate a fallback value.
         {
-            static const juce::StringArray macroSlotNames {
-                "CHARACTER", "MOVEMENT", "COUPLING", "SPACE"
-            };
+            static const juce::StringArray macroSlotNames{"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
             juce::var macroTargetsArray;
             for (int slot = 0; slot < 4; ++slot)
             {
@@ -582,9 +594,9 @@ public:
                 {
                     auto* mtObj = new juce::DynamicObject();
                     mtObj->setProperty("engineName", mt.engineName);
-                    mtObj->setProperty("paramId",    mt.paramId);
-                    mtObj->setProperty("depthMin",   static_cast<double>(mt.depthMin));
-                    mtObj->setProperty("depthMax",   static_cast<double>(mt.depthMax));
+                    mtObj->setProperty("paramId", mt.paramId);
+                    mtObj->setProperty("depthMin", static_cast<double>(mt.depthMin));
+                    mtObj->setProperty("depthMax", static_cast<double>(mt.depthMax));
                     slotArray.append(juce::var(mtObj));
                 }
                 macroTargetsArray.append(slotArray);
@@ -605,14 +617,13 @@ public:
         if (!directory.isDirectory())
             return;
 
-        for (const auto& file :
-             directory.findChildFiles(juce::File::findFiles, true, "*.xometa"))
+        for (const auto& file : directory.findChildFiles(juce::File::findFiles, true, "*.xometa"))
         {
             // Issue #424: cap library size to prevent unbounded memory growth.
             if (library.size() >= kMaxLibrarySize)
             {
-                DBG ("PresetManager: library limit (" + juce::String ((int) kMaxLibrarySize)
-                     + ") reached — stopping scan of " + directory.getFullPathName());
+                DBG("PresetManager: library limit (" + juce::String((int)kMaxLibrarySize) +
+                    ") reached — stopping scan of " + directory.getFullPathName());
                 break;
             }
 
@@ -685,19 +696,16 @@ public:
     float dnaDistance(const PresetDNA& a, const PresetDNA& b) const
     {
         float db = a.brightness - b.brightness;
-        float dw = a.warmth    - b.warmth;
-        float dm = a.movement  - b.movement;
-        float dd = a.density   - b.density;
-        float ds = a.space     - b.space;
+        float dw = a.warmth - b.warmth;
+        float dm = a.movement - b.movement;
+        float dd = a.density - b.density;
+        float ds = a.space - b.space;
         float da = a.aggression - b.aggression;
-        return std::sqrt(db*db + dw*dw + dm*dm + dd*dd + ds*ds + da*da);
+        return std::sqrt(db * db + dw * dw + dm * dm + dd * dd + ds * ds + da * da);
     }
 
     // Find the `count` most similar presets by DNA distance.
-    std::vector<PresetData> findSimilar(const PresetDNA& dna, int count = 5) const
-    {
-        return findNearest(dna, count);
-    }
+    std::vector<PresetData> findSimilar(const PresetDNA& dna, int count = 5) const { return findNearest(dna, count); }
 
     // Find the `count` most opposite presets: invert the DNA vector
     // (1.0 - each dimension), then find nearest matches to the inverted point.
@@ -705,10 +713,10 @@ public:
     {
         PresetDNA inverted;
         inverted.brightness = 1.0f - dna.brightness;
-        inverted.warmth     = 1.0f - dna.warmth;
-        inverted.movement   = 1.0f - dna.movement;
-        inverted.density    = 1.0f - dna.density;
-        inverted.space      = 1.0f - dna.space;
+        inverted.warmth = 1.0f - dna.warmth;
+        inverted.movement = 1.0f - dna.movement;
+        inverted.density = 1.0f - dna.density;
+        inverted.space = 1.0f - dna.space;
         inverted.aggression = 1.0f - dna.aggression;
         return findNearest(inverted, count);
     }
@@ -776,9 +784,7 @@ public:
 
     void removeListener(Listener* l)
     {
-        listeners.erase(
-            std::remove(listeners.begin(), listeners.end(), l),
-            listeners.end());
+        listeners.erase(std::remove(listeners.begin(), listeners.end(), l), listeners.end());
     }
 
 private:
@@ -891,9 +897,7 @@ private:
                     out.macroLabels.add(m.toString());
         }
         // Pad to 4 with defaults if needed
-        static const juce::StringArray defaultMacros {
-            "CHARACTER", "MOVEMENT", "COUPLING", "SPACE"
-        };
+        static const juce::StringArray defaultMacros{"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
         while (out.macroLabels.size() < 4)
             out.macroLabels.add(defaultMacros[out.macroLabels.size()]);
         // Trim to exactly 4
@@ -922,10 +926,10 @@ private:
                 if (dnaObj != nullptr)
                 {
                     out.dna.brightness = clampDNA(dnaObj->getProperty("brightness"));
-                    out.dna.warmth     = clampDNA(dnaObj->getProperty("warmth"));
-                    out.dna.movement   = clampDNA(dnaObj->getProperty("movement"));
-                    out.dna.density    = clampDNA(dnaObj->getProperty("density"));
-                    out.dna.space      = clampDNA(dnaObj->getProperty("space"));
+                    out.dna.warmth = clampDNA(dnaObj->getProperty("warmth"));
+                    out.dna.movement = clampDNA(dnaObj->getProperty("movement"));
+                    out.dna.density = clampDNA(dnaObj->getProperty("density"));
+                    out.dna.space = clampDNA(dnaObj->getProperty("space"));
                     out.dna.aggression = clampDNA(dnaObj->getProperty("aggression"));
                 }
             }
@@ -956,13 +960,12 @@ private:
                             CouplingPair cp;
                             cp.engineA = resolveEngineAlias(pairObj->getProperty("engineA").toString());
                             cp.engineB = resolveEngineAlias(pairObj->getProperty("engineB").toString());
-                            cp.type    = pairObj->getProperty("type").toString();
-                            cp.amount  = static_cast<float>(pairObj->getProperty("amount"));
+                            cp.type = pairObj->getProperty("type").toString();
+                            cp.amount = static_cast<float>(pairObj->getProperty("amount"));
 
                             // Validate: both engines must be known, type must be valid
-                            if (validEngineNames.contains(cp.engineA)
-                                && validEngineNames.contains(cp.engineB)
-                                && validCouplingTypes.contains(cp.type))
+                            if (validEngineNames.contains(cp.engineA) && validEngineNames.contains(cp.engineB) &&
+                                validCouplingTypes.contains(cp.type))
                             {
                                 cp.amount = juce::jlimit(-1.0f, 1.0f, cp.amount);
                                 out.couplingPairs.push_back(cp);
@@ -1017,15 +1020,15 @@ private:
 
                         PresetMacroTarget mt;
                         mt.engineName = resolveEngineAlias(targetObj->getProperty("engineName").toString());
-                        mt.paramId    = targetObj->getProperty("paramId").toString();
+                        mt.paramId = targetObj->getProperty("paramId").toString();
 
                         // depthMin/depthMax: default to 0/1 if absent or malformed
                         auto depthMinVar = targetObj->getProperty("depthMin");
                         auto depthMaxVar = targetObj->getProperty("depthMax");
-                        mt.depthMin = (depthMinVar.isDouble() || depthMinVar.isInt())
-                                          ? static_cast<float>(depthMinVar) : 0.0f;
-                        mt.depthMax = (depthMaxVar.isDouble() || depthMaxVar.isInt())
-                                          ? static_cast<float>(depthMaxVar) : 1.0f;
+                        mt.depthMin =
+                            (depthMinVar.isDouble() || depthMinVar.isInt()) ? static_cast<float>(depthMinVar) : 0.0f;
+                        mt.depthMax =
+                            (depthMaxVar.isDouble() || depthMaxVar.isInt()) ? static_cast<float>(depthMaxVar) : 1.0f;
 
                         // Only store targets whose engine and param IDs are non-empty.
                         // We intentionally do NOT validate engineName against validEngineNames
@@ -1057,7 +1060,8 @@ private:
     // Find the `count` nearest presets to `target` in DNA space.
     std::vector<PresetData> findNearest(const PresetDNA& target, int count) const
     {
-        struct Ranked {
+        struct Ranked
+        {
             float distance;
             size_t index;
         };
@@ -1066,12 +1070,10 @@ private:
         ranked.reserve(library.size());
 
         for (size_t i = 0; i < library.size(); ++i)
-            ranked.push_back({ dnaDistance(library[i].dna, target), i });
+            ranked.push_back({dnaDistance(library[i].dna, target), i});
 
         std::sort(ranked.begin(), ranked.end(),
-                  [](const Ranked& a, const Ranked& b) {
-                      return a.distance < b.distance;
-                  });
+                  [](const Ranked& a, const Ranked& b) { return a.distance < b.distance; });
 
         std::vector<PresetData> results;
         int n = std::min(count, static_cast<int>(ranked.size()));

@@ -25,17 +25,18 @@
 #include <cstdint>
 #include <array>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Session Season — timbral phenological state
 //==============================================================================
 enum class Season : int
 {
-    Spring = 0,   // Reawakening — slightly uneven, finding grip
-    Summer = 1,   // Peak expression — lush, warm, deep
-    Fall   = 2,   // Rich but strained — deeper tones, some roll-off
-    Winter = 3    // Dormant — slow, cold, interior
+    Spring = 0, // Reawakening — slightly uneven, finding grip
+    Summer = 1, // Peak expression — lush, warm, deep
+    Fall = 2,   // Rich but strained — deeper tones, some roll-off
+    Winter = 3  // Dormant — slow, cold, interior
 };
 
 //==============================================================================
@@ -50,26 +51,26 @@ struct GardenAccumulators
     //--------------------------------------------------------------------------
     // State — public for cross-engine reading and UI display
     //--------------------------------------------------------------------------
-    float W = 0.0f;       // Warmth [0, 1]
-    float A = 0.0f;       // Aggression [0, 1]
-    float D = 0.3f;       // Dormancy [0, 1] — starts above zero (cold start)
+    float W = 0.0f; // Warmth [0, 1]
+    float A = 0.0f; // Aggression [0, 1]
+    float D = 0.3f; // Dormancy [0, 1] — starts above zero (cold start)
     Season season = Season::Spring;
 
     // Session time tracking
-    double sessionTime = 0.0;   // seconds since prepare()
-    double lastNoteTime = 0.0;  // seconds of last note-on
+    double sessionTime = 0.0;  // seconds since prepare()
+    double lastNoteTime = 0.0; // seconds of last note-on
 
     //--------------------------------------------------------------------------
     // Configuration — set once per engine, tuned per-engine character
     //--------------------------------------------------------------------------
-    float wFloor       = 0.05f;   // Warmth never decays below this
-    float wRiseRate     = 0.002f;  // How fast W rises per note (velocity-scaled)
-    float wDecayRate    = 0.0005f; // How fast W decays toward floor during silence
-    float aThreshold    = 0.4f;    // Velocity threshold for aggression accumulation
-    float aRiseRate     = 0.003f;  // How fast A rises
-    float aDecayRate    = 0.001f;  // Base decay rate (applied via sqrt curve)
-    float dRiseRate     = 0.0008f; // How fast D accumulates during silence
-    float dDecayRate    = 0.01f;   // How fast D decays on note activity
+    float wFloor = 0.05f;       // Warmth never decays below this
+    float wRiseRate = 0.002f;   // How fast W rises per note (velocity-scaled)
+    float wDecayRate = 0.0005f; // How fast W decays toward floor during silence
+    float aThreshold = 0.4f;    // Velocity threshold for aggression accumulation
+    float aRiseRate = 0.003f;   // How fast A rises
+    float aDecayRate = 0.001f;  // Base decay rate (applied via sqrt curve)
+    float dRiseRate = 0.0008f;  // How fast D accumulates during silence
+    float dDecayRate = 0.01f;   // How fast D decays on note activity
 
     //--------------------------------------------------------------------------
     // Per-block update — call once per renderBlock()
@@ -80,8 +81,7 @@ struct GardenAccumulators
     /// @param activeVoices  Number of currently sounding voices
     /// @param avgVelocity   Average velocity of active voices [0, 1]
     /// @param noteOnCount   Number of note-ons in this block
-    void update (float blockSizeSec, int activeVoices, float avgVelocity,
-                 int noteOnCount) noexcept
+    void update(float blockSizeSec, int activeVoices, float avgVelocity, int noteOnCount) noexcept
     {
         sessionTime += blockSizeSec;
         bool hasActivity = activeVoices > 0;
@@ -89,14 +89,14 @@ struct GardenAccumulators
         //-- Warmth (W) --
         if (hasActivity)
         {
-            float voiceFactor = static_cast<float> (activeVoices) * 0.25f;
+            float voiceFactor = static_cast<float>(activeVoices) * 0.25f;
             W += wRiseRate * avgVelocity * voiceFactor * blockSizeSec * 60.0f;
         }
         else
         {
             W -= wDecayRate * (W - wFloor) * blockSizeSec * 60.0f;
         }
-        W = std::clamp (W, wFloor, 1.0f);
+        W = std::clamp(W, wFloor, 1.0f);
 
         //-- Aggression (A) --
         if (hasActivity && avgVelocity > aThreshold)
@@ -107,23 +107,23 @@ struct GardenAccumulators
         else
         {
             // Square-root decay — stress lingers, then releases
-            float silenceSec = static_cast<float> (sessionTime - lastNoteTime);
-            float sqrtDecay = std::sqrt (std::max (silenceSec, 0.01f));
+            float silenceSec = static_cast<float>(sessionTime - lastNoteTime);
+            float sqrtDecay = std::sqrt(std::max(silenceSec, 0.01f));
             A -= aDecayRate * sqrtDecay * blockSizeSec * 60.0f;
         }
-        A = std::clamp (A, 0.0f, 1.0f);
+        A = std::clamp(A, 0.0f, 1.0f);
 
         //-- Dormancy (D) --
         if (hasActivity)
         {
-            D -= dDecayRate * static_cast<float> (activeVoices) * blockSizeSec * 60.0f;
+            D -= dDecayRate * static_cast<float>(activeVoices) * blockSizeSec * 60.0f;
         }
         else
         {
-            float silenceSec = static_cast<float> (sessionTime - lastNoteTime);
+            float silenceSec = static_cast<float>(sessionTime - lastNoteTime);
             D += dRiseRate * silenceSec * blockSizeSec * 60.0f;
         }
-        D = std::clamp (D, 0.0f, 1.0f);
+        D = std::clamp(D, 0.0f, 1.0f);
 
         //-- Note-on tracking --
         if (noteOnCount > 0)
@@ -180,10 +180,14 @@ struct GardenAccumulators
     {
         switch (season)
         {
-            case Season::Spring: return 0.3f;   // bright, new
-            case Season::Summer: return 0.0f;    // full, neutral
-            case Season::Fall:   return -0.2f;   // warm, rolled off
-            case Season::Winter: return -0.5f;   // cold, dark
+        case Season::Spring:
+            return 0.3f; // bright, new
+        case Season::Summer:
+            return 0.0f; // full, neutral
+        case Season::Fall:
+            return -0.2f; // warm, rolled off
+        case Season::Winter:
+            return -0.5f; // cold, dark
         }
         return 0.0f;
     }
@@ -220,22 +224,23 @@ struct MycorrhizalChannel
 {
     static constexpr int kMaxEvents = 32;
 
-    void configure (float conductanceVal, float delaySec) noexcept
+    void configure(float conductanceVal, float delaySec) noexcept
     {
         conductance = conductanceVal;
         delaySeconds = delaySec;
     }
 
-    void send (float stressValue, double currentTime) noexcept
+    void send(float stressValue, double currentTime) noexcept
     {
-        if (std::fabs (stressValue) < 1e-6f) return;
-        events[writeIdx] = { stressValue * conductance,
-                             currentTime + delaySeconds };
+        if (std::fabs(stressValue) < 1e-6f)
+            return;
+        events[writeIdx] = {stressValue * conductance, currentTime + delaySeconds};
         writeIdx = (writeIdx + 1) & (kMaxEvents - 1);
-        if (count < kMaxEvents) count++;
+        if (count < kMaxEvents)
+            count++;
     }
 
-    float receive (double currentTime) noexcept
+    float receive(double currentTime) noexcept
     {
         float total = 0.0f;
         for (int i = 0; i < count; ++i)
@@ -243,7 +248,7 @@ struct MycorrhizalChannel
             if (events[i].deliveryTime <= currentTime && events[i].value != 0.0f)
             {
                 total += events[i].value;
-                events[i].value = 0.0f;  // consumed
+                events[i].value = 0.0f; // consumed
             }
         }
         return total;
@@ -251,7 +256,8 @@ struct MycorrhizalChannel
 
     void reset() noexcept
     {
-        for (auto& e : events) e = {};
+        for (auto& e : events)
+            e = {};
         writeIdx = 0;
         count = 0;
     }
@@ -260,7 +266,7 @@ struct MycorrhizalChannel
     float delaySeconds = 4.0f;
 
 private:
-    std::array<MycorrhizalEvent, kMaxEvents> events {};
+    std::array<MycorrhizalEvent, kMaxEvents> events{};
     int writeIdx = 0;
     int count = 0;
 };
@@ -275,58 +281,59 @@ struct GardenMycorrhizalNetwork
 {
     static constexpr int kNumChannels = 6;
 
-    void configure (float conductance, float delaySec) noexcept
+    void configure(float conductance, float delaySec) noexcept
     {
         for (auto& ch : channels)
-            ch.configure (conductance, delaySec);
+            ch.configure(conductance, delaySec);
     }
 
     /// Send stress from voice `from` to all connected voices.
-    void sendStress (int fromVoice, float stressValue, double currentTime) noexcept
+    void sendStress(int fromVoice, float stressValue, double currentTime) noexcept
     {
         for (int i = 0; i < kNumChannels; ++i)
         {
             // Channel i connects a specific pair; broadcast from fromVoice
             // to all channels that touch it. For 4 voices, the mapping is:
             // ch0: 0↔1, ch1: 0↔2, ch2: 0↔3, ch3: 1↔2, ch4: 1↔3, ch5: 2↔3
-            int a = channelPairA (i);
-            int b = channelPairB (i);
+            int a = channelPairA(i);
+            int b = channelPairB(i);
             if (a == fromVoice || b == fromVoice)
-                channels[i].send (stressValue, currentTime);
+                channels[i].send(stressValue, currentTime);
         }
     }
 
     /// Receive accumulated stress for voice `toVoice`.
-    float receiveStress (int toVoice, double currentTime) noexcept
+    float receiveStress(int toVoice, double currentTime) noexcept
     {
         float total = 0.0f;
         for (int i = 0; i < kNumChannels; ++i)
         {
-            int a = channelPairA (i);
-            int b = channelPairB (i);
+            int a = channelPairA(i);
+            int b = channelPairB(i);
             if (a == toVoice || b == toVoice)
-                total += channels[i].receive (currentTime);
+                total += channels[i].receive(currentTime);
         }
         return total;
     }
 
     void reset() noexcept
     {
-        for (auto& ch : channels) ch.reset();
+        for (auto& ch : channels)
+            ch.reset();
     }
 
 private:
     std::array<MycorrhizalChannel, kNumChannels> channels;
 
     // Pair mapping for C(4,2) = 6 pairs
-    static constexpr int channelPairA (int ch) noexcept
+    static constexpr int channelPairA(int ch) noexcept
     {
-        constexpr int a[] = { 0, 0, 0, 1, 1, 2 };
+        constexpr int a[] = {0, 0, 0, 1, 1, 2};
         return a[ch];
     }
-    static constexpr int channelPairB (int ch) noexcept
+    static constexpr int channelPairB(int ch) noexcept
     {
-        constexpr int b[] = { 1, 2, 3, 2, 3, 3 };
+        constexpr int b[] = {1, 2, 3, 2, 3, 3};
         return b[ch];
     }
 };

@@ -18,10 +18,12 @@
 
 // PERF-1: fast tanh — Pade [3/3] approximation, error < 0.001 for |x| < 4.
 // Shared by OxytocinThermal and OxytocinDrive.
-static inline float fastTanh (float x) noexcept
+static inline float fastTanh(float x) noexcept
 {
-    if (x < -3.0f) return -1.0f;
-    if (x >  3.0f) return  1.0f;
+    if (x < -3.0f)
+        return -1.0f;
+    if (x > 3.0f)
+        return 1.0f;
     float x2 = x * x;
     return x * (27.0f + x2) / (27.0f + 9.0f * x2);
 }
@@ -31,16 +33,16 @@ class OxytocinThermal
 public:
     OxytocinThermal() = default;
 
-    void prepare (double sampleRate) noexcept
+    void prepare(double sampleRate) noexcept
     {
-        jassert (sampleRate > 0.0);  // P1-7
+        jassert(sampleRate > 0.0); // P1-7
         sr = sampleRate;
         // Fix 4 (FATHOM): envelope follower time constant — ~20 ms attack / ~200 ms release.
         // Computed from sample rate, never hardcoded.
-        signalEnvAttackCoeff  = std::exp (-1.0f / (static_cast<float> (sampleRate) * 0.020f));
-        signalEnvReleaseCoeff = std::exp (-1.0f / (static_cast<float> (sampleRate) * 0.200f));
+        signalEnvAttackCoeff = std::exp(-1.0f / (static_cast<float>(sampleRate) * 0.020f));
+        signalEnvReleaseCoeff = std::exp(-1.0f / (static_cast<float>(sampleRate) * 0.200f));
         reset();
-        lastWarmthRate = -1.0f;   // force coefficient recompute on first call
+        lastWarmthRate = -1.0f; // force coefficient recompute on first call
     }
 
     /// P1-5: reset() method so noteOn() can clear thermal state on voice steal.
@@ -48,8 +50,8 @@ public:
     {
         stage1 = stage2 = stage3 = 0.0f;
         wobblePhase = 0.0f;
-        signalEnvLevel = 0.0f;   // Fix 4: clear envelope follower on steal
-        lastWarmthRate = -1.0f;  // force coefficient recompute after reset
+        signalEnvLevel = 0.0f;  // Fix 4: clear envelope follower on steal
+        lastWarmthRate = -1.0f; // force coefficient recompute after reset
         // Cached load-adjusted coefficients will be recomputed by the next
         // updateWarmth() call, so no stale values survive across voice steals.
         cachedC1f = cachedC2f = cachedC3f = 0.0f;
@@ -57,18 +59,18 @@ public:
 
     /// Call once per block with the current intimacy level and warmth rate.
     /// Returns the current warmth value (used by the voice for cross-modulation).
-    float updateWarmth (float intimacy, float warmthRate, float /*blockTime*/) noexcept
+    float updateWarmth(float intimacy, float warmthRate, float /*blockTime*/) noexcept
     {
         // Cache block-rate per-sample IIR coefficients.
         if (warmthRate != lastWarmthRate)
         {
-            float tau1 = std::max (0.001f, warmthRate * 0.3f);
-            float tau2 = std::max (0.001f, warmthRate * 0.6f);
-            float tau3 = std::max (0.001f, warmthRate * 1.0f);
+            float tau1 = std::max(0.001f, warmthRate * 0.3f);
+            float tau2 = std::max(0.001f, warmthRate * 0.6f);
+            float tau3 = std::max(0.001f, warmthRate * 1.0f);
 
-            coeff1 = std::exp (-1.0f / (static_cast<float> (sr) * tau1));
-            coeff2 = std::exp (-1.0f / (static_cast<float> (sr) * tau2));
-            coeff3 = std::exp (-1.0f / (static_cast<float> (sr) * tau3));
+            coeff1 = std::exp(-1.0f / (static_cast<float>(sr) * tau1));
+            coeff2 = std::exp(-1.0f / (static_cast<float>(sr) * tau2));
+            coeff3 = std::exp(-1.0f / (static_cast<float>(sr) * tau3));
             lastWarmthRate = warmthRate;
         }
 
@@ -82,13 +84,13 @@ public:
         // 3 × std::pow() calls per sample (= 24 pow/sample at 8 voices) with 3 pow
         // calls per block, which is ~1000× cheaper at a 128-sample block size.
         {
-            float loadMult = 1.0f + signalEnvLevel * 2.0f;  // [1.0 .. 3.0]
+            float loadMult = 1.0f + signalEnvLevel * 2.0f; // [1.0 .. 3.0]
             if (loadMult > 1.001f)
             {
                 float invLoad = 1.0f / loadMult;
-                cachedC1f = std::pow (coeff1, invLoad);
-                cachedC2f = std::pow (coeff2, invLoad);
-                cachedC3f = std::pow (coeff3, invLoad);
+                cachedC1f = std::pow(coeff1, invLoad);
+                cachedC2f = std::pow(coeff2, invLoad);
+                cachedC3f = std::pow(coeff3, invLoad);
             }
             else
             {
@@ -104,7 +106,7 @@ public:
     }
 
     /// Process a single audio sample.  Call after updateWarmth() for the block.
-    float processSample (float input, float circuitAge) noexcept
+    float processSample(float input, float circuitAge) noexcept
     {
         // Signal-dependent thermal acceleration — envelope follower only.
         // The per-sample cost here is just comparisons, multiplications, and
@@ -113,20 +115,20 @@ public:
         // updateWarmth(), not here.
         {
             // Peak envelope follower: fast attack, slow release.
-            float absIn = std::abs (input);
+            float absIn = std::abs(input);
             if (absIn > signalEnvLevel)
                 signalEnvLevel = absIn + (signalEnvLevel - absIn) * signalEnvAttackCoeff;
             else
                 signalEnvLevel = signalEnvLevel * signalEnvReleaseCoeff;
 
-            signalEnvLevel = std::clamp (signalEnvLevel, 0.0f, 1.0f);
+            signalEnvLevel = std::clamp(signalEnvLevel, 0.0f, 1.0f);
 
             // Advance warmth stages using block-rate-precomputed coefficients.
             // cachedC1f/2f/3f are set once per block by updateWarmth() — no
             // std::pow() here.
             stage1 = targetIntimacy + (stage1 - targetIntimacy) * cachedC1f;
-            stage2 = stage1          + (stage2 - stage1)         * cachedC2f;
-            stage3 = stage2          + (stage3 - stage2)         * cachedC3f;
+            stage2 = stage1 + (stage2 - stage1) * cachedC2f;
+            stage3 = stage2 + (stage3 - stage2) * cachedC3f;
         }
 
         // P1-4: denormal guards on warmth stage accumulators
@@ -135,26 +137,26 @@ public:
         stage2 += kDenorm;
         stage3 += kDenorm;
 
-        const float warmth = stage3;  // 0..1
+        const float warmth = stage3; // 0..1
 
         // NTC model: warm signal = tanh saturation
         // PERF-1: fastTanh replaces std::tanh (Pade [3/3] approximation)
-        const float saturated = fastTanh (input * (1.0f + warmth * 2.5f)) * 0.7f;
-        const float clean     = input;
+        const float saturated = fastTanh(input * (1.0f + warmth * 2.5f)) * 0.7f;
+        const float clean = input;
 
         float output = clean * (1.0f - warmth * 0.4f) + saturated * (warmth * 0.4f);
 
         // Circuit-age pitch wobble: ±3 cents * age * sin(0.3 Hz)
         if (circuitAge > 0.0f)
         {
-            wobblePhase += static_cast<float> (juce::MathConstants<double>::twoPi * 0.3 / sr);
+            wobblePhase += static_cast<float>(juce::MathConstants<double>::twoPi * 0.3 / sr);
             if (wobblePhase > juce::MathConstants<float>::twoPi)
                 wobblePhase -= juce::MathConstants<float>::twoPi;
 
             // Pitch wobble is applied at the signal level as a subtle AM
             // (a true pitch wobble would require a delay line; this is an
             //  affordable approximation for the "motor flutter" aesthetic)
-            float wobble = 1.0f + circuitAge * 0.0017f * std::sin (wobblePhase);
+            float wobble = 1.0f + circuitAge * 0.0017f * std::sin(wobblePhase);
             output *= wobble;
         }
 
@@ -164,24 +166,24 @@ public:
     float getWarmth() const noexcept { return stage3; }
 
 private:
-    double sr           = 0.0;   // P1-7: default 0
-    float  stage1       = 0.0f;
-    float  stage2       = 0.0f;
-    float  stage3       = 0.0f;
-    float  targetIntimacy = 0.0f;
-    float  coeff1       = 0.0f;
-    float  coeff2       = 0.0f;
-    float  coeff3       = 0.0f;
-    float  lastWarmthRate = -1.0f;
+    double sr = 0.0; // P1-7: default 0
+    float stage1 = 0.0f;
+    float stage2 = 0.0f;
+    float stage3 = 0.0f;
+    float targetIntimacy = 0.0f;
+    float coeff1 = 0.0f;
+    float coeff2 = 0.0f;
+    float coeff3 = 0.0f;
+    float lastWarmthRate = -1.0f;
     // PERF: block-rate cache of signal-load-adjusted NTC coefficients.
     // Precomputed in updateWarmth() — eliminates 3 std::pow() calls per sample.
-    float  cachedC1f    = 0.0f;
-    float  cachedC2f    = 0.0f;
-    float  cachedC3f    = 0.0f;
-    float  wobblePhase  = 0.0f;
+    float cachedC1f = 0.0f;
+    float cachedC2f = 0.0f;
+    float cachedC3f = 0.0f;
+    float wobblePhase = 0.0f;
 
     // Fix 4 (FATHOM): signal-level envelope follower for NTC thermal acceleration
-    float  signalEnvLevel        = 0.0f;   // current signal envelope estimate [0..1]
-    float  signalEnvAttackCoeff  = 0.0f;   // ~20 ms attack  (computed from sr in prepare())
-    float  signalEnvReleaseCoeff = 0.0f;   // ~200 ms release (computed from sr in prepare())
+    float signalEnvLevel = 0.0f;        // current signal envelope estimate [0..1]
+    float signalEnvAttackCoeff = 0.0f;  // ~20 ms attack  (computed from sr in prepare())
+    float signalEnvReleaseCoeff = 0.0f; // ~200 ms release (computed from sr in prepare())
 };

@@ -34,14 +34,14 @@
 #include "../GalleryColors.h"
 #include "CockpitHost.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 class MiniCouplingGraph : public juce::Component, private juce::Timer
 {
 public:
-    explicit MiniCouplingGraph(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit MiniCouplingGraph(XOceanusProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through; read-only diagram
 
@@ -78,9 +78,8 @@ public:
         {
             auto* eng = processor.getEngine(i);
             slotHasEngine[static_cast<size_t>(i)] = (eng != nullptr);
-            slotAccent[static_cast<size_t>(i)] = eng
-                ? eng->getAccentColour()
-                : GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.30f);
+            slotAccent[static_cast<size_t>(i)] =
+                eng ? eng->getAccentColour() : GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.30f);
         }
 
         // Coupling routes — collapse to unique (lo, hi) pairs, same as CouplingArcOverlay.
@@ -91,12 +90,13 @@ public:
             return;
 
         // Temporary collapse table: max C(5,2) = 10 unique pairs.
-        struct PairEntry {
-            int  lo = -1, hi = -1;
+        struct PairEntry
+        {
+            int lo = -1, hi = -1;
             float amount = 0.0f;
             CouplingType type = CouplingType::AmpToFilter;
         };
-        std::array<PairEntry, 12> table {};
+        std::array<PairEntry, 12> table{};
         int count = 0;
 
         for (const auto& route : routes)
@@ -110,14 +110,17 @@ public:
 
             int lo = juce::jmin(route.sourceSlot, route.destSlot);
             int hi = juce::jmax(route.sourceSlot, route.destSlot);
-            if (lo == hi) continue;
+            if (lo == hi)
+                continue;
 
             // Find existing entry for this pair.
             int found = -1;
             for (int k = 0; k < count; ++k)
-                if (table[static_cast<size_t>(k)].lo == lo &&
-                    table[static_cast<size_t>(k)].hi == hi)
-                    { found = k; break; }
+                if (table[static_cast<size_t>(k)].lo == lo && table[static_cast<size_t>(k)].hi == hi)
+                {
+                    found = k;
+                    break;
+                }
 
             if (found < 0 && count < 12)
             {
@@ -129,7 +132,7 @@ public:
             if (found >= 0 && route.amount > table[static_cast<size_t>(found)].amount)
             {
                 table[static_cast<size_t>(found)].amount = route.amount;
-                table[static_cast<size_t>(found)].type   = route.type;
+                table[static_cast<size_t>(found)].type = route.type;
             }
         }
 
@@ -138,10 +141,10 @@ public:
         {
             const auto& e = table[static_cast<size_t>(k)];
             ArcData ad;
-            ad.src    = e.lo;
-            ad.dst    = e.hi;
+            ad.src = e.lo;
+            ad.dst = e.hi;
             ad.amount = e.amount;
-            ad.color  = colorForType(e.type);
+            ad.color = colorForType(e.type);
             arcs.push_back(ad);
         }
 
@@ -171,7 +174,8 @@ public:
         float opacity = 1.0f;
         if (auto* host = CockpitHost::find(this))
             opacity = host->getCockpitOpacity();
-        if (opacity < 0.05f) return; // B041 performance optimization
+        if (opacity < 0.05f)
+            return; // B041 performance optimization
         g.setOpacity(opacity);
 
         using namespace GalleryColors;
@@ -180,8 +184,8 @@ public:
         g.setColour(GalleryColors::border());
         g.fillRect(0.0f, 0.0f, (float)getWidth(), 1.0f);
 
-        const float w    = static_cast<float>(getWidth());
-        const float nodeX = w * 0.5f;  // nodes centred horizontally
+        const float w = static_cast<float>(getWidth());
+        const float nodeX = w * 0.5f; // nodes centred horizontally
 
         //-- Pass 1: arcs (drawn behind nodes) ---------------------------------
         if (!arcs.empty())
@@ -200,10 +204,10 @@ public:
                 // Bézier control points bow 40px to the LEFT (away from right panel),
                 // matching the direction used by CouplingArcOverlay (which bows 60px).
                 const float midX = nodeX - 40.0f;
-                const juce::Point<float> from (nodeX, y0);
-                const juce::Point<float> to   (nodeX, y1);
-                const juce::Point<float> cp1  (midX,  y0);
-                const juce::Point<float> cp2  (midX,  y1);
+                const juce::Point<float> from(nodeX, y0);
+                const juce::Point<float> to(nodeX, y1);
+                const juce::Point<float> cp1(midX, y0);
+                const juce::Point<float> cp2(midX, y1);
 
                 juce::Path path;
                 path.startNewSubPath(from);
@@ -256,22 +260,23 @@ private:
     {
         switch (t)
         {
-            case CouplingType::AudioToFM:
-            case CouplingType::AudioToRing:
-            case CouplingType::AudioToWavetable:
-            case CouplingType::AudioToBuffer:
-                return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
+        case CouplingType::AudioToFM:
+        case CouplingType::AudioToRing:
+        case CouplingType::AudioToWavetable:
+        case CouplingType::AudioToBuffer:
+            return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
 
-            case CouplingType::KnotTopology:
-                return juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
+        case CouplingType::KnotTopology:
+            return juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
 
-            default:
-                return juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
+        default:
+            return juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
         }
     }
 
     //--------------------------------------------------------------------------
-    struct ArcData {
+    struct ArcData
+    {
         int src = 0, dst = 0;
         float amount = 0.0f;
         juce::Colour color;
@@ -281,11 +286,11 @@ private:
 
     // Vertical centres for the 5 slot nodes (local Y in this component's space).
     // Updated via setNodeCenter(); X is always centred on the component width.
-    std::array<float, MegaCouplingMatrix::MaxSlots> nodeY {};
+    std::array<float, MegaCouplingMatrix::MaxSlots> nodeY{};
 
     // Per-slot state (updated in refresh()).
-    std::array<bool,         MegaCouplingMatrix::MaxSlots> slotHasEngine {};
-    std::array<juce::Colour, MegaCouplingMatrix::MaxSlots> slotAccent    {};
+    std::array<bool, MegaCouplingMatrix::MaxSlots> slotHasEngine{};
+    std::array<juce::Colour, MegaCouplingMatrix::MaxSlots> slotAccent{};
 
     // Collapsed arc list (at most 10 unique pairs for 5 slots).
     std::vector<ArcData> arcs;

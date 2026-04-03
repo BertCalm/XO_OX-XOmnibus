@@ -14,7 +14,8 @@
 #include <cstdint>
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -61,9 +62,18 @@ namespace xoceanus {
 // PolyBLEP anti-aliasing correction for oscillator discontinuities.
 // t = current phase (0–1), dt = phase increment (freq/sampleRate).
 // ---------------------------------------------------------------------------
-inline float orgPolyBLEP(float t, float dt) {
-    if (t < dt) { t /= dt; return t + t - t * t - 1.0f; }
-    if (t > 1.0f - dt) { t = (t - 1.0f) / dt; return t * t + t + t + 1.0f; }
+inline float orgPolyBLEP(float t, float dt)
+{
+    if (t < dt)
+    {
+        t /= dt;
+        return t + t - t * t - 1.0f;
+    }
+    if (t > 1.0f - dt)
+    {
+        t = (t - 1.0f) / dt;
+        return t * t + t + t + 1.0f;
+    }
     return 0.0f;
 }
 
@@ -71,39 +81,48 @@ inline float orgPolyBLEP(float t, float dt) {
 // OrgScopeHistory — circular buffer of recent automaton 16-bit states.
 // Used to compute a moving average of cell outputs over the last N generations.
 // ---------------------------------------------------------------------------
-struct OrgScopeHistory {
+struct OrgScopeHistory
+{
     static constexpr int kMaxScope = 16;
     uint16_t buf[kMaxScope] = {};
     int head = 0;
     int count = 0;
 
-    void reset() {
+    void reset()
+    {
         std::fill(std::begin(buf), std::end(buf), uint16_t(0));
         head = 0;
         count = 0;
     }
 
-    void push(uint16_t state) {
+    void push(uint16_t state)
+    {
         buf[head] = state;
         head = (head + 1) % kMaxScope;
-        if (count < kMaxScope) ++count;
+        if (count < kMaxScope)
+            ++count;
     }
 
     // Returns the average population of bits in positions [startCell, startCell+3]
     // across the last 'scope' generations. Result is 0–1.
-    float averageBits(int startCell, int scope) const {
-        if (count == 0 || scope <= 0) return 0.f;
+    float averageBits(int startCell, int scope) const
+    {
+        if (count == 0 || scope <= 0)
+            return 0.f;
         int n = std::min(scope, count);
         float sum = 0.f;
         // Walk backwards through ring buffer (most recent first)
         int idx = head;
-        for (int gen = 0; gen < n; ++gen) {
+        for (int gen = 0; gen < n; ++gen)
+        {
             idx = (idx - 1 + kMaxScope) % kMaxScope;
             // Sum 4 bits at startCell..startCell+3
             uint16_t s = buf[idx];
-            for (int b = 0; b < 4; ++b) {
+            for (int b = 0; b < 4; ++b)
+            {
                 int bit = (startCell + b) & 15;
-                if ((s >> bit) & 1u) sum += 1.f;
+                if ((s >> bit) & 1u)
+                    sum += 1.f;
             }
         }
         return sum / (float)(n * 4); // normalised 0–1
@@ -114,19 +133,22 @@ struct OrgScopeHistory {
 // OrgSawOsc — PolyBLEP anti-aliased saw wave oscillator
 // Phase accumulates 0–1, output is (phase*2-1) with PolyBLEP at wrap.
 // ---------------------------------------------------------------------------
-struct OrgSawOsc {
+struct OrgSawOsc
+{
     float phase = 0.f;
-    float sr    = 44100.f;
+    float sr = 44100.f;
 
     void prepare(double s) { sr = (float)s; }
-    void reset()           { phase = 0.f; }
+    void reset() { phase = 0.f; }
 
-    float tick(float freq) {
+    float tick(float freq)
+    {
         float dt = freq / sr;
         phase += dt;
-        if (phase >= 1.f) phase -= 1.f;
+        if (phase >= 1.f)
+            phase -= 1.f;
         float out = phase * 2.f - 1.f; // naive saw: -1..+1
-        out -= orgPolyBLEP(phase, dt);  // anti-alias at phase wrap (0/1)
+        out -= orgPolyBLEP(phase, dt); // anti-alias at phase wrap (0/1)
         return out;
     }
 };
@@ -134,19 +156,22 @@ struct OrgSawOsc {
 // ---------------------------------------------------------------------------
 // OrgSubOsc — PolyBLEP anti-aliased square sub oscillator one octave below
 // ---------------------------------------------------------------------------
-struct OrgSubOsc {
+struct OrgSubOsc
+{
     float phase = 0.f;
-    float sr    = 44100.f;
+    float sr = 44100.f;
 
     void prepare(double s) { sr = (float)s; }
-    void reset()           { phase = 0.f; }
+    void reset() { phase = 0.f; }
 
-    float tick(float freq) {
+    float tick(float freq)
+    {
         float dt = (freq * 0.5f) / sr; // sub = half frequency
         phase += dt;
-        if (phase >= 1.f) phase -= 1.f;
-        float out = (phase < 0.5f) ? 1.f : -1.f; // naive square
-        out += orgPolyBLEP(phase, dt);             // anti-alias at phase 0/1
+        if (phase >= 1.f)
+            phase -= 1.f;
+        float out = (phase < 0.5f) ? 1.f : -1.f;          // naive square
+        out += orgPolyBLEP(phase, dt);                    // anti-alias at phase 0/1
         out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
         return out;
     }
@@ -155,19 +180,22 @@ struct OrgSubOsc {
 // ---------------------------------------------------------------------------
 // OrgSquareOsc — PolyBLEP anti-aliased square wave at fundamental frequency
 // ---------------------------------------------------------------------------
-struct OrgSquareOsc {
+struct OrgSquareOsc
+{
     float phase = 0.f;
-    float sr    = 44100.f;
+    float sr = 44100.f;
 
     void prepare(double s) { sr = (float)s; }
-    void reset()           { phase = 0.f; }
+    void reset() { phase = 0.f; }
 
-    float tick(float freq) {
+    float tick(float freq)
+    {
         float dt = freq / sr;
         phase += dt;
-        if (phase >= 1.f) phase -= 1.f;
-        float out = (phase < 0.5f) ? 1.f : -1.f; // naive square
-        out += orgPolyBLEP(phase, dt);             // anti-alias at phase 0/1
+        if (phase >= 1.f)
+            phase -= 1.f;
+        float out = (phase < 0.5f) ? 1.f : -1.f;          // naive square
+        out += orgPolyBLEP(phase, dt);                    // anti-alias at phase 0/1
         out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
         return out;
     }
@@ -176,16 +204,19 @@ struct OrgSquareOsc {
 // ---------------------------------------------------------------------------
 // OrgTriOsc — triangle wave at fundamental frequency
 // ---------------------------------------------------------------------------
-struct OrgTriOsc {
+struct OrgTriOsc
+{
     float phase = 0.f;
-    float sr    = 44100.f;
+    float sr = 44100.f;
 
     void prepare(double s) { sr = (float)s; }
-    void reset()           { phase = 0.f; }
+    void reset() { phase = 0.f; }
 
-    float tick(float freq) {
+    float tick(float freq)
+    {
         phase += freq / sr;
-        if (phase >= 1.f) phase -= 1.f;
+        if (phase >= 1.f)
+            phase -= 1.f;
         // Triangle: 0→1 first half, 1→0 second half, scaled to -1..+1
         float t = (phase < 0.5f) ? (phase * 2.f) : (2.f - phase * 2.f);
         return t * 2.f - 1.f;
@@ -206,13 +237,14 @@ struct OrgTriOsc {
 // OrgReverb — minimal allpass diffusion reverb (emergence shimmer)
 // Reference delay lengths tuned at 44100 Hz — scaled at runtime for any sample rate.
 // ---------------------------------------------------------------------------
-struct OrgReverb {
+struct OrgReverb
+{
     // Reference lengths at 44100 Hz (do not change — these define the reverb character)
     static constexpr double kRefSampleRate = 44100.0;
-    static constexpr int kAP1LenRef = 347,  kAP2LenRef = 673;
+    static constexpr int kAP1LenRef = 347, kAP2LenRef = 673;
     static constexpr int kAP3LenRef = 1021, kAP4LenRef = 1471;
-    static constexpr int kComb1Ref  = 1741, kComb2Ref  = 1951;
-    static constexpr int kComb3Ref  = 2129, kComb4Ref  = 2311;
+    static constexpr int kComb1Ref = 1741, kComb2Ref = 1951;
+    static constexpr int kComb3Ref = 2129, kComb4Ref = 2311;
 
     // Runtime-scaled lengths (set in prepare())
     int ap1Len = kAP1LenRef, ap2Len = kAP2LenRef;
@@ -230,47 +262,72 @@ struct OrgReverb {
     std::vector<float> c3L, c3R;
     std::vector<float> c4L, c4R;
 
-    int p1L=0,p1R=0,p2L=0,p2R=0,p3L=0,p3R=0,p4L=0,p4R=0;
-    int pc1L=0,pc1R=0,pc2L=0,pc2R=0,pc3L=0,pc3R=0,pc4L=0,pc4R=0;
-    float cs1L=0.f,cs1R=0.f,cs2L=0.f,cs2R=0.f;
-    float cs3L=0.f,cs3R=0.f,cs4L=0.f,cs4R=0.f;
+    int p1L = 0, p1R = 0, p2L = 0, p2R = 0, p3L = 0, p3R = 0, p4L = 0, p4R = 0;
+    int pc1L = 0, pc1R = 0, pc2L = 0, pc2R = 0, pc3L = 0, pc3R = 0, pc4L = 0, pc4R = 0;
+    float cs1L = 0.f, cs1R = 0.f, cs2L = 0.f, cs2R = 0.f;
+    float cs3L = 0.f, cs3R = 0.f, cs4L = 0.f, cs4R = 0.f;
 
-    void reset() {
-        auto clr = [](std::vector<float>& v){ std::fill(v.begin(), v.end(), 0.f); };
-        clr(ap1L); clr(ap1R); clr(ap2L); clr(ap2R);
-        clr(ap3L); clr(ap3R); clr(ap4L); clr(ap4R);
-        clr(c1L);  clr(c1R);  clr(c2L);  clr(c2R);
-        clr(c3L);  clr(c3R);  clr(c4L);  clr(c4R);
-        p1L=p1R=p2L=p2R=p3L=p3R=p4L=p4R=0;
-        pc1L=pc1R=pc2L=pc2R=pc3L=pc3R=pc4L=pc4R=0;
-        cs1L=cs1R=cs2L=cs2R=cs3L=cs3R=cs4L=cs4R=0.f;
+    void reset()
+    {
+        auto clr = [](std::vector<float>& v) { std::fill(v.begin(), v.end(), 0.f); };
+        clr(ap1L);
+        clr(ap1R);
+        clr(ap2L);
+        clr(ap2R);
+        clr(ap3L);
+        clr(ap3R);
+        clr(ap4L);
+        clr(ap4R);
+        clr(c1L);
+        clr(c1R);
+        clr(c2L);
+        clr(c2R);
+        clr(c3L);
+        clr(c3R);
+        clr(c4L);
+        clr(c4R);
+        p1L = p1R = p2L = p2R = p3L = p3R = p4L = p4R = 0;
+        pc1L = pc1R = pc2L = pc2R = pc3L = pc3R = pc4L = pc4R = 0;
+        cs1L = cs1R = cs2L = cs2R = cs3L = cs3R = cs4L = cs4R = 0.f;
     }
 
-    void prepare(double sampleRate) {
-        auto scale = [&](int ref) {
-            return static_cast<int>(ref * sampleRate / kRefSampleRate + 0.5);
-        };
-        ap1Len   = scale(kAP1LenRef);  ap2Len   = scale(kAP2LenRef);
-        ap3Len   = scale(kAP3LenRef);  ap4Len   = scale(kAP4LenRef);
-        comb1Len = scale(kComb1Ref);   comb2Len = scale(kComb2Ref);
-        comb3Len = scale(kComb3Ref);   comb4Len = scale(kComb4Ref);
+    void prepare(double sampleRate)
+    {
+        auto scale = [&](int ref) { return static_cast<int>(ref * sampleRate / kRefSampleRate + 0.5); };
+        ap1Len = scale(kAP1LenRef);
+        ap2Len = scale(kAP2LenRef);
+        ap3Len = scale(kAP3LenRef);
+        ap4Len = scale(kAP4LenRef);
+        comb1Len = scale(kComb1Ref);
+        comb2Len = scale(kComb2Ref);
+        comb3Len = scale(kComb3Ref);
+        comb4Len = scale(kComb4Ref);
 
-        ap1L.assign(ap1Len, 0.f);   ap1R.assign(ap1Len, 0.f);
-        ap2L.assign(ap2Len, 0.f);   ap2R.assign(ap2Len, 0.f);
-        ap3L.assign(ap3Len, 0.f);   ap3R.assign(ap3Len, 0.f);
-        ap4L.assign(ap4Len, 0.f);   ap4R.assign(ap4Len, 0.f);
-        c1L.assign(comb1Len, 0.f);  c1R.assign(comb1Len, 0.f);
-        c2L.assign(comb2Len, 0.f);  c2R.assign(comb2Len, 0.f);
-        c3L.assign(comb3Len, 0.f);  c3R.assign(comb3Len, 0.f);
-        c4L.assign(comb4Len, 0.f);  c4R.assign(comb4Len, 0.f);
+        ap1L.assign(ap1Len, 0.f);
+        ap1R.assign(ap1Len, 0.f);
+        ap2L.assign(ap2Len, 0.f);
+        ap2R.assign(ap2Len, 0.f);
+        ap3L.assign(ap3Len, 0.f);
+        ap3R.assign(ap3Len, 0.f);
+        ap4L.assign(ap4Len, 0.f);
+        ap4R.assign(ap4Len, 0.f);
+        c1L.assign(comb1Len, 0.f);
+        c1R.assign(comb1Len, 0.f);
+        c2L.assign(comb2Len, 0.f);
+        c2R.assign(comb2Len, 0.f);
+        c3L.assign(comb3Len, 0.f);
+        c3R.assign(comb3Len, 0.f);
+        c4L.assign(comb4Len, 0.f);
+        c4R.assign(comb4Len, 0.f);
 
-        p1L=p1R=p2L=p2R=p3L=p3R=p4L=p4R=0;
-        pc1L=pc1R=pc2L=pc2R=pc3L=pc3R=pc4L=pc4R=0;
-        cs1L=cs1R=cs2L=cs2R=cs3L=cs3R=cs4L=cs4R=0.f;
+        p1L = p1R = p2L = p2R = p3L = p3R = p4L = p4R = 0;
+        pc1L = pc1R = pc2L = pc2R = pc3L = pc3R = pc4L = pc4R = 0;
+        cs1L = cs1R = cs2L = cs2R = cs3L = cs3R = cs4L = cs4R = 0.f;
     }
 
     // ap: generic allpass node
-    static float runAP(std::vector<float>& buf, int& pos, int len, float g, float in) {
+    static float runAP(std::vector<float>& buf, int& pos, int len, float g, float in)
+    {
         float rd = buf[pos];
         float wr = in + g * rd;
         wr = flushDenormal(wr);
@@ -280,8 +337,8 @@ struct OrgReverb {
     }
 
     // comb with LP damping
-    static float runComb(std::vector<float>& buf, int& pos, float& state,
-                         int len, float fb, float damp, float in) {
+    static float runComb(std::vector<float>& buf, int& pos, float& state, int len, float fb, float damp, float in)
+    {
         float rd = buf[pos];
         state = flushDenormal(rd * (1.f - damp) + state * damp);
         float wr = in + fb * state;
@@ -291,9 +348,10 @@ struct OrgReverb {
         return rd;
     }
 
-    void process(float& inL, float& inR, float mix) {
+    void process(float& inL, float& inR, float mix)
+    {
         float dryL = inL, dryR = inR;
-        float fb   = 0.72f;
+        float fb = 0.72f;
         float damp = 0.25f;
 
         float wL = 0.f, wR = 0.f;
@@ -305,7 +363,8 @@ struct OrgReverb {
         wR += runComb(c3R, pc3R, cs3R, comb3Len, fb, damp, inR);
         wL += runComb(c4L, pc4L, cs4L, comb4Len, fb, damp, inL);
         wR += runComb(c4R, pc4R, cs4R, comb4Len, fb, damp, inR);
-        wL *= 0.25f; wR *= 0.25f;
+        wL *= 0.25f;
+        wR *= 0.25f;
 
         wL = runAP(ap1L, p1L, ap1Len, 0.5f, wL);
         wR = runAP(ap1R, p1R, ap1Len, 0.5f, wR);
@@ -324,9 +383,10 @@ struct OrgReverb {
 //==============================================================================
 // OrganismEngine — the full SynthEngine implementation
 //==============================================================================
-class OrganismEngine : public SynthEngine {
+class OrganismEngine : public SynthEngine
+{
 public:
-    OrganismEngine()  = default;
+    OrganismEngine() = default;
     ~OrganismEngine() = default;
 
     //--------------------------------------------------------------------------
@@ -334,91 +394,64 @@ public:
     //--------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        using P  = juce::ParameterID;
+        using P = juce::ParameterID;
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
         using PB = juce::AudioParameterBool;
-        auto nr  = [](float lo, float hi, float step=0.f) {
-            return juce::NormalisableRange<float>(lo, hi, step);
-        };
+        auto nr = [](float lo, float hi, float step = 0.f) { return juce::NormalisableRange<float>(lo, hi, step); };
 
         // --- Cellular automaton control ---
-        params.push_back(std::make_unique<PF>(P("org_rule",1), "Rule",
-            nr(0.f, 255.f, 1.f), 110.f));
-        params.push_back(std::make_unique<PI>(P("org_seed",1), "Seed",
-            0, 65535, 42));
-        params.push_back(std::make_unique<PF>(P("org_stepRate",1), "Step Rate",
-            nr(0.5f, 32.f), 4.f));
-        params.push_back(std::make_unique<PI>(P("org_scope",1), "Scope",
-            1, 16, 4));
-        params.push_back(std::make_unique<PF>(P("org_mutate",1), "Mutate",
-            nr(0.f, 1.f), 0.f));
-        params.push_back(std::make_unique<PB>(P("org_freeze",1), "Freeze",
-            false));
+        params.push_back(std::make_unique<PF>(P("org_rule", 1), "Rule", nr(0.f, 255.f, 1.f), 110.f));
+        params.push_back(std::make_unique<PI>(P("org_seed", 1), "Seed", 0, 65535, 42));
+        params.push_back(std::make_unique<PF>(P("org_stepRate", 1), "Step Rate", nr(0.5f, 32.f), 4.f));
+        params.push_back(std::make_unique<PI>(P("org_scope", 1), "Scope", 1, 16, 4));
+        params.push_back(std::make_unique<PF>(P("org_mutate", 1), "Mutate", nr(0.f, 1.f), 0.f));
+        params.push_back(std::make_unique<PB>(P("org_freeze", 1), "Freeze", false));
 
         // --- Oscillator ---
-        params.push_back(std::make_unique<PI>(P("org_oscWave",1), "Osc Wave",
-            0, 2, 0)); // 0=saw, 1=square, 2=tri
-        params.push_back(std::make_unique<PF>(P("org_subLevel",1), "Sub Level",
-            nr(0.f, 1.f), 0.35f));
+        params.push_back(std::make_unique<PI>(P("org_oscWave", 1), "Osc Wave", 0, 2, 0)); // 0=saw, 1=square, 2=tri
+        params.push_back(std::make_unique<PF>(P("org_subLevel", 1), "Sub Level", nr(0.f, 1.f), 0.35f));
 
         // --- Filter ---
-        params.push_back(std::make_unique<PF>(P("org_filterCutoff",1), "Filter Cutoff",
-            nr(200.f, 8000.f), 3000.f));
-        params.push_back(std::make_unique<PF>(P("org_filterRes",1), "Filter Resonance",
-            nr(0.f, 0.9f), 0.3f));
+        params.push_back(std::make_unique<PF>(P("org_filterCutoff", 1), "Filter Cutoff", nr(200.f, 8000.f), 3000.f));
+        params.push_back(std::make_unique<PF>(P("org_filterRes", 1), "Filter Resonance", nr(0.f, 0.9f), 0.3f));
 
         // --- Velocity ---
-        params.push_back(std::make_unique<PF>(P("org_velCutoff",1), "Vel Cutoff",
-            nr(0.f, 1.f), 0.5f));
+        params.push_back(std::make_unique<PF>(P("org_velCutoff", 1), "Vel Cutoff", nr(0.f, 1.f), 0.5f));
 
         // --- Amp envelope ---
-        params.push_back(std::make_unique<PF>(P("org_ampAtk",1), "Amp Attack",
-            nr(0.001f, 2.0f), 0.015f));
-        params.push_back(std::make_unique<PF>(P("org_ampDec",1), "Amp Decay",
-            nr(0.05f, 4.0f), 0.35f));
-        params.push_back(std::make_unique<PF>(P("org_ampSus",1), "Amp Sustain",
-            nr(0.f, 1.f), 0.7f));
-        params.push_back(std::make_unique<PF>(P("org_ampRel",1), "Amp Release",
-            nr(0.05f, 5.0f), 0.6f));
+        params.push_back(std::make_unique<PF>(P("org_ampAtk", 1), "Amp Attack", nr(0.001f, 2.0f), 0.015f));
+        params.push_back(std::make_unique<PF>(P("org_ampDec", 1), "Amp Decay", nr(0.05f, 4.0f), 0.35f));
+        params.push_back(std::make_unique<PF>(P("org_ampSus", 1), "Amp Sustain", nr(0.f, 1.f), 0.7f));
+        params.push_back(std::make_unique<PF>(P("org_ampRel", 1), "Amp Release", nr(0.05f, 5.0f), 0.6f));
 
         // --- LFO 1: step rate modulation ---
-        params.push_back(std::make_unique<PF>(P("org_lfo1Rate",1), "LFO1 Rate",
-            nr(0.01f, 10.f), 0.5f));
-        params.push_back(std::make_unique<PF>(P("org_lfo1Depth",1), "LFO1 Depth",
-            nr(0.f, 1.f), 0.2f));
+        params.push_back(std::make_unique<PF>(P("org_lfo1Rate", 1), "LFO1 Rate", nr(0.01f, 10.f), 0.5f));
+        params.push_back(std::make_unique<PF>(P("org_lfo1Depth", 1), "LFO1 Depth", nr(0.f, 1.f), 0.2f));
 
         // --- LFO 2: filter cutoff offset ---
-        params.push_back(std::make_unique<PF>(P("org_lfo2Rate",1), "LFO2 Rate",
-            nr(0.01f, 10.f), 0.3f));
-        params.push_back(std::make_unique<PF>(P("org_lfo2Depth",1), "LFO2 Depth",
-            nr(0.f, 1.f), 0.25f));
+        params.push_back(std::make_unique<PF>(P("org_lfo2Rate", 1), "LFO2 Rate", nr(0.01f, 10.f), 0.3f));
+        params.push_back(std::make_unique<PF>(P("org_lfo2Depth", 1), "LFO2 Depth", nr(0.f, 1.f), 0.25f));
 
         // --- Reverb ---
-        params.push_back(std::make_unique<PF>(P("org_reverbMix",1), "Reverb Mix",
-            nr(0.f, 1.f), 0.2f));
+        params.push_back(std::make_unique<PF>(P("org_reverbMix", 1), "Reverb Mix", nr(0.f, 1.f), 0.2f));
 
         // --- 4 Macros ---
-        params.push_back(std::make_unique<PF>(P("org_macroRule",1), "RULE",
-            nr(0.f, 1.f), 0.25f)); // maps to rule 110 by default
-        params.push_back(std::make_unique<PF>(P("org_macroSeed",1), "SEED",
-            nr(0.f, 1.f), 0.f));
-        params.push_back(std::make_unique<PF>(P("org_macroCoupling",1), "COUPLING",
-            nr(0.f, 1.f), 0.f));
-        params.push_back(std::make_unique<PF>(P("org_macroMutate",1), "MUTATE",
-            nr(0.f, 1.f), 0.f));
+        params.push_back(
+            std::make_unique<PF>(P("org_macroRule", 1), "RULE", nr(0.f, 1.f), 0.25f)); // maps to rule 110 by default
+        params.push_back(std::make_unique<PF>(P("org_macroSeed", 1), "SEED", nr(0.f, 1.f), 0.f));
+        params.push_back(std::make_unique<PF>(P("org_macroCoupling", 1), "COUPLING", nr(0.f, 1.f), 0.f));
+        params.push_back(std::make_unique<PF>(P("org_macroMutate", 1), "MUTATE", nr(0.f, 1.f), 0.f));
     }
 
     //--------------------------------------------------------------------------
     // SynthEngine interface
     //--------------------------------------------------------------------------
-    juce::String   getEngineId()     const override { return "Organism"; }
-    juce::Colour   getAccentColour() const override { return juce::Colour(0xffC6E377); }
-    int            getMaxVoices()    const override { return 1; } // monophonic generative engine
+    juce::String getEngineId() const override { return "Organism"; }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xffC6E377); }
+    int getMaxVoices() const override { return 1; } // monophonic generative engine
 
-    int getActiveVoiceCount() const override {
-        return (noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0;
-    }
+    int getActiveVoiceCount() const override { return (noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0; }
 
     //--------------------------------------------------------------------------
     void prepare(double sampleRate, int maxBlockSize) override
@@ -430,36 +463,36 @@ public:
         triOsc.prepare(sampleRate);
         subOsc.prepare(sampleRate);
         filter.reset();
-        filter.setMode (CytomicSVF::Mode::LowPass);  // fixed mode — set once
+        filter.setMode(CytomicSVF::Mode::LowPass); // fixed mode — set once
         reverb.prepare(sampleRate);
 
         // SR-dependent smooth coefficient: ~3ms time constant, sample-rate correct
         cellSmoothCoeff = 1.0f - std::exp(-1.0f / (0.003f * static_cast<float>(sampleRate)));
 
         // Initialise automaton
-        caState       = 0x0042u; // default seed=42
-        stepCounter   = 0;
+        caState = 0x0042u; // default seed=42
+        stepCounter = 0;
         scopeHistory.reset();
         cellFilterOut = 0.5f;
-        cellAmpRate   = 0.5f;
-        cellPitchOut  = 0.f;
-        cellFXOut     = 0.5f;
+        cellAmpRate = 0.5f;
+        cellPitchOut = 0.f;
+        cellFXOut = 0.5f;
         cellFilterTarget = 0.5f;
-        cellAmpTarget    = 0.5f;
-        cellPitchTarget  = 0.f;
-        cellFXTarget     = 0.5f;
+        cellAmpTarget = 0.5f;
+        cellPitchTarget = 0.f;
+        cellFXTarget = 0.5f;
 
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
-        noteIsOn    = false;
+        noteIsOn = false;
         currentNote = 60;
-        currentVel  = 1.f;
+        currentVel = 1.f;
         lfo1.reset();
         lfo2.reset();
         modWheelVal = 0.f;
         aftertouchVal = 0.f;
         couplingFilterMod = 0.f;
-        couplingPitchMod  = 0.f;
+        couplingPitchMod = 0.f;
 
         // Seed the LCG RNG with a fixed value
         rng = 0xDEADBEEFu;
@@ -479,24 +512,24 @@ public:
         filter.reset();
         reverb.reset();
 
-        caState       = 0x0042u;
-        stepCounter   = 0;
+        caState = 0x0042u;
+        stepCounter = 0;
         scopeHistory.reset();
         cellFilterOut = 0.5f;
-        cellAmpRate   = 0.5f;
-        cellPitchOut  = 0.f;
-        cellFXOut     = 0.5f;
+        cellAmpRate = 0.5f;
+        cellPitchOut = 0.f;
+        cellFXOut = 0.5f;
         cellFilterTarget = 0.5f;
-        cellAmpTarget    = 0.5f;
-        cellPitchTarget  = 0.f;
-        cellFXTarget     = 0.5f;
+        cellAmpTarget = 0.5f;
+        cellPitchTarget = 0.f;
+        cellFXTarget = 0.5f;
 
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
-        noteIsOn    = false;
+        noteIsOn = false;
         lfo1.reset();
         lfo2.reset();
-        rng         = 0xDEADBEEFu;
+        rng = 0xDEADBEEFu;
     }
 
     //--------------------------------------------------------------------------
@@ -504,41 +537,40 @@ public:
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
         addParameters(params);
-        return { params.begin(), params.end() };
+        return {params.begin(), params.end()};
     }
 
     //--------------------------------------------------------------------------
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        p_rule          = apvts.getRawParameterValue("org_rule");
-        p_seed          = apvts.getRawParameterValue("org_seed");
-        p_stepRate      = apvts.getRawParameterValue("org_stepRate");
-        p_scope         = apvts.getRawParameterValue("org_scope");
-        p_mutate        = apvts.getRawParameterValue("org_mutate");
-        p_freeze        = apvts.getRawParameterValue("org_freeze");
-        p_oscWave       = apvts.getRawParameterValue("org_oscWave");
-        p_subLevel      = apvts.getRawParameterValue("org_subLevel");
-        p_filterCutoff  = apvts.getRawParameterValue("org_filterCutoff");
-        p_filterRes     = apvts.getRawParameterValue("org_filterRes");
-        p_velCutoff     = apvts.getRawParameterValue("org_velCutoff");
-        p_ampAtk        = apvts.getRawParameterValue("org_ampAtk");
-        p_ampDec        = apvts.getRawParameterValue("org_ampDec");
-        p_ampSus        = apvts.getRawParameterValue("org_ampSus");
-        p_ampRel        = apvts.getRawParameterValue("org_ampRel");
-        p_lfo1Rate      = apvts.getRawParameterValue("org_lfo1Rate");
-        p_lfo1Depth     = apvts.getRawParameterValue("org_lfo1Depth");
-        p_lfo2Rate      = apvts.getRawParameterValue("org_lfo2Rate");
-        p_lfo2Depth     = apvts.getRawParameterValue("org_lfo2Depth");
-        p_reverbMix     = apvts.getRawParameterValue("org_reverbMix");
-        p_macroRule     = apvts.getRawParameterValue("org_macroRule");
-        p_macroSeed     = apvts.getRawParameterValue("org_macroSeed");
+        p_rule = apvts.getRawParameterValue("org_rule");
+        p_seed = apvts.getRawParameterValue("org_seed");
+        p_stepRate = apvts.getRawParameterValue("org_stepRate");
+        p_scope = apvts.getRawParameterValue("org_scope");
+        p_mutate = apvts.getRawParameterValue("org_mutate");
+        p_freeze = apvts.getRawParameterValue("org_freeze");
+        p_oscWave = apvts.getRawParameterValue("org_oscWave");
+        p_subLevel = apvts.getRawParameterValue("org_subLevel");
+        p_filterCutoff = apvts.getRawParameterValue("org_filterCutoff");
+        p_filterRes = apvts.getRawParameterValue("org_filterRes");
+        p_velCutoff = apvts.getRawParameterValue("org_velCutoff");
+        p_ampAtk = apvts.getRawParameterValue("org_ampAtk");
+        p_ampDec = apvts.getRawParameterValue("org_ampDec");
+        p_ampSus = apvts.getRawParameterValue("org_ampSus");
+        p_ampRel = apvts.getRawParameterValue("org_ampRel");
+        p_lfo1Rate = apvts.getRawParameterValue("org_lfo1Rate");
+        p_lfo1Depth = apvts.getRawParameterValue("org_lfo1Depth");
+        p_lfo2Rate = apvts.getRawParameterValue("org_lfo2Rate");
+        p_lfo2Depth = apvts.getRawParameterValue("org_lfo2Depth");
+        p_reverbMix = apvts.getRawParameterValue("org_reverbMix");
+        p_macroRule = apvts.getRawParameterValue("org_macroRule");
+        p_macroSeed = apvts.getRawParameterValue("org_macroSeed");
         p_macroCoupling = apvts.getRawParameterValue("org_macroCoupling");
-        p_macroMutate   = apvts.getRawParameterValue("org_macroMutate");
+        p_macroMutate = apvts.getRawParameterValue("org_macroMutate");
     }
 
     //--------------------------------------------------------------------------
-    void applyCouplingInput(CouplingType type, float amount,
-                            const float* /*sourceBuffer*/, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
         // macroCoupling scales receive sensitivity so the COUPLING macro always
         // controls how strongly coupled partners influence this engine.
@@ -549,88 +581,101 @@ public:
             couplingPitchMod += amount * recvScale;
     }
 
-    float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override {
-        return lastOutputSample;
-    }
+    float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override { return lastOutputSample; }
 
     //--------------------------------------------------------------------------
-    void renderBlock(juce::AudioBuffer<float>& buffer,
-                     juce::MidiBuffer&          midi,
-                     int                        numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         // 1. Parse MIDI — note-on/off, CC1 (mod wheel), aftertouch
-        for (const auto meta : midi) {
+        for (const auto meta : midi)
+        {
             const auto msg = meta.getMessage();
-            if (msg.isNoteOn()) {
-                currentNote  = msg.getNoteNumber();
-                currentVel   = msg.getFloatVelocity();
-                noteIsOn     = true;
-                ampEnvStage  = EnvStage::Attack;
+            if (msg.isNoteOn())
+            {
+                currentNote = msg.getNoteNumber();
+                currentVel = msg.getFloatVelocity();
+                noteIsOn = true;
+                ampEnvStage = EnvStage::Attack;
 
                 // Reset automaton on note-on. Different MIDI notes produce
                 // different evolution trajectories.
                 uint16_t seedParam = p_seed ? (uint16_t)((int)(p_seed->load()) & 0xFFFF) : 42u;
                 // XOR seed with note number for per-note variation
-                caState     = (uint16_t)(seedParam ^ (uint16_t)(currentNote * 257u));
+                caState = (uint16_t)(seedParam ^ (uint16_t)(currentNote * 257u));
                 stepCounter = 0;
                 scopeHistory.reset();
 
                 // Reset oscillators for clean attack
-                sawOsc.reset(); sqOsc.reset(); triOsc.reset(); subOsc.reset();
+                sawOsc.reset();
+                sqOsc.reset();
+                triOsc.reset();
+                subOsc.reset();
                 wakeSilenceGate();
-
-            } else if (msg.isNoteOff() && msg.getNoteNumber() == currentNote) {
-                noteIsOn    = false;
+            }
+            else if (msg.isNoteOff() && msg.getNoteNumber() == currentNote)
+            {
+                noteIsOn = false;
                 ampEnvStage = EnvStage::Release;
-
-            } else if (msg.isController() && msg.getControllerNumber() == 1) {
+            }
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+            {
                 // D006: mod wheel morphs rule
                 modWheelVal = msg.getControllerValue() / 127.f;
-
-            } else if (msg.isChannelPressure()) {
+            }
+            else if (msg.isChannelPressure())
+            {
                 // D006: aftertouch controls mutation rate
                 aftertouchVal = msg.getChannelPressureValue() / 127.f;
-            } else if (msg.isPitchWheel()) {
+            }
+            else if (msg.isPitchWheel())
+            {
                 pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
-            } else if (msg.isAftertouch()) {
+            }
+            else if (msg.isAftertouch())
+            {
                 aftertouchVal = msg.getAfterTouchValue() / 127.f;
             }
         }
 
         // 2. Check SilenceGate bypass
-        if (isSilenceGateBypassed()) {
+        if (isSilenceGateBypassed())
+        {
             buffer.clear();
             return;
         }
 
         // 3. Guard: parameters not yet attached
-        if (!p_rule) { buffer.clear(); return; }
+        if (!p_rule)
+        {
+            buffer.clear();
+            return;
+        }
 
         // 4. Snapshot parameters once per block (ParamSnapshot pattern)
-        const float paramRule       = p_rule->load();
-        const float stepRate        = p_stepRate->load();
-        const int   scope           = clamp((float)(int)(p_scope->load() + 0.5f), 1.f, 16.f);
-        const float baseMutate      = p_mutate->load();
-        const bool  freeze          = (p_freeze->load() > 0.5f);
-        const int   oscWave         = (int)(p_oscWave->load() + 0.5f);
-        const float subLevel        = p_subLevel->load();
-        const float baseCutoff      = p_filterCutoff->load();
-        const float filterRes       = p_filterRes->load();
-        const float velCutoff       = p_velCutoff->load();
-        const float ampAtk          = p_ampAtk->load();
-        const float ampDec          = p_ampDec->load();
-        const float ampSus          = p_ampSus->load();
-        const float ampRel          = p_ampRel->load();
-        const float lfo1Rate        = p_lfo1Rate->load();
-        const float lfo1Depth       = p_lfo1Depth->load();
-        const float lfo2Rate        = p_lfo2Rate->load();
-        const float lfo2Depth       = p_lfo2Depth->load();
-        const float reverbMix       = p_reverbMix->load();
-        const float macroRule       = p_macroRule->load();
-        const float macroSeed       = p_macroSeed->load(); // use to re-seed if >0
-        const float macroCoupling   = p_macroCoupling ? p_macroCoupling->load() : 0.0f;
-        const float macroMutate     = p_macroMutate->load();
+        const float paramRule = p_rule->load();
+        const float stepRate = p_stepRate->load();
+        const int scope = clamp((float)(int)(p_scope->load() + 0.5f), 1.f, 16.f);
+        const float baseMutate = p_mutate->load();
+        const bool freeze = (p_freeze->load() > 0.5f);
+        const int oscWave = (int)(p_oscWave->load() + 0.5f);
+        const float subLevel = p_subLevel->load();
+        const float baseCutoff = p_filterCutoff->load();
+        const float filterRes = p_filterRes->load();
+        const float velCutoff = p_velCutoff->load();
+        const float ampAtk = p_ampAtk->load();
+        const float ampDec = p_ampDec->load();
+        const float ampSus = p_ampSus->load();
+        const float ampRel = p_ampRel->load();
+        const float lfo1Rate = p_lfo1Rate->load();
+        const float lfo1Depth = p_lfo1Depth->load();
+        const float lfo2Rate = p_lfo2Rate->load();
+        const float lfo2Depth = p_lfo2Depth->load();
+        const float reverbMix = p_reverbMix->load();
+        const float macroRule = p_macroRule->load();
+        const float macroSeed = p_macroSeed->load(); // use to re-seed if >0
+        const float macroCoupling = p_macroCoupling ? p_macroCoupling->load() : 0.0f;
+        const float macroMutate = p_macroMutate->load();
 
         // macroRule: map 0–1 across 8 curated rules (index 0–7)
         // modWheel additively morphs the rule index (+/- up to 2 positions)
@@ -647,13 +692,17 @@ public:
         int ruleB = kCuratedRules[ruleIdxB];
         // Simple blend: pick ruleA or ruleB per bit based on blend threshold
         int currentRule = 0;
-        for (int bit = 0; bit < 8; ++bit) {
+        for (int bit = 0; bit < 8; ++bit)
+        {
             int ba = (ruleA >> bit) & 1;
             int bb = (ruleB >> bit) & 1;
             // If bits agree, use that; otherwise use blend probability
-            if (ba == bb) {
+            if (ba == bb)
+            {
                 currentRule |= (ba << bit);
-            } else {
+            }
+            else
+            {
                 // blend: prefer B when ruleBlend > 0.5
                 currentRule |= ((ruleBlend > 0.5f ? bb : ba) << bit);
             }
@@ -662,7 +711,8 @@ public:
         // paramRule overrides the macro when it has been moved away from default
         // (In practice, p_rule is the manual rule param, macroRule is the macro.
         //  We use paramRule directly when macroRule is at minimum.)
-        if (macroRule < 0.01f && modWheelVal < 0.01f) {
+        if (macroRule < 0.01f && modWheelVal < 0.01f)
+        {
             currentRule = (int)(paramRule + 0.5f) & 0xFF;
         }
 
@@ -671,26 +721,29 @@ public:
         // turning COUPLING up makes the automaton slightly more unpredictable even
         // without a partner engine. The scale is kept very small (0.01) so it never
         // dominates the dedicated MUTATE macro but is always audible on close listening.
-        const float effectiveMutate = clamp(baseMutate + macroMutate + aftertouchVal * 0.3f
-                                            + macroCoupling * 0.01f,
-                                            0.f, 1.f);
+        const float effectiveMutate =
+            clamp(baseMutate + macroMutate + aftertouchVal * 0.3f + macroCoupling * 0.01f, 0.f, 1.f);
 
         // macroSeed: if > 0.01, re-seed automaton this block (only once per gesture)
         // We use a latch: re-seed only when macroSeed transitions above threshold
-        if (macroSeed > 0.01f && !macroSeedLatched) {
+        if (macroSeed > 0.01f && !macroSeedLatched)
+        {
             macroSeedLatched = true;
             // Derive a new state from the LCG
             rng = rng * 1664525u + 1013904223u;
             caState = (uint16_t)(rng & 0xFFFF);
-            if (caState == 0) caState = 0x5555u; // prevent all-zero
+            if (caState == 0)
+                caState = 0x5555u; // prevent all-zero
             scopeHistory.reset();
-        } else if (macroSeed < 0.005f) {
+        }
+        else if (macroSeed < 0.005f)
+        {
             macroSeedLatched = false;
         }
 
         // Compute samples per automaton step
         const float effectiveStepRate = clamp(stepRate, 0.5f, 32.f);
-        const int   samplesPerStep    = std::max(1, (int)(sr / effectiveStepRate));
+        const int samplesPerStep = std::max(1, (int)(sr / effectiveStepRate));
 
         // D001: velocity → filter brightness
         const float velCutoffBoost = currentVel * velCutoff * 3000.f; // +0..3000 Hz
@@ -701,50 +754,51 @@ public:
         const float relCoeff = smoothCoeffFromTime(ampRel, sr);
 
         // Root pitch from MIDI note, with pitch bend and coupling pitch offset
-        const float rootFreq = midiToFreq(currentNote)
-                               * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+        const float rootFreq = midiToFreq(currentNote) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
 
         // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
-        lfo1.setRate (lfo1Rate, sr);
-        lfo1.setShape (StandardLFO::Sine);
-        lfo2.setRate (lfo2Rate, sr);
-        lfo2.setShape (StandardLFO::Sine);
+        lfo1.setRate(lfo1Rate, sr);
+        lfo1.setShape(StandardLFO::Sine);
+        lfo2.setRate(lfo2Rate, sr);
+        lfo2.setShape(StandardLFO::Sine);
 
         // Consume coupling modulation (resets each block)
         const float savedCouplingFilter = couplingFilterMod;
-        const float savedCouplingPitch  = couplingPitchMod;
+        const float savedCouplingPitch = couplingPitchMod;
         couplingFilterMod = 0.f;
-        couplingPitchMod  = 0.f;
+        couplingPitchMod = 0.f;
 
         // ----- Per-sample DSP loop -----
-        for (int n = 0; n < numSamples; ++n) {
+        for (int n = 0; n < numSamples; ++n)
+        {
 
             // --- Advance cellular automaton ---
-            if (!freeze) {
+            if (!freeze)
+            {
                 ++stepCounter;
-                if (stepCounter >= samplesPerStep) {
+                if (stepCounter >= samplesPerStep)
+                {
                     stepCounter = 0;
-                    caState = stepAutomaton(caState, (uint8_t)currentRule,
-                                           effectiveMutate);
+                    caState = stepAutomaton(caState, (uint8_t)currentRule, effectiveMutate);
                     scopeHistory.push(caState);
 
                     // Update raw target values from scope-averaged cell groups
-                    cellFilterTarget = scopeHistory.averageBits(0,  scope); // cells 0–3
-                    cellAmpTarget    = scopeHistory.averageBits(4,  scope); // cells 4–7
-                    cellPitchTarget  = scopeHistory.averageBits(8,  scope); // cells 8–11
-                    cellFXTarget     = scopeHistory.averageBits(12, scope); // cells 12–15
+                    cellFilterTarget = scopeHistory.averageBits(0, scope); // cells 0–3
+                    cellAmpTarget = scopeHistory.averageBits(4, scope);    // cells 4–7
+                    cellPitchTarget = scopeHistory.averageBits(8, scope);  // cells 8–11
+                    cellFXTarget = scopeHistory.averageBits(12, scope);    // cells 12–15
                 }
             }
 
             // --- Smooth automaton outputs (one-pole ~3ms, sample-rate correct) ---
             // Prevents clicks from sudden parameter jumps when the automaton steps.
             cellFilterOut += cellSmoothCoeff * (cellFilterTarget - cellFilterOut);
-            cellAmpRate   += cellSmoothCoeff * (cellAmpTarget   - cellAmpRate);
-            cellPitchOut  += cellSmoothCoeff * (cellPitchTarget  - cellPitchOut);
-            cellFXOut     += cellSmoothCoeff * (cellFXTarget     - cellFXOut);
+            cellAmpRate += cellSmoothCoeff * (cellAmpTarget - cellAmpRate);
+            cellPitchOut += cellSmoothCoeff * (cellPitchTarget - cellPitchOut);
+            cellFXOut += cellSmoothCoeff * (cellFXTarget - cellFXOut);
 
             // --- LFO 1: modulates filter cutoff for additional movement ---
             float lfo1Val = lfo1.process(); // StandardLFO sine [-1, +1]
@@ -754,44 +808,50 @@ public:
 
             // --- Amp envelope ---
             float envTarget = 0.f;
-            float envCoeff  = relCoeff;
+            float envCoeff = relCoeff;
 
             // Cellular automaton modulates amp envelope rate (cells 4–7)
             // cellAmpRate 0–1: 0 = slowest (3× base), 1 = fastest (1/3× base)
             // This makes the envelope breathe with the automaton rhythm.
             float envRateMod = lerp(3.f, 0.33f, cellAmpRate);
 
-            switch (ampEnvStage) {
-                case EnvStage::Idle:
-                    envTarget = 0.f; envCoeff = relCoeff;
-                    break;
-                case EnvStage::Attack:
-                    envTarget = 1.f;
-                    envCoeff  = clamp(atkCoeff * envRateMod, 0.f, 1.f);
-                    if (ampEnvLevel >= 0.999f) {
-                        ampEnvLevel = 1.f;
-                        ampEnvStage = EnvStage::Decay;
-                    }
-                    break;
-                case EnvStage::Decay:
-                    envTarget = ampSus;
-                    envCoeff  = clamp(decCoeff * envRateMod, 0.f, 1.f);
-                    if (std::fabs(ampEnvLevel - ampSus) < 0.001f) {
-                        ampEnvLevel = ampSus;
-                        ampEnvStage = EnvStage::Sustain;
-                    }
-                    break;
-                case EnvStage::Sustain:
-                    envTarget = ampSus;
-                    envCoeff  = decCoeff;
-                    break;
-                case EnvStage::Release:
-                    envTarget = 0.f; envCoeff = relCoeff;
-                    if (ampEnvLevel < 0.0001f) {
-                        ampEnvLevel = 0.f;
-                        ampEnvStage = EnvStage::Idle;
-                    }
-                    break;
+            switch (ampEnvStage)
+            {
+            case EnvStage::Idle:
+                envTarget = 0.f;
+                envCoeff = relCoeff;
+                break;
+            case EnvStage::Attack:
+                envTarget = 1.f;
+                envCoeff = clamp(atkCoeff * envRateMod, 0.f, 1.f);
+                if (ampEnvLevel >= 0.999f)
+                {
+                    ampEnvLevel = 1.f;
+                    ampEnvStage = EnvStage::Decay;
+                }
+                break;
+            case EnvStage::Decay:
+                envTarget = ampSus;
+                envCoeff = clamp(decCoeff * envRateMod, 0.f, 1.f);
+                if (std::fabs(ampEnvLevel - ampSus) < 0.001f)
+                {
+                    ampEnvLevel = ampSus;
+                    ampEnvStage = EnvStage::Sustain;
+                }
+                break;
+            case EnvStage::Sustain:
+                envTarget = ampSus;
+                envCoeff = decCoeff;
+                break;
+            case EnvStage::Release:
+                envTarget = 0.f;
+                envCoeff = relCoeff;
+                if (ampEnvLevel < 0.0001f)
+                {
+                    ampEnvLevel = 0.f;
+                    ampEnvStage = EnvStage::Idle;
+                }
+                break;
             }
             ampEnvLevel += envCoeff * (envTarget - ampEnvLevel);
             ampEnvLevel = flushDenormal(ampEnvLevel);
@@ -807,26 +867,33 @@ public:
 
             // --- Oscillator ---
             float oscOut = 0.f;
-            switch (oscWave) {
-                case 0:  oscOut = sawOsc.tick(freq); break;
-                case 1:  oscOut = sqOsc.tick(freq);  break;
-                case 2:  oscOut = triOsc.tick(freq); break;
-                default: oscOut = sawOsc.tick(freq); break;
+            switch (oscWave)
+            {
+            case 0:
+                oscOut = sawOsc.tick(freq);
+                break;
+            case 1:
+                oscOut = sqOsc.tick(freq);
+                break;
+            case 2:
+                oscOut = triOsc.tick(freq);
+                break;
+            default:
+                oscOut = sawOsc.tick(freq);
+                break;
             }
             float subOut = subOsc.tick(freq);
-            float mixed  = oscOut * (1.f - subLevel * 0.5f) + subOut * subLevel;
+            float mixed = oscOut * (1.f - subLevel * 0.5f) + subOut * subLevel;
 
             // --- Filter ---
             // Cells 0–3 → filter cutoff position 0–1 mapped to 200–8000 Hz range
             // LFO2 provides additional modulation
             float cellCutoffOffset = (cellFilterOut - 0.5f) * (baseCutoff * 0.8f);
-            float lfo2CutoffMod    = lfo2Val * lfo2Depth * 1000.f;
-            float lfo1CutoffMod    = lfo1Val * lfo1Depth * 600.f;
-            float finalCutoff = clamp(
-                baseCutoff + cellCutoffOffset + velCutoffBoost
-                + lfo1CutoffMod + lfo2CutoffMod
-                + savedCouplingFilter,
-                200.f, 8000.f);
+            float lfo2CutoffMod = lfo2Val * lfo2Depth * 1000.f;
+            float lfo1CutoffMod = lfo1Val * lfo1Depth * 600.f;
+            float finalCutoff = clamp(baseCutoff + cellCutoffOffset + velCutoffBoost + lfo1CutoffMod + lfo2CutoffMod +
+                                          savedCouplingFilter,
+                                      200.f, 8000.f);
 
             // Resonance gain compensation — prevent clipping at high resonance.
             // CytomicSVF resonance is [0,1]; 1.0 = self-oscillation.
@@ -836,8 +903,8 @@ public:
             // CytomicSVF: TPT/matched-Z lowpass. Mode is fixed to LowPass in
             // prepare(). setCoefficients_fast is used because finalCutoff changes
             // every sample (automaton cell + LFO modulation).
-            filter.setCoefficients_fast (finalCutoff, filterRes, sr);
-            float filtered = filter.processSample (mixed * gainComp);
+            filter.setCoefficients_fast(finalCutoff, filterRes, sr);
+            float filtered = filter.processSample(mixed * gainComp);
 
             // --- Amp envelope + gain ---
             float output = filtered * ampEnvLevel * 0.65f;
@@ -854,7 +921,8 @@ public:
         // --- Block-level reverb ---
         // Cells 12–15 (cellFXOut) modulate reverb mix
         float effectiveReverb = clamp(reverbMix + cellFXOut * 0.3f, 0.f, 1.f);
-        for (int n = 0; n < numSamples; ++n) {
+        for (int n = 0; n < numSamples; ++n)
+        {
             float l = L[n], r = R[n];
             reverb.process(l, r, effectiveReverb);
             L[n] = l;
@@ -868,10 +936,17 @@ public:
     //--------------------------------------------------------------------------
 private:
     // Curated interesting Wolfram rules for the macroRule sweep (was at namespace scope — #333)
-    static constexpr int kCuratedRules[8] = { 30, 90, 110, 184, 150, 18, 54, 22 };
+    static constexpr int kCuratedRules[8] = {30, 90, 110, 184, 150, 18, 54, 22};
 
     // Envelope stages
-    enum class EnvStage { Idle, Attack, Decay, Sustain, Release };
+    enum class EnvStage
+    {
+        Idle,
+        Attack,
+        Decay,
+        Sustain,
+        Release
+    };
 
     //--------------------------------------------------------------------------
     // Wolfram elementary cellular automaton step (1D, circular, 16 cells).
@@ -886,32 +961,38 @@ private:
     // mutateProb: probability 0–1 that any given bit is randomly flipped
     // after the rule step. Uses the internal LCG.
     //--------------------------------------------------------------------------
-    uint16_t stepAutomaton(uint16_t state, uint8_t rule, float mutateProb) {
+    uint16_t stepAutomaton(uint16_t state, uint8_t rule, float mutateProb)
+    {
         uint16_t next = 0;
-        for (int i = 0; i < 16; ++i) {
-            int left   = (i - 1 + 16) & 15;
-            int right  = (i + 1) & 15;
-            int l      = (state >> left)  & 1;
-            int c      = (state >> i)     & 1;
-            int r      = (state >> right) & 1;
-            int idx    = (l << 2) | (c << 1) | r;
+        for (int i = 0; i < 16; ++i)
+        {
+            int left = (i - 1 + 16) & 15;
+            int right = (i + 1) & 15;
+            int l = (state >> left) & 1;
+            int c = (state >> i) & 1;
+            int r = (state >> right) & 1;
+            int idx = (l << 2) | (c << 1) | r;
             int newBit = (rule >> idx) & 1;
             next |= (uint16_t)(newBit << i);
         }
 
         // Mutation: random bit flip per cell
-        if (mutateProb > 0.f) {
-            for (int i = 0; i < 16; ++i) {
+        if (mutateProb > 0.f)
+        {
+            for (int i = 0; i < 16; ++i)
+            {
                 rng = rng * 1664525u + 1013904223u;
                 float t = (float)(rng >> 8) * (1.f / 16777216.f); // 0..1 uniform
-                if (t < mutateProb) {
+                if (t < mutateProb)
+                {
                     next ^= (uint16_t)(1u << i); // flip bit
                 }
             }
         }
 
         // Prevent all-zero state (frozen silence) — inject a single bit
-        if (next == 0) next = 0x0001u;
+        if (next == 0)
+            next = 0x0001u;
 
         return next;
     }
@@ -919,26 +1000,26 @@ private:
     //--------------------------------------------------------------------------
     // DSP state
     float sr = 44100.f;
-    OrgSawOsc    sawOsc;
+    OrgSawOsc sawOsc;
     OrgSquareOsc sqOsc;
-    OrgTriOsc    triOsc;
-    OrgSubOsc    subOsc;
-    CytomicSVF   filter;  // matched-Z TPT lowpass (replaces bilinear OrgFilter)
-    OrgReverb    reverb;
+    OrgTriOsc triOsc;
+    OrgSubOsc subOsc;
+    CytomicSVF filter; // matched-Z TPT lowpass (replaces bilinear OrgFilter)
+    OrgReverb reverb;
 
     // Automaton state
-    uint16_t       caState       = 0x0042u;
-    int            stepCounter   = 0;
+    uint16_t caState = 0x0042u;
+    int stepCounter = 0;
     OrgScopeHistory scopeHistory;
-    float          cellFilterOut = 0.5f; // smoothed cells 0–3 average
-    float          cellAmpRate   = 0.5f; // smoothed cells 4–7 average
-    float          cellPitchOut  = 0.f;  // smoothed cells 8–11 average
-    float          cellFXOut     = 0.5f; // smoothed cells 12–15 average
-    float          cellFilterTarget = 0.5f; // raw target before smoothing
-    float          cellAmpTarget    = 0.5f;
-    float          cellPitchTarget  = 0.f;
-    float          cellFXTarget     = 0.5f;
-    float          cellSmoothCoeff  = 0.005f; // SR-dependent; set in prepare()
+    float cellFilterOut = 0.5f;    // smoothed cells 0–3 average
+    float cellAmpRate = 0.5f;      // smoothed cells 4–7 average
+    float cellPitchOut = 0.f;      // smoothed cells 8–11 average
+    float cellFXOut = 0.5f;        // smoothed cells 12–15 average
+    float cellFilterTarget = 0.5f; // raw target before smoothing
+    float cellAmpTarget = 0.5f;
+    float cellPitchTarget = 0.f;
+    float cellFXTarget = 0.5f;
+    float cellSmoothCoeff = 0.005f; // SR-dependent; set in prepare()
 
     // LCG for mutation + seeding
     uint32_t rng = 0xDEADBEEFu;
@@ -947,55 +1028,55 @@ private:
     bool macroSeedLatched = false;
 
     // Envelope state
-    EnvStage  ampEnvStage = EnvStage::Idle;
-    float     ampEnvLevel = 0.f;
+    EnvStage ampEnvStage = EnvStage::Idle;
+    float ampEnvLevel = 0.f;
 
     // Voice state
-    bool  noteIsOn    = false;
-    int   currentNote = 60;
-    float currentVel  = 1.f;
+    bool noteIsOn = false;
+    int currentNote = 60;
+    float currentVel = 1.f;
 
     // LFO phases
-    StandardLFO lfo1;  // D002: filter cutoff modulation (sine)
-    StandardLFO lfo2;  // D002: secondary filter modulation (sine)
+    StandardLFO lfo1; // D002: filter cutoff modulation (sine)
+    StandardLFO lfo2; // D002: secondary filter modulation (sine)
 
     // Expression (D006)
-    float modWheelVal   = 0.f;
+    float modWheelVal = 0.f;
     float aftertouchVal = 0.f;
     float pitchBendNorm = 0.0f;
 
     // Coupling modulation (consumed each block)
     float couplingFilterMod = 0.f;
-    float couplingPitchMod  = 0.f;
+    float couplingPitchMod = 0.f;
 
     // Coupling output cache
     float lastOutputSample = 0.f;
 
     // Cached parameter pointers (attached once via attachParameters)
-    std::atomic<float>* p_rule          = nullptr;
-    std::atomic<float>* p_seed          = nullptr;
-    std::atomic<float>* p_stepRate      = nullptr;
-    std::atomic<float>* p_scope         = nullptr;
-    std::atomic<float>* p_mutate        = nullptr;
-    std::atomic<float>* p_freeze        = nullptr;
-    std::atomic<float>* p_oscWave       = nullptr;
-    std::atomic<float>* p_subLevel      = nullptr;
-    std::atomic<float>* p_filterCutoff  = nullptr;
-    std::atomic<float>* p_filterRes     = nullptr;
-    std::atomic<float>* p_velCutoff     = nullptr;
-    std::atomic<float>* p_ampAtk        = nullptr;
-    std::atomic<float>* p_ampDec        = nullptr;
-    std::atomic<float>* p_ampSus        = nullptr;
-    std::atomic<float>* p_ampRel        = nullptr;
-    std::atomic<float>* p_lfo1Rate      = nullptr;
-    std::atomic<float>* p_lfo1Depth     = nullptr;
-    std::atomic<float>* p_lfo2Rate      = nullptr;
-    std::atomic<float>* p_lfo2Depth     = nullptr;
-    std::atomic<float>* p_reverbMix     = nullptr;
-    std::atomic<float>* p_macroRule     = nullptr;
-    std::atomic<float>* p_macroSeed     = nullptr;
+    std::atomic<float>* p_rule = nullptr;
+    std::atomic<float>* p_seed = nullptr;
+    std::atomic<float>* p_stepRate = nullptr;
+    std::atomic<float>* p_scope = nullptr;
+    std::atomic<float>* p_mutate = nullptr;
+    std::atomic<float>* p_freeze = nullptr;
+    std::atomic<float>* p_oscWave = nullptr;
+    std::atomic<float>* p_subLevel = nullptr;
+    std::atomic<float>* p_filterCutoff = nullptr;
+    std::atomic<float>* p_filterRes = nullptr;
+    std::atomic<float>* p_velCutoff = nullptr;
+    std::atomic<float>* p_ampAtk = nullptr;
+    std::atomic<float>* p_ampDec = nullptr;
+    std::atomic<float>* p_ampSus = nullptr;
+    std::atomic<float>* p_ampRel = nullptr;
+    std::atomic<float>* p_lfo1Rate = nullptr;
+    std::atomic<float>* p_lfo1Depth = nullptr;
+    std::atomic<float>* p_lfo2Rate = nullptr;
+    std::atomic<float>* p_lfo2Depth = nullptr;
+    std::atomic<float>* p_reverbMix = nullptr;
+    std::atomic<float>* p_macroRule = nullptr;
+    std::atomic<float>* p_macroSeed = nullptr;
     std::atomic<float>* p_macroCoupling = nullptr;
-    std::atomic<float>* p_macroMutate   = nullptr;
+    std::atomic<float>* p_macroMutate = nullptr;
 };
 
 } // namespace xoceanus

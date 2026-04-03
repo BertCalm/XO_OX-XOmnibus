@@ -35,34 +35,34 @@
 #include <cstdint>
 #include <cmath>
 
-namespace xoutwit {
+namespace xoutwit
+{
 
 class ArmChannel
 {
 public:
-
     //==========================================================================
     // Lifecycle
     //==========================================================================
 
     void prepare(double sampleRate) noexcept
     {
-        sr    = static_cast<float>(sampleRate);
+        sr = static_cast<float>(sampleRate);
         invSr = 1.0f / sr;
 
         // Cache step envelope release coefficient (Seance P4: was recomputed every sample)
         stepEnvRelCoeff = xoutwit::fastExp(-1.0f / (0.02f * sr)); // ~20ms release
 
         // Reset oscillator + filter + CA state
-        oscPhase      = 0.0f;
-        stepPhase     = 0.0f;
-        justStepped   = false;
-        svfIc1        = svfIc2 = 0.0f;
-        stepEnvGain   = 0.0f;
-        noteActive    = false;
-        currentNote   = 60;
+        oscPhase = 0.0f;
+        stepPhase = 0.0f;
+        justStepped = false;
+        svfIc1 = svfIc2 = 0.0f;
+        stepEnvGain = 0.0f;
+        noteActive = false;
+        currentNote = 60;
         currentVelocity = 0.0f;
-        baseFreqHz    = 261.63f;
+        baseFreqHz = 261.63f;
         synapsePhaseNudge = 0.0f;
 
         // Init CA tape to a single active cell in the centre
@@ -81,41 +81,32 @@ public:
     // filterHz  [20,20000]: per-arm base filter cutoff
     // wave      [0,1,2]   : 0=Saw, 1=Pulse, 2=Sine
     // pan       [-1,1]    : stereo pan (stored but panning done in adapter)
-    void setParams(int rule, int length, float level,
-                   int pitchSt, float filterHz,
-                   int wave, float pan) noexcept
+    void setParams(int rule, int length, float level, int pitchSt, float filterHz, int wave, float pan) noexcept
     {
-        caRule    = static_cast<uint8_t>(std::clamp(rule, 0, 255));
-        tapeLen   = std::clamp(length, 4, kMaxTape);
-        armLevel  = std::clamp(level, 0.0f, 1.0f);
+        caRule = static_cast<uint8_t>(std::clamp(rule, 0, 255));
+        tapeLen = std::clamp(length, 4, kMaxTape);
+        armLevel = std::clamp(level, 0.0f, 1.0f);
         pitchOffset = pitchSt;
         baseFilterHz = std::clamp(filterHz, 20.0f, 20000.0f);
-        waveShape  = std::clamp(wave, 0, 2);
-        armPan     = std::clamp(pan, -1.0f, 1.0f);
+        waveShape = std::clamp(wave, 0, 2);
+        armPan = std::clamp(pan, -1.0f, 1.0f);
 
         // Recompute frequency if note is held
         if (noteActive)
         {
-            float newFreq = xoutwit::midiToFreqTune(currentNote,
-                                                      static_cast<float>(pitchOffset));
+            float newFreq = xoutwit::midiToFreqTune(currentNote, static_cast<float>(pitchOffset));
             if (gliding)
-                targetFreqHz = newFreq;  // Seance P1: update glide target, don't jump
+                targetFreqHz = newFreq; // Seance P1: update glide target, don't jump
             else
                 baseFreqHz = newFreq;
         }
     }
 
     //--------------------------------------------------------------------------
-    void setStepRate(float hz) noexcept
-    {
-        stepRate = std::max(0.01f, hz);
-    }
+    void setStepRate(float hz) noexcept { stepRate = std::max(0.01f, hz); }
 
     // Seance P1: set portamento smoothing rate (1.0 = instant, near 0 = slow)
-    void setGlideRate(float rate) noexcept
-    {
-        glideRate = std::clamp(rate, 0.0001f, 1.0f);
-    }
+    void setGlideRate(float rate) noexcept { glideRate = std::clamp(rate, 0.0001f, 1.0f); }
 
     //==========================================================================
     // MIDI
@@ -123,14 +114,13 @@ public:
 
     void noteOn(int midiNote, float velocity) noexcept
     {
-        currentNote     = midiNote;
+        currentNote = midiNote;
         currentVelocity = velocity;
-        noteActive      = true;
-        oscPhase        = 0.0f;
-        baseFreqHz      = xoutwit::midiToFreqTune(midiNote,
-                                                   static_cast<float>(pitchOffset));
-        targetFreqHz    = baseFreqHz;  // Seance P1: sync target with base on hard trigger
-        gliding         = false;
+        noteActive = true;
+        oscPhase = 0.0f;
+        baseFreqHz = xoutwit::midiToFreqTune(midiNote, static_cast<float>(pitchOffset));
+        targetFreqHz = baseFreqHz; // Seance P1: sync target with base on hard trigger
+        gliding = false;
 
         // Re-seed CA tape on note-on — starts from a single live cell
         tape.fill(false);
@@ -143,17 +133,16 @@ public:
     // interpolation is handled per-sample via glideFreq in the adapter.
     void setGlideTarget(int midiNote, float velocity) noexcept
     {
-        currentNote     = midiNote;
+        currentNote = midiNote;
         currentVelocity = velocity;
-        targetFreqHz    = xoutwit::midiToFreqTune(midiNote,
-                                                    static_cast<float>(pitchOffset));
-        gliding         = true;
+        targetFreqHz = xoutwit::midiToFreqTune(midiNote, static_cast<float>(pitchOffset));
+        gliding = true;
     }
 
     void noteOff() noexcept
     {
         noteActive = false;
-        gliding    = false;
+        gliding = false;
     }
 
     //==========================================================================
@@ -166,8 +155,7 @@ public:
     //   triggerThresh: [0,1] minimum CA density fraction to allow oscillator output
     //==========================================================================
 
-    float processSample(float /*extInput*/, float chromAmount,
-                        float filterRes, int filterType,
+    float processSample(float /*extInput*/, float chromAmount, float filterRes, int filterType,
                         float triggerThresh) noexcept
     {
         justStepped = false;
@@ -195,12 +183,13 @@ public:
         // Attack: 1 sample (instant); release: exponential (~20ms)
         // Coefficient cached in prepare() (Seance P4)
         stepEnvGain *= stepEnvRelCoeff;
-        stepEnvGain  = xoutwit::flushDenormal(stepEnvGain);
+        stepEnvGain = xoutwit::flushDenormal(stepEnvGain);
 
         if (stepEnvGain < 0.00001f)
         {
             stepEnvGain = 0.0f;
-            if (!noteActive) return 0.0f;
+            if (!noteActive)
+                return 0.0f;
         }
 
         // --- Glide (Seance P1): smoothly interpolate toward target frequency ---
@@ -216,17 +205,18 @@ public:
         }
 
         // --- Oscillator ---
-        float freq    = baseFreqHz;
+        float freq = baseFreqHz;
         float phaseInc = freq * invSr;
-        oscPhase      += phaseInc;
-        if (oscPhase >= 1.0f) oscPhase -= 1.0f;
+        oscPhase += phaseInc;
+        if (oscPhase >= 1.0f)
+            oscPhase -= 1.0f;
 
         float osc = generateOscillator(oscPhase, phaseInc);
 
         // --- Chromatophore: modulate filter cutoff with CA density ---
-        float density    = getDensity();
-        float modCutoff  = baseFilterHz * (1.0f + chromAmount * density * 3.0f);
-        modCutoff        = std::clamp(modCutoff, 20.0f, 20000.0f);
+        float density = getDensity();
+        float modCutoff = baseFilterHz * (1.0f + chromAmount * density * 3.0f);
+        modCutoff = std::clamp(modCutoff, 20.0f, 20000.0f);
 
         // --- SVF filter (TPT topology) ---
         float filtered = processSVF(osc, modCutoff, filterRes, filterType);
@@ -252,7 +242,8 @@ public:
     {
         int live = 0;
         for (int i = 0; i < tapeLen; ++i)
-            if (tape[static_cast<size_t>(i)]) ++live;
+            if (tape[static_cast<size_t>(i)])
+                ++live;
         return static_cast<float>(live) / static_cast<float>(std::max(1, tapeLen));
     }
 
@@ -260,33 +251,31 @@ public:
     // Public state (accessed by adapter)
     //==========================================================================
 
-    bool justStepped = false;  // true for 1 sample after each CA step
+    bool justStepped = false; // true for 1 sample after each CA step
 
 private:
-
     //==========================================================================
     // Wolfram elementary CA
     //==========================================================================
 
     static constexpr int kMaxTape = 64;
 
-    std::array<bool, kMaxTape> tape    {};
-    std::array<bool, kMaxTape> tapeTmp {};
+    std::array<bool, kMaxTape> tape{};
+    std::array<bool, kMaxTape> tapeTmp{};
 
-    int     tapeLen = 16;
-    uint8_t caRule  = 110;
+    int tapeLen = 16;
+    uint8_t caRule = 110;
 
     void advanceCA() noexcept
     {
         for (int i = 0; i < tapeLen; ++i)
         {
-            int left   = (i - 1 + tapeLen) % tapeLen;
-            int right  = (i + 1)           % tapeLen;
+            int left = (i - 1 + tapeLen) % tapeLen;
+            int right = (i + 1) % tapeLen;
 
             // 3-cell neighbourhood → bit pattern [L, C, R]
-            uint8_t pattern = (tape[static_cast<size_t>(left)]  ? 4u : 0u)
-                            | (tape[static_cast<size_t>(i)]      ? 2u : 0u)
-                            | (tape[static_cast<size_t>(right)]  ? 1u : 0u);
+            uint8_t pattern = (tape[static_cast<size_t>(left)] ? 4u : 0u) | (tape[static_cast<size_t>(i)] ? 2u : 0u) |
+                              (tape[static_cast<size_t>(right)] ? 1u : 0u);
 
             tapeTmp[static_cast<size_t>(i)] = (caRule >> pattern) & 1u;
         }
@@ -297,19 +286,19 @@ private:
     // Oscillator
     //==========================================================================
 
-    float oscPhase   = 0.0f;
-    int   waveShape  = 0;    // 0=Saw, 1=Pulse, 2=Sine
+    float oscPhase = 0.0f;
+    int waveShape = 0; // 0=Saw, 1=Pulse, 2=Sine
 
     // PolyBLEP correction — reduces aliasing at discontinuities (Seance P3)
     // t = phase distance from discontinuity, dt = phaseInc
     static float polyBLEP(float t, float dt) noexcept
     {
-        if (t < dt)  // rising edge: t in [0, dt)
+        if (t < dt) // rising edge: t in [0, dt)
         {
             t /= dt;
             return t + t - t * t - 1.0f;
         }
-        else if (t > 1.0f - dt)  // falling edge: t in (1-dt, 1)
+        else if (t > 1.0f - dt) // falling edge: t in (1-dt, 1)
         {
             t = (t - 1.0f) / dt;
             return t * t + t + t + 1.0f;
@@ -321,32 +310,33 @@ private:
     {
         switch (waveShape)
         {
-            case 0: // Saw with PolyBLEP anti-aliasing
-            {
-                float saw = 2.0f * phase - 1.0f;
-                saw -= polyBLEP(phase, phaseInc);
-                return saw;
-            }
+        case 0: // Saw with PolyBLEP anti-aliasing
+        {
+            float saw = 2.0f * phase - 1.0f;
+            saw -= polyBLEP(phase, phaseInc);
+            return saw;
+        }
 
-            case 1: // Pulse (50% duty) with PolyBLEP anti-aliasing
-            {
-                float pulse = phase < 0.5f ? 1.0f : -1.0f;
-                pulse += polyBLEP(phase, phaseInc);              // discontinuity at phase=0
-                float shifted = phase + 0.5f;
-                if (shifted >= 1.0f) shifted -= 1.0f;
-                pulse -= polyBLEP(shifted, phaseInc);            // discontinuity at phase=0.5
-                return pulse;
-            }
+        case 1: // Pulse (50% duty) with PolyBLEP anti-aliasing
+        {
+            float pulse = phase < 0.5f ? 1.0f : -1.0f;
+            pulse += polyBLEP(phase, phaseInc); // discontinuity at phase=0
+            float shifted = phase + 0.5f;
+            if (shifted >= 1.0f)
+                shifted -= 1.0f;
+            pulse -= polyBLEP(shifted, phaseInc); // discontinuity at phase=0.5
+            return pulse;
+        }
 
-            case 2: // Sine (no anti-aliasing needed)
-                return xoutwit::fastSin(phase * 6.28318530f);
+        case 2: // Sine (no anti-aliasing needed)
+            return xoutwit::fastSin(phase * 6.28318530f);
 
-            default:
-            {
-                float saw = 2.0f * phase - 1.0f;
-                saw -= polyBLEP(phase, phaseInc);
-                return saw;
-            }
+        default:
+        {
+            float saw = 2.0f * phase - 1.0f;
+            saw -= polyBLEP(phase, phaseInc);
+            return saw;
+        }
         }
     }
 
@@ -354,13 +344,13 @@ private:
     // State-variable filter (Chamberlin TPT)
     //==========================================================================
 
-    float svfIc1 = 0.0f;  // integrator 1 state (band output)
-    float svfIc2 = 0.0f;  // integrator 2 state (LP output)
+    float svfIc1 = 0.0f; // integrator 1 state (band output)
+    float svfIc2 = 0.0f; // integrator 2 state (LP output)
 
     float processSVF(float input, float cutoffHz, float resonance, int type) noexcept
     {
         // TPT SVF — see Zavalishin "The Art of VA Filter Design"
-        cutoffHz = std::min(cutoffHz, 0.499f / invSr);  // #604: clamp fc < Nyquist before tan to prevent overflow
+        cutoffHz = std::min(cutoffHz, 0.499f / invSr); // #604: clamp fc < Nyquist before tan to prevent overflow
         float f = xoutwit::fastTan(3.14159265f * cutoffHz * invSr);
         float q = std::max(0.5f, 0.5f + resonance * 9.5f); // map [0,1] -> [0.5, 10]
         float r = 1.0f / q;
@@ -374,9 +364,12 @@ private:
 
         switch (type)
         {
-            case 1:  return bp;
-            case 2:  return hp;
-            default: return lp;
+        case 1:
+            return bp;
+        case 2:
+            return hp;
+        default:
+            return lp;
         }
     }
 
@@ -384,36 +377,36 @@ private:
     // Per-arm parameters (set via setParams / setStepRate)
     //==========================================================================
 
-    float armLevel     = 0.7f;
+    float armLevel = 0.7f;
     float baseFilterHz = 4000.0f;
-    float armPan       = 0.0f;
-    int   pitchOffset  = 0;
+    float armPan = 0.0f;
+    int pitchOffset = 0;
 
-    float stepRate  = 4.0f;   // Hz
-    float stepPhase = 0.0f;   // [0, 1)
+    float stepRate = 4.0f;  // Hz
+    float stepPhase = 0.0f; // [0, 1)
 
     //==========================================================================
     // Voice state
     //==========================================================================
 
-    bool  noteActive      = false;
-    int   currentNote     = 60;
+    bool noteActive = false;
+    int currentNote = 60;
     float currentVelocity = 0.0f;
-    float baseFreqHz      = 261.63f;
-    float stepEnvGain     = 0.0f;
+    float baseFreqHz = 261.63f;
+    float stepEnvGain = 0.0f;
 
     float synapsePhaseNudge = 0.0f;
 
     // Glide state (Seance P1)
     float targetFreqHz = 261.63f;
-    float glideRate    = 0.005f;  // per-sample smoothing rate (set from adapter)
-    bool  gliding      = false;
+    float glideRate = 0.005f; // per-sample smoothing rate (set from adapter)
+    bool gliding = false;
 
     //==========================================================================
     // Engine state
     //==========================================================================
 
-    float sr    = 48000.0f;
+    float sr = 48000.0f;
     float invSr = 1.0f / 48000.0f;
     float stepEnvRelCoeff = 0.9986f; // cached: fastExp(-1/(0.02*48000)), updated in prepare()
 };

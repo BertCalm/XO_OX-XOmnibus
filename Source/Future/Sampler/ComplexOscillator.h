@@ -5,7 +5,8 @@
 #include <algorithm>
 #include "FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ComplexOscillator — Buchla 259-inspired bidirectional FM oscillator.
@@ -54,9 +55,9 @@ class ComplexOscillator
 public:
     ComplexOscillator() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = std::max (1.0, sampleRate);
+        sr = std::max(1.0, sampleRate);
         updatePhaseIncrements();
         reset();
     }
@@ -66,67 +67,61 @@ public:
 
     /// Uniform FM depth scalar (0..1). Scales both fmIndexAB and fmIndexBA.
     /// Maximum index at depth=1 is kMaxIndex (5 rad — DX7 FM range).
-    void setFMDepth (float d)
+    void setFMDepth(float d)
     {
-        fmDepth = std::clamp (d, 0.0f, 1.0f);
+        fmDepth = std::clamp(d, 0.0f, 1.0f);
         // Symmetric split scaled by symmetry is applied inside processBlock
     }
 
     /// Timbre mod depth (0..1) — controls how strongly B's waveshaper is active.
-    void setTimbreDepth (float d)     { timbreDepth  = std::clamp (d, 0.0f, 1.0f); }
+    void setTimbreDepth(float d) { timbreDepth = std::clamp(d, 0.0f, 1.0f); }
 
     /// Symmetry (0..1): 0 = only A→B FM, 0.5 = equal bidirectional, 1 = only B→A.
-    void setSymmetry (float s)        { symmetry     = std::clamp (s, 0.0f, 1.0f); }
+    void setSymmetry(float s) { symmetry = std::clamp(s, 0.0f, 1.0f); }
 
     /// Frequency ratio: freqB = freqA × fmRatio (0.5..8).
-    void setFMRatio (float r)
+    void setFMRatio(float r)
     {
-        fmRatio = std::clamp (r, 0.5f, 8.0f);
+        fmRatio = std::clamp(r, 0.5f, 8.0f);
         updatePhaseIncrements();
     }
 
     /// Set both oscillator self-feedback identically (0..0.5, same range as v1).
-    void setFeedback (float fb)
+    void setFeedback(float fb)
     {
-        float clamped = std::clamp (fb, 0.0f, 0.95f);
+        float clamped = std::clamp(fb, 0.0f, 0.95f);
         feedbackA = clamped;
         feedbackB = clamped;
     }
 
     /// Wet / dry blend with incoming engine audio streams (0..1).
-    void setMix (float m)             { mix          = std::clamp (m, 0.0f, 1.0f); }
+    void setMix(float m) { mix = std::clamp(m, 0.0f, 1.0f); }
 
     //--------------------------------------------------------------------------
     // New setters — finer bidirectional FM control
 
     /// Base frequency of oscA in Hz.  oscB = freqA × fmRatio.
-    void setBaseFreq (float hz)
+    void setBaseFreq(float hz)
     {
-        freqA = std::max (hz, 0.1f);
+        freqA = std::max(hz, 0.1f);
         updatePhaseIncrements();
     }
 
     /// A→B FM index in radians (0..kMaxIndex).  Larger = more sideband spread.
-    void setFMIndexAB (float index)
-    {
-        fmIndexAB = std::clamp (index, 0.0f, kMaxIndex);
-    }
+    void setFMIndexAB(float index) { fmIndexAB = std::clamp(index, 0.0f, kMaxIndex); }
 
     /// B→A FM index in radians (0..kMaxIndex).  Buchla favours asymmetric ratios.
-    void setFMIndexBA (float index)
-    {
-        fmIndexBA = std::clamp (index, 0.0f, kMaxIndex);
-    }
+    void setFMIndexBA(float index) { fmIndexBA = std::clamp(index, 0.0f, kMaxIndex); }
 
     /// Per-oscillator self-feedback (0..0.95). Higher = metallic self-resonance.
-    void setFeedbackA (float fb)      { feedbackA = std::clamp (fb, 0.0f, 0.95f); }
-    void setFeedbackB (float fb)      { feedbackB = std::clamp (fb, 0.0f, 0.95f); }
+    void setFeedbackA(float fb) { feedbackA = std::clamp(fb, 0.0f, 0.95f); }
+    void setFeedbackB(float fb) { feedbackB = std::clamp(fb, 0.0f, 0.95f); }
 
     /// Oscillator B waveshaper mode for oscB:
     ///   0 = pure sine  (clean partials)
     ///   1 = soft-clip sine  (odd harmonics, tube-like)
     ///   2 = folded sine  (Buchla-style wavefold — richer high-end)
-    void setTimbreMode (int mode)     { timbreMode = std::clamp (mode, 0, 2); }
+    void setTimbreMode(int mode) { timbreMode = std::clamp(mode, 0, 2); }
 
     //--------------------------------------------------------------------------
     // Core processing
@@ -136,7 +131,7 @@ public:
     /// @param engineA   Dry signal from engine slot A (modified in place)
     /// @param engineB   Dry signal from engine slot B (modified in place)
     /// @param numSamples Block size
-    void processBlock (float* engineA, float* engineB, int numSamples)
+    void processBlock(float* engineA, float* engineB, int numSamples)
     {
         // Early-out: if mix is negligible or both FM indices and feedback are zero,
         // the wet signal is silent and we can skip the whole loop.
@@ -149,20 +144,20 @@ public:
         const float aToBIdx = fmIndexAB + fmDepth * kMaxIndex * (1.0f - symmetry);
         const float bToAIdx = fmIndexBA + fmDepth * kMaxIndex * symmetry;
 
-        constexpr float pi    = 3.14159265358979323846f;
+        constexpr float pi = 3.14159265358979323846f;
         constexpr float twoPi = 2.0f * pi;
 
         // Cache state locals to avoid repeated member access
-        float pA       = phaseA;
-        float pB       = phaseB;
-        float incA     = phaseIncA;
-        float incB     = phaseIncB;
+        float pA = phaseA;
+        float pB = phaseB;
+        float incA = phaseIncA;
+        float incB = phaseIncB;
         float prevOutA = prevA;
         float prevOutB = prevB;
-        const float fbA       = feedbackA;
-        const float fbB       = feedbackB;
-        const float tdepth    = timbreDepth;
-        const int   tmode     = timbreMode;
+        const float fbA = feedbackA;
+        const float fbB = feedbackB;
+        const float tdepth = timbreDepth;
+        const int tmode = timbreMode;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -171,16 +166,14 @@ public:
             // B's previous output modulates A's instantaneous phase.
             // A's previous output provides self-feedback.
             // Both use fastTanh limiting on the modulation term to bound DC drift.
-            float modTermA = fastTanh (bToAIdx * prevOutB * 0.95f)
-                           + fbA * prevOutA;
-            float outA = fastSin (pA + modTermA);
+            float modTermA = fastTanh(bToAIdx * prevOutB * 0.95f) + fbA * prevOutA;
+            float outA = fastSin(pA + modTermA);
 
             //------------------------------------------------------------------
             // Step 2 — Compute oscB output.
             // A's previous output modulates B's instantaneous phase.
-            float modTermB = fastTanh (aToBIdx * prevOutA * 0.95f)
-                           + fbB * prevOutB;
-            float rawB = fastSin (pB + modTermB);
+            float modTermB = fastTanh(aToBIdx * prevOutA * 0.95f) + fbB * prevOutB;
+            float rawB = fastSin(pB + modTermB);
 
             // Apply oscB waveshaper according to timbreMode.
             // timbreDepth blends between pure sine and shaped version.
@@ -190,23 +183,24 @@ public:
                 float shaped = rawB;
                 switch (tmode)
                 {
-                    case 1:
-                        // Soft-clip: drive then clip — odd harmonics, tube warmth
-                        shaped = fastTanh (rawB * (1.0f + tdepth * 3.0f));
-                        break;
+                case 1:
+                    // Soft-clip: drive then clip — odd harmonics, tube warmth
+                    shaped = fastTanh(rawB * (1.0f + tdepth * 3.0f));
+                    break;
 
-                    case 2:
-                        // Wavefold: fold the sine around ±1 — Buchla-style spectral richness
-                        {
-                            float driven = rawB * (1.0f + tdepth * 2.0f);
-                            // One fold: if |driven| > 1, reflect back
-                            // fastSin applied to the folded argument approximates the
-                            // continuous wavefold characteristic without lookup tables.
-                            shaped = fastSin (driven * pi * 0.5f);
-                        }
-                        break;
+                case 2:
+                    // Wavefold: fold the sine around ±1 — Buchla-style spectral richness
+                    {
+                        float driven = rawB * (1.0f + tdepth * 2.0f);
+                        // One fold: if |driven| > 1, reflect back
+                        // fastSin applied to the folded argument approximates the
+                        // continuous wavefold characteristic without lookup tables.
+                        shaped = fastSin(driven * pi * 0.5f);
+                    }
+                    break;
 
-                    default: break;  // case 0: pure sine, no shaping
+                default:
+                    break; // case 0: pure sine, no shaping
                 }
                 outB = rawB + tdepth * (shaped - rawB);
             }
@@ -218,17 +212,23 @@ public:
 
             // Wrap to [-π, π] to keep fastSin in its accurate range.
             // Subtract/add 2π rather than fmod — cheaper on the DSP thread.
-            if (pA >  pi) pA -= twoPi;
-            if (pA < -pi) pA += twoPi;
-            if (pB >  pi) pB -= twoPi;
-            if (pB < -pi) pB += twoPi;
+            if (pA > pi)
+                pA -= twoPi;
+            if (pA < -pi)
+                pA += twoPi;
+            if (pB > pi)
+                pB -= twoPi;
+            if (pB < -pi)
+                pB += twoPi;
 
             //------------------------------------------------------------------
             // Step 4 — Update feedback state with denormal protection
             prevOutA = outA;
             prevOutB = outB;
-            if (std::abs (prevOutA) < 1e-15f) prevOutA = 0.0f;
-            if (std::abs (prevOutB) < 1e-15f) prevOutB = 0.0f;
+            if (std::abs(prevOutA) < 1e-15f)
+                prevOutA = 0.0f;
+            if (std::abs(prevOutB) < 1e-15f)
+                prevOutB = 0.0f;
 
             //------------------------------------------------------------------
             // Step 5 — Wet/dry mix with incoming engine streams
@@ -239,62 +239,63 @@ public:
         // Write state back
         phaseA = pA;
         phaseB = pB;
-        prevA  = prevOutA;
-        prevB  = prevOutB;
+        prevA = prevOutA;
+        prevB = prevOutB;
     }
 
     void reset()
     {
         phaseA = phaseB = 0.0f;
-        prevA  = prevB  = 0.0f;
+        prevA = prevB = 0.0f;
     }
 
 private:
     //--------------------------------------------------------------------------
     // State
 
-    double sr       = 44100.0;
+    double sr = 44100.0;
 
-    float phaseA    = 0.0f;
-    float phaseB    = 0.0f;
-    float phaseIncA = 0.0f;   ///< 2π × freqA / sr  (radians per sample)
-    float phaseIncB = 0.0f;   ///< 2π × freqB / sr
+    float phaseA = 0.0f;
+    float phaseB = 0.0f;
+    float phaseIncA = 0.0f; ///< 2π × freqA / sr  (radians per sample)
+    float phaseIncB = 0.0f; ///< 2π × freqB / sr
 
-    float prevA     = 0.0f;   ///< oscA output one sample ago (bidirectional FM + feedback)
-    float prevB     = 0.0f;   ///< oscB output one sample ago
+    float prevA = 0.0f; ///< oscA output one sample ago (bidirectional FM + feedback)
+    float prevB = 0.0f; ///< oscB output one sample ago
 
     //--------------------------------------------------------------------------
     // Parameters
 
-    static constexpr float kMaxIndex = 5.0f;  ///< Maximum FM index (radians). DX7 range.
+    static constexpr float kMaxIndex = 5.0f; ///< Maximum FM index (radians). DX7 range.
 
-    float freqA      = 220.0f;  ///< Fundamental of oscA (Hz)
-    float fmRatio    = 2.0f;    ///< freqB = freqA × fmRatio
+    float freqA = 220.0f; ///< Fundamental of oscA (Hz)
+    float fmRatio = 2.0f; ///< freqB = freqA × fmRatio
 
     // Fine-grained per-direction FM indices (set directly or via convenience API)
-    float fmIndexAB  = 0.0f;    ///< A → B, radians
-    float fmIndexBA  = 0.0f;    ///< B → A, radians
+    float fmIndexAB = 0.0f; ///< A → B, radians
+    float fmIndexBA = 0.0f; ///< B → A, radians
 
     // Self-feedback per oscillator (0..0.95 — tanh-limited to prevent runaway)
-    float feedbackA  = 0.0f;
-    float feedbackB  = 0.0f;
+    float feedbackA = 0.0f;
+    float feedbackB = 0.0f;
 
     // Convenience scalars (v1 API mapping)
-    float fmDepth    = 0.0f;    ///< Uniform FM depth scalar (0..1)
-    float timbreDepth= 0.0f;    ///< OscB waveshaper depth (0..1)
-    float symmetry   = 0.5f;    ///< 0 = only A→B, 0.5 = balanced, 1 = only B→A
+    float fmDepth = 0.0f;     ///< Uniform FM depth scalar (0..1)
+    float timbreDepth = 0.0f; ///< OscB waveshaper depth (0..1)
+    float symmetry = 0.5f;    ///< 0 = only A→B, 0.5 = balanced, 1 = only B→A
 
-    float mix        = 1.0f;    ///< Wet/dry blend with incoming engine audio
+    float mix = 1.0f; ///< Wet/dry blend with incoming engine audio
 
-    int   timbreMode = 0;       ///< 0=sine, 1=soft-clip, 2=wavefold
+    int timbreMode = 0; ///< 0=sine, 1=soft-clip, 2=wavefold
 
     //--------------------------------------------------------------------------
     void updatePhaseIncrements()
     {
-        if (sr <= 0.0) return;
+        if (sr <= 0.0)
+            return;
         constexpr double twoPi = 6.28318530717958647692;
-        phaseIncA = static_cast<float> (twoPi * freqA / sr);
-        phaseIncB = static_cast<float> (twoPi * (freqA * fmRatio) / sr);
+        phaseIncA = static_cast<float>(twoPi * freqA / sr);
+        phaseIncB = static_cast<float>(twoPi * (freqA * fmRatio) / sr);
     }
 };
 

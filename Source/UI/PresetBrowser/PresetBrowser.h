@@ -9,7 +9,8 @@
 // intentionally — those symbols are already in scope when this header is
 // compiled as part of XOceanusEditor.h.
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // PresetBrowser — Searchable, filterable browser for 10,028+ factory presets.
@@ -42,37 +43,32 @@ public:
                                          GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
         searchBox.setFont(GalleryFonts::body(13.0f));
         searchBox.addListener(this);
-        searchBox.setColour(juce::TextEditor::backgroundColourId,
-                            GalleryColors::get(GalleryColors::slotBg()));
-        searchBox.setColour(juce::TextEditor::outlineColourId,
-                            GalleryColors::get(GalleryColors::borderGray()));
-        searchBox.setColour(juce::TextEditor::textColourId,
-                            GalleryColors::get(GalleryColors::textDark()));
+        searchBox.setColour(juce::TextEditor::backgroundColourId, GalleryColors::get(GalleryColors::slotBg()));
+        searchBox.setColour(juce::TextEditor::outlineColourId, GalleryColors::get(GalleryColors::borderGray()));
+        searchBox.setColour(juce::TextEditor::textColourId, GalleryColors::get(GalleryColors::textDark()));
         A11y::setup(searchBox, "Search presets", "Type to filter preset list by name, tag, or engine");
         addAndMakeVisible(searchBox);
 
         // --- Mood filter buttons ---
-        static const char* moods[] = {
-            "All", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
-            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
-        };
+        static const char* moods[] = {"All",      "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
+                                      "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
+                                      "Ethereal", "Kinetic",    "Luminous",   "Organic"};
 
         for (auto* mood : moods)
         {
             auto* btn = moodButtons.add(new juce::TextButton(mood));
             btn->setClickingTogglesState(true);
             btn->setRadioGroupId(42);
-            btn->setColour(juce::TextButton::buttonColourId,
-                           GalleryColors::get(GalleryColors::shellWhite()));
-            btn->setColour(juce::TextButton::buttonOnColourId,
-                           GalleryColors::get(GalleryColors::xoGold));
-            btn->setColour(juce::TextButton::textColourOnId,
-                           GalleryColors::get(GalleryColors::textDark()));
-            btn->setColour(juce::TextButton::textColourOffId,
-                           GalleryColors::get(GalleryColors::textMid()));
-            btn->onClick = [this] { similarActive = false; applyFilters(); };
-            A11y::setup(*btn, juce::String("Filter: ") + mood,
-                        juce::String("Show only ") + mood + " presets");
+            btn->setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::shellWhite()));
+            btn->setColour(juce::TextButton::buttonOnColourId, GalleryColors::get(GalleryColors::xoGold));
+            btn->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
+            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+            btn->onClick = [this]
+            {
+                similarActive = false;
+                applyFilters();
+            };
+            A11y::setup(*btn, juce::String("Filter: ") + mood, juce::String("Show only ") + mood + " presets");
             GalleryLookAndFeel::setMoodPillStyle(*btn);
             addAndMakeVisible(btn);
         }
@@ -83,29 +79,23 @@ public:
         // --- Preset list ---
         listBox.setModel(this);
         listBox.setRowHeight(36);
-        listBox.setColour(juce::ListBox::backgroundColourId,
-                          juce::Colours::transparentBlack);
-        listBox.setColour(juce::ListBox::outlineColourId,
-                          GalleryColors::get(GalleryColors::borderGray()));
+        listBox.setColour(juce::ListBox::backgroundColourId, juce::Colours::transparentBlack);
+        listBox.setColour(juce::ListBox::outlineColourId, GalleryColors::get(GalleryColors::borderGray()));
         listBox.setOutlineThickness(1);
         A11y::setup(listBox, "Preset list", "Scrollable list of presets — click to load");
         addAndMakeVisible(listBox);
 
         // --- Similar button (DNA distance) ---
         similarBtn.setButtonText("Find Similar");
-        similarBtn.setColour(juce::TextButton::buttonColourId,
-                             GalleryColors::get(GalleryColors::slotBg()));
-        similarBtn.setColour(juce::TextButton::textColourOffId,
-                             GalleryColors::get(GalleryColors::textMid()));
+        similarBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::slotBg()));
+        similarBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
         similarBtn.onClick = [this] { findSimilar(); };
-        A11y::setup(similarBtn, "Find Similar",
-                    "Find presets with similar sonic DNA to the selected preset");
+        A11y::setup(similarBtn, "Find Similar", "Find presets with similar sonic DNA to the selected preset");
         addAndMakeVisible(similarBtn);
 
         // --- Status label ---
         statusLabel.setFont(GalleryFonts::label(11.0f));
-        statusLabel.setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid()));
+        statusLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         statusLabel.setJustificationType(juce::Justification::centredLeft);
         addAndMakeVisible(statusLabel);
 
@@ -129,12 +119,9 @@ public:
     std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() override
     {
         return std::make_unique<juce::AccessibilityHandler>(
-            *this,
-            juce::AccessibilityRole::group,
-            juce::AccessibilityActions{}
-                .addAction(juce::AccessibilityActionType::focus, [this] {
-                    searchBox.grabKeyboardFocus();
-                }));
+            *this, juce::AccessibilityRole::group,
+            juce::AccessibilityActions{}.addAction(juce::AccessibilityActionType::focus,
+                                                   [this] { searchBox.grabKeyboardFocus(); }));
     }
 
     //==========================================================================
@@ -152,16 +139,16 @@ public:
         // Mood pills — flex-wrap layout
         {
             const int pillH = 22;
-            const int hGap  = 4;
-            const int vGap  = 4;
+            const int hGap = 4;
+            const int vGap = 4;
             int px = area.getX();
             int py = area.getY();
             const int maxX = area.getRight();
 
             for (auto* btn : moodButtons)
             {
-                int pillW = juce::jmax(36, juce::roundToInt(GalleryFonts::body(9.0f)
-                            .getStringWidthFloat(btn->getButtonText())) + 20);
+                int pillW = juce::jmax(
+                    36, juce::roundToInt(GalleryFonts::body(9.0f).getStringWidthFloat(btn->getButtonText())) + 20);
                 if (px + pillW > maxX && btn != moodButtons.getFirst())
                 {
                     px = area.getX();
@@ -184,29 +171,23 @@ public:
         listBox.setBounds(area);
     }
 
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
-    }
+    void paint(juce::Graphics& g) override { g.fillAll(GalleryColors::get(GalleryColors::shellWhite())); }
 
     //==========================================================================
     // ListBoxModel implementation
     //==========================================================================
 
-    int getNumRows() override
-    {
-        return static_cast<int>(filteredPresets.size());
-    }
+    int getNumRows() override { return static_cast<int>(filteredPresets.size()); }
 
     juce::String getNameForRow(int row) override
     {
-        if (row < 0 || row >= static_cast<int>(filteredPresets.size())) return {};
+        if (row < 0 || row >= static_cast<int>(filteredPresets.size()))
+            return {};
         const auto& p = filteredPresets[static_cast<size_t>(row)];
         return p.name + (p.mood.isEmpty() ? "" : ", " + p.mood);
     }
 
-    void paintListBoxItem(int row, juce::Graphics& g, int w, int h,
-                          bool isSelected) override
+    void paintListBoxItem(int row, juce::Graphics& g, int w, int h, bool isSelected) override
     {
         if (row < 0 || row >= static_cast<int>(filteredPresets.size()))
             return;
@@ -231,8 +212,7 @@ public:
         // Preset name — Inter 11.5px
         g.setFont(GalleryFonts::body(11.5f));
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
-        g.drawText(preset.name, 22, 0, w - 34, h,
-                   juce::Justification::centredLeft, true);
+        g.drawText(preset.name, 22, 0, w - 34, h, juce::Justification::centredLeft, true);
 
         // Engine tag badge — JetBrains Mono 9px, right-aligned
         g.setFont(GalleryFonts::value(9.0f));
@@ -242,10 +222,9 @@ public:
         for (const auto& eng : preset.engines)
         {
             if (eng.isNotEmpty())
-                meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng;  // middle dot separator
+                meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng; // middle dot separator
         }
-        g.drawText(meta, 22, h / 2, w - 34, h / 2,
-                   juce::Justification::centredLeft, true);
+        g.drawText(meta, 22, h / 2, w - 34, h / 2, juce::Justification::centredLeft, true);
 
         // Bottom separator
         g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.25f));
@@ -333,7 +312,7 @@ private:
     PresetManager& presetManager;
     juce::TextEditor searchBox;
     juce::OwnedArray<juce::TextButton> moodButtons;
-    juce::ListBox listBox { "PresetList", nullptr };
+    juce::ListBox listBox{"PresetList", nullptr};
     juce::TextButton similarBtn;
     juce::Label statusLabel;
 
@@ -384,16 +363,23 @@ private:
                 {
                     for (const auto& tag : preset.tags)
                         if (tag.toLowerCase().contains(searchText))
-                        { matches = true; break; }
+                        {
+                            matches = true;
+                            break;
+                        }
                 }
                 if (!matches)
                 {
                     for (const auto& eng : preset.engines)
                         if (eng.toLowerCase().contains(searchText))
-                        { matches = true; break; }
+                        {
+                            matches = true;
+                            break;
+                        }
                 }
 
-                if (!matches) continue;
+                if (!matches)
+                    continue;
             }
 
             filteredPresets.push_back(preset);
@@ -401,17 +387,14 @@ private:
 
         // Sort alphabetically by name
         std::sort(filteredPresets.begin(), filteredPresets.end(),
-                  [](const PresetData& a, const PresetData& b)
-                  {
-                      return a.name.compareIgnoreCase(b.name) < 0;
-                  });
+                  [](const PresetData& a, const PresetData& b) { return a.name.compareIgnoreCase(b.name) < 0; });
 
         listBox.updateContent();
         listBox.deselectAllRows();
         selectedIndex = -1;
 
-        juce::String statusText = juce::String(filteredPresets.size()) + " / "
-                                + juce::String(allPresets.size()) + " presets";
+        juce::String statusText =
+            juce::String(filteredPresets.size()) + " / " + juce::String(allPresets.size()) + " presets";
         if (similarActive)
             statusText = "Similar: " + statusText;
         statusLabel.setText(statusText, juce::dontSendNotification);
@@ -444,10 +427,8 @@ private:
         listBox.deselectAllRows();
         selectedIndex = -1;
 
-        statusLabel.setText(
-            "Similar to: " + selected.name + " (" +
-            juce::String(filteredPresets.size()) + " results)",
-            juce::dontSendNotification);
+        statusLabel.setText("Similar to: " + selected.name + " (" + juce::String(filteredPresets.size()) + " results)",
+                            juce::dontSendNotification);
     }
 
     //==========================================================================
@@ -456,21 +437,36 @@ private:
 
     static juce::Colour moodColour(const juce::String& mood)
     {
-        if (mood == "Foundation")  return juce::Colour(0xFF00A6D6);  // Neon Tetra Blue
-        if (mood == "Atmosphere")  return juce::Colour(0xFFE8839B);  // Axolotl Gill Pink
-        if (mood == "Entangled")   return juce::Colour(0xFF7B2D8B);  // Violet
-        if (mood == "Prism")       return juce::Colour(0xFF0066FF);  // Electric Blue
-        if (mood == "Flux")        return juce::Colour(0xFFE9A84A);  // Amber
-        if (mood == "Aether")      return juce::Colour(0xFFA78BFA);  // Lavender
-        if (mood == "Family")      return juce::Colour(0xFFE9C46A);  // XO Gold
-        if (mood == "Submerged")   return juce::Colour(0xFF2D0A4E);  // Trench Violet
-        if (mood == "Coupling")    return juce::Colour(0xFF1A6B5A);  // Oxbow Teal
-        if (mood == "Crystalline") return juce::Colour(0xFFA8D8EA);  // Spectral Ice
-        if (mood == "Deep")        return juce::Colour(0xFF003366);  // Synth Bass Blue
-        if (mood == "Ethereal")    return juce::Colour(0xFF9B5DE5);  // Synapse Violet
-        if (mood == "Kinetic")     return juce::Colour(0xFFE5B80B);  // Crate Wax Yellow
-        if (mood == "Luminous")    return juce::Colour(0xFFC6E377);  // Emergence Lime
-        if (mood == "Organic")     return juce::Colour(0xFF228B22);  // Forest Green
+        if (mood == "Foundation")
+            return juce::Colour(0xFF00A6D6); // Neon Tetra Blue
+        if (mood == "Atmosphere")
+            return juce::Colour(0xFFE8839B); // Axolotl Gill Pink
+        if (mood == "Entangled")
+            return juce::Colour(0xFF7B2D8B); // Violet
+        if (mood == "Prism")
+            return juce::Colour(0xFF0066FF); // Electric Blue
+        if (mood == "Flux")
+            return juce::Colour(0xFFE9A84A); // Amber
+        if (mood == "Aether")
+            return juce::Colour(0xFFA78BFA); // Lavender
+        if (mood == "Family")
+            return juce::Colour(0xFFE9C46A); // XO Gold
+        if (mood == "Submerged")
+            return juce::Colour(0xFF2D0A4E); // Trench Violet
+        if (mood == "Coupling")
+            return juce::Colour(0xFF1A6B5A); // Oxbow Teal
+        if (mood == "Crystalline")
+            return juce::Colour(0xFFA8D8EA); // Spectral Ice
+        if (mood == "Deep")
+            return juce::Colour(0xFF003366); // Synth Bass Blue
+        if (mood == "Ethereal")
+            return juce::Colour(0xFF9B5DE5); // Synapse Violet
+        if (mood == "Kinetic")
+            return juce::Colour(0xFFE5B80B); // Crate Wax Yellow
+        if (mood == "Luminous")
+            return juce::Colour(0xFFC6E377); // Emergence Lime
+        if (mood == "Organic")
+            return juce::Colour(0xFF228B22); // Forest Green
         return juce::Colour(GalleryColors::borderGray());
     }
 

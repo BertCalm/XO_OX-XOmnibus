@@ -12,7 +12,8 @@
 #include <array>
 #include <cmath>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -49,7 +50,6 @@ namespace xoceanus {
 //
 //==============================================================================
 
-
 //==============================================================================
 // MorphOscillator — Four-timbre wavetable with continuous crossfade.
 //
@@ -75,24 +75,21 @@ public:
 
     MorphOscillator() { buildTables(); }
 
-    void setFrequency (float frequencyHz, float sampleRate) noexcept
+    void setFrequency(float frequencyHz, float sampleRate) noexcept
     {
         if (sampleRate > 0.0f)
-            phaseIncrement = static_cast<double> (frequencyHz) / static_cast<double> (sampleRate);
+            phaseIncrement = static_cast<double>(frequencyHz) / static_cast<double>(sampleRate);
     }
 
-    void setMorph (float morphPosition) noexcept
-    {
-        morph = std::max (0.0f, std::min (3.0f, morphPosition));
-    }
+    void setMorph(float morphPosition) noexcept { morph = std::max(0.0f, std::min(3.0f, morphPosition)); }
 
     float processSample() noexcept
     {
         float out = 0.0f;
 
         // Determine which two tables to crossfade between
-        int tableIndex = static_cast<int> (std::floor (morph));
-        float crossfadeFraction = morph - static_cast<float> (tableIndex);
+        int tableIndex = static_cast<int>(std::floor(morph));
+        float crossfadeFraction = morph - static_cast<float>(tableIndex);
 
         if (tableIndex >= 3)
         {
@@ -102,22 +99,24 @@ public:
         else if (tableIndex == 2 && crossfadeFraction > 0.0f)
         {
             // Square-to-noise crossfade (morph 2.0 - 3.0)
-            float tableValue = readTable (tableIndex);
+            float tableValue = readTable(tableIndex);
             float noiseValue = noiseGenerator.nextFloat() * 2.0f - 1.0f;
             out = tableValue * (1.0f - crossfadeFraction) + noiseValue * crossfadeFraction;
         }
         else
         {
             // Standard table-to-table crossfade (sine<->saw or saw<->square)
-            float a = readTable (tableIndex);
-            float b = readTable (tableIndex + 1);
+            float a = readTable(tableIndex);
+            float b = readTable(tableIndex + 1);
             out = a * (1.0f - crossfadeFraction) + b * crossfadeFraction;
         }
 
         // Advance phase accumulator with wrapping
         phase += phaseIncrement;
-        while (phase >= 1.0) phase -= 1.0;
-        while (phase < 0.0) phase += 1.0;
+        while (phase >= 1.0)
+            phase -= 1.0;
+        while (phase < 0.0)
+            phase += 1.0;
 
         return out;
     }
@@ -130,44 +129,46 @@ private:
         constexpr double twoPi = 6.28318530717958647692; // 2 * pi, full cycle
         for (int i = 0; i < kTableSize; ++i)
         {
-            double normalizedPosition = static_cast<double> (i) / kTableSize;
-            sineTable[i]   = static_cast<float> (std::sin (twoPi * normalizedPosition));
-            sawTable[i]    = static_cast<float> (2.0 * normalizedPosition - 1.0);    // bipolar ramp
-            squareTable[i] = (normalizedPosition < 0.5) ? 1.0f : -1.0f;             // 50% duty cycle
+            double normalizedPosition = static_cast<double>(i) / kTableSize;
+            sineTable[i] = static_cast<float>(std::sin(twoPi * normalizedPosition));
+            sawTable[i] = static_cast<float>(2.0 * normalizedPosition - 1.0); // bipolar ramp
+            squareTable[i] = (normalizedPosition < 0.5) ? 1.0f : -1.0f;       // 50% duty cycle
         }
     }
 
-    float readTable (int tableIndex) const noexcept
+    float readTable(int tableIndex) const noexcept
     {
-        jassert (tableIndex >= 0 && tableIndex <= 2);
+        jassert(tableIndex >= 0 && tableIndex <= 2);
         if (tableIndex < 0 || tableIndex > 2)
             tableIndex = 0; // defensive fallback to sine
 
         // Linear interpolation between adjacent table samples
         double position = phase * kTableSize;
-        int sampleIndexA = static_cast<int> (position) & (kTableSize - 1);      // bitwise AND for fast modulo (table size is power of 2)
+        int sampleIndexA =
+            static_cast<int>(position) & (kTableSize - 1); // bitwise AND for fast modulo (table size is power of 2)
         int sampleIndexB = (sampleIndexA + 1) & (kTableSize - 1);
-        float interpolationFraction = static_cast<float> (position - std::floor (position));
+        float interpolationFraction = static_cast<float>(position - std::floor(position));
 
         const float* table = sineTable;
-        if (tableIndex == 1) table = sawTable;
-        else if (tableIndex == 2) table = squareTable;
+        if (tableIndex == 1)
+            table = sawTable;
+        else if (tableIndex == 2)
+            table = squareTable;
 
         return table[sampleIndexA] * (1.0f - interpolationFraction) + table[sampleIndexB] * interpolationFraction;
     }
 
     //-- Wavetable storage -----------------------------------------------------
-    float sineTable[kTableSize] {};
-    float sawTable[kTableSize] {};
-    float squareTable[kTableSize] {};
+    float sineTable[kTableSize]{};
+    float sawTable[kTableSize]{};
+    float squareTable[kTableSize]{};
 
     //-- Oscillator state ------------------------------------------------------
-    double phase = 0.0;              // normalized phase [0, 1)
-    double phaseIncrement = 0.0;     // phase advance per sample (freq / sampleRate)
-    float morph = 0.0f;             // morph position [0.0, 3.0]
-    juce::Random noiseGenerator;     // PRNG for noise morph region
+    double phase = 0.0;          // normalized phase [0, 1)
+    double phaseIncrement = 0.0; // phase advance per sample (freq / sampleRate)
+    float morph = 0.0f;          // morph position [0.0, 3.0]
+    juce::Random noiseGenerator; // PRNG for noise morph region
 };
-
 
 //==============================================================================
 // MoogLadder — 4-pole non-linear ladder filter.
@@ -186,7 +187,7 @@ private:
 class MoogLadder
 {
 public:
-    void prepare (double sampleRate) noexcept
+    void prepare(double sampleRate) noexcept
     {
         cachedSampleRate = sampleRate;
         reset();
@@ -194,21 +195,17 @@ public:
 
     void reset() noexcept
     {
-        for (auto& s : stage) s = 0.0;
-        for (auto& d : delayState) d = 0.0;
+        for (auto& s : stage)
+            s = 0.0;
+        for (auto& d : delayState)
+            d = 0.0;
     }
 
-    void setCutoff (float frequencyHz) noexcept
-    {
-        cutoffFrequency = std::max (20.0f, std::min (20000.0f, frequencyHz));
-    }
+    void setCutoff(float frequencyHz) noexcept { cutoffFrequency = std::max(20.0f, std::min(20000.0f, frequencyHz)); }
 
-    void setResonance (float resonanceAmount) noexcept
-    {
-        resonance = std::max (0.0f, std::min (1.0f, resonanceAmount));
-    }
+    void setResonance(float resonanceAmount) noexcept { resonance = std::max(0.0f, std::min(1.0f, resonanceAmount)); }
 
-    float processSample (float input) noexcept
+    float processSample(float input) noexcept
     {
         // Matched-Z (TPT / trapezoidal) prewarped cutoff coefficient.
         // g = tan(pi * fc / fs) is the same kernel used by CytomicSVF and the
@@ -218,12 +215,13 @@ public:
         // Cutoff is clamped to 0.49 * Nyquist before passing to fastTan so the
         // argument stays in the accurate range of the polynomial approximation.
         constexpr double kPi = 3.14159265358979323846;
-        double clampedCutoff = std::max (20.0, std::min (cachedSampleRate * 0.49, static_cast<double> (cutoffFrequency)));
-        double filterCoefficient = static_cast<double> (
-            fastTan (static_cast<float> (kPi * clampedCutoff / cachedSampleRate)));
+        double clampedCutoff = std::max(20.0, std::min(cachedSampleRate * 0.49, static_cast<double>(cutoffFrequency)));
+        double filterCoefficient =
+            static_cast<double>(fastTan(static_cast<float>(kPi * clampedCutoff / cachedSampleRate)));
 
         // Clamp g to a safe maximum to prevent instability at extreme cutoffs.
-        if (filterCoefficient > 0.99) filterCoefficient = 0.99;
+        if (filterCoefficient > 0.99)
+            filterCoefficient = 0.99;
 
         // Resonance feedback amount: scale 0-1 to 0-4 (the theoretical
         // self-oscillation threshold for a 4-pole ladder).
@@ -232,10 +230,10 @@ public:
         double feedbackAmount = resonance * 4.0 * (1.0 - 0.15 * filterCoefficient * filterCoefficient);
 
         // Subtract feedback from 4th stage output (the ladder's global feedback path)
-        double feedbackInput = static_cast<double> (input) - feedbackAmount * delayState[3];
+        double feedbackInput = static_cast<double>(input) - feedbackAmount * delayState[3];
 
         // Soft-clip the feedback-subtracted input to model transistor saturation
-        feedbackInput = static_cast<double> (fastTanh (static_cast<float> (feedbackInput)));
+        feedbackInput = static_cast<double>(fastTanh(static_cast<float>(feedbackInput)));
 
         // Process through 4 cascaded one-pole sections
         for (int i = 0; i < 4; ++i)
@@ -245,9 +243,9 @@ public:
             // Each stage: one-pole lowpass with tanh nonlinearity on both
             // the input and the delay state, modeling the transistor pair
             // in each rung of the original Moog ladder circuit.
-            stage[i] = delayState[i] + filterCoefficient
-                * (static_cast<double> (fastTanh (static_cast<float> (stageInput)))
-                   - static_cast<double> (fastTanh (static_cast<float> (delayState[i]))));
+            stage[i] =
+                delayState[i] + filterCoefficient * (static_cast<double>(fastTanh(static_cast<float>(stageInput))) -
+                                                     static_cast<double>(fastTanh(static_cast<float>(delayState[i]))));
             delayState[i] = stage[i];
 
             // Flush denormals in the feedback chain.
@@ -257,20 +255,20 @@ public:
             // spikes on sustained silent notes. Flushing to zero when below 1e-18
             // (well above the audible threshold of ~1e-7 for 24-bit audio) keeps
             // the filter computationally efficient during decay tails.
-            if (std::fabs (delayState[i]) < 1.0e-18) delayState[i] = 0.0;
+            if (std::fabs(delayState[i]) < 1.0e-18)
+                delayState[i] = 0.0;
         }
 
-        return static_cast<float> (stage[3]);
+        return static_cast<float>(stage[3]);
     }
 
 private:
-    double cachedSampleRate = 44100.0;      // stored sample rate for coefficient calculation
-    float cutoffFrequency = 1000.0f;        // filter cutoff in Hz [20, 20000]
-    float resonance = 0.0f;                 // resonance amount [0, 1] (1 = self-oscillation)
-    double stage[4] {};                     // four cascade stage outputs
-    double delayState[4] {};                // one-sample delay per stage (z^-1)
+    double cachedSampleRate = 44100.0; // stored sample rate for coefficient calculation
+    float cutoffFrequency = 1000.0f;   // filter cutoff in Hz [20, 20000]
+    float resonance = 0.0f;            // resonance amount [0, 1] (1 = self-oscillation)
+    double stage[4]{};                 // four cascade stage outputs
+    double delayState[4]{};            // one-sample delay per stage (z^-1)
 };
-
 
 //==============================================================================
 // MorphVoice — Per-voice state for the ODDOSCAR (pad) engine.
@@ -286,31 +284,30 @@ struct MorphVoice
     bool releasing = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTime = 0;             // voice-start counter for LRU stealing
+    uint64_t startTime = 0; // voice-start counter for LRU stealing
 
     //-- Oscillators -----------------------------------------------------------
-    MorphOscillator oscillators[3];      // 3 detuned morph oscillators for chorus width
-    PolyBLEP subOscillator;              // sub oscillator (sine, one octave below)
+    MorphOscillator oscillators[3]; // 3 detuned morph oscillators for chorus width
+    PolyBLEP subOscillator;         // sub oscillator (sine, one octave below)
 
     //-- Filter ----------------------------------------------------------------
-    MoogLadder filter;                   // 4-pole Moog ladder (Oscar's warmth)
+    MoogLadder filter; // 4-pole Moog ladder (Oscar's warmth)
 
     //-- Amplitude envelope (shared StandardADSR) ------------------------------
     StandardADSR ampEnv;
 
     //-- Voice stealing --------------------------------------------------------
-    float stealFadeLevel = 0.0f;         // crossfade level during voice stealing
+    float stealFadeLevel = 0.0f; // crossfade level during voice stealing
 
     //-- Drift modulation ------------------------------------------------------
-    float driftPhase = 0.0f;             // Perlin noise phase (randomized per note)
-    float driftValue = 0.0f;             // current drift output (stereo spread + FM)
+    float driftPhase = 0.0f; // Perlin noise phase (randomized per note)
+    float driftValue = 0.0f; // current drift output (stereo spread + FM)
 
     //-- Portamento/legato pitch tracking --------------------------------------
-    float currentFrequency = 440.0f;     // instantaneous (gliding) frequency in Hz
-    float targetFrequency  = 440.0f;     // destination frequency set on noteOn
-    float glideCoefficient = 1.0f;       // per-sample IIR coefficient (1.0 = instant)
+    float currentFrequency = 440.0f; // instantaneous (gliding) frequency in Hz
+    float targetFrequency = 440.0f;  // destination frequency set on noteOn
+    float glideCoefficient = 1.0f;   // per-sample IIR coefficient (1.0 = instant)
 };
-
 
 //==============================================================================
 // MorphEngine — Lush, evolving pad synthesis.
@@ -352,40 +349,40 @@ struct MorphVoice
 class MorphEngine : public SynthEngine
 {
 public:
-    static constexpr int kMaxVoices = 16;       // 16-voice polyphony (configurable down to 1)
+    static constexpr int kMaxVoices = 16; // 16-voice polyphony (configurable down to 1)
 
     //==========================================================================
     //  LIFECYCLE
     //==========================================================================
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         cachedSampleRate = sampleRate;
-        cachedSampleRateFloat = static_cast<float> (cachedSampleRate);
+        cachedSampleRateFloat = static_cast<float>(cachedSampleRate);
         lfoPhase = 0.0;
-        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.prepare(sampleRate, maxBlockSize);
 
-        aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
+        aftertouch.prepare(sampleRate); // D006: 5ms attack / 20ms release smoothing
 
-        outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheLeft.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+        outputCacheRight.resize(static_cast<size_t>(maxBlockSize), 0.0f);
 
         for (auto& voice : voices)
         {
             voice.active = false;
             voice.releasing = false;
-            voice.ampEnv.prepare (cachedSampleRateFloat);
+            voice.ampEnv.prepare(cachedSampleRateFloat);
             voice.ampEnv.reset();
             voice.stealFadeLevel = 0.0f;
             voice.driftPhase = 0.0f;
             voice.currentFrequency = 440.0f;
-            voice.targetFrequency  = 440.0f;
+            voice.targetFrequency = 440.0f;
             voice.glideCoefficient = 1.0f;
 
             for (auto& osc : voice.oscillators)
                 osc.reset();
             voice.subOscillator.reset();
-            voice.filter.prepare (cachedSampleRate);
+            voice.filter.prepare(cachedSampleRate);
         }
     }
 
@@ -400,7 +397,7 @@ public:
             voice.ampEnv.reset();
             voice.stealFadeLevel = 0.0f;
             voice.currentFrequency = 440.0f;
-            voice.targetFrequency  = 440.0f;
+            voice.targetFrequency = 440.0f;
             voice.glideCoefficient = 1.0f;
             for (auto& osc : voice.oscillators)
                 osc.reset();
@@ -415,46 +412,45 @@ public:
         lfo2Output = 0.0f;
         filterCutoffModulation = 0.0f;
         morphModulation = 0.0f;
-        std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
-        std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
+        std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
+        std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
     }
 
     //==========================================================================
     //  AUDIO RENDERING
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        if (numSamples <= 0) return;
+        if (numSamples <= 0)
+            return;
 
         //----------------------------------------------------------------------
         // ParamSnapshot: cache all parameter values once per block.
         // This is the XOceanus pattern — atomic loads happen here, not per-sample.
         //----------------------------------------------------------------------
-        const float morphPosition     = (paramMorphPosition != nullptr) ? paramMorphPosition->load() : 0.5f;
-        const float attackTime        = (paramBloomAttack != nullptr) ? paramBloomAttack->load() : 1.25f;
-        const float decayTime         = (paramDecay != nullptr) ? paramDecay->load() : 2.0f;
-        const float sustainLevel      = (paramSustain != nullptr) ? paramSustain->load() : 0.7f;
-        const float releaseTime       = (paramRelease != nullptr) ? paramRelease->load() : 1.5f;
-        const float filterCutoff      = (paramFilterCutoff    != nullptr) ? paramFilterCutoff->load()    : 1200.0f;
-        const float filterResonance   = (paramFilterResonance != nullptr) ? paramFilterResonance->load() : 0.4f;
-        const float filterEnvDepth    = (paramFilterEnvDepth  != nullptr) ? paramFilterEnvDepth->load()  : 0.25f;
-        const float driftAmount       = (paramDrift != nullptr) ? paramDrift->load() : 0.3f;
-        const float subLevel          = (paramSubLevel != nullptr) ? paramSubLevel->load() : 0.5f;
-        const float detuneCents       = (paramDetune != nullptr) ? paramDetune->load() : 12.0f;
-        const float outputLevel       = (paramLevel != nullptr) ? paramLevel->load() : 0.8f;
+        const float morphPosition = (paramMorphPosition != nullptr) ? paramMorphPosition->load() : 0.5f;
+        const float attackTime = (paramBloomAttack != nullptr) ? paramBloomAttack->load() : 1.25f;
+        const float decayTime = (paramDecay != nullptr) ? paramDecay->load() : 2.0f;
+        const float sustainLevel = (paramSustain != nullptr) ? paramSustain->load() : 0.7f;
+        const float releaseTime = (paramRelease != nullptr) ? paramRelease->load() : 1.5f;
+        const float filterCutoff = (paramFilterCutoff != nullptr) ? paramFilterCutoff->load() : 1200.0f;
+        const float filterResonance = (paramFilterResonance != nullptr) ? paramFilterResonance->load() : 0.4f;
+        const float filterEnvDepth = (paramFilterEnvDepth != nullptr) ? paramFilterEnvDepth->load() : 0.25f;
+        const float driftAmount = (paramDrift != nullptr) ? paramDrift->load() : 0.3f;
+        const float subLevel = (paramSubLevel != nullptr) ? paramSubLevel->load() : 0.5f;
+        const float detuneCents = (paramDetune != nullptr) ? paramDetune->load() : 12.0f;
+        const float outputLevel = (paramLevel != nullptr) ? paramLevel->load() : 0.8f;
 
         // Polyphony: parameter index maps to voice count via power-of-2 ladder
         // Index:  0->1, 1->2, 2->4, 3->8, 4->16 voices
-        const int maxPolyphony = (paramPolyphony != nullptr)
-            ? (1 << std::min (4, static_cast<int> (paramPolyphony->load()))) : 8;
+        const int maxPolyphony =
+            (paramPolyphony != nullptr) ? (1 << std::min(4, static_cast<int>(paramPolyphony->load()))) : 8;
 
         // Voice mode: 0=Poly, 1=Mono, 2=Legato
-        const int voiceModeIndex = (paramVoiceMode != nullptr)
-            ? static_cast<int> (paramVoiceMode->load()) : 0;
-        bool monoMode   = (voiceModeIndex == 1);
+        const int voiceModeIndex = (paramVoiceMode != nullptr) ? static_cast<int>(paramVoiceMode->load()) : 0;
+        bool monoMode = (voiceModeIndex == 1);
         bool legatoMode = (voiceModeIndex == 2);
         // In Mono or Legato mode, restrict to a single voice
         const int effectivePolyphony = (monoMode || legatoMode) ? 1 : maxPolyphony;
@@ -464,7 +460,7 @@ public:
         const float glideTimeSeconds = (paramGlide != nullptr) ? paramGlide->load() : 0.0f;
         float glideCoefficient = 1.0f;
         if (glideTimeSeconds > 0.001f)
-            glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSeconds * cachedSampleRateFloat));
+            glideCoefficient = 1.0f - std::exp(-1.0f / (glideTimeSeconds * cachedSampleRateFloat));
 
         // -- XOceanus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
         // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
@@ -476,13 +472,13 @@ public:
         // D002: LFO1 — sine wave targeting Moog ladder cutoff (Oscar's gill-membrane flutter).
         // Rate 0.01–15 Hz covers breath-rate tremolo to audio-rate-adjacent territory.
         // Mod wheel (CC1) additionally scales LFO1 depth for live expression control.
-        const float lfo1Rate  = (paramLfo1Rate  != nullptr) ? paramLfo1Rate->load()  : 1.5f;
+        const float lfo1Rate = (paramLfo1Rate != nullptr) ? paramLfo1Rate->load() : 1.5f;
         // Mod wheel boosts LFO1 depth: depth scales from base value up to 1.0 at full wheel.
         const float lfo1DepthBase = (paramLfo1Depth != nullptr) ? paramLfo1Depth->load() : 0.25f;
-        const float lfo1Depth = std::min (1.0f, lfo1DepthBase + modWheelLfoDepthBoost);
+        const float lfo1Depth = std::min(1.0f, lfo1DepthBase + modWheelLfoDepthBoost);
 
         // D002: 2nd LFO — read once per block (block-constant, safe for filter coefficients)
-        const float lfo2Rate  = (paramLfo2Rate  != nullptr) ? paramLfo2Rate->load()  : 0.05f;
+        const float lfo2Rate = (paramLfo2Rate != nullptr) ? paramLfo2Rate->load() : 0.05f;
         const float lfo2Depth = (paramLfo2Depth != nullptr) ? paramLfo2Depth->load() : 0.3f;
 
         // Advance LFO1 (sine wave: smooth sinusoidal sweep — Oscar's gill-flutter breathing).
@@ -490,36 +486,39 @@ public:
         // Sine chosen over triangle for LFO1: sine has softer peak transitions — the axolotl's
         // gills don't snap; they sway. LFO2 (triangle) provides the contrasting linear sweep.
         constexpr double kTwoPiD = 6.28318530717958647692;
-        const double lfo1PhaseIncrement = static_cast<double> (lfo1Rate) / cachedSampleRate;
-        lfo1Phase += lfo1PhaseIncrement * static_cast<double> (numSamples);  // block-advance
-        if (lfo1Phase >= 1.0) lfo1Phase -= 1.0;
+        const double lfo1PhaseIncrement = static_cast<double>(lfo1Rate) / cachedSampleRate;
+        lfo1Phase += lfo1PhaseIncrement * static_cast<double>(numSamples); // block-advance
+        if (lfo1Phase >= 1.0)
+            lfo1Phase -= 1.0;
         // Sine wave: bipolar [-1, +1]
-        lfo1Output = static_cast<float> (std::sin (kTwoPiD * lfo1Phase));
+        lfo1Output = static_cast<float>(std::sin(kTwoPiD * lfo1Phase));
 
         // Advance 2nd LFO (triangle wave: smooth up-down sweep, no discontinuity).
         // Rate floor 0.005 Hz satisfies D005. Triangle = |frac - 0.5| * 4 - 1 → bipolar [-1, +1].
-        const double lfo2PhaseIncrement = static_cast<double> (lfo2Rate) / cachedSampleRate;
-        lfo2Phase += lfo2PhaseIncrement * static_cast<double> (numSamples);  // block-advance
-        if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
+        const double lfo2PhaseIncrement = static_cast<double>(lfo2Rate) / cachedSampleRate;
+        lfo2Phase += lfo2PhaseIncrement * static_cast<double>(numSamples); // block-advance
+        if (lfo2Phase >= 1.0)
+            lfo2Phase -= 1.0;
         // Triangle wave: bipolar [-1, +1]
-        lfo2Output = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0);
+        lfo2Output = static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0);
 
         // Apply macro offsets to DSP parameters:
         //   BLOOM: shifts morph position up to +1.5 (sine→square character sweep).
         //   DRIFT: widens detune spread up to +30 cents (animated chorus shimmer).
         //   DEPTH: opens filter cutoff up to +6000 Hz (surface from the deep).
         //   SPACE: multiplies attack time by 1× to 4× (slow atmospheric bloom).
-        const float effectiveDetune  = detuneCents + macroDrift * 30.0f;
+        const float effectiveDetune = detuneCents + macroDrift * 30.0f;
         // D002: LFO1 sweeps filter cutoff ±(depth × 3000 Hz) — the primary gill-flutter tremolo.
         // LFO2 (triangle, slow) provides the secondary long-arc cutoff evolution.
         const float lfo1CutoffMod = lfo1Output * lfo1Depth * 3000.0f;
         const float lfo2CutoffMod = lfo2Output * lfo2Depth * 4000.0f;
-        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod);
-        const float effectiveAttack  = attackTime  * (1.0f + macroSpace * 3.0f);
+        const float effectiveCutoff =
+            std::min(20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod);
+        const float effectiveAttack = attackTime * (1.0f + macroSpace * 3.0f);
 
         // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel)
-        float effectiveMorph = std::max (0.0f, std::min (3.0f,
-            morphPosition + morphModulation + modWheelMorphOffset + macroBloom * 1.5f));
+        float effectiveMorph =
+            std::max(0.0f, std::min(3.0f, morphPosition + morphModulation + modWheelMorphOffset + macroBloom * 1.5f));
 
         //----------------------------------------------------------------------
         // MIDI event processing
@@ -530,14 +529,13 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        effectiveDetune, effectiveMorph, effectiveCutoff, filterResonance,
-                        effectivePolyphony, monoMode, legatoMode, glideCoefficient);
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), effectiveDetune, effectiveMorph, effectiveCutoff,
+                       filterResonance, effectivePolyphony, monoMode, legatoMode, glideCoefficient);
             }
             else if (msg.isNoteOff())
             {
                 if (!sustainPedalDown)
-                    noteOff (msg.getNoteNumber());
+                    noteOff(msg.getNoteNumber());
             }
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
             {
@@ -547,7 +545,7 @@ public:
             // D006: channel pressure → aftertouch (applied to filter cutoff below)
             else if (msg.isChannelPressure())
             {
-                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
             }
             else if (msg.isController())
             {
@@ -571,7 +569,7 @@ public:
                 }
                 else if (controllerNumber == 1) // CC1: Mod wheel -> morph sweep + LFO1 depth
                 {
-                    const float normWheel = static_cast<float> (controllerValue) / 127.0f;
+                    const float normWheel = static_cast<float>(controllerValue) / 127.0f;
                     // Primary: Maps 0-127 to 0.0-3.0 morph offset for live timbre sweeping.
                     modWheelMorphOffset = normWheel * 3.0f;
                     // D006/D002: Mod wheel also scales LFO1 depth — turning the wheel
@@ -583,7 +581,7 @@ public:
                 }
             }
             else if (msg.isPitchWheel())
-                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -596,8 +594,8 @@ public:
         //----------------------------------------------------------------------
         // D006: smooth aftertouch pressure and compute modulation value
         //----------------------------------------------------------------------
-        aftertouch.updateBlock (numSamples);
-        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
+        aftertouch.updateBlock(numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
 
         //----------------------------------------------------------------------
         // Reset coupling accumulators (consumed this block, accumulated fresh
@@ -615,7 +613,7 @@ public:
         //----------------------------------------------------------------------
         for (int i = effectivePolyphony; i < kMaxVoices; ++i)
         {
-            auto& voice = voices[static_cast<size_t> (i)];
+            auto& voice = voices[static_cast<size_t>(i)];
             if (voice.active)
             {
                 voice.releasing = true;
@@ -630,7 +628,7 @@ public:
         // Update ADSR coefficients once per block (block-constant parameters).
         // StandardADSR.setADSR() calls std::exp — avoid calling per-sample.
         for (auto& voice : voices)
-            voice.ampEnv.setADSR (effectiveAttack, decayTime, sustainLevel, releaseTime);
+            voice.ampEnv.setADSR(effectiveAttack, decayTime, sustainLevel, releaseTime);
 
         // Precompute block-constant LFO phase increment (avoids division per sample)
         const double lfoPhaseIncrement = kCouplingLfoRateHz / cachedSampleRate;
@@ -640,14 +638,16 @@ public:
         {
             //-- Internal coupling LFO (Oscar's slow breath) ------------------
             lfoPhase += lfoPhaseIncrement;
-            if (lfoPhase >= 1.0) lfoPhase -= 1.0;
-            lfoOutput = fastSin (static_cast<float> (kTwoPi * lfoPhase));
+            if (lfoPhase >= 1.0)
+                lfoPhase -= 1.0;
+            lfoOutput = fastSin(static_cast<float>(kTwoPi * lfoPhase));
 
             float mixLeft = 0.0f, mixRight = 0.0f;
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 //-- Envelope --------------------------------------------------
                 float envLevel = voice.ampEnv.process();
@@ -660,50 +660,50 @@ public:
 
                 //-- Morph position (update all 3 oscillators) -----------------
                 for (auto& osc : voice.oscillators)
-                    osc.setMorph (effectiveMorph);
+                    osc.setMorph(effectiveMorph);
 
                 //-- Portamento/glide: smooth currentFrequency toward targetFrequency ----
                 // In Poly mode, glideCoefficient is 1.0 (instant — no per-voice glide).
                 // In Mono/Legato mode, coefficient <1.0 produces exponential-approach glide.
-                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency)
-                                        * voice.glideCoefficient;
+                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency) * voice.glideCoefficient;
 
                 //-- Drift modulation (Perlin-like smooth noise) ---------------
                 // 0.1 Hz drift rate: Oscar's slow, meditative movement.
                 // The low rate creates gentle organic pitch wander and stereo
                 // spread — the axolotl breathing, not thrashing.
                 voice.driftPhase += 0.1f / cachedSampleRateFloat;
-                if (voice.driftPhase >= 1.0f) voice.driftPhase -= 1.0f;
-                voice.driftValue = perlinNoise (voice.driftPhase) * driftAmount;
+                if (voice.driftPhase >= 1.0f)
+                    voice.driftPhase -= 1.0f;
+                voice.driftValue = perlinNoise(voice.driftPhase) * driftAmount;
 
                 //-- Oscillator mix (3 detuned oscillators for chorus width) ---
                 float oscillatorMix = 0.0f;
-                float detuneSpread[3] = { -effectiveDetune, 0.0f, effectiveDetune };
+                float detuneSpread[3] = {-effectiveDetune, 0.0f, effectiveDetune};
                 // Use currentFrequency (glide-smoothed) instead of raw MIDI note.
                 // In Poly mode with glideCoefficient=1.0, currentFrequency == targetFrequency
                 // so behavior is identical to the previous per-sample noteNumber lookup.
-                float baseFrequency = voice.currentFrequency
-                                      * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+                float baseFrequency =
+                    voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 for (int i = 0; i < 3; ++i)
                 {
                     // Convert cents to frequency ratio: 2^(cents/1200)
                     // ln(2) = 0.693147... used with fastExp for efficient cent-to-ratio conversion
                     constexpr float kLn2Over1200 = 0.693147f / 1200.0f; // ln(2) / 1200 cents per octave
-                    float detunedFrequency = baseFrequency * fastExp (detuneSpread[i] * kLn2Over1200);
+                    float detunedFrequency = baseFrequency * fastExp(detuneSpread[i] * kLn2Over1200);
 
                     // Apply drift as subtle FM (0.2% max pitch deviation)
                     constexpr float kDriftFmDepth = 0.002f; // 0.2% max pitch modulation
                     detunedFrequency *= (1.0f + voice.driftValue * kDriftFmDepth);
 
-                    voice.oscillators[i].setFrequency (detunedFrequency, cachedSampleRateFloat);
+                    voice.oscillators[i].setFrequency(detunedFrequency, cachedSampleRateFloat);
                     oscillatorMix += voice.oscillators[i].processSample();
                 }
                 oscillatorMix /= 3.0f; // normalize 3-oscillator sum
 
                 //-- Sub oscillator (sine, one octave below for bass weight) ---
-                voice.subOscillator.setFrequency (baseFrequency * 0.5f, cachedSampleRateFloat);
-                voice.subOscillator.setWaveform (PolyBLEP::Waveform::Sine);
+                voice.subOscillator.setFrequency(baseFrequency * 0.5f, cachedSampleRateFloat);
+                voice.subOscillator.setWaveform(PolyBLEP::Waveform::Sine);
                 float subOscOutput = voice.subOscillator.processSample() * subLevel;
 
                 float rawSignal = oscillatorMix + subOscOutput;
@@ -729,16 +729,16 @@ public:
                     // Max sweep: filterEnvDepth × velocity × 6000 Hz.
                     constexpr float kFilterEnvMaxSweep = 6000.0f;
                     modulatedCutoff += filterEnvDepth * voice.velocity * envLevel * kFilterEnvMaxSweep;
-                    modulatedCutoff = std::max (20.0f, std::min (20000.0f, modulatedCutoff));
-                    voice.filter.setCutoff (modulatedCutoff);
+                    modulatedCutoff = std::max(20.0f, std::min(20000.0f, modulatedCutoff));
+                    voice.filter.setCutoff(modulatedCutoff);
                     // D006: aftertouch → resonance (axolotl gill membranes responding to pressure).
                     // Pressing harder tightens the filter resonance — the gill membranes stiffen
                     // under pressure, creating a more nasal, penetrating tone.
                     // Boost range: 0.0 at zero pressure → +0.35 at max pressure (capped at 1.0).
                     const float atResonanceMod = atPressure * 0.35f;
-                    voice.filter.setResonance (std::min (1.0f, filterResonance + atResonanceMod));
+                    voice.filter.setResonance(std::min(1.0f, filterResonance + atResonanceMod));
                 }
-                float filteredSignal = voice.filter.processSample (rawSignal);
+                float filteredSignal = voice.filter.processSample(rawSignal);
 
                 //-- Voice-stealing crossfade (5 ms) ---------------------------
                 float stealFade = 1.0f;
@@ -749,7 +749,7 @@ public:
                     // voice while keeping the transition nearly imperceptible.
                     constexpr float kStealFadeTimeSeconds = 0.005f; // 5 ms crossfade
                     voice.stealFadeLevel -= 1.0f / (kStealFadeTimeSeconds * cachedSampleRateFloat);
-                    voice.stealFadeLevel = flushDenormal (voice.stealFadeLevel);
+                    voice.stealFadeLevel = flushDenormal(voice.stealFadeLevel);
                     if (voice.stealFadeLevel <= 0.0f)
                         voice.stealFadeLevel = 0.0f;
                     stealFade = 1.0f - voice.stealFadeLevel;
@@ -764,82 +764,84 @@ public:
                 // spread factor keeps the image stable — Oscar doesn't thrash,
                 // he sways gently.
                 constexpr float kStereoSpreadAmount = 0.3f; // max L/R deviation
-                mixLeft  += voiceOutput * (1.0f + kStereoSpreadAmount * voice.driftValue);
+                mixLeft += voiceOutput * (1.0f + kStereoSpreadAmount * voice.driftValue);
                 mixRight += voiceOutput * (1.0f - kStereoSpreadAmount * voice.driftValue);
             }
 
             //-- Master output: tanh soft clip ---------------------------------
             // Prevents hard clipping in dense 16-voice pads — the tanh curve
             // gracefully compresses peaks while preserving musicality.
-            float outputLeft  = fastTanh (mixLeft * outputLevel);
-            float outputRight = fastTanh (mixRight * outputLevel);
+            float outputLeft = fastTanh(mixLeft * outputLevel);
+            float outputRight = fastTanh(mixRight * outputLevel);
 
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, sampleIndex, outputLeft);
-                buffer.addSample (1, sampleIndex, outputRight);
+                buffer.addSample(0, sampleIndex, outputLeft);
+                buffer.addSample(1, sampleIndex, outputRight);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, sampleIndex, (outputLeft + outputRight) * 0.5f);
+                buffer.addSample(0, sampleIndex, (outputLeft + outputRight) * 0.5f);
             }
 
             //-- Cache output for coupling reads -------------------------------
-            if (sampleIndex < static_cast<int> (outputCacheLeft.size()))
+            if (sampleIndex < static_cast<int>(outputCacheLeft.size()))
             {
-                outputCacheLeft[static_cast<size_t> (sampleIndex)]  = outputLeft;
-                outputCacheRight[static_cast<size_t> (sampleIndex)] = outputRight;
+                outputCacheLeft[static_cast<size_t>(sampleIndex)] = outputLeft;
+                outputCacheRight[static_cast<size_t>(sampleIndex)] = outputRight;
             }
         }
 
         // SilenceGate: analyze output level for next-block bypass decision
-        silenceGate.analyzeBlock (buffer.getReadPointer (0),
-                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
-                                  numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0),
+                                 buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr, numSamples);
     }
 
     //==========================================================================
     //  COUPLING — Inter-engine symbiosis
     //==========================================================================
 
-    float getSampleForCoupling (int channel, int sampleIndex) const override
+    float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        if (sampleIndex < 0) return 0.0f;
-        auto index = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && index < outputCacheLeft.size())  return outputCacheLeft[index];
-        if (channel == 1 && index < outputCacheRight.size()) return outputCacheRight[index];
+        if (sampleIndex < 0)
+            return 0.0f;
+        auto index = static_cast<size_t>(sampleIndex);
+        if (channel == 0 && index < outputCacheLeft.size())
+            return outputCacheLeft[index];
+        if (channel == 1 && index < outputCacheRight.size())
+            return outputCacheRight[index];
 
         // Channel 2 = LFO output (Oscar's breath — 0.3 Hz sine for LFOToPitch
         // coupling to other engines, creating organic pitch drift)
-        if (channel == 2) return lfoOutput;
+        if (channel == 2)
+            return lfoOutput;
         return 0.0f;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* /*sourceBuffer*/, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
         switch (type)
         {
-            case CouplingType::AmpToFilter:
-            {
-                // The "dub pump" effect: invert the source engine's amplitude
-                // envelope so that when feliX hits hard (amount -> 1.0), Oscar's
-                // filter ducks. When feliX is quiet, Oscar opens up. Classic
-                // sidechain-like interaction between percussive and pad engines.
-                float invertedEnvelope = 1.0f - amount;
-                filterCutoffModulation += (invertedEnvelope - 0.5f) * 2.0f; // bipolar [-1, +1]
-                break;
-            }
-            case CouplingType::EnvToMorph:
-                // External envelope shifts Oscar's morph position — another
-                // engine's dynamics directly modulate the timbre. This is
-                // inter-species symbiosis: one creature's energy reshapes
-                // another creature's voice.
-                morphModulation += amount;
-                break;
+        case CouplingType::AmpToFilter:
+        {
+            // The "dub pump" effect: invert the source engine's amplitude
+            // envelope so that when feliX hits hard (amount -> 1.0), Oscar's
+            // filter ducks. When feliX is quiet, Oscar opens up. Classic
+            // sidechain-like interaction between percussive and pad engines.
+            float invertedEnvelope = 1.0f - amount;
+            filterCutoffModulation += (invertedEnvelope - 0.5f) * 2.0f; // bipolar [-1, +1]
+            break;
+        }
+        case CouplingType::EnvToMorph:
+            // External envelope shifts Oscar's morph position — another
+            // engine's dynamics directly modulate the timbre. This is
+            // inter-species symbiosis: one creature's energy reshapes
+            // another creature's voice.
+            morphModulation += amount;
+            break;
 
-            default:
-                break; // Other coupling types not supported by ODDOSCAR
+        default:
+            break; // Other coupling types not supported by ODDOSCAR
         }
     }
 
@@ -848,101 +850,101 @@ public:
     //==========================================================================
 
     // Static helper: add ODDOSCAR parameters to a shared vector (used by processor).
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
 private:
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         // Morph position: 0.0 = sine, 1.0 = saw, 2.0 = square, 3.0 = noise
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_morph", 1 }, "Morph Position",
-            juce::NormalisableRange<float> (0.0f, 3.0f, 0.01f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_morph", 1}, "Morph Position",
+                                                        juce::NormalisableRange<float>(0.0f, 3.0f, 0.01f), 0.5f));
 
         // Bloom (attack): longer values create the signature swelling pad onset
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_bloom", 1 }, "Morph Bloom (Attack)",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.4f), 1.25f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_bloom", 1}, "Morph Bloom (Attack)",
+            juce::NormalisableRange<float>(0.001f, 10.0f, 0.001f, 0.4f), 1.25f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_decay", 1 }, "Morph Decay",
-            juce::NormalisableRange<float> (0.01f, 8.0f, 0.001f, 0.4f), 2.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_decay", 1}, "Morph Decay",
+            juce::NormalisableRange<float>(0.01f, 8.0f, 0.001f, 0.4f), 2.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_sustain", 1 }, "Morph Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_sustain", 1}, "Morph Sustain",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_release", 1 }, "Morph Release",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.01f, 0.4f), 1.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_release", 1}, "Morph Release",
+            juce::NormalisableRange<float>(0.01f, 10.0f, 0.01f, 0.4f), 1.5f));
 
         // Filter cutoff: default 1200 Hz — a warm starting point below the
         // brightness threshold, letting the ladder's character shine
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_filterCutoff", 1 }, "Morph Filter Cutoff",
-            juce::NormalisableRange<float> (20.0f, 20000.0f, 0.1f, 0.3f), 1200.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_filterCutoff", 1}, "Morph Filter Cutoff",
+            juce::NormalisableRange<float>(20.0f, 20000.0f, 0.1f, 0.3f), 1200.0f));
 
         // Filter resonance: at 1.0, the ladder self-oscillates (produces a sine tone)
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_filterReso", 1 }, "Morph Filter Resonance",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.4f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_filterReso", 1}, "Morph Filter Resonance",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.4f));
 
         // D001: Filter envelope depth — velocity × amplitude envelope sweeps the
         // Moog ladder cutoff open from the base cutoff by up to depth × 6000 Hz.
         // Harder hits open the filter wider and decay back toward base cutoff as the
         // note fades, giving Oscar's pads their D001-compliant velocity expressiveness.
         // Default 0.25: gentle brightness tracking, not overwhelming.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_filterEnvDepth", 1 }, "Morph Filter Env Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_filterEnvDepth", 1}, "Morph Filter Env Depth",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.25f));
 
         // Drift: Oscar's organic movement — pitch wander + stereo spread
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_drift", 1 }, "Morph Drift",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_drift", 1}, "Morph Drift",
+                                                                     juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
+                                                                     0.3f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_sub", 1 }, "Morph Sub Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_sub", 1}, "Morph Sub Level",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
 
         // Detune: cents of spread between the 3 chorus oscillators.
         // Default 12 cents (roughly 1/6 of a semitone) — enough for shimmer
         // without becoming obviously out-of-tune.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_detune", 1 }, "Morph Detune",
-            juce::NormalisableRange<float> (0.0f, 50.0f, 0.1f), 12.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_detune", 1}, "Morph Detune",
+                                                        juce::NormalisableRange<float>(0.0f, 50.0f, 0.1f), 12.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_level", 1 }, "Morph Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_level", 1}, "Morph Level",
+                                                                     juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
+                                                                     0.8f));
 
         // Polyphony: power-of-2 voice count (1, 2, 4, 8, 16)
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "morph_polyphony", 1 }, "Morph Polyphony",
-            juce::StringArray { "1", "2", "4", "8", "16" }, 3));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID{"morph_polyphony", 1},
+                                                                      "Morph Polyphony",
+                                                                      juce::StringArray{"1", "2", "4", "8", "16"}, 3));
 
         // Voice mode: Poly (default), Mono, Legato
         // Poly   — standard polyphony (maxPolyphony voices, LRU stealing)
         // Mono   — single voice, always retriggered (snap-attack pads, punchy leads)
         // Legato — single voice, pitch glides when gate is already open (smooth lead lines)
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "morph_voiceMode", 1 }, "Morph Voice Mode",
-            juce::StringArray { "Poly", "Mono", "Legato" }, 0));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID{"morph_voiceMode", 1},
+                                                                      "Morph Voice Mode",
+                                                                      juce::StringArray{"Poly", "Mono", "Legato"}, 0));
 
         // Portamento glide time (seconds). Only audible in Mono and Legato modes.
         // 0 = instant (no glide). 2s maximum covers all musical tempos.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_glide", 1 }, "Morph Glide",
-            juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_glide", 1}, "Morph Glide",
+            juce::NormalisableRange<float>(0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
 
         // XOceanus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
@@ -961,69 +963,69 @@ private:
         // Destination: Moog ladder cutoff ±(depth × 3000 Hz).
         // Sine waveform: Oscar's gills sway, not snap.
         // Mod wheel (CC1) additionally boosts depth by up to +0.5 for live expression.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_lfo1Rate", 1 }, "Morph LFO1 Rate",
-            juce::NormalisableRange<float> (0.01f, 15.0f, 0.01f, 0.3f), 1.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_lfo1Rate", 1}, "Morph LFO1 Rate",
+            juce::NormalisableRange<float>(0.01f, 15.0f, 0.01f, 0.3f), 1.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_lfo1Depth", 1 }, "Morph LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_lfo1Depth", 1}, "Morph LFO1 Depth",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.25f));
 
         // D002: LFO2 — secondary slow arc triangle LFO (long-scale cutoff evolution).
         // Rate range 0.005–2.0 Hz (floor ≤ 0.01 Hz satisfies D005).
         // Destination: Moog ladder cutoff ±(depth × 4000 Hz).
         // Triangle waveform for smooth, continuous harmonic evolution.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_lfo2Rate", 1 }, "Morph LFO2 Rate",
-            juce::NormalisableRange<float> (0.005f, 2.0f, 0.005f, 0.3f), 0.05f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"morph_lfo2Rate", 1}, "Morph LFO2 Rate",
+            juce::NormalisableRange<float>(0.005f, 2.0f, 0.005f, 0.3f), 0.05f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_lfo2Depth", 1 }, "Morph LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_lfo2Depth", 1}, "Morph LFO2 Depth",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.3f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_macroBloom", 1 }, "Morph BLOOM",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_macroDrift", 1 }, "Morph DRIFT",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_macroDepth", 1 }, "Morph DEPTH",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "morph_macroSpace", 1 }, "Morph SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_macroBloom", 1}, "Morph BLOOM",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_macroDrift", 1}, "Morph DRIFT",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_macroDepth", 1}, "Morph DEPTH",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"morph_macroSpace", 1}, "Morph SPACE",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramMorphPosition   = apvts.getRawParameterValue ("morph_morph");
-        paramBloomAttack     = apvts.getRawParameterValue ("morph_bloom");
-        paramDecay           = apvts.getRawParameterValue ("morph_decay");
-        paramSustain         = apvts.getRawParameterValue ("morph_sustain");
-        paramRelease         = apvts.getRawParameterValue ("morph_release");
-        paramFilterCutoff    = apvts.getRawParameterValue ("morph_filterCutoff");
-        paramFilterResonance = apvts.getRawParameterValue ("morph_filterReso");
-        paramFilterEnvDepth  = apvts.getRawParameterValue ("morph_filterEnvDepth");
-        paramDrift           = apvts.getRawParameterValue ("morph_drift");
-        paramSubLevel        = apvts.getRawParameterValue ("morph_sub");
-        paramDetune          = apvts.getRawParameterValue ("morph_detune");
-        paramLevel           = apvts.getRawParameterValue ("morph_level");
-        paramPolyphony       = apvts.getRawParameterValue ("morph_polyphony");
-        paramVoiceMode       = apvts.getRawParameterValue ("morph_voiceMode");
-        paramGlide           = apvts.getRawParameterValue ("morph_glide");
+        paramMorphPosition = apvts.getRawParameterValue("morph_morph");
+        paramBloomAttack = apvts.getRawParameterValue("morph_bloom");
+        paramDecay = apvts.getRawParameterValue("morph_decay");
+        paramSustain = apvts.getRawParameterValue("morph_sustain");
+        paramRelease = apvts.getRawParameterValue("morph_release");
+        paramFilterCutoff = apvts.getRawParameterValue("morph_filterCutoff");
+        paramFilterResonance = apvts.getRawParameterValue("morph_filterReso");
+        paramFilterEnvDepth = apvts.getRawParameterValue("morph_filterEnvDepth");
+        paramDrift = apvts.getRawParameterValue("morph_drift");
+        paramSubLevel = apvts.getRawParameterValue("morph_sub");
+        paramDetune = apvts.getRawParameterValue("morph_detune");
+        paramLevel = apvts.getRawParameterValue("morph_level");
+        paramPolyphony = apvts.getRawParameterValue("morph_polyphony");
+        paramVoiceMode = apvts.getRawParameterValue("morph_voiceMode");
+        paramGlide = apvts.getRawParameterValue("morph_glide");
         // XOceanus macros
-        paramMacroBloom      = apvts.getRawParameterValue ("morph_macroBloom");
-        paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
-        paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
-        paramMacroSpace      = apvts.getRawParameterValue ("morph_macroSpace");
+        paramMacroBloom = apvts.getRawParameterValue("morph_macroBloom");
+        paramMacroDrift = apvts.getRawParameterValue("morph_macroDrift");
+        paramMacroDepth = apvts.getRawParameterValue("morph_macroDepth");
+        paramMacroSpace = apvts.getRawParameterValue("morph_macroSpace");
         // D002: LFO1 (primary gill-flutter sine — filter cutoff)
-        paramLfo1Rate        = apvts.getRawParameterValue ("morph_lfo1Rate");
-        paramLfo1Depth       = apvts.getRawParameterValue ("morph_lfo1Depth");
+        paramLfo1Rate = apvts.getRawParameterValue("morph_lfo1Rate");
+        paramLfo1Depth = apvts.getRawParameterValue("morph_lfo1Depth");
         // D002: LFO2 (secondary slow arc triangle — filter cutoff)
-        paramLfo2Rate        = apvts.getRawParameterValue ("morph_lfo2Rate");
-        paramLfo2Depth       = apvts.getRawParameterValue ("morph_lfo2Depth");
+        paramLfo2Rate = apvts.getRawParameterValue("morph_lfo2Rate");
+        paramLfo2Depth = apvts.getRawParameterValue("morph_lfo2Depth");
     }
 
     //==========================================================================
@@ -1031,7 +1033,7 @@ public:
     //==========================================================================
 
     juce::String getEngineId() const override { return "OddOscar"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8839B); } // Axolotl Gill Pink
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFFE8839B); } // Axolotl Gill Pink
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
@@ -1041,11 +1043,10 @@ private:
     //  VOICE MANAGEMENT
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, float detuneCents,
-                 float morphPosition, float cutoff, float resonance, int maxPolyphony,
-                 bool monoMode = false, bool legatoMode = false, float glideCoeff = 1.0f)
+    void noteOn(int noteNumber, float velocity, float detuneCents, float morphPosition, float cutoff, float resonance,
+                int maxPolyphony, bool monoMode = false, bool legatoMode = false, float glideCoeff = 1.0f)
     {
-        float frequency = midiNoteToFrequency (static_cast<float> (noteNumber));
+        float frequency = midiNoteToFrequency(static_cast<float>(noteNumber));
 
         // ---- Mono / Legato mode ----
         // Both modes force voice[0]. Legato additionally skips envelope retrigger
@@ -1079,27 +1080,27 @@ private:
             voice.glideCoefficient = glideCoeff;
 
             // Initialize oscillators at the new frequency immediately
-            float detuneSpread[3] = { -detuneCents, 0.0f, detuneCents };
+            float detuneSpread[3] = {-detuneCents, 0.0f, detuneCents};
             for (int i = 0; i < 3; ++i)
             {
-                float detunedFrequency = frequency * std::pow (2.0f, detuneSpread[i] / 1200.0f);
-                voice.oscillators[i].setFrequency (detunedFrequency, cachedSampleRateFloat);
-                voice.oscillators[i].setMorph (morphPosition);
+                float detunedFrequency = frequency * std::pow(2.0f, detuneSpread[i] / 1200.0f);
+                voice.oscillators[i].setFrequency(detunedFrequency, cachedSampleRateFloat);
+                voice.oscillators[i].setMorph(morphPosition);
                 voice.oscillators[i].reset();
             }
             voice.subOscillator.reset();
-            voice.subOscillator.setFrequency (frequency * 0.5f, cachedSampleRateFloat);
-            voice.subOscillator.setWaveform (PolyBLEP::Waveform::Sine);
+            voice.subOscillator.setFrequency(frequency * 0.5f, cachedSampleRateFloat);
+            voice.subOscillator.setWaveform(PolyBLEP::Waveform::Sine);
             voice.filter.reset();
-            voice.filter.setCutoff (cutoff);
-            voice.filter.setResonance (resonance);
+            voice.filter.setCutoff(cutoff);
+            voice.filter.setResonance(resonance);
             voice.driftPhase = driftPhaseRandomizer.nextFloat();
             return;
         }
 
         // ---- Polyphonic mode ----
-        int voiceIndex = findFreeVoice (maxPolyphony);
-        auto& voice = voices[static_cast<size_t> (voiceIndex)];
+        int voiceIndex = findFreeVoice(maxPolyphony);
+        auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
         // Preserve outgoing voice's envelope level for crossfade
         if (voice.active)
@@ -1114,34 +1115,34 @@ private:
         voice.startTime = voiceCounter++;
         voice.ampEnv.noteOn();
         voice.currentFrequency = frequency;
-        voice.targetFrequency  = frequency;
-        voice.glideCoefficient = 1.0f;  // No glide in poly mode (instant pitch)
+        voice.targetFrequency = frequency;
+        voice.glideCoefficient = 1.0f; // No glide in poly mode (instant pitch)
 
         // Initialize 3 detuned oscillators (center, -N cents, +N cents)
-        float detuneSpread[3] = { -detuneCents, 0.0f, detuneCents };
+        float detuneSpread[3] = {-detuneCents, 0.0f, detuneCents};
         for (int i = 0; i < 3; ++i)
         {
-            float detunedFrequency = frequency * std::pow (2.0f, detuneSpread[i] / 1200.0f);
-            voice.oscillators[i].setFrequency (detunedFrequency, cachedSampleRateFloat);
-            voice.oscillators[i].setMorph (morphPosition);
+            float detunedFrequency = frequency * std::pow(2.0f, detuneSpread[i] / 1200.0f);
+            voice.oscillators[i].setFrequency(detunedFrequency, cachedSampleRateFloat);
+            voice.oscillators[i].setMorph(morphPosition);
             voice.oscillators[i].reset();
         }
 
         // Sub oscillator: sine one octave below (0.5x frequency)
         voice.subOscillator.reset();
-        voice.subOscillator.setFrequency (frequency * 0.5f, cachedSampleRateFloat);
-        voice.subOscillator.setWaveform (PolyBLEP::Waveform::Sine);
+        voice.subOscillator.setFrequency(frequency * 0.5f, cachedSampleRateFloat);
+        voice.subOscillator.setWaveform(PolyBLEP::Waveform::Sine);
 
         // Initialize filter
         voice.filter.reset();
-        voice.filter.setCutoff (cutoff);
-        voice.filter.setResonance (resonance);
+        voice.filter.setCutoff(cutoff);
+        voice.filter.setResonance(resonance);
 
         // Randomize drift starting phase for organic per-voice variation
         voice.driftPhase = driftPhaseRandomizer.nextFloat();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff(int noteNumber)
     {
         for (auto& voice : voices)
         {
@@ -1157,10 +1158,10 @@ private:
     //  VOICE ALLOCATION
     //==========================================================================
 
-    int findFreeVoice (int maxPolyphony)
+    int findFreeVoice(int maxPolyphony)
     {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-        return VoiceAllocator::findFreeVoice (voices, polyphonyLimit);
+        int polyphonyLimit = std::min(maxPolyphony, kMaxVoices);
+        return VoiceAllocator::findFreeVoice(voices, polyphonyLimit);
     }
 
     //==========================================================================
@@ -1169,9 +1170,9 @@ private:
 
     /** Convert MIDI note number to frequency in Hz.
         Reference: A4 (MIDI note 69) = 440 Hz, equal temperament. */
-    static float midiNoteToFrequency (float midiNote) noexcept
+    static float midiNoteToFrequency(float midiNote) noexcept
     {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
     }
 
     /** Simplified Perlin noise for smooth random drift modulation.
@@ -1180,24 +1181,26 @@ private:
         jumps. The hash function uses large primes (15731, 789221, 1376312589)
         chosen for their low correlation across sequential integer inputs,
         producing pseudorandom values without visible patterns. */
-    static float perlinNoise (float phase) noexcept
+    static float perlinNoise(float phase) noexcept
     {
-        float scaledPhase = phase * 8.0f;                               // 8 noise octaves across [0, 1)
-        int integerPart = static_cast<int> (std::floor (scaledPhase));
-        float fractionalPart = scaledPhase - static_cast<float> (integerPart);
+        float scaledPhase = phase * 8.0f; // 8 noise octaves across [0, 1)
+        int integerPart = static_cast<int>(std::floor(scaledPhase));
+        float fractionalPart = scaledPhase - static_cast<float>(integerPart);
         float smoothstep = fractionalPart * fractionalPart * (3.0f - 2.0f * fractionalPart); // Hermite smoothstep
 
         // Integer hash function -> pseudorandom float in [-1, 1]
-        auto hash = [] (int n) -> float {
-            n = (n << 13) ^ n;  // bit-mixing via shift-XOR
-            return 1.0f - static_cast<float> (
-                (n * (n * n * 15731 + 789221) + 1376312589) & 0x7fffffff  // 3 large primes for decorrelation
-            ) / 1073741824.0f;  // 2^30: normalize to [-1, +1]
+        auto hash = [](int n) -> float
+        {
+            n = (n << 13) ^ n; // bit-mixing via shift-XOR
+            return 1.0f - static_cast<float>((n * (n * n * 15731 + 789221) + 1376312589) &
+                                             0x7fffffff // 3 large primes for decorrelation
+                                             ) /
+                              1073741824.0f; // 2^30: normalize to [-1, +1]
         };
 
-        float valueA = hash (integerPart);
-        float valueB = hash (integerPart + 1);
-        return valueA + smoothstep * (valueB - valueA);                 // interpolate between adjacent hash values
+        float valueA = hash(integerPart);
+        float valueB = hash(integerPart + 1);
+        return valueA + smoothstep * (valueB - valueA); // interpolate between adjacent hash values
     }
 
     //==========================================================================
@@ -1205,75 +1208,75 @@ private:
     //==========================================================================
 
     //-- Audio system ----------------------------------------------------------
-    double cachedSampleRate = 44100.0;          // stored sample rate (double precision for phase accumulators)
-    float cachedSampleRateFloat = 44100.0f;     // float copy (avoids casts in per-sample code)
-    std::array<MorphVoice, kMaxVoices> voices;  // voice pool
-    uint64_t voiceCounter = 0;                  // monotonic counter for LRU voice stealing
+    double cachedSampleRate = 44100.0;         // stored sample rate (double precision for phase accumulators)
+    float cachedSampleRateFloat = 44100.0f;    // float copy (avoids casts in per-sample code)
+    std::array<MorphVoice, kMaxVoices> voices; // voice pool
+    uint64_t voiceCounter = 0;                 // monotonic counter for LRU voice stealing
 
     //-- Internal coupling LFO (Oscar's breath) --------------------------------
-    double lfoPhase = 0.0;                      // LFO phase accumulator [0, 1)
-    float lfoOutput = 0.0f;                     // cached LFO value for coupling reads
+    double lfoPhase = 0.0;                            // LFO phase accumulator [0, 1)
+    float lfoOutput = 0.0f;                           // cached LFO value for coupling reads
     static constexpr double kCouplingLfoRateHz = 0.3; // 0.3 Hz: one full breath every ~3.3 seconds
 
     // D002: LFO1 — primary gill-flutter sine (user-controllable rate/depth).
     // Sine LFO sweeps Moog ladder cutoff at breathing rates (default 1.5 Hz).
     // D005: rate floor 0.01 Hz. Mod wheel boosts depth for live expression.
-    double lfo1Phase = 0.0;                     // LFO1 phase accumulator [0, 1)
-    float lfo1Output = 0.0f;                    // cached LFO1 value for cutoff modulation
+    double lfo1Phase = 0.0;  // LFO1 phase accumulator [0, 1)
+    float lfo1Output = 0.0f; // cached LFO1 value for cutoff modulation
 
     // D002: 2nd LFO — filter cutoff modulator (user-controllable rate/depth).
     // Slow triangle LFO sweeps the Moog ladder cutoff for autonomous harmonic evolution.
     // Rate floor 0.005 Hz satisfies D005. Default 0.05 Hz = one cutoff sweep per 20 seconds.
-    double lfo2Phase = 0.0;                     // 2nd LFO phase [0, 1)
-    float lfo2Output = 0.0f;                    // cached LFO2 value for filter modulation
+    double lfo2Phase = 0.0;  // 2nd LFO phase [0, 1)
+    float lfo2Output = 0.0f; // cached LFO2 value for filter modulation
 
     //-- Coupling accumulators (reset each block) ------------------------------
-    float filterCutoffModulation = 0.0f;        // accumulated filter mod from AmpToFilter coupling
-    float morphModulation = 0.0f;               // accumulated morph mod from EnvToMorph coupling
+    float filterCutoffModulation = 0.0f; // accumulated filter mod from AmpToFilter coupling
+    float morphModulation = 0.0f;        // accumulated morph mod from EnvToMorph coupling
 
     //-- D006: CS-80-inspired poly aftertouch (channel pressure → filter cutoff) --
     PolyAftertouch aftertouch;
 
     //-- MIDI performance state ------------------------------------------------
-    bool sustainPedalDown    = false;           // CC64 sustain pedal state
-    float modWheelMorphOffset    = 0.0f;        // CC1 mod wheel [0, 3.0] — sweeps morph position
-    float modWheelLfoDepthBoost  = 0.0f;        // CC1 mod wheel [0, 0.5] — boosts LFO1 depth
-    float pitchBendNorm          = 0.0f;        // MIDI pitch wheel [-1, +1]; ±2 semitone range
+    bool sustainPedalDown = false;      // CC64 sustain pedal state
+    float modWheelMorphOffset = 0.0f;   // CC1 mod wheel [0, 3.0] — sweeps morph position
+    float modWheelLfoDepthBoost = 0.0f; // CC1 mod wheel [0, 0.5] — boosts LFO1 depth
+    float pitchBendNorm = 0.0f;         // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Output cache for coupling reads ---------------------------------------
-    std::vector<float> outputCacheLeft;         // left channel output (per-sample, for getSampleForCoupling)
-    std::vector<float> outputCacheRight;        // right channel output
+    std::vector<float> outputCacheLeft;  // left channel output (per-sample, for getSampleForCoupling)
+    std::vector<float> outputCacheRight; // right channel output
 
     //-- Random number generator for drift initialization ----------------------
-    juce::Random driftPhaseRandomizer;          // randomizes per-voice drift starting phase
+    juce::Random driftPhaseRandomizer; // randomizes per-voice drift starting phase
 
     //-- Cached APVTS parameter pointers (ParamSnapshot pattern) ---------------
-    std::atomic<float>* paramMorphPosition   = nullptr;
-    std::atomic<float>* paramBloomAttack     = nullptr;
-    std::atomic<float>* paramDecay           = nullptr;
-    std::atomic<float>* paramSustain         = nullptr;
-    std::atomic<float>* paramRelease         = nullptr;
-    std::atomic<float>* paramFilterCutoff    = nullptr;
+    std::atomic<float>* paramMorphPosition = nullptr;
+    std::atomic<float>* paramBloomAttack = nullptr;
+    std::atomic<float>* paramDecay = nullptr;
+    std::atomic<float>* paramSustain = nullptr;
+    std::atomic<float>* paramRelease = nullptr;
+    std::atomic<float>* paramFilterCutoff = nullptr;
     std::atomic<float>* paramFilterResonance = nullptr;
-    std::atomic<float>* paramFilterEnvDepth  = nullptr;
-    std::atomic<float>* paramDrift           = nullptr;
-    std::atomic<float>* paramSubLevel        = nullptr;
-    std::atomic<float>* paramDetune          = nullptr;
-    std::atomic<float>* paramLevel           = nullptr;
-    std::atomic<float>* paramPolyphony       = nullptr;
-    std::atomic<float>* paramVoiceMode       = nullptr;
-    std::atomic<float>* paramGlide           = nullptr;
+    std::atomic<float>* paramFilterEnvDepth = nullptr;
+    std::atomic<float>* paramDrift = nullptr;
+    std::atomic<float>* paramSubLevel = nullptr;
+    std::atomic<float>* paramDetune = nullptr;
+    std::atomic<float>* paramLevel = nullptr;
+    std::atomic<float>* paramPolyphony = nullptr;
+    std::atomic<float>* paramVoiceMode = nullptr;
+    std::atomic<float>* paramGlide = nullptr;
     // XOceanus macros
-    std::atomic<float>* paramMacroBloom      = nullptr;
-    std::atomic<float>* paramMacroDrift      = nullptr;
-    std::atomic<float>* paramMacroDepth      = nullptr;
-    std::atomic<float>* paramMacroSpace      = nullptr;
+    std::atomic<float>* paramMacroBloom = nullptr;
+    std::atomic<float>* paramMacroDrift = nullptr;
+    std::atomic<float>* paramMacroDepth = nullptr;
+    std::atomic<float>* paramMacroSpace = nullptr;
     // D002: LFO1 parameters (primary gill-flutter sine)
-    std::atomic<float>* paramLfo1Rate        = nullptr;
-    std::atomic<float>* paramLfo1Depth       = nullptr;
+    std::atomic<float>* paramLfo1Rate = nullptr;
+    std::atomic<float>* paramLfo1Depth = nullptr;
     // D002: LFO2 parameters (secondary slow arc triangle)
-    std::atomic<float>* paramLfo2Rate        = nullptr;
-    std::atomic<float>* paramLfo2Depth       = nullptr;
+    std::atomic<float>* paramLfo2Rate = nullptr;
+    std::atomic<float>* paramLfo2Depth = nullptr;
 };
 
 } // namespace xoceanus

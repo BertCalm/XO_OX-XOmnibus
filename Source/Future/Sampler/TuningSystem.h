@@ -9,7 +9,8 @@
 #include <cctype>
 #include <cfloat>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // TuningSystem — Micro-tuning and alternative scale support for XOceanus.
@@ -64,12 +65,12 @@ namespace xoceanus {
 //------------------------------------------------------------------------------
 // Internal limits and constants
 //------------------------------------------------------------------------------
-static constexpr int    kTuningTableSize  = 128;   // covers all MIDI notes 0-127
-static constexpr int    kMaxScaleDegrees  = 128;   // Scala supports up to ~100 common
-static constexpr float  kMinFreqHz        = 8.0f;
-static constexpr float  kMaxFreqHz        = 25600.0f;
-static constexpr float  kDefaultRefFreq   = 440.0f;
-static constexpr int    kDefaultRefNote   = 69;    // A4
+static constexpr int kTuningTableSize = 128; // covers all MIDI notes 0-127
+static constexpr int kMaxScaleDegrees = 128; // Scala supports up to ~100 common
+static constexpr float kMinFreqHz = 8.0f;
+static constexpr float kMaxFreqHz = 25600.0f;
+static constexpr float kDefaultRefFreq = 440.0f;
+static constexpr int kDefaultRefNote = 69; // A4
 
 //------------------------------------------------------------------------------
 // Built-in tuning ratio tables (all relative to the root, octave = 2.0)
@@ -80,34 +81,34 @@ static constexpr int    kDefaultRefNote   = 69;    // A4
 // C  C#       D     Eb      E    F    F#      G    Ab      A    Bb      B
 static constexpr double kJI5Ratios[12] = {
     1.0,
-    16.0 / 15.0,    // minor second (JI)
-    9.0  /  8.0,    // major second
-    6.0  /  5.0,    // minor third
-    5.0  /  4.0,    // major third
-    4.0  /  3.0,    // perfect fourth
-    45.0 / 32.0,    // augmented fourth (tritone JI)
-    3.0  /  2.0,    // perfect fifth
-    8.0  /  5.0,    // minor sixth
-    5.0  /  3.0,    // major sixth
-    9.0  /  5.0,    // minor seventh
-    15.0 /  8.0     // major seventh
+    16.0 / 15.0, // minor second (JI)
+    9.0 / 8.0,   // major second
+    6.0 / 5.0,   // minor third
+    5.0 / 4.0,   // major third
+    4.0 / 3.0,   // perfect fourth
+    45.0 / 32.0, // augmented fourth (tritone JI)
+    3.0 / 2.0,   // perfect fifth
+    8.0 / 5.0,   // minor sixth
+    5.0 / 3.0,   // major sixth
+    9.0 / 5.0,   // minor seventh
+    15.0 / 8.0   // major seventh
 };
 
 // 3-limit Pythagorean — stacked perfect fifths (3/2)
 // Each degree = (3/2)^n, octave-reduced.  Order: C C# D Eb E F F# G Ab A Bb B
 static constexpr double kPythRatios[12] = {
     1.0,
-    2187.0 / 2048.0,  // apotome (C#)
-    9.0    /    8.0,  // D
-    32.0   /   27.0,  // Eb (Pythagorean minor third)
-    81.0   /   64.0,  // E
-    4.0    /    3.0,  // F
-    729.0  /  512.0,  // F# (tritone Pythagorean)
-    3.0    /    2.0,  // G
-    128.0  /   81.0,  // Ab
-    27.0   /   16.0,  // A
-    16.0   /    9.0,  // Bb
-    243.0  /  128.0   // B
+    2187.0 / 2048.0, // apotome (C#)
+    9.0 / 8.0,       // D
+    32.0 / 27.0,     // Eb (Pythagorean minor third)
+    81.0 / 64.0,     // E
+    4.0 / 3.0,       // F
+    729.0 / 512.0,   // F# (tritone Pythagorean)
+    3.0 / 2.0,       // G
+    128.0 / 81.0,    // Ab
+    27.0 / 16.0,     // A
+    16.0 / 9.0,      // Bb
+    243.0 / 128.0    // B
 };
 
 // Quarter-comma Meantone — historically used for keyboard instruments 1450-1800.
@@ -118,17 +119,17 @@ static constexpr double kPythRatios[12] = {
 // Used to derive the table below; stored inline for documentation clarity.
 static constexpr double kMeantoneRatios[12] = {
     1.0,
-    1.04490672652566,  // C# (D-flat enharmonic, 1 fifth up ×5 / 8 × 5^0.25)
-    1.11803398874990,  // D  = sqrt(5)/2
-    1.19627902497696,  // Eb = 2 / (5^0.25)^3 * ... see derivation
-    1.25000000000000,  // E  = 5/4 exactly (this is the defining property)
-    1.33748060995284,  // F
-    1.39754248593737,  // F#
-    1.49534878122122,  // G
-    1.56250000000000,  // Ab = 5/4 × 5/4 / 2
-    1.67185076244105,  // A  = 5^0.75 / 2
-    1.78885438199983,  // Bb
-    1.86918597652653   // B
+    1.04490672652566, // C# (D-flat enharmonic, 1 fifth up ×5 / 8 × 5^0.25)
+    1.11803398874990, // D  = sqrt(5)/2
+    1.19627902497696, // Eb = 2 / (5^0.25)^3 * ... see derivation
+    1.25000000000000, // E  = 5/4 exactly (this is the defining property)
+    1.33748060995284, // F
+    1.39754248593737, // F#
+    1.49534878122122, // G
+    1.56250000000000, // Ab = 5/4 × 5/4 / 2
+    1.67185076244105, // A  = 5^0.75 / 2
+    1.78885438199983, // Bb
+    1.86918597652653  // B
 };
 
 // 24-TET (Arabic Maqam quarter-tone system).
@@ -141,7 +142,7 @@ static constexpr double kMeantoneRatios[12] = {
 //------------------------------------------------------------------------------
 struct ScaleDegree
 {
-    double ratio = 1.0;  // frequency ratio relative to root (always ≥ 1.0)
+    double ratio = 1.0; // frequency ratio relative to root (always ≥ 1.0)
 };
 
 //------------------------------------------------------------------------------
@@ -149,26 +150,26 @@ struct ScaleDegree
 //------------------------------------------------------------------------------
 struct KeyboardMap
 {
-    int    mapSize      = 12;    // number of entries in the mapping
-    int    firstNote    = 0;     // lowest MIDI note mapped
-    int    lastNote     = 127;   // highest MIDI note mapped
-    int    middleNote   = 60;    // MIDI note that plays the reference frequency
-    int    referenceNote = 69;   // MIDI note for reference frequency (A4)
-    double referenceFreq = 440.0; // Hz for referenceNote
-    int    scaleOctave  = 12;    // number of scale degrees before repeating octave
-    int    degrees[kMaxScaleDegrees]; // scale degree for each map slot (-1 = unmapped)
-    int    degreeCount  = 0;
+    int mapSize = 12;              // number of entries in the mapping
+    int firstNote = 0;             // lowest MIDI note mapped
+    int lastNote = 127;            // highest MIDI note mapped
+    int middleNote = 60;           // MIDI note that plays the reference frequency
+    int referenceNote = 69;        // MIDI note for reference frequency (A4)
+    double referenceFreq = 440.0;  // Hz for referenceNote
+    int scaleOctave = 12;          // number of scale degrees before repeating octave
+    int degrees[kMaxScaleDegrees]; // scale degree for each map slot (-1 = unmapped)
+    int degreeCount = 0;
 
     void setDefault() noexcept
     {
-        mapSize      = 12;
-        firstNote    = 0;
-        lastNote     = 127;
-        middleNote   = 60;
+        mapSize = 12;
+        firstNote = 0;
+        lastNote = 127;
+        middleNote = 60;
         referenceNote = 69;
         referenceFreq = 440.0;
-        scaleOctave  = 12;
-        degreeCount  = 12;
+        scaleOctave = 12;
+        degreeCount = 12;
         for (int i = 0; i < 12; ++i)
             degrees[i] = i;
     }
@@ -180,7 +181,6 @@ struct KeyboardMap
 class TuningSystem
 {
 public:
-
     //--------------------------------------------------------------------------
     // Construction
     //--------------------------------------------------------------------------
@@ -201,7 +201,7 @@ public:
     {
         scaleDegreeCount = 12;
         for (int i = 0; i < 12; ++i)
-            scaleDegrees[i].ratio = std::pow (2.0, i / 12.0);
+            scaleDegrees[i].ratio = std::pow(2.0, i / 12.0);
         scaleOctaveRatio = 2.0;
         buildTable();
     }
@@ -246,7 +246,7 @@ public:
     {
         scaleDegreeCount = 24;
         for (int i = 0; i < 24; ++i)
-            scaleDegrees[i].ratio = std::pow (2.0, i / 24.0);
+            scaleDegrees[i].ratio = std::pow(2.0, i / 24.0);
         scaleOctaveRatio = 2.0;
 
         // For 24-TET we reassign the keyboard map to span 24 degrees across
@@ -264,16 +264,16 @@ public:
     /// Set the reference frequency for the reference MIDI note.
     /// Default: 440.0 Hz. Call before buildTable() if changed with a built-in tuning,
     /// or call after setEqual12() etc. (they always call buildTable() internally).
-    void setReferenceFrequency (float freq) noexcept
+    void setReferenceFrequency(float freq) noexcept
     {
-        refFreqHz = (freq > 0.0f) ? static_cast<double> (freq) : 440.0;
+        refFreqHz = (freq > 0.0f) ? static_cast<double>(freq) : 440.0;
         kbm.referenceFreq = refFreqHz;
         buildTable();
     }
 
     /// Set the MIDI note number that plays at exactly the reference frequency.
     /// Default: 69 (A4). Rebuilds the table.
-    void setReferenceMidiNote (int note) noexcept
+    void setReferenceMidiNote(int note) noexcept
     {
         refMidiNote = (note >= 0 && note < 128) ? note : 69;
         kbm.referenceNote = refMidiNote;
@@ -295,15 +295,15 @@ public:
     ///   Lines starting with '!' are comments.
     ///
     /// Returns true on success, false if parsing fails (tuning is unchanged on failure).
-    bool loadScalaFile (const char* sclData, int sclLength) noexcept
+    bool loadScalaFile(const char* sclData, int sclLength) noexcept
     {
         if (sclData == nullptr || sclLength <= 0)
             return false;
 
         // Working copies
         ScaleDegree tempDegrees[kMaxScaleDegrees];
-        int         tempCount = 0;
-        double      tempOctave = 2.0;
+        int tempCount = 0;
+        double tempOctave = 2.0;
 
         // ---- Simple line-by-line parser ----
         // We parse directly from the raw buffer without dynamic allocation.
@@ -311,18 +311,20 @@ public:
         //   state 0 = waiting for description line
         //   state 1 = waiting for note-count line
         //   state 2 = reading pitch entries
-        int state       = 0;
+        int state = 0;
         int notesExpected = 0;
-        int lineStart   = 0;
+        int lineStart = 0;
         char lineBuf[256];
 
-        auto processLine = [&] (const char* line, int len) -> bool
+        auto processLine = [&](const char* line, int len) -> bool
         {
             // Strip trailing whitespace/CR
-            while (len > 0 && (line[len-1] == '\r' || line[len-1] == '\n' || line[len-1] == ' ' || line[len-1] == '\t'))
+            while (len > 0 &&
+                   (line[len - 1] == '\r' || line[len - 1] == '\n' || line[len - 1] == ' ' || line[len - 1] == '\t'))
                 --len;
 
-            if (len <= 0) return true;  // blank line — skip
+            if (len <= 0)
+                return true; // blank line — skip
 
             // Comments start with '!'
             if (line[0] == '!')
@@ -330,106 +332,132 @@ public:
 
             switch (state)
             {
-                case 0:  // description — skip
-                    state = 1;
-                    return true;
+            case 0: // description — skip
+                state = 1;
+                return true;
 
-                case 1:  // note count
+            case 1: // note count
+            {
+                int n = 0;
+                for (int i = 0; i < len; ++i)
                 {
-                    int n = 0;
-                    for (int i = 0; i < len; ++i)
-                    {
-                        if (line[i] >= '0' && line[i] <= '9')
-                            n = n * 10 + (line[i] - '0');
-                        else if (line[i] == ' ' || line[i] == '\t')
-                            break;
-                        else
-                            return false;  // unexpected char
-                    }
-                    if (n <= 0 || n >= kMaxScaleDegrees)
-                        return false;
-                    notesExpected = n;
-                    // Degree 0 is always 1/1 (unison)
-                    tempDegrees[0].ratio = 1.0;
-                    tempCount = 0;
-                    state = 2;
-                    return true;
-                }
-
-                case 2:  // pitch entry
-                {
-                    if (tempCount >= notesExpected)
-                        return true;  // extra lines after expected notes — ignore
-
-                    // Copy to null-terminated scratch
-                    int copyLen = len < 255 ? len : 255;
-                    char buf[256];
-                    std::memcpy (buf, line, static_cast<size_t> (copyLen));
-                    buf[copyLen] = '\0';
-
-                    // Strip leading whitespace
-                    int start = 0;
-                    while (buf[start] == ' ' || buf[start] == '\t') ++start;
-
-                    // Detect cents (contains '.') vs ratio (contains '/' or plain integer)
-                    bool hasDot   = false;
-                    bool hasSlash = false;
-                    for (int i = start; buf[i] != '\0'; ++i)
-                    {
-                        if (buf[i] == '.') { hasDot = true;   break; }
-                        if (buf[i] == '/') { hasSlash = true; break; }
-                    }
-
-                    double ratio = 1.0;
-
-                    if (hasDot)
-                    {
-                        // Cents value — parse as double
-                        double cents = 0.0;
-                        if (std::sscanf (buf + start, "%lf", &cents) != 1)
-                            return false;
-                        ratio = std::pow (2.0, cents / 1200.0);
-                    }
-                    else if (hasSlash)
-                    {
-                        // Ratio "numerator/denominator"
-                        // den MUST start at 0 — the accumulation loop is
-                        //   den = den * 10 + digit
-                        // so a non-zero seed would corrupt the result (e.g. 1→12 for "2").
-                        long long num = 0, den = 0;
-                        const char* p = buf + start;
-                        while (*p >= '0' && *p <= '9') { num = num * 10 + (*p - '0'); ++p; }
-                        if (*p != '/') return false;
-                        ++p;
-                        while (*p >= '0' && *p <= '9') { den = den * 10 + (*p - '0'); ++p; }
-                        if (den == 0) return false;  // malformed or zero denominator
-                        ratio = static_cast<double> (num) / static_cast<double> (den);
-                    }
+                    if (line[i] >= '0' && line[i] <= '9')
+                        n = n * 10 + (line[i] - '0');
+                    else if (line[i] == ' ' || line[i] == '\t')
+                        break;
                     else
+                        return false; // unexpected char
+                }
+                if (n <= 0 || n >= kMaxScaleDegrees)
+                    return false;
+                notesExpected = n;
+                // Degree 0 is always 1/1 (unison)
+                tempDegrees[0].ratio = 1.0;
+                tempCount = 0;
+                state = 2;
+                return true;
+            }
+
+            case 2: // pitch entry
+            {
+                if (tempCount >= notesExpected)
+                    return true; // extra lines after expected notes — ignore
+
+                // Copy to null-terminated scratch
+                int copyLen = len < 255 ? len : 255;
+                char buf[256];
+                std::memcpy(buf, line, static_cast<size_t>(copyLen));
+                buf[copyLen] = '\0';
+
+                // Strip leading whitespace
+                int start = 0;
+                while (buf[start] == ' ' || buf[start] == '\t')
+                    ++start;
+
+                // Detect cents (contains '.') vs ratio (contains '/' or plain integer)
+                bool hasDot = false;
+                bool hasSlash = false;
+                for (int i = start; buf[i] != '\0'; ++i)
+                {
+                    if (buf[i] == '.')
                     {
-                        // Plain integer = that many octaves
-                        long long n = 0;
-                        const char* p = buf + start;
-                        bool hasDigit = false;
-                        while (*p >= '0' && *p <= '9') { n = n * 10 + (*p - '0'); ++p; hasDigit = true; }
-                        if (!hasDigit) return false;
-                        ratio = static_cast<double> (n);  // e.g. "2" = one octave = 2.0
+                        hasDot = true;
+                        break;
                     }
-
-                    if (ratio <= 0.0) return false;
-
-                    // The last entry in .scl is the octave interval
-                    if (tempCount == notesExpected - 1)
-                        tempOctave = ratio;
-
-                    // Store degree (offset +1 because degree 0 = unison is implicit)
-                    tempDegrees[tempCount + 1].ratio = ratio;
-                    ++tempCount;
-                    return true;
+                    if (buf[i] == '/')
+                    {
+                        hasSlash = true;
+                        break;
+                    }
                 }
 
-                default:
-                    return true;
+                double ratio = 1.0;
+
+                if (hasDot)
+                {
+                    // Cents value — parse as double
+                    double cents = 0.0;
+                    if (std::sscanf(buf + start, "%lf", &cents) != 1)
+                        return false;
+                    ratio = std::pow(2.0, cents / 1200.0);
+                }
+                else if (hasSlash)
+                {
+                    // Ratio "numerator/denominator"
+                    // den MUST start at 0 — the accumulation loop is
+                    //   den = den * 10 + digit
+                    // so a non-zero seed would corrupt the result (e.g. 1→12 for "2").
+                    long long num = 0, den = 0;
+                    const char* p = buf + start;
+                    while (*p >= '0' && *p <= '9')
+                    {
+                        num = num * 10 + (*p - '0');
+                        ++p;
+                    }
+                    if (*p != '/')
+                        return false;
+                    ++p;
+                    while (*p >= '0' && *p <= '9')
+                    {
+                        den = den * 10 + (*p - '0');
+                        ++p;
+                    }
+                    if (den == 0)
+                        return false; // malformed or zero denominator
+                    ratio = static_cast<double>(num) / static_cast<double>(den);
+                }
+                else
+                {
+                    // Plain integer = that many octaves
+                    long long n = 0;
+                    const char* p = buf + start;
+                    bool hasDigit = false;
+                    while (*p >= '0' && *p <= '9')
+                    {
+                        n = n * 10 + (*p - '0');
+                        ++p;
+                        hasDigit = true;
+                    }
+                    if (!hasDigit)
+                        return false;
+                    ratio = static_cast<double>(n); // e.g. "2" = one octave = 2.0
+                }
+
+                if (ratio <= 0.0)
+                    return false;
+
+                // The last entry in .scl is the octave interval
+                if (tempCount == notesExpected - 1)
+                    tempOctave = ratio;
+
+                // Store degree (offset +1 because degree 0 = unison is implicit)
+                tempDegrees[tempCount + 1].ratio = ratio;
+                ++tempCount;
+                return true;
+            }
+
+            default:
+                return true;
             }
         };
 
@@ -443,21 +471,23 @@ public:
                 ++end;
 
             int lineLen = end - lineStart;
-            if (lineLen > 255) lineLen = 255;
-            std::memcpy (lineBuf, sclData + lineStart, static_cast<size_t> (lineLen));
+            if (lineLen > 255)
+                lineLen = 255;
+            std::memcpy(lineBuf, sclData + lineStart, static_cast<size_t>(lineLen));
             lineBuf[lineLen] = '\0';
 
-            if (!processLine (lineBuf, lineLen))
-                return false;  // parse error — leave existing tuning intact
+            if (!processLine(lineBuf, lineLen))
+                return false; // parse error — leave existing tuning intact
 
             lineStart = end + 1;
             pos = lineStart;
 
-            if (end >= sclLength) break;
+            if (end >= sclLength)
+                break;
         }
 
         if (state != 2 || notesExpected == 0)
-            return false;  // incomplete file
+            return false; // incomplete file
 
         // Commit parsed result.
         // scaleDegrees[0] = unison (1/1, implicit), degrees[1..N] = parsed pitches.
@@ -471,7 +501,7 @@ public:
         // scale's degree count so the default identity mapping is correct.
         // A subsequent loadKeyboardMapping() call will override this.
         kbm.setDefault();
-        kbm.mapSize     = scaleDegreeCount;
+        kbm.mapSize = scaleDegreeCount;
         kbm.scaleOctave = scaleDegreeCount;
         kbm.degreeCount = scaleDegreeCount;
         for (int i = 0; i < scaleDegreeCount && i < kMaxScaleDegrees; ++i)
@@ -498,44 +528,90 @@ public:
     ///   Lines 8..N: degree assignments (integer scale degree, or 'x' = unmapped)
     ///
     /// Returns true on success, false on parse failure (mapping unchanged).
-    bool loadKeyboardMapping (const char* kbmData, int kbmLength) noexcept
+    bool loadKeyboardMapping(const char* kbmData, int kbmLength) noexcept
     {
         if (kbmData == nullptr || kbmLength <= 0)
             return false;
 
         KeyboardMap tempMap;
         tempMap.setDefault();
-        int headerLine  = 0;  // which header field we're reading (0-based)
+        int headerLine = 0; // which header field we're reading (0-based)
         int degreeIndex = 0;
 
-        auto processKbmLine = [&] (const char* line, int len) -> bool
+        auto processKbmLine = [&](const char* line, int len) -> bool
         {
-            while (len > 0 && (line[len-1] == '\r' || line[len-1] == '\n'
-                               || line[len-1] == ' ' || line[len-1] == '\t'))
+            while (len > 0 &&
+                   (line[len - 1] == '\r' || line[len - 1] == '\n' || line[len - 1] == ' ' || line[len - 1] == '\t'))
                 --len;
-            if (len <= 0) return true;
-            if (line[0] == '!') return true;  // comment
+            if (len <= 0)
+                return true;
+            if (line[0] == '!')
+                return true; // comment
 
             char buf[256];
             int copyLen = len < 255 ? len : 255;
-            std::memcpy (buf, line, static_cast<size_t> (copyLen));
+            std::memcpy(buf, line, static_cast<size_t>(copyLen));
             buf[copyLen] = '\0';
             const char* p = buf;
-            while (*p == ' ' || *p == '\t') ++p;
+            while (*p == ' ' || *p == '\t')
+                ++p;
 
             if (headerLine < 7)
             {
                 // Header fields
                 switch (headerLine)
                 {
-                    case 0: { int v = 0; std::sscanf (p, "%d", &v); tempMap.mapSize = v; break; }
-                    case 1: { int v = 0; std::sscanf (p, "%d", &v); tempMap.firstNote = v; break; }
-                    case 2: { int v = 0; std::sscanf (p, "%d", &v); tempMap.lastNote = v; break; }
-                    case 3: { int v = 0; std::sscanf (p, "%d", &v); tempMap.middleNote = v; break; }
-                    case 4: { int v = 0; std::sscanf (p, "%d", &v); tempMap.referenceNote = v; break; }
-                    case 5: { double v = 440.0; std::sscanf (p, "%lf", &v); tempMap.referenceFreq = v; break; }
-                    case 6: { int v = 0; std::sscanf (p, "%d", &v); tempMap.scaleOctave = v; break; }
-                    default: break;
+                case 0:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.mapSize = v;
+                    break;
+                }
+                case 1:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.firstNote = v;
+                    break;
+                }
+                case 2:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.lastNote = v;
+                    break;
+                }
+                case 3:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.middleNote = v;
+                    break;
+                }
+                case 4:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.referenceNote = v;
+                    break;
+                }
+                case 5:
+                {
+                    double v = 440.0;
+                    std::sscanf(p, "%lf", &v);
+                    tempMap.referenceFreq = v;
+                    break;
+                }
+                case 6:
+                {
+                    int v = 0;
+                    std::sscanf(p, "%d", &v);
+                    tempMap.scaleOctave = v;
+                    break;
+                }
+                default:
+                    break;
                 }
                 ++headerLine;
                 return true;
@@ -547,12 +623,12 @@ public:
 
             if (p[0] == 'x' || p[0] == 'X')
             {
-                tempMap.degrees[degreeIndex] = -1;  // unmapped key
+                tempMap.degrees[degreeIndex] = -1; // unmapped key
             }
             else
             {
                 int v = 0;
-                std::sscanf (p, "%d", &v);
+                std::sscanf(p, "%d", &v);
                 tempMap.degrees[degreeIndex] = v;
             }
             ++degreeIndex;
@@ -572,20 +648,22 @@ public:
                 ++end;
 
             int lineLen = end - lineStart;
-            if (lineLen > 255) lineLen = 255;
-            std::memcpy (lineBuf, kbmData + lineStart, static_cast<size_t> (lineLen));
+            if (lineLen > 255)
+                lineLen = 255;
+            std::memcpy(lineBuf, kbmData + lineStart, static_cast<size_t>(lineLen));
             lineBuf[lineLen] = '\0';
 
-            if (!processKbmLine (lineBuf, lineLen))
+            if (!processKbmLine(lineBuf, lineLen))
                 return false;
 
             lineStart = end + 1;
             pos = lineStart;
-            if (end >= kbmLength) break;
+            if (end >= kbmLength)
+                break;
         }
 
         if (headerLine < 7)
-            return false;  // incomplete .kbm header
+            return false; // incomplete .kbm header
 
         // Commit and rebuild
         kbm = tempMap;
@@ -601,10 +679,12 @@ public:
 
     /// Map a MIDI note [0, 127] to a frequency in Hz using the current tuning.
     /// O(1) — single array lookup. Safe to call on the audio thread.
-    float noteToFrequency (int midiNote) const noexcept
+    float noteToFrequency(int midiNote) const noexcept
     {
-        if (midiNote < 0)   midiNote = 0;
-        if (midiNote > 127) midiNote = 127;
+        if (midiNote < 0)
+            midiNote = 0;
+        if (midiNote > 127)
+            midiNote = 127;
         return freqTable[midiNote];
     }
 
@@ -616,14 +696,16 @@ public:
     ///   float norm = PitchBendUtil::parsePitchWheel (midiWheelValue);
     ///   float semi = PitchBendUtil::bendToSemitones (norm, 2.0f);
     ///   float freq = tuning.noteToFrequency (static_cast<float>(midiNote) + semi);
-    float noteToFrequency (float midiNoteFloat) const noexcept
+    float noteToFrequency(float midiNoteFloat) const noexcept
     {
         // Clamp to valid table range with headroom for interpolation
-        if (midiNoteFloat < 0.0f)   midiNoteFloat = 0.0f;
-        if (midiNoteFloat > 127.0f) midiNoteFloat = 127.0f;
+        if (midiNoteFloat < 0.0f)
+            midiNoteFloat = 0.0f;
+        if (midiNoteFloat > 127.0f)
+            midiNoteFloat = 127.0f;
 
-        int   lo  = static_cast<int> (midiNoteFloat);
-        float frac = midiNoteFloat - static_cast<float> (lo);
+        int lo = static_cast<int>(midiNoteFloat);
+        float frac = midiNoteFloat - static_cast<float>(lo);
 
         if (lo >= 127)
             return freqTable[127];
@@ -645,14 +727,15 @@ public:
     int getScaleDegreeCount() const noexcept { return scaleDegreeCount; }
 
     /// Frequency ratio for scale degree n (0 = unison, N = octave).
-    double getScaleDegreeRatio (int n) const noexcept
+    double getScaleDegreeRatio(int n) const noexcept
     {
-        if (n < 0 || n > scaleDegreeCount) return 1.0;
+        if (n < 0 || n > scaleDegreeCount)
+            return 1.0;
         return scaleDegrees[n].ratio;
     }
 
     /// Current reference frequency (Hz).
-    float getReferenceFrequency() const noexcept { return static_cast<float> (refFreqHz); }
+    float getReferenceFrequency() const noexcept { return static_cast<float>(refFreqHz); }
 
     /// Current reference MIDI note.
     int getReferenceMidiNote() const noexcept { return refMidiNote; }
@@ -667,14 +750,13 @@ public:
     /// Reset to 12-TET, A4=440.
     void reset() noexcept
     {
-        refFreqHz   = kDefaultRefFreq;
+        refFreqHz = kDefaultRefFreq;
         refMidiNote = kDefaultRefNote;
         kbm.setDefault();
         setEqual12();
     }
 
 private:
-
     //--------------------------------------------------------------------------
     // Table builder — called once after any tuning change (non-audio thread)
     //--------------------------------------------------------------------------
@@ -695,21 +777,23 @@ private:
     void buildTable() noexcept
     {
         // Resolve the scale degree and octave offset for the reference note
-        const double refDegreeRatio = degreeRatioForNote (refMidiNote);
+        const double refDegreeRatio = degreeRatioForNote(refMidiNote);
 
         for (int n = 0; n < kTuningTableSize; ++n)
         {
-            double noteRatio = degreeRatioForNote (n);
+            double noteRatio = degreeRatioForNote(n);
 
             // Frequency = refFreq × (noteRatio / refDegreeRatio)
             // Both noteRatio and refDegreeRatio already include octave offsets.
             double freq = refFreqHz * (noteRatio / refDegreeRatio);
 
             // Denormal / out-of-range clamp — protects all downstream DSP
-            if (freq < kMinFreqHz)   freq = kMinFreqHz;
-            if (freq > kMaxFreqHz)   freq = kMaxFreqHz;
+            if (freq < kMinFreqHz)
+                freq = kMinFreqHz;
+            if (freq > kMaxFreqHz)
+                freq = kMaxFreqHz;
 
-            freqTable[n] = static_cast<float> (freq);
+            freqTable[n] = static_cast<float>(freq);
         }
     }
 
@@ -720,10 +804,10 @@ private:
     ///
     /// "Compound" means the ratio already encodes the octave displacement, so
     /// the caller only needs to multiply by (refFreq / compoundRatioAtRefNote).
-    double degreeRatioForNote (int midiNote) const noexcept
+    double degreeRatioForNote(int midiNote) const noexcept
     {
         if (scaleDegreeCount <= 0)
-            return std::pow (2.0, (midiNote - refMidiNote) / 12.0);
+            return std::pow(2.0, (midiNote - refMidiNote) / 12.0);
 
         // Relative position from the middle note (kbm.middleNote plays degree 0)
         int relNote = midiNote - kbm.middleNote;
@@ -745,7 +829,7 @@ private:
         if (kbm.degreeCount > 0 && mapIdx < kbm.degreeCount)
             degree = kbm.degrees[mapIdx];
         else
-            degree = mapIdx % scaleDegreeCount;  // default: wrap within scale
+            degree = mapIdx % scaleDegreeCount; // default: wrap within scale
 
         // Unmapped notes (-1): interpolate as 12-TET from nearest mapped note.
         // Simple approach: treat as if degree = mapIdx with 12-TET spacing.
@@ -753,20 +837,18 @@ private:
         {
             // Fallback: produce a frequency that sits between its neighbors
             // using 12-TET semitone spacing from middleNote.
-            return std::pow (2.0, static_cast<double> (midiNote - kbm.middleNote) / 12.0);
+            return std::pow(2.0, static_cast<double>(midiNote - kbm.middleNote) / 12.0);
         }
 
         // Wrap degree within scale
         int wrappedDegree = degree % scaleDegreeCount;
-        int extraOctaves  = degree / scaleDegreeCount;
+        int extraOctaves = degree / scaleDegreeCount;
 
         // Octave ratio for this note
-        double octRatio = std::pow (scaleOctaveRatio, static_cast<double> (octaveCount + extraOctaves));
+        double octRatio = std::pow(scaleOctaveRatio, static_cast<double>(octaveCount + extraOctaves));
 
         // Scale degree ratio (degree 0 = unison = 1.0 is stored at index 0)
-        double degRatio = (wrappedDegree < scaleDegreeCount)
-                        ? scaleDegrees[wrappedDegree].ratio
-                        : 1.0;
+        double degRatio = (wrappedDegree < scaleDegreeCount) ? scaleDegrees[wrappedDegree].ratio : 1.0;
 
         return octRatio * degRatio;
     }
@@ -776,13 +858,13 @@ private:
     //--------------------------------------------------------------------------
 
     // Scale definition
-    ScaleDegree scaleDegrees[kMaxScaleDegrees + 1];  // +1 for degree 0 (unison)
-    int         scaleDegreeCount = 12;
-    double      scaleOctaveRatio = 2.0;
+    ScaleDegree scaleDegrees[kMaxScaleDegrees + 1]; // +1 for degree 0 (unison)
+    int scaleDegreeCount = 12;
+    double scaleOctaveRatio = 2.0;
 
     // Reference pitch
-    double refFreqHz   = kDefaultRefFreq;
-    int    refMidiNote = kDefaultRefNote;
+    double refFreqHz = kDefaultRefFreq;
+    int refMidiNote = kDefaultRefNote;
 
     // Keyboard mapping
     KeyboardMap kbm;
@@ -805,18 +887,16 @@ private:
 ///
 /// It combines PitchBendUtil's conversion with TuningSystem's table lookup +
 /// fractional interpolation, keeping both modules independent.
-inline float applyPitchBend (const TuningSystem& tuning,
-                              int midiNote,
-                              int midiWheelValue,
-                              float rangeSemitones = 2.0f) noexcept
+inline float applyPitchBend(const TuningSystem& tuning, int midiNote, int midiWheelValue,
+                            float rangeSemitones = 2.0f) noexcept
 {
     // Normalize wheel [0, 16383] → [-1, +1], then to semitones
-    float norm = static_cast<float> (midiWheelValue - 8192) / 8192.0f;
+    float norm = static_cast<float>(midiWheelValue - 8192) / 8192.0f;
     float bendSemitones = norm * rangeSemitones;
 
     // Fractional note lookup (interpolates between adjacent table entries)
-    float fractionalNote = static_cast<float> (midiNote) + bendSemitones;
-    return tuning.noteToFrequency (fractionalNote);
+    float fractionalNote = static_cast<float>(midiNote) + bendSemitones;
+    return tuning.noteToFrequency(fractionalNote);
 }
 
 /// Convert cents offset (e.g. from a detune parameter) to a frequency ratio
@@ -825,9 +905,9 @@ inline float applyPitchBend (const TuningSystem& tuning,
 ///   float freq = tuning.noteToFrequency(note) * centsToRatio(detuneCents);
 ///
 /// Uses fastPow2 — matches the fleet-standard approach in PitchBendUtil.
-inline float centsToRatio (float cents) noexcept
+inline float centsToRatio(float cents) noexcept
 {
-    return fastPow2 (cents / 1200.0f);
+    return fastPow2(cents / 1200.0f);
 }
 
 } // namespace xoceanus

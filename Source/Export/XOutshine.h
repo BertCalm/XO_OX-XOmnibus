@@ -20,7 +20,8 @@
 #include "RebirthProfiles.h"
 #include "RebirthPipeline.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //  XOutshine — Sample Pack Upgrade Engine
@@ -50,27 +51,27 @@ namespace xoceanus {
 
 struct AnalyzedSample
 {
-    juce::File   sourceFile;
+    juce::File sourceFile;
     juce::String name;
     SampleCategory category = SampleCategory::Unknown;
 
-    double sampleRate  = 44100.0;
-    int    bitDepth    = 24;
-    int    numChannels = 2;
-    int    numSamples  = 0;
-    double durationS   = 0.0;
+    double sampleRate = 44100.0;
+    int bitDepth = 24;
+    int numChannels = 2;
+    int numSamples = 0;
+    double durationS = 0.0;
 
-    float  rmsDb       = -100.0f;
-    float  peakDb      = -100.0f;
-    float  dcOffset    = 0.0f;
-    float  tailLengthS = 0.0f;
+    float rmsDb = -100.0f;
+    float peakDb = -100.0f;
+    float dcOffset = 0.0f;
+    float tailLengthS = 0.0f;
 
-    bool   isLoopable  = false;
-    int    loopStart   = 0;
-    int    loopEnd     = 0;
+    bool isLoopable = false;
+    int loopStart = 0;
+    int loopEnd = 0;
 
-    int    detectedMidiNote = 60;  // YIN-detected root note (MIDI 0-127), default C4
-    float  pitchConfidence = 0.0f; // YIN confidence (0-1, higher = more confident)
+    int detectedMidiNote = 60;    // YIN-detected root note (MIDI 0-127), default C4
+    float pitchConfidence = 0.0f; // YIN confidence (0-1, higher = more confident)
 };
 
 //------------------------------------------------------------------------------
@@ -79,41 +80,47 @@ struct AnalyzedSample
 
 struct EnhancedLayer
 {
-    juce::File   file;
+    juce::File file;
     juce::String filename;
-    int          velLayer  = 0;
-    int          rrIndex   = 0;
+    int velLayer = 0;
+    int rrIndex = 0;
 };
 
 struct UpgradedProgram
 {
-    juce::String    name;
-    SampleCategory  category;
-    AnalyzedSample  sourceInfo;
+    juce::String name;
+    SampleCategory category;
+    AnalyzedSample sourceInfo;
     std::vector<EnhancedLayer> layers;
     int numVelocityLayers = 4;
-    int numRoundRobin     = 4;
+    int numRoundRobin = 4;
 };
 
 //------------------------------------------------------------------------------
 // Progress callback — structured to match XOriginate's pattern
 //------------------------------------------------------------------------------
 
-struct OutshineProgress {
-    int          currentSample = 0;
-    int          totalSamples  = 0;
+struct OutshineProgress
+{
+    int currentSample = 0;
+    int totalSamples = 0;
     juce::String stage;
-    float        overallProgress = 0.0f;  // 0-1
-    bool         cancelled = false;
+    float overallProgress = 0.0f; // 0-1
+    bool cancelled = false;
 };
 
-using ProgressCallback = std::function<void (OutshineProgress&)>;
+using ProgressCallback = std::function<void(OutshineProgress&)>;
 
 //------------------------------------------------------------------------------
 // Export format selection
 //------------------------------------------------------------------------------
 
-enum class ExportFormat { XPNPack, WAVFolder, XPMOnly };
+enum class ExportFormat
+{
+    XPNPack,
+    WAVFolder,
+    XPMOnly
+};
 
 //------------------------------------------------------------------------------
 // MPE expression route configuration (for UI — not embedded in XPM)
@@ -121,11 +128,11 @@ enum class ExportFormat { XPNPack, WAVFolder, XPMOnly };
 
 struct MPEExpressionRoutes
 {
-    float slideAmount    = 0.8f;   // CC74 → Filter Cutoff
-    float pressureAmount = 0.4f;   // Pressure → Filter Resonance
-    float pitchBendRange = 24;     // ±semitones
-    bool  velocityToFilter = true; // Velocity → brightness
-    float modWheelAmount = 0.5f;   // ModWheel → Filter Cutoff
+    float slideAmount = 0.8f;     // CC74 → Filter Cutoff
+    float pressureAmount = 0.4f;  // Pressure → Filter Resonance
+    float pitchBendRange = 24;    // ±semitones
+    bool velocityToFilter = true; // Velocity → brightness
+    float modWheelAmount = 0.5f;  // ModWheel → Filter Cutoff
 };
 
 //------------------------------------------------------------------------------
@@ -134,26 +141,26 @@ struct MPEExpressionRoutes
 
 struct OutshineSettings
 {
-    int            velocityLayers = 4;
-    int            roundRobin     = 4;
-    XPNVelocityCurve  velocityCurve  = XPNVelocityCurve::Musical;
+    int velocityLayers = 4;
+    int roundRobin = 4;
+    XPNVelocityCurve velocityCurve = XPNVelocityCurve::Musical;
     // Per-category LUFS targets (spec Section 6, Stage 5)
-    float lufsTargetDrum       = -14.0f;  // Kick, Snare, HiHat*, Clap, Tom, Percussion
-    float lufsTargetBass       = -16.0f;  // Bass
-    float lufsTargetPad        = -18.0f;  // Pad, String
-    float lufsTargetKeys       = -14.0f;  // Keys, Lead, Woodwind, Brass, Pluck, FX, Loop
-    float lufsTargetVocal      = -16.0f;  // Vocal
+    float lufsTargetDrum = -14.0f;  // Kick, Snare, HiHat*, Clap, Tom, Percussion
+    float lufsTargetBass = -16.0f;  // Bass
+    float lufsTargetPad = -18.0f;   // Pad, String
+    float lufsTargetKeys = -14.0f;  // Keys, Lead, Woodwind, Brass, Pluck, FX, Loop
+    float lufsTargetVocal = -16.0f; // Vocal
 
     // Per-category true-peak ceilings (dBTP, negative values)
-    float truePeakDrum         = -0.5f;   // Kick, Snare, HiHat*, Clap, Tom, Percussion, Keys
-    float truePeakLeadPluck    = -0.4f;   // Lead, Pluck, Woodwind, Brass, FX, Loop
-    float truePeakPadBassVocal = -0.3f;   // Pad, String, Vocal, Bass
+    float truePeakDrum = -0.5f;         // Kick, Snare, HiHat*, Clap, Tom, Percussion, Keys
+    float truePeakLeadPluck = -0.4f;    // Lead, Pluck, Woodwind, Brass, FX, Loop
+    float truePeakPadBassVocal = -0.3f; // Pad, String, Vocal, Bass
 
-    bool           applyFadeGuards = true;
-    bool           removeDC       = true;
-    bool           applyDither    = true;
-    bool           detectLoops    = true;
-    juce::String   packName;      // empty = derived from input
+    bool applyFadeGuards = true;
+    bool removeDC = true;
+    bool applyDither = true;
+    bool detectLoops = true;
+    juce::String packName; // empty = derived from input
 
     // Rebirth Mode — engine-inspired FX chain for velocity-layer spectral variation.
     // When rebirth.enabled == true, velocity layers are generated by RebirthPipeline
@@ -182,10 +189,8 @@ public:
     // outputPath: .xpn file or folder
     // Returns true on success.
     //--------------------------------------------------------------------------
-    bool run (const juce::File& inputPath,
-              const juce::File& outputPath,
-              const OutshineSettings& settings,
-              ProgressCallback progress = nullptr)
+    bool run(const juce::File& inputPath, const juce::File& outputPath, const OutshineSettings& settings,
+             ProgressCallback progress = nullptr)
     {
         OutshineSettings s = settings;
         if (s.packName.isEmpty())
@@ -193,12 +198,17 @@ public:
 
         // Stage 1: INGEST — handle .xpn and directory inputs.
         // analyzeGrains() takes a flat file list; run() must expand the input first.
-        juce::File tempWorkDir = juce::File::getSpecialLocation(juce::File::tempDirectory)
-            .getChildFile("xoutshine_run_" + juce::String(juce::Random::getSystemRandom().nextInt()));
+        juce::File tempWorkDir =
+            juce::File::getSpecialLocation(juce::File::tempDirectory)
+                .getChildFile("xoutshine_run_" + juce::String(juce::Random::getSystemRandom().nextInt()));
         tempWorkDir.createDirectory();
 
         auto ingested = ingest(inputPath, tempWorkDir);
-        if (ingested.empty()) { tempWorkDir.deleteRecursively(); return false; }
+        if (ingested.empty())
+        {
+            tempWorkDir.deleteRecursively();
+            return false;
+        }
 
         // Build a StringArray of the ingested WAV paths for analyzeGrains()
         juce::StringArray paths;
@@ -217,7 +227,7 @@ public:
     //--------------------------------------------------------------------------
     // Access results after run() / analyzeGrains() / exportPearl()
     //--------------------------------------------------------------------------
-    int getNumPrograms() const { return (int) programs_.size(); }
+    int getNumPrograms() const { return (int)programs_.size(); }
     const juce::StringArray& getErrors() const { return errors_; }
 
     // Returns the samples analyzed by the last analyzeGrains() call.
@@ -234,9 +244,8 @@ public:
     // filePaths: flat list of WAV file paths (caller resolves folders/XPNs before calling).
     // Returns true on success (even if some samples produced warnings).
     //--------------------------------------------------------------------------
-    bool analyzeGrains (const juce::StringArray& filePaths,
-                        const OutshineSettings& settings,
-                        ProgressCallback progress = nullptr)
+    bool analyzeGrains(const juce::StringArray& filePaths, const OutshineSettings& settings,
+                       ProgressCallback progress = nullptr)
     {
         settings_ = settings;
         progress_ = progress;
@@ -260,9 +269,14 @@ public:
         std::vector<AnalyzedSample> samples;
         for (const auto& path : filePaths)
         {
-            if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+            if (cancelRequested_.load())
+            {
+                workDir_.deleteRecursively();
+                return false;
+            }
             juce::File f(path);
-            if (!f.existsAsFile()) continue;
+            if (!f.existsAsFile())
+                continue;
 
             // Copy to workDir for consistent handling
             auto dest = wavDir.getChildFile(f.getFileName());
@@ -274,23 +288,36 @@ public:
             samples.push_back(as);
         }
 
-        if (samples.empty()) return false;
+        if (samples.empty())
+            return false;
 
         progressState_ = OutshineProgress{};
         report(0.0f, "Opening grains...");
-        progressState_.totalSamples = (int) samples.size();
+        progressState_.totalSamples = (int)samples.size();
 
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         report(0.15f, "Classifying " + juce::String(samples.size()) + " samples...");
         classify(samples);
 
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         report(0.25f, "Analyzing root notes...");
         analyze(samples);
 
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         analyzedSamples_ = samples;
         report(1.0f, "Analysis complete — " + juce::String(samples.size()) + " samples ready.");
@@ -303,9 +330,8 @@ public:
     // outputPath: .xpn file or folder.
     // Returns true on success.
     //--------------------------------------------------------------------------
-    bool exportPearl (const juce::File& outputPath,
-                      const OutshineSettings& settings,
-                      ProgressCallback progress = nullptr)
+    bool exportPearl(const juce::File& outputPath, const OutshineSettings& settings,
+                     ProgressCallback progress = nullptr)
     {
         if (analyzedSamples_.empty())
         {
@@ -331,15 +357,27 @@ public:
 
         report(0.35f, "Enhancing — velocity layers + round-robin...");
         auto programs = enhance(analyzedSamples_, workDir_);
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         report(0.60f, "LUFS normalizing...");
         normalize(programs);
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         report(0.75f, "Building XPM programs...");
         buildPrograms(programs, workDir_);
-        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
 
         report(0.85f, "Packaging...");
         if (outputPath.getFileExtension().equalsIgnoreCase(".xpn"))
@@ -356,8 +394,8 @@ public:
         report(0.95f, "Validating...");
         int issues = validate(programs);
 
-        report(1.0f, "Pearl complete — " + juce::String(programs.size())
-               + " programs, " + juce::String(issues) + " issues.");
+        report(1.0f,
+               "Pearl complete — " + juce::String(programs.size()) + " programs, " + juce::String(issues) + " issues.");
 
         programs_ = programs;
 
@@ -380,11 +418,11 @@ private:
     juce::StringArray errors_;
 
     // Staged API state
-    std::vector<AnalyzedSample> analyzedSamples_;   // populated by analyzeGrains()
-    juce::File workDir_;                            // retained between analyzeGrains() and exportPearl()
-    std::atomic<bool> cancelRequested_{ false };    // set true to abort current operation
+    std::vector<AnalyzedSample> analyzedSamples_; // populated by analyzeGrains()
+    juce::File workDir_;                          // retained between analyzeGrains() and exportPearl()
+    std::atomic<bool> cancelRequested_{false};    // set true to abort current operation
 
-    void report (float p, const juce::String& msg)
+    void report(float p, const juce::String& msg)
     {
         if (progress_)
         {
@@ -395,72 +433,74 @@ private:
     }
 
     // Returns the LUFS target for a given category (per spec Section 6, Stage 5 table).
-    float getLufsTarget (SampleCategory c) const
+    float getLufsTarget(SampleCategory c) const
     {
-        switch (c) {
-            case SampleCategory::Kick:
-            case SampleCategory::Snare:
-            case SampleCategory::HiHatClosed:
-            case SampleCategory::HiHatOpen:
-            case SampleCategory::Clap:
-            case SampleCategory::Tom:
-            case SampleCategory::Percussion:
-                return settings_.lufsTargetDrum;
+        switch (c)
+        {
+        case SampleCategory::Kick:
+        case SampleCategory::Snare:
+        case SampleCategory::HiHatClosed:
+        case SampleCategory::HiHatOpen:
+        case SampleCategory::Clap:
+        case SampleCategory::Tom:
+        case SampleCategory::Percussion:
+            return settings_.lufsTargetDrum;
 
-            case SampleCategory::Bass:
-                return settings_.lufsTargetBass;
+        case SampleCategory::Bass:
+            return settings_.lufsTargetBass;
 
-            case SampleCategory::Pad:
-            case SampleCategory::String:
-                return settings_.lufsTargetPad;
+        case SampleCategory::Pad:
+        case SampleCategory::String:
+            return settings_.lufsTargetPad;
 
-            case SampleCategory::Keys:
-            case SampleCategory::Lead:
-            case SampleCategory::Woodwind:
-            case SampleCategory::Brass:
-            case SampleCategory::Pluck:
-            case SampleCategory::FX:
-            case SampleCategory::Loop:
-                return settings_.lufsTargetKeys;
+        case SampleCategory::Keys:
+        case SampleCategory::Lead:
+        case SampleCategory::Woodwind:
+        case SampleCategory::Brass:
+        case SampleCategory::Pluck:
+        case SampleCategory::FX:
+        case SampleCategory::Loop:
+            return settings_.lufsTargetKeys;
 
-            case SampleCategory::Vocal:
-                return settings_.lufsTargetVocal;
+        case SampleCategory::Vocal:
+            return settings_.lufsTargetVocal;
 
-            default:
-                return settings_.lufsTargetKeys;  // Unknown falls back to −14
+        default:
+            return settings_.lufsTargetKeys; // Unknown falls back to −14
         }
     }
 
     // Returns the true-peak ceiling (dBTP) for a given category.
-    float getTruePeakCeiling (SampleCategory c) const
+    float getTruePeakCeiling(SampleCategory c) const
     {
-        switch (c) {
-            case SampleCategory::Kick:
-            case SampleCategory::Snare:
-            case SampleCategory::HiHatClosed:
-            case SampleCategory::HiHatOpen:
-            case SampleCategory::Clap:
-            case SampleCategory::Tom:
-            case SampleCategory::Percussion:
-            case SampleCategory::Keys:
-                return settings_.truePeakDrum;
+        switch (c)
+        {
+        case SampleCategory::Kick:
+        case SampleCategory::Snare:
+        case SampleCategory::HiHatClosed:
+        case SampleCategory::HiHatOpen:
+        case SampleCategory::Clap:
+        case SampleCategory::Tom:
+        case SampleCategory::Percussion:
+        case SampleCategory::Keys:
+            return settings_.truePeakDrum;
 
-            case SampleCategory::Lead:
-            case SampleCategory::Pluck:
-            case SampleCategory::Woodwind:
-            case SampleCategory::Brass:
-            case SampleCategory::FX:
-            case SampleCategory::Loop:
-                return settings_.truePeakLeadPluck;
+        case SampleCategory::Lead:
+        case SampleCategory::Pluck:
+        case SampleCategory::Woodwind:
+        case SampleCategory::Brass:
+        case SampleCategory::FX:
+        case SampleCategory::Loop:
+            return settings_.truePeakLeadPluck;
 
-            case SampleCategory::Pad:
-            case SampleCategory::String:
-            case SampleCategory::Vocal:
-            case SampleCategory::Bass:
-                return settings_.truePeakPadBassVocal;
+        case SampleCategory::Pad:
+        case SampleCategory::String:
+        case SampleCategory::Vocal:
+        case SampleCategory::Bass:
+            return settings_.truePeakPadBassVocal;
 
-            default:
-                return settings_.truePeakPadBassVocal;
+        default:
+            return settings_.truePeakPadBassVocal;
         }
     }
 
@@ -468,7 +508,7 @@ private:
     // Stage 1: INGEST
     //==========================================================================
 
-    std::vector<AnalyzedSample> ingest (const juce::File& input, const juce::File& workDir)
+    std::vector<AnalyzedSample> ingest(const juce::File& input, const juce::File& workDir)
     {
         std::vector<AnalyzedSample> samples;
         auto wavDir = workDir.getChildFile("ingested");
@@ -481,10 +521,10 @@ private:
             for (int i = 0; i < zip.getNumEntries(); ++i)
             {
                 auto* entry = zip.getEntry(i);
-                if (entry == nullptr) continue;
-                if (juce::String(entry->filename).contains("..") ||
-                    juce::String(entry->filename).startsWithChar('/'))
-                    continue;  // Skip entries with path traversal or absolute paths
+                if (entry == nullptr)
+                    continue;
+                if (juce::String(entry->filename).contains("..") || juce::String(entry->filename).startsWithChar('/'))
+                    continue; // Skip entries with path traversal or absolute paths
                 if (entry->filename.endsWithIgnoreCase(".wav"))
                 {
                     auto dest = wavDir.getChildFile(juce::File(entry->filename).getFileName());
@@ -525,7 +565,7 @@ private:
     // Stage 2: CLASSIFY
     //==========================================================================
 
-    void classify (std::vector<AnalyzedSample>& samples)
+    void classify(std::vector<AnalyzedSample>& samples)
     {
         for (auto& s : samples)
         {
@@ -535,14 +575,15 @@ private:
         }
     }
 
-    static SampleCategory classifyByName (const juce::String& name)
+    static SampleCategory classifyByName(const juce::String& name)
     {
         auto nl = name.toLowerCase();
         if (nl.contains("kick") || nl.contains("bd") || nl.contains("bassdrum"))
             return SampleCategory::Kick;
         if (nl.contains("snare") || nl.contains("snr") || nl.contains("rim"))
             return SampleCategory::Snare;
-        if (nl.contains("hihat") || nl.contains("hh") || nl.contains("hat")) {
+        if (nl.contains("hihat") || nl.contains("hh") || nl.contains("hat"))
+        {
             if (nl.contains("open") || nl.contains("oh"))
                 return SampleCategory::HiHatOpen;
             return SampleCategory::HiHatClosed;
@@ -569,50 +610,53 @@ private:
             return SampleCategory::String;
         if (nl.contains("loop") || nl.contains(" lp") || nl.contains("_lp") || nl.contains("phrase"))
             return SampleCategory::Loop;
-        if (nl.contains("flute") || nl.contains("clarinet") || nl.contains("saxophone")
-            || nl.contains("_sax") || nl.contains(" sax") || nl.contains("oboe")
-            || nl.contains("bassoon") || nl.contains("recorder") || nl.contains("piccolo")
-            || nl.contains("fife"))
+        if (nl.contains("flute") || nl.contains("clarinet") || nl.contains("saxophone") || nl.contains("_sax") ||
+            nl.contains(" sax") || nl.contains("oboe") || nl.contains("bassoon") || nl.contains("recorder") ||
+            nl.contains("piccolo") || nl.contains("fife"))
             return SampleCategory::Woodwind;
-        if (nl.contains("trumpet") || nl.contains("trombone") || nl.contains("french horn")
-            || nl.contains("frenchhorn") || nl.contains("tuba") || nl.contains("cornet")
-            || nl.contains("flugelhorn") || nl.contains("_horn") || nl.contains(" horn"))
+        if (nl.contains("trumpet") || nl.contains("trombone") || nl.contains("french horn") ||
+            nl.contains("frenchhorn") || nl.contains("tuba") || nl.contains("cornet") || nl.contains("flugelhorn") ||
+            nl.contains("_horn") || nl.contains(" horn"))
             return SampleCategory::Brass;
-        if (nl.contains("vocal") || nl.contains("voice") || nl.contains("choir")
-            || nl.contains("singing") || nl.contains("_vox") || nl.contains(" vox")
-            || nl.contains("acapella") || nl.contains("spoken"))
+        if (nl.contains("vocal") || nl.contains("voice") || nl.contains("choir") || nl.contains("singing") ||
+            nl.contains("_vox") || nl.contains(" vox") || nl.contains("acapella") || nl.contains("spoken"))
             return SampleCategory::Vocal;
         return SampleCategory::Unknown;
     }
 
-    SampleCategory classifyByAudio (const AnalyzedSample& s)
+    SampleCategory classifyByAudio(const AnalyzedSample& s)
     {
         juce::AudioFormatManager fmgr;
         fmgr.registerBasicFormats();
         std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(s.sourceFile));
-        if (!reader) return SampleCategory::Unknown;
+        if (!reader)
+            return SampleCategory::Unknown;
 
-        double dur = (double) reader->lengthInSamples / reader->sampleRate;
+        double dur = (double)reader->lengthInSamples / reader->sampleRate;
 
         if (dur < 0.5)
         {
             // Short sample — classify by spectral content
-            juce::AudioBuffer<float> buf(1, (int) reader->lengthInSamples);
-            reader->read(&buf, 0, (int) reader->lengthInSamples, 0, true, false);
+            juce::AudioBuffer<float> buf(1, (int)reader->lengthInSamples);
+            reader->read(&buf, 0, (int)reader->lengthInSamples, 0, true, false);
             auto* data = buf.getReadPointer(0);
             int n = buf.getNumSamples();
 
             // Zero-crossing rate
             int zc = 0;
             for (int i = 1; i < n; ++i)
-                if ((data[i] >= 0) != (data[i - 1] >= 0)) ++zc;
-            float zcr = (float) zc / n * (float) reader->sampleRate;
+                if ((data[i] >= 0) != (data[i - 1] >= 0))
+                    ++zc;
+            float zcr = (float)zc / n * (float)reader->sampleRate;
 
-            if (zcr < 500)  return SampleCategory::Kick;
-            if (zcr > 3000) return SampleCategory::HiHatClosed;
+            if (zcr < 500)
+                return SampleCategory::Kick;
+            if (zcr > 3000)
+                return SampleCategory::HiHatClosed;
             return SampleCategory::Snare;
         }
-        if (dur < 3.0) return SampleCategory::Pluck;
+        if (dur < 3.0)
+            return SampleCategory::Pluck;
         return SampleCategory::Pad;
     }
 
@@ -621,7 +665,7 @@ private:
     // Returns MIDI note (0-127) on success, -1 on failure.
     // confidence is set to 1 - CMNDF minimum (higher = more confident).
     //--------------------------------------------------------------------------
-    static int yinDetectPitch (const float* data, int numSamples, double sampleRate, float& confidence)
+    static int yinDetectPitch(const float* data, int numSamples, double sampleRate, float& confidence)
     {
         confidence = 0.0f;
         int minBuffer = (int)(2.0 * sampleRate / 40.0);
@@ -686,7 +730,7 @@ private:
         if (bestTau > tauMin && bestTau < tauMax)
         {
             double alpha = cmndf[bestTau - 1];
-            double beta  = cmndf[bestTau];
+            double beta = cmndf[bestTau];
             double gamma = cmndf[bestTau + 1];
             double denom = alpha - 2.0 * beta + gamma;
             if (std::abs(denom) > 1e-10)
@@ -713,7 +757,7 @@ private:
     // Stage 3: ANALYZE
     //==========================================================================
 
-    void analyze (std::vector<AnalyzedSample>& samples)
+    void analyze(std::vector<AnalyzedSample>& samples)
     {
         juce::AudioFormatManager fmgr;
         fmgr.registerBasicFormats();
@@ -721,26 +765,26 @@ private:
         for (auto& s : samples)
         {
             std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(s.sourceFile));
-            if (!reader) continue;
+            if (!reader)
+                continue;
 
-            s.sampleRate  = reader->sampleRate;
-            s.bitDepth    = (int) reader->bitsPerSample;
-            s.numChannels = (int) reader->numChannels;
-            s.numSamples  = (int) reader->lengthInSamples;
-            s.durationS   = s.numSamples / s.sampleRate;
+            s.sampleRate = reader->sampleRate;
+            s.bitDepth = (int)reader->bitsPerSample;
+            s.numChannels = (int)reader->numChannels;
+            s.numSamples = (int)reader->lengthInSamples;
+            s.durationS = s.numSamples / s.sampleRate;
 
             // Sample rate guard — spec requires: pass ≤48 kHz, downsample 96 kHz, reject >96 kHz
             if (s.sampleRate > 96000.0)
             {
-                errors_.add("\"" + s.name + "\": sample rate "
-                    + juce::String((int)(s.sampleRate / 1000)) + " kHz is not supported. "
-                    + "Maximum is 96 kHz. File will be skipped.");
+                errors_.add("\"" + s.name + "\": sample rate " + juce::String((int)(s.sampleRate / 1000)) +
+                            " kHz is not supported. " + "Maximum is 96 kHz. File will be skipped.");
                 // Mark as invalid so downstream stages can skip it
-                s.bitDepth = -1;  // sentinel: invalid sample
+                s.bitDepth = -1; // sentinel: invalid sample
                 continue;
             }
 
-            juce::AudioBuffer<float> buf((int) reader->numChannels, s.numSamples);
+            juce::AudioBuffer<float> buf((int)reader->numChannels, s.numSamples);
             reader->read(&buf, 0, s.numSamples, 0, true, true);
 
             auto* ch0 = buf.getReadPointer(0);
@@ -756,7 +800,7 @@ private:
                 sum += v;
             }
             float rms = std::sqrt(sumSq / std::max(1, n));
-            s.rmsDb  = gainToDb(std::max(rms, 1e-10f));
+            s.rmsDb = gainToDb(std::max(rms, 1e-10f));
             s.peakDb = gainToDb(std::max(peak, 1e-10f));
             s.dcOffset = sum / std::max(1, n);
 
@@ -765,9 +809,13 @@ private:
             int lastActive = n - 1;
             for (int i = n - 1; i >= 0; --i)
             {
-                if (std::abs(ch0[i]) > threshold) { lastActive = i; break; }
+                if (std::abs(ch0[i]) > threshold)
+                {
+                    lastActive = i;
+                    break;
+                }
             }
-            s.tailLengthS = (float) (n - lastActive) / (float) s.sampleRate;
+            s.tailLengthS = (float)(n - lastActive) / (float)s.sampleRate;
 
             // YIN pitch detection — skip drums and FX
             if (!isDrumCategory(s.category) && s.category != SampleCategory::FX)
@@ -787,12 +835,12 @@ private:
                 if (detected >= 0)
                 {
                     s.detectedMidiNote = detected;
-                    s.pitchConfidence  = confidence;
+                    s.pitchConfidence = confidence;
                 }
                 else
                 {
                     s.detectedMidiNote = 60;
-                    s.pitchConfidence  = 0.0f;
+                    s.pitchConfidence = 0.0f;
                     errors_.add("YIN detection failed for \"" + s.name + "\" — using C4 as provisional root.");
                 }
             }
@@ -800,15 +848,23 @@ private:
             // Loop detection for sustained sounds
             if (settings_.detectLoops && s.durationS > 2.0 && !isDrumCategory(s.category))
             {
-                int startIdx = (int) (n * 0.2);
-                int endIdx   = (int) (n * 0.8);
+                int startIdx = (int)(n * 0.2);
+                int endIdx = (int)(n * 0.8);
                 int loopStart = startIdx;
-                for (int i = startIdx; i < std::min(startIdx + (int) s.sampleRate, endIdx); ++i)
-                    if (i > 0 && ch0[i] >= 0.0f && ch0[i - 1] < 0.0f) { loopStart = i; break; }
+                for (int i = startIdx; i < std::min(startIdx + (int)s.sampleRate, endIdx); ++i)
+                    if (i > 0 && ch0[i] >= 0.0f && ch0[i - 1] < 0.0f)
+                    {
+                        loopStart = i;
+                        break;
+                    }
                 int loopEnd = endIdx;
-                for (int i = endIdx; i > std::max(endIdx - (int) s.sampleRate, startIdx); --i)
-                    if (i > 0 && ch0[i] >= 0.0f && ch0[i - 1] < 0.0f) { loopEnd = i; break; }
-                if (loopEnd - loopStart > (int) s.sampleRate)
+                for (int i = endIdx; i > std::max(endIdx - (int)s.sampleRate, startIdx); --i)
+                    if (i > 0 && ch0[i] >= 0.0f && ch0[i - 1] < 0.0f)
+                    {
+                        loopEnd = i;
+                        break;
+                    }
+                if (loopEnd - loopStart > (int)s.sampleRate)
                 {
                     s.isLoopable = true;
                     s.loopStart = loopStart;
@@ -820,13 +876,15 @@ private:
         // Channel validation: all melodic samples must have matching channel counts.
         // Mixed mono/stereo causes MPC to reject the program.
         {
-            int melodicChannels = -1;  // -1 = not yet set
+            int melodicChannels = -1; // -1 = not yet set
             bool mismatchFound = false;
 
             for (auto& s : samples)
             {
-                if (s.bitDepth < 0) continue;  // already flagged invalid (Task 4 sentinel)
-                if (isDrumCategory(s.category)) continue;  // drums map to separate pads; no constraint
+                if (s.bitDepth < 0)
+                    continue; // already flagged invalid (Task 4 sentinel)
+                if (isDrumCategory(s.category))
+                    continue; // drums map to separate pads; no constraint
 
                 if (melodicChannels < 0)
                 {
@@ -835,12 +893,11 @@ private:
                 else if (s.numChannels != melodicChannels)
                 {
                     mismatchFound = true;
-                    errors_.add("Channel mismatch: \"" + s.name + "\" is "
-                        + juce::String(s.numChannels) + "-channel but other melodic samples are "
-                        + juce::String(melodicChannels) + "-channel. "
-                        + "MPC requires all layers in a keygroup to match. "
-                        + "Mixed-channel samples will be excluded.");
-                    s.bitDepth = -1;  // reuse sentinel to exclude from enhance()
+                    errors_.add("Channel mismatch: \"" + s.name + "\" is " + juce::String(s.numChannels) +
+                                "-channel but other melodic samples are " + juce::String(melodicChannels) +
+                                "-channel. " + "MPC requires all layers in a keygroup to match. " +
+                                "Mixed-channel samples will be excluded.");
+                    s.bitDepth = -1; // reuse sentinel to exclude from enhance()
                 }
             }
 
@@ -856,8 +913,7 @@ private:
     // Stage 4: ENHANCE
     //==========================================================================
 
-    std::vector<UpgradedProgram> enhance (const std::vector<AnalyzedSample>& samples,
-                                          const juce::File& workDir)
+    std::vector<UpgradedProgram> enhance(const std::vector<AnalyzedSample>& samples, const juce::File& workDir)
     {
         std::vector<UpgradedProgram> programs;
         auto enhDir = workDir.getChildFile("enhanced");
@@ -869,13 +925,15 @@ private:
         for (const auto& s : samples)
         {
             // Skip samples that were flagged invalid in analyze()
-            if (s.bitDepth < 0) continue;
+            if (s.bitDepth < 0)
+                continue;
 
             std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(s.sourceFile));
-            if (!reader) continue;
+            if (!reader)
+                continue;
 
-            int n = (int) reader->lengthInSamples;
-            int nch = (int) reader->numChannels;
+            int n = (int)reader->lengthInSamples;
+            int nch = (int)reader->numChannels;
             juce::AudioBuffer<float> original(nch, n);
             reader->read(&original, 0, n, 0, true, true);
 
@@ -886,9 +944,11 @@ private:
                 {
                     auto* data = original.getWritePointer(ch);
                     float dc = 0.0f;
-                    for (int i = 0; i < n; ++i) dc += data[i];
+                    for (int i = 0; i < n; ++i)
+                        dc += data[i];
                     dc /= (float)n;
-                    for (int i = 0; i < n; ++i) data[i] -= dc;
+                    for (int i = 0; i < n; ++i)
+                        data[i] -= dc;
                 }
             }
 
@@ -916,12 +976,12 @@ private:
             prog.numRoundRobin = settings_.roundRobin;
 
             // Rebirth Mode: one pipeline instance per source sample (reused across vel layers)
-            juce::Random rebirthRng (juce::Random::getSystemRandom().nextInt64());
+            juce::Random rebirthRng(juce::Random::getSystemRandom().nextInt64());
 
             // Generate velocity layers × round-robin
             for (int vel = 0; vel < settings_.velocityLayers; ++vel)
             {
-                float t = (float) vel / std::max(1, settings_.velocityLayers - 1);
+                float t = (float)vel / std::max(1, settings_.velocityLayers - 1);
 
                 juce::AudioBuffer<float> shaped(nch, n);
 
@@ -932,31 +992,31 @@ private:
                     // chain. Each layer gets spectrally distinct processing via
                     // velocityNorm-scaled parameters inside RebirthPipeline::process().
                     // ----------------------------------------------------------------
-                    float velocityNorm = (settings_.velocityLayers > 1)
-                        ? (float) vel / (float) (settings_.velocityLayers - 1)
-                        : 1.0f;
+                    float velocityNorm =
+                        (settings_.velocityLayers > 1) ? (float)vel / (float)(settings_.velocityLayers - 1) : 1.0f;
 
                     // RebirthPipeline::process() returns a buffer at its internal
                     // target sample rate (48000 Hz or matching the source rate).
                     RebirthPipeline pipeline;
-                    auto reborn = pipeline.process (original, s.sampleRate,
-                                                    settings_.rebirth, velocityNorm,
-                                                    rebirthRng, nullptr);
+                    auto reborn =
+                        pipeline.process(original, s.sampleRate, settings_.rebirth, velocityNorm, rebirthRng, nullptr);
 
                     // Fit reborn buffer into shaped (handle length/channel differences
                     // gracefully — pipeline may add tail time for reverb/diffusion).
                     int rebornLen = reborn.getNumSamples();
-                    int rebornCh  = reborn.getNumChannels();
-                    int copyLen   = std::min (n, rebornLen);
+                    int rebornCh = reborn.getNumChannels();
+                    int copyLen = std::min(n, rebornLen);
 
                     for (int ch = 0; ch < nch; ++ch)
                     {
-                        auto* dst = shaped.getWritePointer (ch);
-                        int srcCh = std::min (ch, rebornCh - 1);
-                        auto* src = reborn.getReadPointer (srcCh);
-                        for (int i = 0; i < copyLen; ++i) dst[i] = src[i];
+                        auto* dst = shaped.getWritePointer(ch);
+                        int srcCh = std::min(ch, rebornCh - 1);
+                        auto* src = reborn.getReadPointer(srcCh);
+                        for (int i = 0; i < copyLen; ++i)
+                            dst[i] = src[i];
                         // Zero-fill if reborn is shorter than original
-                        for (int i = copyLen; i < n; ++i) dst[i] = 0.0f;
+                        for (int i = copyLen; i < n; ++i)
+                            dst[i] = 0.0f;
                     }
                 }
                 else
@@ -970,14 +1030,17 @@ private:
                         auto* dst = shaped.getWritePointer(ch);
 
                         float amp = 0.2f + 0.8f * t;
-                        for (int i = 0; i < n; ++i) dst[i] = src[i] * amp;
+                        for (int i = 0; i < n; ++i)
+                            dst[i] = src[i] * amp;
 
                         // Smooth velocity-to-filter taper (raised cosine, avoids brightness jump at layer boundary)
                         float filterAmount = 1.0f; // 1.0 = no filtering (passthrough)
                         if (t < 0.6f)
                             filterAmount = 0.3f + 0.7f * (t / 0.6f); // linear ramp 0.3→1.0 over 0-0.6
                         else if (t < 0.8f)
-                            filterAmount = 0.5f * (1.0f + std::cos(juce::MathConstants<float>::pi * (t - 0.6f) / 0.2f)); // cosine taper
+                            filterAmount =
+                                0.5f *
+                                (1.0f + std::cos(juce::MathConstants<float>::pi * (t - 0.6f) / 0.2f)); // cosine taper
                         // else filterAmount stays 1.0 (no filtering for t >= 0.8)
                         if (filterAmount < 1.0f)
                         {
@@ -998,7 +1061,7 @@ private:
                 for (int rr = 0; rr < settings_.roundRobin; ++rr)
                 {
                     juce::AudioBuffer<float> varied(nch, n);
-                    std::mt19937 rng((unsigned) (n * 1000 + vel * 100 + rr));
+                    std::mt19937 rng((unsigned)(n * 1000 + vel * 100 + rr));
                     std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
 
                     for (int ch = 0; ch < nch; ++ch)
@@ -1009,12 +1072,13 @@ private:
                         // Micro-pitch (±3 cents via linear interpolation)
                         float cents = dist(rng) * 3.0f;
                         float ratio = fastPow2(cents / 1200.0f);
-                        if (rr == 0) ratio = 1.0f; // original is untouched
+                        if (rr == 0)
+                            ratio = 1.0f; // original is untouched
 
                         for (int i = 0; i < n; ++i)
                         {
                             float srcIdx = i * ratio;
-                            int i0 = (int) srcIdx;
+                            int i0 = (int)srcIdx;
                             float frac = srcIdx - i0;
                             if (i0 + 1 < n)
                                 dst[i] = src[i0] * (1.0f - frac) + src[i0 + 1] * frac;
@@ -1029,7 +1093,8 @@ private:
                         {
                             float gainDb = dist(rng) * 0.5f;
                             float gain = dbToGain(gainDb);
-                            for (int i = 0; i < n; ++i) dst[i] *= gain;
+                            for (int i = 0; i < n; ++i)
+                                dst[i] *= gain;
                         }
 
                         // Subtle saturation for rr > 0
@@ -1046,8 +1111,8 @@ private:
                     }
 
                     // Write WAV
-                    auto fname = sanitizeForFAT32(s.name.substring(0, 20)) + "__v" + juce::String(vel + 1)
-                                 + "__c" + juce::String(rr + 1) + ".wav";
+                    auto fname = sanitizeForFAT32(s.name.substring(0, 20)) + "__v" + juce::String(vel + 1) + "__c" +
+                                 juce::String(rr + 1) + ".wav";
                     auto fpath = enhDir.getChildFile(fname);
                     writeWav(fpath, varied, reader->sampleRate, s.bitDepth);
 
@@ -1069,7 +1134,7 @@ private:
     // Stage 5: NORMALIZE
     //==========================================================================
 
-    void normalize (std::vector<UpgradedProgram>& programs)
+    void normalize(std::vector<UpgradedProgram>& programs)
     {
         juce::AudioFormatManager fmgr;
         fmgr.registerBasicFormats();
@@ -1082,18 +1147,21 @@ private:
                 if (l.rrIndex == 0 && (loudest == nullptr || l.velLayer > loudest->velLayer))
                     loudest = &l;
 
-            if (!loudest) continue;
+            if (!loudest)
+                continue;
 
             // Measure LUFS of loudest
             std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(loudest->file));
-            if (!reader) continue;
+            if (!reader)
+                continue;
 
-            int n = (int) reader->lengthInSamples;
-            juce::AudioBuffer<float> buf((int) reader->numChannels, n);
+            int n = (int)reader->lengthInSamples;
+            juce::AudioBuffer<float> buf((int)reader->numChannels, n);
             reader->read(&buf, 0, n, 0, true, true);
 
             float currentLufs = measureLufs(buf, reader->sampleRate);
-            if (currentLufs < -80.0f) continue;
+            if (currentLufs < -80.0f)
+                continue;
 
             float lufsTarget = getLufsTarget(prog.category);
             float gainDb = juce::jlimit(-24.0f, 24.0f, lufsTarget - currentLufs);
@@ -1103,9 +1171,10 @@ private:
             for (auto& l : prog.layers)
             {
                 std::unique_ptr<juce::AudioFormatReader> lr(fmgr.createReaderFor(l.file));
-                if (!lr) continue;
-                int ln = (int) lr->lengthInSamples;
-                juce::AudioBuffer<float> lb((int) lr->numChannels, ln);
+                if (!lr)
+                    continue;
+                int ln = (int)lr->lengthInSamples;
+                juce::AudioBuffer<float> lb((int)lr->numChannels, ln);
                 lr->read(&lb, 0, ln, 0, true, true);
 
                 for (int ch = 0; ch < lb.getNumChannels(); ++ch)
@@ -1133,7 +1202,7 @@ private:
                 // Sample rate: downsample 96 kHz → 48 kHz via 2:1 decimation with LP filter.
                 // 44.1 kHz and 48 kHz pass through unchanged.
                 double targetSampleRate = lr->sampleRate;
-                if (lr->sampleRate > 48001.0)  // 96 kHz path
+                if (lr->sampleRate > 48001.0) // 96 kHz path
                 {
                     juce::AudioBuffer<float> downsampled = downsampleBy2(lb);
                     targetSampleRate = lr->sampleRate / 2.0;
@@ -1151,7 +1220,7 @@ private:
     // Stage 6: MAP — build XPM programs
     //==========================================================================
 
-    void buildPrograms (std::vector<UpgradedProgram>& programs, const juce::File& workDir)
+    void buildPrograms(std::vector<UpgradedProgram>& programs, const juce::File& workDir)
     {
         auto xpmDir = workDir.getChildFile("programs");
         xpmDir.createDirectory();
@@ -1181,16 +1250,14 @@ private:
         if (!melodicProgs.empty())
         {
             // Use the pack name as the program name; fall back to first sample name
-            juce::String melodicName = settings_.packName.isEmpty()
-                ? melodicProgs[0]->name : settings_.packName;
+            juce::String melodicName = settings_.packName.isEmpty() ? melodicProgs[0]->name : settings_.packName;
             auto xpmFile = xpmDir.getChildFile(sanitizeForFAT32(melodicName) + ".xpm");
             if (!xpmFile.replaceWithText(buildKeygroupXPM(melodicProgs, splits, melodicName)))
                 errors_.add("Failed to write keygroup XPM: " + xpmFile.getFullPathName());
         }
     }
 
-    juce::String buildDrumXPM (const UpgradedProgram& prog,
-                                const std::vector<VelocitySplit>& splits)
+    juce::String buildDrumXPM(const UpgradedProgram& prog, const std::vector<VelocitySplit>& splits)
     {
         juce::String xml;
         xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -1216,7 +1283,7 @@ private:
 
         xml << "      <Layers>\n";
         int layerIdx = 0;
-        for (int v = 0; v < prog.numVelocityLayers && v < (int) splits.size(); ++v)
+        for (int v = 0; v < prog.numVelocityLayers && v < (int)splits.size(); ++v)
         {
             auto rrs = getLayersForVel(prog.layers, v);
             for (const auto& l : rrs)
@@ -1252,16 +1319,13 @@ private:
     }
 
     // Multi-zone keygroup builder — one <Keygroup> per melodic sample.
-    juce::String buildKeygroupXPM (const std::vector<UpgradedProgram*>& progs,
-                                    const std::vector<VelocitySplit>& splits,
-                                    const juce::String& programName)
+    juce::String buildKeygroupXPM(const std::vector<UpgradedProgram*>& progs, const std::vector<VelocitySplit>& splits,
+                                  const juce::String& programName)
     {
         // Sort by detected MIDI note (ascending)
         std::vector<UpgradedProgram*> sorted = progs;
-        std::sort(sorted.begin(), sorted.end(),
-                  [](const UpgradedProgram* a, const UpgradedProgram* b) {
-                      return a->sourceInfo.detectedMidiNote < b->sourceInfo.detectedMidiNote;
-                  });
+        std::sort(sorted.begin(), sorted.end(), [](const UpgradedProgram* a, const UpgradedProgram* b)
+                  { return a->sourceInfo.detectedMidiNote < b->sourceInfo.detectedMidiNote; });
 
         // Compute zone boundaries: midpoint rule.
         // lowNote[i]  = (rootNote[i-1] + rootNote[i]) / 2 + 1  (exclusive upper of previous zone)
@@ -1273,7 +1337,7 @@ private:
         if (n == 1)
         {
             // Single sample: full range
-            lowNotes[0]  = 0;
+            lowNotes[0] = 0;
             highNotes[0] = 127;
         }
         else
@@ -1288,7 +1352,7 @@ private:
                 else
                 {
                     int prevRoot = sorted[i - 1]->sourceInfo.detectedMidiNote;
-                    lowNotes[i] = (prevRoot + root) / 2 + 1;  // round down, then +1 for exclusive upper
+                    lowNotes[i] = (prevRoot + root) / 2 + 1; // round down, then +1 for exclusive upper
                 }
 
                 // High boundary
@@ -1297,11 +1361,11 @@ private:
                 else
                 {
                     int nextRoot = sorted[i + 1]->sourceInfo.detectedMidiNote;
-                    highNotes[i] = (root + nextRoot) / 2;      // inclusive upper of this zone
+                    highNotes[i] = (root + nextRoot) / 2; // inclusive upper of this zone
                 }
 
                 // Clamp
-                lowNotes[i]  = juce::jlimit(0, 127, lowNotes[i]);
+                lowNotes[i] = juce::jlimit(0, 127, lowNotes[i]);
                 highNotes[i] = juce::jlimit(0, 127, highNotes[i]);
             }
         }
@@ -1389,10 +1453,9 @@ private:
 
     // Single-sample overload — delegates to the multi-zone builder.
     // Preserves backward compatibility with any callers that pass a single UpgradedProgram.
-    juce::String buildKeygroupXPM (const UpgradedProgram& prog,
-                                    const std::vector<VelocitySplit>& splits)
+    juce::String buildKeygroupXPM(const UpgradedProgram& prog, const std::vector<VelocitySplit>& splits)
     {
-        std::vector<UpgradedProgram*> single = { const_cast<UpgradedProgram*>(&prog) };
+        std::vector<UpgradedProgram*> single = {const_cast<UpgradedProgram*>(&prog)};
         return buildKeygroupXPM(single, splits, prog.name);
     }
 
@@ -1400,8 +1463,7 @@ private:
     // Stage 7: PACKAGE
     //==========================================================================
 
-    bool packageXPN (const std::vector<UpgradedProgram>& programs,
-                     const juce::File& workDir, const juce::File& output)
+    bool packageXPN(const std::vector<UpgradedProgram>& programs, const juce::File& workDir, const juce::File& output)
     {
         // Build manifest first (small, always in memory)
         juce::String manifest;
@@ -1460,8 +1522,8 @@ private:
         return ok;
     }
 
-    bool packageFolder (const std::vector<UpgradedProgram>& programs,
-                        const juce::File& workDir, const juce::File& output)
+    bool packageFolder(const std::vector<UpgradedProgram>& programs, const juce::File& workDir,
+                       const juce::File& output)
     {
         output.createDirectory();
 
@@ -1489,7 +1551,7 @@ private:
     // Stage 8: VALIDATE
     //==========================================================================
 
-    int validate (const std::vector<UpgradedProgram>& programs)
+    int validate(const std::vector<UpgradedProgram>& programs)
     {
         int issues = 0;
         juce::AudioFormatManager fmgr;
@@ -1500,23 +1562,31 @@ private:
             for (const auto& l : prog.layers)
             {
                 std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(l.file));
-                if (!reader) { issues++; continue; }
+                if (!reader)
+                {
+                    issues++;
+                    continue;
+                }
 
-                int n = (int) reader->lengthInSamples;
-                juce::AudioBuffer<float> buf((int) reader->numChannels, n);
+                int n = (int)reader->lengthInSamples;
+                juce::AudioBuffer<float> buf((int)reader->numChannels, n);
                 reader->read(&buf, 0, n, 0, true, true);
 
                 float peak = buf.getMagnitude(0, n);
-                if (peak >= 1.0f) issues++;
+                if (peak >= 1.0f)
+                    issues++;
 
                 // DC check
                 auto* ch0 = buf.getReadPointer(0);
                 float sum = 0.0f;
-                for (int i = 0; i < n; ++i) sum += ch0[i];
-                if (std::abs(sum / n) > 0.005f) issues++;
+                for (int i = 0; i < n; ++i)
+                    sum += ch0[i];
+                if (std::abs(sum / n) > 0.005f)
+                    issues++;
 
                 // Fade check
-                if (n > 10 && std::abs(ch0[0]) > 0.01f) issues++;
+                if (n > 10 && std::abs(ch0[0]) > 0.01f)
+                    issues++;
             }
         }
         return issues;
@@ -1527,37 +1597,29 @@ private:
     //==========================================================================
 
     // XML-escape a string for safe embedding in XML element content
-    static juce::String xmlEscape (const juce::String& s)
+    static juce::String xmlEscape(const juce::String& s)
     {
-        return s.replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("\"", "&quot;");
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
     }
 
     // Strip FAT32-illegal characters from a filename base (no extension)
-    static juce::String sanitizeForFAT32 (const juce::String& name)
-    {
-        return name.removeCharacters("?<>:\"/\\|*");
-    }
+    static juce::String sanitizeForFAT32(const juce::String& name) { return name.removeCharacters("?<>:\"/\\|*"); }
 
     // Sanitize a program name before using it in file paths or ZIP archive entries.
     // Removes characters that are dangerous in filenames, collapses path-traversal
     // sequences, trims whitespace, and enforces a reasonable length limit.
-    static juce::String sanitizeFilename (const juce::String& name)
+    static juce::String sanitizeFilename(const juce::String& name)
     {
-        return name.removeCharacters("/\\:*?\"<>|")
-                   .replace("..", "_")
-                   .trim()
-                   .substring(0, 200);
+        return name.removeCharacters("/\\:*?\"<>|").replace("..", "_").trim().substring(0, 200);
     }
 
-    static float measureLufs (const juce::AudioBuffer<float>& buf, double sr)
+    static float measureLufs(const juce::AudioBuffer<float>& buf, double sr)
     {
         int n = buf.getNumSamples();
         int nch = buf.getNumChannels();
         int window = (int)(0.4 * sr);
-        if (n < window || nch == 0) return -100.0f;
+        if (n < window || nch == 0)
+            return -100.0f;
 
         // Sum mean-square energy across all channels (ITU-R BS.1770 multi-channel)
         std::vector<float> powers;
@@ -1567,50 +1629,57 @@ private:
             for (int ch = 0; ch < nch; ++ch)
             {
                 auto* data = buf.getReadPointer(ch);
-                for (int j = 0; j < window; ++j) ms += data[i + j] * data[i + j];
+                for (int j = 0; j < window; ++j)
+                    ms += data[i + j] * data[i + j];
             }
             powers.push_back(ms / (window * nch));
         }
-        if (powers.empty()) return -100.0f;
+        if (powers.empty())
+            return -100.0f;
 
         // Absolute gate: 10^((-70+0.691)/10) — constant, precomputed
-        constexpr float absGate = 1.9498446e-07f;  // std::pow(10, -69.309/10)
+        constexpr float absGate = 1.9498446e-07f; // std::pow(10, -69.309/10)
         std::vector<float> gated;
-        for (float p : powers) if (p > absGate) gated.push_back(p);
-        if (gated.empty()) return -100.0f;
+        for (float p : powers)
+            if (p > absGate)
+                gated.push_back(p);
+        if (gated.empty())
+            return -100.0f;
 
         float meanUngated = 0.0f;
-        for (float p : gated) meanUngated += p;
+        for (float p : gated)
+            meanUngated += p;
         meanUngated /= gated.size();
 
-        float relGate = meanUngated * 0.1f;  // 10^(-10/10) = 0.1
+        float relGate = meanUngated * 0.1f; // 10^(-10/10) = 0.1
         std::vector<float> finalGated;
-        for (float p : gated) if (p > relGate) finalGated.push_back(p);
-        if (finalGated.empty()) return -100.0f;
+        for (float p : gated)
+            if (p > relGate)
+                finalGated.push_back(p);
+        if (finalGated.empty())
+            return -100.0f;
 
         float meanFinal = 0.0f;
-        for (float p : finalGated) meanFinal += p;
+        for (float p : finalGated)
+            meanFinal += p;
         meanFinal /= finalGated.size();
 
         // 10*log10(x) = 10*log2(x)/log2(10) = 10*log2(x)*0.30103 = 3.01030*log2(x)
         return 3.01030f * fastLog2(std::max(meanFinal, 1e-10f)) - 0.691f;
     }
 
-    void writeWav (const juce::File& file, const juce::AudioBuffer<float>& buf,
-                   double sr, int bitDepth)
+    void writeWav(const juce::File& file, const juce::AudioBuffer<float>& buf, double sr, int bitDepth)
     {
         juce::WavAudioFormat wav;
-        std::unique_ptr<juce::AudioFormatWriter> writer(
-            wav.createWriterFor(new juce::FileOutputStream(file),
-                                sr, (unsigned int) buf.getNumChannels(),
-                                bitDepth, {}, 0));
+        std::unique_ptr<juce::AudioFormatWriter> writer(wav.createWriterFor(
+            new juce::FileOutputStream(file), sr, (unsigned int)buf.getNumChannels(), bitDepth, {}, 0));
         if (writer)
         {
             if (settings_.applyDither && bitDepth <= 24)
             {
                 // TPDF dithered write
                 juce::AudioBuffer<float> dithered(buf);
-                std::mt19937 rng((unsigned int) buf.getNumSamples());
+                std::mt19937 rng((unsigned int)buf.getNumSamples());
                 std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
                 float scale = 1.0f / fastPow2((float)(bitDepth - 1));
                 for (int ch = 0; ch < dithered.getNumChannels(); ++ch)
@@ -1629,22 +1698,26 @@ private:
                 writer->writeFromAudioSampleBuffer(buf, 0, buf.getNumSamples());
             }
         }
-        else { errors_.add("Cannot create WAV writer: " + file.getFullPathName()); return; }
+        else
+        {
+            errors_.add("Cannot create WAV writer: " + file.getFullPathName());
+            return;
+        }
     }
 
     // 2:1 decimation with a simple 5-tap LP FIR anti-alias filter.
     // Cutoff is approximately 0.45 * Nyquist of the output rate.
     // Suitable for 96 kHz → 48 kHz. Not suitable for >2:1 ratios.
-    static juce::AudioBuffer<float> downsampleBy2 (const juce::AudioBuffer<float>& src)
+    static juce::AudioBuffer<float> downsampleBy2(const juce::AudioBuffer<float>& src)
     {
-        int nch  = src.getNumChannels();
-        int nIn  = src.getNumSamples();
+        int nch = src.getNumChannels();
+        int nIn = src.getNumSamples();
         int nOut = nIn / 2;
         juce::AudioBuffer<float> out(nch, nOut);
 
         // 5-tap symmetric LP FIR: h = [0.0625, 0.25, 0.375, 0.25, 0.0625]
         // Designed for cutoff ~0.45 * Nyquist_out. Provides ~50 dB stopband attenuation.
-        constexpr float h[5] = { 0.0625f, 0.25f, 0.375f, 0.25f, 0.0625f };
+        constexpr float h[5] = {0.0625f, 0.25f, 0.375f, 0.25f, 0.0625f};
 
         for (int ch = 0; ch < nch; ++ch)
         {
@@ -1668,12 +1741,12 @@ private:
         return out;
     }
 
-    static std::vector<const EnhancedLayer*> getLayersForVel (
-        const std::vector<EnhancedLayer>& layers, int velLayer)
+    static std::vector<const EnhancedLayer*> getLayersForVel(const std::vector<EnhancedLayer>& layers, int velLayer)
     {
         std::vector<const EnhancedLayer*> result;
         for (const auto& l : layers)
-            if (l.velLayer == velLayer) result.push_back(&l);
+            if (l.velLayer == velLayer)
+                result.push_back(&l);
         return result;
     }
 };

@@ -68,40 +68,74 @@ using namespace xoceanus;
 // We must register them here for the standalone test executable.
 //==============================================================================
 
-static bool reg_OddfeliX   = EngineRegistry::instance().registerEngine("OddfeliX",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<SnapEngine>(); });
-static bool reg_OddOscar   = EngineRegistry::instance().registerEngine("OddOscar",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<MorphEngine>(); });
-static bool reg_Overdub     = EngineRegistry::instance().registerEngine("Overdub",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<DubEngine>(); });
-static bool reg_Odyssey     = EngineRegistry::instance().registerEngine("Odyssey",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<DriftEngine>(); });
-static bool reg_Oblong      = EngineRegistry::instance().registerEngine("Oblong",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<BobEngine>(); });
-static bool reg_Obese       = EngineRegistry::instance().registerEngine("Obese",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<FatEngine>(); });
-static bool reg_Onset       = EngineRegistry::instance().registerEngine("Onset",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OnsetEngine>(); });
-static bool reg_Overworld   = EngineRegistry::instance().registerEngine("Overworld",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OverworldEngine>(); });
-static bool reg_Opal        = EngineRegistry::instance().registerEngine("Opal",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OpalEngine>(); });
-static bool reg_Bite        = EngineRegistry::instance().registerEngine("Bite",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<BiteEngine>(); });
-static bool reg_Organon     = EngineRegistry::instance().registerEngine("Organon",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrganonEngine>(); });
-static bool reg_Ocelot      = EngineRegistry::instance().registerEngine("Ocelot",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xocelot::OcelotEngine>(); });
-static bool reg_Ouroboros   = EngineRegistry::instance().registerEngine("Ouroboros",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OuroborosEngine>(); });
-static bool reg_Obsidian    = EngineRegistry::instance().registerEngine("Obsidian",    []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObsidianEngine>(); });
-static bool reg_Origami     = EngineRegistry::instance().registerEngine("Origami",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrigamiEngine>(); });
-static bool reg_Oracle      = EngineRegistry::instance().registerEngine("Oracle",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OracleEngine>(); });
-static bool reg_Obscura     = EngineRegistry::instance().registerEngine("Obscura",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObscuraEngine>(); });
-static bool reg_Oceanic     = EngineRegistry::instance().registerEngine("Oceanic",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OceanicEngine>(); });
-static bool reg_Optic       = EngineRegistry::instance().registerEngine("Optic",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OpticEngine>(); });
-static bool reg_Oblique     = EngineRegistry::instance().registerEngine("Oblique",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObliqueEngine>(); });
-static bool reg_Orbital     = EngineRegistry::instance().registerEngine("Orbital",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrbitalEngine>(); });
-static bool reg_Osprey      = EngineRegistry::instance().registerEngine("Osprey",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OspreyEngine>(); });
-static bool reg_Osteria     = EngineRegistry::instance().registerEngine("Osteria",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OsteriaEngine>(); });
-static bool reg_Owlfish     = EngineRegistry::instance().registerEngine("Owlfish",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xowlfish::OwlfishEngine>(); });
-static bool reg_Ohm         = EngineRegistry::instance().registerEngine("Ohm",         []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OhmEngine>(); });
-static bool reg_Orphica     = EngineRegistry::instance().registerEngine("Orphica",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrphicaEngine>(); });
-static bool reg_Obbligato   = EngineRegistry::instance().registerEngine("Obbligato",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObbligatoEngine>(); });
-static bool reg_Ottoni      = EngineRegistry::instance().registerEngine("Ottoni",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OttoniEngine>(); });
-static bool reg_Ole         = EngineRegistry::instance().registerEngine("Ole",         []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OleEngine>(); });
-static bool reg_XOverlap    = EngineRegistry::instance().registerEngine("XOverlap",    []() -> std::unique_ptr<SynthEngine> { return std::make_unique<XOverlapEngine>(); });
-static bool reg_XOutwit     = EngineRegistry::instance().registerEngine("XOutwit",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<XOutwitEngine>(); });
-static bool reg_Ombre       = EngineRegistry::instance().registerEngine("Ombre",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OmbreEngine>(); });
-static bool reg_Orca        = EngineRegistry::instance().registerEngine("Orca",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrcaEngine>(); });
-static bool reg_Octopus     = EngineRegistry::instance().registerEngine("Octopus",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OctopusEngine>(); });
+static bool reg_OddfeliX = EngineRegistry::instance().registerEngine("OddfeliX", []() -> std::unique_ptr<SynthEngine>
+                                                                     { return std::make_unique<SnapEngine>(); });
+static bool reg_OddOscar = EngineRegistry::instance().registerEngine("OddOscar", []() -> std::unique_ptr<SynthEngine>
+                                                                     { return std::make_unique<MorphEngine>(); });
+static bool reg_Overdub = EngineRegistry::instance().registerEngine("Overdub", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<DubEngine>(); });
+static bool reg_Odyssey = EngineRegistry::instance().registerEngine("Odyssey", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<DriftEngine>(); });
+static bool reg_Oblong = EngineRegistry::instance().registerEngine("Oblong", []() -> std::unique_ptr<SynthEngine>
+                                                                   { return std::make_unique<BobEngine>(); });
+static bool reg_Obese = EngineRegistry::instance().registerEngine("Obese", []() -> std::unique_ptr<SynthEngine>
+                                                                  { return std::make_unique<FatEngine>(); });
+static bool reg_Onset = EngineRegistry::instance().registerEngine("Onset", []() -> std::unique_ptr<SynthEngine>
+                                                                  { return std::make_unique<OnsetEngine>(); });
+static bool reg_Overworld = EngineRegistry::instance().registerEngine("Overworld", []() -> std::unique_ptr<SynthEngine>
+                                                                      { return std::make_unique<OverworldEngine>(); });
+static bool reg_Opal = EngineRegistry::instance().registerEngine("Opal", []() -> std::unique_ptr<SynthEngine>
+                                                                 { return std::make_unique<OpalEngine>(); });
+static bool reg_Bite = EngineRegistry::instance().registerEngine("Bite", []() -> std::unique_ptr<SynthEngine>
+                                                                 { return std::make_unique<BiteEngine>(); });
+static bool reg_Organon = EngineRegistry::instance().registerEngine("Organon", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OrganonEngine>(); });
+static bool reg_Ocelot = EngineRegistry::instance().registerEngine(
+    "Ocelot", []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xocelot::OcelotEngine>(); });
+static bool reg_Ouroboros = EngineRegistry::instance().registerEngine("Ouroboros", []() -> std::unique_ptr<SynthEngine>
+                                                                      { return std::make_unique<OuroborosEngine>(); });
+static bool reg_Obsidian = EngineRegistry::instance().registerEngine("Obsidian", []() -> std::unique_ptr<SynthEngine>
+                                                                     { return std::make_unique<ObsidianEngine>(); });
+static bool reg_Origami = EngineRegistry::instance().registerEngine("Origami", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OrigamiEngine>(); });
+static bool reg_Oracle = EngineRegistry::instance().registerEngine("Oracle", []() -> std::unique_ptr<SynthEngine>
+                                                                   { return std::make_unique<OracleEngine>(); });
+static bool reg_Obscura = EngineRegistry::instance().registerEngine("Obscura", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<ObscuraEngine>(); });
+static bool reg_Oceanic = EngineRegistry::instance().registerEngine("Oceanic", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OceanicEngine>(); });
+static bool reg_Optic = EngineRegistry::instance().registerEngine("Optic", []() -> std::unique_ptr<SynthEngine>
+                                                                  { return std::make_unique<OpticEngine>(); });
+static bool reg_Oblique = EngineRegistry::instance().registerEngine("Oblique", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<ObliqueEngine>(); });
+static bool reg_Orbital = EngineRegistry::instance().registerEngine("Orbital", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OrbitalEngine>(); });
+static bool reg_Osprey = EngineRegistry::instance().registerEngine("Osprey", []() -> std::unique_ptr<SynthEngine>
+                                                                   { return std::make_unique<OspreyEngine>(); });
+static bool reg_Osteria = EngineRegistry::instance().registerEngine("Osteria", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OsteriaEngine>(); });
+static bool reg_Owlfish = EngineRegistry::instance().registerEngine(
+    "Owlfish", []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xowlfish::OwlfishEngine>(); });
+static bool reg_Ohm = EngineRegistry::instance().registerEngine("Ohm", []() -> std::unique_ptr<SynthEngine>
+                                                                { return std::make_unique<OhmEngine>(); });
+static bool reg_Orphica = EngineRegistry::instance().registerEngine("Orphica", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OrphicaEngine>(); });
+static bool reg_Obbligato = EngineRegistry::instance().registerEngine("Obbligato", []() -> std::unique_ptr<SynthEngine>
+                                                                      { return std::make_unique<ObbligatoEngine>(); });
+static bool reg_Ottoni = EngineRegistry::instance().registerEngine("Ottoni", []() -> std::unique_ptr<SynthEngine>
+                                                                   { return std::make_unique<OttoniEngine>(); });
+static bool reg_Ole = EngineRegistry::instance().registerEngine("Ole", []() -> std::unique_ptr<SynthEngine>
+                                                                { return std::make_unique<OleEngine>(); });
+static bool reg_XOverlap = EngineRegistry::instance().registerEngine("XOverlap", []() -> std::unique_ptr<SynthEngine>
+                                                                     { return std::make_unique<XOverlapEngine>(); });
+static bool reg_XOutwit = EngineRegistry::instance().registerEngine("XOutwit", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<XOutwitEngine>(); });
+static bool reg_Ombre = EngineRegistry::instance().registerEngine("Ombre", []() -> std::unique_ptr<SynthEngine>
+                                                                  { return std::make_unique<OmbreEngine>(); });
+static bool reg_Orca = EngineRegistry::instance().registerEngine("Orca", []() -> std::unique_ptr<SynthEngine>
+                                                                 { return std::make_unique<OrcaEngine>(); });
+static bool reg_Octopus = EngineRegistry::instance().registerEngine("Octopus", []() -> std::unique_ptr<SynthEngine>
+                                                                    { return std::make_unique<OctopusEngine>(); });
 
 //==============================================================================
 // Helpers
@@ -148,7 +182,7 @@ TEST_CASE("FastMath - fastExp within 5% of std::exp for [-10,10]", "[dsp][fastma
     for (float x = -10.0f; x <= 10.0f; x += 0.1f)
     {
         float fast = fastExp(x);
-        float ref  = std::exp(x);
+        float ref = std::exp(x);
         if (ref > 1e-6f)
         {
             float relErr = std::abs(fast - ref) / ref;
@@ -228,9 +262,10 @@ TEST_CASE("CytomicSVF - LowPass@1000Hz passes 100Hz (>0.9)", "[dsp][svf]")
     float maxOut = 0.0f;
     for (int i = 0; i < 5000; ++i)
     {
-        float in  = std::sin(twoPi * 100.0f * static_cast<float>(i) / sampleRate);
+        float in = std::sin(twoPi * 100.0f * static_cast<float>(i) / sampleRate);
         float out = filter.processSample(in);
-        if (i > 2000) maxOut = std::max(maxOut, std::abs(out));
+        if (i > 2000)
+            maxOut = std::max(maxOut, std::abs(out));
     }
     CHECK(maxOut > 0.9f);
 }
@@ -247,9 +282,10 @@ TEST_CASE("CytomicSVF - LowPass@1000Hz attenuates 10kHz (<0.1)", "[dsp][svf]")
     float maxOut = 0.0f;
     for (int i = 0; i < 5000; ++i)
     {
-        float in  = std::sin(twoPi * 10000.0f * static_cast<float>(i) / sampleRate);
+        float in = std::sin(twoPi * 10000.0f * static_cast<float>(i) / sampleRate);
         float out = filter.processSample(in);
-        if (i > 2000) maxOut = std::max(maxOut, std::abs(out));
+        if (i > 2000)
+            maxOut = std::max(maxOut, std::abs(out));
     }
     CHECK(maxOut < 0.1f);
 }
@@ -266,9 +302,10 @@ TEST_CASE("CytomicSVF - BandPass@1000Hz passes 1000Hz (>0.1)", "[dsp][svf]")
     float maxOut = 0.0f;
     for (int i = 0; i < 5000; ++i)
     {
-        float in  = std::sin(twoPi * 1000.0f * static_cast<float>(i) / sampleRate);
+        float in = std::sin(twoPi * 1000.0f * static_cast<float>(i) / sampleRate);
         float out = filter.processSample(in);
-        if (i > 2000) maxOut = std::max(maxOut, std::abs(out));
+        if (i > 2000)
+            maxOut = std::max(maxOut, std::abs(out));
     }
     CHECK(maxOut > 0.1f);
 }
@@ -286,7 +323,11 @@ TEST_CASE("CytomicSVF - no NaN/Inf after 10000 noise samples", "[dsp][svf]")
     for (int i = 0; i < 10000; ++i)
     {
         float out = filter.processSample(rng.nextFloat() * 2.0f - 1.0f);
-        if (!isFiniteVal(out)) { stable = false; break; }
+        if (!isFiniteVal(out))
+        {
+            stable = false;
+            break;
+        }
     }
     CHECK(stable);
 }
@@ -303,7 +344,11 @@ TEST_CASE("CytomicSVF - self-oscillation (res=1.0) stable for 100000 samples", "
     for (int i = 0; i < 100000; ++i)
     {
         float out = filter.processSample((i == 0) ? 1.0f : 0.0f);
-        if (!isFiniteVal(out) || std::abs(out) > 10.0f) { stable = false; break; }
+        if (!isFiniteVal(out) || std::abs(out) > 10.0f)
+        {
+            stable = false;
+            break;
+        }
     }
     CHECK(stable);
 }
@@ -315,13 +360,8 @@ TEST_CASE("CytomicSVF - self-oscillation (res=1.0) stable for 100000 samples", "
 TEST_CASE("PolyBLEP - all waveforms stay within [-1.1, 1.1]", "[dsp][polyblep]")
 {
     constexpr float sampleRate = 44100.0f;
-    PolyBLEP::Waveform waveforms[] = {
-        PolyBLEP::Waveform::Sine,
-        PolyBLEP::Waveform::Saw,
-        PolyBLEP::Waveform::Square,
-        PolyBLEP::Waveform::Triangle,
-        PolyBLEP::Waveform::Pulse
-    };
+    PolyBLEP::Waveform waveforms[] = {PolyBLEP::Waveform::Sine, PolyBLEP::Waveform::Saw, PolyBLEP::Waveform::Square,
+                                      PolyBLEP::Waveform::Triangle, PolyBLEP::Waveform::Pulse};
 
     for (int w = 0; w < 5; ++w)
     {
@@ -334,7 +374,11 @@ TEST_CASE("PolyBLEP - all waveforms stay within [-1.1, 1.1]", "[dsp][polyblep]")
         for (int i = 0; i < 10000; ++i)
         {
             float s = osc.processSample();
-            if (s < -1.1f || s > 1.1f) { inRange = false; break; }
+            if (s < -1.1f || s > 1.1f)
+            {
+                inRange = false;
+                break;
+            }
         }
         INFO("Waveform index " << w);
         CHECK(inRange);
@@ -396,11 +440,12 @@ TEST_CASE("PolyBLEP - sine@440Hz within 5% of std::sin", "[dsp][polyblep]")
     for (int i = 0; i < 1000; ++i)
     {
         float oscOut = osc.processSample();
-        float ref    = std::sin(twoPi * phase);
+        float ref = std::sin(twoPi * phase);
         if (std::abs(oscOut - ref) > 0.05f)
             withinTolerance = false;
         phase += phaseInc;
-        while (phase >= 1.0f) phase -= 1.0f;
+        while (phase >= 1.0f)
+            phase -= 1.0f;
     }
     CHECK(withinTolerance);
 }
@@ -408,13 +453,8 @@ TEST_CASE("PolyBLEP - sine@440Hz within 5% of std::sin", "[dsp][polyblep]")
 TEST_CASE("PolyBLEP - no NaN/Inf in any waveform after 100000 samples", "[dsp][polyblep]")
 {
     constexpr float sampleRate = 44100.0f;
-    PolyBLEP::Waveform waveforms[] = {
-        PolyBLEP::Waveform::Sine,
-        PolyBLEP::Waveform::Saw,
-        PolyBLEP::Waveform::Square,
-        PolyBLEP::Waveform::Triangle,
-        PolyBLEP::Waveform::Pulse
-    };
+    PolyBLEP::Waveform waveforms[] = {PolyBLEP::Waveform::Sine, PolyBLEP::Waveform::Saw, PolyBLEP::Waveform::Square,
+                                      PolyBLEP::Waveform::Triangle, PolyBLEP::Waveform::Pulse};
 
     bool allStable = true;
     for (int w = 0; w < 5; ++w)
@@ -425,9 +465,14 @@ TEST_CASE("PolyBLEP - no NaN/Inf in any waveform after 100000 samples", "[dsp][p
         osc.reset();
         for (int i = 0; i < 100000; ++i)
         {
-            if (!isFiniteVal(osc.processSample())) { allStable = false; break; }
+            if (!isFiniteVal(osc.processSample()))
+            {
+                allStable = false;
+                break;
+            }
         }
-        if (!allStable) break;
+        if (!allStable)
+            break;
     }
     CHECK(allStable);
 }
@@ -474,7 +519,7 @@ TEST_CASE("EngineRegistry - unknown ID returns nullptr", "[dsp][registry]")
 TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[dsp][engine]")
 {
     constexpr double sampleRate = 44100.0;
-    constexpr int    blockSize  = 512;
+    constexpr int blockSize = 512;
 
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
@@ -501,7 +546,11 @@ TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[ds
             {
                 const float* data = buffer.getReadPointer(ch);
                 for (int i = 0; i < blockSize; ++i)
-                    if (!isFiniteVal(data[i])) { stable = false; break; }
+                    if (!isFiniteVal(data[i]))
+                    {
+                        stable = false;
+                        break;
+                    }
             }
             CHECK(stable);
         }
@@ -559,14 +608,19 @@ TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[ds
             {
                 buffer.clear();
                 juce::MidiBuffer blockMidi;
-                if (block == 0) blockMidi = noteOnMidi;
+                if (block == 0)
+                    blockMidi = noteOnMidi;
                 engine->renderBlock(buffer, blockMidi, blockSize);
 
                 for (int ch = 0; ch < buffer.getNumChannels() && noDenormals; ++ch)
                 {
                     const float* data = buffer.getReadPointer(ch);
                     for (int i = 0; i < blockSize; ++i)
-                        if (isDenormal(data[i])) { noDenormals = false; break; }
+                        if (isDenormal(data[i]))
+                        {
+                            noDenormals = false;
+                            break;
+                        }
                 }
             }
             CHECK(noDenormals);
@@ -581,7 +635,7 @@ TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[ds
 TEST_CASE("Fleet - no denormals in 50-block note-on/off cycle", "[dsp][engine][denormal]")
 {
     constexpr double sampleRate = 44100.0;
-    constexpr int    blockSize  = 512;
+    constexpr int blockSize = 512;
 
     auto& registry = EngineRegistry::instance();
     auto ids = registry.getRegisteredIds();
@@ -634,7 +688,11 @@ TEST_CASE("Fleet - no denormals in 50-block note-on/off cycle", "[dsp][engine][d
             {
                 const float* data = buffer.getReadPointer(ch);
                 for (int i = 0; i < blockSize; ++i)
-                    if (isDenormal(data[i])) { noDenormals = false; break; }
+                    if (isDenormal(data[i]))
+                    {
+                        noDenormals = false;
+                        break;
+                    }
             }
         }
 
@@ -643,6 +701,10 @@ TEST_CASE("Fleet - no denormals in 50-block note-on/off cycle", "[dsp][engine][d
 }
 
 // Backward-compat shim
-namespace dsp_tests {
-int runAll() { return 0; }
+namespace dsp_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace dsp_tests

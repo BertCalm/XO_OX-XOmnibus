@@ -7,7 +7,8 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CouplingPopover — inline control panel for one MegaCouplingMatrix route.
@@ -31,8 +32,7 @@ namespace xoceanus {
 class CouplingPopover : public juce::Component
 {
 public:
-    CouplingPopover(XOceanusProcessor& proc, int routeIndex)
-        : route(routeIndex)
+    CouplingPopover(XOceanusProcessor& proc, int routeIndex) : route(routeIndex)
     {
         jassert(route >= 1 && route <= 4);
         auto& apvts = proc.getAPVTS();
@@ -43,34 +43,30 @@ public:
         activeButton.setButtonText("ACTIVE");
         activeButton.setClickingTogglesState(true);
         addAndMakeVisible(activeButton);
-        activeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
-            apvts, prefix + "active", activeButton);
-        A11y::setup(activeButton,
-                    "Route " + juce::String(route) + " Active",
-                    "Enable or disable this coupling route");
+        activeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(apvts, prefix + "active",
+                                                                                              activeButton);
+        A11y::setup(activeButton, "Route " + juce::String(route) + " Active", "Enable or disable this coupling route");
 
         // ── Type selector ────────────────────────────────────────────────────
-        typeBox.addItem("AmpToFilter",      1);
-        typeBox.addItem("AmpToPitch",       2);
-        typeBox.addItem("LFOToPitch",       3);
-        typeBox.addItem("EnvToMorph",       4);
-        typeBox.addItem("AudioToFM",        5);
-        typeBox.addItem("AudioToRing",      6);
-        typeBox.addItem("FilterToFilter",   7);
-        typeBox.addItem("AmpToChoke",       8);
-        typeBox.addItem("RhythmToBlend",    9);
-        typeBox.addItem("EnvToDecay",      10);
-        typeBox.addItem("PitchToPitch",    11);
-        typeBox.addItem("AudioToWavetable",12);
-        typeBox.addItem("AudioToBuffer",   13);
-        typeBox.addItem("KnotTopology",    14);
+        typeBox.addItem("AmpToFilter", 1);
+        typeBox.addItem("AmpToPitch", 2);
+        typeBox.addItem("LFOToPitch", 3);
+        typeBox.addItem("EnvToMorph", 4);
+        typeBox.addItem("AudioToFM", 5);
+        typeBox.addItem("AudioToRing", 6);
+        typeBox.addItem("FilterToFilter", 7);
+        typeBox.addItem("AmpToChoke", 8);
+        typeBox.addItem("RhythmToBlend", 9);
+        typeBox.addItem("EnvToDecay", 10);
+        typeBox.addItem("PitchToPitch", 11);
+        typeBox.addItem("AudioToWavetable", 12);
+        typeBox.addItem("AudioToBuffer", 13);
+        typeBox.addItem("KnotTopology", 14);
         typeBox.addItem("TriangularCoupling", 15);
         addAndMakeVisible(typeBox);
-        typeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
-            apvts, prefix + "type", typeBox);
-        A11y::setup(typeBox,
-                    "Coupling Type",
-                    "Select the modulation routing type for this route");
+        typeAttach =
+            std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(apvts, prefix + "type", typeBox);
+        A11y::setup(typeBox, "Coupling Type", "Select the modulation routing type for this route");
 
         // ── Amount knob (bipolar, center-detent) ─────────────────────────────
         amountKnob.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
@@ -78,12 +74,10 @@ public:
         amountKnob.setRange(-1.0, 1.0, 0.0);
         amountKnob.setNumDecimalPlacesToDisplay(2);
         addAndMakeVisible(amountKnob);
-        amountAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            apvts, prefix + "amount", amountKnob);
+        amountAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, prefix + "amount",
+                                                                                              amountKnob);
         enableKnobReset(amountKnob, apvts, prefix + "amount");
-        A11y::setup(amountKnob,
-                    "Coupling Amount",
-                    "Bipolar coupling depth — negative values invert the modulation");
+        A11y::setup(amountKnob, "Coupling Amount", "Bipolar coupling depth — negative values invert the modulation");
 
         // ── Source slot selector ─────────────────────────────────────────────
         sourceBox.addItem("Slot 1", 1);
@@ -105,8 +99,7 @@ public:
             apvts, prefix + "target", targetBox);
         A11y::setup(targetBox, "Target Slot", "Engine slot that receives this coupling route");
 
-        A11y::setup(*this,
-                    "Coupling Route " + juce::String(route),
+        A11y::setup(*this, "Coupling Route " + juce::String(route),
                     "Controls for cross-engine modulation route " + juce::String(route));
 
         setSize(220, 176);
@@ -128,9 +121,7 @@ public:
         // Row 3: amount knob centred in a 48pt zone
         auto knobRow = b.removeFromTop(48);
         int kw = 48, kh = 48;
-        amountKnob.setBounds(knobRow.getCentreX() - kw / 2,
-                             knobRow.getY(),
-                             kw, kh);
+        amountKnob.setBounds(knobRow.getCentreX() - kw / 2, knobRow.getY(), kw, kh);
 
         // Row 4: source selector (28pt)
         sourceBox.setBounds(b.removeFromTop(28).reduced(8, 2));
@@ -160,8 +151,7 @@ public:
         // "ROUTE N" label
         g.setFont(GalleryFonts::display(11.0f));
         g.setColour(get(textDark()));
-        g.drawText("ROUTE " + juce::String(route),
-                   20, (int)headerBounds.getY(), 80, (int)headerBounds.getHeight(),
+        g.drawText("ROUTE " + juce::String(route), 20, (int)headerBounds.getY(), 80, (int)headerBounds.getHeight(),
                    juce::Justification::centredLeft);
 
         // Source→Target label (live from combo selections)
@@ -169,7 +159,7 @@ public:
         juce::String dstLabel = "S" + juce::String(juce::jmax(1, targetBox.getSelectedId()));
         g.setFont(GalleryFonts::label(9.0f));
         g.setColour(accentCol);
-        g.drawText(srcLabel + " \xe2\x86\x92 " + dstLabel,   // UTF-8 right arrow →
+        g.drawText(srcLabel + " \xe2\x86\x92 " + dstLabel, // UTF-8 right arrow →
                    110, (int)headerBounds.getY(), 100, (int)headerBounds.getHeight(),
                    juce::Justification::centredRight);
 
@@ -181,7 +171,7 @@ public:
         // (painted beneath knob bounds for the bipolar zero line)
         auto knobCx = (float)amountKnob.getBounds().getCentreX();
         auto knobCy = (float)amountKnob.getBounds().getCentreY();
-        float knobR  = 20.0f;
+        float knobR = 20.0f;
         // Vertical tick at centre-bottom (270° = 12 o'clock on rotary, then down 90°)
         // JUCE rotary knobs draw 7 o'clock to 5 o'clock; centre is straight down (270°)
         // We draw a tiny tick just outside the knob at the 6 o'clock position.
@@ -194,49 +184,45 @@ public:
         // Amount label above the knob
         g.setFont(GalleryFonts::label(8.0f));
         g.setColour(get(textMid()));
-        g.drawText("AMOUNT",
-                   amountKnob.getX() - 12, amountKnob.getY() - 12, 72, 12,
-                   juce::Justification::centred);
+        g.drawText("AMOUNT", amountKnob.getX() - 12, amountKnob.getY() - 12, 72, 12, juce::Justification::centred);
 
         // Source/Target row labels (left-justified, vertically centred in their rows)
         g.setFont(GalleryFonts::label(8.0f));
         g.setColour(get(textMid()));
-        g.drawText("SOURCE",
-                   8, sourceBox.getY(), 44, sourceBox.getHeight(),
-                   juce::Justification::centredLeft);
-        g.drawText("TARGET",
-                   8, targetBox.getY(), 44, targetBox.getHeight(),
-                   juce::Justification::centredLeft);
+        g.drawText("SOURCE", 8, sourceBox.getY(), 44, sourceBox.getHeight(), juce::Justification::centredLeft);
+        g.drawText("TARGET", 8, targetBox.getY(), 44, targetBox.getHeight(), juce::Justification::centredLeft);
     }
 
 private:
     juce::Colour accentColorForCurrentType() const
     {
         // Mirror CouplingArcOverlay's three-color palette
-        int sel = typeBox.getSelectedId();   // 1-indexed per addItem() calls above
-        if (sel >= 5 && sel <= 6) return juce::Colour(0xFF0096C7);   // Twilight Blue — audio-rate
-        if (sel == 12 || sel == 13) return juce::Colour(0xFF0096C7); // AudioToWavetable / AudioToBuffer
-        if (sel == 14) return juce::Colour(0xFF7B2FBE);              // Midnight Violet — KnotTopology
-        return juce::Colour(0xFFE9C46A);                             // XO Gold — modulation
+        int sel = typeBox.getSelectedId(); // 1-indexed per addItem() calls above
+        if (sel >= 5 && sel <= 6)
+            return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
+        if (sel == 12 || sel == 13)
+            return juce::Colour(0xFF0096C7); // AudioToWavetable / AudioToBuffer
+        if (sel == 14)
+            return juce::Colour(0xFF7B2FBE); // Midnight Violet — KnotTopology
+        return juce::Colour(0xFFE9C46A);     // XO Gold — modulation
     }
 
     int route; // 1–4
 
     juce::ToggleButton activeButton;
-    GalleryKnob        amountKnob;
-    juce::ComboBox     typeBox;
-    juce::ComboBox     sourceBox;
-    juce::ComboBox     targetBox;
+    GalleryKnob amountKnob;
+    juce::ComboBox typeBox;
+    juce::ComboBox sourceBox;
+    juce::ComboBox targetBox;
 
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>   activeAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>   amountAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> activeAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> amountAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> typeAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> sourceAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> targetAttach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingPopover)
 };
-
 
 //==============================================================================
 // CouplingArcHitTester — transparent overlay for the OverviewPanel that turns
@@ -267,9 +253,7 @@ public:
     {
         setInterceptsMouseClicks(true, false);
         setPaintingIsUnclipped(true);
-        A11y::setup(*this,
-                    "Coupling Arc Hit Area",
-                    "Click on a coupling arc to open its route editor");
+        A11y::setup(*this, "Coupling Arc Hit Area", "Click on a coupling arc to open its route editor");
     }
 
     // Called from OverviewPanel::refresh() after its own arc geometry is rebuilt.
@@ -284,12 +268,15 @@ public:
         for (int i = 0; i < (int)routes.size(); ++i)
         {
             const auto& r = routes[static_cast<size_t>(i)];
-            if (!r.active || r.amount < 0.005f) continue;
-            if (r.sourceSlot < 0 || r.sourceSlot >= MegaCouplingMatrix::MaxSlots) continue;
-            if (r.destSlot   < 0 || r.destSlot   >= MegaCouplingMatrix::MaxSlots) continue;
+            if (!r.active || r.amount < 0.005f)
+                continue;
+            if (r.sourceSlot < 0 || r.sourceSlot >= MegaCouplingMatrix::MaxSlots)
+                continue;
+            if (r.destSlot < 0 || r.destSlot >= MegaCouplingMatrix::MaxSlots)
+                continue;
 
             auto from = nodeCenters[static_cast<size_t>(r.sourceSlot)];
-            auto to   = nodeCenters[static_cast<size_t>(r.destSlot)];
+            auto to = nodeCenters[static_cast<size_t>(r.destSlot)];
 
             // Replicate OverviewPanel's quadratic Bézier geometry (bow upward)
             float midX = (from.x + to.x) * 0.5f;
@@ -301,8 +288,7 @@ public:
 
             // Widen to a 6px stroked region for comfortable hit-testing
             juce::Path stroked;
-            juce::PathStrokeType(6.0f, juce::PathStrokeType::curved,
-                                 juce::PathStrokeType::rounded)
+            juce::PathStrokeType(6.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded)
                 .createStrokedPath(stroked, thinArc);
 
             // APVTS route index: routes vector is 0-indexed but param IDs are 1-indexed.
@@ -310,7 +296,7 @@ public:
             // to cp_r1..cp_r4. Prefer using the route's vector position clamped to [1,4].
             int routeParamIdx = juce::jlimit(1, 4, i + 1);
 
-            clickableArcs.push_back({ std::move(stroked), routeParamIdx });
+            clickableArcs.push_back({std::move(stroked), routeParamIdx});
         }
     }
 
@@ -348,15 +334,14 @@ public:
                 break;
             }
         }
-        setMouseCursor(overArc ? juce::MouseCursor::PointingHandCursor
-                               : juce::MouseCursor::NormalCursor);
+        setMouseCursor(overArc ? juce::MouseCursor::PointingHandCursor : juce::MouseCursor::NormalCursor);
     }
 
 private:
     struct ClickableArc
     {
-        juce::Path strokePath;  // Widened Bézier — used for contains() hit-test
-        int        routeIndex;  // 1–4 → maps to cp_r1_* … cp_r4_*
+        juce::Path strokePath; // Widened Bézier — used for contains() hit-test
+        int routeIndex;        // 1–4 → maps to cp_r1_* … cp_r4_*
     };
 
     void showPopoverForRoute(int routeIdx, juce::Point<int> screenAnchor)
@@ -369,14 +354,11 @@ private:
         auto localPt = getLocalPoint(nullptr, screenAnchor);
         juce::Rectangle<int> anchorRect(localPt.x, localPt.y, 1, 1);
 
-        juce::CallOutBox::launchAsynchronously(
-            std::unique_ptr<juce::Component>(popover),
-            anchorRect,
-            this);
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(popover), anchorRect, this);
     }
 
-    XOceanusProcessor&          processor;
-    std::vector<ClickableArc>  clickableArcs;
+    XOceanusProcessor& processor;
+    std::vector<ClickableArc> clickableArcs;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingArcHitTester)
 };

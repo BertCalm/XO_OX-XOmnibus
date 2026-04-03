@@ -7,7 +7,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SubmersionEngine — Variable-stage APF cascade + micro-looper + master clock.
@@ -28,9 +29,9 @@ class SubmersionEngine
 public:
     SubmersionEngine() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        sr = static_cast<float> (sampleRate);
+        sr = static_cast<float>(sampleRate);
 
         // APF cascade (max 8 stages)
         for (int i = 0; i < kMaxAPFStages; ++i)
@@ -41,9 +42,9 @@ public:
         apfLFOPhase = 0.0f;
 
         // Micro-looper: 3 seconds
-        int loopLen = static_cast<int> (sr * 3.0f) + 1;
-        loopBufL.assign (static_cast<size_t> (loopLen), 0.0f);
-        loopBufR.assign (static_cast<size_t> (loopLen), 0.0f);
+        int loopLen = static_cast<int>(sr * 3.0f) + 1;
+        loopBufL.assign(static_cast<size_t>(loopLen), 0.0f);
+        loopBufR.assign(static_cast<size_t>(loopLen), 0.0f);
         loopWritePos = 0;
         loopReadPhase = 0.0f;
         loopLength = loopLen;
@@ -62,19 +63,19 @@ public:
             apfDelay[i] = 0.0f;
         }
         apfLFOPhase = 0.0f;
-        std::fill (loopBufL.begin(), loopBufL.end(), 0.0f);
-        std::fill (loopBufR.begin(), loopBufR.end(), 0.0f);
+        std::fill(loopBufL.begin(), loopBufL.end(), 0.0f);
+        std::fill(loopBufR.begin(), loopBufR.end(), 0.0f);
         loopWritePos = 0;
         loopReadPhase = 0.0f;
         clockPhase = 0.0f;
         prevSampleL = prevSampleR = 0.0f;
     }
 
-    void processBlock (float* L, float* R, int numSamples,
-                       int numStages, float lfoRate, float lfoDepth,
-                       float loopFeedback, float masterClock, float mix)
+    void processBlock(float* L, float* R, int numSamples, int numStages, float lfoRate, float lfoDepth,
+                      float loopFeedback, float masterClock, float mix)
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+            return;
 
         // Clamp stages: 2, 4, or 8
         int stages = (numStages <= 2) ? 2 : (numStages <= 4) ? 4 : 8;
@@ -86,7 +87,7 @@ public:
         float effectiveLFORate = lfoRate * clockRate;
         float lfoInc = effectiveLFORate / sr;
 
-        int loopBufSize = static_cast<int> (loopBufL.size());
+        int loopBufSize = static_cast<int>(loopBufL.size());
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -97,7 +98,8 @@ public:
             // At clockRate > 1.0, we read more → pitch up
             clockPhase += clockRate;
             bool processThisSample = (clockPhase >= 1.0f);
-            if (clockPhase >= 1.0f) clockPhase -= 1.0f;
+            if (clockPhase >= 1.0f)
+                clockPhase -= 1.0f;
 
             float wetL, wetR;
             if (processThisSample)
@@ -105,9 +107,10 @@ public:
                 float inputL = dryL;
 
                 // === A. APF Cascade ===
-                float lfoVal = fastSin (apfLFOPhase * 6.28318f) * lfoDepth;
+                float lfoVal = fastSin(apfLFOPhase * 6.28318f) * lfoDepth;
                 apfLFOPhase += lfoInc;
-                if (apfLFOPhase >= 1.0f) apfLFOPhase -= 1.0f;
+                if (apfLFOPhase >= 1.0f)
+                    apfLFOPhase -= 1.0f;
 
                 // Process through N all-pass filters
                 float apfOutL = inputL;
@@ -115,15 +118,15 @@ public:
                 {
                     // All-pass coefficient modulated by LFO
                     // Each stage gets a slightly different mod phase
-                    float stagePhase = lfoVal * (1.0f + static_cast<float> (i) * 0.15f);
+                    float stagePhase = lfoVal * (1.0f + static_cast<float>(i) * 0.15f);
                     float coeff = 0.5f + stagePhase * 0.3f;
-                    coeff = std::max (-0.95f, std::min (0.95f, coeff));
+                    coeff = std::max(-0.95f, std::min(0.95f, coeff));
 
                     // First-order all-pass: y = coeff * (x - y_prev) + x_prev
                     float x = apfOutL;
                     float y = coeff * (x - apfState[i]) + apfDelay[i];
                     apfDelay[i] = x;
-                    apfState[i] = flushDenormal (y);
+                    apfState[i] = flushDenormal(y);
                     apfOutL = y;
                 }
 
@@ -132,12 +135,12 @@ public:
                 {
                     // Write APF output + looper feedback into the loop buffer
                     int readPos = (loopWritePos - loopBufSize + 1 + loopBufSize) % loopBufSize;
-                    float loopRead = loopBufL[static_cast<size_t> (readPos)];
+                    float loopRead = loopBufL[static_cast<size_t>(readPos)];
 
                     // Feed looper output back into APF input (phase smearing)
                     float loopWrite = apfOutL + loopRead * loopFeedback;
-                    loopWrite = fastTanh (loopWrite); // prevent runaway
-                    loopBufL[static_cast<size_t> (loopWritePos)] = flushDenormal (loopWrite);
+                    loopWrite = fastTanh(loopWrite); // prevent runaway
+                    loopBufL[static_cast<size_t>(loopWritePos)] = flushDenormal(loopWrite);
                     loopWritePos = (loopWritePos + 1) % loopBufSize;
 
                     apfOutL = apfOutL * 0.7f + loopRead * loopFeedback * 0.3f;
@@ -166,8 +169,8 @@ private:
 
     // APF cascade
     static constexpr int kMaxAPFStages = 8;
-    float apfState[kMaxAPFStages] {};
-    float apfDelay[kMaxAPFStages] {};
+    float apfState[kMaxAPFStages]{};
+    float apfDelay[kMaxAPFStages]{};
     float apfLFOPhase = 0.0f;
 
     // Micro-looper

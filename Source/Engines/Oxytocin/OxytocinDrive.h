@@ -4,8 +4,8 @@
 #include <cmath>
 #include <algorithm>
 
-#include "OxytocinThermal.h"   // for fastTanh (defined there as shared header)
-#include "../../DSP/FastMath.h"  // for xoceanus::fastSin
+#include "OxytocinThermal.h"    // for fastTanh (defined there as shared header)
+#include "../../DSP/FastMath.h" // for xoceanus::fastSin
 
 /// OxytocinDrive — MS-20 Sallen-Key asymmetric saturation model.
 ///
@@ -26,43 +26,36 @@ class OxytocinDrive
 public:
     OxytocinDrive() = default;
 
-    void prepare (double sampleRate) noexcept
+    void prepare(double sampleRate) noexcept
     {
-        jassert (sampleRate > 0.0);  // P1-7
+        jassert(sampleRate > 0.0); // P1-7
         sr = sampleRate;
         screamPhase = 0.0f;
     }
 
-    void reset() noexcept
-    {
-        screamPhase = 0.0f;
-    }
+    void reset() noexcept { screamPhase = 0.0f; }
 
     /// Process one sample.
     /// \param input        dry audio sample
     /// \param passion      0..1 passion level (determines drive amount)
     /// \param cutoffHz     filter cutoff frequency for self-oscillation
     /// \param circuitAge   0..1 aging amount
-    float processSample (float input,
-                         float passion,
-                         float cutoffHz,
-                         float circuitAge) noexcept
+    float processSample(float input, float passion, float cutoffHz, float circuitAge) noexcept
     {
-        const float driveAmount = passion * 4.0f;  // 0 = clean, 4 = heavy
+        const float driveAmount = passion * 4.0f; // 0 = clean, 4 = heavy
 
         // Main transfer function — PERF-1: fastTanh replaces std::tanh
-        float y = fastTanh (input * (1.0f + driveAmount))
-                + 0.12f * fastTanh (3.0f * input * driveAmount);
+        float y = fastTanh(input * (1.0f + driveAmount)) + 0.12f * fastTanh(3.0f * input * driveAmount);
 
         // Self-oscillation: "the scream"
         if (passion > 0.9f)
         {
             float screamAmp = (passion - 0.9f) * 10.0f;
-            float screamFreq = std::max (20.0f, std::min (cutoffHz, 18000.0f));
-            screamPhase += static_cast<float> (juce::MathConstants<double>::twoPi * screamFreq / sr);
+            float screamFreq = std::max(20.0f, std::min(cutoffHz, 18000.0f));
+            screamPhase += static_cast<float>(juce::MathConstants<double>::twoPi * screamFreq / sr);
             if (screamPhase > juce::MathConstants<float>::twoPi)
                 screamPhase -= juce::MathConstants<float>::twoPi;
-            y += screamAmp * xoceanus::fastSin (screamPhase) * 0.15f;  // PERF: fastSin replaces std::sin
+            y += screamAmp * xoceanus::fastSin(screamPhase) * 0.15f; // PERF: fastSin replaces std::sin
         }
 
         // Aging DC bias drift
@@ -73,6 +66,6 @@ public:
     }
 
 private:
-    double sr          = 0.0;   // P1-7: default 0
-    float  screamPhase = 0.0f;
+    double sr = 0.0; // P1-7: default 0
+    float screamPhase = 0.0f;
 };

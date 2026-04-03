@@ -5,7 +5,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SpectralTilt — Cascaded shelving filter that shifts spectral energy up or down.
@@ -22,7 +23,7 @@ class SpectralTilt
 public:
     SpectralTilt() = default;
 
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         reset();
@@ -30,10 +31,10 @@ public:
 
     /// tiltAmount: -1.0 (full dark) to +1.0 (full bright)
     // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
-    void setTilt (float tiltAmount)
+    void setTilt(float tiltAmount)
     {
-        float clamped = std::clamp (tiltAmount, -1.0f, 1.0f);
-        if (std::abs (clamped - tilt) > 0.0001f)
+        float clamped = std::clamp(tiltAmount, -1.0f, 1.0f);
+        if (std::abs(clamped - tilt) > 0.0001f)
         {
             tilt = clamped;
             recalcCoeffs();
@@ -41,11 +42,11 @@ public:
     }
 
     /// mix: 0.0 = fully dry, 1.0 = fully wet
-    void setMix (float m) { mix = std::clamp (m, 0.0f, 1.0f); }
+    void setMix(float m) { mix = std::clamp(m, 0.0f, 1.0f); }
 
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
-        if (std::abs (tilt) < 0.001f || mix < 0.001f)
+        if (std::abs(tilt) < 0.001f || mix < 0.001f)
             return;
 
         for (int i = 0; i < numSamples; ++i)
@@ -61,26 +62,24 @@ public:
             {
                 // Left channel
                 float inL = wetL;
-                float outL = stages[s].b0 * inL + stages[s].b1 * stages[s].x1L
-                           - stages[s].a1 * stages[s].y1L;
+                float outL = stages[s].b0 * inL + stages[s].b1 * stages[s].x1L - stages[s].a1 * stages[s].y1L;
                 stages[s].x1L = inL;
                 stages[s].y1L = outL;
                 wetL = outL;
 
                 // Right channel
                 float inR = wetR;
-                float outR = stages[s].b0 * inR + stages[s].b1 * stages[s].x1R
-                           - stages[s].a1 * stages[s].y1R;
+                float outR = stages[s].b0 * inR + stages[s].b1 * stages[s].x1R - stages[s].a1 * stages[s].y1R;
                 stages[s].x1R = inR;
                 stages[s].y1R = outR;
                 wetR = outR;
             }
 
             // Denormal protection
-            wetL = flushDenormal (wetL);
-            wetR = flushDenormal (wetR);
+            wetL = flushDenormal(wetL);
+            wetR = flushDenormal(wetR);
 
-            left[i]  = dryL + mix * (wetL - dryL);
+            left[i] = dryL + mix * (wetL - dryL);
             right[i] = dryR + mix * (wetR - dryR);
         }
     }
@@ -98,7 +97,7 @@ private:
     static constexpr int kNumStages = 4;
 
     // Staggered center frequencies for smooth tilt
-    static constexpr float kFreqs[kNumStages] = { 120.0f, 500.0f, 2000.0f, 8000.0f };
+    static constexpr float kFreqs[kNumStages] = {120.0f, 500.0f, 2000.0f, 8000.0f};
 
     struct ShelfStage
     {
@@ -109,8 +108,8 @@ private:
 
     ShelfStage stages[kNumStages];
     float tilt = 0.0f;
-    float mix  = 1.0f;
-    double sr  = 44100.0;
+    float mix = 1.0f;
+    double sr = 44100.0;
 
     void recalcCoeffs()
     {
@@ -123,13 +122,13 @@ private:
         {
             // Map stage index to gain: stage 0 (low) gets -tilt, stage 3 (high) gets +tilt
             // Linearly interpolated across stages
-            float normalized = static_cast<float> (s) / static_cast<float> (kNumStages - 1);
+            float normalized = static_cast<float>(s) / static_cast<float>(kNumStages - 1);
             float gainDb = tilt * 6.0f * (2.0f * normalized - 1.0f); // ±6dB per stage at extremes
 
             // SRO: dbToGain + fastTan replace std::pow/tan (per-block coeff calc)
-            float A  = dbToGain (gainDb);
-            float w0 = 2.0f * 3.14159265f * kFreqs[s] / static_cast<float> (sr);
-            float t  = fastTan (w0 * 0.5f);
+            float A = dbToGain(gainDb);
+            float w0 = 2.0f * 3.14159265f * kFreqs[s] / static_cast<float>(sr);
+            float t = fastTan(w0 * 0.5f);
 
             // First-order shelving filter coefficients
             // High shelf when gain > 0 at high freq, low shelf when gain > 0 at low freq
@@ -137,7 +136,7 @@ private:
             {
                 // Low shelf
                 float alpha = (t - 1.0f) / (t + 1.0f);
-                float beta  = (A * t - 1.0f) / (A * t + 1.0f);
+                float beta = (A * t - 1.0f) / (A * t + 1.0f);
                 stages[s].b0 = (1.0f + beta) * 0.5f * A + (1.0f + alpha) * 0.5f;
                 stages[s].b1 = (1.0f + beta) * 0.5f * A - (1.0f + alpha) * 0.5f;
                 // Normalize

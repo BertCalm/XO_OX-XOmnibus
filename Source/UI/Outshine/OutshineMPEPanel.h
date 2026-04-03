@@ -4,18 +4,23 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
-enum class MPECategory { Melodic, Drum };
+enum class MPECategory
+{
+    Melodic,
+    Drum
+};
 
 struct MPERoute
 {
     juce::String dimensionName;
     juce::String destination;
-    float        amount { 0.0f };
-    bool         active { true };
-    bool         manualConfigOnly { false };
-    float        liveValue { 0.0f };
+    float amount{0.0f};
+    bool active{true};
+    bool manualConfigOnly{false};
+    float liveValue{0.0f};
 };
 
 class OutshineMPEPanel : public juce::Component
@@ -32,19 +37,25 @@ public:
         routes.clear();
         if (category == MPECategory::Melodic)
         {
-            routes.push_back({ "Slide (CC74)", "Filter Cutoff",      0.80f, true,  true  });
-            routes.push_back({ "Pressure",     "Filter Resonance",   0.40f, true,  false });
-            routes.push_back({ "Pitch Bend",   "\xc2\xb1" "24 semitones", 1.0f, true,  false });
-            routes.push_back({ "Velocity",     "Amplitude + Bright", 1.0f,  true,  false });
-            routes.push_back({ "ModWheel",     "Filter Cutoff",      0.50f, true,  false });
+            routes.push_back({"Slide (CC74)", "Filter Cutoff", 0.80f, true, true});
+            routes.push_back({"Pressure", "Filter Resonance", 0.40f, true, false});
+            routes.push_back({"Pitch Bend",
+                              "\xc2\xb1"
+                              "24 semitones",
+                              1.0f, true, false});
+            routes.push_back({"Velocity", "Amplitude + Bright", 1.0f, true, false});
+            routes.push_back({"ModWheel", "Filter Cutoff", 0.50f, true, false});
         }
         else
         {
-            routes.push_back({ "Slide (CC74)", "Pitch \xc2\xb1" "2 semi", 0.0f, true, true  });
-            routes.push_back({ "Pressure",     "Choke Speed",        0.40f, true,  false });
-            routes.push_back({ "Pitch Bend",   "(omitted)",          0.0f,  false, false });
-            routes.push_back({ "Velocity",     "Amplitude + Drive",  1.0f,  true,  false });
-            routes.push_back({ "ModWheel",     "(omitted)",          0.0f,  false, false });
+            routes.push_back({"Slide (CC74)",
+                              "Pitch \xc2\xb1"
+                              "2 semi",
+                              0.0f, true, true});
+            routes.push_back({"Pressure", "Choke Speed", 0.40f, true, false});
+            routes.push_back({"Pitch Bend", "(omitted)", 0.0f, false, false});
+            routes.push_back({"Velocity", "Amplitude + Drive", 1.0f, true, false});
+            routes.push_back({"ModWheel", "(omitted)", 0.0f, false, false});
         }
         repaint();
     }
@@ -71,8 +82,8 @@ public:
             if (i < (int)routes.size() - 1)
             {
                 g.setColour(GalleryColors::get(GalleryColors::borderGray()));
-                g.drawLine((float)rowBounds.getX(), (float)rowBounds.getBottom(),
-                           (float)rowBounds.getRight(), (float)rowBounds.getBottom(), 1.0f);
+                g.drawLine((float)rowBounds.getX(), (float)rowBounds.getBottom(), (float)rowBounds.getRight(),
+                           (float)rowBounds.getBottom(), 1.0f);
             }
         }
     }
@@ -80,8 +91,7 @@ public:
     void resized() override {}
 
 private:
-    void paintRoute(juce::Graphics& g, const MPERoute& route,
-                    juce::Rectangle<int> rowBounds) const
+    void paintRoute(juce::Graphics& g, const MPERoute& route, juce::Rectangle<int> rowBounds) const
     {
         if (!route.active)
         {
@@ -106,21 +116,18 @@ private:
                                  : GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
         g.setFont(GalleryFonts::body(11.0f));
         int nameW = 110;
-        g.drawText(route.dimensionName, rowBounds.removeFromLeft(nameW),
-                   juce::Justification::centredLeft);
+        g.drawText(route.dimensionName, rowBounds.removeFromLeft(nameW), juce::Justification::centredLeft);
 
         // Arrow
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
-        g.drawText(juce::String(juce::CharPointer_UTF8("\xe2\x86\x92")),
-                   rowBounds.removeFromLeft(16),
+        g.drawText(juce::String(juce::CharPointer_UTF8("\xe2\x86\x92")), rowBounds.removeFromLeft(16),
                    juce::Justification::centred);
 
         // Destination label
         int destW = 120;
         g.setColour(route.active ? GalleryColors::get(GalleryColors::textDark())
                                  : GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
-        g.drawText(route.destination, rowBounds.removeFromLeft(destW),
-                   juce::Justification::centredLeft);
+        g.drawText(route.destination, rowBounds.removeFromLeft(destW), juce::Justification::centredLeft);
 
         // Mini progress bar
         if (route.active && route.amount != 0.0f)
@@ -144,7 +151,7 @@ private:
     std::vector<MPERoute> routes;
 
     static constexpr int kRowH = 24;
-    static constexpr int kPad  = 8;
+    static constexpr int kPad = 8;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineMPEPanel)
 };

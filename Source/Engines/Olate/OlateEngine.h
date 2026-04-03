@@ -53,7 +53,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // FermentationIntegrator — harmonic complexity grows over note sustain.
@@ -71,18 +72,18 @@ struct FermentationIntegrator
         noteAge = 0.0f;
     }
 
-    float process (float input, float ageRate, float dtSec) noexcept
+    float process(float input, float ageRate, float dtSec) noexcept
     {
         noteAge += dtSec;
 
         // Leaky integration: ferment level grows toward 1.0 at ageRate
-        float target = std::min (1.0f, noteAge * ageRate * 0.1f);
+        float target = std::min(1.0f, noteAge * ageRate * 0.1f);
         fermentLevel += (target - fermentLevel) * 0.001f;
-        fermentLevel = flushDenormal (fermentLevel);
+        fermentLevel = flushDenormal(fermentLevel);
 
         // Apply progressive saturation: more harmonics as fermentation develops
         float driveScale = 1.0f + fermentLevel * 4.0f;
-        float fermented = fastTanh (input * driveScale);
+        float fermented = fastTanh(input * driveScale);
 
         // Mix: fresh → fermented over time
         return input * (1.0f - fermentLevel * 0.7f) + fermented * fermentLevel * 0.7f;
@@ -95,7 +96,7 @@ struct FermentationIntegrator
     }
 
     float fermentLevel = 0.0f;
-    float noteAge = 0.0f;  // in seconds
+    float noteAge = 0.0f; // in seconds
 };
 
 //==============================================================================
@@ -114,8 +115,8 @@ struct OlateVoice
     FermentationIntegrator ferment;
     FilterEnvelope ampEnv;
     FilterEnvelope filterEnv;
-    CytomicSVF ladderFilter;    // main LP filter (simulated ladder)
-    CytomicSVF warmthFilter;    // warmth shaping (low shelf or LP)
+    CytomicSVF ladderFilter; // main LP filter (simulated ladder)
+    CytomicSVF warmthFilter; // warmth shaping (low shelf or LP)
     StandardLFO lfo1, lfo2;
 
     // Gravitational mass accumulator
@@ -153,40 +154,41 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Olate"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF5C3317); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF5C3317); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srf = static_cast<float> (sr);
+        srf = static_cast<float>(sr);
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
             voices[i].reset();
-            voices[i].ampEnv.prepare (srf);
-            voices[i].filterEnv.prepare (srf);
+            voices[i].ampEnv.prepare(srf);
+            voices[i].filterEnv.prepare(srf);
         }
 
-        smoothCutoff.prepare (srf);
-        smoothResonance.prepare (srf);
-        smoothDrive.prepare (srf);
-        smoothOscMix.prepare (srf);
-        smoothPulseWidth.prepare (srf);
-        smoothWarmth.prepare (srf);
+        smoothCutoff.prepare(srf);
+        smoothResonance.prepare(srf);
+        smoothDrive.prepare(srf);
+        smoothOscMix.prepare(srf);
+        smoothPulseWidth.prepare(srf);
+        smoothWarmth.prepare(srf);
 
         sessionAge = 0.0f;
         sessionSampleCount = 0;
 
-        prepareSilenceGate (sr, maxBlockSize, 300.0f);
+        prepareSilenceGate(sr, maxBlockSize, 300.0f);
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices) v.reset();
+        for (auto& v : voices)
+            v.reset();
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
@@ -194,21 +196,29 @@ public:
         sessionSampleCount = 0;
     }
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? couplingCacheL : couplingCacheR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                            const float* buf, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* buf, int numSamples) override
     {
-        if (!buf || numSamples <= 0) return;
+        if (!buf || numSamples <= 0)
+            return;
         float val = buf[numSamples - 1] * amount;
-        switch (type) {
-            case CouplingType::AmpToFilter:  couplingFilterMod += val * 2000.0f; break;
-            case CouplingType::LFOToPitch:   couplingPitchMod += val * 2.0f; break;
-            case CouplingType::AmpToPitch:   couplingPitchMod += val; break;
-            default: break;
+        switch (type)
+        {
+        case CouplingType::AmpToFilter:
+            couplingFilterMod += val * 2000.0f;
+            break;
+        case CouplingType::LFOToPitch:
+            couplingPitchMod += val * 2.0f;
+            break;
+        case CouplingType::AmpToPitch:
+            couplingPitchMod += val;
+            break;
+        default:
+            break;
         }
     }
 
@@ -216,87 +226,97 @@ public:
     // Render
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())          { noteOn (msg.getNoteNumber(), msg.getFloatVelocity()); wakeSilenceGate(); }
-            else if (msg.isNoteOff())    noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
-            else if (msg.isChannelPressure()) aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
+            if (msg.isNoteOn())
+            {
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity());
+                wakeSilenceGate();
+            }
+            else if (msg.isNoteOff())
+                noteOff(msg.getNoteNumber());
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            else if (msg.isChannelPressure())
+                aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
-        if (isSilenceGateBypassed()) {
-            buffer.clear (0, numSamples);
+        if (isSilenceGateBypassed())
+        {
+            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
 
-        auto loadP = [] (std::atomic<float>* p, float def) {
-            return p ? p->load (std::memory_order_relaxed) : def;
-        };
+        auto loadP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
 
-        const float pCutoff     = loadP (paramCutoff, 4000.0f);
-        const float pResonance  = loadP (paramResonance, 0.3f);
-        const float pDrive      = loadP (paramDrive, 0.3f);
-        const float pOscMix     = loadP (paramOscMix, 0.5f);     // 0=saw, 1=pulse
-        const float pPulseWidth = loadP (paramPulseWidth, 0.5f);
-        const float pVintage    = loadP (paramVintage, 0.3f);
-        const float pWarmth     = loadP (paramWarmth, 0.5f);
-        const float pTerroir    = loadP (paramTerroir, 0.0f);
-        const float pAgeRate    = loadP (paramAgeRate, 0.5f);
-        const float pGlide      = loadP (paramGlide, 0.0f);
-        const float pAttack     = loadP (paramAttack, 0.005f);
-        const float pDecay      = loadP (paramDecay, 0.3f);
-        const float pSustain    = loadP (paramSustain, 0.7f);
-        const float pRelease    = loadP (paramRelease, 0.3f);
-        const float pFiltEnvAmt = loadP (paramFilterEnvAmount, 0.5f);
-        const float pBendRange  = loadP (paramBendRange, 2.0f);
-        const float pGravity    = loadP (paramGravity, 0.5f);
+        const float pCutoff = loadP(paramCutoff, 4000.0f);
+        const float pResonance = loadP(paramResonance, 0.3f);
+        const float pDrive = loadP(paramDrive, 0.3f);
+        const float pOscMix = loadP(paramOscMix, 0.5f); // 0=saw, 1=pulse
+        const float pPulseWidth = loadP(paramPulseWidth, 0.5f);
+        const float pVintage = loadP(paramVintage, 0.3f);
+        const float pWarmth = loadP(paramWarmth, 0.5f);
+        const float pTerroir = loadP(paramTerroir, 0.0f);
+        const float pAgeRate = loadP(paramAgeRate, 0.5f);
+        const float pGlide = loadP(paramGlide, 0.0f);
+        const float pAttack = loadP(paramAttack, 0.005f);
+        const float pDecay = loadP(paramDecay, 0.3f);
+        const float pSustain = loadP(paramSustain, 0.7f);
+        const float pRelease = loadP(paramRelease, 0.3f);
+        const float pFiltEnvAmt = loadP(paramFilterEnvAmount, 0.5f);
+        const float pBendRange = loadP(paramBendRange, 2.0f);
+        const float pGravity = loadP(paramGravity, 0.5f);
 
-        const float macroChar   = loadP (paramMacroCharacter, 0.0f);
-        const float macroMove   = loadP (paramMacroMovement, 0.0f);
-        const float macroCoup   = loadP (paramMacroCoupling, 0.0f);
-        const float macroSpace  = loadP (paramMacroSpace, 0.0f);
+        const float macroChar = loadP(paramMacroCharacter, 0.0f);
+        const float macroMove = loadP(paramMacroMovement, 0.0f);
+        const float macroCoup = loadP(paramMacroCoupling, 0.0f);
+        const float macroSpace = loadP(paramMacroSpace, 0.0f);
 
         // Vintage affects filter character: early transistor (vintage<0.25) = grainy,
         // Moog (0.25-0.5) = fat, TB-303 (0.5-0.75) = acidic, modern (>0.75) = clean
         float vintageResoBoost = 0.0f;
         float vintageDriveBoost = 0.0f;
-        if (pVintage < 0.25f) {
-            vintageDriveBoost = 0.3f;   // grainy early transistor
-            vintageResoBoost = -0.1f;   // less resonance
-        } else if (pVintage < 0.5f) {
-            vintageDriveBoost = 0.15f;  // fat Moog
-            vintageResoBoost = 0.1f;    // more resonance
-        } else if (pVintage < 0.75f) {
-            vintageDriveBoost = 0.1f;   // 303 acid
-            vintageResoBoost = 0.3f;    // screaming resonance
-        } else {
-            vintageDriveBoost = 0.0f;   // clean modern
+        if (pVintage < 0.25f)
+        {
+            vintageDriveBoost = 0.3f; // grainy early transistor
+            vintageResoBoost = -0.1f; // less resonance
+        }
+        else if (pVintage < 0.5f)
+        {
+            vintageDriveBoost = 0.15f; // fat Moog
+            vintageResoBoost = 0.1f;   // more resonance
+        }
+        else if (pVintage < 0.75f)
+        {
+            vintageDriveBoost = 0.1f; // 303 acid
+            vintageResoBoost = 0.3f;  // screaming resonance
+        }
+        else
+        {
+            vintageDriveBoost = 0.0f; // clean modern
             vintageResoBoost = 0.0f;
         }
 
         // D006: mod wheel → cutoff, aftertouch → resonance
-        float effectiveCutoff = std::clamp (pCutoff + macroChar * 4000.0f
-                                            + modWheelAmount * 3000.0f + couplingFilterMod,
-                                            100.0f, 20000.0f);
-        float effectiveReso = std::clamp (pResonance + vintageResoBoost
-                                           + aftertouchAmount * 0.3f + macroSpace * 0.2f,
-                                           0.0f, 0.95f);
-        float effectiveDrive = std::clamp (pDrive + vintageDriveBoost + macroChar * 0.3f, 0.0f, 1.0f);
+        float effectiveCutoff =
+            std::clamp(pCutoff + macroChar * 4000.0f + modWheelAmount * 3000.0f + couplingFilterMod, 100.0f, 20000.0f);
+        float effectiveReso =
+            std::clamp(pResonance + vintageResoBoost + aftertouchAmount * 0.3f + macroSpace * 0.2f, 0.0f, 0.95f);
+        float effectiveDrive = std::clamp(pDrive + vintageDriveBoost + macroChar * 0.3f, 0.0f, 1.0f);
 
-        smoothCutoff.set (effectiveCutoff);
-        smoothResonance.set (effectiveReso);
-        smoothDrive.set (effectiveDrive);
-        smoothOscMix.set (pOscMix);
-        smoothPulseWidth.set (pPulseWidth);
-        smoothWarmth.set (pWarmth);
+        smoothCutoff.set(effectiveCutoff);
+        smoothResonance.set(effectiveReso);
+        smoothDrive.set(effectiveDrive);
+        smoothOscMix.set(pOscMix);
+        smoothPulseWidth.set(pPulseWidth);
+        smoothWarmth.set(pWarmth);
 
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -305,75 +325,77 @@ public:
 
         // Session age: accumulates slowly over the entire playing session
         sessionSampleCount += numSamples;
-        sessionAge = static_cast<float> (sessionSampleCount) / srf;  // in seconds
+        sessionAge = static_cast<float>(sessionSampleCount) / srf; // in seconds
 
         // Session warmth: gradual tonal drift (caps at ~20 minutes = 1200 seconds)
-        float sessionWarmthFactor = std::min (1.0f, sessionAge / 1200.0f);
+        float sessionWarmthFactor = std::min(1.0f, sessionAge / 1200.0f);
 
         // LFO params — macroMove speeds both LFOs for more expressive fretless vibrato
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f)  * (1.0f + macroMove * 2.0f);
-        const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
-        const int   lfo1Shape = static_cast<int> (loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f)  * (1.0f + macroMove * 2.0f);
-        const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
-        const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
+        const float lfo1Rate = loadP(paramLfo1Rate, 0.5f) * (1.0f + macroMove * 2.0f);
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
+        const float lfo2Rate = loadP(paramLfo2Rate, 1.0f) * (1.0f + macroMove * 2.0f);
+        const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
+        const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
         for (auto& voice : voices)
         {
-            if (!voice.active) continue;
-            voice.lfo1.setRate (lfo1Rate, srf);
-            voice.lfo1.setShape (lfo1Shape);
-            voice.lfo2.setRate (lfo2Rate, srf);
-            voice.lfo2.setShape (lfo2Shape);
-            voice.glide.setTime (pGlide, srf);
-            voice.ampEnv.setADSR (pAttack, pDecay, pSustain, pRelease);
+            if (!voice.active)
+                continue;
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
+            voice.glide.setTime(pGlide, srf);
+            voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
         }
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         const float dtSec = 1.0f / srf;
 
         for (int s = 0; s < numSamples; ++s)
         {
-            float cutNow  = smoothCutoff.process();
-            float resNow  = smoothResonance.process();
-            float drvNow  = smoothDrive.process();
-            float mixNow  = smoothOscMix.process();
-            float pwNow   = smoothPulseWidth.process();
+            float cutNow = smoothCutoff.process();
+            float resNow = smoothResonance.process();
+            float drvNow = smoothDrive.process();
+            float mixNow = smoothOscMix.process();
+            float pwNow = smoothPulseWidth.process();
             float warmNow = smoothWarmth.process();
 
             float mixL = 0.0f, mixR = 0.0f;
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 
                 // LFO modulations
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
                 // Set oscillator frequencies
-                voice.oscSaw.setFrequency (freq, srf);
-                voice.oscSaw.setWaveform (PolyBLEP::Waveform::Saw);
-                voice.oscPulse.setFrequency (freq, srf);
-                voice.oscPulse.setWaveform (PolyBLEP::Waveform::Pulse);
-                voice.oscPulse.setPulseWidth (pwNow);
+                voice.oscSaw.setFrequency(freq, srf);
+                voice.oscSaw.setWaveform(PolyBLEP::Waveform::Saw);
+                voice.oscPulse.setFrequency(freq, srf);
+                voice.oscPulse.setWaveform(PolyBLEP::Waveform::Pulse);
+                voice.oscPulse.setPulseWidth(pwNow);
 
                 // Dual oscillator mix
-                float sawSample   = voice.oscSaw.processSample();
+                float sawSample = voice.oscSaw.processSample();
                 float pulseSample = voice.oscPulse.processSample();
                 float oscOut = sawSample * (1.0f - mixNow) + pulseSample * mixNow;
 
                 // Fermentation: harmonic complexity grows over note sustain
-                float fermented = voice.ferment.process (oscOut, pAgeRate, dtSec);
+                float fermented = voice.ferment.process(oscOut, pAgeRate, dtSec);
 
                 // Drive / saturation — vintage character
                 float driveAmount = 1.0f + drvNow * 6.0f;
-                float driven = fastTanh (fermented * driveAmount) / fastTanh (driveAmount);
+                float driven = fastTanh(fermented * driveAmount) / fastTanh(driveAmount);
 
                 // Ladder filter — vintage-era-aware
                 float filtEnv = voice.filterEnv.process() * pFiltEnvAmt;
@@ -381,21 +403,20 @@ public:
                 float velCutMod = voice.velocity * 3000.0f;
                 // Session warmth: LP cutoff gently decreases as session ages (tube amp warmup)
                 float sessionCutShift = sessionWarmthFactor * -800.0f;
-                float voiceCutoff = std::clamp (cutNow + filtEnv * 6000.0f + velCutMod
-                                                + lfo1Val * 2000.0f + sessionCutShift,
-                                                100.0f, 20000.0f);
+                float voiceCutoff = std::clamp(
+                    cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift, 100.0f, 20000.0f);
 
-                voice.ladderFilter.setMode (CytomicSVF::Mode::LowPass);
-                voice.ladderFilter.setCoefficients (voiceCutoff, resNow, srf);
-                float filtered = voice.ladderFilter.processSample (driven);
+                voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
+                voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
                 // Warmth parameter controls low-frequency saturation character
                 if (warmNow > 0.01f)
                 {
-                    voice.warmthFilter.setMode (CytomicSVF::Mode::LowShelf);
-                    voice.warmthFilter.setCoefficients (200.0f, 0.5f, srf, warmNow * 6.0f);
-                    filtered = voice.warmthFilter.processSample (filtered);
+                    voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
+                    voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    filtered = voice.warmthFilter.processSample(filtered);
                 }
 
                 // Terroir: regional circuit flavor as tonal bias (D004 fix — all 4 regions active).
@@ -413,10 +434,10 @@ public:
                 else if (pTerroir >= 0.7f && pTerroir < 0.98f)
                 {
                     // East Coast (Bell Sound, RCA): harmonic grit — soft saturation + presence boost
-                    float eastGrit = (pTerroir - 0.7f) / 0.28f;  // 0..1 within region
+                    float eastGrit = (pTerroir - 0.7f) / 0.28f; // 0..1 within region
                     float driveAmt = 1.0f + eastGrit * 2.0f;
-                    filtered = fastTanh (filtered * driveAmt) / driveAmt;
-                    filtered *= (1.0f + eastGrit * 0.12f);  // subtle presence lift
+                    filtered = fastTanh(filtered * driveAmt) / driveAmt;
+                    filtered *= (1.0f + eastGrit * 0.12f); // subtle presence lift
                 }
                 else if (pTerroir >= 0.98f)
                 {
@@ -427,11 +448,15 @@ public:
 
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
-                if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
+                if (!voice.ampEnv.isActive())
+                {
+                    voice.active = false;
+                    continue;
+                }
 
                 // Gravitational mass
                 voice.noteHeldTime += dtSec;
-                voice.gravityMass = std::min (1.0f, voice.gravityMass + dtSec * 0.1f * pGravity);
+                voice.gravityMass = std::min(1.0f, voice.gravityMass + dtSec * 0.1f * pGravity);
 
                 float output = filtered * ampLevel * voice.velocity;
 
@@ -440,7 +465,8 @@ public:
             }
 
             outL[s] = mixL;
-            if (outR) outR[s] = mixR;
+            if (outR)
+                outR[s] = mixR;
             // macroCoup scales coupling output: higher coupling macro = stronger fretless coupling signal
             const float coupGain = 1.0f + macroCoup * 1.5f;
             couplingCacheL = mixL * coupGain;
@@ -448,54 +474,56 @@ public:
         }
 
         int count = 0;
-        for (const auto& v : voices) if (v.active) ++count;
-        activeVoiceCount.store (count);
-        analyzeForSilenceGate (buffer, numSamples);
+        for (const auto& v : voices)
+            if (v.active)
+                ++count;
+        activeVoiceCount.store(count);
+        analyzeForSilenceGate(buffer, numSamples);
     }
 
     //==========================================================================
     // Note management
     //==========================================================================
 
-    void noteOn (int note, float vel) noexcept
+    void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
+        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
+        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
 
         v.reset();
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.glide.snapTo (freq);
+        v.glide.snapTo(freq);
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
         v.ferment.trigger();
 
-        v.ampEnv.prepare (srf);
-        v.filterEnv.prepare (srf);
+        v.ampEnv.prepare(srf);
+        v.filterEnv.prepare(srf);
 
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.3f;
         float sustain = paramSustain ? paramSustain->load() : 0.7f;
         float release = paramRelease ? paramRelease->load() : 0.3f;
-        v.ampEnv.setADSR (attack, decay, sustain, release);
+        v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
         float fAttack = paramFilterAttack ? paramFilterAttack->load() : 0.001f;
         float fDecay = paramFilterDecay ? paramFilterDecay->load() : 0.4f;
-        v.filterEnv.setADSR (fAttack, fDecay, 0.0f, 0.3f);
+        v.filterEnv.setADSR(fAttack, fDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
         // Subtle stereo spread
-        float pan = 0.5f + (static_cast<float> (idx) - 3.5f) * 0.04f;
-        v.panL = std::cos (pan * 1.5707963f);
-        v.panR = std::sin (pan * 1.5707963f);
+        float pan = 0.5f + (static_cast<float>(idx) - 3.5f) * 0.04f;
+        v.panL = std::cos(pan * 1.5707963f);
+        v.panR = std::sin(pan * 1.5707963f);
     }
 
-    void noteOff (int note) noexcept
+    void noteOff(int note) noexcept
     {
         for (auto& v : voices)
         {
@@ -511,127 +539,127 @@ public:
     // Parameters — 30 total
     //==========================================================================
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
 
         // Oscillators
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_oscMix", 1 }, "Olate Osc Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));  // 0=saw, 1=pulse
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_pulseWidth", 1 }, "Olate Pulse Width",
-            juce::NormalisableRange<float> (0.01f, 0.99f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_oscMix", 1}, "Olate Osc Mix",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f)); // 0=saw, 1=pulse
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_pulseWidth", 1}, "Olate Pulse Width",
+                                              juce::NormalisableRange<float>(0.01f, 0.99f), 0.5f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_cutoff", 1 }, "Olate Cutoff",
-            juce::NormalisableRange<float> (100.0f, 20000.0f, 0.0f, 0.3f), 4000.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_resonance", 1 }, "Olate Resonance",
-            juce::NormalisableRange<float> (0.0f, 0.95f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_drive", 1 }, "Olate Drive",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_filterEnvAmount", 1 }, "Olate Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_filterAttack", 1 }, "Olate Filter Attack",
-            juce::NormalisableRange<float> (0.001f, 2.0f, 0.0f, 0.3f), 0.001f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_filterDecay", 1 }, "Olate Filter Decay",
-            juce::NormalisableRange<float> (0.01f, 5.0f, 0.0f, 0.3f), 0.4f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_cutoff", 1}, "Olate Cutoff",
+                                              juce::NormalisableRange<float>(100.0f, 20000.0f, 0.0f, 0.3f), 4000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_resonance", 1}, "Olate Resonance",
+                                              juce::NormalisableRange<float>(0.0f, 0.95f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_drive", 1}, "Olate Drive",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_filterEnvAmount", 1}, "Olate Filter Env Amount",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_filterAttack", 1}, "Olate Filter Attack",
+                                              juce::NormalisableRange<float>(0.001f, 2.0f, 0.0f, 0.3f), 0.001f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_filterDecay", 1}, "Olate Filter Decay",
+                                              juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.3f), 0.4f));
 
         // Character
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_vintage", 1 }, "Olate Vintage",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_warmth", 1 }, "Olate Warmth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_terroir", 1 }, "Olate Terroir",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_ageRate", 1 }, "Olate Age Rate",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_vintage", 1}, "Olate Vintage",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_warmth", 1}, "Olate Warmth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_terroir", 1}, "Olate Terroir",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_ageRate", 1}, "Olate Age Rate",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         // Amp Envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_attack", 1 }, "Olate Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_decay", 1 }, "Olate Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_sustain", 1 }, "Olate Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.7f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_release", 1 }, "Olate Release",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_attack", 1}, "Olate Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.005f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_decay", 1}, "Olate Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_sustain", 1}, "Olate Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_release", 1}, "Olate Release",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
 
         // Performance
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_glide", 1 }, "Olate Glide",
-            juce::NormalisableRange<float> (0.0f, 5.0f, 0.0f, 0.3f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_bendRange", 1 }, "Olate Pitch Bend Range",
-            juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_glide", 1}, "Olate Glide",
+                                              juce::NormalisableRange<float>(0.0f, 5.0f, 0.0f, 0.3f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_bendRange", 1}, "Olate Pitch Bend Range",
+                                              juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
 
         // Gravitational coupling
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_gravity", 1 }, "Olate Gravity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_gravity", 1}, "Olate Gravity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_macroCharacter", 1 }, "Olate Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_macroMovement", 1 }, "Olate Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_macroCoupling", 1 }, "Olate Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_macroSpace", 1 }, "Olate Macro SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_macroCharacter", 1}, "Olate Macro CHARACTER",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_macroMovement", 1}, "Olate Macro MOVEMENT",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_macroCoupling", 1}, "Olate Macro COUPLING",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_macroSpace", 1}, "Olate Macro SPACE",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // LFOs
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_lfo1Rate", 1 }, "Olate LFO1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_lfo1Depth", 1 }, "Olate LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "olate_lfo1Shape", 1 }, "Olate LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_lfo2Rate", 1 }, "Olate LFO2 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "olate_lfo2Depth", 1 }, "Olate LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "olate_lfo2Shape", 1 }, "Olate LFO2 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_lfo1Rate", 1}, "Olate LFO1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_lfo1Depth", 1}, "Olate LFO1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"olate_lfo1Shape", 1}, "Olate LFO1 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_lfo2Rate", 1}, "Olate LFO2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"olate_lfo2Depth", 1}, "Olate LFO2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"olate_lfo2Shape", 1}, "Olate LFO2 Shape", 0, 4, 0));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramOscMix          = apvts.getRawParameterValue ("olate_oscMix");
-        paramPulseWidth      = apvts.getRawParameterValue ("olate_pulseWidth");
-        paramCutoff          = apvts.getRawParameterValue ("olate_cutoff");
-        paramResonance       = apvts.getRawParameterValue ("olate_resonance");
-        paramDrive           = apvts.getRawParameterValue ("olate_drive");
-        paramFilterEnvAmount = apvts.getRawParameterValue ("olate_filterEnvAmount");
-        paramFilterAttack    = apvts.getRawParameterValue ("olate_filterAttack");
-        paramFilterDecay     = apvts.getRawParameterValue ("olate_filterDecay");
-        paramVintage         = apvts.getRawParameterValue ("olate_vintage");
-        paramWarmth          = apvts.getRawParameterValue ("olate_warmth");
-        paramTerroir         = apvts.getRawParameterValue ("olate_terroir");
-        paramAgeRate         = apvts.getRawParameterValue ("olate_ageRate");
-        paramAttack          = apvts.getRawParameterValue ("olate_attack");
-        paramDecay           = apvts.getRawParameterValue ("olate_decay");
-        paramSustain         = apvts.getRawParameterValue ("olate_sustain");
-        paramRelease         = apvts.getRawParameterValue ("olate_release");
-        paramGlide           = apvts.getRawParameterValue ("olate_glide");
-        paramBendRange       = apvts.getRawParameterValue ("olate_bendRange");
-        paramGravity         = apvts.getRawParameterValue ("olate_gravity");
-        paramMacroCharacter  = apvts.getRawParameterValue ("olate_macroCharacter");
-        paramMacroMovement   = apvts.getRawParameterValue ("olate_macroMovement");
-        paramMacroCoupling   = apvts.getRawParameterValue ("olate_macroCoupling");
-        paramMacroSpace      = apvts.getRawParameterValue ("olate_macroSpace");
-        paramLfo1Rate        = apvts.getRawParameterValue ("olate_lfo1Rate");
-        paramLfo1Depth       = apvts.getRawParameterValue ("olate_lfo1Depth");
-        paramLfo1Shape       = apvts.getRawParameterValue ("olate_lfo1Shape");
-        paramLfo2Rate        = apvts.getRawParameterValue ("olate_lfo2Rate");
-        paramLfo2Depth       = apvts.getRawParameterValue ("olate_lfo2Depth");
-        paramLfo2Shape       = apvts.getRawParameterValue ("olate_lfo2Shape");
+        paramOscMix = apvts.getRawParameterValue("olate_oscMix");
+        paramPulseWidth = apvts.getRawParameterValue("olate_pulseWidth");
+        paramCutoff = apvts.getRawParameterValue("olate_cutoff");
+        paramResonance = apvts.getRawParameterValue("olate_resonance");
+        paramDrive = apvts.getRawParameterValue("olate_drive");
+        paramFilterEnvAmount = apvts.getRawParameterValue("olate_filterEnvAmount");
+        paramFilterAttack = apvts.getRawParameterValue("olate_filterAttack");
+        paramFilterDecay = apvts.getRawParameterValue("olate_filterDecay");
+        paramVintage = apvts.getRawParameterValue("olate_vintage");
+        paramWarmth = apvts.getRawParameterValue("olate_warmth");
+        paramTerroir = apvts.getRawParameterValue("olate_terroir");
+        paramAgeRate = apvts.getRawParameterValue("olate_ageRate");
+        paramAttack = apvts.getRawParameterValue("olate_attack");
+        paramDecay = apvts.getRawParameterValue("olate_decay");
+        paramSustain = apvts.getRawParameterValue("olate_sustain");
+        paramRelease = apvts.getRawParameterValue("olate_release");
+        paramGlide = apvts.getRawParameterValue("olate_glide");
+        paramBendRange = apvts.getRawParameterValue("olate_bendRange");
+        paramGravity = apvts.getRawParameterValue("olate_gravity");
+        paramMacroCharacter = apvts.getRawParameterValue("olate_macroCharacter");
+        paramMacroMovement = apvts.getRawParameterValue("olate_macroMovement");
+        paramMacroCoupling = apvts.getRawParameterValue("olate_macroCoupling");
+        paramMacroSpace = apvts.getRawParameterValue("olate_macroSpace");
+        paramLfo1Rate = apvts.getRawParameterValue("olate_lfo1Rate");
+        paramLfo1Depth = apvts.getRawParameterValue("olate_lfo1Depth");
+        paramLfo1Shape = apvts.getRawParameterValue("olate_lfo1Shape");
+        paramLfo2Rate = apvts.getRawParameterValue("olate_lfo2Rate");
+        paramLfo2Depth = apvts.getRawParameterValue("olate_lfo2Depth");
+        paramLfo2Shape = apvts.getRawParameterValue("olate_lfo2Shape");
     }
 
 private:
@@ -640,7 +668,7 @@ private:
 
     std::array<OlateVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount { 0 };
+    std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothCutoff, smoothResonance, smoothDrive;
     ParameterSmoother smoothOscMix, smoothPulseWidth, smoothWarmth;
@@ -650,8 +678,8 @@ private:
     float aftertouchAmount = 0.0f;
 
     // Session-scale aging state
-    float sessionAge = 0.0f;          // seconds since session start
-    uint64_t sessionSampleCount = 0;  // total samples processed
+    float sessionAge = 0.0f;         // seconds since session start
+    uint64_t sessionSampleCount = 0; // total samples processed
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;

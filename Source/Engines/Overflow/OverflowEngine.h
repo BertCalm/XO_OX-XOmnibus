@@ -15,7 +15,8 @@
 #include <cmath>
 #include <cstring>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -70,13 +71,13 @@ namespace xoceanus {
 //==============================================================================
 struct PressureState
 {
-    float pressure       = 0.0f;   // 0.0 → threshold (then release)
-    float temperature    = 0.0f;   // current input intensity (affects threshold)
-    float strainLevel    = 0.0f;   // 0.0–1.0: how close to valve release
-    bool  valveOpen      = false;  // true during release event
-    float valveTimer     = 0.0f;   // seconds since valve opened
-    float valveDuration  = 0.5f;   // how long the release event lasts
-    bool  overPressure   = false;  // catastrophic over-pressure state
+    float pressure = 0.0f;      // 0.0 → threshold (then release)
+    float temperature = 0.0f;   // current input intensity (affects threshold)
+    float strainLevel = 0.0f;   // 0.0–1.0: how close to valve release
+    bool valveOpen = false;     // true during release event
+    float valveTimer = 0.0f;    // seconds since valve opened
+    float valveDuration = 0.5f; // how long the release event lasts
+    bool overPressure = false;  // catastrophic over-pressure state
     float overPressureTimer = 0.0f;
 
     void reset() noexcept
@@ -98,11 +99,11 @@ struct OverflowVoice
 {
     static constexpr int kNumPartials = 16;
 
-    bool     active      = false;
-    uint64_t startTime   = 0;
-    int      currentNote = 60;
-    float    velocity    = 0.0f;
-    float    fundamental = 440.0f;
+    bool active = false;
+    uint64_t startTime = 0;
+    int currentNote = 60;
+    float velocity = 0.0f;
+    float fundamental = 440.0f;
 
     StandardADSR ampEnv;
     FilterEnvelope filterEnv;
@@ -118,24 +119,24 @@ struct OverflowVoice
         filterEnv.stage = FilterEnvelope::Stage::Idle;
         filterEnv.level = 0.0f;
         voiceFilter.reset();
-        std::fill (std::begin (partialPhase), std::end (partialPhase), 0.0f);
+        std::fill(std::begin(partialPhase), std::end(partialPhase), 0.0f);
     }
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        ampEnv.prepare (sampleRate);
-        filterEnv.prepare (sampleRate);
-        voiceFilter.setMode (CytomicSVF::Mode::LowPass);
+        ampEnv.prepare(sampleRate);
+        filterEnv.prepare(sampleRate);
+        voiceFilter.setMode(CytomicSVF::Mode::LowPass);
         voiceFilter.reset();
     }
 
-    void noteOn (int note, float vel, float sr, uint64_t time) noexcept
+    void noteOn(int note, float vel, float sr, uint64_t time) noexcept
     {
         active = true;
         currentNote = note;
         velocity = vel;
         startTime = time;
-        fundamental = 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) / 12.0f);
+        fundamental = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         ampEnv.noteOn();
         filterEnv.trigger();
@@ -158,29 +159,29 @@ public:
 
     static constexpr int kMaxVoices = 8;
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srF = static_cast<float> (sampleRate);
+        srF = static_cast<float>(sampleRate);
         blockSize = maxBlockSize;
 
         for (auto& v : voices)
         {
-            v.prepare (srF);
+            v.prepare(srF);
             v.reset();
         }
 
-        lfo1.setShape (StandardLFO::Sine);
+        lfo1.setShape(StandardLFO::Sine);
         lfo1.reset();
-        lfo2.setShape (StandardLFO::Triangle);
+        lfo2.setShape(StandardLFO::Triangle);
         lfo2.reset();
-        breathLfo.setRate (0.009f, srF);
+        breathLfo.setRate(0.009f, srF);
 
         // Pressure decay: matched-Z per-sample coefficient derived from sample rate.
         // Time constant ~2.27 sec (tau = 100000 samples at 44100 Hz).
         // exp(-1/tau_samples) = exp(-sampleRate / (100000 * 44100)) ≈ 1 - sampleRate/4.41e9.
-        constexpr float tauSec = 100000.0f / 44100.0f;  // ~2.268 seconds
-        pressureDecayCoeff = std::exp (-1.0f / (tauSec * static_cast<float> (sampleRate)));
+        constexpr float tauSec = 100000.0f / 44100.0f; // ~2.268 seconds
+        pressureDecayCoeff = std::exp(-1.0f / (tauSec * static_cast<float>(sampleRate)));
 
         pressureState.reset();
         noteCounter = 0;
@@ -188,8 +189,8 @@ public:
         // Release burst noise RNG
         noiseRng = 42u;
 
-        silenceGate.prepare (sr, maxBlockSize);
-        silenceGate.setHoldTime (500.0f);
+        silenceGate.prepare(sr, maxBlockSize);
+        silenceGate.setHoldTime(500.0f);
     }
 
     void releaseResources() override {}
@@ -205,9 +206,7 @@ public:
         extFilterMod = extRingMod = 0.0f;
     }
 
-    void renderBlock (juce::AudioBuffer<float>& buffer,
-                      juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
 
@@ -219,10 +218,10 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                int idx = VoiceAllocator::findFreeVoicePreferRelease (
+                int idx = VoiceAllocator::findFreeVoicePreferRelease(
                     voices, kMaxVoices,
-                    [] (const OverflowVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
-                voices[idx].noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), srF, ++noteCounter);
+                    [](const OverflowVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
+                voices[idx].noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), srF, ++noteCounter);
 
                 // Pressure accumulation from note-on
                 midiPressureInput += msg.getFloatVelocity() * 0.1f;
@@ -231,22 +230,23 @@ public:
                 // Simple heuristic: notes closer than 3 semitones or tritone add extra
                 for (int v2 = 0; v2 < kMaxVoices; ++v2)
                 {
-                    if (v2 == idx || !voices[v2].active) continue;
-                    int interval = std::abs (voices[v2].currentNote - msg.getNoteNumber()) % 12;
+                    if (v2 == idx || !voices[v2].active)
+                        continue;
+                    int interval = std::abs(voices[v2].currentNote - msg.getNoteNumber()) % 12;
                     if (interval == 1 || interval == 2 || interval == 6)
-                        midiPressureInput += 0.05f;  // dissonance = more pressure
+                        midiPressureInput += 0.05f; // dissonance = more pressure
                 }
             }
             else if (msg.isNoteOff())
             {
-                int idx = VoiceAllocator::findVoiceForNote (voices, kMaxVoices, msg.getNoteNumber());
-                if (idx >= 0) voices[idx].noteOff();
+                int idx = VoiceAllocator::findVoiceForNote(voices, kMaxVoices, msg.getNoteNumber());
+                if (idx >= 0)
+                    voices[idx].noteOff();
             }
             else if (msg.isAftertouch() || msg.isChannelPressure())
             {
-                aftertouch = msg.isAftertouch()
-                    ? msg.getAfterTouchValue() / 127.0f
-                    : msg.getChannelPressureValue() / 127.0f;
+                aftertouch =
+                    msg.isAftertouch() ? msg.getAfterTouchValue() / 127.0f : msg.getChannelPressureValue() / 127.0f;
                 midiPressureInput += aftertouch * 0.02f;
             }
             else if (msg.isController() && msg.getControllerNumber() == 1)
@@ -255,7 +255,7 @@ public:
             }
             else if (msg.isPitchWheel())
             {
-                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             }
         }
 
@@ -267,73 +267,72 @@ public:
         }
 
         // 3. Read parameters
-        float pThreshold   = pThresholdParam   ? pThresholdParam->load()   : 0.7f;
-        float pAccumRate   = pAccumRateParam   ? pAccumRateParam->load()   : 0.5f;
-        float pValveType   = pValveTypeParam   ? pValveTypeParam->load()   : 0.0f;
-        float pVesselSize  = pVesselSizeParam  ? pVesselSizeParam->load()  : 0.5f;
+        float pThreshold = pThresholdParam ? pThresholdParam->load() : 0.7f;
+        float pAccumRate = pAccumRateParam ? pAccumRateParam->load() : 0.5f;
+        float pValveType = pValveTypeParam ? pValveTypeParam->load() : 0.0f;
+        float pVesselSize = pVesselSizeParam ? pVesselSizeParam->load() : 0.5f;
         float pStrainColor = pStrainColorParam ? pStrainColorParam->load() : 0.5f;
         float pReleaseTime = pReleaseTimeParam ? pReleaseTimeParam->load() : 0.5f;
-        float pWhistlePitch= pWhistlePitchParam? pWhistlePitchParam->load(): 2000.0f;
+        float pWhistlePitch = pWhistlePitchParam ? pWhistlePitchParam->load() : 2000.0f;
         float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
-        float pFilterCut   = pFilterCutParam   ? pFilterCutParam->load()   : 6000.0f;
-        float pFilterRes   = pFilterResParam   ? pFilterResParam->load()   : 0.2f;
-        float pFiltEnvAmt  = pFiltEnvAmtParam  ? pFiltEnvAmtParam->load()  : 0.3f;
-        float pAmpA        = pAmpAParam        ? pAmpAParam->load()        : 0.2f;
-        float pAmpD        = pAmpDParam        ? pAmpDParam->load()        : 0.5f;
-        float pAmpS        = pAmpSParam        ? pAmpSParam->load()        : 0.8f;
-        float pAmpR        = pAmpRParam        ? pAmpRParam->load()        : 1.5f;
-        float pFiltA       = pFiltAParam       ? pFiltAParam->load()       : 0.1f;
-        float pFiltD       = pFiltDParam       ? pFiltDParam->load()       : 0.3f;
-        float pFiltS       = pFiltSParam       ? pFiltSParam->load()       : 0.5f;
-        float pFiltR       = pFiltRParam       ? pFiltRParam->load()       : 0.8f;
-        float pLfo1Rate    = pLfo1RateParam    ? pLfo1RateParam->load()    : 0.15f;
-        float pLfo1Depth   = pLfo1DepthParam   ? pLfo1DepthParam->load()   : 0.2f;
-        float pLfo2Rate    = pLfo2RateParam    ? pLfo2RateParam->load()    : 0.07f;
-        float pLfo2Depth   = pLfo2DepthParam   ? pLfo2DepthParam->load()   : 0.15f;
-        float pLevel       = pLevelParam       ? pLevelParam->load()       : 0.8f;
+        float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 6000.0f;
+        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.2f;
+        float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
+        float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.2f;
+        float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.5f;
+        float pAmpS = pAmpSParam ? pAmpSParam->load() : 0.8f;
+        float pAmpR = pAmpRParam ? pAmpRParam->load() : 1.5f;
+        float pFiltA = pFiltAParam ? pFiltAParam->load() : 0.1f;
+        float pFiltD = pFiltDParam ? pFiltDParam->load() : 0.3f;
+        float pFiltS = pFiltSParam ? pFiltSParam->load() : 0.5f;
+        float pFiltR = pFiltRParam ? pFiltRParam->load() : 0.8f;
+        float pLfo1Rate = pLfo1RateParam ? pLfo1RateParam->load() : 0.15f;
+        float pLfo1Depth = pLfo1DepthParam ? pLfo1DepthParam->load() : 0.2f;
+        float pLfo2Rate = pLfo2RateParam ? pLfo2RateParam->load() : 0.07f;
+        float pLfo2Depth = pLfo2DepthParam ? pLfo2DepthParam->load() : 0.15f;
+        float pLevel = pLevelParam ? pLevelParam->load() : 0.8f;
 
         // Macros
         float pMC = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
-        float pMM = pMacroMovementParam  ? pMacroMovementParam->load()  : 0.0f;
-        float pMK = pMacroCouplingParam  ? pMacroCouplingParam->load()  : 0.0f;
-        float pMS = pMacroSpaceParam     ? pMacroSpaceParam->load()     : 0.0f;
+        float pMM = pMacroMovementParam ? pMacroMovementParam->load() : 0.0f;
+        float pMK = pMacroCouplingParam ? pMacroCouplingParam->load() : 0.0f;
+        float pMS = pMacroSpaceParam ? pMacroSpaceParam->load() : 0.0f;
 
         // CHARACTER → vessel material + strain color
-        pStrainColor = clamp (pStrainColor + pMC * 0.3f, 0.0f, 1.0f);
+        pStrainColor = clamp(pStrainColor + pMC * 0.3f, 0.0f, 1.0f);
         // MOVEMENT → accumulation rate + LFO
-        pAccumRate = clamp (pAccumRate + pMM * 0.3f, 0.0f, 1.0f);
-        pLfo1Depth = clamp (pLfo1Depth + pMM * 0.2f, 0.0f, 1.0f);
+        pAccumRate = clamp(pAccumRate + pMM * 0.3f, 0.0f, 1.0f);
+        pLfo1Depth = clamp(pLfo1Depth + pMM * 0.2f, 0.0f, 1.0f);
         // COUPLING → pressure sensitivity
-        pThreshold = clamp (pThreshold - pMK * 0.2f, 0.1f, 1.0f);  // lower threshold
+        pThreshold = clamp(pThreshold - pMK * 0.2f, 0.1f, 1.0f); // lower threshold
         // SPACE → stereo + release reverb
-        pStereoWidth = clamp (pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
-        pReleaseTime = clamp (pReleaseTime + pMS * 0.3f, 0.1f, 2.0f);
+        pStereoWidth = clamp(pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
+        pReleaseTime = clamp(pReleaseTime + pMS * 0.3f, 0.1f, 2.0f);
 
         // D006: Mod wheel → vessel size (tone)
-        pVesselSize = clamp (pVesselSize + modWheel * 0.4f, 0.0f, 1.0f);
+        pVesselSize = clamp(pVesselSize + modWheel * 0.4f, 0.0f, 1.0f);
         // D006: Aftertouch → adds pressure directly
         // (already accumulated in midiPressureInput above)
 
         // Coupling
-        pFilterCut = clamp (pFilterCut + extFilterMod, 50.0f, 16000.0f);
+        pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 16000.0f);
 
         // BROTH cooperative: concentrated broth lowers threshold
-        pThreshold = clamp (pThreshold - brothConcentrateDark * 0.2f, 0.1f, 1.0f);
+        pThreshold = clamp(pThreshold - brothConcentrateDark * 0.2f, 0.1f, 1.0f);
 
-        lfo1.setRate (pLfo1Rate, srF);
-        lfo2.setRate (pLfo2Rate, srF);
+        lfo1.setRate(pLfo1Rate, srF);
+        lfo2.setRate(pLfo2Rate, srF);
 
-        int valveTypeInt = static_cast<int> (pValveType + 0.5f);
+        int valveTypeInt = static_cast<int>(pValveType + 0.5f);
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1
-                        ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         const float inverseSr = 1.0f / srF;
-        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // Apply MIDI pressure input (spread across block)
-        float pressurePerSample = midiPressureInput * pAccumRate / static_cast<float> (numSamples);
+        float pressurePerSample = midiPressureInput * pAccumRate / static_cast<float>(numSamples);
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -342,15 +341,15 @@ public:
             float breathVal = breathLfo.process();
 
             // === UPDATE PRESSURE STATE ===
-            pressureState.pressure = clamp (pressureState.pressure + pressurePerSample, 0.0f, 2.0f);
+            pressureState.pressure = clamp(pressureState.pressure + pressurePerSample, 0.0f, 2.0f);
 
             // Natural pressure decay (slow bleed) — sample-rate agnostic.
             // pressureDecayCoeff precomputed from sampleRate in prepare() (no hardcoded 44100).
             pressureState.pressure *= pressureDecayCoeff;
-            pressureState.pressure = flushDenormal (pressureState.pressure);
+            pressureState.pressure = flushDenormal(pressureState.pressure);
 
             // Strain level: 0 at pressure=0, 1 at threshold
-            pressureState.strainLevel = clamp (pressureState.pressure / pThreshold, 0.0f, 1.5f);
+            pressureState.strainLevel = clamp(pressureState.pressure / pThreshold, 0.0f, 1.5f);
 
             // Check for valve release
             if (!pressureState.valveOpen && pressureState.strainLevel >= 1.0f)
@@ -389,29 +388,32 @@ public:
 
                     switch (valveTypeInt)
                     {
-                        case 0: // Gradual release
-                            releaseGain *= 0.5f;
-                            break;
-                        case 1: // Explosive burst
-                        {
-                            releaseGain = (releaseProgress < 0.1f) ? 1.0f : (1.0f - releaseProgress) * 0.3f;
-                            break;
-                        }
-                        case 2: // Whistle (pitched FM release)
-                        {
-                            float whistleFreq = pWhistlePitch * (1.0f + releaseProgress * 0.5f);
-                            whistlePhase += whistleFreq * inverseSr;
-                            if (whistlePhase >= 1.0f) whistlePhase -= 1.0f;
-                            releaseSample = fastSin (whistlePhase * 6.28318530718f) * releaseGain;
-                            break;
-                        }
+                    case 0: // Gradual release
+                        releaseGain *= 0.5f;
+                        break;
+                    case 1: // Explosive burst
+                    {
+                        releaseGain = (releaseProgress < 0.1f) ? 1.0f : (1.0f - releaseProgress) * 0.3f;
+                        break;
+                    }
+                    case 2: // Whistle (pitched FM release)
+                    {
+                        float whistleFreq = pWhistlePitch * (1.0f + releaseProgress * 0.5f);
+                        whistlePhase += whistleFreq * inverseSr;
+                        if (whistlePhase >= 1.0f)
+                            whistlePhase -= 1.0f;
+                        releaseSample = fastSin(whistlePhase * 6.28318530718f) * releaseGain;
+                        break;
+                    }
                     }
 
                     // Noise burst for explosive/gradual
                     if (valveTypeInt != 2)
                     {
-                        noiseRng ^= noiseRng << 13; noiseRng ^= noiseRng >> 17; noiseRng ^= noiseRng << 5;
-                        float noise = (static_cast<float> (noiseRng & 0xFFFF) / 32768.0f - 1.0f);
+                        noiseRng ^= noiseRng << 13;
+                        noiseRng ^= noiseRng >> 17;
+                        noiseRng ^= noiseRng << 5;
+                        float noise = (static_cast<float>(noiseRng & 0xFFFF) / 32768.0f - 1.0f);
                         releaseSample = noise * releaseGain * 0.5f;
                     }
                 }
@@ -424,10 +426,11 @@ public:
             for (int v = 0; v < kMaxVoices; ++v)
             {
                 auto& voice = voices[v];
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
-                voice.ampEnv.setADSR (pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR (pFiltA, pFiltD, pFiltS, pFiltR);
+                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
 
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
@@ -445,31 +448,33 @@ public:
 
                 // Synthesize partials with pressure-dependent modifications
                 float voiceSample = 0.0f;
-                int numPartials = static_cast<int> (8.0f + pVesselSize * 8.0f);
+                int numPartials = static_cast<int>(8.0f + pVesselSize * 8.0f);
 
                 for (int p = 0; p < numPartials; ++p)
                 {
-                    float harmonic = static_cast<float> (p + 1);
+                    float harmonic = static_cast<float>(p + 1);
                     float freq = fundamental * harmonic;
-                    if (freq > srF * 0.49f) break;
+                    if (freq > srF * 0.49f)
+                        break;
 
                     voice.partialPhase[p] += freq * inverseSr;
-                    if (voice.partialPhase[p] >= 1.0f) voice.partialPhase[p] -= 1.0f;
+                    if (voice.partialPhase[p] >= 1.0f)
+                        voice.partialPhase[p] -= 1.0f;
 
-                    float sine = fastSin (voice.partialPhase[p] * 6.28318530718f);
+                    float sine = fastSin(voice.partialPhase[p] * 6.28318530718f);
                     float partialAmp = (1.0f / harmonic) * velBright;
 
                     // Strain modification: as pressure builds, sound hardens
                     if (pressureState.strainLevel > 0.5f)
                     {
                         float strainAmount = (pressureState.strainLevel - 0.5f) * 2.0f;
-                        strainAmount = clamp (strainAmount, 0.0f, 1.0f);
+                        strainAmount = clamp(strainAmount, 0.0f, 1.0f);
 
                         // High partials get grating — beating frequency modulation
                         if (p > 4)
                         {
                             float beatFreq = strainAmount * pStrainColor * 30.0f;
-                            float beatMod = fastSin (voice.partialPhase[0] * beatFreq * 6.28318530718f);
+                            float beatMod = fastSin(voice.partialPhase[0] * beatFreq * 6.28318530718f);
                             partialAmp *= (1.0f + beatMod * strainAmount * 0.5f);
                         }
 
@@ -487,37 +492,37 @@ public:
                     voiceSample += sine * partialAmp;
                 }
 
-                voiceSample *= (2.0f / static_cast<float> (numPartials));
+                voiceSample *= (2.0f / static_cast<float>(numPartials));
 
                 // Over-pressure saturation
                 if (pressureState.overPressure)
                 {
                     float saturate = 1.0f + pressureState.strainLevel * 2.0f;
-                    voiceSample = fastTanh (voiceSample * saturate);
+                    voiceSample = fastTanh(voiceSample * saturate);
                 }
 
                 // During valve release: duck the main signal
                 if (pressureState.valveOpen)
                 {
-                    float duck = 1.0f - clamp (pressureState.valveTimer / 0.05f, 0.0f, 1.0f);
-                    if (valveTypeInt == 1) duck = 0.0f;  // explosive: full silence
+                    float duck = 1.0f - clamp(pressureState.valveTimer / 0.05f, 0.0f, 1.0f);
+                    if (valveTypeInt == 1)
+                        duck = 0.0f; // explosive: full silence
                     voiceSample *= duck;
                 }
 
                 // Per-voice filter
-                float voiceCutoff = pFilterCut
-                    + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity
-                    - pressureState.strainLevel * 2000.0f * pStrainColor;
-                voiceCutoff = clamp (voiceCutoff, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast (voiceCutoff, pFilterRes, srF);
-                voiceSample = voice.voiceFilter.processSample (voiceSample);
+                float voiceCutoff = pFilterCut + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity -
+                                    pressureState.strainLevel * 2000.0f * pStrainColor;
+                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;
 
                 // Stereo
-                float pan = 0.5f + (static_cast<float> (voice.currentNote - 60) * 0.02f
-                            + lfo2Val * pLfo2Depth * 0.3f) * pStereoWidth;
-                pan = clamp (pan, 0.0f, 1.0f);
+                float pan = 0.5f + (static_cast<float>(voice.currentNote - 60) * 0.02f + lfo2Val * pLfo2Depth * 0.3f) *
+                                       pStereoWidth;
+                pan = clamp(pan, 0.0f, 1.0f);
 
                 sampleL += voiceSample * (1.0f - pan);
                 sampleR += voiceSample * pan;
@@ -530,55 +535,55 @@ public:
             sampleL *= pLevel;
             sampleR *= pLevel;
 
-            if (std::fabs (extRingMod) > 0.001f)
+            if (std::fabs(extRingMod) > 0.001f)
             {
                 sampleL *= (1.0f + extRingMod);
                 sampleR *= (1.0f + extRingMod);
             }
 
-            sampleL = softClip (sampleL);
-            sampleR = softClip (sampleR);
+            sampleL = softClip(sampleL);
+            sampleR = softClip(sampleR);
 
             lastSampleL = sampleL;
             lastSampleR = sampleR;
 
             outL[i] += sampleL;
-            if (outR) outR[i] += sampleR;
+            if (outR)
+                outR[i] += sampleR;
         }
 
         extFilterMod = 0.0f;
         extRingMod = 0.0f;
 
-        const float* rL = buffer.getReadPointer (0);
-        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr;
-        silenceGate.analyzeBlock (rL, rR, numSamples);
+        const float* rL = buffer.getReadPointer(0);
+        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(rL, rR, numSamples);
     }
 
     //-- Coupling ---------------------------------------------------------------
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? lastSampleL : lastSampleR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* sourceBuffer, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int /*numSamples*/) override
     {
         switch (type)
         {
-            case CouplingType::AmpToFilter:
-                extFilterMod = amount * 4000.0f;
-                break;
-            case CouplingType::AudioToRing:
-                extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
-                break;
-            default:
-                break;
+        case CouplingType::AmpToFilter:
+            extFilterMod = amount * 4000.0f;
+            break;
+        case CouplingType::AudioToRing:
+            extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
+            break;
+        default:
+            break;
         }
     }
 
     //-- BROTH Cooperative Coupling ---------------------------------------------
-    void setBrothConcentrateDark (float dark) { brothConcentrateDark = clamp (dark, 0.0f, 1.0f); }
+    void setBrothConcentrateDark(float dark) { brothConcentrateDark = clamp(dark, 0.0f, 1.0f); }
     float getPressureLevel() const { return pressureState.pressure; }
     float getStrainLevel() const { return pressureState.strainLevel; }
     bool isValveOpen() const { return pressureState.valveOpen; }
@@ -588,169 +593,141 @@ public:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
 
         // Core pressure parameters
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_threshold", 1 }, "Pressure Threshold",
-            juce::NormalisableRange<float> (0.1f, 1.0f), 0.7f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_threshold", 1}, "Pressure Threshold",
+                                              juce::NormalisableRange<float>(0.1f, 1.0f), 0.7f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_accumRate", 1 }, "Accumulation Rate",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_accumRate", 1}, "Accumulation Rate",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_valveType", 1 }, "Valve Type",
-            juce::NormalisableRange<float> (0.0f, 2.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_valveType", 1}, "Valve Type",
+                                              juce::NormalisableRange<float>(0.0f, 2.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_vesselSize", 1 }, "Vessel Size",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_vesselSize", 1}, "Vessel Size",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_strainColor", 1 }, "Strain Color",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_strainColor", 1}, "Strain Color",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_releaseTime", 1 }, "Release Duration",
-            juce::NormalisableRange<float> (0.1f, 2.0f, 0.0f, 0.5f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_releaseTime", 1}, "Release Duration",
+                                              juce::NormalisableRange<float>(0.1f, 2.0f, 0.0f, 0.5f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_whistlePitch", 1 }, "Whistle Pitch",
-            juce::NormalisableRange<float> (500.0f, 8000.0f, 0.0f, 0.3f), 2000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_whistlePitch", 1}, "Whistle Pitch",
+                                              juce::NormalisableRange<float>(500.0f, 8000.0f, 0.0f, 0.3f), 2000.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_stereoWidth", 1 }, "Stereo Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_stereoWidth", 1}, "Stereo Width",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filterCutoff", 1 }, "Filter Cutoff",
-            juce::NormalisableRange<float> (50.0f, 16000.0f, 0.0f, 0.3f), 6000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filterCutoff", 1}, "Filter Cutoff",
+                                              juce::NormalisableRange<float>(50.0f, 16000.0f, 0.0f, 0.3f), 6000.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filterRes", 1 }, "Filter Resonance",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filterRes", 1}, "Filter Resonance",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filtEnvAmount", 1 }, "Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtEnvAmount", 1}, "Filter Env Amount",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
         // Amp ADSR
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_ampAttack", 1 }, "Amp Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_ampAttack", 1}, "Amp Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.2f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_ampDecay", 1 }, "Amp Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_ampDecay", 1}, "Amp Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_ampSustain", 1 }, "Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_ampSustain", 1}, "Amp Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_ampRelease", 1 }, "Amp Release",
-            juce::NormalisableRange<float> (0.01f, 15.0f, 0.0f, 0.3f), 1.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_ampRelease", 1}, "Amp Release",
+                                              juce::NormalisableRange<float>(0.01f, 15.0f, 0.0f, 0.3f), 1.5f));
 
         // Filter ADSR
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filtAttack", 1 }, "Filter Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.1f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtAttack", 1}, "Filter Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.1f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filtDecay", 1 }, "Filter Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtDecay", 1}, "Filter Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.3f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filtSustain", 1 }, "Filter Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtSustain", 1}, "Filter Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_filtRelease", 1 }, "Filter Release",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtRelease", 1}, "Filter Release",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.8f));
 
         // LFOs
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_lfo1Rate", 1 }, "LFO 1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_lfo1Rate", 1}, "LFO 1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.15f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_lfo1Depth", 1 }, "LFO 1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_lfo1Depth", 1}, "LFO 1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_lfo2Rate", 1 }, "LFO 2 Rate",
-            juce::NormalisableRange<float> (0.005f, 10.0f, 0.0f, 0.3f), 0.07f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_lfo2Rate", 1}, "LFO 2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 10.0f, 0.0f, 0.3f), 0.07f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_lfo2Depth", 1 }, "LFO 2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_lfo2Depth", 1}, "LFO 2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
         // Output
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_level", 1 }, "Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_level", 1}, "Level",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_macroCharacter", 1 }, "Character",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_macroCharacter", 1}, "Character",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_macroMovement", 1 }, "Movement",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_macroMovement", 1}, "Movement",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_macroCoupling", 1 }, "Coupling",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_macroCoupling", 1}, "Coupling",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "flow_macroSpace", 1 }, "Space",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_macroSpace", 1}, "Space",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        pThresholdParam    = apvts.getRawParameterValue ("flow_threshold");
-        pAccumRateParam    = apvts.getRawParameterValue ("flow_accumRate");
-        pValveTypeParam    = apvts.getRawParameterValue ("flow_valveType");
-        pVesselSizeParam   = apvts.getRawParameterValue ("flow_vesselSize");
-        pStrainColorParam  = apvts.getRawParameterValue ("flow_strainColor");
-        pReleaseTimeParam  = apvts.getRawParameterValue ("flow_releaseTime");
-        pWhistlePitchParam = apvts.getRawParameterValue ("flow_whistlePitch");
-        pStereoWidthParam  = apvts.getRawParameterValue ("flow_stereoWidth");
-        pFilterCutParam    = apvts.getRawParameterValue ("flow_filterCutoff");
-        pFilterResParam    = apvts.getRawParameterValue ("flow_filterRes");
-        pFiltEnvAmtParam   = apvts.getRawParameterValue ("flow_filtEnvAmount");
-        pAmpAParam         = apvts.getRawParameterValue ("flow_ampAttack");
-        pAmpDParam         = apvts.getRawParameterValue ("flow_ampDecay");
-        pAmpSParam         = apvts.getRawParameterValue ("flow_ampSustain");
-        pAmpRParam         = apvts.getRawParameterValue ("flow_ampRelease");
-        pFiltAParam        = apvts.getRawParameterValue ("flow_filtAttack");
-        pFiltDParam        = apvts.getRawParameterValue ("flow_filtDecay");
-        pFiltSParam        = apvts.getRawParameterValue ("flow_filtSustain");
-        pFiltRParam        = apvts.getRawParameterValue ("flow_filtRelease");
-        pLfo1RateParam     = apvts.getRawParameterValue ("flow_lfo1Rate");
-        pLfo1DepthParam    = apvts.getRawParameterValue ("flow_lfo1Depth");
-        pLfo2RateParam     = apvts.getRawParameterValue ("flow_lfo2Rate");
-        pLfo2DepthParam    = apvts.getRawParameterValue ("flow_lfo2Depth");
-        pLevelParam        = apvts.getRawParameterValue ("flow_level");
-        pMacroCharacterParam = apvts.getRawParameterValue ("flow_macroCharacter");
-        pMacroMovementParam  = apvts.getRawParameterValue ("flow_macroMovement");
-        pMacroCouplingParam  = apvts.getRawParameterValue ("flow_macroCoupling");
-        pMacroSpaceParam     = apvts.getRawParameterValue ("flow_macroSpace");
+        pThresholdParam = apvts.getRawParameterValue("flow_threshold");
+        pAccumRateParam = apvts.getRawParameterValue("flow_accumRate");
+        pValveTypeParam = apvts.getRawParameterValue("flow_valveType");
+        pVesselSizeParam = apvts.getRawParameterValue("flow_vesselSize");
+        pStrainColorParam = apvts.getRawParameterValue("flow_strainColor");
+        pReleaseTimeParam = apvts.getRawParameterValue("flow_releaseTime");
+        pWhistlePitchParam = apvts.getRawParameterValue("flow_whistlePitch");
+        pStereoWidthParam = apvts.getRawParameterValue("flow_stereoWidth");
+        pFilterCutParam = apvts.getRawParameterValue("flow_filterCutoff");
+        pFilterResParam = apvts.getRawParameterValue("flow_filterRes");
+        pFiltEnvAmtParam = apvts.getRawParameterValue("flow_filtEnvAmount");
+        pAmpAParam = apvts.getRawParameterValue("flow_ampAttack");
+        pAmpDParam = apvts.getRawParameterValue("flow_ampDecay");
+        pAmpSParam = apvts.getRawParameterValue("flow_ampSustain");
+        pAmpRParam = apvts.getRawParameterValue("flow_ampRelease");
+        pFiltAParam = apvts.getRawParameterValue("flow_filtAttack");
+        pFiltDParam = apvts.getRawParameterValue("flow_filtDecay");
+        pFiltSParam = apvts.getRawParameterValue("flow_filtSustain");
+        pFiltRParam = apvts.getRawParameterValue("flow_filtRelease");
+        pLfo1RateParam = apvts.getRawParameterValue("flow_lfo1Rate");
+        pLfo1DepthParam = apvts.getRawParameterValue("flow_lfo1Depth");
+        pLfo2RateParam = apvts.getRawParameterValue("flow_lfo2Rate");
+        pLfo2DepthParam = apvts.getRawParameterValue("flow_lfo2Depth");
+        pLevelParam = apvts.getRawParameterValue("flow_level");
+        pMacroCharacterParam = apvts.getRawParameterValue("flow_macroCharacter");
+        pMacroMovementParam = apvts.getRawParameterValue("flow_macroMovement");
+        pMacroCouplingParam = apvts.getRawParameterValue("flow_macroCoupling");
+        pMacroSpaceParam = apvts.getRawParameterValue("flow_macroSpace");
     }
 
     //-- Identity ---------------------------------------------------------------
@@ -759,14 +736,11 @@ public:
 
     juce::Colour getAccentColour() const override
     {
-        return juce::Colour (0xFFE8E8E8);  // Steam White
+        return juce::Colour(0xFFE8E8E8); // Steam White
     }
 
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override
-    {
-        return VoiceAllocator::countActive (voices, kMaxVoices);
-    }
+    int getActiveVoiceCount() const override { return VoiceAllocator::countActive(voices, kMaxVoices); }
 
 private:
     double sr = 44100.0;
@@ -774,7 +748,7 @@ private:
     int blockSize = 512;
     // Pressure decay coefficient per sample — precomputed from sampleRate in prepare().
     // Target time constant: ~2.27 seconds (same as 0.00001 per sample at 44100 Hz).
-    float pressureDecayCoeff = 0.99999f;  // default for 44100 Hz
+    float pressureDecayCoeff = 0.99999f; // default for 44100 Hz
 
     OverflowVoice voices[kMaxVoices];
     uint64_t noteCounter = 0;
@@ -787,46 +761,46 @@ private:
     float whistlePhase = 0.0f;
     uint32_t noiseRng = 42u;
 
-    float aftertouch    = 0.0f;
-    float modWheel      = 0.0f;
+    float aftertouch = 0.0f;
+    float modWheel = 0.0f;
     float pitchBendNorm = 0.0f;
 
     float extFilterMod = 0.0f;
-    float extRingMod   = 0.0f;
-    float lastSampleL  = 0.0f;
-    float lastSampleR  = 0.0f;
+    float extRingMod = 0.0f;
+    float lastSampleL = 0.0f;
+    float lastSampleR = 0.0f;
 
     float brothConcentrateDark = 0.0f;
 
     // Parameter pointers (28 params)
-    std::atomic<float>* pThresholdParam    = nullptr;
-    std::atomic<float>* pAccumRateParam    = nullptr;
-    std::atomic<float>* pValveTypeParam    = nullptr;
-    std::atomic<float>* pVesselSizeParam   = nullptr;
-    std::atomic<float>* pStrainColorParam  = nullptr;
-    std::atomic<float>* pReleaseTimeParam  = nullptr;
+    std::atomic<float>* pThresholdParam = nullptr;
+    std::atomic<float>* pAccumRateParam = nullptr;
+    std::atomic<float>* pValveTypeParam = nullptr;
+    std::atomic<float>* pVesselSizeParam = nullptr;
+    std::atomic<float>* pStrainColorParam = nullptr;
+    std::atomic<float>* pReleaseTimeParam = nullptr;
     std::atomic<float>* pWhistlePitchParam = nullptr;
-    std::atomic<float>* pStereoWidthParam  = nullptr;
-    std::atomic<float>* pFilterCutParam    = nullptr;
-    std::atomic<float>* pFilterResParam    = nullptr;
-    std::atomic<float>* pFiltEnvAmtParam   = nullptr;
-    std::atomic<float>* pAmpAParam         = nullptr;
-    std::atomic<float>* pAmpDParam         = nullptr;
-    std::atomic<float>* pAmpSParam         = nullptr;
-    std::atomic<float>* pAmpRParam         = nullptr;
-    std::atomic<float>* pFiltAParam        = nullptr;
-    std::atomic<float>* pFiltDParam        = nullptr;
-    std::atomic<float>* pFiltSParam        = nullptr;
-    std::atomic<float>* pFiltRParam        = nullptr;
-    std::atomic<float>* pLfo1RateParam     = nullptr;
-    std::atomic<float>* pLfo1DepthParam    = nullptr;
-    std::atomic<float>* pLfo2RateParam     = nullptr;
-    std::atomic<float>* pLfo2DepthParam    = nullptr;
-    std::atomic<float>* pLevelParam        = nullptr;
+    std::atomic<float>* pStereoWidthParam = nullptr;
+    std::atomic<float>* pFilterCutParam = nullptr;
+    std::atomic<float>* pFilterResParam = nullptr;
+    std::atomic<float>* pFiltEnvAmtParam = nullptr;
+    std::atomic<float>* pAmpAParam = nullptr;
+    std::atomic<float>* pAmpDParam = nullptr;
+    std::atomic<float>* pAmpSParam = nullptr;
+    std::atomic<float>* pAmpRParam = nullptr;
+    std::atomic<float>* pFiltAParam = nullptr;
+    std::atomic<float>* pFiltDParam = nullptr;
+    std::atomic<float>* pFiltSParam = nullptr;
+    std::atomic<float>* pFiltRParam = nullptr;
+    std::atomic<float>* pLfo1RateParam = nullptr;
+    std::atomic<float>* pLfo1DepthParam = nullptr;
+    std::atomic<float>* pLfo2RateParam = nullptr;
+    std::atomic<float>* pLfo2DepthParam = nullptr;
+    std::atomic<float>* pLevelParam = nullptr;
     std::atomic<float>* pMacroCharacterParam = nullptr;
-    std::atomic<float>* pMacroMovementParam  = nullptr;
-    std::atomic<float>* pMacroCouplingParam  = nullptr;
-    std::atomic<float>* pMacroSpaceParam     = nullptr;
+    std::atomic<float>* pMacroMovementParam = nullptr;
+    std::atomic<float>* pMacroCouplingParam = nullptr;
+    std::atomic<float>* pMacroSpaceParam = nullptr;
 };
 
 } // namespace xoceanus

@@ -28,14 +28,15 @@
 #include <array>
 #include <cmath>
 
-namespace xoverlap {
+namespace xoverlap
+{
 
 //==============================================================================
 class Entrainment
 {
 public:
     //==========================================================================
-    void prepare (double /*sampleRate*/) noexcept
+    void prepare(double /*sampleRate*/) noexcept
     {
         // Reset control-rate counter and cached mean phase
         controlCounter_ = 0;
@@ -58,11 +59,10 @@ public:
     static constexpr int kControlRateDiv = 64;
 
     template <size_t N>
-    void process (std::array<Voice, N>& voices,
-                  float entrain,
-                  float pulseRate) noexcept
+    void process(std::array<Voice, N>& voices, float entrain, float pulseRate) noexcept
     {
-        if (entrain < 0.001f) return;
+        if (entrain < 0.001f)
+            return;
 
         // 1. Update circular mean only at control rate
         ++controlCounter_;
@@ -72,18 +72,19 @@ public:
 
             float sinSum = 0.0f;
             float cosSum = 0.0f;
-            int   count  = 0;
+            int count = 0;
             for (auto& v : voices)
             {
-                if (!v.isActive()) continue;
+                if (!v.isActive())
+                    continue;
                 float theta = v.phase * 6.28318530f;
-                sinSum += fastSin (theta);
-                cosSum += fastCos (theta);
+                sinSum += fastSin(theta);
+                cosSum += fastCos(theta);
                 ++count;
             }
 
             if (count >= 2)
-                cachedMeanPhase_ = std::atan2 (sinSum, cosSum);  // in [-π, π]
+                cachedMeanPhase_ = std::atan2(sinSum, cosSum); // in [-π, π]
         }
 
         // Bail if fewer than 2 voices have ever been active
@@ -94,35 +95,40 @@ public:
         //    (handled as fractional phase shift in [0,1) units)
         // We compute a conservative max per-sample phase nudge:
         //   baseRate ≈ 0.0002 * pulseRate (tuned so full K=1 sync in ~0.5s)
-        float nudgeAmt = entrain * 0.0002f * std::max (0.01f, pulseRate);
+        float nudgeAmt = entrain * 0.0002f * std::max(0.01f, pulseRate);
 
         // 3. Apply nudge to each active voice using cached mean phase
         for (auto& v : voices)
         {
-            if (!v.isActive()) continue;
+            if (!v.isActive())
+                continue;
 
-            float theta     = v.phase * 6.28318530f;
+            float theta = v.phase * 6.28318530f;
             float phaseDiff = cachedMeanPhase_ - theta;
 
             // Wrap to [-π, π]
-            while (phaseDiff >  3.14159265f) phaseDiff -= 6.28318530f;
-            while (phaseDiff < -3.14159265f) phaseDiff += 6.28318530f;
+            while (phaseDiff > 3.14159265f)
+                phaseDiff -= 6.28318530f;
+            while (phaseDiff < -3.14159265f)
+                phaseDiff += 6.28318530f;
 
             // Kuramoto nudge: dθ = K * sin(Δθ) per discrete step
-            float sinDiff = fastSin (phaseDiff);
+            float sinDiff = fastSin(phaseDiff);
             float phaseShift = nudgeAmt * sinDiff;
 
             // Convert back to normalised [0,1) phase and apply
             v.phase = v.phase + phaseShift / 6.28318530f;
 
             // Keep phase in [0, 1)
-            if (v.phase >= 1.0f) v.phase -= 1.0f;
-            if (v.phase <  0.0f) v.phase += 1.0f;
+            if (v.phase >= 1.0f)
+                v.phase -= 1.0f;
+            if (v.phase < 0.0f)
+                v.phase += 1.0f;
         }
     }
 
 private:
-    int   controlCounter_  = 0;
+    int controlCounter_ = 0;
     float cachedMeanPhase_ = 0.0f;
 };
 

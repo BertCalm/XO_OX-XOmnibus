@@ -5,7 +5,8 @@
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 class OutshineExportBar : public juce::Component
 {
@@ -32,11 +33,16 @@ public:
         currentProgress = progress;
 
         juce::String metaphor;
-        if (progress < 0.15f)      metaphor = "Opening the grain...";
-        else if (progress < 0.35f) metaphor = "Layering nacre...";
-        else if (progress < 0.75f) metaphor = "Pearl forming...";
-        else if (progress < 0.95f) metaphor = "Packaging...";
-        else                        metaphor = "Pearl complete.";
+        if (progress < 0.15f)
+            metaphor = "Opening the grain...";
+        else if (progress < 0.35f)
+            metaphor = "Layering nacre...";
+        else if (progress < 0.75f)
+            metaphor = "Pearl forming...";
+        else if (progress < 0.95f)
+            metaphor = "Packaging...";
+        else
+            metaphor = "Pearl complete.";
 
         progressMetaphorLabel.setText(metaphor, juce::dontSendNotification);
         progressTechLabel.setText(stageString, juce::dontSendNotification);
@@ -56,8 +62,8 @@ public:
         bool hasUnverified = (count > 0);
         unverifiedBadge.setVisible(hasUnverified);
         if (hasUnverified)
-            unverifiedBadge.setText(juce::String(count) + " unverified root" +
-                                    (count == 1 ? "" : "s"), juce::dontSendNotification);
+            unverifiedBadge.setText(juce::String(count) + " unverified root" + (count == 1 ? "" : "s"),
+                                    juce::dontSendNotification);
         exportBtn.setEnabled(readyToExport && !hasUnverified);
         exportBtn.setAlpha(exportBtn.isEnabled() ? 1.0f : 0.4f);
     }
@@ -78,9 +84,8 @@ public:
         if (!isExporting)
         {
             int estSec = (int)(n * 0.5 + n * 1.0 + 2.0);
-            progressTechLabel.setText("Analyzing " + juce::String(n) + " samples, ~"
-                                     + juce::String(estSec) + " sec",
-                                     juce::dontSendNotification);
+            progressTechLabel.setText("Analyzing " + juce::String(n) + " samples, ~" + juce::String(estSec) + " sec",
+                                      juce::dontSendNotification);
         }
     }
 
@@ -88,10 +93,14 @@ public:
     {
         switch (formatSelector.getSelectedId())
         {
-            case 1: return ExportFormat::XPNPack;
-            case 2: return ExportFormat::WAVFolder;
-            case 3: return ExportFormat::XPMOnly;
-            default: return ExportFormat::XPNPack;
+        case 1:
+            return ExportFormat::XPNPack;
+        case 2:
+            return ExportFormat::WAVFolder;
+        case 3:
+            return ExportFormat::XPMOnly;
+        default:
+            return ExportFormat::XPNPack;
         }
     }
 
@@ -107,8 +116,7 @@ public:
         g.fillRect(barArea);
         if (currentProgress > 0.0f)
         {
-            g.setColour(exportFailed ? juce::Colour(0xFFE05252)
-                                     : GalleryColors::get(GalleryColors::xoGold));
+            g.setColour(exportFailed ? juce::Colour(0xFFE05252) : GalleryColors::get(GalleryColors::xoGold));
             g.fillRect(barArea.withWidth((int)(barArea.getWidth() * currentProgress)));
         }
     }
@@ -118,10 +126,10 @@ public:
         // Derive button widths from the component's own width so they scale on
         // HiDPI/Retina.  The previous hardcoded 80/140/120 px looked cramped on
         // 2x displays.  Proportions: cancel ≈ 9%, export ≈ 16%, badge ≈ 13%.
-        const int w          = getWidth();
-        const int cancelW    = juce::jmax(64, (int)(w * 0.09f));
-        const int exportW    = juce::jmax(110, (int)(w * 0.16f));
-        const int badgeW     = juce::jmax(90,  (int)(w * 0.13f));
+        const int w = getWidth();
+        const int cancelW = juce::jmax(64, (int)(w * 0.09f));
+        const int exportW = juce::jmax(110, (int)(w * 0.16f));
+        const int badgeW = juce::jmax(90, (int)(w * 0.13f));
 
         auto area = getLocalBounds().reduced(8, 0);
         area.removeFromBottom(kBarH);
@@ -155,15 +163,14 @@ private:
         A11y::setup(pearlNameField, "Pearl Name", "Name for the exported instrument");
         addAndMakeVisible(pearlNameField);
 
-        formatSelector.addItem("XPN Pack",    1);
-        formatSelector.addItem("WAV Folder",  2);
-        formatSelector.addItem("XPM Only",    3);
+        formatSelector.addItem("XPN Pack", 1);
+        formatSelector.addItem("WAV Folder", 2);
+        formatSelector.addItem("XPM Only", 3);
         formatSelector.setSelectedId(1, juce::dontSendNotification);
         A11y::setup(formatSelector, "Export Format", "Choose XPN Pack, WAV Folder, or XPM Only");
         addAndMakeVisible(formatSelector);
 
-        exportBtn.setColour(juce::TextButton::buttonColourId,
-                            GalleryColors::get(GalleryColors::xoGold));
+        exportBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::xoGold));
         exportBtn.setColour(juce::TextButton::textColourOffId,
                             juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         exportBtn.onClick = [this]() { onExportButtonClicked(); };
@@ -173,18 +180,20 @@ private:
         addAndMakeVisible(exportBtn);
 
         cancelBtn.setVisible(false);
-        cancelBtn.onClick = [this]() { if (onCancelClicked) onCancelClicked(); };
+        cancelBtn.onClick = [this]()
+        {
+            if (onCancelClicked)
+                onCancelClicked();
+        };
         A11y::setup(cancelBtn, "Cancel", "Cancel the export pipeline");
         addAndMakeVisible(cancelBtn);
 
         progressMetaphorLabel.setFont(GalleryFonts::body(11.0f));
-        progressMetaphorLabel.setColour(juce::Label::textColourId,
-                                        GalleryColors::get(GalleryColors::textDark()));
+        progressMetaphorLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
         addAndMakeVisible(progressMetaphorLabel);
 
         progressTechLabel.setFont(GalleryFonts::value(10.0f));
-        progressTechLabel.setColour(juce::Label::textColourId,
-                                    GalleryColors::get(GalleryColors::textMid()));
+        progressTechLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         addAndMakeVisible(progressTechLabel);
 
         unverifiedBadge.setFont(GalleryFonts::value(9.0f));
@@ -195,47 +204,43 @@ private:
 
     void onExportButtonClicked()
     {
-        if (!onExportClicked) return;
+        if (!onExportClicked)
+            return;
 
         auto chooser = std::make_shared<juce::FileChooser>(
-            "Choose export location",
-            juce::File::getSpecialLocation(juce::File::userDesktopDirectory),
-            "");
+            "Choose export location", juce::File::getSpecialLocation(juce::File::userDesktopDirectory), "");
 
-        chooser->launchAsync(juce::FileBrowserComponent::saveMode
-                             | juce::FileBrowserComponent::canSelectDirectories,
+        chooser->launchAsync(juce::FileBrowserComponent::saveMode | juce::FileBrowserComponent::canSelectDirectories,
                              [this, chooser](const juce::FileChooser& fc)
-        {
-            auto result = fc.getResult();
-            if (result != juce::File())
-            {
-                onExportClicked(pearlNameField.getText(),
-                                getSelectedFormat(),
-                                result);
-            }
-        });
+                             {
+                                 auto result = fc.getResult();
+                                 if (result != juce::File())
+                                 {
+                                     onExportClicked(pearlNameField.getText(), getSelectedFormat(), result);
+                                 }
+                             });
     }
 
-    juce::TextEditor  pearlNameField;
-    juce::ComboBox    formatSelector;
-    juce::TextButton  exportBtn { "Pearl & Export" };
-    juce::TextButton  cancelBtn { "Cancel" };
+    juce::TextEditor pearlNameField;
+    juce::ComboBox formatSelector;
+    juce::TextButton exportBtn{"Pearl & Export"};
+    juce::TextButton cancelBtn{"Cancel"};
 
-    juce::Label       progressMetaphorLabel;
-    juce::Label       progressTechLabel;
-    juce::Label       unverifiedBadge;
+    juce::Label progressMetaphorLabel;
+    juce::Label progressTechLabel;
+    juce::Label unverifiedBadge;
 
-    float             currentProgress { 0.0f };
-    bool              isExporting { false };
-    bool              readyToExport { false };
-    bool              exportFailed { false };
-    int               grainCount { 0 };
-    int               unverifiedCount { 0 };
+    float currentProgress{0.0f};
+    bool isExporting{false};
+    bool readyToExport{false};
+    bool exportFailed{false};
+    int grainCount{0};
+    int unverifiedCount{0};
 
-    static constexpr int kBarH        = 3;
-    static constexpr int kButtonH     = 32;
-    static constexpr int kNameFieldW  = 200;
-    static constexpr int kFormatW     = 140;
+    static constexpr int kBarH = 3;
+    static constexpr int kButtonH = 32;
+    static constexpr int kNameFieldW = 200;
+    static constexpr int kFormatW = 140;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineExportBar)
 };

@@ -5,7 +5,8 @@
 #include <cstdint>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Corroder — Digital erosion / degradation processor.
@@ -42,7 +43,7 @@ public:
     Corroder() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         holdL = holdR = 0.0f;
@@ -53,57 +54,39 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set bit depth reduction. [1.0, 24.0] — 24 = no reduction.
-    void setBitDepth (float bits)
-    {
-        bitDepth = clamp (bits, 1.0f, 24.0f);
-    }
+    void setBitDepth(float bits) { bitDepth = clamp(bits, 1.0f, 24.0f); }
 
     /// Set effective sample rate. [100, sr] — sr = no reduction.
-    void setSampleRate (float hz)
-    {
-        targetSR = clamp (hz, 100.0f, static_cast<float> (sr));
-    }
+    void setSampleRate(float hz) { targetSR = clamp(hz, 100.0f, static_cast<float>(sr)); }
 
     /// Set FM self-modulation depth. [0, 1] — 0 = off.
-    void setFMDepth (float depth)
-    {
-        fmDepth = clamp (depth, 0.0f, 1.0f);
-    }
+    void setFMDepth(float depth) { fmDepth = clamp(depth, 0.0f, 1.0f); }
 
     /// Set FM modulator rate in Hz. [0.5, 5000]
-    void setFMRate (float hz)
-    {
-        fmRate = clamp (hz, 0.5f, 5000.0f);
-    }
+    void setFMRate(float hz) { fmRate = clamp(hz, 0.5f, 5000.0f); }
 
     /// Set post-erosion tone (LP filter). [0, 1] — 0 = dark, 1 = bright (bypass).
-    void setTone (float t)
-    {
-        tone = clamp (t, 0.0f, 1.0f);
-    }
+    void setTone(float t) { tone = clamp(t, 0.0f, 1.0f); }
 
     /// Set wet/dry mix. [0, 1]
-    void setMix (float wet)
-    {
-        mix = clamp (wet, 0.0f, 1.0f);
-    }
+    void setMix(float wet) { mix = clamp(wet, 0.0f, 1.0f); }
 
     //--------------------------------------------------------------------------
     /// Process stereo audio in-place.
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
         // Precompute
-        float stepSize = static_cast<float> (sr) / targetSR;
-        float quantLevels = std::max (1.0f, fastPow2 (bitDepth - 1.0f));
+        float stepSize = static_cast<float>(sr) / targetSR;
+        float quantLevels = std::max(1.0f, fastPow2(bitDepth - 1.0f));
         float invLevels = 1.0f / quantLevels;
         bool doBitReduce = (bitDepth < 23.5f);
-        bool doSRReduce = (targetSR < static_cast<float> (sr) * 0.99f);
+        bool doSRReduce = (targetSR < static_cast<float>(sr) * 0.99f);
         bool doFM = (fmDepth > 0.001f);
 
         // Tone LP coefficient: tone=1 → coeff=1 (bypass), tone=0 → coeff≈0.02
         float toneCoeff = 0.02f + tone * 0.98f;
 
-        float fmPhaseInc = fmRate / static_cast<float> (sr);
+        float fmPhaseInc = fmRate / static_cast<float>(sr);
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -115,11 +98,12 @@ public:
             // --- FM self-modulation ---
             if (doFM)
             {
-                float fmMod = fastSin (fmPhase * 6.28318530718f) * fmDepth;
+                float fmMod = fastSin(fmPhase * 6.28318530718f) * fmDepth;
                 wetL += wetL * fmMod;
                 wetR += wetR * fmMod;
                 fmPhase += fmPhaseInc;
-                if (fmPhase >= 1.0f) fmPhase -= 1.0f;
+                if (fmPhase >= 1.0f)
+                    fmPhase -= 1.0f;
             }
 
             // --- Sample rate reduction (sample-and-hold) ---
@@ -140,13 +124,13 @@ public:
             if (doBitReduce)
             {
                 // Quantize to N levels, then reconstruct
-                wetL = std::round (wetL * quantLevels) * invLevels;
-                wetR = std::round (wetR * quantLevels) * invLevels;
+                wetL = std::round(wetL * quantLevels) * invLevels;
+                wetR = std::round(wetR * quantLevels) * invLevels;
             }
 
             // --- Post-erosion tone LP ---
-            toneLP_L = flushDenormal (toneLP_L + toneCoeff * (wetL - toneLP_L));
-            toneLP_R = flushDenormal (toneLP_R + toneCoeff * (wetR - toneLP_R));
+            toneLP_L = flushDenormal(toneLP_L + toneCoeff * (wetL - toneLP_L));
+            toneLP_R = flushDenormal(toneLP_R + toneCoeff * (wetR - toneLP_R));
 
             // Use LP only when tone < 1 (avoid unnecessary filtering)
             if (tone < 0.99f)

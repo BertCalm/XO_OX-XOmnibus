@@ -21,23 +21,21 @@
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Lightweight LookAndFeel override so category pill buttons render with a
 // compact 8pt label font without requiring a full LookAndFeel subclass elsewhere.
 struct PillButtonLookAndFeel : public juce::LookAndFeel_V4
 {
-    void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
-                        bool /*isMouseOver*/, bool /*isButtonDown*/) override
+    void drawButtonText(juce::Graphics& g, juce::TextButton& btn, bool /*isMouseOver*/, bool /*isButtonDown*/) override
     {
         g.setFont(GalleryFonts::label(7.5f));
-        g.setColour(btn.findColour(btn.getToggleState()
-                    ? juce::TextButton::textColourOnId
-                    : juce::TextButton::textColourOffId));
-        g.drawFittedText(btn.getButtonText(),
-                         btn.getLocalBounds().reduced(1, 0),
-                         juce::Justification::centred, 1, 0.9f);
+        g.setColour(btn.findColour(btn.getToggleState() ? juce::TextButton::textColourOnId
+                                                        : juce::TextButton::textColourOffId));
+        g.drawFittedText(btn.getButtonText(), btn.getLocalBounds().reduced(1, 0), juce::Justification::centred, 1,
+                         0.9f);
     }
 };
 
@@ -61,24 +59,18 @@ public:
     //==========================================================================
     EnginePickerPopup()
     {
-        A11y::setup(*this, "Engine Picker",
-                    "Search and select an engine by name, category, or description");
+        A11y::setup(*this, "Engine Picker", "Search and select an engine by name, category, or description");
 
         buildMetadataTable();
         collectRegisteredEngines();
 
         // ── Search field ─────────────────────────────────────────────────────
-        searchField.setTextToShowWhenEmpty(
-            "Search " + juce::String(allEngineIds.size()) + " engines...",
-            GalleryColors::get(GalleryColors::t3()).withAlpha(0.80f));
-        searchField.setColour(juce::TextEditor::backgroundColourId,
-            GalleryColors::get(GalleryColors::surface()));
-        searchField.setColour(juce::TextEditor::outlineColourId,
-            GalleryColors::borderMd());
-        searchField.setColour(juce::TextEditor::focusedOutlineColourId,
-            juce::Colour(GalleryColors::xoGold));
-        searchField.setColour(juce::TextEditor::textColourId,
-            GalleryColors::get(GalleryColors::t1()));
+        searchField.setTextToShowWhenEmpty("Search " + juce::String(allEngineIds.size()) + " engines...",
+                                           GalleryColors::get(GalleryColors::t3()).withAlpha(0.80f));
+        searchField.setColour(juce::TextEditor::backgroundColourId, GalleryColors::get(GalleryColors::surface()));
+        searchField.setColour(juce::TextEditor::outlineColourId, GalleryColors::borderMd());
+        searchField.setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(GalleryColors::xoGold));
+        searchField.setColour(juce::TextEditor::textColourId, GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.setReturnKeyStartsNewLine(false);
         searchField.addListener(this);
@@ -87,20 +79,10 @@ public:
 
         // ── Category pill buttons ─────────────────────────────────────────────
         // Short readable labels — font is 7.5pt to keep all pills fitting in 340pt.
-        static const char* kCatLabels[] = {
-            "ALL", "Synth", "Perc", "Bass", "Pad", "String", "Organ", "Vocal", "FX", "Util"
-        };
+        static const char* kCatLabels[] = {"ALL",    "Synth", "Perc",  "Bass", "Pad",
+                                           "String", "Organ", "Vocal", "FX",   "Util"};
         static const char* kCatTooltips[] = {
-            "All engines",
-            "Synthesizer",
-            "Percussion",
-            "Bass",
-            "Pad",
-            "String",
-            "Organ",
-            "Vocal",
-            "FX",
-            "Utility",
+            "All engines", "Synthesizer", "Percussion", "Bass", "Pad", "String", "Organ", "Vocal", "FX", "Utility",
         };
         for (int i = 0; i < kNumCategories; ++i)
         {
@@ -123,10 +105,8 @@ public:
         // ── Results list ──────────────────────────────────────────────────────
         listBox.setModel(this);
         listBox.setRowHeight(kRowHeight);
-        listBox.setColour(juce::ListBox::backgroundColourId,
-            GalleryColors::get(GalleryColors::elevated()));
-        listBox.setColour(juce::ListBox::outlineColourId,
-            GalleryColors::border());
+        listBox.setColour(juce::ListBox::backgroundColourId, GalleryColors::get(GalleryColors::elevated()));
+        listBox.setColour(juce::ListBox::outlineColourId, GalleryColors::border());
         listBox.setOutlineThickness(1);
         listBox.addKeyListener(this);
         addAndMakeVisible(listBox);
@@ -134,15 +114,13 @@ public:
         // ── Empty state label (shown when search returns no results) ──────────
         emptyLabel.setText("No engines match your search", juce::dontSendNotification);
         emptyLabel.setFont(GalleryFonts::body(11.0f));
-        emptyLabel.setColour(juce::Label::textColourId,
-            GalleryColors::get(GalleryColors::t3()));
+        emptyLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t3()));
         emptyLabel.setJustificationType(juce::Justification::centred);
         addChildComponent(emptyLabel); // hidden by default
 
         // ── Count label ───────────────────────────────────────────────────────
         countLabel.setFont(GalleryFonts::label(8.5f));
-        countLabel.setColour(juce::Label::textColourId,
-            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
+        countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
 
@@ -154,18 +132,19 @@ public:
         {
             const auto* display = juce::Desktop::getInstance().getDisplays().getPrimaryDisplay();
             const float scale = (display != nullptr) ? juce::jmax(1.0f, (float)display->scale) : 1.0f;
-            setSize(juce::roundToInt(340.0f * scale),
-                    juce::roundToInt(420.0f * scale));
+            setSize(juce::roundToInt(340.0f * scale), juce::roundToInt(420.0f * scale));
         }
 
         // Focus the search field immediately so the user can start typing.
         // SafePointer guards against the rare case where the CallOutBox dismisses
         // this component before the 50ms timer fires (e.g. host window close).
         juce::Component::SafePointer<EnginePickerPopup> safeThis(this);
-        juce::Timer::callAfterDelay(50, [safeThis] {
-            if (safeThis != nullptr)
-                safeThis->searchField.grabKeyboardFocus();
-        });
+        juce::Timer::callAfterDelay(50,
+                                    [safeThis]
+                                    {
+                                        if (safeThis != nullptr)
+                                            safeThis->searchField.grabKeyboardFocus();
+                                    });
     }
 
     ~EnginePickerPopup() override
@@ -184,8 +163,7 @@ public:
     //==========================================================================
     int getNumRows() override { return (int)flatRows.size(); }
 
-    void paintListBoxItem(int row, juce::Graphics& g,
-                          int w, int h, bool isSelected) override
+    void paintListBoxItem(int row, juce::Graphics& g, int w, int h, bool isSelected) override
     {
         if (row < 0 || row >= (int)flatRows.size())
             return;
@@ -206,8 +184,7 @@ public:
             // Header label — uppercase, T3 tonal color with zone hue blended in
             g.setFont(GalleryFonts::label(8.0f));
             g.setColour(get(t3()).interpolatedWith(fr.headerColor, 0.35f));
-            g.drawText(fr.headerLabel.toUpperCase(), 10, 0, w - 14, h,
-                       juce::Justification::centredLeft, true);
+            g.drawText(fr.headerLabel.toUpperCase(), 10, 0, w - 14, h, juce::Justification::centredLeft, true);
             return;
         }
 
@@ -235,37 +212,25 @@ public:
         const int nameH = 16;
         g.setFont(GalleryFonts::display(11.0f));
         g.setColour(isSelected ? fr.accent : get(t1()));
-        g.drawText(fr.engineId.toUpperCase(),
-                   24, nameY, w - 74, nameH,
-                   juce::Justification::centredLeft, true);
+        g.drawText(fr.engineId.toUpperCase(), 24, nameY, w - 74, nameH, juce::Justification::centredLeft, true);
 
         // Archetype subtitle — below engine name, muted T3 color
         if (!fr.archetype.isEmpty())
         {
             g.setFont(GalleryFonts::body(8.0f));
             g.setColour(get(t3()).withAlpha(0.70f));
-            g.drawText(fr.archetype,
-                       24, nameY + nameH, w - 74, 11,
-                       juce::Justification::centredLeft, true);
+            g.drawText(fr.archetype, 24, nameY + nameH, w - 74, 11, juce::Justification::centredLeft, true);
         }
 
         // Category badge — right side, T4 muted mono (vertically centred in name row)
         g.setFont(GalleryFonts::value(8.0f));
         g.setColour(get(t4()));
-        g.drawText(fr.category,
-                   w - 66, nameY, 62, nameH,
-                   juce::Justification::centredRight, true);
+        g.drawText(fr.category, w - 66, nameY, 62, nameH, juce::Justification::centredRight, true);
     }
 
-    void listBoxItemClicked(int row, const juce::MouseEvent&) override
-    {
-        commitSelection(row);
-    }
+    void listBoxItemClicked(int row, const juce::MouseEvent&) override { commitSelection(row); }
 
-    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
-    {
-        commitSelection(row);
-    }
+    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override { commitSelection(row); }
 
     void selectedRowsChanged(int lastRowSelected) override
     {
@@ -278,14 +243,8 @@ public:
     // juce::TextEditor::Listener
     //==========================================================================
     void textEditorTextChanged(juce::TextEditor&) override { updateFilter(); }
-    void textEditorReturnKeyPressed(juce::TextEditor&) override
-    {
-        commitSelection(listBox.getSelectedRow());
-    }
-    void textEditorEscapeKeyPressed(juce::TextEditor&) override
-    {
-        dismissPopup();
-    }
+    void textEditorReturnKeyPressed(juce::TextEditor&) override { commitSelection(listBox.getSelectedRow()); }
+    void textEditorEscapeKeyPressed(juce::TextEditor&) override { dismissPopup(); }
 
     //==========================================================================
     // juce::KeyListener — arrow keys in search field navigate list
@@ -367,10 +326,10 @@ public:
         // Distribute pills evenly — "ALL" is slightly wider
         const int pillW = totalW / kNumCategories;
         for (int i = 0; i < kNumCategories; ++i)
-            catBtns[i].setBounds(pillRow.removeFromLeft(
-                (i < kNumCategories - 1) ? pillW
-                                          : pillRow.getWidth()) // last pill gets remainder
-                .reduced(1, 0));
+            catBtns[i].setBounds(
+                pillRow
+                    .removeFromLeft((i < kNumCategories - 1) ? pillW : pillRow.getWidth()) // last pill gets remainder
+                    .reduced(1, 0));
 
         b.removeFromTop(4);
 
@@ -383,14 +342,14 @@ private:
     // Internal flat row representation (engine rows + section headers)
     struct FlatRow
     {
-        bool       isSectionHeader = false;
+        bool isSectionHeader = false;
 
         // For engine rows
         juce::String engineId;
         juce::String category;
         juce::String archetype;
         juce::Colour accent;
-        int          depthZone = 0; // 0=Sunlit 1=Twilight 2=Midnight
+        int depthZone = 0; // 0=Sunlit 1=Twilight 2=Midnight
 
         // For section headers
         juce::String headerLabel;
@@ -402,10 +361,11 @@ private:
     struct EngineInfo
     {
         const char* id;
-        const char* category;   // "Synth" | "Percussion" | "Bass" | "Pad" | "String" | "Organ" | "Vocal" | "FX" | "Utility"
-        const char* archetype;  // one-line description shown in search
-        uint32_t    accentARGB;
-        int         depthZone;  // 0=Sunlit 1=Twilight 2=Midnight
+        const char*
+            category; // "Synth" | "Percussion" | "Bass" | "Pad" | "String" | "Organ" | "Vocal" | "FX" | "Utility"
+        const char* archetype; // one-line description shown in search
+        uint32_t accentARGB;
+        int depthZone; // 0=Sunlit 1=Twilight 2=Midnight
     };
 
     static const EngineInfo* engineMetadataTable()
@@ -538,19 +498,22 @@ private:
 
     juce::String categoryOf(const juce::String& engineId) const
     {
-        if (auto* m = metaFor(engineId)) return m->category;
+        if (auto* m = metaFor(engineId))
+            return m->category;
         return "Synth";
     }
 
     juce::String archetypeOf(const juce::String& engineId) const
     {
-        if (auto* m = metaFor(engineId)) return m->archetype;
+        if (auto* m = metaFor(engineId))
+            return m->archetype;
         return "";
     }
 
     int depthZoneOf(const juce::String& engineId) const
     {
-        if (auto* m = metaFor(engineId)) return m->depthZone;
+        if (auto* m = metaFor(engineId))
+            return m->depthZone;
         return 1; // default Twilight
     }
 
@@ -569,16 +532,18 @@ private:
 
     //==========================================================================
     // Search predicate
-    bool matchesQuery(const juce::String& engineId,
-                      const juce::String& category,
-                      const juce::String& archetype,
+    bool matchesQuery(const juce::String& engineId, const juce::String& category, const juce::String& archetype,
                       const juce::String& query) const
     {
-        if (query.isEmpty()) return true;
+        if (query.isEmpty())
+            return true;
         auto q = query.toLowerCase();
-        if (engineId.toLowerCase().contains(q)) return true;
-        if (category.toLowerCase().contains(q))  return true;
-        if (archetype.toLowerCase().contains(q)) return true;
+        if (engineId.toLowerCase().contains(q))
+            return true;
+        if (category.toLowerCase().contains(q))
+            return true;
+        if (archetype.toLowerCase().contains(q))
+            return true;
         return false;
     }
 
@@ -587,18 +552,19 @@ private:
     //   0=ALL  1=SYNTH  2=PERC  3=BASS  4=PAD  5=STRING  6=ORGAN  7=VOCAL  8=FX  9=UTILITY
     bool matchesCategory(const juce::String& category, int catFilter) const
     {
-        if (catFilter == 0) return true; // ALL
+        if (catFilter == 0)
+            return true; // ALL
         static const char* kFilterToCategory[] = {
-            "",          // 0 ALL
-            "Synth",     // 1
-            "Percussion",// 2
-            "Bass",      // 3
-            "Pad",       // 4
-            "String",    // 5
-            "Organ",     // 6
-            "Vocal",     // 7
-            "FX",        // 8
-            "Utility",   // 9
+            "",           // 0 ALL
+            "Synth",      // 1
+            "Percussion", // 2
+            "Bass",       // 3
+            "Pad",        // 4
+            "String",     // 5
+            "Organ",      // 6
+            "Vocal",      // 7
+            "FX",         // 8
+            "Utility",    // 9
         };
         return category == kFilterToCategory[catFilter];
     }
@@ -628,11 +594,13 @@ private:
 
         for (const auto& id : allEngineIds)
         {
-            auto cat  = categoryOf(id);
+            auto cat = categoryOf(id);
             auto arch = archetypeOf(id);
 
-            if (!matchesQuery(id, cat, arch, query))      continue;
-            if (!matchesCategory(cat, activeCategory))    continue;
+            if (!matchesQuery(id, cat, arch, query))
+                continue;
+            if (!matchesCategory(cat, activeCategory))
+                continue;
 
             int zone = depthZoneOf(id);
             zone = juce::jlimit(0, 2, zone);
@@ -643,13 +611,14 @@ private:
         int totalEngines = 0;
         for (int z = 0; z < 3; ++z)
         {
-            if (zones[z].isEmpty()) continue;
+            if (zones[z].isEmpty())
+                continue;
 
             // Section header row
             FlatRow hdr;
             hdr.isSectionHeader = true;
-            hdr.headerLabel     = kZoneLabels[z];
-            hdr.headerColor     = kZoneColors[z];
+            hdr.headerLabel = kZoneLabels[z];
+            hdr.headerColor = kZoneColors[z];
             flatRows.push_back(std::move(hdr));
 
             // Engine rows within this zone
@@ -657,11 +626,11 @@ private:
             {
                 FlatRow er;
                 er.isSectionHeader = false;
-                er.engineId        = id;
-                er.category        = categoryOf(id);
-                er.archetype       = archetypeOf(id);
-                er.accent          = GalleryColors::accentForEngine(id);
-                er.depthZone       = z;
+                er.engineId = id;
+                er.category = categoryOf(id);
+                er.archetype = archetypeOf(id);
+                er.accent = GalleryColors::accentForEngine(id);
+                er.depthZone = z;
                 flatRows.push_back(std::move(er));
                 ++totalEngines;
             }
@@ -685,8 +654,7 @@ private:
         emptyLabel.setVisible(isEmpty);
         listBox.setVisible(!isEmpty);
 
-        countLabel.setText(juce::String(totalEngines) + " engines",
-                           juce::dontSendNotification);
+        countLabel.setText(juce::String(totalEngines) + " engines", juce::dontSendNotification);
     }
 
     //==========================================================================
@@ -718,15 +686,10 @@ private:
     {
         using namespace GalleryColors;
         btn.setColour(juce::TextButton::buttonColourId,
-                      active ? get(xoGold).withAlpha(0.14f)
-                              : juce::Colour(0x00000000));
-        btn.setColour(juce::TextButton::textColourOffId,
-                      active ? get(xoGoldText())
-                              : get(t3()));
-        btn.setColour(juce::TextButton::textColourOnId,
-                      get(xoGoldText()));
-        btn.setColour(juce::TextButton::buttonOnColourId,
-                      get(xoGold).withAlpha(0.14f));
+                      active ? get(xoGold).withAlpha(0.14f) : juce::Colour(0x00000000));
+        btn.setColour(juce::TextButton::textColourOffId, active ? get(xoGoldText()) : get(t3()));
+        btn.setColour(juce::TextButton::textColourOnId, get(xoGoldText()));
+        btn.setColour(juce::TextButton::buttonOnColourId, get(xoGold).withAlpha(0.14f));
         btn.setToggleState(active, juce::dontSendNotification);
     }
 
@@ -749,11 +712,11 @@ private:
     PillButtonLookAndFeel pillLnF;
 
     // UI
-    juce::TextEditor  searchField;
-    juce::TextButton  catBtns[kNumCategories];
-    juce::ListBox     listBox;
-    juce::Label       countLabel;
-    juce::Label       emptyLabel;
+    juce::TextEditor searchField;
+    juce::TextButton catBtns[kNumCategories];
+    juce::ListBox listBox;
+    juce::Label countLabel;
+    juce::Label emptyLabel;
 
     int activeCategory = 0; // 0 = ALL
 

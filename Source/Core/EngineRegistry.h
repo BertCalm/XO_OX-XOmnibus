@@ -6,7 +6,8 @@
 #include <unordered_map>
 #include <array>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Factory function type for creating engine instances.
@@ -22,7 +23,8 @@ using EngineFactory = std::function<std::unique_ptr<SynthEngine>()>;
 // the editor only when all 4 primary slots contain engines from the same
 // Kitchen Collection quad. See detectCollection() below.
 //
-class EngineRegistry {
+class EngineRegistry
+{
 public:
     static constexpr int MaxSlots = 5;
     static constexpr float CrossfadeMs = 50.0f;
@@ -70,10 +72,7 @@ public:
         return ids;
     }
 
-    bool isRegistered(const std::string& id) const
-    {
-        return factories.count(id) > 0;
-    }
+    bool isRegistered(const std::string& id) const { return factories.count(id) > 0; }
 
     // ── Ghost Slot: Kitchen Collection detection ───────────────────────────
     //
@@ -100,18 +99,18 @@ public:
                 return {};
 
         // Collection membership tables — engine IDs normalised to uppercase.
-        struct Collection {
+        struct Collection
+        {
             const char* name;
             const char* members[4];
         };
-        static const Collection collections[] =
-        {
-            { "Chef",    { "OTO", "OCTAVE", "OLEG", "OTIS"                        } },
-            { "Kitchen", { "OVEN", "OCHRE", "OBELISK", "OPALINE"                  } },
-            { "Cellar",  { "OGRE", "OLATE", "OAKEN", "OMEGA"                      } },
-            { "Garden",  { "ORCHARD", "OVERGROW", "OSIER", "OXALIS"               } },
-            { "Broth",   { "OVERWASH", "OVERWORN", "OVERFLOW", "OVERCAST"         } },
-            { "Fusion",  { "OKEANOS", "ODDFELLOW", "ONKOLO", "OPCODE"             } },
+        static const Collection collections[] = {
+            {"Chef", {"OTO", "OCTAVE", "OLEG", "OTIS"}},
+            {"Kitchen", {"OVEN", "OCHRE", "OBELISK", "OPALINE"}},
+            {"Cellar", {"OGRE", "OLATE", "OAKEN", "OMEGA"}},
+            {"Garden", {"ORCHARD", "OVERGROW", "OSIER", "OXALIS"}},
+            {"Broth", {"OVERWASH", "OVERWORN", "OVERFLOW", "OVERCAST"}},
+            {"Fusion", {"OKEANOS", "ODDFELLOW", "ONKOLO", "OPCODE"}},
         };
 
         for (const auto& col : collections)
@@ -123,8 +122,16 @@ public:
                 const juce::String upper = slotId.toUpperCase();
                 bool found = false;
                 for (const char* member : col.members)
-                    if (upper == juce::String(member)) { found = true; break; }
-                if (!found) { allMatch = false; break; }
+                    if (upper == juce::String(member))
+                    {
+                        found = true;
+                        break;
+                    }
+                if (!found)
+                {
+                    allMatch = false;
+                    break;
+                }
             }
             if (allMatch)
                 return juce::String(col.name);

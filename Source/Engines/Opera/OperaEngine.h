@@ -42,13 +42,14 @@
 #include <algorithm>
 #include <atomic>
 
-namespace opera {
+namespace opera
+{
 
 //==============================================================================
 // Constants (shared ones from OperaConstants.h; engine-specific below)
 //==============================================================================
 
-static constexpr int   kNumCouplingTypes = 6;
+static constexpr int kNumCouplingTypes = 6;
 
 //==============================================================================
 // Modulation Destination Enum
@@ -56,14 +57,14 @@ static constexpr int   kNumCouplingTypes = 6;
 
 enum class ModDest : int
 {
-    Drama        = 0,
-    Voice        = 1,
-    Breath       = 2,
-    Effort       = 3,
-    Tilt         = 4,
+    Drama = 0,
+    Voice = 1,
+    Breath = 2,
+    Effort = 3,
+    Tilt = 4,
     FilterCutoff = 5,
-    VibDepth     = 6,
-    ResSens      = 7
+    VibDepth = 6,
+    ResSens = 7
 };
 
 //==============================================================================
@@ -72,19 +73,16 @@ enum class ModDest : int
 
 struct ModOffsets
 {
-    float drama        = 0.0f;
-    float voice        = 0.0f;
-    float breath       = 0.0f;
-    float effort       = 0.0f;
-    float tilt         = 0.0f;
-    float filterCutoff = 0.0f;   // in Hz
-    float vibDepth     = 0.0f;
-    float resSens      = 0.0f;
+    float drama = 0.0f;
+    float voice = 0.0f;
+    float breath = 0.0f;
+    float effort = 0.0f;
+    float tilt = 0.0f;
+    float filterCutoff = 0.0f; // in Hz
+    float vibDepth = 0.0f;
+    float resSens = 0.0f;
 
-    void clear() noexcept
-    {
-        drama = voice = breath = effort = tilt = filterCutoff = vibDepth = resSens = 0.0f;
-    }
+    void clear() noexcept { drama = voice = breath = effort = tilt = filterCutoff = vibDepth = resSens = 0.0f; }
 };
 
 //==============================================================================
@@ -94,30 +92,34 @@ struct ModOffsets
 
 struct OperaEnvelope
 {
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
+    enum class Stage
+    {
+        Idle,
+        Attack,
+        Decay,
+        Sustain,
+        Release
+    };
 
     Stage stage = Stage::Idle;
     float level = 0.0f;
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
         sr = sampleRate;
         recalcCoeffs();
     }
 
-    void setADSR (float attackSec, float decaySec, float sustainLevel, float releaseSec) noexcept
+    void setADSR(float attackSec, float decaySec, float sustainLevel, float releaseSec) noexcept
     {
-        atkTime = std::max (attackSec, 0.0001f);
-        decTime = std::max (decaySec, 0.001f);
-        susLvl  = std::clamp (sustainLevel, 0.0f, 1.0f);
-        relTime = std::max (releaseSec, 0.001f);
+        atkTime = std::max(attackSec, 0.0001f);
+        decTime = std::max(decaySec, 0.001f);
+        susLvl = std::clamp(sustainLevel, 0.0f, 1.0f);
+        relTime = std::max(releaseSec, 0.001f);
         recalcCoeffs();
     }
 
-    void trigger() noexcept
-    {
-        stage = Stage::Attack;
-    }
+    void trigger() noexcept { stage = Stage::Attack; }
 
     void triggerHard() noexcept
     {
@@ -141,28 +143,40 @@ struct OperaEnvelope
     {
         switch (stage)
         {
-            case Stage::Idle:
-                return 0.0f;
+        case Stage::Idle:
+            return 0.0f;
 
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
+        case Stage::Attack:
+            level += attackRate;
+            if (level >= 1.0f)
+            {
+                level = 1.0f;
+                stage = Stage::Decay;
+            }
+            return level;
 
-            case Stage::Decay:
-                level -= (level - susLvl) * decayCoeff;
-                level = flushDen (level);
-                if (level <= susLvl + 0.001f) { level = susLvl; stage = Stage::Sustain; }
-                return level;
+        case Stage::Decay:
+            level -= (level - susLvl) * decayCoeff;
+            level = flushDen(level);
+            if (level <= susLvl + 0.001f)
+            {
+                level = susLvl;
+                stage = Stage::Sustain;
+            }
+            return level;
 
-            case Stage::Sustain:
-                return level;
+        case Stage::Sustain:
+            return level;
 
-            case Stage::Release:
-                level -= level * releaseCoeff;
-                level = flushDen (level);
-                if (level < 1e-6f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
+        case Stage::Release:
+            level -= level * releaseCoeff;
+            level = flushDen(level);
+            if (level < 1e-6f)
+            {
+                level = 0.0f;
+                stage = Stage::Idle;
+            }
+            return level;
         }
         return 0.0f;
     }
@@ -178,17 +192,19 @@ private:
 
     void recalcCoeffs() noexcept
     {
-        if (sr <= 0.0f) return;
-        attackRate   = 1.0f / (sr * atkTime);
-        decayCoeff   = 1.0f - std::exp (-4.6f / (sr * decTime));
-        releaseCoeff = 1.0f - std::exp (-4.6f / (sr * relTime));
+        if (sr <= 0.0f)
+            return;
+        attackRate = 1.0f / (sr * atkTime);
+        decayCoeff = 1.0f - std::exp(-4.6f / (sr * decTime));
+        releaseCoeff = 1.0f - std::exp(-4.6f / (sr * relTime));
     }
 
-    static float flushDen (float x) noexcept
+    static float flushDen(float x) noexcept
     {
         uint32_t bits;
-        std::memcpy (&bits, &x, sizeof (bits));
-        if ((bits & 0x7F800000) == 0 && (bits & 0x007FFFFF) != 0) return 0.0f;
+        std::memcpy(&bits, &x, sizeof(bits));
+        if ((bits & 0x7F800000) == 0 && (bits & 0x007FFFFF) != 0)
+            return 0.0f;
         return x;
     }
 };
@@ -200,19 +216,17 @@ private:
 
 struct OperaLFO
 {
-    float phase    = 0.0f;
+    float phase = 0.0f;
     float phaseInc = 0.0f;
 
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / sampleRate;
-    }
+    void setRate(float hz, float sampleRate) noexcept { phaseInc = hz / sampleRate; }
 
     float process() noexcept
     {
-        float out = FastMath::fastSin (phase * kTwoPi);
+        float out = FastMath::fastSin(phase * kTwoPi);
         phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
+        if (phase >= 1.0f)
+            phase -= 1.0f;
         return out;
     }
 
@@ -231,13 +245,13 @@ struct OperaSVF
 
     // Cached SVF coefficients — recomputed only when cutoff/Q change by > 0.001.
     // Eliminates per-sample FastMath::fastTan calls (critical for iOS CPU budget).
-    float svfG_       = 0.0f;
-    float svfK_       = 0.0f;
-    float svfA1_      = 0.0f;
-    float svfA2_      = 0.0f;
-    float svfA3_      = 0.0f;
+    float svfG_ = 0.0f;
+    float svfK_ = 0.0f;
+    float svfA1_ = 0.0f;
+    float svfA2_ = 0.0f;
+    float svfA3_ = 0.0f;
     float lastCutoff_ = -1.0f;
-    float lastRes_    = -1.0f;
+    float lastRes_ = -1.0f;
 
     void reset() noexcept { ic1eq = ic2eq = 0.0f; }
 
@@ -246,23 +260,23 @@ struct OperaSVF
     /// 0.25×sampleRate. Saves ~16 std::tan calls/sample (2 SVFs × 8 voices).
     /// SRO (2026-03-22): block-rate coefficient cache — recompute only when cutoff
     /// or Q drift by > 0.001. Eliminates fastTan on iOS hot path.
-    float process (float input, float cutoffHz, float Q, float sampleRate) noexcept
+    float process(float input, float cutoffHz, float Q, float sampleRate) noexcept
     {
         // Clamp cutoff to prevent instability
-        cutoffHz = std::clamp (cutoffHz, 20.0f, sampleRate * 0.499f);
-        Q = std::max (Q, 0.5f);
+        cutoffHz = std::clamp(cutoffHz, 20.0f, sampleRate * 0.499f);
+        Q = std::max(Q, 0.5f);
 
         // Recompute g/k and derived coefficients only when parameters change.
-        if (std::abs (cutoffHz - lastCutoff_) > 0.001f || std::abs (Q - lastRes_) > 0.001f)
+        if (std::abs(cutoffHz - lastCutoff_) > 0.001f || std::abs(Q - lastRes_) > 0.001f)
         {
-            svfG_       = FastMath::fastTan (kPi * cutoffHz / sampleRate);
-            svfK_       = 1.0f / Q;
+            svfG_ = FastMath::fastTan(kPi * cutoffHz / sampleRate);
+            svfK_ = 1.0f / Q;
             float denom = 1.0f + svfG_ * (svfG_ + svfK_);
-            svfA1_      = 1.0f / std::max (denom, 1e-6f);
-            svfA2_      = svfG_ * svfA1_;
-            svfA3_      = svfG_ * svfA2_;
+            svfA1_ = 1.0f / std::max(denom, 1e-6f);
+            svfA2_ = svfG_ * svfA1_;
+            svfA3_ = svfG_ * svfA2_;
             lastCutoff_ = cutoffHz;
-            lastRes_    = Q;
+            lastRes_ = Q;
         }
 
         const float a1 = svfA1_;
@@ -278,12 +292,14 @@ struct OperaSVF
 
         // Flush denormals
         uint32_t b1, b2;
-        std::memcpy (&b1, &ic1eq, sizeof (b1));
-        std::memcpy (&b2, &ic2eq, sizeof (b2));
-        if ((b1 & 0x7F800000) == 0 && (b1 & 0x007FFFFF) != 0) ic1eq = 0.0f;
-        if ((b2 & 0x7F800000) == 0 && (b2 & 0x007FFFFF) != 0) ic2eq = 0.0f;
+        std::memcpy(&b1, &ic1eq, sizeof(b1));
+        std::memcpy(&b2, &ic2eq, sizeof(b2));
+        if ((b1 & 0x7F800000) == 0 && (b1 & 0x007FFFFF) != 0)
+            ic1eq = 0.0f;
+        if ((b2 & 0x7F800000) == 0 && (b2 & 0x007FFFFF) != 0)
+            ic2eq = 0.0f;
 
-        return v2;  // lowpass output
+        return v2; // lowpass output
     }
 };
 
@@ -293,16 +309,22 @@ struct OperaSVF
 
 struct OperaVoice
 {
-    enum class State { Idle, Attack, Sustain, Release };
+    enum class State
+    {
+        Idle,
+        Attack,
+        Sustain,
+        Release
+    };
 
-    State  state       = State::Idle;
-    int    note        = -1;
-    float  velocity    = 0.0f;
+    State state = State::Idle;
+    int note = -1;
+    float velocity = 0.0f;
     uint64_t startTime = 0;
 
     // DSP modules
     OperaPartialBank partialBank;
-    KuramotoField    kuramotoField;
+    KuramotoField kuramotoField;
     OperaBreathEngine breathEngine;
 
     // Envelopes
@@ -314,8 +336,8 @@ struct OperaVoice
     OperaSVF filterR;
 
     // Portamento glide state
-    float targetFreq  = 440.0f;   // frequency the voice is gliding TO
-    float currentFreq = 440.0f;   // frequency currently used for rendering (glides toward targetFreq)
+    float targetFreq = 440.0f;  // frequency the voice is gliding TO
+    float currentFreq = 440.0f; // frequency currently used for rendering (glides toward targetFreq)
 
     // Vibrato phase (per-voice for detuned vibrato in unison)
     float vibratoPhase = 0.0f;
@@ -332,17 +354,17 @@ struct OperaVoice
     // updates, and rebuilt immediately before the next partial render loop.
     // Unison layers are indexed in the second dimension (0..3).
     // Savings: ~448 trig calls/sample eliminated (7/8 of 512) → ~30-40% CPU.
-    float cachedPanL[kMaxPartials][4] = {};  // [partialIdx][unisonLayer]
-    float cachedPanR[kMaxPartials][4] = {};  // [partialIdx][unisonLayer]
-    bool  panCacheValid = false;
+    float cachedPanL[kMaxPartials][4] = {}; // [partialIdx][unisonLayer]
+    float cachedPanR[kMaxPartials][4] = {}; // [partialIdx][unisonLayer]
+    bool panCacheValid = false;
 
-    inline void prepare (float sampleRate) noexcept
+    inline void prepare(float sampleRate) noexcept
     {
-        partialBank.prepare (sampleRate);
-        kuramotoField.prepare (static_cast<double> (sampleRate), kMaxPartials);
-        breathEngine.prepare (static_cast<double> (sampleRate));
-        ampEnv.prepare (sampleRate);
-        filterEnv.prepare (sampleRate);
+        partialBank.prepare(sampleRate);
+        kuramotoField.prepare(static_cast<double>(sampleRate), kMaxPartials);
+        breathEngine.prepare(static_cast<double>(sampleRate));
+        ampEnv.prepare(sampleRate);
+        filterEnv.prepare(sampleRate);
         filterL.reset();
         filterR.reset();
         vibratoPhase = 0.0f;
@@ -351,9 +373,9 @@ struct OperaVoice
     inline void resetFull() noexcept
     {
         state = State::Idle;
-        note  = -1;
+        note = -1;
         velocity = 0.0f;
-        targetFreq  = 440.0f;
+        targetFreq = 440.0f;
         currentFreq = 440.0f;
         partialBank.reset();
         kuramotoField.reset();
@@ -363,7 +385,7 @@ struct OperaVoice
         filterL.reset();
         filterR.reset();
         vibratoPhase = 0.0f;
-        std::memset (couplingTap, 0, sizeof (couplingTap));
+        std::memset(couplingTap, 0, sizeof(couplingTap));
         panCacheValid = false;
     }
 };
@@ -376,67 +398,67 @@ struct OperaVoice
 struct ParamSnapshot
 {
     // Core synthesis (18)
-    float drama          = 0.35f;
-    float voice          = 0.5f;
-    int   vowelA         = 0;
-    int   vowelB         = 3;
-    float breath         = 0.2f;
-    float effort         = 0.5f;
-    int   partials       = 32;
-    float detune         = 0.1f;
-    float tilt           = 0.0f;
-    int   fundamental    = 0;
-    float resSens        = 0.5f;
-    float portamento     = 0.0f;
-    int   unison         = 1;
-    float width          = 0.5f;
-    float vibRate        = 5.5f;
-    float vibDepth       = 0.25f;
-    float stage          = 0.3f;
-    float responseSpeed  = 0.5f;
+    float drama = 0.35f;
+    float voice = 0.5f;
+    int vowelA = 0;
+    int vowelB = 3;
+    float breath = 0.2f;
+    float effort = 0.5f;
+    int partials = 32;
+    float detune = 0.1f;
+    float tilt = 0.0f;
+    int fundamental = 0;
+    float resSens = 0.5f;
+    float portamento = 0.0f;
+    int unison = 1;
+    float width = 0.5f;
+    float vibRate = 5.5f;
+    float vibDepth = 0.25f;
+    float stage = 0.3f;
+    float responseSpeed = 0.5f;
 
     // Filter (6)
-    float filterCutoff   = 8000.0f;
-    float filterRes      = 0.0f;
-    float filterEnvAmt   = 0.3f;
-    float filterA        = 0.01f;
-    float filterD        = 0.3f;
-    float filterS        = 0.5f;
-    float filterR        = 0.4f;
+    float filterCutoff = 8000.0f;
+    float filterRes = 0.0f;
+    float filterEnvAmt = 0.3f;
+    float filterA = 0.01f;
+    float filterD = 0.3f;
+    float filterS = 0.5f;
+    float filterR = 0.4f;
 
     // Amp envelope (4)
-    float ampA           = 0.05f;
-    float ampD           = 0.2f;
-    float ampS           = 0.8f;
-    float ampR           = 0.6f;
+    float ampA = 0.05f;
+    float ampD = 0.2f;
+    float ampS = 0.8f;
+    float ampR = 0.6f;
 
     // LFOs (6)
-    float lfo1Rate       = 0.1f;
-    float lfo1Depth      = 0.3f;
-    int   lfo1Dest       = 1;
-    float lfo2Rate       = 3.0f;
-    float lfo2Depth      = 0.0f;
-    int   lfo2Dest       = 0;
+    float lfo1Rate = 0.1f;
+    float lfo1Depth = 0.3f;
+    int lfo1Dest = 1;
+    float lfo2Rate = 3.0f;
+    float lfo2Depth = 0.0f;
+    int lfo2Dest = 0;
 
     // Conductor (4)
-    int   arcMode        = 1;  // 1 = Conductor on (matches APVTS default)
-    int   arcShape       = 1;
-    float arcTime        = 8.0f;
-    float arcPeak        = 0.8f;
+    int arcMode = 1; // 1 = Conductor on (matches APVTS default)
+    int arcShape = 1;
+    float arcTime = 8.0f;
+    float arcPeak = 0.8f;
 
     // Expression routing (6)
-    int   modWheelDest   = 0;
-    float modWheelAmt    = 0.5f;
-    int   atDest         = 3;
-    float atAmt          = 0.5f;
-    float velToFilter    = 0.4f;
-    float velToEffort    = 0.3f;
+    int modWheelDest = 0;
+    float modWheelAmt = 0.5f;
+    int atDest = 3;
+    float atAmt = 0.5f;
+    float velToFilter = 0.4f;
+    float velToEffort = 0.3f;
 
     // D002 Standard Macros (4)
-    float macroCharacter = 0.5f;  // M1: drama sweep (Kuramoto coupling strength)
-    float macroMovement  = 0.5f;  // M2: LFO1 rate boost
-    float macroCoupling  = 0.5f;  // M3: coupling send level
-    float macroSpace     = 0.5f;  // M4: filter cutoff sweep (spectral openness)
+    float macroCharacter = 0.5f; // M1: drama sweep (Kuramoto coupling strength)
+    float macroMovement = 0.5f;  // M2: LFO1 rate boost
+    float macroCoupling = 0.5f;  // M3: coupling send level
+    float macroSpace = 0.5f;     // M4: filter cutoff sweep (spectral openness)
 };
 
 //==============================================================================
@@ -454,52 +476,49 @@ public:
 
     juce::Colour getAccentColour() const
     {
-        return juce::Colour (0xFFD4AF37);  // Aria Gold
+        return juce::Colour(0xFFD4AF37); // Aria Gold
     }
 
     int getMaxVoices() const { return kMaxVoices; }
 
-    int getActiveVoiceCount() const
-    {
-        return activeVoiceCount_.load (std::memory_order_relaxed);
-    }
+    int getActiveVoiceCount() const { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
     //==========================================================================
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int maxBlockSize)
+    void prepare(double sampleRate, int maxBlockSize)
     {
-        sr_        = static_cast<float> (sampleRate);
-        invSr_     = 1.0f / sr_;
-        blockSize_ = std::min (maxBlockSize, kMaxBlockSize);
+        sr_ = static_cast<float>(sampleRate);
+        invSr_ = 1.0f / sr_;
+        blockSize_ = std::min(maxBlockSize, kMaxBlockSize);
 
         for (auto& v : voices_)
         {
-            v.prepare (sr_);
+            v.prepare(sr_);
             v.resetFull();
         }
 
         lfo1_.reset();
         lfo2_.reset();
         vibratoLFO_.reset();
-        conductor_.prepare (sampleRate);
-        reactiveStage_.prepare (sampleRate, blockSize_);
+        conductor_.prepare(sampleRate);
+        reactiveStage_.prepare(sampleRate, blockSize_);
 
-        modWheelValue_  = 0.0f;
+        modWheelValue_ = 0.0f;
         aftertouchValue_ = 0.0f;
         pitchBendSemitones_ = 0.0f;
         voiceCounter_ = 0;
 
         // Clear coupling buffers
-        std::memset (couplingCacheL_, 0, sizeof (couplingCacheL_));
-        std::memset (couplingCacheR_, 0, sizeof (couplingCacheR_));
-        std::memset (couplingFMBuffer_, 0, sizeof (couplingFMBuffer_));
-        std::memset (couplingRingBuffer_, 0, sizeof (couplingRingBuffer_));
-        std::memset (couplingFilterBuffer_, 0, sizeof (couplingFilterBuffer_));
-        std::memset (couplingMorphBuffer_, 0, sizeof (couplingMorphBuffer_));
-        std::memset (couplingKBuffer_, 0, sizeof (couplingKBuffer_));
-        std::memset (couplingPhaseBuffer_, 0, sizeof (couplingPhaseBuffer_));
+        std::memset(couplingCacheL_, 0, sizeof(couplingCacheL_));
+        std::memset(couplingCacheR_, 0, sizeof(couplingCacheR_));
+        std::memset(couplingFMBuffer_, 0, sizeof(couplingFMBuffer_));
+        std::memset(couplingRingBuffer_, 0, sizeof(couplingRingBuffer_));
+        std::memset(couplingFilterBuffer_, 0, sizeof(couplingFilterBuffer_));
+        std::memset(couplingMorphBuffer_, 0, sizeof(couplingMorphBuffer_));
+        std::memset(couplingKBuffer_, 0, sizeof(couplingKBuffer_));
+        std::memset(couplingPhaseBuffer_, 0, sizeof(couplingPhaseBuffer_));
     }
 
     void releaseResources()
@@ -535,289 +554,244 @@ public:
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
         addParametersImpl(params);
-        return { params.begin(), params.end() };
+        return {params.begin(), params.end()};
     }
 
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using FloatParam = juce::AudioParameterFloat;
-        using IntParam   = juce::AudioParameterInt;
+        using IntParam = juce::AudioParameterInt;
         using NR = juce::NormalisableRange<float>;
 
         // --- Core Synthesis (18) ---
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_drama", 1), "Drama",
-            NR (0.0f, 1.0f, 0.001f), 0.35f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_drama", 1), "Drama", NR(0.0f, 1.0f, 0.001f), 0.35f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_voice", 1), "Voice",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_voice", 1), "Voice", NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_vowelA", 1), "Vowel A", 0, 5, 0));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_vowelA", 1), "Vowel A", 0, 5, 0));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_vowelB", 1), "Vowel B", 0, 5, 3));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_vowelB", 1), "Vowel B", 0, 5, 3));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_breath", 1), "Breath",
-            NR (0.0f, 1.0f, 0.001f), 0.2f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_breath", 1), "Breath", NR(0.0f, 1.0f, 0.001f), 0.2f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_effort", 1), "Effort",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_effort", 1), "Effort", NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_partials", 1), "Partials", 4, 48, 32));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_partials", 1), "Partials", 4, 48, 32));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_detune", 1), "Detune",
-            NR (0.0f, 1.0f, 0.001f), 0.1f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_detune", 1), "Detune", NR(0.0f, 1.0f, 0.001f), 0.1f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_tilt", 1), "Spectral Tilt",
-            NR (-1.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_tilt", 1), "Spectral Tilt",
+                                                      NR(-1.0f, 1.0f, 0.001f), 0.0f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_fundamental", 1), "Fundamental", -36, 36, 0));
+        params.push_back(
+            std::make_unique<IntParam>(juce::ParameterID("opera_fundamental", 1), "Fundamental", -36, 36, 0));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_resSens", 1), "Resonance Sens",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_resSens", 1), "Resonance Sens",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_portamento", 1), "Portamento",
-            NR (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_portamento", 1), "Portamento",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.0f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_unison", 1), "Unison", 1, 4, 1));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_unison", 1), "Unison", 1, 4, 1));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_width", 1), "Stereo Width",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_width", 1), "Stereo Width",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_vibRate", 1), "Vibrato Rate",
-            NR (0.01f, 20.0f, 0.01f), 5.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_vibRate", 1), "Vibrato Rate",
+                                                      NR(0.01f, 20.0f, 0.01f), 5.5f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_vibDepth", 1), "Vibrato Depth",
-            NR (0.0f, 1.0f, 0.001f), 0.25f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_vibDepth", 1), "Vibrato Depth",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.25f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_stage", 1), "Stage",
-            NR (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_stage", 1), "Stage", NR(0.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_responseSpeed", 1), "Response Speed",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_responseSpeed", 1), "Response Speed",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
         // --- Filter (7) ---
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterCutoff", 1), "Filter Cutoff",
-            NR (20.0f, 20000.0f, 1.0f, 0.3f), 8000.0f));  // skew 0.3 for log feel
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterCutoff", 1), "Filter Cutoff",
+                                                      NR(20.0f, 20000.0f, 1.0f, 0.3f),
+                                                      8000.0f)); // skew 0.3 for log feel
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterRes", 1), "Filter Resonance",
-            NR (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterRes", 1), "Filter Resonance",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.0f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterEnvAmt", 1), "Filter Env Amt",
-            NR (-1.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterEnvAmt", 1), "Filter Env Amt",
+                                                      NR(-1.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterA", 1), "Filter Attack",
-            NR (0.0f, 1.0f, 0.001f), 0.01f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterA", 1), "Filter Attack",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.01f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterD", 1), "Filter Decay",
-            NR (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterD", 1), "Filter Decay",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterS", 1), "Filter Sustain",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterS", 1), "Filter Sustain",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_filterR", 1), "Filter Release",
-            NR (0.0f, 1.0f, 0.001f), 0.4f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_filterR", 1), "Filter Release",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.4f));
 
         // --- Amp Envelope (4) ---
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_ampA", 1), "Amp Attack",
-            NR (0.0f, 1.0f, 0.001f), 0.05f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_ampA", 1), "Amp Attack",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.05f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_ampD", 1), "Amp Decay",
-            NR (0.0f, 1.0f, 0.001f), 0.2f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_ampD", 1), "Amp Decay",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.2f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_ampS", 1), "Amp Sustain",
-            NR (0.0f, 1.0f, 0.001f), 0.8f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_ampS", 1), "Amp Sustain",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.8f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_ampR", 1), "Amp Release",
-            NR (0.0f, 2.0f, 0.001f), 0.6f));  // 2.0 → ~80s via cubic scale; supports long-tail Flux presets
+        params.push_back(
+            std::make_unique<FloatParam>(juce::ParameterID("opera_ampR", 1), "Amp Release", NR(0.0f, 2.0f, 0.001f),
+                                         0.6f)); // 2.0 → ~80s via cubic scale; supports long-tail Flux presets
 
         // --- LFOs (6) ---
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_lfo1Rate", 1), "LFO1 Rate",
-            NR (0.01f, 30.0f, 0.01f), 0.1f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_lfo1Rate", 1), "LFO1 Rate",
+                                                      NR(0.01f, 30.0f, 0.01f), 0.1f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_lfo1Depth", 1), "LFO1 Depth",
-            NR (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_lfo1Depth", 1), "LFO1 Depth",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_lfo1Dest", 1), "LFO1 Dest", 0, 7, 1));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_lfo1Dest", 1), "LFO1 Dest", 0, 7, 1));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_lfo2Rate", 1), "LFO2 Rate",
-            NR (0.01f, 30.0f, 0.01f), 3.0f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_lfo2Rate", 1), "LFO2 Rate",
+                                                      NR(0.01f, 30.0f, 0.01f), 3.0f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_lfo2Depth", 1), "LFO2 Depth",
-            NR (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_lfo2Depth", 1), "LFO2 Depth",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.0f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_lfo2Dest", 1), "LFO2 Dest", 0, 7, 0));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_lfo2Dest", 1), "LFO2 Dest", 0, 7, 0));
 
         // --- Conductor (4) ---
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_arcMode", 1), "Arc Mode", 0, 2, 1));  // default=1: Conductor on
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_arcMode", 1), "Arc Mode", 0, 2,
+                                                    1)); // default=1: Conductor on
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_arcShape", 1), "Arc Shape", 0, 3, 1));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_arcShape", 1), "Arc Shape", 0, 3, 1));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_arcTime", 1), "Arc Time",
-            NR (0.5f, 3600.0f, 0.1f), 8.0f));  // extended to 3600s for Schulze-scale arcs
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_arcTime", 1), "Arc Time",
+                                                      NR(0.5f, 3600.0f, 0.1f),
+                                                      8.0f)); // extended to 3600s for Schulze-scale arcs
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_arcPeak", 1), "Arc Peak",
-            NR (0.0f, 1.0f, 0.001f), 0.8f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_arcPeak", 1), "Arc Peak",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.8f));
 
         // --- Expression Routing (6) ---
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_modWheelDest", 1), "MW Dest", 0, 7, 0));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_modWheelDest", 1), "MW Dest", 0, 7, 0));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_modWheelAmt", 1), "MW Amount",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_modWheelAmt", 1), "MW Amount",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_atDest", 1), "AT Dest", 0, 7, 3));
+        params.push_back(std::make_unique<IntParam>(juce::ParameterID("opera_atDest", 1), "AT Dest", 0, 7, 3));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_atAmt", 1), "AT Amount",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_atAmt", 1), "AT Amount",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_velToFilter", 1), "Vel->Filter",
-            NR (0.0f, 1.0f, 0.001f), 0.4f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_velToFilter", 1), "Vel->Filter",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.4f));
 
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_velToEffort", 1), "Vel->Effort",
-            NR (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_velToEffort", 1), "Vel->Effort",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.3f));
 
         // --- D002 Standard Macros (M1-M4) ---
         // CHARACTER (M1): sweeps drama (Kuramoto coupling strength / timbral intensity)
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_macroCharacter", 1), "Opera Macro CHARACTER",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_macroCharacter", 1),
+                                                      "Opera Macro CHARACTER", NR(0.0f, 1.0f, 0.001f), 0.5f));
         // MOVEMENT (M2): boosts LFO1 rate for expressive motion
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_macroMovement", 1), "Opera Macro MOVEMENT",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_macroMovement", 1),
+                                                      "Opera Macro MOVEMENT", NR(0.0f, 1.0f, 0.001f), 0.5f));
         // COUPLING (M3): scales coupling send level (standard PlaySurface target)
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_macroCoupling", 1), "Opera Macro COUPLING",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_macroCoupling", 1),
+                                                      "Opera Macro COUPLING", NR(0.0f, 1.0f, 0.001f), 0.5f));
         // SPACE (M4): sweeps filter cutoff for spatial openness
-        params.push_back (std::make_unique<FloatParam> (
-            juce::ParameterID ("opera_macroSpace", 1), "Opera Macro SPACE",
-            NR (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<FloatParam>(juce::ParameterID("opera_macroSpace", 1), "Opera Macro SPACE",
+                                                      NR(0.0f, 1.0f, 0.001f), 0.5f));
     }
 
     //==========================================================================
     // Attach raw parameter pointers from the shared APVTS
     //==========================================================================
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts)
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts)
     {
         // Core synthesis
-        p_drama         = apvts.getRawParameterValue ("opera_drama");
-        p_voice         = apvts.getRawParameterValue ("opera_voice");
-        p_vowelA        = apvts.getRawParameterValue ("opera_vowelA");
-        p_vowelB        = apvts.getRawParameterValue ("opera_vowelB");
-        p_breath        = apvts.getRawParameterValue ("opera_breath");
-        p_effort        = apvts.getRawParameterValue ("opera_effort");
-        p_partials      = apvts.getRawParameterValue ("opera_partials");
-        p_detune        = apvts.getRawParameterValue ("opera_detune");
-        p_tilt          = apvts.getRawParameterValue ("opera_tilt");
-        p_fundamental   = apvts.getRawParameterValue ("opera_fundamental");
-        p_resSens       = apvts.getRawParameterValue ("opera_resSens");
-        p_portamento    = apvts.getRawParameterValue ("opera_portamento");
-        p_unison        = apvts.getRawParameterValue ("opera_unison");
-        p_width         = apvts.getRawParameterValue ("opera_width");
-        p_vibRate       = apvts.getRawParameterValue ("opera_vibRate");
-        p_vibDepth      = apvts.getRawParameterValue ("opera_vibDepth");
-        p_stage         = apvts.getRawParameterValue ("opera_stage");
-        p_responseSpeed = apvts.getRawParameterValue ("opera_responseSpeed");
+        p_drama = apvts.getRawParameterValue("opera_drama");
+        p_voice = apvts.getRawParameterValue("opera_voice");
+        p_vowelA = apvts.getRawParameterValue("opera_vowelA");
+        p_vowelB = apvts.getRawParameterValue("opera_vowelB");
+        p_breath = apvts.getRawParameterValue("opera_breath");
+        p_effort = apvts.getRawParameterValue("opera_effort");
+        p_partials = apvts.getRawParameterValue("opera_partials");
+        p_detune = apvts.getRawParameterValue("opera_detune");
+        p_tilt = apvts.getRawParameterValue("opera_tilt");
+        p_fundamental = apvts.getRawParameterValue("opera_fundamental");
+        p_resSens = apvts.getRawParameterValue("opera_resSens");
+        p_portamento = apvts.getRawParameterValue("opera_portamento");
+        p_unison = apvts.getRawParameterValue("opera_unison");
+        p_width = apvts.getRawParameterValue("opera_width");
+        p_vibRate = apvts.getRawParameterValue("opera_vibRate");
+        p_vibDepth = apvts.getRawParameterValue("opera_vibDepth");
+        p_stage = apvts.getRawParameterValue("opera_stage");
+        p_responseSpeed = apvts.getRawParameterValue("opera_responseSpeed");
 
         // Filter
-        p_filterCutoff  = apvts.getRawParameterValue ("opera_filterCutoff");
-        p_filterRes     = apvts.getRawParameterValue ("opera_filterRes");
-        p_filterEnvAmt  = apvts.getRawParameterValue ("opera_filterEnvAmt");
-        p_filterA       = apvts.getRawParameterValue ("opera_filterA");
-        p_filterD       = apvts.getRawParameterValue ("opera_filterD");
-        p_filterS       = apvts.getRawParameterValue ("opera_filterS");
-        p_filterR       = apvts.getRawParameterValue ("opera_filterR");
+        p_filterCutoff = apvts.getRawParameterValue("opera_filterCutoff");
+        p_filterRes = apvts.getRawParameterValue("opera_filterRes");
+        p_filterEnvAmt = apvts.getRawParameterValue("opera_filterEnvAmt");
+        p_filterA = apvts.getRawParameterValue("opera_filterA");
+        p_filterD = apvts.getRawParameterValue("opera_filterD");
+        p_filterS = apvts.getRawParameterValue("opera_filterS");
+        p_filterR = apvts.getRawParameterValue("opera_filterR");
 
         // Amp envelope
-        p_ampA          = apvts.getRawParameterValue ("opera_ampA");
-        p_ampD          = apvts.getRawParameterValue ("opera_ampD");
-        p_ampS          = apvts.getRawParameterValue ("opera_ampS");
-        p_ampR          = apvts.getRawParameterValue ("opera_ampR");
+        p_ampA = apvts.getRawParameterValue("opera_ampA");
+        p_ampD = apvts.getRawParameterValue("opera_ampD");
+        p_ampS = apvts.getRawParameterValue("opera_ampS");
+        p_ampR = apvts.getRawParameterValue("opera_ampR");
 
         // LFOs
-        p_lfo1Rate      = apvts.getRawParameterValue ("opera_lfo1Rate");
-        p_lfo1Depth     = apvts.getRawParameterValue ("opera_lfo1Depth");
-        p_lfo1Dest      = apvts.getRawParameterValue ("opera_lfo1Dest");
-        p_lfo2Rate      = apvts.getRawParameterValue ("opera_lfo2Rate");
-        p_lfo2Depth     = apvts.getRawParameterValue ("opera_lfo2Depth");
-        p_lfo2Dest      = apvts.getRawParameterValue ("opera_lfo2Dest");
+        p_lfo1Rate = apvts.getRawParameterValue("opera_lfo1Rate");
+        p_lfo1Depth = apvts.getRawParameterValue("opera_lfo1Depth");
+        p_lfo1Dest = apvts.getRawParameterValue("opera_lfo1Dest");
+        p_lfo2Rate = apvts.getRawParameterValue("opera_lfo2Rate");
+        p_lfo2Depth = apvts.getRawParameterValue("opera_lfo2Depth");
+        p_lfo2Dest = apvts.getRawParameterValue("opera_lfo2Dest");
 
         // Conductor
-        p_arcMode       = apvts.getRawParameterValue ("opera_arcMode");
-        p_arcShape      = apvts.getRawParameterValue ("opera_arcShape");
-        p_arcTime       = apvts.getRawParameterValue ("opera_arcTime");
-        p_arcPeak       = apvts.getRawParameterValue ("opera_arcPeak");
+        p_arcMode = apvts.getRawParameterValue("opera_arcMode");
+        p_arcShape = apvts.getRawParameterValue("opera_arcShape");
+        p_arcTime = apvts.getRawParameterValue("opera_arcTime");
+        p_arcPeak = apvts.getRawParameterValue("opera_arcPeak");
 
         // Expression routing
-        p_modWheelDest  = apvts.getRawParameterValue ("opera_modWheelDest");
-        p_modWheelAmt   = apvts.getRawParameterValue ("opera_modWheelAmt");
-        p_atDest        = apvts.getRawParameterValue ("opera_atDest");
-        p_atAmt         = apvts.getRawParameterValue ("opera_atAmt");
-        p_velToFilter   = apvts.getRawParameterValue ("opera_velToFilter");
-        p_velToEffort   = apvts.getRawParameterValue ("opera_velToEffort");
-        p_macroCharacter = apvts.getRawParameterValue ("opera_macroCharacter");
-        p_macroMovement  = apvts.getRawParameterValue ("opera_macroMovement");
-        p_macroCoupling  = apvts.getRawParameterValue ("opera_macroCoupling");
-        p_macroSpace     = apvts.getRawParameterValue ("opera_macroSpace");
+        p_modWheelDest = apvts.getRawParameterValue("opera_modWheelDest");
+        p_modWheelAmt = apvts.getRawParameterValue("opera_modWheelAmt");
+        p_atDest = apvts.getRawParameterValue("opera_atDest");
+        p_atAmt = apvts.getRawParameterValue("opera_atAmt");
+        p_velToFilter = apvts.getRawParameterValue("opera_velToFilter");
+        p_velToEffort = apvts.getRawParameterValue("opera_velToEffort");
+        p_macroCharacter = apvts.getRawParameterValue("opera_macroCharacter");
+        p_macroMovement = apvts.getRawParameterValue("opera_macroMovement");
+        p_macroCoupling = apvts.getRawParameterValue("opera_macroCoupling");
+        p_macroSpace = apvts.getRawParameterValue("opera_macroSpace");
     }
 
     //==========================================================================
     // renderBlock — The main audio rendering entry point.
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer,
-                      juce::MidiBuffer& midi,
-                      int numSamples)
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples)
     {
         juce::ScopedNoDenormals noDenormals;
 
-        numSamples = std::min (numSamples, blockSize_);
-        if (numSamples <= 0) return;
+        numSamples = std::min(numSamples, blockSize_);
+        if (numSamples <= 0)
+            return;
 
         // ------------------------------------------------------------------
         // STEP 1: Process MIDI events
@@ -828,18 +802,17 @@ public:
 
             if (msg.isNoteOn())
             {
-                handleNoteOn (msg.getNoteNumber(),
-                              static_cast<float> (msg.getVelocity()) / 127.0f);
+                handleNoteOn(msg.getNoteNumber(), static_cast<float>(msg.getVelocity()) / 127.0f);
             }
             else if (msg.isNoteOff())
             {
-                handleNoteOff (msg.getNoteNumber());
+                handleNoteOff(msg.getNoteNumber());
             }
-            else if (msg.isControllerOfType (1))   // Mod Wheel
+            else if (msg.isControllerOfType(1)) // Mod Wheel
             {
-                modWheelValue_ = static_cast<float> (msg.getControllerValue()) / 127.0f;
+                modWheelValue_ = static_cast<float>(msg.getControllerValue()) / 127.0f;
             }
-            else if (msg.isControllerOfType (20))  // Conductor trigger
+            else if (msg.isControllerOfType(20)) // Conductor trigger
             {
                 if (msg.getControllerValue() > 63)
                     conductor_.trigger();
@@ -848,13 +821,13 @@ public:
             }
             else if (msg.isChannelPressure())
             {
-                aftertouchValue_ = static_cast<float> (msg.getChannelPressureValue()) / 127.0f;
+                aftertouchValue_ = static_cast<float>(msg.getChannelPressureValue()) / 127.0f;
             }
             else if (msg.isPitchWheel())
             {
                 // Pitch bend: +/- 2 semitones (standard)
-                int bendValue = msg.getPitchWheelValue();  // 0..16383, center = 8192
-                pitchBendSemitones_ = (static_cast<float> (bendValue) - 8192.0f) / 8192.0f * 2.0f;
+                int bendValue = msg.getPitchWheelValue(); // 0..16383, center = 8192
+                pitchBendSemitones_ = (static_cast<float>(bendValue) - 8192.0f) / 8192.0f * 2.0f;
             }
         }
 
@@ -870,54 +843,54 @@ public:
         // M3 COUPLING:  coupling send level (stored; used by coupling output path)
         // M4 SPACE:     filter cutoff offset ±5000 Hz
         // ------------------------------------------------------------------
-        snap_.drama       = std::clamp (snap_.drama       + (snap_.macroCharacter - 0.5f) * 0.8f,  0.0f, 1.0f);
-        snap_.lfo1Rate    = std::clamp (snap_.lfo1Rate    * std::pow (4.0f, snap_.macroMovement - 0.5f), 0.01f, 20.0f);
-        snap_.filterCutoff = std::clamp (snap_.filterCutoff + (snap_.macroSpace - 0.5f) * 10000.0f, 20.0f, 20000.0f);
+        snap_.drama = std::clamp(snap_.drama + (snap_.macroCharacter - 0.5f) * 0.8f, 0.0f, 1.0f);
+        snap_.lfo1Rate = std::clamp(snap_.lfo1Rate * std::pow(4.0f, snap_.macroMovement - 0.5f), 0.01f, 20.0f);
+        snap_.filterCutoff = std::clamp(snap_.filterCutoff + (snap_.macroSpace - 0.5f) * 10000.0f, 20.0f, 20000.0f);
         // macroCoupling (M3) is used by the coupling output read path; no snap modification needed.
 
         // ------------------------------------------------------------------
         // STEP 3: Configure LFOs for this block
         // ------------------------------------------------------------------
-        lfo1_.setRate (snap_.lfo1Rate, sr_);
-        lfo2_.setRate (snap_.lfo2Rate, sr_);
-        vibratoLFO_.setRate (snap_.vibRate, sr_);
+        lfo1_.setRate(snap_.lfo1Rate, sr_);
+        lfo2_.setRate(snap_.lfo2Rate, sr_);
+        vibratoLFO_.setRate(snap_.vibRate, sr_);
 
         // ------------------------------------------------------------------
         // STEP 4: Configure conductor for this block
         // ------------------------------------------------------------------
-        conductor_.setArcMode (snap_.arcMode);
-        conductor_.setArcShape (snap_.arcShape);
-        conductor_.setArcTime (snap_.arcTime);
-        conductor_.setArcPeak (snap_.arcPeak);
+        conductor_.setArcMode(snap_.arcMode);
+        conductor_.setArcShape(snap_.arcShape);
+        conductor_.setArcTime(snap_.arcTime);
+        conductor_.setArcPeak(snap_.arcPeak);
 
         // ------------------------------------------------------------------
         // STEP 5: Configure envelopes for all active voices
         // ------------------------------------------------------------------
         float ampAtkSec = 0.0001f + snap_.ampA * snap_.ampA * snap_.ampA * 5.0f;
-        float ampDecSec = 0.001f  + snap_.ampD * snap_.ampD * snap_.ampD * 10.0f;
-        float ampRelSec = 0.001f  + snap_.ampR * snap_.ampR * snap_.ampR * 10.0f;
+        float ampDecSec = 0.001f + snap_.ampD * snap_.ampD * snap_.ampD * 10.0f;
+        float ampRelSec = 0.001f + snap_.ampR * snap_.ampR * snap_.ampR * 10.0f;
 
         float fltAtkSec = 0.0001f + snap_.filterA * snap_.filterA * snap_.filterA * 5.0f;
-        float fltDecSec = 0.001f  + snap_.filterD * snap_.filterD * snap_.filterD * 10.0f;
-        float fltRelSec = 0.001f  + snap_.filterR * snap_.filterR * snap_.filterR * 10.0f;
+        float fltDecSec = 0.001f + snap_.filterD * snap_.filterD * snap_.filterD * 10.0f;
+        float fltRelSec = 0.001f + snap_.filterR * snap_.filterR * snap_.filterR * 10.0f;
 
         for (auto& v : voices_)
         {
             if (v.state != OperaVoice::State::Idle)
             {
-                v.ampEnv.setADSR (ampAtkSec, ampDecSec, snap_.ampS, ampRelSec);
-                v.filterEnv.setADSR (fltAtkSec, fltDecSec, snap_.filterS, fltRelSec);
+                v.ampEnv.setADSR(ampAtkSec, ampDecSec, snap_.ampS, ampRelSec);
+                v.filterEnv.setADSR(fltAtkSec, fltDecSec, snap_.filterS, fltRelSec);
             }
         }
 
         // ------------------------------------------------------------------
         // STEP 6: Per-sample rendering
         // ------------------------------------------------------------------
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
         // Clear output buffer
-        buffer.clear (0, numSamples);
+        buffer.clear(0, numSamples);
 
         // ------------------------------------------------------------------
         // STEP 6 PRE-BLOCK: Update formant weights & Nyquist gains per voice
@@ -926,11 +899,12 @@ public:
         for (int v = 0; v < kMaxVoices; ++v)
         {
             auto& voice = voices_[v];
-            if (voice.state == OperaVoice::State::Idle) continue;
+            if (voice.state == OperaVoice::State::Idle)
+                continue;
 
             float f0Block = voice.currentFreq;
-            voice.partialBank.updateFormants (f0Block, snap_.vowelA, snap_.vowelB, snap_.voice);
-            voice.partialBank.computeNyquistGains (f0Block);
+            voice.partialBank.updateFormants(f0Block, snap_.vowelA, snap_.vowelB, snap_.voice);
+            voice.partialBank.computeNyquistGains(f0Block);
         }
 
         for (int s = 0; s < numSamples; ++s)
@@ -942,41 +916,39 @@ public:
             float lfo1Val = lfo1_.process() * snap_.lfo1Depth;
             float lfo2Val = lfo2_.process() * snap_.lfo2Depth;
 
-            applyModulation (mods, static_cast<ModDest> (snap_.lfo1Dest), lfo1Val);
-            applyModulation (mods, static_cast<ModDest> (snap_.lfo2Dest), lfo2Val);
-            applyModulation (mods, static_cast<ModDest> (snap_.modWheelDest),
-                             modWheelValue_ * snap_.modWheelAmt);
-            applyModulation (mods, static_cast<ModDest> (snap_.atDest),
-                             aftertouchValue_ * snap_.atAmt);
+            applyModulation(mods, static_cast<ModDest>(snap_.lfo1Dest), lfo1Val);
+            applyModulation(mods, static_cast<ModDest>(snap_.lfo2Dest), lfo2Val);
+            applyModulation(mods, static_cast<ModDest>(snap_.modWheelDest), modWheelValue_ * snap_.modWheelAmt);
+            applyModulation(mods, static_cast<ModDest>(snap_.atDest), aftertouchValue_ * snap_.atAmt);
 
             // Apply coupling K offset (from KnotTopology coupling)
             float couplingKOff = (s < blockSize_) ? couplingKBuffer_[s] : 0.0f;
 
             // 6b. Compute effective parameters with modulation
-            float drama_eff   = std::clamp (snap_.drama + mods.drama, 0.0f, 1.0f);
-            float voice_eff   = std::clamp (snap_.voice + mods.voice, 0.0f, 1.0f);
-            float breath_eff  = std::clamp (snap_.breath + mods.breath, 0.0f, 1.0f);
-            float effort_eff  = std::clamp (snap_.effort + mods.effort, 0.0f, 1.0f);
-            float tilt_eff    = std::clamp (snap_.tilt + mods.tilt, -1.0f, 1.0f);
-            float cutoff_eff  = std::clamp (snap_.filterCutoff + mods.filterCutoff, 20.0f, 20000.0f);
-            float vibDepth_eff = std::clamp (snap_.vibDepth + mods.vibDepth, 0.0f, 1.0f);
-            float resSens_eff = std::clamp (snap_.resSens + mods.resSens, 0.0f, 1.0f);
+            float drama_eff = std::clamp(snap_.drama + mods.drama, 0.0f, 1.0f);
+            float voice_eff = std::clamp(snap_.voice + mods.voice, 0.0f, 1.0f);
+            float breath_eff = std::clamp(snap_.breath + mods.breath, 0.0f, 1.0f);
+            float effort_eff = std::clamp(snap_.effort + mods.effort, 0.0f, 1.0f);
+            float tilt_eff = std::clamp(snap_.tilt + mods.tilt, -1.0f, 1.0f);
+            float cutoff_eff = std::clamp(snap_.filterCutoff + mods.filterCutoff, 20.0f, 20000.0f);
+            float vibDepth_eff = std::clamp(snap_.vibDepth + mods.vibDepth, 0.0f, 1.0f);
+            float resSens_eff = std::clamp(snap_.resSens + mods.resSens, 0.0f, 1.0f);
 
             // 6c. Conductor K contribution
             float manualK = drama_eff * kKmax;
-            float effectiveK = conductor_.computeEffectiveK (manualK);
+            float effectiveK = conductor_.computeEffectiveK(manualK);
 
             // Add coupling K offset
             if (couplingKOff != 0.0f)
-                effectiveK = std::clamp (effectiveK + couplingKOff * kKmax, 0.0f, kKmax);
+                effectiveK = std::clamp(effectiveK + couplingKOff * kKmax, 0.0f, kKmax);
 
             // 6d. Vibrato — pitch multiplier for all voices
             float vibSample = vibratoLFO_.process() * vibDepth_eff;
             // vibDepth=1.0 -> 100 cents max deviation
-            float vibPitchMult = std::pow (2.0f, vibSample * (100.0f / 1200.0f));
+            float vibPitchMult = std::pow(2.0f, vibSample * (100.0f / 1200.0f));
 
             // 6e. Coupling FM and Ring mod values for this sample
-            float couplingFM   = (s < blockSize_) ? couplingFMBuffer_[s]   : 0.0f;
+            float couplingFM = (s < blockSize_) ? couplingFMBuffer_[s] : 0.0f;
             float couplingRing = (s < blockSize_) ? couplingRingBuffer_[s] : 0.0f;
             float couplingFilt = (s < blockSize_) ? couplingFilterBuffer_[s] : 0.0f;
             float couplingMorph = (s < blockSize_) ? couplingMorphBuffer_[s] : 0.0f;
@@ -984,7 +956,7 @@ public:
 
             // 6f. Apply coupling morph to voice
             if (couplingMorph != 0.0f)
-                voice_eff = std::clamp (voice_eff + couplingMorph, 0.0f, 1.0f);
+                voice_eff = std::clamp(voice_eff + couplingMorph, 0.0f, 1.0f);
 
             // 6g. Render each active voice
             float sampleL = 0.0f;
@@ -994,7 +966,8 @@ public:
             for (int v = 0; v < kMaxVoices; ++v)
             {
                 auto& voice = voices_[v];
-                if (voice.state == OperaVoice::State::Idle) continue;
+                if (voice.state == OperaVoice::State::Idle)
+                    continue;
 
                 // --- Voice-specific computations ---
 
@@ -1002,22 +975,21 @@ public:
                 float vel = voice.velocity;
                 float velFilterOff = vel * snap_.velToFilter * 8000.0f;
                 float velEffortOff = vel * snap_.velToEffort * 0.5f;
-                float velKOff      = vel * 0.15f;
-                float velTiltOff   = vel * 0.1f;
+                float velKOff = vel * 0.15f;
+                float velTiltOff = vel * 0.1f;
 
-                float voiceEffort = std::clamp (effort_eff + velEffortOff, 0.0f, 1.0f);
-                float voiceTilt   = std::clamp (tilt_eff + velTiltOff, -1.0f, 1.0f);
+                float voiceEffort = std::clamp(effort_eff + velEffortOff, 0.0f, 1.0f);
+                float voiceTilt = std::clamp(tilt_eff + velTiltOff, -1.0f, 1.0f);
 
                 // --- Portamento glide ---
                 // Update targetFreq each sample for pitch bend tracking
-                voice.targetFreq = midiNoteToFreq (voice.note + snap_.fundamental,
-                                                    pitchBendSemitones_);
+                voice.targetFreq = midiNoteToFreq(voice.note + snap_.fundamental, pitchBendSemitones_);
 
                 if (snap_.portamento > 0.0f)
                 {
                     // portamento param 0..1 maps to 0..0.5 seconds glide time
                     float portTime = snap_.portamento * 0.5f;
-                    float glideCoeff = 1.0f - std::exp (-kTwoPi / (sr_ * portTime));
+                    float glideCoeff = 1.0f - std::exp(-kTwoPi / (sr_ * portTime));
                     voice.currentFreq += (voice.targetFreq - voice.currentFreq) * glideCoeff;
                 }
                 else
@@ -1029,7 +1001,7 @@ public:
 
                 // Apply coupling FM offset to fundamental
                 if (couplingFM != 0.0f)
-                    f0 *= (1.0f + couplingFM * 0.1f);  // +/-10% max FM deviation
+                    f0 *= (1.0f + couplingFM * 0.1f); // +/-10% max FM deviation
 
                 // --- Kuramoto field update (every 8 samples) ---
                 if (voice.kuramotoField.shouldUpdate())
@@ -1052,12 +1024,8 @@ public:
                             theta[i] += couplingPhase;
                     }
 
-                    float voiceDrama = std::clamp (drama_eff + velKOff, 0.0f, 1.0f);
-                    voice.kuramotoField.updateField (
-                        theta, omega, np,
-                        voiceDrama,
-                        resSens_eff,
-                        snap_.responseSpeed);
+                    float voiceDrama = std::clamp(drama_eff + velKOff, 0.0f, 1.0f);
+                    voice.kuramotoField.updateField(theta, omega, np, voiceDrama, resSens_eff, snap_.responseSpeed);
 
                     // Write updated phases back to partial bank
                     for (int i = 0; i < np; ++i)
@@ -1073,17 +1041,17 @@ public:
                 float pL = 0.0f, pR = 0.0f;
                 float monoSample = 0.0f;
 
-                int unisonCount = std::clamp (snap_.unison, 1, 4);
-                float unisonGain = 1.0f / std::sqrt (static_cast<float> (unisonCount));
+                int unisonCount = std::clamp(snap_.unison, 1, 4);
+                float unisonGain = 1.0f / std::sqrt(static_cast<float>(unisonCount));
                 // spread: detune * 2% max total spread
                 float unisonSpread = snap_.detune * 0.02f;
 
                 // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,C,R,C}
                 static constexpr float kUniPan[4][4] = {
-                    { 0.0f,  0.0f,  0.0f, 0.0f },  // 1 voice: center
-                    {-1.0f,  1.0f,  0.0f, 0.0f },  // 2 voices: L, R
-                    {-1.0f,  0.0f,  1.0f, 0.0f },  // 3 voices: L, C, R
-                    {-1.0f,  0.0f,  0.0f, 1.0f }   // 4 voices: L, C, C, R
+                    {0.0f, 0.0f, 0.0f, 0.0f},  // 1 voice: center
+                    {-1.0f, 1.0f, 0.0f, 0.0f}, // 2 voices: L, R
+                    {-1.0f, 0.0f, 1.0f, 0.0f}, // 3 voices: L, C, R
+                    {-1.0f, 0.0f, 0.0f, 1.0f}  // 4 voices: L, C, C, R
                 };
 
                 // --- Pan cache rebuild (SRO 2026-03-24) ----------------------
@@ -1097,7 +1065,7 @@ public:
                 if (!voice.panCacheValid)
                 {
                     int npCache = voice.partialBank.numPartials;
-                    float rCache   = voice.kuramotoField.getOrderParameter();
+                    float rCache = voice.kuramotoField.getOrderParameter();
                     float psiCache = voice.kuramotoField.getMeanPhase();
 
                     for (int uL = 0; uL < unisonCount; ++uL)
@@ -1106,14 +1074,13 @@ public:
 
                         for (int i = 0; i < npCache; ++i)
                         {
-                            float pan = OperaPartialBank::computePartialPan (
-                                i, voice.partialBank.partials[i].theta,
-                                psiCache, rCache, snap_.width);
-                            pan = std::clamp (pan + uniPanCache, -1.0f, 1.0f);
+                            float pan = OperaPartialBank::computePartialPan(i, voice.partialBank.partials[i].theta,
+                                                                            psiCache, rCache, snap_.width);
+                            pan = std::clamp(pan + uniPanCache, -1.0f, 1.0f);
 
                             float angle = (pan + 1.0f) * 0.25f * kPi;
-                            voice.cachedPanL[i][uL] = FastMath::fastCos (angle);
-                            voice.cachedPanR[i][uL] = FastMath::fastSin (angle);
+                            voice.cachedPanL[i][uL] = FastMath::fastCos(angle);
+                            voice.cachedPanR[i][uL] = FastMath::fastSin(angle);
                         }
                     }
                     voice.panCacheValid = true;
@@ -1121,12 +1088,12 @@ public:
                 // -------------------------------------------------------------
 
                 // Precompute per-layer frequency multipliers (outside the partial loop)
-                float freqMults[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+                float freqMults[4] = {1.0f, 1.0f, 1.0f, 1.0f};
                 for (int uL = 0; uL < unisonCount; ++uL)
                 {
                     if (unisonCount > 1)
                     {
-                        float layerPos = (static_cast<float> (uL) / static_cast<float> (unisonCount - 1)) * 2.0f - 1.0f;
+                        float layerPos = (static_cast<float>(uL) / static_cast<float>(unisonCount - 1)) * 2.0f - 1.0f;
                         freqMults[uL] = 1.0f + unisonSpread * layerPos;
                     }
                 }
@@ -1141,12 +1108,9 @@ public:
                         auto& p = voice.partialBank.partials[i];
 
                         // Amplitude: formant weight * tilt * Nyquist fade * cluster boost
-                        float tiltGain = OperaPartialBank::computeSpectralTilt (
-                            i, np, voiceTilt);
-                        float amp = voice.partialBank.formantWeights[i]
-                                  * tiltGain
-                                  * voice.partialBank.nyquistGains[i]
-                                  * voice.kuramotoField.getClusterBoost (i);
+                        float tiltGain = OperaPartialBank::computeSpectralTilt(i, np, voiceTilt);
+                        float amp = voice.partialBank.formantWeights[i] * tiltGain * voice.partialBank.nyquistGains[i] *
+                                    voice.kuramotoField.getClusterBoost(i);
 
                         amp *= unisonGain;
 
@@ -1154,7 +1118,8 @@ public:
                         {
                             // Advance layer accumulators even for silent partials
                             p.layerTheta[uLayer] += p.omega * freqMults[uLayer] * invSr_;
-                            if (uLayer == 0) p.theta += p.omega * invSr_;
+                            if (uLayer == 0)
+                                p.theta += p.omega * invSr_;
                             continue;
                         }
 
@@ -1164,7 +1129,7 @@ public:
                             ringMod = 1.0f + couplingRing;
 
                         // Use independent per-layer accumulator (FIX P0: was p.theta * freqMult)
-                        float sample = amp * ringMod * FastMath::fastSin (p.layerTheta[uLayer]);
+                        float sample = amp * ringMod * FastMath::fastSin(p.layerTheta[uLayer]);
 
                         // Spatial panning — use cached constant-power coefficients.
                         // Cache is valid for kKuraBlock samples (same lifetime as psi/r).
@@ -1191,14 +1156,18 @@ public:
                     for (int i = 0; i < np; ++i)
                     {
                         float& theta = voice.partialBank.partials[i].theta;
-                        if (theta >= kTwoPi) theta -= kTwoPi * std::floor (theta / kTwoPi);
-                        if (theta < 0.0f) theta += kTwoPi;
+                        if (theta >= kTwoPi)
+                            theta -= kTwoPi * std::floor(theta / kTwoPi);
+                        if (theta < 0.0f)
+                            theta += kTwoPi;
 
                         for (int u = 0; u < unisonCount; ++u)
                         {
                             float& lt = voice.partialBank.partials[i].layerTheta[u];
-                            if (lt >= kTwoPi) lt -= kTwoPi * std::floor (lt / kTwoPi);
-                            if (lt < 0.0f) lt += kTwoPi;
+                            if (lt >= kTwoPi)
+                                lt -= kTwoPi * std::floor(lt / kTwoPi);
+                            if (lt < 0.0f)
+                                lt += kTwoPi;
                         }
                     }
                 }
@@ -1208,19 +1177,14 @@ public:
                 {
                     // Compute formant center frequencies for breath sympathetic peaks
                     const auto& fTable = getFormantTable();
-                    const auto& vowA = fTable.get (snap_.vowelA);
-                    const auto& vowB = fTable.get (snap_.vowelB);
-                    FormantProfile morphed = OperaPartialBank::interpolateFormants (
-                        vowA, vowB, voice_eff);
+                    const auto& vowA = fTable.get(snap_.vowelA);
+                    const auto& vowB = fTable.get(snap_.vowelB);
+                    FormantProfile morphed = OperaPartialBank::interpolateFormants(vowA, vowB, voice_eff);
 
-                    float formantFreqs[3] = { morphed.freq[0], morphed.freq[1], morphed.freq[2] };
+                    float formantFreqs[3] = {morphed.freq[0], morphed.freq[1], morphed.freq[2]};
 
-                    voice.breathEngine.processSample (
-                        breathL, breathR,
-                        voiceEffort, breath_eff,
-                        f0,
-                        voice.kuramotoField.getOrderParameter(),
-                        formantFreqs, 3);
+                    voice.breathEngine.processSample(breathL, breathR, voiceEffort, breath_eff, f0,
+                                                     voice.kuramotoField.getOrderParameter(), formantFreqs, 3);
                 }
 
                 // Mix partials + breath
@@ -1238,14 +1202,13 @@ public:
 
                 // --- Filter envelope + SVF ---
                 float fltEnvLevel = voice.filterEnv.process();
-                float fltEnvOffset = snap_.filterEnvAmt * fltEnvLevel * 8000.0f;  // bipolar: != 0 check
-                float voiceCutoff = std::clamp (
-                    cutoff_eff + fltEnvOffset + velFilterOff + couplingFilt,
-                    20.0f, 20000.0f);
+                float fltEnvOffset = snap_.filterEnvAmt * fltEnvLevel * 8000.0f; // bipolar: != 0 check
+                float voiceCutoff =
+                    std::clamp(cutoff_eff + fltEnvOffset + velFilterOff + couplingFilt, 20.0f, 20000.0f);
                 float Q = 0.5f + snap_.filterRes * 9.5f;
 
-                mixL = voice.filterL.process (mixL, voiceCutoff, Q, sr_);
-                mixR = voice.filterR.process (mixR, voiceCutoff, Q, sr_);
+                mixL = voice.filterL.process(mixL, voiceCutoff, Q, sr_);
+                mixR = voice.filterR.process(mixR, voiceCutoff, Q, sr_);
 
                 // --- Check voice completion ---
                 if (!voice.ampEnv.isActive())
@@ -1287,9 +1250,9 @@ public:
                 }
             }
             if (activeCount > 0)
-                avgR /= static_cast<float> (activeCount);
+                avgR /= static_cast<float>(activeCount);
 
-            reactiveStage_.processBlock (outL, outR, numSamples, snap_.stage, avgR);
+            reactiveStage_.processBlock(outL, outR, numSamples, snap_.stage, avgR);
         }
 
         // ------------------------------------------------------------------
@@ -1297,8 +1260,8 @@ public:
         // ------------------------------------------------------------------
         for (int s = 0; s < numSamples; ++s)
         {
-            outL[s] = softClip (outL[s]);
-            outR[s] = softClip (outR[s]);
+            outL[s] = softClip(outL[s]);
+            outR[s] = softClip(outR[s]);
         }
 
         // ------------------------------------------------------------------
@@ -1314,20 +1277,21 @@ public:
         // ------------------------------------------------------------------
         // STEP 10: Clear coupling input buffers for next block
         // ------------------------------------------------------------------
-        std::memset (couplingFMBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
-        std::memset (couplingRingBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
-        std::memset (couplingFilterBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
-        std::memset (couplingMorphBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
-        std::memset (couplingKBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
-        std::memset (couplingPhaseBuffer_, 0, sizeof (float) * static_cast<size_t> (numSamples));
+        std::memset(couplingFMBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingRingBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingFilterBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingMorphBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingKBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingPhaseBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
 
         // ------------------------------------------------------------------
         // STEP 11: Update active voice count for thread-safe UI query
         // ------------------------------------------------------------------
         int count = 0;
         for (const auto& v : voices_)
-            if (v.state != OperaVoice::State::Idle) ++count;
-        activeVoiceCount_.store (count, std::memory_order_relaxed);
+            if (v.state != OperaVoice::State::Idle)
+                ++count;
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
     }
 
     //==========================================================================
@@ -1335,19 +1299,18 @@ public:
     //==========================================================================
 
     /// Return cached coupling sample. O(1). Post-Kuramoto, pre-reverb.
-    float getSampleForCoupling (int channel, int sampleIndex) const
+    float getSampleForCoupling(int channel, int sampleIndex) const
     {
-        if (sampleIndex < 0 || sampleIndex >= kMaxBlockSize) return 0.0f;
-        return (channel == 0) ? couplingCacheL_[sampleIndex]
-                              : couplingCacheR_[sampleIndex];
+        if (sampleIndex < 0 || sampleIndex >= kMaxBlockSize)
+            return 0.0f;
+        return (channel == 0) ? couplingCacheL_[sampleIndex] : couplingCacheR_[sampleIndex];
     }
 
     /// Receive modulation from another engine via the coupling matrix.
     /// Called before renderBlock() for block-level coupling.
-    void applyCouplingInput (int type, float amount,
-                             const float* sourceBuffer, int numSamples)
+    void applyCouplingInput(int type, float amount, const float* sourceBuffer, int numSamples)
     {
-        numSamples = std::min (numSamples, kMaxBlockSize);
+        numSamples = std::min(numSamples, kMaxBlockSize);
 
         // CouplingType enum values from SynthEngine.h:
         // AmpToFilter=0, AmpToPitch=1, ..., AudioToFM=4, AudioToRing=5,
@@ -1355,49 +1318,49 @@ public:
 
         switch (type)
         {
-            case 4:  // AudioToFM
-                for (int i = 0; i < numSamples; ++i)
-                    couplingFMBuffer_[i] += sourceBuffer[i] * amount;
-                break;
+        case 4: // AudioToFM
+            for (int i = 0; i < numSamples; ++i)
+                couplingFMBuffer_[i] += sourceBuffer[i] * amount;
+            break;
 
-            case 5:  // AudioToRing
-                for (int i = 0; i < numSamples; ++i)
-                    couplingRingBuffer_[i] += sourceBuffer[i] * amount;
-                break;
+        case 5: // AudioToRing
+            for (int i = 0; i < numSamples; ++i)
+                couplingRingBuffer_[i] += sourceBuffer[i] * amount;
+            break;
 
-            case 0:  // AmpToFilter
-                for (int i = 0; i < numSamples; ++i)
-                    couplingFilterBuffer_[i] += sourceBuffer[i] * amount * 4000.0f;
-                break;
+        case 0: // AmpToFilter
+            for (int i = 0; i < numSamples; ++i)
+                couplingFilterBuffer_[i] += sourceBuffer[i] * amount * 4000.0f;
+            break;
 
-            case 3:  // EnvToMorph
-                for (int i = 0; i < numSamples; ++i)
-                    couplingMorphBuffer_[i] += sourceBuffer[i] * amount;
-                break;
+        case 3: // EnvToMorph
+            for (int i = 0; i < numSamples; ++i)
+                couplingMorphBuffer_[i] += sourceBuffer[i] * amount;
+            break;
 
-            case 13: // KnotTopology
-                for (int i = 0; i < numSamples; ++i)
-                    couplingKBuffer_[i] += sourceBuffer[i] * amount * 2.0f;
-                break;
+        case 13: // KnotTopology
+            for (int i = 0; i < numSamples; ++i)
+                couplingKBuffer_[i] += sourceBuffer[i] * amount * 2.0f;
+            break;
 
-            case 10: // PitchToPitch
-                for (int i = 0; i < numSamples; ++i)
-                    couplingPhaseBuffer_[i] += sourceBuffer[i] * amount * 0.5f;
-                break;
+        case 10: // PitchToPitch
+            for (int i = 0; i < numSamples; ++i)
+                couplingPhaseBuffer_[i] += sourceBuffer[i] * amount * 0.5f;
+            break;
 
-            case 6:  // FilterToFilter
-                for (int i = 0; i < numSamples; ++i)
-                    couplingFilterBuffer_[i] += sourceBuffer[i] * amount * 2000.0f;
-                break;
+        case 6: // FilterToFilter
+            for (int i = 0; i < numSamples; ++i)
+                couplingFilterBuffer_[i] += sourceBuffer[i] * amount * 2000.0f;
+            break;
 
-            case 1:  // AmpToPitch — pitch modulation from amplitude
-                for (int i = 0; i < numSamples; ++i)
-                    couplingFMBuffer_[i] += sourceBuffer[i] * amount * 0.5f;
-                break;
+        case 1: // AmpToPitch — pitch modulation from amplitude
+            for (int i = 0; i < numSamples; ++i)
+                couplingFMBuffer_[i] += sourceBuffer[i] * amount * 0.5f;
+            break;
 
-            default:
-                // Unsupported coupling type — silently ignore
-                break;
+        default:
+            // Unsupported coupling type — silently ignore
+            break;
         }
     }
 
@@ -1423,10 +1386,11 @@ private:
     // MIDI Handling
     //==========================================================================
 
-    void handleNoteOn (int noteNumber, float vel)
+    void handleNoteOn(int noteNumber, float vel)
     {
-        int voiceIdx = allocateVoice (noteNumber);
-        if (voiceIdx < 0) return;
+        int voiceIdx = allocateVoice(noteNumber);
+        if (voiceIdx < 0)
+            return;
 
         auto& voice = voices_[voiceIdx];
 
@@ -1437,29 +1401,27 @@ private:
             float theta[kMaxPartials];
             for (int i = 0; i < voice.partialBank.numPartials; ++i)
                 theta[i] = voice.partialBank.partials[i].theta;
-            voice.kuramotoField.onNoteOff (theta, nullptr, voice.partialBank.numPartials);
+            voice.kuramotoField.onNoteOff(theta, nullptr, voice.partialBank.numPartials);
         }
 
         // Setup voice state
-        voice.state    = OperaVoice::State::Attack;
-        voice.note     = noteNumber;
+        voice.state = OperaVoice::State::Attack;
+        voice.note = noteNumber;
         voice.velocity = vel;
         voice.startTime = voiceCounter_++;
 
         // Compute fundamental frequency
-        float f0 = midiNoteToFreq (noteNumber + snap_.fundamental, pitchBendSemitones_);
+        float f0 = midiNoteToFreq(noteNumber + snap_.fundamental, pitchBendSemitones_);
 
         // --- Portamento: set target freq; keep currentFreq for glide if legato ---
         voice.targetFreq = f0;
         if (snap_.portamento <= 0.0f || !wasActive)
-            voice.currentFreq = f0;  // instant: no glide
+            voice.currentFreq = f0; // instant: no glide
         // else: keep voice.currentFreq at its old value so it glides
 
         // Setup partial bank
         voice.partialBank.numPartials = snap_.partials;
-        voice.partialBank.setupForNote (
-            f0, snap_.partials, snap_.detune,
-            snap_.vowelA, snap_.vowelB, snap_.voice);
+        voice.partialBank.setupForNote(f0, snap_.partials, snap_.detune, snap_.vowelA, snap_.vowelB, snap_.voice);
 
         // Apply emotional memory (Vangelis: phases carry across note boundaries)
         {
@@ -1467,7 +1429,7 @@ private:
             for (int i = 0; i < voice.partialBank.numPartials; ++i)
                 theta[i] = voice.partialBank.partials[i].theta;
 
-            voice.kuramotoField.onNoteOn (theta, voice.partialBank.numPartials);
+            voice.kuramotoField.onNoteOn(theta, voice.partialBank.numPartials);
 
             for (int i = 0; i < voice.partialBank.numPartials; ++i)
                 voice.partialBank.partials[i].theta = theta[i];
@@ -1481,8 +1443,8 @@ private:
             {
                 float baseTheta = voice.partialBank.partials[i].theta;
                 for (int u = 0; u < 4; ++u)
-                    voice.partialBank.partials[i].layerTheta[u] = baseTheta
-                        + static_cast<float> (u) * 1.618f;  // spread initial phases
+                    voice.partialBank.partials[i].layerTheta[u] =
+                        baseTheta + static_cast<float>(u) * 1.618f; // spread initial phases
             }
         }
 
@@ -1507,12 +1469,12 @@ private:
             conductor_.trigger();
     }
 
-    void handleNoteOff (int noteNumber)
+    void handleNoteOff(int noteNumber)
     {
         for (auto& voice : voices_)
         {
-            if (voice.note == noteNumber && voice.state != OperaVoice::State::Idle
-                && voice.state != OperaVoice::State::Release)
+            if (voice.note == noteNumber && voice.state != OperaVoice::State::Idle &&
+                voice.state != OperaVoice::State::Release)
             {
                 voice.state = OperaVoice::State::Release;
                 voice.ampEnv.release();
@@ -1522,7 +1484,7 @@ private:
                 float theta[kMaxPartials];
                 for (int i = 0; i < voice.partialBank.numPartials; ++i)
                     theta[i] = voice.partialBank.partials[i].theta;
-                voice.kuramotoField.onNoteOff (theta, nullptr, voice.partialBank.numPartials);
+                voice.kuramotoField.onNoteOff(theta, nullptr, voice.partialBank.numPartials);
             }
         }
     }
@@ -1535,13 +1497,12 @@ private:
     //           3. Oldest active voice (LRU steal)
     //==========================================================================
 
-    int allocateVoice (int noteNumber)
+    int allocateVoice(int noteNumber)
     {
         // Check if this note is already playing (retrigger)
         for (int i = 0; i < kMaxVoices; ++i)
         {
-            if (voices_[i].note == noteNumber
-                && voices_[i].state != OperaVoice::State::Idle)
+            if (voices_[i].note == noteNumber && voices_[i].state != OperaVoice::State::Idle)
                 return i;
         }
 
@@ -1558,8 +1519,7 @@ private:
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
-            if (voices_[i].state == OperaVoice::State::Release
-                && voices_[i].startTime < oldestTime)
+            if (voices_[i].state == OperaVoice::State::Release && voices_[i].startTime < oldestTime)
             {
                 oldestTime = voices_[i].startTime;
                 bestIdx = i;
@@ -1595,18 +1555,34 @@ private:
     // Modulation routing
     //==========================================================================
 
-    static void applyModulation (ModOffsets& mods, ModDest dest, float value) noexcept
+    static void applyModulation(ModOffsets& mods, ModDest dest, float value) noexcept
     {
         switch (dest)
         {
-            case ModDest::Drama:        mods.drama        += value;            break;
-            case ModDest::Voice:        mods.voice        += value;            break;
-            case ModDest::Breath:       mods.breath       += value;            break;
-            case ModDest::Effort:       mods.effort       += value;            break;
-            case ModDest::Tilt:         mods.tilt         += value;            break;
-            case ModDest::FilterCutoff: mods.filterCutoff += value * 4000.0f;  break;
-            case ModDest::VibDepth:     mods.vibDepth     += value;            break;
-            case ModDest::ResSens:      mods.resSens      += value;            break;
+        case ModDest::Drama:
+            mods.drama += value;
+            break;
+        case ModDest::Voice:
+            mods.voice += value;
+            break;
+        case ModDest::Breath:
+            mods.breath += value;
+            break;
+        case ModDest::Effort:
+            mods.effort += value;
+            break;
+        case ModDest::Tilt:
+            mods.tilt += value;
+            break;
+        case ModDest::FilterCutoff:
+            mods.filterCutoff += value * 4000.0f;
+            break;
+        case ModDest::VibDepth:
+            mods.vibDepth += value;
+            break;
+        case ModDest::ResSens:
+            mods.resSens += value;
+            break;
         }
     }
 
@@ -1616,64 +1592,65 @@ private:
 
     void cacheParamSnapshot() noexcept
     {
-        if (p_drama == nullptr) return;  // Parameters not yet attached
+        if (p_drama == nullptr)
+            return; // Parameters not yet attached
 
-        snap_.drama         = p_drama->load();
-        snap_.voice         = p_voice->load();
-        snap_.vowelA        = static_cast<int> (p_vowelA->load());
-        snap_.vowelB        = static_cast<int> (p_vowelB->load());
-        snap_.breath        = p_breath->load();
-        snap_.effort        = p_effort->load();
-        snap_.partials      = static_cast<int> (p_partials->load());
-        snap_.detune        = p_detune->load();
-        snap_.tilt          = p_tilt->load();
-        snap_.fundamental   = static_cast<int> (p_fundamental->load());
-        snap_.resSens       = p_resSens->load();
-        snap_.portamento    = p_portamento->load();
-        snap_.unison        = static_cast<int> (p_unison->load());
-        snap_.width         = p_width->load();
-        snap_.vibRate       = p_vibRate->load();
-        snap_.vibDepth      = p_vibDepth->load();
-        snap_.stage         = p_stage->load();
+        snap_.drama = p_drama->load();
+        snap_.voice = p_voice->load();
+        snap_.vowelA = static_cast<int>(p_vowelA->load());
+        snap_.vowelB = static_cast<int>(p_vowelB->load());
+        snap_.breath = p_breath->load();
+        snap_.effort = p_effort->load();
+        snap_.partials = static_cast<int>(p_partials->load());
+        snap_.detune = p_detune->load();
+        snap_.tilt = p_tilt->load();
+        snap_.fundamental = static_cast<int>(p_fundamental->load());
+        snap_.resSens = p_resSens->load();
+        snap_.portamento = p_portamento->load();
+        snap_.unison = static_cast<int>(p_unison->load());
+        snap_.width = p_width->load();
+        snap_.vibRate = p_vibRate->load();
+        snap_.vibDepth = p_vibDepth->load();
+        snap_.stage = p_stage->load();
         snap_.responseSpeed = p_responseSpeed->load();
 
-        snap_.filterCutoff  = p_filterCutoff->load();
-        snap_.filterRes     = p_filterRes->load();
-        snap_.filterEnvAmt  = p_filterEnvAmt->load();
-        snap_.filterA       = p_filterA->load();
-        snap_.filterD       = p_filterD->load();
-        snap_.filterS       = p_filterS->load();
-        snap_.filterR       = p_filterR->load();
+        snap_.filterCutoff = p_filterCutoff->load();
+        snap_.filterRes = p_filterRes->load();
+        snap_.filterEnvAmt = p_filterEnvAmt->load();
+        snap_.filterA = p_filterA->load();
+        snap_.filterD = p_filterD->load();
+        snap_.filterS = p_filterS->load();
+        snap_.filterR = p_filterR->load();
 
-        snap_.ampA          = p_ampA->load();
-        snap_.ampD          = p_ampD->load();
-        snap_.ampS          = p_ampS->load();
-        snap_.ampR          = p_ampR->load();
+        snap_.ampA = p_ampA->load();
+        snap_.ampD = p_ampD->load();
+        snap_.ampS = p_ampS->load();
+        snap_.ampR = p_ampR->load();
 
-        snap_.lfo1Rate      = p_lfo1Rate->load();
-        snap_.lfo1Depth     = p_lfo1Depth->load();
-        snap_.lfo1Dest      = static_cast<int> (p_lfo1Dest->load());
-        snap_.lfo2Rate      = p_lfo2Rate->load();
-        snap_.lfo2Depth     = p_lfo2Depth->load();
-        snap_.lfo2Dest      = static_cast<int> (p_lfo2Dest->load());
+        snap_.lfo1Rate = p_lfo1Rate->load();
+        snap_.lfo1Depth = p_lfo1Depth->load();
+        snap_.lfo1Dest = static_cast<int>(p_lfo1Dest->load());
+        snap_.lfo2Rate = p_lfo2Rate->load();
+        snap_.lfo2Depth = p_lfo2Depth->load();
+        snap_.lfo2Dest = static_cast<int>(p_lfo2Dest->load());
 
-        snap_.arcMode       = static_cast<int> (p_arcMode->load());
-        snap_.arcShape      = static_cast<int> (p_arcShape->load());
-        snap_.arcTime       = p_arcTime->load();
-        snap_.arcPeak       = p_arcPeak->load();
+        snap_.arcMode = static_cast<int>(p_arcMode->load());
+        snap_.arcShape = static_cast<int>(p_arcShape->load());
+        snap_.arcTime = p_arcTime->load();
+        snap_.arcPeak = p_arcPeak->load();
 
-        snap_.modWheelDest  = static_cast<int> (p_modWheelDest->load());
-        snap_.modWheelAmt   = p_modWheelAmt->load();
-        snap_.atDest        = static_cast<int> (p_atDest->load());
-        snap_.atAmt         = p_atAmt->load();
-        snap_.velToFilter   = p_velToFilter->load();
-        snap_.velToEffort   = p_velToEffort->load();
+        snap_.modWheelDest = static_cast<int>(p_modWheelDest->load());
+        snap_.modWheelAmt = p_modWheelAmt->load();
+        snap_.atDest = static_cast<int>(p_atDest->load());
+        snap_.atAmt = p_atAmt->load();
+        snap_.velToFilter = p_velToFilter->load();
+        snap_.velToEffort = p_velToEffort->load();
 
         // D002 Standard Macros (M1-M4) — applied in renderBlock as bipolar offsets
         snap_.macroCharacter = (p_macroCharacter != nullptr) ? p_macroCharacter->load() : 0.5f;
-        snap_.macroMovement  = (p_macroMovement  != nullptr) ? p_macroMovement->load()  : 0.5f;
-        snap_.macroCoupling  = (p_macroCoupling  != nullptr) ? p_macroCoupling->load()  : 0.5f;
-        snap_.macroSpace     = (p_macroSpace     != nullptr) ? p_macroSpace->load()     : 0.5f;
+        snap_.macroMovement = (p_macroMovement != nullptr) ? p_macroMovement->load() : 0.5f;
+        snap_.macroCoupling = (p_macroCoupling != nullptr) ? p_macroCoupling->load() : 0.5f;
+        snap_.macroSpace = (p_macroSpace != nullptr) ? p_macroSpace->load() : 0.5f;
     }
 
     //==========================================================================
@@ -1681,17 +1658,19 @@ private:
     //==========================================================================
 
     /// MIDI note number to frequency (Hz) with semitone offset and pitch bend.
-    static float midiNoteToFreq (int note, float bendSemitones) noexcept
+    static float midiNoteToFreq(int note, float bendSemitones) noexcept
     {
-        float n = static_cast<float> (note) + bendSemitones;
-        return 440.0f * std::pow (2.0f, (n - 69.0f) / 12.0f);
+        float n = static_cast<float>(note) + bendSemitones;
+        return 440.0f * std::pow(2.0f, (n - 69.0f) / 12.0f);
     }
 
     /// Soft clipper: tanh-style saturation, prevents hard clipping.
-    static float softClip (float x) noexcept
+    static float softClip(float x) noexcept
     {
-        if (x > 3.0f) return 1.0f;
-        if (x < -3.0f) return -1.0f;
+        if (x > 3.0f)
+            return 1.0f;
+        if (x < -3.0f)
+            return -1.0f;
         // Pade approximant tanh(x) ~ x*(27+x^2)/(27+9*x^2)
         float x2 = x * x;
         return x * (27.0f + x2) / (27.0f + 9.0f * x2);
@@ -1701,28 +1680,28 @@ private:
     // State
     //==========================================================================
 
-    float sr_    = 48000.0f;
+    float sr_ = 48000.0f;
     float invSr_ = 1.0f / 48000.0f;
-    int   blockSize_ = 512;
+    int blockSize_ = 512;
 
     // Voice pool
     OperaVoice voices_[kMaxVoices];
     uint64_t voiceCounter_ = 0;
-    std::atomic<int> activeVoiceCount_ { 0 };
+    std::atomic<int> activeVoiceCount_{0};
 
     // Global DSP modules
-    OperaLFO       lfo1_;
-    OperaLFO       lfo2_;
-    OperaLFO       vibratoLFO_;
+    OperaLFO lfo1_;
+    OperaLFO lfo2_;
+    OperaLFO vibratoLFO_;
     OperaConductor conductor_;
-    ReactiveStage  reactiveStage_;
+    ReactiveStage reactiveStage_;
 
     // Per-block parameter snapshot
     ParamSnapshot snap_;
 
     // Expression state (updated by MIDI CC)
-    float modWheelValue_      = 0.0f;
-    float aftertouchValue_    = 0.0f;
+    float modWheelValue_ = 0.0f;
+    float aftertouchValue_ = 0.0f;
     float pitchBendSemitones_ = 0.0f;
 
     // Coupling output cache (post-Kuramoto, pre-reverb)
@@ -1730,79 +1709,79 @@ private:
     float couplingCacheR_[kMaxBlockSize] = {};
 
     // Coupling input buffers (filled by applyCouplingInput, consumed by renderBlock)
-    float couplingFMBuffer_[kMaxBlockSize]     = {};
-    float couplingRingBuffer_[kMaxBlockSize]   = {};
+    float couplingFMBuffer_[kMaxBlockSize] = {};
+    float couplingRingBuffer_[kMaxBlockSize] = {};
     float couplingFilterBuffer_[kMaxBlockSize] = {};
-    float couplingMorphBuffer_[kMaxBlockSize]  = {};
-    float couplingKBuffer_[kMaxBlockSize]      = {};
-    float couplingPhaseBuffer_[kMaxBlockSize]  = {};
+    float couplingMorphBuffer_[kMaxBlockSize] = {};
+    float couplingKBuffer_[kMaxBlockSize] = {};
+    float couplingPhaseBuffer_[kMaxBlockSize] = {};
 
     //==========================================================================
     // Raw parameter pointers (cached in attachParameters)
     //==========================================================================
 
     // Core synthesis
-    std::atomic<float>* p_drama         = nullptr;
-    std::atomic<float>* p_voice         = nullptr;
-    std::atomic<float>* p_vowelA        = nullptr;
-    std::atomic<float>* p_vowelB        = nullptr;
-    std::atomic<float>* p_breath        = nullptr;
-    std::atomic<float>* p_effort        = nullptr;
-    std::atomic<float>* p_partials      = nullptr;
-    std::atomic<float>* p_detune        = nullptr;
-    std::atomic<float>* p_tilt          = nullptr;
-    std::atomic<float>* p_fundamental   = nullptr;
-    std::atomic<float>* p_resSens       = nullptr;
-    std::atomic<float>* p_portamento    = nullptr;
-    std::atomic<float>* p_unison        = nullptr;
-    std::atomic<float>* p_width         = nullptr;
-    std::atomic<float>* p_vibRate       = nullptr;
-    std::atomic<float>* p_vibDepth      = nullptr;
-    std::atomic<float>* p_stage         = nullptr;
+    std::atomic<float>* p_drama = nullptr;
+    std::atomic<float>* p_voice = nullptr;
+    std::atomic<float>* p_vowelA = nullptr;
+    std::atomic<float>* p_vowelB = nullptr;
+    std::atomic<float>* p_breath = nullptr;
+    std::atomic<float>* p_effort = nullptr;
+    std::atomic<float>* p_partials = nullptr;
+    std::atomic<float>* p_detune = nullptr;
+    std::atomic<float>* p_tilt = nullptr;
+    std::atomic<float>* p_fundamental = nullptr;
+    std::atomic<float>* p_resSens = nullptr;
+    std::atomic<float>* p_portamento = nullptr;
+    std::atomic<float>* p_unison = nullptr;
+    std::atomic<float>* p_width = nullptr;
+    std::atomic<float>* p_vibRate = nullptr;
+    std::atomic<float>* p_vibDepth = nullptr;
+    std::atomic<float>* p_stage = nullptr;
     std::atomic<float>* p_responseSpeed = nullptr;
 
     // Filter
-    std::atomic<float>* p_filterCutoff  = nullptr;
-    std::atomic<float>* p_filterRes     = nullptr;
-    std::atomic<float>* p_filterEnvAmt  = nullptr;
-    std::atomic<float>* p_filterA       = nullptr;
-    std::atomic<float>* p_filterD       = nullptr;
-    std::atomic<float>* p_filterS       = nullptr;
-    std::atomic<float>* p_filterR       = nullptr;
+    std::atomic<float>* p_filterCutoff = nullptr;
+    std::atomic<float>* p_filterRes = nullptr;
+    std::atomic<float>* p_filterEnvAmt = nullptr;
+    std::atomic<float>* p_filterA = nullptr;
+    std::atomic<float>* p_filterD = nullptr;
+    std::atomic<float>* p_filterS = nullptr;
+    std::atomic<float>* p_filterR = nullptr;
 
     // Amp envelope
-    std::atomic<float>* p_ampA          = nullptr;
-    std::atomic<float>* p_ampD          = nullptr;
-    std::atomic<float>* p_ampS          = nullptr;
-    std::atomic<float>* p_ampR          = nullptr;
+    std::atomic<float>* p_ampA = nullptr;
+    std::atomic<float>* p_ampD = nullptr;
+    std::atomic<float>* p_ampS = nullptr;
+    std::atomic<float>* p_ampR = nullptr;
 
     // LFOs
-    std::atomic<float>* p_lfo1Rate      = nullptr;
-    std::atomic<float>* p_lfo1Depth     = nullptr;
-    std::atomic<float>* p_lfo1Dest      = nullptr;
-    std::atomic<float>* p_lfo2Rate      = nullptr;
-    std::atomic<float>* p_lfo2Depth     = nullptr;
-    std::atomic<float>* p_lfo2Dest      = nullptr;
+    std::atomic<float>* p_lfo1Rate = nullptr;
+    std::atomic<float>* p_lfo1Depth = nullptr;
+    std::atomic<float>* p_lfo1Dest = nullptr;
+    std::atomic<float>* p_lfo2Rate = nullptr;
+    std::atomic<float>* p_lfo2Depth = nullptr;
+    std::atomic<float>* p_lfo2Dest = nullptr;
 
     // Conductor
-    std::atomic<float>* p_arcMode       = nullptr;
-    std::atomic<float>* p_arcShape      = nullptr;
-    std::atomic<float>* p_arcTime       = nullptr;
-    std::atomic<float>* p_arcPeak       = nullptr;
+    std::atomic<float>* p_arcMode = nullptr;
+    std::atomic<float>* p_arcShape = nullptr;
+    std::atomic<float>* p_arcTime = nullptr;
+    std::atomic<float>* p_arcPeak = nullptr;
 
     // Expression routing
-    std::atomic<float>* p_modWheelDest  = nullptr;
-    std::atomic<float>* p_modWheelAmt   = nullptr;
-    std::atomic<float>* p_atDest        = nullptr;
-    std::atomic<float>* p_atAmt         = nullptr;
-    std::atomic<float>* p_velToFilter   = nullptr;
-    std::atomic<float>* p_velToEffort   = nullptr;
+    std::atomic<float>* p_modWheelDest = nullptr;
+    std::atomic<float>* p_modWheelAmt = nullptr;
+    std::atomic<float>* p_atDest = nullptr;
+    std::atomic<float>* p_atAmt = nullptr;
+    std::atomic<float>* p_velToFilter = nullptr;
+    std::atomic<float>* p_velToEffort = nullptr;
 
     // D002 Standard Macros (M1-M4)
-    std::atomic<float>* p_macroCharacter = nullptr;  // opera_macroCharacter — M1: drama sweep
-    std::atomic<float>* p_macroMovement  = nullptr;  // opera_macroMovement  — M2: LFO1 rate boost
-    std::atomic<float>* p_macroCoupling  = nullptr;  // opera_macroCoupling  — M3: coupling send
-    std::atomic<float>* p_macroSpace     = nullptr;  // opera_macroSpace     — M4: filter cutoff sweep
+    std::atomic<float>* p_macroCharacter = nullptr; // opera_macroCharacter — M1: drama sweep
+    std::atomic<float>* p_macroMovement = nullptr;  // opera_macroMovement  — M2: LFO1 rate boost
+    std::atomic<float>* p_macroCoupling = nullptr;  // opera_macroCoupling  — M3: coupling send
+    std::atomic<float>* p_macroSpace = nullptr;     // opera_macroSpace     — M4: filter cutoff sweep
 };
 
 } // namespace opera

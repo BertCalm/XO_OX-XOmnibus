@@ -9,11 +9,13 @@
 #include "TouchForce_iOS.h"
 #endif
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Touch phase mirrors UITouch phases but is platform-agnostic.
-enum class TouchPhase {
+enum class TouchPhase
+{
     Began,
     Moved,
     Ended,
@@ -23,17 +25,18 @@ enum class TouchPhase {
 //==============================================================================
 // A single touch event carrying all information needed for musical input.
 // This is the currency of the mobile input pipeline — every zone receives these.
-struct TouchEvent {
-    int touchId;             // Unique per finger (stable across Moved events)
-    float x, y;              // Position in points (component-local coordinates)
-    float normalizedX;       // 0-1 within the receiving zone
-    float normalizedY;       // 0-1 within the receiving zone
-    float force;             // 0.0 - 1.0 (normalized from UITouch.force or radius fallback)
-    float radius;            // Touch major radius in points (fallback velocity source)
+struct TouchEvent
+{
+    int touchId;       // Unique per finger (stable across Moved events)
+    float x, y;        // Position in points (component-local coordinates)
+    float normalizedX; // 0-1 within the receiving zone
+    float normalizedY; // 0-1 within the receiving zone
+    float force;       // 0.0 - 1.0 (normalized from UITouch.force or radius fallback)
+    float radius;      // Touch major radius in points (fallback velocity source)
     TouchPhase phase;
-    int64_t timestampMs;     // Monotonic timestamp
-    float velocityX;         // Points/second (computed from consecutive Moved events)
-    float velocityY;         // Points/second
+    int64_t timestampMs; // Monotonic timestamp
+    float velocityX;     // Points/second (computed from consecutive Moved events)
+    float velocityY;     // Points/second
 };
 
 //==============================================================================
@@ -57,35 +60,35 @@ using TouchCallback = std::function<void(const TouchEvent&)>;
 //   - All methods called on the message thread (JUCE component callbacks)
 //   - No audio-thread interaction — zones bridge to audio via atomics/FIFOs
 //
-class MobileTouchHandler {
+class MobileTouchHandler
+{
 public:
     static constexpr int MaxSimultaneousTouches = 10;
-    static constexpr float MinTouchTargetPt = 44.0f;  // Apple HIG minimum
-    static constexpr float DefaultForce = 0.5f;       // When force not available (legacy; MDTV replaces this)
-    static constexpr float VelocitySmoothingFactor = 0.3f;  // EMA for touch velocity
+    static constexpr float MinTouchTargetPt = 44.0f;       // Apple HIG minimum
+    static constexpr float DefaultForce = 0.5f;            // When force not available (legacy; MDTV replaces this)
+    static constexpr float VelocitySmoothingFactor = 0.3f; // EMA for touch velocity
 
     // MDTV tuning constants
-    static constexpr int64_t MDTVApproachWindowMs = 200;   // Look back this far for approach speed
-    static constexpr float   MDTVApproachRadiusPt = 20.0f; // Proximity threshold for approach detection
-    static constexpr float   MDTVContactGradientPt = 10.0f; // Distance at which gradient saturates to 0
+    static constexpr int64_t MDTVApproachWindowMs = 200;  // Look back this far for approach speed
+    static constexpr float MDTVApproachRadiusPt = 20.0f;  // Proximity threshold for approach detection
+    static constexpr float MDTVContactGradientPt = 10.0f; // Distance at which gradient saturates to 0
 
     //-- Zone registration -------------------------------------------------------
 
-    struct TouchZone {
-        juce::Rectangle<float> bounds;  // In parent component coordinates
+    struct TouchZone
+    {
+        juce::Rectangle<float> bounds; // In parent component coordinates
         TouchCallback callback;
-        juce::String name;              // For debugging
+        juce::String name; // For debugging
         bool active = true;
     };
 
     // Register a zone that receives touch events.
     // Returns a zone ID for later removal or bounds update.
-    int addZone(const juce::String& name,
-                juce::Rectangle<float> bounds,
-                TouchCallback callback)
+    int addZone(const juce::String& name, juce::Rectangle<float> bounds, TouchCallback callback)
     {
         int id = nextZoneId++;
-        zones[id] = { bounds, std::move(callback), name, true };
+        zones[id] = {bounds, std::move(callback), name, true};
         return id;
     }
 
@@ -93,7 +96,7 @@ public:
     {
         zones.erase(zoneId);
         // Release any touches owned by this zone
-        for (auto it = activeTouches.begin(); it != activeTouches.end(); )
+        for (auto it = activeTouches.begin(); it != activeTouches.end();)
         {
             if (it->second.owningZoneId == zoneId)
                 it = activeTouches.erase(it);
@@ -138,10 +141,10 @@ public:
         }
 
         if (owningZone < 0)
-            return;  // Touch outside all zones — ignore
+            return; // Touch outside all zones — ignore
 
         // Evict stale recently-ended records before using them for approach speed
-        for (auto it = recentlyEndedTouches.begin(); it != recentlyEndedTouches.end(); )
+        for (auto it = recentlyEndedTouches.begin(); it != recentlyEndedTouches.end();)
         {
             if ((nowMs - it->second.timestampMs) > MDTVApproachWindowMs)
                 it = recentlyEndedTouches.erase(it);
@@ -168,31 +171,34 @@ public:
         nx = juce::jlimit(0.0f, 1.0f, nx);
         ny = juce::jlimit(0.0f, 1.0f, ny);
 
-        TouchEvent evt {
-            touchId, px, py, nx, ny,
-            initialMDTV,                    // MDTV-derived force replaces DefaultForce
-            static_cast<float>(e.pressure),
-            TouchPhase::Began,
-            nowMs,
-            0.0f, 0.0f
-        };
+        TouchEvent evt{touchId,
+                       px,
+                       py,
+                       nx,
+                       ny,
+                       initialMDTV, // MDTV-derived force replaces DefaultForce
+                       static_cast<float>(e.pressure),
+                       TouchPhase::Began,
+                       nowMs,
+                       0.0f,
+                       0.0f};
 
         ActiveTouch at;
-        at.owningZoneId      = owningZone;
-        at.lastX             = px;
-        at.lastY             = py;
-        at.lastTimestamp     = nowMs;
-        at.smoothedVx        = 0.0f;
-        at.smoothedVy        = 0.0f;
+        at.owningZoneId = owningZone;
+        at.lastX = px;
+        at.lastY = py;
+        at.lastTimestamp = nowMs;
+        at.smoothedVx = 0.0f;
+        at.smoothedVy = 0.0f;
         // MDTV fields
-        at.beginX                = px;
-        at.beginY                = py;
-        at.beganTimestampMs      = nowMs;
-        at.firstDragDistancePt   = 0.0f;
-        at.firstDragTimestampMs  = 0;       // 0 = first drag not yet seen
-        at.mdtvResolved          = false;
-        at.mdtvVelocity          = initialMDTV;
-        at.approachSpeed         = approachSpd;
+        at.beginX = px;
+        at.beginY = py;
+        at.beganTimestampMs = nowMs;
+        at.firstDragDistancePt = 0.0f;
+        at.firstDragTimestampMs = 0; // 0 = first drag not yet seen
+        at.mdtvResolved = false;
+        at.mdtvVelocity = initialMDTV;
+        at.approachSpeed = approachSpd;
 
         activeTouches[touchId] = at;
 
@@ -240,8 +246,7 @@ public:
 
             // contactGradient: 1.0 = decisive hard strike (tiny movement on first drag)
             //                  0.0 = soft/exploring touch (large early movement)
-            float contactGradient = 1.0f - juce::jlimit(0.0f, 1.0f,
-                                        at.firstDragDistancePt / MDTVContactGradientPt);
+            float contactGradient = 1.0f - juce::jlimit(0.0f, 1.0f, at.firstDragDistancePt / MDTVContactGradientPt);
 
             // Scale by reaction time: short dt (quick first drag) → hard strike
             // Long dt (finger settled before moving) → soft touch
@@ -249,7 +254,7 @@ public:
             const float kMaxReactionMs = 150.0f;
             float elapsed = static_cast<float>(now - at.beganTimestampMs);
             float timeFactor = 1.0f - juce::jlimit(0.0f, 1.0f, elapsed / kMaxReactionMs);
-            contactGradient *= (0.5f + 0.5f * timeFactor);  // blend: pure distance at slow end
+            contactGradient *= (0.5f + 0.5f * timeFactor); // blend: pure distance at slow end
 
             // MDTV Signal 3: hardware force
             const float hwForce = queryHardwareForce(e);
@@ -271,26 +276,16 @@ public:
         // re-read force on drag (e.g., aftertouch emulation) see the corrected value.
         float forceFinal = at.mdtvResolved ? at.mdtvVelocity : extractForce(e);
 
-        TouchEvent evt {
-            touchId, px, py, nx, ny,
-            forceFinal, static_cast<float>(e.pressure),
-            TouchPhase::Moved,
-            now, vx, vy
-        };
+        TouchEvent evt{touchId,           px,  py, nx, ny, forceFinal, static_cast<float>(e.pressure),
+                       TouchPhase::Moved, now, vx, vy};
 
         zone.callback(evt);
     }
 
-    void handleMouseUp(const juce::MouseEvent& e)
-    {
-        dispatchEndEvent(e, TouchPhase::Ended);
-    }
+    void handleMouseUp(const juce::MouseEvent& e) { dispatchEndEvent(e, TouchPhase::Ended); }
 
     // Called if the system cancels a touch (e.g., incoming call)
-    void handleTouchCancelled(const juce::MouseEvent& e)
-    {
-        dispatchEndEvent(e, TouchPhase::Cancelled);
-    }
+    void handleTouchCancelled(const juce::MouseEvent& e) { dispatchEndEvent(e, TouchPhase::Cancelled); }
 
     //-- Query -------------------------------------------------------------------
 
@@ -312,13 +307,17 @@ public:
             auto zoneIt = zones.find(at.owningZoneId);
             if (zoneIt != zones.end())
             {
-                TouchEvent evt {
-                    touchId, at.lastX, at.lastY, 0.0f, 0.0f,
-                    0.0f, 0.0f,
-                    TouchPhase::Cancelled,
-                    juce::Time::currentTimeMillis(),
-                    0.0f, 0.0f
-                };
+                TouchEvent evt{touchId,
+                               at.lastX,
+                               at.lastY,
+                               0.0f,
+                               0.0f,
+                               0.0f,
+                               0.0f,
+                               TouchPhase::Cancelled,
+                               juce::Time::currentTimeMillis(),
+                               0.0f,
+                               0.0f};
                 zoneIt->second.callback(evt);
             }
         }
@@ -326,20 +325,21 @@ public:
     }
 
 private:
-    struct ActiveTouch {
+    struct ActiveTouch
+    {
         int owningZoneId;
         float lastX, lastY;
         int64_t lastTimestamp;
         float smoothedVx, smoothedVy;
 
         // MDTV — Signal tracking
-        float beginX, beginY;             // Touch-down position
-        int64_t beganTimestampMs;         // When mouseDown fired
-        float firstDragDistancePt;        // Distance of first drag from begin position
-        int64_t firstDragTimestampMs;     // When first drag arrived (0 = not yet seen)
-        bool mdtvResolved;                // Whether MDTV velocity has been computed
-        float mdtvVelocity;               // Computed strike velocity (0.05–1.0)
-        float approachSpeed;              // Signal 1: spatial speed estimate (0.0–1.0)
+        float beginX, beginY;         // Touch-down position
+        int64_t beganTimestampMs;     // When mouseDown fired
+        float firstDragDistancePt;    // Distance of first drag from begin position
+        int64_t firstDragTimestampMs; // When first drag arrived (0 = not yet seen)
+        bool mdtvResolved;            // Whether MDTV velocity has been computed
+        float mdtvVelocity;           // Computed strike velocity (0.05–1.0)
+        float approachSpeed;          // Signal 1: spatial speed estimate (0.0–1.0)
     };
 
     std::unordered_map<int, TouchZone> zones;
@@ -347,7 +347,8 @@ private:
 
     // Ring buffer of recently-ended touch positions for Signal 1 approach speed.
     // Keyed by touchId; entries older than MDTVApproachWindowMs are ignored.
-    struct EndedTouchRecord {
+    struct EndedTouchRecord
+    {
         float x, y;
         int64_t timestampMs;
     };
@@ -460,19 +461,13 @@ private:
             nx = juce::jlimit(0.0f, 1.0f, nx);
             ny = juce::jlimit(0.0f, 1.0f, ny);
 
-            TouchEvent evt {
-                touchId, px, py, nx, ny,
-                0.0f, 0.0f,
-                phase,
-                nowMs,
-                at.smoothedVx, at.smoothedVy
-            };
+            TouchEvent evt{touchId, px, py, nx, ny, 0.0f, 0.0f, phase, nowMs, at.smoothedVx, at.smoothedVy};
 
             zone.callback(evt);
 
             // Record tombstone for MDTV Signal 1: the next touch-down near this
             // position within MDTVApproachWindowMs can measure approach speed.
-            recentlyEndedTouches[touchId] = { px, py, nowMs };
+            recentlyEndedTouches[touchId] = {px, py, nowMs};
         }
 
         activeTouches.erase(it);

@@ -2,7 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include <juce_audio_devices/juce_audio_devices.h>  // juce::MidiMessageCollector
+#include <juce_audio_devices/juce_audio_devices.h> // juce::MidiMessageCollector
 #include "Core/SynthEngine.h"
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
@@ -21,7 +21,8 @@
 #include <array>
 #include <memory>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 // ── Per-slot waveform FIFO ─────────────────────────────────────────────────
 // Lock-free SPSC ring: audio thread writes (push), UI thread reads
@@ -39,14 +40,14 @@ struct WaveformFifo
 {
     static constexpr size_t kSize = 512; // power-of-two (~10 ms @ 48 kHz)
 
-    std::array<float, kSize> buffer {};
-    std::atomic<size_t>      writeHead { 0 };
+    std::array<float, kSize> buffer{};
+    std::atomic<size_t> writeHead{0};
 
     // Default-constructible so it can live in a std::array.
-    WaveformFifo()  = default;
+    WaveformFifo() = default;
 
     // Non-copyable — std::atomic is not copy/move-assignable.
-    WaveformFifo(const WaveformFifo&)            = delete;
+    WaveformFifo(const WaveformFifo&) = delete;
     WaveformFifo& operator=(const WaveformFifo&) = delete;
 
     // Audio thread: copy `count` samples into the ring and advance writeHead.
@@ -65,9 +66,8 @@ struct WaveformFifo
         size_t head = writeHead.load(std::memory_order_relaxed);
         for (size_t i = 0; i < count; ++i)
             buffer[(head + i) & (kSize - 1)] = samples[i];
-        std::atomic_thread_fence(std::memory_order_release);  // ARM safety: flush buffer[] before advancing head
-        writeHead.store((head + count) & (kSize - 1),
-                        std::memory_order_relaxed);
+        std::atomic_thread_fence(std::memory_order_release); // ARM safety: flush buffer[] before advancing head
+        writeHead.store((head + count) & (kSize - 1), std::memory_order_relaxed);
     }
 
     // UI thread: copy the most recent `count` samples into dest[0..count-1],
@@ -81,8 +81,8 @@ struct WaveformFifo
             size_t pad = count - kSize;
             for (size_t i = 0; i < pad; ++i)
                 dest[i] = 0.0f;
-            dest  += pad;
-            count  = kSize;
+            dest += pad;
+            count = kSize;
         }
         // Walk backwards from writeHead to find the start of the window,
         // then read forward so dest[0] is oldest and dest[count-1] is newest.
@@ -147,17 +147,18 @@ public:
     //   processor_->onGetXOuijaState = [this]() { return xouijaPanel_.toValueTree(); };
     //   processor_->onSetXOuijaState = [this](const juce::ValueTree& t) {
     //       xouijaPanel_.fromValueTree(t); };
-    std::function<juce::ValueTree()>                    onGetXOuijaState;
+    std::function<juce::ValueTree()> onGetXOuijaState;
     std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
 
     // ── Field Map note event queue ─────────────────────────────────────────────
     // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
     // (drainNoteEvents). Both ends use only std::atomic<size_t> indices — no mutex,
     // no heap allocation after init. Power-of-two size for fast modulo.
-    struct NoteMapEvent {
-        int   midiNote;   // 0–127
-        float velocity;   // 0.0–1.0
-        int   slot;       // 0–4 (which engine slot played the note; 4 = Ghost Slot)
+    struct NoteMapEvent
+    {
+        int midiNote;   // 0–127
+        float velocity; // 0.0–1.0
+        int slot;       // 0–4 (which engine slot played the note; 4 = Ghost Slot)
     };
     static constexpr size_t kNoteQueueSize = 1024; // power-of-two
 
@@ -167,8 +168,9 @@ public:
         size_t head = noteQueueHead.load(std::memory_order_relaxed);
         size_t tail = noteQueueTail.load(std::memory_order_acquire);
         size_t nextHead = (head + 1) & (kNoteQueueSize - 1);
-        if (nextHead == tail) return; // full — drop event rather than block
-        noteQueue[head] = { midiNote, velocity, slot };
+        if (nextHead == tail)
+            return; // full — drop event rather than block
+        noteQueue[head] = {midiNote, velocity, slot};
         noteQueueHead.store(nextHead, std::memory_order_release);
     }
 
@@ -198,7 +200,8 @@ public:
     // UI-thread accessor — returns a const reference; safe to call at any time.
     const WaveformFifo& getWaveformFifo(int slot) const noexcept
     {
-        if (slot < 0 || slot >= MaxSlots) slot = 0;  // safety fallback — clamp OOB slot
+        if (slot < 0 || slot >= MaxSlots)
+            slot = 0; // safety fallback — clamp OOB slot
         return waveformFifos[static_cast<size_t>(slot)];
     }
 
@@ -207,7 +210,10 @@ public:
     MegaCouplingMatrix& getCouplingMatrix() { return couplingMatrix; }
     void addCouplingRoute(MegaCouplingMatrix::CouplingRoute route) { couplingMatrix.addRoute(route); }
     // DEPRECATED: no external callers — everyone uses getCouplingMatrix().removeUserRoute() directly.
-    void removeCouplingRoute(int srcSlot, int dstSlot, CouplingType type) { couplingMatrix.removeUserRoute(srcSlot, dstSlot, type); }
+    void removeCouplingRoute(int srcSlot, int dstSlot, CouplingType type)
+    {
+        couplingMatrix.removeUserRoute(srcSlot, dstSlot, type);
+    }
 
     // Chord Machine — read access for UI, state control from message thread
     ChordMachine& getChordMachine() { return chordMachine; }
@@ -242,7 +248,7 @@ public:
         size_t next = (head + 1) % kCCQueueSize;
         if (next == ccOutputTail_.load(std::memory_order_acquire))
             return; // queue full — drop (acceptable for CC)
-        ccOutputQueue_[head] = { channel, cc, value };
+        ccOutputQueue_[head] = {channel, cc, value};
         ccOutputHead_.store(next, std::memory_order_release);
     }
 
@@ -257,17 +263,15 @@ public:
     }
     bool isSlotMuted(int slot) const noexcept
     {
-        if (slot < 0 || slot >= MaxSlots) return false;
+        if (slot < 0 || slot >= MaxSlots)
+            return false;
         return slotMuted[slot].load(std::memory_order_relaxed);
     }
 
     // Fire the chord machine — triggers an immediate one-shot chord using the
     // current palette/voicing on the live root note (or MIDI C4 if no root).
     // Sets the chordFirePending flag; processBlock consumes it on the next block.
-    void fireChordMachine() noexcept
-    {
-        chordFirePending.store(true, std::memory_order_release);
-    }
+    void fireChordMachine() noexcept { chordFirePending.store(true, std::memory_order_release); }
 
     // Trigger a coupling energy burst — temporarily boosts all active coupling
     // route amounts to 1.0 for ~500ms, then decays back to 1.0 multiplier.
@@ -279,26 +283,19 @@ public:
         // currentSampleRate is NOT used here — it may be concurrently written
         // by prepareToPlay() on the audio thread (data race → UB).
         couplingBurstSamplesRemaining.store(
-            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed)
-                             * kCouplingBurstMs / 1000.0),
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed) * kCouplingBurstMs / 1000.0),
             std::memory_order_relaxed);
     }
 
     // Kill all delay/reverb tails — calls reset() on the master FX chain,
     // clearing all delay buffers and reverb state instantly.
     // Message-thread only: posts an atomic flag consumed by processBlock.
-    void killDelayTails() noexcept
-    {
-        killDelayTailsPending.store(true, std::memory_order_release);
-    }
+    void killDelayTails() noexcept { killDelayTailsPending.store(true, std::memory_order_release); }
 
     // CPU processing load as a fraction 0.0–1.0 (or higher during overload).
     // Measured in processBlock() as elapsed wall time / buffer duration.
     // Safe to call from any thread.
-    float getProcessingLoad() const noexcept
-    {
-        return processingLoad.load(std::memory_order_relaxed);
-    }
+    float getProcessingLoad() const noexcept { return processingLoad.load(std::memory_order_relaxed); }
 
     // Dark Cockpit B041: note activity level (0.0 = silent, 1.0 = max activity).
     // Computed from output RMS in processBlock() with ~100ms attack / ~500ms release.
@@ -314,15 +311,15 @@ public:
     // PlayControlPanel calls setPlayScaleIndex / getPlayScaleIndex via its
     // processor reference.
     void setPlayScaleIndex(int idx) noexcept { persistedPlayScaleIndex = idx; }
-    int  getPlayScaleIndex() const noexcept  { return persistedPlayScaleIndex; }
+    int getPlayScaleIndex() const noexcept { return persistedPlayScaleIndex; }
 
     // Editor tile focus (#357-a): selected slot (-1 = overview).
     void setPersistedSelectedSlot(int slot) noexcept { persistedSelectedSlot = slot; }
-    int  getPersistedSelectedSlot() const noexcept   { return persistedSelectedSlot; }
+    int getPersistedSelectedSlot() const noexcept { return persistedSelectedSlot; }
 
     // Signal flow active section (#357-b): 0=SRC1 … 5=OUT.
     void setPersistedSignalFlowSection(int sec) noexcept { persistedSignalFlowSection = sec; }
-    int  getPersistedSignalFlowSection() const noexcept  { return persistedSignalFlowSection; }
+    int getPersistedSignalFlowSection() const noexcept { return persistedSignalFlowSection; }
 
     // Dark Cockpit bypass (#357-c): true = bypass (hold full opacity).
     void setPersistedCockpitBypass(bool v) noexcept { persistedCockpitBypass = v; }
@@ -353,18 +350,20 @@ private:
 
     // Engine slots — shared_ptr for atomic swap between message and audio threads.
     // The audio thread reads via atomic_load; the message thread writes via atomic_store.
-    struct EngineSlot {
+    struct EngineSlot
+    {
         std::shared_ptr<SynthEngine> engine;
     };
     std::array<std::shared_ptr<SynthEngine>, MaxSlots> engines;
 
     // Crossfade state for engine hot-swap — audio-thread-only after the
     // pending command is consumed.  Never touched by the message thread.
-    struct CrossfadeState {
-        std::shared_ptr<SynthEngine> outgoing;  // engine being faded out
-        float fadeGain = 0.0f;                    // 1.0 → 0.0 during crossfade
+    struct CrossfadeState
+    {
+        std::shared_ptr<SynthEngine> outgoing; // engine being faded out
+        float fadeGain = 0.0f;                 // 1.0 → 0.0 during crossfade
         int fadeSamplesRemaining = 0;
-        bool needsAllNotesOff = false;            // inject CC123 on first crossfade block (#360)
+        bool needsAllNotesOff = false; // inject CC123 on first crossfade block (#360)
     };
     std::array<CrossfadeState, MaxSlots> crossfades;
 
@@ -376,12 +375,13 @@ private:
     //   message thread: fill fields → release-store ready=true
     //   audio   thread: acquire-load ready → consume fields → store ready=false
     // No mutex needed; no heap allocation on the audio thread.
-    struct PendingCrossfade {
+    struct PendingCrossfade
+    {
         std::shared_ptr<SynthEngine> outgoing;
-        float fadeGain               = 0.0f;
-        int   fadeSamplesRemaining   = 0;
-        bool  needsAllNotesOff       = true;      // inject CC123 on first block (#360)
-        std::atomic<bool> ready      { false };
+        float fadeGain = 0.0f;
+        int fadeSamplesRemaining = 0;
+        bool needsAllNotesOff = true; // inject CC123 on first block (#360)
+        std::atomic<bool> ready{false};
 
         // Non-copyable — std::atomic<bool> cannot be copy/move-assigned.
         PendingCrossfade() = default;
@@ -392,24 +392,28 @@ private:
 
     // Pre-allocated family-bleed scratch array — capacity reserved in prepareToPlay
     // so processFamilyBleed never heap-allocates on the audio thread.
-    struct FamilySlot { int slot; SynthEngine* eng; };
+    struct FamilySlot
+    {
+        int slot;
+        SynthEngine* eng;
+    };
     juce::Array<FamilySlot> familySlots_;
 
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
-    std::array<juce::MidiBuffer, MaxSlots> slotMidi;  // per-slot MIDI from ChordMachine
+    std::array<juce::MidiBuffer, MaxSlots> slotMidi; // per-slot MIDI from ChordMachine
 
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
 
-    std::atomic<double> currentSampleRate { 44100.0 };
+    std::atomic<double> currentSampleRate{44100.0};
     // atomicSampleRate_ mirrors currentSampleRate for safe cross-thread reads.
     // Written in prepareToPlay() (same time as currentSampleRate), read on the
     // message thread in triggerCouplingBurst(). currentSampleRate is now also
     // atomic, eliminating the data race (FIX 4).
-    std::atomic<double> atomicSampleRate_ { 44100.0 };
-    std::atomic<int> currentBlockSize { 512 };
+    std::atomic<double> atomicSampleRate_{44100.0};
+    std::atomic<int> currentBlockSize{512};
 
     // SRO: Per-slot CPU profiling + fleet-wide auditor
     std::array<EngineProfiler, MaxSlots> engineProfilers;
@@ -417,7 +421,8 @@ private:
 
     // Cached raw parameter pointers — resolved once in prepareToPlay, read per-block.
     // Eliminates string-based hash map lookups from the audio thread.
-    struct CachedParams {
+    struct CachedParams
+    {
         std::atomic<float>* masterVolume = nullptr;
         std::atomic<float>* cmEnabled = nullptr;
         std::atomic<float>* cmPalette = nullptr;
@@ -433,9 +438,9 @@ private:
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
         // Family bleed params — cached to avoid string lookups on audio thread
-        std::atomic<float>* ohmCommune  = nullptr;
-        std::atomic<float>* obblBond    = nullptr;
-        std::atomic<float>* oleDrama    = nullptr;
+        std::atomic<float>* ohmCommune = nullptr;
+        std::atomic<float>* obblBond = nullptr;
+        std::atomic<float>* oleDrama = nullptr;
 
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
@@ -446,35 +451,37 @@ private:
 
         // Coupling performance overlay — 4 route slots × 5 params = 20 params
         // Cached for audio-thread access (no string lookups in processBlock)
-        struct CouplingRouteParams {
-            std::atomic<float>* active = nullptr;   // cp_rN_active
-            std::atomic<float>* type   = nullptr;   // cp_rN_type
-            std::atomic<float>* amount = nullptr;   // cp_rN_amount
-            std::atomic<float>* source = nullptr;   // cp_rN_source
-            std::atomic<float>* target = nullptr;   // cp_rN_target
+        struct CouplingRouteParams
+        {
+            std::atomic<float>* active = nullptr; // cp_rN_active
+            std::atomic<float>* type = nullptr;   // cp_rN_type
+            std::atomic<float>* amount = nullptr; // cp_rN_amount
+            std::atomic<float>* source = nullptr; // cp_rN_source
+            std::atomic<float>* target = nullptr; // cp_rN_target
         };
         std::array<CouplingRouteParams, CouplingCrossfader::MaxRouteSlots> cpRoutes;
     } cachedParams;
 
-    juce::MidiBuffer mpeMidiBuffer;  // MPE-processed MIDI (expression stripped)
+    juce::MidiBuffer mpeMidiBuffer; // MPE-processed MIDI (expression stripped)
 
     // Field Map SPSC queue storage (audio-thread write / UI-thread read)
-    std::array<NoteMapEvent, kNoteQueueSize> noteQueue {};
-    std::atomic<size_t> noteQueueHead { 0 };
-    std::atomic<size_t> noteQueueTail { 0 };
+    std::array<NoteMapEvent, kNoteQueueSize> noteQueue{};
+    std::atomic<size_t> noteQueueHead{0};
+    std::atomic<size_t> noteQueueTail{0};
 
     // ── CC Output SPSC queue (UI-thread write / audio-thread read) ────────────
     // Carries CC events from XOuija (message thread) to MIDI output (audio thread).
     // Head written by UI thread; tail read/advanced by audio thread.
-    struct CCOutputEvent {
-        uint8_t channel    = 0;   // 0-15 (MIDI channel minus 1)
-        uint8_t controller = 0;   // CC number (85-90 for XOuija)
-        uint8_t value      = 0;   // 0-127
+    struct CCOutputEvent
+    {
+        uint8_t channel = 0;    // 0-15 (MIDI channel minus 1)
+        uint8_t controller = 0; // CC number (85-90 for XOuija)
+        uint8_t value = 0;      // 0-127
     };
     static constexpr size_t kCCQueueSize = 256;
-    std::array<CCOutputEvent, kCCQueueSize> ccOutputQueue_ {};
-    std::atomic<size_t> ccOutputHead_ { 0 };   // written by UI thread
-    std::atomic<size_t> ccOutputTail_ { 0 };   // read by audio thread
+    std::array<CCOutputEvent, kCCQueueSize> ccOutputQueue_{};
+    std::atomic<size_t> ccOutputHead_{0}; // written by UI thread
+    std::atomic<size_t> ccOutputTail_{0}; // read by audio thread
 
     // PlaySurface MIDI collector — message thread enqueues, processBlock drains.
     juce::MidiMessageCollector playSurfaceMidiCollector;
@@ -483,41 +490,58 @@ private:
     // Used by prepareToPlay() to load a default engine on first launch (no saved state).
     // Must be atomic: setStateInformation runs on the message thread, prepareToPlay
     // can be called from any thread depending on host. (Audit P0-2 CRITICAL-1)
-    std::atomic<bool> hasRestoredState { false };
+    std::atomic<bool> hasRestoredState{false};
 
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
-    std::array<std::atomic<bool>, MaxSlots> slotMuted {};  // default false
+    std::array<std::atomic<bool>, MaxSlots> slotMuted{}; // default false
 
     // ── CC11 Expression pedal — per-channel tracking (audio thread only) ────────
     // expressionValue_[ch]: 0.0–1.0, updated from CC11 events in processBlock().
     // CC11 passes through to all engine slots for per-engine handling.
     // Processor-level value is available for future coupling/macro use.
-    std::array<float, 16> expressionValue_ {};  // default 0.0 (no expression)
+    std::array<float, 16> expressionValue_{}; // default 0.0 (no expression)
 
     // ── CC64 sustain pedal — fleet-wide hold (audio thread only) ─────────────
     // sustainHeld_[ch]: true while CC64 >= 64 on MIDI channel ch (0-based).
     // sustainPendingNoteOffs_[slot][ch]: bitmask of notes (0–127) whose note-off
     // was suppressed while sustain was held; released when the pedal lifts.
     // All fields are audio-thread-only — no atomics needed.
-    std::array<bool, 16> sustainHeld_ {};
+    std::array<bool, 16> sustainHeld_{};
     // 128 notes × 16 channels × MaxSlots — stored as uint64_t[2] bitmasks per channel.
     // Bit N is set when note N is pending release on that slot+channel.
-    struct SustainNoteSet {
-        uint64_t lo = 0;  // notes 0–63
-        uint64_t hi = 0;  // notes 64–127
-        void set(int note)   { if (note < 64) lo |= (1ULL << note); else hi |= (1ULL << (note - 64)); }
-        void clear(int note) { if (note < 64) lo &= ~(1ULL << note); else hi &= ~(1ULL << (note - 64)); }
+    struct SustainNoteSet
+    {
+        uint64_t lo = 0; // notes 0–63
+        uint64_t hi = 0; // notes 64–127
+        void set(int note)
+        {
+            if (note < 64)
+                lo |= (1ULL << note);
+            else
+                hi |= (1ULL << (note - 64));
+        }
+        void clear(int note)
+        {
+            if (note < 64)
+                lo &= ~(1ULL << note);
+            else
+                hi &= ~(1ULL << (note - 64));
+        }
         bool test(int note) const { return note < 64 ? (lo >> note) & 1 : (hi >> (note - 64)) & 1; }
         bool any() const { return lo || hi; }
-        void clearAll() { lo = 0; hi = 0; }
+        void clearAll()
+        {
+            lo = 0;
+            hi = 0;
+        }
     };
     // [slot][channel]
-    std::array<std::array<SustainNoteSet, 16>, MaxSlots> sustainPendingNoteOffs_ {};
+    std::array<std::array<SustainNoteSet, 16>, MaxSlots> sustainPendingNoteOffs_{};
 
     // ── Chord machine fire pending flag ──────────────────────────────────────
     // message thread sets → audio thread consumes and clears.
-    std::atomic<bool> chordFirePending { false };
+    std::atomic<bool> chordFirePending{false};
 
     // ── Chord fire deferred note-off ──────────────────────────────────────────
     // When chordFirePending is consumed, note-ons are injected immediately and
@@ -525,32 +549,33 @@ private:
     // Each subsequent block decrements the countdown; when it reaches zero the
     // audio thread injects note-offs for the stored chordFireNotes.
     // This replaces the old same-block note-off which gave only ~10ms of hold.
-    std::atomic<int> chordFireNoteOffCountdown { 0 };
-    static constexpr int kChordHoldMs = 100;  // hold chord for ~100ms before note-off
-    std::array<std::atomic<int>, kChordSlots> chordFireNotes {};  // notes fired; 0 = empty (MIDI note 0 / C-1 excluded as sentinel)
+    std::atomic<int> chordFireNoteOffCountdown{0};
+    static constexpr int kChordHoldMs = 100; // hold chord for ~100ms before note-off
+    std::array<std::atomic<int>, kChordSlots>
+        chordFireNotes{}; // notes fired; 0 = empty (MIDI note 0 / C-1 excluded as sentinel)
 
     // ── Coupling burst state ──────────────────────────────────────────────────
     // couplingBurstGain: multiplier applied to all active route amounts (1.0 = no boost).
     // Starts at kCouplingBurstPeak when triggered, decays to 1.0 over kCouplingBurstMs.
-    static constexpr float kCouplingBurstPeak = 2.0f;   // max boost factor
-    static constexpr float kCouplingBurstMs   = 500.0f; // decay duration in ms
-    std::atomic<float> couplingBurstGain          { 1.0f };
-    std::atomic<int>   couplingBurstSamplesRemaining { 0 };
+    static constexpr float kCouplingBurstPeak = 2.0f; // max boost factor
+    static constexpr float kCouplingBurstMs = 500.0f; // decay duration in ms
+    std::atomic<float> couplingBurstGain{1.0f};
+    std::atomic<int> couplingBurstSamplesRemaining{0};
 
     // ── Kill delay tails pending flag ────────────────────────────────────────
     // message thread sets → audio thread consumes (calls masterFX.reset()) and clears.
-    std::atomic<bool> killDelayTailsPending { false };
+    std::atomic<bool> killDelayTailsPending{false};
 
     // ── CPU processing load ───────────────────────────────────────────────────
     // Updated each block: elapsed / buffer_duration. Smoothed with a leaky integrator.
-    std::atomic<float> processingLoad { 0.0f };
+    std::atomic<float> processingLoad{0.0f};
 
     // ── Dark Cockpit B041: note activity ─────────────────────────────────────
     // RMS-derived signal (0.0 = silent, 1.0 = maximum) smoothed with one-pole
     // filter (~100ms attack, ~500ms release). Read by getCockpitOpacity() in editor.
-    std::atomic<float> noteActivity_ { 0.0f };
+    std::atomic<float> noteActivity_{0.0f};
     // Timestamp of the start of the current processBlock call (high-res ticks).
-    juce::int64 processBlockStartTick { 0 };
+    juce::int64 processBlockStartTick{0};
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
@@ -570,9 +595,8 @@ private:
         while (tail != head)
         {
             const auto& evt = ccOutputQueue_[tail];
-            midiOut.addEvent(
-                juce::MidiMessage::controllerEvent(evt.channel + 1, evt.controller, evt.value),
-                numSamples - 1);
+            midiOut.addEvent(juce::MidiMessage::controllerEvent(evt.channel + 1, evt.controller, evt.value),
+                             numSamples - 1);
             tail = (tail + 1) % kCCQueueSize;
         }
         ccOutputTail_.store(tail, std::memory_order_release);
@@ -580,10 +604,10 @@ private:
 
     // ── Editor UI state storage (closes #314, #357) ──────────────────────────
     // Written on the message thread only.  No audio-thread access — plain ints.
-    int  persistedPlayScaleIndex     = 0;     // #314: PlayControlPanel scale selector
-    int  persistedSelectedSlot       = -1;    // #357: editor tile focus (-1 = overview)
-    int  persistedSignalFlowSection  = 0;     // #357: signal flow active section
-    bool persistedCockpitBypass      = false; // #357: Dark Cockpit bypass state
+    int persistedPlayScaleIndex = 0;     // #314: PlayControlPanel scale selector
+    int persistedSelectedSlot = -1;      // #357: editor tile focus (-1 = overview)
+    int persistedSignalFlowSection = 0;  // #357: signal flow active section
+    bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.
@@ -592,9 +616,9 @@ private:
     // midiClockBlockOffset: running sample count from the start of the current
     //   DAW-session, advanced by numSamples each block.
     // midiClockIntervalSamples: smoothed inter-16th-note interval (6 pulses).
-    double midiClockBlockOffset_   = 0.0;   // total samples elapsed (audio thread only)
-    double midiClockLastStepTime_  = -1.0;  // sample time of last step boundary, or -1
-    float  midiClockDerivedBPM_    = 122.0f; // current BPM derived from external clock
+    double midiClockBlockOffset_ = 0.0;   // total samples elapsed (audio thread only)
+    double midiClockLastStepTime_ = -1.0; // sample time of last step boundary, or -1
+    float midiClockDerivedBPM_ = 122.0f;  // current BPM derived from external clock
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusProcessor)
 };

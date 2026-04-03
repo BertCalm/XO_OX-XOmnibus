@@ -4,7 +4,8 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../DSP/SRO/SilenceGate.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ShaperEngine — The Utility Engine Interface
@@ -29,7 +30,7 @@ public:
 
     //-- Lifecycle -------------------------------------------------------------
 
-    virtual void prepare (double sampleRate, int maxBlockSize) = 0;
+    virtual void prepare(double sampleRate, int maxBlockSize) = 0;
     virtual void releaseResources() = 0;
     virtual void reset() = 0;
 
@@ -39,9 +40,7 @@ public:
     // or the mixed bus signal (bus slot). MIDI is forwarded for sidechain,
     // key-tracking, and rhythm-sync use cases.
     // Must be real-time safe: no allocation, no blocking, no exceptions.
-    virtual void processBlock (juce::AudioBuffer<float>& buffer,
-                               juce::MidiBuffer& midi,
-                               int numSamples) = 0;
+    virtual void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) = 0;
 
     //-- Coupling (bidirectional — shapers sense AND modulate) -----------------
 
@@ -51,20 +50,16 @@ public:
     //   XOxide:   ch0 = harmonic density, ch1 = saturation amount
     //   XOpress:  ch0 = gain reduction amount
     // Must be O(1) — return from a cached member.
-    virtual float getSampleForCoupling (int channel, int sampleIndex) const = 0;
+    virtual float getSampleForCoupling(int channel, int sampleIndex) const = 0;
 
     // Receive modulation from engines or other shapers via coupling matrix.
-    virtual void applyCouplingInput (CouplingType type,
-                                    float amount,
-                                    const float* sourceBuffer,
-                                    int numSamples) = 0;
+    virtual void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) = 0;
 
     //-- Parameters ------------------------------------------------------------
 
-    virtual juce::AudioProcessorValueTreeState::ParameterLayout
-        createParameterLayout() = 0;
+    virtual juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() = 0;
 
-    virtual void attachParameters (juce::AudioProcessorValueTreeState& apvts) = 0;
+    virtual void attachParameters(juce::AudioProcessorValueTreeState& apvts) = 0;
 
     //-- Identity --------------------------------------------------------------
 
@@ -88,7 +83,7 @@ public:
     //-- Bypass ----------------------------------------------------------------
 
     bool isBypassed() const { return bypassed; }
-    void setBypassed (bool b) { bypassed = b; }
+    void setBypassed(bool b) { bypassed = b; }
 
 private:
     bool bypassed = false;

@@ -5,7 +5,8 @@
 #include <array>
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // MacroTarget — describes a single parameter modulated by a macro knob.
@@ -20,16 +21,17 @@ namespace xoceanus {
 // parameter is resolved from `couplingRouteSlot` at cache time.
 // See coupling_performance_spec.md Section 4 for the design rationale.
 //
-struct MacroTarget {
-    juce::String engineId;           // Which engine this targets (e.g., "OddfeliX", "Overdub")
-    juce::String parameterId;        // The APVTS parameter to modulate
-    float minValue = 0.0f;           // Macro at 0 → this value
-    float maxValue = 1.0f;           // Macro at 1 → this value
-    bool inverted = false;           // If true, macro at 1 → minValue
+struct MacroTarget
+{
+    juce::String engineId;    // Which engine this targets (e.g., "OddfeliX", "Overdub")
+    juce::String parameterId; // The APVTS parameter to modulate
+    float minValue = 0.0f;    // Macro at 0 → this value
+    float maxValue = 1.0f;    // Macro at 1 → this value
+    bool inverted = false;    // If true, macro at 1 → minValue
 
     // Coupling route targeting (see coupling_performance_spec.md §4.1)
-    bool isCouplingTarget = false;   // True → writes to cp_rN_amount instead of parameterId
-    int couplingRouteSlot = -1;      // 0-3, maps to cp_r{slot+1}_amount
+    bool isCouplingTarget = false; // True → writes to cp_rN_amount instead of parameterId
+    int couplingRouteSlot = -1;    // 0-3, maps to cp_r{slot+1}_amount
 };
 
 //==============================================================================
@@ -61,26 +63,24 @@ struct MacroTarget {
 //   // In processBlock:
 //   macros.processBlock();
 //
-class MacroSystem {
+class MacroSystem
+{
 public:
     static constexpr int NumMacros = 4;
     static constexpr int NumCouplingRoutes = 4;
 
     // Macro index for the COUPLING knob — natural home for coupling depth.
     // Maps to MPCe quad-corner right axis (see coupling_performance_spec.md §4.2).
-    static constexpr int CouplingMacroIndex = 2;  // macro3 (0-based)
+    static constexpr int CouplingMacroIndex = 2; // macro3 (0-based)
 
     // Default labels matching the XOceanus spec
-    static constexpr std::array<const char*, 4> DefaultLabels = {
-        "CHARACTER", "MOVEMENT", "COUPLING", "SPACE"
-    };
+    static constexpr std::array<const char*, 4> DefaultLabels = {"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
 
     //--------------------------------------------------------------------------
     // Construction
     //--------------------------------------------------------------------------
 
-    explicit MacroSystem(juce::AudioProcessorValueTreeState& apvts)
-        : apvtsRef(apvts)
+    explicit MacroSystem(juce::AudioProcessorValueTreeState& apvts) : apvtsRef(apvts)
     {
         // Cache raw pointers to the 4 macro parameters — these are stable for
         // the lifetime of the APVTS and safe to dereference on the audio thread.
@@ -166,7 +166,7 @@ public:
         // Hold the lock only while swapping the vectors.
         {
             juce::SpinLock::ScopedLockType lock(slot.lock);
-            slot.targets      = std::move(targets);
+            slot.targets = std::move(targets);
             slot.cachedParams = std::move(newCached);
         }
     }
@@ -363,25 +363,24 @@ public:
         {
             auto* macroElem = root->createNewChildElement("Macro");
             macroElem->setAttribute("index", m);
-            macroElem->setAttribute("label",  labels[static_cast<size_t>(m)]);
+            macroElem->setAttribute("label", labels[static_cast<size_t>(m)]);
 
             // Hold the lock briefly to snapshot targets on the message thread.
             // getState() must only be called from the message thread
             // (inside getStateInformation).
             const auto& slot = macroSlots[static_cast<size_t>(m)];
-            juce::SpinLock::ScopedLockType lock(
-                const_cast<juce::SpinLock&>(slot.lock));
+            juce::SpinLock::ScopedLockType lock(const_cast<juce::SpinLock&>(slot.lock));
 
             for (const auto& t : slot.targets)
             {
                 auto* te = macroElem->createNewChildElement("Target");
-                te->setAttribute("engineId",   t.engineId);
+                te->setAttribute("engineId", t.engineId);
                 te->setAttribute("parameterId", t.parameterId);
-                te->setAttribute("min",         static_cast<double>(t.minValue));
-                te->setAttribute("max",         static_cast<double>(t.maxValue));
-                te->setAttribute("inverted",    t.inverted ? 1 : 0);
-                te->setAttribute("coupling",    t.isCouplingTarget ? 1 : 0);
-                te->setAttribute("routeSlot",   t.couplingRouteSlot);
+                te->setAttribute("min", static_cast<double>(t.minValue));
+                te->setAttribute("max", static_cast<double>(t.maxValue));
+                te->setAttribute("inverted", t.inverted ? 1 : 0);
+                te->setAttribute("coupling", t.isCouplingTarget ? 1 : 0);
+                te->setAttribute("routeSlot", t.couplingRouteSlot);
             }
         }
 
@@ -421,12 +420,12 @@ public:
                     continue;
 
                 MacroTarget t;
-                t.engineId          = te->getStringAttribute("engineId");
-                t.parameterId       = te->getStringAttribute("parameterId");
-                t.minValue          = static_cast<float>(te->getDoubleAttribute("min", 0.0));
-                t.maxValue          = static_cast<float>(te->getDoubleAttribute("max", 1.0));
-                t.inverted          = te->getIntAttribute("inverted", 0) != 0;
-                t.isCouplingTarget  = te->getIntAttribute("coupling",  0) != 0;
+                t.engineId = te->getStringAttribute("engineId");
+                t.parameterId = te->getStringAttribute("parameterId");
+                t.minValue = static_cast<float>(te->getDoubleAttribute("min", 0.0));
+                t.maxValue = static_cast<float>(te->getDoubleAttribute("max", 1.0));
+                t.inverted = te->getIntAttribute("inverted", 0) != 0;
+                t.isCouplingTarget = te->getIntAttribute("coupling", 0) != 0;
                 t.couplingRouteSlot = te->getIntAttribute("routeSlot", -1);
 
                 // Basic validation before accepting
@@ -464,8 +463,7 @@ public:
     //   { "macro": 3, "coupling": true, "routeSlot": 0,
     //     "min": 0.0, "max": 1.0 }
     //
-    void loadFromPreset(const juce::StringArray& macroLabels,
-                        const juce::var& macroTargetsVar)
+    void loadFromPreset(const juce::StringArray& macroLabels, const juce::var& macroTargetsVar)
     {
         // Reset everything
         clearAllTargets();
@@ -497,14 +495,14 @@ public:
                 continue;
 
             MacroTarget target;
-            target.engineId    = entry.getProperty("engineId", "").toString();
+            target.engineId = entry.getProperty("engineId", "").toString();
             target.parameterId = entry.getProperty("parameterId", "").toString();
-            target.minValue    = static_cast<float>(entry.getProperty("min", 0.0));
-            target.maxValue    = static_cast<float>(entry.getProperty("max", 1.0));
-            target.inverted    = static_cast<bool>(entry.getProperty("inverted", false));
+            target.minValue = static_cast<float>(entry.getProperty("min", 0.0));
+            target.maxValue = static_cast<float>(entry.getProperty("max", 1.0));
+            target.inverted = static_cast<bool>(entry.getProperty("inverted", false));
 
             // Coupling route targets: { "coupling": true, "routeSlot": 0-3 }
-            target.isCouplingTarget  = static_cast<bool>(entry.getProperty("coupling", false));
+            target.isCouplingTarget = static_cast<bool>(entry.getProperty("coupling", false));
             target.couplingRouteSlot = static_cast<int>(entry.getProperty("routeSlot", -1));
 
             // Validate: coupling targets need a valid route slot; regular
@@ -514,7 +512,8 @@ public:
                 if (isValidCouplingSlot(target.couplingRouteSlot))
                     grouped[static_cast<size_t>(macroIdx)].push_back(std::move(target));
                 else
-                    DBG("MacroSystem: Dropping invalid coupling target — routeSlot " + juce::String(target.couplingRouteSlot));
+                    DBG("MacroSystem: Dropping invalid coupling target — routeSlot " +
+                        juce::String(target.couplingRouteSlot));
             }
             else if (target.parameterId.isNotEmpty())
             {
@@ -544,7 +543,8 @@ private:
     // SpinLock guards setTargets() (message thread) against concurrent reads in
     // processBlock() (audio thread).  The audio thread uses tryEnter() so it
     // never blocks — it simply skips a single block while a preset is loading.
-    struct MacroSlot {
+    struct MacroSlot
+    {
         std::vector<MacroTarget> targets;
         // Parallel array: cachedParams[i] is the raw pointer for targets[i].
         // May contain nullptrs if target parameter doesn't exist in APVTS.

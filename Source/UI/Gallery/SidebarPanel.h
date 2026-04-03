@@ -35,7 +35,8 @@
 #include "ExportTabPanel.h"
 #include "../Outshine/OutshineSidebarPanel.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SidebarPanel — tabbed Column C browser/inspector panel.
@@ -47,7 +48,16 @@ class SidebarPanel : public juce::Component
 {
 public:
     //==========================================================================
-    enum Tab { Preset = 0, Couple, FX, Play, Export, Settings, NumTabs };
+    enum Tab
+    {
+        Preset = 0,
+        Couple,
+        FX,
+        Play,
+        Export,
+        Settings,
+        NumTabs
+    };
 
     //==========================================================================
     SidebarPanel()
@@ -64,8 +74,7 @@ public:
             btn->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
 
             // Accessibility
-            A11y::setup(*btn,
-                        juce::String(tabLabels[i]) + " tab",
+            A11y::setup(*btn, juce::String(tabLabels[i]) + " tab",
                         juce::String("Switch to ") + tabLabels[i] + " panel");
 
             // Click handler — capture index by value
@@ -77,8 +86,7 @@ public:
         setWantsKeyboardFocus(true);
 
         // ── Preset placeholder (C1 only) — shown until setPresetManager() wires the real browser ──
-        setupPlaceholder(presetPlaceholder, "Preset Browser",
-                         "C1: Loading preset browser…");
+        setupPlaceholder(presetPlaceholder, "Preset Browser", "C1: Loading preset browser…");
 
         // ── Content area accessibility ────────────────────────────────────────
         contentArea.setTitle("Sidebar content area");
@@ -104,7 +112,7 @@ public:
             contentArea.addChildComponent(*presetBrowser);
             presetBrowser->setVisible(activeTab == Preset);
             presetPlaceholder.setVisible(false); // browser is now live
-            resized(); // reflow so browser gets bounds
+            resized();                           // reflow so browser gets bounds
         }
     }
 
@@ -162,8 +170,8 @@ public:
         // Restore previously selected tab now that all content panels are live (#199).
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOceanus";
-            opts.filenameSuffix      = "settings";
+            opts.applicationName = "XOceanus";
+            opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
             const int saved = settings.getIntValue("sidebarTab", static_cast<int>(Preset));
@@ -187,9 +195,13 @@ public:
     //==========================================================================
     // Engine accent color — used for active tab underline.
     // Defaults to Reef Jade teal (mockup --accent); call setEngineAccent() when the loaded engine changes.
-    juce::Colour engineAccent { juce::Colour(0xFF1E8B7E) };
+    juce::Colour engineAccent{juce::Colour(0xFF1E8B7E)};
 
-    void setEngineAccent(juce::Colour c) { engineAccent = c; repaint(); }
+    void setEngineAccent(juce::Colour c)
+    {
+        engineAccent = c;
+        repaint();
+    }
 
     //==========================================================================
     Tab getActiveTab() const noexcept { return activeTab; }
@@ -202,11 +214,10 @@ public:
         for (int i = 0; i < NumTabs; ++i)
         {
             bool isActive = (i == static_cast<int>(activeTab));
-            tabButtons[i]->setColour(juce::TextButton::textColourOffId,
-                                     isActive ? GalleryColors::get(GalleryColors::t1())
-                                              : GalleryColors::get(GalleryColors::t3()));
-            tabButtons[i]->setColour(juce::TextButton::textColourOnId,
-                                     GalleryColors::get(GalleryColors::t1()));
+            tabButtons[i]->setColour(juce::TextButton::textColourOffId, isActive
+                                                                            ? GalleryColors::get(GalleryColors::t1())
+                                                                            : GalleryColors::get(GalleryColors::t3()));
+            tabButtons[i]->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::t1()));
         }
 
         // Show/hide content panels
@@ -215,12 +226,18 @@ public:
             presetBrowser->setVisible(t == Preset);
         presetPlaceholder.setVisible(!havePresetBrowser && t == Preset);
 
-        if (couplingPanel) couplingPanel->setVisible(t == Couple);
-        if (fxPanel) fxPanel->setVisible(t == FX);
-        if (playPanel) playPanel->setVisible(t == Play);
-        if (exportPanel) exportPanel->setVisible(t == Export);
-        if (outshineSidebar) outshineSidebar->setVisible(false); // always hidden — off-screen
-        if (settingsPanel) settingsPanel->setVisible(t == Settings);
+        if (couplingPanel)
+            couplingPanel->setVisible(t == Couple);
+        if (fxPanel)
+            fxPanel->setVisible(t == FX);
+        if (playPanel)
+            playPanel->setVisible(t == Play);
+        if (exportPanel)
+            exportPanel->setVisible(t == Export);
+        if (outshineSidebar)
+            outshineSidebar->setVisible(false); // always hidden — off-screen
+        if (settingsPanel)
+            settingsPanel->setVisible(t == Settings);
 
         // Refresh coupling data whenever the Couple tab becomes active
         if (t == Couple && couplingPanel)
@@ -231,8 +248,8 @@ public:
         // Persist tab selection across sessions (#199).
         {
             juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOceanus";
-            opts.filenameSuffix      = "settings";
+            opts.applicationName = "XOceanus";
+            opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile settings(opts);
             settings.setValue("sidebarTab", static_cast<int>(t));
@@ -312,8 +329,7 @@ public:
                 g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t3()));
                 g.setFont(GalleryFonts::display(11.0f));
                 // Use second character for PLAY ('L') to avoid collision with PRESET ('P')
-                juce::String icon(i == Play ? juce::String(tabLabels[i][1])
-                                            : juce::String(tabLabels[i][0]));
+                juce::String icon(i == Play ? juce::String(tabLabels[i][1]) : juce::String(tabLabels[i][0]));
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
                 if (active)
                 {
@@ -343,10 +359,7 @@ public:
         {
             auto btnBounds = tabButtons[activeTab]->getBounds();
             g.setColour(engineAccent);
-            g.fillRect(btnBounds.getX(),
-                       kTabBarH - kUnderlineH,
-                       btnBounds.getWidth(),
-                       kUnderlineH);
+            g.fillRect(btnBounds.getX(), kTabBarH - kUnderlineH, btnBounds.getWidth(), kUnderlineH);
         }
 
         // ── Focus ring on focused tab button ─────────────────────────────────
@@ -367,7 +380,7 @@ public:
     void resized() override
     {
         if (getWidth() <= 48)
-            return;  // Collapsed icon strip — layout degenerates, skip
+            return; // Collapsed icon strip — layout degenerates, skip
 
         const int w = getWidth();
 
@@ -377,7 +390,8 @@ public:
         float natWidths[NumTabs] = {};
         for (int i = 0; i < NumTabs; ++i)
         {
-            if (!tabButtons[i]->isVisible()) continue;
+            if (!tabButtons[i]->isVisible())
+                continue;
             natWidths[i] = tabFont.getStringWidthFloat(tabLabels[i]) + 22.0f;
             totalNatural += natWidths[i];
         }
@@ -392,7 +406,11 @@ public:
             }
             bool isLast = true;
             for (int j = i + 1; j < NumTabs; ++j)
-                if (tabButtons[j]->isVisible()) { isLast = false; break; }
+                if (tabButtons[j]->isVisible())
+                {
+                    isLast = false;
+                    break;
+                }
             int thisW = isLast ? (w - x) : juce::roundToInt(natWidths[i] * scale);
             tabButtons[i]->setBounds(x, 0, thisW, kTabBarH);
             x += thisW;
@@ -441,29 +459,22 @@ public:
 private:
     //==========================================================================
     // Prototype: 32px tab bar, 2px accent underline
-    static constexpr int kTabBarH    = 32;
+    static constexpr int kTabBarH = 32;
     static constexpr int kUnderlineH = 2;
 
-    static constexpr const char* tabLabels[NumTabs] = {
-        "PRESET", "COUPLE", "FX", "PLAY", "EXPORT", "SETTINGS"
-    };
+    static constexpr const char* tabLabels[NumTabs] = {"PRESET", "COUPLE", "FX", "PLAY", "EXPORT", "SETTINGS"};
 
     //==========================================================================
     // Inactive tab text colour — WCAG AA on shellWhite (audit fix A-01)
-    static juce::Colour inactiveTabColour()
-    {
-        return juce::Colour(80, 76, 70).withAlpha(0.75f);
-    }
+    static juce::Colour inactiveTabColour() { return juce::Colour(80, 76, 70).withAlpha(0.75f); }
 
     //==========================================================================
     // Helper — configure a placeholder label for tabs without V1 content
-    void setupPlaceholder(juce::Label& lbl, const juce::String& title,
-                          const juce::String& subtitle)
+    void setupPlaceholder(juce::Label& lbl, const juce::String& title, const juce::String& subtitle)
     {
         lbl.setText(title + "\n\n" + subtitle, juce::dontSendNotification);
         lbl.setFont(GalleryFonts::body(11.0f));
-        lbl.setColour(juce::Label::textColourId,
-                      GalleryColors::get(GalleryColors::textMid()));
+        lbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         lbl.setJustificationType(juce::Justification::centred);
         lbl.setVisible(false);
         contentArea.addChildComponent(lbl);
@@ -483,31 +494,31 @@ private:
     };
 
     //==========================================================================
-    Tab                             activeTab      = Preset;
+    Tab activeTab = Preset;
     juce::OwnedArray<juce::TextButton> tabButtons;
 
     ContentArea contentArea;
 
     // C1 — Preset Browser (constructed lazily when setPresetManager() is called)
-    std::unique_ptr<PresetBrowser>  presetBrowser;
+    std::unique_ptr<PresetBrowser> presetBrowser;
 
     // C2 — Coupling Inspector (constructed lazily when setProcessor() is called)
     std::unique_ptr<CouplingInspectorPanel> couplingPanel;
 
     // C3 — FX Inspector (constructed lazily when setProcessor() is called)
-    std::unique_ptr<FXInspectorPanel>       fxPanel;
+    std::unique_ptr<FXInspectorPanel> fxPanel;
 
     // C4 — Play Control (constructed lazily when setProcessor() is called)
-    std::unique_ptr<PlayControlPanel>       playPanel;
+    std::unique_ptr<PlayControlPanel> playPanel;
 
     // C5 — Export Tab Panel (constructed lazily when setProcessor() is called)
-    std::unique_ptr<ExportTabPanel>         exportPanel;
+    std::unique_ptr<ExportTabPanel> exportPanel;
 
     // Outshine sidebar — attached to Export tab below ExportTabPanel
-    std::unique_ptr<OutshineSidebarPanel>   outshineSidebar;
+    std::unique_ptr<OutshineSidebarPanel> outshineSidebar;
 
     // C6 — Settings (constructed lazily when setProcessor() is called)
-    std::unique_ptr<SettingsPanel>          settingsPanel;
+    std::unique_ptr<SettingsPanel> settingsPanel;
 
     // Preset placeholder — shown when presetBrowser is null (before setPresetManager() is called)
     juce::Label presetPlaceholder;

@@ -16,7 +16,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -111,7 +112,13 @@ static constexpr int kMemoryBufferSize = 32;
 //==============================================================================
 // Quartet roles
 //==============================================================================
-enum class QuartetRole : int { Bass = 0, Harmony = 1, Melody = 2, Rhythm = 3 };
+enum class QuartetRole : int
+{
+    Bass = 0,
+    Harmony = 1,
+    Melody = 2,
+    Rhythm = 3
+};
 
 //==============================================================================
 // QuartetChannel — One of four ensemble voices with shore-morphed formants.
@@ -131,9 +138,9 @@ struct QuartetChannel
     QuartetRole role = QuartetRole::Bass;
 
     // --- Shore position & elastic dynamics ---
-    float shorePos = 0.0f;          // Current position on the Shore axis (0.0=Atlantic, 4.0=Southern)
-    float targetShorePos = 0.0f;    // Where the user/macro wants this voice to be
-    float shoreVelocity = 0.0f;     // Spring-mass velocity for elastic overshoot
+    float shorePos = 0.0f;       // Current position on the Shore axis (0.0=Atlantic, 4.0=Southern)
+    float targetShorePos = 0.0f; // Where the user/macro wants this voice to be
+    float shoreVelocity = 0.0f;  // Spring-mass velocity for elastic overshoot
 
     // --- Formant resonator bank ---
     // 4 Cytomic SVF bandpass filters model the spectral fingerprint of the
@@ -141,9 +148,9 @@ struct QuartetChannel
     // derived from ShoreSystem.h's ResonatorProfile data — real spectral
     // analysis of instruments like Guitarra Portuguesa, Oud, Shakuhachi, etc.
     CytomicSVF formants[4];
-    float formantFreqs[4] = { 300.0f, 1200.0f, 2800.0f, 5500.0f };
-    float formantGains[4] = { 1.0f, 0.7f, 0.5f, 0.3f };
-    float formantBandwidths[4] = { 80.0f, 150.0f, 200.0f, 300.0f };
+    float formantFreqs[4] = {300.0f, 1200.0f, 2800.0f, 5500.0f};
+    float formantGains[4] = {1.0f, 0.7f, 0.5f, 0.3f};
+    float formantBandwidths[4] = {80.0f, 150.0f, 200.0f, 300.0f};
 
     // --- Timbral memory ---
     // Circular buffer of recent shore positions. When memory > 0, the voice
@@ -152,16 +159,16 @@ struct QuartetChannel
     // visit persists in the bass voice's timbre long after it has moved on.
     float memoryBuffer[kMemoryBufferSize] = {};
     int memoryWritePos = 0;
-    float memoryCachedFormantFreqs[4] = { 300.0f, 1200.0f, 2800.0f, 5500.0f };
+    float memoryCachedFormantFreqs[4] = {300.0f, 1200.0f, 2800.0f, 5500.0f};
 
     // --- Per-channel oscillators ---
-    float oscPhase = 0.0f;          // Primary oscillator phase accumulator
-    float oscPhase2 = 0.0f;         // Secondary oscillator for shimmer/detuned partials
-    float noiseState = 0.0f;        // Noise generator state
+    float oscPhase = 0.0f;   // Primary oscillator phase accumulator
+    float oscPhase2 = 0.0f;  // Secondary oscillator for shimmer/detuned partials
+    float noiseState = 0.0f; // Noise generator state
 
     // --- Rhythm channel transient ---
-    float transientEnv = 0.0f;      // Sharp attack envelope for percussive bursts
-    float transientPhase = 0.0f;    // Pulse rate phase (driven by ShoreRhythm data)
+    float transientEnv = 0.0f;   // Sharp attack envelope for percussive bursts
+    float transientPhase = 0.0f; // Pulse rate phase (driven by ShoreRhythm data)
 
     // --- Mix ---
     float level = 1.0f;
@@ -177,8 +184,8 @@ struct QuartetChannel
 
     float nextRandom() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;   // LCG (Numerical Recipes constants)
-        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;  // bipolar [-1, +1)
+        rng = rng * 1664525u + 1013904223u;                        // LCG (Numerical Recipes constants)
+        return static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f; // bipolar [-1, +1)
     }
 
     void recordShorePosition() noexcept
@@ -187,39 +194,39 @@ struct QuartetChannel
         memoryWritePos = (memoryWritePos + 1) % kMemoryBufferSize;
     }
 
-    void applyMemory (float memoryAmount, float sampleRate) noexcept
+    void applyMemory(float memoryAmount, float sampleRate) noexcept
     {
-        if (memoryAmount < 0.001f) return;
+        if (memoryAmount < 0.001f)
+            return;
 
         // Compute average historical shore position
         float avgShore = 0.0f;
         for (int i = 0; i < kMemoryBufferSize; ++i)
             avgShore += memoryBuffer[i];
-        avgShore /= static_cast<float> (kMemoryBufferSize);
+        avgShore /= static_cast<float>(kMemoryBufferSize);
 
         // Morph memory shore's resonator into cached formants
-        ShoreMorphState memMorph = decomposeShore (avgShore);
-        int slot = static_cast<int> (role);
-        if (slot > 2) slot = 0; // rhythm uses bass slot
-        ResonatorProfile memProfile = morphResonator (memMorph, slot);
+        ShoreMorphState memMorph = decomposeShore(avgShore);
+        int slot = static_cast<int>(role);
+        if (slot > 2)
+            slot = 0; // rhythm uses bass slot
+        ResonatorProfile memProfile = morphResonator(memMorph, slot);
 
         for (int i = 0; i < 4; ++i)
         {
-            memoryCachedFormantFreqs[i] = lerp (formantFreqs[i],
-                                                memProfile.formantFreqs[i],
-                                                memoryAmount);
+            memoryCachedFormantFreqs[i] = lerp(formantFreqs[i], memProfile.formantFreqs[i], memoryAmount);
         }
     }
 
-    void updateFormants (float sampleRate, float memoryAmount) noexcept
+    void updateFormants(float sampleRate, float memoryAmount) noexcept
     {
         for (int i = 0; i < 4; ++i)
         {
             float freq = (memoryAmount > 0.001f) ? memoryCachedFormantFreqs[i] : formantFreqs[i];
             float bw = formantBandwidths[i];
-            float resonance = clamp (1.0f - (bw / std::max (freq, 20.0f)), 0.0f, 0.95f);
-            formants[i].setMode (CytomicSVF::Mode::BandPass);
-            formants[i].setCoefficients (freq, resonance, sampleRate);
+            float resonance = clamp(1.0f - (bw / std::max(freq, 20.0f)), 0.0f, 0.95f);
+            formants[i].setMode(CytomicSVF::Mode::BandPass);
+            formants[i].setCoefficients(freq, resonance, sampleRate);
         }
     }
 
@@ -236,7 +243,8 @@ struct QuartetChannel
         lastOutputL = 0.0f;
         lastOutputR = 0.0f;
         memoryWritePos = 0;
-        for (int i = 0; i < kMemoryBufferSize; ++i) memoryBuffer[i] = 0.0f;
+        for (int i = 0; i < kMemoryBufferSize; ++i)
+            memoryBuffer[i] = 0.0f;
         for (int i = 0; i < 4; ++i)
         {
             formants[i].reset();
@@ -269,52 +277,51 @@ struct TavernRoom
     // Base delay lengths in samples — chosen as co-prime values to minimize
     // periodic coloration. These are the "room shape" at the reference room
     // size, then scaled by the shore's roomSizeMs.
-    int delayLengths[4] = { 337, 509, 677, 883 };
+    int delayLengths[4] = {337, 509, 677, 883};
 
-    float feedback = 0.3f;           // Derived from RT60 via Sabine-like calculation
-    CytomicSVF absorptionFilter;     // Models high-frequency air/wall absorption
-    float warmthGain = 1.0f;         // Low-frequency boost from tavern warmth
+    float feedback = 0.3f;       // Derived from RT60 via Sabine-like calculation
+    CytomicSVF absorptionFilter; // Models high-frequency air/wall absorption
+    float warmthGain = 1.0f;     // Low-frequency boost from tavern warmth
 
-    void setCharacter (const TavernCharacter& tavernCharacter, float mix, float sampleRate) noexcept
+    void setCharacter(const TavernCharacter& tavernCharacter, float mix, float sampleRate) noexcept
     {
         // Scale base delay lengths by room size ratio.
         // Reference room size is 15ms (small pub). Larger rooms stretch all delays.
         float roomScale = tavernCharacter.roomSizeMs / 15.0f;
-        delayLengths[0] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (337.0f * roomScale)));
-        delayLengths[1] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (509.0f * roomScale)));
-        delayLengths[2] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (677.0f * roomScale)));
-        delayLengths[3] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (883.0f * roomScale)));
+        delayLengths[0] = std::max(1, std::min(kMaxDelay - 1, static_cast<int>(337.0f * roomScale)));
+        delayLengths[1] = std::max(1, std::min(kMaxDelay - 1, static_cast<int>(509.0f * roomScale)));
+        delayLengths[2] = std::max(1, std::min(kMaxDelay - 1, static_cast<int>(677.0f * roomScale)));
+        delayLengths[3] = std::max(1, std::min(kMaxDelay - 1, static_cast<int>(883.0f * roomScale)));
 
         // Derive feedback gain from RT60 (time for reverb tail to decay by 60dB).
         // Uses the relation: feedback = 10^(-3 * delayLength / (RT60 * sampleRate))
         // which ensures the tail decays to -60dB in the specified time.
         float rt60Samples = tavernCharacter.decayMs * 0.001f * sampleRate;
-        feedback = (rt60Samples > 0.0f)
-            ? std::pow (0.001f, static_cast<float> (delayLengths[0]) / rt60Samples)
-            : 0.0f;
-        feedback = clamp (feedback, 0.0f, 0.85f);   // Cap at 0.85 for stability
+        feedback = (rt60Samples > 0.0f) ? std::pow(0.001f, static_cast<float>(delayLengths[0]) / rt60Samples) : 0.0f;
+        feedback = clamp(feedback, 0.0f, 0.85f); // Cap at 0.85 for stability
 
         // Absorption filter: lowpass that models HF energy loss per reflection.
         // High absorption (stone, soft furnishings) = low cutoff = darker tail.
-        float cutoff = lerp (2000.0f, 12000.0f, 1.0f - tavernCharacter.absorption);
-        absorptionFilter.setMode (CytomicSVF::Mode::LowPass);
-        absorptionFilter.setCoefficients (cutoff, 0.0f, sampleRate);
+        float cutoff = lerp(2000.0f, 12000.0f, 1.0f - tavernCharacter.absorption);
+        absorptionFilter.setMode(CytomicSVF::Mode::LowPass);
+        absorptionFilter.setCoefficients(cutoff, 0.0f, sampleRate);
 
         // Warmth boost: up to +50% gain on low-frequency content.
         warmthGain = 1.0f + tavernCharacter.warmth * 0.5f;
     }
 
-    void processSample (float& inL, float& inR, float mix) noexcept
+    void processSample(float& inL, float& inR, float mix) noexcept
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f)
+            return;
 
         float input = (inL + inR) * 0.5f;
 
         // Read from each delay line
-        float d0 = readDelay (0);
-        float d1 = readDelay (1);
-        float d2 = readDelay (2);
-        float d3 = readDelay (3);
+        float d0 = readDelay(0);
+        float d1 = readDelay(1);
+        float d2 = readDelay(2);
+        float d3 = readDelay(3);
 
         // Householder-like mixing matrix: compute the unfiltered sum used as
         // input to the absorption filter.
@@ -322,7 +329,7 @@ struct TavernRoom
 
         // Apply absorption filter to the mixed signal — damps high frequencies
         // in the FDN feedback path, simulating air absorption in the reverb tail.
-        float filtered = flushDenormal (absorptionFilter.processSample (sum));
+        float filtered = flushDenormal(absorptionFilter.processSample(sum));
 
         // Recompute feedback contributions using the filtered (absorbed) sum so
         // the absorption filter actually shapes the reverb tail.
@@ -336,10 +343,10 @@ struct TavernRoom
         // flushDenormal prevents feedback paths from accumulating subnormal
         // floats, which cause severe CPU spikes on x86 (up to 100x slowdown)
         // when the FPU falls back to microcode for denormal arithmetic.
-        writeDelay (0, input + flushDenormal (fbf0 * feedback));
-        writeDelay (1, input * 0.7f + flushDenormal (fbf1 * feedback));
-        writeDelay (2, input * 0.5f + flushDenormal (fbf2 * feedback));
-        writeDelay (3, input * 0.3f + flushDenormal (fbf3 * feedback));
+        writeDelay(0, input + flushDenormal(fbf0 * feedback));
+        writeDelay(1, input * 0.7f + flushDenormal(fbf1 * feedback));
+        writeDelay(2, input * 0.5f + flushDenormal(fbf2 * feedback));
+        writeDelay(3, input * 0.3f + flushDenormal(fbf3 * feedback));
 
         delayWritePos = (delayWritePos + 1) % kMaxDelay;
 
@@ -347,21 +354,19 @@ struct TavernRoom
         float wetL = (d0 + d2) * 0.5f * warmthGain;
         float wetR = (d1 + d3) * 0.5f * warmthGain;
 
-        inL = lerp (inL, inL + wetL, mix);
-        inR = lerp (inR, inR + wetR, mix);
+        inL = lerp(inL, inL + wetL, mix);
+        inR = lerp(inR, inR + wetR, mix);
     }
 
-    float readDelay (int line) const noexcept
+    float readDelay(int line) const noexcept
     {
         int readPos = delayWritePos - delayLengths[line];
-        if (readPos < 0) readPos += kMaxDelay;
+        if (readPos < 0)
+            readPos += kMaxDelay;
         return delayBuf[line][readPos];
     }
 
-    void writeDelay (int line, float value) noexcept
-    {
-        delayBuf[line][delayWritePos] = value;
-    }
+    void writeDelay(int line, float value) noexcept { delayBuf[line][delayWritePos] = value; }
 
     void reset() noexcept
     {
@@ -387,42 +392,42 @@ struct TavernRoom
 //==============================================================================
 struct MurmurGenerator
 {
-    uint32_t rng = 77777u;           // LCG state (Numerical Recipes constants)
-    CytomicSVF formant1;             // Low vocal resonance band (~350 Hz)
-    CytomicSVF formant2;             // High sibilance/brightness band (~2-4 kHz)
-    float modPhase = 0.0f;           // Slow modulation LFO phase
+    uint32_t rng = 77777u; // LCG state (Numerical Recipes constants)
+    CytomicSVF formant1;   // Low vocal resonance band (~350 Hz)
+    CytomicSVF formant2;   // High sibilance/brightness band (~2-4 kHz)
+    float modPhase = 0.0f; // Slow modulation LFO phase
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        formant1.setMode (CytomicSVF::Mode::BandPass);
-        formant1.setCoefficients (350.0f, 0.4f, sampleRate);
-        formant2.setMode (CytomicSVF::Mode::BandPass);
-        formant2.setCoefficients (2500.0f, 0.3f, sampleRate);
+        formant1.setMode(CytomicSVF::Mode::BandPass);
+        formant1.setCoefficients(350.0f, 0.4f, sampleRate);
+        formant2.setMode(CytomicSVF::Mode::BandPass);
+        formant2.setCoefficients(2500.0f, 0.3f, sampleRate);
     }
 
-    float process (float brightness, float sampleRate) noexcept
+    float process(float brightness, float sampleRate) noexcept
     {
         // Generate white noise via LCG
         rng = rng * 1664525u + 1013904223u;
-        float noise = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+        float noise = static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f;
 
         // Slow 0.5 Hz modulation — the ebb and flow of tavern conversation
-        modPhase += 0.5f / std::max (1.0f, sampleRate);
-        if (modPhase >= 1.0f) modPhase -= 1.0f;
-        float mod = fastSin (modPhase * kOsteriaTwoPi);
+        modPhase += 0.5f / std::max(1.0f, sampleRate);
+        if (modPhase >= 1.0f)
+            modPhase -= 1.0f;
+        float mod = fastSin(modPhase * kOsteriaTwoPi);
 
         // Formant 1: vocal chest resonance, gently modulated +/- 50 Hz
         float lowFormantFreq = 350.0f + mod * 50.0f;
         // Formant 2: sibilance band, brightness-dependent (2-4 kHz range),
         // modulated +/- 200 Hz for natural variation
-        float highFormantFreq = lerp (2000.0f, 4000.0f, brightness) + mod * 200.0f;
+        float highFormantFreq = lerp(2000.0f, 4000.0f, brightness) + mod * 200.0f;
 
-        formant1.setCoefficients (lowFormantFreq, 0.4f, sampleRate);
-        formant2.setCoefficients (highFormantFreq, 0.3f, sampleRate);
+        formant1.setCoefficients(lowFormantFreq, 0.4f, sampleRate);
+        formant2.setCoefficients(highFormantFreq, 0.3f, sampleRate);
 
         // Blend: 60% low vocal body, 40% high brightness
-        float out = formant1.processSample (noise) * 0.6f
-                  + formant2.processSample (noise) * 0.4f;
+        float out = formant1.processSample(noise) * 0.6f + formant2.processSample(noise) * 0.4f;
 
         // 0.15 scale factor keeps murmur well below instrument level —
         // it should be felt more than heard, like real background conversation
@@ -453,12 +458,12 @@ struct OsteriaVoice
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTime = 0;         // Monotonic counter for LRU voice stealing
+    uint64_t startTime = 0; // Monotonic counter for LRU voice stealing
 
     // --- Pitch ---
-    float targetFreq = 440.0f;      // Target frequency from MIDI note
+    float targetFreq = 440.0f;        // Target frequency from MIDI note
     float currentTargetFreq = 440.0f; // Smoothed frequency (for glide/portamento)
-    float glideCoeff = 1.0f;        // Glide smoothing coefficient (1.0 = instant)
+    float glideCoeff = 1.0f;          // Glide smoothing coefficient (1.0 = instant)
 
     // --- The quartet ---
     std::array<QuartetChannel, 4> quartet;
@@ -467,11 +472,11 @@ struct OsteriaVoice
     StandardADSR ampEnv;
 
     // --- Voice stealing crossfade ---
-    float fadeGain = 1.0f;          // 1.0 = full volume, fades to 0 during stealing
-    bool fadingOut = false;         // True when this voice is being stolen
+    float fadeGain = 1.0f;  // 1.0 = full volume, fades to 0 during stealing
+    bool fadingOut = false; // True when this voice is being stolen
 
     // --- Control-rate decimation ---
-    int controlCounter = 0;         // Counts samples until next control-rate update
+    int controlCounter = 0; // Counts samples until next control-rate update
 
     // --- Per-voice PRNG (LCG, Numerical Recipes constants) ---
     uint32_t rng = 12345u;
@@ -487,14 +492,14 @@ struct OsteriaVoice
     float nextRandom() noexcept
     {
         rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+        return static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f;
     }
 
     /** Unipolar random value in [0, 1). Used for initial phase randomization. */
     float nextRandomUni() noexcept
     {
         rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 65536.0f;
+        return static_cast<float>(rng & 0xFFFF) / 65536.0f;
     }
 
     void reset() noexcept
@@ -508,8 +513,10 @@ struct OsteriaVoice
         fadingOut = false;
         controlCounter = 0;
         rng = 12345u;
-        dcPrevInL = 0.0f; dcPrevOutL = 0.0f;
-        dcPrevInR = 0.0f; dcPrevOutR = 0.0f;
+        dcPrevInL = 0.0f;
+        dcPrevOutL = 0.0f;
+        dcPrevInR = 0.0f;
+        dcPrevOutR = 0.0f;
         ampEnv.reset();
         for (auto& ch : quartet)
             ch.reset();
@@ -530,7 +537,6 @@ struct OsteriaVoice
 // Companion: OSPREY (together they form "The Diptych" — ocean and shore)
 //==============================================================================
 
-
 class OsteriaEngine : public SynthEngine
 {
 public:
@@ -540,27 +546,28 @@ public:
     // SynthEngine interface — Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srf = static_cast<float> (sr);
+        srf = static_cast<float>(sr);
 
         // Control rate: ~2 kHz. Elastic coupling, formant updates, and shore
         // morphing run at this decimated rate to save CPU. At 44.1 kHz this
         // yields controlRateDiv = 22, meaning one control update per 22 audio
         // samples (~0.5 ms period).
-        controlRateDiv = std::max (1, static_cast<int> (srf / 2000.0f));
-        controlDt = static_cast<float> (controlRateDiv) / srf;
+        controlRateDiv = std::max(1, static_cast<int>(srf / 2000.0f));
+        controlDt = static_cast<float>(controlRateDiv) / srf;
 
         // Voice-stealing crossfade: 5ms to prevent clicks when the oldest
         // voice is stolen. The rate is samples-to-silence in that window.
         crossfadeRate = 1.0f / (0.005f * srf);
 
-        outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheL.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+        outputCacheR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
 
         // --- Initialize voices and assign quartet roles ---
-        for (auto& v : voices) v.reset();
+        for (auto& v : voices)
+            v.reset();
         for (auto& v : voices)
         {
             v.quartet[0].role = QuartetRole::Bass;
@@ -571,15 +578,15 @@ public:
 
         // --- Tavern room and murmur ---
         tavernRoom.reset();
-        murmur.prepare (srf);
+        murmur.prepare(srf);
 
         // --- Character stage filters ---
         // Smoke: lowpass that rolls off HF, modeling woodfire haze in the air
-        smokeFilter.setMode (CytomicSVF::Mode::LowPass);
-        smokeFilter.setCoefficients (8000.0f, 0.0f, srf);
+        smokeFilter.setMode(CytomicSVF::Mode::LowPass);
+        smokeFilter.setCoefficients(8000.0f, 0.0f, srf);
         // Warmth: low shelf boost at 300 Hz, modeling nearfield proximity effect
-        warmthFilter.setMode (CytomicSVF::Mode::LowShelf);
-        warmthFilter.setCoefficients (300.0f, 0.0f, srf, 3.0f);
+        warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
+        warmthFilter.setCoefficients(300.0f, 0.0f, srf, 3.0f);
 
         // --- Session delay ---
         sessionDelayWritePos = 0;
@@ -602,17 +609,18 @@ public:
                 hallBuf[i][s] = 0.0f;
         }
 
-        aftertouch.prepare (sampleRate);
+        aftertouch.prepare(sampleRate);
 
-        silenceGate.prepare (sampleRate, maxBlockSize);
-        silenceGate.setHoldTime (500.0f);  // Osteria has hall reverb tails
+        silenceGate.prepare(sampleRate, maxBlockSize);
+        silenceGate.setHoldTime(500.0f); // Osteria has hall reverb tails
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices) v.reset();
+        for (auto& v : voices)
+            v.reset();
         envelopeOutput = 0.0f;
         couplingExcitationMod = 0.0f;
         couplingElasticMod = 0.0f;
@@ -623,8 +631,8 @@ public:
         smokeFilter.reset();
         warmthFilter.reset();
 
-        std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
-        std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
+        std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
+        std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
 
         sessionDelayWritePos = 0;
         for (int c = 0; c < 2; ++c)
@@ -649,11 +657,11 @@ public:
     // SynthEngine interface — Audio
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        if (numSamples <= 0) return;
+        if (numSamples <= 0)
+            return;
 
         // =====================================================================
         // ParamSnapshot — cache all APVTS parameter values once per block.
@@ -662,54 +670,54 @@ public:
         // =====================================================================
 
         // -- Quartet shore positions (0.0=Atlantic .. 4.0=Southern) --
-        const float pBassShore    = loadParam (paramBassShore, 0.0f);
-        const float pHarmShore    = loadParam (paramHarmShore, 0.0f);
-        const float pMelShore     = loadParam (paramMelShore, 0.0f);
-        const float pRhythmShore  = loadParam (paramRhythmShore, 0.0f);
+        const float pBassShore = loadParam(paramBassShore, 0.0f);
+        const float pHarmShore = loadParam(paramHarmShore, 0.0f);
+        const float pMelShore = loadParam(paramMelShore, 0.0f);
+        const float pRhythmShore = loadParam(paramRhythmShore, 0.0f);
 
         // -- Elastic coupling --
-        const float pElastic      = loadParam (paramElastic, 0.5f);   // Spring constant
-        const float pStretch      = loadParam (paramStretch, 0.5f);   // Tension threshold
-        const float pMemory       = loadParam (paramMemory, 0.3f);    // Timbral palimpsest amount
-        const float pSympathy     = loadParam (paramSympathy, 0.3f);  // Inter-voice resonance
+        const float pElastic = loadParam(paramElastic, 0.5f);   // Spring constant
+        const float pStretch = loadParam(paramStretch, 0.5f);   // Tension threshold
+        const float pMemory = loadParam(paramMemory, 0.3f);     // Timbral palimpsest amount
+        const float pSympathy = loadParam(paramSympathy, 0.3f); // Inter-voice resonance
 
         // -- Voice balance --
-        const float pBassLevel    = loadParam (paramBassLevel, 0.8f);
-        const float pHarmonyLevel = loadParam (paramHarmLevel, 0.7f);
-        const float pMelodyLevel  = loadParam (paramMelLevel, 0.7f);
-        const float pRhythmLevel  = loadParam (paramRhythmLevel, 0.6f);
-        const float pEnsWidth     = loadParam (paramEnsWidth, 0.5f);
-        const float pBlend        = loadParam (paramBlendMode, 0.0f);
+        const float pBassLevel = loadParam(paramBassLevel, 0.8f);
+        const float pHarmonyLevel = loadParam(paramHarmLevel, 0.7f);
+        const float pMelodyLevel = loadParam(paramMelLevel, 0.7f);
+        const float pRhythmLevel = loadParam(paramRhythmLevel, 0.6f);
+        const float pEnsWidth = loadParam(paramEnsWidth, 0.5f);
+        const float pBlend = loadParam(paramBlendMode, 0.0f);
 
         // -- Tavern environment --
-        const float pTavernMix    = loadParam (paramTavernMix, 0.3f);
-        const float pTavernShore  = loadParam (paramTavernShore, 0.0f);
-        const float pMurmur       = loadParam (paramMurmur, 0.2f);
-        const float pWarmth       = loadParam (paramWarmth, 0.5f);
-        const float pOceanBleed   = loadParam (paramOceanBleed, 0.1f);
+        const float pTavernMix = loadParam(paramTavernMix, 0.3f);
+        const float pTavernShore = loadParam(paramTavernShore, 0.0f);
+        const float pMurmur = loadParam(paramMurmur, 0.2f);
+        const float pWarmth = loadParam(paramWarmth, 0.5f);
+        const float pOceanBleed = loadParam(paramOceanBleed, 0.1f);
 
         // -- Character stages --
-        const float pPatina       = loadParam (paramPatina, 0.2f);    // Harmonic aging fold
-        const float pPorto        = loadParam (paramPorto, 0.0f);     // Wine-dark saturation
-        const float pSmoke        = loadParam (paramSmoke, 0.1f);     // HF haze lowpass
+        const float pPatina = loadParam(paramPatina, 0.2f); // Harmonic aging fold
+        const float pPorto = loadParam(paramPorto, 0.0f);   // Wine-dark saturation
+        const float pSmoke = loadParam(paramSmoke, 0.1f);   // HF haze lowpass
 
         // -- Amplitude envelope --
-        const float pAmpAttack    = loadParam (paramAttack, 0.05f);
-        const float pAmpDecay     = loadParam (paramDecay, 0.3f);
-        const float pAmpSustain   = loadParam (paramSustain, 0.7f);
-        const float pAmpRelease   = loadParam (paramRelease, 1.0f);
+        const float pAmpAttack = loadParam(paramAttack, 0.05f);
+        const float pAmpDecay = loadParam(paramDecay, 0.3f);
+        const float pAmpSustain = loadParam(paramSustain, 0.7f);
+        const float pAmpRelease = loadParam(paramRelease, 1.0f);
 
         // -- FX --
-        const float pDelay        = loadParam (paramSessionDelay, 0.2f);
-        const float pHall         = loadParam (paramHall, 0.2f);
-        const float pChorus       = loadParam (paramChorus, 0.1f);
-        const float pTape         = loadParam (paramTape, 0.0f);
+        const float pDelay = loadParam(paramSessionDelay, 0.2f);
+        const float pHall = loadParam(paramHall, 0.2f);
+        const float pChorus = loadParam(paramChorus, 0.1f);
+        const float pTape = loadParam(paramTape, 0.0f);
 
         // -- Macros (M1-M4: CHARACTER, MOVEMENT, COUPLING, SPACE) --
-        const float macroCharacter = loadParam (paramMacroCharacter, 0.0f);
-        const float macroMovement  = loadParam (paramMacroMovement, 0.0f);
-        const float macroCoupling  = loadParam (paramMacroCoupling, 0.0f);
-        const float macroSpace     = loadParam (paramMacroSpace, 0.0f);
+        const float macroCharacter = loadParam(paramMacroCharacter, 0.0f);
+        const float macroMovement = loadParam(paramMacroMovement, 0.0f);
+        const float macroCoupling = loadParam(paramMacroCoupling, 0.0f);
+        const float macroSpace = loadParam(paramMacroSpace, 0.0f);
 
         // =====================================================================
         // Apply macros — each macro modulates multiple parameters to create
@@ -717,77 +725,77 @@ public:
         // =====================================================================
 
         // M1 CHARACTER: At 0 = spread (diverse shores). At 1 = converged (unified folk ensemble).
-        float effectiveBlend   = clamp (pBlend + macroCharacter * 0.8f, 0.0f, 1.0f);
-        float convergence      = macroCharacter;
+        float effectiveBlend = clamp(pBlend + macroCharacter * 0.8f, 0.0f, 1.0f);
+        float convergence = macroCharacter;
 
         // M2 MOVEMENT: At 0 = tight ensemble. At 1 = nomadic wandering.
         // Loosens elastic (inverse), widens stretch threshold.
-        float effectiveElastic = clamp (pElastic - macroMovement * 0.7f, 0.0f, 1.0f);
-        float effectiveStretch = clamp (pStretch + macroMovement * 0.4f, 0.01f, 1.0f);
+        float effectiveElastic = clamp(pElastic - macroMovement * 0.7f, 0.0f, 1.0f);
+        float effectiveStretch = clamp(pStretch + macroMovement * 0.4f, 0.01f, 1.0f);
 
         // M3 COUPLING: At 0 = independent voices. At 1 = deep inter-voice influence + heavy memory.
-        float effectiveSympathy = clamp (pSympathy + macroCoupling * 0.5f, 0.0f, 1.0f);
-        float effectiveMemory  = clamp (pMemory + macroCoupling * 0.5f, 0.0f, 1.0f);
+        float effectiveSympathy = clamp(pSympathy + macroCoupling * 0.5f, 0.0f, 1.0f);
+        float effectiveMemory = clamp(pMemory + macroCoupling * 0.5f, 0.0f, 1.0f);
 
         // M4 SPACE: At 0 = open air. At 1 = deep inside the pub (warm, intimate, sheltered).
         // effectiveBleed scales how much external coupling audio (AudioToFM) bleeds through
         // the tavern walls into the FDN reverb input — ocean turbulence reaching the shore.
-        float effectiveTavern  = clamp (pTavernMix + macroSpace * 0.6f, 0.0f, 1.0f);
-        float effectiveHall    = clamp (pHall + macroSpace * 0.5f, 0.0f, 1.0f);
-        float effectiveBleed   = clamp (pOceanBleed + macroSpace * 0.5f, 0.0f, 1.0f);
+        float effectiveTavern = clamp(pTavernMix + macroSpace * 0.6f, 0.0f, 1.0f);
+        float effectiveHall = clamp(pHall + macroSpace * 0.5f, 0.0f, 1.0f);
+        float effectiveBleed = clamp(pOceanBleed + macroSpace * 0.5f, 0.0f, 1.0f);
 
         // Per-channel mix levels (Bass, Harmony, Melody, Rhythm)
-        const float channelLevels[4] = { pBassLevel, pHarmonyLevel, pMelodyLevel, pRhythmLevel };
+        const float channelLevels[4] = {pBassLevel, pHarmonyLevel, pMelodyLevel, pRhythmLevel};
 
         // Per-channel stereo pan positions, spread proportionally by ensemble width.
         // Bass slightly left, Harmony center-left, Melody center-right, Rhythm right —
         // mimicking a natural stage layout for a quartet.
         const float channelPans[4] = {
-            -0.3f * pEnsWidth,   // Bass: left of center
-            -0.1f * pEnsWidth,   // Harmony: just left of center
-             0.2f * pEnsWidth,   // Melody: right of center
-             0.4f * pEnsWidth    // Rhythm: further right
+            -0.3f * pEnsWidth, // Bass: left of center
+            -0.1f * pEnsWidth, // Harmony: just left of center
+            0.2f * pEnsWidth,  // Melody: right of center
+            0.4f * pEnsWidth   // Rhythm: further right
         };
 
         // Shore targets per channel
-        float shoreTargets[4] = { pBassShore, pHarmShore, pMelShore, pRhythmShore };
+        float shoreTargets[4] = {pBassShore, pHarmShore, pMelShore, pRhythmShore};
 
         // Apply convergence (M1): blend toward centroid
         if (convergence > 0.001f)
         {
             float centroid = (shoreTargets[0] + shoreTargets[1] + shoreTargets[2] + shoreTargets[3]) * 0.25f;
             for (int i = 0; i < 4; ++i)
-                shoreTargets[i] = lerp (shoreTargets[i], centroid, convergence);
+                shoreTargets[i] = lerp(shoreTargets[i], centroid, convergence);
         }
 
         // Apply coupling shore drift
         float driftOffset = couplingShoreDrift;
         couplingShoreDrift = 0.0f;
         for (int i = 0; i < 4; ++i)
-            shoreTargets[i] = clamp (shoreTargets[i] + driftOffset, 0.0f, 4.0f);
+            shoreTargets[i] = clamp(shoreTargets[i] + driftOffset, 0.0f, 4.0f);
 
         // D005/D002: User LFO — shore drift breathing.
         // Rate: 0.005 Hz (200s cycle, deep breathing) at M2=0, up to 2 Hz at M2=1.
         // Depth: fixed at 0.4 shore units — enough to drift across ~1 coastline.
         // Each quartet channel gets a phase-offset version for organic spread.
         float userLfoRate = 0.005f + macroMovement * 1.995f;
-        userLFO.setRate (userLfoRate, srf);
+        userLFO.setRate(userLfoRate, srf);
         float lfoOut = userLFO.process();
         static constexpr float kUserLfoShoreDepth = 0.4f;
         for (int i = 0; i < 4; ++i)
         {
             // Stagger channels by 0.25 of the LFO output using simple phase rotation
-            float channelLfo = lfoOut * std::cos (kOsteriaPI * 0.5f * static_cast<float> (i))
-                             + std::sin (kOsteriaPI * 0.5f * static_cast<float> (i)) * lfoOut * 0.5f;
-            shoreTargets[i] = clamp (shoreTargets[i] + channelLfo * kUserLfoShoreDepth, 0.0f, 4.0f);
+            float channelLfo = lfoOut * std::cos(kOsteriaPI * 0.5f * static_cast<float>(i)) +
+                               std::sin(kOsteriaPI * 0.5f * static_cast<float>(i)) * lfoOut * 0.5f;
+            shoreTargets[i] = clamp(shoreTargets[i] + channelLfo * kUserLfoShoreDepth, 0.0f, 4.0f);
         }
 
         // Setup tavern room character — tc is computed here and used after the
         // aftertouch update below. setCharacter() is called only once, after
         // effectiveTavern receives its final value from the aftertouch path,
         // to avoid a redundant std::pow / filter-coefficient calculation per block.
-        ShoreMorphState tavernMorph = decomposeShore (pTavernShore);
-        TavernCharacter tc = morphTavern (tavernMorph);
+        ShoreMorphState tavernMorph = decomposeShore(pTavernShore);
+        TavernCharacter tc = morphTavern(tavernMorph);
 
         // D001: filter envelope — compute peak velocity × ampLevel across active voices.
         // This is the primary mechanism for D001 compliance in Osteria: harder/fresher
@@ -795,14 +803,14 @@ public:
         // kOsteriaFilterEnvMaxHz = 6000 Hz: at depth=0.25, full vel+env adds +1500 Hz.
         {
             static constexpr float kOsteriaFilterEnvMaxHz = 6000.0f;
-            const float filterEnvDepth = loadParam (paramFilterEnvDepth, 0.25f);
+            const float filterEnvDepth = loadParam(paramFilterEnvDepth, 0.25f);
             float peakVelEnv = 0.0f;
             for (const auto& voice : voices)
             {
                 if (voice.active)
                 {
                     float velEnv = voice.velocity * voice.ampEnv.level;
-                    peakVelEnv = std::max (peakVelEnv, velEnv);
+                    peakVelEnv = std::max(peakVelEnv, velEnv);
                 }
             }
             filterEnvBoost = filterEnvDepth * peakVelEnv * kOsteriaFilterEnvMaxHz;
@@ -812,14 +820,13 @@ public:
         // D006: mod wheel thickens the woodfire smoke — full wheel adds up to
         // 4 kHz of additional LPF roll-off, drawing the ensemble deeper into
         // the hazy warmth of the tavern interior.
-        float smokeCutoff = lerp (18000.0f, 3000.0f, pSmoke) + filterEnvBoost
-                            - modWheelAmount_ * 4000.0f;
-        smokeCutoff = std::max (200.0f, std::min (20000.0f, smokeCutoff));
-        smokeFilter.setCoefficients (smokeCutoff, 0.0f, srf);
+        float smokeCutoff = lerp(18000.0f, 3000.0f, pSmoke) + filterEnvBoost - modWheelAmount_ * 4000.0f;
+        smokeCutoff = std::max(200.0f, std::min(20000.0f, smokeCutoff));
+        smokeFilter.setCoefficients(smokeCutoff, 0.0f, srf);
 
         // Setup warmth filter
         float warmthDb = pWarmth * 8.0f;
-        warmthFilter.setCoefficients (300.0f, 0.0f, srf, warmthDb);
+        warmthFilter.setCoefficients(300.0f, 0.0f, srf, warmthDb);
 
         // Reset coupling accumulators
         float excitationMod = couplingExcitationMod;
@@ -833,7 +840,7 @@ public:
         couplingRoomExcitation = 0.0f;
 
         // Effective elastic with coupling modulation
-        effectiveElastic = clamp (effectiveElastic + elasticMod * 0.3f, 0.0f, 1.0f);
+        effectiveElastic = clamp(effectiveElastic + elasticMod * 0.3f, 0.0f, 1.0f);
 
         // Glide coefficient — 1.0 = instant pitch change (no portamento).
         // Assigned to each voice's glideCoeff so the per-voice pitch smoother
@@ -847,35 +854,39 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        shoreTargets, channelLevels, channelPans,
-                        pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease);
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), shoreTargets, channelLevels, channelPans,
+                       pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease);
             }
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isChannelPressure())
-                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
-        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
 
-        aftertouch.updateBlock (numSamples);
-        const float atPressure = aftertouch.getSmoothedPressure (0);
+        aftertouch.updateBlock(numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure(0);
 
         // D006: aftertouch deepens tavern mix — more rhythmic folk character on pressure
         // (sensitivity 0.25). Full pressure adds up to +0.25 to effectiveTavern, pulling
         // the ensemble deeper into the FDN tavern room — the ensemble absorbs into the pub.
-        effectiveTavern = clamp (effectiveTavern + atPressure * 0.25f, 0.0f, 1.0f);
+        effectiveTavern = clamp(effectiveTavern + atPressure * 0.25f, 0.0f, 1.0f);
         // Single setCharacter() call per block — called here with the final effectiveTavern
         // after all MIDI/aftertouch processing is complete. Calling it earlier (pre-MIDI)
         // would require a second call here anyway, doubling the std::pow + SVF coefficient
         // work. tc was computed above; only mix changes via aftertouch. RT-safe: no alloc.
-        tavernRoom.setCharacter (tc, effectiveTavern, srf);
+        tavernRoom.setCharacter(tc, effectiveTavern, srf);
 
         float peakEnv = 0.0f;
 
@@ -886,8 +897,8 @@ public:
         for (int c = 0; c < 4; ++c)
         {
             float panAngle = (channelPans[c] + 1.0f) * 0.25f * kOsteriaPI;
-            precomputedPanL[c] = std::cos (panAngle);
-            precomputedPanR[c] = std::sin (panAngle);
+            precomputedPanL[c] = std::cos(panAngle);
+            precomputedPanR[c] = std::sin(panAngle);
         }
 
         // BUG 3 fix: propagate block-scope glideCoeff to each active voice so the
@@ -895,7 +906,8 @@ public:
         // block value. glideCoeff = 1.0 here means instant pitch changes; a future
         // portamento parameter can replace the constant without changing the wiring.
         for (auto& voice : voices)
-            if (voice.active) voice.glideCoeff = glideCoeff;
+            if (voice.active)
+                voice.glideCoeff = glideCoeff;
 
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -904,13 +916,19 @@ public:
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 // Voice stealing crossfade
                 if (voice.fadingOut)
                 {
                     voice.fadeGain -= crossfadeRate;
-                    if (voice.fadeGain <= 0.0f) { voice.fadeGain = 0.0f; voice.active = false; continue; }
+                    if (voice.fadeGain <= 0.0f)
+                    {
+                        voice.fadeGain = 0.0f;
+                        voice.active = false;
+                        continue;
+                    }
                 }
 
                 // Glide
@@ -918,7 +936,11 @@ public:
 
                 // Envelope
                 float ampLevel = voice.ampEnv.process();
-                if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
+                if (!voice.ampEnv.isActive())
+                {
+                    voice.active = false;
+                    continue;
+                }
 
                 // --- Control-rate update ---
                 voice.controlCounter++;
@@ -957,7 +979,7 @@ public:
                         // Quadratic force increase beyond stretch threshold —
                         // models the nonlinear stiffening of a real rubber band
                         // as it approaches its elastic limit.
-                        float absDist = std::fabs (dist);
+                        float absDist = std::fabs(dist);
                         if (absDist > stretchThreshold)
                         {
                             float excess = absDist - stretchThreshold;
@@ -974,10 +996,10 @@ public:
                         ch.shoreVelocity += force * controlDt;
                         ch.shoreVelocity *= 0.95f; // Velocity damping (5% per step) prevents oscillation
                         ch.shorePos += ch.shoreVelocity * controlDt;
-                        ch.shorePos = clamp (ch.shorePos, 0.0f, 4.0f);
+                        ch.shorePos = clamp(ch.shorePos, 0.0f, 4.0f);
                         // Flush denormals in velocity to prevent CPU spikes in
                         // the feedback loop when velocity decays toward zero.
-                        ch.shoreVelocity = flushDenormal (ch.shoreVelocity);
+                        ch.shoreVelocity = flushDenormal(ch.shoreVelocity);
                     }
 
                     // Update formant resonator coefficients per channel based
@@ -989,24 +1011,25 @@ public:
                     for (int c = 0; c < 4; ++c)
                     {
                         auto& ch = voice.quartet[c];
-                        ShoreMorphState morph = decomposeShore (ch.shorePos);
+                        ShoreMorphState morph = decomposeShore(ch.shorePos);
                         int slot = c;
-                        if (slot > 2) slot = 0;  // Rhythm channel uses bass resonator slot
-                        ResonatorProfile prof = morphResonator (morph, slot);
+                        if (slot > 2)
+                            slot = 0; // Rhythm channel uses bass resonator slot
+                        ResonatorProfile prof = morphResonator(morph, slot);
 
                         // Scale formant frequencies relative to the note
                         float noteRatio = voice.currentTargetFreq / 440.0f;
                         for (int f = 0; f < 4; ++f)
                         {
                             ch.formantFreqs[f] = prof.formantFreqs[f] * noteRatio;
-                            ch.formantFreqs[f] = clamp (ch.formantFreqs[f], 20.0f, 18000.0f);
+                            ch.formantFreqs[f] = clamp(ch.formantFreqs[f], 20.0f, 18000.0f);
                             ch.formantGains[f] = prof.formantGains[f];
                             ch.formantBandwidths[f] = prof.formantBandwidths[f];
                         }
 
                         // Apply timbral memory
-                        ch.applyMemory (effectiveMemory, srf);
-                        ch.updateFormants (srf, effectiveMemory);
+                        ch.applyMemory(effectiveMemory, srf);
+                        ch.updateFormants(srf, effectiveMemory);
 
                         // Record shore position
                         ch.recordShorePosition();
@@ -1023,7 +1046,7 @@ public:
                         for (int c = 0; c < 4; ++c)
                         {
                             auto& ch = voice.quartet[c];
-                            ch.shorePos = lerp (ch.shorePos, blendCentroid, effectiveBlend * 0.3f);
+                            ch.shorePos = lerp(ch.shorePos, blendCentroid, effectiveBlend * 0.3f);
                         }
                     }
                 }
@@ -1037,8 +1060,7 @@ public:
                 // content for the resonators to shape.
                 // ==========================================================
                 float voiceL = 0.0f, voiceR = 0.0f;
-                float freq = voice.currentTargetFreq
-                             * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+                float freq = voice.currentTargetFreq * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
                 float phaseInc = freq / srf;
 
                 for (int c = 0; c < 4; ++c)
@@ -1046,80 +1068,85 @@ public:
                     auto& ch = voice.quartet[c];
                     float excitation = 0.0f;
 
-                    switch (static_cast<QuartetRole> (c))
+                    switch (static_cast<QuartetRole>(c))
                     {
-                        case QuartetRole::Bass:
-                        {
-                            // Fundamental sine + sub-octave (0.5x frequency).
-                            // 70/30 mix favors the fundamental while the sub
-                            // adds low-end weight — like a bassist doubling
-                            // with the left hand an octave below.
-                            float fundamental = fastSin (ch.oscPhase * kOsteriaTwoPi);
-                            float subOctave   = fastSin (ch.oscPhase * 0.5f * kOsteriaTwoPi);
-                            excitation = fundamental * 0.7f + subOctave * 0.3f;
-                            ch.oscPhase += phaseInc;
-                            if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
-                            break;
-                        }
-                        case QuartetRole::Harmony:
-                        {
-                            // Perfect fifth (1.5x) + slightly detuned octave (2.003x).
-                            // The 0.003 detune creates paired-string shimmer,
-                            // inspired by the Guitarra Portuguesa's paired courses
-                            // and the Hardingfele's sympathetic strings.
-                            float fifth        = fastSin (ch.oscPhase * kOsteriaTwoPi * 1.5f);
-                            float detunedOctave = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 2.003f);
-                            excitation = fifth * 0.5f + detunedOctave * 0.5f;
-                            ch.oscPhase += phaseInc;
-                            ch.oscPhase2 += phaseInc;
-                            if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
-                            if (ch.oscPhase2 >= 1.0f) ch.oscPhase2 -= 1.0f;
-                            break;
-                        }
-                        case QuartetRole::Melody:
-                        {
-                            // Upper partials: octave (2x), slightly sharp 5th+oct
-                            // (3.01x), and double octave (4.02x). The micro-sharp
-                            // detuning (0.01, 0.02) prevents phase-locked stasis
-                            // and adds the natural inharmonicity of real
-                            // instruments like Ney, Shakuhachi, and Kulning voices.
-                            float octave    = fastSin (ch.oscPhase * kOsteriaTwoPi * 2.0f);
-                            float twelfth   = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 3.01f);
-                            float dblOctave = fastSin (ch.oscPhase * kOsteriaTwoPi * 4.02f);
-                            excitation = octave * 0.4f + twelfth * 0.35f + dblOctave * 0.25f;
-                            ch.oscPhase += phaseInc;
-                            ch.oscPhase2 += phaseInc;
-                            if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
-                            if (ch.oscPhase2 >= 1.0f) ch.oscPhase2 -= 1.0f;
-                            break;
-                        }
-                        case QuartetRole::Rhythm:
-                        {
-                            // Noise burst with sharp transient envelope, driven
-                            // by the shore's percussion pulse rate (Bodhran,
-                            // Sami Drum, Darbuka, Taiko, Djembe).
-                            ShoreMorphState rhythmMorph = decomposeShore (ch.shorePos);
-                            ShoreRhythm rhythm = morphRhythm (rhythmMorph);
+                    case QuartetRole::Bass:
+                    {
+                        // Fundamental sine + sub-octave (0.5x frequency).
+                        // 70/30 mix favors the fundamental while the sub
+                        // adds low-end weight — like a bassist doubling
+                        // with the left hand an octave below.
+                        float fundamental = fastSin(ch.oscPhase * kOsteriaTwoPi);
+                        float subOctave = fastSin(ch.oscPhase * 0.5f * kOsteriaTwoPi);
+                        excitation = fundamental * 0.7f + subOctave * 0.3f;
+                        ch.oscPhase += phaseInc;
+                        if (ch.oscPhase >= 1.0f)
+                            ch.oscPhase -= 1.0f;
+                        break;
+                    }
+                    case QuartetRole::Harmony:
+                    {
+                        // Perfect fifth (1.5x) + slightly detuned octave (2.003x).
+                        // The 0.003 detune creates paired-string shimmer,
+                        // inspired by the Guitarra Portuguesa's paired courses
+                        // and the Hardingfele's sympathetic strings.
+                        float fifth = fastSin(ch.oscPhase * kOsteriaTwoPi * 1.5f);
+                        float detunedOctave = fastSin(ch.oscPhase2 * kOsteriaTwoPi * 2.003f);
+                        excitation = fifth * 0.5f + detunedOctave * 0.5f;
+                        ch.oscPhase += phaseInc;
+                        ch.oscPhase2 += phaseInc;
+                        if (ch.oscPhase >= 1.0f)
+                            ch.oscPhase -= 1.0f;
+                        if (ch.oscPhase2 >= 1.0f)
+                            ch.oscPhase2 -= 1.0f;
+                        break;
+                    }
+                    case QuartetRole::Melody:
+                    {
+                        // Upper partials: octave (2x), slightly sharp 5th+oct
+                        // (3.01x), and double octave (4.02x). The micro-sharp
+                        // detuning (0.01, 0.02) prevents phase-locked stasis
+                        // and adds the natural inharmonicity of real
+                        // instruments like Ney, Shakuhachi, and Kulning voices.
+                        float octave = fastSin(ch.oscPhase * kOsteriaTwoPi * 2.0f);
+                        float twelfth = fastSin(ch.oscPhase2 * kOsteriaTwoPi * 3.01f);
+                        float dblOctave = fastSin(ch.oscPhase * kOsteriaTwoPi * 4.02f);
+                        excitation = octave * 0.4f + twelfth * 0.35f + dblOctave * 0.25f;
+                        ch.oscPhase += phaseInc;
+                        ch.oscPhase2 += phaseInc;
+                        if (ch.oscPhase >= 1.0f)
+                            ch.oscPhase -= 1.0f;
+                        if (ch.oscPhase2 >= 1.0f)
+                            ch.oscPhase2 -= 1.0f;
+                        break;
+                    }
+                    case QuartetRole::Rhythm:
+                    {
+                        // Noise burst with sharp transient envelope, driven
+                        // by the shore's percussion pulse rate (Bodhran,
+                        // Sami Drum, Darbuka, Taiko, Djembe).
+                        ShoreMorphState rhythmMorph = decomposeShore(ch.shorePos);
+                        ShoreRhythm rhythm = morphRhythm(rhythmMorph);
 
-                            ch.transientPhase += rhythm.pulseRate / srf;
-                            if (ch.transientPhase >= 1.0f)
-                            {
-                                ch.transientPhase -= 1.0f;
-                                ch.transientEnv = 1.0f;  // Trigger a new transient
-                            }
-                            // Exponential decay: ~125 us time constant at 44.1 kHz
-                            // (8.0 / srf), creating a sharp percussive attack.
-                            ch.transientEnv *= (1.0f - 8.0f / srf);
-                            // Flush denormals in the transient decay path — this
-                            // decaying exponential will produce subnormal values
-                            // as it approaches zero, causing CPU spikes without
-                            // this guard.
-                            ch.transientEnv = flushDenormal (ch.transientEnv);
-
-                            float noise = ch.nextRandom();
-                            excitation = noise * ch.transientEnv;
-                            break;
+                        ch.transientPhase += rhythm.pulseRate / srf;
+                        if (ch.transientPhase >= 1.0f)
+                        {
+                            ch.transientPhase -= 1.0f;
+                            ch.transientEnv = 1.0f; // Trigger a new transient
                         }
+                        // Exponential decay: ~125 us time constant at 44.1 kHz
+                        // (8.0 / srf), creating a sharp percussive attack.
+                        ch.transientEnv *= (1.0f - 8.0f / srf);
+                        // Flush denormals in the transient decay path — this
+                        // decaying exponential will produce subnormal values
+                        // as it approaches zero, causing CPU spikes without
+                        // this guard.
+                        ch.transientEnv = flushDenormal(ch.transientEnv);
+
+                        float noise = ch.nextRandom();
+                        excitation = noise * ch.transientEnv;
+                        break;
+                    }
                     }
 
                     // Add coupling excitation
@@ -1129,7 +1156,7 @@ public:
                     float channelOut = 0.0f;
                     for (int f = 0; f < 4; ++f)
                     {
-                        float filtered = ch.formants[f].processSample (excitation);
+                        float filtered = ch.formants[f].processSample(excitation);
                         channelOut += filtered * ch.formantGains[f];
                     }
 
@@ -1168,13 +1195,15 @@ public:
                         float sympathyInput = 0.0f;
                         for (int other = 0; other < 4; ++other)
                         {
-                            if (other == c) continue;
-                            sympathyInput += (voice.quartet[other].lastOutputL + voice.quartet[other].lastOutputR) * 0.5f;
+                            if (other == c)
+                                continue;
+                            sympathyInput +=
+                                (voice.quartet[other].lastOutputL + voice.quartet[other].lastOutputR) * 0.5f;
                         }
                         // Feed through the primary (lowest) formant — this
                         // creates resonance at the instrument's fundamental
                         // frequency range, like a body resonance being excited.
-                        float sympathyOut = ch.formants[0].processSample (sympathyInput * sympathyGain * 0.3f);
+                        float sympathyOut = ch.formants[0].processSample(sympathyInput * sympathyGain * 0.3f);
                         voiceL += sympathyOut * 0.3f;
                         voiceR += sympathyOut * 0.3f;
                     }
@@ -1192,9 +1221,9 @@ public:
                 // Flush denormals in the DC blocker feedback path — the
                 // recursive coefficient 0.9975 creates a slowly decaying
                 // series that will produce subnormals during silence.
-                voice.dcPrevOutL = flushDenormal (dcOutL);
+                voice.dcPrevOutL = flushDenormal(dcOutL);
                 voice.dcPrevInR = voiceR;
-                voice.dcPrevOutR = flushDenormal (dcOutR);
+                voice.dcPrevOutR = flushDenormal(dcOutR);
                 voiceL = dcOutL;
                 voiceR = dcOutR;
 
@@ -1203,8 +1232,8 @@ public:
                 // compressing at ~0.67 and hard-limits at +/-1.0. The 1.5x
                 // pre-gain pushes signal into the saturation knee, adding
                 // warmth and preventing harsh digital clipping.
-                voiceL = fastTanh (voiceL * 1.5f);
-                voiceR = fastTanh (voiceR * 1.5f);
+                voiceL = fastTanh(voiceL * 1.5f);
+                voiceR = fastTanh(voiceR * 1.5f);
 
                 // --- Apply envelope, velocity, and crossfade gain ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
@@ -1212,13 +1241,13 @@ public:
                 voiceR *= gain;
 
                 // Final denormal flush before voice summation
-                voiceL = flushDenormal (voiceL);
-                voiceR = flushDenormal (voiceR);
+                voiceL = flushDenormal(voiceL);
+                voiceR = flushDenormal(voiceR);
 
                 mixL += voiceL;
                 mixR += voiceR;
 
-                peakEnv = std::max (peakEnv, ampLevel);
+                peakEnv = std::max(peakEnv, ampLevel);
             }
 
             // ==========================================================
@@ -1233,8 +1262,8 @@ public:
             if (pPatina > 0.001f)
             {
                 float patinaDrive = 1.0f + pPatina * 3.0f;
-                mixL = softClip (mixL * patinaDrive) / patinaDrive;
-                mixR = softClip (mixR * patinaDrive) / patinaDrive;
+                mixL = softClip(mixL * patinaDrive) / patinaDrive;
+                mixR = softClip(mixR * patinaDrive) / patinaDrive;
             }
 
             // --- Character: Porto (wine-dark warm saturation) ---
@@ -1245,23 +1274,23 @@ public:
             if (pPorto > 0.001f)
             {
                 float portoDrive = 1.0f + pPorto * 4.0f;
-                mixL = fastTanh (mixL * portoDrive) / portoDrive;
-                mixR = fastTanh (mixR * portoDrive) / portoDrive;
+                mixL = fastTanh(mixL * portoDrive) / portoDrive;
+                mixR = fastTanh(mixR * portoDrive) / portoDrive;
             }
 
             // --- Character: Smoke (HF haze) ---
             // Lowpass filter modeling woodfire smoke in the tavern air.
             // At smoke=0, cutoff is 18 kHz (transparent). At smoke=1,
             // cutoff drops to 3 kHz (deeply hazy, lo-fi warmth).
-            mixL = smokeFilter.processSample (mixL);
-            mixR = smokeFilter.processSample (mixR);
+            mixL = smokeFilter.processSample(mixL);
+            mixR = smokeFilter.processSample(mixR);
 
             // --- Warmth (proximity EQ) ---
             // Low shelf boost at 300 Hz, modeling the nearfield proximity
             // effect of sitting close to the performers in a small room.
             // P0-02 fix: right channel now also passes through warmth filter
-            mixL = warmthFilter.processSample (mixL);
-            mixR = warmthFilter.processSample (mixR);
+            mixL = warmthFilter.processSample(mixL);
+            mixR = warmthFilter.processSample(mixR);
 
             // --- Tavern room (FDN reverb) ---
             // BUG 2 fix: inject roomExcitation into the reverb input so that
@@ -1279,16 +1308,16 @@ public:
             float excBleed = roomExcitation;
             mixL += excBleed;
             mixR += excBleed;
-            tavernRoom.processSample (mixL, mixR, effectiveTavern);
-            mixL -= excBleed;   // remove dry pass-through; reverb tail remains
+            tavernRoom.processSample(mixL, mixR, effectiveTavern);
+            mixL -= excBleed; // remove dry pass-through; reverb tail remains
             mixR -= excBleed;
 
             // --- Murmur (crowd texture) ---
             if (pMurmur > 0.001f)
             {
-                ShoreMorphState murmurMorph = decomposeShore (pTavernShore);
-                TavernCharacter murmurTavern = morphTavern (murmurMorph);
-                float murmurSample = murmur.process (murmurTavern.murmurBrightness, srf);
+                ShoreMorphState murmurMorph = decomposeShore(pTavernShore);
+                TavernCharacter murmurTavern = morphTavern(murmurMorph);
+                float murmurSample = murmur.process(murmurTavern.murmurBrightness, srf);
                 mixL += murmurSample * pMurmur;
                 mixR += murmurSample * pMurmur * 0.9f; // 10% L/R difference for subtle stereo width
             }
@@ -1299,10 +1328,11 @@ public:
             // repeats before decay — enough for rhythmic interest without wash.
             if (pDelay > 0.001f)
             {
-                int delayTimeSamples = std::max (1, std::min (kSessionDelayMax - 1,
-                    static_cast<int> (0.15f * srf)));  // 150ms delay time
+                int delayTimeSamples = std::max(1, std::min(kSessionDelayMax - 1,
+                                                            static_cast<int>(0.15f * srf))); // 150ms delay time
                 int readPos = sessionDelayWritePos - delayTimeSamples;
-                if (readPos < 0) readPos += kSessionDelayMax;
+                if (readPos < 0)
+                    readPos += kSessionDelayMax;
 
                 float delayedL = sessionDelayBuf[0][readPos];
                 float delayedR = sessionDelayBuf[1][readPos];
@@ -1322,7 +1352,7 @@ public:
             if (effectiveHall > 0.001f)
             {
                 float hallInput = (mixL + mixR) * 0.5f;
-                float hallOutput = processHallAllpass (hallInput, effectiveHall);
+                float hallOutput = processHallAllpass(hallInput, effectiveHall);
                 mixL += hallOutput * effectiveHall * 0.5f;
                 mixR += hallOutput * effectiveHall * 0.5f;
             }
@@ -1333,14 +1363,16 @@ public:
             // paired courses and the Hardingfele's sympathetic strings.
             if (pChorus > 0.001f)
             {
-                chorusPhase += 0.5f / srf;  // 0.5 Hz LFO rate
-                if (chorusPhase >= 1.0f) chorusPhase -= 1.0f;
-                float modulatedDelayMs = 8.0f + fastSin (chorusPhase * kOsteriaTwoPi) * 3.0f;
-                int modulatedDelaySamples = static_cast<int> (modulatedDelayMs * 0.001f * srf);
-                modulatedDelaySamples = std::max (1, std::min (kChorusBufSize - 1, modulatedDelaySamples));
+                chorusPhase += 0.5f / srf; // 0.5 Hz LFO rate
+                if (chorusPhase >= 1.0f)
+                    chorusPhase -= 1.0f;
+                float modulatedDelayMs = 8.0f + fastSin(chorusPhase * kOsteriaTwoPi) * 3.0f;
+                int modulatedDelaySamples = static_cast<int>(modulatedDelayMs * 0.001f * srf);
+                modulatedDelaySamples = std::max(1, std::min(kChorusBufSize - 1, modulatedDelaySamples));
 
                 int readPos = chorusWritePos - modulatedDelaySamples;
-                if (readPos < 0) readPos += kChorusBufSize;
+                if (readPos < 0)
+                    readPos += kChorusBufSize;
 
                 float chorusL = chorusBuf[0][readPos];
                 float chorusR = chorusBuf[1][readPos];
@@ -1366,33 +1398,33 @@ public:
                 tapeState[0] += (mixL - tapeState[0]) * 0.3f;
                 tapeState[1] += (mixR - tapeState[1]) * 0.3f;
                 // Flush denormals in the filter feedback path
-                tapeState[0] = flushDenormal (tapeState[0]);
-                tapeState[1] = flushDenormal (tapeState[1]);
+                tapeState[0] = flushDenormal(tapeState[0]);
+                tapeState[1] = flushDenormal(tapeState[1]);
 
                 // Tape hiss: subtle noise floor at -50 dB
                 murmur.rng = murmur.rng * 1664525u + 1013904223u;
-                float tapeHiss = static_cast<float> (murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
+                float tapeHiss = static_cast<float>(murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
 
-                mixL = lerp (mixL, tapeState[0] + tapeHiss * 0.003f, pTape);
-                mixR = lerp (mixR, tapeState[1] + tapeHiss * 0.003f, pTape);
+                mixL = lerp(mixL, tapeState[0] + tapeHiss * 0.003f, pTape);
+                mixR = lerp(mixR, tapeState[1] + tapeHiss * 0.003f, pTape);
             }
 
             // Write output
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, sample, mixL);
-                buffer.addSample (1, sample, mixR);
+                buffer.addSample(0, sample, mixL);
+                buffer.addSample(1, sample, mixR);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, sample, (mixL + mixR) * 0.5f);
+                buffer.addSample(0, sample, (mixL + mixR) * 0.5f);
             }
 
             // Coupling cache
-            if (sample < static_cast<int> (outputCacheL.size()))
+            if (sample < static_cast<int>(outputCacheL.size()))
             {
-                outputCacheL[static_cast<size_t> (sample)] = mixL;
-                outputCacheR[static_cast<size_t> (sample)] = mixR;
+                outputCacheL[static_cast<size_t>(sample)] = mixL;
+                outputCacheR[static_cast<size_t>(sample)] = mixR;
             }
         }
 
@@ -1400,10 +1432,11 @@ public:
 
         int count = 0;
         for (const auto& v : voices)
-            if (v.active) ++count;
+            if (v.active)
+                ++count;
         activeVoices.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
     }
 
     //==========================================================================
@@ -1419,48 +1452,51 @@ public:
     // Channel 2: peak envelope (for amplitude-driven coupling)
     //==========================================================================
 
-    float getSampleForCoupling (int channel, int sampleIndex) const override
+    float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        if (sampleIndex < 0) return 0.0f;
-        auto sampleIdx = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && sampleIdx < outputCacheL.size()) return outputCacheL[sampleIdx];
-        if (channel == 1 && sampleIdx < outputCacheR.size()) return outputCacheR[sampleIdx];
-        if (channel == 2) return envelopeOutput;
+        if (sampleIndex < 0)
+            return 0.0f;
+        auto sampleIdx = static_cast<size_t>(sampleIndex);
+        if (channel == 0 && sampleIdx < outputCacheL.size())
+            return outputCacheL[sampleIdx];
+        if (channel == 1 && sampleIdx < outputCacheR.size())
+            return outputCacheR[sampleIdx];
+        if (channel == 2)
+            return envelopeOutput;
         return 0.0f;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* /*sourceBuffer*/, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
         switch (type)
         {
-            // AudioToWavetable: source audio shapes quartet excitation.
-            // Any engine becomes a shore the quartet absorbs — feed OBSIDIAN
-            // and the quartet plays crystal-inflected jazz.
-            case CouplingType::AudioToWavetable:
-                couplingExcitationMod += amount * 0.5f;
-                break;
+        // AudioToWavetable: source audio shapes quartet excitation.
+        // Any engine becomes a shore the quartet absorbs — feed OBSIDIAN
+        // and the quartet plays crystal-inflected jazz.
+        case CouplingType::AudioToWavetable:
+            couplingExcitationMod += amount * 0.5f;
+            break;
 
-            // AmpToFilter: source amplitude modulates elastic tightness.
-            // Storm (OSPREY) = frantic tight playing. Calm = relaxed session.
-            case CouplingType::AmpToFilter:
-                couplingElasticMod += amount * 0.3f;
-                break;
+        // AmpToFilter: source amplitude modulates elastic tightness.
+        // Storm (OSPREY) = frantic tight playing. Calm = relaxed session.
+        case CouplingType::AmpToFilter:
+            couplingElasticMod += amount * 0.3f;
+            break;
 
-            // AudioToFM: source audio excites the tavern room model.
-            // Ocean turbulence (OSPREY) bleeds through the tavern walls.
-            case CouplingType::AudioToFM:
-                couplingRoomExcitation += amount * 0.4f;
-                break;
+        // AudioToFM: source audio excites the tavern room model.
+        // Ocean turbulence (OSPREY) bleeds through the tavern walls.
+        case CouplingType::AudioToFM:
+            couplingRoomExcitation += amount * 0.4f;
+            break;
 
-            // EnvToMorph: source envelope drives shore drift.
-            // External dynamics push voices between coastlines.
-            case CouplingType::EnvToMorph:
-                couplingShoreDrift += amount * 0.5f;
-                break;
+        // EnvToMorph: source envelope drives shore drift.
+        // External dynamics push voices between coastlines.
+        case CouplingType::EnvToMorph:
+            couplingShoreDrift += amount * 0.5f;
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
 
@@ -1468,186 +1504,186 @@ public:
     // SynthEngine interface — Parameters
     //==========================================================================
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         // --- Quartet ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qBassShore", 1 }, "Osteria Bass Shore",
-            juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qHarmShore", 1 }, "Osteria Harmony Shore",
-            juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qMelShore", 1 }, "Osteria Melody Shore",
-            juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qRhythmShore", 1 }, "Osteria Rhythm Shore",
-            juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qElastic", 1 }, "Osteria Elastic",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qStretch", 1 }, "Osteria Stretch",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qMemory", 1 }, "Osteria Memory",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_qSympathy", 1 }, "Osteria Sympathy",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_qBassShore", 1}, "Osteria Bass Shore",
+            juce::NormalisableRange<float>(0.0f, 4.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_qHarmShore", 1}, "Osteria Harmony Shore",
+            juce::NormalisableRange<float>(0.0f, 4.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_qMelShore", 1}, "Osteria Melody Shore",
+            juce::NormalisableRange<float>(0.0f, 4.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_qRhythmShore", 1}, "Osteria Rhythm Shore",
+            juce::NormalisableRange<float>(0.0f, 4.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_qElastic", 1}, "Osteria Elastic",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_qStretch", 1}, "Osteria Stretch",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_qMemory", 1}, "Osteria Memory",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_qSympathy", 1}, "Osteria Sympathy",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
 
         // --- Voice Balance ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_bassLevel", 1 }, "Osteria Bass Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_harmLevel", 1 }, "Osteria Harmony Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_melLevel", 1 }, "Osteria Melody Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_rhythmLevel", 1 }, "Osteria Rhythm Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.6f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_ensWidth", 1 }, "Osteria Ensemble Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_blendMode", 1 }, "Osteria Blend Mode",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_bassLevel", 1}, "Osteria Bass Level",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_harmLevel", 1}, "Osteria Harmony Level",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_melLevel", 1}, "Osteria Melody Level",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_rhythmLevel", 1}, "Osteria Rhythm Level",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.6f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_ensWidth", 1}, "Osteria Ensemble Width",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_blendMode", 1}, "Osteria Blend Mode",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
         // --- Tavern ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_tavernMix", 1 }, "Osteria Tavern Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_tavernShore", 1 }, "Osteria Tavern Shore",
-            juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_murmur", 1 }, "Osteria Murmur",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.2f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_warmth", 1 }, "Osteria Warmth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_oceanBleed", 1 }, "Osteria Ocean Bleed",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.1f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_tavernMix", 1}, "Osteria Tavern Mix",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_tavernShore", 1}, "Osteria Tavern Shore",
+            juce::NormalisableRange<float>(0.0f, 4.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_murmur", 1}, "Osteria Murmur",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_warmth", 1}, "Osteria Warmth",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_oceanBleed", 1}, "Osteria Ocean Bleed",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.1f));
 
         // --- Character ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_patina", 1 }, "Osteria Patina",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.2f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_porto", 1 }, "Osteria Porto",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_smoke", 1 }, "Osteria Smoke",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.1f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_patina", 1}, "Osteria Patina",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_porto", 1}, "Osteria Porto",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_smoke", 1}, "Osteria Smoke",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.1f));
         // D001: filter envelope depth — peak voice velocity × ampLevel boosts smoke cutoff.
         // The smokeFilter LPF (3kHz–18kHz) brightens on harder hits, satisfying D001.
         // Default 0.25: at full velocity and attack peak, adds +3750 Hz above smoke cutoff.
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_filterEnvDepth", 1 }, "Osteria Filter Env Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_filterEnvDepth", 1}, "Osteria Filter Env Depth",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.25f));
 
         // --- Envelope ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_attack", 1 }, "Osteria Attack",
-            juce::NormalisableRange<float> (0.001f, 4.0f, 0.001f, 0.3f), 0.05f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_decay", 1 }, "Osteria Decay",
-            juce::NormalisableRange<float> (0.05f, 4.0f, 0.001f, 0.3f), 0.3f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_sustain", 1 }, "Osteria Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_release", 1 }, "Osteria Release",
-            juce::NormalisableRange<float> (0.05f, 8.0f, 0.001f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_attack", 1}, "Osteria Attack",
+            juce::NormalisableRange<float>(0.001f, 4.0f, 0.001f, 0.3f), 0.05f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_decay", 1}, "Osteria Decay",
+            juce::NormalisableRange<float>(0.05f, 4.0f, 0.001f, 0.3f), 0.3f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_sustain", 1}, "Osteria Sustain",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_release", 1}, "Osteria Release",
+            juce::NormalisableRange<float>(0.05f, 8.0f, 0.001f, 0.3f), 1.0f));
 
         // --- FX ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_sessionDelay", 1 }, "Osteria Session Delay",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.2f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_hall", 1 }, "Osteria Hall",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.2f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_chorus", 1 }, "Osteria Chorus",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.1f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_tape", 1 }, "Osteria Tape",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_sessionDelay", 1}, "Osteria Session Delay",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_hall", 1}, "Osteria Hall",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_chorus", 1}, "Osteria Chorus",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.1f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osteria_tape", 1}, "Osteria Tape",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
         // --- Macros ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_macroCharacter", 1 }, "Osteria Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_macroMovement", 1 }, "Osteria Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_macroCoupling", 1 }, "Osteria Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "osteria_macroSpace", 1 }, "Osteria Macro SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_macroCharacter", 1}, "Osteria Macro CHARACTER",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_macroMovement", 1}, "Osteria Macro MOVEMENT",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_macroCoupling", 1}, "Osteria Macro COUPLING",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osteria_macroSpace", 1}, "Osteria Macro SPACE",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramBassShore      = apvts.getRawParameterValue ("osteria_qBassShore");
-        paramHarmShore      = apvts.getRawParameterValue ("osteria_qHarmShore");
-        paramMelShore       = apvts.getRawParameterValue ("osteria_qMelShore");
-        paramRhythmShore    = apvts.getRawParameterValue ("osteria_qRhythmShore");
-        paramElastic        = apvts.getRawParameterValue ("osteria_qElastic");
-        paramStretch        = apvts.getRawParameterValue ("osteria_qStretch");
-        paramMemory         = apvts.getRawParameterValue ("osteria_qMemory");
-        paramSympathy       = apvts.getRawParameterValue ("osteria_qSympathy");
+        paramBassShore = apvts.getRawParameterValue("osteria_qBassShore");
+        paramHarmShore = apvts.getRawParameterValue("osteria_qHarmShore");
+        paramMelShore = apvts.getRawParameterValue("osteria_qMelShore");
+        paramRhythmShore = apvts.getRawParameterValue("osteria_qRhythmShore");
+        paramElastic = apvts.getRawParameterValue("osteria_qElastic");
+        paramStretch = apvts.getRawParameterValue("osteria_qStretch");
+        paramMemory = apvts.getRawParameterValue("osteria_qMemory");
+        paramSympathy = apvts.getRawParameterValue("osteria_qSympathy");
 
-        paramBassLevel      = apvts.getRawParameterValue ("osteria_bassLevel");
-        paramHarmLevel      = apvts.getRawParameterValue ("osteria_harmLevel");
-        paramMelLevel       = apvts.getRawParameterValue ("osteria_melLevel");
-        paramRhythmLevel    = apvts.getRawParameterValue ("osteria_rhythmLevel");
-        paramEnsWidth       = apvts.getRawParameterValue ("osteria_ensWidth");
-        paramBlendMode      = apvts.getRawParameterValue ("osteria_blendMode");
+        paramBassLevel = apvts.getRawParameterValue("osteria_bassLevel");
+        paramHarmLevel = apvts.getRawParameterValue("osteria_harmLevel");
+        paramMelLevel = apvts.getRawParameterValue("osteria_melLevel");
+        paramRhythmLevel = apvts.getRawParameterValue("osteria_rhythmLevel");
+        paramEnsWidth = apvts.getRawParameterValue("osteria_ensWidth");
+        paramBlendMode = apvts.getRawParameterValue("osteria_blendMode");
 
-        paramTavernMix      = apvts.getRawParameterValue ("osteria_tavernMix");
-        paramTavernShore    = apvts.getRawParameterValue ("osteria_tavernShore");
-        paramMurmur         = apvts.getRawParameterValue ("osteria_murmur");
-        paramWarmth         = apvts.getRawParameterValue ("osteria_warmth");
-        paramOceanBleed     = apvts.getRawParameterValue ("osteria_oceanBleed");
+        paramTavernMix = apvts.getRawParameterValue("osteria_tavernMix");
+        paramTavernShore = apvts.getRawParameterValue("osteria_tavernShore");
+        paramMurmur = apvts.getRawParameterValue("osteria_murmur");
+        paramWarmth = apvts.getRawParameterValue("osteria_warmth");
+        paramOceanBleed = apvts.getRawParameterValue("osteria_oceanBleed");
 
-        paramPatina          = apvts.getRawParameterValue ("osteria_patina");
-        paramPorto           = apvts.getRawParameterValue ("osteria_porto");
-        paramSmoke           = apvts.getRawParameterValue ("osteria_smoke");
-        paramFilterEnvDepth  = apvts.getRawParameterValue ("osteria_filterEnvDepth");
+        paramPatina = apvts.getRawParameterValue("osteria_patina");
+        paramPorto = apvts.getRawParameterValue("osteria_porto");
+        paramSmoke = apvts.getRawParameterValue("osteria_smoke");
+        paramFilterEnvDepth = apvts.getRawParameterValue("osteria_filterEnvDepth");
 
-        paramAttack         = apvts.getRawParameterValue ("osteria_attack");
-        paramDecay          = apvts.getRawParameterValue ("osteria_decay");
-        paramSustain        = apvts.getRawParameterValue ("osteria_sustain");
-        paramRelease        = apvts.getRawParameterValue ("osteria_release");
+        paramAttack = apvts.getRawParameterValue("osteria_attack");
+        paramDecay = apvts.getRawParameterValue("osteria_decay");
+        paramSustain = apvts.getRawParameterValue("osteria_sustain");
+        paramRelease = apvts.getRawParameterValue("osteria_release");
 
-        paramSessionDelay   = apvts.getRawParameterValue ("osteria_sessionDelay");
-        paramHall           = apvts.getRawParameterValue ("osteria_hall");
-        paramChorus         = apvts.getRawParameterValue ("osteria_chorus");
-        paramTape           = apvts.getRawParameterValue ("osteria_tape");
+        paramSessionDelay = apvts.getRawParameterValue("osteria_sessionDelay");
+        paramHall = apvts.getRawParameterValue("osteria_hall");
+        paramChorus = apvts.getRawParameterValue("osteria_chorus");
+        paramTape = apvts.getRawParameterValue("osteria_tape");
 
-        paramMacroCharacter = apvts.getRawParameterValue ("osteria_macroCharacter");
-        paramMacroMovement  = apvts.getRawParameterValue ("osteria_macroMovement");
-        paramMacroCoupling  = apvts.getRawParameterValue ("osteria_macroCoupling");
-        paramMacroSpace     = apvts.getRawParameterValue ("osteria_macroSpace");
+        paramMacroCharacter = apvts.getRawParameterValue("osteria_macroCharacter");
+        paramMacroMovement = apvts.getRawParameterValue("osteria_macroMovement");
+        paramMacroCoupling = apvts.getRawParameterValue("osteria_macroCoupling");
+        paramMacroSpace = apvts.getRawParameterValue("osteria_macroSpace");
     }
 
     //==========================================================================
@@ -1655,27 +1691,23 @@ public:
     //==========================================================================
 
     juce::String getEngineId() const override { return "Osteria"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF722F37); } // Porto Wine #722F37
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF722F37); } // Porto Wine #722F37
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
-
     SilenceGate silenceGate;
 
     //==========================================================================
     // Helpers
     //==========================================================================
 
-    static float loadParam (std::atomic<float>* p, float fallback) noexcept
+    static float loadParam(std::atomic<float>* p, float fallback) noexcept
     {
         return (p != nullptr) ? p->load() : fallback;
     }
 
-    static float midiToHz (float midiNote) noexcept
-    {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
-    }
+    static float midiToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
 
     //==========================================================================
     // Hall — Allpass diffusion chain.
@@ -1690,25 +1722,26 @@ private:
     //==========================================================================
 
     static constexpr int kHallDelayMax = 4096;
-    static constexpr int kHallDelayLengths[4] = { 1051, 1399, 1747, 2083 };
+    static constexpr int kHallDelayLengths[4] = {1051, 1399, 1747, 2083};
 
-    float processHallAllpass (float input, float feedbackAmount) noexcept
+    float processHallAllpass(float input, float feedbackAmount) noexcept
     {
         float signal = input;
 
         // Allpass feedback coefficient: capped at 0.7 for stability.
         // At g > 0.7, the allpass becomes unstable and self-oscillates.
-        float allpassCoeff = clamp (feedbackAmount * 0.5f, 0.0f, 0.7f);
+        float allpassCoeff = clamp(feedbackAmount * 0.5f, 0.0f, 0.7f);
 
         for (int i = 0; i < 4; ++i)
         {
             int readPos = hallWritePos[i] - kHallDelayLengths[i];
-            if (readPos < 0) readPos += kHallDelayMax;
+            if (readPos < 0)
+                readPos += kHallDelayMax;
 
             float delayed = hallBuf[i][readPos];
             float writeVal = signal + delayed * allpassCoeff;
             // Flush denormals in the allpass feedback path
-            hallBuf[i][hallWritePos[i]] = flushDenormal (writeVal);
+            hallBuf[i][hallWritePos[i]] = flushDenormal(writeVal);
             signal = delayed - signal * allpassCoeff;
 
             hallWritePos[i] = (hallWritePos[i] + 1) % kHallDelayMax;
@@ -1721,22 +1754,19 @@ private:
     // MIDI note handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity,
-                 const float shoreTargets[4],
-                 const float channelLevels[4],
-                 const float channelPans[4],
-                 float attackSec, float decaySec, float sustainLevel, float releaseSec)
+    void noteOn(int noteNumber, float velocity, const float shoreTargets[4], const float channelLevels[4],
+                const float channelPans[4], float attackSec, float decaySec, float sustainLevel, float releaseSec)
     {
-        float freq = midiToHz (static_cast<float> (noteNumber));
+        float freq = midiToHz(static_cast<float>(noteNumber));
 
-        int voiceIndex = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
-        auto& voice = voices[static_cast<size_t> (voiceIndex)];
+        int voiceIndex = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
         // If stealing an active voice, initiate crossfade-out
         if (voice.active)
         {
             voice.fadingOut = true;
-            voice.fadeGain = std::min (voice.fadeGain, 0.5f);
+            voice.fadeGain = std::min(voice.fadeGain, 0.5f);
         }
 
         // Initialize voice state
@@ -1746,26 +1776,28 @@ private:
         voice.startTime = voiceCounter++;
         voice.targetFreq = freq;
         voice.currentTargetFreq = freq;
-        voice.glideCoeff = 1.0f;       // 1.0 = no glide (instant pitch change)
+        voice.glideCoeff = 1.0f; // 1.0 = no glide (instant pitch change)
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
         voice.controlCounter = 0;
-        voice.dcPrevInL = 0.0f; voice.dcPrevOutL = 0.0f;
-        voice.dcPrevInR = 0.0f; voice.dcPrevOutR = 0.0f;
+        voice.dcPrevInL = 0.0f;
+        voice.dcPrevOutL = 0.0f;
+        voice.dcPrevInR = 0.0f;
+        voice.dcPrevOutR = 0.0f;
 
         // Seed PRNG uniquely per note using co-prime multipliers (7919, 104729)
         // to ensure each voice gets a different random sequence for phase
         // initialization and noise generation.
-        voice.rng = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
+        voice.rng = static_cast<uint32_t>(noteNumber * 7919 + voiceCounter * 104729);
 
-        voice.ampEnv.setParams (attackSec, decaySec, sustainLevel, releaseSec, srf);
+        voice.ampEnv.setParams(attackSec, decaySec, sustainLevel, releaseSec, srf);
         voice.ampEnv.noteOn();
 
         // --- Initialize all four quartet channels ---
         for (int c = 0; c < 4; ++c)
         {
             auto& ch = voice.quartet[c];
-            ch.role = static_cast<QuartetRole> (c);
+            ch.role = static_cast<QuartetRole>(c);
             ch.shorePos = shoreTargets[c];
             ch.targetShorePos = shoreTargets[c];
             ch.shoreVelocity = 0.0f;
@@ -1781,15 +1813,16 @@ private:
 
             // Per-channel PRNG seed: co-prime multipliers (7919, 31337, 54321)
             // ensure each channel within each voice has a unique sequence
-            ch.rng = static_cast<uint32_t> (noteNumber * 7919 + c * 31337 + voiceCounter * 54321);
+            ch.rng = static_cast<uint32_t>(noteNumber * 7919 + c * 31337 + voiceCounter * 54321);
             ch.lastOutputL = 0.0f;
             ch.lastOutputR = 0.0f;
 
             // Initialize formant resonators from the channel's starting shore
-            ShoreMorphState morph = decomposeShore (ch.shorePos);
+            ShoreMorphState morph = decomposeShore(ch.shorePos);
             int slot = c;
-            if (slot > 2) slot = 0;  // Rhythm -> bass resonator slot
-            ResonatorProfile prof = morphResonator (morph, slot);
+            if (slot > 2)
+                slot = 0; // Rhythm -> bass resonator slot
+            ResonatorProfile prof = morphResonator(morph, slot);
 
             // Scale formant frequencies relative to the played note.
             // Reference is A4 (440 Hz) — formant profiles are defined at
@@ -1798,12 +1831,12 @@ private:
 
             for (int f = 0; f < 4; ++f)
             {
-                ch.formantFreqs[f] = clamp (prof.formantFreqs[f] * noteRatio, 20.0f, 18000.0f);
+                ch.formantFreqs[f] = clamp(prof.formantFreqs[f] * noteRatio, 20.0f, 18000.0f);
                 ch.formantGains[f] = prof.formantGains[f];
                 ch.formantBandwidths[f] = prof.formantBandwidths[f];
                 ch.formants[f].reset();
             }
-            ch.updateFormants (srf, 0.0f);
+            ch.updateFormants(srf, 0.0f);
 
             // Pre-fill memory buffer with current shore position so the
             // voice starts with a clean slate — no inherited travel history.
@@ -1813,7 +1846,7 @@ private:
         }
     }
 
-    void noteOff (int noteNumber)
+    void noteOff(int noteNumber)
     {
         for (auto& voice : voices)
         {
@@ -1827,18 +1860,18 @@ private:
     //==========================================================================
 
     // --- Audio engine state ---
-    double sr = 44100.0;               // Sample rate (double precision for accuracy)
-    float srf = 44100.0f;              // Sample rate (float, for DSP calculations)
-    float crossfadeRate = 0.01f;       // Voice-stealing crossfade: samples to silence in 5ms
+    double sr = 44100.0;         // Sample rate (double precision for accuracy)
+    float srf = 44100.0f;        // Sample rate (float, for DSP calculations)
+    float crossfadeRate = 0.01f; // Voice-stealing crossfade: samples to silence in 5ms
 
     // --- Control rate ---
-    int controlRateDiv = 22;           // Audio samples per control update (~2 kHz)
-    float controlDt = 0.0005f;         // Control period in seconds
+    int controlRateDiv = 22;   // Audio samples per control update (~2 kHz)
+    float controlDt = 0.0005f; // Control period in seconds
 
     // --- Voice pool ---
     std::array<OsteriaVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;         // Monotonic counter for LRU voice stealing
-    std::atomic<int> activeVoices{0};  // Current active voice count (reported to UI)
+    uint64_t voiceCounter = 0;        // Monotonic counter for LRU voice stealing
+    std::atomic<int> activeVoices{0}; // Current active voice count (reported to UI)
 
     // D006: aftertouch handler — CS-80-style channel pressure → tavern mix depth
     PolyAftertouch aftertouch;
@@ -1847,28 +1880,28 @@ private:
     // the woodfire warmth of the tavern. Full wheel drops smoke cutoff by up
     // to 4 kHz, thickening the air between the listener and the quartet.
     float modWheelAmount_ = 0.0f;
-    float pitchBendNorm   = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
+    float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // --- Coupling accumulators ---
     // These accumulate coupling input between renderBlock calls and are
     // consumed (reset to 0) at the start of each block.
-    float envelopeOutput = 0.0f;              // Peak envelope for outbound coupling
-    float couplingExcitationMod = 0.0f;       // AudioToWavetable: shapes quartet excitation
-    float couplingElasticMod = 0.0f;          // AmpToFilter: modulates elastic tightness
-    float couplingRoomExcitation = 0.0f;      // AudioToFM: excites tavern room
-    float couplingShoreDrift = 0.0f;          // EnvToMorph: drives shore position drift
+    float envelopeOutput = 0.0f;         // Peak envelope for outbound coupling
+    float couplingExcitationMod = 0.0f;  // AudioToWavetable: shapes quartet excitation
+    float couplingElasticMod = 0.0f;     // AmpToFilter: modulates elastic tightness
+    float couplingRoomExcitation = 0.0f; // AudioToFM: excites tavern room
+    float couplingShoreDrift = 0.0f;     // EnvToMorph: drives shore position drift
 
     // --- Output cache (for coupling output) ---
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
     // --- Tavern environment ---
-    TavernRoom tavernRoom;                    // FDN reverb modeling tavern acoustics
-    MurmurGenerator murmur;                   // Crowd/conversation noise texture
+    TavernRoom tavernRoom;  // FDN reverb modeling tavern acoustics
+    MurmurGenerator murmur; // Crowd/conversation noise texture
 
     // --- Character stage filters ---
-    CytomicSVF smokeFilter;                   // Smoke: HF haze lowpass
-    CytomicSVF warmthFilter;                  // Warmth: low shelf proximity EQ
+    CytomicSVF smokeFilter;  // Smoke: HF haze lowpass
+    CytomicSVF warmthFilter; // Warmth: low shelf proximity EQ
 
     // --- Session Delay ---
     // 22050 samples = 500ms at 44.1 kHz (enough headroom for the 150ms delay)
@@ -1881,7 +1914,7 @@ private:
     static constexpr int kChorusBufSize = 2048;
     float chorusBuf[2][kChorusBufSize] = {};
     int chorusWritePos = 0;
-    float chorusPhase = 0.0f;                 // 0.5 Hz chorus LFO phase
+    float chorusPhase = 0.0f; // 0.5 Hz chorus LFO phase
 
     // --- Hall (allpass diffusion delays) ---
     float hallBuf[4][kHallDelayMax] = {};

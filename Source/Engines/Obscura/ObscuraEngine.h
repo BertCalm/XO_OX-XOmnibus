@@ -15,7 +15,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -80,7 +81,6 @@ namespace xoceanus {
 //
 //==============================================================================
 
-
 //==============================================================================
 // Chain Constants
 //==============================================================================
@@ -89,7 +89,6 @@ namespace xoceanus {
 // between timbral resolution (more masses = richer harmonics) and CPU cost.
 // This matches the Csound scanu opcode's default table size.
 static constexpr int kChainSize = 128;
-
 
 //==============================================================================
 //
@@ -102,7 +101,6 @@ static constexpr int kChainSize = 128;
 //==============================================================================
 using ObscuraADSR = StandardADSR;
 
-
 //==============================================================================
 //
 //  ObscuraLFO -- Low-Frequency Oscillator
@@ -113,7 +111,6 @@ using ObscuraADSR = StandardADSR;
 //
 //==============================================================================
 using ObscuraLFO = StandardLFO;
-
 
 //==============================================================================
 //
@@ -130,46 +127,46 @@ using ObscuraLFO = StandardLFO;
 //==============================================================================
 struct ObscuraDCBlocker
 {
-    float previousInput  = 0.0f;
+    float previousInput = 0.0f;
     float previousOutput = 0.0f;
 
     // Feedback coefficient R. Higher values = lower cutoff frequency.
     // Range [0.9, 0.9999] keeps the filter stable and inaudible.
     float feedbackCoefficient = 0.995f;
 
-    void setCoefficient (float sampleRate) noexcept
+    void setCoefficient(float sampleRate) noexcept
     {
         constexpr float kDCBlockerCutoffHz = 5.0f;
         constexpr float kTwoPi = 6.28318530718f;
 
         // R = 1 - (2*pi*fc / sr): places the pole just inside the unit circle.
         // At 44.1 kHz: R ~ 0.99929, giving a -3dB point near 5 Hz.
-        feedbackCoefficient = 1.0f - (kTwoPi * kDCBlockerCutoffHz
-                                      / std::max (1.0f, sampleRate));
+        feedbackCoefficient = 1.0f - (kTwoPi * kDCBlockerCutoffHz / std::max(1.0f, sampleRate));
 
         // Clamp to safe range to prevent instability at extreme sample rates
-        if (feedbackCoefficient < 0.9f)    feedbackCoefficient = 0.9f;
-        if (feedbackCoefficient > 0.9999f) feedbackCoefficient = 0.9999f;
+        if (feedbackCoefficient < 0.9f)
+            feedbackCoefficient = 0.9f;
+        if (feedbackCoefficient > 0.9999f)
+            feedbackCoefficient = 0.9999f;
     }
 
-    float process (float input) noexcept
+    float process(float input) noexcept
     {
         float output = input - previousInput + feedbackCoefficient * previousOutput;
         previousInput = input;
         // Flush denormals: the feedback path can produce subnormal floats that
         // cause massive CPU spikes on x86 (up to 100x slower per operation)
         // when the FPU falls back to microcode-assisted denormal handling.
-        previousOutput = flushDenormal (output);
+        previousOutput = flushDenormal(output);
         return output;
     }
 
     void reset() noexcept
     {
-        previousInput  = 0.0f;
+        previousInput = 0.0f;
         previousOutput = 0.0f;
     }
 };
-
 
 //==============================================================================
 //
@@ -204,23 +201,23 @@ struct ObscuraVoice
     // Between physics steps, we linearly interpolate between snapshotA (the
     // previous physics frame) and snapshotB (the current physics frame) to
     // produce smooth audio-rate output without artifacts.
-    float chainSnapshotA[kChainSize] = {};  // previous physics frame
-    float chainSnapshotB[kChainSize] = {};  // current physics frame
+    float chainSnapshotA[kChainSize] = {}; // previous physics frame
+    float chainSnapshotB[kChainSize] = {}; // current physics frame
 
     //-- Scanner ---------------------------------------------------------------
-    float scannerPhase = 0.0f;  // [0, 1) phase accumulator for chain sweep
+    float scannerPhase = 0.0f; // [0, 1) phase accumulator for chain sweep
 
     //-- Glide (portamento) ----------------------------------------------------
     float currentFrequency = 440.0f;
-    float targetFrequency  = 440.0f;
-    float glideCoefficient = 1.0f;  // 1.0 = instant, smaller = slower glide
+    float targetFrequency = 440.0f;
+    float glideCoefficient = 1.0f; // 1.0 = instant, smaller = slower glide
 
     //-- Control-rate accumulator ----------------------------------------------
     float controlPhaseAccumulator = 0.0f;
 
     //-- Excitation state ------------------------------------------------------
     bool impulseTriggered = false;
-    float excitationForce = 0.0f;  // continuous bowing force amplitude
+    float excitationForce = 0.0f; // continuous bowing force amplitude
 
     //-- Envelopes -------------------------------------------------------------
     ObscuraADSR amplitudeEnvelope;
@@ -249,7 +246,7 @@ struct ObscuraVoice
         // Multiplier a = 1664525 (Numerical Recipes), increment c = 1013904223
         randomGeneratorState = randomGeneratorState * 1664525u + 1013904223u;
         // Extract 16 bits, scale to [-1, +1] bipolar range
-        return static_cast<float> (randomGeneratorState & 0xFFFF) / 32768.0f - 1.0f;
+        return static_cast<float>(randomGeneratorState & 0xFFFF) / 32768.0f - 1.0f;
     }
 
     //--------------------------------------------------------------------------
@@ -260,8 +257,7 @@ struct ObscuraVoice
     //   2 = Random: chaotic, noisy, unpredictable timbre
     //   3 = Flat:   silent until excitation -- pure impulse response
     //--------------------------------------------------------------------------
-    void initChainShape (int shapeIndex, float excitationPosition,
-                         float excitationWidth) noexcept
+    void initChainShape(int shapeIndex, float excitationPosition, float excitationWidth) noexcept
     {
         constexpr float kPi = 3.14159265358979323846f;
 
@@ -272,30 +268,27 @@ struct ObscuraVoice
 
         for (int i = 0; i < kChainSize; ++i)
         {
-            float normalizedPosition = static_cast<float> (i)
-                                      / static_cast<float> (kChainSize - 1);
+            float normalizedPosition = static_cast<float>(i) / static_cast<float>(kChainSize - 1);
             float displacement = 0.0f;
 
             switch (shapeIndex)
             {
-                case 0: // Sine -- one full period across the chain
-                    displacement = std::sin (kPi * normalizedPosition)
-                                 * kDeterministicAmplitude;
-                    break;
+            case 0: // Sine -- one full period across the chain
+                displacement = std::sin(kPi * normalizedPosition) * kDeterministicAmplitude;
+                break;
 
-                case 1: // Saw -- linear ramp from -1 to +1
-                    displacement = (2.0f * normalizedPosition - 1.0f)
-                                 * kDeterministicAmplitude;
-                    break;
+            case 1: // Saw -- linear ramp from -1 to +1
+                displacement = (2.0f * normalizedPosition - 1.0f) * kDeterministicAmplitude;
+                break;
 
-                case 2: // Random -- white noise displacement
-                    displacement = nextRandom() * kRandomAmplitude;
-                    break;
+            case 2: // Random -- white noise displacement
+                displacement = nextRandom() * kRandomAmplitude;
+                break;
 
-                case 3: // Flat -- zero displacement, excitation only
-                default:
-                    displacement = 0.0f;
-                    break;
+            case 3: // Flat -- zero displacement, excitation only
+            default:
+                displacement = 0.0f;
+                break;
             }
 
             chain[i] = displacement;
@@ -306,8 +299,7 @@ struct ObscuraVoice
         // impulse amplitude so harder strikes excite more modes (brighter timbre).
         constexpr float kBaseImpulseAmplitude = 0.15f;
         float impulseAmplitude = kBaseImpulseAmplitude * (0.3f + 0.7f * velocity);
-        applyImpulse (excitationPosition, excitationWidth,
-                      impulseAmplitude);
+        applyImpulse(excitationPosition, excitationWidth, impulseAmplitude);
 
         // Copy initial state to both snapshots so audio-rate interpolation
         // starts from a consistent state (no discontinuity on first frame)
@@ -326,24 +318,21 @@ struct ObscuraVoice
     // but across a small region determined by the exciter's geometry
     // (finger, pick, hammer, bow).
     //--------------------------------------------------------------------------
-    void applyImpulse (float position, float width, float amplitude) noexcept
+    void applyImpulse(float position, float width, float amplitude) noexcept
     {
-        float centerMass = position * static_cast<float> (kChainSize - 1);
+        float centerMass = position * static_cast<float>(kChainSize - 1);
 
         // Gaussian sigma: width=0 gives a narrow impulse (0.5 masses),
         // width=1 gives a broad impulse covering ~25% of the chain.
-        float sigma = std::max (0.5f, width * static_cast<float> (kChainSize)
-                                    * 0.25f);
+        float sigma = std::max(0.5f, width * static_cast<float>(kChainSize) * 0.25f);
         float inverseTwoSigmaSquared = 1.0f / (2.0f * sigma * sigma);
 
         // Skip endpoints (i=0, i=N-1) -- they are controlled by boundary
         // conditions and should not receive excitation force
         for (int i = 1; i < kChainSize - 1; ++i)
         {
-            float distance = static_cast<float> (i) - centerMass;
-            float gaussianEnvelope = amplitude
-                                   * fastExp (-distance * distance
-                                              * inverseTwoSigmaSquared);
+            float distance = static_cast<float>(i) - centerMass;
+            float gaussianEnvelope = amplitude * fastExp(-distance * distance * inverseTwoSigmaSquared);
             chain[i] += gaussianEnvelope;
         }
     }
@@ -383,7 +372,6 @@ struct ObscuraVoice
     }
 };
 
-
 //==============================================================================
 //
 //  O B S C U R A   E N G I N E
@@ -404,14 +392,13 @@ struct ObscuraVoice
 class ObscuraEngine : public SynthEngine
 {
 public:
-
     //==========================================================================
     // Constants
     //==========================================================================
 
-    static constexpr int   kMaxVoices  = 8;
-    static constexpr float kPi         = 3.14159265358979323846f;
-    static constexpr float kTwoPi      = 6.28318530717958647692f;
+    static constexpr int kMaxVoices = 8;
+    static constexpr float kPi = 3.14159265358979323846f;
+    static constexpr float kTwoPi = 6.28318530717958647692f;
 
     // Physics simulation rate (~4 kHz). This is the rate at which Verlet
     // integration steps are computed. At 44.1 kHz audio rate, this means
@@ -433,21 +420,21 @@ public:
     static constexpr float kChainSoftClipDrive = 4.0f;
     static constexpr float kChainSoftClipCeiling = 0.25f;
 
-
     //==========================================================================
     // SynthEngine Interface -- Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sampleRateDouble = sampleRate;
-        sampleRateFloat = static_cast<float> (sampleRateDouble);
-        silenceGate.prepare (sampleRate, maxBlockSize);
+        sampleRateFloat = static_cast<float>(sampleRateDouble);
+        silenceGate.prepare(sampleRate, maxBlockSize);
 
         // How many audio samples elapse between physics simulation steps.
         // At 44.1 kHz with 4 kHz control rate: ~11.025 samples per step.
         controlStepSamples = sampleRateFloat / kPhysicsControlRate;
-        if (controlStepSamples < 1.0f) controlStepSamples = 1.0f;
+        if (controlStepSamples < 1.0f)
+            controlStepSamples = 1.0f;
 
         // Normalized dt^2 for Verlet integration. Set to 1.0 because
         // the spring constant already encodes the effective k*dt^2 product.
@@ -455,11 +442,11 @@ public:
         normalizedDtSquared = 1.0f;
 
         // Parameter smoothing: 5ms time constant — prevents zipper noise.
-        smoothedStiffness.prepare    (sampleRateFloat);
-        smoothedDamping.prepare      (sampleRateFloat);
-        smoothedNonlinearity.prepare (sampleRateFloat);
-        smoothedScanWidth.prepare    (sampleRateFloat);
-        smoothedSustainForce.prepare (sampleRateFloat);
+        smoothedStiffness.prepare(sampleRateFloat);
+        smoothedDamping.prepare(sampleRateFloat);
+        smoothedNonlinearity.prepare(sampleRateFloat);
+        smoothedScanWidth.prepare(sampleRateFloat);
+        smoothedSustainForce.prepare(sampleRateFloat);
 
         // Voice-stealing crossfade rate: linear ramp over 5ms.
         // Prevents clicks when a new note steals an active voice.
@@ -467,16 +454,16 @@ public:
         voiceCrossfadeRate = 1.0f / (kCrossfadeTimeSeconds * sampleRateFloat);
 
         // Allocate output cache for coupling reads
-        outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        aftertouch.prepare (sampleRate);
+        outputCacheLeft.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+        outputCacheRight.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+        aftertouch.prepare(sampleRate);
 
         // Initialize all voices
         for (auto& voice : voices)
         {
             voice.reset();
-            voice.dcBlockerLeft.setCoefficient (sampleRateFloat);
-            voice.dcBlockerRight.setCoefficient (sampleRateFloat);
+            voice.dcBlockerLeft.setCoefficient(sampleRateFloat);
+            voice.dcBlockerRight.setCoefficient(sampleRateFloat);
         }
     }
 
@@ -492,26 +479,25 @@ public:
         couplingStiffnessModulation = 0.0f;
         couplingImpulseTrigger = 0.0f;
 
-        smoothedStiffness.snapTo    (0.5f);
-        smoothedDamping.snapTo      (0.3f);
-        smoothedNonlinearity.snapTo (0.0f);
-        smoothedScanWidth.snapTo    (0.5f);
-        smoothedSustainForce.snapTo (0.0f);
+        smoothedStiffness.snapTo(0.5f);
+        smoothedDamping.snapTo(0.3f);
+        smoothedNonlinearity.snapTo(0.0f);
+        smoothedScanWidth.snapTo(0.5f);
+        smoothedSustainForce.snapTo(0.0f);
 
-        std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
-        std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
+        std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
+        std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
     }
-
 
     //==========================================================================
     // SynthEngine Interface -- Audio Rendering
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        if (numSamples <= 0) return;
+        if (numSamples <= 0)
+            return;
 
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block.
@@ -520,50 +506,50 @@ public:
         //----------------------------------------------------------------------
 
         // -- Core Physics --
-        const float paramStiffness       = loadParam (pStiffness, 0.5f);
-        const float paramDamping         = loadParam (pDamping, 0.3f);
-        const float paramNonlinearity    = loadParam (pNonlinear, 0.0f);
-        const float paramExcitePosition  = loadParam (pExcitePos, 0.5f);
-        const float paramExciteWidth     = loadParam (pExciteWidth, 0.3f);
-        const float paramScanWidth       = loadParam (pScanWidth, 0.5f);
-        const int   paramBoundaryMode    = static_cast<int> (loadParam (pBoundary, 0.0f));
-        const float paramSustainForce    = loadParam (pSustain, 0.0f);
+        const float paramStiffness = loadParam(pStiffness, 0.5f);
+        const float paramDamping = loadParam(pDamping, 0.3f);
+        const float paramNonlinearity = loadParam(pNonlinear, 0.0f);
+        const float paramExcitePosition = loadParam(pExcitePos, 0.5f);
+        const float paramExciteWidth = loadParam(pExciteWidth, 0.3f);
+        const float paramScanWidth = loadParam(pScanWidth, 0.5f);
+        const int paramBoundaryMode = static_cast<int>(loadParam(pBoundary, 0.0f));
+        const float paramSustainForce = loadParam(pSustain, 0.0f);
 
         // -- Amplitude Envelope --
-        const float paramAmpAttack       = loadParam (pAmpAttack, 0.01f);
-        const float paramAmpDecay        = loadParam (pAmpDecay, 0.1f);
-        const float paramAmpSustain      = loadParam (pAmpSustain, 0.8f);
-        const float paramAmpRelease      = loadParam (pAmpRelease, 0.3f);
+        const float paramAmpAttack = loadParam(pAmpAttack, 0.01f);
+        const float paramAmpDecay = loadParam(pAmpDecay, 0.1f);
+        const float paramAmpSustain = loadParam(pAmpSustain, 0.8f);
+        const float paramAmpRelease = loadParam(pAmpRelease, 0.3f);
 
         // -- Physics Envelope --
-        const float paramPhysAttack      = loadParam (pPhysAttack, 0.01f);
-        const float paramPhysDecay       = loadParam (pPhysDecay, 0.2f);
-        const float paramPhysSustain     = loadParam (pPhysSustain, 0.5f);
-        const float paramPhysRelease     = loadParam (pPhysRelease, 0.3f);
+        const float paramPhysAttack = loadParam(pPhysAttack, 0.01f);
+        const float paramPhysDecay = loadParam(pPhysDecay, 0.2f);
+        const float paramPhysSustain = loadParam(pPhysSustain, 0.5f);
+        const float paramPhysRelease = loadParam(pPhysRelease, 0.3f);
 
         // -- LFO 1 --
-        const float paramLfo1Rate        = loadParam (pLfo1Rate, 1.0f);
-        const float paramLfo1Depth       = loadParam (pLfo1Depth, 0.0f);
-        const int   paramLfo1Shape       = static_cast<int> (loadParam (pLfo1Shape, 0.0f));
+        const float paramLfo1Rate = loadParam(pLfo1Rate, 1.0f);
+        const float paramLfo1Depth = loadParam(pLfo1Depth, 0.0f);
+        const int paramLfo1Shape = static_cast<int>(loadParam(pLfo1Shape, 0.0f));
 
         // -- LFO 2 --
-        const float paramLfo2Rate        = loadParam (pLfo2Rate, 1.0f);
-        const float paramLfo2Depth       = loadParam (pLfo2Depth, 0.0f);
-        const int   paramLfo2Shape       = static_cast<int> (loadParam (pLfo2Shape, 0.0f));
+        const float paramLfo2Rate = loadParam(pLfo2Rate, 1.0f);
+        const float paramLfo2Depth = loadParam(pLfo2Depth, 0.0f);
+        const int paramLfo2Shape = static_cast<int>(loadParam(pLfo2Shape, 0.0f));
 
         // -- Voice Control --
-        const int   voiceModeIndex       = static_cast<int> (loadParam (pVoiceMode, 2.0f));
-        const float glideTime            = loadParam (pGlide, 0.0f);
-        const int   initialShapeIndex    = static_cast<int> (loadParam (pInitShape, 0.0f));
+        const int voiceModeIndex = static_cast<int>(loadParam(pVoiceMode, 2.0f));
+        const float glideTime = loadParam(pGlide, 0.0f);
+        const int initialShapeIndex = static_cast<int>(loadParam(pInitShape, 0.0f));
 
         // -- Output --
-        const float paramMasterLevel     = loadParam (pLevel, 0.8f);
+        const float paramMasterLevel = loadParam(pLevel, 0.8f);
 
         // -- Macros --
-        const float macroCharacter       = loadParam (pMacroCharacter, 0.0f);
-        const float macroMovement        = loadParam (pMacroMovement, 0.0f);
-        const float macroCoupling        = loadParam (pMacroCoupling, 0.0f);
-        const float macroSpace           = loadParam (pMacroSpace, 0.0f);
+        const float macroCharacter = loadParam(pMacroCharacter, 0.0f);
+        const float macroMovement = loadParam(pMacroMovement, 0.0f);
+        const float macroCoupling = loadParam(pMacroCoupling, 0.0f);
+        const float macroSpace = loadParam(pMacroSpace, 0.0f);
 
         //----------------------------------------------------------------------
         // Voice mode configuration
@@ -573,11 +559,24 @@ public:
         bool legatoMode = false;
         switch (voiceModeIndex)
         {
-            case 0: maxPolyphony = 1; monoMode = true; break;                       // Mono
-            case 1: maxPolyphony = 1; monoMode = true; legatoMode = true; break;    // Legato
-            case 2: maxPolyphony = 4; break;                                         // Poly4
-            case 3: maxPolyphony = 8; break;                                         // Poly8
-            default: maxPolyphony = 4; break;
+        case 0:
+            maxPolyphony = 1;
+            monoMode = true;
+            break; // Mono
+        case 1:
+            maxPolyphony = 1;
+            monoMode = true;
+            legatoMode = true;
+            break; // Legato
+        case 2:
+            maxPolyphony = 4;
+            break; // Poly4
+        case 3:
+            maxPolyphony = 8;
+            break; // Poly8
+        default:
+            maxPolyphony = 4;
+            break;
         }
 
         //----------------------------------------------------------------------
@@ -588,7 +587,7 @@ public:
         float glideCoefficient = 1.0f;
         constexpr float kMinGlideTimeSeconds = 0.001f;
         if (glideTime > kMinGlideTimeSeconds)
-            glideCoefficient = 1.0f - std::exp (-1.0f / (glideTime * sampleRateFloat));
+            glideCoefficient = 1.0f - std::exp(-1.0f / (glideTime * sampleRateFloat));
 
         //----------------------------------------------------------------------
         // Macro modulation offsets.
@@ -597,29 +596,21 @@ public:
         // COUPLING increases sustain/bowing force (more continuous excitation).
         // SPACE increases damping (faster energy loss = more reverberant decay).
         //----------------------------------------------------------------------
-        constexpr float kMacroCharacterToStiffness    = 0.3f;
+        constexpr float kMacroCharacterToStiffness = 0.3f;
         constexpr float kMacroCharacterToNonlinearity = 0.2f;
-        constexpr float kMacroMovementToScanWidth     = 0.3f;
-        constexpr float kMacroCouplingToSustain       = 0.3f;
-        constexpr float kMacroSpaceToDamping          = 0.2f;
+        constexpr float kMacroMovementToScanWidth = 0.3f;
+        constexpr float kMacroCouplingToSustain = 0.3f;
+        constexpr float kMacroSpaceToDamping = 0.2f;
 
-        float effectiveStiffness   = clamp (paramStiffness
-                                           + macroCharacter * kMacroCharacterToStiffness
-                                           + couplingStiffnessModulation,
-                                           0.0f, 1.0f);
-        float effectiveDamping     = clamp (paramDamping
-                                           + macroSpace * kMacroSpaceToDamping,
-                                           0.0f, 1.0f);
-        float effectiveNonlinearity = clamp (paramNonlinearity
-                                            + macroCharacter * kMacroCharacterToNonlinearity,
-                                            0.0f, 1.0f);
-        float effectiveScanWidth   = clamp (paramScanWidth
-                                           + macroMovement * kMacroMovementToScanWidth,
-                                           0.0f, 1.0f);
-        float effectiveSustain     = clamp (paramSustainForce
-                                           + macroCoupling * kMacroCouplingToSustain
-                                           + modWheelAmount * 0.4f,  // D006: mod wheel = bow speed
-                                           0.0f, 1.0f);
+        float effectiveStiffness = clamp(
+            paramStiffness + macroCharacter * kMacroCharacterToStiffness + couplingStiffnessModulation, 0.0f, 1.0f);
+        float effectiveDamping = clamp(paramDamping + macroSpace * kMacroSpaceToDamping, 0.0f, 1.0f);
+        float effectiveNonlinearity =
+            clamp(paramNonlinearity + macroCharacter * kMacroCharacterToNonlinearity, 0.0f, 1.0f);
+        float effectiveScanWidth = clamp(paramScanWidth + macroMovement * kMacroMovementToScanWidth, 0.0f, 1.0f);
+        float effectiveSustain = clamp(paramSustainForce + macroCoupling * kMacroCouplingToSustain +
+                                           modWheelAmount * 0.4f, // D006: mod wheel = bow speed
+                                       0.0f, 1.0f);
 
         //----------------------------------------------------------------------
         // Map normalized parameters to physical simulation values
@@ -636,14 +627,13 @@ public:
         // Width = 1: point scanner (reads a single mass, maximum brightness).
         // Width = 32: wide scanner (averages 32 masses, dark/muffled timbre).
         // This is analogous to pickup width on an electric guitar.
-        float scanWidthInMasses = 1.0f + effectiveScanWidth
-                                * (static_cast<float> (kChainSize) * 0.25f - 1.0f);
+        float scanWidthInMasses = 1.0f + effectiveScanWidth * (static_cast<float>(kChainSize) * 0.25f - 1.0f);
 
         //----------------------------------------------------------------------
         // Coupling accumulators: snapshot and reset
         //----------------------------------------------------------------------
-        couplingForceModulation = juce::jlimit (-1.0f, 1.0f, couplingForceModulation);
-        float localCouplingForce   = couplingForceModulation;
+        couplingForceModulation = juce::jlimit(-1.0f, 1.0f, couplingForceModulation);
+        float localCouplingForce = couplingForceModulation;
         float localCouplingImpulse = couplingImpulseTrigger;
         couplingForceModulation = 0.0f;
         couplingStiffnessModulation = 0.0f;
@@ -658,28 +648,27 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPolyphony,
-                        monoMode, legatoMode, glideCoefficient,
-                        paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
-                        paramPhysAttack, paramPhysDecay, paramPhysSustain, paramPhysRelease,
-                        paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
-                        paramLfo2Rate, paramLfo2Depth, paramLfo2Shape,
-                        initialShapeIndex, paramExcitePosition, paramExciteWidth);
+                noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), maxPolyphony, monoMode, legatoMode,
+                       glideCoefficient, paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
+                       paramPhysAttack, paramPhysDecay, paramPhysSustain, paramPhysRelease, paramLfo1Rate,
+                       paramLfo1Depth, paramLfo1Shape, paramLfo2Rate, paramLfo2Depth, paramLfo2Shape, initialShapeIndex,
+                       paramExcitePosition, paramExciteWidth);
             }
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             // D006: channel pressure → aftertouch (applied to spring stiffness below)
             else if (msg.isChannelPressure())
-                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
             // D006: mod wheel (CC#1) → bow speed / excitation intensity
             // Wheel up = greater continuous excitation force — the bow presses deeper
             // into the string, increasing amplitude and sustain of the mass-spring chain.
             // Full wheel adds +0.4 to sustainForce (sensitivity 0.4).
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -690,15 +679,15 @@ public:
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
-        aftertouch.updateBlock (numSamples);
-        const float atPressure = aftertouch.getSmoothedPressure (0);
+        aftertouch.updateBlock(numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure(0);
 
         // D006: aftertouch adds up to +0.25 spring stiffness (sensitivity 0.25).
         // Pressing harder increases stiffness — brighter timbre, shorter decay.
         // effectiveStiffness is updated here; the per-sample smoother picks it up.
         if (atPressure > 0.001f)
         {
-            effectiveStiffness = clamp (effectiveStiffness + atPressure * 0.25f, 0.0f, 1.0f);
+            effectiveStiffness = clamp(effectiveStiffness + atPressure * 0.25f, 0.0f, 1.0f);
         }
 
         //----------------------------------------------------------------------
@@ -712,17 +701,17 @@ public:
             for (auto& voice : voices)
             {
                 if (voice.active && !voice.fadingOut)
-                    voice.applyImpulse (paramExcitePosition, paramExciteWidth,
-                                        localCouplingImpulse * kCouplingImpulseScale);
+                    voice.applyImpulse(paramExcitePosition, paramExciteWidth,
+                                       localCouplingImpulse * kCouplingImpulseScale);
             }
         }
 
         // Set smoothing targets once per block
-        smoothedStiffness.set    (effectiveStiffness);
-        smoothedDamping.set      (effectiveDamping);
-        smoothedNonlinearity.set (effectiveNonlinearity);
-        smoothedScanWidth.set    (scanWidthInMasses);
-        smoothedSustainForce.set (effectiveSustain);
+        smoothedStiffness.set(effectiveStiffness);
+        smoothedDamping.set(effectiveDamping);
+        smoothedNonlinearity.set(effectiveNonlinearity);
+        smoothedScanWidth.set(scanWidthInMasses);
+        smoothedSustainForce.set(effectiveSustain);
 
         float peakEnvelopeLevel = 0.0f;
 
@@ -735,9 +724,9 @@ public:
             // Stiffness/damping/nonlinearity outputs are captured and used in the
             // Verlet integration below so that knob changes are smoothed per-sample
             // rather than jumping as block-constants (eliminates zipper noise).
-            const float smoothedStiffnessValue     = smoothedStiffness.process();
-            const float smoothedDampingValue       = smoothedDamping.process();
-            const float smoothedNonlinearityValue  = smoothedNonlinearity.process();
+            const float smoothedStiffnessValue = smoothedStiffness.process();
+            const float smoothedDampingValue = smoothedDamping.process();
+            const float smoothedNonlinearityValue = smoothedNonlinearity.process();
 
             // Map smoothed normalised values to physical constants.
             // 0.15 is the maximum damping before the chain becomes overdamped
@@ -745,20 +734,19 @@ public:
             // before amplitude-dependent pitch shift becomes too extreme.
             constexpr float kMaxDampingCoefficient = 0.15f;
             constexpr float kMaxCubicSpringCoefficient = 0.5f;
-            const float perSampleSpringConstant =
-                smoothedStiffnessValue * smoothedStiffnessValue * kMaxSpringConstant;
-            const float perSampleDampingCoefficient =
-                smoothedDampingValue * kMaxDampingCoefficient;
+            const float perSampleSpringConstant = smoothedStiffnessValue * smoothedStiffnessValue * kMaxSpringConstant;
+            const float perSampleDampingCoefficient = smoothedDampingValue * kMaxDampingCoefficient;
             const float perSampleCubicSpringCoefficient =
                 smoothedNonlinearityValue * smoothedNonlinearityValue * kMaxCubicSpringCoefficient;
-            const float curSmoothedScanWidth    = smoothedScanWidth.process();
+            const float curSmoothedScanWidth = smoothedScanWidth.process();
             const float curSmoothedSustainForce = smoothedSustainForce.process();
 
             float mixLeft = 0.0f, mixRight = 0.0f;
 
             for (auto& voice : voices)
             {
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 //-- Voice-stealing crossfade (5ms linear ramp) ----------------
                 if (voice.fadingOut)
@@ -773,12 +761,11 @@ public:
                 }
 
                 //-- Glide (portamento) ----------------------------------------
-                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency)
-                                        * voice.glideCoefficient;
+                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency) * voice.glideCoefficient;
 
                 //-- Envelopes -------------------------------------------------
                 float amplitudeLevel = voice.amplitudeEnvelope.process();
-                float physicsLevel   = voice.physicsEnvelope.process();
+                float physicsLevel = voice.physicsEnvelope.process();
 
                 if (!voice.amplitudeEnvelope.isActive())
                 {
@@ -794,11 +781,9 @@ public:
                 // LFO2 modulates excitation position (spatial sweep along chain)
                 constexpr float kLfo1ScanWidthModDepth = 8.0f;
                 constexpr float kLfo2ExcitePositionModDepth = 0.2f;
-                float modulatedScanWidth = std::max (1.0f,
-                    curSmoothedScanWidth + lfo1Value * kLfo1ScanWidthModDepth);
-                float modulatedExcitePosition = clamp (
-                    paramExcitePosition + lfo2Value * kLfo2ExcitePositionModDepth,
-                    0.0f, 1.0f);
+                float modulatedScanWidth = std::max(1.0f, curSmoothedScanWidth + lfo1Value * kLfo1ScanWidthModDepth);
+                float modulatedExcitePosition =
+                    clamp(paramExcitePosition + lfo2Value * kLfo2ExcitePositionModDepth, 0.0f, 1.0f);
 
                 //-- Physics simulation at control rate ------------------------
                 voice.controlPhaseAccumulator += 1.0f;
@@ -819,23 +804,20 @@ public:
                     constexpr float kMinSustainThreshold = 0.001f;
                     if (curSmoothedSustainForce > kMinSustainThreshold)
                     {
-                        float forceAmplitude = curSmoothedSustainForce * physicsLevel
-                                             * kBowingForceScale;
-                        float centerMass = modulatedExcitePosition
-                                         * static_cast<float> (kChainSize - 1);
+                        float forceAmplitude = curSmoothedSustainForce * physicsLevel * kBowingForceScale;
+                        float centerMass = modulatedExcitePosition * static_cast<float>(kChainSize - 1);
 
                         // Gaussian width: 15% of chain length at width=1
                         constexpr float kBowingWidthFraction = 0.15f;
-                        float sigma = std::max (1.0f, paramExciteWidth
-                                     * static_cast<float> (kChainSize)
-                                     * kBowingWidthFraction);
+                        float sigma =
+                            std::max(1.0f, paramExciteWidth * static_cast<float>(kChainSize) * kBowingWidthFraction);
                         float inverseTwoSigmaSquared = 1.0f / (2.0f * sigma * sigma);
 
                         for (int i = 1; i < kChainSize - 1; ++i)
                         {
-                            float distance = static_cast<float> (i) - centerMass;
-                            float gaussianForce = forceAmplitude
-                                * fastExp (-distance * distance * inverseTwoSigmaSquared);
+                            float distance = static_cast<float>(i) - centerMass;
+                            float gaussianForce =
+                                forceAmplitude * fastExp(-distance * distance * inverseTwoSigmaSquared);
                             voice.chain[i] += gaussianForce;
                         }
                     }
@@ -847,25 +829,21 @@ public:
                     // patterns rather than uniform displacement.
                     constexpr float kCouplingForceScale = 0.01f;
                     constexpr float kMinCouplingForceThreshold = 0.0001f;
-                    if (std::fabs (localCouplingForce) > kMinCouplingForceThreshold)
+                    if (std::fabs(localCouplingForce) > kMinCouplingForceThreshold)
                     {
-                        float forceScale = localCouplingForce * physicsLevel
-                                         * kCouplingForceScale;
+                        float forceScale = localCouplingForce * physicsLevel * kCouplingForceScale;
                         for (int i = 1; i < kChainSize - 1; ++i)
                         {
-                            float normalizedPosition = static_cast<float> (i)
-                                / static_cast<float> (kChainSize - 1);
-                            voice.chain[i] += forceScale
-                                * fastSin (normalizedPosition * kTwoPi);
+                            float normalizedPosition = static_cast<float>(i) / static_cast<float>(kChainSize - 1);
+                            voice.chain[i] += forceScale * fastSin(normalizedPosition * kTwoPi);
                         }
                     }
 
                     //-- Verlet integration step -------------------------------
                     // Use per-sample smoothed values so stiffness/damping/nonlinearity
                     // knob changes interpolate without zipper noise.
-                    updateChain (voice.chain, voice.chainPrevious, kChainSize,
-                                 perSampleSpringConstant, perSampleDampingCoefficient,
-                                 perSampleCubicSpringCoefficient, paramBoundaryMode);
+                    updateChain(voice.chain, voice.chainPrevious, kChainSize, perSampleSpringConstant,
+                                perSampleDampingCoefficient, perSampleCubicSpringCoefficient, paramBoundaryMode);
 
                     //-- Soft-clip chain displacement for stability -------------
                     // Without clipping, nonlinear springs can cause displacement
@@ -882,17 +860,16 @@ public:
                         // times 8 voices = 1024 potential denormal sites, this
                         // protection is critical for real-time performance.
                         constexpr float kDenormalThreshold = 1e-15f;
-                        if (std::fabs (displacement) < kDenormalThreshold)
+                        if (std::fabs(displacement) < kDenormalThreshold)
                         {
                             voice.chain[i] = 0.0f;
-                            voice.chainPrevious[i] = flushDenormal (voice.chainPrevious[i]);
+                            voice.chainPrevious[i] = flushDenormal(voice.chainPrevious[i]);
                             continue;
                         }
 
                         // Soft clip: tanh(x * drive) * ceiling
-                        voice.chain[i] = fastTanh (displacement * kChainSoftClipDrive)
-                                       * kChainSoftClipCeiling;
-                        voice.chainPrevious[i] = flushDenormal (voice.chainPrevious[i]);
+                        voice.chain[i] = fastTanh(displacement * kChainSoftClipDrive) * kChainSoftClipCeiling;
+                        voice.chainPrevious[i] = flushDenormal(voice.chainPrevious[i]);
                     }
 
                     // Update snapshot B with new chain state
@@ -901,87 +878,85 @@ public:
                 }
 
                 //-- Audio-rate interpolation between physics snapshots ---------
-                float interpolationFraction = voice.controlPhaseAccumulator
-                                            / controlStepSamples;
-                interpolationFraction = clamp (interpolationFraction, 0.0f, 1.0f);
+                float interpolationFraction = voice.controlPhaseAccumulator / controlStepSamples;
+                interpolationFraction = clamp(interpolationFraction, 0.0f, 1.0f);
 
                 //-- Scanner: sweep across chain at MIDI note frequency --------
                 // The scanner reads the chain's shape at audio rate, producing
                 // the output waveform. Scanner frequency = MIDI note frequency,
                 // so the chain's displacement pattern becomes the waveform.
-                float scannerFreq = voice.currentFrequency
-                                    * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+                float scannerFreq = voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
                 float scannerIncrement = scannerFreq / sampleRateFloat;
 
                 // Left channel: forward scan
                 float scanPositionLeft = voice.scannerPhase;
-                float outputLeft = scanChain (voice.chainSnapshotA,
-                    voice.chainSnapshotB, interpolationFraction,
-                    scanPositionLeft, modulatedScanWidth);
+                float outputLeft = scanChain(voice.chainSnapshotA, voice.chainSnapshotB, interpolationFraction,
+                                             scanPositionLeft, modulatedScanWidth);
 
                 // Right channel: backward scan (creates stereo width by
                 // reading the chain in reverse -- the two channels see
                 // slightly different waveform shapes due to chain asymmetry)
                 float scanPositionRight = 1.0f - voice.scannerPhase;
-                float outputRight = scanChain (voice.chainSnapshotA,
-                    voice.chainSnapshotB, interpolationFraction,
-                    scanPositionRight, modulatedScanWidth);
+                float outputRight = scanChain(voice.chainSnapshotA, voice.chainSnapshotB, interpolationFraction,
+                                              scanPositionRight, modulatedScanWidth);
 
                 // Advance scanner phase
                 voice.scannerPhase += scannerIncrement;
-                while (voice.scannerPhase >= 1.0f) voice.scannerPhase -= 1.0f;
-                while (voice.scannerPhase < 0.0f)  voice.scannerPhase += 1.0f;
+                while (voice.scannerPhase >= 1.0f)
+                    voice.scannerPhase -= 1.0f;
+                while (voice.scannerPhase < 0.0f)
+                    voice.scannerPhase += 1.0f;
 
                 //-- DC blocker ------------------------------------------------
-                outputLeft  = voice.dcBlockerLeft.process (outputLeft);
-                outputRight = voice.dcBlockerRight.process (outputRight);
+                outputLeft = voice.dcBlockerLeft.process(outputLeft);
+                outputRight = voice.dcBlockerRight.process(outputRight);
 
                 //-- Soft limiter ----------------------------------------------
                 // tanh(x * 3) * 0.33: provides ~3x headroom before saturation,
                 // then smoothly limits. The 0.33 scaling compensates for the
                 // 3x drive so that unity input produces unity output.
-                constexpr float kLimiterDrive   = 3.0f;
+                constexpr float kLimiterDrive = 3.0f;
                 constexpr float kLimiterCeiling = 0.33f;
-                outputLeft  = fastTanh (outputLeft  * kLimiterDrive) * kLimiterCeiling;
-                outputRight = fastTanh (outputRight * kLimiterDrive) * kLimiterCeiling;
+                outputLeft = fastTanh(outputLeft * kLimiterDrive) * kLimiterCeiling;
+                outputRight = fastTanh(outputRight * kLimiterDrive) * kLimiterCeiling;
 
                 //-- Apply amplitude envelope, velocity, and crossfade ---------
                 float voiceGain = amplitudeLevel * voice.velocity * voice.crossfadeGain;
-                outputLeft  *= voiceGain;
+                outputLeft *= voiceGain;
                 outputRight *= voiceGain;
 
                 // Final denormal protection on voice outputs.
                 // Even after all the above processing, the multiplication by
                 // a near-zero envelope can produce subnormals.
-                outputLeft  = flushDenormal (outputLeft);
-                outputRight = flushDenormal (outputRight);
+                outputLeft = flushDenormal(outputLeft);
+                outputRight = flushDenormal(outputRight);
 
-                mixLeft  += outputLeft;
+                mixLeft += outputLeft;
                 mixRight += outputRight;
 
-                peakEnvelopeLevel = std::max (peakEnvelopeLevel, amplitudeLevel);
+                peakEnvelopeLevel = std::max(peakEnvelopeLevel, amplitudeLevel);
             }
 
             // Apply master level
-            float finalLeft  = mixLeft  * paramMasterLevel;
+            float finalLeft = mixLeft * paramMasterLevel;
             float finalRight = mixRight * paramMasterLevel;
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, sample, finalLeft);
-                buffer.addSample (1, sample, finalRight);
+                buffer.addSample(0, sample, finalLeft);
+                buffer.addSample(1, sample, finalRight);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, sample, (finalLeft + finalRight) * 0.5f);
+                buffer.addSample(0, sample, (finalLeft + finalRight) * 0.5f);
             }
 
             // Cache output for coupling reads by other engines
-            if (sample < static_cast<int> (outputCacheLeft.size()))
+            if (sample < static_cast<int>(outputCacheLeft.size()))
             {
-                outputCacheLeft[static_cast<size_t> (sample)]  = finalLeft;
-                outputCacheRight[static_cast<size_t> (sample)] = finalRight;
+                outputCacheLeft[static_cast<size_t>(sample)] = finalLeft;
+                outputCacheRight[static_cast<size_t>(sample)] = finalRight;
             }
         }
 
@@ -990,15 +965,14 @@ public:
         // Update active voice count for UI display
         int count = 0;
         for (const auto& voice : voices)
-            if (voice.active) ++count;
+            if (voice.active)
+                ++count;
         activeVoiceCount_.store(count, std::memory_order_relaxed);
 
         // SilenceGate: analyze output level for next-block bypass decision
-        silenceGate.analyzeBlock (buffer.getReadPointer (0),
-                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
-                                  numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0),
+                                 buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr, numSamples);
     }
-
 
     //==========================================================================
     // SynthEngine Interface -- Coupling
@@ -1010,247 +984,248 @@ public:
     //     (RhythmToBlend). The giant squid responding to the ocean's forces.
     //==========================================================================
 
-    float getSampleForCoupling (int channel, int sampleIndex) const override
+    float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        if (sampleIndex < 0) return 0.0f;
-        auto index = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && index < outputCacheLeft.size())  return outputCacheLeft[index];
-        if (channel == 1 && index < outputCacheRight.size()) return outputCacheRight[index];
-        if (channel == 2) return envelopeOutput;  // envelope follower for amplitude coupling
+        if (sampleIndex < 0)
+            return 0.0f;
+        auto index = static_cast<size_t>(sampleIndex);
+        if (channel == 0 && index < outputCacheLeft.size())
+            return outputCacheLeft[index];
+        if (channel == 1 && index < outputCacheRight.size())
+            return outputCacheRight[index];
+        if (channel == 2)
+            return envelopeOutput; // envelope follower for amplitude coupling
         return 0.0f;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* /*sourceBuffer*/, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
         switch (type)
         {
-            case CouplingType::AudioToFM:
-                // External audio applied as distributed force on chain masses.
-                // Scale factor 0.5: moderate sensitivity to prevent chain blowup.
-                couplingForceModulation += amount * 0.5f;
-                break;
+        case CouplingType::AudioToFM:
+            // External audio applied as distributed force on chain masses.
+            // Scale factor 0.5: moderate sensitivity to prevent chain blowup.
+            couplingForceModulation += amount * 0.5f;
+            break;
 
-            case CouplingType::AmpToFilter:
-                // External amplitude modulates spring stiffness.
-                // Scale factor 0.3: subtle timbral shift from coupling.
-                couplingStiffnessModulation += amount * 0.3f;
-                break;
+        case CouplingType::AmpToFilter:
+            // External amplitude modulates spring stiffness.
+            // Scale factor 0.3: subtle timbral shift from coupling.
+            couplingStiffnessModulation += amount * 0.3f;
+            break;
 
-            case CouplingType::RhythmToBlend:
-                // External rhythm trigger fires an impulse on the chain.
-                // Raw amount passed through -- impulse scaling happens at application.
-                couplingImpulseTrigger += amount;
-                break;
+        case CouplingType::RhythmToBlend:
+            // External rhythm trigger fires an impulse on the chain.
+            // Raw amount passed through -- impulse scaling happens at application.
+            couplingImpulseTrigger += amount;
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
-
 
     //==========================================================================
     // SynthEngine Interface -- Parameter Layout
     //==========================================================================
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         //-- Core Physics Parameters -------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_stiffness", 1 }, "Obscura Stiffness",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_stiffness", 1}, "Obscura Stiffness",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_damping", 1 }, "Obscura Damping",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_damping", 1}, "Obscura Damping",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_nonlinear", 1 }, "Obscura Nonlinear",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_nonlinear", 1}, "Obscura Nonlinear",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_excitePos", 1 }, "Obscura Excite Position",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_excitePos", 1}, "Obscura Excite Position",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_exciteWidth", 1 }, "Obscura Excite Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_exciteWidth", 1}, "Obscura Excite Width",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.3f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_scanWidth", 1 }, "Obscura Scan Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_scanWidth", 1}, "Obscura Scan Width",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "obscura_boundary", 1 }, "Obscura Boundary Mode",
-            juce::StringArray { "Fixed", "Free", "Periodic" }, 0));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"obscura_boundary", 1}, "Obscura Boundary Mode",
+            juce::StringArray{"Fixed", "Free", "Periodic"}, 0));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_sustain", 1 }, "Obscura Sustain Force",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_sustain", 1}, "Obscura Sustain Force",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
 
         //-- Level -------------------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_level", 1 }, "Obscura Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_level", 1}, "Obscura Level",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
 
         //-- Amplitude Envelope ------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_ampAttack", 1 }, "Obscura Amp Attack",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_ampAttack", 1}, "Obscura Amp Attack",
+            juce::NormalisableRange<float>(0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_ampDecay", 1 }, "Obscura Amp Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.1f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_ampDecay", 1}, "Obscura Amp Decay",
+            juce::NormalisableRange<float>(0.0f, 10.0f, 0.001f, 0.3f), 0.1f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_ampSustain", 1 }, "Obscura Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_ampSustain", 1}, "Obscura Amp Sustain",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_ampRelease", 1 }, "Obscura Amp Release",
-            juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_ampRelease", 1}, "Obscura Amp Release",
+            juce::NormalisableRange<float>(0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
 
         //-- Physics Envelope --------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_physEnvAttack", 1 }, "Obscura Phys Attack",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_physEnvAttack", 1}, "Obscura Phys Attack",
+            juce::NormalisableRange<float>(0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_physEnvDecay", 1 }, "Obscura Phys Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.2f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_physEnvDecay", 1}, "Obscura Phys Decay",
+            juce::NormalisableRange<float>(0.0f, 10.0f, 0.001f, 0.3f), 0.2f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_physEnvSustain", 1 }, "Obscura Phys Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_physEnvSustain", 1}, "Obscura Phys Sustain",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_physEnvRelease", 1 }, "Obscura Phys Release",
-            juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_physEnvRelease", 1}, "Obscura Phys Release",
+            juce::NormalisableRange<float>(0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
 
         //-- LFO 1 -------------------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_lfo1Rate", 1 }, "Obscura LFO1 Rate",
-            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_lfo1Rate", 1}, "Obscura LFO1 Rate",
+            juce::NormalisableRange<float>(0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_lfo1Depth", 1 }, "Obscura LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_lfo1Depth", 1}, "Obscura LFO1 Depth",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "obscura_lfo1Shape", 1 }, "Obscura LFO1 Shape",
-            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"obscura_lfo1Shape", 1}, "Obscura LFO1 Shape",
+            juce::StringArray{"Sine", "Triangle", "Saw", "Square", "S&H"}, 0));
 
         //-- LFO 2 -------------------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_lfo2Rate", 1 }, "Obscura LFO2 Rate",
-            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_lfo2Rate", 1}, "Obscura LFO2 Rate",
+            juce::NormalisableRange<float>(0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_lfo2Depth", 1 }, "Obscura LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"obscura_lfo2Depth", 1}, "Obscura LFO2 Depth",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "obscura_lfo2Shape", 1 }, "Obscura LFO2 Shape",
-            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"obscura_lfo2Shape", 1}, "Obscura LFO2 Shape",
+            juce::StringArray{"Sine", "Triangle", "Saw", "Square", "S&H"}, 0));
 
         //-- Voice Parameters --------------------------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "obscura_voiceMode", 1 }, "Obscura Voice Mode",
-            juce::StringArray { "Mono", "Legato", "Poly4", "Poly8" }, 2));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"obscura_voiceMode", 1}, "Obscura Voice Mode",
+            juce::StringArray{"Mono", "Legato", "Poly4", "Poly8"}, 2));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_glide", 1 }, "Obscura Glide",
-            juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_glide", 1}, "Obscura Glide",
+            juce::NormalisableRange<float>(0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "obscura_initShape", 1 }, "Obscura Init Shape",
-            juce::StringArray { "Sine", "Saw", "Random", "Flat" }, 0));
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"obscura_initShape", 1}, "Obscura Init Shape",
+            juce::StringArray{"Sine", "Saw", "Random", "Flat"}, 0));
 
         //-- Macros (XOceanus standard M1-M4) ----------------------------------
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_macroCharacter", 1 }, "Obscura Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_macroCharacter", 1}, "Obscura Macro CHARACTER",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_macroMovement", 1 }, "Obscura Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_macroMovement", 1}, "Obscura Macro MOVEMENT",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_macroCoupling", 1 }, "Obscura Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_macroCoupling", 1}, "Obscura Macro COUPLING",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "obscura_macroSpace", 1 }, "Obscura Macro SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"obscura_macroSpace", 1}, "Obscura Macro SPACE",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         //-- Core Physics --
-        pStiffness       = apvts.getRawParameterValue ("obscura_stiffness");
-        pDamping         = apvts.getRawParameterValue ("obscura_damping");
-        pNonlinear       = apvts.getRawParameterValue ("obscura_nonlinear");
-        pExcitePos       = apvts.getRawParameterValue ("obscura_excitePos");
-        pExciteWidth     = apvts.getRawParameterValue ("obscura_exciteWidth");
-        pScanWidth       = apvts.getRawParameterValue ("obscura_scanWidth");
-        pBoundary        = apvts.getRawParameterValue ("obscura_boundary");
-        pSustain         = apvts.getRawParameterValue ("obscura_sustain");
-        pLevel           = apvts.getRawParameterValue ("obscura_level");
+        pStiffness = apvts.getRawParameterValue("obscura_stiffness");
+        pDamping = apvts.getRawParameterValue("obscura_damping");
+        pNonlinear = apvts.getRawParameterValue("obscura_nonlinear");
+        pExcitePos = apvts.getRawParameterValue("obscura_excitePos");
+        pExciteWidth = apvts.getRawParameterValue("obscura_exciteWidth");
+        pScanWidth = apvts.getRawParameterValue("obscura_scanWidth");
+        pBoundary = apvts.getRawParameterValue("obscura_boundary");
+        pSustain = apvts.getRawParameterValue("obscura_sustain");
+        pLevel = apvts.getRawParameterValue("obscura_level");
 
         //-- Amplitude Envelope --
-        pAmpAttack       = apvts.getRawParameterValue ("obscura_ampAttack");
-        pAmpDecay        = apvts.getRawParameterValue ("obscura_ampDecay");
-        pAmpSustain      = apvts.getRawParameterValue ("obscura_ampSustain");
-        pAmpRelease      = apvts.getRawParameterValue ("obscura_ampRelease");
+        pAmpAttack = apvts.getRawParameterValue("obscura_ampAttack");
+        pAmpDecay = apvts.getRawParameterValue("obscura_ampDecay");
+        pAmpSustain = apvts.getRawParameterValue("obscura_ampSustain");
+        pAmpRelease = apvts.getRawParameterValue("obscura_ampRelease");
 
         //-- Physics Envelope --
-        pPhysAttack      = apvts.getRawParameterValue ("obscura_physEnvAttack");
-        pPhysDecay       = apvts.getRawParameterValue ("obscura_physEnvDecay");
-        pPhysSustain     = apvts.getRawParameterValue ("obscura_physEnvSustain");
-        pPhysRelease     = apvts.getRawParameterValue ("obscura_physEnvRelease");
+        pPhysAttack = apvts.getRawParameterValue("obscura_physEnvAttack");
+        pPhysDecay = apvts.getRawParameterValue("obscura_physEnvDecay");
+        pPhysSustain = apvts.getRawParameterValue("obscura_physEnvSustain");
+        pPhysRelease = apvts.getRawParameterValue("obscura_physEnvRelease");
 
         //-- LFO 1 --
-        pLfo1Rate        = apvts.getRawParameterValue ("obscura_lfo1Rate");
-        pLfo1Depth       = apvts.getRawParameterValue ("obscura_lfo1Depth");
-        pLfo1Shape       = apvts.getRawParameterValue ("obscura_lfo1Shape");
+        pLfo1Rate = apvts.getRawParameterValue("obscura_lfo1Rate");
+        pLfo1Depth = apvts.getRawParameterValue("obscura_lfo1Depth");
+        pLfo1Shape = apvts.getRawParameterValue("obscura_lfo1Shape");
 
         //-- LFO 2 --
-        pLfo2Rate        = apvts.getRawParameterValue ("obscura_lfo2Rate");
-        pLfo2Depth       = apvts.getRawParameterValue ("obscura_lfo2Depth");
-        pLfo2Shape       = apvts.getRawParameterValue ("obscura_lfo2Shape");
+        pLfo2Rate = apvts.getRawParameterValue("obscura_lfo2Rate");
+        pLfo2Depth = apvts.getRawParameterValue("obscura_lfo2Depth");
+        pLfo2Shape = apvts.getRawParameterValue("obscura_lfo2Shape");
 
         //-- Voice --
-        pVoiceMode       = apvts.getRawParameterValue ("obscura_voiceMode");
-        pGlide           = apvts.getRawParameterValue ("obscura_glide");
-        pInitShape       = apvts.getRawParameterValue ("obscura_initShape");
+        pVoiceMode = apvts.getRawParameterValue("obscura_voiceMode");
+        pGlide = apvts.getRawParameterValue("obscura_glide");
+        pInitShape = apvts.getRawParameterValue("obscura_initShape");
 
         //-- Macros --
-        pMacroCharacter  = apvts.getRawParameterValue ("obscura_macroCharacter");
-        pMacroMovement   = apvts.getRawParameterValue ("obscura_macroMovement");
-        pMacroCoupling   = apvts.getRawParameterValue ("obscura_macroCoupling");
-        pMacroSpace      = apvts.getRawParameterValue ("obscura_macroSpace");
+        pMacroCharacter = apvts.getRawParameterValue("obscura_macroCharacter");
+        pMacroMovement = apvts.getRawParameterValue("obscura_macroMovement");
+        pMacroCoupling = apvts.getRawParameterValue("obscura_macroCoupling");
+        pMacroSpace = apvts.getRawParameterValue("obscura_macroSpace");
     }
-
 
     //==========================================================================
     // SynthEngine Interface -- Engine Identity
@@ -1261,25 +1236,22 @@ public:
     // Daguerreotype Silver #8A9BA8 -- the color of tarnished silver plate,
     // referencing both the camera obscura's mirror and the giant squid's
     // bioluminescent silver skin in the deep ocean.
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF8A9BA8); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF8A9BA8); }
 
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
-
 private:
-
     SilenceGate silenceGate;
 
     //==========================================================================
     // Helper: safe atomic parameter load with fallback
     //==========================================================================
 
-    static float loadParam (std::atomic<float>* param, float fallback) noexcept
+    static float loadParam(std::atomic<float>* param, float fallback) noexcept
     {
         return (param != nullptr) ? param->load() : fallback;
     }
-
 
     //==========================================================================
     // Mass-Spring Chain: Verlet Integration
@@ -1301,11 +1273,8 @@ private:
     //   Periodic: endpoints wrap around (like a ring of masses)
     //==========================================================================
 
-    static void updateChain (float* currentPosition, float* previousPosition,
-                             int chainLength,
-                             float springConstant, float dampingCoefficient,
-                             float cubicSpringConstant,
-                             int boundaryMode) noexcept
+    static void updateChain(float* currentPosition, float* previousPosition, int chainLength, float springConstant,
+                            float dampingCoefficient, float cubicSpringConstant, int boundaryMode) noexcept
     {
         // Scratch buffer: compute all new positions before writing any back.
         // Without this, writing currentPosition[i] inside the loop contaminates
@@ -1315,23 +1284,21 @@ private:
         // Verlet integration for interior masses (skip endpoints)
         for (int i = 1; i < chainLength - 1; ++i)
         {
-            float displacementLeft  = currentPosition[i] - currentPosition[i - 1];
+            float displacementLeft = currentPosition[i] - currentPosition[i - 1];
             float displacementRight = currentPosition[i + 1] - currentPosition[i];
 
             // Linear spring force: F = k * (x[i+1] - 2*x[i] + x[i-1])
             // This is the discrete Laplacian -- the same operator used in
             // finite-difference wave equation solvers.
-            float force = springConstant
-                        * (currentPosition[i + 1] - 2.0f * currentPosition[i]
-                           + currentPosition[i - 1]);
+            float force =
+                springConstant * (currentPosition[i + 1] - 2.0f * currentPosition[i] + currentPosition[i - 1]);
 
             // Cubic nonlinear spring: F += k3 * (dx_right^3 - dx_left^3)
             // This adds amplitude-dependent stiffness -- large displacements
             // create stronger restoring forces, producing inharmonic partials
             // and pitch brightening at high amplitudes (like a stiff piano string).
-            force += cubicSpringConstant
-                   * (displacementRight * displacementRight * displacementRight
-                    - displacementLeft  * displacementLeft  * displacementLeft);
+            force += cubicSpringConstant * (displacementRight * displacementRight * displacementRight -
+                                            displacementLeft * displacementLeft * displacementLeft);
 
             // Velocity estimate from Verlet: v ~ x[n] - x[n-1]
             float velocity = currentPosition[i] - previousPosition[i];
@@ -1341,32 +1308,31 @@ private:
 
             // Verlet step: x_new = 2*x - x_old + F * dt^2
             // dt^2 is normalized to 1.0; k already encodes effective k*dt^2
-            newPosition[i] = 2.0f * currentPosition[i]
-                           - previousPosition[i] + force;
+            newPosition[i] = 2.0f * currentPosition[i] - previousPosition[i] + force;
         }
 
         // Apply boundary conditions to newPosition[] before copying back
         switch (boundaryMode)
         {
-            case 0: // Fixed: endpoints pinned to zero (vibrating string)
-                newPosition[0] = 0.0f;
-                newPosition[chainLength - 1] = 0.0f;
-                break;
+        case 0: // Fixed: endpoints pinned to zero (vibrating string)
+            newPosition[0] = 0.0f;
+            newPosition[chainLength - 1] = 0.0f;
+            break;
 
-            case 1: // Free: endpoints mirror neighbors (open boundary)
-                newPosition[0] = newPosition[1];
-                newPosition[chainLength - 1] = newPosition[chainLength - 2];
-                break;
+        case 1: // Free: endpoints mirror neighbors (open boundary)
+            newPosition[0] = newPosition[1];
+            newPosition[chainLength - 1] = newPosition[chainLength - 2];
+            break;
 
-            case 2: // Periodic: endpoints wrap around (circular chain)
-                newPosition[0] = newPosition[chainLength - 2];
-                newPosition[chainLength - 1] = newPosition[1];
-                break;
+        case 2: // Periodic: endpoints wrap around (circular chain)
+            newPosition[0] = newPosition[chainLength - 2];
+            newPosition[chainLength - 1] = newPosition[1];
+            break;
 
-            default: // Fallback to fixed endpoints
-                newPosition[0] = 0.0f;
-                newPosition[chainLength - 1] = 0.0f;
-                break;
+        default: // Fallback to fixed endpoints
+            newPosition[0] = 0.0f;
+            newPosition[chainLength - 1] = 0.0f;
+            break;
         }
 
         // Commit: previousPosition gets the old currentPosition, then
@@ -1377,7 +1343,6 @@ private:
             currentPosition[i] = newPosition[i];
         }
     }
-
 
     //==========================================================================
     // Scanner: Read Chain Displacement
@@ -1396,64 +1361,61 @@ private:
     // scanWidth: width of the averaging window in chain masses.
     //==========================================================================
 
-    static float scanChain (const float* snapshotA, const float* snapshotB,
-                            float interpolationFraction, float scanPosition,
-                            float scanWidth) noexcept
+    static float scanChain(const float* snapshotA, const float* snapshotB, float interpolationFraction,
+                           float scanPosition, float scanWidth) noexcept
     {
         // Map normalized position [0,1) to chain index [0, N-1]
-        float chainPosition = scanPosition * static_cast<float> (kChainSize - 1);
+        float chainPosition = scanPosition * static_cast<float>(kChainSize - 1);
 
         // Narrow width: single-point cubic interpolation (brightest timbre)
         if (scanWidth < 2.0f)
         {
-            return cubicHermiteInterpolateChain (snapshotA, snapshotB,
-                                                 interpolationFraction,
-                                                 chainPosition);
+            return cubicHermiteInterpolateChain(snapshotA, snapshotB, interpolationFraction, chainPosition);
         }
 
         // Wide width: Hann-windowed average (darker timbre)
         float halfWidth = scanWidth * 0.5f;
         float windowStart = chainPosition - halfWidth;
-        float windowEnd   = chainPosition + halfWidth;
+        float windowEnd = chainPosition + halfWidth;
 
         // Number of sample points in the averaging window
-        int windowSamples = static_cast<int> (scanWidth) + 1;
-        if (windowSamples < 2)         windowSamples = 2;
-        if (windowSamples > kChainSize) windowSamples = kChainSize;
+        int windowSamples = static_cast<int>(scanWidth) + 1;
+        if (windowSamples < 2)
+            windowSamples = 2;
+        if (windowSamples > kChainSize)
+            windowSamples = kChainSize;
 
-        float sampleStep = (windowEnd - windowStart)
-                         / static_cast<float> (windowSamples - 1);
+        float sampleStep = (windowEnd - windowStart) / static_cast<float>(windowSamples - 1);
         float weightedSum = 0.0f;
         float totalWeight = 0.0f;
 
         for (int s = 0; s < windowSamples; ++s)
         {
-            float samplePosition = windowStart + static_cast<float> (s) * sampleStep;
+            float samplePosition = windowStart + static_cast<float>(s) * sampleStep;
 
             // Wrap position to valid chain range [0, N-1]
-            float chainEnd = static_cast<float> (kChainSize - 1);
+            float chainEnd = static_cast<float>(kChainSize - 1);
             float wrappedPosition = samplePosition;
-            while (wrappedPosition < 0.0f)     wrappedPosition += chainEnd;
-            while (wrappedPosition >= chainEnd) wrappedPosition -= chainEnd;
+            while (wrappedPosition < 0.0f)
+                wrappedPosition += chainEnd;
+            while (wrappedPosition >= chainEnd)
+                wrappedPosition -= chainEnd;
 
             // Hann window weight: w = 0.5 - 0.5*cos(2*pi*t)
             // This gives smooth rolloff at the edges of the averaging window,
             // preventing spectral leakage artifacts in the output.
-            float normalizedWindowPos = static_cast<float> (s)
-                                      / static_cast<float> (windowSamples - 1);
-            float hannWeight = 0.5f - 0.5f * std::cos (kTwoPi * normalizedWindowPos);
+            float normalizedWindowPos = static_cast<float>(s) / static_cast<float>(windowSamples - 1);
+            float hannWeight = 0.5f - 0.5f * std::cos(kTwoPi * normalizedWindowPos);
 
-            float sampleValue = cubicHermiteInterpolateChain (
-                snapshotA, snapshotB, interpolationFraction, wrappedPosition);
+            float sampleValue =
+                cubicHermiteInterpolateChain(snapshotA, snapshotB, interpolationFraction, wrappedPosition);
             weightedSum += sampleValue * hannWeight;
             totalWeight += hannWeight;
         }
 
         constexpr float kMinWeightThreshold = 0.0001f;
-        return (totalWeight > kMinWeightThreshold)
-                   ? (weightedSum / totalWeight) : 0.0f;
+        return (totalWeight > kMinWeightThreshold) ? (weightedSum / totalWeight) : 0.0f;
     }
-
 
     //==========================================================================
     // Cubic Hermite Interpolation for Chain Readout
@@ -1468,21 +1430,21 @@ private:
     // linear interpolation would produce.
     //==========================================================================
 
-    static float cubicHermiteInterpolateChain (const float* snapshotA,
-                                               const float* snapshotB,
-                                               float interpolationFraction,
-                                               float position) noexcept
+    static float cubicHermiteInterpolateChain(const float* snapshotA, const float* snapshotB,
+                                              float interpolationFraction, float position) noexcept
     {
         int chainLength = kChainSize;
-        int index1 = static_cast<int> (position);
-        float fractionalPart = position - static_cast<float> (index1);
+        int index1 = static_cast<int>(position);
+        float fractionalPart = position - static_cast<float>(index1);
 
         // Clamp base index to valid range
-        if (index1 < 0)            index1 = 0;
-        if (index1 >= chainLength) index1 = chainLength - 1;
+        if (index1 < 0)
+            index1 = 0;
+        if (index1 >= chainLength)
+            index1 = chainLength - 1;
 
         // Four neighboring indices for cubic interpolation
-        int index0 = (index1 > 0)              ? index1 - 1 : 0;
+        int index0 = (index1 > 0) ? index1 - 1 : 0;
         int index2 = (index1 < chainLength - 1) ? index1 + 1 : chainLength - 1;
         int index3 = (index2 < chainLength - 1) ? index2 + 1 : chainLength - 1;
 
@@ -1499,24 +1461,20 @@ private:
         float c3 = 0.5f * (y3 - y0) + 1.5f * (y1 - y2);
 
         // Evaluate polynomial: ((c3*t + c2)*t + c1)*t + c0 (Horner's method)
-        return ((c3 * fractionalPart + c2) * fractionalPart + c1)
-               * fractionalPart + c0;
+        return ((c3 * fractionalPart + c2) * fractionalPart + c1) * fractionalPart + c0;
     }
-
 
     //==========================================================================
     // MIDI Note Handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPolyphony,
-                 bool monoMode, bool legatoMode, float glideCoefficient,
-                 float ampAttack, float ampDecay, float ampSustain, float ampRelease,
-                 float physAttack, float physDecay, float physSustain, float physRelease,
-                 float lfo1Rate, float lfo1Depth, int lfo1Shape,
-                 float lfo2Rate, float lfo2Depth, int lfo2Shape,
-                 int initialShapeIndex, float excitePosition, float exciteWidth)
+    void noteOn(int noteNumber, float velocity, int maxPolyphony, bool monoMode, bool legatoMode,
+                float glideCoefficient, float ampAttack, float ampDecay, float ampSustain, float ampRelease,
+                float physAttack, float physDecay, float physSustain, float physRelease, float lfo1Rate,
+                float lfo1Depth, int lfo1Shape, float lfo2Rate, float lfo2Depth, int lfo2Shape, int initialShapeIndex,
+                float excitePosition, float exciteWidth)
     {
-        float frequency = midiNoteToFrequencyHz (static_cast<float> (noteNumber));
+        float frequency = midiNoteToFrequencyHz(static_cast<float>(noteNumber));
 
         //-- Mono / Legato mode ------------------------------------------------
         if (monoMode)
@@ -1536,8 +1494,7 @@ private:
                 // Gentle re-excitation on legato retrigger (amplitude 0.05)
                 // to add subtle articulation without full attack transient
                 constexpr float kLegatoReexciteAmplitude = 0.05f;
-                voice.applyImpulse (excitePosition, exciteWidth,
-                                    kLegatoReexciteAmplitude);
+                voice.applyImpulse(excitePosition, exciteWidth, kLegatoReexciteAmplitude);
             }
             else
             {
@@ -1553,34 +1510,32 @@ private:
                 voice.fadingOut = false;
                 voice.crossfadeGain = 1.0f;
 
-                voice.amplitudeEnvelope.setParams (ampAttack, ampDecay,
-                    ampSustain, ampRelease, sampleRateFloat);
+                voice.amplitudeEnvelope.setParams(ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
                 voice.amplitudeEnvelope.noteOn();
-                voice.physicsEnvelope.setParams (physAttack, physDecay,
-                    physSustain, physRelease, sampleRateFloat);
+                voice.physicsEnvelope.setParams(physAttack, physDecay, physSustain, physRelease, sampleRateFloat);
                 voice.physicsEnvelope.noteOn();
 
-                voice.lfo1.setRate (lfo1Rate, sampleRateFloat);
-                voice.lfo1.setShape (lfo1Shape);
-                voice.lfo2.setRate (lfo2Rate, sampleRateFloat);
-                voice.lfo2.setShape (lfo2Shape);
+                voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+                voice.lfo2.setShape(lfo2Shape);
 
-                voice.dcBlockerLeft.setCoefficient (sampleRateFloat);
-                voice.dcBlockerRight.setCoefficient (sampleRateFloat);
+                voice.dcBlockerLeft.setCoefficient(sampleRateFloat);
+                voice.dcBlockerRight.setCoefficient(sampleRateFloat);
                 voice.dcBlockerLeft.reset();
                 voice.dcBlockerRight.reset();
 
                 // Seed RNG with note number for deterministic chain initialization.
                 // 7919 is an arbitrary prime to spread seeds across the state space.
-                voice.randomGeneratorState = static_cast<uint32_t> (noteNumber * 7919 + 42);
-                voice.initChainShape (initialShapeIndex, excitePosition, exciteWidth);
+                voice.randomGeneratorState = static_cast<uint32_t>(noteNumber * 7919 + 42);
+                voice.initChainShape(initialShapeIndex, excitePosition, exciteWidth);
             }
             return;
         }
 
         //-- Polyphonic mode ---------------------------------------------------
-        int voiceIndex = VoiceAllocator::findFreeVoice (voices, std::min (maxPolyphony, kMaxVoices));
-        auto& voice = voices[static_cast<size_t> (voiceIndex)];
+        int voiceIndex = VoiceAllocator::findFreeVoice(voices, std::min(maxPolyphony, kMaxVoices));
+        auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
         // If stealing an active voice, reset it cleanly before starting the new
         // note. fadingOut must be cleared BEFORE setting up the new note so the
@@ -1595,38 +1550,36 @@ private:
         voice.startTime = voiceCounter++;
         voice.currentFrequency = frequency;
         voice.targetFrequency = frequency;
-        voice.glideCoefficient = 1.0f;  // no glide in poly mode
+        voice.glideCoefficient = 1.0f; // no glide in poly mode
         voice.scannerPhase = 0.0f;
         voice.controlPhaseAccumulator = 0.0f;
         voice.fadingOut = false;
         voice.crossfadeGain = wasStolen ? 0.0f : 1.0f;
 
-        voice.amplitudeEnvelope.setParams (ampAttack, ampDecay,
-            ampSustain, ampRelease, sampleRateFloat);
+        voice.amplitudeEnvelope.setParams(ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
         voice.amplitudeEnvelope.noteOn();
-        voice.physicsEnvelope.setParams (physAttack, physDecay,
-            physSustain, physRelease, sampleRateFloat);
+        voice.physicsEnvelope.setParams(physAttack, physDecay, physSustain, physRelease, sampleRateFloat);
         voice.physicsEnvelope.noteOn();
 
-        voice.lfo1.setRate (lfo1Rate, sampleRateFloat);
-        voice.lfo1.setShape (lfo1Shape);
+        voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+        voice.lfo1.setShape(lfo1Shape);
         voice.lfo1.reset();
-        voice.lfo2.setRate (lfo2Rate, sampleRateFloat);
-        voice.lfo2.setShape (lfo2Shape);
+        voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+        voice.lfo2.setShape(lfo2Shape);
         voice.lfo2.reset();
 
-        voice.dcBlockerLeft.setCoefficient (sampleRateFloat);
-        voice.dcBlockerRight.setCoefficient (sampleRateFloat);
+        voice.dcBlockerLeft.setCoefficient(sampleRateFloat);
+        voice.dcBlockerRight.setCoefficient(sampleRateFloat);
         voice.dcBlockerLeft.reset();
         voice.dcBlockerRight.reset();
 
         // Seed RNG: combine note number and voice counter for unique
         // random chain initialization per note event
-        voice.randomGeneratorState = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter);
-        voice.initChainShape (initialShapeIndex, excitePosition, exciteWidth);
+        voice.randomGeneratorState = static_cast<uint32_t>(noteNumber * 7919 + voiceCounter);
+        voice.initChainShape(initialShapeIndex, excitePosition, exciteWidth);
     }
 
-    void noteOff (int noteNumber)
+    void noteOff(int noteNumber)
     {
         for (auto& voice : voices)
         {
@@ -1642,11 +1595,10 @@ private:
     // Standard equal-temperament MIDI-to-frequency conversion.
     // A4 = 440 Hz, 12 semitones per octave.
     //--------------------------------------------------------------------------
-    static float midiNoteToFrequencyHz (float midiNote) noexcept
+    static float midiNoteToFrequencyHz(float midiNote) noexcept
     {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
     }
-
 
     //==========================================================================
     // Member Data
@@ -1654,16 +1606,16 @@ private:
 
     //-- Sample rate -----------------------------------------------------------
     double sampleRateDouble = 44100.0;
-    float  sampleRateFloat  = 44100.0f;
+    float sampleRateFloat = 44100.0f;
 
     //-- Timing coefficients ---------------------------------------------------
     float voiceCrossfadeRate = 0.01f;
-    float controlStepSamples = 11.025f;  // ~44100 / 4000 (audio samples per physics step)
+    float controlStepSamples = 11.025f; // ~44100 / 4000 (audio samples per physics step)
     float normalizedDtSquared = 1.0f;
 
     //-- Voice pool ------------------------------------------------------------
     std::array<ObscuraVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;     // monotonic counter for LRU voice stealing
+    uint64_t voiceCounter = 0; // monotonic counter for LRU voice stealing
     // activeVoiceCount_ promoted to base class std::atomic<int>
 
     //-- Smoothed control parameters (ParameterSmoother — 5ms time constant) ---
@@ -1674,10 +1626,10 @@ private:
     ParameterSmoother smoothedSustainForce;
 
     //-- Coupling accumulators -------------------------------------------------
-    float envelopeOutput              = 0.0f;
-    float couplingForceModulation     = 0.0f;
+    float envelopeOutput = 0.0f;
+    float couplingForceModulation = 0.0f;
     float couplingStiffnessModulation = 0.0f;
-    float couplingImpulseTrigger      = 0.0f;
+    float couplingImpulseTrigger = 0.0f;
 
     //-- Output cache for coupling reads ---------------------------------------
     std::vector<float> outputCacheLeft;
@@ -1688,52 +1640,52 @@ private:
 
     // D006: mod wheel (CC#1) — bow speed / excitation intensity (+0.4 sustainForce at full wheel)
     float modWheelAmount = 0.0f;
-    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
+    float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Cached APVTS parameter pointers (ParamSnapshot pattern) ---------------
     // Core physics
-    std::atomic<float>* pStiffness   = nullptr;
-    std::atomic<float>* pDamping     = nullptr;
-    std::atomic<float>* pNonlinear   = nullptr;
-    std::atomic<float>* pExcitePos   = nullptr;
+    std::atomic<float>* pStiffness = nullptr;
+    std::atomic<float>* pDamping = nullptr;
+    std::atomic<float>* pNonlinear = nullptr;
+    std::atomic<float>* pExcitePos = nullptr;
     std::atomic<float>* pExciteWidth = nullptr;
-    std::atomic<float>* pScanWidth   = nullptr;
-    std::atomic<float>* pBoundary    = nullptr;
-    std::atomic<float>* pSustain     = nullptr;
-    std::atomic<float>* pLevel       = nullptr;
+    std::atomic<float>* pScanWidth = nullptr;
+    std::atomic<float>* pBoundary = nullptr;
+    std::atomic<float>* pSustain = nullptr;
+    std::atomic<float>* pLevel = nullptr;
 
     // Amplitude envelope
-    std::atomic<float>* pAmpAttack   = nullptr;
-    std::atomic<float>* pAmpDecay    = nullptr;
-    std::atomic<float>* pAmpSustain  = nullptr;
-    std::atomic<float>* pAmpRelease  = nullptr;
+    std::atomic<float>* pAmpAttack = nullptr;
+    std::atomic<float>* pAmpDecay = nullptr;
+    std::atomic<float>* pAmpSustain = nullptr;
+    std::atomic<float>* pAmpRelease = nullptr;
 
     // Physics envelope
-    std::atomic<float>* pPhysAttack  = nullptr;
-    std::atomic<float>* pPhysDecay   = nullptr;
+    std::atomic<float>* pPhysAttack = nullptr;
+    std::atomic<float>* pPhysDecay = nullptr;
     std::atomic<float>* pPhysSustain = nullptr;
     std::atomic<float>* pPhysRelease = nullptr;
 
     // LFO 1
-    std::atomic<float>* pLfo1Rate    = nullptr;
-    std::atomic<float>* pLfo1Depth   = nullptr;
-    std::atomic<float>* pLfo1Shape   = nullptr;
+    std::atomic<float>* pLfo1Rate = nullptr;
+    std::atomic<float>* pLfo1Depth = nullptr;
+    std::atomic<float>* pLfo1Shape = nullptr;
 
     // LFO 2
-    std::atomic<float>* pLfo2Rate    = nullptr;
-    std::atomic<float>* pLfo2Depth   = nullptr;
-    std::atomic<float>* pLfo2Shape   = nullptr;
+    std::atomic<float>* pLfo2Rate = nullptr;
+    std::atomic<float>* pLfo2Depth = nullptr;
+    std::atomic<float>* pLfo2Shape = nullptr;
 
     // Voice control
-    std::atomic<float>* pVoiceMode   = nullptr;
-    std::atomic<float>* pGlide       = nullptr;
-    std::atomic<float>* pInitShape   = nullptr;
+    std::atomic<float>* pVoiceMode = nullptr;
+    std::atomic<float>* pGlide = nullptr;
+    std::atomic<float>* pInitShape = nullptr;
 
     // Macros
     std::atomic<float>* pMacroCharacter = nullptr;
-    std::atomic<float>* pMacroMovement  = nullptr;
-    std::atomic<float>* pMacroCoupling  = nullptr;
-    std::atomic<float>* pMacroSpace     = nullptr;
+    std::atomic<float>* pMacroMovement = nullptr;
+    std::atomic<float>* pMacroCoupling = nullptr;
+    std::atomic<float>* pMacroSpace = nullptr;
 };
 
 } // namespace xoceanus

@@ -6,7 +6,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Combulator — Tuned comb filter bank with noise exciter.
@@ -39,15 +40,15 @@ public:
     Combulator() = default;
 
     //--------------------------------------------------------------------------
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
 
         // Max comb delay: ~20Hz fundamental = 50ms @ 44.1k
-        int maxDelay = static_cast<int> (sr / 20.0) + 4;
+        int maxDelay = static_cast<int>(sr / 20.0) + 4;
         for (int c = 0; c < kNumCombs; ++c)
         {
-            combBuffers[c].assign (static_cast<size_t> (maxDelay), 0.0f);
+            combBuffers[c].assign(static_cast<size_t>(maxDelay), 0.0f);
             combPos[c] = 0;
             combLP[c] = 0.0f;
         }
@@ -60,75 +61,49 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set the fundamental comb frequency in Hz. Clamped to [20, 20000].
-    void setFrequency (float hz)
-    {
-        frequency = clamp (hz, 20.0f, 20000.0f);
-    }
+    void setFrequency(float hz) { frequency = clamp(hz, 20.0f, 20000.0f); }
 
     /// Set comb 2 offset in semitones from fundamental. [-24, +24]
-    void setComb2Offset (float semitones)
-    {
-        comb2Offset = clamp (semitones, -24.0f, 24.0f);
-    }
+    void setComb2Offset(float semitones) { comb2Offset = clamp(semitones, -24.0f, 24.0f); }
 
     /// Set comb 3 offset in semitones from fundamental. [-24, +24]
-    void setComb3Offset (float semitones)
-    {
-        comb3Offset = clamp (semitones, -24.0f, 24.0f);
-    }
+    void setComb3Offset(float semitones) { comb3Offset = clamp(semitones, -24.0f, 24.0f); }
 
     /// Set feedback for all combs. [0, 0.98] — higher = longer resonance.
-    void setFeedback (float fb)
-    {
-        feedback = clamp (fb, 0.0f, 0.98f);
-    }
+    void setFeedback(float fb) { feedback = clamp(fb, 0.0f, 0.98f); }
 
     /// Set HF damping in comb feedback. [0, 1] — higher = darker resonance.
-    void setDamping (float damp)
-    {
-        damping = clamp (damp, 0.0f, 1.0f);
-    }
+    void setDamping(float damp) { damping = clamp(damp, 0.0f, 1.0f); }
 
     /// Set noise exciter level. [0, 1] — adds pitched noise into the combs.
-    void setNoiseLevel (float level)
-    {
-        noiseLevel = clamp (level, 0.0f, 1.0f);
-    }
+    void setNoiseLevel(float level) { noiseLevel = clamp(level, 0.0f, 1.0f); }
 
     /// Set noise tone (LP filter). [0, 1] — 0 = dark rumble, 1 = bright hiss.
-    void setNoiseTone (float tone)
-    {
-        noiseTone = clamp (tone, 0.0f, 1.0f);
-    }
+    void setNoiseTone(float tone) { noiseTone = clamp(tone, 0.0f, 1.0f); }
 
     /// Set wet/dry mix. [0, 1] — 0 = bypass.
-    void setMix (float wet)
-    {
-        mix = clamp (wet, 0.0f, 1.0f);
-    }
+    void setMix(float wet) { mix = clamp(wet, 0.0f, 1.0f); }
 
     /// Set stereo spread. [0, 1] — 0 = mono, 1 = combs panned L/C/R.
-    void setStereoSpread (float spread)
-    {
-        stereoSpread = clamp (spread, 0.0f, 1.0f);
-    }
+    void setStereoSpread(float spread) { stereoSpread = clamp(spread, 0.0f, 1.0f); }
 
     //--------------------------------------------------------------------------
     /// Process stereo audio in-place.
-    void processBlock (float* L, float* R, int numSamples)
+    void processBlock(float* L, float* R, int numSamples)
     {
-        if (maxCombLen <= 0) return;
+        if (maxCombLen <= 0)
+            return;
 
         // Compute delay lengths for each comb
         float delays[kNumCombs];
-        delays[0] = static_cast<float> (sr) / frequency;
-        delays[1] = static_cast<float> (sr) / (frequency * fastPow2 (comb2Offset / 12.0f));
-        delays[2] = static_cast<float> (sr) / (frequency * fastPow2 (comb3Offset / 12.0f));
+        delays[0] = static_cast<float>(sr) / frequency;
+        delays[1] = static_cast<float>(sr) / (frequency * fastPow2(comb2Offset / 12.0f));
+        delays[2] = static_cast<float>(sr) / (frequency * fastPow2(comb3Offset / 12.0f));
 
         // Clamp delays to buffer size
-        float maxD = static_cast<float> (maxCombLen - 2);
+        float maxD = static_cast<float>(maxCombLen - 2);
         for (int c = 0; c < kNumCombs; ++c)
-            delays[c] = clamp (delays[c], 1.0f, maxD);
+            delays[c] = clamp(delays[c], 1.0f, maxD);
 
         // Damping coefficient: one-pole LP in feedback path
         float dampCoeff = damping * 0.7f;
@@ -139,9 +114,12 @@ public:
         // Stereo pan gains: comb0=left, comb1=center, comb2=right
         float panL[kNumCombs], panR[kNumCombs];
         float spread = stereoSpread;
-        panL[0] = 0.5f + spread * 0.5f;   panR[0] = 0.5f - spread * 0.5f;  // left
-        panL[1] = 0.5f;                    panR[1] = 0.5f;                    // center
-        panL[2] = 0.5f - spread * 0.5f;   panR[2] = 0.5f + spread * 0.5f;  // right
+        panL[0] = 0.5f + spread * 0.5f;
+        panR[0] = 0.5f - spread * 0.5f; // left
+        panL[1] = 0.5f;
+        panR[1] = 0.5f; // center
+        panL[2] = 0.5f - spread * 0.5f;
+        panR[2] = 0.5f + spread * 0.5f; // right
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -155,10 +133,10 @@ public:
                 noiseState ^= noiseState << 13;
                 noiseState ^= noiseState >> 17;
                 noiseState ^= noiseState << 5;
-                float rawNoise = (static_cast<float> (noiseState & 0xFFFF) / 32768.0f - 1.0f);
+                float rawNoise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
 
                 // Tone LP filter on noise
-                noiseLP = flushDenormal (noiseLP + noiseLPCoeff * (rawNoise - noiseLP));
+                noiseLP = flushDenormal(noiseLP + noiseLPCoeff * (rawNoise - noiseLP));
                 noise = noiseLP * noiseLevel * 0.3f;
             }
 
@@ -170,29 +148,27 @@ public:
 
             for (int c = 0; c < kNumCombs; ++c)
             {
-                int len = static_cast<int> (combBuffers[c].size());
-                if (len <= 0) continue;
+                int len = static_cast<int>(combBuffers[c].size());
+                if (len <= 0)
+                    continue;
 
                 // Read with linear interpolation
                 float delayF = delays[c];
-                int delaySamps = static_cast<int> (delayF);
-                float frac = delayF - static_cast<float> (delaySamps);
+                int delaySamps = static_cast<int>(delayF);
+                float frac = delayF - static_cast<float>(delaySamps);
 
                 int pos = combPos[c];
                 int r0 = (pos - delaySamps + len) % len;
                 int r1 = (r0 - 1 + len) % len;
 
-                float readVal = flushDenormal (
-                    lerp (combBuffers[c][static_cast<size_t> (r0)],
-                          combBuffers[c][static_cast<size_t> (r1)], frac));
+                float readVal = flushDenormal(
+                    lerp(combBuffers[c][static_cast<size_t>(r0)], combBuffers[c][static_cast<size_t>(r1)], frac));
 
                 // One-pole LP in feedback for damping
-                combLP[c] = flushDenormal (
-                    readVal * (1.0f - dampCoeff) + combLP[c] * dampCoeff);
+                combLP[c] = flushDenormal(readVal * (1.0f - dampCoeff) + combLP[c] * dampCoeff);
 
                 // Write: input + feedback
-                combBuffers[c][static_cast<size_t> (pos)] =
-                    combInput + combLP[c] * feedback;
+                combBuffers[c][static_cast<size_t>(pos)] = combInput + combLP[c] * feedback;
 
                 combPos[c] = (pos + 1) % len;
 
@@ -202,7 +178,7 @@ public:
             }
 
             // Normalize
-            constexpr float norm = 1.0f / static_cast<float> (kNumCombs);
+            constexpr float norm = 1.0f / static_cast<float>(kNumCombs);
             wetL *= norm;
             wetR *= norm;
 
@@ -217,7 +193,7 @@ public:
     {
         for (int c = 0; c < kNumCombs; ++c)
         {
-            std::fill (combBuffers[c].begin(), combBuffers[c].end(), 0.0f);
+            std::fill(combBuffers[c].begin(), combBuffers[c].end(), 0.0f);
             combPos[c] = 0;
             combLP[c] = 0.0f;
         }
@@ -232,8 +208,8 @@ private:
 
     // Comb filter state
     std::vector<float> combBuffers[kNumCombs];
-    int combPos[kNumCombs] {};
-    float combLP[kNumCombs] {};
+    int combPos[kNumCombs]{};
+    float combLP[kNumCombs]{};
 
     // Noise exciter state
     uint32_t noiseState = 0xACE1u;
@@ -241,8 +217,8 @@ private:
 
     // Parameters
     float frequency = 220.0f;
-    float comb2Offset = 7.0f;    // +7 semitones (perfect 5th)
-    float comb3Offset = 12.0f;   // +12 semitones (octave)
+    float comb2Offset = 7.0f;  // +7 semitones (perfect 5th)
+    float comb3Offset = 12.0f; // +12 semitones (octave)
     float feedback = 0.85f;
     float damping = 0.3f;
     float noiseLevel = 0.0f;

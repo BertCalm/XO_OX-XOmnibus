@@ -95,364 +95,231 @@
 // These MUST match the string returned by each engine's getEngineId().
 // Legacy names ("Snap", "Morph", etc.) are resolved by resolveEngineAlias() in PresetManager.h.
 static bool registered_OddfeliX = xoceanus::EngineRegistry::instance().registerEngine(
-    "OddfeliX", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::SnapEngine>();
-    });
+    "OddfeliX", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::SnapEngine>(); });
 static bool registered_OddOscar = xoceanus::EngineRegistry::instance().registerEngine(
-    "OddOscar", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::MorphEngine>();
-    });
+    "OddOscar", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::MorphEngine>(); });
 static bool registered_Overdub = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overdub", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::DubEngine>();
-    });
+    "Overdub", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::DubEngine>(); });
 static bool registered_Odyssey = xoceanus::EngineRegistry::instance().registerEngine(
-    "Odyssey", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::DriftEngine>();
-    });
+    "Odyssey", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::DriftEngine>(); });
 static bool registered_Oblong = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oblong", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::BobEngine>();
-    });
+    "Oblong", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::BobEngine>(); });
 static bool registered_Obese = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obese", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::FatEngine>();
-    });
+    "Obese", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::FatEngine>(); });
 static bool registered_Onset = xoceanus::EngineRegistry::instance().registerEngine(
-    "Onset", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OnsetEngine>();
-    });
-static bool registered_Overworld = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overworld", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OverworldEngine>();
-    });
+    "Onset", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OnsetEngine>(); });
+static bool registered_Overworld =
+    xoceanus::EngineRegistry::instance().registerEngine("Overworld", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OverworldEngine>(); });
 static bool registered_Opal = xoceanus::EngineRegistry::instance().registerEngine(
-    "Opal", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OpalEngine>();
-    });
+    "Opal", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpalEngine>(); });
 static bool registered_Overbite = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overbite", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::BiteEngine>();
-    });
+    "Overbite", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::BiteEngine>(); });
 static bool registered_Organon = xoceanus::EngineRegistry::instance().registerEngine(
-    "Organon", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrganonEngine>();
-    });
+    "Organon", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrganonEngine>(); });
 static bool registered_Ocelot = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ocelot", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xocelot::OcelotEngine>();
-    });
-static bool registered_Ouroboros = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ouroboros", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OuroborosEngine>();
-    });
-static bool registered_Obsidian = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obsidian", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObsidianEngine>();
-    });
+    "Ocelot", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xocelot::OcelotEngine>(); });
+static bool registered_Ouroboros =
+    xoceanus::EngineRegistry::instance().registerEngine("Ouroboros", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OuroborosEngine>(); });
+static bool registered_Obsidian =
+    xoceanus::EngineRegistry::instance().registerEngine("Obsidian", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::ObsidianEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
-    "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrigamiEngine>();
-    });
+    "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oracle", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OracleEngine>();
-    });
+    "Oracle", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OracleEngine>(); });
 static bool registered_Obscura = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obscura", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObscuraEngine>();
-    });
+    "Obscura", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObscuraEngine>(); });
 static bool registered_Oceanic = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oceanic", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OceanicEngine>();
-    });
+    "Oceanic", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OceanicEngine>(); });
 static bool registered_Optic = xoceanus::EngineRegistry::instance().registerEngine(
-    "Optic", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OpticEngine>();
-    });
+    "Optic", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpticEngine>(); });
 static bool registered_Oblique = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oblique", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObliqueEngine>();
-    });
+    "Oblique", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObliqueEngine>(); });
 static bool registered_Orbital = xoceanus::EngineRegistry::instance().registerEngine(
-    "Orbital", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrbitalEngine>();
-    });
+    "Orbital", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrbitalEngine>(); });
 static bool registered_Osprey = xoceanus::EngineRegistry::instance().registerEngine(
-    "Osprey", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OspreyEngine>();
-    });
+    "Osprey", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OspreyEngine>(); });
 static bool registered_Osteria = xoceanus::EngineRegistry::instance().registerEngine(
-    "Osteria", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OsteriaEngine>();
-    });
+    "Osteria", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OsteriaEngine>(); });
 static bool registered_Owlfish = xoceanus::EngineRegistry::instance().registerEngine(
-    "Owlfish", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xowlfish::OwlfishEngine>();
-    });
+    "Owlfish", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xowlfish::OwlfishEngine>(); });
 static bool registered_Ohm = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ohm", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OhmEngine>();
-    });
+    "Ohm", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OhmEngine>(); });
 static bool registered_Orphica = xoceanus::EngineRegistry::instance().registerEngine(
-    "Orphica", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrphicaEngine>();
-    });
-static bool registered_Obbligato = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obbligato", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObbligatoEngine>();
-    });
+    "Orphica", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrphicaEngine>(); });
+static bool registered_Obbligato =
+    xoceanus::EngineRegistry::instance().registerEngine("Obbligato", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::ObbligatoEngine>(); });
 static bool registered_Ottoni = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ottoni", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OttoniEngine>();
-    });
+    "Ottoni", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OttoniEngine>(); });
 static bool registered_Ole = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ole", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OleEngine>();
-    });
+    "Ole", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OleEngine>(); });
 static bool registered_Overlap = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overlap", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::XOverlapEngine>();
-    });
+    "Overlap", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::XOverlapEngine>(); });
 static bool registered_Outwit = xoceanus::EngineRegistry::instance().registerEngine(
-    "Outwit", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::XOutwitEngine>();
-    });
+    "Outwit", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::XOutwitEngine>(); });
 static bool registered_Ombre = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ombre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OmbreEngine>();
-    });
+    "Ombre", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OmbreEngine>(); });
 static bool registered_Orca = xoceanus::EngineRegistry::instance().registerEngine(
-    "Orca", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrcaEngine>();
-    });
+    "Orca", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrcaEngine>(); });
 static bool registered_Octopus = xoceanus::EngineRegistry::instance().registerEngine(
-    "Octopus", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OctopusEngine>();
-    });
+    "Octopus", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OctopusEngine>(); });
 // V1 Concept Engines — OPENSKY
 static bool registered_OpenSky = xoceanus::EngineRegistry::instance().registerEngine(
-    "OpenSky", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OpenSkyEngine>();
-    });
+    "OpenSky", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpenSkyEngine>(); });
 // V1 Concept Engines — OSTINATO
-static bool registered_Ostinato = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ostinato", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OstinatoEngine>();
-    });
+static bool registered_Ostinato =
+    xoceanus::EngineRegistry::instance().registerEngine("Ostinato", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OstinatoEngine>(); });
 // V1 Concept Engines — OCEANDEEP
-static bool registered_OceanDeep = xoceanus::EngineRegistry::instance().registerEngine(
-    "OceanDeep", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OceandeepEngine>();
-    });
+static bool registered_OceanDeep =
+    xoceanus::EngineRegistry::instance().registerEngine("OceanDeep", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OceandeepEngine>(); });
 // V1 Concept Engines — OUIE
 static bool registered_Ouie = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ouie", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OuieEngine>();
-    });
+    "Ouie", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OuieEngine>(); });
 // Flagship — OBRIX (modular brick synthesis)
 static bool registered_Obrix = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obrix", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObrixEngine>();
-    });
+    "Obrix", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObrixEngine>(); });
 // Theorem Engine — ORBWEAVE (topological knot coupling)
-static bool registered_Orbweave = xoceanus::EngineRegistry::instance().registerEngine(
-    "Orbweave", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrbweaveEngine>();
-    });
+static bool registered_Orbweave =
+    xoceanus::EngineRegistry::instance().registerEngine("Orbweave", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OrbweaveEngine>(); });
 // Theorem Engine — OVERTONE (continued fraction spectral synthesis)
-static bool registered_Overtone = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overtone", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OvertoneEngine>();
-    });
+static bool registered_Overtone =
+    xoceanus::EngineRegistry::instance().registerEngine("Overtone", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OvertoneEngine>(); });
 // Theorem Engine — ORGANISM (cellular automata generative synthesis)
-static bool registered_Organism = xoceanus::EngineRegistry::instance().registerEngine(
-    "Organism", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrganismEngine>();
-    });
+static bool registered_Organism =
+    xoceanus::EngineRegistry::instance().registerEngine("Organism", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OrganismEngine>(); });
 // Singularity Collection — OXBOW (entangled reverb synth engine)
 static bool registered_Oxbow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OxbowEngine>();
-    });
+    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxbowEngine>(); });
 // OWARE — tuned percussion synthesizer (wood/metal material continuum)
 static bool registered_Oware = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oware", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OwareEngine>();
-    });
+    "Oware", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OwareEngine>(); });
 // OPERA — additive-vocal Kuramoto synchronicity engine (Humpback Whale / SOFAR)
 static bool registered_Opera = xoceanus::EngineRegistry::instance().registerEngine(
-    "Opera", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OperaAdapter>();
-    });
+    "Opera", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OperaAdapter>(); });
 // OFFERING — psychology-driven boom bap drum synthesis (Mantis Shrimp / Rubble Zone)
-static bool registered_Offering = xoceanus::EngineRegistry::instance().registerEngine(
-    "Offering", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OfferingEngine>();
-    });
+static bool registered_Offering =
+    xoceanus::EngineRegistry::instance().registerEngine("Offering", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OfferingEngine>(); });
 // Chef Quad Collection — OTO (tape & circuit-bent heritage)
 static bool registered_Oto = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oto", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OtoEngine>();
-    });
+    "Oto", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OtoEngine>(); });
 // Chef Quad Collection — OCTAVE (harmonic interval synthesis)
 static bool registered_Octave = xoceanus::EngineRegistry::instance().registerEngine(
-    "Octave", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OctaveEngine>();
-    });
+    "Octave", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OctaveEngine>(); });
 // Chef Quad Collection — OLEG (folk/modal string synthesis)
 static bool registered_Oleg = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oleg", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OlegEngine>();
-    });
+    "Oleg", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OlegEngine>(); });
 // Chef Quad Collection — OTIS (soul/funk synthesis)
 static bool registered_Otis = xoceanus::EngineRegistry::instance().registerEngine(
-    "Otis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OtisEngine>();
-    });
+    "Otis", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OtisEngine>(); });
 // KITCHEN Quad Collection — OVEN
 static bool registered_Oven = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oven", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OvenEngine>();
-    });
+    "Oven", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OvenEngine>(); });
 // KITCHEN Quad Collection — OCHRE
 static bool registered_Ochre = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ochre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OchreEngine>();
-    });
+    "Ochre", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OchreEngine>(); });
 // KITCHEN Quad Collection — OBELISK
 static bool registered_Obelisk = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obelisk", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObeliskEngine>();
-    });
+    "Obelisk", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObeliskEngine>(); });
 // KITCHEN Quad Collection — OPALINE
 static bool registered_Opaline = xoceanus::EngineRegistry::instance().registerEngine(
-    "Opaline", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OpalineEngine>();
-    });
+    "Opaline", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpalineEngine>(); });
 // CELLAR Quad Collection — OGRE
 static bool registered_Ogre = xoceanus::EngineRegistry::instance().registerEngine(
-    "Ogre", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OgreEngine>();
-    });
+    "Ogre", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OgreEngine>(); });
 // CELLAR Quad Collection — OLATE
 static bool registered_Olate = xoceanus::EngineRegistry::instance().registerEngine(
-    "Olate", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OlateEngine>();
-    });
+    "Olate", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OlateEngine>(); });
 // CELLAR Quad Collection — OAKEN
 static bool registered_Oaken = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oaken", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OakenEngine>();
-    });
+    "Oaken", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OakenEngine>(); });
 // CELLAR Quad Collection — OMEGA
 static bool registered_Omega = xoceanus::EngineRegistry::instance().registerEngine(
-    "Omega", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OmegaEngine>();
-    });
+    "Omega", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OmegaEngine>(); });
 // GARDEN Quad Collection — ORCHARD
 static bool registered_Orchard = xoceanus::EngineRegistry::instance().registerEngine(
-    "Orchard", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OrchardEngine>();
-    });
+    "Orchard", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrchardEngine>(); });
 // GARDEN Quad Collection — OVERGROW
-static bool registered_Overgrow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overgrow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OvergrowEngine>();
-    });
+static bool registered_Overgrow =
+    xoceanus::EngineRegistry::instance().registerEngine("Overgrow", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OvergrowEngine>(); });
 // GARDEN Quad Collection — OSIER
 static bool registered_Osier = xoceanus::EngineRegistry::instance().registerEngine(
-    "Osier", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OsierEngine>();
-    });
+    "Osier", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OsierEngine>(); });
 // GARDEN Quad Collection — OXALIS
 static bool registered_Oxalis = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oxalis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OxalisEngine>();
-    });
+    "Oxalis", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxalisEngine>(); });
 // BROTH Quad Collection — OVERWASH
-static bool registered_Overwash = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overwash", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OverwashEngine>();
-    });
+static bool registered_Overwash =
+    xoceanus::EngineRegistry::instance().registerEngine("Overwash", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OverwashEngine>(); });
 // BROTH Quad Collection — OVERWORN
-static bool registered_Overworn = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overworn", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OverwornEngine>();
-    });
+static bool registered_Overworn =
+    xoceanus::EngineRegistry::instance().registerEngine("Overworn", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OverwornEngine>(); });
 // BROTH Quad Collection — OVERFLOW
-static bool registered_Overflow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overflow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OverflowEngine>();
-    });
+static bool registered_Overflow =
+    xoceanus::EngineRegistry::instance().registerEngine("Overflow", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OverflowEngine>(); });
 // BROTH Quad Collection — OVERCAST
-static bool registered_Overcast = xoceanus::EngineRegistry::instance().registerEngine(
-    "Overcast", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OvercastEngine>();
-    });
+static bool registered_Overcast =
+    xoceanus::EngineRegistry::instance().registerEngine("Overcast", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OvercastEngine>(); });
 // FUSION Quad Collection — OKEANOS (formerly Oasis, renamed to free ID for ecosystem engine)
 static bool registered_Okeanos = xoceanus::EngineRegistry::instance().registerEngine(
-    "Okeanos", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OkeanosEngine>();
-    });
+    "Okeanos", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OkeanosEngine>(); });
 // FUSION Quad Collection — OASIS (bioluminescent ecosystem engine)
 static bool registered_Oasis = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oasis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OasisEngine>();
-    });
+    "Oasis", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OasisEngine>(); });
 // FUSION Quad Collection — ODDFELLOW
-static bool registered_Oddfellow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oddfellow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OddfellowEngine>();
-    });
+static bool registered_Oddfellow =
+    xoceanus::EngineRegistry::instance().registerEngine("Oddfellow", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OddfellowEngine>(); });
 // FUSION Quad Collection — ONKOLO
 static bool registered_Onkolo = xoceanus::EngineRegistry::instance().registerEngine(
-    "Onkolo", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OnkoloEngine>();
-    });
+    "Onkolo", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OnkoloEngine>(); });
 // FUSION Quad Collection — OPCODE
 static bool registered_Opcode = xoceanus::EngineRegistry::instance().registerEngine(
-    "Opcode", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OpcodeEngine>();
-    });
+    "Opcode", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpcodeEngine>(); });
 // Membrane Collection — OSMOSIS (engine #47, external audio membrane)
 static bool registered_Osmosis = xoceanus::EngineRegistry::instance().registerEngine(
-    "Osmosis", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OsmosisEngine>();
-    });
+    "Osmosis", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OsmosisEngine>(); });
 // OXYTOCIN — circuit-modeling love-triangle synth, Engine #48 (Synapse Violet)
-static bool registered_Oxytocin = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oxytocin", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OxytocinAdapter>();
-    });
+static bool registered_Oxytocin =
+    xoceanus::EngineRegistry::instance().registerEngine("Oxytocin", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OxytocinAdapter>(); });
 // OUTLOOK — panoramic visionary synth (Albatross / Surface Soarer)
 static bool registered_Outlook = xoceanus::EngineRegistry::instance().registerEngine(
-    "Outlook", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OutlookEngine>();
-    });
+    "Outlook", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OutlookEngine>(); });
 // Dual Engine Integration — OUTFLOW (Predictive Spatial Vacuum, engine #49)
 static bool registered_Outflow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Outflow", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::OutflowEngine>();
-    });
+    "Outflow", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OutflowEngine>(); });
 // Cellular Automata Oscillator — OBIONT (engine #74)
 static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEngine(
-    "Obiont", []() -> std::unique_ptr<xoceanus::SynthEngine> {
-        return std::make_unique<xoceanus::ObiontEngine>();
-    });
+    "Obiont", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObiontEngine>(); });
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 XOceanusProcessor::XOceanusProcessor()
     : AudioProcessor(BusesProperties()
-                     .withInput("Input", juce::AudioChannelSet::stereo(), false)
-                     .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
-      apvts(*this, nullptr, "XOceanusParams", createParameterLayout()),
-      macroSystem_(apvts),
-      couplingPresetManager(apvts, [this](int slot) -> juce::String {
-          auto* eng = getEngine(slot);
-          return eng ? eng->getEngineId() : juce::String{};
-      })
+                         .withInput("Input", juce::AudioChannelSet::stereo(), false)
+                         .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
+      apvts(*this, nullptr, "XOceanusParams", createParameterLayout()), macroSystem_(apvts),
+      couplingPresetManager(apvts,
+                            [this](int slot) -> juce::String
+                            {
+                                auto* eng = getEngine(slot);
+                                return eng ? eng->getEngineId() : juce::String{};
+                            })
 {
     cacheParameterPointers();
 
@@ -471,81 +338,74 @@ bool XOceanusProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
     const auto& inputSet = layouts.getMainInputChannelSet();
-    if (inputSet != juce::AudioChannelSet::disabled()
-        && inputSet != juce::AudioChannelSet::stereo())
+    if (inputSet != juce::AudioChannelSet::disabled() && inputSet != juce::AudioChannelSet::stereo())
         return false;
     return true;
 }
 
 void XOceanusProcessor::cacheParameterPointers()
 {
-    cachedParams.masterVolume    = apvts.getRawParameterValue("masterVolume");
-    cachedParams.cmEnabled       = apvts.getRawParameterValue("cm_enabled");
-    cachedParams.cmPalette       = apvts.getRawParameterValue("cm_palette");
-    cachedParams.cmVoicing       = apvts.getRawParameterValue("cm_voicing");
-    cachedParams.cmSpread        = apvts.getRawParameterValue("cm_spread");
-    cachedParams.cmSeqRunning    = apvts.getRawParameterValue("cm_seq_running");
-    cachedParams.cmSeqBpm        = apvts.getRawParameterValue("cm_seq_bpm");
-    cachedParams.cmSeqSwing      = apvts.getRawParameterValue("cm_seq_swing");
-    cachedParams.cmSeqGate       = apvts.getRawParameterValue("cm_seq_gate");
-    cachedParams.cmSeqPattern    = apvts.getRawParameterValue("cm_seq_pattern");
-    cachedParams.cmVelCurve      = apvts.getRawParameterValue("cm_vel_curve");
-    cachedParams.cmHumanize      = apvts.getRawParameterValue("cm_humanize");
+    cachedParams.masterVolume = apvts.getRawParameterValue("masterVolume");
+    cachedParams.cmEnabled = apvts.getRawParameterValue("cm_enabled");
+    cachedParams.cmPalette = apvts.getRawParameterValue("cm_palette");
+    cachedParams.cmVoicing = apvts.getRawParameterValue("cm_voicing");
+    cachedParams.cmSpread = apvts.getRawParameterValue("cm_spread");
+    cachedParams.cmSeqRunning = apvts.getRawParameterValue("cm_seq_running");
+    cachedParams.cmSeqBpm = apvts.getRawParameterValue("cm_seq_bpm");
+    cachedParams.cmSeqSwing = apvts.getRawParameterValue("cm_seq_swing");
+    cachedParams.cmSeqGate = apvts.getRawParameterValue("cm_seq_gate");
+    cachedParams.cmSeqPattern = apvts.getRawParameterValue("cm_seq_pattern");
+    cachedParams.cmVelCurve = apvts.getRawParameterValue("cm_vel_curve");
+    cachedParams.cmHumanize = apvts.getRawParameterValue("cm_humanize");
     cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
-    cachedParams.cmEnoMode       = apvts.getRawParameterValue("cm_eno_mode");
-    cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
-    cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
-    cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
+    cachedParams.cmEnoMode = apvts.getRawParameterValue("cm_eno_mode");
+    cachedParams.ohmCommune = apvts.getRawParameterValue("ohm_macroCommune");
+    cachedParams.obblBond = apvts.getRawParameterValue("obbl_macroBond");
+    cachedParams.oleDrama = apvts.getRawParameterValue("ole_macroDrama");
 
     // Coupling performance overlay — cache all 20 params for audio-thread access
     for (int r = 0; r < CouplingCrossfader::MaxRouteSlots; ++r)
     {
         const auto prefix = "cp_r" + juce::String(r + 1) + "_";
         cachedParams.cpRoutes[static_cast<size_t>(r)].active = apvts.getRawParameterValue(prefix + "active");
-        cachedParams.cpRoutes[static_cast<size_t>(r)].type   = apvts.getRawParameterValue(prefix + "type");
+        cachedParams.cpRoutes[static_cast<size_t>(r)].type = apvts.getRawParameterValue(prefix + "type");
         cachedParams.cpRoutes[static_cast<size_t>(r)].amount = apvts.getRawParameterValue(prefix + "amount");
         cachedParams.cpRoutes[static_cast<size_t>(r)].source = apvts.getRawParameterValue(prefix + "source");
         cachedParams.cpRoutes[static_cast<size_t>(r)].target = apvts.getRawParameterValue(prefix + "target");
 
         // B3: Assert that all parameter pointers resolved — catches typos in param IDs.
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].active != nullptr);
-        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].type   != nullptr);
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].type != nullptr);
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].amount != nullptr);
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].source != nullptr);
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].target != nullptr);
     }
 
     // MPE params
-    cachedParams.mpeEnabled        = apvts.getRawParameterValue("mpe_enabled");
-    cachedParams.mpeZone           = apvts.getRawParameterValue("mpe_zone");
+    cachedParams.mpeEnabled = apvts.getRawParameterValue("mpe_enabled");
+    cachedParams.mpeZone = apvts.getRawParameterValue("mpe_zone");
     cachedParams.mpePitchBendRange = apvts.getRawParameterValue("mpe_pitchBendRange");
     cachedParams.mpePressureTarget = apvts.getRawParameterValue("mpe_pressureTarget");
-    cachedParams.mpeSlideTarget    = apvts.getRawParameterValue("mpe_slideTarget");
+    cachedParams.mpeSlideTarget = apvts.getRawParameterValue("mpe_slideTarget");
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout
-    XOceanusProcessor::createParameterLayout()
+juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
     // Master parameters
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("masterVolume", 1), "Master Volume",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("masterVolume", 1), "Master Volume",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
 
     // 4 Macro knobs (CHARACTER, MOVEMENT, COUPLING, SPACE)
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("macro1", 1), "CHARACTER",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("macro2", 1), "MOVEMENT",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("macro3", 1), "COUPLING",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("macro4", 1), "SPACE",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("macro1", 1), "CHARACTER",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("macro2", 1), "MOVEMENT",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("macro3", 1), "COUPLING",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("macro4", 1), "SPACE",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
     // Merge engine parameters directly.
     // Each engine adds its namespaced parameters to the shared vector.
@@ -659,7 +519,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // See Docs/specs/coupling_performance_spec.md §2.2.
     {
         // CouplingType enum labels (0–14) — must match CouplingType order in SynthEngine.h
-        const juce::StringArray couplingTypeLabels {
+        const juce::StringArray couplingTypeLabels{
             "AmpToFilter",       // 0
             "AmpToPitch",        // 1
             "LFOToPitch",        // 2
@@ -677,10 +537,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
             "TriangularCoupling" // 14 — XOxytocin love-triangle state transfer
         };
 
-        const juce::StringArray slotLabels { "Slot 1", "Slot 2", "Slot 3", "Slot 4" };
+        const juce::StringArray slotLabels{"Slot 1", "Slot 2", "Slot 3", "Slot 4"};
 
         // Default target for each route: r1→1, r2→1, r3→2, r4→3
-        const int defaultTargets[4] = { 1, 1, 2, 3 };
+        const int defaultTargets[4] = {1, 1, 2, 3};
 
         for (int r = 0; r < 4; ++r)
         {
@@ -688,507 +548,470 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 
             // Active (bool, default off)
             params.push_back(std::make_unique<juce::AudioParameterBool>(
-                juce::ParameterID(prefix + "active", 1),
-                "CP Route " + juce::String(r + 1) + " Active",
-                false));
+                juce::ParameterID(prefix + "active", 1), "CP Route " + juce::String(r + 1) + " Active", false));
 
             // Type (int choice 0-13, default 0 = AmpToFilter)
-            params.push_back(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID(prefix + "type", 1),
-                "CP Route " + juce::String(r + 1) + " Type",
-                couplingTypeLabels, 0));
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID(prefix + "type", 1),
+                                                                          "CP Route " + juce::String(r + 1) + " Type",
+                                                                          couplingTypeLabels, 0));
 
             // Amount (float, bipolar -1.0 to 1.0, default 0.0)
             params.push_back(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID(prefix + "amount", 1),
-                "CP Route " + juce::String(r + 1) + " Amount",
+                juce::ParameterID(prefix + "amount", 1), "CP Route " + juce::String(r + 1) + " Amount",
                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
 
             // Source (int choice 0-3, default 0 = Slot 1)
             params.push_back(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID(prefix + "source", 1),
-                "CP Route " + juce::String(r + 1) + " Source",
-                slotLabels, 0));
+                juce::ParameterID(prefix + "source", 1), "CP Route " + juce::String(r + 1) + " Source", slotLabels, 0));
 
             // Target (int choice 0-3, default varies per route)
-            params.push_back(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID(prefix + "target", 1),
-                "CP Route " + juce::String(r + 1) + " Target",
-                slotLabels, defaultTargets[r]));
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID(prefix + "target", 1),
+                                                                          "CP Route " + juce::String(r + 1) + " Target",
+                                                                          slotLabels, defaultTargets[r]));
         }
     }
 
     // Chord Machine parameters
-    params.push_back(std::make_unique<juce::AudioParameterBool>(
-        juce::ParameterID("cm_enabled", 1), "Chord Machine",
-        false));
+    params.push_back(
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID("cm_enabled", 1), "Chord Machine", false));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_palette", 1), "CM Palette",
-        juce::StringArray{ "WARM", "BRIGHT", "TENSION", "OPEN",
-                           "DARK", "SWEET", "COMPLEX", "RAW" },
-        0));
+        juce::StringArray{"WARM", "BRIGHT", "TENSION", "OPEN", "DARK", "SWEET", "COMPLEX", "RAW"}, 0));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_voicing", 1), "CM Voicing",
-        juce::StringArray{ "ROOT-SPREAD", "DROP-2", "QUARTAL",
-                           "UPPER STRUCT", "UNISON" },
-        0));
+        juce::StringArray{"ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON"}, 0));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_spread", 1), "CM Spread",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID("cm_seq_running", 1), "CM Sequencer", false));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_spread", 1), "CM Spread",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
-    params.push_back(std::make_unique<juce::AudioParameterBool>(
-        juce::ParameterID("cm_seq_running", 1), "CM Sequencer",
-        false));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_seq_bpm", 1), "CM BPM",
-        juce::NormalisableRange<float>(30.0f, 300.0f, 0.1f), 122.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_seq_swing", 1), "CM Swing",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_seq_gate", 1), "CM Gate",
-        juce::NormalisableRange<float>(0.01f, 1.0f), 0.75f));
+        juce::ParameterID("cm_seq_bpm", 1), "CM BPM", juce::NormalisableRange<float>(30.0f, 300.0f, 0.1f), 122.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_seq_swing", 1), "CM Swing",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_seq_gate", 1), "CM Gate",
+                                                                 juce::NormalisableRange<float>(0.01f, 1.0f), 0.75f));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_seq_pattern", 1), "CM Pattern",
-        juce::StringArray{ "FOUR", "OFF-BEAT", "SYNCO", "STAB",
-                           "GATE", "PULSE", "BROKEN", "REST" },
-        1));
+        juce::StringArray{"FOUR", "OFF-BEAT", "SYNCO", "STAB", "GATE", "PULSE", "BROKEN", "REST"}, 1));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_vel_curve", 1), "CM Velocity Curve",
-        juce::StringArray{ "EQUAL", "ROOT HEAVY", "TOP BRIGHT", "V-SHAPE" },
-        1));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_humanize", 1), "CM Humanize",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("cm_sidechain_duck", 1), "CM Sidechain Duck",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterBool>(
-        juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode",
-        false));
+        juce::StringArray{"EQUAL", "ROOT HEAVY", "TOP BRIGHT", "V-SHAPE"}, 1));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_humanize", 1), "CM Humanize",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_sidechain_duck", 1),
+                                                                 "CM Sidechain Duck",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode", false));
 
     // Master FX parameters
     // Stage 1: Saturation
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_satDrive", 1), "Master Sat Drive",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_satMode", 1), "Master Sat Mode",
-        juce::NormalisableRange<float>(0.0f, 3.0f, 1.0f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_satDrive", 1),
+                                                                 "Master Sat Drive",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_satMode", 1), "Master Sat Mode",
+                                                    juce::NormalisableRange<float>(0.0f, 3.0f, 1.0f), 1.0f));
 
     // Stage 2: Corroder (digital erosion)
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_corrMix", 1), "Master Corroder Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_corrBits", 1), "Master Corroder Bits",
-        juce::NormalisableRange<float>(1.0f, 24.0f, 0.0f, 0.5f), 24.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_corrMix", 1), "Master Corroder Mix",
+                                                    juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f),
+                                                    0.0f)); // skew 0.5: more resolution in subtle blend range
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_corrBits", 1), "Master Corroder Bits",
+                                                    juce::NormalisableRange<float>(1.0f, 24.0f, 0.0f, 0.5f), 24.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_corrSR", 1), "Master Corroder SR",
         juce::NormalisableRange<float>(100.0f, 44100.0f, 0.0f, 0.3f), 44100.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_corrFM", 1), "Master Corroder FM",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_corrTone", 1), "Master Corroder Tone",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
+        juce::ParameterID("master_corrFM", 1), "Master Corroder FM", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_corrTone", 1),
+                                                                 "Master Corroder Tone",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
 
     // Stage 4: Combulator (tuned comb bank)
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combMix", 1), "Master Comb Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combMix", 1), "Master Comb Mix",
+                                                    juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f),
+                                                    0.0f)); // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_combFreq", 1), "Master Comb Freq",
         juce::NormalisableRange<float>(20.0f, 2000.0f, 0.0f, 0.3f), 220.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combFeedback", 1), "Master Comb Feedback",
-        juce::NormalisableRange<float>(0.0f, 0.98f), 0.85f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combDamping", 1), "Master Comb Damping",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combNoise", 1), "Master Comb Noise",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combSpread", 1), "Master Comb Spread",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combOffset2", 1), "Master Comb Offset 2",
-        juce::NormalisableRange<float>(-24.0f, 24.0f, 0.1f), 7.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_combOffset3", 1), "Master Comb Offset 3",
-        juce::NormalisableRange<float>(-24.0f, 24.0f, 0.1f), 12.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combFeedback", 1),
+                                                                 "Master Comb Feedback",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.98f), 0.85f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combDamping", 1),
+                                                                 "Master Comb Damping",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combNoise", 1),
+                                                                 "Master Comb Noise",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combSpread", 1),
+                                                                 "Master Comb Spread",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combOffset2", 1), "Master Comb Offset 2",
+                                                    juce::NormalisableRange<float>(-24.0f, 24.0f, 0.1f), 7.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_combOffset3", 1), "Master Comb Offset 3",
+                                                    juce::NormalisableRange<float>(-24.0f, 24.0f, 0.1f), 12.0f));
 
     // Stage 6: Frequency Shifter
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_fshiftHz", 1), "Master Freq Shift Hz",
-        juce::NormalisableRange<float>(-1000.0f, 1000.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_fshiftMix", 1), "Master Freq Shift Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_fshiftMode", 1), "Master Freq Shift Mode",
-        juce::NormalisableRange<float>(0.0f, 2.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_fshiftFeedback", 1), "Master Freq Shift FB",
-        juce::NormalisableRange<float>(0.0f, 0.9f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_fshiftHz", 1), "Master Freq Shift Hz",
+                                                    juce::NormalisableRange<float>(-1000.0f, 1000.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_fshiftMix", 1), "Master Freq Shift Mix",
+                                                    juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f),
+                                                    0.0f)); // skew 0.5: more resolution in subtle blend range
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_fshiftMode", 1), "Master Freq Shift Mode",
+                                                    juce::NormalisableRange<float>(0.0f, 2.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_fshiftFeedback", 1),
+                                                                 "Master Freq Shift FB",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.9f), 0.0f));
 
     // Stage 8: Multiband OTT
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_ottMix", 1), "Master OTT Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
+        juce::ParameterID("master_ottMix", 1), "Master OTT Mix", juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f),
+        0.0f)); // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_ottDepth", 1), "Master OTT Depth",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
+        juce::ParameterID("master_ottDepth", 1), "Master OTT Depth", juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
     // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN — 8 parameters)
     // master_reverbSize and master_reverbMix are the legacy IDs; preserved unchanged.
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbSize", 1), "Master Reverb Size",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbMix", 1), "Master Reverb Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbSize", 1),
+                                                                 "Master Reverb Size",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbMix", 1),
+                                                                 "Master Reverb Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_reverbPreDelay", 1), "Master Reverb Pre-Delay",
         juce::NormalisableRange<float>(0.0f, 250.0f, 0.0f, 0.4f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbDecay", 1), "Master Reverb Decay",
-        juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 2.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbDamping", 1), "Master Reverb Damping",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbDiffusion", 1), "Master Reverb Diffusion",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbMod", 1), "Master Reverb Modulation",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_reverbWidth", 1), "Master Reverb Width",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_compRatio", 1), "Master Comp Ratio",
-        juce::NormalisableRange<float>(1.0f, 20.0f, 0.0f, 0.4f), 2.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_compAttack", 1), "Master Comp Attack",
-        juce::NormalisableRange<float>(0.1f, 100.0f, 0.0f, 0.4f), 10.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbDecay", 1), "Master Reverb Decay",
+                                                    juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 2.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbDamping", 1),
+                                                                 "Master Reverb Damping",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbDiffusion", 1),
+                                                                 "Master Reverb Diffusion",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbMod", 1),
+                                                                 "Master Reverb Modulation",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_reverbWidth", 1),
+                                                                 "Master Reverb Width",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_compRatio", 1), "Master Comp Ratio",
+                                                    juce::NormalisableRange<float>(1.0f, 20.0f, 0.0f, 0.4f), 2.5f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_compAttack", 1), "Master Comp Attack",
+                                                    juce::NormalisableRange<float>(0.1f, 100.0f, 0.0f, 0.4f), 10.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_compRelease", 1), "Master Comp Release",
         juce::NormalisableRange<float>(10.0f, 1000.0f, 0.0f, 0.4f), 100.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_compMix", 1), "Master Comp Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        juce::ParameterID("master_compMix", 1), "Master Comp Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
     // Master FX: Delay parameters (Stage 2)
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delayTime", 1), "Master Delay Time",
+                                                    juce::NormalisableRange<float>(1.0f, 2000.0f, 0.0f, 0.4f), 375.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delayFeedback", 1),
+                                                                 "Master Delay Feedback",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.95f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayTime", 1), "Master Delay Time",
-        juce::NormalisableRange<float>(1.0f, 2000.0f, 0.0f, 0.4f), 375.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayFeedback", 1), "Master Delay Feedback",
-        juce::NormalisableRange<float>(0.0f, 0.95f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayMix", 1), "Master Delay Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayPingPong", 1), "Master Delay Ping Pong",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayDamping", 1), "Master Delay Damping",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delayDiffusion", 1), "Master Delay Diffusion",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_delaySync", 1), "Master Delay Sync",
-        juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_delayMix", 1), "Master Delay Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delayPingPong", 1),
+                                                                 "Master Delay Ping Pong",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delayDamping", 1),
+                                                                 "Master Delay Damping",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delayDiffusion", 1),
+                                                                 "Master Delay Diffusion",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_delaySync", 1), "Master Delay Sync",
+                                                    juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
 
     // Master FX: Modulation parameters (Stage 4)
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_modRate", 1), "Master Mod Rate",
+                                                    juce::NormalisableRange<float>(0.05f, 10.0f, 0.0f, 0.4f), 0.8f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_modRate", 1), "Master Mod Rate",
-        juce::NormalisableRange<float>(0.05f, 10.0f, 0.0f, 0.4f), 0.8f));
+        juce::ParameterID("master_modDepth", 1), "Master Mod Depth", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_modDepth", 1), "Master Mod Depth",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_modMix", 1), "Master Mod Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_modMix", 1), "Master Mod Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_modMode", 1), "Master Mod Mode",
-        juce::NormalisableRange<float>(0.0f, 4.0f, 1.0f), 0.0f));  // 0=Chorus 1=Flanger 2=Ensemble 3=Drift 4=Phaser
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_modFeedback", 1), "Master Mod Feedback",
-        juce::NormalisableRange<float>(0.0f, 0.85f), 0.0f));
+        juce::ParameterID("master_modMode", 1), "Master Mod Mode", juce::NormalisableRange<float>(0.0f, 4.0f, 1.0f),
+        0.0f)); // 0=Chorus 1=Flanger 2=Ensemble 3=Drift 4=Phaser
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_modFeedback", 1),
+                                                                 "Master Mod Feedback",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.85f), 0.0f));
 
     // Master FX: Sequencer parameters (Stage 6)
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqEnabled", 1), "Master Seq Enabled",
+                                                    juce::NormalisableRange<float>(0.0f, 1.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqRate", 1), "Master Seq Rate",
+                                                    juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 2.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqSteps", 1), "Master Seq Steps",
+                                                    juce::NormalisableRange<float>(1.0f, 16.0f, 1.0f), 8.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqEnabled", 1), "Master Seq Enabled",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqRate", 1), "Master Seq Rate",
-        juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 2.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqSteps", 1), "Master Seq Steps",
-        juce::NormalisableRange<float>(1.0f, 16.0f, 1.0f), 8.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqDepth", 1), "Master Seq Depth",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqSmooth", 1), "Master Seq Smooth",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
-        juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_seqDepth", 1), "Master Seq Depth", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqSmooth", 1),
+                                                                 "Master Seq Smooth",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
+                                                    juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
+                                                    juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
+                                                    juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqEnvFollow", 1), "Master Seq Env Follow",
         juce::NormalisableRange<float>(0.0f, 1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_seqEnvAmount", 1), "Master Seq Env Amount",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_seqEnvAmount", 1),
+                                                                 "Master Seq Env Amount",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
     // Stage 3: Vibe Knob (bipolar: -1 sweet, +1 grit)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_vibeAmount", 1), "Master Vibe",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_vibeAmount", 1), "Master Vibe", juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
 
     // Stage 4: Spectral Tilt
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_tiltAmount", 1),
+                                                                 "Master Tilt Amount",
+                                                                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_tiltAmount", 1), "Master Tilt Amount",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_tiltMix", 1), "Master Tilt Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
+        juce::ParameterID("master_tiltMix", 1), "Master Tilt Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
 
     // Stage 4: Transient Designer
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_tdAttack", 1), "Master TD Attack",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_tdSustain", 1), "Master TD Sustain",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_tdMix", 1), "Master TD Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_tdAttack", 1),
+                                                                 "Master TD Attack",
+                                                                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_tdSustain", 1),
+                                                                 "Master TD Sustain",
+                                                                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_tdMix", 1), "Master TD Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 7: Doppler Effect
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_dopplerDist", 1), "Master Doppler Distance",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_dopplerSpeed", 1), "Master Doppler Speed",
-        juce::NormalisableRange<float>(0.01f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_dopplerMix", 1), "Master Doppler Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_dopplerDist", 1),
+                                                                 "Master Doppler Distance",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_dopplerSpeed", 1),
+                                                                 "Master Doppler Speed",
+                                                                 juce::NormalisableRange<float>(0.01f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_dopplerMix", 1),
+                                                                 "Master Doppler Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 11: Granular Smear
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_smearAmount", 1), "Master Smear Amount",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_smearAmount", 1),
+                                                                 "Master Smear Amount",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_smearGrainSize", 1), "Master Smear Grain Size",
         juce::NormalisableRange<float>(10.0f, 200.0f, 0.0f, 0.5f), 60.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_smearDensity", 1),
+                                                                 "Master Smear Density",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_smearDensity", 1), "Master Smear Density",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_smearMix", 1), "Master Smear Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_smearMix", 1), "Master Smear Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 12: Harmonic Exciter
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_excDrive", 1), "Master Exciter Drive",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_excDrive", 1),
+                                                                 "Master Exciter Drive",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_excFreq", 1), "Master Exciter Freq",
         juce::NormalisableRange<float>(1000.0f, 12000.0f, 0.0f, 0.3f), 3500.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_excTone", 1),
+                                                                 "Master Exciter Tone",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_excTone", 1), "Master Exciter Tone",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_excMix", 1), "Master Exciter Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_excMix", 1), "Master Exciter Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 13: Stereo Sculptor
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_sculLowWidth", 1), "Master Sculptor Low Width",
-        juce::NormalisableRange<float>(0.0f, 2.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_sculMidWidth", 1), "Master Sculptor Mid Width",
-        juce::NormalisableRange<float>(0.0f, 2.0f), 1.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_sculHighWidth", 1), "Master Sculptor High Width",
-        juce::NormalisableRange<float>(0.0f, 2.0f), 1.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_sculLowWidth", 1),
+                                                                 "Master Sculptor Low Width",
+                                                                 juce::NormalisableRange<float>(0.0f, 2.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_sculMidWidth", 1),
+                                                                 "Master Sculptor Mid Width",
+                                                                 juce::NormalisableRange<float>(0.0f, 2.0f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_sculHighWidth", 1),
+                                                                 "Master Sculptor High Width",
+                                                                 juce::NormalisableRange<float>(0.0f, 2.0f), 1.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_sculLowCross", 1), "Master Sculptor Low Crossover",
         juce::NormalisableRange<float>(60.0f, 500.0f, 0.0f, 0.4f), 200.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_sculHighCross", 1), "Master Sculptor High Crossover",
         juce::NormalisableRange<float>(2000.0f, 12000.0f, 0.0f, 0.4f), 4000.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_sculMix", 1), "Master Sculptor Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_sculMix", 1),
+                                                                 "Master Sculptor Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 14: Psychoacoustic Width
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_pwidthAmount", 1), "Master PWidth Amount",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_pwidthHaas", 1), "Master PWidth Haas",
-        juce::NormalisableRange<float>(0.1f, 30.0f, 0.0f, 0.4f), 8.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_pwidthAmount", 1),
+                                                                 "Master PWidth Amount",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_pwidthHaas", 1), "Master PWidth Haas",
+                                                    juce::NormalisableRange<float>(0.1f, 30.0f, 0.0f, 0.4f), 8.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_pwidthComb", 1), "Master PWidth Comb Freq",
         juce::NormalisableRange<float>(200.0f, 2000.0f, 0.0f, 0.4f), 600.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_pwidthMono", 1), "Master PWidth Mono Safe",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_pwidthMono", 1),
+                                                                 "Master PWidth Mono Safe",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_pwidthMix", 1),
+                                                                 "Master PWidth Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 19.5: Parametric EQ (post-compressor, pre-limiter)
     // Band 1: Low shelf (20–500 Hz, ±12 dB, Q 0.5–5.0)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_eqB1Freq", 1), "EQ Band 1 Freq",
         juce::NormalisableRange<float>(20.0f, 500.0f, 0.0f, 0.35f), 100.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB1Gain", 1), "EQ Band 1 Gain",
-        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB1Q", 1), "EQ Band 1 Q",
-        juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f), 0.707f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB1Gain", 1),
+                                                                 "EQ Band 1 Gain",
+                                                                 juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB1Q", 1), "EQ Band 1 Q",
+                                                                 juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f),
+                                                                 0.707f));
     // Band 2: Low-mid peak (100–5000 Hz, ±12 dB, Q 0.5–10.0)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_eqB2Freq", 1), "EQ Band 2 Freq",
         juce::NormalisableRange<float>(100.0f, 5000.0f, 0.0f, 0.35f), 400.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB2Gain", 1), "EQ Band 2 Gain",
-        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB2Q", 1), "EQ Band 2 Q",
-        juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB2Gain", 1),
+                                                                 "EQ Band 2 Gain",
+                                                                 juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB2Q", 1), "EQ Band 2 Q",
+                                                    juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
     // Band 3: High-mid peak (500–15000 Hz, ±12 dB, Q 0.5–10.0)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_eqB3Freq", 1), "EQ Band 3 Freq",
         juce::NormalisableRange<float>(500.0f, 15000.0f, 0.0f, 0.35f), 3000.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB3Gain", 1), "EQ Band 3 Gain",
-        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB3Q", 1), "EQ Band 3 Q",
-        juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB3Gain", 1),
+                                                                 "EQ Band 3 Gain",
+                                                                 juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB3Q", 1), "EQ Band 3 Q",
+                                                    juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
     // Band 4: High shelf (2000–20000 Hz, ±12 dB, Q 0.5–5.0)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_eqB4Freq", 1), "EQ Band 4 Freq",
         juce::NormalisableRange<float>(2000.0f, 20000.0f, 0.0f, 0.35f), 10000.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB4Gain", 1), "EQ Band 4 Gain",
-        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_eqB4Q", 1), "EQ Band 4 Q",
-        juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f), 0.707f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB4Gain", 1),
+                                                                 "EQ Band 4 Gain",
+                                                                 juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_eqB4Q", 1), "EQ Band 4 Q",
+                                                                 juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f),
+                                                                 0.707f));
 
     // Stage 20: Brickwall Limiter
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_limCeiling", 1), "Master Limiter Ceiling",
-        juce::NormalisableRange<float>(-6.0f, 0.0f), -0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_limRelease", 1), "Master Limiter Release",
-        juce::NormalisableRange<float>(10.0f, 500.0f, 0.0f, 0.4f), 50.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_limCeiling", 1),
+                                                                 "Master Limiter Ceiling",
+                                                                 juce::NormalisableRange<float>(-6.0f, 0.0f), -0.3f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_limRelease", 1), "Master Limiter Release",
+                                                    juce::NormalisableRange<float>(10.0f, 500.0f, 0.0f, 0.4f), 50.0f));
 
     // Stage 6: fXOsmosis (Membrane Transfer)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_osmMembrane", 1),
+                                                                 "Master Osmosis Membrane",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_osmReactivity", 1),
+                                                                 "Master Osmosis Reactivity",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_osmResonance", 1),
+                                                                 "Master Osmosis Resonance",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.85f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_osmSaturation", 1),
+                                                                 "Master Osmosis Saturation",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_osmMembrane", 1), "Master Osmosis Membrane",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_osmReactivity", 1), "Master Osmosis Reactivity",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_osmResonance", 1), "Master Osmosis Resonance",
-        juce::NormalisableRange<float>(0.0f, 0.85f), 0.4f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_osmSaturation", 1), "Master Osmosis Saturation",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 5.6: fXFormant (Membrane Collection — Formant Filter)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_formantShift", 1), "Formant Shift",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+        juce::ParameterID("mfx_formantShift", 1), "Formant Shift", juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_formantVowel", 1), "Formant Vowel",
-        juce::NormalisableRange<float>(0.0f, 4.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_formantQ", 1), "Formant Resonance",
-        juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 8.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_formantMix", 1), "Formant Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("mfx_formantVowel", 1), "Formant Vowel", juce::NormalisableRange<float>(0.0f, 4.0f), 0.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("mfx_formantQ", 1), "Formant Resonance",
+                                                    juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 8.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("mfx_formantMix", 1), "Formant Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 5.7: fXBreath (Membrane Collection — Breath Texture)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_breathAmount", 1), "Breath Amount",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_breathTilt", 1), "Breath Tilt",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_breathSens", 1), "Breath Sensitivity",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("mfx_breathMix", 1), "Breath Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("mfx_breathAmount", 1), "Breath Amount", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("mfx_breathTilt", 1), "Breath Tilt",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("mfx_breathSens", 1),
+                                                                 "Breath Sensitivity",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("mfx_breathMix", 1), "Breath Mix",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // Stage 12: fXOneiric (Dream State)
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",
+                                                    juce::NormalisableRange<float>(1.0f, 1500.0f, 0.0f, 0.3f), 350.0f));
+    params.push_back(
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_onShiftHz", 1), "Master Oneiric Shift",
+                                                    juce::NormalisableRange<float>(-500.0f, 500.0f), 5.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_onFeedback", 1),
+                                                                 "Master Oneiric Feedback",
+                                                                 juce::NormalisableRange<float>(0.0f, 0.92f), 0.6f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_onDamping", 1),
+                                                                 "Master Oneiric Damping",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("master_onSpread", 1),
+                                                                 "Master Oneiric Spread",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",
-        juce::NormalisableRange<float>(1.0f, 1500.0f, 0.0f, 0.3f), 350.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onShiftHz", 1), "Master Oneiric Shift",
-        juce::NormalisableRange<float>(-500.0f, 500.0f), 5.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onFeedback", 1), "Master Oneiric Feedback",
-        juce::NormalisableRange<float>(0.0f, 0.92f), 0.6f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onDamping", 1), "Master Oneiric Damping",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onSpread", 1), "Master Oneiric Spread",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::ParameterID("master_onMix", 1), "Master Oneiric Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     // MPE (MIDI Polyphonic Expression) — DAW-automatable per-project settings.
     // Zone layout, pitch-bend range, and expression routing targets are
     // exposed as APVTS parameters so hosts can save/recall them with the project.
-    params.push_back(std::make_unique<juce::AudioParameterBool>(
-        juce::ParameterID("mpe_enabled", 1), "MPE Enabled", false));
+    params.push_back(
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID("mpe_enabled", 1), "MPE Enabled", false));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
-        juce::ParameterID("mpe_zone", 1), "MPE Zone",
-        juce::StringArray{ "Off", "Lower", "Upper", "Both" }, 0));
+        juce::ParameterID("mpe_zone", 1), "MPE Zone", juce::StringArray{"Off", "Lower", "Upper", "Both"}, 0));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("mpe_pitchBendRange", 1), "MPE Pitch Bend Range (semitones)",
         juce::NormalisableRange<float>(1.0f, 96.0f, 1.0f), 48.0f));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("mpe_pressureTarget", 1), "MPE Pressure Target",
-        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)", "Macro 2 (MOVEMENT)" }, 0));
+        juce::StringArray{"Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)",
+                          "Macro 2 (MOVEMENT)"},
+        0));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("mpe_slideTarget", 1), "MPE Slide Target",
-        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)", "Macro 2 (MOVEMENT)" }, 0));
+        juce::StringArray{"Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)",
+                          "Macro 2 (MOVEMENT)"},
+        0));
 
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
     // rather than the shared params vector, so it must be called after constructing
     // the ParameterLayout from the vector.
-    juce::AudioProcessorValueTreeState::ParameterLayout layout (
-        params.begin(), params.end());
-    xoceanus::AquaticFXSuite::addParameters (layout);
+    juce::AudioProcessorValueTreeState::ParameterLayout layout(params.begin(), params.end());
+    xoceanus::AquaticFXSuite::addParameters(layout);
     return layout;
 }
 
@@ -1202,19 +1025,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 static float silenceGateHoldMs(const juce::String& engineId)
 {
     // Percussive — 100ms
-    if (engineId == "Onset"     || engineId == "Overbite"  || engineId == "OddfeliX"
-     || engineId == "Origami")
+    if (engineId == "Onset" || engineId == "Overbite" || engineId == "OddfeliX" || engineId == "Origami")
         return 100.0f;
 
     // Reverb-tail / granular / delay — 500ms
-    if (engineId == "Overdub"   || engineId == "Opal"      || engineId == "Oceanic"
-     || engineId == "Obscura"   || engineId == "Osprey"    || engineId == "Osteria"
-     || engineId == "Ombre"     || engineId == "Overlap")
+    if (engineId == "Overdub" || engineId == "Opal" || engineId == "Oceanic" || engineId == "Obscura" ||
+        engineId == "Osprey" || engineId == "Osteria" || engineId == "Ombre" || engineId == "Overlap")
         return 500.0f;
 
     // Infinite-sustain / self-exciting feedback — 1000ms
-    if (engineId == "Organon"   || engineId == "Ouroboros"  || engineId == "Oracle"
-     || engineId == "Owlfish")
+    if (engineId == "Organon" || engineId == "Ouroboros" || engineId == "Oracle" || engineId == "Owlfish")
         return 1000.0f;
 
     // Visual-only — 50ms (Optic generates no audio; gate closes fast)
@@ -1228,8 +1048,10 @@ static float silenceGateHoldMs(const juce::String& engineId)
 void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     // Guard against non-compliant hosts or test harnesses passing invalid values.
-    if (sampleRate <= 0.0) sampleRate = 44100.0;
-    if (samplesPerBlock <= 0) samplesPerBlock = 512;
+    if (sampleRate <= 0.0)
+        sampleRate = 44100.0;
+    if (samplesPerBlock <= 0)
+        samplesPerBlock = 512;
 
     currentSampleRate.store(sampleRate, std::memory_order_relaxed);
     atomicSampleRate_.store(sampleRate, std::memory_order_relaxed);
@@ -1268,8 +1090,7 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         if (eng)
         {
             eng->prepare(sampleRate, samplesPerBlock);
-            eng->prepareSilenceGate(sampleRate, samplesPerBlock,
-                                    silenceGateHoldMs(eng->getEngineId()));
+            eng->prepareSilenceGate(sampleRate, samplesPerBlock, silenceGateHoldMs(eng->getEngineId()));
         }
     }
 
@@ -1285,8 +1106,7 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // first prepareToPlay(), setting hasRestoredState = true and bypassing
     // this block. However, this ordering is host-dependent and not part of
     // the JUCE AudioProcessor contract. (Audit P0-2 CRITICAL-2)
-    if (!hasRestoredState.load(std::memory_order_acquire)
-        && std::atomic_load(&engines[0]) == nullptr)
+    if (!hasRestoredState.load(std::memory_order_acquire) && std::atomic_load(&engines[0]) == nullptr)
     {
         loadEngine(0, "Obrix");
     }
@@ -1314,10 +1134,9 @@ void XOceanusProcessor::releaseResources()
     masterFX.reset();
 }
 
-void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
-                                      juce::MidiBuffer& midi)
+void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi)
 {
-    xoceanus::dsp::initAudioThreadOnce();  // ARM64 FPCR.FZ — see ThreadInit.h
+    xoceanus::dsp::initAudioThreadOnce(); // ARM64 FPCR.FZ — see ThreadInit.h
     juce::ScopedNoDenormals noDenormals;
     const int numSamples = buffer.getNumSamples();
 
@@ -1355,7 +1174,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     // Build engine pointer array for coupling matrix (atomic reads)
     std::array<SynthEngine*, MaxSlots> enginePtrs = {};
-    std::array<std::shared_ptr<SynthEngine>, MaxSlots> engineRefs;  // prevent deletion during block
+    std::array<std::shared_ptr<SynthEngine>, MaxSlots> engineRefs; // prevent deletion during block
     int activeCount = 0;
 
     for (int i = 0; i < MaxSlots; ++i)
@@ -1380,10 +1199,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         {
             // Consume the pending command into the audio-thread-only crossfades[].
             // Move the shared_ptr to avoid a ref-count bump on the audio thread.
-            crossfades[i].outgoing             = std::move(pending.outgoing);
-            crossfades[i].fadeGain             = pending.fadeGain;
+            crossfades[i].outgoing = std::move(pending.outgoing);
+            crossfades[i].fadeGain = pending.fadeGain;
             crossfades[i].fadeSamplesRemaining = pending.fadeSamplesRemaining;
-            crossfades[i].needsAllNotesOff     = pending.needsAllNotesOff;
+            crossfades[i].needsAllNotesOff = pending.needsAllNotesOff;
             // Release the slot so the message thread may post another swap.
             pending.ready.store(false, std::memory_order_release);
         }
@@ -1405,17 +1224,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     // Sync Chord Machine state from cached parameter pointers (no hash lookups)
     chordMachine.setEnabled(cachedParams.cmEnabled->load() >= 0.5f);
-    chordMachine.setPalette(static_cast<PaletteType>(
-        static_cast<int>(cachedParams.cmPalette->load())));
-    chordMachine.setVoicing(static_cast<VoicingMode>(
-        static_cast<int>(cachedParams.cmVoicing->load())));
+    chordMachine.setPalette(static_cast<PaletteType>(static_cast<int>(cachedParams.cmPalette->load())));
+    chordMachine.setVoicing(static_cast<VoicingMode>(static_cast<int>(cachedParams.cmVoicing->load())));
     chordMachine.setSpread(cachedParams.cmSpread->load());
     chordMachine.setSequencerRunning(cachedParams.cmSeqRunning->load() >= 0.5f);
     chordMachine.setBPM(cachedParams.cmSeqBpm->load());
     chordMachine.setSwing(cachedParams.cmSeqSwing->load());
     chordMachine.setGlobalGate(cachedParams.cmSeqGate->load());
-    chordMachine.setVelocityCurve(static_cast<VelocityCurve>(
-        static_cast<int>(cachedParams.cmVelCurve->load())));
+    chordMachine.setVelocityCurve(static_cast<VelocityCurve>(static_cast<int>(cachedParams.cmVelCurve->load())));
     chordMachine.setHumanize(cachedParams.cmHumanize->load());
     chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
     chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
@@ -1425,8 +1241,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // We only call applyPattern when the pattern index changes to avoid clobbering
     // per-step edits the user may have made (Eno mutations, UI step overrides).
     {
-        const auto newPat = static_cast<RhythmPattern>(
-            static_cast<int>(cachedParams.cmSeqPattern->load()));
+        const auto newPat = static_cast<RhythmPattern>(static_cast<int>(cachedParams.cmSeqPattern->load()));
         if (newPat != chordMachine.getPattern())
             chordMachine.applyPattern(newPat);
     }
@@ -1435,14 +1250,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     if (cachedParams.mpeEnabled)
     {
         mpeManager.setMPEEnabled(cachedParams.mpeEnabled->load() >= 0.5f);
-        mpeManager.setZoneLayout(static_cast<MPEZoneLayout>(
-            static_cast<int>(cachedParams.mpeZone->load())));
-        mpeManager.setPitchBendRange(
-            static_cast<int>(cachedParams.mpePitchBendRange->load()));
-        mpeManager.setPressureTarget(static_cast<MPEManager::ExpressionTarget>(
-            static_cast<int>(cachedParams.mpePressureTarget->load())));
-        mpeManager.setSlideTarget(static_cast<MPEManager::ExpressionTarget>(
-            static_cast<int>(cachedParams.mpeSlideTarget->load())));
+        mpeManager.setZoneLayout(static_cast<MPEZoneLayout>(static_cast<int>(cachedParams.mpeZone->load())));
+        mpeManager.setPitchBendRange(static_cast<int>(cachedParams.mpePitchBendRange->load()));
+        mpeManager.setPressureTarget(
+            static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpePressureTarget->load())));
+        mpeManager.setSlideTarget(
+            static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpeSlideTarget->load())));
     }
 
     // ── External MIDI Clock sync (#359) ──────────────────────────────────────
@@ -1459,11 +1272,11 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     {
         for (const auto& meta : midi)
         {
-            const auto& msg   = meta.getMessage();
-            const int   spos  = meta.samplePosition;
+            const auto& msg = meta.getMessage();
+            const int spos = meta.samplePosition;
             const double absoluteTime = midiClockBlockOffset_ + spos;
 
-            if (msg.isMidiClock())   // 0xF8
+            if (msg.isMidiClock()) // 0xF8
             {
                 if (chordMachine.receiveMidiClockPulse())
                 {
@@ -1475,20 +1288,18 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                         {
                             // intervalSamples = samples per 16th note
                             // BPM = (SR * 60) / (intervalSamples * 4)
-                            const float rawBPM = static_cast<float>(
-                                getSampleRate() * 60.0 / (intervalSamples * 4.0));
+                            const float rawBPM = static_cast<float>(getSampleRate() * 60.0 / (intervalSamples * 4.0));
                             // Clamp to sensible range before smoothing
                             const float clampedBPM = juce::jlimit(20.0f, 300.0f, rawBPM);
                             // One-pole smoothing (α ≈ 0.3 — fast enough for live feel)
-                            midiClockDerivedBPM_ = 0.7f * midiClockDerivedBPM_
-                                                 + 0.3f * clampedBPM;
+                            midiClockDerivedBPM_ = 0.7f * midiClockDerivedBPM_ + 0.3f * clampedBPM;
                         }
                     }
                     midiClockLastStepTime_ = absoluteTime;
                     chordMachine.advanceExternalClockStep(midiClockDerivedBPM_);
                 }
             }
-            else if (msg.isMidiStart())    // 0xFA
+            else if (msg.isMidiStart()) // 0xFA
             {
                 midiClockLastStepTime_ = absoluteTime;
                 chordMachine.receiveMidiStart();
@@ -1497,7 +1308,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             {
                 chordMachine.receiveMidiContinue();
             }
-            else if (msg.isMidiStop())     // 0xFC
+            else if (msg.isMidiStop()) // 0xFC
             {
                 chordMachine.receiveMidiStop();
             }
@@ -1556,13 +1367,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             // acoustic engines (OAKEN, OBELISK, ORCHARD, etc.) can respond to it.
             if (msg.isControllerOfType(11))
             {
-                const int ch = msg.getChannel() - 1;  // 0-based
+                const int ch = msg.getChannel() - 1; // 0-based
                 expressionValue_[ch] = static_cast<float>(msg.getControllerValue()) / 127.0f;
             }
 
             if (msg.isControllerOfType(64))
             {
-                const int ch = msg.getChannel() - 1;  // 0-based
+                const int ch = msg.getChannel() - 1; // 0-based
                 const bool nowHeld = (msg.getControllerValue() >= 64);
                 const bool wasHeld = sustainHeld_[ch];
 
@@ -1579,8 +1390,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                         for (int note = 0; note < 128; ++note)
                         {
                             if (pending.test(note))
-                                slotMidi[slot].addEvent(
-                                    juce::MidiMessage::noteOff(ch + 1, note, (uint8_t)0), 0);
+                                slotMidi[slot].addEvent(juce::MidiMessage::noteOff(ch + 1, note, (uint8_t)0), 0);
                         }
                         pending.clearAll();
                     }
@@ -1613,13 +1423,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                 // isNoteOff() matches noteOff status bytes AND noteOn with velocity 0.
                 if (msg.isNoteOff())
                 {
-                    const int ch   = msg.getChannel() - 1;
+                    const int ch = msg.getChannel() - 1;
                     const int note = msg.getNoteNumber();
                     if (sustainHeld_[ch])
                     {
                         // Defer: remember this note needs a release later.
                         sustainPendingNoteOffs_[slot][ch].set(note);
-                        continue;  // suppress the note-off for now
+                        continue; // suppress the note-off for now
                     }
                     // Sustain not held: cancel any pending entry for this note
                     // (note was re-triggered and released before pedal lifted).
@@ -1652,8 +1462,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                 int note = assign.midiNotes[s];
                 if (note < 0 || note > 127)
                     note = 60; // fallback: C4
-                slotMidi[s].addEvent(
-                    juce::MidiMessage::noteOn(1, note, vel), 0);
+                slotMidi[s].addEvent(juce::MidiMessage::noteOn(1, note, vel), 0);
                 // Store fired note for deferred note-off
                 chordFireNotes[s].store(note, std::memory_order_relaxed);
             }
@@ -1664,8 +1473,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             // Note-offs deferred via chordFireNoteOffCountdown.
             for (int s = 0; s < kChordSlots; ++s)
             {
-                slotMidi[s].addEvent(
-                    juce::MidiMessage::noteOn(1, 60, 0.8f), 0);
+                slotMidi[s].addEvent(juce::MidiMessage::noteOn(1, 60, 0.8f), 0);
                 chordFireNotes[s].store(60, std::memory_order_relaxed);
             }
         }
@@ -1689,7 +1497,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                 for (int s = 0; s < kChordSlots; ++s)
                 {
                     const int note = chordFireNotes[s].load(std::memory_order_relaxed);
-                    if (note > 0 && note <= 127)  // 0 = sentinel (empty); MIDI note C-1 excluded
+                    if (note > 0 && note <= 127) // 0 = sentinel (empty); MIDI note C-1 excluded
                         slotMidi[s].addEvent(juce::MidiMessage::noteOff(1, note), 0);
                 }
             }
@@ -1706,10 +1514,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     {
         if (enginePtrs[slot] && enginePtrs[slot]->isAnalysisEngine())
         {
-            static_cast<OsmosisEngine*>(enginePtrs[slot])->setExternalInput(
-                externalInputBuffer.getReadPointer(0),
-                externalInputBuffer.getReadPointer(1),
-                numSamples);
+            static_cast<OsmosisEngine*>(enginePtrs[slot])
+                ->setExternalInput(externalInputBuffer.getReadPointer(0), externalInputBuffer.getReadPointer(1),
+                                   numSamples);
         }
     }
 
@@ -1727,12 +1534,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             {
                 if (metadata.getMessage().isNoteOn())
                 {
-                    if (!gateWoken) { enginePtrs[i]->wakeSilenceGate(); gateWoken = true; }
+                    if (!gateWoken)
+                    {
+                        enginePtrs[i]->wakeSilenceGate();
+                        gateWoken = true;
+                    }
                     // Push to Field Map queue (lock-free, drops if full — no block)
                     const auto& msg = metadata.getMessage();
-                    pushNoteEvent(msg.getNoteNumber(),
-                                  msg.getFloatVelocity(),
-                                  i);
+                    pushNoteEvent(msg.getNoteNumber(), msg.getFloatVelocity(), i);
                 }
             }
         }
@@ -1747,7 +1556,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
 
         {
-            EngineProfiler::ScopedMeasurement measurement (engineProfilers[i]);
+            EngineProfiler::ScopedMeasurement measurement(engineProfilers[i]);
             enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
         }
 
@@ -1755,13 +1564,11 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         enginePtrs[i]->analyzeForSilenceGate(engineBuffers[i], numSamples);
 
         // SRO: Record slot stats for auditor (CPU + silence gate state)
-        sroAuditor.recordSlot(i, engineProfilers[i].getStats(),
-                              enginePtrs[i]->isSilenceGateBypassed());
+        sroAuditor.recordSlot(i, engineProfilers[i].getStats(), enginePtrs[i]->isSilenceGateBypassed());
 
         // Waveform FIFO push — capture raw engine output (pre-coupling, pre-master FX)
         // for the UI oscilloscope.  No allocation; O(n) copy is fine at 512 samples.
-        waveformFifos[i].push(engineBuffers[i].getReadPointer(0),
-                              static_cast<size_t>(numSamples));
+        waveformFifos[i].push(engineBuffers[i].getReadPointer(0), static_cast<size_t>(numSamples));
     }
 
     // Apply coupling matrix between engines.
@@ -1825,19 +1632,17 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
                 // B4: Clamp raw enum value to valid CouplingType range to prevent
                 // undefined behavior from out-of-range parameter values.
-                const int rawType = juce::jlimit(0,
-                    static_cast<int>(CouplingType::KnotTopology),
-                    juce::roundToInt(cp.type->load()));
+                const int rawType =
+                    juce::jlimit(0, static_cast<int>(CouplingType::KnotTopology), juce::roundToInt(cp.type->load()));
                 const auto perfType = static_cast<CouplingType>(rawType);
 
                 const float perfAmount = cp.amount->load();
-                const int perfSource   = static_cast<int>(cp.source->load());
-                const int perfTarget   = static_cast<int>(cp.target->load());
+                const int perfSource = static_cast<int>(cp.source->load());
+                const int perfTarget = static_cast<int>(cp.target->load());
 
                 // Bounds-check slot indices to prevent OOB
-                if (perfSource < 0 || perfSource >= MaxSlots
-                 || perfTarget < 0 || perfTarget >= MaxSlots
-                 || perfSource == perfTarget)
+                if (perfSource < 0 || perfSource >= MaxSlots || perfTarget < 0 || perfTarget >= MaxSlots ||
+                    perfSource == perfTarget)
                     continue;
 
                 // Detect coupling type changes and trigger crossfade if needed.
@@ -1851,22 +1656,21 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
                 // Build the route struct
                 MegaCouplingMatrix::CouplingRoute perfRoute;
-                perfRoute.sourceSlot  = perfSource;
-                perfRoute.destSlot    = perfTarget;
-                perfRoute.type        = perfType;
-                perfRoute.amount      = perfAmount;
+                perfRoute.sourceSlot = perfSource;
+                perfRoute.destSlot = perfTarget;
+                perfRoute.type = perfType;
+                perfRoute.amount = perfAmount;
                 perfRoute.isNormalled = false;
-                perfRoute.active      = true;
+                perfRoute.active = true;
 
                 // Override or append: if a baseline route targets the same
                 // source->dest pair, the performance route wins.
                 bool overridden = false;
                 for (auto& baseRoute : merged)
                 {
-                    if (baseRoute.sourceSlot == perfSource
-                     && baseRoute.destSlot   == perfTarget)
+                    if (baseRoute.sourceSlot == perfSource && baseRoute.destSlot == perfTarget)
                     {
-                        baseRoute.type   = perfRoute.type;
+                        baseRoute.type = perfRoute.type;
                         baseRoute.amount = perfRoute.amount;
                         baseRoute.active = true;
                         overridden = true;
@@ -1904,10 +1708,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             else
             {
                 // Linear decay from kCouplingBurstPeak to 1.0 over the burst window.
-                const int totalBurstSamples = static_cast<int>(
-                    currentSampleRate.load(std::memory_order_relaxed) * kCouplingBurstMs / 1000.0);
-                const float progress = 1.0f - static_cast<float>(newRemaining)
-                                            / static_cast<float>(std::max(1, totalBurstSamples));
+                const int totalBurstSamples =
+                    static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * kCouplingBurstMs / 1000.0);
+                const float progress =
+                    1.0f - static_cast<float>(newRemaining) / static_cast<float>(std::max(1, totalBurstSamples));
                 const float decayed = kCouplingBurstPeak - (kCouplingBurstPeak - 1.0f) * progress;
                 couplingBurstGain.store(decayed, std::memory_order_relaxed);
             }
@@ -2041,13 +1845,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     const double sr_ = currentSampleRate.load(std::memory_order_relaxed);
     if (sr_ > 0.0 && numSamples > 0)
     {
-        const juce::int64 endTick     = juce::Time::getHighResolutionTicks();
-        const double ticksPerSec      = static_cast<double>(juce::Time::getHighResolutionTicksPerSecond());
-        const double elapsedSec       = static_cast<double>(endTick - processBlockStartTick) / ticksPerSec;
+        const juce::int64 endTick = juce::Time::getHighResolutionTicks();
+        const double ticksPerSec = static_cast<double>(juce::Time::getHighResolutionTicksPerSecond());
+        const double elapsedSec = static_cast<double>(endTick - processBlockStartTick) / ticksPerSec;
         const double bufferDurationSec = static_cast<double>(numSamples) / sr_;
-        const float  rawLoad           = static_cast<float>(elapsedSec / bufferDurationSec);
+        const float rawLoad = static_cast<float>(elapsedSec / bufferDurationSec);
         // Leaky integrator: 90% previous + 10% new — smooths out single-block spikes.
-        const float  prevLoad = processingLoad.load(std::memory_order_relaxed);
+        const float prevLoad = processingLoad.load(std::memory_order_relaxed);
         processingLoad.store(prevLoad * 0.9f + rawLoad * 0.1f, std::memory_order_relaxed);
     }
 
@@ -2067,7 +1871,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         // Smooth with ~35ms attack, ~213ms release at 512 samples/48kHz (one-pole filter)
         float current = noteActivity_.load(std::memory_order_relaxed);
         float target = std::clamp(rms * 4.0f, 0.0f, 1.0f); // scale RMS to 0-1 range
-        float coeff = (target > current) ? 0.3f : 0.05f; // fast attack, slow release
+        float coeff = (target > current) ? 0.3f : 0.05f;   // fast attack, slow release
         noteActivity_.store(current + coeff * (target - current), std::memory_order_relaxed);
     }
 
@@ -2078,7 +1882,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
 {
     // Identify which slots hold Constellation family engines
-    static const juce::StringArray kFamilyIds = { "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole" };
+    static const juce::StringArray kFamilyIds = {"Ohm", "Orphica", "Obbligato", "Ottoni", "Ole"};
 
     // Collect family engine pointers and their slot indices.
     // familySlots_ is a member pre-allocated in prepareToPlay — no heap alloc here.
@@ -2089,7 +1893,7 @@ void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& e
         if (!enginePtrs[i])
             continue;
         if (kFamilyIds.contains(enginePtrs[i]->getEngineId()))
-            familySlots_.add({ i, enginePtrs[i] });
+            familySlots_.add({i, enginePtrs[i]});
     }
 
     if (familySlots_.size() < 2)
@@ -2097,8 +1901,8 @@ void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& e
 
     // Read macro values from cached parameter pointers — safe on audio thread
     const float communeAmt = cachedParams.ohmCommune ? cachedParams.ohmCommune->load() : 0.f;
-    const float bondAmt    = cachedParams.obblBond   ? cachedParams.obblBond->load()   : 0.f;
-    const float dramaAmt   = cachedParams.oleDrama   ? cachedParams.oleDrama->load()   : 0.f;
+    const float bondAmt = cachedParams.obblBond ? cachedParams.obblBond->load() : 0.f;
+    const float dramaAmt = cachedParams.oleDrama ? cachedParams.oleDrama->load() : 0.f;
 
     // For each family engine, send bleed coupling to all sibling family engines
     for (const auto& src : familySlots_)
@@ -2115,24 +1919,21 @@ void XOceanusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& e
             if (srcId == "Ohm" && communeAmt > 0.001f)
             {
                 const float bleedBuf = srcSample * communeAmt;
-                dst.eng->applyCouplingInput(CouplingType::LFOToPitch,
-                                            communeAmt, &bleedBuf, 1);
+                dst.eng->applyCouplingInput(CouplingType::LFOToPitch, communeAmt, &bleedBuf, 1);
             }
 
             // OBBLIGATO BOND macro → AmpToFilter to siblings
             if (srcId == "Obbligato" && bondAmt > 0.001f)
             {
                 const float bondBuf = srcSample * bondAmt;
-                dst.eng->applyCouplingInput(CouplingType::AmpToFilter,
-                                            bondAmt, &bondBuf, 1);
+                dst.eng->applyCouplingInput(CouplingType::AmpToFilter, bondAmt, &bondBuf, 1);
             }
 
             // OLE DRAMA macro → EnvToMorph to siblings
             if (srcId == "Ole" && dramaAmt > 0.001f)
             {
                 const float dramaBuf = srcSample * dramaAmt;
-                dst.eng->applyCouplingInput(CouplingType::EnvToMorph,
-                                            dramaAmt, &dramaBuf, 1);
+                dst.eng->applyCouplingInput(CouplingType::EnvToMorph, dramaAmt, &dramaBuf, 1);
             }
         }
     }
@@ -2149,12 +1950,17 @@ void XOceanusProcessor::processBrothCoupling(std::array<SynthEngine*, MaxSlots>&
 
     for (auto* eng : enginePtrs)
     {
-        if (!eng) continue;
+        if (!eng)
+            continue;
         const juce::String id = eng->getEngineId();
-        if      (id == BrothCoordinator::kOverwash) overwash = static_cast<OverwashEngine*>(eng);
-        else if (id == BrothCoordinator::kOverworn) overworn = static_cast<OverwornEngine*>(eng);
-        else if (id == BrothCoordinator::kOverflow) overflow = static_cast<OverflowEngine*>(eng);
-        else if (id == BrothCoordinator::kOvercast) overcast = static_cast<OvercastEngine*>(eng);
+        if (id == BrothCoordinator::kOverwash)
+            overwash = static_cast<OverwashEngine*>(eng);
+        else if (id == BrothCoordinator::kOverworn)
+            overworn = static_cast<OverwornEngine*>(eng);
+        else if (id == BrothCoordinator::kOverflow)
+            overflow = static_cast<OverflowEngine*>(eng);
+        else if (id == BrothCoordinator::kOvercast)
+            overcast = static_cast<OvercastEngine*>(eng);
     }
 
     // All four must be present for BROTH coupling to activate.
@@ -2165,8 +1971,8 @@ void XOceanusProcessor::processBrothCoupling(std::array<SynthEngine*, MaxSlots>&
     // OVERWORN is the "broth pot": it accumulates session-long reduction state
     // (spectral mass evaporating from high bands to low) and exports it so the
     // sibling engines can react to the age and concentration of the session.
-    const float sessionAge        = overworn->getSessionAge();
-    const float concentrateDark   = overworn->getConcentrateDark();
+    const float sessionAge = overworn->getSessionAge();
+    const float concentrateDark = overworn->getConcentrateDark();
     const float totalSpectralMass = overworn->getTotalSpectralMass();
 
     // ── OVERWORN → OVERWASH ────────────────────────────────────────────────────
@@ -2224,8 +2030,8 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // thread at large buffer sizes (issue #148).
         for (int i = 0; i < 500 && pending.ready.load(std::memory_order_acquire); ++i)
             std::this_thread::sleep_for(std::chrono::microseconds(100));
-        pending.outgoing             = oldEngine;
-        pending.fadeGain             = 1.0f;
+        pending.outgoing = oldEngine;
+        pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
             static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
@@ -2244,7 +2050,12 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
     couplingMatrix.notifyCouplingMatrixOfSwap(slot, engineId, shared.get());
 
     if (onEngineChanged)
-        juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
+        juce::MessageManager::callAsync(
+            [this, slot]
+            {
+                if (onEngineChanged)
+                    onEngineChanged(slot);
+            });
 }
 
 void XOceanusProcessor::unloadEngine(int slot)
@@ -2263,8 +2074,8 @@ void XOceanusProcessor::unloadEngine(int slot)
         // thread at large buffer sizes (issue #148).
         for (int i = 0; i < 500 && pending.ready.load(std::memory_order_acquire); ++i)
             std::this_thread::sleep_for(std::chrono::microseconds(100));
-        pending.outgoing             = oldEngine;
-        pending.fadeGain             = 1.0f;
+        pending.outgoing = oldEngine;
+        pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
             static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
@@ -2280,7 +2091,12 @@ void XOceanusProcessor::unloadEngine(int slot)
     sroAuditor.clearSlot(slot);
 
     if (onEngineChanged)
-        juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
+        juce::MessageManager::callAsync(
+            [this, slot]
+            {
+                if (onEngineChanged)
+                    onEngineChanged(slot);
+            });
 }
 
 SynthEngine* XOceanusProcessor::getEngine(int slot) const
@@ -2361,12 +2177,12 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
             for (const auto& r : *routes)
             {
                 auto* re = routesElem->createNewChildElement("Route");
-                re->setAttribute("src",       r.sourceSlot);
-                re->setAttribute("dst",       r.destSlot);
-                re->setAttribute("type",      static_cast<int>(r.type));
-                re->setAttribute("amount",    static_cast<double>(r.amount));
+                re->setAttribute("src", r.sourceSlot);
+                re->setAttribute("dst", r.destSlot);
+                re->setAttribute("type", static_cast<int>(r.type));
+                re->setAttribute("amount", static_cast<double>(r.amount));
                 re->setAttribute("normalled", r.isNormalled);
-                re->setAttribute("active",    r.active);
+                re->setAttribute("active", r.active);
             }
         }
 
@@ -2387,9 +2203,9 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
 
         // FIX 9 — Save editor UI state: selectedSlot, signalFlowActiveSection,
         // cockpitBypass (closes #357).
-        xml->setAttribute("editorSelectedSlot",      persistedSelectedSlot);
+        xml->setAttribute("editorSelectedSlot", persistedSelectedSlot);
         xml->setAttribute("editorSignalFlowSection", persistedSignalFlowSection);
-        xml->setAttribute("editorCockpitBypass",     persistedCockpitBypass ? 1 : 0);
+        xml->setAttribute("editorCockpitBypass", persistedCockpitBypass ? 1 : 0);
 
         copyXmlToBinary(*xml, destData);
     }
@@ -2400,7 +2216,7 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
     {
-        hasRestoredState = true;  // Mark that saved state exists — skip default-engine load in prepareToPlay.
+        hasRestoredState = true; // Mark that saved state exists — skip default-engine load in prepareToPlay.
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
 
         // FIX 4 / Fix #315 — Read schema version and apply forward migrations so
@@ -2468,24 +2284,23 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
                 for (auto* re : routesElem->getChildIterator())
                 {
                     MegaCouplingMatrix::CouplingRoute r;
-                    r.sourceSlot  = re->getIntAttribute("src", 0);
-                    r.destSlot    = re->getIntAttribute("dst", 1);
+                    r.sourceSlot = re->getIntAttribute("src", 0);
+                    r.destSlot = re->getIntAttribute("dst", 1);
                     int typeInt = re->getIntAttribute("type", 0);
                     if (typeInt < 0 || typeInt > static_cast<int>(CouplingType::TriangularCoupling))
                         typeInt = 0;
                     r.type = static_cast<CouplingType>(typeInt);
-                    r.amount      = static_cast<float>(re->getDoubleAttribute("amount", 0.5));
+                    r.amount = static_cast<float>(re->getDoubleAttribute("amount", 0.5));
                     r.isNormalled = re->getBoolAttribute("normalled", false);
-                    r.active      = re->getBoolAttribute("active", true);
+                    r.active = re->getBoolAttribute("active", true);
 
                     // Bounds-check before adding to prevent corrupted saves
                     // from crashing or creating self-routing loops.
                     // addRoute() also enforces graph-level cycle detection for
                     // audio-rate types, so corrupted saves cannot install a
                     // feedback loop even if the self-route check is bypassed.
-                    if (r.sourceSlot >= 0 && r.sourceSlot < MaxSlots
-                     && r.destSlot   >= 0 && r.destSlot   < MaxSlots
-                     && r.sourceSlot != r.destSlot)
+                    if (r.sourceSlot >= 0 && r.sourceSlot < MaxSlots && r.destSlot >= 0 && r.destSlot < MaxSlots &&
+                        r.sourceSlot != r.destSlot)
                     {
                         couplingMatrix.addRoute(r);
                     }
@@ -2495,8 +2310,7 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
             // FIX 3 — Restore ChordMachine per-step sequencer data.
             if (xml->hasAttribute("chordMachineState"))
             {
-                juce::var cmState = juce::JSON::parse(
-                    xml->getStringAttribute("chordMachineState"));
+                juce::var cmState = juce::JSON::parse(xml->getStringAttribute("chordMachineState"));
                 chordMachine.restoreState(cmState);
             }
 
@@ -2528,7 +2342,7 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         {
             auto uiStateTree = apvts.state.getChildWithName("XOuijaPanel");
             if (uiStateTree.isValid() && onSetXOuijaState)
-                onSetXOuijaState (uiStateTree);
+                onSetXOuijaState(uiStateTree);
         }
 
         // FIX 8 — Restore PlaySurface scale selector index (closes #314).
@@ -2538,9 +2352,9 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
 
         // FIX 9 — Restore editor UI state (closes #357).
         // The editor reads these via getPersistedXxx() after construction.
-        persistedSelectedSlot      = xml->getIntAttribute("editorSelectedSlot",      -1);
-        persistedSignalFlowSection = xml->getIntAttribute("editorSignalFlowSection",  0);
-        persistedCockpitBypass     = xml->getIntAttribute("editorCockpitBypass",      0) != 0;
+        persistedSelectedSlot = xml->getIntAttribute("editorSelectedSlot", -1);
+        persistedSignalFlowSection = xml->getIntAttribute("editorSignalFlowSection", 0);
+        persistedCockpitBypass = xml->getIntAttribute("editorCockpitBypass", 0) != 0;
     }
 }
 
@@ -2568,7 +2382,7 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
             {
                 fullId = xoceanus::resolveSnapParamAlias(fullId);
                 if (fullId.isEmpty())
-                    continue;  // param was removed — skip silently
+                    continue; // param was removed — skip silently
             }
 
             // Resolve Overbite (Bite) legacy param aliases before lookup.
@@ -2578,7 +2392,7 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
             {
                 fullId = xoceanus::resolveBiteParamAlias(fullId);
                 if (fullId.isEmpty())
-                    continue;  // param was removed — skip silently
+                    continue; // param was removed — skip silently
             }
 
             // Try as-is first (already a full ID like "opal_source"),
@@ -2586,8 +2400,7 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
             if (apvts.getParameter(fullId) == nullptr)
                 fullId = prefix + prop.name.toString();
 
-            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(
-                              apvts.getParameter(fullId)))
+            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(fullId)))
             {
                 float val = static_cast<float>(prop.value);
                 p->setValueNotifyingHost(p->convertTo0to1(val));
@@ -2602,11 +2415,13 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         chordMachine.restoreState(preset.sequencerData);
 
         // Sync the restored CM state back to APVTS so the UI reflects it
-        auto syncParam = [&](const char* id, float val) {
+        auto syncParam = [&](const char* id, float val)
+        {
             if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(id)))
                 p->setValueNotifyingHost(p->convertTo0to1(val));
         };
-        auto syncBool = [&](const char* id, bool val) {
+        auto syncBool = [&](const char* id, bool val)
+        {
             if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(id)))
                 p->setValueNotifyingHost(val ? 1.0f : 0.0f);
         };
@@ -2650,37 +2465,157 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         auto stringToCouplingType = [](const juce::String& s, CouplingType& out) -> bool
         {
             // CamelCase canonical forms (primary)
-            if (s == "AmpToFilter")        { out = CouplingType::AmpToFilter;       return true; }
-            if (s == "AmpToPitch")         { out = CouplingType::AmpToPitch;        return true; }
-            if (s == "LFOToPitch")         { out = CouplingType::LFOToPitch;        return true; }
-            if (s == "EnvToMorph")         { out = CouplingType::EnvToMorph;        return true; }
-            if (s == "AudioToFM")          { out = CouplingType::AudioToFM;         return true; }
-            if (s == "AudioToRing")        { out = CouplingType::AudioToRing;       return true; }
-            if (s == "FilterToFilter")     { out = CouplingType::FilterToFilter;    return true; }
-            if (s == "AmpToChoke")         { out = CouplingType::AmpToChoke;        return true; }
-            if (s == "RhythmToBlend")      { out = CouplingType::RhythmToBlend;     return true; }
-            if (s == "EnvToDecay")         { out = CouplingType::EnvToDecay;        return true; }
-            if (s == "PitchToPitch")       { out = CouplingType::PitchToPitch;      return true; }
-            if (s == "AudioToWavetable")   { out = CouplingType::AudioToWavetable;  return true; }
-            if (s == "AudioToBuffer")      { out = CouplingType::AudioToBuffer;     return true; }
-            if (s == "KnotTopology")       { out = CouplingType::KnotTopology;      return true; }
-            if (s == "TriangularCoupling") { out = CouplingType::TriangularCoupling; return true; }
+            if (s == "AmpToFilter")
+            {
+                out = CouplingType::AmpToFilter;
+                return true;
+            }
+            if (s == "AmpToPitch")
+            {
+                out = CouplingType::AmpToPitch;
+                return true;
+            }
+            if (s == "LFOToPitch")
+            {
+                out = CouplingType::LFOToPitch;
+                return true;
+            }
+            if (s == "EnvToMorph")
+            {
+                out = CouplingType::EnvToMorph;
+                return true;
+            }
+            if (s == "AudioToFM")
+            {
+                out = CouplingType::AudioToFM;
+                return true;
+            }
+            if (s == "AudioToRing")
+            {
+                out = CouplingType::AudioToRing;
+                return true;
+            }
+            if (s == "FilterToFilter")
+            {
+                out = CouplingType::FilterToFilter;
+                return true;
+            }
+            if (s == "AmpToChoke")
+            {
+                out = CouplingType::AmpToChoke;
+                return true;
+            }
+            if (s == "RhythmToBlend")
+            {
+                out = CouplingType::RhythmToBlend;
+                return true;
+            }
+            if (s == "EnvToDecay")
+            {
+                out = CouplingType::EnvToDecay;
+                return true;
+            }
+            if (s == "PitchToPitch")
+            {
+                out = CouplingType::PitchToPitch;
+                return true;
+            }
+            if (s == "AudioToWavetable")
+            {
+                out = CouplingType::AudioToWavetable;
+                return true;
+            }
+            if (s == "AudioToBuffer")
+            {
+                out = CouplingType::AudioToBuffer;
+                return true;
+            }
+            if (s == "KnotTopology")
+            {
+                out = CouplingType::KnotTopology;
+                return true;
+            }
+            if (s == "TriangularCoupling")
+            {
+                out = CouplingType::TriangularCoupling;
+                return true;
+            }
             // Legacy arrow-notation aliases
-            if (s == "Amp->Filter")        { out = CouplingType::AmpToFilter;       return true; }
-            if (s == "Amp->Pitch")         { out = CouplingType::AmpToPitch;        return true; }
-            if (s == "LFO->Pitch")         { out = CouplingType::LFOToPitch;        return true; }
-            if (s == "Env->Morph")         { out = CouplingType::EnvToMorph;        return true; }
-            if (s == "Audio->FM")          { out = CouplingType::AudioToFM;         return true; }
-            if (s == "Audio->Ring")        { out = CouplingType::AudioToRing;       return true; }
-            if (s == "Filter->Filter")     { out = CouplingType::FilterToFilter;    return true; }
-            if (s == "Amp->Choke")         { out = CouplingType::AmpToChoke;        return true; }
-            if (s == "Rhythm->Blend")      { out = CouplingType::RhythmToBlend;     return true; }
-            if (s == "Env->Decay")         { out = CouplingType::EnvToDecay;        return true; }
-            if (s == "Pitch->Pitch")       { out = CouplingType::PitchToPitch;      return true; }
-            if (s == "Audio->Wavetable")   { out = CouplingType::AudioToWavetable;  return true; }
-            if (s == "Audio->Buffer")      { out = CouplingType::AudioToBuffer;     return true; }
-            if (s == "Knot->Topology")     { out = CouplingType::KnotTopology;      return true; }
-            if (s == "Triangular->Coupling") { out = CouplingType::TriangularCoupling; return true; }
+            if (s == "Amp->Filter")
+            {
+                out = CouplingType::AmpToFilter;
+                return true;
+            }
+            if (s == "Amp->Pitch")
+            {
+                out = CouplingType::AmpToPitch;
+                return true;
+            }
+            if (s == "LFO->Pitch")
+            {
+                out = CouplingType::LFOToPitch;
+                return true;
+            }
+            if (s == "Env->Morph")
+            {
+                out = CouplingType::EnvToMorph;
+                return true;
+            }
+            if (s == "Audio->FM")
+            {
+                out = CouplingType::AudioToFM;
+                return true;
+            }
+            if (s == "Audio->Ring")
+            {
+                out = CouplingType::AudioToRing;
+                return true;
+            }
+            if (s == "Filter->Filter")
+            {
+                out = CouplingType::FilterToFilter;
+                return true;
+            }
+            if (s == "Amp->Choke")
+            {
+                out = CouplingType::AmpToChoke;
+                return true;
+            }
+            if (s == "Rhythm->Blend")
+            {
+                out = CouplingType::RhythmToBlend;
+                return true;
+            }
+            if (s == "Env->Decay")
+            {
+                out = CouplingType::EnvToDecay;
+                return true;
+            }
+            if (s == "Pitch->Pitch")
+            {
+                out = CouplingType::PitchToPitch;
+                return true;
+            }
+            if (s == "Audio->Wavetable")
+            {
+                out = CouplingType::AudioToWavetable;
+                return true;
+            }
+            if (s == "Audio->Buffer")
+            {
+                out = CouplingType::AudioToBuffer;
+                return true;
+            }
+            if (s == "Knot->Topology")
+            {
+                out = CouplingType::KnotTopology;
+                return true;
+            }
+            if (s == "Triangular->Coupling")
+            {
+                out = CouplingType::TriangularCoupling;
+                return true;
+            }
             return false; // unknown type string — caller should skip this route
         };
 
@@ -2713,16 +2648,15 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
 
             if (slotA < 0 || slotB < 0)
             {
-                DBG("applyPreset: coupling route skipped — engineA='" + canonA
-                    + "' (slot=" + juce::String(slotA) + ") engineB='" + canonB
-                    + "' (slot=" + juce::String(slotB) + ") not found in active slots");
+                DBG("applyPreset: coupling route skipped — engineA='" + canonA + "' (slot=" + juce::String(slotA) +
+                    ") engineB='" + canonB + "' (slot=" + juce::String(slotB) + ") not found in active slots");
                 continue;
             }
 
             if (slotA == slotB)
                 continue;
 
-            CouplingType couplingType {};
+            CouplingType couplingType{};
             if (!stringToCouplingType(cp.type, couplingType))
             {
                 DBG("applyPreset: unknown coupling type '" + cp.type + "' — route skipped");
@@ -2732,20 +2666,19 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
             // Preserve bipolar amounts for types that use them (e.g. AmpToPitch,
             // PitchToPitch). Only force unipolar for inherently one-directional types.
             // Audit finding: P0-1 CRITICAL-1 — std::abs() was destroying negative amounts.
-            const bool unipolarOnly = (couplingType == CouplingType::AmpToChoke
-                                    || couplingType == CouplingType::AudioToBuffer
-                                    || couplingType == CouplingType::AudioToWavetable);
-            const float clampedAmount = unipolarOnly
-                ? juce::jlimit(0.0f, 1.0f, std::abs(cp.amount))
-                : juce::jlimit(-1.0f, 1.0f, cp.amount);
+            const bool unipolarOnly =
+                (couplingType == CouplingType::AmpToChoke || couplingType == CouplingType::AudioToBuffer ||
+                 couplingType == CouplingType::AudioToWavetable);
+            const float clampedAmount =
+                unipolarOnly ? juce::jlimit(0.0f, 1.0f, std::abs(cp.amount)) : juce::jlimit(-1.0f, 1.0f, cp.amount);
 
             MegaCouplingMatrix::CouplingRoute route;
-            route.sourceSlot  = slotA;
-            route.destSlot    = slotB;
-            route.type        = couplingType;
-            route.amount      = clampedAmount;
+            route.sourceSlot = slotA;
+            route.destSlot = slotB;
+            route.type = couplingType;
+            route.amount = clampedAmount;
             route.isNormalled = false;
-            route.active      = true;
+            route.active = true;
 
             // Cycle detection: skip any audio-rate route that would form a
             // directed feedback loop (A→B→A) in the pending route set.
@@ -2760,14 +2693,10 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
                 for (const auto& accepted : pendingRoutes)
                     scratchMatrix.addRoute(accepted);
 
-                if (scratchMatrix.wouldCreateCycle(route.sourceSlot,
-                                                   route.destSlot,
-                                                   route.type))
+                if (scratchMatrix.wouldCreateCycle(route.sourceSlot, route.destSlot, route.type))
                 {
-                    DBG("applyPreset: audio-rate cycle detected — skipping route "
-                        + canonA + "(slot " + juce::String(slotA) + ") → "
-                        + canonB + "(slot " + juce::String(slotB) + ") ["
-                        + cp.type + "]");
+                    DBG("applyPreset: audio-rate cycle detected — skipping route " + canonA + "(slot " +
+                        juce::String(slotA) + ") → " + canonB + "(slot " + juce::String(slotB) + ") [" + cp.type + "]");
                     continue;
                 }
             }
@@ -2785,9 +2714,9 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         }
         else if (!preset.couplingPairs.empty())
         {
-            DBG("applyPreset: " + juce::String((int)preset.couplingPairs.size())
-                + " coupling routes could not be restored — required engines not loaded. "
-                + "Existing coupling routes preserved.");
+            DBG("applyPreset: " + juce::String((int)preset.couplingPairs.size()) +
+                " coupling routes could not be restored — required engines not loaded. " +
+                "Existing coupling routes preserved.");
         }
     }
 }

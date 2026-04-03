@@ -16,13 +16,19 @@
 class OxyLFO
 {
 public:
-    void prepare (double sampleRate) noexcept { sr = sampleRate; phase = 0.0f; shPhase = 0.0f; shValue = 0.0f; }
+    void prepare(double sampleRate) noexcept
+    {
+        sr = sampleRate;
+        phase = 0.0f;
+        shPhase = 0.0f;
+        shValue = 0.0f;
+    }
 
     /// Returns bipolar value [-1..1].
-    float tick (float rateHz, int shape) noexcept
+    float tick(float rateHz, int shape) noexcept
     {
-        float safeRate = std::max (0.001f, rateHz);   // D005 floor (was 0.01f)
-        float inc = static_cast<float> (safeRate / sr);
+        float safeRate = std::max(0.001f, rateHz); // D005 floor (was 0.01f)
+        float inc = static_cast<float>(safeRate / sr);
 
         phase += inc;
         if (phase >= 1.0f)
@@ -34,33 +40,33 @@ public:
                 shSeed ^= shSeed << 13;
                 shSeed ^= shSeed >> 17;
                 shSeed ^= shSeed << 5;
-                shValue = static_cast<float> (static_cast<int32_t>(shSeed)) * (1.0f / 2147483648.0f);
+                shValue = static_cast<float>(static_cast<int32_t>(shSeed)) * (1.0f / 2147483648.0f);
             }
         }
 
         switch (shape)
         {
-            case 0:  // Sine
-                return std::sin (phase * juce::MathConstants<float>::twoPi);
-            case 1:  // Triangle
-                return (phase < 0.5f) ? (4.0f * phase - 1.0f) : (3.0f - 4.0f * phase);
-            case 2:  // Saw
-                return 2.0f * phase - 1.0f;
-            case 3:  // Square
-                return (phase < 0.5f) ? 1.0f : -1.0f;
-            case 4:  // S&H
-                return shValue;
-            default:
-                return std::sin (phase * juce::MathConstants<float>::twoPi);
+        case 0: // Sine
+            return std::sin(phase * juce::MathConstants<float>::twoPi);
+        case 1: // Triangle
+            return (phase < 0.5f) ? (4.0f * phase - 1.0f) : (3.0f - 4.0f * phase);
+        case 2: // Saw
+            return 2.0f * phase - 1.0f;
+        case 3: // Square
+            return (phase < 0.5f) ? 1.0f : -1.0f;
+        case 4: // S&H
+            return shValue;
+        default:
+            return std::sin(phase * juce::MathConstants<float>::twoPi);
         }
     }
 
 private:
-    double   sr       = 48000.0;   // Safe default fallback; overridden by prepare()
-    float    phase    = 0.0f;
-    float    shPhase  = 0.0f;
-    float    shValue  = 0.0f;
-    uint32_t shSeed   = 87654321u;
+    double sr = 48000.0; // Safe default fallback; overridden by prepare()
+    float phase = 0.0f;
+    float shPhase = 0.0f;
+    float shValue = 0.0f;
+    uint32_t shSeed = 87654321u;
 };
 
 /// OxytocinEngine — top-level polyphonic engine.
@@ -72,157 +78,161 @@ public:
 
     OxytocinEngine() = default;
 
-    void prepare (double sampleRate, int maxBlockSize) noexcept
+    void prepare(double sampleRate, int maxBlockSize) noexcept
     {
-        jassert (sampleRate > 0.0);  // P1-7: catch un-prepared usage
+        jassert(sampleRate > 0.0); // P1-7: catch un-prepared usage
         sr = sampleRate;
         allocatedBlockSize = maxBlockSize;
 
         // P0-1: use HeapBlock sized to maxBlockSize to prevent stack overrun
-        monoBuffer.realloc (maxBlockSize);
-        juce::FloatVectorOperations::clear (monoBuffer.getData(), maxBlockSize);
+        monoBuffer.realloc(maxBlockSize);
+        juce::FloatVectorOperations::clear(monoBuffer.getData(), maxBlockSize);
 
         for (auto& v : voices)
-            v.prepare (sampleRate);
-        lfo1.prepare (sampleRate);
-        lfo2.prepare (sampleRate);
+            v.prepare(sampleRate);
+        lfo1.prepare(sampleRate);
+        lfo2.prepare(sampleRate);
         memory.reset();
         tick = 0;
     }
 
-    void noteOn (int midiNote, int velocity) noexcept
+    void noteOn(int midiNote, int velocity) noexcept
     {
-        float velF = static_cast<float> (velocity) / 127.0f;
-        int   idx  = findFreeVoice (midiNote);
-        voices[idx].noteOn (midiNote, velF);
+        float velF = static_cast<float>(velocity) / 127.0f;
+        int idx = findFreeVoice(midiNote);
+        voices[idx].noteOn(midiNote, velF);
         voices[idx].lastUseTick = ++tick;
     }
 
-    void noteOff (int midiNote) noexcept
+    void noteOff(int midiNote) noexcept
     {
         for (auto& v : voices)
             if (v.isActive() && v.note == midiNote)
                 v.noteOff();
     }
 
-    void pitchWheel (int value) noexcept
+    void pitchWheel(int value) noexcept
     {
         // Range is set by RPN 0 (pitch bend sensitivity); defaults to ±2 semitones.
-        float bend = (static_cast<float> (value - 8192) / 8192.0f)
-                     * static_cast<float> (pitchBendSemitones);
-        float ratio = std::pow (2.0f, bend / 12.0f);
+        float bend = (static_cast<float>(value - 8192) / 8192.0f) * static_cast<float>(pitchBendSemitones);
+        float ratio = std::pow(2.0f, bend / 12.0f);
         for (auto& v : voices)
-            v.setPitchBend (ratio);
+            v.setPitchBend(ratio);
         pitchBendRatio = ratio;
     }
 
     /// Handle a MIDI controller message. Tracks RPN 0 (pitch bend sensitivity)
     /// via the standard CC 101 / CC 100 / CC 6 / CC 38 sequence.
-    void controller (int cc, int val) noexcept
+    void controller(int cc, int val) noexcept
     {
         switch (cc)
         {
-            case 1:   modWheel (val); break;
+        case 1:
+            modWheel(val);
+            break;
 
-            // RPN select: CC 101 = RPN MSB, CC 100 = RPN LSB
-            case 101: rpnMsb = static_cast<uint8_t> (val); break;
-            case 100: rpnLsb = static_cast<uint8_t> (val); break;
+        // RPN select: CC 101 = RPN MSB, CC 100 = RPN LSB
+        case 101:
+            rpnMsb = static_cast<uint8_t>(val);
+            break;
+        case 100:
+            rpnLsb = static_cast<uint8_t>(val);
+            break;
 
-            // Data Entry MSB (CC 6) — sets the value for the selected RPN.
-            // RPN 0 (MSB=0, LSB=0) = pitch bend sensitivity in semitones.
-            case 6:
-                if (rpnMsb == 0 && rpnLsb == 0)
-                {
-                    // MIDI spec: MSB = semitones, LSB (CC 38) = cents (ignored here).
-                    pitchBendSemitones = std::clamp (val, 1, 24);
-                }
-                break;
+        // Data Entry MSB (CC 6) — sets the value for the selected RPN.
+        // RPN 0 (MSB=0, LSB=0) = pitch bend sensitivity in semitones.
+        case 6:
+            if (rpnMsb == 0 && rpnLsb == 0)
+            {
+                // MIDI spec: MSB = semitones, LSB (CC 38) = cents (ignored here).
+                pitchBendSemitones = std::clamp(val, 1, 24);
+            }
+            break;
 
-            default: break;
+        default:
+            break;
         }
     }
 
     // D006: mod wheel → entanglement boost
-    void modWheel (int value) noexcept
-    {
-        modWheelValue = static_cast<float> (value) / 127.0f;
-    }
+    void modWheel(int value) noexcept { modWheelValue = static_cast<float>(value) / 127.0f; }
 
     // D006: aftertouch → passion boost
-    void aftertouch (int value) noexcept
-    {
-        aftertouchValue = static_cast<float> (value) / 127.0f;
-    }
+    void aftertouch(int value) noexcept { aftertouchValue = static_cast<float>(value) / 127.0f; }
 
     /// Main process block.  Clears and fills the stereo output buffer.
-    void processBlock (juce::AudioBuffer<float>& buffer,
-                       juce::MidiBuffer&          midiMessages,
-                       ParamSnapshot&             snap) noexcept
+    void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages, ParamSnapshot& snap) noexcept
     {
         juce::ScopedNoDenormals noDenormals;
         const int numSamples = buffer.getNumSamples();
-        jassert (numSamples <= allocatedBlockSize);  // P0-1: guard
+        jassert(numSamples <= allocatedBlockSize); // P0-1: guard
         buffer.clear();
 
         // Process MIDI events (sample-accurate position ignored for simplicity — block-level)
         for (const auto meta : midiMessages)
         {
             auto msg = meta.getMessage();
-            if      (msg.isNoteOn())         noteOn  (msg.getNoteNumber(), msg.getVelocity());
-            else if (msg.isNoteOff())        noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel())     pitchWheel (msg.getPitchWheelValue());
+            if (msg.isNoteOn())
+                noteOn(msg.getNoteNumber(), msg.getVelocity());
+            else if (msg.isNoteOff())
+                noteOff(msg.getNoteNumber());
+            else if (msg.isPitchWheel())
+                pitchWheel(msg.getPitchWheelValue());
             else if (msg.isController())
-                controller (msg.getControllerNumber(), msg.getControllerValue());
-            else if (msg.isChannelPressure()) aftertouch (msg.getChannelPressureValue());
-            else if (msg.isAftertouch())     aftertouch (msg.getAfterTouchValue());
+                controller(msg.getControllerNumber(), msg.getControllerValue());
+            else if (msg.isChannelPressure())
+                aftertouch(msg.getChannelPressureValue());
+            else if (msg.isAftertouch())
+                aftertouch(msg.getAfterTouchValue());
         }
 
         // D006: apply mod wheel and aftertouch to this block's snap
-        snap.entanglement = std::clamp (snap.entanglement + modWheelValue * 0.5f, 0.0f, 1.0f);
-        snap.passion      = std::clamp (snap.passion      + aftertouchValue * 0.3f, 0.0f, 1.0f);
+        snap.entanglement = std::clamp(snap.entanglement + modWheelValue * 0.5f, 0.0f, 1.0f);
+        snap.passion = std::clamp(snap.passion + aftertouchValue * 0.3f, 0.0f, 1.0f);
 
         // Honour voice count from param
-        int maxV = std::clamp (snap.voices, 1, MaxVoices);
+        int maxV = std::clamp(snap.voices, 1, MaxVoices);
 
         // LFO ticks (block-rate approximation — tick once per block)
-        float lfo1Val = lfo1.tick (snap.lfoRate,  snap.lfoShape);
-        float lfo2Val = lfo2.tick (snap.lfo2Rate, 0 /*sine always for triangle modulation*/);
+        float lfo1Val = lfo1.tick(snap.lfoRate, snap.lfoShape);
+        float lfo2Val = lfo2.tick(snap.lfo2Rate, 0 /*sine always for triangle modulation*/);
 
         // M2 (MOVEMENT): scale all envelope rates
         // Handled via snap directly — MOVEMENT macro scales rates in host.
 
         // LFO2 → CHARACTER position for triangle
         float charPos = 0.5f + lfo2Val * snap.lfo2Depth * 0.5f;
-        charPos = std::clamp (charPos, 0.0f, 1.0f);
-        auto triangleCoords = OxytocinTriangle::fromCharacterPosition (charPos);
+        charPos = std::clamp(charPos, 0.0f, 1.0f);
+        auto triangleCoords = OxytocinTriangle::fromCharacterPosition(charPos);
 
         // Sum active voices
         bool anyActive = false;
         float sumI = 0.0f, sumP = 0.0f, sumC = 0.0f;
-        int   activeCount = 0;
+        int activeCount = 0;
 
         for (int vi = 0; vi < maxV; ++vi)
         {
             auto& v = voices[vi];
-            if (!v.isActive()) continue;
+            if (!v.isActive())
+                continue;
 
             // P0-1: clear only the needed samples in the heap buffer
-            juce::FloatVectorOperations::clear (monoBuffer.getData(), numSamples);
+            juce::FloatVectorOperations::clear(monoBuffer.getData(), numSamples);
 
             // Apply LFO1 to cutoff (depth → frequency modulation in semitones)
             // We modify a local copy of snap for this voice
             ParamSnapshot voiceSnap = snap;
-            voiceSnap.cutoff *= std::pow (2.0f, lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
+            voiceSnap.cutoff *= std::pow(2.0f, lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth
             float blend = snap.lfo2Depth;
-            voiceSnap.intimacy   = snap.intimacy   * (1.0f - blend) + triangleCoords.I * blend;
-            voiceSnap.passion    = snap.passion    * (1.0f - blend) + triangleCoords.P * blend;
+            voiceSnap.intimacy = snap.intimacy * (1.0f - blend) + triangleCoords.I * blend;
+            voiceSnap.passion = snap.passion * (1.0f - blend) + triangleCoords.P * blend;
             voiceSnap.commitment = snap.commitment * (1.0f - blend) + triangleCoords.C * blend;
 
             // D004: pass voice index so detune can spread voices
-            v.processBlock (monoBuffer.getData(), numSamples, voiceSnap, memory, vi, maxV);
+            v.processBlock(monoBuffer.getData(), numSamples, voiceSnap, memory, vi, maxV);
             anyActive = true;
 
             // Accumulate love values for memory
@@ -232,11 +242,11 @@ public:
             ++activeCount;
 
             // Mix to stereo with pan
-            float panL = std::sqrt (std::max (0.0f, 0.5f - snap.pan * 0.5f));
-            float panR = std::sqrt (std::max (0.0f, 0.5f + snap.pan * 0.5f));
+            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
 
-            auto* outL = buffer.getWritePointer (0);
-            auto* outR = buffer.getWritePointer (1);
+            auto* outL = buffer.getWritePointer(0);
+            auto* outR = buffer.getWritePointer(1);
             for (int s = 0; s < numSamples; ++s)
             {
                 outL[s] += monoBuffer[s] * panL;
@@ -248,24 +258,24 @@ public:
         float avgI = (activeCount > 0) ? (sumI / activeCount) : 0.0f;
         float avgP = (activeCount > 0) ? (sumP / activeCount) : 0.0f;
         float avgC = (activeCount > 0) ? (sumC / activeCount) : 0.0f;
-        float blockTime = static_cast<float> (numSamples) / static_cast<float> (sr);
-        memory.update (avgI, avgP, avgC, anyActive, snap.memoryDepth, snap.memoryDecay, blockTime);
+        float blockTime = static_cast<float>(numSamples) / static_cast<float>(sr);
+        memory.update(avgI, avgP, avgC, anyActive, snap.memoryDepth, snap.memoryDecay, blockTime);
 
         // Apply master output gain
-        float gainLinear = std::pow (10.0f, snap.output / 20.0f);
+        float gainLinear = std::pow(10.0f, snap.output / 20.0f);
 
         // Simple voice count normalisation (prevent loudness spike with many voices)
         if (activeCount > 1)
-            gainLinear /= std::sqrt (static_cast<float> (activeCount));
+            gainLinear /= std::sqrt(static_cast<float>(activeCount));
 
-        buffer.applyGain (gainLinear);
+        buffer.applyGain(gainLinear);
 
         // Clip guard
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {
-            auto* data = buffer.getWritePointer (ch);
+            auto* data = buffer.getWritePointer(ch);
             for (int s = 0; s < numSamples; ++s)
-                data[s] = std::clamp (data[s], -1.0f, 1.0f);
+                data[s] = std::clamp(data[s], -1.0f, 1.0f);
         }
     }
 
@@ -283,7 +293,7 @@ public:
     }
 
 private:
-    int findFreeVoice (int midiNote) noexcept
+    int findFreeVoice(int midiNote) noexcept
     {
         // 1. Re-trigger same note
         for (int i = 0; i < MaxVoices; ++i)
@@ -296,39 +306,39 @@ private:
                 return i;
 
         // 3. LRU steal: oldest voice
-        int    oldest    = 0;
+        int oldest = 0;
         uint64_t oldestT = voices[0].lastUseTick;
         for (int i = 1; i < MaxVoices; ++i)
             if (voices[i].lastUseTick < oldestT)
             {
                 oldestT = voices[i].lastUseTick;
-                oldest  = i;
+                oldest = i;
             }
         return oldest;
     }
 
-    double   sr = 0.0;   // P1-7: default 0 so prepare() is always required
-    int      allocatedBlockSize = 0;
+    double sr = 0.0; // P1-7: default 0 so prepare() is always required
+    int allocatedBlockSize = 0;
     uint64_t tick = 0;
-    float    pitchBendRatio = 1.0f;
+    float pitchBendRatio = 1.0f;
 
     // Pitch bend sensitivity in semitones — set via MIDI RPN 0 (CC101/CC100/CC6).
     // Default 2 semitones per MIDI convention; range [1, 24].
-    int      pitchBendSemitones = 2;
+    int pitchBendSemitones = 2;
 
     // RPN state machine (CC 101 / CC 100 / CC 6) for pitch bend sensitivity.
-    uint8_t  rpnMsb = 127;  // 127 = null RPN (no selection)
-    uint8_t  rpnLsb = 127;
+    uint8_t rpnMsb = 127; // 127 = null RPN (no selection)
+    uint8_t rpnLsb = 127;
 
     // D006: expression input state
-    float    modWheelValue  = 0.0f;   // 0..1, last received CC1
-    float    aftertouchValue = 0.0f;  // 0..1, last received aftertouch
+    float modWheelValue = 0.0f;   // 0..1, last received CC1
+    float aftertouchValue = 0.0f; // 0..1, last received aftertouch
 
     // P0-1: HeapBlock replaces fixed std::array<float, 4096>
     juce::HeapBlock<float> monoBuffer;
 
     std::array<OxytocinVoice, MaxVoices> voices;
-    OxytocinMemory  memory;
-    OxyLFO          lfo1;
-    OxyLFO          lfo2;
+    OxytocinMemory memory;
+    OxyLFO lfo1;
+    OxyLFO lfo2;
 };

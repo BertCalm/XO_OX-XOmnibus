@@ -18,7 +18,8 @@
 // (already satisfied above).
 //==============================================================================
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -51,19 +52,13 @@ public:
     // vertexLabels[3] — e.g. {"ANALOG", "DIGITAL", "HYBRID"}
     // vertexColors[3] — per-vertex accent colours
     // paramX, paramY  — APVTS float parameter IDs for the pad position
-    TriangleXYPad(juce::AudioProcessorValueTreeState& apvts,
-                  const juce::String& paramX,
-                  const juce::String& paramY,
-                  const std::array<juce::String, 3>& vertexLabels,
-                  const std::array<juce::Colour, 3>& vertexColors)
-        : paramIdX(paramX),
-          paramIdY(paramY),
-          labels(vertexLabels),
-          colors(vertexColors)
+    TriangleXYPad(juce::AudioProcessorValueTreeState& apvts, const juce::String& paramX, const juce::String& paramY,
+                  const std::array<juce::String, 3>& vertexLabels, const std::array<juce::Colour, 3>& vertexColors)
+        : paramIdX(paramX), paramIdY(paramY), labels(vertexLabels), colors(vertexColors)
     {
         // Hidden sliders — their only purpose is to hold the SliderAttachments
         // so that host automation, undo/redo, and parameter listeners work.
-        for (auto* s : { &hiddenSliderX, &hiddenSliderY })
+        for (auto* s : {&hiddenSliderX, &hiddenSliderY})
         {
             s->setSliderStyle(juce::Slider::LinearHorizontal);
             s->setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
@@ -71,16 +66,12 @@ public:
             addAndMakeVisible(*s);
         }
 
-        attachX = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            apvts, paramX, hiddenSliderX);
-        attachY = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            apvts, paramY, hiddenSliderY);
+        attachX = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, paramX, hiddenSliderX);
+        attachY = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, paramY, hiddenSliderY);
 
-        A11y::setup(*this,
-                    "Triangle XY Pad",
-                    "Drag inside the triangle to blend between "
-                    + vertexLabels[0] + ", " + vertexLabels[1]
-                    + " and " + vertexLabels[2]);
+        A11y::setup(*this, "Triangle XY Pad",
+                    "Drag inside the triangle to blend between " + vertexLabels[0] + ", " + vertexLabels[1] + " and " +
+                        vertexLabels[2]);
         setWantsKeyboardFocus(true);
     }
 
@@ -94,7 +85,7 @@ public:
         if (triPathDirty)
         {
             cachedTriPath = trianglePath(tri);
-            triPathDirty  = false;
+            triPathDirty = false;
         }
 
         // ── Interior gradient fill ────────────────────────────────────────────
@@ -116,22 +107,19 @@ public:
             g.fillPath(cachedTriPath);
 
             // Top-vertex glow
-            juce::ColourGradient grad0(colors[0].withAlpha(0.22f), v0.x, v0.y,
-                                       colors[0].withAlpha(0.0f),  midBottom.x, midBottom.y,
-                                       false);
+            juce::ColourGradient grad0(colors[0].withAlpha(0.22f), v0.x, v0.y, colors[0].withAlpha(0.0f), midBottom.x,
+                                       midBottom.y, false);
             g.setGradientFill(grad0);
             g.fillPath(cachedTriPath);
 
             // Bottom-left glow
-            juce::ColourGradient grad1(colors[1].withAlpha(0.22f), v1.x, v1.y,
-                                       colors[1].withAlpha(0.0f),  v2.x, v2.y,
+            juce::ColourGradient grad1(colors[1].withAlpha(0.22f), v1.x, v1.y, colors[1].withAlpha(0.0f), v2.x, v2.y,
                                        false);
             g.setGradientFill(grad1);
             g.fillPath(cachedTriPath);
 
             // Bottom-right glow
-            juce::ColourGradient grad2(colors[2].withAlpha(0.22f), v2.x, v2.y,
-                                       colors[2].withAlpha(0.0f),  v1.x, v1.y,
+            juce::ColourGradient grad2(colors[2].withAlpha(0.22f), v2.x, v2.y, colors[2].withAlpha(0.0f), v1.x, v1.y,
                                        false);
             g.setGradientFill(grad2);
             g.fillPath(cachedTriPath);
@@ -166,14 +154,11 @@ public:
             juce::Rectangle<float> labelRect;
             constexpr float kLabelW = 50.0f, kLabelH = 12.0f;
             if (i == 0) // top-centre → label above
-                labelRect = { tri[i].x - kLabelW * 0.5f, tri[i].y - kLabelH - 4.0f,
-                               kLabelW, kLabelH };
+                labelRect = {tri[i].x - kLabelW * 0.5f, tri[i].y - kLabelH - 4.0f, kLabelW, kLabelH};
             else if (i == 1) // bottom-left → label below-left
-                labelRect = { tri[i].x - kLabelW - 2.0f, tri[i].y + 3.0f,
-                               kLabelW, kLabelH };
+                labelRect = {tri[i].x - kLabelW - 2.0f, tri[i].y + 3.0f, kLabelW, kLabelH};
             else // bottom-right → label below-right
-                labelRect = { tri[i].x + 2.0f, tri[i].y + 3.0f,
-                               kLabelW, kLabelH };
+                labelRect = {tri[i].x + 2.0f, tri[i].y + 3.0f, kLabelW, kLabelH};
 
             g.drawText(labels[i], labelRect, juce::Justification::centred, false);
         }
@@ -201,15 +186,9 @@ public:
             A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
 
-    void mouseDown(const juce::MouseEvent& e) override
-    {
-        updateFromMouse(e.position);
-    }
+    void mouseDown(const juce::MouseEvent& e) override { updateFromMouse(e.position); }
 
-    void mouseDrag(const juce::MouseEvent& e) override
-    {
-        updateFromMouse(e.position);
-    }
+    void mouseDrag(const juce::MouseEvent& e) override { updateFromMouse(e.position); }
 
     // WCAG 2.1.1 — keyboard navigation for the triangle pad.
     // Arrow keys move X (left/right) or Y (up/down) by 5% per step.
@@ -220,11 +199,16 @@ public:
         float x = static_cast<float>(hiddenSliderX.getValue());
         float y = static_cast<float>(hiddenSliderY.getValue());
 
-        if      (key == juce::KeyPress::leftKey)  x = juce::jmax(0.0f, x - step);
-        else if (key == juce::KeyPress::rightKey)  x = juce::jmin(1.0f, x + step);
-        else if (key == juce::KeyPress::upKey)     y = juce::jmin(1.0f, y + step);
-        else if (key == juce::KeyPress::downKey)   y = juce::jmax(0.0f, y - step);
-        else return false;
+        if (key == juce::KeyPress::leftKey)
+            x = juce::jmax(0.0f, x - step);
+        else if (key == juce::KeyPress::rightKey)
+            x = juce::jmin(1.0f, x + step);
+        else if (key == juce::KeyPress::upKey)
+            y = juce::jmin(1.0f, y + step);
+        else if (key == juce::KeyPress::downKey)
+            y = juce::jmax(0.0f, y - step);
+        else
+            return false;
 
         hiddenSliderX.setValue(static_cast<double>(x), juce::sendNotificationSync);
         hiddenSliderY.setValue(static_cast<double>(y), juce::sendNotificationSync);
@@ -233,7 +217,7 @@ public:
     }
 
     void focusGained(FocusChangeType) override { repaint(); }
-    void focusLost(FocusChangeType)   override { repaint(); }
+    void focusLost(FocusChangeType) override { repaint(); }
 
     void resized() override
     {
@@ -256,14 +240,14 @@ private:
         // Inset so labels/handle don't clip at the boundary.
         constexpr float kInsetX = 30.0f;
         constexpr float kInsetY = 20.0f;
-        const float left   = kInsetX;
-        const float right  = w - kInsetX;
-        const float top    = kInsetY;
+        const float left = kInsetX;
+        const float right = w - kInsetX;
+        const float top = kInsetY;
         const float bottom = h - kInsetY;
 
-        return { juce::Point<float>{ w * 0.5f,  top    },   // [0] apex
-                 juce::Point<float>{ left,       bottom },   // [1] bottom-left
-                 juce::Point<float>{ right,      bottom } }; // [2] bottom-right
+        return {juce::Point<float>{w * 0.5f, top},  // [0] apex
+                juce::Point<float>{left, bottom},   // [1] bottom-left
+                juce::Point<float>{right, bottom}}; // [2] bottom-right
     }
 
     // Build a juce::Path for the triangle.
@@ -328,9 +312,7 @@ private:
 
     // Compute barycentric coordinates of point P w.r.t. triangle ABC.
     // Returns {w_A, w_B, w_C} clamped so all ≥ 0 and summing to 1.
-    static std::array<float, 3> toBarycentricClamped(
-        juce::Point<float> P,
-        const std::array<juce::Point<float>, 3>& tri)
+    static std::array<float, 3> toBarycentricClamped(juce::Point<float> P, const std::array<juce::Point<float>, 3>& tri)
     {
         const auto& A = tri[0];
         const auto& B = tri[1];
@@ -338,7 +320,7 @@ private:
 
         const float denom = (B.y - C.y) * (A.x - C.x) + (C.x - B.x) * (A.y - C.y);
         if (std::abs(denom) < 1e-6f)
-            return { 1.0f / 3.0f, 1.0f / 3.0f, 1.0f / 3.0f };
+            return {1.0f / 3.0f, 1.0f / 3.0f, 1.0f / 3.0f};
 
         float w0 = ((B.y - C.y) * (P.x - C.x) + (C.x - B.x) * (P.y - C.y)) / denom;
         float w1 = ((C.y - A.y) * (P.x - C.x) + (A.x - C.x) * (P.y - C.y)) / denom;
@@ -349,16 +331,24 @@ private:
         w1 = juce::jlimit(0.0f, 1.0f, w1);
         w2 = juce::jlimit(0.0f, 1.0f, w2);
         const float sum = w0 + w1 + w2;
-        if (sum > 1e-6f) { w0 /= sum; w1 /= sum; w2 /= sum; }
-        else             { w0 = w1 = w2 = 1.0f / 3.0f; }
+        if (sum > 1e-6f)
+        {
+            w0 /= sum;
+            w1 /= sum;
+            w2 /= sum;
+        }
+        else
+        {
+            w0 = w1 = w2 = 1.0f / 3.0f;
+        }
 
-        return { w0, w1, w2 };
+        return {w0, w1, w2};
     }
 
     //--------------------------------------------------------------------------
-    const juce::String                  paramIdX, paramIdY;
-    const std::array<juce::String, 3>   labels;
-    const std::array<juce::Colour, 3>   colors;
+    const juce::String paramIdX, paramIdY;
+    const std::array<juce::String, 3> labels;
+    const std::array<juce::Colour, 3> colors;
 
     // Hidden sliders carry the SliderAttachments; the visual display is the
     // triangle pad drawn in paint().
@@ -367,11 +357,10 @@ private:
 
     // P20: cached triangle path — rebuilt in paint() only when triPathDirty is set.
     mutable juce::Path cachedTriPath;
-    mutable bool       triPathDirty = true;
+    mutable bool triPathDirty = true;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TriangleXYPad)
 };
-
 
 //==============================================================================
 //
@@ -397,31 +386,26 @@ private:
 class ConductorArcDisplay : public juce::Component, private juce::Timer
 {
 public:
-    explicit ConductorArcDisplay(juce::AudioProcessorValueTreeState& apvts)
-        : apvtsRef(apvts)
+    explicit ConductorArcDisplay(juce::AudioProcessorValueTreeState& apvts) : apvtsRef(apvts)
     {
         // 10 Hz repaint — smooth enough for a slow arc visualizer.
         // Reduced-motion users still get 10 Hz (arc is informational, not reactive).
         startTimerHz(10);
         setOpaque(false);
-        A11y::setup(*this,
-                    "Conductor Arc Display",
-                    "Shows the OPERA dramatic arc shape and current playhead position");
+        A11y::setup(*this, "Conductor Arc Display", "Shows the OPERA dramatic arc shape and current playhead position");
     }
 
     ~ConductorArcDisplay() override { stopTimer(); }
 
     // Optional: wire a real-time phase atomic from the engine (0–1 range).
     // When set, the timer reads this value directly instead of free-running.
-    void setArcPhaseAtomic(const std::atomic<float>* phasePtr) noexcept
-    {
-        arcPhaseAtomic = phasePtr;
-    }
+    void setArcPhaseAtomic(const std::atomic<float>* phasePtr) noexcept { arcPhaseAtomic = phasePtr; }
 
     //--------------------------------------------------------------------------
     void timerCallback() override
     {
-        if (!isVisible()) return;
+        if (!isVisible())
+            return;
 
         // Advance the free-running phase accumulator.  If arcPhaseAtomic is
         // wired, we just read that instead and skip accumulation.
@@ -432,8 +416,7 @@ public:
             if (auto* p = apvtsRef.getParameter("opera_arcTime"))
             {
                 const float norm = p->getValue();
-                arcTimeSec = static_cast<float>(
-                    p->getNormalisableRange().convertFrom0to1(norm));
+                arcTimeSec = static_cast<float>(p->getNormalisableRange().convertFrom0to1(norm));
                 arcTimeSec = juce::jmax(0.01f, arcTimeSec);
             }
 
@@ -458,29 +441,27 @@ public:
         g.fillRoundedRectangle(bounds, 3.0f);
 
         // ── Read parameters ───────────────────────────────────────────────────
-        const int   arcShape = readChoiceParam("opera_arcShape", 0, 3, 0);
-        const float arcPeak  = readFloatNorm  ("opera_arcPeak",  0.5f);
-        const int   condMode = readChoiceParam("opera_arcMode",  0, 2, 1);
+        const int arcShape = readChoiceParam("opera_arcShape", 0, 3, 0);
+        const float arcPeak = readFloatNorm("opera_arcPeak", 0.5f);
+        const int condMode = readChoiceParam("opera_arcMode", 0, 2, 1);
 
         // Current playhead phase (0–1)
-        float phase = (arcPhaseAtomic != nullptr)
-                          ? juce::jlimit(0.0f, 1.0f, arcPhaseAtomic->load())
-                          : playheadPhase;
+        float phase = (arcPhaseAtomic != nullptr) ? juce::jlimit(0.0f, 1.0f, arcPhaseAtomic->load()) : playheadPhase;
 
         // ── Build arc path ────────────────────────────────────────────────────
         // The arc occupies the full width, vertically padded by kPadY on each
         // side.  y=kPadY is the "high" position; y=h-kPadY is the "low" position.
         constexpr float kPadY = 8.0f;
         const float yHigh = kPadY;
-        const float yLow  = h - kPadY;
-        const float yMid  = (yHigh + yLow) * 0.5f;
+        const float yLow = h - kPadY;
+        const float yMid = (yHigh + yLow) * 0.5f;
 
         juce::Path arcPath;
         constexpr int kSteps = 128;
 
         for (int i = 0; i <= kSteps; ++i)
         {
-            const float t  = static_cast<float>(i) / static_cast<float>(kSteps);
+            const float t = static_cast<float>(i) / static_cast<float>(kSteps);
             const float px = t * w;
             float py = arcYForShape(arcShape, arcPeak, t, yHigh, yLow, yMid);
 
@@ -503,9 +484,7 @@ public:
 
         // ── Arc stroke — 2px Aria Gold ────────────────────────────────────────
         g.setColour(juce::Colour(0xFFD4AF37));
-        g.strokePath(arcPath, juce::PathStrokeType(2.0f,
-                                                    juce::PathStrokeType::curved,
-                                                    juce::PathStrokeType::rounded));
+        g.strokePath(arcPath, juce::PathStrokeType(2.0f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
         // ── Playhead — bright vertical line at current phase ──────────────────
         {
@@ -519,7 +498,7 @@ public:
 
         // ── Conductor mode badge (bottom-right) ───────────────────────────────
         {
-            static constexpr const char* kModeLabels[] = { "MANUAL", "COND", "BOTH" };
+            static constexpr const char* kModeLabels[] = {"MANUAL", "COND", "BOTH"};
             const char* modeText = kModeLabels[juce::jlimit(0, 2, condMode)];
 
             // All three arc modes are active states — show Aria Gold always.
@@ -528,8 +507,7 @@ public:
 
             g.setFont(GalleryFonts::display(7.0f));
             g.setColour(badgeCol);
-            g.drawText(modeText,
-                       juce::Rectangle<float>{ w - 40.0f, h - 14.0f, 38.0f, 12.0f },
+            g.drawText(modeText, juce::Rectangle<float>{w - 40.0f, h - 14.0f, 38.0f, 12.0f},
                        juce::Justification::centredRight, false);
         }
     }
@@ -547,40 +525,39 @@ private:
     //   arcShape 3 = Wave  : full sine cycle (low → high → low → high)
     //
     // yHigh / yLow / yMid are pixel positions in component space (y-down).
-    static float arcYForShape(int shape, float peak, float t,
-                               float yHigh, float yLow, float yMid)
+    static float arcYForShape(int shape, float peak, float t, float yHigh, float yLow, float yMid)
     {
         const float yRange = yLow - yHigh; // positive (yLow > yHigh in y-down)
 
         switch (shape)
         {
-            case 0: // Rise — ease-in curve from low to high
-            {
-                const float ease = 1.0f - (1.0f - t) * (1.0f - t); // quadratic ease-in
-                return yLow - ease * yRange;
-            }
-            case 1: // Fall — ease-out from high to low
-            {
-                const float ease = t * t; // quadratic ease-out
-                return yHigh + ease * yRange;
-            }
-            case 2: // Swell — bell peaked at arcPeak
-            {
-                // Map t relative to peak: 0 at edges, 1 at peak
-                const float distFromPeak = std::abs(t - peak);
-                const float halfWidth    = juce::jmax(0.01f, juce::jmax(peak, 1.0f - peak));
-                const float normalised   = 1.0f - juce::jlimit(0.0f, 1.0f, distFromPeak / halfWidth);
-                const float bell         = normalised * normalised; // smooth curve
-                return yLow - bell * yRange;
-            }
-            case 3: // Wave — one full sine cycle
-            {
-                const float sine = 0.5f + 0.5f * std::sin(
-                    juce::MathConstants<float>::twoPi * t - juce::MathConstants<float>::halfPi);
-                return yLow - sine * yRange;
-            }
-            default:
-                return yMid;
+        case 0: // Rise — ease-in curve from low to high
+        {
+            const float ease = 1.0f - (1.0f - t) * (1.0f - t); // quadratic ease-in
+            return yLow - ease * yRange;
+        }
+        case 1: // Fall — ease-out from high to low
+        {
+            const float ease = t * t; // quadratic ease-out
+            return yHigh + ease * yRange;
+        }
+        case 2: // Swell — bell peaked at arcPeak
+        {
+            // Map t relative to peak: 0 at edges, 1 at peak
+            const float distFromPeak = std::abs(t - peak);
+            const float halfWidth = juce::jmax(0.01f, juce::jmax(peak, 1.0f - peak));
+            const float normalised = 1.0f - juce::jlimit(0.0f, 1.0f, distFromPeak / halfWidth);
+            const float bell = normalised * normalised; // smooth curve
+            return yLow - bell * yRange;
+        }
+        case 3: // Wave — one full sine cycle
+        {
+            const float sine =
+                0.5f + 0.5f * std::sin(juce::MathConstants<float>::twoPi * t - juce::MathConstants<float>::halfPi);
+            return yLow - sine * yRange;
+        }
+        default:
+            return yMid;
         }
     }
 
@@ -610,12 +587,11 @@ private:
 
     //--------------------------------------------------------------------------
     juce::AudioProcessorValueTreeState& apvtsRef;
-    const std::atomic<float>*           arcPhaseAtomic = nullptr;
-    float                               playheadPhase  = 0.0f;
+    const std::atomic<float>* arcPhaseAtomic = nullptr;
+    float playheadPhase = 0.0f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ConductorArcDisplay)
 };
-
 
 //==============================================================================
 //
@@ -637,22 +613,19 @@ private:
 class FiveMacroDisplay : public juce::Component
 {
 public:
-    explicit FiveMacroDisplay(juce::AudioProcessorValueTreeState& apvts,
-                              MIDILearnManager* midiLearn = nullptr)
+    explicit FiveMacroDisplay(juce::AudioProcessorValueTreeState& apvts, MIDILearnManager* midiLearn = nullptr)
     {
         struct KnobDef
         {
-            const char*    paramId;
-            const char*    label;
-            juce::uint32   colorHex;
+            const char* paramId;
+            const char* label;
+            juce::uint32 colorHex;
         };
 
         static constexpr KnobDef kDefs[5] = {
-            { "poss_macroBelly",    "BELLY",     0xFFE9A84A },
-            { "poss_macroBite",     "BITE",      0xFFF0EDE8 },
-            { "poss_macroScurry",   "SCURRY",    0xFF00FF41 },
-            { "poss_macroTrash",    "TRASH",      0xFFFF1493 },
-            { "poss_macroPlayDead", "PLAY DEAD",  0xFF2D0A4E },
+            {"poss_macroBelly", "BELLY", 0xFFE9A84A},        {"poss_macroBite", "BITE", 0xFFF0EDE8},
+            {"poss_macroScurry", "SCURRY", 0xFF00FF41},      {"poss_macroTrash", "TRASH", 0xFFFF1493},
+            {"poss_macroPlayDead", "PLAY DEAD", 0xFF2D0A4E},
         };
 
         for (int i = 0; i < 5; ++i)
@@ -662,13 +635,11 @@ public:
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId, col);
-            knobs[i].setColour(juce::Slider::rotarySliderOutlineColourId,
-                               col.withAlpha(0.35f));
+            knobs[i].setColour(juce::Slider::rotarySliderOutlineColourId, col.withAlpha(0.35f));
             knobs[i].setColour(juce::Slider::thumbColourId, col);
             knobs[i].setTooltip(juce::String("OVERBITE macro: ") + kDefs[i].label);
 
-            A11y::setup(knobs[i],
-                        juce::String("OVERBITE ") + kDefs[i].label + " macro",
+            A11y::setup(knobs[i], juce::String("OVERBITE ") + kDefs[i].label + " macro",
                         juce::String("Controls the ") + kDefs[i].label + " character dimension");
 
             addAndMakeVisible(knobs[i]);
@@ -693,8 +664,7 @@ public:
             addAndMakeVisible(labels[i]);
         }
 
-        A11y::setup(*this,
-                    "OVERBITE Five Macro Display",
+        A11y::setup(*this, "OVERBITE Five Macro Display",
                     "Five OVERBITE character macros: BELLY, BITE, SCURRY, TRASH, PLAY DEAD");
     }
 
@@ -706,8 +676,7 @@ public:
         // and the knob member's destructor.
         for (int i = 0; i < 5; ++i)
             if (learnListeners[static_cast<size_t>(i)])
-                knobs[static_cast<size_t>(i)].removeMouseListener(
-                    learnListeners[static_cast<size_t>(i)].get());
+                knobs[static_cast<size_t>(i)].removeMouseListener(learnListeners[static_cast<size_t>(i)].get());
     }
 
     void paint(juce::Graphics& g) override
@@ -721,7 +690,8 @@ public:
 
         // Thin Fang White top accent (OVERBITE accent color)
         g.setColour(juce::Colour(0xFFF0EDE8).withAlpha(0.70f));
-        auto accentStrip = b; accentStrip.setHeight(2.0f);
+        auto accentStrip = b;
+        accentStrip.setHeight(2.0f);
         g.fillRect(accentStrip);
     }
 
@@ -729,16 +699,16 @@ public:
     {
         // Layout: 5 knobs × 44pt with 8pt gap, centred vertically.
         // Total strip width = 280pt (nominal), labels below each knob.
-        constexpr int kKnobSize  = 44;
-        constexpr int kGap       = 8;
-        constexpr int kLabelH    = 10;
-        const int     totalKnobs = 5;
+        constexpr int kKnobSize = 44;
+        constexpr int kGap = 8;
+        constexpr int kLabelH = 10;
+        const int totalKnobs = 5;
 
-        const int stripW    = getWidth();
-        const int stripH    = getHeight();
-        const int unitW     = (stripW - kGap * (totalKnobs - 1)) / totalKnobs;
-        const int knobSize  = juce::jmin(kKnobSize, unitW);
-        const int knobTop   = (stripH - knobSize - kLabelH - 2) / 2;
+        const int stripW = getWidth();
+        const int stripH = getHeight();
+        const int unitW = (stripW - kGap * (totalKnobs - 1)) / totalKnobs;
+        const int knobSize = juce::jmin(kKnobSize, unitW);
+        const int knobTop = (stripH - knobSize - kLabelH - 2) / 2;
 
         int x = (stripW - (totalKnobs * unitW + (totalKnobs - 1) * kGap)) / 2;
         x = juce::jmax(0, x);
@@ -753,8 +723,8 @@ public:
     }
 
 private:
-    std::array<GalleryKnob,  5> knobs;
-    std::array<juce::Label,  5> labels;
+    std::array<GalleryKnob, 5> knobs;
+    std::array<juce::Label, 5> labels;
 
     // Destruction order: learnListeners → attachments → knobs (reverse declaration).
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 5> attachments;

@@ -7,7 +7,8 @@
 #include "MidiLearnMouseListener.h"
 #include "CockpitHost.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 class MacroSection : public juce::Component
 {
@@ -16,25 +17,26 @@ public:
     {
         A11y::setup(*this, "Macro Controls", "Four macro knobs: Character, Movement, Coupling, Space");
 
-        struct Def { const char* id; const char* label; };
+        struct Def
+        {
+            const char* id;
+            const char* label;
+        };
         // Short display labels (fit compact header); tooltips/a11y retain full names.
         static constexpr Def defs[4] = {
-            {"macro1","CHAR"}, {"macro2","MOVE"},
-            {"macro3","COUP"}, {"macro4","SPACE"}
-        };
-        static constexpr const char* tooltipLabels[4] = {"CHARACTER","MOVEMENT","COUPLING","SPACE"};
+            {"macro1", "CHAR"}, {"macro2", "MOVE"}, {"macro3", "COUP"}, {"macro4", "SPACE"}};
+        static constexpr const char* tooltipLabels[4] = {"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
         for (int i = 0; i < 4; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-            knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
-                               GalleryColors::get(GalleryColors::xoGold));
+            knobs[i].setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::xoGold));
             knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + tooltipLabels[i]);
-            A11y::setup (knobs[i], juce::String ("Macro ") + juce::String (i + 1) + " " + tooltipLabels[i]);
+            A11y::setup(knobs[i], juce::String("Macro ") + juce::String(i + 1) + " " + tooltipLabels[i]);
             addAndMakeVisible(knobs[i]);
-            attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                apvts, defs[i].id, knobs[i]);
-            enableKnobReset (knobs[i], apvts, defs[i].id);
+            attach[i] =
+                std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, defs[i].id, knobs[i]);
+            enableKnobReset(knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::value(9.0f));
@@ -45,14 +47,13 @@ public:
 
         master.setSliderStyle(juce::Slider::RotaryVerticalDrag);
         master.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-        master.setColour(juce::Slider::rotarySliderFillColourId,
-                         GalleryColors::get(GalleryColors::textMid()));
+        master.setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::textMid()));
         master.setTooltip("Master output volume");
-        A11y::setup (master, "Master Volume");
+        A11y::setup(master, "Master Volume");
         addAndMakeVisible(master);
-        masterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            apvts, "masterVolume", master);
-        enableKnobReset (master, apvts, "masterVolume");
+        masterAttach =
+            std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "masterVolume", master);
+        enableKnobReset(master, apvts, "masterVolume");
 
         masterLbl.setText("VOL", juce::dontSendNotification);
         masterLbl.setFont(GalleryFonts::value(9.0f));
@@ -80,14 +81,15 @@ public:
         float opacity = 1.0f;
         if (auto* host = CockpitHost::find(this))
             opacity = host->getCockpitOpacity();
-        if (opacity < 0.05f) return; // B041 performance optimization
+        if (opacity < 0.05f)
+            return; // B041 performance optimization
         g.setOpacity(opacity);
 
         using namespace GalleryColors;
 
         // Macro row top-highlight gradient (prototype spec)
         juce::ColourGradient grad(juce::Colour(0xFFFFFFFF).withAlpha(0.04f), 0.0f, 0.0f,
-                                   juce::Colours::transparentBlack, 0.0f, (float)getHeight(), false);
+                                  juce::Colours::transparentBlack, 0.0f, (float)getHeight(), false);
         g.setGradientFill(grad);
         g.fillRect(getLocalBounds());
 
@@ -101,10 +103,10 @@ public:
     {
         // Layout: LABEL [KNOB] › LABEL [KNOB] › ... — label left of knob, tightly grouped
         auto b = getLocalBounds().reduced(4, 2);
-        constexpr int kh = 34;       // knob diameter
-        constexpr int lblW = 38;     // label width
-        constexpr int gap = 2;       // between label and knob
-        constexpr int groupGap = 6;  // between knob→next label
+        constexpr int kh = 34;             // knob diameter
+        constexpr int lblW = 38;           // label width
+        constexpr int gap = 2;             // between label and knob
+        constexpr int groupGap = 6;        // between knob→next label
         int ky = (b.getHeight() - kh) / 2; // vertically center knobs
 
         int x = b.getX();
@@ -125,11 +127,10 @@ public:
     // Short display names are used to fit the compact header layout.
     void setLabels(const juce::StringArray& labels)
     {
-        static const char* defaults[4] = {"CHAR","MOVE","COUP","SPACE"};
+        static const char* defaults[4] = {"CHAR", "MOVE", "COUP", "SPACE"};
         for (int i = 0; i < 4; ++i)
         {
-            auto text = (i < labels.size() && labels[i].isNotEmpty())
-                            ? labels[i] : juce::String(defaults[i]);
+            auto text = (i < labels.size() && labels[i].isNotEmpty()) ? labels[i] : juce::String(defaults[i]);
             lbls[i].setText(text, juce::dontSendNotification);
         }
     }
@@ -138,7 +139,7 @@ public:
     // Call after construction (from XOceanusEditor) so the attachment already exists.
     void setupMidiLearn(MIDILearnManager& mgr)
     {
-        static const char* ids[4] = { "macro1", "macro2", "macro3", "macro4" };
+        static const char* ids[4] = {"macro1", "macro2", "macro3", "macro4"};
         for (int i = 0; i < 4; ++i)
         {
             auto* ml = knobs[i].setupMidiLearn(ids[i], mgr);
@@ -150,10 +151,10 @@ public:
 
 private:
     std::array<GalleryKnob, 4> knobs;
-    std::array<juce::Label,  4> lbls;
+    std::array<juce::Label, 4> lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attach;
     GalleryKnob master;
-    juce::Label  masterLbl;
+    juce::Label masterLbl;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> masterAttach;
     // MIDI learn listeners — destroyed before knobs (reverse declaration order)
     std::array<std::unique_ptr<MidiLearnMouseListener>, 4> macroLearnListeners;

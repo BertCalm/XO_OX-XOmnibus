@@ -46,7 +46,10 @@
 //
 #if JUCE_IOS
 
-namespace xoceanus { namespace display_link {
+namespace xoceanus
+{
+namespace display_link
+{
 
 //==============================================================================
 // start() — Attach a CADisplayLink to the main run loop and begin delivering
@@ -119,23 +122,34 @@ void setPreferredFrameRate(int fps);
 //
 int displayRefreshRate();
 
-}} // namespace xoceanus::display_link
+} // namespace display_link
+} // namespace xoceanus
 
-#else  // !JUCE_IOS — no-op stubs for macOS builds
+#else // !JUCE_IOS — no-op stubs for macOS builds
 //==============================================================================
 // macOS stubs — all functions compile to nothing so shared Component code
 // does not need #if JUCE_IOS guards at every call site.
 //
 #include <functional>
 
-namespace xoceanus { namespace display_link {
+namespace xoceanus
+{
+namespace display_link
+{
 
 inline void start(std::function<void(double, double)>) {}
-inline void stop()                                      {}
-inline bool isRunning()                                 { return false; }
-inline void setPreferredFrameRate(int)                  {}
-inline int  displayRefreshRate()                        { return 60; }
+inline void stop() {}
+inline bool isRunning()
+{
+    return false;
+}
+inline void setPreferredFrameRate(int) {}
+inline int displayRefreshRate()
+{
+    return 60;
+}
 
-}} // namespace xoceanus::display_link
+} // namespace display_link
+} // namespace xoceanus
 
 #endif // JUCE_IOS

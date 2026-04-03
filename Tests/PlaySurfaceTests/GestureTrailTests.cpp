@@ -28,8 +28,7 @@ TEST_CASE("GestureTrail - push and count, capped at kBufferSize", "[gesture][tra
     CHECK(buf.count() == 1);
 
     for (int i = 0; i < 300; ++i)
-        buf.push(static_cast<float>(i) / 300.0f, 0.5f, 0.5f,
-                 static_cast<double>(i) * 0.01);
+        buf.push(static_cast<float>(i) / 300.0f, 0.5f, 0.5f, static_cast<double>(i) * 0.01);
 
     CHECK(buf.count() == GestureTrailBuffer::kBufferSize);
 }
@@ -39,8 +38,7 @@ TEST_CASE("GestureTrail - ring wrap overwrites oldest entry", "[gesture][trail]"
     GestureTrailBuffer buf;
 
     for (int i = 0; i < 256; ++i)
-        buf.push(static_cast<float>(i) / 255.0f, 0.0f, 0.5f,
-                 static_cast<double>(i));
+        buf.push(static_cast<float>(i) / 255.0f, 0.0f, 0.5f, static_cast<double>(i));
 
     CHECK(std::abs(buf.oldest().x) < 1e-4f); // oldest = first pushed (x ≈ 0.0)
 
@@ -48,7 +46,7 @@ TEST_CASE("GestureTrail - ring wrap overwrites oldest entry", "[gesture][trail]"
 
     float expected = 1.0f / 255.0f;
     CHECK(std::abs(buf.oldest().x - expected) < 1e-3f); // first overwritten, oldest = idx 1
-    CHECK(std::abs(buf.newest().x - 1.0f) < 1e-4f);    // newest = last pushed
+    CHECK(std::abs(buf.newest().x - 1.0f) < 1e-4f);     // newest = last pushed
 }
 
 TEST_CASE("GestureTrail - velocity clamping to [0, 1]", "[gesture][trail]")
@@ -71,8 +69,7 @@ TEST_CASE("GestureTrail - freeze captures snapshot, post-freeze pushes do not ch
     CHECK(!buf.isFrozen());
 
     for (int i = 0; i < 10; ++i)
-        buf.push(static_cast<float>(i) / 9.0f, 0.5f, 0.5f,
-                 static_cast<double>(i));
+        buf.push(static_cast<float>(i) / 9.0f, 0.5f, 0.5f, static_cast<double>(i));
 
     buf.freeze();
     CHECK(buf.isFrozen());
@@ -100,8 +97,7 @@ TEST_CASE("GestureTrail - replayAt samples frozen snapshot at normalized positio
     GestureTrailBuffer buf;
     const int N = 10;
     for (int i = 0; i < N; ++i)
-        buf.push(static_cast<float>(i) / static_cast<float>(N - 1),
-                 0.0f, 0.5f, static_cast<double>(i));
+        buf.push(static_cast<float>(i) / static_cast<float>(N - 1), 0.0f, 0.5f, static_cast<double>(i));
 
     buf.freeze();
 
@@ -121,22 +117,36 @@ TEST_CASE("GestureTrail - replayAt samples frozen snapshot at normalized positio
 TEST_CASE("GestureTrail - interference combines two trail points", "[gesture][trail]")
 {
     // X = clamp(0.3 + 0.6 - 0.5, 0, 1) = 0.4; Y = 0.8 * 0.5 = 0.4
-    TrailPoint a; a.x = 0.3f; a.y = 0.8f; a.velocity = 0.5f;
-    TrailPoint b; b.x = 0.6f; b.y = 0.5f; b.velocity = 0.5f;
+    TrailPoint a;
+    a.x = 0.3f;
+    a.y = 0.8f;
+    a.velocity = 0.5f;
+    TrailPoint b;
+    b.x = 0.6f;
+    b.y = 0.5f;
+    b.velocity = 0.5f;
     auto [x, y] = GestureTrailBuffer::interference(a, b);
     CHECK(std::abs(x - 0.4f) < 1e-4f);
     CHECK(std::abs(y - 0.4f) < 1e-4f);
 
     // High clamping: 0.9+0.9-0.5=1.3 → 1.0
-    TrailPoint c; c.x = 0.9f; c.y = 1.0f;
-    TrailPoint d; d.x = 0.9f; d.y = 1.0f;
+    TrailPoint c;
+    c.x = 0.9f;
+    c.y = 1.0f;
+    TrailPoint d;
+    d.x = 0.9f;
+    d.y = 1.0f;
     auto [xHigh, yHigh] = GestureTrailBuffer::interference(c, d);
     CHECK(std::abs(xHigh - 1.0f) < 1e-4f);
     CHECK(std::abs(yHigh - 1.0f) < 1e-4f);
 
     // Low clamping: 0.1+0.1-0.5=-0.3 → 0.0
-    TrailPoint e; e.x = 0.1f; e.y = 0.0f;
-    TrailPoint f; f.x = 0.1f; f.y = 1.0f;
+    TrailPoint e;
+    e.x = 0.1f;
+    e.y = 0.0f;
+    TrailPoint f;
+    f.x = 0.1f;
+    f.y = 1.0f;
     auto [xLow, yLow] = GestureTrailBuffer::interference(e, f);
     CHECK(std::abs(xLow - 0.0f) < 1e-4f);
     CHECK(std::abs(yLow - 0.0f) < 1e-4f);
@@ -155,6 +165,10 @@ TEST_CASE("GestureTrail - clear resets count and frozen state", "[gesture][trail
 }
 
 // Backward-compat shim
-namespace gesture_trail_tests {
-int runAll() { return 0; }
+namespace gesture_trail_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace gesture_trail_tests

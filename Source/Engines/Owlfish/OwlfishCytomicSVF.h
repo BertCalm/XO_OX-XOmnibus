@@ -4,7 +4,8 @@
 #include "OwlfishFastMath.h"
 #include <cmath>
 
-namespace xowlfish {
+namespace xowlfish
+{
 
 //==============================================================================
 // CytomicSVF -- Andrew Simper's topology-preserving state-variable filter.
@@ -40,7 +41,7 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set the filter mode. Safe to call per-sample if needed.
-    void setMode (Mode m) noexcept { mode = m; }
+    void setMode(Mode m) noexcept { mode = m; }
 
     /// Get the current filter mode.
     Mode getMode() const noexcept { return mode; }
@@ -51,23 +52,26 @@ public:
     /// @param resonance   Resonance in [0, 1]. 0 = no resonance, 1 = self-oscillation.
     /// @param sampleRate  Current sample rate in Hz.
     /// @param shelfGainDb Gain in dB for LowShelf/HighShelf modes (ignored for others).
-    void setCoefficients (float cutoffHz, float resonance, float sampleRate,
-                          float shelfGainDb = 0.0f) noexcept
+    void setCoefficients(float cutoffHz, float resonance, float sampleRate, float shelfGainDb = 0.0f) noexcept
     {
         // Clamp cutoff to safe range: [20 Hz, just below Nyquist]
         float nyquistLimit = sampleRate * 0.49f;
         float fc = cutoffHz;
-        if (fc < 20.0f)        fc = 20.0f;
-        if (fc > nyquistLimit) fc = nyquistLimit;
+        if (fc < 20.0f)
+            fc = 20.0f;
+        if (fc > nyquistLimit)
+            fc = nyquistLimit;
 
         // Clamp resonance to [0, 1]
         float res = resonance;
-        if (res < 0.0f) res = 0.0f;
-        if (res > 1.0f) res = 1.0f;
+        if (res < 0.0f)
+            res = 0.0f;
+        if (res > 1.0f)
+            res = 1.0f;
 
         // Prewarp cutoff frequency for trapezoidal integration
         constexpr float pi = 3.14159265358979323846f;
-        g = std::tan (pi * fc / sampleRate);
+        g = std::tan(pi * fc / sampleRate);
 
         // Map resonance [0,1] to damping factor k.
         // k = 2 at res=0 (Butterworth), k = 0 at res=1 (self-oscillation).
@@ -76,7 +80,7 @@ public:
         // Shelf gain coefficient (only used in shelf modes)
         if (mode == Mode::LowShelf || mode == Mode::HighShelf)
         {
-            A = std::pow (10.0f, shelfGainDb / 40.0f);  // sqrt of voltage gain
+            A = std::pow(10.0f, shelfGainDb / 40.0f); // sqrt of voltage gain
         }
         else
         {
@@ -93,7 +97,7 @@ public:
     /// Process a single sample through the filter.
     /// @param input  Input sample value.
     /// @return Filtered output sample.
-    float processSample (float input) noexcept
+    float processSample(float input) noexcept
     {
         // TPT SVF tick -- compute v1 (bandpass) and v2 (lowpass) simultaneously
         float v3 = input - ic2eq;
@@ -101,8 +105,8 @@ public:
         float v2 = ic2eq + a2 * ic1eq + a3 * v3;
 
         // Update state variables with denormal protection
-        ic1eq = flushDenormal (2.0f * v1 - ic1eq);
-        ic2eq = flushDenormal (2.0f * v2 - ic2eq);
+        ic1eq = flushDenormal(2.0f * v1 - ic1eq);
+        ic2eq = flushDenormal(2.0f * v2 - ic2eq);
 
         // Compute output based on selected mode.
         // All modes are derived from the same v0/v1/v2 signals:
@@ -110,46 +114,46 @@ public:
         //   highpass = v0 - k*v1 - v2
         switch (mode)
         {
-            case Mode::LowPass:
-                return v2;
+        case Mode::LowPass:
+            return v2;
 
-            case Mode::HighPass:
-                return input - k * v1 - v2;
+        case Mode::HighPass:
+            return input - k * v1 - v2;
 
-            case Mode::BandPass:
-                return v1;
+        case Mode::BandPass:
+            return v1;
 
-            case Mode::Notch:
-                // LP + HP = input - k * v1
-                return input - k * v1;
+        case Mode::Notch:
+            // LP + HP = input - k * v1
+            return input - k * v1;
 
-            case Mode::Peak:
-                // LP - HP = 2*v2 - input + k*v1
-                return 2.0f * v2 - input + k * v1;
+        case Mode::Peak:
+            // LP - HP = 2*v2 - input + k*v1
+            return 2.0f * v2 - input + k * v1;
 
-            case Mode::AllPass:
-                // input - 2 * k * v1
-                return input - 2.0f * k * v1;
+        case Mode::AllPass:
+            // input - 2 * k * v1
+            return input - 2.0f * k * v1;
 
-            case Mode::LowShelf:
-            {
-                // LowShelf: boost/cut below cutoff
-                // output = input + (A^2 - 1) * v2
-                float A2 = A * A;
-                return input + (A2 - 1.0f) * v2;
-            }
-
-            case Mode::HighShelf:
-            {
-                // HighShelf: boost/cut above cutoff
-                // output = input + (A^2 - 1) * (input - k*v1 - v2)
-                float A2 = A * A;
-                float hp = input - k * v1 - v2;
-                return input + (A2 - 1.0f) * hp;
-            }
+        case Mode::LowShelf:
+        {
+            // LowShelf: boost/cut below cutoff
+            // output = input + (A^2 - 1) * v2
+            float A2 = A * A;
+            return input + (A2 - 1.0f) * v2;
         }
 
-        return v2;  // fallback
+        case Mode::HighShelf:
+        {
+            // HighShelf: boost/cut above cutoff
+            // output = input + (A^2 - 1) * (input - k*v1 - v2)
+            float A2 = A * A;
+            float hp = input - k * v1 - v2;
+            return input + (A2 - 1.0f) * hp;
+        }
+        }
+
+        return v2; // fallback
     }
 
     //--------------------------------------------------------------------------
@@ -164,26 +168,26 @@ public:
     /// Process a block of samples in-place.
     /// @param samples     Pointer to sample buffer.
     /// @param numSamples  Number of samples to process.
-    void processBlock (float* samples, int numSamples) noexcept
+    void processBlock(float* samples, int numSamples) noexcept
     {
         for (int i = 0; i < numSamples; ++i)
-            samples[i] = processSample (samples[i]);
+            samples[i] = processSample(samples[i]);
     }
 
 private:
     Mode mode = Mode::LowPass;
 
     // Coefficients (recomputed when cutoff/resonance/sampleRate change)
-    float g   = 0.0f;   // prewarped cutoff: tan(pi * fc / sr)
-    float k   = 2.0f;   // damping: 2 - 2*resonance
-    float A   = 1.0f;   // shelf gain factor
-    float a1  = 0.0f;   // 1 / (1 + g*(g+k))
-    float a2  = 0.0f;   // g * a1
-    float a3  = 0.0f;   // g * a2
+    float g = 0.0f;  // prewarped cutoff: tan(pi * fc / sr)
+    float k = 2.0f;  // damping: 2 - 2*resonance
+    float A = 1.0f;  // shelf gain factor
+    float a1 = 0.0f; // 1 / (1 + g*(g+k))
+    float a2 = 0.0f; // g * a1
+    float a3 = 0.0f; // g * a2
 
     // State variables (trapezoidal integrator memories)
-    float ic1eq = 0.0f;  // integrator 1 state
-    float ic2eq = 0.0f;  // integrator 2 state
+    float ic1eq = 0.0f; // integrator 1 state
+    float ic2eq = 0.0f; // integrator 2 state
 };
 
 } // namespace xowlfish

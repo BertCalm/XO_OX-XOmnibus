@@ -27,7 +27,8 @@
 #include "../../XOceanusProcessor.h"
 #include "../ExportDialog/ExportDialog.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // ExportTabPanel
@@ -36,18 +37,16 @@ class ExportTabPanel : public juce::Component
 {
 public:
     //==========================================================================
-    explicit ExportTabPanel(XOceanusProcessor& proc)
-        : processor(proc)
+    explicit ExportTabPanel(XOceanusProcessor& proc) : processor(proc)
     {
         // ── Format selector pills ─────────────────────────────────────────────
-        static const char* kFormatLabels[kNumFormats] = { "XPN", "WAV", "MIDI" };
+        static const char* kFormatLabels[kNumFormats] = {"XPN", "WAV", "MIDI"};
         for (int i = 0; i < kNumFormats; ++i)
         {
             auto* btn = formatPills.add(new juce::TextButton(kFormatLabels[i]));
             btn->setClickingTogglesState(false);
             btn->setWantsKeyboardFocus(true);
-            A11y::setup(*btn,
-                        juce::String(kFormatLabels[i]) + " format",
+            A11y::setup(*btn, juce::String(kFormatLabels[i]) + " format",
                         juce::String("Select ") + kFormatLabels[i] + " export format");
             btn->onClick = [this, i] { selectFormat(i); };
             addAndMakeVisible(btn);
@@ -68,18 +67,18 @@ public:
         addAndMakeVisible(exportBtn);
 
         // ── Sample rate combo ────────────────────────────────────────────────
-        sampleRateBox.addItem("44100 Hz",  1);
-        sampleRateBox.addItem("48000 Hz",  2);
-        sampleRateBox.addItem("96000 Hz",  3);
+        sampleRateBox.addItem("44100 Hz", 1);
+        sampleRateBox.addItem("48000 Hz", 2);
+        sampleRateBox.addItem("96000 Hz", 3);
         sampleRateBox.setSelectedId(2, juce::dontSendNotification); // 48kHz default
         sampleRateBox.setWantsKeyboardFocus(true);
         A11y::setup(sampleRateBox, "Sample Rate", "Choose the output sample rate for export");
         addAndMakeVisible(sampleRateBox);
 
         // ── Bit depth combo ──────────────────────────────────────────────────
-        bitDepthBox.addItem("16-bit",  1);
-        bitDepthBox.addItem("24-bit",  2);
-        bitDepthBox.addItem("32-bit",  3);
+        bitDepthBox.addItem("16-bit", 1);
+        bitDepthBox.addItem("24-bit", 2);
+        bitDepthBox.addItem("32-bit", 3);
         bitDepthBox.setSelectedId(2, juce::dontSendNotification); // 24-bit default
         bitDepthBox.setWantsKeyboardFocus(true);
         A11y::setup(bitDepthBox, "Bit Depth", "Choose the output bit depth for export");
@@ -87,8 +86,7 @@ public:
 
         // ── Status label ─────────────────────────────────────────────────────
         statusLabel.setFont(GalleryFonts::body(10.0f));
-        statusLabel.setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid()));
+        statusLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         statusLabel.setJustificationType(juce::Justification::centredLeft);
         statusLabel.setText("Ready to export", juce::dontSendNotification);
         statusLabel.setWantsKeyboardFocus(false);
@@ -129,15 +127,14 @@ public:
         {
             // Completion: hide bar, reset state
             exportInProgress = false;
-            progressValue    = 0.0;
+            progressValue = 0.0;
             progressBar.setVisible(false);
-            statusLabel.setText(stageText.isEmpty() ? "Export complete" : stageText,
-                                juce::dontSendNotification);
+            statusLabel.setText(stageText.isEmpty() ? "Export complete" : stageText, juce::dontSendNotification);
         }
         else
         {
             exportInProgress = true;
-            progressValue    = juce::jlimit(0.0, 1.0, progress);
+            progressValue = juce::jlimit(0.0, 1.0, progress);
             progressBar.setVisible(true);
             if (stageText.isNotEmpty())
                 statusLabel.setText(stageText, juce::dontSendNotification);
@@ -176,7 +173,7 @@ public:
 
         // ── Section header bar — elevated bg, subtle XO Gold text ───────────
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
-        g.setColour(get(elevated()));          // #242426 — elevated surface, not bright gold
+        g.setColour(get(elevated())); // #242426 — elevated surface, not bright gold
         g.fillRect(headerArea);
         // Bottom separator
         g.setColour(get(borderGray()));
@@ -188,9 +185,7 @@ public:
 
         // Dividers between sections
         g.setColour(get(borderGray()));
-        auto drawDivider = [&](int y) {
-            g.drawHorizontalLine(y, 8.0f, static_cast<float>(getWidth() - 8));
-        };
+        auto drawDivider = [&](int y) { g.drawHorizontalLine(y, 8.0f, static_cast<float>(getWidth() - 8)); };
         drawDivider(kHeaderH + kKitInfoH);
         drawDivider(kHeaderH + kKitInfoH + kFormatH);
         drawDivider(kHeaderH + kKitInfoH + kFormatH + kExportBtnH);
@@ -200,20 +195,14 @@ public:
         g.setFont(GalleryFonts::heading(8.5f));
         g.setColour(get(textMid()));
 
-        g.drawText("KIT",
-                   12, kHeaderH + 4, 200, 14,
+        g.drawText("KIT", 12, kHeaderH + 4, 200, 14, juce::Justification::topLeft);
+
+        g.drawText("FORMAT", 12, kHeaderH + kKitInfoH + 4, 200, 14, juce::Justification::topLeft);
+
+        g.drawText("SETTINGS", 12, kHeaderH + kKitInfoH + kFormatH + kExportBtnH + 4, 200, 14,
                    juce::Justification::topLeft);
 
-        g.drawText("FORMAT",
-                   12, kHeaderH + kKitInfoH + 4, 200, 14,
-                   juce::Justification::topLeft);
-
-        g.drawText("SETTINGS",
-                   12, kHeaderH + kKitInfoH + kFormatH + kExportBtnH + 4, 200, 14,
-                   juce::Justification::topLeft);
-
-        g.drawText("STATUS",
-                   12, kHeaderH + kKitInfoH + kFormatH + kExportBtnH + kQuickSettingsH + 4, 200, 14,
+        g.drawText("STATUS", 12, kHeaderH + kKitInfoH + kFormatH + kExportBtnH + kQuickSettingsH + 4, 200, 14,
                    juce::Justification::topLeft);
 
         // ── Kit name ─────────────────────────────────────────────────────────
@@ -221,9 +210,7 @@ public:
             int kitY = kHeaderH + 20;
             g.setFont(GalleryFonts::display(13.0f));
             g.setColour(get(textDark()));
-            g.drawText(kitNameCache,
-                       12, kitY, getWidth() - 24, 18,
-                       juce::Justification::centredLeft, true);
+            g.drawText(kitNameCache, 12, kitY, getWidth() - 24, 18, juce::Justification::centredLeft, true);
 
             // Engine chips row
             paintEngineChips(g, kHeaderH + 42);
@@ -232,14 +219,14 @@ public:
         // ── Export button gold glow — painted behind the child TextButton ─────
         // Soft concentric ellipses simulate a blurred halo at 30% opacity total.
         {
-            const int w    = getWidth();
+            const int w = getWidth();
             const int btnY = kHeaderH + kKitInfoH + kFormatH + 10;
             const int btnH = kExportBtnH - 20;
 
             // Centre the glow on the button rectangle
             float cx = w * 0.5f;
             float cy = (float)btnY + btnH * 0.5f;
-            float rx = (w - 24) * 0.5f;  // matches exportBtn width / 2
+            float rx = (w - 24) * 0.5f; // matches exportBtn width / 2
             float ry = btnH * 0.5f;
 
             // Three concentric passes: outer (largest, most transparent) → inner
@@ -262,11 +249,11 @@ public:
 
         // ── Format pills ──────────────────────────────────────────────────────
         {
-            int pillY  = kHeaderH + kKitInfoH + 20;
-            int pillH  = 26;
+            int pillY = kHeaderH + kKitInfoH + 20;
+            int pillH = 26;
             int totalW = w - 24;
-            int pillW  = totalW / kNumFormats;
-            int x      = 12;
+            int pillW = totalW / kNumFormats;
+            int x = 12;
             for (int i = 0; i < kNumFormats; ++i)
             {
                 int thisW = (i == kNumFormats - 1) ? (12 + totalW - x) : pillW;
@@ -284,18 +271,19 @@ public:
 
         // ── Quick settings row ────────────────────────────────────────────────
         {
-            int settingsY  = kHeaderH + kKitInfoH + kFormatH + kExportBtnH + 22;
-            int comboH     = 26;
-            int halfW      = (w - 28) / 2;
-            sampleRateBox.setBounds(12,           settingsY, halfW, comboH);
-            bitDepthBox.setBounds  (16 + halfW,   settingsY, halfW, comboH);
+            int settingsY = kHeaderH + kKitInfoH + kFormatH + kExportBtnH + 22;
+            int comboH = 26;
+            int halfW = (w - 28) / 2;
+            sampleRateBox.setBounds(12, settingsY, halfW, comboH);
+            bitDepthBox.setBounds(16 + halfW, settingsY, halfW, comboH);
         }
 
         // ── Status area ───────────────────────────────────────────────────────
         {
             int statusTop = kHeaderH + kKitInfoH + kFormatH + kExportBtnH + kQuickSettingsH;
-            int statusH   = getHeight() - statusTop;
-            if (statusH < 10) statusH = 10;
+            int statusH = getHeight() - statusTop;
+            if (statusH < 10)
+                statusH = 10;
 
             int labelY = statusTop + 20;
             statusLabel.setBounds(12, labelY, w - 24, 16);
@@ -311,18 +299,18 @@ public:
 private:
     //==========================================================================
     // Layout constants
-    static constexpr int kHeaderH       = 32;
-    static constexpr int kKitInfoH      = 80;
-    static constexpr int kFormatH       = 48;
-    static constexpr int kExportBtnH    = 52;
+    static constexpr int kHeaderH = 32;
+    static constexpr int kKitInfoH = 80;
+    static constexpr int kFormatH = 48;
+    static constexpr int kExportBtnH = 52;
     static constexpr int kQuickSettingsH = 80;
-    static constexpr int kNumFormats    = 3;
+    static constexpr int kNumFormats = 3;
 
     //==========================================================================
     XOceanusProcessor& processor;
 
     // Kit info (cached strings painted directly — no child labels needed)
-    juce::String      kitNameCache;
+    juce::String kitNameCache;
     juce::StringArray engineChipLabels;
 
     // Format pills
@@ -337,10 +325,10 @@ private:
     juce::ComboBox bitDepthBox;
 
     // Status
-    juce::Label       statusLabel;
-    juce::ProgressBar progressBar { progressValue };
-    double            progressValue  = 0.0;
-    bool              exportInProgress = false;
+    juce::Label statusLabel;
+    juce::ProgressBar progressBar{progressValue};
+    double progressValue = 0.0;
+    bool exportInProgress = false;
 
     //==========================================================================
     // Paint engine name chips (small rounded pills per engine in the kit)
@@ -352,33 +340,30 @@ private:
         {
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(get(textMid()));
-            g.drawText("No engines loaded", 12, y, getWidth() - 24, 16,
-                       juce::Justification::centredLeft);
+            g.drawText("No engines loaded", 12, y, getWidth() - 24, 16, juce::Justification::centredLeft);
             return;
         }
 
         int x = 12;
-        constexpr int chipH    = 16;
+        constexpr int chipH = 16;
         constexpr int chipPadX = 6;
-        constexpr int chipGap  = 4;
+        constexpr int chipGap = 4;
         constexpr int maxRight = 4; // margin from right edge
 
         g.setFont(GalleryFonts::label(9.0f));
 
         for (const auto& eng : engineChipLabels)
         {
-            int chipW = juce::roundToInt(GalleryFonts::label(9.0f).getStringWidthFloat(eng))
-                        + chipPadX * 2;
+            int chipW = juce::roundToInt(GalleryFonts::label(9.0f).getStringWidthFloat(eng)) + chipPadX * 2;
 
             // Wrap to next row if needed
             if (x + chipW > getWidth() - maxRight)
             {
-                x  = 12;
+                x = 12;
                 y += chipH + 3;
             }
 
-            auto chipBounds = juce::Rectangle<float>(
-                (float)x, (float)y, (float)chipW, (float)chipH);
+            auto chipBounds = juce::Rectangle<float>((float)x, (float)y, (float)chipW, (float)chipH);
 
             // Chip background — engine accent colour at low opacity
             auto accent = accentForEngine(eng);
@@ -390,11 +375,8 @@ private:
             g.drawRoundedRectangle(chipBounds.reduced(0.5f), 4.0f, 0.8f);
 
             // Chip text
-            g.setColour(darkMode()
-                        ? accent.brighter(0.3f)
-                        : accent.darker(0.25f));
-            g.drawText(eng, x + chipPadX, y, chipW - chipPadX * 2, chipH,
-                       juce::Justification::centredLeft);
+            g.setColour(darkMode() ? accent.brighter(0.3f) : accent.darker(0.25f));
+            g.drawText(eng, x + chipPadX, y, chipW - chipPadX * 2, chipH, juce::Justification::centredLeft);
 
             x += chipW + chipGap;
         }
@@ -408,22 +390,18 @@ private:
     {
         activeFormat = idx;
 
-        const juce::Colour goldActive    = juce::Colour(0xffE9C46A);
-        const juce::Colour inactiveText  = GalleryColors::get(GalleryColors::t2());
-        const juce::Colour inactiveBg    = GalleryColors::get(GalleryColors::elevated());
-        const juce::Colour activeBg      = goldActive.withAlpha(0.15f);
+        const juce::Colour goldActive = juce::Colour(0xffE9C46A);
+        const juce::Colour inactiveText = GalleryColors::get(GalleryColors::t2());
+        const juce::Colour inactiveBg = GalleryColors::get(GalleryColors::elevated());
+        const juce::Colour activeBg = goldActive.withAlpha(0.15f);
 
         for (int i = 0; i < kNumFormats; ++i)
         {
             bool active = (i == idx);
-            formatPills[i]->setColour(juce::TextButton::buttonColourId,
-                                      active ? activeBg : inactiveBg);
-            formatPills[i]->setColour(juce::TextButton::buttonOnColourId,
-                                      activeBg);
-            formatPills[i]->setColour(juce::TextButton::textColourOffId,
-                                      active ? goldActive : inactiveText);
-            formatPills[i]->setColour(juce::TextButton::textColourOnId,
-                                      goldActive);
+            formatPills[i]->setColour(juce::TextButton::buttonColourId, active ? activeBg : inactiveBg);
+            formatPills[i]->setColour(juce::TextButton::buttonOnColourId, activeBg);
+            formatPills[i]->setColour(juce::TextButton::textColourOffId, active ? goldActive : inactiveText);
+            formatPills[i]->setColour(juce::TextButton::textColourOnId, goldActive);
         }
 
         repaint();
@@ -438,13 +416,10 @@ private:
         // reads these from its own internal combos, so we carry intent via
         // applyProfile() after launch instead (see note below).
 
-        juce::CallOutBox::launchAsynchronously(
-            std::make_unique<ExportDialog>(
-                processor.getPresetManager(),
-                &processor.getAPVTS(),
-                &processor.getCouplingMatrix()),
-            exportBtn.getScreenBounds(),
-            getTopLevelComponent());
+        juce::CallOutBox::launchAsynchronously(std::make_unique<ExportDialog>(processor.getPresetManager(),
+                                                                              &processor.getAPVTS(),
+                                                                              &processor.getCouplingMatrix()),
+                                               exportBtn.getScreenBounds(), getTopLevelComponent());
 
         // Note: we intentionally do NOT apply the quick-settings from sampleRateBox /
         // bitDepthBox into the ExportDialog here.  The full dialog exposes its own

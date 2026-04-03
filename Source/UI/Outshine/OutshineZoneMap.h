@@ -5,10 +5,10 @@
 #include "../GalleryColors.h"
 #include "../../Export/XOutshine.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
-class OutshineZoneMap : public juce::Component,
-                        public juce::TooltipClient
+class OutshineZoneMap : public juce::Component, public juce::TooltipClient
 {
 public:
     std::function<void(int grainIndex)> onZoneClicked;
@@ -23,29 +23,33 @@ public:
     void setSamples(const std::vector<AnalyzedSample>& samples)
     {
         zones.clear();
-        if (samples.empty()) { repaint(); return; }
+        if (samples.empty())
+        {
+            repaint();
+            return;
+        }
 
         // Sort by detected MIDI note
-        struct IndexedNote { int midi; int index; float confidence; };
+        struct IndexedNote
+        {
+            int midi;
+            int index;
+            float confidence;
+        };
         std::vector<IndexedNote> sorted;
         for (int i = 0; i < (int)samples.size(); ++i)
-            sorted.push_back({ samples[(size_t)i].detectedMidiNote, i, samples[(size_t)i].pitchConfidence });
+            sorted.push_back({samples[(size_t)i].detectedMidiNote, i, samples[(size_t)i].pitchConfidence});
         std::sort(sorted.begin(), sorted.end(), [](auto& a, auto& b) { return a.midi < b.midi; });
 
         // Compute zone boundaries using midpoint rule
         for (int i = 0; i < (int)sorted.size(); ++i)
         {
-            int low  = (i == 0) ? kMidiLow : (sorted[(size_t)(i-1)].midi + sorted[(size_t)i].midi) / 2;
+            int low = (i == 0) ? kMidiLow : (sorted[(size_t)(i - 1)].midi + sorted[(size_t)i].midi) / 2;
             int high = (i == (int)sorted.size() - 1) ? kMidiHigh
-                       : (sorted[(size_t)i].midi + sorted[(size_t)(i+1)].midi) / 2 - 1;
+                                                     : (sorted[(size_t)i].midi + sorted[(size_t)(i + 1)].midi) / 2 - 1;
 
-            zones.push_back({
-                sorted[(size_t)i].midi,
-                low, high,
-                sorted[(size_t)i].index,
-                sorted[(size_t)i].confidence < 0.15f,
-                midiToNoteName(sorted[(size_t)i].midi)
-            });
+            zones.push_back({sorted[(size_t)i].midi, low, high, sorted[(size_t)i].index,
+                             sorted[(size_t)i].confidence < 0.15f, midiToNoteName(sorted[(size_t)i].midi)});
         }
         repaint();
     }
@@ -70,8 +74,7 @@ public:
 
             g.setColour(GalleryColors::get(GalleryColors::textDark()));
             g.setFont(GalleryFonts::value(9.0f));
-            g.drawText(z.noteName,
-                       (int)((x1 + x2) / 2.0f - 16), (int)(bounds.getHeight() - 16), 32, 14,
+            g.drawText(z.noteName, (int)((x1 + x2) / 2.0f - 16), (int)(bounds.getHeight() - 16), 32, 14,
                        juce::Justification::centred);
 
             if (z.pitchUnverified)
@@ -86,8 +89,7 @@ public:
         g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.05f));
         for (int midi = kMidiLow; midi <= kMidiHigh; ++midi)
         {
-            bool isBlack = (midi % 12 == 1 || midi % 12 == 3 || midi % 12 == 6 ||
-                            midi % 12 == 8 || midi % 12 == 10);
+            bool isBlack = (midi % 12 == 1 || midi % 12 == 3 || midi % 12 == 6 || midi % 12 == 8 || midi % 12 == 10);
             if (isBlack)
             {
                 float x = midiToX(midi);
@@ -114,21 +116,21 @@ public:
     {
         auto pos = getMouseXYRelative();
         int idx = hitZone((float)pos.x);
-        if (idx < 0) return {};
+        if (idx < 0)
+            return {};
         const auto& z = zones[(size_t)idx];
-        return midiToNoteName(z.lowMidi) + " - " + midiToNoteName(z.highMidi)
-               + " | Root: " + z.noteName
-               + (z.pitchUnverified ? " (unverified)" : "");
+        return midiToNoteName(z.lowMidi) + " - " + midiToNoteName(z.highMidi) + " | Root: " + z.noteName +
+               (z.pitchUnverified ? " (unverified)" : "");
     }
 
 private:
     struct ZoneEntry
     {
-        int    rootMidi;
-        int    lowMidi;
-        int    highMidi;
-        int    grainIndex;
-        bool   pitchUnverified;
+        int rootMidi;
+        int lowMidi;
+        int highMidi;
+        int grainIndex;
+        bool pitchUnverified;
         juce::String noteName;
     };
 
@@ -137,10 +139,7 @@ private:
         return (float)(midiNote - kMidiLow) / (float)(kMidiHigh - kMidiLow + 1) * (float)getWidth();
     }
 
-    int xToMidi(float x) const
-    {
-        return kMidiLow + (int)(x / (float)getWidth() * (float)(kMidiHigh - kMidiLow + 1));
-    }
+    int xToMidi(float x) const { return kMidiLow + (int)(x / (float)getWidth() * (float)(kMidiHigh - kMidiLow + 1)); }
 
     int hitZone(float x) const
     {
@@ -153,14 +152,14 @@ private:
 
     static juce::String midiToNoteName(int midi)
     {
-        static const char* names[] = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-        int octave = (midi / 12) - 2;  // C-2 = MIDI 0
+        static const char* names[] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+        int octave = (midi / 12) - 2; // C-2 = MIDI 0
         return juce::String(names[midi % 12]) + juce::String(octave);
     }
 
     std::vector<ZoneEntry> zones;
 
-    static constexpr int kMidiLow  = 0;
+    static constexpr int kMidiLow = 0;
     static constexpr int kMidiHigh = 108;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineZoneMap)

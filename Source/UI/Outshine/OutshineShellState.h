@@ -4,10 +4,10 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
-class OutshineShellState : public juce::Component,
-                           public juce::FileDragAndDropTarget
+class OutshineShellState : public juce::Component, public juce::FileDragAndDropTarget
 {
 public:
     std::function<void(const juce::StringArray&)> onFilesDropped;
@@ -36,33 +36,28 @@ public:
 
         // Oyster icon placeholder (64x64 centered)
         auto center = getLocalBounds().getCentre();
-        juce::Rectangle<float> iconArea(center.x - 32.0f,
-                                        center.y - 60.0f,
-                                        64.0f, 64.0f);
+        juce::Rectangle<float> iconArea(center.x - 32.0f, center.y - 60.0f, 64.0f, 64.0f);
         g.setColour(GalleryColors::get(GalleryColors::borderGray()));
         g.fillEllipse(iconArea);
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
         g.setFont(GalleryFonts::value(22.0f));
-        g.drawText(juce::String(juce::CharPointer_UTF8("\xf0\x9f\xaa\xb8")),
-                   iconArea.toNearestInt(), juce::Justification::centred);
+        g.drawText(juce::String(juce::CharPointer_UTF8("\xf0\x9f\xaa\xb8")), iconArea.toNearestInt(),
+                   juce::Justification::centred);
 
         // Text labels
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
         g.setFont(GalleryFonts::display(14.0f));
-        g.drawText("The shell is open.",
-                   getLocalBounds().withY(center.y + 16).withHeight(22),
+        g.drawText("The shell is open.", getLocalBounds().withY(center.y + 16).withHeight(22),
                    juce::Justification::centred);
 
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
         g.setFont(GalleryFonts::body(13.0f));
-        g.drawText("Drop a grain to begin.",
-                   getLocalBounds().withY(center.y + 40).withHeight(18),
+        g.drawText("Drop a grain to begin.", getLocalBounds().withY(center.y + 40).withHeight(18),
                    juce::Justification::centred);
 
         g.setColour(juce::Colour(0xFF666666));
         g.setFont(GalleryFonts::body(11.0f));
-        g.drawText("WAV files, folders, or XPN archives.",
-                   getLocalBounds().withY(center.y + 60).withHeight(16),
+        g.drawText("WAV files, folders, or XPN archives.", getLocalBounds().withY(center.y + 60).withHeight(16),
                    juce::Justification::centred);
     }
 
@@ -92,7 +87,7 @@ public:
     }
 
 private:
-    bool dragActive { false };
+    bool dragActive{false};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineShellState)
 };

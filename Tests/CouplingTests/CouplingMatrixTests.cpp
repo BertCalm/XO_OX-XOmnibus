@@ -48,19 +48,17 @@ public:
         lastTriangularAmount = 0.0f;
     }
 
-    void renderBlock(juce::AudioBuffer<float>& /*buffer*/,
-                     juce::MidiBuffer& /*midi*/,
-                     int /*numSamples*/) override {}
+    void renderBlock(juce::AudioBuffer<float>& /*buffer*/, juce::MidiBuffer& /*midi*/, int /*numSamples*/) override {}
 
     float getSampleForCoupling(int /*channel*/, int sampleIndex) const override
     {
         auto idx = static_cast<size_t>(sampleIndex);
-        if (idx < outputBuffer.size()) return outputBuffer[idx];
+        if (idx < outputBuffer.size())
+            return outputBuffer[idx];
         return 0.0f;
     }
 
-    void applyCouplingInput(CouplingType type, float amount,
-                            const float* /*sourceBuffer*/, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int numSamples) override
     {
         couplingInputReceived = true;
         lastCouplingType = type;
@@ -82,10 +80,7 @@ public:
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFFFFFFF); }
     int getMaxVoices() const override { return 1; }
 
-    void fillOutput(float value)
-    {
-        std::fill(outputBuffer.begin(), outputBuffer.end(), value);
-    }
+    void fillOutput(float value) { std::fill(outputBuffer.begin(), outputBuffer.end(), value); }
 
     bool couplingInputReceived = false;
     CouplingType lastCouplingType = CouplingType::AmpToFilter;
@@ -93,7 +88,7 @@ public:
     int lastCouplingNumSamples = 0;
 
     bool triangularCouplingReceived = false;
-    LoveTriangleState lastTriangularState {};
+    LoveTriangleState lastTriangularState{};
     float lastTriangularAmount = 0.0f;
 
 private:
@@ -105,36 +100,32 @@ class OxytocinLikeTestEngine : public TestEngine
 {
 public:
     OxytocinLikeTestEngine() : TestEngine("OxytocinLike") {}
-    void setLoveState(float I, float P, float C) { loveState = { I, P, C }; }
+    void setLoveState(float I, float P, float C) { loveState = {I, P, C}; }
     LoveTriangleState getLoveTriangleState() const override { return loveState; }
+
 private:
-    LoveTriangleState loveState { 0.7f, 0.5f, 0.3f };
+    LoveTriangleState loveState{0.7f, 0.5f, 0.3f};
 };
 
 // Helper: build matrix + two prepared TestEngines with a single route.
-static void runSingleRouteBlock(MegaCouplingMatrix& matrix,
-                                TestEngine& src,
-                                TestEngine& dst,
-                                CouplingType type,
-                                float amount,
-                                int blockSize = 256)
+static void runSingleRouteBlock(MegaCouplingMatrix& matrix, TestEngine& src, TestEngine& dst, CouplingType type,
+                                float amount, int blockSize = 256)
 {
     matrix.prepare(blockSize);
     src.prepare(44100.0, blockSize);
     dst.prepare(44100.0, blockSize);
     src.fillOutput(0.5f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines =
-        { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = type;
-    route.amount      = amount;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = type;
+    route.amount = amount;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -162,11 +153,11 @@ TEST_CASE("CouplingMatrix - addRoute: single route appears in getRoutes", "[coup
 
     MegaCouplingMatrix::CouplingRoute route;
     route.sourceSlot = 0;
-    route.destSlot   = 1;
-    route.type       = CouplingType::AmpToFilter;
-    route.amount     = 0.5f;
+    route.destSlot = 1;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.5f;
     route.isNormalled = false;
-    route.active     = true;
+    route.active = true;
     matrix.addRoute(route);
 
     CHECK(matrix.getRoutes().size() == 1);
@@ -180,12 +171,12 @@ TEST_CASE("CouplingMatrix - addRoute: multiple routes added correctly", "[coupli
     for (int i = 0; i < 3; ++i)
     {
         MegaCouplingMatrix::CouplingRoute route;
-        route.sourceSlot  = 0;
-        route.destSlot    = i + 1;
-        route.type        = CouplingType::AmpToFilter;
-        route.amount      = 0.5f;
+        route.sourceSlot = 0;
+        route.destSlot = i + 1;
+        route.type = CouplingType::AmpToFilter;
+        route.amount = 0.5f;
         route.isNormalled = false;
-        route.active      = true;
+        route.active = true;
         matrix.addRoute(route);
     }
     CHECK(matrix.getRoutes().size() == 3);
@@ -197,21 +188,21 @@ TEST_CASE("CouplingMatrix - removeUserRoute removes user route and re-enables no
     matrix.prepare(512);
 
     MegaCouplingMatrix::CouplingRoute normalled;
-    normalled.sourceSlot  = 0;
-    normalled.destSlot    = 1;
-    normalled.type        = CouplingType::AmpToFilter;
-    normalled.amount      = 0.3f;
+    normalled.sourceSlot = 0;
+    normalled.destSlot = 1;
+    normalled.type = CouplingType::AmpToFilter;
+    normalled.amount = 0.3f;
     normalled.isNormalled = true;
-    normalled.active      = false;
+    normalled.active = false;
     matrix.addRoute(normalled);
 
     MegaCouplingMatrix::CouplingRoute userRoute;
-    userRoute.sourceSlot  = 0;
-    userRoute.destSlot    = 1;
-    userRoute.type        = CouplingType::AmpToFilter;
-    userRoute.amount      = 0.8f;
+    userRoute.sourceSlot = 0;
+    userRoute.destSlot = 1;
+    userRoute.type = CouplingType::AmpToFilter;
+    userRoute.amount = 0.8f;
     userRoute.isNormalled = false;
-    userRoute.active      = true;
+    userRoute.active = true;
     matrix.addRoute(userRoute);
 
     matrix.removeUserRoute(0, 1, CouplingType::AmpToFilter);
@@ -221,8 +212,13 @@ TEST_CASE("CouplingMatrix - removeUserRoute removes user route and re-enables no
     bool normalledActive = false;
     for (const auto& r : routes)
     {
-        if (r.isNormalled)  { hasNormalled = true; normalledActive = r.active; }
-        if (!r.isNormalled) hasUser = true;
+        if (r.isNormalled)
+        {
+            hasNormalled = true;
+            normalledActive = r.active;
+        }
+        if (!r.isNormalled)
+            hasUser = true;
     }
     CHECK(!hasUser);
     CHECK(hasNormalled);
@@ -235,12 +231,12 @@ TEST_CASE("CouplingMatrix - clearRoutes empties all routes", "[coupling][routes]
     matrix.prepare(512);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::AmpToFilter;
-    route.amount      = 0.5f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.5f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
     matrix.addRoute(route);
 
@@ -262,7 +258,7 @@ TEST_CASE("CouplingMatrix - processBlock with no routes does not call applyCoupl
     src.prepare(44100.0, blockSize);
     dst.prepare(44100.0, blockSize);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     auto routes = matrix.loadRoutes();
@@ -281,16 +277,16 @@ TEST_CASE("CouplingMatrix - active route calls applyCouplingInput with correct a
     dst.prepare(44100.0, blockSize);
     src.fillOutput(0.5f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::AmpToFilter;
-    route.amount      = 0.7f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.7f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -320,16 +316,16 @@ TEST_CASE("CouplingMatrix - out-of-bounds slot indices do not crash", "[coupling
     TestEngine eng("Eng");
     eng.prepare(44100.0, blockSize);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &eng, nullptr, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&eng, nullptr, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = -1;
-    route.destSlot    = 99;
-    route.type        = CouplingType::AmpToFilter;
-    route.amount      = 0.5f;
+    route.sourceSlot = -1;
+    route.destSlot = 99;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.5f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -342,16 +338,16 @@ TEST_CASE("CouplingMatrix - null engine pointers in slots do not crash", "[coupl
     MegaCouplingMatrix matrix;
     matrix.prepare(blockSize);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { nullptr, nullptr, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {nullptr, nullptr, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::AmpToFilter;
-    route.amount      = 0.5f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::AmpToFilter;
+    route.amount = 0.5f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -374,16 +370,16 @@ TEST_CASE("KnotTopology - bidirectional: both engines receive coupling", "[coupl
     src.fillOutput(0.5f);
     dst.fillOutput(0.3f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::KnotTopology;
-    route.amount      = 0.6f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::KnotTopology;
+    route.amount = 0.6f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -405,16 +401,16 @@ TEST_CASE("KnotTopology - self-route is blocked by addRoute", "[coupling][knot]"
     eng.prepare(44100.0, blockSize);
     eng.fillOutput(0.5f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &eng, nullptr, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&eng, nullptr, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute selfRoute;
-    selfRoute.sourceSlot  = 0;
-    selfRoute.destSlot    = 0;
-    selfRoute.type        = CouplingType::KnotTopology;
-    selfRoute.amount      = 0.5f;
+    selfRoute.sourceSlot = 0;
+    selfRoute.destSlot = 0;
+    selfRoute.type = CouplingType::KnotTopology;
+    selfRoute.amount = 0.5f;
     selfRoute.isNormalled = false;
-    selfRoute.active      = true;
+    selfRoute.active = true;
     matrix.addRoute(selfRoute);
 
     CHECK(matrix.getRoutes().empty());
@@ -445,16 +441,16 @@ TEST_CASE("TriangularCoupling - applyTriangularCouplingInput called with correct
     dst.prepare(44100.0, blockSize);
     src.setLoveState(0.8f, 0.6f, 0.4f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::TriangularCoupling;
-    route.amount      = 0.5f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::TriangularCoupling;
+    route.amount = 0.5f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.loadRoutes();
@@ -479,16 +475,16 @@ TEST_CASE("TriangularCoupling - fallback: non-Oxytocin dest gets AmpToFilter", "
     dst.prepare(44100.0, blockSize);
     src.setLoveState(0.7f, 0.5f, 0.3f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot  = 0;
-    route.destSlot    = 1;
-    route.type        = CouplingType::TriangularCoupling;
-    route.amount      = 1.0f;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::TriangularCoupling;
+    route.amount = 1.0f;
     route.isNormalled = false;
-    route.active      = true;
+    route.active = true;
     matrix.addRoute(route);
 
     dst.couplingInputReceived = false;
@@ -521,15 +517,15 @@ TEST_CASE("Control-rate coupling types - all deliver correct type/amount/numSamp
 {
     constexpr int blockSize = 256;
 
-    const struct { CouplingType type; const char* name; } kTypes[] = {
-        { CouplingType::AmpToPitch,     "AmpToPitch"     },
-        { CouplingType::LFOToPitch,     "LFOToPitch"     },
-        { CouplingType::EnvToMorph,     "EnvToMorph"     },
-        { CouplingType::FilterToFilter, "FilterToFilter" },
-        { CouplingType::AmpToChoke,     "AmpToChoke"     },
-        { CouplingType::RhythmToBlend,  "RhythmToBlend"  },
-        { CouplingType::EnvToDecay,     "EnvToDecay"     },
-        { CouplingType::PitchToPitch,   "PitchToPitch"   },
+    const struct
+    {
+        CouplingType type;
+        const char* name;
+    } kTypes[] = {
+        {CouplingType::AmpToPitch, "AmpToPitch"}, {CouplingType::LFOToPitch, "LFOToPitch"},
+        {CouplingType::EnvToMorph, "EnvToMorph"}, {CouplingType::FilterToFilter, "FilterToFilter"},
+        {CouplingType::AmpToChoke, "AmpToChoke"}, {CouplingType::RhythmToBlend, "RhythmToBlend"},
+        {CouplingType::EnvToDecay, "EnvToDecay"}, {CouplingType::PitchToPitch, "PitchToPitch"},
     };
 
     for (const auto& entry : kTypes)
@@ -550,14 +546,19 @@ TEST_CASE("Control-rate coupling types - all deliver correct type/amount/numSamp
 // Audio-rate coupling types
 //==============================================================================
 
-TEST_CASE("Audio-rate coupling types - AudioToFM/AudioToRing/AudioToWavetable deliver correctly", "[coupling][audio-rate]")
+TEST_CASE("Audio-rate coupling types - AudioToFM/AudioToRing/AudioToWavetable deliver correctly",
+          "[coupling][audio-rate]")
 {
     constexpr int blockSize = 256;
 
-    const struct { CouplingType type; const char* name; } kTypes[] = {
-        { CouplingType::AudioToFM,        "AudioToFM"        },
-        { CouplingType::AudioToRing,       "AudioToRing"      },
-        { CouplingType::AudioToWavetable,  "AudioToWavetable" },
+    const struct
+    {
+        CouplingType type;
+        const char* name;
+    } kTypes[] = {
+        {CouplingType::AudioToFM, "AudioToFM"},
+        {CouplingType::AudioToRing, "AudioToRing"},
+        {CouplingType::AudioToWavetable, "AudioToWavetable"},
     };
 
     for (const auto& entry : kTypes)
@@ -584,19 +585,25 @@ TEST_CASE("Audio-rate cycle detection - A→B→A AudioToFM cycle is blocked", "
     a.prepare(44100.0, blockSize);
     b.prepare(44100.0, blockSize);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &a, &b, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&a, &b, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute routeAB;
-    routeAB.sourceSlot = 0; routeAB.destSlot = 1;
-    routeAB.type = CouplingType::AudioToFM; routeAB.amount = 0.5f;
-    routeAB.isNormalled = false; routeAB.active = true;
+    routeAB.sourceSlot = 0;
+    routeAB.destSlot = 1;
+    routeAB.type = CouplingType::AudioToFM;
+    routeAB.amount = 0.5f;
+    routeAB.isNormalled = false;
+    routeAB.active = true;
     matrix.addRoute(routeAB);
 
     MegaCouplingMatrix::CouplingRoute routeBA;
-    routeBA.sourceSlot = 1; routeBA.destSlot = 0;
-    routeBA.type = CouplingType::AudioToFM; routeBA.amount = 0.5f;
-    routeBA.isNormalled = false; routeBA.active = true;
+    routeBA.sourceSlot = 1;
+    routeBA.destSlot = 0;
+    routeBA.type = CouplingType::AudioToFM;
+    routeBA.amount = 0.5f;
+    routeBA.isNormalled = false;
+    routeBA.active = true;
     matrix.addRoute(routeBA);
 
     CHECK(matrix.getRoutes().size() == 1);
@@ -618,13 +625,16 @@ TEST_CASE("AudioToBuffer - sinkCache is nullptr for non-sink dest, no crash", "[
     dst.prepare(44100.0, blockSize);
     src.fillOutput(0.5f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src, &dst, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute route;
-    route.sourceSlot = 0; route.destSlot = 1;
-    route.type = CouplingType::AudioToBuffer; route.amount = 0.8f;
-    route.isNormalled = false; route.active = true;
+    route.sourceSlot = 0;
+    route.destSlot = 1;
+    route.type = CouplingType::AudioToBuffer;
+    route.amount = 0.8f;
+    route.isNormalled = false;
+    route.active = true;
     matrix.addRoute(route);
 
     auto routes = matrix.getRoutes();
@@ -653,19 +663,25 @@ TEST_CASE("AmpToChoke - two routes to same dest are both admitted and delivered"
     src1.fillOutput(0.9f);
     src2.fillOutput(0.3f);
 
-    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src1, &src2, &dst, nullptr, nullptr };
+    std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {&src1, &src2, &dst, nullptr, nullptr};
     matrix.setEngines(engines);
 
     MegaCouplingMatrix::CouplingRoute chokeRoute;
-    chokeRoute.sourceSlot = 0; chokeRoute.destSlot = 2;
-    chokeRoute.type = CouplingType::AmpToChoke; chokeRoute.amount = 0.8f;
-    chokeRoute.isNormalled = false; chokeRoute.active = true;
+    chokeRoute.sourceSlot = 0;
+    chokeRoute.destSlot = 2;
+    chokeRoute.type = CouplingType::AmpToChoke;
+    chokeRoute.amount = 0.8f;
+    chokeRoute.isNormalled = false;
+    chokeRoute.active = true;
     matrix.addRoute(chokeRoute);
 
     MegaCouplingMatrix::CouplingRoute filterRoute;
-    filterRoute.sourceSlot = 1; filterRoute.destSlot = 2;
-    filterRoute.type = CouplingType::AmpToFilter; filterRoute.amount = 0.4f;
-    filterRoute.isNormalled = false; filterRoute.active = true;
+    filterRoute.sourceSlot = 1;
+    filterRoute.destSlot = 2;
+    filterRoute.type = CouplingType::AmpToFilter;
+    filterRoute.amount = 0.4f;
+    filterRoute.isNormalled = false;
+    filterRoute.active = true;
     matrix.addRoute(filterRoute);
 
     CHECK(matrix.getRoutes().size() == 2);
@@ -674,8 +690,8 @@ TEST_CASE("AmpToChoke - two routes to same dest are both admitted and delivered"
     matrix.processBlock(blockSize, routes);
 
     CHECK(dst.couplingInputReceived);
-    bool lastTypeIsKnown = (dst.lastCouplingType == CouplingType::AmpToChoke
-                         || dst.lastCouplingType == CouplingType::AmpToFilter);
+    bool lastTypeIsKnown =
+        (dst.lastCouplingType == CouplingType::AmpToChoke || dst.lastCouplingType == CouplingType::AmpToFilter);
     CHECK(lastTypeIsKnown);
 }
 
@@ -688,20 +704,11 @@ TEST_CASE("Zero amount (below 0.001 threshold) - no coupling delivered for any t
     constexpr int blockSize = 256;
 
     const CouplingType allTypes[] = {
-        CouplingType::AmpToFilter,
-        CouplingType::AmpToPitch,
-        CouplingType::LFOToPitch,
-        CouplingType::EnvToMorph,
-        CouplingType::AudioToFM,
-        CouplingType::AudioToRing,
-        CouplingType::FilterToFilter,
-        CouplingType::AmpToChoke,
-        CouplingType::RhythmToBlend,
-        CouplingType::EnvToDecay,
-        CouplingType::PitchToPitch,
-        CouplingType::AudioToWavetable,
-        CouplingType::KnotTopology,
-        CouplingType::TriangularCoupling,
+        CouplingType::AmpToFilter,    CouplingType::AmpToPitch,         CouplingType::LFOToPitch,
+        CouplingType::EnvToMorph,     CouplingType::AudioToFM,          CouplingType::AudioToRing,
+        CouplingType::FilterToFilter, CouplingType::AmpToChoke,         CouplingType::RhythmToBlend,
+        CouplingType::EnvToDecay,     CouplingType::PitchToPitch,       CouplingType::AudioToWavetable,
+        CouplingType::KnotTopology,   CouplingType::TriangularCoupling,
     };
 
     for (const auto type : allTypes)
@@ -717,6 +724,10 @@ TEST_CASE("Zero amount (below 0.001 threshold) - no coupling delivered for any t
 }
 
 // Backward-compat shim
-namespace coupling_tests {
-int runAll() { return 0; }
+namespace coupling_tests
+{
+int runAll()
+{
+    return 0;
+}
 } // namespace coupling_tests

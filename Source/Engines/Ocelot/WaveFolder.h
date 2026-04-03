@@ -4,7 +4,8 @@
 #include <cmath>
 #include "../../DSP/FastMath.h"
 
-namespace xocelot {
+namespace xocelot
+{
 
 // WaveFolder — tanh-based soft wave folder.
 // Available to Floor (post-model saturation) and Emergent (formant saturation).
@@ -13,10 +14,7 @@ namespace xocelot {
 struct WaveFolder
 {
     // drive: 1.0 = clean, higher = more folds (useful range 1–5)
-    static float process(float x, float drive)
-    {
-        return xoceanus::fastTanh(x * drive);
-    }
+    static float process(float x, float drive) { return xoceanus::fastTanh(x * drive); }
 };
 
 } // namespace xocelot

@@ -15,7 +15,8 @@
 #include <cmath>
 #include <cstring>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 //
@@ -89,20 +90,21 @@ namespace xoceanus {
 //==============================================================================
 struct ReductionState
 {
-    float sessionAge       = 0.0f;   // 0.0 (fresh) → 1.0 (fully reduced)
-    float concentrateDark  = 0.0f;   // caramelization depth (0.0 → 1.0)
-    float umamiBed         = 0.0f;   // deep fundamental resonance (0.0 → 1.0)
-    float volatileAromatics = 1.0f;  // high-frequency shimmer remaining (1.0 → 0.0)
+    float sessionAge = 0.0f;        // 0.0 (fresh) → 1.0 (fully reduced)
+    float concentrateDark = 0.0f;   // caramelization depth (0.0 → 1.0)
+    float umamiBed = 0.0f;          // deep fundamental resonance (0.0 → 1.0)
+    float volatileAromatics = 1.0f; // high-frequency shimmer remaining (1.0 → 0.0)
 
     // Per-band spectral mass remaining (8 octave bands)
     // Band 0 = sub/fundamental (never fully reduces)
     // Band 7 = highest harmonics (reduces first)
-    float spectralMass[8] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+    float spectralMass[8] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
 
     float totalSpectralMass() const noexcept
     {
         float sum = 0.0f;
-        for (int i = 0; i < 8; ++i) sum += spectralMass[i];
+        for (int i = 0; i < 8; ++i)
+            sum += spectralMass[i];
         return sum / 8.0f;
     }
 
@@ -112,7 +114,8 @@ struct ReductionState
         concentrateDark = 0.0f;
         umamiBed = 0.0f;
         volatileAromatics = 1.0f;
-        for (int i = 0; i < 8; ++i) spectralMass[i] = 1.0f;
+        for (int i = 0; i < 8; ++i)
+            spectralMass[i] = 1.0f;
     }
 };
 
@@ -123,11 +126,11 @@ struct OverwornVoice
 {
     static constexpr int kNumPartials = 16;
 
-    bool     active      = false;
-    uint64_t startTime   = 0;
-    int      currentNote = 60;
-    float    velocity    = 0.0f;
-    float    fundamental = 440.0f;
+    bool active = false;
+    uint64_t startTime = 0;
+    int currentNote = 60;
+    float velocity = 0.0f;
+    float fundamental = 440.0f;
 
     StandardADSR ampEnv;
     FilterEnvelope filterEnv;
@@ -136,8 +139,8 @@ struct OverwornVoice
     float partialPhase[kNumPartials] = {};
 
     // Is this a "quiet long tone" (infusion event)?
-    float holdDuration = 0.0f;  // seconds held so far
-    bool  isInfusion   = false; // set when velocity < 0.3 && hold > 8s
+    float holdDuration = 0.0f; // seconds held so far
+    bool isInfusion = false;   // set when velocity < 0.3 && hold > 8s
 
     CytomicSVF voiceFilter;
 
@@ -150,24 +153,24 @@ struct OverwornVoice
         holdDuration = 0.0f;
         isInfusion = false;
         voiceFilter.reset();
-        std::fill (std::begin (partialPhase), std::end (partialPhase), 0.0f);
+        std::fill(std::begin(partialPhase), std::end(partialPhase), 0.0f);
     }
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        ampEnv.prepare (sampleRate);
-        filterEnv.prepare (sampleRate);
-        voiceFilter.setMode (CytomicSVF::Mode::LowPass);
+        ampEnv.prepare(sampleRate);
+        filterEnv.prepare(sampleRate);
+        voiceFilter.setMode(CytomicSVF::Mode::LowPass);
         voiceFilter.reset();
     }
 
-    void noteOn (int note, float vel, float sr, uint64_t time) noexcept
+    void noteOn(int note, float vel, float sr, uint64_t time) noexcept
     {
         active = true;
         currentNote = note;
         velocity = vel;
         startTime = time;
-        fundamental = 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) / 12.0f);
+        fundamental = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
         holdDuration = 0.0f;
         isInfusion = false;
 
@@ -196,30 +199,30 @@ public:
 
     //-- SynthEngine interface --------------------------------------------------
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        srF = static_cast<float> (sampleRate);
+        srF = static_cast<float>(sampleRate);
         blockSize = maxBlockSize;
 
         for (auto& v : voices)
         {
-            v.prepare (srF);
+            v.prepare(srF);
             v.reset();
         }
 
-        lfo1.setShape (StandardLFO::Sine);
+        lfo1.setShape(StandardLFO::Sine);
         lfo1.reset();
-        lfo2.setShape (StandardLFO::Triangle);
+        lfo2.setShape(StandardLFO::Triangle);
         lfo2.reset();
-        breathLfo.setRate (0.007f, srF);
+        breathLfo.setRate(0.007f, srF);
 
         noteCounter = 0;
         sessionStarted = false;
 
         // Silence gate: 1000ms hold (infinite sustain pad)
-        silenceGate.prepare (sr, maxBlockSize);
-        silenceGate.setHoldTime (1000.0f);
+        silenceGate.prepare(sr, maxBlockSize);
+        silenceGate.setHoldTime(1000.0f);
     }
 
     void releaseResources() override {}
@@ -236,9 +239,7 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    void renderBlock (juce::AudioBuffer<float>& buffer,
-                      juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
 
@@ -249,23 +250,24 @@ public:
             if (msg.isNoteOn())
             {
                 silenceGate.wake();
-                if (!sessionStarted) sessionStarted = true;
+                if (!sessionStarted)
+                    sessionStarted = true;
 
-                int idx = VoiceAllocator::findFreeVoicePreferRelease (
+                int idx = VoiceAllocator::findFreeVoicePreferRelease(
                     voices, kMaxVoices,
-                    [] (const OverwornVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
-                voices[idx].noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), srF, ++noteCounter);
+                    [](const OverwornVoice& v) { return v.ampEnv.getStage() == StandardADSR::Stage::Release; });
+                voices[idx].noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), srF, ++noteCounter);
             }
             else if (msg.isNoteOff())
             {
-                int idx = VoiceAllocator::findVoiceForNote (voices, kMaxVoices, msg.getNoteNumber());
-                if (idx >= 0) voices[idx].noteOff();
+                int idx = VoiceAllocator::findVoiceForNote(voices, kMaxVoices, msg.getNoteNumber());
+                if (idx >= 0)
+                    voices[idx].noteOff();
             }
             else if (msg.isAftertouch() || msg.isChannelPressure())
             {
-                aftertouch = msg.isAftertouch()
-                    ? msg.getAfterTouchValue() / 127.0f
-                    : msg.getChannelPressureValue() / 127.0f;
+                aftertouch =
+                    msg.isAftertouch() ? msg.getAfterTouchValue() / 127.0f : msg.getChannelPressureValue() / 127.0f;
             }
             else if (msg.isController() && msg.getControllerNumber() == 1)
             {
@@ -273,7 +275,7 @@ public:
             }
             else if (msg.isPitchWheel())
             {
-                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             }
         }
 
@@ -286,29 +288,29 @@ public:
 
         // 3. Read parameters
         float pReductionRate = pReductionRateParam ? pReductionRateParam->load() : 0.5f;
-        float pHeat          = pHeatParam          ? pHeatParam->load()          : 0.5f;
-        float pRichness      = pRichnessParam      ? pRichnessParam->load()      : 1.0f;
-        float pMaillard      = pMaillardParam      ? pMaillardParam->load()      : 0.3f;
-        float pUmamiDepth    = pUmamiDepthParam    ? pUmamiDepthParam->load()    : 0.5f;
-        float pConcentrate   = pConcentrateParam   ? pConcentrateParam->load()   : 0.5f;
-        float pStereoWidth   = pStereoWidthParam   ? pStereoWidthParam->load()   : 0.5f;
-        float pFilterCut     = pFilterCutParam     ? pFilterCutParam->load()     : 8000.0f;
-        float pFilterRes     = pFilterResParam     ? pFilterResParam->load()     : 0.15f;
-        float pFiltEnvAmt    = pFiltEnvAmtParam    ? pFiltEnvAmtParam->load()    : 0.3f;
-        float pAmpA          = pAmpAParam          ? pAmpAParam->load()          : 0.5f;
-        float pAmpD          = pAmpDParam          ? pAmpDParam->load()          : 1.0f;
-        float pAmpS          = pAmpSParam          ? pAmpSParam->load()          : 0.9f;
-        float pAmpR          = pAmpRParam          ? pAmpRParam->load()          : 3.0f;
-        float pFiltA         = pFiltAParam         ? pFiltAParam->load()         : 0.2f;
-        float pFiltD         = pFiltDParam         ? pFiltDParam->load()         : 0.8f;
-        float pFiltS         = pFiltSParam         ? pFiltSParam->load()         : 0.5f;
-        float pFiltR         = pFiltRParam         ? pFiltRParam->load()         : 1.5f;
-        float pLfo1Rate      = pLfo1RateParam      ? pLfo1RateParam->load()      : 0.08f;
-        float pLfo1Depth     = pLfo1DepthParam     ? pLfo1DepthParam->load()     : 0.15f;
-        float pLfo2Rate      = pLfo2RateParam      ? pLfo2RateParam->load()      : 0.03f;
-        float pLfo2Depth     = pLfo2DepthParam     ? pLfo2DepthParam->load()     : 0.1f;
-        float pLevel         = pLevelParam         ? pLevelParam->load()         : 0.8f;
-        float pSessionTarget = pSessionTargetParam ? pSessionTargetParam->load() : 30.0f;  // minutes
+        float pHeat = pHeatParam ? pHeatParam->load() : 0.5f;
+        float pRichness = pRichnessParam ? pRichnessParam->load() : 1.0f;
+        float pMaillard = pMaillardParam ? pMaillardParam->load() : 0.3f;
+        float pUmamiDepth = pUmamiDepthParam ? pUmamiDepthParam->load() : 0.5f;
+        float pConcentrate = pConcentrateParam ? pConcentrateParam->load() : 0.5f;
+        float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
+        float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
+        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
+        float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
+        float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.5f;
+        float pAmpD = pAmpDParam ? pAmpDParam->load() : 1.0f;
+        float pAmpS = pAmpSParam ? pAmpSParam->load() : 0.9f;
+        float pAmpR = pAmpRParam ? pAmpRParam->load() : 3.0f;
+        float pFiltA = pFiltAParam ? pFiltAParam->load() : 0.2f;
+        float pFiltD = pFiltDParam ? pFiltDParam->load() : 0.8f;
+        float pFiltS = pFiltSParam ? pFiltSParam->load() : 0.5f;
+        float pFiltR = pFiltRParam ? pFiltRParam->load() : 1.5f;
+        float pLfo1Rate = pLfo1RateParam ? pLfo1RateParam->load() : 0.08f;
+        float pLfo1Depth = pLfo1DepthParam ? pLfo1DepthParam->load() : 0.15f;
+        float pLfo2Rate = pLfo2RateParam ? pLfo2RateParam->load() : 0.03f;
+        float pLfo2Depth = pLfo2DepthParam ? pLfo2DepthParam->load() : 0.1f;
+        float pLevel = pLevelParam ? pLevelParam->load() : 0.8f;
+        float pSessionTarget = pSessionTargetParam ? pSessionTargetParam->load() : 30.0f; // minutes
 
         // Check for explicit state reset
         float pReset = pStateResetParam ? pStateResetParam->load() : 0.0f;
@@ -324,45 +326,44 @@ public:
 
         // Macros
         float pMC = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
-        float pMM = pMacroMovementParam  ? pMacroMovementParam->load()  : 0.0f;
-        float pMK = pMacroCouplingParam  ? pMacroCouplingParam->load()  : 0.0f;
-        float pMS = pMacroSpaceParam     ? pMacroSpaceParam->load()     : 0.0f;
+        float pMM = pMacroMovementParam ? pMacroMovementParam->load() : 0.0f;
+        float pMK = pMacroCouplingParam ? pMacroCouplingParam->load() : 0.0f;
+        float pMS = pMacroSpaceParam ? pMacroSpaceParam->load() : 0.0f;
 
         // CHARACTER → richness + Maillard depth
-        pRichness = clamp (pRichness + pMC * 0.3f, 0.0f, 1.0f);
-        pMaillard = clamp (pMaillard + pMC * 0.3f, 0.0f, 1.0f);
+        pRichness = clamp(pRichness + pMC * 0.3f, 0.0f, 1.0f);
+        pMaillard = clamp(pMaillard + pMC * 0.3f, 0.0f, 1.0f);
 
         // MOVEMENT → reduction rate + LFO
-        pReductionRate = clamp (pReductionRate + pMM * 0.3f, 0.0f, 1.0f);
-        pLfo1Depth = clamp (pLfo1Depth + pMM * 0.2f, 0.0f, 1.0f);
+        pReductionRate = clamp(pReductionRate + pMM * 0.3f, 0.0f, 1.0f);
+        pLfo1Depth = clamp(pLfo1Depth + pMM * 0.2f, 0.0f, 1.0f);
 
         // COUPLING → concentrate export strength
-        pConcentrate = clamp (pConcentrate + pMK * 0.3f, 0.0f, 1.0f);
+        pConcentrate = clamp(pConcentrate + pMK * 0.3f, 0.0f, 1.0f);
 
         // SPACE → stereo width
-        pStereoWidth = clamp (pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
+        pStereoWidth = clamp(pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
 
         // D006: Mod wheel → richness
-        pRichness = clamp (pRichness + modWheel * 0.4f, 0.0f, 1.0f);
+        pRichness = clamp(pRichness + modWheel * 0.4f, 0.0f, 1.0f);
         // D006: Aftertouch → heat (accelerates reduction)
-        pHeat = clamp (pHeat + aftertouch * 0.4f, 0.0f, 1.0f);
+        pHeat = clamp(pHeat + aftertouch * 0.4f, 0.0f, 1.0f);
 
         // Coupling modulation
-        pFilterCut = clamp (pFilterCut + extFilterMod, 50.0f, 16000.0f);
+        pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 16000.0f);
 
         // LFO rates
-        lfo1.setRate (pLfo1Rate, srF);
-        lfo2.setRate (pLfo2Rate, srF);
+        lfo1.setRate(pLfo1Rate, srF);
+        lfo2.setRate(pLfo2Rate, srF);
 
         // Session target in seconds
         float sessionTargetSec = pSessionTarget * 60.0f;
 
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1
-                        ? buffer.getWritePointer (1) : nullptr;
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         const float inverseSr = 1.0f / srF;
-        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // Count active non-infusion voices for reduction acceleration.
         // Infusion voices (soft long tones, velocity < 0.3 && held > 8s) do NOT accelerate
@@ -371,9 +372,12 @@ public:
         int infusionVoiceCount = 0;
         for (int v = 0; v < kMaxVoices; ++v)
         {
-            if (!voices[v].active) continue;
-            if (voices[v].isInfusion) ++infusionVoiceCount;
-            else                      ++activeVoiceCount;
+            if (!voices[v].active)
+                continue;
+            if (voices[v].isInfusion)
+                ++infusionVoiceCount;
+            else
+                ++activeVoiceCount;
         }
 
         for (int i = 0; i < numSamples; ++i)
@@ -389,37 +393,34 @@ public:
                 float baseRate = pReductionRate / (sessionTargetSec * srF);
 
                 // Heat from playing intensity accelerates reduction
-                float heatMultiplier = 1.0f + pHeat * static_cast<float> (activeVoiceCount) * 0.5f;
+                float heatMultiplier = 1.0f + pHeat * static_cast<float>(activeVoiceCount) * 0.5f;
 
                 float deltaAge = baseRate * heatMultiplier;
-                reduction.sessionAge = clamp (reduction.sessionAge + deltaAge, 0.0f, 1.0f);
+                reduction.sessionAge = clamp(reduction.sessionAge + deltaAge, 0.0f, 1.0f);
 
                 // Frequency-dependent evaporation: high bands reduce first
                 // Logarithmic decay curve (early reduction is fast, late is slow)
                 for (int b = 0; b < 8; ++b)
                 {
                     // Band 0 (sub) barely reduces. Band 7 (highs) reduces fastest.
-                    float bandRate = baseRate * heatMultiplier
-                        * (0.05f + static_cast<float> (b) * 0.3f);  // band 0: 0.05x, band 7: 2.15x
+                    float bandRate = baseRate * heatMultiplier *
+                                     (0.05f + static_cast<float>(b) * 0.3f); // band 0: 0.05x, band 7: 2.15x
 
                     // Logarithmic slowdown as band approaches empty
                     float remaining = reduction.spectralMass[b];
-                    bandRate *= remaining;  // reduces slower as it empties
+                    bandRate *= remaining; // reduces slower as it empties
 
-                    reduction.spectralMass[b] = clamp (remaining - bandRate, 0.0f, 1.0f);
+                    reduction.spectralMass[b] = clamp(remaining - bandRate, 0.0f, 1.0f);
                 }
 
                 // Caramelization (Maillard reaction) increases with reduction
-                reduction.concentrateDark = clamp (
-                    reduction.sessionAge * pMaillard * 1.5f, 0.0f, 1.0f);
+                reduction.concentrateDark = clamp(reduction.sessionAge * pMaillard * 1.5f, 0.0f, 1.0f);
 
                 // Umami bed: fundamentals concentrate as everything else reduces
-                reduction.umamiBed = clamp (
-                    (1.0f - reduction.totalSpectralMass()) * pUmamiDepth, 0.0f, 1.0f);
+                reduction.umamiBed = clamp((1.0f - reduction.totalSpectralMass()) * pUmamiDepth, 0.0f, 1.0f);
 
                 // Volatile aromatics (high-freq shimmer) track band 6+7
-                reduction.volatileAromatics = (reduction.spectralMass[6]
-                                             + reduction.spectralMass[7]) * 0.5f;
+                reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
 
                 // Infusion: soft long tones add back spectral character to the top bands.
                 // When infusion voices are active, gently re-energize bands 6 and 7
@@ -427,12 +428,11 @@ public:
                 // This consumes the isInfusion flag (D004 / concept fix).
                 if (infusionVoiceCount > 0)
                 {
-                    float infuseRate = baseRate * static_cast<float> (infusionVoiceCount) * 0.3f;
-                    reduction.spectralMass[6] = clamp (reduction.spectralMass[6] + infuseRate, 0.0f, 1.0f);
-                    reduction.spectralMass[7] = clamp (reduction.spectralMass[7] + infuseRate * 0.5f, 0.0f, 1.0f);
+                    float infuseRate = baseRate * static_cast<float>(infusionVoiceCount) * 0.3f;
+                    reduction.spectralMass[6] = clamp(reduction.spectralMass[6] + infuseRate, 0.0f, 1.0f);
+                    reduction.spectralMass[7] = clamp(reduction.spectralMass[7] + infuseRate * 0.5f, 0.0f, 1.0f);
                     // Also refresh volatile aromatics from the infusion
-                    reduction.volatileAromatics = (reduction.spectralMass[6]
-                                                 + reduction.spectralMass[7]) * 0.5f;
+                    reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
                 }
             }
 
@@ -443,7 +443,8 @@ public:
             for (int v = 0; v < kMaxVoices; ++v)
             {
                 auto& voice = voices[v];
-                if (!voice.active) continue;
+                if (!voice.active)
+                    continue;
 
                 // Track hold duration for infusion detection
                 voice.holdDuration += inverseSr;
@@ -451,8 +452,8 @@ public:
                     voice.isInfusion = true;
 
                 // Update envelopes
-                voice.ampEnv.setADSR (pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR (pFiltA, pFiltD, pFiltS, pFiltR);
+                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
 
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
@@ -470,33 +471,42 @@ public:
 
                 // Synthesize partials, shaped by ReductionState
                 float voiceSample = 0.0f;
-                int numPartials = static_cast<int> (pRichness * 15.0f) + 1;
+                int numPartials = static_cast<int>(pRichness * 15.0f) + 1;
 
                 for (int p = 0; p < numPartials; ++p)
                 {
-                    float harmonic = static_cast<float> (p + 1);
+                    float harmonic = static_cast<float>(p + 1);
                     float freq = fundamental * harmonic;
-                    if (freq > srF * 0.49f) break;
+                    if (freq > srF * 0.49f)
+                        break;
 
                     // Determine which reduction band this partial falls into
                     // Map frequency to band (logarithmic: band 0 = <100Hz, band 7 = >8kHz)
                     int band = 0;
-                    if      (freq > 8000.0f) band = 7;
-                    else if (freq > 4000.0f) band = 6;
-                    else if (freq > 2000.0f) band = 5;
-                    else if (freq > 1000.0f) band = 4;
-                    else if (freq > 500.0f)  band = 3;
-                    else if (freq > 250.0f)  band = 2;
-                    else if (freq > 100.0f)  band = 1;
+                    if (freq > 8000.0f)
+                        band = 7;
+                    else if (freq > 4000.0f)
+                        band = 6;
+                    else if (freq > 2000.0f)
+                        band = 5;
+                    else if (freq > 1000.0f)
+                        band = 4;
+                    else if (freq > 500.0f)
+                        band = 3;
+                    else if (freq > 250.0f)
+                        band = 2;
+                    else if (freq > 100.0f)
+                        band = 1;
 
                     float bandGain = reduction.spectralMass[band];
 
                     // Phase accumulator
                     voice.partialPhase[p] += freq * inverseSr;
-                    if (voice.partialPhase[p] >= 1.0f) voice.partialPhase[p] -= 1.0f;
+                    if (voice.partialPhase[p] >= 1.0f)
+                        voice.partialPhase[p] -= 1.0f;
 
                     // Sine oscillator with 1/n harmonic weighting
-                    float sine = fastSin (voice.partialPhase[p] * 6.28318530718f);
+                    float sine = fastSin(voice.partialPhase[p] * 6.28318530718f);
                     float partialAmp = (1.0f / harmonic) * bandGain * velBright;
 
                     // Add LFO modulation (D005: breathing)
@@ -507,37 +517,36 @@ public:
                 }
 
                 // Normalize
-                voiceSample *= (2.0f / static_cast<float> (numPartials));
+                voiceSample *= (2.0f / static_cast<float>(numPartials));
 
                 // Maillard reaction: add subtle harmonic distortion as reduction deepens
                 if (reduction.concentrateDark > 0.05f)
                 {
                     float darkDrive = 1.0f + reduction.concentrateDark * 3.0f;
-                    voiceSample = fastTanh (voiceSample * darkDrive) / darkDrive;
+                    voiceSample = fastTanh(voiceSample * darkDrive) / darkDrive;
                 }
 
                 // Umami bed: boost fundamental when reduction is deep
                 if (reduction.umamiBed > 0.1f)
                 {
-                    float umamiBass = fastSin (voice.partialPhase[0] * 6.28318530718f)
-                                    * reduction.umamiBed * 0.3f;
+                    float umamiBass = fastSin(voice.partialPhase[0] * 6.28318530718f) * reduction.umamiBed * 0.3f;
                     voiceSample += umamiBass;
                 }
 
                 // Per-voice filter — cutoff reduces with session age
-                float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f)
-                    + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
-                voiceCutoff = clamp (voiceCutoff, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast (voiceCutoff, pFilterRes, srF);
-                voiceSample = voice.voiceFilter.processSample (voiceSample);
+                float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f) +
+                                    pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
+                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 // Apply amp envelope
                 voiceSample *= ampLevel;
 
                 // Stereo: pan based on note + LFO2
-                float pan = 0.5f + (static_cast<float> (voice.currentNote - 60) * 0.02f
-                            + lfo2Val * pLfo2Depth * 0.3f) * pStereoWidth;
-                pan = clamp (pan, 0.0f, 1.0f);
+                float pan = 0.5f + (static_cast<float>(voice.currentNote - 60) * 0.02f + lfo2Val * pLfo2Depth * 0.3f) *
+                                       pStereoWidth;
+                pan = clamp(pan, 0.0f, 1.0f);
 
                 sampleL += voiceSample * (1.0f - pan);
                 sampleR += voiceSample * pan;
@@ -548,58 +557,58 @@ public:
             sampleR *= pLevel;
 
             // Ring mod coupling
-            if (std::fabs (extRingMod) > 0.001f)
+            if (std::fabs(extRingMod) > 0.001f)
             {
                 sampleL *= (1.0f + extRingMod);
                 sampleR *= (1.0f + extRingMod);
             }
 
-            sampleL = softClip (sampleL);
-            sampleR = softClip (sampleR);
+            sampleL = softClip(sampleL);
+            sampleR = softClip(sampleR);
 
             lastSampleL = sampleL;
             lastSampleR = sampleR;
 
             outL[i] += sampleL;
-            if (outR) outR[i] += sampleR;
+            if (outR)
+                outR[i] += sampleR;
         }
 
         // Write sessionAge back to APVTS so host can display it (D004 fix).
         // The pSessionAgeParam is a read-only parameter the host/UI can observe.
         // Use relaxed ordering — this is a display value, not a sync barrier.
         if (pSessionAgeParam)
-            pSessionAgeParam->store (reduction.sessionAge, std::memory_order_relaxed);
+            pSessionAgeParam->store(reduction.sessionAge, std::memory_order_relaxed);
 
         // Reset coupling mods
         extFilterMod = 0.0f;
         extRingMod = 0.0f;
 
         // Silence gate
-        const float* rL = buffer.getReadPointer (0);
-        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr;
-        silenceGate.analyzeBlock (rL, rR, numSamples);
+        const float* rL = buffer.getReadPointer(0);
+        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(rL, rR, numSamples);
     }
 
     //-- Coupling ---------------------------------------------------------------
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? lastSampleL : lastSampleR;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* sourceBuffer, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int /*numSamples*/) override
     {
         switch (type)
         {
-            case CouplingType::AmpToFilter:
-                extFilterMod = amount * 4000.0f;
-                break;
-            case CouplingType::AudioToRing:
-                extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
-                break;
-            default:
-                break;
+        case CouplingType::AmpToFilter:
+            extFilterMod = amount * 4000.0f;
+            break;
+        case CouplingType::AudioToRing:
+            extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
+            break;
+        default:
+            break;
         }
     }
 
@@ -609,195 +618,166 @@ public:
     float getConcentrateDark() const { return reduction.concentrateDark; }
     float getUmamiBed() const { return reduction.umamiBed; }
     float getVolatileAromatics() const { return reduction.volatileAromatics; }
-    float getSpectralMass (int band) const
+    float getSpectralMass(int band) const
     {
-        if (band >= 0 && band < 8) return reduction.spectralMass[band];
+        if (band >= 0 && band < 8)
+            return reduction.spectralMass[band];
         return 0.0f;
     }
     float getTotalSpectralMass() const { return reduction.totalSpectralMass(); }
 
     // Access the full ReductionState for preset serialization
     const ReductionState& getReductionState() const { return reduction; }
-    void setReductionState (const ReductionState& state) { reduction = state; }
+    void setReductionState(const ReductionState& state) { reduction = state; }
 
     //-- Parameters -------------------------------------------------------------
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
-        return { params.begin(), params.end() };
+        addParametersImpl(params);
+        return {params.begin(), params.end()};
     }
 
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        addParametersImpl (params);
+        addParametersImpl(params);
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
 
         // Core reduction parameters
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_reductionRate", 1 }, "Reduction Rate",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_reductionRate", 1}, "Reduction Rate",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_heat", 1 }, "Heat",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_heat", 1}, "Heat",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_richness", 1 }, "Richness",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_richness", 1}, "Richness",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_maillard", 1 }, "Maillard",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_maillard", 1}, "Maillard",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_umamiDepth", 1 }, "Umami Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_umamiDepth", 1}, "Umami Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_concentrate", 1 }, "Concentrate",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_concentrate", 1}, "Concentrate",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_sessionTarget", 1 }, "Session Target (min)",
-            juce::NormalisableRange<float> (5.0f, 120.0f, 0.0f, 0.4f), 30.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_sessionTarget", 1}, "Session Target (min)",
+                                              juce::NormalisableRange<float>(5.0f, 120.0f, 0.0f, 0.4f), 30.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_sessionAge", 1 }, "Session Age (read-only)",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_sessionAge", 1}, "Session Age (read-only)",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_stateReset", 1 }, "Start Fresh",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_stateReset", 1}, "Start Fresh",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // Tone
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_stereoWidth", 1 }, "Stereo Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_stereoWidth", 1}, "Stereo Width",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filterCutoff", 1 }, "Filter Cutoff",
-            juce::NormalisableRange<float> (50.0f, 16000.0f, 0.0f, 0.3f), 8000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filterCutoff", 1}, "Filter Cutoff",
+                                              juce::NormalisableRange<float>(50.0f, 16000.0f, 0.0f, 0.3f), 8000.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filterRes", 1 }, "Filter Resonance",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filterRes", 1}, "Filter Resonance",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filtEnvAmount", 1 }, "Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtEnvAmount", 1}, "Filter Env Amount",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
         // Amp ADSR
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_ampAttack", 1 }, "Amp Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_ampAttack", 1}, "Amp Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_ampDecay", 1 }, "Amp Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_ampDecay", 1}, "Amp Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 1.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_ampSustain", 1 }, "Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.9f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_ampSustain", 1}, "Amp Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.9f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_ampRelease", 1 }, "Amp Release",
-            juce::NormalisableRange<float> (0.01f, 15.0f, 0.0f, 0.3f), 3.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_ampRelease", 1}, "Amp Release",
+                                              juce::NormalisableRange<float>(0.01f, 15.0f, 0.0f, 0.3f), 3.0f));
 
         // Filter ADSR
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filtAttack", 1 }, "Filter Attack",
-            juce::NormalisableRange<float> (0.001f, 5.0f, 0.0f, 0.3f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtAttack", 1}, "Filter Attack",
+                                              juce::NormalisableRange<float>(0.001f, 5.0f, 0.0f, 0.3f), 0.2f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filtDecay", 1 }, "Filter Decay",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtDecay", 1}, "Filter Decay",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 0.8f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filtSustain", 1 }, "Filter Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtSustain", 1}, "Filter Sustain",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_filtRelease", 1 }, "Filter Release",
-            juce::NormalisableRange<float> (0.01f, 10.0f, 0.0f, 0.3f), 1.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtRelease", 1}, "Filter Release",
+                                              juce::NormalisableRange<float>(0.01f, 10.0f, 0.0f, 0.3f), 1.5f));
 
         // LFOs
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_lfo1Rate", 1 }, "LFO 1 Rate",
-            juce::NormalisableRange<float> (0.005f, 10.0f, 0.0f, 0.3f), 0.08f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_lfo1Rate", 1}, "LFO 1 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 10.0f, 0.0f, 0.3f), 0.08f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_lfo1Depth", 1 }, "LFO 1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_lfo1Depth", 1}, "LFO 1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_lfo2Rate", 1 }, "LFO 2 Rate",
-            juce::NormalisableRange<float> (0.005f, 5.0f, 0.0f, 0.3f), 0.03f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_lfo2Rate", 1}, "LFO 2 Rate",
+                                              juce::NormalisableRange<float>(0.005f, 5.0f, 0.0f, 0.3f), 0.03f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_lfo2Depth", 1 }, "LFO 2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.1f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_lfo2Depth", 1}, "LFO 2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.1f));
 
         // Output
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_level", 1 }, "Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.8f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_level", 1}, "Level",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_macroCharacter", 1 }, "Character",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_macroCharacter", 1}, "Character",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_macroMovement", 1 }, "Movement",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_macroMovement", 1}, "Movement",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_macroCoupling", 1 }, "Coupling",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_macroCoupling", 1}, "Coupling",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "worn_macroSpace", 1 }, "Space",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_macroSpace", 1}, "Space",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        pReductionRateParam = apvts.getRawParameterValue ("worn_reductionRate");
-        pHeatParam          = apvts.getRawParameterValue ("worn_heat");
-        pRichnessParam      = apvts.getRawParameterValue ("worn_richness");
-        pMaillardParam      = apvts.getRawParameterValue ("worn_maillard");
-        pUmamiDepthParam    = apvts.getRawParameterValue ("worn_umamiDepth");
-        pConcentrateParam   = apvts.getRawParameterValue ("worn_concentrate");
-        pSessionTargetParam = apvts.getRawParameterValue ("worn_sessionTarget");
-        pSessionAgeParam    = apvts.getRawParameterValue ("worn_sessionAge");
-        pStateResetParam    = apvts.getRawParameterValue ("worn_stateReset");
-        pStereoWidthParam   = apvts.getRawParameterValue ("worn_stereoWidth");
-        pFilterCutParam     = apvts.getRawParameterValue ("worn_filterCutoff");
-        pFilterResParam     = apvts.getRawParameterValue ("worn_filterRes");
-        pFiltEnvAmtParam    = apvts.getRawParameterValue ("worn_filtEnvAmount");
-        pAmpAParam          = apvts.getRawParameterValue ("worn_ampAttack");
-        pAmpDParam          = apvts.getRawParameterValue ("worn_ampDecay");
-        pAmpSParam          = apvts.getRawParameterValue ("worn_ampSustain");
-        pAmpRParam          = apvts.getRawParameterValue ("worn_ampRelease");
-        pFiltAParam         = apvts.getRawParameterValue ("worn_filtAttack");
-        pFiltDParam         = apvts.getRawParameterValue ("worn_filtDecay");
-        pFiltSParam         = apvts.getRawParameterValue ("worn_filtSustain");
-        pFiltRParam         = apvts.getRawParameterValue ("worn_filtRelease");
-        pLfo1RateParam      = apvts.getRawParameterValue ("worn_lfo1Rate");
-        pLfo1DepthParam     = apvts.getRawParameterValue ("worn_lfo1Depth");
-        pLfo2RateParam      = apvts.getRawParameterValue ("worn_lfo2Rate");
-        pLfo2DepthParam     = apvts.getRawParameterValue ("worn_lfo2Depth");
-        pLevelParam         = apvts.getRawParameterValue ("worn_level");
-        pMacroCharacterParam = apvts.getRawParameterValue ("worn_macroCharacter");
-        pMacroMovementParam  = apvts.getRawParameterValue ("worn_macroMovement");
-        pMacroCouplingParam  = apvts.getRawParameterValue ("worn_macroCoupling");
-        pMacroSpaceParam     = apvts.getRawParameterValue ("worn_macroSpace");
+        pReductionRateParam = apvts.getRawParameterValue("worn_reductionRate");
+        pHeatParam = apvts.getRawParameterValue("worn_heat");
+        pRichnessParam = apvts.getRawParameterValue("worn_richness");
+        pMaillardParam = apvts.getRawParameterValue("worn_maillard");
+        pUmamiDepthParam = apvts.getRawParameterValue("worn_umamiDepth");
+        pConcentrateParam = apvts.getRawParameterValue("worn_concentrate");
+        pSessionTargetParam = apvts.getRawParameterValue("worn_sessionTarget");
+        pSessionAgeParam = apvts.getRawParameterValue("worn_sessionAge");
+        pStateResetParam = apvts.getRawParameterValue("worn_stateReset");
+        pStereoWidthParam = apvts.getRawParameterValue("worn_stereoWidth");
+        pFilterCutParam = apvts.getRawParameterValue("worn_filterCutoff");
+        pFilterResParam = apvts.getRawParameterValue("worn_filterRes");
+        pFiltEnvAmtParam = apvts.getRawParameterValue("worn_filtEnvAmount");
+        pAmpAParam = apvts.getRawParameterValue("worn_ampAttack");
+        pAmpDParam = apvts.getRawParameterValue("worn_ampDecay");
+        pAmpSParam = apvts.getRawParameterValue("worn_ampSustain");
+        pAmpRParam = apvts.getRawParameterValue("worn_ampRelease");
+        pFiltAParam = apvts.getRawParameterValue("worn_filtAttack");
+        pFiltDParam = apvts.getRawParameterValue("worn_filtDecay");
+        pFiltSParam = apvts.getRawParameterValue("worn_filtSustain");
+        pFiltRParam = apvts.getRawParameterValue("worn_filtRelease");
+        pLfo1RateParam = apvts.getRawParameterValue("worn_lfo1Rate");
+        pLfo1DepthParam = apvts.getRawParameterValue("worn_lfo1Depth");
+        pLfo2RateParam = apvts.getRawParameterValue("worn_lfo2Rate");
+        pLfo2DepthParam = apvts.getRawParameterValue("worn_lfo2Depth");
+        pLevelParam = apvts.getRawParameterValue("worn_level");
+        pMacroCharacterParam = apvts.getRawParameterValue("worn_macroCharacter");
+        pMacroMovementParam = apvts.getRawParameterValue("worn_macroMovement");
+        pMacroCouplingParam = apvts.getRawParameterValue("worn_macroCoupling");
+        pMacroSpaceParam = apvts.getRawParameterValue("worn_macroSpace");
     }
 
     //-- Identity ---------------------------------------------------------------
@@ -806,14 +786,11 @@ public:
 
     juce::Colour getAccentColour() const override
     {
-        return juce::Colour (0xFF4A1A2E);  // Reduced Wine
+        return juce::Colour(0xFF4A1A2E); // Reduced Wine
     }
 
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override
-    {
-        return VoiceAllocator::countActive (voices, kMaxVoices);
-    }
+    int getActiveVoiceCount() const override { return VoiceAllocator::countActive(voices, kMaxVoices); }
 
 private:
     double sr = 44100.0;
@@ -833,47 +810,47 @@ private:
     BreathingLFO breathLfo;
 
     // MIDI state
-    float aftertouch    = 0.0f;
-    float modWheel      = 0.0f;
+    float aftertouch = 0.0f;
+    float modWheel = 0.0f;
     float pitchBendNorm = 0.0f;
 
     // Coupling state
     float extFilterMod = 0.0f;
-    float extRingMod   = 0.0f;
-    float lastSampleL  = 0.0f;
-    float lastSampleR  = 0.0f;
+    float extRingMod = 0.0f;
+    float lastSampleL = 0.0f;
+    float lastSampleR = 0.0f;
 
     // Parameter pointers (30 params)
     std::atomic<float>* pReductionRateParam = nullptr;
-    std::atomic<float>* pHeatParam          = nullptr;
-    std::atomic<float>* pRichnessParam      = nullptr;
-    std::atomic<float>* pMaillardParam      = nullptr;
-    std::atomic<float>* pUmamiDepthParam    = nullptr;
-    std::atomic<float>* pConcentrateParam   = nullptr;
+    std::atomic<float>* pHeatParam = nullptr;
+    std::atomic<float>* pRichnessParam = nullptr;
+    std::atomic<float>* pMaillardParam = nullptr;
+    std::atomic<float>* pUmamiDepthParam = nullptr;
+    std::atomic<float>* pConcentrateParam = nullptr;
     std::atomic<float>* pSessionTargetParam = nullptr;
-    std::atomic<float>* pSessionAgeParam    = nullptr;
-    std::atomic<float>* pStateResetParam    = nullptr;
-    std::atomic<float>* pStereoWidthParam   = nullptr;
-    std::atomic<float>* pFilterCutParam     = nullptr;
-    std::atomic<float>* pFilterResParam     = nullptr;
-    std::atomic<float>* pFiltEnvAmtParam    = nullptr;
-    std::atomic<float>* pAmpAParam          = nullptr;
-    std::atomic<float>* pAmpDParam          = nullptr;
-    std::atomic<float>* pAmpSParam          = nullptr;
-    std::atomic<float>* pAmpRParam          = nullptr;
-    std::atomic<float>* pFiltAParam         = nullptr;
-    std::atomic<float>* pFiltDParam         = nullptr;
-    std::atomic<float>* pFiltSParam         = nullptr;
-    std::atomic<float>* pFiltRParam         = nullptr;
-    std::atomic<float>* pLfo1RateParam      = nullptr;
-    std::atomic<float>* pLfo1DepthParam     = nullptr;
-    std::atomic<float>* pLfo2RateParam      = nullptr;
-    std::atomic<float>* pLfo2DepthParam     = nullptr;
-    std::atomic<float>* pLevelParam         = nullptr;
+    std::atomic<float>* pSessionAgeParam = nullptr;
+    std::atomic<float>* pStateResetParam = nullptr;
+    std::atomic<float>* pStereoWidthParam = nullptr;
+    std::atomic<float>* pFilterCutParam = nullptr;
+    std::atomic<float>* pFilterResParam = nullptr;
+    std::atomic<float>* pFiltEnvAmtParam = nullptr;
+    std::atomic<float>* pAmpAParam = nullptr;
+    std::atomic<float>* pAmpDParam = nullptr;
+    std::atomic<float>* pAmpSParam = nullptr;
+    std::atomic<float>* pAmpRParam = nullptr;
+    std::atomic<float>* pFiltAParam = nullptr;
+    std::atomic<float>* pFiltDParam = nullptr;
+    std::atomic<float>* pFiltSParam = nullptr;
+    std::atomic<float>* pFiltRParam = nullptr;
+    std::atomic<float>* pLfo1RateParam = nullptr;
+    std::atomic<float>* pLfo1DepthParam = nullptr;
+    std::atomic<float>* pLfo2RateParam = nullptr;
+    std::atomic<float>* pLfo2DepthParam = nullptr;
+    std::atomic<float>* pLevelParam = nullptr;
     std::atomic<float>* pMacroCharacterParam = nullptr;
-    std::atomic<float>* pMacroMovementParam  = nullptr;
-    std::atomic<float>* pMacroCouplingParam  = nullptr;
-    std::atomic<float>* pMacroSpaceParam     = nullptr;
+    std::atomic<float>* pMacroMovementParam = nullptr;
+    std::atomic<float>* pMacroCouplingParam = nullptr;
+    std::atomic<float>* pMacroSpaceParam = nullptr;
 };
 
 } // namespace xoceanus

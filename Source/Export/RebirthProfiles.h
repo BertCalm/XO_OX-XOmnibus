@@ -9,7 +9,8 @@
 #include <utility>
 #include <vector>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // RebirthProfileID — The 5 engine-inspired transformation profiles.
@@ -23,11 +24,11 @@ namespace xoceanus {
 //==============================================================================
 enum class RebirthProfileID
 {
-    OBRIX,      ///< Harmonic Character — reef-modal saturation + comb + reverb
-    ONSET,      ///< Percussive Crunch  — transient shaping + noise burst + filter
-    OWARE,      ///< Resonant Body      — Akan-interval comb bank + sympathetic resonance
-    OPERA,      ///< Harmonic Shimmer   — FFT formant estimation + resonator bank
-    OVERWASH    ///< Deep Diffusion     — allpass cascade + spectral blur + LFO
+    OBRIX,   ///< Harmonic Character — reef-modal saturation + comb + reverb
+    ONSET,   ///< Percussive Crunch  — transient shaping + noise burst + filter
+    OWARE,   ///< Resonant Body      — Akan-interval comb bank + sympathetic resonance
+    OPERA,   ///< Harmonic Shimmer   — FFT formant estimation + resonator bank
+    OVERWASH ///< Deep Diffusion     — allpass cascade + spectral blur + LFO
 };
 
 //==============================================================================
@@ -36,19 +37,19 @@ enum class RebirthProfileID
 //==============================================================================
 enum class RebirthDSPModuleID
 {
-    Saturator,          ///< Source/DSP/Effects/Saturator.h
-    Combulator,         ///< Source/DSP/Effects/Combulator.h
-    TransientDesigner,  ///< Source/DSP/Effects/TransientDesigner.h
-    BrickwallLimiter,   ///< Source/DSP/Effects/BrickwallLimiter.h (used by pipeline, not in chains)
-    LushReverb,         ///< Source/DSP/Effects/LushReverb.h
-    SpectralTilt,       ///< Source/DSP/Effects/SpectralTilt.h
-    AllpassDiffuser,    ///< Source/Export/RebirthDSP.h
-    FormantResonator,   ///< Source/Export/RebirthDSP.h
-    NoiseBurst,         ///< Source/Export/RebirthDSP.h
-    SoftClipGuard,      ///< Source/Export/RebirthDSP.h — inline, no module instance needed
-    LFOModulator,       ///< Inline LFO applied to prior module parameters; params: rate, depth
-    BiquadLPFilter,     ///< Inline 2nd-order Butterworth LP — used by ONSET and OVERWASH
-    WetDryMix           ///< Final wet/dry blend using the intensity parameter
+    Saturator,         ///< Source/DSP/Effects/Saturator.h
+    Combulator,        ///< Source/DSP/Effects/Combulator.h
+    TransientDesigner, ///< Source/DSP/Effects/TransientDesigner.h
+    BrickwallLimiter,  ///< Source/DSP/Effects/BrickwallLimiter.h (used by pipeline, not in chains)
+    LushReverb,        ///< Source/DSP/Effects/LushReverb.h
+    SpectralTilt,      ///< Source/DSP/Effects/SpectralTilt.h
+    AllpassDiffuser,   ///< Source/Export/RebirthDSP.h
+    FormantResonator,  ///< Source/Export/RebirthDSP.h
+    NoiseBurst,        ///< Source/Export/RebirthDSP.h
+    SoftClipGuard,     ///< Source/Export/RebirthDSP.h — inline, no module instance needed
+    LFOModulator,      ///< Inline LFO applied to prior module parameters; params: rate, depth
+    BiquadLPFilter,    ///< Inline 2nd-order Butterworth LP — used by ONSET and OVERWASH
+    WetDryMix          ///< Final wet/dry blend using the intensity parameter
 };
 
 //==============================================================================
@@ -65,7 +66,7 @@ enum class RebirthDSPModuleID
 struct DSPModuleConfig
 {
     RebirthDSPModuleID moduleId;
-    std::unordered_map<std::string, float>                   params;
+    std::unordered_map<std::string, float> params;
     std::unordered_map<std::string, std::pair<float, float>> velocityScale;
 };
 
@@ -77,10 +78,10 @@ struct DSPModuleConfig
 //==============================================================================
 struct RebirthSettings
 {
-    RebirthProfileID profileId   = RebirthProfileID::OBRIX;
-    float            intensity   = 0.7f;   ///< 0.0 = dry, 1.0 = full transformation
-    float            chaosAmount = 0.0f;   ///< 0.0–1.0 noise texture energy (intensity × profile scale)
-    bool             enabled     = false;
+    RebirthProfileID profileId = RebirthProfileID::OBRIX;
+    float intensity = 0.7f;   ///< 0.0 = dry, 1.0 = full transformation
+    float chaosAmount = 0.0f; ///< 0.0–1.0 noise texture energy (intensity × profile scale)
+    bool enabled = false;
 };
 
 //==============================================================================
@@ -95,16 +96,16 @@ struct RebirthSettings
 //==============================================================================
 struct RebirthProfile
 {
-    RebirthProfileID   id;
-    const char*        engineName;              ///< "OBRIX", "ONSET", etc.
-    const char*        producerLabel;           ///< Human-facing name shown in UI
-    const char*        materialCategory;        ///< "TONAL", "PERCUSSIVE", "HARMONIC", "TEXTURAL"
-    const char*        description;             ///< 1-line sonic description for UI
-    const char*        characterBrief;          ///< Acceptance test: what should the output sound like?
-    const char*        intensityDescription;    ///< Per-profile intensity slider label for UI
-    float              recommendedTransientMax; ///< 0.0–1.0; warn if sample transient ratio exceeds this
-    float              tailSeconds;             ///< Extra render time after sample ends (reverb/diffusion)
-    std::vector<DSPModuleConfig> chain;         ///< Ordered list of DSP modules to apply
+    RebirthProfileID id;
+    const char* engineName;             ///< "OBRIX", "ONSET", etc.
+    const char* producerLabel;          ///< Human-facing name shown in UI
+    const char* materialCategory;       ///< "TONAL", "PERCUSSIVE", "HARMONIC", "TEXTURAL"
+    const char* description;            ///< 1-line sonic description for UI
+    const char* characterBrief;         ///< Acceptance test: what should the output sound like?
+    const char* intensityDescription;   ///< Per-profile intensity slider label for UI
+    float recommendedTransientMax;      ///< 0.0–1.0; warn if sample transient ratio exceeds this
+    float tailSeconds;                  ///< Extra render time after sample ends (reverb/diffusion)
+    std::vector<DSPModuleConfig> chain; ///< Ordered list of DSP modules to apply
 };
 
 //==============================================================================
@@ -122,7 +123,7 @@ struct RebirthProfile
 //   The pipeline equalises LUFS across layers so the spectral difference
 //   is what the player hears, not a volume ramp.
 //==============================================================================
-inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
+inline const RebirthProfile& getRebirthProfile(RebirthProfileID id)
 {
     //--------------------------------------------------------------------------
     // OBRIX — "Harmonic Character"
@@ -150,41 +151,24 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
         "Sample is recognizable but richer — dense overtone structure, comb shimmer, "
         "coral-reef warmth. At 0.7 intensity: clearly the original sample, harmonically alive.",
         "Controls harmonic density and comb resonance",
-        0.7f,   // warn if transient ratio > 0.7 — percussive material may over-saturate
-        0.5f,   // 0.5s reverb tail
-        {
-            // Step 1: Saturator — Tube mode (mode=0), vel-scaled drive 0.2→0.8
-            {
-                RebirthDSPModuleID::Saturator,
-                { {"drive", 0.4f}, {"mode", 0.0f} /*Tube=0*/ },
-                { {"drive", {0.2f, 0.8f}} }
-            },
-            // Step 2: SoftClipGuard — inter-stage limiter after Saturator gain
-            // No params — pipeline applies softClip() inline to all channels
-            {
-                RebirthDSPModuleID::SoftClipGuard,
-                {}, {}
-            },
-            // Step 3: Combulator — 3 comb filters, base feedback 0.85
-            //         vel-scaled feedback 0.75→0.95, damping 0.5→0.1 (bright→dark)
-            {
-                RebirthDSPModuleID::Combulator,
-                { {"feedback", 0.85f}, {"damping", 0.3f}, {"mix", 0.4f} },
-                { {"feedback", {0.75f, 0.95f}}, {"damping", {0.5f, 0.1f}} }
-            },
-            // Step 4: LushReverb — decay 0.4s, vel-scaled mix 0.15→0.35
-            {
-                RebirthDSPModuleID::LushReverb,
-                { {"roomSize", 0.5f}, {"damping", 0.4f}, {"mix", 0.25f} },
-                { {"mix", {0.15f, 0.35f}} }
-            },
-            // Step 5: WetDryMix — final blend driven by RebirthSettings::intensity
-            {
-                RebirthDSPModuleID::WetDryMix,
-                {}, {}
-            }
-        }
-    };
+        0.7f, // warn if transient ratio > 0.7 — percussive material may over-saturate
+        0.5f, // 0.5s reverb tail
+        {     // Step 1: Saturator — Tube mode (mode=0), vel-scaled drive 0.2→0.8
+         {RebirthDSPModuleID::Saturator, {{"drive", 0.4f}, {"mode", 0.0f} /*Tube=0*/}, {{"drive", {0.2f, 0.8f}}}},
+         // Step 2: SoftClipGuard — inter-stage limiter after Saturator gain
+         // No params — pipeline applies softClip() inline to all channels
+         {RebirthDSPModuleID::SoftClipGuard, {}, {}},
+         // Step 3: Combulator — 3 comb filters, base feedback 0.85
+         //         vel-scaled feedback 0.75→0.95, damping 0.5→0.1 (bright→dark)
+         {RebirthDSPModuleID::Combulator,
+          {{"feedback", 0.85f}, {"damping", 0.3f}, {"mix", 0.4f}},
+          {{"feedback", {0.75f, 0.95f}}, {"damping", {0.5f, 0.1f}}}},
+         // Step 4: LushReverb — decay 0.4s, vel-scaled mix 0.15→0.35
+         {RebirthDSPModuleID::LushReverb,
+          {{"roomSize", 0.5f}, {"damping", 0.4f}, {"mix", 0.25f}},
+          {{"mix", {0.15f, 0.35f}}}},
+         // Step 5: WetDryMix — final blend driven by RebirthSettings::intensity
+         {RebirthDSPModuleID::WetDryMix, {}, {}}}};
 
     //--------------------------------------------------------------------------
     // ONSET — "Percussive Crunch"
@@ -213,44 +197,26 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
         "Attack is sculpted and crackles with noise — body is filter-swept and punchy. "
         "Vel 0: gentle. Vel 1: aggressive, snappy, full crack.",
         "Controls transient aggression and noise level",
-        1.0f,   // no warning — designed for percussive material (all transient ratios welcome)
-        0.15f,  // short tail — percussive content decays quickly
-        {
-            // Step 1: TransientDesigner — base attack +6dB (0.5 normalised), vel-scaled +2→+12dB
-            //         sustain: -3dB constant (tighten body for punchiness)
-            //         Normalised mapping: attack param 0.167 = +2dB, 1.0 = +12dB
-            {
-                RebirthDSPModuleID::TransientDesigner,
-                { {"attack", 0.5f}, {"sustain", -0.25f} },
-                { {"attack", {0.167f, 1.0f}} }
-            },
-            // Step 2: NoiseBurst — 5ms HP-filtered noise burst, vel-scaled level -30→-18 dBFS
-            //         HP cutoff: 4kHz (adds "crack" texture above the fundamental)
-            {
-                RebirthDSPModuleID::NoiseBurst,
-                { {"burstLengthMs", 5.0f}, {"burstLevelDb", -24.0f}, {"hpfCutoffHz", 4000.0f} },
-                { {"burstLevelDb", {-30.0f, -18.0f}} }
-            },
-            // Step 3: Saturator — Digital mode (mode=2), vel-scaled drive 0.1→0.6
-            {
-                RebirthDSPModuleID::Saturator,
-                { {"drive", 0.3f}, {"mode", 2.0f} /*Digital=2*/ },
-                { {"drive", {0.1f, 0.6f}} }
-            },
-            // Step 4: BiquadLPFilter — vel-scaled cutoff 8kHz→18kHz (darker→brighter)
-            //         Q = 0.7 (Butterworth — no resonant peak)
-            {
-                RebirthDSPModuleID::BiquadLPFilter,
-                { {"cutoffHz", 13000.0f}, {"q", 0.7f} },
-                { {"cutoffHz", {8000.0f, 18000.0f}} }
-            },
-            // Step 5: WetDryMix
-            {
-                RebirthDSPModuleID::WetDryMix,
-                {}, {}
-            }
-        }
-    };
+        1.0f,  // no warning — designed for percussive material (all transient ratios welcome)
+        0.15f, // short tail — percussive content decays quickly
+        {      // Step 1: TransientDesigner — base attack +6dB (0.5 normalised), vel-scaled +2→+12dB
+         //         sustain: -3dB constant (tighten body for punchiness)
+         //         Normalised mapping: attack param 0.167 = +2dB, 1.0 = +12dB
+         {RebirthDSPModuleID::TransientDesigner, {{"attack", 0.5f}, {"sustain", -0.25f}}, {{"attack", {0.167f, 1.0f}}}},
+         // Step 2: NoiseBurst — 5ms HP-filtered noise burst, vel-scaled level -30→-18 dBFS
+         //         HP cutoff: 4kHz (adds "crack" texture above the fundamental)
+         {RebirthDSPModuleID::NoiseBurst,
+          {{"burstLengthMs", 5.0f}, {"burstLevelDb", -24.0f}, {"hpfCutoffHz", 4000.0f}},
+          {{"burstLevelDb", {-30.0f, -18.0f}}}},
+         // Step 3: Saturator — Digital mode (mode=2), vel-scaled drive 0.1→0.6
+         {RebirthDSPModuleID::Saturator, {{"drive", 0.3f}, {"mode", 2.0f} /*Digital=2*/}, {{"drive", {0.1f, 0.6f}}}},
+         // Step 4: BiquadLPFilter — vel-scaled cutoff 8kHz→18kHz (darker→brighter)
+         //         Q = 0.7 (Butterworth — no resonant peak)
+         {RebirthDSPModuleID::BiquadLPFilter,
+          {{"cutoffHz", 13000.0f}, {"q", 0.7f}},
+          {{"cutoffHz", {8000.0f, 18000.0f}}}},
+         // Step 5: WetDryMix
+         {RebirthDSPModuleID::WetDryMix, {}, {}}}};
 
     //--------------------------------------------------------------------------
     // OWARE — "Resonant Body"
@@ -282,46 +248,29 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
         "Sample excites a tuned resonant body — pitched ringing, dark shimmer. "
         "Vel 0: clean bright ring. Vel 1: dense dark buzzing resonance.",
         "Controls resonance depth and tonal darkness",
-        1.0f,   // no warning — resonance works well with all material
-        0.8f,   // 0.8s tail — Akan combs ring long
-        {
-            // Step 1: Combulator — primary Akan-interval comb bank
-            //         Pipeline sets tuning from spectral centroid analysis.
-            //         vel-scaled feedback 0.8→0.98 (deeper resonance at hard velocity)
-            {
-                RebirthDSPModuleID::Combulator,
-                { {"feedback", 0.9f}, {"damping", 0.25f}, {"mix", 0.5f} },
-                { {"feedback", {0.8f, 0.98f}} }
-            },
-            // Step 2: SoftClipGuard — protect against near-resonant comb feedback
-            {
-                RebirthDSPModuleID::SoftClipGuard,
-                {}, {}
-            },
-            // Step 3: Combulator (sympathetic) — 2nd comb bank at harmonic intervals
-            //         Lower feedback (0.3–0.5), lower mix (0.15) → shimmer layer
-            //         Pipeline tunes this to sub-harmonics of the primary comb set
-            {
-                RebirthDSPModuleID::Combulator,
-                { {"feedback", 0.4f}, {"damping", 0.6f}, {"mix", 0.15f} },
-                { {"feedback", {0.3f, 0.5f}} }
-            },
-            // Step 4: SpectralTilt — vel-scaled tilt
-            //         positive tilt = high-frequency boost (bright), negative = dark
-            //         Vel 0: +0.6 (≈ +3dB/oct brightness)
-            //         Vel 1: -0.4 (≈ -2dB/oct darkness)
-            {
-                RebirthDSPModuleID::SpectralTilt,
-                { {"tilt", 0.0f} },
-                { {"tilt", {0.6f, -0.4f}} }
-            },
-            // Step 5: WetDryMix
-            {
-                RebirthDSPModuleID::WetDryMix,
-                {}, {}
-            }
-        }
-    };
+        1.0f, // no warning — resonance works well with all material
+        0.8f, // 0.8s tail — Akan combs ring long
+        {     // Step 1: Combulator — primary Akan-interval comb bank
+         //         Pipeline sets tuning from spectral centroid analysis.
+         //         vel-scaled feedback 0.8→0.98 (deeper resonance at hard velocity)
+         {RebirthDSPModuleID::Combulator,
+          {{"feedback", 0.9f}, {"damping", 0.25f}, {"mix", 0.5f}},
+          {{"feedback", {0.8f, 0.98f}}}},
+         // Step 2: SoftClipGuard — protect against near-resonant comb feedback
+         {RebirthDSPModuleID::SoftClipGuard, {}, {}},
+         // Step 3: Combulator (sympathetic) — 2nd comb bank at harmonic intervals
+         //         Lower feedback (0.3–0.5), lower mix (0.15) → shimmer layer
+         //         Pipeline tunes this to sub-harmonics of the primary comb set
+         {RebirthDSPModuleID::Combulator,
+          {{"feedback", 0.4f}, {"damping", 0.6f}, {"mix", 0.15f}},
+          {{"feedback", {0.3f, 0.5f}}}},
+         // Step 4: SpectralTilt — vel-scaled tilt
+         //         positive tilt = high-frequency boost (bright), negative = dark
+         //         Vel 0: +0.6 (≈ +3dB/oct brightness)
+         //         Vel 1: -0.4 (≈ -2dB/oct darkness)
+         {RebirthDSPModuleID::SpectralTilt, {{"tilt", 0.0f}}, {{"tilt", {0.6f, -0.4f}}}},
+         // Step 5: WetDryMix
+         {RebirthDSPModuleID::WetDryMix, {}, {}}}};
 
     //--------------------------------------------------------------------------
     // OPERA — "Harmonic Shimmer"
@@ -358,39 +307,25 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
         "Sample gains vocal/choral shimmer — tonal material sounds alive and evolving. "
         "Vel 0: subtle warmth. Vel 1: dramatic shimmering, vocal resonance.",
         "Controls resonator Q and spectral shimmer brightness",
-        0.5f,   // warn if transient ratio > 0.5 — transient material gets attack blur from resonator ringing
-        1.0f,   // 1.0s tail — resonators ring after sample ends
-        {
-            // Step 1: FormantResonator — FFT formant analysis + biquad resonator bank
-            //         vel-scaled Q 4.0→16.0 (wide/warm → narrow/bright)
-            //         vel-scaled mix 0.3→0.5 (subtle → prominent resonance)
-            {
-                RebirthDSPModuleID::FormantResonator,
-                { {"q", 8.0f}, {"mix", 0.4f} },
-                { {"q", {4.0f, 16.0f}}, {"mix", {0.3f, 0.5f}} }
-            },
-            // Step 2: SpectralTilt — vel-scaled: soft = flat (0), hard = +0.4 bright
-            //         (+0.4 ≈ +2dB/oct high-frequency shimmer boost)
-            {
-                RebirthDSPModuleID::SpectralTilt,
-                { {"tilt", 0.0f} },
-                { {"tilt", {0.0f, 0.4f}} }
-            },
-            // Step 3: LFOModulator — slow Kuramoto-inspired shimmer
-            //         rate: 0.3 Hz, depth: ±50 Hz on formant center frequencies
-            //         vel-scaled depth 0.3→1.0 (subtle → dramatic modulation)
-            {
-                RebirthDSPModuleID::LFOModulator,
-                { {"rate", 0.3f}, {"depth", 50.0f}, {"target", 0.0f} /*formant centers*/ },
-                { {"depth", {15.0f, 50.0f}} }
-            },
-            // Step 4: WetDryMix
-            {
-                RebirthDSPModuleID::WetDryMix,
-                {}, {}
-            }
-        }
-    };
+        0.5f, // warn if transient ratio > 0.5 — transient material gets attack blur from resonator ringing
+        1.0f, // 1.0s tail — resonators ring after sample ends
+        {     // Step 1: FormantResonator — FFT formant analysis + biquad resonator bank
+         //         vel-scaled Q 4.0→16.0 (wide/warm → narrow/bright)
+         //         vel-scaled mix 0.3→0.5 (subtle → prominent resonance)
+         {RebirthDSPModuleID::FormantResonator,
+          {{"q", 8.0f}, {"mix", 0.4f}},
+          {{"q", {4.0f, 16.0f}}, {"mix", {0.3f, 0.5f}}}},
+         // Step 2: SpectralTilt — vel-scaled: soft = flat (0), hard = +0.4 bright
+         //         (+0.4 ≈ +2dB/oct high-frequency shimmer boost)
+         {RebirthDSPModuleID::SpectralTilt, {{"tilt", 0.0f}}, {{"tilt", {0.0f, 0.4f}}}},
+         // Step 3: LFOModulator — slow Kuramoto-inspired shimmer
+         //         rate: 0.3 Hz, depth: ±50 Hz on formant center frequencies
+         //         vel-scaled depth 0.3→1.0 (subtle → dramatic modulation)
+         {RebirthDSPModuleID::LFOModulator,
+          {{"rate", 0.3f}, {"depth", 50.0f}, {"target", 0.0f} /*formant centers*/},
+          {{"depth", {15.0f, 50.0f}}}},
+         // Step 4: WetDryMix
+         {RebirthDSPModuleID::WetDryMix, {}, {}}}};
 
     //--------------------------------------------------------------------------
     // OVERWASH — "Deep Diffusion"
@@ -423,56 +358,44 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
         "Transients dissolve into ambient wash — like hearing the sample through deep water. "
         "Vel 0: ethereal, open. Vel 1: deep, submerged, oceanic.",
         "Controls diffusion depth and submersion darkness",
-        0.4f,   // warn if transient ratio > 0.4 — percussive attacks will dissolve (by design, but warn)
-        2.0f,   // 2.0s tail — diffusion network rings significantly after source ends
-        {
-            // Step 1: AllpassDiffuser — 4-stage cascade
-            //         Delay times: [7.1ms, 11.3ms, 17.9ms, 23.7ms] (prime-ish ratios)
-            //         vel-scaled feedback 0.4→0.8 (light diffusion → deep wash)
-            {
-                RebirthDSPModuleID::AllpassDiffuser,
-                { {"feedback", 0.6f},
-                  {"delayMs0", 7.1f}, {"delayMs1", 11.3f},
-                  {"delayMs2", 17.9f}, {"delayMs3", 23.7f} },
-                { {"feedback", {0.4f, 0.8f}} }
-            },
-            // Step 2: BiquadLPFilter — vel-scaled cutoff 12kHz→6kHz (harder = darker)
-            //         Q = 0.7 (Butterworth — smooth rolloff, no resonant peak)
-            {
-                RebirthDSPModuleID::BiquadLPFilter,
-                { {"cutoffHz", 9000.0f}, {"q", 0.7f} },
-                { {"cutoffHz", {12000.0f, 6000.0f}} }
-            },
-            // Step 3: LFOModulator — slow chorus-like movement on allpass delay times
-            //         rate: 0.15 Hz, depth: ±1.5ms
-            {
-                RebirthDSPModuleID::LFOModulator,
-                { {"rate", 0.15f}, {"depth", 1.5f}, {"target", 1.0f} /*allpass delays*/ },
-                {}
-            },
-            // Step 4: SpectralTilt — vel-scaled: soft = +0.2 bright, hard = -0.6 dark
-            //         (+0.2 ≈ +1dB/oct, -0.6 ≈ -3dB/oct — submerged quality at hard velocity)
-            {
-                RebirthDSPModuleID::SpectralTilt,
-                { {"tilt", 0.0f} },
-                { {"tilt", {0.2f, -0.6f}} }
-            },
-            // Step 5: WetDryMix
-            {
-                RebirthDSPModuleID::WetDryMix,
-                {}, {}
-            }
-        }
-    };
+        0.4f, // warn if transient ratio > 0.4 — percussive attacks will dissolve (by design, but warn)
+        2.0f, // 2.0s tail — diffusion network rings significantly after source ends
+        {     // Step 1: AllpassDiffuser — 4-stage cascade
+         //         Delay times: [7.1ms, 11.3ms, 17.9ms, 23.7ms] (prime-ish ratios)
+         //         vel-scaled feedback 0.4→0.8 (light diffusion → deep wash)
+         {RebirthDSPModuleID::AllpassDiffuser,
+          {{"feedback", 0.6f}, {"delayMs0", 7.1f}, {"delayMs1", 11.3f}, {"delayMs2", 17.9f}, {"delayMs3", 23.7f}},
+          {{"feedback", {0.4f, 0.8f}}}},
+         // Step 2: BiquadLPFilter — vel-scaled cutoff 12kHz→6kHz (harder = darker)
+         //         Q = 0.7 (Butterworth — smooth rolloff, no resonant peak)
+         {RebirthDSPModuleID::BiquadLPFilter,
+          {{"cutoffHz", 9000.0f}, {"q", 0.7f}},
+          {{"cutoffHz", {12000.0f, 6000.0f}}}},
+         // Step 3: LFOModulator — slow chorus-like movement on allpass delay times
+         //         rate: 0.15 Hz, depth: ±1.5ms
+         {RebirthDSPModuleID::LFOModulator,
+          {{"rate", 0.15f}, {"depth", 1.5f}, {"target", 1.0f} /*allpass delays*/},
+          {}},
+         // Step 4: SpectralTilt — vel-scaled: soft = +0.2 bright, hard = -0.6 dark
+         //         (+0.2 ≈ +1dB/oct, -0.6 ≈ -3dB/oct — submerged quality at hard velocity)
+         {RebirthDSPModuleID::SpectralTilt, {{"tilt", 0.0f}}, {{"tilt", {0.2f, -0.6f}}}},
+         // Step 5: WetDryMix
+         {RebirthDSPModuleID::WetDryMix, {}, {}}}};
 
     switch (id)
     {
-        case RebirthProfileID::OBRIX:    return OBRIX_PROFILE;
-        case RebirthProfileID::ONSET:    return ONSET_PROFILE;
-        case RebirthProfileID::OWARE:    return OWARE_PROFILE;
-        case RebirthProfileID::OPERA:    return OPERA_PROFILE;
-        case RebirthProfileID::OVERWASH: return OVERWASH_PROFILE;
-        default:                         return OBRIX_PROFILE;
+    case RebirthProfileID::OBRIX:
+        return OBRIX_PROFILE;
+    case RebirthProfileID::ONSET:
+        return ONSET_PROFILE;
+    case RebirthProfileID::OWARE:
+        return OWARE_PROFILE;
+    case RebirthProfileID::OPERA:
+        return OPERA_PROFILE;
+    case RebirthProfileID::OVERWASH:
+        return OVERWASH_PROFILE;
+    default:
+        return OBRIX_PROFILE;
     }
 }
 
@@ -488,11 +411,9 @@ inline const RebirthProfile& getRebirthProfile (RebirthProfileID id)
 // This matches the DOC-004 spec formula:
 //   effectiveValue = v0 + velocityNorm * (v1 - v0)
 //==============================================================================
-inline float resolveVelocityParam (const DSPModuleConfig& cfg,
-                                   const std::string& key,
-                                   float velocityNorm)
+inline float resolveVelocityParam(const DSPModuleConfig& cfg, const std::string& key, float velocityNorm)
 {
-    auto scaleIt = cfg.velocityScale.find (key);
+    auto scaleIt = cfg.velocityScale.find(key);
     if (scaleIt != cfg.velocityScale.end())
     {
         float v0 = scaleIt->second.first;
@@ -500,7 +421,7 @@ inline float resolveVelocityParam (const DSPModuleConfig& cfg,
         return v0 + velocityNorm * (v1 - v0);
     }
 
-    auto baseIt = cfg.params.find (key);
+    auto baseIt = cfg.params.find(key);
     return (baseIt != cfg.params.end()) ? baseIt->second : 0.0f;
 }
 
@@ -510,39 +431,39 @@ inline float resolveVelocityParam (const DSPModuleConfig& cfg,
 // Per spec Section 9.3. Producer can override per-category or per-sample.
 // Unknown/FX/Loop default to OBRIX (general-purpose, works on any material).
 //==============================================================================
-inline RebirthProfileID autoProfileForCategory (SampleCategory cat)
+inline RebirthProfileID autoProfileForCategory(SampleCategory cat)
 {
     switch (cat)
     {
-        case SampleCategory::Kick:
-        case SampleCategory::Snare:
-        case SampleCategory::HiHatClosed:
-        case SampleCategory::HiHatOpen:
-        case SampleCategory::Clap:
-        case SampleCategory::Tom:
-        case SampleCategory::Percussion:
-            return RebirthProfileID::ONSET;
+    case SampleCategory::Kick:
+    case SampleCategory::Snare:
+    case SampleCategory::HiHatClosed:
+    case SampleCategory::HiHatOpen:
+    case SampleCategory::Clap:
+    case SampleCategory::Tom:
+    case SampleCategory::Percussion:
+        return RebirthProfileID::ONSET;
 
-        case SampleCategory::Bass:
-        case SampleCategory::Lead:
-        case SampleCategory::Keys:
-        case SampleCategory::Pluck:
-        case SampleCategory::String:
-            return RebirthProfileID::OBRIX;
+    case SampleCategory::Bass:
+    case SampleCategory::Lead:
+    case SampleCategory::Keys:
+    case SampleCategory::Pluck:
+    case SampleCategory::String:
+        return RebirthProfileID::OBRIX;
 
-        case SampleCategory::Vocal:
-        case SampleCategory::Woodwind:
-        case SampleCategory::Brass:
-            return RebirthProfileID::OPERA;
+    case SampleCategory::Vocal:
+    case SampleCategory::Woodwind:
+    case SampleCategory::Brass:
+        return RebirthProfileID::OPERA;
 
-        case SampleCategory::Pad:
-            return RebirthProfileID::OVERWASH;
+    case SampleCategory::Pad:
+        return RebirthProfileID::OVERWASH;
 
-        case SampleCategory::FX:
-        case SampleCategory::Loop:
-        case SampleCategory::Unknown:
-        default:
-            return RebirthProfileID::OBRIX;  // general-purpose default
+    case SampleCategory::FX:
+    case SampleCategory::Loop:
+    case SampleCategory::Unknown:
+    default:
+        return RebirthProfileID::OBRIX; // general-purpose default
     }
 }
 

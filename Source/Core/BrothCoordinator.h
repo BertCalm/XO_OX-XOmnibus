@@ -4,7 +4,8 @@
 #include "SynthEngine.h"
 #include <array>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // BrothCoordinator — Multi-timescale diffusion coupling for the BROTH quad.
@@ -49,17 +50,22 @@ public:
     // in the active slots. Useful for the UI (e.g., a BROTH coupling indicator).
     //--------------------------------------------------------------------------
     template <int MaxSlots>
-    static bool isBrothQuadActive (const std::array<SynthEngine*, MaxSlots>& enginePtrs)
+    static bool isBrothQuadActive(const std::array<SynthEngine*, MaxSlots>& enginePtrs)
     {
         bool hasWash = false, hasWorn = false, hasFlow = false, hasCast = false;
         for (const auto* eng : enginePtrs)
         {
-            if (!eng) continue;
+            if (!eng)
+                continue;
             const juce::String id = eng->getEngineId();
-            if      (id == kOverwash) hasWash = true;
-            else if (id == kOverworn) hasWorn = true;
-            else if (id == kOverflow) hasFlow = true;
-            else if (id == kOvercast) hasCast = true;
+            if (id == kOverwash)
+                hasWash = true;
+            else if (id == kOverworn)
+                hasWorn = true;
+            else if (id == kOverflow)
+                hasFlow = true;
+            else if (id == kOvercast)
+                hasCast = true;
         }
         return hasWash && hasWorn && hasFlow && hasCast;
     }

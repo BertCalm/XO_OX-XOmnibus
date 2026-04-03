@@ -3,7 +3,8 @@
 #pragma once
 #include "AudioRingBuffer.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // IAudioBufferSink — implemented by any engine that can receive an
@@ -32,7 +33,7 @@ public:
     // Return a pointer to the ring buffer for the given source slot index.
     // Slot indices correspond to MegaCouplingMatrix source slot positions (0-3).
     // Returns nullptr if slot is out of range -- callers must check.
-    virtual AudioRingBuffer* getGrainBuffer (int slot) noexcept = 0;
+    virtual AudioRingBuffer* getGrainBuffer(int slot) noexcept = 0;
 
     // Return the number of input slots this engine supports.
     // Used by MegaCouplingMatrix to validate slot assignments.
@@ -46,10 +47,7 @@ public:
     // `mix`        -- blend ratio (0.0 = internal only, 1.0 = external only)
     // `frozen`     -- current FREEZE state; implementor may hold blend cache
     //                 rather than advancing through the ring when true
-    virtual void receiveAudioBuffer (const AudioRingBuffer& src,
-                                     int numSamples,
-                                     float mix,
-                                     bool frozen) noexcept = 0;
+    virtual void receiveAudioBuffer(const AudioRingBuffer& src, int numSamples, float mix, bool frozen) noexcept = 0;
 };
 
 } // namespace xoceanus

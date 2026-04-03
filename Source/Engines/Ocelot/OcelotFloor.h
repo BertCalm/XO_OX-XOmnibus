@@ -12,7 +12,8 @@
 #include "ModalResonator.h"
 #include "WaveFolder.h"
 
-namespace xocelot {
+namespace xocelot
+{
 
 // Forward declaration (defined in EcosystemMatrix.h, but we only need the struct here)
 struct StrataModulation;
@@ -41,10 +42,11 @@ public:
 
         // Reset all modal resonators
         gourdRes.reset();
-        for (auto& r : modal) r.reset();
+        for (auto& r : modal)
+            r.reset();
 
         // Cuica state
-        cuicaPhase  = 0.0f;
+        cuicaPhase = 0.0f;
         cuicaBendEnv = 0.0f;
         cuicaBpState = 0.0f;
         cuicaLpState = 0.0f;
@@ -71,7 +73,7 @@ public:
 
     void noteOn(int midiNote, float velocity, const OcelotParamSnapshot& snap)
     {
-        currentNote     = midiNote;
+        currentNote = midiNote;
         currentVelocity = velocity;
 
         // Compute base frequency with pitch offset
@@ -87,13 +89,26 @@ public:
 
         switch (model)
         {
-            case 0: noteOnBerimbau(velocity, snap); break;
-            case 1: noteOnCuica(velocity, snap);    break;
-            case 2: noteOnAgogo(velocity, snap);    break;
-            case 3: noteOnKalimba(velocity, snap);  break;
-            case 4: noteOnPandeiro(velocity, snap); break;
-            case 5: noteOnLogDrum(velocity, snap);  break;
-            default: break;
+        case 0:
+            noteOnBerimbau(velocity, snap);
+            break;
+        case 1:
+            noteOnCuica(velocity, snap);
+            break;
+        case 2:
+            noteOnAgogo(velocity, snap);
+            break;
+        case 3:
+            noteOnKalimba(velocity, snap);
+            break;
+        case 4:
+            noteOnPandeiro(velocity, snap);
+            break;
+        case 5:
+            noteOnLogDrum(velocity, snap);
+            break;
+        default:
+            break;
         }
     }
 
@@ -101,10 +116,8 @@ public:
 
     // renderBlock: fill outL/outR with numSamples of Floor audio.
     // Returns block RMS amplitude for EcosystemMatrix.
-    float renderBlock(float* outL, float* outR, int numSamples,
-                      const OcelotParamSnapshot& snap,
-                      const BiomeProfile& biome,
-                      const struct StrataModulation& mod)
+    float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                      const BiomeProfile& biome, const struct StrataModulation& mod)
     {
         if (!active)
         {
@@ -114,8 +127,7 @@ public:
         }
 
         // ---- Shared parameter computation (biome offsets applied once per block) ----
-        float damp  = std::clamp(snap.floorDamping + biome.floorDampingBase
-                                 + mod.floorDampingMod, 0.0f, 0.999f);
+        float damp = std::clamp(snap.floorDamping + biome.floorDampingBase + mod.floorDampingMod, 0.0f, 0.999f);
         float level = snap.floorLevel * (1.0f + mod.floorAccentMod * 0.5f);
         float brightness = std::clamp(biome.floorBrightnessBase, -1.0f, 1.0f);
 
@@ -128,16 +140,28 @@ public:
 
         switch (model)
         {
-            case 0: renderBerimbau(outL, outR, numSamples, snap, biome, damp, level, brightness); break;
-            case 1: renderCuica(outL, outR, numSamples, snap, biome, damp, level, brightness);    break;
-            case 2: renderAgogo(outL, outR, numSamples, snap, biome, damp, level, brightness);    break;
-            case 3: renderKalimba(outL, outR, numSamples, snap, biome, damp, level, brightness);  break;
-            case 4: renderPandeiro(outL, outR, numSamples, snap, biome, damp, level, brightness); break;
-            case 5: renderLogDrum(outL, outR, numSamples, snap, biome, damp, level, brightness);  break;
-            default:
-                std::fill(outL, outL + numSamples, 0.0f);
-                std::fill(outR, outR + numSamples, 0.0f);
-                break;
+        case 0:
+            renderBerimbau(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        case 1:
+            renderCuica(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        case 2:
+            renderAgogo(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        case 3:
+            renderKalimba(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        case 4:
+            renderPandeiro(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        case 5:
+            renderLogDrum(outL, outR, numSamples, snap, biome, damp, level, brightness);
+            break;
+        default:
+            std::fill(outL, outL + numSamples, 0.0f);
+            std::fill(outR, outR + numSamples, 0.0f);
+            break;
         }
 
         // Restore unmodified baseFreq so future noteOn calculations are unaffected
@@ -158,7 +182,7 @@ public:
         return lastAmplitude;
     }
 
-    bool isActive() const          { return active; }
+    bool isActive() const { return active; }
     float getLastAmplitude() const { return lastAmplitude; }
 
 private:
@@ -209,10 +233,7 @@ private:
     }
 
     // SRO: Use shared flushDenormal from FastMath.h
-    inline static float flushDenormal(float x)
-    {
-        return xoceanus::flushDenormal(x);
-    }
+    inline static float flushDenormal(float x) { return xoceanus::flushDenormal(x); }
 
     inline static float midiToFreq(int note)
     {
@@ -235,7 +256,7 @@ private:
     {
         // brightness -1..+1; at +1 = no filtering (coeff~1), at -1 = heavy LP (coeff~0.05)
         float t = (brightness + 1.0f) * 0.5f; // 0..1
-        return 0.05f + t * 0.95f;  // 0.05 .. 1.0
+        return 0.05f + t * 0.95f;             // 0.05 .. 1.0
     }
 
     // ====================================================================
@@ -250,17 +271,15 @@ private:
         ks.excite(velocity, noiseSeed);
 
         // Sweep: floorStrike controls pitch contour depth on strike
-        sweepPhase  = 0.0f;
+        sweepPhase = 0.0f;
         sweepAmount = snap.floorStrike * 0.15f; // up to 15% pitch bend
 
         // Gourd resonator (will be configured per-block based on biome)
         gourdRes.reset();
     }
 
-    void renderBerimbau(float* outL, float* outR, int numSamples,
-                        const OcelotParamSnapshot& snap,
-                        const BiomeProfile& biome,
-                        float damp, float level, float brightness)
+    void renderBerimbau(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                        const BiomeProfile& biome, float damp, float level, float brightness)
     {
         // Gourd center frequency: biome-driven
         // Jungle=300Hz, Underwater=200Hz, Winter=400Hz
@@ -312,16 +331,14 @@ private:
 
     void noteOnCuica(float velocity, const OcelotParamSnapshot& snap)
     {
-        cuicaPhase   = 0.0f;
-        cuicaBendEnv = 1.0f;  // starts at max, decays
+        cuicaPhase = 0.0f;
+        cuicaBendEnv = 1.0f; // starts at max, decays
         cuicaBpState = 0.0f;
         cuicaLpState = 0.0f;
     }
 
-    void renderCuica(float* outL, float* outR, int numSamples,
-                     const OcelotParamSnapshot& snap,
-                     const BiomeProfile& biome,
-                     float damp, float level, float brightness)
+    void renderCuica(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                     const BiomeProfile& biome, float damp, float level, float brightness)
     {
         constexpr float kPi = 3.14159265358979323846f;
         constexpr float kTwoPi = kPi * 2.0f;
@@ -349,8 +366,8 @@ private:
 
         if (brightness < -0.2f) // Underwater territory
         {
-            bendScale = 0.3f;  // less pitch bend
-            qBoost = 5.0f;     // more resonance
+            bendScale = 0.3f; // less pitch bend
+            qBoost = 5.0f;    // more resonance
         }
         else if (brightness > 0.2f) // Winter territory
         {
@@ -380,7 +397,8 @@ private:
 
             // Damped sine oscillator
             cuicaPhase += freq / sr;
-            if (cuicaPhase >= 1.0f) cuicaPhase -= 1.0f;
+            if (cuicaPhase >= 1.0f)
+                cuicaPhase -= 1.0f;
             // SRO: fastSin replaces std::sin (per-sample oscillator)
             float osc = xoceanus::fastSin(kTwoPi * cuicaPhase);
 
@@ -430,10 +448,8 @@ private:
         noiseBurstCounter = 0; // 0 = impulse not yet delivered
     }
 
-    void renderAgogo(float* outL, float* outR, int numSamples,
-                     const OcelotParamSnapshot& snap,
-                     const BiomeProfile& biome,
-                     float damp, float level, float brightness)
+    void renderAgogo(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                     const BiomeProfile& biome, float damp, float level, float brightness)
     {
         // Two tones: fundamental and 2.67x inharmonic
         float f1 = baseFreq;
@@ -444,8 +460,8 @@ private:
 
         // Strike balance: floorStrike 0=low dominant, 1=high dominant
         float strike = std::clamp(snap.floorStrike, 0.0f, 1.0f);
-        float g1 = 1.0f - strike * 0.7f;  // low cone gain
-        float g2 = 0.3f + strike * 0.7f;  // high cone gain
+        float g1 = 1.0f - strike * 0.7f; // low cone gain
+        float g2 = 0.3f + strike * 0.7f; // high cone gain
 
         modal[0].setParams(f1, q, g1, sr);
         modal[1].setParams(f2, q * 0.8f, g2, sr);
@@ -502,10 +518,8 @@ private:
         noiseBurstCounter = 0; // impulse not yet delivered
     }
 
-    void renderKalimba(float* outL, float* outR, int numSamples,
-                       const OcelotParamSnapshot& snap,
-                       const BiomeProfile& biome,
-                       float damp, float level, float brightness)
+    void renderKalimba(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                       const BiomeProfile& biome, float damp, float level, float brightness)
     {
         // Tine partial ratios: 1x, 2.76x, 5.4x (inharmonic -- kalimba signature)
         float f1 = baseFreq;
@@ -534,7 +548,7 @@ private:
         f1 *= freqMul;
         f2 *= freqMul;
         f3 *= freqMul;
-        q  *= qMul;
+        q *= qMul;
 
         // Gains: decreasing with partial number
         float baseGain1 = 1.0f;
@@ -545,7 +559,7 @@ private:
         // strike=0: all partials present; strike=1: emphasize high partials
         float strike = std::clamp(snap.floorStrike, 0.0f, 1.0f);
         float pickupScaleHigh = 0.5f + strike * 0.5f;
-        float pickupScaleLow  = 1.0f - strike * 0.3f;
+        float pickupScaleLow = 1.0f - strike * 0.3f;
 
         modal[0].setParams(f1, q, baseGain1 * pickupScaleLow, sr);
         modal[1].setParams(f2, q * 0.9f, baseGain2 * pickupScaleHigh, sr);
@@ -595,10 +609,8 @@ private:
         pandeiroNoisePhase = 0;
     }
 
-    void renderPandeiro(float* outL, float* outR, int numSamples,
-                        const OcelotParamSnapshot& snap,
-                        const BiomeProfile& biome,
-                        float damp, float level, float brightness)
+    void renderPandeiro(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                        const BiomeProfile& biome, float damp, float level, float brightness)
     {
         // Drumhead modes: fundamental + 2.3x overtone
         float f1 = baseFreq;
@@ -682,10 +694,8 @@ private:
         noiseBurstCounter = 0;
     }
 
-    void renderLogDrum(float* outL, float* outR, int numSamples,
-                       const OcelotParamSnapshot& snap,
-                       const BiomeProfile& biome,
-                       float damp, float level, float brightness)
+    void renderLogDrum(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                       const BiomeProfile& biome, float damp, float level, float brightness)
     {
         // Two slits: 1x and 1.5x MIDI pitch
         float f1 = baseFreq;
@@ -715,8 +725,8 @@ private:
         }
         else if (brightness > 0.2f)
         {
-            bodyQ = 2.0f;      // shorter body resonance
-            bodyGain = 0.15f;  // less body
+            bodyQ = 2.0f;     // shorter body resonance
+            bodyGain = 0.15f; // less body
             // Winter: click emphasis -- slightly increase excitation gain
         }
 

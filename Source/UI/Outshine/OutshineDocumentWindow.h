@@ -5,14 +5,14 @@
 #include "../GalleryColors.h"
 #include "OutshineMainComponent.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 class OutshineDocumentWindow : public juce::DocumentWindow
 {
 public:
     explicit OutshineDocumentWindow(XOceanusProcessor& processorRef)
-        : juce::DocumentWindow("OUTSHINE",
-                               juce::Colour(GalleryColors::get(GalleryColors::shellWhite())),
+        : juce::DocumentWindow("OUTSHINE", juce::Colour(GalleryColors::get(GalleryColors::shellWhite())),
                                juce::DocumentWindow::closeButton)
     {
         setUsingNativeTitleBar(false);

@@ -6,7 +6,8 @@
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CouplingArcOverlay — transparent component drawn on top of the tile sidebar.
@@ -60,7 +61,7 @@ public:
     explicit CouplingArcOverlay(XOceanusProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through to tiles beneath
-        cachedRoutes.reserve(16); // Fix #14: pre-allocate to avoid reallocation at steady state
+        cachedRoutes.reserve(16);               // Fix #14: pre-allocate to avoid reallocation at steady state
         // A11Y06: respect reduced-motion preference — drop to 1Hz refresh when active
         if (A11y::prefersReducedMotion())
             startTimerHz(1);
@@ -85,7 +86,8 @@ public:
     // cycles/second during idle (no coupling set up).
     void timerCallback() override
     {
-        if (!isVisible()) return;
+        if (!isVisible())
+            return;
 
         // P1 fix: skip repaint when no active routes exist — avoids full
         // 1100×700 overlay redraw at 30Hz when the matrix is empty.
@@ -95,7 +97,10 @@ public:
         for (const auto& r : cachedRoutes)
         {
             if (r.active && r.amount >= 0.001f)
-            { hasActive = true; break; }
+            {
+                hasActive = true;
+                break;
+            }
         }
 
         if (hasActive)
@@ -124,14 +129,15 @@ public:
         // Build index: key = (src << 2) | dst, value = max amount seen in this frame.
         // Collapse multiple routes on the same pair into one arc (visually cleaner).
         // We keep track of the dominant CouplingType for color selection.
-        struct ArcInfo {
-            float      amount = 0.0f;
-            CouplingType type  = CouplingType::AmpToFilter;
+        struct ArcInfo
+        {
+            float amount = 0.0f;
+            CouplingType type = CouplingType::AmpToFilter;
         };
-        std::array<ArcInfo, 12> arcMap {}; // C(5,2)=10 unique pairs with 5 slots; 12 for safety
+        std::array<ArcInfo, 12> arcMap{}; // C(5,2)=10 unique pairs with 5 slots; 12 for safety
 
         int arcCount = 0; // number of unique active pairs
-        std::array<std::pair<int,int>, 12> arcPairs {};
+        std::array<std::pair<int, int>, 12> arcPairs{};
 
         for (const auto& route : routes)
         {
@@ -146,7 +152,8 @@ public:
             // draw two arcs between the same pair (forward + reverse KnotTopology).
             int lo = juce::jmin(route.sourceSlot, route.destSlot);
             int hi = juce::jmax(route.sourceSlot, route.destSlot);
-            if (lo == hi) continue; // same slot — skip
+            if (lo == hi)
+                continue; // same slot — skip
 
             // Map (lo, hi) to a flat index.  5 slots → max 10 unique pairs.
             // We use a simple linear search over the live arcPairs array
@@ -154,12 +161,15 @@ public:
             int found = -1;
             for (int k = 0; k < arcCount; ++k)
                 if (arcPairs[static_cast<size_t>(k)].first == lo && arcPairs[static_cast<size_t>(k)].second == hi)
-                    { found = k; break; }
+                {
+                    found = k;
+                    break;
+                }
 
             if (found < 0 && arcCount < 12)
             {
                 found = arcCount++;
-                arcPairs[static_cast<size_t>(found)] = { lo, hi };
+                arcPairs[static_cast<size_t>(found)] = {lo, hi};
             }
 
             if (found >= 0)
@@ -168,7 +178,7 @@ public:
                 if (route.amount > ai.amount)
                 {
                     ai.amount = route.amount;
-                    ai.type   = route.type;
+                    ai.type = route.type;
                 }
             }
         }
@@ -179,10 +189,10 @@ public:
         for (int k = 0; k < arcCount; ++k)
         {
             const auto& [lo, hi] = arcPairs[static_cast<size_t>(k)];
-            const auto& ai       = arcMap[static_cast<size_t>(k)];
+            const auto& ai = arcMap[static_cast<size_t>(k)];
 
             const auto from = tileCenters[static_cast<size_t>(lo)];
-            const auto to   = tileCenters[static_cast<size_t>(hi)];
+            const auto to = tileCenters[static_cast<size_t>(hi)];
 
             // CQ12: skip if EITHER endpoint is at origin (tile center not yet set).
             // Using && was too permissive — a valid arc could still draw toward (0,0).
@@ -193,24 +203,24 @@ public:
             juce::Colour arcColor;
             switch (ai.type)
             {
-                case CouplingType::AudioToFM:
-                case CouplingType::AudioToRing:
-                case CouplingType::AudioToWavetable:
-                case CouplingType::AudioToBuffer:
-                    arcColor = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
-                    break;
-                case CouplingType::KnotTopology:
-                    arcColor = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
-                    break;
-                default:
-                    arcColor = juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
-                    break;
+            case CouplingType::AudioToFM:
+            case CouplingType::AudioToRing:
+            case CouplingType::AudioToWavetable:
+            case CouplingType::AudioToBuffer:
+                arcColor = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
+                break;
+            case CouplingType::KnotTopology:
+                arcColor = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
+                break;
+            default:
+                arcColor = juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
+                break;
             }
 
             // Bézier control points bow leftward (away from right panel)
-            const float midX  = (from.x + to.x) * 0.5f - 60.0f;
-            const juce::Point<float> cp1 (midX, from.y);
-            const juce::Point<float> cp2 (midX, to.y);
+            const float midX = (from.x + to.x) * 0.5f - 60.0f;
+            const juce::Point<float> cp1(midX, from.y);
+            const juce::Point<float> cp2(midX, to.y);
 
             juce::Path arc;
             arc.startNewSubPath(from);
@@ -223,8 +233,8 @@ public:
 
             // Amount-weighted glow: low coupling = subtle, high coupling = vivid.
             // baseAlpha range: 0.15 (amount=0) → 0.70 (amount=1).
-            const float baseAlpha  = 0.15f + ai.amount * 0.55f;
-            const float glowAlpha  = baseAlpha * (0.8f + 0.2f * std::sin(pulsePhase[static_cast<size_t>(k)]));
+            const float baseAlpha = 0.15f + ai.amount * 0.55f;
+            const float glowAlpha = baseAlpha * (0.8f + 0.2f * std::sin(pulsePhase[static_cast<size_t>(k)]));
 
             // Stroke width scales with coupling amount: 4px (0%) → 8px (100%).
             const float strokeWidth = 4.0f + ai.amount * 4.0f;
@@ -249,7 +259,8 @@ public:
             {
                 for (int p = 0; p < NumParticlesPerArc; ++p)
                 {
-                    particles[static_cast<size_t>(p)].t     = static_cast<float>(p) / static_cast<float>(NumParticlesPerArc);
+                    particles[static_cast<size_t>(p)].t =
+                        static_cast<float>(p) / static_cast<float>(NumParticlesPerArc);
                     particles[static_cast<size_t>(p)].alpha = 0.6f;
                 }
                 particleInitialised[static_cast<size_t>(k)] = true;
@@ -276,12 +287,12 @@ public:
                 // Evaluate position on the Bézier path via JUCE's arc-length
                 // parameterisation (t=0 → source, t=1 → destination).
                 const float distAlongPath = particle.t * arcLength;
-                const auto  pos = arc.getPointAlongPath(distAlongPath);
+                const auto pos = arc.getPointAlongPath(distAlongPath);
 
                 // Particle diameter interpolates from 3px (near source) to 5px
                 // (near destination) to indicate flow direction.
                 const float diameter = 3.0f + particle.t * 2.0f;
-                const float radius   = diameter * 0.5f;
+                const float radius = diameter * 0.5f;
 
                 // Glow pass: larger halo at 30% of particle alpha
                 g.setColour(arcColor.withAlpha(particle.alpha * 0.30f));
@@ -305,20 +316,20 @@ private:
     // -------------------------------------------------------------------------
     struct FlowParticle
     {
-        float t     = 0.0f; // normalised position along path: 0 = source, 1 = dest
+        float t = 0.0f;     // normalised position along path: 0 = source, 1 = dest
         float alpha = 0.6f; // particle opacity (fixed; could be modulated in future)
     };
 
     static constexpr int NumParticlesPerArc = 12; // particles per unique arc pair
-    static constexpr int MaxArcSlots        = 12; // must match arcMap / arcPairs size
+    static constexpr int MaxArcSlots = 12;        // must match arcMap / arcPairs size
 
     XOceanusProcessor& processor;
-    std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters {};
-    float pulsePhase[MaxArcSlots] {}; // one phase accumulator per unique arc pair
+    std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters{};
+    float pulsePhase[MaxArcSlots]{}; // one phase accumulator per unique arc pair
 
     // Particle state — indexed [arcSlot][particleIndex]
-    std::array<std::array<FlowParticle, NumParticlesPerArc>, MaxArcSlots> flowParticles {};
-    bool particleInitialised[MaxArcSlots] {}; // false → spread particles evenly on next paint
+    std::array<std::array<FlowParticle, NumParticlesPerArc>, MaxArcSlots> flowParticles{};
+    bool particleInitialised[MaxArcSlots]{}; // false → spread particles evenly on next paint
 
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes; // P26: populated in timerCallback()
 

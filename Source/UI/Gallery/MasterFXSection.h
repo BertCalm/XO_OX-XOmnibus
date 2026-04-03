@@ -7,7 +7,8 @@
 #include "MidiLearnMouseListener.h"
 #include "AdvancedFXPanel.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // MasterFXSection — 6-section FX strip with primary knobs per section +
@@ -20,14 +21,16 @@ public:
     explicit MasterFXSection(juce::AudioProcessorValueTreeState& apvts) : myApvts(apvts)
     {
         // Primary knob definitions: { paramID, knobLabel, sectionLabel }
-        struct Def { const char* id; const char* label; const char* section; };
+        struct Def
+        {
+            const char* id;
+            const char* label;
+            const char* section;
+        };
         static constexpr Def defs[kNumPrimaryKnobs] = {
-            {"master_satDrive",      "DRIVE",  "SAT"},
-            {"master_delayMix",      "MIX",    "DELAY"},
-            {"master_delayFeedback", "FB",     ""},
-            {"master_reverbMix",     "MIX",    "REVERB"},
-            {"master_modDepth",      "DEPTH",  "MOD"},
-            {"master_compMix",       "GLUE",   "COMP"},
+            {"master_satDrive", "DRIVE", "SAT"}, {"master_delayMix", "MIX", "DELAY"},
+            {"master_delayFeedback", "FB", ""},  {"master_reverbMix", "MIX", "REVERB"},
+            {"master_modDepth", "DEPTH", "MOD"}, {"master_compMix", "GLUE", "COMP"},
         };
 
         for (int i = 0; i < kNumPrimaryKnobs; ++i)
@@ -39,14 +42,13 @@ public:
             knobs[i].setTooltip(juce::String(defs[i].section) + " " + defs[i].label);
             A11y::setup(knobs[i], juce::String("Master FX ") + defs[i].section + " " + defs[i].label);
             addAndMakeVisible(knobs[i]);
-            attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                apvts, defs[i].id, knobs[i]);
-            enableKnobReset (knobs[i], apvts, defs[i].id);
+            attach[i] =
+                std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, defs[i].id, knobs[i]);
+            enableKnobReset(knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(7.5f));
-            lbls[i].setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid()));
+            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
@@ -64,83 +66,89 @@ public:
         }
 
         // ADV buttons for each section
-        auto makeAdvBtn = [&](juce::TextButton& btn, const juce::String& tip, const juce::String& a11y) {
+        auto makeAdvBtn = [&](juce::TextButton& btn, const juce::String& tip, const juce::String& a11y)
+        {
             btn.setButtonText("ADV");
             btn.setTooltip(tip);
             A11y::setup(btn, a11y, "Open advanced settings");
-            btn.setColour(juce::TextButton::buttonColourId,
-                          GalleryColors::get(GalleryColors::shellWhite()));
+            btn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::shellWhite()));
             btn.setColour(juce::TextButton::textColourOffId,
                           GalleryColors::get(GalleryColors::textMid()).withAlpha(0.6f));
             addAndMakeVisible(btn);
         };
 
         makeAdvBtn(advBtnDelay, "Delay Time, Ping Pong, Damping, Diffusion, Sync", "Advanced Delay");
-        advBtnDelay.onClick = [this] {
-            showAdvancedPanel(advBtnDelay, "DELAY ADVANCED", {
-                {"master_delayTime",     "TIME"},
-                {"master_delayPingPong", "P.PONG"},
-                {"master_delayDamping",  "DAMP"},
-                {"master_delayDiffusion","DIFF"},
-                {"master_delaySync",     "SYNC"},
-            });
+        advBtnDelay.onClick = [this]
+        {
+            showAdvancedPanel(advBtnDelay, "DELAY ADVANCED",
+                              {
+                                  {"master_delayTime", "TIME"},
+                                  {"master_delayPingPong", "P.PONG"},
+                                  {"master_delayDamping", "DAMP"},
+                                  {"master_delayDiffusion", "DIFF"},
+                                  {"master_delaySync", "SYNC"},
+                              });
         };
 
         makeAdvBtn(advBtnReverb, "Reverb Size", "Advanced Reverb");
-        advBtnReverb.onClick = [this] {
-            showAdvancedPanel(advBtnReverb, "REVERB ADVANCED", {
-                {"master_reverbSize", "SIZE"},
-            });
+        advBtnReverb.onClick = [this]
+        {
+            showAdvancedPanel(advBtnReverb, "REVERB ADVANCED",
+                              {
+                                  {"master_reverbSize", "SIZE"},
+                              });
         };
 
         makeAdvBtn(advBtnMod, "Mod Rate, Mode, Feedback", "Advanced Modulation");
-        advBtnMod.onClick = [this] {
-            showAdvancedPanel(advBtnMod, "MOD ADVANCED", {
-                {"master_modRate",     "RATE"},
-                {"master_modMix",      "MIX"},
-                {"master_modMode",     "MODE"},
-                {"master_modFeedback", "FB"},
-            });
+        advBtnMod.onClick = [this]
+        {
+            showAdvancedPanel(advBtnMod, "MOD ADVANCED",
+                              {
+                                  {"master_modRate", "RATE"},
+                                  {"master_modMix", "MIX"},
+                                  {"master_modMode", "MODE"},
+                                  {"master_modFeedback", "FB"},
+                              });
         };
 
         makeAdvBtn(advBtnComp, "Comp Ratio, Attack, Release", "Advanced Compressor");
-        advBtnComp.onClick = [this] {
-            showAdvancedPanel(advBtnComp, "COMP ADVANCED", {
-                {"master_compRatio",   "RATIO"},
-                {"master_compAttack",  "ATTACK"},
-                {"master_compRelease", "RELEASE"},
-            });
+        advBtnComp.onClick = [this]
+        {
+            showAdvancedPanel(advBtnComp, "COMP ADVANCED",
+                              {
+                                  {"master_compRatio", "RATIO"},
+                                  {"master_compAttack", "ATTACK"},
+                                  {"master_compRelease", "RELEASE"},
+                              });
         };
 
         // SEQ section: enable toggle + ADV
         seqToggle.setButtonText("SEQ");
         seqToggle.setTooltip("Enable Master FX Sequencer");
         A11y::setup(seqToggle, "Sequencer Enable", "Toggle the Master FX step sequencer");
-        seqToggle.setColour(juce::TextButton::buttonColourId,
-                            GalleryColors::get(GalleryColors::shellWhite()));
-        seqToggle.setColour(juce::TextButton::buttonOnColourId,
-                            GalleryColors::get(GalleryColors::xoGold));
-        seqToggle.setColour(juce::TextButton::textColourOffId,
-                            GalleryColors::get(GalleryColors::textMid()));
-        seqToggle.setColour(juce::TextButton::textColourOnId,
-                            GalleryColors::get(GalleryColors::textDark()));
+        seqToggle.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::shellWhite()));
+        seqToggle.setColour(juce::TextButton::buttonOnColourId, GalleryColors::get(GalleryColors::xoGold));
+        seqToggle.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+        seqToggle.setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
         seqToggle.setClickingTogglesState(true);
-        seqAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
-            apvts, "master_seqEnabled", seqToggle);
+        seqAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(apvts, "master_seqEnabled",
+                                                                                           seqToggle);
         addAndMakeVisible(seqToggle);
 
         makeAdvBtn(advBtnSeq, "Seq Rate, Steps, Depth, Smooth, Pattern, Targets", "Advanced Sequencer");
-        advBtnSeq.onClick = [this] {
-            showAdvancedPanel(advBtnSeq, "SEQUENCER", {
-                {"master_seqRate",      "RATE"},
-                {"master_seqSteps",     "STEPS"},
-                {"master_seqDepth",     "DEPTH"},
-                {"master_seqSmooth",    "SMOOTH"},
-                {"master_seqPattern",   "PATTERN"},
-                {"master_seqTarget1",   "TGT 1"},
-                {"master_seqTarget2",   "TGT 2"},
-                {"master_seqEnvAmount", "ENV"},
-            });
+        advBtnSeq.onClick = [this]
+        {
+            showAdvancedPanel(advBtnSeq, "SEQUENCER",
+                              {
+                                  {"master_seqRate", "RATE"},
+                                  {"master_seqSteps", "STEPS"},
+                                  {"master_seqDepth", "DEPTH"},
+                                  {"master_seqSmooth", "SMOOTH"},
+                                  {"master_seqPattern", "PATTERN"},
+                                  {"master_seqTarget1", "TGT 1"},
+                                  {"master_seqTarget2", "TGT 2"},
+                                  {"master_seqEnvAmount", "ENV"},
+                              });
         };
     }
 
@@ -185,19 +193,17 @@ public:
             sectionX[i + 1] = sectionX[i] + (totalW * weights[i]) / totalWeight;
 
         // Per-section pill parameters
-        static constexpr float kPillGap    = 2.0f;
+        static constexpr float kPillGap = 2.0f;
         static constexpr float kPillRadius = 4.0f;
-        const float pillTop    = static_cast<float>(inner.getY());
+        const float pillTop = static_cast<float>(inner.getY());
         const float pillBottom = static_cast<float>(inner.getBottom());
-        const float pillH      = pillBottom - pillTop;
+        const float pillH = pillBottom - pillTop;
 
         // Accent dot: is each section "active"?
         // SAT, DELAY MIX, REVERB MIX, MOD DEPTH, COMP MIX: active when primary
         // knob param > 0.  SEQ: active when seqEnabled toggle is on.
-        static const char* primaryIds[kNumSections] = {
-            "master_satDrive", "master_delayMix", "master_reverbMix",
-            "master_modDepth", "master_compMix",  "master_seqEnabled"
-        };
+        static const char* primaryIds[kNumSections] = {"master_satDrive", "master_delayMix", "master_reverbMix",
+                                                       "master_modDepth", "master_compMix",  "master_seqEnabled"};
         bool sectionActive[kNumSections] = {};
         for (int i = 0; i < kNumSections; ++i)
         {
@@ -207,9 +213,9 @@ public:
 
         for (int i = 0; i < kNumSections; ++i)
         {
-            float pillLeft  = static_cast<float>(sectionX[i])     + (i == 0 ? 0.0f : kPillGap * 0.5f);
+            float pillLeft = static_cast<float>(sectionX[i]) + (i == 0 ? 0.0f : kPillGap * 0.5f);
             float pillRight = static_cast<float>(sectionX[i + 1]) - (i == kNumSections - 1 ? 0.0f : kPillGap * 0.5f);
-            juce::Rectangle<float> pill (pillLeft, pillTop, pillRight - pillLeft, pillH);
+            juce::Rectangle<float> pill(pillLeft, pillTop, pillRight - pillLeft, pillH);
 
             // Fill
             g.setColour(get(elevated()));
@@ -222,8 +228,8 @@ public:
             // Accent indicator dot — top-right corner: 10px from right, 4px from top
             float dotCX = pill.getRight() - 10.0f;
             float dotCY = pill.getY() + 4.0f + 3.0f; // 4px from top + 3px radius = centre
-            constexpr float kDotR  = 3.0f;  // 6px diameter
-            constexpr float kGlowR = 5.0f;  // 10px diameter glow
+            constexpr float kDotR = 3.0f;            // 6px diameter
+            constexpr float kGlowR = 5.0f;           // 10px diameter glow
 
             if (sectionActive[i])
             {
@@ -272,14 +278,15 @@ public:
         //   38-47 : label (9px)
         //   47-50 : 3px gap
         //   50-62 : ADV button (12px)
-        static constexpr int kHeaderH2  = 10;
-        static constexpr int kAdvBtnH   = 12;  // reduced from 14 to fit 68px strip
-        static constexpr int kAdvBtnW   = 28;
-        static constexpr int kAdvBtnGap = 3;   // reduced from 4 to fit 68px strip
+        static constexpr int kHeaderH2 = 10;
+        static constexpr int kAdvBtnH = 12; // reduced from 14 to fit 68px strip
+        static constexpr int kAdvBtnW = 28;
+        static constexpr int kAdvBtnGap = 3; // reduced from 4 to fit 68px strip
 
         // Knob + label zone: everything above the ADV button row
-        auto layoutKnob = [&](int knobIdx, int sx, int sw) {
-            int kh = 28, lh = 9;  // reduced knob 36→28, label 10→9 to fit 68px
+        auto layoutKnob = [&](int knobIdx, int sx, int sw)
+        {
+            int kh = 28, lh = 9;                               // reduced knob 36→28, label 10→9 to fit 68px
             int zoneH = h - kHeaderH2 - kAdvBtnH - kAdvBtnGap; // zone for knob+label
             int ky = topY + kHeaderH2 + (zoneH - kh - lh - 1) / 2;
             knobs[knobIdx].setBounds(sx + (sw - kh) / 2, ky, kh, kh);
@@ -287,7 +294,8 @@ public:
         };
 
         // ADV button sits just above the strip bottom, below labels.
-        auto layoutAdvBtn = [&](juce::TextButton& btn, int sx, int sw, int /*topOff*/) {
+        auto layoutAdvBtn = [&](juce::TextButton& btn, int sx, int sw, int /*topOff*/)
+        {
             int advY = topY + h - kAdvBtnH - 1;
             btn.setBounds(sx + (sw - kAdvBtnW) / 2, advY, kAdvBtnW, kAdvBtnH);
         };
@@ -353,10 +361,8 @@ public:
     // Call from XOceanusEditor after construction.
     void setupMidiLearn(MIDILearnManager& mgr)
     {
-        static const char* ids[kNumPrimaryKnobs] = {
-            "master_satDrive", "master_delayMix", "master_delayFeedback",
-            "master_reverbMix", "master_modDepth", "master_compMix"
-        };
+        static const char* ids[kNumPrimaryKnobs] = {"master_satDrive",  "master_delayMix", "master_delayFeedback",
+                                                    "master_reverbMix", "master_modDepth", "master_compMix"};
         for (int i = 0; i < kNumPrimaryKnobs; ++i)
         {
             auto* ml = knobs[i].setupMidiLearn(ids[i], mgr);
@@ -368,10 +374,8 @@ private:
     void showAdvancedPanel(juce::TextButton& btn, const juce::String& title,
                            const std::vector<std::pair<juce::String, juce::String>>& params)
     {
-        juce::CallOutBox::launchAsynchronously(
-            std::make_unique<AdvancedFXPanel>(myApvts, title, params),
-            btn.getScreenBounds(),
-            getTopLevelComponent());
+        juce::CallOutBox::launchAsynchronously(std::make_unique<AdvancedFXPanel>(myApvts, title, params),
+                                               btn.getScreenBounds(), getTopLevelComponent());
     }
 
     static constexpr int kNumPrimaryKnobs = 6;
@@ -381,7 +385,7 @@ private:
 
     // Primary knobs
     std::array<GalleryKnob, kNumPrimaryKnobs> knobs;
-    std::array<juce::Label, kNumPrimaryKnobs>  lbls;
+    std::array<juce::Label, kNumPrimaryKnobs> lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kNumPrimaryKnobs> attach;
 
     // Section headers
@@ -398,7 +402,7 @@ private:
     int divX[kNumSections - 1] = {};
 
     // Engine accent colour for indicator dots — updated via setAccentColour()
-    juce::Colour accentColour_ { GalleryColors::get(GalleryColors::xoGold) };
+    juce::Colour accentColour_{GalleryColors::get(GalleryColors::xoGold)};
 
     // MIDI learn listeners — destroyed before knobs
     std::array<std::unique_ptr<MidiLearnMouseListener>, kNumPrimaryKnobs> fxLearnListeners;

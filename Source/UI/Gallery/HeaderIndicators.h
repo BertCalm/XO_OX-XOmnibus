@@ -26,7 +26,8 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // CPUMeter
@@ -82,8 +83,7 @@ public:
 
         g.setFont(GalleryFonts::value(9.0f));
         g.setColour(textCol);
-        g.drawText(text, bounds.reduced(4.0f, 0.0f),
-                   juce::Justification::centred, false);
+        g.drawText(text, bounds.reduced(4.0f, 0.0f), juce::Justification::centred, false);
     }
 
 private:
@@ -91,7 +91,6 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CPUMeter)
 };
-
 
 //==============================================================================
 // MIDIActivityIndicator
@@ -109,8 +108,7 @@ private:
 // An internal 30Hz timer handles both flash alpha decay and learn pulse math.
 // The timer auto-starts in the constructor and runs for the component's lifetime.
 //==============================================================================
-class MIDIActivityIndicator : public juce::Component,
-                              private juce::Timer
+class MIDIActivityIndicator : public juce::Component, private juce::Timer
 {
 public:
     MIDIActivityIndicator()
@@ -124,10 +122,7 @@ public:
         startTimerHz(30);
     }
 
-    ~MIDIActivityIndicator() override
-    {
-        stopTimer();
-    }
+    ~MIDIActivityIndicator() override { stopTimer(); }
 
     // Call when drainNoteEvents() receives a note-on — passes the engine accent color.
     // Safe to call from the message thread at any rate (timer driven, no mutex needed).
@@ -156,7 +151,7 @@ public:
         auto bounds = getLocalBounds().toFloat();
         float cx = bounds.getCentreX();
         float cy = bounds.getCentreY();
-        float r  = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f;
+        float r = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f;
 
         juce::Colour dotColor;
 
@@ -186,9 +181,7 @@ public:
         // bright engine accents that might otherwise bleed into the background.
         if (learning || flashAlpha > 0.05f)
         {
-            float ringAlpha = learning
-                ? (0.3f + 0.3f * std::sin(learnPhase))
-                : flashAlpha * 0.4f;
+            float ringAlpha = learning ? (0.3f + 0.3f * std::sin(learnPhase)) : flashAlpha * 0.4f;
             g.setColour(dotColor.darker(0.35f).withAlpha(ringAlpha));
             g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);
         }
@@ -230,10 +223,10 @@ private:
     }
 
     //==========================================================================
-    float         flashAlpha = 0.0f;
-    juce::Colour  flashColor;
-    bool          learning   = false;
-    float         learnPhase = 0.0f; // radians, [0, 2π)
+    float flashAlpha = 0.0f;
+    juce::Colour flashColor;
+    bool learning = false;
+    float learnPhase = 0.0f; // radians, [0, 2π)
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MIDIActivityIndicator)
 };

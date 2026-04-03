@@ -5,7 +5,8 @@
 #include <cmath>
 #include <functional>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // LookupTable — Pre-computed function table with linear interpolation.
@@ -39,16 +40,16 @@ namespace xoceanus {
 template <int TableSize = 4096>
 class LookupTable
 {
-    static_assert (TableSize >= 64, "Table size must be at least 64");
-    static_assert ((TableSize & (TableSize - 1)) == 0, "Table size must be a power of 2");
+    static_assert(TableSize >= 64, "Table size must be at least 64");
+    static_assert((TableSize & (TableSize - 1)) == 0, "Table size must be a power of 2");
 
 public:
     LookupTable() = default;
 
     /// Construct with pre-computed values and range.
-    LookupTable (std::array<float, TableSize + 1> data, float rangeMin, float rangeMax)
-        : table (data), minVal (rangeMin), maxVal (rangeMax),
-          invRange (static_cast<float> (TableSize) / (rangeMax - rangeMin))
+    LookupTable(std::array<float, TableSize + 1> data, float rangeMin, float rangeMax)
+        : table(data), minVal(rangeMin), maxVal(rangeMax),
+          invRange(static_cast<float>(TableSize) / (rangeMax - rangeMin))
     {
     }
 
@@ -60,50 +61,47 @@ public:
     /// initialization (Meyer's singleton pattern in SROTables), never on the
     /// audio thread. The real-time lookup() method is allocation-free and
     /// noexcept. Do not call generate() from renderBlock().
-    static LookupTable generate (float rangeMin, float rangeMax,
-                                 const std::function<float(float)>& func)
+    static LookupTable generate(float rangeMin, float rangeMax, const std::function<float(float)>& func)
     {
-        std::array<float, TableSize + 1> data {};
-        float step = (rangeMax - rangeMin) / static_cast<float> (TableSize);
+        std::array<float, TableSize + 1> data{};
+        float step = (rangeMax - rangeMin) / static_cast<float>(TableSize);
         for (int i = 0; i <= TableSize; ++i)
-            data[static_cast<size_t> (i)] = func (rangeMin + static_cast<float> (i) * step);
-        return LookupTable (data, rangeMin, rangeMax);
+            data[static_cast<size_t>(i)] = func(rangeMin + static_cast<float>(i) * step);
+        return LookupTable(data, rangeMin, rangeMax);
     }
 
     //--------------------------------------------------------------------------
     /// Look up a value with linear interpolation. Real-time safe.
     /// Input is clamped to the table range.
-    float lookup (float x) const noexcept
+    float lookup(float x) const noexcept
     {
         // Clamp to range
-        if (x <= minVal) return table[0];
-        if (x >= maxVal) return table[TableSize];
+        if (x <= minVal)
+            return table[0];
+        if (x >= maxVal)
+            return table[TableSize];
 
         // Map x to table index
         float indexF = (x - minVal) * invRange;
-        int index = static_cast<int> (indexF);
-        float frac = indexF - static_cast<float> (index);
+        int index = static_cast<int>(indexF);
+        float frac = indexF - static_cast<float>(index);
 
         // Linear interpolation
-        return table[static_cast<size_t> (index)]
-             + frac * (table[static_cast<size_t> (index + 1)]
-                     - table[static_cast<size_t> (index)]);
+        return table[static_cast<size_t>(index)] +
+               frac * (table[static_cast<size_t>(index + 1)] - table[static_cast<size_t>(index)]);
     }
 
     /// Normalized lookup: input in [0, 1] maps to full table range.
-    float lookupNormalized (float t) const noexcept
-    {
-        return lookup (minVal + t * (maxVal - minVal));
-    }
+    float lookupNormalized(float t) const noexcept { return lookup(minVal + t * (maxVal - minVal)); }
 
     float getMin() const noexcept { return minVal; }
     float getMax() const noexcept { return maxVal; }
 
 private:
-    std::array<float, TableSize + 1> table {};
-    float minVal  = 0.0f;
-    float maxVal  = 1.0f;
-    float invRange = static_cast<float> (TableSize);
+    std::array<float, TableSize + 1> table{};
+    float minVal = 0.0f;
+    float maxVal = 1.0f;
+    float invRange = static_cast<float>(TableSize);
 };
 
 //==============================================================================
@@ -117,9 +115,7 @@ struct SROTables
     /// sin(x), x in [0, 2*pi]. 4096 points → ~0.001% max error.
     static const LookupTable<4096>& sin()
     {
-        static const auto table = LookupTable<4096>::generate (
-            0.0f, 6.2831853f,
-            [] (float x) { return std::sin (x); });
+        static const auto table = LookupTable<4096>::generate(0.0f, 6.2831853f, [](float x) { return std::sin(x); });
         return table;
     }
 
@@ -127,9 +123,7 @@ struct SROTables
     /// Covers the useful saturation range; beyond ±4 tanh is effectively ±1.
     static const LookupTable<2048>& tanh()
     {
-        static const auto table = LookupTable<2048>::generate (
-            -4.0f, 4.0f,
-            [] (float x) { return std::tanh (x); });
+        static const auto table = LookupTable<2048>::generate(-4.0f, 4.0f, [](float x) { return std::tanh(x); });
         return table;
     }
 
@@ -137,9 +131,7 @@ struct SROTables
     /// Covers envelope and gain curve ranges.
     static const LookupTable<2048>& exp()
     {
-        static const auto table = LookupTable<2048>::generate (
-            -10.0f, 10.0f,
-            [] (float x) { return std::exp (x); });
+        static const auto table = LookupTable<2048>::generate(-10.0f, 10.0f, [](float x) { return std::exp(x); });
         return table;
     }
 
@@ -147,9 +139,7 @@ struct SROTables
     /// Critical for pitch calculations (semitone → frequency).
     static const LookupTable<2048>& pow2()
     {
-        static const auto table = LookupTable<2048>::generate (
-            -10.0f, 10.0f,
-            [] (float x) { return std::pow (2.0f, x); });
+        static const auto table = LookupTable<2048>::generate(-10.0f, 10.0f, [](float x) { return std::pow(2.0f, x); });
         return table;
     }
 
@@ -158,9 +148,8 @@ struct SROTables
     /// hann(t) = 0.5 * (1 - cos(2*pi*t))
     static const LookupTable<1024>& hann()
     {
-        static const auto table = LookupTable<1024>::generate (
-            0.0f, 1.0f,
-            [] (float t) { return 0.5f * (1.0f - std::cos (2.0f * 3.14159265f * t)); });
+        static const auto table = LookupTable<1024>::generate(
+            0.0f, 1.0f, [](float t) { return 0.5f * (1.0f - std::cos(2.0f * 3.14159265f * t)); });
         return table;
     }
 
@@ -168,13 +157,15 @@ struct SROTables
     /// Musical cubic saturation matching FastMath::softClip.
     static const LookupTable<1024>& softClip()
     {
-        static const auto table = LookupTable<1024>::generate (
-            -2.0f, 2.0f,
-            [] (float x) {
-                if (x <= -1.5f) return -1.0f;
-                if (x >=  1.5f) return  1.0f;
-                return x - (x * x * x) / 3.375f;
-            });
+        static const auto table = LookupTable<1024>::generate(-2.0f, 2.0f,
+                                                              [](float x)
+                                                              {
+                                                                  if (x <= -1.5f)
+                                                                      return -1.0f;
+                                                                  if (x >= 1.5f)
+                                                                      return 1.0f;
+                                                                  return x - (x * x * x) / 3.375f;
+                                                              });
         return table;
     }
 };

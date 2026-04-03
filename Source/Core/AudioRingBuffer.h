@@ -4,7 +4,8 @@
 #include <vector>
 #include <atomic>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // AudioRingBuffer — lock-free circular audio buffer for cross-engine streaming.
@@ -31,7 +32,8 @@ namespace xoceanus {
 //
 // Full design spec: Docs/xopal_phase1_architecture.md §15.3
 //
-struct AudioRingBuffer {
+struct AudioRingBuffer
+{
     static constexpr int kChannels = 2;
 
     // Per-channel sample storage: data[0] = L, data[1] = R.
@@ -39,12 +41,12 @@ struct AudioRingBuffer {
     // contiguous channel without stride — cache-friendly for the grain scheduler.
     std::vector<float> data[kChannels];
 
-    int capacity = 0;                      // buffer length in samples
+    int capacity = 0; // buffer length in samples
 
-    std::atomic<int> writeHead{0};         // main write position (frozen when freeze is on)
-    std::atomic<int> shadowWriteHead{0};   // always-advancing position (tracks live stream
-                                           // during freeze for seamless resume)
-    std::atomic<bool> frozen{false};       // FREEZE state — set by OpalEngine gesture handler
+    std::atomic<int> writeHead{0};       // main write position (frozen when freeze is on)
+    std::atomic<int> shadowWriteHead{0}; // always-advancing position (tracks live stream
+                                         // during freeze for seamless resume)
+    std::atomic<bool> frozen{false};     // FREEZE state — set by OpalEngine gesture handler
 
     //--------------------------------------------------------------------------
     // Allocate buffers for `durationSeconds` of audio at `sampleRate`.
@@ -80,7 +82,7 @@ struct AudioRingBuffer {
             return;
 
         const bool isFrozen = frozen.load(std::memory_order_acquire);
-        int head       = writeHead.load(std::memory_order_relaxed);
+        int head = writeHead.load(std::memory_order_relaxed);
         int shadowHead = shadowWriteHead.load(std::memory_order_relaxed);
 
         for (int i = 0; i < numSamples; ++i)
@@ -126,13 +128,12 @@ struct AudioRingBuffer {
 
         // Map fractionalOffset to an absolute sample position in the ring.
         // fractionalOffset = 0 → head (most recent); 1 → head - capacity (oldest).
-        const float rawPos = static_cast<float>(head)
-                           - fractionalOffset * static_cast<float>(capacity);
+        const float rawPos = static_cast<float>(head) - fractionalOffset * static_cast<float>(capacity);
         const int base = static_cast<int>(rawPos);
         const float frac = rawPos - static_cast<float>(base);
 
         // Wrap into [0, capacity) — handles negative base correctly.
-        const int i0 = ((base     % capacity) + capacity) % capacity;
+        const int i0 = ((base % capacity) + capacity) % capacity;
         const int i1 = (((base + 1) % capacity) + capacity) % capacity;
 
         const float* ch = data[static_cast<size_t>(channel)].data();

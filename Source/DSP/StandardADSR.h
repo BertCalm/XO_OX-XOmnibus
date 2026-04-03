@@ -5,7 +5,8 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // StandardADSR — Shared amplitude envelope for the XOceanus fleet.
@@ -35,45 +36,52 @@ namespace xoceanus {
 //==============================================================================
 struct StandardADSR
 {
-    enum class Stage { Idle, Attack, Hold, Decay, Sustain, Release };
-    enum class Shape { AD = 0, AHD = 1, ADSR = 2 };
+    enum class Stage
+    {
+        Idle,
+        Attack,
+        Hold,
+        Decay,
+        Sustain,
+        Release
+    };
+    enum class Shape
+    {
+        AD = 0,
+        AHD = 1,
+        ADSR = 2
+    };
 
     //--------------------------------------------------------------------------
     // Configuration
     //--------------------------------------------------------------------------
 
     /// Call once when sample rate changes.
-    void prepare (float sampleRate) noexcept
-    {
-        sr = std::max (1.0f, sampleRate);
-    }
+    void prepare(float sampleRate) noexcept { sr = std::max(1.0f, sampleRate); }
 
     /// Set ADSR parameters. Shape defaults to ADSR.
     /// Attack/Decay/Release in seconds, Sustain in [0, 1].
-    void setADSR (float attackSec, float decaySec, float sustain, float releaseSec) noexcept
+    void setADSR(float attackSec, float decaySec, float sustain, float releaseSec) noexcept
     {
         // Minimum times to prevent division-by-zero and coefficient underflow
-        float aSec = std::max (attackSec, 0.0001f);   // 0.1ms floor
-        float dSec = std::max (decaySec, 0.001f);     // 1ms floor
-        float rSec = std::max (releaseSec, 0.001f);   // 1ms floor
+        float aSec = std::max(attackSec, 0.0001f); // 0.1ms floor
+        float dSec = std::max(decaySec, 0.001f);   // 1ms floor
+        float rSec = std::max(releaseSec, 0.001f); // 1ms floor
 
         attackRate = 1.0f / (sr * aSec);
 
         // Exponential decay: -4.6 = ln(0.01) → reaches 1% in dSec seconds
-        decayCoeff   = 1.0f - std::exp (-4.6f / (sr * dSec));
-        releaseCoeff = 1.0f - std::exp (-4.6f / (sr * rSec));
+        decayCoeff = 1.0f - std::exp(-4.6f / (sr * dSec));
+        releaseCoeff = 1.0f - std::exp(-4.6f / (sr * rSec));
 
-        sustainLevel = std::clamp (sustain, 0.0f, 1.0f);
+        sustainLevel = std::clamp(sustain, 0.0f, 1.0f);
     }
 
     /// Set envelope shape (AD, AHD, or ADSR).
-    void setShape (Shape s) noexcept { shape = s; }
+    void setShape(Shape s) noexcept { shape = s; }
 
     /// Set hold time in seconds (only used in AHD shape).
-    void setHold (float holdSec) noexcept
-    {
-        holdSamples = std::max (0, static_cast<int> (sr * holdSec));
-    }
+    void setHold(float holdSec) noexcept { holdSamples = std::max(0, static_cast<int>(sr * holdSec)); }
 
     //--------------------------------------------------------------------------
     // Simplified API — matches the 15-engine pattern exactly
@@ -81,11 +89,10 @@ struct StandardADSR
 
     /// Set parameters in the simple format used by most engines.
     /// Always uses ADSR shape, no hold.
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
+    void setParams(float attackSec, float decaySec, float sustain, float releaseSec, float sampleRate) noexcept
     {
-        prepare (sampleRate);
-        setADSR (attackSec, decaySec, sustain, releaseSec);
+        prepare(sampleRate);
+        setADSR(attackSec, decaySec, sustain, releaseSec);
         shape = Shape::ADSR;
     }
 
@@ -118,10 +125,9 @@ struct StandardADSR
     /// Legato retrigger: restart attack from the current level rather than 0.
     /// Used when a new note overlaps an active voice (monophonic legato).
     /// Attack rate is adjusted so the rise from currentLevel → 1.0 takes attackSec.
-    void retriggerFrom (float currentLevel,
-                        float attackSec, float decaySec, float sustain, float releaseSec) noexcept
+    void retriggerFrom(float currentLevel, float attackSec, float decaySec, float sustain, float releaseSec) noexcept
     {
-        setADSR (attackSec, decaySec, sustain, releaseSec);
+        setADSR(attackSec, decaySec, sustain, releaseSec);
         shape = Shape::ADSR;
         level = currentLevel;
         stage = Stage::Attack;
@@ -148,63 +154,63 @@ struct StandardADSR
     {
         switch (stage)
         {
-            case Stage::Idle:
-                return 0.0f;
+        case Stage::Idle:
+            return 0.0f;
 
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    if (shape == Shape::AHD && holdSamplesLeft > 0)
-                        stage = Stage::Hold;
-                    else
-                        stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Hold:
-                if (--holdSamplesLeft <= 0)
-                    stage = Stage::Decay;
-                return level;
-
-            case Stage::Decay:
-                if (shape == Shape::ADSR && sustainLevel > 0.0f)
-                {
-                    // Decay toward sustain level
-                    level -= (level - sustainLevel) * decayCoeff;
-                    level = flushDenormal (level);
-                    if (level <= sustainLevel + 0.001f)
-                    {
-                        level = sustainLevel;
-                        stage = Stage::Sustain;
-                    }
-                }
+        case Stage::Attack:
+            level += attackRate;
+            if (level >= 1.0f)
+            {
+                level = 1.0f;
+                if (shape == Shape::AHD && holdSamplesLeft > 0)
+                    stage = Stage::Hold;
                 else
+                    stage = Stage::Decay;
+            }
+            return level;
+
+        case Stage::Hold:
+            if (--holdSamplesLeft <= 0)
+                stage = Stage::Decay;
+            return level;
+
+        case Stage::Decay:
+            if (shape == Shape::ADSR && sustainLevel > 0.0f)
+            {
+                // Decay toward sustain level
+                level -= (level - sustainLevel) * decayCoeff;
+                level = flushDenormal(level);
+                if (level <= sustainLevel + 0.001f)
                 {
-                    // Decay toward zero (AD / AHD shapes, or ADSR with sustain=0)
-                    level -= level * decayCoeff;
-                    level = flushDenormal (level);
-                    if (level < 1e-6f)
-                    {
-                        level = 0.0f;
-                        stage = Stage::Idle;
-                    }
+                    level = sustainLevel;
+                    stage = Stage::Sustain;
                 }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                level -= level * releaseCoeff;
-                level = flushDenormal (level);
+            }
+            else
+            {
+                // Decay toward zero (AD / AHD shapes, or ADSR with sustain=0)
+                level -= level * decayCoeff;
+                level = flushDenormal(level);
                 if (level < 1e-6f)
                 {
                     level = 0.0f;
                     stage = Stage::Idle;
                 }
-                return level;
+            }
+            return level;
+
+        case Stage::Sustain:
+            return level;
+
+        case Stage::Release:
+            level -= level * releaseCoeff;
+            level = flushDenormal(level);
+            if (level < 1e-6f)
+            {
+                level = 0.0f;
+                stage = Stage::Idle;
+            }
+            return level;
         }
         return 0.0f;
     }
@@ -233,12 +239,12 @@ private:
     float sr = 48000.0f;
     Shape shape = Shape::ADSR;
 
-    float attackRate   = 0.01f;
-    float decayCoeff   = 0.001f;
+    float attackRate = 0.01f;
+    float decayCoeff = 0.001f;
     float releaseCoeff = 0.001f;
     float sustainLevel = 0.7f;
 
-    int holdSamples     = 0;
+    int holdSamples = 0;
     int holdSamplesLeft = 0;
 };
 

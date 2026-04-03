@@ -8,11 +8,10 @@
 #include "../../Export/XOutshine.h"
 #include "../../Export/RebirthProfiles.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
-class OutshineAutoMode : public juce::Component,
-                         private juce::Button::Listener,
-                         private juce::Slider::Listener
+class OutshineAutoMode : public juce::Component, private juce::Button::Listener, private juce::Slider::Listener
 {
 public:
     OutshineAutoMode()
@@ -20,7 +19,7 @@ public:
         setWantsKeyboardFocus(false);
         A11y::setup(*this, "Auto Mode Panel", "Classification summary, zone map, MPE configuration, and Rebirth Mode");
 
-        zoneMap  = std::make_unique<OutshineZoneMap>();
+        zoneMap = std::make_unique<OutshineZoneMap>();
         mpePanel = std::make_unique<OutshineMPEPanel>();
 
         addAndMakeVisible(*zoneMap);
@@ -40,7 +39,8 @@ public:
 
     void populate(const std::vector<AnalyzedSample>& samples)
     {
-        if (samples.empty()) return;
+        if (samples.empty())
+            return;
 
         detectedCategory = samples[0].category;
         bool isDrum = isDrumCategory(detectedCategory);
@@ -61,14 +61,14 @@ public:
         repaint();
     }
 
-    OutshineZoneMap&   getZoneMap()  { return *zoneMap; }
-    OutshineMPEPanel&  getMPEPanel() { return *mpePanel; }
+    OutshineZoneMap& getZoneMap() { return *zoneMap; }
+    OutshineMPEPanel& getMPEPanel() { return *mpePanel; }
 
     // Returns the current Rebirth settings for use by the export pipeline.
     RebirthSettings getRebirthSettings() const
     {
         RebirthSettings s;
-        s.enabled   = rebirthToggle.getToggleState();
+        s.enabled = rebirthToggle.getToggleState();
         s.profileId = activeProfileId;
         s.intensity = (float)intensitySlider.getValue();
         // chaosAmount: derived from intensity with a profile-specific multiplier.
@@ -76,11 +76,11 @@ public:
         // a given intensity than tonal profiles (OBRIX, OPERA).
         // Range 0.0–1.0; the pipeline uses this to scale NoiseBurst burst level.
         static constexpr float kChaosScale[5] = {
-            0.30f,  // OBRIX    — tonal/harmonic, low chaos
-            0.70f,  // ONSET    — percussive, high chaos
-            0.40f,  // OWARE    — resonant body, moderate chaos
-            0.25f,  // OPERA    — shimmer/tonal, low chaos
-            0.60f,  // OVERWASH — diffusion-heavy, elevated chaos
+            0.30f, // OBRIX    — tonal/harmonic, low chaos
+            0.70f, // ONSET    — percussive, high chaos
+            0.40f, // OWARE    — resonant body, moderate chaos
+            0.25f, // OPERA    — shimmer/tonal, low chaos
+            0.60f, // OVERWASH — diffusion-heavy, elevated chaos
         };
         int profileIdx = static_cast<int>(activeProfileId);
         float scale = (profileIdx >= 0 && profileIdx < 5) ? kChaosScale[profileIdx] : 0.3f;
@@ -109,8 +109,7 @@ public:
 
         // Section divider line above Rebirth
         g.setColour(GalleryColors::get(GalleryColors::borderGray()));
-        g.drawLine((float)area.getX(), (float)area.getY(),
-                   (float)area.getRight(), (float)area.getY(), 1.0f);
+        g.drawLine((float)area.getX(), (float)area.getY(), (float)area.getRight(), (float)area.getY(), 1.0f);
         area.removeFromTop(4);
 
         // "REBIRTH MODE" label next to toggle
@@ -189,13 +188,15 @@ private:
 
     void buildSummaryGrid()
     {
-        auto setupLabel = [this](juce::Label& lbl, const juce::String& text) {
+        auto setupLabel = [this](juce::Label& lbl, const juce::String& text)
+        {
             lbl.setText(text, juce::dontSendNotification);
             lbl.setFont(GalleryFonts::body(12.0f));
             lbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             addAndMakeVisible(lbl);
         };
-        auto setupValue = [this](juce::Label& lbl, const juce::String& text) {
+        auto setupValue = [this](juce::Label& lbl, const juce::String& text)
+        {
             lbl.setText(text, juce::dontSendNotification);
             lbl.setFont(GalleryFonts::value(12.0f));
             lbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
@@ -203,14 +204,14 @@ private:
             addAndMakeVisible(lbl);
         };
 
-        setupLabel(typeLabel,  "Type");
-        setupValue(typeValue,  "\xe2\x80\x94");
+        setupLabel(typeLabel, "Type");
+        setupValue(typeValue, "\xe2\x80\x94");
         setupLabel(zonesLabel, "Zones");
         setupValue(zonesValue, "\xe2\x80\x94");
-        setupLabel(velLabel,   "Vel Layers");
-        setupValue(velValue,   "\xe2\x80\x94");
-        setupLabel(rrLabel,    "Round Robin");
-        setupValue(rrValue,    "\xe2\x80\x94");
+        setupLabel(velLabel, "Vel Layers");
+        setupValue(velValue, "\xe2\x80\x94");
+        setupLabel(rrLabel, "Round Robin");
+        setupValue(rrValue, "\xe2\x80\x94");
     }
 
     void buildRebirthPanel()
@@ -220,8 +221,7 @@ private:
         // ------------------------------------------------------------------
         rebirthToggle.setButtonText("Enable");
         rebirthToggle.setToggleState(false, juce::dontSendNotification);
-        rebirthToggle.setColour(juce::ToggleButton::textColourId,
-                                GalleryColors::get(GalleryColors::textMid()));
+        rebirthToggle.setColour(juce::ToggleButton::textColourId, GalleryColors::get(GalleryColors::textMid()));
         rebirthToggle.addListener(this);
         addAndMakeVisible(rebirthToggle);
 
@@ -238,15 +238,15 @@ private:
         static const struct ProfileInfo
         {
             RebirthProfileID id;
-            const char*      engineName;
-            const char*      producerLabel;
-            juce::uint32     accentArgb;
+            const char* engineName;
+            const char* producerLabel;
+            juce::uint32 accentArgb;
         } kProfiles[kNumProfiles] = {
-            { RebirthProfileID::OBRIX,    "OBRIX",    "Harmonic Character", 0xFF1E8B7E },
-            { RebirthProfileID::ONSET,    "ONSET",    "Percussive Crunch",  0xFF0066FF },
-            { RebirthProfileID::OWARE,    "OWARE",    "Resonant Body",      0xFFB5883E },
-            { RebirthProfileID::OPERA,    "OPERA",    "Harmonic Shimmer",   0xFFD4AF37 },
-            { RebirthProfileID::OVERWASH, "OVERWASH", "Deep Diffusion",     0xFF4A90D9 },
+            {RebirthProfileID::OBRIX, "OBRIX", "Harmonic Character", 0xFF1E8B7E},
+            {RebirthProfileID::ONSET, "ONSET", "Percussive Crunch", 0xFF0066FF},
+            {RebirthProfileID::OWARE, "OWARE", "Resonant Body", 0xFFB5883E},
+            {RebirthProfileID::OPERA, "OPERA", "Harmonic Shimmer", 0xFFD4AF37},
+            {RebirthProfileID::OVERWASH, "OVERWASH", "Deep Diffusion", 0xFF4A90D9},
         };
 
         for (int i = 0; i < kNumProfiles; ++i)
@@ -260,15 +260,11 @@ private:
 
             // Style: use accent color as active background, grey when inactive
             juce::Colour accent = juce::Colour(info.accentArgb);
-            btn->setColour(juce::TextButton::buttonColourId,
-                           GalleryColors::get(GalleryColors::borderGray()));
-            btn->setColour(juce::TextButton::buttonOnColourId,  accent);
-            btn->setColour(juce::TextButton::textColourOffId,
-                           GalleryColors::get(GalleryColors::textMid()));
+            btn->setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::borderGray()));
+            btn->setColour(juce::TextButton::buttonOnColourId, accent);
+            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
             btn->setColour(juce::TextButton::textColourOnId,
-                           accent.getBrightness() > 0.6f
-                               ? juce::Colours::black
-                               : juce::Colours::white);
+                           accent.getBrightness() > 0.6f ? juce::Colours::black : juce::Colours::white);
 
             // Tag which profile this button represents via component ID
             btn->setComponentID(juce::String(i));
@@ -286,8 +282,7 @@ private:
         // ------------------------------------------------------------------
         intensityLabel.setText("Intensity", juce::dontSendNotification);
         intensityLabel.setFont(GalleryFonts::body(11.0f));
-        intensityLabel.setColour(juce::Label::textColourId,
-                                 GalleryColors::get(GalleryColors::textMid()));
+        intensityLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         intensityLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(intensityLabel);
 
@@ -295,8 +290,7 @@ private:
         intensitySlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 40, 18);
         intensitySlider.setRange(0.0, 1.0, 0.01);
         intensitySlider.setValue(0.7, juce::dontSendNotification);
-        intensitySlider.setColour(juce::Slider::thumbColourId,
-                                  GalleryColors::get(GalleryColors::xoGold));
+        intensitySlider.setColour(juce::Slider::thumbColourId, GalleryColors::get(GalleryColors::xoGold));
         intensitySlider.setColour(juce::Slider::trackColourId,
                                   GalleryColors::get(GalleryColors::xoGold).withAlpha(0.5f));
         intensitySlider.addListener(this);
@@ -306,8 +300,7 @@ private:
         // Per-profile intensity description
         // ------------------------------------------------------------------
         intensityDesc.setFont(GalleryFonts::body(10.0f));
-        intensityDesc.setColour(juce::Label::textColourId,
-                                GalleryColors::get(GalleryColors::textMid()));
+        intensityDesc.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         intensityDesc.setJustificationType(juce::Justification::centredLeft);
         addAndMakeVisible(intensityDesc);
 
@@ -384,9 +377,8 @@ private:
         // Build a human-readable mismatch string
         const auto& recommended = getRebirthProfile(recommendedId);
         juce::String msg = juce::String("\xe2\x9a\xa0\xef\xb8\x8f") // U+26A0 WARNING SIGN
-                           + " This material suits "
-                           + recommended.engineName
-                           + " \xe2\x80\x94 current profile may yield unexpected results.";
+                           + " This material suits " + recommended.engineName +
+                           " \xe2\x80\x94 current profile may yield unexpected results.";
         mismatchWarning.setText(msg, juce::dontSendNotification);
         mismatchWarning.setVisible(true);
     }
@@ -449,48 +441,47 @@ private:
     // -------------------------------------------------------------------------
 
     // Summary grid labels
-    juce::Label typeLabel,   typeValue;
-    juce::Label zonesLabel,  zonesValue;
-    juce::Label velLabel,    velValue;
-    juce::Label rrLabel,     rrValue;
+    juce::Label typeLabel, typeValue;
+    juce::Label zonesLabel, zonesValue;
+    juce::Label velLabel, velValue;
+    juce::Label rrLabel, rrValue;
 
     // Sub-panels
-    std::unique_ptr<OutshineZoneMap>   zoneMap;
-    std::unique_ptr<OutshineMPEPanel>  mpePanel;
+    std::unique_ptr<OutshineZoneMap> zoneMap;
+    std::unique_ptr<OutshineMPEPanel> mpePanel;
 
     // Rebirth panel controls
     juce::ToggleButton rebirthToggle;
 
-    static constexpr int kNumProfiles     = 5;
+    static constexpr int kNumProfiles = 5;
     static constexpr int kProfileRadioGroup = 4200; // arbitrary unique group ID
 
     juce::TextButton profileBtn0, profileBtn1, profileBtn2, profileBtn3, profileBtn4;
-    juce::TextButton* profileButtons[kNumProfiles] = {
-        &profileBtn0, &profileBtn1, &profileBtn2, &profileBtn3, &profileBtn4
-    };
+    juce::TextButton* profileButtons[kNumProfiles] = {&profileBtn0, &profileBtn1, &profileBtn2, &profileBtn3,
+                                                      &profileBtn4};
 
-    juce::Label  intensityLabel;
+    juce::Label intensityLabel;
     juce::Slider intensitySlider;
-    juce::Label  intensityDesc;
-    juce::Label  mismatchWarning;
+    juce::Label intensityDesc;
+    juce::Label mismatchWarning;
 
     // State
-    RebirthProfileID activeProfileId { RebirthProfileID::OBRIX };
-    SampleCategory   detectedCategory { SampleCategory::Unknown };
+    RebirthProfileID activeProfileId{RebirthProfileID::OBRIX};
+    SampleCategory detectedCategory{SampleCategory::Unknown};
 
     // Layout constants
-    static constexpr int kHeaderH   = 36;
-    static constexpr int kSummaryH  = 60;
-    static constexpr int kZoneMapH  = 64;
-    static constexpr int kMPEH      = 120;
+    static constexpr int kHeaderH = 36;
+    static constexpr int kSummaryH = 60;
+    static constexpr int kZoneMapH = 64;
+    static constexpr int kMPEH = 120;
     // Rebirth section:
-    static constexpr int kToggleH   = 28;
-    static constexpr int kToggleW   = 80;
-    static constexpr int kProfileH  = 44;
-    static constexpr int kSliderH   = 28;
-    static constexpr int kDescH     = 18;
-    static constexpr int kWarnH     = 18;
-    static constexpr int kPad       = 12;
+    static constexpr int kToggleH = 28;
+    static constexpr int kToggleW = 80;
+    static constexpr int kProfileH = 44;
+    static constexpr int kSliderH = 28;
+    static constexpr int kDescH = 18;
+    static constexpr int kWarnH = 18;
+    static constexpr int kPad = 12;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OutshineAutoMode)
 };

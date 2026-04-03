@@ -6,7 +6,8 @@
 #include <atomic>
 #include <cstring>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // SROAuditor — Sustainability & Resource Optimization diagnostic.
@@ -36,48 +37,45 @@ namespace xoceanus {
 class SROAuditor
 {
 public:
-    static constexpr int MaxSlots = 5;  // 4 primary + 1 Ghost Slot
+    static constexpr int MaxSlots = 5;                    // 4 primary + 1 Ghost Slot
     static constexpr float kDefaultBudgetPercent = 70.0f; // alarm at 70% total
 
     struct SlotReport
     {
-        float cpuPercent     = 0.0f;  // average CPU for this slot
-        float peakPercent    = 0.0f;  // peak CPU for this slot
-        bool  silenceBypassed = false; // true if SilenceGate has bypassed this slot
-        bool  active         = false;  // true if an engine is loaded in this slot
-        float roi            = 0.0f;  // creative value / CPU cost (higher = better)
+        float cpuPercent = 0.0f;      // average CPU for this slot
+        float peakPercent = 0.0f;     // peak CPU for this slot
+        bool silenceBypassed = false; // true if SilenceGate has bypassed this slot
+        bool active = false;          // true if an engine is loaded in this slot
+        float roi = 0.0f;             // creative value / CPU cost (higher = better)
     };
 
     struct Report
     {
         std::array<SlotReport, MaxSlots> slots;
-        float totalCpuPercent   = 0.0f;
-        float totalPeakPercent  = 0.0f;
-        bool  budgetAlarm       = false; // true if total exceeds budget
-        int   activeSlots       = 0;
-        int   bypassedSlots     = 0;
-        float efficiencyScore   = 0.0f; // 0-100, higher = more efficient use of CPU
+        float totalCpuPercent = 0.0f;
+        float totalPeakPercent = 0.0f;
+        bool budgetAlarm = false; // true if total exceeds budget
+        int activeSlots = 0;
+        int bypassedSlots = 0;
+        float efficiencyScore = 0.0f; // 0-100, higher = more efficient use of CPU
     };
 
-    void prepare (double /*sampleRate*/, int /*blockSize*/) noexcept
-    {
-        reset();
-    }
+    void prepare(double /*sampleRate*/, int /*blockSize*/) noexcept { reset(); }
 
     void reset() noexcept
     {
         for (int i = 0; i < MaxSlots; ++i)
         {
-            slotCpu[i].store (0.0f, std::memory_order_relaxed);
-            slotPeak[i].store (0.0f, std::memory_order_relaxed);
-            slotBypassed[i].store (false, std::memory_order_relaxed);
-            slotActive[i].store (false, std::memory_order_relaxed);
-            slotRoi[i].store (0.0f, std::memory_order_relaxed);
+            slotCpu[i].store(0.0f, std::memory_order_relaxed);
+            slotPeak[i].store(0.0f, std::memory_order_relaxed);
+            slotBypassed[i].store(false, std::memory_order_relaxed);
+            slotActive[i].store(false, std::memory_order_relaxed);
+            slotRoi[i].store(0.0f, std::memory_order_relaxed);
         }
     }
 
     /// Set the total CPU budget alarm threshold (percent of one block's real-time).
-    void setBudgetAlarm (float percent) noexcept { budgetThreshold = percent; }
+    void setBudgetAlarm(float percent) noexcept { budgetThreshold = percent; }
 
     //--------------------------------------------------------------------------
     /// Record a slot's stats after rendering. Call from audio thread.
@@ -96,32 +94,34 @@ public:
     ///     e.g., ORGANON (8/8 → 1.0), OBLIQUE (7.2/10 → 0.72).
     ///   - A default of 0.5 is provided for early integration but should be
     ///     replaced with per-engine values before the ROI metric is trusted.
-    void recordSlot (int slot, const EngineProfiler::Stats& stats,
-                     bool isBypassed, float sonicUniqueness = 0.5f) noexcept
+    void recordSlot(int slot, const EngineProfiler::Stats& stats, bool isBypassed,
+                    float sonicUniqueness = 0.5f) noexcept
     {
-        if (slot < 0 || slot >= MaxSlots) return;
+        if (slot < 0 || slot >= MaxSlots)
+            return;
 
-        slotCpu[slot].store (stats.avgCpuPercent, std::memory_order_relaxed);
-        slotPeak[slot].store (stats.peakCpuPercent, std::memory_order_relaxed);
-        slotBypassed[slot].store (isBypassed, std::memory_order_relaxed);
-        slotActive[slot].store (true, std::memory_order_relaxed);
+        slotCpu[slot].store(stats.avgCpuPercent, std::memory_order_relaxed);
+        slotPeak[slot].store(stats.peakCpuPercent, std::memory_order_relaxed);
+        slotBypassed[slot].store(isBypassed, std::memory_order_relaxed);
+        slotActive[slot].store(true, std::memory_order_relaxed);
 
         // ROI = creative value / CPU cost. Higher is better.
         // If CPU is near zero (bypassed), ROI is infinite — clamp to 100.
         float cpu = stats.avgCpuPercent;
         float roi = (cpu > 0.01f) ? (sonicUniqueness / (cpu * 0.01f)) : 100.0f;
-        slotRoi[slot].store (roi, std::memory_order_relaxed);
+        slotRoi[slot].store(roi, std::memory_order_relaxed);
     }
 
     /// Mark a slot as inactive (no engine loaded).
-    void clearSlot (int slot) noexcept
+    void clearSlot(int slot) noexcept
     {
-        if (slot < 0 || slot >= MaxSlots) return;
-        slotCpu[slot].store (0.0f, std::memory_order_relaxed);
-        slotPeak[slot].store (0.0f, std::memory_order_relaxed);
-        slotBypassed[slot].store (false, std::memory_order_relaxed);
-        slotActive[slot].store (false, std::memory_order_relaxed);
-        slotRoi[slot].store (0.0f, std::memory_order_relaxed);
+        if (slot < 0 || slot >= MaxSlots)
+            return;
+        slotCpu[slot].store(0.0f, std::memory_order_relaxed);
+        slotPeak[slot].store(0.0f, std::memory_order_relaxed);
+        slotBypassed[slot].store(false, std::memory_order_relaxed);
+        slotActive[slot].store(false, std::memory_order_relaxed);
+        slotRoi[slot].store(0.0f, std::memory_order_relaxed);
     }
 
     //--------------------------------------------------------------------------
@@ -134,11 +134,11 @@ public:
 
         for (int i = 0; i < MaxSlots; ++i)
         {
-            r.slots[i].cpuPercent      = slotCpu[i].load (std::memory_order_relaxed);
-            r.slots[i].peakPercent     = slotPeak[i].load (std::memory_order_relaxed);
-            r.slots[i].silenceBypassed = slotBypassed[i].load (std::memory_order_relaxed);
-            r.slots[i].active          = slotActive[i].load (std::memory_order_relaxed);
-            r.slots[i].roi             = slotRoi[i].load (std::memory_order_relaxed);
+            r.slots[i].cpuPercent = slotCpu[i].load(std::memory_order_relaxed);
+            r.slots[i].peakPercent = slotPeak[i].load(std::memory_order_relaxed);
+            r.slots[i].silenceBypassed = slotBypassed[i].load(std::memory_order_relaxed);
+            r.slots[i].active = slotActive[i].load(std::memory_order_relaxed);
+            r.slots[i].roi = slotRoi[i].load(std::memory_order_relaxed);
 
             if (r.slots[i].active)
             {
@@ -151,9 +151,9 @@ public:
             }
         }
 
-        r.totalCpuPercent  = totalCpu;
+        r.totalCpuPercent = totalCpu;
         r.totalPeakPercent = totalPeak;
-        r.budgetAlarm      = totalCpu > budgetThreshold;
+        r.budgetAlarm = totalCpu > budgetThreshold;
 
         // Efficiency: how well is CPU being used for creative output?
         // 100 = all active slots producing sound; 0 = all slots idle but consuming CPU
@@ -165,10 +165,10 @@ public:
                 if (r.slots[i].active && !r.slots[i].silenceBypassed)
                     avgRoi += r.slots[i].roi;
             if (producing > 0)
-                avgRoi /= static_cast<float> (producing);
+                avgRoi /= static_cast<float>(producing);
 
             // Score combines: producing ratio + ROI quality
-            float producingRatio = static_cast<float> (producing) / static_cast<float> (r.activeSlots);
+            float producingRatio = static_cast<float>(producing) / static_cast<float>(r.activeSlots);
             r.efficiencyScore = producingRatio * 50.0f + (avgRoi > 1.0f ? 50.0f : avgRoi * 50.0f);
         }
 
@@ -178,11 +178,11 @@ public:
 private:
     float budgetThreshold = kDefaultBudgetPercent;
 
-    std::atomic<float> slotCpu[MaxSlots]  {};
-    std::atomic<float> slotPeak[MaxSlots] {};
-    std::atomic<bool>  slotBypassed[MaxSlots] {};
-    std::atomic<bool>  slotActive[MaxSlots] {};
-    std::atomic<float> slotRoi[MaxSlots]  {};
+    std::atomic<float> slotCpu[MaxSlots]{};
+    std::atomic<float> slotPeak[MaxSlots]{};
+    std::atomic<bool> slotBypassed[MaxSlots]{};
+    std::atomic<bool> slotActive[MaxSlots]{};
+    std::atomic<float> slotRoi[MaxSlots]{};
 };
 
 } // namespace xoceanus

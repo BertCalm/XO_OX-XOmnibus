@@ -11,7 +11,8 @@
 #include "BitCrusher.h"
 #include "TapeWarp.h"
 
-namespace xocelot {
+namespace xocelot
+{
 
 // OcelotUnderstory -- Sample Mangler + Grain Chopper
 //
@@ -32,16 +33,16 @@ public:
     {
         sr = sampleRate;
         chopBuffer.fill(0.0f);
-        writeHead      = 0;
-        readHead       = 0.0f;
-        oscPhase       = 0.0f;
-        lastEnergy     = 0.0f;
-        lastPitch      = 0.0f;
+        writeHead = 0;
+        readHead = 0.0f;
+        oscPhase = 0.0f;
+        lastEnergy = 0.0f;
+        lastPitch = 0.0f;
 
         // Chop gate state
-        chopSamplePos  = 0;
+        chopSamplePos = 0;
         currentSegment = 0;
-        segmentMuted   = false;
+        segmentMuted = false;
 
         // DSP primitives
         bitCrusher.reset();
@@ -51,8 +52,8 @@ public:
         noiseSeed = 42u;
 
         // Grain scatter state
-        scatterActive  = false;
-        scatterRate    = 1.0f;
+        scatterActive = false;
+        scatterRate = 1.0f;
     }
 
     // Feed external audio into chop buffer (for coupling)
@@ -61,29 +62,23 @@ public:
         for (int i = 0; i < numSamples; ++i)
         {
             chopBuffer[static_cast<size_t>(writeHead)] =
-                chopBuffer[static_cast<size_t>(writeHead)] * (1.0f - level)
-                + monoSrc[i] * level;
+                chopBuffer[static_cast<size_t>(writeHead)] * (1.0f - level) + monoSrc[i] * level;
             writeHead = (writeHead + 1) % kBufferSize;
         }
     }
 
     // renderBlock: fill outL/outR. Returns block RMS energy.
-    float renderBlock(float* outL, float* outR, int numSamples,
-                      const OcelotParamSnapshot& snap,
-                      const BiomeProfile& biome,
-                      const struct StrataModulation& mod)
+    float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap,
+                      const BiomeProfile& biome, const struct StrataModulation& mod)
     {
         // -- Effective parameters with biome offsets --
 
-        float effectiveBitDepth = std::clamp(snap.bitDepth + biome.understoryBitShift,
-                                              4.0f, 16.0f);
+        float effectiveBitDepth = std::clamp(snap.bitDepth + biome.understoryBitShift, 4.0f, 16.0f);
         float effectiveSampleRateRed = std::clamp(snap.sampleRateRed, 4000.0f, 192000.0f);
-        float effectiveWobble = std::clamp(snap.tapeWobble + biome.understoryWobbleBase,
-                                            0.0f, 1.0f);
+        float effectiveWobble = std::clamp(snap.tapeWobble + biome.understoryWobbleBase, 0.0f, 1.0f);
 
         // Chop rate with rhythmic matrix mod
-        int chopDiv = std::clamp(snap.chopRate + static_cast<int>(mod.understoryChopRateMod * 4.0f),
-                                  1, 32);
+        int chopDiv = std::clamp(snap.chopRate + static_cast<int>(mod.understoryChopRateMod * 4.0f), 1, 32);
 
         // Slice length in samples. At sr=44100 and chopRate=8, one slice ~5512 samples.
         // chopSwing tilts even/odd slice timing.
@@ -104,7 +99,7 @@ public:
         else
         {
             scatterActive = false;
-            scatterRate   = 1.0f;
+            scatterRate = 1.0f;
         }
 
         // Read position offset from canopy grain mod
@@ -123,7 +118,8 @@ public:
             {
                 // Internal oscillator: sine/saw blend
                 oscPhase += oscFreq / static_cast<float>(sr);
-                if (oscPhase >= 1.0f) oscPhase -= 1.0f;
+                if (oscPhase >= 1.0f)
+                    oscPhase -= 1.0f;
 
                 float saw = oscPhase * 2.0f - 1.0f;
                 float sine = std::sin(oscPhase * 2.0f * kPi);
@@ -138,9 +134,8 @@ public:
 
             // Compute slice length for current segment (swing applied)
             bool isEvenSegment = (currentSegment % 2 == 0);
-            float swingFactor = isEvenSegment
-                ? (1.0f - snap.chopSwing * 0.5f)   // even slices shortened
-                : (1.0f + snap.chopSwing * 0.5f);  // odd slices lengthened
+            float swingFactor = isEvenSegment ? (1.0f - snap.chopSwing * 0.5f)  // even slices shortened
+                                              : (1.0f + snap.chopSwing * 0.5f); // odd slices lengthened
             float sliceLenSamples = baseSliceLen * swingFactor;
             sliceLenSamples = std::max(sliceLenSamples, 1.0f); // safety floor
 
@@ -153,9 +148,8 @@ public:
                 currentSegment++;
 
                 // Deterministic mute decision: hash of (segment index + floorPattern)
-                uint32_t hash = deterministicHash(
-                    static_cast<uint32_t>(currentSegment),
-                    static_cast<uint32_t>(snap.floorPattern));
+                uint32_t hash =
+                    deterministicHash(static_cast<uint32_t>(currentSegment), static_cast<uint32_t>(snap.floorPattern));
                 // Mute ~30% of segments for rhythmic interest
                 segmentMuted = (hash % 100u) < 30u;
             }
@@ -164,7 +158,8 @@ public:
             float readOffset = static_cast<float>(kBufferSize) * grainPosMod * 0.1f;
             float rHead = readHead + readOffset;
             // Wrap into valid range
-            while (rHead < 0.0f) rHead += static_cast<float>(kBufferSize);
+            while (rHead < 0.0f)
+                rHead += static_cast<float>(kBufferSize);
             int ri = static_cast<int>(rHead) % kBufferSize;
             float sample = chopBuffer[static_cast<size_t>(ri)];
 
@@ -174,9 +169,7 @@ public:
 
             // ===== 3. BIT-CRUSH (with sample rate decimation) =====
 
-            sample = bitCrusher.process(sample, effectiveBitDepth,
-                                         effectiveSampleRateRed,
-                                         static_cast<float>(sr));
+            sample = bitCrusher.process(sample, effectiveBitDepth, effectiveSampleRateRed, static_cast<float>(sr));
 
             // ===== 4. TAPE WARP =====
 
@@ -203,7 +196,7 @@ public:
 
             outL[i] = sample;
             outR[i] = sample;
-            sumSq  += sample * sample;
+            sumSq += sample * sample;
 
             // Advance read head with scatter rate
             readHead += scatterRate;
@@ -212,39 +205,39 @@ public:
         }
 
         lastEnergy = std::sqrt(sumSq / static_cast<float>(std::max(numSamples, 1)));
-        lastPitch  = oscFreq;
+        lastPitch = oscFreq;
         return lastEnergy;
     }
 
     float getLastEnergy() const { return lastEnergy; }
-    float getLastPitch() const  { return lastPitch; }
+    float getLastPitch() const { return lastPitch; }
 
 private:
     static constexpr float kPi = 3.14159265358979323846f;
 
     double sr = 0.0;
     std::array<float, kBufferSize> chopBuffer{};
-    int   writeHead      = 0;
-    float readHead       = 0.0f;
-    float oscPhase       = 0.0f;
-    float lastEnergy     = 0.0f;
-    float lastPitch      = 0.0f;
+    int writeHead = 0;
+    float readHead = 0.0f;
+    float oscPhase = 0.0f;
+    float lastEnergy = 0.0f;
+    float lastPitch = 0.0f;
 
     // Chop gate state
-    int  chopSamplePos   = 0;
-    int  currentSegment  = 0;
-    bool segmentMuted    = false;
+    int chopSamplePos = 0;
+    int currentSegment = 0;
+    bool segmentMuted = false;
 
     // DSP primitives (pre-allocated, no audio-thread allocation)
     BitCrusher bitCrusher;
-    TapeWarp   tapeWarp;
+    TapeWarp tapeWarp;
 
     // LCG noise state (replaces std::rand)
-    uint32_t noiseSeed   = 42u;
+    uint32_t noiseSeed = 42u;
 
     // Grain scatter state
-    bool  scatterActive  = false;
-    float scatterRate    = 1.0f;
+    bool scatterActive = false;
+    float scatterRate = 1.0f;
 
     // Deterministic hash for segment mute decisions
     // Uses floorPattern as seed so mute pattern is repeatable per-preset
@@ -260,7 +253,11 @@ private:
     // Denormal flush
     static float flushDenormal(float x)
     {
-        union { float f; uint32_t u; } val;
+        union
+        {
+            float f;
+            uint32_t u;
+        } val;
         val.f = x;
         if ((val.u & 0x7F800000u) == 0u && (val.u & 0x007FFFFFu) != 0u)
             return 0.0f;

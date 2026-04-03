@@ -22,10 +22,11 @@ namespace xoceanus
 class FieldMapPanel : public juce::Component, private juce::Timer
 {
 public:
-    struct NoteEvent {
-        float sessionTimeS;     // seconds since session start
-        float normalizedPitch;  // 0.0 (C1) to 1.0 (C7)
-        float velocity;         // 0.0–1.0, drives dot radius
+    struct NoteEvent
+    {
+        float sessionTimeS;    // seconds since session start
+        float normalizedPitch; // 0.0 (C1) to 1.0 (C7)
+        float velocity;        // 0.0–1.0, drives dot radius
         juce::Colour engineColor;
     };
 
@@ -46,10 +47,10 @@ public:
     void addNote(int midiNote, float velocity, juce::Colour engineColor)
     {
         NoteEvent ev;
-        ev.sessionTimeS    = static_cast<float>((juce::Time::getCurrentTime() - sessionStart).inSeconds());
+        ev.sessionTimeS = static_cast<float>((juce::Time::getCurrentTime() - sessionStart).inSeconds());
         ev.normalizedPitch = juce::jmap(static_cast<float>(juce::jlimit(24, 96, midiNote)), 24.0f, 96.0f, 0.0f, 1.0f);
-        ev.velocity        = velocity;
-        ev.engineColor     = engineColor;
+        ev.velocity = velocity;
+        ev.engineColor = engineColor;
 
         // Append to ring buffer (overwrite oldest)
         events[headIdx % kMaxEvents] = ev;
@@ -62,7 +63,8 @@ public:
     // the canvas has been empty for more than 4 minutes.
     void timerCallback() override
     {
-        if (!isVisible()) return;
+        if (!isVisible())
+            return;
 
         // Always repaint if new notes have been added since last tick
         if (headIdx != lastRepaintHeadIdx)
@@ -75,8 +77,7 @@ public:
 
         // Continue repainting while dots are still fading (up to 240s after last note)
         constexpr double kFadeWindowSeconds = 240.0;
-        if (headIdx > 0 &&
-            (juce::Time::getCurrentTime() - lastNoteActivityTime).inSeconds() < kFadeWindowSeconds)
+        if (headIdx > 0 && (juce::Time::getCurrentTime() - lastNoteActivityTime).inSeconds() < kFadeWindowSeconds)
         {
             repaint();
         }
@@ -93,28 +94,32 @@ public:
         // In dark mode: near-black with a blue tinge (original 0xFF0D0D1A).
         // In light mode: the Gallery shell white so FieldMapPanel integrates
         // with the light theme while zone bands remain visible.
-        g.setColour(juce::Colour(GalleryColors::darkMode()
-            ? 0xFF0D0D1Au
-            : GalleryColors::shellWhite()));
+        g.setColour(juce::Colour(GalleryColors::darkMode() ? 0xFF0D0D1Au : GalleryColors::shellWhite()));
         g.fillRect(b);
 
         // Zone bands (bottom=Midnight, top=Sunlit — matching XOceanus ecology)
-        struct ZoneBand { float yNormStart, yNormEnd; juce::uint32 rgba; float alpha; };
+        struct ZoneBand
+        {
+            float yNormStart, yNormEnd;
+            juce::uint32 rgba;
+            float alpha;
+        };
         const ZoneBand bands[] = {
-            { 0.80f, 1.00f, 0xFF48CAE4, 0.04f },  // Sunlit   — top 20%
-            { 0.45f, 0.80f, 0xFF0096C7, 0.03f },  // Twilight — middle
-            { 0.00f, 0.45f, 0xFF7B2FBE, 0.04f },  // Midnight — bottom
+            {0.80f, 1.00f, 0xFF48CAE4, 0.04f}, // Sunlit   — top 20%
+            {0.45f, 0.80f, 0xFF0096C7, 0.03f}, // Twilight — middle
+            {0.00f, 0.45f, 0xFF7B2FBE, 0.04f}, // Midnight — bottom
         };
         for (const auto& band : bands)
         {
-            float yTop    = b.getBottom() - band.yNormEnd   * b.getHeight();
+            float yTop = b.getBottom() - band.yNormEnd * b.getHeight();
             float yBottom = b.getBottom() - band.yNormStart * b.getHeight();
             g.setColour(juce::Colour(band.rgba).withAlpha(band.alpha));
             g.fillRect(b.getX(), yTop, b.getWidth(), yBottom - yTop);
         }
 
         // ── Zone boundary lines ───────────────────────────────────────────────
-        auto drawBand = [&](float yNorm, juce::uint32 col) {
+        auto drawBand = [&](float yNorm, juce::uint32 col)
+        {
             float y = b.getBottom() - yNorm * b.getHeight();
             g.setColour(juce::Colour(col).withAlpha(0.12f));
             g.drawHorizontalLine(static_cast<int>(y), b.getX(), b.getRight());
@@ -128,19 +133,21 @@ public:
         {
             const auto& ev = events[i % kMaxEvents];
             float age = now - ev.sessionTimeS;
-            if (age > kWindowS || age < 0.0f) continue;
+            if (age > kWindowS || age < 0.0f)
+                continue;
 
             float alpha = 1.0f - (age / kWindowS);
             alpha = alpha * alpha; // quadratic fade — lingers bright then drops off
-            if (alpha < 0.02f) continue;
+            if (alpha < 0.02f)
+                continue;
 
             // X: map session time within window to pixel X
             float xNorm = (ev.sessionTimeS - (now - kWindowS)) / kWindowS;
-            float x     = b.getX() + xNorm * b.getWidth();
+            float x = b.getX() + xNorm * b.getWidth();
             // Y: pitch (0=bottom C1, 1=top C7)
-            float y     = b.getBottom() - ev.normalizedPitch * b.getHeight();
+            float y = b.getBottom() - ev.normalizedPitch * b.getHeight();
             // Radius: 2.5 base + velocity * 4
-            float r     = 2.5f + ev.velocity * 4.0f;
+            float r = 2.5f + ev.velocity * 4.0f;
 
             // Glow pass (wider, dimmer)
             g.setColour(ev.engineColor.withAlpha(alpha * 0.15f));
@@ -158,21 +165,20 @@ public:
         // ── Label ────────────────────────────────────────────────────────────
         g.setFont(GalleryFonts::body(8.0f));
         // #393: theme-aware label — dark mode: white at 20% alpha; light mode: dark text at 35%.
-        g.setColour(GalleryColors::darkMode()
-            ? juce::Colours::white.withAlpha(0.20f)
-            : juce::Colour(GalleryColors::textMid()).withAlpha(0.35f));
+        g.setColour(GalleryColors::darkMode() ? juce::Colours::white.withAlpha(0.20f)
+                                              : juce::Colour(GalleryColors::textMid()).withAlpha(0.35f));
         g.drawText("FIELD MAP", b.reduced(6.0f, 4.0f), juce::Justification::topLeft);
     }
 
 private:
     static constexpr size_t kMaxEvents = 4096;
-    std::array<NoteEvent, kMaxEvents> events {};
+    std::array<NoteEvent, kMaxEvents> events{};
     size_t headIdx = 0;
     juce::Time sessionStart;
 
     // Fix #387: dirty-flag state for timerCallback gating
-    size_t lastRepaintHeadIdx = 0;            // headIdx value at last repaint
-    juce::Time lastNoteActivityTime;           // time of last note addition
+    size_t lastRepaintHeadIdx = 0;   // headIdx value at last repaint
+    juce::Time lastNoteActivityTime; // time of last note addition
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FieldMapPanel)
 };

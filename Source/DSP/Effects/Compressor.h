@@ -5,7 +5,8 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Compressor — Dynamics compressor with sidechain input.
@@ -39,7 +40,7 @@ public:
     //--------------------------------------------------------------------------
     /// Prepare the compressor for playback.
     /// @param sampleRate  Current sample rate in Hz.
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         envelope = 0.0f;
@@ -49,59 +50,47 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set the threshold in dB. Clamped to [-60, 0] dB.
-    void setThreshold (float dbThreshold)
-    {
-        threshold = clamp (dbThreshold, -60.0f, 0.0f);
-    }
+    void setThreshold(float dbThreshold) { threshold = clamp(dbThreshold, -60.0f, 0.0f); }
 
     /// Set the compression ratio. Clamped to [1.0, 20.0].
     /// 1.0 = no compression, 20.0 = near-limiting.
-    void setRatio (float r)
-    {
-        ratio = clamp (r, 1.0f, 20.0f);
-    }
+    void setRatio(float r) { ratio = clamp(r, 1.0f, 20.0f); }
 
     /// Set the attack time in milliseconds. Clamped to [0.1, 100]ms.
-    void setAttack (float ms)
+    void setAttack(float ms)
     {
-        attackMs = clamp (ms, 0.1f, 100.0f);
+        attackMs = clamp(ms, 0.1f, 100.0f);
         updateCoefficients();
     }
 
     /// Set the release time in milliseconds. Clamped to [10, 1000]ms.
-    void setRelease (float ms)
+    void setRelease(float ms)
     {
-        releaseMs = clamp (ms, 10.0f, 1000.0f);
+        releaseMs = clamp(ms, 10.0f, 1000.0f);
         updateCoefficients();
     }
 
     /// Set makeup gain in dB. Clamped to [0, 30] dB.
-    void setMakeupGain (float db)
-    {
-        makeupGainDb = clamp (db, 0.0f, 30.0f);
-    }
+    void setMakeupGain(float db) { makeupGainDb = clamp(db, 0.0f, 30.0f); }
 
     /// Set soft knee width in dB. 0 = hard knee, up to 12 dB.
-    void setKnee (float db)
-    {
-        kneeDb = clamp (db, 0.0f, 12.0f);
-    }
+    void setKnee(float db) { kneeDb = clamp(db, 0.0f, 12.0f); }
 
     //--------------------------------------------------------------------------
     /// Process a stereo block using the input signal for detection.
     /// @param left   Left channel buffer (modified in-place).
     /// @param right  Right channel buffer (modified in-place).
     /// @param numSamples  Number of samples to process.
-    void processBlock (float* left, float* right, int numSamples)
+    void processBlock(float* left, float* right, int numSamples)
     {
         for (int i = 0; i < numSamples; ++i)
         {
             // Peak detection from input
-            float detect = std::max (std::abs (left[i]), std::abs (right[i]));
+            float detect = std::max(std::abs(left[i]), std::abs(right[i]));
 
             // Compute and apply gain
-            float gain = computeGain (detect);
-            left[i]  *= gain;
+            float gain = computeGain(detect);
+            left[i] *= gain;
             right[i] *= gain;
         }
     }
@@ -114,18 +103,16 @@ public:
     /// @param scLeft  Sidechain left channel buffer (read-only).
     /// @param scRight Sidechain right channel buffer (read-only).
     /// @param numSamples  Number of samples to process.
-    void processBlockWithSidechain (float* left, float* right,
-                                    const float* scLeft, const float* scRight,
-                                    int numSamples)
+    void processBlockWithSidechain(float* left, float* right, const float* scLeft, const float* scRight, int numSamples)
     {
         for (int i = 0; i < numSamples; ++i)
         {
             // Peak detection from sidechain input
-            float detect = std::max (std::abs (scLeft[i]), std::abs (scRight[i]));
+            float detect = std::max(std::abs(scLeft[i]), std::abs(scRight[i]));
 
             // Compute and apply gain to main signal
-            float gain = computeGain (detect);
-            left[i]  *= gain;
+            float gain = computeGain(detect);
+            left[i] *= gain;
             right[i] *= gain;
         }
     }
@@ -133,10 +120,7 @@ public:
     //--------------------------------------------------------------------------
     /// Get the current gain reduction in dB (positive value = reduction).
     /// Use this for UI metering display.
-    float getGainReduction() const
-    {
-        return gainReductionDb;
-    }
+    float getGainReduction() const { return gainReductionDb; }
 
     //--------------------------------------------------------------------------
     /// Reset all compressor state without reallocation.
@@ -151,31 +135,30 @@ private:
     /// Recompute attack/release envelope coefficients from time constants.
     void updateCoefficients()
     {
-        if (sr <= 0.0) return;
+        if (sr <= 0.0)
+            return;
 
         // Envelope follower coefficients: coeff = exp(-1 / (time_seconds * sampleRate))
         // Using 1 - exp(-1/(t*sr)) as the "approach" coefficient
-        float srF = static_cast<float> (sr);
+        float srF = static_cast<float>(sr);
         // std::exp used here (not fastExp) — these are per-parameter-change, not per-sample,
         // so accuracy matters: fastExp has ~6% error that shifts time constants off spec.
-        attackCoeff  = flushDenormal (1.0f - std::exp (-1.0f / (attackMs * 0.001f * srF)));
-        releaseCoeff = flushDenormal (1.0f - std::exp (-1.0f / (releaseMs * 0.001f * srF)));
+        attackCoeff = flushDenormal(1.0f - std::exp(-1.0f / (attackMs * 0.001f * srF)));
+        releaseCoeff = flushDenormal(1.0f - std::exp(-1.0f / (releaseMs * 0.001f * srF)));
     }
 
     //--------------------------------------------------------------------------
     /// Compute gain reduction for a single sample and return the linear gain.
     /// @param detectLevel  Absolute peak level of the detection signal.
     /// @return Linear gain to apply to the audio signal.
-    float computeGain (float detectLevel)
+    float computeGain(float detectLevel)
     {
         // Convert detection level to dB using fast log2
         // 20*log10(x) = 6.0206*log2(x) — avoids std::log10 per sample
-        float detectDb = (detectLevel > 1e-10f)
-            ? 6.0205999f * fastLog2 (detectLevel)
-            : -200.0f;
+        float detectDb = (detectLevel > 1e-10f) ? 6.0205999f * fastLog2(detectLevel) : -200.0f;
 
         // Compute gain reduction with soft knee
-        float reductionDb = computeReduction (detectDb);
+        float reductionDb = computeReduction(detectDb);
 
         // Smooth the gain reduction with attack/release envelope
         // Attack when gain reduction is increasing, release when decreasing
@@ -184,14 +167,14 @@ private:
         else
             envelope += releaseCoeff * (reductionDb - envelope);
 
-        envelope = flushDenormal (envelope);
+        envelope = flushDenormal(envelope);
 
         // Store for metering (positive value = amount of reduction)
         gainReductionDb = envelope;
 
         // Convert to linear gain: negative dB reduction + positive makeup
         float totalGainDb = -envelope + makeupGainDb;
-        return dbToGain (totalGainDb);
+        return dbToGain(totalGainDb);
     }
 
     //--------------------------------------------------------------------------
@@ -199,7 +182,7 @@ private:
     /// Implements soft knee around the threshold.
     /// @param inputDb  Input level in dB.
     /// @return Target gain reduction in dB (0 = no reduction).
-    float computeReduction (float inputDb) const
+    float computeReduction(float inputDb) const
     {
         float overDb = inputDb - threshold;
 
@@ -239,12 +222,12 @@ private:
     double sr = 44100.0;
 
     // Parameters
-    float threshold = -18.0f;    // dB
+    float threshold = -18.0f; // dB
     float ratio = 4.0f;
-    float attackMs = 10.0f;      // ms
-    float releaseMs = 100.0f;    // ms
-    float makeupGainDb = 0.0f;   // dB (applied as dB offset in computeGain)
-    float kneeDb = 6.0f;         // dB (soft knee width)
+    float attackMs = 10.0f;    // ms
+    float releaseMs = 100.0f;  // ms
+    float makeupGainDb = 0.0f; // dB (applied as dB offset in computeGain)
+    float kneeDb = 6.0f;       // dB (soft knee width)
 
     // Envelope follower state
     float envelope = 0.0f;

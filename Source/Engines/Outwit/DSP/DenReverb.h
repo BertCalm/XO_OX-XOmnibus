@@ -24,12 +24,12 @@
 #include <algorithm>
 #include <cmath>
 
-namespace xoutwit {
+namespace xoutwit
+{
 
 class DenReverb
 {
 public:
-
     //--------------------------------------------------------------------------
     void prepare(double sampleRate) noexcept
     {
@@ -57,8 +57,8 @@ public:
     void setParams(float size, float decay, double currentSampleRate) noexcept
     {
         sr = static_cast<float>(currentSampleRate);
-        roomSize  = std::clamp(size,  0.0f, 1.0f);
-        decayAmt  = std::clamp(decay, 0.0f, 1.0f);
+        roomSize = std::clamp(size, 0.0f, 1.0f);
+        decayAmt = std::clamp(decay, 0.0f, 1.0f);
         computeCoefficients();
     }
 
@@ -75,12 +75,12 @@ public:
         float combOut = 0.0f;
         for (size_t i = 0; i < kNumCombs; ++i)
         {
-            int   len  = combLengths[i];
-            int   rpos = (delayWritePos[i] - len + kMaxDelay) & kDelayMask;
-            float y    = delayBuffers[i][rpos];
+            int len = combLengths[i];
+            int rpos = (delayWritePos[i] - len + kMaxDelay) & kDelayMask;
+            float y = delayBuffers[i][rpos];
             y = xoutwit::flushDenormal(y);
 
-            float filtered = y + lpfCoeff * (y - lpfStates[i]);  // per-comb shelf LPF
+            float filtered = y + lpfCoeff * (y - lpfStates[i]); // per-comb shelf LPF
             lpfStates[i] = xoutwit::flushDenormal(filtered);
 
             delayBuffers[i][delayWritePos[i]] = x + filtered * feedbackGain;
@@ -95,42 +95,41 @@ public:
         for (size_t i = 0; i < kNumAllpass; ++i)
         {
             float delayed = allpassBuf[i];
-            float fwd     = apOut + kAllpassGain * delayed;
+            float fwd = apOut + kAllpassGain * delayed;
             allpassBuf[i] = xoutwit::flushDenormal(fwd);
-            apOut         = delayed - kAllpassGain * fwd;
+            apOut = delayed - kAllpassGain * fwd;
         }
 
         return xoutwit::flushDenormal(apOut);
     }
 
 private:
-
-    static constexpr int   kMaxDelay   = 8192;         // must be power of 2
-    static constexpr int   kDelayMask  = kMaxDelay - 1;
-    static constexpr int   kNumCombs   = 4;
-    static constexpr int   kNumAllpass = 2;
+    static constexpr int kMaxDelay = 8192; // must be power of 2
+    static constexpr int kDelayMask = kMaxDelay - 1;
+    static constexpr int kNumCombs = 4;
+    static constexpr int kNumAllpass = 2;
     static constexpr float kAllpassGain = 0.7f;
 
     // Comb delay line lengths in samples (Schroeder primes scaled by room size)
     // Base lengths at 48kHz: 1557, 1617, 1491, 1422 (classic Schroeder ratios)
     static constexpr std::array<int, kNumCombs> kBaseCombMs = {32, 34, 31, 29}; // ms
 
-    float sr       = 48000.0f;
+    float sr = 48000.0f;
     float roomSize = 0.4f;
     float decayAmt = 0.4f;
 
     float feedbackGain = 0.7f;
-    float lpfCoeff     = 0.5f;
-    std::array<float, kNumCombs> lpfStates {}; // independent LP state per comb line (Seance P2)
+    float lpfCoeff = 0.5f;
+    std::array<float, kNumCombs> lpfStates{}; // independent LP state per comb line (Seance P2)
 
-    std::array<int, kNumCombs> combLengths {};
+    std::array<int, kNumCombs> combLengths{};
 
     // Delay buffers — statically allocated, no heap
-    std::array<std::array<float, kMaxDelay>, kNumCombs> delayBuffers {};
-    std::array<int, kNumCombs> delayWritePos {};
+    std::array<std::array<float, kMaxDelay>, kNumCombs> delayBuffers{};
+    std::array<int, kNumCombs> delayWritePos{};
 
     // Allpass state (single-sample, no delay line needed for short diffusers)
-    std::array<float, kNumAllpass> allpassBuf {};
+    std::array<float, kNumAllpass> allpassBuf{};
 
     void computeCoefficients() noexcept
     {
@@ -144,8 +143,8 @@ private:
         // Scale comb lengths by roomSize
         for (size_t i = 0; i < kNumCombs; ++i)
         {
-            float scaledMs    = kBaseCombMs[i] * (0.5f + roomSize * 1.5f);
-            int   lengthSamps = static_cast<int>(scaledMs * 0.001f * sr);
+            float scaledMs = kBaseCombMs[i] * (0.5f + roomSize * 1.5f);
+            int lengthSamps = static_cast<int>(scaledMs * 0.001f * sr);
             // Clamp to [16, kMaxDelay-1]
             combLengths[i] = std::clamp(lengthSamps, 16, kMaxDelay - 1);
         }

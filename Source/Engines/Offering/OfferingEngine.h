@@ -54,20 +54,21 @@
 #include <cstring>
 #include <algorithm>
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Voice slot MIDI note mapping — GM drum map standard positions.
 //==============================================================================
 static constexpr int kOfferingVoiceNotes[8] = {
-    36,  // C2  — Kick
-    38,  // D2  — Snare
-    42,  // F#2 — Closed Hat
-    46,  // A#2 — Open Hat
-    39,  // D#2 — Clap
-    37,  // C#2 — Rim
-    45,  // A2  — Tom
-    49   // C#3 — Perc (crash position, used for perc)
+    36, // C2  — Kick
+    38, // D2  — Snare
+    42, // F#2 — Closed Hat
+    46, // A#2 — Open Hat
+    39, // D#2 — Clap
+    37, // C#2 — Rim
+    45, // A2  — Tom
+    49  // C#3 — Perc (crash position, used for perc)
 };
 
 //==============================================================================
@@ -88,7 +89,7 @@ struct OfferingVoice
     int drunkDelaySamples = 0;
     bool pendingTrigger = false;
     // Cached trigger params for delayed start
-    int   pendType = 0;
+    int pendType = 0;
     float pendVelocity = 0.0f;
     float pendTune = 0.0f;
     float pendDecay = 0.3f;
@@ -96,16 +97,16 @@ struct OfferingVoice
     float pendSnap = 0.5f;
     float pendPitchEnv = 0.3f;
     float pendSat = 0.15f;
-    int   pendLayers = 1;
+    int pendLayers = 1;
     float pendChop = 0.0f;
     float pendStretch = 1.0f;
     float pendRingMod = 0.0f;
 
-    void prepare (float sampleRate) noexcept
+    void prepare(float sampleRate) noexcept
     {
-        transient.prepare (sampleRate);
-        texture.prepare (sampleRate);
-        collage.prepare (sampleRate);
+        transient.prepare(sampleRate);
+        texture.prepare(sampleRate);
+        collage.prepare(sampleRate);
     }
 
     void reset() noexcept
@@ -133,18 +134,18 @@ struct OfferingParamSnapshot
     // Texture / DUST (5)
     float dustVinyl = 0.2f;
     float dustTape = 0.1f;
-    int   dustBits = 16;
+    int dustBits = 16;
     float dustSampleRate = 48000.0f;
     float dustWobble = 0.05f;
 
     // Collage / FLIP (4)
-    int   flipLayers = 1;
+    int flipLayers = 1;
     float flipChop = 0.0f;
     float flipStretch = 1.0f;
     float flipRingMod = 0.0f;
 
     // City (3)
-    int   cityMode = 0;
+    int cityMode = 0;
     float cityBlend = 0.0f;
     float cityIntensity = 0.5f;
 
@@ -158,7 +159,7 @@ struct OfferingParamSnapshot
     float velToBody = 0.3f;
     float lfo1Rate = 0.067f;
     float lfo1Depth = 0.05f;
-    int   lfo1Shape = 0;
+    int lfo1Shape = 0;
     float lfo2Rate = 2.0f;
     float lfo2Depth = 0.0f;
     float aftertouch = 0.3f;
@@ -172,8 +173,9 @@ struct OfferingParamSnapshot
     float masterWidth = 0.5f;
 
     // Per-voice (6 × 8 = 48)
-    struct VoiceSnap {
-        int   type = 0;
+    struct VoiceSnap
+    {
+        int type = 0;
         float tune = 0.0f;
         float decay = 0.3f;
         float body = 0.5f;
@@ -193,34 +195,35 @@ public:
     //-- Identity ---------------------------------------------------------------
 
     juce::String getEngineId() const override { return "Offering"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE5B80B); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFFE5B80B); }
     int getMaxVoices() const override { return 8; }
 
     int getActiveVoiceCount() const override
     {
         int count = 0;
         for (int i = 0; i < 8; ++i)
-            if (voices_[i].active) count++;
+            if (voices_[i].active)
+                count++;
         return count;
     }
 
     //-- Lifecycle ---------------------------------------------------------------
 
-    void prepare (double sampleRate, int maxBlockSize) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
-        sr_ = static_cast<float> (sampleRate);
+        sr_ = static_cast<float>(sampleRate);
         blockSize_ = maxBlockSize;
 
         for (int i = 0; i < 8; ++i)
-            voices_[i].prepare (sr_);
+            voices_[i].prepare(sr_);
 
-        cityProcessor_.prepare (sr_);
+        cityProcessor_.prepare(sr_);
         curiosity_.reset();
-        lfo1_.setShape (StandardLFO::Sine);
-        lfo2_.setShape (StandardLFO::Sine);
+        lfo1_.setShape(StandardLFO::Sine);
+        lfo2_.setShape(StandardLFO::Sine);
 
         // SilenceGate: percussive engine, 100ms hold
-        prepareSilenceGate (sampleRate, maxBlockSize, 100.0f);
+        prepareSilenceGate(sampleRate, maxBlockSize, 100.0f);
 
         couplingCacheL_ = 0.0f;
         couplingCacheR_ = 0.0f;
@@ -243,8 +246,7 @@ public:
 
     //-- Audio -------------------------------------------------------------------
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
+    void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
         // ── 1. Parse MIDI ──────────────────────────────────────────────
@@ -255,10 +257,11 @@ public:
             if (msg.isNoteOn())
             {
                 wakeSilenceGate();
-                int voiceIdx = noteToVoice (msg.getNoteNumber());
-                if (voiceIdx < 0) continue;
+                int voiceIdx = noteToVoice(msg.getNoteNumber());
+                if (voiceIdx < 0)
+                    continue;
 
-                triggerVoice (voiceIdx, msg.getFloatVelocity());
+                triggerVoice(voiceIdx, msg.getFloatVelocity());
             }
             else if (msg.isNoteOff())
             {
@@ -266,7 +269,7 @@ public:
             }
             else if (msg.isPitchWheel())
             {
-                pitchBendNorm_ = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+                pitchBendNorm_ = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             }
             else if (msg.isChannelPressure())
             {
@@ -281,82 +284,82 @@ public:
         // ── 2. SilenceGate bypass ──────────────────────────────────────
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear (0, numSamples);
+            buffer.clear(0, numSamples);
             couplingCacheL_ = couplingCacheR_ = 0.0f;
             // Reset coupling accumulators on bypass path too — coupling inputs
             // may still arrive even when engine is silent; discard them cleanly.
-            couplingCityMod_  = 0.0f;
+            couplingCityMod_ = 0.0f;
             couplingChokeMod_ = 0.0f;
-            couplingFlipMod_  = 0.0f;
+            couplingFlipMod_ = 0.0f;
             couplingDecayMod_ = 0.0f;
-            couplingFMMod_    = 0.0f;
+            couplingFMMod_ = 0.0f;
             return;
         }
 
         // ── 3. Cache parameters (ParamSnapshot) ──────────────────────
         OfferingParamSnapshot snap;
-        loadSnapshot (snap);
+        loadSnapshot(snap);
 
         // ── 3b. Wire coupling modulators into snapshot ────────────────
         // couplingCityMod_: external amplitude modulates city processing intensity
-        snap.cityIntensity = std::clamp (snap.cityIntensity + couplingCityMod_, 0.0f, 1.0f);
+        snap.cityIntensity = std::clamp(snap.cityIntensity + couplingCityMod_, 0.0f, 1.0f);
         // couplingFlipMod_: external rhythm modulates stretch amount (additive)
-        snap.flipStretch = std::clamp (snap.flipStretch + couplingFlipMod_, 0.5f, 2.0f);
+        snap.flipStretch = std::clamp(snap.flipStretch + couplingFlipMod_, 0.5f, 2.0f);
         // couplingFMMod_ — wired in triggerVoice(): deepens pitchEnvDepth on the next triggered hit
 
         // ── 4. Apply macros ──────────────────────────────────────────
-        float macroDig  = loadParam (paramMacroDig_, 0.0f);
-        float macroCity = loadParam (paramMacroCity_, 0.0f);
-        float macroFlip = loadParam (paramMacroFlip_, 0.0f);
-        float macroDust = loadParam (paramMacroDust_, 0.0f);
+        float macroDig = loadParam(paramMacroDig_, 0.0f);
+        float macroCity = loadParam(paramMacroCity_, 0.0f);
+        float macroFlip = loadParam(paramMacroFlip_, 0.0f);
+        float macroDust = loadParam(paramMacroDust_, 0.0f);
 
         // M1: DIG → curiosity + complexity at 50%
-        snap.digCuriosity = std::clamp (snap.digCuriosity + macroDig, 0.0f, 1.0f);
-        snap.digComplexity = std::clamp (snap.digComplexity + macroDig * 0.5f, 0.0f, 1.0f);
+        snap.digCuriosity = std::clamp(snap.digCuriosity + macroDig, 0.0f, 1.0f);
+        snap.digComplexity = std::clamp(snap.digComplexity + macroDig * 0.5f, 0.0f, 1.0f);
 
         // M2: CITY → city mode morph
         float cityMacroVal = macroCity;
-        if (std::abs (cityMacroVal) > 0.01f)
+        if (std::abs(cityMacroVal) > 0.01f)
         {
-            float totalCity = static_cast<float> (snap.cityMode) + cityMacroVal * 4.0f;
-            snap.cityMode = std::clamp (static_cast<int> (totalCity), 0, 4);
-            snap.cityBlend = totalCity - std::floor (totalCity);
+            float totalCity = static_cast<float>(snap.cityMode) + cityMacroVal * 4.0f;
+            snap.cityMode = std::clamp(static_cast<int>(totalCity), 0, 4);
+            snap.cityBlend = totalCity - std::floor(totalCity);
         }
 
         // M3: FLIP → layers + chop + ring mod
-        snap.flipLayers = std::clamp (snap.flipLayers + static_cast<int> (macroFlip * 3.0f), 1, 4);
-        snap.flipChop = std::clamp (snap.flipChop + macroFlip * 0.5f, 0.0f, 1.0f);
-        snap.flipRingMod = std::clamp (snap.flipRingMod + macroFlip * 0.3f, 0.0f, 1.0f);
+        snap.flipLayers = std::clamp(snap.flipLayers + static_cast<int>(macroFlip * 3.0f), 1, 4);
+        snap.flipChop = std::clamp(snap.flipChop + macroFlip * 0.5f, 0.0f, 1.0f);
+        snap.flipRingMod = std::clamp(snap.flipRingMod + macroFlip * 0.3f, 0.0f, 1.0f);
 
         // M4: DUST → vinyl + tape + bits
-        snap.dustVinyl = std::clamp (snap.dustVinyl + macroDust * 0.5f, 0.0f, 1.0f);
-        snap.dustTape = std::clamp (snap.dustTape + macroDust * 0.3f, 0.0f, 1.0f);
+        snap.dustVinyl = std::clamp(snap.dustVinyl + macroDust * 0.5f, 0.0f, 1.0f);
+        snap.dustTape = std::clamp(snap.dustTape + macroDust * 0.3f, 0.0f, 1.0f);
         if (macroDust > 0.5f)
-            snap.dustBits = std::max (4, snap.dustBits - static_cast<int> ((macroDust - 0.5f) * 8.0f));
+            snap.dustBits = std::max(4, snap.dustBits - static_cast<int>((macroDust - 0.5f) * 8.0f));
 
         // D006: mod wheel → curiosity drive
-        snap.digCuriosity = std::clamp (snap.digCuriosity + modWheelValue_ * snap.modWheel * 0.3f, 0.0f, 1.0f);
+        snap.digCuriosity = std::clamp(snap.digCuriosity + modWheelValue_ * snap.modWheel * 0.3f, 0.0f, 1.0f);
 
         // D006: aftertouch → texture intensity
         float atMod = aftertouchValue_ * snap.aftertouch;
 
         // ── 5. Update LFOs ──────────────────────────────────────────
-        lfo1_.setRate (snap.lfo1Rate, sr_);
-        lfo1_.setShape (snap.lfo1Shape);
-        lfo2_.setRate (snap.lfo2Rate, sr_);
-        lfo2_.setShape (StandardLFO::Sine); // LFO2 is always sine for groove pump
+        lfo1_.setRate(snap.lfo1Rate, sr_);
+        lfo1_.setShape(snap.lfo1Shape);
+        lfo2_.setRate(snap.lfo2Rate, sr_);
+        lfo2_.setShape(StandardLFO::Sine); // LFO2 is always sine for groove pump
 
         // ── 6. Render voices ─────────────────────────────────────────
-        float* outL = buffer.getWritePointer (0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
-        buffer.clear (0, numSamples);
+        float* outL = buffer.getWritePointer(0);
+        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        buffer.clear(0, numSamples);
 
         // Per-sample mono mix buffer for city processing.
         // 4096 samples handles 96kHz at large buffer sizes (~42ms); guarded by safeSamples.
         float monoMix[4096];
-        jassert (numSamples <= 4096);  // warn in debug if host sends unexpectedly large blocks
-        int safeSamples = std::min (numSamples, 4096);
-        std::fill (monoMix, monoMix + safeSamples, 0.0f);
+        jassert(numSamples <= 4096); // warn in debug if host sends unexpectedly large blocks
+        int safeSamples = std::min(numSamples, 4096);
+        std::fill(monoMix, monoMix + safeSamples, 0.0f);
 
         // SRO (2026-03-21): Precompute per-voice pan gains once per block.
         // vs.pan comes from param snapshot — block-constant. Moving cos/sin
@@ -365,8 +368,8 @@ public:
         for (int v = 0; v < 8; ++v)
         {
             float angle = (snap.voice[v].pan + 1.0f) * 0.25f * 3.14159265f;
-            precomputedPanL[v] = std::cos (angle);
-            precomputedPanR[v] = std::sin (angle);
+            precomputedPanL[v] = std::cos(angle);
+            precomputedPanR[v] = std::sin(angle);
         }
 
         for (int s = 0; s < safeSamples; ++s)
@@ -388,14 +391,11 @@ public:
                     if (--voices_[v].drunkDelaySamples <= 0)
                     {
                         voices_[v].pendingTrigger = false;
-                        voices_[v].transient.trigger (
-                            voices_[v].pendType, voices_[v].pendVelocity,
-                            voices_[v].pendTune, voices_[v].pendDecay,
-                            voices_[v].pendBody, voices_[v].pendSnap,
-                            voices_[v].pendPitchEnv, voices_[v].pendSat);
-                        voices_[v].collage.trigger (
-                            voices_[v].pendLayers, voices_[v].pendChop,
-                            voices_[v].pendStretch, voices_[v].pendRingMod);
+                        voices_[v].transient.trigger(voices_[v].pendType, voices_[v].pendVelocity, voices_[v].pendTune,
+                                                     voices_[v].pendDecay, voices_[v].pendBody, voices_[v].pendSnap,
+                                                     voices_[v].pendPitchEnv, voices_[v].pendSat);
+                        voices_[v].collage.trigger(voices_[v].pendLayers, voices_[v].pendChop, voices_[v].pendStretch,
+                                                   voices_[v].pendRingMod);
                     }
                     continue; // silence during drunk delay countdown
                 }
@@ -409,7 +409,7 @@ public:
                 {
                     float envLevel = voices_[v].transient.getAmpEnvLevel();
                     float freqRatio = 1.0f + envLevel * snap.envToPitch * 2.0f;
-                    voices_[v].transient.setFreqMod (freqRatio);
+                    voices_[v].transient.setFreqMod(freqRatio);
                 }
 
                 // Transient synthesis
@@ -422,15 +422,14 @@ public:
 
                 // Texture layer (DUST + aftertouch modulation + envFilterAmt)
                 // envFilterAmt: envelope→filter — voice amplitude modulates texture intensity
-                float envMod = std::abs (sample) * snap.envFilterAmt;
+                float envMod = std::abs(sample) * snap.envFilterAmt;
                 float effectiveVinyl = snap.dustVinyl + atMod * 0.2f + envMod * 0.15f;
                 float effectiveTape = snap.dustTape + atMod * 0.15f + envMod * 0.1f;
-                sample = voices_[v].texture.process (sample,
-                    effectiveVinyl, effectiveTape,
-                    snap.dustBits, snap.dustSampleRate, snap.dustWobble);
+                sample = voices_[v].texture.process(sample, effectiveVinyl, effectiveTape, snap.dustBits,
+                                                    snap.dustSampleRate, snap.dustWobble);
 
                 // Collage layer
-                sample = voices_[v].collage.process (sample);
+                sample = voices_[v].collage.process(sample);
 
                 // LFO1 → filter modulation (applied as amplitude mod for simplicity in V1)
                 if (snap.lfo1Depth > 0.001f)
@@ -442,7 +441,7 @@ public:
 
                 // Apply voice level
                 // couplingChokeMod_: external amplitude ducks (sidechains) drum voices
-                float chokeGain = std::clamp (1.0f - couplingChokeMod_, 0.0f, 1.0f);
+                float chokeGain = std::clamp(1.0f - couplingChokeMod_, 0.0f, 1.0f);
                 sample *= vs.level * chokeGain;
 
                 // Stereo panning (equal-power) — SRO: use block-precomputed values
@@ -460,8 +459,7 @@ public:
         // ── 7. City processing (mono → applied to both channels) ──────
         if (snap.cityIntensity > 0.001f)
         {
-            cityProcessor_.process (monoMix, safeSamples, snap.cityMode,
-                                    snap.cityBlend, snap.cityIntensity);
+            cityProcessor_.process(monoMix, safeSamples, snap.cityMode, snap.cityBlend, snap.cityIntensity);
 
             // Blend city-processed signal back into stereo
             for (int s = 0; s < safeSamples; ++s)
@@ -480,8 +478,8 @@ public:
         for (int s = 0; s < safeSamples; ++s)
         {
             // Subtle master tape saturation
-            outL[s] = fastTanh (outL[s] * 1.1f);
-            outR[s] = fastTanh (outR[s] * 1.1f);
+            outL[s] = fastTanh(outL[s] * 1.1f);
+            outR[s] = fastTanh(outR[s] * 1.1f);
 
             // Stereo width (mid-side)
             float mid = (outL[s] + outR[s]) * 0.5f;
@@ -496,61 +494,61 @@ public:
         }
 
         // ── 9. SilenceGate analysis ──────────────────────────────────
-        analyzeForSilenceGate (buffer, safeSamples);
+        analyzeForSilenceGate(buffer, safeSamples);
 
         // ── 10. Reset coupling accumulators ──────────────────────────
         // Reset AFTER consuming so next block starts clean.
         // applyCouplingInput() is called BEFORE renderBlock() each cycle;
         // resetting here ensures stale values never persist across missed blocks.
-        couplingCityMod_  = 0.0f;
+        couplingCityMod_ = 0.0f;
         couplingChokeMod_ = 0.0f;
-        couplingFlipMod_  = 0.0f;
+        couplingFlipMod_ = 0.0f;
         couplingDecayMod_ = 0.0f;
-        couplingFMMod_    = 0.0f;
+        couplingFMMod_ = 0.0f;
     }
 
     //-- Coupling ----------------------------------------------------------------
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         return (channel == 0) ? couplingCacheL_ : couplingCacheR_;
     }
 
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* sourceBuffer, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) override
     {
-        if (std::abs (amount) < 0.001f || sourceBuffer == nullptr) return;
+        if (std::abs(amount) < 0.001f || sourceBuffer == nullptr)
+            return;
 
         // Compute RMS of source for block-level coupling
         float rms = 0.0f;
         for (int i = 0; i < numSamples; ++i)
             rms += sourceBuffer[i] * sourceBuffer[i];
-        rms = std::sqrt (rms / static_cast<float> (numSamples));
+        rms = std::sqrt(rms / static_cast<float>(numSamples));
 
         switch (type)
         {
-            case CouplingType::AmpToFilter:
-                // External amplitude modulates city processing intensity
-                couplingCityMod_ = rms * amount;
-                break;
-            case CouplingType::AmpToChoke:
-                // External amplitude chokes drum voices (sidechain duck)
-                couplingChokeMod_ = rms * amount;
-                break;
-            case CouplingType::RhythmToBlend:
-                // External rhythm modulates FLIP amount
-                couplingFlipMod_ = rms * amount;
-                break;
-            case CouplingType::EnvToDecay:
-                // External envelope modulates voice decay times
-                couplingDecayMod_ = rms * amount;
-                break;
-            case CouplingType::AudioToFM:
-                // External audio FM-modulates transient generator
-                couplingFMMod_ = rms * amount;
-                break;
-            default:
-                break;
+        case CouplingType::AmpToFilter:
+            // External amplitude modulates city processing intensity
+            couplingCityMod_ = rms * amount;
+            break;
+        case CouplingType::AmpToChoke:
+            // External amplitude chokes drum voices (sidechain duck)
+            couplingChokeMod_ = rms * amount;
+            break;
+        case CouplingType::RhythmToBlend:
+            // External rhythm modulates FLIP amount
+            couplingFlipMod_ = rms * amount;
+            break;
+        case CouplingType::EnvToDecay:
+            // External envelope modulates voice decay times
+            couplingDecayMod_ = rms * amount;
+            break;
+        case CouplingType::AudioToFM:
+            // External audio FM-modulates transient generator
+            couplingFMMod_ = rms * amount;
+            break;
+        default:
+            break;
         }
     }
 
@@ -565,7 +563,7 @@ public:
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
         addParametersImpl(params);
-        return { params.begin(), params.end() };
+        return {params.begin(), params.end()};
     }
 
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -574,300 +572,263 @@ public:
         using PI = juce::AudioParameterInt;
 
         // ── Per-voice parameters (6 × 8 = 48) ────────────────────────
-        static const int   defTypes[8]  = { 0, 1, 2, 3, 4, 5, 6, 7 };
-        static const float defDecay[8]  = { 0.35f, 0.22f, 0.05f, 0.4f, 0.25f, 0.04f, 0.35f, 0.15f };
-        static const float defBody[8]   = { 0.7f, 0.5f, 0.3f, 0.3f, 0.2f, 0.4f, 0.6f, 0.4f };
-        static const float defPan[8]    = { 0.0f, 0.0f, 0.3f, -0.3f, 0.15f, -0.15f, 0.4f, -0.4f };
+        static const int defTypes[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+        static const float defDecay[8] = {0.35f, 0.22f, 0.05f, 0.4f, 0.25f, 0.04f, 0.35f, 0.15f};
+        static const float defBody[8] = {0.7f, 0.5f, 0.3f, 0.3f, 0.2f, 0.4f, 0.6f, 0.4f};
+        static const float defPan[8] = {0.0f, 0.0f, 0.3f, -0.3f, 0.15f, -0.15f, 0.4f, -0.4f};
 
         for (int v = 0; v < 8; ++v)
         {
-            juce::String prefix = "ofr_v" + juce::String (v) + "_";
-            juce::String name = "Offering V" + juce::String (v) + " ";
+            juce::String prefix = "ofr_v" + juce::String(v) + "_";
+            juce::String name = "Offering V" + juce::String(v) + " ";
 
-            params.push_back (std::make_unique<PI> (
-                juce::ParameterID { prefix + "type", 1 }, name + "Type", 0, 7, defTypes[v]));
-            params.push_back (std::make_unique<PF> (
-                juce::ParameterID { prefix + "tune", 1 }, name + "Tune",
-                juce::NormalisableRange<float> (-24.0f, 24.0f), 0.0f));
-            params.push_back (std::make_unique<PF> (
-                juce::ParameterID { prefix + "decay", 1 }, name + "Decay",
-                juce::NormalisableRange<float> (0.001f, 2.0f, 0.001f, 0.5f), defDecay[v]));
-            params.push_back (std::make_unique<PF> (
-                juce::ParameterID { prefix + "body", 1 }, name + "Body",
-                juce::NormalisableRange<float> (0.0f, 1.0f), defBody[v]));
-            params.push_back (std::make_unique<PF> (
-                juce::ParameterID { prefix + "level", 1 }, name + "Level",
-                juce::NormalisableRange<float> (0.0f, 1.0f), 0.8f));
-            params.push_back (std::make_unique<PF> (
-                juce::ParameterID { prefix + "pan", 1 }, name + "Pan",
-                juce::NormalisableRange<float> (-1.0f, 1.0f), defPan[v]));
+            params.push_back(
+                std::make_unique<PI>(juce::ParameterID{prefix + "type", 1}, name + "Type", 0, 7, defTypes[v]));
+            params.push_back(std::make_unique<PF>(juce::ParameterID{prefix + "tune", 1}, name + "Tune",
+                                                  juce::NormalisableRange<float>(-24.0f, 24.0f), 0.0f));
+            params.push_back(std::make_unique<PF>(juce::ParameterID{prefix + "decay", 1}, name + "Decay",
+                                                  juce::NormalisableRange<float>(0.001f, 2.0f, 0.001f, 0.5f),
+                                                  defDecay[v]));
+            params.push_back(std::make_unique<PF>(juce::ParameterID{prefix + "body", 1}, name + "Body",
+                                                  juce::NormalisableRange<float>(0.0f, 1.0f), defBody[v]));
+            params.push_back(std::make_unique<PF>(juce::ParameterID{prefix + "level", 1}, name + "Level",
+                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.8f));
+            params.push_back(std::make_unique<PF>(juce::ParameterID{prefix + "pan", 1}, name + "Pan",
+                                                  juce::NormalisableRange<float>(-1.0f, 1.0f), defPan[v]));
         }
 
         // ── Transient Generator (3) ───────────────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_transientSnap", 1 }, "Offering Transient Snap",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.65f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_transientPitch", 1 }, "Offering Transient Pitch",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_transientSat", 1 }, "Offering Transient Sat",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_transientSnap", 1}, "Offering Transient Snap",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.65f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_transientPitch", 1}, "Offering Transient Pitch",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_transientSat", 1}, "Offering Transient Sat",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
         // ── Texture / DUST (5) ────────────────────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_dustVinyl", 1 }, "Offering Dust Vinyl",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_dustTape", 1 }, "Offering Dust Tape",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.08f));
-        params.push_back (std::make_unique<PI> (
-            juce::ParameterID { "ofr_dustBits", 1 }, "Offering Dust Bits", 4, 16, 16));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_dustSampleRate", 1 }, "Offering Dust SR",
-            juce::NormalisableRange<float> (8000.0f, 48000.0f, 1.0f), 48000.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_dustWobble", 1 }, "Offering Dust Wobble",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.05f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_dustVinyl", 1}, "Offering Dust Vinyl",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_dustTape", 1}, "Offering Dust Tape",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.08f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"ofr_dustBits", 1}, "Offering Dust Bits", 4, 16, 16));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_dustSampleRate", 1}, "Offering Dust SR",
+                                              juce::NormalisableRange<float>(8000.0f, 48000.0f, 1.0f), 48000.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_dustWobble", 1}, "Offering Dust Wobble",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.05f));
 
         // ── Collage / FLIP (4) ────────────────────────────────────────
-        params.push_back (std::make_unique<PI> (
-            juce::ParameterID { "ofr_flipLayers", 1 }, "Offering Flip Layers", 1, 4, 1));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_flipChop", 1 }, "Offering Flip Chop",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_flipStretch", 1 }, "Offering Flip Stretch",
-            juce::NormalisableRange<float> (0.5f, 2.0f), 1.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_flipRingMod", 1 }, "Offering Flip Ring Mod",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"ofr_flipLayers", 1}, "Offering Flip Layers", 1, 4, 1));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_flipChop", 1}, "Offering Flip Chop",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_flipStretch", 1}, "Offering Flip Stretch",
+                                              juce::NormalisableRange<float>(0.5f, 2.0f), 1.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_flipRingMod", 1}, "Offering Flip Ring Mod",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // ── City Processing (3) ───────────────────────────────────────
-        params.push_back (std::make_unique<PI> (
-            juce::ParameterID { "ofr_cityMode", 1 }, "Offering City Mode", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_cityBlend", 1 }, "Offering City Blend",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_cityIntensity", 1 }, "Offering City Intensity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"ofr_cityMode", 1}, "Offering City Mode", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_cityBlend", 1}, "Offering City Blend",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_cityIntensity", 1}, "Offering City Intensity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
 
         // ── Curiosity / DIG (3) ───────────────────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_digCuriosity", 1 }, "Offering Dig Curiosity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_digComplexity", 1 }, "Offering Dig Complexity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.35f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_digFlow", 1 }, "Offering Dig Flow",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_digCuriosity", 1}, "Offering Dig Curiosity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_digComplexity", 1}, "Offering Dig Complexity",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.35f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_digFlow", 1}, "Offering Dig Flow",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
 
         // ── Expression & Modulation (12) ──────────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_velToSnap", 1 }, "Offering Vel→Snap",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_velToBody", 1 }, "Offering Vel→Body",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_lfo1Rate", 1 }, "Offering LFO1 Rate",
-            juce::NormalisableRange<float> (0.01f, 20.0f, 0.01f, 0.4f), 0.067f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_lfo1Depth", 1 }, "Offering LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.05f));
-        params.push_back (std::make_unique<PI> (
-            juce::ParameterID { "ofr_lfo1Shape", 1 }, "Offering LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_lfo2Rate", 1 }, "Offering LFO2 Rate",
-            juce::NormalisableRange<float> (0.01f, 20.0f, 0.01f, 0.4f), 2.17f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_lfo2Depth", 1 }, "Offering LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.08f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_aftertouch", 1 }, "Offering Aftertouch Amt",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_modWheel", 1 }, "Offering Mod Wheel Amt",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_envFilterAmt", 1 }, "Offering Env→Filter",
-            juce::NormalisableRange<float> (-1.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_velToAttack", 1 }, "Offering Vel→Attack",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_envToPitch", 1 }, "Offering Env→Pitch",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_velToSnap", 1}, "Offering Vel→Snap",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_velToBody", 1}, "Offering Vel→Body",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_lfo1Rate", 1}, "Offering LFO1 Rate",
+                                              juce::NormalisableRange<float>(0.01f, 20.0f, 0.01f, 0.4f), 0.067f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_lfo1Depth", 1}, "Offering LFO1 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.05f));
+        params.push_back(std::make_unique<PI>(juce::ParameterID{"ofr_lfo1Shape", 1}, "Offering LFO1 Shape", 0, 4, 0));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_lfo2Rate", 1}, "Offering LFO2 Rate",
+                                              juce::NormalisableRange<float>(0.01f, 20.0f, 0.01f, 0.4f), 2.17f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_lfo2Depth", 1}, "Offering LFO2 Depth",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.08f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_aftertouch", 1}, "Offering Aftertouch Amt",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_modWheel", 1}, "Offering Mod Wheel Amt",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_envFilterAmt", 1}, "Offering Env→Filter",
+                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_velToAttack", 1}, "Offering Vel→Attack",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_envToPitch", 1}, "Offering Env→Pitch",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // ── Master (2) ────────────────────────────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_masterLevel", 1 }, "Offering Master Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.75f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_masterWidth", 1 }, "Offering Master Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_masterLevel", 1}, "Offering Master Level",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_masterWidth", 1}, "Offering Master Width",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
 
         // ── Macros (4): DIG, CITY, FLIP, DUST ─────────────────────────
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_macroDig", 1 }, "Offering Macro DIG",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_macroCity", 1 }, "Offering Macro CITY",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_macroFlip", 1 }, "Offering Macro FLIP",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (
-            juce::ParameterID { "ofr_macroDust", 1 }, "Offering Macro DUST",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_macroDig", 1}, "Offering Macro DIG",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_macroCity", 1}, "Offering Macro CITY",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_macroFlip", 1}, "Offering Macro FLIP",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_macroDust", 1}, "Offering Macro DUST",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         // Per-voice params
         for (int v = 0; v < 8; ++v)
         {
-            juce::String prefix = "ofr_v" + juce::String (v) + "_";
-            paramVoiceType_[v]  = apvts.getRawParameterValue (prefix + "type");
-            paramVoiceTune_[v]  = apvts.getRawParameterValue (prefix + "tune");
-            paramVoiceDecay_[v] = apvts.getRawParameterValue (prefix + "decay");
-            paramVoiceBody_[v]  = apvts.getRawParameterValue (prefix + "body");
-            paramVoiceLevel_[v] = apvts.getRawParameterValue (prefix + "level");
-            paramVoicePan_[v]   = apvts.getRawParameterValue (prefix + "pan");
+            juce::String prefix = "ofr_v" + juce::String(v) + "_";
+            paramVoiceType_[v] = apvts.getRawParameterValue(prefix + "type");
+            paramVoiceTune_[v] = apvts.getRawParameterValue(prefix + "tune");
+            paramVoiceDecay_[v] = apvts.getRawParameterValue(prefix + "decay");
+            paramVoiceBody_[v] = apvts.getRawParameterValue(prefix + "body");
+            paramVoiceLevel_[v] = apvts.getRawParameterValue(prefix + "level");
+            paramVoicePan_[v] = apvts.getRawParameterValue(prefix + "pan");
         }
 
         // Global params
-        paramTransientSnap_   = apvts.getRawParameterValue ("ofr_transientSnap");
-        paramTransientPitch_  = apvts.getRawParameterValue ("ofr_transientPitch");
-        paramTransientSat_    = apvts.getRawParameterValue ("ofr_transientSat");
-        paramDustVinyl_       = apvts.getRawParameterValue ("ofr_dustVinyl");
-        paramDustTape_        = apvts.getRawParameterValue ("ofr_dustTape");
-        paramDustBits_        = apvts.getRawParameterValue ("ofr_dustBits");
-        paramDustSR_          = apvts.getRawParameterValue ("ofr_dustSampleRate");
-        paramDustWobble_      = apvts.getRawParameterValue ("ofr_dustWobble");
-        paramFlipLayers_      = apvts.getRawParameterValue ("ofr_flipLayers");
-        paramFlipChop_        = apvts.getRawParameterValue ("ofr_flipChop");
-        paramFlipStretch_     = apvts.getRawParameterValue ("ofr_flipStretch");
-        paramFlipRingMod_     = apvts.getRawParameterValue ("ofr_flipRingMod");
-        paramCityMode_        = apvts.getRawParameterValue ("ofr_cityMode");
-        paramCityBlend_       = apvts.getRawParameterValue ("ofr_cityBlend");
-        paramCityIntensity_   = apvts.getRawParameterValue ("ofr_cityIntensity");
-        paramDigCuriosity_    = apvts.getRawParameterValue ("ofr_digCuriosity");
-        paramDigComplexity_   = apvts.getRawParameterValue ("ofr_digComplexity");
-        paramDigFlow_         = apvts.getRawParameterValue ("ofr_digFlow");
-        paramVelToSnap_       = apvts.getRawParameterValue ("ofr_velToSnap");
-        paramVelToBody_       = apvts.getRawParameterValue ("ofr_velToBody");
-        paramLfo1Rate_        = apvts.getRawParameterValue ("ofr_lfo1Rate");
-        paramLfo1Depth_       = apvts.getRawParameterValue ("ofr_lfo1Depth");
-        paramLfo1Shape_       = apvts.getRawParameterValue ("ofr_lfo1Shape");
-        paramLfo2Rate_        = apvts.getRawParameterValue ("ofr_lfo2Rate");
-        paramLfo2Depth_       = apvts.getRawParameterValue ("ofr_lfo2Depth");
-        paramAftertouch_      = apvts.getRawParameterValue ("ofr_aftertouch");
-        paramModWheel_        = apvts.getRawParameterValue ("ofr_modWheel");
-        paramEnvFilterAmt_    = apvts.getRawParameterValue ("ofr_envFilterAmt");
-        paramVelToAttack_     = apvts.getRawParameterValue ("ofr_velToAttack");
-        paramEnvToPitch_      = apvts.getRawParameterValue ("ofr_envToPitch");
-        paramMasterLevel_     = apvts.getRawParameterValue ("ofr_masterLevel");
-        paramMasterWidth_     = apvts.getRawParameterValue ("ofr_masterWidth");
-        paramMacroDig_        = apvts.getRawParameterValue ("ofr_macroDig");
-        paramMacroCity_       = apvts.getRawParameterValue ("ofr_macroCity");
-        paramMacroFlip_       = apvts.getRawParameterValue ("ofr_macroFlip");
-        paramMacroDust_       = apvts.getRawParameterValue ("ofr_macroDust");
+        paramTransientSnap_ = apvts.getRawParameterValue("ofr_transientSnap");
+        paramTransientPitch_ = apvts.getRawParameterValue("ofr_transientPitch");
+        paramTransientSat_ = apvts.getRawParameterValue("ofr_transientSat");
+        paramDustVinyl_ = apvts.getRawParameterValue("ofr_dustVinyl");
+        paramDustTape_ = apvts.getRawParameterValue("ofr_dustTape");
+        paramDustBits_ = apvts.getRawParameterValue("ofr_dustBits");
+        paramDustSR_ = apvts.getRawParameterValue("ofr_dustSampleRate");
+        paramDustWobble_ = apvts.getRawParameterValue("ofr_dustWobble");
+        paramFlipLayers_ = apvts.getRawParameterValue("ofr_flipLayers");
+        paramFlipChop_ = apvts.getRawParameterValue("ofr_flipChop");
+        paramFlipStretch_ = apvts.getRawParameterValue("ofr_flipStretch");
+        paramFlipRingMod_ = apvts.getRawParameterValue("ofr_flipRingMod");
+        paramCityMode_ = apvts.getRawParameterValue("ofr_cityMode");
+        paramCityBlend_ = apvts.getRawParameterValue("ofr_cityBlend");
+        paramCityIntensity_ = apvts.getRawParameterValue("ofr_cityIntensity");
+        paramDigCuriosity_ = apvts.getRawParameterValue("ofr_digCuriosity");
+        paramDigComplexity_ = apvts.getRawParameterValue("ofr_digComplexity");
+        paramDigFlow_ = apvts.getRawParameterValue("ofr_digFlow");
+        paramVelToSnap_ = apvts.getRawParameterValue("ofr_velToSnap");
+        paramVelToBody_ = apvts.getRawParameterValue("ofr_velToBody");
+        paramLfo1Rate_ = apvts.getRawParameterValue("ofr_lfo1Rate");
+        paramLfo1Depth_ = apvts.getRawParameterValue("ofr_lfo1Depth");
+        paramLfo1Shape_ = apvts.getRawParameterValue("ofr_lfo1Shape");
+        paramLfo2Rate_ = apvts.getRawParameterValue("ofr_lfo2Rate");
+        paramLfo2Depth_ = apvts.getRawParameterValue("ofr_lfo2Depth");
+        paramAftertouch_ = apvts.getRawParameterValue("ofr_aftertouch");
+        paramModWheel_ = apvts.getRawParameterValue("ofr_modWheel");
+        paramEnvFilterAmt_ = apvts.getRawParameterValue("ofr_envFilterAmt");
+        paramVelToAttack_ = apvts.getRawParameterValue("ofr_velToAttack");
+        paramEnvToPitch_ = apvts.getRawParameterValue("ofr_envToPitch");
+        paramMasterLevel_ = apvts.getRawParameterValue("ofr_masterLevel");
+        paramMasterWidth_ = apvts.getRawParameterValue("ofr_masterWidth");
+        paramMacroDig_ = apvts.getRawParameterValue("ofr_macroDig");
+        paramMacroCity_ = apvts.getRawParameterValue("ofr_macroCity");
+        paramMacroFlip_ = apvts.getRawParameterValue("ofr_macroFlip");
+        paramMacroDust_ = apvts.getRawParameterValue("ofr_macroDust");
     }
 
 private:
     //--------------------------------------------------------------------------
     // MIDI note → voice index mapping (GM drum map positions)
     //--------------------------------------------------------------------------
-    int noteToVoice (int midiNote) const noexcept
+    int noteToVoice(int midiNote) const noexcept
     {
         for (int i = 0; i < 8; ++i)
-            if (kOfferingVoiceNotes[i] == midiNote) return i;
+            if (kOfferingVoiceNotes[i] == midiNote)
+                return i;
         // Alternate kick trigger (GM: Acoustic Bass Drum)
-        if (midiNote == 35) return 0;
+        if (midiNote == 35)
+            return 0;
         return -1;
     }
 
     //--------------------------------------------------------------------------
     // Trigger a voice with curiosity-driven parameter variation.
     //--------------------------------------------------------------------------
-    void triggerVoice (int voiceIdx, float velocity) noexcept
+    void triggerVoice(int voiceIdx, float velocity) noexcept
     {
         auto& vs = voices_[voiceIdx];
-        int type = static_cast<int> (loadParam (paramVoiceType_[voiceIdx], 0.0f));
-        float tune = loadParam (paramVoiceTune_[voiceIdx], 0.0f);
-        float decay = loadParam (paramVoiceDecay_[voiceIdx], 0.3f);
-        float body = loadParam (paramVoiceBody_[voiceIdx], 0.5f);
-        float snap = loadParam (paramTransientSnap_, 0.5f);
-        float pitchEnv = loadParam (paramTransientPitch_, 0.3f);
-        float sat = loadParam (paramTransientSat_, 0.15f);
+        int type = static_cast<int>(loadParam(paramVoiceType_[voiceIdx], 0.0f));
+        float tune = loadParam(paramVoiceTune_[voiceIdx], 0.0f);
+        float decay = loadParam(paramVoiceDecay_[voiceIdx], 0.3f);
+        float body = loadParam(paramVoiceBody_[voiceIdx], 0.5f);
+        float snap = loadParam(paramTransientSnap_, 0.5f);
+        float pitchEnv = loadParam(paramTransientPitch_, 0.3f);
+        float sat = loadParam(paramTransientSat_, 0.15f);
 
         // D001: velocity → timbre (not just volume)
-        float velSnap = loadParam (paramVelToSnap_, 0.5f);
-        float velBody = loadParam (paramVelToBody_, 0.3f);
-        float velAttack = loadParam (paramVelToAttack_, 0.2f);
-        snap = std::clamp (snap + (velocity - 0.5f) * velSnap * 0.6f, 0.0f, 1.0f);
-        body = std::clamp (body + (velocity - 0.5f) * velBody * 0.4f, 0.0f, 1.0f);
+        float velSnap = loadParam(paramVelToSnap_, 0.5f);
+        float velBody = loadParam(paramVelToBody_, 0.3f);
+        float velAttack = loadParam(paramVelToAttack_, 0.2f);
+        snap = std::clamp(snap + (velocity - 0.5f) * velSnap * 0.6f, 0.0f, 1.0f);
+        body = std::clamp(body + (velocity - 0.5f) * velBody * 0.4f, 0.0f, 1.0f);
 
         // D001: velToAttack — higher velocity tightens the transient attack (shorter decay).
         // Scales decay proportionally: full velocity + full velToAttack = 80% shorter decay.
-        decay = std::clamp (decay * (1.0f - velocity * velAttack * 0.8f), 0.001f, 2.0f);
+        decay = std::clamp(decay * (1.0f - velocity * velAttack * 0.8f), 0.001f, 2.0f);
 
         // AudioToFM coupling: external FM signal modulates transient pitch-envelope depth.
         // couplingFMMod_ > 0 deepens the pitch sweep, adding FM character to the hit.
-        if (std::abs (couplingFMMod_) > 0.001f)
-            pitchEnv = std::clamp (pitchEnv + couplingFMMod_ * 0.5f, 0.0f, 1.0f);
+        if (std::abs(couplingFMMod_) > 0.001f)
+            pitchEnv = std::clamp(pitchEnv + couplingFMMod_ * 0.5f, 0.0f, 1.0f);
 
         // envToPitch is stored for per-sample use in renderBlock (dynamic freq modulation).
         // Cache it into the voice so renderBlock can read it without a param lookup per sample.
-        (void) loadParam (paramEnvToPitch_, 0.0f); // consumed in renderBlock via snap.envToPitch
+        (void)loadParam(paramEnvToPitch_, 0.0f); // consumed in renderBlock via snap.envToPitch
 
         // Curiosity variation
-        float curiosity = loadParam (paramDigCuriosity_, 0.5f);
-        float complexity = loadParam (paramDigComplexity_, 0.4f);
-        float flow = loadParam (paramDigFlow_, 0.6f);
-        auto variation = curiosity_.generateVariation (curiosity, complexity, flow, voiceIdx);
+        float curiosity = loadParam(paramDigCuriosity_, 0.5f);
+        float complexity = loadParam(paramDigComplexity_, 0.4f);
+        float flow = loadParam(paramDigFlow_, 0.6f);
+        auto variation = curiosity_.generateVariation(curiosity, complexity, flow, voiceIdx);
 
         tune += variation.tuneDelta;
-        decay = std::clamp (decay + variation.decayDelta, 0.001f, 2.0f);
-        body = std::clamp (body + variation.bodyDelta, 0.0f, 1.0f);
-        snap = std::clamp (snap + variation.snapDelta, 0.0f, 1.0f);
-        pitchEnv = std::clamp (pitchEnv + variation.pitchEnvDelta, 0.0f, 1.0f);
-        sat = std::clamp (sat + variation.satDelta, 0.0f, 1.0f);
+        decay = std::clamp(decay + variation.decayDelta, 0.001f, 2.0f);
+        body = std::clamp(body + variation.bodyDelta, 0.0f, 1.0f);
+        snap = std::clamp(snap + variation.snapDelta, 0.0f, 1.0f);
+        pitchEnv = std::clamp(pitchEnv + variation.pitchEnvDelta, 0.0f, 1.0f);
+        sat = std::clamp(sat + variation.satDelta, 0.0f, 1.0f);
 
         // couplingDecayMod_: external envelope multiplies into voice decay at trigger time
         // couplingDecayMod_ > 0 shortens decay (sidechain tighten); clamped to valid range
-        if (std::abs (couplingDecayMod_) > 0.001f)
-            decay = std::clamp (decay * std::max (0.1f, 1.0f - couplingDecayMod_), 0.001f, 2.0f);
+        if (std::abs(couplingDecayMod_) > 0.001f)
+            decay = std::clamp(decay * std::max(0.1f, 1.0f - couplingDecayMod_), 0.001f, 2.0f);
 
         // Hat choke: closed hat kills open hat
         if (type == OfferingTransient::CHat)
             voices_[3].transient.choke();
 
         // Collage params (cached for potential delayed trigger)
-        int layers = static_cast<int> (loadParam (paramFlipLayers_, 1.0f));
-        float chop = loadParam (paramFlipChop_, 0.0f);
-        float stretch = loadParam (paramFlipStretch_, 1.0f);
-        float ringMod = loadParam (paramFlipRingMod_, 0.0f);
+        int layers = static_cast<int>(loadParam(paramFlipLayers_, 1.0f));
+        float chop = loadParam(paramFlipChop_, 0.0f);
+        float stretch = loadParam(paramFlipStretch_, 1.0f);
+        float ringMod = loadParam(paramFlipRingMod_, 0.0f);
 
         // Detroit drunk timing: per-voice trigger delay counter.
         // When Detroit city is active, each voice gets a random ±15ms offset
         // on its trigger time. This models Dilla's sequencer-level swing.
-        int cityMode = static_cast<int> (loadParam (paramCityMode_, 0.0f));
-        float cityIntensity = loadParam (paramCityIntensity_, 0.5f);
+        int cityMode = static_cast<int>(loadParam(paramCityMode_, 0.0f));
+        float cityIntensity = loadParam(paramCityIntensity_, 0.5f);
 
         if (cityMode == 1 && cityIntensity > 0.01f) // Detroit
         {
             // Per-voice deterministic random offset via xorshift on voice index + note
-            uint32_t seed = static_cast<uint32_t> (voiceIdx * 7919 + 31337);
-            seed ^= seed << 13; seed ^= seed >> 17; seed ^= seed << 5;
-            float rng = static_cast<float> (seed) / 4294967296.0f; // [0, 1)
+            uint32_t seed = static_cast<uint32_t>(voiceIdx * 7919 + 31337);
+            seed ^= seed << 13;
+            seed ^= seed >> 17;
+            seed ^= seed << 5;
+            float rng = static_cast<float>(seed) / 4294967296.0f;         // [0, 1)
             float offsetMs = (rng * 2.0f - 1.0f) * 15.0f * cityIntensity; // ±15ms
-            int delaySamples = static_cast<int> (std::abs (offsetMs) * 0.001f * sr_);
-            delaySamples = std::min (delaySamples, static_cast<int> (sr_ * 0.02f)); // cap at 20ms
+            int delaySamples = static_cast<int>(std::abs(offsetMs) * 0.001f * sr_);
+            delaySamples = std::min(delaySamples, static_cast<int>(sr_ * 0.02f)); // cap at 20ms
 
             if (delaySamples > 0)
             {
@@ -892,66 +853,65 @@ private:
         }
 
         // Immediate trigger (non-Detroit or zero delay)
-        vs.transient.trigger (type, velocity, tune + pitchBendNorm_ * 2.0f,
-                              decay, body, snap, pitchEnv, sat);
+        vs.transient.trigger(type, velocity, tune + pitchBendNorm_ * 2.0f, decay, body, snap, pitchEnv, sat);
         vs.active = true;
-        vs.collage.trigger (layers, chop, stretch, ringMod);
+        vs.collage.trigger(layers, chop, stretch, ringMod);
     }
 
     //--------------------------------------------------------------------------
     // Load parameter from cached pointer with fallback default.
     //--------------------------------------------------------------------------
-    static float loadParam (std::atomic<float>* p, float def) noexcept
+    static float loadParam(std::atomic<float>* p, float def) noexcept
     {
-        return p ? p->load (std::memory_order_relaxed) : def;
+        return p ? p->load(std::memory_order_relaxed) : def;
     }
 
     //--------------------------------------------------------------------------
     // Load all parameters into snapshot struct.
     //--------------------------------------------------------------------------
-    void loadSnapshot (OfferingParamSnapshot& s) const noexcept
+    void loadSnapshot(OfferingParamSnapshot& s) const noexcept
     {
-        s.transientSnap   = loadParam (paramTransientSnap_, 0.5f);
-        s.transientPitch  = loadParam (paramTransientPitch_, 0.3f);
-        s.transientSat    = loadParam (paramTransientSat_, 0.15f);
-        s.dustVinyl       = loadParam (paramDustVinyl_, 0.2f);
-        s.dustTape        = loadParam (paramDustTape_, 0.1f);
-        s.dustBits        = static_cast<int> (loadParam (paramDustBits_, 16.0f));
-        s.dustSampleRate  = loadParam (paramDustSR_, 48000.0f);
-        s.dustWobble      = loadParam (paramDustWobble_, 0.05f);
-        s.flipLayers      = static_cast<int> (loadParam (paramFlipLayers_, 1.0f));
-        s.flipChop        = loadParam (paramFlipChop_, 0.0f);
-        s.flipStretch     = loadParam (paramFlipStretch_, 1.0f);
-        s.flipRingMod     = loadParam (paramFlipRingMod_, 0.0f);
-        s.cityMode        = static_cast<int> (loadParam (paramCityMode_, 0.0f));
-        s.cityBlend       = loadParam (paramCityBlend_, 0.0f);
-        s.cityIntensity   = loadParam (paramCityIntensity_, 0.5f);
-        s.digCuriosity    = loadParam (paramDigCuriosity_, 0.5f);
-        s.digComplexity   = loadParam (paramDigComplexity_, 0.4f);
-        s.digFlow         = loadParam (paramDigFlow_, 0.6f);
-        s.velToSnap       = loadParam (paramVelToSnap_, 0.5f);
-        s.velToBody       = loadParam (paramVelToBody_, 0.3f);
-        s.lfo1Rate        = loadParam (paramLfo1Rate_, 0.067f);
-        s.lfo1Depth       = loadParam (paramLfo1Depth_, 0.05f);
-        s.lfo1Shape       = static_cast<int> (loadParam (paramLfo1Shape_, 0.0f));
-        s.lfo2Rate        = loadParam (paramLfo2Rate_, 2.0f);
-        s.lfo2Depth       = loadParam (paramLfo2Depth_, 0.0f);
-        s.aftertouch      = loadParam (paramAftertouch_, 0.3f);
-        s.modWheel        = loadParam (paramModWheel_, 0.5f);
-        s.envFilterAmt    = loadParam (paramEnvFilterAmt_, 0.5f);
-        s.velToAttack     = loadParam (paramVelToAttack_, 0.2f);
-        s.envToPitch      = loadParam (paramEnvToPitch_, 0.0f);
-        s.masterLevel     = loadParam (paramMasterLevel_, 0.75f);
-        s.masterWidth     = loadParam (paramMasterWidth_, 0.5f);
+        s.transientSnap = loadParam(paramTransientSnap_, 0.5f);
+        s.transientPitch = loadParam(paramTransientPitch_, 0.3f);
+        s.transientSat = loadParam(paramTransientSat_, 0.15f);
+        s.dustVinyl = loadParam(paramDustVinyl_, 0.2f);
+        s.dustTape = loadParam(paramDustTape_, 0.1f);
+        s.dustBits = static_cast<int>(loadParam(paramDustBits_, 16.0f));
+        s.dustSampleRate = loadParam(paramDustSR_, 48000.0f);
+        s.dustWobble = loadParam(paramDustWobble_, 0.05f);
+        s.flipLayers = static_cast<int>(loadParam(paramFlipLayers_, 1.0f));
+        s.flipChop = loadParam(paramFlipChop_, 0.0f);
+        s.flipStretch = loadParam(paramFlipStretch_, 1.0f);
+        s.flipRingMod = loadParam(paramFlipRingMod_, 0.0f);
+        s.cityMode = static_cast<int>(loadParam(paramCityMode_, 0.0f));
+        s.cityBlend = loadParam(paramCityBlend_, 0.0f);
+        s.cityIntensity = loadParam(paramCityIntensity_, 0.5f);
+        s.digCuriosity = loadParam(paramDigCuriosity_, 0.5f);
+        s.digComplexity = loadParam(paramDigComplexity_, 0.4f);
+        s.digFlow = loadParam(paramDigFlow_, 0.6f);
+        s.velToSnap = loadParam(paramVelToSnap_, 0.5f);
+        s.velToBody = loadParam(paramVelToBody_, 0.3f);
+        s.lfo1Rate = loadParam(paramLfo1Rate_, 0.067f);
+        s.lfo1Depth = loadParam(paramLfo1Depth_, 0.05f);
+        s.lfo1Shape = static_cast<int>(loadParam(paramLfo1Shape_, 0.0f));
+        s.lfo2Rate = loadParam(paramLfo2Rate_, 2.0f);
+        s.lfo2Depth = loadParam(paramLfo2Depth_, 0.0f);
+        s.aftertouch = loadParam(paramAftertouch_, 0.3f);
+        s.modWheel = loadParam(paramModWheel_, 0.5f);
+        s.envFilterAmt = loadParam(paramEnvFilterAmt_, 0.5f);
+        s.velToAttack = loadParam(paramVelToAttack_, 0.2f);
+        s.envToPitch = loadParam(paramEnvToPitch_, 0.0f);
+        s.masterLevel = loadParam(paramMasterLevel_, 0.75f);
+        s.masterWidth = loadParam(paramMasterWidth_, 0.5f);
 
         for (int v = 0; v < 8; ++v)
         {
-            s.voice[v].type  = static_cast<int> (loadParam (paramVoiceType_[v], static_cast<float> (v)));
-            s.voice[v].tune  = loadParam (paramVoiceTune_[v], 0.0f);
-            s.voice[v].decay = loadParam (paramVoiceDecay_[v], 0.3f);
-            s.voice[v].body  = loadParam (paramVoiceBody_[v], 0.5f);
-            s.voice[v].level = loadParam (paramVoiceLevel_[v], 0.8f);
-            s.voice[v].pan   = loadParam (paramVoicePan_[v], 0.0f);
+            s.voice[v].type = static_cast<int>(loadParam(paramVoiceType_[v], static_cast<float>(v)));
+            s.voice[v].tune = loadParam(paramVoiceTune_[v], 0.0f);
+            s.voice[v].decay = loadParam(paramVoiceDecay_[v], 0.3f);
+            s.voice[v].body = loadParam(paramVoiceBody_[v], 0.5f);
+            s.voice[v].level = loadParam(paramVoiceLevel_[v], 0.8f);
+            s.voice[v].pan = loadParam(paramVoicePan_[v], 0.0f);
         }
     }
 
@@ -991,12 +951,12 @@ private:
     //--------------------------------------------------------------------------
 
     // Per-voice (6 × 8 = 48)
-    std::atomic<float>* paramVoiceType_[8]  = {};
-    std::atomic<float>* paramVoiceTune_[8]  = {};
+    std::atomic<float>* paramVoiceType_[8] = {};
+    std::atomic<float>* paramVoiceTune_[8] = {};
     std::atomic<float>* paramVoiceDecay_[8] = {};
-    std::atomic<float>* paramVoiceBody_[8]  = {};
+    std::atomic<float>* paramVoiceBody_[8] = {};
     std::atomic<float>* paramVoiceLevel_[8] = {};
-    std::atomic<float>* paramVoicePan_[8]   = {};
+    std::atomic<float>* paramVoicePan_[8] = {};
 
     // Global params (35)
     std::atomic<float>* paramTransientSnap_ = nullptr;

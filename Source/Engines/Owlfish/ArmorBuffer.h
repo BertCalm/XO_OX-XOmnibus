@@ -5,7 +5,8 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xowlfish {
+namespace xowlfish
+{
 
 //==============================================================================
 // ArmorBuffer -- Velocity-triggered sacrificial signal capture (SACRIFICIAL ARMOR).
@@ -24,7 +25,7 @@ namespace xowlfish {
 class ArmorBuffer
 {
 public:
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
         sr = sampleRate;
         reset();
@@ -55,26 +56,28 @@ public:
     /// decay01:   0 -> 50 ms, 1 -> 2000 ms time constant
     /// scatter01: 0 -> 0 semitones, 1 -> 24 semitones pitch scatter
     /// delay01:   0 -> 50 ms, 1 -> 500 ms delay time
-    void setParams (float decay01, float scatter01, float delay01)
+    void setParams(float decay01, float scatter01, float delay01)
     {
         // Decay time constant: 50ms to 2000ms
         float decayMs = 50.0f + decay01 * 1950.0f;
         float decaySec = decayMs * 0.001f;
         // Exponential decay coefficient per sample
-        decayCoeff = 1.0f - smoothCoeffFromTime (decaySec, static_cast<float> (sr));
+        decayCoeff = 1.0f - smoothCoeffFromTime(decaySec, static_cast<float>(sr));
 
         // Pitch scatter range: 0 to 24 semitones
         scatterRange = scatter01 * 24.0f;
 
         // Delay time: 50ms to 500ms in samples
         float delayMs = 50.0f + delay01 * 450.0f;
-        delaySamples = static_cast<int> (delayMs * 0.001f * static_cast<float> (sr));
-        if (delaySamples >= kMaxDelay) delaySamples = kMaxDelay - 1;
-        if (delaySamples < 1) delaySamples = 1;
+        delaySamples = static_cast<int>(delayMs * 0.001f * static_cast<float>(sr));
+        if (delaySamples >= kMaxDelay)
+            delaySamples = kMaxDelay - 1;
+        if (delaySamples < 1)
+            delaySamples = 1;
     }
 
     /// Feed one sample into the continuous input history ring buffer.
-    void feedInput (float sample)
+    void feedInput(float sample)
     {
         inputHistory[historyPos] = sample;
         historyPos = (historyPos + 1) & (kHistorySize - 1);
@@ -82,10 +85,12 @@ public:
 
     /// Trigger the armor sacrifice. velocity and threshold are both 0-1.
     /// Only triggers if not already active.
-    void trigger (float velocity, float threshold)
+    void trigger(float velocity, float threshold)
     {
-        if (armed) return;               // already active
-        if (velocity <= threshold) return; // below threshold
+        if (armed)
+            return; // already active
+        if (velocity <= threshold)
+            return; // below threshold
 
         // -- Copy input history into capture buffer --
         for (int i = 0; i < kHistorySize; ++i)
@@ -101,10 +106,10 @@ public:
         for (int i = 0; i < kNumGrains; ++i)
         {
             ArmorGrain& g = armorGrains[i];
-            g.position = nextRandom() * static_cast<float> (kHistorySize);
+            g.position = nextRandom() * static_cast<float>(kHistorySize);
             // Pitch scatter: random offset in semitones
             float semitones = nextRandom() * scatterRange;
-            g.phaseInc = std::pow (2.0f, semitones / 12.0f);
+            g.phaseInc = std::pow(2.0f, semitones / 12.0f);
             g.active = true;
         }
 
@@ -119,19 +124,21 @@ public:
     /// Process one sample of armor grain output.
     float processSample()
     {
-        if (!armed) return 0.0f;
+        if (!armed)
+            return 0.0f;
 
         // -- Sum grain outputs --
         float grainSum = 0.0f;
         for (int i = 0; i < kNumGrains; ++i)
         {
-            if (!armorGrains[i].active) continue;
+            if (!armorGrains[i].active)
+                continue;
 
             ArmorGrain& g = armorGrains[i];
 
             // Read from capture buffer with linear interpolation
-            int posInt = static_cast<int> (g.position);
-            float frac = g.position - static_cast<float> (posInt);
+            int posInt = static_cast<int>(g.position);
+            float frac = g.position - static_cast<float>(posInt);
             int idx0 = posInt & (kHistorySize - 1);
             int idx1 = (posInt + 1) & (kHistorySize - 1);
             float sample = captureBuffer[idx0] + frac * (captureBuffer[idx1] - captureBuffer[idx0]);
@@ -140,18 +147,18 @@ public:
 
             // Advance grain position (wrapping in capture buffer)
             g.position += g.phaseInc;
-            if (g.position >= static_cast<float> (kHistorySize))
-                g.position -= static_cast<float> (kHistorySize);
+            if (g.position >= static_cast<float>(kHistorySize))
+                g.position -= static_cast<float>(kHistorySize);
         }
 
-        grainSum *= (1.0f / static_cast<float> (kNumGrains));
+        grainSum *= (1.0f / static_cast<float>(kNumGrains));
 
         // -- Delay line with gentle feedback --
         int readPos = (delayPos - delaySamples + kMaxDelay) % kMaxDelay;
         float delayed = delayLine[readPos];
-        delayed = flushDenormal (delayed);
+        delayed = flushDenormal(delayed);
 
-        float delayInput = grainSum + delayed * 0.3f;  // feedback = 0.3
+        float delayInput = grainSum + delayed * 0.3f; // feedback = 0.3
         delayLine[delayPos] = delayInput;
         delayPos = (delayPos + 1) % kMaxDelay;
 
@@ -160,7 +167,7 @@ public:
         // -- Apply decay envelope --
         output *= decayEnv;
         decayEnv *= decayCoeff;
-        decayEnv = flushDenormal (decayEnv);
+        decayEnv = flushDenormal(decayEnv);
 
         // -- Deactivate when envelope is negligible --
         if (decayEnv < 0.001f)
@@ -171,43 +178,37 @@ public:
                 armorGrains[i].active = false;
         }
 
-        return flushDenormal (output);
+        return flushDenormal(output);
     }
 
     /// Get the current duck amount (0 = no ducking, peaks at 1).
     /// Caller uses: main *= (1.0 - duckAmount * armorDuck)
-    float getDuckAmount() const
-    {
-        return armed ? decayEnv : 0.0f;
-    }
+    float getDuckAmount() const { return armed ? decayEnv : 0.0f; }
 
     /// Is the armor burst currently active?
-    bool isActive() const
-    {
-        return armed;
-    }
+    bool isActive() const { return armed; }
 
 private:
     static constexpr int kHistorySize = 2048;
-    static constexpr int kMaxDelay    = 22050;
-    static constexpr int kNumGrains   = 8;
+    static constexpr int kMaxDelay = 22050;
+    static constexpr int kNumGrains = 8;
 
     float inputHistory[kHistorySize] = {};
-    int   historyPos = 0;
+    int historyPos = 0;
     float captureBuffer[kHistorySize] = {};
     float delayLine[kMaxDelay] = {};
-    int   delayPos = 0;
-    int   delaySamples = 2205;
+    int delayPos = 0;
+    int delaySamples = 2205;
 
     struct ArmorGrain
     {
         float position = 0.0f;
         float phaseInc = 1.0f;
-        bool  active   = false;
+        bool active = false;
     };
     ArmorGrain armorGrains[kNumGrains];
 
-    bool  armed = false;       // true when armor has been triggered
+    bool armed = false;        // true when armor has been triggered
     float decayEnv = 0.0f;     // exponential decay envelope
     float decayCoeff = 0.999f; // per-sample decay multiplier
     float scatterRange = 0.0f; // pitch scatter in semitones
@@ -219,7 +220,7 @@ private:
     float nextRandom()
     {
         rngState = rngState * 1664525u + 1013904223u;
-        return static_cast<float> (rngState) / static_cast<float> (0xFFFFFFFFu);
+        return static_cast<float>(rngState) / static_cast<float>(0xFFFFFFFFu);
     }
 };
 

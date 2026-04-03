@@ -4,7 +4,8 @@
 #include <cmath>
 #include "../FastMath.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // Saturator — Multi-mode saturation/distortion processor.
@@ -33,10 +34,10 @@ public:
     /// Available saturation modes.
     enum class SaturationMode
     {
-        Tube,       ///< Warm tanh soft-clip
-        Tape,       ///< Asymmetric soft-clip with bias
-        Digital,    ///< Hard clip with rounding
-        FoldBack    ///< Triangle wave-folding
+        Tube,    ///< Warm tanh soft-clip
+        Tape,    ///< Asymmetric soft-clip with bias
+        Digital, ///< Hard clip with rounding
+        FoldBack ///< Triangle wave-folding
     };
 
     Saturator() = default;
@@ -45,10 +46,10 @@ public:
     /// Set the saturation mode.
     /// Recomputes driveGain so that calling setMode() after setDrive() always
     /// applies the correct gain formula for the new mode.
-    void setMode (SaturationMode m)
+    void setMode(SaturationMode m)
     {
         mode = m;
-        setDrive (drive);  // recompute driveGain for new mode
+        setDrive(drive); // recompute driveGain for new mode
     }
 
     /// Get the current saturation mode.
@@ -57,9 +58,9 @@ public:
     /// Set drive amount. 0.0 = clean, 1.0 = maximum saturation.
     /// Internally maps to gain: [1.0, 20.0] for Tube/Tape/Digital,
     /// [1.0, 5.0] for FoldBack.
-    void setDrive (float d)
+    void setDrive(float d)
     {
-        drive = clamp (d, 0.0f, 1.0f);
+        drive = clamp(d, 0.0f, 1.0f);
 
         if (mode == SaturationMode::FoldBack)
             driveGain = 1.0f + drive * 4.0f;
@@ -68,41 +69,35 @@ public:
     }
 
     /// Set dry/wet mix. 0.0 = fully dry, 1.0 = fully wet (saturated).
-    void setMix (float wet)
-    {
-        mix = clamp (wet, 0.0f, 1.0f);
-    }
+    void setMix(float wet) { mix = clamp(wet, 0.0f, 1.0f); }
 
     /// Set output gain to compensate for drive volume increase.
     /// @param gain  Linear gain multiplier (typically 0.1 to 1.0).
-    void setOutputGain (float gain)
-    {
-        outputGain = clamp (gain, 0.0f, 2.0f);
-    }
+    void setOutputGain(float gain) { outputGain = clamp(gain, 0.0f, 2.0f); }
 
     //--------------------------------------------------------------------------
     /// Process a single sample through the saturator.
     /// @param input  Input sample.
     /// @return Saturated output sample.
-    float processSample (float input)
+    float processSample(float input)
     {
         float driven = input * driveGain;
         float saturated = 0.0f;
 
         switch (mode)
         {
-            case SaturationMode::Tube:
-                saturated = processTube (driven);
-                break;
-            case SaturationMode::Tape:
-                saturated = processTape (driven);
-                break;
-            case SaturationMode::Digital:
-                saturated = processDigital (driven);
-                break;
-            case SaturationMode::FoldBack:
-                saturated = processFoldBack (driven);
-                break;
+        case SaturationMode::Tube:
+            saturated = processTube(driven);
+            break;
+        case SaturationMode::Tape:
+            saturated = processTape(driven);
+            break;
+        case SaturationMode::Digital:
+            saturated = processDigital(driven);
+            break;
+        case SaturationMode::FoldBack:
+            saturated = processFoldBack(driven);
+            break;
         }
 
         // DC blocking filter: y[n] = x[n] - x[n-1] + R * y[n-1]
@@ -111,7 +106,7 @@ public:
         // affecting audible bass content.
         float dcBlocked = saturated - dcPrevInput + dcBlockR * dcPrevOutput;
         dcPrevInput = saturated;
-        dcPrevOutput = flushDenormal (dcBlocked);
+        dcPrevOutput = flushDenormal(dcBlocked);
         saturated = dcPrevOutput;
 
         // Apply output gain compensation
@@ -125,20 +120,19 @@ public:
     /// Process a block of samples in-place.
     /// @param data  Pointer to sample buffer.
     /// @param numSamples  Number of samples to process.
-    void processBlock (float* data, int numSamples)
+    void processBlock(float* data, int numSamples)
     {
         for (int i = 0; i < numSamples; ++i)
-            data[i] = processSample (data[i]);
+            data[i] = processSample(data[i]);
     }
 
     //--------------------------------------------------------------------------
     /// Set the sample rate. Must be called in prepareToPlay() before processing.
     /// Recomputes the DC blocker coefficient to maintain a ~16 Hz cutoff at any
     /// sample rate (16 Hz at 44.1 kHz, same at 48 kHz, 88.2 kHz, 96 kHz, etc.).
-    void prepare (double sampleRate)
+    void prepare(double sampleRate)
     {
-        dcBlockR = 1.0f - (2.0f * 3.14159265f * 16.0f
-                           / static_cast<float>(sampleRate));
+        dcBlockR = 1.0f - (2.0f * 3.14159265f * 16.0f / static_cast<float>(sampleRate));
         reset();
     }
 
@@ -155,15 +149,12 @@ private:
     // Saturation algorithms
 
     /// Tube: tanh soft-clip. Warm, symmetric, compressing.
-    float processTube (float x) const
-    {
-        return fastTanh (x);
-    }
+    float processTube(float x) const { return fastTanh(x); }
 
     /// Tape: asymmetric soft-clip with positive bias.
     /// Adds even harmonics and gentle compression on positive peaks,
     /// harder clipping on negative peaks (like magnetic tape saturation).
-    float processTape (float x) const
+    float processTape(float x) const
     {
         // Add slight positive bias for asymmetry
         float biased = x + 0.1f;
@@ -178,15 +169,17 @@ private:
         else
         {
             // Harder negative clip with tanh
-            return fastTanh (biased * 1.5f) - 0.05f;
+            return fastTanh(biased * 1.5f) - 0.05f;
         }
     }
 
     /// Digital: hard clip at [-1, 1] with slight cubic rounding near the edges.
-    float processDigital (float x) const
+    float processDigital(float x) const
     {
-        if (x > 1.0f) return 1.0f;
-        if (x < -1.0f) return -1.0f;
+        if (x > 1.0f)
+            return 1.0f;
+        if (x < -1.0f)
+            return -1.0f;
 
         // Slight cubic rounding near clip point for less harsh aliasing
         // y = 1.5x - 0.5x^3 (soft clip polynomial, normalized to [-1, 1])
@@ -195,11 +188,11 @@ private:
 
     /// FoldBack: triangle wave-folding. Input folds back from +/-1 thresholds,
     /// creating complex harmonic content that changes with drive level.
-    float processFoldBack (float x) const
+    float processFoldBack(float x) const
     {
         // Iterative fold-back: reflect signal at +/-1 boundaries
         constexpr float threshold = 1.0f;
-        constexpr int maxFolds = 8;  // prevent infinite loop on extreme input
+        constexpr int maxFolds = 8; // prevent infinite loop on extreme input
 
         float folded = x;
         for (int f = 0; f < maxFolds; ++f)
@@ -214,8 +207,10 @@ private:
 
         // Hard clamp after folding — extreme inputs can exceed [-1,1]
         // even after maxFolds iterations
-        if (folded > threshold)  folded = threshold;
-        if (folded < -threshold) folded = -threshold;
+        if (folded > threshold)
+            folded = threshold;
+        if (folded < -threshold)
+            folded = -threshold;
 
         return folded;
     }
@@ -230,7 +225,7 @@ private:
     // DC blocking filter state.
     // dcBlockR is computed in prepare() as 1 - 2π*16/sampleRate so the
     // ~16 Hz cutoff is correct at any sample rate (44.1, 48, 88.2, 96 kHz).
-    float dcBlockR = 0.995f;  // default safe until prepare() is called
+    float dcBlockR = 0.995f; // default safe until prepare() is called
     float dcPrevInput = 0.0f;
     float dcPrevOutput = 0.0f;
 };

@@ -5,7 +5,8 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 
-namespace xoceanus {
+namespace xoceanus
+{
 
 //==============================================================================
 // AdvancedFXPanel — generic advanced parameter popup for any FX section.
@@ -13,8 +14,7 @@ namespace xoceanus {
 class AdvancedFXPanel : public juce::Component
 {
 public:
-    AdvancedFXPanel(juce::AudioProcessorValueTreeState& apvts,
-                    const juce::String& title,
+    AdvancedFXPanel(juce::AudioProcessorValueTreeState& apvts, const juce::String& title,
                     const std::vector<std::pair<juce::String, juce::String>>& paramDefs)
     {
         titleText = title;
@@ -30,12 +30,11 @@ public:
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, paramDefs[static_cast<size_t>(i)].first, knobs[i]);
-            enableKnobReset (knobs[i], apvts, paramDefs[static_cast<size_t>(i)].first);
+            enableKnobReset(knobs[i], apvts, paramDefs[static_cast<size_t>(i)].first);
 
             lbls[i].setText(paramDefs[static_cast<size_t>(i)].second, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
-            lbls[i].setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid()));
+            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
@@ -48,8 +47,7 @@ public:
         g.fillAll(get(shellWhite()));
         g.setColour(get(textMid()).withAlpha(0.40f));
         g.setFont(GalleryFonts::heading(8.0f));
-        g.drawText(titleText, getLocalBounds().removeFromTop(14).reduced(8, 0),
-                   juce::Justification::centredLeft);
+        g.drawText(titleText, getLocalBounds().removeFromTop(14).reduced(8, 0), juce::Justification::centredLeft);
     }
 
     void resized() override
@@ -72,7 +70,7 @@ private:
     juce::String titleText;
     int numKnobs = 0;
     std::array<GalleryKnob, kMaxKnobs> knobs;
-    std::array<juce::Label, kMaxKnobs>  lbls;
+    std::array<juce::Label, kMaxKnobs> lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kMaxKnobs> attach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AdvancedFXPanel)

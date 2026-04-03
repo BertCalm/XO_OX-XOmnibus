@@ -5,7 +5,8 @@
 #include <algorithm>
 #include <array>
 
-namespace xocelot {
+namespace xocelot
+{
 
 // TapeWarp — LFO-modulated delay line for Mellotron-style flutter/wobble.
 // tapeWobble controls wobble depth (0–8ms), tapeAge controls LFO rate + noise.
@@ -31,19 +32,20 @@ struct TapeWarp
         delay[static_cast<size_t>(writePos)] = x;
 
         // LFO for flutter (rate increases with age)
-        float lfoRate = 0.5f + age * 5.0f;  // 0.5–5.5 Hz
+        float lfoRate = 0.5f + age * 5.0f; // 0.5–5.5 Hz
         lfoPhase += lfoRate / sr;
-        if (lfoPhase > 1.0f) lfoPhase -= 1.0f;
+        if (lfoPhase > 1.0f)
+            lfoPhase -= 1.0f;
         float lfo = std::sin(lfoPhase * 2.0f * kPi);
 
         // Modulated delay in samples (0–8ms flutter range)
         float delayMs = wobble * 8.0f * (0.5f + 0.5f * lfo);
-        float delaySamples = std::clamp(delayMs * sr / 1000.0f, 0.0f,
-                                         static_cast<float>(kDelaySize - 2));
+        float delaySamples = std::clamp(delayMs * sr / 1000.0f, 0.0f, static_cast<float>(kDelaySize - 2));
 
         // Linear interpolation read
         float readPosF = static_cast<float>(writePos) - delaySamples;
-        if (readPosF < 0.0f) readPosF += static_cast<float>(kDelaySize);
+        if (readPosF < 0.0f)
+            readPosF += static_cast<float>(kDelaySize);
         int ri = static_cast<int>(readPosF);
         float frac = readPosF - static_cast<float>(ri);
         float s0 = delay[static_cast<size_t>(ri % kDelaySize)];
