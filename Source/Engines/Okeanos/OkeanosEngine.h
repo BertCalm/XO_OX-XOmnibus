@@ -58,36 +58,9 @@
 namespace xoceanus
 {
 
-//==============================================================================
-// SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
-//
-// Each FUSION engine exports this struct continuously. The 5th-slot engine
-// reads fingerprints from the 4 Kitchen engines to synthesize coupling effects
-// from metadata rather than raw audio. This is the mechanism that keeps
-// 5-engine operation under 17% CPU.
-//
-// The fingerprint captures the resonant character of the engine's output:
-// modal frequencies, impedance, temperature, spectral centroid, and activity.
-// The coupling engine uses these to model energy transfer (PLATE coupling)
-// without running audio through the coupled engine's processing chain.
-//==============================================================================
-#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-struct SpectralFingerprint
-{
-    float modalFrequencies[8] = {};   // Top 8 modal frequencies (Hz)
-    float modalAmplitudes[8] = {};    // Amplitude of each modal frequency [0,1]
-    float impedanceEstimate = 0.5f;   // Material impedance (0=soft/absorptive, 1=hard/reflective)
-    float temperature = 0.5f;         // Thermal/energy state [0=cold/static, 1=hot/active]
-    float spectralCentroid = 1000.0f; // Brightness measure (Hz)
-    float activeVoiceCount = 0.0f;    // Number of currently sounding voices
-    float fundamentalFreq = 440.0f;   // Most prominent fundamental
-    float rmsLevel = 0.0f;            // Current output RMS
-    float harmonicDensity = 0.5f;     // Ratio of harmonic to inharmonic energy
-    float attackTransience = 0.0f;    // Recent transient energy (decays over ~50ms)
-    float padding[2] = {};            // Reserve for future fields (total: 152 bytes)
-};
-#endif
+// Note: SpectralFingerprint struct and getSpectralFingerprint() removed.
+// The FUSION inter-engine fingerprint coupling was designed but never wired.
+// (#686 — dead code removal 2026-04-03)
 
 //==============================================================================
 // RhodesToneGenerator — Tine + pickup physical model.
@@ -341,48 +314,7 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    //--------------------------------------------------------------------------
-    // Spectral Fingerprint — FUSION 5th-slot coupling metadata
-    //--------------------------------------------------------------------------
-    SpectralFingerprint getSpectralFingerprint() const noexcept
-    {
-        SpectralFingerprint fp;
-        // Populate from current voice state
-        int voiceCount = 0;
-        float centroidNum = 0.0f, centroidDen = 0.0f;
-        float rmsSum = 0.0f;
-
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active)
-                continue;
-            voiceCount++;
-
-            float freq = v.glide.getFreq();
-            float amp = v.ampEnv.getLevel();
-            rmsSum += amp * amp;
-
-            if (voiceCount <= 8)
-            {
-                fp.modalFrequencies[voiceCount - 1] = freq;
-                fp.modalAmplitudes[voiceCount - 1] = amp;
-            }
-            centroidNum += freq * amp;
-            centroidDen += amp;
-        }
-
-        fp.activeVoiceCount = static_cast<float>(voiceCount);
-        fp.rmsLevel = std::sqrt(rmsSum / std::max(voiceCount, 1));
-        fp.spectralCentroid = (centroidDen > 0.001f) ? centroidNum / centroidDen : 1000.0f;
-        fp.impedanceEstimate = 0.3f; // Rhodes: moderate impedance (tine metal)
-        fp.temperature = fp.rmsLevel;
-        fp.harmonicDensity = 0.85f; // Rhodes: highly harmonic
-        fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
-        fp.attackTransience = attackTransientTracker;
-
-        return fp;
-    }
+    // getSpectralFingerprint() removed — FUSION inter-engine coupling was never wired. (#686)
 
     void prepare(double sampleRate, int maxBlockSize) override
     {

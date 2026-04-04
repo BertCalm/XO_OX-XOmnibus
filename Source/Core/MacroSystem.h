@@ -190,11 +190,14 @@ public:
             clearTargets(i);
     }
 
-    // Set a custom label for a macro (per-preset override).
+    // Set a custom label for a macro (per-preset override). Thread-safe (#682).
     void setLabel(int macroIndex, const juce::String& label)
     {
         if (isValidIndex(macroIndex))
+        {
+            const juce::SpinLock::ScopedLockType lock(labelLock_);
             labels[static_cast<size_t>(macroIndex)] = label;
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -311,10 +314,11 @@ public:
     // Query — safe to call from any thread
     //--------------------------------------------------------------------------
 
-    juce::String getLabel(int macroIndex) const
+    juce::String getLabel(int macroIndex) const // Thread-safe (#682)
     {
         if (!isValidIndex(macroIndex))
             return {};
+        const juce::SpinLock::ScopedLockType lock(labelLock_);
         return labels[static_cast<size_t>(macroIndex)];
     }
 
@@ -363,7 +367,10 @@ public:
         {
             auto* macroElem = root->createNewChildElement("Macro");
             macroElem->setAttribute("index", m);
-            macroElem->setAttribute("label", labels[static_cast<size_t>(m)]);
+            {
+                const juce::SpinLock::ScopedLockType labelLk(labelLock_);
+                macroElem->setAttribute("label", labels[static_cast<size_t>(m)]);
+            }
 
             // Hold the lock briefly to snapshot targets on the message thread.
             // getState() must only be called from the message thread
@@ -410,7 +417,10 @@ public:
             // Restore label
             juce::String lbl = macroElem->getStringAttribute("label");
             if (lbl.isNotEmpty())
+            {
+                const juce::SpinLock::ScopedLockType lock(labelLock_);
                 labels[static_cast<size_t>(m)] = lbl;
+            }
 
             // Collect targets
             std::vector<MacroTarget> targets;
@@ -469,12 +479,15 @@ public:
         clearAllTargets();
 
         // Apply labels (fall back to defaults if fewer than 4 provided)
-        for (int i = 0; i < NumMacros; ++i)
         {
-            if (i < macroLabels.size() && macroLabels[i].isNotEmpty())
-                labels[static_cast<size_t>(i)] = macroLabels[i];
-            else
-                labels[static_cast<size_t>(i)] = DefaultLabels[static_cast<size_t>(i)];
+            const juce::SpinLock::ScopedLockType lock(labelLock_);
+            for (int i = 0; i < NumMacros; ++i)
+            {
+                if (i < macroLabels.size() && macroLabels[i].isNotEmpty())
+                    labels[static_cast<size_t>(i)] = macroLabels[i];
+                else
+                    labels[static_cast<size_t>(i)] = DefaultLabels[static_cast<size_t>(i)];
+            }
         }
 
         // Parse target array
@@ -567,6 +580,11 @@ private:
 
     // Smoothed macro values to eliminate zipper noise (~20ms ramp)
     std::array<juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear>, NumMacros> smoothedValues;
+
+    // SpinLock protecting labels[] — label reads/writes span the message thread
+    // (preset load, DAW state restore) and may race with UI label queries.
+    // `mutable` so getLabel() and getState() (both const) can acquire it. (#682)
+    mutable juce::SpinLock labelLock_;
 
     // Per-macro label (default: CHARACTER, MOVEMENT, COUPLING, SPACE)
     std::array<juce::String, NumMacros> labels;

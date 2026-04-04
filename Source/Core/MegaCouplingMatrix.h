@@ -40,9 +40,17 @@ public:
         int sourceSlot; // 0-4 (slot 4 = Ghost Slot)
         int destSlot;   // 0-4 (slot 4 = Ghost Slot)
         CouplingType type;
-        float amount;     // 0.0 to 1.0
+        float amount;     // 0.0 to 1.0 — target (set by UI / automation)
         bool isNormalled; // true = default, false = user-defined
         bool active = true;
+
+        // One-pole smoothed amount — updated per block on the audio thread to
+        // prevent zipper noise when `amount` is automated or changed by a macro.
+        // `mutable` so it can be updated inside the const range-for in processBlock.
+        // Initialised to `amount` in addRoute() so the first block plays at the
+        // correct level without a ramp from zero. Preserved across double-buffer
+        // flips because newRoutes is copy-constructed from the current list. (#684)
+        mutable float smoothedAmount = 0.0f;
 
         // AudioToBuffer sink cache — resolved on the message thread by
         // resolveAudioToBufferSinks() to avoid dynamic_cast on the audio thread.
@@ -165,6 +173,10 @@ public:
         if (wouldCreateCycle(route.sourceSlot, route.destSlot, route.type))
             return;
 
+        // Seed smoothedAmount to the target amount so the first block starts at
+        // the correct level rather than ramping up from zero. (#684)
+        route.smoothedAmount = route.amount;
+
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
         newRoutes->push_back(route);
@@ -213,7 +225,14 @@ public:
 
         for (const auto& route : *routes)
         {
-            if (!route.active || std::abs(route.amount) < 0.001f)
+            // One-pole smoother for coupling amount — prevents zipper noise on automation.
+            // Coefficient 0.99 gives a ~200ms lag at 48kHz/512-sample blocks: perceptually
+            // smooth while remaining responsive to macro sweeps. `smoothedAmount` is mutable
+            // so it can be updated here despite the const range-for reference. (#684)
+            constexpr float kCouplingSmooth = 0.99f;
+            route.smoothedAmount += (route.amount - route.smoothedAmount) * (1.0f - kCouplingSmooth);
+
+            if (!route.active || std::abs(route.smoothedAmount) < 0.001f)
                 continue;
 
             // Bounds check slot indices to prevent OOB access
@@ -267,7 +286,7 @@ public:
             if (route.type == CouplingType::TriangularCoupling)
             {
                 SynthEngine::LoveTriangleState state = source->getLoveTriangleState();
-                dest->applyTriangularCouplingInput(state, route.amount);
+                dest->applyTriangularCouplingInput(state, route.smoothedAmount);
                 continue;
             }
 
@@ -301,7 +320,7 @@ public:
                 fillControlRateBuffer(source, limit);
             }
 
-            dest->applyCouplingInput(route.type, route.amount, couplingBuffer.data(), limit);
+            dest->applyCouplingInput(route.type, route.smoothedAmount, couplingBuffer.data(), limit);
         }
     }
 
@@ -595,7 +614,7 @@ private:
         // pushBlock() is lock-free and allocation-free. The level parameter
         // scales each written sample by route.amount (0.0–1.0).
         // Freeze state is managed internally by AudioRingBuffer::pushBlock().
-        rb->pushBlock(couplingBuffer.data(), couplingBufferR.data(), numSamples, route.amount);
+        rb->pushBlock(couplingBuffer.data(), couplingBufferR.data(), numSamples, route.smoothedAmount);
 
         // Do NOT call dest->applyCouplingInput() — the ring buffer is the exclusive
         // sink for AudioToBuffer routes. OpalEngine reads from it during renderBlock().
@@ -643,7 +662,7 @@ private:
         // linkingNum range: [1, 5] — maps amount 0.0→1.0 to integer 1→5.
         // Uses static_cast + 0.5f rounding instead of juce::roundToInt to avoid
         // JUCE dependency on the audio thread. NaN guard prevents UB on corrupt input.
-        const float rawLinking = route.amount * 4.0f;
+        const float rawLinking = route.smoothedAmount * 4.0f;
         const int linkingNum = (std::isnan(rawLinking) ? 0 : static_cast<int>(rawLinking + 0.5f)) + 1;
         const float scaledAmount = static_cast<float>(linkingNum) / 5.0f;
 

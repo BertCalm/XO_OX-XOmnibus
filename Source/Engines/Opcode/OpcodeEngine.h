@@ -62,23 +62,9 @@
 namespace xoceanus
 {
 
-#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-struct SpectralFingerprint
-{
-    float modalFrequencies[8] = {};
-    float modalAmplitudes[8] = {};
-    float impedanceEstimate = 0.5f;
-    float temperature = 0.5f;
-    float spectralCentroid = 1000.0f;
-    float activeVoiceCount = 0.0f;
-    float fundamentalFreq = 440.0f;
-    float rmsLevel = 0.0f;
-    float harmonicDensity = 0.5f;
-    float attackTransience = 0.0f;
-    float padding[2] = {};
-};
-#endif
+// Note: SpectralFingerprint struct and getSpectralFingerprint() removed.
+// The FUSION inter-engine fingerprint coupling was designed but never wired.
+// (#686 — dead code removal 2026-04-03)
 
 //==============================================================================
 // FMOperator — Single FM operator with phase accumulator and envelope.
@@ -283,55 +269,7 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    SpectralFingerprint getSpectralFingerprint() const noexcept
-    {
-        SpectralFingerprint fp;
-        int voiceCount = 0;
-        float centroidNum = 0.0f, centroidDen = 0.0f, rmsSum = 0.0f;
-
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active)
-                continue;
-            voiceCount++;
-            float freq = v.glide.getFreq();
-            float amp = v.ampEnv.getLevel();
-            rmsSum += amp * amp;
-            if (voiceCount <= 8)
-            {
-                fp.modalFrequencies[voiceCount - 1] = freq;
-                fp.modalAmplitudes[voiceCount - 1] = amp;
-            }
-            centroidNum += freq * amp;
-            centroidDen += amp;
-        }
-
-        fp.activeVoiceCount = static_cast<float>(voiceCount);
-        fp.rmsLevel = std::sqrt(rmsSum / std::max(voiceCount, 1));
-        fp.spectralCentroid = (centroidDen > 0.001f) ? centroidNum / centroidDen : 2000.0f;
-        fp.impedanceEstimate = 0.2f; // FM: clean, no physical impedance
-        fp.temperature = fp.rmsLevel;
-        fp.harmonicDensity = 0.95f; // FM: extremely harmonic (mathematical ratios)
-        fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
-
-        // attackTransience: FM attacks are bell-like — high transience at onset, fast decay.
-        // Voices with low ampEnv level (just triggered) represent the DX attack bell.
-        float attackEnergy = 0.0f;
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active)
-                continue;
-            float level = v.ampEnv.getLevel();
-            // DX EP attack: bright bell front in the first ~100ms (level rising)
-            if (level < 0.4f)
-                attackEnergy += (0.4f - level) / 0.4f * v.velocity;
-        }
-        fp.attackTransience = std::min(attackEnergy, 1.0f);
-
-        return fp;
-    }
+    // getSpectralFingerprint() removed — FUSION inter-engine coupling was never wired. (#686)
 
     void prepare(double sampleRate, int maxBlockSize) override
     {

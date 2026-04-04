@@ -496,6 +496,9 @@ private:
             if (useThirdPartial)
                 sample += modal[2].process(excitation);
 
+            // Soft-clip modal sum to prevent runaway at high Q (#685)
+            sample = xoceanus::fastTanh(sample);
+
             // Brightness tilt (underwater = darker)
             sample = onePoleLP(sample, lpCoeff, tiltState);
 
@@ -583,6 +586,9 @@ private:
 
             float sample = s1 + s2 + s3;
 
+            // Soft-clip modal sum to prevent runaway at high Q (#685)
+            sample = xoceanus::fastTanh(sample);
+
             // Brightness tilt
             sample = onePoleLP(sample, lpCoeff, tiltState);
 
@@ -656,7 +662,7 @@ private:
                 noiseBurstCounter = 1;
             }
 
-            float membrane = modal[0].process(excitation) + modal[1].process(excitation);
+            float membrane = xoceanus::fastTanh(modal[0].process(excitation) + modal[1].process(excitation)); // soft-clip (#685)
 
             // Jingle noise burst: 50 samples of filtered noise
             float jingle = 0.0f;
@@ -757,6 +763,9 @@ private:
             float body = modal[2].process(slitMix * 0.3f);
 
             float sample = slitMix + body;
+
+            // Soft-clip modal sum to prevent runaway at high Q (#685)
+            sample = xoceanus::fastTanh(sample);
 
             // Brightness tilt
             sample = onePoleLP(sample, lpCoeff, tiltState);

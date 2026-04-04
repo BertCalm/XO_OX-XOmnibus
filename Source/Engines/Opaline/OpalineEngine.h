@@ -757,6 +757,11 @@ public:
                     resonanceSum += hfShaped * hfNoiseNow * voice.hfEnvLevel * voice.velocity;
                 }
 
+                // Soft-clip modal resonator output to prevent runaway at high Q.
+                // Applied unconditionally before crystal drive so the ceiling is
+                // always enforced, even when pCrystalDrive == 0. (#685)
+                resonanceSum = fastTanh(resonanceSum);
+
                 // Crystal drive: subtle waveshaping for additional harmonics
                 if (pCrystalDrive > 0.01f)
                 {

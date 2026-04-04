@@ -56,25 +56,9 @@
 namespace xoceanus
 {
 
-// Forward declaration — SpectralFingerprint defined in OkeanosEngine.h
-// All FUSION engines share the same struct definition.
-#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-struct SpectralFingerprint
-{
-    float modalFrequencies[8] = {};
-    float modalAmplitudes[8] = {};
-    float impedanceEstimate = 0.5f;
-    float temperature = 0.5f;
-    float spectralCentroid = 1000.0f;
-    float activeVoiceCount = 0.0f;
-    float fundamentalFreq = 440.0f;
-    float rmsLevel = 0.0f;
-    float harmonicDensity = 0.5f;
-    float attackTransience = 0.0f;
-    float padding[2] = {};
-};
-#endif
+// Note: SpectralFingerprint struct and getSpectralFingerprint() removed.
+// The FUSION inter-engine fingerprint coupling was designed but never wired.
+// (#686 — dead code removal 2026-04-03)
 
 //==============================================================================
 // WurliReedModel — Vibrating reed physical model.
@@ -268,56 +252,7 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    SpectralFingerprint getSpectralFingerprint() const noexcept
-    {
-        SpectralFingerprint fp;
-        int voiceCount = 0;
-        float centroidNum = 0.0f, centroidDen = 0.0f, rmsSum = 0.0f;
-
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active)
-                continue;
-            voiceCount++;
-            float freq = v.glide.getFreq();
-            float amp = v.ampEnv.getLevel();
-            rmsSum += amp * amp;
-            if (voiceCount <= 8)
-            {
-                fp.modalFrequencies[voiceCount - 1] = freq;
-                fp.modalAmplitudes[voiceCount - 1] = amp;
-            }
-            centroidNum += freq * amp;
-            centroidDen += amp;
-        }
-
-        fp.activeVoiceCount = static_cast<float>(voiceCount);
-        fp.rmsLevel = std::sqrt(rmsSum / std::max(voiceCount, 1));
-        fp.spectralCentroid = (centroidDen > 0.001f) ? centroidNum / centroidDen : 800.0f;
-        fp.impedanceEstimate = 0.4f; // Wurli: slightly softer than Rhodes
-        fp.temperature = fp.rmsLevel;
-        fp.harmonicDensity = 0.7f; // Less harmonic than Rhodes (reed warble)
-        fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
-
-        // attackTransience: measure of current attack energy across voices.
-        // Oddfellow has fast, gritty attacks (hammer strike on reed).
-        // A voice in early attack (ampEnv level < 0.5 AND active) represents high transience.
-        float attackEnergy = 0.0f;
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active)
-                continue;
-            float level = v.ampEnv.getLevel();
-            // Early attack: high energy, fading as level rises past 0.3
-            if (level < 0.3f)
-                attackEnergy += (0.3f - level) / 0.3f * v.velocity;
-        }
-        fp.attackTransience = std::min(attackEnergy, 1.0f);
-
-        return fp;
-    }
+    // getSpectralFingerprint() removed — FUSION inter-engine coupling was never wired. (#686)
 
     void prepare(double sampleRate, int maxBlockSize) override
     {

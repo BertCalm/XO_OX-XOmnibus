@@ -7,12 +7,43 @@
 #include <map>
 #include <set>
 #include <vector>
+#include "EngineRegistry.h"
 
 namespace xoceanus
 {
 
 //==============================================================================
-// Valid engine names — all registered XOceanus engines.
+// getValidEngineNames() — runtime accessor that derives the valid engine name
+// list from EngineRegistry so it stays in sync automatically as engines are
+// registered. Legacy aliases are added for backward preset compatibility.
+// Prefer this over validEngineNames for runtime validation. (#683)
+inline juce::StringArray getValidEngineNames()
+{
+    const auto& ids = EngineRegistry::instance().getRegisteredIds();
+    juce::StringArray names;
+    names.ensureStorageAllocated(static_cast<int>(ids.size()) + 32);
+    for (const auto& id : ids)
+        names.add(juce::String(id));
+
+    // Legacy aliases resolved by resolveEngineAlias() before validation.
+    static const char* const kLegacyAliases[] = {
+        "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
+        "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
+        "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros", "XOpal",
+        "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle",
+        "XObscura", "XOceanic", "XOptic", "XOblique", "XOverworld",
+        "XOrca", "XOctopus", "XOverlap", "XOutwit",
+    };
+    for (const char* alias : kLegacyAliases)
+        names.addIfNotAlreadyThere(alias);
+
+    return names;
+}
+
+//==============================================================================
+// validEngineNames — compile-time list kept for backward compatibility with
+// call sites that need a const reference. Prefer getValidEngineNames() for
+// any runtime engine name validation.
 inline const juce::StringArray validEngineNames{
     // All engine IDs start with O (brand convention)
     "OddfeliX", "OddOscar", // Mascots: feliX the neon tetra, Oscar the axolotl

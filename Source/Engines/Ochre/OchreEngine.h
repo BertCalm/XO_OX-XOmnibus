@@ -730,6 +730,11 @@ public:
 
                 resonanceSum *= 0.15f; // Scale to prevent clipping
 
+                // Soft-clip modal resonator output to prevent runaway at high Q.
+                // At maximum Q the IIR resonators can accumulate unbounded energy;
+                // tanh provides a smooth gain ceiling without hard clipping artefacts. (#685)
+                resonanceSum = xoceanus::fastTanh(resonanceSum);
+
                 // HF noise burst for body character (CPU optimization:
                 // replaces 48 additional modes with shaped noise)
                 if (pHFCharacter > 0.01f && voice.hfNoiseEnv > 0.001f)
