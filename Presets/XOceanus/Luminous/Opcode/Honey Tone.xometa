@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Honey Tone",
+  "mood": "Luminous",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm FM with low brightness filter and slow LFO \u2014 golden, unhurried. The sweetest algorithm 0 patch.",
+  "tags": [
+    "fm",
+    "honey",
+    "warm",
+    "slow",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.75,
+    "movement": 0.12,
+    "density": 0.32,
+    "space": 0.68,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 1.5,
+      "opco_index": 0.4,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.35,
+      "opco_brightness": 7000.0,
+      "opco_attack": 0.015,
+      "opco_decay": 2.8,
+      "opco_sustain": 0.58,
+      "opco_release": 1.5,
+      "opco_modAttack": 0.003,
+      "opco_modDecay": 0.55,
+      "opco_modSustain": 0.38,
+      "opco_filterEnvAmt": 0.15,
+      "opco_filterSustain": 0.32,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.42,
+      "opco_macroMovement": 0.08,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.68,
+      "opco_lfo1Rate": 0.25,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.4,
+      "opco_lfo2Depth": 0.04,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

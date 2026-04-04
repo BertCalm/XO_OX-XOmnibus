@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Glass Harmonica",
+  "mood": "Crystalline",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High ratio, high index FM bell \u2014 the ringing overtones of a crystal glass set spinning. Haunting and pure.",
+  "tags": [
+    "fm",
+    "bell",
+    "glass",
+    "crystalline",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.12,
+    "movement": 0.12,
+    "density": 0.35,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 7.0,
+      "opco_index": 0.65,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.4,
+      "opco_brightness": 16000.0,
+      "opco_attack": 0.001,
+      "opco_decay": 4.0,
+      "opco_sustain": 0.05,
+      "opco_release": 2.5,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.2,
+      "opco_modSustain": 0.02,
+      "opco_filterEnvAmt": 0.45,
+      "opco_filterSustain": 0.08,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.6,
+      "opco_macroMovement": 0.15,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.7,
+      "opco_lfo1Rate": 0.7,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 3.0,
+      "opco_lfo2Depth": 0.0,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

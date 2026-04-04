@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Tone",
+  "mood": "Crystalline",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Series FM with ratio 7.5 \u2014 the overtone series of a struck mineral. Inharmonic partials with long decay.",
+  "tags": [
+    "fm",
+    "bell",
+    "mineral",
+    "inharmonic",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.1,
+    "movement": 0.08,
+    "density": 0.3,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 7.5,
+      "opco_index": 0.52,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.3,
+      "opco_brightness": 17000.0,
+      "opco_attack": 0.001,
+      "opco_decay": 4.2,
+      "opco_sustain": 0.03,
+      "opco_release": 3.5,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.22,
+      "opco_modSustain": 0.01,
+      "opco_filterEnvAmt": 0.42,
+      "opco_filterSustain": 0.06,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.62,
+      "opco_macroMovement": 0.1,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.82,
+      "opco_lfo1Rate": 0.5,
+      "opco_lfo1Depth": 0.03,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 1.8,
+      "opco_lfo2Depth": 0.0,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

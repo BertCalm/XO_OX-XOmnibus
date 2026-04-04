@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Velvet Shore",
+  "mood": "Luminous",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow pad FM with algorithm 1 \u2014 warm, pillowy texture. Low index keeps it smooth, high brightness gives a presence peak.",
+  "tags": [
+    "fm",
+    "pad",
+    "velvet",
+    "smooth",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.12,
+    "density": 0.3,
+    "space": 0.78,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 1,
+      "opco_ratio": 1.0,
+      "opco_index": 0.22,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.2,
+      "opco_brightness": 9000.0,
+      "opco_attack": 0.04,
+      "opco_decay": 3.0,
+      "opco_sustain": 0.6,
+      "opco_release": 2.0,
+      "opco_modAttack": 0.005,
+      "opco_modDecay": 0.6,
+      "opco_modSustain": 0.4,
+      "opco_filterEnvAmt": 0.18,
+      "opco_filterSustain": 0.35,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.4,
+      "opco_macroMovement": 0.1,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.75,
+      "opco_lfo1Rate": 0.2,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.3,
+      "opco_lfo2Depth": 0.04,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

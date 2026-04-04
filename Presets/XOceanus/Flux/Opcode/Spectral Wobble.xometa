@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Wobble",
+  "mood": "Flux",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO2 modulates FM index \u2014 creates a rhythmic wobble of harmonic complexity. FM synthesis as movement.",
+  "tags": [
+    "fm",
+    "wobble",
+    "modulated",
+    "rhythmic",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 2.0,
+      "opco_index": 0.8,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.5,
+      "opco_brightness": 9000.0,
+      "opco_attack": 0.005,
+      "opco_decay": 1.0,
+      "opco_sustain": 0.5,
+      "opco_release": 0.5,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.3,
+      "opco_modSustain": 0.3,
+      "opco_filterEnvAmt": 0.35,
+      "opco_filterSustain": 0.15,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.5,
+      "opco_macroMovement": 0.6,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.3,
+      "opco_lfo1Rate": 0.3,
+      "opco_lfo1Depth": 0.0,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 3.0,
+      "opco_lfo2Depth": 0.3,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

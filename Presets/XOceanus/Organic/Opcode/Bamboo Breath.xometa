@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Bamboo Breath",
+  "mood": "Organic",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FM shakuhachi simulation \u2014 parallel algorithm with slow breath LFO. The breath of bamboo over a notch.",
+  "tags": [
+    "fm",
+    "shakuhachi",
+    "bamboo",
+    "breath",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.25,
+    "density": 0.32,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 1,
+      "opco_ratio": 1.0,
+      "opco_index": 0.28,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.35,
+      "opco_brightness": 10000.0,
+      "opco_attack": 0.012,
+      "opco_decay": 1.5,
+      "opco_sustain": 0.48,
+      "opco_release": 1.2,
+      "opco_modAttack": 0.002,
+      "opco_modDecay": 0.35,
+      "opco_modSustain": 0.28,
+      "opco_filterEnvAmt": 0.2,
+      "opco_filterSustain": 0.22,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.42,
+      "opco_macroMovement": 0.15,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.58,
+      "opco_lfo1Rate": 0.25,
+      "opco_lfo1Depth": 0.07,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 5.8,
+      "opco_lfo2Depth": 0.1,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

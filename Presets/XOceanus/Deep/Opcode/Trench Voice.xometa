@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Trench Voice",
+  "mood": "Deep",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Algorithm 2 feedback at extremely dark brightness \u2014 the voice from the ocean trench. Low ratio, heavy feedback rumble.",
+  "tags": [
+    "fm",
+    "feedback",
+    "trench",
+    "dark",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.85,
+    "movement": 0.12,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 2,
+      "opco_ratio": 0.75,
+      "opco_index": 0.65,
+      "opco_feedback": 0.28,
+      "opco_velToIndex": 0.5,
+      "opco_brightness": 2800.0,
+      "opco_attack": 0.02,
+      "opco_decay": 3.5,
+      "opco_sustain": 0.5,
+      "opco_release": 2.5,
+      "opco_modAttack": 0.004,
+      "opco_modDecay": 0.7,
+      "opco_modSustain": 0.42,
+      "opco_filterEnvAmt": 0.18,
+      "opco_filterSustain": 0.4,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.42,
+      "opco_macroMovement": 0.1,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.85,
+      "opco_lfo1Rate": 0.15,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.4,
+      "opco_lfo2Depth": 0.04,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

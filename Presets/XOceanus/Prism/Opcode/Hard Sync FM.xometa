@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Hard Sync FM",
+  "mood": "Prism",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Algorithm 2 with high feedback at ratio 2 \u2014 creates hard-sync-like harmonic stacking. Aggressive and spectral.",
+  "tags": [
+    "fm",
+    "hard-sync",
+    "feedback",
+    "aggressive",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.06,
+    "movement": 0.12,
+    "density": 0.68,
+    "space": 0.28,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 2,
+      "opco_ratio": 2.0,
+      "opco_index": 0.82,
+      "opco_feedback": 0.52,
+      "opco_velToIndex": 0.78,
+      "opco_brightness": 16000.0,
+      "opco_attack": 0.001,
+      "opco_decay": 0.9,
+      "opco_sustain": 0.2,
+      "opco_release": 0.5,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.22,
+      "opco_modSustain": 0.08,
+      "opco_filterEnvAmt": 0.55,
+      "opco_filterSustain": 0.1,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.88,
+      "opco_macroMovement": 0.32,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.28,
+      "opco_lfo1Rate": 0.5,
+      "opco_lfo1Depth": 0.0,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 2.5,
+      "opco_lfo2Depth": 0.0,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

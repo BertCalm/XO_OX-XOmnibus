@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Void Tone",
+  "mood": "Ethereal",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Near-silence FM \u2014 minimal index, near-zero attack movement, long release. The voice from the void between stars.",
+  "tags": [
+    "fm",
+    "ambient",
+    "void",
+    "minimal",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.1,
+    "density": 0.22,
+    "space": 0.98,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 1.0,
+      "opco_index": 0.15,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.1,
+      "opco_brightness": 8000.0,
+      "opco_attack": 0.1,
+      "opco_decay": 5.0,
+      "opco_sustain": 0.5,
+      "opco_release": 5.0,
+      "opco_modAttack": 0.015,
+      "opco_modDecay": 1.0,
+      "opco_modSustain": 0.5,
+      "opco_filterEnvAmt": 0.1,
+      "opco_filterSustain": 0.3,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.3,
+      "opco_macroMovement": 0.06,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.98,
+      "opco_lfo1Rate": 0.08,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.12,
+      "opco_lfo2Depth": 0.04,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

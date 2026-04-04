@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Broadcast EP",
+  "mood": "Foundation",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Clean, compressed FM piano suited for broadcast \u2014 balanced frequency response, moderate velocity, sits in any mix.",
+  "tags": [
+    "fm",
+    "ep",
+    "broadcast",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.57,
+    "warmth": 0.43,
+    "movement": 0.1,
+    "density": 0.4,
+    "space": 0.38,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 2.5,
+      "opco_index": 0.55,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.5,
+      "opco_brightness": 8500.0,
+      "opco_attack": 0.004,
+      "opco_decay": 1.2,
+      "opco_sustain": 0.48,
+      "opco_release": 0.5,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.32,
+      "opco_modSustain": 0.18,
+      "opco_filterEnvAmt": 0.2,
+      "opco_filterSustain": 0.22,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.48,
+      "opco_macroMovement": 0.05,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.38,
+      "opco_lfo1Rate": 0.5,
+      "opco_lfo1Depth": 0.02,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 1.0,
+      "opco_lfo2Depth": 0.02,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

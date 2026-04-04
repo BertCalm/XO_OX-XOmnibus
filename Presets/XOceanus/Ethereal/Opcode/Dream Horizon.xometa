@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Dream Horizon",
+  "mood": "Ethereal",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow parallel FM pad \u2014 80ms attack, 5 second release, slow LFO. The horizon at the edge of sleep.",
+  "tags": [
+    "fm",
+    "dream",
+    "pad",
+    "slow",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.15,
+    "density": 0.28,
+    "space": 0.98,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 1,
+      "opco_ratio": 1.0,
+      "opco_index": 0.28,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.2,
+      "opco_brightness": 10000.0,
+      "opco_attack": 0.08,
+      "opco_decay": 4.5,
+      "opco_sustain": 0.55,
+      "opco_release": 5.0,
+      "opco_modAttack": 0.012,
+      "opco_modDecay": 0.9,
+      "opco_modSustain": 0.45,
+      "opco_filterEnvAmt": 0.15,
+      "opco_filterSustain": 0.35,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2,
+      "opco_macroCharacter": 0.38,
+      "opco_macroMovement": 0.12,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.95,
+      "opco_lfo1Rate": 0.12,
+      "opco_lfo1Depth": 0.05,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.2,
+      "opco_lfo2Depth": 0.05,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
