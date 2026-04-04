@@ -646,6 +646,7 @@ public:
     //==========================================================================
 
     // Scan a directory (recursively) for .xometa files and add them to the library.
+    // UI-thread only.  For non-blocking startup, prefer scanPresetDirectoryAsync().
     void scanPresetDirectory(const juce::File& directory)
     {
         if (!directory.isDirectory())
@@ -675,6 +676,108 @@ public:
                 library.push_back(std::move(preset));
             }
         }
+    }
+
+    // Issue #712 — Async variant of scanPresetDirectory().
+    //
+    // Builds the preset library on a background thread so the message thread is
+    // never blocked by disk I/O.  The `library` vector is ONLY mutated on the
+    // message thread (via callAsync) — the worker thread operates on a completely
+    // separate local vector and never touches `library` directly.
+    //
+    // `onComplete` is called on the message thread once the swap is done.
+    // It may be nullptr.
+    //
+    // Safety rules:
+    //   - Never call `library.push_back()` from the worker thread.
+    //   - The atomic swap and the `onComplete` call both happen inside callAsync,
+    //     which guarantees message-thread execution.
+    //   - Only one scan should be in flight at a time; starting a second scan
+    //     while one is running is safe but may produce interleaved results — the
+    //     caller is expected to guard against this (XOceanusEditor calls it once
+    //     at construction time).
+    void scanPresetDirectoryAsync(const juce::File& directory,
+                                  std::function<void()> onComplete)
+    {
+        // Inner Thread subclass — self-deletes after the callAsync fires.
+        struct ScanThread : public juce::Thread
+        {
+            ScanThread(PresetManager& mgr,
+                       juce::File dir,
+                       std::function<void()> done)
+                : juce::Thread("PresetScan"),
+                  manager(mgr),
+                  scanDir(std::move(dir)),
+                  onComplete(std::move(done))
+            {
+            }
+
+            void run() override
+            {
+                // Build the library into a *local* vector — never touch
+                // manager.library from here.
+                std::vector<PresetData> localLib;
+
+                if (scanDir.isDirectory())
+                {
+                    for (const auto& file :
+                         scanDir.findChildFiles(juce::File::findFiles, true, "*.xometa"))
+                    {
+                        if (threadShouldExit())
+                            break;
+
+                        if (localLib.size() >= kMaxLibrarySize)
+                        {
+                            DBG("PresetManager: library limit (" +
+                                juce::String((int)kMaxLibrarySize) +
+                                ") reached — stopping async scan of " +
+                                scanDir.getFullPathName());
+                            break;
+                        }
+
+                        if (file.getSize() > kMaxPresetFileSize)
+                            continue;
+
+                        auto jsonString = file.loadFileAsString();
+                        if (jsonString.isEmpty())
+                            continue;
+
+                        PresetData preset;
+                        if (manager.parseJSON(jsonString, preset))
+                        {
+                            preset.sourceFile = file;
+                            localLib.push_back(std::move(preset));
+                        }
+                    }
+                }
+
+                // Atomic-swap onto the message thread — `library` is ONLY
+                // mutated here, inside callAsync, which runs on the message
+                // thread.
+                juce::MessageManager::callAsync(
+                    [&manager = manager,
+                     newLib   = std::move(localLib),
+                     done     = std::move(onComplete),
+                     self     = this]() mutable
+                    {
+                        manager.library = std::move(newLib);
+                        if (done)
+                            done();
+                        // Thread has finished its run() by now; delete self.
+                        delete self;
+                    });
+            }
+
+            PresetManager&         manager;
+            juce::File             scanDir;
+            std::function<void()>  onComplete;
+
+            static constexpr size_t  kMaxLibrarySize   = PresetManager::kMaxLibrarySize;
+            static constexpr int64_t kMaxPresetFileSize = PresetManager::kMaxPresetFileSize;
+        };
+
+        auto* thread = new ScanThread(*this, directory, std::move(onComplete));
+        thread->startThread(juce::Thread::Priority::background);
     }
 
     // Return all presets matching a specific mood.

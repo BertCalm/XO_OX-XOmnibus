@@ -20,6 +20,7 @@
 #include "../../Core/CouplingPresetManager.h"
 #include "../CouplingVisualizer/CouplingVisualizer.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h"
 #include "GalleryKnob.h"
 
 namespace xoceanus
@@ -90,12 +91,15 @@ public:
                 apvts, prefix + "active", card.activeBtn);
             addAndMakeVisible(card.activeBtn);
 
-            // Type selector — 15 coupling types (14 existing + TriangularCoupling)
-            card.typeBox.addItemList({"AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph", "AudioToFM",
-                                      "AudioToRing", "FilterToFilter", "AmpToChoke", "RhythmToBlend", "EnvToDecay",
-                                      "PitchToPitch", "AudioToWavetable", "AudioToBuffer", "KnotTopology",
-                                      "TriangularCoupling"},
-                                     1);
+            // Type selector — 15 coupling types (14 existing + TriangularCoupling).
+            // Item IDs are 1-based integers matching the APVTS serialization index;
+            // display names come from CouplingTypeColors::displayName() so the
+            // human-readable labels stay in sync with the single source of truth.
+            {
+                auto types = CouplingTypeColors::allTypes();
+                for (int i = 0; i < (int)types.size(); ++i)
+                    card.typeBox.addItem(CouplingTypeColors::displayName(types[(size_t)i]), i + 1);
+            }
             card.typeBox.setTextWhenNoChoicesAvailable("No types");
             // Tooltip explains each coupling type so users unfamiliar with the
             // coupling taxonomy can understand the routing without external docs
@@ -125,14 +129,22 @@ public:
                 apvts, prefix + "type", card.typeBox);
             addChildComponent(card.typeBox); // hidden until expanded
 
-            // Amount knob (36×36, bipolar)
+            // Amount knob (36×36, bipolar) — #717: show value text box below the
+            // knob so performers can read and type precise coupling amounts.
             card.amountKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
-            card.amountKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+            card.amountKnob.setTextBoxStyle(juce::Slider::TextBoxBelow, false, kKnobSize, kKnobValueH);
             card.amountKnob.setColour(juce::Slider::rotarySliderFillColourId,
                                       GalleryColors::get(GalleryColors::xoGold));
             card.amountKnob.setColour(juce::Slider::rotarySliderOutlineColourId,
                                       GalleryColors::border().withAlpha(0.22f));
-            card.amountKnob.setTooltip("Route " + juce::String(r + 1) + " amount (bipolar)");
+            card.amountKnob.setColour(juce::Slider::textBoxTextColourId, GalleryColors::get(GalleryColors::t2()));
+            card.amountKnob.setColour(juce::Slider::textBoxBackgroundColourId,
+                                      GalleryColors::get(GalleryColors::elevated()));
+            card.amountKnob.setColour(juce::Slider::textBoxOutlineColourId,
+                                      GalleryColors::border().withAlpha(0.10f));
+            card.amountKnob.setColour(juce::Slider::textBoxHighlightColourId,
+                                      GalleryColors::get(GalleryColors::xoGold).withAlpha(0.30f));
+            card.amountKnob.setTooltip("Route " + juce::String(r + 1) + " amount (bipolar) — double-click to type a value");
             A11y::setup(card.amountKnob, "Route " + juce::String(r + 1) + " amount",
                         "Bipolar modulation depth for coupling route " + juce::String(r + 1));
             card.amountAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
@@ -251,6 +263,7 @@ public:
     void refresh()
     {
         miniViz.refresh();
+        refreshSlotNames();
         refreshPresetList();
         repaint();
     }
@@ -519,8 +532,11 @@ public:
                 int typeW = cardW - kInnerPad * 2 - kKnobSize - kRowGap;
 
                 card.typeBox.setBounds(cardX + kInnerPad, detailY, typeW, kTypeRowH);
-                card.amountKnob.setBounds(cardX + kInnerPad + typeW + kRowGap, detailY, kKnobSize, kKnobSize);
-                card.amountLabel.setBounds(cardX + kInnerPad + typeW + kRowGap, detailY + kKnobSize + 1, kKnobSize, 10);
+                // #717: knob height includes the TextBoxBelow value readout.
+                card.amountKnob.setBounds(cardX + kInnerPad + typeW + kRowGap, detailY,
+                                          kKnobSize, kKnobSize + kKnobValueH);
+                card.amountLabel.setBounds(cardX + kInnerPad + typeW + kRowGap,
+                                           detailY + kKnobSize + kKnobValueH + 1, kKnobSize, 10);
 
                 // Row 2 (source / target)
                 int srcTgtY = detailY + kTypeRowH + kRowGap + kLabelH;
@@ -574,6 +590,7 @@ private:
     static constexpr int kTypeRowH = 22;   // type combo height
     static constexpr int kComboRowH = 22;  // source/target combo height
     static constexpr int kKnobSize = 34;   // amount knob square size
+    static constexpr int kKnobValueH = 12; // text-box height below the amount knob (#717)
     static constexpr int kArrowW = 14;     // gap between source and target combos
     static constexpr int kRowGap = 3;      // gap between rows within card
     static constexpr int kActionRowH = 34; // bottom action bar height
@@ -673,6 +690,46 @@ private:
                 return kLabels[idx];
         }
         return {};
+    }
+
+    //==========================================================================
+    // #714: Update source/target combo box display text to show current engine
+    // names. Item IDs remain fixed integers 1-5 (APVTS serializes by ID, not
+    // string), so changeItemText() is used — the selection survives untouched.
+    void refreshSlotNames()
+    {
+        // Slot 5 is the Ghost slot — its label is always fixed.
+        static constexpr int kGhostSlotId = 5;
+
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            auto& card = routeCards[r];
+            for (int slotId = 1; slotId <= 5; ++slotId)
+            {
+                juce::String label;
+                if (slotId == kGhostSlotId)
+                {
+                    label = "Slot 5 (Ghost)";
+                }
+                else
+                {
+                    // slotId is 1-based; getEngine() is 0-based.
+                    auto* eng = processor.getEngine(slotId - 1);
+                    if (eng)
+                    {
+                        auto id = eng->getEngineId();
+                        label = id.isEmpty() ? ("Slot " + juce::String(slotId))
+                                             : (id.toUpperCase() + " (Slot " + juce::String(slotId) + ")");
+                    }
+                    else
+                    {
+                        label = "Slot " + juce::String(slotId) + " (empty)";
+                    }
+                }
+                card.sourceBox.changeItemText(slotId, label);
+                card.targetBox.changeItemText(slotId, label);
+            }
+        }
     }
 
     //==========================================================================

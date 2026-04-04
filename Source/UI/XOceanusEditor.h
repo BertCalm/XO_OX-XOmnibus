@@ -335,13 +335,32 @@ public:
                                                    exportBtn.getScreenBounds(), getTopLevelComponent());
         };
 
-        // Scan factory preset directory
+        // Issue #712 — Scan factory preset directory on a background thread so
+        // the message thread is never blocked by disk I/O.
+        // `setScanning(true)` shows "Loading presets…" immediately; the async
+        // callback fires on the message thread once the library is ready.
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
                              .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-        if (presetDir.isDirectory())
-            proc.getPresetManager().scanPresetDirectory(presetDir);
         presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
-        presetBrowser.updateDisplay();
+        if (presetDir.isDirectory())
+        {
+            presetBrowser.setScanning(true);
+            // SafePointer guards against the editor being destroyed before the
+            // background scan completes (e.g., plugin window closed quickly).
+            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+            proc.getPresetManager().scanPresetDirectoryAsync(
+                presetDir,
+                [safeThis]()
+                {
+                    if (safeThis == nullptr)
+                        return;
+                    safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes
+                });
+        }
+        else
+        {
+            presetBrowser.updateDisplay();
+        }
 
         // ── Column C Sidebar ──────────────────────────────────────────────────
         addAndMakeVisible(sidebar);

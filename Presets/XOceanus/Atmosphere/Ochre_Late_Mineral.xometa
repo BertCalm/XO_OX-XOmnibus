@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Late Mineral",
+  "mood": "Atmosphere",
+  "engines": ["Ochre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.35,
+    "SPACE": 0.68
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.16,
+    "warmth": 0.65,
+    "movement": 0.14,
+    "density": 0.6,
+    "space": 0.68,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.2,
+      "ochre_hardness": 0.55,
+      "ochre_bodyType": 0,
+      "ochre_bodyDepth": 0.65,
+      "ochre_brightness": 1100.0,
+      "ochre_damping": 0.55,
+      "ochre_decay": 7.0,
+      "ochre_caramel": 0.62,
+      "ochre_sympathy": 0.42,
+      "ochre_hfCharacter": 0.06,
+      "ochre_thermalDrift": 0.15,
+      "ochre_filterEnvAmount": 0.32,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.04,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 2,
+      "ochre_lfo2Rate": 0.012,
+      "ochre_lfo2Depth": 0.18,
+      "ochre_lfo2Shape": 0
+    }
+  },
+  "tags": ["ochre", "piano", "atmosphere", "dark", "ambient", "mineral", "night"],
+  "description": "A struck mineral bar in the late-night atmosphere — long decay of 7 seconds, sympathetic resonance gives depth without brightness, caramel at 0.62 adds nocturnal warmth without treble. Space comes from extended decay."
+}

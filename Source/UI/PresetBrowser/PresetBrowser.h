@@ -37,6 +37,12 @@ class PresetBrowser : public juce::Component,
                       public juce::Timer
 {
 public:
+    //==========================================================================
+    // Sort modes
+    //==========================================================================
+
+    enum class SortMode { NameAZ, NameZA, Mood, Relevance };
+
     PresetBrowser(PresetManager& pm) : presetManager(pm)
     {
         // --- Search bar ---
@@ -94,6 +100,34 @@ public:
         A11y::setup(similarBtn, "Find Similar", "Find presets with similar sonic DNA to the selected preset");
         addAndMakeVisible(similarBtn);
 
+        // --- Sort ComboBox ---
+        sortBox.addItem("A \xe2\x86\x92 Z",    static_cast<int>(SortMode::NameAZ)    + 1);
+        sortBox.addItem("Z \xe2\x86\x92 A",    static_cast<int>(SortMode::NameZA)    + 1);
+        sortBox.addItem("By Mood",              static_cast<int>(SortMode::Mood)      + 1);
+        sortBox.addItem("Relevance",            static_cast<int>(SortMode::Relevance) + 1);
+        sortBox.setSelectedId(static_cast<int>(SortMode::NameAZ) + 1, juce::dontSendNotification);
+        sortBox.setColour(juce::ComboBox::backgroundColourId,    GalleryColors::get(GalleryColors::slotBg()));
+        sortBox.setColour(juce::ComboBox::outlineColourId,       GalleryColors::get(GalleryColors::borderGray()));
+        sortBox.setColour(juce::ComboBox::textColourId,          GalleryColors::get(GalleryColors::textMid()));
+        sortBox.setColour(juce::ComboBox::arrowColourId,         GalleryColors::get(GalleryColors::textMid()));
+        sortBox.onChange = [this]
+        {
+            const int selId = sortBox.getSelectedId() - 1;
+            if (selId >= 0)
+            {
+                userSortMode = static_cast<SortMode>(selId);
+                // When no search is active, immediately apply the user's choice;
+                // when search is active the mode is driven by textEditorTextChanged.
+                if (searchBox.getText().trim().isEmpty())
+                {
+                    currentSortMode = userSortMode;
+                    applyFilters();
+                }
+            }
+        };
+        A11y::setup(sortBox, "Sort order", "Choose how to sort the preset list");
+        addAndMakeVisible(sortBox);
+
         // --- Status label ---
         statusLabel.setFont(GalleryFonts::label(11.0f));
         statusLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
@@ -133,8 +167,14 @@ public:
     {
         auto area = getLocalBounds().reduced(8);
 
-        // Search bar
-        searchBox.setBounds(area.removeFromTop(32));
+        // Search bar + sort control on the same row
+        {
+            auto headerRow = area.removeFromTop(32);
+            // Sort ComboBox takes a fixed 96px on the right with a 6px gap
+            sortBox.setBounds(headerRow.removeFromRight(96));
+            headerRow.removeFromRight(6);
+            searchBox.setBounds(headerRow);
+        }
         area.removeFromTop(6);
 
         // Mood pills — flex-wrap layout
@@ -343,6 +383,20 @@ public:
     void textEditorTextChanged(juce::TextEditor&) override
     {
         similarActive = false;
+
+        // Auto-switch sort mode based on whether search text is present
+        const bool hasSearch = searchBox.getText().trim().isNotEmpty();
+        if (hasSearch)
+        {
+            currentSortMode = SortMode::Relevance;
+            sortBox.setSelectedId(static_cast<int>(SortMode::Relevance) + 1, juce::dontSendNotification);
+        }
+        else
+        {
+            currentSortMode = userSortMode;
+            sortBox.setSelectedId(static_cast<int>(userSortMode) + 1, juce::dontSendNotification);
+        }
+
         startTimer(150); // debounce — timerCallback calls applyFilters()
     }
 
@@ -365,14 +419,20 @@ public:
 private:
     PresetManager& presetManager;
     juce::TextEditor searchBox;
+    juce::ComboBox sortBox;
     juce::OwnedArray<juce::TextButton> moodButtons;
     juce::ListBox listBox{"PresetList", nullptr};
     juce::TextButton similarBtn;
     juce::Label statusLabel;
 
     std::vector<PresetData> filteredPresets;
-    int selectedIndex = -1;
+    int selectedIndex  = -1;
     bool similarActive = false;
+
+    // Sort state: userSortMode persists the user's manual choice; currentSortMode
+    // may temporarily become Relevance while search text is active.
+    SortMode userSortMode   = SortMode::NameAZ;
+    SortMode currentSortMode = SortMode::NameAZ;
 
     //==========================================================================
     // Filtering
@@ -439,9 +499,66 @@ private:
             filteredPresets.push_back(preset);
         }
 
-        // Sort alphabetically by name
-        std::sort(filteredPresets.begin(), filteredPresets.end(),
-                  [](const PresetData& a, const PresetData& b) { return a.name.compareIgnoreCase(b.name) < 0; });
+        // Sort according to currentSortMode
+        switch (currentSortMode)
+        {
+            case SortMode::NameAZ:
+                std::sort(filteredPresets.begin(), filteredPresets.end(),
+                          [](const PresetData& a, const PresetData& b)
+                          { return a.name.compareIgnoreCase(b.name) < 0; });
+                break;
+
+            case SortMode::NameZA:
+                std::sort(filteredPresets.begin(), filteredPresets.end(),
+                          [](const PresetData& a, const PresetData& b)
+                          { return a.name.compareIgnoreCase(b.name) > 0; });
+                break;
+
+            case SortMode::Mood:
+                std::sort(filteredPresets.begin(), filteredPresets.end(),
+                          [](const PresetData& a, const PresetData& b)
+                          {
+                              const int moodCmp = a.mood.compareIgnoreCase(b.mood);
+                              if (moodCmp != 0)
+                                  return moodCmp < 0;
+                              return a.name.compareIgnoreCase(b.name) < 0;
+                          });
+                break;
+
+            case SortMode::Relevance:
+            {
+                // Tier 1 = exact name match, 2 = name starts-with, 3 = name contains,
+                // 4 = tag/engine contains, 5 = description contains.
+                // Within a tier, sort alphabetically.
+                const juce::String lowerSearch = searchText; // already lowercased above
+                auto tier = [&](const PresetData& p) -> int
+                {
+                    const juce::String lname = p.name.toLowerCase();
+                    if (lname == lowerSearch)
+                        return 1;
+                    if (lname.startsWith(lowerSearch))
+                        return 2;
+                    if (lname.contains(lowerSearch))
+                        return 3;
+                    for (const auto& tag : p.tags)
+                        if (tag.toLowerCase().contains(lowerSearch))
+                            return 4;
+                    for (const auto& eng : p.engines)
+                        if (eng.toLowerCase().contains(lowerSearch))
+                            return 4;
+                    return 5; // description contains (already filtered-in above)
+                };
+                std::sort(filteredPresets.begin(), filteredPresets.end(),
+                          [&](const PresetData& a, const PresetData& b)
+                          {
+                              const int ta = tier(a), tb = tier(b);
+                              if (ta != tb)
+                                  return ta < tb;
+                              return a.name.compareIgnoreCase(b.name) < 0;
+                          });
+                break;
+            }
+        }
 
         listBox.updateContent();
         listBox.deselectAllRows();

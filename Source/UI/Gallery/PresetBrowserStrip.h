@@ -115,13 +115,28 @@ public:
         processor.getPresetManager().removeListener(this);
     }
 
+    // Show / hide the "Loading presets…" state.
+    // Called by XOceanusEditor before and after scanPresetDirectoryAsync().
+    void setScanning(bool scanning)
+    {
+        isScanning = scanning;
+        prevBtn.setEnabled(!scanning);
+        nextBtn.setEnabled(!scanning);
+        browseBtn.setEnabled(!scanning);
+        if (scanning)
+            nameLabel.setText("Loading presets\xe2\x80\xa6", juce::dontSendNotification); // "…"
+        else
+            updateDisplay();
+    }
+
     void updateDisplay()
     {
         auto& pm = processor.getPresetManager();
         int total = pm.getLibrarySize();
         bool hasPresets = total > 0;
-        prevBtn.setEnabled(hasPresets);
-        nextBtn.setEnabled(hasPresets);
+        prevBtn.setEnabled(hasPresets && !isScanning);
+        nextBtn.setEnabled(hasPresets && !isScanning);
+        browseBtn.setEnabled(!isScanning);
 
         if (hasPresets)
         {
@@ -186,6 +201,7 @@ private:
     juce::TextButton prevBtn, nextBtn, browseBtn;
     juce::Label nameLabel;
     MacroSection* macroSection = nullptr;
+    bool isScanning = false; // true while scanPresetDirectoryAsync() is in flight
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserStrip)
 };

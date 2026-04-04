@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Midnight Pressure",
+  "mood": "Atmosphere",
+  "engines": ["OceanDeep"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macros": {
+    "PRESSURE": 0.58,
+    "CREATURE": 0.2,
+    "WRECK": 0.0,
+    "ABYSS": 0.65
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.38,
+    "space": 0.78,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.72,
+      "deep_subOctMix": 0.52,
+      "deep_filterCutoff": 350.0,
+      "deep_filterRes": 0.25,
+      "deep_velCutoffAmt": 0.32,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.12,
+      "deep_bodyMix": 0.32,
+      "deep_bioRate": 0.02,
+      "deep_bioMix": 0.22,
+      "deep_bioBrightness": 250.0,
+      "deep_pressureAmt": 0.58,
+      "deep_ampAtk": 0.8,
+      "deep_ampDec": 2.5,
+      "deep_ampSus": 0.82,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.018,
+      "deep_lfo1Depth": 0.12,
+      "deep_lfo2Rate": 0.012,
+      "deep_lfo2Depth": 0.08,
+      "deep_reverbMix": 0.72,
+      "deep_macroPressure": 0.58,
+      "deep_macroCreature": 0.2,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.65
+    }
+  },
+  "tags": ["oceandeep", "atmosphere", "dark", "ambient", "midnight", "bioluminescent", "pressure"],
+  "description": "Midnight zone between 200-1000m: bio exciter at 0.22 with brightness ceiling 250Hz creates organic texture, body type 2 adds chamber space. High reverb for atmospheric expansion. The zone where light vanishes."
+}
