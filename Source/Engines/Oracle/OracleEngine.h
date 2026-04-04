@@ -1337,8 +1337,18 @@ private:
         // Sort breakpoints by time offset to maintain waveform ordering.
         // Without sorting, breakpoints could cross each other and create
         // self-intersecting waveforms (which produce harsh aliasing).
-        std::sort(voice.breakpoints, voice.breakpoints + breakpointCount,
-                  [](const GENDYBreakpoint& a, const GENDYBreakpoint& b) { return a.timeOffset < b.timeOffset; });
+        // Insertion sort — O(N) for nearly-sorted data, audio-thread safe (no allocation)
+        for (int i = 1; i < breakpointCount; ++i)
+        {
+            auto key = voice.breakpoints[i];
+            int j = i - 1;
+            while (j >= 0 && voice.breakpoints[j].timeOffset > key.timeOffset)
+            {
+                voice.breakpoints[j + 1] = voice.breakpoints[j];
+                --j;
+            }
+            voice.breakpoints[j + 1] = key;
+        }
 
         // Normalize time span: first breakpoint at 0, last at ~1.
         // This ensures the waveform always fills exactly one cycle period.

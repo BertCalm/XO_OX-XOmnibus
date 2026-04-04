@@ -446,6 +446,10 @@ public:
 
         freeEnergy += (intake - cost) * deltaTime;
         freeEnergy = clamp(freeEnergy, 0.0f, 1.0f);
+
+        // Passive recovery: prevent permanent starvation during sustained notes
+        if (freeEnergy < 0.01f)
+            freeEnergy += 0.0001f;
     }
 
     float getFreeEnergy() const noexcept { return freeEnergy; }

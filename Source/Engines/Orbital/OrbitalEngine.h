@@ -1045,12 +1045,14 @@ private:
         voice.envReleaseCoeff = 1.0f / (std::max(0.05f, releaseSeconds) * cachedSampleRateFloat);
 
         //-- Group envelope coefficients ----------------------------------------
+        // D001: velocity scales attack — harder hits = faster attack
+        float velAttackScale = 1.0f - vel * 0.7f;
         for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
         {
             voice.groupEnvLevel[groupIdx] = 0.0f;
             voice.groupStage[groupIdx] = OrbitalVoice::GroupEnvStage::Attack;
             voice.groupAttackCoeff[groupIdx] =
-                1.0f / (std::max(0.001f, groupAttackTimes[groupIdx]) * cachedSampleRateFloat);
+                1.0f / (std::max(0.001f, groupAttackTimes[groupIdx] * velAttackScale) * cachedSampleRateFloat);
             voice.groupDecayCoeff[groupIdx] =
                 1.0f / (std::max(0.01f, groupDecayTimes[groupIdx]) * cachedSampleRateFloat);
         }

@@ -366,14 +366,19 @@ public:
         // -----------------------------------------------------------------------
 
         // Section A: Brother A — Flute Family
-        float breathA = pBrA ? pBrA->load() : 0.7f;
+        constexpr float kBreathSmooth = 0.995f;
+        float targetA = juce::jlimit(0.0f, 1.0f, pBrA ? pBrA->load(std::memory_order_relaxed) : 0.7f);
+        float targetB = juce::jlimit(0.0f, 1.0f, pBrB ? pBrB->load(std::memory_order_relaxed) : 0.7f);
+        smoothedBreathA_ += (targetA - smoothedBreathA_) * (1.0f - kBreathSmooth);
+        smoothedBreathB_ += (targetB - smoothedBreathB_) * (1.0f - kBreathSmooth);
+        float breathA = smoothedBreathA_;
         float embouchureA = pEmA ? pEmA->load() : 0.5f;
         float airFlutterA = pFlA ? pFlA->load() : 0.2f;
         float instrumentA = pInA ? pInA->load() : 0.0f;
         float bodySizeA = pBoA ? pBoA->load() : 0.5f;
 
         // Section B: Brother B — Reed Family
-        float breathB = pBrB ? pBrB->load() : 0.7f;
+        float breathB = smoothedBreathB_;
         float reedStiffness = pSt ? pSt->load() : 0.5f;
         float reedBite = pBi ? pBi->load() : 0.3f;
         float instrumentB = pInB ? pInB->load() : 0.0f;
@@ -951,6 +956,10 @@ private:
     //==========================================================================
     uint32_t windSeed = 33333u; // LCG state for real-time-safe noise generation
     float windLP = 0.0f;        // one-pole LP for breath-noise floor smoothing
+
+    // Breath smoothing state — prevents zipper noise on rapid breath param changes
+    float smoothedBreathA_ = 0.7f;
+    float smoothedBreathB_ = 0.7f;
 
     //==========================================================================
     // Cached parameter pointers (30 total — one per declared parameter)
