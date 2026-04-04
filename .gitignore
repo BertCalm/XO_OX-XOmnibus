@@ -73,3 +73,4 @@ Tools/social/output/*
 *.xometa.bak
 Libs/rive-cpp/
 builds/
+build_verify/
