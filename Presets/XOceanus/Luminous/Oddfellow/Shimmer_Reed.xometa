@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Reed",
+  "mood": "Luminous",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light migration, open brightness, gentle tremolo. The Wurlitzer as a bell instrument.",
+  "tags": [
+    "wurlitzer",
+    "shimmer",
+    "bright",
+    "luminous",
+    "bell"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.62,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.45,
+      "oddf_drive": 0.18,
+      "oddf_brightness": 6000.0,
+      "oddf_tremRate": 4.0,
+      "oddf_tremDepth": 0.18,
+      "oddf_attack": 0.003,
+      "oddf_decay": 0.7,
+      "oddf_sustain": 0.54,
+      "oddf_release": 0.48,
+      "oddf_filterEnvAmt": 0.42,
+      "oddf_migration": 0.08,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.42,
+      "oddf_macroMovement": 0.3,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

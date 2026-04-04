@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Warm Pocket",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slightly reduced brightness, slow tremolo, warm sustain. The Wurlitzer in a gospel choir \u2014 supportive and sure.",
+  "tags": [
+    "wurlitzer",
+    "warm",
+    "pocket",
+    "gospel",
+    "sustain"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.44,
+    "space": 0.48,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.42,
+      "oddf_drive": 0.24,
+      "oddf_brightness": 3500.0,
+      "oddf_tremRate": 3.8,
+      "oddf_tremDepth": 0.28,
+      "oddf_attack": 0.007,
+      "oddf_decay": 1.0,
+      "oddf_sustain": 0.56,
+      "oddf_release": 0.55,
+      "oddf_filterEnvAmt": 0.38,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.38,
+      "oddf_macroMovement": 0.3,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

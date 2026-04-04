@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Halo Reed",
+  "mood": "Luminous",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Very light migration, high brightness, barely-there tremolo. A sound with a halo around it.",
+  "tags": [
+    "wurlitzer",
+    "halo",
+    "bright",
+    "luminous",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.6,
+    "movement": 0.26,
+    "density": 0.38,
+    "space": 0.58,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.32,
+      "oddf_drive": 0.15,
+      "oddf_brightness": 7500.0,
+      "oddf_tremRate": 2.5,
+      "oddf_tremDepth": 0.08,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.85,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.55,
+      "oddf_filterEnvAmt": 0.32,
+      "oddf_migration": 0.06,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.35,
+      "oddf_macroMovement": 0.22,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

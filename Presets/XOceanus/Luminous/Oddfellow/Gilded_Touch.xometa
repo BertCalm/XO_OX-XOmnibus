@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Gilded Touch",
+  "mood": "Luminous",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Short decay, light drive, high warmth. Each note gilded, then gone.",
+  "tags": [
+    "wurlitzer",
+    "gilded",
+    "short",
+    "warmth",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.35,
+    "density": 0.44,
+    "space": 0.44,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.4,
+      "oddf_drive": 0.18,
+      "oddf_brightness": 4600.0,
+      "oddf_tremRate": 4.0,
+      "oddf_tremDepth": 0.18,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.55,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.38,
+      "oddf_filterEnvAmt": 0.38,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.4,
+      "oddf_macroMovement": 0.32,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

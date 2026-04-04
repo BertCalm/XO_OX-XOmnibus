@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Sunset Strip",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mid-era Wurlitzer with classic drive and soft tremolo. The warm side of the 70s.",
+  "tags": [
+    "wurlitzer",
+    "70s",
+    "warm",
+    "sunset",
+    "soul"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.44,
+    "space": 0.4,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.48,
+      "oddf_drive": 0.32,
+      "oddf_brightness": 3800.0,
+      "oddf_tremRate": 4.5,
+      "oddf_tremDepth": 0.32,
+      "oddf_attack": 0.006,
+      "oddf_decay": 0.75,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.42,
+      "oddf_filterEnvAmt": 0.48,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.48,
+      "oddf_macroMovement": 0.35,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

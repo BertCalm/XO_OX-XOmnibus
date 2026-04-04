@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Warble Engine",
+  "mood": "Flux",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow deep tremolo with LFO1 rate modulation. The tremolo is breathing, not static.",
+  "tags": [
+    "wurlitzer",
+    "warble",
+    "flux",
+    "lfo",
+    "tremolo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.65,
+    "movement": 0.72,
+    "density": 0.48,
+    "space": 0.44,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.32,
+      "oddf_brightness": 4200.0,
+      "oddf_tremRate": 4.5,
+      "oddf_tremDepth": 0.62,
+      "oddf_attack": 0.005,
+      "oddf_decay": 0.8,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.45,
+      "oddf_filterEnvAmt": 0.48,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.12,
+      "oddf_lfo1Depth": 0.15,
+      "oddf_lfo1Shape": 1,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.48,
+      "oddf_macroMovement": 0.72,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

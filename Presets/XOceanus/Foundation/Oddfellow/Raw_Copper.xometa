@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Raw Copper",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Zero migration, raw reed physics, drive at the threshold of grit. Unprocessed and proud of it.",
+  "tags": [
+    "wurlitzer",
+    "raw",
+    "reed",
+    "unprocessed",
+    "grit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.46,
+    "space": 0.35,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.62,
+      "oddf_drive": 0.42,
+      "oddf_brightness": 4600.0,
+      "oddf_tremRate": 5.0,
+      "oddf_tremDepth": 0.38,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.7,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.42,
+      "oddf_filterEnvAmt": 0.55,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.55,
+      "oddf_macroMovement": 0.38,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

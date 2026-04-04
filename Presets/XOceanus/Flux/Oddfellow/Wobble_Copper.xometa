@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Wobble Copper",
+  "mood": "Flux",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Medium tremolo, LFO1 at sawtooth modulating migration. Notes wobble on their axis.",
+  "tags": [
+    "wurlitzer",
+    "wobble",
+    "flux",
+    "sawtooth",
+    "migration"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.64,
+    "movement": 0.65,
+    "density": 0.48,
+    "space": 0.44,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.3,
+      "oddf_brightness": 4300.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.5,
+      "oddf_attack": 0.005,
+      "oddf_decay": 0.8,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.45,
+      "oddf_filterEnvAmt": 0.46,
+      "oddf_migration": 0.15,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.45,
+      "oddf_lfo1Depth": 0.18,
+      "oddf_lfo1Shape": 3,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.48,
+      "oddf_macroMovement": 0.65,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Flutter Field",
+  "mood": "Flux",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Very fast tremolo depth modulation via LFO2. The tremolo rate mutates.",
+  "tags": [
+    "wurlitzer",
+    "flutter",
+    "flux",
+    "fast",
+    "lfo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.6,
+    "movement": 0.88,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.48,
+      "oddf_drive": 0.38,
+      "oddf_brightness": 4500.0,
+      "oddf_tremRate": 10.0,
+      "oddf_tremDepth": 0.72,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.7,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.4,
+      "oddf_filterEnvAmt": 0.5,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 4.5,
+      "oddf_lfo2Depth": 0.28,
+      "oddf_lfo2Shape": 2,
+      "oddf_macroCharacter": 0.52,
+      "oddf_macroMovement": 0.88,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

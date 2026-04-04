@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Copper Root",
+  "mood": "Organic",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Wurlitzer rooted in its acoustic origins \u2014 natural reed, organic warmth, nothing added.",
+  "tags": [
+    "wurlitzer",
+    "root",
+    "natural",
+    "organic",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.76,
+    "movement": 0.24,
+    "density": 0.38,
+    "space": 0.5,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.3,
+      "oddf_drive": 0.17,
+      "oddf_brightness": 3400.0,
+      "oddf_tremRate": 4.0,
+      "oddf_tremDepth": 0.18,
+      "oddf_attack": 0.007,
+      "oddf_decay": 1.2,
+      "oddf_sustain": 0.55,
+      "oddf_release": 0.6,
+      "oddf_filterEnvAmt": 0.32,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.34,
+      "oddf_macroMovement": 0.22,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

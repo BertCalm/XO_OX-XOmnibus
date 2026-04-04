@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Trem",
+  "mood": "Flux",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO1 and LFO2 at inharmonic rates. The tremolo is no longer regular.",
+  "tags": [
+    "wurlitzer",
+    "chaos",
+    "flux",
+    "inharmonic",
+    "lfo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.6,
+    "movement": 0.85,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.52,
+      "oddf_drive": 0.36,
+      "oddf_brightness": 4400.0,
+      "oddf_tremRate": 6.8,
+      "oddf_tremDepth": 0.58,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.72,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.4,
+      "oddf_filterEnvAmt": 0.48,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.17,
+      "oddf_lfo1Depth": 0.2,
+      "oddf_lfo1Shape": 4,
+      "oddf_lfo2Rate": 2.7,
+      "oddf_lfo2Depth": 0.22,
+      "oddf_lfo2Shape": 4,
+      "oddf_macroCharacter": 0.52,
+      "oddf_macroMovement": 0.85,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Tremolo Dusk",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Classic 5.5 Hz tremolo, warm brightness, comfortable drive. The Wurlitzer in the last hour of light.",
+  "tags": [
+    "wurlitzer",
+    "tremolo",
+    "dusk",
+    "warm",
+    "classic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.42,
+    "density": 0.44,
+    "space": 0.42,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.3,
+      "oddf_brightness": 3900.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.42,
+      "oddf_attack": 0.005,
+      "oddf_decay": 0.7,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.42,
+      "oddf_filterEnvAmt": 0.48,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.48,
+      "oddf_macroMovement": 0.42,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

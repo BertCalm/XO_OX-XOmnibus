@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Slow Warble",
+  "mood": "Flux",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Very slow tremolo, deep depth, LFO1 at ultra-low rate. The Wurlitzer in slow motion.",
+  "tags": [
+    "wurlitzer",
+    "slow",
+    "warble",
+    "flux",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.46,
+    "space": 0.46,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.48,
+      "oddf_drive": 0.28,
+      "oddf_brightness": 4000.0,
+      "oddf_tremRate": 1.2,
+      "oddf_tremDepth": 0.72,
+      "oddf_attack": 0.006,
+      "oddf_decay": 1.0,
+      "oddf_sustain": 0.54,
+      "oddf_release": 0.55,
+      "oddf_filterEnvAmt": 0.42,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.01,
+      "oddf_lfo1Depth": 0.1,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.44,
+      "oddf_macroMovement": 0.55,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

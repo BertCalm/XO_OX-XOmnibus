@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Quartz Reed",
+  "mood": "Crystalline",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tremolo off. Precise oscillation, medium warmth, quartz-like sustain.",
+  "tags": [
+    "wurlitzer",
+    "quartz",
+    "precise",
+    "crystalline",
+    "sustain"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.64,
+    "movement": 0.0,
+    "density": 0.42,
+    "space": 0.48,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.2,
+      "oddf_brightness": 5000.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.0,
+      "oddf_attack": 0.004,
+      "oddf_decay": 1.0,
+      "oddf_sustain": 0.55,
+      "oddf_release": 0.55,
+      "oddf_filterEnvAmt": 0.4,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.46,
+      "oddf_macroMovement": 0.0,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

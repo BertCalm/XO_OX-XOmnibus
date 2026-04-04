@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Copper Fist",
+  "mood": "Kinetic",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The most aggressive single-note tone in the Oddfellow library. Drive and reed maxed.",
+  "tags": [
+    "wurlitzer",
+    "fist",
+    "maximum",
+    "kinetic",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.44,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.34,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.92,
+      "oddf_drive": 0.9,
+      "oddf_brightness": 6000.0,
+      "oddf_tremRate": 8.0,
+      "oddf_tremDepth": 0.6,
+      "oddf_attack": 0.001,
+      "oddf_decay": 0.28,
+      "oddf_sustain": 0.38,
+      "oddf_release": 0.18,
+      "oddf_filterEnvAmt": 0.7,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.88,
+      "oddf_macroMovement": 0.65,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

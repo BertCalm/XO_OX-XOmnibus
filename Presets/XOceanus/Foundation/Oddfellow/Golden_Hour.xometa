@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Golden Hour",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Soft drive, high warmth, tremolo barely breathing. The Wurlitzer at dusk, everything amber.",
+  "tags": [
+    "wurlitzer",
+    "golden",
+    "warm",
+    "dusk",
+    "classic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.78,
+    "movement": 0.28,
+    "density": 0.4,
+    "space": 0.45,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.44,
+      "oddf_drive": 0.22,
+      "oddf_brightness": 3400.0,
+      "oddf_tremRate": 3.5,
+      "oddf_tremDepth": 0.25,
+      "oddf_attack": 0.007,
+      "oddf_decay": 0.9,
+      "oddf_sustain": 0.55,
+      "oddf_release": 0.5,
+      "oddf_filterEnvAmt": 0.42,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.42,
+      "oddf_macroMovement": 0.28,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

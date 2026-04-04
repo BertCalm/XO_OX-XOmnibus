@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Facet",
+  "mood": "Crystalline",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "No tremolo, varied reed stiffness, moderate drive. Each note has a facet.",
+  "tags": [
+    "wurlitzer",
+    "facet",
+    "varied",
+    "crystalline",
+    "driven"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.58,
+    "movement": 0.0,
+    "density": 0.44,
+    "space": 0.4,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.58,
+      "oddf_drive": 0.3,
+      "oddf_brightness": 5200.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.0,
+      "oddf_attack": 0.003,
+      "oddf_decay": 0.6,
+      "oddf_sustain": 0.48,
+      "oddf_release": 0.38,
+      "oddf_filterEnvAmt": 0.5,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.52,
+      "oddf_macroMovement": 0.0,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
