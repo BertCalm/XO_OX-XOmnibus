@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Guitar Tracking",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tuned for electric guitar: selectivity centred around the upper-mid guitar presence peak (approx. 2\u20136 kHz effective). Reactivity fast enough to catch pick attacks and bends without over-tracking string noise. Memory moderate \u2014 sustains coupling between picked notes but resets on rests. Natural feel for guitar-driven generative coupling.",
+  "tags": [
+    "coupling",
+    "guitar",
+    "electric",
+    "pick-attack",
+    "mid-presence",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.6,
+      "osmo_selectivity": 0.32,
+      "osmo_reactivity": 0.72,
+      "osmo_memory": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.52,
+    "movement": 0.7,
+    "density": 0.48,
+    "space": 0.42,
+    "aggression": 0.52
+  }
+}

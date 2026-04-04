@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Submerged Pulse",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A rhythmic deep membrane: fast reactivity to snap to sub-bass kicks, but selectivity and memory tuned so that each hit reads as a distinct pressure event rather than a sustained tone. Medium permeability keeps the coupling signal punchy. The membrane surfaces briefly with each low-frequency transient, then sinks back. Like pressure waves felt through water.",
+  "tags": [
+    "deep",
+    "sub-bass",
+    "rhythmic",
+    "kick",
+    "pulse",
+    "pressure-wave"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.75,
+      "osmo_selectivity": 0.04,
+      "osmo_reactivity": 0.85,
+      "osmo_memory": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.82,
+    "density": 0.78,
+    "space": 0.28,
+    "aggression": 0.75
+  }
+}

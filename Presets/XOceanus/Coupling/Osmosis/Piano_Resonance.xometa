@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Piano Resonance",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Captures the characteristic resonance tail of piano: medium selectivity focuses on the 2\u20138 kHz string tone, moderate reactivity for clean note detection, long memory mimics the natural sustain decay. The coupled engine feels the piano's full resonant shape \u2014 not just the hammer transient.",
+  "tags": [
+    "coupling",
+    "piano",
+    "acoustic",
+    "resonance",
+    "sustain",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.45,
+      "osmo_selectivity": 0.45,
+      "osmo_reactivity": 0.6,
+      "osmo_memory": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.08
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Field Recording",
+  "mood": "Organic",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Designed for raw field recordings and environmental audio: wind, water, insects, traffic. Very low selectivity broadens the analysis band to capture the full spectral mass of complex natural soundscapes. Slow reactivity and long memory extract large-scale amplitude movement \u2014 the way a forest swells in wind or a rain shower peaks and decays.",
+  "tags": [
+    "organic",
+    "field-recording",
+    "nature",
+    "environment",
+    "ambient",
+    "spectral-mass"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.38,
+      "osmo_selectivity": 0.12,
+      "osmo_reactivity": 0.18,
+      "osmo_memory": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.68,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.08
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Infrasonic Hold",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extremely long memory combined with minimum selectivity creates a membrane that locks onto sub-bass energy and holds it as a sustained pressure for up to a full second. Slow reactivity prevents individual transients from disrupting the held mass. Use to generate a slow, tectonic coupling signal from any low-frequency source \u2014 perfect for ambient and experimental pairings where you want the sub-world to move in geological time.",
+  "tags": [
+    "deep",
+    "sub-bass",
+    "infrasonic",
+    "tectonic",
+    "ambient",
+    "slow",
+    "pressure"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.72,
+      "osmo_selectivity": 0.05,
+      "osmo_reactivity": 0.12,
+      "osmo_memory": 0.97
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.85,
+    "movement": 0.1,
+    "density": 0.9,
+    "space": 0.45,
+    "aggression": 0.18
+  }
+}

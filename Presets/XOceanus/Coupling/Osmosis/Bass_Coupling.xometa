@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Bass Coupling",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Low selectivity narrows the analysis window to the low-mid bass region (200\u20133 kHz effective). Tracks bass guitar and sub-synth groove patterns. Medium reactivity catches note attacks while low memory resets between rhythmic bass hits. The ideal Osmosis setting when coupling a bass line to a melodic or harmonic engine for rhythmic entrainment.",
+  "tags": [
+    "coupling",
+    "bass",
+    "low-mid",
+    "groove",
+    "rhythmic",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.7,
+      "osmo_selectivity": 0.08,
+      "osmo_reactivity": 0.55,
+      "osmo_memory": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.78,
+    "movement": 0.58,
+    "density": 0.72,
+    "space": 0.35,
+    "aggression": 0.55
+  }
+}

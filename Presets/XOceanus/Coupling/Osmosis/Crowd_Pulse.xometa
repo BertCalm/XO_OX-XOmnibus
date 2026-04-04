@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Crowd Pulse",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Designed for dense, complex audio sources \u2014 crowd noise, dense ensemble recordings, full mixes. Low selectivity captures the full-spectrum energy mass. Low reactivity smooths over micro-variations, while maximum memory tracks the global energy arc across bars rather than individual events. Use when you want a coupled engine to ride the overall intensity envelope of a complete scene.",
+  "tags": [
+    "coupling",
+    "crowd",
+    "full-mix",
+    "dense",
+    "macro-envelope",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.35,
+      "osmo_selectivity": 0.25,
+      "osmo_reactivity": 0.15,
+      "osmo_memory": 0.98
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.62,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.55,
+    "aggression": 0.12
+  }
+}

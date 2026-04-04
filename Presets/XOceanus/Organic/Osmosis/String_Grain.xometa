@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "String Grain",
+  "mood": "Organic",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reads the micro-texture of bowed string instruments \u2014 the rosin grain, bow pressure fluctuations, and harmonic shimmer. Medium-high selectivity targets the upper partials where string character lives. Fast reactivity captures bow-change transients. Medium memory bridges the arc between bowing strokes without losing the detail of each.",
+  "tags": [
+    "organic",
+    "strings",
+    "bowed",
+    "rosin",
+    "grain",
+    "texture",
+    "natural"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.58,
+      "osmo_selectivity": 0.65,
+      "osmo_reactivity": 0.8,
+      "osmo_memory": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.52,
+    "movement": 0.62,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.3
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Breath Trace",
+  "mood": "Organic",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extracts the biological rhythm of breath from wind instruments and voice. Slow reactivity smooths over pitch wobble and vibrato, focusing on the inhale/exhale cycle. Long memory sustains the measured breath arc. Moderate selectivity targets the fundamental and lower partials. The coupled signal rises and falls with the performer's lungs.",
+  "tags": [
+    "organic",
+    "breath",
+    "wind",
+    "voice",
+    "biological",
+    "natural"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "SELECTIVITY",
+    "REACTIVITY",
+    "MEMORY"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-04-01",
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.52,
+      "osmo_selectivity": 0.35,
+      "osmo_reactivity": 0.2,
+      "osmo_memory": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.05
+  }
+}
