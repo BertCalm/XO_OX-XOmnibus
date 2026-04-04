@@ -72,7 +72,7 @@ def find_registry(override) -> Path:
     try:
         result = subprocess.run(
             ["git", "rev-parse", "--show-toplevel"],
-            capture_output=True, text=True, check=True
+            capture_output=True, text=True, check=True, timeout=30
         )
         return Path(result.stdout.strip()) / "pack_registry.json"
     except Exception:

@@ -209,6 +209,7 @@ def run_check(check: dict, args: argparse.Namespace, tools_dir: Path) -> dict:
             capture_output=True,
             text=True,
             cwd=str(script_path.parent.parent),  # repo root
+            timeout=300,
         )
     except Exception as exc:
         elapsed = time.monotonic() - t0

@@ -271,12 +271,28 @@ def run_jobs_parallel(jobs: list[dict], output_base_dir: Path,
             if proc is not None:
                 active.append((idx, job, proc, time.monotonic(), []))
 
-        # Poll active processes
+        # Poll active processes (enforce per-job wall-clock timeout)
         still_running = []
         for idx, job, proc, start_t, stderr_buf in active:
             ret = proc.poll()
             if ret is None:
-                still_running.append((idx, job, proc, start_t, stderr_buf))
+                elapsed = time.monotonic() - start_t
+                if elapsed > 600:
+                    proc.terminate()
+                    try:
+                        proc.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        proc.kill()
+                    r = JobResult(job["engine"])
+                    r.exit_code = 1
+                    r.start_time = start_t
+                    r.end_time = time.monotonic()
+                    r.stderr_tail = ["Job timed out after 600 seconds"]
+                    results[idx] = r
+                    status = "FAIL"
+                    print(f"  <- {job['engine']}: {status} (TIMEOUT)")
+                else:
+                    still_running.append((idx, job, proc, start_t, stderr_buf))
             else:
                 # Collect remaining stderr
                 _, stderr_data = proc.communicate()
