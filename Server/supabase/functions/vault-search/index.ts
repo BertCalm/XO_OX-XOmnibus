@@ -23,8 +23,8 @@ Deno.serve(async (req: Request) => {
     const params = url.searchParams;
 
     // Parse query parameters
-    const page = parseInt(params.get("page") ?? "0");
-    const pageSize = Math.min(parseInt(params.get("pageSize") ?? "20"), 50);
+    const page = Math.max(0, parseInt(params.get("page") ?? "0")) || 0;
+    const pageSize = Math.max(1, Math.min(parseInt(params.get("pageSize") ?? "20") || 20, 50));
     const mood = params.get("mood") ?? "";
     const engine = params.get("engine") ?? "";
     const searchText = params.get("q") ?? "";
@@ -121,8 +121,9 @@ Deno.serve(async (req: Request) => {
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (err) {
+    console.error("vault-search error:", err);
     return new Response(
-      JSON.stringify({ error: String(err) }),
+      JSON.stringify({ error: "Search failed. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
