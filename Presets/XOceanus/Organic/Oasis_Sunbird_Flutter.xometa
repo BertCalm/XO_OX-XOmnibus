@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Sunbird Flutter",
+  "mood": "Organic",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bright and fluttering — a fast tremolo and elevated pickup position give this a vivid tropical energy despite the desert setting. Breeze is active, swarm is medium. A nectarine sunbird darting between blooms at an oasis spring.",
+  "tags": ["organic", "bright", "flutter", "vivid", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.60,
+    "movement": 0.68,
+    "density": 0.42,
+    "space": 0.50,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.58,
+      "oas_breeze": 0.62,
+      "oas_swarmDensity": 0.48,
+      "oas_lagoonDepth": 0.45,
+      "oas_subDrive": 0.20,
+      "oas_resonatorQ": 4.8,
+      "oas_cullDecay": 0.9910,
+      "oas_canopyFB": 0.42,
+      "oas_filterCutoff": 3000.0,
+      "oas_filterEnvAmt": 0.55,
+      "oas_pickupPos": 0.70,
+      "oas_bellAmount": 0.55,
+      "oas_warmth": 0.48,
+      "oas_tremoloDepth": 0.42,
+      "oas_tremoloRate": 6.8,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.52,
+      "oas_macroMovement": 0.68,
+      "oas_macroCoupling": 0.28,
+      "oas_macroSpace": 0.50
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

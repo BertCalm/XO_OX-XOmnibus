@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "name": "Harmonic Leash",
+  "mood": "Coupling",
+  "engines": [
+    "Ouroboros",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS chaos envelope drives ORBITAL additive partials via FM — the leash mechanism becomes the coupling mechanism, chaotic attractor amplitude teaching harmonics to organize and scatter in turn.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "chaos",
+    "additive",
+    "AudioToFM",
+    "EnvToMorph",
+    "tension"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.38,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.52,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.6,
+      "ouro_leash": 0.55,
+      "ouro_chaos": 0.65,
+      "ouro_filterCutoff": 0.62,
+      "ouro_filterReso": 0.38,
+      "ouro_filterEnvAmt": 0.52,
+      "ouro_ampAttack": 0.02,
+      "ouro_ampDecay": 0.4,
+      "ouro_ampSustain": 0.55,
+      "ouro_ampRelease": 1.0,
+      "ouro_lfoRate": 0.2,
+      "ouro_lfoDepth": 0.32,
+      "ouro_outputLevel": 0.72,
+      "ouro_reverbMix": 0.2
+    },
+    "Orbital": {
+      "orb_brightness": 0.6,
+      "orb_spread": 0.58,
+      "orb_partials": 8,
+      "orb_filterCutoff": 0.65,
+      "orb_filterReso": 0.32,
+      "orb_filterEnvAmt": 0.5,
+      "orb_ampAttack": 0.02,
+      "orb_ampDecay": 0.6,
+      "orb_ampSustain": 0.62,
+      "orb_ampRelease": 1.5,
+      "orb_lfoRate": 0.14,
+      "orb_lfoDepth": 0.28,
+      "orb_outputLevel": 0.72,
+      "orb_reverbMix": 0.3,
+      "orb_panSpread": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orbital",
+        "type": "AudioToFM",
+        "amount": 0.42
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orbital",
+        "type": "EnvToMorph",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 4,
+        "amount": 0.42,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 3,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

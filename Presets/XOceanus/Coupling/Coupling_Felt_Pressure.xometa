@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Felt Pressure",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt amplitude barely shades OCEANDEEP pressure floor — predator presence is felt as a slight increase in depth, a heaviness that never announces itself.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "predator",
+    "depth",
+    "AmpToFilter",
+    "dark",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.4,
+      "orca_podSync": 0.3,
+      "orca_echoDepth": 0.45,
+      "orca_filterCutoff": 0.42,
+      "orca_filterReso": 0.25,
+      "orca_filterEnvAmt": 0.35,
+      "orca_ampAttack": 0.05,
+      "orca_ampDecay": 0.8,
+      "orca_ampSustain": 0.6,
+      "orca_ampRelease": 2.0,
+      "orca_lfoRate": 0.04,
+      "orca_lfoDepth": 0.18,
+      "orca_outputLevel": 0.65,
+      "orca_reverbMix": 0.38
+    },
+    "OceanDeep": {
+      "deep_macroPressure": 0.55,
+      "deep_hydrostatic": 0.5,
+      "deep_bioluminescence": 0.35,
+      "deep_filterCutoff": 0.38,
+      "deep_filterReso": 0.3,
+      "deep_filterEnvAmt": 0.4,
+      "deep_ampAttack": 0.1,
+      "deep_ampDecay": 1.5,
+      "deep_ampSustain": 0.65,
+      "deep_ampRelease": 3.0,
+      "deep_lfoRate": 0.02,
+      "deep_lfoDepth": 0.12,
+      "deep_outputLevel": 0.68,
+      "deep_reverbMix": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "OceanDeep",
+        "type": "AmpToFilter",
+        "amount": 0.13
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.13,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

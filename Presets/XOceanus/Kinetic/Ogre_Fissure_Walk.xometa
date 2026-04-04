@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Fissure Walk",
+  "mood": "Kinetic",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sub bass driven to breaking point — earth-split resonance with high soil content. Walks the crack between tectonic plates.",
+  "tags": ["bass", "kinetic", "sub", "aggressive", "drive"],
+  "macroLabels": ["MASS", "SOIL", "DRIVE", "BODY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.72,
+    "density": 0.85,
+    "space": 0.12,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_subFreq": 58.0,
+      "ogre_drive": 0.82,
+      "ogre_oscMix": 0.72,
+      "ogre_bodyResonance": 0.65,
+      "ogre_soil": 0.78,
+      "ogre_fltCutoff": 220.0,
+      "ogre_fltReso": 0.6,
+      "ogre_fltEnvAmt": 0.7,
+      "ogre_fltEnvAttack": 0.002,
+      "ogre_fltEnvDecay": 0.35,
+      "ogre_ampAttack": 0.001,
+      "ogre_ampDecay": 0.45,
+      "ogre_ampSustain": 0.4,
+      "ogre_ampRelease": 0.3,
+      "ogre_lfo1Rate": 0.25,
+      "ogre_lfo1Depth": 0.35,
+      "ogre_lfo1Dest": 0,
+      "ogre_lfo2Rate": 3.5,
+      "ogre_lfo2Depth": 0.28,
+      "ogre_lfo2Dest": 1,
+      "ogre_stereoWidth": 0.4,
+      "ogre_level": 0.85,
+      "ogre_macroMass": 0.72,
+      "ogre_macroSoil": 0.78,
+      "ogre_macroDrive": 0.82,
+      "ogre_macroBody": 0.65
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

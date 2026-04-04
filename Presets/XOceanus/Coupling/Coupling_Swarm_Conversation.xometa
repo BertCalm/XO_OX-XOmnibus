@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "Swarm Conversation",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC chromatophore audio ring-modulates ORPHICA pluck resonance — the swarm's collective voice bends every string partial, chromatophore patterns painting the plucked body with color.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "swarm",
+    "pluck",
+    "AudioToRing",
+    "LFOToPitch",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.5,
+      "ocean_swarmSize": 0.6,
+      "ocean_chromatophore": 0.55,
+      "ocean_filterCutoff": 0.62,
+      "ocean_filterReso": 0.28,
+      "ocean_filterEnvAmt": 0.42,
+      "ocean_ampAttack": 0.06,
+      "ocean_ampDecay": 0.5,
+      "ocean_ampSustain": 0.7,
+      "ocean_ampRelease": 1.5,
+      "ocean_lfoRate": 0.1,
+      "ocean_lfoDepth": 0.25,
+      "ocean_outputLevel": 0.72,
+      "ocean_reverbMix": 0.28
+    },
+    "Orphica": {
+      "orph_pluckBrightness": 0.68,
+      "orph_pluckDecay": 0.75,
+      "orph_bodyResonance": 0.55,
+      "orph_filterCutoff": 0.65,
+      "orph_filterReso": 0.22,
+      "orph_filterEnvAmt": 0.45,
+      "orph_ampAttack": 0.001,
+      "orph_ampDecay": 1.0,
+      "orph_ampSustain": 0.32,
+      "orph_ampRelease": 2.0,
+      "orph_lfoRate": 0.08,
+      "orph_lfoDepth": 0.18,
+      "orph_outputLevel": 0.72,
+      "orph_reverbMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orphica",
+        "type": "AudioToRing",
+        "amount": 0.32
+      },
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orphica",
+        "type": "LFOToPitch",
+        "amount": 0.24
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 5,
+        "amount": 0.32,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 2,
+        "amount": 0.24,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

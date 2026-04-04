@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Ghost",
+  "mood": "Coupling",
+  "engines": [
+    "OddfeliX",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODDFELIX transient envelope threads into ORBITAL additive filter at whisper strength — each neon snap leaves a ghost impression on the harmonic spread, audible only in hindsight.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "transient",
+    "additive",
+    "AmpToFilter",
+    "crystalline",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.38,
+    "movement": 0.48,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_filterCutoff": 0.65,
+      "snap_filterReso": 0.28,
+      "snap_filterEnvAmt": 0.45,
+      "snap_ampAttack": 0.001,
+      "snap_ampDecay": 0.3,
+      "snap_ampSustain": 0.35,
+      "snap_ampRelease": 0.6,
+      "snap_lfoRate": 0.18,
+      "snap_lfoDepth": 0.2,
+      "snap_envDepth": 0.5,
+      "snap_outputLevel": 0.7,
+      "snap_reverbMix": 0.2,
+      "snap_pitch": 0.0
+    },
+    "Orbital": {
+      "orb_brightness": 0.52,
+      "orb_spread": 0.45,
+      "orb_partials": 5,
+      "orb_filterCutoff": 0.58,
+      "orb_filterReso": 0.2,
+      "orb_filterEnvAmt": 0.38,
+      "orb_ampAttack": 0.04,
+      "orb_ampDecay": 1.0,
+      "orb_ampSustain": 0.6,
+      "orb_ampRelease": 2.0,
+      "orb_lfoRate": 0.08,
+      "orb_lfoDepth": 0.15,
+      "orb_outputLevel": 0.68,
+      "orb_reverbMix": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.11
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.11,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

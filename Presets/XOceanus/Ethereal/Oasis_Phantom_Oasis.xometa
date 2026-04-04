@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Phantom Oasis",
+  "mood": "Ethereal",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A hallucinated body of water — the actual note source has low warmth and very low sub, while the lagoon reverb and granular canopy create an illusory lushness. The note is barely there; the space is everything.",
+  "tags": ["ethereal", "phantom", "reverb-heavy", "sparse", "translucent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.32,
+    "movement": 0.48,
+    "density": 0.28,
+    "space": 0.90,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.58,
+      "oas_breeze": 0.72,
+      "oas_swarmDensity": 0.60,
+      "oas_lagoonDepth": 0.92,
+      "oas_subDrive": 0.08,
+      "oas_resonatorQ": 3.0,
+      "oas_cullDecay": 0.9992,
+      "oas_canopyFB": 0.82,
+      "oas_filterCutoff": 5200.0,
+      "oas_filterEnvAmt": 0.20,
+      "oas_pickupPos": 0.80,
+      "oas_bellAmount": 0.28,
+      "oas_warmth": 0.18,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.30,
+      "oas_macroMovement": 0.48,
+      "oas_macroCoupling": 0.20,
+      "oas_macroSpace": 0.90
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

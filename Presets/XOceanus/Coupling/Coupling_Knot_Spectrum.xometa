@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "name": "Knot Spectrum",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE topological phase audio FM-modulates OVERTONE continued-fraction convergents — knot geometry directly shapes spectral topology, topology meeting topology in harmonic space.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "topology",
+    "spectral",
+    "AudioToFM",
+    "EnvToMorph",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.6,
+      "weave_topology": 2,
+      "weave_filterCutoff": 0.6,
+      "weave_filterReso": 0.28,
+      "weave_filterEnvAmt": 0.45,
+      "weave_ampAttack": 0.04,
+      "weave_ampDecay": 0.6,
+      "weave_ampSustain": 0.68,
+      "weave_ampRelease": 1.8,
+      "weave_lfoRate": 0.08,
+      "weave_lfoDepth": 0.22,
+      "weave_outputLevel": 0.7,
+      "weave_reverbMix": 0.32
+    },
+    "Overtone": {
+      "over_cfDepth": 0.62,
+      "over_convergent": 0.55,
+      "over_filterCutoff": 0.62,
+      "over_filterReso": 0.25,
+      "over_filterEnvAmt": 0.42,
+      "over_ampAttack": 0.06,
+      "over_ampDecay": 0.8,
+      "over_ampSustain": 0.7,
+      "over_ampRelease": 2.0,
+      "over_lfoRate": 0.07,
+      "over_lfoDepth": 0.2,
+      "over_outputLevel": 0.72,
+      "over_reverbMix": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Overtone",
+        "type": "AudioToFM",
+        "amount": 0.35
+      },
+      {
+        "engineA": "Orbweave",
+        "engineB": "Overtone",
+        "type": "EnvToMorph",
+        "amount": 0.25
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 4,
+        "amount": 0.35,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 3,
+        "amount": 0.25,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

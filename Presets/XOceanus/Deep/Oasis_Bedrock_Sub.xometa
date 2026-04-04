@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Bedrock Sub",
+  "mood": "Deep",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum sub drive with a narrow resonator and low filter ceiling. The ecosystem rides almost entirely on the sub oscillator — granular canopy is sparse, leaving the fundamental exposed like exposed ancient rock.",
+  "tags": ["bass", "sub", "deep", "dark", "heavy"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.88,
+    "movement": 0.15,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.28,
+      "oas_breeze": 0.08,
+      "oas_swarmDensity": 0.18,
+      "oas_lagoonDepth": 0.35,
+      "oas_subDrive": 0.90,
+      "oas_resonatorQ": 2.0,
+      "oas_cullDecay": 0.998,
+      "oas_canopyFB": 0.15,
+      "oas_filterCutoff": 380.0,
+      "oas_filterEnvAmt": 0.35,
+      "oas_pickupPos": 0.12,
+      "oas_bellAmount": 0.08,
+      "oas_warmth": 0.88,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.70,
+      "oas_macroMovement": 0.15,
+      "oas_macroCoupling": 0.35,
+      "oas_macroSpace": 0.35
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

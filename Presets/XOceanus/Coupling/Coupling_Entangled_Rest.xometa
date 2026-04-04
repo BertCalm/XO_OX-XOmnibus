@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Rest",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE knot LFO touches OVERTONE continued-fraction pitch drift at the softest level — topological phase couples to spectral phase through quantum-like entanglement, each unaware of the other's awareness.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "topology",
+    "spectral",
+    "LFOToPitch",
+    "meditative",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.35,
+    "density": 0.48,
+    "space": 0.75,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.45,
+      "weave_topology": 1,
+      "weave_filterCutoff": 0.52,
+      "weave_filterReso": 0.18,
+      "weave_filterEnvAmt": 0.3,
+      "weave_ampAttack": 0.1,
+      "weave_ampDecay": 1.2,
+      "weave_ampSustain": 0.68,
+      "weave_ampRelease": 3.0,
+      "weave_lfoRate": 0.04,
+      "weave_lfoDepth": 0.12,
+      "weave_outputLevel": 0.65,
+      "weave_reverbMix": 0.45
+    },
+    "Overtone": {
+      "over_cfDepth": 0.55,
+      "over_convergent": 0.45,
+      "over_filterCutoff": 0.55,
+      "over_filterReso": 0.15,
+      "over_filterEnvAmt": 0.28,
+      "over_ampAttack": 0.12,
+      "over_ampDecay": 1.5,
+      "over_ampSustain": 0.7,
+      "over_ampRelease": 3.5,
+      "over_lfoRate": 0.03,
+      "over_lfoDepth": 0.1,
+      "over_outputLevel": 0.68,
+      "over_reverbMix": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Overtone",
+        "type": "LFOToPitch",
+        "amount": 0.08
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 2,
+        "amount": 0.08,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

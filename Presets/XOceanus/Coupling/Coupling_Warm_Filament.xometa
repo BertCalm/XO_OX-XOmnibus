@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Warm Filament",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC swarm amplitude threads softly into ORPHICA body resonance filter — the chromatophore field warms the plucked body by the barest degree, a filament of biological connection.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "swarm",
+    "pluck",
+    "AmpToFilter",
+    "organic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.38,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.45,
+      "ocean_swarmSize": 0.55,
+      "ocean_chromatophore": 0.35,
+      "ocean_filterCutoff": 0.58,
+      "ocean_filterReso": 0.18,
+      "ocean_filterEnvAmt": 0.32,
+      "ocean_ampAttack": 0.1,
+      "ocean_ampDecay": 0.7,
+      "ocean_ampSustain": 0.68,
+      "ocean_ampRelease": 2.0,
+      "ocean_lfoRate": 0.06,
+      "ocean_lfoDepth": 0.15,
+      "ocean_outputLevel": 0.68,
+      "ocean_reverbMix": 0.35
+    },
+    "Orphica": {
+      "orph_pluckBrightness": 0.55,
+      "orph_pluckDecay": 0.65,
+      "orph_bodyResonance": 0.5,
+      "orph_filterCutoff": 0.62,
+      "orph_filterReso": 0.18,
+      "orph_filterEnvAmt": 0.38,
+      "orph_ampAttack": 0.002,
+      "orph_ampDecay": 1.5,
+      "orph_ampSustain": 0.28,
+      "orph_ampRelease": 3.0,
+      "orph_lfoRate": 0.07,
+      "orph_lfoDepth": 0.1,
+      "orph_outputLevel": 0.7,
+      "orph_reverbMix": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orphica",
+        "type": "AmpToFilter",
+        "amount": 0.14
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.14,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

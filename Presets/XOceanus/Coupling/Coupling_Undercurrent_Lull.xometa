@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "name": "Undercurrent Lull",
+  "mood": "Coupling",
+  "engines": [
+    "Organon",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANON metabolic envelope drifts into OUTWIT cellular automata blend — metabolism's slow tide shapes pattern density so gently that the CA evolution seems self-directed.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "metabolism",
+    "cellular-automata",
+    "EnvToMorph",
+    "generative",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.35,
+      "organon_entropy": 0.4,
+      "organon_filterCutoff": 0.52,
+      "organon_filterReso": 0.22,
+      "organon_filterEnvAmt": 0.38,
+      "organon_ampAttack": 0.15,
+      "organon_ampDecay": 0.9,
+      "organon_ampSustain": 0.68,
+      "organon_ampRelease": 2.5,
+      "organon_lfoRate": 0.03,
+      "organon_lfoDepth": 0.15,
+      "organon_outputLevel": 0.68,
+      "organon_reverbMix": 0.28
+    },
+    "Outwit": {
+      "owit_armDepth": 0.5,
+      "owit_ruleSet": 0.4,
+      "owit_filterCutoff": 0.55,
+      "owit_filterReso": 0.18,
+      "owit_filterEnvAmt": 0.3,
+      "owit_ampAttack": 0.1,
+      "owit_ampDecay": 0.7,
+      "owit_ampSustain": 0.65,
+      "owit_ampRelease": 2.0,
+      "owit_lfoRate": 0.04,
+      "owit_lfoDepth": 0.14,
+      "owit_outputLevel": 0.65,
+      "owit_reverbMix": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Outwit",
+        "type": "EnvToMorph",
+        "amount": 0.11
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 3,
+        "amount": 0.11,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

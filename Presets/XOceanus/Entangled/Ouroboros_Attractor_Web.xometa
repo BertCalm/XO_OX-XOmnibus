@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Web",
+  "mood": "Entangled",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rossler topology weaving a web of attractor paths — chaos moderate enough to feel knotted, not severed. Each note entangles with the last.",
+  "tags": ["chaos", "entangled", "rossler", "aggressive", "web"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.35,
+    "movement": 0.58,
+    "density": 0.7,
+    "space": 0.32,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 220.0,
+      "ouro_chaosIndex": 0.78,
+      "ouro_leash": 0.28,
+      "ouro_theta": -0.5,
+      "ouro_phi": 0.3,
+      "ouro_damping": 0.18,
+      "ouro_injection": 0.5
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

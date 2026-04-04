@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Shadow",
+  "mood": "Coupling",
+  "engines": [
+    "OpenSky",
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPENSKY shimmer audio ring-modulates OMBRE shadow narrative — light and darkness enter genuine dialogue, the ascending shimmer tail rewriting the shadow's memory of itself.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "shimmer",
+    "shadow",
+    "AudioToRing",
+    "EnvToMorph",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroRise": 0.62,
+      "sky_shimmerDepth": 0.65,
+      "sky_chorusRate": 0.25,
+      "sky_filterCutoff": 0.7,
+      "sky_filterReso": 0.22,
+      "sky_filterEnvAmt": 0.42,
+      "sky_ampAttack": 0.15,
+      "sky_ampDecay": 0.8,
+      "sky_ampSustain": 0.78,
+      "sky_ampRelease": 2.5,
+      "sky_lfoRate": 0.08,
+      "sky_lfoDepth": 0.22,
+      "sky_outputLevel": 0.72,
+      "sky_reverbMix": 0.5
+    },
+    "Ombre": {
+      "ombre_blend": 0.55,
+      "ombre_shadowDepth": 0.55,
+      "ombre_filterCutoff": 0.5,
+      "ombre_filterReso": 0.28,
+      "ombre_filterEnvAmt": 0.42,
+      "ombre_ampAttack": 0.12,
+      "ombre_ampDecay": 0.9,
+      "ombre_ampSustain": 0.72,
+      "ombre_ampRelease": 3.0,
+      "ombre_lfoRate": 0.06,
+      "ombre_lfoDepth": 0.18,
+      "ombre_outputLevel": 0.65,
+      "ombre_reverbMix": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OpenSky",
+        "engineB": "Ombre",
+        "type": "AudioToRing",
+        "amount": 0.32
+      },
+      {
+        "engineA": "OpenSky",
+        "engineB": "Ombre",
+        "type": "EnvToMorph",
+        "amount": 0.24
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 5,
+        "amount": 0.32,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 3,
+        "amount": 0.24,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "Psychology Strike",
+  "mood": "Coupling",
+  "engines": [
+    "Offering",
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OFFERING Berlyne curiosity rhythm drives OWARE material resonance with deliberate force — psychological tension becomes percussion instruction, city-chain attack shaping the membrane's character.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "percussion",
+    "psychology",
+    "RhythmToBlend",
+    "AmpToFilter",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.68,
+      "ofr_cityChain": 1,
+      "ofr_transientModel": 0.65,
+      "ofr_filterCutoff": 0.68,
+      "ofr_filterReso": 0.35,
+      "ofr_filterEnvAmt": 0.55,
+      "ofr_ampAttack": 0.001,
+      "ofr_ampDecay": 0.3,
+      "ofr_ampSustain": 0.25,
+      "ofr_ampRelease": 0.6,
+      "ofr_lfoRate": 0.2,
+      "ofr_lfoDepth": 0.28,
+      "ofr_outputLevel": 0.75,
+      "ofr_reverbMix": 0.18
+    },
+    "Oware": {
+      "owr_material": 0.6,
+      "owr_malletArticulation": 0.6,
+      "owr_sympatheticResonance": 0.65,
+      "owr_filterCutoff": 0.65,
+      "owr_filterReso": 0.28,
+      "owr_filterEnvAmt": 0.48,
+      "owr_ampAttack": 0.001,
+      "owr_ampDecay": 0.8,
+      "owr_ampSustain": 0.2,
+      "owr_ampRelease": 1.5,
+      "owr_lfoRate": 0.15,
+      "owr_lfoDepth": 0.2,
+      "owr_outputLevel": 0.72,
+      "owr_reverbMix": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Offering",
+        "engineB": "Oware",
+        "type": "RhythmToBlend",
+        "amount": 0.38
+      },
+      {
+        "engineA": "Offering",
+        "engineB": "Oware",
+        "type": "AmpToFilter",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 8,
+        "amount": 0.38,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

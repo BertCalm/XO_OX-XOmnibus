@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "Tide Memory",
+  "mood": "Coupling",
+  "engines": [
+    "Opal",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPAL grain rhythm at whisper level modulates OVERDUB delay blend — the particle scatter changes echo density so subtly that only careful listening reveals the grain is leading the tape.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "granular",
+    "delay",
+    "RhythmToBlend",
+    "ambient",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.68,
+    "movement": 0.45,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.45,
+      "opal_grainDensity": 0.35,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.55,
+      "opal_grainPosition": 0.5,
+      "opal_filterCutoff": 0.55,
+      "opal_filterReso": 0.14,
+      "opal_filterEnvAmt": 0.28,
+      "opal_ampAttack": 0.18,
+      "opal_ampDecay": 1.0,
+      "opal_ampSustain": 0.65,
+      "opal_ampRelease": 2.5,
+      "opal_lfoRate": 0.03,
+      "opal_lfoDepth": 0.1,
+      "opal_outputLevel": 0.65,
+      "opal_reverbMix": 0.4
+    },
+    "Overdub": {
+      "dub_oscWave": 0,
+      "dub_filterCutoff": 0.48,
+      "dub_filterReso": 0.2,
+      "dub_filterEnvAmt": 0.3,
+      "dub_delayTime": 0.62,
+      "dub_delayFeedback": 0.45,
+      "dub_delayMix": 0.52,
+      "dub_reverbMix": 0.45,
+      "dub_ampAttack": 0.06,
+      "dub_ampDecay": 1.0,
+      "dub_ampSustain": 0.58,
+      "dub_ampRelease": 2.8,
+      "dub_outputLevel": 0.62,
+      "dub_sendAmount": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "RhythmToBlend",
+        "amount": 0.10
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 8,
+        "amount": 0.10,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

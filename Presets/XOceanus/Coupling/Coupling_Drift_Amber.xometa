@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "name": "Drift Amber",
+  "mood": "Coupling",
+  "engines": [
+    "Odyssey",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY pitch drift LFO modulates OBLONG filter with warmth and purpose — two analog voices share their wandering, drift becoming a common grammar spoken in amber harmonics.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "analog",
+    "drift",
+    "LFOToPitch",
+    "AmpToFilter",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.72,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 1,
+      "drift_detune": 0.35,
+      "drift_filterCutoff": 0.6,
+      "drift_filterReso": 0.3,
+      "drift_filterEnvAmt": 0.45,
+      "drift_ampAttack": 0.06,
+      "drift_ampDecay": 0.5,
+      "drift_ampSustain": 0.75,
+      "drift_ampRelease": 1.2,
+      "drift_lfoRate": 0.12,
+      "drift_lfoDepth": 0.3,
+      "drift_outputLevel": 0.72,
+      "drift_reverbMix": 0.2
+    },
+    "Oblong": {
+      "bob_fltCutoff": 0.55,
+      "bob_fltReso": 0.28,
+      "bob_fltEnvAmt": 0.42,
+      "bob_oscShape": 0.45,
+      "bob_ampAttack": 0.04,
+      "bob_ampDecay": 0.6,
+      "bob_ampSustain": 0.7,
+      "bob_ampRelease": 1.5,
+      "bob_lfoRate": 0.1,
+      "bob_lfoDepth": 0.25,
+      "bob_outputLevel": 0.7,
+      "bob_reverbMix": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "LFOToPitch",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "AmpToFilter",
+        "amount": 0.22
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 2,
+        "amount": 0.3,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.22,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

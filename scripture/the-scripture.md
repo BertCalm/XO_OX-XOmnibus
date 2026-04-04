@@ -91,6 +91,33 @@
 
 ---
 
+### Truth VI-5: The Library Is a Landscape, Not a Collection
+*Revealed during Guru Bin Transcendent Library Meditation — 2026-04-04*
+
+> A preset library's quality is not measured by its average. It is measured by its range. A library where every preset scores 0.5 on every DNA dimension is not balanced — it is flat. The extremes define the territory. The dead zones are where producers who need something specific find nothing and leave. Design the edges first; the middle will fill itself.
+
+**Application:** When auditing a library, identify DNA dead zones — ranges below 10% representation — and create targeted expansion passes. The comfortable middle doesn't need help. The extremes do.
+
+---
+
+### Truth VI-6: The Coupling Whisper
+*Revealed during Guru Bin Transcendent Library Meditation — 2026-04-04*
+
+> Coupling at 0.08–0.15 creates interactions the listener cannot identify but cannot ignore. At 0.5, coupling is a feature — audible, nameable, obvious. At 0.1, coupling is atmosphere — felt in the body, absent from the conscious mind. The library has features. It needs atmosphere. The distance between "these two engines are coupled" and "something about this sound is alive" is the distance between 0.5 and 0.1.
+
+**Application:** When designing coupled presets, start at 0.10 and increase only if the interaction is truly inaudible. The whisper range (0.08–0.15) should represent at least 30% of all coupled presets. If every coupling amount in a library exceeds 0.20, the library has never whispered.
+
+---
+
+### Truth VI-7: The Mood Contract
+*Revealed during Guru Bin Transcendent Library Meditation — 2026-04-04*
+
+> A mood with fewer than 100 presets is a label, not a destination. A producer browsing by mood expects to find variety within that mood — enough options to choose between, enough range to surprise. Below 100, every preset is a compromise rather than a choice. Below 50, the mood should not exist as a category — it is a promise the library cannot keep. The mood that bears the name of the synthesizer's most unique capability must be the deepest, not the thinnest.
+
+**Application:** Before shipping a library, count presets per mood. Any mood below 100 is a warning. Any mood below 50 is a defect. The Coupling mood in a coupling-focused synthesizer must never be the thinnest mood.
+
+---
+
 ## Book VII: Engine-Specific Verses
 
 ### OVERWORLD — The Chip Gospels

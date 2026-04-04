@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Breath Trace",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC chromatophore LFO whispers into ORPHICA pluck pitch — the swarm's slow pulse barely bends each string, leaving a trace of shared rhythm imperceptible yet warm.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "pluck",
+    "swarm",
+    "LFOToPitch",
+    "organic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.32,
+    "space": 0.68,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.4,
+      "ocean_swarmSize": 0.5,
+      "ocean_chromatophore": 0.3,
+      "ocean_filterCutoff": 0.55,
+      "ocean_filterReso": 0.2,
+      "ocean_filterEnvAmt": 0.32,
+      "ocean_ampAttack": 0.08,
+      "ocean_ampDecay": 0.6,
+      "ocean_ampSustain": 0.7,
+      "ocean_ampRelease": 1.8,
+      "ocean_lfoRate": 0.05,
+      "ocean_lfoDepth": 0.18,
+      "ocean_outputLevel": 0.7,
+      "ocean_reverbMix": 0.3
+    },
+    "Orphica": {
+      "orph_pluckBrightness": 0.6,
+      "orph_pluckDecay": 0.7,
+      "orph_bodyResonance": 0.4,
+      "orph_filterCutoff": 0.6,
+      "orph_filterReso": 0.15,
+      "orph_filterEnvAmt": 0.35,
+      "orph_ampAttack": 0.002,
+      "orph_ampDecay": 1.2,
+      "orph_ampSustain": 0.3,
+      "orph_ampRelease": 2.5,
+      "orph_lfoRate": 0.06,
+      "orph_lfoDepth": 0.1,
+      "orph_outputLevel": 0.72,
+      "orph_reverbMix": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orphica",
+        "type": "LFOToPitch",
+        "amount": 0.09
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 2,
+        "amount": 0.09,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Mallet Trace",
+  "mood": "Coupling",
+  "engines": [
+    "Offering",
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OFFERING city-chain transient amplitude nudges OWARE sympathetic resonance frequency — the psychology of impact leaves a trace on the tuned membrane, curiosity imprinted on metal.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "percussion",
+    "sympathetic",
+    "AmpToFilter",
+    "organic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.45,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.55,
+      "ofr_cityChain": 0,
+      "ofr_transientModel": 0.5,
+      "ofr_filterCutoff": 0.6,
+      "ofr_filterReso": 0.25,
+      "ofr_filterEnvAmt": 0.45,
+      "ofr_ampAttack": 0.001,
+      "ofr_ampDecay": 0.4,
+      "ofr_ampSustain": 0.3,
+      "ofr_ampRelease": 0.8,
+      "ofr_lfoRate": 0.15,
+      "ofr_lfoDepth": 0.2,
+      "ofr_outputLevel": 0.72,
+      "ofr_reverbMix": 0.2
+    },
+    "Oware": {
+      "owr_material": 0.5,
+      "owr_malletArticulation": 0.45,
+      "owr_sympatheticResonance": 0.55,
+      "owr_filterCutoff": 0.58,
+      "owr_filterReso": 0.2,
+      "owr_filterEnvAmt": 0.38,
+      "owr_ampAttack": 0.001,
+      "owr_ampDecay": 1.0,
+      "owr_ampSustain": 0.25,
+      "owr_ampRelease": 2.0,
+      "owr_lfoRate": 0.1,
+      "owr_lfoDepth": 0.12,
+      "owr_outputLevel": 0.7,
+      "owr_reverbMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Offering",
+        "engineB": "Oware",
+        "type": "AmpToFilter",
+        "amount": 0.11
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.11,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Murmur",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE knot topology envelope barely tickles OVERTONE continued-fraction spectral depth — topology's topological tension modulates timbre at the level of suggestion, not command.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "topology",
+    "spectral",
+    "EnvToMorph",
+    "harmonic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.5,
+      "weave_topology": 0,
+      "weave_filterCutoff": 0.55,
+      "weave_filterReso": 0.2,
+      "weave_filterEnvAmt": 0.35,
+      "weave_ampAttack": 0.06,
+      "weave_ampDecay": 0.8,
+      "weave_ampSustain": 0.65,
+      "weave_ampRelease": 2.0,
+      "weave_lfoRate": 0.05,
+      "weave_lfoDepth": 0.15,
+      "weave_outputLevel": 0.68,
+      "weave_reverbMix": 0.35
+    },
+    "Overtone": {
+      "over_cfDepth": 0.5,
+      "over_convergent": 0.4,
+      "over_filterCutoff": 0.58,
+      "over_filterReso": 0.18,
+      "over_filterEnvAmt": 0.32,
+      "over_ampAttack": 0.08,
+      "over_ampDecay": 0.9,
+      "over_ampSustain": 0.68,
+      "over_ampRelease": 2.5,
+      "over_lfoRate": 0.04,
+      "over_lfoDepth": 0.12,
+      "over_outputLevel": 0.7,
+      "over_reverbMix": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Overtone",
+        "type": "EnvToMorph",
+        "amount": 0.14
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 3,
+        "amount": 0.14,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

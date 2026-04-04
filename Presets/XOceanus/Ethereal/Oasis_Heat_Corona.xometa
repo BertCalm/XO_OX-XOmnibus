@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Heat Corona",
+  "mood": "Ethereal",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The halo of light around a sun obscured by desert haze — maximum entropy sensitivity drives the mycelial network into fragmented, splintered partial clouds. Very high space, medium brightness, a corona of shimmering decay surrounding an invisible center.",
+  "tags": ["ethereal", "haze", "entropic", "fragmented", "luminous"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.38,
+    "movement": 0.60,
+    "density": 0.50,
+    "space": 0.88,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.92,
+      "oas_breeze": 0.60,
+      "oas_swarmDensity": 0.68,
+      "oas_lagoonDepth": 0.85,
+      "oas_subDrive": 0.14,
+      "oas_resonatorQ": 7.5,
+      "oas_cullDecay": 0.9960,
+      "oas_canopyFB": 0.80,
+      "oas_filterCutoff": 4800.0,
+      "oas_filterEnvAmt": 0.42,
+      "oas_pickupPos": 0.75,
+      "oas_bellAmount": 0.50,
+      "oas_warmth": 0.28,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.62,
+      "oas_macroMovement": 0.60,
+      "oas_macroCoupling": 0.35,
+      "oas_macroSpace": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

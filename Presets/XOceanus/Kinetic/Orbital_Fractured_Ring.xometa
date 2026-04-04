@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Fractured Ring",
+  "mood": "Kinetic",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Additive partials driven hard through resonant filter — group envelope cycling fast, ring breaking apart on each note.",
+  "tags": ["additive", "kinetic", "aggressive", "drive", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.82,
+    "density": 0.72,
+    "space": 0.18,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.72,
+      "orb_warmth": 0.3,
+      "orb_drive": 0.8,
+      "orb_filterCutoff": 4200.0,
+      "orb_filterReso": 0.72,
+      "orb_filterEnvAmt": 0.75,
+      "orb_filterEnvAttack": 0.001,
+      "orb_filterEnvDecay": 0.22,
+      "orb_groupEnvRate": 3.5,
+      "orb_groupEnvDepth": 0.65,
+      "orb_ampAttack": 0.001,
+      "orb_ampDecay": 0.28,
+      "orb_ampSustain": 0.25,
+      "orb_ampRelease": 0.2,
+      "orb_lfo1Rate": 2.8,
+      "orb_lfo1Depth": 0.4,
+      "orb_lfo1Dest": 0,
+      "orb_lfo2Rate": 0.15,
+      "orb_lfo2Depth": 0.3,
+      "orb_lfo2Dest": 1,
+      "orb_stereoWidth": 0.55,
+      "orb_level": 0.82,
+      "orb_macroCharacter": 0.72,
+      "orb_macroMovement": 0.82,
+      "orb_macroCoupling": 0.5,
+      "orb_macroSpace": 0.18
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

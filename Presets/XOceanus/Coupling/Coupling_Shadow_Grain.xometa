@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Grain",
+  "mood": "Coupling",
+  "engines": [
+    "OpenSky",
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPENSKY shimmer amplitude nudges OMBRE shadow blend by the barest margin — luminance and shadow exchange whispers, neither overwhelming the other's narrative.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "shimmer",
+    "shadow",
+    "AmpToFilter",
+    "atmospheric",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.38,
+    "density": 0.35,
+    "space": 0.78,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroRise": 0.5,
+      "sky_shimmerDepth": 0.45,
+      "sky_chorusRate": 0.15,
+      "sky_filterCutoff": 0.65,
+      "sky_filterReso": 0.15,
+      "sky_filterEnvAmt": 0.28,
+      "sky_ampAttack": 0.2,
+      "sky_ampDecay": 1.0,
+      "sky_ampSustain": 0.75,
+      "sky_ampRelease": 3.0,
+      "sky_lfoRate": 0.05,
+      "sky_lfoDepth": 0.12,
+      "sky_outputLevel": 0.7,
+      "sky_reverbMix": 0.55
+    },
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_shadowDepth": 0.4,
+      "ombre_filterCutoff": 0.45,
+      "ombre_filterReso": 0.2,
+      "ombre_filterEnvAmt": 0.32,
+      "ombre_ampAttack": 0.18,
+      "ombre_ampDecay": 1.2,
+      "ombre_ampSustain": 0.7,
+      "ombre_ampRelease": 3.5,
+      "ombre_lfoRate": 0.04,
+      "ombre_lfoDepth": 0.1,
+      "ombre_outputLevel": 0.62,
+      "ombre_reverbMix": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OpenSky",
+        "engineB": "Ombre",
+        "type": "AmpToFilter",
+        "amount": 0.12
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.12,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

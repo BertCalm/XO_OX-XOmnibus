@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "name": "Saturation Shore",
+  "mood": "Coupling",
+  "engines": [
+    "Obese",
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBESE harmonic distortion audio FM-modulates OSTERIA wine-dark resonance — fat harmonics pour into the coastal body, saturation becoming a flavoring agent for resonant architecture.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "saturation",
+    "resonance",
+    "AudioToFM",
+    "AmpToFilter",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.78,
+    "movement": 0.45,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Obese": {
+      "fat_satDrive": 0.62,
+      "fat_mojo": 0.55,
+      "fat_filterCutoff": 0.55,
+      "fat_filterReso": 0.35,
+      "fat_filterEnvAmt": 0.5,
+      "fat_ampAttack": 0.03,
+      "fat_ampDecay": 0.4,
+      "fat_ampSustain": 0.72,
+      "fat_ampRelease": 1.0,
+      "fat_lfoRate": 0.12,
+      "fat_lfoDepth": 0.28,
+      "fat_outputLevel": 0.7,
+      "fat_reverbMix": 0.18
+    },
+    "Osteria": {
+      "osteria_qBassShore": 0.58,
+      "osteria_wineDepth": 0.6,
+      "osteria_filterCutoff": 0.52,
+      "osteria_filterReso": 0.38,
+      "osteria_filterEnvAmt": 0.45,
+      "osteria_ampAttack": 0.04,
+      "osteria_ampDecay": 0.6,
+      "osteria_ampSustain": 0.68,
+      "osteria_ampRelease": 1.5,
+      "osteria_lfoRate": 0.1,
+      "osteria_lfoDepth": 0.22,
+      "osteria_outputLevel": 0.72,
+      "osteria_reverbMix": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Osteria",
+        "type": "AudioToFM",
+        "amount": 0.38
+      },
+      {
+        "engineA": "Obese",
+        "engineB": "Osteria",
+        "type": "AmpToFilter",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 4,
+        "amount": 0.38,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

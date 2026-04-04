@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "Predator Trench",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt audio FM-modulates OCEANDEEP hydrostatic pressure — the apex predator's presence distorts the deep's physics, echolocation becoming a force that reshapes the pressure field.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "predator",
+    "depth",
+    "AudioToFM",
+    "AmpToFilter",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.42,
+    "movement": 0.48,
+    "density": 0.68,
+    "space": 0.62,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.62,
+      "orca_podSync": 0.45,
+      "orca_echoDepth": 0.6,
+      "orca_filterCutoff": 0.48,
+      "orca_filterReso": 0.35,
+      "orca_filterEnvAmt": 0.5,
+      "orca_ampAttack": 0.04,
+      "orca_ampDecay": 0.6,
+      "orca_ampSustain": 0.62,
+      "orca_ampRelease": 1.5,
+      "orca_lfoRate": 0.08,
+      "orca_lfoDepth": 0.28,
+      "orca_outputLevel": 0.7,
+      "orca_reverbMix": 0.32
+    },
+    "OceanDeep": {
+      "deep_macroPressure": 0.68,
+      "deep_hydrostatic": 0.6,
+      "deep_bioluminescence": 0.45,
+      "deep_filterCutoff": 0.42,
+      "deep_filterReso": 0.38,
+      "deep_filterEnvAmt": 0.48,
+      "deep_ampAttack": 0.08,
+      "deep_ampDecay": 1.2,
+      "deep_ampSustain": 0.68,
+      "deep_ampRelease": 2.5,
+      "deep_lfoRate": 0.05,
+      "deep_lfoDepth": 0.2,
+      "deep_outputLevel": 0.7,
+      "deep_reverbMix": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "OceanDeep",
+        "type": "AudioToFM",
+        "amount": 0.38
+      },
+      {
+        "engineA": "Orca",
+        "engineB": "OceanDeep",
+        "type": "AmpToFilter",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 4,
+        "amount": 0.38,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

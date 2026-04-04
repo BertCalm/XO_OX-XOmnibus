@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Thomas Scatter",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thomas system scattering through prism angles — moderately leashed so that different notes land at different attractors. Spectral chaos.",
+  "tags": ["chaos", "prism", "thomas", "aggressive", "scatter"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.2,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.45,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 4,
+      "ouro_rate": 300.0,
+      "ouro_chaosIndex": 0.8,
+      "ouro_leash": 0.25,
+      "ouro_theta": -0.4,
+      "ouro_phi": 0.7,
+      "ouro_damping": 0.14,
+      "ouro_injection": 0.42
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Aquifer Pulse",
+  "mood": "Atmosphere",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Underground water pressure as sound — the breeze is high, entropy sensitivity is elevated, and the granular swarm is dense, creating a subterranean bubbling that surfaces in the canopy delay network.",
+  "tags": ["pad", "granular", "underground", "dense", "atmospheric"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.70,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.72,
+      "oas_breeze": 0.68,
+      "oas_swarmDensity": 0.78,
+      "oas_lagoonDepth": 0.72,
+      "oas_subDrive": 0.28,
+      "oas_resonatorQ": 6.5,
+      "oas_cullDecay": 0.9965,
+      "oas_canopyFB": 0.62,
+      "oas_filterCutoff": 2000.0,
+      "oas_filterEnvAmt": 0.40,
+      "oas_pickupPos": 0.28,
+      "oas_bellAmount": 0.25,
+      "oas_warmth": 0.60,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.48,
+      "oas_macroMovement": 0.65,
+      "oas_macroCoupling": 0.30,
+      "oas_macroSpace": 0.78
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

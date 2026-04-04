@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Saltpan Horizon",
+  "mood": "Atmosphere",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Vast flat soundscape with minimal movement in the foreground and an enormous lagoon wash behind. Pickup positioned bright to maintain definition while the deep canopy tail dissolves note edges into the horizon.",
+  "tags": ["pad", "vast", "horizon", "sparse", "atmospheric"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.30,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.38,
+      "oas_breeze": 0.35,
+      "oas_swarmDensity": 0.32,
+      "oas_lagoonDepth": 0.85,
+      "oas_subDrive": 0.14,
+      "oas_resonatorQ": 3.2,
+      "oas_cullDecay": 0.9985,
+      "oas_canopyFB": 0.75,
+      "oas_filterCutoff": 3500.0,
+      "oas_filterEnvAmt": 0.22,
+      "oas_pickupPos": 0.65,
+      "oas_bellAmount": 0.18,
+      "oas_warmth": 0.42,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.28,
+      "oas_macroMovement": 0.25,
+      "oas_macroCoupling": 0.15,
+      "oas_macroSpace": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

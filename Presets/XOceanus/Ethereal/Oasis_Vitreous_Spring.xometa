@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Vitreous Spring",
+  "mood": "Ethereal",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Glass-like clarity with high pickup position and elevated bell transient — the attack shimmers like light through spring water. The canopy feedback is long but the breeze is gentle, preserving translucency over density.",
+  "tags": ["ethereal", "glass", "bright", "shimmer", "crystalline"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.35,
+    "movement": 0.28,
+    "density": 0.35,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.32,
+      "oas_breeze": 0.25,
+      "oas_swarmDensity": 0.35,
+      "oas_lagoonDepth": 0.82,
+      "oas_subDrive": 0.10,
+      "oas_resonatorQ": 9.0,
+      "oas_cullDecay": 0.9980,
+      "oas_canopyFB": 0.78,
+      "oas_filterCutoff": 6500.0,
+      "oas_filterEnvAmt": 0.32,
+      "oas_pickupPos": 0.88,
+      "oas_bellAmount": 0.78,
+      "oas_warmth": 0.22,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.58,
+      "oas_macroMovement": 0.28,
+      "oas_macroCoupling": 0.18,
+      "oas_macroSpace": 0.85
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

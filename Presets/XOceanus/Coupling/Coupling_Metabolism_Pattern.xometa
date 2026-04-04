@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "name": "Metabolism Pattern",
+  "mood": "Coupling",
+  "engines": [
+    "Organon",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANON metabolic rate drives OUTWIT CA rule transitions with real energy — biological rhythm dictates cellular automata evolution, metabolism becoming the generative instruction set.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "metabolism",
+    "cellular-automata",
+    "EnvToMorph",
+    "RhythmToBlend",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.65,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.6,
+      "organon_entropy": 0.5,
+      "organon_filterCutoff": 0.58,
+      "organon_filterReso": 0.3,
+      "organon_filterEnvAmt": 0.48,
+      "organon_ampAttack": 0.1,
+      "organon_ampDecay": 0.6,
+      "organon_ampSustain": 0.65,
+      "organon_ampRelease": 1.5,
+      "organon_lfoRate": 0.08,
+      "organon_lfoDepth": 0.25,
+      "organon_outputLevel": 0.7,
+      "organon_reverbMix": 0.25
+    },
+    "Outwit": {
+      "owit_armDepth": 0.6,
+      "owit_ruleSet": 0.55,
+      "owit_filterCutoff": 0.6,
+      "owit_filterReso": 0.25,
+      "owit_filterEnvAmt": 0.4,
+      "owit_ampAttack": 0.06,
+      "owit_ampDecay": 0.5,
+      "owit_ampSustain": 0.6,
+      "owit_ampRelease": 1.2,
+      "owit_lfoRate": 0.1,
+      "owit_lfoDepth": 0.22,
+      "owit_outputLevel": 0.68,
+      "owit_reverbMix": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Outwit",
+        "type": "EnvToMorph",
+        "amount": 0.38
+      },
+      {
+        "engineA": "Organon",
+        "engineB": "Outwit",
+        "type": "RhythmToBlend",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 3,
+        "amount": 0.38,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 8,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

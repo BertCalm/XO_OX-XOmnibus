@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Strange Tide",
+  "mood": "Flux",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Lorenz at 280 — a tide that never repeats its pattern. Damping just enough to keep it from flying apart entirely.",
+  "tags": ["chaos", "flux", "lorenz", "aggressive", "tide"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.35,
+    "movement": 0.78,
+    "density": 0.62,
+    "space": 0.28,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 280.0,
+      "ouro_chaosIndex": 0.82,
+      "ouro_leash": 0.22,
+      "ouro_theta": -0.6,
+      "ouro_phi": 0.4,
+      "ouro_damping": 0.15,
+      "ouro_injection": 0.35
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Fennec Footfall",
+  "mood": "Organic",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light-footed and quick — a medium-bright tone with elevated bell transient and moderate warmth. The swarm is sparse and skittish. Notes land like small paws on warm sand: precise, brief, alert.",
+  "tags": ["organic", "percussive", "light", "bright", "desert"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.32,
+    "space": 0.48,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.55,
+      "oas_breeze": 0.28,
+      "oas_swarmDensity": 0.28,
+      "oas_lagoonDepth": 0.42,
+      "oas_subDrive": 0.22,
+      "oas_resonatorQ": 6.0,
+      "oas_cullDecay": 0.992,
+      "oas_canopyFB": 0.35,
+      "oas_filterCutoff": 3200.0,
+      "oas_filterEnvAmt": 0.60,
+      "oas_pickupPos": 0.62,
+      "oas_bellAmount": 0.68,
+      "oas_warmth": 0.55,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.48,
+      "oas_macroMovement": 0.45,
+      "oas_macroCoupling": 0.25,
+      "oas_macroSpace": 0.48
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

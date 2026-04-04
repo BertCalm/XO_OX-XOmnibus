@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Circuit Intimacy",
+  "mood": "Coupling",
+  "engines": [
+    "Opera",
+    "Oxytocin"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPERA Kuramoto LFO touches OXYTOCIN bond depth at the lightest possible level — synchronicity between voices births a warmth in the circuit-modeled synth that outlasts the notes.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "kuramoto",
+    "circuit",
+    "LFOToPitch",
+    "intimate",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.45,
+    "space": 0.62,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.45,
+      "opera_coherence": 0.55,
+      "opera_conductorArc": 0.4,
+      "opera_filterCutoff": 0.55,
+      "opera_filterReso": 0.2,
+      "opera_filterEnvAmt": 0.35,
+      "opera_ampAttack": 0.1,
+      "opera_ampDecay": 0.8,
+      "opera_ampSustain": 0.7,
+      "opera_ampRelease": 2.0,
+      "opera_lfoRate": 0.06,
+      "opera_lfoDepth": 0.15,
+      "opera_outputLevel": 0.7,
+      "opera_reverbMix": 0.38
+    },
+    "Oxytocin": {
+      "oxy_intimacy": 0.5,
+      "oxy_bondDepth": 0.45,
+      "oxy_circuitWarm": 0.55,
+      "oxy_filterCutoff": 0.58,
+      "oxy_filterReso": 0.18,
+      "oxy_filterEnvAmt": 0.32,
+      "oxy_ampAttack": 0.08,
+      "oxy_ampDecay": 0.9,
+      "oxy_ampSustain": 0.68,
+      "oxy_ampRelease": 2.5,
+      "oxy_lfoRate": 0.05,
+      "oxy_lfoDepth": 0.12,
+      "oxy_outputLevel": 0.68,
+      "oxy_reverbMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opera",
+        "engineB": "Oxytocin",
+        "type": "LFOToPitch",
+        "amount": 0.10
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 2,
+        "amount": 0.10,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

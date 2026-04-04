@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Spring Tine",
+  "mood": "Foundation",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bright tine-forward tone with a quick bell transient and moderate resonator shimmer. Entropy sensitivity kept low so the ecosystem stays stable under fast playing.",
+  "tags": ["ep", "tine", "bright", "foundation", "percussive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.30,
+    "density": 0.40,
+    "space": 0.30,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.18,
+      "oas_breeze": 0.12,
+      "oas_swarmDensity": 0.22,
+      "oas_lagoonDepth": 0.20,
+      "oas_subDrive": 0.25,
+      "oas_resonatorQ": 5.5,
+      "oas_cullDecay": 0.991,
+      "oas_canopyFB": 0.18,
+      "oas_filterCutoff": 5500.0,
+      "oas_filterEnvAmt": 0.55,
+      "oas_pickupPos": 0.72,
+      "oas_bellAmount": 0.74,
+      "oas_warmth": 0.30,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.62,
+      "oas_macroMovement": 0.30,
+      "oas_macroCoupling": 0.12,
+      "oas_macroSpace": 0.30
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

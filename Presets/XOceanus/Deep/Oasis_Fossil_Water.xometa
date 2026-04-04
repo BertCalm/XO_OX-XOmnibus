@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Fossil Water",
+  "mood": "Deep",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ancient trapped water metaphor — sub bass with slow glide and very long cull decay retaining low harmonics indefinitely. The resonator operates at low Q to smear partials into a sediment-layer texture.",
+  "tags": ["bass", "sub", "glide", "slow", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.92,
+    "movement": 0.22,
+    "density": 0.62,
+    "space": 0.42,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.40,
+      "oas_breeze": 0.12,
+      "oas_swarmDensity": 0.25,
+      "oas_lagoonDepth": 0.42,
+      "oas_subDrive": 0.82,
+      "oas_resonatorQ": 1.5,
+      "oas_cullDecay": 0.9995,
+      "oas_canopyFB": 0.22,
+      "oas_filterCutoff": 520.0,
+      "oas_filterEnvAmt": 0.45,
+      "oas_pickupPos": 0.10,
+      "oas_bellAmount": 0.12,
+      "oas_warmth": 0.82,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.65,
+      "oas_macroCharacter": 0.60,
+      "oas_macroMovement": 0.22,
+      "oas_macroCoupling": 0.28,
+      "oas_macroSpace": 0.42
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

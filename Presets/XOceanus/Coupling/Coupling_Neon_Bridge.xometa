@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "Neon Bridge",
+  "mood": "Coupling",
+  "engines": [
+    "OddfeliX",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODDFELIX transient audio ring-modulates ORBITAL additive partials at full conversational strength — crystal sidebands multiply across the harmonic grid on every snap, building a neon bridge between percussive and tonal worlds.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "ring-modulation",
+    "additive",
+    "AudioToRing",
+    "AmpToFilter",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.3,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_filterCutoff": 0.78,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvAmt": 0.55,
+      "snap_ampAttack": 0.001,
+      "snap_ampDecay": 0.2,
+      "snap_ampSustain": 0.28,
+      "snap_ampRelease": 0.45,
+      "snap_lfoRate": 0.3,
+      "snap_lfoDepth": 0.28,
+      "snap_envDepth": 0.6,
+      "snap_outputLevel": 0.75,
+      "snap_reverbMix": 0.15,
+      "snap_pitch": 0.0
+    },
+    "Orbital": {
+      "orb_brightness": 0.65,
+      "orb_spread": 0.55,
+      "orb_partials": 7,
+      "orb_filterCutoff": 0.62,
+      "orb_filterReso": 0.3,
+      "orb_filterEnvAmt": 0.48,
+      "orb_ampAttack": 0.01,
+      "orb_ampDecay": 0.7,
+      "orb_ampSustain": 0.6,
+      "orb_ampRelease": 1.5,
+      "orb_lfoRate": 0.12,
+      "orb_lfoDepth": 0.25,
+      "orb_outputLevel": 0.72,
+      "orb_reverbMix": 0.28,
+      "orb_panSpread": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "AudioToRing",
+        "amount": 0.42
+      },
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 5,
+        "amount": 0.42,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

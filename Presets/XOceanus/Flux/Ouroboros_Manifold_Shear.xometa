@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Manifold Shear",
+  "mood": "Flux",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thomas topology shearing through parameter space — chaos high, leash minimal, injection driving phase continuously. Sustained aggression.",
+  "tags": ["chaos", "flux", "thomas", "aggressive", "sustained"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.25,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.22,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 4,
+      "ouro_rate": 320.0,
+      "ouro_chaosIndex": 0.85,
+      "ouro_leash": 0.18,
+      "ouro_theta": 0.2,
+      "ouro_phi": -0.8,
+      "ouro_damping": 0.12,
+      "ouro_injection": 0.45
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

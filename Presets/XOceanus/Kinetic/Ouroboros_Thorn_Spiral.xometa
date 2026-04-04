@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Thorn Spiral",
+  "mood": "Kinetic",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rossler topology spinning fast with injection pumped up — the spiral tightens until it bites.",
+  "tags": ["chaos", "kinetic", "rossler", "aggressive", "spiral"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.2,
+    "movement": 0.88,
+    "density": 0.7,
+    "space": 0.12,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 380.0,
+      "ouro_chaosIndex": 0.9,
+      "ouro_leash": 0.12,
+      "ouro_theta": -0.3,
+      "ouro_phi": 0.6,
+      "ouro_damping": 0.09,
+      "ouro_injection": 0.55
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

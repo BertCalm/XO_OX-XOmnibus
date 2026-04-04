@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Fault Line",
+  "mood": "Prism",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sub bass with prismatic body resonance — different frequency bands breaking apart like a fault line. Dark but spectral at the fault edge.",
+  "tags": ["bass", "prism", "sub", "aggressive", "fault"],
+  "macroLabels": ["MASS", "SOIL", "DRIVE", "BODY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_subFreq": 78.0,
+      "ogre_drive": 0.75,
+      "ogre_oscMix": 0.6,
+      "ogre_bodyResonance": 0.72,
+      "ogre_soil": 0.75,
+      "ogre_fltCutoff": 420.0,
+      "ogre_fltReso": 0.68,
+      "ogre_fltEnvAmt": 0.72,
+      "ogre_fltEnvAttack": 0.01,
+      "ogre_fltEnvDecay": 0.55,
+      "ogre_ampAttack": 0.008,
+      "ogre_ampDecay": 0.65,
+      "ogre_ampSustain": 0.5,
+      "ogre_ampRelease": 0.55,
+      "ogre_lfo1Rate": 0.07,
+      "ogre_lfo1Depth": 0.42,
+      "ogre_lfo1Dest": 1,
+      "ogre_lfo2Rate": 0.55,
+      "ogre_lfo2Depth": 0.28,
+      "ogre_lfo2Dest": 0,
+      "ogre_stereoWidth": 0.55,
+      "ogre_level": 0.82,
+      "ogre_macroMass": 0.6,
+      "ogre_macroSoil": 0.75,
+      "ogre_macroDrive": 0.75,
+      "ogre_macroBody": 0.72
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

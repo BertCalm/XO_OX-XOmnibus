@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "name": "Grain Dialogue",
+  "mood": "Coupling",
+  "engines": [
+    "Opal",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPAL grain density drives OVERDUB filter with clear intent — particle density and tape echo engage in full conversation, each shaping the character of the other in real time.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "granular",
+    "delay",
+    "AmpToFilter",
+    "AudioToFM",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.32,
+      "opal_grainDensity": 0.62,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.42,
+      "opal_grainPosition": 0.5,
+      "opal_filterCutoff": 0.68,
+      "opal_filterReso": 0.25,
+      "opal_filterEnvAmt": 0.42,
+      "opal_ampAttack": 0.06,
+      "opal_ampDecay": 0.5,
+      "opal_ampSustain": 0.72,
+      "opal_ampRelease": 1.5,
+      "opal_lfoRate": 0.08,
+      "opal_lfoDepth": 0.22,
+      "opal_outputLevel": 0.72,
+      "opal_reverbMix": 0.28
+    },
+    "Overdub": {
+      "dub_oscWave": 0,
+      "dub_filterCutoff": 0.52,
+      "dub_filterReso": 0.3,
+      "dub_filterEnvAmt": 0.38,
+      "dub_delayTime": 0.48,
+      "dub_delayFeedback": 0.45,
+      "dub_delayMix": 0.58,
+      "dub_reverbMix": 0.35,
+      "dub_ampAttack": 0.02,
+      "dub_ampDecay": 0.7,
+      "dub_ampSustain": 0.65,
+      "dub_ampRelease": 1.8,
+      "dub_outputLevel": 0.7,
+      "dub_sendAmount": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.35
+      },
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "AudioToFM",
+        "amount": 0.22
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.35,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 4,
+        "amount": 0.22,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}
