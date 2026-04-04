@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Prism Shatter",
+  "name": "Prism Shatter (Ouroboros)",
   "mood": "Prism",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz at peak chaos through a prism — chaos index at 0.92, light scattering in unpredictable directions. Each note is a different shard.",
-  "tags": ["chaos", "prism", "lorenz", "aggressive", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "prism",
+    "lorenz",
+    "aggressive",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -30,6 +43,8 @@
       "ouro_injection": 0.5
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

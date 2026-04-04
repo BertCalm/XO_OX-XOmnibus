@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Vanishing Tine",
+  "mood": "Ethereal",
+  "engines": ["Opaline"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prepared piano tine struck so gently it almost refuses to sound — long release into near-silence. A tone that questions its own existence.",
+  "tags": ["ethereal", "prepared", "transparent", "opaline", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.12,
+    "movement": 0.06,
+    "density": 0.07,
+    "space": 0.86,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_preparedDensity": 0.05,
+      "opal2_preparedType": 2,
+      "opal2_tineCharacter": 0.06,
+      "opal2_stringDecay": 7.0,
+      "opal2_damperNoise": 0.0,
+      "opal2_filterCutoff": 8000.0,
+      "opal2_filterReso": 0.05,
+      "opal2_filterEnvAmt": 0.19,
+      "opal2_attack": 0.008,
+      "opal2_decay": 6.5,
+      "opal2_sustain": 0.02,
+      "opal2_release": 6.0,
+      "opal2_lfo1Rate": 0.04,
+      "opal2_lfo1Depth": 0.02,
+      "opal2_lfo2Rate": 0.02,
+      "opal2_lfo2Depth": 0.01,
+      "opal2_reverbMix": 0.8,
+      "opal2_outputLevel": 0.55,
+      "opal2_voices": 1,
+      "opal2_macroCharacter": 0.15,
+      "opal2_macroMovement": 0.08,
+      "opal2_macroCoupling": 0.04,
+      "opal2_macroSpace": 0.78
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

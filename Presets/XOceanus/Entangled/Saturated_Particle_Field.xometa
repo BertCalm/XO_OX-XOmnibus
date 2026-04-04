@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Saturated Particle Field",
+  "mood": "Entangled",
+  "engines": ["Oceanic", "Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "128 chromatophore particles coupled to 13 saturated oscillators — OCEANIC particle density maximum, OBESE sub layer reinforcing every octave. A wall of saturated motion.",
+  "tags": ["entangled", "dense", "oceanic", "obese", "particles", "saturated"],
+  "macroLabels": ["PARTICLES", "BELLY", "COUPLING", "CRUSH"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.72,
+    "movement": 0.92,
+    "density": 0.97,
+    "space": 0.42,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.95,
+      "ocean_particleDensity": 0.98,
+      "ocean_chromatophore": 0.92,
+      "ocean_depth": 0.88,
+      "ocean_filterCutoff": 3000.0,
+      "ocean_filterReso": 0.68,
+      "ocean_filterEnvAmt": 0.78,
+      "ocean_attack": 0.002,
+      "ocean_decay": 0.6,
+      "ocean_sustain": 0.72,
+      "ocean_release": 0.8,
+      "ocean_lfo1Rate": 1.5,
+      "ocean_lfo1Depth": 0.82,
+      "ocean_lfo2Rate": 2.2,
+      "ocean_lfo2Depth": 0.75,
+      "ocean_reverbMix": 0.35,
+      "ocean_outputLevel": 0.85,
+      "ocean_voices": 8,
+      "ocean_macroCharacter": 0.82,
+      "ocean_macroMovement": 0.9,
+      "ocean_macroCoupling": 0.88,
+      "ocean_macroSpace": 0.4
+    },
+    "Obese": {
+      "fat_morph": 0.82,
+      "fat_mojo": 0.88,
+      "fat_subLevel": 0.9,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.88,
+      "fat_detune": 18.0,
+      "fat_stereoWidth": 0.9,
+      "fat_ampAttack": 0.002,
+      "fat_ampDecay": 0.5,
+      "fat_ampSustain": 0.78,
+      "fat_ampRelease": 0.7,
+      "fat_fltCutoff": 2500.0,
+      "fat_fltReso": 0.65,
+      "fat_fltDrive": 0.85,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.75,
+      "fat_fltEnvAttack": 0.002,
+      "fat_fltEnvDecay": 0.35,
+      "fat_satDrive": 0.88,
+      "fat_crushDepth": 20.0,
+      "fat_crushRate": 44100.0,
+      "fat_level": 0.82,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obese",
+        "type": "AudioToFM",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null
+}

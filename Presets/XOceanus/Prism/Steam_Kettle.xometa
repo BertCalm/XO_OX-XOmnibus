@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Steam Kettle",
+  "name": "Steam Kettle (Overflow) (Alt)",
   "mood": "Prism",
   "engines": [
     "Overflow"

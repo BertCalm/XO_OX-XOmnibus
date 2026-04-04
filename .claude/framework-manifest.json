@@ -1,6 +1,6 @@
 {
   "framework_version": "0.2.0",
-  "project": "XOlokun",
+  "project": "XOceanus",
   "project_type": "synth-engine",
   "primitives": [
     "validate-fix-loop",

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Midnight Fog",
+  "mood": "Atmosphere",
+  "engines": ["Overwash"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.5,
+    "SPACE": 0.82
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.68,
+    "movement": 0.2,
+    "density": 0.18,
+    "space": 0.82,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.18,
+      "wash_viscosity": 0.72,
+      "wash_harmonics": 4,
+      "wash_diffusionTime": 22.0,
+      "wash_spreadMax": 150.0,
+      "wash_brightness": 0.12,
+      "wash_warmth": 0.68,
+      "wash_ampAttack": 3.0,
+      "wash_ampDecay": 2.5,
+      "wash_ampSustain": 0.85,
+      "wash_ampRelease": 14.0,
+      "wash_filterCutoff": 1100.0,
+      "wash_filterRes": 0.08,
+      "wash_filtEnvAmount": 0.16,
+      "wash_lfo1Rate": 0.01,
+      "wash_lfo1Depth": 0.25,
+      "wash_lfo2Rate": 0.006,
+      "wash_lfo2Depth": 0.12,
+      "wash_stereoWidth": 0.82,
+      "wash_level": 0.72
+    }
+  },
+  "tags": ["overwash", "pad", "atmosphere", "dark", "ambient", "fog", "midnight"],
+  "description": "A midnight fog bank rolling in over still water — four harmonics spread wide in the dark air. Viscosity at 0.72 means slow movement, never resolution. Wide stereo in a muted dark sky."
+}

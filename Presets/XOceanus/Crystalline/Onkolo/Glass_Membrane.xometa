@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Glass Membrane",
+  "name": "Glass Membrane (Onkolo)",
   "mood": "Crystalline",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet membrane as glass \u2014 extreme brightness, zero wah, the transparent side of the physical model. Fragile clarity.",
+  "description": "Clavinet membrane as glass — extreme brightness, zero wah, the transparent side of the physical model. Fragile clarity.",
   "tags": [
     "clavinet",
     "glass",

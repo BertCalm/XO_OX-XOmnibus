@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Boom Bap Overload",
+  "mood": "Kinetic",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Berlyne curiosity pushed past 0.7 alien shift — all 5 city chains firing, maximum curiosity loading every transient model simultaneously. Psychology at peak density.",
+  "tags": ["kinetic", "dense", "offering", "boom-bap", "psychology", "overload"],
+  "macroLabels": ["CURIOSITY", "CITY", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.62,
+    "movement": 0.95,
+    "density": 0.93,
+    "space": 0.15,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.92,
+      "ofr_cityChain": 4,
+      "ofr_kickDrive": 0.92,
+      "ofr_snareCrack": 0.88,
+      "ofr_hihatDensity": 0.95,
+      "ofr_percLayer": 0.9,
+      "ofr_transientAttack": 0.001,
+      "ofr_transientDecay": 0.12,
+      "ofr_filterCutoff": 5000.0,
+      "ofr_filterReso": 0.65,
+      "ofr_filterEnvAmt": 0.85,
+      "ofr_attack": 0.001,
+      "ofr_decay": 0.2,
+      "ofr_sustain": 0.3,
+      "ofr_release": 0.25,
+      "ofr_lfo1Rate": 3.0,
+      "ofr_lfo1Depth": 0.78,
+      "ofr_lfo2Rate": 5.0,
+      "ofr_lfo2Depth": 0.72,
+      "ofr_satDrive": 0.88,
+      "ofr_outputLevel": 0.92,
+      "ofr_macroCharacter": 0.88,
+      "ofr_macroMovement": 0.92,
+      "ofr_macroCoupling": 0.45,
+      "ofr_macroSpace": 0.16
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

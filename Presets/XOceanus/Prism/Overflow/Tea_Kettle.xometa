@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tea Kettle",
+  "name": "Tea Kettle (Overflow)",
   "mood": "Prism",
   "engines": [
     "Overflow"

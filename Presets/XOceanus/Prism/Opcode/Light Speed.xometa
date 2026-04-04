@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Light Speed",
+  "name": "Light Speed (Opcode)",
   "mood": "Prism",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum brightness parallel FM \u2014 both operators at full index, ratio 2, filter 20kHz. The speed of light as FM.",
+  "description": "Maximum brightness parallel FM — both operators at full index, ratio 2, filter 20kHz. The speed of light as FM.",
   "tags": [
     "fm",
     "parallel",

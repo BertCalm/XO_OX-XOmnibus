@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Ocean Floor",
+  "name": "Ocean Floor (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Very dark FM pad \u2014 brightness 2500 Hz, ratio 0.7, slow attack. The pressure and silence of the deep ocean floor.",
+  "description": "Very dark FM pad — brightness 2500 Hz, ratio 0.7, slow attack. The pressure and silence of the deep ocean floor.",
   "tags": [
     "fm",
     "ocean",

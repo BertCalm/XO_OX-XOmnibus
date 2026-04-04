@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Osmotic Flood",
+  "mood": "Flux",
+  "engines": ["Osmosis", "Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "External audio membrane at maximum permeability — everything passes through, OBESE multiplies whatever arrives. A dense transformation of all input.",
+  "tags": ["flux", "dense", "osmosis", "obese", "membrane", "flood"],
+  "macroLabels": ["PERMEABILITY", "BELLY", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.72,
+    "movement": 0.9,
+    "density": 0.94,
+    "space": 0.3,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.98,
+      "osmo_envFollow": 0.92,
+      "osmo_pitchDetect": 0.85,
+      "osmo_membraneThickness": 0.12,
+      "osmo_filterCutoff": 6000.0,
+      "osmo_filterReso": 0.65,
+      "osmo_filterEnvAmt": 0.78,
+      "osmo_attack": 0.002,
+      "osmo_decay": 0.5,
+      "osmo_sustain": 0.75,
+      "osmo_release": 0.8,
+      "osmo_lfo1Rate": 1.5,
+      "osmo_lfo1Depth": 0.75,
+      "osmo_lfo2Rate": 2.5,
+      "osmo_lfo2Depth": 0.68,
+      "osmo_outputLevel": 0.85,
+      "osmo_couplingLevel": 0.9,
+      "osmo_macroCharacter": 0.82,
+      "osmo_macroMovement": 0.88,
+      "osmo_macroCoupling": 0.92,
+      "osmo_macroSpace": 0.32
+    },
+    "Obese": {
+      "fat_morph": 0.88,
+      "fat_mojo": 0.85,
+      "fat_subLevel": 0.82,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.88,
+      "fat_detune": 16.0,
+      "fat_stereoWidth": 0.88,
+      "fat_ampAttack": 0.005,
+      "fat_ampDecay": 0.8,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 2500.0,
+      "fat_fltReso": 0.68,
+      "fat_fltDrive": 0.88,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.78,
+      "fat_fltEnvAttack": 0.005,
+      "fat_fltEnvDecay": 0.8,
+      "fat_satDrive": 0.88,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_level": 0.82,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Obese",
+        "type": "AudioToFM",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null
+}

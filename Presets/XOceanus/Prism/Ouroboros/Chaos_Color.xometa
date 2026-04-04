@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Color",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The chaotic attractor creates timbral color shifts as it traverses different regions of phase space. Topology 0 with high theta-phi ratio creates the widest trajectory through harmonic space, each loop touching different spectral colors.",
+  "tags": ["prism", "chaos", "color", "spectral", "attractor", "color-shifting", "movement"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.84,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 0.65,
+      "ouro_chaosIndex": 0.72,
+      "ouro_leash": 0.28,
+      "ouro_theta": 0.82,
+      "ouro_phi": 0.35,
+      "ouro_damping": 0.18,
+      "ouro_injection": 0.65
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.42,
+    "SPACE": 0.48
+  },
+  "coupling": {"pairs": []}
+}

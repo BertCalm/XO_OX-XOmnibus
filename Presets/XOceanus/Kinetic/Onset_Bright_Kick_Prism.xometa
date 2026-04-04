@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Bright Kick Prism",
+  "mood": "Kinetic",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High-toned kick with prismatic click transient.",
+  "tags": [
+    "kick",
+    "bright",
+    "click",
+    "prism",
+    "tonal"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.45,
+    "density": 0.58,
+    "space": 0.25,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.45,
+      "perc_macro_punch": 0.6,
+      "perc_macro_space": 0.25,
+      "perc_macro_mutate": 0.2,
+      "perc_drive": 0.45,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.75,
+      "perc_char_grit": 0.3,
+      "perc_char_warmth": 0.4,
+      "perc_fx_reverb_size": 0.25,
+      "perc_fx_reverb_decay": 0.35,
+      "perc_fx_reverb_mix": 0.2,
+      "perc_fx_delay_time": 0.2,
+      "perc_fx_delay_feedback": 0.12,
+      "perc_fx_delay_mix": 0.05,
+      "perc_fx_lofi_bits": 16,
+      "perc_fx_lofi_mix": 0.0,
+      "perc_xvc_global_amount": 0.1,
+      "perc_xvc_kick_to_snare_filter": 0.12,
+      "perc_xvc_kick_to_tom_pitch": 0.15,
+      "perc_xvc_snare_to_hat_decay": 0.08,
+      "perc_xvc_snare_to_perc_blend": 0.08,
+      "perc_xvc_hat_choke": 0.15
+    }
+  },
+  "macros": {
+    "MACHINE": 0.45,
+    "PUNCH": 0.6,
+    "SPACE": 0.25,
+    "MUTATE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tier": "awakening"
+}

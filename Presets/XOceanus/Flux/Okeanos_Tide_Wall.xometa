@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Okeanos Tide Wall",
+  "mood": "Flux",
+  "engines": ["Okeanos"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Okeanos warmth axis at maximum sweep — tidal transformation from dense gold to dense gold, all harmonic bands active in constant flux. The ocean never empties.",
+  "tags": ["flux", "dense", "okeanos", "tide", "sweep", "wall"],
+  "macroLabels": ["WARMTH", "TIDE", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.88,
+    "movement": 0.88,
+    "density": 0.91,
+    "space": 0.48,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.98,
+      "okan_tidalDepth": 0.95,
+      "okan_tidalRate": 0.08,
+      "okan_harmContent": 0.92,
+      "okan_layerCount": 8,
+      "okan_filterCutoff": 4500.0,
+      "okan_filterReso": 0.65,
+      "okan_filterEnvAmt": 0.78,
+      "okan_attack": 0.025,
+      "okan_decay": 2.0,
+      "okan_sustain": 0.88,
+      "okan_release": 3.5,
+      "okan_lfo1Rate": 0.12,
+      "okan_lfo1Depth": 0.82,
+      "okan_lfo2Rate": 0.08,
+      "okan_lfo2Depth": 0.75,
+      "okan_reverbMix": 0.55,
+      "okan_outputLevel": 0.88,
+      "okan_voices": 8,
+      "okan_macroCharacter": 0.85,
+      "okan_macroMovement": 0.88,
+      "okan_macroCoupling": 0.45,
+      "okan_macroSpace": 0.52
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

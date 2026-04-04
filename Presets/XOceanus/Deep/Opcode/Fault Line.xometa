@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fault Line",
+  "name": "Fault Line (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM pad with very low attack transient \u2014 the slow crack of geological fault. Dark, slow, inevitably heavy.",
+  "description": "FM pad with very low attack transient — the slow crack of geological fault. Dark, slow, inevitably heavy.",
   "tags": [
     "fm",
     "dark",

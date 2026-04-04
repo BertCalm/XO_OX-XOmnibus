@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Acoustic Room",
+  "name": "Acoustic Room (Osmosis)",
   "mood": "Organic",
   "engines": [
     "Osmosis"

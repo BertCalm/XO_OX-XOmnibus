@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Glass Tone",
+  "name": "Glass Tone (Orphica)",
   "mood": "Crystalline",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single pluck stripped to fundamental — no body resonance, no string noise. Pure glass-bowl clarity.",
-  "tags": ["crystalline", "glass", "pluck", "pure", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "glass",
+    "pluck",
+    "pure",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,6 +57,8 @@
       "orph_macroSpace": 0.58
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

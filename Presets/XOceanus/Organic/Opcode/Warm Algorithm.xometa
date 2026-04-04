@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Warm Algorithm",
+  "name": "Warm Algorithm (Opcode) (Alt)",
   "mood": "Organic",
   "engines": [
     "Opcode"

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Glacial Drift",
+  "name": "Glacial Drift (Outlook)",
   "mood": "Ethereal",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Triangle into slow-scan saw \u2014 the ice shelf moving at imperceptible speed. 10-second release fades to white horizon.",
+  "description": "Triangle into slow-scan saw — the ice shelf moving at imperceptible speed. 10-second release fades to white horizon.",
   "tags": [
     "glacial",
     "slow",

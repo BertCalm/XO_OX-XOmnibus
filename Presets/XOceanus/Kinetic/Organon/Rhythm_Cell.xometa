@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Rhythm Cell",
+  "mood": "Kinetic",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Metabolic rate tuned to produce rhythmic output — a high metabolic rate with tight lock-in creates repeating enzyme cycles that function as natural sequencer steps. Signal flux drives the amplitude modulation in sync with the metabolic rhythm.",
+  "tags": ["kinetic", "rhythm", "cell", "biological", "metabolic", "sequenced", "movement"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.81,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.88,
+      "organon_membrane": 0.42,
+      "organon_enzymeSelect": 2200.0,
+      "organon_catalystDrive": 0.72,
+      "organon_isotopeBalance": 0.45,
+      "organon_phasonShift": 0.62,
+      "organon_dampingCoeff": 0.12,
+      "organon_signalFlux": 0.78,
+      "organon_noiseColor": 0.38,
+      "organon_lockIn": 0.55
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.81,
+    "COUPLING": 0.38,
+    "SPACE": 0.28
+  },
+  "coupling": {"pairs": []}
+}

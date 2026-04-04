@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Light Point",
+  "mood": "Luminous",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic's visual modulation at minimum pulse rate — a single photon event per note. Light compressed to a mathematical point.",
+  "tags": ["luminous", "optic", "single-pulse", "pure", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.05,
+    "space": 0.76,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.01,
+      "optic_pulseShape": 0,
+      "optic_pulseWidth": 0.02,
+      "optic_brightness": 0.92,
+      "optic_filterCutoff": 16000.0,
+      "optic_filterReso": 0.03,
+      "optic_filterEnvAmt": 0.16,
+      "optic_attack": 0.001,
+      "optic_decay": 3.0,
+      "optic_sustain": 0.0,
+      "optic_release": 2.5,
+      "optic_lfo1Rate": 0.04,
+      "optic_lfo1Depth": 0.02,
+      "optic_lfo2Rate": 0.02,
+      "optic_lfo2Depth": 0.01,
+      "optic_reverbMix": 0.55,
+      "optic_outputLevel": 0.7,
+      "optic_macroCharacter": 0.16,
+      "optic_macroMovement": 0.06,
+      "optic_macroCoupling": 0.04,
+      "optic_macroSpace": 0.7
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

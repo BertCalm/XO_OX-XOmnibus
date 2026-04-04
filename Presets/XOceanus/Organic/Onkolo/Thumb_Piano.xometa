@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Thumb Piano",
+  "name": "Thumb Piano (Onkolo) (Alt)",
   "mood": "Organic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The clavinet heard as an electronic kalimba \u2014 soft attack, natural decay, neck pickup warmth. African diaspora resonance.",
+  "description": "The clavinet heard as an electronic kalimba — soft attack, natural decay, neck pickup warmth. African diaspora resonance.",
   "tags": [
     "clavinet",
     "kalimba",

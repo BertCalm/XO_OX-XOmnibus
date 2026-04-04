@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Deep Current",
+  "name": "Deep Current (Onkolo)",
   "mood": "Deep",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The D6 as a deep-ocean current \u2014 constant, massive, low-frequency movement. Slow oscillation in the depths.",
+  "description": "The D6 as a deep-ocean current — constant, massive, low-frequency movement. Slow oscillation in the depths.",
   "tags": [
     "clavinet",
     "current",

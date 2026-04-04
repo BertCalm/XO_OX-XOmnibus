@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Ivory Fundamental",
+  "mood": "Luminous",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Grand piano's purest register — string mass near zero, no pedal resonance, only the fundamental speaking. Grand Ivory in its simplest form.",
+  "tags": ["luminous", "piano", "fundamental", "pure", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.12,
+    "movement": 0.05,
+    "density": 0.07,
+    "space": 0.74,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_stringMass": 0.04,
+      "obel_hammerHardness": 0.85,
+      "obel_sustainPedal": 0.0,
+      "obel_pedalResonance": 0.0,
+      "obel_sympatheticLevel": 0.0,
+      "obel_filterCutoff": 14000.0,
+      "obel_filterReso": 0.04,
+      "obel_filterEnvAmt": 0.18,
+      "obel_attack": 0.001,
+      "obel_decay": 4.5,
+      "obel_sustain": 0.05,
+      "obel_release": 4.0,
+      "obel_lfo1Rate": 0.05,
+      "obel_lfo1Depth": 0.02,
+      "obel_lfo2Rate": 0.03,
+      "obel_lfo2Depth": 0.01,
+      "obel_reverbMix": 0.62,
+      "obel_outputLevel": 0.72,
+      "obel_voices": 1,
+      "obel_macroCharacter": 0.18,
+      "obel_macroMovement": 0.07,
+      "obel_macroCoupling": 0.05,
+      "obel_macroSpace": 0.68
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

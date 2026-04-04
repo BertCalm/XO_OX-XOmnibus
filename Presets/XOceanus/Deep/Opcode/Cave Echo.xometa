@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Cave Echo",
+  "name": "Cave Echo (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Dark FM with slow LFO and long release \u2014 the natural reverb of a deep cave in FM form.",
+  "description": "Dark FM with slow LFO and long release — the natural reverb of a deep cave in FM form.",
   "tags": [
     "fm",
     "cave",

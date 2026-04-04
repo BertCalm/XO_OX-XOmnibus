@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Subterranean",
+  "name": "Subterranean (Onkolo)",
   "mood": "Deep",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Underground clavinet frequencies \u2014 heavy low-end, dark filter, mechanical resonance. The D6 in the earth.",
+  "description": "Underground clavinet frequencies — heavy low-end, dark filter, mechanical resonance. The D6 in the earth.",
   "tags": [
     "clavinet",
     "sub",

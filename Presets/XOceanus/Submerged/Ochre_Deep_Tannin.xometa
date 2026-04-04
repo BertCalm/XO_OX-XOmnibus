@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Deep Tannin",
+  "mood": "Submerged",
+  "engines": ["Ochre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.35,
+    "SPACE": 0.5
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.68,
+    "space": 0.5,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.22,
+      "ochre_hardness": 0.65,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.85,
+      "ochre_brightness": 780.0,
+      "ochre_damping": 0.68,
+      "ochre_decay": 5.0,
+      "ochre_caramel": 0.78,
+      "ochre_sympathy": 0.28,
+      "ochre_hfCharacter": 0.04,
+      "ochre_thermalDrift": 0.1,
+      "ochre_filterEnvAmount": 0.42,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.03,
+      "ochre_lfo1Depth": 0.09,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.01,
+      "ochre_lfo2Depth": 0.14,
+      "ochre_lfo2Shape": 2
+    }
+  },
+  "tags": ["ochre", "piano", "submerged", "dark", "tannin", "copper", "deep"],
+  "description": "Copper oxidized to maximum tannin at ocean depth. Body type 2 for upright wooden resonance, HF character near zero. The metallic edge is gone — only the thick warm dark remains."
+}

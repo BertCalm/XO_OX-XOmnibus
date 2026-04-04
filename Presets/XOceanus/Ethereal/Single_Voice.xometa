@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Single Voice",
+  "mood": "Ethereal",
+  "engines": ["Osier"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "One wind voice, barely present — harmonic content removed, only the fundamental breath remains. A ghost exhaling.",
+  "tags": ["ethereal", "single", "wind", "transparent", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.12,
+    "movement": 0.1,
+    "density": 0.06,
+    "space": 0.87,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osier": {
+      "osier_windDensity": 0.05,
+      "osier_reedBrightness": 0.66,
+      "osier_harmonicContent": 0.01,
+      "osier_breathNoise": 0.0,
+      "osier_filterCutoff": 6500.0,
+      "osier_filterReso": 0.06,
+      "osier_filterEnvAmt": 0.21,
+      "osier_attack": 0.55,
+      "osier_decay": 2.5,
+      "osier_sustain": 0.42,
+      "osier_release": 6.0,
+      "osier_lfo1Rate": 0.03,
+      "osier_lfo1Depth": 0.02,
+      "osier_lfo2Rate": 0.02,
+      "osier_lfo2Depth": 0.01,
+      "osier_reverbMix": 0.88,
+      "osier_outputLevel": 0.48,
+      "osier_voices": 1,
+      "osier_macroCharacter": 0.15,
+      "osier_macroMovement": 0.1,
+      "osier_macroCoupling": 0.05,
+      "osier_macroSpace": 0.84
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

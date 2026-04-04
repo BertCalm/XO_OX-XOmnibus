@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Attack",
+  "name": "Crystal Attack (Oven)",
   "mood": "Luminous",
   "engines": [
     "Oven"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The transient is pure crystal \u2014 hard, bright, instant. The sustain is almost inaudible by comparison.",
+  "description": "The transient is pure crystal — hard, bright, instant. The sustain is almost inaudible by comparison.",
   "tags": [
     "piano",
     "crystal",

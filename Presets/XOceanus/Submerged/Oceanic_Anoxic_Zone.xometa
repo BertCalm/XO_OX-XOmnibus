@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Anoxic Zone",
+  "name": "Anoxic Zone (Oceanic)",
   "mood": "Submerged",
   "engines": [
     "Oceanic"

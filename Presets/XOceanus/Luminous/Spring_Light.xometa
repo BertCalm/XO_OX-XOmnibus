@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Spring Light",
+  "mood": "Luminous",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Desert spring at dawn — a single ray breaks through. Oasis with maximum spring depth, minimal harmonic complexity. Desert clarity.",
+  "tags": ["luminous", "oasis", "desert", "pure", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.14,
+    "movement": 0.07,
+    "density": 0.07,
+    "space": 0.73,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_springDepth": 0.92,
+      "oas_sandDrift": 0.02,
+      "oas_heatShimmer": 0.04,
+      "oas_oasisBloom": 0.05,
+      "oas_filterCutoff": 14500.0,
+      "oas_filterReso": 0.04,
+      "oas_filterEnvAmt": 0.18,
+      "oas_attack": 0.08,
+      "oas_decay": 3.5,
+      "oas_sustain": 0.12,
+      "oas_release": 4.5,
+      "oas_lfo1Rate": 0.05,
+      "oas_lfo1Depth": 0.02,
+      "oas_lfo2Rate": 0.03,
+      "oas_lfo2Depth": 0.01,
+      "oas_reverbMix": 0.65,
+      "oas_outputLevel": 0.72,
+      "oas_voices": 1,
+      "oas_macroCharacter": 0.18,
+      "oas_macroMovement": 0.09,
+      "oas_macroCoupling": 0.05,
+      "oas_macroSpace": 0.68
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

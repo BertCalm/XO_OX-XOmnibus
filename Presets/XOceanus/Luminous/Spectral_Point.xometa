@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Point",
+  "mood": "Luminous",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Spectral shift at minimum — Oddfellow reduced to a single luminous frequency point. Fusion copper's purest copper tone.",
+  "tags": ["luminous", "spectral", "oddfellow", "pure", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.13,
+    "movement": 0.06,
+    "density": 0.08,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_spectralShift": 0.02,
+      "oddf_spectralBlur": 0.0,
+      "oddf_harmonicCount": 1,
+      "oddf_filterCutoff": 14000.0,
+      "oddf_filterReso": 0.04,
+      "oddf_filterEnvAmt": 0.17,
+      "oddf_attack": 0.07,
+      "oddf_decay": 3.8,
+      "oddf_sustain": 0.1,
+      "oddf_release": 4.5,
+      "oddf_lfo1Rate": 0.05,
+      "oddf_lfo1Depth": 0.02,
+      "oddf_lfo2Rate": 0.03,
+      "oddf_lfo2Depth": 0.01,
+      "oddf_reverbMix": 0.62,
+      "oddf_outputLevel": 0.72,
+      "oddf_voices": 1,
+      "oddf_macroCharacter": 0.17,
+      "oddf_macroMovement": 0.08,
+      "oddf_macroCoupling": 0.05,
+      "oddf_macroSpace": 0.65
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

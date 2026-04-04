@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Willow Whisper",
+  "mood": "Ethereal",
+  "engines": ["Osier"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Willow silver reed at near-zero density — one barely-audible exhalation through the thinnest possible reed. Pure air.",
+  "tags": ["ethereal", "whisper", "wind", "osier", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.11,
+    "movement": 0.09,
+    "density": 0.05,
+    "space": 0.84,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osier": {
+      "osier_windDensity": 0.03,
+      "osier_reedBrightness": 0.6,
+      "osier_harmonicContent": 0.02,
+      "osier_breathNoise": 0.01,
+      "osier_filterCutoff": 7000.0,
+      "osier_filterReso": 0.05,
+      "osier_filterEnvAmt": 0.18,
+      "osier_attack": 0.4,
+      "osier_decay": 3.0,
+      "osier_sustain": 0.35,
+      "osier_release": 5.0,
+      "osier_lfo1Rate": 0.04,
+      "osier_lfo1Depth": 0.03,
+      "osier_lfo2Rate": 0.02,
+      "osier_lfo2Depth": 0.01,
+      "osier_reverbMix": 0.82,
+      "osier_outputLevel": 0.52,
+      "osier_voices": 1,
+      "osier_macroCharacter": 0.16,
+      "osier_macroMovement": 0.1,
+      "osier_macroCoupling": 0.05,
+      "osier_macroSpace": 0.8
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

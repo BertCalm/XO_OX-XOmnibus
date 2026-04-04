@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Spectral Chord",
+  "name": "Spectral Chord (Opcode)",
   "mood": "Crystalline",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 1 parallel \u2014 both operators at spread ratios creating natural FM chord. Crystalline harmony generator.",
+  "description": "Algorithm 1 parallel — both operators at spread ratios creating natural FM chord. Crystalline harmony generator.",
   "tags": [
     "fm",
     "parallel",

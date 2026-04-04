@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Submerged",
-  "name": "Field Recording",
+  "name": "Field Recording (Oblong)",
   "parameters": {
     "Oblong": {
       "bob_ampAttack": 1.5,

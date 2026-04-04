@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Horizon Silk",
+  "name": "Horizon Silk (Outlook)",
   "mood": "Ethereal",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Gossamer triangle-formant blend. The two oscillators breathe in slow cycles \u2014 one rising, one falling \u2014 creating perpetual silk shimmer.",
+  "description": "Gossamer triangle-formant blend. The two oscillators breathe in slow cycles — one rising, one falling — creating perpetual silk shimmer.",
   "tags": [
     "silk",
     "shimmer",

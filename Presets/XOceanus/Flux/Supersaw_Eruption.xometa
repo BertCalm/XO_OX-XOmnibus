@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Supersaw Eruption",
+  "mood": "Flux",
+  "engines": ["Opensky"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "RISE macro fully engaged — supersaw unison at maximum detuning, shimmer reverb feeding back, chorus width at 100. The sky erupts with dense upward motion.",
+  "tags": ["flux", "dense", "opensky", "supersaw", "shimmer", "eruption"],
+  "macroLabels": ["RISE", "SHIMMER", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.6,
+    "movement": 0.92,
+    "density": 0.91,
+    "space": 0.62,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Opensky": {
+      "sky_macroRise": 0.98,
+      "sky_unisonCount": 8,
+      "sky_unisonDetune": 0.92,
+      "sky_shimmerDepth": 0.95,
+      "sky_shimmerFeedback": 0.88,
+      "sky_chorusWidth": 0.98,
+      "sky_filterCutoff": 6000.0,
+      "sky_filterReso": 0.55,
+      "sky_filterEnvAmt": 0.82,
+      "sky_attack": 0.015,
+      "sky_decay": 1.0,
+      "sky_sustain": 0.88,
+      "sky_release": 3.0,
+      "sky_lfo1Rate": 0.5,
+      "sky_lfo1Depth": 0.72,
+      "sky_lfo2Rate": 0.8,
+      "sky_lfo2Depth": 0.65,
+      "sky_reverbMix": 0.75,
+      "sky_outputLevel": 0.88,
+      "sky_voices": 8,
+      "sky_macroCharacter": 0.88,
+      "sky_macroMovement": 0.92,
+      "sky_macroCoupling": 0.45,
+      "sky_macroSpace": 0.65
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bass Clav",
+  "name": "Bass Clav (Onkolo) (Alt)",
   "mood": "Deep",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet tuned and voiced as a bass instrument \u2014 long decay, heavy low-end, minimal treble. Sub territory.",
+  "description": "Clavinet tuned and voiced as a bass instrument — long decay, heavy low-end, minimal treble. Sub territory.",
   "tags": [
     "clavinet",
     "bass",

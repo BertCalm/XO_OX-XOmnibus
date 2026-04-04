@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Grain Vortex",
+  "mood": "Flux",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High density granular cloud with position scatter driving vortex motion — grains arriving from random positions create a spatial spinning sensation. Pitch scatter kept moderate so the center of mass is still audible while chaos reigns around it.",
+  "tags": ["flux", "grain", "vortex", "granular", "spinning", "scatter", "movement"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.38,
+    "movement": 0.88,
+    "density": 0.88,
+    "space": 0.42,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.08,
+      "opal_density": 0.88,
+      "opal_posScatter": 0.85,
+      "opal_pitchScatter": 0.42,
+      "opal_speed": 0.8,
+      "opal_reverse": 0.0,
+      "opal_filterCutoff": 0.62,
+      "opal_filterReso": 0.35,
+      "opal_ampAttack": 0.12,
+      "opal_ampDecay": 0.45,
+      "opal_ampSustain": 0.88,
+      "opal_ampRelease": 1.5,
+      "opal_macroCharacter": 0.55,
+      "opal_macroMovement": 0.88,
+      "opal_macroCoupling": 0.35,
+      "opal_macroSpace": 0.42
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.35,
+    "SPACE": 0.42
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Slow Bloom",
+  "name": "Slow Bloom (Opcode)",
   "mood": "Flux",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM pad where index increases slowly via LFO \u2014 the sound blooms from clean to complex over 8 seconds.",
+  "description": "FM pad where index increases slowly via LFO — the sound blooms from clean to complex over 8 seconds.",
   "tags": [
     "fm",
     "bloom",

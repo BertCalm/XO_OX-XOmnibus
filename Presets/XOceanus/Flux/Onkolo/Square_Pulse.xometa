@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Square Pulse",
+  "name": "Square Pulse (Onkolo)",
   "mood": "Flux",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Square LFO wah for rhythmic gating \u2014 the filter snaps open and shut in time. Percussive flux character.",
+  "description": "Square LFO wah for rhythmic gating — the filter snaps open and shut in time. Percussive flux character.",
   "tags": [
     "clavinet",
     "square",

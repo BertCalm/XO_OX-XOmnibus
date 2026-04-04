@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Gravity Well",
+  "name": "Gravity Well (Onkolo)",
   "mood": "Deep",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet approaching a gravity well \u2014 progressively darker, longer decay, the pull toward sub-frequency singularity.",
+  "description": "Clavinet approaching a gravity well — progressively darker, longer decay, the pull toward sub-frequency singularity.",
   "tags": [
     "clavinet",
     "gravity",

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Cold Seep (Olate)",
+  "mood": "Submerged",
+  "engines": [
+    "Olate"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.3,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.28,
+      "olate_pulseWidth": 0.48,
+      "olate_cutoff": 1100.0,
+      "olate_resonance": 0.14,
+      "olate_drive": 0.22,
+      "olate_filterEnvAmount": 0.35,
+      "olate_filterAttack": 0.08,
+      "olate_filterDecay": 2.5,
+      "olate_vintage": 0.65,
+      "olate_warmth": 0.88,
+      "olate_terroir": 0.72,
+      "olate_ageRate": 0.18,
+      "olate_attack": 0.04,
+      "olate_decay": 2.5,
+      "olate_sustain": 0.82,
+      "olate_release": 3.5,
+      "olate_glide": 0.12,
+      "olate_gravity": 0.65,
+      "olate_macroCharacter": 0.58,
+      "olate_macroMovement": 0.22,
+      "olate_macroCoupling": 0.3,
+      "olate_macroSpace": 0.48
+    }
+  },
+  "tags": [
+    "olate",
+    "fretless",
+    "submerged",
+    "dark",
+    "cold",
+    "bass",
+    "seep"
+  ],
+  "description": "A cold seep methane plume vented through fretless wood — high terroir brings the earth-chemical smell, warmth 0.88 contradicts the cold temperature. A geological oxymoron as sound."
+}

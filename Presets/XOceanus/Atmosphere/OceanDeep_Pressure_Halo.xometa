@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Pressure Halo",
+  "mood": "Atmosphere",
+  "engines": ["OceanDeep"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macros": {
+    "PRESSURE": 0.65,
+    "CREATURE": 0.15,
+    "WRECK": 0.0,
+    "ABYSS": 0.72
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.68,
+    "movement": 0.2,
+    "density": 0.32,
+    "space": 0.82,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.68,
+      "deep_subOctMix": 0.45,
+      "deep_filterCutoff": 280.0,
+      "deep_filterRes": 0.22,
+      "deep_velCutoffAmt": 0.28,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.1,
+      "deep_bodyMix": 0.25,
+      "deep_bioRate": 0.015,
+      "deep_bioMix": 0.18,
+      "deep_bioBrightness": 220.0,
+      "deep_pressureAmt": 0.65,
+      "deep_ampAtk": 1.5,
+      "deep_ampDec": 3.5,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 6.0,
+      "deep_lfo1Rate": 0.012,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.008,
+      "deep_lfo2Depth": 0.06,
+      "deep_reverbMix": 0.65,
+      "deep_macroPressure": 0.65,
+      "deep_macroCreature": 0.15,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.72
+    }
+  },
+  "tags": ["oceandeep", "atmosphere", "dark", "ambient", "bioluminescent", "halo", "space"],
+  "description": "The halo of bioluminescence around a pressure event — bio exciter at minimum adds organic shimmer all below 220Hz. Wide reverb creates spatial darkness. The light of things that live without sun."
+}

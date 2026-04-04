@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Steam Kettle",
+  "name": "Steam Kettle (Overflow)",
   "mood": "Prism",
-  "engines": ["Overflow"],
+  "engines": [
+    "Overflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Whistle valve type — pressure builds until the high-pitched steam release fires. Morning ritual in sound.",
-  "tags": ["pad", "whistle", "prism", "steam", "ritual"],
-  "macroLabels": ["VESSEL", "PRESSURE", "SENSITIVITY", "RELEASE"],
+  "tags": [
+    "pad",
+    "whistle",
+    "prism",
+    "steam",
+    "ritual"
+  ],
+  "macroLabels": [
+    "VESSEL",
+    "PRESSURE",
+    "SENSITIVITY",
+    "RELEASE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.55, "movement": 0.6, "density": 0.5, "space": 0.6, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.15
+  },
   "parameters": {
     "Overflow": {
       "flow_threshold": 0.6,
@@ -43,7 +63,9 @@
       "flow_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

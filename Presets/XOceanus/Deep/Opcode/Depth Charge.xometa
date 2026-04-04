@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Depth Charge",
+  "name": "Depth Charge (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Explosive FM sub hit \u2014 high index, low ratio, instant attack and long boom decay. Percussion from the deep.",
+  "description": "Explosive FM sub hit — high index, low ratio, instant attack and long boom decay. Percussion from the deep.",
   "tags": [
     "fm",
     "sub",

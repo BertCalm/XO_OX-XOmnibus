@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Abyss Pad",
+  "name": "Abyss Pad (Outlook)",
   "mood": "Deep",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Super-saw deep \u2014 detuned mass at low register, minimum brightness. Impenetrable wall of deep panoramic sound.",
+  "description": "Super-saw deep — detuned mass at low register, minimum brightness. Impenetrable wall of deep panoramic sound.",
   "tags": [
     "abyss",
     "super",

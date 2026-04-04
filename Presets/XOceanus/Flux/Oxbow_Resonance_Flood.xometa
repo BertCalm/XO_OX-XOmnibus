@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Oxbow Resonance Flood",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chiasmus FDN at maximum entanglement — golden resonance at peak, phase erosion cascading. Oxbow teal reverb feedback loop generating dense transforming mass.",
+  "tags": ["flux", "dense", "oxbow", "chiasmus", "reverb", "flood"],
+  "macroLabels": ["ENTANGLE", "EROSION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.72,
+    "movement": 0.88,
+    "density": 0.91,
+    "space": 0.78,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_entangle": 0.98,
+      "oxb_phaseErosion": 0.95,
+      "oxb_goldenResonance": 0.98,
+      "oxb_fdnFeedback": 0.92,
+      "oxb_filterCutoff": 3500.0,
+      "oxb_filterReso": 0.72,
+      "oxb_filterEnvAmt": 0.78,
+      "oxb_attack": 0.02,
+      "oxb_decay": 2.0,
+      "oxb_sustain": 0.85,
+      "oxb_release": 4.0,
+      "oxb_lfo1Rate": 0.3,
+      "oxb_lfo1Depth": 0.82,
+      "oxb_lfo2Rate": 0.5,
+      "oxb_lfo2Depth": 0.75,
+      "oxb_reverbMix": 0.92,
+      "oxb_outputLevel": 0.82,
+      "oxb_voices": 6,
+      "oxb_macroCharacter": 0.85,
+      "oxb_macroMovement": 0.88,
+      "oxb_macroCoupling": 0.45,
+      "oxb_macroSpace": 0.8
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

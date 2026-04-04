@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Fault Line",
+  "name": "Fault Line (Ogre)",
   "mood": "Prism",
-  "engines": ["Ogre"],
+  "engines": [
+    "Ogre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub bass with prismatic body resonance — different frequency bands breaking apart like a fault line. Dark but spectral at the fault edge.",
-  "tags": ["bass", "prism", "sub", "aggressive", "fault"],
-  "macroLabels": ["MASS", "SOIL", "DRIVE", "BODY"],
+  "tags": [
+    "bass",
+    "prism",
+    "sub",
+    "aggressive",
+    "fault"
+  ],
+  "macroLabels": [
+    "MASS",
+    "SOIL",
+    "DRIVE",
+    "BODY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,8 @@
       "ogre_macroBody": 0.72
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

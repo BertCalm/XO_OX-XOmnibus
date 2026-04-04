@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Leaf Breath",
+  "mood": "Ethereal",
+  "engines": ["Oxalis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wood sorrel at its most ephemeral — one barely-audible vibration, then silence. The sound of photosynthesis.",
+  "tags": ["ethereal", "leaf", "transparent", "oxalis", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.1,
+    "movement": 0.1,
+    "density": 0.05,
+    "space": 0.86,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oxalis": {
+      "oxal_leafTension": 0.06,
+      "oxal_leafMass": 0.04,
+      "oxal_stemResonance": 0.03,
+      "oxal_noiseLevel": 0.0,
+      "oxal_filterCutoff": 7500.0,
+      "oxal_filterReso": 0.06,
+      "oxal_filterEnvAmt": 0.2,
+      "oxal_attack": 0.3,
+      "oxal_decay": 5.0,
+      "oxal_sustain": 0.06,
+      "oxal_release": 6.0,
+      "oxal_lfo1Rate": 0.03,
+      "oxal_lfo1Depth": 0.03,
+      "oxal_lfo2Rate": 0.02,
+      "oxal_lfo2Depth": 0.01,
+      "oxal_reverbMix": 0.85,
+      "oxal_outputLevel": 0.5,
+      "oxal_voices": 1,
+      "oxal_macroCharacter": 0.15,
+      "oxal_macroMovement": 0.1,
+      "oxal_macroCoupling": 0.05,
+      "oxal_macroSpace": 0.82
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

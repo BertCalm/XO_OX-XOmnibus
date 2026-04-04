@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drone",
+  "name": "Pressure Drone (Oven)",
   "mood": "Submerged",
   "engines": [
     "Oven"

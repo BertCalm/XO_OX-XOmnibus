@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Sencha Bloom",
+  "name": "Sencha Bloom (Overwash)",
   "mood": "Atmosphere",
   "engines": [
     "Overwash"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slow, warm diffusion. Tea steeping in hot water \u2014 patient, gentle spreading.",
+  "description": "Slow, warm diffusion. Tea steeping in hot water — patient, gentle spreading.",
   "tags": [
     "pad",
     "warm",

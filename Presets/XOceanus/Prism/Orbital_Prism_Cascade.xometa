@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Prism Cascade",
+  "name": "Prism Cascade (Orbital)",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-brightness additive partials cascading through driven filter — each partial at a different rate, creating spectral waterfall effect under pressure.",
-  "tags": ["additive", "prism", "spectral", "aggressive", "cascade"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "additive",
+    "prism",
+    "spectral",
+    "aggressive",
+    "cascade"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,8 @@
       "orb_macroSpace": 0.42
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

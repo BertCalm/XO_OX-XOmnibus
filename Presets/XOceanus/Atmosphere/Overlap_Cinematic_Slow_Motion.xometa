@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Slow Motion",
+  "name": "Slow Motion (Overlap)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"

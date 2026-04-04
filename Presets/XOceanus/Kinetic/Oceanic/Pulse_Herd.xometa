@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Herd",
+  "mood": "Kinetic",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The swarm herd pulsing in synchronized bursts — low scatter keeps them tightly grouped while fast LFO2 creates the collective pulse. Eight sub-flocks each contributing micro-delays to the main rhythm, thickening the groove.",
+  "tags": ["kinetic", "pulse", "herd", "synchronized", "rhythmic", "groove", "movement"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.84,
+    "density": 0.75,
+    "space": 0.3,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_waveform": 0,
+      "ocean_subflocks": 8,
+      "ocean_separation": 0.28,
+      "ocean_cohesion": 0.85,
+      "ocean_alignment": 0.78,
+      "ocean_tether": 0.45,
+      "ocean_scatter": 0.32,
+      "ocean_damping": 0.08,
+      "ocean_lfo1Rate": 1.5,
+      "ocean_lfo1Depth": 0.55,
+      "ocean_lfo1Shape": 2,
+      "ocean_lfo2Rate": 6.0,
+      "ocean_lfo2Depth": 0.68,
+      "ocean_lfo2Shape": 2,
+      "ocean_swarmEnvAttack": 0.003,
+      "ocean_swarmEnvDecay": 0.22,
+      "ocean_swarmEnvSustain": 0.75,
+      "ocean_swarmEnvRelease": 0.35,
+      "ocean_ampAttack": 0.003,
+      "ocean_ampDecay": 0.2,
+      "ocean_ampSustain": 0.78,
+      "ocean_ampRelease": 0.38,
+      "ocean_glide": 0.0,
+      "ocean_voiceMode": 0,
+      "ocean_macroCharacter": 0.58,
+      "ocean_macroMovement": 0.84,
+      "ocean_macroCoupling": 0.4,
+      "ocean_macroSpace": 0.3
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.4,
+    "SPACE": 0.3
+  },
+  "coupling": {"pairs": []}
+}

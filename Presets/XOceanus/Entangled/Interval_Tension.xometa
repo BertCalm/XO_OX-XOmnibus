@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Interval Tension",
+  "name": "Interval Tension (Overflow)",
   "mood": "Entangled",
   "engines": [
     "Overflow"

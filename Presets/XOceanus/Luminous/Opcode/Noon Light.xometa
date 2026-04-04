@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Noon Light",
+  "name": "Noon Light (Opcode)",
   "mood": "Luminous",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Warm FM pad at moderate brightness \u2014 not harsh, not dark. The even light of a clear noon sky.",
+  "description": "Warm FM pad at moderate brightness — not harsh, not dark. The even light of a clear noon sky.",
   "tags": [
     "fm",
     "pad",

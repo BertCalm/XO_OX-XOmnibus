@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Cold Mantle",
+  "mood": "Deep",
+  "engines": ["OceanDeep"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macros": {
+    "PRESSURE": 0.75,
+    "CREATURE": 0.12,
+    "WRECK": 0.0,
+    "ABYSS": 0.95
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.85,
+    "movement": 0.12,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.65,
+      "deep_filterCutoff": 200.0,
+      "deep_filterRes": 0.2,
+      "deep_velCutoffAmt": 0.25,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.12,
+      "deep_bodyMix": 0.28,
+      "deep_bioRate": 0.01,
+      "deep_bioMix": 0.12,
+      "deep_bioBrightness": 200.0,
+      "deep_pressureAmt": 0.75,
+      "deep_ampAtk": 0.5,
+      "deep_ampDec": 4.0,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 6.0,
+      "deep_lfo1Rate": 0.01,
+      "deep_lfo1Depth": 0.08,
+      "deep_lfo2Rate": 0.008,
+      "deep_lfo2Depth": 0.05,
+      "deep_reverbMix": 0.35,
+      "deep_macroPressure": 0.75,
+      "deep_macroCreature": 0.12,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.95
+    }
+  },
+  "tags": ["oceandeep", "ambient", "deep", "cold", "dark", "drone"],
+  "description": "The cold upper mantle beneath the ocean crust — warmth that comes from pressure, not heat. Bio exciter at minimum adds organic texture without brightness."
+}

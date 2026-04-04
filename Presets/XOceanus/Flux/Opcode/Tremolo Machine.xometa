@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Tremolo Machine",
+  "name": "Tremolo Machine (Opcode)",
   "mood": "Flux",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Fast amplitude LFO at 5Hz on a parallel FM tone \u2014 classic tremolo but entirely in FM domain. Rate syncs to groove.",
+  "description": "Fast amplitude LFO at 5Hz on a parallel FM tone — classic tremolo but entirely in FM domain. Rate syncs to groove.",
   "tags": [
     "fm",
     "tremolo",

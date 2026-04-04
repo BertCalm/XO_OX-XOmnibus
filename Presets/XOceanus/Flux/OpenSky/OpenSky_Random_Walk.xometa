@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Random Walk",
+  "name": "Random Walk (OpenSky)",
   "mood": "Flux",
   "engines": [
     "OpenSky"

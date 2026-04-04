@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Street Piano",
+  "name": "Street Piano (Onkolo)",
   "mood": "Organic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Open-air busker clavinet \u2014 outdoor character, natural dynamics, light wah, generous decay. The public instrument.",
+  "description": "Open-air busker clavinet — outdoor character, natural dynamics, light wah, generous decay. The public instrument.",
   "tags": [
     "clavinet",
     "busker",

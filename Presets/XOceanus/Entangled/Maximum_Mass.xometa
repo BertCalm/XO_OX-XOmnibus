@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Maximum Mass",
+  "mood": "Entangled",
+  "engines": ["Obese", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "13 oscillators fully detuned through a strange attractor — OBESE at maximum mojo coupled to OUROBOROS chaos injection. Every frequency band occupied simultaneously.",
+  "tags": ["entangled", "dense", "coupling", "obese", "ouroboros", "chaos"],
+  "macroLabels": ["BELLY", "CHAOS", "COUPLING", "CRUSH"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.75,
+    "movement": 0.88,
+    "density": 0.96,
+    "space": 0.38,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Obese": {
+      "fat_morph": 0.88,
+      "fat_mojo": 0.95,
+      "fat_subLevel": 0.82,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.95,
+      "fat_detune": 22.0,
+      "fat_stereoWidth": 0.95,
+      "fat_ampAttack": 0.002,
+      "fat_ampDecay": 0.4,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 0.6,
+      "fat_fltCutoff": 3500.0,
+      "fat_fltReso": 0.72,
+      "fat_fltDrive": 0.88,
+      "fat_fltKeyTrack": 0.5,
+      "fat_fltEnvAmt": 0.82,
+      "fat_fltEnvAttack": 0.002,
+      "fat_fltEnvDecay": 0.3,
+      "fat_satDrive": 0.92,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_level": 0.88,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 8
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.85,
+      "ouro_chaos": 0.88,
+      "ouro_feedback": 0.78,
+      "ouro_leash": 0.35,
+      "ouro_filterCutoff": 4000.0,
+      "ouro_filterReso": 0.65,
+      "ouro_filterEnvAmt": 0.72,
+      "ouro_attack": 0.003,
+      "ouro_decay": 0.5,
+      "ouro_sustain": 0.68,
+      "ouro_release": 0.8,
+      "ouro_lfo1Rate": 0.8,
+      "ouro_lfo1Depth": 0.72,
+      "ouro_lfo2Rate": 1.2,
+      "ouro_lfo2Depth": 0.65,
+      "ouro_outputLevel": 0.82,
+      "ouro_couplingLevel": 0.88,
+      "ouro_macroCharacter": 0.78,
+      "ouro_macroMovement": 0.85,
+      "ouro_macroCoupling": 0.9,
+      "ouro_macroSpace": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obese",
+        "type": "ChaosInject",
+        "amount": 0.88
+      }
+    ]
+  },
+  "sequencer": null
+}

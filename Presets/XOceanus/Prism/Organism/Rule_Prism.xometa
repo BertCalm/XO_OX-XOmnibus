@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Rule Prism",
+  "mood": "Prism",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 22 creates Pascal's triangle mod 2 — a fractal pattern that generates self-similar spectral colors at each zoom level. The macro RULE sweeps between rules, shifting the spectral color palette. Both LFOs create prismatic spectral animation.",
+  "tags": ["prism", "rule", "fractal", "spectral", "color-shifting", "pascal", "movement"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.38,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 54321,
+      "org_stepRate": 8.0,
+      "org_scope": 5,
+      "org_mutate": 0.03,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 6000.0,
+      "org_filterRes": 0.48,
+      "org_velCutoff": 0.58,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.45,
+      "org_ampSus": 0.68,
+      "org_ampRel": 0.9,
+      "org_lfo1Rate": 0.45,
+      "org_lfo1Depth": 0.55,
+      "org_lfo2Rate": 1.8,
+      "org_lfo2Depth": 0.45,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.62,
+      "org_macroSeed": 0.18,
+      "org_macroCoupling": 0.32,
+      "org_macroMutate": 0.35
+    }
+  },
+  "macros": {
+    "RULE": 0.62,
+    "SEED": 0.18,
+    "COUPLING": 0.32,
+    "MUTATE": 0.35
+  },
+  "coupling": {"pairs": []}
+}

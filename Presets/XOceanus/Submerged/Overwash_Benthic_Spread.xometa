@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Benthic Spread (Overwash)",
+  "mood": "Submerged",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.5,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.75,
+    "movement": 0.14,
+    "density": 0.2,
+    "space": 0.65,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.12,
+      "wash_viscosity": 0.82,
+      "wash_harmonics": 3,
+      "wash_diffusionTime": 30.0,
+      "wash_spreadMax": 90.0,
+      "wash_brightness": 0.07,
+      "wash_warmth": 0.75,
+      "wash_ampAttack": 4.5,
+      "wash_ampDecay": 3.5,
+      "wash_ampSustain": 0.88,
+      "wash_ampRelease": 15.0,
+      "wash_filterCutoff": 750.0,
+      "wash_filterRes": 0.07,
+      "wash_filtEnvAmount": 0.14,
+      "wash_lfo1Rate": 0.008,
+      "wash_lfo1Depth": 0.2,
+      "wash_lfo2Rate": 0.004,
+      "wash_lfo2Depth": 0.1,
+      "wash_stereoWidth": 0.65,
+      "wash_level": 0.75
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "submerged",
+    "dark",
+    "ambient",
+    "benthic",
+    "diffusion"
+  ],
+  "description": "Benthic diffusion: three low harmonics spreading slowly across the ocean floor. Spread max 90Hz means they never rise. The wide stereo field of absolute darkness underwater."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Void Felt",
+  "mood": "Atmosphere",
+  "engines": ["Overworn"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.72
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.18,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.42,
+      "worn_heat": 0.48,
+      "worn_richness": 0.3,
+      "worn_maillard": 0.62,
+      "worn_umamiDepth": 0.78,
+      "worn_concentrate": 0.75,
+      "worn_sessionTarget": 28.0,
+      "worn_filterCutoff": 1700.0,
+      "worn_filterRes": 0.12,
+      "worn_ampAttack": 2.0,
+      "worn_ampSustain": 0.75,
+      "worn_ampRelease": 14.0,
+      "worn_lfo1Rate": 0.02,
+      "worn_lfo1Depth": 0.2,
+      "worn_stereoWidth": 0.72,
+      "worn_level": 0.75
+    }
+  },
+  "tags": ["overworn", "pad", "atmosphere", "dark", "ambient", "void", "minimal"],
+  "description": "Felt reduced into the void — low heat, low richness. The concentrate is high but the umami reads as spatial emptiness rather than weight. Wide stereo field of a room without walls."
+}

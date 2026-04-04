@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Percussion Wall",
+  "mood": "Kinetic",
+  "engines": ["Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All 8 XVC ghost voices firing at maximum noise and attack transient — a wall of percussion energy with no space between events.",
+  "tags": ["kinetic", "dense", "onset", "percussion", "xvc", "wall"],
+  "macroLabels": ["VOICES", "NOISE", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.55,
+    "movement": 0.95,
+    "density": 0.93,
+    "space": 0.18,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Onset": {
+      "perc_noiseLevel": 0.95,
+      "perc_xvcDepth": 0.92,
+      "perc_xvcRate": 0.95,
+      "perc_algorithm": 1,
+      "perc_filterCutoff": 4500.0,
+      "perc_filterReso": 0.65,
+      "perc_filterEnvAmt": 0.88,
+      "perc_attack": 0.001,
+      "perc_decay": 0.15,
+      "perc_sustain": 0.0,
+      "perc_release": 0.2,
+      "perc_lfo1Rate": 4.0,
+      "perc_lfo1Depth": 0.85,
+      "perc_lfo2Rate": 6.0,
+      "perc_lfo2Depth": 0.78,
+      "perc_outputLevel": 0.92,
+      "perc_couplingLevel": 0.3,
+      "perc_macroCharacter": 0.88,
+      "perc_macroMovement": 0.95,
+      "perc_macroCoupling": 0.45,
+      "perc_macroSpace": 0.2
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

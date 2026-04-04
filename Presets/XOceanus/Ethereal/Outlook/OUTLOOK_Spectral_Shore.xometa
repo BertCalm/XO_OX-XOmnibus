@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Spectral Shore",
+  "name": "Spectral Shore (Outlook)",
   "mood": "Ethereal",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Formant pair scanning across the spectral horizon. Vowel resonances shift as notes move up \u2014 the shoreline recedes with altitude.",
+  "description": "Formant pair scanning across the spectral horizon. Vowel resonances shift as notes move up — the shoreline recedes with altitude.",
   "tags": [
     "spectral",
     "formant",

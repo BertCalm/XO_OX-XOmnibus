@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Reduction Depth",
+  "mood": "Submerged",
+  "engines": ["Overworn"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.38
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.78,
+    "movement": 0.1,
+    "density": 0.22,
+    "space": 0.38,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.62,
+      "worn_heat": 0.65,
+      "worn_richness": 0.4,
+      "worn_maillard": 0.72,
+      "worn_umamiDepth": 0.85,
+      "worn_concentrate": 0.88,
+      "worn_sessionTarget": 40.0,
+      "worn_filterCutoff": 1400.0,
+      "worn_filterRes": 0.18,
+      "worn_ampAttack": 1.5,
+      "worn_ampSustain": 0.82,
+      "worn_ampRelease": 10.0,
+      "worn_lfo1Rate": 0.035,
+      "worn_lfo1Depth": 0.16,
+      "worn_stereoWidth": 0.38,
+      "worn_level": 0.82
+    }
+  },
+  "tags": ["overworn", "pad", "submerged", "dark", "warm", "reduction", "depth"],
+  "description": "Reduction continued past the surface until the sound sinks below the light zone. Umami depth at 0.85 adds weight without brightness. The residual warmth after all light has been absorbed."
+}

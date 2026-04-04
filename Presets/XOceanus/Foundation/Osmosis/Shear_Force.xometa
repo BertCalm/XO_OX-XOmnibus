@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Shear Force",
+  "name": "Shear Force (Osmosis)",
   "mood": "Flux",
   "engines": [
     "Osmosis"

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Attack",
+  "name": "Crystal Attack (Outlook)",
   "mood": "Crystalline",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Aggressive crystal texture \u2014 short envelope, maximum attack transient, high resonance. Crystal as weapon.",
+  "description": "Aggressive crystal texture — short envelope, maximum attack transient, high resonance. Crystal as weapon.",
   "tags": [
     "aggressive",
     "attack",

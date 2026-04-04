@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Chaos Engine",
+  "name": "Chaos Engine (Obiont)",
   "mood": "Flux",
   "engines": [
     "Obiont"

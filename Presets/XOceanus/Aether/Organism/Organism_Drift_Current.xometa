@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drift Current",
+  "name": "Drift Current (Organism)",
   "mood": "Aether",
   "engines": [
     "Organism"

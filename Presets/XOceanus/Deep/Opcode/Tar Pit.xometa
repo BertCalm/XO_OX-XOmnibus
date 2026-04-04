@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Tar Pit",
+  "name": "Tar Pit (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Low-end FM with high migration \u2014 the sound slowly shifts below its starting point. Dense like crude oil.",
+  "description": "Low-end FM with high migration — the sound slowly shifts below its starting point. Dense like crude oil.",
   "tags": [
     "fm",
     "sub",

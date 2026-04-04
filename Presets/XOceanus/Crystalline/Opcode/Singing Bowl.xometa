@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Singing Bowl",
+  "name": "Singing Bowl (Opcode)",
   "mood": "Crystalline",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tibetan singing bowl via FM \u2014 ratio 2.76 (inharmonic), slow sustain, long release, slight LFO shimmer. Meditative.",
+  "description": "Tibetan singing bowl via FM — ratio 2.76 (inharmonic), slow sustain, long release, slight LFO shimmer. Meditative.",
   "tags": [
     "fm",
     "bell",

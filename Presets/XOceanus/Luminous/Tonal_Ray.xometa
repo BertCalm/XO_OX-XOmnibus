@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Tonal Ray",
+  "mood": "Luminous",
+  "engines": ["Orphica"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Siren seafoam string plucked in bright light — maximum brightness, zero body resonance. A tonal ray, nothing more.",
+  "tags": ["luminous", "bright", "pluck", "orphica", "sparse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.08,
+    "movement": 0.05,
+    "density": 0.07,
+    "space": 0.7,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_pluckBrightness": 0.91,
+      "orph_bodyResonance": 0.01,
+      "orph_stringDecay": 4.0,
+      "orph_noiseLevel": 0.0,
+      "orph_filterCutoff": 15000.0,
+      "orph_filterReso": 0.04,
+      "orph_filterEnvAmt": 0.17,
+      "orph_attack": 0.001,
+      "orph_decay": 3.8,
+      "orph_sustain": 0.0,
+      "orph_release": 3.5,
+      "orph_lfo1Rate": 0.05,
+      "orph_lfo1Depth": 0.02,
+      "orph_lfo2Rate": 0.03,
+      "orph_lfo2Depth": 0.01,
+      "orph_reverbMix": 0.58,
+      "orph_outputLevel": 0.74,
+      "orph_voices": 1,
+      "orph_macroCharacter": 0.18,
+      "orph_macroMovement": 0.07,
+      "orph_macroCoupling": 0.05,
+      "orph_macroSpace": 0.65
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

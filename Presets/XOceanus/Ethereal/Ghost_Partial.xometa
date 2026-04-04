@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Partial (Overtone)",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A single spectral ghost — continued fraction synthesis at its most transparent. The partial barely exists, more absence than sound.",
+  "tags": [
+    "ethereal",
+    "ghost",
+    "transparent",
+    "sparse",
+    "overtone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.09,
+    "movement": 0.08,
+    "density": 0.05,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_constant": 1,
+      "over_convergent": 1,
+      "over_cfDepth": 0.04,
+      "over_partialCount": 1,
+      "over_partialSpread": 0.0,
+      "over_brightness": 0.72,
+      "over_filterCutoff": 9000.0,
+      "over_filterReso": 0.06,
+      "over_filterEnvAmt": 0.22,
+      "over_attack": 0.5,
+      "over_decay": 5.0,
+      "over_sustain": 0.08,
+      "over_release": 6.0,
+      "over_lfo1Rate": 0.03,
+      "over_lfo1Depth": 0.03,
+      "over_lfo2Rate": 0.02,
+      "over_lfo2Depth": 0.01,
+      "over_reverbMix": 0.8,
+      "over_outputLevel": 0.55,
+      "over_voices": 1,
+      "over_macroCharacter": 0.18,
+      "over_macroMovement": 0.1,
+      "over_macroCoupling": 0.05,
+      "over_macroSpace": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

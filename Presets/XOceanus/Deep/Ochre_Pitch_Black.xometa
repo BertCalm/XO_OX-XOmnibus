@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Pitch Black",
+  "mood": "Deep",
+  "engines": ["Ochre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.35,
+    "SPACE": 0.28
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.75,
+    "space": 0.28,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.18,
+      "ochre_hardness": 0.75,
+      "ochre_bodyType": 3,
+      "ochre_bodyDepth": 0.92,
+      "ochre_brightness": 650.0,
+      "ochre_damping": 0.7,
+      "ochre_decay": 2.5,
+      "ochre_caramel": 0.85,
+      "ochre_sympathy": 0.12,
+      "ochre_hfCharacter": 0.03,
+      "ochre_thermalDrift": 0.08,
+      "ochre_filterEnvAmount": 0.45,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.04,
+      "ochre_lfo1Depth": 0.08,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.018,
+      "ochre_lfo2Depth": 0.12,
+      "ochre_lfo2Shape": 0
+    }
+  },
+  "tags": ["ochre", "piano", "dark", "deep", "bitter", "warm", "copper"],
+  "description": "Copper at maximum caramel saturation, filter at 650Hz, HF character near zero. The note arrives as a dark smear — all body, no treble shimmer whatsoever."
+}

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Forge Strike",
+  "name": "Forge Strike (Opcode)",
   "mood": "Kinetic",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Metallic FM forge hit \u2014 algorithm 2, ratio 3, feedback 0.4. Heavy, industrial, rhythmically precise.",
+  "description": "Metallic FM forge hit — algorithm 2, ratio 3, feedback 0.4. Heavy, industrial, rhythmically precise.",
   "tags": [
     "fm",
     "metallic",

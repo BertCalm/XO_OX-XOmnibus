@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Echolocation Barrage",
+  "mood": "Kinetic",
+  "engines": ["Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Apex predator hunt macro at maximum — wavetable breach energy plus full echolocation density. Every pulse returned, every frequency occupied.",
+  "tags": ["kinetic", "dense", "orca", "echolocation", "hunt", "barrage"],
+  "macroLabels": ["HUNT", "BREACH", "COUPLING", "DEPTH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.94,
+    "density": 0.91,
+    "space": 0.25,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.95,
+      "orca_echoDepth": 0.92,
+      "orca_echoRate": 0.88,
+      "orca_breachEnergy": 0.95,
+      "orca_wavetablePos": 0.5,
+      "orca_filterCutoff": 5500.0,
+      "orca_filterReso": 0.72,
+      "orca_filterEnvAmt": 0.85,
+      "orca_attack": 0.001,
+      "orca_decay": 0.15,
+      "orca_sustain": 0.65,
+      "orca_release": 0.25,
+      "orca_lfo1Rate": 5.0,
+      "orca_lfo1Depth": 0.88,
+      "orca_lfo2Rate": 7.5,
+      "orca_lfo2Depth": 0.82,
+      "orca_reverbMix": 0.2,
+      "orca_outputLevel": 0.92,
+      "orca_voices": 8,
+      "orca_macroCharacter": 0.88,
+      "orca_macroMovement": 0.95,
+      "orca_macroCoupling": 0.45,
+      "orca_macroSpace": 0.26
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

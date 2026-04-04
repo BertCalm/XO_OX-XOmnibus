@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "name": "Reef Density Maximum",
+  "mood": "Entangled",
+  "engines": ["Obrix", "Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reef ecology at symbiote maximum — OBRIX three sources in symbiosis with OCEANIC particle field. Harmonic Field prime limit 7, every just ratio occupied.",
+  "tags": ["entangled", "dense", "obrix", "oceanic", "reef", "symbiosis"],
+  "macroLabels": ["REEF", "PARTICLES", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.7,
+    "movement": 0.88,
+    "density": 0.96,
+    "space": 0.4,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_src1Type": 2,
+      "obrix_src2Type": 3,
+      "obrix_src1Level": 0.92,
+      "obrix_src2Level": 0.88,
+      "obrix_fmDepth": 0.85,
+      "obrix_fieldStrength": 0.9,
+      "obrix_fieldPolarity": 1,
+      "obrix_fieldRate": 0.5,
+      "obrix_fieldPrimeLimit": 2,
+      "obrix_reefResident": 2,
+      "obrix_residentStrength": 0.88,
+      "obrix_competitionStrength": 0.0,
+      "obrix_symbiosisStrength": 0.92,
+      "obrix_envTemp": 0.75,
+      "obrix_envPressure": 0.82,
+      "obrix_envCurrent": 0.68,
+      "obrix_envTurbidity": 0.72,
+      "obrix_stressDecay": 0.5,
+      "obrix_bleachRate": 0.3,
+      "obrix_filterCutoff": 3500.0,
+      "obrix_filterReso": 0.7,
+      "obrix_filterEnvAmt": 0.78,
+      "obrix_attack": 0.003,
+      "obrix_decay": 0.5,
+      "obrix_sustain": 0.72,
+      "obrix_release": 0.8,
+      "obrix_outputLevel": 0.85,
+      "obrix_macroCharacter": 0.82,
+      "obrix_macroMovement": 0.88,
+      "obrix_macroCoupling": 0.9,
+      "obrix_macroSpace": 0.42
+    },
+    "Oceanic": {
+      "ocean_separation": 0.9,
+      "ocean_particleDensity": 0.95,
+      "ocean_chromatophore": 0.88,
+      "ocean_depth": 0.82,
+      "ocean_filterCutoff": 2800.0,
+      "ocean_filterReso": 0.62,
+      "ocean_filterEnvAmt": 0.72,
+      "ocean_attack": 0.002,
+      "ocean_decay": 0.6,
+      "ocean_sustain": 0.7,
+      "ocean_release": 0.85,
+      "ocean_lfo1Rate": 1.2,
+      "ocean_lfo1Depth": 0.78,
+      "ocean_lfo2Rate": 1.8,
+      "ocean_lfo2Depth": 0.72,
+      "ocean_reverbMix": 0.38,
+      "ocean_outputLevel": 0.82,
+      "ocean_voices": 8,
+      "ocean_macroCharacter": 0.78,
+      "ocean_macroMovement": 0.85,
+      "ocean_macroCoupling": 0.88,
+      "ocean_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obrix",
+        "engineB": "Oceanic",
+        "type": "AudioToFM",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null
+}

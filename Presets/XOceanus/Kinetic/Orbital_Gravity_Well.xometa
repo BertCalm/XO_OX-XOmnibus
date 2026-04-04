@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Gravity Well",
+  "name": "Gravity Well (Orbital) (Alt)",
   "mood": "Kinetic",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dark additive partials collapsing inward — group envelope rate extreme, filter resonance pulling harmonics down into the well.",
-  "tags": ["additive", "kinetic", "dark", "aggressive", "gravity"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "additive",
+    "kinetic",
+    "dark",
+    "aggressive",
+    "gravity"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,8 @@
       "orb_macroSpace": 0.12
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

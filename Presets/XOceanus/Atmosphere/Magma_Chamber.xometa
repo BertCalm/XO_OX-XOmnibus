@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Magma Chamber",
+  "name": "Magma Chamber (Organon)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.8,

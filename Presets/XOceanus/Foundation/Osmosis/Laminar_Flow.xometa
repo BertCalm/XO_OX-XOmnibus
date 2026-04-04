@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Laminar Flow",
+  "name": "Laminar Flow (Osmosis)",
   "mood": "Foundation",
   "engines": [
     "Osmosis"

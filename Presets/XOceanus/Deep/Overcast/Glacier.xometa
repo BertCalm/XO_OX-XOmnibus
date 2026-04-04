@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Glacier",
+  "name": "Glacier (Overcast) (Alt)",
   "mood": "Deep",
-  "engines": ["Overcast"],
+  "engines": [
+    "Overcast"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Massive crystal formation — large crystal size, many peaks, slow freeze. Ancient frozen harmonics moving imperceptibly.",
-  "tags": ["pad", "deep", "massive", "slow", "glacier"],
-  "macroLabels": ["PURITY", "CRACKLE", "LATTICE", "FROST"],
+  "tags": [
+    "pad",
+    "deep",
+    "massive",
+    "slow",
+    "glacier"
+  ],
+  "macroLabels": [
+    "PURITY",
+    "CRACKLE",
+    "LATTICE",
+    "FROST"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.35, "movement": 0.05, "density": 0.5, "space": 0.85, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.35,
+    "movement": 0.05,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overcast": {
       "cast_freezeRate": 0.05,
@@ -39,7 +59,9 @@
       "cast_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

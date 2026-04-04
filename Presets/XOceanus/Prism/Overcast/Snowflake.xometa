@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Snowflake",
+  "name": "Snowflake (Overcast)",
   "mood": "Prism",
   "engines": [
     "Overcast"

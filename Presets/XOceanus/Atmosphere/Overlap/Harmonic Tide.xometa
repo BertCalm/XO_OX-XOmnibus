@@ -24,7 +24,7 @@
     "BLOOM"
   ],
   "mood": "Atmosphere",
-  "name": "Harmonic Tide",
+  "name": "Harmonic Tide (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 1,

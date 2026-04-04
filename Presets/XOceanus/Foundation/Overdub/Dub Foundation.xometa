@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Dub Foundation",
+  "name": "Dub Foundation (Overdub)",
   "parameters": {
     "Overdub": {
       "dub_attack": 0.005,

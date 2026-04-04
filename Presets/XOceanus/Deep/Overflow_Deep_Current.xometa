@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Deep Current (Overflow)",
+  "mood": "Deep",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.5,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.75,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.48,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.68,
+      "flow_accumRate": 0.22,
+      "flow_valveType": 1,
+      "flow_vesselSize": 0.72,
+      "flow_strainColor": 0.55,
+      "flow_releaseTime": 0.45,
+      "flow_ampAttack": 0.5,
+      "flow_ampDecay": 2.0,
+      "flow_ampSustain": 0.92,
+      "flow_ampRelease": 6.0,
+      "flow_filterCutoff": 1200.0,
+      "flow_filterRes": 0.18,
+      "flow_filtEnvAmount": 0.32,
+      "flow_lfo1Rate": 0.018,
+      "flow_lfo1Depth": 0.22,
+      "flow_stereoWidth": 0.48,
+      "flow_level": 0.82
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "dark",
+    "ambient",
+    "deep",
+    "current",
+    "slow"
+  ],
+  "description": "Thermohaline circulation: a deep current that moves on geological timescales. High threshold means it rarely overflows, but when it does, the straining is warm and slow."
+}

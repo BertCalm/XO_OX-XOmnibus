@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Corpus Maximum",
+  "mood": "Entangled",
+  "engines": ["Onset", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All 8 XVC ghost voices activated across both engines — ONSET's complete voice architecture entangled with OUROBOROS chaos at full leash release. Maximum cross-voice coupling.",
+  "tags": ["entangled", "dense", "onset", "ouroboros", "xvc", "ghost"],
+  "macroLabels": ["VOICES", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.93,
+    "density": 0.95,
+    "space": 0.42,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Onset": {
+      "perc_noiseLevel": 0.88,
+      "perc_xvcDepth": 0.95,
+      "perc_xvcRate": 0.92,
+      "perc_algorithm": 1,
+      "perc_filterCutoff": 3800.0,
+      "perc_filterReso": 0.68,
+      "perc_filterEnvAmt": 0.78,
+      "perc_attack": 0.001,
+      "perc_decay": 0.5,
+      "perc_sustain": 0.68,
+      "perc_release": 0.82,
+      "perc_lfo1Rate": 1.8,
+      "perc_lfo1Depth": 0.82,
+      "perc_lfo2Rate": 2.5,
+      "perc_lfo2Depth": 0.75,
+      "perc_outputLevel": 0.88,
+      "perc_couplingLevel": 0.92,
+      "perc_macroCharacter": 0.85,
+      "perc_macroMovement": 0.9,
+      "perc_macroCoupling": 0.92,
+      "perc_macroSpace": 0.44
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.88,
+      "ouro_chaos": 0.9,
+      "ouro_feedback": 0.82,
+      "ouro_leash": 0.12,
+      "ouro_filterCutoff": 4200.0,
+      "ouro_filterReso": 0.7,
+      "ouro_filterEnvAmt": 0.82,
+      "ouro_attack": 0.002,
+      "ouro_decay": 0.55,
+      "ouro_sustain": 0.7,
+      "ouro_release": 0.88,
+      "ouro_lfo1Rate": 1.5,
+      "ouro_lfo1Depth": 0.85,
+      "ouro_lfo2Rate": 2.2,
+      "ouro_lfo2Depth": 0.78,
+      "ouro_outputLevel": 0.85,
+      "ouro_couplingLevel": 0.9,
+      "ouro_macroCharacter": 0.82,
+      "ouro_macroMovement": 0.88,
+      "ouro_macroCoupling": 0.92,
+      "ouro_macroSpace": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "VelocityCoupling",
+        "amount": 0.9
+      }
+    ]
+  },
+  "sequencer": null
+}

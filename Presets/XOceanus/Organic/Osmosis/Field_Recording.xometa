@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Field Recording",
+  "name": "Field Recording (Osmosis)",
   "mood": "Organic",
   "engines": [
     "Osmosis"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Designed for raw field recordings and environmental audio: wind, water, insects, traffic. Very low selectivity broadens the analysis band to capture the full spectral mass of complex natural soundscapes. Slow reactivity and long memory extract large-scale amplitude movement \u2014 the way a forest swells in wind or a rain shower peaks and decays.",
+  "description": "Designed for raw field recordings and environmental audio: wind, water, insects, traffic. Very low selectivity broadens the analysis band to capture the full spectral mass of complex natural soundscapes. Slow reactivity and long memory extract large-scale amplitude movement — the way a forest swells in wind or a rain shower peaks and decays.",
   "tags": [
     "organic",
     "field-recording",

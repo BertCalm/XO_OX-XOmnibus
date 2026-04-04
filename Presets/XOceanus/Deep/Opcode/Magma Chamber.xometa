@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Magma Chamber",
+  "name": "Magma Chamber (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM feedback with very low ratio 0.5 \u2014 the seismic low of a magma chamber. Slow-moving, dense, ancient.",
+  "description": "FM feedback with very low ratio 0.5 — the seismic low of a magma chamber. Slow-moving, dense, ancient.",
   "tags": [
     "fm",
     "magma",

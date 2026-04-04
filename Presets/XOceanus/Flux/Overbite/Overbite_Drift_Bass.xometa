@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Detuned drifting bass with random LFO pitch modulation \u2014 unstable like an opossum in daylight.",
+  "description": "Detuned drifting bass with random LFO pitch modulation — unstable like an opossum in daylight.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.45,
@@ -30,7 +30,7 @@
     "TRASH": 0.2
   },
   "mood": "Flux",
-  "name": "Drift Bass",
+  "name": "Drift Bass (Overbite)",
   "parameters": {
     "Overbite": {
       "poss_ampAttack": 0.01,

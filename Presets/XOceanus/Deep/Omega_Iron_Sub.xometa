@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Iron Sub",
+  "mood": "Deep",
+  "engines": ["Omega"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.38,
+    "SPACE": 0.22
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.85,
+    "movement": 0.08,
+    "density": 0.92,
+    "space": 0.22,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 2,
+      "omega_ratio": 1.0,
+      "omega_modIndex": 1.5,
+      "omega_feedback": 0.15,
+      "omega_purity": 0.95,
+      "omega_distillRate": 0.1,
+      "omega_brightness": 450.0,
+      "omega_filterEnvAmount": 0.25,
+      "omega_filterAttack": 0.12,
+      "omega_filterDecay": 2.5,
+      "omega_attack": 0.015,
+      "omega_decay": 4.0,
+      "omega_sustain": 0.92,
+      "omega_release": 3.5,
+      "omega_glide": 0.0,
+      "omega_gravity": 0.88,
+      "omega_lfo1Rate": 0.005,
+      "omega_lfo1Depth": 0.12,
+      "omega_lfo2Rate": 0.01,
+      "omega_lfo2Depth": 0.05,
+      "omega_macroCharacter": 0.62,
+      "omega_macroMovement": 0.1,
+      "omega_macroCoupling": 0.38,
+      "omega_macroSpace": 0.22
+    }
+  },
+  "tags": ["omega", "bass", "sub", "deep", "dark", "iron", "fm"],
+  "description": "Maximum purity FM — ratio 1:1 with low mod index for near-sinusoidal character. Filter at 450Hz. The synth bass you feel in your chest, not your ears."
+}

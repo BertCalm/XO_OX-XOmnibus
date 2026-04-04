@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Foundation",
-  "name": "Acoustic Room",
+  "name": "Acoustic Room (Onset)",
   "parameters": {
     "Onset": {
       "perc_drive": 0.12,

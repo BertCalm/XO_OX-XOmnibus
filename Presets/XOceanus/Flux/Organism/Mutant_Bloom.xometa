@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Mutant Bloom",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 110 (universal computation) with moderate mutation rate — the cellular automaton evolves slowly enough to track but fast enough to feel alive. Step rate at 10Hz means 10 generational changes per second. Both LFOs shaping filter and amplitude in biological rhythm.",
+  "tags": ["flux", "mutant", "bloom", "cellular", "automaton", "evolving", "movement"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.84,
+    "density": 0.58,
+    "space": 0.32,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 7654,
+      "org_stepRate": 10.0,
+      "org_scope": 5,
+      "org_mutate": 0.04,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.25,
+      "org_filterCutoff": 4200.0,
+      "org_filterRes": 0.45,
+      "org_velCutoff": 0.6,
+      "org_ampAtk": 0.02,
+      "org_ampDec": 0.4,
+      "org_ampSus": 0.65,
+      "org_ampRel": 0.8,
+      "org_lfo1Rate": 1.8,
+      "org_lfo1Depth": 0.52,
+      "org_lfo2Rate": 0.35,
+      "org_lfo2Depth": 0.42,
+      "org_reverbMix": 0.22,
+      "org_macroRule": 0.55,
+      "org_macroSeed": 0.2,
+      "org_macroCoupling": 0.35,
+      "org_macroMutate": 0.4
+    }
+  },
+  "macros": {
+    "RULE": 0.55,
+    "SEED": 0.2,
+    "COUPLING": 0.35,
+    "MUTATE": 0.4
+  },
+  "coupling": {"pairs": []}
+}

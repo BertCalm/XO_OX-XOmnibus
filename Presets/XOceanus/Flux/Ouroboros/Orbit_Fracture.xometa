@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Orbit Fracture",
+  "mood": "Flux",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Topology 3 with maximum chaos — the orbit fractures into multiple competing attractors. Injection drives the system through rapid state changes while damping prevents total collapse. The leash catches it at the last moment.",
+  "tags": ["flux", "orbit", "fracture", "chaos", "attractor", "movement", "breaking"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.93,
+    "density": 0.62,
+    "space": 0.4,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 3,
+      "ouro_rate": 0.95,
+      "ouro_chaosIndex": 0.92,
+      "ouro_leash": 0.18,
+      "ouro_theta": 0.65,
+      "ouro_phi": 0.72,
+      "ouro_damping": 0.1,
+      "ouro_injection": 0.95
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.5,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []}
+}

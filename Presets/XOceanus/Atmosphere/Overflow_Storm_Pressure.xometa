@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Storm Pressure",
+  "mood": "Atmosphere",
+  "engines": ["Overflow"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.5,
+    "SPACE": 0.82
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.28,
+    "space": 0.82,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.52,
+      "flow_accumRate": 0.42,
+      "flow_valveType": 1,
+      "flow_vesselSize": 0.78,
+      "flow_strainColor": 0.35,
+      "flow_releaseTime": 0.85,
+      "flow_ampAttack": 0.8,
+      "flow_ampDecay": 1.5,
+      "flow_ampSustain": 0.78,
+      "flow_ampRelease": 10.0,
+      "flow_filterCutoff": 1500.0,
+      "flow_filterRes": 0.12,
+      "flow_filtEnvAmount": 0.28,
+      "flow_lfo1Rate": 0.03,
+      "flow_lfo1Depth": 0.32,
+      "flow_stereoWidth": 0.82,
+      "flow_level": 0.78
+    }
+  },
+  "tags": ["overflow", "pad", "atmosphere", "dark", "ambient", "storm", "pressure"],
+  "description": "Atmospheric low pressure before a storm — threshold lower, more frequent overflows, wide stereo occupies the whole dark sky. The vessel is the air; the strain is the pressure drop. Filter at 1500Hz."
+}

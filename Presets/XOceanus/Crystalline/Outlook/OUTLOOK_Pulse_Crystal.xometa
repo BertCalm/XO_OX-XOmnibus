@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pulse Crystal",
+  "name": "Pulse Crystal (Outlook)",
   "mood": "Crystalline",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Pulse at narrow width via high scan \u2014 thin, crystalline strike. Fast attack creates percussive crystalline hits.",
+  "description": "Pulse at narrow width via high scan — thin, crystalline strike. Fast attack creates percussive crystalline hits.",
   "tags": [
     "pulse",
     "narrow",

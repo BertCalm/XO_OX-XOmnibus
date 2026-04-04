@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift Bass",
+  "name": "Drift Bass (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM bass voice \u2014 algorithm 0, ratio 1:1, bright filter closed for sub emphasis. Drifts below the chord.",
+  "description": "FM bass voice — algorithm 0, ratio 1:1, bright filter closed for sub emphasis. Drifts below the chord.",
   "tags": [
     "fm",
     "bass",

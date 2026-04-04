@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tar Seep",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.35,
+    "SPACE": 0.12
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.95,
+    "movement": 0.04,
+    "density": 0.96,
+    "space": 0.1,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.3,
+      "ogre_drive": 0.68,
+      "ogre_rootDepth": 1.0,
+      "ogre_bodyResonance": 0.05,
+      "ogre_brightness": 150.0,
+      "ogre_density": 1.0,
+      "ogre_soil": 0.9,
+      "ogre_tectonicRate": 0.001,
+      "ogre_tectonicDepth": 0.55,
+      "ogre_attack": 0.25,
+      "ogre_decay": 6.0,
+      "ogre_sustain": 0.95,
+      "ogre_release": 4.0,
+      "ogre_filterEnvAmount": 0.15,
+      "ogre_glide": 0.08,
+      "ogre_gravity": 1.0,
+      "ogre_macroCharacter": 0.9,
+      "ogre_macroMovement": 0.05,
+      "ogre_macroCoupling": 0.35,
+      "ogre_macroSpace": 0.12
+    }
+  },
+  "tags": ["ogre", "sub", "deep", "dark", "drone", "viscous", "tar"],
+  "description": "Cold tar slowly seeping from the seafloor: maximum gravity, maximum drive, filter at 150Hz. The slowest tectonic rate — 0.001Hz means one full cycle per 17 minutes."
+}

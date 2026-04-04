@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Silt Slide",
+  "mood": "Deep",
+  "engines": ["Olate"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.22,
+    "SPACE": 0.38
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.9,
+    "movement": 0.25,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.45,
+      "olate_pulseWidth": 0.38,
+      "olate_cutoff": 650.0,
+      "olate_resonance": 0.1,
+      "olate_drive": 0.28,
+      "olate_filterEnvAmount": 0.52,
+      "olate_filterAttack": 0.12,
+      "olate_filterDecay": 1.8,
+      "olate_vintage": 0.85,
+      "olate_warmth": 0.95,
+      "olate_terroir": 0.45,
+      "olate_ageRate": 0.35,
+      "olate_attack": 0.005,
+      "olate_decay": 1.2,
+      "olate_sustain": 0.78,
+      "olate_release": 1.8,
+      "olate_glide": 0.18,
+      "olate_gravity": 0.82,
+      "olate_macroCharacter": 0.65,
+      "olate_macroMovement": 0.32,
+      "olate_macroCoupling": 0.22,
+      "olate_macroSpace": 0.38
+    }
+  },
+  "tags": ["olate", "fretless", "bass", "dark", "deep", "glide", "slide"],
+  "description": "Fretless slide through deep silt — glide at 0.18 creates long intonation paths between notes. Filter at 650Hz with maximum warmth. Every note arrives as a gravity-pulled fall."
+}

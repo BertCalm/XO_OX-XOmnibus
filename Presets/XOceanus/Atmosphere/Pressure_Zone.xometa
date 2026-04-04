@@ -29,7 +29,7 @@
     "FILTER"
   ],
   "mood": "Atmosphere",
-  "name": "Pressure Zone",
+  "name": "Pressure Zone (Oblique)",
   "parameters": {
     "Oblique": {
       "oblq_attack": 0.4,

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Field Recording",
+  "name": "Field Recording (Onkolo)",
   "mood": "Organic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet like a field recording of an acoustic instrument \u2014 honest, unprocessed character, natural dynamics.",
+  "description": "Clavinet like a field recording of an acoustic instrument — honest, unprocessed character, natural dynamics.",
   "tags": [
     "clavinet",
     "field-recording",

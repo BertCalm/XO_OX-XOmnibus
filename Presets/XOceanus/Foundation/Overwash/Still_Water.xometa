@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Still Water",
+  "name": "Still Water (Overwash)",
   "mood": "Foundation",
   "engines": [
     "Overwash"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Minimal diffusion \u2014 almost frozen. Water so still you can see the bottom.",
+  "description": "Minimal diffusion — almost frozen. Water so still you can see the bottom.",
   "tags": [
     "pad",
     "minimal",

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Midnight Felt",
+  "mood": "Deep",
+  "engines": ["Overworn"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.22
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.88,
+    "movement": 0.08,
+    "density": 0.2,
+    "space": 0.15,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.75,
+      "worn_heat": 0.72,
+      "worn_richness": 0.35,
+      "worn_maillard": 0.88,
+      "worn_umamiDepth": 0.92,
+      "worn_concentrate": 0.95,
+      "worn_sessionTarget": 50.0,
+      "worn_filterCutoff": 1100.0,
+      "worn_filterRes": 0.15,
+      "worn_ampAttack": 0.8,
+      "worn_ampSustain": 0.88,
+      "worn_ampRelease": 12.0,
+      "worn_lfo1Rate": 0.025,
+      "worn_lfo1Depth": 0.18,
+      "worn_stereoWidth": 0.22,
+      "worn_level": 0.88
+    }
+  },
+  "tags": ["overworn", "pad", "dark", "warm", "deep", "felt", "reduction"],
+  "description": "Felt reduced past the point of recognition. Maximum concentrate and umami depth: everything that was not fundamental has been removed. What remains is dark, warm, and aged."
+}

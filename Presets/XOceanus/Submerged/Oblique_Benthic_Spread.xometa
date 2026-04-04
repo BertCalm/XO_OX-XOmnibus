@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Benthic Spread",
+  "name": "Benthic Spread (Oblique)",
   "mood": "Submerged",
   "engines": [
     "Oblique"

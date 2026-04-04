@@ -7,20 +7,26 @@
 //  XO_OX Designs | XOceanus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
-//      XOasis is an entropy-driven bioluminescent ecosystem. It actively
-//      monitors the player's rhythmic and harmonic slop, dynamically shifting
-//      from rigid sub-bass to shimmering biophonic granular swarms. Perfect
-//      sequencing starves the ecosystem; human slop feeds it. The engine
-//      lives between the grid and the garden.
+//      XOasis is a Rhodes physical model shaped by the ancient Spice Routes —
+//      the trade corridors where East met West and every encounter left a trace.
+//      Entropy is the engine's cultural sensor: it measures the player's rhythmic
+//      and harmonic deviations from the grid, reading human slop the way a
+//      seasoned merchant reads a market — as signal, not noise. Perfect playing
+//      produces the clean, glassy tine of a well-maintained instrument; imperfect
+//      playing splinters partials into the delay network, warming the tone the
+//      way a long journey ages a traveler. The engine lives at the crossroads:
+//      between the grid and the groove, between arrival and drift.
 //
 //  ENGINE CONCEPT:
-//      Hybrid architecture: subtractive sub-bass oscillator feeds a resonator
-//      bank and a granular canopy delay network. An entropy analyzer measures
-//      timing deviations from expected MIDI patterns. High entropy splinters
-//      sub-bass partials into the delay network (Mycelial Morphing). Voice
-//      stealing dumps harmonic energy into an ASMR noise floor (Harmonic
-//      Culling). Ecological Memory means the ecosystem evolves — perfect
-//      playing makes it rigid, imperfect playing makes it bloom.
+//      Hybrid Rhodes architecture: a tine physical model (OasisRhodesToneGenerator,
+//      Paspaliaris 2015 stretched-partial ratios) feeds a resonator bank and a
+//      granular canopy delay network. An entropy analyzer measures timing
+//      deviations from expected MIDI patterns. High entropy splinters tine
+//      partials into the delay network (Spice Drift). Voice stealing dumps
+//      harmonic energy into a warm noise floor (Route Fade). Migration Memory
+//      means the instrument evolves with the player — precise playing keeps the
+//      tone crystalline, drifting playing lets it bloom with Route-accumulated
+//      texture.
 //
 //  Accent: Desert Spring Teal #00827F
 //  Parameter prefix: oas_

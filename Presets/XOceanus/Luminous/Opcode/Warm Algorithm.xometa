@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Warm Algorithm",
+  "name": "Warm Algorithm (Opcode)",
   "mood": "Luminous",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 1 parallel at low index \u2014 both operators add gently, creating a warm, rounded pad character.",
+  "description": "Algorithm 1 parallel at low index — both operators add gently, creating a warm, rounded pad character.",
   "tags": [
     "fm",
     "warm",

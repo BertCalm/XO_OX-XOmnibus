@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Field Recording",
+  "name": "Field Recording (Outlook)",
   "mood": "Organic",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Sine-noise blend \u2014 minimal noise component adds presence without texture. Suggests recording artifacts without replicating them.",
+  "description": "Sine-noise blend — minimal noise component adds presence without texture. Suggests recording artifacts without replicating them.",
   "tags": [
     "field",
     "noise",

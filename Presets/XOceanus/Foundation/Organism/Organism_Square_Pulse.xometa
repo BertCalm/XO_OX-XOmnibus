@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Square Pulse",
+  "name": "Square Pulse (Organism)",
   "mood": "Foundation",
   "engines": [
     "Organism"

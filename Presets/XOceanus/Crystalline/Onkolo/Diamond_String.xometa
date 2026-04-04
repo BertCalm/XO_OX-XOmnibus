@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Diamond String",
+  "name": "Diamond String (Onkolo)",
   "mood": "Crystalline",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet string made of diamond \u2014 maximum hardness, maximum brightness, the hardest possible articulation. Crystalline perfection.",
+  "description": "Clavinet string made of diamond — maximum hardness, maximum brightness, the hardest possible articulation. Crystalline perfection.",
   "tags": [
     "clavinet",
     "diamond",

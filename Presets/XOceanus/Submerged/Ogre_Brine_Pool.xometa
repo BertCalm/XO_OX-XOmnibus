@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Brine Pool (Ogre)",
+  "mood": "Submerged",
+  "engines": [
+    "Ogre"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.38,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.85,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.08,
+      "ogre_drive": 0.22,
+      "ogre_rootDepth": 1.0,
+      "ogre_bodyResonance": 0.08,
+      "ogre_brightness": 220.0,
+      "ogre_density": 0.92,
+      "ogre_soil": 0.65,
+      "ogre_tectonicRate": 0.004,
+      "ogre_tectonicDepth": 0.45,
+      "ogre_attack": 0.35,
+      "ogre_decay": 8.0,
+      "ogre_sustain": 0.98,
+      "ogre_release": 5.0,
+      "ogre_filterEnvAmount": 0.12,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.92,
+      "ogre_macroCharacter": 0.68,
+      "ogre_macroMovement": 0.12,
+      "ogre_macroCoupling": 0.38,
+      "ogre_macroSpace": 0.45
+    }
+  },
+  "tags": [
+    "ogre",
+    "sub",
+    "submerged",
+    "dark",
+    "pool",
+    "drone",
+    "deep"
+  ],
+  "description": "A hypersaline brine lake on the ocean floor — heavier than the surrounding water, a lake within the sea. Filter at 220Hz, slow attack into near-infinite sustain. The sub-bass lake that doesn't mix."
+}

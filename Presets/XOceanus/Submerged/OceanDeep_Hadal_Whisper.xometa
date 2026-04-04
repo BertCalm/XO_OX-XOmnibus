@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Hadal Whisper (OceanDeep)",
+  "mood": "Submerged",
+  "engines": [
+    "OceanDeep"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "macros": {
+    "PRESSURE": 0.92,
+    "CREATURE": 0.08,
+    "WRECK": 0.0,
+    "ABYSS": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "movement": 0.1,
+    "density": 0.38,
+    "space": 0.65,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.78,
+      "deep_subOctMix": 0.55,
+      "deep_filterCutoff": 160.0,
+      "deep_filterRes": 0.18,
+      "deep_velCutoffAmt": 0.18,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.008,
+      "deep_bioMix": 0.06,
+      "deep_bioBrightness": 180.0,
+      "deep_pressureAmt": 0.92,
+      "deep_ampAtk": 1.0,
+      "deep_ampDec": 5.0,
+      "deep_ampSus": 0.88,
+      "deep_ampRel": 8.0,
+      "deep_lfo1Rate": 0.006,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.004,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.42,
+      "deep_macroPressure": 0.92,
+      "deep_macroCreature": 0.08,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.88
+    }
+  },
+  "tags": [
+    "oceandeep",
+    "submerged",
+    "sub",
+    "abyssal",
+    "dark",
+    "pressure",
+    "reverb"
+  ],
+  "description": "The bioluminescent whisper at the hadal zone — reverb fills the vacuum with ghostly space while filter ceiling at 160Hz keeps everything subterranean. A creature breathes at 0.006Hz."
+}

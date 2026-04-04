@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Glass Membrane",
+  "name": "Glass Membrane (Opaline)",
   "mood": "Crystalline",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prepared piano string so lightly touched it behaves like glass — membrane mode, single mode, pure tone.",
-  "tags": ["crystalline", "membrane", "glass", "sparse", "prepared"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "membrane",
+    "glass",
+    "sparse",
+    "prepared"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +58,8 @@
       "opal2_macroSpace": 0.58
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

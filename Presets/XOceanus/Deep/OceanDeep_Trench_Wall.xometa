@@ -2,19 +2,28 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "name": "Trench Wall",
+  "name": "Trench Wall (OceanDeep)",
   "mood": "Deep",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "macros": {
     "PRESSURE": 0.88,
     "CREATURE": 0.05,
     "WRECK": 0.0,
     "ABYSS": 0.82
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.04,
@@ -53,6 +62,13 @@
       "deep_macroAbyss": 0.82
     }
   },
-  "tags": ["oceandeep", "sub", "deep", "abyssal", "pressure", "dark"],
+  "tags": [
+    "oceandeep",
+    "sub",
+    "deep",
+    "abyssal",
+    "pressure",
+    "dark"
+  ],
   "description": "The sheer face of a hadal trench wall: 11,000 metres of cold dark rock. Filter at 120Hz ceiling, maximum hydrostatic pressure, almost no body — only the stone and the depth."
 }

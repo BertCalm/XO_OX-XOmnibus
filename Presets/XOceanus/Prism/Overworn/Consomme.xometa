@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Consomme",
+  "name": "Consomme (Overworn) (Alt)",
   "mood": "Prism",
   "engines": [
     "Overworn"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clean reduction \u2014 no caramelization, pure clarification. Crystal-clear broth.",
+  "description": "Clean reduction — no caramelization, pure clarification. Crystal-clear broth.",
   "tags": [
     "pad",
     "clean",

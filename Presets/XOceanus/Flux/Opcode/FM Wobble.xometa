@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Spectral Wobble",
+  "name": "Spectral Wobble (Opcode)",
   "mood": "Flux",
   "engines": [
     "Opcode"

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Spectral Wobble",
+  "name": "Spectral Wobble (Opcode) (Alt)",
   "mood": "Flux",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LFO2 modulates FM index \u2014 creates a rhythmic wobble of harmonic complexity. FM synthesis as movement.",
+  "description": "LFO2 modulates FM index — creates a rhythmic wobble of harmonic complexity. FM synthesis as movement.",
   "tags": [
     "fm",
     "wobble",

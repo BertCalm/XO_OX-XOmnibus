@@ -29,7 +29,7 @@
     "SPREAD": 0.893
   },
   "mood": "Atmosphere",
-  "name": "Shear Force",
+  "name": "Shear Force (Octopus)",
   "parameters": {
     "Octopus": {
       "coupling": 0.12,

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Saffron Thread",
+  "name": "Saffron Thread (Overwash)",
   "mood": "Atmosphere",
   "engines": [
     "Overwash"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extremely viscous diffusion \u2014 a single thread of color dissolving over 30 seconds.",
+  "description": "Extremely viscous diffusion — a single thread of color dissolving over 30 seconds.",
   "tags": [
     "pad",
     "slow",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Gradient Field",
+  "name": "Gradient Field (Overwash)",
   "mood": "Atmosphere",
   "engines": [
     "Overwash"

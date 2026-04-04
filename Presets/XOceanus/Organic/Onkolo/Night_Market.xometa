@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Night Market",
+  "name": "Night Market (Onkolo)",
   "mood": "Organic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet heard across a night market \u2014 natural decay, light touch, warm atmosphere. The everyday music of diaspora life.",
+  "description": "Clavinet heard across a night market — natural decay, light touch, warm atmosphere. The everyday music of diaspora life.",
   "tags": [
     "clavinet",
     "night-market",

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tomb Resonance",
+  "mood": "Deep",
+  "engines": ["Oven"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.38,
+    "SPACE": 0.5
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 750.0,
+      "oven_bodyResonance": 0.58,
+      "oven_hfAmount": 0.05,
+      "oven_hardness": 0.62,
+      "oven_density": 0.72,
+      "oven_temperature": 0.08,
+      "oven_sympathetic": 0.45,
+      "oven_bloomTime": 0.8,
+      "oven_sustainTime": 5.0,
+      "oven_filterEnvAmt": 0.38,
+      "oven_ampAttack": 0.003,
+      "oven_ampDecay": 4.0,
+      "oven_ampSustain": 0.15,
+      "oven_ampRelease": 2.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.55,
+      "oven_macroMovement": 0.2,
+      "oven_macroCoupling": 0.38,
+      "oven_macroSpace": 0.5,
+      "oven_lfo1Rate": 0.01,
+      "oven_lfo1Depth": 0.06,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.3,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "tags": ["oven", "piano", "dark", "resonance", "chamber", "deep", "sympathetic"],
+  "description": "A struck string in a sealed stone tomb. The bloom unfolds slowly and sympathetic strings resonate in the dark. Temperature near zero — no warmth of the hammer, only cold chamber resonance."
+}

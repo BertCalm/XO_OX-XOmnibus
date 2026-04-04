@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Anoxic Zone (OceanDeep)",
+  "mood": "Submerged",
+  "engines": [
+    "OceanDeep"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "macros": {
+    "PRESSURE": 0.82,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.8,
+    "movement": 0.06,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.88,
+      "deep_subOctMix": 0.72,
+      "deep_filterCutoff": 140.0,
+      "deep_filterRes": 0.1,
+      "deep_velCutoffAmt": 0.15,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.005,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 160.0,
+      "deep_pressureAmt": 0.85,
+      "deep_ampAtk": 0.8,
+      "deep_ampDec": 4.0,
+      "deep_ampSus": 0.95,
+      "deep_ampRel": 7.0,
+      "deep_lfo1Rate": 0.005,
+      "deep_lfo1Depth": 0.03,
+      "deep_lfo2Rate": 0.003,
+      "deep_lfo2Depth": 0.02,
+      "deep_reverbMix": 0.38,
+      "deep_macroPressure": 0.82,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.78
+    }
+  },
+  "tags": [
+    "oceandeep",
+    "submerged",
+    "sub",
+    "dark",
+    "anoxic",
+    "stillness",
+    "pressure"
+  ],
+  "description": "The oxygen minimum zone where nothing lives: no creatures, no bio exciter, just sub-bass and reverb through 140Hz filter. The sound of complete biological silence under pressure."
+}

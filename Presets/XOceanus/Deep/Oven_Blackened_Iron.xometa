@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Blackened Iron",
+  "mood": "Deep",
+  "engines": ["Oven"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.4,
+    "SPACE": 0.2
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.78,
+    "movement": 0.06,
+    "density": 0.88,
+    "space": 0.2,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 380.0,
+      "oven_bodyResonance": 0.72,
+      "oven_hfAmount": 0.02,
+      "oven_hardness": 0.88,
+      "oven_density": 0.9,
+      "oven_temperature": 0.12,
+      "oven_sympathetic": 0.08,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 3.5,
+      "oven_filterEnvAmt": 0.42,
+      "oven_ampAttack": 0.002,
+      "oven_ampDecay": 2.5,
+      "oven_ampSustain": 0.0,
+      "oven_ampRelease": 1.2,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.78,
+      "oven_macroMovement": 0.1,
+      "oven_macroCoupling": 0.4,
+      "oven_macroSpace": 0.2,
+      "oven_lfo1Rate": 0.004,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.5,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "tags": ["oven", "piano", "dark", "percussive", "iron", "ebony", "deep"],
+  "description": "A cast-iron frame struck at maximum hardness, filter at 380Hz. The high-frequency amount is near zero — no shimmer, no bell, only the dark thud of iron on iron."
+}

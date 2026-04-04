@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Vocal Membrane",
+  "name": "Vocal Membrane (Osmosis)",
   "mood": "Coupling",
   "engines": [
     "Osmosis"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tuned for vocal coupling sources: high selectivity keeps the analysis band in the 1\u20134 kHz presence zone where vowel formants live. Medium reactivity tracks syllabic rhythm without smearing consonants. Memory long enough to bridge inter-syllable gaps. Use as Osmosis input when coupling voice to any melodic engine.",
+  "description": "Tuned for vocal coupling sources: high selectivity keeps the analysis band in the 1–4 kHz presence zone where vowel formants live. Medium reactivity tracks syllabic rhythm without smearing consonants. Memory long enough to bridge inter-syllable gaps. Use as Osmosis input when coupling voice to any melodic engine.",
   "tags": [
     "coupling",
     "vocal",

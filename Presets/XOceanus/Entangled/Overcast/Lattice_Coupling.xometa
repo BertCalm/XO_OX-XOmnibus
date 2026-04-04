@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Lattice Coupling",
+  "name": "Lattice Coupling (Overcast) (Alt)",
   "mood": "Entangled",
-  "engines": ["Overcast"],
+  "engines": [
+    "Overcast"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum lattice snap in coupling context — crystal peaks lock to neighboring engine's harmonics, forming a shared frozen grid.",
-  "tags": ["pad", "entangled", "lattice", "coupling", "harmonic-lock"],
-  "macroLabels": ["PURITY", "CRACKLE", "LATTICE", "FROST"],
+  "tags": [
+    "pad",
+    "entangled",
+    "lattice",
+    "coupling",
+    "harmonic-lock"
+  ],
+  "macroLabels": [
+    "PURITY",
+    "CRACKLE",
+    "LATTICE",
+    "FROST"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.3, "movement": 0.3, "density": 0.55, "space": 0.7, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.05
+  },
   "parameters": {
     "Overcast": {
       "cast_freezeRate": 0.4,
@@ -39,7 +59,9 @@
       "cast_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

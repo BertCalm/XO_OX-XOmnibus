@@ -61,13 +61,13 @@ Right panel area: 725 x 229px (CRITICAL CONSTRAINT)
 ## What the Vision Says
 
 ### Canonical Specs (3 documents)
-1. **xolokun-definitive-ui-spec.md** (1,774 lines) — 5 principles: Planchette, Dark Cockpit, PlaySurface visualization, Sound on Launch, 76-color system
-2. **xolokun-spatial-architecture-v1.md** (639 lines) — Hybrid Stack + Context Strip paradigm, all 326 features mapped to UI homes
-3. **xolokun-wiring-manifest.md** (1,062 lines) — Line-by-line EXISTS/REWIRE/BUILD/ISSUE status with thread safety annotations
+1. **xoceanus-definitive-ui-spec.md** (1,774 lines) — 5 principles: Planchette, Dark Cockpit, PlaySurface visualization, Sound on Launch, 76-color system
+2. **xoceanus-spatial-architecture-v1.md** (639 lines) — Hybrid Stack + Context Strip paradigm, all 326 features mapped to UI homes
+3. **xoceanus-wiring-manifest.md** (1,062 lines) — Line-by-line EXISTS/REWIRE/BUILD/ISSUE status with thread safety annotations
 
 ### HTML Prototypes (10 mockups)
-- **xolokun-v05-accurate.html** (81KB) — Latest design iteration (2026-03-27)
-- **xolokun-v04-polished.html** (80KB) — Primary visual target per MEMORY mandate
+- **xoceanus-v05-accurate.html** (81KB) — Latest design iteration (2026-03-27)
+- **xoceanus-v04-polished.html** (80KB) — Primary visual target per MEMORY mandate
 - **outshine-prototype.html** (44KB) — Sample forge companion window
 - **playsurface-width-comparison.html** (27KB) — PlaySurface sizing studies
 - Plus: v03 wireframe, v02 prototype, iPad landscape, iPhone, MPC hardware, main UI
@@ -88,7 +88,7 @@ Right panel area: 725 x 229px (CRITICAL CONSTRAINT)
 ## The Gap
 
 ### Critical Visual Gap (MEMORY PRIORITY)
-> "Build must match `Docs/mockups/xolokun-v04-polished.html`. NO new features until visual gap closed."
+> "Build must match `Docs/mockups/xoceanus-v04-polished.html`. NO new features until visual gap closed."
 
 The current build does NOT match the polished prototype. 13 components + 5th slot + Column C + 15 audit fixes were built in 2026-03-25, but visual quality remains below prototype fidelity.
 

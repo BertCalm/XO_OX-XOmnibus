@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Breach Protocol",
+  "name": "Breach Protocol (Osmosis)",
   "mood": "Flux",
   "engines": [
     "Osmosis"

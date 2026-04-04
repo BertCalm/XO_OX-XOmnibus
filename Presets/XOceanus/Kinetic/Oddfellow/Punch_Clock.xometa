@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Punch Clock",
+  "name": "Punch Clock (Oddfellow)",
   "mood": "Kinetic",
   "engines": [
     "Oddfellow"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum punch \u2014 near-zero attack, short decay, high drive. The Wurlitzer as a percussion instrument.",
+  "description": "Maximum punch — near-zero attack, short decay, high drive. The Wurlitzer as a percussion instrument.",
   "tags": [
     "wurlitzer",
     "punch",

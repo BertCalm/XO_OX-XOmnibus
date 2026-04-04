@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Parliament Funk",
+  "name": "Parliament Funk (Onkolo)",
   "mood": "Kinetic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "P-Funk rhythmic clavinet \u2014 wide wah sweep, neck-to-bridge pickup blend, syncopated attack. The groove machine.",
+  "description": "P-Funk rhythmic clavinet — wide wah sweep, neck-to-bridge pickup blend, syncopated attack. The groove machine.",
   "tags": [
     "clavinet",
     "parliament",

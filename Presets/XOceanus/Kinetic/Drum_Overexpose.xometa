@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Drum Overexpose",
+  "mood": "Kinetic",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset pushed to extreme brightness \u2014 brightness 0.96, movement 0.72, aggression 0.47. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.248,
+    "movement": 0.721,
+    "density": 0.546,
+    "space": 0.478,
+    "aggression": 0.473
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.971,
+      "perc_v1_algoMode": 0,
+      "perc_v1_pitch": 0.774,
+      "perc_v1_decay": 0.268,
+      "perc_v1_tone": 0.933,
+      "perc_v1_snap": 0.337,
+      "perc_v1_body": 0.314,
+      "perc_v1_character": 0.56,
+      "perc_v2_blend": 0.654,
+      "perc_v2_pitch": 0.735,
+      "perc_v2_decay": 0.129,
+      "perc_v2_tone": 0.58,
+      "perc_v2_snap": 0.37,
+      "perc_v2_body": 0.406,
+      "perc_machine": 0.618,
+      "perc_punch": 0.331,
+      "perc_space": 0.309,
+      "perc_mutate": 0.388,
+      "perc_outputLevel": 0.878,
+      "perc_couplingLevel": 0.062,
+      "perc_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

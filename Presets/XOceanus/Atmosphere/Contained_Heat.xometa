@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Contained Heat",
+  "name": "Contained Heat (Overflow)",
   "mood": "Atmosphere",
   "engines": [
     "Overflow"

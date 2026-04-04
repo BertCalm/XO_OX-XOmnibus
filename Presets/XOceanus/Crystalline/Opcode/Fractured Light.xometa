@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fractured Light",
+  "name": "Fractured Light (Opcode)",
   "mood": "Crystalline",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High-index FM bell with subtle LFO shimmer \u2014 the light that fractures through faceted glass. Alive but measured.",
+  "description": "High-index FM bell with subtle LFO shimmer — the light that fractures through faceted glass. Alive but measured.",
   "tags": [
     "fm",
     "bell",

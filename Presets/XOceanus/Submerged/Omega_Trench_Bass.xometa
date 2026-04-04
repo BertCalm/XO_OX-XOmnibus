@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Trench Bass (Omega)",
+  "mood": "Submerged",
+  "engines": [
+    "Omega"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.35,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.78,
+    "space": 0.5,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 3,
+      "omega_ratio": 0.5,
+      "omega_modIndex": 3.5,
+      "omega_feedback": 0.12,
+      "omega_purity": 0.85,
+      "omega_distillRate": 0.18,
+      "omega_brightness": 500.0,
+      "omega_filterEnvAmount": 0.4,
+      "omega_filterAttack": 0.15,
+      "omega_filterDecay": 2.2,
+      "omega_attack": 0.1,
+      "omega_decay": 3.5,
+      "omega_sustain": 0.88,
+      "omega_release": 3.0,
+      "omega_glide": 0.05,
+      "omega_gravity": 0.82,
+      "omega_lfo1Rate": 0.012,
+      "omega_lfo1Depth": 0.2,
+      "omega_lfo2Rate": 0.025,
+      "omega_lfo2Depth": 0.1,
+      "omega_macroCharacter": 0.55,
+      "omega_macroMovement": 0.25,
+      "omega_macroCoupling": 0.35,
+      "omega_macroSpace": 0.5
+    }
+  },
+  "tags": [
+    "omega",
+    "bass",
+    "fm",
+    "submerged",
+    "dark",
+    "deep",
+    "trench"
+  ],
+  "description": "FM sub-octave tuned for deep trench topography. Ratio 0.5 adds sub-harmonic energy; mod index 3.5 gives complex waveform folding all below 500Hz filter ceiling. Slow LFO undulates at 0.012Hz."
+}

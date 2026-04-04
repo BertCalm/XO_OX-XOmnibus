@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Strange Loop (Ouroboros)",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The attractor revisits its own orbit without landing. Topology 1, high chaos, leash just tight enough to keep it from collapsing. The system loops back on itself endlessly, creating motion that implies resolution and denies it.",
+  "tags": [
+    "flux",
+    "strange",
+    "loop",
+    "attractor",
+    "chaos",
+    "movement",
+    "recursive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.38,
+    "movement": 0.87,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 0.55,
+      "ouro_chaosIndex": 0.75,
+      "ouro_leash": 0.32,
+      "ouro_theta": 0.55,
+      "ouro_phi": 0.45,
+      "ouro_damping": 0.15,
+      "ouro_injection": 0.72
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.87,
+    "COUPLING": 0.4,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

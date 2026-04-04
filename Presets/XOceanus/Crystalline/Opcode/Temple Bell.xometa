@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Temple Bell",
+  "name": "Temple Bell (Opcode)",
   "mood": "Crystalline",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slow-decay resonant FM bell \u2014 high ratio, velocity shapes brightness, long reverberant tail. The call of a monastery bell.",
+  "description": "Slow-decay resonant FM bell — high ratio, velocity shapes brightness, long reverberant tail. The call of a monastery bell.",
   "tags": [
     "fm",
     "bell",

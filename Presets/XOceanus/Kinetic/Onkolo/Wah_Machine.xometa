@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Wah Machine",
+  "name": "Wah Machine (Onkolo) (Alt)",
   "mood": "Kinetic",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pure auto-wah clavinet \u2014 maximum funk depth, every note a wah sweep. The most extreme filter-envelope preset in the collection.",
+  "description": "Pure auto-wah clavinet — maximum funk depth, every note a wah sweep. The most extreme filter-envelope preset in the collection.",
   "tags": [
     "clavinet",
     "wah",

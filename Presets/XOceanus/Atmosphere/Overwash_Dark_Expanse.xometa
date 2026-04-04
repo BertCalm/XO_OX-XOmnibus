@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Dark Expanse",
+  "mood": "Atmosphere",
+  "engines": ["Overwash"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.88
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.65,
+    "movement": 0.18,
+    "density": 0.14,
+    "space": 0.88,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.22,
+      "wash_viscosity": 0.65,
+      "wash_harmonics": 5,
+      "wash_diffusionTime": 18.0,
+      "wash_spreadMax": 180.0,
+      "wash_brightness": 0.13,
+      "wash_warmth": 0.65,
+      "wash_ampAttack": 2.5,
+      "wash_ampDecay": 2.0,
+      "wash_ampSustain": 0.82,
+      "wash_ampRelease": 16.0,
+      "wash_filterCutoff": 1000.0,
+      "wash_filterRes": 0.08,
+      "wash_filtEnvAmount": 0.18,
+      "wash_lfo1Rate": 0.014,
+      "wash_lfo1Depth": 0.28,
+      "wash_lfo2Rate": 0.008,
+      "wash_lfo2Depth": 0.14,
+      "wash_stereoWidth": 0.88,
+      "wash_level": 0.7
+    }
+  },
+  "tags": ["overwash", "pad", "atmosphere", "dark", "ambient", "vast", "expanse"],
+  "description": "The most spacious preset in this collection: five harmonics, maximum stereo width, filter at 1000Hz. Long release occupies the dark atmospheric sky. Every note diffuses into horizon."
+}

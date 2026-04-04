@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Flock Cascade",
+  "mood": "Flux",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High cohesion binds the sub-flocks before scatter tears them apart. Two fast LFOs create visible turbulence in the swarm geometry. The flock never settles — it cascades between tight formation and explosive dispersion.",
+  "tags": ["flux", "flock", "cascade", "swarm", "turbulence", "movement", "evolving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.91,
+    "density": 0.72,
+    "space": 0.44,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_waveform": 1,
+      "ocean_subflocks": 6,
+      "ocean_separation": 0.72,
+      "ocean_cohesion": 0.38,
+      "ocean_alignment": 0.62,
+      "ocean_tether": 0.18,
+      "ocean_scatter": 0.85,
+      "ocean_damping": 0.08,
+      "ocean_lfo1Rate": 4.5,
+      "ocean_lfo1Depth": 0.78,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 11.0,
+      "ocean_lfo2Depth": 0.62,
+      "ocean_lfo2Shape": 2,
+      "ocean_swarmEnvAttack": 0.06,
+      "ocean_swarmEnvDecay": 0.3,
+      "ocean_swarmEnvSustain": 0.75,
+      "ocean_swarmEnvRelease": 0.5,
+      "ocean_ampAttack": 0.04,
+      "ocean_ampDecay": 0.28,
+      "ocean_ampSustain": 0.78,
+      "ocean_ampRelease": 0.45,
+      "ocean_glide": 0.03,
+      "ocean_voiceMode": 0,
+      "ocean_macroCharacter": 0.68,
+      "ocean_macroMovement": 0.91,
+      "ocean_macroCoupling": 0.4,
+      "ocean_macroSpace": 0.44
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.4,
+    "SPACE": 0.44
+  },
+  "coupling": {"pairs": []}
+}

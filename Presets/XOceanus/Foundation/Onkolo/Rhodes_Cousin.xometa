@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Rhodes Cousin",
+  "name": "Rhodes Cousin (Onkolo)",
   "mood": "Foundation",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The clavinet and Rhodes are cousins \u2014 this patch leans toward the family resemblance. Warmer tone, reduced wah, longer tail.",
+  "description": "The clavinet and Rhodes are cousins — this patch leans toward the family resemblance. Warmer tone, reduced wah, longer tail.",
   "tags": [
     "clavinet",
     "rhodes",

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Random Walk",
+  "name": "Random Walk (Opcode)",
   "mood": "Flux",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LFO1 random shape \u2014 each cycle creates a new FM brightness state. Unpredictable within a musical range.",
+  "description": "LFO1 random shape — each cycle creates a new FM brightness state. Unpredictable within a musical range.",
   "tags": [
     "fm",
     "random",

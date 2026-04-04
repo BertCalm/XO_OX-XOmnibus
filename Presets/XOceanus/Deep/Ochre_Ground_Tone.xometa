@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Ground Tone",
+  "mood": "Deep",
+  "engines": ["Ochre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.38,
+    "SPACE": 0.42
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.75,
+    "movement": 0.12,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.25,
+      "ochre_hardness": 0.5,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.78,
+      "ochre_brightness": 900.0,
+      "ochre_damping": 0.62,
+      "ochre_decay": 6.0,
+      "ochre_caramel": 0.72,
+      "ochre_sympathy": 0.35,
+      "ochre_hfCharacter": 0.05,
+      "ochre_thermalDrift": 0.12,
+      "ochre_filterEnvAmount": 0.38,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.025,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.008,
+      "ochre_lfo2Depth": 0.15,
+      "ochre_lfo2Shape": 2
+    }
+  },
+  "tags": ["ochre", "piano", "dark", "deep", "warm", "ground", "sustained"],
+  "description": "A piano reduced to its ground tone — sympathetic resonance reinforces the fundamental, caramel saturation removes the treble bite. Long decay, minimal HF character. The warmth of old copper."
+}

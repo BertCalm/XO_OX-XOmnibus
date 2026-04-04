@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Voltage Collapse",
+  "name": "Voltage Collapse (Ouroboros)",
   "mood": "Kinetic",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz topology at full tilt — chaosIndex buried, leash nearly gone. A system on the edge of event horizon.",
-  "tags": ["chaos", "kinetic", "lorenz", "aggressive", "raw"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "kinetic",
+    "lorenz",
+    "aggressive",
+    "raw"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -30,6 +43,8 @@
       "ouro_injection": 0.3
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

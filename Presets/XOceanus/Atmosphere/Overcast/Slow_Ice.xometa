@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Slow Ice",
+  "name": "Slow Ice (Overcast)",
   "mood": "Atmosphere",
   "engines": [
     "Overcast"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Long crystallization window \u2014 200ms of audible ice forming. Large, beautiful crystals.",
+  "description": "Long crystallization window — 200ms of audible ice forming. Large, beautiful crystals.",
   "tags": [
     "pad",
     "slow",

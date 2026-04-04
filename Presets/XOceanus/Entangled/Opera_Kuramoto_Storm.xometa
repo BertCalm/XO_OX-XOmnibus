@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "name": "Opera Kuramoto Storm",
+  "mood": "Entangled",
+  "engines": ["Opera", "Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Kuramoto synchronicity at maximum Conductor arc — all formants phase-locked then deliberately de-synchronized, coupled to OBESE saturation mass. Chaos of voices in dense collapse.",
+  "tags": ["entangled", "dense", "opera", "obese", "kuramoto", "coupling"],
+  "macroLabels": ["DRAMA", "BELLY", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.72,
+    "movement": 0.9,
+    "density": 0.94,
+    "space": 0.42,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.95,
+      "opera_conductorArc": 3,
+      "opera_arcTime": 0.8,
+      "opera_arcPeak": 0.65,
+      "opera_kuramoto": 0.2,
+      "opera_partialCount": 16,
+      "opera_formantMode": 1,
+      "opera_filterCutoff": 4000.0,
+      "opera_filterReso": 0.65,
+      "opera_filterEnvAmt": 0.78,
+      "opera_attack": 0.01,
+      "opera_decay": 0.6,
+      "opera_sustain": 0.82,
+      "opera_release": 1.5,
+      "opera_lfo1Rate": 1.0,
+      "opera_lfo1Depth": 0.78,
+      "opera_lfo2Rate": 1.5,
+      "opera_lfo2Depth": 0.72,
+      "opera_reverbMix": 0.45,
+      "opera_outputLevel": 0.88,
+      "opera_voices": 6,
+      "opera_macroCharacter": 0.88,
+      "opera_macroMovement": 0.88,
+      "opera_macroCoupling": 0.9,
+      "opera_macroSpace": 0.45
+    },
+    "Obese": {
+      "fat_morph": 0.82,
+      "fat_mojo": 0.85,
+      "fat_subLevel": 0.78,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.85,
+      "fat_detune": 14.0,
+      "fat_stereoWidth": 0.88,
+      "fat_ampAttack": 0.005,
+      "fat_ampDecay": 0.5,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 0.8,
+      "fat_fltCutoff": 3200.0,
+      "fat_fltReso": 0.65,
+      "fat_fltDrive": 0.85,
+      "fat_fltKeyTrack": 0.45,
+      "fat_fltEnvAmt": 0.78,
+      "fat_fltEnvAttack": 0.005,
+      "fat_fltEnvDecay": 0.4,
+      "fat_satDrive": 0.85,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_level": 0.82,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opera",
+        "engineB": "Obese",
+        "type": "AudioToFM",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null
+}

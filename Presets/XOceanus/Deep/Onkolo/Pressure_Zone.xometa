@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Zone",
+  "name": "Pressure Zone (Onkolo)",
   "mood": "Deep",
   "engines": [
     "Onkolo"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The clavinet in a high-pressure acoustic environment \u2014 compressed tone, dark filter ceiling, dense presence.",
+  "description": "The clavinet in a high-pressure acoustic environment — compressed tone, dark filter ceiling, dense presence.",
   "tags": [
     "clavinet",
     "pressure",

@@ -1,0 +1,64 @@
+{
+  "name": "City Crossfade",
+  "mood": "Kinetic",
+  "tags": [
+    "city blend",
+    "Detroit",
+    "LA",
+    "hybrid",
+    "crossfade"
+  ],
+  "macros": {
+    "DIG": 0.1,
+    "CITY": 0.0,
+    "FLIP": 0.0,
+    "DUST": 0.1
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.8,
+    "space": 0.45,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_transientSnap": 0.55,
+      "ofr_transientPitch": 0.4,
+      "ofr_transientSat": 0.22,
+      "ofr_dustTape": 0.14,
+      "ofr_dustVinyl": 0.18,
+      "ofr_dustWobble": 0.07,
+      "ofr_cityMode": 1,
+      "ofr_cityBlend": 0.5,
+      "ofr_cityIntensity": 0.6,
+      "ofr_digCuriosity": 0.5,
+      "ofr_digComplexity": 0.4,
+      "ofr_digFlow": 0.6,
+      "ofr_lfo1Rate": 0.067,
+      "ofr_lfo1Depth": 0.06,
+      "ofr_lfo2Rate": 2.17,
+      "ofr_lfo2Depth": 0.1,
+      "ofr_masterWidth": 0.55,
+      "ofr_velToSnap": 0.6,
+      "ofr_velToBody": 0.4,
+      "ofr_v0_decay": 0.42,
+      "ofr_v0_body": 0.75,
+      "ofr_v1_decay": 0.25,
+      "ofr_v4_decay": 0.28
+    }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": "",
+  "schema_version": 1,
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ]
+}

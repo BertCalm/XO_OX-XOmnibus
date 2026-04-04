@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Horizon Line",
+  "name": "Horizon Line (Outlook)",
   "mood": "Luminous",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "The moment the sun clears the horizon \u2014 sine sweeping to full brightness on horizon scan. Warm parallax opens from center to edge.",
+  "description": "The moment the sun clears the horizon — sine sweeping to full brightness on horizon scan. Warm parallax opens from center to edge.",
   "tags": [
     "horizon",
     "bright",

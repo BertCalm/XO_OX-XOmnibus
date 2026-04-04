@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Rhodes Cousin",
+  "name": "Rhodes Cousin (Oddfellow)",
   "mood": "Foundation",
   "engines": [
     "Oddfellow"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Bridging the Wurlitzer toward Rhodes territory \u2014 slightly less reed bite, more sustain, warmer attack.",
+  "description": "Bridging the Wurlitzer toward Rhodes territory — slightly less reed bite, more sustain, warmer attack.",
   "tags": [
     "wurlitzer",
     "rhodes",

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Struck Wood",
+  "name": "Struck Wood (Opcode)",
   "mood": "Organic",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM wooden percussion \u2014 fast transient, low ratio 1.5, mid-warm brightness. Wood block with fundamental pitch.",
+  "description": "FM wooden percussion — fast transient, low ratio 1.5, mid-warm brightness. Wood block with fundamental pitch.",
   "tags": [
     "fm",
     "wood",

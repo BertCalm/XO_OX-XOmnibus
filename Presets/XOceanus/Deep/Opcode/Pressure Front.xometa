@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Front",
+  "name": "Pressure Front (Opcode)",
   "mood": "Deep",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Heavy FM pad with high index and dark filter \u2014 atmospheric pressure as sound. Ratio 1.2, brightness 3500.",
+  "description": "Heavy FM pad with high index and dark filter — atmospheric pressure as sound. Ratio 1.2, brightness 3500.",
   "tags": [
     "fm",
     "pressure",

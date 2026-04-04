@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "The Maillard Hour",
+  "name": "The Maillard Hour (Overworn)",
   "mood": "Prism",
-  "engines": ["Overworn"],
+  "engines": [
+    "Overworn"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The moment reduction meets saturation — fastTanh drive at maximum, caramelization colors every remaining harmonic.",
-  "tags": ["pad", "prism", "saturated", "maillard", "caramelization"],
-  "macroLabels": ["RICHNESS", "REDUCTION", "CONCENTRATE", "DEPTH"],
+  "tags": [
+    "pad",
+    "prism",
+    "saturated",
+    "maillard",
+    "caramelization"
+  ],
+  "macroLabels": [
+    "RICHNESS",
+    "REDUCTION",
+    "CONCENTRATE",
+    "DEPTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.88, "movement": 0.4, "density": 0.6, "space": 0.45, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.88,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.1
+  },
   "parameters": {
     "Overworn": {
       "worn_reductionRate": 0.55,
@@ -45,7 +65,9 @@
       "worn_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

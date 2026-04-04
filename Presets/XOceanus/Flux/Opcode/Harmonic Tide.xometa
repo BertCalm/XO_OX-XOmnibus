@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Harmonic Tide",
+  "name": "Harmonic Tide (Opcode)",
   "mood": "Flux",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Very slow LFO creates harmonic tides \u2014 over 10 seconds the partial content rises and recedes like ocean water.",
+  "description": "Very slow LFO creates harmonic tides — over 10 seconds the partial content rises and recedes like ocean water.",
   "tags": [
     "fm",
     "tide",

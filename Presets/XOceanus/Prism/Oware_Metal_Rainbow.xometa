@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Metal Rainbow",
+  "name": "Metal Rainbow (Oware)",
   "mood": "Prism",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Eight tuning modes spanning harmonic series — each note position a different color of metallic resonance, sympathetic strings connecting them all.",
-  "tags": ["percussion", "prism", "metal", "aggressive", "harmonic"],
-  "macroLabels": ["MATERIAL", "HARDNESS", "BUZZ", "SYMPATHETIC"],
+  "tags": [
+    "percussion",
+    "prism",
+    "metal",
+    "aggressive",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "HARDNESS",
+    "BUZZ",
+    "SYMPATHETIC"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -49,6 +62,8 @@
       "owr_macroSympathetic": 0.72
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

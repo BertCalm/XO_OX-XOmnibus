@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Horizon Breath",
+  "name": "Horizon Breath (Outlook)",
   "mood": "Ethereal",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "One slow LFO conjunction cycle per phrase. When the two modulations align, the panorama opens briefly \u2014 then closes again.",
+  "description": "One slow LFO conjunction cycle per phrase. When the two modulations align, the panorama opens briefly — then closes again.",
   "tags": [
     "breath",
     "lfo",

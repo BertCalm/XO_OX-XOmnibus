@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Shoal Sprint (Oceanic)",
+  "mood": "Kinetic",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tight alignment with high alignment parameter drives the shoal in urgent directional pulses. Fast LFO1 creates rapid amplitude trembling that lands in the rhythmic pocket. The alignment periodically breaks and reforms around each played note.",
+  "tags": [
+    "kinetic",
+    "shoal",
+    "sprint",
+    "rhythmic",
+    "tight",
+    "pulsing",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.32,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_waveform": 2,
+      "ocean_subflocks": 5,
+      "ocean_separation": 0.38,
+      "ocean_cohesion": 0.72,
+      "ocean_alignment": 0.95,
+      "ocean_tether": 0.35,
+      "ocean_scatter": 0.42,
+      "ocean_damping": 0.06,
+      "ocean_lfo1Rate": 9.0,
+      "ocean_lfo1Depth": 0.72,
+      "ocean_lfo1Shape": 2,
+      "ocean_lfo2Rate": 2.5,
+      "ocean_lfo2Depth": 0.55,
+      "ocean_lfo2Shape": 0,
+      "ocean_swarmEnvAttack": 0.002,
+      "ocean_swarmEnvDecay": 0.18,
+      "ocean_swarmEnvSustain": 0.68,
+      "ocean_swarmEnvRelease": 0.28,
+      "ocean_ampAttack": 0.002,
+      "ocean_ampDecay": 0.15,
+      "ocean_ampSustain": 0.72,
+      "ocean_ampRelease": 0.3,
+      "ocean_glide": 0.02,
+      "ocean_voiceMode": 0,
+      "ocean_macroCharacter": 0.65,
+      "ocean_macroMovement": 0.88,
+      "ocean_macroCoupling": 0.35,
+      "ocean_macroSpace": 0.32
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.35,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

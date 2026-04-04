@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Gradual Release",
+  "name": "Gradual Release (Overflow)",
   "mood": "Atmosphere",
   "engines": [
     "Overflow"

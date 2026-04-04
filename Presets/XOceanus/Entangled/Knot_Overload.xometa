@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "name": "Knot Overload",
+  "mood": "Entangled",
+  "engines": ["Orbweave", "Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Topological coupling matrix overloaded — ORBWEAVE at maximum strand count through all 4 knot types coupled to OBESE mass. Topology becomes texture.",
+  "tags": ["entangled", "dense", "orbweave", "obese", "topology", "coupling"],
+  "macroLabels": ["KNOT", "BELLY", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.72,
+    "movement": 0.85,
+    "density": 0.93,
+    "space": 0.38,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotType": 1,
+      "weave_knotDepth": 0.95,
+      "weave_strandCount": 8,
+      "weave_strandDetune": 0.85,
+      "weave_brightness": 0.6,
+      "weave_filterCutoff": 4000.0,
+      "weave_filterReso": 0.68,
+      "weave_filterEnvAmt": 0.75,
+      "weave_attack": 0.003,
+      "weave_decay": 0.5,
+      "weave_sustain": 0.72,
+      "weave_release": 0.8,
+      "weave_lfo1Rate": 1.5,
+      "weave_lfo1Depth": 0.82,
+      "weave_lfo2Rate": 2.2,
+      "weave_lfo2Depth": 0.75,
+      "weave_reverbMix": 0.38,
+      "weave_outputLevel": 0.85,
+      "weave_voices": 8,
+      "weave_macroCharacter": 0.8,
+      "weave_macroMovement": 0.85,
+      "weave_macroCoupling": 0.9,
+      "weave_macroSpace": 0.4
+    },
+    "Obese": {
+      "fat_morph": 0.88,
+      "fat_mojo": 0.88,
+      "fat_subLevel": 0.88,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.88,
+      "fat_detune": 18.0,
+      "fat_stereoWidth": 0.88,
+      "fat_ampAttack": 0.002,
+      "fat_ampDecay": 0.4,
+      "fat_ampSustain": 0.78,
+      "fat_ampRelease": 0.65,
+      "fat_fltCutoff": 3200.0,
+      "fat_fltReso": 0.68,
+      "fat_fltDrive": 0.88,
+      "fat_fltKeyTrack": 0.45,
+      "fat_fltEnvAmt": 0.8,
+      "fat_fltEnvAttack": 0.002,
+      "fat_fltEnvDecay": 0.3,
+      "fat_satDrive": 0.88,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_level": 0.85,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Obese",
+        "type": "KnotTopology",
+        "amount": 0.88
+      }
+    ]
+  },
+  "sequencer": null
+}

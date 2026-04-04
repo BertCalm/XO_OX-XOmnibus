@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Interference Fringe",
+  "name": "Interference Fringe (Overwash)",
   "mood": "Entangled",
   "engines": [
     "Overwash"
