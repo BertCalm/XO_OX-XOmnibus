@@ -177,11 +177,3 @@ TEST_CASE("Audio Regression - OUROBOROS fingerprint within 5% of golden", "[regr
     CHECK(withinTolerance(fp.peak, GOLDEN_OUROBOROS.peak));
 }
 
-// Backward-compat shim
-namespace audio_regression_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace audio_regression_tests

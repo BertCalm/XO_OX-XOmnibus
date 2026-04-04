@@ -386,11 +386,3 @@ TEST_CASE("ParameterSweep D004 - no dead (zero-delta RMS) parameters for any eng
     }
 }
 
-// Backward-compat shim
-namespace param_sweep_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace param_sweep_tests

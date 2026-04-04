@@ -572,11 +572,3 @@ TEST_CASE("Doctrine D006 - all engines have expression/velocity parameters", "[d
     }
 }
 
-// Backward-compat shim
-namespace doctrine_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace doctrine_tests

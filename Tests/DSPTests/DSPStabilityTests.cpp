@@ -700,11 +700,3 @@ TEST_CASE("Fleet - no denormals in 50-block note-on/off cycle", "[dsp][engine][d
     }
 }
 
-// Backward-compat shim
-namespace dsp_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace dsp_tests

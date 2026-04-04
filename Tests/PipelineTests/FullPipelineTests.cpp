@@ -482,11 +482,3 @@ TEST_CASE("Pipeline - engine reset mid-playback no NaN/Inf before and after rese
     CHECK(postResetOK);
 }
 
-// Backward-compat shim
-namespace pipeline_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace pipeline_tests

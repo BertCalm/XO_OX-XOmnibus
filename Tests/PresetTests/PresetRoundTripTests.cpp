@@ -388,11 +388,3 @@ TEST_CASE("PresetManager - file larger than 1MB is rejected", "[preset][filesize
     CHECK(!loaded);
 }
 
-// Backward-compat shim
-namespace preset_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace preset_tests

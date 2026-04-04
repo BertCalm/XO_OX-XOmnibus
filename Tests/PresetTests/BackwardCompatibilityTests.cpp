@@ -122,11 +122,3 @@ TEST_CASE("BackwardCompat - CouplingType has exactly 15 values", "[compat][coupl
     CHECK(count == 15);
 }
 
-// Backward-compat shim
-namespace backward_compat_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace backward_compat_tests

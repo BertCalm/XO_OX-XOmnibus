@@ -135,11 +135,3 @@ TEST_CASE("CPU Benchmark - OUROBOROS renders >= 2x realtime", "[benchmark][ourob
     CHECK(res.realtimeRatio >= REALTIME_THRESHOLD);
 }
 
-// Backward-compat shim
-namespace cpu_benchmark_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace cpu_benchmark_tests

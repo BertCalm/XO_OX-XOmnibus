@@ -164,11 +164,3 @@ TEST_CASE("GestureTrail - clear resets count and frozen state", "[gesture][trail
     CHECK(!buf.isFrozen());
 }
 
-// Backward-compat shim
-namespace gesture_trail_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace gesture_trail_tests

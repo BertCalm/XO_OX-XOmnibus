@@ -723,11 +723,3 @@ TEST_CASE("Zero amount (below 0.001 threshold) - no coupling delivered for any t
     }
 }
 
-// Backward-compat shim
-namespace coupling_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace coupling_tests

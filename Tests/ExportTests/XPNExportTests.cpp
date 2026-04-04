@@ -1012,11 +1012,3 @@ TEST_CASE("XPN Export - drum XPM has hi-hat, kick, and snare mute groups", "[exp
     CHECK(muteGroupsSeen.size() >= 3);
 }
 
-// Backward-compat shim
-namespace export_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace export_tests

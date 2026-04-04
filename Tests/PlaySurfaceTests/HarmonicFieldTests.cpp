@@ -271,11 +271,3 @@ TEST_CASE("HarmonicField - quantizeToNearest snaps to nearest diatonic note", "[
     CHECK((fResult == 66 || fResult == 64));
 }
 
-// Backward-compat shim
-namespace playsurface_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace playsurface_tests

@@ -378,12 +378,3 @@ TEST_CASE("ParameterSmoother - output is monotonically increasing toward target"
     CHECK(monotonic);
 }
 
-// Backward-compat shim — no longer used by run_tests.cpp but kept
-// so any hypothetical direct callers don't break at link time.
-namespace dsp_component_tests
-{
-int runAll()
-{
-    return 0;
-}
-} // namespace dsp_component_tests
