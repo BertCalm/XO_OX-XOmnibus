@@ -35,7 +35,7 @@ struct ColumnLayoutManager
     // Prototype: 52px header
     static constexpr int kHeaderH = 52;
     static constexpr int kStatusBarH = 28;
-    static constexpr int kPlaySurfaceH = 220;
+    static constexpr int kPlaySurfaceH = 264; // spec §2.2 embedded zone height
     static constexpr int kFieldMapH = 80;
 
     // Default column widths at reference width (1100)

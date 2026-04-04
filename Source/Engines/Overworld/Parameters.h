@@ -213,6 +213,9 @@ struct ParamSnapshot
 
     // PC Engine
     int pceWaveSlot = 0;
+
+    // Drum mode
+    bool drumMode = false;
 };
 
 //------------------------------------------------------------------------------

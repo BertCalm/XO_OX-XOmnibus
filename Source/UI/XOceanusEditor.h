@@ -198,12 +198,13 @@ public:
             resized();
         };
 
-        // "PS" toggle button — PlaySurface popup window (4-zone performance interface)
+        // "PS" toggle button — PlaySurface embedded zone (4-zone performance interface)
+        // spec §2.2: PlaySurface occupies a fixed 264pt bottom zone of the main plugin window.
         addAndMakeVisible(surfaceToggleBtn);
         surfaceToggleBtn.setButtonText("PS");
         surfaceToggleBtn.setTooltip(
-            "PlaySurface — floating 4-zone performance interface (pads, orbit, strip, triggers)");
-        A11y::setup(surfaceToggleBtn, "PlaySurface Toggle", "Show or hide the PlaySurface popup window");
+            "PlaySurface — 4-zone performance interface (pads, orbit, strip, triggers)");
+        A11y::setup(surfaceToggleBtn, "PlaySurface Toggle", "Show or hide the embedded PlaySurface zone");
         surfaceToggleBtn.setClickingTogglesState(true);
         surfaceToggleBtn.onClick = [this]
         {
@@ -212,8 +213,19 @@ public:
             else
                 hidePlaySurface();
         };
-        // PlaySurface window is created lazily in showPlaySurface() on first press.
-        // No addAndMakeVisible() or MIDI wiring here — happens on first open.
+
+        // ── Embedded PlaySurface — added as direct child (spec §2.2) ─────────────
+        // Wire MIDI and processor immediately (no lazy creation needed).
+        playSurface_.setMidiCollector(&processor.getMidiCollector(), 1);
+        playSurface_.setProcessor(&processor);
+        // Wire TideController default target: CHARACTER macro (macro1).
+        if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(proc.getAPVTS().getParameter("macro1")))
+            playSurface_.setTideTargetParameter(p);
+        // Wire LookAndFeel so embedded surface matches the plugin theme.
+        if (laf)
+            playSurface_.setLookAndFeel(laf.get());
+        addAndMakeVisible(playSurface_);
+        playSurface_.setVisible(false); // hidden by default; PLAY button reveals it
 
         // Dark mode toggle — dark is primary (brand rule)
         addAndMakeVisible(themeToggleBtn);
@@ -238,11 +250,9 @@ public:
             masterFXStrip.repaint();
             presetBrowser.repaint();
             sidebar.repaint();
-            // Also repaint the PlaySurface content (not the window frame) if open.
-            // B4: calling repaint() on the DocumentWindow only repaints the title-bar frame;
-            // the content component must be repainted directly.
-            if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
-                playSurfaceWindow->getPlaySurface().repaint();
+            // Also repaint the embedded PlaySurface if visible.
+            if (playSurface_.isVisible())
+                playSurface_.repaint();
             // Persist preference so the theme survives plugin reload (#215).
             juce::PropertiesFile::Options opts;
             opts.applicationName = "XOceanus";
@@ -431,6 +441,8 @@ public:
                 });
         };
 
+        // Base plugin height is 700pt (PlaySurface collapsed by default).
+        // When PlaySurface is shown, the window expands by kPlaySurfaceH (264pt).
         setSize(1100, 700);
 
         // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar
@@ -500,7 +512,8 @@ public:
         }
 
         setResizable(true, true);
-        setResizeLimits(960, 600, 1600, 1000);
+        // PlaySurface adds 264pt when expanded; max height allows for both states.
+        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
         setWantsKeyboardFocus(true);
         setTitle("XOceanus Synthesizer");
         setDescription("Multi-engine synthesizer with cross-engine coupling. "
@@ -513,10 +526,9 @@ public:
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
-        // Destroy the PlaySurface popup window before the processor goes away.
-        // This ensures the MidiMessageCollector pointer inside the window is
-        // not accessed after the processor is deallocated.
-        playSurfaceWindow.reset();
+        // Detach the embedded PlaySurface from the processor before the processor
+        // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
+        playSurface_.setProcessor(nullptr);
         setLookAndFeel(nullptr);
     }
 
@@ -565,10 +577,10 @@ public:
             }
             return true;
         }
-        // 'P' (without shift) toggles the PlaySurface popup window
+        // 'P' (without shift) toggles the embedded PlaySurface zone
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
         {
-            bool nowVisible = (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible());
+            bool nowVisible = playSurface_.isVisible();
             surfaceToggleBtn.setToggleState(!nowVisible, juce::dontSendNotification);
             if (!nowVisible)
                 showPlaySurface();
@@ -584,12 +596,12 @@ public:
             repaint();
             return true;
         }
-        // Escape returns to overview (and also hides PlaySurface popup if open)
+        // Escape returns to overview (and also collapses embedded PlaySurface if open)
         if (key == juce::KeyPress::escapeKey)
         {
-            // If the PlaySurface window is in front, close it first;
+            // If the PlaySurface zone is expanded, collapse it first;
             // otherwise fall through to the overview.
-            if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
+            if (playSurface_.isVisible())
             {
                 hidePlaySurface();
                 surfaceToggleBtn.setToggleState(false, juce::dontSendNotification);
@@ -920,14 +932,15 @@ public:
     void resized() override
     {
         // ── Sync layout state ────────────────────────────────────────────────
-        // PlaySurface is now a floating popup window — not an embedded component,
-        // so playSurfaceVisible is always false for layout purposes.
-        layout.playSurfaceVisible = false;
+        // spec §2.2: PlaySurface is an embedded 264pt bottom zone, not a popup.
+        // When visible, ColumnLayoutManager reserves kPlaySurfaceH (264pt) for it.
+        layout.playSurfaceVisible = playSurface_.isVisible();
         // cinematicMode is toggled by cinematicToggleBtn (CI button in header).
         // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
         // ── Header (52px): Logo | DepthDial | < | > | [macros] | CI | CM | P | ● | DK | CPU | PLAY | XPN | gear
+        // PLAY button toggles the embedded 264pt PlaySurface zone (spec §2.2)
         auto header = layout.getHeader();
 
         // Park legacy widgets that are no longer shown in the header.
@@ -1075,7 +1088,10 @@ public:
         // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
         sidebar.setBounds(layout.getColumnC());
 
-        // PlaySurface is now a floating popup window — no embedded bounds to set.
+        // ── Embedded PlaySurface — spec §2.2: fixed 264pt bottom zone ────────
+        // ColumnLayoutManager reserves kPlaySurfaceH (264pt) when playSurfaceVisible.
+        // When collapsed, getPlaySurface() returns a rect parked below the window.
+        playSurface_.setBounds(layout.getPlaySurface());
 
         // ── Status Bar ───────────────────────────────────────────────────────
         statusBar.setBounds(layout.getStatusBar());
@@ -1309,44 +1325,21 @@ private:
     // Panels call this in their paint() to dim non-essential controls during silence.
     float getCockpitOpacity() const override { return cockpitOpacity_; }
 
-    // ── PlaySurface show/hide (popup window) ──────────────────────────────────
-    // On first call, the window is created lazily and MIDI is wired.
-    // Subsequent calls simply show/hide the existing window so mode selections,
-    // bank, and octave state survive hide/show cycles.
+    // ── PlaySurface show/hide (embedded zone, spec §2.2) ──────────────────────
+    // Toggling the PLAY button expands/collapses the 264pt bottom zone by resizing
+    // the plugin window.  A 200ms ComponentAnimator transition animates the resize.
+    // MIDI wiring and mode/bank/octave state persist across hide/show cycles because
+    // playSurface_ is a permanent child of XOceanusEditor (not recreated on each open).
 
     void showPlaySurface()
     {
-        // Lazy creation: build window and wire MIDI on first show.
-        if (playSurfaceWindow == nullptr)
-        {
-            playSurfaceWindow = std::make_unique<PlaySurfaceWindow>();
-            // F10: Propagate LookAndFeel to all child components in the popup tree.
-            if (laf)
-                playSurfaceWindow->setLookAndFeel(laf.get());
-            // Wire MIDI: PlaySurface note events flow through the processor's
-            // MidiMessageCollector, drained into processBlock each audio callback.
-            playSurfaceWindow->getPlaySurface().setMidiCollector(&processor.getMidiCollector(), 1);
-            // Wire processor callbacks: XOuija CC output forwarding + state
-            // persist/restore across DAW sessions (closes #147).
-            playSurfaceWindow->getPlaySurface().setProcessor(&processor);
-            // Sync the PS toggle button when the window is closed by the user.
-            playSurfaceWindow->onClosed = [this]
-            { surfaceToggleBtn.setToggleState(false, juce::dontSendNotification); };
+        if (playSurface_.isVisible())
+            return; // already expanded
 
-            // Wire TideController default target: CHARACTER macro (macro1).
-            // Falls back gracefully if the parameter is not present (no engine loaded).
-            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(
-                    processor.getAPVTS().getParameter("macro1")))
-            {
-                playSurfaceWindow->getPlaySurface().setTideTargetParameter(p);
-            }
-        }
+        // Make visible first so resized() sees it and computes correct bounds.
+        playSurface_.setVisible(true);
 
-        playSurfaceWindow->setVisible(true);
-        playSurfaceWindow->toFront(true);
-
-        // P2-4: Set accent immediately so there is no 1-frame XO Gold flash on first open.
-        // The timerCallback will keep it updated, but it may not have fired yet at this point.
+        // P2-4: Set accent immediately — no 1-frame XO Gold flash on first open.
         {
             juce::Colour accent(0xFFE9C46A);
             if (selectedSlot >= 0 && selectedSlot < XOceanusProcessor::MaxSlots)
@@ -1363,14 +1356,35 @@ private:
                         break;
                     }
             }
-            playSurfaceWindow->getPlaySurface().setAccentColour(accent);
+            playSurface_.setAccentColour(accent);
         }
+
+        // Expand plugin window by kPlaySurfaceH (264pt) with a 200ms animated resize.
+        // Clamp to the resize limit ceiling.
+        const int newH = juce::jmin(getHeight() + ColumnLayoutManager::kPlaySurfaceH,
+                                    1000 + ColumnLayoutManager::kPlaySurfaceH);
+        juce::Desktop::getInstance().getAnimator().animateComponent(
+            this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
     }
 
     void hidePlaySurface()
     {
-        if (playSurfaceWindow != nullptr)
-            playSurfaceWindow->setVisible(false);
+        if (!playSurface_.isVisible())
+            return; // already collapsed
+
+        // Collapse plugin window first (200ms animated resize), then hide the zone.
+        const int newH = juce::jmax(getHeight() - ColumnLayoutManager::kPlaySurfaceH, 600);
+        juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+        juce::Desktop::getInstance().getAnimator().animateComponent(
+            this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
+        juce::Timer::callAfterDelay(200,
+            [safeThis]()
+            {
+                if (safeThis == nullptr)
+                    return;
+                safeThis->playSurface_.setVisible(false);
+                safeThis->resized(); // recompute layout after hide
+            });
     }
 
     void timerCallback() override
@@ -1549,7 +1563,7 @@ private:
         // ── PlaySurface accent colour — tracks focused slot (B3 fix) ──────────
         // B3: prefer selectedSlot's engine accent; fall back to first loaded engine
         // so the PlaySurface colour matches whatever engine the performer is focused on.
-        if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
+        if (playSurface_.isVisible())
         {
             static const juce::Colour kXOGoldAccent(0xFFE9C46A);
             juce::Colour accent = kXOGoldAccent;
@@ -1569,7 +1583,7 @@ private:
                     }
                 }
             }
-            playSurfaceWindow->getPlaySurface().setAccentColour(accent);
+            playSurface_.setAccentColour(accent);
         }
 
         // ── D4: Register Manager update ───────────────────────────────────────
@@ -1762,8 +1776,10 @@ private:
     juce::TextButton presetNextBtn;
     // P0-4: Settings gear button
     juce::TextButton settingsBtn;
-    // PlaySurface lives in a floating DocumentWindow popup (created lazily on first show).
-    std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
+    // PlaySurface — embedded 264pt bottom zone (spec §2.2).
+    // Previously a floating DocumentWindow popup; now a permanent direct child.
+    // Visible/hidden by the PLAY button; never recreated so MIDI state persists.
+    PlaySurface playSurface_;
     CouplingArcOverlay couplingArcs{processor};
     CouplingArcHitTester couplingHitTester{processor};
     SidebarPanel sidebar;

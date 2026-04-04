@@ -498,6 +498,32 @@ private:
     // can be called from any thread depending on host. (Audit P0-2 CRITICAL-1)
     std::atomic<bool> hasRestoredState{false};
 
+    // ── Sound on First Launch (§1.1.1 Principle 4) ───────────────────────────
+    // On TRUE first launch (no saved state AND never launched before), XOceanus
+    // auto-plays a gentle OXBOW pad so the plugin makes music before the performer
+    // touches a single control.  The note stops automatically after 30 seconds
+    // or as soon as any MIDI input or engine change arrives.
+    //
+    // Thread model:
+    //   hasLaunchedBefore_     — written by message thread (setStateInformation /
+    //                            prepareToPlay), read by audio thread.  Atomic.
+    //   firstBreathPending_    — set by prepareToPlay (any thread), consumed once
+    //                            by the first processBlock call.  Atomic.
+    //   firstBreathActive_     — audio-thread-only after consumption.  No atomic.
+    //   firstBreathCountdown_  — audio-thread-only countdown in samples.  No atomic.
+    //   kFirstBreathNote       — MIDI C3 (48). Gentle, low, non-intrusive.
+    //   kFirstBreathVelocity   — soft (60/127 ≈ 0.47).
+    //   kFirstBreathTimeoutMs  — 30 000 ms failsafe auto-stop.
+    std::atomic<bool> hasLaunchedBefore_{false};
+    std::atomic<bool> firstBreathPending_{false};
+    // Audio-thread-only state (no atomics needed):
+    bool         firstBreathActive_{false};
+    int          firstBreathCountdown_{0};
+    SynthEngine* firstBreathEnginePtr_{nullptr}; // slot-0 engine ptr at arm time; if it changes, breath is cancelled
+    static constexpr int  kFirstBreathNote       = 48;     // C3
+    static constexpr float kFirstBreathVelocity  = 60.0f / 127.0f;
+    static constexpr int  kFirstBreathTimeoutMs  = 30000;  // 30-second failsafe
+
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
     std::array<std::atomic<bool>, MaxSlots> slotMuted{}; // default false

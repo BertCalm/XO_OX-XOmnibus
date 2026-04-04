@@ -1111,6 +1111,64 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         loadEngine(0, "Obrix");
     }
 
+    // ── Sound on First Launch (§1.1.1 Principle 4) ───────────────────────────
+    // If this is TRUE first launch (no restored state AND never launched before),
+    // load OXBOW in slot 0 and arm the firstBreathPending_ flag.  processBlock
+    // will consume the flag, inject a soft note-on (C3, vel 60), and start the
+    // 30-second auto-stop countdown.
+    //
+    // Guard conditions (all must be true):
+    //   1. !hasRestoredState — no DAW session saved state (empty instance)
+    //   2. !hasLaunchedBefore_ — never seen the "hasLaunchedBefore" flag in state
+    //   3. !firstBreathActive_ — not already playing (re-entrance from auval)
+    //   4. !firstBreathPending_ — not already armed this session
+    //
+    // auval safety: auval calls prepareToPlay repeatedly without setStateInformation.
+    // Both guards (no saved state + firstBreathActive_ / firstBreathPending_) ensure
+    // we arm at most once per processor lifetime.
+    //
+    // Preset parameter application: we apply "Oxbow_Breath_Mist" parameters inline
+    // (no disk I/O) using APVTS setValueNotifyingHost(), which is message-thread-safe.
+    // Parameters match Presets/XOceanus/Organic/Oxbow/Oxbow_Breath_Mist.xometa verbatim.
+    if (!hasRestoredState.load(std::memory_order_acquire) &&
+        !hasLaunchedBefore_.load(std::memory_order_acquire) &&
+        !firstBreathActive_ &&
+        !firstBreathPending_.load(std::memory_order_relaxed))
+    {
+        // Swap slot 0 from Obrix → Oxbow for the First Breath experience.
+        // This replaces the just-loaded Obrix (above) with the atmospheric pad engine.
+        loadEngine(0, "Oxbow");
+
+        // Apply "Breath Mist" Oxbow parameters inline — no disk I/O required.
+        // Values taken verbatim from Oxbow_Breath_Mist.xometa (Organic mood).
+        // Uses setValueNotifyingHost so the UI reflects the initial state.
+        // Parameters are normalized via convertTo0to1 to respect APVTS range contracts.
+        struct BreathMistParam { const char* id; float value; };
+        static const BreathMistParam kBreathMistParams[] = {
+            {"oxb_size",         0.1f},
+            {"oxb_decay",        0.5f},
+            {"oxb_entangle",     0.06f},
+            {"oxb_erosionRate",  0.05f},
+            {"oxb_erosionDepth", 0.08f},
+            {"oxb_convergence",  4.0f},
+            {"oxb_resonanceQ",   3.5f},
+            {"oxb_resonanceMix", 0.15f},
+            {"oxb_cantilever",   0.12f},
+            {"oxb_damping",      7000.0f},
+            {"oxb_predelay",     0.0f},
+            {"oxb_dryWet",       0.15f},
+            {"oxb_exciterDecay", 0.05f},
+            {"oxb_exciterBright",0.5f},
+        };
+        for (const auto& p : kBreathMistParams)
+        {
+            if (auto* param = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(p.id)))
+                param->setValueNotifyingHost(param->convertTo0to1(p.value));
+        }
+
+        firstBreathPending_.store(true, std::memory_order_release);
+    }
+
     // At end of prepareToPlay, clear any stale pending crossfades
     for (auto& pc : pendingCrossfades)
     {
@@ -1507,6 +1565,86 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             }
         }
     }
+
+    // ── Sound on First Launch — §1.1.1 Principle 4 ───────────────────────────
+    // firstBreathPending_ is set by prepareToPlay() exactly once on TRUE first launch.
+    // We consume it here (audio thread) and inject a sustained soft C3 note into
+    // slot 0.  The note lives until:
+    //   a) any real MIDI note-on arrives from host/PlaySurface (user plays), or
+    //   b) the 30-second failsafe countdown reaches zero.
+    // Both conditions send a note-off and clear firstBreathActive_.
+    //
+    // Audio-thread-only after consumption — no atomics needed for Active/Countdown.
+    {
+        // Arm: consume the pending flag and inject the initial note-on.
+        if (firstBreathPending_.load(std::memory_order_acquire))
+        {
+            firstBreathPending_.store(false, std::memory_order_release);
+            if (enginePtrs[0] != nullptr) // engine must be ready
+            {
+                firstBreathActive_     = true;
+                firstBreathEnginePtr_  = enginePtrs[0]; // remember which engine we triggered
+                firstBreathCountdown_  = static_cast<int>(
+                    currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathTimeoutMs / 1000.0);
+                slotMidi[0].addEvent(
+                    juce::MidiMessage::noteOn(1, kFirstBreathNote, kFirstBreathVelocity), 0);
+            }
+        }
+
+        if (firstBreathActive_)
+        {
+            // Engine-change cancellation: if the user loaded a different engine into
+            // slot 0 (or unloaded it), the slot-0 pointer no longer matches the engine
+            // that received the original note-on.  Sending a note-off to the new engine
+            // would be incorrect.  The outgoing Oxbow engine gets AllNotesOff via the
+            // 50ms crossfade mechanism, so we simply disarm without an extra note-off.
+            if (enginePtrs[0] != firstBreathEnginePtr_)
+            {
+                firstBreathActive_    = false;
+                firstBreathCountdown_ = 0;
+                firstBreathEnginePtr_ = nullptr;
+            }
+            else
+            {
+                // Check whether any real MIDI note-on arrived this block from host or PlaySurface.
+                // We scan the raw `midi` buffer (pre-ChordMachine) rather than slotMidi so we
+                // catch genuine performer input.  Mouse clicks on the PlaySurface also arrive
+                // here via playSurfaceMidiCollector (drained into `midi` above).
+                bool userPlayed = false;
+                for (const auto& meta : midi)
+                {
+                    const auto& msg = meta.getMessage();
+                    if (msg.isNoteOn() && msg.getVelocity() > 0)
+                    {
+                        userPlayed = true;
+                        break;
+                    }
+                }
+
+                if (userPlayed)
+                {
+                    // User started playing — kill First Breath note immediately.
+                    slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
+                    firstBreathActive_    = false;
+                    firstBreathCountdown_ = 0;
+                    firstBreathEnginePtr_ = nullptr;
+                }
+                else
+                {
+                    // Decrement 30-second failsafe countdown.
+                    firstBreathCountdown_ -= numSamples;
+                    if (firstBreathCountdown_ <= 0)
+                    {
+                        slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
+                        firstBreathActive_    = false;
+                        firstBreathCountdown_ = 0;
+                        firstBreathEnginePtr_ = nullptr;
+                    }
+                }
+            }
+        }
+    }
+    // ── end Sound on First Launch ─────────────────────────────────────────────
 
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.
@@ -2211,6 +2349,11 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
 
+        // §1.1.1 Principle 4 — Persist first-launch flag so Sound on First Launch
+        // fires exactly once across all sessions.  Once saved, hasLaunchedBefore is
+        // always true in subsequent saves and is never reset by the user.
+        xml->setAttribute("hasLaunchedBefore", 1);
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -2221,6 +2364,15 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
     if (xml && xml->hasTagName(apvts.state.getType()))
     {
         hasRestoredState = true; // Mark that saved state exists — skip default-engine load in prepareToPlay.
+
+        // §1.1.1 Principle 4 — Restore first-launch flag.  Any saved state implicitly
+        // means the plugin has launched at least once; the explicit attribute makes
+        // the intent clear and handles forward-compatibility gracefully.
+        // Default 0 handles old sessions saved before this feature (first run after
+        // update would replay the experience — intentional, not a bug).
+        if (xml->getIntAttribute("hasLaunchedBefore", 0) != 0)
+            hasLaunchedBefore_.store(true, std::memory_order_release);
+
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
 
         // FIX 4 / Fix #315 — Read schema version and apply forward migrations so
