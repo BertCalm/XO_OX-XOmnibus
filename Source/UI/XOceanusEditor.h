@@ -1479,7 +1479,21 @@ private:
             float activity = processor.getNoteActivity();
             // 5 levels: 0.15 (ghost) → 0.35 (tertiary) → 0.55 (secondary) → 0.80 (primary) → 1.0 (active)
             // Map activity 0-1 to opacity with a floor of 0.15 (never fully invisible)
-            cockpitOpacity_ = cockpitBypass_ ? 1.0f : (0.15f + activity * 0.85f);
+            const float targetOpacity = cockpitBypass_ ? 1.0f : (0.15f + activity * 0.85f);
+
+            // Lerp toward target: ~60ms smoothing at 60Hz timer, ~120ms at 30Hz.
+            // Avoids the snap feel of an immediate assignment.
+            const float newOpacity = cockpitOpacity_ + (targetOpacity - cockpitOpacity_) * 0.15f;
+            const float clamped = juce::jlimit(0.0f, 1.0f, newOpacity);
+
+            // Only repaint if the visible opacity actually changed (avoids
+            // flooding the message thread when the synth is silent and stable).
+            if (std::abs(clamped - cockpitOpacity_) > 0.001f)
+            {
+                cockpitOpacity_ = clamped;
+                repaint();
+            }
+
             statusBar.setCockpitBypass(cockpitBypass_);
         }
     }

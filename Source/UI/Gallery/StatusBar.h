@@ -98,12 +98,16 @@ public:
         makeLabel(bpmLabel, "120 BPM");
         makeLabel(voiceLabel, "Voices: 0");
         makeLabel(cpuLabel, "CPU: 0%");
+        A11y::setup(bpmLabel, "BPM", "Current tempo in beats per minute", false);
+        A11y::setup(voiceLabel, "Voice Count", "Number of currently active voices", false);
+        A11y::setup(cpuLabel, "CPU Usage", "Current CPU load percentage", false);
 
         // ── Performance Lock icon ─────────────────────────────────────────────
         lockBtn.setButtonText("LK"); // plain ASCII — reliable cross-platform rendering
         lockBtn.setTooltip("Performance Lock — block parameter changes during performance");
         lockBtn.setClickingTogglesState(true);
         addAndMakeVisible(lockBtn);
+        A11y::setup(lockBtn, "Status Bar Lock", "Block parameter changes during performance");
 
         // Slot dots are drawn in paint() from slotAccents[] / slotActive[].
         // No child components needed for the dots — pure paint geometry.

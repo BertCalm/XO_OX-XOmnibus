@@ -12,7 +12,7 @@
       - Pre-generated 128x128 noise texture at opacity 0.05
       - Circle-of-fifths markers (13 positions) with tension coloring and
         parabolic arc layout, using HarmonicField math
-      - YES / NO labels in Georgia italic 9px at opacity 0.20
+      - YES / NO labels in GalleryFonts::body italic 11px at opacity 0.20
       - Planchette (B042): translucent oval lens with Lissajous idle drift,
         spring lock-on, warm memory hold, and interior text
       - GestureButtonBar (Task 7): FREEZE/HOME/DRIFT buttons with bank system
@@ -305,9 +305,9 @@ public:
           driftAnchorY_(0.5f), springStartX_(0.5f), springStartY_(0.5f), springTargetX_(0.5f), springTargetY_(0.5f),
           springElapsedMs_(0.0f), springDurationMs_(kSpringMs), warmHoldElapsedMs_(0.0f), driftTimeS_(0.0f),
           state_(State::Lissajous), driftEnabled_(true), displayText_("C · 0%")
-          // Cache Georgia italic font once — avoids repeated construction in paint()
+          // Cache body italic font once — avoids repeated construction in paint()
           ,
-          textFont_(juce::Font("Georgia", 10.0f, juce::Font::italic))
+          textFont_(GalleryFonts::body(10.0f).withStyle(juce::Font::italic))
     {
         setInterceptsMouseClicks(false, false);
         startTimerHz(60);
@@ -440,7 +440,7 @@ public:
         g.setColour(accentColour_);
         g.fillEllipse(cx - kPipDiameter * 0.5f, cy - kPipDiameter * 0.5f, kPipDiameter, kPipDiameter);
 
-        // 5. Interior text — Georgia italic 10px, accent at 85% opacity
+        // 5. Interior text — body italic 10px, accent at 85% opacity
         //    Positioned below centre. Uses cached textFont_ (not rebuilt each paint).
         g.setColour(accentColour_.withAlpha(0.85f));
         g.setFont(textFont_);
@@ -955,15 +955,15 @@ private:
 /** GoodbyeButton (Task 7 — Spec Section 7)
     Warm Terracotta full-width button that resets the XOuija session.
     Color: #E07A5F at 80% opacity normally, 100% on press.
-    Text: "GOODBYE" in Georgia italic 11px, white at 90% opacity.
+    Text: "GOODBYE" in body italic 11px (GalleryFonts::body), white at 90% opacity.
 */
 class GoodbyeButton : public juce::Component
 {
 public:
     //==========================================================================
     GoodbyeButton()
-        // Cache Georgia italic font once — avoids repeated construction in paint()
-        : labelFont_(juce::Font("Georgia", 11.0f, juce::Font::italic))
+        // Cache body italic font once — avoids repeated construction in paint()
+        : labelFont_(GalleryFonts::body(11.0f).withStyle(juce::Font::italic))
     {
         // WCAG Fix 1: accessibility API
         setAccessible(true);
@@ -1009,7 +1009,7 @@ public:
 
 private:
     bool pressed_ = false;
-    juce::Font labelFont_; // cached in constructor — Georgia italic 11px
+    juce::Font labelFont_; // cached in constructor — body italic 11px
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GoodbyeButton)
 };
@@ -1048,14 +1048,18 @@ public:
 
         // B042: add the planchette as a child — it manages its own bounds
         addAndMakeVisible(planchette_);
+        A11y::setup(planchette_, "Planchette - Harmonic Position Indicator",
+                    "Shows current position on circle of fifths and influence depth", false);
         planchette_.setAccentColour(accentColour_);
         updatePlanchetteText();
 
         // Task 7: gesture button bar and GOODBYE button
         addAndMakeVisible(gestureButtons_);
+        A11y::setup(gestureButtons_, "Gesture Buttons", "XOuija gesture action bank: Freeze, Home, Drift and more");
         gestureButtons_.setAccentColour(accentColour_);
 
         addAndMakeVisible(goodbyeButton_);
+        A11y::setup(goodbyeButton_, "Goodbye - All Notes Off", "Resets harmonic position and silences all voices");
 
         // Wire GOODBYE action
         goodbyeButton_.onGoodbye = [this]()
@@ -1116,7 +1120,7 @@ public:
         constexpr float kBaseFontSize = 11.0f;
         constexpr float kSizeFactors[4] = {1.00f, 0.85f, 0.70f, 0.55f};
         for (int i = 0; i < 4; ++i)
-            markerFonts_[i] = juce::Font("Georgia", kBaseFontSize * kSizeFactors[i], juce::Font::italic);
+            markerFonts_[i] = GalleryFonts::body(kBaseFontSize * kSizeFactors[i]).withStyle(juce::Font::italic);
     }
 
     ~XOuijaPanel() override = default;
@@ -1721,7 +1725,7 @@ private:
         g.setColour(labelColour);
         // Static local font — constructed once, shared across all paint() calls
         // Font size raised 9px → 11px for improved legibility (UIX Fix 2)
-        static const juce::Font kYesNoFont("Georgia", 11.0f, juce::Font::italic);
+        static const juce::Font kYesNoFont = GalleryFonts::body(11.0f).withStyle(juce::Font::italic);
         g.setFont(kYesNoFont);
 
         // YES — near the top of the component

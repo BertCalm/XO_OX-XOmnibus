@@ -84,6 +84,7 @@ public:
         sourceBox.addItem("Slot 2", 2);
         sourceBox.addItem("Slot 3", 3);
         sourceBox.addItem("Slot 4", 4);
+        sourceBox.addItem("Slot 5 (Ghost)", 5);
         addAndMakeVisible(sourceBox);
         sourceAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
             apvts, prefix + "source", sourceBox);
@@ -94,6 +95,7 @@ public:
         targetBox.addItem("Slot 2", 2);
         targetBox.addItem("Slot 3", 3);
         targetBox.addItem("Slot 4", 4);
+        targetBox.addItem("Slot 5 (Ghost)", 5);
         addAndMakeVisible(targetBox);
         targetAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
             apvts, prefix + "target", targetBox);

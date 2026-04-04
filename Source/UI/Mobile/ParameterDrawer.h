@@ -4,6 +4,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "MobileLayoutManager.h"
 #include "HapticEngine.h"
+#include "../GalleryColors.h"
 
 namespace xoceanus
 {
@@ -41,9 +42,11 @@ public:
     {
         handleBar.setInterceptsMouseClicks(true, false);
         addAndMakeVisible(handleBar);
+        A11y::setup(handleBar, "Drawer Handle", "Tap to toggle drawer open/closed; swipe to snap to next state");
 
         contentViewport.setScrollBarsShown(true, false);
         addAndMakeVisible(contentViewport);
+        A11y::setup(contentViewport, "Parameter Drawer Content", "Scrollable parameter controls for the active engine");
     }
 
     //-- Configuration -----------------------------------------------------------

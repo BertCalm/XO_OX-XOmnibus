@@ -449,8 +449,35 @@ private:
 
     void timerCallback() override
     {
+        if (!isVisible())
+            return;
+
         // Snapshot route list once per tick (single atomic_load)
         cachedRoutes = couplingMatrix.getRoutes();
+
+        // Check for any active routes before doing further work
+        bool hasActive = false;
+        for (const auto& r : cachedRoutes)
+        {
+            if (r.active && r.amount >= 0.001f)
+            {
+                hasActive = true;
+                break;
+            }
+        }
+
+        if (!hasActive)
+        {
+            // Step down to 1 Hz idle polling when no routes are active
+            if (getTimerInterval() != 1000)
+                startTimerHz(1);
+            return;
+        }
+
+        // Wake back to full rate when active routes exist
+        int targetHz = reducedMotion ? 10 : 30;
+        if (getTimerInterval() > 100)
+            startTimerHz(targetHz);
 
         // Snapshot per-route RMS for arc brightness (relaxed loads)
         for (int i = 0; i < kMaxRMSSlots; ++i)
@@ -459,8 +486,7 @@ private:
         // Advance animation phase (wraps at 2π)
         animPhase = std::fmod(animPhase + 0.12f, juce::MathConstants<float>::twoPi);
 
-        if (!cachedRoutes.empty())
-            repaint();
+        repaint();
     }
 
     //--------------------------------------------------------------------------
@@ -1044,8 +1070,11 @@ private:
                 if (result == 1)
                 {
                     // Set Amount — show an AlertWindow with a text editor.
+                    // takeOwnership=true: JUCE deletes dialog when modal session ends.
+                    // Do NOT call delete dialog inside the callback.
                     auto* dialog = new juce::AlertWindow(
-                        "Set Coupling Amount", "Enter a value between 0.0 and 1.0:", juce::MessageBoxIconType::NoIcon);
+                        "Set Coupling Amount", "Enter a value between 0.0 and 1.0:", juce::MessageBoxIconType::NoIcon,
+                        this);
                     dialog->addTextEditor("amount",
                                           juce::String((routeIdx >= 0 && routeIdx < (int)cachedRoutes.size())
                                                            ? cachedRoutes[static_cast<size_t>(routeIdx)].amount
@@ -1057,31 +1086,32 @@ private:
                     dialog->enterModalState(
                         true,
                         juce::ModalCallbackFunction::create(
-                            [this, dialog, srcSlot, dstSlot, routeType](int r)
+                            [safeThis = juce::Component::SafePointer<CouplingVisualizer>(this), dialog, srcSlot,
+                             dstSlot, routeType](int r)
                             {
-                                if (r == 1)
+                                if (r == 1 && safeThis)
                                 {
                                     float newAmt = juce::jlimit(
                                         0.0f, 1.0f, dialog->getTextEditorContents("amount").getFloatValue());
 
                                     // Replace the route with the updated amount.
-                                    auto routes = couplingMatrix.getRoutes();
+                                    auto routes = safeThis->couplingMatrix.getRoutes();
                                     for (auto& ro : routes)
                                     {
                                         if (ro.sourceSlot == srcSlot && ro.destSlot == dstSlot &&
                                             ro.type == routeType && !ro.isNormalled)
                                         {
-                                            couplingMatrix.removeUserRoute(srcSlot, dstSlot, routeType);
+                                            safeThis->couplingMatrix.removeUserRoute(srcSlot, dstSlot, routeType);
                                             ro.amount = newAmt;
-                                            couplingMatrix.addRoute(ro);
+                                            safeThis->couplingMatrix.addRoute(ro);
                                             break;
                                         }
                                     }
-                                    refresh();
+                                    safeThis->refresh();
                                 }
-                                delete dialog;
+                                // dialog is owned by JUCE (takeOwnership=true) — do NOT delete here.
                             }),
-                        true);
+                        true /*takeOwnership — JUCE deletes dialog when modal session ends*/);
                 }
                 else if (result >= 100)
                 {
@@ -1143,8 +1173,11 @@ private:
                 CouplingType chosenType = types[static_cast<size_t>(idx)];
 
                 // Ask for amount via an AlertWindow.
+                // takeOwnership=true: JUCE deletes dialog when modal session ends.
+                // Do NOT call delete dialog inside the callback.
                 auto* dialog = new juce::AlertWindow(
-                    "Set Coupling Amount", "Enter a value between 0.0 and 1.0:", juce::MessageBoxIconType::NoIcon);
+                    "Set Coupling Amount", "Enter a value between 0.0 and 1.0:", juce::MessageBoxIconType::NoIcon,
+                    this);
                 dialog->addTextEditor("amount", "0.50");
                 dialog->addButton("Add", 1);
                 dialog->addButton("Cancel", 0);
@@ -1152,9 +1185,10 @@ private:
                 dialog->enterModalState(
                     true,
                     juce::ModalCallbackFunction::create(
-                        [this, dialog, srcSlot, dstSlot, chosenType](int r)
+                        [safeThis = juce::Component::SafePointer<CouplingVisualizer>(this), dialog, srcSlot, dstSlot,
+                         chosenType](int r)
                         {
-                            if (r == 1)
+                            if (r == 1 && safeThis)
                             {
                                 float amt =
                                     juce::jlimit(0.0f, 1.0f, dialog->getTextEditorContents("amount").getFloatValue());
@@ -1167,13 +1201,13 @@ private:
                                 newRoute.isNormalled = false;
                                 newRoute.active = true;
 
-                                couplingMatrix.addRoute(newRoute);
-                                lastUsedType = chosenType;
-                                refresh();
+                                safeThis->couplingMatrix.addRoute(newRoute);
+                                safeThis->lastUsedType = chosenType;
+                                safeThis->refresh();
                             }
-                            delete dialog;
+                            // dialog is owned by JUCE (takeOwnership=true) — do NOT delete here.
                         }),
-                    true);
+                    true /*takeOwnership — JUCE deletes dialog when modal session ends*/);
             });
     }
 

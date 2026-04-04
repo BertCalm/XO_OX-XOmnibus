@@ -38,6 +38,19 @@ public:
     void focusGained(FocusChangeType) override { repaint(); }
     void focusLost(FocusChangeType) override { repaint(); }
 
+    // Hover ring — repaint on enter/exit so drawRotarySlider sees the updated
+    // isMouseOver() state and can draw/remove the passive hover highlight.
+    void mouseEnter(const juce::MouseEvent& e) override
+    {
+        juce::Slider::mouseEnter(e);
+        repaint();
+    }
+    void mouseExit(const juce::MouseEvent& e) override
+    {
+        juce::Slider::mouseExit(e);
+        repaint();
+    }
+
     void mouseDown(const juce::MouseEvent& e) override
     {
         // Right-click is handled by MidiLearnMouseListener — don't swallow it here.

@@ -1214,7 +1214,9 @@ public:
 
         // V2: XOuija panel + KeysMode
         addAndMakeVisible(xouijaPanel_);
+        A11y::setup(xouijaPanel_, "XOuija Panel", "Harmonic navigator: circle of fifths and influence depth control");
         addAndMakeVisible(keysMode_);
+        A11y::setup(keysMode_, "Keys Mode", "Piano-style keyboard input surface");
         keysMode_.setVisible(false); // Initially hidden — shown when mode == Keys
 
         // Wire XOuija position changes -> pad and keys coloring
@@ -1258,6 +1260,9 @@ public:
         modeButtons[1].setButtonText("DRUM");
         modeButtons[2].setButtonText("KEYS");
         modeButtons[0].setToggleState(true, juce::dontSendNotification);
+        A11y::setup(modeButtons[0], "Pad Mode", "Switch note input to velocity-sensitive pad grid");
+        A11y::setup(modeButtons[1], "Drum Mode", "Switch note input to drum grid layout");
+        A11y::setup(modeButtons[2], "Keys Mode", "Switch note input to piano keyboard layout");
 
         // V2 mode wiring: PAD=0, DRUM=2 (maps to NoteInputZone::Mode::Drum), KEYS=3
         modeButtons[0].onClick = [this]()
@@ -1283,8 +1288,11 @@ public:
         octLabel.setJustificationType(juce::Justification::centred);
         octLabel.setColour(juce::Label::textColourId, PS::textLight());
         addAndMakeVisible(octDownBtn);
+        A11y::setup(octDownBtn, "Octave Down", "Shift note range one octave lower");
         addAndMakeVisible(octUpBtn);
+        A11y::setup(octUpBtn, "Octave Up", "Shift note range one octave higher");
         addAndMakeVisible(octLabel);
+        A11y::setup(octLabel, "Octave Display", "Current octave offset", false);
 
         octDownBtn.onClick = [this]
         {
@@ -1306,6 +1314,8 @@ public:
             bankButtons[i].setRadioGroupId(103);
             bankButtons[i].setButtonText(bankLabels[i]);
             addAndMakeVisible(bankButtons[i]);
+            A11y::setup(bankButtons[i], juce::String("Bank ") + bankLabels[i],
+                        juce::String("Select note bank ") + bankLabels[i] + " (16-note offset)");
         }
         bankButtons[0].setToggleState(true, juce::dontSendNotification);
 
@@ -1317,6 +1327,7 @@ public:
         // Scale mode button — cycles Off → Filter → Highlight → Off
         scaleModeBtn.setButtonText("SCL");
         addAndMakeVisible(scaleModeBtn);
+        A11y::setup(scaleModeBtn, "Scale Mode", "Cycle scale mode: Off, Filter (hide out-of-scale pads), Highlight");
         scaleModeBtn.onClick = [this]
         {
             // P2-2: use setter rather than direct mutation of scaleMode field
@@ -1357,6 +1368,10 @@ public:
         stripModeButtons[2].setButtonText("CPL");
         stripModeButtons[3].setButtonText("SIREN");
         stripModeButtons[0].setToggleState(true, juce::dontSendNotification);
+        A11y::setup(stripModeButtons[0], "Strip Mode: Dub", "Performance strip controls dub space delay effect");
+        A11y::setup(stripModeButtons[1], "Strip Mode: Filter", "Performance strip controls filter sweep");
+        A11y::setup(stripModeButtons[2], "Strip Mode: Coupling", "Performance strip controls coupling intensity");
+        A11y::setup(stripModeButtons[3], "Strip Mode: Siren", "Performance strip controls dub siren pitch");
 
         for (int i = 0; i < 4; ++i)
         {

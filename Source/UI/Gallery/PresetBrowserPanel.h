@@ -29,6 +29,7 @@ public:
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.onTextChange = [this] { startTimer(150); };
         addAndMakeVisible(searchField);
+        A11y::setup(searchField, "Preset Search", "Type to filter presets by name");
 
         // Mood filter buttons (ALL = index 0, then 15 moods)
         static const char* moodLabels[] = {"ALL",      "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
@@ -53,6 +54,8 @@ public:
             };
             GalleryLookAndFeel::setMoodPillStyle(moodBtns[i]);
             addAndMakeVisible(moodBtns[i]);
+            A11y::setup(moodBtns[i], juce::String("Mood Filter: ") + moodLabels[i],
+                        "Filter preset list by mood category");
         }
         moodBtns[0].setToggleState(true, juce::dontSendNotification);
 
@@ -64,12 +67,14 @@ public:
         listBox.setColour(juce::ListBox::outlineColourId, GalleryColors::border());
         listBox.setOutlineThickness(1);
         addAndMakeVisible(listBox);
+        A11y::setup(listBox, "Preset List", "Scrollable list of presets matching current filter");
 
         // Count label
         countLabel.setFont(GalleryFonts::label(8.5f));
         countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
+        A11y::setup(countLabel, "Preset Count", "Number of presets matching current filter", false);
 
         updateFilter();
         // #194: preferred initial size; layout is responsive and will reflow

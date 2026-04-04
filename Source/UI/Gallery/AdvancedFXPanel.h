@@ -31,12 +31,15 @@ public:
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, paramDefs[static_cast<size_t>(i)].first, knobs[i]);
             enableKnobReset(knobs[i], apvts, paramDefs[static_cast<size_t>(i)].first);
+            A11y::setup(knobs[i], paramDefs[static_cast<size_t>(i)].second,
+                        "Advanced FX parameter: " + paramDefs[static_cast<size_t>(i)].second);
 
             lbls[i].setText(paramDefs[static_cast<size_t>(i)].second, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
+            A11y::setup(lbls[i], paramDefs[static_cast<size_t>(i)].second + " Label", {}, false);
         }
         setSize(64 * count + 16, 96);
     }

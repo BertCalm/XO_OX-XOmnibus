@@ -112,6 +112,11 @@ public:
 
         // ── 5. Arc fill — 1.8px, engine accent ────────────────────────────
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
+
+        // Passive hover: subtle brightness lift when hovering but not dragging.
+        // isMouseOver() is true for hover-only; isMouseButtonDown() is false.
+        const bool isPassiveHover = enabled && slider.isMouseOver() && !slider.isMouseButtonDown();
+
         if (enabled && sliderPos > 0.001f)
         {
             juce::Path fillArc;
@@ -120,6 +125,10 @@ public:
             auto fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
             if (fillColour.isTransparent())
                 fillColour = get(xoGold);
+
+            // 12% brightness boost on passive hover — keeps it professional, not game-like.
+            if (isPassiveHover)
+                fillColour = fillColour.brighter(0.12f);
 
             g.setColour(fillColour);
             g.strokePath(fillArc,
@@ -132,6 +141,15 @@ public:
             float dotR = 1.8f;
             g.setColour(fillColour.withAlpha(0.9f));
             g.fillEllipse(dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
+        }
+
+        // ── 6b. Passive hover ring — 1px translucent ring, only when hovering ─
+        // Shown at all slider positions (including zero) so the user always gets
+        // visual confirmation that the knob is interactive when they hover over it.
+        if (isPassiveHover)
+        {
+            g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.10f));
+            g.drawEllipse(cx - radius, cy - radius, diameter, diameter, 1.0f);
         }
 
         // ── 7. Focus ring (WCAG 2.4.7) ────────────────────────────────────
