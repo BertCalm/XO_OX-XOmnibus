@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic",
+  "mood": "Deep",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Plate-tectonic scale. Low, inexorable, slow. Maximum competition means single notes suppress all others.",
+  "tags": [
+    "piano",
+    "tectonic",
+    "deep",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.8,
+    "movement": 0.05,
+    "density": 0.95,
+    "space": 0.35,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 300.0,
+      "oven_bodyResonance": 0.92,
+      "oven_hfAmount": 0.08,
+      "oven_hardness": 0.65,
+      "oven_density": 0.95,
+      "oven_temperature": 0.5,
+      "oven_sympathetic": 0.25,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 5.5,
+      "oven_filterEnvAmt": 0.18,
+      "oven_ampAttack": 0.002,
+      "oven_ampDecay": 4.0,
+      "oven_ampSustain": 0.5,
+      "oven_ampRelease": 3.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.6,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

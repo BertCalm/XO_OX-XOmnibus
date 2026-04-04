@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Prepared Iron",
+  "mood": "Crystalline",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "John Cage prepared piano via cast iron. Objects placed on the strings alter the modal resonator timbre. Metallic and pure.",
+  "tags": [
+    "piano",
+    "prepared",
+    "john cage",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 9000.0,
+      "oven_bodyResonance": 0.32,
+      "oven_hfAmount": 0.85,
+      "oven_hardness": 0.75,
+      "oven_density": 0.5,
+      "oven_temperature": 0.65,
+      "oven_sympathetic": 0.55,
+      "oven_bloomTime": 0.15,
+      "oven_sustainTime": 5.0,
+      "oven_filterEnvAmt": 0.55,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 3.0,
+      "oven_ampSustain": 0.2,
+      "oven_ampRelease": 3.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

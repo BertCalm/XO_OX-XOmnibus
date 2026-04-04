@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Minimalist Touch",
+  "mood": "Foundation",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Philip Glass territory. Repetitive but each note sounds fresh. Low sympathetic, crisp attack, medium sustain.",
+  "tags": [
+    "piano",
+    "minimalist",
+    "repetitive",
+    "modern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.08,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 4000.0,
+      "oven_bodyResonance": 0.5,
+      "oven_hfAmount": 0.48,
+      "oven_hardness": 0.4,
+      "oven_density": 0.6,
+      "oven_temperature": 0.45,
+      "oven_sympathetic": 0.22,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 3.0,
+      "oven_filterEnvAmt": 0.3,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 2.0,
+      "oven_ampSustain": 0.25,
+      "oven_ampRelease": 1.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

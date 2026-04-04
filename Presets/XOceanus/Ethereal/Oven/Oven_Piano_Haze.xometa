@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Piano Haze",
+  "mood": "Ethereal",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Notes dissolve before they fully form. Very fast attack but extremely long bloom that blurs the onset.",
+  "tags": [
+    "piano",
+    "haze",
+    "diffuse",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.82,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 3200.0,
+      "oven_bodyResonance": 0.42,
+      "oven_hfAmount": 0.4,
+      "oven_hardness": 0.12,
+      "oven_density": 0.42,
+      "oven_temperature": 0.6,
+      "oven_sympathetic": 0.88,
+      "oven_bloomTime": 0.5,
+      "oven_sustainTime": 10.0,
+      "oven_filterEnvAmt": 0.15,
+      "oven_ampAttack": 0.12,
+      "oven_ampDecay": 6.0,
+      "oven_ampSustain": 0.32,
+      "oven_ampRelease": 6.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.08,
+      "oven_lfo1Depth": 0.06,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.15,
+      "oven_lfo2Depth": 0.04,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

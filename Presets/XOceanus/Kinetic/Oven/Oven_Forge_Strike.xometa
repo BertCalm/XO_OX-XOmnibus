@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Forge Strike",
+  "mood": "Kinetic",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum hardness, minimum bloom, short sustain. A hammer falling on iron. Percussive and immediate.",
+  "tags": [
+    "piano",
+    "percussive",
+    "attack",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.08,
+    "density": 0.75,
+    "space": 0.3,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 6000.0,
+      "oven_bodyResonance": 0.6,
+      "oven_hfAmount": 0.7,
+      "oven_hardness": 0.98,
+      "oven_density": 0.75,
+      "oven_temperature": 0.55,
+      "oven_sympathetic": 0.2,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 1.5,
+      "oven_filterEnvAmt": 0.65,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 0.8,
+      "oven_ampSustain": 0.15,
+      "oven_ampRelease": 0.6,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

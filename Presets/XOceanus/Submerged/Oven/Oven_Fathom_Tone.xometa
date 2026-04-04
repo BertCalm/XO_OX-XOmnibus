@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Fathom Tone",
+  "mood": "Submerged",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Six thousand feet down. Every parameter pushed toward depth and density. Barely recognizable as piano.",
+  "tags": [
+    "piano",
+    "fathom",
+    "deep",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.85,
+    "movement": 0.28,
+    "density": 0.95,
+    "space": 0.42,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 280.0,
+      "oven_bodyResonance": 0.95,
+      "oven_hfAmount": 0.05,
+      "oven_hardness": 0.3,
+      "oven_density": 0.95,
+      "oven_temperature": 0.48,
+      "oven_sympathetic": 0.72,
+      "oven_bloomTime": 0.8,
+      "oven_sustainTime": 10.0,
+      "oven_filterEnvAmt": 0.1,
+      "oven_ampAttack": 0.5,
+      "oven_ampDecay": 6.5,
+      "oven_ampSustain": 0.45,
+      "oven_ampRelease": 7.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

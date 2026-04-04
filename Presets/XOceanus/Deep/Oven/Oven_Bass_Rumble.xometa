@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Bass Rumble",
+  "mood": "Deep",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure low-frequency mass. Near-subsonic modal resonators with high density and body resonance. Not a melody instrument \u2014 a tectonic event.",
+  "tags": [
+    "bass",
+    "deep",
+    "subsonic",
+    "heavy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.82,
+    "movement": 0.08,
+    "density": 1.0,
+    "space": 0.3,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 300.0,
+      "oven_bodyResonance": 0.95,
+      "oven_hfAmount": 0.05,
+      "oven_hardness": 0.75,
+      "oven_density": 1.0,
+      "oven_temperature": 0.55,
+      "oven_sympathetic": 0.2,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 6.0,
+      "oven_filterEnvAmt": 0.18,
+      "oven_ampAttack": 0.002,
+      "oven_ampDecay": 4.0,
+      "oven_ampSustain": 0.5,
+      "oven_ampRelease": 3.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

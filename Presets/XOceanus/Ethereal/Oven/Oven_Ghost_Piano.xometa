@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Piano",
+  "mood": "Ethereal",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The piano as memory. Long bloom, long sustain, high sympathetic. Notes arrive slowly and depart reluctantly.",
+  "tags": [
+    "piano",
+    "ghost",
+    "memory",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.48,
+    "space": 0.8,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 3500.0,
+      "oven_bodyResonance": 0.45,
+      "oven_hfAmount": 0.42,
+      "oven_hardness": 0.15,
+      "oven_density": 0.48,
+      "oven_temperature": 0.52,
+      "oven_sympathetic": 0.88,
+      "oven_bloomTime": 0.45,
+      "oven_sustainTime": 9.0,
+      "oven_filterEnvAmt": 0.18,
+      "oven_ampAttack": 0.08,
+      "oven_ampDecay": 6.5,
+      "oven_ampSustain": 0.32,
+      "oven_ampRelease": 5.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

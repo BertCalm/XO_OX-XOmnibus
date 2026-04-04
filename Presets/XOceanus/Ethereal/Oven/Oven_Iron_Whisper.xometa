@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Iron Whisper",
+  "mood": "Ethereal",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The quietest voice the instrument can make. Below pianissimo. The frame absorbs the impact and returns a breath.",
+  "tags": [
+    "piano",
+    "quiet",
+    "whisper",
+    "soft"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.68,
+    "movement": 0.18,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 2800.0,
+      "oven_bodyResonance": 0.4,
+      "oven_hfAmount": 0.3,
+      "oven_hardness": 0.08,
+      "oven_density": 0.38,
+      "oven_temperature": 0.48,
+      "oven_sympathetic": 0.85,
+      "oven_bloomTime": 0.35,
+      "oven_sustainTime": 9.0,
+      "oven_filterEnvAmt": 0.1,
+      "oven_ampAttack": 0.2,
+      "oven_ampDecay": 5.5,
+      "oven_ampSustain": 0.3,
+      "oven_ampRelease": 6.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

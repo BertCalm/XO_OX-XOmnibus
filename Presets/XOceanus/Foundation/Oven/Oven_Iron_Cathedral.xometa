@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Iron Cathedral",
+  "mood": "Foundation",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full concert grand at room temperature. Deep modal resonators ring true, sympathetic strings shimmer behind every note. The cast iron frame gives the tone a slight metallic warmth absent from spruce-board instruments.",
+  "tags": [
+    "piano",
+    "concert grand",
+    "classical",
+    "iron",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 4500.0,
+      "oven_bodyResonance": 0.65,
+      "oven_hfAmount": 0.55,
+      "oven_hardness": 0.45,
+      "oven_density": 0.75,
+      "oven_temperature": 0.5,
+      "oven_sympathetic": 0.5,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 5.0,
+      "oven_filterEnvAmt": 0.4,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 3.0,
+      "oven_ampSustain": 0.35,
+      "oven_ampRelease": 2.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.2,
+      "oven_lfo1Depth": 0.04,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

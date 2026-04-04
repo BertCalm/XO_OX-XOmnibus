@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Current Drift",
+  "mood": "Submerged",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thermal drift carries the pitch like an ocean current. Maximum temperature, long bloom, high sympathetic.",
+  "tags": [
+    "piano",
+    "drift",
+    "current",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.78,
+    "movement": 0.55,
+    "density": 0.68,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 900.0,
+      "oven_bodyResonance": 0.78,
+      "oven_hfAmount": 0.15,
+      "oven_hardness": 0.18,
+      "oven_density": 0.68,
+      "oven_temperature": 0.98,
+      "oven_sympathetic": 0.65,
+      "oven_bloomTime": 0.65,
+      "oven_sustainTime": 7.5,
+      "oven_filterEnvAmt": 0.15,
+      "oven_ampAttack": 0.4,
+      "oven_ampDecay": 5.0,
+      "oven_ampSustain": 0.38,
+      "oven_ampRelease": 5.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.06,
+      "oven_lfo1Depth": 0.09,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Cast Iron Solo",
+  "mood": "Deep",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The lowest register solo voice. Full range of the piano but biased deep. Like Monk comping in the bass clef.",
+  "tags": [
+    "piano",
+    "solo",
+    "bass",
+    "jazz"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.72,
+    "movement": 0.1,
+    "density": 0.82,
+    "space": 0.38,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 900.0,
+      "oven_bodyResonance": 0.78,
+      "oven_hfAmount": 0.28,
+      "oven_hardness": 0.55,
+      "oven_density": 0.82,
+      "oven_temperature": 0.5,
+      "oven_sympathetic": 0.32,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 4.0,
+      "oven_filterEnvAmt": 0.28,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 2.8,
+      "oven_ampSustain": 0.38,
+      "oven_ampRelease": 2.2,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

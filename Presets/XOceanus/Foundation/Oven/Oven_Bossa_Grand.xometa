@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Bossa Grand",
+  "mood": "Foundation",
+  "engines": [
+    "Oven"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bossa nova voicing. Medium attack, short-ish decay. Clean, articulate, slightly bright.",
+  "tags": [
+    "piano",
+    "bossa",
+    "jazz",
+    "clean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.12,
+    "density": 0.62,
+    "space": 0.45,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 4500.0,
+      "oven_bodyResonance": 0.55,
+      "oven_hfAmount": 0.5,
+      "oven_hardness": 0.45,
+      "oven_density": 0.62,
+      "oven_temperature": 0.48,
+      "oven_sympathetic": 0.28,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 2.8,
+      "oven_filterEnvAmt": 0.35,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 1.8,
+      "oven_ampSustain": 0.28,
+      "oven_ampRelease": 1.3,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.3,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.8,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
