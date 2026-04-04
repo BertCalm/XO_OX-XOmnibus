@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Headhunters Comp",
+  "mood": "Flux",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Herbie Hancock Headhunters session. Tremolo at the right pace, bell up, stereo. Maximum funk.",
+  "tags": [
+    "rhodes",
+    "funk",
+    "herbie",
+    "headhunters"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.78,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.32,
+      "okan_bell": 0.65,
+      "okan_brightness": 7500.0,
+      "okan_tremRate": 5.8,
+      "okan_tremDepth": 0.75,
+      "okan_attack": 0.004,
+      "okan_decay": 0.75,
+      "okan_sustain": 0.6,
+      "okan_release": 0.45,
+      "okan_filterEnvAmt": 0.45,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.68,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.78,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

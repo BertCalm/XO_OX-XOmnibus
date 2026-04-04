@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Ocean Trem",
+  "mood": "Flux",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tidal tremolo rate. The slowest natural oscillation. Notes breathe like ocean swells.",
+  "tags": [
+    "rhodes",
+    "ocean",
+    "tremolo",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.62,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.42,
+      "okan_bell": 0.48,
+      "okan_brightness": 5800.0,
+      "okan_tremRate": 0.8,
+      "okan_tremDepth": 0.58,
+      "okan_attack": 0.005,
+      "okan_decay": 0.9,
+      "okan_sustain": 0.65,
+      "okan_release": 0.6,
+      "okan_filterEnvAmt": 0.3,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.65,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.55,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

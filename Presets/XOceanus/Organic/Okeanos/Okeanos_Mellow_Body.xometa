@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Mellow Body",
+  "mood": "Organic",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High warmth, minimal bell, low filter envelope. The body of the instrument is the sound. Acoustic heritage.",
+  "tags": [
+    "rhodes",
+    "body",
+    "warm",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.88,
+    "movement": 0.08,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.82,
+      "okan_bell": 0.25,
+      "okan_brightness": 4000.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.007,
+      "okan_decay": 1.0,
+      "okan_sustain": 0.7,
+      "okan_release": 0.65,
+      "okan_filterEnvAmt": 0.2,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.42,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

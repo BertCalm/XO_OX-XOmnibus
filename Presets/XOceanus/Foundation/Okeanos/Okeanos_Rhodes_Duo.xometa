@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Rhodes Duo",
+  "mood": "Foundation",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two-piano session blend. Wider stereo, complementary tones. For layered arrangements.",
+  "tags": [
+    "rhodes",
+    "wide",
+    "layered",
+    "duo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.38,
+      "okan_bell": 0.52,
+      "okan_brightness": 6200.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.06,
+      "okan_attack": 0.004,
+      "okan_decay": 0.85,
+      "okan_sustain": 0.62,
+      "okan_release": 0.52,
+      "okan_filterEnvAmt": 0.36,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.82,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

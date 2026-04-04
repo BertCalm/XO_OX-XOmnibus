@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Floating Chord",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chords floating in space. Wide stereo, very long release, slight tremolo. Weightless.",
+  "tags": [
+    "rhodes",
+    "floating",
+    "pad",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.42,
+      "okan_bell": 0.52,
+      "okan_brightness": 6000.0,
+      "okan_tremRate": 3.5,
+      "okan_tremDepth": 0.15,
+      "okan_attack": 0.12,
+      "okan_decay": 1.6,
+      "okan_sustain": 0.7,
+      "okan_release": 3.0,
+      "okan_filterEnvAmt": 0.2,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.95,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.55,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

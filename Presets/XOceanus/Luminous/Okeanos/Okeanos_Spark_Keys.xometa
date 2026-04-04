@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Spark Keys",
+  "mood": "Luminous",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sparkling brightness with slight tremolo for added movement. Like electrostatic sparks.",
+  "tags": [
+    "rhodes",
+    "spark",
+    "bright",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.35,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.1,
+      "okan_bell": 0.85,
+      "okan_brightness": 16000.0,
+      "okan_tremRate": 6.0,
+      "okan_tremDepth": 0.22,
+      "okan_attack": 0.003,
+      "okan_decay": 0.68,
+      "okan_sustain": 0.5,
+      "okan_release": 0.45,
+      "okan_filterEnvAmt": 0.65,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.62,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

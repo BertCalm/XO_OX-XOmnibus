@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Tine Breath",
+  "mood": "Organic",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The tines breathing. Slight LFO1 movement at very low depth. Like the natural resonance of a room.",
+  "tags": [
+    "rhodes",
+    "breath",
+    "organic",
+    "lfo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.5,
+      "okan_bell": 0.48,
+      "okan_brightness": 5800.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.005,
+      "okan_decay": 0.9,
+      "okan_sustain": 0.65,
+      "okan_release": 0.58,
+      "okan_filterEnvAmt": 0.32,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.5,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.15,
+      "okan_lfo1Depth": 0.06,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

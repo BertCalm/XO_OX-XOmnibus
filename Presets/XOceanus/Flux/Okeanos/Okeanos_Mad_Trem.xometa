@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Mad Trem",
+  "mood": "Flux",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme tremolo rate, maximum depth. The Rhodes as modulation source. Frenzied.",
+  "tags": [
+    "rhodes",
+    "tremolo",
+    "extreme",
+    "mod"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.6,
+    "movement": 0.98,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.28,
+      "okan_bell": 0.55,
+      "okan_brightness": 7000.0,
+      "okan_tremRate": 11.5,
+      "okan_tremDepth": 1.0,
+      "okan_attack": 0.004,
+      "okan_decay": 0.78,
+      "okan_sustain": 0.58,
+      "okan_release": 0.45,
+      "okan_filterEnvAmt": 0.45,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.75,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.95,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Piano Body",
+  "mood": "Organic",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The body resonance dominates. Acoustic piano DNA bleeding into the tine character.",
+  "tags": [
+    "rhodes",
+    "piano",
+    "body",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.82,
+    "movement": 0.1,
+    "density": 0.75,
+    "space": 0.45,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.72,
+      "okan_bell": 0.32,
+      "okan_brightness": 4800.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.006,
+      "okan_decay": 0.95,
+      "okan_sustain": 0.68,
+      "okan_release": 0.62,
+      "okan_filterEnvAmt": 0.28,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.48,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

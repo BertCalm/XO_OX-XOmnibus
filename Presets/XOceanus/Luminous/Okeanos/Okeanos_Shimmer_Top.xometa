@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Top",
+  "mood": "Luminous",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High-register luminous shimmer. Maximum brightness with slight tremolo creates a glittering surface.",
+  "tags": [
+    "rhodes",
+    "shimmer",
+    "bright",
+    "treble"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.32,
+    "movement": 0.28,
+    "density": 0.45,
+    "space": 0.62,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.08,
+      "okan_bell": 0.88,
+      "okan_brightness": 17000.0,
+      "okan_tremRate": 5.0,
+      "okan_tremDepth": 0.25,
+      "okan_attack": 0.003,
+      "okan_decay": 0.7,
+      "okan_sustain": 0.5,
+      "okan_release": 0.48,
+      "okan_filterEnvAmt": 0.62,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.68,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Jazz Club 2AM",
+  "mood": "Foundation",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Late-night jazz club. Clean tines, medium decay, almost no tremolo. Bill Evans territory.",
+  "tags": [
+    "rhodes",
+    "jazz",
+    "club",
+    "late night"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.35,
+      "okan_bell": 0.5,
+      "okan_brightness": 6500.0,
+      "okan_tremRate": 4.5,
+      "okan_tremDepth": 0.05,
+      "okan_attack": 0.004,
+      "okan_decay": 0.8,
+      "okan_sustain": 0.62,
+      "okan_release": 0.48,
+      "okan_filterEnvAmt": 0.35,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.45,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

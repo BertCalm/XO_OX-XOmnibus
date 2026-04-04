@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Vibrato Circuit",
+  "mood": "Flux",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep stereo tremolo with wide spread. Panning like the original suitcase vibrato.",
+  "tags": [
+    "rhodes",
+    "vibrato",
+    "stereo",
+    "pan"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.75,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.35,
+      "okan_bell": 0.5,
+      "okan_brightness": 6000.0,
+      "okan_tremRate": 5.5,
+      "okan_tremDepth": 0.7,
+      "okan_attack": 0.005,
+      "okan_decay": 1.0,
+      "okan_sustain": 0.6,
+      "okan_release": 0.5,
+      "okan_filterEnvAmt": 0.35,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.8,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.7,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

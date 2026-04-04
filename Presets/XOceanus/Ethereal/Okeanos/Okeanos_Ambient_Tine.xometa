@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Ambient Tine",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Rhodes as ambient texture. Maximum release, slow attack, gentle bell. Sustained harmonic field.",
+  "tags": [
+    "rhodes",
+    "ambient",
+    "texture",
+    "long"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.48,
+      "okan_bell": 0.5,
+      "okan_brightness": 5800.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.2,
+      "okan_decay": 1.8,
+      "okan_sustain": 0.72,
+      "okan_release": 4.5,
+      "okan_filterEnvAmt": 0.18,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.85,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

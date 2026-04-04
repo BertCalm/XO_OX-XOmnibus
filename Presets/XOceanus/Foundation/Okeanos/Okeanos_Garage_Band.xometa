@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Garage Band",
+  "mood": "Foundation",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rehearsal space Rhodes. Slightly gritty, medium bell. Real and unpolished.",
+  "tags": [
+    "rhodes",
+    "garage",
+    "gritty",
+    "band"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.1,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.38,
+      "okan_bell": 0.52,
+      "okan_brightness": 6500.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.04,
+      "okan_attack": 0.004,
+      "okan_decay": 0.75,
+      "okan_sustain": 0.58,
+      "okan_release": 0.45,
+      "okan_filterEnvAmt": 0.42,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.42,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.0,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

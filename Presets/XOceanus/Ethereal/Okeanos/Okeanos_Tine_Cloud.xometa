@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Tine Cloud",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Multiple tines forming a harmonic cloud. Long release, medium bell, wide stereo. For chord pads.",
+  "tags": [
+    "rhodes",
+    "cloud",
+    "pad",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.15,
+    "density": 0.48,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_warmth": 0.45,
+      "okan_bell": 0.55,
+      "okan_brightness": 6200.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.1,
+      "okan_decay": 1.6,
+      "okan_sustain": 0.7,
+      "okan_release": 2.8,
+      "okan_filterEnvAmt": 0.22,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.92,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.0,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.5,
+      "okan_lfo1Rate": 0.5,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.0,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
