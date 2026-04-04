@@ -146,16 +146,16 @@ struct ScopedAudioThreadInit
 };
 
 //==============================================================================
-/// initAudioThreadOnce() — thread-safe one-shot initialization via std::call_once.
+/// initAudioThreadOnce() — per-thread one-shot initialization via thread_local.
 ///
-/// Intended for use at the very top of processBlock. The first call from any
-/// thread initializes that thread's FPU flags; subsequent calls within the same
-/// translation unit are a near-zero-cost check of the once_flag.
+/// Intended for use at the very top of processBlock. The first call on any
+/// given thread initializes that thread's FPU flags; subsequent calls on the
+/// same thread are a near-zero-cost branch on a thread_local bool.
 ///
-/// IMPORTANT: std::once_flag is per-translation-unit static — this ensures the
-/// init runs once per *process*, not once per thread. For multi-threaded offline
-/// render scenarios where separate worker threads need their own FPCR set,
-/// call initAudioThread() directly at thread entry (e.g. via ScopedAudioThreadInit).
+/// Uses thread_local storage so every DSP thread (audio thread, offline render
+/// workers, export threads) gets its own FPCR.FZ / MXCSR DAZ+FTZ initialization.
+/// Safe to call on every processBlock — the thread_local flag ensures the work
+/// happens exactly once per thread, not once per process.
 ///
 /// Usage in XOceanusProcessor.cpp:
 ///
@@ -166,10 +166,9 @@ struct ScopedAudioThreadInit
 ///       juce::ScopedNoDenormals noDenormals; // x86 scoped guard (belt-and-suspenders)
 ///       ...
 ///   }
-inline void initAudioThreadOnce() noexcept
-{
-    static std::once_flag sInitFlag;
-    std::call_once(sInitFlag, []() noexcept { initAudioThread(); });
+inline void initAudioThreadOnce() noexcept {
+    thread_local bool sInitialized = false;
+    if (!sInitialized) { initAudioThread(); sInitialized = true; }
 }
 
 // ARM64-aware denormal guard for use in testing and offline rendering contexts

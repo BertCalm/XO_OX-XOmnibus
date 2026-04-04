@@ -72,7 +72,7 @@ public:
     // sampleRate is used to scale the control-rate decimation ratio so that the
     // effective modulation update rate stays near ~1.5 kHz regardless of sample
     // rate (e.g. 32 @ 48 kHz ≈ 1.5 kHz; 64 @ 96 kHz ≈ 1.5 kHz).
-    void prepare(int maxBlockSize, double sampleRate = 48000.0)
+    void prepare(int maxBlockSize, double sampleRate)
     {
         couplingBuffer.resize(static_cast<size_t>(maxBlockSize), 0.0f);
         couplingBufferR.resize(static_cast<size_t>(maxBlockSize), 0.0f);

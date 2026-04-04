@@ -132,7 +132,7 @@ public:
     /// sample rate (16 Hz at 44.1 kHz, same at 48 kHz, 88.2 kHz, 96 kHz, etc.).
     void prepare(double sampleRate)
     {
-        dcBlockR = 1.0f - (2.0f * 3.14159265f * 16.0f / static_cast<float>(sampleRate));
+        dcBlockR = 1.0f - std::exp(-2.0f * 3.14159265f * 16.0f / static_cast<float>(sampleRate));
         reset();
     }
 

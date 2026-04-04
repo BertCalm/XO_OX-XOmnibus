@@ -29,6 +29,7 @@ public:
     void prepare(double sampleRate) noexcept
     {
         jassert(sampleRate > 0.0); // P1-7
+        if (sampleRate <= 0.0) return;
         sr = sampleRate;
         screamPhase = 0.0f;
     }

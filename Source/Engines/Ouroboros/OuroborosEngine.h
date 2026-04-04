@@ -1685,6 +1685,7 @@ private:
 
     void handleNoteOn(int note, float velocity) noexcept
     {
+        if (currentSampleRate.load(std::memory_order_acquire) <= 0.0) return;
         ++noteCounter;
 
         // Find a free voice slot
@@ -1737,7 +1738,7 @@ private:
     //  ENGINE STATE
     //==========================================================================
 
-    std::atomic<double> currentSampleRate{44100.0};
+    std::atomic<double> currentSampleRate{0.0};
     int currentBlockSize = 512;
     uint64_t noteCounter = 0;
     AttractorTopology currentTopology = AttractorTopology::Lorenz;

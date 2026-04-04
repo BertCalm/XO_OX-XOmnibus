@@ -120,7 +120,7 @@ public:
         // Stage 1: Saturator
         saturator.setMode(Saturator::SaturationMode::Tape);
         saturator.setOutputGain(0.85f);
-        saturator.reset();
+        saturator.prepare(sampleRate);
 
         // Stage 2: Corroder
         corroder.prepare(sampleRate);
