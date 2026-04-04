@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// NOTE: This file is currently unused and not included in the build.
+// Retained for potential future use. See GitHub issue #637.
+
 // WavetableEditor.h — JUCE Component for editing and visualizing wavetable data.
 //
 // Displays the current frame of a WavetableOscillator as a filled waveform path,

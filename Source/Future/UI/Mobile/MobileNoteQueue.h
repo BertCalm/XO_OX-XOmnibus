@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// NOTE: This file is currently unused and not included in the build.
+// Retained for potential future use. See GitHub issue #637.
+
 #include <atomic>
 #include <array>
 #include <cstdint>
