@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Thumb Piano",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The clavinet heard as an electronic kalimba \u2014 soft attack, natural decay, neck pickup warmth. African diaspora resonance.",
+  "tags": [
+    "clavinet",
+    "kalimba",
+    "thumb-piano",
+    "africa",
+    "diaspora",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.12,
+      "onko_pickup": 0.25,
+      "onko_brightness": 4000.0,
+      "onko_clunk": 0.25,
+      "onko_attack": 0.003,
+      "onko_decay": 0.8,
+      "onko_sustain": 0.35,
+      "onko_release": 0.45,
+      "onko_filterEnvAmt": 0.2,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.3,
+      "onko_macroMovement": 0.15,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.55,
+      "onko_lfo1Rate": 0.05,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 1,
+      "onko_lfo2Rate": 0.08,
+      "onko_lfo2Depth": 0.06,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

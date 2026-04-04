@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Dual Membrane",
+  "mood": "Coupling",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two membranes in conversation \u2014 clunk and migration create a paired mechanical resonance. Physical model coupling.",
+  "tags": [
+    "clavinet",
+    "dual",
+    "membrane",
+    "mechanical",
+    "coupling",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.52,
+    "movement": 0.42,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.45,
+      "onko_pickup": 0.6,
+      "onko_brightness": 7500.0,
+      "onko_clunk": 0.65,
+      "onko_attack": 0.001,
+      "onko_decay": 0.35,
+      "onko_sustain": 0.35,
+      "onko_release": 0.16,
+      "onko_filterEnvAmt": 0.5,
+      "onko_migration": 0.4,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.45,
+      "onko_macroMovement": 0.42,
+      "onko_macroCoupling": 0.6,
+      "onko_macroSpace": 0.48,
+      "onko_lfo1Rate": 0.1,
+      "onko_lfo1Depth": 0.06,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.6,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

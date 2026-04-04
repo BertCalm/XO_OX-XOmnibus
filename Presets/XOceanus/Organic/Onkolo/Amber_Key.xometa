@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Amber Key",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm amber clavinet tone \u2014 minimal wah, neck pickup dominant, long natural decay. Like a vintage key under warm light.",
+  "tags": [
+    "clavinet",
+    "amber",
+    "warm",
+    "vintage",
+    "neck",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.78,
+    "movement": 0.1,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.05,
+      "onko_pickup": 0.15,
+      "onko_brightness": 4500.0,
+      "onko_clunk": 0.3,
+      "onko_attack": 0.002,
+      "onko_decay": 0.9,
+      "onko_sustain": 0.45,
+      "onko_release": 0.5,
+      "onko_filterEnvAmt": 0.08,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.28,
+      "onko_macroMovement": 0.0,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.55,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 1,
+      "onko_lfo2Rate": 0.04,
+      "onko_lfo2Depth": 0.03,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

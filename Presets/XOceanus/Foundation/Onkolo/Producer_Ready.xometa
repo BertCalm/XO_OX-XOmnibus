@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Producer Ready",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The preset a session player loads and keeps \u2014 moderate wah, medium pickup, everything in the right proportion.",
+  "tags": [
+    "clavinet",
+    "session",
+    "producer",
+    "balanced",
+    "ready",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.22,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.52,
+      "onko_pickup": 0.68,
+      "onko_brightness": 8200.0,
+      "onko_clunk": 0.5,
+      "onko_attack": 0.001,
+      "onko_decay": 0.28,
+      "onko_sustain": 0.35,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.58,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.55,
+      "onko_macroMovement": 0.42,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.45,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.8,
+      "onko_lfo2Depth": 0.0,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

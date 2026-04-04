@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Rooftop Slap",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Percussive muted clavinet \u2014 high clunk, very short decay, slap articulation. Rhythmic and tight.",
+  "tags": [
+    "clavinet",
+    "slap",
+    "percussive",
+    "muted",
+    "kinetic",
+    "tight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.82,
+    "density": 0.45,
+    "space": 0.22,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.72,
+      "onko_pickup": 0.85,
+      "onko_brightness": 9000.0,
+      "onko_clunk": 0.85,
+      "onko_attack": 0.001,
+      "onko_decay": 0.12,
+      "onko_sustain": 0.1,
+      "onko_release": 0.06,
+      "onko_filterEnvAmt": 0.75,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.72,
+      "onko_macroMovement": 0.88,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.22,
+      "onko_lfo1Rate": 0.05,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 8.0,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

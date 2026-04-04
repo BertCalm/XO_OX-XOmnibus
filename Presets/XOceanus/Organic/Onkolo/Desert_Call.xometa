@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Desert Call",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "North African gnawa-influenced clavinet \u2014 pentatonic feel implied by clunk rhythm, warm tone, minimal wah. The Sahara edge.",
+  "tags": [
+    "clavinet",
+    "gnawa",
+    "north-africa",
+    "desert",
+    "pentatonic",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.48,
+    "space": 0.48,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.2,
+      "onko_pickup": 0.38,
+      "onko_brightness": 5800.0,
+      "onko_clunk": 0.45,
+      "onko_attack": 0.001,
+      "onko_decay": 0.55,
+      "onko_sustain": 0.35,
+      "onko_release": 0.25,
+      "onko_filterEnvAmt": 0.22,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.35,
+      "onko_macroMovement": 0.18,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.48,
+      "onko_lfo1Rate": 0.1,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.06,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

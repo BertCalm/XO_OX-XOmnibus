@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Night Market",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Clavinet heard across a night market \u2014 natural decay, light touch, warm atmosphere. The everyday music of diaspora life.",
+  "tags": [
+    "clavinet",
+    "night-market",
+    "diaspora",
+    "warm",
+    "atmospheric",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.68,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.52,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.18,
+      "onko_pickup": 0.35,
+      "onko_brightness": 5500.0,
+      "onko_clunk": 0.28,
+      "onko_attack": 0.002,
+      "onko_decay": 0.72,
+      "onko_sustain": 0.42,
+      "onko_release": 0.35,
+      "onko_filterEnvAmt": 0.2,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.3,
+      "onko_macroMovement": 0.12,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.52,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 1,
+      "onko_lfo2Rate": 0.05,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

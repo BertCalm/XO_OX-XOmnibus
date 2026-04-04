@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Hendrix Clav",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Band of Gypsys clavinet energy \u2014 aggressive wah, raw tonal character, dirty midrange bite. Psychedelic funk.",
+  "tags": [
+    "clavinet",
+    "hendrix",
+    "psychedelic",
+    "wah",
+    "aggressive",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.52,
+    "space": 0.3,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.92,
+      "onko_pickup": 0.8,
+      "onko_brightness": 7500.0,
+      "onko_clunk": 0.6,
+      "onko_attack": 0.001,
+      "onko_decay": 0.22,
+      "onko_sustain": 0.2,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.85,
+      "onko_migration": 0.0,
+      "onko_bendRange": 4,
+      "onko_macroCharacter": 0.88,
+      "onko_macroMovement": 0.72,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.32,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.06,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 3.5,
+      "onko_lfo2Depth": 0.08,
+      "onko_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

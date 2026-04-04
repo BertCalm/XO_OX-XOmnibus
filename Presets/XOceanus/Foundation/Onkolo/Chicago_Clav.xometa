@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Chicago Clav",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chicago blues-influenced clavinet \u2014 the D6 in the hands of Buddy Guy's keyboard player. Gritty warmth, controlled wah.",
+  "tags": [
+    "clavinet",
+    "chicago",
+    "blues",
+    "gritty",
+    "warm",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.25,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.42,
+      "onko_pickup": 0.55,
+      "onko_brightness": 7000.0,
+      "onko_clunk": 0.52,
+      "onko_attack": 0.001,
+      "onko_decay": 0.38,
+      "onko_sustain": 0.38,
+      "onko_release": 0.18,
+      "onko_filterEnvAmt": 0.45,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.45,
+      "onko_macroMovement": 0.32,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.48,
+      "onko_lfo1Rate": 0.1,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.5,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

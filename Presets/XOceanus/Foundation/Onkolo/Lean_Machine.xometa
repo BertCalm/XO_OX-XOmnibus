@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Lean Machine",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Lean, stripped-down clavinet \u2014 nothing superfluous. Pickup positioned for maximum efficiency, wah controlled, clunk present.",
+  "tags": [
+    "clavinet",
+    "lean",
+    "stripped",
+    "efficient",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.22,
+    "density": 0.48,
+    "space": 0.38,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.48,
+      "onko_pickup": 0.72,
+      "onko_brightness": 9000.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.001,
+      "onko_decay": 0.22,
+      "onko_sustain": 0.28,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.52,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.5,
+      "onko_macroMovement": 0.42,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.4,
+      "onko_lfo1Rate": 0.07,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.8,
+      "onko_lfo2Depth": 0.0,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

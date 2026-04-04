@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Griot's Voice",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "West African griot storytelling through clavinet \u2014 moderate wah like a talking drum, warm register, narrative decay.",
+  "tags": [
+    "clavinet",
+    "griot",
+    "west-africa",
+    "talking-drum",
+    "narrative",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.42,
+      "onko_pickup": 0.4,
+      "onko_brightness": 6200.0,
+      "onko_clunk": 0.42,
+      "onko_attack": 0.002,
+      "onko_decay": 0.55,
+      "onko_sustain": 0.35,
+      "onko_release": 0.28,
+      "onko_filterEnvAmt": 0.45,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.4,
+      "onko_macroMovement": 0.3,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.48,
+      "onko_lfo1Rate": 0.12,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 1,
+      "onko_lfo2Rate": 0.08,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

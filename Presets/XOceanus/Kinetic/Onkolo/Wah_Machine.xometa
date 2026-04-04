@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Wah Machine",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure auto-wah clavinet \u2014 maximum funk depth, every note a wah sweep. The most extreme filter-envelope preset in the collection.",
+  "tags": [
+    "clavinet",
+    "wah",
+    "auto-wah",
+    "filter",
+    "extreme",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.35,
+    "movement": 0.82,
+    "density": 0.52,
+    "space": 0.3,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 1.0,
+      "onko_pickup": 0.85,
+      "onko_brightness": 10000.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.001,
+      "onko_decay": 0.22,
+      "onko_sustain": 0.22,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.95,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.95,
+      "onko_macroMovement": 0.8,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.32,
+      "onko_lfo1Rate": 0.12,
+      "onko_lfo1Depth": 0.08,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 4.0,
+      "onko_lfo2Depth": 0.08,
+      "onko_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

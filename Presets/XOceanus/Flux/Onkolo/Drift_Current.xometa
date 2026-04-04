@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Drift Current",
+  "mood": "Flux",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Random sample-and-hold wah drift \u2014 the filter follows an unpredictable path, like a current finding its own way.",
+  "tags": [
+    "clavinet",
+    "drift",
+    "random",
+    "sample-hold",
+    "unpredictable",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.72,
+      "onko_pickup": 0.72,
+      "onko_brightness": 8500.0,
+      "onko_clunk": 0.5,
+      "onko_attack": 0.001,
+      "onko_decay": 0.25,
+      "onko_sustain": 0.25,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.75,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.72,
+      "onko_macroMovement": 0.78,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.42,
+      "onko_lfo1Rate": 0.15,
+      "onko_lfo1Depth": 0.35,
+      "onko_lfo1Shape": 4,
+      "onko_lfo2Rate": 0.22,
+      "onko_lfo2Depth": 0.25,
+      "onko_lfo2Shape": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

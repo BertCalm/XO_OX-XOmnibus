@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Superstition",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Stevie Wonder's clavinet riff incarnate \u2014 bridge pickup, heavy wah, punchy attack, aggressive filter envelope. The quintessential Clavinet D6 sound.",
+  "tags": [
+    "clavinet",
+    "stevie-wonder",
+    "funk",
+    "wah",
+    "kinetic",
+    "classic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.35,
+    "movement": 0.75,
+    "density": 0.58,
+    "space": 0.28,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.88,
+      "onko_pickup": 0.92,
+      "onko_brightness": 11000.0,
+      "onko_clunk": 0.65,
+      "onko_attack": 0.001,
+      "onko_decay": 0.25,
+      "onko_sustain": 0.3,
+      "onko_release": 0.08,
+      "onko_filterEnvAmt": 0.88,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.85,
+      "onko_macroMovement": 0.75,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.3,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 4.0,
+      "onko_lfo2Depth": 0.06,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

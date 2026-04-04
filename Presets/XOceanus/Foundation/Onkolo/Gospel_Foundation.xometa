@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Gospel Foundation",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Gospel keyboard in the soul-funk tradition \u2014 clavinet as church instrument, moderate wah, spiritual presence.",
+  "tags": [
+    "clavinet",
+    "gospel",
+    "church",
+    "soul",
+    "spiritual",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.45,
+      "onko_pickup": 0.58,
+      "onko_brightness": 7500.0,
+      "onko_clunk": 0.42,
+      "onko_attack": 0.001,
+      "onko_decay": 0.38,
+      "onko_sustain": 0.42,
+      "onko_release": 0.18,
+      "onko_filterEnvAmt": 0.48,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.45,
+      "onko_macroMovement": 0.35,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.5,
+      "onko_lfo1Rate": 0.1,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.5,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

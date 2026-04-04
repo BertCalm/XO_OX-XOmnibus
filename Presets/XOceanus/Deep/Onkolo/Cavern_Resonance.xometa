@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Cavern Resonance",
+  "mood": "Deep",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Clavinet resonating in a cave \u2014 the D6 body becomes the cave walls. Long mechanical decay, dark overtones.",
+  "tags": [
+    "clavinet",
+    "cavern",
+    "resonance",
+    "cave",
+    "dark",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.82,
+    "movement": 0.1,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.15,
+      "onko_pickup": 0.15,
+      "onko_brightness": 2500.0,
+      "onko_clunk": 0.65,
+      "onko_attack": 0.003,
+      "onko_decay": 1.5,
+      "onko_sustain": 0.48,
+      "onko_release": 0.65,
+      "onko_filterEnvAmt": 0.18,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.22,
+      "onko_macroMovement": 0.05,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.68,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.06,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.04,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

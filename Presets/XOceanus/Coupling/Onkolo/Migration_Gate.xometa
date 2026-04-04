@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Migration Gate",
+  "mood": "Coupling",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Coupling-controlled gate \u2014 migration at maximum creates a gate effect driven by the coupling signal. Dynamic coupling architecture.",
+  "tags": [
+    "clavinet",
+    "migration",
+    "gate",
+    "dynamic",
+    "coupling",
+    "control"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.62,
+      "onko_pickup": 0.68,
+      "onko_brightness": 8800.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.001,
+      "onko_decay": 0.24,
+      "onko_sustain": 0.28,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.65,
+      "onko_migration": 0.8,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.62,
+      "onko_macroMovement": 0.58,
+      "onko_macroCoupling": 0.85,
+      "onko_macroSpace": 0.38,
+      "onko_lfo1Rate": 0.12,
+      "onko_lfo1Depth": 0.06,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 1.0,
+      "onko_lfo2Depth": 0.06,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

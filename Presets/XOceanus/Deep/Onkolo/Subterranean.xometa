@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Subterranean",
+  "mood": "Deep",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Underground clavinet frequencies \u2014 heavy low-end, dark filter, mechanical resonance. The D6 in the earth.",
+  "tags": [
+    "clavinet",
+    "sub",
+    "underground",
+    "dark",
+    "filter",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.82,
+    "movement": 0.12,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.42,
+      "onko_pickup": 0.15,
+      "onko_brightness": 2000.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.002,
+      "onko_decay": 0.9,
+      "onko_sustain": 0.45,
+      "onko_release": 0.45,
+      "onko_filterEnvAmt": 0.45,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.28,
+      "onko_macroMovement": 0.08,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.62,
+      "onko_lfo1Rate": 0.07,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.06,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

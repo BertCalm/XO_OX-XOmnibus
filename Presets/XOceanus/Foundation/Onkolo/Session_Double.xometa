@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Session Double",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The classic double-tracked clavinet studio technique \u2014 slightly different pickup positions create natural width.",
+  "tags": [
+    "clavinet",
+    "double",
+    "session",
+    "studio",
+    "wide",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.42,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.55,
+      "onko_pickup": 0.62,
+      "onko_brightness": 8800.0,
+      "onko_clunk": 0.5,
+      "onko_attack": 0.001,
+      "onko_decay": 0.28,
+      "onko_sustain": 0.35,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.6,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.55,
+      "onko_macroMovement": 0.4,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.45,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.6,
+      "onko_lfo2Depth": 0.03,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

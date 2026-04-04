@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Pure Quartz",
+  "mood": "Crystalline",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Quartz-pure clavinet \u2014 no coloration, no wah, maximum tonal transparency. The instrument heard without any character processing.",
+  "tags": [
+    "clavinet",
+    "quartz",
+    "pure",
+    "transparent",
+    "clean",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.08,
+    "density": 0.3,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.0,
+      "onko_pickup": 0.88,
+      "onko_brightness": 15000.0,
+      "onko_clunk": 0.15,
+      "onko_attack": 0.001,
+      "onko_decay": 1.0,
+      "onko_sustain": 0.28,
+      "onko_release": 0.72,
+      "onko_filterEnvAmt": 0.0,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.65,
+      "onko_macroMovement": 0.04,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.58,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.03,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.03,
+      "onko_lfo2Depth": 0.02,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

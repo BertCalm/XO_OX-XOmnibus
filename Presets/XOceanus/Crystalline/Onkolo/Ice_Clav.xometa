@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Ice Clav",
+  "mood": "Crystalline",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Frozen clavinet tone \u2014 ultra-bright, no wah, long clean crystalline decay. Cold and precise.",
+  "tags": [
+    "clavinet",
+    "ice",
+    "frozen",
+    "bright",
+    "cold",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.15,
+    "movement": 0.08,
+    "density": 0.32,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.0,
+      "onko_pickup": 0.88,
+      "onko_brightness": 17000.0,
+      "onko_clunk": 0.12,
+      "onko_attack": 0.001,
+      "onko_decay": 1.1,
+      "onko_sustain": 0.25,
+      "onko_release": 0.75,
+      "onko_filterEnvAmt": 0.0,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.68,
+      "onko_macroMovement": 0.04,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.6,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.03,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.03,
+      "onko_lfo2Depth": 0.02,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

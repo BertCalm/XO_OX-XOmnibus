@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Dub Foundation",
+  "mood": "Deep",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Clavinet as dub music foundation \u2014 deep wah, extended reverb decay, bass-frequency emphasis. Kingston influence.",
+  "tags": [
+    "clavinet",
+    "dub",
+    "kingston",
+    "bass",
+    "foundation",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.58,
+    "space": 0.7,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.48,
+      "onko_pickup": 0.2,
+      "onko_brightness": 2800.0,
+      "onko_clunk": 0.4,
+      "onko_attack": 0.002,
+      "onko_decay": 1.0,
+      "onko_sustain": 0.48,
+      "onko_release": 0.55,
+      "onko_filterEnvAmt": 0.52,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.3,
+      "onko_macroMovement": 0.08,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.65,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.05,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

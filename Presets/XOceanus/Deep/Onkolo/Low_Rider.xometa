@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Low Rider",
+  "mood": "Deep",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Low-riding clavinet \u2014 slow groove, sub emphasis, moderate wah opening slowly. The hydraulic bounce of the instrument.",
+  "tags": [
+    "clavinet",
+    "low-rider",
+    "sub",
+    "groove",
+    "slow",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.78,
+    "movement": 0.15,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.42,
+      "onko_pickup": 0.22,
+      "onko_brightness": 3000.0,
+      "onko_clunk": 0.45,
+      "onko_attack": 0.002,
+      "onko_decay": 0.95,
+      "onko_sustain": 0.45,
+      "onko_release": 0.48,
+      "onko_filterEnvAmt": 0.45,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.28,
+      "onko_macroMovement": 0.08,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.62,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.06,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

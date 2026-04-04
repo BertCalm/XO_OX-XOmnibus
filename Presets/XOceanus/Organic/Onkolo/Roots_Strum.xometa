@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Roots Strum",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reggae-roots clavinet strum \u2014 relaxed tempo, mid wah, warm pickup. The upstroke complement to a roots bassline.",
+  "tags": [
+    "clavinet",
+    "reggae",
+    "roots",
+    "strum",
+    "warm",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.32,
+    "density": 0.48,
+    "space": 0.45,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.38,
+      "onko_pickup": 0.48,
+      "onko_brightness": 6500.0,
+      "onko_clunk": 0.4,
+      "onko_attack": 0.001,
+      "onko_decay": 0.38,
+      "onko_sustain": 0.32,
+      "onko_release": 0.18,
+      "onko_filterEnvAmt": 0.42,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.4,
+      "onko_macroMovement": 0.32,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.48,
+      "onko_lfo1Rate": 0.14,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.1,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Heartwood",
+  "mood": "Organic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep within the wood \u2014 neck pickup, zero wah, slow decay like tree rings. The oldest clavinet possible.",
+  "tags": [
+    "clavinet",
+    "wood",
+    "neck",
+    "deep",
+    "natural",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.85,
+    "movement": 0.08,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.0,
+      "onko_pickup": 0.08,
+      "onko_brightness": 3200.0,
+      "onko_clunk": 0.35,
+      "onko_attack": 0.003,
+      "onko_decay": 1.5,
+      "onko_sustain": 0.5,
+      "onko_release": 0.7,
+      "onko_filterEnvAmt": 0.0,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.2,
+      "onko_macroMovement": 0.0,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.6,
+      "onko_lfo1Rate": 0.05,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 1,
+      "onko_lfo2Rate": 0.03,
+      "onko_lfo2Depth": 0.03,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Iron Gate",
+  "mood": "Deep",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Heavy iron-gate clavinet \u2014 slow filter movement, dark tone, clunk resonates into a cavernous sub-frequency.",
+  "tags": [
+    "clavinet",
+    "iron",
+    "heavy",
+    "gate",
+    "dark",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.12,
+    "density": 0.6,
+    "space": 0.68,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.38,
+      "onko_pickup": 0.2,
+      "onko_brightness": 2800.0,
+      "onko_clunk": 0.75,
+      "onko_attack": 0.002,
+      "onko_decay": 1.0,
+      "onko_sustain": 0.45,
+      "onko_release": 0.5,
+      "onko_filterEnvAmt": 0.4,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.3,
+      "onko_macroMovement": 0.06,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.65,
+      "onko_lfo1Rate": 0.07,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.06,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

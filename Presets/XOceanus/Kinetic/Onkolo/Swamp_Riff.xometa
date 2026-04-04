@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Swamp Riff",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Murky, southern-fried clavinet \u2014 mid wah, warm pickup position, elongated decay for a loose swampy feel.",
+  "tags": [
+    "clavinet",
+    "swamp",
+    "southern",
+    "wah",
+    "warm",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.52,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.42,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.7,
+      "onko_pickup": 0.6,
+      "onko_brightness": 7000.0,
+      "onko_clunk": 0.62,
+      "onko_attack": 0.001,
+      "onko_decay": 0.38,
+      "onko_sustain": 0.28,
+      "onko_release": 0.14,
+      "onko_filterEnvAmt": 0.72,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.65,
+      "onko_macroMovement": 0.62,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.45,
+      "onko_lfo1Rate": 0.16,
+      "onko_lfo1Depth": 0.06,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 1.5,
+      "onko_lfo2Depth": 0.08,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

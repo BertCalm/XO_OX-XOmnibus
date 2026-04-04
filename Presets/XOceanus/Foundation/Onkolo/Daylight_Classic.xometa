@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Daylight Classic",
+  "mood": "Foundation",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Open, bright daytime clavinet \u2014 the cheerful side of the D6 without being aggressive.",
+  "tags": [
+    "clavinet",
+    "bright",
+    "open",
+    "daylight",
+    "cheerful",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.22,
+    "density": 0.48,
+    "space": 0.38,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.38,
+      "onko_pickup": 0.72,
+      "onko_brightness": 10000.0,
+      "onko_clunk": 0.42,
+      "onko_attack": 0.001,
+      "onko_decay": 0.25,
+      "onko_sustain": 0.32,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.42,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_macroCharacter": 0.52,
+      "onko_macroMovement": 0.32,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.42,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.8,
+      "onko_lfo2Depth": 0.0,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
