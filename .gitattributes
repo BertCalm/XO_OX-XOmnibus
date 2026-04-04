@@ -1,4 +1,4 @@
-# XOlokun — Git line-ending normalization
+# XOceanus — Git line-ending normalization
 # Ensures consistent LF line endings in the repository regardless of contributor OS.
 # Default: normalise all text files to LF on commit
 * text=auto eol=lf

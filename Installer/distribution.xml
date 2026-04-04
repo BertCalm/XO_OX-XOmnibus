@@ -4,7 +4,7 @@
     <!-- ------------------------------------------------------------------ -->
     <!-- Product metadata                                                     -->
     <!-- ------------------------------------------------------------------ -->
-    <title>XOlokun — for all</title>
+    <title>XOceanus — for all</title>
     <organization>org.xo-ox</organization>
     <domains enable_localSystem="true" enable_currentUserHome="true"/>
     <options customize="allow" require-scripts="false" rootVolumeOnly="false"/>
@@ -36,59 +36,59 @@
     <!-- ------------------------------------------------------------------ -->
     <!-- Package references                                                   -->
     <!-- ------------------------------------------------------------------ -->
-    <pkg-ref id="org.xo-ox.xolokun.au"
+    <pkg-ref id="org.xo-ox.xoceanus.au"
              version="1.0.0"
-             onConclusion="none">XOlokun-AU.pkg</pkg-ref>
+             onConclusion="none">XOceanus-AU.pkg</pkg-ref>
 
-    <pkg-ref id="org.xo-ox.xolokun.standalone"
+    <pkg-ref id="org.xo-ox.xoceanus.standalone"
              version="1.0.0"
-             onConclusion="none">XOlokun-Standalone.pkg</pkg-ref>
+             onConclusion="none">XOceanus-Standalone.pkg</pkg-ref>
 
-    <pkg-ref id="org.xo-ox.xolokun.presets"
+    <pkg-ref id="org.xo-ox.xoceanus.presets"
              version="1.0.0"
-             onConclusion="none">XOlokun-Presets.pkg</pkg-ref>
+             onConclusion="none">XOceanus-Presets.pkg</pkg-ref>
 
     <!-- ------------------------------------------------------------------ -->
     <!-- Choice declarations                                                  -->
     <!-- ------------------------------------------------------------------ -->
 
     <!-- AU Plugin (required) -->
-    <choice id="org.xo-ox.xolokun.choice.au"
+    <choice id="org.xo-ox.xoceanus.choice.au"
             title="AU Plugin"
-            description="Installs XOlokun.component to /Library/Audio/Plug-Ins/Components/ for use in any AU-compatible DAW (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)."
+            description="Installs XOceanus.component to /Library/Audio/Plug-Ins/Components/ for use in any AU-compatible DAW (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)."
             start_selected="true"
             start_enabled="false"
             start_visible="true">
-        <pkg-ref id="org.xo-ox.xolokun.au"/>
+        <pkg-ref id="org.xo-ox.xoceanus.au"/>
     </choice>
 
     <!-- Standalone App (optional) -->
-    <choice id="org.xo-ox.xolokun.choice.standalone"
+    <choice id="org.xo-ox.xoceanus.choice.standalone"
             title="Standalone Application"
-            description="Installs XOlokun.app to /Applications/ for use without a DAW."
+            description="Installs XOceanus.app to /Applications/ for use without a DAW."
             start_selected="true"
             start_enabled="true"
             start_visible="true">
-        <pkg-ref id="org.xo-ox.xolokun.standalone"/>
+        <pkg-ref id="org.xo-ox.xoceanus.standalone"/>
     </choice>
 
     <!-- Factory Presets (default on) -->
-    <choice id="org.xo-ox.xolokun.choice.presets"
+    <choice id="org.xo-ox.xoceanus.choice.presets"
             title="Factory Presets"
-            description="Installs ~17,300 factory presets (15 mood categories) to ~/Library/Audio/Presets/XO_OX/XOlokun/."
+            description="Installs ~17,300 factory presets (15 mood categories) to ~/Library/Audio/Presets/XO_OX/XOceanus/."
             start_selected="true"
             start_enabled="true"
             start_visible="true">
-        <pkg-ref id="org.xo-ox.xolokun.presets"/>
+        <pkg-ref id="org.xo-ox.xoceanus.presets"/>
     </choice>
 
     <!-- ------------------------------------------------------------------ -->
     <!-- Choice outline                                                       -->
     <!-- ------------------------------------------------------------------ -->
     <choices-outline>
-        <line choice="org.xo-ox.xolokun.choice.au"/>
-        <line choice="org.xo-ox.xolokun.choice.standalone"/>
-        <line choice="org.xo-ox.xolokun.choice.presets"/>
+        <line choice="org.xo-ox.xoceanus.choice.au"/>
+        <line choice="org.xo-ox.xoceanus.choice.standalone"/>
+        <line choice="org.xo-ox.xoceanus.choice.presets"/>
     </choices-outline>
 
 </installer-gui-script>

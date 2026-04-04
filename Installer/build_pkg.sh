@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# build_pkg.sh — Build the XOlokun macOS .pkg installer
+# build_pkg.sh — Build the XOceanus macOS .pkg installer
 #
 # Usage:
 #   ./Installer/build_pkg.sh [Debug|Release]
@@ -10,7 +10,7 @@
 #   - Xcode Command Line Tools (provides pkgbuild / productbuild)
 #
 # Output:
-#   Installer/XOlokun-Installer.pkg
+#   Installer/XOceanus-Installer.pkg
 
 set -euo pipefail
 
@@ -20,14 +20,14 @@ set -euo pipefail
 BUILD_CONFIG="${1:-Release}"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="${REPO_ROOT}/build"
-ARTEFACTS_DIR="${BUILD_DIR}/XOlokun_artefacts/${BUILD_CONFIG}"
+ARTEFACTS_DIR="${BUILD_DIR}/XOceanus_artefacts/${BUILD_CONFIG}"
 INSTALLER_DIR="${REPO_ROOT}/Installer"
 STAGING_DIR="${INSTALLER_DIR}/_staging"
-PKG_OUTPUT="${INSTALLER_DIR}/XOlokun-Installer.pkg"
+PKG_OUTPUT="${INSTALLER_DIR}/XOceanus-Installer.pkg"
 
-AU_SRC="${ARTEFACTS_DIR}/AU/XOlokun.component"
-APP_SRC="${ARTEFACTS_DIR}/Standalone/XOlokun.app"
-PRESETS_SRC="${REPO_ROOT}/Presets/XOlokun"
+AU_SRC="${ARTEFACTS_DIR}/AU/XOceanus.component"
+APP_SRC="${ARTEFACTS_DIR}/Standalone/XOceanus.app"
+PRESETS_SRC="${REPO_ROOT}/Presets/XOceanus"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -60,7 +60,7 @@ rm -rf "${STAGING_DIR}"
 mkdir -p \
     "${STAGING_DIR}/au/Library/Audio/Plug-Ins/Components" \
     "${STAGING_DIR}/standalone/Applications" \
-    "${STAGING_DIR}/presets/Library/Audio/Presets/XO_OX/XOlokun"
+    "${STAGING_DIR}/presets/Library/Audio/Presets/XO_OX/XOceanus"
 
 # ---------------------------------------------------------------------------
 # Stage artefacts
@@ -72,7 +72,7 @@ info "Staging Standalone app..."
 cp -R "${APP_SRC}" "${STAGING_DIR}/standalone/Applications/"
 
 info "Staging Presets..."
-cp -R "${PRESETS_SRC}/." "${STAGING_DIR}/presets/Library/Audio/Presets/XO_OX/XOlokun/"
+cp -R "${PRESETS_SRC}/." "${STAGING_DIR}/presets/Library/Audio/Presets/XO_OX/XOceanus/"
 
 # ---------------------------------------------------------------------------
 # Build component packages
@@ -82,26 +82,26 @@ mkdir -p "${STAGING_DIR}/pkgs"
 info "Building AU component package..."
 pkgbuild \
     --root "${STAGING_DIR}/au" \
-    --identifier "org.xo-ox.xolokun.au" \
+    --identifier "org.xo-ox.xoceanus.au" \
     --version "1.0.0" \
     --install-location "/" \
-    "${STAGING_DIR}/pkgs/XOlokun-AU.pkg"
+    "${STAGING_DIR}/pkgs/XOceanus-AU.pkg"
 
 info "Building Standalone component package..."
 pkgbuild \
     --root "${STAGING_DIR}/standalone" \
-    --identifier "org.xo-ox.xolokun.standalone" \
+    --identifier "org.xo-ox.xoceanus.standalone" \
     --version "1.0.0" \
     --install-location "/" \
-    "${STAGING_DIR}/pkgs/XOlokun-Standalone.pkg"
+    "${STAGING_DIR}/pkgs/XOceanus-Standalone.pkg"
 
 info "Building Presets component package..."
 pkgbuild \
     --root "${STAGING_DIR}/presets" \
-    --identifier "org.xo-ox.xolokun.presets" \
+    --identifier "org.xo-ox.xoceanus.presets" \
     --version "1.0.0" \
     --install-location "/" \
-    "${STAGING_DIR}/pkgs/XOlokun-Presets.pkg"
+    "${STAGING_DIR}/pkgs/XOceanus-Presets.pkg"
 
 # ---------------------------------------------------------------------------
 # Build product installer

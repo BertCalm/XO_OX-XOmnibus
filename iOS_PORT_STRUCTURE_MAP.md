@@ -2,7 +2,7 @@
 XOCEANUS iOS PORT DIRECTORY STRUCTURE MAP
 ================================================================================
 Repository: ~/Documents/GitHub/XO_OX-XOmnibus
-Rename Status: XOmnibus → XOlokun → XOceanus (2026-03-24)
+Rename Status: XOmnibus → XOceanus (2026-03-24)
 Last Updated: 2026-04-03
 
 ================================================================================
