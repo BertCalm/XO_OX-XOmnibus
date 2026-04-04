@@ -1,15 +1,15 @@
 ---
 name: new-xo-engine
-description: Walk through creating a new XOlokun engine from concept to integration. Use when designing a new synth engine, starting a new XO instrument, or planning engine architecture.
+description: Walk through creating a new XOceanus engine from concept to integration. Use when designing a new synth engine, starting a new XO instrument, or planning engine architecture.
 argument-hint: "[engine-name e.g. XOstinato]"
 disable-model-invocation: true
 ---
 
-# New XOlokun Engine Wizard
+# New XOceanus Engine Wizard
 
 Guide the user through creating a new engine: **$ARGUMENTS**
 
-Read `Docs/xolokun_new_engine_process.md` for the full process. This skill walks through each phase interactively.
+Read `Docs/specs/xoceanus_new_engine_process.md` for the full process. This skill walks through each phase interactively.
 
 ## Phase 0: Ideation — "What Exhibition?"
 
@@ -133,7 +133,7 @@ REGISTER_ENGINE({Name}Engine)
 ### File Placement
 ```
 Source/Engines/{ShortName}/    ← engine source
-Presets/XOlokun/{mood}/       ← presets by mood
+Presets/XOceanus/{mood}/       ← presets by mood
 ```
 
 ### CMakeLists.txt
@@ -141,14 +141,14 @@ Add new source files to the build.
 
 ### Update Documentation
 - `CLAUDE.md` — add to engine table with accent color and parameter prefix
-- `Docs/xolokun_master_specification.md` — engine catalog
+- `Docs/specs/xoceanus_master_specification.md` — engine catalog
 
 ### Cross-Engine Presets
 Create 5-10 Entangled mood presets coupling the new engine with existing ones.
 
 ### Verification Checklist
 ```
-[ ] Adapter compiles in XOlokun build
+[ ] Adapter compiles in XOceanus build
 [ ] Engine appears in EngineRegistry
 [ ] Single-engine presets load and play
 [ ] All 4 macros produce audible change

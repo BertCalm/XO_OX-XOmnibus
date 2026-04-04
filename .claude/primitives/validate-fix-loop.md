@@ -31,7 +31,7 @@ validate(target, rules)
 
 ## Usage Examples
 
-**XOlokun presets:**
+**XOceanus presets:**
 ```bash
 python3 Tools/validate_presets.py --strict    # validate
 python3 Tools/validate_presets.py --fix       # auto-fix + re-validate

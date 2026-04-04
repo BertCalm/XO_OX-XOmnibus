@@ -90,7 +90,7 @@ After migration:
 - [ ] Old names resolve to new names (alias test)
 - [ ] No orphaned references to old name (grep confirms)
 - [ ] Docs updated (CLAUDE.md, spec, migration reference)
-- [ ] `Docs/xolokun_name_migration_reference.md` updated with new mapping
+- [ ] `Docs/specs/xoceanus_name_migration_reference.md` updated with new mapping
 
 ### 5. Audit mode (--audit)
 
@@ -116,7 +116,7 @@ Scan for migration health issues:
 - **bulk-transform** — Batch preset rewriting for format migrations
 
 ## Relationship to Other Skills
-- References: `Docs/xolokun_name_migration_reference.md` (update after each migration)
+- References: `Docs/specs/xoceanus_name_migration_reference.md` (update after each migration)
 - Validates with: `/test`, `/preset-qa`, `/lint`
 - Related: `/research` for understanding migration impact before executing
 

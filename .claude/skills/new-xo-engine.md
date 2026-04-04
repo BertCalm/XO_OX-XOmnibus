@@ -1,7 +1,7 @@
 # /new-xo-engine — Engine Scaffold & Integration
 
-Walk through ideation, architecture, scaffold, and integration of a new XOlokun engine.
-Referenced in CLAUDE.md. Full process documented in `Docs/xolokun_new_engine_process.md`.
+Walk through ideation, architecture, scaffold, and integration of a new XOceanus engine.
+Referenced in CLAUDE.md. Full process documented in `Docs/specs/xoceanus_new_engine_process.md`.
 
 ## Usage
 
@@ -69,7 +69,7 @@ REGISTER_ENGINE("{Name}", {Name}Engine)
 2. **Add to CMakeLists.txt** — Add source files to build
 3. **Add to CLAUDE.md** — Engine table, parameter prefix table
 4. **Add to engine catalog** — `Docs/xo_mega_tool_engine_catalog.md`
-5. **Create sound design entry** — `Docs/xolokun_sound_design_guides.md`
+5. **Create sound design entry** — `Docs/specs/xoceanus_sound_design_guides.md`
 
 ### Phase 5: Verification
 

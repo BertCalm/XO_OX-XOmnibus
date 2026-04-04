@@ -48,7 +48,7 @@ Run at the end of any substantive session — one that involved 3+ steps, used m
 ```json
 {
   "timestamp": "2026-03-12T17:30:00Z",
-  "project": "XOlokun",
+  "project": "XOceanus",
   "project_type": "synth-engine",
   "task_type": "generation",
   "summary": "Generated 40 Overworld presets with DNA fingerprints",

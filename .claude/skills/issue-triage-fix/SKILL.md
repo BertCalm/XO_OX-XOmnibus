@@ -6,7 +6,7 @@ argument-hint: [category e.g. dsp, security, docs, all]
 
 # Issue Triage & Fix — Codebase Audit Skill
 
-Perform a full audit of the XOlokun codebase, create GitHub issues for all findings, assign model/skill recommendations, and fix issues by complexity tier.
+Perform a full audit of the XOceanus codebase, create GitHub issues for all findings, assign model/skill recommendations, and fix issues by complexity tier.
 
 If `$ARGUMENTS` specifies a category (dsp, security, docs, tooling, website), focus on that category only. If "all" or no argument, scan everything.
 

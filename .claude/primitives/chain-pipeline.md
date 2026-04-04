@@ -32,7 +32,7 @@ pipeline(steps, input)
 
 ## Usage Examples
 
-**XOlokun export pipeline:**
+**XOceanus export pipeline:**
 ```
 Step 1: Select presets (filter by mood/engine)    → gate: at least 1 preset
 Step 2: Bundle into XPN format                     → gate: all files valid

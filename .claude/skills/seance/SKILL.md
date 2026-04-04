@@ -18,7 +18,7 @@ Read `Docs/seances/seance_cross_reference.md` for the full seance methodology an
 2. Read all `.h` files in that engine directory.
 3. Read any existing seance findings for this engine in `Docs/seances/seance_cross_reference.md`.
 4. Read any synthesis guides (e.g., `Docs/{engine}_synthesis_guide.md` if it exists).
-5. Count presets using this engine in `Presets/XOlokun/`.
+5. Count presets using this engine in `Presets/XOceanus/`.
 
 ## The Ghost Panel
 
