@@ -8,6 +8,7 @@
 #include "WaveformDisplay.h"
 #include "EnginePickerPopup.h"
 #include "CockpitHost.h"
+#include "CreatureRenderer.h"
 
 namespace xoceanus
 {
@@ -256,7 +257,7 @@ public:
             }
 
             // ── 2. Header row (inside content area) ───────────────────────
-            // Slot number | engine name (flex) | power button
+            // Creature icon (or slot number fallback) | engine name + depth dot | power button
             // Row height: 14px, sits at content top
             {
                 const float rowH = 14.0f;
@@ -265,16 +266,56 @@ public:
                 const float pwrW = 16.0f;
                 const float pwrH = 16.0f;
 
-                // Slot number — 9px mono, T3 color, 12px wide
-                g.setFont(GalleryFonts::value(9.0f));
-                g.setColour(GalleryColors::get(GalleryColors::t3()));
-                g.drawText(juce::String(slot + 1), (int)content.getX(), (int)rowY, (int)slotW, (int)rowH,
-                           juce::Justification::centredLeft);
+                // ── D3 Scaffold: Creature icon corner overlay ──────────────
+                // Try PNG sprite first (path: BinaryData or Assets/creatures/<id>_1x.png).
+                // Falls back to procedural CreatureRenderer which always succeeds.
+                // Falls back further to plain slot number if creature bounds are too small.
+                {
+                    const float creatureSize = 12.0f; // fits within 12px slot column
+                    juce::Rectangle<float> creatureBounds(content.getX(), rowY + (rowH - creatureSize) * 0.5f,
+                                                          creatureSize, creatureSize);
 
-                // Engine name — 14px Space Grotesk bold, uppercase, accent color
+                    // Future PNG sprite path: BinaryData::<engineId>_creature_1x_png
+                    // For now, no sprites exist — always use procedural renderer.
+                    // When PNG assets land, add: if (spriteImage.isValid()) { g.drawImage(...); }
+                    // The procedural renderer uses breathScale=1.0 (static at 10Hz, no breath
+                    // animation on tiles — matches the "no height increase" constraint).
+                    const float couplingLean = (couplingDotCount > 0)
+                                                   ? juce::jlimit(-1.0f, 1.0f, (float)(couplingModCount - couplingAudioCount) * 0.33f)
+                                                   : 0.0f;
+                    CreatureRenderer::drawCreature(g, creatureBounds, engineId, accent, 1.0f, couplingLean);
+                }
+
+                // Engine name — 14px Overbit (D2), uppercase, accent color
+                // Name starts after the 12px creature column + 3px gap
                 float nameX = content.getX() + slotW + 3.0f;
-                float nameW = content.getWidth() - slotW - 3.0f - pwrW - 3.0f;
-                g.setFont(GalleryFonts::display(14.0f));
+
+                // ── D3 Scaffold: 6px depth zone dot next to engine name ────
+                // Drawn just before the engine name text, 3px to the left of nameX.
+                // Colors match DepthZoneDial zone palette exactly.
+                {
+                    const float dotDiam = 6.0f;
+                    // Place dot centered vertically in the row, at the left edge of the name
+                    float dotX = nameX;
+                    float dotY = rowY + (rowH - dotDiam) * 0.5f;
+
+                    const int zone = depthZoneOf(engineId);
+                    juce::Colour dotColor;
+                    switch (zone)
+                    {
+                    case 0: dotColor = juce::Colour(0xFF00E5FFu); break; // Sunlit — cyan
+                    case 2: dotColor = juce::Colour(0xFF9B30FFu); break; // Midnight — violet
+                    default: dotColor = juce::Colour(0xFF3366FFu); break; // Twilight — blue
+                    }
+                    g.setColour(dotColor.withAlpha(0.82f));
+                    g.fillEllipse(dotX, dotY, dotDiam, dotDiam);
+
+                    // Shift name text to the right of the dot + 3px gap
+                    nameX += dotDiam + 3.0f;
+                }
+
+                float nameW = content.getWidth() - (nameX - content.getX()) - pwrW - 3.0f;
+                g.setFont(GalleryFonts::engineName(14.0f));
                 g.setColour(accent);
                 g.drawText(engineId.toUpperCase(), (int)nameX, (int)rowY, (int)nameW, (int)rowH,
                            juce::Justification::centredLeft);
@@ -626,6 +667,44 @@ private:
             g.setColour(dotColors[d].withAlpha(0.85f));
             g.fillEllipse(dotX, startY, dotSize, dotSize);
         }
+    }
+
+    // ── D3 Scaffold: Depth zone lookup ──────────────────────────────────────
+    // Returns 0=Sunlit, 1=Twilight, 2=Midnight.
+    // Table mirrors DepthZoneDial::depthZoneOf() exactly — single source of truth
+    // is DepthZoneDial; this copy kept in sync until a shared utility header exists.
+    static int depthZoneOf(const juce::String& engineId)
+    {
+        static const std::pair<const char*, int> kZoneTable[] = {
+            // Sunlit (0)
+            {"Oto", 0}, {"Octave", 0}, {"Oleg", 0}, {"Otis", 0}, {"Obelisk", 0},
+            {"Orchard", 0}, {"Osier", 0}, {"Overwash", 0}, {"Overworld", 0}, {"Oasis", 0},
+            {"OddfeliX", 0}, {"OddOscar", 0}, {"Ohm", 0}, {"Optic", 0}, {"Opensky", 0},
+            // Twilight (1)
+            {"Oven", 1}, {"Ochre", 1}, {"Opaline", 1}, {"Olate", 1}, {"Oaken", 1},
+            {"Overgrow", 1}, {"Oxalis", 1}, {"Overworn", 1}, {"Overcast", 1}, {"Oddfellow", 1},
+            {"Onkolo", 1}, {"Opcode", 1}, {"Onset", 1}, {"Offering", 1}, {"Oware", 1},
+            {"Ostinato", 1}, {"Opera", 1}, {"Obbligato", 1}, {"Oblong", 1}, {"Obese", 1},
+            {"Organon", 1}, {"Ottoni", 1}, {"Ole", 1}, {"Orphica", 1}, {"Osprey", 1},
+            {"Osteria", 1}, {"Opal", 1}, {"Orbital", 1}, {"Origami", 1}, {"Obscura", 1},
+            {"Oblique", 1}, {"Organism", 1}, {"Overtone", 1}, {"Outlook", 1}, {"Oceanic", 1},
+            {"Ocelot", 1}, {"Ombre", 1}, {"Odyssey", 1}, {"Overdub", 1}, {"Osmosis", 1},
+            {"Outwit", 1}, {"Obiont", 1}, {"Okeanos", 1}, {"Outflow", 1},
+            // Midnight (2)
+            {"Ogre", 2}, {"Omega", 2}, {"Overflow", 2}, {"Obrix", 2}, {"Oxytocin", 2},
+            {"Overbite", 2}, {"Ouroboros", 2}, {"Oracle", 2}, {"Obsidian", 2}, {"Orbweave", 2},
+            {"Oxbow", 2}, {"Orca", 2}, {"Octopus", 2}, {"Owlfish", 2}, {"Overlap", 2},
+            {"Oceandeep", 2}, {"Ouie", 2},
+            {nullptr, 0}, // sentinel
+        };
+
+        const juce::String lower = engineId.toLowerCase();
+        for (int i = 0; kZoneTable[i].first != nullptr; ++i)
+        {
+            if (lower == juce::String(kZoneTable[i].first).toLowerCase())
+                return kZoneTable[i].second;
+        }
+        return 1; // default Twilight
     }
 
     void showLoadMenu()

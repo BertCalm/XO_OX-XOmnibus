@@ -361,8 +361,8 @@ public:
         // ── Clean header: engine name + thin accent line ──────────────────────
         // No heavy gradient, no zone bands — matches v05 mockup.
         {
-            // Engine name — 16px Space Grotesk bold, accent color
-            g.setFont(GalleryFonts::display(16.0f));
+            // Engine name — 16px Overbit (D2), accent color
+            g.setFont(GalleryFonts::engineName(16.0f));
             g.setColour(accentColour);
             g.drawText(cachedEngineName, juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
                        juce::Justification::centredLeft);

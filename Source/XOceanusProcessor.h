@@ -325,6 +325,12 @@ public:
     void setPersistedCockpitBypass(bool v) noexcept { persistedCockpitBypass = v; }
     bool getPersistedCockpitBypass() const noexcept { return persistedCockpitBypass; }
 
+    // D4: Register lock + current register (per-instance, per-DAW-session).
+    void setPersistedRegisterLocked(bool v) noexcept { persistedRegisterLocked = v; }
+    bool getPersistedRegisterLocked() const noexcept { return persistedRegisterLocked; }
+    void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
+    int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -608,6 +614,8 @@ private:
     int persistedSelectedSlot = -1;      // #357: editor tile focus (-1 = overview)
     int persistedSignalFlowSection = 0;  // #357: signal flow active section
     bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
+    bool persistedRegisterLocked = false; // D4: register lock toggle
+    int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.

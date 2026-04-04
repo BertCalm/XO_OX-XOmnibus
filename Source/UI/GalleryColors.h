@@ -515,10 +515,17 @@ inline juce::Font value(float size)
 {
     return juce::Font(juce::FontOptions{}.withTypeface(jetBrainsMono()).withHeight(size));
 }
-// Overbit — engine nameplate display font (accent-colored, Column B hero text)
+// Overbit — engine nameplate display font (accent-colored, Column B hero text).
+// Decision D2: Overbit at ≥12px; Space Grotesk Bold fallback below 12px.
+//
+// NOTE (Windows ClearType): Overbit at 12–14px requires ClearType verification
+// before shipping on Windows — hinting may differ from macOS CoreText rendering.
+// Verify on a ClearType-enabled Windows display before V1 release.
 inline juce::Font engineName(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(overbitRegular()).withHeight(size));
+    if (size >= 12.0f)
+        return juce::Font(juce::FontOptions{}.withTypeface(overbitRegular()).withHeight(size));
+    return display(size); // Space Grotesk Bold fallback below 12px threshold
 }
 
 } // namespace GalleryFonts

@@ -2207,6 +2207,10 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         xml->setAttribute("editorSignalFlowSection", persistedSignalFlowSection);
         xml->setAttribute("editorCockpitBypass", persistedCockpitBypass ? 1 : 0);
 
+        // D4 — Save register lock + current register (per-instance, per-session).
+        xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
+        xml->setAttribute("registerCurrent", persistedRegisterCurrent);
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -2355,6 +2359,14 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         persistedSelectedSlot = xml->getIntAttribute("editorSelectedSlot", -1);
         persistedSignalFlowSection = xml->getIntAttribute("editorSignalFlowSection", 0);
         persistedCockpitBypass = xml->getIntAttribute("editorCockpitBypass", 0) != 0;
+
+        // D4 — Restore register lock + current register.
+        // Defaults: unlocked, Gallery (0) — graceful for sessions predating D4.
+        persistedRegisterLocked  = xml->getIntAttribute("registerLocked",  0) != 0;
+        persistedRegisterCurrent = xml->getIntAttribute("registerCurrent", 0);
+        // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
+        if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
+            persistedRegisterCurrent = 0;
     }
 }
 
@@ -2718,6 +2730,57 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
                 " coupling routes could not be restored — required engines not loaded. " +
                 "Existing coupling routes preserved.");
         }
+    }
+
+    // #678 — Wire preset macro targets (CHARACTER/MOVEMENT/COUPLING/SPACE) into
+    // MacroSystem so that sweeping each macro knob modulates the assigned engine
+    // parameters. Previously macroTargets were parsed from the preset JSON but
+    // never applied to macroSystem_, so M3 (COUPLING) and other macros had no
+    // effect on engine parameters during performance.
+    //
+    // MacroSystem::clearAllTargets() + setTargets() is safe to call here
+    // (message thread, outside the audio callback). The SpinLock inside
+    // MacroSystem guarantees the audio thread sees a consistent snapshot.
+    {
+        macroSystem_.clearAllTargets();
+
+        // Apply macro labels (CHARACTER / MOVEMENT / COUPLING / SPACE or preset overrides).
+        for (int macroIdx = 0; macroIdx < 4; ++macroIdx)
+        {
+            if (macroIdx < preset.macroLabels.size() && preset.macroLabels[macroIdx].isNotEmpty())
+                macroSystem_.setLabel(macroIdx, preset.macroLabels[macroIdx]);
+        }
+
+        // Convert PresetMacroTarget → MacroTarget and assign to each slot.
+        for (int macroIdx = 0; macroIdx < 4; ++macroIdx)
+        {
+            const auto& slotTargets = preset.macroTargets[static_cast<size_t>(macroIdx)];
+            if (slotTargets.empty())
+                continue;
+
+            std::vector<MacroTarget> liveTargets;
+            liveTargets.reserve(slotTargets.size());
+            for (const auto& pmt : slotTargets)
+            {
+                MacroTarget mt;
+                mt.engineId    = pmt.engineName;
+                mt.parameterId = pmt.paramId;
+                mt.minValue    = pmt.depthMin;
+                mt.maxValue    = pmt.depthMax;
+                // isCouplingTarget / couplingRouteSlot remain false/-1:
+                // engine parameter targets are resolved via parameterId lookup.
+                liveTargets.push_back(std::move(mt));
+            }
+            macroSystem_.setTargets(macroIdx, std::move(liveTargets));
+        }
+
+        // M3 (COUPLING macro, index 2) also scales all active coupling route
+        // amounts proportionally so sweeping it from 0→1 morphs coupling depth.
+        // Wire M3 to all four coupling route slots (cp_r1_amount … cp_r4_amount).
+        // Routes that aren't active have their amount parameter at 0 already,
+        // so this has no effect on uncoupled presets.
+        for (int routeSlot = 0; routeSlot < 4; ++routeSlot)
+            macroSystem_.addCouplingTarget(MacroSystem::CouplingMacroIndex, routeSlot, 0.0f, 1.0f);
     }
 }
 

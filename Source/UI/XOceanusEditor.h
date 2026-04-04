@@ -47,6 +47,7 @@
 #include "Gallery/HeaderIndicators.h"
 #include "Gallery/MiniCouplingGraph.h"
 #include "Gallery/CockpitHost.h"
+#include "RegisterManager.h"
 
 namespace xoceanus
 {
@@ -252,6 +253,27 @@ public:
         // Sync toggle visual state to the preference we read early in the constructor.
         themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
 
+        // D4: Register lock toggle — small padlock icon in header.
+        // Locks the current visual register so auto-switching is paused.
+        // Unicode: U+1F512 CLOSED LOCK, U+1F513 OPEN LOCK (UTF-8 encoded).
+        addAndMakeVisible(registerLockBtn);
+        registerLockBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xf0\x9f\x94\x13"))); // open lock
+        registerLockBtn.setTooltip("Lock visual register — prevent auto-switching between Gallery/Performance/Coupling modes");
+        A11y::setup(registerLockBtn, "Register Lock", "Lock or unlock automatic visual register switching");
+        registerLockBtn.setClickingTogglesState(true);
+        registerLockBtn.onClick = [this]
+        {
+            registerMgr_.setLocked(registerLockBtn.getToggleState());
+            // Update icon: closed lock when locked, open lock when unlocked.
+            const bool locked = registerMgr_.isLocked();
+            // U+1F512 CLOSED LOCK (\xf0\x9f\x94\x92) / U+1F513 OPEN LOCK (\xf0\x9f\x94\x13)
+            registerLockBtn.setButtonText(juce::String(juce::CharPointer_UTF8(
+                locked ? "\xf0\x9f\x94\x92" : "\xf0\x9f\x94\x13")));
+            // Persist lock state in processor so it survives DAW session reload.
+            processor.setPersistedRegisterLocked(locked);
+            processor.setPersistedRegisterCurrent(static_cast<int>(registerMgr_.current()));
+        };
+
         // Make icon buttons wider (28px) so 2-char labels don't truncate to "..."
         // (Font size is controlled by GalleryLookAndFeel; buttons just need enough width)
 
@@ -429,6 +451,17 @@ public:
         cockpitBypass_ = processor.getPersistedCockpitBypass();
         signalFlowActiveSection = processor.getPersistedSignalFlowSection();
 
+        // D4: Restore register lock state from persisted processor state.
+        {
+            const bool locked = processor.getPersistedRegisterLocked();
+            const int  reg    = processor.getPersistedRegisterCurrent();
+            registerMgr_.restoreFromXmlValues(locked, reg);
+            registerLockBtn.setToggleState(locked, juce::dontSendNotification);
+            // Sync icon to restored state.
+            registerLockBtn.setButtonText(juce::String(juce::CharPointer_UTF8(
+                locked ? "\xf0\x9f\x94\x92" : "\xf0\x9f\x94\x13")));
+        }
+
         {
             const int restoredSlot = processor.getPersistedSelectedSlot();
             const int slotToShow = (restoredSlot >= 0 && restoredSlot < XOceanusProcessor::MaxSlots &&
@@ -566,8 +599,7 @@ public:
     // LookAndFeel change through the component tree (e.g., user toggles dark mode).
     void lookAndFeelChanged() override
     {
-        enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
-        enginesBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
+        // D1: enginesBtn is parked off-screen (replaced by depthDial) — no need to re-apply colours.
         // P0-4: Settings gear — T3 text, re-apply on theme change
         settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
         settingsBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
@@ -866,6 +898,16 @@ public:
         }
 
         // Macro knobs row removed — EngineDetailPanel has real interactive MacroHeroStrip.
+
+        // D4: Coupling register — XO Gold tint overlay at 10-15% alpha.
+        // Painted last so it sits above all other content (subtly warms the whole UI
+        // when the coupling inspector tab is active, fading in/out with 400ms transition).
+        if (couplingTintAlpha_ > 0.002f)
+        {
+            // XO Gold: #E9C46A
+            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(couplingTintAlpha_));
+            g.fillAll();
+        }
     }
 
     void resized() override
@@ -878,20 +920,29 @@ public:
         // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
-        // ── Header (52px): Logo | ENGINES | < | > | [macros] | CI | CM | P | ● | DK | CPU | PLAY | XPN | gear
+        // ── Header (52px): Logo | DepthDial | < | > | [macros] | CI | CM | P | ● | DK | CPU | PLAY | XPN | gear
         auto header = layout.getHeader();
 
-        // Park legacy header widgets that are never shown in the header.
-        depthDial.setBounds(0, -100, 0, 0);
-        depthDial.setVisible(false);
+        // Park legacy widgets that are no longer shown in the header.
+        // D1: enginesBtn replaced by depthDial — park it off-screen.
+        enginesBtn.setBounds(0, -100, 0, 0);
+        enginesBtn.setVisible(false);
         abCompare.setBounds(0, -100, 0, 0);
         abCompare.setVisible(false);
         presetBrowser.setBounds(0, -200, 0, 0);
         presetBrowser.setVisible(false);
 
-        // ── Left: Logo (painted) + ENGINES button + preset nav ─────────────
+        // ── Left: Logo (painted) + DepthZoneDial + preset nav ──────────────
+        // D1: 48×48pt circular dial replaces the ENGINES text button.
+        // The dial is a direct child of XOceanusEditor (not part of overview/detail),
+        // so it is architecturally isolated from all register transition animations
+        // (satisfies Foreseer StaticHeaderComponent constraint).
         header.removeFromLeft(150); // logo rings + "XOceanus" / "XO_OX Designs" text
-        enginesBtn.setBounds(header.removeFromLeft(74).withSizeKeepingCentre(70, 22));
+        {
+            auto dialSlice = header.removeFromLeft(56); // 56px slice, dial is 48×48 centered
+            depthDial.setVisible(true);
+            depthDial.setBounds(dialSlice.withSizeKeepingCentre(48, 48));
+        }
 
         // Preset nav arrows — just after ENGINES button
         presetPrevBtn.setBounds(header.removeFromLeft(28).reduced(2));
@@ -910,6 +961,8 @@ public:
 
         // Utility strip — right side, before macros (inward from CPU)
         themeToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
+        // D4: Register lock button — 24px wide, visually paired with theme toggle
+        registerLockBtn.setBounds(header.removeFromRight(24).reduced(2));
         {
             auto midiArea = header.removeFromRight(16);
             midiIndicator.setBounds(midiArea.withSizeKeepingCentre(8, 8));
@@ -1473,28 +1526,87 @@ private:
             playSurfaceWindow->getPlaySurface().setAccentColour(accent);
         }
 
-        // Dark Cockpit B041: compute UI opacity from note activity
-        // When cockpitBypass_ is true, hold at 1.0 (fully lit regardless of activity)
+        // ── D4: Register Manager update ───────────────────────────────────────
+        // Compute elapsed time (ms) since last timer tick for smooth transitions.
+        // Uses a fixed-point approximation: timerHz is 1–30, so dt is 33–1000ms.
+        // We cap at 100ms to avoid a single large jump after a timer gap.
         {
-            float activity = processor.getNoteActivity();
-            // 5 levels: 0.15 (ghost) → 0.35 (tertiary) → 0.55 (secondary) → 0.80 (primary) → 1.0 (active)
-            // Map activity 0-1 to opacity with a floor of 0.15 (never fully invisible)
-            const float targetOpacity = cockpitBypass_ ? 1.0f : (0.15f + activity * 0.85f);
+            const double nowMs    = juce::Time::getMillisecondCounterHiRes();
+            const float  dtMs     = juce::jlimit(0.0f, 100.0f,
+                                                  static_cast<float>(nowMs - lastTimerMs_));
+            lastTimerMs_ = nowMs;
 
-            // Lerp toward target: ~60ms smoothing at 60Hz timer, ~120ms at 30Hz.
-            // Avoids the snap feel of an immediate assignment.
-            const float newOpacity = cockpitOpacity_ + (targetOpacity - cockpitOpacity_) * 0.15f;
-            const float clamped = juce::jlimit(0.0f, 1.0f, newOpacity);
+            const float activity        = processor.getNoteActivity();
+            const bool  hasNoteActivity = activity > 0.01f;
+            const bool  couplingVisible = (sidebar.getActiveTab() == SidebarPanel::Couple);
 
-            // Only repaint if the visible opacity actually changed (avoids
-            // flooding the message thread when the synth is silent and stable).
-            if (std::abs(clamped - cockpitOpacity_) > 0.001f)
+            registerMgr_.update(hasNoteActivity, couplingVisible, dtMs);
+
+            // ── Dark Cockpit B041: compute UI opacity from register + note activity ──
+            // Each register targets a distinct cockpit opacity envelope:
+            //   Gallery     : 0.9 (browsing — comfortable, well-lit)
+            //   Performance : B041 activity-driven 0.15..1.0
+            //   Coupling    : 0.75 (routing inspector — dim enough to read arcs)
+            // cockpitBypass_ overrides all registers to 1.0 (fully lit).
             {
-                cockpitOpacity_ = clamped;
-                repaint();
-            }
+                float galleryTarget     = 0.9f;
+                float performanceTarget = 0.15f + activity * 0.85f;
+                float couplingTarget    = 0.75f;
 
-            statusBar.setCockpitBypass(cockpitBypass_);
+                // Blend between registers using smoothstep transition progress.
+                const float p = registerMgr_.transitionProgress();
+                const auto  cur = registerMgr_.current();
+                const auto  tgt = registerMgr_.target();
+
+                // Determine src/dst opacity for cross-fade.
+                auto registerOpacity = [&](RegisterManager::Register r) -> float
+                {
+                    switch (r)
+                    {
+                        case RegisterManager::Register::Gallery:     return galleryTarget;
+                        case RegisterManager::Register::Performance: return performanceTarget;
+                        case RegisterManager::Register::Coupling:    return couplingTarget;
+                        default:                                      return galleryTarget;
+                    }
+                };
+
+                const float srcOp = registerOpacity(cur);
+                const float dstOp = registerOpacity(tgt);
+                // When p == 1.0 the transition is settled (cur == tgt), so this is just dstOp.
+                const float registerDrivenOpacity = srcOp + (dstOp - srcOp) * p;
+                const float targetOpacity = cockpitBypass_ ? 1.0f : registerDrivenOpacity;
+
+                // Lerp toward target: ~60ms smoothing at 60Hz timer, ~120ms at 30Hz.
+                const float newOpacity = cockpitOpacity_ + (targetOpacity - cockpitOpacity_) * 0.15f;
+                const float clamped    = juce::jlimit(0.0f, 1.0f, newOpacity);
+
+                bool needsRepaint = false;
+                if (std::abs(clamped - cockpitOpacity_) > 0.001f)
+                {
+                    cockpitOpacity_ = clamped;
+                    needsRepaint    = true;
+                }
+
+                // ── Coupling register: gold tint overlay alpha ─────────────────
+                // XO Gold tint at 10-15% alpha when in (or transitioning to) Coupling register.
+                const float couplingTintAlpha = [&]() -> float
+                {
+                    const float tgtAlpha = (tgt == RegisterManager::Register::Coupling) ? 0.12f : 0.0f;
+                    const float srcAlpha = (cur == RegisterManager::Register::Coupling) ? 0.12f : 0.0f;
+                    return srcAlpha + (tgtAlpha - srcAlpha) * p;
+                }();
+
+                if (std::abs(couplingTintAlpha - couplingTintAlpha_) > 0.001f)
+                {
+                    couplingTintAlpha_ = couplingTintAlpha;
+                    needsRepaint       = true;
+                }
+
+                if (needsRepaint)
+                    repaint();
+
+                statusBar.setCockpitBypass(cockpitBypass_);
+            }
         }
     }
 
@@ -1596,6 +1708,8 @@ private:
     juce::TextButton perfToggleBtn;
     juce::TextButton surfaceToggleBtn;
     juce::TextButton themeToggleBtn;
+    // D4: Register lock button — padlock icon, toggles auto-register switching on/off
+    juce::TextButton registerLockBtn;
     juce::TextButton exportBtn;
     // P0-3: Slim inline preset nav
     juce::TextButton presetPrevBtn;
@@ -1630,6 +1744,13 @@ private:
     // When true, cockpit is bypassed — UI held at full opacity regardless of activity.
     // Toggle with 'B' key. Shown as COCKPIT: OFF in status bar paint.
     bool cockpitBypass_ = false;
+
+    // D4: 3-Register Auto-Switching
+    RegisterManager registerMgr_;
+    // Alpha for the Coupling register XO Gold tint overlay (0.0 = off, 0.12 = full Coupling).
+    float couplingTintAlpha_ = 0.0f;
+    // Timestamp (ms) for elapsed-time delta computation in timerCallback.
+    double lastTimerMs_ = 0.0;
 
     ColumnLayoutManager layout;
 

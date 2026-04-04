@@ -240,9 +240,9 @@ public:
         float portraitH = h * 0.38f;
 
         // Engine name — restrained display font matching prototype density
-        // Prototype shows 18-20pt feels more premium than large 28pt
+        // Prototype shows 18-20pt feels more premium than large 28pt (D2: Overbit at ≥12px)
         g.setColour(accent);
-        g.setFont(GalleryFonts::display(20.0f));
+        g.setFont(GalleryFonts::engineName(20.0f));
         g.drawFittedText(engineId.toUpperCase(), juce::Rectangle<int>(12, 0, (int)w - 20, (int)(portraitH * 0.72f)),
                          juce::Justification::centredBottom, 1);
 
