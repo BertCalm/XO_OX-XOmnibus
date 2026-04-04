@@ -32,7 +32,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 endif()
 
 # Build options
-option(XOCEANUS_BUILD_AI "Build AI sound assistant subsystem" OFF)
+option(XOCEANUS_BUILD_AI  "Build AI sound assistant subsystem" OFF)
+option(XOCEANUS_BUILD_VST3 "Build VST3 format (experimental)" OFF)  # closes #638
 
 # Platform detection
 # iOS build: cmake -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios-toolchain.cmake
