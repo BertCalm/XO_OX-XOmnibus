@@ -8,6 +8,8 @@
 namespace xocelot
 {
 
+inline float flushDenormal(float x) { return (std::abs(x) < 1e-18f) ? 0.0f : x; }
+
 // Standard ADSR amplitude envelope.
 // Ported from XOdyssey — namespace adapted to xocelot.
 class AmpEnvelope
@@ -72,6 +74,7 @@ public:
         {
             float coeff = calcCoeff(decayTime);
             level = level * coeff + sustainLvl * (1.0f - coeff);
+            level = flushDenormal(level);
             if (std::abs(level - sustainLvl) < 0.0001f)
             {
                 level = sustainLvl;
@@ -87,6 +90,7 @@ public:
         {
             float coeff = calcCoeff(releaseTime);
             level *= coeff;
+            level = flushDenormal(level);
             if (level < 0.0001f)
             {
                 level = 0.0f;

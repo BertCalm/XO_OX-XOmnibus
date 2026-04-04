@@ -141,6 +141,7 @@ struct OwareMalletExciter
 
         // Apply mallet contact lowpass (hard = open, soft = low-passed)
         malletFilterState += malletLPCoeff * (out - malletFilterState);
+        malletFilterState = flushDenormal(malletFilterState);
         return malletFilterState;
     }
 

@@ -180,6 +180,7 @@ struct OchreHammerModel
 
         // Mallet contact lowpass (copper: more open than iron)
         malletFilterState += malletLPCoeff * (out - malletFilterState);
+        malletFilterState = flushDenormal(malletFilterState);
         return malletFilterState;
     }
 

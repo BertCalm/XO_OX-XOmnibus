@@ -527,10 +527,11 @@ private:
                     continue; // Skip entries with path traversal or absolute paths
                 if (entry->filename.endsWithIgnoreCase(".wav"))
                 {
-                    auto dest = wavDir.getChildFile(juce::File(entry->filename).getFileName());
+                    auto safeName = juce::File(entry->filename).getFileName();
+                    auto dest = wavDir.getChildFile(safeName);
                     zip.uncompressEntry(i, wavDir);
                     // ZipFile may extract with full path, find the actual file
-                    auto extracted = wavDir.getChildFile(entry->filename);
+                    auto extracted = wavDir.getChildFile(safeName);
                     if (extracted.existsAsFile() && extracted != dest)
                     {
                         extracted.moveFileTo(dest);

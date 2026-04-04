@@ -329,6 +329,7 @@ public:
         {
             // Decay toward zero when no active coupling arrives
             couplingPermeabilityOffset_ *= 0.999f;
+            couplingPermeabilityOffset_ = flushDenormal(couplingPermeabilityOffset_);
             return;
         }
 
@@ -342,6 +343,7 @@ public:
         const float coeff = std::exp(-1.0f / (static_cast<float>(sr_) * 0.050f));
         const float target = rms * amount; // amount ∈ [0,1] scales depth
         couplingPermeabilityOffset_ = coeff * couplingPermeabilityOffset_ + (1.0f - coeff) * target;
+        couplingPermeabilityOffset_ = flushDenormal(couplingPermeabilityOffset_);
     }
 
     //-- Parameters ------------------------------------------------------------

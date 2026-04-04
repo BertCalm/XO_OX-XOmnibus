@@ -236,6 +236,7 @@ struct OpalineExciter
 
         // Mallet contact lowpass
         malletFilterState += malletLPCoeff * (out - malletFilterState);
+        malletFilterState = flushDenormal(malletFilterState);
         return malletFilterState;
     }
 

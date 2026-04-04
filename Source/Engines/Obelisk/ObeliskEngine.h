@@ -176,6 +176,7 @@ struct ObeliskHammer
 
         // Apply mallet spectral lowpass
         malletFilterState += malletLPCoeff * (out - malletFilterState);
+        malletFilterState = flushDenormal(malletFilterState);
         return malletFilterState;
     }
 
