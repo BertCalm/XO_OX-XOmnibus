@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Faceted Light",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Super-saw with high vista and scan \u2014 each unison voice facets the light differently. Crystalline multi-angle shimmer.",
+  "tags": [
+    "faceted",
+    "super",
+    "shimmer",
+    "light",
+    "multi"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.38,
+    "movement": 0.3,
+    "density": 0.45,
+    "space": 0.48,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 5,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.78,
+      "look_parallaxAmount": 0.6,
+      "look_vistaLine": 0.9,
+      "look_resonance": 0.35,
+      "look_filterEnvAmt": 0.32,
+      "look_attack": 0.008,
+      "look_decay": 0.4,
+      "look_sustain": 0.5,
+      "look_release": 1.5,
+      "look_lfo1Rate": 0.8,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.5,
+      "look_lfo2Depth": 0.2,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.48,
+      "look_reverbMix": 0.25,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.62,
+      "look_macroMovement": 0.22,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

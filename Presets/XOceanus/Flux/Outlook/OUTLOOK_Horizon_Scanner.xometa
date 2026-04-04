@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Scanner",
+  "mood": "Flux",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Fast coprime LFOs modulate the vista filter while horizon scan sweeps continuously. The panorama in permanent motion.",
+  "tags": [
+    "scanner",
+    "lfo",
+    "coprime",
+    "motion",
+    "filter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.52,
+    "space": 0.42,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 2,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.72,
+      "look_parallaxAmount": 0.6,
+      "look_vistaLine": 0.6,
+      "look_resonance": 0.4,
+      "look_filterEnvAmt": 0.55,
+      "look_attack": 0.05,
+      "look_decay": 0.4,
+      "look_sustain": 0.6,
+      "look_release": 1.5,
+      "look_lfo1Rate": 1.2,
+      "look_lfo1Depth": 0.5,
+      "look_lfo2Rate": 0.79,
+      "look_lfo2Depth": 0.35,
+      "look_modWheelDepth": 0.7,
+      "look_aftertouchDepth": 0.6,
+      "look_reverbMix": 0.2,
+      "look_delayMix": 0.1,
+      "look_macroCharacter": 0.4,
+      "look_macroMovement": 0.6,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

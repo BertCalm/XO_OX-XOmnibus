@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Razor Sweep",
+  "mood": "Flux",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "High-speed scan on saw oscillators \u2014 fast attack, high resonance, aggressive filter pumping. Danger at the horizon.",
+  "tags": [
+    "razor",
+    "aggressive",
+    "saw",
+    "fast",
+    "resonance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.42,
+    "movement": 0.82,
+    "density": 0.62,
+    "space": 0.28,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 2,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.88,
+      "look_parallaxAmount": 0.48,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.75,
+      "look_filterEnvAmt": 0.62,
+      "look_attack": 0.003,
+      "look_decay": 0.2,
+      "look_sustain": 0.5,
+      "look_release": 0.8,
+      "look_lfo1Rate": 3.0,
+      "look_lfo1Depth": 0.65,
+      "look_lfo2Rate": 2.0,
+      "look_lfo2Depth": 0.48,
+      "look_modWheelDepth": 0.8,
+      "look_aftertouchDepth": 0.72,
+      "look_reverbMix": 0.12,
+      "look_delayMix": 0.15,
+      "look_macroCharacter": 0.72,
+      "look_macroMovement": 0.75,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

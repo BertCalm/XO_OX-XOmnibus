@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Pulse at narrow width via high scan \u2014 thin, crystalline strike. Fast attack creates percussive crystalline hits.",
+  "tags": [
+    "pulse",
+    "narrow",
+    "percussive",
+    "strike",
+    "thin"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.35,
+    "movement": 0.35,
+    "density": 0.42,
+    "space": 0.42,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 4,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.88,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.42,
+      "look_filterEnvAmt": 0.38,
+      "look_attack": 0.004,
+      "look_decay": 0.35,
+      "look_sustain": 0.42,
+      "look_release": 1.2,
+      "look_lfo1Rate": 0.9,
+      "look_lfo1Depth": 0.32,
+      "look_lfo2Rate": 0.6,
+      "look_lfo2Depth": 0.22,
+      "look_modWheelDepth": 0.58,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.2,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.65,
+      "look_macroMovement": 0.25,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

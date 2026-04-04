@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Formant Core",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Formant-sine blend as a functional pad core. The vowel resonance gives character without stealing focus. Sits under melodies.",
+  "tags": [
+    "formant",
+    "core",
+    "pad",
+    "vowel",
+    "foundational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 7,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.5,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.25,
+      "look_filterEnvAmt": 0.4,
+      "look_attack": 0.2,
+      "look_decay": 0.6,
+      "look_sustain": 0.72,
+      "look_release": 1.2,
+      "look_lfo1Rate": 0.3,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.2,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.32,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

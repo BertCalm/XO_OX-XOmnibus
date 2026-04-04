@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "LFO Panorama",
+  "mood": "Flux",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Two LFOs at near-identical rates creating slow beat frequency. The parallax slowly rotates as the beat cycle completes.",
+  "tags": [
+    "lfo",
+    "beat",
+    "rotation",
+    "cycle",
+    "panoramic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.52,
+    "movement": 0.68,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.6,
+      "look_parallaxAmount": 0.68,
+      "look_vistaLine": 0.65,
+      "look_resonance": 0.35,
+      "look_filterEnvAmt": 0.5,
+      "look_attack": 0.06,
+      "look_decay": 0.4,
+      "look_sustain": 0.62,
+      "look_release": 1.5,
+      "look_lfo1Rate": 0.95,
+      "look_lfo1Depth": 0.48,
+      "look_lfo2Rate": 1.05,
+      "look_lfo2Depth": 0.38,
+      "look_modWheelDepth": 0.65,
+      "look_aftertouchDepth": 0.58,
+      "look_reverbMix": 0.25,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.42,
+      "look_macroMovement": 0.55,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

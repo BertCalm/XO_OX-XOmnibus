@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Vista Sunrise",
+  "mood": "Luminous",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Sequential LFOs at coprime rates open the panorama on a slowly breathing rhythm. The sound of morning arriving in stages.",
+  "tags": [
+    "sunrise",
+    "lfo",
+    "coprime",
+    "breathing",
+    "morning"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.58,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.65,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.6,
+      "look_parallaxAmount": 0.68,
+      "look_vistaLine": 0.78,
+      "look_resonance": 0.18,
+      "look_filterEnvAmt": 0.35,
+      "look_attack": 0.7,
+      "look_decay": 2.0,
+      "look_sustain": 0.76,
+      "look_release": 4.2,
+      "look_lfo1Rate": 0.13,
+      "look_lfo1Depth": 0.35,
+      "look_lfo2Rate": 0.09,
+      "look_lfo2Depth": 0.22,
+      "look_modWheelDepth": 0.68,
+      "look_aftertouchDepth": 0.58,
+      "look_reverbMix": 0.5,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.28,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

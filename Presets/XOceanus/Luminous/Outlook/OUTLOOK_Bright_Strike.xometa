@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Bright Strike",
+  "mood": "Luminous",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Fast attack, high brightness \u2014 a luminous percussion hit with long panoramic tail. Aggressive entry, beautiful decay.",
+  "tags": [
+    "bright",
+    "aggressive",
+    "fast",
+    "strike",
+    "lead"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.42,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.6,
+      "look_horizonScan": 0.78,
+      "look_parallaxAmount": 0.5,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.62,
+      "look_filterEnvAmt": 0.52,
+      "look_attack": 0.003,
+      "look_decay": 0.35,
+      "look_sustain": 0.55,
+      "look_release": 2.0,
+      "look_lfo1Rate": 1.5,
+      "look_lfo1Depth": 0.45,
+      "look_lfo2Rate": 0.95,
+      "look_lfo2Depth": 0.32,
+      "look_modWheelDepth": 0.78,
+      "look_aftertouchDepth": 0.68,
+      "look_reverbMix": 0.18,
+      "look_delayMix": 0.12,
+      "look_macroCharacter": 0.72,
+      "look_macroMovement": 0.55,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

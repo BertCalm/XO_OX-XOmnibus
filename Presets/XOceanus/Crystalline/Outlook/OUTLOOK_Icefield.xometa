@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Icefield",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Sine pair with narrow attack and long crystalline decay. Wide parallax mimics the vast spatial perception of ice fields.",
+  "tags": [
+    "ice",
+    "field",
+    "vast",
+    "parallel",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.32,
+    "movement": 0.2,
+    "density": 0.32,
+    "space": 0.62,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.45,
+      "look_parallaxAmount": 0.82,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.3,
+      "look_filterEnvAmt": 0.3,
+      "look_attack": 0.01,
+      "look_decay": 0.8,
+      "look_sustain": 0.45,
+      "look_release": 2.5,
+      "look_lfo1Rate": 0.65,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.42,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.48,
+      "look_reverbMix": 0.35,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.55,
+      "look_macroMovement": 0.18,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

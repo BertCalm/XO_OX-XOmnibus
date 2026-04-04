@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Panoramic Lead",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Saw lead with parallax enabled \u2014 brighter than a pad, narrower than an arp. The lead that needs space.",
+  "tags": [
+    "lead",
+    "saw",
+    "parallax",
+    "single",
+    "focused"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.5,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 2,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.55,
+      "look_parallaxAmount": 0.45,
+      "look_vistaLine": 0.75,
+      "look_resonance": 0.3,
+      "look_filterEnvAmt": 0.48,
+      "look_attack": 0.08,
+      "look_decay": 0.4,
+      "look_sustain": 0.68,
+      "look_release": 1.0,
+      "look_lfo1Rate": 0.5,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.3,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.55,
+      "look_reverbMix": 0.2,
+      "look_delayMix": 0.1,
+      "look_macroCharacter": 0.55,
+      "look_macroMovement": 0.25,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

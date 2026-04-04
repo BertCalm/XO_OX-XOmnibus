@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Shear Veil",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Aggressive ethereal \u2014 high resonance with wide parallax and long release. The brutal note that decays into beauty.",
+  "tags": [
+    "shear",
+    "aggressive",
+    "resonant",
+    "ethereal",
+    "brutal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 5,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.62,
+      "look_parallaxAmount": 0.82,
+      "look_vistaLine": 0.72,
+      "look_resonance": 0.78,
+      "look_filterEnvAmt": 0.55,
+      "look_attack": 0.008,
+      "look_decay": 0.5,
+      "look_sustain": 0.6,
+      "look_release": 5.0,
+      "look_lfo1Rate": 0.5,
+      "look_lfo1Depth": 0.35,
+      "look_lfo2Rate": 0.35,
+      "look_lfo2Depth": 0.25,
+      "look_modWheelDepth": 0.72,
+      "look_aftertouchDepth": 0.65,
+      "look_reverbMix": 0.6,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.55,
+      "look_macroMovement": 0.4,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

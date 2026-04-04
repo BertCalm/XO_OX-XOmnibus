@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Arctic Glass",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Cold crystalline pad \u2014 near-maximum vista brightness, zero warmth, precision parallax. Arctic glass sound.",
+  "tags": [
+    "arctic",
+    "cold",
+    "glass",
+    "precision",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.3,
+    "movement": 0.22,
+    "density": 0.35,
+    "space": 0.58,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 5,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.55,
+      "look_parallaxAmount": 0.7,
+      "look_vistaLine": 0.92,
+      "look_resonance": 0.28,
+      "look_filterEnvAmt": 0.28,
+      "look_attack": 0.01,
+      "look_decay": 0.6,
+      "look_sustain": 0.48,
+      "look_release": 2.0,
+      "look_lfo1Rate": 0.6,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.4,
+      "look_lfo2Depth": 0.14,
+      "look_modWheelDepth": 0.52,
+      "look_aftertouchDepth": 0.45,
+      "look_reverbMix": 0.3,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.58,
+      "look_macroMovement": 0.18,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

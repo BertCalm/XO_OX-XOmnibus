@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Parallax Dawn",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The horizon at first light \u2014 sine and formant weave a slow-breathing aurora. Parallax spreads wide as notes climb higher. Best played slow.",
+  "tags": [
+    "atmospheric",
+    "dawn",
+    "parallax",
+    "slow",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.12,
+    "density": 0.32,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.35,
+      "look_parallaxAmount": 0.82,
+      "look_vistaLine": 0.72,
+      "look_resonance": 0.18,
+      "look_filterEnvAmt": 0.3,
+      "look_attack": 1.8,
+      "look_decay": 3.0,
+      "look_sustain": 0.75,
+      "look_release": 6.5,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.65,
+      "look_aftertouchDepth": 0.55,
+      "look_reverbMix": 0.68,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.35,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

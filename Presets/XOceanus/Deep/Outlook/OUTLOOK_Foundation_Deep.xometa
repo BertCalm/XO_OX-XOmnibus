@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Foundation Deep",
+  "mood": "Deep",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Triangle deep pad \u2014 architectural, load-bearing. The sound that holds everything else up.",
+  "tags": [
+    "foundation",
+    "triangle",
+    "architectural",
+    "bass",
+    "support"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.78,
+    "movement": 0.18,
+    "density": 0.62,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.22,
+      "look_parallaxAmount": 0.65,
+      "look_vistaLine": 0.28,
+      "look_resonance": 0.38,
+      "look_filterEnvAmt": 0.42,
+      "look_attack": 0.5,
+      "look_decay": 1.8,
+      "look_sustain": 0.72,
+      "look_release": 3.2,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.14,
+      "look_modWheelDepth": 0.5,
+      "look_aftertouchDepth": 0.45,
+      "look_reverbMix": 0.25,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.3,
+      "look_macroMovement": 0.12,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

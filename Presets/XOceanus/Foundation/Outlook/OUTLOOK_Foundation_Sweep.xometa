@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Foundation Sweep",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Slow horizon scan across saw and triangle. The pad that changes over time without using LFOs \u2014 pure oscillator scanning.",
+  "tags": [
+    "sweep",
+    "slow",
+    "scan",
+    "saw",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.78,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.25,
+      "look_filterEnvAmt": 0.42,
+      "look_attack": 0.2,
+      "look_decay": 0.6,
+      "look_sustain": 0.72,
+      "look_release": 1.5,
+      "look_lfo1Rate": 0.3,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.2,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.32,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.2,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

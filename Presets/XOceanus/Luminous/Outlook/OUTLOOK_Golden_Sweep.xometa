@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Golden Sweep",
+  "mood": "Luminous",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Slow horizon scan creating continuous spectral sweep. Triangle morphing toward saw as the scan opens \u2014 warm golden progression.",
+  "tags": [
+    "golden",
+    "sweep",
+    "triangle",
+    "saw",
+    "scan"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 2,
+      "look_oscMix": 0.55,
+      "look_horizonScan": 0.85,
+      "look_parallaxAmount": 0.58,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.22,
+      "look_filterEnvAmt": 0.42,
+      "look_attack": 0.6,
+      "look_decay": 2.0,
+      "look_sustain": 0.72,
+      "look_release": 3.8,
+      "look_lfo1Rate": 0.1,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.06,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.65,
+      "look_aftertouchDepth": 0.55,
+      "look_reverbMix": 0.42,
+      "look_delayMix": 0.1,
+      "look_macroCharacter": 0.52,
+      "look_macroMovement": 0.28,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Unstable Horizon",
+  "mood": "Flux",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Pulse-width modulation on square oscillator with fast LFO \u2014 the horizon that cannot hold still.",
+  "tags": [
+    "unstable",
+    "pulse",
+    "square",
+    "modulation",
+    "fast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.38,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 3,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.55,
+      "look_horizonScan": 0.72,
+      "look_parallaxAmount": 0.52,
+      "look_vistaLine": 0.62,
+      "look_resonance": 0.4,
+      "look_filterEnvAmt": 0.52,
+      "look_attack": 0.05,
+      "look_decay": 0.38,
+      "look_sustain": 0.58,
+      "look_release": 1.3,
+      "look_lfo1Rate": 1.8,
+      "look_lfo1Depth": 0.58,
+      "look_lfo2Rate": 1.1,
+      "look_lfo2Depth": 0.42,
+      "look_modWheelDepth": 0.7,
+      "look_aftertouchDepth": 0.62,
+      "look_reverbMix": 0.15,
+      "look_delayMix": 0.1,
+      "look_macroCharacter": 0.38,
+      "look_macroMovement": 0.65,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Memory Dissolve",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Slow-attack sine with near-infinite sustain. The pad that exists before and after the note \u2014 memory outlasting the gesture.",
+  "tags": [
+    "memory",
+    "sine",
+    "slow-attack",
+    "sustain",
+    "dissolve"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.5,
+    "movement": 0.06,
+    "density": 0.22,
+    "space": 0.93,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.25,
+      "look_parallaxAmount": 0.72,
+      "look_vistaLine": 0.8,
+      "look_resonance": 0.08,
+      "look_filterEnvAmt": 0.15,
+      "look_attack": 3.5,
+      "look_decay": 5.0,
+      "look_sustain": 0.85,
+      "look_release": 8.5,
+      "look_lfo1Rate": 0.03,
+      "look_lfo1Depth": 0.1,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.08,
+      "look_modWheelDepth": 0.7,
+      "look_aftertouchDepth": 0.48,
+      "look_reverbMix": 0.82,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.22,
+      "look_macroMovement": 0.06,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.9
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

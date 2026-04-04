@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Panoramic Haze",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Super-saw with wide parallax and soft vista filter. Notes dissolve at edges \u2014 the haze at the edge of the panorama.",
+  "tags": [
+    "haze",
+    "super",
+    "panoramic",
+    "wide",
+    "soft"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.5,
+    "movement": 0.14,
+    "density": 0.38,
+    "space": 0.86,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 5,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.55,
+      "look_parallaxAmount": 0.88,
+      "look_vistaLine": 0.62,
+      "look_resonance": 0.15,
+      "look_filterEnvAmt": 0.28,
+      "look_attack": 1.8,
+      "look_decay": 3.0,
+      "look_sustain": 0.76,
+      "look_release": 7.2,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.14,
+      "look_modWheelDepth": 0.62,
+      "look_aftertouchDepth": 0.55,
+      "look_reverbMix": 0.76,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.35,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

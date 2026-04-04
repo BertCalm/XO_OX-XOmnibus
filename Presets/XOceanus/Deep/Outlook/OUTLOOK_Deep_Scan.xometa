@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Deep Scan",
+  "mood": "Deep",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Horizon scan active in deep register \u2014 dark spectral sweep from fundamental upward. The vista opens slowly from below.",
+  "tags": [
+    "deep",
+    "scan",
+    "spectral",
+    "dark",
+    "sweep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.72,
+      "look_parallaxAmount": 0.62,
+      "look_vistaLine": 0.3,
+      "look_resonance": 0.45,
+      "look_filterEnvAmt": 0.5,
+      "look_attack": 0.5,
+      "look_decay": 1.8,
+      "look_sustain": 0.7,
+      "look_release": 3.2,
+      "look_lfo1Rate": 0.08,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.05,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.52,
+      "look_aftertouchDepth": 0.48,
+      "look_reverbMix": 0.28,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.35,
+      "look_macroMovement": 0.2,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Attack",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Aggressive crystal texture \u2014 short envelope, maximum attack transient, high resonance. Crystal as weapon.",
+  "tags": [
+    "aggressive",
+    "attack",
+    "short",
+    "transient",
+    "weapon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.35,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.55,
+      "look_horizonScan": 0.82,
+      "look_parallaxAmount": 0.48,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.58,
+      "look_filterEnvAmt": 0.48,
+      "look_attack": 0.002,
+      "look_decay": 0.25,
+      "look_sustain": 0.4,
+      "look_release": 0.6,
+      "look_lfo1Rate": 1.5,
+      "look_lfo1Depth": 0.42,
+      "look_lfo2Rate": 1.0,
+      "look_lfo2Depth": 0.3,
+      "look_modWheelDepth": 0.72,
+      "look_aftertouchDepth": 0.65,
+      "look_reverbMix": 0.12,
+      "look_delayMix": 0.12,
+      "look_macroCharacter": 0.72,
+      "look_macroMovement": 0.42,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

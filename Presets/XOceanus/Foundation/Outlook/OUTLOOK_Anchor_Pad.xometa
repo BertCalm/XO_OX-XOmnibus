@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Anchor Pad",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Low-register pad \u2014 sine with closed vista line. Grounding, harmonic, the anchor beneath complex textures.",
+  "tags": [
+    "anchor",
+    "low",
+    "grounding",
+    "sine",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.3,
+      "look_parallaxAmount": 0.48,
+      "look_vistaLine": 0.42,
+      "look_resonance": 0.28,
+      "look_filterEnvAmt": 0.45,
+      "look_attack": 0.15,
+      "look_decay": 0.5,
+      "look_sustain": 0.75,
+      "look_release": 1.2,
+      "look_lfo1Rate": 0.4,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.25,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.28,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Sharp Meridian",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Aggressive preset for Crystalline mood \u2014 high resonance, fast attack, saw oscillators. The crystalline edge.",
+  "tags": [
+    "sharp",
+    "aggressive",
+    "saw",
+    "resonance",
+    "edge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.35,
+    "movement": 0.42,
+    "density": 0.48,
+    "space": 0.35,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 3,
+      "look_oscMix": 0.55,
+      "look_horizonScan": 0.75,
+      "look_parallaxAmount": 0.42,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.65,
+      "look_filterEnvAmt": 0.52,
+      "look_attack": 0.003,
+      "look_decay": 0.3,
+      "look_sustain": 0.45,
+      "look_release": 0.8,
+      "look_lfo1Rate": 1.2,
+      "look_lfo1Depth": 0.42,
+      "look_lfo2Rate": 0.8,
+      "look_lfo2Depth": 0.28,
+      "look_modWheelDepth": 0.72,
+      "look_aftertouchDepth": 0.65,
+      "look_reverbMix": 0.15,
+      "look_delayMix": 0.15,
+      "look_macroCharacter": 0.75,
+      "look_macroMovement": 0.38,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

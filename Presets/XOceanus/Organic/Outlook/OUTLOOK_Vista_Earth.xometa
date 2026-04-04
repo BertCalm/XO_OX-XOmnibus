@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Vista Earth",
+  "mood": "Organic",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Triangle and sine, minimal effects, low attack. The panoramic synth pad of the Earth \u2014 fundamental, unadorned, permanent.",
+  "tags": [
+    "earth",
+    "minimal",
+    "permanent",
+    "triangle",
+    "fundamental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.1,
+    "density": 0.38,
+    "space": 0.42,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.15,
+      "look_parallaxAmount": 0.4,
+      "look_vistaLine": 0.6,
+      "look_resonance": 0.18,
+      "look_filterEnvAmt": 0.3,
+      "look_attack": 0.08,
+      "look_decay": 0.6,
+      "look_sustain": 0.75,
+      "look_release": 1.5,
+      "look_lfo1Rate": 0.1,
+      "look_lfo1Depth": 0.1,
+      "look_lfo2Rate": 0.07,
+      "look_lfo2Depth": 0.07,
+      "look_modWheelDepth": 0.42,
+      "look_aftertouchDepth": 0.38,
+      "look_reverbMix": 0.18,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.4,
+      "look_macroMovement": 0.08,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

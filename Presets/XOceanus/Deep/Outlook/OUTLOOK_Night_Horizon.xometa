@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Night Horizon",
+  "mood": "Deep",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Dark formant pair with near-minimum vista \u2014 the horizon at the darkest point of night. Wide, cold, and far.",
+  "tags": [
+    "night",
+    "formant",
+    "cold",
+    "dark",
+    "distant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.58,
+    "space": 0.62,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 7,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.42,
+      "look_parallaxAmount": 0.72,
+      "look_vistaLine": 0.22,
+      "look_resonance": 0.38,
+      "look_filterEnvAmt": 0.42,
+      "look_attack": 1.0,
+      "look_decay": 3.0,
+      "look_sustain": 0.68,
+      "look_release": 4.5,
+      "look_lfo1Rate": 0.05,
+      "look_lfo1Depth": 0.18,
+      "look_lfo2Rate": 0.035,
+      "look_lfo2Depth": 0.12,
+      "look_modWheelDepth": 0.5,
+      "look_aftertouchDepth": 0.45,
+      "look_reverbMix": 0.3,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.28,
+      "look_macroMovement": 0.12,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

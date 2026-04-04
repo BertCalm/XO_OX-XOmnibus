@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Golden Parallax",
+  "mood": "Luminous",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Maximum parallax at luminous filter position. High notes split wide; low notes stay grounded. The stereo field is the melody.",
+  "tags": [
+    "golden",
+    "parallax",
+    "maximum",
+    "stereo",
+    "width"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.48,
+      "look_horizonScan": 0.62,
+      "look_parallaxAmount": 0.95,
+      "look_vistaLine": 0.78,
+      "look_resonance": 0.2,
+      "look_filterEnvAmt": 0.35,
+      "look_attack": 0.6,
+      "look_decay": 2.0,
+      "look_sustain": 0.78,
+      "look_release": 4.0,
+      "look_lfo1Rate": 0.1,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.07,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.68,
+      "look_aftertouchDepth": 0.6,
+      "look_reverbMix": 0.55,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.3,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

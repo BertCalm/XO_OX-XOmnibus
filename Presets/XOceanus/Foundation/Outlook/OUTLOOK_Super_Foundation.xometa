@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Super Foundation",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Three-unison super-saw as the foundation chord texture. Slight scan detune separation keeps it from muddying.",
+  "tags": [
+    "super",
+    "unison",
+    "chord",
+    "detuned",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.55,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 5,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.48,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.25,
+      "look_filterEnvAmt": 0.4,
+      "look_attack": 0.25,
+      "look_decay": 0.7,
+      "look_sustain": 0.72,
+      "look_release": 1.3,
+      "look_lfo1Rate": 0.35,
+      "look_lfo1Depth": 0.28,
+      "look_lfo2Rate": 0.22,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.55,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.32,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.18,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

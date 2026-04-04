@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Silk",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Gossamer triangle-formant blend. The two oscillators breathe in slow cycles \u2014 one rising, one falling \u2014 creating perpetual silk shimmer.",
+  "tags": [
+    "silk",
+    "shimmer",
+    "triangle",
+    "formant",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.5,
+    "movement": 0.1,
+    "density": 0.28,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.42,
+      "look_parallaxAmount": 0.75,
+      "look_vistaLine": 0.68,
+      "look_resonance": 0.14,
+      "look_filterEnvAmt": 0.25,
+      "look_attack": 2.2,
+      "look_decay": 3.5,
+      "look_sustain": 0.8,
+      "look_release": 7.2,
+      "look_lfo1Rate": 0.05,
+      "look_lfo1Depth": 0.18,
+      "look_lfo2Rate": 0.03,
+      "look_lfo2Depth": 0.12,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.72,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.3,
+      "look_macroMovement": 0.1,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

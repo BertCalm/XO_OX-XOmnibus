@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Glass Lattice",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "High-resonance formant pair \u2014 the filter rings like struck glass. Fast attack, medium decay creates bell-like attack transients.",
+  "tags": [
+    "glass",
+    "formant",
+    "bell",
+    "resonant",
+    "sharp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.28,
+    "density": 0.32,
+    "space": 0.48,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 7,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.72,
+      "look_parallaxAmount": 0.6,
+      "look_vistaLine": 0.88,
+      "look_resonance": 0.45,
+      "look_filterEnvAmt": 0.38,
+      "look_attack": 0.006,
+      "look_decay": 0.5,
+      "look_sustain": 0.45,
+      "look_release": 1.8,
+      "look_lfo1Rate": 0.7,
+      "look_lfo1Depth": 0.25,
+      "look_lfo2Rate": 0.45,
+      "look_lfo2Depth": 0.18,
+      "look_modWheelDepth": 0.52,
+      "look_aftertouchDepth": 0.45,
+      "look_reverbMix": 0.22,
+      "look_delayMix": 0.08,
+      "look_macroCharacter": 0.62,
+      "look_macroMovement": 0.22,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

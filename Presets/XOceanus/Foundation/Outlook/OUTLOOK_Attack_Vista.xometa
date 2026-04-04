@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Attack Vista",
+  "mood": "Foundation",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Immediate attack, saw oscillators, high resonance. The Outlook engine at its most confrontational \u2014 panoramic aggression.",
+  "tags": [
+    "attack",
+    "aggressive",
+    "saw",
+    "confrontational",
+    "panoramic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.62,
+    "space": 0.3,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 3,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.72,
+      "look_parallaxAmount": 0.48,
+      "look_vistaLine": 0.8,
+      "look_resonance": 0.72,
+      "look_filterEnvAmt": 0.58,
+      "look_attack": 0.003,
+      "look_decay": 0.25,
+      "look_sustain": 0.6,
+      "look_release": 1.0,
+      "look_lfo1Rate": 2.0,
+      "look_lfo1Depth": 0.55,
+      "look_lfo2Rate": 1.3,
+      "look_lfo2Depth": 0.42,
+      "look_modWheelDepth": 0.78,
+      "look_aftertouchDepth": 0.72,
+      "look_reverbMix": 0.12,
+      "look_delayMix": 0.15,
+      "look_macroCharacter": 0.7,
+      "look_macroMovement": 0.68,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

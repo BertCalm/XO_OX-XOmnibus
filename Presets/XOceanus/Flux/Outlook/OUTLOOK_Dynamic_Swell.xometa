@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Dynamic Swell",
+  "mood": "Flux",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Slow LFO-modulated swell \u2014 the panorama expands and contracts on a 12-second cycle. Macro MOVEMENT opens the scan amplitude.",
+  "tags": [
+    "swell",
+    "slow",
+    "expand",
+    "contract",
+    "cycle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.52,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 7,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.55,
+      "look_parallaxAmount": 0.65,
+      "look_vistaLine": 0.65,
+      "look_resonance": 0.28,
+      "look_filterEnvAmt": 0.42,
+      "look_attack": 0.8,
+      "look_decay": 2.0,
+      "look_sustain": 0.72,
+      "look_release": 3.5,
+      "look_lfo1Rate": 0.08,
+      "look_lfo1Depth": 0.42,
+      "look_lfo2Rate": 0.12,
+      "look_lfo2Depth": 0.32,
+      "look_modWheelDepth": 0.65,
+      "look_aftertouchDepth": 0.58,
+      "look_reverbMix": 0.32,
+      "look_delayMix": 0.05,
+      "look_macroCharacter": 0.4,
+      "look_macroMovement": 0.45,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

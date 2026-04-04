@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Luminous Ghost",
+  "mood": "Ethereal",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Triangle-saw with half-lit vista. The sound arrives and departs like a ship's ghost \u2014 visible but not quite solid.",
+  "tags": [
+    "ghost",
+    "triangle",
+    "saw",
+    "dim",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.12,
+    "density": 0.3,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 2,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.4,
+      "look_parallaxAmount": 0.75,
+      "look_vistaLine": 0.55,
+      "look_resonance": 0.2,
+      "look_filterEnvAmt": 0.35,
+      "look_attack": 2.0,
+      "look_decay": 3.5,
+      "look_sustain": 0.7,
+      "look_release": 7.8,
+      "look_lfo1Rate": 0.05,
+      "look_lfo1Depth": 0.18,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.12,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.72,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.3,
+      "look_macroMovement": 0.12,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
