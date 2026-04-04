@@ -140,6 +140,12 @@ public:
     }
 
     //-- Parameters ------------------------------------------------------------
+    //
+    // Parameter registration path (issue #655): engines implement a static
+    // addParameters(vector<unique_ptr<RangedAudioParameter>>&) function, which
+    // XOceanusProcessor::createParameterLayout() calls directly. There is NO
+    // createParameterLayout() pure virtual here — any engine override of that
+    // method is dead code and should be removed incrementally.
 
     // Cache raw parameter pointers from the shared APVTS.
     // Called once after the APVTS is constructed with all engine layouts merged.
