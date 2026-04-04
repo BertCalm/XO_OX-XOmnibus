@@ -119,7 +119,7 @@ struct OwareMalletExciter
         if (sampleCounter < contactSamples)
         {
             float phase = static_cast<float>(sampleCounter) / static_cast<float>(contactSamples);
-            float pulse = std::sin(phase * 3.14159265f) * peakAmplitude;
+            float pulse = fastSin(phase * 3.14159265f) * peakAmplitude;
             noiseState = noiseState * 1664525u + 1013904223u;
             float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f) * peakAmplitude;
             out = pulse * (1.0f - noiseMix) + noise * noiseMix;
@@ -130,7 +130,7 @@ struct OwareMalletExciter
         {
             int bouncePhaseIdx = sampleCounter - bounceSample;
             float phase = static_cast<float>(bouncePhaseIdx) / static_cast<float>(contactSamples);
-            out += std::sin(phase * 3.14159265f) * bounceAmp;
+            out += fastSin(phase * 3.14159265f) * bounceAmp;
         }
 
         // Shut off after both strikes complete

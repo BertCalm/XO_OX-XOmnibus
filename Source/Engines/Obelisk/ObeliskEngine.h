@@ -161,7 +161,7 @@ struct ObeliskHammer
         {
             float phase = static_cast<float>(sampleCounter) / static_cast<float>(contactSamples);
             // Half-sine impulse — the standard contact model pulse shape
-            float pulse = std::sin(phase * 3.14159265f) * peakAmplitude;
+            float pulse = fastSin(phase * 3.14159265f) * peakAmplitude;
             // Impact noise — stone is inherently noisy on contact
             noiseState = noiseState * 1664525u + 1013904223u;
             float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f) * peakAmplitude;

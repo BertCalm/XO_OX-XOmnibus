@@ -183,7 +183,7 @@ struct OtoChiffGenerator
 
         float phase = static_cast<float>(sampleCounter) / static_cast<float>(totalSamples);
         // Hann-windowed burst; amplitude holds velocity, chiffScale carries macro-modified amount.
-        float env = std::sin(phase * 3.14159265f) * amplitude * chiffScale;
+        float env = fastSin(phase * 3.14159265f) * amplitude * chiffScale;
 
         // Noise component
         noiseState = noiseState * 1664525u + 1013904223u;

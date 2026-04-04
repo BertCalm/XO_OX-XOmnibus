@@ -130,7 +130,7 @@ struct OctaveChiffGenerator
 
         // Windowed noise burst — half-sine envelope
         float phase = static_cast<float>(sampleCounter) / static_cast<float>(totalSamples);
-        float envelope = std::sin(phase * 3.14159265f) * amplitude;
+        float envelope = fastSin(phase * 3.14159265f) * amplitude;
 
         // Broadband noise
         noiseState = noiseState * 1664525u + 1013904223u;
