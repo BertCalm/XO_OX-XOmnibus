@@ -1,6 +1,6 @@
-# Future Development
+# Future / Experimental
 
-Headers in this directory are intentionally parked for future development.
-They are not compiled or included in the current build.
+Modules in this directory are **not included in the active build**.
+They represent experimental ideas, prototypes, or features under consideration for future releases.
 
-Relocated here per issues #572, #579, #580.
+To include a module, move it to the appropriate `Source/` subdirectory and add it to `CMakeLists.txt`.
