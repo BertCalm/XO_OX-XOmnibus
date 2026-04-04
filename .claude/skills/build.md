@@ -1,6 +1,6 @@
 # /build — Build Project & Verify Artifacts
 
-Build the XOlokun project for a target platform, verify expected artifacts exist, and report results.
+Build the XOceanus project for a target platform, verify expected artifacts exist, and report results.
 
 ## Usage
 
@@ -41,12 +41,12 @@ Capture stdout and stderr. Time the build.
 ### 4. Verify artifacts
 
 **macOS — expect both:**
-- `build/XOlokun_artefacts/Release/AU/XOlokun.component`
-- `build/XOlokun_artefacts/Release/Standalone/XOlokun.app`
+- `build/XOceanus_artefacts/Release/AU/XOceanus.component`
+- `build/XOceanus_artefacts/Release/Standalone/XOceanus.app`
 
 **iOS — expect both:**
-- `build-ios/XOlokun_artefacts/Release-iphoneos/AUv3/XOlokun.appex`
-- `build-ios/XOlokun_artefacts/Release-iphoneos/Standalone/XOlokun.app`
+- `build-ios/XOceanus_artefacts/Release-iphoneos/AUv3/XOceanus.appex`
+- `build-ios/XOceanus_artefacts/Release-iphoneos/Standalone/XOceanus.app`
 
 ### 5. Report
 

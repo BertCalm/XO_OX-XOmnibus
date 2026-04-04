@@ -470,7 +470,7 @@ XO_OX-XOceanus/
     └── Engines/
         └── ShortName/
             ├── XO_____Adapter.h      ← the adapter
-            ├── XO_____Adapter.cpp    ← contains REGISTER_ENGINE macro
+            ├── XO_____Adapter.cpp    ← contains static registration call
             ├── Voice.h                ← copied from standalone
             ├── VoicePool.h
             ├── Oscillator.h
@@ -482,13 +482,17 @@ XO_OX-XOceanus/
 
 ### 4.2 Register the Engine
 
-Create `XO_____Adapter.cpp`:
+Create `XO_____Adapter.cpp` with a static registration call in `XOceanusProcessor.cpp`:
 ```cpp
+// In XO_____Adapter.cpp — include guard only; no macro needed
 #include "XO_____Adapter.h"
-REGISTER_ENGINE(XO_____Adapter)
+
+// In Source/XOceanusProcessor.cpp — add alongside existing registrations:
+static bool registered_XO_____ = EngineRegistry::instance().registerEngine(
+    "ShortName", []() { return std::make_unique<XO_____Adapter>(); });
 ```
 
-That's it. The macro registers the engine factory at program start.
+That's it. The static bool registers the engine factory at program start.
 
 ### 4.3 Add to CMakeLists.txt
 

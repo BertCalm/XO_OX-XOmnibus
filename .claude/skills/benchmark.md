@@ -18,7 +18,7 @@ the test binary with profiling enabled.
 
 ```bash
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build --target XOlokunTests
+cmake --build build --target XOceanusTests
 ```
 
 ### 2. Run engine profiling

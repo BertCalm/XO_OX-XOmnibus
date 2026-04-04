@@ -105,12 +105,12 @@ Generate an evocative name following preset conventions:
 - 2-3 words, max 30 characters
 - No jargon, no engine names, no technical terms
 - Mood-appropriate tone
-- No duplicates against existing factory presets in `Presets/XOlokun/`
+- No duplicates against existing factory presets in `Presets/XOceanus/`
 
 ### 6. Output
 
 Write the offspring `.xometa` file:
-- Place in appropriate mood folder: `Presets/XOlokun/{mood}/`
+- Place in appropriate mood folder: `Presets/XOceanus/{mood}/`
 - Include full Sonic DNA
 - Include lineage metadata (parent names)
 - Include macro assignments
@@ -124,7 +124,7 @@ Write the offspring `.xometa` file:
 - **Strategy:** {crossover/blend/dominant/mutant}
 - **DNA:** B{n} W{n} M{n} D{n} S{n} A{n}
 - **Engines:** [{slot1}, {slot2}, {slot3}, {slot4}]
-- **File:** Presets/XOlokun/{mood}/{filename}.xometa
+- **File:** Presets/XOceanus/{mood}/{filename}.xometa
 ```
 
 ### 7. Batch mode

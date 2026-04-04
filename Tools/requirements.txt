@@ -17,11 +17,13 @@
 #   sounddevice         — audio preview during export (audio playback)
 #   pyloudnorm          — XPN loudness normalization step
 
-Pillow>=9.0,<11.0
-numpy>=1.21,<3.0
-soundfile>=0.10,<1.0
-scipy>=1.7,<2.0
-mido>=1.3.0,<2.0
-python-rtmidi>=1.5.0,<2.0
-sounddevice>=0.4.6,<1.0
-pyloudnorm>=0.1.1,<1.0
+# Exact version pins — update by running: pip-compile --generate-hashes requirements.in
+# These match the CI-tested versions in .github/workflows/xpn-pipeline-ci.yml
+Pillow==10.4.0
+numpy==1.26.4
+soundfile==0.12.1
+scipy==1.13.1
+mido==1.3.3
+python-rtmidi==1.5.8
+sounddevice==0.4.7
+pyloudnorm==0.1.1

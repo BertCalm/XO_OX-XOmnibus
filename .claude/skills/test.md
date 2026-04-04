@@ -1,6 +1,6 @@
 # /test — Run Tests & Report Results
 
-Execute the XOlokun test suite, parse results, and report pass/fail with actionable detail.
+Execute the XOceanus test suite, parse results, and report pass/fail with actionable detail.
 
 ## Usage
 
@@ -16,15 +16,15 @@ Execute the XOlokun test suite, parse results, and report pass/fail with actiona
 
 ```bash
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build --target XOlokunTests
+cmake --build build --target XOceanusTests
 ```
 
-Verify `build/XOlokunTests` exists.
+Verify `build/XOceanusTests` exists.
 
 ### 2. Run tests
 
 ```bash
-./build/XOlokunTests
+./build/XOceanusTests
 ```
 
 Capture stdout, stderr, and exit code. Time the run.

@@ -43,7 +43,7 @@ Scan known project paths for `.claude/journal/entries.jsonl` files. Merge all en
 
 Known project paths to scan (add yours):
 ```
-~/Projects/XO_OX-XOlokun/.claude/journal/entries.jsonl
+~/Projects/XO_OX-XOceanus/.claude/journal/entries.jsonl
 # Add more as projects adopt the framework:
 # ~/Projects/OddfeliX/.claude/journal/entries.jsonl
 # ~/Projects/SomeWebApp/.claude/journal/entries.jsonl
@@ -68,8 +68,8 @@ Patterns that repeat within a project type but don't cross domains:
 
 **C. Context Portability Map**
 Which context slices from one project have analogs in others?
-- XOlokun has "parameter prefix rules" → Web app has "API naming conventions" → abstract to "naming-rules" context pattern
-- XOlokun has "preset schema" → Web app has "config schema" → abstract to "schema-validation" context pattern
+- XOceanus has "parameter prefix rules" → Web app has "API naming conventions" → abstract to "naming-rules" context pattern
+- XOceanus has "preset schema" → Web app has "config schema" → abstract to "schema-validation" context pattern
 
 **D. Framework Coverage Score**
 For each project, calculate:

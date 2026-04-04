@@ -58,7 +58,7 @@ jobs:
 
       - name: Validate presets
         working-directory: Tools
-        run: python3 oxport.py validate --presets || true  # Allow warnings, fail on crash
+        run: python3 oxport.py validate --presets
 
       - name: Test summary
         if: always()
