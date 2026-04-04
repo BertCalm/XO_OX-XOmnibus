@@ -5,6 +5,7 @@
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h" // CouplingTypeColors — canonical coupling colour source
 namespace xoceanus
 {
 
@@ -74,11 +75,8 @@ inline juce::String couplingTypeLabel(CouplingType t)
 //   FX node             : 40×32pt, XO Gold border
 //   OUT node            : 32×32pt, textMid border, speaker glyph
 //
-// Color coding (mirrors CouplingArcOverlay palette):
-//   Audio routes  (FM / Ring / Wavetable / Buffer)  → Twilight Blue   #0096C7
-//   Modulation    (Amp / LFO / Env / Filter / Pitch) → XO Gold        #E9C46A
-//   KnotTopology  (bidirectional entanglement)        → Midnight Violet #7B2FBE
-//   TriangularCoupling                               → Hibiscus Pink  #C9377A
+// Color coding: one distinct colour per coupling type via CouplingTypeColors::forType()
+//   in CouplingColors.h — the single canonical source for the full 15-type palette.
 //
 class CouplingChainView : public juce::Component
 {
@@ -248,7 +246,7 @@ public:
             if (best)
             {
                 lk.typeLabel = couplingTypeLabel(best->type);
-                lk.linkColor = colorForCouplingType(best->type);
+                lk.linkColor = CouplingTypeColors::forType(best->type);
             }
             else
             {
@@ -425,8 +423,9 @@ public:
             cycleArc.cubicTo(chainStartX + nodeW * 0.5f, markerY + 8.0f * scale, lastEngineEndX - nodeW * 0.5f,
                              markerY + 8.0f * scale, lastEngineEndX - nodeW * 0.5f, markerY);
 
-            // Draw with Midnight Violet (cycle = knot-like entanglement)
-            g.setColour(juce::Colour(0xFF7B2FBE).withAlpha(0.55f));
+            // Draw with KnotTopology colour (cycle = knot-like entanglement)
+            const juce::Colour cycleColour = CouplingTypeColors::forType(CouplingType::KnotTopology);
+            g.setColour(cycleColour.withAlpha(0.55f));
             g.strokePath(cycleArc, juce::PathStrokeType(1.5f));
 
             // Small arrowhead at the right end
@@ -436,7 +435,7 @@ public:
             g.fillPath(cycleHead);
 
             // "CYCLE" micro-label centred below the arc
-            g.setColour(juce::Colour(0xFF7B2FBE).withAlpha(0.70f));
+            g.setColour(cycleColour.withAlpha(0.70f));
             g.setFont(GalleryFonts::value(7.0f * scale));
             g.drawText("CYCLE", (int)chainStartX, (int)(markerY + 10.0f * scale), (int)(lastEngineEndX - chainStartX),
                        10, juce::Justification::centred);
@@ -467,29 +466,6 @@ private:
 
     //===========================================================================
     // Helpers (no allocation, called from paint())
-
-    // Map a CouplingType to its display colour.
-    // Matches CouplingArcOverlay palette exactly.
-    static juce::Colour colorForCouplingType(CouplingType t) noexcept
-    {
-        switch (t)
-        {
-        case CouplingType::AudioToFM:
-        case CouplingType::AudioToRing:
-        case CouplingType::AudioToWavetable:
-        case CouplingType::AudioToBuffer:
-            return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
-
-        case CouplingType::KnotTopology:
-            return juce::Colour(0xFF7B2FBE); // Midnight Violet — entanglement
-
-        case CouplingType::TriangularCoupling:
-            return juce::Colour(0xFFC9377A); // Hibiscus Pink — love triangle
-
-        default:
-            return juce::Colour(0xFFE9C46A); // XO Gold — modulation
-        }
-    }
 
     // Draw a horizontal arrow from x1 → x2 at vertical centre cy.
     // Optionally draws a JetBrains Mono label below the arrow midpoint.

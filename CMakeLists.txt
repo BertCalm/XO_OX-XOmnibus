@@ -340,7 +340,8 @@ target_sources(XOceanus PRIVATE
     Source/UI/XOceanusEditor.cpp
     Source/UI/XOceanusEditor.h
     Source/UI/PlaySurface/PlaySurface.h
-    Source/UI/CouplingStrip/CouplingStripEditor.h
+    Source/UI/CouplingColors.h
+    Source/UI/SharedPreviewDevice.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
     Source/UI/PresetBrowser/PresetBrowser.h
     Source/UI/Gallery/ObrixDetailPanel.h

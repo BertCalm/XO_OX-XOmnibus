@@ -408,25 +408,25 @@ private:
     }
 
     //==========================================================================
-    // Launch the full ExportDialog in a CallOutBox (reuses editor pattern)
+    // Launch the full ExportDialog in a CallOutBox (reuses editor pattern).
+    // The quick-settings combos (sampleRateBox / bitDepthBox) are forwarded to
+    // the dialog as soft defaults via setInitialSettings() — the user can still
+    // change any value inside the dialog after it opens.
     void launchExportDialog()
     {
-        // Apply the current panel's quick-settings to the dialog's profile
-        // by selecting the matching combo IDs before construction.  The dialog
-        // reads these from its own internal combos, so we carry intent via
-        // applyProfile() after launch instead (see note below).
+        auto dialog = std::make_unique<ExportDialog>(processor.getPresetManager(),
+                                                     &processor.getAPVTS(),
+                                                     &processor.getCouplingMatrix());
 
-        juce::CallOutBox::launchAsynchronously(std::make_unique<ExportDialog>(processor.getPresetManager(),
-                                                                              &processor.getAPVTS(),
-                                                                              &processor.getCouplingMatrix()),
-                                               exportBtn.getScreenBounds(), getTopLevelComponent());
+        // Forward panel quick-settings as initial defaults.
+        // Combo IDs are identical between panel and dialog for SR (1/2/3).
+        // Bit depth ID 3 (32-bit) is clamped inside setInitialSettings() to 24-bit.
+        dialog->setInitialSettings(sampleRateBox.getSelectedId(),
+                                   bitDepthBox.getSelectedId());
 
-        // Note: we intentionally do NOT apply the quick-settings from sampleRateBox /
-        // bitDepthBox into the ExportDialog here.  The full dialog exposes its own
-        // render-settings controls (including profiles), and reconciling two separate
-        // combo states would require a shared ExportSettings struct — which is the
-        // right V2 approach.  For V1, the quick-settings on this panel are advisory
-        // UI only; they do not mutate export state.
+        juce::CallOutBox::launchAsynchronously(std::move(dialog),
+                                               exportBtn.getScreenBounds(),
+                                               getTopLevelComponent());
     }
 
     //==========================================================================

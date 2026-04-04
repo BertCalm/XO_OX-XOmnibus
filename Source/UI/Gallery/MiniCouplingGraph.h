@@ -7,13 +7,8 @@
 // arranged vertically to match the CompactEngineTile positions, connected by
 // pulsing Bézier arcs that bow leftward (consistent with CouplingArcOverlay).
 //
-// Color coding (matches CouplingArcOverlay):
-//   Audio routes  (AudioToFM / AudioToRing / AudioToWavetable / AudioToBuffer)
-//                 → Twilight Blue  #0096C7
-//   Modulation    (all other types)
-//                 → XO Gold       #E9C46A
-//   KnotTopology  (bidirectional entanglement)
-//                 → Midnight Violet #7B2FBE
+// Color coding: one distinct colour per coupling type via CouplingTypeColors::forType()
+//   in CouplingColors.h — the single canonical source for the full 15-type palette.
 //
 // Arc animation: 0.3 Hz pulse. Alpha oscillates in [0.35, 0.60].
 // Timer rate: 5 Hz (low visual priority — miniature widget).
@@ -32,6 +27,7 @@
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/SynthEngine.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h" // CouplingTypeColors — canonical coupling colour source
 #include "CockpitHost.h"
 
 namespace xoceanus
@@ -144,7 +140,7 @@ public:
             ad.src = e.lo;
             ad.dst = e.hi;
             ad.amount = e.amount;
-            ad.color = colorForType(e.type);
+            ad.color = CouplingTypeColors::forType(e.type);
             arcs.push_back(ad);
         }
 
@@ -254,26 +250,6 @@ public:
     }
 
 private:
-    //--------------------------------------------------------------------------
-    // Map CouplingType to the canonical arc color used across all coupling UI.
-    static juce::Colour colorForType(CouplingType t)
-    {
-        switch (t)
-        {
-        case CouplingType::AudioToFM:
-        case CouplingType::AudioToRing:
-        case CouplingType::AudioToWavetable:
-        case CouplingType::AudioToBuffer:
-            return juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
-
-        case CouplingType::KnotTopology:
-            return juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
-
-        default:
-            return juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
-        }
-    }
-
     //--------------------------------------------------------------------------
     struct ArcData
     {

@@ -12,6 +12,7 @@
 #include "../../Core/EngineRegistry.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h" // GalleryColors, prefixForEngine (no editor circular dep)
+#include "../SharedPreviewDevice.h"
 
 namespace xoceanus
 {
@@ -236,6 +237,28 @@ public:
         MaxQuality
     };
 
+    //==========================================================================
+    // setInitialSettings — pre-populate render settings from the sidebar panel's
+    // quick-settings combos before the dialog is shown.  This is a "soft" default:
+    // the user can still change any value inside the dialog; these are not locked.
+    //
+    // sampleRateId: 1=44.1kHz  2=48kHz  3=96kHz  (matches ExportTabPanel IDs)
+    // bitDepthId:   1=16-bit   2=24-bit  3=32-bit (32-bit is clamped to 24-bit —
+    //               the dialog's render pipeline targets 16/24 only for MPC compat)
+    void setInitialSettings(int sampleRateId, int bitDepthId)
+    {
+        // Sample rate: IDs 1/2/3 are identical between panel and dialog
+        if (sampleRateId >= 1 && sampleRateId <= 3)
+            sampleRateBox.setSelectedId(sampleRateId, juce::dontSendNotification);
+
+        // Bit depth: dialog only exposes 16-bit (1) and 24-bit (2).
+        // Clamp 32-bit (3) to 24-bit so we never end up with no selection.
+        int clampedBitDepth = juce::jlimit(1, 2, bitDepthId);
+        bitDepthBox.setSelectedId(clampedBitDepth, juce::dontSendNotification);
+
+        updateSizeEstimate();
+    }
+
     void applyProfile(ExportProfile profile)
     {
         switch (profile)
@@ -325,7 +348,7 @@ private:
     bool previewPlaying = false;
     std::atomic<int> previewPlaybackPos{0};
     juce::AudioBuffer<float> previewAudioBuffer;
-    std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
+    juce::SharedResourcePointer<SharedPreviewDevice> sharedDevice;
     std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
     std::unique_ptr<PreviewAudioSource> previewSource;
     int selectedPresetIndex = -1;
@@ -406,13 +429,11 @@ private:
         previewPlaying = true;
         previewPlayBtn.setButtonText("||");
 
-        // Use a simple timer-based playback via AudioDeviceManager
-        if (!previewDeviceManager)
+        // Register with the shared audio device (avoids double-claiming hardware).
+        if (!previewPlayer)
         {
-            previewDeviceManager = std::make_unique<juce::AudioDeviceManager>();
-            previewDeviceManager->initialiseWithDefaultDevices(0, 2);
             previewPlayer = std::make_unique<juce::AudioSourcePlayer>();
-            previewDeviceManager->addAudioCallback(previewPlayer.get());
+            sharedDevice->manager.addAudioCallback(previewPlayer.get());
         }
 
         // Create a simple playback source
@@ -432,7 +453,11 @@ private:
         previewPlaybackPos.store(0);
 
         if (previewPlayer)
+        {
             previewPlayer->setSource(nullptr);
+            sharedDevice->manager.removeAudioCallback(previewPlayer.get());
+            previewPlayer.reset();
+        }
         previewSource.reset();
 
         if (previewDrip.getState() == XDrip::State::Ready)

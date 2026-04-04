@@ -5,6 +5,7 @@
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h" // CouplingTypeColors — canonical coupling colour source
 
 namespace xoceanus
 {
@@ -27,9 +28,8 @@ namespace xoceanus
 //   overlap the right-side engine detail panel.
 //
 // Color coding by coupling type:
-//   Audio routes  (FM / Ring / Wavetable / Buffer) → Twilight Blue   #0096C7
-//   Modulation    (Amp / LFO / Env / Filter / Pitch / Rhythm)        → XO Gold #E9C46A
-//   KnotTopology  (bidirectional entanglement)                        → Midnight Violet #7B2FBE
+//   One distinct colour per type via CouplingTypeColors::forType() in CouplingColors.h.
+//   See that header for the full 15-type palette.
 //
 // Two-pass glow painting (Bézier cubic):
 //   Pass 1: arcColor @ 0.08 alpha, (strokeWidth+2)px — soft outer glow halo
@@ -199,23 +199,8 @@ public:
             if (from.isOrigin() || to.isOrigin())
                 continue;
 
-            // Choose arc color by coupling type category
-            juce::Colour arcColor;
-            switch (ai.type)
-            {
-            case CouplingType::AudioToFM:
-            case CouplingType::AudioToRing:
-            case CouplingType::AudioToWavetable:
-            case CouplingType::AudioToBuffer:
-                arcColor = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate routes
-                break;
-            case CouplingType::KnotTopology:
-                arcColor = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional entanglement
-                break;
-            default:
-                arcColor = juce::Colour(0xFFE9C46A); // XO Gold — modulation routes
-                break;
-            }
+            // Choose arc color via the canonical per-type palette (CouplingColors.h).
+            const juce::Colour arcColor = CouplingTypeColors::forType(ai.type);
 
             // Bézier control points bow leftward (away from right panel)
             const float midX = (from.x + to.x) * 0.5f - 60.0f;

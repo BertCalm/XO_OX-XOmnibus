@@ -5,6 +5,7 @@
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../GalleryColors.h"
+#include "../SharedPreviewDevice.h"
 #include "../../Export/XOutshine.h"
 
 namespace xoceanus
@@ -45,7 +46,7 @@ public:
         readerSource.reset();
         if (player)
         {
-            deviceManager.removeAudioCallback(player.get());
+            sharedDevice->manager.removeAudioCallback(player.get());
             player.reset();
         }
     }
@@ -156,17 +157,14 @@ private:
         if (!player)
         {
             player = std::make_unique<juce::AudioSourcePlayer>();
-            deviceManager.addAudioCallback(player.get());
+            sharedDevice->manager.addAudioCallback(player.get());
         }
-
-        if (deviceManager.getCurrentAudioDevice() == nullptr)
-            deviceManager.initialiseWithDefaultDevices(0, 2);
 
         player->setSource(&transportSource);
     }
 
     juce::TextButton playC4Btn{"Play C4"};
-    juce::AudioDeviceManager deviceManager;
+    juce::SharedResourcePointer<SharedPreviewDevice> sharedDevice;
     juce::AudioFormatManager formatManager;
     juce::AudioTransportSource transportSource;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
