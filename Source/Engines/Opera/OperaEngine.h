@@ -550,12 +550,9 @@ public:
         addParametersImpl(params);
     }
 
-    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
+    // createParameterLayout() removed — dead wrapper. Use addParameters() directly.
+    // XOceanusProcessor::createParameterLayout() calls opera::OperaEngine::addParameters(params).
+    // See issue #655.
 
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {

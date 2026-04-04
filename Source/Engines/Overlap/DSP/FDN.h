@@ -147,7 +147,7 @@ private:
     //==========================================================================
     static constexpr int kChannels = 6;
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     KnotMatrix::Matrix matrix;
 

@@ -108,7 +108,7 @@ private:
         a1 = (denom > 1e-10f) ? 1.0f / denom : 1.0f;
     }
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float fc = 8000.0f; // current cutoff Hz
     float q = 0.3f;     // resonance [0,1]
     int mode = 0;

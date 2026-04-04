@@ -58,7 +58,7 @@ namespace xoceanus
 struct DeepSineOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -121,7 +121,7 @@ struct DeepWaveguideBody
     std::vector<float> buf;
     int maxDelay = 48001; // set by prepare(), matches buf.size()
     int writePos = 0;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s)
     {
@@ -984,7 +984,7 @@ private:
     };
 
     // DSP state
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     DeepSineOsc oscFund, oscSub1, oscSub2;
     DeepHydroCompressor compressor;
     DeepWaveguideBody body;

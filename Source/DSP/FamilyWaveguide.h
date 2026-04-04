@@ -214,7 +214,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float nb0 = 0.0f, nb1 = 0.0f, nb2 = 0.0f;
     float na1 = 0.0f, na2 = 0.0f;
     float x1 = 0.0f, x2 = 0.0f;
@@ -297,7 +297,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::vector<float> combs[kNumCombs];
     int positions[kNumCombs] = {};
     float lengths[kNumCombs] = {};
@@ -348,7 +348,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float phase1 = 0.0f;
     float phase2 = 0.0f;
 };
@@ -422,7 +422,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float filterState = 0.0f;
     int remaining = 0;
     uint32_t seed = 12345u;
@@ -490,7 +490,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     PluckExciter plucks[kMaxStrings];
     int countdown[kMaxStrings] = {};
 };
@@ -542,7 +542,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     FamilyBodyResonance body;
     int remaining = 0;
     uint32_t seed = 98765u;
@@ -598,7 +598,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     FamilyBodyResonance jetr;
     float hpState = 0.0f;
     float hpStatePrev = 0.0f;
@@ -648,7 +648,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     FamilyDampingFilter filter;
     uint32_t seed = 77777u;
 };
@@ -706,7 +706,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float phase = 0.0f;
     FamilyDampingFilter lipFilter;
 };
@@ -757,7 +757,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     FamilyDampingFilter frictionLP;
 };
 

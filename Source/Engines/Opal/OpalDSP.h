@@ -788,12 +788,9 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
                                                            NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.8f));
 }
 
-inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
-{
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    addParameters(params);
-    return {params.begin(), params.end()};
-}
+// createParameterLayout() removed — dead wrapper. Use addParameters() directly.
+// XOceanusProcessor::createParameterLayout() calls OpalEngine::addParameters(params).
+// See issue #655.
 
 } // namespace XOpal
 } // namespace xoceanus

@@ -75,7 +75,7 @@ struct ObbligatoAdapterVoice
     int note = 0;
     float vel = 0.0f;
     float freq = 440.0f;
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // --- Amplitude envelope: StandardADSR replaces the former linear ampEnv float ---
     // Default: 10ms attack, 100ms decay, 0.7 sustain, 400ms release.

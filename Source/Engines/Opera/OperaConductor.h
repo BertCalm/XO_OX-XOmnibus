@@ -349,7 +349,7 @@ private:
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
-    float sr = 44100.0f; // sample rate (updated by prepare())
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671) // sample rate (updated by prepare())
 
     // Parameters (set per-block by the processor)
     int arcShape = kSCurve;  // default: S-Curve (natural dramatic shape)

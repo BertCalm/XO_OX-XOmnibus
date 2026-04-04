@@ -114,7 +114,7 @@ using SkyADSR = StandardADSR;
 struct SkyBreathingLFO
 {
     float phase = 0.0f;
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double sampleRate) noexcept { sr = static_cast<float>(sampleRate); }
     void reset() noexcept { phase = 0.0f; }
@@ -350,7 +350,7 @@ private:
         return readBuf(pos1) * fade1 + readBuf(pos2) * fade2;
     }
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Comb filter state
     std::array<std::array<float, kMaxDelay>, kNumCombs> combBuf{};
@@ -456,7 +456,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::array<std::array<float, kMaxDelay>, 2> delayBuf{}; // L, R
     int writePos = 0;
     float lfoPhase[kNumVoices]{};

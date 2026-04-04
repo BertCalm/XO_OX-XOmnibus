@@ -167,7 +167,9 @@ public:
     class ScopedMeasurement
     {
     public:
-#ifdef XOCEANUS_PROFILING
+#ifndef NDEBUG
+        // Debug builds only — std::chrono involves a syscall on macOS/iOS.
+        // Gated here so Release builds make zero kernel entries on the audio thread. (#658)
         explicit ScopedMeasurement(EngineProfiler& p) noexcept : profiler(p), start(Clock::now()) {}
 
         ~ScopedMeasurement() noexcept
@@ -186,14 +188,14 @@ public:
         EngineProfiler& profiler;
         Clock::time_point start;
 #else
-        explicit ScopedMeasurement(EngineProfiler&) noexcept {}  // no-op in release
+        explicit ScopedMeasurement(EngineProfiler&) noexcept {}  // no-op in Release builds
 #endif
     };
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0; // sentinel: set by prepare() (#671)
     int currentBlockSize = 512;
-    double blockBudgetUs = 11609.977; // default: 512 samples at 44.1kHz
+    double blockBudgetUs = 11609.977; // default: 512 samples at 44.1kHz (recalculated in prepare())
     float budgetFraction = 1.0f;
 
     // Ring buffer (audio thread writes, UI thread reads)

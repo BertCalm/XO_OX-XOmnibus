@@ -183,7 +183,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Lorenz attractor state
     float lx = 1.0f, ly = 1.0f, lz = 1.0f;

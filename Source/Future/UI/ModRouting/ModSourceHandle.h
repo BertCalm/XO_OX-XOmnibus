@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
+// Future feature — not yet wired into the UI. See GitHub issue #670.
+// ModSourceHandle is the draggable mod-source circle used by DragDropModRouter.
+// To activate: parent component must create ModSourceHandle instances per mod source.
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"

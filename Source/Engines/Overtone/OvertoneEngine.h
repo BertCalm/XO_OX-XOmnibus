@@ -177,7 +177,7 @@ static constexpr float kDefaultPartialAmps[8] = {
 struct OverPartialOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -213,7 +213,7 @@ struct OverAllpassReso
 
     float buf[kMaxDelay] = {};
     int writePos = 0;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s)
     {
@@ -936,7 +936,7 @@ private:
     };
 
     // DSP state
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     OverPartialOsc partials[kNumPartials];
     OverAllpassReso resonator;
     OverBrightnessFilter brightFilter;

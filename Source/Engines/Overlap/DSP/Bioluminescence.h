@@ -161,7 +161,7 @@ private:
     static constexpr float kTapPanL[kTaps] = {0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f};
     static constexpr float kTapPanR[kTaps] = {0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f};
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     std::array<float, kBufLen> buffer{};
     int writeHead = 0;

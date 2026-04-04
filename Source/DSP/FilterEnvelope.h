@@ -160,7 +160,7 @@ struct FilterEnvelope
     float level = 0.0f;
 
 private:
-    float sr = 44100.0f; // Default — overwritten by prepare()
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671) // Default — overwritten by prepare()
     float atkTime = 0.005f;
     float decTime = 0.3f;
     float susLvl = 0.0f;

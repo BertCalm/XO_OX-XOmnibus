@@ -585,14 +585,8 @@ struct OuieInteraction
     // Process the interaction between two voice samples.
     // hammerAmount: -1 (full STRIFE) to +1 (full LOVE)
     // Returns two modified samples: one per voice.
-    static void process(float& v1, float& v2, float hammerAmount, float v1Phase, float v2Phase) noexcept
+    static void process(float& v1, float& v2, float hammerAmount, float& v1Phase, float v2Phase) noexcept
     {
-        // v1Phase / v2Phase are reserved for a future true hard-sync implementation
-        // where Voice 1's phase is reset at Voice 2's zero crossings. For now the
-        // sync effect is approximated at sample level below.
-        (void)v1Phase;
-        (void)v2Phase;
-
         if (hammerAmount < -0.01f)
         {
             // === STRIFE ===
@@ -610,14 +604,10 @@ struct OuieInteraction
             v1 = v1mod * (1.0f - ringAmount) + ringMod * ringAmount;
             v2 = v2mod * (1.0f - ringAmount) + ringMod * ringAmount;
 
-            // Hard sync effect at extreme STRIFE: phase reset artifacts
-            if (strife > 0.7f)
-            {
-                float syncAmount = (strife - 0.7f) * 3.333f; // 0..1
-                // Simulate sync discontinuity with sample distortion
-                float syncV1 = fastTanh(v1 * (1.0f + syncAmount * 3.0f));
-                v1 = lerp(v1, syncV1, syncAmount * 0.5f);
-            }
+            // Hard sync at extreme STRIFE: reset v1Phase at v2's zero crossing.
+            // v2Phase < 0.1f means it just wrapped this sample — true phase-reset sync.
+            if (strife > 0.7f && v2Phase < 0.1f)
+                v1Phase = 0.0f;
 
             // Soft-clip to prevent blowup
             v1 = fastTanh(v1);

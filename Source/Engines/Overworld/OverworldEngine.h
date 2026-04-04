@@ -628,7 +628,7 @@ private:
     // ---- D006 Mod wheel — CC#1 increases glitch mix (+0–0.4, chip artifacts progressively) ----
     float modWheelAmount = 0.0f;
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float eraSmooth = 0.0f;
     float eraYSmooth = 0.0f;
     float lastSample = 0.0f;

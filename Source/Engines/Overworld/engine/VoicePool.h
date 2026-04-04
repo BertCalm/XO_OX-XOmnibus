@@ -249,7 +249,7 @@ struct ChipVoice
     int note = 0;
     float velocity = 0.0f;
     float freq = 440.0f;
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // --- ADSR ---
     enum class EnvStage
@@ -940,7 +940,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     int stealIdx = 0;
     ChipVoice voices[kMaxVoices];
     ParamSnapshot cachedSnap;

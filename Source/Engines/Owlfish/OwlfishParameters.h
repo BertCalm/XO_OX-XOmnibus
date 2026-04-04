@@ -184,13 +184,8 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
     C(couplingBus, "Coupling Bus", Enums::couplingBus, 0);
 }
 
-// -- Standalone Parameter Layout (wraps addParameters) --
-
-inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
-{
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    addParameters(params);
-    return {params.begin(), params.end()};
-}
+// createParameterLayout() removed — dead wrapper. Use addParameters() directly.
+// XOceanusProcessor::createParameterLayout() calls xowlfish::addParameters(params).
+// See issue #655.
 
 } // namespace xowlfish

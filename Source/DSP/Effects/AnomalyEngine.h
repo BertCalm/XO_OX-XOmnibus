@@ -249,7 +249,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Karplus-Strong
     std::vector<float> ksBufL, ksBufR;

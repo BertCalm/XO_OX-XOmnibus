@@ -123,7 +123,7 @@ private:
     // All-pass delay lengths in samples (inharmonic primes for diffusion)
     static constexpr int kApDelays[kDiffStages] = {113, 257, 397};
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Chorus state
     std::array<float, kChorusBufLen> chorusBufL{};

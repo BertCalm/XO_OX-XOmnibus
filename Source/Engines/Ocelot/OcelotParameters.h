@@ -243,13 +243,8 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
     xoceanus::ModMatrix<4>::addParameters(p, "ocelot_", "Ocelot", kOcelotModDests);
 }
 
-// ── Standalone Parameter Layout (wraps addParameters) ────
-
-inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
-{
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    addParameters(params);
-    return {params.begin(), params.end()};
-}
+// createParameterLayout() removed — dead wrapper. Use addParameters() directly.
+// XOceanusProcessor::createParameterLayout() calls xocelot::addParameters(params).
+// See issue #655.
 
 } // namespace xocelot

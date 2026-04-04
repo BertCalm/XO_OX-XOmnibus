@@ -185,11 +185,22 @@ public:
     void applyCouplingInput(xoceanus::CouplingType type, float amount, const float* sourceBuffer,
                             int numSamples) override
     {
-        (void)sourceBuffer;
-        (void)numSamples;
-
         switch (type)
         {
+        case xoceanus::CouplingType::AudioToRing:
+            // AudioToRing: compute RMS of source buffer and apply as FM modulation
+            // to the Mixtur-Trautonium oscillator frequency. Partner loudness drives
+            // couplingFMMod which scales the voice frequency ratio in renderBlock.
+            if (sourceBuffer != nullptr && numSamples > 0)
+            {
+                float sumSq = 0.0f;
+                for (int n = 0; n < numSamples; ++n)
+                    sumSq += sourceBuffer[n] * sourceBuffer[n];
+                const float rms = std::sqrt(sumSq / static_cast<float>(numSamples));
+                couplingFMMod = amount * rms * 2.0f;
+            }
+            break;
+
         case xoceanus::CouplingType::LFOToPitch:
             // External LFO modulates pitch — applied as pitch offset in semitones.
             // Max ±1 semitone at amount=1.0 — subtle organic drift from partner engine.
@@ -251,6 +262,7 @@ private:
     float couplingPitchMod = 0.0f; // semitones from LFOToPitch
     float couplingGrainMod = 0.0f; // grain density boost from AmpToFilter
     float couplingSubMod = 0.0f;   // subharmonic mix boost from EnvToMorph
+    float couplingFMMod = 0.0f;    // frequency ratio from AudioToRing RMS
 };
 
 } // namespace xowlfish

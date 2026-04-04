@@ -499,6 +499,8 @@ public:
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
+        if (sampleRateFloat <= 0.0f)
+            return; // guard: prepare() not yet called (#671)
 
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block.
@@ -1633,8 +1635,8 @@ private:
     //==========================================================================
 
     //-- Sample rate -----------------------------------------------------------
-    double sampleRateDouble = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double sampleRateDouble = 0.0; // sentinel: must be set by prepare() before use (#671)
+    float sampleRateFloat = 0.0f;  // sentinel: must be set by prepare() before use (#671)
 
     //-- Timing coefficients ---------------------------------------------------
     float voiceCrossfadeRate = 0.01f;

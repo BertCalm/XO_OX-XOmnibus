@@ -733,12 +733,10 @@ public:
                     if (regNow > 0.3f)
                     {
                         // Use phase-offset for octave-up without extra oscillator
-                        float octPhase = voice.partialPhases[0];
                         voice.partialPhases[0] += (farfisaFreq * 2.0f) / srf;
                         if (voice.partialPhases[0] >= 1.0f)
                             voice.partialPhases[0] -= 1.0f;
                         octaveUp = (voice.partialPhases[0] < 0.5f ? 1.0f : -1.0f);
-                        (void)octPhase;
                     }
                     sample = sample * (1.0f - regNow * 0.3f) + octaveUp * regNow * 0.3f;
 

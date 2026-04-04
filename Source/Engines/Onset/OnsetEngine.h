@@ -241,7 +241,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     Stage stage = Stage::Idle;
     Shape currentShape = Shape::AD;
     float level = 0.0f;
@@ -327,7 +327,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     bool active = false;
     float snapLevel = 0.0f;
     float phase = 0.0f;
@@ -931,7 +931,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::array<CytomicSVF, kNumModes> resonators;
     float modeAmplitudes[kNumModes] = {}; // Per-mode gain weights
     float excitationLevel = 0.0f;         // Current excitation impulse amplitude
@@ -1237,7 +1237,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     CytomicSVF warmthLPL, warmthLPR;
 };
 
@@ -1306,7 +1306,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::vector<float> bufL, bufR;
     int writePos = 0;
     CytomicSVF fbFilterL, fbFilterR;
@@ -1477,7 +1477,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     // L-channel comb + allpass banks
     std::vector<float> combBuf[4];
     float combLP[4] = {};
@@ -1549,7 +1549,7 @@ struct OnsetVoice
     int circuitType = 0;
     bool isClap = false;
     float baseFreq = 220.0f;
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Fix 2: Voice index (0-7) drives per-voice filter Q selection.
     // Set by OnsetEngine::prepare() immediately after constructing the voice array.

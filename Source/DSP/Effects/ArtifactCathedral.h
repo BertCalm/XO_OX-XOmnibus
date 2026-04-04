@@ -272,7 +272,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // --- Data Rot: packet loss + bit crush in feedback path ---
     float applyDataRot(float sample, float crushLevels, float lossProb) noexcept

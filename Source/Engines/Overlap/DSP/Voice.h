@@ -276,7 +276,7 @@ public:
 
 private:
     //==========================================================================
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float invSr = 1.0f / sr; // overwritten by prepare()
     float glideFreq = 0.0f;
     float velocity = 0.0f;

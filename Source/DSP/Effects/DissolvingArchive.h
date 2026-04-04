@@ -233,7 +233,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     // Memory Well
     std::vector<float> wellL, wellR;

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
+// Future feature — not yet wired into the UI. See GitHub issue #670.
+// DragDropModRouter implements Vital-style drag-drop modulation routing.
+// To activate: instantiate in XOceanusEditor and add as a transparent overlay.
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>

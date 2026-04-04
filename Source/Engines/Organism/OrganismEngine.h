@@ -136,7 +136,7 @@ struct OrgScopeHistory
 struct OrgSawOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -159,7 +159,7 @@ struct OrgSawOsc
 struct OrgSubOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -183,7 +183,7 @@ struct OrgSubOsc
 struct OrgSquareOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -207,7 +207,7 @@ struct OrgSquareOsc
 struct OrgTriOsc
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) { sr = (float)s; }
     void reset() { phase = 0.f; }
@@ -992,7 +992,7 @@ private:
 
     //--------------------------------------------------------------------------
     // DSP state
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     OrgSawOsc sawOsc;
     OrgSquareOsc sqOsc;
     OrgTriOsc triOsc;

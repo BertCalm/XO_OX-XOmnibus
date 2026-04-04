@@ -223,7 +223,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float amount = 0.0f;
     int type = 0;
     float rate = 0.3f;

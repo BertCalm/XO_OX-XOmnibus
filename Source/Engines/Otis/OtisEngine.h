@@ -128,13 +128,11 @@ struct TonewheelCrosstalk
 
         // Lower neighbor: harmonic slightly below
         float lowerRatio = baseHarmonic * 0.9944f; // ~10 cents flat (gear tooth mesh)
-        float lowerFreq = fundamentalFreq * lowerRatio;
         float lowerPhase = phase * lowerRatio / baseHarmonic;
         crosstalkSum += fastSin(lowerPhase * kTwoPi) * 0.015f;
 
         // Upper neighbor: harmonic slightly above
         float upperRatio = baseHarmonic * 1.0056f; // ~10 cents sharp
-        float upperFreq = fundamentalFreq * upperRatio;
         float upperPhase = phase * upperRatio / baseHarmonic;
         crosstalkSum += fastSin(upperPhase * kTwoPi) * 0.012f;
 
@@ -147,8 +145,6 @@ struct TonewheelCrosstalk
         float farUpperPhase = phase * farUpperRatio / baseHarmonic;
         crosstalkSum += fastSin(farUpperPhase * kTwoPi) * 0.004f;
 
-        (void)lowerFreq;
-        (void)upperFreq; // suppress warnings
         (void)sampleRate;
 
         return crosstalkSum * amount;

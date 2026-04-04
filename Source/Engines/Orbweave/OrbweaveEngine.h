@@ -1152,7 +1152,7 @@ private:
     //==========================================================================
     // State
     //==========================================================================
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     uint64_t voiceCounter = 0;
     std::array<OrbweaveVoice, kMaxVoices> voices{};
     std::atomic<int> activeVoices{0};

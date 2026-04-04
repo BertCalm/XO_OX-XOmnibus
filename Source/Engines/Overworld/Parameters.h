@@ -338,15 +338,8 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
     params.push_back(std::make_unique<P>(PI{ParamID::PCE_WAVE_SLOT, 1}, "PCE Wave Slot", NR(0.f, 31.f, 1.f), 0.0f));
 }
 
-//------------------------------------------------------------------------------
-// createParameterLayout — wraps addParameters into an APVTS ParameterLayout.
-//------------------------------------------------------------------------------
-inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
-{
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    addParameters(params);
-    return juce::AudioProcessorValueTreeState::ParameterLayout(std::make_move_iterator(params.begin()),
-                                                               std::make_move_iterator(params.end()));
-}
+// createParameterLayout() removed — dead wrapper. Use addParameters() directly.
+// XOceanusProcessor::createParameterLayout() calls OverworldEngine::addParameters(params).
+// See issue #655.
 
 } // namespace xoverworld

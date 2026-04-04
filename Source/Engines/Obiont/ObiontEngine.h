@@ -315,7 +315,7 @@ struct ObiontSVF
 struct ObiontLFO
 {
     float phase = 0.f;
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
     void prepare(double s) noexcept
     {
@@ -1071,7 +1071,10 @@ public:
         auto nr = [](float lo, float hi, float step = 0.f) { return juce::NormalisableRange<float>(lo, hi, step); };
 
         // --- CA control ---
-        // TODO(#666): 2D Life CA mode disabled — obnt_mode range locked to {0,0} until production-ready. See GitHub issue #666.
+        // 2D Life CA mode intentionally disabled — obnt_mode range locked to {0,0} until production-ready.
+        // The ObiontCA2D implementation is architecturally complete but has not been validated
+        // for preset coverage or CPU cost. Enable by widening range to {0,1} and adding presets.
+        // Originally scoped out in issue #585; tracked for v1.1 in issue #666.
         params.push_back(std::make_unique<PI>(P("obnt_mode", 1), "Mode", 0, 0, 0));
         params.push_back(std::make_unique<PI>(P("obnt_rule", 1), "Rule", 0, 255, 90));
         params.push_back(std::make_unique<PF>(P("obnt_ruleMorph", 1), "Rule Morph", nr(0.f, 1.f), 0.f));
@@ -1641,7 +1644,7 @@ private:
     // -------------------------------------------------------------------------
     // Members
     // -------------------------------------------------------------------------
-    float sr = 44100.f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float smoothCoeff = 0.001f;
 
     // Expression inputs

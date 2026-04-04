@@ -141,7 +141,7 @@ private:
         dcBlockCoeff = fastExp(-twoPi * 10.0f / sr);
     }
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     int delayIndex = 3;
     int delayLen = 0;
     float feedback = 0.5f;

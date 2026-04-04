@@ -56,6 +56,8 @@ public:
     //-- Lifecycle -------------------------------------------------------------
     void prepare(double sampleRate, int maxBlockSize) override
     {
+        if (sampleRate <= 0.0)
+            return; // guard against uninitialised test-harness calls (#672)
         sr_ = sampleRate;
         blockSize_ = maxBlockSize;
 
@@ -501,9 +503,10 @@ private:
     // Searches lags corresponding to 50–2000 Hz, finds the peak correlation,
     // converts to Hz. Runs at ~kPitchUpdateInterval cadence (not per-sample).
     //
-    // O(N·K) where N = kAcBufSize (2048), K = lag range (~800 lags).
-    // At 44100 Hz with kPitchUpdateInterval=4096 this is ~9.5M mults per second —
-    // well within budget for an analysis engine (no synthesis voices to compete).
+    // O(N·K) where N = kAcBufSize/2 (1024), K = lag range (~860 lags @ 44.1kHz).
+    // At 44100 Hz with kPitchUpdateInterval=4096 this is ~9.5M mults per second.
+    // At 48000 Hz with kPitchUpdateInterval=4096 this is ~11.2M mults per second.
+    // Well within budget for an analysis engine (no synthesis voices to compete).
     void updatePitchViaAutocorrelation()
     {
         if (sr_ <= 0.0) return;

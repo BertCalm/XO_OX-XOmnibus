@@ -255,7 +255,7 @@ private:
     float currentGain[kNumBands]{};
     float currentQ[kNumBands]{};
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     bool enabled = true;
     bool settled = false; // true once all smoothers have converged
 };

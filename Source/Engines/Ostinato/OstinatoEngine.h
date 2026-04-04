@@ -172,7 +172,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     Stage stage = Stage::Idle;
     float level = 0.0f;
     float attackRate = 0.01f;
@@ -603,7 +603,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::array<CytomicSVF, kMaxModes> resonators;
     float modeAmplitudes[kMaxModes] = {};
     int numActiveModes = 6;
@@ -737,7 +737,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float delayBuffer[kMaxDelay] = {};
     int writePos = 0;
     int delayLength = 100;
@@ -782,7 +782,7 @@ public:
     void reset() noexcept { filter.reset(); }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     CytomicSVF filter;
 };
 
@@ -2639,7 +2639,7 @@ public:
     }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     std::vector<float> combBuf[4];
     float combLP[4] = {};
     int combLen[4] = {1116, 1188, 1277, 1356};
@@ -2694,7 +2694,7 @@ public:
     void reset() noexcept { envLevel = 0.0f; }
 
 private:
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float threshold = 0.5f;
     float invRatio = 0.25f;
     float attackCoeff = 0.01f;
@@ -2732,7 +2732,7 @@ struct OstiSubVoice
     float velocity = 1.0f;
     float baseCutoff = 4000.0f;
     float userExciterMix = 0.5f;
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float stealFade = 1.0f; // voice-steal fade-in: 0→1 over ~2ms to prevent click on steal
 
     void prepare(double sampleRate)

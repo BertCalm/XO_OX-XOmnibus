@@ -402,9 +402,11 @@ struct OperaPartialBank
 
     inline void initPartialFrequencies(float f0) noexcept
     {
+        const float nyquistCeil = 0.499f * sampleRate; // guard: keep below Nyquist (#657)
         for (int i = 0; i < numPartials; ++i)
         {
             float freqHz = f0 * partialRatios[i] * (1.0f + detuneOffsets[i]);
+            if (freqHz > nyquistCeil) freqHz = nyquistCeil; // prevent fastTan NaN propagation
             partials[i].omega = kTwoPi * freqHz;
         }
     }
