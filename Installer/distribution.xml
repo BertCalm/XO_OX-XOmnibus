@@ -75,7 +75,7 @@
     <!-- Factory Presets (default on) -->
     <choice id="org.xo-ox.xolokun.choice.presets"
             title="Factory Presets"
-            description="Installs ~17,250 factory presets (15 mood categories) to ~/Library/Audio/Presets/XO_OX/XOlokun/."
+            description="Installs ~17,300 factory presets (15 mood categories) to ~/Library/Audio/Presets/XO_OX/XOlokun/."
             start_selected="true"
             start_enabled="true"
             start_visible="true">

@@ -55,13 +55,13 @@ Right panel area: 725 x 229px (CRITICAL CONSTRAINT)
 - **B041 — Dark Cockpit**: 5-level opacity hierarchy (100/80/45/20/0%)
 - **B042 — The Planchette**: Autonomous cursor with Lissajous drift, spring lock-on
 - **B043 — Gesture Trail**: Ring buffer (256 tuples) as replayable modulation source
-- **73-Color System**: Each engine has a dedicated accent color in EngineVocabulary.h
+- **76-Color System**: Each engine has a dedicated accent color in EngineVocabulary.h
 - **WCAG Compliance**: Focus rings (2.4.7), keyboard nav (2.1.1), semantic labels (4.1.2)
 
 ## What the Vision Says
 
 ### Canonical Specs (3 documents)
-1. **xolokun-definitive-ui-spec.md** (1,774 lines) — 5 principles: Planchette, Dark Cockpit, PlaySurface visualization, Sound on Launch, 73-color system
+1. **xolokun-definitive-ui-spec.md** (1,774 lines) — 5 principles: Planchette, Dark Cockpit, PlaySurface visualization, Sound on Launch, 76-color system
 2. **xolokun-spatial-architecture-v1.md** (639 lines) — Hybrid Stack + Context Strip paradigm, all 326 features mapped to UI homes
 3. **xolokun-wiring-manifest.md** (1,062 lines) — Line-by-line EXISTS/REWIRE/BUILD/ISSUE status with thread safety annotations
 

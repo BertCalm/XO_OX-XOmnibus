@@ -1,5 +1,5 @@
 /*
-    XOlokun Full Pipeline Integration Tests
+    XOceanus Full Pipeline Integration Tests
     ==========================================
     Smoke tests for the complete render pipeline.
     Covers issue #456: "No integration test for full render pipeline".

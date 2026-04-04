@@ -1,7 +1,7 @@
 {
   "_comment": "Canonical XOceanus product statistics. This is the SINGLE SOURCE OF TRUTH for key metrics. When any value changes, update this file first, then run: python3 Tools/validate_docs.py --verbose to find which docs still reference stale values.",
-  "preset_count_display": "~17,250",
-  "preset_count_approx": 17250,
+  "preset_count_display": "~17,300",
+  "preset_count_approx": 17300,
   "engine_count": 76,
   "coupling_types": 15,
   "mood_categories": 15

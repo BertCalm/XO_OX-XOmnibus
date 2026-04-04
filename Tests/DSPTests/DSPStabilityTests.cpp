@@ -1,5 +1,5 @@
 /*
-    XOlokun DSP Stability Tests
+    XOceanus DSP Stability Tests
     =============================
     Tests for FastMath, CytomicSVF, PolyBLEP, and per-engine rendering stability.
     Migrated to Catch2 v3: issue #81

@@ -290,7 +290,7 @@ if(XO_MOBILE)
         COMPANY_NAME "XO_OX Designs"
         BUNDLE_ID "com.xo-ox.xoceanus"
         PLUGIN_MANUFACTURER_CODE XoOx
-        PLUGIN_CODE Xomn
+        PLUGIN_CODE Xocn
         FORMATS AUv3 Standalone
         IS_SYNTH TRUE
         NEEDS_MIDI_INPUT TRUE
@@ -303,7 +303,7 @@ else()
         COMPANY_NAME "XO_OX Designs"
         BUNDLE_ID "com.xo-ox.xoceanus"
         PLUGIN_MANUFACTURER_CODE XoOx
-        PLUGIN_CODE Xomn
+        PLUGIN_CODE Xocn
         FORMATS AU VST3 Standalone
         IS_SYNTH TRUE
         NEEDS_MIDI_INPUT TRUE

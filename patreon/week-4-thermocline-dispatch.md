@@ -94,7 +94,7 @@ Play a chord and then immediately stop. Listen to the decay. The OVERDUB delay p
 
 ### The Download
 
-This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOlokun and MPC.
+This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOceanus and MPC.
 [Download link placeholder]
 
 ---

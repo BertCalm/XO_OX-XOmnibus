@@ -63,7 +63,7 @@ Most tools run without any of these installed — they degrade gracefully when o
 - **Engines** (`Source/Engines/`): Each engine implements the `SynthEngine` interface. DSP lives inline in `.h` headers — portable, testable, no `.cpp` bloat.
 - **Core** (`Source/Core/`): Engine registry, MegaCouplingMatrix, preset manager.
 - **DSP** (`Source/DSP/`): Shared DSP library — StandardLFO, FilterEnvelope, PitchBendUtil, VoiceAllocator, GlideProcessor, ParameterSmoother.
-- **Presets** (`Presets/XOceanus/`): `.xometa` JSON files organized by mood. 15 moods. ~17,250 presets.
+- **Presets** (`Presets/XOceanus/`): `.xometa` JSON files organized by mood. 15 moods. ~17,300 presets.
 - **Tools** (`Tools/`): Python utilities for preset management and XPN export.
 - **Scripture** (`scripture/`): The Book of Bin — accumulated DSP wisdom and ghost council verdicts.
 

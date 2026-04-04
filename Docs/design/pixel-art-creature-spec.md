@@ -25,7 +25,7 @@
 | Tier | Style | Count | Engines |
 |------|-------|-------|---------|
 | **1** | 3D renders (multiple poses) | 2 | feliX (OddfeliX), Oscar (OddOscar) |
-| **2** | Pixel art sprites (32x32) | 71 | All other engines |
+| **2** | Pixel art sprites (32x32) | 74 | All other engines |
 
 ---
 

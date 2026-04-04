@@ -274,7 +274,7 @@ class TestDedupPresetNames(unittest.TestCase):
 # ---------------------------------------------------------------------------
 
 class TestPresetSchema(unittest.TestCase):
-    """Tests that preset structure matches the expected XOlokun schema.
+    """Tests that preset structure matches the expected XOceanus schema.
 
     These tests verify the schema constants and validation rules used by
     preset_audit.py and other tools that consume .xometa files.

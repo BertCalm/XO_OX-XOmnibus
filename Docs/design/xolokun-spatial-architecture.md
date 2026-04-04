@@ -34,7 +34,7 @@
 - **FX chain** per engine (6 FX slots: SAT/DELAY/REVERB/MOD/COMP/SEQ)
 - **PlaySurface** with 3 modes (XOuija fretless, MPC 16-pad, Seaboard keyboard)
 - **Expression controllers** (mod wheel, pitch bend, 4 macro strips, tide controller, XY pad)
-- **Preset browser** with ~17,250 presets, 15 moods, DNA similarity search
+- **Preset browser** with ~17,300 presets, 15 moods, DNA similarity search
 - **Must run as plugin** inside DAW (host window constraints, no floating windows in AU)
 - **Must work on iPad** (AUv3 constraints, touch-only, safe areas)
 

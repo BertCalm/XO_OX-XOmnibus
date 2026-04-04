@@ -1,5 +1,5 @@
 /*
-    XOlokun Backward Compatibility Regression Tests
+    XOceanus Backward Compatibility Regression Tests
     =================================================
     Tests that verify backward compatibility guarantees are not silently broken.
     Covers: engine alias resolution, frozen parameter prefixes, CouplingType enum stability.

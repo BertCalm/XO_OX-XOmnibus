@@ -164,7 +164,7 @@ The sonic result is something between a plucked surface and a moving body of wat
 
 ## 4.5 Building the Entangled Mood — Presets That Live or Die by Coupling
 
-XOceanus ships 2,550 factory presets across seven mood categories. Entangled is the one where coupling is not a feature added on top — it is the synthesis itself.
+XOceanus ships ~17,300 factory presets across fifteen mood categories. Entangled is the one where coupling is not a feature added on top — it is the synthesis itself.
 
 An Entangled preset typically has this structure:
 - Two or three engines loaded

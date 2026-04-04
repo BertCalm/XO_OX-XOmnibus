@@ -1,5 +1,5 @@
 /*
-    XOlokun Preset Round-Trip Tests
+    XOceanus Preset Round-Trip Tests
     =================================
     Tests for PresetManager: parsing, serialization, validation, DNA search.
     Migrated to Catch2 v3: issue #81
@@ -370,7 +370,7 @@ TEST_CASE("PresetManager - kMaxPresetFileSize is 1MB", "[preset][filesize]")
 TEST_CASE("PresetManager - file larger than 1MB is rejected", "[preset][filesize]")
 {
     auto tempDir = juce::File::getSpecialLocation(juce::File::tempDirectory);
-    auto bigFile = tempDir.getChildFile("xolokun_test_big.xometa");
+    auto bigFile = tempDir.getChildFile("xoceanus_test_big.xometa");
 
     juce::String bigContent;
     bigContent.preallocateBytes(1024 * 1024 + 100);

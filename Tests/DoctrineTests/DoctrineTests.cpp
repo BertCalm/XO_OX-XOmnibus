@@ -1,7 +1,7 @@
 /*
-    XOlokun Doctrine Tests
+    XOceanus Doctrine Tests
     =======================
-    Automated tests for the 6 XOlokun Doctrines:
+    Automated tests for the 6 XOceanus Doctrines:
 
       D001 — Velocity Must Shape Timbre (not just amplitude)
       D002 — Modulation is the Lifeblood (mod matrix slots defined)

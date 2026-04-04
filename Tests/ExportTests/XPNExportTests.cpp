@@ -1,5 +1,5 @@
 /*
-    XOlokun XPN Export Tests
+    XOceanus XPN Export Tests
     ==========================
     Tests for XOriginate: XPM rule enforcement, WAV format, filename
     sanitization, note strategies, velocity layers, batch validation,
@@ -48,7 +48,7 @@ static PresetData makeTestPreset(const char* name, const char* engine = "Oddfeli
 static juce::File getTestOutputDir(const char* testName)
 {
     auto dir = juce::File::getSpecialLocation(juce::File::tempDirectory)
-                   .getChildFile("xolokun_export_tests")
+                   .getChildFile("xoceanus_export_tests")
                    .getChildFile(testName);
     dir.deleteRecursively();
     dir.createDirectory();

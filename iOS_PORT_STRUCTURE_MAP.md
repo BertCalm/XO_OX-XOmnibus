@@ -196,10 +196,10 @@ Status Summary:
 Mobile & Layout:
   ✓ /Docs/xomnibus_mobile_and_midi_spec.md (Spec complete; Version 1.0, 2026-03-08)
   ✓ /Docs/xomnibus_mobile_implementation_strategy.md (Version 1.0, 2026-03-13)
-  ✓ /Docs/design/xolokun-definitive-ui-spec.md
-  ✓ /Docs/design/xolokun-spatial-architecture-v1.md
-  ✓ /Docs/design/xolokun-wiring-manifest.md
-  ✓ /Docs/design/xolokun-ui-blessing-session.md
+  ✓ /Docs/design/xoceanus-definitive-ui-spec.md
+  ✓ /Docs/design/xoceanus-spatial-architecture-v1.md
+  ✓ /Docs/design/xoceanus-wiring-manifest.md
+  ✓ /Docs/design/xoceanus-ui-blessing-session.md
 
 Design System:
   ✓ /Docs/design/xomnibus_design_guidelines.md

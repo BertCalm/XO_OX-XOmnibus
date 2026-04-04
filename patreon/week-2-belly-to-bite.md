@@ -96,7 +96,7 @@ Map BELLY and BITE to your mod wheel and expression pedal. Play a bass line and 
 
 ### The Download
 
-This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOlokun and MPC.
+This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOceanus and MPC.
 [Download link placeholder]
 
 ---

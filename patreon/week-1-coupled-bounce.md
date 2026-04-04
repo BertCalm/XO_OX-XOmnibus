@@ -76,7 +76,7 @@ Pull M3 (COUPLING) down to zero. Now you have ONSET and OVERBITE running indepen
 
 ### The Download
 
-This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOlokun and MPC.
+This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOceanus and MPC.
 [Download link placeholder]
 
 ---

@@ -10,7 +10,7 @@ Amara writes music for documentary films and contemporary dance. She came to the
 
 She wasn't talking about sidechaining or tempo sync or any of the usual tricks. She was talking about emotional interdependence -- the drum pattern actually changing the emotional quality of the pad, not just its volume. A kick making the pad swell with warmth. A snare making it flinch. The dynamics of the rhythm reshaping the character of the harmony in real time, like how a dancer's body responds to the pulse of the music.
 
-Tidal Dialogue is the preset I built for Amara, and it's the one I chose to close the Founder's Signature series because it represents the deepest expression of what coupling means in XOlokun. This isn't two engines playing at the same time. This is two engines having a conversation at audio rate -- 44,100 times per second -- where the drum's amplitude is a physical input to the pad's filter and pitch calculations on every single sample.
+Tidal Dialogue is the preset I built for Amara, and it's the one I chose to close the Founder's Signature series because it represents the deepest expression of what coupling means in XOceanus. This isn't two engines playing at the same time. This is two engines having a conversation at audio rate -- 44,100 times per second -- where the drum's amplitude is a physical input to the pad's filter and pitch calculations on every single sample.
 
 The pad doesn't just react to the drums. It breathes with them.
 
@@ -20,7 +20,7 @@ The pad doesn't just react to the drums. It breathes with them.
 
 Most electronic music tools that link drums to pads use block-based processing. A sidechain compressor, for example, analyzes the drum signal in blocks of 64 or 128 samples, calculates a gain reduction value, and applies it to the pad for the next block. At 44.1 kHz with 128-sample blocks, that's roughly 345 updates per second. It works, but there's a latency of about 2.9 milliseconds between the drum event and the pad's response.
 
-XOlokun coupling operates at sample resolution. The MegaCouplingMatrix processes coupling routes per-sample -- the drum's amplitude value at sample N directly influences the pad's filter cutoff and pitch at sample N. Zero latency. Zero block quantization. The interaction is physically immediate, the way a drum vibrating in a room immediately changes the air pressure that a held string responds to.
+XOceanus coupling operates at sample resolution. The MegaCouplingMatrix processes coupling routes per-sample -- the drum's amplitude value at sample N directly influences the pad's filter cutoff and pitch at sample N. Zero latency. Zero block quantization. The interaction is physically immediate, the way a drum vibrating in a room immediately changes the air pressure that a held string responds to.
 
 This difference is subtle at moderate coupling amounts. But at higher amounts (M3 above 0.5), you can actually hear the pad's filter tracking the drum's transient waveform -- not just its envelope, but its waveform. The pad's brightness flickers with the individual cycles of the kick drum's body. This is acoustic-level interaction that block-based processing can never achieve.
 
@@ -80,7 +80,7 @@ Play a repeating rhythm pattern in 7/8 or 5/4. The odd meter combined with the t
 Play the pad with the sustain pedal held. Tap the kick drum at mezzo-piano velocity every 4-6 seconds. Each tap creates a gentle brightening of the pad that fades over about 2 seconds. The pad literally pulses with your heartbeat (or whatever rate you tap). Increase COUPLING to 0.6 and the filter sweeps become wider -- each tap is a wave of brightness moving through the sustained chord. Deeply meditative.
 
 **5. Cinematic Crescendo (Start M3 at 0.15, automate to 0.8 over 60 seconds)**
-Begin with barely perceptible coupling. Over the course of a minute, automate M3 upward. The dialogue between drums and pad intensifies -- what starts as a subtle interaction becomes a dramatic, emotional conversation. The drums aren't getting louder. The pad isn't changing pitch. But the emotional intensity builds because the interaction between them is deepening. This is one of the most powerful arranging techniques in XOlokun: coupling automation as emotional arc.
+Begin with barely perceptible coupling. Over the course of a minute, automate M3 upward. The dialogue between drums and pad intensifies -- what starts as a subtle interaction becomes a dramatic, emotional conversation. The drums aren't getting louder. The pad isn't changing pitch. But the emotional intensity builds because the interaction between them is deepening. This is one of the most powerful arranging techniques in XOceanus: coupling automation as emotional arc.
 
 ### Macro Guide
 
@@ -101,11 +101,11 @@ Begin with barely perceptible coupling. Over the course of a minute, automate M3
 
 ### The Download
 
-This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOlokun and MPC.
+This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOceanus and MPC.
 [Download link placeholder]
 
 ---
-*Thank you for reading the first five weeks of Founder's Frequency. These presets are the beginning of a series that will grow alongside XOlokun itself -- each one designed to teach you something about synthesis while giving you a sound you can use today.*
+*Thank you for reading the first five weeks of Founder's Frequency. These presets are the beginning of a series that will grow alongside XOceanus itself -- each one designed to teach you something about synthesis while giving you a sound you can use today.*
 
 *The Founder's Signature Vol. 1 XPN pack is free and always will be. Download it, play with it, break it open, learn from it. Every preset in this pack was built by hand, parameter by parameter, with the specific goal of demonstrating what coupling can do. They're not just sounds. They're arguments for a different way of making music.*
 

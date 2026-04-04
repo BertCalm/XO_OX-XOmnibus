@@ -1,5 +1,5 @@
 /*
-    XOlokun Coupling Matrix Tests
+    XOceanus Coupling Matrix Tests
     ===============================
     Tests for MegaCouplingMatrix route management and processing.
     Migrated to Catch2 v3: issue #81

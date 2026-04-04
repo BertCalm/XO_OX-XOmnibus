@@ -1,5 +1,5 @@
 /*
-    XOlokun DSP Component Tests
+    XOceanus DSP Component Tests
     ============================
     Mathematical correctness tests for DSP primitives that go beyond crash
     and stability checks. Tests verify:
