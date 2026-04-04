@@ -5,12 +5,9 @@
 #include <array>
 
 // Platform Keychain (macOS / iOS) — preferred secure storage.
-// BlowFish fallback retained for non-Apple platforms (see bottom of file).
+// Non-Apple fallback: volatile in-memory storage only (no disk persistence).
 #if JUCE_MAC || JUCE_IOS
 #include <Security/Security.h>
-#else
-// Fallback only: BlowFish via JUCE cryptography module
-#include <juce_cryptography/juce_cryptography.h>
 #endif
 
 namespace xoceanus
@@ -25,8 +22,9 @@ namespace xoceanus
 //   2. macOS / iOS: keys live exclusively in the platform Keychain
 //      (Security framework SecItem API — OS-managed AES encryption,
 //       hardware-backed on Apple Silicon / Secure Enclave–equipped devices)
-//   3. Other platforms (FALLBACK): AES-like encryption via juce::BlowFish
-//      using a device-derived key — DEPRECATED, use macOS/iOS build targets
+//   3. Other platforms (VOLATILE MODE): keys are kept in memory only and
+//      never written to disk. Keys are lost on app quit. isVolatileOnly()
+//      returns true so the UI can display an appropriate warning.
 //   4. Keys exist in plaintext ONLY in memory, ONLY during API calls
 //   5. Memory is zeroed after use (secure wipe)
 //   6. No key material is ever logged, transmitted, or included in crash reports
@@ -54,19 +52,21 @@ public:
     SecureKeyStore()
     {
 #if !(JUCE_MAC || JUCE_IOS)
-        // Fallback path only: derive a device-specific encryption key
-        deriveDeviceKey();
+        isVolatileOnly_ = true;
+#else
+        isVolatileOnly_ = false;
 #endif
     }
 
     ~SecureKeyStore()
     {
         // Secure wipe all in-memory key material
-#if !(JUCE_MAC || JUCE_IOS)
-        secureWipe(deviceKey);
-#endif
         for (auto& dk : decryptedKeys)
             secureWipe(dk);
+#if !(JUCE_MAC || JUCE_IOS)
+        for (auto& vk : volatileKeys_)
+            secureWipe(vk);
+#endif
     }
 
     //--------------------------------------------------------------------------
@@ -124,15 +124,13 @@ public:
         // serviceRef is a compile-time CFSTR literal — do not release
 
 #else
-        // ---- Non-Apple fallback: BlowFish-encrypted file ----------------
-        // DEPRECATED: BlowFish via juce::BlowFish is not hardware-backed.
-        // Migrate to a macOS/iOS build for production use.
-        auto encrypted = encrypt(plaintextKey);
-        if (encrypted.isNotEmpty())
-        {
-            auto file = getKeyFile(provider);
-            success = file.replaceWithText(encrypted);
-        }
+        // ---- Non-Apple fallback: volatile in-memory storage only --------
+        // Keys are never written to disk on non-Apple platforms.
+        // The device-derived BlowFish path was removed (issue #634) because
+        // computerName + deviceID are trivially readable, making the
+        // encrypted blob offline-decryptable. Volatile-only is safer.
+        volatileKeys_[static_cast<size_t>(provider)] = plaintextKey;
+        success = true;
 #endif
 
         // Secure wipe plaintext from caller's string regardless of outcome
@@ -196,21 +194,13 @@ public:
         return decrypted;
 
 #else
-        // ---- Non-Apple fallback: BlowFish-encrypted file ----------------
-        auto file = getKeyFile(provider);
-        if (!file.existsAsFile())
+        // ---- Non-Apple fallback: volatile in-memory storage only --------
+        auto& volatile_key = volatileKeys_[static_cast<size_t>(provider)];
+        if (volatile_key.isEmpty())
             return {};
 
-        auto encrypted = file.loadFileAsString();
-        if (encrypted.isEmpty())
-            return {};
-
-        auto decrypted = decrypt(encrypted);
-        if (decrypted.isEmpty())
-            return {};
-
-        cached = decrypted;
-        return decrypted;
+        cached = volatile_key;
+        return cached;
 #endif
     }
 
@@ -218,10 +208,16 @@ public:
     void releaseKey(Provider provider) { secureWipe(decryptedKeys[static_cast<size_t>(provider)]); }
 
     /// Release ALL keys from memory (call on app quit or background).
+    /// On non-Apple platforms this also wipes the volatile store, so
+    /// keys cannot be retrieved again until the user re-enters them.
     void releaseAllKeys()
     {
         for (auto& dk : decryptedKeys)
             secureWipe(dk);
+#if !(JUCE_MAC || JUCE_IOS)
+        for (auto& vk : volatileKeys_)
+            secureWipe(vk);
+#endif
     }
 
     /// Check if a key is stored for a provider (without decrypting).
@@ -251,7 +247,7 @@ public:
         return (status == errSecSuccess);
 
 #else
-        return getKeyFile(provider).existsAsFile();
+        return volatileKeys_[static_cast<size_t>(provider)].isNotEmpty();
 #endif
     }
 
@@ -283,9 +279,7 @@ public:
         return (status == errSecSuccess || status == errSecItemNotFound);
 
 #else
-        auto file = getKeyFile(provider);
-        if (file.existsAsFile())
-            return file.deleteFile();
+        secureWipe(volatileKeys_[static_cast<size_t>(provider)]);
         return true;
 #endif
     }
@@ -328,8 +322,14 @@ public:
         }
     }
 
+    /// Returns true on non-Apple platforms where keys cannot be persisted to
+    /// disk securely. The UI should display a warning when this is true,
+    /// informing the user that their API key will be lost when the app quits.
+    bool isVolatileOnly() const { return isVolatileOnly_; }
+
 private:
     std::array<juce::String, static_cast<size_t>(Provider::NumProviders)> decryptedKeys;
+    bool isVolatileOnly_ = false;
 
     //--------------------------------------------------------------------------
     // Keychain account identifier (macOS / iOS only)
@@ -352,83 +352,17 @@ private:
 #endif
 
     //--------------------------------------------------------------------------
-    // Non-Apple fallback: BlowFish encryption
+    // Non-Apple fallback: volatile in-memory storage (no disk persistence)
     //
-    // DEPRECATED — retained only for non-macOS/non-iOS build targets.
-    // BlowFish via juce::BlowFish is NOT hardware-backed and uses a
-    // device-derived software key.  Migrate to macOS/iOS for production.
+    // Issue #634: The previous BlowFish + device-derived key path wrote an
+    // encrypted blob to disk whose key material (computerName + deviceID) is
+    // trivially readable, enabling offline decryption without physical access.
+    // Replaced with volatile-only storage: keys live exclusively in RAM and
+    // are lost on app quit. isVolatileOnly_ is set true so the UI can warn
+    // the user to re-enter their key each session.
 
 #if !(JUCE_MAC || JUCE_IOS)
-    juce::String deviceKey;
-
-    void deriveDeviceKey()
-    {
-        juce::String material;
-        material += juce::SystemStats::getComputerName();
-        material += juce::SystemStats::getUniqueDeviceID();
-        material += "XOceanus_KeyStore_v1"; // App-specific salt
-        material += juce::String(juce::SystemStats::getOperatingSystemType());
-
-        juce::SHA256 hash(material.toUTF8());
-        deviceKey = hash.toHexString();
-    }
-
-    juce::String encrypt(const juce::String& plaintext) const
-    {
-        if (deviceKey.isEmpty() || plaintext.isEmpty())
-            return {};
-
-        juce::BlowFish cipher(deviceKey.toRawUTF8(), static_cast<int>(deviceKey.getNumBytesAsUTF8()));
-
-        juce::MemoryBlock data(plaintext.toRawUTF8(), plaintext.getNumBytesAsUTF8());
-
-        cipher.encrypt(data);
-        return data.toBase64Encoding();
-    }
-
-    juce::String decrypt(const juce::String& ciphertext) const
-    {
-        if (deviceKey.isEmpty() || ciphertext.isEmpty())
-            return {};
-
-        juce::MemoryBlock data;
-        if (!data.fromBase64Encoding(ciphertext))
-            return {};
-
-        juce::BlowFish cipher(deviceKey.toRawUTF8(), static_cast<int>(deviceKey.getNumBytesAsUTF8()));
-
-        cipher.decrypt(data);
-
-        return juce::String::fromUTF8(static_cast<const char*>(data.getData()), static_cast<int>(data.getSize()));
-    }
-
-    juce::File getKeyFile(Provider provider) const
-    {
-        auto dir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                       .getChildFile("XO_OX")
-                       .getChildFile("XOceanus")
-                       .getChildFile("keys");
-
-        dir.createDirectory();
-
-        juce::String filename;
-        switch (provider)
-        {
-        case Provider::Anthropic:
-            filename = "a.xokey";
-            break;
-        case Provider::OpenAI:
-            filename = "o.xokey";
-            break;
-        case Provider::Google:
-            filename = "g.xokey";
-            break;
-        default:
-            filename = "unknown.xokey";
-        }
-
-        return dir.getChildFile(filename);
-    }
+    std::array<juce::String, static_cast<size_t>(Provider::NumProviders)> volatileKeys_;
 #endif // !(JUCE_MAC || JUCE_IOS)
 
     //--------------------------------------------------------------------------
