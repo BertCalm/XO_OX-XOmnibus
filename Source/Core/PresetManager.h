@@ -817,7 +817,7 @@ private:
         // name
         if (!obj->hasProperty("name"))
             return false;
-        out.name = obj->getProperty("name").toString();
+        out.name = obj->getProperty("name").toString().substring(0, 128);
         if (out.name.isEmpty())
             return false;
 

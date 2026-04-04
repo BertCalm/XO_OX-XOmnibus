@@ -5,6 +5,7 @@
 // =============================================================================
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createHash } from "node:crypto";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://xo-ox.org",
@@ -27,11 +28,10 @@ Deno.serve(async (req: Request) => {
   try {
     const body = await req.json();
     const recipeId = body.recipeId;
-    const voterHash = body.voterHash;  // Anonymous hash generated client-side
 
-    if (!recipeId || !voterHash) {
+    if (!recipeId) {
       return new Response(
-        JSON.stringify({ error: "recipeId and voterHash required" }),
+        JSON.stringify({ error: "recipeId required" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -40,6 +40,16 @@ Deno.serve(async (req: Request) => {
     // Using anon key — RLS policies handle access control
     const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Derive voterHash server-side from the client IP + recipeId + a server secret.
+    // This prevents clients from forging or replaying arbitrary hashes.
+    const voterSecret = Deno.env.get("VOTER_HASH_SECRET") ?? "xo-ox-vault-default-secret";
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0].trim()
+      ?? req.headers.get("cf-connecting-ip")
+      ?? "unknown";
+    const voterHash = createHash("sha256")
+      .update(voterSecret + "|" + clientIp + "|" + recipeId)
+      .digest("hex");
 
     // Call the dedup function
     const { data, error } = await supabase.rpc("thumbs_up_recipe", {

@@ -191,9 +191,13 @@ public:
             for (const auto& e : *engArr)
                 enginesArray.add(e.getProperty("engineId", "").toString());
 
+        if (tags.size() > 10) return {false, {}, "Too many tags (max 10)"};
         juce::Array<juce::var> tagsArray;
         for (const auto& tag : tags)
+        {
+            if (tag.length() > 32) return {false, {}, "Tag too long (max 32 chars): " + tag};
             tagsArray.add(tag);
+        }
 
         // Build PostgREST row
         auto row = std::make_unique<juce::DynamicObject>();

@@ -215,8 +215,8 @@ public:
             tapSumR *= gainComp;
 
             // === Feedback path (Moog resonant LP damping) ===
-            float fbL = feedbackFilterL.processSample(tapSumL) * feedback;
-            float fbR = feedbackFilterR.processSample(tapSumR) * feedback;
+            float fbL = flushDenormal(feedbackFilterL.processSample(tapSumL)) * feedback;
+            float fbR = flushDenormal(feedbackFilterR.processSample(tapSumR)) * feedback;
 
             // === Write to delay buffer ===
             delayL[static_cast<size_t>(writePos)] = flushDenormal(inL + fbL);

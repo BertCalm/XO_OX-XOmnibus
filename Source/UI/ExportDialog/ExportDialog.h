@@ -937,7 +937,14 @@ private:
 
                 XOriginate::BundleConfig config;
                 config.name = bundleName;
-                config.bundleId = "com.xo-ox.xoceanus." + config.name.toLowerCase().replace(" ", "-");
+                // Sanitize the user-supplied name before embedding in the bundle ID:
+                // keep only alphanumerics and hyphens, replace everything else, cap at 64 chars.
+                juce::String sanitizedName = config.name.toLowerCase();
+                juce::String safeName;
+                for (auto c : sanitizedName)
+                    safeName += (juce::CharacterFunctions::isLetterOrDigit(c) || c == '-') ? c : '-';
+                safeName = safeName.substring(0, 64);
+                config.bundleId = "com.xo-ox.xoceanus." + safeName;
                 config.outputDir = dialog.outputDir;
                 config.outputDir.createDirectory();
 
