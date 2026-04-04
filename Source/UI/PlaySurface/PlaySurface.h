@@ -10,6 +10,7 @@
 #include "KeysMode.h"
 #include "HarmonicField.h"
 #include "XOuijaPanel.h"
+#include "TideController.h"
 
 // Forward declaration — PlaySurface stores a pointer to XOceanusProcessor so it
 // can forward XOuija CC output events.  We also include the processor header
@@ -1356,6 +1357,27 @@ public:
             }
         };
 
+        // ── TideController — wave-surface expression controller ───────────────
+        // Sits in the same left-panel slot as XOuija; toggled by TIDE button.
+        addAndMakeVisible(tideController_);
+        tideController_.setVisible(false); // Hidden until TIDE button is pressed
+        A11y::setup(tideController_, "Tide Controller",
+                    "2D water-surface simulation — touch to create ripples, output maps to the target parameter");
+
+        // TIDE toggle button — placed at far right of header left-side controls
+        tideModeBtn_.setButtonText("TIDE");
+        tideModeBtn_.setClickingTogglesState(true);
+        addAndMakeVisible(tideModeBtn_);
+        A11y::setup(tideModeBtn_, "Tide Mode",
+                    "Toggle the Tide Controller water-surface expression panel in the left column");
+        tideModeBtn_.onClick = [this]
+        {
+            tideActive_ = tideModeBtn_.getToggleState();
+            xouijaPanel_.setVisible(!tideActive_);
+            tideController_.setVisible(tideActive_);
+            resized(); // re-layout so bounds are assigned to the now-visible component
+        };
+
         // Strip mode buttons
         for (int i = 0; i < 4; ++i)
         {
@@ -1414,6 +1436,7 @@ public:
             applyBtnColors(octDownBtn);
             applyBtnColors(octUpBtn);
             applyBtnColors(scaleModeBtn);
+            applyBtnColors(tideModeBtn_);
         }
 
         // Wire XOuija CC output — processor_ is null at this point; the lambda
@@ -1511,6 +1534,7 @@ public:
         // V2 components
         xouijaPanel_.setAccentColour(c);
         keysMode_.setAccentColour(c);
+        tideController_.setAccentColor(c);
 
         // P2-1: also update header button "on" colours so mode/bank/strip buttons
         // reflect the current engine accent when toggled.
@@ -1524,6 +1548,7 @@ public:
         updateBtnAccent(octDownBtn);
         updateBtnAccent(octUpBtn);
         updateBtnAccent(scaleModeBtn);
+        updateBtnAccent(tideModeBtn_);
 
         repaint();
     }
@@ -1531,6 +1556,18 @@ public:
     // Public zone accessors for wiring callbacks
     NoteInputZone& getNoteInput() { return noteInput; }
     PerformanceStrip& getStrip() { return strip; }
+
+    // TideController accessors
+    TideController& getTideController() { return tideController_; }
+
+    /// Convenience: attach a JUCE parameter to the TideController output.
+    /// The controller will call setValueNotifyingHost() on this parameter
+    /// whenever the wave-surface mean height changes.
+    /// Pass nullptr to detach.
+    void setTideTargetParameter(juce::RangedAudioParameter* param)
+    {
+        tideController_.setTargetParameter(param);
+    }
 
     void resized() override
     {
@@ -1556,6 +1593,10 @@ public:
         header.removeFromLeft(4);
         scaleModeBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
+        // TIDE toggle button — immediately after scale mode button
+        header.removeFromLeft(4);
+        tideModeBtn_.setBounds(header.removeFromLeft(36).reduced(2));
+
         // Strip mode buttons at right of header
         for (int i = 3; i >= 0; --i)
             stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
@@ -1563,9 +1604,13 @@ public:
         // ── Performance Strip — full width, bottom ───────────────────────────
         strip.setBounds(bounds.removeFromBottom(PS::kStripH));
 
-        // ── XOuija Panel — left column ───────────────────────────────────────
+        // ── Left column — XOuija panel OR TideController ─────────────────────
         int ouijaW = std::clamp(PS::kXOuijaW, XOuijaPanel::kMinWidth, XOuijaPanel::kMaxWidth);
-        xouijaPanel_.setBounds(bounds.removeFromLeft(ouijaW));
+        auto leftColumnBounds = bounds.removeFromLeft(ouijaW);
+        xouijaPanel_.setBounds(leftColumnBounds);
+        // TideController: centred square within the left column (120pt target).
+        // We give it the full column width; it clips itself to a circle.
+        tideController_.setBounds(leftColumnBounds);
 
         // ── Note area — remaining space (NoteInputZone or KeysMode) ─────────
         auto noteArea = bounds;
@@ -1645,12 +1690,18 @@ private:
     XOuijaPanel xouijaPanel_;
     KeysMode keysMode_;
 
+    // TideController — wave-surface expression controller.
+    // Shown in the left panel slot when tideActive_ is true.
+    TideController tideController_;
+    bool tideActive_ = false;
+
     std::array<juce::TextButton, 3> modeButtons;
     std::array<juce::TextButton, 4> stripModeButtons;
     std::array<juce::TextButton, 4> bankButtons; // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
     juce::Label octLabel;
-    juce::TextButton scaleModeBtn; // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
+    juce::TextButton scaleModeBtn;  // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
+    juce::TextButton tideModeBtn_;  // Toggles TideController in the left panel slot
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
 };

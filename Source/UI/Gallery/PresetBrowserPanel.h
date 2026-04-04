@@ -5,6 +5,7 @@
 #include "../../Core/PresetManager.h"
 #include "../GalleryColors.h"
 #include "GalleryLookAndFeel.h"
+#include "DnaHexagon.h"
 
 namespace xoceanus
 {
@@ -140,12 +141,67 @@ public:
         g.setColour(dot.withAlpha(0.7f));
         g.fillEllipse(10.0f, h * 0.5f - 2.5f, 5.0f, 5.0f);
 
-        // Preset name
+        // ── DNA Hexagon (20×20) — right-aligned before the engine tag ─────────
+        // Drawn inline to avoid per-row Component allocation overhead.
+        // Layout from right: [4px margin][20px hex][4px gap][engine tag 26px][4px margin]
+        {
+            static constexpr float kHexSize   = 20.0f;
+            static constexpr float kHexRight  = 54.0f; // distance from right edge to hex right
+            const float hexX = static_cast<float>(w) - kHexRight;
+            const float hexY = (static_cast<float>(h) - kHexSize) * 0.5f;
+            const float cx   = hexX + kHexSize * 0.5f;
+            const float cy   = hexY + kHexSize * 0.5f;
+            const float baseR = kHexSize * 0.5f - 1.5f;
+
+            // Pick accent from mood colour (reuses dot) so the hex color matches the pill
+            const juce::Colour hexAccent = dot;
+
+            // Guide hexagon (regular)
+            {
+                juce::Path guide;
+                for (int vi = 0; vi < 6; ++vi)
+                {
+                    const float angle = juce::MathConstants<float>::pi / 6.0f
+                                        + static_cast<float>(vi) * juce::MathConstants<float>::pi / 3.0f;
+                    const float vx = cx + baseR * std::cos(angle);
+                    const float vy = cy + baseR * std::sin(angle);
+                    if (vi == 0) guide.startNewSubPath(vx, vy); else guide.lineTo(vx, vy);
+                }
+                guide.closeSubPath();
+                g.setColour(hexAccent.withAlpha(0.15f));
+                g.strokePath(guide, juce::PathStrokeType(0.75f));
+            }
+
+            // DNA shape — vertex order: brightness, warmth, movement, density, space, aggression
+            const float dnaVals[6] = {
+                preset.dna.brightness, preset.dna.warmth,   preset.dna.movement,
+                preset.dna.density,    preset.dna.space,    preset.dna.aggression
+            };
+            {
+                juce::Path shape;
+                for (int vi = 0; vi < 6; ++vi)
+                {
+                    const float angle = juce::MathConstants<float>::pi / 6.0f
+                                        + static_cast<float>(vi) * juce::MathConstants<float>::pi / 3.0f;
+                    const float r  = baseR * (0.3f + 0.7f * juce::jlimit(0.0f, 1.0f, dnaVals[vi]));
+                    const float vx = cx + r * std::cos(angle);
+                    const float vy = cy + r * std::sin(angle);
+                    if (vi == 0) shape.startNewSubPath(vx, vy); else shape.lineTo(vx, vy);
+                }
+                shape.closeSubPath();
+                g.setColour(hexAccent.withAlpha(0.20f));
+                g.fillPath(shape);
+                g.setColour(hexAccent.withAlpha(0.60f));
+                g.strokePath(shape, juce::PathStrokeType(1.0f));
+            }
+        }
+
+        // Preset name — reduced right margin to leave room for hex + engine tag
         g.setColour(get(selected ? t1() : t2()));
         g.setFont(GalleryFonts::body(11.5f)); // Prototype: Inter 11.5px
-        g.drawText(preset.name, 22, 0, w - 36, h, juce::Justification::centredLeft, true);
+        g.drawText(preset.name, 22, 0, w - 60, h, juce::Justification::centredLeft, true);
 
-        // Engine tag if multi-engine
+        // Engine tag if multi-engine (rightmost 26px)
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
         {
             auto tag = preset.engines[0].substring(0, juce::jmin(3, preset.engines[0].length())).toUpperCase();

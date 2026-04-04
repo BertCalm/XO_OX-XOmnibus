@@ -47,6 +47,7 @@
 #include "Gallery/HeaderIndicators.h"
 #include "Gallery/MiniCouplingGraph.h"
 #include "Gallery/CockpitHost.h"
+#include "Gallery/DnaHexagon.h"
 #include "RegisterManager.h"
 
 namespace xoceanus
@@ -356,6 +357,12 @@ public:
         addAndMakeVisible(cpuMeter);
         addAndMakeVisible(midiIndicator);
         addAndMakeVisible(miniCouplingGraph);
+
+        // Header DNA hexagon — initialise with default DNA and XO Gold accent.
+        // Accent and DNA are updated in timerCallback() once the first preset loads.
+        addAndMakeVisible(headerHex_);
+        A11y::setup(headerHex_, "Sonic DNA",
+                    "Hexagonal visualization of the active preset's 6D Sonic DNA fingerprint");
 
         // ── MIDI Learn wiring ─────────────────────────────────────────────────
         // Connect the processor's MIDILearnManager to every parameter knob in the UI.
@@ -948,6 +955,13 @@ public:
         presetPrevBtn.setBounds(header.removeFromLeft(28).reduced(2));
         presetNextBtn.setBounds(header.removeFromLeft(28).reduced(2));
 
+        // Header DNA hexagon — 24×24, immediately right of the next-preset button.
+        // Provides at-a-glance fingerprint of the active preset without label clutter.
+        {
+            auto hexSlice = header.removeFromLeft(30); // 30px slice, hex is 24×24 centered
+            headerHex_.setBounds(hexSlice.withSizeKeepingCentre(24, 24));
+        }
+
         // ── Right (from edge inward): gear | EXPORT | PLAY | CPU | utility strip ──
         {
             auto gearSlice = header.removeFromRight(36); // 8px margin included
@@ -1318,6 +1332,14 @@ private:
             // Sync the PS toggle button when the window is closed by the user.
             playSurfaceWindow->onClosed = [this]
             { surfaceToggleBtn.setToggleState(false, juce::dontSendNotification); };
+
+            // Wire TideController default target: CHARACTER macro (macro1).
+            // Falls back gracefully if the parameter is not present (no engine loaded).
+            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(
+                    processor.getAPVTS().getParameter("macro1")))
+            {
+                playSurfaceWindow->getPlaySurface().setTideTargetParameter(p);
+            }
         }
 
         playSurfaceWindow->setVisible(true);
@@ -1489,6 +1511,30 @@ private:
 
         // MIDI indicator learn state — keeps amber pulse in sync.
         midiIndicator.setLearning(processor.getMIDILearnManager().isLearning());
+
+        // ── Header DNA hexagon — update when preset changes ───────────────────
+        // Polls by name to avoid redundant setDNA()/repaint() every tick.
+        {
+            const auto& currentPreset = processor.getPresetManager().getCurrentPreset();
+            if (currentPreset.name != lastHeaderHexPreset_)
+            {
+                lastHeaderHexPreset_ = currentPreset.name;
+                headerHex_.setDNA(currentPreset.dna);
+
+                // Derive accent from the first active engine in the preset,
+                // falling back to XO Gold when no engine is loaded.
+                juce::Colour hexAccent(0xFFE9C46A); // XO Gold default
+                for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
+                {
+                    if (auto* eng = processor.getEngine(i))
+                    {
+                        hexAccent = eng->getAccentColour();
+                        break;
+                    }
+                }
+                headerHex_.setAccentColor(hexAccent);
+            }
+        }
 
         // ── MiniCouplingGraph ─────────────────────────────────────────────────
         miniCouplingGraph.refresh();
@@ -1729,6 +1775,12 @@ private:
     CPUMeter cpuMeter;
     MIDIActivityIndicator midiIndicator;
     MiniCouplingGraph miniCouplingGraph{processor};
+
+    // Header DNA hexagon — 24×24 mini hex showing current preset's Sonic DNA.
+    // Updated in timerCallback() whenever the active preset changes.
+    DnaHexagon headerHex_;
+    // Cache the last preset name to detect changes without polling every frame.
+    juce::String lastHeaderHexPreset_;
 
     int selectedSlot = -1;
 

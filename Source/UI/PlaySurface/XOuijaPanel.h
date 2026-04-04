@@ -1339,6 +1339,11 @@ public:
             midiLearnMgr_.fromValueTree(midiTree);
 
         updatePlanchetteText();
+
+        // Sensitivity map must be recomputed after a preset load because the
+        // new preset's parameter mapping may differ from the previous one.
+        sensitivityMapDirty_ = true;
+
         repaint();
     }
 
@@ -1387,17 +1392,32 @@ public:
         }
 
         // ------------------------------------------------------------------
-        // 3. Circle-of-fifths markers
+        // 3. Parameter sensitivity map overlay at 8% white opacity.
+        //    Lazy recompute: regenerate if the map is stale (e.g. after a
+        //    preset load or on first paint).
+        // ------------------------------------------------------------------
+        if (sensitivityMapDirty_)
+            recomputeSensitivityMap();
+
+        if (sensitivityMap_.isValid())
+        {
+            g.setOpacity(0.08f);
+            g.drawImage(sensitivityMap_, bounds, juce::RectanglePlacement::fillDestination, false);
+            g.setOpacity(1.0f);
+        }
+
+        // ------------------------------------------------------------------
+        // 4. Circle-of-fifths markers
         // ------------------------------------------------------------------
         paintMarkers(g);
 
         // ------------------------------------------------------------------
-        // 4. YES / NO labels
+        // 5. YES / NO labels
         // ------------------------------------------------------------------
         paintYesNoLabels(g);
 
         // ------------------------------------------------------------------
-        // 5. Bioluminescent gesture trail (spec Section 4.5)
+        // 6. Bioluminescent gesture trail (spec Section 4.5)
         //    Rendered after static elements, below planchette (child component).
         // ------------------------------------------------------------------
         paintTrail(g);
@@ -1530,6 +1550,18 @@ private:
     // Initialized in the constructor body after member initializers.
     juce::Font markerFonts_[4];
 
+    // ── Parameter Sensitivity Map ─────────────────────────────────────────────
+    // 64×64 single-channel luminance texture precomputed on preset load.
+    // Rendered as a white overlay at 8% opacity over the harmonic surface,
+    // giving the performer a visual hint of which XY regions drive the most
+    // parameter movement for the current preset.
+    //
+    // sensitivityMapDirty_ is set true on construction and whenever a preset
+    // is loaded (fromValueTree). recomputeSensitivityMap() is called lazily
+    // on the first paint() call after the flag is raised.
+    juce::Image sensitivityMap_;        // 64×64 ARGB luminance texture (white pixels, alpha = sensitivity)
+    bool sensitivityMapDirty_ = true;   // triggers recompute on next paint()
+
     //==========================================================================
     // Note names for planchette display text (12-entry, indexed by semitone)
     //==========================================================================
@@ -1643,6 +1675,69 @@ private:
                 bmp.setPixelColour(x, y, juce::Colour(static_cast<uint8_t>(255), v, v, v));
             }
         }
+    }
+
+    //==========================================================================
+    // Parameter Sensitivity Map
+    //
+    // Precomputes a 64×64 luminance texture that visualises how strongly each
+    // XY region of the performance surface affects synthesiser parameters.
+    // Rendered as a semi-transparent white overlay at 8% opacity in paint().
+    //
+    // TODO: Replace heuristic with real parameter sensitivity analysis.
+    //       For each XY position, compute sum of |dParam/dXY| for all mapped
+    //       parameters.  This requires reading the mod matrix and the
+    //       XY-to-parameter mapping (CC 85/86 routes + any modulation sources
+    //       wired to circleX_ / influenceY_ in the host's AudioProcessorGraph).
+    //==========================================================================
+    void recomputeSensitivityMap()
+    {
+        // ARGB so drawImage renders white pixels with per-pixel alpha,
+        // giving clean "white glow at varying opacity" semantics.
+        sensitivityMap_ = juce::Image(juce::Image::ARGB, 64, 64, true);
+
+        // HEURISTIC (V1 — to be replaced with real analysis):
+        // Use a radial falloff centred on the performance surface with angular
+        // variation derived from a sine of the polar angle.  This produces a
+        // plausible-looking glow that concentrates near the centre (where most
+        // harmonic tension is resolved) and fades toward the edges.
+        //
+        // The current key (circleX_) biases the horizontal centre of the
+        // brightest region so the map shifts subtly as the user navigates the
+        // circle of fifths — giving a hint that the map is preset-aware even
+        // before the real computation is wired in.
+        const float biasCx = 0.3f + circleX_ * 0.4f;  // [0.3, 0.7] — key-biased centre X
+        const float biasCy = 0.4f + influenceY_ * 0.2f; // [0.4, 0.6] — influence-biased centre Y
+
+        juce::Image::BitmapData data(sensitivityMap_, juce::Image::BitmapData::writeOnly);
+
+        for (int y = 0; y < 64; ++y)
+        {
+            for (int x = 0; x < 64; ++x)
+            {
+                const float nx = static_cast<float>(x) / 63.0f; // 0–1
+                const float ny = static_cast<float>(y) / 63.0f; // 0–1 (top=0)
+
+                const float dx = nx - biasCx;
+                const float dy = ny - biasCy;
+                const float dist = std::sqrt(dx * dx + dy * dy);
+
+                // Primary radial falloff — full brightness at centre, zero ~0.56 radius away
+                float sensitivity = std::max(0.0f, 1.0f - dist * 1.8f);
+
+                // Angular modulation: 3-lobe pattern adds visual interest without
+                // implying any particular real structure
+                const float angle = std::atan2(dy, dx);
+                sensitivity *= 0.7f + 0.3f * std::abs(std::sin(angle * 3.0f));
+
+                // White pixel, alpha encodes sensitivity (paint() draws at 8% opacity on top)
+                const uint8_t alpha = static_cast<uint8_t>(
+                    juce::jlimit(0.0f, 1.0f, sensitivity) * 255.0f);
+                data.setPixelColour(x, y, juce::Colour::fromRGBA(255, 255, 255, alpha));
+            }
+        }
+
+        sensitivityMapDirty_ = false;
     }
 
     //==========================================================================

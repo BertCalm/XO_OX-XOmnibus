@@ -4,6 +4,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/PresetManager.h"
 #include "../Gallery/GalleryLookAndFeel.h"
+#include "../Gallery/DnaHexagon.h"
 // NOTE: GalleryColors, GalleryFonts, A11y, and PresetData are defined in
 // XOceanusEditor.h, which includes this file.  The circular include is avoided
 // intentionally — those symbols are already in scope when this header is
@@ -206,15 +207,68 @@ public:
             g.fillAll(juce::Colour(0x05FFFFFF)); // very subtle zebra
 
         // Mood accent dot (5px to match prototype)
-        g.setColour(moodColour(preset.mood).withAlpha(0.75f));
+        const juce::Colour moodDot = moodColour(preset.mood);
+        g.setColour(moodDot.withAlpha(0.75f));
         g.fillEllipse(10.0f, h * 0.5f - 2.5f, 5.0f, 5.0f);
 
-        // Preset name — Inter 11.5px
+        // ── DNA Hexagon (20×20) — right side before engine meta ──────────────
+        // Drawn inline using the same geometry as DnaHexagon::paint().
+        {
+            static constexpr float kHexSize  = 20.0f;
+            static constexpr float kHexRight = 28.0f; // distance from right edge to hex right
+            const float hexX = static_cast<float>(w) - kHexRight;
+            const float hexY = (static_cast<float>(h) - kHexSize) * 0.5f;
+            const float cx   = hexX + kHexSize * 0.5f;
+            const float cy   = hexY + kHexSize * 0.5f;
+            const float baseR = kHexSize * 0.5f - 1.5f;
+            const juce::Colour hexAccent = moodDot;
+
+            // Guide hexagon
+            {
+                juce::Path guide;
+                for (int vi = 0; vi < 6; ++vi)
+                {
+                    const float angle = juce::MathConstants<float>::pi / 6.0f
+                                        + static_cast<float>(vi) * juce::MathConstants<float>::pi / 3.0f;
+                    const float vx = cx + baseR * std::cos(angle);
+                    const float vy = cy + baseR * std::sin(angle);
+                    if (vi == 0) guide.startNewSubPath(vx, vy); else guide.lineTo(vx, vy);
+                }
+                guide.closeSubPath();
+                g.setColour(hexAccent.withAlpha(0.15f));
+                g.strokePath(guide, juce::PathStrokeType(0.75f));
+            }
+
+            // DNA shape — brightness, warmth, movement, density, space, aggression
+            const float dnaVals[6] = {
+                preset.dna.brightness, preset.dna.warmth,   preset.dna.movement,
+                preset.dna.density,    preset.dna.space,    preset.dna.aggression
+            };
+            {
+                juce::Path shape;
+                for (int vi = 0; vi < 6; ++vi)
+                {
+                    const float angle = juce::MathConstants<float>::pi / 6.0f
+                                        + static_cast<float>(vi) * juce::MathConstants<float>::pi / 3.0f;
+                    const float r  = baseR * (0.3f + 0.7f * juce::jlimit(0.0f, 1.0f, dnaVals[vi]));
+                    const float vx = cx + r * std::cos(angle);
+                    const float vy = cy + r * std::sin(angle);
+                    if (vi == 0) shape.startNewSubPath(vx, vy); else shape.lineTo(vx, vy);
+                }
+                shape.closeSubPath();
+                g.setColour(hexAccent.withAlpha(0.20f));
+                g.fillPath(shape);
+                g.setColour(hexAccent.withAlpha(0.60f));
+                g.strokePath(shape, juce::PathStrokeType(1.0f));
+            }
+        }
+
+        // Preset name — Inter 11.5px (right margin extended for hex)
         g.setFont(GalleryFonts::body(11.5f));
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
-        g.drawText(preset.name, 22, 0, w - 34, h, juce::Justification::centredLeft, true);
+        g.drawText(preset.name, 22, 0, w - 56, h / 2, juce::Justification::centredLeft, true);
 
-        // Engine tag badge — JetBrains Mono 9px, right-aligned
+        // Engine tag badge — JetBrains Mono 9px, below preset name
         g.setFont(GalleryFonts::value(9.0f));
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
 
@@ -224,7 +278,7 @@ public:
             if (eng.isNotEmpty())
                 meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng; // middle dot separator
         }
-        g.drawText(meta, 22, h / 2, w - 34, h / 2, juce::Justification::centredLeft, true);
+        g.drawText(meta, 22, h / 2, w - 56, h / 2, juce::Justification::centredLeft, true);
 
         // Bottom separator
         g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.25f));
