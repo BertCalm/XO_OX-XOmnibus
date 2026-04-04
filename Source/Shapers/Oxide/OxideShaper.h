@@ -482,7 +482,7 @@ public:
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFD4500A); }
 
 private:
-    static float loadP(std::atomic<float>* p, float fb) noexcept { return p ? p->load() : fb; }
+    static float loadP(std::atomic<float>* p, float fb) noexcept { return p ? p->load(std::memory_order_relaxed) : fb; }
 
     float sr = 48000.0f;
     LorenzAttractor lorenz;

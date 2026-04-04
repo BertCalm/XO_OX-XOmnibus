@@ -263,202 +263,202 @@ public:
         // ====================================================================
 
         // Stage 1: Saturation
-        const float satDrive = pSatDrive->load();
-        const float satMode = pSatMode ? pSatMode->load() : 1.0f;
+        const float satDrive = pSatDrive->load(std::memory_order_relaxed);
+        const float satMode = pSatMode ? pSatMode->load(std::memory_order_relaxed) : 1.0f;
 
         // Stage 2: Corroder
-        const float corrMix = pCorrMix ? pCorrMix->load() : 0.0f;
-        const float corrBits = pCorrBits ? pCorrBits->load() : 24.0f;
-        const float corrSR = pCorrSR ? pCorrSR->load() : static_cast<float>(sr);
-        const float corrFM = pCorrFM ? pCorrFM->load() : 0.0f;
-        const float corrTone = pCorrTone ? pCorrTone->load() : 1.0f;
+        const float corrMix = pCorrMix ? pCorrMix->load(std::memory_order_relaxed) : 0.0f;
+        const float corrBits = pCorrBits ? pCorrBits->load(std::memory_order_relaxed) : 24.0f;
+        const float corrSR = pCorrSR ? pCorrSR->load(std::memory_order_relaxed) : static_cast<float>(sr);
+        const float corrFM = pCorrFM ? pCorrFM->load(std::memory_order_relaxed) : 0.0f;
+        const float corrTone = pCorrTone ? pCorrTone->load(std::memory_order_relaxed) : 1.0f;
 
         // Stage 3: Vibe Knob
-        const float vibeAmount = pVibeAmount ? pVibeAmount->load() : 0.0f;
+        const float vibeAmount = pVibeAmount ? pVibeAmount->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 4: Spectral Tilt
-        const float tiltAmount = pTiltAmount ? pTiltAmount->load() : 0.0f;
-        const float tiltMix = pTiltMix ? pTiltMix->load() : 1.0f;
+        const float tiltAmount = pTiltAmount ? pTiltAmount->load(std::memory_order_relaxed) : 0.0f;
+        const float tiltMix = pTiltMix ? pTiltMix->load(std::memory_order_relaxed) : 1.0f;
 
         // Stage 5: Transient Designer
-        const float tdAttack = pTDAttack ? pTDAttack->load() : 0.0f;
-        const float tdSustain = pTDSustain ? pTDSustain->load() : 0.0f;
-        const float tdMix = pTDMix ? pTDMix->load() : 0.0f;
+        const float tdAttack = pTDAttack ? pTDAttack->load(std::memory_order_relaxed) : 0.0f;
+        const float tdSustain = pTDSustain ? pTDSustain->load(std::memory_order_relaxed) : 0.0f;
+        const float tdMix = pTDMix ? pTDMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 5.5: fXObscura
-        const float obsThresh = pObsThresh ? pObsThresh->load() : -24.0f;
-        const float obsHold = pObsHold ? pObsHold->load() : -12.0f;
-        const float obsRelease = pObsRelease ? pObsRelease->load() : 100.0f;
-        const float obsErosion = pObsErosion ? pObsErosion->load() : 2.0f;
-        const float obsSubHarm = pObsSubHarm ? pObsSubHarm->load() : 0.5f;
-        const float obsSat = pObsSat ? pObsSat->load() : 0.4f;
-        const float obsDecimate = pObsDecimate ? pObsDecimate->load() : 0.3f;
-        const float obsRes = pObsRes ? pObsRes->load() : 0.5f;
-        const float obsTone = pObsTone ? pObsTone->load() : 3000.0f;
-        const float obsPatina = pObsPatina ? pObsPatina->load() : 0.03f;
-        const float obsMix = pObsMix ? pObsMix->load() : 0.0f;
+        const float obsThresh = pObsThresh ? pObsThresh->load(std::memory_order_relaxed) : -24.0f;
+        const float obsHold = pObsHold ? pObsHold->load(std::memory_order_relaxed) : -12.0f;
+        const float obsRelease = pObsRelease ? pObsRelease->load(std::memory_order_relaxed) : 100.0f;
+        const float obsErosion = pObsErosion ? pObsErosion->load(std::memory_order_relaxed) : 2.0f;
+        const float obsSubHarm = pObsSubHarm ? pObsSubHarm->load(std::memory_order_relaxed) : 0.5f;
+        const float obsSat = pObsSat ? pObsSat->load(std::memory_order_relaxed) : 0.4f;
+        const float obsDecimate = pObsDecimate ? pObsDecimate->load(std::memory_order_relaxed) : 0.3f;
+        const float obsRes = pObsRes ? pObsRes->load(std::memory_order_relaxed) : 0.5f;
+        const float obsTone = pObsTone ? pObsTone->load(std::memory_order_relaxed) : 3000.0f;
+        const float obsPatina = pObsPatina ? pObsPatina->load(std::memory_order_relaxed) : 0.03f;
+        const float obsMix = pObsMix ? pObsMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 6: fXOsmosis
-        const float osmMembrane = pOsmMembrane ? pOsmMembrane->load() : 0.5f;
-        const float osmReact = pOsmReact ? pOsmReact->load() : 0.5f;
-        const float osmRes = pOsmRes ? pOsmRes->load() : 0.4f;
-        const float osmSat = pOsmSat ? pOsmSat->load() : 0.3f;
-        const float osmMix = pOsmMix ? pOsmMix->load() : 0.0f;
+        const float osmMembrane = pOsmMembrane ? pOsmMembrane->load(std::memory_order_relaxed) : 0.5f;
+        const float osmReact = pOsmReact ? pOsmReact->load(std::memory_order_relaxed) : 0.5f;
+        const float osmRes = pOsmRes ? pOsmRes->load(std::memory_order_relaxed) : 0.4f;
+        const float osmSat = pOsmSat ? pOsmSat->load(std::memory_order_relaxed) : 0.3f;
+        const float osmMix = pOsmMix ? pOsmMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 7: Multiband OTT (pre-spatial)
-        const float ottMix = pOttMix ? pOttMix->load() : 0.0f;
-        const float ottDepth = pOttDepth ? pOttDepth->load() : 0.7f;
+        const float ottMix = pOttMix ? pOttMix->load(std::memory_order_relaxed) : 0.0f;
+        const float ottDepth = pOttDepth ? pOttDepth->load(std::memory_order_relaxed) : 0.7f;
 
         // Stage 8: Delay
-        const float delayTime = pDelayTime ? pDelayTime->load() : 375.0f;
-        const float delayFB = pDelayFB ? pDelayFB->load() : 0.3f;
-        const float delayMix = pDelayMix ? pDelayMix->load() : 0.0f;
-        const float delayPP = pDelayPP ? pDelayPP->load() : 0.5f;
-        const float delayDamp = pDelayDamp ? pDelayDamp->load() : 0.3f;
-        const float delayDiff = pDelayDiff ? pDelayDiff->load() : 0.0f;
-        const float delaySync = pDelaySync ? pDelaySync->load() : 0.0f;
+        const float delayTime = pDelayTime ? pDelayTime->load(std::memory_order_relaxed) : 375.0f;
+        const float delayFB = pDelayFB ? pDelayFB->load(std::memory_order_relaxed) : 0.3f;
+        const float delayMix = pDelayMix ? pDelayMix->load(std::memory_order_relaxed) : 0.0f;
+        const float delayPP = pDelayPP ? pDelayPP->load(std::memory_order_relaxed) : 0.5f;
+        const float delayDamp = pDelayDamp ? pDelayDamp->load(std::memory_order_relaxed) : 0.3f;
+        const float delayDiff = pDelayDiff ? pDelayDiff->load(std::memory_order_relaxed) : 0.0f;
+        const float delaySync = pDelaySync ? pDelaySync->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 8.5: fXOratory
-        const float oraPattern = pOraPattern ? pOraPattern->load() : 6.0f;
-        const float oraSyllable = pOraSyllable ? pOraSyllable->load() : 80.0f;
-        const float oraAccent = pOraAccent ? pOraAccent->load() : 0.7f;
-        const float oraSpread = pOraSpread ? pOraSpread->load() : 0.6f;
-        const float oraFeedback = pOraFeedback ? pOraFeedback->load() : 0.4f;
-        const float oraDamping = pOraDamping ? pOraDamping->load() : 3000.0f;
-        const float oraDampRes = pOraDampRes ? pOraDampRes->load() : 0.2f;
-        const float oraDrift = pOraDrift ? pOraDrift->load() : 0.0f;
-        const float oraMix = pOraMix ? pOraMix->load() : 0.0f;
+        const float oraPattern = pOraPattern ? pOraPattern->load(std::memory_order_relaxed) : 6.0f;
+        const float oraSyllable = pOraSyllable ? pOraSyllable->load(std::memory_order_relaxed) : 80.0f;
+        const float oraAccent = pOraAccent ? pOraAccent->load(std::memory_order_relaxed) : 0.7f;
+        const float oraSpread = pOraSpread ? pOraSpread->load(std::memory_order_relaxed) : 0.6f;
+        const float oraFeedback = pOraFeedback ? pOraFeedback->load(std::memory_order_relaxed) : 0.4f;
+        const float oraDamping = pOraDamping ? pOraDamping->load(std::memory_order_relaxed) : 3000.0f;
+        const float oraDampRes = pOraDampRes ? pOraDampRes->load(std::memory_order_relaxed) : 0.2f;
+        const float oraDrift = pOraDrift ? pOraDrift->load(std::memory_order_relaxed) : 0.0f;
+        const float oraMix = pOraMix ? pOraMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 9: Combulator
-        const float combMix = pCombMix ? pCombMix->load() : 0.0f;
-        const float combFreq = pCombFreq ? pCombFreq->load() : 220.0f;
-        const float combFB = pCombFB ? pCombFB->load() : 0.85f;
-        const float combDamp = pCombDamp ? pCombDamp->load() : 0.3f;
-        const float combNoise = pCombNoise ? pCombNoise->load() : 0.0f;
-        const float combSpread = pCombSpread ? pCombSpread->load() : 0.5f;
-        const float combOff2 = pCombOff2 ? pCombOff2->load() : 7.0f;
-        const float combOff3 = pCombOff3 ? pCombOff3->load() : 12.0f;
+        const float combMix = pCombMix ? pCombMix->load(std::memory_order_relaxed) : 0.0f;
+        const float combFreq = pCombFreq ? pCombFreq->load(std::memory_order_relaxed) : 220.0f;
+        const float combFB = pCombFB ? pCombFB->load(std::memory_order_relaxed) : 0.85f;
+        const float combDamp = pCombDamp ? pCombDamp->load(std::memory_order_relaxed) : 0.3f;
+        const float combNoise = pCombNoise ? pCombNoise->load(std::memory_order_relaxed) : 0.0f;
+        const float combSpread = pCombSpread ? pCombSpread->load(std::memory_order_relaxed) : 0.5f;
+        const float combOff2 = pCombOff2 ? pCombOff2->load(std::memory_order_relaxed) : 7.0f;
+        const float combOff3 = pCombOff3 ? pCombOff3->load(std::memory_order_relaxed) : 12.0f;
 
         // Stage 10: Doppler
-        const float dopplerDist = pDopplerDist ? pDopplerDist->load() : 0.0f;
-        const float dopplerSpeed = pDopplerSpeed ? pDopplerSpeed->load() : 0.3f;
-        const float dopplerMix = pDopplerMix ? pDopplerMix->load() : 0.0f;
+        const float dopplerDist = pDopplerDist ? pDopplerDist->load(std::memory_order_relaxed) : 0.0f;
+        const float dopplerSpeed = pDopplerSpeed ? pDopplerSpeed->load(std::memory_order_relaxed) : 0.3f;
+        const float dopplerMix = pDopplerMix ? pDopplerMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN)
-        const float reverbSize = pReverbSize ? pReverbSize->load() : 0.5f;
-        const float reverbMix = pReverbMix ? pReverbMix->load() : 0.0f;
-        const float reverbPreDelay = pReverbPreDelay ? pReverbPreDelay->load() : 0.0f;
-        const float reverbDecay = pReverbDecay ? pReverbDecay->load() : 2.0f;
-        const float reverbDamping = pReverbDamping ? pReverbDamping->load() : 0.4f;
-        const float reverbDiffusion = pReverbDiffusion ? pReverbDiffusion->load() : 0.5f;
-        const float reverbMod = pReverbMod ? pReverbMod->load() : 0.3f;
-        const float reverbWidth = pReverbWidth ? pReverbWidth->load() : 1.0f;
+        const float reverbSize = pReverbSize ? pReverbSize->load(std::memory_order_relaxed) : 0.5f;
+        const float reverbMix = pReverbMix ? pReverbMix->load(std::memory_order_relaxed) : 0.0f;
+        const float reverbPreDelay = pReverbPreDelay ? pReverbPreDelay->load(std::memory_order_relaxed) : 0.0f;
+        const float reverbDecay = pReverbDecay ? pReverbDecay->load(std::memory_order_relaxed) : 2.0f;
+        const float reverbDamping = pReverbDamping ? pReverbDamping->load(std::memory_order_relaxed) : 0.4f;
+        const float reverbDiffusion = pReverbDiffusion ? pReverbDiffusion->load(std::memory_order_relaxed) : 0.5f;
+        const float reverbMod = pReverbMod ? pReverbMod->load(std::memory_order_relaxed) : 0.3f;
+        const float reverbWidth = pReverbWidth ? pReverbWidth->load(std::memory_order_relaxed) : 1.0f;
 
         // Stage 12: Frequency Shifter
-        const float fshiftHz = pFShiftHz ? pFShiftHz->load() : 0.0f;
-        const float fshiftMix = pFShiftMix ? pFShiftMix->load() : 0.0f;
-        const float fshiftMode = pFShiftMode ? pFShiftMode->load() : 0.0f;
-        const float fshiftFB = pFShiftFB ? pFShiftFB->load() : 0.0f;
+        const float fshiftHz = pFShiftHz ? pFShiftHz->load(std::memory_order_relaxed) : 0.0f;
+        const float fshiftMix = pFShiftMix ? pFShiftMix->load(std::memory_order_relaxed) : 0.0f;
+        const float fshiftMode = pFShiftMode ? pFShiftMode->load(std::memory_order_relaxed) : 0.0f;
+        const float fshiftFB = pFShiftFB ? pFShiftFB->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 13: fXOneiric
-        const float onDelayMs = pOnDelayMs ? pOnDelayMs->load() : 350.0f;
-        const float onShiftHz = pOnShiftHz ? pOnShiftHz->load() : 5.0f;
-        const float onFeedback = pOnFeedback ? pOnFeedback->load() : 0.6f;
-        const float onDamping = pOnDamping ? pOnDamping->load() : 0.3f;
-        const float onSpread = pOnSpread ? pOnSpread->load() : 0.3f;
-        const float onMix = pOnMix ? pOnMix->load() : 0.0f;
+        const float onDelayMs = pOnDelayMs ? pOnDelayMs->load(std::memory_order_relaxed) : 350.0f;
+        const float onShiftHz = pOnShiftHz ? pOnShiftHz->load(std::memory_order_relaxed) : 5.0f;
+        const float onFeedback = pOnFeedback ? pOnFeedback->load(std::memory_order_relaxed) : 0.6f;
+        const float onDamping = pOnDamping ? pOnDamping->load(std::memory_order_relaxed) : 0.3f;
+        const float onSpread = pOnSpread ? pOnSpread->load(std::memory_order_relaxed) : 0.3f;
+        const float onMix = pOnMix ? pOnMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 14.5: fXOnslaught
-        const float onslFlowRate = pOnslFlowRate ? pOnslFlowRate->load() : 0.8f;
-        const float onslFlowDepth = pOnslFlowDepth ? pOnslFlowDepth->load() : 0.5f;
-        const float onslThresh = pOnslThresh ? pOnslThresh->load() : 4.0f;
-        const float onslModDepth = pOnslModDepth ? pOnslModDepth->load() : 0.6f;
-        const float onslModRate = pOnslModRate ? pOnslModRate->load() : 2.0f;
-        const float onslDecay = pOnslDecay ? pOnslDecay->load() : 300.0f;
-        const float onslSCHP = pOnslSCHP ? pOnslSCHP->load() : 200.0f;
-        const float onslMix = pOnslMix ? pOnslMix->load() : 0.0f;
+        const float onslFlowRate = pOnslFlowRate ? pOnslFlowRate->load(std::memory_order_relaxed) : 0.8f;
+        const float onslFlowDepth = pOnslFlowDepth ? pOnslFlowDepth->load(std::memory_order_relaxed) : 0.5f;
+        const float onslThresh = pOnslThresh ? pOnslThresh->load(std::memory_order_relaxed) : 4.0f;
+        const float onslModDepth = pOnslModDepth ? pOnslModDepth->load(std::memory_order_relaxed) : 0.6f;
+        const float onslModRate = pOnslModRate ? pOnslModRate->load(std::memory_order_relaxed) : 2.0f;
+        const float onslDecay = pOnslDecay ? pOnslDecay->load(std::memory_order_relaxed) : 300.0f;
+        const float onslSCHP = pOnslSCHP ? pOnslSCHP->load(std::memory_order_relaxed) : 200.0f;
+        const float onslMix = pOnslMix ? pOnslMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 14: Modulation
-        const float modRate = pModRate ? pModRate->load() : 0.8f;
-        const float modDepth = pModDepth ? pModDepth->load() : 0.0f;
-        const float modMix = pModMix ? pModMix->load() : 0.0f;
-        const float modMode = pModMode ? pModMode->load() : 0.0f;
-        const float modFeedback = pModFB ? pModFB->load() : 0.0f;
+        const float modRate = pModRate ? pModRate->load(std::memory_order_relaxed) : 0.8f;
+        const float modDepth = pModDepth ? pModDepth->load(std::memory_order_relaxed) : 0.0f;
+        const float modMix = pModMix ? pModMix->load(std::memory_order_relaxed) : 0.0f;
+        const float modMode = pModMode ? pModMode->load(std::memory_order_relaxed) : 0.0f;
+        const float modFeedback = pModFB ? pModFB->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 15: Granular Smear
-        const float smearAmt = pSmearAmt ? pSmearAmt->load() : 0.0f;
-        const float smearGrain = pSmearGrain ? pSmearGrain->load() : 60.0f;
-        const float smearDensity = pSmearDensity ? pSmearDensity->load() : 0.5f;
-        const float smearMix = pSmearMix ? pSmearMix->load() : 0.0f;
+        const float smearAmt = pSmearAmt ? pSmearAmt->load(std::memory_order_relaxed) : 0.0f;
+        const float smearGrain = pSmearGrain ? pSmearGrain->load(std::memory_order_relaxed) : 60.0f;
+        const float smearDensity = pSmearDensity ? pSmearDensity->load(std::memory_order_relaxed) : 0.5f;
+        const float smearMix = pSmearMix ? pSmearMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 16: Harmonic Exciter
-        const float excDrive = pExcDrive ? pExcDrive->load() : 0.0f;
-        const float excFreq = pExcFreq ? pExcFreq->load() : 3500.0f;
-        const float excTone = pExcTone ? pExcTone->load() : 0.7f;
-        const float excMix = pExcMix ? pExcMix->load() : 0.0f;
+        const float excDrive = pExcDrive ? pExcDrive->load(std::memory_order_relaxed) : 0.0f;
+        const float excFreq = pExcFreq ? pExcFreq->load(std::memory_order_relaxed) : 3500.0f;
+        const float excTone = pExcTone ? pExcTone->load(std::memory_order_relaxed) : 0.7f;
+        const float excMix = pExcMix ? pExcMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 17: Stereo Sculptor
-        const float sculLowW = pSculLowW ? pSculLowW->load() : 0.0f;
-        const float sculMidW = pSculMidW ? pSculMidW->load() : 1.0f;
-        const float sculHighW = pSculHighW ? pSculHighW->load() : 1.5f;
-        const float sculLowX = pSculLowX ? pSculLowX->load() : 200.0f;
-        const float sculHighX = pSculHighX ? pSculHighX->load() : 4000.0f;
-        const float sculMix = pSculMix ? pSculMix->load() : 0.0f;
+        const float sculLowW = pSculLowW ? pSculLowW->load(std::memory_order_relaxed) : 0.0f;
+        const float sculMidW = pSculMidW ? pSculMidW->load(std::memory_order_relaxed) : 1.0f;
+        const float sculHighW = pSculHighW ? pSculHighW->load(std::memory_order_relaxed) : 1.5f;
+        const float sculLowX = pSculLowX ? pSculLowX->load(std::memory_order_relaxed) : 200.0f;
+        const float sculHighX = pSculHighX ? pSculHighX->load(std::memory_order_relaxed) : 4000.0f;
+        const float sculMix = pSculMix ? pSculMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 18: Psychoacoustic Width
-        const float pWidthAmt = pPWidthAmt ? pPWidthAmt->load() : 0.0f;
-        const float pWidthHaas = pPWidthHaas ? pPWidthHaas->load() : 8.0f;
-        const float pWidthComb = pPWidthComb ? pPWidthComb->load() : 600.0f;
-        const float pWidthMono = pPWidthMono ? pPWidthMono->load() : 0.5f;
-        const float pWidthMix = pPWidthMix ? pPWidthMix->load() : 0.0f;
+        const float pWidthAmt = pPWidthAmt ? pPWidthAmt->load(std::memory_order_relaxed) : 0.0f;
+        const float pWidthHaas = pPWidthHaas ? pPWidthHaas->load(std::memory_order_relaxed) : 8.0f;
+        const float pWidthComb = pPWidthComb ? pPWidthComb->load(std::memory_order_relaxed) : 600.0f;
+        const float pWidthMono = pPWidthMono ? pPWidthMono->load(std::memory_order_relaxed) : 0.5f;
+        const float pWidthMix = pPWidthMix ? pPWidthMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 19: Bus Compressor
-        const float compRatio = pCompRatio ? pCompRatio->load() : 4.0f;
-        const float compAttack = pCompAttack ? pCompAttack->load() : 10.0f;
-        const float compRelease = pCompRelease ? pCompRelease->load() : 100.0f;
-        const float compMix = pCompMix ? pCompMix->load() : 0.0f;
+        const float compRatio = pCompRatio ? pCompRatio->load(std::memory_order_relaxed) : 4.0f;
+        const float compAttack = pCompAttack ? pCompAttack->load(std::memory_order_relaxed) : 10.0f;
+        const float compRelease = pCompRelease ? pCompRelease->load(std::memory_order_relaxed) : 100.0f;
+        const float compMix = pCompMix ? pCompMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 19.5: Parametric EQ
-        const float eqB1Freq = pEQB1Freq ? pEQB1Freq->load() : 100.0f;
-        const float eqB1Gain = pEQB1Gain ? pEQB1Gain->load() : 0.0f;
-        const float eqB1Q = pEQB1Q ? pEQB1Q->load() : 0.707f;
-        const float eqB2Freq = pEQB2Freq ? pEQB2Freq->load() : 400.0f;
-        const float eqB2Gain = pEQB2Gain ? pEQB2Gain->load() : 0.0f;
-        const float eqB2Q = pEQB2Q ? pEQB2Q->load() : 1.0f;
-        const float eqB3Freq = pEQB3Freq ? pEQB3Freq->load() : 3000.0f;
-        const float eqB3Gain = pEQB3Gain ? pEQB3Gain->load() : 0.0f;
-        const float eqB3Q = pEQB3Q ? pEQB3Q->load() : 1.0f;
-        const float eqB4Freq = pEQB4Freq ? pEQB4Freq->load() : 10000.0f;
-        const float eqB4Gain = pEQB4Gain ? pEQB4Gain->load() : 0.0f;
-        const float eqB4Q = pEQB4Q ? pEQB4Q->load() : 0.707f;
+        const float eqB1Freq = pEQB1Freq ? pEQB1Freq->load(std::memory_order_relaxed) : 100.0f;
+        const float eqB1Gain = pEQB1Gain ? pEQB1Gain->load(std::memory_order_relaxed) : 0.0f;
+        const float eqB1Q = pEQB1Q ? pEQB1Q->load(std::memory_order_relaxed) : 0.707f;
+        const float eqB2Freq = pEQB2Freq ? pEQB2Freq->load(std::memory_order_relaxed) : 400.0f;
+        const float eqB2Gain = pEQB2Gain ? pEQB2Gain->load(std::memory_order_relaxed) : 0.0f;
+        const float eqB2Q = pEQB2Q ? pEQB2Q->load(std::memory_order_relaxed) : 1.0f;
+        const float eqB3Freq = pEQB3Freq ? pEQB3Freq->load(std::memory_order_relaxed) : 3000.0f;
+        const float eqB3Gain = pEQB3Gain ? pEQB3Gain->load(std::memory_order_relaxed) : 0.0f;
+        const float eqB3Q = pEQB3Q ? pEQB3Q->load(std::memory_order_relaxed) : 1.0f;
+        const float eqB4Freq = pEQB4Freq ? pEQB4Freq->load(std::memory_order_relaxed) : 10000.0f;
+        const float eqB4Gain = pEQB4Gain ? pEQB4Gain->load(std::memory_order_relaxed) : 0.0f;
+        const float eqB4Q = pEQB4Q ? pEQB4Q->load(std::memory_order_relaxed) : 0.707f;
 
         // Stage 20: Brickwall Limiter
-        const float limCeiling = pLimCeiling ? pLimCeiling->load() : -0.3f;
-        const float limRelease = pLimRelease ? pLimRelease->load() : 50.0f;
+        const float limCeiling = pLimCeiling ? pLimCeiling->load(std::memory_order_relaxed) : -0.3f;
+        const float limRelease = pLimRelease ? pLimRelease->load(std::memory_order_relaxed) : 50.0f;
 
         // Stage 19.7: MathFXChain param snapshot
-        const float mfx_ecMix = pMfxEcMix ? pMfxEcMix->load() : 0.0f;
-        const float mfx_vsMix = pMfxVsMix ? pMfxVsMix->load() : 0.0f;
-        const float mfx_qsMix = pMfxQsMix ? pMfxQsMix->load() : 0.0f;
-        const float mfx_adMix = pMfxAdMix ? pMfxAdMix->load() : 0.0f;
+        const float mfx_ecMix = pMfxEcMix ? pMfxEcMix->load(std::memory_order_relaxed) : 0.0f;
+        const float mfx_vsMix = pMfxVsMix ? pMfxVsMix->load(std::memory_order_relaxed) : 0.0f;
+        const float mfx_qsMix = pMfxQsMix ? pMfxQsMix->load(std::memory_order_relaxed) : 0.0f;
+        const float mfx_adMix = pMfxAdMix ? pMfxAdMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 19.8: BoutiqueFXChain param snapshot
-        const float bfx_anMix = pBfxAnMix ? pBfxAnMix->load() : 0.0f;
-        const float bfx_daMix = pBfxDaMix ? pBfxDaMix->load() : 0.0f;
-        const float bfx_acMix = pBfxAcMix ? pBfxAcMix->load() : 0.0f;
-        const float bfx_smMix = pBfxSmMix ? pBfxSmMix->load() : 0.0f;
+        const float bfx_anMix = pBfxAnMix ? pBfxAnMix->load(std::memory_order_relaxed) : 0.0f;
+        const float bfx_daMix = pBfxDaMix ? pBfxDaMix->load(std::memory_order_relaxed) : 0.0f;
+        const float bfx_acMix = pBfxAcMix ? pBfxAcMix->load(std::memory_order_relaxed) : 0.0f;
+        const float bfx_smMix = pBfxSmMix ? pBfxSmMix->load(std::memory_order_relaxed) : 0.0f;
 
         // Stage 22: Sequencer
-        const float seqEnabled = pSeqEnabled ? pSeqEnabled->load() : 0.0f;
-        const float seqRate = pSeqRate ? pSeqRate->load() : 2.0f;
-        const float seqSteps = pSeqSteps ? pSeqSteps->load() : 8.0f;
-        const float seqDepth = pSeqDepth ? pSeqDepth->load() : 0.5f;
-        const float seqSmooth = pSeqSmooth ? pSeqSmooth->load() : 0.3f;
-        const float seqTarget1 = pSeqTarget1 ? pSeqTarget1->load() : 0.0f;
-        const float seqTarget2 = pSeqTarget2 ? pSeqTarget2->load() : 0.0f;
-        const float seqPattern = pSeqPattern ? pSeqPattern->load() : 0.0f;
-        const float seqEnvFollow = pSeqEnvFollow ? pSeqEnvFollow->load() : 0.0f;
-        const float seqEnvAmt = pSeqEnvAmt ? pSeqEnvAmt->load() : 0.5f;
+        const float seqEnabled = pSeqEnabled ? pSeqEnabled->load(std::memory_order_relaxed) : 0.0f;
+        const float seqRate = pSeqRate ? pSeqRate->load(std::memory_order_relaxed) : 2.0f;
+        const float seqSteps = pSeqSteps ? pSeqSteps->load(std::memory_order_relaxed) : 8.0f;
+        const float seqDepth = pSeqDepth ? pSeqDepth->load(std::memory_order_relaxed) : 0.5f;
+        const float seqSmooth = pSeqSmooth ? pSeqSmooth->load(std::memory_order_relaxed) : 0.3f;
+        const float seqTarget1 = pSeqTarget1 ? pSeqTarget1->load(std::memory_order_relaxed) : 0.0f;
+        const float seqTarget2 = pSeqTarget2 ? pSeqTarget2->load(std::memory_order_relaxed) : 0.0f;
+        const float seqPattern = pSeqPattern ? pSeqPattern->load(std::memory_order_relaxed) : 0.0f;
+        const float seqEnvFollow = pSeqEnvFollow ? pSeqEnvFollow->load(std::memory_order_relaxed) : 0.0f;
+        const float seqEnvAmt = pSeqEnvAmt ? pSeqEnvAmt->load(std::memory_order_relaxed) : 0.5f;
 
         // ====================================================================
         // Stage 22: Sequencer (non-audio, runs first to compute mod offsets)
@@ -626,12 +626,12 @@ public:
         // Stage 5.6: fXFormant (Membrane Collection — Formant Filter)
         // ====================================================================
         {
-            const float fmtMix = pFormantMix_ ? pFormantMix_->load() : 0.0f;
+            const float fmtMix = pFormantMix_ ? pFormantMix_->load(std::memory_order_relaxed) : 0.0f;
             if (fmtMix > 0.001f)
             {
-                formantFX_.setShift(pFormantShift_ ? pFormantShift_->load() : 0.0f);
-                formantFX_.setVowel(pFormantVowel_ ? pFormantVowel_->load() : 0.0f);
-                formantFX_.setResonance(pFormantQ_ ? pFormantQ_->load() : 8.0f);
+                formantFX_.setShift(pFormantShift_ ? pFormantShift_->load(std::memory_order_relaxed) : 0.0f);
+                formantFX_.setVowel(pFormantVowel_ ? pFormantVowel_->load(std::memory_order_relaxed) : 0.0f);
+                formantFX_.setResonance(pFormantQ_ ? pFormantQ_->load(std::memory_order_relaxed) : 8.0f);
                 formantFX_.setMix(fmtMix);
                 formantFX_.processBlock(buffer.getWritePointer(0), buffer.getWritePointer(1), numSamples);
             }
@@ -641,12 +641,12 @@ public:
         // Stage 5.7: fXBreath (Membrane Collection — Breath Texture)
         // ====================================================================
         {
-            const float brMix = pBreathMix_ ? pBreathMix_->load() : 0.0f;
+            const float brMix = pBreathMix_ ? pBreathMix_->load(std::memory_order_relaxed) : 0.0f;
             if (brMix > 0.001f)
             {
-                breathFX_.setBreathAmount(pBreathAmount_ ? pBreathAmount_->load() : 0.0f);
-                breathFX_.setTilt(pBreathTilt_ ? pBreathTilt_->load() : 0.5f);
-                breathFX_.setSensitivity(pBreathSens_ ? pBreathSens_->load() : 0.5f);
+                breathFX_.setBreathAmount(pBreathAmount_ ? pBreathAmount_->load(std::memory_order_relaxed) : 0.0f);
+                breathFX_.setTilt(pBreathTilt_ ? pBreathTilt_->load(std::memory_order_relaxed) : 0.5f);
+                breathFX_.setSensitivity(pBreathSens_ ? pBreathSens_->load(std::memory_order_relaxed) : 0.5f);
                 breathFX_.setMix(brMix);
                 breathFX_.processBlock(buffer.getWritePointer(0), buffer.getWritePointer(1), numSamples);
             }
@@ -959,18 +959,18 @@ public:
                 mathFX.processBlock(
                     L, R, numSamples,
                     // Entropy Cooler
-                    pMfxEcStability ? pMfxEcStability->load() : 0.5f, pMfxEcCoolRate ? pMfxEcCoolRate->load() : 0.3f,
-                    pMfxEcThreshold ? pMfxEcThreshold->load() : 0.5f, mfx_ecMix,
+                    pMfxEcStability ? pMfxEcStability->load(std::memory_order_relaxed) : 0.5f, pMfxEcCoolRate ? pMfxEcCoolRate->load(std::memory_order_relaxed) : 0.3f,
+                    pMfxEcThreshold ? pMfxEcThreshold->load(std::memory_order_relaxed) : 0.5f, mfx_ecMix,
                     // Voronoi Shatter
-                    pMfxVsCrystallize ? pMfxVsCrystallize->load() : 0.0f, pMfxVsTension ? pMfxVsTension->load() : 0.5f,
-                    pMfxVsGrainSize ? pMfxVsGrainSize->load() : 30.0f, mfx_vsMix,
+                    pMfxVsCrystallize ? pMfxVsCrystallize->load(std::memory_order_relaxed) : 0.0f, pMfxVsTension ? pMfxVsTension->load(std::memory_order_relaxed) : 0.5f,
+                    pMfxVsGrainSize ? pMfxVsGrainSize->load(std::memory_order_relaxed) : 30.0f, mfx_vsMix,
                     // Quantum Smear
-                    pMfxQsObservation ? pMfxQsObservation->load() : 0.3f,
-                    pMfxQsFeedback ? pMfxQsFeedback->load() : 0.4f,
-                    pMfxQsDelayCenter ? pMfxQsDelayCenter->load() : 150.0f, mfx_qsMix,
+                    pMfxQsObservation ? pMfxQsObservation->load(std::memory_order_relaxed) : 0.3f,
+                    pMfxQsFeedback ? pMfxQsFeedback->load(std::memory_order_relaxed) : 0.4f,
+                    pMfxQsDelayCenter ? pMfxQsDelayCenter->load(std::memory_order_relaxed) : 150.0f, mfx_qsMix,
                     // Attractor Drive
-                    pMfxAdBifurcation ? pMfxAdBifurcation->load() : 0.3f,
-                    pMfxAdDriveBase ? pMfxAdDriveBase->load() : 0.3f, pMfxAdSpeed ? pMfxAdSpeed->load() : 0.3f,
+                    pMfxAdBifurcation ? pMfxAdBifurcation->load(std::memory_order_relaxed) : 0.3f,
+                    pMfxAdDriveBase ? pMfxAdDriveBase->load(std::memory_order_relaxed) : 0.3f, pMfxAdSpeed ? pMfxAdSpeed->load(std::memory_order_relaxed) : 0.3f,
                     mfx_adMix);
             }
         }
@@ -987,24 +987,24 @@ public:
                 boutiqueFX.processBlock(
                     L, R, numSamples,
                     // Anomaly Engine
-                    pBfxAnTextureBlend ? pBfxAnTextureBlend->load() : 0.5f,
-                    pBfxAnReverbSize ? pBfxAnReverbSize->load() : 0.5f,
-                    pBfxAnTremoloRate ? pBfxAnTremoloRate->load() : 2.0f,
-                    pBfxAnTimeSlip ? (pBfxAnTimeSlip->load() > 0.5f) : false,
-                    pBfxAnSlipSpeed ? pBfxAnSlipSpeed->load() : 0.0f, bfx_anMix,
+                    pBfxAnTextureBlend ? pBfxAnTextureBlend->load(std::memory_order_relaxed) : 0.5f,
+                    pBfxAnReverbSize ? pBfxAnReverbSize->load(std::memory_order_relaxed) : 0.5f,
+                    pBfxAnTremoloRate ? pBfxAnTremoloRate->load(std::memory_order_relaxed) : 2.0f,
+                    pBfxAnTimeSlip ? (pBfxAnTimeSlip->load(std::memory_order_relaxed) > 0.5f) : false,
+                    pBfxAnSlipSpeed ? pBfxAnSlipSpeed->load(std::memory_order_relaxed) : 0.0f, bfx_anMix,
                     // Dissolving Archive
-                    pBfxDaChance ? pBfxDaChance->load() : 0.0f, pBfxDaDissolve ? pBfxDaDissolve->load() : 0.0f,
-                    pBfxDaGrainMix ? pBfxDaGrainMix->load() : 0.5f, pBfxDaReverbMix ? pBfxDaReverbMix->load() : 0.3f,
+                    pBfxDaChance ? pBfxDaChance->load(std::memory_order_relaxed) : 0.0f, pBfxDaDissolve ? pBfxDaDissolve->load(std::memory_order_relaxed) : 0.0f,
+                    pBfxDaGrainMix ? pBfxDaGrainMix->load(std::memory_order_relaxed) : 0.5f, pBfxDaReverbMix ? pBfxDaReverbMix->load(std::memory_order_relaxed) : 0.3f,
                     bfx_daMix,
                     // Artifact Cathedral
-                    pBfxAcPacketLoss ? pBfxAcPacketLoss->load() : 0.0f, pBfxAcBitCrush ? pBfxAcBitCrush->load() : 0.0f,
-                    pBfxAcDarkMix ? pBfxAcDarkMix->load() : 0.5f, pBfxAcSunMix ? pBfxAcSunMix->load() : 0.5f,
-                    pBfxAcModDepth ? pBfxAcModDepth->load() : 0.3f, pBfxAcDecay ? pBfxAcDecay->load() : 0.5f,
-                    pBfxAcFreeze ? (pBfxAcFreeze->load() > 0.5f) : false, bfx_acMix,
+                    pBfxAcPacketLoss ? pBfxAcPacketLoss->load(std::memory_order_relaxed) : 0.0f, pBfxAcBitCrush ? pBfxAcBitCrush->load(std::memory_order_relaxed) : 0.0f,
+                    pBfxAcDarkMix ? pBfxAcDarkMix->load(std::memory_order_relaxed) : 0.5f, pBfxAcSunMix ? pBfxAcSunMix->load(std::memory_order_relaxed) : 0.5f,
+                    pBfxAcModDepth ? pBfxAcModDepth->load(std::memory_order_relaxed) : 0.3f, pBfxAcDecay ? pBfxAcDecay->load(std::memory_order_relaxed) : 0.5f,
+                    pBfxAcFreeze ? (pBfxAcFreeze->load(std::memory_order_relaxed) > 0.5f) : false, bfx_acMix,
                     // Submersion Engine
-                    pBfxSmStages ? static_cast<int>(pBfxSmStages->load()) : 4,
-                    pBfxSmLFORate ? pBfxSmLFORate->load() : 0.5f, pBfxSmLFODepth ? pBfxSmLFODepth->load() : 0.5f,
-                    pBfxSmLoopFB ? pBfxSmLoopFB->load() : 0.3f, pBfxSmClock ? pBfxSmClock->load() : 0.5f, bfx_smMix);
+                    pBfxSmStages ? static_cast<int>(pBfxSmStages->load(std::memory_order_relaxed)) : 4,
+                    pBfxSmLFORate ? pBfxSmLFORate->load(std::memory_order_relaxed) : 0.5f, pBfxSmLFODepth ? pBfxSmLFODepth->load(std::memory_order_relaxed) : 0.5f,
+                    pBfxSmLoopFB ? pBfxSmLoopFB->load(std::memory_order_relaxed) : 0.3f, pBfxSmClock ? pBfxSmClock->load(std::memory_order_relaxed) : 0.5f, bfx_smMix);
             }
         }
 

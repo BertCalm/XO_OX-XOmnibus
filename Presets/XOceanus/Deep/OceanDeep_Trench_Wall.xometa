@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Trench Wall",
+  "mood": "Deep",
+  "engines": ["OceanDeep"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macros": {
+    "PRESSURE": 0.88,
+    "CREATURE": 0.05,
+    "WRECK": 0.0,
+    "ABYSS": 0.82
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.9,
+    "movement": 0.08,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.95,
+      "deep_subOctMix": 0.82,
+      "deep_filterCutoff": 120.0,
+      "deep_filterRes": 0.12,
+      "deep_velCutoffAmt": 0.2,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.08,
+      "deep_bodyMix": 0.15,
+      "deep_bioRate": 0.005,
+      "deep_bioMix": 0.04,
+      "deep_bioBrightness": 150.0,
+      "deep_pressureAmt": 0.88,
+      "deep_ampAtk": 0.3,
+      "deep_ampDec": 3.0,
+      "deep_ampSus": 0.95,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.008,
+      "deep_lfo1Depth": 0.04,
+      "deep_lfo2Rate": 0.005,
+      "deep_lfo2Depth": 0.02,
+      "deep_reverbMix": 0.18,
+      "deep_macroPressure": 0.88,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.82
+    }
+  },
+  "tags": ["oceandeep", "sub", "deep", "abyssal", "pressure", "dark"],
+  "description": "The sheer face of a hadal trench wall: 11,000 metres of cold dark rock. Filter at 120Hz ceiling, maximum hydrostatic pressure, almost no body — only the stone and the depth."
+}

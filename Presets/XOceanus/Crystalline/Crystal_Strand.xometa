@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Strand",
+  "mood": "Crystalline",
+  "engines": ["Osier"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Willow reed pared to a single wind strand — all harmonics filtered, only the fundamental remains. One breath of crystal air.",
+  "tags": ["crystalline", "wind", "sine", "sparse", "osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.79,
+    "warmth": 0.09,
+    "movement": 0.07,
+    "density": 0.06,
+    "space": 0.71,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Osier": {
+      "osier_windDensity": 0.04,
+      "osier_reedBrightness": 0.78,
+      "osier_harmonicContent": 0.02,
+      "osier_breathNoise": 0.0,
+      "osier_filterCutoff": 10500.0,
+      "osier_filterReso": 0.05,
+      "osier_filterEnvAmt": 0.18,
+      "osier_attack": 0.15,
+      "osier_decay": 2.0,
+      "osier_sustain": 0.45,
+      "osier_release": 3.5,
+      "osier_lfo1Rate": 0.07,
+      "osier_lfo1Depth": 0.03,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.01,
+      "osier_reverbMix": 0.58,
+      "osier_outputLevel": 0.7,
+      "osier_voices": 1,
+      "osier_macroCharacter": 0.16,
+      "osier_macroMovement": 0.1,
+      "osier_macroCoupling": 0.05,
+      "osier_macroSpace": 0.6
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -265,7 +265,7 @@ public:
                 continue;
 
             // Update the smoothed value target from the APVTS parameter
-            smoothedValues[idx].setTargetValue(param->load());
+            smoothedValues[idx].setTargetValue(param->load(std::memory_order_relaxed));
 
             // Advance smoother to the end of this block for correct ramp timing.
             // skip(N-1) then getNextValue() = value at end of block.

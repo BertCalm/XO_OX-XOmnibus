@@ -45,7 +45,7 @@ inline float flushDenormal(float x)
 
 //------------------------------------------------------------------------------
 /// Fast e^x using Schraudolph's method (IEEE 754 bit manipulation).
-/// Accurate to ~4% across [-10, 10]. Suitable for envelopes and gain curves.
+/// Accurate to ~6% across [-10, 10]. Suitable for envelopes and gain curves.
 inline float fastExp(float x)
 {
     // Clamp to avoid overflow/underflow in the integer conversion
@@ -80,7 +80,7 @@ inline float fastTanh(float x)
 }
 
 //------------------------------------------------------------------------------
-/// Fast sine approximation using a 4th-order odd Chebyshev minimax polynomial.
+/// Fast sine approximation using a degree-7 odd Chebyshev minimax polynomial.
 /// Input: radians. Accurate to ~0.002% across the full period.
 /// Replaces previous Bhaskara parabola approximation (which had up to 45%
 /// relative error in the 0-45° range despite header claiming 0.02%).

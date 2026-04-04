@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Basalt Column",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.4,
+    "SPACE": 0.18
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.88,
+    "movement": 0.04,
+    "density": 0.98,
+    "space": 0.15,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.05,
+      "ogre_drive": 0.55,
+      "ogre_rootDepth": 1.0,
+      "ogre_bodyResonance": 0.08,
+      "ogre_brightness": 180.0,
+      "ogre_density": 0.98,
+      "ogre_soil": 0.85,
+      "ogre_tectonicRate": 0.002,
+      "ogre_tectonicDepth": 0.8,
+      "ogre_attack": 0.12,
+      "ogre_decay": 4.0,
+      "ogre_sustain": 0.95,
+      "ogre_release": 3.0,
+      "ogre_filterEnvAmount": 0.18,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 1.0,
+      "ogre_macroCharacter": 0.85,
+      "ogre_macroMovement": 0.08,
+      "ogre_macroCoupling": 0.4,
+      "ogre_macroSpace": 0.18
+    }
+  },
+  "tags": ["ogre", "sub", "deep", "physical", "dark", "monolith"],
+  "description": "A single basalt formation: pure mineral mass, no harmonics above fundamental. Drive adds the faintest grit of volcanic rock."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Glass Membrane",
+  "mood": "Crystalline",
+  "engines": ["Opaline"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prepared piano string so lightly touched it behaves like glass — membrane mode, single mode, pure tone.",
+  "tags": ["crystalline", "membrane", "glass", "sparse", "prepared"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.81,
+    "warmth": 0.08,
+    "movement": 0.04,
+    "density": 0.07,
+    "space": 0.7,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_preparedDensity": 0.04,
+      "opal2_preparedType": 1,
+      "opal2_tineCharacter": 0.08,
+      "opal2_stringDecay": 5.0,
+      "opal2_damperNoise": 0.0,
+      "opal2_filterCutoff": 12500.0,
+      "opal2_filterReso": 0.05,
+      "opal2_filterEnvAmt": 0.17,
+      "opal2_attack": 0.005,
+      "opal2_decay": 4.5,
+      "opal2_sustain": 0.04,
+      "opal2_release": 4.0,
+      "opal2_lfo1Rate": 0.05,
+      "opal2_lfo1Depth": 0.02,
+      "opal2_lfo2Rate": 0.03,
+      "opal2_lfo2Depth": 0.01,
+      "opal2_reverbMix": 0.55,
+      "opal2_outputLevel": 0.7,
+      "opal2_voices": 1,
+      "opal2_macroCharacter": 0.13,
+      "opal2_macroMovement": 0.07,
+      "opal2_macroCoupling": 0.04,
+      "opal2_macroSpace": 0.58
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

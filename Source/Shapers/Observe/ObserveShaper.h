@@ -416,7 +416,7 @@ public:
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFE8A020); }
 
 private:
-    static float loadP(std::atomic<float>* p, float fb) noexcept { return p ? p->load() : fb; }
+    static float loadP(std::atomic<float>* p, float fb) noexcept { return p ? p->load(std::memory_order_relaxed) : fb; }
 
     static float dbToGain(float db) noexcept { return std::pow(10.0f, db / 20.0f); }
 

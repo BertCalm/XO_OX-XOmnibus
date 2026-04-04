@@ -1257,8 +1257,8 @@ public:
         // ------------------------------------------------------------------
         for (int s = 0; s < numSamples; ++s)
         {
-            outL[s] = softClip(outL[s]);
-            outR[s] = softClip(outR[s]);
+            outL[s] = xoceanus::fastTanh(outL[s]);
+            outR[s] = xoceanus::fastTanh(outR[s]);
         }
 
         // ------------------------------------------------------------------
@@ -1659,18 +1659,6 @@ private:
     {
         float n = static_cast<float>(note) + bendSemitones;
         return 440.0f * std::pow(2.0f, (n - 69.0f) / 12.0f);
-    }
-
-    /// Soft clipper: tanh-style saturation, prevents hard clipping.
-    static float softClip(float x) noexcept
-    {
-        if (x > 3.0f)
-            return 1.0f;
-        if (x < -3.0f)
-            return -1.0f;
-        // Pade approximant tanh(x) ~ x*(27+x^2)/(27+9*x^2)
-        float x2 = x * x;
-        return x * (27.0f + x2) / (27.0f + 9.0f * x2);
     }
 
     //==========================================================================

@@ -38,8 +38,8 @@
 //      Isan folk music, 14-18 bamboo pipes. Melodica: Augustus Pablo,
 //      Jon Batiste, Gorillaz.
 //
-//  Accent: Bamboo Green #7BA05B (living bamboo -- the material of all
-//          four instruments' pipes/reeds)
+//  Accent: Pipe Organ Ivory #F5F0E8
+//          (matches getAccentColour() return value 0xFFF5F0E8)
 //  Parameter prefix: oto_
 //
 //==============================================================================

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Cellar Sustain",
+  "mood": "Deep",
+  "engines": ["Oaken"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.3,
+    "SPACE": 0.42
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.14,
+    "density": 0.7,
+    "space": 0.42,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.68,
+      "oaken_stringTension": 0.1,
+      "oaken_bodyDepth": 0.88,
+      "oaken_woodAge": 0.82,
+      "oaken_room": 0.42,
+      "oaken_brightness": 0.08,
+      "oaken_damping": 0.75,
+      "oaken_curingRate": 0.62,
+      "oaken_filterEnvAmount": 0.38,
+      "oaken_attack": 0.12,
+      "oaken_decay": 2.8,
+      "oaken_sustain": 0.88,
+      "oaken_release": 2.2,
+      "oaken_glide": 0.02,
+      "oaken_gravity": 0.7,
+      "oaken_lfo1Rate": 0.03,
+      "oaken_lfo1Depth": 0.06,
+      "oaken_macroCharacter": 0.65,
+      "oaken_macroMovement": 0.2,
+      "oaken_macroCoupling": 0.3,
+      "oaken_macroSpace": 0.42
+    }
+  },
+  "tags": ["oaken", "bass", "deep", "dark", "acoustic", "arco", "sustain"],
+  "description": "Arco bowing in a stone cellar: near-zero brightness, extreme body depth, aged wood. A sound that ages further with each held note."
+}

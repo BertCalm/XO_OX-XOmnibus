@@ -16,7 +16,7 @@
 /// All block-rate coefficients are cached and only recomputed when the warmth
 /// rate changes (OPERA P0 lesson — never compute exp() per sample on iOS).
 
-// PERF-1: fast tanh — Pade [3/3] approximation, error < 0.001 for |x| < 4.
+// PERF-1: fast tanh — Pade [3/2] approximation, error < 0.001 for |x| < 4.
 // Shared by OxytocinThermal and OxytocinDrive.
 static inline float fastTanh(float x) noexcept
 {
@@ -140,7 +140,7 @@ public:
         const float warmth = stage3; // 0..1
 
         // NTC model: warm signal = tanh saturation
-        // PERF-1: fastTanh replaces std::tanh (Pade [3/3] approximation)
+        // PERF-1: fastTanh replaces std::tanh (Pade [3/2] approximation)
         const float saturated = fastTanh(input * (1.0f + warmth * 2.5f)) * 0.7f;
         const float clean = input;
 

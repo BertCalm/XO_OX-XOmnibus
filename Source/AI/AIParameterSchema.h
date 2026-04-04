@@ -1198,7 +1198,7 @@ inline AIParameterSchema buildDefaultSchema()
 
     registerStub("Overdub", "dub_", "Dub synth with tape delay, spring reverb, and drive",
                  {"dub techno", "reggae", "tape echo", "lo-fi", "ambient dub"});
-    registerStub("Odyssey", "drift_", "FM synthesis with drift and slow evolving envelopes",
+    registerStub("Odyssey", "drift_", "Multi-mode synthesis: Classic/Supersaw/FM with drift and slow evolving envelopes",
                  {"evolving pads", "ambient", "drones", "slow textures"});
     registerStub("Oblong", "bob_", "Curious, bouncy synthesis with randomized elements",
                  {"weird basses", "experimental", "playful leads", "generative"});

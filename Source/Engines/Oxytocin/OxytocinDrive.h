@@ -7,7 +7,7 @@
 #include "OxytocinThermal.h"    // for fastTanh (defined there as shared header)
 #include "../../DSP/FastMath.h" // for xoceanus::fastSin
 
-/// OxytocinDrive — MS-20 Sallen-Key asymmetric saturation model.
+/// OxytocinDrive — MS-20-inspired asymmetric saturation waveshaper.
 ///
 /// Transfer function:
 ///   y = fastTanh(x * (1 + drive)) + 0.12 * fastTanh(3 * x * drive)
@@ -18,7 +18,7 @@
 ///
 /// With circuit_age > 0: a small DC bias drifts in from aging components.
 ///
-/// PERF-1: std::tanh replaced with fastTanh (Pade [3/3] approximation)
+/// PERF-1: std::tanh replaced with fastTanh (Pade [3/2] approximation)
 ///         defined in OxytocinThermal.h.
 
 class OxytocinDrive

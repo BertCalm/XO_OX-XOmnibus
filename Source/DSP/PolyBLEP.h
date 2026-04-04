@@ -49,7 +49,7 @@ public:
     {
         if (sampleRate <= 0.0f)
             return;
-        // Clamp frequency to [0, Nyquist/2] for stable anti-aliasing
+        // Clamp frequency to [0, Nyquist] for stable anti-aliasing
         float maxFreq = sampleRate * 0.5f;
         if (freqHz < 0.0f)
             freqHz = 0.0f;
