@@ -2,9 +2,9 @@
   ==============================================================================
 
     TouchForce_iOS.mm
-    XOlokun — UITouch.force side-channel for MDTV Signal 3.
+    XOceanus — UITouch.force side-channel for MDTV Signal 3.
 
-    Implements all functions declared in the xolokun::touch_force namespace
+    Implements all functions declared in the xoceanus::touch_force namespace
     (TouchForce_iOS.h). Compiled only on iOS; the #if JUCE_IOS guard ensures
     this file produces no symbols on macOS or Simulator.
 

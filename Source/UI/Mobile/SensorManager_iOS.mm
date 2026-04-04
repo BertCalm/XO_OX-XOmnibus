@@ -68,7 +68,7 @@
         _lastTimestamp  = -1.0;  // sentinel: "no previous sample yet"
         _motionManager  = [[CMMotionManager alloc] init];
         _motionQueue    = [[NSOperationQueue alloc] init];
-        _motionQueue.name = @"com.xo-ox.xolokun.motionQueue";
+        _motionQueue.name = @"com.xo-ox.xoceanus.motionQueue";
         _motionQueue.maxConcurrentOperationCount = 1;
 
         // Prefer device-motion (fused gyro + accel) when available.

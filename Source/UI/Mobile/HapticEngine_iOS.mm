@@ -2,9 +2,9 @@
   ==============================================================================
 
     HapticEngine_iOS.mm
-    XOlokun — Objective-C++ bridge for UIKit haptic feedback generators.
+    XOceanus — Objective-C++ bridge for UIKit haptic feedback generators.
 
-    Implements all functions declared in the xolokun::haptic_platform namespace
+    Implements all functions declared in the xoceanus::haptic_platform namespace
     (HapticEngine.h). Compiled only on iOS; the #if JUCE_IOS guard ensures this
     file produces no symbols on macOS.
 
@@ -210,7 +210,7 @@ void fireSelection()
 // ---------------------------------------------------------------------------
 // A11y platform bridge — UIAccessibility.isReduceMotionEnabled
 // ---------------------------------------------------------------------------
-// Declared as xolokun::a11y_platform::isReduceMotionEnabled() in GalleryColors.h.
+// Declared as xoceanus::a11y_platform::isReduceMotionEnabled() in GalleryColors.h.
 // Reads the system-level "Reduce Motion" accessibility setting via UIAccessibility.
 // Returns true when the user has enabled Settings > Accessibility > Reduce Motion.
 namespace xoceanus::a11y_platform {
