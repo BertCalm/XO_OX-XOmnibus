@@ -337,14 +337,6 @@ public:
     {
         addParametersImpl(params);
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         p_profileA = apvts.getRawParameterValue("orb_profileA");

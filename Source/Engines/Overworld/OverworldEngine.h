@@ -130,12 +130,6 @@ public:
         static const juce::StringArray kOwModDests {"Off", "ERA X", "Glitch Mix", "Pitch", "Amp Level"};
         ModMatrix<4>::addParameters(params, "ow_", "Overworld", kOwModDests);
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        return xoverworld::createParameterLayout();
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         namespace PID = xoverworld::ParamID;

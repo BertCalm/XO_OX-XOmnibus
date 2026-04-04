@@ -24,7 +24,7 @@
 #include <cstring>
 #include <cmath>
 #include <algorithm>
-#include "Parameters.h"
+#include "../Parameters.h"
 #include "../../../DSP/FastMath.h"
 #include "../../../DSP/PolyBLEP.h"
 

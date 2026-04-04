@@ -510,13 +510,6 @@ public:
         p.push_back(std::make_unique<F>("ole_macroIsla", "ISLA", N{0, 1}, 0.3f));
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
-        addParameters(p);
-        return {p.begin(), p.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         // Aunt levels

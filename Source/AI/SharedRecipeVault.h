@@ -182,6 +182,10 @@ public:
         auto title = recipe.getProperty("name", "Untitled").toString();
         auto mood = recipe.getProperty("mood", "").toString();
 
+        if (title.length() > 60) return {false, {}, "Title too long (max 60 chars)"};
+        if (description.length() > 500) return {false, {}, "Description too long (max 500 chars)"};
+        if (localCfg.displayName.length() > 50) return {false, {}, "Display name too long (max 50 chars)"};
+
         juce::Array<juce::var> enginesArray;
         if (auto* engArr = recipe.getProperty("engines", {}).getArray())
             for (const auto& e : *engArr)
@@ -218,7 +222,10 @@ public:
         if (stream == nullptr)
             return {false, {}, "Connection failed"};
 
-        auto response = stream->readEntireStreamAsString();
+        constexpr int kMaxResponseBytes = 1 * 1024 * 1024; // 1 MB
+        juce::MemoryBlock responseBlock;
+        stream->readIntoMemoryBlock(responseBlock, kMaxResponseBytes);
+        auto response = responseBlock.toString();
         auto responseJSON = juce::JSON::parse(response);
 
         // PostgREST returns an array with the inserted row
@@ -288,7 +295,10 @@ public:
         if (stream == nullptr)
             return {{}, 0, 0, false, "Connection failed"};
 
-        auto response = stream->readEntireStreamAsString();
+        constexpr int kMaxResponseBytes = 1 * 1024 * 1024; // 1 MB
+        juce::MemoryBlock responseBlock;
+        stream->readIntoMemoryBlock(responseBlock, kMaxResponseBytes);
+        auto response = responseBlock.toString();
         auto json = juce::JSON::parse(response);
 
         if (!json.isObject())
@@ -345,7 +355,10 @@ public:
         if (stream == nullptr)
             return {false, {}, {}, "Connection failed"};
 
-        auto response = stream->readEntireStreamAsString();
+        constexpr int kMaxResponseBytes = 1 * 1024 * 1024; // 1 MB
+        juce::MemoryBlock responseBlock;
+        stream->readIntoMemoryBlock(responseBlock, kMaxResponseBytes);
+        auto response = responseBlock.toString();
         auto json = juce::JSON::parse(response);
 
         // PostgREST returns an array

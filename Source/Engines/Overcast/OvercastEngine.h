@@ -634,14 +634,6 @@ public:
     void setBrothSpectralMass(float mass) { brothSpectralMass = clamp(mass, 0.0f, 1.0f); }
 
     //-- Parameters -------------------------------------------------------------
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl(params);

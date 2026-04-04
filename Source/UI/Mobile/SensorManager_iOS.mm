@@ -1,5 +1,5 @@
 // SensorManager_iOS.mm
-// XOlokun — iOS Objective-C++ bridge for CMMotionManager.
+// XOceanus — iOS Objective-C++ bridge for CMMotionManager.
 //
 // Provides the sensor_platform namespace that SensorManager.h expects on iOS.
 // Called by SensorManager on iOS only; all other platforms are no-ops via the

@@ -167,7 +167,7 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Overworld/dsp/FIREcho.h
     Source/Engines/Overworld/dsp/GlitchEngine.h
     Source/Engines/Overworld/dsp/SVFilter.h
-    Source/Engines/Overworld/engine/Parameters.h
+    Source/Engines/Overworld/Parameters.h
     Source/Engines/Overworld/engine/VoicePool.h
     Source/Engines/Opal/OpalDSP.h
     Source/Engines/Opal/OpalEngine.h
@@ -455,6 +455,12 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Outlook/OutlookEngine.h
     Source/Engines/Outlook/OutlookEngine.cpp
 
+    # Shapers
+    Source/Shapers/Oxide/OxideShaper.h
+    Source/Shapers/Oxide/OxideShaper.cpp
+    Source/Shapers/Observe/ObserveShaper.h
+    Source/Shapers/Observe/ObserveShaper.cpp
+
     # Main processor
     Source/XOceanusProcessor.h
     Source/XOceanusProcessor.cpp
@@ -543,7 +549,7 @@ endif()
 include(FetchContent)
 FetchContent_Declare(Catch2
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG        v3.5.3
+    GIT_TAG        v3.5.4
 )
 FetchContent_MakeAvailable(Catch2)
 

@@ -940,14 +940,6 @@ public:
     {
         addParametersImpl(params);
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         // ---- Core Spectral Fold Parameters ----
@@ -1845,7 +1837,7 @@ private:
     // ---- Control Smoothing (shared ParameterSmoother, 5ms) ----
     ParameterSmoother smoothFoldPoint, smoothFoldDepth, smoothRotate, smoothStretch;
     float voiceCrossfadeRate = 0.01f;                                // Per-sample fade rate for voice stealing (5ms)
-    float frequencyPerBin = 44100.0f / static_cast<float>(kFFTSize); // Hz per FFT bin
+    float frequencyPerBin = 0.0f; // set in prepare() from actual sampleRate
 
     // ---- Voice Pool ----
     std::array<OrigamiVoice, kMaxVoices> voices;

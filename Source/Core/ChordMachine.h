@@ -61,7 +61,7 @@ enum class RhythmPattern : int
     Off,       // ..X...X...X...X. (off-beat classic house)
     Synco,     // X..X..X...X..X.. (syncopated deep house)
     ChordStab, // X.X...X.X...X.X. (Daft Punk-style rhythmic)
-    Gate,      // XXXXXXXXXXXXXXXX  (sustained pad, gate = 1.0)
+    Gate,      // XXXXXXXXXXXXXXXX (sustained pad, gate = 1.0 — always on)
     Pulse,     // X.......X....... (half-note hits)
     Broken,    // X..X.X....X..X.. (broken beat / UK garage)
     Rest,      // ................ (silent, for breakdowns)

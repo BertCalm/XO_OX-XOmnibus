@@ -1071,7 +1071,7 @@ public:
         auto nr = [](float lo, float hi, float step = 0.f) { return juce::NormalisableRange<float>(lo, hi, step); };
 
         // --- CA control ---
-        // TODO: restore range to {0,1} when 2D Life CA mode is production-ready
+        // TODO(#666): 2D Life CA mode disabled — obnt_mode range locked to {0,0} until production-ready. See GitHub issue #666.
         params.push_back(std::make_unique<PI>(P("obnt_mode", 1), "Mode", 0, 0, 0));
         params.push_back(std::make_unique<PI>(P("obnt_rule", 1), "Rule", 0, 255, 90));
         params.push_back(std::make_unique<PF>(P("obnt_ruleMorph", 1), "Rule Morph", nr(0.f, 1.f), 0.f));
@@ -1174,13 +1174,6 @@ public:
     // -------------------------------------------------------------------------
     // Parameter layout / attachment
     // -------------------------------------------------------------------------
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParameters(params);
-        return {params.begin(), params.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         p_mode = apvts.getRawParameterValue("obnt_mode");

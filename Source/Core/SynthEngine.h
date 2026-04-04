@@ -63,7 +63,6 @@ enum class CouplingType
 //   - No blocking I/O in renderBlock()
 //   - getSampleForCoupling() must be O(1) — just return a cached sample
 //   - applyCouplingInput() accumulates modulation; renderBlock() consumes it
-//   - createParameterLayout() returns engine-namespaced parameter IDs
 //
 class SynthEngine
 {
@@ -141,10 +140,6 @@ public:
     }
 
     //-- Parameters ------------------------------------------------------------
-
-    // Return the engine's parameter layout with namespaced IDs.
-    // Example: ODDFELIX engine returns "snap_filterCutoff", "snap_resonance", etc.
-    virtual juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() = 0;
 
     // Cache raw parameter pointers from the shared APVTS.
     // Called once after the APVTS is constructed with all engine layouts merged.

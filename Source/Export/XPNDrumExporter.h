@@ -326,8 +326,8 @@ private:
     // (Layer O), per-voice amp envelope, transient designer, voice filter, and
     // character stage (grit + warmth).
     //
-    // Phase 2 TODO: route through the full OnsetEngine (with XVC coupling,
-    // reverb/delay FX, master filter) to capture the complete preset character.
+    // TODO(#654): Phase 2 — route through full OnsetEngine for XVC coupling and FX
+    // (with XVC coupling, reverb/delay FX, master filter) to capture the complete preset character.
     //==========================================================================
 
     IOResult renderDrumHit(const PresetData& preset, int note, float velocity, const DrumExportConfig& config,

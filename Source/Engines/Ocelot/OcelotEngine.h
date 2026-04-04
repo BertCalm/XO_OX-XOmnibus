@@ -215,11 +215,6 @@ public:
     }
 
     // ── Parameters ───────────────────────────────────────
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        return xocelot::createParameterLayout();
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         apvtsRef = &apvts;

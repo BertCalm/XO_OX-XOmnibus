@@ -378,7 +378,14 @@ private:
         auto* rawData = const_cast<char*>(str.toRawUTF8());
         auto len = str.getNumBytesAsUTF8();
         if (rawData && len > 0)
-            std::memset(rawData, 0, len);
+        {
+#if JUCE_MAC || JUCE_IOS
+            explicit_bzero(rawData, len);
+#else
+            volatile char* p = rawData;
+            for (size_t i = 0; i < len; ++i) p[i] = 0;
+#endif
+        }
         str = juce::String();
     }
 

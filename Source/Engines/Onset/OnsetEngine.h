@@ -2221,8 +2221,6 @@ public:
     }
 
     //-- Parameters --------------------------------------------------------------
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override { return {}; }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         for (int v = 0; v < kNumVoices; ++v)

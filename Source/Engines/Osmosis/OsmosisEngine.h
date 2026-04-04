@@ -363,27 +363,6 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_memory", 1}, "MEMORY",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        juce::AudioProcessorValueTreeState::ParameterLayout layout;
-
-        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_permeability", 1},
-                                                               "PERMEABILITY",
-                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-
-        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_selectivity", 1}, "SELECTIVITY",
-                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-
-        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_reactivity", 1}, "REACTIVITY",
-                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-
-        layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osmo_memory", 1}, "MEMORY",
-                                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-
-        return layout;
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         pPermeability_ = apvts.getRawParameterValue("osmo_permeability");
@@ -411,8 +390,9 @@ private:
     std::array<float, kAcBufSize> acBuffer_{};
     int acBufPos_ = 0;
 
-    // Pitch estimation is expensive — recompute every ~512 samples
-    static constexpr int kPitchUpdateInterval = 512;
+    // Pitch estimation is expensive — recompute every ~4096 samples
+    // 4096 samples (~93ms at 44.1kHz) — balances pitch tracking latency vs CPU cost
+    static constexpr int kPitchUpdateInterval = 4096;
     int pitchUpdateCounter_ = 0;
     float detectedPitch_ = 0.0f;
 
@@ -520,10 +500,11 @@ private:
     // converts to Hz. Runs at ~kPitchUpdateInterval cadence (not per-sample).
     //
     // O(N·K) where N = kAcBufSize (2048), K = lag range (~800 lags).
-    // At 44100 Hz with kPitchUpdateInterval=512 this is ~3M mults per second —
+    // At 44100 Hz with kPitchUpdateInterval=4096 this is ~9.5M mults per second —
     // well within budget for an analysis engine (no synthesis voices to compete).
     void updatePitchViaAutocorrelation()
     {
+        if (sr_ <= 0.0) return;
         const float sr = static_cast<float>(sr_);
 
         // Lag bounds for 50–2000 Hz

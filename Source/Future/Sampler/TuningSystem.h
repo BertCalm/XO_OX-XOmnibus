@@ -377,7 +377,7 @@ public:
                 // Detect cents (contains '.') vs ratio (contains '/' or plain integer)
                 bool hasDot = false;
                 bool hasSlash = false;
-                for (int i = start; buf[i] != '\0'; ++i)
+                for (int i = start; i < copyLen && buf[i] != '\0'; ++i)
                 {
                     if (buf[i] == '.')
                     {

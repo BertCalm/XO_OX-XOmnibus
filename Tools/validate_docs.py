@@ -48,8 +48,8 @@ CHECKED_DOCS = [
     "Docs/design/xoceanus-definitive-ui-spec.md",
     "Docs/design/xoceanus-spatial-architecture.md",
     "Docs/design/xoceanus-ui-blessing-session.md",
-    "Docs/design/xomnibus_design_guidelines.md",
-    "Docs/design/xomnibus_ui_master_spec_v2.md",
+    "Docs/design/xoceanus_design_guidelines.md",
+    "Docs/design/xoceanus_ui_master_spec_v2.md",
 ]
 
 

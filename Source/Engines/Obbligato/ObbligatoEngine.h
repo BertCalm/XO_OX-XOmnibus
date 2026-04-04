@@ -808,13 +808,6 @@ public:
         params.push_back(std::make_unique<Float>("obbl_macroWind", "WIND", Range{0.0f, 1.0f}, 0.3f));
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParameters(params);
-        return {params.begin(), params.end()};
-    }
-
     //==========================================================================
     // Parameter attachment — cache raw pointers for lock-free block-rate reads
     //==========================================================================

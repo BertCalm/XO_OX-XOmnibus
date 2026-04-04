@@ -76,9 +76,9 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 
 ## Related Documentation
 
-- `Docs/coupling_audit.md` — Coupling quality scores for all engines
-- `Docs/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
-- `Docs/xoceanus_sound_design_guides.md` — Per-engine parameter reference (38 of 42 engines; OBRIX/ORBWEAVE/OVERTONE/ORGANISM pending)
+- `Docs/fleet-audit/coupling_audit.md` — Coupling quality scores for all engines
+- `Docs/fleet-audit/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
+- `Docs/specs/xoceanus_sound_design_guides.md` — Per-engine parameter reference (71 of 76 engines; OCELOT, OSPREY, OBIONT, OKEANOS, OUTFLOW pending)
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
 - `Docs/how_to_write_a_xoceanus_adapter.md` — Adapter writing guide
 - `Docs/xoceanus_new_engine_process.md` — New engine development process

@@ -631,6 +631,7 @@ public:
                 avgVel /= static_cast<float>(vcount);
             const float decay = cachedStressDecayCoeff_;
             stressLevel_ = stressLevel_ * decay + avgVel * (1.0f - decay);
+            stressLevel_ = std::min(stressLevel_, 1.0f);
             stressLevel_ = flushDenormal(stressLevel_);
         }
         // Bleaching: cumulative brightness attenuation from sustained high-register playing
@@ -664,6 +665,7 @@ public:
                 // Velocity stress block already ran — just inject parasite contribution
                 // Use cached alpha (1 - decay) to avoid another std::exp call.
                 stressLevel_ += parasiteStressInput * cachedParasiteAlpha_;
+                stressLevel_ = std::min(stressLevel_, 1.0f);
                 stressLevel_ = flushDenormal(stressLevel_);
             }
             else
@@ -672,6 +674,7 @@ public:
                 // cachedParasiteDecay0_ holds exp(-1/(30*sr)) computed at block boundary.
                 const float decay = cachedParasiteDecay0_;
                 stressLevel_ = stressLevel_ * decay + parasiteStressInput * (1.0f - decay);
+                stressLevel_ = std::min(stressLevel_, 1.0f);
                 stressLevel_ = flushDenormal(stressLevel_);
             }
 
@@ -1321,13 +1324,6 @@ public:
     //==========================================================================
     // Parameters (81 total — Wave 5: Reef Residency)
     //==========================================================================
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
 
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {

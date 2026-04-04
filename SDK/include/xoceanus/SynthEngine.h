@@ -1,7 +1,7 @@
 #pragma once
 // xoceanus-engine-sdk — SynthEngine.h
 //
-// This is the contract. Every engine in XOceanus — all 73 built-in engines and
+// This is the contract. Every engine in XOceanus — all 76 built-in engines and
 // every community engine loaded at runtime — implements this interface.
 //
 // The boundary is deliberately JUCE-free so community developers can build,

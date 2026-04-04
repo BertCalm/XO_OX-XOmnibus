@@ -60,6 +60,11 @@ inline const juce::StringArray validEngineNames{
     "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
     "XOptic", "XOblique", "XOverworld", "XOrca", "XOctopus", "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"};
 
+// REMOVED ALIASES:
+// "Oasis" → "Okeanos" was removed (2026-03-31).
+// "Oasis" now refers to a new engine (FUSION EP tier).
+// Old presets referencing the original Oasis concept should use "Okeanos" directly.
+
 // Resolve legacy engine name aliases to current canonical IDs.
 // Returns the input unchanged if it's already a current ID or unrecognized.
 inline juce::String resolveEngineAlias(const juce::String& name)
@@ -98,8 +103,6 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         {"XOverlap", "Overlap"},
         {"XOutwit", "Outwit"},
-        // NOTE: "Oasis" → "Okeanos" alias removed — new Oasis engine (Fusion EP) now uses this name.
-        // Old Okeanos presets should reference "Okeanos" directly.
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -894,7 +897,7 @@ private:
             auto macroVar = obj->getProperty("macroLabels");
             if (macroVar.isArray())
                 for (const auto& m : *macroVar.getArray())
-                    out.macroLabels.add(m.toString());
+                    out.macroLabels.add(m.toString().substring(0, 20));
         }
         // Pad to 4 with defaults if needed
         static const juce::StringArray defaultMacros{"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};

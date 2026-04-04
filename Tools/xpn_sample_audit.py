@@ -311,8 +311,12 @@ def extract_wavs_from_xpn(xpn_path: str, dest_dir: str) -> list[str]:
     """Extract all .wav files from the .xpn ZIP, return list of extracted paths."""
     wav_paths: list[str] = []
     with zipfile.ZipFile(xpn_path, "r") as zf:
+        dest_root = Path(dest_dir).resolve()
         for entry in zf.namelist():
             if entry.lower().endswith(".wav"):
+                target = (dest_root / entry).resolve()
+                if not target.is_relative_to(dest_root):
+                    raise ValueError(f"ZipSlip blocked: {entry!r}")
                 extracted = zf.extract(entry, dest_dir)
                 wav_paths.append(extracted)
     return sorted(wav_paths)

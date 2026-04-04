@@ -145,7 +145,9 @@ inline float fastCos(float x) noexcept
 inline float fastTan(float x)
 {
     float x2 = x * x;
-    return x * (15.0f - x2) / (15.0f - 6.0f * x2);
+    float denom = 15.0f - 6.0f * x2;
+    if (denom < 1e-6f) denom = 1e-6f;  // guard near x = sqrt(2.5)
+    return x * (15.0f - x2) / denom;
 }
 
 //------------------------------------------------------------------------------

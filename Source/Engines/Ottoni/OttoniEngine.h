@@ -531,14 +531,6 @@ public:
         p.push_back(std::make_unique<F>("otto_macroForeign", "FOREIGN", N{0, 1}, 0.0f));
         p.push_back(std::make_unique<F>("otto_macroLake", "LAKE", N{0, 1}, 0.3f));
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
-        addParameters(p);
-        return {p.begin(), p.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         // Section A: Toddler

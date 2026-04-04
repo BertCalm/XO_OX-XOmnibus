@@ -748,13 +748,6 @@ public:
         p.push_back(std::make_unique<F>("ohm_macroMeadow", "MEADOW", N{0.0f, 1.0f}, 0.3f));
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
-        addParameters(p);
-        return {p.begin(), p.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         // Section A: The Dad (10)

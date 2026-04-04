@@ -1,6 +1,6 @@
 # Skill Template
 
-Standard structure for all XOlokun framework skills. Use this template when creating new skills to ensure consistency across the framework.
+Standard structure for all XOceanus framework skills. Use this template when creating new skills to ensure consistency across the framework.
 
 ## Template
 
@@ -60,7 +60,7 @@ Standard structure for all XOlokun framework skills. Use this template when crea
 
 ## Notes
 - {Important constraints or rules}
-- {XOlokun-specific considerations}
+- {XOceanus-specific considerations}
 - {Common pitfalls to avoid}
 ```
 
@@ -110,7 +110,7 @@ Clearly indicate whether a skill modifies files:
 - Be specific about what data flows between skills
 
 ### Notes Section
-- Include XOlokun-specific architecture rules that affect this skill
+- Include XOceanus-specific architecture rules that affect this skill
 - Note audio thread constraints if applicable
 - Note parameter ID freeze rules if applicable
 - Note preset compatibility concerns if applicable

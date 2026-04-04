@@ -11,7 +11,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
-| `../CLAUDE.md` | Master project guide for Claude agents and contributors | Agents, all contributors | Engine registry, blessings, debates, doctrines, architecture rules | ✅ Current (2026-03-24) |
+| `../CLAUDE.md` | Master project guide for Claude agents and contributors | Agents, all contributors | Engine registry, blessings, debates, doctrines, architecture rules | ✅ Current (2026-04-03) |
 | `xoceanus_master_specification.md` | Full technical architecture | Engineers, contributors | All architectural decisions, coupling system, preset schema | ✅ Current (2026-03-20) |
 
 ---
@@ -20,7 +20,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
-| `seances/seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (72 seances as of 2026-03-23; OSMOSIS design-only, not seanced) |
+| `seances/seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (74 seances as of 2026-04-03; OBIONT, OUTFLOW not yet seanced) |
 | `MANIFEST.md` (this file) | Documentation inventory | All contributors | Which doc to consult for what | ✅ Current |
 | `GOVERNANCE.md` | Update policies and SLAs | All contributors | When to update what | ✅ Current |
 | `INDEX.md` | Full discovery index | New contributors | Where to find anything | ✅ Current (verify) |
@@ -33,7 +33,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
 | `xoutshine-forge-spec.md` | XOutshine universal instrument forge format spec | Export engineers, pipeline devs | SampleCategory enum, multi-source keygroups, velocity strategies, RR spec, formant metadata, FX routing, 9-stage pipeline, XPM examples, MPC constraints | ✅ Current (2026-03-22, v1.0) |
-| `xoceanus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 72/76 engines (72 unique engine sections; 4 pending: OSMOSIS, OBIONT + 2 others added post-2026-03-24) |
+| `xoceanus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 71/76 engines (5 pending: OCELOT, OSPREY, OBIONT, OKEANOS, OUTFLOW) |
 | `xoceanus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
 | `xoceanus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |
 | `fleet_health_2026_03_20.md` | Current fleet status | All | Post-sweep health metrics | ✅ Current (generated 2026-03-20) |

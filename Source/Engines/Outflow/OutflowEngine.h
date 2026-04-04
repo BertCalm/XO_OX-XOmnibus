@@ -470,13 +470,6 @@ public:
     }
 
     //-- Parameters -------------------------------------------------------------
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl(params);

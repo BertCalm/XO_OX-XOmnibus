@@ -409,7 +409,11 @@ public:
         if (stream == nullptr)
             return {false, "Connection failed"};
 
-        auto response = stream->readEntireStreamAsString();
+        constexpr int kMaxResponseBytes = 1 * 1024 * 1024; // 1 MB
+        juce::MemoryBlock responseBlock;
+        stream->readIntoMemoryBlock(responseBlock, kMaxResponseBytes);
+        auto responseString = responseBlock.toString();
+        juce::ignoreUnused(responseString);
         return {true, "Sent successfully"};
     }
 

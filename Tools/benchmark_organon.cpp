@@ -28,7 +28,7 @@ using namespace xoceanus;
 
 static constexpr int kNumModes = 32;
 static constexpr int kBlockSize = 512;
-static constexpr double kSampleRate = 44100.0;
+static constexpr double kSampleRate = 48000.0; // 48kHz — standard professional rate; avoid hardcoding 44100
 
 struct BenchmarkModalArray
 {

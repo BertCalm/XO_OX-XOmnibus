@@ -1061,13 +1061,6 @@ public:
         addParametersImpl(params);
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         //-- Core Physics Parameters -------------------------------------------
@@ -1645,7 +1638,7 @@ private:
 
     //-- Timing coefficients ---------------------------------------------------
     float voiceCrossfadeRate = 0.01f;
-    float controlStepSamples = 11.025f; // ~44100 / 4000 (audio samples per physics step)
+    float controlStepSamples = 0.0f; // set in prepare() from actual sampleRate
     float normalizedDtSquared = 1.0f;
 
     //-- Voice pool ------------------------------------------------------------

@@ -7,14 +7,14 @@
 
 ### Codebase Scale
 - **403 source files** across 6 major directories
-- **78 registered synth engines** (74 unique + Kitchen Collection quads)
+- **76 registered synth engines**
 - **~31,000 lines of UI code** across 81 header files
 - **44 Gallery components** (primary desktop UI system)
 - **7 embedded fonts** (Space Grotesk, Inter, JetBrains Mono, Overbit)
 - **CMake build system**, JUCE 8, AU/VST3 targets, auval PASS
 
 ### Active UI Architecture
-- **XOlokunEditor** — 3,936-line monolith root component (484 lines core + 14 children)
+- **XOceanusEditor** — 3,936-line monolith root component (484 lines core + 14 children)
 - **GalleryLookAndFeel** — Custom LookAndFeel_V4 subclass (rotary knobs, buttons, WCAG focus rings)
 - **GalleryColors** — Full dark-mode-primary color system (bg #0E0E10, surface #1A1A1C, XO Gold #E9C46A)
 - **ColumnLayoutManager** — 3-column responsive layout + Cinematic Mode

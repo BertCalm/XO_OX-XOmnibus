@@ -1535,14 +1535,6 @@ public:
     {
         addParametersImpl(params);
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl(params);
-        return {params.begin(), params.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         paramMetabolicRate = apvts.getRawParameterValue("organon_metabolicRate");

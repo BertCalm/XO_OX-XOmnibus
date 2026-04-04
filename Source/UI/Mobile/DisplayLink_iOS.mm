@@ -1,5 +1,5 @@
 //==============================================================================
-// DisplayLink_iOS.mm — CADisplayLink bridge for XOlokun iOS animation.
+// DisplayLink_iOS.mm — CADisplayLink bridge for XOceanus iOS animation.
 //
 // Delivers per-frame callbacks from CADisplayLink into the JUCE message thread
 // via juce::MessageManager::callAsync so that Component::repaint() and other
@@ -169,7 +169,7 @@ void start(std::function<void(double, double)> callback)
 
     if (g_running.load(std::memory_order_acquire))
     {
-        NSLog(@"[XOlokun] DisplayLink: callback replaced (link already running)");
+        NSLog(@"[XOceanus] DisplayLink: callback replaced (link already running)");
         return;
     }
 
@@ -192,7 +192,7 @@ void start(std::function<void(double, double)> callback)
 
     g_running.store(true, std::memory_order_release);
 
-    NSLog(@"[XOlokun] DisplayLink: started (preferredFPS=%d, displayHz=%d)",
+    NSLog(@"[XOceanus] DisplayLink: started (preferredFPS=%d, displayHz=%d)",
           g_preferredFPS, displayRefreshRate());
 }
 
@@ -216,7 +216,7 @@ void stop()
     // pointers) immediately rather than waiting for the next GC cycle.
     g_callback = nullptr;
 
-    NSLog(@"[XOlokun] DisplayLink: stopped");
+    NSLog(@"[XOceanus] DisplayLink: stopped");
 }
 
 //------------------------------------------------------------------------------

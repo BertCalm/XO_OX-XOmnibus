@@ -2,7 +2,7 @@
   ==============================================================================
 
     ReefBridge.mm
-    XOlokun — Objective-C++ implementation of the SpriteKit reef companion
+    XOceanus — Objective-C++ implementation of the SpriteKit reef companion
     layer for OBRIX Pocket.
 
     Architecture:

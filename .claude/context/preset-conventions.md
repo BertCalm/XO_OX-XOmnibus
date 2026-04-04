@@ -1,6 +1,6 @@
 # Preset Conventions
 
-Standards and patterns for XOlokun preset creation, naming, structure, and quality.
+Standards and patterns for XOceanus preset creation, naming, structure, and quality.
 
 ## .xometa Format
 
@@ -131,7 +131,7 @@ All dimensions are 0.0–1.0. Avoid extremes (0.0 or 1.0) unless the preset genu
 ## File Organization
 
 ```
-Presets/XOlokun/
+Presets/XOceanus/
 ├── Foundation/
 │   ├── Velvet_Thunder.xometa
 │   └── Iron_Core.xometa

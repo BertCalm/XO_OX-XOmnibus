@@ -2,6 +2,12 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 
+// Denormal protection on ARM64 (Apple Silicon / iOS):
+//   - juce::ScopedNoDenormals is a no-op on ARM64 in JUCE 8
+//   - Production: initAudioThreadOnce() sets FPCR.FZ once per audio thread
+//   - Testing/offline: use ArmDenormalGuard as RAII scope guard
+//   - Per-sample: flushDenormal() in engine DSP paths provides belt-and-suspenders
+
 //==============================================================================
 // ThreadInit.h — Audio thread denormal prevention via CPU control registers.
 //
@@ -11,7 +17,7 @@
 // ---------------
 // IEEE 754 denormal ("subnormal") numbers are 100× more expensive than normal
 // floats on most CPUs because they fall through to microcode assist. IIR filters,
-// feedback delay lines, and the 73-engine coupling matrix all accumulate denormals
+// feedback delay lines, and the 76-engine coupling matrix all accumulate denormals
 // in their state variables. FastMath.h provides per-sample flushDenormal() as a
 // belt-and-suspenders guard on individual state variables, but the cheapest fix is
 // to tell the CPU to flush them at the hardware level before they ever reach user
@@ -165,6 +171,36 @@ inline void initAudioThreadOnce() noexcept
     static std::once_flag sInitFlag;
     std::call_once(sInitFlag, []() noexcept { initAudioThread(); });
 }
+
+// ARM64-aware denormal guard for use in testing and offline rendering contexts
+// where initAudioThreadOnce() may not have been called.
+// In production, initAudioThreadOnce() handles this once per audio thread.
+struct ArmDenormalGuard
+{
+    ArmDenormalGuard()
+    {
+    #if JUCE_ARM
+        uint64_t fpcr;
+        __asm__ __volatile__("mrs %0, fpcr" : "=r"(fpcr));
+        savedFpcr_ = fpcr;
+        fpcr |= (1 << 24); // FZ bit
+        __asm__ __volatile__("msr fpcr, %0" :: "r"(fpcr));
+    #endif
+    }
+
+    ~ArmDenormalGuard()
+    {
+    #if JUCE_ARM
+        __asm__ __volatile__("msr fpcr, %0" :: "r"(savedFpcr_));
+    #endif
+    }
+
+    ArmDenormalGuard(const ArmDenormalGuard&) = delete;
+    ArmDenormalGuard& operator=(const ArmDenormalGuard&) = delete;
+
+private:
+    uint64_t savedFpcr_ = 0;
+};
 
 } // namespace dsp
 } // namespace xoceanus

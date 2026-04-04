@@ -4,4 +4,4 @@
 // PerformanceViewPanel is defined inline in XOceanusEditor.h alongside
 // OverviewPanel, EngineDetailPanel, and ChordMachinePanel.
 // This forwarding header exists for discoverability.
-#include "XOceanusEditor.h"
+#include "Gallery/PerformanceViewPanel.h"

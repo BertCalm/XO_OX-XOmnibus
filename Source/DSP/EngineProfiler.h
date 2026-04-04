@@ -167,6 +167,7 @@ public:
     class ScopedMeasurement
     {
     public:
+#ifdef XOCEANUS_PROFILING
         explicit ScopedMeasurement(EngineProfiler& p) noexcept : profiler(p), start(Clock::now()) {}
 
         ~ScopedMeasurement() noexcept
@@ -184,6 +185,9 @@ public:
         using Clock = std::chrono::steady_clock;
         EngineProfiler& profiler;
         Clock::time_point start;
+#else
+        explicit ScopedMeasurement(EngineProfiler&) noexcept {}  // no-op in release
+#endif
     };
 
 private:

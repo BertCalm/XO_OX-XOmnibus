@@ -214,13 +214,6 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Create the frozen owl_ parameter layout for XOceanus APVTS.
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        return xowlfish::createParameterLayout();
-    }
-
-    //--------------------------------------------------------------------------
     /// Attach parameter snapshot to the XOceanus APVTS.
     /// Called once after the host creates the value tree.
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override { snapshot.attachTo(apvts); }

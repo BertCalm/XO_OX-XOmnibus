@@ -1,5 +1,5 @@
 //==============================================================================
-// AudioSession_iOS.mm — AVAudioSession management bridge for XOlokun iOS.
+// AudioSession_iOS.mm — AVAudioSession management bridge for XOceanus iOS.
 //
 // Standalone mode only. AUv3 mode: configure() detects the .appex bundle and
 // exits immediately so the host retains full session control.
@@ -95,7 +95,7 @@ void configure()
                              error:&error];
     if (!ok)
     {
-        NSLog(@"[XOlokun] AVAudioSession setCategory failed: %@", error.localizedDescription);
+        NSLog(@"[XOceanus] AVAudioSession setCategory failed: %@", error.localizedDescription);
         return;
     }
 
@@ -106,7 +106,7 @@ void configure()
     // ------------------------------------------------------------------
     [session setPreferredSampleRate:48000.0 error:&error];
     if (error)
-        NSLog(@"[XOlokun] AVAudioSession setPreferredSampleRate: %@", error.localizedDescription);
+        NSLog(@"[XOceanus] AVAudioSession setPreferredSampleRate: %@", error.localizedDescription);
 
     // ------------------------------------------------------------------
     // Preferred I/O buffer duration — 128 frames at 48 kHz ≈ 2.67 ms.
@@ -115,7 +115,7 @@ void configure()
     NSTimeInterval preferredDuration = 128.0 / 48000.0;
     [session setPreferredIOBufferDuration:preferredDuration error:&error];
     if (error)
-        NSLog(@"[XOlokun] AVAudioSession setPreferredIOBufferDuration: %@", error.localizedDescription);
+        NSLog(@"[XOceanus] AVAudioSession setPreferredIOBufferDuration: %@", error.localizedDescription);
 
     // ------------------------------------------------------------------
     // Activate the session.
@@ -123,14 +123,14 @@ void configure()
     ok = [session setActive:YES error:&error];
     if (!ok)
     {
-        NSLog(@"[XOlokun] AVAudioSession setActive failed: %@", error.localizedDescription);
+        NSLog(@"[XOceanus] AVAudioSession setActive failed: %@", error.localizedDescription);
         return;
     }
 
     g_sessionActive.store(true, std::memory_order_release);
     updateHardwareMetrics();
 
-    NSLog(@"[XOlokun] AVAudioSession active — rate: %.0f Hz, buffer: %d frames",
+    NSLog(@"[XOceanus] AVAudioSession active — rate: %.0f Hz, buffer: %d frames",
           (double)g_sampleRate.load(std::memory_order_relaxed),
           g_bufferSize.load(std::memory_order_relaxed));
 }
@@ -192,7 +192,7 @@ void handleInterruption(std::function<void(bool)> callback)
                 NSError* err = nil;
                 [[AVAudioSession sharedInstance] setActive:YES error:&err];
                 if (err)
-                    NSLog(@"[XOlokun] Re-activate after interruption: %@", err.localizedDescription);
+                    NSLog(@"[XOceanus] Re-activate after interruption: %@", err.localizedDescription);
 
                 g_sessionActive.store(true, std::memory_order_release);
                 updateHardwareMetrics();
@@ -236,22 +236,22 @@ void handleRouteChange(std::function<void()> callback)
             switch (reason)
             {
                 case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
-                    NSLog(@"[XOlokun] Route change: new device available (headphones/BT connected)");
+                    NSLog(@"[XOceanus] Route change: new device available (headphones/BT connected)");
                     break;
                 case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
-                    NSLog(@"[XOlokun] Route change: old device unavailable (headphones unplugged)");
+                    NSLog(@"[XOceanus] Route change: old device unavailable (headphones unplugged)");
                     break;
                 case AVAudioSessionRouteChangeReasonCategoryChange:
-                    NSLog(@"[XOlokun] Route change: category changed");
+                    NSLog(@"[XOceanus] Route change: category changed");
                     break;
                 case AVAudioSessionRouteChangeReasonOverride:
-                    NSLog(@"[XOlokun] Route change: override");
+                    NSLog(@"[XOceanus] Route change: override");
                     break;
                 case AVAudioSessionRouteChangeReasonWakeFromSleep:
-                    NSLog(@"[XOlokun] Route change: wake from sleep");
+                    NSLog(@"[XOceanus] Route change: wake from sleep");
                     break;
                 default:
-                    NSLog(@"[XOlokun] Route change: reason %lu",
+                    NSLog(@"[XOceanus] Route change: reason %lu",
                           static_cast<unsigned long>(reason));
                     break;
             }
@@ -313,7 +313,7 @@ void shutdown()
                                        withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
                                              error:&error];
         if (error)
-            NSLog(@"[XOlokun] AVAudioSession deactivate: %@", error.localizedDescription);
+            NSLog(@"[XOceanus] AVAudioSession deactivate: %@", error.localizedDescription);
     }
 
     g_sessionActive.store(false, std::memory_order_release);

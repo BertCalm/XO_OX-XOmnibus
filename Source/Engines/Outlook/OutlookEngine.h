@@ -496,69 +496,6 @@ public:
         floatParam("look_macroCoupling", "Coupling", 0.0f, 1.0f, 0.0f);
         floatParam("look_macroSpace", "Space", 0.0f, 1.0f, 0.3f);
     }
-
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-
-        auto floatParam =
-            [&](const juce::String& id, const juce::String& name, float min, float max, float def, float skew = 1.0f)
-        {
-            params.push_back(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID{id, 1}, name, juce::NormalisableRange<float>(min, max, 0.0f, skew), def));
-        };
-
-        auto choiceParam = [&](const juce::String& id, const juce::String& name, juce::StringArray choices, int def)
-        {
-            params.push_back(
-                std::make_unique<juce::AudioParameterChoice>(juce::ParameterID{id, 1}, name, choices, def));
-        };
-
-        // Oscillator
-        choiceParam("look_waveShape1", "Wave 1",
-                    {"Sine", "Triangle", "Saw", "Square", "Pulse", "Super", "Noise", "Formant"}, 0);
-        choiceParam("look_waveShape2", "Wave 2",
-                    {"Sine", "Triangle", "Saw", "Square", "Pulse", "Super", "Noise", "Formant"}, 2);
-        floatParam("look_oscMix", "Osc Mix", 0.0f, 1.0f, 0.5f);
-        floatParam("look_horizonScan", "Horizon Scan", 0.0f, 1.0f, 0.5f);
-
-        // Parallax
-        floatParam("look_parallaxAmount", "Parallax", 0.0f, 1.0f, 0.5f);
-
-        // Vista filter
-        floatParam("look_vistaLine", "Vista Line", 0.0f, 1.0f, 0.7f);
-        floatParam("look_resonance", "Resonance", 0.0f, 1.0f, 0.3f);
-        floatParam("look_filterEnvAmt", "Filter Env Amt", 0.0f, 1.0f, 0.5f);
-
-        // Envelope
-        floatParam("look_attack", "Attack", 0.001f, 5.0f, 0.1f, 0.4f);
-        floatParam("look_decay", "Decay", 0.001f, 5.0f, 0.3f, 0.4f);
-        floatParam("look_sustain", "Sustain", 0.0f, 1.0f, 0.7f);
-        floatParam("look_release", "Release", 0.001f, 10.0f, 0.8f, 0.4f);
-
-        // LFOs (D005: rate floor 0.01 Hz)
-        floatParam("look_lfo1Rate", "LFO 1 Rate", 0.01f, 20.0f, 0.5f, 0.3f);
-        floatParam("look_lfo1Depth", "LFO 1 Depth", 0.0f, 1.0f, 0.3f);
-        floatParam("look_lfo2Rate", "LFO 2 Rate", 0.01f, 20.0f, 0.3f, 0.3f);
-        floatParam("look_lfo2Depth", "LFO 2 Depth", 0.0f, 1.0f, 0.2f);
-
-        // Expression (D006)
-        floatParam("look_modWheelDepth", "Mod Wheel Depth", 0.0f, 1.0f, 0.5f);
-        floatParam("look_aftertouchDepth", "Aftertouch Depth", 0.0f, 1.0f, 0.5f);
-
-        // FX
-        floatParam("look_reverbMix", "Reverb Mix", 0.0f, 1.0f, 0.3f);
-        floatParam("look_delayMix", "Delay Mix", 0.0f, 1.0f, 0.0f);
-
-        // Macros
-        floatParam("look_macroCharacter", "Character", 0.0f, 1.0f, 0.5f);
-        floatParam("look_macroMovement", "Movement", 0.0f, 1.0f, 0.0f);
-        floatParam("look_macroCoupling", "Coupling", 0.0f, 1.0f, 0.0f);
-        floatParam("look_macroSpace", "Space", 0.0f, 1.0f, 0.3f);
-
-        return {params.begin(), params.end()};
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         pHorizonScan = apvts.getRawParameterValue("look_horizonScan");

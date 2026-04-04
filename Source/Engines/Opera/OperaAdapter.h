@@ -66,11 +66,6 @@ public:
         engine_.applyCouplingInput(static_cast<int>(type), amount, sourceBuffer, numSamples);
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
-    {
-        return opera::OperaEngine::createParameterLayout();
-    }
-
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override { engine_.attachParameters(apvts); }
 
 private:

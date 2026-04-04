@@ -3867,4 +3867,4 @@ Circuit-modeling synthesizer built on Sternberg's Triangular Theory of Love — 
 
 ---
 
-*End of Sound Design Guide — 71 of 76 engines covered (OBIONT, OSIER, OVERFLOW, OVERCAST, ODDFELLOW, ONKOLO, OPCODE pending)*
+*End of Sound Design Guide — 71 of 76 engines covered (OCELOT, OSPREY, OBIONT, OKEANOS, OUTFLOW pending)*
