@@ -27,7 +27,7 @@ render_spec.json output format:
         "preset_file": "Presets/XOceanus/Foundation/ONSET/Iron Hat.xometa",
         "engine": "ONSET",
         "render_notes": [36, 38, 42, 44, 46, 49],
-        "velocities": [40, 80, 100, 120],
+        "velocities": [10, 38, 73, 109],
         "duration_s": 0.5,
         "sonic_dna": { ... },
         "macros": { "M1": 0.5, "M2": 0.5, "M3": 0.0, "M4": 0.0 },
@@ -61,8 +61,9 @@ DRUM_ENGINES = {"ONSET"}
 RENDER_NOTES_DRUM = [36, 38, 42, 44, 46, 49]          # BD, SD, CHat, OHat, Clap, Crash
 RENDER_NOTES_MELODIC = [48, 52, 55, 60, 64, 67, 72]   # C3–C5 spread (minor 3rd steps)
 
-# Default velocity layers
-DEFAULT_VELOCITIES = [40, 80, 100, 120]
+# Default velocity layers — Ghost Council Modified midpoints (QDD Level 2, 2026-04-04)
+# Ghost=10, Light=38, Medium=73, Hard=109
+DEFAULT_VELOCITIES = [10, 38, 73, 109]
 
 # Default render durations (seconds) by engine
 DURATION_BY_ENGINE = {

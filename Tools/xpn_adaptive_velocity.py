@@ -71,6 +71,14 @@ VELOCITY_CURVES = {
     "perc":        [0, 35, 65,  90, 127],   # Snare-like
     "fx":          [0, 32, 64,  96, 127],   # Even
     "unknown":     _STD_BOUNDARY,           # Ghost Council Modified zones (standard fallback)
+    # ── Profile-level override curves (issue #825) ──────────────────────────
+    # Used by profiles/trap-drums.yaml (hot) and profiles/ambient-texture.yaml (gentle).
+    # "hot"    — boost/compress upward: lower split points so hard layer is reached sooner.
+    #            More gain at lower velocities — ghost range shrinks, hard range expands.
+    # "gentle" — soften/compress downward: raise split points so dynamics span a narrow
+    #            upper range.  Dynamics matter less — most hits land in medium/light zone.
+    "hot":     [0, 25, 55,  85, 127],   # Hard zone starts at 85 — hits hard quickly
+    "gentle":  [0, 60, 90, 110, 127],   # Hard zone squeezed to 110-127 — very compressed
 }
 
 # VelocityToFilter range: 0–127 in MPC XPM convention.

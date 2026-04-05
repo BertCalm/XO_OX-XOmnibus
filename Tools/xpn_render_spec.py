@@ -802,7 +802,7 @@ def generate_render_spec(xometa_path: Path) -> dict:
         spec["wavs"] = wav_list
         spec["render_instructions"] = (
             f"In XOceanus, load preset '{name}'. For each voice (kick, snare, etc.), "
-            f"trigger at 4 velocity levels (pp=20, mp=50, mf=80, ff=120) and record "
+            f"trigger at 4 velocity levels (ghost=10, light=38, medium=73, hard=109) and record "
             f"the output as individual WAV files."
         )
 
