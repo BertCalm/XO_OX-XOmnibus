@@ -28,6 +28,45 @@ jobs:
           fi
           echo "Version '$VERSION' is valid."
 
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Build and verify before release
+        run: |
+          cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure --timeout 120
+
+      - name: Verify AU component exists
+        run: |
+          if [ ! -d "build/XOceanus_artefacts/Release/AU/XOceanus.component" ]; then
+            echo "ERROR: AU component not found — aborting release"
+            exit 1
+          fi
+
+      - name: Run auval validation
+        run: |
+          cp -R build/XOceanus_artefacts/Release/AU/XOceanus.component ~/Library/Audio/Plug-Ins/Components/
+          auval -v aumu Xocn XoOx
+
       - name: Update VERSION in CMakeLists.txt
         run: |
           VERSION="${{ github.event.inputs.version }}"
@@ -58,6 +97,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           VERSION="${{ github.event.inputs.version }}"
+
+          # Create zips of build artifacts for attachment
+          cd build/XOceanus_artefacts/Release
+          zip -r "${GITHUB_WORKSPACE}/XOceanus-AU-v${VERSION}.zip" AU/XOceanus.component
+          zip -r "${GITHUB_WORKSPACE}/XOceanus-Standalone-v${VERSION}.zip" Standalone/XOceanus.app
+          cd "${GITHUB_WORKSPACE}"
+
           gh release create "v${VERSION}" \
             --title "XOceanus v${VERSION}" \
-            --generate-notes
+            --generate-notes \
+            "XOceanus-AU-v${VERSION}.zip#AU Plugin (macOS)" \
+            "XOceanus-Standalone-v${VERSION}.zip#Standalone App (macOS)"

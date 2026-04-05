@@ -1,0 +1,78 @@
+name: Test Coverage
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  MACOSX_DEPLOYMENT_TARGET: '12.0'
+
+jobs:
+  coverage:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+
+      - name: Install tools
+        run: brew install ninja lcov
+
+      - name: Configure CMake with coverage
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DXOCEANUS_BUILD_COVERAGE=ON
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure --timeout 120
+
+      - name: Generate coverage report
+        run: |
+          # Capture coverage data
+          lcov --capture --directory build \
+            --output-file build/coverage.info \
+            --ignore-errors mismatch
+
+          # Remove external code (JUCE, Catch2, system headers)
+          lcov --remove build/coverage.info \
+            '*/Libs/*' '*/Tests/*' '*/catch2/*' '/usr/*' '/Applications/*' \
+            --output-file build/coverage-filtered.info \
+            --ignore-errors unused
+
+          # Generate HTML report
+          genhtml build/coverage-filtered.info \
+            --output-directory build/coverage-report \
+            --title "XOceanus Test Coverage"
+
+          # Summary for GitHub
+          echo "## Test Coverage Summary" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          lcov --summary build/coverage-filtered.info 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: build/coverage-report/

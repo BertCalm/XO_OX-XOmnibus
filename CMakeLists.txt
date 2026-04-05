@@ -34,6 +34,31 @@ endif()
 # Build options
 option(XOCEANUS_BUILD_AI  "Build AI sound assistant subsystem" OFF)
 option(XOCEANUS_BUILD_VST3 "Build VST3 format (experimental)" OFF)  # closes #638
+option(XOCEANUS_BUILD_COVERAGE "Build with code coverage instrumentation (gcov/llvm-cov)" OFF)
+
+if(XOCEANUS_BUILD_COVERAGE)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+        add_compile_options(--coverage -fprofile-arcs -ftest-coverage)
+        add_link_options(--coverage)
+    else()
+        message(WARNING "Coverage instrumentation not supported for this compiler")
+    endif()
+endif()
+
+option(XOCEANUS_BUILD_CRASH_REPORTING "Build with Sentry crash reporting (opt-in at runtime)" OFF)
+
+if(XOCEANUS_BUILD_CRASH_REPORTING)
+    include(FetchContent)
+    FetchContent_Declare(
+        sentry
+        GIT_REPOSITORY https://github.com/getsentry/sentry-native.git
+        GIT_TAG        0.7.17
+        GIT_SHALLOW    TRUE
+    )
+    set(SENTRY_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(SENTRY_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(sentry)
+endif()
 
 # Platform detection
 # iOS build: cmake -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios-toolchain.cmake

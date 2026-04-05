@@ -1,0 +1,26 @@
+# Automated dependency update monitoring for XOceanus
+version: 2
+updates:
+  # GitHub Actions — keep action versions current
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "ci"
+    commit-message:
+      prefix: "ci"
+
+  # Python tools (oxport, preset utilities)
+  - package-ecosystem: "pip"
+    directory: "/Tools"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore"

@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sanitizer: [asan, tsan]
+        sanitizer: [asan, tsan, ubsan]
         include:
           - sanitizer: asan
             cxx_flags: "-fsanitize=address -fno-omit-frame-pointer"
@@ -25,6 +25,10 @@ jobs:
             cxx_flags: "-fsanitize=thread"
             c_flags: "-fsanitize=thread"
             linker_flags: "-fsanitize=thread"
+          - sanitizer: ubsan
+            cxx_flags: "-fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize=vptr"
+            c_flags: "-fsanitize=undefined -fno-omit-frame-pointer"
+            linker_flags: "-fsanitize=undefined"
 
     steps:
       - name: Checkout repo

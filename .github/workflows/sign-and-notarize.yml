@@ -1,0 +1,170 @@
+name: Sign & Notarize
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to sign (must match an existing release tag)'
+        required: true
+        type: string
+
+env:
+  MACOSX_DEPLOYMENT_TARGET: '12.0'
+
+jobs:
+  sign:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: "v${{ github.event.inputs.version }}"
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
+          cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Build Release
+        run: |
+          cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
+
+      - name: Import signing certificates
+        env:
+          APPLE_DEVELOPER_ID_P12: ${{ secrets.APPLE_DEVELOPER_ID_P12 }}
+          APPLE_DEVELOPER_ID_PASSWORD: ${{ secrets.APPLE_DEVELOPER_ID_PASSWORD }}
+          APPLE_INSTALLER_ID_P12: ${{ secrets.APPLE_INSTALLER_ID_P12 }}
+          APPLE_INSTALLER_ID_PASSWORD: ${{ secrets.APPLE_INSTALLER_ID_PASSWORD }}
+        run: |
+          # Create temporary keychain
+          KEYCHAIN_PATH=$RUNNER_TEMP/signing.keychain-db
+          KEYCHAIN_PASSWORD=$(openssl rand -hex 16)
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          # Import Developer ID Application certificate
+          echo "$APPLE_DEVELOPER_ID_P12" | base64 --decode > $RUNNER_TEMP/dev_cert.p12
+          security import $RUNNER_TEMP/dev_cert.p12 \
+            -P "$APPLE_DEVELOPER_ID_PASSWORD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          # Import Developer ID Installer certificate
+          echo "$APPLE_INSTALLER_ID_P12" | base64 --decode > $RUNNER_TEMP/inst_cert.p12
+          security import $RUNNER_TEMP/inst_cert.p12 \
+            -P "$APPLE_INSTALLER_ID_PASSWORD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          # Set keychain search list
+          security list-keychains -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | tr -d '"')
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+      - name: Sign AU component
+        run: |
+          codesign --deep --force --options runtime \
+            --sign "Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})" \
+            --timestamp \
+            build/XOceanus_artefacts/Release/AU/XOceanus.component
+
+      - name: Sign Standalone app
+        run: |
+          codesign --deep --force --options runtime \
+            --sign "Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})" \
+            --timestamp \
+            build/XOceanus_artefacts/Release/Standalone/XOceanus.app
+
+      - name: Build signed PKG installer
+        run: |
+          ./Installer/build_pkg.sh Release
+
+          # Sign the PKG with Developer ID Installer certificate
+          productsign --sign "Developer ID Installer: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})" \
+            Installer/XOceanus-Installer.pkg \
+            Installer/XOceanus-Installer-signed.pkg
+
+          mv Installer/XOceanus-Installer-signed.pkg Installer/XOceanus-Installer.pkg
+
+      - name: Create DMG
+        run: |
+          cd build && cpack -G DragNDrop
+
+      - name: Sign DMG
+        run: |
+          DMG_FILE=$(ls build/XOceanus-*.dmg)
+          codesign --force \
+            --sign "Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})" \
+            --timestamp \
+            "$DMG_FILE"
+
+      - name: Notarize PKG
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcrun notarytool submit Installer/XOceanus-Installer.pkg \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait --timeout 30m
+
+          xcrun stapler staple Installer/XOceanus-Installer.pkg
+
+      - name: Notarize DMG
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          DMG_FILE=$(ls build/XOceanus-*.dmg)
+
+          xcrun notarytool submit "$DMG_FILE" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait --timeout 30m
+
+          xcrun stapler staple "$DMG_FILE"
+
+      - name: Upload signed artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: XOceanus-signed-v${{ github.event.inputs.version }}
+          path: |
+            Installer/XOceanus-Installer.pkg
+            build/XOceanus-*.dmg
+
+      - name: Attach to GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          DMG_FILE=$(ls build/XOceanus-*.dmg)
+
+          gh release upload "v${VERSION}" \
+            "Installer/XOceanus-Installer.pkg#Signed Installer (macOS)" \
+            "${DMG_FILE}#Signed DMG (macOS)" \
+            --clobber
+
+      - name: Cleanup keychain
+        if: always()
+        run: |
+          security delete-keychain $RUNNER_TEMP/signing.keychain-db 2>/dev/null || true
+          rm -f $RUNNER_TEMP/dev_cert.p12 $RUNNER_TEMP/inst_cert.p12
