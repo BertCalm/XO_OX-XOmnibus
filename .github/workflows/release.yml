@@ -55,9 +55,8 @@ jobs:
     runs-on: macos-14
 
     steps:
-      # ── Checkout ────────────────────────────────────────────────────────
-      - name: Checkout tagged commit
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v6
         with:
           # fetch-depth 0 is needed so git-describe and release note
           # generation can walk the full commit history.
@@ -68,7 +67,7 @@ jobs:
       # ~700 MB clone is only performed when the pin changes.
       - name: Cache JUCE
         id: cache-juce
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: Libs/JUCE
           # SHA pinned to the JUCE 8.0.4 release tag (verified 2026-03-30).
