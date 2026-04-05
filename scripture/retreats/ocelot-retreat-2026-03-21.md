@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-OCELOT is one of the original XOlokun engines. It is the only engine in the fleet to model an entire ecosystem rather than a single instrument. Its four strata — Floor, Understory, Canopy, Emergent — each have independent physical models, and the 12-route EcosystemMatrix cross-wires them: percussion hits can open the spectral filter, creature calls can add shimmer, canopy brightness can damp floor resonance. The engine has a large preset library across all 8 moods. But it has never had a retreat. No one has sat with its signal path and traced it from first principle to final air.
+OCELOT is one of the original XOceanus engines. It is the only engine in the fleet to model an entire ecosystem rather than a single instrument. Its four strata — Floor, Understory, Canopy, Emergent — each have independent physical models, and the 12-route EcosystemMatrix cross-wires them: percussion hits can open the spectral filter, creature calls can add shimmer, canopy brightness can damp floor resonance. The engine has a large preset library across all 8 moods. But it has never had a retreat. No one has sat with its signal path and traced it from first principle to final air.
 
 That changes today.
 

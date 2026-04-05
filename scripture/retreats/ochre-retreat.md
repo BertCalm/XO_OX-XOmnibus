@@ -243,7 +243,7 @@ Neither is in control.
 
 ## Phase R5: Retreat Summary
 
-XOchre is the responsive, intimate counterpart to XOven's mass. Its defining arc is the conductivity-caramel axis: at low conductivity and high caramel, it is the warmest, softest upright imaginable; at high conductivity and medium caramel, it becomes the brightest, most immediate copper instrument in the fleet. No other engine in XOlokun offers a transparency-transformation axis of this musical clarity.
+XOchre is the responsive, intimate counterpart to XOven's mass. Its defining arc is the conductivity-caramel axis: at low conductivity and high caramel, it is the warmest, softest upright imaginable; at high conductivity and medium caramel, it becomes the brightest, most immediate copper instrument in the fleet. No other engine in XOceanus offers a transparency-transformation axis of this musical clarity.
 
 The ten presets cover the full conductivity range (0.08 to 0.88), all three body types (Practice Room, Parlour, Studio), and the LFO2-as-breath technique that gives XOchre its most distinctive living quality. The coupling-ready preset (Thermal Couple) enables the most natural Kitchen Quad pairing: copper and iron playing together through shared sympathetic resonance.
 

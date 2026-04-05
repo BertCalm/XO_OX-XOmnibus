@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-**0 factory presets** in XOlokun. Engine fully implemented with 111 parameters (4 macros, 14 globals, 14 per-seat × 8 seats). Seance scored 8.0/10 with 2 Blessing candidates.
+**0 factory presets** in XOceanus. Engine fully implemented with 111 parameters (4 macros, 14 globals, 14 per-seat × 8 seats). Seance scored 8.0/10 with 2 Blessing candidates.
 
 D004 fix completed: `osti_seatN_exciterMix` was declared but not wired to DSP — now patched in OstinatoEngine.h. No other dead parameters remain.
 
