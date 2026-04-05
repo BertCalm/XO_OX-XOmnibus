@@ -63,8 +63,6 @@
 // denormals never survive to user code — but keeping it does not hurt correctness.
 //==============================================================================
 
-#include <mutex>
-
 // SSE intrinsics for x86 MXCSR access
 #if defined(__SSE__) || defined(_M_IX86) || defined(_M_X64) || defined(__x86_64__)
 #include <immintrin.h>

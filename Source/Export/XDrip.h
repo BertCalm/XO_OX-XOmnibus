@@ -5,6 +5,7 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../Core/PresetManager.h"
 #include "../Core/EngineRegistry.h"
+#include "../DSP/ThreadInit.h"
 
 #include <atomic>
 #include <mutex>
@@ -169,6 +170,12 @@ private:
 
     void renderWorker()
     {
+        // #699: Initialize FPCR.FZ (ARM64) / MXCSR DAZ+FTZ (x86) on this worker
+        // thread so denormals do not cause 100× slowdowns in IIR filter feedback
+        // paths inside the engine DSP. Each worker thread must call this
+        // independently — initAudioThread() is thread-local, not process-global.
+        xoceanus::dsp::initAudioThread();
+
         // Lower thread priority so we don't compete with audio
 #if JUCE_MAC || JUCE_IOS
         struct sched_param sp = {};

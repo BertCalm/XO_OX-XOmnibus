@@ -4,6 +4,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../DSP/SRO/SilenceGate.h"
 #include "SynthEngine.h"
+#include <atomic>
 
 namespace xoceanus
 {
@@ -83,11 +84,17 @@ public:
 
     //-- Bypass ----------------------------------------------------------------
 
-    bool isBypassed() const { return bypassed; }
-    void setBypassed(bool b) { bypassed = b; }
+    // #703: bypassed is written on the message thread (setBypassed) and read on
+    // the audio thread (isBypassed inside processInsert/processBus). A plain bool
+    // is a data race (UB on ARM64). Using std::atomic<bool> with relaxed ordering
+    // is correct here: bypass is a coarse, latency-tolerant flag — a one-block
+    // delay between the UI toggle and the audio effect is acceptable, and relaxed
+    // ordering avoids the seq_cst fence overhead on the audio thread hot path.
+    bool isBypassed() const { return bypassed.load(std::memory_order_relaxed); }
+    void setBypassed(bool b) { bypassed.store(b, std::memory_order_relaxed); }
 
 private:
-    bool bypassed = false;
+    std::atomic<bool> bypassed{false};
 };
 
 } // namespace xoceanus

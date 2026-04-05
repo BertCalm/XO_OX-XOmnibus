@@ -2,6 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_core/juce_core.h>
 #include "../../Core/PresetManager.h"
 #include "../Gallery/GalleryLookAndFeel.h"
 #include "../Gallery/DnaHexagon.h"
@@ -23,8 +24,16 @@ namespace xoceanus
 //     Luminous, Organic)
 //   - Scrollable preset list with name, mood, engine tags
 //   - DNA-based "Find Similar" button (6D Euclidean distance)
+//   - Favorites system: star button on each row, "Favorites" view filter (#718)
+//   - Recently-used list: tracks last 20 loaded presets, "Recent" view filter (#718)
 //   - Gallery Model look and feel (warm white shell, XO Gold accents)
 //   - Full WCAG 2.1 AA accessibility (focus rings, screen reader labels)
+//
+// Favorites + Recent persistence:
+//   Both are stored in XOceanus.settings via juce::PropertiesFile (same file as
+//   SettingsPanel).  Favorite IDs are stored as a pipe-delimited string under key
+//   "presetFavorites".  Recent IDs (most-recent first, max 20) are stored under key
+//   "presetRecent".  A preset's canonical ID is its name + "|" + first engine name.
 //
 // Usage:
 //   PresetBrowser browser(presetManager);
@@ -41,10 +50,55 @@ public:
     // Sort modes
     //==========================================================================
 
-    enum class SortMode { NameAZ, NameZA, Mood, Relevance };
+    // #716: Extended sort options.
+    enum class SortMode { NameAZ, NameZA, Mood, Engine, DateRecent, Relevance };
+
+    //==========================================================================
+    // View filter — controls which preset subset is displayed (#718)
+    //==========================================================================
+
+    enum class ViewFilter { All, Favorites, Recent };
 
     PresetBrowser(PresetManager& pm) : presetManager(pm)
     {
+        // --- Persistent settings file (same app name as SettingsPanel) ---
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName    = "XOceanus";
+            opts.filenameSuffix     = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            settingsFile = std::make_unique<juce::PropertiesFile>(opts);
+        }
+        loadFavoritesFromDisk();
+        loadRecentFromDisk();
+
+        // --- View-filter buttons (All / Favorites / Recent) ---
+        {
+            auto setupViewBtn = [this](juce::TextButton& btn, const char* text, const char* desc, ViewFilter f)
+            {
+                btn.setButtonText(text);
+                btn.setClickingTogglesState(true);
+                btn.setRadioGroupId(99);
+                btn.setColour(juce::TextButton::buttonColourId,    GalleryColors::get(GalleryColors::slotBg()));
+                btn.setColour(juce::TextButton::buttonOnColourId,  GalleryColors::get(GalleryColors::xoGold));
+                btn.setColour(juce::TextButton::textColourOnId,    GalleryColors::get(GalleryColors::textDark()));
+                btn.setColour(juce::TextButton::textColourOffId,   GalleryColors::get(GalleryColors::textMid()));
+                A11y::setup(btn, text, desc);
+                const ViewFilter filter = f;
+                btn.onClick = [this, filter]
+                {
+                    activeViewFilter = filter;
+                    similarActive    = false;
+                    applyFilters();
+                };
+                addAndMakeVisible(btn);
+            };
+            setupViewBtn(viewAllBtn,       "All",       "Show all presets",        ViewFilter::All);
+            setupViewBtn(viewFavoritesBtn, "\xe2\x98\x85 Fav", "Show favorite presets only",   ViewFilter::Favorites);
+            setupViewBtn(viewRecentBtn,    "Recent",    "Show recently used presets", ViewFilter::Recent);
+            viewAllBtn.setToggleState(true, juce::dontSendNotification);
+        }
+
         // --- Search bar ---
         searchBox.setTextToShowWhenEmpty("Search presets...",
                                          GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
@@ -101,10 +155,12 @@ public:
         addAndMakeVisible(similarBtn);
 
         // --- Sort ComboBox ---
-        sortBox.addItem("A \xe2\x86\x92 Z",    static_cast<int>(SortMode::NameAZ)    + 1);
-        sortBox.addItem("Z \xe2\x86\x92 A",    static_cast<int>(SortMode::NameZA)    + 1);
-        sortBox.addItem("By Mood",              static_cast<int>(SortMode::Mood)      + 1);
-        sortBox.addItem("Relevance",            static_cast<int>(SortMode::Relevance) + 1);
+        sortBox.addItem("A \xe2\x86\x92 Z",    static_cast<int>(SortMode::NameAZ)      + 1);
+        sortBox.addItem("Z \xe2\x86\x92 A",    static_cast<int>(SortMode::NameZA)      + 1);
+        sortBox.addItem("By Mood",              static_cast<int>(SortMode::Mood)        + 1);
+        sortBox.addItem("By Engine",            static_cast<int>(SortMode::Engine)      + 1); // #716
+        sortBox.addItem("Recent",               static_cast<int>(SortMode::DateRecent)  + 1); // #716
+        sortBox.addItem("Relevance",            static_cast<int>(SortMode::Relevance)   + 1);
         sortBox.setSelectedId(static_cast<int>(SortMode::NameAZ) + 1, juce::dontSendNotification);
         sortBox.setColour(juce::ComboBox::backgroundColourId,    GalleryColors::get(GalleryColors::slotBg()));
         sortBox.setColour(juce::ComboBox::outlineColourId,       GalleryColors::get(GalleryColors::borderGray()));
@@ -148,6 +204,44 @@ public:
     std::function<void(const PresetData&)> onPresetSelected;
 
     //==========================================================================
+    // Favorites API (#718)
+    //==========================================================================
+
+    /** Returns a stable preset ID used as the favorites/recent key. */
+    static juce::String presetId(const PresetData& p)
+    {
+        juce::String eng = p.engines.isEmpty() ? "" : p.engines[0];
+        return p.name + "|" + eng;
+    }
+
+    /** Toggle the favorite status of a preset and persist the change. */
+    void toggleFavorite(const PresetData& p)
+    {
+        const juce::String id = presetId(p);
+        if (favoriteIds.contains(id))
+            favoriteIds.removeString(id);
+        else
+            favoriteIds.add(id);
+        saveFavoritesToDisk();
+        listBox.repaint(); // refresh star glyphs
+    }
+
+    bool isFavorite(const PresetData& p) const { return favoriteIds.contains(presetId(p)); }
+
+    /** Call this whenever a preset is loaded so the recent list stays current. */
+    void notifyPresetLoaded(const PresetData& p)
+    {
+        const juce::String id = presetId(p);
+        recentIds.removeString(id);
+        recentIds.insert(0, id);
+        while (recentIds.size() > kMaxRecentPresets)
+            recentIds.remove(recentIds.size() - 1);
+        saveRecentToDisk();
+        if (activeViewFilter == ViewFilter::Recent)
+            applyFilters();
+    }
+
+    //==========================================================================
     // Accessibility
     //==========================================================================
 
@@ -166,6 +260,16 @@ public:
     void resized() override
     {
         auto area = getLocalBounds().reduced(8);
+
+        // View-filter bar: All | Fav | Recent  (#718)
+        {
+            auto filterRow = area.removeFromTop(26);
+            const int btnW = filterRow.getWidth() / 3;
+            viewAllBtn.setBounds(filterRow.removeFromLeft(btnW).reduced(2, 1));
+            viewFavoritesBtn.setBounds(filterRow.removeFromLeft(btnW).reduced(2, 1));
+            viewRecentBtn.setBounds(filterRow.reduced(2, 1));
+        }
+        area.removeFromTop(4);
 
         // Search bar + sort control on the same row
         {
@@ -306,10 +410,22 @@ public:
             }
         }
 
-        // Preset name — Inter 11.5px (right margin extended for hex)
+        // ── Star / favorite indicator (#718) ─────────────────────────────────
+        // Drawn as a Unicode ★ (U+2605) left of the hex glyph.
+        // Tap the star area to toggle favorite (handled in listBoxItemClicked).
+        {
+            const bool fav = favoriteIds.contains(presetId(preset));
+            g.setFont(GalleryFonts::body(12.0f));
+            g.setColour(fav ? juce::Colour(GalleryColors::xoGold).withAlpha(0.90f)
+                             : GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.45f));
+            // Star sits to the left of the hex glyph (kHexRight=28 → star at w-50)
+            g.drawText(juce::String::fromUTF8("\xe2\x98\x85"), w - 52, 0, 18, h, juce::Justification::centred, false);
+        }
+
+        // Preset name — Inter 11.5px (right margin extended for hex + star)
         g.setFont(GalleryFonts::body(11.5f));
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
-        g.drawText(preset.name, 22, 0, w - 56, h / 2, juce::Justification::centredLeft, true);
+        g.drawText(preset.name, 22, 0, w - 72, h / 2, juce::Justification::centredLeft, true);
 
         // Engine tag badge — JetBrains Mono 9px, below preset name
         g.setFont(GalleryFonts::value(9.0f));
@@ -321,21 +437,34 @@ public:
             if (eng.isNotEmpty())
                 meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng; // middle dot separator
         }
-        g.drawText(meta, 22, h / 2, w - 56, h / 2, juce::Justification::centredLeft, true);
+        g.drawText(meta, 22, h / 2, w - 72, h / 2, juce::Justification::centredLeft, true);
 
         // Bottom separator
         g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.25f));
         g.drawHorizontalLine(h - 1, 10.0f, static_cast<float>(w) - 10.0f);
     }
 
-    void listBoxItemClicked(int row, const juce::MouseEvent&) override
+    void listBoxItemClicked(int row, const juce::MouseEvent& e) override
     {
-        if (row >= 0 && row < static_cast<int>(filteredPresets.size()))
+        if (row < 0 || row >= static_cast<int>(filteredPresets.size()))
+            return;
+
+        auto& preset = filteredPresets[static_cast<size_t>(row)];
+        const int rowW = listBox.getWidth();
+
+        // If the click landed on the star zone (right edge, 18px wide from w-52),
+        // toggle favorite instead of loading the preset (#718).
+        const int starLeft = rowW - 52;
+        if (e.x >= starLeft && e.x < starLeft + 18)
         {
-            selectedIndex = row;
-            if (onPresetSelected)
-                onPresetSelected(filteredPresets[static_cast<size_t>(row)]);
+            toggleFavorite(preset);
+            return;
         }
+
+        selectedIndex = row;
+        notifyPresetLoaded(preset);
+        if (onPresetSelected)
+            onPresetSelected(preset);
     }
 
     void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
@@ -349,8 +478,10 @@ public:
         if (lastRowSelected >= 0 && lastRowSelected < static_cast<int>(filteredPresets.size()))
         {
             selectedIndex = lastRowSelected;
+            auto& preset  = filteredPresets[static_cast<size_t>(lastRowSelected)];
+            notifyPresetLoaded(preset);
             if (onPresetSelected)
-                onPresetSelected(filteredPresets[static_cast<size_t>(lastRowSelected)]);
+                onPresetSelected(preset);
         }
     }
 
@@ -364,8 +495,10 @@ public:
         {
             if (selectedIndex >= 0 && selectedIndex < static_cast<int>(filteredPresets.size()))
             {
+                auto& preset = filteredPresets[static_cast<size_t>(selectedIndex)];
+                notifyPresetLoaded(preset);
                 if (onPresetSelected)
-                    onPresetSelected(filteredPresets[static_cast<size_t>(selectedIndex)]);
+                    onPresetSelected(preset);
             }
             return true;
         }
@@ -429,6 +562,20 @@ private:
     juce::TextButton similarBtn;
     juce::Label statusLabel;
 
+    // ── View-filter buttons — All / Favorites / Recent (#718) ────────────────
+    juce::TextButton viewAllBtn;
+    juce::TextButton viewFavoritesBtn;
+    juce::TextButton viewRecentBtn;
+    ViewFilter activeViewFilter = ViewFilter::All;
+
+    // ── Favorites + Recent persistence (#718) ────────────────────────────────
+    // PropertiesFile is opened in the constructor and held alive for the
+    // lifetime of the browser (same XOceanus.settings as SettingsPanel).
+    std::unique_ptr<juce::PropertiesFile> settingsFile;
+    juce::StringArray favoriteIds;  // pipe-delimited preset IDs in settings
+    juce::StringArray recentIds;    // most-recent first, max kMaxRecentPresets
+    static constexpr int kMaxRecentPresets = 20;
+
     std::vector<PresetData> filteredPresets;
     int selectedIndex  = -1;
     bool similarActive = false;
@@ -470,9 +617,13 @@ private:
         jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
 
         // --- Capture all message-thread UI state before entering the background ---
-        const juce::String searchText   = searchBox.getText().trim().toLowerCase();
-        const SortMode     sortMode     = currentSortMode;
-        const bool         isSimilar    = similarActive;
+        const juce::String searchText    = searchBox.getText().trim().toLowerCase();
+        const SortMode     sortMode      = currentSortMode;
+        const bool         isSimilar     = similarActive;
+        const ViewFilter   viewFilter    = activeViewFilter;
+        // Capture snapshots of favorites + recent so background thread has stable copies.
+        const juce::StringArray favSnapshot    = favoriteIds;
+        const juce::StringArray recentSnapshot = recentIds;
 
         juce::String selectedMood;
         for (auto* btn : moodButtons)
@@ -506,6 +657,9 @@ private:
                               selectedMood,
                               sortMode,
                               isSimilar,
+                              viewFilter,
+                              favSnapshot,
+                              recentSnapshot,
                               librarySnapshot = std::move(librarySnapshot),
                               totalCount,
                               myGeneration,
@@ -519,6 +673,20 @@ private:
 
             for (const auto& preset : librarySnapshot)
             {
+                // ── View-filter: Favorites / Recent (#718) ────────────────────
+                if (viewFilter == ViewFilter::Favorites)
+                {
+                    juce::String eng = preset.engines.isEmpty() ? "" : preset.engines[0];
+                    if (!favSnapshot.contains(preset.name + "|" + eng))
+                        continue;
+                }
+                else if (viewFilter == ViewFilter::Recent)
+                {
+                    juce::String eng = preset.engines.isEmpty() ? "" : preset.engines[0];
+                    if (!recentSnapshot.contains(preset.name + "|" + eng))
+                        continue;
+                }
+
                 // Mood filter (skip "All")
                 if (selectedMood.isNotEmpty() && selectedMood != "All")
                 {
@@ -559,6 +727,22 @@ private:
                 filtered.push_back(preset);
             }
 
+            // For Recent view: re-order filtered results to match recentSnapshot order
+            if (viewFilter == ViewFilter::Recent && !filtered.empty())
+            {
+                std::sort(filtered.begin(), filtered.end(),
+                          [&](const PresetData& a, const PresetData& b)
+                          {
+                              juce::String aEng = a.engines.isEmpty() ? "" : a.engines[0];
+                              juce::String bEng = b.engines.isEmpty() ? "" : b.engines[0];
+                              int aIdx = recentSnapshot.indexOf(a.name + "|" + aEng);
+                              int bIdx = recentSnapshot.indexOf(b.name + "|" + bEng);
+                              if (aIdx < 0) aIdx = 99999;
+                              if (bIdx < 0) bIdx = 99999;
+                              return aIdx < bIdx;
+                          });
+            }
+
             // ---- Background thread: sort ----
             switch (sortMode)
             {
@@ -581,6 +765,43 @@ private:
                                   const int moodCmp = a.mood.compareIgnoreCase(b.mood);
                                   if (moodCmp != 0)
                                       return moodCmp < 0;
+                                  return a.name.compareIgnoreCase(b.name) < 0;
+                              });
+                    break;
+
+                case SortMode::Engine: // #716
+                    // Sort by first engine name (alphabetical), then by preset name.
+                    std::sort(filtered.begin(), filtered.end(),
+                              [](const PresetData& a, const PresetData& b)
+                              {
+                                  const juce::String engA = a.engines.isEmpty() ? juce::String{} : a.engines[0];
+                                  const juce::String engB = b.engines.isEmpty() ? juce::String{} : b.engines[0];
+                                  const int engCmp = engA.compareIgnoreCase(engB);
+                                  if (engCmp != 0)
+                                      return engCmp < 0;
+                                  return a.name.compareIgnoreCase(b.name) < 0;
+                              });
+                    break;
+
+                case SortMode::DateRecent: // #716
+                    // Sort by source file modification time, newest first.
+                    // Presets without a source file sort to the end alphabetically.
+                    std::sort(filtered.begin(), filtered.end(),
+                              [](const PresetData& a, const PresetData& b)
+                              {
+                                  const bool aHasFile = a.sourceFile.existsAsFile();
+                                  const bool bHasFile = b.sourceFile.existsAsFile();
+                                  if (aHasFile && bHasFile)
+                                  {
+                                      const auto tA = a.sourceFile.getLastModificationTime();
+                                      const auto tB = b.sourceFile.getLastModificationTime();
+                                      if (tA != tB)
+                                          return tA > tB; // newest first
+                                  }
+                                  else if (aHasFile != bHasFile)
+                                  {
+                                      return aHasFile; // files before in-memory presets
+                                  }
                                   return a.name.compareIgnoreCase(b.name) < 0;
                               });
                     break;
@@ -623,6 +844,10 @@ private:
                 + " / " + juce::String(totalCount) + " presets";
             if (isSimilar)
                 statusText = "Similar: " + statusText;
+            else if (viewFilter == ViewFilter::Favorites)
+                statusText = juce::String::fromUTF8("\xe2\x98\x85 ") + statusText;
+            else if (viewFilter == ViewFilter::Recent)
+                statusText = "Recent: " + statusText;
 
             // ---- Post results back to the message thread ----
             juce::MessageManager::callAsync([safeThis,
@@ -718,6 +943,53 @@ private:
         if (mood == "Organic")
             return juce::Colour(0xFF228B22); // Forest Green
         return juce::Colour(GalleryColors::borderGray());
+    }
+
+    //==========================================================================
+    // Favorites + Recent persistence helpers (#718)
+    //==========================================================================
+
+    /** Load favoriteIds from the settings file.  Pipe-delimited string → StringArray. */
+    void loadFavoritesFromDisk()
+    {
+        if (!settingsFile)
+            return;
+        juce::String raw = settingsFile->getValue("presetFavorites", "");
+        favoriteIds.clear();
+        if (raw.isNotEmpty())
+            favoriteIds.addTokens(raw, "|", "");
+    }
+
+    /** Persist favoriteIds to the settings file as a pipe-delimited string. */
+    void saveFavoritesToDisk()
+    {
+        if (!settingsFile)
+            return;
+        settingsFile->setValue("presetFavorites", favoriteIds.joinIntoString("|"));
+        settingsFile->saveIfNeeded();
+    }
+
+    /** Load recentIds from the settings file.  Pipe-delimited string → StringArray. */
+    void loadRecentFromDisk()
+    {
+        if (!settingsFile)
+            return;
+        juce::String raw = settingsFile->getValue("presetRecent", "");
+        recentIds.clear();
+        if (raw.isNotEmpty())
+            recentIds.addTokens(raw, "|", "");
+        // Enforce max on restore (handles schema changes between versions)
+        while (recentIds.size() > kMaxRecentPresets)
+            recentIds.remove(recentIds.size() - 1);
+    }
+
+    /** Persist recentIds to the settings file. */
+    void saveRecentToDisk()
+    {
+        if (!settingsFile)
+            return;
+        settingsFile->setValue("presetRecent", recentIds.joinIntoString("|"));
+        settingsFile->saveIfNeeded();
     }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowser)
