@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Ocean Vortex",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "OceanDeep",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme three-engine ocean vortex: OCEANIC surface drives OXBOW phase entanglement which drives OCEANDEEP pressure which feeds back \u2014 three ocean depths in a whirlpool.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "ocean",
+    "reverb",
+    "depth",
+    "TriangularCoupling",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.48,
+    "movement": 0.85,
+    "density": 0.85,
+    "space": 0.78,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.88,
+      "ocean_filterEnvAmt": 0.78,
+      "ocean_lfo1Rate": 0.22,
+      "ocean_lfo1Depth": 0.42,
+      "ocean_macroCharacter": 0.75,
+      "ocean_macroMovement": 0.85,
+      "ocean_macroCoupling": 0.9,
+      "ocean_macroSpace": 0.72
+    },
+    "OceanDeep": {
+      "deep_macroPressure": 0.92,
+      "deep_filterEnvAmt": 0.78,
+      "deep_lfo1Rate": 0.14,
+      "deep_lfo1Depth": 0.38,
+      "deep_macroCharacter": 0.72,
+      "deep_macroMovement": 0.82,
+      "deep_macroCoupling": 0.88,
+      "deep_macroSpace": 0.78
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.9,
+      "oxb_filterEnvAmt": 0.75,
+      "oxb_lfo1Rate": 0.16,
+      "oxb_lfo1Depth": 0.38,
+      "oxb_macroCharacter": 0.72,
+      "oxb_macroMovement": 0.82,
+      "oxb_macroCoupling": 0.88,
+      "oxb_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oxbow",
+        "type": "TriangularCoupling",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Oxbow",
+        "engineB": "OceanDeep",
+        "type": "FilterToFilter",
+        "amount": 0.85
+      },
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Oceanic",
+        "type": "AmpToFilter",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.89,
+    "SPACE": 0.76
+  }
+}

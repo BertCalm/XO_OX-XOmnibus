@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Storm",
+  "mood": "Coupling",
+  "engines": [
+    "Outlook",
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUTLOOK panoramic scan heavily drives OVERCAST cloud formation \u2014 visionary horizon reading creating weather systems, far sight as meteorology.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "panoramic",
+    "atmospheric",
+    "FilterToFilter",
+    "weather"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.46,
+    "movement": 0.68,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outlook": {
+      "look_horizonScan": 0.78,
+      "look_filterEnvAmt": 0.65,
+      "look_lfo1Rate": 0.17,
+      "look_lfo1Depth": 0.35,
+      "look_macroCharacter": 0.64,
+      "look_macroMovement": 0.7,
+      "look_macroCoupling": 0.75,
+      "look_macroSpace": 0.65
+    },
+    "Overcast": {
+      "cast_cloudDensity": 0.72,
+      "cast_filterEnvAmt": 0.62,
+      "cast_lfo1Rate": 0.15,
+      "cast_lfo1Depth": 0.32,
+      "cast_macroCharacter": 0.62,
+      "cast_macroMovement": 0.65,
+      "cast_macroCoupling": 0.72,
+      "cast_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outlook",
+        "engineB": "Overcast",
+        "type": "FilterToFilter",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.74,
+    "SPACE": 0.65
+  }
+}

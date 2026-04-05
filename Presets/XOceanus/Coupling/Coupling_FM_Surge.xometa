@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "FM Surge",
+  "mood": "Coupling",
+  "engines": [
+    "Onset",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET percussion audio feeds ORBITAL spectral partials as FM source \u2014 drum attack energy becoming FM carrier signal, transients driving harmonic texture.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "percussion",
+    "additive",
+    "AudioToFM",
+    "FM"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.44,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.46,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_punch": 0.75,
+      "perc_macro_mutate": 0.62,
+      "perc_macro_machine": 0.58,
+      "perc_macro_space": 0.46,
+      "perc_filterEnvAmt": 0.65,
+      "perc_lfo1Rate": 0.2,
+      "perc_lfo1Depth": 0.38
+    },
+    "Orbital": {
+      "orb_brightness": 0.68,
+      "orb_macroSpectrum": 0.65,
+      "orb_macroEvolve": 0.65,
+      "orb_macroCoupling": 0.72,
+      "orb_macroSpace": 0.46,
+      "orb_filterEnvAmt": 0.62,
+      "orb_lfo1Rate": 0.18,
+      "orb_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orbital",
+        "type": "AudioToFM",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.67,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.72,
+    "SPACE": 0.46
+  }
+}

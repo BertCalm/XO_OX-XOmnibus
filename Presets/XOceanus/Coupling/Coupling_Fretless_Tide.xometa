@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Fretless Tide",
+  "mood": "Coupling",
+  "engines": [
+    "Olate",
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLATE fretless glide pitch heavily modulates OVERWASH tide foam depth \u2014 sliding string physics directly controlling the depth of breaking waves.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "fretless",
+    "tide",
+    "PitchToPitch",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.54,
+    "movement": 0.68,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Olate": {
+      "olate_fretlessGlide": 0.78,
+      "olate_filterEnvAmt": 0.65,
+      "olate_lfo1Rate": 0.16,
+      "olate_lfo1Depth": 0.35,
+      "olate_macroCharacter": 0.62,
+      "olate_macroMovement": 0.68,
+      "olate_macroCoupling": 0.75,
+      "olate_macroSpace": 0.6
+    },
+    "Overwash": {
+      "wash_tideDepth": 0.75,
+      "wash_filterEnvAmt": 0.62,
+      "wash_lfo1Rate": 0.14,
+      "wash_lfo1Depth": 0.32,
+      "wash_macroCharacter": 0.6,
+      "wash_macroMovement": 0.64,
+      "wash_macroCoupling": 0.72,
+      "wash_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Olate",
+        "engineB": "Overwash",
+        "type": "PitchToPitch",
+        "amount": 0.76
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.74,
+    "SPACE": 0.63
+  }
+}

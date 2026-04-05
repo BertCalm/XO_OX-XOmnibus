@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Total Choke",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt amplitude completely chokes ONSET transient \u2014 the apex predator silencing percussion with absolute authority, hunting as the extinction of attack.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "predator",
+    "percussion",
+    "AmpToChoke",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.38,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.4,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.95,
+      "orca_filterEnvAmt": 0.82,
+      "orca_lfo1Rate": 0.28,
+      "orca_lfo1Depth": 0.45,
+      "orca_macroCharacter": 0.82,
+      "orca_macroMovement": 0.92,
+      "orca_macroCoupling": 0.92,
+      "orca_macroSpace": 0.4
+    },
+    "Onset": {
+      "perc_macro_punch": 0.82,
+      "perc_macro_mutate": 0.68,
+      "perc_macro_machine": 0.62,
+      "perc_macro_space": 0.4,
+      "perc_filterEnvAmt": 0.75,
+      "perc_lfo1Rate": 0.26,
+      "perc_lfo1Depth": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Onset",
+        "type": "AmpToChoke",
+        "amount": 0.95
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.92,
+    "SPACE": 0.4
+  }
+}

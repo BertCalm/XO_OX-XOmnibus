@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Extreme Coherence",
+  "mood": "Coupling",
+  "engines": [
+    "Opera",
+    "Ouie",
+    "Oxytocin"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three-way extreme: OPERA Kuramoto arc forces OUIE toward LOVE convergence while OXYTOCIN bond depth drives both \u2014 three instruments in total harmonic lockdown.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "operatic",
+    "duophonic",
+    "intimate",
+    "TriangularCoupling",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.68,
+    "movement": 0.78,
+    "density": 0.75,
+    "space": 0.52,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.9,
+      "opera_filterEnvAmt": 0.78,
+      "opera_lfo1Rate": 0.2,
+      "opera_lfo1Depth": 0.42,
+      "opera_macroCharacter": 0.78,
+      "opera_macroMovement": 0.82,
+      "opera_macroCoupling": 0.9,
+      "opera_macroSpace": 0.52
+    },
+    "Ouie": {
+      "ouie_macroHammer": 0.85,
+      "ouie_filterEnvAmt": 0.75,
+      "ouie_lfo1Rate": 0.2,
+      "ouie_lfo1Depth": 0.42,
+      "ouie_macroCharacter": 0.72,
+      "ouie_macroMovement": 0.82,
+      "ouie_macroCoupling": 0.88,
+      "ouie_macroSpace": 0.52
+    },
+    "Oxytocin": {
+      "oxy_intimacy": 0.92,
+      "oxy_filterEnvAmt": 0.78,
+      "oxy_lfo1Rate": 0.18,
+      "oxy_lfo1Depth": 0.42,
+      "oxy_macroCharacter": 0.75,
+      "oxy_macroMovement": 0.78,
+      "oxy_macroCoupling": 0.9,
+      "oxy_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opera",
+        "engineB": "Ouie",
+        "type": "TriangularCoupling",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Opera",
+        "type": "TriangularCoupling",
+        "amount": 0.85
+      },
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Ouie",
+        "type": "EnvToMorph",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.81,
+    "COUPLING": 0.89,
+    "SPACE": 0.52
+  }
+}

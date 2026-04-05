@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Chromatic Crush",
+  "mood": "Coupling",
+  "engines": [
+    "Octopus",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCTOPUS chromatophore arm depth heavily floods OBESE saturation \u2014 color-change armor becoming heat, adaptation as overload.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "adaptive",
+    "saturation",
+    "AmpToFilter",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.52,
+    "movement": 0.7,
+    "density": 0.7,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.78,
+      "octo_filterEnvAmt": 0.65,
+      "octo_lfo1Rate": 0.19,
+      "octo_lfo1Depth": 0.35,
+      "octo_macroCharacter": 0.65,
+      "octo_macroMovement": 0.72,
+      "octo_macroCoupling": 0.78,
+      "octo_macroSpace": 0.42
+    },
+    "Obese": {
+      "fat_macroMojo": 0.78,
+      "fat_macroGrit": 0.75,
+      "fat_macroSize": 0.68,
+      "fat_macroCrush": 0.72,
+      "fat_filterEnvAmt": 0.65,
+      "fat_lfo1Rate": 0.18,
+      "fat_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Obese",
+        "type": "AmpToFilter",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.74,
+    "COUPLING": 0.78,
+    "SPACE": 0.42
+  }
+}

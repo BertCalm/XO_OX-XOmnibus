@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Pluck Chaos",
+  "mood": "Coupling",
+  "engines": [
+    "Orphica",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORPHICA pluck excitation heavily destabilizes OUROBOROS attractor topology \u2014 string impulse releasing chaos, physical pluck as strange attractor trigger.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "pluck",
+    "chaos",
+    "VelocityCoupling",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_pluckBrightness": 0.72,
+      "orph_filterEnvAmt": 0.65,
+      "orph_lfo1Rate": 0.16,
+      "orph_lfo1Depth": 0.35,
+      "orph_macroCharacter": 0.64,
+      "orph_macroMovement": 0.68,
+      "orph_macroCoupling": 0.75,
+      "orph_macroSpace": 0.5
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.68,
+      "ouro_leash": 0.32,
+      "ouro_filterEnvAmt": 0.62,
+      "ouro_lfo1Rate": 0.22,
+      "ouro_lfo1Depth": 0.35,
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroMovement": 0.7,
+      "ouro_macroCoupling": 0.72,
+      "ouro_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "VelocityCoupling",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.69,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

@@ -210,6 +210,179 @@ def write_wav_24bit(path: str, data, sample_rate: int):
                     f.write(bytes([b0, b1, b2]))
 
 # ---------------------------------------------------------------------------
+# Render progress tracker (Feature #738 — per-category moving average ETA)
+# ---------------------------------------------------------------------------
+
+class RenderProgressTracker:
+    """Track render progress and estimate remaining time using per-voice-category averages.
+
+    Every 10 completed jobs OR every 60 seconds (whichever comes first), prints:
+        [PROGRESS] 640/3200 (20.0%)  Rate: 18.3 jobs/min  ETA: 2h 22m  Disk: 1.2/14.2 GB used
+
+    On completion, prints:
+        [RENDER COMPLETE] 3200 jobs in 2h 18m. 40 skipped (probe dead). 0 failed.
+    """
+
+    PROGRESS_EVERY_N = 10       # print after every N completions
+    PROGRESS_EVERY_S = 60       # print at least every N seconds
+    MOVING_AVG_WINDOW = 10      # number of recent durations to average per category
+    FALLBACK_DURATION_S = 3.5   # default per-job estimate when no data for category
+
+    def __init__(self, total_jobs: int, output_dir: str = ""):
+        self.total_jobs = total_jobs
+        self.completed = 0          # jobs that were actually rendered
+        self.skipped = 0            # jobs skipped (resume or voice_map)
+        self.failed = 0             # jobs that produced no audio / timed out
+        self.category_times: dict[str, list[float]] = {}  # voice_category -> [durations_s]
+        self.start_time = time.time()
+        self._last_print_time = self.start_time
+        self._last_print_count = 0
+        self._output_dir = output_dir
+
+    # ── recording ──────────────────────────────────────────────────────────
+
+    def record(self, voice_category: str, duration_s: float) -> None:
+        """Record a completed render and maybe print a progress line."""
+        self.category_times.setdefault(voice_category, []).append(duration_s)
+        self.completed += 1
+        self._maybe_print_progress()
+
+    def record_skipped(self) -> None:
+        """Record a skipped job (resume / dead voice)."""
+        self.skipped += 1
+
+    def record_failed(self) -> None:
+        """Record a failed / silent job."""
+        self.failed += 1
+        self.completed += 1
+        self._maybe_print_progress()
+
+    # ── ETA estimation ─────────────────────────────────────────────────────
+
+    def eta_seconds(self, remaining_jobs_by_category: "dict[str, int]") -> float:
+        """Estimate remaining render time using per-category moving averages."""
+        total = 0.0
+        for cat, count in remaining_jobs_by_category.items():
+            times = self.category_times.get(cat, [])
+            window = times[-self.MOVING_AVG_WINDOW:] if times else []
+            avg = sum(window) / len(window) if window else self.FALLBACK_DURATION_S
+            total += avg * count
+        return total
+
+    # ── progress printing ──────────────────────────────────────────────────
+
+    def _maybe_print_progress(self) -> None:
+        now = time.time()
+        since_count = self.completed - self._last_print_count
+        since_time = now - self._last_print_time
+        if since_count >= self.PROGRESS_EVERY_N or since_time >= self.PROGRESS_EVERY_S:
+            self._print_progress(now)
+            self._last_print_time = now
+            self._last_print_count = self.completed
+
+    def _print_progress(self, now: float | None = None) -> None:
+        now = now or time.time()
+        elapsed = now - self.start_time
+        processed = self.completed + self.skipped  # total touched
+        pct = 100.0 * processed / self.total_jobs if self.total_jobs else 0.0
+
+        # Rate: completed (actually rendered) jobs per minute
+        rate = (self.completed / elapsed * 60) if elapsed > 0 else 0.0
+
+        # ETA: count remaining jobs by category
+        remaining_total = max(self.total_jobs - processed, 0)
+        # Build remaining_by_category from global category proportions
+        total_cat_jobs = sum(len(v) for v in self.category_times.values())
+        remaining_by_cat: dict[str, int] = {}
+        if total_cat_jobs > 0:
+            for cat, times in self.category_times.items():
+                share = len(times) / total_cat_jobs
+                remaining_by_cat[cat] = max(1, int(round(remaining_total * share)))
+        else:
+            remaining_by_cat["unknown"] = remaining_total
+
+        eta_s = self.eta_seconds(remaining_by_cat)
+        eta_str = _format_duration(eta_s)
+
+        # Disk used so far
+        disk_used_str = "?"
+        total_disk_str = "?"
+        if self._output_dir:
+            try:
+                usage = shutil.disk_usage(self._output_dir)
+                disk_used_gb = (usage.total - usage.free) / 1_073_741_824
+                disk_total_gb = usage.total / 1_073_741_824
+                disk_used_str = f"{disk_used_gb:.1f}"
+                total_disk_str = f"{disk_total_gb:.1f}"
+            except OSError:
+                pass
+
+        print(
+            f"  [PROGRESS] {processed}/{self.total_jobs} ({pct:.1f}%)  "
+            f"Rate: {rate:.1f} jobs/min  ETA: {eta_str}  "
+            f"Disk: {disk_used_str}/{total_disk_str} GB used"
+        )
+
+    def print_completion(self) -> None:
+        """Print final render complete summary."""
+        elapsed = time.time() - self.start_time
+        elapsed_str = _format_duration(elapsed)
+        skip_parts = []
+        if self.skipped:
+            skip_parts.append(f"{self.skipped} skipped (resume/dead)")
+        failed_str = f"{self.failed} failed"
+        skip_summary = (", ".join(skip_parts) + ". ") if skip_parts else ""
+        print(
+            f"\n  [RENDER COMPLETE] {self.completed} jobs in {elapsed_str}. "
+            f"{skip_summary}{failed_str}."
+        )
+        # macOS completion notification (best-effort — never raises)
+        try:
+            os.system(
+                'osascript -e \'display notification "Oxport render complete" with title "XO_OX"\''
+            )
+        except Exception:
+            pass
+
+
+def _format_duration(seconds: float) -> str:
+    """Format a duration in seconds as 'Xh Ym' or 'Ym Zs'."""
+    secs = int(seconds)
+    if secs >= 3600:
+        h = secs // 3600
+        m = (secs % 3600) // 60
+        return f"{h}h {m}m"
+    m = secs // 60
+    s = secs % 60
+    return f"{m}m {s}s"
+
+
+def _voice_category_from_job(job: dict) -> str:
+    """Extract a voice category string from a render job dict.
+
+    Tries xpn_voice_taxonomy first; falls back to the slug's last component.
+    """
+    voice_name = job.get("voice_name") or job.get("_voice_name", "")
+    if not voice_name:
+        slug = job.get("slug", "")
+        parts = slug.split("__")
+        voice_name = parts[-1] if parts else slug
+
+    if voice_name:
+        try:
+            from xpn_voice_taxonomy import VOICE_CATEGORIES
+            for cat, voices in VOICE_CATEGORIES.items():
+                if voice_name.lower() in [v.lower() for v in voices]:
+                    return cat
+        except (ImportError, AttributeError):
+            pass
+        # Fallback: use first word of the voice name as a rough category
+        return voice_name.split("_")[0] if voice_name else "unknown"
+
+    return "unknown"
+
+
+# ---------------------------------------------------------------------------
 # WAV integrity check
 # ---------------------------------------------------------------------------
 
@@ -758,7 +931,11 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
     n_consecutive_silent = 0  # Stage 5 circuit breaker: consecutive silent renders
     RENDER_SILENT_LIMIT = 5   # abort after this many consecutive silent WAVs
 
+    # Feature #738: per-category moving-average ETA tracker
+    tracker = RenderProgressTracker(total_jobs=total, output_dir=output_dir)
+
     for idx, job in enumerate(jobs):
+        _job_t0 = time.time()
         out_path = os.path.join(output_dir, job["filename"])
 
         # Resume capability: skip jobs whose output already exists and passes WAV
@@ -772,6 +949,7 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
                     if _is_valid_wav(out_path):
                         print(f"[SKIP] {job['filename']} already exists")
                         n_skipped += 1
+                        tracker.record_skipped()
                         continue
                     else:
                         print(f"[CORRUPT] {job['filename']} — invalid WAV, re-rendering")
@@ -791,6 +969,7 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
             _preset_voices = voice_map.get(_preset_name, {})
             if _preset_voices and _voice_name and not _preset_voices.get(_voice_name, True):
                 n_skipped_dead += 1
+                tracker.record_skipped()
                 continue
 
         # B4: Safety — clear any stuck notes from previous render
@@ -840,6 +1019,7 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
             peak = float(np.max(np.abs(recording)))
             if peak < 0.001:
                 print(f"  [TIMEOUT] {job['filename']} — driver timed out and no audio captured. Skipping.")
+                tracker.record_failed()
                 continue
             print(f"  [TIMEOUT] {job['filename']} — driver timed out but audio was captured (peak={peak:.4f}). Saving partial recording.")
 
@@ -848,6 +1028,7 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
         if peak < 0.001:  # ~-60 dBFS
             print(f"  [SILENT WARNING] {job['filename']} — no signal detected! Check BlackHole routing.")
             n_consecutive_silent += 1
+            tracker.record_failed()
             if n_consecutive_silent >= RENDER_SILENT_LIMIT:
                 print(f"\n[ABORT] {RENDER_SILENT_LIMIT} consecutive silent renders — "
                       f"routing broken or preset not loaded. "
@@ -896,6 +1077,11 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
 
         n_rendered += 1
 
+        # Feature #738: record duration in per-category tracker
+        _job_elapsed = time.time() - _job_t0
+        _cat = _voice_category_from_job(job)
+        tracker.record(_cat, _job_elapsed)
+
         # Periodic disk space re-check every 100 rendered jobs.
         # Other processes may consume disk during a multi-hour render session.
         if n_rendered % 100 == 0:
@@ -919,13 +1105,7 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
         print(f"Rendered {idx + 1}/{total}: {job['filename']}  ({elapsed:.0f}s elapsed)")
 
     port.close()
-    total_time = time.time() - t_start
-    mins = int(total_time // 60)
-    secs = int(total_time % 60)
-    skipped_str = f"{n_skipped} skipped (resume)"
-    if n_skipped_dead:
-        skipped_str += f", {n_skipped_dead} skipped (probe dead voices)"
-    print(f"\nDone. {n_rendered} rendered, {skipped_str} in {mins}m {secs}s")
+    tracker.print_completion()
     print(f"Output: {os.path.abspath(output_dir)}")
 
 # ---------------------------------------------------------------------------

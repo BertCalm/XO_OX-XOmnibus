@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Ritual Strike",
+  "mood": "Coupling",
+  "engines": [
+    "Ostinato",
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSTINATO world rhythm heavily activates OWARE mallet articulation \u2014 ethnomusicological pattern forcing physical mallet behavior, ritual informing physics.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "rhythm",
+    "mallet",
+    "RhythmToBlend",
+    "cultural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.56,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_macroGather": 0.78,
+      "osti_filterEnvAmt": 0.65,
+      "osti_lfo1Rate": 0.22,
+      "osti_lfo1Depth": 0.38,
+      "osti_macroCharacter": 0.65,
+      "osti_macroMovement": 0.75,
+      "osti_macroCoupling": 0.78,
+      "osti_macroSpace": 0.48
+    },
+    "Oware": {
+      "owr_material": 0.68,
+      "owr_filterEnvAmt": 0.62,
+      "owr_lfo1Rate": 0.14,
+      "owr_lfo1Depth": 0.32,
+      "owr_macroCharacter": 0.62,
+      "owr_macroMovement": 0.68,
+      "owr_macroCoupling": 0.72,
+      "owr_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ostinato",
+        "engineB": "Oware",
+        "type": "RhythmToBlend",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.75,
+    "SPACE": 0.48
+  }
+}

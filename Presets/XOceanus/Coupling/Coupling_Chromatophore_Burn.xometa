@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Chromatophore Burn",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC chromatophore amplitude dominantly drives OBESE saturation heat \u2014 color-change biology heating the saturation circuits, organic pigment as heat source.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "bioluminescent",
+    "saturation",
+    "AmpToFilter",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.58,
+    "movement": 0.65,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.72,
+      "ocean_filterEnvAmt": 0.65,
+      "ocean_lfo1Rate": 0.17,
+      "ocean_lfo1Depth": 0.35,
+      "ocean_macroCharacter": 0.64,
+      "ocean_macroMovement": 0.68,
+      "ocean_macroCoupling": 0.75,
+      "ocean_macroSpace": 0.44
+    },
+    "Obese": {
+      "fat_macroMojo": 0.75,
+      "fat_macroGrit": 0.7,
+      "fat_macroSize": 0.65,
+      "fat_macroCrush": 0.62,
+      "fat_filterEnvAmt": 0.65,
+      "fat_lfo1Rate": 0.16,
+      "fat_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obese",
+        "type": "AmpToFilter",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.69,
+    "COUPLING": 0.75,
+    "SPACE": 0.43
+  }
+}

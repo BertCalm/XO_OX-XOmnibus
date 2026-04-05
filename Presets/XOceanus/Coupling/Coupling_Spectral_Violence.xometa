@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Violence",
+  "mood": "Coupling",
+  "engines": [
+    "Owlfish",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OWLFISH Mixtur-Trautonium partials heavily destabilize OUROBOROS strange attractor \u2014 abyssal gold harmonics as chaos injector, spectral resonance as attractor fuel.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "spectral",
+    "chaos",
+    "AudioToRing",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_filterCutoff": 0.68,
+      "owl_filterEnvAmt": 0.65,
+      "owl_lfo1Rate": 0.18,
+      "owl_lfo1Depth": 0.35,
+      "owl_macroCharacter": 0.64,
+      "owl_macroMovement": 0.7,
+      "owl_macroCoupling": 0.75,
+      "owl_macroSpace": 0.5
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.68,
+      "ouro_leash": 0.3,
+      "ouro_filterEnvAmt": 0.62,
+      "ouro_lfo1Rate": 0.22,
+      "ouro_lfo1Depth": 0.35,
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroMovement": 0.7,
+      "ouro_macroCoupling": 0.72,
+      "ouro_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ouroboros",
+        "type": "AudioToRing",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

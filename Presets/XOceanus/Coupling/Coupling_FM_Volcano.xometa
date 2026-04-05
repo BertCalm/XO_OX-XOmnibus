@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "FM Volcano",
+  "mood": "Coupling",
+  "engines": [
+    "Onset",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET percussion at full force as FM source for ORBITAL additive partials at extreme depth \u2014 percussion becomes carrier, spectral additive becomes modulator, FM eruption.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "percussion",
+    "FM",
+    "AudioToFM",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.44,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.44,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_punch": 0.92,
+      "perc_macro_mutate": 0.78,
+      "perc_macro_machine": 0.72,
+      "perc_macro_space": 0.44,
+      "perc_filterEnvAmt": 0.78,
+      "perc_lfo1Rate": 0.28,
+      "perc_lfo1Depth": 0.45
+    },
+    "Orbital": {
+      "orb_brightness": 0.85,
+      "orb_macroSpectrum": 0.82,
+      "orb_macroEvolve": 0.85,
+      "orb_macroCoupling": 0.88,
+      "orb_macroSpace": 0.44,
+      "orb_filterEnvAmt": 0.78,
+      "orb_lfo1Rate": 0.25,
+      "orb_lfo1Depth": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orbital",
+        "type": "AudioToFM",
+        "amount": 0.93
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.88,
+    "SPACE": 0.44
+  }
+}

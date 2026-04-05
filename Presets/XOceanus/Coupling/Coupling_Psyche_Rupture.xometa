@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Psyche Rupture",
+  "mood": "Coupling",
+  "engines": [
+    "Offering",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OFFERING psychology at alien-shift peak (curiosity > 0.7) feeds OUROBOROS chaos beyond the leash point \u2014 Berlyne arousal triggering full strange attractor dissolution.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "psychology",
+    "chaos",
+    "VelocityCoupling",
+    "alien"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.46,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.92,
+      "ofr_filterEnvAmt": 0.78,
+      "ofr_lfo1Rate": 0.25,
+      "ofr_lfo1Depth": 0.45,
+      "ofr_macroCharacter": 0.75,
+      "ofr_macroMovement": 0.88,
+      "ofr_macroCoupling": 0.9,
+      "ofr_macroSpace": 0.46
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.18,
+      "ouro_chaos": 0.92,
+      "ouro_filterEnvAmt": 0.78,
+      "ouro_lfo1Rate": 0.28,
+      "ouro_lfo1Depth": 0.45,
+      "ouro_macroCharacter": 0.78,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.9,
+      "ouro_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Offering",
+        "engineB": "Ouroboros",
+        "type": "VelocityCoupling",
+        "amount": 0.93
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.77,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.9,
+    "SPACE": 0.46
+  }
+}

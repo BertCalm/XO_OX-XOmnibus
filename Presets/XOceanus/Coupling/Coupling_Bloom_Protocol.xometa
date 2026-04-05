@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Bloom Protocol",
+  "mood": "Coupling",
+  "engines": [
+    "Obiont",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBIONT Wolfram CA spatial cosine heavily rewrites OBRIX reef ecology \u2014 1D automaton dictating reef structure, rule 110 as biological architect.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "automata",
+    "ecological",
+    "ChaosInject",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.46,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.5,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_evolutionRate": 0.78,
+      "obnt_filterEnvAmt": 0.65,
+      "obnt_lfo1Rate": 0.2,
+      "obnt_lfo1Depth": 0.38,
+      "obnt_macroCharacter": 0.64,
+      "obnt_macroMovement": 0.72,
+      "obnt_macroCoupling": 0.78,
+      "obnt_macroSpace": 0.5
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.68,
+      "obrix_filterEnvAmt": 0.62,
+      "obrix_lfo1Rate": 0.17,
+      "obrix_lfo1Depth": 0.35,
+      "obrix_macroCharacter": 0.62,
+      "obrix_macroMovement": 0.68,
+      "obrix_macroCoupling": 0.75,
+      "obrix_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obiont",
+        "engineB": "Obrix",
+        "type": "ChaosInject",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.77,
+    "SPACE": 0.5
+  }
+}

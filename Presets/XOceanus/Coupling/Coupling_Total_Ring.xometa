@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Total Ring",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC chromatophore and OUROBOROS attractor in extreme ring modulation \u2014 ocean surface and mathematical void colliding, biology and chaos in complete resonance.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "ocean",
+    "chaos",
+    "AudioToRing",
+    "RingMod",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.44,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.52,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.88,
+      "ocean_filterEnvAmt": 0.78,
+      "ocean_lfo1Rate": 0.22,
+      "ocean_lfo1Depth": 0.42,
+      "ocean_macroCharacter": 0.78,
+      "ocean_macroMovement": 0.88,
+      "ocean_macroCoupling": 0.9,
+      "ocean_macroSpace": 0.52
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.18,
+      "ouro_filterEnvAmt": 0.78,
+      "ouro_lfo1Rate": 0.28,
+      "ouro_lfo1Depth": 0.45,
+      "ouro_macroCharacter": 0.78,
+      "ouro_macroMovement": 0.88,
+      "ouro_macroCoupling": 0.9,
+      "ouro_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ouroboros",
+        "type": "AudioToRing",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oceanic",
+        "type": "RingMod",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.9,
+    "SPACE": 0.52
+  }
+}

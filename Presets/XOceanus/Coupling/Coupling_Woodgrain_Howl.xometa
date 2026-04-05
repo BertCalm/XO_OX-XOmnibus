@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Woodgrain Howl",
+  "mood": "Coupling",
+  "engines": [
+    "Oaken",
+    "Ogre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OAKEN aged wood resonance heavily drives OGRE sub frequency coloration \u2014 acoustic wood physics overloading sub oscillator character, age as sub-bass.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "acoustic",
+    "sub",
+    "EnvToDecay",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.62,
+    "movement": 0.62,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_stringAge": 0.78,
+      "oaken_filterEnvAmt": 0.65,
+      "oaken_lfo1Rate": 0.13,
+      "oaken_lfo1Depth": 0.32,
+      "oaken_macroCharacter": 0.64,
+      "oaken_macroMovement": 0.62,
+      "oaken_macroCoupling": 0.75,
+      "oaken_macroSpace": 0.42
+    },
+    "Ogre": {
+      "ogre_subFreq": 0.72,
+      "ogre_filterEnvAmt": 0.62,
+      "ogre_lfo1Rate": 0.1,
+      "ogre_lfo1Depth": 0.28,
+      "ogre_macroCharacter": 0.62,
+      "ogre_macroMovement": 0.58,
+      "ogre_macroCoupling": 0.72,
+      "ogre_macroSpace": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oaken",
+        "engineB": "Ogre",
+        "type": "EnvToDecay",
+        "amount": 0.76
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.74,
+    "SPACE": 0.41
+  }
+}

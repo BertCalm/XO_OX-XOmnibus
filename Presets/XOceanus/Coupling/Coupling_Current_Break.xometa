@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Current Break",
+  "mood": "Coupling",
+  "engines": [
+    "Overflow",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERFLOW deep current speed heavily modulates OCEANIC chromatophore response \u2014 fast current triggering color change, fluid dynamics as bioluminescent trigger.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "current",
+    "bioluminescent",
+    "FilterToFilter",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.46,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.58,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_currentSpeed": 0.78,
+      "flow_filterEnvAmt": 0.65,
+      "flow_lfo1Rate": 0.17,
+      "flow_lfo1Depth": 0.35,
+      "flow_macroCharacter": 0.64,
+      "flow_macroMovement": 0.72,
+      "flow_macroCoupling": 0.75,
+      "flow_macroSpace": 0.58
+    },
+    "Oceanic": {
+      "ocean_separation": 0.68,
+      "ocean_filterEnvAmt": 0.62,
+      "ocean_lfo1Rate": 0.16,
+      "ocean_lfo1Depth": 0.32,
+      "ocean_macroCharacter": 0.62,
+      "ocean_macroMovement": 0.68,
+      "ocean_macroCoupling": 0.72,
+      "ocean_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overflow",
+        "engineB": "Oceanic",
+        "type": "FilterToFilter",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.74,
+    "SPACE": 0.58
+  }
+}

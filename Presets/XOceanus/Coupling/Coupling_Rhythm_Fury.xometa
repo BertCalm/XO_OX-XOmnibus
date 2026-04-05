@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Rhythm Fury",
+  "mood": "Coupling",
+  "engines": [
+    "Ostinato",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSTINATO world rhythm dominantly gates ONSET transient force \u2014 ethnomusicological patterns fully controlling percussion attack, ritual as percussion.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "rhythm",
+    "percussion",
+    "RhythmToBlend",
+    "cultural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.8,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_macroGather": 0.82,
+      "osti_filterEnvAmt": 0.68,
+      "osti_lfo1Rate": 0.25,
+      "osti_lfo1Depth": 0.38,
+      "osti_macroCharacter": 0.68,
+      "osti_macroMovement": 0.8,
+      "osti_macroCoupling": 0.8,
+      "osti_macroSpace": 0.4
+    },
+    "Onset": {
+      "perc_macro_punch": 0.78,
+      "perc_macro_mutate": 0.65,
+      "perc_macro_machine": 0.62,
+      "perc_macro_space": 0.4,
+      "perc_filterEnvAmt": 0.68,
+      "perc_lfo1Rate": 0.22,
+      "perc_lfo1Depth": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ostinato",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.8,
+    "SPACE": 0.4
+  }
+}

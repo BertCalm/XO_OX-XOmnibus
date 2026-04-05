@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Topology Burn",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE torus knot routing burns deep into OBRIX ecological synthesis \u2014 topological paths rewriting the reef ecology at the source layer.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "topology",
+    "ecological",
+    "KnotTopology",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.68,
+    "density": 0.68,
+    "space": 0.5,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.78,
+      "weave_filterEnvAmt": 0.65,
+      "weave_lfo1Rate": 0.18,
+      "weave_lfo1Depth": 0.35,
+      "weave_macroCharacter": 0.64,
+      "weave_macroMovement": 0.7,
+      "weave_macroCoupling": 0.75,
+      "weave_macroSpace": 0.5
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.68,
+      "obrix_filterEnvAmt": 0.62,
+      "obrix_lfo1Rate": 0.17,
+      "obrix_lfo1Depth": 0.35,
+      "obrix_macroCharacter": 0.62,
+      "obrix_macroMovement": 0.68,
+      "obrix_macroCoupling": 0.72,
+      "obrix_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Obrix",
+        "type": "KnotTopology",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.69,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

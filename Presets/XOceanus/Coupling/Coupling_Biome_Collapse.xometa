@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Biome Collapse",
+  "mood": "Coupling",
+  "engines": [
+    "Ocelot",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCELOT biome crossfade data heavily feeds OBRIX habitat type parameters \u2014 savanna becoming coral reef, habitat logic rewriting synthesis ecology.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "biome",
+    "ecological",
+    "EnvToMorph",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.68,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0.78,
+      "ocelot_filterEnvAmt": 0.65,
+      "ocelot_lfo1Rate": 0.17,
+      "ocelot_lfo1Depth": 0.35,
+      "ocelot_macroCharacter": 0.64,
+      "ocelot_macroMovement": 0.68,
+      "ocelot_macroCoupling": 0.75,
+      "ocelot_macroSpace": 0.48
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.68,
+      "obrix_filterEnvAmt": 0.62,
+      "obrix_lfo1Rate": 0.16,
+      "obrix_lfo1Depth": 0.32,
+      "obrix_macroCharacter": 0.62,
+      "obrix_macroMovement": 0.65,
+      "obrix_macroCoupling": 0.72,
+      "obrix_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obrix",
+        "type": "EnvToMorph",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.74,
+    "SPACE": 0.48
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "Metabolic Crisis",
+  "mood": "Coupling",
+  "engines": [
+    "Organon",
+    "Osmosis",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three-engine extreme: ORGANON free energy drives OSMOSIS permeability to maximum which feeds OBRIX ecology \u2014 biological system in metabolic crisis, every membrane open, every brick alive.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "metabolic",
+    "membrane",
+    "ecological",
+    "EnvelopeFollow",
+    "AudioToFM",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.88,
+    "space": 0.52,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.92,
+      "organon_filterEnvAmt": 0.78,
+      "organon_lfo1Rate": 0.24,
+      "organon_lfo1Depth": 0.42,
+      "organon_macroCharacter": 0.78,
+      "organon_macroMovement": 0.88,
+      "organon_macroCoupling": 0.9,
+      "organon_macroSpace": 0.52
+    },
+    "Osmosis": {
+      "osmo_permeability": 0.92,
+      "osmo_filterEnvAmt": 0.75,
+      "osmo_lfo1Rate": 0.22,
+      "osmo_lfo1Depth": 0.42,
+      "osmo_macroCharacter": 0.75,
+      "osmo_macroMovement": 0.86,
+      "osmo_macroCoupling": 0.88,
+      "osmo_macroSpace": 0.52
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.88,
+      "obrix_filterEnvAmt": 0.75,
+      "obrix_lfo1Rate": 0.22,
+      "obrix_lfo1Depth": 0.42,
+      "obrix_macroCharacter": 0.72,
+      "obrix_macroMovement": 0.85,
+      "obrix_macroCoupling": 0.88,
+      "obrix_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osmosis",
+        "type": "EnvelopeFollow",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Osmosis",
+        "engineB": "Obrix",
+        "type": "AudioToFM",
+        "amount": 0.85
+      },
+      {
+        "engineA": "Obrix",
+        "engineB": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.89,
+    "SPACE": 0.52
+  }
+}

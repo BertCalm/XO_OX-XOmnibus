@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Rhythm Collapse",
+  "mood": "Coupling",
+  "engines": [
+    "Ostinato",
+    "Offering",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three extreme percussion engines: OSTINATO world rhythm drives OFFERING city chain which drives ONSET transient \u2014 all three rhythm architectures converging at extreme intensity.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "rhythm",
+    "percussion",
+    "cultural",
+    "RhythmToBlend",
+    "VelocityCoupling",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.44,
+    "movement": 0.95,
+    "density": 0.88,
+    "space": 0.38,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_macroGather": 0.92,
+      "osti_filterEnvAmt": 0.78,
+      "osti_lfo1Rate": 0.28,
+      "osti_lfo1Depth": 0.45,
+      "osti_macroCharacter": 0.75,
+      "osti_macroMovement": 0.92,
+      "osti_macroCoupling": 0.9,
+      "osti_macroSpace": 0.38
+    },
+    "Offering": {
+      "ofr_digCuriosity": 0.88,
+      "ofr_filterEnvAmt": 0.75,
+      "ofr_lfo1Rate": 0.25,
+      "ofr_lfo1Depth": 0.42,
+      "ofr_macroCharacter": 0.72,
+      "ofr_macroMovement": 0.88,
+      "ofr_macroCoupling": 0.88,
+      "ofr_macroSpace": 0.38
+    },
+    "Onset": {
+      "perc_macro_punch": 0.88,
+      "perc_macro_mutate": 0.78,
+      "perc_macro_machine": 0.72,
+      "perc_macro_space": 0.38,
+      "perc_filterEnvAmt": 0.75,
+      "perc_lfo1Rate": 0.28,
+      "perc_lfo1Depth": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ostinato",
+        "engineB": "Offering",
+        "type": "RhythmToBlend",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Offering",
+        "engineB": "Onset",
+        "type": "VelocityCoupling",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Ostinato",
+        "type": "AmpToChoke",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.89,
+    "SPACE": 0.38
+  }
+}

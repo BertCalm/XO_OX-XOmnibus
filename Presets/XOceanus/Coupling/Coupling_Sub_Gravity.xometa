@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Sub Gravity",
+  "mood": "Coupling",
+  "engines": [
+    "Ogre",
+    "Omega"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OGRE sub bass dominantly modulates OMEGA synth bass filter and pitch \u2014 gravitational coupling between two bass giants, sub physics bending synth bass.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "sub",
+    "bass",
+    "AmpToFilter",
+    "gravitational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.72,
+    "space": 0.38,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_subFreq": 0.72,
+      "ogre_filterEnvAmt": 0.65,
+      "ogre_lfo1Rate": 0.1,
+      "ogre_lfo1Depth": 0.3,
+      "ogre_macroCharacter": 0.62,
+      "ogre_macroMovement": 0.58,
+      "ogre_macroCoupling": 0.72,
+      "ogre_macroSpace": 0.38
+    },
+    "Omega": {
+      "omega_synthBass": 0.72,
+      "omega_filterEnvAmt": 0.62,
+      "omega_lfo1Rate": 0.11,
+      "omega_lfo1Depth": 0.28,
+      "omega_macroCharacter": 0.6,
+      "omega_macroMovement": 0.56,
+      "omega_macroCoupling": 0.7,
+      "omega_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ogre",
+        "engineB": "Omega",
+        "type": "AmpToFilter",
+        "amount": 0.7
+      },
+      {
+        "engineA": "Omega",
+        "engineB": "Ogre",
+        "type": "AmpToPitch",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.71,
+    "SPACE": 0.38
+  }
+}

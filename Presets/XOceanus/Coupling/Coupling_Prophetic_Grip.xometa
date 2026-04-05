@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Prophetic Grip",
+  "mood": "Coupling",
+  "engines": [
+    "Oracle",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE stochastic breakpoints drive OVERBITE bite mechanics \u2014 prophecy physically controlling the grip tension, foresight expressed as bite force.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "stochastic",
+    "physical",
+    "EnvToMorph",
+    "tension"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.44,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.44,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.75,
+      "oracle_filterEnvAmt": 0.65,
+      "oracle_lfo1Rate": 0.18,
+      "oracle_lfo1Depth": 0.35,
+      "oracle_macroCharacter": 0.64,
+      "oracle_macroMovement": 0.68,
+      "oracle_macroCoupling": 0.75,
+      "oracle_macroSpace": 0.44
+    },
+    "Overbite": {
+      "poss_macroBelly": 0.62,
+      "poss_macroBite": 0.78,
+      "poss_macroPlayDead": 0.45,
+      "poss_macroScurry": 0.56,
+      "poss_filterEnvAmt": 0.65,
+      "poss_lfo1Rate": 0.16,
+      "poss_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overbite",
+        "type": "EnvToMorph",
+        "amount": 0.76
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.75,
+    "SPACE": 0.44
+  }
+}

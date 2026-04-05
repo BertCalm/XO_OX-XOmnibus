@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Flood",
+  "mood": "Coupling",
+  "engines": [
+    "Oblique",
+    "Ouroboros",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme three-engine light vortex: OPTIC pulse drives OBLIQUE prism which drives OUROBOROS chaos \u2014 light becoming refraction becoming chaos, a photon feedback loop.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "visual",
+    "prismatic",
+    "chaos",
+    "AudioToRing",
+    "ChaosInject",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.4,
+    "movement": 0.88,
+    "density": 0.78,
+    "space": 0.52,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.92,
+      "optic_filterEnvAmt": 0.78,
+      "optic_lfo1Rate": 0.3,
+      "optic_lfo1Depth": 0.45,
+      "optic_macroCharacter": 0.78,
+      "optic_macroMovement": 0.9,
+      "optic_macroCoupling": 0.9,
+      "optic_macroSpace": 0.52
+    },
+    "Oblique": {
+      "oblq_prismColor": 0.88,
+      "oblq_filterEnvAmt": 0.75,
+      "oblq_lfo1Rate": 0.24,
+      "oblq_lfo1Depth": 0.42,
+      "oblq_macroCharacter": 0.75,
+      "oblq_macroMovement": 0.88,
+      "oblq_macroCoupling": 0.9,
+      "oblq_macroSpace": 0.52
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.18,
+      "ouro_filterEnvAmt": 0.78,
+      "ouro_lfo1Rate": 0.28,
+      "ouro_lfo1Depth": 0.42,
+      "ouro_macroCharacter": 0.75,
+      "ouro_macroMovement": 0.88,
+      "ouro_macroCoupling": 0.88,
+      "ouro_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblique",
+        "type": "AudioToRing",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "ChaosInject",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "LFOToPitch",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.76,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.9,
+    "SPACE": 0.52
+  }
+}

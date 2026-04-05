@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Aria Dominance",
+  "mood": "Coupling",
+  "engines": [
+    "Opera",
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPERA conductor arc dominantly reshapes OUIE HAMMER axis balance \u2014 the dramatic arc forcing the duophonic voice toward LOVE convergence.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "operatic",
+    "duophonic",
+    "EnvToMorph",
+    "dramatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.56,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.78,
+      "opera_filterEnvAmt": 0.65,
+      "opera_lfo1Rate": 0.15,
+      "opera_lfo1Depth": 0.35,
+      "opera_macroCharacter": 0.65,
+      "opera_macroMovement": 0.68,
+      "opera_macroCoupling": 0.75,
+      "opera_macroSpace": 0.5
+    },
+    "Ouie": {
+      "ouie_macroHammer": 0.68,
+      "ouie_filterEnvAmt": 0.62,
+      "ouie_lfo1Rate": 0.16,
+      "ouie_lfo1Depth": 0.32,
+      "ouie_macroCharacter": 0.62,
+      "ouie_macroMovement": 0.65,
+      "ouie_macroCoupling": 0.72,
+      "ouie_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opera",
+        "engineB": "Ouie",
+        "type": "EnvToMorph",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

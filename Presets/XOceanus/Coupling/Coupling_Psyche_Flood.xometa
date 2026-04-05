@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Psyche Flood",
+  "mood": "Coupling",
+  "engines": [
+    "Offering",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OFFERING psychology-derived curiosity peak floods OPAL grain density to maximum \u2014 Berlyne arousal flooding granular cloud, peak excitement as grain saturation.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "psychology",
+    "granular",
+    "VelocityCoupling",
+    "emotional"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.46,
+    "movement": 0.68,
+    "density": 0.72,
+    "space": 0.46,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.78,
+      "ofr_filterEnvAmt": 0.65,
+      "ofr_lfo1Rate": 0.2,
+      "ofr_lfo1Depth": 0.38,
+      "ofr_macroCharacter": 0.65,
+      "ofr_macroMovement": 0.72,
+      "ofr_macroCoupling": 0.75,
+      "ofr_macroSpace": 0.46
+    },
+    "Opal": {
+      "opal_grainSize": 0.68,
+      "opal_filterEnvAmt": 0.62,
+      "opal_lfo1Rate": 0.16,
+      "opal_lfo1Depth": 0.35,
+      "opal_macroCharacter": 0.62,
+      "opal_macroMovement": 0.65,
+      "opal_macroCoupling": 0.72,
+      "opal_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Offering",
+        "engineB": "Opal",
+        "type": "VelocityCoupling",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.69,
+    "COUPLING": 0.74,
+    "SPACE": 0.48
+  }
+}

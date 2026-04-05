@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Heat",
+  "mood": "Coupling",
+  "engines": [
+    "Oracle",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE stochastic probability floods OBESE saturation circuits \u2014 randomness generating heat, prophecy as the thermal source for distortion.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "stochastic",
+    "saturation",
+    "ChaosInject",
+    "random"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.56,
+    "movement": 0.68,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.78,
+      "oracle_filterEnvAmt": 0.65,
+      "oracle_lfo1Rate": 0.18,
+      "oracle_lfo1Depth": 0.35,
+      "oracle_macroCharacter": 0.64,
+      "oracle_macroMovement": 0.7,
+      "oracle_macroCoupling": 0.75,
+      "oracle_macroSpace": 0.4
+    },
+    "Obese": {
+      "fat_macroMojo": 0.78,
+      "fat_macroGrit": 0.75,
+      "fat_macroSize": 0.65,
+      "fat_macroCrush": 0.7,
+      "fat_filterEnvAmt": 0.65,
+      "fat_lfo1Rate": 0.18,
+      "fat_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obese",
+        "type": "ChaosInject",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.71,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.75,
+    "SPACE": 0.4
+  }
+}

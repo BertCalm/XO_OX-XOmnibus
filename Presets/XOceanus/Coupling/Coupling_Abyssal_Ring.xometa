@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Ring",
+  "mood": "Coupling",
+  "engines": [
+    "OceanDeep",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANDEEP extreme pressure drives OXBOW golden phase entanglement deeply \u2014 trench physics dominating reverb space, the abyss swallowing resonance.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "depth",
+    "reverb",
+    "AmpToFilter",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroPressure": 0.78,
+      "deep_filterEnvAmt": 0.65,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.32,
+      "deep_macroCharacter": 0.62,
+      "deep_macroMovement": 0.6,
+      "deep_macroCoupling": 0.72,
+      "deep_macroSpace": 0.68
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.75,
+      "oxb_filterEnvAmt": 0.62,
+      "oxb_lfo1Rate": 0.11,
+      "oxb_lfo1Depth": 0.3,
+      "oxb_macroCharacter": 0.6,
+      "oxb_macroMovement": 0.58,
+      "oxb_macroCoupling": 0.7,
+      "oxb_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Oxbow",
+        "type": "AmpToFilter",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.71,
+    "SPACE": 0.7
+  }
+}

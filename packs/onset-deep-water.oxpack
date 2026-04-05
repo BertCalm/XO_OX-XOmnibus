@@ -1,0 +1,36 @@
+# XO_OX Pack Manifest — Deep Water (ONSET)
+# Curated collection of deep, atmospheric ONSET presets.
+# Dave Smith amendment (QDD Ghost Council, 2026-04-04):
+# Editorial intent over auto-split — each pack is a named artistic decision.
+#
+# Format: .oxpack YAML (read by Tools/xpn_pack_manifest.py)
+# Usage:  python3 Tools/xpn_pack_manifest.py packs/onset-deep-water.oxpack
+
+name: "Deep Water"
+engine: "Onset"
+tier: "TRENCH"
+description: "Atmospheric percussion — oceanic depths, resonant spaces, pressure as timbre"
+mood: "Deep"
+tags:
+  - "atmospheric"
+  - "deep"
+  - "resonant"
+  - "submerged"
+max_size_gb: 1.6
+
+presets:
+  - "Abyssal Pulse"
+  - "Coral Resonance"
+  - "Deep Current"
+  - "Hadal Echo"
+  - "Midnight Reef"
+  - "Ocean Floor"
+  - "Pressure Wave"
+  - "Rift Tone"
+  - "Subduction"
+  - "Tidal Memory"
+  - "Twilight Zone"
+  - "Undertow"
+  - "Volcanic Vent"
+  - "Water Column"
+  - "Xenophyophore"

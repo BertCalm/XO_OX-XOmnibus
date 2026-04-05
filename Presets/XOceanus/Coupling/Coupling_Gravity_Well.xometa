@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "Gravity Well",
+  "mood": "Coupling",
+  "engines": [
+    "Ogre",
+    "Omega",
+    "Olate"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three bass extreme: OGRE sub gravity bends OMEGA synth bass which bends OLATE fretless glide \u2014 all three bass logics in a mutual gravitational collapse.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "sub",
+    "bass",
+    "fretless",
+    "TriangularCoupling",
+    "gravitational",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.62,
+    "movement": 0.82,
+    "density": 0.92,
+    "space": 0.38,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_subFreq": 0.92,
+      "ogre_filterEnvAmt": 0.82,
+      "ogre_lfo1Rate": 0.12,
+      "ogre_lfo1Depth": 0.38,
+      "ogre_macroCharacter": 0.78,
+      "ogre_macroMovement": 0.78,
+      "ogre_macroCoupling": 0.9,
+      "ogre_macroSpace": 0.38
+    },
+    "Omega": {
+      "omega_synthBass": 0.9,
+      "omega_filterEnvAmt": 0.78,
+      "omega_lfo1Rate": 0.13,
+      "omega_lfo1Depth": 0.38,
+      "omega_macroCharacter": 0.75,
+      "omega_macroMovement": 0.78,
+      "omega_macroCoupling": 0.9,
+      "omega_macroSpace": 0.38
+    },
+    "Olate": {
+      "olate_fretlessGlide": 0.9,
+      "olate_filterEnvAmt": 0.78,
+      "olate_lfo1Rate": 0.17,
+      "olate_lfo1Depth": 0.42,
+      "olate_macroCharacter": 0.75,
+      "olate_macroMovement": 0.82,
+      "olate_macroCoupling": 0.9,
+      "olate_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ogre",
+        "engineB": "Omega",
+        "type": "TriangularCoupling",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Omega",
+        "engineB": "Olate",
+        "type": "PitchToPitch",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Olate",
+        "engineB": "Ogre",
+        "type": "AmpToPitch",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.76,
+    "MOVEMENT": 0.79,
+    "COUPLING": 0.9,
+    "SPACE": 0.38
+  }
+}

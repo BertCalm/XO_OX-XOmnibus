@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Organ Pulse",
+  "mood": "Coupling",
+  "engines": [
+    "Organon",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANON variational metabolism heavily drives OUROBOROS strange attractor leash \u2014 biological free energy becoming the force that controls chaos.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "metabolic",
+    "chaos",
+    "EnvToMorph",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.46,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.78,
+      "organon_filterEnvAmt": 0.65,
+      "organon_lfo1Rate": 0.17,
+      "organon_lfo1Depth": 0.35,
+      "organon_macroCharacter": 0.64,
+      "organon_macroMovement": 0.7,
+      "organon_macroCoupling": 0.75,
+      "organon_macroSpace": 0.5
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.68,
+      "ouro_leash": 0.32,
+      "ouro_filterEnvAmt": 0.62,
+      "ouro_lfo1Rate": 0.22,
+      "ouro_lfo1Depth": 0.35,
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroMovement": 0.7,
+      "ouro_macroCoupling": 0.72,
+      "ouro_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ouroboros",
+        "type": "EnvToMorph",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

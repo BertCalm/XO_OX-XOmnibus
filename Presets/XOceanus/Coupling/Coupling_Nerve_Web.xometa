@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Nerve Web",
+  "mood": "Coupling",
+  "engines": [
+    "Oxytocin",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXYTOCIN synapse depth heavily modulates ORGANON metabolic rate \u2014 bonding chemistry directly controlling the speed of biological energy processing.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "synapse",
+    "metabolic",
+    "EnvToDecay",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.58,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.78,
+      "oxy_filterEnvAmt": 0.65,
+      "oxy_lfo1Rate": 0.15,
+      "oxy_lfo1Depth": 0.35,
+      "oxy_macroCharacter": 0.64,
+      "oxy_macroMovement": 0.65,
+      "oxy_macroCoupling": 0.75,
+      "oxy_macroSpace": 0.5
+    },
+    "Organon": {
+      "organon_metabolicRate": 0.72,
+      "organon_filterEnvAmt": 0.62,
+      "organon_lfo1Rate": 0.16,
+      "organon_lfo1Depth": 0.32,
+      "organon_macroCharacter": 0.62,
+      "organon_macroMovement": 0.64,
+      "organon_macroCoupling": 0.72,
+      "organon_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Organon",
+        "type": "EnvToDecay",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.74,
+    "SPACE": 0.5
+  }
+}

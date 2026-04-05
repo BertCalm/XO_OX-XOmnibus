@@ -16,6 +16,8 @@
 #   python-rtmidi       — live preview tools (real-time MIDI I/O)
 #   sounddevice         — audio preview during export (audio playback)
 #   pyloudnorm          — XPN loudness normalization step
+#   pyyaml              — xpn_pack_manifest.py (.oxpack YAML manifest loading)
+#                         Falls back to a minimal built-in parser when absent.
 
 # Exact version pins — update by running: pip-compile --generate-hashes requirements.in
 # These match the CI-tested versions in .github/workflows/xpn-pipeline-ci.yml

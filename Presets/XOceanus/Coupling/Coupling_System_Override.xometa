@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "System Override",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Organism",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three-engine extreme: ORBWEAVE topology rewrites ORGANISM rules which rewrites OBRIX ecology \u2014 a cascade of biological rewriting, three living systems each overriding the next.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "topology",
+    "cellular",
+    "ecological",
+    "KnotTopology",
+    "ChaosInject",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.88,
+    "density": 0.88,
+    "space": 0.5,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.9,
+      "weave_filterEnvAmt": 0.78,
+      "weave_lfo1Rate": 0.24,
+      "weave_lfo1Depth": 0.42,
+      "weave_macroCharacter": 0.75,
+      "weave_macroMovement": 0.88,
+      "weave_macroCoupling": 0.9,
+      "weave_macroSpace": 0.5
+    },
+    "Organism": {
+      "org_ruleSet": 0.88,
+      "org_filterEnvAmt": 0.75,
+      "org_lfo1Rate": 0.24,
+      "org_lfo1Depth": 0.42,
+      "org_macroCharacter": 0.72,
+      "org_macroMovement": 0.88,
+      "org_macroCoupling": 0.88,
+      "org_macroSpace": 0.5
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.85,
+      "obrix_filterEnvAmt": 0.75,
+      "obrix_lfo1Rate": 0.22,
+      "obrix_lfo1Depth": 0.42,
+      "obrix_macroCharacter": 0.72,
+      "obrix_macroMovement": 0.85,
+      "obrix_macroCoupling": 0.88,
+      "obrix_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Organism",
+        "type": "KnotTopology",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Organism",
+        "engineB": "Obrix",
+        "type": "ChaosInject",
+        "amount": 0.85
+      },
+      {
+        "engineA": "Obrix",
+        "engineB": "Orbweave",
+        "type": "AudioToFM",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.87,
+    "COUPLING": 0.89,
+    "SPACE": 0.5
+  }
+}

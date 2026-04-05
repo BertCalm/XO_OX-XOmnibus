@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Possessed Grain",
+  "mood": "Coupling",
+  "engines": [
+    "Overbite",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERBITE bite envelope dominantly controls OPAL grain size expansion \u2014 possessive tension physically expanding granular cloud, bite as grain growth.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "physical",
+    "granular",
+    "EnvToDecay",
+    "tension"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.62,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroBelly": 0.62,
+      "poss_macroBite": 0.78,
+      "poss_macroPlayDead": 0.45,
+      "poss_macroScurry": 0.58,
+      "poss_filterEnvAmt": 0.65,
+      "poss_lfo1Rate": 0.16,
+      "poss_lfo1Depth": 0.35
+    },
+    "Opal": {
+      "opal_grainSize": 0.68,
+      "opal_filterEnvAmt": 0.62,
+      "opal_lfo1Rate": 0.15,
+      "opal_lfo1Depth": 0.32,
+      "opal_macroCharacter": 0.62,
+      "opal_macroMovement": 0.62,
+      "opal_macroCoupling": 0.72,
+      "opal_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Opal",
+        "type": "EnvToDecay",
+        "amount": 0.76
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.72,
+    "SPACE": 0.51
+  }
+}

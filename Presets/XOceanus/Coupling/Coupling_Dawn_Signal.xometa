@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Signal",
+  "mood": "Coupling",
+  "engines": [
+    "Opaline",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPALINE prepared string disruption heavily reshapes OBLONG filter sweep \u2014 prepared piano physics dominating the amber filter character.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "prepared",
+    "filter",
+    "FilterToFilter",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.56,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_preparedDensity": 0.78,
+      "opal2_filterEnvAmt": 0.65,
+      "opal2_lfo1Rate": 0.16,
+      "opal2_lfo1Depth": 0.35,
+      "opal2_macroCharacter": 0.64,
+      "opal2_macroMovement": 0.65,
+      "opal2_macroCoupling": 0.75,
+      "opal2_macroSpace": 0.48
+    },
+    "Oblong": {
+      "bob_fltCutoff": 0.72,
+      "bob_fltReso": 0.38,
+      "bob_filterEnvAmt": 0.62,
+      "bob_lfo1Rate": 0.15,
+      "bob_lfo1Depth": 0.32,
+      "bob_macroCharacter": 0.62,
+      "bob_macroMovement": 0.62,
+      "bob_macroCoupling": 0.72,
+      "bob_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opaline",
+        "engineB": "Oblong",
+        "type": "FilterToFilter",
+        "amount": 0.76
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.64,
+    "COUPLING": 0.74,
+    "SPACE": 0.48
+  }
+}

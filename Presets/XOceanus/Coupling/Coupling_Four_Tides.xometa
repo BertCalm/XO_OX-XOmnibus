@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "Four Tides",
+  "mood": "Coupling",
+  "engines": [
+    "OceanDeep",
+    "Overwash",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme oceanic three-engine: OVERWASH tide drives OXBOW phase entanglement which drives OCEANDEEP pressure \u2014 every wave becoming reverb becoming abyss.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "tide",
+    "reverb",
+    "depth",
+    "TriangularCoupling",
+    "AmpToFilter",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.85,
+    "space": 0.82,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_tideDepth": 0.92,
+      "wash_filterEnvAmt": 0.78,
+      "wash_lfo1Rate": 0.2,
+      "wash_lfo1Depth": 0.42,
+      "wash_macroCharacter": 0.75,
+      "wash_macroMovement": 0.88,
+      "wash_macroCoupling": 0.9,
+      "wash_macroSpace": 0.78
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.9,
+      "oxb_filterEnvAmt": 0.75,
+      "oxb_lfo1Rate": 0.18,
+      "oxb_lfo1Depth": 0.42,
+      "oxb_macroCharacter": 0.72,
+      "oxb_macroMovement": 0.85,
+      "oxb_macroCoupling": 0.88,
+      "oxb_macroSpace": 0.82
+    },
+    "OceanDeep": {
+      "deep_macroPressure": 0.92,
+      "deep_filterEnvAmt": 0.78,
+      "deep_lfo1Rate": 0.14,
+      "deep_lfo1Depth": 0.38,
+      "deep_macroCharacter": 0.72,
+      "deep_macroMovement": 0.82,
+      "deep_macroCoupling": 0.88,
+      "deep_macroSpace": 0.84
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overwash",
+        "engineB": "Oxbow",
+        "type": "TriangularCoupling",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Oxbow",
+        "engineB": "OceanDeep",
+        "type": "FilterToFilter",
+        "amount": 0.88
+      },
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Overwash",
+        "type": "AmpToFilter",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.89,
+    "SPACE": 0.81
+  }
+}

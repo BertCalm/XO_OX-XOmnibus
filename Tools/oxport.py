@@ -2203,15 +2203,484 @@ def _check_disk_space(output_dir: Path, estimated_bytes: int, margin: float = 1.
     return True
 
 
+# ---------------------------------------------------------------------------
+# Build log helpers (Feature #734 — --resume support)
+# ---------------------------------------------------------------------------
+
+def _update_build_log(log_path: Path, stage_name: str, status: str = "completed") -> None:
+    """Append a completed stage to build.log.json after each stage finishes.
+
+    Idempotent: calling with the same stage_name multiple times does not
+    produce duplicate entries.  Also writes a ``last_updated`` timestamp so
+    callers can see when the last successful stage completed.
+    """
+    try:
+        if log_path.exists():
+            with open(log_path, encoding='utf-8', errors='replace') as _f:
+                log = json.load(_f)
+        else:
+            log = {"completed_stages": []}
+
+        if status == "completed" and stage_name not in log.get("completed_stages", []):
+            log.setdefault("completed_stages", []).append(stage_name)
+
+        log["last_updated"] = datetime.now().isoformat()
+
+        with open(log_path, "w", encoding='utf-8') as _f:
+            json.dump(log, _f, indent=2)
+    except Exception:
+        pass  # build log is best-effort — never abort the pipeline for a log write failure
+
+
+def _load_resume_state(log_path: Path) -> list[str]:
+    """Return list of completed stage names from an existing build.log.json.
+
+    Returns an empty list if the file does not exist or cannot be parsed.
+    """
+    if not log_path.exists():
+        return []
+    try:
+        with open(log_path, encoding='utf-8', errors='replace') as _f:
+            log = json.load(_f)
+        return log.get("completed_stages", [])
+    except Exception:
+        return []
+
+
+# ---------------------------------------------------------------------------
+# Doctor — environment validation (QDD issue #736)
+# ---------------------------------------------------------------------------
+
+_DOCTOR_REQUIRED_MODULES = [
+    ("sounddevice", "sounddevice"),
+    ("mido",        "mido"),
+    ("numpy",       "numpy"),
+    ("json",        "json"),
+]
+
+# XPN file-size guard: MPC hardware chokes on .xpn archives above ~2 GB.
+_XPN_SIZE_LIMIT_BYTES = 2_147_483_648  # 2 GiB
+
+# Bytes/sample estimate used for disk/XPN-size checks (24-bit stereo).
+_BYTES_PER_SAMPLE_24BIT_STEREO = 6   # 3 bytes × 2 channels
+
+
+def _doctor_line(status: str, message: str) -> str:
+    """Format a single doctor check line."""
+    icons = {"PASS": "PASS", "FAIL": "FAIL", "WARN": "WARN", "SKIP": "SKIP"}
+    tag = icons.get(status, status)
+    return f"  │  [{tag}] {message}"
+
+
+def _quick_doctor_check(args) -> bool:
+    """Lightweight gate run at the start of cmd_build (no smoke test).
+
+    Checks: (1) required Python modules importable, (2) enough disk space.
+    Prints warnings/errors but does NOT abort — returns False if any check
+    fails so the caller can decide whether to proceed.
+
+    Respects ``--skip-doctor`` flag on *args* if present.
+    """
+    if getattr(args, "skip_doctor", False):
+        return True
+
+    all_ok = True
+
+    # --- Python dependencies ---
+    missing_mods = []
+    for mod_name, _ in _DOCTOR_REQUIRED_MODULES:
+        try:
+            __import__(mod_name)
+        except ImportError:
+            missing_mods.append(mod_name)
+
+    if missing_mods:
+        print(f"[DOCTOR] Missing Python modules: {', '.join(missing_mods)}")
+        print(f"         Run: pip install {' '.join(missing_mods)}")
+        all_ok = False
+
+    # --- Disk space (quick estimate from spec if available) ---
+    oxbuild_path = Path(getattr(args, "oxbuild", "") or "")
+    check_dir = Path.home()
+    if oxbuild_path.exists():
+        output_dir = Path(args.output_dir) if getattr(args, "output_dir", None) else REPO_ROOT / "builds"
+        check_dir = output_dir
+    try:
+        free_bytes = shutil.disk_usage(check_dir).free
+        free_gb = free_bytes / 1_073_741_824
+        if free_gb < 5.0:
+            print(f"[DOCTOR] Low disk space: {free_gb:.1f} GB free on {check_dir}")
+            print(f"         Large renders need 20–100 GB. Free up space before building.")
+            all_ok = False
+    except OSError:
+        pass  # Can't stat — skip silently in quick mode
+
+    return all_ok
+
+
+def cmd_doctor(args) -> int:
+    """oxport doctor — validate environment before rendering."""
+    import math as _math
+
+    ci_mode: bool = getattr(args, "ci", False)
+    audio_device_name: str = getattr(args, "audio_device", "BlackHole")
+    midi_port_name: str = getattr(args, "midi_port", "IAC Driver Bus 1")
+    spec_path_raw: str | None = getattr(args, "spec", None)
+
+    pass_count = 0
+    warn_count = 0
+    skip_count = 0
+    fail_count = 0
+    lines: list[str] = []
+
+    def _emit(status: str, msg: str) -> None:
+        nonlocal pass_count, warn_count, skip_count, fail_count
+        lines.append(_doctor_line(status, msg))
+        if status == "PASS":
+            pass_count += 1
+        elif status == "WARN":
+            warn_count += 1
+        elif status == "SKIP":
+            skip_count += 1
+        elif status == "FAIL":
+            fail_count += 1
+
+    def _section(title: str) -> None:
+        lines.append("")
+        lines.append(f"  {title}")
+
+    # ── Print header ─────────────────────────────────────────────────────────
+    print()
+    print("  ╔══════════════════════════════════════")
+    print("    OXPORT DOCTOR")
+    print("  ╔══════════════════════════════════════")
+
+    # ── 1. Python Dependencies ───────────────────────────────────────────────
+    _section("Python Dependencies")
+    all_modules_ok = True
+    for mod_name, import_as in _DOCTOR_REQUIRED_MODULES:
+        try:
+            mod = __import__(mod_name)
+            # Prefer __version__; fall back to version attribute only if it's a string.
+            _v = getattr(mod, "__version__", None)
+            if _v is None:
+                _candidate = getattr(mod, "version", None)
+                if isinstance(_candidate, str):
+                    _v = _candidate
+            ver_str = f" {_v}" if _v else ""
+            _emit("PASS", f"{mod_name}{ver_str}")
+        except ImportError:
+            _emit("FAIL", f"{mod_name} NOT FOUND  (pip install {mod_name})")
+            all_modules_ok = False
+
+    if all_modules_ok:
+        _emit("PASS", "All required modules importable")
+    else:
+        _emit("FAIL", "One or more required modules missing — install before rendering")
+
+    # ── 2. Audio Chain ───────────────────────────────────────────────────────
+    _section("Audio Chain")
+    sd_module = None
+    mido_module = None
+    found_device_idx: int | None = None
+    found_device_sr: int | None = None
+    found_midi_port: bool = False
+
+    if ci_mode:
+        _emit("SKIP", f"Audio device check ({audio_device_name}) — CI mode")
+        _emit("SKIP", f"MIDI port check ({midi_port_name}) — CI mode")
+    else:
+        # Audio device
+        try:
+            import sounddevice as _sd
+            sd_module = _sd
+            devices = _sd.query_devices()
+            needle = audio_device_name.lower()
+            for idx, d in enumerate(devices):
+                if needle in d["name"].lower() and d["max_input_channels"] > 0:
+                    found_device_idx = idx
+                    found_device_sr = int(d["default_samplerate"])
+                    _emit("PASS", f"{audio_device_name} found (device index {idx})")
+                    _emit("PASS", f"Device sample rate: {found_device_sr} Hz")
+                    break
+            else:
+                _emit("FAIL", f"{audio_device_name} NOT found in audio input devices")
+                _emit("INFO", "Available input devices:")
+                for idx, d in enumerate(devices):
+                    if d["max_input_channels"] > 0:
+                        lines.append(f"          [{idx}] {d['name']}")
+        except ImportError:
+            _emit("FAIL", "sounddevice not installed — cannot check audio devices")
+        except Exception as e:
+            _emit("FAIL", f"Audio device query failed: {e}")
+
+        # MIDI port
+        try:
+            import mido as _mido
+            mido_module = _mido
+            ports = _mido.get_output_names()
+            needle = midi_port_name.lower()
+            for p in ports:
+                if needle in p.lower():
+                    found_midi_port = True
+                    _emit("PASS", f"{midi_port_name} found")
+                    break
+            else:
+                _emit("FAIL", f"MIDI port '{midi_port_name}' NOT found")
+                if ports:
+                    lines.append(f"         Available MIDI ports: {', '.join(ports)}")
+                else:
+                    lines.append("         No MIDI output ports found at all")
+        except ImportError:
+            _emit("FAIL", "mido not installed — cannot check MIDI ports")
+        except Exception as e:
+            _emit("FAIL", f"MIDI port query failed: {e}")
+
+    # ── 3. Disk Space ────────────────────────────────────────────────────────
+    _section("Disk Space")
+    check_dir = Path.home()
+    spec_data: dict | None = None
+    spec_path: Path | None = None
+
+    if spec_path_raw:
+        sp = Path(spec_path_raw)
+        if sp.exists():
+            spec_path = sp
+            try:
+                with open(sp, encoding="utf-8", errors="replace") as f:
+                    spec_data = json.load(f)
+                output_dir_for_disk = REPO_ROOT / "builds" / spec_data.get("pack_id", "unknown")
+                check_dir = output_dir_for_disk.parent
+            except Exception:
+                pass
+
+    try:
+        usage = shutil.disk_usage(check_dir)
+        free_gb = usage.free / 1_073_741_824
+        _emit("PASS", f"{free_gb:.1f} GB free on {check_dir}")
+
+        # Estimate disk requirement if spec is available
+        if spec_data:
+            rendering = spec_data.get("rendering", {})
+            sr = rendering.get("sample_rate", 44100)
+            dur_ms = rendering.get("duration_ms", 3000) + rendering.get("release_tail_ms", 500)
+            n_presets = spec_data.get("preset_selection", {}).get("min_presets", 16)
+            try:
+                from xpn_voice_taxonomy import ONSET_VOICES, rr_count as _rr_count
+                from xpn_velocity_standard import NUM_LAYERS
+                n_jobs = n_presets * sum(max(1, _rr_count(v)) for v in ONSET_VOICES) * NUM_LAYERS
+            except ImportError:
+                n_jobs = n_presets * 16 * 4  # rough fallback
+            estimated_bytes = _estimate_disk_usage(n_jobs, dur_ms - 500, 500, sr)
+            needed_gb = estimated_bytes * 1.2 / 1_073_741_824
+            if usage.free >= estimated_bytes * 1.2:
+                _emit("PASS", f"Sufficient for estimated render (~{needed_gb:.1f} GB needed)")
+            else:
+                _emit("FAIL",
+                      f"Insufficient disk: need ~{needed_gb:.1f} GB, only {free_gb:.1f} GB free")
+        else:
+            _emit("PASS", "Sufficient for estimated render (no spec — skipping size estimate)")
+    except OSError as e:
+        _emit("WARN", f"Could not check disk space: {e}")
+
+    # ── 4. Spec Validation ───────────────────────────────────────────────────
+    if spec_data is not None:
+        _section(f"Spec Validation ({spec_path.name if spec_path else 'unknown'})")
+
+        _emit("PASS", "File parses correctly")
+
+        # Required fields
+        required_fields = ["pack_id", "engine", "platform", "archetype"]
+        missing_fields = [k for k in required_fields if k not in spec_data]
+        if missing_fields:
+            _emit("FAIL", f"Missing required fields: {', '.join(missing_fields)}")
+        else:
+            _emit("PASS", f"All required fields present")
+
+        # Tier + slot budget
+        tier_raw = spec_data.get("tier", "DEEP").upper()
+        try:
+            t_cfg = _get_tier_config(tier_raw)
+            max_slots = t_cfg["max_slots"]
+            try:
+                from xpn_voice_taxonomy import ONSET_VOICES, compute_slot_budget
+                from xpn_velocity_standard import NUM_LAYERS
+                slot_budget = compute_slot_budget(ONSET_VOICES, t_cfg["vel_layers"])
+                _emit("PASS", f"Tier: {tier_raw} ({slot_budget}/{max_slots} slots)")
+            except ImportError:
+                _emit("PASS", f"Tier: {tier_raw} (max_slots: {max_slots})")
+        except ValueError as e:
+            _emit("FAIL", str(e))
+
+        # Sample rate vs device
+        sr_spec = spec_data.get("rendering", {}).get("sample_rate")
+        if sr_spec:
+            if found_device_sr is not None:
+                if sr_spec == found_device_sr:
+                    _emit("PASS", f"sample_rate: {sr_spec} matches device")
+                else:
+                    _emit("WARN",
+                          f"sample_rate mismatch: spec={sr_spec}, device={found_device_sr}")
+            else:
+                _emit("SKIP", f"sample_rate: {sr_spec} (device not checked — CI mode or device missing)")
+        else:
+            _emit("WARN", "No sample_rate in rendering block")
+
+        # Preset count
+        n_presets = spec_data.get("preset_selection", {}).get("min_presets")
+        if n_presets is not None:
+            _emit("PASS", f"{n_presets} presets configured")
+        else:
+            _emit("WARN", "preset_selection.min_presets not set")
+
+        # corner_strategy
+        cs = spec_data.get("corner_strategy", "none")
+        if cs in ("none", None, ""):
+            _emit("WARN", "corner_strategy: none (disabled)")
+        else:
+            _emit("PASS", f"corner_strategy: {cs}")
+
+        # voice_map.json existence (if renders dir exists)
+        if spec_path:
+            vm_path = REPO_ROOT / "builds" / spec_data.get("pack_id", "") / "renders" / "voice_map.json"
+            if vm_path.exists():
+                _emit("PASS", f"voice_map.json found ({vm_path.name})")
+            else:
+                _emit("WARN", "voice_map.json not found (will be generated during build)")
+
+    elif spec_path_raw:
+        _section("Spec Validation")
+        _emit("FAIL", f"Spec file not found: {spec_path_raw}")
+
+    # ── 5. Smoke Test ────────────────────────────────────────────────────────
+    _section("Smoke Test")
+    if ci_mode:
+        _emit("SKIP", "Smoke test (--ci mode)")
+    elif found_device_idx is None or not found_midi_port:
+        _emit("SKIP", "Smoke test (audio device or MIDI port unavailable)")
+    else:
+        try:
+            import sounddevice as _sd
+            import mido as _mido
+            import numpy as _np
+
+            sr = found_device_sr or 44100
+            duration_s = 0.3
+            note = 36
+            velocity = 80
+            midi_ch = 0
+
+            # Find exact port name
+            port_names = _mido.get_output_names()
+            exact_port = next(
+                (p for p in port_names if midi_port_name.lower() in p.lower()), None
+            )
+
+            with _mido.open_output(exact_port) as midi_out:
+                # Start recording first
+                recording = _sd.rec(
+                    int(sr * duration_s),
+                    samplerate=sr, channels=2, dtype="float32",
+                    device=found_device_idx,
+                )
+                # Small settle time before note
+                import time as _time_sm
+                _time_sm.sleep(0.02)
+
+                midi_out.send(_mido.Message("note_on",  channel=midi_ch, note=note, velocity=velocity))
+                _emit("PASS", f"Sent MIDI note {note} (kick) at vel={velocity}")
+
+                _time_sm.sleep(duration_s - 0.05)
+                midi_out.send(_mido.Message("note_off", channel=midi_ch, note=note, velocity=0))
+
+                _sd.wait()
+
+            peak = float(_np.max(_np.abs(recording)))
+            peak_db = 20.0 * _math.log10(max(peak, 1e-10))
+            _emit("PASS", f"Recorded {duration_s}s audio, peak: {peak_db:.1f} dBFS")
+
+            if peak > 10 ** (-40.0 / 20.0):          # > -40 dBFS
+                _emit("PASS", "Signal detected — audio chain is live")
+            elif peak < 10 ** (-60.0 / 20.0):         # < -60 dBFS
+                _emit("FAIL", "No signal detected — check: XOceanus running? BlackHole routed? MIDI connected?")
+            else:
+                _emit("WARN", f"Weak signal ({peak_db:.1f} dBFS) — check BlackHole routing or XOceanus volume")
+
+        except Exception as e:
+            _emit("FAIL", f"Smoke test error: {e}")
+
+    # ── Print all collected lines ─────────────────────────────────────────────
+    for ln in lines:
+        print(ln)
+
+    # ── Summary ──────────────────────────────────────────────────────────────
+    total = pass_count + warn_count + skip_count + fail_count
+    print()
+    print("  ─────────────────────────────────────")
+    result_str = f"RESULT: {pass_count} PASS, {warn_count} WARN, {skip_count} SKIP, {fail_count} FAIL"
+    if fail_count == 0:
+        verdict = "Environment is ready for rendering."
+    else:
+        verdict = "Fix FAIL items before starting a render."
+    print(f"  {result_str}")
+    print(f"  {verdict}")
+    print("  ╚══════════════════════════════════════")
+    print()
+
+    return 0 if fail_count == 0 else 1
+
+
 def cmd_build(args) -> int:
     """Compile a .oxbuild spec into a complete .xpn pack."""
+    # Quick pre-build gate: verify Python deps + disk space (no smoke test).
+    # Catches the most common first-run failure modes before 12,800 jobs start.
+    # Skip with --skip-doctor if you have already run `oxport doctor`.
+    if not getattr(args, "skip_doctor", False):
+        _quick_doctor_check(args)
+
     oxbuild_path = Path(args.oxbuild)
     if not oxbuild_path.exists():
-        print(f"ERROR: .oxbuild file not found: {oxbuild_path}", file=sys.stderr)
+        print(f"ERROR: .oxbuild/.oxpack file not found: {oxbuild_path}", file=sys.stderr)
         return 1
 
-    with open(oxbuild_path, encoding='utf-8', errors='replace') as f:
-        spec = json.load(f)
+    # ── Feature 3: .oxpack YAML manifest support ─────────────────────────────
+    # If a .oxpack file is provided instead of .oxbuild, load it as a manifest
+    # and synthesize a minimal spec dict that cmd_build can work with.
+    # The manifest's preset list becomes the SELECT stage's explicit filter and
+    # its tier overrides the .oxbuild default.
+    _oxpack_manifest: dict | None = None
+    if oxbuild_path.suffix.lower() == ".oxpack":
+        try:
+            from xpn_pack_manifest import load_manifest as _load_oxpack, apply_manifest_to_build_args
+        except ImportError:
+            print("ERROR: xpn_pack_manifest.py not found — cannot load .oxpack files",
+                  file=sys.stderr)
+            return 1
+        try:
+            _oxpack_manifest = _load_oxpack(oxbuild_path)
+        except (FileNotFoundError, ValueError) as _e:
+            print(f"ERROR: Invalid .oxpack manifest: {_e}", file=sys.stderr)
+            return 1
+
+        # Build a minimal .oxbuild-compatible spec from the manifest.
+        # Fields like pack_id, platform, archetype get sensible defaults.
+        _pack_slug = re.sub(r"[^a-z0-9-]", "-",
+                            _oxpack_manifest["name"].lower().replace(" ", "-"))
+        spec: dict = {
+            "pack_id":   f"{_oxpack_manifest['engine'].lower()}-{_pack_slug}",
+            "engine":    _oxpack_manifest["engine"],
+            "platform":  "mpce",
+            "archetype": "percussion",
+            "pack_name": f"XO_OX {_oxpack_manifest['engine']} — {_oxpack_manifest['name']}",
+            "tier":      _oxpack_manifest.get("tier", "DEEP"),
+        }
+        apply_manifest_to_build_args(_oxpack_manifest, spec)
+        print(f"  [OXPACK] Loaded manifest: {oxbuild_path.name}")
+        print(f"  [OXPACK] Pack: {spec['pack_name']} | "
+              f"{len(_oxpack_manifest['presets'])} presets | Tier: {spec['tier']}")
+    else:
+        with open(oxbuild_path, encoding='utf-8', errors='replace') as f:
+            spec = json.load(f)
 
     # Validate required fields
     required = ["pack_id", "engine", "platform", "archetype"]
@@ -2239,6 +2708,24 @@ def cmd_build(args) -> int:
     skip = set()
     if args.skip:
         skip = set(args.skip.split(","))
+
+    # ── Feature #734: --resume support ──────────────────────────────────────
+    # If --resume is set, load the prior build log and skip all stages that
+    # already completed.  Stage-level skips merge with any --skip list.
+    log_path = output_dir / "build.log.json"
+    _resume_completed: list[str] = []
+    if getattr(args, "resume", False):
+        _resume_completed = _load_resume_state(log_path)
+        if _resume_completed:
+            _last = _resume_completed[-1]
+            _last_n = BUILD_STAGES.index(_last) + 1 if _last in BUILD_STAGES else "?"
+            print(f"[RESUME] Resuming from Stage {_last_n + 1 if isinstance(_last_n, int) else '?'} "
+                  f"({_last.upper()} was last completed). "
+                  f"Stages already done: {', '.join(_resume_completed)}")
+            # Merge completed stages into the skip set
+            skip.update(_resume_completed)
+        else:
+            print("[RESUME] No prior build.log.json found — starting fresh.")
 
     # Build timestamp
     build_time = datetime.now().isoformat()
@@ -2385,6 +2872,7 @@ def cmd_build(args) -> int:
     if args.dry_run:
         print(f"         ✓ Parsed {oxbuild_path}")
     stages_run += 1
+    _update_build_log(log_path, "parse")
 
     # ── STAGE 2: SELECT ──
     selected_presets: list[dict] = []  # populated by SELECT, consumed by RENDER
@@ -2498,6 +2986,7 @@ def cmd_build(args) -> int:
                     return 1
             else:
                 stages_run += 1
+                _update_build_log(log_path, "select")
     else:
         print(f"  [2/10] SELECT       SKIPPED")
         stages_skipped += 1
@@ -2808,6 +3297,7 @@ def cmd_build(args) -> int:
                     else:
                         print(f"         → --no-render flag: skipping actual audio capture")
                     stages_run += 1
+                    _update_build_log(log_path, "render")
                 except ImportError:
                     print(f"         [SKIP] oxport_render not available (pip install mido sounddevice numpy)")
                     stages_skipped += 1
@@ -2949,6 +3439,7 @@ def cmd_build(args) -> int:
                     return 1
             else:
                 stages_run += 1
+                _update_build_log(log_path, "assemble")
     else:
         print(f"  [4/10] ASSEMBLE     SKIPPED")
         stages_skipped += 1
@@ -2959,6 +3450,7 @@ def cmd_build(args) -> int:
         if args.dry_run:
             print(f"         → Would call: xpn_drum_export.py --mode smart")
             stages_run += 1
+            _update_build_log(log_path, "fallback")
         else:
             print(f"  [5/10] FALLBACK     [SKIP] Standard XPM fallback not yet implemented")
             stages_skipped += 1
@@ -2997,6 +3489,7 @@ def cmd_build(args) -> int:
                     json.dump(intent_data, f, indent=2)
                 print(f"         ✓ Written: {intent_path}")
                 stages_run += 1
+                _update_build_log(log_path, "intent")
             except ImportError:
                 print(f"         [SKIP] xpn_intent_generator not available")
                 stages_skipped += 1
@@ -3031,6 +3524,7 @@ def cmd_build(args) -> int:
             else:
                 print(f"         ⚠  Template not found: {template_path}")
         stages_run += 1
+        _update_build_log(log_path, "docs")
     else:
         print(f"  [7/10] DOCS         SKIPPED")
         stages_skipped += 1
@@ -3087,6 +3581,7 @@ def cmd_build(args) -> int:
                     pass  # hi-res is optional
 
                 stages_run += 1
+                _update_build_log(log_path, "art")
             except ImportError:
                 print(f"         [SKIP] xpn_cover_art_generator_v2 not available")
                 stages_skipped += 1
@@ -3142,6 +3637,7 @@ def cmd_build(args) -> int:
                         if result_path.exists() else 0
                     print(f"         ✓ {result_path.name} ({size_mb:.2f} MB)")
                 stages_run += 1
+                _update_build_log(log_path, "package")
             except ImportError:
                 print(f"         [SKIP] xpn_packager not available")
                 stages_skipped += 1
@@ -3254,11 +3750,20 @@ def cmd_build(args) -> int:
             else:
                 print(f"         → XPN not yet built — structural check deferred")
         stages_run += 1
+        _update_build_log(log_path, "validate")
     else:
         print(f"  [10/10] VALIDATE    SKIPPED")
         stages_skipped += 1
 
-    # Write build log
+    # Write final build log — merge with the incrementally-written completed_stages
+    # so that --resume reads the canonical set of completed stage names.
+    _existing_log: dict = {}
+    if log_path.exists():
+        try:
+            with open(log_path, encoding='utf-8', errors='replace') as _lf:
+                _existing_log = json.load(_lf)
+        except Exception:
+            pass
     build_log = {
         "pack_id": pack_id,
         "pack_name": pack_name,
@@ -3273,8 +3778,9 @@ def cmd_build(args) -> int:
         "stages_failed": stages_failed,
         "dry_run": args.dry_run,
         "output_dir": str(output_dir),
+        "completed_stages": _existing_log.get("completed_stages", []),
+        "last_updated": datetime.now().isoformat(),
     }
-    log_path = output_dir / "build.log.json"
     with open(log_path, "w", encoding='utf-8') as f:
         json.dump(build_log, f, indent=2)
 
@@ -3420,7 +3926,7 @@ def main():
     p_build = sub.add_parser("build",
                              help="Compile a .oxbuild spec into a complete .xpn pack")
     p_build.add_argument("oxbuild", metavar="SPEC",
-                         help="Path to .oxbuild JSON spec file")
+                         help="Path to .oxbuild JSON spec file or .oxpack YAML manifest")
     p_build.add_argument("--output-dir", default=None,
                          help="Output directory (default: builds/{pack_id}/)")
     p_build.add_argument("--skip", metavar="STAGES",
@@ -3453,10 +3959,32 @@ def main():
                          metavar="N",
                          help="Override preset_selection.min_presets from .oxbuild. "
                               "Useful for quick test builds without editing the spec file.")
+    p_build.add_argument("--resume", action="store_true",
+                         help="Resume a previously interrupted build from the last completed stage. "
+                              "Reads build.log.json from the output directory and skips all stages "
+                              "that already completed successfully.")
 
     # --- verify ---
     p_verify = sub.add_parser("verify", help="Verify .xpn provenance chain")
     p_verify.add_argument("path", help="Path to provenance.json or build directory")
+
+    # --- doctor ---
+    p_doctor = sub.add_parser("doctor", help="Validate environment before rendering")
+    p_doctor.add_argument("spec", nargs="?",
+                          help="Optional .oxbuild file to validate against")
+    p_doctor.add_argument("--audio-device", default="BlackHole",
+                          dest="audio_device",
+                          help="Audio input device name to look for (default: BlackHole)")
+    p_doctor.add_argument("--midi-port", default="IAC Driver Bus 1",
+                          dest="midi_port",
+                          help="MIDI output port name to look for (default: IAC Driver Bus 1)")
+    p_doctor.add_argument("--ci", action="store_true",
+                          help="CI mode: skip all audio hardware checks and smoke test")
+    p_doctor.set_defaults(func=cmd_doctor)
+
+    # --- build: add --skip-doctor flag ---
+    p_build.add_argument("--skip-doctor", action="store_true", dest="skip_doctor",
+                         help="Skip the lightweight pre-build dependency/disk check")
 
     args = parser.parse_args()
     if not args.command:
@@ -3470,6 +3998,7 @@ def main():
         "batch":    cmd_batch,
         "build":    cmd_build,
         "verify":   cmd_verify,
+        "doctor":   cmd_doctor,
     }
     return dispatch[args.command](args)
 

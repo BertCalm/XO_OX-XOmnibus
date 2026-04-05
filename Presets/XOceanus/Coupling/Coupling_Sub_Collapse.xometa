@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Sub Collapse",
+  "mood": "Coupling",
+  "engines": [
+    "Ogre",
+    "Omega"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OGRE and OMEGA in extreme bidirectional coupling \u2014 sub bass frequencies locking together then fighting for dominance, gravitational collapse between two low-frequency giants.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "sub",
+    "bass",
+    "AmpToFilter",
+    "AmpToPitch",
+    "gravitational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.88,
+    "space": 0.35,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_subFreq": 0.88,
+      "ogre_filterEnvAmt": 0.78,
+      "ogre_lfo1Rate": 0.12,
+      "ogre_lfo1Depth": 0.38,
+      "ogre_macroCharacter": 0.75,
+      "ogre_macroMovement": 0.72,
+      "ogre_macroCoupling": 0.9,
+      "ogre_macroSpace": 0.35
+    },
+    "Omega": {
+      "omega_synthBass": 0.88,
+      "omega_filterEnvAmt": 0.75,
+      "omega_lfo1Rate": 0.13,
+      "omega_lfo1Depth": 0.35,
+      "omega_macroCharacter": 0.72,
+      "omega_macroMovement": 0.7,
+      "omega_macroCoupling": 0.88,
+      "omega_macroSpace": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ogre",
+        "engineB": "Omega",
+        "type": "AmpToFilter",
+        "amount": 0.88
+      },
+      {
+        "engineA": "Omega",
+        "engineB": "Ogre",
+        "type": "AmpToPitch",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.71,
+    "COUPLING": 0.89,
+    "SPACE": 0.35
+  }
+}

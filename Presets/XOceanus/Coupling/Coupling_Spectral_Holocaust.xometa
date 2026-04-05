@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Holocaust",
+  "mood": "Coupling",
+  "engines": [
+    "Overtone",
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERTONE \u03c0/e/\u03c6/\u221a2 spectral convergents at extreme depth reshaping ORBWEAVE knot topology completely \u2014 irrational numbers rewriting topological space, mathematics in crisis.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "spectral",
+    "topology",
+    "KnotTopology",
+    "mathematical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.42,
+    "movement": 0.85,
+    "density": 0.78,
+    "space": 0.58,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Overtone": {
+      "over_cfDepth": 0.92,
+      "over_filterEnvAmt": 0.78,
+      "over_lfo1Rate": 0.22,
+      "over_lfo1Depth": 0.42,
+      "over_macroCharacter": 0.78,
+      "over_macroMovement": 0.88,
+      "over_macroCoupling": 0.9,
+      "over_macroSpace": 0.58
+    },
+    "Orbweave": {
+      "weave_knotDepth": 0.9,
+      "weave_filterEnvAmt": 0.75,
+      "weave_lfo1Rate": 0.2,
+      "weave_lfo1Depth": 0.42,
+      "weave_macroCharacter": 0.75,
+      "weave_macroMovement": 0.88,
+      "weave_macroCoupling": 0.9,
+      "weave_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overtone",
+        "engineB": "Orbweave",
+        "type": "KnotTopology",
+        "amount": 0.93
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.77,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.9,
+    "SPACE": 0.58
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Wave",
+  "mood": "Coupling",
+  "engines": [
+    "Oxbow",
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXBOW phase entanglement heavily reshapes ORBWEAVE knot geometry \u2014 reverb entanglement feeding topological routing, space and math in heavy dialogue.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "reverb",
+    "topology",
+    "KnotTopology",
+    "spatial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.48,
+    "movement": 0.62,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_entangle": 0.78,
+      "oxb_filterEnvAmt": 0.65,
+      "oxb_lfo1Rate": 0.15,
+      "oxb_lfo1Depth": 0.35,
+      "oxb_macroCharacter": 0.62,
+      "oxb_macroMovement": 0.62,
+      "oxb_macroCoupling": 0.75,
+      "oxb_macroSpace": 0.7
+    },
+    "Orbweave": {
+      "weave_knotDepth": 0.72,
+      "weave_filterEnvAmt": 0.62,
+      "weave_lfo1Rate": 0.16,
+      "weave_lfo1Depth": 0.32,
+      "weave_macroCharacter": 0.6,
+      "weave_macroMovement": 0.62,
+      "weave_macroCoupling": 0.72,
+      "weave_macroSpace": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxbow",
+        "engineB": "Orbweave",
+        "type": "KnotTopology",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.74,
+    "SPACE": 0.69
+  }
+}

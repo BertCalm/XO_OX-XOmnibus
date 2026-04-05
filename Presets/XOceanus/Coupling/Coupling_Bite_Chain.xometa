@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Bite Chain",
+  "mood": "Coupling",
+  "engines": [
+    "Overbite",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERBITE bite and choke heavily gates ONSET transient \u2014 physical possession controlling percussion completely, bite is the gate.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "physical",
+    "percussion",
+    "AmpToChoke",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.4,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroBelly": 0.65,
+      "poss_macroBite": 0.82,
+      "poss_macroPlayDead": 0.45,
+      "poss_macroScurry": 0.62,
+      "poss_filterEnvAmt": 0.68,
+      "poss_lfo1Rate": 0.18,
+      "poss_lfo1Depth": 0.38
+    },
+    "Onset": {
+      "perc_macro_punch": 0.72,
+      "perc_macro_mutate": 0.6,
+      "perc_macro_machine": 0.58,
+      "perc_macro_space": 0.38,
+      "perc_filterEnvAmt": 0.65,
+      "perc_lfo1Rate": 0.2,
+      "perc_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Onset",
+        "type": "AmpToChoke",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.71,
+    "COUPLING": 0.74,
+    "SPACE": 0.38
+  }
+}

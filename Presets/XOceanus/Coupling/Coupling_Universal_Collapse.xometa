@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Universal Collapse",
+  "mood": "Coupling",
+  "engines": [
+    "Ouroboros",
+    "Orbweave",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ultimate three-engine extreme: OUROBOROS chaos, ORBWEAVE topology, and OXBOW phase entanglement in total triangular collapse \u2014 chaos rewriting geometry rewriting space rewriting chaos, coupling IS the sound.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "chaos",
+    "topology",
+    "reverb",
+    "TriangularCoupling",
+    "ultimate",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.42,
+    "movement": 0.95,
+    "density": 0.88,
+    "space": 0.72,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.95,
+      "ouro_leash": 0.15,
+      "ouro_chaos": 0.95,
+      "ouro_filterEnvAmt": 0.82,
+      "ouro_lfo1Rate": 0.3,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_macroCharacter": 0.82,
+      "ouro_macroMovement": 0.95,
+      "ouro_macroCoupling": 0.95,
+      "ouro_macroSpace": 0.68
+    },
+    "Orbweave": {
+      "weave_knotDepth": 0.95,
+      "weave_filterEnvAmt": 0.82,
+      "weave_lfo1Rate": 0.27,
+      "weave_lfo1Depth": 0.45,
+      "weave_macroCharacter": 0.82,
+      "weave_macroMovement": 0.95,
+      "weave_macroCoupling": 0.95,
+      "weave_macroSpace": 0.68
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.95,
+      "oxb_filterEnvAmt": 0.82,
+      "oxb_lfo1Rate": 0.2,
+      "oxb_lfo1Depth": 0.42,
+      "oxb_macroCharacter": 0.82,
+      "oxb_macroMovement": 0.92,
+      "oxb_macroCoupling": 0.95,
+      "oxb_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orbweave",
+        "type": "TriangularCoupling",
+        "amount": 0.93
+      },
+      {
+        "engineA": "Orbweave",
+        "engineB": "Oxbow",
+        "type": "KnotTopology",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Oxbow",
+        "engineB": "Ouroboros",
+        "type": "FilterToFilter",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.94,
+    "COUPLING": 0.95,
+    "SPACE": 0.71
+  }
+}

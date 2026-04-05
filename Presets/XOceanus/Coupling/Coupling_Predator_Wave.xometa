@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Predator Wave",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt energy dominantly drives OUROBOROS chaotic attractor \u2014 apex predator reshaping strange attractor topology, hunting as chaos engine.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "predator",
+    "chaos",
+    "AmpToPitch",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.38,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.78,
+      "orca_filterEnvAmt": 0.65,
+      "orca_lfo1Rate": 0.2,
+      "orca_lfo1Depth": 0.38,
+      "orca_macroCharacter": 0.65,
+      "orca_macroMovement": 0.72,
+      "orca_macroCoupling": 0.75,
+      "orca_macroSpace": 0.42
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.68,
+      "ouro_leash": 0.38,
+      "ouro_chaos": 0.72,
+      "ouro_filterEnvAmt": 0.62,
+      "ouro_lfo1Rate": 0.22,
+      "ouro_lfo1Depth": 0.35,
+      "ouro_macroCharacter": 0.62,
+      "ouro_macroMovement": 0.7,
+      "ouro_macroCoupling": 0.72,
+      "ouro_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ouroboros",
+        "type": "AmpToPitch",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.71,
+    "COUPLING": 0.74,
+    "SPACE": 0.42
+  }
+}

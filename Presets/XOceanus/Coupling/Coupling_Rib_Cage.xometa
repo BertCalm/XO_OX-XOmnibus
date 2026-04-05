@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Rib Cage",
+  "mood": "Coupling",
+  "engines": [
+    "Oblong",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG amber filter spine heavily shapes OBRIX brick ecology \u2014 filter backbone dictating how the modular coral reef assembles its structure.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "filter",
+    "ecological",
+    "FilterToFilter",
+    "structural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.56,
+    "movement": 0.65,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_fltCutoff": 0.72,
+      "bob_fltReso": 0.4,
+      "bob_filterEnvAmt": 0.65,
+      "bob_lfo1Rate": 0.16,
+      "bob_lfo1Depth": 0.35,
+      "bob_macroCharacter": 0.64,
+      "bob_macroMovement": 0.64,
+      "bob_macroCoupling": 0.75,
+      "bob_macroSpace": 0.48
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.68,
+      "obrix_filterEnvAmt": 0.62,
+      "obrix_lfo1Rate": 0.16,
+      "obrix_lfo1Depth": 0.32,
+      "obrix_macroCharacter": 0.62,
+      "obrix_macroMovement": 0.62,
+      "obrix_macroCoupling": 0.72,
+      "obrix_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obrix",
+        "type": "FilterToFilter",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.63,
+    "COUPLING": 0.74,
+    "SPACE": 0.48
+  }
+}

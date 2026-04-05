@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Analog Flood",
+  "mood": "Coupling",
+  "engines": [
+    "Odyssey",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY analog drift heavily reshapes OVERWORLD ERA generational crossfade \u2014 voltage instability dictating which synthesis era the sound belongs to.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "analog",
+    "generative",
+    "LFOToPitch",
+    "temporal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.72,
+      "drift_filterEnvAmt": 0.65,
+      "drift_lfo1Rate": 0.2,
+      "drift_lfo1Depth": 0.38,
+      "drift_macroCharacter": 0.64,
+      "drift_macroMovement": 0.72,
+      "drift_macroCoupling": 0.75,
+      "drift_macroSpace": 0.48
+    },
+    "Overworld": {
+      "ow_era": 0.68,
+      "ow_filterEnvAmt": 0.62,
+      "ow_lfo1Rate": 0.17,
+      "ow_lfo1Depth": 0.35,
+      "ow_macroCharacter": 0.62,
+      "ow_macroMovement": 0.7,
+      "ow_macroCoupling": 0.72,
+      "ow_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overworld",
+        "type": "LFOToPitch",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.71,
+    "COUPLING": 0.74,
+    "SPACE": 0.48
+  }
+}

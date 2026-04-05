@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Code Storm",
+  "mood": "Coupling",
+  "engines": [
+    "Opcode",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPCODE logic depth flooding OUROBOROS topology \u2014 code patterns destabilizing the strange attractor completely, logic creating chaos.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "code",
+    "chaos",
+    "ChaosInject",
+    "algorithmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.4,
+    "movement": 0.78,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_codeDepth": 0.78,
+      "opco_filterEnvAmt": 0.65,
+      "opco_lfo1Rate": 0.2,
+      "opco_lfo1Depth": 0.38,
+      "opco_macroCharacter": 0.65,
+      "opco_macroMovement": 0.75,
+      "opco_macroCoupling": 0.78,
+      "opco_macroSpace": 0.48
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.72,
+      "ouro_leash": 0.28,
+      "ouro_filterEnvAmt": 0.65,
+      "ouro_lfo1Rate": 0.24,
+      "ouro_lfo1Depth": 0.38,
+      "ouro_macroCharacter": 0.64,
+      "ouro_macroMovement": 0.75,
+      "ouro_macroCoupling": 0.75,
+      "ouro_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opcode",
+        "engineB": "Ouroboros",
+        "type": "ChaosInject",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.77,
+    "SPACE": 0.48
+  }
+}

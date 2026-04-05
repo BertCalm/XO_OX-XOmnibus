@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Hunger",
+  "mood": "Coupling",
+  "engines": [
+    "Overtone",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERTONE continued fraction convergents heavily reshape ORGANON metabolic parameters \u2014 number theory driving biological variation, mathematics as life.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "spectral",
+    "metabolic",
+    "AudioToFM",
+    "mathematical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.48,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.54,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Overtone": {
+      "over_cfDepth": 0.78,
+      "over_filterEnvAmt": 0.65,
+      "over_lfo1Rate": 0.17,
+      "over_lfo1Depth": 0.35,
+      "over_macroCharacter": 0.64,
+      "over_macroMovement": 0.68,
+      "over_macroCoupling": 0.75,
+      "over_macroSpace": 0.54
+    },
+    "Organon": {
+      "organon_metabolicRate": 0.72,
+      "organon_filterEnvAmt": 0.62,
+      "organon_lfo1Rate": 0.16,
+      "organon_lfo1Depth": 0.32,
+      "organon_macroCharacter": 0.62,
+      "organon_macroMovement": 0.65,
+      "organon_macroCoupling": 0.72,
+      "organon_macroSpace": 0.54
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overtone",
+        "engineB": "Organon",
+        "type": "AudioToFM",
+        "amount": 0.77
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.74,
+    "SPACE": 0.54
+  }
+}

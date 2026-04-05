@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Prism Flood",
+  "mood": "Coupling",
+  "engines": [
+    "Oblique",
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLIQUE prism bounce dominantly floods OPENSKY shimmer width \u2014 refracted light exploding into a shimmer ascent, prism energy filling sky.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "prismatic",
+    "shimmer",
+    "AudioToWavetable",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.44,
+    "movement": 0.68,
+    "density": 0.58,
+    "space": 0.68,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismColor": 0.75,
+      "oblq_filterEnvAmt": 0.65,
+      "oblq_lfo1Rate": 0.18,
+      "oblq_lfo1Depth": 0.35,
+      "oblq_macroCharacter": 0.64,
+      "oblq_macroMovement": 0.68,
+      "oblq_macroCoupling": 0.75,
+      "oblq_macroSpace": 0.62
+    },
+    "OpenSky": {
+      "sky_macroRise": 0.78,
+      "sky_filterEnvAmt": 0.62,
+      "sky_lfo1Rate": 0.17,
+      "sky_lfo1Depth": 0.35,
+      "sky_macroCharacter": 0.62,
+      "sky_macroMovement": 0.68,
+      "sky_macroCoupling": 0.72,
+      "sky_macroSpace": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OpenSky",
+        "type": "AudioToWavetable",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.74,
+    "SPACE": 0.66
+  }
+}

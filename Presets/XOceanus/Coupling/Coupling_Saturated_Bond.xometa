@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Saturated Bond",
+  "mood": "Coupling",
+  "engines": [
+    "Oxytocin",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXYTOCIN note-duration bond accumulates and drives OBESE saturation mojo deeply \u2014 long notes unlock extreme saturation, bond chemistry becoming heat.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "intimate",
+    "saturation",
+    "EnvToMorph",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.72,
+      "oxy_filterEnvAmt": 0.62,
+      "oxy_lfo1Rate": 0.15,
+      "oxy_lfo1Depth": 0.35,
+      "oxy_macroCharacter": 0.62,
+      "oxy_macroMovement": 0.58,
+      "oxy_macroCoupling": 0.7,
+      "oxy_macroSpace": 0.4
+    },
+    "Obese": {
+      "fat_macroMojo": 0.72,
+      "fat_macroGrit": 0.68,
+      "fat_macroSize": 0.65,
+      "fat_macroCrush": 0.6,
+      "fat_filterEnvAmt": 0.62,
+      "fat_lfo1Rate": 0.16,
+      "fat_lfo1Depth": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Obese",
+        "type": "EnvToMorph",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.67,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.7,
+    "SPACE": 0.39
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Glide Surge",
+  "mood": "Coupling",
+  "engines": [
+    "Olate",
+    "Omega"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLATE fretless glide heavily drives OMEGA synth bass fundamental \u2014 sliding physics directly controlling low-frequency oscillator pitch, string as sub-bass.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "fretless",
+    "bass",
+    "PitchToPitch",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Olate": {
+      "olate_fretlessGlide": 0.82,
+      "olate_filterEnvAmt": 0.68,
+      "olate_lfo1Rate": 0.17,
+      "olate_lfo1Depth": 0.38,
+      "olate_macroCharacter": 0.65,
+      "olate_macroMovement": 0.75,
+      "olate_macroCoupling": 0.78,
+      "olate_macroSpace": 0.42
+    },
+    "Omega": {
+      "omega_synthBass": 0.75,
+      "omega_filterEnvAmt": 0.62,
+      "omega_lfo1Rate": 0.14,
+      "omega_lfo1Depth": 0.32,
+      "omega_macroCharacter": 0.62,
+      "omega_macroMovement": 0.68,
+      "omega_macroCoupling": 0.75,
+      "omega_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Olate",
+        "engineB": "Omega",
+        "type": "PitchToPitch",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.77,
+    "SPACE": 0.42
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "Triangular Bond",
+  "mood": "Coupling",
+  "engines": [
+    "Oxytocin",
+    "Opera",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three-way triangular extreme: OXYTOCIN bond depth drives OPERA arc which drives ORPHICA resonance which amplifies OXYTOCIN \u2014 chemistry, drama, and string in a closed feedback loop.",
+  "tags": [
+    "coupling",
+    "extreme",
+    "triangular",
+    "intimate",
+    "operatic",
+    "strings",
+    "TriangularCoupling",
+    "three-engine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.54,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.92,
+      "oxy_filterEnvAmt": 0.78,
+      "oxy_lfo1Rate": 0.18,
+      "oxy_lfo1Depth": 0.42,
+      "oxy_macroCharacter": 0.78,
+      "oxy_macroMovement": 0.8,
+      "oxy_macroCoupling": 0.9,
+      "oxy_macroSpace": 0.54
+    },
+    "Opera": {
+      "opera_drama": 0.88,
+      "opera_filterEnvAmt": 0.75,
+      "opera_lfo1Rate": 0.2,
+      "opera_lfo1Depth": 0.42,
+      "opera_macroCharacter": 0.75,
+      "opera_macroMovement": 0.82,
+      "opera_macroCoupling": 0.9,
+      "opera_macroSpace": 0.54
+    },
+    "Orphica": {
+      "orph_pluckBrightness": 0.82,
+      "orph_filterEnvAmt": 0.72,
+      "orph_lfo1Rate": 0.18,
+      "orph_lfo1Depth": 0.38,
+      "orph_macroCharacter": 0.72,
+      "orph_macroMovement": 0.78,
+      "orph_macroCoupling": 0.88,
+      "orph_macroSpace": 0.54
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Opera",
+        "type": "TriangularCoupling",
+        "amount": 0.9
+      },
+      {
+        "engineA": "Opera",
+        "engineB": "Orphica",
+        "type": "TriangularCoupling",
+        "amount": 0.85
+      },
+      {
+        "engineA": "Orphica",
+        "engineB": "Oxytocin",
+        "type": "EnvelopeFollow",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.89,
+    "SPACE": 0.54
+  }
+}

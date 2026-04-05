@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Hunger Ring",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt energy heavily feeds ORGANISM cellular birth rate \u2014 apex predator presence triggering explosive cell division, hunting as growth catalyst.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "predator",
+    "cellular",
+    "VelocityCoupling",
+    "ecological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.68,
+    "space": 0.46,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.82,
+      "orca_filterEnvAmt": 0.68,
+      "orca_lfo1Rate": 0.22,
+      "orca_lfo1Depth": 0.38,
+      "orca_macroCharacter": 0.68,
+      "orca_macroMovement": 0.78,
+      "orca_macroCoupling": 0.8,
+      "orca_macroSpace": 0.46
+    },
+    "Organism": {
+      "org_ruleSet": 0.68,
+      "org_filterEnvAmt": 0.62,
+      "org_lfo1Rate": 0.18,
+      "org_lfo1Depth": 0.35,
+      "org_macroCharacter": 0.64,
+      "org_macroMovement": 0.72,
+      "org_macroCoupling": 0.75,
+      "org_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Organism",
+        "type": "VelocityCoupling",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.78,
+    "SPACE": 0.46
+  }
+}
