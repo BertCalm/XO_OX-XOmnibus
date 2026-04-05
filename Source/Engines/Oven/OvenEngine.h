@@ -123,7 +123,9 @@ struct OvenModalResonator
             return;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
-        float r = std::exp(-3.14159265f * bw / sampleRate);
+        // Clamp pole radius strictly inside the unit circle — defends against
+        // marginal stability if bw ever approaches 0 due to extreme Q values.
+        float r = std::min(std::exp(-3.14159265f * bw / sampleRate), 0.9999f);
         cosW = fastCos(w);
         a1 = 2.0f * r * cosW;
         a2 = r * r;
