@@ -168,13 +168,15 @@ TEST_CASE("HarmonicField - markerProperties correct at all distances", "[playsur
     CHECK(std::abs(s4 - 0.70f) < 1e-4f);
     CHECK(std::abs(o4 - 0.50f) < 1e-4f);
 
+    // dist 5-6: raised from {0.55, 0.35} to {0.65, 0.50} by WCAG Fix 4
+    // to meet WCAG 1.4.11 non-text contrast 3:1 for far-field markers.
     auto [s5, o5] = HarmonicField::markerProperties(5);
-    CHECK(std::abs(s5 - 0.55f) < 1e-4f);
-    CHECK(std::abs(o5 - 0.35f) < 1e-4f);
+    CHECK(std::abs(s5 - 0.65f) < 1e-4f);
+    CHECK(std::abs(o5 - 0.50f) < 1e-4f);
 
     auto [s6, o6] = HarmonicField::markerProperties(6);
-    CHECK(std::abs(s6 - 0.55f) < 1e-4f);
-    CHECK(std::abs(o6 - 0.35f) < 1e-4f);
+    CHECK(std::abs(s6 - 0.65f) < 1e-4f);
+    CHECK(std::abs(o6 - 0.50f) < 1e-4f);
 }
 
 //==============================================================================
