@@ -47,6 +47,7 @@ export default function BatchTools() {
   const samples = useAudioStore((s) => s.samples);
   const updateSample = useAudioStore((s) => s.updateSample);
   const setProcessing = useAudioStore((s) => s.setProcessing);
+  const setIsBatchProcessing = useAudioStore((s) => s.setIsBatchProcessing);
   const [processing, setLocalProcessing] = useState(false);
   const [pendingOp, setPendingOp] = useState<BatchOp | null>(null);
 
@@ -55,6 +56,7 @@ export default function BatchTools() {
       if (samples.length === 0 || processing) return;
 
       setLocalProcessing(true);
+      setIsBatchProcessing(true);
       setProcessing(true, `Batch processing: ${op}...`);
 
       const opLabel = BATCH_OPS.find((o) => o.id === op)?.label ?? op;
@@ -122,10 +124,11 @@ export default function BatchTools() {
         }
       } finally {
         setProcessing(false);
+        setIsBatchProcessing(false);
         setLocalProcessing(false);
       }
     },
-    [samples, processing, updateSample, setProcessing]
+    [samples, processing, updateSample, setProcessing, setIsBatchProcessing]
   );
 
   if (samples.length === 0) return null;

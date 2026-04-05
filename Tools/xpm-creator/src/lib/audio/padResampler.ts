@@ -74,12 +74,7 @@ function scheduleAHDSR(
   // Schedule release ramp: sustain level → target at note-off time.
   // Must match live engine's release target (0.001 = -60dB) to avoid
   // audible differences between preview and bounce.
-  //
-  // When sustainValue <= 0, the hard-zero setValueAtTime above already
-  // brought the param to 0. Snapping it back to eps here would cause an
-  // audible click, so skip the release phase entirely — the signal is
-  // already silent.
-  if (release != null && noteOffTime != null && sustainValue > 0) {
+  if (release != null && noteOffTime != null) {
     const releaseStart = Math.max(decayEnd, noteOffTime);
     param.setValueAtTime(sustainValue, releaseStart);
     const endValue = Math.max(baseValue, 0.001);

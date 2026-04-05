@@ -333,8 +333,10 @@ export default function Header({
   const konamiTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleKonamiCode = useCallback(() => {
-    // eslint-disable-next-line no-console
-    console.log('\uD83C\uDFAE XO_OX says: You found the secret! \uD83C\uDFAE');
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.log('\uD83C\uDFAE XO_OX says: You found the secret! \uD83C\uDFAE');
+    }
 
     // Cycle through all themes rapidly
     let cycleIndex = 0;
@@ -440,7 +442,11 @@ export default function Header({
               background: 'rgba(var(--color-accent-teal, 13 148 136), 0.08)',
               cursor: 'pointer',
             }}
+            role="button"
+            tabIndex={0}
+            aria-label="XO_OX logo"
             onClick={handleLogoClick}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleLogoClick(e as unknown as React.MouseEvent); } }}
             title="XO_OX"
           >
             <SentientLogo isBlinking={isBlinking} logoState={logoState} />
@@ -538,7 +544,7 @@ export default function Header({
               }}
             />
             <span className="text-xs text-text-muted hidden sm:inline">
-              {hasAssignedPads ? 'Export Ready' : 'No Pads'}
+              {hasAssignedPads ? 'Export Ready' : 'Pads Empty'}
             </span>
           </div>
         </div>
@@ -588,7 +594,7 @@ export default function Header({
             Crafted with love for the MPC community
           </p>
           <p className="text-xs text-text-muted mt-1">
-            15 Expression Modes &bull; 20 Themes &bull; 8-Layer Engine
+            10 Expression Modes &bull; 20 Themes &bull; 8-Layer Engine
           </p>
           <p className="text-xs text-text-muted mt-0.5 italic">
             Built to make world-class kits, easily.

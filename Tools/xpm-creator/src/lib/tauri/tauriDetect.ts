@@ -16,7 +16,7 @@ export function isTauri(): boolean {
  * Dynamically import Tauri APIs only when running in Tauri.
  * Prevents bundler errors when running as a web app.
  */
-export async function getTauriDialog() {
+async function getTauriDialog() {
   if (!isTauri()) return null;
   return await import('@tauri-apps/api/core');
 }

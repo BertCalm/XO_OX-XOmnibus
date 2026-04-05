@@ -27,13 +27,13 @@ import { useAudioStore } from '@/stores/audioStore';
 import { useProjectStore } from '@/stores/projectStore';
 import { useErrorStore } from '@/stores/errorStore';
 import { useLayoutStore } from '@/stores/layoutStore';
+import { useToastStore } from '@/stores/toastStore';
 import { useHotkeys } from '@/hooks/useHotkeys';
 import { useAutoRestore } from '@/hooks/useAutoRestore';
 import { useAutoSave } from '@/hooks/useAutoSave';
 import { useMilestoneTracker } from '@/hooks/useMilestoneTracker';
 import { PROJECT_TEMPLATES } from '@/constants/projectTemplates';
 import type { ProgramType } from '@/types';
-import { validateName } from '@/lib/sanitize';
 
 // ── Dynamic imports for components not needed at initial render ─────────────
 // These split the JS bundle so users get a fast first load, then heavy panels
@@ -119,6 +119,7 @@ export default function HomePage() {
   const [projectName, setProjectName] = useState('');
   const [programType, setProgramType] = useState<ProgramType>('Keygroup');
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(null);
+  const [isCreating, setIsCreating] = useState(false);
 
   const audioImporterRef = useRef<HTMLDivElement>(null);
   const kitImporterRef = useRef<HTMLDivElement>(null);
@@ -202,10 +203,21 @@ export default function HomePage() {
 
   const handleCreateProject = async () => {
     if (!projectName.trim()) return;
-    await createProject(validateName(projectName), programType, selectedTemplateId ?? undefined);
-    setShowNewProject(false);
-    setProjectName('');
-    setSelectedTemplateId(null);
+    setIsCreating(true);
+    try {
+      await createProject(projectName.trim(), programType, selectedTemplateId ?? undefined);
+      setShowNewProject(false);
+      setProjectName('');
+      setSelectedTemplateId(null);
+    } catch (err) {
+      useToastStore.getState().addToast({
+        type: 'error',
+        title: 'Failed to create project',
+        message: err instanceof Error ? err.message : 'An unexpected error occurred.',
+      });
+    } finally {
+      setIsCreating(false);
+    }
   };
 
   const scrollToImporter = useCallback(() => {
@@ -431,7 +443,6 @@ export default function HomePage() {
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               placeholder="My Project"
-              maxLength={255}
               className="input-field"
               autoFocus
               onKeyDown={(e) => {
@@ -503,6 +514,7 @@ export default function HomePage() {
             <Button
               variant="primary"
               disabled={!projectName.trim()}
+              loading={isCreating}
               onClick={handleCreateProject}
             >
               Create

@@ -80,11 +80,36 @@ export default function EnvelopeEditor({ label, envelope, onChange }: EnvelopeEd
 
     ctx.beginPath();
     ctx.moveTo(timeToX(0), valToY(0));
-    ctx.lineTo(timeToX(attackEnd), valToY(1)); // Attack
-    ctx.lineTo(timeToX(holdEnd), valToY(1)); // Hold
-    ctx.lineTo(timeToX(decayEnd), valToY(envelope.sustain)); // Decay
-    ctx.lineTo(timeToX(sustainEnd), valToY(envelope.sustain)); // Sustain
-    ctx.lineTo(timeToX(releaseEnd), valToY(0)); // Release
+    ctx.lineTo(timeToX(attackEnd), valToY(1)); // Attack (linear)
+    ctx.lineTo(timeToX(holdEnd), valToY(1)); // Hold (flat)
+
+    // Decay: exponential ramp from peak (1.0) down to sustain level
+    const sustainLevel = envelope.sustain;
+    const attackEndX = timeToX(holdEnd);
+    const decayEndX = timeToX(decayEnd);
+    const decayPoints = 20;
+    for (let i = 1; i <= decayPoints; i++) {
+      const t = i / decayPoints;
+      const expValue = sustainLevel + (1 - sustainLevel) * Math.exp(-5 * t);
+      const px = attackEndX + (decayEndX - attackEndX) * t;
+      const py = valToY(expValue);
+      ctx.lineTo(px, py);
+    }
+
+    ctx.lineTo(timeToX(sustainEnd), valToY(sustainLevel)); // Sustain (flat)
+
+    // Release: exponential ramp from sustain level down to zero
+    const releaseStartX = timeToX(sustainEnd);
+    const releaseEndX = timeToX(releaseEnd);
+    const releasePoints = 20;
+    for (let i = 1; i <= releasePoints; i++) {
+      const t = i / releasePoints;
+      const expValue = sustainLevel * Math.exp(-5 * t);
+      const px = releaseStartX + (releaseEndX - releaseStartX) * t;
+      const py = valToY(expValue);
+      ctx.lineTo(px, py);
+    }
+
     ctx.stroke();
 
     // Fill under curve
@@ -122,6 +147,8 @@ export default function EnvelopeEditor({ label, envelope, onChange }: EnvelopeEd
 
       <canvas
         ref={canvasRef}
+        role="img"
+        aria-label={`AHDSR envelope: Attack ${envelope.attack}s, Hold ${envelope.hold}s, Decay ${envelope.decay}s, Sustain ${Math.round(envelope.sustain * 100)}%, Release ${envelope.release}s`}
         className="w-full h-16 rounded-lg border border-border"
       />
 

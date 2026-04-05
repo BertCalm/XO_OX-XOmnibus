@@ -1,4 +1,19 @@
 import { create } from 'zustand';
+
+/**
+ * Runtime guard for IndexedDB store snapshots — confirms the parsed value is a
+ * plain object whose keys are numeric pad indices and whose values are objects.
+ * Rejects arrays, primitives, and null so corrupt/stale blobs never poison stores.
+ */
+function isValidStoreSnapshot(data: unknown): data is Record<string, object> {
+  if (typeof data !== 'object' || data === null || Array.isArray(data)) return false;
+  for (const [key, val] of Object.entries(data as Record<string, unknown>)) {
+    if (isNaN(Number(key))) return false;
+    if (typeof val !== 'object' || val === null) return false;
+  }
+  return true;
+}
+
 import type { Project, ProgramType } from '@/types';
 import type { PadEnvelopeSettings } from '@/stores/envelopeStore';
 import {
@@ -33,6 +48,8 @@ interface ProjectState {
   isLoading: boolean;
   /** True while useAutoRestore is hydrating stores from IndexedDB on mount */
   isRestoring: boolean;
+  /** Mutex: true while a save is in flight — prevents concurrent saves */
+  isSaving: boolean;
 
   /** Create a new project and persist it to IndexedDB. Optionally apply a template. */
   createProject: (name: string, type: ProgramType, templateId?: string) => Promise<Project>;
@@ -51,6 +68,8 @@ interface ProjectState {
   saveNow: () => Promise<void>;
   /** Set the restoring flag (used by useAutoRestore) */
   setRestoring: (v: boolean) => void;
+  /** Set the isSaving mutex flag (used by useAutoSave) */
+  setIsSaving: (v: boolean) => void;
 }
 
 export const useProjectStore = create<ProjectState>((set, get) => ({
@@ -58,6 +77,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
   recentProjects: [],
   isLoading: false,
   isRestoring: false,
+  isSaving: false,
 
   createProject: async (name, type, templateId?) => {
     set({ isLoading: true });
@@ -156,13 +176,25 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
         if (project.storeSnapshots) {
           for (const snapshot of project.storeSnapshots) {
             try {
-              const data = JSON.parse(snapshot.data);
+              const data: unknown = JSON.parse(snapshot.data);
               if (snapshot.id.startsWith('envelopes')) {
-                useEnvelopeStore.setState({ padEnvelopes: data as Record<number, PadEnvelopeSettings> });
+                if (isValidStoreSnapshot(data)) {
+                  useEnvelopeStore.setState({ padEnvelopes: data as Record<number, PadEnvelopeSettings> });
+                } else {
+                  console.warn('Corrupt snapshot discarded:', snapshot.id);
+                }
               } else if (snapshot.id.startsWith('modulations')) {
-                useModulationStore.getState().bulkSetModulation(data);
+                if (isValidStoreSnapshot(data)) {
+                  useModulationStore.getState().bulkSetModulation(data);
+                } else {
+                  console.warn('Corrupt snapshot discarded:', snapshot.id);
+                }
               } else if (snapshot.id.startsWith('expressions')) {
-                useExpressionStore.getState().bulkSetExpressions(data);
+                if (isValidStoreSnapshot(data)) {
+                  useExpressionStore.getState().bulkSetExpressions(data);
+                } else {
+                  console.warn('Corrupt snapshot discarded:', snapshot.id);
+                }
               }
             } catch (e) {
               console.warn('Failed to restore store snapshot:', snapshot.id, e);
@@ -184,8 +216,13 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
   },
 
   saveNow: async () => {
+    // Mutex: bail out if a save is already in flight (from this call or useAutoSave)
+    if (get().isSaving) return;
+
     const current = get().currentProject;
     if (!current) return;
+
+    set({ isSaving: true });
 
     // Read live state from source-of-truth stores — the project object's
     // padAssignments/samples may be stale snapshots from load time.
@@ -224,6 +261,9 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
           projectId,
         }),
       ]);
+
+      // Remember last project for auto-restore on next page load — mirrors useAutoSave
+      try { localStorage.setItem('xo_ox_lastProjectId', projectId); } catch { /* noop — localStorage unavailable */ }
     } catch (error) {
       // Re-mark dirty sample IDs on failure so they're retried by auto-save
       if (dirtySampleIds.length > 0) {
@@ -232,8 +272,11 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       console.error('Manual save failed:', error);
       // Re-throw so UI callers can show an error toast
       throw error;
+    } finally {
+      set({ isSaving: false });
     }
   },
 
   setRestoring: (v) => set({ isRestoring: v }),
+  setIsSaving: (v) => set({ isSaving: v }),
 }));

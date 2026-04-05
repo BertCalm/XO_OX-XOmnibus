@@ -3,6 +3,7 @@ import type { AudioSample } from '@/types';
 import { parseFilenameForMapping } from '@/lib/audio/filenameParser';
 import { usePadStore } from '@/stores/padStore';
 import { deleteSample as deleteDbSample } from '@/lib/storage/db';
+import { useToastStore } from '@/stores/toastStore';
 
 interface AudioState {
   samples: AudioSample[];
@@ -11,12 +12,16 @@ interface AudioState {
   processingMessage: string;
   /** Track sample IDs that have been modified since last persist to IndexedDB */
   dirtySampleIds: Set<string>;
+  /** True while a batch operation is running — suppresses auto-save to avoid
+   *  thrashing IndexedDB with partial writes during long loops. */
+  isBatchProcessing: boolean;
 
   addSample: (sample: AudioSample) => void;
   removeSample: (id: string) => void;
   renameSample: (id: string, name: string) => void;
   setActiveSample: (id: string | null) => void;
   setSamples: (samples: AudioSample[]) => void;
+  setIsBatchProcessing: (v: boolean) => void;
 
   updateSample: (id: string, updates: Partial<AudioSample>) => void;
   /** Get and clear the dirty sample IDs set (called by auto-save after persisting) */
@@ -40,6 +45,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
   isProcessing: false,
   processingMessage: '',
   dirtySampleIds: new Set<string>(),
+  isBatchProcessing: false,
 
   addSample: (sample) =>
     set((state) => {
@@ -78,9 +84,14 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     // Delete from IndexedDB — fire-and-forget so UI isn't blocked.
     // If this fails, the sample persists in IDB as an orphan but is
     // harmless (it won't be loaded because no project references it).
-    deleteDbSample(id).catch((err) =>
-      console.warn('Failed to delete sample from IndexedDB:', id, err)
-    );
+    deleteDbSample(id).catch((err) => {
+      console.warn('Failed to delete sample from IndexedDB:', id, err);
+      useToastStore.getState().addToast({
+        type: 'warning',
+        title: 'Sample cleanup failed',
+        message: 'The sample file may persist in storage. Clear browser data if space is low.',
+      });
+    });
   },
 
   renameSample: (id, name) =>
@@ -167,4 +178,6 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 
   setProcessing: (isProcessing, message = '') =>
     set({ isProcessing, processingMessage: message }),
+
+  setIsBatchProcessing: (v) => set({ isBatchProcessing: v }),
 }));

@@ -1,3 +1,5 @@
+import { createOfflineContext } from './audioContext';
+
 /**
  * Pitch-shift an AudioBuffer by a number of semitones using phase vocoder
  * via the Web Audio API's offline rendering with playback rate changes
@@ -26,7 +28,7 @@ export async function pitchShiftSemitones(
 
   // Render at shifted pitch (this changes duration)
   const shiftedLength = Math.max(1, Math.ceil(sourceLength / rate));
-  const shiftedCtx = new OfflineAudioContext(numChannels, shiftedLength, sourceRate);
+  const shiftedCtx = createOfflineContext(numChannels, Math.max(1, shiftedLength), sourceRate);
 
   const bufferSource = shiftedCtx.createBufferSource();
   bufferSource.buffer = sourceBuffer;

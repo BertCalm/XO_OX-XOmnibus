@@ -240,7 +240,7 @@ export default function XpmExporter() {
             { id: 'Drum', label: 'Drum' },
           ]}
           activeTab={programType}
-          onChange={(t) => setProgramType(t as ProgramType)}
+          onChange={(t) => { const VALID_PROGRAM_TYPES = new Set(['Drum', 'Keygroup', 'Clip', 'Plugin']); if (VALID_PROGRAM_TYPES.has(t)) setProgramType(t as ProgramType); }}
           className="mb-4"
         />
 

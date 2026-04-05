@@ -112,13 +112,15 @@ export function generateNoiseBurst(
       data[i] = Math.random() * 2 - 1;
     }
 
-    // Apply first-order highpass filter manually
-    // y[n] = x[n] - x[n-1] + 0.995 * y[n-1]
+    // Apply first-order highpass filter (matched-Z, pole derived from airFrequency).
+    // a = exp(-2π * fc / sr). Filter equation: y = 0.5*(1+a)*(x - prevX) + a*prevY
+    const fc = config.airFrequency ?? 8000;
+    const a = Math.exp(-2 * Math.PI * fc / sampleRate);
     let prevX = 0;
     let prevY = 0;
     for (let i = 0; i < burstLength; i++) {
       const x = data[i];
-      const y = x - prevX + 0.995 * prevY;
+      const y = 0.5 * (1 + a) * (x - prevX) + a * prevY;
       data[i] = y;
       prevX = x;
       prevY = y;

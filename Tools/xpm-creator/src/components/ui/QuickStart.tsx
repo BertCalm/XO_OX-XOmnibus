@@ -56,7 +56,7 @@ export default function QuickStart({ onImportSamples, onImportKit, onNewProject 
         <p className="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Powered by</p>
         <div className="flex flex-wrap justify-center gap-2">
           {[
-            '15 Expression Modes',
+            '10 Expression Modes',
             '8-Layer Cycle Engine',
             '20 Boutique Themes',
             'Auto-Choke Intelligence',

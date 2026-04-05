@@ -5,6 +5,16 @@ export const metadata: Metadata = {
   title: 'XPM Creator',
   description: 'Create MPC XPM programs and XPN expansion packs from audio samples',
   manifest: '/manifest.json',
+  metadataBase: new URL('https://xo-ox.org'),
+  openGraph: {
+    title: 'XPM Creator',
+    description: 'Professional MPC expansion pack creator',
+    type: 'website',
+    siteName: 'XO_OX Designs',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export const viewport: Viewport = {

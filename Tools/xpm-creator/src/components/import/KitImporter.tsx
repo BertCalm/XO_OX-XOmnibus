@@ -276,6 +276,7 @@ export default function KitImporter() {
     // 1. Import audio samples and build filename → sampleId lookup
     // ------------------------------------------------------------------
     const fileToSampleId = new Map<string, string>();
+    const importedSampleIds: string[] = []; // Track IDs for undo cleanup
 
     // Determine available raw sample buffers (XPN extraction or loose files)
     const rawSamples: Map<string, ArrayBuffer> =
@@ -315,6 +316,7 @@ export default function KitImporter() {
           };
 
           audioStore.addSample(sample);
+          importedSampleIds.push(sampleId);
           // Map both exact filename and lowercase for case-insensitive matching
           fileToSampleId.set(fileName, sampleId);
           fileToSampleId.set(fileName.toLowerCase(), sampleId);
@@ -394,7 +396,21 @@ export default function KitImporter() {
       padStoreActions.updatePad(i, resolvedPads[i]);
     }
 
-    history.pushState('Import kit', usePadStore.getState().pads);
+    // Capture imported sample IDs in closure for undo cleanup
+    const sampleIdsToCleanup = [...importedSampleIds];
+    history.pushState('Import kit', usePadStore.getState().pads, {
+      onUndo: () => {
+        // Remove imported samples from audioStore when import is undone
+        const store = useAudioStore.getState();
+        for (const id of sampleIdsToCleanup) {
+          store.removeSample(id);
+        }
+      },
+      onRedo: () => {
+        // Re-import would require re-decoding — not practical.
+        // Samples will be re-added on re-import via the UI.
+      },
+    });
 
     // Populate envelope store with extracted envelope/filter settings
     const envelopeStore = useEnvelopeStore.getState();

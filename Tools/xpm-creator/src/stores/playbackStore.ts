@@ -94,7 +94,6 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
     }
 
     // Resolve sample buffers — try cache first, then async decode
-    const audioStore = useAudioStore.getState();
     const sampleLookup = (sampleId: string): AudioBuffer | null => {
       return getCachedBuffer(sampleId);
     };
@@ -103,7 +102,10 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
     try {
       for (const layer of activeLayers) {
         if (layer.sampleId && !getCachedBuffer(layer.sampleId)) {
-          const sample = audioStore.samples.find((s) => s.id === layer.sampleId);
+          // Re-read samples from live state — the snapshot captured before the
+          // ensureAudioContextRunning await may be stale if another operation
+          // concurrently updated the audio store.
+          const sample = useAudioStore.getState().samples.find((s) => s.id === layer.sampleId);
           if (sample) {
             await getDecodedBuffer(layer.sampleId, sample.buffer);
           }
@@ -189,10 +191,10 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
         // Guard: if generation has advanced, a new trigger owns this pad — bail out
         if ((get()._voiceGenerations[padIndex] ?? 0) !== generation) return;
         if (completedCount >= voices.length) {
-          // Clean up expression chains from state (forceStop also does this,
-          // so this is the natural-end cleanup path)
-          const storedChains = get().activeExpressionChains[padIndex];
-          if (storedChains) cleanupExpressionChains(storedChains);
+          // Clean up expression chains using the captured reference from voice
+          // creation — NOT from the store, which may have been overwritten by
+          // a concurrent re-trigger. This prevents OscillatorNode CPU leaks.
+          if (expressionChains.length > 0) cleanupExpressionChains(expressionChains);
           set((s) => {
             const newVoices = { ...s.activeVoices };
             delete newVoices[padIndex];

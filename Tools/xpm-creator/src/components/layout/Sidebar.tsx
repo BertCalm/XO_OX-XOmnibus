@@ -49,7 +49,7 @@ const sections: { id: SidebarSection; label: string; metaphor: string; icon: Rea
   },
   {
     id: 'export',
-    label: 'Ship It',
+    label: 'The Breath',
     metaphor: 'Export your creation',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -63,11 +63,12 @@ const sections: { id: SidebarSection; label: string; metaphor: string; icon: Rea
 export default function Sidebar({ activeSection, onSectionChange, sampleCount = 0 }: SidebarProps) {
   return (
     <aside className="w-16 lg:w-56 glass-panel border-r border-border flex flex-col py-3">
-      <nav className="flex-1 space-y-1 px-2">
+      <nav aria-label="Main navigation" className="flex-1 space-y-1 px-2">
         {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => onSectionChange(section.id)}
+            aria-current={activeSection === section.id ? 'page' : undefined}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
               transition-all duration-150
               ${activeSection === section.id
@@ -76,9 +77,9 @@ export default function Sidebar({ activeSection, onSectionChange, sampleCount = 
               }`}
           >
             <span className="flex-shrink-0 lg:hidden" title={`${section.label} — ${section.metaphor}`}>
-              {section.icon}
+              <span aria-hidden="true">{section.icon}</span>
             </span>
-            <span className="flex-shrink-0 hidden lg:block">{section.icon}</span>
+            <span aria-hidden="true" className="flex-shrink-0 hidden lg:block">{section.icon}</span>
             <span className="hidden lg:block">{section.label}</span>
             {section.id === 'samples' && sampleCount > 0 && (
               <span className="hidden lg:block ml-auto text-xs bg-accent-teal-light text-accent-teal

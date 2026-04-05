@@ -112,6 +112,8 @@ export default function XpnPackager() {
     }
   }, []);
 
+  const MAX_NAME_LENGTH = 32;
+
   const handleBuildXpn = useCallback(async () => {
     if (!title.trim() || programs.length === 0) return;
 
@@ -129,10 +131,10 @@ export default function XpnPackager() {
       const xpnPrograms: XpnProgram[] = programs.map((p, i) => {
         const names = groupNames.get(i);
         return {
-          name: p.name,
+          name: p.name.substring(0, MAX_NAME_LENGTH),
           xpmContent: p.xpmContent,
-          groupName: names?.group || 'Default',
-          subName: names?.sub || p.name,
+          groupName: (names?.group || 'Default').substring(0, MAX_NAME_LENGTH),
+          subName: (names?.sub || p.name).substring(0, MAX_NAME_LENGTH),
         };
       });
       exportStore.completeStep('prepare');
@@ -158,7 +160,7 @@ export default function XpnPackager() {
 
       const config: XpnPackageConfig = {
         metadata: {
-          title: title.trim(),
+          title: title.trim().substring(0, MAX_NAME_LENGTH),
           identifier: id,
           description: description.trim(),
           creator: creator.trim() || 'XPM Creator',
@@ -179,7 +181,7 @@ export default function XpnPackager() {
         exportStore.setOverallProgress(60 + (progress / 100) * 40);
       });
 
-      downloadXpn(blob, title.trim());
+      downloadXpn(blob, title.trim().substring(0, MAX_NAME_LENGTH));
       exportStore.completeStep('package');
       exportStore.setOverallProgress(100);
       exportStore.finishExport();

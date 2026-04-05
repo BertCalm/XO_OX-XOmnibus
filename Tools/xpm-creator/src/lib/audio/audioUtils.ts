@@ -61,7 +61,7 @@ export async function decodeArrayBuffer(
   }
 }
 
-export function audioBufferToFloat32(buffer: AudioBuffer): Float32Array[] {
+function audioBufferToFloat32(buffer: AudioBuffer): Float32Array[] {
   const channels: Float32Array[] = [];
   for (let i = 0; i < buffer.numberOfChannels; i++) {
     channels.push(buffer.getChannelData(i));

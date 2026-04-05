@@ -1,4 +1,4 @@
-import { DEFAULT_SAMPLE_RATE, DEFAULT_BIT_DEPTH } from '@/constants/mpcDefaults';
+import { DEFAULT_BIT_DEPTH } from '@/constants/mpcDefaults';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -168,9 +168,9 @@ export async function encodeWavAsync(
   });
 }
 
-export function encodeWavFromFloat32(
+function encodeWavFromFloat32(
   data: Float32Array,
-  sampleRate: number = DEFAULT_SAMPLE_RATE,
+  sampleRate: number,
   numChannels: number = 1,
   bitDepth: number = DEFAULT_BIT_DEPTH
 ): ArrayBuffer {

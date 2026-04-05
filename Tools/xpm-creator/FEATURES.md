@@ -90,7 +90,7 @@
 - Pre-decode on sample import
 
 ### Audio Context
-- Singleton AudioContext at 44100Hz sample rate
+- Singleton AudioContext at system native sample rate
 - Lazy initialization on first user interaction
 
 ---
@@ -491,10 +491,10 @@
 
 ## Technical Specifications
 
-- **123 TypeScript/TSX source files**
-- **11 Zustand state stores**
-- **27+ audio processing modules**
-- **44100Hz default sample rate**
+- **159 TypeScript/TSX source files**
+- **16 Zustand state stores**
+- **34 audio processing modules**
+- **System native sample rate**
 - **128 pads, 8 layers each = 1024 possible layer slots**
 - **32 mute groups**
 - **127 MIDI velocity levels**

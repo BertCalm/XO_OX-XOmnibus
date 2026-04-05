@@ -40,7 +40,7 @@ interface XpmCreatorDB extends DBSchema {
       data: string;     // JSON-stringified store state
       projectId: string;
     };
-    indexes: { 'by-project': string };
+    indexes: { 'by-projectId': string };
   };
 }
 
@@ -48,13 +48,13 @@ const DB_NAME = 'xpm-creator';
 const DB_VERSION = 3;
 
 let dbInstance: IDBPDatabase<XpmCreatorDB> | null = null;
-/** Cached error from a permanent open failure (e.g. private browsing). */
-let dbError: Error | null = null;
 /** In-flight promise prevents concurrent callers from opening duplicate connections. */
 let dbPromise: Promise<IDBPDatabase<XpmCreatorDB>> | null = null;
+/** Cached open error — once IndexedDB fails to open, every subsequent call throws
+ *  immediately without retrying the expensive openDB attempt. */
+let dbError: Error | null = null;
 
 export async function getDB(): Promise<IDBPDatabase<XpmCreatorDB>> {
-  // #809 — cache permanent failures so we don't retry on every call
   if (dbError) throw dbError;
   if (dbInstance) return dbInstance;
   if (dbPromise) return dbPromise;
@@ -62,7 +62,7 @@ export async function getDB(): Promise<IDBPDatabase<XpmCreatorDB>> {
   dbPromise = (async () => {
     try {
       const instance = await openDB<XpmCreatorDB>(DB_NAME, DB_VERSION, {
-        upgrade(db, oldVersion, _newVersion, transaction) {
+        upgrade(db, oldVersion) {
           // v1: samples + projects stores
           if (oldVersion < 1) {
             if (!db.objectStoreNames.contains('samples')) {
@@ -82,16 +82,13 @@ export async function getDB(): Promise<IDBPDatabase<XpmCreatorDB>> {
               db.createObjectStore('storeSnapshots', { keyPath: 'id' });
             }
           }
-          // v3: #806 — add projectId index on storeSnapshots to eliminate O(n)
-          // table scans. Handles both fresh installs (store created above in v2
-          // block) and upgrades from v2 (store already exists — access via the
-          // versionchange transaction, which is the only way to modify indexes).
+          // v3: add 'by-projectId' index on storeSnapshots so lookups are O(log n)
+          // rather than O(n) full-table scans. Also enables efficient cursor-based
+          // deletion in deleteStoreSnapshots without loading all rows into memory.
           if (oldVersion < 3) {
-            const snapshotStore = db.objectStoreNames.contains('storeSnapshots')
-              ? transaction.objectStore('storeSnapshots')
-              : db.createObjectStore('storeSnapshots', { keyPath: 'id' });
-            if (!snapshotStore.indexNames.contains('by-project')) {
-              snapshotStore.createIndex('by-project', 'projectId', { unique: false });
+            const store = db.transaction.objectStore('storeSnapshots');
+            if (!store.indexNames.contains('by-projectId')) {
+              store.createIndex('by-projectId', 'projectId');
             }
           }
         },
@@ -99,7 +96,8 @@ export async function getDB(): Promise<IDBPDatabase<XpmCreatorDB>> {
       dbInstance = instance;
       return instance;
     } catch (error) {
-      // #809 — cache the error so subsequent calls fail fast without retrying
+      // IndexedDB may be unavailable (private browsing, disabled, corrupt).
+      // Cache the error so subsequent calls fail fast without re-attempting openDB.
       dbError = new Error(
         `IndexedDB unavailable: ${error instanceof Error ? error.message : 'unknown error'}. ` +
         'Project data cannot be saved. Check that you are not in private browsing mode.'
@@ -166,10 +164,9 @@ export async function deleteProject(id: string): Promise<void> {
     cursor = await cursor.continue();
   }
 
-  // Delete associated store snapshots via index (O(k) not O(n))
+  // Delete associated store snapshots via index (avoids full-table scan)
   const snapshotStore = tx.objectStore('storeSnapshots');
-  const snapshotIndex = snapshotStore.index('by-project');
-  let snapshotCursor = await snapshotIndex.openCursor(id);
+  let snapshotCursor = await snapshotStore.index('by-projectId').openCursor(id);
   while (snapshotCursor) {
     await snapshotCursor.delete();
     snapshotCursor = await snapshotCursor.continue();
@@ -194,15 +191,13 @@ export async function getStoreSnapshots(
   projectId: string,
 ): Promise<XpmCreatorDB['storeSnapshots']['value'][]> {
   const db = await getDB();
-  // #806 — use projectId index (O(k)) instead of full table scan (O(n))
-  return db.getAllFromIndex('storeSnapshots', 'by-project', projectId);
+  return db.getAllFromIndex('storeSnapshots', 'by-projectId', projectId);
 }
 
 export async function deleteStoreSnapshots(projectId: string): Promise<void> {
   const db = await getDB();
-  // #806 — use projectId index to find only matching records (O(k) not O(n))
   const tx = db.transaction('storeSnapshots', 'readwrite');
-  let cursor = await tx.store.index('by-project').openCursor(projectId);
+  let cursor = await tx.store.index('by-projectId').openCursor(projectId);
   while (cursor) {
     await cursor.delete();
     cursor = await cursor.continue();

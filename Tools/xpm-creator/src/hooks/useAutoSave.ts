@@ -47,6 +47,17 @@ export function useAutoSave() {
       // with incomplete data (e.g., pads loaded but envelopes still default).
       if (useProjectStore.getState().isRestoring) return;
 
+      // Guard: don't save while a batch operation is running — it produces
+      // a rapid stream of sample mutations and we only want one final save
+      // after the full batch completes to avoid thrashing IndexedDB with
+      // dozens of partial writes and potential mid-batch corrupt snapshots.
+      if (useAudioStore.getState().isBatchProcessing) return;
+
+      // Mutex: bail out if saveNow() is already in flight to prevent
+      // concurrent IndexedDB writes and double-consuming dirty sample IDs.
+      if (useProjectStore.getState().isSaving) return;
+      useProjectStore.getState().setIsSaving(true);
+
       const livePads = usePadStore.getState().pads;
       const liveSamples = useAudioStore.getState().samples;
 
@@ -124,6 +135,8 @@ export function useAutoSave() {
             message: error instanceof Error ? error.message : 'Changes may not persist across page reloads.',
           });
         }
+      } finally {
+        useProjectStore.getState().setIsSaving(false);
       }
     }, 2000); // 2 second debounce
 

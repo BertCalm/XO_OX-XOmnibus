@@ -66,9 +66,10 @@ export function sliceAudioBuffer(
     sampleRate
   );
 
-  // Micro-fade length: 32 samples (~0.7ms at 44100Hz) — enough to
-  // eliminate clicks without audibly affecting transient attacks.
-  const fadeSamples = Math.min(32, Math.floor(length / 4));
+  // Micro-fade length: ~0.7ms, rate-adaptive (~31 samples at 44.1kHz,
+  // ~34 at 48kHz, ~67 at 96kHz) — enough to eliminate clicks without
+  // audibly affecting transient attacks.
+  const fadeSamples = Math.min(Math.floor(0.0007 * source.sampleRate), Math.floor(length / 4));
 
   for (let ch = 0; ch < source.numberOfChannels; ch++) {
     const sourceData = source.getChannelData(ch);

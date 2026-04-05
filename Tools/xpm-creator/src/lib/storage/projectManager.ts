@@ -76,8 +76,8 @@ export async function loadProject(id: string): Promise<Project | null> {
       isFavorite: Boolean(s.isFavorite),
       waveformPeaks: (() => { try { return JSON.parse(s.waveformPeaks || '[]'); } catch { return []; } })(),
     })),
-    padAssignments: (() => { try { return JSON.parse(projectData.padAssignmentsJson || '[]'); } catch { return []; } })(),
-    programs: (() => { try { return JSON.parse(projectData.programsJson || '[]'); } catch { return []; } })(),
+    padAssignments: (() => { try { const p = JSON.parse(projectData.padAssignmentsJson || '[]'); return Array.isArray(p) ? p : []; } catch { return []; } })(),
+    programs: (() => { try { const p = JSON.parse(projectData.programsJson || '[]'); return Array.isArray(p) ? p : []; } catch { return []; } })(),
     storeSnapshots: snapshots,
   };
 }
@@ -107,17 +107,6 @@ export async function persistProjectState(
       }
     }
   }
-}
-
-export async function addSampleToProject(
-  projectId: string,
-  sample: AudioSample
-): Promise<void> {
-  await saveSample(serializeSample(sample, projectId));
-}
-
-export async function removeSampleFromProject(sampleId: string): Promise<void> {
-  await deleteSample(sampleId);
 }
 
 // Runtime validation set for ProgramType values from IndexedDB —

@@ -45,7 +45,8 @@ function scheduleAHDSR(
   sustain: number,
   peakValue: number = 1,
   baseValue: number = 0,
-  exponential: boolean = false
+  exponential: boolean = false,
+  minSustain: number = 0.001
 ): void {
   const eps = 0.001; // small value to avoid 0 for exponential ramps
 
@@ -69,9 +70,9 @@ function scheduleAHDSR(
   const sustainValue = baseValue + sustain * (peakValue - baseValue);
   const decayEnd = holdEnd + Math.max(decay, 0.001);
   if (exponential) {
-    param.exponentialRampToValueAtTime(Math.max(sustainValue, eps), decayEnd);
+    param.exponentialRampToValueAtTime(Math.max(sustainValue, minSustain), decayEnd);
   } else {
-    param.linearRampToValueAtTime(Math.max(sustainValue, eps), decayEnd);
+    param.linearRampToValueAtTime(Math.max(sustainValue, minSustain), decayEnd);
   }
 
   // When sustain is zero (or near-zero), the exponential ramp can only
@@ -102,7 +103,7 @@ function scheduleRelease(
   } else {
     // Fallback for older browsers that lack cancelAndHoldAtTime
     param.cancelScheduledValues(releaseTime);
-    param.setValueAtTime(Math.max(param.value !== 0 ? param.value : 0.001, 0.001), releaseTime);
+    param.setValueAtTime(Math.max(param.value ?? 0.001, 0.001), releaseTime);
   }
   const endValue = Math.max(targetValue, 0.001);
   const endTime = releaseTime + Math.max(release, 0.005);
@@ -132,7 +133,7 @@ function applyRandomization(base: number, randomAmount: number, min: number, max
 
 // ----- Single Voice Playback -----
 
-export function playPadVoice(
+function playPadVoice(
   ctx: AudioContext,
   audioBuffer: AudioBuffer,
   layer: PadLayer,
@@ -210,7 +211,9 @@ export function playPadVoice(
         filterEnvelope.decay,
         filterEnvelope.sustain,
         peakFreq,
-        baseFreq
+        baseFreq,
+        false,           // linear ramps for frequency domain
+        MIN_FILTER_FREQ  // sustain floor: 60 Hz, never sub-audible
       );
     } else {
       filterNode.frequency.value = baseFreq;
@@ -444,12 +447,6 @@ export function playPad(
 
 // ----- Voice Management -----
 
-export function stopVoices(voices: PadVoiceHandle[]): void {
-  for (const voice of voices) {
-    voice.stop();
-  }
-}
-
 export function forceStopVoices(voices: PadVoiceHandle[]): void {
   for (const voice of voices) {
     voice.forceStop();
@@ -474,7 +471,7 @@ export function fadeStopVoices(voices: PadVoiceHandle[], fadeDuration: number = 
       } else {
         // Fallback for older browsers
         voice.gainEnv.gain.cancelScheduledValues(now);
-        voice.gainEnv.gain.setValueAtTime(Math.max(voice.gainEnv.gain.value !== 0 ? voice.gainEnv.gain.value : 0.001, 0.001), now);
+        voice.gainEnv.gain.setValueAtTime(Math.max(voice.gainEnv.gain.value ?? 0.001, 0.001), now);
       }
       voice.gainEnv.gain.linearRampToValueAtTime(0.0001, now + fadeDuration);
 

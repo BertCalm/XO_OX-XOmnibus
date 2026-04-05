@@ -96,8 +96,8 @@ export default function MidiPanel() {
       console.error('MIDI init failed:', err);
       useToastStore.getState().addToast({
         type: 'error',
-        title: 'MIDI initialization failed',
-        message: err instanceof Error ? err.message : 'Could not access MIDI devices.',
+        title: 'MIDI unavailable',
+        message: 'Check that your browser supports Web MIDI and that permission was granted.',
       });
     }
   }, []);
@@ -211,8 +211,17 @@ export default function MidiPanel() {
             {/* Refresh button */}
             <button
               onClick={async () => {
-                const available = getAvailableInputs();
-                setInputs(available);
+                try {
+                  const available = getAvailableInputs();
+                  setInputs(available);
+                } catch (err) {
+                  console.error('MIDI refresh failed:', err);
+                  useToastStore.getState().addToast({
+                    type: 'error',
+                    title: 'MIDI refresh failed',
+                    message: err instanceof Error ? err.message : 'Could not refresh MIDI devices.',
+                  });
+                }
               }}
               className="text-[10px] text-text-muted hover:text-text-primary
                 transition-colors underline"

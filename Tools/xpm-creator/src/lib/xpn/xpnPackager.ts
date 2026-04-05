@@ -43,16 +43,17 @@ export async function buildXpnPackage(
 
   // Add cover art
   if (config.coverArt) {
-    // Safety: strip MIME prefix if present (e.g. 'image/jpeg' → 'jpeg' → 'jpg')
-    const rawType = config.coverArt.type;
-    const ext = rawType.replace(/^image\//, '').replace('jpeg', 'jpg');
+    // Safety: strip MIME prefix if present then whitelist to jpg/png only
+    const rawType = config.coverArt.type.replace(/^image\//, '').replace('jpeg', 'jpg');
+    const ext = rawType === 'jpg' || rawType === 'jpeg' ? 'jpg' : 'png';
     zip.file(`${rootDir}/Metadata/cover.${ext}`, config.coverArt.data);
     reportProgress('Added cover art');
   }
 
   // Add preview audio
   if (config.previewAudio) {
-    const ext = config.previewAudio.type;
+    const VALID_AUDIO_TYPES = new Set(['wav', 'mp3']);
+    const ext = VALID_AUDIO_TYPES.has(config.previewAudio.type) ? config.previewAudio.type : 'wav';
     zip.file(`${rootDir}/Metadata/preview.${ext}`, config.previewAudio.data);
   }
 
@@ -91,7 +92,8 @@ export async function buildXpnPackage(
         'Re-import the sample and try exporting again.'
       );
     }
-    zip.file(`${rootDir}/Content/Samples/${sample.fileName}`, sample.data, {
+    const safeName = sample.fileName.split('/').pop()?.split('\\').pop() ?? sample.fileName;
+    zip.file(`${rootDir}/Content/Samples/${safeName}`, sample.data, {
       compression: 'STORE',
     });
     reportProgress(`Added sample: ${sample.fileName}`);
@@ -163,7 +165,8 @@ export async function downloadXpmWithSamples(
   for (const sample of samples) {
     // Use STORE for WAV samples — PCM is not compressible and
     // some MPC firmware rejects DEFLATE-compressed audio
-    zip.file(sample.fileName, sample.data, { compression: 'STORE' });
+    const safeSampleName = sample.fileName.split('/').pop()?.split('\\').pop() ?? sample.fileName;
+    zip.file(safeSampleName, sample.data, { compression: 'STORE' });
   }
 
   const blob = await zip.generateAsync({

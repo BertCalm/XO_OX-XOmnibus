@@ -21,7 +21,9 @@ export function generateXpmXml(program: XpmProgramData): string {
   lines.push('  </Version>');
 
   // Program block
-  lines.push(`  <Program type="${escapeXml(program.type)}">`);
+  const VALID_PROGRAM_TYPES = ['Drum', 'Keygroup', 'Clip', 'Plugin'];
+  const safeType = VALID_PROGRAM_TYPES.includes(program.type) ? program.type : 'Drum';
+  lines.push(`  <Program type="${safeType}">`);
   lines.push(`    <ProgramName>${escapeXml(program.name)}</ProgramName>`);
   lines.push(`    <AudioRoute>0</AudioRoute>`);
   lines.push(`    <Send1>${fmt(program.send1)}</Send1>`);

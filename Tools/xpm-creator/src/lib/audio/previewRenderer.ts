@@ -10,7 +10,7 @@ export interface PreviewConfig {
   bpm?: number;
   /** Duration in seconds (default 5) */
   duration?: number;
-  /** Sample rate (default 44100) */
+  /** Sample rate (default: derived from AudioContext.sampleRate) */
   sampleRate?: number;
   /** Specific pad indices to use. If undefined, auto-selects representative pads. */
   padIndices?: number[];
@@ -42,7 +42,6 @@ interface PatternEvent {
 
 const DEFAULT_BPM = 90;
 const DEFAULT_DURATION = 5;
-const DEFAULT_SAMPLE_RATE = 44100;
 const STEPS_PER_BAR = 16;
 const BARS_PER_PATTERN = 2;
 

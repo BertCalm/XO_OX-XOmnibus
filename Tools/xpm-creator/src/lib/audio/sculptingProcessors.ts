@@ -97,7 +97,9 @@ export function renderGranularCloud(
   // Floor of 64 samples prevents degenerate grains (grainSize=0.001 at 44.1 kHz
   // gives 44 samples — too short for windowing and pitch resampling).
   const grainSamples = Math.max(64, Math.floor(grainSize * sampleRate));
-  const totalGrains = Math.floor(density * (outputLength / sampleRate));
+  const MAX_GRAINS = 2000;
+  let totalGrains = Math.floor(density * (outputLength / sampleRate));
+  totalGrains = Math.min(MAX_GRAINS, totalGrains);
   const window = createGrainWindow(grainSamples, windowShape);
 
   for (let g = 0; g < totalGrains; g++) {
@@ -218,7 +220,9 @@ export function applyResonator(
     Math.floor(sampleRate * 0.5 * clampedFeedback),
     sampleRate * 2,
   );
-  const outputLength = source.length + tailSamples;
+  const maxOutputLength = sampleRate * 30;
+  let outputLength = source.length + tailSamples;
+  outputLength = Math.min(outputLength, maxOutputLength);
   const numChannels = source.numberOfChannels;
 
   const result = ctx.createBuffer(numChannels, outputLength, sampleRate);
@@ -345,7 +349,9 @@ export function renderSpectralFreeze(
   }
 
   // Output length
-  const outputLength = Math.floor(actualSlice * stretchFactor);
+  const MAX_OUTPUT_LENGTH = sampleRate * 10;
+  let outputLength = Math.floor(actualSlice * stretchFactor);
+  outputLength = Math.min(outputLength, MAX_OUTPUT_LENGTH);
   const result = ctx.createBuffer(2, outputLength, sampleRate); // Stereo
   const outL = result.getChannelData(0);
   const outR = result.getChannelData(1);

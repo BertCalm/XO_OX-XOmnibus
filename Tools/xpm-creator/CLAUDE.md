@@ -8,7 +8,7 @@
 ## Architecture
 - **Stores** (`src/stores/`): Zustand with `create<State>((set, get) => ({...}))` pattern
 - **Audio** (`src/lib/audio/`): Web Audio API — AudioContext, OfflineAudioContext, BiquadFilterNode
-- **Persistence**: IndexedDB via `src/lib/db.ts` + `projectManager.ts`; auto-save/restore via hooks
+- **Persistence**: IndexedDB via `src/lib/storage/db.ts` + `src/lib/storage/projectManager.ts`; auto-save/restore via hooks
 - **Undo/Redo**: `src/stores/historyStore.ts` — snapshot-based state history
 
 ## Critical Patterns (bugs found when violated)

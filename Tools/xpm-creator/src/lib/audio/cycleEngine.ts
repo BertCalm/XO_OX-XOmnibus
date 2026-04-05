@@ -100,9 +100,6 @@ function applyMicroPitch(buffer: AudioBuffer, cents: number): AudioBuffer {
  * Apply tanh soft-clip saturation at a given threshold.
  */
 function applySaturation(buffer: AudioBuffer, threshold: number): AudioBuffer {
-  // Guard: threshold=0 would cause division by zero in src[i]/threshold
-  if (threshold === 0) return buffer;
-
   const ctx = getAudioContext();
   const result = ctx.createBuffer(
     buffer.numberOfChannels,

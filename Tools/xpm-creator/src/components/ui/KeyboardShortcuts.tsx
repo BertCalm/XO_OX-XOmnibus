@@ -16,11 +16,15 @@ const SHORTCUTS = [
     category: 'Pad Operations',
     shortcuts: [
       { keys: ['\u2190', '\u2192'], description: 'Navigate pads' },
-      { keys: ['\u2191', '\u2193'], description: 'Navigate layers' },
+      { keys: ['\u2191\u2193'], description: 'Navigate pad rows' },
+      { keys: ['Shift', '\u2191\u2193'], description: 'Navigate layers' },
       { keys: ['Space'], description: 'Play current pad' },
+      { keys: ['Esc'], description: 'Stop all playback' },
       { keys: ['Del'], description: 'Clear current layer' },
       { keys: ['\u2318', 'Shift', 'C'], description: 'Copy pad' },
       { keys: ['\u2318', 'Shift', 'V'], description: 'Paste pad' },
+      { keys: ['Shift', 'D'], description: 'Duplicate pad to next empty' },
+      { keys: ['\u2318', 'K'], description: 'Command palette' },
     ],
   },
   {

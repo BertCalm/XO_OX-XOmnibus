@@ -98,7 +98,7 @@ function isInstrumentCustomized(inst: ParsedInstrument): boolean {
 /**
  * Extract the "Sonic DNA" from a single parsed instrument.
  */
-export function extractInstrumentDna(inst: ParsedInstrument, index: number): InstrumentDna {
+function extractInstrumentDna(inst: ParsedInstrument, index: number): InstrumentDna {
   return {
     index,
     volumeEnvelope: { ...inst.volumeEnvelope },

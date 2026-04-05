@@ -64,11 +64,3 @@ export function getProcessingMessage(category: string = 'general'): string {
   counters[category] = idx + 1;
   return messages[idx];
 }
-
-/**
- * Get a random processing message for a given category.
- */
-export function getRandomProcessingMessage(category: string = 'general'): string {
-  const messages = PROCESSING_MESSAGES[category] ?? PROCESSING_MESSAGES.general;
-  return messages[Math.floor(Math.random() * messages.length)];
-}

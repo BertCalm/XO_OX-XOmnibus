@@ -62,7 +62,11 @@ const SamplePlayer = React.memo(function SamplePlayer({ sampleId, buffer, name }
       setIsPlaying(true);
     } catch (error) {
       console.error('Playback failed:', error);
-      useToastStore.getState().addToast({ type: 'error', title: 'Playback failed' });
+      useToastStore.getState().addToast({
+        type: 'error',
+        title: 'Playback failed',
+        message: err instanceof Error ? err.message : 'Click anywhere to activate audio, then try again.',
+      });
       setIsPlaying(false);
     }
   }, [sampleId, buffer]);

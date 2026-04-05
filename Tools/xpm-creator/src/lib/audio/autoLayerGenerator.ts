@@ -760,6 +760,8 @@ function applySaturation(buffer: AudioBuffer, amount: number): AudioBuffer {
   const ctx = getAudioContext();
   const result = ctx.createBuffer(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
   const drive = 1 + amount * 4; // 1x to 5x overdrive
+  const tanhDrive = Math.tanh(drive);
+  if (tanhDrive === 0) return buffer;
 
   for (let ch = 0; ch < buffer.numberOfChannels; ch++) {
     const src = buffer.getChannelData(ch);
@@ -767,7 +769,7 @@ function applySaturation(buffer: AudioBuffer, amount: number): AudioBuffer {
     for (let i = 0; i < buffer.length; i++) {
       const driven = src[i] * drive;
       // Soft clipping using tanh
-      dest[i] = Math.tanh(driven) / Math.tanh(drive); // Normalize to preserve volume
+      dest[i] = Math.tanh(driven) / tanhDrive; // Normalize to preserve volume
     }
   }
 

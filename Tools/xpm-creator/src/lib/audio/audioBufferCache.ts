@@ -6,6 +6,9 @@ import { decodeArrayBuffer } from './audioUtils';
  */
 
 const MAX_CACHE_ENTRIES = 64;
+const MAX_CACHE_BYTES = 256 * 1024 * 1024; // 256 MB
+
+let currentCacheBytes = 0;
 
 interface CacheEntry {
   buffer: AudioBuffer;
@@ -20,16 +23,20 @@ function estimateSize(buffer: AudioBuffer): number {
   return buffer.length * buffer.numberOfChannels * 4; // Float32 = 4 bytes
 }
 
-/** Evict least-recently-used entries when cache exceeds max size. */
+/** Evict least-recently-used entries when cache exceeds max entry count or byte budget. */
 function evictIfNeeded(): void {
-  if (cache.size <= MAX_CACHE_ENTRIES) return;
+  if (cache.size <= MAX_CACHE_ENTRIES && currentCacheBytes <= MAX_CACHE_BYTES) return;
 
   const entries = Array.from(cache.entries()).sort(
     (a, b) => a[1].lastAccessed - b[1].lastAccessed
   );
 
-  while (cache.size > MAX_CACHE_ENTRIES && entries.length > 0) {
-    const [key] = entries.shift()!;
+  while (
+    (cache.size > MAX_CACHE_ENTRIES || currentCacheBytes > MAX_CACHE_BYTES) &&
+    entries.length > 0
+  ) {
+    const [key, entry] = entries.shift()!;
+    currentCacheBytes -= entry.byteSize;
     cache.delete(key);
   }
 }
@@ -56,11 +63,13 @@ export async function getDecodedBuffer(
     try {
       const audioBuffer = await decodeArrayBuffer(rawBuffer);
 
+      const byteSize = estimateSize(audioBuffer);
       cache.set(sampleId, {
         buffer: audioBuffer,
-        byteSize: estimateSize(audioBuffer),
+        byteSize,
         lastAccessed: Date.now(),
       });
+      currentCacheBytes += byteSize;
       evictIfNeeded();
 
       return audioBuffer;
@@ -93,7 +102,7 @@ export function getCachedBuffer(sampleId: string): AudioBuffer | null {
 /**
  * Pre-decode a buffer into the cache (fire-and-forget).
  */
-export function preDecodeBuffer(sampleId: string, rawBuffer: ArrayBuffer): void {
+function preDecodeBuffer(sampleId: string, rawBuffer: ArrayBuffer): void {
   if (cache.has(sampleId) || decoding.has(sampleId)) return;
   getDecodedBuffer(sampleId, rawBuffer).catch((err) => {
     console.warn(`Pre-decode failed for ${sampleId}:`, err);
@@ -105,21 +114,26 @@ export function preDecodeBuffer(sampleId: string, rawBuffer: ArrayBuffer): void 
  */
 export function invalidateCache(sampleId?: string): void {
   if (sampleId) {
+    const entry = cache.get(sampleId);
+    if (entry) {
+      currentCacheBytes -= entry.byteSize;
+    }
     cache.delete(sampleId);
     decoding.delete(sampleId);
   } else {
     cache.clear();
     decoding.clear();
+    currentCacheBytes = 0;
   }
 }
 
 /** Current number of cached buffers. */
-export function getCacheSize(): number {
+function getCacheSize(): number {
   return cache.size;
 }
 
 /** Total approximate bytes of cached audio data. */
-export function getCacheTotalBytes(): number {
+function getCacheTotalBytes(): number {
   let total = 0;
   cache.forEach((entry) => {
     total += entry.byteSize;

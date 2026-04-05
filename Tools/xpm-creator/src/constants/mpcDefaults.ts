@@ -69,7 +69,8 @@ export const MAX_LAYERS_PER_PAD = 8;
 export const MAX_KEYGROUPS = 128;
 export const MAX_PADS = 128;
 export const MIDI_NOTE_RANGE = { min: 0, max: 127 };
-export const DEFAULT_SAMPLE_RATE = 44100;
+/** MPC hardware / XML compatibility value — not a runtime default. Use AudioContext.sampleRate at runtime. */
+export const MPC_LEGACY_SAMPLE_RATE = 44100;
 export const DEFAULT_BIT_DEPTH = 16;
 
 export const TRIGGER_MODES = {

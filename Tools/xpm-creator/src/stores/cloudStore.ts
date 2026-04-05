@@ -6,7 +6,6 @@ import type {
   CloudStorageAdapter,
 } from '@/lib/cloud/cloudStorageTypes';
 import { AUDIO_MIME_TYPES } from '@/lib/cloud/cloudStorageTypes';
-import { sanitizeErrorMessage } from '@/lib/sanitize';
 
 // ---------------------------------------------------------------------------
 // Stub adapter – returned when no real adapter is registered for a provider.
@@ -54,6 +53,8 @@ function createStubAdapter(provider: CloudProvider): CloudStorageAdapter {
 // ---------------------------------------------------------------------------
 
 const adapterRegistry = new Map<CloudProvider, CloudStorageAdapter>();
+
+// TODO: No cloud adapters are currently registered. This feature is not yet functional.
 
 /**
  * Register a concrete adapter (e.g. GoogleDriveAdapter) at app startup.
@@ -158,11 +159,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       // After connecting, automatically browse root
       await get().browse(provider);
     } catch (err) {
+      const userMessage =
+        err instanceof Error && err.message.length < 200
+          ? err.message.replace(/https?:\/\/[^\s]+/g, '[URL]')
+          : `Failed to connect to ${provider}. Check your connection and try again.`;
       set({
         connectingProvider: null,
-        error: sanitizeErrorMessage(
-          err instanceof Error ? err.message : `Failed to connect to ${provider}`
-        ),
+        error: userMessage,
       });
     }
   },
@@ -208,11 +211,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
         isLoading: false,
       });
     } catch (err) {
+      const userMessage =
+        err instanceof Error && err.message.length < 200
+          ? err.message.replace(/https?:\/\/[^\s]+/g, '[URL]')
+          : 'Cloud operation failed. Check your connection and try again.';
       set({
         isLoading: false,
-        error: sanitizeErrorMessage(
-          err instanceof Error ? err.message : 'Failed to list files'
-        ),
+        error: userMessage,
       });
     }
   },
@@ -305,9 +310,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       set({ isLoading: false });
       return result;
     } catch (err) {
-      const message = sanitizeErrorMessage(
-        err instanceof Error ? err.message : 'Failed to download file'
-      );
+      const message =
+        err instanceof Error && err.message.length < 200
+          ? err.message.replace(/https?:\/\/[^\s]+/g, '[URL]')
+          : 'Cloud operation failed. Check your connection and try again.';
       set({ isLoading: false, error: message });
       throw new Error(message);
     }
@@ -339,7 +345,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
 
       if (failures.length > 0 && results.length === 0) {
         const message = `All ${failures.length} file(s) failed to download`;
-        set({ error: message }); // failure count only — no raw error content
+        set({ error: message });
         throw new Error(message);
       } else if (failures.length > 0) {
         set({ error: `${failures.length} file(s) failed: ${failures.join(', ')}` });
@@ -350,9 +356,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       // Re-throw if it was our own error, otherwise wrap
       set({ isLoading: false });
       if (err instanceof Error && get().error) throw err;
-      const message = sanitizeErrorMessage(
-        err instanceof Error ? err.message : 'Failed to import files'
-      );
+      const message =
+        err instanceof Error && err.message.length < 200
+          ? err.message.replace(/https?:\/\/[^\s]+/g, '[URL]')
+          : 'Cloud operation failed. Check your connection and try again.';
       set({ error: message });
       throw new Error(message);
     }
@@ -366,9 +373,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       set({ isLoading: false });
       return result;
     } catch (err) {
-      const message = sanitizeErrorMessage(
-        err instanceof Error ? err.message : `Failed to upload "${name}"`
-      );
+      const message =
+        err instanceof Error && err.message.length < 200
+          ? err.message.replace(/https?:\/\/[^\s]+/g, '[URL]')
+          : 'Cloud operation failed. Check your connection and try again.';
       set({ isLoading: false, error: message });
       throw new Error(message);
     }

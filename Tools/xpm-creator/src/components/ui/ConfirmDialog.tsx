@@ -59,7 +59,7 @@ export default function ConfirmDialog({
   variant = 'danger',
 }: ConfirmDialogProps) {
   return (
-    <Modal open={open} onClose={onCancel} size="sm">
+    <Modal open={open} onClose={onCancel} title={title} size="sm">
       <div className="flex gap-3">
         {variantIcon[variant]}
         <div className="flex-1 min-w-0">

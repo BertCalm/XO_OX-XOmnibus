@@ -26,6 +26,9 @@ import CycleEnginePanel from './CycleEnginePanel';
 import SpectralAirPanel from './SpectralAirPanel';
 import BatchTailTamer from '@/components/tools/BatchTailTamer';
 import TimeTraveler from '@/components/tools/TimeTraveler';
+import SubTailPanel from './SubTailPanel';
+import EraMasteringPanel from './EraMasteringPanel';
+import ExpressionModePanel from './ExpressionModePanel';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useToastStore } from '@/stores/toastStore';
 
@@ -242,10 +245,11 @@ export default function PadLayerEditor() {
                   <path d="M3 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
                 </svg>
                 <span className="text-[10px] text-text-muted uppercase tracking-wider">
-                  Advanced Tools (13 tools)
+                  Advanced Tools (16 tools)
                 </span>
               </button>
               {showAdvancedTools && (
+              <div className="space-y-3">
               <div className="flex gap-1 flex-wrap">
                 {/* Ghost Note Generator */}
                 <button
@@ -424,6 +428,7 @@ export default function PadLayerEditor() {
                     const capturedPadIdx = activePadIndex;
                     const padState = usePadStore.getState();
                     const currentPad = padState.pads[capturedPadIdx];
+                    if (!currentPad) return;
                     const activeLayers = currentPad.layers.filter((l) => l.active && l.sampleId);
                     if (activeLayers.length === 0) return;
 
@@ -499,6 +504,16 @@ export default function PadLayerEditor() {
                 >
                   🔄 Resample Pad
                 </button>
+              </div>
+
+              {/* Sub-Tail Generator */}
+              <SubTailPanel padIndex={activePadIndex} />
+
+              {/* Era Mastering */}
+              <EraMasteringPanel padIndex={activePadIndex} />
+
+              {/* Expression Mode */}
+              <ExpressionModePanel padIndex={activePadIndex} />
               </div>
               )}
             </div>
