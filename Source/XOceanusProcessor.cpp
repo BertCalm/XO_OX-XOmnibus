@@ -1582,8 +1582,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             firstBreathPending_.store(false, std::memory_order_release);
             if (enginePtrs[0] != nullptr) // engine must be ready
             {
-                firstBreathActive_     = true;
-                firstBreathEnginePtr_  = enginePtrs[0]; // remember which engine we triggered
+                firstBreathActive_      = true;
+                firstBreathGeneration_ = engineGeneration_.load(std::memory_order_acquire); // snapshot generation at arm time
                 firstBreathCountdown_  = static_cast<int>(
                     currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathTimeoutMs / 1000.0);
                 slotMidi[0].addEvent(
@@ -1593,16 +1593,16 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
 
         if (firstBreathActive_)
         {
-            // Engine-change cancellation: if the user loaded a different engine into
-            // slot 0 (or unloaded it), the slot-0 pointer no longer matches the engine
-            // that received the original note-on.  Sending a note-off to the new engine
-            // would be incorrect.  The outgoing Oxbow engine gets AllNotesOff via the
-            // 50ms crossfade mechanism, so we simply disarm without an extra note-off.
-            if (enginePtrs[0] != firstBreathEnginePtr_)
+            // Engine-change cancellation: if the engine generation counter has advanced
+            // since arm time, the slot-0 engine has been swapped (loaded or unloaded).
+            // Comparing raw pointers to a potentially-freed object is UB (#756); the
+            // generation counter is safe because it is an atomic integer that is never
+            // freed.  The outgoing engine gets AllNotesOff via the 50ms crossfade
+            // mechanism, so we simply disarm without an extra note-off here.
+            if (engineGeneration_.load(std::memory_order_relaxed) != firstBreathGeneration_)
             {
                 firstBreathActive_    = false;
                 firstBreathCountdown_ = 0;
-                firstBreathEnginePtr_ = nullptr;
             }
             else
             {
@@ -1627,7 +1627,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
                     firstBreathActive_    = false;
                     firstBreathCountdown_ = 0;
-                    firstBreathEnginePtr_ = nullptr;
                 }
                 else
                 {
@@ -1638,7 +1637,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                         slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
                         firstBreathActive_    = false;
                         firstBreathCountdown_ = 0;
-                        firstBreathEnginePtr_ = nullptr;
                     }
                 }
             }
@@ -2181,6 +2179,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
     auto shared = std::shared_ptr<SynthEngine>(std::move(newEngine));
     std::atomic_store(&engines[slot], shared);
 
+    // Increment generation counter so processBlock() can detect the swap without
+    // comparing raw pointers to potentially-freed objects (#756).
+    engineGeneration_.fetch_add(1, std::memory_order_release);
+
     // Update coupling matrix with the new engine pointer so it can resolve
     // IAudioBufferSink capabilities and activate/suspend AudioToBuffer routes.
     // Must pass the raw pointer so activeEngines[] is updated before sink resolution.
@@ -2223,6 +2225,10 @@ void XOceanusProcessor::unloadEngine(int slot)
 
     std::shared_ptr<SynthEngine> empty;
     std::atomic_store(&engines[slot], empty);
+
+    // Increment generation counter so processBlock() can detect the swap without
+    // comparing raw pointers to potentially-freed objects (#756).
+    engineGeneration_.fetch_add(1, std::memory_order_release);
 
     // SRO: Clear profiler and auditor for this slot
     engineProfilers[slot].reset();

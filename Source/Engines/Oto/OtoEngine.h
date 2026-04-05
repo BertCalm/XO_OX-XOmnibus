@@ -578,6 +578,44 @@ public:
                 if (!voice.active)
                     continue;
 
+                // Update amp envelope ADSR per block so knob changes take effect on held notes.
+                // Apply the same model-specific clamping used at noteOn.
+                {
+                    float atkParam = paramAttack  ? paramAttack->load()  : 0.08f;
+                    float decParam = paramDecay   ? paramDecay->load()   : 0.5f;
+                    float susParam = paramSustain ? paramSustain->load() : 0.8f;
+                    float relParam = paramRelease ? paramRelease->load() : 0.4f;
+                    float attack, decay, sustain, release;
+                    switch (organModel)
+                    {
+                    case 0: // Sho
+                        attack  = std::max(atkParam, 0.05f);
+                        decay   = decParam;
+                        sustain = susParam;
+                        release = std::max(relParam, 0.3f);
+                        break;
+                    case 1: // Sheng
+                        attack  = std::max(atkParam * 0.5f, 0.005f);
+                        decay   = decParam * 0.7f;
+                        sustain = susParam;
+                        release = relParam;
+                        break;
+                    case 2: // Khene
+                        attack  = atkParam;
+                        decay   = decParam;
+                        sustain = susParam * 0.9f;
+                        release = std::max(relParam * 0.6f, 0.05f);
+                        break;
+                    default: // Melodica
+                        attack  = std::max(atkParam * 0.8f, 0.003f);
+                        decay   = decParam;
+                        sustain = susParam;
+                        release = relParam;
+                        break;
+                    }
+                    voice.ampEnv.setADSR(attack, decay, sustain, release);
+                }
+
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 

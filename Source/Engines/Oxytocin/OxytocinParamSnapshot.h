@@ -3,6 +3,9 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 
+namespace xoxytocin
+{
+
 /// ParamSnapshot — cache all 29 oxy_ parameter values once per block.
 /// Never query APVTS on the audio thread per-sample; call update() once at
 /// the top of processBlock() and then read the plain POD fields throughout.
@@ -175,3 +178,5 @@ private:
     std::atomic<float>* pPan = nullptr;
     std::atomic<float>* pVoices = nullptr;
 };
+
+} // namespace xoxytocin

@@ -5,6 +5,7 @@
 // OperaConstants.h — Shared constants for all XOpera DSP modules
 //==============================================================================
 
+#include "../../DSP/FastMath.h"
 #include <cmath>
 #include <cstdint>
 #include <cstring>
@@ -48,22 +49,17 @@ static constexpr int kMaxClusters = kMaxPartials / kClusterMinSize;
 
 //==============================================================================
 // Shared fast math (for modules that don't use the SinTable)
+// Delegates to the fleet-wide Chebyshev minimax implementations in FastMath.h
+// (~0.002% error vs. the old Bhaskara parabola which had up to 45% error near 0°).
 //==============================================================================
 inline float fastSin(float x) noexcept
 {
-    constexpr float tp = 1.0f / kTwoPi;
-    x = x * tp + 0.5f;
-    x = x - static_cast<float>(static_cast<int>(x)) + (x < 0.0f ? 1.0f : 0.0f);
-    x = (x - 0.5f) * 2.0f;
-    constexpr float Q = 0.775f;
-    float y = 4.0f * x * (1.0f - std::fabs(x));
-    y = Q * y * (std::fabs(y) - 1.0f) + y;
-    return y;
+    return xoceanus::fastSin(x);
 }
 
 inline float fastCos(float x) noexcept
 {
-    return fastSin(x + kHalfPi);
+    return xoceanus::fastCos(x);
 }
 
 inline float flushDenormal(float x) noexcept

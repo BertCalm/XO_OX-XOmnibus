@@ -4,6 +4,9 @@
 #include <cmath>
 #include <algorithm>
 
+namespace xoxytocin
+{
+
 /// OxytocinMemory — global (not per-voice) session memory accumulator.
 ///
 /// Maintains running averages of I, P, C across the session.  When voices
@@ -94,3 +97,5 @@ private:
     float memP = 0.0f;
     float memC = 0.0f;
 };
+
+} // namespace xoxytocin

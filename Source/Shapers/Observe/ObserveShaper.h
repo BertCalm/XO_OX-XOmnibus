@@ -37,9 +37,11 @@ struct ObserveBand
     CytomicSVF tiltHighShelf; // Second filter used only in Tilt mode (type 11)
     float character = 0.0f;   // 0 = feliX (clinical), 1 = Oscar (warm)
 
-    // Transformer iron emulation state (Oscar mode)
+    // Transformer iron emulation state (Oscar mode) — independent L/R state
     float ironStateX = 0.0f;
     float ironStateY = 0.0f;
+    float ironStateXR = 0.0f;
+    float ironStateYR = 0.0f;
 
     // Tide LFO state
     float tidePhase = 0.0f;
@@ -54,6 +56,7 @@ struct ObserveBand
         filter.reset();
         tiltHighShelf.reset();
         ironStateX = ironStateY = 0.0f;
+        ironStateXR = ironStateYR = 0.0f;
         tidePhase = 0.0f;
         tideOut = 0.0f;
         rmsEnergy = rmsSmooth = 0.0f;
@@ -248,14 +251,22 @@ public:
                     bandL = fastTanh(bandL * drive) / drive;
                     bandR = fastTanh(bandR * drive) / drive;
 
-                    // Transformer iron HP emulation (matched-Z, 3 Hz)
+                    // Transformer iron HP emulation (matched-Z, 3 Hz) — L and R channels
                     if (effChar > 0.3f)
                     {
                         float ironCoeff = std::exp(-6.28318f * 3.0f / sr);
+
+                        // Left channel
                         float ironOutL = bandL - ironCoeff * band.ironStateX + ironCoeff * band.ironStateY;
                         band.ironStateX = bandL;
                         band.ironStateY = ironOutL;
                         bandL = ironOutL;
+
+                        // Right channel (independent state to preserve stereo phase integrity)
+                        float ironOutR = bandR - ironCoeff * band.ironStateXR + ironCoeff * band.ironStateYR;
+                        band.ironStateXR = bandR;
+                        band.ironStateYR = ironOutR;
+                        bandR = ironOutR;
                     }
                 }
 

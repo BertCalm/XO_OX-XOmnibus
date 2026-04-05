@@ -351,7 +351,6 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
-        attackTransientTracker = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int sampleIndex) const override
@@ -476,9 +475,6 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // Decay attack transient tracker (~50ms decay)
-        float transientDecay = std::exp(-1.0f / (srf * 0.05f));
-
         for (int s = 0; s < numSamples; ++s)
         {
             float warmthNow = smoothWarmth.process();
@@ -494,6 +490,13 @@ public:
             {
                 if (!voice.active)
                     continue;
+
+                // Update amp envelope ADSR per block so knob changes take effect on held notes
+                voice.ampEnv.setADSR(
+                    paramAttack  ? paramAttack->load()  : 0.005f,
+                    paramDecay   ? paramDecay->load()   : 0.8f,
+                    paramSustain ? paramSustain->load() : 0.6f,
+                    paramRelease ? paramRelease->load() : 0.5f);
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
@@ -559,8 +562,6 @@ public:
                 outR[s] = mixR;
             couplingCacheL = mixL;
             couplingCacheR = mixR;
-
-            attackTransientTracker *= transientDecay;
         }
 
         int count = 0;
@@ -617,8 +618,6 @@ public:
         v.panL = std::cos(pan * 1.5707963f);
         v.panR = std::sin(pan * 1.5707963f);
 
-        // Attack transient tracker
-        attackTransientTracker = vel;
     }
 
     void noteOff(int note) noexcept
@@ -748,7 +747,6 @@ private:
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;
     float aftertouchAmount = 0.0f;
-    float attackTransientTracker = 0.0f;
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingWarmthMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;

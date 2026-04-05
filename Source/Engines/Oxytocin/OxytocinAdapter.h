@@ -23,6 +23,9 @@
 namespace xoceanus
 {
 
+// Bring xoxytocin types into scope within this adapter
+using namespace xoxytocin;
+
 class OxytocinAdapter : public SynthEngine
 {
 public:
@@ -92,6 +95,34 @@ public:
         if (apvts_ != nullptr)
         {
             snap_.update(*apvts_);
+
+            // D002 Macros: apply block-rate macro modulations before coupling mods
+            // M1 CHARACTER: circuit age (warmth/grime) and circuit noise (texture)
+            //   range: circuitAge [0,1], circuitNoise [0,1]. Default 0.5 → no change.
+            {
+                const float m1 = pMacro1 ? pMacro1->load(std::memory_order_relaxed) : 0.5f;
+                snap_.circuitAge  = std::clamp(snap_.circuitAge  + (m1 - 0.5f) * 1.0f, 0.0f, 1.0f);
+                snap_.circuitNoise = std::clamp(snap_.circuitNoise + (m1 - 0.5f) * 0.3f, 0.0f, 1.0f);
+            }
+            // M2 MOVEMENT: LFO rate × up to 4× and warmth/passion envelope rates
+            {
+                const float m2 = pMacro2 ? pMacro2->load(std::memory_order_relaxed) : 0.5f;
+                snap_.lfoRate   = std::clamp(snap_.lfoRate   * (0.5f + m2 * 1.5f), 0.001f, 20.0f);
+                snap_.warmthRate = std::clamp(snap_.warmthRate * (0.5f + m2 * 1.5f), 0.01f, 8.0f);
+                snap_.passionRate = std::clamp(snap_.passionRate * (0.5f + m2 * 1.5f), 0.001f, 0.5f);
+            }
+            // M3 COUPLING: intimacy and commitment — core love-triangle coupling outputs
+            {
+                const float m3 = pMacro3 ? pMacro3->load(std::memory_order_relaxed) : 0.5f;
+                snap_.intimacy   = std::clamp(snap_.intimacy   + (m3 - 0.5f) * 0.6f, 0.0f, 1.0f);
+                snap_.commitment = std::clamp(snap_.commitment + (m3 - 0.5f) * 0.4f, 0.0f, 1.0f);
+            }
+            // M4 SPACE: feedback (spatial tail) and detune (stereo spread)
+            {
+                const float m4 = pMacro4 ? pMacro4->load(std::memory_order_relaxed) : 0.5f;
+                snap_.feedback = std::clamp(snap_.feedback + (m4 - 0.5f) * 0.5f, 0.0f, 0.95f);
+                snap_.detune   = std::clamp(snap_.detune   + (m4 - 0.5f) * 60.0f, 0.0f, 100.0f);
+            }
 
             // Apply block-rate coupling modulations to snap before processing
             // AmpToFilter → modulate cutoff
@@ -240,6 +271,11 @@ public:
     {
         apvts_ = &apvts;
         snap_.attachParameters(apvts); // F02: cache 29 raw pointers once; update() has no string lookups
+        // D002 macros
+        pMacro1 = apvts.getRawParameterValue("oxy_macro1");
+        pMacro2 = apvts.getRawParameterValue("oxy_macro2");
+        pMacro3 = apvts.getRawParameterValue("oxy_macro3");
+        pMacro4 = apvts.getRawParameterValue("oxy_macro4");
     }
 
 private:
@@ -324,6 +360,16 @@ private:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"oxy_pan", 1}, "Oxytocin Pan",
                                               juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
         params.push_back(std::make_unique<PI>(juce::ParameterID{"oxy_voices", 1}, "Oxytocin Voices", 1, 8, 4));
+
+        // D002 Macros (4 required, range [0,1], default 0.5)
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oxy_macro1", 1}, "Oxy Character",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oxy_macro2", 1}, "Oxy Movement",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oxy_macro3", 1}, "Oxy Coupling",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"oxy_macro4", 1}, "Oxy Space",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     }
 
     //-- Members -----------------------------------------------------------------
@@ -331,6 +377,12 @@ private:
     OxytocinEngine engine_;
     ParamSnapshot snap_;
     juce::AudioProcessorValueTreeState* apvts_ = nullptr;
+
+    // D002 macro parameter pointers
+    std::atomic<float>* pMacro1 = nullptr; // CHARACTER: circuit age + noise
+    std::atomic<float>* pMacro2 = nullptr; // MOVEMENT:  LFO rate + envelope rates
+    std::atomic<float>* pMacro3 = nullptr; // COUPLING:  intimacy + commitment
+    std::atomic<float>* pMacro4 = nullptr; // SPACE:     feedback + detune
 
     // Coupling caches
     float couplingCacheL_ = 0.0f;

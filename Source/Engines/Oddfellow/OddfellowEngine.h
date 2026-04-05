@@ -429,6 +429,13 @@ public:
                 if (!voice.active)
                     continue;
 
+                // Update amp envelope ADSR per block so knob changes take effect on held notes
+                voice.ampEnv.setADSR(
+                    paramAttack  ? paramAttack->load()  : 0.005f,
+                    paramDecay   ? paramDecay->load()   : 0.6f,
+                    paramSustain ? paramSustain->load() : 0.5f,
+                    paramRelease ? paramRelease->load() : 0.4f);
+
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 

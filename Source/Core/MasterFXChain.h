@@ -88,7 +88,7 @@ public:
     //--------------------------------------------------------------------------
     // Shaper slot management — delegates to ShaperRegistry.
     // Call from the message thread (before or after prepare); the registry
-    // stores unique_ptr<ShaperEngine> and calls prepare() internally.
+    // stores shared_ptr<ShaperEngine> and calls prepare() internally.
 
     /// Load a shaper into a bus slot (0-1) by registry ID (e.g. "Oxide", "Observe").
     /// Pass an empty string to clear the slot. prepare() must have been called first

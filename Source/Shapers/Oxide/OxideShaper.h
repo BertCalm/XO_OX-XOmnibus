@@ -107,6 +107,7 @@ public:
         preLSStateL = preLSStateR = 0.0f;
         preHSStateL = preHSStateR = 0.0f;
         postTiltStateL = postTiltStateR = 0.0f;
+        tapeStateL_ = tapeStateR_ = 0.0f;
         harmonicDensityCoupling = 0.0f;
         saturationAmountCoupling = 0.0f;
     }
@@ -246,13 +247,16 @@ public:
             }
             case 1: // Tape — soft clipping with HF rolloff
             {
+                // Record head saturates first, then playback head applies frequency response
                 float tapeDrive = driveAmt * 0.7f;
                 satL = fastTanh(satL * tapeDrive);
                 satR = fastTanh(satR * tapeDrive);
-                // IEC2-style HF rolloff: simple 1-pole LP
+                // IEC2-style HF rolloff: one-pole LP with independent L/R state
                 float tapeCoeff = std::exp(-6.28318f * (12000.0f - modDrive * 6000.0f) / sr);
-                satL = satL * (1.0f - tapeCoeff) + satL * tapeCoeff;
-                satR = satR * (1.0f - tapeCoeff) + satR * tapeCoeff;
+                tapeStateL_ = tapeStateL_ * tapeCoeff + satL * (1.0f - tapeCoeff);
+                satL = tapeStateL_;
+                tapeStateR_ = tapeStateR_ * tapeCoeff + satR * (1.0f - tapeCoeff);
+                satR = tapeStateR_;
                 break;
             }
             case 2: // Transistor — hard knee, odd harmonics
@@ -491,6 +495,9 @@ private:
     float preLSStateL = 0.0f, preLSStateR = 0.0f;
     float preHSStateL = 0.0f, preHSStateR = 0.0f;
     float postTiltStateL = 0.0f, postTiltStateR = 0.0f;
+
+    // Tape mode one-pole LP state (per-channel to avoid stereo cross-contamination)
+    float tapeStateL_ = 0.0f, tapeStateR_ = 0.0f;
 
     // Coupling output
     float harmonicDensityCoupling = 0.0f;

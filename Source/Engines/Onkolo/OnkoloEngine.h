@@ -348,7 +348,6 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
-        attackTracker = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int sampleIndex) const override
@@ -466,8 +465,6 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        float transientDecay = std::exp(-1.0f / (srf * 0.03f));
-
         for (int s = 0; s < numSamples; ++s)
         {
             float funkNow = smoothFunk.process();
@@ -533,8 +530,6 @@ public:
                 outR[s] = mixR;
             couplingCacheL = mixL;
             couplingCacheR = mixR;
-
-            attackTracker *= transientDecay;
         }
 
         int count = 0;
@@ -584,7 +579,6 @@ public:
         v.panL = std::cos(pan * 1.5707963f);
         v.panR = std::sin(pan * 1.5707963f);
 
-        attackTracker = vel;
     }
 
     void noteOff(int note) noexcept
@@ -707,7 +701,6 @@ private:
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;
     float aftertouchAmount = 0.0f;
-    float attackTracker = 0.0f;
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingFunkMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;

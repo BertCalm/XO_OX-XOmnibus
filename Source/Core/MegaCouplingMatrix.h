@@ -61,6 +61,14 @@ public:
         // dynamic_cast from dest — safe because resolveAudioToBufferSinks() already
         // verified the cast is valid on the message thread.
         IAudioBufferSink* sinkCache = nullptr;
+
+        // Generation counter — stamped by resolveAudioToBufferSinks() on the
+        // message thread with the value of routeGeneration_ at the time the
+        // sinkCache was resolved. The audio thread skips any AudioToBuffer route
+        // whose validGeneration differs from the current routeGeneration_, which
+        // guarantees block-boundary atomicity: a sinkCache resolved against the
+        // old engine configuration is never used after an engine hot-swap. (#755)
+        uint64_t validGeneration = 0;
     };
 
     // Call from prepareToPlay to pre-allocate the coupling scratch buffers.
@@ -223,6 +231,11 @@ public:
         if (!routes || routes->empty())
             return;
 
+        // Load the current generation once per block (acquire) so processAudioRoute()
+        // can compare it against each route's validGeneration without re-reading the
+        // atomic inside the hot per-route loop. (#755)
+        const uint64_t currentGen = routeGeneration_.load(std::memory_order_acquire);
+
         for (const auto& route : *routes)
         {
             // One-pole smoother for coupling amount — prevents zipper noise on automation.
@@ -299,7 +312,7 @@ public:
             // Handled by processAudioRoute(); skip the standard path.
             if (route.type == CouplingType::AudioToBuffer)
             {
-                processAudioRoute(source, dest, route, limit);
+                processAudioRoute(source, dest, route, limit, currentGen);
                 continue;
             }
 
@@ -411,6 +424,13 @@ public:
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
 
+        // Bump the generation before stamping routes so the audio thread can never
+        // observe a route whose validGeneration matches the new generation but whose
+        // sinkCache still points to the old engine. The release ordering ensures that
+        // all route writes below are visible to the audio thread before it can load
+        // the incremented generation. (#755)
+        const uint64_t newGen = routeGeneration_.fetch_add(1, std::memory_order_release) + 1;
+
         bool changed = false;
         for (auto& r : *newRoutes)
         {
@@ -419,9 +439,10 @@ public:
 
             if (r.destSlot < 0 || r.destSlot >= MaxSlots)
             {
-                if (r.sinkCache != nullptr)
+                if (r.sinkCache != nullptr || r.validGeneration != newGen)
                 {
                     r.sinkCache = nullptr;
+                    r.validGeneration = newGen;
                     changed = true;
                 }
                 continue;
@@ -430,9 +451,10 @@ public:
             auto* destEngine = engines[static_cast<size_t>(r.destSlot)];
             auto* sink = (destEngine != nullptr) ? dynamic_cast<IAudioBufferSink*>(destEngine) : nullptr;
 
-            if (sink != r.sinkCache)
+            if (sink != r.sinkCache || r.validGeneration != newGen)
             {
                 r.sinkCache = sink;
+                r.validGeneration = newGen;
                 changed = true;
             }
         }
@@ -496,6 +518,14 @@ private:
 
     std::shared_ptr<std::vector<CouplingRoute>> routeList = std::make_shared<std::vector<CouplingRoute>>();
     std::array<std::atomic<SynthEngine*>, MaxSlots> activeEngines{};
+
+    // Generation counter for AudioToBuffer sink cache invalidation (#755).
+    // Incremented (release) on the message thread every time sink caches are
+    // re-resolved (resolveAudioToBufferSinks). Each CouplingRoute stores the
+    // generation it was resolved for in validGeneration; processAudioRoute()
+    // loads this counter (acquire) once per audio block and skips stale routes.
+    std::atomic<uint64_t> routeGeneration_{ 0 };
+
     std::vector<float> couplingBuffer;  // L / mono scratch — pre-allocated in prepare()
     std::vector<float> couplingBufferR; // R scratch for AudioToBuffer stereo push
 
@@ -565,7 +595,10 @@ private:
     // Full design: Docs/xopal_phase1_architecture.md §15.4
     // Phase 2 summary: Docs/audio_to_buffer_phase2.md
     //
-    void processAudioRoute(SynthEngine* source, SynthEngine* dest, const CouplingRoute& route, int numSamples)
+    // currentGen is the routeGeneration_ value loaded once at the top of processBlock.
+    // It is passed in to avoid re-reading the atomic on every AudioToBuffer route.
+    void processAudioRoute(SynthEngine* source, SynthEngine* dest, const CouplingRoute& route,
+                           int numSamples, uint64_t currentGen)
     {
         // Phase 2 cycle detection: skip self-routes.
         // A source slot routing to itself (AudioToBuffer with sourceSlot == destSlot)
@@ -573,9 +606,21 @@ private:
         if (route.sourceSlot == route.destSlot)
             return;
 
-        // dest is retained as a parameter for caller symmetry with processKnotRoute
-        // but is not used here — sink resolution now comes from route.sinkCache.
-        (void)dest;
+        // (#755) Generation guard — block-boundary atomicity for hot-swap safety.
+        //
+        // sinkCache was resolved on the message thread for a specific engine
+        // configuration. After an engine hot-swap, resolveAudioToBufferSinks()
+        // increments routeGeneration_ and re-stamps each route's validGeneration.
+        // Until the audio thread picks up the new route list (next loadRoutes()
+        // call), it may see the OLD route whose sinkCache points to the OLD engine.
+        //
+        // By comparing route.validGeneration against currentGen (loaded once at the
+        // top of processBlock with memory_order_acquire), we guarantee that any route
+        // whose sinkCache was resolved against a superseded engine configuration is
+        // silently dropped for exactly one block — the window between the swap and
+        // the next loadRoutes() call. No audio is written to the stale engine.
+        if (route.validGeneration != currentGen)
+            return;
 
         // Step 1: fill stereo scratch buffers from source coupling cache.
         for (int i = 0; i < numSamples; ++i)
@@ -587,18 +632,10 @@ private:
         // Step 2: obtain the IAudioBufferSink from the pre-resolved cache.
         // sinkCache is populated on the message thread by resolveAudioToBufferSinks().
         //
-        // SAFETY (W2 Audit CRITICAL-1/CRITICAL-2): During hot-swap there is a
-        // window where sinkCache may point to a stale engine being destroyed via
-        // the crossfade path. We validate by checking that `dest` (the engine
-        // pointer the caller resolved from its own shared_ptr snapshot for this
-        // block) is the same engine that sinkCache was derived from. If the engine
-        // was swapped, `dest` will be a different pointer than what sinkCache
-        // came from, and we skip. The `dest` pointer is guaranteed alive for
-        // the duration of this processBlock call because the caller holds the
-        // shared_ptr. We cannot compare sinkCache directly to dest due to
-        // multiple inheritance pointer offsets (IAudioBufferSink vs SynthEngine),
-        // so we use `dest` as a liveness witness: if dest is null or if
-        // sinkCache was cleared by resolveAudioToBufferSinks(), we skip safely.
+        // SAFETY (W2 Audit CRITICAL-1/CRITICAL-2 + #755): The generation guard above
+        // ensures sinkCache was resolved for the same engine configuration that is
+        // currently active. The null check below is a belt-and-suspenders guard for
+        // any race where sinkCache was legitimately nullptr (non-IAudioBufferSink dest).
         auto* sink = route.sinkCache;
         if (sink == nullptr || dest == nullptr)
             return;

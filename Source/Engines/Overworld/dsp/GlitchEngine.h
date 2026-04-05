@@ -55,6 +55,8 @@ public:
 
     float process(float x)
     {
+        juce::ScopedNoDenormals noDenormals;
+
         // Below threshold: bypass all processing
         if (amount < 0.1f || mix < 0.001f)
         {

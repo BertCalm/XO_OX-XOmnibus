@@ -4,6 +4,9 @@
 #include <cmath>
 #include <algorithm>
 
+namespace xoxytocin
+{
+
 /// OxytocinReactive — Huovilainen improved Moog 4-pole ladder filter.
 ///
 /// Commitment is expressed through the filter's memory:
@@ -193,3 +196,5 @@ private:
     float obsessionDriftPhase = 0.0f;
     float cachedObsessionDrift = 0.0f; // PERF-3: block-rate cached value
 };
+
+} // namespace xoxytocin

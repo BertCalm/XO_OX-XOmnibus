@@ -1270,16 +1270,19 @@ public:
         {
             noteInput.setMode(NoteInputZone::Mode::Pad);
             resized(); // swap NoteInputZone <-> KeysMode visibility
+            xouijaPanel_.grabKeyboardFocus();
         };
         modeButtons[1].onClick = [this]()
         {
             noteInput.setMode(NoteInputZone::Mode::Drum);
             resized();
+            xouijaPanel_.grabKeyboardFocus();
         };
         modeButtons[2].onClick = [this]()
         {
             noteInput.setMode(NoteInputZone::Mode::Keys);
             resized(); // show KeysMode, hide NoteInputZone
+            keysMode_.grabKeyboardFocus();
         };
 
         // Octave controls
@@ -1376,6 +1379,11 @@ public:
             xouijaPanel_.setVisible(!tideActive_);
             tideController_.setVisible(tideActive_);
             resized(); // re-layout so bounds are assigned to the now-visible component
+            // Route keyboard focus to whichever left-column panel is now active
+            if (tideActive_)
+                tideController_.grabKeyboardFocus();
+            else
+                xouijaPanel_.grabKeyboardFocus();
         };
 
         // Strip mode buttons
@@ -1649,9 +1657,11 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        // Forward to XOuija panel for gesture shortcuts (F=Freeze, H=Home, D=Drift, G=Goodbye, etc.)
-        if (xouijaPanel_.keyPressed(key))
-            return true;
+        // Let JUCE's focus chain route key events to the active sub-panel.
+        // XOuijaPanel and KeysMode each have setWantsKeyboardFocus(true) and
+        // their own keyPressed overrides; grabKeyboardFocus() is called on the
+        // relevant panel whenever a sub-mode becomes active (see tide toggle and
+        // modeButtons callbacks), so no manual delegation is needed here.
         return false;
     }
 

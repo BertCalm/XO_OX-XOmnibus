@@ -7,6 +7,9 @@
 #include "OxytocinThermal.h"    // for fastTanh (defined there as shared header)
 #include "../../DSP/FastMath.h" // for xoceanus::fastSin
 
+namespace xoxytocin
+{
+
 /// OxytocinDrive — MS-20-inspired asymmetric saturation waveshaper.
 ///
 /// Transfer function:
@@ -70,3 +73,5 @@ private:
     double sr = 0.0; // P1-7: default 0
     float screamPhase = 0.0f;
 };
+
+} // namespace xoxytocin

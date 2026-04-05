@@ -1071,11 +1071,8 @@ public:
         auto nr = [](float lo, float hi, float step = 0.f) { return juce::NormalisableRange<float>(lo, hi, step); };
 
         // --- CA control ---
-        // 2D Life CA mode intentionally disabled — obnt_mode range locked to {0,0} until production-ready.
-        // The ObiontCA2D implementation is architecturally complete but has not been validated
-        // for preset coverage or CPU cost. Enable by widening range to {0,1} and adding presets.
-        // Originally scoped out in issue #585; tracked for v1.1 in issue #666.
-        params.push_back(std::make_unique<PI>(P("obnt_mode", 1), "Mode", 0, 0, 0));
+        // obnt_mode (1D/2D toggle) removed — 2D Life CA not yet production-ready.
+        // Tracked for v1.1 in issue #666. Engine is hardwired to 1D Elementary CA (mode 0).
         params.push_back(std::make_unique<PI>(P("obnt_rule", 1), "Rule", 0, 255, 90));
         params.push_back(std::make_unique<PF>(P("obnt_ruleMorph", 1), "Rule Morph", nr(0.f, 1.f), 0.f));
         params.push_back(std::make_unique<PF>(P("obnt_evolutionRate", 1), "Evolution Rate", nr(0.1f, 50.f), 4.f));
@@ -1179,7 +1176,6 @@ public:
     // -------------------------------------------------------------------------
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        p_mode = apvts.getRawParameterValue("obnt_mode");
         p_rule = apvts.getRawParameterValue("obnt_rule");
         p_ruleMorph = apvts.getRawParameterValue("obnt_ruleMorph");
         p_evolutionRate = apvts.getRawParameterValue("obnt_evolutionRate");
@@ -1230,17 +1226,13 @@ public:
         juce::ScopedNoDenormals noDenormals;
 
         // 1. Parse MIDI
-        // Read mode before MIDI handling so noteOn seeds the correct CA grid.
-        // We read p_mode here (before the full ParamSnapshot below) to avoid a
-        // two-frame lag on mode switches at note-on boundaries.
-        const int midiBlockMode = p_mode ? (int)(p_mode->load() + 0.5f) : 0;
-
         for (const auto meta : midi)
         {
             const auto msg = meta.getMessage();
             if (msg.isNoteOn())
             {
-                handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), midiBlockMode);
+                // mode is hardwired to 0 (1D Elementary CA); 2D mode removed until v1.1
+                handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), 0);
                 wakeSilenceGate();
             }
             else if (msg.isNoteOff())
@@ -1282,7 +1274,7 @@ public:
         }
 
         // 4. ParamSnapshot — read all params once per block (zero-cost in the loop)
-        const int modeParam = (int)(p_mode->load() + 0.5f);
+        constexpr int modeParam = 0; // hardwired to 1D Elementary CA; obnt_mode removed
         const int ruleParam = (int)(p_rule->load() + 0.5f) & 0xFF;
         const float ruleMorph = std::clamp(p_ruleMorph->load(), 0.f, 1.f);
         const float baseEvoRate = p_evolutionRate->load();
@@ -1668,7 +1660,6 @@ private:
     // -------------------------------------------------------------------------
     // Raw parameter pointers (cached in attachParameters, read in renderBlock)
     // -------------------------------------------------------------------------
-    std::atomic<float>* p_mode = nullptr;
     std::atomic<float>* p_rule = nullptr;
     std::atomic<float>* p_ruleMorph = nullptr;
     std::atomic<float>* p_evolutionRate = nullptr;

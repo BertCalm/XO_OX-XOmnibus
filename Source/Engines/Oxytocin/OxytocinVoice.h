@@ -14,6 +14,9 @@
 #include "OxytocinMemory.h"
 #include "OxytocinParamSnapshot.h"
 
+namespace xoxytocin
+{
+
 /// Simple per-sample amplitude ADSR
 /// P1-2: coefficients are cached at block rate — never computed per-sample.
 class AmpEnvelope
@@ -512,3 +515,5 @@ private:
     OxytocinDrive drive;
     OxytocinReactive reactive;
 };
+
+} // namespace xoxytocin

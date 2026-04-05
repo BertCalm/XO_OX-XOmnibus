@@ -421,6 +421,12 @@ private:
     std::atomic<double> atomicSampleRate_{44100.0};
     std::atomic<int> currentBlockSize{512};
 
+    // Engine generation counter — incremented on every loadEngine() / unloadEngine()
+    // call (message thread).  Read on the audio thread in processBlock() to detect
+    // engine swaps without storing a raw pointer to a potentially-freed object.
+    // Replaces the raw firstBreathEnginePtr_ comparison (#756).
+    std::atomic<uint64_t> engineGeneration_{0};
+
     // SRO: Per-slot CPU profiling + fleet-wide auditor
     std::array<EngineProfiler, MaxSlots> engineProfilers;
     SROAuditor sroAuditor;
@@ -519,7 +525,7 @@ private:
     // Audio-thread-only state (no atomics needed):
     bool         firstBreathActive_{false};
     int          firstBreathCountdown_{0};
-    SynthEngine* firstBreathEnginePtr_{nullptr}; // slot-0 engine ptr at arm time; if it changes, breath is cancelled
+    uint64_t     firstBreathGeneration_{0}; // engineGeneration_ value at arm time; if it changes, breath is cancelled
     static constexpr int  kFirstBreathNote       = 48;     // C3
     static constexpr float kFirstBreathVelocity  = 60.0f / 127.0f;
     static constexpr int  kFirstBreathTimeoutMs  = 30000;  // 30-second failsafe

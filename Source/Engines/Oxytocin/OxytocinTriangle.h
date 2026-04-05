@@ -4,6 +4,9 @@
 #include <cmath>
 #include <algorithm>
 
+namespace xoxytocin
+{
+
 /// OxytocinTriangle — Sternberg barycentric love triangle.
 ///
 /// Maintains I/P/C coordinates (always sum to 1.0 in normalised space).
@@ -122,3 +125,5 @@ public:
     // Current coordinates (updated each block by voice/engine)
     LoveCoords current;
 };
+
+} // namespace xoxytocin

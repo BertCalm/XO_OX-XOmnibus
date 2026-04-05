@@ -542,6 +542,30 @@ public:
         const float glideAmt = (pGlide != nullptr) ? pGlide->load() : 0.0f;
         const int maxPoly = (pPolyphony != nullptr) ? (1 << std::min(3, static_cast<int>(pPolyphony->load()))) : 8;
 
+        // --- D002 Macros: apply block-rate modulations to local param copies ---
+        // M1 CHARACTER: drive + osc saturation character (drive range 1–10, +9 span)
+        const float m1 = (pMacro1 != nullptr) ? pMacro1->load() : 0.5f;
+        const float effectiveDrive = juce::jlimit(1.0f, 10.0f,
+            driveAmt + (m1 - 0.5f) * 9.0f);
+
+        // M2 MOVEMENT: LFO rate × 2 and filter envelope depth × 2
+        const float m2 = (pMacro2 != nullptr) ? pMacro2->load() : 0.5f;
+        const float effectiveLfoRate = juce::jlimit(0.01f, 30.0f,
+            lfoRate + (m2 - 0.5f) * 10.0f);
+        const float effectiveFilterEnv = juce::jlimit(-1.0f, 1.0f,
+            filterEnv + (m2 - 0.5f) * 0.8f);
+
+        // M3 COUPLING: scales coupling output level (0.5 = unity, 0 = silent, 1 = 2×)
+        const float m3 = (pMacro3 != nullptr) ? pMacro3->load() : 0.5f;
+        macroOutputScale = juce::jlimit(0.0f, 2.0f, m3 * 2.0f);
+
+        // M4 SPACE: delay mix + reverb mix (each +0.5 at macro=1)
+        const float m4 = (pMacro4 != nullptr) ? pMacro4->load() : 0.5f;
+        const float effectiveDelayMix = juce::jlimit(0.0f, 1.0f,
+            delayMix + (m4 - 0.5f) * 1.0f);
+        const float effectiveReverbMix = juce::jlimit(0.0f, 1.0f,
+            reverbMix + (m4 - 0.5f) * 0.6f);
+
         // Precompute glide coefficient (block-constant)
         float glideCoeff = 0.0f;
         if (glideAmt > 0.0f)
@@ -640,8 +664,8 @@ public:
         float filterMod = externalFilterMod;
         externalFilterMod = 0.0f;
 
-        // Setup LFO — main LFO rate/depth from params (D002 mod matrix rate offset applied)
-        lfo.setRate(juce::jlimit(0.01f, 30.0f, lfoRate + dubModLfoRateOffset), srf);
+        // Setup LFO — M2 MOVEMENT macro + mod matrix rate offset applied
+        lfo.setRate(juce::jlimit(0.01f, 30.0f, effectiveLfoRate + dubModLfoRateOffset), srf);
         bool hasLfo = lfoDepth > 0.001f;
 
         // DSP FIX: Secondary LFO — autonomous triangle modulation on the
@@ -649,7 +673,7 @@ public:
         // gentle filter movement; when main targets filter/amp, LFO2 adds
         // slow pitch drift. Rate = 1/3 of main (organic breathing rate).
         // This addresses the "weakest modulation in fleet" seance finding.
-        lfo2.setRate(std::max(0.05f, lfoRate * 0.333f), srf);
+        lfo2.setRate(std::max(0.05f, effectiveLfoRate * 0.333f), srf);
         lfo2.setShape(1);                // Triangle — softer movement than sine (StandardLFO::Triangle=1)
         bool hasLfo2 = lfoDepth > 0.05f; // only when main LFO is meaningfully active
 
@@ -750,9 +774,9 @@ public:
                 float envVal = voice.ampEnv.process();
                 float cutoffMod = filterCut + dubModCutoffOffset;
 
-                if (std::abs(filterEnv) > 0.001f)
+                if (std::abs(effectiveFilterEnv) > 0.001f)
                 {
-                    float envOffset = filterEnv * envVal * voice.velocity * 10000.0f;
+                    float envOffset = effectiveFilterEnv * envVal * voice.velocity * 10000.0f;
                     cutoffMod = std::max(20.0f, std::min(20000.0f, cutoffMod + envOffset));
                 }
                 if (std::abs(lfoCutoffMod) > 0.001f)
@@ -814,21 +838,21 @@ public:
         float* sendL = sendBufL.data();
         float* sendR = sendBufR.data();
 
-        // Drive (tanh saturation on send path)
-        if (driveAmt > 1.001f)
+        // Drive (tanh saturation on send path) — M1 CHARACTER macro applied
+        if (effectiveDrive > 1.001f)
         {
             for (int i = 0; i < numSamples; ++i)
             {
-                sendL[i] = fastTanh(sendL[i] * driveAmt);
-                sendR[i] = fastTanh(sendR[i] * driveAmt);
+                sendL[i] = fastTanh(sendL[i] * effectiveDrive);
+                sendR[i] = fastTanh(sendR[i] * effectiveDrive);
             }
         }
 
-        // Tape Delay
-        tapeDelay.processStereo(sendL, sendR, numSamples, delayTime, delayFb, delayWear, delayWow, delayMix);
+        // Tape Delay — M4 SPACE macro applied to mix
+        tapeDelay.processStereo(sendL, sendR, numSamples, delayTime, delayFb, delayWear, delayWow, effectiveDelayMix);
 
-        // Spring Reverb
-        springReverb.processStereo(sendL, sendR, numSamples, reverbSize, reverbDamp, reverbMix);
+        // Spring Reverb — M4 SPACE macro applied to mix
+        springReverb.processStereo(sendL, sendR, numSamples, reverbSize, reverbDamp, effectiveReverbMix);
 
         // --- Mix dry + return, write to output buffer ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -840,8 +864,8 @@ public:
             outL = fastTanh(outL);
             outR = fastTanh(outR);
 
-            // Apply engine level (D002: mod matrix level offset)
-            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, level + dubModLevelOffset);
+            // Apply engine level (D002: mod matrix level offset + M3 COUPLING output scale)
+            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, level + dubModLevelOffset) * macroOutputScale;
             outL *= effectiveLevel;
             outR *= effectiveLevel;
 
@@ -1069,6 +1093,20 @@ public:
         static const juce::StringArray kDubModDests {"Off", "Filter Cutoff", "LFO Rate", "Pitch", "Amp Level",
                                                       "Delay Mix"};
         ModMatrix<4>::addParameters(params, "dub_", "Dub", kDubModDests);
+
+        // D002 Macros (4 required, range [0,1], default 0.5)
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"dub_macro1", 1}, "Dub Character",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"dub_macro2", 1}, "Dub Movement",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"dub_macro3", 1}, "Dub Coupling",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"dub_macro4", 1}, "Dub Space",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5f));
     }
 
 public:
@@ -1111,6 +1149,10 @@ public:
         pGlide = apvts.getRawParameterValue("dub_glide");
         pPolyphony = apvts.getRawParameterValue("dub_polyphony");
         modMatrix.attachParameters(apvts, "dub_");
+        pMacro1 = apvts.getRawParameterValue("dub_macro1");
+        pMacro2 = apvts.getRawParameterValue("dub_macro2");
+        pMacro3 = apvts.getRawParameterValue("dub_macro3");
+        pMacro4 = apvts.getRawParameterValue("dub_macro4");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1296,6 +1338,13 @@ private:
     float dubModLfoRateOffset = 0.0f;
     float dubModPitchOffset   = 0.0f;
     float dubModLevelOffset   = 0.0f;
+
+    // D002 macros — 4 high-level performance controllers
+    std::atomic<float>* pMacro1 = nullptr; // CHARACTER: drive + osc waveform bias
+    std::atomic<float>* pMacro2 = nullptr; // MOVEMENT:  LFO rate + filter envelope depth
+    std::atomic<float>* pMacro3 = nullptr; // COUPLING:  output level (coupling send strength)
+    std::atomic<float>* pMacro4 = nullptr; // SPACE:     delay mix + reverb mix
+    float macroOutputScale = 1.0f;         // computed from M3 each block, read by coupling
 };
 
 } // namespace xoceanus

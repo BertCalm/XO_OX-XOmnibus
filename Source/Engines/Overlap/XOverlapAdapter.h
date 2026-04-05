@@ -114,9 +114,8 @@ public:
         extRingMod = 0.0f;
         extDelayMod = 0.0f;
 
-        // Cache params once per block — use stored apvts pointer
-        if (apvts_ptr != nullptr)
-            params.update(*apvts_ptr);
+        // Read all cached parameter pointers once per block — no string lookups or allocations
+        params.update();
 
         // Update envelope params on all active voices
         for (auto& v : voices)
@@ -639,7 +638,10 @@ public:
     }
 
     //==========================================================================
-    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override { apvts_ptr = &apvts; }
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
+    {
+        params.cachePointers(apvts); // cache all 41 raw pointers once — no lookups on audio thread
+    }
 
     //==========================================================================
     juce::String getEngineId() const override { return "Overlap"; }
@@ -653,9 +655,6 @@ private:
 
     static constexpr int kVoices = 6;
     static constexpr float kPanPositions[6] = {-1.0f, -0.6f, -0.2f, 0.2f, 0.6f, 1.0f};
-
-    // APVTS pointer — set in attachParameters(), used in renderBlock()
-    juce::AudioProcessorValueTreeState* apvts_ptr = nullptr;
 
     // DSP components
     std::array<xoverlap::Voice, kVoices> voices;

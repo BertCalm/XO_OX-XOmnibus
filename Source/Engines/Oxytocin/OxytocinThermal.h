@@ -16,6 +16,9 @@
 /// All block-rate coefficients are cached and only recomputed when the warmth
 /// rate changes (OPERA P0 lesson — never compute exp() per sample on iOS).
 
+namespace xoxytocin
+{
+
 // PERF-1: fast tanh — Pade [3/2] approximation, error < 0.001 for |x| < 4.
 // Shared by OxytocinThermal and OxytocinDrive.
 static inline float fastTanh(float x) noexcept
@@ -187,3 +190,5 @@ private:
     float signalEnvAttackCoeff = 0.0f;  // ~20 ms attack  (computed from sr in prepare())
     float signalEnvReleaseCoeff = 0.0f; // ~200 ms release (computed from sr in prepare())
 };
+
+} // namespace xoxytocin

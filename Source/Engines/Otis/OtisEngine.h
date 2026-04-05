@@ -1049,6 +1049,13 @@ public:
                 if (!voice.active)
                     continue;
 
+                // Update amp envelope ADSR per block so knob changes take effect on held notes
+                voice.ampEnv.setADSR(
+                    paramAttack  ? paramAttack->load()  : 0.005f,
+                    paramDecay   ? paramDecay->load()   : 0.3f,
+                    paramSustain ? paramSustain->load() : 0.8f,
+                    paramRelease ? paramRelease->load() : 0.3f);
+
                 // Process amp envelope
                 float ampEnvLevel = voice.ampEnv.process();
                 if (voice.ampEnv.getStage() == FilterEnvelope::Stage::Idle)

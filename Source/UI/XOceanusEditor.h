@@ -236,7 +236,7 @@ public:
         themeToggleBtn.onClick = [this]
         {
             const bool newState = themeToggleBtn.getToggleState();
-            GalleryColors::darkMode() = newState;
+            GalleryColors::setInstanceDarkMode(this, newState);
             laf->applyTheme();
             repaint();
             for (int i = 0; i < kNumPrimarySlots; ++i)
@@ -1289,6 +1289,7 @@ private:
                                             safeThis->chordPanel.setVisible(true);
                                             juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
                                                                                               kFadeMs);
+                                            safeThis->chordPanel.grabKeyboardFocus();
                                         });
         }
         else
@@ -1296,6 +1297,7 @@ private:
             chordPanel.setAlpha(0.0f);
             chordPanel.setVisible(true);
             anim.fadeIn(&chordPanel, kFadeMs);
+            chordPanel.grabKeyboardFocus();
         }
     }
 
@@ -1330,6 +1332,7 @@ private:
                                             safeThis->performancePanel.setVisible(true);
                                             juce::Desktop::getInstance().getAnimator().fadeIn(
                                                 &safeThis->performancePanel, kFadeMs);
+                                            safeThis->performancePanel.grabKeyboardFocus();
                                         });
         }
         else
@@ -1337,6 +1340,7 @@ private:
             performancePanel.setAlpha(0.0f);
             performancePanel.setVisible(true);
             anim.fadeIn(&performancePanel, kFadeMs);
+            performancePanel.grabKeyboardFocus();
         }
     }
 
@@ -1357,6 +1361,7 @@ private:
 
         // Make visible first so resized() sees it and computes correct bounds.
         playSurface_.setVisible(true);
+        playSurface_.grabKeyboardFocus();
 
         // P2-4: Set accent immediately — no 1-frame XO Gold flash on first open.
         {
@@ -1687,6 +1692,12 @@ private:
                 statusBar.setCockpitBypass(cockpitBypass_);
             }
         }
+
+        // ── ShaperRegistry deferred deletion drain (#751 fix) ─────────────────
+        // Audio thread may have deferred shared_ptr destruction here to avoid
+        // running ShaperEngine destructors on the RT thread.  Drain on every
+        // timer tick (worst case 1 second delay — well within acceptable range).
+        ShaperRegistry::instance().drainDeferredDeletions();
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.

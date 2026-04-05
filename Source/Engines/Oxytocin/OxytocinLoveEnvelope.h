@@ -4,6 +4,9 @@
 #include <cmath>
 #include <algorithm>
 
+namespace xoxytocin
+{
+
 /// LoveEnvelope — three distinct envelope shapes for Passion, Intimacy,
 /// and Commitment, each reflecting the psychological quality of that love
 /// component.
@@ -331,3 +334,5 @@ private:
     float cachedCommitReleaseCoeff = 0.0f;
     float cachedCommitPhaseInc = 0.0f;
 };
+
+} // namespace xoxytocin

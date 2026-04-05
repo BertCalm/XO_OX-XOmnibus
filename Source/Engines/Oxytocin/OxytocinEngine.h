@@ -11,6 +11,9 @@
 #include "OxytocinTriangle.h"
 #include "OxytocinParamSnapshot.h"
 
+namespace xoxytocin
+{
+
 /// LFO with 5 waveforms matching ParamSnapshot lfoShape.
 /// D005 floor lowered to 0.001 Hz — allows ~16-minute modulation cycles.
 class OxyLFO
@@ -342,3 +345,5 @@ private:
     OxyLFO lfo1;
     OxyLFO lfo2;
 };
+
+} // namespace xoxytocin

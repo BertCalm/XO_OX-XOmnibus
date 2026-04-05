@@ -14,7 +14,7 @@ namespace xoceanus
 {
 
 //==============================================================================
-// PresetBrowser — Searchable, filterable browser for 10,028+ factory presets.
+// PresetBrowser — Searchable, filterable browser for 18,100+ factory presets.
 //
 // Features:
 //   - Real-time text search (filters name, tags, description, engine names)
@@ -198,7 +198,10 @@ public:
                 btn->setBounds(px, py, pillW, pillH);
                 px += pillW + hGap;
             }
+            // Cap the mood pill area to 3 rows maximum so that the preset listBox
+            // can never be compressed to zero height at narrow widths (#771).
             int moodHeight = py - area.getY() + pillH;
+            moodHeight = std::min(moodHeight, pillH * 3 + vGap * 2);
             area.removeFromTop(moodHeight);
         }
         area.removeFromTop(6);
@@ -404,9 +407,10 @@ public:
     void timerCallback() override
     {
         stopTimer();
-        juce::Component::SafePointer<PresetBrowser> safe(this);
-        if (safe != nullptr)
-            safe->applyFilters();
+        // applyFilters() is non-blocking (async) so there is no need to guard
+        // against re-entry — a new dispatch simply bumps filterGeneration_ and
+        // supersedes any in-flight background job.
+        applyFilters();
     }
 
     //==========================================================================
@@ -434,15 +438,42 @@ private:
     SortMode userSortMode   = SortMode::NameAZ;
     SortMode currentSortMode = SortMode::NameAZ;
 
+    // Async filter state — filter+sort runs on a background thread (#753).
+    // filterGeneration_ is incremented on every dispatch so stale completions
+    // (from superseded keystrokes) are silently discarded.
+    // Results travel through move-captured lambda locals; no shared buffer needed.
+    std::atomic<uint32_t> filterGeneration_{ 0 };
+    std::atomic<bool>     filterPending_{ false };
+
     //==========================================================================
-    // Filtering
+    // Filtering — async implementation (#753)
+    //
+    // The expensive linear scan + std::sort over 18,100+ presets is moved off
+    // the JUCE message thread.  applyFilters() captures the current UI state,
+    // dispatches a background job, then returns immediately.  When the job
+    // finishes it posts results back via callAsync for a zero-copy swap into
+    // filteredPresets.
+    //
+    // Stale-result coalescing: each dispatch increments filterGeneration_.  The
+    // background lambda captures the generation it was launched with; if a newer
+    // dispatch has arrived by the time it tries to commit, it discards its results
+    // silently.  This means rapid keystrokes never pile up visible intermediate
+    // redraws — only the last one wins.
+    //
+    // Lifetime safety: the callAsync lambda captures a SafePointer<PresetBrowser>
+    // by value.  If the component is destroyed before the message arrives the
+    // SafePointer is null and we bail out without touching any dangling memory.
     //==========================================================================
 
     void applyFilters()
     {
-        juce::String searchText = searchBox.getText().trim().toLowerCase();
+        jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
 
-        // Get selected mood
+        // --- Capture all message-thread UI state before entering the background ---
+        const juce::String searchText   = searchBox.getText().trim().toLowerCase();
+        const SortMode     sortMode     = currentSortMode;
+        const bool         isSimilar    = similarActive;
+
         juce::String selectedMood;
         for (auto* btn : moodButtons)
         {
@@ -453,122 +484,170 @@ private:
             }
         }
 
-        filteredPresets.clear();
-        const auto& allPresets = presetManager.getLibrary();
+        // Take a snapshot of the library so the background thread works on an
+        // immutable copy and never races against preset library mutations.
+        const std::vector<PresetData> librarySnapshot = presetManager.getLibrary();
+        const int totalCount = static_cast<int>(librarySnapshot.size());
 
-        for (const auto& preset : allPresets)
+        // Bump generation so any in-flight job from a previous keystroke knows
+        // its results are obsolete.
+        const uint32_t myGeneration = ++filterGeneration_;
+        filterPending_.store(true);
+
+        // Show a lightweight "filtering…" hint in the status bar so the user
+        // knows work is in progress during large searches.
+        statusLabel.setText("Filtering\xe2\x80\xa6", juce::dontSendNotification);
+
+        // Capture a SafePointer by value for the message-thread callback.
+        juce::Component::SafePointer<PresetBrowser> safeThis(this);
+
+        juce::Thread::launch([safeThis,
+                              searchText,
+                              selectedMood,
+                              sortMode,
+                              isSimilar,
+                              librarySnapshot = std::move(librarySnapshot),
+                              totalCount,
+                              myGeneration,
+                              // Raw pointer only used inside callAsync (message thread),
+                              // never dereferenced on the background thread.
+                              rawThis = this]() mutable
         {
-            // Mood filter (skip if "All" is selected)
-            if (selectedMood.isNotEmpty() && selectedMood != "All")
-            {
-                if (preset.mood.compareIgnoreCase(selectedMood) != 0)
-                    continue;
-            }
+            // ---- Background thread: filter ----
+            std::vector<PresetData> filtered;
+            filtered.reserve(librarySnapshot.size());
 
-            // Text search filter — matches name, description, tags, and engines
-            if (searchText.isNotEmpty())
+            for (const auto& preset : librarySnapshot)
             {
-                bool matches = false;
-                if (preset.name.toLowerCase().contains(searchText))
-                    matches = true;
-                else if (preset.description.toLowerCase().contains(searchText))
-                    matches = true;
-                else
+                // Mood filter (skip "All")
+                if (selectedMood.isNotEmpty() && selectedMood != "All")
                 {
-                    for (const auto& tag : preset.tags)
-                        if (tag.toLowerCase().contains(searchText))
-                        {
-                            matches = true;
-                            break;
-                        }
-                }
-                if (!matches)
-                {
-                    for (const auto& eng : preset.engines)
-                        if (eng.toLowerCase().contains(searchText))
-                        {
-                            matches = true;
-                            break;
-                        }
+                    if (preset.mood.compareIgnoreCase(selectedMood) != 0)
+                        continue;
                 }
 
-                if (!matches)
-                    continue;
-            }
-
-            filteredPresets.push_back(preset);
-        }
-
-        // Sort according to currentSortMode
-        switch (currentSortMode)
-        {
-            case SortMode::NameAZ:
-                std::sort(filteredPresets.begin(), filteredPresets.end(),
-                          [](const PresetData& a, const PresetData& b)
-                          { return a.name.compareIgnoreCase(b.name) < 0; });
-                break;
-
-            case SortMode::NameZA:
-                std::sort(filteredPresets.begin(), filteredPresets.end(),
-                          [](const PresetData& a, const PresetData& b)
-                          { return a.name.compareIgnoreCase(b.name) > 0; });
-                break;
-
-            case SortMode::Mood:
-                std::sort(filteredPresets.begin(), filteredPresets.end(),
-                          [](const PresetData& a, const PresetData& b)
-                          {
-                              const int moodCmp = a.mood.compareIgnoreCase(b.mood);
-                              if (moodCmp != 0)
-                                  return moodCmp < 0;
-                              return a.name.compareIgnoreCase(b.name) < 0;
-                          });
-                break;
-
-            case SortMode::Relevance:
-            {
-                // Tier 1 = exact name match, 2 = name starts-with, 3 = name contains,
-                // 4 = tag/engine contains, 5 = description contains.
-                // Within a tier, sort alphabetically.
-                const juce::String lowerSearch = searchText; // already lowercased above
-                auto tier = [&](const PresetData& p) -> int
+                // Text search — matches name, description, tags, and engines
+                if (searchText.isNotEmpty())
                 {
-                    const juce::String lname = p.name.toLowerCase();
-                    if (lname == lowerSearch)
-                        return 1;
-                    if (lname.startsWith(lowerSearch))
-                        return 2;
-                    if (lname.contains(lowerSearch))
-                        return 3;
-                    for (const auto& tag : p.tags)
-                        if (tag.toLowerCase().contains(lowerSearch))
-                            return 4;
-                    for (const auto& eng : p.engines)
-                        if (eng.toLowerCase().contains(lowerSearch))
-                            return 4;
-                    return 5; // description contains (already filtered-in above)
-                };
-                std::sort(filteredPresets.begin(), filteredPresets.end(),
-                          [&](const PresetData& a, const PresetData& b)
-                          {
-                              const int ta = tier(a), tb = tier(b);
-                              if (ta != tb)
-                                  return ta < tb;
-                              return a.name.compareIgnoreCase(b.name) < 0;
-                          });
-                break;
+                    bool matches = false;
+                    if (preset.name.toLowerCase().contains(searchText))
+                        matches = true;
+                    else if (preset.description.toLowerCase().contains(searchText))
+                        matches = true;
+                    else
+                    {
+                        for (const auto& tag : preset.tags)
+                            if (tag.toLowerCase().contains(searchText))
+                            {
+                                matches = true;
+                                break;
+                            }
+                    }
+                    if (!matches)
+                    {
+                        for (const auto& eng : preset.engines)
+                            if (eng.toLowerCase().contains(searchText))
+                            {
+                                matches = true;
+                                break;
+                            }
+                    }
+                    if (!matches)
+                        continue;
+                }
+
+                filtered.push_back(preset);
             }
-        }
 
-        listBox.updateContent();
-        listBox.deselectAllRows();
-        selectedIndex = -1;
+            // ---- Background thread: sort ----
+            switch (sortMode)
+            {
+                case SortMode::NameAZ:
+                    std::sort(filtered.begin(), filtered.end(),
+                              [](const PresetData& a, const PresetData& b)
+                              { return a.name.compareIgnoreCase(b.name) < 0; });
+                    break;
 
-        juce::String statusText =
-            juce::String(filteredPresets.size()) + " / " + juce::String(allPresets.size()) + " presets";
-        if (similarActive)
-            statusText = "Similar: " + statusText;
-        statusLabel.setText(statusText, juce::dontSendNotification);
+                case SortMode::NameZA:
+                    std::sort(filtered.begin(), filtered.end(),
+                              [](const PresetData& a, const PresetData& b)
+                              { return a.name.compareIgnoreCase(b.name) > 0; });
+                    break;
+
+                case SortMode::Mood:
+                    std::sort(filtered.begin(), filtered.end(),
+                              [](const PresetData& a, const PresetData& b)
+                              {
+                                  const int moodCmp = a.mood.compareIgnoreCase(b.mood);
+                                  if (moodCmp != 0)
+                                      return moodCmp < 0;
+                                  return a.name.compareIgnoreCase(b.name) < 0;
+                              });
+                    break;
+
+                case SortMode::Relevance:
+                {
+                    // Tier 1 = exact name match, 2 = name starts-with, 3 = name contains,
+                    // 4 = tag/engine contains, 5 = description contains.
+                    // Within a tier, sort alphabetically.
+                    auto tier = [&](const PresetData& p) -> int
+                    {
+                        const juce::String lname = p.name.toLowerCase();
+                        if (lname == searchText)           return 1;
+                        if (lname.startsWith(searchText))  return 2;
+                        if (lname.contains(searchText))    return 3;
+                        for (const auto& tag : p.tags)
+                            if (tag.toLowerCase().contains(searchText))
+                                return 4;
+                        for (const auto& eng : p.engines)
+                            if (eng.toLowerCase().contains(searchText))
+                                return 4;
+                        return 5; // description contains (already filtered-in above)
+                    };
+                    std::sort(filtered.begin(), filtered.end(),
+                              [&](const PresetData& a, const PresetData& b)
+                              {
+                                  const int ta = tier(a), tb = tier(b);
+                                  if (ta != tb)
+                                      return ta < tb;
+                                  return a.name.compareIgnoreCase(b.name) < 0;
+                              });
+                    break;
+                }
+            }
+
+            // Build the status string while still on the background thread to
+            // keep string allocation off the message thread.
+            juce::String statusText =
+                juce::String(static_cast<int>(filtered.size()))
+                + " / " + juce::String(totalCount) + " presets";
+            if (isSimilar)
+                statusText = "Similar: " + statusText;
+
+            // ---- Post results back to the message thread ----
+            juce::MessageManager::callAsync([safeThis,
+                                             rawThis,
+                                             myGeneration,
+                                             filtered  = std::move(filtered),
+                                             statusText = std::move(statusText)]() mutable
+            {
+                // Bail out if the component was destroyed while we were running.
+                if (safeThis == nullptr)
+                    return;
+
+                // Discard stale results if a newer filter dispatch has since
+                // been launched (e.g. user typed another character mid-flight).
+                if (rawThis->filterGeneration_.load() != myGeneration)
+                    return;
+
+                rawThis->filteredPresets = std::move(filtered);
+                rawThis->listBox.updateContent();
+                rawThis->listBox.deselectAllRows();
+                rawThis->selectedIndex = -1;
+                rawThis->statusLabel.setText(statusText, juce::dontSendNotification);
+                rawThis->filterPending_.store(false);
+            });
+        });
     }
 
     //==========================================================================
