@@ -60,7 +60,7 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "",
+  "description": "Dark cold atmospheric layer from Osprey + Oracle.",
   "couplingIntensity": "Moderate",
   "quarantine_reason": "legacy_uncategorized"
 }

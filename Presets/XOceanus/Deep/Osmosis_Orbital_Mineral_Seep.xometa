@@ -1,18 +1,32 @@
 {
   "schema_version": 1,
-  "name": "Mineral Seep",
+  "name": "Mineral Seep (Osmosis + Orbital)",
   "mood": "Deep",
-  "engines": ["Osmosis", "Orbital"],
+  "engines": [
+    "Osmosis",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mineral-rich water seeping through rock, each dissolved element adding harmonic color — Osmosis feeding its envelope into Orbital's additive partials, slow geological alchemy.",
-  "tags": ["deep", "coupled", "mineral", "additive", "geological"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "coupled",
+    "mineral",
+    "additive",
+    "geological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
     "brightness": 0.13,
-    "warmth": 0.70,
+    "warmth": 0.7,
     "movement": 0.24,
     "density": 0.64,
     "space": 0.74,
@@ -22,16 +36,16 @@
     "Osmosis": {
       "osmo_macroCharacter": 0.42,
       "osmo_macroMovement": 0.24,
-      "osmo_macroCoupling": 0.30,
+      "osmo_macroCoupling": 0.3,
       "osmo_macroSpace": 0.72,
       "osmo_filterEnvAmt": 0.38,
       "osmo_lfo1Rate": 0.05,
       "osmo_lfo1Depth": 0.22,
-      "osmo_permeability": 0.60
+      "osmo_permeability": 0.6
     },
     "Orbital": {
       "orb_macroCharacter": 0.44,
-      "orb_macroMovement": 0.20,
+      "orb_macroMovement": 0.2,
       "orb_macroCoupling": 0.28,
       "orb_macroSpace": 0.72,
       "orb_filterEnvAmt": 0.36,
@@ -46,7 +60,7 @@
         "source": "Osmosis",
         "target": "Orbital",
         "type": "AmpToFilter",
-        "amount": 0.30
+        "amount": 0.3
       }
     ]
   },
@@ -54,7 +68,7 @@
   "macros": {
     "CHARACTER": 0.42,
     "MOVEMENT": 0.22,
-    "COUPLING": 0.30,
+    "COUPLING": 0.3,
     "SPACE": 0.72
   }
 }

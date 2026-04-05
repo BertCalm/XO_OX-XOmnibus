@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Shimmer Veil",
+  "name": "Shimmer Veil (OpenSky + Obscura)",
   "mood": "Coupling",
   "engines": [
     "OpenSky",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPENSKY shimmer tail feeds OBSCURA plate stiffness character \u2014 ascending euphoria leaving silver-grain impressions on a daguerreotype surface.",
+  "description": "OPENSKY shimmer tail feeds OBSCURA plate stiffness character — ascending euphoria leaving silver-grain impressions on a daguerreotype surface.",
   "tags": [
     "coupling",
     "moderate",

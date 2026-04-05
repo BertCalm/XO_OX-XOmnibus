@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Diamond Fold",
+  "name": "Diamond Fold (Crystalline)",
   "mood": "Crystalline",
   "engines": [
     "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The diamond fold in origami \u2014 an impossible geometric precision made audible as crystal resonance.",
+  "description": "The diamond fold in origami — an impossible geometric precision made audible as crystal resonance.",
   "tags": [
     "crystalline",
     "diamond",

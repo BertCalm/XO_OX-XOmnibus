@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Biome Collapse",
+  "name": "Biome Collapse (Ocelot + Obrix)",
   "mood": "Coupling",
   "engines": [
     "Ocelot",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCELOT biome crossfade data heavily feeds OBRIX habitat type parameters \u2014 savanna becoming coral reef, habitat logic rewriting synthesis ecology.",
+  "description": "OCELOT biome crossfade data heavily feeds OBRIX habitat type parameters — savanna becoming coral reef, habitat logic rewriting synthesis ecology.",
   "tags": [
     "coupling",
     "heavy",

@@ -1,35 +1,48 @@
 {
   "schema_version": 1,
-  "name": "Ancient Light",
+  "name": "Ancient Light (Okeanos)",
   "mood": "Luminous",
-  "engines": ["Okeanos"],
+  "engines": [
+    "Okeanos"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Starlight that left its source before humanity existed — reaching us now after aeons of travel. Okeanos at maximum warmth depth, ancient gold luminance unchanged by time.",
-  "tags": ["luminous", "ancient", "starlight", "gold", "timeless"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "ancient",
+    "starlight",
+    "gold",
+    "timeless"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.76,
-    "warmth": 0.70,
+    "warmth": 0.7,
     "movement": 0.28,
     "density": 0.42,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.03
   },
   "parameters": {
     "Okeanos": {
-      "okan_macroCharacter": 0.50,
+      "okan_macroCharacter": 0.5,
       "okan_macroMovement": 0.28,
       "okan_macroCoupling": 0.13,
-      "okan_macroSpace": 0.70,
+      "okan_macroSpace": 0.7,
       "okan_filterEnvAmt": 0.48,
       "okan_warmth": 0.85,
       "okan_lfo1Rate": 0.03,
       "okan_lfo1Depth": 0.14,
       "okan_lfo2Rate": 0.06,
-      "okan_lfo2Depth": 0.10,
+      "okan_lfo2Depth": 0.1,
       "okan_attack": 0.25,
       "okan_decay": 1.5,
       "okan_sustain": 0.88,
@@ -39,12 +52,14 @@
       "okan_output": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.50,
+    "CHARACTER": 0.5,
     "MOVEMENT": 0.28,
     "COUPLING": 0.13,
-    "SPACE": 0.70
+    "SPACE": 0.7
   }
 }

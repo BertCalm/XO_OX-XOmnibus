@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Synapse Web",
+  "name": "Synapse Web (Oxytocin + Organism)",
   "mood": "Coupling",
   "engines": [
     "Oxytocin",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OXYTOCIN synapse depth drives ORGANISM cellular rule mutation \u2014 oxytocin bonding chemistry reshaping what rules the living cells follow.",
+  "description": "OXYTOCIN synapse depth drives ORGANISM cellular rule mutation — oxytocin bonding chemistry reshaping what rules the living cells follow.",
   "tags": [
     "coupling",
     "moderate",

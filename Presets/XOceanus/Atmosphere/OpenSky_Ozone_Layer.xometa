@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Ozone Layer",
+  "name": "Ozone Layer (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

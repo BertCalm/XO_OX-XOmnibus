@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Volcanic Glass",
+  "name": "Volcanic Glass (Deep)",
   "mood": "Deep",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Obsidian formed in the depths of a cooling lava flow — amorphous, crystalline, holding the memory of fire in absolute darkness. Sharp edges in the void.",
-  "tags": ["deep", "obsidian", "volcanic", "crystalline", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "obsidian",
+    "volcanic",
+    "crystalline",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -15,7 +28,7 @@
     "warmth": 0.55,
     "movement": 0.15,
     "density": 0.68,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.12
   },
   "parameters": {
@@ -24,13 +37,15 @@
       "obsidian_macroMovement": 0.15,
       "obsidian_macroCoupling": 0.12,
       "obsidian_macroSpace": 0.68,
-      "obsidian_filterEnvAmt": 0.40,
+      "obsidian_filterEnvAmt": 0.4,
       "obsidian_lfo1Rate": 0.03,
       "obsidian_lfo1Depth": 0.16,
       "obsidian_depth": 0.78
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.48,

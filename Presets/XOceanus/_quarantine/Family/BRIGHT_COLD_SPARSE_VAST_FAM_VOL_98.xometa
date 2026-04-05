@@ -35,7 +35,7 @@
     "SPACE": 0.919
   },
   "mood": "Family",
-  "name": "Frost Horizon",
+  "name": "Frost Horizon (Quarantine)",
   "parameters": {
     "Obbligato": {
       "obbl_macroCharacter": 0.535,
@@ -60,7 +60,7 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "",
+  "description": "Bright cold ensemble voice from Ottoni + Obbligato.",
   "couplingIntensity": "Moderate",
   "quarantine_reason": "legacy_uncategorized"
 }

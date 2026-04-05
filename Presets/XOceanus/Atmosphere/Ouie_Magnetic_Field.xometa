@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Magnetic Field",
+  "name": "Magnetic Field (Ouie)",
   "mood": "Atmosphere",
   "engines": [
     "Ouie"

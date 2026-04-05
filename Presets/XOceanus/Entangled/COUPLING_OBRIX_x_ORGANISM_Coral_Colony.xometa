@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Colony",
+  "name": "Coral Colony (Obrix + Organism)",
   "mood": "Entangled",
   "engines": [
     "Obrix",

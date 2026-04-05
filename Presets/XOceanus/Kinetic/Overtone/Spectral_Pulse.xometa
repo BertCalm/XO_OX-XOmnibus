@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Spectral Pulse",
+  "name": "Spectral Pulse (Overtone)",
   "mood": "Kinetic",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Continued fraction convergents at phi constant — irrational interval tensions create natural polyrhythmic pulses in the overtone series. LFO1 at 3Hz drives the filter with musical pulse rate while LFO2 at 1.5Hz creates half-time sub-pulse in the partials.",
-  "tags": ["kinetic", "spectral", "pulse", "polyrhythmic", "irrational", "phi", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "spectral",
+    "pulse",
+    "polyrhythmic",
+    "irrational",
+    "phi",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -54,5 +69,7 @@
     "COUPLING": 0.35,
     "SPACE": 0.32
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Fossil Imprint",
+  "name": "Fossil Imprint (Oaken + Orchard)",
   "mood": "Coupling",
   "engines": [
     "Oaken",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OAKEN upright string age barely imprints on ORCHARD bow pressure \u2014 wood memory leaving ghost marks on bowing articulation.",
+  "description": "OAKEN upright string age barely imprints on ORCHARD bow pressure — wood memory leaving ghost marks on bowing articulation.",
   "tags": [
     "coupling",
     "whisper",
