@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Card, { CardHeader, CardTitle } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
+import Tooltip from '@/components/ui/Tooltip';
 import Slider from '@/components/ui/Slider';
 import PitchSettings from './PitchSettings';
 import { useAudioStore } from '@/stores/audioStore';
@@ -16,9 +17,12 @@ interface KeygroupEditorProps {
     lowNote: number;
     highNote: number;
   }) => void;
+  /** When true, the Build button is disabled and reasons are shown as a tooltip */
+  exportBlocked?: boolean;
+  exportBlockedReasons?: string[];
 }
 
-export default function KeygroupEditor({ onBuild }: KeygroupEditorProps) {
+export default function KeygroupEditor({ onBuild, exportBlocked = false, exportBlockedReasons = [] }: KeygroupEditorProps) {
   const samples = useAudioStore((s) => s.samples);
   const activeSampleId = useAudioStore((s) => s.activeSampleId);
   const [programName, setProgramName] = useState('');
@@ -95,14 +99,23 @@ export default function KeygroupEditor({ onBuild }: KeygroupEditorProps) {
         />
       </Card>
 
-      <Button
-        variant="primary"
-        className="w-full"
-        disabled={!selectedSampleId || !programName.trim()}
-        onClick={handleBuild}
+      <Tooltip
+        content={exportBlocked ? 'MPC Contract violations must be resolved before exporting' : ''}
+        description={exportBlocked ? exportBlockedReasons.join(' · ') : undefined}
+        position="top"
+        disabled={!exportBlocked}
       >
-        Build Keygroup ({highNote - lowNote + 1} samples)
-      </Button>
+        <Button
+          variant="primary"
+          className="w-full"
+          disabled={!selectedSampleId || !programName.trim() || exportBlocked}
+          onClick={handleBuild}
+        >
+          {exportBlocked
+            ? `Fix ${exportBlockedReasons.length} MPC issue(s) to export`
+            : `Build Keygroup (${highNote - lowNote + 1} samples)`}
+        </Button>
+      </Tooltip>
     </div>
   );
 }

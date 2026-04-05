@@ -198,7 +198,8 @@ struct SkySupersaw
 class SkyShimmerReverb
 {
 public:
-    static constexpr int kMaxDelay = 48000; // 1 second at 48kHz
+    // Safety cap: 2 seconds at 192kHz. Runtime maxDelay_ is derived from sampleRate in prepare().
+    static constexpr int kAbsoluteMaxDelay = 384001;
     static constexpr int kNumCombs = 4;
     static constexpr int kNumAllpass = 2;
 
@@ -206,23 +207,30 @@ public:
     {
         sr = static_cast<float>(sampleRate);
 
+        // Runtime buffer size: 1 second worth of samples at the actual sample rate,
+        // clamped to the absolute safety cap. Allocated here (never in renderBlock).
+        maxDelay_ = std::min(kAbsoluteMaxDelay, static_cast<int>(sampleRate) + 1);
+
+        for (auto& buf : combBuf)
+            buf.assign(maxDelay_, 0.0f);
+        for (auto& buf : apBuf)
+            buf.assign(maxDelay_, 0.0f);
+
         // Prime-number delay lengths for dense, non-repeating reverb
         int combLens[kNumCombs] = {1117, 1277, 1399, 1523};
         int apLens[kNumAllpass] = {241, 557};
 
         // Scale by sample rate ratio
-        float srRatio = sr / 44100.0f;
+        float srRatio = sampleRate / 44100.0;
         for (int i = 0; i < kNumCombs; ++i)
         {
-            combLength[i] = std::min(kMaxDelay - 1, static_cast<int>(combLens[i] * srRatio));
-            std::fill(combBuf[i].begin(), combBuf[i].begin() + combLength[i] + 1, 0.0f);
+            combLength[i] = std::min(maxDelay_ - 1, static_cast<int>(combLens[i] * srRatio));
             combPos[i] = 0;
             combDamp[i] = 0.0f;
         }
         for (int i = 0; i < kNumAllpass; ++i)
         {
-            apLength[i] = std::min(kMaxDelay - 1, static_cast<int>(apLens[i] * srRatio));
-            std::fill(apBuf[i].begin(), apBuf[i].begin() + apLength[i] + 1, 0.0f);
+            apLength[i] = std::min(maxDelay_ - 1, static_cast<int>(apLens[i] * srRatio));
             apPos[i] = 0;
         }
 
@@ -352,16 +360,18 @@ private:
 
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
-    // Comb filter state
-    std::array<std::array<float, kMaxDelay>, kNumCombs> combBuf{};
+    // Comb filter state — vectors sized to maxDelay_ in prepare(), never in renderBlock
+    std::vector<float> combBuf[kNumCombs];
     int combLength[kNumCombs]{};
     int combPos[kNumCombs]{};
     float combDamp[kNumCombs]{};
 
-    // Allpass filter state
-    std::array<std::array<float, kMaxDelay>, kNumAllpass> apBuf{};
+    // Allpass filter state — vectors sized to maxDelay_ in prepare(), never in renderBlock
+    std::vector<float> apBuf[kNumAllpass];
     int apLength[kNumAllpass]{};
     int apPos[kNumAllpass]{};
+
+    int maxDelay_ = 48000; // updated in prepare() — do not use before prepare() is called
 
     // Shimmer pitch shifter
     std::array<float, kShimmerBufSize> shimmerBuf{};

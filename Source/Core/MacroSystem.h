@@ -3,6 +3,8 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
+#include <atomic>
+#include <mutex>
 #include <vector>
 
 namespace xoceanus
@@ -45,6 +47,13 @@ struct MacroTarget
 // Processing is audio-thread safe: no allocations, no string lookups per block.
 // Macro parameter pointers are cached at construction. Target parameter pointers
 // are cached when targets are assigned via setTargets().
+//
+// Synchronization — lock-free double-buffer per slot:
+//   Each MacroSlot holds two TargetBuffer copies indexed by activeBuffer_ (0 or 1).
+//   Message thread writes to the INACTIVE buffer, then atomically flips activeBuffer_.
+//   Audio thread always reads from activeBuffer_ with memory_order_acquire — no
+//   spinning, no try-lock, no dropped updates.
+//   Labels are UI-only and protected by a std::mutex (never touched on audio thread).
 //
 // SmoothedValue provides ~20ms smoothing to eliminate zipper noise during
 // macro sweeps.
@@ -136,6 +145,10 @@ public:
 
     // Set the targets for a macro. Replaces any existing targets.
     // Caches raw parameter pointers for each target for audio-thread access.
+    //
+    // Message thread only. Writes to the INACTIVE buffer, then flips activeBuffer_
+    // atomically — the audio thread sees the new targets on the next processBlock()
+    // call without any locking or contention.
     void setTargets(int macroIndex, std::vector<MacroTarget> targets)
     {
         if (!isValidIndex(macroIndex))
@@ -143,7 +156,7 @@ public:
 
         auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
 
-        // Build new targets and cache outside the lock to minimise hold time.
+        // Resolve parameter pointers before touching shared state.
         std::vector<std::atomic<float>*> newCached;
         newCached.reserve(targets.size());
         for (const auto& target : targets)
@@ -163,24 +176,38 @@ public:
             // this gracefully.
         }
 
-        // Hold the lock only while swapping the vectors.
-        {
-            juce::SpinLock::ScopedLockType lock(slot.lock);
-            slot.targets = std::move(targets);
-            slot.cachedParams = std::move(newCached);
-        }
+        // Write to the INACTIVE buffer (the one the audio thread is NOT reading).
+        const int inactive = 1 - slot.activeBuffer.load(std::memory_order_relaxed);
+        slot.buffers[static_cast<size_t>(inactive)].targets    = std::move(targets);
+        slot.buffers[static_cast<size_t>(inactive)].cachedParams = std::move(newCached);
+
+        // Atomically expose the new buffer to the audio thread.
+        slot.activeBuffer.store(inactive, std::memory_order_release);
+        slot.dirty.store(true, std::memory_order_release);
     }
 
     // Remove all targets from a specific macro.
+    // Message thread only. Clears both buffers so neither can produce stale writes,
+    // then flips to the just-cleared inactive buffer.
     void clearTargets(int macroIndex)
     {
         if (!isValidIndex(macroIndex))
             return;
 
         auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
-        juce::SpinLock::ScopedLockType lock(slot.lock);
-        slot.targets.clear();
-        slot.cachedParams.clear();
+
+        // Clear the inactive buffer and flip, then clear the now-inactive (old active) buffer.
+        // After both clears the audio thread will see an empty target list.
+        const int inactive = 1 - slot.activeBuffer.load(std::memory_order_relaxed);
+        slot.buffers[static_cast<size_t>(inactive)].targets.clear();
+        slot.buffers[static_cast<size_t>(inactive)].cachedParams.clear();
+        slot.activeBuffer.store(inactive, std::memory_order_release);
+        slot.dirty.store(true, std::memory_order_release);
+
+        // Clear the old active buffer (now inactive) so it doesn't hold stale data.
+        const int oldActive = 1 - inactive;
+        slot.buffers[static_cast<size_t>(oldActive)].targets.clear();
+        slot.buffers[static_cast<size_t>(oldActive)].cachedParams.clear();
     }
 
     // Remove all targets from all macros.
@@ -191,11 +218,13 @@ public:
     }
 
     // Set a custom label for a macro (per-preset override). Thread-safe (#682).
+    // Labels are UI-only — never accessed on the audio thread — so a std::mutex
+    // is sufficient and simpler than a double-buffer.
     void setLabel(int macroIndex, const juce::String& label)
     {
         if (isValidIndex(macroIndex))
         {
-            const juce::SpinLock::ScopedLockType lock(labelLock_);
+            const std::lock_guard<std::mutex> lock(labelMutex_);
             labels[static_cast<size_t>(macroIndex)] = label;
         }
     }
@@ -235,16 +264,23 @@ public:
         couplingTarget.maxValue = max;
 
         // Append to existing targets for this macro (don't replace them).
+        // Read the current active buffer's contents, append, then write to the
+        // inactive buffer and flip — same double-buffer protocol as setTargets().
         auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
 
         // Cache the coupling amount parameter pointer.
         auto* cachedParam = couplingAmountParams[static_cast<size_t>(routeSlot)];
 
-        {
-            juce::SpinLock::ScopedLockType lock(slot.lock);
-            slot.targets.push_back(std::move(couplingTarget));
-            slot.cachedParams.push_back(cachedParam);
-        }
+        const int active   = slot.activeBuffer.load(std::memory_order_relaxed);
+        const int inactive = 1 - active;
+
+        // Copy the live data into the inactive buffer, then append.
+        slot.buffers[static_cast<size_t>(inactive)] = slot.buffers[static_cast<size_t>(active)];
+        slot.buffers[static_cast<size_t>(inactive)].targets.push_back(std::move(couplingTarget));
+        slot.buffers[static_cast<size_t>(inactive)].cachedParams.push_back(cachedParam);
+
+        slot.activeBuffer.store(inactive, std::memory_order_release);
+        slot.dirty.store(true, std::memory_order_release);
     }
 
     //--------------------------------------------------------------------------
@@ -253,6 +289,8 @@ public:
 
     // Read macro knob values and apply them to all assigned targets.
     // Audio-thread safe: no allocations, no string lookups, no blocking.
+    // Reads from activeBuffer_ with memory_order_acquire — guaranteed to see
+    // any setTargets() flip that completed before this call.
     //
     // numSamples is needed to advance SmoothedValue correctly per block.
     void processBlock(int numSamples = 512)
@@ -273,22 +311,24 @@ public:
                 smoothedValues[idx].skip(numSamples - 1);
             const float smoothedMacroValue = smoothedValues[idx].getNextValue();
 
-            // Try to acquire the slot lock — if setTargets() is running on the
-            // message thread, skip this macro for one block rather than blocking.
-            juce::SpinLock::ScopedTryLockType tryLock(macroSlots[idx].lock);
-            if (!tryLock.isLocked())
-                continue;
+            // Lock-free read: load the active buffer index with acquire semantics
+            // so all writes made before the store(release) in setTargets() are visible.
+            auto& slot = macroSlots[idx];
+            const int active = slot.activeBuffer.load(std::memory_order_acquire);
+            // Consume and clear the dirty flag (informational — no action required here,
+            // but callers monitoring for target changes can inspect it via isDirty()).
+            slot.dirty.store(false, std::memory_order_relaxed);
 
-            const auto& slot = macroSlots[idx];
-            const auto numTargets = slot.targets.size();
+            const auto& buf = slot.buffers[static_cast<size_t>(active)];
+            const auto numTargets = buf.targets.size();
 
             for (size_t t = 0; t < numTargets; ++t)
             {
-                auto* targetParam = slot.cachedParams[t];
+                auto* targetParam = buf.cachedParams[t];
                 if (targetParam == nullptr)
                     continue;
 
-                const auto& target = slot.targets[t];
+                const auto& target = buf.targets[t];
 
                 // Compute interpolated value between minValue and maxValue.
                 // For engine targets: min/max are normalized [0,1] matching
@@ -314,11 +354,11 @@ public:
     // Query — safe to call from any thread
     //--------------------------------------------------------------------------
 
-    juce::String getLabel(int macroIndex) const // Thread-safe (#682)
+    juce::String getLabel(int macroIndex) const // Thread-safe (#682) — message thread only
     {
         if (!isValidIndex(macroIndex))
             return {};
-        const juce::SpinLock::ScopedLockType lock(labelLock_);
+        const std::lock_guard<std::mutex> lock(labelMutex_);
         return labels[static_cast<size_t>(macroIndex)];
     }
 
@@ -331,6 +371,8 @@ public:
         return param != nullptr ? param->load() : 0.0f;
     }
 
+    // Returns a const reference to the currently active target list.
+    // Message thread only — do not call from the audio thread.
     const std::vector<MacroTarget>& getTargets(int macroIndex) const
     {
         jassert(isValidIndex(macroIndex));
@@ -339,7 +381,9 @@ public:
             static const std::vector<MacroTarget> empty;
             return empty;
         }
-        return macroSlots[static_cast<size_t>(macroIndex)].targets;
+        const auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
+        const int active = slot.activeBuffer.load(std::memory_order_acquire);
+        return slot.buffers[static_cast<size_t>(active)].targets;
     }
 
     //--------------------------------------------------------------------------
@@ -368,17 +412,16 @@ public:
             auto* macroElem = root->createNewChildElement("Macro");
             macroElem->setAttribute("index", m);
             {
-                const juce::SpinLock::ScopedLockType labelLk(labelLock_);
+                const std::lock_guard<std::mutex> labelLk(labelMutex_);
                 macroElem->setAttribute("label", labels[static_cast<size_t>(m)]);
             }
 
-            // Hold the lock briefly to snapshot targets on the message thread.
-            // getState() must only be called from the message thread
-            // (inside getStateInformation).
+            // Read from the active buffer — no lock needed (message thread only,
+            // no concurrent writer at this point inside getStateInformation()).
             const auto& slot = macroSlots[static_cast<size_t>(m)];
-            juce::SpinLock::ScopedLockType lock(const_cast<juce::SpinLock&>(slot.lock));
+            const int active = slot.activeBuffer.load(std::memory_order_acquire);
 
-            for (const auto& t : slot.targets)
+            for (const auto& t : slot.buffers[static_cast<size_t>(active)].targets)
             {
                 auto* te = macroElem->createNewChildElement("Target");
                 te->setAttribute("engineId", t.engineId);
@@ -418,7 +461,7 @@ public:
             juce::String lbl = macroElem->getStringAttribute("label");
             if (lbl.isNotEmpty())
             {
-                const juce::SpinLock::ScopedLockType lock(labelLock_);
+                const std::lock_guard<std::mutex> lock(labelMutex_);
                 labels[static_cast<size_t>(m)] = lbl;
             }
 
@@ -480,7 +523,7 @@ public:
 
         // Apply labels (fall back to defaults if fewer than 4 provided)
         {
-            const juce::SpinLock::ScopedLockType lock(labelLock_);
+            const std::lock_guard<std::mutex> lock(labelMutex_);
             for (int i = 0; i < NumMacros; ++i)
             {
                 if (i < macroLabels.size() && macroLabels[i].isNotEmpty())
@@ -553,16 +596,30 @@ private:
 
     // Per-macro slot holding targets and their cached parameter pointers.
     //
-    // SpinLock guards setTargets() (message thread) against concurrent reads in
-    // processBlock() (audio thread).  The audio thread uses tryEnter() so it
-    // never blocks — it simply skips a single block while a preset is loading.
-    struct MacroSlot
+    // Lock-free double-buffer: `buffers[0]` and `buffers[1]` are two complete
+    // copies of the target list.  `activeBuffer` (0 or 1) indicates which copy
+    // the audio thread should read.
+    //
+    // Message thread writes to `buffers[1 - activeBuffer]`, then flips
+    // `activeBuffer` with a release store.  Audio thread loads `activeBuffer`
+    // with acquire semantics and reads the corresponding buffer — no spinning,
+    // no blocking, no dropped updates.
+    //
+    // `dirty` is set to true after each flip so callers can detect changes.
+    // processBlock() clears it on each block; it is informational only.
+    struct TargetBuffer
     {
-        std::vector<MacroTarget> targets;
+        std::vector<MacroTarget>        targets;
         // Parallel array: cachedParams[i] is the raw pointer for targets[i].
         // May contain nullptrs if target parameter doesn't exist in APVTS.
         std::vector<std::atomic<float>*> cachedParams;
-        juce::SpinLock lock;
+    };
+
+    struct MacroSlot
+    {
+        std::array<TargetBuffer, 2> buffers;     // double-buffer
+        std::atomic<int>            activeBuffer{0};
+        std::atomic<bool>           dirty{false};
     };
 
     static bool isValidIndex(int idx) { return idx >= 0 && idx < NumMacros; }
@@ -581,10 +638,10 @@ private:
     // Smoothed macro values to eliminate zipper noise (~20ms ramp)
     std::array<juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear>, NumMacros> smoothedValues;
 
-    // SpinLock protecting labels[] — label reads/writes span the message thread
-    // (preset load, DAW state restore) and may race with UI label queries.
-    // `mutable` so getLabel() and getState() (both const) can acquire it. (#682)
-    mutable juce::SpinLock labelLock_;
+    // Mutex protecting labels[] — labels are UI-only and never touched on the
+    // audio thread, so a std::mutex is sufficient. `mutable` so getLabel() and
+    // getState() (both const) can lock it. (#682)
+    mutable std::mutex labelMutex_;
 
     // Per-macro label (default: CHARACTER, MOVEMENT, COUPLING, SPACE)
     std::array<juce::String, NumMacros> labels;

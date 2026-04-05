@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import Card, { CardHeader, CardTitle } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Tabs from '@/components/ui/Tabs';
@@ -11,15 +11,18 @@ import ProgramEditor from '@/components/program/ProgramEditor';
 import { useAudioStore } from '@/stores/audioStore';
 import { usePadStore } from '@/stores/padStore';
 import { useExportStore, type ExportBitDepth } from '@/stores/exportStore';
-import { buildKeygroupProgram } from '@/lib/xpm/xpmKeygroupGenerator';
+import { buildKeygroupProgramAsync } from '@/lib/xpm/xpmKeygroupGenerator';
 import { buildDrumProgram } from '@/lib/xpm/xpmDrumGenerator';
 import { downloadXpmWithSamples } from '@/lib/xpn/xpnPackager';
 import { getDecodedBuffer } from '@/lib/audio/audioBufferCache';
 import { encodeWav } from '@/lib/audio/wavEncoder';
 import { useToastStore } from '@/stores/toastStore';
+import { useEnvelopeStore } from '@/stores/envelopeStore';
+import { useModulationStore } from '@/stores/modulationStore';
 import type { ExportStep, ProgramType } from '@/types';
 import { getProcessingMessage } from '@/lib/audio/processingMessages';
 import { useExportPresetStore } from '@/stores/exportPresetStore';
+import { useExportBlocked } from '@/components/pads/MpcContractStrip';
 import Select from '@/components/ui/Select';
 
 export default function XpmExporter() {
@@ -28,6 +31,15 @@ export default function XpmExporter() {
   const pads = usePadStore((s) => s.pads);
   const bitDepth = useExportStore((s) => s.bitDepth);
   const setBitDepth = useExportStore((s) => s.setBitDepth);
+  const isExporting = useExportStore((s) => s.isExporting);
+
+  // Holds the AbortController for the active keygroup export so the cancel
+  // button can terminate the worker mid-flight.
+  const keygroupAbortRef = useRef<AbortController | null>(null);
+
+  // MPC Contract - blocks export when golden rules are violated
+  const contractProgramType = programType === 'Drum' ? 'drum' : 'keygroup';
+  const { blocked: exportBlocked, reasons: exportBlockedReasons } = useExportBlocked(contractProgramType);
 
   // Export presets
   const presets = useExportPresetStore((s) => s.presets);
@@ -53,6 +65,11 @@ export default function XpmExporter() {
   const finishExport = useExportStore((s) => s.finishExport);
   const failExport = useExportStore((s) => s.failExport);
 
+  const handleCancelKeygroup = useCallback(() => {
+    keygroupAbortRef.current?.abort();
+    keygroupAbortRef.current = null;
+  }, []);
+
   const handleBuildKeygroup = useCallback(
     async (config: { programName: string; sampleId: string; rootNote: number; lowNote: number; highNote: number }) => {
       const sample = samples.find((s) => s.id === config.sampleId);
@@ -61,12 +78,15 @@ export default function XpmExporter() {
       const steps: ExportStep[] = [
         { id: 'prepare', label: 'Preparing samples', description: getProcessingMessage('export'), progress: 0, status: 'pending' },
         { id: 'pitch', label: 'Pitch-shifting samples', description: getProcessingMessage('process'), progress: 0, status: 'pending' },
-        { id: 'encode', label: 'Encoding WAV files', description: getProcessingMessage('build'), progress: 0, status: 'pending' },
         { id: 'build', label: 'Building XPM structure', description: getProcessingMessage('build'), progress: 0, status: 'pending' },
         { id: 'package', label: 'Packaging files', description: getProcessingMessage('export'), progress: 0, status: 'pending' },
       ];
 
       startExport(steps);
+
+      // Create an AbortController so the Cancel button can terminate the worker.
+      const controller = new AbortController();
+      keygroupAbortRef.current = controller;
 
       try {
         updateStep('prepare', { status: 'active', progress: 50 });
@@ -74,27 +94,36 @@ export default function XpmExporter() {
         completeStep('prepare');
         setOverallProgress(10);
 
-        updateStep('pitch', { status: 'active' });
+        // Snapshot stores before the async gap - closures stale after await.
+        const envSettings = useEnvelopeStore.getState().getEnvelope(0);
+        const modConfig = useModulationStore.getState().getModulation(0);
         const { bitDepth } = useExportStore.getState();
-        const result = await buildKeygroupProgram({
-          programName: config.programName,
-          sourceBuffer: audioBuffer,
-          rootNote: config.rootNote,
-          lowNote: config.lowNote,
-          highNote: config.highNote,
-          layers: pads[0]?.layers || [],
-          bitDepth,
-          onProgress: (step, progress) => {
-            updateStep('pitch', { detail: step, progress });
-            setOverallProgress(10 + (progress / 100) * 60);
-          },
-        });
-        completeStep('pitch');
-        setOverallProgress(70);
 
-        updateStep('encode', { status: 'active', progress: 50 });
-        completeStep('encode');
-        setOverallProgress(80);
+        updateStep('pitch', { status: 'active' });
+        const result = await buildKeygroupProgramAsync(
+          audioBuffer,
+          {
+            programName: config.programName,
+            rootNote: config.rootNote,
+            lowNote: config.lowNote,
+            highNote: config.highNote,
+            layers: pads[0]?.layers || [],
+            bitDepth,
+            envSettings,
+            modConfig,
+          },
+          (note, total) => {
+            const progress = ((note - config.lowNote + 1) / total) * 100;
+            updateStep('pitch', {
+              detail: `Note ${note - config.lowNote + 1} of ${total}`,
+              progress,
+            });
+            setOverallProgress(10 + (progress / 100) * 65);
+          },
+          controller.signal
+        );
+        completeStep('pitch');
+        setOverallProgress(75);
 
         updateStep('build', { status: 'active', progress: 50 });
         completeStep('build');
@@ -110,6 +139,12 @@ export default function XpmExporter() {
         setOverallProgress(100);
         finishExport();
       } catch (error) {
+        // AbortError means the user clicked Cancel - surface a neutral message,
+        // not a red error toast.
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          failExport('Export cancelled');
+          return;
+        }
         const msg = error instanceof Error ? error.message : 'Unknown error';
         failExport(msg);
         useToastStore.getState().addToast({
@@ -117,6 +152,8 @@ export default function XpmExporter() {
           title: 'Export failed',
           message: msg,
         });
+      } finally {
+        keygroupAbortRef.current = null;
       }
     },
     [samples, pads, startExport, updateStep, completeStep, setOverallProgress, finishExport, failExport]
@@ -151,7 +188,7 @@ export default function XpmExporter() {
                 // Re-encode to WAV at the selected bit depth
                 const audioBuffer = await getDecodedBuffer(sample.id, sample.buffer);
                 const wavData = encodeWav(audioBuffer, bitDepth);
-                // Normalize to .WAV — MPC's Linux FS is case-sensitive
+                // Normalize to .WAV - MPC's Linux FS is case-sensitive
                 sampleFiles.push({ fileName: layer.sampleFile.replace(/\.wav$/i, '.WAV'), data: wavData });
               } else {
                 // Sample referenced by pad but not found in the loaded samples list.
@@ -233,7 +270,7 @@ export default function XpmExporter() {
           options={presets.map((p) => ({ value: p.id, label: p.name }))}
           value={activePresetId ?? ''}
           onChange={handlePresetChange}
-          placeholder="Apply a preset…"
+          placeholder="Apply a preset..."
           size="sm"
           label="Export Preset"
         />
@@ -279,14 +316,36 @@ export default function XpmExporter() {
         </div>
 
         {programType === 'Keygroup' ? (
-          <KeygroupEditor onBuild={handleBuildKeygroup} />
+          <KeygroupEditor
+            onBuild={handleBuildKeygroup}
+            exportBlocked={exportBlocked}
+            exportBlockedReasons={exportBlockedReasons}
+          />
         ) : (
-          <DrumEditor onBuild={handleBuildDrum} />
+          <DrumEditor
+            onBuild={handleBuildDrum}
+            exportBlocked={exportBlocked}
+            exportBlockedReasons={exportBlockedReasons}
+          />
         )}
       </Card>
 
       {programType === 'Keygroup' && (
         <ProgramEditor programType={programType} />
+      )}
+
+      {/* Cancel button - visible only during an active keygroup export */}
+      {isExporting && programType === 'Keygroup' && (
+        <div className="flex justify-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleCancelKeygroup}
+            className="text-text-muted hover:text-red-500 border border-border"
+          >
+            Cancel export
+          </Button>
+        </div>
       )}
 
       <ExportProgress />
