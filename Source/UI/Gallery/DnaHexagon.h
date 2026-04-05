@@ -31,7 +31,8 @@ namespace xoceanus
 //   hex.setAccentColor(engineAccent);
 //   addAndMakeVisible(hex);
 //
-class DnaHexagon : public juce::Component
+class DnaHexagon : public juce::Component,
+                   public juce::SettableTooltipClient
 {
 public:
     DnaHexagon() = default;

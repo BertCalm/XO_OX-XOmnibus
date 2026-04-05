@@ -39,7 +39,7 @@
 #include "Engines/Octopus/OctopusEngine.h"
 #include "Engines/OpenSky/OpenSkyEngine.h"
 #include "Engines/Ostinato/OstinatoEngine.h"
-#include "Engines/OceanDeep/OceanDeepEngine.h"
+#include "Engines/OceanDeep/OceandeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
 #include "Engines/Obrix/ObrixEngine.h"
 #include "Engines/Orbweave/OrbweaveEngine.h"

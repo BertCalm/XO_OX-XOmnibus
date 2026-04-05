@@ -47,10 +47,10 @@ struct GoldenValues
     double peak;
 };
 
-// Set to -1.0 to bootstrap. On first run the test fails and prints values.
-static constexpr GoldenValues GOLDEN_OBRIX = {-1.0, -1.0};
-static constexpr GoldenValues GOLDEN_ONSET = {-1.0, -1.0};
-static constexpr GoldenValues GOLDEN_OUROBOROS = {-1.0, -1.0};
+// Golden baselines captured 2026-04-05 on macOS (arm64, Release, 44100 Hz, 256 samples).
+static constexpr GoldenValues GOLDEN_OBRIX = {0.0797815, 0.166613};
+static constexpr GoldenValues GOLDEN_ONSET = {0.0, 0.0};          // percussion — silent without velocity trigger in test harness
+static constexpr GoldenValues GOLDEN_OUROBOROS = {0.281754, 0.572705};
 
 struct RegTestProcessor : juce::AudioProcessor
 {

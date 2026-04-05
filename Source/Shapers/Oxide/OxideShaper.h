@@ -96,6 +96,7 @@ public:
         preLSStateL = preLSStateR = 0.0f;
         preHSStateL = preHSStateR = 0.0f;
         postTiltStateL = postTiltStateR = 0.0f;
+        focusBPStateL = focusBPStateR = 0.0f;
         silenceGate.prepare(sr, 100);
     }
 
@@ -107,6 +108,7 @@ public:
         preLSStateL = preLSStateR = 0.0f;
         preHSStateL = preHSStateR = 0.0f;
         postTiltStateL = postTiltStateR = 0.0f;
+        focusBPStateL = focusBPStateR = 0.0f;
         tapeStateL_ = tapeStateR_ = 0.0f;
         harmonicDensityCoupling = 0.0f;
         saturationAmountCoupling = 0.0f;
@@ -171,6 +173,11 @@ public:
         float preLSLin = std::pow(10.0f, (preLSGain + macroWarmth * 3.0f) / 20.0f);
         float preHSLin = std::pow(10.0f, (preHSGain - macroWarmth * 2.0f) / 20.0f);
 
+        // Frequency-dependent saturation: 1-pole bandpass coefficients (matched-Z)
+        // BW in octaves → Q → bandwidth in Hz → LP and HP corner frequencies
+        float focusBWHz = focusFreq * (std::pow(2.0f, focusBW * 0.5f) - std::pow(2.0f, -focusBW * 0.5f));
+        float focusCoeff = std::exp(-6.28318f * std::max(focusBWHz, 10.0f) / sr);
+
         // Post tilt coefficient
         float tiltCoeff = std::exp(-6.28318f * 2000.0f / sr);
 
@@ -227,6 +234,16 @@ public:
             float hsR = inR - preHSStateR;
             inL = preHSStateL + hsL * preHSLin;
             inR = preHSStateR + hsR * preHSLin;
+
+            // Frequency-dependent saturation: isolate focus band, drive it harder
+            // 1-pole LP tracks slow components; the residual is the focused band.
+            // Re-inject the band with +6 dB so saturation hits that frequency range harder.
+            focusBPStateL += (inL - focusBPStateL) * (1.0f - focusCoeff);
+            focusBPStateR += (inR - focusBPStateR) * (1.0f - focusCoeff);
+            float focusBandL = inL - focusBPStateL;
+            float focusBandR = inR - focusBPStateR;
+            inL = focusBPStateL + focusBandL * 2.0f;
+            inR = focusBPStateR + focusBandR * 2.0f;
 
             // Saturation stage
             float satL = inL, satR = inR;
@@ -293,6 +310,24 @@ public:
                 satR = fastTanh(satR * driveAmt * (1.0f + chaosShape * 2.0f));
                 break;
             }
+            }
+
+            // Higher harmonic injection (post-saturation, mode-agnostic)
+            // 4th (x^4, even), 5th (x^5, odd), 7th (x^7, odd) add upper partials.
+            // Scaled small so they colour rather than dominate; modHarmBal steers
+            // emphasis from even (4th) toward odd (5th/7th) as it moves toward 1.
+            {
+                float evenHigh = harm4th * (1.0f - modHarmBal * 0.6f);
+                float oddHigh5 = harm5th * modHarmBal;
+                float oddHigh7 = harm7th * modHarmBal;
+                float s2L = satL * satL;
+                float s2R = satR * satR;
+                satL += satL * s2L * s2L * evenHigh * 0.15f      // x^4 (even)
+                        + satL * s2L * s2L * satL * oddHigh5 * 0.1f  // x^5 (odd)
+                        + satL * s2L * s2L * s2L * satL * oddHigh7 * 0.05f; // x^7 (odd)
+                satR += satR * s2R * s2R * evenHigh * 0.15f
+                        + satR * s2R * s2R * satR * oddHigh5 * 0.1f
+                        + satR * s2R * s2R * s2R * satR * oddHigh7 * 0.05f;
             }
 
             // Harmonic density tracking
@@ -495,6 +530,9 @@ private:
     float preLSStateL = 0.0f, preLSStateR = 0.0f;
     float preHSStateL = 0.0f, preHSStateR = 0.0f;
     float postTiltStateL = 0.0f, postTiltStateR = 0.0f;
+
+    // Frequency-dependent saturation state (1-pole LP tracking the focus band)
+    float focusBPStateL = 0.0f, focusBPStateR = 0.0f;
 
     // Tape mode one-pole LP state (per-channel to avoid stereo cross-contamination)
     float tapeStateL_ = 0.0f, tapeStateR_ = 0.0f;

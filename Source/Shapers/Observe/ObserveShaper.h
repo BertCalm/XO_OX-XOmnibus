@@ -347,7 +347,6 @@ public:
 
         using PF = juce::AudioParameterFloat;
         using PC = juce::AudioParameterChoice;
-        using PB = juce::AudioParameterBool;
 
         auto bandTypes = juce::StringArray{"Peak", "Notch", "Low Shelf", "High Shelf", "LP6",       "LP12",
                                            "LP24", "HP6",   "HP12",      "HP24",       "Band Pass", "Tilt"};

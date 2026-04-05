@@ -143,9 +143,19 @@ public:
     //
     // Parameter registration path (issue #655): engines implement a static
     // addParameters(vector<unique_ptr<RangedAudioParameter>>&) function, which
-    // XOceanusProcessor::createParameterLayout() calls directly. There is NO
-    // createParameterLayout() pure virtual here — any engine override of that
-    // method is dead code and should be removed incrementally.
+    // XOceanusProcessor::createParameterLayout() calls directly.
+    //
+    // createParameterLayout() is provided here as a virtual convenience wrapper
+    // for test code (ParameterSweepTests, DoctrineTests, AudioRegressionTests,
+    // CPUBenchmarkTests) that needs to build a per-engine APVTS without going
+    // through the processor. Engines that implement static addParameters() should
+    // also override this to call it; the default returns an empty layout so tests
+    // skip engines that have not yet overridden it (see "if (params.isEmpty())
+    // continue" guards in the test files).
+    virtual juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
+    {
+        return {};
+    }
 
     // Cache raw parameter pointers from the shared APVTS.
     // Called once after the APVTS is constructed with all engine layouts merged.

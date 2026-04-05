@@ -1013,7 +1013,7 @@ private:
 
         // Create an offline coupling matrix and prepare its scratch buffers
         ctx.couplingMatrix = std::make_unique<MegaCouplingMatrix>();
-        ctx.couplingMatrix->prepare(kOfflineBlockSize);
+        ctx.couplingMatrix->prepare(kOfflineBlockSize, sampleRate);
 
         // Wire engine pointers into the matrix's slot array
         std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs = {};

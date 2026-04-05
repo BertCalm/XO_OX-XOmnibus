@@ -1229,6 +1229,26 @@ public:
     const TrailModulator& getTrailModulator() const noexcept { return trailModulator_; }
 
     //==========================================================================
+    // Preset sensitivity hint type — used by setPresetHint() below.
+    // Defined here (before first use) so the method signature compiles;
+    // the member variable presetHint_ is declared later in the private section.
+    //==========================================================================
+    struct SensitivityHint
+    {
+        // Per-macro sweep range (|depthMax - depthMin| from PresetMacroTarget).
+        // 0 = macro wired to no targets (dead knob), 1 = full-range sweep.
+        float macroRange[4] = {0.5f, 0.5f, 0.5f, 0.5f};
+
+        // 6D Sonic DNA (0-1 each), sourced from PresetDNA.
+        float dnaMovement   = 0.5f; // weights X-axis sensitivity contribution
+        float dnaSpace      = 0.5f; // weights Y-axis sensitivity contribution
+        float dnaAggression = 0.5f; // sharpens the overall contrast of the map
+
+        // True when a real preset hint has been pushed (not default-constructed).
+        bool hasRealData = false;
+    };
+
+    //==========================================================================
     // Feature 4 (B044): Preset sensitivity hint — drives real parameter
     // sensitivity computation in recomputeSensitivityMap().
     //
@@ -1599,30 +1619,7 @@ private:
     // Pushed by the host (PlaySurface / PresetManager listener) after each
     // preset load via setPresetHint().  Drives real parameter sensitivity
     // computation in recomputeSensitivityMap().
-    //
-    // Macro slot semantics (matches xometa convention):
-    //   macro[0] = CHARACTER  — X-axis primary driver
-    //   macro[1] = MOVEMENT   — X-axis secondary driver
-    //   macro[2] = COUPLING   — Y-axis primary driver
-    //   macro[3] = SPACE      — Y-axis secondary driver
-    //
-    // DNA weights: movement → X sensitivity bias, space → Y sensitivity bias.
-    // All values default to 0.5 (neutral) to match the legacy heuristic shape
-    // when no preset is loaded.
-    struct SensitivityHint
-    {
-        // Per-macro sweep range (|depthMax - depthMin| from PresetMacroTarget).
-        // 0 = macro wired to no targets (dead knob), 1 = full-range sweep.
-        float macroRange[4] = {0.5f, 0.5f, 0.5f, 0.5f};
-
-        // 6D Sonic DNA (0-1 each), sourced from PresetDNA.
-        float dnaMovement   = 0.5f; // weights X-axis sensitivity contribution
-        float dnaSpace      = 0.5f; // weights Y-axis sensitivity contribution
-        float dnaAggression = 0.5f; // sharpens the overall contrast of the map
-
-        // True when a real preset hint has been pushed (not default-constructed).
-        bool hasRealData = false;
-    };
+    // (SensitivityHint struct is defined in the public section above.)
     SensitivityHint presetHint_;
 
     //==========================================================================

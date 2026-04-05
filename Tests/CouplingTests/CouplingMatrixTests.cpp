@@ -111,7 +111,7 @@ private:
 static void runSingleRouteBlock(MegaCouplingMatrix& matrix, TestEngine& src, TestEngine& dst, CouplingType type,
                                 float amount, int blockSize = 256)
 {
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
     src.prepare(44100.0, blockSize);
     dst.prepare(44100.0, blockSize);
     src.fillOutput(0.5f);
@@ -139,7 +139,7 @@ static void runSingleRouteBlock(MegaCouplingMatrix& matrix, TestEngine& src, Tes
 TEST_CASE("CouplingMatrix - prepare initializes without crash", "[coupling]")
 {
     MegaCouplingMatrix matrix;
-    CHECK_NOTHROW(matrix.prepare(512));
+    CHECK_NOTHROW(matrix.prepare(512, 44100.0));
 }
 
 //==============================================================================
@@ -149,7 +149,7 @@ TEST_CASE("CouplingMatrix - prepare initializes without crash", "[coupling]")
 TEST_CASE("CouplingMatrix - addRoute: single route appears in getRoutes", "[coupling][routes]")
 {
     MegaCouplingMatrix matrix;
-    matrix.prepare(512);
+    matrix.prepare(512, 44100.0);
 
     MegaCouplingMatrix::CouplingRoute route;
     route.sourceSlot = 0;
@@ -166,7 +166,7 @@ TEST_CASE("CouplingMatrix - addRoute: single route appears in getRoutes", "[coup
 TEST_CASE("CouplingMatrix - addRoute: multiple routes added correctly", "[coupling][routes]")
 {
     MegaCouplingMatrix matrix;
-    matrix.prepare(512);
+    matrix.prepare(512, 44100.0);
 
     for (int i = 0; i < 3; ++i)
     {
@@ -185,7 +185,7 @@ TEST_CASE("CouplingMatrix - addRoute: multiple routes added correctly", "[coupli
 TEST_CASE("CouplingMatrix - removeUserRoute removes user route and re-enables normalled", "[coupling][routes]")
 {
     MegaCouplingMatrix matrix;
-    matrix.prepare(512);
+    matrix.prepare(512, 44100.0);
 
     MegaCouplingMatrix::CouplingRoute normalled;
     normalled.sourceSlot = 0;
@@ -228,7 +228,7 @@ TEST_CASE("CouplingMatrix - removeUserRoute removes user route and re-enables no
 TEST_CASE("CouplingMatrix - clearRoutes empties all routes", "[coupling][routes]")
 {
     MegaCouplingMatrix matrix;
-    matrix.prepare(512);
+    matrix.prepare(512, 44100.0);
 
     MegaCouplingMatrix::CouplingRoute route;
     route.sourceSlot = 0;
@@ -252,7 +252,7 @@ TEST_CASE("CouplingMatrix - processBlock with no routes does not call applyCoupl
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine src("Src"), dst("Dst");
     src.prepare(44100.0, blockSize);
@@ -270,7 +270,7 @@ TEST_CASE("CouplingMatrix - active route calls applyCouplingInput with correct a
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine src("Src"), dst("Dst");
     src.prepare(44100.0, blockSize);
@@ -311,7 +311,7 @@ TEST_CASE("CouplingMatrix - out-of-bounds slot indices do not crash", "[coupling
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine eng("Eng");
     eng.prepare(44100.0, blockSize);
@@ -336,7 +336,7 @@ TEST_CASE("CouplingMatrix - null engine pointers in slots do not crash", "[coupl
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = {nullptr, nullptr, nullptr, nullptr, nullptr};
     matrix.setEngines(engines);
@@ -362,7 +362,7 @@ TEST_CASE("KnotTopology - bidirectional: both engines receive coupling", "[coupl
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine src("Src"), dst("Dst");
     src.prepare(44100.0, blockSize);
@@ -395,7 +395,7 @@ TEST_CASE("KnotTopology - self-route is blocked by addRoute", "[coupling][knot]"
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine eng("Self");
     eng.prepare(44100.0, blockSize);
@@ -433,7 +433,7 @@ TEST_CASE("TriangularCoupling - applyTriangularCouplingInput called with correct
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     OxytocinLikeTestEngine src;
     TestEngine dst("Dst");
@@ -467,7 +467,7 @@ TEST_CASE("TriangularCoupling - fallback: non-Oxytocin dest gets AmpToFilter", "
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     OxytocinLikeTestEngine src;
     TestEngine dst("GenericDst");
@@ -579,7 +579,7 @@ TEST_CASE("Audio-rate cycle detection - A→B→A AudioToFM cycle is blocked", "
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine a("A"), b("B");
     a.prepare(44100.0, blockSize);
@@ -620,7 +620,7 @@ TEST_CASE("AudioToBuffer - sinkCache is nullptr for non-sink dest, no crash", "[
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
     TestEngine src("Src"), dst("Dst");
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
     src.prepare(44100.0, blockSize);
     dst.prepare(44100.0, blockSize);
     src.fillOutput(0.5f);
@@ -654,7 +654,7 @@ TEST_CASE("AmpToChoke - two routes to same dest are both admitted and delivered"
 {
     constexpr int blockSize = 256;
     MegaCouplingMatrix matrix;
-    matrix.prepare(blockSize);
+    matrix.prepare(blockSize, 44100.0);
 
     TestEngine src1("Src1"), src2("Src2"), dst("Dst");
     src1.prepare(44100.0, blockSize);

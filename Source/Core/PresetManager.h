@@ -726,16 +726,16 @@ public:
                         if (threadShouldExit())
                             break;
 
-                        if (localLib.size() >= kMaxLibrarySize)
+                        if (localLib.size() >= PresetManager::kMaxLibrarySize)
                         {
                             DBG("PresetManager: library limit (" +
-                                juce::String((int)kMaxLibrarySize) +
+                                juce::String((int)PresetManager::kMaxLibrarySize) +
                                 ") reached — stopping async scan of " +
                                 scanDir.getFullPathName());
                             break;
                         }
 
-                        if (file.getSize() > kMaxPresetFileSize)
+                        if (file.getSize() > PresetManager::kMaxPresetFileSize)
                             continue;
 
                         auto jsonString = file.loadFileAsString();
@@ -771,9 +771,6 @@ public:
             PresetManager&         manager;
             juce::File             scanDir;
             std::function<void()>  onComplete;
-
-            static constexpr size_t  kMaxLibrarySize   = PresetManager::kMaxLibrarySize;
-            static constexpr int64_t kMaxPresetFileSize = PresetManager::kMaxPresetFileSize;
         };
 
         auto* thread = new ScanThread(*this, directory, std::move(onComplete));
