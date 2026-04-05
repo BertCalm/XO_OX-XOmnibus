@@ -157,8 +157,14 @@ struct OwlfishParamSnapshot
     }
 
     // Read all cached pointers into plain members -- call once per processBlock.
+    // If attachTo() has not been called yet (e.g. during engine stability tests),
+    // all p* pointers are nullptr; in that case the default member values are
+    // already correct so we return early rather than crashing.
     void updateFrom()
     {
+        if (pPortamento == nullptr)
+            return; // not yet attached -- use constructor defaults
+
         portamento = pPortamento->load();
         legatoMode = static_cast<int>(pLegatoMode->load());
         morphGlide = pMorphGlide->load();

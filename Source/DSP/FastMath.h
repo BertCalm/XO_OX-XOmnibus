@@ -17,10 +17,10 @@ namespace xoceanus
 // over the documented input range — not average error.
 //
 // Accuracy summary:
-//   fastSin / fastCos   ~0.002% — suitable for oscillators and LFOs (minimax polynomial)
-//   fastTanh            ~2%     — suitable for saturation curves
-//   fastPow2 / fastExp  ~6%     — suitable for pitch and envelope math
-//   fastLog2            ~0.09   — suitable for dB conversion
+//   fastSin / fastCos   ~0.01%  — suitable for oscillators and LFOs (Chebyshev + half-range reduction)
+//   fastTanh            ~2.6%   — suitable for saturation curves (Padé rational approx)
+//   fastPow2 / fastExp  ~6.2%   — suitable for pitch and envelope math (Schraudolph)
+//   fastLog2            ~0.002  — suitable for dB conversion ((m-1)-factored cubic, zero at m=1)
 //   fastTan             ~0.03%  — suitable for TPT filter prewarping (|x| < π/4)
 //==============================================================================
 
@@ -81,24 +81,45 @@ inline float fastTanh(float x)
 
 //------------------------------------------------------------------------------
 /// Fast sine approximation using a degree-7 odd Chebyshev minimax polynomial.
-/// Input: radians. Accurate to ~0.002% across the full period.
-/// Replaces previous Bhaskara parabola approximation (which had up to 45%
-/// relative error in the 0-45° range despite header claiming 0.02%).
+/// Input: radians. Accurate to ~0.01% across the full period.
+///
+/// Two-stage range reduction:
+///   1. Wrap to [-π, π]
+///   2. Reflect to [-π/2, π/2] using sin(x) = sin(π-x) and sin(x) = sin(-π-x)
+///
+/// Stage 2 is essential: the degree-7 polynomial is calibrated for [-π/2, π/2].
+/// Without it, the truncated polynomial diverges near ±π where sin → 0 but the
+/// polynomial evaluates to ~0.045, giving a 4.5% absolute error.
+/// With the half-range reduction the worst-case absolute error is ~0.0001.
 inline float fastSin(float x) noexcept
 {
-    // Wrap to [-π, π]
+    // Stage 1: wrap to [-π, π]
     constexpr float twoPi = 6.28318530718f;
     constexpr float invTwoPi = 1.0f / twoPi;
     x = x - twoPi * std::floor(x * invTwoPi + 0.5f);
 
-    // Odd Chebyshev minimax approximation — max error ~0.002%
+    // Stage 2: reflect to [-π/2, π/2]
+    constexpr float halfPi = 1.57079632679f;
+    constexpr float pi     = 3.14159265359f;
+    if (x > halfPi)
+        x = pi - x;
+    else if (x < -halfPi)
+        x = -pi - x;
+
+    // Odd Chebyshev minimax approximation on [-π/2, π/2] — max error ~0.01%
     const float x2 = x * x;
     return x * (1.0f - x2 * (0.16666387f - x2 * (0.00830636f - x2 * 0.000185706f)));
 }
 
 //------------------------------------------------------------------------------
 /// Fast log2 using IEEE 754 bit manipulation.
-/// Accurate to ~0.09 across positive floats. Input must be > 0.
+/// Accurate to ~0.002 across positive floats. Input must be > 0.
+///
+/// Uses an (m-1)-factored cubic polynomial so that fastLog2(1.0) == 0 exactly.
+/// The previous Horner-form polynomial in `m` did not satisfy log2(1)=0 and
+/// had errors up to 0.6 units, breaking gainToDb(1.0) which returned ~0.34 dB
+/// instead of 0.0. The (m-1) substitution forces the constant term to zero by
+/// construction, reducing worst-case error to ~0.0013 over [1, 2).
 inline float fastLog2(float x)
 {
     if (x <= 0.0f)
@@ -109,13 +130,15 @@ inline float fastLog2(float x)
 
     // Extract exponent and mantissa from IEEE 754 representation
     float exponent = static_cast<float>((bits >> 23) - 127);
-    bits = (bits & 0x007FFFFF) | 0x3F800000; // set exponent to 0 (value in [1,2))
+    bits = (bits & 0x007FFFFF) | 0x3F800000; // set exponent to 0 (mantissa m in [1,2))
 
-    // Polynomial approximation of log2 in [1, 2)
-    // Minimax cubic: log2(m) ~ -1.7417939 + m * (2.8212026 + m * (-1.4699568 + m * 0.44717955))
+    // Polynomial approximation of log2(m) in [1, 2).
+    // Written as (m-1)*poly so that log2(1.0) == 0.0 exactly (zero at m=1 by construction).
+    // Minimax cubic fit: max error ~0.0013 over [1, 2).
     float m;
     std::memcpy(&m, &bits, sizeof(m));
-    float log2m = -1.7417939f + m * (2.8212026f + m * (-1.4699568f + m * 0.44717955f));
+    float u = m - 1.0f;
+    float log2m = u * (1.42349522f + u * (-0.58777338f + u * 0.16559350f));
 
     return exponent + log2m;
 }

@@ -762,6 +762,8 @@ public:
             v.saturation.reset();
             v.crusher.reset();
         }
+        std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
+        std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
 
     //-- Audio ------------------------------------------------------------------
