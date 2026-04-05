@@ -104,7 +104,8 @@ public:
             engine_.setCouplingFilterMod(couplingFilterMod_);
 
         // ── Steps 3–9: Delegate to engine ─────────────────────────────────────
-        engine_.processBlock(buffer, midi, snap_, numSamples);
+        engine_.processBlock(buffer, midi, snap_, numSamples,
+                             hostBPM_, hostBeatPos_, hostIsPlaying_);
 
         // Update active voice count for UI display
         activeVoiceCount_.store(engine_.getActiveVoiceCount(), std::memory_order_relaxed);
@@ -196,6 +197,18 @@ public:
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         snap_.attachTo(apvts);
+    }
+
+    //-- Host transport injection -----------------------------------------------
+    // Called by the processor (or host bridge) before renderBlock() to deliver
+    // DAW transport state for tempo-synced dropout (P2-01).
+    // If the host is not playing or no tempo is available, pass bpm=0 and
+    // isPlaying=false — the engine falls back to free-running dropout.
+    void setHostTransport(float bpm, double beatPos, bool isPlaying) noexcept
+    {
+        hostBPM_      = bpm;
+        hostBeatPos_  = beatPos;
+        hostIsPlaying_ = isPlaying;
     }
 
 private:
@@ -374,7 +387,7 @@ private:
             juce::ParameterID{"oxidize_wobbleSpread", 1}, "Oxidize Wobble Stereo",
             PNR(0.0f, 1.0f), 0.3f));
 
-        // ── Dropout (4) ───────────────────────────────────────────────────────
+        // ── Dropout (5) ───────────────────────────────────────────────────────
         params.push_back(std::make_unique<PF>(
             juce::ParameterID{"oxidize_dropoutRate", 1}, "Oxidize Dropout Rate",
             PNR(0.0f, 1.0f), 0.1f));
@@ -390,6 +403,12 @@ private:
         params.push_back(std::make_unique<PF>(
             juce::ParameterID{"oxidize_dropoutVariance", 1}, "Oxidize Dropout Variance",
             PNR(0.0f, 1.0f), 0.2f));
+
+        // P2-01: Tempo-sync mode for dropout gate (Kakehashi seance recommendation)
+        // 0=Free (default — existing free-running random behaviour, backward compatible)
+        // 1=1/8th note grid  2=1/16th note grid  3=1/32nd note grid
+        params.push_back(std::make_unique<PI>(
+            juce::ParameterID{"oxidize_dropoutSync", 1}, "Oxidize Dropout Sync", 0, 3, 0));
 
         // ── Sediment Reverb (3) ───────────────────────────────────────────────
         params.push_back(std::make_unique<PF>(
@@ -467,6 +486,12 @@ private:
     float couplingAgeBoost_   = 0.0f; // AmplitudeModulation → faster aging
     float couplingWobbleMod_  = 0.0f; // FrequencyModulation → wobble rate mod
     float couplingFilterMod_  = 0.0f; // SpectralShaping → erosion floor shift
+
+    // Host transport state — injected via setHostTransport() before renderBlock().
+    // Defaults: bpm=0, beatPos=0, isPlaying=false → engine falls back to free mode.
+    float  hostBPM_       = 0.0f;
+    double hostBeatPos_   = 0.0;
+    bool   hostIsPlaying_ = false;
 };
 
 } // namespace xoceanus

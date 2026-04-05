@@ -16,7 +16,7 @@ namespace oxidize {
 //==============================================================================
 enum class CorrosionMode
 {
-    Valve         = 0,  // tanh — smooth tube saturation
+    Valve         = 0,  // triode asymmetric saturation — positive clips harder, aged valves drift
     Transformer   = 1,  // x/(1+|x*d|) — low-mid thickening
     BrokenSpeaker = 2,  // asymmetric clip + noise injection
     TapeSat       = 3,  // tanh with 3rd harmonic emphasis
@@ -38,17 +38,57 @@ enum class CorrosionMode
 //==============================================================================
 
 //------------------------------------------------------------------------------
-// Valve — tanh tube saturation.
-// The canonical smooth saturator: even harmonics dominant at low drive, broad
-// harmonic spread at high drive. Symmetric, so no DC offset.
+// Valve — triode-style asymmetric tube saturation.
+//
+// Models the asymmetric clipping behaviour of a real triode valve:
+//
+//   Grid-current region (positive swing): the grid draws current when the
+//   signal swings positive, causing the plate to clip harder and sooner.
+//   This introduces even harmonics (2nd dominant) that grow with drive.
+//
+//   Cutoff region (negative swing): the valve moves toward cutoff on negative
+//   swings, which is a softer, gentler compression — the fundamental is
+//   preserved and odd harmonics are subdued relative to the positive side.
+//
+//   Drive asymmetry: at drive=0 both halves approach the same gain so the
+//   saturator is nearly symmetric and clean. As drive increases the positive
+//   side clips disproportionately harder, widening the asymmetry and adding
+//   warmth/even-harmonic colour typical of push-pull imbalance or single-ended
+//   triode output stages.
+//
+//   Age (rust 0-1): real valves develop cathode poisoning and heater sag over
+//   time, which biases the operating point and introduces a DC offset in the
+//   output. The rust parameter models this: an aged valve drifts the signal
+//   positive before saturation, producing subtle but audible tonal shift.
+//
+// Parameters:
+//   input — pre-gain signal in [-1, 1]
+//   drive — waveshaper intensity [0, ~1]; internally remapped
+//   rust  — age-derived [0, 1]; defaults to 0.0 (brand-new valve, no drift)
 //------------------------------------------------------------------------------
-static inline float processValve(float input, float drive) noexcept
+static inline float processValve(float input, float drive, float rust = 0.0f) noexcept
 {
-    // fastTanh is a Padé approx (~2.6% error) — sufficient for saturation.
-    // For full accuracy at very low drive levels, std::tanh would be preferable,
-    // but the difference is inaudible above ~-60 dB.
-    const float x = input * (1.0f + drive * 3.0f); // drive maps [0,1] → [1,4]× gain
-    return flushDenormal(std::tanh(x));
+    // Aged valve DC bias drift: cathode/heater sag biases the operating point.
+    // rust=0 → no drift; rust=1 → +0.12 offset before saturation.
+    const float biased = input + rust * 0.12f;
+
+    // Asymmetric drive gains:
+    //   positive (grid-current region) — clips harder, more aggressively
+    //   negative (cutoff region)       — gentler, preserves fundamental
+    const float posDrive = 1.0f + drive * 3.5f;
+    const float negDrive = 1.0f + drive * 2.0f;
+
+    // Apply asymmetric tanh halves with a continuous crossover at zero.
+    // std::tanh used (not fastTanh) so the soft-knee behaviour is accurate
+    // across the full drive range — the harmonic colour depends on the true
+    // inflection shape, not a Padé approximation.
+    float out;
+    if (biased >= 0.0f)
+        out = std::tanh(biased * posDrive);
+    else
+        out = std::tanh(biased * negDrive);
+
+    return flushDenormal(out);
 }
 
 //------------------------------------------------------------------------------
@@ -184,7 +224,7 @@ static inline float processCorrosion(float input,
 {
     switch (mode)
     {
-        case CorrosionMode::Valve:         return processValve(input, drive);
+        case CorrosionMode::Valve:         return processValve(input, drive, rust);
         case CorrosionMode::Transformer:   return processTransformer(input, drive);
         case CorrosionMode::BrokenSpeaker: return processBrokenSpeaker(input, drive, noise);
         case CorrosionMode::TapeSat:       return processTapeSat(input, drive);

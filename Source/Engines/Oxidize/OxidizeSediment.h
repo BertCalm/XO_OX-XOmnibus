@@ -17,8 +17,12 @@ namespace xoceanus
 // accumulates decay across notes over a T60 range of 2s–300s.
 //
 // Design:
-//   - 4 delay lines, coprime lengths: 1117, 1571, 1949, 2311 samples
-//     (avoids metallic modes / Schroeder comb artifacts)
+//   - 4 delay lines, coprime base lengths: 1117, 1571, 1949, 2311 samples
+//     @ 44100 Hz (avoids metallic modes / Schroeder comb artifacts).
+//     In prepare(), each length is scaled by sampleRate/44100 so the absolute
+//     delay times (25ms/35ms/44ms/52ms) are preserved at any sample rate.
+//     Approximate coprimality after rounding is sufficient to avoid comb
+//     artifacts — no search for new coprime numbers is needed.
 //   - Hadamard feedback matrix (orthogonal, energy-preserving)
 //   - Per-delay one-pole low-pass filter (sedimentTone controls the cutoff)
 //   - T60: 2s (sedimentTail=0) to 300s (sedimentTail=1)  — never infinite
@@ -44,9 +48,15 @@ public:
     {
         sampleRate_ = sampleRate;
 
+        // Scale base delay lengths (defined at 44100 Hz) to the actual sample
+        // rate so that absolute delay times are preserved at any rate.
+        const double srRatio = sampleRate / kReferenceSampleRate;
+        for (int i = 0; i < kNumDelays; ++i)
+            scaledDelayLengths_[i] = static_cast<int>(kDelayLengths[i] * srRatio);
+
         for (int i = 0; i < kNumDelays; ++i)
         {
-            const int len = kDelayLengths[i] + 1;  // +1 for write-head safety
+            const int len = scaledDelayLengths_[i] + 1;  // +1 for write-head safety
             delayLines_[i].assign(static_cast<size_t>(len), 0.0f);
             writeHeads_[i] = 0;
             lpStates_[i]   = 0.0f;
@@ -84,9 +94,9 @@ public:
 
         // Per-delay feedback gain derived from T60 of the longest delay line.
         // formula: feedback = 10^(-3 * delayTime / (T60 * sampleRate))
-        // We use the longest delay (2311) so all delays share one gain scalar
-        // that correctly models the worst-case (slowest-decaying) mode.
-        const float longestDelaySamples = static_cast<float>(kDelayLengths[kNumDelays - 1]);
+        // We use the longest scaled delay so the formula operates in samples
+        // at the actual sample rate, giving the correct absolute decay time.
+        const float longestDelaySamples = static_cast<float>(scaledDelayLengths_[kNumDelays - 1]);
         feedbackGain_ = std::pow(10.0f,
             -3.0f * longestDelaySamples / (t60 * static_cast<float>(sampleRate)));
 
@@ -111,7 +121,7 @@ public:
         float delayed[kNumDelays];
         for (int i = 0; i < kNumDelays; ++i)
         {
-            const int readHead = (writeHeads_[i] - kDelayLengths[i] + static_cast<int>(delayLines_[i].size()))
+            const int readHead = (writeHeads_[i] - scaledDelayLengths_[i] + static_cast<int>(delayLines_[i].size()))
                                  % static_cast<int>(delayLines_[i].size());
             delayed[i] = flushDenormal(delayLines_[i][static_cast<size_t>(readHead)]);
         }
@@ -163,13 +173,16 @@ public:
 
 private:
     //--------------------------------------------------------------------------
-    static constexpr int kNumDelays = 4;
-    // Coprime delay lengths (samples at any SR; scale externally if needed).
+    static constexpr int    kNumDelays           = 4;
+    static constexpr double kReferenceSampleRate = 44100.0;
+    // Coprime base delay lengths defined at 44100 Hz.
     // At 44100 Hz: 1117=25ms, 1571=35ms, 1949=44ms, 2311=52ms.
-    // At 48000 Hz ratios are slightly shorter — still well-spaced modally.
+    // prepare() scales these to the actual sample rate so that absolute
+    // delay times are preserved regardless of host sample rate.
     static constexpr int kDelayLengths[kNumDelays] = { 1117, 1571, 1949, 2311 };
 
-    double sampleRate_ = 44100.0;
+    double sampleRate_           = 44100.0;
+    int    scaledDelayLengths_[kNumDelays] = { 1117, 1571, 1949, 2311 };  // populated in prepare()
 
     std::vector<float> delayLines_[kNumDelays];
     int                writeHeads_[kNumDelays] = {};

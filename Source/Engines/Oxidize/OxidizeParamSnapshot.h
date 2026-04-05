@@ -6,7 +6,7 @@
 namespace xooxidize
 {
 
-/// OxidizeParamSnapshot — cache all 50 oxidize_ parameter values once per block.
+/// OxidizeParamSnapshot — cache all 51 oxidize_ parameter values once per block.
 /// Never query APVTS on the audio thread per-sample; call updateFrom() once at
 /// the top of processBlock() and then read the plain POD fields throughout.
 ///
@@ -73,17 +73,18 @@ struct OxidizeParamSnapshot
     float wobbleSpread  = 0.3f;  // 0-1 — L/R wobble independence (stereo)
 
     // -------------------------------------------------------------------------
-    // Dropout (4)
+    // Dropout (5)
     // -------------------------------------------------------------------------
     float dropoutRate     = 0.1f; // 0-1 — probability per block (age-modulated, quadratic)
     float dropoutDepth    = 0.8f; // 0-1 — signal cut depth (1.0 = full silence)
     float dropoutSmear    = 0.5f; // 0-1 — envelope shape (0=hard click, 1=soft tape lift)
     float dropoutVariance = 0.2f; // 0-1 — timing randomization
+    int   dropoutSync     = 0;    // 0=Free, 1=1/8th note, 2=1/16th note, 3=1/32nd note
 
     // -------------------------------------------------------------------------
     // Sediment Reverb (3)
     // -------------------------------------------------------------------------
-    float sedimentTail = 0.5f;  // 0-1 — decay time (T60 floor: 300s at max)
+    float sedimentTail = 0.3f;  // 0-1 — decay time (T60 floor: 300s at max)
     float sedimentTone = 0.4f;  // 0-1 — reverb spectrum tilt
     float sedimentMix  = 0.25f; // 0-1 — dry/wet (age-modulated: more wet with age)
 
@@ -166,6 +167,7 @@ struct OxidizeParamSnapshot
         pDropoutDepth    = apvts.getRawParameterValue("oxidize_dropoutDepth");
         pDropoutSmear    = apvts.getRawParameterValue("oxidize_dropoutSmear");
         pDropoutVariance = apvts.getRawParameterValue("oxidize_dropoutVariance");
+        pDropoutSync     = apvts.getRawParameterValue("oxidize_dropoutSync");
 
         // Sediment Reverb
         pSedimentTail = apvts.getRawParameterValue("oxidize_sedimentTail");
@@ -257,9 +259,10 @@ struct OxidizeParamSnapshot
         dropoutDepth    = loadF(pDropoutDepth,    0.8f);
         dropoutSmear    = loadF(pDropoutSmear,    0.5f);
         dropoutVariance = loadF(pDropoutVariance, 0.2f);
+        dropoutSync     = loadI(pDropoutSync,     0);
 
         // Sediment Reverb
-        sedimentTail = loadF(pSedimentTail, 0.5f);
+        sedimentTail = loadF(pSedimentTail, 0.3f);
         sedimentTone = loadF(pSedimentTone, 0.4f);
         sedimentMix  = loadF(pSedimentMix,  0.25f);
 
@@ -336,6 +339,7 @@ private:
     std::atomic<float>* pDropoutDepth    = nullptr;
     std::atomic<float>* pDropoutSmear    = nullptr;
     std::atomic<float>* pDropoutVariance = nullptr;
+    std::atomic<float>* pDropoutSync     = nullptr;
 
     // Sediment Reverb
     std::atomic<float>* pSedimentTail = nullptr;

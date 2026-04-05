@@ -399,7 +399,10 @@ struct OxidizeVoice
     void renderSamples(float* outL, float* outR, int numSamples,
                        const xooxidize::OxidizeParamSnapshot& snap,
                        const oxidize::LookupTables& /*luts*/,
-                       float* sedimentSendL, float* sedimentSendR) noexcept
+                       float* sedimentSendL, float* sedimentSendR,
+                       float  hostBPM      = 0.0f,
+                       double hostBeatPos  = 0.0,
+                       bool   hostIsPlaying = false) noexcept
     {
         if (!active)
             return;
@@ -447,20 +450,73 @@ struct OxidizeVoice
         }
 
         // ── Dropout: block-rate probability decision ─────────────────────────
-        // One draw per block to avoid per-sample overhead
+        // P2-01: Tempo-sync mode (Kakehashi seance recommendation).
+        //
+        // dropoutSync == 0 (Free): original per-block random draw — unchanged.
+        // dropoutSync == 1/2/3:    Only roll the dice when the host beat position
+        //   crosses a grid boundary (1/8th, 1/16th, or 1/32nd note respectively).
+        //   This means dropout events are quantized to the tempo grid — they can
+        //   only START on a beat subdivision, creating a rhythmic rupture texture
+        //   rather than a random scatter.  Once a dropout begins, it completes
+        //   normally via the fade envelope regardless of sync mode.
+        //
+        // Fallback to free mode when: host is not playing, BPM is unknown (<=0),
+        //   or dropoutSync == 0.  This preserves full backward compatibility.
+        //
+        // Grid boundary detection: compare the beat-grid phase at the START of
+        //   this block vs the END.  If the phase wraps around 0 (i.e., start > end),
+        //   a grid boundary fell within this block.
+        //
+        // beatDivision: beats per grid subdivision (quarter note = 1 beat PPQ).
+        //   1/8th  note = 0.5 beats, 1/16th = 0.25 beats, 1/32nd = 0.125 beats.
         if (!inDropout && !recovering)
         {
-            dropoutPRNG = dropoutPRNG * 1664525u + 1013904223u;
-            float rng01 = static_cast<float>(dropoutPRNG & 0xFFFF) / 65536.0f;
+            // Determine whether this block is allowed to roll for a new dropout.
+            bool allowDraw = true; // free mode: always allow
 
-            // dropoutVariance adds ±25% jitter to threshold
-            uint32_t jitterBits = (dropoutPRNG >> 16) & 0xFF;
-            float jitter = 1.0f + (static_cast<float>(jitterBits) / 255.0f - 0.5f)
-                           * snap.dropoutVariance;
-            float threshold = ageDerived.dropoutProbability * jitter;
+            if (snap.dropoutSync > 0 && hostIsPlaying && hostBPM > 0.0f)
+            {
+                // Division sizes in quarter-note (PPQ) beats
+                // mode 1 = 1/8th  → 0.5 PPQ per subdivision
+                // mode 2 = 1/16th → 0.25 PPQ per subdivision
+                // mode 3 = 1/32nd → 0.125 PPQ per subdivision
+                double divisionBeats;
+                switch (snap.dropoutSync)
+                {
+                case 1:  divisionBeats = 0.5;   break; // 1/8th note
+                case 2:  divisionBeats = 0.25;  break; // 1/16th note
+                case 3:  divisionBeats = 0.125; break; // 1/32nd note
+                default: divisionBeats = 0.5;   break;
+                }
 
-            if (rng01 < threshold)
-                inDropout = true;
+                // Compute beat position at START and END of this block.
+                // beatsPerSample = BPM / 60 / sampleRate
+                const double beatsPerSample = static_cast<double>(hostBPM) / 60.0
+                                              / static_cast<double>(sampleRate_);
+                const double beatStart = hostBeatPos;
+                const double beatEnd   = hostBeatPos + beatsPerSample * static_cast<double>(numSamples);
+
+                // Phase within the current subdivision cycle at block boundaries.
+                // A grid boundary is crossed when floor(beatEnd/div) > floor(beatStart/div).
+                const double phaseStart = std::floor(beatStart / divisionBeats);
+                const double phaseEnd   = std::floor(beatEnd   / divisionBeats);
+                allowDraw = (phaseEnd > phaseStart);
+            }
+
+            if (allowDraw)
+            {
+                dropoutPRNG = dropoutPRNG * 1664525u + 1013904223u;
+                float rng01 = static_cast<float>(dropoutPRNG & 0xFFFF) / 65536.0f;
+
+                // dropoutVariance adds ±25% jitter to threshold
+                uint32_t jitterBits = (dropoutPRNG >> 16) & 0xFF;
+                float jitter = 1.0f + (static_cast<float>(jitterBits) / 255.0f - 0.5f)
+                               * snap.dropoutVariance;
+                float threshold = ageDerived.dropoutProbability * jitter;
+
+                if (rng01 < threshold)
+                    inDropout = true;
+            }
         }
 
         // Dropout envelope fade rates — smear=0 → instant (1 sample), smear=1 → 200ms

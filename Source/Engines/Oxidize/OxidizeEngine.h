@@ -159,11 +159,18 @@ public:
 
     //==========================================================================
     // processBlock — main render entry point.
+    //
+    // hostBPM:     DAW tempo in BPM. 0 = unavailable → dropout falls back to free mode.
+    // hostBeatPos: DAW beat position in PPQ (quarter notes since session start).
+    // hostIsPlaying: true when DAW transport is rolling.
     //==========================================================================
     void processBlock(juce::AudioBuffer<float>& buffer,
                       juce::MidiBuffer&          midi,
                       xooxidize::OxidizeParamSnapshot& snap,
-                      int numSamples) noexcept
+                      int numSamples,
+                      float  hostBPM      = 0.0f,
+                      double hostBeatPos  = 0.0,
+                      bool   hostIsPlaying = false) noexcept
     {
         jassert(numSamples <= maxBlockSize_);
 
@@ -224,7 +231,8 @@ public:
             // Per-sample: render voice DSP (adds into voiceBufL/R + sediment sends)
             voice.renderSamples(voiceBufL_.data(), voiceBufR_.data(),
                                 numSamples, snap, luts_,
-                                sedimentSendL_.data(), sedimentSendR_.data());
+                                sedimentSendL_.data(), sedimentSendR_.data(),
+                                hostBPM, hostBeatPos, hostIsPlaying);
 
             // Apply ring modulation if AudioToRing coupling is active
             if (couplingRingAmount_ > 0.001f && !couplingRingBuffer_.empty())
