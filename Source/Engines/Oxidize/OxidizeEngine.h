@@ -378,9 +378,15 @@ private:
 
         if (target != nullptr)
         {
+            // Detect steal: target was active before reset.
+            const bool isSteal = target->active;
             target->resetState();
             const float snapshotAge = computeSnapshotAge(velocity, snap);
             target->noteOn(note, velocity, snapshotAge, snap.reverseAge != 0, snap, sampleClock_);
+            // P0-02 fix: stolen voice starts at gain=0 and ramps to 1 over 5ms,
+            // preventing a click from the abrupt DSP state reset in resetState().
+            if (isSteal)
+                target->stealFadeGain = 0.0f;
         }
     }
 

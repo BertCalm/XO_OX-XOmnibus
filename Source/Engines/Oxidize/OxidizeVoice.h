@@ -84,6 +84,11 @@ struct OxidizeVoice
     bool     active    = false;
     uint64_t startTime = 0;   // sample-clock at note-on (LRU voice stealing)
 
+    // Voice-steal crossfade gain: 0→1 ramp over ~5ms when a voice is stolen.
+    // New note starts at 0.0f and increments each sample at stealFadeRate_
+    // to prevent a click from abrupt DSP state reset on the stolen voice.
+    float stealFadeGain = 1.0f;
+
     //==========================================================================
     // Age state (Schulze mandate: fully independent per voice)
     //==========================================================================
@@ -157,9 +162,10 @@ struct OxidizeVoice
     float corrosionTiltState_ = 0.0f;
 
     //==========================================================================
-    // Private: sample rate
+    // Private: sample rate + steal crossfade rate
     //==========================================================================
-    float sampleRate_ = 44100.0f;
+    float sampleRate_    = 44100.0f;
+    float stealFadeRate_ = 1.0f / (0.005f * 44100.0f); // 5ms linear ramp
 
     //==========================================================================
     // isActive — false once envelope completes and voice is recyclable
@@ -187,7 +193,8 @@ struct OxidizeVoice
     //==========================================================================
     void prepare(double sampleRate, int /*maxBlockSize*/) noexcept
     {
-        sampleRate_ = static_cast<float>(sampleRate);
+        sampleRate_    = static_cast<float>(sampleRate);
+        stealFadeRate_ = 1.0f / (0.005f * sampleRate_); // 5ms linear ramp
         ampEnvelope.prepare(sampleRate_);
 
         wowLFO_L.setRate(0.5f, sampleRate_);
@@ -225,6 +232,7 @@ struct OxidizeVoice
         entroIIR       = 0.0f;
         lastSampleL    = 0.0f;
         lastSampleR    = 0.0f;
+        stealFadeGain  = 1.0f;  // full gain by default; engine sets 0.0f on steal
 
         erosionFilter       = CytomicSVF{};
         erosionBpFilter     = CytomicSVF{};
@@ -730,6 +738,17 @@ struct OxidizeVoice
             float envLevel   = ampEnvelope.process();
             float outSampleL = dropL * envLevel;
             float outSampleR = dropR * envLevel;
+
+            // ── Voice-steal crossfade: ramp stealFadeGain 0→1 over 5ms ─────────
+            // Prevents a click when resetState() zeros filter/DSP state on steal.
+            // stealFadeGain is set to 0.0f by the engine on a stolen voice;
+            // non-stolen notes start at 1.0f and this is a no-op.
+            if (stealFadeGain < 1.0f)
+            {
+                outSampleL *= stealFadeGain;
+                outSampleR *= stealFadeGain;
+                stealFadeGain = std::min(1.0f, stealFadeGain + stealFadeRate_);
+            }
 
             outL[i] += outSampleL;
             outR[i] += outSampleR;

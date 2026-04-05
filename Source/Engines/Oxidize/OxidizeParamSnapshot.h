@@ -106,10 +106,10 @@ struct OxidizeParamSnapshot
     // -------------------------------------------------------------------------
     // Macros (4)
     // -------------------------------------------------------------------------
-    float macroPATINA  = 0.5f; // M1 CHARACTER — patinaDensity, corrosionDepth, corrosionTone
-    float macroAGE     = 0.5f; // M2 MOVEMENT  — ageRate, wowDepth, flutterDepth
-    float macroENTROPY = 0.5f; // M3 COUPLING  — entropyDepth, erosionRate, dropoutRate
-    float macroSEDIMENT= 0.5f; // M4 SPACE     — sedimentMix, sedimentTail, dropoutRate
+    float macroPATINA  = 0.0f; // M1 CHARACTER — patinaDensity, corrosionDepth, corrosionTone
+    float macroAGE     = 0.0f; // M2 MOVEMENT  — ageRate, wowDepth, flutterDepth
+    float macroENTROPY = 0.0f; // M3 COUPLING  — entropyDepth, erosionRate, dropoutRate
+    float macroSEDIMENT= 0.0f; // M4 SPACE     — sedimentMix, sedimentTail, dropoutRate
 
     // =========================================================================
     // attachTo() — call ONCE during plugin initialisation.
@@ -276,10 +276,10 @@ struct OxidizeParamSnapshot
         pitchBend  = loadF(pPitchBend,  2.0f);
 
         // Macros
-        macroPATINA   = loadF(pMacroPATINA,   0.5f);
-        macroAGE      = loadF(pMacroAGE,      0.5f);
-        macroENTROPY  = loadF(pMacroENTROPY,  0.5f);
-        macroSEDIMENT = loadF(pMacroSEDIMENT, 0.5f);
+        macroPATINA   = loadF(pMacroPATINA,   0.0f);
+        macroAGE      = loadF(pMacroAGE,      0.0f);
+        macroENTROPY  = loadF(pMacroENTROPY,  0.0f);
+        macroSEDIMENT = loadF(pMacroSEDIMENT, 0.0f);
     }
 
 private:
