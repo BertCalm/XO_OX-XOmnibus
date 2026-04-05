@@ -112,6 +112,11 @@ export default function XpmExporter() {
       } catch (error) {
         const msg = error instanceof Error ? error.message : 'Unknown error';
         failExport(msg);
+        useToastStore.getState().addToast({
+          type: 'error',
+          title: 'Export failed',
+          message: msg,
+        });
       }
     },
     [samples, pads, startExport, updateStep, completeStep, setOverallProgress, finishExport, failExport]
@@ -186,6 +191,11 @@ export default function XpmExporter() {
       } catch (error) {
         const msg = error instanceof Error ? error.message : 'Unknown error';
         failExport(msg);
+        useToastStore.getState().addToast({
+          type: 'error',
+          title: 'Export failed',
+          message: msg,
+        });
       }
     },
     [samples, pads, startExport, updateStep, completeStep, setOverallProgress, finishExport, failExport]

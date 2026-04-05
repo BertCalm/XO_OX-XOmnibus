@@ -72,34 +72,39 @@ def fix_engine_params(engine_key: str, params: dict) -> tuple[dict, int]:
     return fixed, renamed
 
 
-def process_file(path: Path) -> tuple[bool, int]:
+def process_file(path: Path) -> tuple[bool, int, dict]:
     """
     Process a single .xometa file.
-    Returns (was_modified, total_keys_renamed).
+    Returns (was_modified, total_keys_renamed, per_engine_counts).
+    per_engine_counts maps canonical engine name → number of keys renamed.
     """
     try:
         text = path.read_text(encoding="utf-8")
         data = json.loads(text)
     except (json.JSONDecodeError, OSError) as e:
         print(f"  SKIP (parse error): {path} — {e}", file=sys.stderr)
-        return False, 0
+        return False, 0, {}
 
     parameters = data.get("parameters")
     if not isinstance(parameters, dict):
-        return False, 0
+        return False, 0, {}
 
     total_renamed = 0
+    engine_counts: dict[str, int] = {}
     new_parameters = {}
     for engine_key, params in parameters.items():
         if isinstance(params, dict):
             fixed_params, renamed = fix_engine_params(engine_key, params)
             new_parameters[engine_key] = fixed_params
             total_renamed += renamed
+            if renamed > 0:
+                canonical = ENGINE_ALIASES.get(engine_key, engine_key)
+                engine_counts[canonical] = engine_counts.get(canonical, 0) + renamed
         else:
             new_parameters[engine_key] = params
 
     if total_renamed == 0:
-        return False, 0
+        return False, 0, {}
 
     data["parameters"] = new_parameters
     try:
@@ -107,9 +112,9 @@ def process_file(path: Path) -> tuple[bool, int]:
         path.write_text(new_text, encoding="utf-8")
     except OSError as e:
         print(f"  ERROR writing {path}: {e}", file=sys.stderr)
-        return False, 0
+        return False, 0, {}
 
-    return True, total_renamed
+    return True, total_renamed, engine_counts
 
 
 def main():
@@ -139,21 +144,15 @@ def main():
         if not has_candidate:
             continue
 
-        modified, keys_renamed = process_file(path)
+        modified, keys_renamed, file_engine_counts = process_file(path)
         if modified:
             files_fixed += 1
             total_keys_renamed += keys_renamed
             print(f"  FIXED ({keys_renamed:3d} keys): {path.relative_to(preset_root)}")
 
-            # Collect per-engine stats from the file we just read
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-                for engine_key in data.get("parameters", {}).keys():
-                    canonical = ENGINE_ALIASES.get(engine_key, engine_key)
-                    if canonical in ENGINE_PREFIX_FIXES:
-                        per_engine_stats[canonical] = per_engine_stats.get(canonical, 0) + 1
-            except (json.JSONDecodeError, OSError):
-                pass
+            # Accumulate per-engine stats from the counts returned by process_file()
+            for engine, count in file_engine_counts.items():
+                per_engine_stats[engine] = per_engine_stats.get(engine, 0) + count
 
     print()
     print("=" * 60)

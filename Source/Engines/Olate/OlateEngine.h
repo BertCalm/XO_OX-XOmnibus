@@ -162,6 +162,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float>(sr);
+        inverseSr_ = 1.0f / srf;
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
@@ -353,7 +354,7 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        const float dtSec = 1.0f / srf;
+        const float dtSec = inverseSr_;
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -658,6 +659,7 @@ public:
 private:
     double sr = 48000.0;
     float srf = 48000.0f;
+    float inverseSr_ = 1.0f / 48000.0f;
 
     std::array<OlateVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

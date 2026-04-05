@@ -679,7 +679,7 @@ private:
                 layer->createNewChildElement("VelStart")->addTextElement(juce::String(range.start));
                 layer->createNewChildElement("VelEnd")->addTextElement(juce::String(range.end));
                 layer->createNewChildElement("RootNote")->addTextElement("0");
-                layer->createNewChildElement("KeyTrack")->addTextElement("True");
+                layer->createNewChildElement("KeyTrack")->addTextElement("False");
             }
         }
 

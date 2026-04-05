@@ -14,7 +14,7 @@ namespace xoceanus
 {
 
 //==============================================================================
-// PresetBrowser — Searchable, filterable browser for 18,100+ factory presets.
+// PresetBrowser — Searchable, filterable browser for ~19,200+ factory presets.
 //
 // Features:
 //   - Real-time text search (filters name, tags, description, engine names)
@@ -448,7 +448,7 @@ private:
     //==========================================================================
     // Filtering — async implementation (#753)
     //
-    // The expensive linear scan + std::sort over 18,100+ presets is moved off
+    // The expensive linear scan + std::sort over ~19,200+ presets is moved off
     // the JUCE message thread.  applyFilters() captures the current UI state,
     // dispatches a background job, then returns immediately.  When the job
     // finishes it posts results back via callAsync for a zero-copy swap into

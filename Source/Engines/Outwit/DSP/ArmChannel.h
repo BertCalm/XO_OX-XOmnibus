@@ -406,8 +406,8 @@ private:
     // Engine state
     //==========================================================================
 
-    float sr = 48000.0f;
-    float invSr = 1.0f / 48000.0f;
+    float sr = 44100.0f;
+    float invSr = 1.0f / 44100.0f;
     float stepEnvRelCoeff = 0.9986f; // cached: fastExp(-1/(0.02*48000)), updated in prepare()
 };
 

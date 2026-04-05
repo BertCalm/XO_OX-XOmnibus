@@ -42,7 +42,7 @@ MANUFACTURER = "XO_OX Designs"
 OXPORT_VERSION = "2.0"
 SCHEMA_VERSION = 1
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"]
 DNA_AXES = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
 GENERIC_NAMES = {

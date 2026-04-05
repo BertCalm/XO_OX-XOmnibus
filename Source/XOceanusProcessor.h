@@ -619,6 +619,29 @@ private:
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
     void processBrothCoupling(std::array<SynthEngine*, MaxSlots>& enginePtrs);
 
+    // ── Engine graveyard — deferred destruction off the audio thread ──────────
+    // When a crossfade completes, the outgoing engine's shared_ptr is deposited
+    // here by the audio thread instead of being reset() in-place (which would
+    // trigger ~SynthEngine() with 20+ vector deallocations on the RT thread).
+    // The message thread drains the graveyard via drainGraveyard(), called
+    // asynchronously via juce::MessageManager::callAsync.
+    //
+    // Thread-safety contract:
+    //   depositInGraveyard() — called ONLY from the audio thread (processBlock)
+    //   drainGraveyard()     — called ONLY from the message thread (callAsync)
+    //
+    // Overflow policy: if the graveyard is full (16 simultaneous engine swaps
+    // faster than the message thread can drain), the engine is intentionally
+    // leaked via shared_ptr::reset() without destruction.  This is a safety
+    // valve that should never trigger in normal use.
+    static constexpr int kGraveyardSize = 16;
+    std::array<std::shared_ptr<SynthEngine>, kGraveyardSize> graveyard_;
+    std::atomic<int> graveyardWritePos_{0}; // written by audio thread only
+    std::atomic<int> graveyardReadPos_{0};  // written by message thread only
+
+    void depositInGraveyard(std::shared_ptr<SynthEngine> engine) noexcept;
+    void drainGraveyard();
+
     // BROTH quad coordinator — stateless helper, no heap allocation
     BrothCoordinator brothCoordinator_;
 

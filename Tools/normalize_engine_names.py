@@ -65,7 +65,8 @@ def normalize_preset(path: Path) -> bool:
     try:
         text = path.read_text(encoding="utf-8")
         data = json.loads(text)
-    except Exception:
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"WARN: cannot parse {path}: {exc}", file=sys.stderr)
         return False
 
     changed = False

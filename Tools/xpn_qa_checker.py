@@ -382,7 +382,7 @@ def check_file(path: Path) -> dict:
     checks["attack_presence"]   = _check_attack_presence(samples, framerate)
 
     for check_result in checks.values():
-        issue = check_result.pop("issue", None)
+        issue = check_result.get("issue", None)
         if issue:
             issues.append(issue)
 
@@ -438,7 +438,7 @@ def check_velocity_layers(layer_paths: list[Path]) -> dict:
     checks["tonal_consistency"]  = _check_tonal_consistency(layer_samples, framerate)
 
     for check_result in checks.values():
-        issue = check_result.pop("issue", None)
+        issue = check_result.get("issue", None)
         if issue:
             issues.append(issue)
 

@@ -287,8 +287,8 @@ private:
         {0.5f, 0.5f, 0.5f, 0.5f}, {0.5f, -0.5f, 0.5f, -0.5f}, {0.5f, 0.5f, -0.5f, -0.5f}, {0.5f, -0.5f, -0.5f, 0.5f}};
 
     //==========================================================================
-    float sr = 48000.0f;
-    float invSr = 1.0f / 48000.0f;
+    float sr = 44100.0f;
+    float invSr = 1.0f / 44100.0f;
 
     // Delay line lengths (in samples, scaled to actual sample rate)
     int delayLengths[kNumLines] = {};

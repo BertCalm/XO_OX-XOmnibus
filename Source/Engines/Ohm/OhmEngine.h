@@ -385,6 +385,8 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buf, juce::MidiBuffer& midi, int ns) override
     {
         juce::ScopedNoDenormals noDenormals;
+        jassert(sr > 0.0);
+        if (sr <= 0.0) { buf.clear(); return; }
         // MIDI
         for (const auto m : midi)
         {

@@ -185,6 +185,7 @@ public:
     {
         sr = sampleRate;
         srF = static_cast<float>(sampleRate);
+        inverseSr_ = 1.0f / srF;
         blockSize = maxBlockSize;
 
         for (auto& v : voices)
@@ -342,7 +343,7 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        const float inverseSr = 1.0f / srF;
+        const float inverseSr = inverseSr_;
         const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // W03 fix: hoist Fick's Law sqrt to block rate — diffusionClock changes by
@@ -742,6 +743,7 @@ public:
 private:
     double sr = 44100.0;
     float srF = 44100.0f;
+    float inverseSr_ = 1.0f / 44100.0f;
     int blockSize = 512;
 
     OverwashVoice voices[kMaxVoices];

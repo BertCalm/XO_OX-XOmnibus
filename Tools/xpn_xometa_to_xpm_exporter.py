@@ -46,7 +46,7 @@ DEFAULT_MACRO_LABELS = ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
 # MIDI note numbers for full-range keygroup (C-2 = 0 … G8 = 127)
 KEYGROUP_LOW  = 0
 KEYGROUP_HIGH = 127
-KEYGROUP_ROOT = 60  # middle C
+ROOT_NOTE = 0  # MPC auto-detect convention
 
 
 # ---------------------------------------------------------------------------
@@ -213,14 +213,14 @@ def generate_xpm(meta: dict, source_path: Path) -> str:
     kg = _sub(keygroups_el, "Keygroup")
     _sub(kg, "LowNote",       str(KEYGROUP_LOW))
     _sub(kg, "HighNote",      str(KEYGROUP_HIGH))
-    _sub(kg, "RootNote",      str(KEYGROUP_ROOT))
+    _sub(kg, "RootNote",      str(ROOT_NOTE))
     _sub(kg, "KeyTrack",      "True")
     _sub(kg, "NumLayers",     "1")
 
     layer = _sub(kg, "Layer", Num="1")
     _sub(layer, "SampleName",  "")
     _sub(layer, "SampleFile",  "")
-    _sub(layer, "VelStart",    "1")
+    _sub(layer, "VelStart",    "0")
     _sub(layer, "VelEnd",      "127")
     _sub(layer, "Volume",      "1.0")
     _sub(layer, "Pan",         "0.5")

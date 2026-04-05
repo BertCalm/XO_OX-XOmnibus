@@ -947,6 +947,12 @@ private:
         out.schemaVersion = static_cast<int>(obj->getProperty("schema_version"));
         if (out.schemaVersion < 1)
             return false;
+        static constexpr int kCurrentSchemaVersion = 1;
+        if (out.schemaVersion > kCurrentSchemaVersion)
+        {
+            DBG("Preset schema version " + juce::String(out.schemaVersion) + " is newer than supported version " + juce::String(kCurrentSchemaVersion));
+            return false;
+        }
 
         // name
         if (!obj->hasProperty("name"))
@@ -972,7 +978,7 @@ private:
         for (const auto& e : *enginesVar.getArray())
         {
             auto engineName = resolveEngineAlias(e.toString());
-            if (validEngineNames.contains(engineName))
+            if (getValidEngineNames().contains(engineName))
                 out.engines.add(engineName);
         }
         if (out.engines.isEmpty())
@@ -1003,7 +1009,7 @@ private:
                 for (const auto& prop : paramsObj->getProperties())
                 {
                     auto engineName = resolveEngineAlias(prop.name.toString());
-                    if (validEngineNames.contains(engineName))
+                    if (getValidEngineNames().contains(engineName))
                         out.parametersByEngine[engineName] = prop.value;
                 }
             }
@@ -1101,7 +1107,7 @@ private:
                             cp.amount = static_cast<float>(pairObj->getProperty("amount"));
 
                             // Validate: both engines must be known, type must be valid
-                            if (validEngineNames.contains(cp.engineA) && validEngineNames.contains(cp.engineB) &&
+                            if (getValidEngineNames().contains(cp.engineA) && getValidEngineNames().contains(cp.engineB) &&
                                 validCouplingTypes.contains(cp.type))
                             {
                                 cp.amount = juce::jlimit(-1.0f, 1.0f, cp.amount);

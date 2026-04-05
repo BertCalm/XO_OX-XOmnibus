@@ -1956,9 +1956,24 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
 
         if (cf.fadeSamplesRemaining <= 0)
         {
-            cf.outgoing.reset();
+            // Move the outgoing engine to the graveyard rather than calling
+            // shared_ptr::reset() here.  reset() would trigger ~SynthEngine()
+            // with 20+ vector deallocations on the RT thread — a hard real-time
+            // violation.  drainGraveyard() is dispatched to the message thread
+            // via callAsync (below) so destruction happens safely off the RT path.
+            if (cf.outgoing)
+                depositInGraveyard(std::move(cf.outgoing));
             cf.fadeGain = 0.0f;
         }
+    }
+
+    // Drain the graveyard on the message thread if anything was deposited this block.
+    // Using MessageManager::callAsync (not juce::Timer) — some iOS AUv3 hosts run
+    // Timer callbacks on the audio thread, which would defeat the purpose.
+    if (graveyardWritePos_.load(std::memory_order_relaxed) !=
+        graveyardReadPos_.load(std::memory_order_relaxed))
+    {
+        juce::MessageManager::callAsync([this] { drainGraveyard(); });
     }
 
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
@@ -2125,6 +2140,46 @@ void XOceanusProcessor::processBrothCoupling(std::array<SynthEngine*, MaxSlots>&
     // Depleted spectral mass means fewer available nucleation sites for ice
     // crystals — OVERCAST's crystal brightness scales with remaining spectral mass.
     overcast->setBrothSpectralMass(totalSpectralMass);
+}
+
+// ── Engine graveyard implementation ──────────────────────────────────────────
+
+void XOceanusProcessor::depositInGraveyard(std::shared_ptr<SynthEngine> engine) noexcept
+{
+    // Called ONLY from the audio thread — no blocking, no allocation.
+    int write = graveyardWritePos_.load(std::memory_order_relaxed);
+    int read  = graveyardReadPos_.load(std::memory_order_acquire);
+    int next  = (write + 1) % kGraveyardSize;
+
+    if (next == read)
+    {
+        // Graveyard full — 16 engine swaps outran the message thread drain.
+        // Release the shared_ptr without calling ~SynthEngine() so the audio
+        // thread is not blocked.  The engine leaks.  This path should never
+        // trigger in normal use (requires 16 simultaneous swaps before a
+        // single message thread dispatch runs).
+        engine.reset();
+        return;
+    }
+
+    graveyard_[write] = std::move(engine);
+    graveyardWritePos_.store(next, std::memory_order_release);
+}
+
+void XOceanusProcessor::drainGraveyard()
+{
+    // Called ONLY from the message thread (via MessageManager::callAsync).
+    // ~SynthEngine() runs here — vector deallocations are safe off the RT thread.
+    int read  = graveyardReadPos_.load(std::memory_order_relaxed);
+    int write = graveyardWritePos_.load(std::memory_order_acquire);
+
+    while (read != write)
+    {
+        graveyard_[read].reset(); // destructor runs here, on message thread
+        read = (read + 1) % kGraveyardSize;
+    }
+
+    graveyardReadPos_.store(read, std::memory_order_release);
 }
 
 void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)

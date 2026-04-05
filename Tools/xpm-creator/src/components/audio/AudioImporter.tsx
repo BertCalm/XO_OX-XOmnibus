@@ -7,7 +7,7 @@ import { decodeAudioFile, decodeArrayBuffer, isVideoFile, generateWaveformPeaks 
 import { extractAudioFromVideo } from '@/lib/audio/mp4Extractor';
 import type { AudioSample } from '@/types';
 import { v4 as uuid } from 'uuid';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { detectRootNote } from '@/lib/audio/pitchDetector';
 import { parseFilenameForMapping } from '@/lib/audio/filenameParser';
 import { useToastStore } from '@/stores/toastStore';
@@ -38,7 +38,7 @@ export default function AudioImporter() {
               audioBuffer = await decodeAudioFile(file);
             }
 
-            const wavData = encodeWav(audioBuffer, 16);
+            const wavData = await encodeWavAsync(audioBuffer, 16);
             const peaks = generateWaveformPeaks(audioBuffer);
             const baseName = file.name.replace(/\.[^.]+$/, '');
 

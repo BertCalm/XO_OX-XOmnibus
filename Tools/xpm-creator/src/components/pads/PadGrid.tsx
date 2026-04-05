@@ -7,7 +7,7 @@ import { usePadStore } from '@/stores/padStore';
 import { useAudioStore } from '@/stores/audioStore';
 import { usePlaybackStore } from '@/stores/playbackStore';
 import { decodeAudioFile, generateWaveformPeaks } from '@/lib/audio/audioUtils';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { playDropSound, playSuccessChime } from '@/lib/audio/uiSounds';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import ContextMenu, { type ContextMenuItem } from '@/components/ui/ContextMenu';
@@ -286,7 +286,7 @@ export default function PadGrid() {
         filesToProcess.map(async (file) => {
           const audioBuffer = await decodeAudioFile(file);
           const waveformPeaks = generateWaveformPeaks(audioBuffer);
-          const wavBuffer = encodeWav(audioBuffer, 16);
+          const wavBuffer = await encodeWavAsync(audioBuffer, 16);
           const sampleId = uuid();
           const sample: AudioSample = {
             id: sampleId,

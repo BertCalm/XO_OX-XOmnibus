@@ -46,36 +46,6 @@
 namespace xoceanus
 {
 
-//==============================================================================
-// SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
-//
-// Each FUSION engine exports this struct continuously. The 5th-slot engine
-// reads fingerprints from the 4 Kitchen engines to synthesize coupling effects
-// from metadata rather than raw audio. This is the mechanism that keeps
-// 5-engine operation under 17% CPU.
-//
-// The fingerprint captures the resonant character of the engine's output:
-// modal frequencies, impedance, temperature, spectral centroid, and activity.
-// The coupling engine uses these to model energy transfer (PLATE coupling)
-// without running audio through the coupled engine's processing chain.
-//==============================================================================
-#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
-struct SpectralFingerprint
-{
-    float modalFrequencies[8] = {};   // Top 8 modal frequencies (Hz)
-    float modalAmplitudes[8] = {};    // Amplitude of each modal frequency [0,1]
-    float impedanceEstimate = 0.5f;   // Material impedance (0=soft/absorptive, 1=hard/reflective)
-    float temperature = 0.5f;         // Thermal/energy state [0=cold/static, 1=hot/active]
-    float spectralCentroid = 1000.0f; // Brightness measure (Hz)
-    float activeVoiceCount = 0.0f;    // Number of currently sounding voices
-    float fundamentalFreq = 440.0f;   // Most prominent fundamental
-    float rmsLevel = 0.0f;            // Current output RMS
-    float harmonicDensity = 0.5f;     // Ratio of harmonic to inharmonic energy
-    float attackTransience = 0.0f;    // Recent transient energy (decays over ~50ms)
-    float padding[2] = {};            // Reserve for future fields (total: 152 bytes)
-};
-#endif
 
 //==============================================================================
 // OasisRhodesToneGenerator — Tine physical model (OASIS-specific).

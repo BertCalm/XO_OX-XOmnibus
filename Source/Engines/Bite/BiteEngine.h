@@ -1372,6 +1372,8 @@ public:
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
+        jassert(sr > 0.0);
+        if (sr <= 0.0) { buffer.clear(); return; }
 
         // =====================================================================
         // ParamSnapshot: read ALL parameters once per block

@@ -114,23 +114,23 @@ def validate_xpm(filepath: str) -> ValidationResult:
         # -----------------------------------------------------------
         # CRITICAL 1: KeyTrack must be "True"
         # -----------------------------------------------------------
-        key_track = inst.get("KeyTrack", None)
+        key_track = inst.findtext("KeyTrack")
         if key_track is None:
-            result.critical(f"{inst_id}: KeyTrack attribute missing (must be 'True')")
-        elif key_track != "True":
+            result.critical(f"{inst_id}: <KeyTrack> element missing (must be 'True')")
+        elif key_track.strip() != "True":
             result.critical(
-                f"{inst_id}: KeyTrack='{key_track}' — must be 'True'"
+                f"{inst_id}: KeyTrack='{key_track.strip()}' — must be 'True'"
             )
 
         # -----------------------------------------------------------
         # CRITICAL 2: RootNote must be "0"
         # -----------------------------------------------------------
-        root_note = inst.get("RootNote", None)
+        root_note = inst.findtext("RootNote")
         if root_note is None:
-            result.critical(f"{inst_id}: RootNote attribute missing (must be '0')")
-        elif root_note != "0":
+            result.critical(f"{inst_id}: <RootNote> element missing (must be '0')")
+        elif root_note.strip() != "0":
             result.critical(
-                f"{inst_id}: RootNote='{root_note}' — must be '0'"
+                f"{inst_id}: RootNote='{root_note.strip()}' — must be '0'"
             )
 
         # -----------------------------------------------------------
@@ -139,19 +139,19 @@ def validate_xpm(filepath: str) -> ValidationResult:
         layers = inst.findall(".//Layer")
         for j, layer in enumerate(layers):
             layer_id = f"{inst_id}/Layer[{j}]"
-            sample_file = layer.get("SampleFile", "").strip()
+            sample_file = (layer.findtext("SampleFile") or "").strip()
             is_empty = not sample_file
 
             # CRITICAL 3: Empty layer VelStart must be "0"
             if is_empty:
-                vel_start = layer.get("VelStart", None)
+                vel_start = layer.findtext("VelStart")
                 if vel_start is None:
                     result.critical(
-                        f"{layer_id}: Empty layer missing VelStart (must be '0')"
+                        f"{layer_id}: Empty layer missing <VelStart> (must be '0')"
                     )
-                elif vel_start != "0":
+                elif vel_start.strip() != "0":
                     result.critical(
-                        f"{layer_id}: Empty layer VelStart='{vel_start}' — must be '0'"
+                        f"{layer_id}: Empty layer VelStart='{vel_start.strip()}' — must be '0'"
                     )
 
             # WARNING 4: Sample file paths must be relative
@@ -163,8 +163,8 @@ def validate_xpm(filepath: str) -> ValidationResult:
             # WARNING 5: VelEnd > VelStart on active layers
             if not is_empty:
                 try:
-                    vel_start_val = int(layer.get("VelStart", "0"))
-                    vel_end_val = int(layer.get("VelEnd", "0"))
+                    vel_start_val = int(layer.findtext("VelStart") or "0")
+                    vel_end_val = int(layer.findtext("VelEnd") or "0")
                     if vel_end_val <= vel_start_val:
                         result.warn(
                             f"{layer_id}: VelEnd ({vel_end_val}) must be > VelStart ({vel_start_val})"

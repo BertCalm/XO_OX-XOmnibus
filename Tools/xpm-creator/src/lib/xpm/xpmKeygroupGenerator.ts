@@ -123,8 +123,8 @@ export async function buildKeygroupProgram(
       active: true,
       sampleName,
       sampleFile: sampleFileName,
-      rootNote: note,
-      keyTrack: false, // Each sample is pre-pitched, no keytrack needed
+      rootNote: 0,
+      keyTrack: true, // MPC transposes using pre-pitched samples; rootNote=0 for auto-detect
     };
 
     // Copy additional layers if provided (for layered sounds)

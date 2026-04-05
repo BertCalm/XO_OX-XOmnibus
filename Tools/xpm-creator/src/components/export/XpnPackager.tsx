@@ -19,6 +19,7 @@ import { getDecodedBuffer } from '@/lib/audio/audioBufferCache';
 import { categorizeSample } from '@/lib/audio/sampleCategorizer';
 
 interface StoredProgram {
+  id: string;
   name: string;
   xpmContent: string;
   samples: { fileName: string; data: ArrayBuffer }[];
@@ -38,8 +39,8 @@ export default function XpnPackager() {
 
   const exportStore = useExportStore();
 
-  const handleAddProgram = (program: StoredProgram) => {
-    setPrograms((prev) => [...prev, program]);
+  const handleAddProgram = (program: Omit<StoredProgram, 'id'>) => {
+    setPrograms((prev) => [...prev, { ...program, id: crypto.randomUUID() }]);
   };
 
   const handleRemoveProgram = (index: number) => {
@@ -188,6 +189,11 @@ export default function XpnPackager() {
     } catch (error) {
       const msg = error instanceof Error ? error.message : 'Unknown error';
       exportStore.failExport(msg);
+      useToastStore.getState().addToast({
+        type: 'error',
+        title: 'Export failed',
+        message: msg,
+      });
     }
   }, [title, identifier, description, creator, tags, coverArt, previewAudio, programs, groupNames, exportStore]);
 
@@ -285,7 +291,7 @@ export default function XpnPackager() {
             {programs.map((prog, i) => {
               const names = groupNames.get(i) || { group: '', sub: '' };
               return (
-                <div key={i} className="flex items-center gap-2 p-2 bg-surface-alt rounded-lg">
+                <div key={prog.id} className="flex items-center gap-2 p-2 bg-surface-alt rounded-lg">
                   <div className="flex-1 min-w-0 space-y-1">
                     <p className="text-xs font-medium text-text-primary truncate">{prog.name}</p>
                     <div className="flex gap-2">

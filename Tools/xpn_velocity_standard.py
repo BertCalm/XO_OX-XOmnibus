@@ -41,7 +41,14 @@ def vel_end(layer_index):
     return ZONES[layer_index][1]
 
 def layer_for_velocity(vel):
-    """Return the layer index (0-3) for a given MIDI velocity value."""
+    """Return the layer index (0-3) for a given MIDI velocity value.
+
+    MIDI velocity 0 is conventionally a note-off event, not a Ghost hit.
+    Return 0 (Ghost layer index) rather than Hard so callers can distinguish
+    note-off from a genuine soft strike.
+    """
+    if vel == 0:
+        return 0  # MIDI note-off convention — not a Hard hit
     for i, (start, end) in enumerate(ZONES):
         if start <= vel <= end:
             return i

@@ -585,6 +585,8 @@ public:
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
+        jassert(sr > 0.0f);
+        if (sr <= 0.0f) { buffer.clear(); return; }
 
         // SRO SilenceGate: wake on note-on, bypass when silent
         for (const auto& md : midi)

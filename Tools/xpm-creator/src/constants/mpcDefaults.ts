@@ -2,7 +2,7 @@ export const XPM_VERSION = {
   fileVersion: '2.1',
   application: 'MPC-V',
   appVersion: '2.1.0.23',
-  platform: 'Windows',
+  platform: 'MPC',
 } as const;
 
 export const XPM_DEFAULTS = {
@@ -33,7 +33,7 @@ export const XPM_DEFAULTS = {
 } as const;
 
 export const LAYER_DEFAULTS = {
-  active: true,
+  active: false,
   volume: 1.000000,
   pan: 0.500000,
   pitch: 0.000000,

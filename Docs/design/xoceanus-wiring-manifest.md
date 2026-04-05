@@ -579,7 +579,7 @@ No dedicated status bar component. No FIRE/XOSEND/ECHO/PANIC triggers. BPM, voic
 
 | Feature | Current Implementation | Status | Notes |
 |---------|----------------------|--------|-------|
-| "76 Engines" display in header (when no coupling active) | EXISTS — header shows "N Engines · 15 Coupling Types · 17300+ Presets" when no coupling active | EXISTS | Correct. |
+| "76 Engines" display in header (when no coupling active) | EXISTS — header shows "N Engines · 15 Coupling Types · 19200+ Presets" when no coupling active | EXISTS | Correct. |
 | FieldMapPanel (sonic cartography) | EXISTS — `FieldMapPanel` at line 1026. Note events → glowing dots on time×pitch canvas. 4-minute window. | EXISTS | Correct. Drained from `drainNoteEvents()` in timer callback. |
 | MIDI Learn visual feedback (amber pulse → green badge) | EXISTS — `GalleryKnob::drawMidiLearnOverlay()` | EXISTS | Correct. |
 

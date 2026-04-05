@@ -199,9 +199,15 @@ struct DeepBioExciter
     float bpState2 = 0.f;    // bandpass filter state (z2)
     float noiseState = 0.f;  // pink-ish noise filter state
     bool lfoWasHigh = false; // edge detect for trigger
+    float burstDecay_ = fastExp(-8.0f / 44100.0f); // cached per prepare(), ~125 ms at 44100
 
     // Reproducible noise — lcg updated per tick
     uint32_t rng = 0x1234ABCD;
+
+    void prepare(float sr) noexcept
+    {
+        burstDecay_ = fastExp(-8.0f / sr);
+    }
 
     void reset()
     {
@@ -237,8 +243,7 @@ struct DeepBioExciter
         lfoWasHigh = lfoHigh;
 
         // Burst envelope — fast attack (already triggered), exponential decay
-        float burstDecay = fastExp(-8.0f / sr); // ~125 ms decay at 44100
-        burstEnv *= burstDecay;
+        burstEnv *= burstDecay_; // coefficient cached in prepare() — ~125 ms at 44100
         burstEnv = flushDenormal(burstEnv);
 
         // Generate noise sample
@@ -545,6 +550,7 @@ public:
         oscSub2.prepare(sampleRate);
         compressor.reset();
         body.prepare(sampleRate);
+        bioExciter.prepare((float)sampleRate);
         bioExciter.reset();
         darknessFilter.reset();
         reverb.prepare(sampleRate);

@@ -1665,8 +1665,8 @@ private:
     // State
     //==========================================================================
 
-    float sr_ = 48000.0f;
-    float invSr_ = 1.0f / 48000.0f;
+    float sr_ = 44100.0f;
+    float invSr_ = 1.0f / 44100.0f;
     int blockSize_ = 512;
 
     // Voice pool
