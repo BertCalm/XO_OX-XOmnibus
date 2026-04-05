@@ -6,11 +6,9 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **81 engines** are registered in XOceanus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23; OBIONT added 2026-03-28; OKEANOS + OUTFLOW added 2026-03-31; OXIDIZE added 2026-04-05; ONRUSH + OMNISTEREO + OBLITERATE + OBSCURITY added 2026-04-05)
-— see engine table below.
+and mutate into sounds impossible with any single synth. **101 engines** registered
+— full engine color table + accent colors: `Docs/reference/engine-color-table.md`
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK, OBIONT, OKEANOS, OUTFLOW, OXIDIZE, ONRUSH, OMNISTEREO, OBLITERATE, OBSCURITY
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 19,574 active factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
@@ -37,93 +35,18 @@ and mutate into sounds impossible with any single synth. **81 engines** are regi
 - Engine hot-swap uses 50ms crossfade to prevent clicks
 - ParamSnapshot pattern: cache all parameter pointers once per block
 
-## Engine Modules
+## The 6 Doctrines
 
-| Short Name | Source Instrument | Accent Color |
-|-----------|------------------|-------------|
-| ODDFELIX | OddfeliX (feliX the neon tetra) | Neon Tetra Blue `#00A6D6` |
-| ODDOSCAR | OddOscar (Oscar the axolotl) | Axolotl Gill Pink `#E8839B` |
-| OVERDUB | XOverdub | Olive `#6B7B3A` |
-| ODYSSEY | XOdyssey | Violet `#7B2D8B` |
-| OBLONG | XOblong | Amber `#E9A84A` |
-| OBESE | XObese | Hot Pink `#FF1493` |
-| ONSET | XOnset | Electric Blue `#0066FF` |
-| OVERWORLD | XOverworld | Neon Green `#39FF14` |
-| OPAL | XOpal | Lavender `#A78BFA` |
-| ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
-| OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
-| OBSIDIAN | XObsidian | Crystal White `#E8E0D8` |
-| ORIGAMI | XOrigami | Vermillion Fold `#E63946` |
-| ORACLE | XOracle | Prophecy Indigo `#4B0082` |
-| OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
-| OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
-| OCELOT | XOcelot | Ocelot Tawny `#C5832B` |
-| OVERBITE | XOverbite | Fang White `#F0EDE8` |
-| ORBITAL | XOrbital | Warm Red `#FF6B6B` |
-| OPTIC | XOptic | Phosphor Green `#00FF41` |
-| OBLIQUE | XOblique | Prism Violet `#BF40FF` |
-| OSPREY | XOsprey | Azulejo Blue `#1B4F8A` |
-| OSTERIA | XOsteria | Porto Wine `#722F37` |
-| OWLFISH | XOwlfish | Abyssal Gold `#B8860B` |
-| OHM | XOhm | Sage `#87AE73` |
-| ORPHICA | XOrphica | Siren Seafoam `#7FDBCA` |
-| OBBLIGATO | XObbligato | Rascal Coral `#FF8A7A` |
-| OTTONI | XOttoni | Patina `#5B8A72` |
-| OLE | XOlé | Hibiscus `#C9377A` |
-| OVERLAP | XOverlap | Bioluminescent Cyan-Green `#00FFB4` |
-| OUTWIT | XOutwit | Chromatophore Amber `#CC6600` |
-| OMBRE | XOmbre | Shadow Mauve `#7B6B8A` |
-| ORCA | XOrca | Deep Ocean `#1B2838` |
-| OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
-| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
-| OPENSKY | XOpenSky | Sunburst `#FF8C00` |
-| OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
-| OUIE | XOuïe | Hammerhead Steel `#708090` |
-| OBRIX | XObrix | Reef Jade `#1E8B7E` |
-| ORBWEAVE | XOrbweave | Kelp Knot Purple `#8E4585` |
-| OVERTONE | XOvertone | Spectral Ice `#A8D8EA` |
-| ORGANISM | XOrganism | Emergence Lime `#C6E377` |
-| OXBOW | XOxbow | Oxbow Teal `#1A6B5A` |
-| OWARE | XOware | Akan Goldweight `#B5883E` |
-| OPERA | XOpera | Aria Gold `#D4AF37` |
-| OFFERING | XOffering | Crate Wax Yellow `#E5B80B` |
-| OSMOSIS | XOsmosis | Surface Tension Silver `#C0C0C0` |
-| OXYTOCIN | XOxytocin | Synapse Violet `#9B5DE5` |
-| OTO | XOto | Pipe Organ Ivory `#F5F0E8` |
-| OCTAVE | XOctave | Hammond Teak `#8B6914` |
-| OLEG | XOleg | Theatre Red `#C0392B` |
-| OTIS | XOtis | Gospel Gold `#D4A017` |
-| OVEN | XOven | Steinway Ebony `#1C1C1C` |
-| OCHRE | XOchre | Ochre Pigment `#CC7722` |
-| OBELISK | XObelisk | Grand Ivory `#FFFFF0` |
-| OPALINE | XOpaline | Prepared Rust `#B7410E` |
-| OGRE | XOgre | Sub Bass Black `#0D0D0D` |
-| OLATE | XOlate | Fretless Walnut `#5C3317` |
-| OAKEN | XOaken | Upright Oak `#9C6B30` |
-| OMEGA | XOmega | Synth Bass Blue `#003366` |
-| ORCHARD | XOrchard | Orchard Blossom `#FFB7C5` |
-| OVERGROW | XOvergrow | Forest Green `#228B22` |
-| OSIER | XOsier | Willow Silver `#C0C8C8` |
-| OXALIS | XOxalis | Wood Sorrel Lilac `#9B59B6` |
-| OVERWASH | XOverwash | Tide Foam White `#F0F8FF` |
-| OVERWORN | XOverworn | Worn Felt Grey `#808080` |
-| OVERFLOW | XOverflow | Deep Current Blue `#1A3A5C` |
-| OVERCAST | XOvercast | Light Slate Gray `#778899` |
-| OASIS | XOasis | Desert Spring Teal `#00827F` |
-| ODDFELLOW | XOddfellow | Fusion Copper `#B87333` |
-| ONKOLO | XOnkolo | Spectral Amber `#FFBF00` |
-| OPCODE | XOpcode | Cadet Blue `#5F9EA0` |
-| OUTLOOK | XOutlook | Horizon Indigo `#4169E1` |
-| OBIONT | XObiont | Bioluminescent Amber `#E8A030` |
-| OKEANOS | XOkeanos | Cardamom Gold `#C49B3F` |
-| OUTFLOW | XOutflow | Deep Storm Indigo `#1A1A40` |
-| OXIDIZE | XOxidize | Verdigris `#4A9E8E` |
-| ONRUSH | XOnrush (Gemini Pedalboard) | Surge Orange `#E8501A` |
-| OMNISTEREO | XOmnistereo (Gemini Pedalboard) | Tape Cream `#F5E6C8` |
-| OBLITERATE | XObliterate (Gemini Pedalboard) | Sludge Violet `#4A1E6B` |
-| OBSCURITY | XObscurity (Gemini Pedalboard) | Industrial Slate `#3A3A4A` |
+| ID | Doctrine | Summary |
+|----|----------|---------|
+| D001 | Velocity Must Shape Timbre | Velocity drives filter brightness / harmonic content — not just amplitude |
+| D002 | Modulation is the Lifeblood | Min: 2 LFOs, mod wheel/aftertouch, 4 working macros, 4+ mod matrix slots |
+| D003 | The Physics IS the Synthesis | Rigor and citation required for any physically-modeled engine |
+| D004 | Dead Parameters Are Broken Promises | Every declared parameter must affect audio output |
+| D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
+| D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### Engine ID vs Parameter Prefix
+## Engine ID → Parameter Prefix
 
 Engine IDs (used in preset `"engines"` arrays, `"parameters"` keys, UI, and coupling routes)
 were renamed to O-prefix convention. **Parameter prefixes are frozen and never change:**
@@ -211,6 +134,26 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Omnistereo | `omni_` | `omni_tapeAge` |
 | Obliterate | `oblt_` | `oblt_shimmerDecay` |
 | Obscurity | `obsc_` | `obsc_pllGlide` |
+| Oubliette | `oubl_` | `oubl_scanRate` |
+| Osmium | `osmi_` | `osmi_meat30hz` |
+| Orogen | `orog_` | `orog_ringFreq` |
+| Oculus | `ocul_` | `ocul_voltageFreq` |
+| Outage | `outg_` | `outg_crushBits` |
+| Override | `ovrd_` | `ovrd_overdrive` |
+| Occlusion | `occl_` | `occl_freqShift` |
+| Obdurate | `obdr_` | `obdr_ufGain` |
+| Orison | `oris_` | `oris_shimmerSize` |
+| Overshoot | `ovsh_` | `ovsh_transThresh` |
+| Obverse | `obvr_` | `obvr_mirrorMix` |
+| Oxymoron | `oxym_` | `oxym_contrastAmt` |
+| Ornate | `orna_` | `orna_crystalSize` |
+| Oration | `orat_` | `orat_semi0` |
+| Offcut | `offc_` | `offc_gateThresh` |
+| Omen | `omen_` | `omen_spectralFreeze` |
+| Opus | `opus_` | `opus_oscillatorMode` |
+| Outlaw | `outl_` | `outl_diodeClip` |
+| Outbreak | `outb_` | `outb_virusFilter` |
+| Orrery | `orry_` | `orry_planetSpeed` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -222,54 +165,21 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 |------|---------|
 | `Docs/specs/xoceanus_master_specification.md` | **THE** single source of truth |
 | `Docs/specs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
+| `Docs/reference/engine-color-table.md` | Full 101-engine color table + Blessings + Debates |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
 | `Source/Core/PresetManager.h` | .xometa loading/saving |
-| `Source/Engines/*/` | Engine adapter modules |
-| `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
-| `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
-| `Source/Engines/Ombre/OmbreEngine.h` | Dual-narrative engine (memory/forgetting + perception) |
-| `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
-| `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
-| `Source/Engines/OpenSky/OpenSkyEngine.h` | Euphoric shimmer synth (supersaw + shimmer reverb + chorus + unison) |
-| `Source/Engines/Ouie/OuieEngine.h` | Duophonic hammerhead synth (2 voices x 8 algorithms + STRIFE/LOVE interaction) |
-| `Source/Engines/Orbweave/OrbweaveEngine.h` | Topological knot coupling engine (Kelp Knot) |
-| `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
-| `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
-| `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/specs/xoceanus_sound_design_guides.md` | Sound design guide |
+| `Source/Core/EpicChainSlotController.h` | Unified 3-slot FX assignment with 50ms crossfade |
+| `Source/Engines/{Name}/{Name}Engine.h` | All engine adapters (pattern) |
 | `Source/DSP/` | Shared DSP library |
+| `Source/DSP/Effects/` | FX chains: Aquatic, Math, Boutique, Singularity (fXO*), Gemini Pedalboard, Epic Chains |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
-| `Source/Engines/Obrix/ObrixEngine.h` | Modular brick synthesis engine (coral reef) |
-| `Source/DSP/Effects/AquaticFXSuite.h` | Aquatic FX chain (Reef + Fathom + Drift + Tide) |
-| `Source/DSP/Effects/MathFXChain.h` | Mathematical FX chain (Entropy + Voronoi + Quantum + Attractor) |
-| `Source/DSP/Effects/BoutiqueFXChain.h` | Boutique FX chain (Anomaly + Archive + Cathedral + Submersion) |
-| `Source/DSP/Effects/fXOnslaught.h` | Singularity FX: transient-reactive chorus → PM collapse |
-| `Source/DSP/Effects/fXObscura.h` | Singularity FX: inverse-dynamic spectral degradation (chiaroscuro) |
-| `Source/DSP/Effects/fXOratory.h` | Singularity FX: poetic meter-driven multi-tap delay |
-| `Source/Engines/Oxbow/OxbowEngine.h` | Entangled reverb synth engine (Chiasmus FDN + phase erosion + golden resonance) |
-| `Source/Engines/Oware/OwareEngine.h` | Tuned percussion (material continuum + mallet physics + sympathetic resonance + buzz membrane) |
-| `Source/Engines/Opera/OperaAdapter.h` | Additive-vocal Kuramoto synchronicity engine (formant synthesis + phase transition + Conductor arcs) |
-| `Source/Engines/Offering/OfferingEngine.h` | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city chains + per-type transient models) |
-| `Source/Engines/Osmosis/OsmosisEngine.h` | External audio membrane engine (envelope follower, pitch detect, coupling source) |
-| `Source/Engines/Oxytocin/OxytocinAdapter.h` | Circuit-modeling love-triangle synth (RE-201/MS-20/Moog/Serge/Buchla + TriangularCoupling #15) |
-| `Source/Engines/Outlook/OutlookEngine.h` | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo + vista filter + aurora mod) |
-| `Source/Engines/Obiont/ObiontEngine.h` | Cellular automata oscillator (1D Wolfram CA spatial projection + cosine readout + 8-voice poly + anti-extinction) |
-| `Source/Engines/Oxidize/OxidizeEngine.h` | Temporal degradation synthesis engine (note age → 6-stage corrosion cascade) |
-| `Source/DSP/Effects/OnrushChain.h` | Gemini Pedalboard: expressive lead FX chain (Auto-Swell→Ring Mod→Dist→Env Filter→BBD Delay, Mono→Stereo) |
-| `Source/DSP/Effects/OmnistereoChain.h` | Gemini Pedalboard: stereo widener chain (Tape Sat→EQ→BBD Vibrato→Chorus→FDN Reverb, Stereo→Stereo) |
-| `Source/DSP/Effects/ObliterateChain.h` | Gemini Pedalboard: heavy stutter chain (Shimmer Rev→Octave Fuzz→Reverse Delay→Granular→Tremolo, Mono→Stereo) |
-| `Source/DSP/Effects/ObscurityChain.h` | Gemini Pedalboard: dark ambient chain (PLL Synth→Diode OD→Dimension Chorus→BBD Delay→Industrial Rev, Mono→Stereo) |
-| `Source/Core/EpicChainSlotController.h` | Unified 3-slot FX assignment system with 50ms crossfade (replaces fixed AquaticFX/MathFX/BoutiqueFX positions) |
 | `SDK/include/xoceanus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOceanus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
-| `Docs/` | All specification documents |
-| `Source/AI/` | AI sound assistant subsystem (SoundAssistant, NaturalLanguageInterpreter, AIParameterSchema, SecureKeyStore, SharedRecipeVault, CommunityInsights, RecipeEngine) — gated behind `XOCEANUS_BUILD_AI` CMake option (default OFF). See `Docs/ai-subsystem.md`. |
-| `Docs/design/tidesigns-audit.md` | TIDEsigns QDD full-fleet UI/UX audit |
-| `Docs/design/xoutshine-forge-spec.md` | XOutshine forge format spec v1.0 |
+| `Source/AI/` | AI sound assistant (gated behind `XOCEANUS_BUILD_AI` CMake option, default OFF) |
 
 ## Preset System
 
@@ -341,148 +251,51 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
 
+### CLAUDE.md Checklist (when registering a new engine)
+
+Update **all four** of these sections in CLAUDE.md:
+
+1. **Product Identity header** — update the engine count
+2. **Engine color table** (`Docs/reference/engine-color-table.md`) — add a row
+3. **Parameter Prefix table** (above) — add a row
+4. **Key Files table** (if the engine has a notable architecture worth linking)
+
+Then update these external files:
+- `Docs/specs/xoceanus_master_specification.md` section 3.1 engine table (add row)
+- `Docs/seances/seance_cross_reference.md` (add seance row after the seance is run)
+- `Source/XOceanusProcessor.cpp` (register the engine)
+- `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
+
+Full process: `Docs/specs/xoceanus_new_engine_process.md`
+
 ## V1 Scope — "The Deep Opens"
 
-V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 76-engine fleet is personal; V1 gating is public release only. See `Docs/plans/v1-scope-revision-2026-03-23.md`.
+V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 101-engine fleet is personal; V1 gating is public release only. See `Docs/plans/v1-scope-revision-2026-03-23.md`.
 
 **Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked.
 
-## Kitchen Collection (24 engines across 6 quads)
+### Kitchen Collection (24 engines across 6 quads)
 
 All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 
 | Quad | Theme | Engines | Status |
 |------|-------|---------|--------|
-| Chef (Organs) | Adversarial coupling | OTO, OCTAVE, OLEG, OTIS | Retreat complete |
-| Kitchen (Pianos) | Modal resonator banks | OVEN, OCHRE, OBELISK, OPALINE | Retreat complete |
-| Cellar (Bass) | Gravitational coupling | OGRE, OLATE, OAKEN, OMEGA | Retreat complete |
-| Garden (Strings) | Growth Mode | ORCHARD, OVERGROW, OSIER, OXALIS | Retreat complete |
-| Broth (Pads) | Multi-timescale diffusion | OVERWASH, OVERWORN, OVERFLOW, OVERCAST | Retreat complete |
-| Fusion (EP) | Spectral Fingerprint Cache | OASIS, ODDFELLOW, ONKOLO, OPCODE | Retreat complete |
+| Chef (Organs) | Adversarial coupling | OTO, OCTAVE, OLEG, OTIS | Complete |
+| Kitchen (Pianos) | Modal resonator banks | OVEN, OCHRE, OBELISK, OPALINE | Complete |
+| Cellar (Bass) | Gravitational coupling | OGRE, OLATE, OAKEN, OMEGA | Complete |
+| Garden (Strings) | Growth Mode | ORCHARD, OVERGROW, OSIER, OXALIS | Complete |
+| Broth (Pads) | Multi-timescale diffusion | OVERWASH, OVERWORN, OVERFLOW, OVERCAST | Complete |
+| Fusion (EP) | Spectral Fingerprint Cache | OASIS, ODDFELLOW, ONKOLO, OPCODE | Complete |
 
-161 awakening presets written across the 16 KC engines. Community strategy: `Docs/plans/community-strategy-v2.md`.
+## Fleet Quality Summary
 
-## OBRIX — Wave 5: Reef Residency (2026-03-21)
-
-**81 params** (was 79). Coupling input becomes a third ecological organism in the Brick Ecology system.
-
-| System | Params | Key Behavior |
-|--------|--------|-------------|
-| Reef Residency | reefResident, residentStrength | 4-mode coupling ecology (Off/Competitor/Symbiote/Parasite). Competitor: coupling RMS suppresses both sources (0.1 floor). Symbiote: coupling amplitude drives FM depth + boosts Harmonic Field. Parasite: coupling energy feeds stressLevel_ and bleachLevel_ accumulators over time. Default Off (backward compatible). residentStrength default 0.3 (Guru Bin). |
-
-Previous Waves preserved — all existing behavior unchanged when reefResident=Off.
-
-### Wave 4: Biophonic Synthesis (14 params: 65→79)
-
-| System | Params | Key Behavior |
-|--------|--------|-------------|
-| Harmonic Field | fieldStrength, fieldPolarity, fieldRate, fieldPrimeLimit | Per-voice JI attractor/repulsor. 3-limit/5-limit/7-limit ratio tables. IIR convergence toward nearest just ratio. fieldPolarity=-1 = repulsor mode. |
-| Environmental | envTemp, envPressure, envCurrent, envTurbidity | Temperature scales drift depth. Pressure scales LFO rate. Current biases cutoff ±2000Hz. Turbidity adds engine-level noise per sample. |
-| Brick Ecology | competitionStrength, symbiosisStrength | Competition: cross-amplitude suppression between src1/src2 (0.1 floor). Symbiosis: noise src1 amplitude → FM depth on src2 (requires src1Type=5). |
-| Stateful Synthesis | stressDecay, bleachRate, stateReset | stressLevel_ leaky integrator (velocity accumulator → +900Hz cutoff). bleachLevel_ accumulates from high notes (−700Hz cutoff). stateReset clears both. |
-| FX Mode | fxMode | 0=Serial (existing), 1=Parallel (each FX slot processes dry independently, wet contributions summed). |
-
-**28 Wave 4 awakening presets** across all 8 moods. B016 AMENDED (synthesis-layer interdependence permitted, MIDI-layer inviolable).
-
-## Seance Findings
-
-**75 engines seanced** (original 47 by 2026-03-21; Kitchen Collection 24 in batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23; OSMOSIS seanced; OKEANOS seanced; OXIDIZE seanced 2026-04-05 at 8.7/10 pre-fix → 9.2+ post-fix; OBIONT, OUTFLOW not yet seanced — 77 total registered; OBIONT/OUTFLOW have presets but seance pending) — All built engines except OBIONT/OUTFLOW seanced. OXIDIZE: 8.7/10 pre-fix → 9.2+ post-fix (B044 proposed: Independent LUT Curves; 2 P0s fixed same session — macro defaults + voice-steal crossfade). OXYTO: 9.5/10 — NEW FLEET LEADER (B040 Note Duration, unanimous). OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B038 (Psychology-as-DSP) RATIFIED 8-0, B039 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. B037 (Three-Timescale Conductor) confirmed. P0 FIXED: OperaSVF block-rate coefficient cache committed (2026-03-22). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All original 47 engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
-- Fleet scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
-- Post-fix rescoring: `Docs/fleet-audit/post-fix-rescoring-2026-03-20.md`
-- Producer's Guild review: `Docs/fleet-audit/producers-guild-fleet-review-2026-03-20.md`
-- Seance review of Guild plan: `Docs/seances/seance-review-guild-plan-2026-03-20.md`
-- Grand Survey: `Docs/plans/xoceanus_landscape_2026.md`
-- Cross-reference: `Docs/seances/seance_cross_reference.md`
+- **75/101 engines seanced.** Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
+- **All 6 doctrines resolved fleet-wide** (D001–D006). Prism Sweep 12-round pass complete (2026-03-14).
+- **43 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
+- **5 Ongoing Debates** (DB001–DB005) — see reference table
+- Detailed scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
+- Seance cross-reference: `Docs/seances/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
-
-### The 6 Doctrines
-
-| ID | Doctrine | Summary |
-|----|----------|---------|
-| D001 | Velocity Must Shape Timbre | Velocity drives filter brightness / harmonic content — not just amplitude |
-| D002 | Modulation is the Lifeblood | Min: 2 LFOs, mod wheel/aftertouch, 4 working macros, 4+ mod matrix slots |
-| D003 | The Physics IS the Synthesis | Rigor and citation required for any physically-modeled engine |
-| D004 | Dead Parameters Are Broken Promises | Every declared parameter must affect audio output |
-| D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
-| D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
-
-### The 40 Blessings
-
-| ID | Blessing | Engine |
-|----|----------|--------|
-| B001 | Group Envelope System — crowned by Moog + Smith | ORBITAL |
-| B002 | XVC Cross-Voice Coupling — all 8 ghosts, 3-5 years ahead | ONSET |
-| B003 | Leash Mechanism — chaotic system with a leash | OUROBOROS |
-| B004 | Spring Reverb — Vangelis + Tomita praised the metallic splash | OVERDUB |
-| B005 | Zero-Audio Identity — synthesis without sound | OPTIC |
-| B006 | Dual-Layer Blend Architecture — Circuit + Algorithm crossfade | ONSET |
-| B007 | Velocity Coupling Outputs — velocity as coupling signal | OUROBOROS |
-| B008 | Five-Macro System (BELLY/BITE/SCURRY/TRASH/PLAY DEAD) — all 8 ghosts | OVERBITE |
-| B009 | ERA Triangle — 2D timbral crossfade, Buchla/Schulze/Vangelis/Pearlman | OVERWORLD |
-| B010 | GENDY Stochastic Synthesis + Maqam — Buchla gave 10/10 | ORACLE |
-| B011 | Variational Free Energy Metabolism — unanimous; publishable as paper | ORGANON |
-| B012 | ShoreSystem — 5-coastline cultural data shared across engines | OSPREY + OSTERIA |
-| B013 | Chromatophore Modulator — praised by Buchla, Schulze, Kakehashi, Tomita | OCEANIC |
-| B014 | Mixtur-Trautonium Oscillator — unanimous praise, genuinely novel | OWLFISH |
-| B015 | Mojo Control — orthogonal analog/digital axis | OBESE |
-| B016 | Brick Independence (AMENDED 2026-03-21) — MIDI-layer voice independence is inviolable (note allocation, pitch, velocity, aftertouch remain per-voice). Synthesis-layer interdependence (shared JI attractor field, cross-voice amplitude ecology, environmental globals) is explicitly permitted, provided no synthesis-layer coupling propagates back to affect MIDI routing or voice stealing. | OBRIX |
-| B017 | Modal Membrane Synthesis with Academic Citation — Bessel zeros sourced from physics papers | OSTINATO |
-| B018 | Circular Topology Coupling (CIRCLE) — adjacent seats trigger sympathetic ghost responses | OSTINATO |
-| B019 | 96 Hand-Authored World Rhythm Patterns — 8 instruments × 8 patterns, ethnomusicologically sourced | OSTINATO |
-| B020 | Live Override with Graceful Yield — machine suppresses for one bar when live MIDI arrives | OSTINATO |
-| B021 | Knot Phase Coupling Matrix — topological routing via Trefoil/Figure-Eight/Torus/Solomon matrices | ORBWEAVE |
-| B022 | MACRO KNOT: Continuous Topology Morphing — real-time traversal of topological space as gesture | ORBWEAVE |
-| B023 | Shepard Shimmer Architecture — dual-interval reverb creates endlessly ascending shimmer tail | OPENSKY |
-| B024 | RISE Macro: Single-Gesture Ascension — simultaneously sweeps pitch env, filter, shimmer | OPENSKY |
-| B025 | HAMMER Interaction Axis — bipolar axis from STRIFE (ring mod / hard sync) to LOVE (harmonic convergence) | OUIE |
-| B026 | Interval-as-Parameter — musical interval between two voices is a first-class timbral parameter | OUIE |
-| B027 | 8-Algorithm Palette — each voice selects independently from 8 synthesis algorithms (64 combinations) | OUIE |
-| B028 | Continued Fraction Convergent Synthesis — timbre derived from rational approximations to π, e, φ, √2 | OVERTONE |
-| B029 | Hydrostatic Compressor — pressure as environment, not utility; simulates depth-of-water physics | OCEANDEEP |
-| B030 | Bioluminescent Exciter — complete micro-synthesis engine generating organic alien texture | OCEANDEEP |
-| B031 | Darkness Filter Ceiling — creative restriction 50–800 Hz; constraint as identity declaration | OCEANDEEP |
-| B032 | Mallet Articulation Stack — Chaigne 1997 contact-time synthesis creates physical pluck/strike/brush modes with academic citation | OWARE |
-| B033 | Living Tuning Grid — 8-mode layout where each mode creates a distinct intonation field via harmonic series + sympathetic resonance combination | OWARE |
-| B034 | Per-Mode Sympathetic Network — 5 sympathetically resonating strings with unique ratios per mode (5×8 = 40 unique resonance profiles) | OWARE |
-| B035 | OperaConductor: Autonomous Dramatic Arc Architecture — 4 arc shapes, configurable arc time/peak, ±5%/±3% jitter, graceful player override via max(conductorK, manualK). First synthesizer in the fleet with autonomous narrative intent. Blessed by Kakehashi, Pearlman, Vangelis, Smith. | OPERA |
-| B036 | Coherence-Driven Spatial Panning — stereo field is a live readout of Kuramoto order parameter R: locked partials spread wide, chaotic partials collapse to center. The stereo field breathes with the dramatic arc. Blessed by Tomita, Buchla. | OPERA |
-| B037 | EmotionalMemory: Phase Persistence Across Note Boundaries — partial phases stored at note-off, recalled within 500ms window. The Kuramoto field wakes up knowing where it was. Named after Vangelis in source code. Blessed by Vangelis. | OPERA |
-| B038 | Psychology-as-DSP: First synthesizer deriving timbral variation from cited experimental psychology (Berlyne 1960, Wundt 1874, Csikszentmihalyi 1975) implemented as real-time DSP. Alien shift above curiosity=0.7 is emergent theoretical consequence. Ratified 8-0. | OFFERING |
-| B039 | City-as-Processing-Chain (conditional): Five structurally distinct architectures encoding cultural production aesthetics — NY noise gate, Detroit feedback sat + drunk timing, LA parallel compression, Toronto sidechain sub, Bay Area prime-delay allpass fog. Spatial character V1.1. Ratified 6-2. | OFFERING |
-| B040 | Note Duration as Synthesis Parameter — note length drives circuit warmth, bond depth, and intimacy accumulation; long notes unlock timbral states unavailable to short notes. Unanimous. | OXYTO |
-| B041 | Dark Cockpit Attentional Design — five-level opacity hierarchy (100%/80%/45%/20%/0%) derived from maritime bridge design (OpenBridge 6.0) that actively preserves performer cognitive bandwidth by dimming non-essential controls during performance. No synthesizer has treated the performer's attention as a resource to protect. Ratified 8-0. | UI |
-| B042 | The Planchette as Autonomous Entity — first synthesizer UI element with its own autonomous behavior: Lissajous idle drift (0.3Hz/0.2Hz), spring lock-on, bioluminescent velocity-scaled trail, and warm memory hold. The interface communicates awareness of the performer's presence through the cursor's behavior before any interaction begins. Ratified 7-1 (Rams dissents). | UI |
-| B043 | Gesture Trail as First-Class Modulation Source — the bioluminescent performance trail (already a ring buffer of 256 x/y/velocity/time tuples) promoted to a replayable, freezable, coupleable DSP modulation signal. The performer's gesture history becomes a live modulation output. Two performers' trails create interference-pattern modulation neither intended alone. Ratified 6-2. | UI |
-
-### The 5 Ongoing Debates
-
-| ID | Tension | Status |
-|----|---------|--------|
-| DB001 | Mutual exclusivity vs. effect chaining (Buchla vs. field) | EXPANDED — OSTINATO introduces behavioral chaining as a new axis; fleet-level unresolved |
-| DB002 | Silence as paradigm vs. accessibility (Schulze/Buchla vs. Kakehashi/Pearlman) | UNRESOLVED |
-| DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | RESOLVED for percussion — immediate beauty wins (OSTINATO seance 2026-03-20) |
-| DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | RESOLVED for OSTINATO — expression AND evolution are not in tension; both possible simultaneously |
-| DB005 | Autonomy vs. Agency — machine Conductor arc vs. player expressive control (Kakehashi named; OPERA is the first engine where this tension is architecturally explicit). Current resolution: Conductor + Manual/Both mode is correct; debate is about *degree* not *principle*. | OPEN |
-
-### Critical Fleet-Wide Findings
-
-- **Seance score range (post 2026-03-22 fixes)**: ~8.0 (ORIGAMI) to 9.5 (OXYTO). Fleet avg ~8.8. **75 engines seanced (77 total − 2 not yet seanced: OBIONT, OUTFLOW; OBIONT/OUTFLOW have presets, seance pending). OXYTO 9.5/10 (fleet leader). OXIDIZE 8.7→9.2+ (2 P0s fixed 2026-04-05). OUTLOOK 7.1→8.0/10 (P0-01–04 fixed 2026-03-23). OPERA 8.85/10 (P0 fixed 2026-03-22, 3 UX fixes for 9.0+).** Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
-- **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
-- **D006 aftertouch coverage**: 23/24 original Prism Sweep engines (Optic intentionally exempt). Coverage for 52 newer engines not yet systematically audited.
-- **D006 mod wheel coverage**: 22/22 original Prism Sweep MIDI-capable engines (Round 12C completed the last 7 engines). Coverage for newer engines not yet audited.
-- **D001 filter envelopes**: RESOLVED — all engines fleet-wide have velocity-scaled filter envelopes (Round 9E)
-- **D004 dead params**: RESOLVED — all declared parameters wired to DSP (Round 3B)
-- **D005 LFO breathing**: RESOLVED — all engines have autonomous modulation with rate floor ≤ 0.01 Hz (Round 5A + engine recoveries)
-
-### Prism Sweep — COMPLETE (2026-03-14)
-
-12-round progressive quality pass across all 24 original engines. **ALL 12 ROUNDS COMPLETE.**
-
-- All 6 doctrines resolved fleet-wide (D001–D006)
-- 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
-- ~15,500 presets (was 10,028 at sweep completion), 0 duplicates, 100% DNA coverage, health score ~92/100
-- Build PASS + auval PASS
-- **Full history**: `Docs/sweeps/prism_sweep_final_report.md` | Master index: `Docs/sweeps/prism_sweep_index.md`
 
 ---
 
@@ -499,39 +312,20 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
-| [midi-daw-audit](Skills/midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit (CC thread safety, MIDI learn, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract) |
+| [midi-daw-audit](Skills/midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit |
 | [sro-optimizer](Skills/sro-optimizer/SKILL.md) | `/sro-optimizer` | CPU optimization via Spectral Resonance Objects |
 | [preset-auditor](Skills/preset-auditor/SKILL.md) | `/preset-auditor` | Preset quality gate — DNA, macros, D004, naming |
 | [coupling-debugger](Skills/coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose broken or inaudible coupling routes |
 | [master-audit](Skills/master-audit/SKILL.md) | `/master-audit` | Fleet-wide QA orchestration — pre-release health check |
-| [repo-audit](Skills/repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene + doc currency — stale counts, broken IDs, governance gaps |
+| [repo-audit](Skills/repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene + doc currency |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
-| [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — path to 9.0+ libraries (supersedes ad-hoc preset QA) |
-| [new-xo-engine](Skills/new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation: concept, scaffold, integration, verification |
-| [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills, then repair and link |
+| [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit |
+| [new-xo-engine](Skills/new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation |
+| [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills |
 
 Full index: `Skills/README.md`
-
----
-
-## Adding a New Engine — CLAUDE.md Checklist
-
-When a new engine is registered, update **all four** of these sections in CLAUDE.md:
-
-1. **Product Identity header** — add the engine name to the `**Engine modules (registered):**` comma list and update the parenthetical note with the date added
-2. **Engine Modules table** — add a row: `| SHORTNAME | Source Instrument | Accent Color `#RRGGBB` |`
-3. **Parameter Prefix table** — add a row: `| EngineName | \`prefix_\` | \`prefix_exampleParam\` |`
-4. **Key Files table** (if the engine has a notable architecture worth linking) — add `| Source/Engines/Name/NameEngine.h | Brief description |`
-
-Then update these external files:
-- `Docs/specs/xoceanus_master_specification.md` section 3.1 engine table (add row)
-- `Docs/seances/seance_cross_reference.md` (add seance row after the seance is run)
-- `Source/XOceanusProcessor.cpp` (register the engine)
-- `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
-
-Full process: `Docs/specs/xoceanus_new_engine_process.md`
 
 ---
 

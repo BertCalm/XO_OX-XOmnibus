@@ -1991,6 +1991,15 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         juce::MessageManager::callAsync([this] { drainGraveyard(); });
     }
 
+    // NaN/inf guard — engine bugs should not crash the host
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        auto* data = buffer.getWritePointer(ch);
+        for (int i = 0; i < numSamples; ++i)
+            if (!std::isfinite(data[i]))
+                data[i] = 0.0f;
+    }
+
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
     double ppqPos = -1.0;
     double bpm = 0.0;

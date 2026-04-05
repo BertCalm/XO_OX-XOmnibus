@@ -297,6 +297,7 @@ public:
         // Use the smoothed decay value to prevent coefficient discontinuities between blocks.
         float smoothedDecayVal = smoothDecay.getNextValue();
         float feedbackCoeff = (smoothedDecayVal > 29.0f) ? 1.0f : std::exp(-6.9078f / (smoothedDecayVal * srF));
+        feedbackCoeff = std::min(feedbackCoeff, 0.9999f); // fleet standard: prevent FDN divergence
 
         // Size → room dimension (D004: dead param resolved)
         // Size 0 = intimate (short predelay, dark/absorptive)
@@ -375,7 +376,8 @@ public:
             for (int ch = 0; ch < kFDNChannels; ++ch)
             {
                 // fdnWritePos[ch] is the oldest slot (read-before-write-before-advance).
-                fdnRead[ch] = fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])];
+                // flushDenormal before matrix multiply: prevents denormal CPU spikes in long-decay tails (T60 up to 60s).
+                fdnRead[ch] = flushDenormal(fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])]);
             }
 
             // Householder feedback matrix: H = I - (2/N) * 1*1^T

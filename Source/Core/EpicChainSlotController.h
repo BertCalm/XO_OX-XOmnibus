@@ -14,6 +14,27 @@
 #include "../DSP/Effects/OmnistereoChain.h"
 #include "../DSP/Effects/ObliterateChain.h"
 #include "../DSP/Effects/ObscurityChain.h"
+// Wave 2 — 20 new Epic chains
+#include "../DSP/Effects/OublietteChain.h"
+#include "../DSP/Effects/OsmiumChain.h"
+#include "../DSP/Effects/OrogenChain.h"
+#include "../DSP/Effects/OculusChain.h"
+#include "../DSP/Effects/OutageChain.h"
+#include "../DSP/Effects/OverrideChain.h"
+#include "../DSP/Effects/OcclusionChain.h"
+#include "../DSP/Effects/ObdurateChain.h"
+#include "../DSP/Effects/OrisonChain.h"
+#include "../DSP/Effects/OvershootChain.h"
+#include "../DSP/Effects/ObverseChain.h"
+#include "../DSP/Effects/OxymoronChain.h"
+#include "../DSP/Effects/OrnateChain.h"
+#include "../DSP/Effects/OrationChain.h"
+#include "../DSP/Effects/OffcutChain.h"
+#include "../DSP/Effects/OmenChain.h"
+#include "../DSP/Effects/OpusChain.h"
+#include "../DSP/Effects/OutlawChain.h"
+#include "../DSP/Effects/OutbreakChain.h"
+#include "../DSP/Effects/OrreryChain.h"
 
 namespace xoceanus
 {
@@ -38,7 +59,7 @@ class EpicChainSlotController
 {
 public:
     static constexpr int kNumSlots  = 3;
-    static constexpr int kNumChains = 10;
+    static constexpr int kNumChains = 30;
 
     enum ChainID : int
     {
@@ -52,7 +73,32 @@ public:
         Onrush     = 7,
         Omnistereo = 8,
         Obliterate = 9,
-        Obscurity  = 10
+        Obscurity  = 10,
+        // Wave 2 — Monsterous
+        Oubliette  = 11,
+        Osmium     = 12,
+        Orogen     = 13,
+        Oculus     = 14,
+        // Wave 2 — Sunken Treasure
+        Outage     = 15,
+        Override   = 16,
+        Occlusion  = 17,
+        Obdurate   = 18,
+        // Wave 2 — Anomalous
+        Orison     = 19,
+        Overshoot  = 20,
+        Obverse    = 21,
+        Oxymoron   = 22,
+        // Wave 2 — AHA
+        Ornate     = 23,
+        Oration    = 24,
+        Offcut     = 25,
+        Omen       = 26,
+        // Wave 2 — Alt Universe
+        Opus       = 27,
+        Outlaw     = 28,
+        Outbreak   = 29,
+        Orrery     = 30
     };
 
     EpicChainSlotController() = default;
@@ -110,6 +156,32 @@ private:
         OmnistereoChain omnistereo;
         ObliterateChain obliterate;
         ObscurityChain  obscurity;
+
+        // Wave 2 — Monsterous
+        OublietteChain  oubliette;
+        OsmiumChain     osmium;
+        OrogenChain     orogen;
+        OculusChain     oculus;
+        // Wave 2 — Sunken Treasure
+        OutageChain     outage;
+        OverrideChain   override_;   // avoids collision with C++ keyword
+        OcclusionChain  occlusion;
+        ObdurateChain   obdurate;
+        // Wave 2 — Anomalous
+        OrisonChain     orison;
+        OvershootChain  overshoot;
+        ObverseChain    obverse;
+        OxymoronChain   oxymoron;
+        // Wave 2 — AHA
+        OrnateChain     ornate;
+        OrationChain    oration;
+        OffcutChain     offcut;
+        OmenChain       omen;
+        // Wave 2 — Alt Universe
+        OpusChain       opus;
+        OutlawChain     outlaw;
+        OutbreakChain   outbreak;
+        OrreryChain     orrery;
 
         // Mono scratch buffer for Mono-In chains (Onrush, Obliterate, Obscurity)
         std::vector<float> monoScratch;
@@ -172,6 +244,27 @@ inline void EpicChainSlotController::prepare(double sampleRate, int maxBlockSize
         slot.omnistereo.prepare(sampleRate, maxBlockSize);
         slot.obliterate.prepare(sampleRate, maxBlockSize);
         slot.obscurity.prepare(sampleRate, maxBlockSize);
+        // Wave 2 chains
+        slot.oubliette.prepare(sampleRate, maxBlockSize);
+        slot.osmium.prepare(sampleRate, maxBlockSize);
+        slot.orogen.prepare(sampleRate, maxBlockSize);
+        slot.oculus.prepare(sampleRate, maxBlockSize);
+        slot.outage.prepare(sampleRate, maxBlockSize);
+        slot.override_.prepare(sampleRate, maxBlockSize);
+        slot.occlusion.prepare(sampleRate, maxBlockSize);
+        slot.obdurate.prepare(sampleRate, maxBlockSize);
+        slot.orison.prepare(sampleRate, maxBlockSize);
+        slot.overshoot.prepare(sampleRate, maxBlockSize);
+        slot.obverse.prepare(sampleRate, maxBlockSize);
+        slot.oxymoron.prepare(sampleRate, maxBlockSize);
+        slot.ornate.prepare(sampleRate, maxBlockSize);
+        slot.oration.prepare(sampleRate, maxBlockSize);
+        slot.offcut.prepare(sampleRate, maxBlockSize);
+        slot.omen.prepare(sampleRate, maxBlockSize);
+        slot.opus.prepare(sampleRate, maxBlockSize);
+        slot.outlaw.prepare(sampleRate, maxBlockSize);
+        slot.outbreak.prepare(sampleRate, maxBlockSize);
+        slot.orrery.prepare(sampleRate, maxBlockSize);
         // Mono scratch buffer for mono-in epic chains
         slot.monoScratch.assign(maxBlockSize, 0.0f);
     }
@@ -193,6 +286,27 @@ inline void EpicChainSlotController::reset()
         slot.omnistereo.reset();
         slot.obliterate.reset();
         slot.obscurity.reset();
+        // Wave 2 chains
+        slot.oubliette.reset();
+        slot.osmium.reset();
+        slot.orogen.reset();
+        slot.oculus.reset();
+        slot.outage.reset();
+        slot.override_.reset();
+        slot.occlusion.reset();
+        slot.obdurate.reset();
+        slot.orison.reset();
+        slot.overshoot.reset();
+        slot.obverse.reset();
+        slot.oxymoron.reset();
+        slot.ornate.reset();
+        slot.oration.reset();
+        slot.offcut.reset();
+        slot.omen.reset();
+        slot.opus.reset();
+        slot.outlaw.reset();
+        slot.outbreak.reset();
+        slot.orrery.reset();
     }
 }
 
@@ -221,7 +335,7 @@ inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buff
         // Detect chain change
         ChainID requestedChain = static_cast<ChainID>(static_cast<int>(chainVal + 0.5f));
         requestedChain = static_cast<ChainID>(
-            juce::jlimit(static_cast<int>(Off), static_cast<int>(Obscurity),
+            juce::jlimit(static_cast<int>(Off), static_cast<int>(Orrery),
                          static_cast<int>(requestedChain)));
 
         if (requestedChain != slot.pendingChain && slot.crossfadeProgress >= 1.0f)
@@ -379,6 +493,225 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
             break;
         }
 
+        // ---- Wave 2 — Monsterous (Mono-In chains) ----
+        case Oubliette:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.oubliette.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Osmium:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.osmium.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Orogen:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.orogen.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Oculus:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.oculus.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        // ---- Wave 2 — Sunken Treasure (Mono-In chains) ----
+        case Outage:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.outage.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Override:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.override_.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Occlusion:
+            // Stereo-In, Stereo-Out — pass L/R directly (in-place safe per header)
+            slot.occlusion.processBlock(L, R, L, R, numSamples, bpm, ppqPosition);
+            break;
+
+        case Obdurate:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.obdurate.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        // ---- Wave 2 — Anomalous (Mono-In chains) ----
+        case Orison:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.orison.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            break;
+        }
+
+        case Overshoot:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.overshoot.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            break;
+        }
+
+        case Obverse:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.obverse.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            break;
+        }
+
+        case Oxymoron:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.oxymoron.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            break;
+        }
+
+        // ---- Wave 2 — AHA (Mono-In chains) ----
+        case Ornate:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.ornate.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Oration:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.oration.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Offcut:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.offcut.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Omen:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.omen.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        // ---- Wave 2 — Alt Universe (Mono-In chains) ----
+        case Opus:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.opus.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Outlaw:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.outlaw.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Outbreak:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.outbreak.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Orrery:
+        {
+            int safeSamples = numSamples;
+            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
+                slot.monoScratch.assign(safeSamples, 0.0f);
+            for (int i = 0; i < safeSamples; ++i)
+                slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
+            slot.orrery.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            break;
+        }
+
         default: break;
     }
 }
@@ -434,6 +767,27 @@ inline void EpicChainSlotController::addParameters(
     OmnistereoChain::addParameters(layout);
     ObliterateChain::addParameters(layout);
     ObscurityChain::addParameters(layout);
+    // Wave 2 chain parameters
+    OublietteChain::addParameters(layout);
+    OsmiumChain::addParameters(layout);
+    OrogenChain::addParameters(layout);
+    OculusChain::addParameters(layout);
+    OutageChain::addParameters(layout);
+    OverrideChain::addParameters(layout);
+    OcclusionChain::addParameters(layout);
+    ObdurateChain::addParameters(layout);
+    OrisonChain::addParameters(layout);
+    OvershootChain::addParameters(layout);
+    ObverseChain::addParameters(layout);
+    OxymoronChain::addParameters(layout);
+    OrnateChain::addParameters(layout);
+    OrationChain::addParameters(layout);
+    OffcutChain::addParameters(layout);
+    OmenChain::addParameters(layout);
+    OpusChain::addParameters(layout);
+    OutlawChain::addParameters(layout);
+    OutbreakChain::addParameters(layout);
+    OrreryChain::addParameters(layout);
 }
 
 inline void EpicChainSlotController::cacheParameterPointers(
@@ -459,6 +813,27 @@ inline void EpicChainSlotController::cacheParameterPointers(
         slots_[n].omnistereo.cacheParameterPointers(apvts);
         slots_[n].obliterate.cacheParameterPointers(apvts);
         slots_[n].obscurity.cacheParameterPointers(apvts);
+        // Wave 2 chains
+        slots_[n].oubliette.cacheParameterPointers(apvts);
+        slots_[n].osmium.cacheParameterPointers(apvts);
+        slots_[n].orogen.cacheParameterPointers(apvts);
+        slots_[n].oculus.cacheParameterPointers(apvts);
+        slots_[n].outage.cacheParameterPointers(apvts);
+        slots_[n].override_.cacheParameterPointers(apvts);
+        slots_[n].occlusion.cacheParameterPointers(apvts);
+        slots_[n].obdurate.cacheParameterPointers(apvts);
+        slots_[n].orison.cacheParameterPointers(apvts);
+        slots_[n].overshoot.cacheParameterPointers(apvts);
+        slots_[n].obverse.cacheParameterPointers(apvts);
+        slots_[n].oxymoron.cacheParameterPointers(apvts);
+        slots_[n].ornate.cacheParameterPointers(apvts);
+        slots_[n].oration.cacheParameterPointers(apvts);
+        slots_[n].offcut.cacheParameterPointers(apvts);
+        slots_[n].omen.cacheParameterPointers(apvts);
+        slots_[n].opus.cacheParameterPointers(apvts);
+        slots_[n].outlaw.cacheParameterPointers(apvts);
+        slots_[n].outbreak.cacheParameterPointers(apvts);
+        slots_[n].orrery.cacheParameterPointers(apvts);
     }
 }
 

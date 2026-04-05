@@ -153,6 +153,27 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/OmnistereoChain.cpp
     Source/DSP/Effects/ObliterateChain.cpp
     Source/DSP/Effects/ObscurityChain.cpp
+    Source/DSP/Effects/FXChainHelpers.cpp
+    Source/DSP/Effects/OublietteChain.cpp
+    Source/DSP/Effects/OsmiumChain.cpp
+    Source/DSP/Effects/OrogenChain.cpp
+    Source/DSP/Effects/OculusChain.cpp
+    Source/DSP/Effects/OutageChain.cpp
+    Source/DSP/Effects/OverrideChain.cpp
+    Source/DSP/Effects/OcclusionChain.cpp
+    Source/DSP/Effects/ObdurateChain.cpp
+    Source/DSP/Effects/OrisonChain.cpp
+    Source/DSP/Effects/OvershootChain.cpp
+    Source/DSP/Effects/ObverseChain.cpp
+    Source/DSP/Effects/OxymoronChain.cpp
+    Source/DSP/Effects/OrnateChain.cpp
+    Source/DSP/Effects/OrationChain.cpp
+    Source/DSP/Effects/OffcutChain.cpp
+    Source/DSP/Effects/OmenChain.cpp
+    Source/DSP/Effects/OpusChain.cpp
+    Source/DSP/Effects/OutlawChain.cpp
+    Source/DSP/Effects/OutbreakChain.cpp
+    Source/DSP/Effects/OrreryChain.cpp
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
@@ -362,6 +383,27 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/OmnistereoChain.h
     Source/DSP/Effects/ObliterateChain.h
     Source/DSP/Effects/ObscurityChain.h
+    Source/DSP/Effects/FXChainHelpers.h
+    Source/DSP/Effects/OublietteChain.h
+    Source/DSP/Effects/OsmiumChain.h
+    Source/DSP/Effects/OrogenChain.h
+    Source/DSP/Effects/OculusChain.h
+    Source/DSP/Effects/OutageChain.h
+    Source/DSP/Effects/OverrideChain.h
+    Source/DSP/Effects/OcclusionChain.h
+    Source/DSP/Effects/ObdurateChain.h
+    Source/DSP/Effects/OrisonChain.h
+    Source/DSP/Effects/OvershootChain.h
+    Source/DSP/Effects/ObverseChain.h
+    Source/DSP/Effects/OxymoronChain.h
+    Source/DSP/Effects/OrnateChain.h
+    Source/DSP/Effects/OrationChain.h
+    Source/DSP/Effects/OffcutChain.h
+    Source/DSP/Effects/OmenChain.h
+    Source/DSP/Effects/OpusChain.h
+    Source/DSP/Effects/OutlawChain.h
+    Source/DSP/Effects/OutbreakChain.h
+    Source/DSP/Effects/OrreryChain.h
 
     # Export pipeline
     Source/Export/XPNVelocityCurves.h

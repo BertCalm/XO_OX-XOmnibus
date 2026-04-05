@@ -361,12 +361,15 @@ public:
                 // Left-align knobs (matches mockup)
                 float kx = content.getX();
 
-                static const char* kLabels[4] = {"SRC1", "FILT", "ENV", "FX"};
+                static const char* kLabels[4] = {"CHAR", "MOVE", "COUP", "SPC"};
 
                 for (int k = 0; k < 4; ++k)
                 {
                     float cx = kx + arcRadius;
                     float cy = knobY + arcRadius;
+
+                    // Store hit-test bounds (arc circle + label below it)
+                    arcBounds_[k] = juce::Rectangle<float>(kx, knobY, arcDiam, arcDiam + knobLblH);
 
                     // 270° arc sweep, starts at ~135° (bottom-left), sweeps CW
                     const float startAngle = juce::MathConstants<float>::pi * 0.75f;
@@ -498,9 +501,23 @@ public:
     void mouseMove(const juce::MouseEvent& e) override
     {
         if (hasEngine && getMuteToggleBounds().contains(e.getPosition()))
+        {
             setMouseCursor(juce::MouseCursor::PointingHandCursor);
-        else
-            setMouseCursor(juce::MouseCursor::NormalCursor);
+            return;
+        }
+        if (hasEngine)
+        {
+            auto pos = e.position;
+            for (int i = 0; i < 4; ++i)
+            {
+                if (arcBounds_[i].contains(pos))
+                {
+                    setMouseCursor(juce::MouseCursor::UpDownResizeCursor);
+                    return;
+                }
+            }
+        }
+        setMouseCursor(juce::MouseCursor::NormalCursor);
     }
     void mouseExit(const juce::MouseEvent&) override
     {
@@ -528,6 +545,23 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
+        // ── Arc macro knob interaction — check arcs FIRST ──────────────────────
+        if (hasEngine && !e.mods.isPopupMenu())
+        {
+            auto pos = e.position;
+            for (int i = 0; i < 4; ++i)
+            {
+                if (arcBounds_[i].contains(pos))
+                {
+                    activeArc_ = i;
+                    auto& apvts = processor.getAPVTS();
+                    auto* p = apvts.getParameter(cachedMacroIds[i]);
+                    dragStartValue_ = p ? p->getValue() : macroValues[i];
+                    return; // consumed — don't fall through to mute/menu logic
+                }
+            }
+        }
+
         // Check if click is on the mute toggle (top-left 16×16pt, 4pt margin)
         auto toggleBounds = getMuteToggleBounds();
         if (toggleBounds.contains(e.getPosition()))
@@ -594,8 +628,32 @@ public:
                            });
     }
 
+    void mouseDrag(const juce::MouseEvent& e) override
+    {
+        if (activeArc_ < 0)
+            return;
+
+        auto& apvts = processor.getAPVTS();
+        if (auto* param = apvts.getParameter(cachedMacroIds[activeArc_]))
+        {
+            float delta = -e.getDistanceFromDragStartY() * 0.003f;
+            float newVal = std::clamp(dragStartValue_ + delta, 0.0f, 1.0f);
+            param->beginChangeGesture();
+            param->setValueNotifyingHost(newVal);
+            param->endChangeGesture();
+        }
+    }
+
     void mouseUp(const juce::MouseEvent& e) override
     {
+        // Release any active arc drag — do this before the drag-guard below so
+        // a pure arc drag that ends here is always cleaned up.
+        if (activeArc_ >= 0)
+        {
+            activeArc_ = -1;
+            return; // consumed — don't trigger engine-select on arc drag-release
+        }
+
         if (e.mouseWasDraggedSinceMouseDown())
             return;
 
@@ -761,6 +819,11 @@ private:
     // Fix #7: cached CockpitHost pointer — set in parentHierarchyChanged(),
     // used in paint() to avoid dynamic_cast walk on every frame.
     CockpitHost* cachedCockpitHost_ = nullptr;
+
+    // Arc macro drag interaction — populated in paint(), used in mouseDown/Drag/Up.
+    juce::Rectangle<float> arcBounds_[4]{};
+    int   activeArc_      = -1;
+    float dragStartValue_ = 0.0f;
 
     MiniWaveform miniWave;
 
