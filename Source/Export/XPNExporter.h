@@ -297,10 +297,15 @@ public:
     }
 
     //==========================================================================
-    // APVTS injection — call before exporting to enable real audio rendering.
-    // Pass the live processor's APVTS so preset parameters can be loaded into
-    // the shared parameter tree before each render. Engine instances created
-    // for offline rendering attach to this APVTS and read values from it.
+    // APVTS injection — optional. When provided, preset parameters are applied
+    // to the shared parameter tree before each render so engines produce output
+    // that exactly matches the preset settings.
+    //
+    // When NOT provided (nullptr, the default), buildOfflineContext() creates a
+    // temporary per-engine AudioProcessorValueTreeState from each engine's own
+    // createParameterLayout(). Engines render with default values plus any
+    // preset overrides stored in preset.parametersByEngine. This path is used
+    // by test harnesses that have no live processor.
     //
     // Thread safety: preset parameter writes are atomic float stores.
     // Concurrent live audio rendering will see the export's parameter values
@@ -780,8 +785,37 @@ private:
     static constexpr int EMPTY_VEL_START = 0;
 
     // Shared APVTS — injected via setAPVTS() before export.
-    // Nullptr = default parameter values will be used (parameters won't match preset).
+    // Nullptr = per-engine minimal APVTSs are created automatically (see
+    // buildOfflineContext), using each engine's createParameterLayout().
+    // This allows the exporter to run in test environments that have no
+    // live processor.
     juce::AudioProcessorValueTreeState* sharedApvts = nullptr;
+
+    //==========================================================================
+    // MinimalOfflineProcessor — lightweight AudioProcessor stub used when no
+    // sharedApvts is available. Provides the AudioProcessor owner that
+    // juce::AudioProcessorValueTreeState requires, without any DSP logic.
+    //==========================================================================
+
+    struct MinimalOfflineProcessor : juce::AudioProcessor
+    {
+        const juce::String getName() const override { return "XOriginateOffline"; }
+        void prepareToPlay(double, int) override {}
+        void releaseResources() override {}
+        void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+        double getTailLengthSeconds() const override { return 0.0; }
+        bool acceptsMidi() const override { return false; }
+        bool producesMidi() const override { return false; }
+        juce::AudioProcessorEditor* createEditor() override { return nullptr; }
+        bool hasEditor() const override { return false; }
+        int getNumPrograms() override { return 1; }
+        int getCurrentProgram() override { return 0; }
+        void setCurrentProgram(int) override {}
+        const juce::String getProgramName(int) override { return {}; }
+        void changeProgramName(int, const juce::String&) override {}
+        void getStateInformation(juce::MemoryBlock&) override {}
+        void setStateInformation(const void*, int) override {}
+    };
 
     //==========================================================================
     // Internal result types for error propagation
@@ -804,6 +838,14 @@ private:
         // Coupling matrix for entangled renders — nullptr for standard renders.
         // Owned by the context, prepared with the same block size.
         std::unique_ptr<MegaCouplingMatrix> couplingMatrix;
+
+        // When no sharedApvts is available (e.g. in test environments),
+        // buildOfflineContext creates one MinimalOfflineProcessor + one
+        // AudioProcessorValueTreeState per engine. These must outlive the
+        // engines they are attached to, so they live here alongside them.
+        std::vector<std::unique_ptr<MinimalOfflineProcessor>> ownedProcs;
+        std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState>> ownedApvts;
+
         bool valid = false;
     };
 
@@ -851,44 +893,94 @@ private:
     {
         OfflineRenderContext ctx;
 
-        if (!sharedApvts)
-            return ctx; // No APVTS — ctx.valid will be false; renderNoteToWav() returns an error
-
-        // Apply preset parameters to the shared APVTS.
-        // Atomic stores are thread-safe; see setAPVTS() comment above.
-        for (const auto& [engName, paramsVar] : preset.parametersByEngine)
+        if (sharedApvts)
         {
-            if (auto* obj = paramsVar.getDynamicObject())
+            // ── Shared-APVTS path (live plugin context) ────────────────────────
+            // Apply preset parameters to the shared APVTS.
+            // Atomic stores are thread-safe; see setAPVTS() comment above.
+            for (const auto& [engName, paramsVar] : preset.parametersByEngine)
             {
-                for (const auto& prop : obj->getProperties())
+                if (auto* obj = paramsVar.getDynamicObject())
                 {
-                    juce::String paramId = prop.name.toString();
-                    // Resolve OddfeliX legacy param aliases before writing
-                    auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
-                                         ? resolveSnapParamAlias(paramId)
-                                         : paramId;
-                    if (canonical.isEmpty())
-                        continue; // removed param
+                    for (const auto& prop : obj->getProperties())
+                    {
+                        juce::String paramId = prop.name.toString();
+                        // Resolve OddfeliX legacy param aliases before writing
+                        auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
+                                             ? resolveSnapParamAlias(paramId)
+                                             : paramId;
+                        if (canonical.isEmpty())
+                            continue; // removed param
 
-                    if (auto* raw = sharedApvts->getRawParameterValue(canonical))
-                        raw->store((float)prop.value);
+                        if (auto* raw = sharedApvts->getRawParameterValue(canonical))
+                            raw->store((float)prop.value);
+                    }
                 }
             }
+
+            // Create fresh engine instances for each engine in the preset
+            for (const auto& engName : preset.engines)
+            {
+                auto canonical = resolveEngineAlias(engName);
+                auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
+                if (!engine)
+                    continue;
+
+                engine->attachParameters(*sharedApvts);
+                engine->prepare(sampleRate, kOfflineBlockSize);
+                engine->prepareSilenceGate(sampleRate, kOfflineBlockSize, 500.0f);
+                engine->reset();
+                ctx.engines.push_back(std::move(engine));
+            }
         }
-
-        // Create fresh engine instances for each engine in the preset
-        for (const auto& engName : preset.engines)
+        else
         {
-            auto canonical = resolveEngineAlias(engName);
-            auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
-            if (!engine)
-                continue;
+            // ── No-APVTS path (test / standalone context) ──────────────────────
+            // Build a per-engine minimal APVTS from the engine's own parameter
+            // layout so that attachParameters() succeeds and engines render with
+            // their default values. Preset parameter overrides are applied on top.
+            for (const auto& engName : preset.engines)
+            {
+                auto canonical = resolveEngineAlias(engName);
+                auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
+                if (!engine)
+                    continue;
 
-            engine->attachParameters(*sharedApvts);
-            engine->prepare(sampleRate, kOfflineBlockSize);
-            engine->prepareSilenceGate(sampleRate, kOfflineBlockSize, 500.0f);
-            engine->reset();
-            ctx.engines.push_back(std::move(engine));
+                // Build a temporary APVTS owned by the context.
+                auto proc = std::make_unique<MinimalOfflineProcessor>();
+                auto layout = engine->createParameterLayout();
+                auto apvts = std::make_unique<juce::AudioProcessorValueTreeState>(
+                    *proc, nullptr, "PARAMS", std::move(layout));
+
+                // Apply any preset parameter overrides for this engine.
+                auto it = preset.parametersByEngine.find(engName);
+                if (it != preset.parametersByEngine.end())
+                {
+                    if (auto* obj = it->second.getDynamicObject())
+                    {
+                        for (const auto& prop : obj->getProperties())
+                        {
+                            juce::String paramId = prop.name.toString();
+                            auto paramCanonical = canonical.equalsIgnoreCase("OddfeliX")
+                                                      ? resolveSnapParamAlias(paramId)
+                                                      : paramId;
+                            if (paramCanonical.isEmpty())
+                                continue;
+                            if (auto* raw = apvts->getRawParameterValue(paramCanonical))
+                                raw->store((float)prop.value);
+                        }
+                    }
+                }
+
+                engine->attachParameters(*apvts);
+                engine->prepare(sampleRate, kOfflineBlockSize);
+                engine->prepareSilenceGate(sampleRate, kOfflineBlockSize, 500.0f);
+                engine->reset();
+
+                ctx.engines.push_back(std::move(engine));
+                ctx.ownedProcs.push_back(std::move(proc));
+                ctx.ownedApvts.push_back(std::move(apvts));
+            }
         }
 
         ctx.valid = !ctx.engines.empty();
@@ -927,7 +1019,9 @@ private:
 
     // Render a single note using the offline engine context.
     // ctx must have been prepared via buildOfflineContext() for this preset.
-    // If ctx.valid is false (no APVTS available), returns an error — never writes silent audio.
+    // If ctx.valid is false (no engine could be created from the registry),
+    // returns an error — never writes a silent placeholder that would corrupt
+    // the export.
     IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity, const RenderSettings& settings,
                              const juce::File& outputFile)
     {
@@ -940,11 +1034,12 @@ private:
 
         if (!ctx.valid)
         {
-            // No APVTS — cannot render real audio. Return an error instead of
-            // writing a silent placeholder that would corrupt the export silently.
-            DBG("XPNExporter::renderNoteToWav — ctx.valid is false (no APVTS). Aborting render.");
+            // No engines were created (engine ID not registered in this build).
+            // Return an error instead of writing silent audio that would
+            // silently corrupt the export.
+            DBG("XPNExporter::renderNoteToWav — ctx.valid is false (no engines registered for preset). Aborting render.");
             jassertfalse;
-            return {false, "Render context is invalid: APVTS was not set before export"};
+            return {false, "Render context is invalid: no engines could be created for this preset"};
         }
 
         // Reset all engine voices for a clean note render

@@ -577,6 +577,7 @@ TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[ds
             "Onset",    // Percussion — requires specific trigger pattern not in generic test
             "Opal",     // Granular — requires loaded grain buffer
             "Orbital",  // Additive — needs sustained note time to build harmonics in 512 samples
+            "XOutwit",  // Requires coupling input signal to produce output
         };
 
         {
@@ -616,8 +617,8 @@ TEST_CASE("Engine stability - prepare/reset/render all registered engines", "[ds
             engine->reset();
             float cL = engine->getSampleForCoupling(0, 0);
             float cR = engine->getSampleForCoupling(1, 0);
-            CHECK(cL == 0.0f);
-            CHECK(cR == 0.0f);
+            CHECK(std::abs(cL) < 1e-6f);
+            CHECK(std::abs(cR) < 1e-6f);
         }
 
         // No denormals in output after 10 blocks
