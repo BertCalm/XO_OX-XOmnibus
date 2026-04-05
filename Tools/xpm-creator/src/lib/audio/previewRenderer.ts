@@ -1,5 +1,5 @@
 import { createOfflineContext, getAudioContext } from '@/lib/audio/audioContext';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -275,6 +275,6 @@ export async function renderPreview(
 
   const renderedBuffer = await offlineCtx.startRendering();
 
-  // Encode to 16-bit WAV ----------------------------------------------------
-  return encodeWav(renderedBuffer, 16);
+  // Encode to 16-bit WAV (async — non-blocking) --------------------------------
+  return encodeWavAsync(renderedBuffer, 16);
 }

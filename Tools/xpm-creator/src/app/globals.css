@@ -4,23 +4,33 @@
 
 @layer base {
   :root {
-    /* Default theme: Studio Clean (light) — space-separated RGB for Tailwind opacity modifiers */
-    --color-surface: 255 255 255;
-    --color-surface-alt: 245 245 245;
-    --color-surface-bg: 250 250 250;
-    --color-border: 232 232 232;
-    --color-border-hover: 209 209 209;
-    --color-text-primary: 26 26 46;
-    --color-text-secondary: 107 114 128;
-    --color-text-muted: 156 163 175;
-    --color-accent-teal: 13 148 136;
-    --color-accent-teal-light: 204 251 241;
-    --color-accent-teal-dark: 15 118 110;
-    --color-accent-teal-50: 240 253 250;
-    --color-accent-plum: 124 58 237;
-    --color-accent-plum-light: 237 233 254;
-    --color-accent-plum-dark: 109 40 217;
-    --color-accent-plum-50: 245 243 255;
+    /* ── Dark-mode fallbacks (Studio Midnight) ─────────────────── */
+    /* These values are applied immediately on page load, before    */
+    /* ThemeProvider hydrates. If ThemeProvider fails (e.g.         */
+    /* localStorage unavailable, JS error), the app stays readable  */
+    /* in dark mode rather than going black/invisible.              */
+    /* ThemeProvider overrides all of these via inline style on     */
+    /* document.documentElement once it mounts.                     */
+    --color-surface: 32 34 40;
+    --color-surface-alt: 26 28 36;
+    --color-surface-bg: 20 22 28;
+    --color-border: 52 56 68;
+    --color-border-hover: 82 86 96;
+    --color-text-primary: 230 232 240;
+    --color-text-secondary: 155 160 180;
+    --color-text-muted: 105 110 130;
+    --color-accent-teal: 60 180 170;
+    --color-accent-teal-light: 37 60 63;
+    --color-accent-teal-dark: 83 189 180;
+    --color-accent-teal-50: 23 33 38;
+    --color-accent-plum: 140 100 220;
+    --color-accent-plum-light: 51 46 72;
+    --color-accent-plum-dark: 154 119 224;
+    --color-accent-plum-50: 28 27 41;
+
+    /* Extra accent colors used by KeygroupBuilder zone swatches */
+    --color-accent-coral: 220 90 70;
+    --color-accent-gold: 210 165 50;
 
     /* Brand gradient — teal → plum, used for progress bars, active indicators, emphasis */
     --gradient-brand: linear-gradient(
@@ -29,16 +39,16 @@
       rgb(var(--color-accent-plum)) 100%
     );
 
-    /* Shadows — overridden per light/dark theme */
-    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    /* Shadows — dark-mode defaults; overridden per light/dark theme */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 
     /* ── Liquid Glass Material ─────────────────────────────────── */
     --glass-blur: 40px;
     --glass-saturate: 180%;
     --glass-contrast: 110%;
-    --glass-bg-alpha: 0.6;
+    --glass-bg-alpha: 0.4;
     --glass-specular-alpha: 0.1;
     --glass-depth-alpha: 0.4;
   }

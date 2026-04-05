@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useAudioStore } from '@/stores/audioStore';
 import { sliceAudioBuffer, autoDetectTransients, normalizeBuffer } from '@/lib/audio/audioSlicer';
 import { getDecodedBuffer, invalidateCache } from '@/lib/audio/audioBufferCache';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { generateWaveformPeaks } from '@/lib/audio/audioUtils';
 import { getAudioContext } from '@/lib/audio/audioContext';
 import { applyFadeIn, applyFadeOut, reverseBuffer, applyFilter } from '@/lib/audio/chopProcessors';
@@ -175,8 +175,8 @@ export default function WaveformEditor({ sample }: WaveformEditorProps) {
           }
         }
 
-        // Re-encode and update the sample in-place
-        const wavData = encodeWav(result, 16);
+        // Re-encode and update the sample in-place (async — non-blocking)
+        const wavData = await encodeWavAsync(result, 16);
         const newPeaks = generateWaveformPeaks(result);
 
         updateSample(sample.id, {
@@ -477,7 +477,7 @@ export default function WaveformEditor({ sample }: WaveformEditorProps) {
     try {
       const audioBuffer = await getDecodedBuffer(sample.id, sample.buffer);
       const sliced = sliceAudioBuffer(audioBuffer, start, end);
-      const wavData = encodeWav(sliced, 16);
+      const wavData = await encodeWavAsync(sliced, 16);
       const newPeaks = generateWaveformPeaks(sliced);
 
       addSample({
@@ -515,7 +515,7 @@ export default function WaveformEditor({ sample }: WaveformEditorProps) {
         try {
           const region = regions[i];
           const sliced = sliceAudioBuffer(audioBuffer, region.start, region.end);
-          const wavData = encodeWav(sliced, 16);
+          const wavData = await encodeWavAsync(sliced, 16);
           const newPeaks = generateWaveformPeaks(sliced);
 
           addSample({
@@ -643,7 +643,7 @@ export default function WaveformEditor({ sample }: WaveformEditorProps) {
       // Create samples and assign to pads
       for (let i = 0; i < maxPads; i++) {
         const finalBuffer = slicedBuffers[i];
-        const wavData = encodeWav(finalBuffer, 16);
+        const wavData = await encodeWavAsync(finalBuffer, 16);
         const newPeaks = generateWaveformPeaks(finalBuffer);
 
         const sampleId = uuid();

@@ -191,10 +191,10 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
         // Guard: if generation has advanced, a new trigger owns this pad — bail out
         if ((get()._voiceGenerations[padIndex] ?? 0) !== generation) return;
         if (completedCount >= voices.length) {
-          // Clean up expression chains using the captured reference from voice
-          // creation — NOT from the store, which may have been overwritten by
-          // a concurrent re-trigger. This prevents OscillatorNode CPU leaks.
-          if (expressionChains.length > 0) cleanupExpressionChains(expressionChains);
+          // Clean up expression chains from state (forceStop also does this,
+          // so this is the natural-end cleanup path)
+          const storedChains = get().activeExpressionChains[padIndex];
+          if (storedChains) cleanupExpressionChains(storedChains);
           set((s) => {
             const newVoices = { ...s.activeVoices };
             delete newVoices[padIndex];
