@@ -2627,8 +2627,8 @@ def cmd_doctor(args) -> int:
                     spec_data = json.load(f)
                 output_dir_for_disk = REPO_ROOT / "builds" / spec_data.get("pack_id", "unknown")
                 check_dir = output_dir_for_disk.parent
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] {exc}", file=sys.stderr)
 
     try:
         usage = shutil.disk_usage(check_dir)
@@ -2985,6 +2985,9 @@ def cmd_build(args) -> int:
 
     # Profile loading
     profile_id = spec.get("profile")
+    if profile_id and not re.match(r'^[a-zA-Z0-9_-]+$', profile_id):
+        print(f"[WARN] Invalid profile_id: {profile_id}", file=sys.stderr)
+        profile_id = None
     profile = None
     profile_velocity_curve: str | None = None  # issue #825 — "hot", "gentle", "musical", etc.
     if profile_id:

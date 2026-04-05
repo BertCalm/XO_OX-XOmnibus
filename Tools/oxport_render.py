@@ -22,6 +22,7 @@ import json
 import math
 import os
 import shutil
+import subprocess
 import struct
 import sys
 import threading
@@ -338,8 +339,9 @@ class RenderProgressTracker:
         )
         # macOS completion notification (best-effort — never raises)
         try:
-            os.system(
-                'osascript -e \'display notification "Oxport render complete" with title "XO_OX"\''
+            subprocess.run(
+                ["osascript", "-e", 'display notification "Oxport render complete" with title "XO_OX"'],
+                check=False,
             )
         except Exception:
             pass
