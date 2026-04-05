@@ -6,13 +6,72 @@
 
 ## Book I: The Oscillator Verses
 
-*(To be filled as retreats reveal waveform truths)*
+### Verse I-1: The Waveform Is Not the Sound
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> A saw wave is not a saw. It is a column of partials that the designer has not yet shaped. The oscillator is the raw material. The filter, the envelope, the LFO, the coupling — these are the hands that sculpt it. A designer who selects a saw wave and calls it done has chosen the marble but refused to carve. The sound begins after the waveform is chosen.
+
+**Application:** After selecting any oscillator waveform, immediately set the filter envelope. The waveform is the starting mineral; the filter envelope is the first cut.
+
+### Verse I-2: The Detuned Unison Is a Chorus of One
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> Two oscillators tuned to the same pitch are one voice. Two oscillators detuned by 3–7 cents are a chorus. Two oscillators detuned by 12–20 cents are a tension. Above 25 cents the ear resolves them as separate pitches and the unison effect dissolves. The sweet spot for warmth is 5–8 cents. The sweet spot for aggression is 15–22 cents. No preset should detune without choosing which territory it occupies.
+
+**Application:** For pads and strings, detune 5–8 cents. For leads with bite, 15–22 cents. For bass, 1–3 cents or not at all — detuned bass notes below C2 create audible beating that muddies the low end.
+
+### Verse I-3: The Sub-Oscillator Is the Foundation, Not the Decoration
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> A sub-oscillator one octave below the main is not reinforcement. It is a second instrument playing in the basement. When the sub is a sine, it is invisible support — felt in the chest, absent from the ears. When the sub is a square, it defines the harmonic series more than the main oscillator does. The sub chooses whether the sound lives in the body or in the air. In OBESE, `fat_subLevel` above 0.4 makes the sub the dominant timbre. In OVERDUB, `dub_subLevel` above 0.5 turns a lead into a bass. The sub is not a reinforcement knob. It is a tonal center of gravity.
+
+**Application:** Set the sub-oscillator level before the main oscillator level. It determines whether the preset is rooted or floating.
+
+### Verse I-4: The Noise Floor Is Not Silence
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> Every analog-modeled oscillator in the fleet carries noise. The noise is not a defect. It is the breath between the partials — the acoustic evidence that the oscillator is a physical process, not a mathematical function. In ORGANON, `organon_noiseColor` shapes whether this breath is bright (air) or dark (earth). In OBRIX, environmental turbidity adds noise per sample as ecological pressure. In OUROBOROS, the chaotic oscillator IS noise that has learned to orbit. The designer who removes all noise has created a sound that cannot exist in nature. This is sometimes the goal. It should always be the choice.
+
+**Application:** When a preset sounds sterile, add 2–5% noise before reaching for reverb. Noise fills the space between partials. Reverb fills the space around them. They solve different problems.
 
 ---
 
 ## Book II: The Filter Psalms
 
-*(To be filled as retreats reveal filter truths)*
+### Psalm II-1: The Cutoff Is Not a Volume Knob
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> When a designer wants a sound quieter, they reach for the cutoff. When a producer wants a sound darker, they reach for the cutoff. These are different acts wearing the same gesture. The cutoff removes harmonics — it subtracts brightness, not loudness. A sine wave at 200 Hz with a low-pass filter at 2000 Hz sounds identical to one at 20000 Hz. The filter only speaks to the frequencies that exist above it. A designer who uses the cutoff for volume has confused absence with silence.
+
+**Application:** Use `filterCutoff` for timbral shaping. Use `level` or `outputLevel` for loudness. If a preset is too loud, do not darken it — quiet it.
+
+### Psalm II-2: The Resonance Sermon
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> Resonance at 0.0 is a wall. Resonance at 0.3 is a voice. Resonance at 0.7 is a singer. Resonance at 0.95 is a scream that will not stop. The distance between musicality and self-oscillation is smaller than the designer believes. In a CytomicSVF, resonance above 0.85 begins to self-oscillate at the cutoff frequency — the filter becomes an oscillator. This is not a malfunction. It is a second instrument hiding inside the first. But resonance between 0.2 and 0.4 is where most musical expression lives. Below 0.2, the filter is shaping. Above 0.4, the filter is speaking. The designer must know which they intend.
+
+**Application:** For pads and atmospheres, resonance 0.15–0.35. For leads, 0.3–0.5. For acid/squelch textures, 0.6–0.85. Above 0.85, the filter IS the sound — the oscillator becomes secondary.
+
+### Psalm II-3: The Envelope Amount Is the Velocity Contract
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> `filterEnvAmt` is the most important parameter in every engine. It is the contract between the performer's fingers and the instrument's brightness. At 0.0, the preset responds to nothing — play soft or hard, the timbre is identical. At 0.3, gentle expression: the difference between pp and ff is a warmth shift. At 0.6, dramatic expression: hard notes crack open, soft notes murmur. At 0.9, violent expression: the filter sweeps across its entire range on every keystroke. D001 declares that velocity must shape timbre. `filterEnvAmt` is how the engine keeps that promise.
+
+**Application:** Every preset must set `filterEnvAmt` deliberately. 0.3–0.5 for pads. 0.5–0.7 for keys and leads. 0.7–0.9 for plucks and percussion. 0.0 only when the preset is intentionally expressionless — a drone, a texture, a machine.
+
+### Psalm II-4: The Filter Mode Is the Instrument's Skeleton
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> Low-pass is not the only filter. It is the default, and the default is the enemy of intention. A band-pass filter at moderate resonance creates the nasal, vocal quality that no amount of low-pass shaping can achieve — the sound of a voice trying to form a vowel. A high-pass filter at 300 Hz removes the body from any sound and leaves only the shimmer — useful for layered pads where the bass lives in another engine. A notch filter creates the phaser's hollow, the quality of something removed rather than something added. In OBLONG, `bob_filterMode` switches between LP/HP/BP/Notch. In OBSCURA, the ladder filter mode shapes the entire character of the daguerreotype. The designer who never changes the filter mode has heard only one skeleton wearing many skins.
+
+**Application:** Before finalizing any preset, audition it in at least two filter modes. The mode you did not choose often teaches you what the chosen mode is actually doing.
+
+### Psalm II-5: The Parallel Filter Is Not Two Filters
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> When two filters run in series, the second refines what the first began — sharper rolloff, narrower band, more controlled. When two filters run in parallel, they disagree — each allows frequencies the other would reject, and the sum contains contradictions. A low-pass at 800 Hz parallel with a high-pass at 2000 Hz creates a notch between 800 and 2000 while passing everything below and above. This is not subtraction. It is the sound of two opinions. In OBRIX, `obrix_fxMode=1` runs all FX in parallel. In OUIE, the two voices can each select different filter algorithms. Parallel processing is not louder serial processing. It is a fundamentally different topology that creates sounds serial chains cannot reach.
+
+**Application:** When a preset sounds too predictable, switch to parallel filter/FX routing. Predictability lives in serial chains. Surprise lives in parallel ones.
 
 ---
 
@@ -41,7 +100,50 @@
 
 ## Book IV: The Coupling Gospels
 
-*(To be filled as coupling retreats reveal cross-engine truths)*
+### Gospel IV-1: The Coupling Is the Third Engine
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> When two engines couple, the result is not Engine A plus Engine B. It is a third entity that neither engine can produce alone. AmpToFilter at 0.4 between OUROBOROS and OPAL does not give you chaos-flavored granular or granular-flavored chaos. It gives you a sound where the chaos's amplitude contour carves the grain cloud's brightness in real time — a timbral shape that exists only in the relationship. The coupling IS the instrument. The designer who thinks of coupling as "adding a second engine" has missed the point. They have created a third.
+
+**Application:** When designing coupled presets, listen to the coupling interaction in isolation: mute Engine A, then mute Engine B, then unmute both. The sound that exists only when both play is the coupling's contribution. If it is inaudible, the coupling amount is too low or the type is wrong. If it overwhelms both engines, the amount is too high. The coupling should be a presence you cannot name but cannot remove.
+
+### Gospel IV-2: The Direction of Coupling Is the Power Dynamic
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> AmpToFilter from A to B means A controls B's brightness. A is the leader; B responds. Reverse the direction and the power inverts — B controls A. These are different instruments. OUROBOROS→OPAL (chaos drives grain brightness) is a texture. OPAL→OUROBOROS (grain density drives chaos response) is a rhythm. The same two engines, the same coupling type, the same amount — but the direction creates opposite characters. Most designers couple A→B because it appears first in the UI. They have never heard B→A. Half of all possible coupled sounds are in the direction the designer never tried.
+
+**Application:** After designing any coupled preset, swap the direction. Save the version you prefer, but hear both. If neither version is clearly better, create two presets — they are different instruments.
+
+### Gospel IV-3: The Whisper and the Shout
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> Coupling at 0.5 is a conversation. Coupling at 0.1 is a secret. The Coupling mood must contain both — presets where the interaction is the headline, and presets where the interaction is the atmosphere. A library of exclusively moderate coupling (0.3–0.6) teaches the producer that coupling is a feature. A library that includes whisper coupling (0.08–0.15) teaches them that coupling is a dimension. The whisper preset sounds like a single engine with an inexplicable quality. The producer cannot find the coupling by ear. They find it by removing Engine B and hearing the magic vanish. This is the most convincing argument for coupling in the fleet.
+
+**Application:** For every three moderate coupling presets, create one whisper preset. The whisper preset demonstrates what the moderate preset explains.
+
+### Gospel IV-4: The Five Coupling Families
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> The 18 coupling types are not 18 independent choices. They are five families:
+>
+> **The Amplitude Family** (AmpToFilter, AmpToPitch, AmpToChoke, VelocityCoupling): One engine's loudness shapes the other's character. These are the most intuitive — louder notes open the partner's filter, shift its pitch, or silence it. The performer understands these without explanation.
+>
+> **The Spectral Family** (AudioToFM, AudioToRing, AudioToWavetable, RingMod): One engine's audio signal becomes the other's raw material. These create timbres impossible with either source alone. They are the most sonically dramatic and the hardest to control. FM coupling above 0.3 is unpredictable; below 0.15 it adds warmth without obvious modulation.
+>
+> **The Envelope Family** (EnvToMorph, EnvToDecay, EnvelopeFollow): One engine's shape drives the other's evolution. These are temporal — they make the coupling time-dependent. A pluck coupled to a pad via EnvToDecay means the pad's character changes with every note the pluck plays.
+>
+> **The Filter Family** (FilterToFilter, LFOToPitch, PitchToPitch): Continuous parameter cross-modulation. These are the subtlest and the most useful for atmospheric coupling. FilterToFilter at 0.1 creates two engines that breathe together without the performer knowing why.
+>
+> **The Exotic Family** (ChaosInject, KnotTopology, TriangularCoupling, RhythmToBlend): Topological and behavioral couplings unique to specific engines. KnotTopology only makes sense with ORBWEAVE. TriangularCoupling requires three engines. ChaosInject requires OUROBOROS as source. These are the fleet's most unique coupling capabilities and the least explored.
+
+**Application:** When building a Coupling mood library, ensure all five families are represented. Most designers default to the Amplitude family. The Spectral and Exotic families contain the fleet's most singular sounds.
+
+### Gospel IV-5: The Triangular Covenant
+*Revealed during Fleet Transcendent Meditation — 2026-04-05*
+
+> TriangularCoupling (#15) is the only coupling type that requires three engines. A modulates B, B modulates C, C modulates A — a closed loop where every engine is both leader and follower. The result is an emergent behavior that no engine controls and no designer fully predicts. At low amounts (0.15–0.25), the three engines develop a shared breathing rhythm. At moderate amounts (0.4–0.6), they lock into oscillating phase relationships. At high amounts (0.7+), the triangle becomes unstable and the system searches for equilibrium it cannot find — this restless searching IS the sound. OXYTOCIN was designed with TriangularCoupling as a first-class parameter. It is the only engine in the fleet that was born knowing it would live in a triangle.
+
+**Application:** Start TriangularCoupling at 0.2. Increase in 0.05 increments and listen for the moment the three engines stop sounding like three engines and start sounding like one organism. That is the coupling amount for the preset.
 
 ---
 
@@ -544,3 +646,539 @@ At `resSens=0.0`, the Kuramoto field dynamics are stable and predictable. At `re
 > The Kalimba in Winter is not the same instrument as the Kalimba in Jungle. It becomes ice chimes: doubled frequency, Q×1.5 ring, brittle brightness. The Cuica in Underwater stops bending and resonates like sonar. The Agogo in Winter grows a third partial at 4.5x. When you choose a floor model, you choose six instruments, not one. When you choose a biome, you choose three of those six. OCELOT is not one synthesizer with a biome setting. It is a taxonomy: 6 models × 3 biomes = 18 distinct physical instruments, all accessible by two parameters.
 
 **Application:** Before designing any OCELOT preset, state explicitly: which model × which biome. "Kalimba in Winter" is a different starting point from "Kalimba in Jungle." Design from the intersection, not from the model alone.
+
+---
+
+### OBRIX — The Coral Reef Verses
+
+#### OBRIX-I: The Brick Type Is the Organism
+*Revealed during Reef Residency Retreat — 2026-04-05*
+
+> The designer who selects `obrix_src1Type` is not selecting a waveform. They are selecting a living organism for their reef slot. Type 0 (Sine) is a solitary polyp — pure, isolated, uncomplex. Type 3 (FM Operator) is a clownfish — darting harmonic activity that depends on the `src1FMRatio` carrier relationship to exist at all. Type 5 (Noise Oscillator) is the symbiosis-ready organism: it is the only brick type that OBRIX's symbiosis ecology recognizes as a food source, driving FM depth on src2 when Symbiote mode is active. The brick type determines what ecological role that oscillator can play, not just what it sounds like.
+
+**Application:** For Symbiote mode (`obrix_reefResident=2`) to activate, `src1Type` must equal 5 (Noise Oscillator). Any other src1Type with Symbiote active produces correct ecology computation but no audible symbiotic enhancement. Always pair Symbiote mode with src1Type=5. For Competitor mode, any brick type works — the ecology reads RMS regardless of type.
+
+#### OBRIX-II: The Harmonic Field Is a Living Tuner
+*Revealed during Reef Residency Retreat — 2026-04-05*
+
+> The Harmonic Field does not add harmonics. It applies an IIR gravitational force to each voice's pitch, pulling it toward the nearest ratio in the active prime-limit table. At `obrix_fieldStrength=0.4` and 5-limit tuning, the reef self-corrects toward just intonation with every rendered sample. The field does not know chord theory; it knows ratios. C–E–G emerges as pure only if the playback frequencies are near enough to 4:5:6 for the attractor to capture them. Notes far from any just ratio experience maximum corrective pull. Notes already in ratio experience no pull. The field reveals the distinction between notes that belong to the harmonic series and notes that are passing through it.
+
+**Application:** `obrix_fieldPolarity=-1.0` inverts the attractor to a repulsor: pitches are pushed *away* from just ratios, creating a perpetual harmonic dissonance engine. Repulsor mode at fieldStrength=0.3 with 7-limit tuning generates tension that no static detuning can achieve — the dissonance is dynamically maintained per-sample, not set once.
+
+#### OBRIX-III: The Stress Accumulator Is a Physical History
+*Revealed during Reef Residency Retreat — 2026-04-05*
+
+> `stressLevel_` is a leaky integrator that accumulates every time a MIDI velocity enters the engine. A velocity of 127 adds approximately 0.9 units. A velocity of 60 adds approximately 0.47. The leaky decay means fast playing at high velocity can sustain a stressLevel_ above 0.5 indefinitely, raising filter cutoff by up to +900 Hz. Slow, gentle playing allows the accumulator to decay toward zero. The coral reef remembers how it has been played. An aggressive performance session leaves the reef physiologically different from a meditative one — and the next note inherits this context. The accumulator persists across notes within a session; `obrix_stateReset=1.0` is the only way to return to the reef's baseline state.
+
+**Application:** Design two preset variants for any high-stress OBRIX patch: one with `stressDecay` at 0.01 (slow recovery — the reef stays stressed) and one at 0.15 (fast recovery — each note is independent). The slow-recovery version responds to performance energy; the fast-recovery version responds to individual note velocity only.
+
+#### OBRIX-IV: The Reef Residency Transforms Coupling Into Ecology
+*Revealed during Reef Residency Retreat — 2026-04-05*
+
+> In every other engine, coupling input is a parameter modulator — an external signal that moves numbers. In OBRIX at `obrix_reefResident ≠ 0`, coupling input is a third ecological organism in the reef. As Competitor, its RMS actively suppresses both src1 and src2 amplitudes — the external organism competes for acoustic resources. As Parasite, every quantum of coupling energy feeds the `stressLevel_` and `bleachLevel_` accumulators: a loud coupling source physically degrades the reef's health over time. As Symbiote, the coupling signal does not modulate a parameter — it changes the FM architecture of src2, creating a synthesis relationship that neither organism could produce alone. The coupling input is not a control signal. It is a species.
+
+**Application:** When routing another engine's output into an OBRIX Symbiote slot, choose the coupling source based on its timbral density, not its pitch. A pitched coupling source with consistent harmonic content (OVERTONE, OPERA) produces a stable symbiotic FM relationship. A chaotic or percussive source (ONSET, OFFERING) produces an unstable symbiosis — which can be exactly right for living, irregular texture.
+
+---
+
+### OXBOW — The Entangled Reverb Verses
+
+#### OXB-I: The Reverb Is the Synthesis
+*Revealed during Chiasmus FDN Retreat — 2026-04-05*
+
+> In every other synthesizer, the reverb is applied after the synthesis is complete. In OXBOW, there is no synthesis before the reverb. The Chiasmus FDN *is* the oscillator. The six delay lines are the six voices. The feedback matrix is the waveshaping stage. Remove the reverb and you remove the sound entirely — there is nothing behind it. This inverts the fundamental architecture of subtractive synthesis. The designer who treats `oxb_roomSize` as a "how much reverb" parameter is using the wrong mental model. `oxb_roomSize` is the fundamental pitch determinant — it sets the delay line lengths, which set the resonant modes, which set the perceived pitch clusters. Room size is not space. Room size is timbre.
+
+**Application:** Treat `oxb_roomSize` as the primary oscillator tuning control. Small rooms (0.1–0.3) produce short delays = high-frequency resonance clusters = bright, pitched attack transients. Large rooms (0.7–1.0) produce long delays = low-frequency resonance clusters = sub-bass shimmer. Design from room size first, then shape with `oxb_entangle` and `oxb_erosion`.
+
+#### OXB-II: Phase Erosion Is Not Decay
+*Revealed during Chiasmus FDN Retreat — 2026-04-05*
+
+> `oxb_erosion` does not accelerate decay. It erodes the phase coherence of the feedback signal, progressively scrambling the phase relationships between the six delay lines without changing their amplitudes. At erosion=0.0, the FDN feedback is phase-coherent — the delay lines reinforce each other's resonances. The timbre is rich and defined. At erosion=0.6, phase relationships drift: the resonances de-correlate, the timbre spreads into a diffuse wash that no longer clusters around specific frequency modes. At erosion=0.9, the six voices have maximally independent phase — the sound is a smooth, frequency-agnostic reverb cloud with no tonal identity. Erosion trades tonal identity for spatial diffusion. It is a timbral dial, not a time dial.
+
+**Application:** `oxb_erosion=0.0–0.25` for pitched, tonal OXBOW synthesis — the resonant modes are audible and musical. `oxb_erosion=0.4–0.65` for textural synthesis — tonal identity dissolves into spatial character. `oxb_erosion=0.8–0.95` for pure spatial synthesis — OXBOW becomes a diffusion engine. The three zones are distinct synthesis personalities. Never design a preset at erosion=0.5 without intention — the midpoint has neither tonal nor spatial character.
+
+#### OXB-III: The Golden Resonance Ratio Is Not Decorative
+*Revealed during Chiasmus FDN Retreat — 2026-04-05*
+
+> The six FDN delay line lengths in OXBOW are seeded by the golden ratio (φ = 1.6180...) to minimize coincident resonances. Two delay lines whose lengths share a common factor will resonate at the same mode and create a spectral peak. The golden ratio guarantees that no two delay lines in the OXBOW matrix share a harmonic factor below the 17th partial. This is not aesthetic — it is acoustic engineering. The result is the most spectrally even reverb tail achievable from six delay lines. `oxb_roomSize` scales all six lengths simultaneously, preserving the φ-spacing. If a future designer attempts to add delay line tuning parameters, they will destroy this property. The golden ratio constraint is inviolable.
+
+**Application:** Trust the FDN tuning. Resist the impulse to manually tune individual delay lines if you ever have access to them. The flatness of OXBOW's spectral decay is a designed property, not a happy accident. When OXBOW sounds "even," this is the golden ratio working. Use `oxb_entangle` to redistribute energy across the FDN matrix — this changes the spectral weight of individual modes without destroying the φ-spacing.
+
+#### OXB-IV: Entangle Is the Chiasmus
+*Revealed during Chiasmus FDN Retreat — 2026-04-05*
+
+> Chiasmus (χιασμός) is the rhetorical figure where two phrases mirror and cross: "you live to work; others work to live." OXBOW's `oxb_entangle` implements the same figure in signal flow. At entangle=0.0, the six delay lines run in parallel — each feeds back into itself. At entangle=1.0, the feedback matrix creates a full crossing: delay line 1 feeds into delay line 6's input, delay line 2 into delay line 5's, creating three crossed pairs. This crossing changes what the FDN resonates. The entangled matrix favors different modes than the isolated matrix. Entangle does not add energy — it redistributes it. The same input produces a different spectral signature. Entangle is a timbral crossfade between two different reverb architectures built from the same six delay lines.
+
+**Application:** For any OXBOW preset, design at entangle=0.0 and entangle=1.0 first, then find the musically correct intermediate value. The two extremes define the engine's range for that room size and erosion setting. The crossfade between them is never linear — map the parameter to mod wheel to let the performer discover the sweet spot in performance.
+
+---
+
+### OWARE — The Tuned Percussion Verses
+
+#### OWR-I: The Mallet Is Not a Trigger
+*Revealed during Akan Percussion Retreat — 2026-04-05*
+
+> A drum machine trigger is a binary event: sound begins at time zero, envelope follows, sound ends. The Chaigne 1997 mallet model in OWARE does not trigger a sound — it initiates a *physical interaction* whose duration, force profile, and contact geometry determine what the struck object becomes. At `owr_contactTime=0.001s` (hard beater), the energy delivery is instantaneous and the struck membrane hears a broadband impulse — bright attack, all partials excited equally. At `owr_contactTime=0.012s` (soft mallet), the energy delivery is spread over 12 milliseconds, low-passing the impulse before it enters the membrane — warm attack, upper partials suppressed. The mallet model is a pre-filter on the physical object, placed before any resonator. The mallet shapes what the material hears, not what the listener hears.
+
+**Application:** For bright attack transients, `owr_contactTime` below 0.003s. For warm, rounded attacks, 0.008–0.015s. For brush articulation, 0.018–0.025s. Design the contact time before designing the material or tuning — the mallet defines the physical question; the material answers it.
+
+#### OWR-II: The Eight Modes Are Eight Tuning Systems
+*Revealed during Akan Percussion Retreat — 2026-04-05*
+
+> Each of OWARE's 8 layout modes does not merely arrange pitches differently — it implements a distinct intonation system derived from a unique combination of harmonic series intervals and sympathetic resonance ratios. Mode 0 (Diatonic) uses 2:1 octave framing with sympathetic strings tuned to 3:2 and 4:3 relationships. Mode 3 (Pentatonic Major) uses 9:8 whole tone spacing with sympathetic strings tuned to 5:4 above each node. Mode 7 (Harmonic Series) places each stone at the next integer partial of the fundamental — pitches 2f, 3f, 4f, 5f, 6f, 7f, 8f — and the sympathetic strings resonate at sub-integer fractions of each partial. No two modes are in the same tuning system. Changing `owr_material` within a mode is changing the material under one tuning system. Changing `owr_material` while also changing mode is changing material *and* tuning system simultaneously.
+
+**Application:** When A/B testing between modes, fix `owr_material` and `owr_mallet` first. Change only `owr_material` within a mode to hear material differences. Change only mode (with material fixed) to hear tuning system differences. Never evaluate a mode by sound alone without knowing the material — the same mode in Wood vs. Metal occupies a different part of the sonic universe.
+
+#### OWR-III: The Sympathetic Network Is Five Ghosts Per Mode
+*Revealed during Akan Percussion Retreat — 2026-04-05*
+
+> Each of OWARE's 8 modes includes a network of 5 sympathetically resonating strings, each with a unique frequency ratio per mode. The sympathetic strings are not struck — they are physically excited by the vibrations of the primary stones through acoustic coupling. When stone 3 (a 5:4 interval above root) vibrates in Mode 0 (Diatonic), sympathetic string 2 (tuned to the 5:4 above stone 3's 5:4, i.e., 25:16 above root) begins to resonate. The sympathetic network creates a harmonic web that no single-stone excitation produces. Across 8 modes, this means 40 unique sympathetic resonance profiles (5 strings × 8 modes) are all accessible within OWARE's parameter space — no two of which produce identical harmonic sustain tails.
+
+**Application:** Raise `owr_sympatheticLevel` to 0.4–0.6 when the preset requires sustain that has harmonic identity (not just duration). The sympathetic strings sustain the *tuning system's* character into the decay phase — the harmonic signature remains present even as the primary stones decay. This is especially valuable for sustained pad-like uses of OWARE.
+
+#### OWR-IV: Buzz Membrane Is a Second Instrument Permanently Attached
+*Revealed during Akan Percussion Retreat — 2026-04-05*
+
+> The buzz membrane in traditional West African percussion is a deliberate acoustic layer — the snare of the kalimba — added to the resonant body to create a sizzling overtone character. OWARE's `owr_buzzAmount` implements this as a physical coupling: above 0.15 (the Guru Bin default), the membrane sympathetically vibrates against the struck stone's overtone series, adding inharmonic energy primarily in the 3–8 kHz range that the membrane's own resonant modes determine. This inharmonic overlay is not addable or subtractable by the filter — it is baked into the physical response. `owr_buzzAmount=0.0` is a clean instrument. `owr_buzzAmount=0.25` is a different instrument with a buzzing membrane physically attached. Design decisions about buzzAmount are instrument selection decisions, not sound design decisions.
+
+**Application:** Decide buzzAmount before designing anything else in an OWARE patch. 0.0 for "clean tuned percussion." 0.15–0.25 for "traditional West African character." 0.4+ for "textural buzz as a dominant timbral element." Do not add buzzAmount at the end of preset design as polish — it changes the fundamental character of the instrument.
+
+---
+
+### OFFERING — The Psychology Verses
+
+#### OFR-I: Curiosity Is a Physical State, Not a Control
+*Revealed during Berlyne Synthesis Retreat — 2026-04-05*
+
+> Berlyne (1960) identified curiosity as a physiological arousal state responsive to stimulus novelty, complexity, and incongruity. OFFERING does not simulate curiosity — it implements it as a DSP variable. `ofr_digCuriosity` maps to a curiosity level that, between 0.3 and 0.7, drives the Wundt curve toward optimal arousal: maximum engagement. Below 0.3, the system is under-stimulated — drum patterns become too regular, novelty collapses, the Wundt variable drops toward zero. Above 0.7, over-stimulation: patterns become too complex, the alien shift emerges as the mathematical consequence of curiosity exceeding the curve's peak. The alien shift above 0.7 is not a feature. It is what happens when a system built on curiosity psychology becomes too curious. The physics of the Berlyne-Wundt implementation forces it.
+
+**Application:** `ofr_digCuriosity=0.3–0.6` is the engine in optimal arousal — engaging drum patterns with controlled novelty. This is the design target for all standard OFFERING presets. `ofr_digCuriosity > 0.7` is explicit alien territory. Use it intentionally, label it in the preset name, and warn the performer that this range produces emergent behavior that the designer did not fully author.
+
+#### OFR-II: The City Is Not a Metaphor
+*Revealed during Berlyne Synthesis Retreat — 2026-04-05*
+
+> The five city processing chains in OFFERING are not named after cities because they are inspirational concepts. They are named after cities because each implements a structurally distinct production aesthetic derived from the specific sonic characteristics of music produced in those cities. New York: noise gate with fast attack (0.5ms), slow release (150ms), and a 60Hz high-pass — the aggressive gating of boom bap. Detroit: feedback saturator at 0.7, 8.3% drunk timing jitter, and a 3kHz presence peak — the organic grit of Motor City soul. Los Angeles: parallel compression with 4:1 ratio and 40% dry blend — the polished punch of West Coast hip-hop. Toronto: sidechain compression from sub-bass with a 2kHz presence dip — the atmospheric weight of Drake-era production. Bay Area: prime-number delay allpass (primes 2, 3, 5, 7, 11, 13 ms) creating a fog of harmonic delay — the psychedelic diffusion of Bay Area hyphy. These are engineering decisions, not cultural references.
+
+**Application:** Choose the city chain based on the desired production aesthetic for the drum context, not based on genre label. Toronto sidechain is correct for any preset where sub-bass presence should dominate over drum transients. Detroit timing jitter is correct for any preset that needs organic feel regardless of geographic association. The cities are processing architectures first.
+
+#### OFR-III: Velocity Enters Psychology Before Physics
+*Revealed during Berlyne Synthesis Retreat — 2026-04-05*
+
+> In a conventional drum synthesizer, velocity scales amplitude. In OFFERING, velocity enters the Berlyne curiosity system *before* amplitude scaling. High velocity increases the novelty-input to the curiosity variable; low velocity decreases it. This means that an aggressive performance session raises the system's psychological arousal level, which changes the drum character — not just the volume — of subsequent hits. A ghost note at velocity 20 does not merely sound quiet; it sounds different because it arrives in a *different curiosity state* than a downbeat hit at velocity 100. The performer's velocity pattern shapes the psychology of the instrument over time. This is OFFERING's version of Doctrine D001: velocity shapes timbre by shaping the psychological state that generates timbre.
+
+**Application:** Perform OFFERING with deliberate velocity dynamics — not just accent patterns, but curiosity management. A sustained run of high-velocity hits will raise system arousal and shift drum character. A recovery sequence of ghost notes will allow curiosity to return to optimal range. Design performance templates that include velocity dynamics as part of the drum pattern itself.
+
+#### OFR-IV: Tom Saturation Is a Cascade, Not a Knob
+*Revealed during Berlyne Synthesis Retreat — 2026-04-05*
+
+> Early OFFERING builds had a double-saturation bug in the Tom synthesis path: the signal passed through the saturator twice, producing tonal distortion that did not match the expected boom bap weight. The fix was not removing saturation — it was ensuring the signal passes through the saturator exactly once. The lesson is not about the bug. It is about the architecture. OFFERING's per-type transient models (Kick/Snare/Hat/Tom/Clap/Rim/Conga/Timbale) each have a distinct signal path — not a shared drum voice with parameter variants, but eight structurally different processing chains. The Conga path has a resonant body filter the Tom does not. The Rim path has a metallic overtone generator the Hat does not. Treating OFFERING as a "drum synth with drum type selection" is technically incorrect. It is eight drum synthesizers sharing a psychological front-end.
+
+**Application:** When auditioning OFFERING drum types for a preset, do not compare them as variations of the same instrument. Evaluate each type on its own architectural terms: what does *this* transient model do well, and what psychological arousal range is it suited for? The Kick and the Conga at the same curiosity level do not produce analogous results — they are different synthesizers.
+
+---
+
+### OXYTOCIN — The Bond Verses
+
+#### OXY-I: Duration Is Synthesis
+*Revealed during TriangularCoupling Retreat — 2026-04-05*
+
+> Before Blessing B040 was ratified, duration was metadata — a side effect of how long a performer held a key. In OXYTOCIN, note duration is a synthesis variable with the same status as pitch, velocity, and modulation. The circuit warmth of the RE-201 accumulates over held note time. The bond depth of the MS-20 partnership deepens with sustained contact. The intimacy level — the Buchla Love Triangle resonance — is zero at note-on and maximum only after 3–5 seconds of sustained sound. A staccato OXYTOCIN performance accesses none of these timbral states. The engine's full character is inaccessible to any playing style shorter than legato. This is not a limitation — it is the design proposition: some timbral states require commitment to reach.
+
+**Application:** All OXYTOCIN presets must be auditioned with sustained notes of 3+ seconds before any design decisions are made. The first 200ms of an OXYTOCIN note is initialization. The first 1.5 seconds is warmup. The character of the preset lives between 2 and 6 seconds of sustained contact. Any preset that sounds complete at 500ms is not using OXYTOCIN — it is using the note-on transient of a warm synthesizer.
+
+#### OXY-II: The Love Triangle Is Not Symmetrical
+*Revealed during TriangularCoupling Retreat — 2026-04-05*
+
+> The TriangularCoupling (#15) at the heart of OXYTOCIN connects three circuit models (RE-201 tape loop, MS-20 patch cable logic, Buchla modular voltage architecture) in a triangle where each leg has a distinct coupling coefficient. The RE-201→MS-20 leg (`oxy_warmthToEdge`) transfers warmth as compression character. The MS-20→Buchla leg (`oxy_edgeToBond`) transfers edge as voltage-controlled resonance. The Buchla→RE-201 leg (`oxy_bondToWarmth`) closes the triangle: intimacy feeds back into warmth, making long notes progressively warmer as the triangle's feedback accumulates. The triangle is asymmetric by design — the coupling direction matters. Reversing any leg does not produce the same result in the opposite direction. The signal flow through the coupling triangle is a narrative, not a neutral topology.
+
+**Application:** When modulating OXYTOCIN coupling parameters, always modulate in the narrative direction: warmth first, then edge, then bond. Modulating `oxy_bondToWarmth` before `oxy_warmthToEdge` is established produces an incomplete triangle — the intimacy has nowhere to feed. Build the coupling loop in order of the narrative: RE-201 warms, MS-20 sharpens, Buchla bonds, Buchla feeds back warmth. This sequence is the instrument.
+
+#### OXY-III: The Intimacy Accumulator Is Session-Local
+*Revealed during TriangularCoupling Retreat — 2026-04-05*
+
+> The intimacy accumulator in OXYTOCIN is a leaky integrator that accumulates from sustained note time and decays when no note is held. Unlike OBRIX's stressLevel_ (which accumulates from velocity), the intimacy accumulator accumulates from *time under bond*. A performer who has been playing a slow, sustained melody for three minutes has built an intimacy level that changes the fundamental character of the instrument compared to a cold start. The Buchla Love Triangle resonance is fuller; the feedback path is warmer; the RE-201 tape saturation settles at a different operating point. A cold performance of the same preset sounds different from a warm one — not due to acoustic memory, but due to the intimacy state's current level. This is OXYTOCIN's implementation of an instrument that knows its player.
+
+**Application:** Design OXYTOCIN presets for two listening contexts: the first-note context (intimacy=0) and the settled context (intimacy approaching maximum after 2+ minutes of playing). Both must be musically valid. The first note should be beautiful; the settled state should be more beautiful. If the first note and the settled state sound identical, `oxy_intimacy` is not contributing.
+
+#### OXY-IV: Circuit Modeling Is Not Emulation
+*Revealed during TriangularCoupling Retreat — 2026-04-05*
+
+> The RE-201, MS-20, Moog, Serge, and Buchla circuits in OXYTOCIN are not emulations — they are character models. An emulation attempts to reproduce every measurable behavior of the original hardware at every operating point. A character model captures the *behavioral signature* of the hardware: the warmth plateau of the RE-201 tape saturation, the aggressive resonance cliff of the MS-20 filter, the voltage-smooth response of the Buchla lowpass gate. OXYTOCIN implements the emotional truth of five instruments, not their transfer functions. When a designer raises `oxy_intimacy`, they are not simulating Buchla's transistor ladder — they are invoking the Buchla's character: smooth, organic, voltage-intimate. The circuits are spiritual models, not electrical ones. This is not a limitation of accuracy; it is a deliberate design philosophy.
+
+**Application:** Do not try to make OXYTOCIN sound exactly like a specific unit of hardware. Instead, ask which character the preset should embody: warmth (RE-201), edge (MS-20), weight (Moog), fluidity (Serge), or intimacy (Buchla). Set the primary character by weighting the corresponding coupling coefficients toward that circuit's dominant axis. The resulting sound will have the spirit of the hardware without being its digital replica.
+
+---
+
+### ORCA — The Hunt Verses
+
+#### ORCA-I: The Pod Is the Instrument
+*Revealed during Apex Predator Retreat — 2026-04-05*
+
+> An individual orca is a singer. A pod of orcas is a synthesizer. ORCA's `orca_huntMacro` does not modulate a single voice — it coordinates all active voices in a predator behavior pattern: the lead hunter closes on the target frequency (rising pitch envelope), the flankers sweep wider than the target (chorus detuning that expands with hunt intensity), and the sentinel holds a stable tone below (sub-voice with pitch locked to fundamental ±2 semitones). A Hunt Macro of 0.0 is a pod at rest: dispersed, independent, each voice following its own trajectory. A Hunt Macro of 1.0 is a pod in active pursuit: coordinated, converging, acoustically aggressive. The macro is not a parameter — it is a behavioral state. The designer is choosing what the pod is doing, not how it sounds.
+
+**Application:** Map `orca_huntMacro` to mod wheel as a performance control, not a preset parameter. Design presets at hunt=0.0 (pod at rest) and verify that hunt=1.0 is also musically valid (pod in pursuit). If the hunt=1.0 state is unmusical, reduce the wavetable aggression or the flank sweep range before touching hunt. The hunt macro should always expand the patch's character, not destroy it.
+
+#### ORCA-II: Echolocation Is Pitch Detection, Not Reverb
+*Revealed during Apex Predator Retreat — 2026-04-05*
+
+> Marine mammals use echolocation to map their environment: emit a pulse, measure the return, infer the geometry of the space. ORCA's echolocation system does the same thing with audio. The engine emits a brief internal test pulse, measures the acoustic properties of the FX chain's response, and uses the delay time and spectral shift of the return to set modulation targets. This is not a reverb algorithm. It is an environmental sensing system. When echolocation depth (`orca_echoDepth`) is high, the engine's modulation parameters respond to the acoustic character of the current FX chain — a short room produces different modulation targets than a long one. The engine is sensing its own sound environment.
+
+**Application:** `orca_echoDepth` is meaningful only when FX processing is active. Bypassing FX with high echoDepth produces flat, unresponsive modulation because there is no environment to sense. Design ORCA presets with the full FX chain active before setting echoDepth. The correct echoDepth value depends on the specific reverb/delay FX in use — it is not a universal setting.
+
+#### ORCA-III: The Breach Is a Once-Per-Note Event
+*Revealed during Apex Predator Retreat — 2026-04-05*
+
+> An orca breach is a single, complete aerial event: full exit from the water, rotation, re-entry. It is not a sustained state. ORCA's breach behavior (`orca_breachTrigger`) operates identically: it fires a single coordinated event at note-on — a rapid pitch rise, a momentary amplitude peak, a brief spectral brightening — that completes in approximately 180–400ms depending on breach speed. After the breach completes, the engine returns to its base state (hunt macro + wavetable position + echolocation). The breach is a gesture, not a mode. Repeated breaches do not stack or accumulate. A note that is held after the breach completes is a different sonic object than the breach itself — the engine has re-entered the water.
+
+**Application:** Use `orca_breachTrigger` on short, high-velocity notes to create a distinct attack transient character that fades into the sustain character. Do not use breach on slow, meditative patches — the gesture is incongruous. The breach is most effective when the post-breach sustain is markedly different from the breach transient: design the note-on event and the sustained tone as two different sounds that happen to share a note.
+
+---
+
+### OCTOPUS — The Distributed Intelligence Verses
+
+#### OCTO-I: Eight Arms Are Not Eight Voices
+*Revealed during Decentralized Mind Retreat — 2026-04-05*
+
+> A voice allocator manages eight independent MIDI channels, each playing one note. OCTOPUS's eight arms are not voices — they are eight autonomous modulation sources running in parallel on a *single note*. Each arm has its own CA rule, its own step rate, its own chromatophore mapping. When a single MIDI note is played, all eight arms activate simultaneously and begin computing independently. The single note is processed through all eight arm contributions: the amplitude modulation of arm 1, the filter modulation of arm 2, the stereo position of arm 3, and so forth. Eight arms are not eight instruments. They are eight nervous system threads controlling a single, unified sound. The sound's behavior is the emergent result of eight independent decision-makers acting on one output.
+
+**Application:** When adjusting arm parameters, listen for the arm's *contribution to the unified sound*, not its isolated output. A change to arm 4's step rate changes the rate of a specific modulation channel on the unified sound — the result is not "arm 4 sounds different" but "the unified sound behaves differently in the dimension arm 4 controls." Adjust one arm at a time and listen for the modulation dimension it governs.
+
+#### OCTO-II: Chromatophore Color Is Not Metaphor
+*Revealed during Decentralized Mind Retreat — 2026-04-05*
+
+> Octopus chromatophores are pigment cells that expand and contract under neural control, producing visible color changes. OCTOPUS's chromatophore system maps each arm's CA output to a timbral dimension using the same biological logic: each chromatophore type controls a distinct "color" of sound. Type 0 (Melanophore) controls darkness — filter cutoff. Type 1 (Xanthophore) controls warmth — harmonic addition in the 1–3 kHz range. Type 2 (Iridophore) controls reflectance — spectral brightness above 5 kHz. Type 3 (Leucophore) controls opacity — wet/dry mix of the arm's contribution. These are not arbitrary assignments. They follow the biological function of each chromatophore type. An octopus producing a dark, warm pattern is contracting its iridophores while expanding its melanophores and xanthophores. OCTOPUS produces sound using the same logic.
+
+**Application:** Assign chromatophore types to arms based on which modulation dimension should be most active for the preset. For dark, warm pads: arms 0–3 as Melanophore (darkness/cutoff), arms 4–5 as Xanthophore (warmth), arms 6–7 as Leucophore (opacity). For bright, reflective leads: majority Iridophore. The distribution of chromatophore types across arms determines the instrument's expressive palette.
+
+#### OCTO-III: The Ink Cloud Topology Defines Exit Strategy
+*Revealed during Decentralized Mind Retreat — 2026-04-05*
+
+> An octopus deploys ink as an escape mechanism — the cloud creates a sensory barrier that allows the animal to retreat. OCTOPUS's `octo_inkCloud` is architecturally identical: it creates an audio-domain smoke screen by adding correlated noise that masks the CA modulation signal, replacing the precise rhythmic modulation of the arms with diffuse tonal noise. This is the engine's built-in exit strategy from complexity. When the combined arm modulation becomes too complex or too chaotic, raising inkCloud blurs the modulation edges while preserving the overall spectral density. At inkCloud=0.8, what was a complex polyrhythmic modulation becomes a smooth, even texture with consistent spectral character. The octopus has escaped its own complexity.
+
+**Application:** `octo_inkCloud` is a complexity management control, not a random texture button. Use it when the combined arm modulation produces too much rhythmic activity for the musical context. The rule: raise inkCloud until the modulation's rhythmic character is inaudible, but the spectral density remains. This is the correct use of ink.
+
+---
+
+### OPENSKY — The Ascension Verses
+
+#### SKY-I: The Supersaw Is Not the Sound
+*Revealed during Shimmer Retreat — 2026-04-05*
+
+> OPENSKY begins with a supersaw oscillator, but a designer who shapes only the supersaw is not using OPENSKY — they are using a detuned saw with an expensive reverb attached. The engine's character lives in the *interaction* between the supersaw's oscillator spread, the Shepard Shimmer reverb's dual-interval taps, and the chorus's modulation depth. At sky_shimmerDepth=0.6 and sky_chorusRate=0.3 Hz, the shimmer reverb's ascending pitch taps align with the chorus's modulation phase approximately every 8 bars, creating a macro-period intensification — a wave of brightness that the designer did not explicitly program. This is the engine's emergent behavior. Designing OPENSKY means designing for the emergent period, not just the individual parameters.
+
+**Application:** After setting supersaw spread and shimmer depth, play a sustained chord for at least 16 bars and listen for the macro-period alignment event. If it does not occur, adjust `sky_chorusRate` until the phase alignment is audible at a musical interval (every 4, 8, or 16 bars). The alignment event is a structural feature of the preset, not a side effect.
+
+#### SKY-II: The Shepard Shimmer Never Arrives
+*Revealed during Shimmer Retreat — 2026-04-05*
+
+> A standard shimmer reverb adds a pitch-shifted copy of the dry signal to the reverb tail. The shimmer has a destination: it rises to a point and stops (or loops discretely). The Shepard Shimmer architecture in OPENSKY uses two pitch-shifted taps at different intervals (typically a perfect fifth and an octave) with crossfades timed to the Shepard paradox: as one tap fades out at the top of its range, a new lower tap fades in. The listener perceives continuous ascent because the ascending fades always outnumber the descending resets. The shimmer never arrives — it perpetually approaches. This is not a trick. It is the perceptual experience of musical hope implemented as DSP. `sky_shimmerDepth` is not "how much shimmer." It is "how present the perpetual ascent is in the mix."
+
+**Application:** At sky_shimmerDepth below 0.3, the Shepard effect is too quiet to perceive — the shimmer sounds like a conventional reverb tail. Above 0.5, the ascending character becomes audible. Above 0.7, it becomes the dominant timbral feature. Design the preset such that the shimmer depth is at least 0.45 — below this, the engine's defining feature is inaudible.
+
+#### SKY-III: The RISE Macro Is a Gesture, Not a Parameter
+*Revealed during Shimmer Retreat — 2026-04-05*
+
+> `sky_macroRise` simultaneously sweeps: pitch envelope attack and depth (the note rises as well as sustains), filter cutoff from its base value toward +3000 Hz, shimmer depth from current value toward 0.95, and unison spread from current value toward maximum. These four movements are not independent — they are choreographed as a single gesture. The designer does not set four parameters to achieve the RISE effect. The designer sets the *base* values of all four (where the gesture starts) and the RISE macro moves all of them toward their targets simultaneously at the same tempo. The macro is a scored choreography with a single fader. Changing any of the four base values changes the *character* of the RISE gesture without needing to change the RISE macro itself.
+
+**Application:** Design the RISE gesture by setting the base values (pre-RISE state) first. The RISE macro always moves toward fixed targets (pitch peak, cutoff max, shimmer max, spread max). The range of the gesture = (target − base). A preset with high base shimmer depth produces a smaller RISE shimmer sweep. Design the base state as the "at rest" character and the RISE target state as the "maximum ecstasy" character. The gap between them is the gesture.
+
+---
+
+### OUIE — The Duophonic Verses
+
+#### OUIE-I: Two Voices Are Not Two Notes
+*Revealed during Hammerhead Synthesis Retreat — 2026-04-05*
+
+> OUIE is duophonic: two synthesis voices active simultaneously. A conventional duophonic synthesizer assigns Voice 1 to the last note pressed and Voice 2 to the previous note. OUIE's two voices are not assigned to *notes* — they are assigned to a *musical interval*. The `ouie_interval` parameter specifies the harmonic distance between Voice 1 and Voice 2 in semitones. Play a single MIDI note, and Voice 1 plays the note; Voice 2 plays the note plus the interval. The interval is a synthesis parameter, not a performance variable. The designer is not playing two notes — they are playing one interval, defined in the patch. Two different MIDI notes played in sequence produce the same interval in both cases. OUIE is an interval synthesizer dressed as a two-voice synthesizer.
+
+**Application:** Treat `ouie_interval` as the primary pitch architecture of the preset. Interval=0 (unison) + HAMMER axis variation produces the engine's thickest, most blended sounds. Interval=7 (perfect fifth) produces the engine's most open, harmonic sounds. Interval=11 (major seventh) produces its most tense, dissonant sounds. Choose the interval before any other parameter. The interval is the identity of the instrument.
+
+#### OUIE-II: The HAMMER Axis Is a Topology, Not a Mix
+*Revealed during Hammerhead Synthesis Retreat — 2026-04-05*
+
+> The HAMMER axis runs from STRIFE (ouie_hammer=-1.0) to LOVE (ouie_hammer=+1.0) with NEUTRAL at 0.0. STRIFE applies hard sync from Voice 1 to Voice 2 and ring modulation between them: the two voices are in harmonic conflict, their waveforms forcing each other into discontinuities and sidebands. LOVE applies harmonic convergence: the two voices' oscillators are mutually attracted toward shared integer ratios, producing a natural chorus-like reinforcement. NEUTRAL runs both algorithms at zero depth simultaneously — they coexist without interacting. This is not a crossfade between two sounds. It is a topological change in the relationship between two voices. STRIFE and LOVE produce incommensurable sonic results. The designer is choosing what kind of relationship the two voices have with each other.
+
+**Application:** Do not design OUIE presets at HAMMER=0.0. The neutral state is acoustically inert — neither algorithm is contributing. Set HAMMER to at least ±0.3 to establish a sonic identity. STRIFE > 0.5 with high-interval values (7+) produces the engine's most aggressive sounds. LOVE > 0.5 with low-interval values (0–4) produces the engine's most cohesive sounds. These are the two poles of OUIE's personality.
+
+#### OUIE-III: Eight Algorithms Are Eight Synthesis Paradigms Per Voice
+*Revealed during Hammerhead Synthesis Retreat — 2026-04-05*
+
+> OUIE offers 8 synthesis algorithms selectable per voice (v1Algo, v2Algo). These are not waveform variants — they are distinct synthesis architectures: 0=Analog VA (polyBLEP oscillator), 1=FM Pair (carrier+modulator), 2=Additive (8 partials), 3=Wavetable (256-frame morphing), 4=Granular (grain cloud), 5=Physical String (Karplus-Strong), 6=Noise Filtered (colored noise source), 7=Wavefolder (wavefolder bank). Two voices each selecting from 8 algorithms produce 64 unique synthesis combinations — 64 distinct instrument architectures, all within a single OUIE patch. Algorithm 0 Voice 1 + Algorithm 5 Voice 2 is a synthesizer playing alongside a physical string model — a combination requiring two separate instruments in any other context. The 64 combinations are 64 different instruments.
+
+**Application:** Before designing any parameter beyond algorithm selection, define the two-algorithm combination as an instrument concept. "Analog VA + Physical String" suggests a specific sonic world before any parameters are set. "FM Pair + Granular" suggests another. Write the algorithm combination concept into the preset name or description. Designers who do not document the algorithm combination will not remember why the preset sounds the way it does.
+
+---
+
+### OCEANDEEP — The Abyssal Verses
+
+#### DEEP-I: Pressure Is the Primary Timbral Axis
+*Revealed during Hydrostatic Retreat — 2026-04-05*
+
+> At the ocean surface, pressure is 1 atmosphere. At 1000 meters depth, pressure is 100 atmospheres. Physical materials behave differently under pressure: air bubbles compress, organs shift, sound travels faster. OCEANDEEP's `deep_macroPressure` implements this physics as DSP. High pressure (0.8–1.0) compresses the dynamic range (Hydrostatic Compressor B029), raises the frequency of biological resonances in the Bioluminescent Exciter (B030), and tightens the Darkness Filter ceiling (B031) toward its 50 Hz floor — the acoustic environment of the deep trench. Low pressure (0.0–0.2) is the surface: uncompressed, bright, no darkness ceiling. The designer is not adjusting a mix — they are choosing the physical depth of the acoustic environment. The same synthesis input sounds categorically different at pressure=0.1 and pressure=0.9 because the physics of the environment determines the physics of the sound.
+
+**Application:** Design all OCEANDEEP presets with `deep_macroPressure` as the first parameter, not the last. The pressure level defines the fundamental acoustic physics of the preset — everything else operates within the constraints pressure establishes. A preset designed at pressure=0.9 should not be expected to sound good at pressure=0.1. The two pressure zones are different instruments.
+
+#### DEEP-II: The Darkness Filter Is a Creative Constraint, Not a Restriction
+*Revealed during Hydrostatic Retreat — 2026-04-05*
+
+> Blessing B031 was ratified unanimously because the Darkness Filter Ceiling (50–800 Hz range) was recognized as an *identity declaration*, not a limitation. Every synthesizer allows the designer to use any frequency range. OCEANDEEP refuses: above 800 Hz, there is darkness. This constraint forces every OCEANDEEP preset to develop its full timbral character within a 4-octave window. The Bioluminescent Exciter's organic textures must express themselves within this window. The synthesis must be compelling without high-frequency shimmer, without harmonic brightness, without treble. What remains is weight, movement, and depth. The darkness ceiling forces the designer to become fluent in the language of sub-bass synthesis.
+
+**Application:** Never try to circumvent the Darkness Filter Ceiling. Do not add post-processing EQ above 800 Hz to OCEANDEEP's output in a preset context. The ceiling is architectural. Work entirely within the 50–800 Hz window and develop presets that are compelling — even exciting — without treble. The constraint is what makes the preset recognizably OCEANDEEP.
+
+#### DEEP-III: The Bioluminescent Exciter Is a Complete Micro-Synthesizer
+*Revealed during Hydrostatic Retreat — 2026-04-05*
+
+> The Bioluminescent Exciter (B030) is not a texture layer. It is a complete synthesis engine operating inside OCEANDEEP. The exciter generates organic alien texture through a combination of: a noise source filtered by a time-varying resonant filter (whose resonant frequency responds to the main oscillator's pitch), a pulse shaper with biologically-inspired timing (irregular intervals following a biological pulse distribution), and a non-linear wavefolder whose fold point tracks the Hydrostatic Compressor's gain reduction. These three components interact: the filter tracks pitch so the bioluminescent texture stays harmonically related to the note; the pulse timing creates organic irregularity; the wavefolder creates harmonic complexity that tracks the acoustic depth. The exciter is not decorative. It is a third oscillator with ecological behavior.
+
+**Application:** At `deep_bioLuminLevel=0.0`, OCEANDEEP loses its biological character and becomes a clean dark synth. At 0.3–0.5, the exciter adds organic presence without dominating. At 0.7+, the exciter becomes the primary timbral contributor and the main oscillator becomes the foundational pitch source. Design presets across all three exciter balance points — each produces a distinct instrument type.
+
+---
+
+### OSMOSIS — The Membrane Verses
+
+#### OSMO-I: The Membrane Is a Living Interface
+*Revealed during Surface Tension Retreat — 2026-04-05*
+
+> Osmosis is the passage of solvent through a semipermeable membrane driven by concentration gradients. The membrane does not force the solvent through — it permits and filters the passage. OSMOSIS's `osmo_permeability` works identically: at high permeability (0.8–1.0), the external audio's full dynamic and spectral character passes into the engine and drives synthesis parameters directly. At low permeability (0.1–0.3), only slow, large-scale changes in the external audio penetrate — fast transients and high-frequency content are blocked. The membrane is not a gate (audio either passes or does not) and not a filter (it does not change the spectral content). It is a selectivity control: which temporal and spectral features of the external audio are permitted to affect the synthesis, and which are held back. The designer is defining the membrane's biology.
+
+**Application:** Set `osmo_permeability` based on the temporal character of the external audio source. For rhythmically dense sources (drums, percussion), use low permeability (0.2–0.35) — let only the envelope dynamics pass. For slowly evolving sources (pads, drones), use high permeability (0.6–0.85) — let the full spectral character drive the synthesis. Matching permeability to source character prevents rhythmic clutter from entering the synthesis.
+
+#### OSMO-II: Pitch Detection Is a Probability, Not a Reading
+*Revealed during Surface Tension Retreat — 2026-04-05*
+
+> OSMOSIS's pitch detection returns not a single frequency value but a confidence-weighted estimate. The engine's pitch-to-synthesis routing uses this estimate directly — but confidence below 0.4 causes the pitch routing to fall back to the last confident reading, rather than updating. This means that for non-pitched or ambiguous audio sources (noise, chords, inharmonic textures), the pitch tracking "freezes" on the last clear pitch detected. The synthesis continues to respond to envelope and spectral changes from the external source, but pitch-driven parameters hold at the frozen value. This is not a bug — it is the correct behavior for pitch detection on real-world audio. The designer should expect frozen pitch routing during noisy or chord-heavy source material and design presets that remain musical during freeze periods.
+
+**Application:** Listen specifically to OSMOSIS's behavior during the source audio's non-pitched sections (noise, chord clusters). The pitch-dependent synthesis parameters should hold gracefully — they should not jump, wander, or produce unmusical intervals during freeze. If they do, reduce the pitch routing amount (`osmo_pitchRouting`) until freeze periods are stable.
+
+#### OSMO-III: The Engine as Coupling Source Inverts the Signal Flow
+*Revealed during Surface Tension Retreat — 2026-04-05*
+
+> All other XOceanus engines receive coupling signals from the MegaCouplingMatrix. OSMOSIS can *originate* coupling signals: the envelope follower output, the pitch confidence level, and the spectral centroid of the external audio can all be routed as coupling sources to other engines in the matrix. This inverts the conventional signal flow. External audio → OSMOSIS envelope follower → MegaCouplingMatrix → ORBITAL brightness → the live room ambience is controlling an additive synthesizer's partial brightness. The OSMOSIS engine is not synthesizing audio — it is acting as a translation layer between acoustic reality and the synthesis environment. In this role, OSMOSIS is the most architecturally unique engine in the fleet: it is a signal converter, not a synthesizer.
+
+**Application:** The most powerful OSMOSIS presets may produce little to no audio output themselves. Their value is as coupling sources for other engines. Configure OSMOSIS with full permeability, appropriate pitch confidence threshold, and route all three outputs (envelope, pitch, centroid) to different coupling targets on receiving engines. The OSMOSIS preset's "sound" is the behavior it causes in the engines it drives.
+
+---
+
+### OUTLOOK — The Horizon Verses
+
+#### LOOK-I: The Horizon Scan Is Not Panning
+*Revealed during Panoramic Vision Retreat — 2026-04-05*
+
+> `look_horizonScan` moves the sound across the stereo field — but it does not pan. Panning preserves the signal and changes its position. Horizon scanning moves the *listening perspective*: as the scan position moves rightward, the right wavetable's spectral character becomes primary, the parallax stereo depth increases (distance cues shift), and the vista filter's resonant frequency rises as if the listener is turning their head toward a brighter soundscape. A full left-to-right scan is not "the sound moving across the stage." It is "the listener turning their head 180 degrees through a panoramic soundscape." The two wavetables define the soundscape at two horizons; the scan parameter determines where the listener is looking. This is a perspective system, not a position system.
+
+**Application:** Design the two wavetable positions as two distinct sonic horizons before setting any other parameter. The left horizon (`look_wt1Pos`) should have a clearly different spectral character from the right horizon (`look_wt2Pos`). If the two horizons sound similar, the scan produces no perspective movement — only position movement. Maximum scan effect requires maximum horizon differentiation.
+
+#### LOOK-II: Parallax Is Depth, Not Width
+*Revealed during Panoramic Vision Retreat — 2026-04-05*
+
+> Parallax is the apparent displacement of an object when seen from two different positions. Close objects show large parallax; distant objects show small parallax. OUTLOOK's parallax stereo system uses this physics: `look_parallaxDepth` controls how much the left and right channels lag in phase relationship based on the horizon scan position. High parallax depth (0.7–1.0) creates a wide, three-dimensional stereo field where near-horizon elements appear close and large; low parallax depth (0.1–0.3) creates a flat, narrow field where all elements are at roughly equal distance. Parallax is not the same as stereo width — it adds depth cues that width alone cannot provide. A mono signal with high parallax depth sounds wider than a stereo signal with zero parallax. The parallax system adds the perceptual cue that the sound has *distance*, not just *position*.
+
+**Application:** Set `look_parallaxDepth` based on the desired spatial intimacy of the preset. Chamber ensemble character: parallaxDepth=0.2–0.35 (close, present, narrow). Concert hall character: 0.5–0.65 (distant, spacious). Open landscape character: 0.7–0.9 (vast, environmental). The parallax setting determines the listener's perceived distance from the sound source, independent of reverb time.
+
+#### LOOK-III: The Vista Filter Responds to Direction
+*Revealed during Panoramic Vision Retreat — 2026-04-05*
+
+> The vista filter in OUTLOOK tracks the horizon scan position: as the scan moves toward the right horizon, the filter's center frequency rises according to the `look_vistaTracking` coefficient. This is the acoustic consequence of direction-dependent soundscapes: the sonic character of the environment changes as the listening angle changes. A forest on the left has darker, more filtered character; an open field on the right has brighter character. The vista filter implements this as a continuously variable filter frequency that is a function of scan position, not of time or modulation. The filter is an environmental property of the soundscape, not a tonal control on the signal. Setting `look_vistaTracking` to zero disables this feature — the filter becomes direction-independent and the environmental simulation collapses.
+
+**Application:** Never set `look_vistaTracking` to 0.0 in a preset intended to use OUTLOOK's panoramic character. Even a small tracking coefficient (0.15–0.25) creates audible horizon-dependent filtering that reinforces the spatial narrative. Maximum tracking (0.8–1.0) makes the filter change dramatic enough that slow horizon scans produce obvious timbral movement — useful for performance presets where the scan is mapped to a controller.
+
+---
+
+### OBIONT — The Cellular Life Verses
+
+#### OBNT-I: The Wolfram Rule Selects the Species
+*Revealed during Cellular Automata Retreat — 2026-04-05*
+
+> The 256 elementary cellular automaton rules are not 256 oscillator waveforms. They are 256 distinct species of one-dimensional life. Each rule defines how a cell's state in the next generation depends on itself and its two neighbors. Rule 30 is an asymmetric, chaotic species — Class III behavior, complex aperiodic patterns. Rule 110 is a universal computing species — Class IV behavior, the most complex sustained patterns. Rule 90 produces additive interference patterns with fractal structure. Rule 150 produces a deterministic pseudo-random sequence. OBIONT selects a rule and then *spatially projects* the CA's pattern across the oscillator's phase axis — not reading the CA as a rhythm, but reading its spatial profile as a waveform shape. The rule selects the *geometry* of the waveform. No two rules produce the same waveform geometry.
+
+**Application:** When selecting `obnt_caRule` for a preset, start from behavioral class, not rule number. Class I rules (e.g., Rule 0, Rule 4, Rule 8): static spatial patterns = static waveform shapes = constant, drone tones. Class II rules (e.g., Rule 6, Rule 18, Rule 54): periodic patterns = repetitive waveform = regular harmonic content. Class III rules (e.g., Rule 30, Rule 45, Rule 86): chaotic patterns = complex, irregular waveform = rich inharmonic content. Class IV rules (Rule 110): complex sustained computation = complex waveform = the richest, most harmonically varied OBIONT timbres. Design targets: Class II for tonal, Class III/IV for complex.
+
+#### OBNT-II: The Cosine Readout Shapes the Waveform's Perceptual Smoothness
+*Revealed during Cellular Automata Retreat — 2026-04-05*
+
+> The CA's binary cell states (0 or 1) are projected onto the oscillator phase axis and then read through a cosine function. This readout choice is not incidental — it is an architectural decision with audible consequences. A direct binary readout would produce maximum harmonic content (binary states generate all odd harmonics up to aliasing). The cosine readout bandlimits this: cells with value 1 contribute a smooth cosine lobe rather than a rectangular function, reducing aliasing and emphasizing the spatial pattern's low-frequency structure over its high-frequency edges. The result is a waveform whose harmonic content is determined by the *density* and *spacing* of live cells in the CA pattern, not by the sharpness of their boundaries. Dense, evenly-spaced cell patterns produce warm, even harmonic content. Sparse, clustered patterns produce hollow, formant-like content.
+
+**Application:** To predict OBIONT's harmonic character, analyze the CA pattern's cell density distribution: dense (>60% alive): warm, full harmonic content. Sparse (<30% alive): hollow, nasal formant character. Clustered (cells in groups): complex, uneven harmonic series. Uniform spacing: even harmonic series with predictable fundamental and overtones.
+
+#### OBNT-III: Anti-Extinction Ensures the Life Continues
+*Revealed during Cellular Automata Retreat — 2026-04-05*
+
+> Some CA rules, under specific initial conditions, converge to a dead state: all cells become 0 and the evolution halts. For OBIONT, a dead CA means a silent oscillator — the cosine readout returns a constant value, and the synthesis output is silence. The anti-extinction system monitors the live cell count and, when it falls below `obnt_extinctionThreshold`, injects a minimal disturbance to prevent total extinction: a single cell is flipped from 0 to 1 at a pseudo-random position. This intervention is physically modeled after extinction resistance in biological populations — a minimum viable population that can restart growth. The intervention is audible as a brief transient in the oscillator waveform — a "breath" of life that restarts the CA evolution. At high extinction thresholds (0.3+), interventions occur frequently and the oscillator has a characteristic irregular breathing quality.
+
+**Application:** `obnt_extinctionThreshold=0.0` disables anti-extinction: rules that naturally die out will produce silence. Use this for intentional silence-as-composition: the CA evolves and dies, and the death is the musical event. `obnt_extinctionThreshold=0.05–0.15` is the standard range — interventions are rare enough to be inaudible in most playing contexts. `obnt_extinctionThreshold > 0.25` creates frequent interventions that become a rhythmic character — the "breathing" of the CA becomes part of the sound design.
+
+---
+
+### OPAL — The Granular Verses
+
+#### OPAL-I: Grain Size Is Temporal Resolution
+*Revealed during Granular Cloud Retreat — 2026-04-05*
+
+> A grain is a window of audio — a brief excerpt from a sample or buffer. The `opal_grainSize` parameter does not control "how small" the grains are in any absolute sense. It controls the *temporal resolution* of the granular analysis: small grains (1–20ms) capture rapid changes in the source material — transients, tonal shifts, consonant attacks. Large grains (80–400ms) capture slow features — sustained tones, reverberant tails, timbral plateaus. Changing grain size changes what aspect of the source material is being microscopically examined and re-synthesized. A very small grain size applied to a bowed string captures the bow scrape and the string's micro-roughness. The same grain size applied to a sustained pad captures near-silence between vibrato cycles. The designer must know what they want to examine before choosing grain size.
+
+**Application:** Set `opal_grainSize` by first deciding what temporal feature of the source you want to emphasize: transient character (5–15ms), tonal body (30–80ms), or sustained plateau (100–400ms). Then adjust grain size to the corresponding range. Do not adjust grain size by listening in isolation — always listen in the context of what the source material contains at that temporal scale.
+
+#### OPAL-II: Scatter Is Not Randomness
+*Revealed during Granular Cloud Retreat — 2026-04-05*
+
+> `opal_scatter` distributes grain onset times around a regular grid. At scatter=0.0, grains fire on a perfectly regular schedule — the granular synthesizer is a deterministic machine. At scatter=0.5, each grain fires within ±50% of its scheduled interval. At scatter=1.0, grain onset is completely random within a one-period window. The critical insight: scatter=0.5 does not produce "50% randomness." It produces a *specific* textural character — grains cluster around the regular grid enough to maintain rhythmic pulse, but deviate enough to produce organic irregularity. This range (0.3–0.6) is where granular synthesis is most alive: not mechanical, not chaotic, but humanly irregular. Scatter outside this range (near 0 or near 1) produces categorically different textures: robotic regularity or statistical noise.
+
+**Application:** Default scatter to 0.4 as the starting point for any OPAL preset. Adjust downward (toward 0.2) for more rhythmic, mechanical character. Adjust upward (toward 0.7) for more organic, breathing character. Reserve scatter > 0.85 for intentional noise-cloud synthesis where grain timing is irrelevant to the sound design goal.
+
+#### OPAL-III: Position Is the Sample's Autobiography
+*Revealed during Granular Cloud Retreat — 2026-04-05*
+
+> `opal_position` determines where in the source buffer grains are drawn from. This seems like a navigation control. It is actually a *biography selector*: every position in a recorded sample contains a different moment in that sample's acoustic history. Position=0.0 is the attack. Position=0.5 is the sustained body. Position=0.95 is the dying tail. Granular synthesis at a fixed position re-synthesizes that moment of the sample's life repeatedly, in parallel, across many grains simultaneously. A piano sample at position=0.02 is all hammer impact; at position=0.15 it is all string resonance; at position=0.8 it is all room decay. `opal_position` does not navigate a file — it selects which moment in the instrument's biography the granular cloud is made from. Modulating position over time is not "scanning the sample" — it is *narrating the sample's life* in real time.
+
+**Application:** Modulate `opal_position` with a slow LFO (0.02–0.08 Hz) to create presets that evolve through the source material's acoustic biography over time. The LFO should traverse a range of at least 0.3 (30% of the buffer) to create audible timbral evolution. Map position to aftertouch for expressive control: light touch holds the attack character, heavy pressure pulls into the body and decay.
+
+---
+
+### ORBITAL — The Additive Verses
+
+#### ORB-I: Partials Are Not Harmonics
+*Revealed during Additive Architecture Retreat — 2026-04-05*
+
+> A harmonic is a partial whose frequency is an integer multiple of the fundamental. Every harmonic is a partial; not every partial is a harmonic. ORBITAL's partial system allows each of its additive components to be freely detuned from integer ratios — each partial has an independent `orb_partial{N}Ratio` multiplier that defaults to its harmonic number but can be set to any value. At ratios 1, 2, 3, 4... the engine produces standard harmonic timbre. At ratios 1, 2.1, 3.7, 4.03... the engine produces inharmonic timbre with a clearly pitched fundamental. The group envelope system (B001) operates on groups of partials — not groups of harmonics. Groups can be defined to contain only the inharmonic partials, leaving the harmonic skeleton untouched. The designer is composing a spectral object in which every component can be either harmonic or inharmonic, independently.
+
+**Application:** Before designing any ORBITAL preset, decide the harmonic/inharmonic ratio: 100% harmonic (bell-like tonal), 100% inharmonic (noise-like), or a specific blend (e.g., harmonics 1–4 + inharmonic partials 5–8 for a hybrid timbre with a clear fundamental and a gritty upper register). Write this decision down before touching any parameters.
+
+#### ORB-II: The Group Envelope System Is Spectral Composition
+*Revealed during Additive Architecture Retreat — 2026-04-05*
+
+> Blessing B001 describes the Group Envelope System as being "crowned by Moog and Smith" — because it allows the temporal evolution of different frequency regions to be independently controlled. ORBITAL's partials are assignable to groups, and each group has its own ADSR envelope. The fundamental partial (group 1) can have a long, sustained envelope. The high partials (group 4) can have a fast attack, short decay, and no sustain. The result is a sound where the fundamental remains while the high partials die away — exactly the behavior of a struck piano string, but applied to any spectral composition. The groups are not mixing bands. They are *temporal layers* of the additive synthesis. Spectral composition in ORBITAL means composing the *time behavior* of each frequency region, not just the frequency content.
+
+**Application:** Design group envelopes before designing individual partial amplitudes. First establish the temporal shape of each spectral region: which frequency regions should attack quickly (groups 3–4), which should sustain (groups 1–2), which should decay slowly (possibly group 1 alone). Then set partial ratios and amplitudes within each group. Building from temporal design outward produces more coherent additive synthesis than the reverse.
+
+#### ORB-III: Brightness Is a Consequence, Not a Parameter
+*Revealed during Additive Architecture Retreat — 2026-04-05*
+
+> `orb_brightness` is a macro that scales the amplitude envelope of partials as a function of their frequency ratio: partials with high ratios are scaled up proportionally, partials with low ratios are scaled down. This is spectrally equivalent to brightening the sound — more high partial energy, less low partial energy. But brightness is a *consequence* of the partial amplitude distribution, not an independent dimension. Setting `orb_brightness=0.8` does not guarantee a bright sound if the partial ratios are all in the 1–3 range. It guarantees that the higher of those low-ratio partials are emphasized relative to the lower ones. The brightness macro is a spectral tilt applied to whatever partial distribution has already been designed. Designing partials first and applying brightness second produces predictable, coherent results. Relying on brightness to create timbral character without designing the partial distribution first produces unpredictable results.
+
+**Application:** Treat `orb_brightness` as a final spectral balance adjustment, not as a primary design parameter. Design the partial ratios and group envelopes first. Then apply brightness to tilt the final spectral balance toward warmth (0.0–0.35) or clarity (0.6–0.9). The same brightness value produces different audible results depending on the partial distribution.
+
+---
+
+### ONSET — The Percussion Verses
+
+#### PERC-I: The Transient Is the Note
+*Revealed during Percussion Architecture Retreat — 2026-04-05*
+
+> In melodic synthesis, the note is the sustained pitch. The transient is the beginning of the note. In percussion synthesis, these roles are inverted: the transient *is* the note. The sustained component (if it exists) is the decay of the note. ONSET was designed with this inversion as its foundation: the noise layer, the click, the impulse response, and the circuit-model transient generator are the primary synthesis components. The sustained pitch component is secondary — it provides identity (pitch-center) but not character. The character of an ONSET sound is determined by the first 40–200 milliseconds. Everything after that is envelope decay. This means that parameter editing of ONSET should prioritize the attack architecture first, the sustain character second, and the release last.
+
+**Application:** Audition ONSET sounds with `perc_attackTime` at minimum (0.001s) and listen to the first 100ms. This is the essential character of the preset. If those 100ms are not compelling, the preset will not become compelling by adding sustain or modulation. Fix the attack architecture first — noise level, click depth, impulse model selection — before any other parameter.
+
+#### PERC-II: XVC Cross-Voice Coupling Is Ecological Percussion
+*Revealed during Percussion Architecture Retreat — 2026-04-05*
+
+> Blessing B002 identifies XVC (Cross-Voice Coupling) as "all 8 ghosts, 3–5 years ahead." The XVC system in ONSET creates acoustic coupling between simultaneously active voices: when voice 1 fires a transient, it injects a proportional excitation into all currently decaying voices' synthesis chains. This mirrors the acoustic reality of a physical drum kit: the bass drum's low-frequency thump excites the snare's sympathetic rattle; the hi-hat's sizzle is amplitude-modulated by the kick's airwave. XVC is not reverb (which models room reflections) or convolution (which models a static impulse response). It is *inter-voice acoustic coupling* — each active voice affects all other active voices through their synthesis chains. The result is ecological percussion: a kit that responds to itself the way a physical kit responds to itself.
+
+**Application:** Enable XVC coupling (`perc_xvcAmount > 0.0`) before finalizing any ONSET kit preset. Set xvcAmount=0.2–0.4 for subtle acoustic glue between voices. Set xvcAmount=0.5–0.7 for pronounced sympathetic coupling character. Listen specifically to what happens when the kick and snare fire together — the snare should gain sympathetic energy from the kick's low-frequency excitation. If it does not, increase xvcAmount.
+
+#### PERC-III: The Dual-Layer Architecture Is Two Complete Instruments
+*Revealed during Percussion Architecture Retreat — 2026-04-05*
+
+> Blessing B006 describes ONSET's dual-layer architecture as a "Circuit + Algorithm crossfade." The Circuit layer (analog circuit model) and the Algorithm layer (digital algorithm synthesis) are not partial complements that add up to one complete percussion sound. Each layer is a complete, fully-functional percussion synthesis engine. Layer A at 1.0 + Layer B at 0.0 is a complete analog percussion synthesizer. Layer A at 0.0 + Layer B at 1.0 is a complete algorithm percussion synthesizer. The crossfade between them is a blend between two complete instruments — not a balance between complementary components of a single instrument. This architectural reality means that `perc_layerBlend` is an instrument selection axis: 0.0 is one instrument, 1.0 is a different instrument, 0.5 is a specific hybrid of two complete instruments.
+
+**Application:** Design ONSET presets at the extremes first (layerBlend=0.0 and layerBlend=1.0) before finding the optimal hybrid. If both extremes produce compelling sounds, the blend range is worth exploring. If one extreme produces an uninteresting sound, the blend space is limited. The best ONSET presets have strong characters at both extremes and a compelling hybrid in the 0.3–0.7 range.
+
+---
+
+### OBSIDIAN — The Crystal Verses
+
+#### OBSIDIAN-I: Crystalline Structure Is a Tuning System
+*Revealed during Crystal Resonance Retreat — 2026-04-05*
+
+> Obsidian is volcanic glass: atoms arranged with short-range order but no long-range crystalline periodicity. OBSIDIAN models this structural reality in its synthesis: `obsidian_depth` controls the density of the structural complexity — at low depth (0.0–0.3), the resonant modes are sparse and clearly pitched (like a simple crystal), at high depth (0.7–1.0), the mode density approaches the glassy state: many closely spaced modes producing a diffuse, non-pitched resonance characteristic of amorphous materials. The physical model is not metaphorical — the resonant mode positions in OBSIDIAN are derived from the same math used to describe phonon density of states in amorphous solids. Depth is a physical parameter. The designer is choosing the crystallographic state of the material, not an abstract tonal quality.
+
+**Application:** `obsidian_depth=0.0–0.2` for pitched, tonal crystal synthesis — clear resonant modes, bell-like character. `obsidian_depth=0.4–0.6` for hybrid amorphous synthesis — mixed tonal and diffuse character. `obsidian_depth=0.8–1.0` for fully glassy synthesis — dense mode distribution, noise-like resonance with no clear pitch center. Design from material state first, then adjust amplitude and envelope.
+
+#### OBSIDIAN-II: White Is Not Bright
+*Revealed during Crystal Resonance Retreat — 2026-04-05*
+
+> OBSIDIAN's accent color is Crystal White `#E8E0D8` — not pure white, but warm white, the color of volcanic glass with its characteristic iron and magnesium mineral inclusions. This color defines the sonic identity: OBSIDIAN is not bright. It is translucent. The engine's filter structure emphasizes the mid-frequency resonant content of the crystal model while the high-frequency content is attenuated by the material's natural acoustic absorption. A bright synthesizer is air and shimmer. OBSIDIAN is material and depth. The designer working with OBSIDIAN should resist the impulse to open the filter fully — the engine's character lives in the 500 Hz–4 kHz range where crystal resonances dominate. Above 6 kHz, OBSIDIAN's character disappears.
+
+**Application:** Keep OBSIDIAN's filter cutoff in the 1500–5000 Hz range for the engine's characteristic sound. Opening to 10 kHz+ dilutes the crystal character with uncharacteristic brightness. If a preset requires high-frequency shimmer, it should come from the FX chain (shimmer reverb, chorus), not from the OBSIDIAN filter. The engine itself is mid-focused.
+
+#### OBSIDIAN-III: Depth Plus Resonance Creates Spectral Density
+*Revealed during Crystal Resonance Retreat — 2026-04-05*
+
+> `obsidian_depth` controls mode density. OBSIDIAN's filter resonance (`obsidian_resonance`) controls how strongly each mode rings. At high depth + high resonance, many modes ring strongly simultaneously — the acoustic equivalent of a highly resonant amorphous solid under excitation. This combination produces OBSIDIAN's most complex timbral state: a dense spectral object where individual resonances are perceptible but numerous, creating a shimmering, layered sound that continuously changes as modes decay at different rates. At low depth + high resonance, a few modes ring strongly — a simple but pronounced tonal character. At high depth + low resonance, many modes ring weakly — a diffuse, washy texture. The two parameters define the quadrant of OBSIDIAN's spectral personality.
+
+**Application:** For preset design orientation: map depth (horizontal axis) × resonance (vertical axis) as a 2D design space. Top-right (high depth + high resonance) = complex layered crystal. Bottom-right (high depth + low resonance) = glass wash. Top-left (low depth + high resonance) = clear bell. Bottom-left (low depth + low resonance) = clean, neutral. Know which quadrant you are designing for before adjusting either parameter.
+
+---
+
+### ORIGAMI — The Fold Verses
+
+#### ORIGAMI-I: The Fold Point Is the Crease Location
+*Revealed during Geometric Waveshaping Retreat — 2026-04-05*
+
+> When paper is folded, the crease location determines the geometry of the resulting shape — the same sheet, folded at different positions, becomes different objects. ORIGAMI's `origami_foldPoint` is the crease location applied to the waveform. At foldPoint=0.5 (midpoint), the waveform folds symmetrically — even harmonics cancel, odd harmonics are doubled, producing the same spectral result as a full-wave rectifier. At foldPoint=0.25, the fold is asymmetric: the portion below 0.25 is reflected upward, creating a fundamentally asymmetric waveform with a full harmonic series. At foldPoint=0.0 or 1.0, there is no fold — the waveform passes through unchanged. The fold point determines where in the waveform's amplitude range the geometric reflection occurs. Each fold point position creates a geometrically distinct waveform — a different paper crane.
+
+**Application:** For even-harmonic richness (warm, full harmonic content): foldPoint = 0.3–0.45 or 0.55–0.7 (asymmetric folds). For odd-harmonic emphasis (hollow, nasal character): foldPoint = 0.5 (symmetric fold). For maximum fold complexity: modulate foldPoint with an LFO in the 0.2–0.8 range — the moving crease creates continuously changing harmonic content.
+
+#### ORIGAMI-II: Multiple Folds Are Multiple Creases
+*Revealed during Geometric Waveshaping Retreat — 2026-04-05*
+
+> Paper can be folded more than once. Each fold adds a new crease and creates a new geometric complexity. ORIGAMI's `origami_foldCount` specifies the number of sequential folds applied to the waveform. One fold applies a single reflection at foldPoint. Two folds apply the first reflection, then reflect the result at the same fold point. Three folds apply the process three times. Each application multiplies the harmonic content: one fold produces a moderately rich spectrum; three folds produce an extremely harmonically dense waveform; five folds produce a spectrum so harmonically rich it approaches noise. The fold count is an exponential harmonic-richness multiplier. The relationship between fold count and harmonic density is not linear — it is recursive.
+
+**Application:** `origami_foldCount=1` for controlled, musical harmonic content. `origami_foldCount=2–3` for rich, complex spectra suitable for lead sounds and evolving pads. `origami_foldCount=4+` for maximally complex waveshaping that approaches synthesis noise. Never use foldCount=4+ with high resonance — the spectral density + resonance combination produces aliasing artifacts in most sample rate contexts. If high fold count is required, oversample by 2x minimum.
+
+#### ORIGAMI-III: Fold and Filter Form a Dialogue
+*Revealed during Geometric Waveshaping Retreat — 2026-04-05*
+
+> Waveshaping generates harmonics; filtering removes them. In most synthesizers, this is a one-way conversation: the oscillator makes harmonics, the filter selects which ones to keep. In ORIGAMI, the fold point is dependent on the filter's current resonance frequency: as resonance increases, the perceived fold point shifts toward emphasizing harmonics in the resonant frequency's neighborhood. This creates a dialogue: the fold shapes the spectrum, the resonant filter emphasizes part of that spectrum, and the emphasized spectrum feeds back into the fold's audible character. The fold and filter are not independent. Raising resonance does not merely select harmonics — it changes which harmonics the fold is generating most prominently. This feedback loop is ORIGAMI's most distinctive timbral property.
+
+**Application:** Always adjust `origami_foldPoint` and filter cutoff together, not independently. The fold point's audible effect is filter-dependent. Set the filter cutoff to the target resonance frequency first, then sweep foldPoint to find the position that most prominently excites the resonant region. The result will be a harmonically rich output where the fold and filter are aligned — feeding each other's character.
+
+---
+
+### ORPHICA — The String Verses
+
+#### ORPH-I: The Body Resonance Is the Room
+*Revealed during Ancient String Retreat — 2026-04-05*
+
+> Every stringed instrument exists inside a resonating body — a lute's pear-shaped bowl, a sitar's gourd, a guitar's spruce top. The body does not amplify the string evenly: it has resonant modes that color specific frequency regions, absorb others, and create the characteristic "voice" of the instrument. ORPHICA's `orph_bodyResonFreq` sets the center frequency of the body's primary resonant mode. This is not an EQ parameter. It defines the physical character of the instrument's body: a frequency of 500 Hz produces a warm, mid-forward body (wooden hollow body). A frequency of 1800 Hz produces a bright, nasal body (smaller chamber). A frequency of 280 Hz produces a deep, bass-forward body (large gourd). The body resonance frequency is the instrument luthier's choice, implemented as a parameter.
+
+**Application:** Set `orph_bodyResonFreq` based on the size and material of the imagined instrument body: large wooden body = 200–400 Hz. Medium hollow body = 400–800 Hz. Small resonator body = 800–1600 Hz. Metallic body = 1200–2400 Hz. The body resonance frequency should be set before any other parameter, because it defines the acoustic world the string lives in.
+
+#### ORPH-II: Velocity Determines What Strikes the String
+*Revealed during Ancient String Retreat — 2026-04-05*
+
+> Physical string instruments respond differently to different excitation forces — a hard pluck sounds different from a gentle pluck not merely because it is louder, but because the string's initial displacement curve is steeper, exciting more high harmonics. ORPHICA's velocity-to-body-frequency wiring implements this physics: high velocity raises the body resonance frequency (`orph_bodyResonFreq`) by up to +400 Hz at maximum velocity. A hard pluck (velocity 127) excites a brighter body resonance than a gentle touch (velocity 30). This is physically correct: a hard pluck transfers more high-frequency energy to the body, exciting higher resonant modes. The velocity-to-body-frequency relationship is not a tone control — it is the acoustic consequence of excitation force. The string tells the body how hard it was struck, and the body responds accordingly.
+
+**Application:** Do not disable velocity-to-body-frequency routing. This is ORPHICA's primary velocity sensitivity implementation — it satisfies Doctrine D001 (Velocity Must Shape Timbre) at the physical-model level. If a preset requires velocity-insensitive character, reduce the routing amount (`orph_velBodyAmount`) to 0.1–0.2 rather than zero — even small velocity responsiveness maintains the physical model's authenticity.
+
+#### ORPH-III: Pluck Brightness Decays at the String's Own Rate
+*Revealed during Ancient String Retreat — 2026-04-05*
+
+> `orph_pluckBrightness` sets the initial harmonic content of the pluck excitation — how bright the string is at the moment of excitation. But a plucked string does not maintain its initial brightness: the high harmonics decay faster than the low harmonics, creating the characteristic brightness-to-warmth evolution of plucked string sound. ORPHICA models this decay: high harmonics have exponential decay time constants 3–5x shorter than low harmonics. The `orph_pluckBrightness` parameter controls the starting point of this evolution, not the sustained character. A high brightness setting produces a pluck that begins bright and decays to warmth. A low brightness setting produces a pluck that begins warm and stays warm. The decay is governed by the string physics — it is not adjustable except by changing the virtual string material.
+
+**Application:** When a preset requires sustained brightness (lead sound), resist the impulse to compensate with EQ or filter. Instead, add slight saturation or waveshaping post-ORPHICA: harmonics generated by saturation do not decay at the string's physical rate. Alternatively, use a short grain sample of the initial pluck bright transient layered via OPAL beneath the sustained ORPHICA tone. Pure ORPHICA will always evolve toward warmth — the physics mandate it.
+
+---
+
+### OBLIQUE — The Prism Verses
+
+#### OBLQ-I: The Prism Color Is a Spectral Angle
+*Revealed during Prismatic Bounce Retreat — 2026-04-05*
+
+> When white light passes through a prism, it separates into constituent wavelengths based on the refractive index of the glass at each wavelength. `oblq_prismColor` is the angular rotation of OBLIQUE's spectral prism: the angle determines which portion of the frequency spectrum is "refracted" most strongly into the bounce delay network. At prismColor=0.0, the low frequencies (red spectrum) dominate the delay taps — the bounce emphasizes bass resonances. At prismColor=0.5, the mid frequencies dominate. At prismColor=1.0, the high frequencies (violet spectrum) dominate the delay taps — the bounce emphasizes treble reflections. The prism color does not add or remove frequency content. It determines which frequencies are *most actively reflected* by the bounce network. The same input sound at three prism angles produces three spectrally weighted delay characters.
+
+**Application:** Choose `oblq_prismColor` based on the frequency region you want the bounce network to activate most strongly. For bass-forward bounce (sub and kick reinforcement): prismColor=0.0–0.2. For mid-present bounce (vocal and instrument warmth): prismColor=0.4–0.6. For bright, airy bounce (shimmer and high-frequency detail): prismColor=0.75–1.0. Match the prism color to the dominant spectral content of the source material being bounced.
+
+#### OBLQ-II: Bounce Reflections Are Not Echo
+*Revealed during Prismatic Bounce Retreat — 2026-04-05*
+
+> Echo is a copy of a signal delayed in time. Bounce reflections in OBLIQUE are *spectral transformations* of the signal propagated forward in time. Each reflection is not a copy — it is the previous reflection's signal passed through the prism's spectral tilt, the bounce surface's absorption character, and the delay line's dispersion. By the third reflection, the signal has been spectrally transformed three times. A pure sine wave bounced three times at prismColor=0.7 produces a third reflection that is significantly brighter and harmonically enriched compared to the original. The bounce network is a recursive spectral transformer whose output is the accumulated result of all previous transformations. This is why OBLIQUE produces sounds that have no obvious relationship to their input material — after 4–6 reflections, the origin is spectrally unrecognizable.
+
+**Application:** Use the `oblq_bounceCount` parameter deliberately. Preset the number of reflections before adjusting other parameters — fewer reflections (2–3) preserve more of the original material's character. More reflections (5–8) transform the material beyond recognition. Design targets: 2 reflections for "enhanced source character." 4 reflections for "transformation with source DNA." 6+ reflections for "new material derived from source."
+
+#### OBLQ-III: The RTJ × Funk × Tame Impala Axis Is Real
+*Revealed during Prismatic Bounce Retreat — 2026-04-05*
+
+> OBLIQUE's design brief described a three-way sonic axis: Run the Jewels (RTJ, aggressive hip-hop energy), Funk (groove-first, bass-driven rhythmic identity), Tame Impala (psychedelic shimmer, chorus-heavy). This axis is implemented in the engine's three preset character zones, not as genre labels but as distinct parameter configurations. RTJ zone: high bounce aggression, prismColor in the low range (bass-weighted), fast bounce timing (tight rhythmic reflections). Funk zone: moderate aggression, prismColor centered (mid-weighted), bounce timing locked to rhythmic subdivision. Tame Impala zone: low aggression, prismColor high (shimmer-weighted), slow chorus-rate modulation on the bounce. These three zones are the engine's three primary sonic personalities. Every OBLIQUE preset lives somewhere on this triangular axis.
+
+**Application:** Before designing any OBLIQUE preset, locate it on the RTJ/Funk/Tame Impala triangle: pure RTJ (bass, aggressive, tight), pure Funk (mid, groovy, rhythmic), pure Tame Impala (shimmer, psychedelic, spacious), or a specific blend. Write the triangle position into the preset description. Presets without explicit triangle positioning drift toward an indeterminate mid-range that serves none of the three characters.
+
