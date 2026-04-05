@@ -40,11 +40,13 @@ from xml.etree.ElementTree import Element, SubElement, indent, tostring
 # Velocity layers — Vibe's canonical curve
 # ---------------------------------------------------------------------------
 
+# Ghost Council Modified zones (QDD Level 2, adopted 2026-04-04).
+# Replaces old even-split [pp:1-31, mp:32-63, mf:64-95, ff:96-127].
 VIBE_VELOCITY_LAYERS = [
-    (1,  31,  "pp"),
-    (32, 63,  "mp"),
-    (64, 95,  "mf"),
-    (96, 127, "ff"),
+    (1,  20,  "ghost"),   # vel  1-20  — below pad threshold, ghost notes
+    (21, 55,  "light"),   # vel 21-55  — finger drumming sweet spot
+    (56, 90,  "medium"),  # vel 56-90  — deliberate hits
+    (91, 127, "hard"),    # vel 91-127 — power hits, peak force
 ]
 
 # ---------------------------------------------------------------------------
@@ -94,8 +96,8 @@ TEMPLATE_META = {
     "velocity_drum_kit": {
         "title": "Velocity Drum Kit",
         "summary": (
-            "8 drum sounds × 4 velocity layers using Vibe's canonical curve "
-            "(pp: 1-31, mp: 32-63, mf: 64-95, ff: 96-127). 32 keygroups total."
+            "8 drum sounds × 4 velocity layers using Ghost Council Modified zones "
+            "(ghost: 1-20, light: 21-55, medium: 56-90, hard: 91-127). 32 keygroups total."
         ),
         "pads": 8,
         "keygroups": 32,
@@ -103,8 +105,8 @@ TEMPLATE_META = {
         "key_track": False,
         "use_case": "Expressive drum kits where velocity drives timbre, not just volume.",
         "samples_needed": (
-            "Provide samples grouped by sound then layer: kick_pp.wav kick_mp.wav "
-            "kick_mf.wav kick_ff.wav snare_pp.wav ... (32 files total, 4 per sound). "
+            "Provide samples grouped by sound then layer: kick_ghost.wav kick_light.wav "
+            "kick_medium.wav kick_hard.wav snare_ghost.wav ... (32 files total, 4 per sound). "
             "Or provide 8 files to use the same sample across all layers."
         ),
     },
@@ -382,7 +384,7 @@ def cmd_describe(template: str) -> None:
     print(f"  Use case : {meta['use_case']}")
     print(f"  Samples  : {meta['samples_needed']}")
     if template == "velocity_drum_kit":
-        print("\n  Vibe's canonical velocity curve:")
+        print("\n  Ghost Council Modified velocity curve (adopted 2026-04-04):")
         for v_start, v_end, label in VIBE_VELOCITY_LAYERS:
             print(f"    Layer {VIBE_VELOCITY_LAYERS.index((v_start, v_end, label)) + 1}:"
                   f"  vel {v_start:>3}–{v_end:<3}  ({label})")

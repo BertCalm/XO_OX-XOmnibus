@@ -40,7 +40,7 @@ import sys
 # Length = num_layers + 1; first value always 1, last always 127
 # ---------------------------------------------------------------------------
 PRESETS = {
-    "vibe":     [1, 40, 90, 110, 127],   # Vibe's musical curve (default)
+    "vibe":     [1, 20, 55, 90, 127],    # Ghost Council Modified zones (QDD Level 2, 2026-04-04)
     "linear":   [1, 32, 64, 96, 127],    # Evenly spaced (approx)
     "soft-top": [1, 60, 100, 115, 127],  # More range at soft end
     "hard-top": [1, 30, 70, 100, 127],   # More range at loud end

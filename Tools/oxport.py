@@ -221,6 +221,13 @@ STAGE_DESCRIPTIONS = {
 
 # Artwork/Color collection engine keys — complement_chain stage is active only for these.
 # This set is the canonical gating check; the full database lives in xpn_complement_renderer.py.
+#
+# IMPORTANT: NONE of these 24 engines exist in engine_registry.py or as Source/Engines/
+# directories yet.  They are PLANNED future engines for the Artwork/Color Collection.
+# Invoking the pipeline with any of these names will produce no preset output because
+# no .xometa files or WAV renders exist for them.  The complement_chain stage is the
+# only stage that legitimately references these names.  All other pipeline stages will
+# silently produce empty output for Artwork engine names — issue #823.
 ARTWORK_ENGINES = {
     "XOxblood", "XOnyx", "XOchre", "XOrchid",
     "XOttanio", "XOmaomao", "XOstrum", "XOni",
@@ -1691,6 +1698,16 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
         print(f"  Skipping:   {', '.join(sorted(skip_stages))}")
     print()
 
+    # Guard: Artwork/Color Collection engines are planned but not yet built.
+    # They have no registered presets, no engine directory, and no WAV renders.
+    # Running the full pipeline for one will silently produce empty output — issue #823.
+    if ctx.engine in ARTWORK_ENGINES:
+        print(f"  [WARN] '{ctx.engine}' is an Artwork/Color Collection engine that does not")
+        print(f"         yet exist in engine_registry or as a Source/Engines/ directory.")
+        print(f"         Only the complement_chain stage is meaningful for this engine.")
+        print(f"         All other stages will produce no output (no presets, no WAVs).")
+        print()
+
     ctx.ensure_dirs()
 
     # Provenance chain — tracks artifact hashes at each stage
@@ -2817,6 +2834,7 @@ def cmd_build(args) -> int:
     # Profile loading
     profile_id = spec.get("profile")
     profile = None
+    profile_velocity_curve: str | None = None  # issue #825 — "hot", "gentle", "musical", etc.
     if profile_id:
         profile_path = REPO_ROOT / "profiles" / f"{profile_id}.yaml"
         if profile_path.exists():
@@ -2832,6 +2850,22 @@ def cmd_build(args) -> int:
                 print(f"  [WARN] Profile load failed: {e}")
         else:
             print(f"  [WARN] Profile not found: {profile_path}")
+
+    # Extract and validate profile velocity_curve (issue #825).
+    # The curve name overrides per-instrument DNA sculpting when the DNA sculpting
+    # stage runs.  Valid names are any key in xpn_adaptive_velocity.VELOCITY_CURVES
+    # plus the standard musical curve aliases.
+    if profile and isinstance(profile.get("genotype"), dict):
+        _raw_vel_curve = profile["genotype"].get("velocity_curve")
+        if _raw_vel_curve:
+            _KNOWN_PROFILE_CURVES = {"hot", "gentle", "musical", "kick", "snare",
+                                     "hihat", "cymbal", "pad", "atmosphere", "lead",
+                                     "melodic", "bass", "perc", "fx", "unknown"}
+            if _raw_vel_curve in _KNOWN_PROFILE_CURVES:
+                profile_velocity_curve = _raw_vel_curve
+                print(f"  [Profile] velocity_curve override: {profile_velocity_curve!r}")
+            else:
+                print(f"  [WARN] Profile velocity_curve {_raw_vel_curve!r} is not a known curve — ignored")
 
     total_samples = pad_count * 4 * velocity_layers  # pads * corners * vel layers
     stages_run = 0
@@ -2876,6 +2910,8 @@ def cmd_build(args) -> int:
             if dna:
                 centers = {k: v.get("center", "?") for k, v in dna.items() if isinstance(v, dict)}
                 print(f"         DNA center: {centers}")
+            if profile_velocity_curve:
+                print(f"         Velocity curve: {profile_velocity_curve!r}")
     if args.dry_run:
         print(f"         [OK] Parsed {oxbuild_path}")
     stages_run += 1
@@ -3452,15 +3488,14 @@ def cmd_build(args) -> int:
         stages_skipped += 1
 
     # ── STAGE 5: FALLBACK ──
+    # NOT YET IMPLEMENTED — issue #819.
+    # This stage is intended to produce a standard (non-MPCe) velocity-layered XPM
+    # by calling xpn_drum_export.py --mode smart. The integration is not yet written.
+    # It is skipped in all modes (including dry_run) so the build log stays accurate.
     if "fallback" not in skip and include_standard:
-        print(f"  [5/10] FALLBACK     Standard XPM (velocity-layered, non-MPCe)")
-        if args.dry_run:
-            print(f"         → Would call: xpn_drum_export.py --mode smart")
-            stages_run += 1
-            _update_build_log(log_path, "fallback")
-        else:
-            print(f"  [5/10] FALLBACK     [SKIP] Standard XPM fallback not yet implemented")
-            stages_skipped += 1
+        print(f"  [5/10] FALLBACK     [NOT IMPLEMENTED] Standard XPM fallback is not yet implemented")
+        print(f"         Skipping — set skip: [fallback] in .oxbuild to suppress this warning")
+        stages_skipped += 1
     else:
         print(f"  [5/10] FALLBACK     SKIPPED")
         stages_skipped += 1

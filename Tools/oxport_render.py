@@ -1195,7 +1195,7 @@ Render spec JSON format:
   {
     "defaults": {
       "notes": [60],
-      "velocities": [20, 50, 90, 127],
+      "velocities": [10, 38, 73, 109],
       "duration_ms": 3000,
       "release_tail_ms": 500
     },
@@ -1206,7 +1206,7 @@ Render spec JSON format:
         "program": 0,
         "channel": 0,
         "notes": [48, 60, 72],
-        "velocities": [20, 50, 90, 127]
+        "velocities": [10, 38, 73, 109]
       }
     ]
   }

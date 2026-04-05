@@ -41,17 +41,19 @@ export interface CycleLayerResult {
 // Velocity tier definitions for the 4-tier x 2-RR layout
 // ---------------------------------------------------------------------------
 
+// Ghost Council Modified zones (QDD Level 2, adopted 2026-04-04).
+// Mirrors Tools/xpn-spec.json and xpn_velocity_standard.py exactly.
 export const VELOCITY_TIERS = [
-  { name: 'Ghost', range: [0, 31] as const, volumeScale: 0.45, filterScale: 0.5 },
-  { name: 'Soft', range: [32, 63] as const, volumeScale: 0.65, filterScale: 0.7 },
-  { name: 'Medium', range: [64, 95] as const, volumeScale: 0.85, filterScale: 0.9 },
-  { name: 'Hard', range: [96, 127] as const, volumeScale: 1.0, filterScale: 1.0 },
+  { name: 'Ghost',  range: [1,  20] as const, volumeScale: 0.30, filterScale: 0.5 },
+  { name: 'Light',  range: [21, 55] as const, volumeScale: 0.55, filterScale: 0.7 },
+  { name: 'Medium', range: [56, 90] as const, volumeScale: 0.75, filterScale: 0.9 },
+  { name: 'Hard',   range: [91, 127] as const, volumeScale: 1.0, filterScale: 1.0 },
 ] as const;
 
 // Filter cutoffs per tier for filter-sweep mode
 const TIER_CUTOFFS: Record<string, number> = {
   Ghost: 3000,
-  Soft: 6000,
+  Light: 6000,
   Medium: 12000,
   Hard: 20000,
 };
@@ -294,11 +296,11 @@ function applyRRVariation(
  * Generate all 8 layers from a single source sample.
  * Returns 8 CycleLayerResult entries ready for pad assignment.
  *
- * Layout:
- *   Layer 1-2 = Ghost (vel 0-31), RR-A and RR-B
- *   Layer 3-4 = Soft  (vel 32-63), RR-A and RR-B
- *   Layer 5-6 = Medium (vel 64-95), RR-A and RR-B
- *   Layer 7-8 = Hard  (vel 96-127), RR-A and RR-B
+ * Layout (Ghost Council Modified zones, 2026-04-04):
+ *   Layer 1-2 = Ghost  (vel  1-20),  RR-A and RR-B
+ *   Layer 3-4 = Light  (vel 21-55),  RR-A and RR-B
+ *   Layer 5-6 = Medium (vel 56-90),  RR-A and RR-B
+ *   Layer 7-8 = Hard   (vel 91-127), RR-A and RR-B
  */
 export async function generate8LayerCycle(
   sourceBuffer: ArrayBuffer,
