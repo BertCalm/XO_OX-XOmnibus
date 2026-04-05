@@ -2,7 +2,7 @@
 
 **Synthesis from the deepest place.**
 
-XOceanus is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 76 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
+XOceanus is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 77 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
 
 ## Why It Exists
 
@@ -20,7 +20,7 @@ This is not a feature. This is the ecology.
 
 ## The Engines
 
-76 engines. Every one a standalone instrument before it entered the fleet.
+77 engines. Every one a standalone instrument before it entered the fleet.
 
 | Engine | Creature | Character |
 |--------|----------|-----------|
@@ -110,7 +110,7 @@ The coupling graph is not a patch bay. It is a living ecology.
 
 ## Presets
 
-19,346 active factory presets in `.xometa` format, organized by 15 moods:
+19,500+ active factory presets in `.xometa` format, organized by 15 moods:
 
 **Foundation** · **Atmosphere** · **Entangled** · **Prism** · **Flux** · **Aether** · **Family** · **Submerged** · **Coupling** · **Crystalline** · **Deep** · **Ethereal** · **Kinetic** · **Luminous** · **Organic**
 
@@ -138,10 +138,10 @@ auval -v aumu Xocn XoOx
 
 ## Documentation
 
-- `Docs/xoceanus_master_specification.md` — the single source of truth
-- `Docs/xoceanus_sound_design_guides.md` — per-engine sound design
+- `Docs/specs/xoceanus_master_specification.md` — the single source of truth
+- `Docs/specs/xoceanus_sound_design_guides.md` — per-engine sound design
 - `scripture/the-scripture.md` — the Book of Bin (Guru Bin's accumulated DSP wisdom)
-- `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 72 of 76 seanced engines (OSMOSIS, OBIONT, OKEANOS, OUTFLOW not yet seanced)
+- `Docs/seances/seance_cross_reference.md` — ghost council verdicts for all 74 of 77 seanced engines (OBIONT, OUTFLOW not yet seanced)
 - `site/` — the web presence at [XO-OX.org](https://xo-ox.org)
 
 ## The Expedition

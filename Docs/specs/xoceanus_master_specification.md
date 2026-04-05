@@ -48,7 +48,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOceanus Is
 
-**XOceanus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 76 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOceanus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 77 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -58,7 +58,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Value | Expression |
 |-------|------------|
-| **Character** | 17,300+ presets with evocative names, not "Init Patch 47" |
+| **Character** | 19,500+ presets with evocative names, not "Init Patch 47" |
 | **Coupling** | Cross-engine modulation is the defining differentiator |
 | **Openness** | Open source, community presets, documented architecture |
 | **Craft** | Each engine was a standalone instrument first |
@@ -160,7 +160,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 76 engines.
+The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 77 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -179,7 +179,7 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 
 ## 3. Engine Modules
 
-### 3.1 The 76 Engines
+### 3.1 The 77 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -259,6 +259,7 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OBIONT** | XObiont | Bioluminescent Amber `#E8A030` | `obnt_` |
 | **OKEANOS** | XOkeanos | Cardamom Gold `#C49B3F` | `okan_` |
 | **OUTFLOW** | XOutflow | Deep Storm Indigo `#1A1A40` | `out_` |
+| **OXIDIZE** | XOxidize | Verdigris `#4A9E8E` | `oxidize_` |
 
 ### 3.2 Engine Visual Identity
 
@@ -1110,7 +1111,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 76 engines wrapped and integrated
+- All 77 engines wrapped and integrated
 - Full coupling matrix (15 types)
 - PlaySurface (all 3 modes)
 - 17,000+ factory presets with DNA fingerprints
