@@ -28,4 +28,4 @@ scipy==1.13.1
 mido==1.3.3
 python-rtmidi==1.5.8
 sounddevice==0.4.7
-pyloudnorm==0.1.1
+pyloudnorm==0.2.0
