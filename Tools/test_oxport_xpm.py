@@ -639,7 +639,8 @@ def test_keygroup_vel_crossfade_contiguity():
     contiguous (for families that use crossfade)."""
     from xpn_keygroup_export import _apply_vel_crossfade, FAMILY_VEL_LAYERS
 
-    base = [(1, 31, 0.35), (32, 63, 0.55), (64, 95, 0.75), (96, 127, 0.95)]
+    # Ghost Council Modified zones (QDD Level 2, adopted 2026-04-04)
+    base = [(1, 20, 0.30), (21, 55, 0.55), (56, 90, 0.75), (91, 127, 0.95)]
     for xfade in [0, 3, 6, 10]:
         result = _apply_vel_crossfade(base, xfade, "piano")
         assert len(result) == 4, f"crossfade={xfade}: expected 4 layers, got {len(result)}"

@@ -78,10 +78,10 @@ VEL_LAYERS: dict[str, list[tuple[int, int, float]]] = {
         (91, 127, 0.950000),  # hard
     ],
     "high": [
-        (0,   40, 0.350000),  # ghost   (Vibe's curve — barely touching)
-        (41,  90, 0.620000),  # light   (expressive sweet spot)
-        (91, 110, 0.820000),  # medium
-        (111, 127, 0.970000), # hard
+        (0,   20, 0.350000),  # ghost   (Ghost Council zone — barely touching)
+        (21,  55, 0.620000),  # light   (finger drumming sweet spot)
+        (56,  90, 0.820000),  # medium  (deliberate hits)
+        (91, 127, 0.970000),  # hard    (power hits, peak force)
     ],
 }
 

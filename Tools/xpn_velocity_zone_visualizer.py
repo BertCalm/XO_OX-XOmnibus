@@ -11,11 +11,11 @@ ASCII velocity map (128 columns, one column per velocity unit, 1-indexed display
   X        — two or more layers overlap at that velocity unit
   .        — no layer covers that velocity unit (gap)
 
-Vibe's canonical velocity splits (4-layer curve):
-  Layer 1: vel  1 – 40   (soft)
-  Layer 2: vel 41 – 90   (medium)
-  Layer 3: vel 91 – 110  (hard)
-  Layer 4: vel 111 – 127 (max)
+Ghost Council Modified velocity splits (4-layer curve, adopted 2026-04-04):
+  Layer 1: vel  1 –  20  (Ghost)
+  Layer 2: vel 21 –  55  (Light)
+  Layer 3: vel 56 –  90  (Medium)
+  Layer 4: vel 91 – 127  (Hard)
 
 Deviation from any boundary by more than SPLIT_TOLERANCE (default 2) is
 reported as a non-standard split.
@@ -45,10 +45,10 @@ from xml.etree import ElementTree as ET
 # ---------------------------------------------------------------------------
 
 CANONICAL_SPLITS_4L = [
-    (1, 40),
-    (41, 90),
-    (91, 110),
-    (111, 127),
+    (1,  20),    # Ghost  — ghost notes, barely touching
+    (21, 55),    # Light  — finger drumming sweet spot
+    (56, 90),    # Medium — deliberate hits
+    (91, 127),   # Hard   — power hits, peak force
 ]
 
 DEFAULT_SPLIT_TOLERANCE = 2

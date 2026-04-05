@@ -124,13 +124,13 @@ VEL_LAYERS_EVEN = [
     (96, 127,  0.95),   # hard    (ff)
 ]
 
-# Vibe's musical curve — ghost range is narrow (barely touching the pad),
-# mid range is wide (where most expressive playing lives), hard is responsive.
-# Feels more natural under the fingers than even splits.
+# Vibe's musical curve — Ghost Council Modified zones (QDD Level 2, 2026-04-04).
+# Ghost range is narrow (barely touching the pad), light/mid span the expressive
+# sweet spot, hard rewards committed hits.  Feels more natural under the fingers.
 VEL_LAYERS_MUSICAL = [
     (1,   20,  0.30),   # ghost   (15% — barely touching)
-    (21,  50,  0.55),   # light   (23% — gentle playing)
-    (51,  90,  0.75),   # mid     (31% — expressive sweet spot)
+    (21,  55,  0.55),   # light   (26% — gentle playing)
+    (56,  90,  0.75),   # medium  (27% — expressive sweet spot)
     (91, 127,  0.95),   # hard    (29% — full force)
 ]
 
@@ -138,7 +138,7 @@ VEL_LAYERS_MUSICAL = [
 VEL_LAYERS = VEL_LAYERS_MUSICAL
 
 # Guru Bin: velocity layers at true input velocities — do not normalize layers to equal amplitude
-# The 4 render trigger velocities are: pp=20, mp=50, mf=80, ff=120
+# The 4 render trigger velocities are: pp=10, mp=38, mf=73, ff=109  (Ghost Council midpoints)
 # Record at these exact MIDI velocities. Do NOT boost quiet layers to match loud ones.
 # Dynamic range between layers IS the expression — preserve it.
 
@@ -641,9 +641,9 @@ def _dna_adapt_velocity_layers(dna: dict) -> list[tuple]:
     # The shift is applied as a bias that compresses lower layers and expands upper ones.
     aggr_bias = (aggression - 0.5) * 2.0  # range: -1.0 .. +1.0
 
-    # Start from the musical curve boundaries
-    #   ghost: 1-20, light: 21-50, mid: 51-90, hard: 91-127
-    boundaries = [1, 20, 50, 90, 127]  # 5 boundaries → 4 bands
+    # Start from the Ghost Council Modified musical curve boundaries
+    #   ghost: 1-20, light: 21-55, medium: 56-90, hard: 91-127
+    boundaries = [1, 20, 55, 90, 127]  # 5 boundaries → 4 bands
 
     # Shift the 3 internal boundaries downward for high aggression
     # (ghost shrinks, hard expands) or upward for low aggression.

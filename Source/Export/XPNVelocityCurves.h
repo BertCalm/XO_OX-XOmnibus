@@ -47,7 +47,8 @@ inline std::vector<VelocitySplit> getVelocitySplits(XPNVelocityCurve curve, int 
         full = {{1, 15, 0.25f, 0.12f}, {16, 45, 0.50f, 0.35f}, {46, 85, 0.78f, 0.65f}, {86, 127, 1.00f, 1.00f}};
         break;
     case XPNVelocityCurve::NeoSoul:
-        full = {{1, 30, 0.35f, 0.20f}, {31, 65, 0.60f, 0.47f}, {66, 95, 0.80f, 0.72f}, {96, 127, 0.95f, 1.00f}};
+        // normVel for Hard layer: 109/127 ≈ 0.86 — top of zone 4 midpoint (matches Musical curve convention)
+        full = {{1, 30, 0.35f, 0.20f}, {31, 65, 0.60f, 0.47f}, {66, 95, 0.80f, 0.72f}, {96, 127, 0.95f, 0.86f}};
         break;
     case XPNVelocityCurve::TrapHard:
         full = {{1, 10, 0.20f, 0.08f}, {11, 35, 0.55f, 0.27f}, {36, 70, 0.80f, 0.60f}, {71, 127, 1.00f, 1.00f}};
