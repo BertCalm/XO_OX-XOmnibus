@@ -1,0 +1,450 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default theme: Studio Clean (light) — space-separated RGB for Tailwind opacity modifiers */
+    --color-surface: 255 255 255;
+    --color-surface-alt: 245 245 245;
+    --color-surface-bg: 250 250 250;
+    --color-border: 232 232 232;
+    --color-border-hover: 209 209 209;
+    --color-text-primary: 26 26 46;
+    --color-text-secondary: 107 114 128;
+    --color-text-muted: 156 163 175;
+    --color-accent-teal: 13 148 136;
+    --color-accent-teal-light: 204 251 241;
+    --color-accent-teal-dark: 15 118 110;
+    --color-accent-teal-50: 240 253 250;
+    --color-accent-plum: 124 58 237;
+    --color-accent-plum-light: 237 233 254;
+    --color-accent-plum-dark: 109 40 217;
+    --color-accent-plum-50: 245 243 255;
+
+    /* Brand gradient — teal → plum, used for progress bars, active indicators, emphasis */
+    --gradient-brand: linear-gradient(
+      135deg,
+      rgb(var(--color-accent-teal)) 0%,
+      rgb(var(--color-accent-plum)) 100%
+    );
+
+    /* Shadows — overridden per light/dark theme */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    /* ── Liquid Glass Material ─────────────────────────────────── */
+    --glass-blur: 40px;
+    --glass-saturate: 180%;
+    --glass-contrast: 110%;
+    --glass-bg-alpha: 0.6;
+    --glass-specular-alpha: 0.1;
+    --glass-depth-alpha: 0.4;
+  }
+
+  [data-theme-mode='dark'] {
+    --glass-bg-alpha: 0.4;
+  }
+
+  body {
+    @apply bg-surface-bg text-text-primary antialiased;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Global keyboard focus ring — visible only for keyboard navigation (not mouse clicks) */
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:focus-visible,
+  a:focus-visible,
+  select:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-accent-teal/50 ring-offset-1 ring-offset-surface;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           bg-accent-teal text-white font-medium text-sm
+           hover:bg-accent-teal-dark active:scale-[0.98]
+           transition-all duration-150 ease-out
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           bg-surface border border-border text-text-primary font-medium text-sm
+           hover:bg-surface-alt active:scale-[0.98]
+           transition-all duration-150 ease-out
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           bg-accent-plum text-white font-medium text-sm
+           hover:bg-accent-plum-dark active:scale-[0.98]
+           transition-all duration-150 ease-out
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .card {
+    @apply bg-surface rounded-xl border border-border shadow-card;
+  }
+
+  .card-elevated {
+    @apply bg-surface rounded-xl border border-border shadow-elevated;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm
+           text-text-primary placeholder:text-text-muted
+           focus:outline-none focus:ring-2 focus:ring-accent-teal/30 focus:border-accent-teal
+           transition-all duration-150;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-text-secondary uppercase tracking-wider mb-1.5;
+  }
+
+  .progress-gradient {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--color-accent-teal)) 0%,
+      rgb(var(--color-accent-plum)) 100%
+    );
+  }
+
+  .pad-cell {
+    @apply relative aspect-square rounded-lg border-2 border-border bg-surface
+           cursor-pointer select-none
+           hover:border-accent-teal/50 hover:shadow-card
+           active:scale-[0.96]
+           transition-all duration-100 ease-out;
+  }
+
+  .pad-cell-active {
+    @apply border-accent-teal bg-accent-teal-50 shadow-card;
+  }
+
+  .pad-cell-loaded {
+    @apply border-accent-plum/30 bg-accent-plum-50;
+  }
+
+  .pad-cell-playing {
+    @apply border-accent-teal bg-accent-teal/10 shadow-elevated;
+    animation: pad-flash 150ms ease-out;
+  }
+
+  .pad-cell-celebrate {
+    animation: pad-celebrate-flash 200ms ease-out;
+    border-color: rgb(var(--color-accent-teal));
+    box-shadow: 0 0 12px rgb(var(--color-accent-teal) / 0.5),
+                0 0 4px rgb(var(--color-accent-plum) / 0.3);
+  }
+
+  /* ── Liquid Glass Utilities ────────────────────────────────── */
+
+  .glass-panel {
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) contrast(var(--glass-contrast));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) contrast(var(--glass-contrast));
+    background: rgb(var(--color-surface) / var(--glass-bg-alpha));
+    border: 1px solid rgb(255 255 255 / 0.06);
+    box-shadow: inset 0 1px 1px rgb(255 255 255 / var(--glass-specular-alpha)),
+                inset 0 -1px 1px rgb(0 0 0 / var(--glass-depth-alpha));
+    will-change: backdrop-filter;
+  }
+
+  /* Nesting: inner glass panels reduce blur + transparency */
+  .glass-panel .glass-panel {
+    --glass-blur: 20px;
+    --glass-bg-alpha: 0.42;
+  }
+
+  .glass-panel .glass-panel .glass-panel {
+    --glass-blur: 10px;
+    --glass-bg-alpha: 0.3;
+  }
+
+  /* Dark-mode nesting: recalculate from dark base alpha (0.4) */
+  [data-theme-mode='dark'] .glass-panel .glass-panel {
+    --glass-bg-alpha: 0.28;
+  }
+
+  [data-theme-mode='dark'] .glass-panel .glass-panel .glass-panel {
+    --glass-bg-alpha: 0.2;
+  }
+
+  .glass-raised {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-sunken {
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6),
+                inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes pad-flash {
+  0% {
+    background-color: rgb(var(--color-accent-teal) / 0.3);
+  }
+  100% {
+    background-color: rgb(var(--color-accent-teal) / 0.1);
+  }
+}
+
+@keyframes pad-celebrate-flash {
+  0% {
+    background-color: rgb(var(--color-accent-teal) / 0.5);
+    transform: scale(1.06);
+  }
+  50% {
+    background-color: rgb(var(--color-accent-plum) / 0.3);
+  }
+  100% {
+    background-color: rgb(var(--color-accent-teal) / 0.1);
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 300ms ease-out forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/* Toast Notifications                                                 */
+/* ------------------------------------------------------------------ */
+
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-toast-enter {
+  animation: toastEnter 250ms cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/* Command Palette                                                     */
+/* ------------------------------------------------------------------ */
+
+@keyframes cmdPaletteFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cmdPaletteScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-cmdPaletteFadeIn {
+  animation: cmdPaletteFadeIn 150ms ease-out;
+}
+
+.animate-cmdPaletteScaleIn {
+  animation: cmdPaletteScaleIn 150ms ease-out;
+}
+
+/* ------------------------------------------------------------------ */
+/* Texture Overlays — applied via data-texture attribute on body      */
+/* ------------------------------------------------------------------ */
+
+.texture-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.texture-overlay[data-texture='dust'] {
+  background-image: radial-gradient(
+    circle,
+    rgb(var(--color-text-muted) / 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+}
+
+.texture-overlay[data-texture='grid'] {
+  background-image: linear-gradient(
+      rgb(var(--color-text-muted) / 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgb(var(--color-text-muted) / 0.04) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+}
+
+.texture-overlay[data-texture='halftone'] {
+  background-image: radial-gradient(
+    circle,
+    rgb(var(--color-text-muted) / 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 5px 5px;
+}
+
+.texture-overlay[data-texture='noise'] {
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Skeleton Loading Shimmer                                            */
+/* ------------------------------------------------------------------ */
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-surface-alt)) 25%,
+    rgb(var(--color-border) / 0.3) 50%,
+    rgb(var(--color-surface-alt)) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Section Transitions                                                 */
+/* ------------------------------------------------------------------ */
+
+@keyframes sectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-section-enter {
+  animation: sectionEnter 200ms ease-out forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pad Drop Ripple                                                     */
+/* ------------------------------------------------------------------ */
+
+@keyframes padDropRipple {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--color-accent-teal) / 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgb(var(--color-accent-teal) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--color-accent-teal) / 0);
+  }
+}
+
+.pad-drop-ripple {
+  animation: padDropRipple 400ms ease-out;
+}
+
+/* Pad scale-up on drag-over */
+.pad-cell-dragover {
+  transform: scale(1.03);
+  transition: transform 150ms ease-out;
+}
+
+/* Multi-select pad highlight */
+.pad-cell-selected {
+  @apply ring-2 ring-accent-plum ring-inset;
+}
+
+/* ------------------------------------------------------------------ */
+/* Scrollbar                                                          */
+/* ------------------------------------------------------------------ */
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-border));
+    border-radius: 3px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Liquid Glass — Accessibility & Browser Fallbacks                     */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgb(var(--color-surface) / 0.95);
+    will-change: auto;
+  }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-panel {
+    background: rgb(var(--color-surface) / 0.95);
+  }
+}
+
+/* Glass opt-out — applied when layoutStore.glassEnabled is false */
+[data-glass-disabled='true'] .glass-panel {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgb(var(--color-surface) / 0.95);
+  box-shadow: var(--shadow-card);
+  will-change: auto;
+}
