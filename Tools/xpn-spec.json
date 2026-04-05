@@ -1,0 +1,95 @@
+{
+  "$schema": "XPN Format Specification — shared between Python (Oxport) and TypeScript (xpm-creator)",
+  "version": "1.0.0",
+  "updated": "2026-04-04",
+
+  "velocity": {
+    "zones": [
+      {"name": "Ghost",  "velStart": 1,  "velEnd": 20,  "renderMidpoint": 10},
+      {"name": "Light",  "velStart": 21, "velEnd": 55,  "renderMidpoint": 38},
+      {"name": "Medium", "velStart": 56, "velEnd": 90,  "renderMidpoint": 73},
+      {"name": "Hard",   "velStart": 91, "velEnd": 127, "renderMidpoint": 109}
+    ],
+    "numLayers": 4
+  },
+
+  "tiers": {
+    "SURFACE": {"maxSlots": 16,  "velLayers": 1, "roundRobin": false},
+    "DEEP":    {"maxSlots": 64,  "velLayers": 4, "roundRobin": false},
+    "TRENCH":  {"maxSlots": 96,  "velLayers": 4, "roundRobin": true}
+  },
+
+  "voices": {
+    "onset": {
+      "voices": ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx"],
+      "canonicalNames": {
+        "kick":  "kick",
+        "snare": "snare",
+        "chat":  "closed_hat",
+        "ohat":  "open_hat",
+        "clap":  "clap",
+        "tom":   "tom",
+        "perc":  "perc",
+        "fx":    "fx"
+      },
+      "midiNotes": {
+        "kick":  36,
+        "snare": 38,
+        "chat":  42,
+        "ohat":  46,
+        "clap":  39,
+        "tom":   41,
+        "perc":  43,
+        "fx":    49
+      },
+      "roundRobinCounts": {
+        "kick":  0,
+        "snare": 3,
+        "chat":  3,
+        "ohat":  4,
+        "clap":  3,
+        "tom":   0,
+        "perc":  2,
+        "fx":    3
+      },
+      "categories": {
+        "kick":  "bass",
+        "snare": "transient",
+        "chat":  "cymbal",
+        "ohat":  "cymbal",
+        "clap":  "transient",
+        "tom":   "bass",
+        "perc":  "transient",
+        "fx":    "cymbal"
+      }
+    }
+  },
+
+  "format": {
+    "maxPackSizeBytes":    2147483648,
+    "targetPackSizeBytes": 1717986918,
+    "sampleRate":          44100,
+    "bitDepth":            24,
+    "channels":            2,
+    "maxInstrumentSlots":  128,
+    "safetyMarginSlots":   120
+  },
+
+  "moods": [
+    "Foundation",
+    "Atmosphere",
+    "Entangled",
+    "Prism",
+    "Flux",
+    "Aether",
+    "Family",
+    "Submerged",
+    "Coupling",
+    "Crystalline",
+    "Deep",
+    "Ethereal",
+    "Kinetic",
+    "Luminous",
+    "Organic"
+  ]
+}

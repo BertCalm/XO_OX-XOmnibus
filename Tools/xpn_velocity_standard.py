@@ -2,6 +2,12 @@
 XPN Velocity Standard — Single Source of Truth
 Ghost Council Modified zones, adopted 2026-04-04 (QDD Level 2, 8/8 ghosts).
 All velocity zone definitions in the Oxport pipeline MUST import from this module.
+
+Cross-language authority: Tools/xpn-spec.json
+  The JSON file is the canonical record shared with the TypeScript xpm-creator UI.
+  If zone boundaries or render midpoints change, update xpn-spec.json first, then
+  mirror the values here.  This Python module remains the Python API (import target
+  for oxport.py and all other Python tools); xpn-spec.json is the bridge to TypeScript.
 """
 
 # Zone boundaries (VelStart, VelEnd) — MPC XPM format values
