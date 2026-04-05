@@ -56,7 +56,8 @@
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 0.6,
       "owr_lfo2Depth": 0.08,
-      "owr_lfo2Shape": 0
+      "owr_lfo2Shape": 0,
+      "owr_malletVelocity": 0.731
     },
     "Obscura": {
       "obscura_stiffness": 0.55,
@@ -107,5 +108,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.435,
+    "STIFFNESS": 0.45,
+    "COUPLING": 0.39,
+    "SPACE": 0.55
+  }
 }

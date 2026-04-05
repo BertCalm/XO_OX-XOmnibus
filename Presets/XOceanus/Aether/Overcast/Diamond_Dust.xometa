@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Diamond Dust",
+  "name": "Diamond Dust (Overcast)",
   "mood": "Aether",
   "engines": [
     "Overcast"
@@ -63,5 +63,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "starterFor": null
+  "starterFor": null,
+  "macros": {
+    "PURITY": 0.45,
+    "CRACKLE": 0.45,
+    "LATTICE": 0.45,
+    "FROST": 0.45
+  }
 }

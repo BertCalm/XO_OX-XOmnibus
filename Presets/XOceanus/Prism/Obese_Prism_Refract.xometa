@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Prism Refract",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fat saturation through a prismatic filter — detune spreading harmonics across the spectrum, each voice refracting at a different angle.",
-  "tags": ["distortion", "prism", "spectral", "aggressive", "refract"],
-  "macroLabels": ["BELLY", "MOJO", "GRIT", "CRUSH"],
+  "tags": [
+    "distortion",
+    "prism",
+    "spectral",
+    "aggressive",
+    "refract"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MOJO",
+    "GRIT",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -47,6 +60,14 @@
       "fat_polyphony": 4
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MOJO": 0.45,
+    "GRIT": 0.78,
+    "CRUSH": 0.78
+  }
 }

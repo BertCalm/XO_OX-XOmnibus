@@ -57,11 +57,18 @@
       "owr_macroMaterial": 0.15,
       "owr_macroMallet": 0.5,
       "owr_macroCoupling": 0.0,
-      "owr_macroSpace": 0.25
+      "owr_macroSpace": 0.25,
+      "owr_malletVelocity": 0.85
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MATERIAL": 0.45,
+    "MALLET": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
 }

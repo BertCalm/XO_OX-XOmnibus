@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Medium-speed tremolo bass with warm amplitude pulsing and tape drive \u2014 rhythmically alive.",
+  "description": "Medium-speed tremolo bass with warm amplitude pulsing and tape drive — rhythmically alive.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.45,
@@ -53,7 +53,8 @@
       "poss_oscAWaveform": 1,
       "poss_oscBWaveform": 2,
       "poss_oscMix": 0.45,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.605
     }
   },
   "schema_version": 1,

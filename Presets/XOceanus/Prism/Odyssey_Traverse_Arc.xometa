@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FM NON-INTEGER": 0.45,
+    "DRIFT ARC WIDTH": 0.45,
+    "SPECTRAL TILT": 0.45,
+    "SHIMMER PRISM": 0.45
+  }
 }

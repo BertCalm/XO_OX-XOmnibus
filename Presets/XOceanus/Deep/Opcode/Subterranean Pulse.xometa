@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Low ratio 0.5 FM \u2014 the fundamental dominates, modulation creates sub-harmonic rumble. Below music, below language.",
+  "description": "Low ratio 0.5 FM — the fundamental dominates, modulation creates sub-harmonic rumble. Below music, below language.",
   "tags": [
     "fm",
     "sub",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.215,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

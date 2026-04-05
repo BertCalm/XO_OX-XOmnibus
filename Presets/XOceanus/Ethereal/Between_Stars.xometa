@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Cold gentle ethereal pad from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.415,
+    "MOVEMENT": 0.099,
+    "COUPLING": 0.2,
+    "SPACE": 0.685
+  }
 }

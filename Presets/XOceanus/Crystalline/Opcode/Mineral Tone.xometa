@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Series FM with ratio 7.5 \u2014 the overtone series of a struck mineral. Inharmonic partials with long decay.",
+  "description": "Series FM with ratio 7.5 — the overtone series of a struck mineral. Inharmonic partials with long decay.",
   "tags": [
     "fm",
     "bell",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.82
+  }
 }

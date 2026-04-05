@@ -40,7 +40,8 @@
       "bob_groove": 0.6,
       "bob_curiousRate": 0.55,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.538
     },
     "Octopus": {
       "oct_armBalance": 0.5,
@@ -64,5 +65,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.54,
+    "SPACE": 0.4
+  }
 }

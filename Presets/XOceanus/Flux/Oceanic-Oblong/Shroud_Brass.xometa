@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.0603,
       "bob_macroCoupling": 0.8483,
       "bob_macroMovement": 0.4758,
-      "bob_macroSpace": 0.4214
+      "bob_macroSpace": 0.4214,
+      "bob_velFilter": 0.772
     },
     "Oceanic": {
       "ocean_macroCharacter": 0.0905,

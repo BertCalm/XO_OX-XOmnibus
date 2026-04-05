@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Chaos Attractor Wall",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Onset"],
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Strange attractor at full chaos with XVC 8-voice coupling — every ghost voice activated, leash released. An autonomous wall of entangled chaos.",
-  "tags": ["entangled", "dense", "ouroboros", "onset", "chaos", "xvc"],
-  "macroLabels": ["CHAOS", "VOICES", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "dense",
+    "ouroboros",
+    "onset",
+    "chaos",
+    "xvc"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "VOICES",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -76,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHAOS": 0.296,
+    "VOICES": 0.45,
+    "COUPLING": 0.678,
+    "SPACE": 0.45
+  }
 }

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Harvest Moon Rise",
+  "mood": "Luminous",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The harvest moon ascending at the autumnal equinox \u2014 orange-amber due to atmospheric path length, appearing larger near the horizon through atmospheric refraction and angular size illusion.",
+  "tags": [
+    "luminous",
+    "harvest",
+    "moon",
+    "amber",
+    "autumnal",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.72,
+      "orb_filterCutoff": 7500.0,
+      "orb_filterRes": 0.18,
+      "orb_attack": 0.8,
+      "orb_decay": 2.5,
+      "orb_sustain": 0.82,
+      "orb_release": 6.0,
+      "orb_lfo1Rate": 0.06,
+      "orb_lfo1Depth": 0.15,
+      "orb_macroCharacter": 0.52,
+      "orb_macroMovement": 0.22,
+      "orb_macroCoupling": 0.1,
+      "orb_macroSpace": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.1,
+    "SPACE": 0.75
+  }
+}

@@ -68,5 +68,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RATE": 0.45,
+    "MORPH FILTER": 0.45,
+    "COUPLING": 0.558,
+    "GATE DEPTH": 0.45
+  }
 }

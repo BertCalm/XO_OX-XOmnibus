@@ -103,7 +103,8 @@
       "ombre_shadowAmount": 0.749,
       "ombre_spaceMix": 0.652,
       "ombre_toneA": 3760.4,
-      "ombre_toneB": 1438.4
+      "ombre_toneB": 1438.4,
+      "ombre_velCutoffScale": 0.42
     }
   },
   "schema_version": 1,
@@ -118,5 +119,11 @@
     "marquee"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.523,
+    "MOVEMENT": 0.707,
+    "COUPLING": 0.6,
+    "SPACE": 0.615
+  }
 }

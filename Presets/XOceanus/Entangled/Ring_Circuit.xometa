@@ -97,5 +97,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RING": 0.45,
+    "DRIFT TEXTURE": 0.45,
+    "COUPLING": 0.45,
+    "METALLIC": 0.45
+  }
 }

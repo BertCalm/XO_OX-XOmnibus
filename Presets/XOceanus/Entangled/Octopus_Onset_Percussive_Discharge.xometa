@@ -92,5 +92,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.462,
+    "MUTATE": 0.271
+  }
 }

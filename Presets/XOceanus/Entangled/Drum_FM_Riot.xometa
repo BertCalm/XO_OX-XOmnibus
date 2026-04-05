@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drum FM Riot",
   "mood": "Entangled",
-  "engines": ["Offering", "Ouroboros"],
+  "engines": [
+    "Offering",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Boom bap drum machine AudioToFM-modulating chaos attractor. Drum hits mutating the strange attractor at every impact.",
-  "tags": ["entangled", "aggressive", "drums", "fm", "riot"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "drums",
+    "fm",
+    "riot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -33,7 +47,8 @@
       "ofr_attackTime": 0.003,
       "ofr_decayTime": 0.18,
       "ofr_sustain": 0.18,
-      "ofr_releaseTime": 0.12
+      "ofr_releaseTime": 0.12,
+      "ofr_velToSnap": 0.765
     },
     "Ouroboros": {
       "ouro_macroCharacter": 0.85,

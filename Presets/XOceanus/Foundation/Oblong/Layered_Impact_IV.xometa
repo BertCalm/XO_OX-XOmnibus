@@ -30,7 +30,8 @@
       "couplingBus": 0,
       "couplingLevel": 0.817,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.483
     }
   },
   "schema_version": 1,
@@ -41,5 +42,11 @@
     "oblong"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "WEIGHT": 0.45,
+    "STRIKE": 0.45,
+    "GLEAM": 0.45,
+    "FORGE": 0.45
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Parallel FM designed for phase coupling \u2014 LFO rates lock to incoming coupling signal. Rhythmic synchronisation voice.",
+  "description": "Parallel FM designed for phase coupling — LFO rates lock to incoming coupling signal. Rhythmic synchronisation voice.",
   "tags": [
     "fm",
     "parallel",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

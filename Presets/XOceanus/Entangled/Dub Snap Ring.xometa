@@ -92,5 +92,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB CARRIER": 0.45,
+    "SNAP RING": 0.45,
+    "MODULATION": 0.45,
+    "FILTER": 0.45
+  }
 }

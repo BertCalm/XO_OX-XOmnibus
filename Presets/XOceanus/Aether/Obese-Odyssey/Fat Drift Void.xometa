@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT massive void drone with DRIFT shimmer above \u2014 earth and sky in aether space. Maximum slow.",
+  "description": "FAT massive void drone with DRIFT shimmer above — earth and sky in aether space. Maximum slow.",
   "tags": [
     "fat",
     "drift",
@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT VOID": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.9
+  }
 }

@@ -133,5 +133,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB PULSE": 0.45,
+    "SNAP CLOCK": 0.45,
+    "FAT ARP": 0.45,
+    "COUPLING": 0.522
+  }
 }

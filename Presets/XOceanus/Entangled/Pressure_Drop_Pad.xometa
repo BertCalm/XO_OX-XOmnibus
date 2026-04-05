@@ -109,7 +109,8 @@
       "bob_level": 0.6,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.413
     }
   },
   "coupling": {
@@ -122,5 +123,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT DENSITY": 0.45,
+    "BOB CHARACTER": 0.45,
+    "COUPLING": 0.39,
+    "DEPTH": 0.8
+  }
 }

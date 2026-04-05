@@ -44,7 +44,8 @@
       "poss_macroScurry": 0.378,
       "poss_filterEnvAmount": 0.413,
       "poss_lfo1Rate": 0.188,
-      "poss_lfo1Depth": 0.35
+      "poss_lfo1Depth": 0.35,
+      "poss_ampVelSens": 0.503
     },
     "Overdub": {
       "dub_aggression": 0.335,

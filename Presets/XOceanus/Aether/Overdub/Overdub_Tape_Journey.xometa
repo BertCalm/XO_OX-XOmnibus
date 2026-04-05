@@ -88,5 +88,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TAPE AGE": 0.45,
+    "JOURNEY DEPTH": 0.45,
+    "FILTER DRIFT": 0.4,
+    "REVERB COSMOS": 0.45
+  }
 }

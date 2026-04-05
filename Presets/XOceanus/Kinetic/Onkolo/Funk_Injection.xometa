@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The funk injection moment \u2014 aggressive wah hits, bright bridge pickup, all forward motion. One-bar riff loops forever.",
+  "description": "The funk injection moment — aggressive wah hits, bright bridge pickup, all forward motion. One-bar riff loops forever.",
   "tags": [
     "clavinet",
     "injection",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.2,
+    "SPACE": 0.28
+  }
 }

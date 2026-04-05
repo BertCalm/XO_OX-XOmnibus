@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Two oscillators in opposite scan positions \u2014 maximum spectral interference at mid-filter. Clean but complex, never muddy.",
+  "description": "Two oscillators in opposite scan positions — maximum spectral interference at mid-filter. Clean but complex, never muddy.",
   "tags": [
     "dual",
     "interference",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.39,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
   }
 }

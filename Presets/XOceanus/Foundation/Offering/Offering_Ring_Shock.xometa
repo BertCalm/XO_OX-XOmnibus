@@ -40,7 +40,8 @@
       "ofr_digCuriosity": 0.5,
       "ofr_v1_tune": 0.1,
       "ofr_v7_tune": 0.2,
-      "ofr_masterWidth": 0.6
+      "ofr_masterWidth": 0.6,
+      "ofr_velToSnap": 0.504
     }
   },
   "schema_version": 1,

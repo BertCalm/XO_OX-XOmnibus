@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Bandone\u00f3n Nocturne",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Piazzolla's late-night Buenos Aires mode \u2014 low bellows, cassotto warmth engaged, slow LFO breathing the tango melancholy of a port city at 3am.",
+  "tags": [
+    "atmosphere",
+    "bandoneon",
+    "tango",
+    "nocturne",
+    "Piazzolla",
+    "Buenos Aires"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.82,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.25,
+      "oleg_brightness": 4500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.55,
+      "oleg_detune": 8.0,
+      "oleg_formant": 0.72,
+      "oleg_attack": 0.05,
+      "oleg_release": 0.35,
+      "oleg_filterEnvAmt": 0.28,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.05,
+      "oleg_cassottoDepth": 0.85,
+      "oleg_buzzThreshold": 0.3,
+      "oleg_wheelSpeed": 0.0,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.32,
+      "oleg_macroMovement": 0.28,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.65,
+      "oleg_lfo1Rate": 0.05,
+      "oleg_lfo1Depth": 0.12,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.25,
+      "oleg_lfo2Depth": 0.08,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  }
+}

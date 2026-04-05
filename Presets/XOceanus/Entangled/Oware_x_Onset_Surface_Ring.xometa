@@ -70,7 +70,8 @@
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 1.2,
       "owr_lfo2Depth": 0.06,
-      "owr_lfo2Shape": 0
+      "owr_lfo2Shape": 0,
+      "owr_malletVelocity": 0.795
     }
   },
   "coupling": {
@@ -84,5 +85,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "MATERIAL": 0.45,
+    "SPACE": 0.4,
+    "MUTATE": 0.271
+  }
 }

@@ -87,5 +87,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "WOW AMOUNT": 0.45,
+    "TAPE WEAR": 0.45,
+    "FEEDBACK DEPTH": 0.45,
+    "REVERB TAIL": 0.45
+  }
 }

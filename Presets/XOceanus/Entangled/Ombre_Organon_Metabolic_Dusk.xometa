@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.679,
       "ombre_spaceMix": 0.609,
       "ombre_toneA": 5054.9,
-      "ombre_toneB": 1980.3
+      "ombre_toneB": 1980.3,
+      "ombre_velCutoffScale": 0.352
     },
     "Organon": {
       "organon_filterCutoff": 2707.2,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.593,
+    "COUPLING": 0.57,
+    "SPACE": 0.656
+  }
 }

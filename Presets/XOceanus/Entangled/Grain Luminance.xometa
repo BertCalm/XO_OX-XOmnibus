@@ -56,7 +56,8 @@
       "opal_macroSpace": 0.398,
       "opal_filterEnvAmt": 0.528,
       "opal_lfo1Rate": 0.298,
-      "opal_lfo1Depth": 0.252
+      "opal_lfo1Depth": 0.252,
+      "opal_ampVelSens": 0.365
     },
     "Optic": {
       "optic_autoPulse": 0,

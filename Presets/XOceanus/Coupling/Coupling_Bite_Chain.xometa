@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERBITE bite and choke heavily gates ONSET transient \u2014 physical possession controlling percussion completely, bite is the gate.",
+  "description": "OVERBITE bite and choke heavily gates ONSET transient — physical possession controlling percussion completely, bite is the gate.",
   "tags": [
     "coupling",
     "heavy",
@@ -41,7 +41,8 @@
       "poss_macroScurry": 0.62,
       "poss_filterEnvAmt": 0.68,
       "poss_lfo1Rate": 0.18,
-      "poss_lfo1Depth": 0.38
+      "poss_lfo1Depth": 0.38,
+      "poss_ampVelSens": 0.562
     },
     "Onset": {
       "perc_macro_punch": 0.72,

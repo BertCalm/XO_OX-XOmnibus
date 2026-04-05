@@ -67,5 +67,11 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.715,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

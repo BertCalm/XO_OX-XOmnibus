@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Aurora Sweep",
   "mood": "Flux",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Supersaw with shimmer reverb pushed to maximum shimmer octave — the harmonic tail ascends endlessly while the chorus creates auroral width. LFO1 sweeps filter at breathing rate; LFO2 modulates shimmer feedback creating rhythmic pulses in the reverb tail.",
-  "tags": ["flux", "aurora", "sweep", "shimmer", "evolving", "ascending", "movement"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "flux",
+    "aurora",
+    "sweep",
+    "shimmer",
+    "evolving",
+    "ascending",
+    "movement"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,7 +81,8 @@
       "sky_modSlot1Amt": 0.0,
       "sky_modSlot2Src": 0.0,
       "sky_modSlot2Dst": 0.0,
-      "sky_modSlot2Amt": 0.0
+      "sky_modSlot2Amt": 0.0,
+      "sky_velSensitivity": 0.818
     }
   },
   "macros": {
@@ -75,5 +91,7 @@
     "GLOW": 0.55,
     "AIR": 0.72
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -58,11 +58,13 @@
       "bob_reverbMix": 0.082,
       "bob_scaleMode": 0.4,
       "bob_subOscLevel": 0.399,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.499
     },
     "Orphica": {
       "orph_filterCutoff": 9079.7,
-      "orph_level": 0.806
+      "orph_level": 0.806,
+      "orph_velocitySensitivity": 0.748
     }
   },
   "schema_version": 1,
@@ -74,5 +76,11 @@
     "orphica"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.499,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.48,
+    "SPACE": 0.628
+  }
 }

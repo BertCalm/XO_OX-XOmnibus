@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Frozen Cavern",
   "mood": "Deep",
-  "engines": ["Opal", "Obsidian"],
+  "engines": [
+    "Opal",
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular ice particles in an obsidian-walled cave — Opal's scattered grains filtered through Obsidian's crystalline depth, a subzero cathedral of glass and grain.",
-  "tags": ["deep", "coupled", "granular", "crystalline", "cave"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "coupled",
+    "granular",
+    "crystalline",
+    "cave"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
@@ -23,21 +37,22 @@
       "opal_macroCharacter": 0.36,
       "opal_macroMovement": 0.22,
       "opal_macroCoupling": 0.28,
-      "opal_macroSpace": 0.80,
+      "opal_macroSpace": 0.8,
       "opal_filterEnvAmt": 0.32,
       "opal_lfo1Rate": 0.04,
-      "opal_lfo1Depth": 0.20,
-      "opal_grainSize": 0.72
+      "opal_lfo1Depth": 0.2,
+      "opal_grainSize": 0.72,
+      "opal_ampVelSens": 0.332
     },
     "Obsidian": {
-      "obsidian_macroCharacter": 0.40,
+      "obsidian_macroCharacter": 0.4,
       "obsidian_macroMovement": 0.16,
       "obsidian_macroCoupling": 0.25,
       "obsidian_macroSpace": 0.82,
       "obsidian_filterEnvAmt": 0.34,
       "obsidian_lfo1Rate": 0.03,
       "obsidian_lfo1Depth": 0.14,
-      "obsidian_depth": 0.80
+      "obsidian_depth": 0.8
     }
   },
   "coupling": {
@@ -53,8 +68,8 @@
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.38,
-    "MOVEMENT": 0.20,
+    "MOVEMENT": 0.2,
     "COUPLING": 0.28,
-    "SPACE": 0.80
+    "SPACE": 0.8
   }
 }

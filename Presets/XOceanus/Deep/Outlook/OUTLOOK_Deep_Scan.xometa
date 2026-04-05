@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Horizon scan active in deep register \u2014 dark spectral sweep from fundamental upward. The vista opens slowly from below.",
+  "description": "Horizon scan active in deep register — dark spectral sweep from fundamental upward. The vista opens slowly from below.",
   "tags": [
     "deep",
     "scan",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
   }
 }

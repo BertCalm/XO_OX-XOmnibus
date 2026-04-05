@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Grain Kick",
   "mood": "Kinetic",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tight granular density at fast position scatter — each trigger fires a burst of micro-grains that collectively land like a kick drum. Short grain size creates transient-like impacts while speed variation between grains smears the attack into a live organic hit.",
-  "tags": ["kinetic", "grain", "kick", "percussive", "impact", "transient", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "grain",
+    "kick",
+    "percussive",
+    "impact",
+    "transient",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -35,7 +50,8 @@
       "opal_macroCharacter": 0.65,
       "opal_macroMovement": 0.82,
       "opal_macroCoupling": 0.35,
-      "opal_macroSpace": 0.2
+      "opal_macroSpace": 0.2,
+      "opal_ampVelSens": 0.573
     }
   },
   "macros": {
@@ -44,5 +60,7 @@
     "COUPLING": 0.35,
     "SPACE": 0.2
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

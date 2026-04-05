@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crystal Strand",
   "mood": "Crystalline",
-  "engines": ["Osier"],
+  "engines": [
+    "Osier"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Willow reed pared to a single wind strand — all harmonics filtered, only the fundamental remains. One breath of crystal air.",
-  "tags": ["crystalline", "wind", "sine", "sparse", "osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "wind",
+    "sine",
+    "sparse",
+    "osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,6 +57,14 @@
       "osier_macroSpace": 0.6
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.41,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.2,
+    "SPACE": 0.71
+  }
 }

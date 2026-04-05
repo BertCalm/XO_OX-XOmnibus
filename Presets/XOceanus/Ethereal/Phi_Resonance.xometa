@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The golden ratio as harmonic content. Partials spaced at \u03c6-derived intervals create a non-periodic shimmer.",
+  "description": "The golden ratio as harmonic content. Partials spaced at φ-derived intervals create a non-periodic shimmer.",
   "tags": [
     "ethereal",
     "golden-ratio",
@@ -42,7 +42,8 @@
       "over_lfo1Rate": 0.02,
       "over_lfo1Depth": 0.13,
       "over_attack": 3.0,
-      "over_release": 10.0
+      "over_release": 10.0,
+      "over_velBright": 0.274
     }
   },
   "coupling": {

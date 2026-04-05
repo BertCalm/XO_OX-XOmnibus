@@ -68,5 +68,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP PULSE": 0.45,
+    "MORPH SCAN": 0.45,
+    "COUPLING": 0.54,
+    "BLOOM": 0.393
+  }
 }

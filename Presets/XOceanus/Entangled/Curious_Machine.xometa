@@ -65,7 +65,8 @@
       "bob_macroSpace": 0.48,
       "bob_fltEnvAmt": 0.441,
       "bob_lfo1Rate": 0.205,
-      "bob_lfo1Depth": 0.209
+      "bob_lfo1Depth": 0.209,
+      "bob_velFilter": 0.438
     },
     "Organon": {
       "organon_catalystDrive": 0.6,

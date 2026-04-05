@@ -45,7 +45,8 @@
       "orph_sympatheticAmt": 0.686,
       "orph_filterEnvAmt": 0.361,
       "orph_lfo1Rate": 0.052,
-      "orph_lfo1Depth": 0.246
+      "orph_lfo1Depth": 0.246,
+      "orph_velocitySensitivity": 0.532
     }
   },
   "schema_version": 1,

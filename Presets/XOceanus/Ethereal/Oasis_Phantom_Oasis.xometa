@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Phantom Oasis",
   "mood": "Ethereal",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A hallucinated body of water — the actual note source has low warmth and very low sub, while the lagoon reverb and granular canopy create an illusory lushness. The note is barely there; the space is everything.",
-  "tags": ["ethereal", "phantom", "reverb-heavy", "sparse", "translucent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "phantom",
+    "reverb-heavy",
+    "sparse",
+    "translucent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -15,33 +28,41 @@
     "warmth": 0.32,
     "movement": 0.48,
     "density": 0.28,
-    "space": 0.90,
+    "space": 0.9,
     "aggression": 0.04
   },
   "parameters": {
     "Oasis": {
       "oas_entropySens": 0.58,
       "oas_breeze": 0.72,
-      "oas_swarmDensity": 0.60,
+      "oas_swarmDensity": 0.6,
       "oas_lagoonDepth": 0.92,
       "oas_subDrive": 0.08,
       "oas_resonatorQ": 3.0,
       "oas_cullDecay": 0.9992,
       "oas_canopyFB": 0.82,
       "oas_filterCutoff": 5200.0,
-      "oas_filterEnvAmt": 0.20,
-      "oas_pickupPos": 0.80,
+      "oas_filterEnvAmt": 0.2,
+      "oas_pickupPos": 0.8,
       "oas_bellAmount": 0.28,
       "oas_warmth": 0.18,
       "oas_tremoloDepth": 0.0,
       "oas_tremoloRate": 5.0,
       "oas_glideTime": 0.0,
-      "oas_macroCharacter": 0.30,
+      "oas_macroCharacter": 0.3,
       "oas_macroMovement": 0.48,
-      "oas_macroCoupling": 0.20,
-      "oas_macroSpace": 0.90
+      "oas_macroCoupling": 0.2,
+      "oas_macroSpace": 0.9
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.295,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.2,
+    "SPACE": 0.9
+  }
 }

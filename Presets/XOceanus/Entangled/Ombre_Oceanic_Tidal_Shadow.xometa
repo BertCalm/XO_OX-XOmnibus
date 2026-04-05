@@ -66,7 +66,8 @@
       "ombre_shadowAmount": 0.785,
       "ombre_spaceMix": 0.774,
       "ombre_toneA": 4744.9,
-      "ombre_toneB": 2837.2
+      "ombre_toneB": 2837.2,
+      "ombre_velCutoffScale": 0.372
     }
   },
   "schema_version": 1,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.642,
+    "COUPLING": 0.57,
+    "SPACE": 0.845
+  }
 }

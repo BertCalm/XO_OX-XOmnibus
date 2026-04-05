@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Fast LFO-gated FM pulse \u2014 rate 8Hz on LFO1, algorithm 0. Creates a mechanical tremolo-pulse at high speed.",
+  "description": "Fast LFO-gated FM pulse — rate 8Hz on LFO1, algorithm 0. Creates a mechanical tremolo-pulse at high speed.",
   "tags": [
     "fm",
     "pulse",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.22
+  }
 }

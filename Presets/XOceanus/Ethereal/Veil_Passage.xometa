@@ -42,7 +42,8 @@
       "ombre_lfo1Rate": 0.01,
       "ombre_lfo1Depth": 0.11,
       "ombre_attack": 4.5,
-      "ombre_release": 13.0
+      "ombre_release": 13.0,
+      "ombre_velCutoffScale": 0.242
     }
   },
   "coupling": {

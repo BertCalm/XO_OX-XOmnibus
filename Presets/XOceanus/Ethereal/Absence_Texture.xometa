@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Absence Texture",
+  "mood": "Ethereal",
+  "engines": [
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The sound of silence that is not silent — audiological testing reveals the ear generates its own noise floor. STRIFE axis at minimum; LOVE axis pulling two voices into harmonic convergence.",
+  "tags": [
+    "ethereal",
+    "absence",
+    "audiological",
+    "noise floor",
+    "LOVE",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.55,
+    "movement": 0.12,
+    "density": 0.18,
+    "space": 0.95,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_macroHammer": 0.05,
+      "ouie_algorithmA": 0,
+      "ouie_algorithmB": 0,
+      "ouie_interval": 0.22,
+      "ouie_filterCutoff": 5500.0,
+      "ouie_filterRes": 0.08,
+      "ouie_attack": 3.5,
+      "ouie_decay": 5.0,
+      "ouie_sustain": 0.92,
+      "ouie_release": 12.0,
+      "ouie_lfo1Rate": 0.02,
+      "ouie_lfo1Depth": 0.1,
+      "ouie_macroCharacter": 0.28,
+      "ouie_macroMovement": 0.12,
+      "ouie_macroCoupling": 0.05,
+      "ouie_macroSpace": 0.95,
+      "ouie_velCutoffAmt": 0.302
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.05,
+    "SPACE": 0.95
+  }
+}

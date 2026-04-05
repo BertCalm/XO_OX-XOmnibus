@@ -71,5 +71,11 @@
       "weave_voiceMode": 3
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "WEAVE": 0.533,
+    "TENSION": 0.422,
+    "KNOT": 0.454,
+    "SPACE": 0.8
+  }
 }

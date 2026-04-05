@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Acid Ring War",
   "mood": "Entangled",
-  "engines": ["Oblong", "Ouroboros"],
+  "engines": [
+    "Oblong",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Acid filter ring-modulated by chaos attractor. The resonance spike and attractor signal annihilate in spectacular war.",
-  "tags": ["entangled", "aggressive", "acid", "ring-mod", "war"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "acid",
+    "ring-mod",
+    "war"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -32,7 +46,8 @@
       "bob_attackTime": 0.005,
       "bob_decayTime": 0.16,
       "bob_sustain": 0.2,
-      "bob_releaseTime": 0.12
+      "bob_releaseTime": 0.12,
+      "bob_velFilter": 0.637
     },
     "Ouroboros": {
       "ouro_macroCharacter": 0.88,

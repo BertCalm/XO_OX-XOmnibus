@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.461,
       "owl_resonantPitch": 0.375,
       "owl_shimmer": 0.411,
-      "owl_subLevel": 0.227
+      "owl_subLevel": 0.227,
+      "owl_velocity": 0.693
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "overworld"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.584,
+    "MOVEMENT": 0.411,
+    "COUPLING": 0.5,
+    "SPACE": 0.439
+  }
 }

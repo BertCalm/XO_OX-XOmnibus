@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pure Drawbar",
   "mood": "Crystalline",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A single drawbar pulled — 8' only, all others at zero. The organ's purest possible voice. One partial, infinite sustain.",
-  "tags": ["crystalline", "organ", "single-stop", "pure", "oto"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "organ",
+    "single-stop",
+    "pure",
+    "oto"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -56,6 +69,14 @@
       "oto_macroSpace": 0.5
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
+  }
 }

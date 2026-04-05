@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Predator Ring",
   "mood": "Entangled",
-  "engines": ["Orca", "Oblique"],
+  "engines": [
+    "Orca",
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Apex predator hunt signal ring-modulating prismatic bounce. The hunt frequency destroys the prism trajectory.",
-  "tags": ["entangled", "aggressive", "predator", "ring-mod", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "predator",
+    "ring-mod",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -34,7 +48,8 @@
       "orca_attackTime": 0.004,
       "orca_decayTime": 0.15,
       "orca_sustain": 0.26,
-      "orca_releaseTime": 0.12
+      "orca_releaseTime": 0.12,
+      "orca_velCutoffAmt": 0.635
     },
     "Oblique": {
       "oblq_macroCharacter": 0.84,

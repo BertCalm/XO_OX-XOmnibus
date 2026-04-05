@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Colony and Climate",
   "mood": "Organic",
-  "engines": ["Organism", "Osier"],
+  "engines": [
+    "Organism",
+    "Osier"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cellular colony responding to wind conditions — emergence rule selection driven by wind density above.",
-  "tags": ["organic", "colony", "climate", "coupled", "emergent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "colony",
+    "climate",
+    "coupled",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
@@ -16,7 +30,7 @@
     "movement": 0.48,
     "density": 0.52,
     "space": 0.54,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Organism": {
@@ -24,20 +38,21 @@
       "org_macroMovement": 0.48,
       "org_macroCoupling": 0.24,
       "org_macroSpace": 0.52,
-      "org_ruleSet": 0.60,
+      "org_ruleSet": 0.6,
       "org_filterEnvAmt": 0.46,
       "org_lfo1Rate": 0.09,
       "org_lfo1Depth": 0.28,
       "org_lfo2Rate": 0.04,
-      "org_lfo2Depth": 0.20
+      "org_lfo2Depth": 0.2,
+      "org_velCutoff": 0.425
     },
     "Osier": {
       "osier_macroCharacter": 0.38,
       "osier_macroMovement": 0.46,
       "osier_macroCoupling": 0.24,
       "osier_macroSpace": 0.55,
-      "osier_windDensity": 0.50,
-      "osier_filterEnvAmt": 0.40,
+      "osier_windDensity": 0.5,
+      "osier_filterEnvAmt": 0.4,
       "osier_lfo1Rate": 0.11,
       "osier_lfo1Depth": 0.26,
       "osier_lfo2Rate": 0.05,

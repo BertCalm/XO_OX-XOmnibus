@@ -66,7 +66,8 @@
       "orca_pitchRand": 0.002,
       "orca_podSync": 0.333,
       "orca_wavetablePos": 0.378,
-      "orca_wavetableScan": 0.387
+      "orca_wavetableScan": 0.387,
+      "orca_velCutoffAmt": 0.53
     }
   },
   "schema_version": 1,
@@ -78,5 +79,11 @@
     "odyssey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.418,
+    "MOVEMENT": 0.566,
+    "COUPLING": 0.537,
+    "SPACE": 0.643
+  }
 }

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Dust Frequency",
+  "mood": "Coupling",
+  "engines": [
+    "Opaline",
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPALINE prepared density barely seeds OPCODE's code depth with texture — the prepared piano's material inconsistency leaving almost invisible fingerprints in digital signal flow, dust in the algorithm.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "prepared",
+    "digital",
+    "AudioToFM",
+    "hybrid",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.38,
+    "density": 0.44,
+    "space": 0.54,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_preparedDensity": 0.52,
+      "opal2_filterEnvAmt": 0.4,
+      "opal2_lfo1Rate": 0.07,
+      "opal2_lfo1Depth": 0.15,
+      "opal2_macroCharacter": 0.48,
+      "opal2_macroMovement": 0.36,
+      "opal2_macroCoupling": 0.12,
+      "opal2_macroSpace": 0.52
+    },
+    "Opcode": {
+      "opco_codeDepth": 0.5,
+      "opco_filterEnvAmt": 0.38,
+      "opco_lfo1Rate": 0.08,
+      "opco_lfo1Depth": 0.14,
+      "opco_macroCharacter": 0.46,
+      "opco_macroMovement": 0.34,
+      "opco_macroCoupling": 0.13,
+      "opco_macroSpace": 0.54,
+      "opco_velToIndex": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opaline",
+        "engineB": "Opcode",
+        "type": "AudioToFM",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.13,
+    "SPACE": 0.53
+  }
+}

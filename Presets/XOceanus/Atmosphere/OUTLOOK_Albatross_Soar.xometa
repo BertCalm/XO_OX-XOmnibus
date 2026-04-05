@@ -60,5 +60,11 @@
     "density": 0.5,
     "space": 0.85,
     "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
   }
 }

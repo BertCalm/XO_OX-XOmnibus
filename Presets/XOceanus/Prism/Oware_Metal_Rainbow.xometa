@@ -59,11 +59,18 @@
       "owr_macroMaterial": 0.85,
       "owr_macroHardness": 0.92,
       "owr_macroBuzz": 0.38,
-      "owr_macroSympathetic": 0.72
+      "owr_macroSympathetic": 0.72,
+      "owr_malletVelocity": 0.85
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MATERIAL": 0.45,
+    "HARDNESS": 0.45,
+    "BUZZ": 0.45,
+    "SYMPATHETIC": 0.45
+  }
 }

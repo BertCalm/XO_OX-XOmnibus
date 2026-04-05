@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Cellular Bass",
   "mood": "Foundation",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Rule 30 — the chaos standard. Wolfram used it as his pseudo-random number generator; here it seeds a sub-bass oscillator. Very low projection width (0.1) means only a few cells participate — almost a sine-like readout with chaotic overtone flicker. Fast attack, deep filter. Velocity opens the filter aggressively. Grid Energy subtly modulates chaos amount so the bass gets grittier as it gets denser. Sit on the low end.",
-  "tags": ["awakening", "bass", "sub", "rule-30", "chaos", "low", "deep"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "bass",
+    "sub",
+    "rule-30",
+    "chaos",
+    "low",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.15,
@@ -59,5 +80,11 @@
     "density": 0.72,
     "space": 0.18,
     "aggression": 0.58
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.55,
+    "SPACE": 0.18,
+    "COUPLING": 0.2
   }
 }

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine cosmic aether \u2014 MORPH ghost scan, DRIFT shimmer canopy, FAT void floor. Infinite harmonic space.",
+  "description": "Three-engine cosmic aether — MORPH ghost scan, DRIFT shimmer canopy, FAT void floor. Infinite harmonic space.",
   "tags": [
     "morph",
     "drift",
@@ -139,5 +139,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH SCAN": 0.45,
+    "DRIFT CANOPY": 0.45,
+    "FAT VOID": 0.45,
+    "COUPLING": 0.42
+  }
 }

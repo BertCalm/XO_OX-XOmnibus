@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crystal Violence",
   "mood": "Prism",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum crystal drive with maximum HF noise — the prepared piano turned purely spectral weapon. Velocity determines which crystal facet you hit.",
-  "tags": ["prepared-piano", "prism", "aggressive", "crystal", "spectral"],
-  "macroLabels": ["FRAGILITY", "CRYSTAL", "SHOCK", "NOISE"],
+  "tags": [
+    "prepared-piano",
+    "prism",
+    "aggressive",
+    "crystal",
+    "spectral"
+  ],
+  "macroLabels": [
+    "FRAGILITY",
+    "CRYSTAL",
+    "SHOCK",
+    "NOISE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,14 @@
       "opal2_macroNoise": 0.88
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "FRAGILITY": 0.45,
+    "CRYSTAL": 0.45,
+    "SHOCK": 0.45,
+    "NOISE": 0.45
+  }
 }

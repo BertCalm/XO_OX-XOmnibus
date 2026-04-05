@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Rise Perpetual",
   "mood": "Flux",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The RISE macro acts as a perpetual ascension engine — long attack into filter and shimmer while slow LFO1 carries the filter on a 30-second journey. LFO2 trembles the shimmer feedback, creating the sensation of altitude changing in micro-increments.",
-  "tags": ["flux", "rise", "perpetual", "ascending", "shimmer", "long-form", "movement"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "flux",
+    "rise",
+    "perpetual",
+    "ascending",
+    "shimmer",
+    "long-form",
+    "movement"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,7 +81,8 @@
       "sky_modSlot1Amt": 0.0,
       "sky_modSlot2Src": 0.0,
       "sky_modSlot2Dst": 0.0,
-      "sky_modSlot2Amt": 0.0
+      "sky_modSlot2Amt": 0.0,
+      "sky_velSensitivity": 0.763
     }
   },
   "macros": {
@@ -75,5 +91,7 @@
     "GLOW": 0.62,
     "AIR": 0.68
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

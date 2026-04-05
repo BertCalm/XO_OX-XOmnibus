@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Reverse Bloom",
   "mood": "Flux",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reversed grain playback at medium density creates blooming textures where each grain arrives backward. The speed parameter set below 1.0 extends grain duration while reverse gives them their characteristic backwards breath quality.",
-  "tags": ["flux", "reverse", "bloom", "granular", "backwards", "texture", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "reverse",
+    "bloom",
+    "granular",
+    "backwards",
+    "texture",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -35,7 +50,8 @@
       "opal_macroCharacter": 0.45,
       "opal_macroMovement": 0.78,
       "opal_macroCoupling": 0.3,
-      "opal_macroSpace": 0.5
+      "opal_macroSpace": 0.5,
+      "opal_ampVelSens": 0.477
     }
   },
   "macros": {
@@ -44,5 +60,7 @@
     "COUPLING": 0.3,
     "SPACE": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

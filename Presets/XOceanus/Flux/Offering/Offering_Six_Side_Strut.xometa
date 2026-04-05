@@ -41,14 +41,15 @@
       "ofr_v0_tune": -2.0,
       "ofr_v1_body": 0.6,
       "ofr_masterWidth": 0.65,
-      "ofr_dustVinyl": 0.15
+      "ofr_dustVinyl": 0.15,
+      "ofr_velToSnap": 0.816
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Evolving texture from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

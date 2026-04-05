@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Triangular Mass",
   "mood": "Entangled",
-  "engines": ["Oxytocin", "Obese"],
+  "engines": [
+    "Oxytocin",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "TriangularCoupling #15 at maximum intimacy — circuit-modeled love triangle at peak saturation, coupled to OBESE fat layer. Three-way entanglement at maximum density.",
-  "tags": ["entangled", "dense", "oxytocin", "obese", "triangular", "coupling"],
-  "macroLabels": ["INTIMACY", "BELLY", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "dense",
+    "oxytocin",
+    "obese",
+    "triangular",
+    "coupling"
+  ],
+  "macroLabels": [
+    "INTIMACY",
+    "BELLY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -88,5 +103,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "INTIMACY": 0.45,
+    "BELLY": 0.552,
+    "COUPLING": 0.678,
+    "SPACE": 0.35
+  }
 }

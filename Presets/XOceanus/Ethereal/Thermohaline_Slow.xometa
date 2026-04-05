@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Thermohaline Slow",
+  "mood": "Ethereal",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thermohaline circulation completing one full cycle in 1,000 years \u2014 the ocean conveyor belt moving heat from equator to poles at speeds measurable only over decades.",
+  "tags": [
+    "ethereal",
+    "thermohaline",
+    "slow",
+    "circulation",
+    "millennium",
+    "ocean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.42,
+    "movement": 0.08,
+    "density": 0.55,
+    "space": 0.92,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.25,
+      "out_macroMovement": 0.08,
+      "out_macroCoupling": 0.08,
+      "out_macroSpace": 0.92,
+      "out_currentSpeed": 0.05,
+      "out_stormDepth": 0.28,
+      "out_filterEnvAmt": 0.18,
+      "out_lfo1Rate": 0.02,
+      "out_lfo1Depth": 0.12,
+      "out_filterCutoff": 0.28,
+      "out_filterRes": 0.15,
+      "out_attackTime": 3.5,
+      "out_decayTime": 5.0,
+      "out_sustain": 0.88,
+      "out_releaseTime": 10.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.08,
+    "SPACE": 0.92
+  }
+}

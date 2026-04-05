@@ -51,7 +51,8 @@
       "ouie_macroHammer": 0.2,
       "ouie_macroCartilage": 0.3,
       "ouie_macroAmpullae": 0.35,
-      "ouie_macroCurrent": 0.98
+      "ouie_macroCurrent": 0.98,
+      "ouie_velCutoffAmt": 0.31
     }
   },
   "macros": {

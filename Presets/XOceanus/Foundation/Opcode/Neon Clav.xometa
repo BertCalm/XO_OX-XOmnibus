@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM clavinet-style \u2014 high ratio 4:1, short decay, punchy velocity response. Funky series algorithm with attitude.",
+  "description": "FM clavinet-style — high ratio 4:1, short decay, punchy velocity response. Funky series algorithm with attitude.",
   "tags": [
     "fm",
     "clav",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
 }

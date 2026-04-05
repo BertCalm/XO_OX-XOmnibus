@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Jaw Clench",
   "mood": "Flux",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The possum bites down hard. Maximum bite depth, scritch tremolo rattling the cage.",
-  "tags": ["flux", "aggressive", "bite", "tension", "overbite"],
-  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "tags": [
+    "flux",
+    "aggressive",
+    "bite",
+    "tension",
+    "overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "PLAY DEAD",
+    "SCURRY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "poss_attackTime": 0.006,
       "poss_decayTime": 0.24,
       "poss_sustain": 0.32,
-      "poss_releaseTime": 0.2
+      "poss_releaseTime": 0.2,
+      "poss_ampVelSens": 0.779
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.88,

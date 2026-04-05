@@ -78,7 +78,8 @@
       "sky_modSlot1Amt": 0.0,
       "sky_modSlot2Src": 0.0,
       "sky_modSlot2Dst": 0.0,
-      "sky_modSlot2Amt": 0.0
+      "sky_modSlot2Amt": 0.0,
+      "sky_velSensitivity": 0.63
     }
   },
   "coupling": {
@@ -91,5 +92,11 @@
       }
     ]
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "RISE": 0.48,
+    "WIDTH": 0.48,
+    "GLOW": 0.48,
+    "AIR": 0.48
+  }
 }

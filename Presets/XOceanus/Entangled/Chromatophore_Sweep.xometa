@@ -145,5 +145,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SOLVE": 0.43,
+    "SYNAPSE": 0.564,
+    "CHROMATOPHORE": 0.669,
+    "DEN": 0.331
+  }
 }

@@ -43,7 +43,8 @@
       "deep_lfo1Rate": 0.01,
       "deep_lfo1Depth": 0.11,
       "deep_attack": 4.0,
-      "deep_release": 11.0
+      "deep_release": 11.0,
+      "deep_velCutoffAmt": 0.302
     },
     "Overtone": {
       "over_macroCharacter": 0.32,
@@ -55,7 +56,8 @@
       "over_lfo1Rate": 0.018,
       "over_lfo1Depth": 0.13,
       "over_attack": 3.5,
-      "over_release": 10.5
+      "over_release": 10.5,
+      "over_velBright": 0.272
     }
   },
   "coupling": {

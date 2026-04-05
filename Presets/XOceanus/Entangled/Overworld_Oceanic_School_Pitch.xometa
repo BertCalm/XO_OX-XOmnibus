@@ -105,5 +105,11 @@
     "coupled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "ERA POSITION": 0.45,
+    "SCHOOL DENSITY": 0.45,
+    "COUPLING": 0.6,
+    "SPACE": 0.58
+  }
 }

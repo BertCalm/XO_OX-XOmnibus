@@ -64,5 +64,11 @@
     "atmosphere"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "SCAN RATE": 0.45,
+    "MORPH RANGE": 0.45,
+    "FILTER": 0.45,
+    "DENSITY": 0.12
+  }
 }

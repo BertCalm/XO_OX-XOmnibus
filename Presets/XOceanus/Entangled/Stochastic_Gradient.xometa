@@ -53,7 +53,8 @@
       "ombre_macroSpace": 0.522,
       "ombre_filterEnvAmt": 0.432,
       "ombre_lfo1Rate": 0.208,
-      "ombre_lfo1Depth": 0.216
+      "ombre_lfo1Depth": 0.216,
+      "ombre_velCutoffScale": 0.398
     },
     "Oracle": {
       "oracle_aggression": 0.311,

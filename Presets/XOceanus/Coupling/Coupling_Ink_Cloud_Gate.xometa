@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCTOPUS ink cloud defense signal modulates OPAL grain cloud density \u2014 escape mechanism feeding granular scatter, ink translating to grain.",
+  "description": "OCTOPUS ink cloud defense signal modulates OPAL grain cloud density — escape mechanism feeding granular scatter, ink translating to grain.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "opal_macroCharacter": 0.5,
       "opal_macroMovement": 0.54,
       "opal_macroCoupling": 0.6,
-      "opal_macroSpace": 0.52
+      "opal_macroSpace": 0.52,
+      "opal_ampVelSens": 0.368
     }
   },
   "coupling": {

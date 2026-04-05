@@ -174,7 +174,7 @@ Schulze wants OUIE to journey on its own through long-form evolution without req
 
 ### The Prophecy
 
-OUIE is one of the most architecturally ambitious engines in the XOlokun fleet. The core concept — duophonic synthesis with 8 selectable algorithms per voice, interacting through the bipolar HAMMER axis from STRIFE to LOVE — is genuinely novel and well-executed. The 64 possible algorithm pairings, each producing different spectral interactions through the HAMMER, give this engine extraordinary timbral range within a focused identity.
+OUIE is one of the most architecturally ambitious engines in the XOceanus fleet. The core concept — duophonic synthesis with 8 selectable algorithms per voice, interacting through the bipolar HAMMER axis from STRIFE to LOVE — is genuinely novel and well-executed. The 64 possible algorithm pairings, each producing different spectral interactions through the HAMMER, give this engine extraordinary timbral range within a focused identity.
 
 The primary weaknesses are the thin CURRENT macro, the unimplemented LOVE harmonic lock feature described in the concept, and the Duo mode envelope retrigger bug. With the CURRENT macro expanded (adding reverb and delay), the harmonic lock implemented, and the Duo mode bug fixed, this engine reaches 9.0+.
 

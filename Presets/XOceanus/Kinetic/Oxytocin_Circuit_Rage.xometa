@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Circuit Rage",
+  "mood": "Kinetic",
+  "engines": ["Oxytocin"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Circuit-love accumulated across a long note and discharged as maximum kinetic aggression — warmth becomes weapon.",
+  "tags": ["kinetic", "aggressive", "circuit", "discharge", "intense"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.75,
+    "space": 0.15,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.95,
+      "oxy_filterEnvAmt": 0.98,
+      "oxy_lfo1Rate": 0.88,
+      "oxy_lfo1Depth": 0.82,
+      "oxy_macroCharacter": 0.88,
+      "oxy_macroMovement": 0.92,
+      "oxy_macroCoupling": 0.15,
+      "oxy_macroSpace": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

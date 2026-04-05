@@ -57,5 +57,11 @@
     "ghost"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.405,
+    "GLITCH": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

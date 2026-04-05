@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.105,
       "bob_scaleMode": 0.4,
       "bob_subOscLevel": 0.244,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.478
     },
     "Ohm": {
       "ohm_filterCutoff": 4459.0,
@@ -74,5 +75,11 @@
     "ohm"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.458,
+    "MOVEMENT": 0.454,
+    "COUPLING": 0.48,
+    "SPACE": 0.591
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sweeping filter pad with slow LFO and a scratchy vinyl noise layer \u2014 atmospheric claw marks.",
+  "description": "Sweeping filter pad with slow LFO and a scratchy vinyl noise layer — atmospheric claw marks.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.45,
@@ -57,7 +57,8 @@
       "poss_oscAShape": 0.35,
       "poss_oscAWaveform": 2,
       "poss_unisonDetune": 0.2,
-      "poss_unisonVoices": 2
+      "poss_unisonVoices": 2,
+      "poss_ampVelSens": 0.34
     }
   },
   "schema_version": 1,

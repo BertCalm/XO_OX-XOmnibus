@@ -86,5 +86,11 @@
     "alien",
     "transcendental"
   ],
-  "description": "All five OCTOPUS subsystems simultaneously at full expression: 8 arms (1.0 spread), chromatophore HP/Notch zone, ink cloud firing above velocity 0.5, 2-second glide + drift, maximum sucker. The organism fully alive."
+  "description": "All five OCTOPUS subsystems simultaneously at full expression: 8 arms (1.0 spread), chromatophore HP/Notch zone, ink cloud firing above velocity 0.5, 2-second glide + drift, maximum sucker. The organism fully alive.",
+  "macros": {
+    "CHARACTER": 0.675,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

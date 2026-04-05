@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Anti-Entropy",
+  "mood": "Luminous",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Anti-extinction mechanism engaged — the grid held artificially alive through periodic reseeding, creating a system that cannot die. The CA defying the second law locally.",
+  "tags": [
+    "luminous",
+    "anti-extinction",
+    "reseeding",
+    "alive",
+    "defiant",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 90,
+      "obnt_ruleMorph": 0.25,
+      "obnt_evolutionRate": 22.0,
+      "obnt_gridDensity": 0.45,
+      "obnt_chaos": 0.32,
+      "obnt_projection": 0.55,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 10500.0,
+      "obnt_filterResonance": 0.48,
+      "obnt_attack": 0.003,
+      "obnt_decay": 0.15,
+      "obnt_sustain": 0.28,
+      "obnt_release": 0.35,
+      "obnt_velSens": 0.92,
+      "obnt_lfo1Rate": 6.0,
+      "obnt_lfo1Depth": 0.35,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.72,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 1,
+      "obnt_modAmt2": 0.48,
+      "obnt_modSrc3": 1,
+      "obnt_modDst3": 0,
+      "obnt_modAmt3": -0.38,
+      "obnt_modSrc4": 3,
+      "obnt_modDst4": 3,
+      "obnt_modAmt4": 0.32,
+      "obnt_macroChaos": 0.55,
+      "obnt_macroEvolution": 0.78,
+      "obnt_macroSpace": 0.65,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.58,
+    "SPACE": 0.65,
+    "COUPLING": 0.2
+  }
+}

@@ -48,14 +48,15 @@
       "ofr_v0_tune": -3.0,
       "ofr_v4_tune": 4.0,
       "ofr_v7_tune": -8.0,
-      "ofr_v7_level": 0.75
+      "ofr_v7_level": 0.75,
+      "ofr_velToSnap": 0.492
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Animated spacious aetheric sound from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

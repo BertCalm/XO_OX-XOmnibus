@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The play of color in a fire opal \u2014 granular particles of light dancing through crystalline mineral.",
+  "description": "The play of color in a fire opal — granular particles of light dancing through crystalline mineral.",
   "tags": [
     "crystalline",
     "opal",
@@ -39,7 +39,8 @@
       "opal_macroSpace": 0.53,
       "opal_filterEnvAmt": 0.59,
       "opal_lfo1Rate": 0.06,
-      "opal_lfo1Depth": 0.19
+      "opal_lfo1Depth": 0.19,
+      "opal_ampVelSens": 0.334
     }
   },
   "coupling": {

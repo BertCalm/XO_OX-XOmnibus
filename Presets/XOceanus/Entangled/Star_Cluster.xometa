@@ -100,5 +100,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "MORPH TEXTURE": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.7
+  }
 }

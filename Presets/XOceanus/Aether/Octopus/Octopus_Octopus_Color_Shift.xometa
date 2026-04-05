@@ -53,5 +53,11 @@
     "rapid"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "STRETCH": 0.45,
+    "INK": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

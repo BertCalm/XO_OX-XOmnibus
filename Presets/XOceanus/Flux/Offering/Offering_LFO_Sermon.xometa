@@ -40,14 +40,15 @@
       "ofr_envToPitch": 0.2,
       "ofr_v0_body": 0.75,
       "ofr_v2_decay": 0.07,
-      "ofr_v3_decay": 0.55
+      "ofr_v3_decay": 0.55,
+      "ofr_velToSnap": 0.798
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Animated evolving texture from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

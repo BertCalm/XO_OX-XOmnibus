@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crash Zone",
   "mood": "Kinetic",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full speed crash into the crash zone. Apex predator wavetable hitting terminal velocity.",
-  "tags": ["kinetic", "aggressive", "crash", "terminal", "speed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "aggressive",
+    "crash",
+    "terminal",
+    "speed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "orca_attackTime": 0.002,
       "orca_decayTime": 0.12,
       "orca_sustain": 0.22,
-      "orca_releaseTime": 0.1
+      "orca_releaseTime": 0.1,
+      "orca_velCutoffAmt": 0.788
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.92,

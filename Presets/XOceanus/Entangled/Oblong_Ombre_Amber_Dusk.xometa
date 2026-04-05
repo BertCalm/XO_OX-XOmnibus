@@ -58,11 +58,13 @@
       "bob_reverbMix": 0.32,
       "bob_scaleMode": 1.0,
       "bob_subOscLevel": 0.341,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.476
     },
     "Ombre": {
       "ombre_filterCutoff": 4463.6,
-      "ombre_level": 0.807
+      "ombre_level": 0.807,
+      "ombre_velCutoffScale": 0.38
     }
   },
   "schema_version": 1,
@@ -74,5 +76,11 @@
     "ombre"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.408,
+    "MOVEMENT": 0.502,
+    "COUPLING": 0.57,
+    "SPACE": 0.56
+  }
 }

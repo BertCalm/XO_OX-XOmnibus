@@ -65,7 +65,8 @@
       "orph_lfoRate": 0.08,
       "orph_lfoDepth": 0.18,
       "orph_outputLevel": 0.72,
-      "orph_reverbMix": 0.35
+      "orph_reverbMix": 0.35,
+      "orph_velocitySensitivity": 0.731
     }
   },
   "coupling": {
@@ -104,5 +105,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.465,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.342,
+    "SPACE": 0.58
+  }
 }

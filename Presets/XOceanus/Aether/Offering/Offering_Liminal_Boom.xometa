@@ -46,14 +46,15 @@
       "ofr_v0_tune": -5.0,
       "ofr_v1_decay": 0.4,
       "ofr_v6_decay": 0.8,
-      "ofr_v6_level": 0.85
+      "ofr_v6_level": 0.85,
+      "ofr_velToSnap": 0.468
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Dark warm aetheric sound from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

@@ -23,7 +23,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Six-engine world atmosphere \u2014 all engines creating complete acoustic world. Cinematic.",
+  "description": "Six-engine world atmosphere — all engines creating complete acoustic world. Cinematic.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.45,
@@ -123,7 +123,8 @@
       "bob_texMode": 0,
       "bob_texTone": 0.5,
       "bob_texWidth": 0.5,
-      "bob_voiceMode": 0
+      "bob_voiceMode": 0,
+      "bob_velFilter": 0.312
     },
     "OddOscar": {
       "morph_bloom": 0.78,
@@ -242,5 +243,11 @@
     "atmosphere"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "PERC": 0.45,
+    "MIST": 0.45,
+    "WATER": 0.45,
+    "SKY": 0.45
+  }
 }

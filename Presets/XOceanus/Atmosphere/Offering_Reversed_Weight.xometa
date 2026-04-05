@@ -41,7 +41,8 @@
       "ofr_v6_decay": 0.65,
       "ofr_transientSnap": 0.3,
       "ofr_digCuriosity": 0.6,
-      "ofr_masterWidth": 0.75
+      "ofr_masterWidth": 0.75,
+      "ofr_velToSnap": 0.432
     }
   },
   "schema_version": 1,

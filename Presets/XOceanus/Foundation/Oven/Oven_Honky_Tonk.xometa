@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Honky Tonk",
+  "name": "Honky Tonk (Oven)",
   "mood": "Foundation",
   "engines": [
     "Oven"
@@ -64,5 +64,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.2,
+    "SPACE": 0.3
+  }
 }

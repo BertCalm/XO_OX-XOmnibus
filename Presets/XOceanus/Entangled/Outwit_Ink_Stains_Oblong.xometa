@@ -58,7 +58,8 @@
     "Oblong": {
       "bob_fltCutoff": 0.65,
       "bob_oscWave": 0,
-      "bob_ampRelease": 1.2
+      "bob_ampRelease": 1.2,
+      "bob_velFilter": 0.495
     }
   },
   "coupling": {
@@ -72,5 +73,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.465,
+    "CHAOS": 0.296,
+    "COUPLING": 0.45,
+    "SPACE": 0.55
+  }
 }

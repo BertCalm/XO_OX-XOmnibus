@@ -83,5 +83,11 @@
     "prime-ratio",
     "transcendental"
   ],
-  "description": "Eight prime-ratio LFOs at 0.15 Hz base rate — the fastest arm cycles every 6.7 seconds. Eight dimensions of slow generative modulation that never repeats. OCTOPUS as an ambient cellular automaton."
+  "description": "Eight prime-ratio LFOs at 0.15 Hz base rate — the fastest arm cycles every 6.7 seconds. Eight dimensions of slow generative modulation that never repeats. OCTOPUS as an ambient cellular automaton.",
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

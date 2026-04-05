@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Breath Lattice",
+  "mood": "Coupling",
+  "engines": [
+    "Ouroboros",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS velocity signal barely breathes into OVERWORLD's ERA triangle position — the strange attractor's edge energy leaving only the faintest timbral fingerprint on the generational sweep.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "attractor",
+    "era",
+    "VelocityCoupling",
+    "generative",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.52,
+    "density": 0.38,
+    "space": 0.56,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.5,
+      "ouro_filterEnvAmt": 0.44,
+      "ouro_lfo1Rate": 0.09,
+      "ouro_lfo1Depth": 0.18,
+      "ouro_macroCharacter": 0.5,
+      "ouro_macroMovement": 0.5,
+      "ouro_macroCoupling": 0.13,
+      "ouro_macroSpace": 0.54
+    },
+    "Overworld": {
+      "ow_era": 0.48,
+      "ow_filterEnvAmt": 0.4,
+      "ow_lfo1Rate": 0.1,
+      "ow_lfo1Depth": 0.16,
+      "ow_macroCharacter": 0.46,
+      "ow_macroMovement": 0.46,
+      "ow_macroCoupling": 0.14,
+      "ow_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "VelocityCoupling",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.13,
+    "SPACE": 0.53
+  }
+}

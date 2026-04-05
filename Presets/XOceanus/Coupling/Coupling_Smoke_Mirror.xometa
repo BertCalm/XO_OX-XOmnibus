@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OMBRE shadow blend drives OBSCURA plate stiffness \u2014 memory and forgetting shaping how the daguerreotype surface receives light.",
+  "description": "OMBRE shadow blend drives OBSCURA plate stiffness — memory and forgetting shaping how the daguerreotype surface receives light.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "ombre_macroCharacter": 0.52,
       "ombre_macroMovement": 0.5,
       "ombre_macroCoupling": 0.62,
-      "ombre_macroSpace": 0.56
+      "ombre_macroSpace": 0.56,
+      "ombre_velCutoffScale": 0.348
     },
     "Obscura": {
       "obscura_stiffness": 0.55,

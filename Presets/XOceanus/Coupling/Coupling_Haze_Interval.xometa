@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Haze Interval",
+  "mood": "Coupling",
+  "engines": [
+    "Ouie",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUIE duophonic hammer interval barely drifts ODYSSEY's oscillator pitch — two voices deciding a note, the ghost of their interval coloring the solo drift below like sunlight through fog.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "interval",
+    "drift",
+    "PitchToPitch",
+    "duophonic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.48,
+    "movement": 0.5,
+    "density": 0.38,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_macroHammer": 0.5,
+      "ouie_filterEnvAmt": 0.42,
+      "ouie_lfo1Rate": 0.08,
+      "ouie_lfo1Depth": 0.18,
+      "ouie_macroCharacter": 0.5,
+      "ouie_macroMovement": 0.48,
+      "ouie_macroCoupling": 0.13,
+      "ouie_macroSpace": 0.58,
+      "ouie_velCutoffAmt": 0.418
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 0.5,
+      "drift_filterEnvAmt": 0.38,
+      "drift_lfo1Rate": 0.07,
+      "drift_lfo1Depth": 0.15,
+      "drift_macroCharacter": 0.46,
+      "drift_macroMovement": 0.44,
+      "drift_macroCoupling": 0.12,
+      "drift_macroSpace": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouie",
+        "engineB": "Odyssey",
+        "type": "PitchToPitch",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.13,
+    "SPACE": 0.59
+  }
+}

@@ -53,7 +53,8 @@
       "owl_macroSpace": 0.491,
       "owl_filterEnvDepth": 0.405,
       "owl_lfoRate": 0.119,
-      "owl_lfoDepth": 0.192
+      "owl_lfoDepth": 0.192,
+      "owl_velocity": 0.577
     },
     "Organon": {
       "organon_macroCharacter": 0.523,

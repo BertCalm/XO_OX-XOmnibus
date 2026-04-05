@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Bore",
+  "mood": "Kinetic",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A tidal bore surging upstream \u2014 the Bay of Fundy's 16-metre tidal range reversing a river, the bore face hitting 4 metres high and audible 20 kilometres away.",
+  "tags": [
+    "kinetic",
+    "outflow",
+    "tidal bore",
+    "reversal",
+    "surge",
+    "Bay of Fundy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.45,
+    "movement": 0.92,
+    "density": 0.78,
+    "space": 0.28,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.78,
+      "out_macroMovement": 0.92,
+      "out_macroCoupling": 0.32,
+      "out_macroSpace": 0.28,
+      "out_currentSpeed": 0.95,
+      "out_stormDepth": 0.78,
+      "out_filterEnvAmt": 0.72,
+      "out_lfo1Rate": 0.55,
+      "out_lfo1Depth": 0.62,
+      "out_filterCutoff": 0.72,
+      "out_filterRes": 0.62,
+      "out_attackTime": 0.005,
+      "out_decayTime": 0.15,
+      "out_sustain": 0.45,
+      "out_releaseTime": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.32,
+    "SPACE": 0.28
+  }
+}

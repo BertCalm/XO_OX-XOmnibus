@@ -110,5 +110,11 @@
     "school"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.498,
+    "SPACE": 0.7
+  }
 }

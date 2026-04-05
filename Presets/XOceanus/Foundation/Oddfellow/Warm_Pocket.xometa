@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slightly reduced brightness, slow tremolo, warm sustain. The Wurlitzer in a gospel choir \u2014 supportive and sure.",
+  "description": "Slightly reduced brightness, slow tremolo, warm sustain. The Wurlitzer in a gospel choir — supportive and sure.",
   "tags": [
     "wurlitzer",
     "warm",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
 }

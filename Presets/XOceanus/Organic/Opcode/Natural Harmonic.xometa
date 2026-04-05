@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 0 at a 3:2 ratio \u2014 the perfect fifth relationship as FM. The most consonant FM voice possible.",
+  "description": "Algorithm 0 at a 3:2 ratio — the perfect fifth relationship as FM. The most consonant FM voice possible.",
   "tags": [
     "fm",
     "harmonic",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
+  }
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Echolocation Barrage",
   "mood": "Kinetic",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Apex predator hunt macro at maximum — wavetable breach energy plus full echolocation density. Every pulse returned, every frequency occupied.",
-  "tags": ["kinetic", "dense", "orca", "echolocation", "hunt", "barrage"],
-  "macroLabels": ["HUNT", "BREACH", "COUPLING", "DEPTH"],
+  "tags": [
+    "kinetic",
+    "dense",
+    "orca",
+    "echolocation",
+    "hunt",
+    "barrage"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "BREACH",
+    "COUPLING",
+    "DEPTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -42,9 +56,18 @@
       "orca_macroCharacter": 0.88,
       "orca_macroMovement": 0.95,
       "orca_macroCoupling": 0.45,
-      "orca_macroSpace": 0.26
+      "orca_macroSpace": 0.26,
+      "orca_velCutoffAmt": 0.776
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "HUNT": 0.4,
+    "BREACH": 0.45,
+    "COUPLING": 0.2,
+    "DEPTH": 0.48
+  }
 }

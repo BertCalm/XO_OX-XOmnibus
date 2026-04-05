@@ -95,5 +95,11 @@
     "density": 0.35,
     "space": 0.8,
     "aggression": 0.05
+  },
+  "macros": {
+    "SCATTER": 0.547,
+    "DRIFT": 0.35,
+    "COUPLING": 0.258,
+    "SPACE": 0.8
   }
 }

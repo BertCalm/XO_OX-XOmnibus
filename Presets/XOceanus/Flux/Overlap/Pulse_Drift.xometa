@@ -79,5 +79,11 @@
     "rhythmic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "KNOT": 0.454,
+    "PULSE": 0.43,
+    "ENTRAIN": 0.376,
+    "BLOOM": 0.393
+  }
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Maximum Mass",
   "mood": "Entangled",
-  "engines": ["Obese", "Ouroboros"],
+  "engines": [
+    "Obese",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "13 oscillators fully detuned through a strange attractor — OBESE at maximum mojo coupled to OUROBOROS chaos injection. Every frequency band occupied simultaneously.",
-  "tags": ["entangled", "dense", "coupling", "obese", "ouroboros", "chaos"],
-  "macroLabels": ["BELLY", "CHAOS", "COUPLING", "CRUSH"],
+  "tags": [
+    "entangled",
+    "dense",
+    "coupling",
+    "obese",
+    "ouroboros",
+    "chaos"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "CHAOS",
+    "COUPLING",
+    "CRUSH"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -80,5 +95,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "CHAOS": 0.296,
+    "COUPLING": 0.678,
+    "CRUSH": 0.9
+  }
 }

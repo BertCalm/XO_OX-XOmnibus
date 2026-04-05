@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBIONT 1D Wolfram CA spatial evolution feeds ORGANISM 2D cellular rules \u2014 one-dimensional automaton informing two-dimensional life, dimensions in dialogue.",
+  "description": "OBIONT 1D Wolfram CA spatial evolution feeds ORGANISM 2D cellular rules — one-dimensional automaton informing two-dimensional life, dimensions in dialogue.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "obnt_macroCharacter": 0.54,
       "obnt_macroMovement": 0.62,
       "obnt_macroCoupling": 0.65,
-      "obnt_macroSpace": 0.5
+      "obnt_macroSpace": 0.5,
+      "obnt_velSens": 0.644
     },
     "Organism": {
       "org_ruleSet": 0.58,
@@ -52,7 +53,8 @@
       "org_macroCharacter": 0.52,
       "org_macroMovement": 0.58,
       "org_macroCoupling": 0.62,
-      "org_macroSpace": 0.5
+      "org_macroSpace": 0.5,
+      "org_velCutoff": 0.46
     }
   },
   "coupling": {

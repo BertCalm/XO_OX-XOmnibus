@@ -53,5 +53,11 @@
     "bass"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.3
+  }
 }

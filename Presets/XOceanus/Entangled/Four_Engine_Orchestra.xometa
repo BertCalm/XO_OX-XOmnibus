@@ -78,7 +78,8 @@
       "bob_ampSustain": 0.65,
       "bob_bobMode": 0.35,
       "bob_level": 0.65,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.5
     },
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -107,5 +108,11 @@
       "dub_lfoDepth": 0.12
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.75,
+    "MUTATE": 0.271
+  }
 }

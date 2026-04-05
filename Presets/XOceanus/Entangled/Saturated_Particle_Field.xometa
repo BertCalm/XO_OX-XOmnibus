@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Saturated Particle Field",
   "mood": "Entangled",
-  "engines": ["Oceanic", "Obese"],
+  "engines": [
+    "Oceanic",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "128 chromatophore particles coupled to 13 saturated oscillators — OCEANIC particle density maximum, OBESE sub layer reinforcing every octave. A wall of saturated motion.",
-  "tags": ["entangled", "dense", "oceanic", "obese", "particles", "saturated"],
-  "macroLabels": ["PARTICLES", "BELLY", "COUPLING", "CRUSH"],
+  "tags": [
+    "entangled",
+    "dense",
+    "oceanic",
+    "obese",
+    "particles",
+    "saturated"
+  ],
+  "macroLabels": [
+    "PARTICLES",
+    "BELLY",
+    "COUPLING",
+    "CRUSH"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -81,5 +96,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PARTICLES": 0.45,
+    "BELLY": 0.552,
+    "COUPLING": 0.642,
+    "CRUSH": 0.85
+  }
 }

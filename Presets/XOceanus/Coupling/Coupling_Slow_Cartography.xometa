@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OWARE mallet sympathetic resonance barely excites OXBOW golden phase erosion \u2014 tuned percussion mapping its geometry onto entangled reverb space.",
+  "description": "OWARE mallet sympathetic resonance barely excites OXBOW golden phase erosion — tuned percussion mapping its geometry onto entangled reverb space.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "owr_macroCharacter": 0.45,
       "owr_macroMovement": 0.38,
       "owr_macroCoupling": 0.5,
-      "owr_macroSpace": 0.52
+      "owr_macroSpace": 0.52,
+      "owr_malletVelocity": 0.626
     },
     "Oxbow": {
       "oxb_entangle": 0.5,

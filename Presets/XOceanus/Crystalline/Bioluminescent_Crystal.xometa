@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Bioluminescent crystal \u2014 cellular automata oscillators generating mineral glow patterns in living geometry.",
+  "description": "Bioluminescent crystal — cellular automata oscillators generating mineral glow patterns in living geometry.",
   "tags": [
     "crystalline",
     "bioluminescent",
@@ -39,7 +39,8 @@
       "obnt_macroSpace": 0.61,
       "obnt_filterEnvAmt": 0.54,
       "obnt_lfo1Rate": 0.04,
-      "obnt_lfo1Depth": 0.23
+      "obnt_lfo1Depth": 0.23,
+      "obnt_velSens": 0.588
     }
   },
   "coupling": {

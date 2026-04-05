@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.483,
       "ombre_spaceMix": 0.68,
       "ombre_toneA": 4835.1,
-      "ombre_toneB": 2178.8
+      "ombre_toneB": 2178.8,
+      "ombre_velCutoffScale": 0.394
     },
     "Orbital": {
       "orb_filterCutoff": 6778.1,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.456,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.54,
+    "SPACE": 0.703
+  }
 }

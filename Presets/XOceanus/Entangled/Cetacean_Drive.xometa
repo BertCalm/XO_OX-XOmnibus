@@ -100,5 +100,11 @@
     "biology"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "OCEAN": 0.45,
+    "VOYAGE": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.8
+  }
 }

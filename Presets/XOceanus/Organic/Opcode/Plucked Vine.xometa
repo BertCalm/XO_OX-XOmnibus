@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Series FM with percussive mod decay \u2014 like plucking a vine or stretched sinew. Organic, taut, immediate.",
+  "description": "Series FM with percussive mod decay — like plucking a vine or stretched sinew. Organic, taut, immediate.",
   "tags": [
     "fm",
     "plucked",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Maximum sub-belly preset \u2014 all weight focused on the lowest octave, minimal upper harmonics.",
+  "description": "Maximum sub-belly preset — all weight focused on the lowest octave, minimal upper harmonics.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.15,
@@ -49,7 +49,8 @@
       "poss_subLevel": 0.95,
       "poss_subOctave": -2,
       "poss_weightLevel": 0.8,
-      "poss_weightOctave": -2
+      "poss_weightOctave": -2,
+      "poss_ampVelSens": 0.36
     }
   },
   "schema_version": 1,

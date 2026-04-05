@@ -2,18 +2,31 @@
   "schema_version": 1,
   "name": "Harp Light",
   "mood": "Luminous",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A classical harp in a sunlit room — the brightest sustained string tone, body resonance emphasised, the light through the soundboard visible in every harmonic.",
-  "tags": ["luminous", "harp", "sunlit", "bright", "string"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "harp",
+    "sunlit",
+    "bright",
+    "string"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.85,
     "warmth": 0.58,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.28,
     "space": 0.58,
     "aggression": 0.05
@@ -21,11 +34,11 @@
   "parameters": {
     "Orphica": {
       "orph_macroCharacter": 0.55,
-      "orph_macroMovement": 0.30,
+      "orph_macroMovement": 0.3,
       "orph_macroCoupling": 0.13,
       "orph_macroSpace": 0.58,
       "orph_filterEnvAmt": 0.62,
-      "orph_pluckBrightness": 0.80,
+      "orph_pluckBrightness": 0.8,
       "orph_bodyResonance": 0.58,
       "orph_lfo1Rate": 0.05,
       "orph_lfo1Depth": 0.14,
@@ -37,14 +50,17 @@
       "orph_release": 3.5,
       "orph_filterCutoff": 9800,
       "orph_filterRes": 0.28,
-      "orph_output": 0
+      "orph_output": 0,
+      "orph_velocitySensitivity": 0.619
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.30,
+    "MOVEMENT": 0.3,
     "COUPLING": 0.13,
     "SPACE": 0.58
   }

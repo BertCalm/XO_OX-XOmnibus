@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Warm foundational bass for the family den \u2014 sustaining, protective, sub-heavy anchor.",
+  "description": "Warm foundational bass for the family den — sustaining, protective, sub-heavy anchor.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.3,
@@ -51,7 +51,8 @@
       "poss_oscBWaveform": 1,
       "poss_oscMix": 0.35,
       "poss_subLevel": 0.7,
-      "poss_weightLevel": 0.55
+      "poss_weightLevel": 0.55,
+      "poss_ampVelSens": 0.45
     }
   },
   "schema_version": 1,

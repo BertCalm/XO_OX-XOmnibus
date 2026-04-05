@@ -124,5 +124,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT DENSITY": 0.45,
+    "MORPH KEYS": 0.45,
+    "DUB BASS": 0.45,
+    "BALANCE": 0.45
+  }
 }

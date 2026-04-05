@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Nacreous Shell",
+  "mood": "Luminous",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mother-of-pearl iridescence from stacked aragonite platelets — thin-film interference producing shifting colours from a single white light source.",
+  "tags": [
+    "luminous",
+    "nacre",
+    "iridescent",
+    "shell",
+    "interference",
+    "pearl"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.55,
+    "movement": 0.38,
+    "density": 0.32,
+    "space": 0.72,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.42,
+      "opal_grainDensity": 0.32,
+      "opal_shimmer": 0.78,
+      "opal_filterCutoff": 9500.0,
+      "opal_filterRes": 0.15,
+      "opal_attack": 0.6,
+      "opal_decay": 2.5,
+      "opal_sustain": 0.78,
+      "opal_release": 5.5,
+      "opal_lfo1Rate": 0.08,
+      "opal_lfo1Depth": 0.22,
+      "opal_macroCharacter": 0.52,
+      "opal_macroMovement": 0.38,
+      "opal_macroCoupling": 0.12,
+      "opal_macroSpace": 0.72,
+      "opal_ampVelSens": 0.328
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

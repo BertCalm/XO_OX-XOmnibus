@@ -75,8 +75,15 @@
       "bob_motDepth": 0.55,
       "bob_bobMode": 0.35,
       "bob_level": 0.7,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.488
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.55,
+    "MUTATE": 0.271
+  }
 }

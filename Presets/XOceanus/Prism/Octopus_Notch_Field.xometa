@@ -84,5 +84,11 @@
     "alien",
     "transcendental"
   ],
-  "description": "chromaMorph=1.0 — pure Notch territory. Arm targeting chromaFreq sweeps notch center. Envelope follower (chromaSens=0.8) adds dynamic tracking. Living spectral gaps responsive to velocity."
+  "description": "chromaMorph=1.0 — pure Notch territory. Arm targeting chromaFreq sweeps notch center. Envelope follower (chromaSens=0.8) adds dynamic tracking. Living spectral gaps responsive to velocity.",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.2,
+    "SPACE": 0.6
+  }
 }

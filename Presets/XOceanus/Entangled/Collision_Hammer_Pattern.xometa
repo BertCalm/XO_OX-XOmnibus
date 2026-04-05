@@ -47,7 +47,8 @@
       "ouie_macroCurrent": 0.53,
       "ouie_filterEnvAmt": 0.497,
       "ouie_lfo1Rate": 0.269,
-      "ouie_lfo1Depth": 0.256
+      "ouie_lfo1Depth": 0.256,
+      "ouie_velCutoffAmt": 0.57
     },
     "Ostinato": {
       "osti_macroGather": 0.606,

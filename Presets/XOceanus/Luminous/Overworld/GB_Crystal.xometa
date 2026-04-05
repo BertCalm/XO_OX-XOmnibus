@@ -131,5 +131,11 @@
     "density": 0.42,
     "space": 0.38,
     "aggression": 0.38
+  },
+  "macros": {
+    "ERA": 0.55,
+    "CRUSH": 0.38,
+    "GLITCH": 0.2,
+    "SPACE": 0.38
   }
 }

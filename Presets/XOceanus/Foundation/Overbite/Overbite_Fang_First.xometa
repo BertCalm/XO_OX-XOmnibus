@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sharp attack transient bass that leads with teeth \u2014 fast bite and punchy mid sustain.",
+  "description": "Sharp attack transient bass that leads with teeth — fast bite and punchy mid sustain.",
   "dna": {
     "aggression": 0.7,
     "brightness": 0.6,
@@ -53,7 +53,8 @@
       "poss_macroTrash": 0.3,
       "poss_oscAShape": 0.4,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.4
+      "poss_subLevel": 0.4,
+      "poss_ampVelSens": 0.44
     }
   },
   "schema_version": 1,

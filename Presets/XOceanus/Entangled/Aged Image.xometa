@@ -91,5 +91,11 @@
     "obscura"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.327,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.445,
+    "SPACE": 0.608
+  }
 }

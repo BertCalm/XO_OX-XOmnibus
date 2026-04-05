@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Glacial Meltwater",
+  "mood": "Crystalline",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Subglacial meltwater emerging from under Greenland's ice sheet \u2014 water that has been frozen since the Pleistocene, now carrying ancient mineral signatures into the modern sea.",
+  "tags": [
+    "crystalline",
+    "outflow",
+    "glacial",
+    "meltwater",
+    "Greenland",
+    "ancient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.22,
+    "movement": 0.62,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.48,
+      "out_macroMovement": 0.62,
+      "out_macroCoupling": 0.18,
+      "out_macroSpace": 0.72,
+      "out_currentSpeed": 0.68,
+      "out_stormDepth": 0.35,
+      "out_filterEnvAmt": 0.45,
+      "out_lfo1Rate": 0.22,
+      "out_lfo1Depth": 0.32,
+      "out_filterCutoff": 0.55,
+      "out_filterRes": 0.42,
+      "out_attackTime": 0.05,
+      "out_decayTime": 0.5,
+      "out_sustain": 0.55,
+      "out_releaseTime": 2.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.18,
+    "SPACE": 0.72
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Iron Cathedral",
+  "mood": "Foundation",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum resonance layering at slow decay — a thick foundational mass of entangled metallic resonators building a cathedral of iron harmonics.",
+  "tags": ["foundation", "dense", "massive", "metallic", "cathedral"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.28,
+    "density": 0.88,
+    "space": 0.35,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.75,
+      "oxb_decay": 5.0,
+      "oxb_entangle": 0.92,
+      "oxb_erosionRate": 0.22,
+      "oxb_erosionDepth": 0.38,
+      "oxb_convergence": 3,
+      "oxb_resonanceQ": 28,
+      "oxb_resonanceMix": 0.95,
+      "oxb_cantilever": 0.32,
+      "oxb_damping": 4000,
+      "oxb_predelay": 5,
+      "oxb_dryWet": 0.88,
+      "oxb_exciterDecay": 0.035,
+      "oxb_exciterBright": 0.55,
+      "oxb_macroCharacter": 0.65,
+      "oxb_macroMovement": 0.28,
+      "oxb_macroCoupling": 0.48,
+      "oxb_macroSpace": 0.35,
+      "oxb_filterEnvAmt": 0.38,
+      "oxb_lfo1Rate": 0.18,
+      "oxb_lfo1Depth": 0.32
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.92,
+    "EROSION": 0.22,
+    "CONVERGE": 0.65,
+    "CANTILEVER": 0.35
+  }
+}

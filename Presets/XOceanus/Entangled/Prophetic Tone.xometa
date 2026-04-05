@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.438,
       "owl_resonantPitch": 0.631,
       "owl_shimmer": 0.225,
-      "owl_subLevel": 0.439
+      "owl_subLevel": 0.439,
+      "owl_velocity": 0.648
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "oracle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.465,
+    "MOVEMENT": 0.462,
+    "COUPLING": 0.649,
+    "SPACE": 0.544
+  }
 }

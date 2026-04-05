@@ -105,5 +105,11 @@
     "perturbation",
     "transcendental"
   ],
-  "description": "OCTOPUS sucker transients (suckerReso=0.95, suckerMix=0.6) inject perturbation forces into OUROBOROS's RK4 integrator via AudioToFM. Each adhesion grip kicks the attractor. Rhythmic chaos perturbation."
+  "description": "OCTOPUS sucker transients (suckerReso=0.95, suckerMix=0.6) inject perturbation forces into OUROBOROS's RK4 integrator via AudioToFM. Each adhesion grip kicks the attractor. Rhythmic chaos perturbation.",
+  "macros": {
+    "CHARACTER": 0.575,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.45,
+    "SPACE": 0.55
+  }
 }

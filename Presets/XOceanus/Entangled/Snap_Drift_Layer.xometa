@@ -79,5 +79,11 @@
       "amount": 0.4
     }
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.3
+  }
 }

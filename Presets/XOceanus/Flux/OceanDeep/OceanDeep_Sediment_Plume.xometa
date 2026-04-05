@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sediment Plume",
+  "name": "Sediment Plume (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "PRESSURE": 0.199,
+    "CREATURE": 0.243,
+    "WRECK": 0.256,
+    "ABYSS": 0.603
   }
 }

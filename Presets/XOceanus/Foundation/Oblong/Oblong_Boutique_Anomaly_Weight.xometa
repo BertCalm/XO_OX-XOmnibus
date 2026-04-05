@@ -50,7 +50,8 @@
       "bob_macroCharacter": 0.25,
       "bob_macroMovement": 0.15,
       "bob_macroCoupling": 0.0,
-      "bob_macroSpace": 0.72
+      "bob_macroSpace": 0.72,
+      "bob_velFilter": 0.344
     }
   },
   "coupling": {
@@ -64,5 +65,11 @@
     "density": 0.8,
     "space": 0.72,
     "aggression": 0.22
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "FX DEPTH": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
   }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OFFERING psychology-derived curiosity peak floods OPAL grain density to maximum \u2014 Berlyne arousal flooding granular cloud, peak excitement as grain saturation.",
+  "description": "OFFERING psychology-derived curiosity peak floods OPAL grain density to maximum — Berlyne arousal flooding granular cloud, peak excitement as grain saturation.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "ofr_macroCharacter": 0.65,
       "ofr_macroMovement": 0.72,
       "ofr_macroCoupling": 0.75,
-      "ofr_macroSpace": 0.46
+      "ofr_macroSpace": 0.46,
+      "ofr_velToSnap": 0.615
     },
     "Opal": {
       "opal_grainSize": 0.68,
@@ -52,7 +53,8 @@
       "opal_macroCharacter": 0.62,
       "opal_macroMovement": 0.65,
       "opal_macroCoupling": 0.72,
-      "opal_macroSpace": 0.5
+      "opal_macroSpace": 0.5,
+      "opal_ampVelSens": 0.41
     }
   },
   "coupling": {

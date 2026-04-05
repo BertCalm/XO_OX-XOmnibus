@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA hunt energy dominantly drives OUROBOROS chaotic attractor \u2014 apex predator reshaping strange attractor topology, hunting as chaos engine.",
+  "description": "ORCA hunt energy dominantly drives OUROBOROS chaotic attractor — apex predator reshaping strange attractor topology, hunting as chaos engine.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.65,
       "orca_macroMovement": 0.72,
       "orca_macroCoupling": 0.75,
-      "orca_macroSpace": 0.42
+      "orca_macroSpace": 0.42,
+      "orca_velCutoffAmt": 0.555
     },
     "Ouroboros": {
       "ouro_topology": 0.68,

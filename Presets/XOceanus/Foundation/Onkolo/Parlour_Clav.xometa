@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Victorian parlour re-imagined as D6 \u2014 no wah, warm neck pickup, gentle clunk. Charming and slightly anachronistic.",
+  "description": "Victorian parlour re-imagined as D6 — no wah, warm neck pickup, gentle clunk. Charming and slightly anachronistic.",
   "tags": [
     "clavinet",
     "parlour",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

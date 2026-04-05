@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Pluck",
+  "name": "Abyssal Pluck (Orphica)",
   "mood": "Submerged",
   "engines": [
     "Orphica"
@@ -65,7 +65,8 @@
       "orph_macroPluck": 0.1,
       "orph_macroSurface": 0.65,
       "orph_macroFracture": 0.15,
-      "orph_macroDivine": 0.25
+      "orph_macroDivine": 0.25,
+      "orph_velocitySensitivity": 0.51
     }
   },
   "macros": {

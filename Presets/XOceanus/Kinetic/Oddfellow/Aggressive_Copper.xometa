@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Full aggression \u2014 high reed, high drive, fast tremolo, short decay. The instrument at war.",
+  "description": "Full aggression — high reed, high drive, fast tremolo, short decay. The instrument at war.",
   "tags": [
     "wurlitzer",
     "aggressive",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

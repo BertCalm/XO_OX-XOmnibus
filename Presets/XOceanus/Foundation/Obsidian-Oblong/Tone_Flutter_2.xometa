@@ -51,7 +51,8 @@
       "bob_macroCharacter": 0.943,
       "bob_macroCoupling": 0.77,
       "bob_macroMovement": 0.9,
-      "bob_macroSpace": 0.0
+      "bob_macroSpace": 0.0,
+      "bob_velFilter": 0.485
     },
     "Obsidian": {
       "obsidian_macroCharacter": 1.0,

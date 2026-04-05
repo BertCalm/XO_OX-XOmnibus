@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OFFERING psychology at alien-shift peak (curiosity > 0.7) feeds OUROBOROS chaos beyond the leash point \u2014 Berlyne arousal triggering full strange attractor dissolution.",
+  "description": "OFFERING psychology at alien-shift peak (curiosity > 0.7) feeds OUROBOROS chaos beyond the leash point — Berlyne arousal triggering full strange attractor dissolution.",
   "tags": [
     "coupling",
     "extreme",
@@ -42,7 +42,8 @@
       "ofr_macroCharacter": 0.75,
       "ofr_macroMovement": 0.88,
       "ofr_macroCoupling": 0.9,
-      "ofr_macroSpace": 0.46
+      "ofr_macroSpace": 0.46,
+      "ofr_velToSnap": 0.726
     },
     "Ouroboros": {
       "ouro_topology": 0.88,

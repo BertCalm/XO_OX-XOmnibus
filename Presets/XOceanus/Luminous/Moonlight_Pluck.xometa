@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Moonlight Pluck",
   "mood": "Luminous",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A string plucked in full moonlight — the coolest luminous pluck, Orphica's body resonance dialed down, brightness emphasised over warmth. Silver light on gut.",
-  "tags": ["luminous", "moonlight", "plucked", "cool", "silver"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "moonlight",
+    "plucked",
+    "cool",
+    "silver"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,7 +37,7 @@
       "orph_macroMovement": 0.32,
       "orph_macroCoupling": 0.13,
       "orph_macroSpace": 0.58,
-      "orph_filterEnvAmt": 0.60,
+      "orph_filterEnvAmt": 0.6,
       "orph_pluckBrightness": 0.85,
       "orph_bodyResonance": 0.28,
       "orph_lfo1Rate": 0.05,
@@ -37,10 +50,13 @@
       "orph_release": 2.5,
       "orph_filterCutoff": 11000,
       "orph_filterRes": 0.32,
-      "orph_output": 0
+      "orph_output": 0,
+      "orph_velocitySensitivity": 0.619
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.56,

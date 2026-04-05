@@ -74,5 +74,11 @@
     "ohm"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.597,
+    "COUPLING": 0.45,
+    "SPACE": 0.446
+  }
 }

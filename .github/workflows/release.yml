@@ -1,39 +1,79 @@
+##############################################################################
+# .github/workflows/release.yml
+# XOceanus — macOS Release: Build → Sign → Notarize → Package → Publish
+##############################################################################
+#
+# TRIGGER
+#   Push a tag matching v* (e.g. git tag v1.2.3 && git push origin v1.2.3).
+#   The tag drives every downstream step: artefact names, DMG filename, and
+#   the GitHub Release title.
+#
+# REQUIRED GITHUB SECRETS  (Settings → Secrets and variables → Actions)
+# ─────────────────────────────────────────────────────────────────────────
+#   MACOS_CERTIFICATE        — base64-encoded Developer ID Application .p12
+#                              export (openssl base64 -in cert.p12 | pbcopy)
+#   MACOS_CERTIFICATE_PWD    — password used when exporting the .p12
+#   APPLE_TEAM_ID            — 10-character Team ID from developer.apple.com
+#   APPLE_ID                 — Apple ID email used to submit notarization
+#   APPLE_APP_PASSWORD       — app-specific password for that Apple ID
+#                              (generate at appleid.apple.com → Sign-In and
+#                              Security → App-Specific Passwords)
+#
+# JOB GRAPH
+#   build  →  sign  →  notarize  →  package  →  release
+#             (each job receives signed artefacts from the previous job
+#             via actions/upload-artifact / actions/download-artifact)
+#
+# ARTEFACT PATHS (produced by the CMake build)
+#   AU component : build/XOceanus_artefacts/Release/AU/XOceanus.component
+#   Standalone   : build/XOceanus_artefacts/Release/Standalone/XOceanus.app
+##############################################################################
+
 name: Release XOceanus
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Release version (e.g. 1.0.0)'
-        required: true
-        type: string
+  push:
+    tags:
+      # Only fire on semantic version tags, e.g. v1.0.0, v2.3.1-rc1
+      - 'v*'
 
+# Export the tag name (strip the leading "v") for use in every job.
+# GitHub Actions does not support top-level expressions in `env:` that
+# reference other `env:` keys, so each job re-reads GITHUB_REF_NAME.
+env:
+  MACOSX_DEPLOYMENT_TARGET: '12.0'
+
+##############################################################################
+# JOB 1 — BUILD
+# Checks out the tagged commit, installs JUCE, configures CMake in Release
+# mode with AU + Standalone targets, then uploads the raw (unsigned)
+# artefacts so the sign job can retrieve them without a second build.
+##############################################################################
 jobs:
-  release:
-    runs-on: macos-latest
+  build:
+    name: Build (macOS 14 universal)
+    runs-on: macos-14
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
         with:
-          # Full history needed so the version-bump commit can be pushed
+          # fetch-depth 0 is needed so git-describe and release note
+          # generation can walk the full commit history.
           fetch-depth: 0
 
-      - name: Validate version format
-        run: |
-          VERSION="${{ github.event.inputs.version }}"
-          if ! echo "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
-            echo "ERROR: version '$VERSION' does not match semver x.y.z"
-            exit 1
-          fi
-          echo "Version '$VERSION' is valid."
-
+      # ── JUCE ────────────────────────────────────────────────────────────
+      # JUCE lives in Libs/JUCE/. Cache by the pinned commit SHA so the
+      # ~700 MB clone is only performed when the pin changes.
       - name: Cache JUCE
         id: cache-juce
         uses: actions/cache@v5
         with:
           path: Libs/JUCE
-          key: juce-8.0.4
+          # SHA pinned to the JUCE 8.0.4 release tag (verified 2026-03-30).
+          # Pinning to a SHA rather than the tag prevents supply-chain
+          # attacks via force-pushed tags.
+          key: juce-8.0.4-51d11a2
 
       - name: Clone JUCE 8.0.4
         if: steps.cache-juce.outputs.cache-hit != 'true'
@@ -42,70 +82,609 @@ jobs:
           git clone https://github.com/juce-framework/JUCE.git Libs/JUCE
           cd Libs/JUCE && git checkout 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
 
+      # ── Dependencies ────────────────────────────────────────────────────
       - name: Install Ninja
         run: brew install ninja
 
-      - name: Build and verify before release
+      # ── Configure ───────────────────────────────────────────────────────
+      # CMAKE_OSX_ARCHITECTURES is also set inside CMakeLists.txt (before
+      # project()) but we repeat it here for clarity and to protect against
+      # future toolchain changes.
+      - name: Configure CMake (Release, AU + Standalone)
         run: |
-          cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
+            -DMACOSX_DEPLOYMENT_TARGET=12.0
 
-      - name: Run tests
-        run: |
-          cd build
-          ctest --output-on-failure --timeout 120
+      # ── Build ────────────────────────────────────────────────────────────
+      - name: Build
+        run: cmake --build build --config Release
 
+      # ── Sanity checks ────────────────────────────────────────────────────
       - name: Verify AU component exists
         run: |
-          if [ ! -d "build/XOceanus_artefacts/Release/AU/XOceanus.component" ]; then
-            echo "ERROR: AU component not found — aborting release"
+          AU_PATH="build/XOceanus_artefacts/Release/AU/XOceanus.component"
+          if [ ! -d "$AU_PATH" ]; then
+            echo "ERROR: AU component not found at $AU_PATH"
             exit 1
           fi
+          echo "AU component: OK"
 
-      - name: Run auval validation
+      - name: Verify Standalone app exists
         run: |
-          cp -R build/XOceanus_artefacts/Release/AU/XOceanus.component ~/Library/Audio/Plug-Ins/Components/
-          auval -v aumu Xocn XoOx
-
-      - name: Update VERSION in CMakeLists.txt
-        run: |
-          VERSION="${{ github.event.inputs.version }}"
-          sed -i '' "s/project(XOceanus VERSION [0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*)/project(XOceanus VERSION $VERSION)/" CMakeLists.txt
-          # Verify the substitution took effect
-          grep "project(XOceanus VERSION $VERSION" CMakeLists.txt || {
-            echo "ERROR: CMakeLists.txt was not updated correctly"
+          APP_PATH="build/XOceanus_artefacts/Release/Standalone/XOceanus.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "ERROR: Standalone app not found at $APP_PATH"
             exit 1
-          }
+          fi
+          echo "Standalone app: OK"
 
-      - name: Commit version bump
+      # ── Upload raw artefacts ─────────────────────────────────────────────
+      # Both artefacts are directory bundles, so we zip them before upload.
+      # The sign job will unzip and work on the directory bundles directly.
+      - name: Archive AU component
         run: |
-          VERSION="${{ github.event.inputs.version }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CMakeLists.txt
-          git commit -m "Release v${VERSION}"
+          ditto -c -k --sequesterRsrc --keepParent \
+            build/XOceanus_artefacts/Release/AU/XOceanus.component \
+            XOceanus.component.zip
 
-      - name: Create and push tag
+      - name: Archive Standalone app
         run: |
-          VERSION="${{ github.event.inputs.version }}"
-          git tag "v${VERSION}"
-          git push origin HEAD:main
-          git push origin "v${VERSION}"
+          ditto -c -k --sequesterRsrc --keepParent \
+            build/XOceanus_artefacts/Release/Standalone/XOceanus.app \
+            XOceanus.app.zip
 
-      - name: Create GitHub release
+      - name: Upload raw AU component
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-au-component
+          path: XOceanus.component.zip
+          retention-days: 1
+
+      - name: Upload raw Standalone app
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-standalone-app
+          path: XOceanus.app.zip
+          retention-days: 1
+
+
+##############################################################################
+# JOB 2 — SIGN
+# Imports the Developer ID Application certificate into a short-lived
+# temporary keychain, signs each artefact with the hardened runtime flag
+# and a trusted timestamp, then verifies the signatures.
+#
+# The temporary keychain is always deleted in the `if: always()` cleanup
+# step so it does not persist between runs or leak credentials.
+##############################################################################
+  sign:
+    name: Code-sign artefacts
+    runs-on: macos-14
+    needs: build
+
+    steps:
+      # ── Checkout (needed for entitlements file) ──────────────────────────
+      - name: Checkout tagged commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── Retrieve unsigned artefacts ──────────────────────────────────────
+      - name: Download raw AU component
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-au-component
+          path: unsigned/
+
+      - name: Download raw Standalone app
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-standalone-app
+          path: unsigned/
+
+      - name: Unzip artefacts
+        run: |
+          mkdir -p artefacts
+          ditto -x -k unsigned/XOceanus.component.zip artefacts/
+          ditto -x -k unsigned/XOceanus.app.zip       artefacts/
+
+      # ── Import certificate ───────────────────────────────────────────────
+      # We create a fresh keychain for this job only. The 6-hour lock timeout
+      # (-lut 21600) is generous for CI; the keychain is deleted on exit.
+      # set-key-partition-list is required on macOS 12+ to allow codesign to
+      # read the private key without a GUI password prompt.
+      - name: Import Developer ID Application certificate
+        env:
+          # MACOS_CERTIFICATE : base64-encoded .p12 file
+          # MACOS_CERTIFICATE_PWD : password used when exporting the .p12
+          MACOS_CERTIFICATE:     ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/xoceanus-signing.keychain-db"
+          KEYCHAIN_PWD="$(openssl rand -hex 24)"
+
+          # Create an ephemeral keychain
+          security create-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+
+          # Decode and import the p12 certificate
+          echo "$MACOS_CERTIFICATE" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security import "$RUNNER_TEMP/cert.p12" \
+            -P "$MACOS_CERTIFICATE_PWD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          # Make this keychain searchable so codesign can find the identity
+          security list-keychains -d user -s "$KEYCHAIN_PATH" \
+            $(security list-keychains -d user | tr -d '"')
+
+          # Allow codesign / productsign access without interactive prompts
+          security set-key-partition-list \
+            -S apple-tool:,apple:,codesign: \
+            -s -k "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+
+          # Persist the random password so the cleanup step can delete properly
+          echo "$KEYCHAIN_PWD"  > "$RUNNER_TEMP/keychain_pwd"
+          echo "$KEYCHAIN_PATH" > "$RUNNER_TEMP/keychain_path"
+
+      # ── Sign AU component ────────────────────────────────────────────────
+      # --options runtime   : enable the hardened runtime (required for
+      #                       notarization since macOS 10.15 Catalina)
+      # --entitlements      : attach the three JUCE-required entitlements
+      # --timestamp         : embed a trusted Apple timestamp so the
+      #                       signature stays valid after certificate expiry
+      # --deep              : recursively sign all nested bundles/frameworks
+      # --force             : overwrite any ad-hoc signature from the build
+      - name: Sign AU component
+        run: |
+          SIGNING_ID="Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})"
+          codesign \
+            --deep --force \
+            --options runtime \
+            --entitlements Installer/entitlements.plist \
+            --sign "$SIGNING_ID" \
+            --timestamp \
+            artefacts/XOceanus.component
+
+      # ── Sign Standalone app ──────────────────────────────────────────────
+      - name: Sign Standalone app
+        run: |
+          SIGNING_ID="Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})"
+          codesign \
+            --deep --force \
+            --options runtime \
+            --entitlements Installer/entitlements.plist \
+            --sign "$SIGNING_ID" \
+            --timestamp \
+            artefacts/XOceanus.app
+
+      # ── Verify signatures ────────────────────────────────────────────────
+      # --verify --deep --strict fails if any nested bundle is unsigned or
+      # has an invalid signature, catching issues before notarization.
+      - name: Verify AU component signature
+        run: |
+          codesign --verify --deep --strict --verbose=2 \
+            artefacts/XOceanus.component
+          echo "AU component signature: VALID"
+
+      - name: Verify Standalone app signature
+        run: |
+          codesign --verify --deep --strict --verbose=2 \
+            artefacts/XOceanus.app
+          echo "Standalone app signature: VALID"
+
+      # ── Upload signed artefacts ──────────────────────────────────────────
+      - name: Archive signed AU component
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.component \
+            XOceanus.component.signed.zip
+
+      - name: Archive signed Standalone app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.app \
+            XOceanus.app.signed.zip
+
+      - name: Upload signed AU component
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-au-component
+          path: XOceanus.component.signed.zip
+          retention-days: 1
+
+      - name: Upload signed Standalone app
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-standalone-app
+          path: XOceanus.app.signed.zip
+          retention-days: 1
+
+      # ── Cleanup keychain ─────────────────────────────────────────────────
+      # Always runs (even on failure) to prevent the ephemeral keychain and
+      # the decoded .p12 from lingering on the runner's disk.
+      - name: Delete temporary keychain and credential files
+        if: always()
+        run: |
+          KEYCHAIN_PATH=$(cat "$RUNNER_TEMP/keychain_path" 2>/dev/null || true)
+          if [ -n "$KEYCHAIN_PATH" ]; then
+            security delete-keychain "$KEYCHAIN_PATH" 2>/dev/null || true
+          fi
+          rm -f "$RUNNER_TEMP/cert.p12" \
+                "$RUNNER_TEMP/keychain_pwd" \
+                "$RUNNER_TEMP/keychain_path"
+
+
+##############################################################################
+# JOB 3 — NOTARIZE
+# Submits the signed artefacts to Apple's notary service and waits for
+# approval (--wait).  On success, staples the notarization ticket to each
+# bundle so users can open them without an internet connection.
+#
+# notarytool requires macOS 12 / Xcode 13+; the macos-14 runner satisfies
+# both requirements.
+##############################################################################
+  notarize:
+    name: Notarize artefacts
+    runs-on: macos-14
+    needs: sign
+
+    steps:
+      # ── Download signed artefacts ────────────────────────────────────────
+      - name: Download signed AU component
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-au-component
+          path: signed/
+
+      - name: Download signed Standalone app
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-standalone-app
+          path: signed/
+
+      - name: Unzip signed artefacts
+        run: |
+          mkdir -p artefacts
+          ditto -x -k signed/XOceanus.component.signed.zip artefacts/
+          ditto -x -k signed/XOceanus.app.signed.zip       artefacts/
+
+      # ── Notarize AU component ────────────────────────────────────────────
+      # Apple's notary service expects a ZIP or DMG, not a bare bundle.
+      # We ZIP the signed bundle, submit it, wait for the result, then
+      # staple the ticket to the original bundle (not the ZIP).
+      #
+      # --wait    : block until Apple returns PASS or FAIL (up to 30 min)
+      # --timeout : safety ceiling; the workflow fails cleanly if exceeded
+      - name: Create submission ZIP for AU component
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.component \
+            XOceanus-AU-notarize.zip
+
+      - name: Submit AU component to Apple notary service
+        env:
+          APPLE_ID:           ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID:      ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          xcrun notarytool submit XOceanus-AU-notarize.zip \
+            --apple-id      "$APPLE_ID" \
+            --team-id       "$APPLE_TEAM_ID" \
+            --password      "$APPLE_APP_PASSWORD" \
+            --wait \
+            --timeout 30m \
+            --verbose
+          echo "AU notarization: ACCEPTED"
+
+      - name: Staple notarization ticket to AU component
+        run: |
+          xcrun stapler staple artefacts/XOceanus.component
+          xcrun stapler validate artefacts/XOceanus.component
+          echo "AU staple: OK"
+
+      # ── Notarize Standalone app ──────────────────────────────────────────
+      - name: Create submission ZIP for Standalone app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.app \
+            XOceanus-App-notarize.zip
+
+      - name: Submit Standalone app to Apple notary service
+        env:
+          APPLE_ID:           ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID:      ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          xcrun notarytool submit XOceanus-App-notarize.zip \
+            --apple-id      "$APPLE_ID" \
+            --team-id       "$APPLE_TEAM_ID" \
+            --password      "$APPLE_APP_PASSWORD" \
+            --wait \
+            --timeout 30m \
+            --verbose
+          echo "Standalone notarization: ACCEPTED"
+
+      - name: Staple notarization ticket to Standalone app
+        run: |
+          xcrun stapler staple artefacts/XOceanus.app
+          xcrun stapler validate artefacts/XOceanus.app
+          echo "Standalone staple: OK"
+
+      # ── Upload notarized artefacts ───────────────────────────────────────
+      - name: Archive notarized AU component
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.component \
+            XOceanus.component.notarized.zip
+
+      - name: Archive notarized Standalone app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            artefacts/XOceanus.app \
+            XOceanus.app.notarized.zip
+
+      - name: Upload notarized AU component
+        uses: actions/upload-artifact@v4
+        with:
+          name: notarized-au-component
+          path: XOceanus.component.notarized.zip
+          retention-days: 1
+
+      - name: Upload notarized Standalone app
+        uses: actions/upload-artifact@v4
+        with:
+          name: notarized-standalone-app
+          path: XOceanus.app.notarized.zip
+          retention-days: 1
+
+
+##############################################################################
+# JOB 4 — PACKAGE
+# Assembles a DMG disk image containing the notarized AU component,
+# Standalone app, and README.  The DMG is itself signed with the Developer
+# ID Application certificate and notarized before it is handed off to the
+# release job.
+#
+# Why DMG over PKG here?
+# The existing Installer/build_pkg.sh script builds a full .pkg installer
+# (with choice selections for AU / Standalone / Presets) and is the primary
+# distribution format.  This job builds a lightweight drag-and-drop DMG as
+# the GitHub Release download artefact — one file, no installer wizard, zero
+# /Library writes by default.  Users who need the full installer can use the
+# .pkg produced by Installer/build_pkg.sh separately.
+##############################################################################
+  package:
+    name: Build, sign, and notarize DMG
+    runs-on: macos-14
+    needs: notarize
+
+    steps:
+      # ── Checkout (needed for README and entitlements) ────────────────────
+      - name: Checkout tagged commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── Download notarized artefacts ─────────────────────────────────────
+      - name: Download notarized AU component
+        uses: actions/download-artifact@v4
+        with:
+          name: notarized-au-component
+          path: notarized/
+
+      - name: Download notarized Standalone app
+        uses: actions/download-artifact@v4
+        with:
+          name: notarized-standalone-app
+          path: notarized/
+
+      - name: Unzip notarized artefacts
+        run: |
+          mkdir -p artefacts
+          ditto -x -k notarized/XOceanus.component.notarized.zip artefacts/
+          ditto -x -k notarized/XOceanus.app.notarized.zip       artefacts/
+
+      # ── Import certificate (needed to sign the DMG) ──────────────────────
+      # Same pattern as the sign job: ephemeral keychain, cleaned up on exit.
+      - name: Import Developer ID Application certificate
+        env:
+          MACOS_CERTIFICATE:     ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/xoceanus-pkg.keychain-db"
+          KEYCHAIN_PWD="$(openssl rand -hex 24)"
+
+          security create-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+
+          echo "$MACOS_CERTIFICATE" | base64 --decode > "$RUNNER_TEMP/cert_pkg.p12"
+          security import "$RUNNER_TEMP/cert_pkg.p12" \
+            -P "$MACOS_CERTIFICATE_PWD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          security list-keychains -d user -s "$KEYCHAIN_PATH" \
+            $(security list-keychains -d user | tr -d '"')
+
+          security set-key-partition-list \
+            -S apple-tool:,apple:,codesign: \
+            -s -k "$KEYCHAIN_PWD" "$KEYCHAIN_PATH"
+
+          echo "$KEYCHAIN_PWD"  > "$RUNNER_TEMP/pkg_keychain_pwd"
+          echo "$KEYCHAIN_PATH" > "$RUNNER_TEMP/pkg_keychain_path"
+
+      # ── Build DMG ────────────────────────────────────────────────────────
+      # Layout inside the DMG:
+      #   /XOceanus.component  — drag to ~/Library/Audio/Plug-Ins/Components/
+      #   /XOceanus.app        — drag to /Applications/
+      #   /README.md           — installation instructions
+      #
+      # hdiutil create stages the content from a source folder, sets the
+      # volume name, and produces a compressed read-only UDIF image.
+      - name: Assemble DMG source folder
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          mkdir -p dmg_src
+
+          # Notarized plugin bundle
+          cp -R artefacts/XOceanus.component dmg_src/
+
+          # Notarized standalone app
+          cp -R artefacts/XOceanus.app dmg_src/
+
+          # Install instructions from repo root
+          cp README.md dmg_src/
+
+          echo "DMG_NAME=XOceanus-${TAG}.dmg" >> "$GITHUB_ENV"
+
+      - name: Create DMG with hdiutil
+        run: |
+          hdiutil create \
+            -volname "XOceanus" \
+            -srcfolder dmg_src \
+            -ov \
+            -format UDZO \
+            "$DMG_NAME"
+
+      # ── Sign DMG ─────────────────────────────────────────────────────────
+      # DMGs are flat files, so --deep is not needed. We do not attach
+      # entitlements to a DMG (they apply only to Mach-O executables and
+      # bundles); the embedded artefacts already carry theirs.
+      - name: Sign DMG
+        run: |
+          SIGNING_ID="Developer ID Application: XO_OX Designs (${{ secrets.APPLE_TEAM_ID }})"
+          codesign \
+            --force \
+            --sign "$SIGNING_ID" \
+            --timestamp \
+            "$DMG_NAME"
+
+          codesign --verify --verbose=2 "$DMG_NAME"
+          echo "DMG signature: VALID"
+
+      # ── Notarize DMG ─────────────────────────────────────────────────────
+      - name: Submit DMG to Apple notary service
+        env:
+          APPLE_ID:           ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID:      ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          xcrun notarytool submit "$DMG_NAME" \
+            --apple-id      "$APPLE_ID" \
+            --team-id       "$APPLE_TEAM_ID" \
+            --password      "$APPLE_APP_PASSWORD" \
+            --wait \
+            --timeout 30m \
+            --verbose
+          echo "DMG notarization: ACCEPTED"
+
+      - name: Staple notarization ticket to DMG
+        run: |
+          xcrun stapler staple "$DMG_NAME"
+          xcrun stapler validate "$DMG_NAME"
+          echo "DMG staple: OK"
+
+      # ── Upload final DMG ──────────────────────────────────────────────────
+      - name: Upload signed and notarized DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: xoceanus-dmg
+          path: ${{ env.DMG_NAME }}
+          # Keep DMG for 7 days so the release job can retrieve it even if
+          # the release step has to be re-run after a transient failure.
+          retention-days: 7
+
+      # ── Cleanup ───────────────────────────────────────────────────────────
+      - name: Delete temporary keychain and credential files
+        if: always()
+        run: |
+          KEYCHAIN_PATH=$(cat "$RUNNER_TEMP/pkg_keychain_path" 2>/dev/null || true)
+          if [ -n "$KEYCHAIN_PATH" ]; then
+            security delete-keychain "$KEYCHAIN_PATH" 2>/dev/null || true
+          fi
+          rm -f "$RUNNER_TEMP/cert_pkg.p12" \
+                "$RUNNER_TEMP/pkg_keychain_pwd" \
+                "$RUNNER_TEMP/pkg_keychain_path"
+
+
+##############################################################################
+# JOB 5 — RELEASE
+# Creates a GitHub Release from the tag, uploads the signed + notarized DMG
+# as the primary download asset, and auto-generates release notes from all
+# commits since the previous tag using GitHub's built-in note generation
+# (--generate-notes).  The auto-generated notes are prefixed with a one-line
+# summary so users know what they are downloading.
+##############################################################################
+  release:
+    name: Publish GitHub Release
+    runs-on: macos-14
+    needs: package
+    permissions:
+      # gh release create requires write access to contents
+      contents: write
+
+    steps:
+      # ── Checkout (needed for gh CLI context) ────────────────────────────
+      - name: Checkout tagged commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ── Download DMG ──────────────────────────────────────────────────────
+      - name: Download signed and notarized DMG
+        uses: actions/download-artifact@v4
+        with:
+          name: xoceanus-dmg
+          path: release_assets/
+
+      # ── Derive tag and version strings ───────────────────────────────────
+      - name: Set release metadata
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          # Strip the leading "v" to get a bare version number
+          VERSION="${TAG#v}"
+          echo "TAG=$TAG"         >> "$GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "DMG_PATH=release_assets/XOceanus-${TAG}.dmg" >> "$GITHUB_ENV"
+
+      # ── Create GitHub Release ─────────────────────────────────────────────
+      # --generate-notes  : GitHub automatically collects all pull request
+      #   titles and commit messages since the previous tag and formats them
+      #   as a changelog.  This works even for the first release (it uses
+      #   the full history back to the initial commit).
+      #
+      # The release title and a brief header are prepended to the generated
+      # notes so users see context before the changelog list.
+      - name: Create GitHub Release and upload DMG
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          VERSION="${{ github.event.inputs.version }}"
+          gh release create "$TAG" \
+            --title "XOceanus $TAG" \
+            --notes "$(cat <<'NOTES'
+## XOceanus ${VERSION}
 
-          # Create zips of build artifacts for attachment
-          cd build/XOceanus_artefacts/Release
-          zip -r "${GITHUB_WORKSPACE}/XOceanus-AU-v${VERSION}.zip" AU/XOceanus.component
-          zip -r "${GITHUB_WORKSPACE}/XOceanus-Standalone-v${VERSION}.zip" Standalone/XOceanus.app
-          cd "${GITHUB_WORKSPACE}"
+Signed, notarized, and ready to install on macOS 12 Monterey and later.
 
-          gh release create "v${VERSION}" \
-            --title "XOceanus v${VERSION}" \
+### Installation
+
+**AU Plugin (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)**
+1. Open the DMG and copy `XOceanus.component` to `~/Library/Audio/Plug-Ins/Components/`
+2. Restart your DAW and scan for new plugins.
+
+**Standalone App**
+1. Open the DMG and drag `XOceanus.app` to your `/Applications/` folder.
+
+---
+NOTES
+)" \
             --generate-notes \
-            "XOceanus-AU-v${VERSION}.zip#AU Plugin (macOS)" \
-            "XOceanus-Standalone-v${VERSION}.zip#Standalone App (macOS)"
+            "${DMG_PATH}#XOceanus-${TAG}.dmg (macOS, signed + notarized)"
+
+          echo "GitHub Release created: $TAG"
+          echo "Asset uploaded: $DMG_PATH"

@@ -119,5 +119,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "FAT DENSITY": 0.45,
+    "COUPLING": 0.36,
+    "SPACE": 0.75
+  }
 }

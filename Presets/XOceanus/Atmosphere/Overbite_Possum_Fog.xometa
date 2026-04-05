@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Drifting low-end haze built from slowly modulated sine waves and phaser motion \u2014 foggy and disorienting.",
+  "description": "Drifting low-end haze built from slowly modulated sine waves and phaser motion — foggy and disorienting.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.3,
@@ -54,7 +54,8 @@
       "poss_oscBInstability": 0.3,
       "poss_oscBWaveform": 0,
       "poss_oscMix": 0.5,
-      "poss_subLevel": 0.35
+      "poss_subLevel": 0.35,
+      "poss_ampVelSens": 0.32
     }
   },
   "schema_version": 1,

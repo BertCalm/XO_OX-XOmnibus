@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Fog Signal",
+  "name": "Fog Signal (Ouie)",
   "mood": "Atmosphere",
   "engines": [
     "Ouie"
@@ -67,5 +67,11 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

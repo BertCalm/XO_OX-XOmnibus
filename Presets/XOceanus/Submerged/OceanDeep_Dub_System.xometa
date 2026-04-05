@@ -56,7 +56,7 @@
       "deep_subOctMix": 0.2,
       "deep_filterCutoff": 200,
       "deep_filterRes": 0.8,
-      "deep_velCutoffAmt": 0.0,
+      "deep_velCutoffAmt": 0.33,
       "deep_bodyChar": 0,
       "deep_bodyFeedback": 0.0,
       "deep_bodyMix": 0.0,

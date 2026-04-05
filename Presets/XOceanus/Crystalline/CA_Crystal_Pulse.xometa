@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "1D cellular automata oscillations projected through crystal geometry \u2014 living mineral sound, precise and cold.",
+  "description": "1D cellular automata oscillations projected through crystal geometry — living mineral sound, precise and cold.",
   "tags": [
     "crystalline",
     "cellular-automata",
@@ -39,7 +39,8 @@
       "obnt_macroSpace": 0.62,
       "obnt_filterEnvAmt": 0.58,
       "obnt_lfo1Rate": 0.1,
-      "obnt_lfo1Depth": 0.23
+      "obnt_lfo1Depth": 0.23,
+      "obnt_velSens": 0.588
     }
   },
   "coupling": {

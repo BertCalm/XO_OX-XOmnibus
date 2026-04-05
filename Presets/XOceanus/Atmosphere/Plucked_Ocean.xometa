@@ -2,20 +2,36 @@
   "schema_version": 1,
   "name": "Plucked Ocean",
   "mood": "Atmosphere",
-  "engines": ["Orphica", "Oceanic"],
+  "engines": [
+    "Orphica",
+    "Oceanic"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A string dipped in seawater: the pluck decays into chromatophore shimmer, bioluminescence spreading where the note was.",
-  "tags": ["atmosphere", "whisper", "coupling", "pluck", "ocean", "bioluminescent", "string"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "pluck",
+    "ocean",
+    "bioluminescent",
+    "string"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
-    "brightness": 0.40,
+    "brightness": 0.4,
     "warmth": 0.65,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.42,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.06
   },
   "parameters": {
@@ -24,12 +40,13 @@
       "orph_macroMovement": 0.36,
       "orph_macroCoupling": 0.14,
       "orph_macroSpace": 0.76,
-      "orph_pluckBrightness": 0.50,
-      "orph_filterEnvAmt": 0.40,
+      "orph_pluckBrightness": 0.5,
+      "orph_filterEnvAmt": 0.4,
       "orph_lfo1Rate": 0.05,
       "orph_lfo1Depth": 0.18,
       "orph_attack": 0.01,
-      "orph_release": 3.8
+      "orph_release": 3.8,
+      "orph_velocitySensitivity": 0.468
     },
     "Oceanic": {
       "ocean_macroCharacter": 0.38,

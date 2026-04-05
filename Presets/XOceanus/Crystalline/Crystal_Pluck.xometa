@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A plucked string made of crystal \u2014 Orphica's pluck brightness at maximum crystalline clarity.",
+  "description": "A plucked string made of crystal — Orphica's pluck brightness at maximum crystalline clarity.",
   "tags": [
     "crystalline",
     "pluck",
@@ -39,7 +39,8 @@
       "orph_macroSpace": 0.57,
       "orph_filterEnvAmt": 0.55,
       "orph_lfo1Rate": 0.14,
-      "orph_lfo1Depth": 0.18
+      "orph_lfo1Depth": 0.18,
+      "orph_velocitySensitivity": 0.623
     }
   },
   "coupling": {

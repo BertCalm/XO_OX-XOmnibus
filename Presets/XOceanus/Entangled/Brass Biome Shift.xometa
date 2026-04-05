@@ -59,7 +59,8 @@
       "ocelot_macroCoupling": 0.585,
       "ocelot_macroSpace": 0.521,
       "ocelot_filterEnvDepth": 0.484,
-      "ocelot_lfoRate": 0.283
+      "ocelot_lfoRate": 0.283,
+      "ocelot_floorVelocity": 0.796
     },
     "Ottoni": {
       "otto_ampAttack": 0.03,

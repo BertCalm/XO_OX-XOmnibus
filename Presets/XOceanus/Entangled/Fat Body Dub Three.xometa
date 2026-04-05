@@ -108,7 +108,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.488
     },
     "Overdub": {
       "dub_oscWave": 2,
@@ -165,5 +166,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT DENSITY": 0.45,
+    "BOB CHARACTER": 0.45,
+    "DUB ECHO": 0.45,
+    "COUPLING": 0.402
+  }
 }

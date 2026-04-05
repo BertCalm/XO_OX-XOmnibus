@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "High vista line with moderate resonance \u2014 a bright, slightly cutting pad. Sine purity in luminous condition.",
+  "description": "High vista line with moderate resonance — a bright, slightly cutting pad. Sine purity in luminous condition.",
   "tags": [
     "bright",
     "veil",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
   }
 }

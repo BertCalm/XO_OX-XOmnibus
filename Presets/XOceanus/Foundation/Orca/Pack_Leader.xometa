@@ -80,5 +80,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

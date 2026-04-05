@@ -43,7 +43,8 @@
       "opal_grainSize": 0.526,
       "opal_macroCharacter": 0.056,
       "opal_macroCoupling": 0.0,
-      "opal_release": 1.0
+      "opal_release": 1.0,
+      "opal_ampVelSens": 0.384
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.432,
@@ -69,7 +70,8 @@
       "owl_resonantFeedback": 0.56,
       "owl_resonantPitch": 0.409,
       "owl_shimmer": 0.338,
-      "owl_subLevel": 0.491
+      "owl_subLevel": 0.491,
+      "owl_velocity": 0.624
     }
   },
   "schema_version": 1,
@@ -81,5 +83,11 @@
     "opal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.436,
+    "MOVEMENT": 0.371,
+    "COUPLING": 0.625,
+    "SPACE": 0.621
+  }
 }

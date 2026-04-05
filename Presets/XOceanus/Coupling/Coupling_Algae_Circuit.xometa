@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM cellular automaton rules barely seed OBRIX reef ecology \u2014 living logic informing the coral synthesis ecology at the whisper level.",
+  "description": "ORGANISM cellular automaton rules barely seed OBRIX reef ecology — living logic informing the coral synthesis ecology at the whisper level.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "org_macroCharacter": 0.46,
       "org_macroMovement": 0.44,
       "org_macroCoupling": 0.5,
-      "org_macroSpace": 0.48
+      "org_macroSpace": 0.48,
+      "org_velCutoff": 0.425
     },
     "Obrix": {
       "obrix_src1Type": 0.48,

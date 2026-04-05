@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Mariana Depth",
+  "mood": "Atmosphere",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Chiasmus FDN at maximum depth — seven miles of water above. Only the lowest partial frequencies survive the descent.",
+  "tags": ["atmosphere", "dark", "mariana", "depth", "rumble"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.76,
+    "movement": 0.20,
+    "density": 0.58,
+    "space": 0.90,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.98,
+      "oxb_decay": 20.0,
+      "oxb_entangle": 0.12,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.06,
+      "oxb_convergence": 0,
+      "oxb_resonanceQ": 3,
+      "oxb_resonanceMix": 0.22,
+      "oxb_cantilever": 0.04,
+      "oxb_damping": 120,
+      "oxb_predelay": 8,
+      "oxb_dryWet": 0.95,
+      "oxb_exciterDecay": 0.15,
+      "oxb_exciterBright": 0.03,
+      "oxb_macroCharacter": 0.12,
+      "oxb_macroMovement": 0.15,
+      "oxb_macroCoupling": 0.15,
+      "oxb_macroSpace": 0.90,
+      "oxb_filterEnvAmt": 0.05,
+      "oxb_lfo1Rate": 0.008,
+      "oxb_lfo1Depth": 0.10
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.12,
+    "EROSION": 0.04,
+    "CONVERGE": 0.12,
+    "CANTILEVER": 0.90
+  }
+}

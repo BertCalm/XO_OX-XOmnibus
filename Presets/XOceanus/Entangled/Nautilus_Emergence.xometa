@@ -56,7 +56,8 @@
       "org_macroRule": 0.5,
       "org_macroSeed": 0.45,
       "org_macroCoupling": 0.88,
-      "org_macroMutate": 0.25
+      "org_macroMutate": 0.25,
+      "org_velCutoff": 0.495
     },
     "Overtone": {
       "over_constant": 3.0,
@@ -71,7 +72,8 @@
       "over_macroDepth": 0.72,
       "over_macroColor": 0.5,
       "over_macroCoupling": 0.88,
-      "over_macroSpace": 0.6
+      "over_macroSpace": 0.6,
+      "over_velBright": 0.446
     }
   },
   "tags": [

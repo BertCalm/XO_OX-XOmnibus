@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Seismic Snap",
   "mood": "Kinetic",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Possum bite reaching seismic energy levels. Scritch rate encoding tectonic tremor frequency.",
-  "tags": ["kinetic", "aggressive", "seismic", "snap", "tremor"],
-  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "tags": [
+    "kinetic",
+    "aggressive",
+    "seismic",
+    "snap",
+    "tremor"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "PLAY DEAD",
+    "SCURRY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "poss_attackTime": 0.003,
       "poss_decayTime": 0.12,
       "poss_sustain": 0.15,
-      "poss_releaseTime": 0.08
+      "poss_releaseTime": 0.08,
+      "poss_ampVelSens": 0.779
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.88,

@@ -48,7 +48,8 @@
       "org_macroMutate": 0.373,
       "org_filterEnvAmt": 0.49,
       "org_lfo1Rate": 0.202,
-      "org_lfo1Depth": 0.342
+      "org_lfo1Depth": 0.342,
+      "org_velCutoff": 0.475
     },
     "Overdub": {
       "dub_oscWave": 0,

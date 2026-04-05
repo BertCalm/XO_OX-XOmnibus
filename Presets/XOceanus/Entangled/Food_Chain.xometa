@@ -57,7 +57,8 @@
       "bob_oscA_shape": 0.4,
       "bob_oscA_wave": 0,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.45
     },
     "OddfeliX": {
       "snap_decay": 0.1,
@@ -90,5 +91,11 @@
     "three-tier"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "PREDATOR": 0.45,
+    "PREY": 0.45,
+    "COUPLING": 0.51,
+    "SPACE": 0.3
+  }
 }

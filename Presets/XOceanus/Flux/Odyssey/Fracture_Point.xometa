@@ -14,7 +14,7 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Fracture Point",
+  "name": "Fracture Point (Odyssey)",
   "mood": "Flux",
   "engines": [
     "Odyssey"
@@ -64,5 +64,11 @@
       "drift_voiceMode": 0,
       "drift_polyphony": 4
     }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
   }
 }

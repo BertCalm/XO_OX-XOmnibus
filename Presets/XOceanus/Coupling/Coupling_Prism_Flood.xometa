@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLIQUE prism bounce dominantly floods OPENSKY shimmer width \u2014 refracted light exploding into a shimmer ascent, prism energy filling sky.",
+  "description": "OBLIQUE prism bounce dominantly floods OPENSKY shimmer width — refracted light exploding into a shimmer ascent, prism energy filling sky.",
   "tags": [
     "coupling",
     "heavy",
@@ -52,7 +52,8 @@
       "sky_macroCharacter": 0.62,
       "sky_macroMovement": 0.68,
       "sky_macroCoupling": 0.72,
-      "sky_macroSpace": 0.7
+      "sky_macroSpace": 0.7,
+      "sky_velSensitivity": 0.658
     }
   },
   "coupling": {

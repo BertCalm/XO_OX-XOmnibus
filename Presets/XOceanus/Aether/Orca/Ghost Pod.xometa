@@ -72,10 +72,17 @@
       "orca_macroCharacter": 0.0,
       "orca_macroMovement": 0.0,
       "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 1.0
+      "orca_macroSpace": 1.0,
+      "orca_velCutoffAmt": 0.3
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "DRIFT": 0.5,
+    "COUPLING": 0.2,
+    "DEPTH": 0.6
   }
 }

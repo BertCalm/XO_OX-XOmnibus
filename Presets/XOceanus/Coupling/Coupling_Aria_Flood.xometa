@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPERA Kuramoto arc heavily drives ORPHICA body resonance bloom \u2014 dramatic coherence flooding the string's resonant body with synchronous energy.",
+  "description": "OPERA Kuramoto arc heavily drives ORPHICA body resonance bloom — dramatic coherence flooding the string's resonant body with synchronous energy.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "opera_macroCharacter": 0.65,
       "opera_macroMovement": 0.68,
       "opera_macroCoupling": 0.75,
-      "opera_macroSpace": 0.54
+      "opera_macroSpace": 0.54,
+      "opera_velToFilter": 0.384
     },
     "Orphica": {
       "orph_pluckBrightness": 0.68,
@@ -52,7 +53,8 @@
       "orph_macroCharacter": 0.62,
       "orph_macroMovement": 0.64,
       "orph_macroCoupling": 0.72,
-      "orph_macroSpace": 0.54
+      "orph_macroSpace": 0.54,
+      "orph_velocitySensitivity": 0.72
     }
   },
   "coupling": {

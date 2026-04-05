@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Route Exchange",
+  "mood": "Coupling",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Open trade configuration — coupling macro elevated, canopy acts as a mixing node for external engine signals. The Rhodes becomes a cultural intermediary.",
+  "tags": [
+    "coupling",
+    "trade",
+    "open",
+    "warm",
+    "bridge",
+    "interchange"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "couplingType": "FLOW",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.42,
+      "oas_breeze": 0.35,
+      "oas_swarmDensity": 0.42,
+      "oas_lagoonDepth": 0.5,
+      "oas_subDrive": 0.32,
+      "oas_resonatorQ": 5.0,
+      "oas_cullDecay": 0.994,
+      "oas_canopyFB": 0.55,
+      "oas_filterCutoff": 3200.0,
+      "oas_filterEnvAmt": 0.48,
+      "oas_rhodesMix": 0.88,
+      "oas_pickupPos": 0.52,
+      "oas_bellAmount": 0.5,
+      "oas_warmth": 0.58,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.45,
+      "oas_macroMovement": 0.45,
+      "oas_macroCoupling": 0.72,
+      "oas_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.58
+  }
+}

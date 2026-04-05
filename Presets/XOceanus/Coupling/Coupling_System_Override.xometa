@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine extreme: ORBWEAVE topology rewrites ORGANISM rules which rewrites OBRIX ecology \u2014 a cascade of biological rewriting, three living systems each overriding the next.",
+  "description": "Three-engine extreme: ORBWEAVE topology rewrites ORGANISM rules which rewrites OBRIX ecology — a cascade of biological rewriting, three living systems each overriding the next.",
   "tags": [
     "coupling",
     "extreme",
@@ -55,7 +55,8 @@
       "org_macroCharacter": 0.72,
       "org_macroMovement": 0.88,
       "org_macroCoupling": 0.88,
-      "org_macroSpace": 0.5
+      "org_macroSpace": 0.5,
+      "org_velCutoff": 0.58
     },
     "Obrix": {
       "obrix_src1Type": 0.85,

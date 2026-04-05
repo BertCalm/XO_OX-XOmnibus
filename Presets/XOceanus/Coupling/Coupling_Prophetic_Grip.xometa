@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORACLE stochastic breakpoints drive OVERBITE bite mechanics \u2014 prophecy physically controlling the grip tension, foresight expressed as bite force.",
+  "description": "ORACLE stochastic breakpoints drive OVERBITE bite mechanics — prophecy physically controlling the grip tension, foresight expressed as bite force.",
   "tags": [
     "coupling",
     "heavy",
@@ -51,7 +51,8 @@
       "poss_macroScurry": 0.56,
       "poss_filterEnvAmt": 0.65,
       "poss_lfo1Rate": 0.16,
-      "poss_lfo1Depth": 0.35
+      "poss_lfo1Depth": 0.35,
+      "poss_ampVelSens": 0.538
     }
   },
   "coupling": {

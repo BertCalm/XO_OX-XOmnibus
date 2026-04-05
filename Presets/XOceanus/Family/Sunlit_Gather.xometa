@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.956,
       "bob_macroCoupling": 0.775,
       "bob_macroMovement": 0.058,
-      "bob_macroSpace": 0.099
+      "bob_macroSpace": 0.099,
+      "bob_velFilter": 0.54
     },
     "Origami": {
       "origami_macroCharacter": 0.946,

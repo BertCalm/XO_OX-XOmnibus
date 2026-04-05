@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-way triangular extreme: OXYTOCIN bond depth drives OPERA arc which drives ORPHICA resonance which amplifies OXYTOCIN \u2014 chemistry, drama, and string in a closed feedback loop.",
+  "description": "Three-way triangular extreme: OXYTOCIN bond depth drives OPERA arc which drives ORPHICA resonance which amplifies OXYTOCIN — chemistry, drama, and string in a closed feedback loop.",
   "tags": [
     "coupling",
     "extreme",
@@ -55,7 +55,8 @@
       "opera_macroCharacter": 0.75,
       "opera_macroMovement": 0.82,
       "opera_macroCoupling": 0.9,
-      "opera_macroSpace": 0.54
+      "opera_macroSpace": 0.54,
+      "opera_velToFilter": 0.396
     },
     "Orphica": {
       "orph_pluckBrightness": 0.82,
@@ -65,7 +66,8 @@
       "orph_macroCharacter": 0.72,
       "orph_macroMovement": 0.78,
       "orph_macroCoupling": 0.88,
-      "orph_macroSpace": 0.54
+      "orph_macroSpace": 0.54,
+      "orph_velocitySensitivity": 0.742
     }
   },
   "coupling": {

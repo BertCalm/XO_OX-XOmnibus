@@ -2,19 +2,35 @@
   "schema_version": 1,
   "name": "Membrane Light",
   "mood": "Ethereal",
-  "engines": ["Osmosis", "Overtone"],
+  "engines": [
+    "Osmosis",
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "External light filtered through permeable membrane into spectral fractions. What Osmosis passes through, Overtone decomposes into continued fraction harmonics.",
-  "tags": ["ethereal", "whisper", "coupling", "membrane", "spectral", "light", "permeable"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "whisper",
+    "coupling",
+    "membrane",
+    "spectral",
+    "light",
+    "permeable"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
     "warmth": 0.52,
     "movement": 0.28,
-    "density": 0.30,
+    "density": 0.3,
     "space": 0.92,
     "aggression": 0.02
   },
@@ -25,7 +41,7 @@
       "osmo_macroCoupling": 0.14,
       "osmo_macroSpace": 0.88,
       "osmo_permeability": 0.55,
-      "osmo_filterEnvAmt": 0.30,
+      "osmo_filterEnvAmt": 0.3,
       "osmo_lfo1Rate": 0.04,
       "osmo_lfo1Depth": 0.16,
       "osmo_attack": 1.0,
@@ -33,15 +49,16 @@
     },
     "Overtone": {
       "over_macroCharacter": 0.36,
-      "over_macroMovement": 0.30,
+      "over_macroMovement": 0.3,
       "over_macroCoupling": 0.12,
       "over_macroSpace": 0.94,
-      "over_cfDepth": 0.50,
+      "over_cfDepth": 0.5,
       "over_filterEnvAmt": 0.26,
       "over_lfo1Rate": 0.03,
       "over_lfo1Depth": 0.15,
       "over_attack": 2.0,
-      "over_release": 7.0
+      "over_release": 7.0,
+      "over_velBright": 0.274
     }
   },
   "coupling": {

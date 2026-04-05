@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OUROBOROS strange attractor audio floods OPAL grain buffer completely \u2014 chaotic signal rewriting the granular wavetable, strange attractor as grain source.",
+  "description": "OUROBOROS strange attractor audio floods OPAL grain buffer completely — chaotic signal rewriting the granular wavetable, strange attractor as grain source.",
   "tags": [
     "coupling",
     "extreme",
@@ -54,7 +54,8 @@
       "opal_macroCharacter": 0.72,
       "opal_macroMovement": 0.85,
       "opal_macroCoupling": 0.88,
-      "opal_macroSpace": 0.55
+      "opal_macroSpace": 0.55,
+      "opal_ampVelSens": 0.476
     }
   },
   "coupling": {

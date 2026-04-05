@@ -38,7 +38,8 @@
       "ofr_dustWobble": 0.0,
       "ofr_digCuriosity": 0.3,
       "ofr_digComplexity": 0.2,
-      "ofr_masterWidth": 0.5
+      "ofr_masterWidth": 0.5,
+      "ofr_velToSnap": 0.48
     }
   },
   "schema_version": 1,

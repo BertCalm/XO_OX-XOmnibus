@@ -48,7 +48,8 @@
       "opal_macroSpace": 0.375,
       "opal_filterEnvAmt": 0.449,
       "opal_lfo1Rate": 0.112,
-      "opal_lfo1Depth": 0.259
+      "opal_lfo1Depth": 0.259,
+      "opal_ampVelSens": 0.384
     },
     "Orbweave": {
       "weave_knotDepth": 0.72,

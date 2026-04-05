@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ODDFELIX neon dart amplitude barely registers in OBLONG filter \u2014 a tetra's flash of light touching amber warmth at the edge of notice.",
+  "description": "ODDFELIX neon dart amplitude barely registers in OBLONG filter — a tetra's flash of light touching amber warmth at the edge of notice.",
   "tags": [
     "coupling",
     "whisper",
@@ -52,7 +52,8 @@
       "bob_macroCharacter": 0.45,
       "bob_macroMovement": 0.4,
       "bob_macroCoupling": 0.48,
-      "bob_macroSpace": 0.44
+      "bob_macroSpace": 0.44,
+      "bob_velFilter": 0.423
     }
   },
   "coupling": {

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Phantom Current",
   "mood": "Atmosphere",
-  "engines": ["Orca", "Ombre"],
+  "engines": [
+    "Orca",
+    "Ombre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The predator passes unseen through shadow. Orca's hunt energy bleeds in whispers into Ombre's memory layers, casting faint luminescence into forgetting.",
-  "tags": ["atmosphere", "whisper", "coupling", "predator", "shadow", "memory", "ocean"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "predator",
+    "shadow",
+    "memory",
+    "ocean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
@@ -15,25 +31,26 @@
     "warmth": 0.58,
     "movement": 0.35,
     "density": 0.45,
-    "space": 0.80,
-    "aggression": 0.10
+    "space": 0.8,
+    "aggression": 0.1
   },
   "parameters": {
     "Orca": {
       "orca_macroCharacter": 0.44,
-      "orca_macroMovement": 0.40,
+      "orca_macroMovement": 0.4,
       "orca_macroCoupling": 0.14,
-      "orca_macroSpace": 0.70,
+      "orca_macroSpace": 0.7,
       "orca_huntMacro": 0.22,
-      "orca_filterEnvAmt": 0.30,
+      "orca_filterEnvAmt": 0.3,
       "orca_lfo1Rate": 0.05,
-      "orca_lfo1Depth": 0.20,
+      "orca_lfo1Depth": 0.2,
       "orca_attack": 0.8,
-      "orca_release": 3.8
+      "orca_release": 3.8,
+      "orca_velCutoffAmt": 0.32
     },
     "Ombre": {
       "ombre_macroCharacter": 0.36,
-      "ombre_macroMovement": 0.30,
+      "ombre_macroMovement": 0.3,
       "ombre_macroCoupling": 0.12,
       "ombre_macroSpace": 0.82,
       "ombre_blend": 0.48,
@@ -41,7 +58,8 @@
       "ombre_lfo1Rate": 0.03,
       "ombre_lfo1Depth": 0.14,
       "ombre_attack": 1.4,
-      "ombre_release": 5.0
+      "ombre_release": 5.0,
+      "ombre_velCutoffScale": 0.256
     }
   },
   "coupling": {
@@ -56,7 +74,7 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.40,
+    "CHARACTER": 0.4,
     "MOVEMENT": 0.35,
     "COUPLING": 0.13,
     "SPACE": 0.76

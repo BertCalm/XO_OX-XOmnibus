@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH PRISM": 0.45,
+    "DRIFT FIELD": 0.45,
+    "COUPLING": 0.33,
+    "FILTER": 0.45
+  }
 }

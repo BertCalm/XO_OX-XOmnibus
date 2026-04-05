@@ -2,20 +2,33 @@
   "schema_version": 1,
   "name": "Pod Rattle",
   "mood": "Organic",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dry seed pods rattling in autumn wind — a natural percussion instrument grown rather than made.",
-  "tags": ["organic", "seeds", "rattle", "autumn", "percussion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "seeds",
+    "rattle",
+    "autumn",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.40,
+    "brightness": 0.4,
     "warmth": 0.65,
     "movement": 0.52,
     "density": 0.38,
-    "space": 0.50,
+    "space": 0.5,
     "aggression": 0.14
   },
   "parameters": {
@@ -23,21 +36,24 @@
       "owr_macroCharacter": 0.42,
       "owr_macroMovement": 0.52,
       "owr_macroCoupling": 0.18,
-      "owr_macroSpace": 0.50,
+      "owr_macroSpace": 0.5,
       "owr_material": 0.15,
-      "owr_filterEnvAmt": 0.50,
+      "owr_filterEnvAmt": 0.5,
       "owr_lfo1Rate": 0.12,
       "owr_lfo1Depth": 0.28,
       "owr_lfo2Rate": 0.06,
-      "owr_lfo2Depth": 0.20
+      "owr_lfo2Depth": 0.2,
+      "owr_malletVelocity": 0.653
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.42,
     "MOVEMENT": 0.52,
     "COUPLING": 0.18,
-    "SPACE": 0.50
+    "SPACE": 0.5
   }
 }

@@ -48,7 +48,8 @@
       "ofr_digCuriosity": 0.38,
       "ofr_digComplexity": 0.4,
       "ofr_v0_body": 0.72,
-      "ofr_masterWidth": 0.4
+      "ofr_masterWidth": 0.4,
+      "ofr_velToSnap": 0.468
     }
   },
   "schema_version": 1,

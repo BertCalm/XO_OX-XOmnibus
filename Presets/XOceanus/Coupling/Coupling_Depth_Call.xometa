@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA echolocation envelope drives OCEANDEEP hydrostatic compression \u2014 sonar energy feeding trench pressure, the predator calling into the abyss.",
+  "description": "ORCA echolocation envelope drives OCEANDEEP hydrostatic compression — sonar energy feeding trench pressure, the predator calling into the abyss.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.54,
       "orca_macroMovement": 0.58,
       "orca_macroCoupling": 0.65,
-      "orca_macroSpace": 0.52
+      "orca_macroSpace": 0.52,
+      "orca_velCutoffAmt": 0.48
     },
     "OceanDeep": {
       "deep_macroPressure": 0.6,
@@ -52,7 +53,8 @@
       "deep_macroCharacter": 0.52,
       "deep_macroMovement": 0.54,
       "deep_macroCoupling": 0.62,
-      "deep_macroSpace": 0.58
+      "deep_macroSpace": 0.58,
+      "deep_velCutoffAmt": 0.48
     }
   },
   "coupling": {

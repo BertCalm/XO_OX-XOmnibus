@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Impact Zone",
+  "name": "Impact Zone (Oddfellow)",
   "mood": "Kinetic",
   "engines": [
     "Oddfellow"
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.36
+  }
 }

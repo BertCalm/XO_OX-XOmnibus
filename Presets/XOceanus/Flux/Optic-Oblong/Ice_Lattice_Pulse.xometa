@@ -56,7 +56,8 @@
       "bob_fltReso": 0.5,
       "bob_fltDrive": 0.4,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.68
     }
   },
   "coupling": {
@@ -75,5 +76,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PULSE GRID": 0.45,
+    "DENSITY": 0.91,
+    "FILTER": 0.45,
+    "EVOLVE": 0.88
+  }
 }

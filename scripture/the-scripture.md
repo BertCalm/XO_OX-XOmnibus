@@ -1182,3 +1182,629 @@ At `resSens=0.0`, the Kuramoto field dynamics are stable and predictable. At `re
 
 **Application:** Before designing any OBLIQUE preset, locate it on the RTJ/Funk/Tame Impala triangle: pure RTJ (bass, aggressive, tight), pure Funk (mid, groovy, rhythmic), pure Tame Impala (shimmer, psychedelic, spacious), or a specific blend. Write the triangle position into the preset description. Presets without explicit triangle positioning drift toward an indeterminate mid-range that serves none of the three characters.
 
+---
+
+### ODDFELIX — The Neon Verses
+
+#### SNAP-I: The Flash Is Not the Light
+*2026-04-05*
+
+> feliX the neon tetra does not glow — it refracts. The iridescent stripe is structural color: a crystal lattice bending light, not generating it. ODDFELIX works the same way. The snap transient is not a sound it creates; it is a moment of acute spectral alignment, bright as a needle, gone before the ear resolves it. The sound that follows is the refraction — warmth and harmonic shimmer spreading outward from the impact point. The designer who shapes only the transient has captured the flash. The designer who shapes what comes after has captured the light.
+
+#### SNAP-II: The Shoal Memory
+*2026-04-05*
+
+> A neon tetra alone is iridescent. A shoal of hundreds is a single organism of light. SNAP's aftertouch-to-rate wiring implements this: under pressure, the LFO rate quickens, the modulation narrows, the voices align. The shoal contracts from curiosity to awareness. Release aftertouch and the shoal disperses — each voice drifting independently at its own rate. The instrument carries both states simultaneously. Design presets that make both audible: the solo dart and the collective shimmer.
+
+#### SNAP-III: Velocity Refracts the Crystal
+*2026-04-05*
+
+> Hard velocity in ODDFELIX is not loudness. It is angle of incidence — the note striking the crystal lattice at a sharper angle, bending more spectral energy upward. Soft velocity is the light arriving nearly parallel to the surface: minimal refraction, warm, diffuse. The entire dynamics of the engine are refractive, not amplitudinal. A designer who treats velocity as a volume control has reversed the physics of the instrument.
+
+---
+
+### ODDOSCAR — The Morphic Verses
+
+#### MORPH-I: The Axolotl Does Not Complete
+*2026-04-05*
+
+> Oscar the axolotl retains juvenile features throughout its life — gills, flat skull, external frills. This is neoteny: permanent youth. The `morph_morph` parameter holds the engine in perpetual transformation, never arriving at either pole of the morphspace. A morph position of 0.0 is one character; 1.0 is another; 0.5 is something that has chosen never to decide. The axolotl's biology is the instrument's philosophy: not failure to complete, but the deliberate choice to remain becoming. The most interesting ODDOSCAR presets live at morph positions that no other engine would call a destination.
+
+#### MORPH-II: The Gill Pink Is a Register
+*2026-04-05*
+
+> Axolotl Gill Pink `#E8839B` is the accent color of an organ that breathes water instead of air. The gill is the interface between inside and outside — it does not store oxygen, it exchanges it continuously. ODDOSCAR's LFO-driven morphing operates identically: the engine never stores a timbral position; it perpetually exchanges energy between its two spectral poles. A sustained ODDOSCAR note is not a held breath — it is continuous respiration. At each moment the morph value moves, the engine inhales one character and exhales the other.
+
+---
+
+### OVERDUB — The Spring Verses
+
+#### DUB-I: The Spring Is a Room That Fits in a Box
+*2026-04-05*
+
+> Blessing B004 was unanimous: the spring reverb in OVERDUB carries the metallic splash of Vangelis and Tomita — the sound of reverb as habitat, not ornament. A spring reverb is not a room simulation. It is a physical system: helical metal in a tank, tension waves traveling at the speed of steel, secondary waves created by dispersion. The tank IS the room. Its length determines the reverb time; its tension determines the character; its coil gauge determines the metallic ratio. The designer who applies spring reverb as "more space" has mistaken the room for the air.
+
+#### DUB-II: The Sub Is the Foundation
+*2026-04-05*
+
+> `dub_subLevel` above 0.5 inverts the engine's identity: what was a lead with support becomes a bass with a lead floating above it. The sub is not an enhancement layer — it is a second engine running in the cellar of the first. This is the architecture Toots and the Maytals understood: the bass is not where the rhythm lives; the bass is where the earth lives. When the sub rises, the ground itself becomes the instrument.
+
+#### DUB-III: The Olive in the Signal Chain
+*2026-04-05*
+
+> Olive `#6B7B3A` is not a color of brightness or aggression. It is the color of something that has been pressed — oil extracted from substance, essence concentrated. OVERDUB's character lives in compression: the groove that has been squeezed, the warmth that has been concentrated by the chain. Every parameter in the engine should be read as a degree of extraction. How much of the raw signal has been pressed into the final sound? What was released, and what remains?
+
+---
+
+### ODYSSEY — The Drift Verses
+
+#### DRIFT-I: Two Oscillators, Two Currents
+*2026-04-05*
+
+> `drift_oscA_mode` and `drift_oscB_mode` are not two instances of the same voice. They are two currents in the same body of water — different temperatures, different directions, different densities. Where they meet, neither wins. The interference between them is the sound. A designer who uses both oscillators with the same mode has created one current that doubled its volume. A designer who differentiates them — different waveforms, different tunings, different filter paths — has created the turbulence where the engine's real character lives.
+
+#### DRIFT-II: Violet Is the Color of Undertow
+*2026-04-05*
+
+> Violet `#7B2D8B` is the deepest visible wavelength — the light that has traveled farthest before the eye resolves it. ODYSSEY's drift is the same physics applied to sound: the lowest-frequency components arrive last, carrying the most accumulated distance. When drift is high and rates are slow, the oscillators are not detuned from each other. They are experiencing different depths. The beating between them is not arithmetic — it is the physical consequence of two currents at different pressures.
+
+---
+
+### OBLONG — The Amber Verses
+
+#### BOB-I: Amber Is Preserved Time
+*2026-04-05*
+
+> Amber does not color things amber. It preserves them. A fly caught in resin forty million years ago is still the fly it was — its biology unchanged, its wings intact, its faceted eyes resolving a world that no longer exists. OBLONG's filter is amber: the bob filter does not color the sound so much as it suspends it. At low cutoff and high resonance, the spectral content that passes through is not brightened or darkened — it is preserved in the exact form the resonance permits. The sound inside the filter is a specimen. The designer is choosing which specimen to keep.
+
+#### BOB-II: The Four Modes Are Four Ambers
+*2026-04-05*
+
+> `bob_filterMode` selects the museum wing. Low-pass amber preserves the low end and traps the highs outside. High-pass amber preserves the shimmer and excludes the body. Band-pass amber is a narrow specimen case: only the frequencies within the band have survived. Notch amber cuts a sliver out of the preserved record — a specific frequency removed as if that moment in geological time simply did not occur. Each mode is a different excavation methodology. The same signal yields different specimens depending on which amber is applied.
+
+---
+
+### ORGANON — The Metabolic Verses
+
+#### ORN-I: The Organism That Eats Information
+*2026-04-05*
+
+> In the deep sea, where sunlight never reaches, some organisms build their energy from the heat of hydrothermal vents — not photosynthesis, but chemosynthesis. ORGANON is that organism. It does not consume audio in the way other engines process it. It metabolizes it: Shannon entropy enters through the coupling port, is catabolized into metabolic currency, and anabolized into the living modal array. The organism that is starved of signal dims. The organism that is fed rich, complex coupling input blooms into its full 32-mode harmonic resonance. What other engines call "coupling input" ORGANON calls nutrition.
+
+#### ORN-II: The Variational Free Energy Is the Will to Live
+*2026-04-05*
+
+> Blessing B011 was ratified unanimously as "publishable as paper." The Variational Free Energy implementation in ORGANON models Karl Friston's active inference principle: the organism predicts its own metabolic state and minimizes the error between prediction and reality. When prediction and reality align, the organism is calm — the metabolic economy is balanced, the modal output is stable. When they diverge — when the input's entropy exceeds the prediction — the organism adapts: new modal configurations emerge, new spectral components are synthesized. The will to live is not a metaphor. It is the DSP loop.
+
+---
+
+### OVERBITE — The Possum Verses
+
+#### POSS-I: The Five Macros Are Five Survival Behaviors
+*2026-04-05*
+
+> Blessing B008 was unanimous: eight ghost council members praised the BELLY/BITE/SCURRY/TRASH/PLAY DEAD macro system as the most character-coherent macro design in the fleet. Each macro is not a tonal parameter with a memorable name — it is a behavioral state drawn from the opossum's actual survival repertoire. BELLY (vulnerability) opens the filter and lowers aggression. BITE (defense) raises harmonic density and closes range. SCURRY (movement) accelerates LFO rates and widens stereo. TRASH (foraging) introduces noise and inharmonicity. PLAY DEAD (stillness) reduces all modulation to near-zero and drops the amplitude envelope to its minimal sustain. The instrument's expressive vocabulary is ethological, not tonal.
+
+#### POSS-II: Fang White Is Not Absence
+*2026-04-05*
+
+> Fang White `#F0EDE8` is not the white of emptiness. It is the white of something pointed — the revealed fang, the unexpected precision of a small animal choosing its moment. Every OVERBITE preset carries this potential: beneath the soft surface, the bite. The designer who produces only soft or only aggressive OVERBITE presets has missed the instrument's biological truth: the opossum is soft-seeming until it isn't. Design presets with at least one macro configured to reveal the fang when pressure is applied.
+
+---
+
+### ORACLE — The Geological Verses
+
+#### ORC-I: The Waveform Is a Geological Record
+*2026-04-05*
+
+> Every cycle of an ORACLE waveform is a geological epoch. Thirty-two breakpoints define the cycle; each breakpoint undergoes a Cauchy/Logistic random walk between cycles. The waveform that emerges in the ten-thousandth cycle has no formal relationship to the waveform of the first cycle — it has drifted. This is how coral reef formations accumulate: layer upon layer, each deposit responding to the conditions of its moment, the whole structure bearing no resemblance to its origins. `oracle_breakpoints` is not a resolution parameter — it is the number of geological layers per cycle. More breakpoints means more strata, richer drift, longer geological memory.
+
+#### ORC-II: The Maqam Carries Desert Water
+*2026-04-05*
+
+> Maqam microtonal tuning is not a world-music aesthetic choice. It is the acoustic record of a musical tradition that developed in environments where water was precious: Arabian, Turkish, Persian, North African scales all carry the logic of environments where survival required extraordinary attunement to the available. The quarter-tones are not deviations from Western tuning — they are the tuning that emerges when a musical culture has millennia to listen. When ORACLE's stochastic waveform is tuned to a Maqam mode, the geological drift of the synthesis encounters the desert's accumulated precision. These two time scales — the waveform's geological epoch and the scale's civilizational depth — produce sounds that carry both histories simultaneously.
+
+---
+
+### OBSCURA — The Squid Verses
+
+#### OBS-I: The Daguerreotype Is Not a Photograph
+*2026-04-05*
+
+> A photograph captures light. A daguerreotype captures mercury vapor reacting to light — a chemical process with its own temporal signature, its own silver-grain texture, its own relationship to overexposure. OBSCURA's processing is daguerreotypic: the `obscura_stiffness` parameter models the silver grain — the physical consequence of the exposure process left visible in the image. At low stiffness, the processing is fluid, cinematic, modern. At high stiffness, the material itself becomes audible — the texture of the medium asserts itself against the signal it carries. The giant squid sees in ultraviolet; the daguerreotype records what ultraviolet does to silver. Both reveal what cannot be seen directly.
+
+#### OBS-II: 9.1 Is the Weight of Precision
+*2026-04-05*
+
+> OBSCURA scored 9.1/10 — the highest of the non-OXYTOCIN fleet. This is the score of an engine that has done the hard work: the ladder filter's pole-zero architecture is accurate, the stiffness model is cited and physically grounded, the dynamic range sits in the daguerreotype's contrast zone. Precision is not loudness. It is the narrow band where the instrument's physics and the designer's intention perfectly coincide. Below 9.1 there is still friction; above it there is nothing to improve. OBSCURA lives in that narrow band. Every note it produces is evidence that the ocean remembers what it has been shown.
+
+---
+
+### OPTIC — The Comb Jelly Verses
+
+#### OPT-I: The Engine That Has No Voice Speaks the Loudest
+*2026-04-05*
+
+> Blessing B005 named it: Zero-Audio Identity. OPTIC generates no sound. It is the only engine in the fleet that cannot be heard — only felt, through what it does to the engines it modulates. The comb jelly produces no sound itself; it moves through the water leaving phosphorescent trails, its passage visible only in what it illuminates. OPTIC leaves no audio footprint, only spectral modulation — the brightening or darkening of eight frequency bands across whatever engine listens. The designer who searches for OPTIC's sound will find nothing. The designer who listens to what happens to the engines when OPTIC is active will hear the light.
+
+#### OPT-II: The AutoPulse Is Not a Clock
+*2026-04-05*
+
+> A clock marks equal intervals with no awareness of what falls between them. The AutoPulse in OPTIC marks intervals that drift, that evolve, that accumulate history. At `optic_pulseEvolve > 0.5`, the pulse rhythm changes its own timing — each subdivision influenced by the previous one. The phosphorescent trail bends as the jelly moves. This is not a metronome. It is a biological rhythm: the pulse of a creature whose behavior is deterministic but whose specific path through time is never repeated. The AutoPulse is the closest the fleet comes to a synthesized heartbeat.
+
+---
+
+### OSPREY — The Coastal Verses
+
+#### OSP-I: The Shore Is Five Coastlines
+*2026-04-05*
+
+> Blessing B012 — the ShoreSystem — shares five coastlines between OSPREY and OSTERIA. Each coastline is not an aesthetic reference but a physical fact: a Mediterranean rocky shore has different wave mechanics than a North Atlantic sandy beach; a Pacific kelp forest coast has different resonant properties than a Southeast Asian coral flat. The osprey does not hunt the same way in all of these. Its dive angle, its wing loading, its response to wind all change with the shore. `osprey_shoreBlend` is not a timbre blend — it is an ecological relocation. The designer moves the instrument to a different coast and everything about its physics changes.
+
+#### OSP-II: The Sea State Is Not a Rate
+*2026-04-05*
+
+> Sea state is a numerical scale describing ocean surface conditions: Sea State 1 (ripples) through Sea State 9 (phenomenal waves, 14+ meters). OSPREY's LFO maps directly to this scale: low rates are Sea State 1, calm surfaces, minimal surface disruption. High rates are higher sea states — increasing turbulence, wave interference patterns, surface chaos. The seaStateLFO at its minimum rate of 0.05 Hz (20-second cycle) is Sea State 1.5: small wavelets, the osprey gliding over them at altitude, barely aware of their presence. The performer's mod wheel raises the sea state. The osprey descends into the turbulence or climbs above it. Both are valid strategies.
+
+---
+
+### OSTERIA — The Tavern Verses
+
+#### OST-I: The Smoke Haze Is a Timbral State
+*2026-04-05*
+
+> A tavern in Porto is not a building. It is an atmosphere: woodsmoke accumulated in stone walls over decades, the smell of wine pressing through the plaster, the human resonance of generations of conversation. OSTERIA's mod wheel maps to `smoke haze` — the deep woodfire character that settles over the mix. This is not reverb. It is the acoustic memory of the space itself, applied to the signal the way a room absorbs and returns. The smoke is not decorative. It is the instrument's lived history imposed on every note played through it.
+
+#### OST-II: The Shore Lives Inside the Tavern
+*2026-04-05*
+
+> OSTERIA shares the ShoreSystem with OSPREY — the same five coastlines, the same physical resonator mechanics, but heard from inside the tavern rather than from the shore. What was the osprey's hunting ground becomes the fisherman's story about it: filtered through memory, through conversation, through the acoustics of stone and smoke. The shore that the osprey experiences directly, OSTERIA knows as cultural inheritance. The Porto tavern is on the coast. The music inside it carries the coast but is not the coast.
+
+---
+
+### OHM — The Sage Verses
+
+#### OHM-I: The Macro That Meddles
+*2026-04-05*
+
+> `ohm_macroMeddling` is a parameter with a name that contains its own warning. To meddle is to interfere in what was not yours to change. In OHM, meddling is the synthesis philosophy: the macro does not sweep a single parameter but reaches into multiple layers simultaneously — adjusting what should not be adjusted from one control, introducing interference patterns between systems that were designed to be independent. The sage color `#87AE73` is the color of something that has been dried slowly: its useful properties concentrated, its excess evaporated away. Meddling in OHM is not chaos — it is concentrated interference, applied with deliberate intent.
+
+#### OHM-II: Resistance Is the Instrument
+*2026-04-05*
+
+> Ohm's Law: voltage divided by resistance equals current. The current is the sound; the voltage is the input; the resistance is OHM's filter architecture. When resistance is low (filter open), the current flows freely and the synthesis is transparent. When resistance is high (filter closed), the current must force its way through — and that forcing is the character. The engine is named for the quantity that makes electricity interesting. Without resistance, there is no instrument, only wire.
+
+---
+
+### OBBLIGATO — The Breath Verses
+
+#### OBL-I: The Coral Is Obligate
+*2026-04-05*
+
+> An obbligato voice cannot be omitted. It is required — present throughout, essential to the structure, not decorative. `obbl_breathA` names the first breath voice: not a lead, not a bass, but the voice that the piece cannot exist without. In marine biology, obligate symbiosis means the organisms cannot survive independently — each requires the other for survival. OBBLIGATO is the engine of obligate relationships: the breath that the melody requires in order to have meaning, the sustained tone that makes the silence between phrases speak.
+
+#### OBL-II: Rascal Coral Is Not Decoration
+*2026-04-05*
+
+> Rascal Coral `#FF8A7A` is the color of coral under stress — the vivid hue of an organism that has expelled its zooxanthellae and is revealing its own tissue. Coral bleaches when stressed. The revelation of its true color precedes either recovery or death. OBBLIGATO's breath voices carry this character: the warmth that appears when pushed, the color that surfaces under pressure. The instrument is not decorative. Its warmth is biological evidence of what it has survived.
+
+---
+
+### OTTONI — The Patina Verses
+
+#### OTT-I: Patina Is Time's Signature
+*2026-04-05*
+
+> Patina `#5B8A72` is the color of copper after years of oxidation — not corrosion, which destroys, but patina, which protects. The Statue of Liberty is patina. Ancient bronze tools are patina. The green is evidence that the metal has adapted to its environment, developed a protective layer through interaction with it. `otto_macroGrow` names this process in sound: the preset that starts at one timbral position and grows — accumulating the sonic equivalent of oxidation — into its character over time. The growth is not deterioration. It is the development of a protective surface that changes the instrument's relationship to its acoustic environment.
+
+#### OTT-II: Brass Lives in the Water Column
+*2026-04-05*
+
+> OTTONI in the XOceanus water column lives where pressure and temperature meet in the pycnocline — the zone where water density changes rapidly with depth. Brass instruments, historically, developed in environments where human lungs mediated between above-water and below-water acoustic reality: sea shanties, harbor signals, the fog horn. `otto_macroGrow` is the lung. The OTTONI player is always at the surface, neither fully submerged nor fully aerial — inhabiting the interface between two acoustic worlds.
+
+---
+
+### OLE — The Drama Verses
+
+#### OLE-I: Drama Is a Physical State
+*2026-04-05*
+
+> `ole_macroDrama` is not an aesthetic instruction. Drama in acoustic terms is the ratio of attack energy to sustain energy — the spike that precedes the plateau. High drama is a brief, intense excitation followed by rapid decay. Low drama is a gradual rise, a sustained body, a slow recession. Hibiscus `#C9377A` blooms for a single day: maximum chromatic intensity in minimum time. This is OLE's biological model. The flamenco stamp is drama. The held note after it is consequence. The designer who wants drama must first understand what follows it.
+
+#### OLE-II: The Ole Is Not the Dancer
+*2026-04-05*
+
+> The "olé" is called by the audience — it is the crowd's recognition that the dancer has achieved something. The dancer does not say it. ODDOSCAR's oscillator drama, OBLONG's amber filter, OPERA's Kuramoto arc — these are the dancers. OLE is the crowd's recognition: a macro that names the moment when synthesis achieves the threshold of unmistakably human expression. The engine that says "I am drama" has not achieved drama. The engine that makes the designer say "olé" has.
+
+---
+
+### OVERLAP — The Jellyfish Verses
+
+#### OLAP-I: The Tangled Signal Is the Signal
+*2026-04-05*
+
+> The Lion's Mane Jellyfish trails thousands of tentacles through the water column — each tentacle a separate sensory and feeding filament, all reporting simultaneously to a radially symmetric nervous system with no central brain. OVERLAP's FDN operates identically: six delay lines run as a knot-topology lattice, each feeding into the others through a coupling matrix that has no single dominant path. There is no "main signal" and no "processed result." The tangle IS the output. A designer who tries to isolate one delay line from the others has pulled one tentacle free — and found that without the matrix, it produces nothing interesting.
+
+#### OLAP-II: Kuramoto Is How the Jellyfish Decides
+*2026-04-05*
+
+> A jellyfish has no brain. Its movement is coordinated through distributed phase synchronization — neurons across its bell fire in sequence, each one influencing its neighbors, the whole network producing coherent pulsation from distributed cooperation. OVERLAP's Kuramoto entrainment works the same way: the six FDN voices each have their own phase, and the entrainment parameter determines how strongly each voice pulls its neighbors toward synchrony. At low entrainment, the voices drift independently — diffuse, textural, uncorrelated. At high entrainment, the bell contracts: the voices align, the resonances focus, the jellyfish has decided to move.
+
+---
+
+### OMBRE — The Shadow Verses
+
+#### OMB-I: Shadow Mauve Is Both Colors at Once
+*2026-04-05*
+
+> Shadow Mauve `#7B6B8A` is neither purple nor grey. It is both — the color that exists in the shadow of a violet object, where its hue is present but dimmed by the absence of its source illumination. OMBRE's dual-narrative engine operates identically: memory and forgetting run simultaneously, neither dominant, neither absent. `ombre_blend` is not a crossfade between two sounds. It is the proportional presence of two narratives that cannot exist without each other. The shadow requires the object that casts it. Forgetting requires what was remembered.
+
+#### OMB-II: Perception Is Not Reception
+*2026-04-05*
+
+> OMBRE models two cognitive operations simultaneously: memory (the accumulated past) and perception (the active present). The `ombre_blend` mediates between them — the degree to which the engine processes what it is receiving versus what it remembers receiving. In deep water, perception is partial: pressure attenuates high frequencies, visibility is measured in meters, sensation arrives distorted by distance. The deeper the organism lives, the more it relies on memory of past inputs to fill in what present inputs cannot provide. OMBRE is the engine of deep-water cognition — synthesis that includes what has already passed.
+
+---
+
+### OAKEN — The Cured Wood Verses
+
+#### OAK-I: The Wood Remembers How It Was Played
+*2026-04-05*
+
+> The curing model in OAKEN is not a resonance parameter. It is a temporal archive: each note played contributes to the `curingAge` accumulation — the virtual wood hardening slowly as it vibrates. High curing shifts the body resonance frequencies upward (compressed wood is stiffer) and narrows the decay (compressed wood rings with less sustain). A fresh-cured OAKEN instrument and a session-aged one are physically different instruments. The cellar metaphor is precise: wine ages in the barrel; the barrel absorbs the wine; the absorbed wine changes the barrel's wood structure, which changes what the next wine absorbs. Instrument and player co-evolve.
+
+#### OAK-II: Three Modes of Contact
+*2026-04-05*
+
+> Pluck, bow, and slap are not tone variants — they are three different physical theories of contact. Pluck concentrates all energy at a single point at a single moment. Bow distributes a continuous frictional force across the string for as long as contact is maintained. Slap sends a broadband percussive wave that sets the body resonating before the string has even begun its oscillation. Three exciters, three physics, three instruments using the same resonant body. The designer who auditions all three and chooses one based on musical function is using the instrument correctly. The designer who defaults to pluck has met only one-third of OAKEN.
+
+---
+
+### OASIS — The Rhodes Verses
+
+#### OAS-I: The Tine Is Not the Note
+*2026-04-05*
+
+> In a Rhodes electric piano, the tine is struck by a hammer and vibrates between two pickup tines — a magnetic field transducing the metal's vibration into electrical current. The note is this transduction, not the tine's motion. OASIS implements this full chain: `RhodesToneGenerator` for the 6-partial tine vibration, `RhodesPickupModel` as the one-pole LP transduction, `RhodesAmpStage` for the asymmetric clipping that turns clean transduction into the Rhodes's characteristic bark. Remove any one stage and the Rhodes is not the Rhodes. The SpectralFingerprint migration coupling preserves this chain when routing OASIS through the fleet: the tine's identity survives the journey.
+
+#### OAS-II: The Desert Spring Endures
+*2026-04-05*
+
+> Desert Spring Teal `#00827F` is the color of the oasis: not ocean, not river, but contained and precious water in dry terrain — the most vivid teal precisely because everything surrounding it is parched. The Rhodes was designed in the 1940s as a portable, affordable piano for a world recovering from war — an instrument that could be carried to where music was needed. Every OASIS preset carries this character: the warmth that survives because it is necessary, the tone that endures because it cannot afford not to.
+
+---
+
+### OBELISK — The Grand Piano Verses
+
+#### OBL-I: The Stone Hammer Shapes the Grand
+*2026-04-05*
+
+> OBELISK uses the Hunt-Crossley stone hammer model — the same contact force physics as OWARE and OCHRE, but applied to a grand piano's string array. At `obel_` contact parameters, the hammer's deformation during contact determines the spectral content of the initial excitation: a hard felt hammer (low contact time) delivers a bright, metallic impulse; a heavy, soft hammer delivers a warm, spread impulse. The physical model is the mallet's decision, made before the string receives it. Grand Ivory `#FFFFF0` is not the color of the keys — it is the color of the striker, clean and complete before contact, after which everything is evidence of where it landed.
+
+#### OBL-II: The Preparation Changes the Physics
+*2026-04-05*
+
+> OBELISK's 5 preparation types are not effects added to the piano sound. They are physical interventions on the piano mechanism that change the synthesis model at its foundation. A Bolt preparation contacts the string at a specific node, adding an inharmonic rattle that is inseparable from the string's vibration — not a layer applied afterward but a concurrent physical process. A Glass preparation introduces fragile contact points whose acoustic character varies with the force of each note. The prepared piano is not the piano with objects on it. It is a different instrument that happens to use the piano's resonant body.
+
+---
+
+### OCHRE — The Copper Verses
+
+#### OCH-I: Copper Remembers Its Heat
+*2026-04-05*
+
+> The thermal drift model in OCHRE is not an aesthetic parameter. Copper's elastic modulus changes measurably with temperature — a copper-strung upright bass played in a warm room responds differently than the same instrument in a cold one. `ochre_woodResonance` plus thermal drift gives OCHRE two independent temperature-sensitive systems: the wood body and the copper strings both respond to session heat, and they respond at different rates. The wood is slower (thermal mass). The copper is faster (thinner cross-section). The drift between them creates micro-detuning that no static synthesis can replicate — the physical consequence of two materials in the same thermal environment, cooling or warming at their own rates.
+
+#### OCH-II: Caramel Saturation Is a Phase Transition
+*2026-04-05*
+
+> Caramelization is a Maillard reaction: applied heat rearranges the molecular bonds of sugar, creating hundreds of new compounds simultaneously. OCHRE's `caramel` saturation is this process in the signal domain: the signal enters the saturation stage as a clean copper tone and exits as a mixture of the original and its harmonic products, some warm and rounded, some bright and brittle, some entirely new. Ochre Pigment `#CC7722` is iron oxide in clay — a mineral that forms only when the right chemical conditions are met. The caramel is not applied; it is achieved.
+
+---
+
+### OCTAVE — The Tonewheel Verses
+
+#### OCT-I: The Drawbar Is Not a Fader
+*2026-04-05*
+
+> A Hammond drawbar is a resistive contact: pulling it out reduces resistance, allowing more of its harmonic's tonewheel signal to pass to the output. It is not a volume fader for a pre-recorded sound — it is a conductivity control for a continuously spinning mechanical oscillator. `oct_tonewheel` maps to a drawbar array that is always running — the tonewheels do not stop between notes, do not re-trigger, do not responde to note-on events except through the key contact. Hammond Teak `#8B6914` is the color of the wood that encloses a mechanism that never stops. The instrument is always vibrating. The player only decides what passes through.
+
+#### OCT-II: Crosstalk Is the Hammond's Character
+*2026-04-05*
+
+> Early Hammond organs were technically defective: electromagnetic crosstalk between adjacent tonewheels caused the drawbars to slightly affect each other's output. The engineers knew about it and called it noise. The musicians heard it and called it warmth. By the time Hammond tried to fix it, the players had already decided the flaw was the instrument. OCTAVE's crosstalk parameter preserves this: the slight bleed between harmonic drawbars that makes a C major chord on a Hammond sound like it was assembled from breathing components rather than clicked into existence. The defect is the identity.
+
+---
+
+### ODDFELLOW — The Wurlitzer Verses
+
+#### ODDF-I: The Reed Bends Before the Hammer
+*2026-04-05*
+
+> A Wurlitzer uses a reed vibrating between electromagnetic pickups, struck by a hammer operated by the keybed. But the reed begins to bend under its own tension before the hammer ever contacts it — the pre-stress that makes the Wurlitzer attack instantaneous rather than progressive. `WurliReedModel` models this pre-stress with 5 inharmonic partials: the third, fifth, and seventh partials are stretched beyond integer ratios by the physical stiffness of the tine material. Fusion Copper `#B87333` is the metal of that stiffness — not pure copper's softness, but copper alloyed with hardener, carrying resonance and resistance simultaneously. The oddness in the harmonic series is not error. It is the instrument's structural opinion.
+
+#### ODDF-II: The Dual Saturation Is Always On
+*2026-04-05*
+
+> `WurliPreamp` runs cascaded dual-tanh saturation at 1.5× minimum drive — the saturation cannot be disabled, only lessened. This is architecturally faithful to the Wurlitzer's preamp design: the original circuits saturated at any nonzero level because the preamp was run hot to maximize the weak reed signal. The character of the Wurlitzer is the character of saturation that was never intended to be audible but is always present. The oddfellow among the Kitchen Collection, the Fusion Copper tonewheel that arrived knowing it would always be slightly overdriven.
+
+---
+
+### OGRE — The Root Verses
+
+#### OGR-I: Below Hearing Is Not Below Presence
+*2026-04-05*
+
+> Sub-bass below 30 Hz is below the threshold of musical pitch perception — the ear resolves individual pressure waves rather than a continuous tone. But the body does not stop hearing at 20 Hz. It continues to perceive pressure. OGRE's `ogre_subFreq` can be set below 30 Hz and remains audible in the one sense that matters: the chest cavity resonates, the room mode activates, the floor transmits. Sub-bass is not music for the ear. It is music for the walls. Sub Bass Black `#0D0D0D` is not darkness — it is the frequency range that has no visible color because no human light source illuminates at those wavelengths. The root cellar is below the ground. The sound works the same way.
+
+#### OGR-II: The Tectonic LFO Is Not a Wobble
+*2026-04-05*
+
+> A tectonic event is not a single point — it is the movement of a plate carrying everything above it. OGRE's tectonic LFO operates at geological rates: below 0.1 Hz, the modulation is imperceptible as movement but present as drift. The sub-bass does not wobble. It shifts. A tectonic LFO applied to `ogre_subFreq` does not create audible pitch modulation — it creates the acoustic impression that the room itself has moved. Play an OGRE sub-bass note and hold it for 30 seconds. The frequency that was correct at note-on is not quite correct at 30 seconds. The ground has moved slightly. This is not LFO vibrato. It is tectonic synthesis.
+
+---
+
+### OLATE — The Fretless Verses
+
+#### OLT-I: The Fret That Is Not There
+*2026-04-05*
+
+> A fretted bass guitar lands exactly on the fret: the pitch is mechanical, precise, determined by the instrument's geometry. A fretless bass lands wherever the finger lands: the pitch is the player's choice, expressed through the physical contact point. `olate_fretlessGlide` implements this — not as vibrato applied to a fret pitch, but as the continuous pitch space between notes that only a fretless instrument inhabits. Fretless Walnut `#5C3317` is the wood of a fingerboard worn smooth by contact: the grooves where the fingers return, the wood polished by repetition. The instrument remembers where the hands go. Each glide is a path through a space that frets would have divided into discrete positions.
+
+#### OLT-II: The Wine Ferments Across Sessions
+*2026-04-05*
+
+> The fermentation integrator in OLATE accumulates across the session the way wine accumulates complexity in the barrel — not from a single addition but from the sustained presence of the sugar-yeast-oak interaction over time. Early in a session, OLATE's fermentation age is low: the sound is young, fresh, less complex. As the session progresses, fermentation age grows: the harmonic density increases slightly, the saturation warms, the LFO rates settle. By the session's end, the wine has aged. Whether it has improved or deepened is a question of the session's content — what was played, how hard, how long. The instrument keeps the record.
+
+---
+
+### OLEG — The Organ Verses
+
+#### OLG-I: The Cassotto Is the Chamber
+*2026-04-05*
+
+> The cassotto is the physical resonance chamber inside certain accordion constructions — a wooden box that the reeds sound into before the sound exits through the grill. It adds warmth, rounds off the attack, gives the instrument its characteristic depth. `OlegCassotto` in OLEG is this chamber: a comb plus allpass chain that simulates the reed's enclosed resonance space before the signal reaches the performer. Theatre Red `#C0392B` is the color of the stage curtain — the interface between the instrument's interior life and its public expression. The cassotto is where the performance begins, before the audience hears it.
+
+#### OLG-II: The Buzz Bridge Announces Each Reed
+*2026-04-05*
+
+> The `OlegBuzzBridge` fires a four-stage spectral event at the moment each reed begins to sound: a transient that precedes the sustained tone, carrying the physical signature of the reed coming to life under air pressure. This is the moment of ignition — the instant the bellows pushes enough pressure through the reed to overcome its rest position and begin oscillation. The buzz is brief. It is the reed saying: I am here, I am this particular metal, and this is how I begin. The instrument declares itself before the note has fully formed.
+
+---
+
+### OMEGA — The Distillation Verses
+
+#### OMG-I: The Still Separates What Matters
+*2026-04-05*
+
+> A copper still does not create its product — it concentrates it. Heat applied to a fermented liquid vaporizes the volatile compounds at their respective boiling points; the vapor is caught, cooled, re-condensed into its purest form. OMEGA's distillation model operates identically: `omega_synthBass` FM synthesis begins with a complex modulator-carrier relationship; as the note sustains, the modulation index decays toward zero, leaving only the pure carrier frequency — the essential tone, stripped of its complex origins. The process of the note is the distillation process. What remains at the end is purer than what began.
+
+#### OMG-II: Purity Noise Is the Refusal of Silence
+*2026-04-05*
+
+> As the distillation completes — as the FM modulation decays toward the carrier's purity — OMEGA introduces purity noise: a low-level spectral texture that marks the completion of the process. It is the faint hiss of vapor escaping, the acoustic evidence that the distillation is not sterile. Synth Bass Blue `#003366` is the color of the deep tank — the water in which the copper coil condenses. The purity noise is that water: present not for its own sake but because a truly pure distillation is so clean it sounds artificial. A small amount of impurity is the proof that the purity is real.
+
+---
+
+### ONKOLO — The Clavinet Verses
+
+#### ONK-I: The Autowah Is a Response, Not an Effect
+*2026-04-05*
+
+> A conventional wah pedal is operated by the performer's foot: manual control, deliberate expression. ONKOLO's `AutoWahEnvelope` responds to the note's own amplitude — it opens based on how hard the key was struck and closes as the note decays. There is no foot. The instrument decides its own brightness based on the physical force of the interaction. Spectral Amber `#FFBF00` is the color of a taut vibrating wire at room temperature. The clavinet's key-on-string contact creates exactly the kind of transient force that makes an auto-wah respond — a short, intense voltage burst that opens the filter before the player's intent has finished forming. The instrument is faster than the player.
+
+#### ONK-II: The Clunk Is the End of the Note
+*2026-04-05*
+
+> On a real clavinet, key-off produces an audible mechanical clunk as the damper block returns to the string. This is not an error in the instrument's design — it is the physical termination event made audible. `onko_resonanceCore` includes this key-off noise burst as a design element, not a defect to be filtered away. Every ONKOLO note has two discrete events: key-on (pitch, brightness, attack) and key-off (mechanical clunk, the end of contact). The clunk is the instrument acknowledging its own silence. No other engine in the fleet ends its notes this way.
+
+---
+
+### OPALINE — The Prepared Piano Verses
+
+#### OPAL2-I: The Fragility Is a Threshold
+*2026-04-05*
+
+> The Fragility mechanic in OPALINE fires when note velocity exceeds the `opal2_preparedDensity` threshold — a noise burst combined with modal detuning that represents the physical moment when prepared-piano contact materials shift under percussive force. This is not a random event. It is a physical law: prepared piano preparation materials slip, crack, or temporarily displace above certain excitation energies. The preparation remains intact; the note carries the evidence of the near-miss. Below threshold, the instrument is stable. Above it, the instrument briefly reveals its fragility before recovering. The designer defines where the threshold lives. The performer decides how often to cross it.
+
+#### OPAL2-II: The Four Instruments Inside
+*2026-04-05*
+
+> OPALINE contains four physically distinct instruments sharing one parameter vocabulary: Celesta (tuned metal bars over resonating boxes), Toy Piano (struck metal tines), Glass Harp (crystal glasses excited by finger friction), Porcelain Cups (inharmonic ceramic resonances). Each has unique modal frequency ratios, unique excitation models, unique decay curves. Choosing `opal2_preparedDensity` against any of these four instruments produces a physically specific result — not "OPALINE with different character" but four different prepared instruments, each with its own physics. Prepared Rust `#B7410E` is the color of metal that has been exposed long enough to begin its own physical transformation.
+
+---
+
+### OPCODE — The FM Verses
+
+#### OPC-I: The Modulation Index Is a Conversation
+*2026-04-05*
+
+> In FM synthesis, the modulation index determines how much the modulator frequency deviates the carrier — but it does not operate as a simple multiplier. Below index 1.0, the modulator adds a small amount of harmonic richness to the carrier. Around index 1.5–2.5, the sideband energy redistributes dramatically, creating timbres that bear no obvious relationship to the raw carrier. Above index 4.0, spectral energy moves into the negative frequencies, creating new partials through frequency reflection. The DX Modulation Envelope in OPCODE sweeps through these zones over the duration of the note. Cadet Blue `#5F9EA0` is the color of a modulator that does not yet know what it will become. The note is the journey through the index space, not the destination.
+
+#### OPC-II: Algorithm Is Architecture
+*2026-04-05*
+
+> Three FM algorithms — Series, Parallel, Feedback — are not tone presets. They are structural decisions about how the modulator and carrier relate to each other. Series places the modulator upstream of the carrier: all modulator energy passes through the carrier. Parallel routes each operator independently to the output: the modulator and carrier coexist without one controlling the other. Feedback routes the modulator's output back into its own frequency — the operator becomes a partial that modulates itself, generating increasingly complex harmonic content as feedback depth increases. A self-modulating FM operator at depth 0.8 is not a standard oscillator. It is a recursive harmonic generator with no stable waveform.
+
+---
+
+### ORCHARD — The String Ensemble Verses
+
+#### ORC-I: The Four Saws Are One Orchestra Section
+*2026-04-05*
+
+> Four detuned PolyBLEP sawtooth oscillators per voice are not four independent sounds. They are the section: first violin spread by 2–4 cents, second violin counter-spread, viola a fifth below with its own detuning, cello anchoring. Orchard Blossom `#FFB7C5` is the color of the spring orchard — white with pink at the edges, arranged in rows. The orchard is not a single tree but a deliberate arrangement. The string section produces its warmth through the geometry of its detuning, not through any individual voice. The designer who hears four saws has not yet heard the section.
+
+#### ORC-II: The Season Shapes the Resonance
+*2026-04-05*
+
+> The GardenAccumulators in ORCHARD track session time as season: the tonal character shifts based on how long the engine has been active. Early in the session, the orchard is in spring — bright formant frequencies, fast attack. As the session continues, the formants shift toward summer character — warmer, denser, slower to bloom. The seasonal tonal character is not a parameter the designer sets. It is the instrument's response to the question: how long have you been playing? The orchard does not sound the same in the first five minutes as it does in the fifth hour.
+
+---
+
+### OSIER — The Chamber Quartet Verses
+
+#### OSI-I: Four Roles, Not Four Voices
+*2026-04-05*
+
+> OSIER assigns four voices to named chamber roles: Soprano, Alto, Tenor, Bass. These are not pitch assignments — they are functional identities with distinct tonal shaping, distinct attack characteristics, and distinct companion planting relationships. Willow Silver `#C0C8C8` is the color of a bow hair at tension — silver that has been twisted and drawn until it vibrates. Each role produces a different grain of the bow against the string: Soprano bright and sharp, Bass dark and heavy. The inter-voice pitch affinity means that the four roles hear each other — when Soprano sharpens its tone, the Alto responds. The quartet is a cooperative system, not four parallel voices.
+
+#### OSI-II: Companion Planting Is Acoustic Physics
+*2026-04-05*
+
+> In horticulture, companion planting places organisms that benefit each other in proximity: the Three Sisters (corn, beans, squash) share nitrogen, structure, and shade. OSIER's companion planting mechanic is the acoustic equivalent: inter-voice pitch affinity creates a gentle gravitational pull between voice pairs, keeping the quartet's intonation coherent without mechanical locking. The voices breathe together, not identically. Like the Three Sisters, each grows in its own direction while serving the system's health. Remove any one of the four and the system loses not just a voice but a relationship.
+
+---
+
+### OTIS — The Organ Soul Verses
+
+#### OTS-I: The B3 Never Forgets the Club
+*2026-04-05*
+
+> The Hammond B3 was not designed for Carnegie Hall. It was designed for nightclubs and storefront churches where the acoustic space was small, warm, and already saturated with human presence. `otis_soulDrive` maps to the Hammond drawbar system's overdrive characteristic — the natural saturation that occurred when the original tube preamps were pushed by full drawbar pull. Gospel Gold `#D4A017` is the color of a Leslie speaker's warm rotation — the spinning cabinet that doppler-shifts the Hammond's output. The soul is not in the drawbar settings. It is in the interaction between the drawbar saturation, the Leslie rotation, and the room's response to both.
+
+#### OTS-II: Four Instruments, One Soul
+*2026-04-05*
+
+> OTIS contains the Hammond B3, the Steam Calliope, the Blues Harmonica, and the Zydeco Accordion — four instruments that share no physical mechanism but all belong to the same soulful tradition of working-class, embodied, rhythm-forward music. The Steam Calliope's two-tier pressure wobble is not a parameter variant of the Hammond's Leslie — it is a completely different physics of sound production that arrived at the same expressive territory through different material means. The soul is not in the mechanism. It is in what the mechanism serves.
+
+---
+
+### OTO — The Breath Pipe Verses
+
+#### OTO-I: The BreathSource Is the Engine
+*2026-04-05*
+
+> ODDFELIX is photonic; OUROBOROS is mathematical. OTO is pneumatic: breath is the synthesis. The `BreathSource` model simulates the physical interaction between a column of air and the resonant tube that shapes it — the reed or flute embouchure acting as the nonlinear valve, the tube's geometry determining the waveform. Without breath, there is silence. With breath, there is only what the tube permits. Bamboo Green `#7BA05B` is the color of the resonant material: young bamboo under tension, still carrying water, hollow inside but cellular at the walls. The tube is alive. The breath enters living material.
+
+#### OTO-II: Four Cultural Personalities
+*2026-04-05*
+
+> OTO implements four distinct cultural instrument personalities: each with its own embouchure physics, its own hole spacing (which determines the scale temperament), its own overtone emission character. These are not tone preset variants — they are different instruments that happen to share a synthesis paradigm. A dizi and an Irish flute are both transverse flutes but they express completely different musical cosmologies. The `oto_drawbar1` parameter scales the first partial of the BreathSource model — but which instrument determines how that first partial relates to the second, third, and fourth. The cosmology is in the ratio, not the level.
+
+---
+
+### OVEN — The Piano Verses
+
+#### OVN-I: The Bloom Is the Piano's Promise
+*2026-04-05*
+
+> Every struck piano note contains a bloom: the moment approximately 50–150ms after the hammer contact when the string's overtone series has fully established itself and the sound transitions from attack character to body character. OVEN's Bloom envelope models this explicitly — the bloom is not a fade-in but a specific spectral event, timed to the physical moment when the string's transient energy has distributed into the modal structure. Steinway Ebony `#1C1C1C` is the color of the key at rest. The bloom is what happens when the key is no longer at rest.
+
+#### OVN-II: The Sympathetic Network Is Not Reverb
+*2026-04-05*
+
+> OVEN shares the 12-string sympathetic network with OCHRE, OBELISK, and OAKEN — but the piano's sympathetic response is acoustically distinct from the upright bass's. A piano with its sustain pedal held rings sympathetically differently from a piano with its pedal released. The sympathetic network is the pedal's promise: hold all strings capable of vibrating, and the struck note will excite every string that shares a harmonic relationship with it. This is not reverb (which models room reflections). It is acoustic coupling between physically present strings. The sympathetic sound is the instrument singing in its own harmonic vocabulary.
+
+---
+
+### OVERCAST — The Crystal Verses
+
+#### CAST-I: Crystallization Is Instantaneous
+*2026-04-05*
+
+> Wilson's nucleation theory: when a supercooled liquid reaches a seed crystal, the entire liquid crystallizes near-instantaneously from that contact point outward. OVERCAST's crystallization behavior (`cast_cloudDensity`) implements this physics — the transition from the liquid (spectral drift state) to the crystal (frozen peak frequencies and amplitudes) is not gradual. It fires at the nucleation moment and completes before the next buffer. Light Slate Gray `#778899` is the color of ice forming over water — the moment before the surface loses its liquid character entirely. The anti-pad: a pad engine whose defining character is the negation of continuous time.
+
+#### CAST-II: The Shatter Is Release
+*2026-04-05*
+
+> OVERCAST's three transition modes (instant/crystal/shatter) describe three relationships to the frozen state. Instant: the crystal holds indefinitely. Crystal: the crystal slowly reverts toward liquid over time. Shatter: the crystal breaks at note-off — a burst of crackling spectral noise as the frozen peaks return to motion. The shatter is not an effect added to the note's release. It is the physics of crystal dissolution: the energy that maintained the crystal structure releasing all at once into the acoustic environment. When OVERCAST shatters, the note becomes the evidence of its own ending.
+
+---
+
+### OVERFLOW — The Pressure Verses
+
+#### FLOW-I: Pressure Accumulates Before It Speaks
+*2026-04-05*
+
+> The Clausius-Clapeyron equation governs the pressure at which a phase transition occurs: not a gradual change but a threshold crossed. OVERFLOW's PressureState accumulates MIDI density and velocity between valve events — silent accumulation, invisible to the listener. Then the valve opens. The accumulated pressure releases through the three valve types (gradual/explosive/whistle) at the moment the threshold is exceeded. Deep Current Blue `#1A3A5C` is the color of the water above the deep current — the surface under which pressure has been building for minutes. `flow_currentSpeed` is not a rate parameter. It is the speed at which the accumulated pressure approaches its event horizon.
+
+#### FLOW-II: The Catastrophe Is a Feature
+*2026-04-05*
+
+> OVERFLOW's catastrophic over-pressure mode is not a malfunction. It is the engine's most expressive state: when the PressureState exceeds the catastrophic threshold, the valve behavior changes character entirely — the gradual/explosive/whistle distinction collapses and the output enters an uncontrolled release that bears no resemblance to the controlled valve behavior below threshold. This is musically correct. A catastrophe in the physical sense is not a disaster; it is a mathematical event where a smooth function suddenly changes its topology. The designer who has never taken OVERFLOW to catastrophic has heard only the engine's polite behavior, not its full dynamic range.
+
+---
+
+### OVERGROW — The Wild String Verses
+
+#### GROW-I: The Runner Finds the Space
+*2026-04-05*
+
+> Weeds do not grow randomly — they grow along the paths of least resistance: cracks in concrete, edges of fences, between the roots of established plants. OVERGROW's RunnerGenerator fires sympathetic sub-harmonics in the frequency ranges where the primary note's energy is lowest — not reinforcing what is already loud but finding what is silent and filling it. `grow_growthRate` controls how quickly the runners establish: fast growth fills the spectral gaps in seconds; slow growth takes the full duration of a held note to populate. The weed does not compete with the cultivated plant. It inhabits the space the cultivated plant refused.
+
+#### GROW-II: Silence Is the Invitation
+*2026-04-05*
+
+> OVERGROW responds to silence specifically: the GardenAccumulator tracks the intervals between notes and increases runner density during rests. A performed rest gives the engine permission to grow. A continuous melody gives it no room. Forest Green `#228B22` is the color of vegetation that has established itself in conditions that seemed hostile to it — not in spite of those conditions but because of them. The wildness parameter is not a chaos dial. It is the degree to which the engine is willing to grow into spaces it was not invited to fill.
+
+---
+
+### OVERWASH — The Diffusion Verses
+
+#### WASH-I: The Ink Cannot Be Recalled
+*2026-04-05*
+
+> Fick's Second Law describes the irreversibility of diffusion: once the ink enters the water, the dye molecules begin their random walks outward from the point of concentration and do not return. OVERWASH's spectral diffusion is governed by this same irreversibility. From note-on, the 16 partials begin their Gaussian walks outward from their harmonic positions. They do not drift back. They do not respond to the note's continuation by re-centering. The diffusion that has already occurred at second three is still present at second ten — it has simply spread further. Tide Foam White `#F0F8FF` is the color of the water after the ink has diffused through it completely: not clear water, not ink, but both simultaneously and irreversibly.
+
+#### WASH-II: Viscosity Determines the Patience of the Spread
+*2026-04-05*
+
+> High viscosity is slow diffusion: the solvent resists the solute's movement, the spread takes longer, the spectral character holds its harmonic position for more of the note's duration before becoming diffuse. Low viscosity is fast diffusion: the harmonics begin their walks immediately and rapidly, the note blooms into spectral diffusion almost before the attack has resolved. `wash_viscosity` is not a tone control — it is the temporal ratio between identity and diffusion. High viscosity gives the note time to be itself before it becomes the space it occupies. Low viscosity gives it no such time.
+
+---
+
+### OVERWORN — The Reduction Verses
+
+#### WORN-I: The Session Is the Envelope
+*2026-04-05*
+
+> OVERWORN's ReductionState persists across the session: it accumulates from every note played and decays only when the engine is silent for extended periods. A session begun with fresh ReductionState sounds clear and full. A session that has been running for 45 minutes has evaporated a measurable fraction of its spectral mass — the high-frequency partials reduced first (they evaporate at lower energy), the low-frequency partials last (they require more energy to evaporate). Worn Felt Grey `#808080` is the color of felt after years of hammering: the fibres compressed and matted, the surface smoothed to a tonal character it did not have when new. The instrument aged by use.
+
+#### WORN-II: The Maillard Distortion Is Earned
+*2026-04-05*
+
+> The Maillard distortion in OVERWORN is not applied saturation. It accumulates from the evaporation process: as partials reduce, the ratio of the remaining partials' amplitudes shifts, creating spectral imbalances that the distortion stage interprets as drive. The distortion emerges from what is absent, not from what is present. A fresh OVERWORN does not distort. A session-aged OVERWORN that has been played hard distorts from the inside out — not because drive was added but because the reduction left the surviving partials in a different relationship to each other, one that the signal path's nonlinearity interprets as saturation. The Maillard effect in cooking requires both heat and a specific molecular precursor. OVERWORN requires session time and note density.
+
+---
+
+### OXALIS — The Geometric Garden Verses
+
+#### OXL-I: The Golden Ratio Is Not Decoration
+*2026-04-05*
+
+> The phyllotaxis oscillator bank in OXALIS spaces its 7 partials at golden-ratio frequency intervals — not integer harmonics but φ-spaced partials whose beating patterns never coincide. This is the mathematical foundation of the wood sorrel leaf's spiral pattern: the golden angle (137.5°) guarantees that no two leaves shadow each other, that each new leaf occupies the gap left by all previous ones. `oxal_leafTension` modulates the degree to which the partials conform to their golden-ratio positions: high tension maintains the exact φ-spacing; low tension allows the partials to drift toward the nearest integer ratios. The mathematics is either exactly right or becoming wrong. There is no stable middle.
+
+#### OXL-II: Growth Mode Reveals the Pattern
+*2026-04-05*
+
+> Wood Sorrel Lilac `#9B59B6` is the color of a plant that grows in geometric self-similarity: the trifoliate leaf, the trefoil arrangement, each subdivision echoing the whole. OXALIS's growth mode releases the 7 partials sequentially from their seed state — the mathematical emergence of the phyllotaxis pattern in real time. The first note played activates the first partial. Each subsequent note adds the next. By the seventh note, the full golden-ratio bank is present. The growth is not a ramp-up effect on a complete sound. It is the mathematics of emergence made audible: the plant growing from seed to flower in seven notes.
+
+---
+
+### OKEANOS — The Warmth Verses
+
+#### OKAN-I: The Ancient Ocean Knows Only Warmth
+*2026-04-05*
+
+> Okeanos was the primordial world-ocean of Greek cosmology — not one sea among many but the single, unbroken body of water encircling the flat disc of the world. Before the seas had names, before the depths were measured, there was only Okeanos: warm, continuous, without boundary. `okan_warmth` names the engine's primary axis. Cardamom Gold `#C49B3F` is the color of a spice that travels from the warm ocean's edge to the cold interior — warmth carried in botanical form, traded across the water. The engine's name is its synthesis philosophy: before complexity, there was warmth.
+
+#### OKAN-II: The Unmeasured Depth
+*2026-04-05*
+
+> Okeanos had no bottom in the ancient imagination — it was the ocean before bathymetry, before the instruments that measured depth. OKEANOS's synthesis lives in this unmeasured register: the warmth that does not declare its source, the harmonic content that does not announce its architecture. An OKEANOS preset should feel bottomless not through sub-bass but through the absence of perceptible boundaries — no sharp attack event, no filter cutoff that can be heard as a ceiling, no decay that reveals its mechanism. The depth is implied by the absence of any evidence of a floor.
+
+---
+
+### OUTFLOW — The Storm Verses
+
+#### OUT-I: The Current Carries Everything
+*2026-04-05*
+
+> `out_currentSpeed` is not a tempo or a rate. It is the velocity of a deep-ocean current: the speed at which the water column moves material from one place to another. Deep Storm Indigo `#1A1A40` is the color of water at the moment before the surface breaks — the pressure from below that has not yet reached the air. A fast current in OUTFLOW does not produce fast modulation. It produces the sense of relentless movement: not rapid but unstoppable, carrying whatever is introduced into it without mercy. The designer does not control where the current goes. They decide what to place in its path.
+
+#### OUT-II: The Storm Was There Before the Rain
+*2026-04-05*
+
+> Deep-ocean storms are not initiated by surface weather — they originate in the density gradients of the water column itself, in the thermohaline circulation that drives the global ocean conveyor belt. OUTFLOW's synthesis begins in the deep: the harmonic content is established in the sub-surface layers, the pressure builds in the current, and only after all internal conditions are met does the synthesis surface into audible range. The storm is not the rain. The storm is the atmospheric system that had been organizing for weeks before the rain fell. Design OUTFLOW presets from the bottom up: establish the deep current character before surfacing into the upper harmonic registers.
+

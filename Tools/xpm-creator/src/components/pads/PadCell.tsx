@@ -13,7 +13,7 @@ interface PadCellProps {
   isSelected?: boolean;
   isDecoding?: boolean;
   onClickPad: (globalIndex: number, e?: React.MouseEvent) => void;
-  onPlayPad: (globalIndex: number) => void;
+  onPlayPad: (globalIndex: number, velocity: number) => void;
   onDropSample: (padIndex: number, sampleId: string, sampleName: string, sampleFile: string) => void;
   onDropFiles?: (padIndex: number, files: File[]) => void;
   onContextMenu?: (globalIndex: number, x: number, y: number) => void;
@@ -136,7 +136,18 @@ const PadCell = React.memo(function PadCell({
     onClickPad(globalIndex, e);
     // Only play on plain clicks — modifier keys indicate multi-select, not triggering
     if (hasContent && !e?.shiftKey && !e?.metaKey && !e?.ctrlKey) {
-      onPlayPad(globalIndex);
+      // Derive velocity from vertical click position within the pad:
+      //   top of pad   → velocity 1  (soft)
+      //   bottom of pad → velocity 127 (hard)
+      // This makes the layer system accessible to mouse users without extra UI.
+      let velocity = 100; // default when no mouse event (e.g. keyboard activation)
+      if (e) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const relY = e.clientY - rect.top;
+        const ratio = Math.max(0, Math.min(1, relY / rect.height));
+        velocity = Math.max(1, Math.round(ratio * 127));
+      }
+      onPlayPad(globalIndex, velocity);
     }
   }, [globalIndex, onClickPad, onPlayPad, hasContent]);
 

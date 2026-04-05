@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Eight Arms Saturated",
   "mood": "Entangled",
-  "engines": ["Outwit", "Obese"],
+  "engines": [
+    "Outwit",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All 8 octopus arms at maximum chroma coupled to OBESE at full saturation — CA spatial projection stacked on 13 oscillators. Nothing is left unoccupied.",
-  "tags": ["entangled", "dense", "outwit", "obese", "coupled", "saturated"],
-  "macroLabels": ["ARMS", "BELLY", "COUPLING", "CRUSH"],
+  "tags": [
+    "entangled",
+    "dense",
+    "outwit",
+    "obese",
+    "coupled",
+    "saturated"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "BELLY",
+    "COUPLING",
+    "CRUSH"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -80,5 +95,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "ARMS": 0.45,
+    "BELLY": 0.552,
+    "COUPLING": 0.66,
+    "CRUSH": 0.88
+  }
 }

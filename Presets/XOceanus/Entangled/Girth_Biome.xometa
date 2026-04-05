@@ -75,7 +75,8 @@
       "ocelot_macroCoupling": 0.49,
       "ocelot_macroSpace": 0.541,
       "ocelot_filterEnvDepth": 0.4,
-      "ocelot_lfoRate": 0.119
+      "ocelot_lfoRate": 0.119,
+      "ocelot_floorVelocity": 0.825
     }
   },
   "schema_version": 1,

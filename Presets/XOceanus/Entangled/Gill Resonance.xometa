@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.206,
       "owl_resonantPitch": 0.34,
       "owl_shimmer": 0.262,
-      "owl_subLevel": 0.144
+      "owl_subLevel": 0.144,
+      "owl_velocity": 0.632
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "oddoscar"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.415,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.542,
+    "SPACE": 0.372
+  }
 }

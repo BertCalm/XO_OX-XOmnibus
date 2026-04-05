@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB BASS": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "HARMONIC AMOUNT": 0.45,
+    "SPACE": 0.55
+  }
 }

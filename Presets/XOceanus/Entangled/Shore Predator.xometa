@@ -74,7 +74,8 @@
     },
     "Overbite": {
       "poss_filterCutoff": 0.434,
-      "poss_macroBite": 0.098
+      "poss_macroBite": 0.098,
+      "poss_ampVelSens": 0.526
     }
   },
   "schema_version": 1,
@@ -86,5 +87,11 @@
     "overbite"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.502,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

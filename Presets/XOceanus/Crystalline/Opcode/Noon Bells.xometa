@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Mid-register FM bell cluster \u2014 ratio 5.5, moderate sustain, velocity-mapped brightness. The church tower at noon.",
+  "description": "Mid-register FM bell cluster — ratio 5.5, moderate sustain, velocity-mapped brightness. The church tower at noon.",
   "tags": [
     "fm",
     "bell",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.75
+  }
 }

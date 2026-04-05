@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wide chorus pad of opossum voices \u2014 communal warmth spread wide across the stereo field.",
+  "description": "Wide chorus pad of opossum voices — communal warmth spread wide across the stereo field.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.4,
@@ -55,7 +55,8 @@
       "poss_subLevel": 0.4,
       "poss_unisonDetune": 0.3,
       "poss_unisonSpread": 0.85,
-      "poss_unisonVoices": 6
+      "poss_unisonVoices": 6,
+      "poss_ampVelSens": 0.438
     }
   },
   "schema_version": 1,

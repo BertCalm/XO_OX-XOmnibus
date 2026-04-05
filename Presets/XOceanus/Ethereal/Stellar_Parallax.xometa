@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Stellar Parallax",
+  "mood": "Ethereal",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Annual stellar parallax \u2014 a star's apparent position shifting by 0.0003 degrees as Earth crosses its orbit diameter. The triangulation that first measured interstellar distances.",
+  "tags": [
+    "ethereal",
+    "stellar",
+    "parallax",
+    "interstellar",
+    "measurement",
+    "distant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.18,
+    "density": 0.22,
+    "space": 0.96,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_entangle": 0.28,
+      "oxb_phaseErosion": 0.45,
+      "oxb_goldenResonance": 0.55,
+      "oxb_filterCutoff": 6800.0,
+      "oxb_filterRes": 0.1,
+      "oxb_attack": 3.0,
+      "oxb_decay": 5.5,
+      "oxb_sustain": 0.85,
+      "oxb_release": 11.0,
+      "oxb_lfo1Rate": 0.03,
+      "oxb_lfo1Depth": 0.12,
+      "oxb_macroCharacter": 0.32,
+      "oxb_macroMovement": 0.18,
+      "oxb_macroCoupling": 0.08,
+      "oxb_macroSpace": 0.96
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.08,
+    "SPACE": 0.96
+  }
+}

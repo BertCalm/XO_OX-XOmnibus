@@ -97,7 +97,8 @@ def _extract_from_xometa(path: Path) -> dict:
     try:
         with path.open() as f:
             meta = json.load(f)
-    except Exception:
+    except Exception as exc:
+        print(f"[WARN] {exc}", file=sys.stderr)
         return {}
     result = {}
     if "engine" in meta:

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT and MORPH both at maximum slowness \u2014 infinite spectral evolution with shimmer.",
+  "description": "DRIFT and MORPH both at maximum slowness — infinite spectral evolution with shimmer.",
   "tags": [
     "drift",
     "morph",
@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "MORPH SCAN": 0.45,
+    "COUPLING": 0.45,
+    "BLOOM": 0.393
+  }
 }

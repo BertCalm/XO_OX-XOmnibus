@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pressure Wave",
   "mood": "Kinetic",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hydrostatic pressure wave radiating at full kinetic energy. PRESSURE macro driving everything deeper.",
-  "tags": ["kinetic", "aggressive", "pressure", "wave", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "aggressive",
+    "pressure",
+    "wave",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "deep_attackTime": 0.008,
       "deep_decayTime": 0.3,
       "deep_sustain": 0.42,
-      "deep_releaseTime": 0.28
+      "deep_releaseTime": 0.28,
+      "deep_velCutoffAmt": 0.77
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.88,

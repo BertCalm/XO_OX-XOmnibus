@@ -62,7 +62,8 @@
       "ombre_memoryDecay": 0.55,
       "ombre_narrativeAxis": 0.5,
       "ombre_perceptionShift": 0.5,
-      "ombre_shadowDepth": 0.4
+      "ombre_shadowDepth": 0.4,
+      "ombre_velCutoffScale": 0.38
     },
     "Opal": {
       "opal_ampAttack": 0.1,
@@ -83,7 +84,8 @@
       "opal_pitch": 0.0,
       "opal_pitchRand": 0.2,
       "opal_positionRand": 0.5,
-      "opal_scatter": 0.65
+      "opal_scatter": 0.65,
+      "opal_ampVelSens": 0.38
     }
   },
   "schema_version": 1,
@@ -99,5 +101,11 @@
     "scatter"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.375,
+    "SCATTER": 0.547,
+    "COUPLING": 0.54,
+    "SPACE": 0.7
+  }
 }

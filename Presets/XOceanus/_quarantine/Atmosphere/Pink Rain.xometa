@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with warm character.",
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.47,
+    "density": 0.012,
+    "movement": 0.0,
+    "space": 0.393,
+    "warmth": 0.0
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "_quarantine_Pink Rain",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 0.6,
+      "drift_filterCutoff": 3000.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 0.0,
+      "drift_level": -5.0,
+      "drift_noiseLevel": 0.5,
+      "drift_oscA_level": 0.15,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
+      "drift_release": 2.5,
+      "drift_shimmerAmount": 0.2,
+      "drift_sustain": 0.6,
+      "drift_macroCharacter": 0.445,
+      "drift_macroMovement": 0.367,
+      "drift_macroCoupling": 0.181,
+      "drift_macroSpace": 0.718,
+      "drift_filterEnvAmt": 0.415,
+      "drift_lfoRate": 0.119,
+      "drift_lfoDepth": 0.317
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "spacious",
+    "slow-attack",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.415,
+    "MOVEMENT": 0.337,
+    "COUPLING": 0.151,
+    "SPACE": 0.688
+  }
+}

@@ -76,7 +76,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 1,
       "bob_glide": 0.12,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.596
     },
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -149,5 +150,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB GLIDE": 0.45,
+    "DRIFT HARMONY": 0.45,
+    "MORPH CHORUS": 0.45,
+    "COUPLING": 0.48
+  }
 }

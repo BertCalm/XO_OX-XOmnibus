@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Riot Borough",
+  "mood": "Kinetic",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "NY noise gate at maximum snap — each hit a fist through glass. Transient precision weaponized for maximum impact.",
+  "tags": ["kinetic", "aggressive", "ny", "noise-gate", "hard"],
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.12,
+    "movement": 0.75,
+    "density": 0.82,
+    "space": 0.18,
+    "aggression": 0.90
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_transientSnap": 0.99,
+      "ofr_transientPitch": 0.92,
+      "ofr_transientSat": 0.22,
+      "ofr_dustVinyl": 0.05,
+      "ofr_dustTape": 0.08,
+      "ofr_dustBits": 24,
+      "ofr_cityMode": 0,
+      "ofr_cityBlend": 0.85,
+      "ofr_cityIntensity": 0.92,
+      "ofr_digCuriosity": 0.88,
+      "ofr_digComplexity": 0.72,
+      "ofr_digFlow": 0.65,
+      "ofr_masterWidth": 0.35,
+      "ofr_masterLevel": 0.95,
+      "ofr_velToSnap": 0.98,
+      "ofr_velToBody": 0.55,
+      "ofr_v0_decay": 0.18,
+      "ofr_v0_body": 0.98,
+      "ofr_v1_decay": 0.12,
+      "ofr_v5_level": 0.95
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "DIG": 0.88,
+    "CITY": 0.85,
+    "FLIP": 0.22,
+    "DUST": 0.08
+  }
+}

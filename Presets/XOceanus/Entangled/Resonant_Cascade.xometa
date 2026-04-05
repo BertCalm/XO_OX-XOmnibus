@@ -99,5 +99,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "MORPH RATE": 0.45,
+    "COUPLING": 0.51,
+    "RESONANCE": 0.5
+  }
 }

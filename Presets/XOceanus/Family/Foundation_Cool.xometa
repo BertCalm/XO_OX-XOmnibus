@@ -39,7 +39,8 @@
       "bob_movement": 0.407,
       "bob_space": 0.775,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.468
     },
     "Onset": {},
     "Obese": {}
@@ -48,5 +49,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.539,
+    "MUTATE": 0.271
+  }
 }

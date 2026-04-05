@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT SWEEP": 0.45,
+    "DRIFT PITCH": 0.45,
+    "COUPLING": 0.33,
+    "RATE": 0.45
+  }
 }

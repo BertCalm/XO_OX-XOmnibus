@@ -125,7 +125,8 @@
       "ombre_macroSpace": 0.571,
       "ombre_filterEnvAmt": 0.549,
       "ombre_lfo1Rate": 0.125,
-      "ombre_lfo1Depth": 0.297
+      "ombre_lfo1Depth": 0.297,
+      "ombre_velCutoffScale": 0.34
     },
     "Opal": {
       "opal_filterCutoff": 5000.0,
@@ -139,7 +140,8 @@
       "opal_macroSpace": 0.526,
       "opal_filterEnvAmt": 0.549,
       "opal_lfo1Rate": 0.125,
-      "opal_lfo1Depth": 0.297
+      "opal_lfo1Depth": 0.297,
+      "opal_ampVelSens": 0.34
     }
   },
   "schema_version": 1,

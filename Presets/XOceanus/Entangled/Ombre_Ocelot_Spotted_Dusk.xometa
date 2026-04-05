@@ -36,7 +36,8 @@
   "parameters": {
     "Ocelot": {
       "ocelot_filterCutoff": 4949.3,
-      "ocelot_level": 0.655
+      "ocelot_level": 0.655,
+      "ocelot_floorVelocity": 0.715
     },
     "Ombre": {
       "ombre_ampAttack": 0.141,
@@ -66,7 +67,8 @@
       "ombre_shadowAmount": 0.778,
       "ombre_spaceMix": 0.749,
       "ombre_toneA": 7242.8,
-      "ombre_toneB": 812.4
+      "ombre_toneB": 812.4,
+      "ombre_velCutoffScale": 0.381
     }
   },
   "schema_version": 1,
@@ -81,5 +83,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.421,
+    "MOVEMENT": 0.654,
+    "COUPLING": 0.6,
+    "SPACE": 0.48
+  }
 }

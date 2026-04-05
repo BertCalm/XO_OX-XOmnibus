@@ -63,5 +63,11 @@
     "event"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "EDGE": 0.45,
+    "DARKNESS": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Quartz Lattice",
+  "name": "Quartz Lattice (Obsidian)",
   "mood": "Crystalline",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Quartz crystal lattice vibrations rendered in pure additive clarity. Cold, geometric, and structurally perfect.",
-  "tags": ["crystalline", "quartz", "lattice", "mineral", "precision"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "quartz",
+    "lattice",
+    "mineral",
+    "precision"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -29,7 +42,9 @@
       "obsidian_lfo1Depth": 0.14
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.55,

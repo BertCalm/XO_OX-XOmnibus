@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Digital curiosity crystallized \u2014 Berlyne's exploration drive frozen at maximum mineral precision.",
+  "description": "Digital curiosity crystallized — Berlyne's exploration drive frozen at maximum mineral precision.",
   "tags": [
     "crystalline",
     "curious",
@@ -39,7 +39,8 @@
       "ofr_macroSpace": 0.61,
       "ofr_filterEnvAmt": 0.53,
       "ofr_lfo1Rate": 0.06,
-      "ofr_lfo1Depth": 0.16
+      "ofr_lfo1Depth": 0.16,
+      "ofr_velToSnap": 0.504
     }
   },
   "coupling": {

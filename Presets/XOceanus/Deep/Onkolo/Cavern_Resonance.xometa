@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet resonating in a cave \u2014 the D6 body becomes the cave walls. Long mechanical decay, dark overtones.",
+  "description": "Clavinet resonating in a cave — the D6 body becomes the cave walls. Long mechanical decay, dark overtones.",
   "tags": [
     "clavinet",
     "cavern",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
 }

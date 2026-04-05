@@ -316,6 +316,10 @@ def load_profile(profile_id: str, profiles_dir: Optional[Path] = None) -> dict:
     FileNotFoundError
         When the profile YAML does not exist.
     """
+    if not re.match(r'^[a-zA-Z0-9_-]+$', profile_id):
+        raise ValueError(
+            f"[WARN] Invalid profile_id: {profile_id!r} — only alphanumerics, hyphens, and underscores allowed."
+        )
     root = Path(profiles_dir) if profiles_dir else _PROFILES_DIR
     path = root / f"{profile_id}.yaml"
     if not path.exists():

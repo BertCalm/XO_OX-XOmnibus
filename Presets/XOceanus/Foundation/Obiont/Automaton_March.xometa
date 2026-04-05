@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Automaton March",
   "mood": "Kinetic",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Rule 150 — the symmetric XOR-based total rule. Wave interference patterns at high evolution rate (18 Hz) produce machine-like rhythmic staccato. Very short sustain and release means every note is a tight click-and-decay. Projection at 0.2 (narrow window) emphasizes sharp transient harmonics. Envelope routes to FilterCutoff for attack brightness that vanishes quickly — percussive and pointed. Stack with a kick drum. The automaton is marching.",
-  "tags": ["awakening", "staccato", "rhythmic", "rule-150", "percussive", "sharp", "kinetic"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "staccato",
+    "rhythmic",
+    "rule-150",
+    "percussive",
+    "sharp",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.78,
@@ -59,5 +80,11 @@
     "density": 0.58,
     "space": 0.18,
     "aggression": 0.72
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.88,
+    "SPACE": 0.18,
+    "COUPLING": 0.2
   }
 }

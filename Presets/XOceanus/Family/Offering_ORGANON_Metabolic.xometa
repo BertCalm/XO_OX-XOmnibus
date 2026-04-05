@@ -45,7 +45,8 @@
       "ofr_lfo1Depth": 0.06,
       "ofr_v0_decay": 0.38,
       "ofr_v0_body": 0.72,
-      "ofr_masterWidth": 0.58
+      "ofr_masterWidth": 0.58,
+      "ofr_velToSnap": 0.6
     }
   },
   "schema_version": 1,

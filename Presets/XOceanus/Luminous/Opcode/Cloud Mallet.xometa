@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High-ratio FM with slow attack transformation \u2014 the mallet strike blooms into a cloud of partials.",
+  "description": "High-ratio FM with slow attack transformation — the mallet strike blooms into a cloud of partials.",
   "tags": [
     "fm",
     "mallet",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

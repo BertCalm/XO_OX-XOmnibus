@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG amber filter contour drives OTTONI brass harmonics \u2014 warm filter envelope shaping how brass partials bloom and decay.",
+  "description": "OBLONG amber filter contour drives OTTONI brass harmonics — warm filter envelope shaping how brass partials bloom and decay.",
   "tags": [
     "coupling",
     "moderate",
@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.52,
       "bob_macroMovement": 0.5,
       "bob_macroCoupling": 0.62,
-      "bob_macroSpace": 0.46
+      "bob_macroSpace": 0.46,
+      "bob_velFilter": 0.445
     },
     "Ottoni": {
       "otto_macroGrow": 0.56,

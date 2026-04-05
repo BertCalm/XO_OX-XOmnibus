@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Mid-rate phased bass with a round wobbling quality \u2014 carrying sonic babies through the phase.",
+  "description": "Mid-rate phased bass with a round wobbling quality — carrying sonic babies through the phase.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.45,
@@ -49,7 +49,8 @@
       "poss_macroScurry": 0.6,
       "poss_macroTrash": 0.15,
       "poss_oscAWaveform": 1,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.59
     }
   },
   "schema_version": 1,

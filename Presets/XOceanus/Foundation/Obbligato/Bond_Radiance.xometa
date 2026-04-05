@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Bond Radiance",
+  "name": "Bond Radiance (Obbligato)",
   "parameters": {
     "Obbligato": {
       "obbl_ampAttack": 597.0,
@@ -51,5 +51,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.91,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.2,
+    "SPACE": 0.32
+  }
 }

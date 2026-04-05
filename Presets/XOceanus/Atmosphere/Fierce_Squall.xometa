@@ -35,7 +35,8 @@
       "character": 0.909,
       "coupling": 0.429,
       "movement": 0.699,
-      "space": 0.524
+      "space": 0.524,
+      "orca_velCutoffAmt": 0.468
     }
   },
   "schema_version": 1,

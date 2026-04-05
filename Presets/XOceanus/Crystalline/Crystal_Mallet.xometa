@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A mallet striking crystal \u2014 precise physical impact creating the crystalline bell mode of mineral percussion.",
+  "description": "A mallet striking crystal — precise physical impact creating the crystalline bell mode of mineral percussion.",
   "tags": [
     "crystalline",
     "mallet",
@@ -39,7 +39,8 @@
       "owr_macroSpace": 0.58,
       "owr_filterEnvAmt": 0.62,
       "owr_lfo1Rate": 0.11,
-      "owr_lfo1Depth": 0.11
+      "owr_lfo1Depth": 0.11,
+      "owr_malletVelocity": 0.623
     }
   },
   "coupling": {

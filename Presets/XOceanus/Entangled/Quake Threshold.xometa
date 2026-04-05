@@ -90,5 +90,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "DRAMA": 0.5,
+    "VOICE": 0.535,
+    "CHORUS": 0.5,
+    "STAGE": 0.45
+  }
 }

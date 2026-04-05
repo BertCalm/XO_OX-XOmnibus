@@ -51,7 +51,8 @@
       "bob_oscB_blend": 0.7,
       "bob_oscB_detune": 42.0,
       "bob_oscB_sync": 1.0,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.649
     }
   },
   "schema_version": 1,
@@ -62,5 +63,11 @@
     "stutter"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.466,
+    "MOVEMENT": 0.76,
+    "COUPLING": 0.2,
+    "SPACE": 0.0
+  }
 }

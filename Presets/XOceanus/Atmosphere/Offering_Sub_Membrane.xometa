@@ -42,7 +42,8 @@
       "ofr_digCuriosity": 0.6,
       "ofr_envFilterAmt": 0.5,
       "ofr_masterWidth": 0.75,
-      "ofr_masterLevel": 0.75
+      "ofr_masterLevel": 0.75,
+      "ofr_velToSnap": 0.432
     }
   },
   "schema_version": 1,

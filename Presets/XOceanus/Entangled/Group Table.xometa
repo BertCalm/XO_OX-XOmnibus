@@ -91,5 +91,11 @@
     "orbital"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.465,
+    "MOVEMENT": 0.385,
+    "COUPLING": 0.571,
+    "SPACE": 0.554
+  }
 }

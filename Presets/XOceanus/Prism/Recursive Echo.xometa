@@ -146,7 +146,8 @@
       "ombre_macroSpace": 0.576,
       "ombre_filterEnvAmt": 0.575,
       "ombre_lfo1Rate": 0.288,
-      "ombre_lfo1Depth": 0.286
+      "ombre_lfo1Depth": 0.286,
+      "ombre_velCutoffScale": 0.496
     },
     "Optic": {
       "optic_modDepth": 0.5,

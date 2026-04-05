@@ -46,7 +46,8 @@
       "bob_release": 80.0,
       "bob_sustain": 0.95,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.466
     }
   },
   "schema_version": 1,
@@ -58,5 +59,11 @@
     "compressed"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.593,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.2,
+    "SPACE": 0.04
+  }
 }

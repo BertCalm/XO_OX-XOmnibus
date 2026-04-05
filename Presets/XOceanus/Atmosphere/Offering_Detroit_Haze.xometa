@@ -44,7 +44,8 @@
       "ofr_dustWobble": 0.2,
       "ofr_digCuriosity": 0.65,
       "ofr_masterLevel": 0.65,
-      "ofr_masterWidth": 0.7
+      "ofr_masterWidth": 0.7,
+      "ofr_velToSnap": 0.42
     }
   },
   "schema_version": 1,

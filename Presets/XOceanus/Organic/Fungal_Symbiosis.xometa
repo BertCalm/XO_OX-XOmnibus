@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Fungal Symbiosis",
   "mood": "Organic",
-  "engines": ["Organism", "Oaken"],
+  "engines": [
+    "Organism",
+    "Oaken"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mycorrhizal partnership between fungal cellular automata and oak string resonance. Both organisms richer together.",
-  "tags": ["organic", "symbiosis", "mycorrhizal", "coupled", "partnership"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "symbiosis",
+    "mycorrhizal",
+    "coupled",
+    "partnership"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
@@ -15,7 +29,7 @@
     "warmth": 0.78,
     "movement": 0.38,
     "density": 0.55,
-    "space": 0.50,
+    "space": 0.5,
     "aggression": 0.08
   },
   "parameters": {
@@ -23,23 +37,24 @@
       "org_macroCharacter": 0.44,
       "org_macroMovement": 0.38,
       "org_macroCoupling": 0.25,
-      "org_macroSpace": 0.50,
-      "org_ruleSet": 0.40,
+      "org_macroSpace": 0.5,
+      "org_ruleSet": 0.4,
       "org_filterEnvAmt": 0.44,
       "org_lfo1Rate": 0.05,
       "org_lfo1Depth": 0.24,
-      "org_lfo2Rate": 0.10,
-      "org_lfo2Depth": 0.18
+      "org_lfo2Rate": 0.1,
+      "org_lfo2Depth": 0.18,
+      "org_velCutoff": 0.42
     },
     "Oaken": {
       "oaken_macroCharacter": 0.46,
       "oaken_macroMovement": 0.35,
       "oaken_macroCoupling": 0.25,
-      "oaken_macroSpace": 0.50,
-      "oaken_stringAge": 0.80,
+      "oaken_macroSpace": 0.5,
+      "oaken_stringAge": 0.8,
       "oaken_filterEnvAmt": 0.42,
       "oaken_lfo1Rate": 0.04,
-      "oaken_lfo1Depth": 0.20,
+      "oaken_lfo1Depth": 0.2,
       "oaken_lfo2Rate": 0.08,
       "oaken_lfo2Depth": 0.14
     }
@@ -59,6 +74,6 @@
     "CHARACTER": 0.45,
     "MOVEMENT": 0.36,
     "COUPLING": 0.25,
-    "SPACE": 0.50
+    "SPACE": 0.5
   }
 }

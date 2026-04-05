@@ -67,5 +67,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Bright warm foundational tone from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.607,
+    "MOVEMENT": 0.161,
+    "COUPLING": 0.2,
+    "SPACE": 0.813
+  }
 }

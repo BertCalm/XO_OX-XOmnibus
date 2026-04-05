@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH GHOST": 0.45,
+    "FAT VOID": 0.45,
+    "COUPLING": 0.258,
+    "SPACE": 0.545
+  }
 }

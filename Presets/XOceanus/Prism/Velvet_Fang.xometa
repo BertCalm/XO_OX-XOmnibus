@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Smooth filtered lead bass with silky low-pass and tube warmth \u2014 the sophisticated bite.",
+  "description": "Smooth filtered lead bass with silky low-pass and tube warmth — the sophisticated bite.",
   "dna": {
     "aggression": 0.4,
     "brightness": 0.4,
@@ -53,7 +53,8 @@
       "poss_oscAWaveform": 2,
       "poss_oscBWaveform": 1,
       "poss_oscMix": 0.4,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.62
     }
   },
   "schema_version": 1,

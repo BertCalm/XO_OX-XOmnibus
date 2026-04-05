@@ -1,0 +1,85 @@
+XOCEANUS GENERIC PRESET NAMES — IDENTITY SPRINT MANIFEST
+Generated: 2026-04-05
+Issue: #721 — "570+ generic preset names need identity sprint"
+Scanner: strict Init/Default/Type+N/Type+Init patterns
+Active preset library: 15,342 presets (excludes Presets/XOceanus/_quarantine/)
+
+SUMMARY
+=======
+13 presets with generic-pattern names found in the active library.
+Issue #721 estimated "570+" — the actual count is lower because most
+presets already follow the 2-3 word evocative naming convention in CLAUDE.md.
+All 13 are in the Foundation mood (starter/init patches for their engines).
+
+These names are NOT bugs — they are functional init patches used as blank
+canvases. However, per CLAUDE.md naming rules ("evocative, max 30 chars,
+no jargon"), they should receive identity names before V1 release.
+
+WHAT TO DO
+==========
+Each preset needs a new name that:
+  - Is 2-3 words, max 30 chars
+  - Is evocative of the engine's sonic character
+  - Does NOT start with "Init", "Default", "Pad N", "Lead N", etc.
+  - Follows the mood (all are Foundation mood — so grounded, accessible names)
+  - Has no duplicates in the library
+
+This is a CREATIVE TASK requiring human sound design judgment.
+Do not batch-rename with a script — each name needs individual attention.
+
+GENERIC PRESETS (13 total)
+==========================
+Format: NAME | ENGINE | MOOD | FILE PATH
+
+Init Brothers         | Obbligato  | Foundation | Presets/XOceanus/Foundation/Obbligato/Obbligato_Init_Brothers.xometa
+Init Cousins          | Ottoni     | Foundation | Presets/XOceanus/Foundation/Ottoni/Ottoni_Init_Cousins.xometa
+Init Goddess          | Orphica    | Foundation | Presets/XOceanus/Foundation/Orphica/Orphica_Init_Goddess.xometa
+Init Hammerhead       | Ouie       | Foundation | Presets/XOceanus/Foundation/Ouie/Ouie_Init_Hammerhead.xometa
+Init Outwit           | Outwit     | Foundation | Presets/XOceanus/Foundation/Outwit/Outwit_Init_Outwit.xometa
+Init Overlap          | Overlap    | Foundation | Presets/XOceanus/Foundation/Overlap/Overlap_Init_Overlap.xometa
+Init Overtone         | Overtone   | Foundation | Presets/XOceanus/Foundation/Overtone/Overtone_Init_Overtone.xometa
+Init Patch            | Organism   | Foundation | Presets/XOceanus/Foundation/Organism/Organism_Init_Patch.xometa
+Init Sisters          | Ole        | Foundation | Presets/XOceanus/Foundation/Ole/Ole_Init_Sisters.xometa
+Init Trench           | OceanDeep  | Foundation | Presets/XOceanus/Foundation/OceanDeep/OceanDeep_Init_Trench.xometa
+Lead Init             | OpenSky    | Foundation | Presets/XOceanus/Foundation/OpenSky/OpenSky_Lead_Init.xometa
+Pad Init              | OpenSky    | Foundation | Presets/XOceanus/Foundation/OpenSky/OpenSky_Pad_Init.xometa
+Pluck Init            | OpenSky    | Foundation | Presets/XOceanus/Foundation/OpenSky/OpenSky_Pluck_Init.xometa
+
+NAMING SUGGESTIONS (starting points only — sound design judgment required)
+===========================================================================
+Init Brothers   → "Reed Covenant" or "Breath Bond"    (Obbligato = breath articulation vocal)
+Init Cousins    → "Patina First"  or "Brass Kinship"  (Ottoni = patina brass organ)
+Init Goddess    → "Siren Shore"   or "Reef Whisper"   (Orphica = siren seafoam plucked string)
+Init Hammerhead → "Hammer Woke"   or "Steel Dawn"     (Ouie = duophonic hammerhead synth)
+Init Outwit     → "Amber Wake"    or "Chromo Start"   (Outwit = chromatophore amber effect)
+Init Overlap    → "Knot Open"     or "First Braid"    (Overlap = knot matrix FDN synthesizer)
+Init Overtone   → "Pi Seed"       or "First Fraction" (Overtone = continued fraction spectral)
+Init Patch      → "Colony Root"   or "Cell Zero"      (Organism = cellular automata)
+Init Sisters    → "Hibiscus Root" or "Olé First"      (Ole = hibiscus flamenco organ)
+Init Trench     → "Midnight Door" or "Pressure Open"  (OceanDeep = hydrostatic deep ocean)
+Lead Init       → "Sky Open"      or "Horizon Bare"   (OpenSky = euphoric shimmer supersaw)
+Pad Init        → "Sky Breathe"   or "Open Cloud"     (OpenSky)
+Pluck Init      → "Sky String"    or "Bright Wire"    (OpenSky)
+
+RENAME PROCEDURE
+================
+1. Open the .xometa file in a text editor
+2. Change the "name" field to the new evocative name
+3. Rename the .xometa file to match: EngineId_New_Name.xometa
+   (spaces → underscores, preserve engine prefix)
+4. Verify no duplicate exists: grep -r '"name": "Your New Name"' Presets/
+5. Re-run scan script to confirm 0 generics remain
+
+BROADER SCAN NOTES
+==================
+The following preset names use type-prefix patterns (Bass X, Drum X, etc.)
+that are evocative and NOT generic — they describe real sonic roles and should
+be left as-is:
+  - "Bass Anchor", "Bass Breath", "Bass Culture" etc. = intentional role labels
+  - "Drum Circle", "Drum Foundation", "Drum Chaos" etc. = intentional role labels
+  - "Brass Body", "Wind Chimes", "Organ Bed" etc. = intentional role labels
+  - "Pluck Lead", "String Weave", "Piano Body" etc. = intentional role labels
+
+These 178 "type-prefix" names are NOT the concern of this issue — the concern
+is names ending in bare numbers (Pad 1, Lead 2) or pure "Init" without identity.
+The library is in good shape: only 13 presets flagged out of 15,342 total.

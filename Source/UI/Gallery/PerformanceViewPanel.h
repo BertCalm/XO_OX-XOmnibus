@@ -110,12 +110,12 @@ public:
                 apvts, prefix + "active", section.activeBtn);
             addAndMakeVisible(section.activeBtn);
 
-            // Coupling type combo (15 types from CouplingType enum)
-            section.typeBox.addItemList({"AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph", "AudioToFM",
-                                         "AudioToRing", "FilterToFilter", "AmpToChoke", "RhythmToBlend", "EnvToDecay",
-                                         "PitchToPitch", "AudioToWavetable", "AudioToBuffer", "KnotTopology",
-                                         "TriangularCoupling"},
-                                        1);
+            // Coupling type combo — #713: use human-readable display names.
+            {
+                auto types = CouplingTypeColors::allTypes();
+                for (int i = 0; i < static_cast<int>(types.size()); ++i)
+                    section.typeBox.addItem(CouplingTypeColors::displayName(types[static_cast<size_t>(i)]), i + 1);
+            }
             A11y::setup(section.typeBox, "Route " + juce::String(r + 1) + " Coupling Type");
             section.typeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, prefix + "type", section.typeBox);
@@ -132,15 +132,19 @@ public:
                 apvts, prefix + "amount", section.depthSlider);
             addAndMakeVisible(section.depthSlider);
 
-            // Source slot selector
-            section.sourceBox.addItemList({"Slot 1", "Slot 2", "Slot 3", "Slot 4"}, 1);
+            // Source/target slot selectors — #714: use engine names via refreshSlotNames().
+            // Item IDs are 1-based integers; changeItemText() updates labels without
+            // breaking APVTS serialization.
+            for (int s = 1; s <= 4; ++s)
+            {
+                section.sourceBox.addItem("Slot " + juce::String(s), s);
+                section.targetBox.addItem("Slot " + juce::String(s), s);
+            }
             A11y::setup(section.sourceBox, "Route " + juce::String(r + 1) + " Source Slot");
             section.sourceAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, prefix + "source", section.sourceBox);
             addAndMakeVisible(section.sourceBox);
 
-            // Target slot selector
-            section.targetBox.addItemList({"Slot 1", "Slot 2", "Slot 3", "Slot 4"}, 1);
             A11y::setup(section.targetBox, "Route " + juce::String(r + 1) + " Target Slot");
             section.targetAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, prefix + "target", section.targetBox);
@@ -201,6 +205,7 @@ public:
     {
         couplingVisualizer.refresh();
         updateRouteLabels();
+        refreshSlotNames(); // #714: update source/target combo text to show engine names
         repaint();
     }
 
@@ -349,6 +354,33 @@ public:
     }
 
 private:
+    // #714: Update source/target combo item text to show current engine names.
+    // Item IDs (1–4) are preserved so APVTS serialization is unaffected.
+    void refreshSlotNames()
+    {
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            auto& section = routes[r];
+            for (int slotId = 1; slotId <= 4; ++slotId)
+            {
+                auto* eng = processor.getEngine(slotId - 1);
+                juce::String label;
+                if (eng)
+                {
+                    auto id = eng->getEngineId();
+                    label = id.isEmpty() ? ("Slot " + juce::String(slotId))
+                                         : (id.toUpperCase() + " (Slot " + juce::String(slotId) + ")");
+                }
+                else
+                {
+                    label = "Slot " + juce::String(slotId) + " (empty)";
+                }
+                section.sourceBox.changeItemText(slotId, label);
+                section.targetBox.changeItemText(slotId, label);
+            }
+        }
+    }
+
     void updateRouteLabels()
     {
         for (int r = 0; r < kNumRoutes; ++r)

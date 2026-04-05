@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "The Last Cell",
   "mood": "Deep",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Low grid density (0.22) keeps the automaton near the extinction threshold. Rule 30 chaos with very low chaos parameter — the grid is sparse, delicate, barely alive. Anti-extinction re-seeding fires occasionally, creating sudden bursts of tone from silence. Long attack (800ms) and very long release (6s). Wide projection (0.75) means each rare live cell contributes warmly across many harmonics. The space between events IS the sound. Play one note every 8 bars.",
-  "tags": ["awakening", "sparse", "minimal", "rule-30", "silence", "near-extinction", "deep"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "sparse",
+    "minimal",
+    "rule-30",
+    "silence",
+    "near-extinction",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.22,
@@ -59,5 +80,11 @@
     "density": 0.18,
     "space": 0.95,
     "aggression": 0.05
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.15,
+    "SPACE": 0.95,
+    "COUPLING": 0.2
   }
 }

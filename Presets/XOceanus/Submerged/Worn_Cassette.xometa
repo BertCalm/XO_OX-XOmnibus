@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Warm static submerged depth from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.436,
+    "MOVEMENT": 0.093,
+    "COUPLING": 0.2,
+    "SPACE": 0.624
+  }
 }

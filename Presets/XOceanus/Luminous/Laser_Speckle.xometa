@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Laser Speckle",
+  "mood": "Luminous",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Coherent light scattered from a rough surface \u2014 laser speckle patterns as constructive and destructive interference produce random granular brightness distributions.",
+  "tags": [
+    "luminous",
+    "laser",
+    "speckle",
+    "coherent",
+    "interference",
+    "granular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.15,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.72,
+      "optic_bandwidth": 0.82,
+      "optic_threshold": 0.35,
+      "optic_filterCutoff": 13000.0,
+      "optic_filterRes": 0.25,
+      "optic_attack": 0.001,
+      "optic_decay": 0.05,
+      "optic_sustain": 0.35,
+      "optic_release": 0.8,
+      "optic_lfo1Rate": 1.2,
+      "optic_lfo1Depth": 0.55,
+      "optic_macroCharacter": 0.72,
+      "optic_macroMovement": 0.72,
+      "optic_macroCoupling": 0.35,
+      "optic_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.35,
+    "SPACE": 0.58
+  }
+}

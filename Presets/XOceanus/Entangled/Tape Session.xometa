@@ -92,5 +92,11 @@
     "overdub"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.358,
+    "MOVEMENT": 0.276,
+    "COUPLING": 0.626,
+    "SPACE": 0.528
+  }
 }

@@ -54,5 +54,11 @@
     "dyssey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "JOURNEY": 0.45,
+    "BREATHE": 0.45,
+    "BLOOM": 0.393,
+    "FRACTURE": 0.244
+  }
 }

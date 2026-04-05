@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Vintage clavinet through an old tape path \u2014 warm grain, light wah flutter, neck-dominant. The aged instrument.",
+  "description": "Vintage clavinet through an old tape path — warm grain, light wah flutter, neck-dominant. The aged instrument.",
   "tags": [
     "clavinet",
     "vintage",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.225,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

@@ -61,7 +61,8 @@
       "poss_oscBWaveform": 0,
       "poss_subLevel": 0.7,
       "poss_trashAmount": 0.0,
-      "poss_trashMode": 0
+      "poss_trashMode": 0,
+      "poss_ampVelSens": 0.45
     }
   },
   "schema_version": 1,
@@ -73,5 +74,11 @@
     "gravity"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.2,
+    "SCURRY": 0.239,
+    "SPACE": 0.15
+  }
 }

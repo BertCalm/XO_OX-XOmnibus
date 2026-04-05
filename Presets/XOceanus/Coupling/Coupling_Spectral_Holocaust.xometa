@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERTONE \u03c0/e/\u03c6/\u221a2 spectral convergents at extreme depth reshaping ORBWEAVE knot topology completely \u2014 irrational numbers rewriting topological space, mathematics in crisis.",
+  "description": "OVERTONE π/e/φ/√2 spectral convergents at extreme depth reshaping ORBWEAVE knot topology completely — irrational numbers rewriting topological space, mathematics in crisis.",
   "tags": [
     "coupling",
     "extreme",
@@ -42,7 +42,8 @@
       "over_macroCharacter": 0.78,
       "over_macroMovement": 0.88,
       "over_macroCoupling": 0.9,
-      "over_macroSpace": 0.58
+      "over_macroSpace": 0.58,
+      "over_velBright": 0.522
     },
     "Orbweave": {
       "weave_knotDepth": 0.9,

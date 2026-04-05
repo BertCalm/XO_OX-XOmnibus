@@ -90,7 +90,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 1,
       "bob_glide": 0.18,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.475
     }
   },
   "coupling": {
@@ -103,5 +104,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH GATE": 0.45,
+    "BOB GLIDE": 0.45,
+    "COUPLING DEPTH": 0.45,
+    "BOB CHARACTER": 0.45
+  }
 }

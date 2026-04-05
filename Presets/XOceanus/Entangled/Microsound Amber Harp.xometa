@@ -40,12 +40,14 @@
       "bob_groove": 0.5,
       "bob_density": 0.6,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.525
     },
     "Orphica": {
       "orph_grainSize": 0.3,
       "orph_scatter": 0.55,
-      "orph_harpDensity": 0.6
+      "orph_harpDensity": 0.6,
+      "orph_velocitySensitivity": 0.788
     }
   },
   "coupling": {
@@ -64,5 +66,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.51,
+    "SPACE": 0.4
+  }
 }

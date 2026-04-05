@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Dense foggy texture from folded noise and slow oscillators \u2014 alley mist in sound form.",
+  "description": "Dense foggy texture from folded noise and slow oscillators — alley mist in sound form.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.3,
@@ -54,7 +54,8 @@
       "poss_oscADrift": 0.4,
       "poss_oscAWaveform": 0,
       "poss_trashAmount": 0.35,
-      "poss_trashMode": 0
+      "poss_trashMode": 0,
+      "poss_ampVelSens": 0.35
     }
   },
   "schema_version": 1,

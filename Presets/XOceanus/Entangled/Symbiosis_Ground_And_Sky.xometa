@@ -61,7 +61,8 @@
       "sky_macroSpace": 0.491,
       "sky_filterEnvAmt": 0.487,
       "sky_lfo1Rate": 0.164,
-      "sky_lfo1Depth": 0.306
+      "sky_lfo1Depth": 0.306,
+      "sky_velSensitivity": 0.707
     }
   },
   "coupling": {

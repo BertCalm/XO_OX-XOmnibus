@@ -86,5 +86,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PITCH DIVE": 0.45,
+    "LFO WOBBLE": 0.45,
+    "FILTER TONE": 0.45,
+    "DRIVE": 0.48
+  }
 }

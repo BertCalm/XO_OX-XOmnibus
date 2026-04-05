@@ -30,7 +30,8 @@
       "orph_macro_character": 0.32,
       "orph_macro_coupling": 0.1,
       "orph_macro_movement": 0.11,
-      "orph_macro_space": 0.93
+      "orph_macro_space": 0.93,
+      "orph_velocitySensitivity": 0.456
     }
   },
   "schema_version": 1,

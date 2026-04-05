@@ -53,7 +53,8 @@
       "opal_macroSpace": 0.385,
       "opal_filterEnvAmt": 0.462,
       "opal_lfo1Rate": 0.17,
-      "opal_lfo1Depth": 0.394
+      "opal_lfo1Depth": 0.394,
+      "opal_ampVelSens": 0.378
     },
     "Oracle": {
       "oracle_aggression": 0.377,

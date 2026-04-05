@@ -87,7 +87,8 @@
       "ouie_level": 0.82,
       "ouie_macroAmpullae": 0.52,
       "ouie_macroCartilage": 0.48,
-      "ouie_macroCurrent": 0.72
+      "ouie_macroCurrent": 0.72,
+      "ouie_velCutoffAmt": 0.695
     }
   },
   "macros": {

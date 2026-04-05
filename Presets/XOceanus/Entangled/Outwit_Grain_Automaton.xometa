@@ -43,7 +43,8 @@
       "opal_grainPitch": 0.0,
       "opal_grainPosition": 0.5,
       "opal_grainScatter": 0.5,
-      "opal_grainSize": 0.35
+      "opal_grainSize": 0.35,
+      "opal_ampVelSens": 0.36
     },
     "Outwit": {
       "owit_ampAttack": 0.2,
@@ -79,5 +80,11 @@
     "layered"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.4,
+    "CHAOS": 0.296,
+    "COUPLING": 0.54,
+    "SPACE": 0.7
+  }
 }

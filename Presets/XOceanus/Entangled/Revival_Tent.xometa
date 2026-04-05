@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Revival Tent",
+  "mood": "Entangled",
+  "engines": [
+    "Otis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Small portable electric organ at a tent revival \u2014 moderate instability, fast tremolo, the congregation's response already tangled in the organ's call. Heat, humidity, and conviction.",
+  "tags": [
+    "entangled",
+    "revival",
+    "tent",
+    "electric organ",
+    "tremolo",
+    "conviction"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.38,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Otis": {
+      "otis_organ": 3,
+      "otis_drawbar1": 0.0,
+      "otis_drawbar2": 0.0,
+      "otis_drawbar3": 1.0,
+      "otis_drawbar4": 0.6,
+      "otis_drawbar5": 0.4,
+      "otis_drawbar6": 0.2,
+      "otis_drawbar7": 0.0,
+      "otis_drawbar8": 0.0,
+      "otis_drawbar9": 0.0,
+      "otis_leslie": 0.0,
+      "otis_keyClick": 0.25,
+      "otis_percussion": 0.0,
+      "otis_percHarmonic": 0.0,
+      "otis_percDecay": 0.3,
+      "otis_crosstalk": 0.08,
+      "otis_brightness": 10000.0,
+      "otis_drive": 0.22,
+      "otis_filterEnvAmount": 0.28,
+      "otis_bendRange": 2.0,
+      "otis_instability": 0.38,
+      "otis_attack": 0.007,
+      "otis_decay": 0.12,
+      "otis_sustain": 0.95,
+      "otis_release": 0.12,
+      "otis_macroCharacter": 0.58,
+      "otis_macroMovement": 0.65,
+      "otis_macroCoupling": 0.0,
+      "otis_macroSpace": 0.38,
+      "otis_lfo1Rate": 4.0,
+      "otis_lfo1Depth": 0.25,
+      "otis_lfo1Shape": 3,
+      "otis_lfo2Rate": 0.6,
+      "otis_lfo2Depth": 0.15,
+      "otis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  }
+}

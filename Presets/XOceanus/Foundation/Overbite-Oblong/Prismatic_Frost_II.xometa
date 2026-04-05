@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Anchored and grounding, shimmering, crystalline lead. Let it breathe \u2014 the space is the instrument.",
+  "description": "Anchored and grounding, shimmering, crystalline lead. Let it breathe — the space is the instrument.",
   "dna": {
     "aggression": 0.597,
     "brightness": 0.91,
@@ -45,7 +45,8 @@
       "bob_macroCharacter": 0.889,
       "bob_macroCoupling": 0.868,
       "bob_macroMovement": 0.249,
-      "bob_macroSpace": 0.839
+      "bob_macroSpace": 0.839,
+      "bob_velFilter": 0.419
     },
     "Overbite": {
       "poss_level": 0.8,
@@ -53,7 +54,8 @@
       "poss_macroBite": 0.881,
       "poss_macroScurry": 0.198,
       "poss_macroTrash": 0.687,
-      "poss_pan": 0.0
+      "poss_pan": 0.0,
+      "poss_ampVelSens": 0.419
     }
   },
   "schema_version": 1,

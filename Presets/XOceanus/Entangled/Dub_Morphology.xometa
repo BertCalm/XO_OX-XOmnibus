@@ -102,5 +102,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DEPTH": 0.65,
+    "MORPH": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.5
+  }
 }

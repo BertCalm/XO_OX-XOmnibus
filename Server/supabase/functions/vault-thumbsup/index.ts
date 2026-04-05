@@ -43,7 +43,13 @@ Deno.serve(async (req: Request) => {
 
     // Derive voterHash server-side from the client IP + recipeId + a server secret.
     // This prevents clients from forging or replaying arbitrary hashes.
-    const voterSecret = Deno.env.get("VOTER_HASH_SECRET") ?? "xo-ox-vault-default-secret";
+    const voterSecret = Deno.env.get("VOTER_HASH_SECRET");
+    if (!voterSecret) {
+      return new Response(
+        JSON.stringify({ error: "Server configuration error" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
     const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0].trim()
       ?? req.headers.get("cf-connecting-ip")
       ?? "unknown";

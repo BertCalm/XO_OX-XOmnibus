@@ -62,11 +62,13 @@
       "ombre_shadowAmount": 0.508,
       "ombre_spaceMix": 0.669,
       "ombre_toneA": 3267.7,
-      "ombre_toneB": 2514.7
+      "ombre_toneB": 2514.7,
+      "ombre_velCutoffScale": 0.395
     },
     "Owlfish": {
       "owl_filterCutoff": 6218.2,
-      "owl_level": 0.743
+      "owl_level": 0.743,
+      "owl_velocity": 0.642
     }
   },
   "schema_version": 1,
@@ -81,5 +83,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.54,
+    "SPACE": 0.634
+  }
 }

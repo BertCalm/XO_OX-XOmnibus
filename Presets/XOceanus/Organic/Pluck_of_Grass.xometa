@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pluck of Grass",
   "mood": "Organic",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Siren seafoam pluck that recalls a blade of grass between two thumbs — body resonance blooms into natural harmonics.",
-  "tags": ["organic", "pluck", "grass", "resonant", "natural"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "pluck",
+    "grass",
+    "resonant",
+    "natural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -16,26 +29,29 @@
     "movement": 0.38,
     "density": 0.32,
     "space": 0.48,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Orphica": {
-      "orph_macroCharacter": 0.40,
+      "orph_macroCharacter": 0.4,
       "orph_macroMovement": 0.38,
       "orph_macroCoupling": 0.16,
       "orph_macroSpace": 0.48,
       "orph_pluckBrightness": 0.45,
       "orph_filterEnvAmt": 0.42,
       "orph_lfo1Rate": 0.05,
-      "orph_lfo1Depth": 0.20,
+      "orph_lfo1Depth": 0.2,
       "orph_lfo2Rate": 0.11,
-      "orph_lfo2Depth": 0.16
+      "orph_lfo2Depth": 0.16,
+      "orph_velocitySensitivity": 0.638
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.40,
+    "CHARACTER": 0.4,
     "MOVEMENT": 0.38,
     "COUPLING": 0.16,
     "SPACE": 0.48

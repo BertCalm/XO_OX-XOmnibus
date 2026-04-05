@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA hunt energy heavily feeds ORGANISM cellular birth rate \u2014 apex predator presence triggering explosive cell division, hunting as growth catalyst.",
+  "description": "ORCA hunt energy heavily feeds ORGANISM cellular birth rate — apex predator presence triggering explosive cell division, hunting as growth catalyst.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.68,
       "orca_macroMovement": 0.78,
       "orca_macroCoupling": 0.8,
-      "orca_macroSpace": 0.46
+      "orca_macroSpace": 0.46,
+      "orca_velCutoffAmt": 0.545
     },
     "Organism": {
       "org_ruleSet": 0.68,
@@ -52,7 +53,8 @@
       "org_macroCharacter": 0.64,
       "org_macroMovement": 0.72,
       "org_macroCoupling": 0.75,
-      "org_macroSpace": 0.46
+      "org_macroSpace": 0.46,
+      "org_velCutoff": 0.545
     }
   },
   "coupling": {

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Salt Flat Resonance",
+  "mood": "Crystalline",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Atacama salt flat in the dry season \u2014 hexagonal salt crystals cracking as temperature changes, producing micro-scale piezoelectric discharges across 100 km of perfectly flat terrain.",
+  "tags": [
+    "crystalline",
+    "salt flat",
+    "Atacama",
+    "hexagonal",
+    "piezoelectric",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.22,
+    "density": 0.32,
+    "space": 0.92,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.22,
+      "oas_breeze": 0.18,
+      "oas_swarmDensity": 0.28,
+      "oas_lagoonDepth": 0.72,
+      "oas_subDrive": 0.05,
+      "oas_resonatorQ": 7.5,
+      "oas_cullDecay": 0.9999,
+      "oas_canopyFB": 0.78,
+      "oas_filterCutoff": 9000.0,
+      "oas_filterEnvAmt": 0.22,
+      "oas_pickupPos": 0.82,
+      "oas_bellAmount": 0.72,
+      "oas_warmth": 0.22,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.42,
+      "oas_macroMovement": 0.22,
+      "oas_macroCoupling": 0.1,
+      "oas_macroSpace": 0.92
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.1,
+    "SPACE": 0.92
+  }
+}

@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Bright static foundational tone from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.617,
+    "MOVEMENT": 0.148,
+    "COUPLING": 0.2,
+    "SPACE": 0.925
+  }
 }

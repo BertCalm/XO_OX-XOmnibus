@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Diamond dust \u2014 microscopic ice crystals suspended in arctic air, each a tiny prism of shimmer.",
+  "description": "Diamond dust — microscopic ice crystals suspended in arctic air, each a tiny prism of shimmer.",
   "tags": [
     "crystalline",
     "diamond-dust",
@@ -39,7 +39,8 @@
       "sky_macroSpace": 0.51,
       "sky_filterEnvAmt": 0.44,
       "sky_lfo1Rate": 0.1,
-      "sky_lfo1Depth": 0.14
+      "sky_lfo1Depth": 0.14,
+      "sky_velSensitivity": 0.571
     }
   },
   "coupling": {

@@ -41,7 +41,8 @@
       "owl_macroMovement": 0.566,
       "owl_filterEnvDepth": 0.438,
       "owl_lfoRate": 0.041,
-      "owl_lfoDepth": 0.197
+      "owl_lfoDepth": 0.197,
+      "owl_velocity": 0.408
     }
   },
   "schema_version": 1,

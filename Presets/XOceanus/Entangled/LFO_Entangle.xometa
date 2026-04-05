@@ -97,5 +97,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB WOBBLE": 0.45,
+    "MORPH DRIFT": 0.45,
+    "COUPLING": 0.33,
+    "ECHO": 0.4
+  }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Installer/entitlements.plist
+  ============================
+  Hardened-runtime entitlements for XOceanus.component and XOceanus.app.
+
+  All three keys below are REQUIRED for JUCE audio plugins distributed outside
+  the Mac App Store and signed with Developer ID:
+
+    com.apple.security.cs.allow-unsigned-executable-memory
+      JUCE uses JIT-compiled code paths (e.g. the JUCE message thread trampoline
+      and some DSP SIMD helpers). Without this entitlement, the hardened runtime
+      will refuse to execute those pages and the plugin will crash on load inside
+      AU-validating hosts such as Logic Pro and auval.
+
+    com.apple.security.device.audio-input
+      Required so the standalone app (and AU hosts that expose it) can request
+      microphone permission via AVAudioSession / Core Audio. Hosts that do not
+      grant this will silently route silence to the audio input bus; the user
+      will see no crash but will wonder why audio input is dead.
+
+    com.apple.security.cs.disable-library-validation
+      AU hosts (Logic Pro, GarageBand, Ableton Live, Bitwig) dlopen the plugin
+      bundle at runtime. Library validation would block this load because the
+      host's signing certificate differs from the plugin's. This entitlement
+      tells the hardened runtime to allow third-party dynamic loads, which is
+      the standard requirement for every AU / VST3 plugin.
+
+  NOTE: com.apple.security.cs.allow-jit is intentionally NOT included. JUCE 8
+  does not require arbitrary JIT allocation; allow-unsigned-executable-memory
+  is sufficient and is preferred by Apple for audio plug-ins.
+-->
+<plist version="1.0">
+<dict>
+
+    <!-- Required: JUCE JIT trampolines and SIMD code pages -->
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <true/>
+
+    <!-- Required: microphone / audio input access in Standalone mode -->
+    <key>com.apple.security.device.audio-input</key>
+    <true/>
+
+    <!-- Required: AU host (Logic, Ableton, etc.) can dlopen the plugin bundle -->
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <true/>
+
+</dict>
+</plist>

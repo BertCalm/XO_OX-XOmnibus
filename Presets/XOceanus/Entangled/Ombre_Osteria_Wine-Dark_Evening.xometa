@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.42,
       "ombre_spaceMix": 0.756,
       "ombre_toneA": 2029.9,
-      "ombre_toneB": 2084.6
+      "ombre_toneB": 2084.6,
+      "ombre_velCutoffScale": 0.367
     },
     "Osteria": {
       "osteria_filterCutoff": 7469.9,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.337,
+    "MOVEMENT": 0.432,
+    "COUPLING": 0.51,
+    "SPACE": 0.547
+  }
 }

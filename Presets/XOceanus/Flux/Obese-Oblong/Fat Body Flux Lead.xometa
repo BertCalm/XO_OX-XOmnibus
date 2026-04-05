@@ -107,7 +107,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.62
     }
   },
   "coupling": {
@@ -120,5 +121,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT ARP": 0.45,
+    "BOB BLEND": 0.45,
+    "RHYTHM DEPTH": 0.45,
+    "CHARACTER": 0.475
+  }
 }

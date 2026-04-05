@@ -87,10 +87,17 @@
       "ouie_level": 0.55,
       "ouie_macroAmpullae": 0.45,
       "ouie_macroCartilage": 0.35,
-      "ouie_macroCurrent": 0.6
+      "ouie_macroCurrent": 0.6,
+      "ouie_velCutoffAmt": 0.316
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "HAMMER": 0.366,
+    "AMPULLAE": 0.595,
+    "CARTILAGE": 0.503,
+    "CURRENT": 0.532
   }
 }

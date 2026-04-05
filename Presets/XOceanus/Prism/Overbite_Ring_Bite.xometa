@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Ring modulated bass that snaps with metallic teeth \u2014 dissonant sidebands add inharmonic bite.",
+  "description": "Ring modulated bass that snaps with metallic teeth — dissonant sidebands add inharmonic bite.",
   "dna": {
     "aggression": 0.75,
     "brightness": 0.65,
@@ -52,7 +52,8 @@
       "poss_oscInteractAmount": 0.65,
       "poss_oscInteractMode": 1,
       "poss_oscMix": 0.5,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.725
     }
   },
   "schema_version": 1,

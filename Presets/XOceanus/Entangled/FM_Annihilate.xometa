@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "FM Annihilate",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Oblong"],
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chaos FM signal annihilating acid filter resonance. Ouroboros audio feeding Oblong FM at maximum depth.",
-  "tags": ["entangled", "aggressive", "fm", "annihilate", "acid"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "fm",
+    "annihilate",
+    "acid"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -49,7 +63,8 @@
       "bob_attackTime": 0.005,
       "bob_decayTime": 0.16,
       "bob_sustain": 0.2,
-      "bob_releaseTime": 0.12
+      "bob_releaseTime": 0.12,
+      "bob_velFilter": 0.635
     }
   },
   "coupling": {

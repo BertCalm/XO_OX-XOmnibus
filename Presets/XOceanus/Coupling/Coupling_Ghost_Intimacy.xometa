@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Intimacy",
+  "mood": "Coupling",
+  "engines": [
+    "Oxytocin",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXYTOCIN's triangular love state barely bleeds into OVERDUB's spring reverb depth — intimacy, passion, and commitment values so faint they surface only as a vague warmth in the tape's metallic splash.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "intimacy",
+    "spring",
+    "TriangularCoupling",
+    "emotional",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.65,
+    "movement": 0.36,
+    "density": 0.4,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.5,
+      "oxy_filterEnvAmt": 0.38,
+      "oxy_lfo1Rate": 0.07,
+      "oxy_lfo1Depth": 0.14,
+      "oxy_macroCharacter": 0.48,
+      "oxy_macroMovement": 0.34,
+      "oxy_macroCoupling": 0.12,
+      "oxy_macroSpace": 0.6
+    },
+    "Overdub": {
+      "dub_oscWave": 0.5,
+      "dub_filterEnvAmt": 0.36,
+      "dub_lfo1Rate": 0.06,
+      "dub_lfo1Depth": 0.12,
+      "dub_macroCharacter": 0.44,
+      "dub_macroMovement": 0.32,
+      "dub_macroCoupling": 0.11,
+      "dub_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Overdub",
+        "type": "TriangularCoupling",
+        "amount": 0.1
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.12,
+    "SPACE": 0.61
+  }
+}

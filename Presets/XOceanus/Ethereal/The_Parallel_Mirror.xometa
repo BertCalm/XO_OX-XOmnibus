@@ -67,5 +67,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Static ethereal pad from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.529,
+    "MOVEMENT": 0.128,
+    "COUPLING": 0.2,
+    "SPACE": 0.636
+  }
 }

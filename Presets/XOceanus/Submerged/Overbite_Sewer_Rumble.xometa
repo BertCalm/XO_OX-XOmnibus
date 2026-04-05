@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Cavernous sub rumble like water moving through underground pipes \u2014 cave reverb and maximum depth.",
+  "description": "Cavernous sub rumble like water moving through underground pipes — cave reverb and maximum depth.",
   "dna": {
     "aggression": 0.4,
     "brightness": 0.2,
@@ -56,7 +56,8 @@
       "poss_oscADrift": 0.2,
       "poss_oscAWaveform": 0,
       "poss_subLevel": 0.9,
-      "poss_subOctave": -2
+      "poss_subOctave": -2,
+      "poss_ampVelSens": 0.38
     }
   },
   "schema_version": 1,

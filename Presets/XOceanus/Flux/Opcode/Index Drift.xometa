@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM index swept by a slow triangle LFO \u2014 the harmonic density breathes in and out over 5 seconds.",
+  "description": "FM index swept by a slow triangle LFO — the harmonic density breathes in and out over 5 seconds.",
   "tags": [
     "fm",
     "drift",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
 }

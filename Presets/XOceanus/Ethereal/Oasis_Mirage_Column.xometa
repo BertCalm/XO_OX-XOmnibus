@@ -2,26 +2,39 @@
   "schema_version": 1,
   "name": "Mirage Column",
   "mood": "Ethereal",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Inverted heat shimmer — notes ascend into a tall lagoon wash that refuses to decay. High canopy feedback and near-maximum cull decay sustain every harmonic like a pillar of hot air bending the skyline.",
-  "tags": ["ethereal", "mirage", "shimmer", "sustained", "translucent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "mirage",
+    "shimmer",
+    "sustained",
+    "translucent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
     "warmth": 0.42,
     "movement": 0.35,
-    "density": 0.40,
+    "density": 0.4,
     "space": 0.88,
     "aggression": 0.06
   },
   "parameters": {
     "Oasis": {
       "oas_entropySens": 0.42,
-      "oas_breeze": 0.50,
+      "oas_breeze": 0.5,
       "oas_swarmDensity": 0.45,
       "oas_lagoonDepth": 0.88,
       "oas_subDrive": 0.12,
@@ -36,12 +49,20 @@
       "oas_tremoloDepth": 0.0,
       "oas_tremoloRate": 5.0,
       "oas_glideTime": 0.0,
-      "oas_macroCharacter": 0.40,
+      "oas_macroCharacter": 0.4,
       "oas_macroMovement": 0.35,
       "oas_macroCoupling": 0.22,
       "oas_macroSpace": 0.88
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.88
+  }
 }

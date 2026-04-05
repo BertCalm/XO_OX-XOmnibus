@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT CLOUD": 0.45,
+    "MORPH SCAN": 0.45,
+    "COUPLING": 0.33,
+    "DEPTH": 0.6
+  }
 }

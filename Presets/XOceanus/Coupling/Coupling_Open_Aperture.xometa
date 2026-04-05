@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPENSKY shimmer RISE macro drives OBLIQUE prism refraction depth \u2014 euphoric ascending energy passing through the prism, spreading light across spectrum.",
+  "description": "OPENSKY shimmer RISE macro drives OBLIQUE prism refraction depth — euphoric ascending energy passing through the prism, spreading light across spectrum.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "sky_macroCharacter": 0.54,
       "sky_macroMovement": 0.58,
       "sky_macroCoupling": 0.65,
-      "sky_macroSpace": 0.6
+      "sky_macroSpace": 0.6,
+      "sky_velSensitivity": 0.616
     },
     "Oblique": {
       "oblq_prismColor": 0.58,

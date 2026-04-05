@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Sunrise Gradient",
+  "mood": "Luminous",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Solar disc ascending below the horizon — Rayleigh scattering producing the progression from black through violet-blue to orange-gold that announces each day.",
+  "tags": [
+    "luminous",
+    "sunrise",
+    "gradient",
+    "Rayleigh",
+    "scattering",
+    "dawn"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.75,
+    "movement": 0.35,
+    "density": 0.28,
+    "space": 0.85,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.62,
+      "sky_macroMovement": 0.35,
+      "sky_macroCoupling": 0.1,
+      "sky_macroSpace": 0.85,
+      "sky_macroRise": 0.72,
+      "sky_filterEnvAmt": 0.45,
+      "sky_lfo1Rate": 0.05,
+      "sky_lfo1Depth": 0.22,
+      "sky_lfo2Rate": 0.12,
+      "sky_lfo2Depth": 0.15,
+      "sky_attack": 1.2,
+      "sky_decay": 3.0,
+      "sky_sustain": 0.85,
+      "sky_release": 7.0,
+      "sky_filterCutoff": 11000,
+      "sky_filterRes": 0.12,
+      "sky_shimmerDepth": 0.65,
+      "sky_shimmerRate": 0.08,
+      "sky_unisonVoices": 5,
+      "sky_unisonDetune": 0.18,
+      "sky_chorusDepth": 0.35,
+      "sky_reverbMix": 0.52,
+      "sky_output": 0,
+      "sky_velSensitivity": 0.567
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.1,
+    "SPACE": 0.85
+  }
+}

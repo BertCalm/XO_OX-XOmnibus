@@ -62,7 +62,8 @@
     },
     "Orca": {
       "orca_filterCutoff": 4391.2,
-      "orca_level": 0.68
+      "orca_level": 0.68,
+      "orca_velCutoffAmt": 0.582
     }
   },
   "schema_version": 1,
@@ -74,5 +75,11 @@
     "orca"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.629,
+    "MOVEMENT": 0.657,
+    "COUPLING": 0.63,
+    "SPACE": 0.408
+  }
 }

@@ -38,7 +38,8 @@
       "opal_macro_grain": 0.1199,
       "opal_macro_scatter": 0.2321,
       "opal_macro_space": 0.6582,
-      "opal_outputLevel": 0.85
+      "opal_outputLevel": 0.85,
+      "opal_ampVelSens": 0.279
     }
   },
   "schema_version": 1,

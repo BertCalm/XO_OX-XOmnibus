@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Hollow resonant breathiness as if recorded inside a den \u2014 spring reverb and gentle noise decay.",
+  "description": "Hollow resonant breathiness as if recorded inside a den — spring reverb and gentle noise decay.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.35,
@@ -52,7 +52,8 @@
       "poss_noiseLevel": 0.35,
       "poss_noiseRouting": 0,
       "poss_noiseType": 1,
-      "poss_oscAWaveform": 0
+      "poss_oscAWaveform": 0,
+      "poss_ampVelSens": 0.32
     }
   },
   "schema_version": 1,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "FM-modulated bass with inharmonic partials and gnash saturation \u2014 angular and industrial.",
+  "description": "FM-modulated bass with inharmonic partials and gnash saturation — angular and industrial.",
   "dna": {
     "aggression": 0.75,
     "brightness": 0.6,
@@ -52,7 +52,8 @@
       "poss_oscInteractAmount": 0.5,
       "poss_oscInteractMode": 2,
       "poss_oscMix": 0.5,
-      "poss_subLevel": 0.4
+      "poss_subLevel": 0.4,
+      "poss_ampVelSens": 0.725
     }
   },
   "schema_version": 1,

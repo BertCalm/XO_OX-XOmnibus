@@ -35,7 +35,7 @@
     "SPACE": 0.615
   },
   "mood": "Family",
-  "name": "Copper Crystal",
+  "name": "Copper Crystal (Quarantine)",
   "parameters": {
     "Orbital": {
       "orb_macroCharacter": 1.0,
@@ -61,7 +61,7 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "",
+  "description": "Bright warm ensemble voice from Orphica + Orbital.",
   "couplingIntensity": "Moderate",
   "quarantine_reason": "legacy_uncategorized"
 }

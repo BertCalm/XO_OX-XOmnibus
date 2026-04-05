@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Subterranean resonance. The modal bank tuned to the lower partial series. Temperature at maximum \u2014 every note is slightly sharp.",
+  "description": "Subterranean resonance. The modal bank tuned to the lower partial series. Temperature at maximum — every note is slightly sharp.",
   "tags": [
     "piano",
     "deep",
@@ -64,5 +64,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

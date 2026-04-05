@@ -82,7 +82,8 @@
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.55,
-      "owl_subWave": 0.25
+      "owl_subWave": 0.25,
+      "owl_velocity": 0.429
     }
   },
   "schema_version": 1,
@@ -97,5 +98,11 @@
     "permanence"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "DEPTH": 0.55,
+    "FEEDING": 0.45,
+    "DEFENSE": 0.45,
+    "PRESSURE": 0.43
+  }
 }

@@ -56,7 +56,8 @@
       "orca_pitchRand": 0.115,
       "orca_podSync": 0.185,
       "orca_wavetablePos": 0.406,
-      "orca_wavetableScan": 0.337
+      "orca_wavetableScan": 0.337,
+      "orca_velCutoffAmt": 0.59
     },
     "Ouroboros": {
       "ouro_attack": 0.077,
@@ -77,5 +78,11 @@
     "ouroboros"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.698,
+    "COUPLING": 0.518,
+    "SPACE": 0.527
+  }
 }

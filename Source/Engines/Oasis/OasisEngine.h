@@ -79,7 +79,7 @@ struct OasisRhodesToneGenerator
 
     void prepare(float sampleRate) noexcept
     {
-        sr = sampleRate;
+        sr = std::max(sampleRate, 1.0f);
         for (int i = 0; i < kNumPartials; ++i)
         {
             phases[i] = 0.0f;
@@ -88,7 +88,7 @@ struct OasisRhodesToneGenerator
             // Decay time T(i) = 2.0 - i*0.25 seconds. Computed once here; never again
             // per-sample. Formula: 1 - exp(-1 / (sr * T(i)))
             float T = 2.0f - static_cast<float>(i) * 0.25f;
-            cachedDecayRates[i] = 1.0f - std::exp(-1.0f / (sampleRate * T));
+            cachedDecayRates[i] = 1.0f - std::exp(-1.0f / (sr * T));
         }
         tineEnvLevel = 0.0f;
         bellEnvLevel = 0.0f;
@@ -175,7 +175,7 @@ struct OasisRhodesToneGenerator
         bellEnvLevel = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;
     float phases[kNumPartials] = {};
     float partialLevels[kNumPartials] = {};
     // Precomputed matched-Z decay poles — set in prepare(), never recalculated per sample.

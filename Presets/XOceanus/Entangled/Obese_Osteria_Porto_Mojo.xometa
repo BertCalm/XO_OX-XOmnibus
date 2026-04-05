@@ -74,5 +74,11 @@
     "osteria"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.427,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.57,
+    "SPACE": 0.479
+  }
 }

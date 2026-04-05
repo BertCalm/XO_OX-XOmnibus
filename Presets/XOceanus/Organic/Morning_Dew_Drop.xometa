@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Morning Dew Drop",
   "mood": "Organic",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single water drop from a leaf at first light — bright attack fades into warm body resonance like a breath released.",
-  "tags": ["organic", "dew", "morning", "drop", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "dew",
+    "morning",
+    "drop",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,15 +37,18 @@
       "orph_macroMovement": 0.35,
       "orph_macroCoupling": 0.12,
       "orph_macroSpace": 0.55,
-      "orph_pluckBrightness": 0.60,
-      "orph_filterEnvAmt": 0.50,
+      "orph_pluckBrightness": 0.6,
+      "orph_filterEnvAmt": 0.5,
       "orph_lfo1Rate": 0.04,
       "orph_lfo1Depth": 0.16,
       "orph_lfo2Rate": 0.09,
-      "orph_lfo2Depth": 0.12
+      "orph_lfo2Depth": 0.12,
+      "orph_velocitySensitivity": 0.623
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.35,

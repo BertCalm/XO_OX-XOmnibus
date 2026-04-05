@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OFFERING psychology-derived curiosity drives ONSET transient model \u2014 Berlyne's arousal curve shaping how percussion attacks, emotion as transient.",
+  "description": "OFFERING psychology-derived curiosity drives ONSET transient model — Berlyne's arousal curve shaping how percussion attacks, emotion as transient.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "ofr_macroCharacter": 0.54,
       "ofr_macroMovement": 0.62,
       "ofr_macroCoupling": 0.65,
-      "ofr_macroSpace": 0.44
+      "ofr_macroSpace": 0.44,
+      "ofr_velToSnap": 0.588
     },
     "Onset": {
       "perc_macro_punch": 0.62,

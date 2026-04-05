@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Granular synthesis mimicking the acoustic texture of an ice field at -40\u00b0. Each grain a crystal facet.",
+  "description": "Granular synthesis mimicking the acoustic texture of an ice field at -40°. Each grain a crystal facet.",
   "tags": [
     "ethereal",
     "ice",
@@ -42,7 +42,8 @@
       "opal_lfo1Rate": 0.055,
       "opal_lfo1Depth": 0.16,
       "opal_attack": 1.8,
-      "opal_release": 6.0
+      "opal_release": 6.0,
+      "opal_ampVelSens": 0.245
     }
   },
   "coupling": {

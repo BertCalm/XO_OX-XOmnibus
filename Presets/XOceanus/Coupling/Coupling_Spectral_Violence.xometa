@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OWLFISH Mixtur-Trautonium partials heavily destabilize OUROBOROS strange attractor \u2014 abyssal gold harmonics as chaos injector, spectral resonance as attractor fuel.",
+  "description": "OWLFISH Mixtur-Trautonium partials heavily destabilize OUROBOROS strange attractor — abyssal gold harmonics as chaos injector, spectral resonance as attractor fuel.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "owl_macroCharacter": 0.64,
       "owl_macroMovement": 0.7,
       "owl_macroCoupling": 0.75,
-      "owl_macroSpace": 0.5
+      "owl_macroSpace": 0.5,
+      "owl_velocity": 0.699
     },
     "Ouroboros": {
       "ouro_topology": 0.68,

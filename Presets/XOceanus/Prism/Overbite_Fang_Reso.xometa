@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "High-resonance filtered bass with sharp envelope modulation \u2014 biting resonant fangs in the mix.",
+  "description": "High-resonance filtered bass with sharp envelope modulation — biting resonant fangs in the mix.",
   "dna": {
     "aggression": 0.65,
     "brightness": 0.65,
@@ -50,7 +50,8 @@
       "poss_macroScurry": 0.25,
       "poss_macroTrash": 0.2,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.4
+      "poss_subLevel": 0.4,
+      "poss_ampVelSens": 0.695
     }
   },
   "schema_version": 1,

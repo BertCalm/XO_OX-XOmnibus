@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Open, bright daytime clavinet \u2014 the cheerful side of the D6 without being aggressive.",
+  "description": "Open, bright daytime clavinet — the cheerful side of the D6 without being aggressive.",
   "tags": [
     "clavinet",
     "bright",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

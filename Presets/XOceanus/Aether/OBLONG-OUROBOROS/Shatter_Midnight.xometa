@@ -38,7 +38,8 @@
       "level": 0.702,
       "pan": -0.024,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.491
     },
     "Ouroboros": {
       "level": 0.835,
@@ -56,5 +57,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.501,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.47,
+    "SPACE": 0.498
+  }
 }

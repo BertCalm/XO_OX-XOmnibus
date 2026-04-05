@@ -54,7 +54,8 @@
       "owr_macroCharacter": 0.15,
       "owr_macroMovement": 0.08,
       "owr_macroCoupling": 0.0,
-      "owr_macroSpace": 0.62
+      "owr_macroSpace": 0.62,
+      "owr_malletVelocity": 0.48
     }
   },
   "coupling": {
@@ -68,5 +69,11 @@
     "density": 0.48,
     "space": 0.75,
     "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.19,
+    "FX DEPTH": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.75
   }
 }

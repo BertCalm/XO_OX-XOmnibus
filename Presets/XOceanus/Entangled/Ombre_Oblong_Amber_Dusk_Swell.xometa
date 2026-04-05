@@ -38,7 +38,8 @@
       "bob_filterCutoff": 9386.7,
       "bob_level": 0.653,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.486
     },
     "Ombre": {
       "ombre_ampAttack": 0.0204,
@@ -68,7 +69,8 @@
       "ombre_shadowAmount": 0.483,
       "ombre_spaceMix": 0.577,
       "ombre_toneA": 3056.9,
-      "ombre_toneB": 1357.3
+      "ombre_toneB": 1357.3,
+      "ombre_velCutoffScale": 0.389
     }
   },
   "schema_version": 1,
@@ -83,5 +85,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.421,
+    "MOVEMENT": 0.416,
+    "COUPLING": 0.6,
+    "SPACE": 0.582
+  }
 }

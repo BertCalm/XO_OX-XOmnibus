@@ -43,13 +43,15 @@
       "bob_macroCharacter": 0.671,
       "bob_macroCoupling": 0.439,
       "bob_macroMovement": 0.078,
-      "bob_macroSpace": 0.617
+      "bob_macroSpace": 0.617,
+      "bob_velFilter": 0.61
     },
     "Orca": {
       "orca_macroCharacter": 0.707,
       "orca_macroCoupling": 0.959,
       "orca_macroMovement": 0.0,
-      "orca_macroSpace": 0.51
+      "orca_macroSpace": 0.51,
+      "orca_velCutoffAmt": 0.61
     }
   },
   "schema_version": 1,

@@ -62,5 +62,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "DEPTH": 0.6,
+    "COLOR": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.0
   }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Saw lead tone with luminous parallax enhancement. Cuts through mix while maintaining spatial depth \u2014 the lead that illuminates.",
+  "description": "Saw lead tone with luminous parallax enhancement. Cuts through mix while maintaining spatial depth — the lead that illuminates.",
   "tags": [
     "lead",
     "prism",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
   }
 }

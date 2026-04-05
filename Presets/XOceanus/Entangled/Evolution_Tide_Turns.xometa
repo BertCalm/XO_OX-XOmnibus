@@ -62,7 +62,8 @@
       "deep_macroAbyss": 0.447,
       "deep_filterEnvAmt": 0.409,
       "deep_lfo1Rate": 0.199,
-      "deep_lfo1Depth": 0.305
+      "deep_lfo1Depth": 0.305,
+      "deep_velCutoffAmt": 0.475
     }
   },
   "coupling": {

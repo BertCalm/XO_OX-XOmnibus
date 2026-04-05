@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Neutrino Passage",
+  "mood": "Ethereal",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "65 billion solar neutrinos pass through each square centimeter of your body per second. They interact with nothing. You cannot feel them. They cannot feel you.",
+  "tags": [
+    "ethereal",
+    "neutrino",
+    "passage",
+    "invisible",
+    "solar",
+    "intangible"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.28,
+    "movement": 0.35,
+    "density": 0.08,
+    "space": 0.98,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.15,
+      "oracle_filterCutoff": 6500.0,
+      "oracle_filterRes": 0.08,
+      "oracle_attack": 2.5,
+      "oracle_decay": 4.0,
+      "oracle_sustain": 0.72,
+      "oracle_release": 9.0,
+      "oracle_lfo1Rate": 0.05,
+      "oracle_lfo1Depth": 0.1,
+      "oracle_macroCharacter": 0.25,
+      "oracle_macroMovement": 0.35,
+      "oracle_macroCoupling": 0.05,
+      "oracle_macroSpace": 0.98
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.05,
+    "SPACE": 0.98
+  }
+}

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPERA Kuramoto phase synchronicity drives OBBLIGATO breath articulation \u2014 aria coherence conducting breath dynamics, drama shaping wind.",
+  "description": "OPERA Kuramoto phase synchronicity drives OBBLIGATO breath articulation — aria coherence conducting breath dynamics, drama shaping wind.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "opera_macroCharacter": 0.54,
       "opera_macroMovement": 0.54,
       "opera_macroCoupling": 0.62,
-      "opera_macroSpace": 0.52
+      "opera_macroSpace": 0.52,
+      "opera_velToFilter": 0.348
     },
     "Obbligato": {
       "obbl_breathA": 0.6,

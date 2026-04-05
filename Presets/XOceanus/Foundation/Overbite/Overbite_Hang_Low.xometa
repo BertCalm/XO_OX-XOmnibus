@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Opossum hanging upside-down bass \u2014 inverted envelope sweeps, plummy low mids, slow decay.",
+  "description": "Opossum hanging upside-down bass — inverted envelope sweeps, plummy low mids, slow decay.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.3,
@@ -52,7 +52,8 @@
       "poss_oscAWaveform": 1,
       "poss_oscBWaveform": 0,
       "poss_oscMix": 0.4,
-      "poss_subLevel": 0.6
+      "poss_subLevel": 0.6,
+      "poss_ampVelSens": 0.34
     }
   },
   "schema_version": 1,

@@ -43,7 +43,8 @@
       "ofr_digCuriosity": 0.7,
       "ofr_dustVinyl": 0.3,
       "ofr_lfo2Depth": 0.18,
-      "ofr_masterWidth": 0.78
+      "ofr_masterWidth": 0.78,
+      "ofr_velToSnap": 0.444
     }
   },
   "schema_version": 1,

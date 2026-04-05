@@ -43,7 +43,8 @@
       "orca_macroSpace": 0.815,
       "orca_filterEnvAmt": 0.345,
       "orca_lfo1Rate": 0.08,
-      "orca_lfo1Depth": 0.23
+      "orca_lfo1Depth": 0.23,
+      "orca_velCutoffAmt": 0.417
     },
     "Owlfish": {
       "level": 0.72,
@@ -54,7 +55,8 @@
       "owl_macroSpace": 0.819,
       "owl_filterEnvDepth": 0.345,
       "owl_lfoRate": 0.08,
-      "owl_lfoDepth": 0.23
+      "owl_lfoDepth": 0.23,
+      "owl_velocity": 0.543
     }
   },
   "schema_version": 1,

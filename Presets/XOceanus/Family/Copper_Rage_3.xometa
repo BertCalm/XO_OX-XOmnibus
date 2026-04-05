@@ -43,13 +43,15 @@
       "bob_macroCharacter": 0.531,
       "bob_macroCoupling": 0.94,
       "bob_macroMovement": 0.328,
-      "bob_macroSpace": 0.683
+      "bob_macroSpace": 0.683,
+      "bob_velFilter": 0.642
     },
     "Orphica": {
       "orph_macroCharacter": 0.482,
       "orph_macroCoupling": 0.928,
       "orph_macroMovement": 0.364,
-      "orph_macroSpace": 0.687
+      "orph_macroSpace": 0.687,
+      "orph_velocitySensitivity": 0.85
     }
   },
   "schema_version": 1,

@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.492,
       "bob_macroCoupling": 0.279,
       "bob_macroMovement": 0.383,
-      "bob_macroSpace": 0.097
+      "bob_macroSpace": 0.097,
+      "bob_velFilter": 0.418
     },
     "Organon": {
       "organon_macroCharacter": 0.465,

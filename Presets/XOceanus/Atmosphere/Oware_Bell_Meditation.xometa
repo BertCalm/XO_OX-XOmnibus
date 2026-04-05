@@ -24,10 +24,10 @@
     "SPACE"
   ],
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
   },
   "coupling": {
     "pairs": []
@@ -65,7 +65,8 @@
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 1.0,
       "owr_lfo2Depth": 0.0,
-      "owr_lfo2Shape": 0
+      "owr_lfo2Shape": 0,
+      "owr_malletVelocity": 0.474
     }
   },
   "tempo": null

@@ -50,7 +50,8 @@
       "poss_macroPlayDead": 0.654,
       "poss_filterEnvAmount": 0.401,
       "poss_lfo1Rate": 0.153,
-      "poss_lfo1Depth": 0.37
+      "poss_lfo1Depth": 0.37,
+      "poss_ampVelSens": 0.531
     },
     "Overlap": {
       "olap_couplingIn": 0.743,

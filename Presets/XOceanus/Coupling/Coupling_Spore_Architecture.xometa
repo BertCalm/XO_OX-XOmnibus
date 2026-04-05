@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM cellular emergence drives OPAL granular position \u2014 living automaton coordinates seeding grain locations, biology as granular architecture.",
+  "description": "ORGANISM cellular emergence drives OPAL granular position — living automaton coordinates seeding grain locations, biology as granular architecture.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "org_macroCharacter": 0.52,
       "org_macroMovement": 0.56,
       "org_macroCoupling": 0.62,
-      "org_macroSpace": 0.5
+      "org_macroSpace": 0.5,
+      "org_velCutoff": 0.45
     },
     "Opal": {
       "opal_grainSize": 0.55,
@@ -52,7 +53,8 @@
       "opal_macroCharacter": 0.5,
       "opal_macroMovement": 0.54,
       "opal_macroCoupling": 0.6,
-      "opal_macroSpace": 0.5
+      "opal_macroSpace": 0.5,
+      "opal_ampVelSens": 0.36
     }
   },
   "coupling": {

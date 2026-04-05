@@ -50,7 +50,8 @@
       "owl_macroCharacter": 1.0,
       "owl_macroCoupling": 0.67,
       "owl_macroMovement": 0.77,
-      "owl_macroSpace": 0.17
+      "owl_macroSpace": 0.17,
+      "owl_velocity": 0.627
     }
   },
   "schema_version": 1,
@@ -64,5 +65,11 @@
     "atmosphere"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.489,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.558,
+    "SPACE": 0.07
+  }
 }

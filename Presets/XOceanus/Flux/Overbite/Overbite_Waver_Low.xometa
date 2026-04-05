@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Vibrato sub-bass with slow pitch waver and gentle chorus \u2014 the opossum tail wag in sound.",
+  "description": "Vibrato sub-bass with slow pitch waver and gentle chorus — the opossum tail wag in sound.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.3,
@@ -55,7 +55,8 @@
       "poss_modSlot1Dst": 2,
       "poss_modSlot1Src": 1,
       "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.65
+      "poss_subLevel": 0.65,
+      "poss_ampVelSens": 0.56
     }
   },
   "schema_version": 1,

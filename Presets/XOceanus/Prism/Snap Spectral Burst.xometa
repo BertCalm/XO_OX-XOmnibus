@@ -46,5 +46,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "RESONANCE": 0.5,
+    "FILTER": 0.45,
+    "DECAY": 0.45,
+    "TONE": 0.45
+  }
 }

@@ -60,5 +60,11 @@
     "garden"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

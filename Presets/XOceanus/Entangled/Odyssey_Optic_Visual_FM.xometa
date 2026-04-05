@@ -79,5 +79,11 @@
     "optic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.581,
+    "MOVEMENT": 0.717,
+    "COUPLING": 0.63,
+    "SPACE": 0.624
+  }
 }

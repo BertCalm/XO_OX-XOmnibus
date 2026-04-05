@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Compressed, pressurized bass that feels like being underwater \u2014 glued, heavy, inescapable.",
+  "description": "Compressed, pressurized bass that feels like being underwater — glued, heavy, inescapable.",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.25,
@@ -53,7 +53,8 @@
       "poss_oscAShape": 0.2,
       "poss_oscAWaveform": 2,
       "poss_subLevel": 0.8,
-      "poss_subOctave": -1
+      "poss_subOctave": -1,
+      "poss_ampVelSens": 0.39
     }
   },
   "schema_version": 1,

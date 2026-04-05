@@ -68,5 +68,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "starterFor": null
+  "starterFor": null,
+  "macros": {
+    "VISCOSITY": 0.45,
+    "DIFFUSION": 0.45,
+    "INTERFERENCE": 0.45,
+    "WIDTH": 0.8
+  }
 }

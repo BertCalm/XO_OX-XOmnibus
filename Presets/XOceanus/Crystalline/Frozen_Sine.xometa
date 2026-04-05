@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Sine",
   "mood": "Crystalline",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prepared piano tine reduced to its fundamental — preparation so light it barely exists. A frozen sine wave.",
-  "tags": ["crystalline", "prepared", "sine", "sparse", "tine"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "prepared",
+    "sine",
+    "sparse",
+    "tine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +58,14 @@
       "opal2_macroSpace": 0.55
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.39,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

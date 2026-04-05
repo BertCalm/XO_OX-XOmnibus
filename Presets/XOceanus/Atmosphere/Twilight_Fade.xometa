@@ -40,7 +40,8 @@
       "ombre_lfoRate": 0.82,
       "ombre_movement": 0.95,
       "ombre_reverbMix": 0.3,
-      "ombre_space": 0.3
+      "ombre_space": 0.3,
+      "ombre_velCutoffScale": 0.262
     }
   },
   "schema_version": 1,
@@ -50,5 +51,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.11,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.2,
+    "SPACE": 0.81
+  }
 }

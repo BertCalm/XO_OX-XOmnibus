@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Laminar Flow",
+  "mood": "Aether",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reynolds number below 2300 \u2014 fluid moving in parallel layers with no lateral mixing. The most orderly form of flow; each fluid particle follows a predictable streamline forever.",
+  "tags": [
+    "aether",
+    "outflow",
+    "laminar",
+    "flow",
+    "orderly",
+    "streamline",
+    "Reynolds"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.42,
+      "out_macroMovement": 0.42,
+      "out_macroCoupling": 0.12,
+      "out_macroSpace": 0.72,
+      "out_currentSpeed": 0.38,
+      "out_stormDepth": 0.22,
+      "out_filterEnvAmt": 0.28,
+      "out_lfo1Rate": 0.08,
+      "out_lfo1Depth": 0.15,
+      "out_filterCutoff": 0.48,
+      "out_filterRes": 0.22,
+      "out_attackTime": 0.2,
+      "out_decayTime": 1.2,
+      "out_sustain": 0.82,
+      "out_releaseTime": 3.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

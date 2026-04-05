@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.757,
       "ombre_spaceMix": 0.515,
       "ombre_toneA": 2778.2,
-      "ombre_toneB": 2840.0
+      "ombre_toneB": 2840.0,
+      "ombre_velCutoffScale": 0.411
     },
     "Onset": {
       "perc_filterCutoff": 4870.6,
@@ -82,5 +83,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.563,
+    "MUTATE": 0.271
+  }
 }

@@ -67,7 +67,8 @@
       "poss_macroPlayDead": 0.484,
       "poss_filterEnvAmount": 0.538,
       "poss_lfo1Rate": 0.275,
-      "poss_lfo1Depth": 0.298
+      "poss_lfo1Depth": 0.298,
+      "poss_ampVelSens": 0.524
     }
   },
   "schema_version": 1,

@@ -72,7 +72,8 @@
       "opal_speed": -0.5,
       "opal_filterEnvAmt": 0.576,
       "opal_lfo1Rate": 0.287,
-      "opal_lfo1Depth": 0.305
+      "opal_lfo1Depth": 0.305,
+      "opal_ampVelSens": 0.472
     }
   },
   "schema_version": 1,

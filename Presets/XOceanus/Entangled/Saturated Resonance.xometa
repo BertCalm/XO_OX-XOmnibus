@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.48,
       "owl_resonantPitch": 0.325,
       "owl_shimmer": 0.183,
-      "owl_subLevel": 0.488
+      "owl_subLevel": 0.488,
+      "owl_velocity": 0.687
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "obese"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.574,
+    "SPACE": 0.469
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OWARE tuned percussion mode locks into OSTINATO circular topology \u2014 Akan goldweight scales informing world rhythm circular coupling.",
+  "description": "OWARE tuned percussion mode locks into OSTINATO circular topology — Akan goldweight scales informing world rhythm circular coupling.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "owr_macroCharacter": 0.52,
       "owr_macroMovement": 0.54,
       "owr_macroCoupling": 0.62,
-      "owr_macroSpace": 0.5
+      "owr_macroSpace": 0.5,
+      "owr_malletVelocity": 0.682
     },
     "Ostinato": {
       "osti_macroGather": 0.58,

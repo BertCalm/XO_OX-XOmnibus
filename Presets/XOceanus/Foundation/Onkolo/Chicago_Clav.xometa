@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chicago blues-influenced clavinet \u2014 the D6 in the hands of Buddy Guy's keyboard player. Gritty warmth, controlled wah.",
+  "description": "Chicago blues-influenced clavinet — the D6 in the hands of Buddy Guy's keyboard player. Gritty warmth, controlled wah.",
   "tags": [
     "clavinet",
     "chicago",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

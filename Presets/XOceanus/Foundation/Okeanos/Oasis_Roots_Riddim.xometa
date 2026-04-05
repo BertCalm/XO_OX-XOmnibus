@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Reggae roots Rhodes for the skank pattern. Short decay, very fast release, no tremolo. Staccato articulation is built into the envelope \u2014 the rhythm is the player's job.",
+  "description": "Reggae roots Rhodes for the skank pattern. Short decay, very fast release, no tremolo. Staccato articulation is built into the envelope — the rhythm is the player's job.",
   "tags": [
     "rhodes",
     "reggae",
@@ -62,5 +62,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.4
+  }
 }

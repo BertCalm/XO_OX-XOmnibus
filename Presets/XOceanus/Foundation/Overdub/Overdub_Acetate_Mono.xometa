@@ -86,5 +86,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TAPE DRIVE": 0.45,
+    "DRIFT DEPTH": 0.45,
+    "FILTER": 0.45,
+    "RELEASE": 0.45
+  }
 }

@@ -89,5 +89,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH KEYS": 0.45,
+    "DUB BASS": 0.45,
+    "BALANCE": 0.45,
+    "FILTER": 0.45
+  }
 }

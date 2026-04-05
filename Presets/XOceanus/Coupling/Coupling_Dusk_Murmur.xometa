@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCELOT biome crossfade barely shades OMBRE memory blend \u2014 savanna becoming shadow, tawny light dissolving into forgetting.",
+  "description": "OCELOT biome crossfade barely shades OMBRE memory blend — savanna becoming shadow, tawny light dissolving into forgetting.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "ocelot_macroCharacter": 0.44,
       "ocelot_macroMovement": 0.42,
       "ocelot_macroCoupling": 0.5,
-      "ocelot_macroSpace": 0.5
+      "ocelot_macroSpace": 0.5,
+      "ocelot_floorVelocity": 0.634
     },
     "Ombre": {
       "ombre_blend": 0.52,
@@ -52,7 +53,8 @@
       "ombre_macroCharacter": 0.42,
       "ombre_macroMovement": 0.4,
       "ombre_macroCoupling": 0.48,
-      "ombre_macroSpace": 0.54
+      "ombre_macroSpace": 0.54,
+      "ombre_velCutoffScale": 0.338
     }
   },
   "coupling": {

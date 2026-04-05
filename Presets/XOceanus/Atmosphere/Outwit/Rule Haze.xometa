@@ -135,5 +135,11 @@
     "smooth"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "SOLVE": 0.43,
+    "SYNAPSE": 0.564,
+    "CHROMATOPHORE": 0.669,
+    "DEN": 0.331
+  }
 }

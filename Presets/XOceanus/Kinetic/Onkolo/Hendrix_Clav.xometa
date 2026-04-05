@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Band of Gypsys clavinet energy \u2014 aggressive wah, raw tonal character, dirty midrange bite. Psychedelic funk.",
+  "description": "Band of Gypsys clavinet energy — aggressive wah, raw tonal character, dirty midrange bite. Psychedelic funk.",
   "tags": [
     "clavinet",
     "hendrix",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.3
+  }
 }

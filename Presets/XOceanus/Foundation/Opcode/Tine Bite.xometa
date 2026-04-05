@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The hard attack bite of tines \u2014 high index at note-on drops rapidly. You hear the hammer before you hear the note.",
+  "description": "The hard attack bite of tines — high index at note-on drops rapidly. You hear the hammer before you hear the note.",
   "tags": [
     "fm",
     "ep",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Chromatic Hunt",
+  "name": "Chromatic Hunt (Orca + Octopus)",
   "mood": "Coupling",
   "engines": [
     "Orca",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA hunt macro drives OCTOPUS chromatophore modulation \u2014 apex predator presence triggering adaptive camouflage, hunter activating hider.",
+  "description": "ORCA hunt macro drives OCTOPUS chromatophore modulation — apex predator presence triggering adaptive camouflage, hunter activating hider.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.54,
       "orca_macroMovement": 0.62,
       "orca_macroCoupling": 0.65,
-      "orca_macroSpace": 0.46
+      "orca_macroSpace": 0.46,
+      "orca_velCutoffAmt": 0.495
     },
     "Octopus": {
       "octo_armDepth": 0.58,

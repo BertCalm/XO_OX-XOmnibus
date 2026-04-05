@@ -41,7 +41,8 @@
       "ocelot_movement": 0.38,
       "ocelot_prowl": 0.88,
       "ocelot_reverbMix": 0.98,
-      "ocelot_space": 0.92
+      "ocelot_space": 0.92,
+      "ocelot_floorVelocity": 0.717
     }
   },
   "schema_version": 1,
@@ -51,5 +52,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.895,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.2,
+    "SPACE": 0.17
+  }
 }

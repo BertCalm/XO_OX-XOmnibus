@@ -78,5 +78,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "WEAVE": 0.533,
+    "TENSION": 0.422,
+    "KNOT": 0.454,
+    "SPACE": 0.55
+  }
 }

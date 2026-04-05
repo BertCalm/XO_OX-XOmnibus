@@ -2,30 +2,44 @@
   "schema_version": 1,
   "name": "Granular Aurora",
   "mood": "Luminous",
-  "engines": ["Opal", "OpenSky"],
+  "engines": [
+    "Opal",
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular aurora: Opal scatters grain clouds while OpenSky's shimmer engine electrifies them. Individual particles glow, the mass pulses like aurora curtains.",
-  "tags": ["luminous", "coupled", "granular", "aurora", "shimmer"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "coupled",
+    "granular",
+    "aurora",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Light",
   "tempo": null,
   "dna": {
     "brightness": 0.85,
     "warmth": 0.46,
     "movement": 0.52,
-    "density": 0.50,
+    "density": 0.5,
     "space": 0.72,
     "aggression": 0.04
   },
   "parameters": {
     "Opal": {
-      "opal_macroCharacter": 0.50,
+      "opal_macroCharacter": 0.5,
       "opal_macroMovement": 0.52,
       "opal_macroCoupling": 0.28,
-      "opal_macroSpace": 0.70,
+      "opal_macroSpace": 0.7,
       "opal_filterEnvAmt": 0.55,
-      "opal_grainSize": 0.30,
+      "opal_grainSize": 0.3,
       "opal_grainDensity": 0.72,
       "opal_grainSpread": 0.78,
       "opal_lfo1Rate": 0.07,
@@ -35,7 +49,8 @@
       "opal_sustain": 0.72,
       "opal_release": 4.5,
       "opal_filterCutoff": 8200,
-      "opal_output": 0
+      "opal_output": 0,
+      "opal_ampVelSens": 0.328
     },
     "OpenSky": {
       "sky_macroCharacter": 0.55,
@@ -45,8 +60,8 @@
       "sky_macroRise": 0.58,
       "sky_filterEnvAmt": 0.52,
       "sky_lfo1Rate": 0.04,
-      "sky_lfo1Depth": 0.20,
-      "sky_shimmerDepth": 0.70,
+      "sky_lfo1Depth": 0.2,
+      "sky_shimmerDepth": 0.7,
       "sky_unisonVoices": 5,
       "sky_unisonDetune": 0.16,
       "sky_attack": 0.4,
@@ -54,7 +69,8 @@
       "sky_sustain": 0.75,
       "sky_release": 5.0,
       "sky_filterCutoff": 8800,
-      "sky_output": 0
+      "sky_output": 0,
+      "sky_velSensitivity": 0.574
     }
   },
   "coupling": {

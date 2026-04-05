@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Static sparse evolving texture from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.169,
+    "COUPLING": 0.2,
+    "SPACE": 0.525
+  }
 }

@@ -41,7 +41,8 @@
       "ofr_digComplexity": 0.65,
       "ofr_transientSnap": 0.4,
       "ofr_dustVinyl": 0.2,
-      "ofr_masterWidth": 0.82
+      "ofr_masterWidth": 0.82,
+      "ofr_velToSnap": 0.444
     }
   },
   "schema_version": 1,

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "2D Automaton",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "2D cellular automaton mode at medium evolution — the grid extends into a second spatial dimension, voices multiplying as spatial patterns project into pitch space.",
+  "tags": [
+    "atmosphere",
+    "2D",
+    "automaton",
+    "spatial",
+    "grid",
+    "medium"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.52,
+    "density": 0.62,
+    "space": 0.62,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 1,
+      "obnt_rule": 45,
+      "obnt_ruleMorph": 0.28,
+      "obnt_evolutionRate": 12.0,
+      "obnt_gridDensity": 0.52,
+      "obnt_chaos": 0.15,
+      "obnt_projection": 0.58,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 8500.0,
+      "obnt_filterResonance": 0.35,
+      "obnt_attack": 0.05,
+      "obnt_decay": 0.5,
+      "obnt_sustain": 0.65,
+      "obnt_release": 1.5,
+      "obnt_velSens": 0.82,
+      "obnt_lfo1Rate": 2.5,
+      "obnt_lfo1Depth": 0.22,
+      "obnt_modSrc1": 2,
+      "obnt_modDst1": 1,
+      "obnt_modAmt1": 0.45,
+      "obnt_modSrc2": 1,
+      "obnt_modDst2": 4,
+      "obnt_modAmt2": 0.35,
+      "obnt_modSrc3": 0,
+      "obnt_modDst3": 0,
+      "obnt_modAmt3": 0.28,
+      "obnt_modSrc4": 3,
+      "obnt_modDst4": 3,
+      "obnt_modAmt4": -0.18,
+      "obnt_macroChaos": 0.42,
+      "obnt_macroEvolution": 0.52,
+      "obnt_macroSpace": 0.62,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.52,
+    "SPACE": 0.62,
+    "COUPLING": 0.2
+  }
+}

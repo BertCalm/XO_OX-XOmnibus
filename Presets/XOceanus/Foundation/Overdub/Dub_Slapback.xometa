@@ -75,5 +75,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TONE": 0.45,
+    "SLAPBACK LEVEL": 0.45,
+    "DRIVE": 0.4,
+    "REVERB": 0.45
+  }
 }

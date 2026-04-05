@@ -24,7 +24,7 @@
     "MUTATE"
   ],
   "mood": "Atmosphere",
-  "name": "Spore Cloud",
+  "name": "Spore Cloud (Organism) (Atmosphere)",
   "parameters": {
     "Organism": {
       "org_rule": 22.0,
@@ -66,5 +66,11 @@
   ],
   "tempo": null,
   "tier": "awakening",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "RULE": 0.415,
+    "SEED": 0.278,
+    "COUPLING": 0.2,
+    "MUTATE": 0.271
+  }
 }

@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Gentle static atmospheric layer from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.449,
+    "MOVEMENT": 0.079,
+    "COUPLING": 0.2,
+    "SPACE": 0.685
+  }
 }

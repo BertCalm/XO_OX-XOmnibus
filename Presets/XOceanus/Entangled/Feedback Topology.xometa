@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.602,
       "owl_resonantPitch": 0.337,
       "owl_shimmer": 0.115,
-      "owl_subLevel": 0.434
+      "owl_subLevel": 0.434,
+      "owl_velocity": 0.703
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "ouroboros"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.494,
+    "MOVEMENT": 0.609,
+    "COUPLING": 0.491,
+    "SPACE": 0.467
+  }
 }

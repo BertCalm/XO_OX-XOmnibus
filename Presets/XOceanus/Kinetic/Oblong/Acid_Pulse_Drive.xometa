@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Acid Pulse Drive",
   "mood": "Kinetic",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Resonant BP filter near self-oscillation with fast motion envelope driving a repetitive acid pulse. The Velvet Saw oscillator feeds harmonics into the filter which outputs them as rhythmic bursts. LFO1 adds tremolo urgency.",
-  "tags": ["kinetic", "acid", "pulse", "driving", "rhythmic", "resonant", "movement"],
-  "macroLabels": ["ACID SWEEP", "RESONANCE", "DRIVE", "MOTION"],
+  "tags": [
+    "kinetic",
+    "acid",
+    "pulse",
+    "driving",
+    "rhythmic",
+    "resonant",
+    "movement"
+  ],
+  "macroLabels": [
+    "ACID SWEEP",
+    "RESONANCE",
+    "DRIVE",
+    "MOTION"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,7 +75,8 @@
       "bob_level": 0.75,
       "bob_voiceMode": 1,
       "bob_glide": 0.04,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.746
     }
   },
   "macros": {
@@ -69,5 +85,7 @@
     "DRIVE": 0.75,
     "MOTION": 0.82
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

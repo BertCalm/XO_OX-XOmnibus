@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Analog Hostility",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sat drive pushed through resonant filter with high mojo — analog axis fully committed, digital side adding grit underneath.",
-  "tags": ["distortion", "flux", "analog", "aggressive", "sat"],
-  "macroLabels": ["BELLY", "MOJO", "GRIT", "CRUSH"],
+  "tags": [
+    "distortion",
+    "flux",
+    "analog",
+    "aggressive",
+    "sat"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MOJO",
+    "GRIT",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -47,6 +60,14 @@
       "fat_polyphony": 4
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MOJO": 0.45,
+    "GRIT": 0.82,
+    "CRUSH": 0.82
+  }
 }

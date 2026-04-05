@@ -76,5 +76,11 @@
     "generative"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "PROPHECY": 0.45,
+    "EVOLUTION": 0.62,
+    "GRAVITY": 0.435,
+    "DRIFT": 0.62
+  }
 }

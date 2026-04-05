@@ -49,7 +49,8 @@
       "orca_lfoRate": 0.08,
       "orca_lfoDepth": 0.28,
       "orca_outputLevel": 0.7,
-      "orca_reverbMix": 0.32
+      "orca_reverbMix": 0.32,
+      "orca_velCutoffAmt": 0.513
     },
     "OceanDeep": {
       "deep_macroPressure": 0.68,
@@ -65,7 +66,8 @@
       "deep_lfoRate": 0.05,
       "deep_lfoDepth": 0.2,
       "deep_outputLevel": 0.7,
-      "deep_reverbMix": 0.45
+      "deep_reverbMix": 0.45,
+      "deep_velCutoffAmt": 0.513
     }
   },
   "coupling": {
@@ -104,5 +106,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.365,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.378,
+    "SPACE": 0.62
+  }
 }

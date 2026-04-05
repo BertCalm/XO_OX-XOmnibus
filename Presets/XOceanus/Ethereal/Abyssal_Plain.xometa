@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Plain",
+  "mood": "Ethereal",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The abyssal plain 4,000 meters below sea level — flattest terrain on Earth, sediment-silenced, where pressure exceeds 400 atmospheres and no light has penetrated in geological time.",
+  "tags": [
+    "ethereal",
+    "abyssal",
+    "plain",
+    "depth",
+    "silence",
+    "pressure",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.35,
+    "movement": 0.08,
+    "density": 0.55,
+    "space": 0.98,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.08,
+      "orca_echolocation": 0.15,
+      "orca_filterCutoff": 2500.0,
+      "orca_filterRes": 0.08,
+      "orca_attack": 5.0,
+      "orca_decay": 8.0,
+      "orca_sustain": 0.95,
+      "orca_release": 15.0,
+      "orca_lfo1Rate": 0.01,
+      "orca_lfo1Depth": 0.05,
+      "orca_macroCharacter": 0.15,
+      "orca_macroMovement": 0.08,
+      "orca_macroCoupling": 0.05,
+      "orca_macroSpace": 0.98,
+      "orca_velCutoffAmt": 0.302
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.05,
+    "SPACE": 0.98
+  }
+}

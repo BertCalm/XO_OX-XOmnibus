@@ -96,5 +96,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB GROOVE": 0.45,
+    "MORPH SCAN": 0.45,
+    "COUPLING": 0.48,
+    "FILTER": 0.45
+  }
 }

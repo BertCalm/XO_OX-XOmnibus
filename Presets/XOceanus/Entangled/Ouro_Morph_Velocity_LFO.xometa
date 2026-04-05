@@ -77,5 +77,11 @@
     "wavetable"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "ATTRACTOR": 0.45,
+    "MORPH SWEEP": 0.45,
+    "VELOCITY DEPTH": 0.45,
+    "SPACE": 0.35
+  }
 }

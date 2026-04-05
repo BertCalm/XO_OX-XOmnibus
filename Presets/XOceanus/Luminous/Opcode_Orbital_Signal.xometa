@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Opcode Orbital Signal",
   "mood": "Luminous",
-  "engines": ["Opcode", "Orbital"],
+  "engines": [
+    "Opcode",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Machine code and additive synthesis share one luminous stream — Opcode's digital clarity rings with Orbital's harmonic crown, signal and shimmer as one architecture.",
-  "tags": ["luminous", "coupled", "digital", "additive", "signal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "coupled",
+    "digital",
+    "additive",
+    "signal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Light",
   "tempo": null,
   "dna": {
@@ -33,11 +47,12 @@
       "opco_sustain": 0.78,
       "opco_release": 1.8,
       "opco_filterCutoff": 10500,
-      "opco_output": 0
+      "opco_output": 0,
+      "opco_velToIndex": 0.423
     },
     "Orbital": {
       "orb_macroCharacter": 0.55,
-      "orb_macroMovement": 0.40,
+      "orb_macroMovement": 0.4,
       "orb_macroCoupling": 0.24,
       "orb_macroSpace": 0.52,
       "orb_filterEnvAmt": 0.52,
@@ -58,7 +73,7 @@
         "source": "Opcode",
         "target": "Orbital",
         "type": "FilterToFilter",
-        "amount": 0.20
+        "amount": 0.2
       }
     ]
   },

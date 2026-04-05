@@ -67,5 +67,11 @@
     "rhythmic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "SNAP BITE": 0.45,
+    "ORBIT CHAOS": 0.45,
+    "IMPACT": 0.7,
+    "SPACE": 0.3
+  }
 }

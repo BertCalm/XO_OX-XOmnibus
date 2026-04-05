@@ -43,7 +43,8 @@
       "over_lfo1Rate": 0.025,
       "over_lfo1Depth": 0.13,
       "over_attack": 3.0,
-      "over_release": 9.5
+      "over_release": 9.5,
+      "over_velBright": 0.274
     },
     "Overwash": {
       "wash_macroCharacter": 0.28,

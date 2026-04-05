@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "name": "Temporal Drift (Odyssey)",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A slowly mutating supersaw with deep Voyager Drift — at JOURNEY 0.45 it already wanders noticeably, notes bending against themselves in slow microtonal flux. The Climax at 0.75 doesn't add shimmer so much as it accelerates the drift until notes lose identity entirely and become pure texture. Time itself becomes the instrument.",
+  "tags": [
+    "climax",
+    "demo",
+    "supersaw",
+    "drift",
+    "mutation",
+    "journey",
+    "temporal",
+    "flux",
+    "texture",
+    "time"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.45,
+  "climaxThreshold": 0.75,
+  "bloomTime": 2.8,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.6,
+      "curve": "linear",
+      "note": "Time stretches under sustained pressure — hold the key, push gradually, let the drift accelerate naturally"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_shape": 1,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.65,
+      "drift_oscA_detune": 0.5,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 2,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": -7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.45,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.2,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.2,
+      "drift_filterCutoff": 4200.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.2,
+      "drift_shimmerTone": 0.5,
+      "drift_attack": 2.0,
+      "drift_decay": 5.0,
+      "drift_sustain": 0.7,
+      "drift_release": 4.5,
+      "drift_lfoRate": 0.06,
+      "drift_lfoDepth": 0.07,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.55,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.7,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "macros": {
+    "JOURNEY": 0.45,
+    "BREATHE": 0.45,
+    "BLOOM": 0.393,
+    "FRACTURE": 0.244
+  }
+}

@@ -77,5 +77,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT DEPTH": 0.45,
+    "SUB LEVEL": 0.45,
+    "FILTER": 0.45,
+    "SHIMMER": 0.5
+  }
 }

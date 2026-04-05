@@ -2,18 +2,32 @@
   "schema_version": 1,
   "name": "Trench Reverb",
   "mood": "Deep",
-  "engines": ["Oxbow", "OceanDeep"],
+  "engines": [
+    "Oxbow",
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oxbow's chiasmus reverb shaped by OceanDeep's pressure envelope — the tail of each sound filtered through kilometers of dark water, each echo arriving colder.",
-  "tags": ["deep", "coupled", "reverb", "trench", "pressure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "coupled",
+    "reverb",
+    "trench",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
     "brightness": 0.08,
     "warmth": 0.68,
-    "movement": 0.20,
+    "movement": 0.2,
     "density": 0.58,
     "space": 0.88,
     "aggression": 0.05
@@ -21,23 +35,24 @@
   "parameters": {
     "Oxbow": {
       "oxb_macroCharacter": 0.38,
-      "oxb_macroMovement": 0.20,
+      "oxb_macroMovement": 0.2,
       "oxb_macroCoupling": 0.38,
       "oxb_macroSpace": 0.85,
       "oxb_filterEnvAmt": 0.35,
       "oxb_lfo1Rate": 0.04,
-      "oxb_lfo1Depth": 0.20,
+      "oxb_lfo1Depth": 0.2,
       "oxb_entangle": 0.68
     },
     "OceanDeep": {
       "deep_macroCharacter": 0.42,
-      "deep_macroMovement": 0.20,
+      "deep_macroMovement": 0.2,
       "deep_macroCoupling": 0.35,
       "deep_macroSpace": 0.82,
-      "deep_filterEnvAmt": 0.40,
+      "deep_filterEnvAmt": 0.4,
       "deep_lfo1Rate": 0.03,
       "deep_lfo1Depth": 0.16,
-      "deep_macroPressure": 0.78
+      "deep_macroPressure": 0.78,
+      "deep_velCutoffAmt": 0.413
     }
   },
   "coupling": {
@@ -52,8 +67,8 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.40,
-    "MOVEMENT": 0.20,
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.2,
     "COUPLING": 0.38,
     "SPACE": 0.85
   }

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Granular Ascent",
   "mood": "Ethereal",
-  "engines": ["Opal", "OpenSky"],
+  "engines": [
+    "Opal",
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Grains rising until the sky takes them. Opal's particles drift upward through OpenSky's supersaw shimmer, each one catching light before disappearing.",
-  "tags": ["ethereal", "whisper", "coupling", "granular", "shimmer", "ascent", "particle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "whisper",
+    "coupling",
+    "granular",
+    "shimmer",
+    "ascent",
+    "particle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
@@ -15,13 +31,13 @@
     "warmth": 0.52,
     "movement": 0.42,
     "density": 0.32,
-    "space": 0.90,
+    "space": 0.9,
     "aggression": 0.03
   },
   "parameters": {
     "Opal": {
       "opal_macroCharacter": 0.42,
-      "opal_macroMovement": 0.40,
+      "opal_macroMovement": 0.4,
       "opal_macroCoupling": 0.14,
       "opal_macroSpace": 0.86,
       "opal_grainSize": 0.22,
@@ -29,19 +45,21 @@
       "opal_lfo1Rate": 0.06,
       "opal_lfo1Depth": 0.22,
       "opal_attack": 0.8,
-      "opal_release": 4.5
+      "opal_release": 4.5,
+      "opal_ampVelSens": 0.245
     },
     "OpenSky": {
       "sky_macroCharacter": 0.44,
       "sky_macroMovement": 0.42,
       "sky_macroCoupling": 0.13,
-      "sky_macroSpace": 0.90,
-      "sky_macroRise": 0.40,
+      "sky_macroSpace": 0.9,
+      "sky_macroRise": 0.4,
       "sky_filterEnvAmt": 0.32,
       "sky_lfo1Rate": 0.05,
-      "sky_lfo1Depth": 0.20,
+      "sky_lfo1Depth": 0.2,
       "sky_attack": 1.5,
-      "sky_release": 6.5
+      "sky_release": 6.5,
+      "sky_velSensitivity": 0.428
     }
   },
   "coupling": {

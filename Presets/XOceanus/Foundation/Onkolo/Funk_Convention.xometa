@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The conventional funk clavinet preset \u2014 moderate-high wah, bridge pickup lean, the building block of all funk keyboard sounds.",
+  "description": "The conventional funk clavinet preset — moderate-high wah, bridge pickup lean, the building block of all funk keyboard sounds.",
   "tags": [
     "clavinet",
     "funk",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

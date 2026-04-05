@@ -59,7 +59,7 @@ Usage:
     python3 oxport.py batch --config batch.json --parallel 4 --skip-failed
     python3 oxport.py batch --config batch.json --dry-run
 
-    # Batch with cross-engine loudness normalization (RMS-based)
+    # Batch with cross-engine loudness normalization (LUFS via ITU-R BS.1770-4)
     python3 oxport.py batch --config batch.json --normalize
     python3 oxport.py batch --config batch.json --normalize --normalize-target -16.0
 """
@@ -77,6 +77,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import traceback
 import uuid
 from datetime import datetime
 from pathlib import Path
@@ -440,8 +441,14 @@ def _stage_categorize(ctx: PipelineContext) -> None:
                 print(f'[WARN] DNA cache failed: {e}', file=sys.stderr)
         if n_dna:
             print(f"    DNA cache: {n_dna} sample(s) analyzed (velocity sculpting enabled)")
-    except (ImportError, Exception):
-        pass  # module not available or analysis failed — skip silently
+    except ImportError as _imp_err:
+        # #821: Warn when the optional module is missing so the user knows
+        # Legend Feature #1 (DNA velocity sculpting) is unavailable and why.
+        print(f"    [WARN] xpn_auto_dna not available — DNA velocity sculpting disabled "
+              f"({_imp_err}). Install with: pip install xpn_auto_dna or check Tools/ path.",
+              file=sys.stderr)
+    except Exception as _dna_err:
+        print(f"    [WARN] DNA pre-flight failed: {_dna_err}", file=sys.stderr)
 
     from xpn_sample_categorizer import categorize_folder
 
@@ -1493,27 +1500,62 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
     return _apply_gain_db_stdlib(wav_path, gain_db)
 
 
+def _compute_lufs_for_wav(wav_path: Path) -> float:
+    """Compute integrated LUFS for a WAV file using xpn_normalize.compute_lufs.
+
+    #817: Batch normalization now uses the same ITU-R BS.1770-4 LUFS
+    measurement as per-sample normalization (xpn_normalize.normalize_file_lufs).
+    Falls back to RMS if xpn_normalize is unavailable, and warns so the user
+    knows which measurement is in use.
+
+    Returns the LUFS value, or float("-inf") for silence/errors.
+    """
+    try:
+        from xpn_normalize import read_wav as _read_wav_xpn, compute_lufs
+        frames, sample_rate, n_channels, _bit_depth, _n_frames = _read_wav_xpn(str(wav_path))
+        lufs = compute_lufs(frames, sample_rate, n_channels)
+        return lufs
+    except ImportError:
+        # Fallback: use RMS — callers log a one-time warning.
+        return _compute_rms_db(wav_path)
+    except Exception:
+        return float("-inf")
+
+
 def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                              target_rms_db: float = -14.0,
                              dry_run: bool = False,
                              pack_name: Optional[str] = None) -> dict[str, float]:
     """Normalize loudness across engine output directories.
 
-    Computes RMS dB per engine, then applies per-engine gain to reach the
-    target. Returns a dict of engine_name -> gain_db applied.
+    #817: Computes integrated LUFS per engine (ITU-R BS.1770-4, via
+    xpn_normalize.compute_lufs — the same implementation used by per-sample
+    normalization) then applies per-engine gain to reach the target.
+    Falls back to RMS if xpn_normalize is unavailable, with a one-time warning.
 
-    If target_rms_db is None, uses the median RMS across engines as the target.
+    Returns a dict of engine_name -> gain_db applied.
 
-    After normalization, each sample's RMS proxy, true peak, and crest factor
+    If target_rms_db is None, uses the median loudness across engines as the
+    target.
+
+    After normalization, each sample's loudness, true peak, and crest factor
     are recorded to the Cross-Pack Loudness Ledger (Legend Feature #6).
-
-    If pyloudnorm is installed, real ITU-R BS.1770 integrated loudness (LUFS)
-    is used instead of the RMS proxy. Install with: pip install pyloudnorm
     """
     if _NUMPY_AVAILABLE:
         print("    [INFO] Normalization: using numpy path (~50-100x faster)")
     else:
         print("    [INFO] Normalization: using stdlib path (pip install numpy for acceleration)")
+
+    # #817: Confirm which measurement method is active.
+    try:
+        from xpn_normalize import compute_lufs as _lufs_check  # noqa: F401
+        _lufs_measurement = True
+        print("    [INFO] Loudness measurement: LUFS (ITU-R BS.1770-4 via xpn_normalize)")
+    except ImportError:
+        _lufs_measurement = False
+        print("    [WARN] xpn_normalize not available — falling back to RMS approximation. "
+              "This produces results inconsistent with per-sample LUFS normalization. "
+              "Add xpn_normalize.py to Tools/ to resolve this (#817).")
 
     # Lazy import — ledger is only needed when normalization actually runs.
     try:
@@ -1523,18 +1565,9 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
     except ImportError:
         _ledger_available = False
 
-    # Optional pyloudnorm path for true LUFS measurement.
-    try:
-        import pyloudnorm as _pyln
-        _pyloudnorm_available = True
-    except ImportError:
-        _pyloudnorm_available = False
-        print("[INFO] pyloudnorm not installed — using RMS approximation "
-              "(pip install pyloudnorm for true LUFS)")
-
     _pack_name = pack_name or output_base.name
 
-    engine_rms: dict[str, list[float]] = {}
+    engine_loudness: dict[str, list[float]] = {}
 
     for edir in engine_dirs:
         if not edir.exists():
@@ -1544,22 +1577,23 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
         if not wavs:
             continue
 
-        rms_values = []
+        loudness_values = []
         for wav in wavs:
-            rms = _compute_rms_db(wav)
-            if rms > float("-inf"):
-                rms_values.append(rms)
+            # Use LUFS when xpn_normalize is available, RMS otherwise (#817).
+            val = _compute_lufs_for_wav(wav) if _lufs_measurement else _compute_rms_db(wav)
+            if val > float("-inf"):
+                loudness_values.append(val)
 
-        if rms_values:
-            engine_rms[engine_name] = rms_values
+        if loudness_values:
+            engine_loudness[engine_name] = loudness_values
 
-    if not engine_rms:
+    if not engine_loudness:
         print("    [SKIP] No WAV files found across engine directories")
         return {}
 
-    # Compute per-engine average RMS
+    # Compute per-engine average loudness
     engine_avg: dict[str, float] = {}
-    for name, values in engine_rms.items():
+    for name, values in engine_loudness.items():
         engine_avg[name] = sum(values) / len(values)
 
     # Determine target
@@ -1676,6 +1710,107 @@ STAGE_FUNCS = {
 
 
 # ---------------------------------------------------------------------------
+# Stage failure hint helper (#822)
+# ---------------------------------------------------------------------------
+
+def _stage_failure_hint(stage: str, exc: Exception) -> str:
+    """Return a human-readable fix hint for a stage failure.
+
+    Inspects the exception type and message to suggest the most likely remedy.
+    Returns an empty string when no specific hint is available.
+    """
+    msg = str(exc).lower()
+
+    # Missing dependency
+    if isinstance(exc, ImportError) or "no module named" in msg:
+        mod = getattr(exc, "name", None) or msg.replace("no module named ", "").strip("'")
+        return (f"A required Python module is missing ({mod}). "
+                f"Try: pip install {mod}  or verify it exists in Tools/")
+
+    # File not found
+    if isinstance(exc, FileNotFoundError) or "no such file or directory" in msg:
+        return ("A required file or directory was not found. "
+                "Check that --wavs-dir and --output-dir paths exist and are accessible.")
+
+    # Permission denied
+    if isinstance(exc, PermissionError) or "permission denied" in msg:
+        return ("Permission denied while reading or writing a file. "
+                "Check file ownership and permissions on the output directory.")
+
+    # Stage-specific hints
+    if stage == "render_spec":
+        return ("Render spec generation failed. Verify that .xometa preset files exist "
+                "under Presets/XOceanus/ for the requested engine.")
+    if stage == "export":
+        return ("XPM export failed. Ensure xpn_drum_export / xpn_keygroup_export modules "
+                "are present in Tools/ and that WAV files were produced by the expand stage.")
+    if stage == "package":
+        return ("Packaging failed. Check that xpn_packager.py exists in Tools/ and that "
+                "at least one .xpm program was produced by the export stage.")
+    if stage == "qa":
+        return ("QA check failed. Verify that WAV files exist and are valid PCM audio. "
+                "Re-run with --skip qa to bypass QA if this is a known-good render.")
+
+    return ""
+
+
+# ---------------------------------------------------------------------------
+# Stage input validation (#820)
+# ---------------------------------------------------------------------------
+
+def _validate_stage_inputs(stage: str, ctx: PipelineContext,
+                           skip_stages: set[str]) -> str:
+    """Check that required inputs for *stage* are present before it executes.
+
+    Returns an error message string if validation fails, or an empty string
+    on success.  This is a lightweight check — not a full DAG — that catches
+    the most common failure mode of later stages running on missing upstream
+    output.
+    """
+    # expand/qa/smart_trim need WAVs in the samples or wavs directory.
+    if stage in ("expand", "qa", "smart_trim"):
+        if ctx.wavs_dir and ctx.wavs_dir.exists():
+            wavs = list(ctx.wavs_dir.glob("*.wav")) + list(ctx.wavs_dir.glob("*.WAV"))
+            if not wavs and stage == "expand":
+                return (f"No WAV files found in --wavs-dir {ctx.wavs_dir} — "
+                        f"cannot expand empty kit")
+        # qa and smart_trim also accept samples_dir output from expand
+        return ""
+
+    # export needs render_specs (populated by render_spec stage) or WAVs.
+    if stage == "export":
+        if "render_spec" not in skip_stages and not ctx.render_specs:
+            return ("No render specs were generated — export stage has nothing to process. "
+                    "Check that .xometa preset files exist for this engine.")
+        return ""
+
+    # package needs at least one XPM program.
+    if stage == "package":
+        if not ctx.dry_run:
+            # Check in-memory list first, then fall back to disk scan
+            if not ctx.xpm_paths:
+                existing = list(ctx.programs_dir.glob("*.xpm"))
+                if not existing:
+                    return ("No .xpm programs found — package stage requires at least one "
+                            "program generated by the export stage.")
+            # #818: Abort package if no WAVs were produced (empty render).
+            # Scan samples_dir and wavs_dir.
+            wav_count = 0
+            if ctx.samples_dir.exists():
+                wav_count += len(list(ctx.samples_dir.rglob("*.wav"))) + \
+                             len(list(ctx.samples_dir.rglob("*.WAV")))
+            if ctx.wavs_dir and ctx.wavs_dir.exists():
+                wav_count += len(list(ctx.wavs_dir.rglob("*.wav"))) + \
+                             len(list(ctx.wavs_dir.rglob("*.WAV")))
+            if wav_count == 0 and "expand" not in skip_stages:
+                return ("Render produced zero WAV files — packaging an empty archive "
+                        "would create a broken .xpn. Re-run the render stage first.")
+        return ""
+
+    return ""
+
+
+# ---------------------------------------------------------------------------
 # Pipeline runner
 # ---------------------------------------------------------------------------
 
@@ -1735,6 +1870,17 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
             print(f"  [{stage}] SKIPPED")
             continue
 
+        # #820: Validate that required inputs from upstream stages are present
+        # before executing this stage.  Skips validation in dry-run mode since
+        # no files are actually written.
+        if not ctx.dry_run:
+            _validation_error = _validate_stage_inputs(stage, ctx, skip_stages)
+            if _validation_error:
+                print(f"  [{stage}] {STAGE_DESCRIPTIONS[stage]}")
+                print(f"    [FAIL] Stage input validation failed: {_validation_error}")
+                failed_stage = stage
+                break
+
         print(f"  [{stage}] {STAGE_DESCRIPTIONS[stage]}")
         stage_start = time.monotonic()
 
@@ -1743,7 +1889,13 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
         except Exception as e:
             elapsed = time.monotonic() - stage_start
             ctx.stage_times[stage] = elapsed
+            # #822: Print full traceback and actionable fix hint, not just the bare message.
             print(f"    [FAIL] {e}")
+            print(f"    [TRACEBACK]", file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
+            _hint = _stage_failure_hint(stage, e)
+            if _hint:
+                print(f"    [HINT] {_hint}")
             failed_stage = stage
             break
 
@@ -2475,8 +2627,8 @@ def cmd_doctor(args) -> int:
                     spec_data = json.load(f)
                 output_dir_for_disk = REPO_ROOT / "builds" / spec_data.get("pack_id", "unknown")
                 check_dir = output_dir_for_disk.parent
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] {exc}", file=sys.stderr)
 
     try:
         usage = shutil.disk_usage(check_dir)
@@ -2833,6 +2985,9 @@ def cmd_build(args) -> int:
 
     # Profile loading
     profile_id = spec.get("profile")
+    if profile_id and not re.match(r'^[a-zA-Z0-9_-]+$', profile_id):
+        print(f"[WARN] Invalid profile_id: {profile_id}", file=sys.stderr)
+        profile_id = None
     profile = None
     profile_velocity_curve: str | None = None  # issue #825 — "hot", "gentle", "musical", etc.
     if profile_id:
@@ -3761,6 +3916,28 @@ def cmd_build(args) -> int:
             print(f"         or pass --skip-listen to bypass this gate.")
             return 1
 
+        # #818: Guard — abort if render produced zero WAV files so we never
+        # package a broken/empty .xpn.  Check renders/ (primary render output)
+        # and Samples/ (post-assemble staging location).
+        if not args.dry_run:
+            _renders_dir = output_dir / "renders"
+            _samples_dir = output_dir / "Samples"
+            _wav_count = 0
+            if _renders_dir.exists():
+                _wav_count += len(list(_renders_dir.glob("*.wav"))) + \
+                              len(list(_renders_dir.glob("*.WAV")))
+            if _samples_dir.exists():
+                _wav_count += len(list(_samples_dir.rglob("*.wav"))) + \
+                              len(list(_samples_dir.rglob("*.WAV")))
+            if _wav_count == 0 and "render" not in skip and "assemble" not in skip:
+                print(f"  [10/11] PACKAGE     ABORTED — zero WAV files found")
+                print(f"         Render produced no audio output. Re-run the RENDER stage "
+                      f"before attempting to package.")
+                print(f"         Use --skip-listen --skip render,assemble to package "
+                      f"from an existing Samples/ directory.")
+                stages_failed += 1
+                return 1
+
         xpn_name = f"XO_OX_{pack_id.replace('-', '_')}_v{version}.xpn"
         print(f"  [10/11] PACKAGE     {xpn_name}")
         if args.dry_run:
@@ -4109,10 +4286,11 @@ Entry Points:
                          help="Continue batch even if a job fails")
     p_batch.add_argument("--normalize",    action="store_true",
                          help="After all jobs complete, normalize loudness across engines "
-                              "(RMS-based, target -14 dB RMS)")
+                              "(LUFS via ITU-R BS.1770-4; falls back to RMS if xpn_normalize "
+                              "is unavailable; target -14 LUFS)")
     p_batch.add_argument("--normalize-target", type=float, default=-14.0,
-                         metavar="RMS_DB", dest="normalize_target",
-                         help="Target loudness in dB RMS (default: -14.0)")
+                         metavar="LUFS", dest="normalize_target",
+                         help="Target loudness in LUFS (default: -14.0)")
 
     # --- build (.oxbuild compiler) ---
     p_build = sub.add_parser("build",

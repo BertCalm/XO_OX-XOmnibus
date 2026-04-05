@@ -59,7 +59,8 @@
       "ocelot_macroCoupling": 0.736,
       "ocelot_macroSpace": 0.54,
       "ocelot_filterEnvDepth": 0.494,
-      "ocelot_lfoRate": 0.152
+      "ocelot_lfoRate": 0.152,
+      "ocelot_floorVelocity": 0.746
     },
     "Opal": {
       "opal_ampAttack": 0.03,
@@ -72,7 +73,8 @@
       "opal_macroSpace": 0.508,
       "opal_filterEnvAmt": 0.494,
       "opal_lfo1Rate": 0.152,
-      "opal_lfo1Depth": 0.37
+      "opal_lfo1Depth": 0.37,
+      "opal_ampVelSens": 0.398
     }
   },
   "schema_version": 1,

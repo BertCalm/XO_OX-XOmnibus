@@ -77,7 +77,8 @@
     },
     "Owlfish": {
       "owl_filterCutoff": 6796.9,
-      "owl_level": 0.723
+      "owl_level": 0.723,
+      "owl_velocity": 0.672
     }
   },
   "schema_version": 1,
@@ -91,5 +92,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.769,
+    "COUPLING": 0.63,
+    "SPACE": 0.564
+  }
 }

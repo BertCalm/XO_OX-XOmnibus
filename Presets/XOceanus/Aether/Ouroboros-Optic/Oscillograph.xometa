@@ -73,7 +73,8 @@
       "opal_macroSpace": 0.821,
       "opal_filterEnvAmt": 0.396,
       "opal_lfo1Rate": 0.014,
-      "opal_lfo1Depth": 0.103
+      "opal_lfo1Depth": 0.103,
+      "opal_ampVelSens": 0.328
     }
   },
   "coupling": {

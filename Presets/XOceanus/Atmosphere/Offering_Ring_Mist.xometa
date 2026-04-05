@@ -45,7 +45,8 @@
       "ofr_v7_decay": 0.38,
       "ofr_digCuriosity": 0.72,
       "ofr_envToPitch": 0.25,
-      "ofr_masterWidth": 0.88
+      "ofr_masterWidth": 0.88,
+      "ofr_velToSnap": 0.432
     }
   },
   "schema_version": 1,

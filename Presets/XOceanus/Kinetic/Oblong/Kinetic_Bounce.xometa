@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Kinetic Bounce",
   "mood": "Kinetic",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The CuriosityEngine in bob mode drives rhythmic curiosity-jumps timed to the musical pulse. Filter envelope creates percussive attack transients while LFO1 adds amplitude modulation at twice the base rate. Staccato but alive.",
-  "tags": ["kinetic", "bounce", "rhythmic", "percussive", "staccato", "curiosity", "movement"],
-  "macroLabels": ["BOB MODE", "CURIOSITY", "FILTER CHAR", "SPACE"],
+  "tags": [
+    "kinetic",
+    "bounce",
+    "rhythmic",
+    "percussive",
+    "staccato",
+    "curiosity",
+    "movement"
+  ],
+  "macroLabels": [
+    "BOB MODE",
+    "CURIOSITY",
+    "FILTER CHAR",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,7 +75,8 @@
       "bob_level": 0.72,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.695
     }
   },
   "macros": {
@@ -69,5 +85,7 @@
     "FILTER CHAR": 0.72,
     "SPACE": 0.25
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

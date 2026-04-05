@@ -18,7 +18,7 @@ import { useAudioStore } from '@/stores/audioStore';
 import { useToastStore } from '@/stores/toastStore';
 import { useHistoryStore } from '@/stores/historyStore';
 import { decodeArrayBuffer, generateWaveformPeaks } from '@/lib/audio/audioUtils';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { v4 as uuid } from 'uuid';
 import Card, { CardHeader, CardTitle } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -276,7 +276,6 @@ export default function KitImporter() {
     // 1. Import audio samples and build filename → sampleId lookup
     // ------------------------------------------------------------------
     const fileToSampleId = new Map<string, string>();
-    const importedSampleIds: string[] = []; // Track IDs for undo cleanup
 
     // Determine available raw sample buffers (XPN extraction or loose files)
     const rawSamples: Map<string, ArrayBuffer> =
@@ -296,7 +295,7 @@ export default function KitImporter() {
 
         try {
           const audioBuffer = await decodeArrayBuffer(rawBuffer);
-          const wavData = encodeWav(audioBuffer, 16);
+          const wavData = await encodeWavAsync(audioBuffer, 16);
           const peaks = generateWaveformPeaks(audioBuffer);
           const baseName = fileName.replace(/\.[^.]+$/, '');
           const sampleId = uuid();
@@ -316,7 +315,6 @@ export default function KitImporter() {
           };
 
           audioStore.addSample(sample);
-          importedSampleIds.push(sampleId);
           // Map both exact filename and lowercase for case-insensitive matching
           fileToSampleId.set(fileName, sampleId);
           fileToSampleId.set(fileName.toLowerCase(), sampleId);
@@ -396,21 +394,7 @@ export default function KitImporter() {
       padStoreActions.updatePad(i, resolvedPads[i]);
     }
 
-    // Capture imported sample IDs in closure for undo cleanup
-    const sampleIdsToCleanup = [...importedSampleIds];
-    history.pushState('Import kit', usePadStore.getState().pads, {
-      onUndo: () => {
-        // Remove imported samples from audioStore when import is undone
-        const store = useAudioStore.getState();
-        for (const id of sampleIdsToCleanup) {
-          store.removeSample(id);
-        }
-      },
-      onRedo: () => {
-        // Re-import would require re-decoding — not practical.
-        // Samples will be re-added on re-import via the UI.
-      },
-    });
+    history.pushState('Import kit', usePadStore.getState().pads);
 
     // Populate envelope store with extracted envelope/filter settings
     const envelopeStore = useEnvelopeStore.getState();

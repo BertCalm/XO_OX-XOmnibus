@@ -50,7 +50,8 @@
       "bob_fltCutoff": 0.6,
       "bob_lfoRate": 0.4,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.63
     },
     "Ouroboros": {
       "ouro_chaosIndex": 0.5,

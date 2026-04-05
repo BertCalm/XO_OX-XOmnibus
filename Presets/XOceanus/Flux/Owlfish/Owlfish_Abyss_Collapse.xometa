@@ -76,7 +76,8 @@
       "owl_subLevel3": 0.5,
       "owl_subLevel4": 0.3,
       "owl_subMix": 0.8,
-      "owl_subWave": 0.8
+      "owl_subWave": 0.8,
+      "owl_velocity": 0.85
     }
   },
   "schema_version": 1,
@@ -90,5 +91,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "DEPTH": 0.35,
+    "FEEDING": 0.45,
+    "DEFENSE": 0.45,
+    "PRESSURE": 0.835
+  }
 }

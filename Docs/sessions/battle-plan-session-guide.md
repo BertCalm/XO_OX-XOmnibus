@@ -858,7 +858,7 @@ All Haiku tracks are read-only audits. Run them as verification passes. Most can
 **Command:** `git fetch origin && git log origin/main..HEAD --oneline`
 
 #### H17 — Count Total .xometa Files 🟢 P2
-**Command:** `find Presets/XOceanus/ -name "*.xometa" | wc -l` — should be ~17,300.
+**Command:** `find Presets/XOceanus/ -name "*.xometa" | wc -l` — should be ~19,500+.
 
 #### H18 — Verify Preset Symlink 🟢 P2
 **Command:** `ls -la ~/Library/Application\ Support/XO_OX/XOceanus/Presets`
@@ -959,7 +959,7 @@ See H1.
 #### H65 — Preset Names Exceeding 30 Characters 🟢 P2
 #### H66 — Coupling Preset Validation 🟢 P2
 #### H67 — Duplicate Preset Name Check 🟢 P2
-#### H68 — Total Preset Count Verification (~17,300) 🟡 P1
+#### H68 — Total Preset Count Verification (~19,500+) 🟡 P1
 #### H69 — OXYTOCIN 130 Preset Verification 🟢 P2
 #### H70 — Kitchen Collection Preset Count per Engine 🟢 P2
 

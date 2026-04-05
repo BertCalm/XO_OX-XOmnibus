@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Otolith Memory",
+  "mood": "Organic",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fish ear stone that records age \u2014 each otolith growing one ring per year like a tree, a biography of temperature and migration preserved in calcium carbonate.",
+  "tags": [
+    "organic",
+    "otolith",
+    "fish",
+    "memory",
+    "growth",
+    "ring",
+    "biography"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.42,
+      "ouro_chaos": 0.28,
+      "ouro_leash": 0.55,
+      "ouro_filterCutoff": 3800.0,
+      "ouro_filterRes": 0.22,
+      "ouro_attack": 1.2,
+      "ouro_decay": 2.8,
+      "ouro_sustain": 0.72,
+      "ouro_release": 5.5,
+      "ouro_lfo1Rate": 0.08,
+      "ouro_lfo1Depth": 0.18,
+      "ouro_macroCharacter": 0.42,
+      "ouro_macroMovement": 0.38,
+      "ouro_macroCoupling": 0.15,
+      "ouro_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.15,
+    "SPACE": 0.48
+  }
+}

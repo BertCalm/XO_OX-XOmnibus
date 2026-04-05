@@ -100,5 +100,11 @@
     "density": 0.45,
     "space": 0.85,
     "aggression": 0.05
+  },
+  "macros": {
+    "REACTIVITY": 0.45,
+    "DRIFT": 0.4,
+    "SPACE": 0.85,
+    "BLOOM": 0.393
   }
 }

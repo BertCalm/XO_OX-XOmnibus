@@ -43,7 +43,8 @@
       "opal_grainSize": 0.363,
       "opal_macroCharacter": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_release": 1.0
+      "opal_release": 1.0,
+      "opal_ampVelSens": 0.425
     },
     "Orca": {
       "orca_ampAttack": 0.0533,
@@ -66,7 +67,8 @@
       "orca_pitchRand": 0.193,
       "orca_podSync": 0.353,
       "orca_wavetablePos": 0.499,
-      "orca_wavetableScan": 0.203
+      "orca_wavetableScan": 0.203,
+      "orca_velCutoffAmt": 0.532
     }
   },
   "schema_version": 1,
@@ -78,5 +80,11 @@
     "opal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.451,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.557,
+    "SPACE": 0.571
+  }
 }

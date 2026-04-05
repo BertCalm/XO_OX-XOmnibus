@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Rifting Zone",
   "mood": "Deep",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-ocean ridge where tectonic plates slowly separate — superheated water and new crust forming in absolute darkness, the planet's skin being made anew.",
-  "tags": ["deep", "tectonic", "oceanic", "formation", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "tectonic",
+    "oceanic",
+    "formation",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -23,21 +36,24 @@
       "deep_macroCharacter": 0.52,
       "deep_macroMovement": 0.22,
       "deep_macroCoupling": 0.13,
-      "deep_macroSpace": 0.70,
+      "deep_macroSpace": 0.7,
       "deep_filterEnvAmt": 0.46,
       "deep_lfo1Rate": 0.05,
       "deep_lfo1Depth": 0.24,
       "deep_macroPressure": 0.75,
       "deep_darknessCeiling": 0.88,
-      "deep_bioExciter": 0.40
+      "deep_bioExciter": 0.4,
+      "deep_velCutoffAmt": 0.44
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.52,
     "MOVEMENT": 0.22,
     "COUPLING": 0.13,
-    "SPACE": 0.70
+    "SPACE": 0.7
   }
 }

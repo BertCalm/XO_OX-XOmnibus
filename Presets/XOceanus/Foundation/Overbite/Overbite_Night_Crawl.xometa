@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Slow-moving synth bass with legato glide \u2014 crawls through the night with muted attack and tape drive warmth.",
+  "description": "Slow-moving synth bass with legato glide — crawls through the night with muted attack and tape drive warmth.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.35,
@@ -51,7 +51,8 @@
       "poss_oscAWaveform": 1,
       "poss_oscBWaveform": 2,
       "poss_oscMix": 0.45,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.35
     }
   },
   "schema_version": 1,

@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB TONE": 0.45,
+    "GLIDE TIME": 0.45,
+    "COUPLING": 0.24,
+    "SHIMMER": 0.5
+  }
 }

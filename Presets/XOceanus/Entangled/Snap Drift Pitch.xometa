@@ -96,5 +96,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP ENERGY": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "PITCH AMOUNT": 0.45,
+    "SHIMMER": 0.5
+  }
 }

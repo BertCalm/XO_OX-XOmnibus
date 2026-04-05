@@ -53,7 +53,8 @@
       "orca_macroCharacter": 0.5838,
       "orca_macroCoupling": 0.9355,
       "orca_macroMovement": 0.5109,
-      "orca_macroSpace": 0.9111
+      "orca_macroSpace": 0.9111,
+      "orca_velCutoffAmt": 0.638
     },
     "Orphica": {
       "amp_attack": 0.2471,
@@ -69,7 +70,8 @@
       "orph_macroCharacter": 0.6353,
       "orph_macroCoupling": 0.8971,
       "orph_macroMovement": 0.5421,
-      "orph_macroSpace": 0.9017
+      "orph_macroSpace": 0.9017,
+      "orph_velocitySensitivity": 0.85
     }
   },
   "schema_version": 1,

@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT DENSITY": 0.45,
+    "PUMP DEPTH": 0.45,
+    "COUPLING": 0.51,
+    "ECHO SPACE": 0.45
+  }
 }

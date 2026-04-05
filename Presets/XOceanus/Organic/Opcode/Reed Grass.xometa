@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM reed instrument \u2014 parallel algorithm, slow LFO breath, moderate brightness. Wind through tall grass.",
+  "description": "FM reed instrument — parallel algorithm, slow LFO breath, moderate brightness. Wind through tall grass.",
   "tags": [
     "fm",
     "reed",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

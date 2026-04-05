@@ -44,7 +44,8 @@
       "bob_macroCoupling": 0.107,
       "bob_release": 1.0,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.485
     },
     "Osteria": {
       "osteria_attack": 0.244,
@@ -93,5 +94,11 @@
     "oblong"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.489,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.562,
+    "SPACE": 0.569
+  }
 }

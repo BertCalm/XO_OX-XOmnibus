@@ -79,5 +79,11 @@
     "oceanic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.407,
+    "MOVEMENT": 0.628,
+    "COUPLING": 0.54,
+    "SPACE": 0.65
+  }
 }

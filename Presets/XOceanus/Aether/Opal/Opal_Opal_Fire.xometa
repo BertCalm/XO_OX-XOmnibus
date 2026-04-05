@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Opal Fire",
+  "name": "Opal Fire (Aether)",
   "mood": "Aether",
   "engines": [
     "Opal"
@@ -53,7 +53,8 @@
       "opal_macroScatter": 0.85,
       "opal_macroDrift": 0.7,
       "opal_macroCoupling": 0.5,
-      "opal_macroSpace": 0.72
+      "opal_macroSpace": 0.72,
+      "opal_ampVelSens": 0.275
     }
   },
   "macros": {

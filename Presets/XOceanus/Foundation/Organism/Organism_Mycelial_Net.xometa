@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Mycelial Net",
+  "name": "Mycelial Net (Foundation)",
   "mood": "Foundation",
   "engines": [
     "Organism"

@@ -56,7 +56,8 @@
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 0.6,
       "owr_lfo2Depth": 0.1,
-      "owr_lfo2Shape": 0
+      "owr_lfo2Shape": 0,
+      "owr_malletVelocity": 0.694
     },
     "Osprey": {
       "osprey_shore": 0.4,
@@ -103,5 +104,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "SHORE BLEND": 0.45,
+    "COUPLING": 0.414,
+    "SPACE": 0.65
+  }
 }

@@ -60,7 +60,8 @@
       "ouie_macroCurrent": 0.424,
       "ouie_filterEnvAmt": 0.447,
       "ouie_lfo1Rate": 0.213,
-      "ouie_lfo1Depth": 0.378
+      "ouie_lfo1Depth": 0.378,
+      "ouie_velCutoffAmt": 0.55
     }
   },
   "coupling": {

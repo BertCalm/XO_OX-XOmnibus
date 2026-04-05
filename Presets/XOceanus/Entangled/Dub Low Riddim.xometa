@@ -114,7 +114,8 @@
       "bob_level": 0.68,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.488
     }
   },
   "coupling": {
@@ -127,5 +128,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB BASS": 0.45,
+    "BOB LEAD": 0.45,
+    "COUPLING DEPTH": 0.45,
+    "ECHO": 0.4
+  }
 }

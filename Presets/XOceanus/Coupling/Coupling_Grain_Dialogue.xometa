@@ -51,7 +51,8 @@
       "opal_lfoRate": 0.08,
       "opal_lfoDepth": 0.22,
       "opal_outputLevel": 0.72,
-      "opal_reverbMix": 0.28
+      "opal_reverbMix": 0.28,
+      "opal_ampVelSens": 0.376
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -106,5 +107,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.36,
+    "SPACE": 0.65
+  }
 }

@@ -68,5 +68,11 @@
       "oleg_lfo2Shape": 2
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

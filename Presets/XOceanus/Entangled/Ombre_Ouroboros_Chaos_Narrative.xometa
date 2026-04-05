@@ -62,7 +62,8 @@
       "ombre_memoryDecay": 0.6,
       "ombre_narrativeAxis": 0.5,
       "ombre_perceptionShift": 0.45,
-      "ombre_shadowDepth": 0.55
+      "ombre_shadowDepth": 0.55,
+      "ombre_velCutoffScale": 0.41
     },
     "Ouroboros": {
       "ouro_ampAttack": 0.05,
@@ -99,5 +100,11 @@
     "dual-narrative"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.425,
+    "CHAOS": 0.296,
+    "COUPLING": 0.582,
+    "SPACE": 0.6
+  }
 }

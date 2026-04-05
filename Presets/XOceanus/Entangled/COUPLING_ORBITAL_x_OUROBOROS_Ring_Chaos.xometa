@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ring Chaos",
   "mood": "Entangled",
-  "engines": ["Orbital", "Ouroboros"],
+  "engines": [
+    "Orbital",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Additive partials ring-modulated by chaotic attractor output — the Lorenz trajectory constantly reshapes the harmonic ring's timbral identity. Ring always in motion.",
-  "tags": ["additive", "chaos", "entangled", "aggressive", "ring-mod"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "tags": [
+    "additive",
+    "chaos",
+    "entangled",
+    "aggressive",
+    "ring-mod"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -68,5 +82,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.69,
+    "CHAOS": 0.296,
+    "COUPLING": 0.54,
+    "SPACE": 0.28
+  }
 }

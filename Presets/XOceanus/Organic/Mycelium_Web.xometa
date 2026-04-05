@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Mycelium Web",
+  "mood": "Organic",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fungal mycelium threads under soil — Rule 110 cellular automaton forming the invisible communication network beneath every forest floor.",
+  "tags": [
+    "organic",
+    "mycelium",
+    "fungal",
+    "subterranean",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.28,
+    "density": 0.65,
+    "space": 0.58,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 110,
+      "org_cellularDensity": 0.55,
+      "org_evolutionRate": 0.12,
+      "org_spatialSpread": 0.7,
+      "org_pitchTracking": 0.65,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.22,
+      "org_attack": 1.8,
+      "org_decay": 3.5,
+      "org_sustain": 0.85,
+      "org_release": 6.0,
+      "org_lfo1Rate": 0.04,
+      "org_lfo1Depth": 0.18,
+      "org_macroCharacter": 0.35,
+      "org_macroMovement": 0.28,
+      "org_macroCoupling": 0.15,
+      "org_macroSpace": 0.58,
+      "org_velCutoff": 0.413
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.15,
+    "SPACE": 0.58
+  }
+}

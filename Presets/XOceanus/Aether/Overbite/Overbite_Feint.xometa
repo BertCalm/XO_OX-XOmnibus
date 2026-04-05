@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Deceptive quiet bass that fades in slowly \u2014 the feint before the real attack lands.",
+  "description": "Deceptive quiet bass that fades in slowly — the feint before the real attack lands.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.35,
@@ -53,7 +53,8 @@
       "poss_oscAWaveform": 1,
       "poss_oscBWaveform": 0,
       "poss_oscMix": 0.4,
-      "poss_subLevel": 0.4
+      "poss_subLevel": 0.4,
+      "poss_ampVelSens": 0.33
     }
   },
   "schema_version": 1,

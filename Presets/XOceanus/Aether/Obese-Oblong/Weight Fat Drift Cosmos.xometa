@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine maximum aether \u2014 BOB vapor, FAT density, DRIFT shimmer. All dimensions.",
+  "description": "Three-engine maximum aether — BOB vapor, FAT density, DRIFT shimmer. All dimensions.",
   "tags": [
     "bob",
     "fat",
@@ -76,7 +76,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.306
     },
     "Obese": {
       "fat_morph": 0.5,
@@ -168,5 +169,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB": 0.45,
+    "FAT": 0.45,
+    "DRIFT": 0.18,
+    "COUPLING": 0.258
+  }
 }

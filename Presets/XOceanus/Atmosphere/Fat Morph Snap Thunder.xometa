@@ -109,5 +109,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT PRESSURE": 0.45,
+    "MORPH STORM": 0.45,
+    "SNAP LIGHTNING": 0.45,
+    "COUPLING": 0.36
+  }
 }

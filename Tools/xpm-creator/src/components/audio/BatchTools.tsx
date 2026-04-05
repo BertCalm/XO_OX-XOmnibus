@@ -4,7 +4,7 @@ import React, { useCallback, useState } from 'react';
 import { useAudioStore } from '@/stores/audioStore';
 import { generateWaveformPeaks } from '@/lib/audio/audioUtils';
 import { getDecodedBuffer, invalidateCache } from '@/lib/audio/audioBufferCache';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import {
   applyLogFadeOut,
   applySafetyFadeOut,
@@ -95,8 +95,8 @@ export default function BatchTools() {
                 processed = audioBuffer;
             }
 
-            // Re-encode and update
-            const newBuffer = encodeWav(processed, sample.bitDepth || 16);
+            // Re-encode and update (async — non-blocking)
+            const newBuffer = await encodeWavAsync(processed, sample.bitDepth || 16);
             const newPeaks = generateWaveformPeaks(processed);
 
             updateSample(sample.id, {

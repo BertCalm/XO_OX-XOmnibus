@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Palms Before Rain",
   "mood": "Atmosphere",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide-space pad atmosphere with high lagoon depth and slow granular swarm. Entropy sensitivity is elevated so the ecosystem shifts with every phrase — the canopy breathes like fronds in a hot incoming wind.",
-  "tags": ["pad", "desert", "atmospheric", "space", "lush"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "desert",
+    "atmospheric",
+    "space",
+    "lush"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -31,7 +44,7 @@
       "oas_filterCutoff": 2400.0,
       "oas_filterEnvAmt": 0.32,
       "oas_pickupPos": 0.38,
-      "oas_bellAmount": 0.30,
+      "oas_bellAmount": 0.3,
       "oas_warmth": 0.55,
       "oas_tremoloDepth": 0.0,
       "oas_tremoloRate": 5.0,
@@ -42,6 +55,14 @@
       "oas_macroSpace": 0.82
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.2,
+    "SPACE": 0.82
+  }
 }

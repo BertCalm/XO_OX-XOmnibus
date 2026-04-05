@@ -57,7 +57,8 @@
       "owl_filterReso": 0.4,
       "owl_drive": 0.35,
       "owl_lfoRate": 0.2,
-      "owl_mixturDepth": 0.5
+      "owl_mixturDepth": 0.5,
+      "owl_velocity": 0.618
     }
   },
   "coupling": {

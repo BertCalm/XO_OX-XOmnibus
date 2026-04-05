@@ -70,7 +70,8 @@
       "orph_tapeSat": 0.247,
       "orph_filterEnvAmt": 0.403,
       "orph_lfo1Rate": 0.092,
-      "orph_lfo1Depth": 0.286
+      "orph_lfo1Depth": 0.286,
+      "orph_velocitySensitivity": 0.701
     },
     "Ottoni": {
       "otto_chorusRate": 0.95,

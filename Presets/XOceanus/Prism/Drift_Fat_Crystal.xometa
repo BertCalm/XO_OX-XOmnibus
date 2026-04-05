@@ -120,5 +120,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT CRYSTAL": 0.45,
+    "FAT DENSITY": 0.45,
+    "COUPLING": 0.36,
+    "BRIGHTNESS": 0.7
+  }
 }

@@ -87,5 +87,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PRESSURE DEPTH": 0.45,
+    "TAPE DRIFT": 0.45,
+    "FILTER DARK": 0.45,
+    "REVERB DAMP": 0.45
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Resonant hollow bass tone \u2014 like tapping a fallen log in the forest, light and woody.",
+  "description": "Resonant hollow bass tone — like tapping a fallen log in the forest, light and woody.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.4,
@@ -54,7 +54,8 @@
       "poss_macroScurry": 0.1,
       "poss_macroTrash": 0.05,
       "poss_oscAShape": 0.4,
-      "poss_oscAWaveform": 0
+      "poss_oscAWaveform": 0,
+      "poss_ampVelSens": 0.33
     }
   },
   "schema_version": 1,

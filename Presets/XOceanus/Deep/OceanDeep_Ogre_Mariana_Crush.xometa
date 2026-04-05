@@ -2,37 +2,52 @@
   "schema_version": 1,
   "name": "Mariana Crush",
   "mood": "Deep",
-  "engines": ["OceanDeep", "Ogre"],
+  "engines": [
+    "OceanDeep",
+    "Ogre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OceanDeep's abyssal pressure driving Ogre's sub-bass through AudioToFM — the sound of 11km of water column meeting bedrock. The deepest sound imaginable.",
-  "tags": ["deep", "coupled", "sub-bass", "abyssal", "crushing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "coupled",
+    "sub-bass",
+    "abyssal",
+    "crushing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
     "brightness": 0.05,
-    "warmth": 0.80,
+    "warmth": 0.8,
     "movement": 0.14,
     "density": 0.85,
-    "space": 0.60,
+    "space": 0.6,
     "aggression": 0.28
   },
   "parameters": {
     "OceanDeep": {
-      "deep_macroCharacter": 0.60,
+      "deep_macroCharacter": 0.6,
       "deep_macroMovement": 0.14,
       "deep_macroCoupling": 0.45,
       "deep_macroSpace": 0.58,
       "deep_filterEnvAmt": 0.48,
       "deep_lfo1Rate": 0.02,
-      "deep_lfo1Depth": 0.20,
-      "deep_macroPressure": 0.92
+      "deep_lfo1Depth": 0.2,
+      "deep_macroPressure": 0.92,
+      "deep_velCutoffAmt": 0.47
     },
     "Ogre": {
       "ogre_macroCharacter": 0.58,
       "ogre_macroMovement": 0.14,
-      "ogre_macroCoupling": 0.40,
+      "ogre_macroCoupling": 0.4,
       "ogre_macroSpace": 0.58,
       "ogre_filterEnvAmt": 0.44,
       "ogre_lfo1Rate": 0.02,
@@ -53,7 +68,7 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.60,
+    "CHARACTER": 0.6,
     "MOVEMENT": 0.14,
     "COUPLING": 0.45,
     "SPACE": 0.58

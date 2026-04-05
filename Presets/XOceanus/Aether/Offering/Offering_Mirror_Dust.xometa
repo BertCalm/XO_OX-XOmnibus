@@ -45,14 +45,15 @@
       "ofr_masterWidth": 0.75,
       "ofr_masterLevel": 0.72,
       "ofr_v0_decay": 0.55,
-      "ofr_v1_decay": 0.38
+      "ofr_v1_decay": 0.38,
+      "ofr_velToSnap": 0.42
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Spacious aetheric sound from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

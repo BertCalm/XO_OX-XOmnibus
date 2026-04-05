@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Collapse Vector",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Golden resonance driven into feedback collapse — Chiasmus FDN resonating at maximum cantilever before structural failure.",
+  "tags": ["flux", "aggressive", "collapse", "feedback", "resonance"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.28,
+    "movement": 0.80,
+    "density": 0.82,
+    "space": 0.48,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.88,
+      "oxb_decay": 0.6,
+      "oxb_entangle": 0.88,
+      "oxb_erosionRate": 0.75,
+      "oxb_erosionDepth": 0.90,
+      "oxb_convergence": 3,
+      "oxb_resonanceQ": 28,
+      "oxb_resonanceMix": 0.85,
+      "oxb_cantilever": 0.95,
+      "oxb_damping": 6000,
+      "oxb_predelay": 8,
+      "oxb_dryWet": 0.80,
+      "oxb_exciterDecay": 0.012,
+      "oxb_exciterBright": 0.78,
+      "oxb_macroCharacter": 0.75,
+      "oxb_macroMovement": 0.78,
+      "oxb_macroCoupling": 0.42,
+      "oxb_macroSpace": 0.48,
+      "oxb_filterEnvAmt": 0.85,
+      "oxb_lfo1Rate": 0.45,
+      "oxb_lfo1Depth": 0.68
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.88,
+    "EROSION": 0.75,
+    "CONVERGE": 0.85,
+    "CANTILEVER": 0.95
+  }
+}

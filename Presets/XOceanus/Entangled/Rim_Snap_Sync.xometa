@@ -65,5 +65,11 @@
       "snap_level": 0.6
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.45,
+    "MUTATE": 0.271
+  }
 }

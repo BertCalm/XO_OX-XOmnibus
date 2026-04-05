@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB GLIDE": 0.45,
+    "FAT DENSITY": 0.45,
+    "COUPLING": 0.39,
+    "FILTER": 0.45
+  }
 }

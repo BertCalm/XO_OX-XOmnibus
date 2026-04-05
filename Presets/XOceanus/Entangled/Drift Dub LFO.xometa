@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT LFO": 0.45,
+    "DUB PITCH": 0.45,
+    "WARP RATE": 0.45,
+    "DEPTH": 0.7
+  }
 }

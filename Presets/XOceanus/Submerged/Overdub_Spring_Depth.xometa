@@ -86,5 +86,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SPRING COIL": 0.45,
+    "SUBMERSION DAMP": 0.45,
+    "LOW END": 0.45,
+    "DRIFT RATE": 0.45
+  }
 }

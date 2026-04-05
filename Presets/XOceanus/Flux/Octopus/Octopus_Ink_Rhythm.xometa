@@ -84,5 +84,11 @@
     "noise-burst",
     "transcendental"
   ],
-  "description": "inkThreshold=0.3, inkDecay=2.0, inkMix=0.7 — most notes trigger a 2-second noise burst. At high playing speeds, clouds overlap. The ink cloud becomes a gate and rhythmic texture simultaneously."
+  "description": "inkThreshold=0.3, inkDecay=2.0, inkMix=0.7 — most notes trigger a 2-second noise burst. At high playing speeds, clouds overlap. The ink cloud becomes a gate and rhythmic texture simultaneously.",
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
 }

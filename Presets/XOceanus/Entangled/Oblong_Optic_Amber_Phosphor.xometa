@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.267,
       "bob_scaleMode": 1.0,
       "bob_subOscLevel": 0.424,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.532
     },
     "Optic": {
       "optic_filterCutoff": 3856.6,
@@ -74,5 +75,11 @@
     "optic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.623,
+    "COUPLING": 0.48,
+    "SPACE": 0.379
+  }
 }

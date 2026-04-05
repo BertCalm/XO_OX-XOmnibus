@@ -76,7 +76,8 @@
       "bob_level": 0.6,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.3
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -127,5 +128,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB GHOST": 0.45,
+    "DUB REVERB": 0.45,
+    "COUPLING": 0.3,
+    "VOID DEPTH": 0.45
+  }
 }

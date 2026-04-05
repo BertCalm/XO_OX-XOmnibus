@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The string bass territory of the piano \u2014 low As and Gs played with authority. High HF fill adds a physical thump to each strike.",
+  "description": "The string bass territory of the piano — low As and Gs played with authority. High HF fill adds a physical thump to each strike.",
   "tags": [
     "piano",
     "bass",
@@ -64,5 +64,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.32
+  }
 }

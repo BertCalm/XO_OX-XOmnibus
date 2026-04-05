@@ -9,7 +9,7 @@ import { useToastStore } from '@/stores/toastStore';
 import { getDecodedBuffer } from '@/lib/audio/audioBufferCache';
 import { detectPitch } from '@/lib/audio/pitchDetector';
 import { generateSubTail } from '@/lib/audio/sculptingProcessors';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { generateWaveformPeaks } from '@/lib/audio/audioUtils';
 import { v4 as uuid } from 'uuid';
 import { useHistoryStore } from '@/stores/historyStore';
@@ -92,7 +92,7 @@ export default function SubTailPanel({ padIndex }: SubTailPanelProps) {
       }
 
       // Encode and add the sub-tail as a new sample, then assign to next empty layer
-      const wavData = encodeWav(subBuffer, 16);
+      const wavData = await encodeWavAsync(subBuffer, 16);
       const newPeaks = generateWaveformPeaks(subBuffer);
       const subSampleId = uuid();
 

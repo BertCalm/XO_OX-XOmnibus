@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Siren Glow",
   "mood": "Luminous",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The Orphica engine's siren seafoam heritage — a plucked tone with the bioluminescent quality of open water at night, the body glowing long after the initial strike.",
-  "tags": ["luminous", "siren", "seafoam", "glow", "open-water"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "siren",
+    "seafoam",
+    "glow",
+    "open-water"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,23 +37,26 @@
       "orph_macroMovement": 0.34,
       "orph_macroCoupling": 0.14,
       "orph_macroSpace": 0.62,
-      "orph_filterEnvAmt": 0.60,
+      "orph_filterEnvAmt": 0.6,
       "orph_pluckBrightness": 0.76,
-      "orph_bodyResonance": 0.50,
+      "orph_bodyResonance": 0.5,
       "orph_lfo1Rate": 0.07,
       "orph_lfo1Depth": 0.16,
       "orph_lfo2Rate": 0.13,
-      "orph_lfo2Depth": 0.10,
+      "orph_lfo2Depth": 0.1,
       "orph_attack": 0.001,
       "orph_decay": 2.5,
-      "orph_sustain": 0.50,
+      "orph_sustain": 0.5,
       "orph_release": 3.5,
       "orph_filterCutoff": 9500,
-      "orph_filterRes": 0.30,
-      "orph_output": 0
+      "orph_filterRes": 0.3,
+      "orph_output": 0,
+      "orph_velocitySensitivity": 0.623
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.52,

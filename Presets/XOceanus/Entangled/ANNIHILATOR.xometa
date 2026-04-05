@@ -43,13 +43,15 @@
       "bob_macroCharacter": 0.822,
       "bob_macroCoupling": 0.847,
       "bob_macroMovement": 0.751,
-      "bob_macroSpace": 0.677
+      "bob_macroSpace": 0.677,
+      "bob_velFilter": 0.63
     },
     "Ombre": {
       "ombre_macroCharacter": 0.856,
       "ombre_macroCoupling": 0.435,
       "ombre_macroMovement": 0.791,
-      "ombre_macroSpace": 0.87
+      "ombre_macroSpace": 0.87,
+      "ombre_velCutoffScale": 0.504
     }
   },
   "schema_version": 1,

@@ -126,5 +126,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PULSE RATE": 0.45,
+    "BRIGHTNESS": 0.87,
+    "DENSITY": 0.9,
+    "AGGRESSION": 0.88
+  }
 }

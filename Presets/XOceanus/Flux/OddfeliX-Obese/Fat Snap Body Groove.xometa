@@ -119,7 +119,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 1,
       "bob_glide": 0.1,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.644
     }
   },
   "coupling": {
@@ -138,5 +139,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT BED": 0.45,
+    "SNAP GATE": 0.45,
+    "BOB LEAD": 0.45,
+    "COUPLING": 0.522
+  }
 }

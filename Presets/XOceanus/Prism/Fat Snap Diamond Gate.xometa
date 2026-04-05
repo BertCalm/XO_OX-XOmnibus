@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP DIAMOND": 0.45,
+    "FAT PRISM": 0.45,
+    "COUPLING": 0.6,
+    "BRIGHTNESS": 0.82
+  }
 }

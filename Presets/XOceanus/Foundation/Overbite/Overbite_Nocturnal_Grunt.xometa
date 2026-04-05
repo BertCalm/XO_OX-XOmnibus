@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Low mid grunt bass inspired by opossum vocalizations \u2014 raw sawtooth with fur texture and minimal FX.",
+  "description": "Low mid grunt bass inspired by opossum vocalizations — raw sawtooth with fur texture and minimal FX.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.45,
@@ -51,7 +51,8 @@
       "poss_oscADrift": 0.15,
       "poss_oscAShape": 0.2,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.55
+      "poss_subLevel": 0.55,
+      "poss_ampVelSens": 0.4
     }
   },
   "schema_version": 1,

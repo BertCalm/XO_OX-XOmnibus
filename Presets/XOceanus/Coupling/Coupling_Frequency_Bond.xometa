@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERTONE continued fraction spectral depth drives ORPHICA pluck brightness \u2014 mathematical resonance informing string timbre, number theory as luthiery.",
+  "description": "OVERTONE continued fraction spectral depth drives ORPHICA pluck brightness — mathematical resonance informing string timbre, number theory as luthiery.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "over_macroCharacter": 0.52,
       "over_macroMovement": 0.5,
       "over_macroCoupling": 0.62,
-      "over_macroSpace": 0.52
+      "over_macroSpace": 0.52,
+      "over_velBright": 0.396
     },
     "Orphica": {
       "orph_pluckBrightness": 0.55,
@@ -52,7 +53,8 @@
       "orph_macroCharacter": 0.5,
       "orph_macroMovement": 0.5,
       "orph_macroCoupling": 0.6,
-      "orph_macroSpace": 0.52
+      "orph_macroSpace": 0.52,
+      "orph_velocitySensitivity": 0.66
     }
   },
   "coupling": {

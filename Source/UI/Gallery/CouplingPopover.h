@@ -5,6 +5,7 @@
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h" // CouplingTypeColors::displayName() — #713
 #include "GalleryKnob.h"
 
 namespace xoceanus
@@ -32,7 +33,7 @@ namespace xoceanus
 class CouplingPopover : public juce::Component
 {
 public:
-    CouplingPopover(XOceanusProcessor& proc, int routeIndex) : route(routeIndex)
+    CouplingPopover(XOceanusProcessor& proc, int routeIndex) : processor(proc), route(routeIndex)
     {
         jassert(route >= 1 && route <= 4);
         auto& apvts = proc.getAPVTS();
@@ -47,22 +48,13 @@ public:
                                                                                               activeButton);
         A11y::setup(activeButton, "Route " + juce::String(route) + " Active", "Enable or disable this coupling route");
 
-        // ── Type selector ────────────────────────────────────────────────────
-        typeBox.addItem("AmpToFilter", 1);
-        typeBox.addItem("AmpToPitch", 2);
-        typeBox.addItem("LFOToPitch", 3);
-        typeBox.addItem("EnvToMorph", 4);
-        typeBox.addItem("AudioToFM", 5);
-        typeBox.addItem("AudioToRing", 6);
-        typeBox.addItem("FilterToFilter", 7);
-        typeBox.addItem("AmpToChoke", 8);
-        typeBox.addItem("RhythmToBlend", 9);
-        typeBox.addItem("EnvToDecay", 10);
-        typeBox.addItem("PitchToPitch", 11);
-        typeBox.addItem("AudioToWavetable", 12);
-        typeBox.addItem("AudioToBuffer", 13);
-        typeBox.addItem("KnotTopology", 14);
-        typeBox.addItem("TriangularCoupling", 15);
+        // ── Type selector — #713: use human-readable display names from
+        //    CouplingTypeColors::displayName() instead of raw C++ enum strings.
+        {
+            auto types = CouplingTypeColors::allTypes();
+            for (int i = 0; i < static_cast<int>(types.size()); ++i)
+                typeBox.addItem(CouplingTypeColors::displayName(types[static_cast<size_t>(i)]), i + 1);
+        }
         addAndMakeVisible(typeBox);
         typeAttach =
             std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(apvts, prefix + "type", typeBox);
@@ -79,23 +71,19 @@ public:
         enableKnobReset(amountKnob, apvts, prefix + "amount");
         A11y::setup(amountKnob, "Coupling Amount", "Bipolar coupling depth — negative values invert the modulation");
 
-        // ── Source slot selector ─────────────────────────────────────────────
-        sourceBox.addItem("Slot 1", 1);
-        sourceBox.addItem("Slot 2", 2);
-        sourceBox.addItem("Slot 3", 3);
-        sourceBox.addItem("Slot 4", 4);
-        sourceBox.addItem("Slot 5 (Ghost)", 5);
+        // ── Source slot selector — #714: populate with engine names, then
+        //    refreshSlotNames() updates text without changing the item IDs so
+        //    APVTS serialization remains intact (IDs 1–5 are preserved).
+        for (int s = 1; s <= 5; ++s)
+            sourceBox.addItem("Slot " + juce::String(s), s);
         addAndMakeVisible(sourceBox);
         sourceAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
             apvts, prefix + "source", sourceBox);
         A11y::setup(sourceBox, "Source Slot", "Engine slot that drives this coupling route");
 
         // ── Target slot selector ─────────────────────────────────────────────
-        targetBox.addItem("Slot 1", 1);
-        targetBox.addItem("Slot 2", 2);
-        targetBox.addItem("Slot 3", 3);
-        targetBox.addItem("Slot 4", 4);
-        targetBox.addItem("Slot 5 (Ghost)", 5);
+        for (int s = 1; s <= 5; ++s)
+            targetBox.addItem("Slot " + juce::String(s), s);
         addAndMakeVisible(targetBox);
         targetAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
             apvts, prefix + "target", targetBox);
@@ -103,6 +91,9 @@ public:
 
         A11y::setup(*this, "Coupling Route " + juce::String(route),
                     "Controls for cross-engine modulation route " + juce::String(route));
+
+        // Populate combo items with actual engine names now that all items exist.
+        refreshSlotNames();
 
         setSize(220, 176);
     }
@@ -156,9 +147,9 @@ public:
         g.drawText("ROUTE " + juce::String(route), 20, (int)headerBounds.getY(), 80, (int)headerBounds.getHeight(),
                    juce::Justification::centredLeft);
 
-        // Source→Target label (live from combo selections)
-        juce::String srcLabel = "S" + juce::String(juce::jmax(1, sourceBox.getSelectedId()));
-        juce::String dstLabel = "S" + juce::String(juce::jmax(1, targetBox.getSelectedId()));
+        // Source→Target label — #714: show engine name, not "S1" slot number.
+        juce::String srcLabel = slotDisplayName(sourceBox.getSelectedId() - 1);
+        juce::String dstLabel = slotDisplayName(targetBox.getSelectedId() - 1);
         g.setFont(GalleryFonts::label(9.0f));
         g.setColour(accentCol);
         g.drawText(srcLabel + " \xe2\x86\x92 " + dstLabel, // UTF-8 right arrow →
@@ -209,6 +200,56 @@ private:
         return juce::Colour(0xFFE9C46A);     // XO Gold — modulation
     }
 
+    // #714: Return a short display name for a 0-based slot index.
+    // Uses the engine's ID when loaded; falls back to "Slot N" when empty.
+    // Slot 4 (Ghost) is always labelled "Ghost".
+    juce::String slotDisplayName(int slotIdx) const
+    {
+        if (slotIdx == 4)
+            return "Ghost";
+        if (slotIdx < 0 || slotIdx > 3)
+            return "Slot " + juce::String(slotIdx + 1);
+        auto* eng = processor.getEngine(slotIdx);
+        if (eng)
+        {
+            auto id = eng->getEngineId();
+            if (id.isNotEmpty())
+                return id.toUpperCase();
+        }
+        return "Slot " + juce::String(slotIdx + 1);
+    }
+
+    // #714: Update source/target combo item text to show engine names.
+    // Item IDs (1–5) are preserved so APVTS serialization is unaffected.
+    void refreshSlotNames()
+    {
+        for (int slotId = 1; slotId <= 5; ++slotId)
+        {
+            juce::String label;
+            if (slotId == 5)
+            {
+                label = "Slot 5 (Ghost)";
+            }
+            else
+            {
+                auto* eng = processor.getEngine(slotId - 1);
+                if (eng)
+                {
+                    auto id = eng->getEngineId();
+                    label = id.isEmpty() ? ("Slot " + juce::String(slotId))
+                                         : (id.toUpperCase() + " (Slot " + juce::String(slotId) + ")");
+                }
+                else
+                {
+                    label = "Slot " + juce::String(slotId) + " (empty)";
+                }
+            }
+            sourceBox.changeItemText(slotId, label);
+            targetBox.changeItemText(slotId, label);
+        }
+    }
+
+    XOceanusProcessor& processor; // #714: kept to resolve engine names
     int route; // 1–4
 
     juce::ToggleButton activeButton;

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The glassy high-end of FM tines \u2014 ratio 2.8, mid brightness, short mod decay. Each note has a crystalline sting at the attack.",
+  "description": "The glassy high-end of FM tines — ratio 2.8, mid brightness, short mod decay. Each note has a crystalline sting at the attack.",
   "tags": [
     "fm",
     "ep",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

@@ -26,10 +26,13 @@ struct ModalResonator
         freq = std::clamp(freq, 20.0f, sr * 0.45f);
         q = std::max(0.5f, q);
         // Compute pole radius for finite decay: r = exp(-pi * bw / sr), bw = freq / Q
+        // Guard: clamp r < 1.0 so poles stay strictly inside the unit circle.
+        // q >= 0.5 (clamped above) ensures bw > 0, so r is mathematically < 1.0,
+        // but the explicit clamp defends against denormals / extreme parameter values.
         const float bw = freq / q;
-        const float r  = std::exp(-kPi * bw / sr);
+        const float r  = std::min(std::exp(-kPi * bw / sr), 0.9999f);
         a1 = 2.0f * r * xoceanus::fastCos(2.0f * kPi * freq / sr);
-        a2 = -(r * r);  // was implicitly -1.0 (unit circle — marginally stable)
+        a2 = -(r * r);  // negative: stable pole pair inside unit circle
         b0 = 1.0f / q;
         gain = g;
     }

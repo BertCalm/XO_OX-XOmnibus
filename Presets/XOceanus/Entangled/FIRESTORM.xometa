@@ -41,7 +41,8 @@
       "ombre_macroCharacter": 0.753,
       "ombre_macroCoupling": 0.853,
       "ombre_macroMovement": 0.957,
-      "ombre_macroSpace": 0.953
+      "ombre_macroSpace": 0.953,
+      "ombre_velCutoffScale": 0.442
     },
     "Overdub": {
       "dub_lfoDepth": 0.12,

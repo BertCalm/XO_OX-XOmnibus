@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "SNAP BELL": 0.45,
+    "COUPLING": 0.39,
+    "RESONANCE": 0.5
+  }
 }

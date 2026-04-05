@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "DUB CHOKE": 0.45,
+    "CHOKE SPEED": 0.45,
+    "ECHO": 0.4
+  }
 }

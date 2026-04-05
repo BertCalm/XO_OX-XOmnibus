@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT DEPTH": 0.45,
+    "FM DEPTH": 0.45,
+    "RELEASE LENGTH": 0.45,
+    "SHIMMER AETHER": 0.45
+  }
 }

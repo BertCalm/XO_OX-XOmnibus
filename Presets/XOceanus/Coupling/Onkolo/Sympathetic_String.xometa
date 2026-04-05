@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sympathetically resonating clavinet \u2014 migration creates a feedback path that extends the string's natural resonance.",
+  "description": "Sympathetically resonating clavinet — migration creates a feedback path that extends the string's natural resonance.",
   "tags": [
     "clavinet",
     "sympathetic",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.2,
+    "SPACE": 0.58
+  }
 }

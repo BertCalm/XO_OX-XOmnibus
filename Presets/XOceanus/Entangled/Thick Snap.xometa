@@ -60,7 +60,8 @@
       "poss_macroScurry": 0.373,
       "poss_filterEnvAmount": 0.472,
       "poss_lfo1Rate": 0.292,
-      "poss_lfo1Depth": 0.375
+      "poss_lfo1Depth": 0.375,
+      "poss_ampVelSens": 0.574
     }
   },
   "schema_version": 1,

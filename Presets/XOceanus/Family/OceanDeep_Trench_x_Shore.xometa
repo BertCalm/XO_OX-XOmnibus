@@ -68,5 +68,11 @@
         "amount": 0.5
       }
     ]
+  },
+  "macros": {
+    "PRESSURE": 0.135,
+    "CREATURE": 0.243,
+    "WRECK": 0.256,
+    "ABYSS": 0.603
   }
 }

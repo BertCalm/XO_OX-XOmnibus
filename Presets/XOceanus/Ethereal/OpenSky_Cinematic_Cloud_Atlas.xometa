@@ -81,7 +81,8 @@
       "sky_modSlot1Amt": 0.22,
       "sky_modSlot2Src": 1,
       "sky_modSlot2Dst": 0,
-      "sky_modSlot2Amt": 0.18
+      "sky_modSlot2Amt": 0.18,
+      "sky_velSensitivity": 0.434
     }
   },
   "macros": {

@@ -2,19 +2,32 @@
   "schema_version": 1,
   "name": "Sonar Canyon",
   "mood": "Deep",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Echolocation mapping a submarine canyon — clicks bouncing off vertical walls and returning with the canyon's geometry encoded in their delay patterns.",
-  "tags": ["deep", "orca", "canyon", "echoing", "oceanic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "orca",
+    "canyon",
+    "echoing",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.20,
+    "brightness": 0.2,
     "warmth": 0.52,
     "movement": 0.28,
-    "density": 0.50,
+    "density": 0.5,
     "space": 0.86,
     "aggression": 0.14
   },
@@ -27,10 +40,13 @@
       "orca_filterEnvAmt": 0.42,
       "orca_lfo1Rate": 0.07,
       "orca_lfo1Depth": 0.26,
-      "orca_huntMacro": 0.40
+      "orca_huntMacro": 0.4,
+      "orca_velCutoffAmt": 0.435
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.46,

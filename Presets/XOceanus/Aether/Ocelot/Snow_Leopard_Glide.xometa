@@ -30,7 +30,8 @@
       "ocelot_macro_character": 0.33,
       "ocelot_macro_coupling": 0.38,
       "ocelot_macro_movement": 0.28,
-      "ocelot_macro_space": 0.87
+      "ocelot_macro_space": 0.87,
+      "ocelot_floorVelocity": 0.462
     }
   },
   "schema_version": 1,

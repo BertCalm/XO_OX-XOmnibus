@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Biolumen Surge",
+  "mood": "Luminous",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep sea bioluminescent surge \u2014 anglerfish lure pulsing in the hadal zone, a 1-meter radius of cold blue light in permanent darkness.",
+  "tags": [
+    "luminous",
+    "bioluminescent",
+    "anglerfish",
+    "deep",
+    "surge",
+    "pulse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.22,
+    "movement": 0.58,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_entangle": 0.42,
+      "oxb_phaseErosion": 0.35,
+      "oxb_goldenResonance": 0.65,
+      "oxb_filterCutoff": 9200.0,
+      "oxb_filterRes": 0.22,
+      "oxb_attack": 0.2,
+      "oxb_decay": 1.2,
+      "oxb_sustain": 0.68,
+      "oxb_release": 4.5,
+      "oxb_lfo1Rate": 0.35,
+      "oxb_lfo1Depth": 0.28,
+      "oxb_macroCharacter": 0.48,
+      "oxb_macroMovement": 0.58,
+      "oxb_macroCoupling": 0.22,
+      "oxb_macroSpace": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.22,
+    "SPACE": 0.88
+  }
+}

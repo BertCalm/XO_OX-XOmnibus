@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Open Frequency",
   "mood": "Luminous",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Opcode's code architecture tuned to an open frequency spectrum — all bands accessible, the machine fully transparent and luminous, withholding nothing.",
-  "tags": ["luminous", "open", "transparent", "spectrum", "digital"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "open",
+    "transparent",
+    "spectrum",
+    "digital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -27,7 +40,7 @@
       "opco_filterEnvAmt": 0.55,
       "opco_codeDepth": 0.48,
       "opco_lfo1Rate": 0.07,
-      "opco_lfo1Depth": 0.20,
+      "opco_lfo1Depth": 0.2,
       "opco_lfo2Rate": 0.03,
       "opco_lfo2Depth": 0.12,
       "opco_attack": 0.002,
@@ -36,10 +49,13 @@
       "opco_release": 2.5,
       "opco_filterCutoff": 13000,
       "opco_filterRes": 0.16,
-      "opco_output": 0
+      "opco_output": 0,
+      "opco_velToIndex": 0.418
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.58,

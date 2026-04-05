@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Pressurized deep bass from underground dumpsters \u2014 maximum sub weight with wavefolded destruction.",
+  "description": "Pressurized deep bass from underground dumpsters — maximum sub weight with wavefolded destruction.",
   "dna": {
     "aggression": 0.7,
     "brightness": 0.3,
@@ -57,7 +57,8 @@
       "poss_trashAmount": 0.55,
       "poss_trashMode": 0,
       "poss_weightLevel": 0.7,
-      "poss_weightOctave": -2
+      "poss_weightOctave": -2,
+      "poss_ampVelSens": 0.44
     }
   },
   "schema_version": 1,

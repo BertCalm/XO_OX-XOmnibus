@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT VOID": 0.45,
+    "SNAP PULSE": 0.45,
+    "COUPLING": 0.258,
+    "DENSITY": 0.9
+  }
 }

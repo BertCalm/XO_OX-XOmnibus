@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT MOTION": 0.45,
+    "DRIFT FILTER": 0.45,
+    "COUPLING": 0.438,
+    "SHIMMER": 0.5
+  }
 }

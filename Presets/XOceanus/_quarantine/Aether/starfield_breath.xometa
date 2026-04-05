@@ -24,7 +24,7 @@
     "SPACE": 0.96
   },
   "mood": "Aether",
-  "name": "Starfield Breath",
+  "name": "Starfield Breath (Quarantine)",
   "parameters": {
     "Orbital": {}
   },
@@ -39,6 +39,6 @@
     "pairs": []
   },
   "tempo": null,
-  "description": "",
+  "description": "Bright cold aetheric sound from Orbital.",
   "quarantine_reason": "legacy_uncategorized"
 }

@@ -77,7 +77,8 @@
       "sky_masterVolume": 0.78,
       "sky_stereoWidth": 0.85,
       "sky_drive": 0.04,
-      "sky_fmDepth": 0.0
+      "sky_fmDepth": 0.0,
+      "sky_velSensitivity": 0.595
     }
   },
   "schema_version": 1,
@@ -93,5 +94,11 @@
     "atmospheric"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "KNOT": 0.454,
+    "RISE": 0.92,
+    "COUPLING": 0.45,
+    "SPACE": 0.9
+  }
 }

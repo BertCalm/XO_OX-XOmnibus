@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine cosmic aether \u2014 SNAP rare event, FAT void, DRIFT shimmer. Universe in miniature.",
+  "description": "Three-engine cosmic aether — SNAP rare event, FAT void, DRIFT shimmer. Universe in miniature.",
   "tags": [
     "snap",
     "fat",
@@ -135,5 +135,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP EVENT": 0.45,
+    "FAT VOID": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "COUPLING": 0.258
+  }
 }

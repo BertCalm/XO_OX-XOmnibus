@@ -74,7 +74,6 @@ namespace xoceanus
 //                  Filter Cutoff, Filter Resonance
 //
 //  Parameters (prefix: obnt_):
-//    obnt_mode            — 0=1D Elementary, 1=2D Life [stub]
 //    obnt_rule            — 0-255 Wolfram rule
 //    obnt_ruleMorph       — 0-1 blend to rule+N
 //    obnt_evolutionRate   — 0.1-50 Hz grid step rate

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Latin clavinet for montuno patterns \u2014 bright, articulate, mid-neck pickup, moderate wah. The salsa-funk crossover.",
+  "description": "Latin clavinet for montuno patterns — bright, articulate, mid-neck pickup, moderate wah. The salsa-funk crossover.",
   "tags": [
     "clavinet",
     "cuba",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.735,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

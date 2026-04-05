@@ -42,7 +42,8 @@
       "orph_lfo1Rate": 0.014,
       "orph_lfo1Depth": 0.11,
       "orph_attack": 0.02,
-      "orph_release": 10.0
+      "orph_release": 10.0,
+      "orph_velocitySensitivity": 0.456
     }
   },
   "coupling": {

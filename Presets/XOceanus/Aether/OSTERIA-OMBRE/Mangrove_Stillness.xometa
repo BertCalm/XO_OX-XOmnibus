@@ -43,7 +43,8 @@
       "ombre_macroSpace": 0.838,
       "ombre_filterEnvAmt": 0.419,
       "ombre_lfo1Rate": 0.014,
-      "ombre_lfo1Depth": 0.207
+      "ombre_lfo1Depth": 0.207,
+      "ombre_velCutoffScale": 0.306
     },
     "Osteria": {
       "level": 0.732,

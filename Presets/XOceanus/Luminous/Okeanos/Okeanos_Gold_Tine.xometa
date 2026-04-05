@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Golden bright tone. High brightness with medium warmth. Neither cold nor warm \u2014 golden.",
+  "description": "Golden bright tone. High brightness with medium warmth. Neither cold nor warm — golden.",
   "tags": [
     "rhodes",
     "golden",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

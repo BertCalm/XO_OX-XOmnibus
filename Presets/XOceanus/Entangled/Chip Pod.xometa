@@ -56,7 +56,8 @@
       "orca_pitchRand": 0.18,
       "orca_podSync": 0.27,
       "orca_wavetablePos": 0.187,
-      "orca_wavetableScan": 0.333
+      "orca_wavetableScan": 0.333,
+      "orca_velCutoffAmt": 0.561
     },
     "Overworld": {
       "ow_attack": 0.0,
@@ -77,5 +78,11 @@
     "overworld"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.508,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.601,
+    "SPACE": 0.536
+  }
 }

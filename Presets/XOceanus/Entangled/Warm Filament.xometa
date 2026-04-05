@@ -44,7 +44,8 @@
       "bob_macroCoupling": 0.095,
       "bob_release": 1.0,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.498
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.472,
@@ -70,7 +71,8 @@
       "owl_resonantFeedback": 0.291,
       "owl_resonantPitch": 0.361,
       "owl_shimmer": 0.115,
-      "owl_subLevel": 0.241
+      "owl_subLevel": 0.241,
+      "owl_velocity": 0.647
     }
   },
   "schema_version": 1,
@@ -82,5 +84,11 @@
     "oblong"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.456,
+    "MOVEMENT": 0.327,
+    "COUPLING": 0.657,
+    "SPACE": 0.42
+  }
 }

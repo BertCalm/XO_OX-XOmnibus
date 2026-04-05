@@ -67,7 +67,8 @@
       "over_macroDepth": 0.55,
       "over_macroColor": 0.6,
       "over_macroCoupling": 0.82,
-      "over_macroSpace": 0.45
+      "over_macroSpace": 0.45,
+      "over_velBright": 0.455
     }
   },
   "tags": [

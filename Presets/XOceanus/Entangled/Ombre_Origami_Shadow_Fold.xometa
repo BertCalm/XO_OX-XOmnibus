@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.719,
       "ombre_spaceMix": 0.451,
       "ombre_toneA": 4366.9,
-      "ombre_toneB": 2713.5
+      "ombre_toneB": 2713.5,
+      "ombre_velCutoffScale": 0.386
     },
     "Origami": {
       "origami_filterCutoff": 6329.6,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.401,
+    "MOVEMENT": 0.646,
+    "COUPLING": 0.48,
+    "SPACE": 0.698
+  }
 }

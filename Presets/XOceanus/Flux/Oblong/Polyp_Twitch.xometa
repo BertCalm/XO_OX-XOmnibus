@@ -84,5 +84,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BOB MODE": 0.5,
+    "CURIOSITY": 0.5,
+    "FILTER CHAR": 0.5,
+    "SPACE": 0.2
+  }
 }

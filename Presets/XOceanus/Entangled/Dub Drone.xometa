@@ -69,7 +69,8 @@
       "owl_resonantFeedback": 0.333,
       "owl_resonantPitch": 0.627,
       "owl_shimmer": 0.407,
-      "owl_subLevel": 0.276
+      "owl_subLevel": 0.276,
+      "owl_velocity": 0.648
     }
   },
   "schema_version": 1,
@@ -81,5 +82,11 @@
     "overdub"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.383,
+    "MOVEMENT": 0.371,
+    "COUPLING": 0.647,
+    "SPACE": 0.563
+  }
 }

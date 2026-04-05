@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Tide",
+  "mood": "Organic",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dinoflagellates glowing blue-green at wave impact \u2014 single-celled organisms producing cold light via luciferin oxidation, an ancient chemical conversation with the sea.",
+  "tags": [
+    "organic",
+    "bioluminescent",
+    "dinoflagellate",
+    "tide",
+    "glow",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.32,
+    "movement": 0.52,
+    "density": 0.38,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.55,
+      "weave_topologyType": 1,
+      "weave_couplingMatrix": 0.28,
+      "weave_resonance": 0.42,
+      "weave_filterCutoff": 6800.0,
+      "weave_filterRes": 0.18,
+      "weave_attack": 0.6,
+      "weave_decay": 2.0,
+      "weave_sustain": 0.72,
+      "weave_release": 4.5,
+      "weave_lfo1Rate": 0.18,
+      "weave_lfo1Depth": 0.25,
+      "weave_macroCharacter": 0.42,
+      "weave_macroMovement": 0.52,
+      "weave_macroCoupling": 0.28,
+      "weave_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.28,
+    "SPACE": 0.72
+  }
+}

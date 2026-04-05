@@ -48,14 +48,15 @@
       "ofr_v0_decay": 0.65,
       "ofr_v0_tune": -7.0,
       "ofr_v1_decay": 0.45,
-      "ofr_v3_decay": 0.85
+      "ofr_v3_decay": 0.85,
+      "ofr_velToSnap": 0.408
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Gentle spacious aetheric sound from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

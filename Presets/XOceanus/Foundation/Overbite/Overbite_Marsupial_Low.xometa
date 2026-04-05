@@ -51,7 +51,8 @@
       "poss_subLevel": 0.85,
       "poss_subOctave": -1,
       "poss_weightLevel": 0.7,
-      "poss_weightOctave": -1
+      "poss_weightOctave": -1,
+      "poss_ampVelSens": 0.34
     }
   },
   "schema_version": 1,

@@ -2,26 +2,40 @@
   "schema_version": 1,
   "name": "Vine and Stone",
   "mood": "Organic",
-  "engines": ["Overgrow", "Oware"],
+  "engines": [
+    "Overgrow",
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Persistent plant growth cracking ancient stone — each decay transient from the stone accelerates the vine's growth rate.",
-  "tags": ["organic", "vine", "stone", "coupled", "persistence"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "vine",
+    "stone",
+    "coupled",
+    "persistence"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
-    "brightness": 0.30,
-    "warmth": 0.70,
-    "movement": 0.40,
-    "density": 0.50,
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.5,
     "space": 0.52,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Overgrow": {
       "grow_macroCharacter": 0.42,
-      "grow_macroMovement": 0.40,
+      "grow_macroMovement": 0.4,
       "grow_macroCoupling": 0.22,
       "grow_macroSpace": 0.52,
       "grow_growthRate": 0.44,
@@ -35,13 +49,14 @@
       "owr_macroCharacter": 0.44,
       "owr_macroMovement": 0.44,
       "owr_macroCoupling": 0.22,
-      "owr_macroSpace": 0.50,
-      "owr_material": 0.80,
+      "owr_macroSpace": 0.5,
+      "owr_material": 0.8,
       "owr_filterEnvAmt": 0.46,
       "owr_lfo1Rate": 0.07,
       "owr_lfo1Depth": 0.22,
       "owr_lfo2Rate": 0.03,
-      "owr_lfo2Depth": 0.16
+      "owr_lfo2Depth": 0.16,
+      "owr_malletVelocity": 0.638
     }
   },
   "coupling": {

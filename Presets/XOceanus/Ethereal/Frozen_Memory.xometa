@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Memory",
   "mood": "Ethereal",
-  "engines": ["Oxytocin"],
+  "engines": [
+    "Oxytocin"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Commitment at maximum, passion and intimacy withdrawn. A relationship's memory held in amber — no movement, only echo.",
-  "tags": ["ethereal", "ghost", "oxytocin", "transparent", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "ghost",
+    "oxytocin",
+    "transparent",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,10 +64,13 @@
       "oxy_voices": 2
     }
   },
-  "coupling": {"pairs": []},
-  "couplingIntensity": "None",
-  "version": "1.0.0",
-  "tempo": null,
-  "engines": ["Oxytocin"],
-  "description": "Commitment at maximum, passion and intimacy withdrawn. A relationship's memory held in amber — no movement, only echo."
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.305,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.88
+  }
 }

@@ -41,7 +41,8 @@
       "opal_macroCharacter": 0.0833,
       "opal_macroCoupling": 0.393,
       "opal_macroMovement": 0.0941,
-      "opal_macroSpace": 0.8412
+      "opal_macroSpace": 0.8412,
+      "opal_ampVelSens": 0.511
     },
     "Overdub": {
       "dub_lfoDepth": 0.12,

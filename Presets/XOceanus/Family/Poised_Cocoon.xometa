@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.33,
       "bob_macroCoupling": 0.042,
       "bob_macroMovement": 0.064,
-      "bob_macroSpace": 0.032
+      "bob_macroSpace": 0.032,
+      "bob_velFilter": 0.413
     },
     "Ole": {
       "ole_macroCharacter": 0.33,

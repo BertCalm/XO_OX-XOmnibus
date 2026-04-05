@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Shimmer Veil",
+  "name": "Shimmer Veil (OpenSky + Obscura)",
   "mood": "Coupling",
   "engines": [
     "OpenSky",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPENSKY shimmer tail feeds OBSCURA plate stiffness character \u2014 ascending euphoria leaving silver-grain impressions on a daguerreotype surface.",
+  "description": "OPENSKY shimmer tail feeds OBSCURA plate stiffness character — ascending euphoria leaving silver-grain impressions on a daguerreotype surface.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "sky_macroCharacter": 0.54,
       "sky_macroMovement": 0.56,
       "sky_macroCoupling": 0.62,
-      "sky_macroSpace": 0.62
+      "sky_macroSpace": 0.62,
+      "sky_velSensitivity": 0.609
     },
     "Obscura": {
       "obscura_stiffness": 0.55,

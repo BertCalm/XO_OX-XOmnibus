@@ -139,5 +139,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH MIDDLE": 0.45,
+    "FAT GROUND": 0.45,
+    "DRIFT SKY": 0.45,
+    "COUPLING": 0.438
+  }
 }

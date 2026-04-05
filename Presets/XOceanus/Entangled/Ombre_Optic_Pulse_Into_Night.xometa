@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.631,
       "ombre_spaceMix": 0.778,
       "ombre_toneA": 7273.4,
-      "ombre_toneB": 2095.0
+      "ombre_toneB": 2095.0,
+      "ombre_velCutoffScale": 0.378
     },
     "Optic": {
       "optic_filterCutoff": 6104.0,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.455,
+    "MOVEMENT": 0.675,
+    "COUPLING": 0.63,
+    "SPACE": 0.644
+  }
 }

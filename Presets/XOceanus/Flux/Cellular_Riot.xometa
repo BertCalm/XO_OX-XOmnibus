@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cellular Riot",
   "mood": "Flux",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Coral colony cellular automata in maximum emergence state. Rule set creating unstable chaotic growth patterns.",
-  "tags": ["flux", "aggressive", "cellular", "emergence", "chaos"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "aggressive",
+    "cellular",
+    "emergence",
+    "chaos"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "org_attackTime": 0.012,
       "org_decayTime": 0.25,
       "org_sustain": 0.4,
-      "org_releaseTime": 0.25
+      "org_releaseTime": 0.25,
+      "org_velCutoff": 0.761
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.82,

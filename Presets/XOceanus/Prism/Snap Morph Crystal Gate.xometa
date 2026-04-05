@@ -68,5 +68,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP CRYSTAL": 0.45,
+    "MORPH PRISM": 0.45,
+    "COUPLING": 0.54,
+    "FILTER": 0.45
+  }
 }

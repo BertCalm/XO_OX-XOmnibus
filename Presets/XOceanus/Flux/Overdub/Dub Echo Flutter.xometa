@@ -74,5 +74,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DELAY RATE": 0.45,
+    "FEEDBACK": 0.45,
+    "FILTER": 0.45,
+    "DRIVE": 0.5
+  }
 }

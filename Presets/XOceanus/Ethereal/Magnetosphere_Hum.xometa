@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Magnetosphere Hum",
+  "mood": "Ethereal",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Earth's magnetosphere deflecting solar wind \u2014 a teardrop-shaped bubble of plasma extending 60,000 km sunward, humming at frequencies too low for human ears to register.",
+  "tags": [
+    "ethereal",
+    "magnetosphere",
+    "solar wind",
+    "plasma",
+    "infrasound",
+    "invisible"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.45,
+    "movement": 0.12,
+    "density": 0.32,
+    "space": 0.96,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroMeddling": 0.12,
+      "ohm_filterCutoff": 4200.0,
+      "ohm_filterRes": 0.08,
+      "ohm_attack": 4.5,
+      "ohm_decay": 7.0,
+      "ohm_sustain": 0.92,
+      "ohm_release": 14.0,
+      "ohm_lfo1Rate": 0.008,
+      "ohm_lfo1Depth": 0.08,
+      "ohm_macroCharacter": 0.25,
+      "ohm_macroMovement": 0.12,
+      "ohm_macroCoupling": 0.05,
+      "ohm_macroSpace": 0.96
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.05,
+    "SPACE": 0.96
+  }
+}

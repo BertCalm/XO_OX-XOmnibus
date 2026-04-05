@@ -44,7 +44,8 @@
       "ofr_digCuriosity": 0.7,
       "ofr_digFlow": 0.8,
       "ofr_transientSnap": 0.3,
-      "ofr_masterWidth": 0.88
+      "ofr_masterWidth": 0.88,
+      "ofr_velToSnap": 0.42
     }
   },
   "schema_version": 1,

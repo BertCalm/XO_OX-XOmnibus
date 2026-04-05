@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Bright cold evolving texture from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.756,
+    "MOVEMENT": 0.411,
+    "COUPLING": 0.2,
+    "SPACE": 0.309
+  }
 }

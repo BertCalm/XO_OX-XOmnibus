@@ -65,5 +65,11 @@
     "drift"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

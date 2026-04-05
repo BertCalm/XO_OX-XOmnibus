@@ -2,18 +2,34 @@
   "schema_version": 1,
   "name": "Grain Shadow",
   "mood": "Atmosphere",
-  "engines": ["Opal", "Ombre"],
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular clouds cast thin shadows through memory's half-light. Opal's grains drift into the border where Ombre keeps its forgetting.",
-  "tags": ["atmosphere", "whisper", "coupling", "granular", "shadow", "memory", "drift"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "granular",
+    "shadow",
+    "memory",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.28,
     "warmth": 0.66,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.44,
     "space": 0.84,
     "aggression": 0.02
@@ -23,13 +39,14 @@
       "opal_macroCharacter": 0.38,
       "opal_macroMovement": 0.34,
       "opal_macroCoupling": 0.13,
-      "opal_macroSpace": 0.80,
-      "opal_grainSize": 0.40,
+      "opal_macroSpace": 0.8,
+      "opal_grainSize": 0.4,
       "opal_filterEnvAmt": 0.32,
       "opal_lfo1Rate": 0.04,
-      "opal_lfo1Depth": 0.20,
+      "opal_lfo1Depth": 0.2,
       "opal_attack": 1.2,
-      "opal_release": 4.5
+      "opal_release": 4.5,
+      "opal_ampVelSens": 0.243
     },
     "Ombre": {
       "ombre_macroCharacter": 0.35,
@@ -41,7 +58,8 @@
       "ombre_lfo1Rate": 0.02,
       "ombre_lfo1Depth": 0.13,
       "ombre_attack": 2.0,
-      "ombre_release": 6.5
+      "ombre_release": 6.5,
+      "ombre_velCutoffScale": 0.243
     }
   },
   "coupling": {

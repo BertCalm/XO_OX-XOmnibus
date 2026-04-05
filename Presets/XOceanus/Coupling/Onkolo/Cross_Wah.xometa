@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wah driven by coupling input \u2014 another engine's output modulates the filter envelope amount. Reactive wah.",
+  "description": "Wah driven by coupling input — another engine's output modulates the filter envelope amount. Reactive wah.",
   "tags": [
     "clavinet",
     "cross",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RAIN": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.8
+  }
 }

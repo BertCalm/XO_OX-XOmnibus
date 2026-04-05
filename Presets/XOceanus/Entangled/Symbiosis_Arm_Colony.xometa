@@ -61,7 +61,8 @@
       "org_macroMutate": 0.5,
       "org_filterEnvAmt": 0.58,
       "org_lfo1Rate": 0.102,
-      "org_lfo1Depth": 0.328
+      "org_lfo1Depth": 0.328,
+      "org_velCutoff": 0.525
     }
   },
   "coupling": {

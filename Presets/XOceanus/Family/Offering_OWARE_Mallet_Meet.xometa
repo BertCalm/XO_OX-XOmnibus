@@ -46,7 +46,8 @@
       "ofr_v6_level": 0.85,
       "ofr_v6_decay": 0.4,
       "ofr_v6_tune": 0.2,
-      "ofr_masterWidth": 0.6
+      "ofr_masterWidth": 0.6,
+      "ofr_velToSnap": 0.585
     }
   },
   "schema_version": 1,

@@ -147,6 +147,12 @@ target_sources(XOceanus PRIVATE
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
     Source/Core/MPEManager.h
+    Source/Core/EpicChainSlotController.h
+    Source/Core/EpicChainSlotController.cpp
+    Source/DSP/Effects/OnrushChain.cpp
+    Source/DSP/Effects/OmnistereoChain.cpp
+    Source/DSP/Effects/ObliterateChain.cpp
+    Source/DSP/Effects/ObscurityChain.cpp
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
@@ -351,6 +357,11 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/fXObscura.h
     Source/DSP/Effects/fXOratory.h
     Source/DSP/Effects/fXOnslaught.h
+    Source/DSP/Effects/fXOxide.h
+    Source/DSP/Effects/OnrushChain.h
+    Source/DSP/Effects/OmnistereoChain.h
+    Source/DSP/Effects/ObliterateChain.h
+    Source/DSP/Effects/ObscurityChain.h
 
     # Export pipeline
     Source/Export/XPNVelocityCurves.h
@@ -471,6 +482,10 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Offering/OfferingTransient.h
     Source/Engines/Offering/OfferingEngine.cpp
 
+    # OXIDIZE — age-based corrosion synthesis engine
+    Source/Engines/Oxidize/OxidizeEngine.h
+    Source/Engines/Oxidize/OxidizeEngine.cpp
+
     # Late-registered engines (closes #162)
     Source/Engines/Obiont/ObiontEngine.h
     Source/Engines/Obiont/ObiontEngine.cpp
@@ -488,6 +503,8 @@ target_sources(XOceanus PRIVATE
     Source/Shapers/Oxide/OxideShaper.cpp
     Source/Shapers/Observe/ObserveShaper.h
     Source/Shapers/Observe/ObserveShaper.cpp
+    Source/Shapers/FXOxide/FXOxideShaper.h
+    Source/Shapers/FXOxide/FXOxideShaper.cpp
 
     # Main processor
     Source/XOceanusProcessor.h

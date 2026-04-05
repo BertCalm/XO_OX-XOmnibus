@@ -76,5 +76,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FILTER": 0.45,
+    "VIBRATO": 0.45,
+    "ATTACK": 0.45,
+    "GLIDE": 0.45
+  }
 }

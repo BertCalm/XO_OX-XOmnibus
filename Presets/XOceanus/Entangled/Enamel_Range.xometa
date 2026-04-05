@@ -53,7 +53,8 @@
       "ocelot_macroCoupling": 0.589,
       "ocelot_macroSpace": 0.438,
       "ocelot_filterEnvDepth": 0.416,
-      "ocelot_lfoRate": 0.132
+      "ocelot_lfoRate": 0.132,
+      "ocelot_floorVelocity": 0.813
     },
     "Overbite": {
       "poss_gnashAmount": 0.552,
@@ -66,7 +67,8 @@
       "poss_macroPlayDead": 0.581,
       "poss_filterEnvAmount": 0.416,
       "poss_lfo1Rate": 0.132,
-      "poss_lfo1Depth": 0.354
+      "poss_lfo1Depth": 0.354,
+      "poss_ampVelSens": 0.542
     }
   },
   "schema_version": 1,

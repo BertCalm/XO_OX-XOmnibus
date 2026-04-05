@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "High-pass filtered synth voice for scurrying top-end \u2014 thin bright opossum energy for treble layers.",
+  "description": "High-pass filtered synth voice for scurrying top-end — thin bright opossum energy for treble layers.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.75,
@@ -53,7 +53,8 @@
       "poss_oscAShape": 0.6,
       "poss_oscAWaveform": 3,
       "poss_oscBWaveform": 2,
-      "poss_oscMix": 0.45
+      "poss_oscMix": 0.45,
+      "poss_ampVelSens": 0.65
     }
   },
   "schema_version": 1,

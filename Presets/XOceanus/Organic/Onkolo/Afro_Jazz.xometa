@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Hugh Masekela / Dollar Brand intersection \u2014 clavinet as jazz-African crossover. Relaxed wah, open tone, conversational.",
+  "description": "Hugh Masekela / Dollar Brand intersection — clavinet as jazz-African crossover. Relaxed wah, open tone, conversational.",
   "tags": [
     "clavinet",
     "afro-jazz",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
 }

@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB REVERB": 0.45,
+    "SHIMMER LEVEL": 0.45,
+    "COUPLING": 0.39,
+    "TAIL": 0.45
+  }
 }

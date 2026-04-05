@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Bay Assault",
+  "mood": "Kinetic",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bay Area prime-delay fog driven to maximum intensity — allpass transforms into aggression, curiosity becomes violence.",
+  "tags": ["kinetic", "aggressive", "bay-area", "assault", "hard"],
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.85,
+    "space": 0.22,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_transientSnap": 0.92,
+      "ofr_transientPitch": 0.82,
+      "ofr_transientSat": 0.55,
+      "ofr_dustVinyl": 0.18,
+      "ofr_dustTape": 0.15,
+      "ofr_dustBits": 16,
+      "ofr_cityMode": 4,
+      "ofr_cityBlend": 0.88,
+      "ofr_cityIntensity": 0.92,
+      "ofr_digCuriosity": 0.92,
+      "ofr_digComplexity": 0.88,
+      "ofr_digFlow": 0.82,
+      "ofr_masterWidth": 0.62,
+      "ofr_masterLevel": 0.90,
+      "ofr_velToSnap": 0.92,
+      "ofr_velToBody": 0.72,
+      "ofr_v0_decay": 0.22,
+      "ofr_v0_body": 0.92,
+      "ofr_v1_decay": 0.14,
+      "ofr_v5_level": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "DIG": 0.92,
+    "CITY": 0.88,
+    "FLIP": 0.55,
+    "DUST": 0.18
+  }
+}

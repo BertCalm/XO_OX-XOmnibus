@@ -1,5 +1,5 @@
 import { decodeArrayBuffer, generateWaveformPeaks } from './audioUtils';
-import { encodeWav } from './wavEncoder';
+import { encodeWavAsync } from './wavEncoder';
 import { getAudioContext } from './audioContext';
 
 export type EraMode = '1993-grit' | '2000-hifi' | '2024-crystal';
@@ -306,7 +306,7 @@ export async function processEraFromBuffer(
 ): Promise<{ buffer: ArrayBuffer; peaks: number[] }> {
   const audioBuffer = await decodeArrayBuffer(rawBuffer);
   const processed = processEra(audioBuffer, config);
-  const buffer = encodeWav(processed, bitDepth);
+  const buffer = await encodeWavAsync(processed, bitDepth);
   const peaks = generateWaveformPeaks(processed);
   return { buffer, peaks };
 }

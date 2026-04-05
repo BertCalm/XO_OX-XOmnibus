@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Corpus Maximum",
   "mood": "Entangled",
-  "engines": ["Onset", "Ouroboros"],
+  "engines": [
+    "Onset",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All 8 XVC ghost voices activated across both engines — ONSET's complete voice architecture entangled with OUROBOROS chaos at full leash release. Maximum cross-voice coupling.",
-  "tags": ["entangled", "dense", "onset", "ouroboros", "xvc", "ghost"],
-  "macroLabels": ["VOICES", "CHAOS", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "dense",
+    "onset",
+    "ouroboros",
+    "xvc",
+    "ghost"
+  ],
+  "macroLabels": [
+    "VOICES",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -76,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "VOICES": 0.45,
+    "CHAOS": 0.296,
+    "COUPLING": 0.69,
+    "SPACE": 0.42
+  }
 }

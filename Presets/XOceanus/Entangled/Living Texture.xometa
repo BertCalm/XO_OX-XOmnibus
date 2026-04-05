@@ -61,7 +61,8 @@
       "poss_oscBWaveform": 0,
       "poss_subLevel": 0.55,
       "poss_trashAmount": 0.0,
-      "poss_trashMode": 0
+      "poss_trashMode": 0,
+      "poss_ampVelSens": 0.488
     }
   },
   "schema_version": 1,
@@ -74,5 +75,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.35,
+    "SCURRY": 0.239,
+    "SPACE": 0.1
+  }
 }

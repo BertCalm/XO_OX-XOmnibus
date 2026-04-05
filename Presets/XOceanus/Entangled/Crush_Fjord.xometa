@@ -76,7 +76,8 @@
       "orca_macroSpace": 0.439,
       "orca_filterEnvAmt": 0.523,
       "orca_lfo1Rate": 0.173,
-      "orca_lfo1Depth": 0.217
+      "orca_lfo1Depth": 0.217,
+      "orca_velCutoffAmt": 0.588
     }
   },
   "schema_version": 1,

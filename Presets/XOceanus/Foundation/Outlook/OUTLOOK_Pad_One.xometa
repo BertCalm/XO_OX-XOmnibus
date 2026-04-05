@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Sine pad at default settings \u2014 teaches the engine's natural voice. All parameters near center. Modify from here.",
+  "description": "Sine pad at default settings — teaches the engine's natural voice. All parameters near center. Modify from here.",
   "tags": [
     "init",
     "sine",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
   }
 }

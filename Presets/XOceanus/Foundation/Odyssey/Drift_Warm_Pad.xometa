@@ -76,5 +76,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "HAZE": 0.4,
+    "SHIMMER": 0.5,
+    "FILTER": 0.45,
+    "ATTACK": 0.45
+  }
 }

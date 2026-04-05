@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Bite Ring",
   "mood": "Entangled",
-  "engines": ["Overbite", "Onset"],
+  "engines": [
+    "Overbite",
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Possum bite audio ring-modulating percussive transient. Bite signal and impact signal annihilate each other.",
-  "tags": ["entangled", "aggressive", "bite", "ring-mod", "transient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "bite",
+    "ring-mod",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -34,7 +48,8 @@
       "poss_attackTime": 0.006,
       "poss_decayTime": 0.22,
       "poss_sustain": 0.3,
-      "poss_releaseTime": 0.18
+      "poss_releaseTime": 0.18,
+      "poss_ampVelSens": 0.637
     },
     "Onset": {
       "perc_macroCharacter": 0.88,

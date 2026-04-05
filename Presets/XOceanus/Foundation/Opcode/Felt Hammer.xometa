@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Low-index FM with gentle attack \u2014 mimics a felt-dampened digital piano. Warm, restrained, deeply reliable.",
+  "description": "Low-index FM with gentle attack — mimics a felt-dampened digital piano. Warm, restrained, deeply reliable.",
   "tags": [
     "fm",
     "piano",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.6
+  }
 }

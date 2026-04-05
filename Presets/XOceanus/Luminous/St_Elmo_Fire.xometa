@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "St Elmo Fire",
+  "mood": "Luminous",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Corona discharge on a ship's mast during electrical storms \u2014 plasma glow at points where the electric field exceeds air's dielectric strength. Sailors' omen of uncertain weather.",
+  "tags": [
+    "luminous",
+    "plasma",
+    "corona",
+    "discharge",
+    "maritime",
+    "electrical",
+    "omen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.35,
+    "movement": 0.55,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_armDepth": 0.62,
+      "owit_chromatophoreRate": 0.55,
+      "owit_filterCutoff": 9800.0,
+      "owit_filterRes": 0.28,
+      "owit_attack": 0.03,
+      "owit_decay": 0.8,
+      "owit_sustain": 0.55,
+      "owit_release": 3.0,
+      "owit_lfo1Rate": 0.45,
+      "owit_lfo1Depth": 0.35,
+      "owit_macroCharacter": 0.55,
+      "owit_macroMovement": 0.55,
+      "owit_macroCoupling": 0.22,
+      "owit_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.22,
+    "SPACE": 0.62
+  }
+}

@@ -69,5 +69,11 @@
       }
     ]
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "PRESSURE": 0.2,
+    "CREATURE": 0.243,
+    "WRECK": 0.256,
+    "ABYSS": 0.603
+  }
 }

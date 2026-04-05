@@ -41,7 +41,8 @@
       "ofr_transientPitch": 0.5,
       "ofr_digCuriosity": 0.65,
       "ofr_masterWidth": 0.7,
-      "ofr_lfo1Depth": 0.1
+      "ofr_lfo1Depth": 0.1,
+      "ofr_velToSnap": 0.468
     }
   },
   "schema_version": 1,

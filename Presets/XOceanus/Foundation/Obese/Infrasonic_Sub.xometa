@@ -69,5 +69,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "MASS": 0.9,
+    "SONG": 0.45,
+    "MOJO": 0.45,
+    "SURFACE": 0.536
+  }
 }

@@ -48,7 +48,8 @@
     "Ocelot": {
       "ocelot_biome": 0,
       "ocelot_camouflage": 0.4,
-      "ocelot_sprint": 0.5
+      "ocelot_sprint": 0.5,
+      "ocelot_floorVelocity": 0.753
     },
     "Ouroboros": {
       "ouro_chaosIndex": 0.5,

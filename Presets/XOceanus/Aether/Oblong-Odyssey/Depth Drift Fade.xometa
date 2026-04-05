@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB fading into DRIFT shimmer \u2014 warmth dissolves into pure frequency content.",
+  "description": "BOB fading into DRIFT shimmer — warmth dissolves into pure frequency content.",
   "tags": [
     "bob",
     "drift",
@@ -74,7 +74,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.306
     },
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -127,5 +128,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB FADE": 0.45,
+    "DRIFT DISSOLVE": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.92
+  }
 }

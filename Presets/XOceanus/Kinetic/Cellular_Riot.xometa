@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Cellular Riot",
+  "name": "Cellular Riot (Kinetic)",
   "mood": "Kinetic",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Coral colony cellular automata at maximum growth rate — every rule slot firing, emergence lime generating texture at every frequency. Relentless generative mass.",
-  "tags": ["kinetic", "dense", "organism", "cellular", "generative", "riot"],
-  "macroLabels": ["GROWTH", "RULE", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "dense",
+    "organism",
+    "cellular",
+    "generative",
+    "riot"
+  ],
+  "macroLabels": [
+    "GROWTH",
+    "RULE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -42,9 +56,18 @@
       "org_macroCharacter": 0.85,
       "org_macroMovement": 0.95,
       "org_macroCoupling": 0.45,
-      "org_macroSpace": 0.22
+      "org_macroSpace": 0.22,
+      "org_velCutoff": 0.77
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "GROWTH": 0.45,
+    "RULE": 0.415,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
 }

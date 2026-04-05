@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Antipodal Resonance",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Earth's antipodal seismic focus — S-waves converging at the geometric opposite of an earthquake epicenter, a ghostly mirror resonance arriving 20 minutes later.",
+  "tags": [
+    "ethereal",
+    "antipodal",
+    "seismic",
+    "convergence",
+    "mirror",
+    "earth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.42,
+    "movement": 0.15,
+    "density": 0.32,
+    "space": 0.95,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_cfDepth": 0.62,
+      "over_convergentNum": 0.42,
+      "over_spectralSpread": 0.78,
+      "over_filterEnvAmt": 0.22,
+      "over_filterCutoff": 5500.0,
+      "over_filterRes": 0.15,
+      "over_lfo1Rate": 0.02,
+      "over_lfo1Depth": 0.12,
+      "over_attack": 3.5,
+      "over_decay": 5.0,
+      "over_sustain": 0.88,
+      "over_release": 10.0,
+      "over_macroCharacter": 0.38,
+      "over_macroMovement": 0.15,
+      "over_macroCoupling": 0.1,
+      "over_macroSpace": 0.95,
+      "over_velBright": 0.274
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.1,
+    "SPACE": 0.95
+  }
+}

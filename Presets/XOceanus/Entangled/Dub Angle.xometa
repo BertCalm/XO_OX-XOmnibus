@@ -78,5 +78,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.537,
+    "MOVEMENT": 0.688,
+    "COUPLING": 0.54,
+    "SPACE": 0.667
+  }
 }

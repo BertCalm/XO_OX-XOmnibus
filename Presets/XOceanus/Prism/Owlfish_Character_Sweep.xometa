@@ -76,7 +76,8 @@
       "owl_subLevel3": 0.45,
       "owl_subLevel4": 0.25,
       "owl_subMix": 0.65,
-      "owl_subWave": 0.2
+      "owl_subWave": 0.2,
+      "owl_velocity": 0.845
     }
   },
   "schema_version": 1,
@@ -91,5 +92,11 @@
     "morphing"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

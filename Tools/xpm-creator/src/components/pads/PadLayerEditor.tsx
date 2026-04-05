@@ -10,7 +10,7 @@ import { midiNoteToName } from '@/types';
 import { generateGhostNote } from '@/lib/audio/ghostNoteGenerator';
 import { flipPhase } from '@/lib/audio/chopProcessors';
 import { generateWaveformPeaks } from '@/lib/audio/audioUtils';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { resamplePad } from '@/lib/audio/padResampler';
 import { useEnvelopeStore } from '@/stores/envelopeStore';
 import { getCachedBuffer, getDecodedBuffer, invalidateCache } from '@/lib/audio/audioBufferCache';
@@ -267,7 +267,7 @@ export default function PadLayerEditor() {
                     try {
                       const audioBuffer = await getDecodedBuffer(sample.id, sample.buffer);
                       const ghostBuffer = await generateGhostNote(audioBuffer);
-                      const ghostWav = encodeWav(ghostBuffer, 16);
+                      const ghostWav = await encodeWavAsync(ghostBuffer, 16);
                       const ghostPeaks = generateWaveformPeaks(ghostBuffer);
 
                       const ghostSample: AudioSample = {
@@ -356,7 +356,7 @@ export default function PadLayerEditor() {
                     try {
                       const audioBuffer = await getDecodedBuffer(sample.id, sample.buffer);
                       const flipped = flipPhase(audioBuffer);
-                      const flippedWav = encodeWav(flipped, sample.bitDepth || 16);
+                      const flippedWav = await encodeWavAsync(flipped, sample.bitDepth || 16);
                       const flippedPeaks = generateWaveformPeaks(flipped);
 
                       updateSample(sample.id, {
@@ -447,7 +447,7 @@ export default function PadLayerEditor() {
                       const sampleLookup = (sampleId: string) => getCachedBuffer(sampleId);
 
                       const rendered = await resamplePad(currentPad, envSettings, sampleLookup, 127);
-                      const wavData = encodeWav(rendered, 16);
+                      const wavData = await encodeWavAsync(rendered, 16);
                       const newPeaks = generateWaveformPeaks(rendered);
 
                       const resampledSample: AudioSample = {

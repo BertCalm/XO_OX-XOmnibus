@@ -77,7 +77,8 @@
       "bob_voiceMode": 0,
       "bob_polyphony": 4,
       "bob_glide": 0.0,
-      "bob_level": 0.8
+      "bob_level": 0.8,
+      "bob_velFilter": 0.463
     },
     "Orbweave": {
       "weave_knotDepth": 0.45,

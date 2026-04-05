@@ -55,7 +55,8 @@
       "bob_oscA_wave": 2.0,
       "bob_oscB_blend": 0.65,
       "bob_oscB_detune": 4.0,
-      "bob_oscB_wave": 3.0
+      "bob_oscB_wave": 3.0,
+      "bob_velFilter": 0.318
     }
   },
   "schema_version": 1,
@@ -67,5 +68,11 @@
     "deep"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.209,
+    "MOVEMENT": 0.718,
+    "COUPLING": 0.2,
+    "SPACE": 0.506
+  }
 }

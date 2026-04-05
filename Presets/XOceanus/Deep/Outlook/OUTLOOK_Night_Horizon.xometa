@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Dark formant pair with near-minimum vista \u2014 the horizon at the darkest point of night. Wide, cold, and far.",
+  "description": "Dark formant pair with near-minimum vista — the horizon at the darkest point of night. Wide, cold, and far.",
   "tags": [
     "night",
     "formant",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.16,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
   }
 }

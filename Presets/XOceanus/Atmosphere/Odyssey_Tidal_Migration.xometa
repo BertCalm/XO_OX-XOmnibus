@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TIDAL DEPTH": 0.45,
+    "FM SIDEBANDS": 0.45,
+    "TIDAL SPEED": 0.45,
+    "REVERB OPEN": 0.45
+  }
 }

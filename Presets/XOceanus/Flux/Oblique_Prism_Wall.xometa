@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Oblique Prism Wall",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic bounce engine at maximum wall impact — all prism colors active, RTJ groove and Tame Impala shimmer simultaneously occupying every frequency band.",
-  "tags": ["flux", "dense", "oblique", "prism", "bounce", "wall"],
-  "macroLabels": ["PRISM", "GROOVE", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "dense",
+    "oblique",
+    "prism",
+    "bounce",
+    "wall"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "GROOVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,6 +58,14 @@
       "oblq_macroSpace": 0.48
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "PRISM": 0.5,
+    "GROOVE": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

@@ -91,5 +91,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.536,
+    "MOVEMENT": 0.696,
+    "COUPLING": 0.45,
+    "SPACE": 0.539
+  }
 }

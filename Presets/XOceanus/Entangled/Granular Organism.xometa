@@ -48,7 +48,8 @@
     "Opal": {
       "opal_density": 0.6,
       "opal_grainSize": 0.5,
-      "opal_pitch": 0.0
+      "opal_pitch": 0.0,
+      "opal_ampVelSens": 0.414
     },
     "Organon": {
       "organon_catalystDrive": 1.2,

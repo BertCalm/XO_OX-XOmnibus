@@ -57,5 +57,11 @@
     "sine"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.275,
+    "COUPLING": 0.2,
+    "SPACE": 0.636
+  }
 }

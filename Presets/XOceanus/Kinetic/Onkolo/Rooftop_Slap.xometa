@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Percussive muted clavinet \u2014 high clunk, very short decay, slap articulation. Rhythmic and tight.",
+  "description": "Percussive muted clavinet — high clunk, very short decay, slap articulation. Rhythmic and tight.",
   "tags": [
     "clavinet",
     "slap",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.22
+  }
 }

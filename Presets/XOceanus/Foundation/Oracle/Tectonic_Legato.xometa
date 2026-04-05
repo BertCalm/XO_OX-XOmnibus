@@ -73,5 +73,11 @@
     "density": 0.55,
     "space": 0.35,
     "aggression": 0.15
+  },
+  "macros": {
+    "PROPHECY": 0.45,
+    "EVOLUTION": 0.2,
+    "GRAVITY": 0.435,
+    "DRIFT": 0.2
   }
 }

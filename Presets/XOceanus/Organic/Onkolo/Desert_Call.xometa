@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "North African gnawa-influenced clavinet \u2014 pentatonic feel implied by clunk rhythm, warm tone, minimal wah. The Sahara edge.",
+  "description": "North African gnawa-influenced clavinet — pentatonic feel implied by clunk rhythm, warm tone, minimal wah. The Sahara edge.",
   "tags": [
     "clavinet",
     "gnawa",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
 }

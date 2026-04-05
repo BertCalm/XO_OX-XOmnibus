@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH WIND": 0.45,
+    "DRIFT BREEZE": 0.45,
+    "COUPLING": 0.42,
+    "SPACE": 0.82
+  }
 }

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Coral Calcification",
+  "mood": "Organic",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Calcium carbonate secretion by coral polyps — mineral architecture accumulating at one centimeter per year. Rule 30 chaotic base, slow grid evolution.",
+  "tags": [
+    "organic",
+    "coral",
+    "mineral",
+    "calcium",
+    "architecture",
+    "reef"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 30,
+      "org_cellularDensity": 0.72,
+      "org_evolutionRate": 0.06,
+      "org_spatialSpread": 0.58,
+      "org_pitchTracking": 0.72,
+      "org_filterCutoff": 2200.0,
+      "org_filterRes": 0.28,
+      "org_attack": 3.0,
+      "org_decay": 5.0,
+      "org_sustain": 0.88,
+      "org_release": 9.0,
+      "org_lfo1Rate": 0.02,
+      "org_lfo1Depth": 0.08,
+      "org_macroCharacter": 0.28,
+      "org_macroMovement": 0.18,
+      "org_macroCoupling": 0.12,
+      "org_macroSpace": 0.45,
+      "org_velCutoff": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.45
+  }
+}

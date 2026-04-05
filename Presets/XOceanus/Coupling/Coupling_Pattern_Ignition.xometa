@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO world rhythm patterns drive OFFERING city processing chain selection \u2014 ethnomusicological percussion shaping which urban aesthetic processes the sound.",
+  "description": "OSTINATO world rhythm patterns drive OFFERING city processing chain selection — ethnomusicological percussion shaping which urban aesthetic processes the sound.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "ofr_macroCharacter": 0.52,
       "ofr_macroMovement": 0.6,
       "ofr_macroCoupling": 0.62,
-      "ofr_macroSpace": 0.46
+      "ofr_macroSpace": 0.46,
+      "ofr_velToSnap": 0.576
     }
   },
   "coupling": {

@@ -96,5 +96,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "SNAP FILTER": 0.45,
+    "GATE DEPTH": 0.45,
+    "FILTER": 0.45
+  }
 }

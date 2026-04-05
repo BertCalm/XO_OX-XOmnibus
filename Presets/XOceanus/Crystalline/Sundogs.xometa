@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sundogs \u2014 ice halos flanking the winter sun. Crystal columns refracting light into twin spectral arcs.",
+  "description": "Sundogs — ice halos flanking the winter sun. Crystal columns refracting light into twin spectral arcs.",
   "tags": [
     "crystalline",
     "sundogs",
@@ -39,7 +39,8 @@
       "sky_macroSpace": 0.51,
       "sky_filterEnvAmt": 0.43,
       "sky_lfo1Rate": 0.12,
-      "sky_lfo1Depth": 0.22
+      "sky_lfo1Depth": 0.22,
+      "sky_velSensitivity": 0.574
     }
   },
   "coupling": {

@@ -77,7 +77,8 @@
     },
     "Overbite": {
       "poss_filterCutoff": 6240.0,
-      "poss_level": 0.79
+      "poss_level": 0.79,
+      "poss_ampVelSens": 0.557
     }
   },
   "schema_version": 1,
@@ -91,5 +92,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.628,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

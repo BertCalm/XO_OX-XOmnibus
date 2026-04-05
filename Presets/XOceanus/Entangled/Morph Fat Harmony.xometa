@@ -93,5 +93,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH MELODY": 0.45,
+    "FAT HARMONY": 0.45,
+    "INTERVAL": 0.45,
+    "DENSITY": 0.85
+  }
 }

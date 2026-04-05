@@ -150,5 +150,11 @@
     "organic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "ECOSYSTEM": 0.478,
+    "MATERIAL": 0.45,
+    "COUPLING": 0.402,
+    "SPACE": 0.6
+  }
 }

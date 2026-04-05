@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Tube-driven fuzz bass with warm low-mid saturation \u2014 valve warmth meets opossum aggression.",
+  "description": "Tube-driven fuzz bass with warm low-mid saturation — valve warmth meets opossum aggression.",
   "dna": {
     "aggression": 0.65,
     "brightness": 0.5,
@@ -52,7 +52,8 @@
       "poss_macroTrash": 0.45,
       "poss_oscAShape": 0.3,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.695
     }
   },
   "schema_version": 1,

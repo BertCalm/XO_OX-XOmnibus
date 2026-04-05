@@ -95,5 +95,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "CHAOS": 0.296,
+    "COUPLING": 0.7,
+    "SPACE": 0.32
+  }
 }

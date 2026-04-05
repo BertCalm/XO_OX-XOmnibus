@@ -246,6 +246,58 @@ public:
         driftLFO.reset();
     }
 
+    //--------------------------------------------------------------------------
+    // addParameters — register all 9 Oratory params into a ParameterLayout
+    static void addParameters(juce::AudioProcessorValueTreeState::ParameterLayout& layout)
+    {
+        using AP = juce::AudioParameterFloat;
+        using NR = juce::NormalisableRange<float>;
+        layout.add(std::make_unique<AP>("master_oraPattern",  "Oratory Pattern",   NR(0.0f,7.0f,1.0f),6.0f));
+        layout.add(std::make_unique<AP>("master_oraSyllable", "Oratory Syllable",  NR(5.0f,1000.0f,0.1f),80.0f));
+        layout.add(std::make_unique<AP>("master_oraAccent",   "Oratory Accent",    NR(0.0f,1.0f,0.001f),0.7f));
+        layout.add(std::make_unique<AP>("master_oraSpread",   "Oratory Spread",    NR(0.0f,1.0f,0.001f),0.6f));
+        layout.add(std::make_unique<AP>("master_oraFeedback", "Oratory Feedback",  NR(0.0f,0.9f,0.001f),0.4f));
+        layout.add(std::make_unique<AP>("master_oraDamping",  "Oratory Damping",   NR(200.0f,16000.0f,1.0f),3000.0f));
+        layout.add(std::make_unique<AP>("master_oraDampRes",  "Oratory Damp Res",  NR(0.0f,0.8f,0.001f),0.2f));
+        layout.add(std::make_unique<AP>("master_oraDrift",    "Oratory Drift",     NR(0.0f,1.0f,0.001f),0.0f));
+        layout.add(std::make_unique<AP>("master_oraMix",      "Oratory Mix",       NR(0.0f,1.0f,0.001f),0.0f));
+    }
+
+    //--------------------------------------------------------------------------
+    // cacheParameterPointers — store atomic pointers for processBlockFromSlot()
+    void cacheParameterPointers(juce::AudioProcessorValueTreeState& apvts)
+    {
+        auto get = [&](const char* id) { return apvts.getRawParameterValue(id); };
+        p_pattern  = get("master_oraPattern");
+        p_syllable = get("master_oraSyllable");
+        p_accent   = get("master_oraAccent");
+        p_spread   = get("master_oraSpread");
+        p_feedback = get("master_oraFeedback");
+        p_damping  = get("master_oraDamping");
+        p_dampRes  = get("master_oraDampRes");
+        p_drift    = get("master_oraDrift");
+        p_mix      = get("master_oraMix");
+    }
+
+    //--------------------------------------------------------------------------
+    // processBlockFromSlot — applies cached params then runs processBlock
+    void processBlockFromSlot(float* L, float* R, int numSamples)
+    {
+        auto rd = [](std::atomic<float>* p, float def) {
+            return p ? p->load(std::memory_order_relaxed) : def;
+        };
+        setPattern (static_cast<int>(rd(p_pattern,  6.0f)));
+        setSyllable(rd(p_syllable, 80.0f));
+        setAccent  (rd(p_accent,   0.7f));
+        setSpread  (rd(p_spread,   0.6f));
+        setFeedback(rd(p_feedback, 0.4f));
+        setDamping (rd(p_damping,  3000.0f));
+        setDampingResonance(rd(p_dampRes, 0.2f));
+        setDrift   (rd(p_drift,    0.0f));
+        setMix     (rd(p_mix,      0.0f));
+        processBlock(L, R, numSamples);
+    }
+
 private:
     //--------------------------------------------------------------------------
     // Spatial narrative panning (Tomita)
@@ -390,6 +442,17 @@ private:
     float drift = 0.0f;            // Kakehashi drift
     float mix = 0.0f;
     bool bypassed_ = true;
+
+    // Cached param pointers (populated by cacheParameterPointers)
+    std::atomic<float>* p_pattern  = nullptr;
+    std::atomic<float>* p_syllable = nullptr;
+    std::atomic<float>* p_accent   = nullptr;
+    std::atomic<float>* p_spread   = nullptr;
+    std::atomic<float>* p_feedback = nullptr;
+    std::atomic<float>* p_damping  = nullptr;
+    std::atomic<float>* p_dampRes  = nullptr;
+    std::atomic<float>* p_drift    = nullptr;
+    std::atomic<float>* p_mix      = nullptr;
 };
 
 } // namespace xoceanus

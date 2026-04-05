@@ -37,7 +37,8 @@
   "parameters": {
     "Overbite": {
       "poss_filterCutoff": 0.471,
-      "poss_macroBite": 0.098
+      "poss_macroBite": 0.098,
+      "poss_ampVelSens": 0.557
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.483,
@@ -63,7 +64,8 @@
       "owl_resonantFeedback": 0.462,
       "owl_resonantPitch": 0.302,
       "owl_shimmer": 0.357,
-      "owl_subLevel": 0.311
+      "owl_subLevel": 0.311,
+      "owl_velocity": 0.724
     }
   },
   "schema_version": 1,
@@ -75,5 +77,11 @@
     "overbite"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.628,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

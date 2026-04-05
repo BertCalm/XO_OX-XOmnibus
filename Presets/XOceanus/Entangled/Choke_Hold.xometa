@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Choke Hold",
   "mood": "Entangled",
-  "engines": ["Orca", "Octopus"],
+  "engines": [
+    "Orca",
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Apex predator amplitude choking alien intelligence. Orca AmpToChoke coupling suppressing Octopus at peak hunt.",
-  "tags": ["entangled", "aggressive", "choke", "predator", "coupling"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "choke",
+    "predator",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -34,7 +48,8 @@
       "orca_attackTime": 0.005,
       "orca_decayTime": 0.16,
       "orca_sustain": 0.28,
-      "orca_releaseTime": 0.12
+      "orca_releaseTime": 0.12,
+      "orca_velCutoffAmt": 0.637
     },
     "Octopus": {
       "octo_macroCharacter": 0.82,

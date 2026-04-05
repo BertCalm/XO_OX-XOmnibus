@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Before Dawn",
+  "name": "Before Dawn (Ombre)",
   "mood": "Foundation",
   "engines": [
     "Ombre"
@@ -62,5 +62,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
 }

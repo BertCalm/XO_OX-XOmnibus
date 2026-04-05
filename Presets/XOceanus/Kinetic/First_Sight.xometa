@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Cold sparse rhythmic motion from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.202,
+    "COUPLING": 0.2,
+    "SPACE": 0.32
+  }
 }

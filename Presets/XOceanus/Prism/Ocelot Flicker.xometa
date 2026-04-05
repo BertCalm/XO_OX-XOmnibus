@@ -48,7 +48,8 @@
       "ocelot_stalkerRate": 4.222,
       "ocelot_stereoWidth": 0.74,
       "ocelot_filterEnvDepth": 0.495,
-      "ocelot_lfoRate": 0.122
+      "ocelot_lfoRate": 0.122,
+      "ocelot_floorVelocity": 0.85
     }
   },
   "schema_version": 1,

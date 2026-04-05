@@ -87,5 +87,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "FORMANT MORPH": 0.45,
+    "CURIOSITY": 0.5,
+    "BOB MODE": 0.5,
+    "SPACE": 0.3
+  }
 }

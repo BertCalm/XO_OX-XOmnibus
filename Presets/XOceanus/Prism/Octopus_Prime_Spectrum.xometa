@@ -84,5 +84,11 @@
     "scanning",
     "transcendental"
   ],
-  "description": "armCount=8, armSpread=1.0, armBaseRate=2.5 — arm targeting wavetable scans at 4.04 Hz (phi-ratio). wtScanRate=0.6 adds mod-envelope scanning. Wavetable moves on two irrational timescales simultaneously."
+  "description": "armCount=8, armSpread=1.0, armBaseRate=2.5 — arm targeting wavetable scans at 4.04 Hz (phi-ratio). wtScanRate=0.6 adds mod-envelope scanning. Wavetable moves on two irrational timescales simultaneously.",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

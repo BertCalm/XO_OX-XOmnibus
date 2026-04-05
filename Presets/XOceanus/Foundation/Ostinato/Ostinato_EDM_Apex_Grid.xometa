@@ -112,7 +112,15 @@
       "osti_macroSpace": 0.345,
       "osti_filterEnvAmt": 0.357,
       "osti_lfo1Rate": 0.129,
-      "osti_lfo1Depth": 0.252
+      "osti_lfo1Depth": 0.252,
+      "osti_seat1_velSens": 0.7,
+      "osti_seat2_velSens": 0.7,
+      "osti_seat3_velSens": 0.7,
+      "osti_seat4_velSens": 0.7,
+      "osti_seat5_velSens": 0.7,
+      "osti_seat6_velSens": 0.7,
+      "osti_seat7_velSens": 0.7,
+      "osti_seat8_velSens": 0.7
     }
   },
   "coupling": {

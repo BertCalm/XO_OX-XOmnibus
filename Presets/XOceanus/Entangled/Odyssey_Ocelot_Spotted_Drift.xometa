@@ -36,7 +36,8 @@
   "parameters": {
     "Ocelot": {
       "ocelot_filterCutoff": 3904.8,
-      "ocelot_level": 0.719
+      "ocelot_level": 0.719,
+      "ocelot_floorVelocity": 0.798
     },
     "Odyssey": {
       "drift_ampAttack": 0.1419,
@@ -79,5 +80,11 @@
     "ocelot"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.605,
+    "MOVEMENT": 0.686,
+    "COUPLING": 0.57,
+    "SPACE": 0.569
+  }
 }

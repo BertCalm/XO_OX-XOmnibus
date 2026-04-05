@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Stevie Wonder's clavinet riff incarnate \u2014 bridge pickup, heavy wah, punchy attack, aggressive filter envelope. The quintessential Clavinet D6 sound.",
+  "description": "Stevie Wonder's clavinet riff incarnate — bridge pickup, heavy wah, punchy attack, aggressive filter envelope. The quintessential Clavinet D6 sound.",
   "tags": [
     "clavinet",
     "stevie-wonder",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.28
+  }
 }

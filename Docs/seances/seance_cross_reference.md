@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-03 — All 76 engines added; 74 seanced (ORGANISM re-seanced 8.7/10, OVERTONE re-seanced 8.9/10, OKEANOS first seance 8.6/10, OSMOSIS first seance 7.4/10 — all 2026-04-03); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-05 — 75 seanced (OXIDIZE first seance 8.7/10 pre-fix → 9.2+ post-fix 2026-04-05); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -90,6 +90,14 @@
 
 ---
 
+### Engine 77 (Added 2026-04-05)
+
+| Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
+|--------|-------------|-------|--------------|---------|--------------|-----------------|
+| XOxidize | OXIDIZE | **8.7/10** pre-fix → **9.2+** post-fix (first seance 2026-04-05) | B044 proposed: Independent LUT curves — 7 independent corrosion LUT curves create emergent temporal counterpoint; shared B040 (Note Duration as Synthesis Parameter) with OXYTOCIN; Time as primary synthesis parameter | 2 P0s identified | None flagged | "Time is not a parameter — it is the synthesis. The seven curves do not agree on when the metal gives way, and that disagreement is the music." — Buchla |
+
+---
+
 ### Kitchen Collection — Chef Quad (Organs)
 
 *Seanced 2026-03-21 | Sources: `Docs/seance-oto-verdict.md`, `Docs/seance-octave-verdict.md`, `Docs/seance-oleg-verdict.md`, `Docs/seance-otis-verdict.md`*
@@ -168,7 +176,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-01 — All 76 Engines)
+## Seance Score Ranking (Updated 2026-04-05 — 77 Engines; 75 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -196,6 +204,7 @@
 | 13 | OUTWIT | 8.7/10 (re-seance) | CA synthesis; re-seanced 2026-03-20. |
 | 13 | OSTINATO | 8.7/10 (re-seance) | B016–B020. Initial 8.0 → 8.7. |
 | 13 | ORPHICA | ~8.7 est. (post-fix) | Buffer extended to 1s. Velocity→body resonance wired. |
+| 13 | OXIDIZE | 8.7/10 pre-fix → 9.2+ post-fix | B044 proposed (Independent LUT curves); B040 shared with OXYTOCIN. Time as primary synthesis parameter. First seance 2026-04-05. |
 | 18 | ORGANON | 8/8 PASS | VFE metabolism. B011. Equivalent to ~9.0+. |
 
 ### Tier 3 — Good (8.4–8.6)
@@ -433,6 +442,7 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 | OCTAVE | `Docs/seance-octave-verdict.md` | Americana organs (Hammond/Harmonica/Accordion/Calliope) |
 | OLEG | `Docs/seance-oleg-verdict.md` | Sacred bellows (Bayan/Hurdy-gurdy/Bandoneon/Garmon), buzz bridge |
 | OTIS | `Docs/seance-otis-verdict.md` | Gospel organs (Hammond/Blues Harmonica/Accordion/Calliope) |
+| OXIDIZE | `Docs/seances/seance-oxidize-2026-04-05.md` | Temporal degradation synthesis, 6-stage corrosion cascade, 7 independent LUT curves. 8.7 pre-fix → 9.2+ post-fix. B044 proposed. |
 
 ---
 

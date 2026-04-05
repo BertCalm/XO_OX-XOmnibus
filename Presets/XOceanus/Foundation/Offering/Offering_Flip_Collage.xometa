@@ -40,7 +40,8 @@
       "ofr_transientSnap": 0.65,
       "ofr_dustVinyl": 0.22,
       "ofr_dustTape": 0.1,
-      "ofr_masterWidth": 0.65
+      "ofr_masterWidth": 0.65,
+      "ofr_velToSnap": 0.492
     }
   },
   "schema_version": 1,

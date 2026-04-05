@@ -44,11 +44,13 @@
       "bob_outputPan": -0.04,
       "bob_warmth": 0.68,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.537
     },
     "Overbite": {
       "poss_level": 0.88,
-      "poss_pan": -0.04
+      "poss_pan": -0.04,
+      "poss_ampVelSens": 0.537
     }
   },
   "schema_version": 1,
@@ -60,5 +62,11 @@
     "bite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.549,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

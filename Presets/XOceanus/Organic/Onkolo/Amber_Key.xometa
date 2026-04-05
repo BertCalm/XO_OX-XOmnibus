@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Warm amber clavinet tone \u2014 minimal wah, neck pickup dominant, long natural decay. Like a vintage key under warm light.",
+  "description": "Warm amber clavinet tone — minimal wah, neck pickup dominant, long natural decay. Like a vintage key under warm light.",
   "tags": [
     "clavinet",
     "amber",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine infinite aether \u2014 DUB reverb depth, DRIFT shimmer height, MORPH spectral ghost.",
+  "description": "Three-engine infinite aether — DUB reverb depth, DRIFT shimmer height, MORPH spectral ghost.",
   "tags": [
     "dub",
     "drift",
@@ -144,5 +144,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB DEPTH": 0.45,
+    "DRIFT HEIGHT": 0.45,
+    "MORPH GHOST": 0.45,
+    "COUPLING": 0.438
+  }
 }

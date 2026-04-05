@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT DEPTH": 0.45,
+    "MORPH SCAN": 0.45,
+    "COUPLING": 0.48,
+    "SHIMMER": 0.5
+  }
 }

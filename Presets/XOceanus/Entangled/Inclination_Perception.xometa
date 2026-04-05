@@ -54,7 +54,8 @@
       "ombre_macroSpace": 0.524,
       "ombre_filterEnvAmt": 0.437,
       "ombre_lfo1Rate": 0.27,
-      "ombre_lfo1Depth": 0.214
+      "ombre_lfo1Depth": 0.214,
+      "ombre_velCutoffScale": 0.411
     },
     "Orbital": {
       "orb_arcDecay": 0.405,

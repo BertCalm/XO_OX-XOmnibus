@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ice shimmering in sunlight \u2014 the supersaw chorus of OpenSky frozen and crystallized into precision.",
+  "description": "Ice shimmering in sunlight — the supersaw chorus of OpenSky frozen and crystallized into precision.",
   "tags": [
     "crystalline",
     "ice",
@@ -39,7 +39,8 @@
       "sky_macroSpace": 0.61,
       "sky_filterEnvAmt": 0.45,
       "sky_lfo1Rate": 0.06,
-      "sky_lfo1Depth": 0.16
+      "sky_lfo1Depth": 0.16,
+      "sky_velSensitivity": 0.578
     }
   },
   "coupling": {

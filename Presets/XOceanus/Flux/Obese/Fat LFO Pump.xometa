@@ -69,5 +69,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PUMP RATE": 0.45,
+    "PUMP DEPTH": 0.45,
+    "DENSITY": 0.85,
+    "FILTER": 0.45
+  }
 }

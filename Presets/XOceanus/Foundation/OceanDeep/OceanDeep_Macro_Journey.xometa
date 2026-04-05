@@ -76,10 +76,10 @@
     }
   },
   "macros": {
-    "PRESSURE": 0.0,
-    "CREATURE": 0.0,
-    "WRECK": 0.0,
-    "ABYSS": 0.0
+    "PRESSURE": 0.31,
+    "CREATURE": 0.243,
+    "WRECK": 0.256,
+    "ABYSS": 0.603
   },
   "coupling": {
     "pairs": []

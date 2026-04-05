@@ -115,5 +115,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT CARRIER": 0.45,
+    "DUB RING": 0.45,
+    "MODULATION": 0.45,
+    "BASS": 0.45
+  }
 }

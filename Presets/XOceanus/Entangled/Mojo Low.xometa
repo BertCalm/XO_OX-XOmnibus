@@ -53,7 +53,8 @@
       "bob_outputPan": 0.05,
       "bob_warmth": 0.64,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.549
     }
   },
   "schema_version": 1,
@@ -65,5 +66,11 @@
     "fat"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.493,
+    "COUPLING": 0.498,
+    "SPACE": 0.512
+  }
 }

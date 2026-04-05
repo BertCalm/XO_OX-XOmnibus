@@ -43,7 +43,8 @@
       "bob_density": 0.8,
       "bob_curiousRate": 0.6,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.533
     },
     "Onset": {
       "perc_v1_level": 0.8,
@@ -81,5 +82,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "DENSITY": 0.82,
+    "MACHINE": 0.436,
+    "GLITCH": 0.2,
+    "SPACE": 0.433
+  }
 }

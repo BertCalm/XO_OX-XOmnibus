@@ -53,7 +53,8 @@
       "opal_position": 0.5,
       "opal_shimmer": 0.4,
       "opal_source": 1,
-      "opal_window": 0.5
+      "opal_window": 0.5,
+      "opal_ampVelSens": 0.35
     },
     "Overlap": {
       "olap_attack": 0.06,
@@ -102,5 +103,11 @@
     "resonance"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.45,
+    "SPACE": 0.7
+  }
 }

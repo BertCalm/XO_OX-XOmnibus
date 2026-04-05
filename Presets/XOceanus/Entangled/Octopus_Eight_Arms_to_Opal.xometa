@@ -84,7 +84,8 @@
     "Opal": {
       "opal_grainSize": 0.4,
       "opal_grainDensity": 0.6,
-      "opal_grainPitch": 0.0
+      "opal_grainPitch": 0.0,
+      "opal_ampVelSens": 0.37
     }
   },
   "tags": [
@@ -97,5 +98,11 @@
     "alien",
     "transcendental"
   ],
-  "description": "OCTOPUS eight-arm output via EnvToMorph drives OPAL grain scan rate. Eight prime-ratio LFOs stirring the grain cloud — alien polyrhythmic intelligence shaping a granular field."
+  "description": "OCTOPUS eight-arm output via EnvToMorph drives OPAL grain scan rate. Eight prime-ratio LFOs stirring the grain cloud — alien polyrhythmic intelligence shaping a granular field.",
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.51,
+    "SPACE": 0.7
+  }
 }

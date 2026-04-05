@@ -94,5 +94,11 @@
     "coupled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.19,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.45,
+    "SPACE": 0.88
+  }
 }

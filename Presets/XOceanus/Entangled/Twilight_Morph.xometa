@@ -90,7 +90,8 @@
       "bob_level": 0.6,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.408
     }
   },
   "coupling": {
@@ -103,5 +104,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH POSITION": 0.45,
+    "BOB WARMTH": 0.45,
+    "COUPLING": 0.42,
+    "BLOOM": 0.393
+  }
 }

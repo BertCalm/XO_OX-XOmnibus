@@ -140,5 +140,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PRISM FIRE": 0.45,
+    "BOUNCE": 0.423,
+    "SNAP": 0.45,
+    "SPACE": 0.88
+  }
 }

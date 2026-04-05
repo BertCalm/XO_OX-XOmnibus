@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Origami geometric folds drive Opal grain morphology \u2014 envelope shapes folding granular texture into crystalline form.",
+  "description": "Origami geometric folds drive Opal grain morphology — envelope shapes folding granular texture into crystalline form.",
   "tags": [
     "crystalline",
     "coupled",
@@ -49,7 +49,8 @@
       "opal_macroSpace": 0.61,
       "opal_filterEnvAmt": 0.55,
       "opal_lfo1Rate": 0.13,
-      "opal_lfo1Depth": 0.19
+      "opal_lfo1Depth": 0.19,
+      "opal_ampVelSens": 0.334
     }
   },
   "coupling": {

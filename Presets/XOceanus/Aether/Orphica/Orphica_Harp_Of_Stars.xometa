@@ -45,7 +45,8 @@
       "orph_macroDivine": 0.826,
       "orph_filterEnvAmt": 0.446,
       "orph_lfo1Rate": 0.059,
-      "orph_lfo1Depth": 0.14
+      "orph_lfo1Depth": 0.14,
+      "orph_velocitySensitivity": 0.45
     }
   },
   "schema_version": 1,

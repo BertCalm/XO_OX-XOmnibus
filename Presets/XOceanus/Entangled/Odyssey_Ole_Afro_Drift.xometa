@@ -79,5 +79,11 @@
     "ole"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.508,
+    "MOVEMENT": 0.741,
+    "COUPLING": 0.51,
+    "SPACE": 0.522
+  }
 }

@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RARITY": 0.45,
+    "FAT VOID": 0.45,
+    "COUPLING": 0.24,
+    "SPACE": 0.9
+  }
 }

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Resonance",
+  "mood": "Atmosphere",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Entangled reverb at hadal depth — phase erosion moving at geological pace, every frequency above 300Hz consumed by pressure. A tone from the deepest trench.",
+  "tags": ["atmosphere", "dark", "hadal", "resonance", "sub-bass"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.78,
+    "movement": 0.25,
+    "density": 0.60,
+    "space": 0.88,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.95,
+      "oxb_decay": 12.0,
+      "oxb_entangle": 0.18,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.12,
+      "oxb_convergence": 0,
+      "oxb_resonanceQ": 6,
+      "oxb_resonanceMix": 0.28,
+      "oxb_cantilever": 0.05,
+      "oxb_damping": 150,
+      "oxb_predelay": 4,
+      "oxb_dryWet": 0.92,
+      "oxb_exciterDecay": 0.12,
+      "oxb_exciterBright": 0.04,
+      "oxb_macroCharacter": 0.15,
+      "oxb_macroMovement": 0.18,
+      "oxb_macroCoupling": 0.18,
+      "oxb_macroSpace": 0.88,
+      "oxb_filterEnvAmt": 0.06,
+      "oxb_lfo1Rate": 0.010,
+      "oxb_lfo1Depth": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.18,
+    "EROSION": 0.08,
+    "CONVERGE": 0.15,
+    "CANTILEVER": 0.88
+  }
+}

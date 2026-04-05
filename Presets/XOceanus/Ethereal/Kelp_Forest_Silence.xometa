@@ -43,7 +43,8 @@
       "deep_lfo1Rate": 0.007,
       "deep_lfo1Depth": 0.1,
       "deep_attack": 5.0,
-      "deep_release": 13.0
+      "deep_release": 13.0,
+      "deep_velCutoffAmt": 0.304
     },
     "Organon": {
       "organon_macroCharacter": 0.28,

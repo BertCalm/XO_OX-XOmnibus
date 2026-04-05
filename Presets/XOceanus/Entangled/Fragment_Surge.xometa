@@ -53,7 +53,8 @@
       "ombre_macroCharacter": 0.3753,
       "ombre_macroCoupling": 0.7466,
       "ombre_macroMovement": 0.9166,
-      "ombre_macroSpace": 0.1459
+      "ombre_macroSpace": 0.1459,
+      "ombre_velCutoffScale": 0.401
     },
     "Organon": {
       "amp_attack": 0.078,

@@ -41,7 +41,8 @@
       "opal_lfoRate": 0.06,
       "opal_movement": 0.83,
       "opal_reverbMix": 0.31,
-      "opal_space": 0.08
+      "opal_space": 0.08,
+      "opal_ampVelSens": 0.334
     }
   },
   "schema_version": 1,
@@ -51,5 +52,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

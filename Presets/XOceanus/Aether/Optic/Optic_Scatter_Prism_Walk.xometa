@@ -53,5 +53,11 @@
     "bright"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "REFRACTION": 0.45,
+    "SCATTER": 0.547,
+    "COUPLING": 0.2,
+    "SPACE": 0.92
+  }
 }

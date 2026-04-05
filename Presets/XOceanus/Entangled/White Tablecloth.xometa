@@ -91,5 +91,11 @@
     "obsidian"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.417,
+    "MOVEMENT": 0.264,
+    "COUPLING": 0.56,
+    "SPACE": 0.462
+  }
 }

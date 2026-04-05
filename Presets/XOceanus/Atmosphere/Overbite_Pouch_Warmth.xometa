@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Warm sheltered pad texture like being carried in a marsupial pouch \u2014 soft, enclosed, protected.",
+  "description": "Warm sheltered pad texture like being carried in a marsupial pouch — soft, enclosed, protected.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.3,
@@ -54,7 +54,8 @@
       "poss_oscMix": 0.5,
       "poss_unisonDetune": 0.2,
       "poss_unisonSpread": 0.7,
-      "poss_unisonVoices": 4
+      "poss_unisonVoices": 4,
+      "poss_ampVelSens": 0.32
     }
   },
   "schema_version": 1,

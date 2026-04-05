@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Notch-filtered mid-bass with a signature hollow scoop \u2014 the long snout frequency carve.",
+  "description": "Notch-filtered mid-bass with a signature hollow scoop — the long snout frequency carve.",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.5,
@@ -51,7 +51,8 @@
       "poss_oscAWaveform": 2,
       "poss_oscBWaveform": 1,
       "poss_oscMix": 0.5,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.635
     }
   },
   "schema_version": 1,

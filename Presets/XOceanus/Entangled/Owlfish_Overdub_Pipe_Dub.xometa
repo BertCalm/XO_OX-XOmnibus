@@ -72,7 +72,8 @@
       "owl_subLevel3": 0.5,
       "owl_subLevel4": 0.35,
       "owl_subMix": 0.7,
-      "owl_subWave": 1
+      "owl_subWave": 1,
+      "owl_velocity": 0.585
     }
   },
   "schema_version": 1,
@@ -85,5 +86,11 @@
     "sub"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.39,
+    "SPACE": 0.7
+  }
 }

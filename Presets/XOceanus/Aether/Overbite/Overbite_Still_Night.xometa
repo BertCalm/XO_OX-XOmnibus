@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Barely-there ambient bass hum for late-night stillness \u2014 the opossum frozen in the headlights.",
+  "description": "Barely-there ambient bass hum for late-night stillness — the opossum frozen in the headlights.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.2,
@@ -51,7 +51,8 @@
       "poss_macroTrash": 0.0,
       "poss_oscADrift": 0.05,
       "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.3
+      "poss_subLevel": 0.3,
+      "poss_ampVelSens": 0.31
     }
   },
   "schema_version": 1,

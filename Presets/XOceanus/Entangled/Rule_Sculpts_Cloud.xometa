@@ -137,7 +137,8 @@
       "opal_grainDensity": 0.45,
       "opal_grainScatter": 0.3,
       "opal_grainPosition": 0.4,
-      "opal_filterCutoff": 0.65
+      "opal_filterCutoff": 0.65,
+      "opal_ampVelSens": 0.35
     }
   },
   "coupling": {
@@ -151,5 +152,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SOLVE": 0.43,
+    "SYNAPSE": 0.564,
+    "CHROMATOPHORE": 0.669,
+    "DEN": 0.331
+  }
 }

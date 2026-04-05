@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Sympathetic Storm",
   "mood": "Entangled",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mallet tuning grid with maximum sympathetic resonance — 5 strings per mode crossing over each other like threads. Striking one note entangles several others.",
-  "tags": ["percussion", "entangled", "sympathetic", "aggressive", "resonance"],
-  "macroLabels": ["MATERIAL", "HARDNESS", "BUZZ", "SYMPATHETIC"],
+  "tags": [
+    "percussion",
+    "entangled",
+    "sympathetic",
+    "aggressive",
+    "resonance"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "HARDNESS",
+    "BUZZ",
+    "SYMPATHETIC"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,9 +59,18 @@
       "owr_macroMaterial": 0.78,
       "owr_macroHardness": 0.88,
       "owr_macroBuzz": 0.42,
-      "owr_macroSympathetic": 0.88
+      "owr_macroSympathetic": 0.88,
+      "owr_malletVelocity": 0.85
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "MATERIAL": 0.45,
+    "HARDNESS": 0.45,
+    "BUZZ": 0.45,
+    "SYMPATHETIC": 0.45
+  }
 }

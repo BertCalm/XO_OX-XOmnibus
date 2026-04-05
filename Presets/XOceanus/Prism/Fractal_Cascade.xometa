@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "name": "Fractal Cascade",
+  "mood": "Prism",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An FM texture that sounds mechanical and precise at JOURNEY 0.38 — interval structures, formant clusters, tight resonance. Push aftertouch past the 0.65 threshold and the Fracture engine stutters the buffer in increasingly complex patterns as the shimmer blooms over 3 seconds. The cascade is mathematical at first, then suddenly organic.",
+  "tags": [
+    "climax",
+    "demo",
+    "fm",
+    "fracture",
+    "texture",
+    "complex",
+    "journey",
+    "cascade",
+    "alien",
+    "prism"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.38,
+  "climaxThreshold": 0.65,
+  "bloomTime": 3.0,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.7,
+      "curve": "linear",
+      "note": "Strong routing — full aftertouch can push from 0.38 to 1.08 (clamped at 1.0), ensuring the threshold is always reachable"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 3,
+      "drift_oscA_shape": 1,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.55,
+      "drift_oscA_detune": 0.1,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.45,
+      "drift_oscB_mode": 3,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.15,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.35,
+      "drift_subLevel": 0.1,
+      "drift_noiseLevel": 0.08,
+      "drift_hazeAmount": 0.25,
+      "drift_filterCutoff": 3800.0,
+      "drift_filterReso": 0.35,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.2,
+      "drift_formantMorph": 0.7,
+      "drift_formantMix": 0.25,
+      "drift_shimmerAmount": 0.2,
+      "drift_shimmerTone": 0.6,
+      "drift_attack": 0.5,
+      "drift_decay": 3.0,
+      "drift_sustain": 0.6,
+      "drift_release": 2.5,
+      "drift_lfoRate": 0.18,
+      "drift_lfoDepth": 0.12,
+      "drift_lfoDest": 1,
+      "drift_driftDepth": 0.3,
+      "drift_driftRate": 0.1,
+      "drift_level": 0.68,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.4
+  },
+  "macros": {
+    "JOURNEY": 0.45,
+    "BREATHE": 0.45,
+    "BLOOM": 0.393,
+    "FRACTURE": 0.244
+  }
+}

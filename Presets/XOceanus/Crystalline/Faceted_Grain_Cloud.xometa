@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A cloud of granular facets \u2014 each grain a tiny crystal catching and refracting high-frequency light.",
+  "description": "A cloud of granular facets — each grain a tiny crystal catching and refracting high-frequency light.",
   "tags": [
     "crystalline",
     "faceted",
@@ -39,7 +39,8 @@
       "opal_macroSpace": 0.59,
       "opal_filterEnvAmt": 0.42,
       "opal_lfo1Rate": 0.04,
-      "opal_lfo1Depth": 0.21
+      "opal_lfo1Depth": 0.21,
+      "opal_ampVelSens": 0.33
     }
   },
   "coupling": {

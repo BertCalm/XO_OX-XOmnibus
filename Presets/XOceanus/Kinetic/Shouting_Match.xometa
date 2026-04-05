@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Shouting Match",
+  "mood": "Kinetic",
+  "engines": [
+    "Otis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full gospel shout \u2014 all drawbars, fast Leslie, key click at maximum, the Hammond answering back to the preacher in call-and-response tradition. Maximum B3 conviction.",
+  "tags": [
+    "kinetic",
+    "gospel",
+    "shout",
+    "B3",
+    "Hammond",
+    "call-and-response"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.72,
+    "movement": 0.88,
+    "density": 0.78,
+    "space": 0.22,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Otis": {
+      "otis_organ": 0,
+      "otis_drawbar1": 1.0,
+      "otis_drawbar2": 1.0,
+      "otis_drawbar3": 1.0,
+      "otis_drawbar4": 1.0,
+      "otis_drawbar5": 0.8,
+      "otis_drawbar6": 0.6,
+      "otis_drawbar7": 0.4,
+      "otis_drawbar8": 0.2,
+      "otis_drawbar9": 0.0,
+      "otis_leslie": 0.9,
+      "otis_keyClick": 0.5,
+      "otis_percussion": 0.0,
+      "otis_percHarmonic": 0.0,
+      "otis_percDecay": 0.3,
+      "otis_crosstalk": 0.2,
+      "otis_brightness": 12000.0,
+      "otis_drive": 0.42,
+      "otis_filterEnvAmount": 0.35,
+      "otis_bendRange": 2.0,
+      "otis_instability": 0.22,
+      "otis_attack": 0.005,
+      "otis_decay": 0.1,
+      "otis_sustain": 1.0,
+      "otis_release": 0.1,
+      "otis_macroCharacter": 0.78,
+      "otis_macroMovement": 0.88,
+      "otis_macroCoupling": 0.0,
+      "otis_macroSpace": 0.22,
+      "otis_lfo1Rate": 4.5,
+      "otis_lfo1Depth": 0.35,
+      "otis_lfo1Shape": 3,
+      "otis_lfo2Rate": 1.2,
+      "otis_lfo2Depth": 0.25,
+      "otis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.22
+  }
+}

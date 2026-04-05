@@ -43,7 +43,8 @@
       "deep_lfo1Rate": 0.008,
       "deep_lfo1Depth": 0.11,
       "deep_attack": 4.5,
-      "deep_release": 12.5
+      "deep_release": 12.5,
+      "deep_velCutoffAmt": 0.304
     },
     "Opal": {
       "opal_macroCharacter": 0.3,
@@ -55,7 +56,8 @@
       "opal_lfo1Rate": 0.028,
       "opal_lfo1Depth": 0.13,
       "opal_attack": 3.0,
-      "opal_release": 9.5
+      "opal_release": 9.5,
+      "opal_ampVelSens": 0.243
     }
   },
   "coupling": {

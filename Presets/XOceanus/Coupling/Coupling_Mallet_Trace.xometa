@@ -49,7 +49,8 @@
       "ofr_lfoRate": 0.15,
       "ofr_lfoDepth": 0.2,
       "ofr_outputLevel": 0.72,
-      "ofr_reverbMix": 0.2
+      "ofr_reverbMix": 0.2,
+      "ofr_velToSnap": 0.54
     },
     "Oware": {
       "owr_material": 0.5,
@@ -65,7 +66,8 @@
       "owr_lfoRate": 0.1,
       "owr_lfoDepth": 0.12,
       "owr_outputLevel": 0.7,
-      "owr_reverbMix": 0.35
+      "owr_reverbMix": 0.35,
+      "owr_malletVelocity": 0.675
     }
   },
   "coupling": {
@@ -90,5 +92,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.216,
+    "SPACE": 0.58
+  }
 }

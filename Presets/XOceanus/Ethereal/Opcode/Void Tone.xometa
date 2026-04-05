@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Near-silence FM \u2014 minimal index, near-zero attack movement, long release. The voice from the void between stars.",
+  "description": "Near-silence FM — minimal index, near-zero attack movement, long release. The voice from the void between stars.",
   "tags": [
     "fm",
     "ambient",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.98
+  }
 }

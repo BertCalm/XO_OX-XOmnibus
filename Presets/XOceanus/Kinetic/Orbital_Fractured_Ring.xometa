@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Fractured Ring",
   "mood": "Kinetic",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Additive partials driven hard through resonant filter — group envelope cycling fast, ring breaking apart on each note.",
-  "tags": ["additive", "kinetic", "aggressive", "drive", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "additive",
+    "kinetic",
+    "aggressive",
+    "drive",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,14 @@
       "orb_macroSpace": 0.18
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.18
+  }
 }

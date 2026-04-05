@@ -109,5 +109,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT BASE": 0.45,
+    "MORPH MIDDLE": 0.45,
+    "SNAP TOP": 0.45,
+    "COUPLING": 0.522
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Reference preset for the Crystalline mood \u2014 optimized for the 36\u219251 brightness gap.",
+  "description": "Reference preset for the Crystalline mood — optimized for the 36→51 brightness gap.",
   "tags": [
     "wurlitzer",
     "reference",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

@@ -42,14 +42,15 @@
       "ofr_envFilterAmt": 0.3,
       "ofr_masterWidth": 0.72,
       "ofr_v0_body": 0.85,
-      "ofr_v1_body": 0.6
+      "ofr_v1_body": 0.6,
+      "ofr_velToSnap": 0.675
     }
   },
   "engines": [
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": "",
+  "description": "Dense entangled harmonics from Offering.",
   "schema_version": 1,
   "macroLabels": [
     "DIG",

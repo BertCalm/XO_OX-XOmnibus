@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Slow horizon scan across saw and triangle. The pad that changes over time without using LFOs \u2014 pure oscillator scanning.",
+  "description": "Slow horizon scan across saw and triangle. The pad that changes over time without using LFOs — pure oscillator scanning.",
   "tags": [
     "sweep",
     "slow",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.41,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
   }
 }

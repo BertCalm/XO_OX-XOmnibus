@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.82,
       "bob_macroCoupling": 0.57,
       "bob_macroMovement": 0.6,
-      "bob_macroSpace": 0.21
+      "bob_macroSpace": 0.21,
+      "bob_velFilter": 0.578
     },
     "Ouroboros": {
       "ouro_macroCharacter": 0.72,

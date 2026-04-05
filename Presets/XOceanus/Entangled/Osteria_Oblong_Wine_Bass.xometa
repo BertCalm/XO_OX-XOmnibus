@@ -70,7 +70,8 @@
       "bob_oscB_blend": 0.35,
       "bob_oscB_detune": 3.0,
       "bob_oscB_wave": 0,
-      "bob_voiceMode": 0
+      "bob_voiceMode": 0,
+      "bob_velFilter": 0.475
     },
     "Osteria": {
       "osteria_attack": 0.08,
@@ -115,5 +116,11 @@
     "porto"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.33,
+    "SPACE": 0.55
+  }
 }

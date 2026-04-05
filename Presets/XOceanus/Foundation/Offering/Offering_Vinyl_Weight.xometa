@@ -42,7 +42,8 @@
       "ofr_transientSnap": 0.45,
       "ofr_transientSat": 0.3,
       "ofr_digCuriosity": 0.5,
-      "ofr_masterWidth": 0.5
+      "ofr_masterWidth": 0.5,
+      "ofr_velToSnap": 0.456
     }
   },
   "schema_version": 1,

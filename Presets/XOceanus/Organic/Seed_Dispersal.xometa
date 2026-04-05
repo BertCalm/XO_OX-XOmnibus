@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Seed Dispersal",
+  "mood": "Organic",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dandelion clock in wind \u2014 300 seeds released simultaneously, each a miniature parachute engineered over 30 million years of selective pressure.",
+  "tags": [
+    "organic",
+    "seed",
+    "dandelion",
+    "dispersal",
+    "wind",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.62,
+    "density": 0.22,
+    "space": 0.85,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shoreBlend": 0.28,
+      "osprey_tideDepth": 0.35,
+      "osprey_coastalWind": 0.72,
+      "osprey_saltContent": 0.18,
+      "osprey_filterCutoff": 7200.0,
+      "osprey_filterRes": 0.12,
+      "osprey_attack": 0.8,
+      "osprey_decay": 2.5,
+      "osprey_sustain": 0.35,
+      "osprey_release": 5.0,
+      "osprey_lfo1Rate": 0.35,
+      "osprey_lfo1Depth": 0.28,
+      "osprey_macroCharacter": 0.35,
+      "osprey_macroMovement": 0.58,
+      "osprey_macroCoupling": 0.08,
+      "osprey_macroSpace": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.08,
+    "SPACE": 0.82
+  }
+}

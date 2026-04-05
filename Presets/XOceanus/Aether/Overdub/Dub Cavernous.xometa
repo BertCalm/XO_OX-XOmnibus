@@ -74,5 +74,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CAVE SIZE": 0.45,
+    "DELAY ECHO": 0.45,
+    "FILTER": 0.45,
+    "SEND": 0.4
+  }
 }

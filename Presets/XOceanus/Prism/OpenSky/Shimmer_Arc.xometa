@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Shimmer Arc",
+  "name": "Shimmer Arc (OpenSky)",
   "mood": "Prism",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "B023 Shepard Shimmer Architecture creating endless ascending color — as one shimmer harmonic fades at the top of hearing range, another appears below, creating perpetual spectral ascent. Chorus rate shifts the perceived spatial color of the shimmer arc.",
-  "tags": ["prism", "shimmer", "arc", "spectral", "ascending", "color-shifting", "movement"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "prism",
+    "shimmer",
+    "arc",
+    "spectral",
+    "ascending",
+    "color-shifting",
+    "movement"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,7 +81,8 @@
       "sky_modSlot1Amt": 0.0,
       "sky_modSlot2Src": 0.0,
       "sky_modSlot2Dst": 0.0,
-      "sky_modSlot2Amt": 0.0
+      "sky_modSlot2Amt": 0.0,
+      "sky_velSensitivity": 0.792
     }
   },
   "macros": {
@@ -75,5 +91,7 @@
     "GLOW": 0.72,
     "AIR": 0.78
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A spray of crystal granules in the air \u2014 granular synthesis mimicking the scatter of light through mineral dust.",
+  "description": "A spray of crystal granules in the air — granular synthesis mimicking the scatter of light through mineral dust.",
   "tags": [
     "crystalline",
     "spray",
@@ -39,7 +39,8 @@
       "opal_macroSpace": 0.58,
       "opal_filterEnvAmt": 0.42,
       "opal_lfo1Rate": 0.06,
-      "opal_lfo1Depth": 0.11
+      "opal_lfo1Depth": 0.11,
+      "opal_ampVelSens": 0.332
     }
   },
   "coupling": {

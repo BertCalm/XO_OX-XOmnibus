@@ -49,7 +49,8 @@
       "bob_macroCharacter": 0.8,
       "bob_macroCoupling": 0.7,
       "bob_macroMovement": 0.55,
-      "bob_macroSpace": 0.4
+      "bob_macroSpace": 0.4,
+      "bob_velFilter": 0.58
     }
   },
   "schema_version": 1,

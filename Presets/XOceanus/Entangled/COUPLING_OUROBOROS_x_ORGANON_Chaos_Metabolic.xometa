@@ -89,5 +89,11 @@
     "organic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHAOS": 0.296,
+    "METABOLISM": 0.45,
+    "COUPLING": 0.48,
+    "LEASH": 0.45
+  }
 }

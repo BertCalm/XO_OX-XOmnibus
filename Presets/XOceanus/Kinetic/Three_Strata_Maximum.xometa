@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Three Strata Maximum",
   "mood": "Kinetic",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Floor, understory, and canopy all at maximum — biome crossfade fully engaged, all three strata fighting for dominance. Relentless kinetic density.",
-  "tags": ["kinetic", "dense", "ocelot", "three-strata", "maximum", "relentless"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "kinetic",
+    "dense",
+    "ocelot",
+    "three-strata",
+    "maximum",
+    "relentless"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -89,6 +103,14 @@
       "ocelot_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "PROWL": 0.45,
+    "FOLIAGE": 0.482,
+    "ECOSYSTEM": 0.478,
+    "CANOPY": 0.469
+  }
 }

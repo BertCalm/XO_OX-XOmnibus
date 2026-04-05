@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Opcode digital precision pitch-locked to Overtone spectral constants \u2014 algorithmic crystal and mathematical ice in unison.",
+  "description": "Opcode digital precision pitch-locked to Overtone spectral constants — algorithmic crystal and mathematical ice in unison.",
   "tags": [
     "crystalline",
     "coupled",
@@ -40,7 +40,8 @@
       "opco_macroSpace": 0.63,
       "opco_filterEnvAmt": 0.52,
       "opco_lfo1Rate": 0.04,
-      "opco_lfo1Depth": 0.23
+      "opco_lfo1Depth": 0.23,
+      "opco_velToIndex": 0.415
     },
     "Overtone": {
       "over_macroCharacter": 0.51,
@@ -49,7 +50,8 @@
       "over_macroSpace": 0.63,
       "over_filterEnvAmt": 0.52,
       "over_lfo1Rate": 0.04,
-      "over_lfo1Depth": 0.23
+      "over_lfo1Depth": 0.23,
+      "over_velBright": 0.374
     }
   },
   "coupling": {

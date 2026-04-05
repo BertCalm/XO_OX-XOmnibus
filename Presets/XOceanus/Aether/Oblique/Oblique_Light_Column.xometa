@@ -74,10 +74,10 @@
     }
   },
   "macros": {
-    "FOLD": 0.0,
-    "BOUNCE": 0.0,
-    "COLOR": 0.0,
-    "SPACE": 0.0
+    "FOLD": 0.376,
+    "BOUNCE": 0.423,
+    "COLOR": 0.65,
+    "SPACE": 0.88
   },
   "coupling": {
     "pairs": []

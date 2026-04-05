@@ -53,7 +53,8 @@
       "opal_macroScatter": 0.42,
       "opal_macroDrift": 0.38,
       "opal_macroCoupling": 0.92,
-      "opal_macroSpace": 0.7
+      "opal_macroSpace": 0.7,
+      "opal_ampVelSens": 0.259
     }
   },
   "macros": {

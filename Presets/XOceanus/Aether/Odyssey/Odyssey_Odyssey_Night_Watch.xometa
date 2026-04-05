@@ -54,5 +54,11 @@
     "watch"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "JOURNEY": 0.45,
+    "HORIZON": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.92
+  }
 }

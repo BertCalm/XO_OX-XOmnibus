@@ -477,6 +477,7 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
+        sampleRate = std::max(sampleRate, 1.0);
         sr = sampleRate;
         srf = static_cast<float>(sr);
 

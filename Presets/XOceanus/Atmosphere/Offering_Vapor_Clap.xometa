@@ -43,7 +43,8 @@
       "ofr_transientSnap": 0.18,
       "ofr_envFilterAmt": 0.45,
       "ofr_digCuriosity": 0.68,
-      "ofr_masterWidth": 0.92
+      "ofr_masterWidth": 0.92,
+      "ofr_velToSnap": 0.396
     }
   },
   "schema_version": 1,

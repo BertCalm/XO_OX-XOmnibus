@@ -94,5 +94,11 @@
     "geological"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.558,
+    "SPACE": 0.78
+  }
 }

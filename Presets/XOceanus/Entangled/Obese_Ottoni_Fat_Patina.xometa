@@ -74,5 +74,11 @@
     "ottoni"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.548,
+    "MOVEMENT": 0.626,
+    "COUPLING": 0.57,
+    "SPACE": 0.461
+  }
 }

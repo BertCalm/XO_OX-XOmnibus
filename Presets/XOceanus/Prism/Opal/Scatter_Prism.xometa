@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Scatter Prism",
   "mood": "Prism",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular pitch scatter creating prismatic spectral color from a single note — each grain arriving at a different pitch creates the spectral spread of a prism refracting light. Position scatter ensures each grain catches a different timbral slice of the source.",
-  "tags": ["prism", "scatter", "granular", "spectral", "refraction", "color-shifting", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "scatter",
+    "granular",
+    "spectral",
+    "refraction",
+    "color-shifting",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -35,7 +50,8 @@
       "opal_macroCharacter": 0.55,
       "opal_macroMovement": 0.82,
       "opal_macroCoupling": 0.32,
-      "opal_macroSpace": 0.52
+      "opal_macroSpace": 0.52,
+      "opal_ampVelSens": 0.501
     }
   },
   "macros": {
@@ -44,5 +60,7 @@
     "COUPLING": 0.32,
     "SPACE": 0.52
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }
