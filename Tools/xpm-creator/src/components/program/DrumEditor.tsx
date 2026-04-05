@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import PadGrid from '@/components/pads/PadGrid';
 import PadLayerEditor from '@/components/pads/PadLayerEditor';
 import { usePadStore } from '@/stores/padStore';
+import { validateName } from '@/lib/sanitize';
 
 interface DrumEditorProps {
   onBuild: (config: { programName: string }) => void;
@@ -22,7 +23,7 @@ export default function DrumEditor({ onBuild }: DrumEditorProps) {
 
   const handleBuild = () => {
     if (!programName.trim()) return;
-    onBuild({ programName: programName.trim() });
+    onBuild({ programName: validateName(programName) });
   };
 
   return (
@@ -39,6 +40,7 @@ export default function DrumEditor({ onBuild }: DrumEditorProps) {
               value={programName}
               onChange={(e) => setProgramName(e.target.value)}
               placeholder="My Drum Kit"
+              maxLength={255}
               className="input-field"
             />
           </div>

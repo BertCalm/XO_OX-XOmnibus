@@ -7,6 +7,7 @@ import Slider from '@/components/ui/Slider';
 import PitchSettings from './PitchSettings';
 import { useAudioStore } from '@/stores/audioStore';
 import { midiNoteToName } from '@/types';
+import { validateName } from '@/lib/sanitize';
 
 interface KeygroupEditorProps {
   onBuild: (config: {
@@ -32,7 +33,7 @@ export default function KeygroupEditor({ onBuild }: KeygroupEditorProps) {
   const handleBuild = () => {
     if (!selectedSampleId || !programName.trim()) return;
     onBuild({
-      programName: programName.trim(),
+      programName: validateName(programName),
       sampleId: selectedSampleId,
       rootNote,
       lowNote,
@@ -54,6 +55,7 @@ export default function KeygroupEditor({ onBuild }: KeygroupEditorProps) {
               value={programName}
               onChange={(e) => setProgramName(e.target.value)}
               placeholder="My Instrument"
+              maxLength={255}
               className="input-field"
             />
           </div>

@@ -6,6 +6,7 @@ import type {
   CloudStorageAdapter,
 } from '@/lib/cloud/cloudStorageTypes';
 import { AUDIO_MIME_TYPES } from '@/lib/cloud/cloudStorageTypes';
+import { sanitizeErrorMessage } from '@/lib/sanitize';
 
 // ---------------------------------------------------------------------------
 // Stub adapter – returned when no real adapter is registered for a provider.
@@ -159,10 +160,9 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     } catch (err) {
       set({
         connectingProvider: null,
-        error:
-          err instanceof Error
-            ? err.message
-            : `Failed to connect to ${provider}`,
+        error: sanitizeErrorMessage(
+          err instanceof Error ? err.message : `Failed to connect to ${provider}`
+        ),
       });
     }
   },
@@ -210,10 +210,9 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     } catch (err) {
       set({
         isLoading: false,
-        error:
-          err instanceof Error
-            ? err.message
-            : 'Failed to list files',
+        error: sanitizeErrorMessage(
+          err instanceof Error ? err.message : 'Failed to list files'
+        ),
       });
     }
   },
@@ -306,7 +305,9 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       set({ isLoading: false });
       return result;
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to download file';
+      const message = sanitizeErrorMessage(
+        err instanceof Error ? err.message : 'Failed to download file'
+      );
       set({ isLoading: false, error: message });
       throw new Error(message);
     }
@@ -338,7 +339,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
 
       if (failures.length > 0 && results.length === 0) {
         const message = `All ${failures.length} file(s) failed to download`;
-        set({ error: message });
+        set({ error: message }); // failure count only — no raw error content
         throw new Error(message);
       } else if (failures.length > 0) {
         set({ error: `${failures.length} file(s) failed: ${failures.join(', ')}` });
@@ -349,7 +350,9 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       // Re-throw if it was our own error, otherwise wrap
       set({ isLoading: false });
       if (err instanceof Error && get().error) throw err;
-      const message = err instanceof Error ? err.message : 'Failed to import files';
+      const message = sanitizeErrorMessage(
+        err instanceof Error ? err.message : 'Failed to import files'
+      );
       set({ error: message });
       throw new Error(message);
     }
@@ -363,7 +366,9 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       set({ isLoading: false });
       return result;
     } catch (err) {
-      const message = err instanceof Error ? err.message : `Failed to upload "${name}"`;
+      const message = sanitizeErrorMessage(
+        err instanceof Error ? err.message : `Failed to upload "${name}"`
+      );
       set({ isLoading: false, error: message });
       throw new Error(message);
     }

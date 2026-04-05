@@ -82,12 +82,16 @@ export async function exportToSdCard(
     await invoke('create_dir', { path: expansionsDir, recursive: true });
   }
 
+  // Sanitize the filename to prevent path traversal — a malicious XPN name
+  // containing `../` sequences could escape the Expansions directory.
+  const safeFileName = fileName.replace(/\.\./g, '').replace(/^\/+/, '').split('/').pop() || 'export.xpn';
+
   // Convert blob to Uint8Array (array of numbers for Tauri serialization)
   const arrayBuffer = await xpnBlob.arrayBuffer();
   const data = Array.from(new Uint8Array(arrayBuffer));
 
-  // Write the file via Rust backend
-  const filePath = `${expansionsDir}/${fileName}`;
+  // Write the file via Rust backend — use the sanitized name only
+  const filePath = `${expansionsDir}/${safeFileName}`;
   await invoke('write_binary_file', { path: filePath, data });
 }
 

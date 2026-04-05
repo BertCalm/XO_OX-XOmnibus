@@ -33,6 +33,7 @@ import { useAutoSave } from '@/hooks/useAutoSave';
 import { useMilestoneTracker } from '@/hooks/useMilestoneTracker';
 import { PROJECT_TEMPLATES } from '@/constants/projectTemplates';
 import type { ProgramType } from '@/types';
+import { validateName } from '@/lib/sanitize';
 
 // ── Dynamic imports for components not needed at initial render ─────────────
 // These split the JS bundle so users get a fast first load, then heavy panels
@@ -201,7 +202,7 @@ export default function HomePage() {
 
   const handleCreateProject = async () => {
     if (!projectName.trim()) return;
-    await createProject(projectName.trim(), programType, selectedTemplateId ?? undefined);
+    await createProject(validateName(projectName), programType, selectedTemplateId ?? undefined);
     setShowNewProject(false);
     setProjectName('');
     setSelectedTemplateId(null);
@@ -430,6 +431,7 @@ export default function HomePage() {
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               placeholder="My Project"
+              maxLength={255}
               className="input-field"
               autoFocus
               onKeyDown={(e) => {
