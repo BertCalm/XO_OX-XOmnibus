@@ -13,7 +13,17 @@ Pipeline stages:
   7. cover_art         — Generate branded procedural cover art
   8. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
   9. preview           — Generate 15-second preview audio for each program
- 10. package           — Package everything into a .xpn archive
+ 10. listen            — [GATE] Generate preview playlist; require human approval before packaging
+ 11. package           — Package everything into a .xpn archive
+
+Human listen gate (build pipeline):
+    # After render completes, build pauses at LISTEN and prints:
+    #   Run `oxport approve <output_dir>` to continue to PACKAGE.
+    python3 oxport.py approve builds/mpce-perc-001/
+    python3 oxport.py build spec.oxbuild --resume
+
+    # Bypass the gate (CI/automated builds):
+    python3 oxport.py build spec.oxbuild --skip-listen
 
 Usage:
     # Full pipeline for an engine
@@ -1866,7 +1876,6 @@ def cmd_status(args) -> int:
         print("Run `oxport.py run` first to create a pipeline state.")
         return 0
 
-    print(BANNER)
     for state_path in states:
         try:
             with open(state_path, encoding='utf-8', errors='replace') as f:
@@ -1907,8 +1916,6 @@ def cmd_status(args) -> int:
 
 def cmd_validate(args) -> int:
     """Validate pipeline output AND/OR .xometa presets."""
-    print(BANNER)
-
     exit_code = 0
 
     # --- Mode 1: Validate pipeline output directory (structural checks) ---
@@ -2159,7 +2166,7 @@ def cmd_batch(args) -> int:
 
 BUILD_STAGES = [
     "parse", "select", "render", "assemble",
-    "fallback", "intent", "docs", "art", "package", "validate",
+    "fallback", "intent", "docs", "art", "listen", "package", "validate",
 ]
 
 
@@ -2822,9 +2829,9 @@ def cmd_build(args) -> int:
                 # Fallback: read as text for display, skip structured access
                 profile = {"_raw": profile_path.read_text(), "profile_id": profile_id}
             except Exception as e:
-                print(f"  ⚠  Profile load failed: {e}")
+                print(f"  [WARN] Profile load failed: {e}")
         else:
-            print(f"  ⚠  Profile not found: {profile_path}")
+            print(f"  [WARN] Profile not found: {profile_path}")
 
     total_samples = pad_count * 4 * velocity_layers  # pads * corners * vel layers
     stages_run = 0
@@ -2870,7 +2877,7 @@ def cmd_build(args) -> int:
                 centers = {k: v.get("center", "?") for k, v in dna.items() if isinstance(v, dict)}
                 print(f"         DNA center: {centers}")
     if args.dry_run:
-        print(f"         ✓ Parsed {oxbuild_path}")
+        print(f"         [OK] Parsed {oxbuild_path}")
     stages_run += 1
     _update_build_log(log_path, "parse")
 
@@ -2927,7 +2934,7 @@ def cmd_build(args) -> int:
                         key=lambda p: Path(p.get("path", "")),
                     )
                     print(
-                        f"         ✓ Bank order aligned to XOceanus browser "
+                        f"         [OK] Bank order aligned to XOceanus browser "
                         f"(Path-part sort, matches selector + JUCE findChildFiles)"
                     )
 
@@ -2962,25 +2969,25 @@ def cmd_build(args) -> int:
                         dna_path = output_dir / "pack_dna.json"
                         with open(dna_path, "w", encoding='utf-8') as f:
                             json.dump(pack_dna_data, f, indent=2)
-                        print(f"         ✓ pack_dna.json written (pack average from {len(selected_presets)} presets)")
+                        print(f"         [OK] pack_dna.json written (pack average from {len(selected_presets)} presets)")
 
                     # Save QA log if populated
                     if qa_log and len(qa_log):
                         qa_log.save()
 
-                    print(f"         ✓ Selected {len(selected_presets)} presets (target: {min_presets})")
-                    print(f"         ✓ Manifest: {manifest_path}")
+                    print(f"         [OK] Selected {len(selected_presets)} presets (target: {min_presets})")
+                    print(f"         [OK] Manifest: {manifest_path}")
 
                     if len(selected_presets) < min_presets:
-                        print(f"         ⚠  Only {len(selected_presets)} presets matched — "
+                        print(f"         [WARN] Only {len(selected_presets)} presets matched — "
                               f"below target of {min_presets}")
                 else:
-                    print(f"         ⚠  No profile specified — skipping DNA-based selection")
+                    print(f"         [WARN] No profile specified — skipping DNA-based selection")
             except ImportError:
                 print(f"         [SKIP] xpn_profile_preset_selector not available")
                 stages_skipped += 1
             except Exception as e:
-                print(f"         ✗  Selection failed: {e}")
+                print(f"         [FAIL] Selection failed: {e}")
                 stages_failed += 1
                 if not args.continue_on_error:
                     return 1
@@ -3186,7 +3193,7 @@ def cmd_build(args) -> int:
             else:
                 spec_path = output_dir / f"{pack_id}_render_spec.json"
                 # Auto-generate render spec would go here
-                print(f"         ⚠  Auto render spec generation not yet implemented")
+                print(f"         [WARN] Auto render spec generation not yet implemented")
                 print(f"            Use rendering.render_spec_override in .oxbuild to point to a spec")
 
             if spec_path.exists():
@@ -3261,7 +3268,7 @@ def cmd_build(args) -> int:
                                     for i, p in enumerate(selected_presets)
                                 ],
                             }, _wm, indent=2)
-                        print(f"         ✓ Render manifest: {wired_manifest_path}")
+                        print(f"         [OK] Render manifest: {wired_manifest_path}")
                         print(f"         → {len(all_jobs)} total render jobs "
                               f"({len(selected_presets)} presets × {len(note_layout)} voices × {velocity_layers} vel"
                               + (" × RR" if round_robin else "") + ")")
@@ -3302,7 +3309,7 @@ def cmd_build(args) -> int:
                     print(f"         [SKIP] oxport_render not available (pip install mido sounddevice numpy)")
                     stages_skipped += 1
                 except Exception as e:
-                    print(f"         ✗  Render failed: {e}")
+                    print(f"         [FAIL] Render failed: {e}")
                     stages_failed += 1
                     if not args.continue_on_error:
                         return 1
@@ -3357,16 +3364,16 @@ def cmd_build(args) -> int:
                     presets = qb.load_presets(str(PRESETS_DIR), engine)
 
                 if not presets:
-                    print(f"         ⚠  No presets found for engine '{engine}'")
+                    print(f"         [WARN] No presets found for engine '{engine}'")
                 else:
                     assignments = qb.assign_corners(presets, pad_count)
                     programs_dir = output_dir / "Programs"
                     programs_dir.mkdir(exist_ok=True)
                     xpm_path = qb.generate_xpm(engine, assignments, str(programs_dir))
                     assembled_xpm_paths.append(Path(xpm_path))
-                    print(f"         ✓ {len(assignments)} pad(s) assigned "
+                    print(f"         [OK] {len(assignments)} pad(s) assigned "
                           f"({len(presets)} presets)")
-                    print(f"         ✓ Written: {xpm_path}")
+                    print(f"         [OK] Written: {xpm_path}")
 
                     # Stage WAVs from renders/ into Samples/.
                     # For multi-preset packs (SELECT wired), WAVs are named
@@ -3403,7 +3410,7 @@ def cmd_build(args) -> int:
                                     _shutil.copy2(wav, dest_wav)
                                 wav_count += 1
                                 copy_ok += 1
-                            print(f"         ✓ {wav_count} WAV(s) staged → "
+                            print(f"         [OK] {wav_count} WAV(s) staged → "
                                   f"Samples/{program_slug}/{{preset}}/")
                         else:
                             # Single-preset: flat staging.
@@ -3415,7 +3422,7 @@ def cmd_build(args) -> int:
                                     _shutil.copy2(wav, dest_wav)
                                 wav_count += 1
                                 copy_ok += 1
-                            print(f"         ✓ {wav_count} WAV(s) staged → "
+                            print(f"         [OK] {wav_count} WAV(s) staged → "
                                   f"Samples/{program_slug}/")
 
                         # Clean up renders/ only when every file was copied
@@ -3423,17 +3430,17 @@ def cmd_build(args) -> int:
                         if copy_ok == wav_count and wav_count > 0:
                             try:
                                 _shutil.rmtree(renders_dir)
-                                print(f"         ✓ Cleaned up {renders_dir} "
+                                print(f"         [OK] Cleaned up {renders_dir} "
                                       f"({wav_count} intermediate file(s) removed)")
                             except Exception as _cleanup_err:
-                                print(f"         ⚠  renders/ cleanup failed (non-fatal): "
+                                print(f"         [WARN] renders/ cleanup failed (non-fatal): "
                                       f"{_cleanup_err}")
 
             except ImportError:
                 print(f"         [SKIP] xpn_mpce_quad_builder not available")
                 stages_skipped += 1
             except Exception as e:
-                print(f"         ✗  Assemble failed: {e}")
+                print(f"         [FAIL] Assemble failed: {e}")
                 stages_failed += 1
                 if not args.continue_on_error:
                     return 1
@@ -3487,14 +3494,14 @@ def cmd_build(args) -> int:
                 intent_path = output_dir / "xpn_intent.json"
                 with open(intent_path, "w", encoding='utf-8') as f:
                     json.dump(intent_data, f, indent=2)
-                print(f"         ✓ Written: {intent_path}")
+                print(f"         [OK] Written: {intent_path}")
                 stages_run += 1
                 _update_build_log(log_path, "intent")
             except ImportError:
                 print(f"         [SKIP] xpn_intent_generator not available")
                 stages_skipped += 1
             except Exception as e:
-                print(f"         ✗  Intent generation failed: {e}")
+                print(f"         [FAIL] Intent generation failed: {e}")
                 stages_failed += 1
                 if not args.continue_on_error:
                     return 1
@@ -3520,9 +3527,9 @@ def cmd_build(args) -> int:
                     with open(dest, "a", encoding='utf-8') as f:
                         f.write(f"\n\n<!-- experiment_id: {experiment_id} -->\n")
                         f.write(f"<!-- build_time: {build_time} -->\n")
-                print(f"         ✓ Written: {dest}")
+                print(f"         [OK] Written: {dest}")
             else:
-                print(f"         ⚠  Template not found: {template_path}")
+                print(f"         [WARN] Template not found: {template_path}")
         stages_run += 1
         _update_build_log(log_path, "docs")
     else:
@@ -3564,7 +3571,7 @@ def cmd_build(args) -> int:
                 )
                 art_path = output_dir / "artwork.png"
                 art_path.write_bytes(png_bytes)
-                print(f"         ✓ artwork.png written ({len(png_bytes):,} bytes)")
+                print(f"         [OK] artwork.png written ({len(png_bytes):,} bytes)")
 
                 # Also write 2000×2000 hi-res variant
                 try:
@@ -3576,7 +3583,7 @@ def cmd_build(args) -> int:
                     )
                     art_2000_path = output_dir / "artwork_2000.png"
                     art_2000_path.write_bytes(png_2000)
-                    print(f"         ✓ artwork_2000.png written ({len(png_2000):,} bytes)")
+                    print(f"         [OK] artwork_2000.png written ({len(png_2000):,} bytes)")
                 except Exception:
                     pass  # hi-res is optional
 
@@ -3586,16 +3593,141 @@ def cmd_build(args) -> int:
                 print(f"         [SKIP] xpn_cover_art_generator_v2 not available")
                 stages_skipped += 1
             except Exception as e:
-                print(f"         ✗  Art generation failed: {e}")
+                print(f"         [FAIL] Art generation failed: {e}")
                 stages_failed += 1
     else:
         print(f"  [8/10] ART          SKIPPED")
         stages_skipped += 1
 
-    # ── STAGE 9: PACKAGE ──
+    # ── STAGE 9: LISTEN ──
+    if "listen" not in skip:
+        renders_dir_listen = output_dir / "renders"
+        listen_wavs: list[Path] = []
+        if renders_dir_listen.exists():
+            listen_wavs = (sorted(renders_dir_listen.glob("*.WAV")) +
+                           sorted(renders_dir_listen.glob("*.wav")))
+
+        print(f"  [9/11] LISTEN       Preview gate ({len(listen_wavs)} rendered WAV(s))")
+
+        if args.dry_run:
+            print(f"         -> Would generate: {output_dir}/_preview_playlist.wav")
+            print(f"         -> Would pause for human listening approval")
+            stages_run += 1
+        elif getattr(args, "skip_listen", False):
+            print(f"         [SKIP] Listen gate bypassed (--skip-listen)")
+            stages_run += 1
+            _update_build_log(log_path, "listen")
+        else:
+            # Generate preview playlist WAV (first 2s of each sample, 0.5s silence gaps,
+            # capped at 60 seconds total / ~20 samples).
+            playlist_path = output_dir / "_preview_playlist.wav"
+            playlist_ok = False
+            if listen_wavs:
+                try:
+                    MAX_PLAYLIST_SECONDS = 60.0
+                    SNIPPET_SECONDS = 2.0
+                    GAP_SECONDS = 0.5
+                    MAX_SAMPLES = 20
+
+                    # Read the first WAV to establish target format
+                    _ref_channels, _ref_sr, _ref_bits, _ = _read_wav_raw(listen_wavs[0])
+                    out_channels = _ref_channels
+                    out_sr = _ref_sr
+                    out_bits = _ref_bits
+
+                    playlist_chunks: list[bytes] = []
+                    total_seconds = 0.0
+                    n_included = 0
+                    bytes_per_sample_pl = out_bits // 8
+                    samples_per_snippet = int(out_sr * SNIPPET_SECONDS)
+                    bytes_per_snippet = samples_per_snippet * out_channels * bytes_per_sample_pl
+                    silence_gap = _make_silence_bytes(out_sr, out_channels, out_bits, GAP_SECONDS)
+
+                    for wav_path in listen_wavs[:MAX_SAMPLES]:
+                        if total_seconds >= MAX_PLAYLIST_SECONDS:
+                            break
+                        try:
+                            nc, sr, bits, raw = _read_wav_raw(wav_path)
+                            # Skip format mismatches rather than resample
+                            if nc != out_channels or sr != out_sr or bits != out_bits:
+                                print(f"         [WARN] Format mismatch in {wav_path.name}"
+                                      f" ({nc}ch/{sr}Hz/{bits}bit vs"
+                                      f" {out_channels}ch/{out_sr}Hz/{out_bits}bit) -- skipping")
+                                continue
+                            snippet = raw[:bytes_per_snippet]
+                            playlist_chunks.append(snippet)
+                            playlist_chunks.append(silence_gap)
+                            total_seconds += SNIPPET_SECONDS + GAP_SECONDS
+                            n_included += 1
+                        except Exception as _wav_err:
+                            print(f"         [WARN] Could not read {wav_path.name}: {_wav_err}")
+
+                    if playlist_chunks:
+                        _write_wav(playlist_path, out_channels, out_sr, out_bits,
+                                   b"".join(playlist_chunks))
+                        size_kb = playlist_path.stat().st_size // 1024
+                        print(f"         Preview playlist: {playlist_path}")
+                        print(f"           {n_included} snippet(s), ~{total_seconds:.0f}s, {size_kb} KB")
+                        playlist_ok = True
+                    else:
+                        print(f"         [WARN] No readable WAVs -- playlist not generated")
+
+                except Exception as _pl_err:
+                    print(f"         [WARN] Playlist generation failed: {_pl_err}")
+            else:
+                print(f"         [WARN] No rendered WAVs found -- playlist not generated")
+
+            # Count presets from selected_presets.json if available
+            _sp_path = output_dir / "selected_presets.json"
+            _n_presets_display = 0
+            try:
+                if _sp_path.exists():
+                    with open(_sp_path, encoding="utf-8", errors="replace") as _spf:
+                        _sp_data = json.load(_spf)
+                    _n_presets_display = _sp_data.get(
+                        "count_selected", len(_sp_data.get("presets", [])))
+            except Exception:
+                pass
+
+            # Check for existing approval marker (supports --resume runs)
+            _approval_marker = output_dir / ".listen_approved"
+            if _approval_marker.exists():
+                try:
+                    _approval_ts = _approval_marker.read_text(encoding="utf-8").strip()
+                except Exception:
+                    _approval_ts = "(unknown time)"
+                print(f"         [APPROVED] Listen approval found ({_approval_ts})")
+                stages_run += 1
+                _update_build_log(log_path, "listen")
+            else:
+                # Gate: print the action-required banner and stop the build.
+                print()
+                print(f"  -- STAGE: LISTEN -----------------------------------------------")
+                if playlist_ok:
+                    print(f"    Preview playlist: {playlist_path}")
+                print(f"    {len(listen_wavs)} samples rendered across {_n_presets_display} preset(s).")
+                print()
+                print(f"    [ACTION REQUIRED] Listen to the preview before packaging.")
+                print(f"    Run `oxport approve {output_dir}` to continue to PACKAGE.")
+                print(f"    Or use --skip-listen to bypass this gate.")
+                print()
+                return 0
+    else:
+        print(f"  [9/11] LISTEN       SKIPPED")
+        stages_skipped += 1
+
+        # ── STAGE 10: PACKAGE ──
     if "package" not in skip:
+        # Gate: require listen approval unless --skip-listen is set
+        _listen_marker = output_dir / ".listen_approved"
+        if not getattr(args, "skip_listen", False) and not _listen_marker.exists():
+            print(f"  [10/11] PACKAGE     BLOCKED -- listen approval required")
+            print(f"         Run `oxport approve {output_dir}` then `oxport build --resume`")
+            print(f"         or pass --skip-listen to bypass this gate.")
+            return 1
+
         xpn_name = f"XO_OX_{pack_id.replace('-', '_')}_v{version}.xpn"
-        print(f"  [9/10] PACKAGE      {xpn_name}")
+        print(f"  [10/11] PACKAGE     {xpn_name}")
         if args.dry_run:
             print(f"         → Would call: xpn_packager.py --output {output_dir / xpn_name}")
             stages_run += 1
@@ -3612,7 +3744,7 @@ def cmd_build(args) -> int:
                                             if p not in existing_xpms]
 
                 if not all_xpms:
-                    print(f"         ⚠  No .xpm programs found — skipping package")
+                    print(f"         [WARN] No .xpm programs found — skipping package")
                 else:
                     xpn_path_out = output_dir / xpn_name
                     meta = XPNMetadata(
@@ -3635,24 +3767,24 @@ def cmd_build(args) -> int:
                     )
                     size_mb = result_path.stat().st_size / (1024 * 1024) \
                         if result_path.exists() else 0
-                    print(f"         ✓ {result_path.name} ({size_mb:.2f} MB)")
+                    print(f"         [OK] {result_path.name} ({size_mb:.2f} MB)")
                 stages_run += 1
                 _update_build_log(log_path, "package")
             except ImportError:
                 print(f"         [SKIP] xpn_packager not available")
                 stages_skipped += 1
             except Exception as e:
-                print(f"         ✗  Package failed: {e}")
+                print(f"         [FAIL] Package failed: {e}")
                 stages_failed += 1
                 if not args.continue_on_error:
                     return 1
     else:
-        print(f"  [9/10] PACKAGE      SKIPPED")
+        print(f"  [10/11] PACKAGE     SKIPPED")
         stages_skipped += 1
 
-    # ── STAGE 10: VALIDATE ──
+    # ── STAGE 11: VALIDATE ──
     if "validate" not in skip:
-        print(f"  [10/10] VALIDATE    XPN integrity + profile phenotype check")
+        print(f"  [11/11] VALIDATE    XPN integrity + profile phenotype check")
         if args.dry_run:
             if profile_id:
                 try:
@@ -3686,24 +3818,24 @@ def cmd_build(args) -> int:
                     report_path = output_dir / "validation_report.json"
                     with open(report_path, "w", encoding='utf-8') as f:
                         json.dump(report, f, indent=2)
-                    print(f"         ✓ Report: {report_path}")
+                    print(f"         [OK] Report: {report_path}")
 
                     if report.get("overall") == "FAIL":
-                        print(f"         ✗  Profile validation FAILED — "
+                        print(f"         [FAIL] Profile validation FAILED — "
                               f"{len(report.get('failed', []))} critical assertion(s)")
                         if not args.continue_on_error:
                             return 1
                     else:
-                        print(f"         ✓ Profile validation PASSED — "
+                        print(f"         [OK] Profile validation PASSED — "
                               f"score {report.get('score', 0)}%")
                 except ImportError:
                     print(f"         [SKIP] xpn_profile_validator not available")
                 except Exception as e:
-                    print(f"         ✗  Profile validation error: {e}")
+                    print(f"         [FAIL] Profile validation error: {e}")
                     if not args.continue_on_error:
                         return 1
             else:
-                print(f"         ⚠  No profile — skipping phenotype validation")
+                print(f"         [WARN] No profile — skipping phenotype validation")
 
             # Phase 2: WAV content audit
             # Check that rendered WAVs exist, are non-empty, and count matches expectation.
@@ -3716,7 +3848,7 @@ def cmd_build(args) -> int:
                 print(f"         → WAV audit: {len(all_wavs)} file(s), "
                       f"{total_bytes / 1024 / 1024:.1f} MB total")
                 if empty_wavs:
-                    print(f"         ✗  {len(empty_wavs)} zero-byte WAV(s) — render likely failed:")
+                    print(f"         [FAIL] {len(empty_wavs)} zero-byte WAV(s) — render likely failed:")
                     for w in empty_wavs[:5]:
                         print(f"              {w.name}")
                     if len(empty_wavs) > 5:
@@ -3724,7 +3856,7 @@ def cmd_build(args) -> int:
                     if not args.continue_on_error:
                         return 1
                 else:
-                    print(f"         ✓ All {len(all_wavs)} WAV(s) non-empty")
+                    print(f"         [OK] All {len(all_wavs)} WAV(s) non-empty")
                     # Check expected count when selected_presets count is known.
                     manifest_path = output_dir / "render_manifest.json"
                     if manifest_path.exists():
@@ -3733,10 +3865,10 @@ def cmd_build(args) -> int:
                                 _manifest = json.load(_mf)
                             expected = _manifest.get("total_jobs", 0)
                             if expected and len(all_wavs) != expected:
-                                print(f"         ⚠  Expected {expected} WAV(s) per manifest, "
+                                print(f"         [WARN] Expected {expected} WAV(s) per manifest, "
                                       f"got {len(all_wavs)}")
                             elif expected:
-                                print(f"         ✓ WAV count matches manifest ({expected})")
+                                print(f"         [OK] WAV count matches manifest ({expected})")
                         except Exception:
                             pass
             else:
@@ -3752,7 +3884,7 @@ def cmd_build(args) -> int:
         stages_run += 1
         _update_build_log(log_path, "validate")
     else:
-        print(f"  [10/10] VALIDATE    SKIPPED")
+        print(f"  [11/11] VALIDATE    SKIPPED")
         stages_skipped += 1
 
     # Write final build log — merge with the incrementally-written completed_stages
@@ -3824,14 +3956,39 @@ def cmd_verify(args) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Approve subcommand — human listen gate
+# ---------------------------------------------------------------------------
+
+def cmd_approve(args) -> int:
+    """Write a .listen_approved marker so the next build --resume can continue to PACKAGE."""
+    output_dir = Path(args.output_dir)
+    if not output_dir.exists():
+        print(f"ERROR: Output directory not found: {output_dir}", file=sys.stderr)
+        return 1
+    marker = output_dir / ".listen_approved"
+    timestamp = datetime.now().isoformat()
+    marker.write_text(timestamp, encoding="utf-8")
+    print(f"[APPROVED] Pack approved for packaging. Run build --resume to continue.")
+    print(f"           Marker: {marker}")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Oxport — XO_OX Expansion Pack Pipeline Orchestrator",
+        description="Oxport — XO_OX Expansion Pack Pipeline Orchestrator. "
+                    "See also: oxport_render.py for standalone render operations.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__,
+        epilog=__doc__ + """
+Entry Points:
+  oxport.py build    Full 10-stage pipeline (recommended)
+  oxport.py doctor   Environment validation
+  oxport.py run      Execute the full export pipeline
+  oxport_render.py   Standalone render tool (used internally by oxport.py)
+""",
     )
     sub = parser.add_subparsers(dest="command")
 
@@ -3963,6 +4120,9 @@ def main():
                          help="Resume a previously interrupted build from the last completed stage. "
                               "Reads build.log.json from the output directory and skips all stages "
                               "that already completed successfully.")
+    p_build.add_argument("--skip-listen", action="store_true", dest="skip_listen",
+                         help="Bypass the LISTEN gate — skip human listening approval before "
+                              "packaging. Useful for automated/CI builds.")
 
     # --- verify ---
     p_verify = sub.add_parser("verify", help="Verify .xpn provenance chain")
@@ -3986,6 +4146,12 @@ def main():
     p_build.add_argument("--skip-doctor", action="store_true", dest="skip_doctor",
                          help="Skip the lightweight pre-build dependency/disk check")
 
+    # --- approve ---
+    p_approve = sub.add_parser("approve",
+                               help="Mark a build output as listen-approved to ungate PACKAGE")
+    p_approve.add_argument("output_dir", metavar="OUTPUT_DIR",
+                           help="Build output directory to approve (contains rendered WAVs)")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -3999,6 +4165,7 @@ def main():
         "build":    cmd_build,
         "verify":   cmd_verify,
         "doctor":   cmd_doctor,
+        "approve":  cmd_approve,
     }
     return dispatch[args.command](args)
 

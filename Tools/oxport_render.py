@@ -628,7 +628,8 @@ def probe_voices(voices: list[dict], presets: list[dict], midi_port,
     np = _numpy
     mido = _require_mido()
 
-    SILENCE_RMS = 0.001           # ~-60 dBFS
+    SILENCE_PEAK = 0.002          # ~-54 dBFS — probe peak floor
+    SILENCE_RMS  = 0.0005         # ~-66 dBFS — probe RMS floor (both must be below = silent)
     PROBE_DURATION_S = 0.5        # record 0.5s per note
     PROBE_VEL_PASS1 = 20          # first-pass velocity (lowest production velocity)
     PROBE_VEL_PASS2 = 80          # second-pass velocity (quiet voices that need more)
@@ -644,7 +645,7 @@ def probe_voices(voices: list[dict], presets: list[dict], midi_port,
     consecutive_dead_presets = 0
 
     print(f"\n  [PROBE] Starting two-pass voice probe: {n_presets} presets × {n_voices} voices")
-    print(f"  [PROBE] Pass 1 velocity: {PROBE_VEL_PASS1}  |  Pass 2 velocity: {PROBE_VEL_PASS2}  |  Threshold: {SILENCE_RMS}")
+    print(f"  [PROBE] Pass 1 velocity: {PROBE_VEL_PASS1}  |  Pass 2 velocity: {PROBE_VEL_PASS2}  |  Threshold: peak<{SILENCE_PEAK} AND rms<{SILENCE_RMS}")
 
     for preset_idx, preset in enumerate(presets):
         preset_name = preset.get("name", f"preset_{preset_idx}")
@@ -692,10 +693,11 @@ def probe_voices(voices: list[dict], presets: list[dict], midi_port,
                 total_probes += 1
                 continue
 
+            probe_peak = float(np.max(np.abs(recording)))
             rms = float(np.sqrt(np.mean(recording ** 2)))
             total_probes += 1
 
-            if rms > SILENCE_RMS:
+            if not (probe_peak < SILENCE_PEAK and rms < SILENCE_RMS):
                 preset_result[voice_name] = True
                 alive_count += 1
             else:
@@ -731,10 +733,11 @@ def probe_voices(voices: list[dict], presets: list[dict], midi_port,
                 _precise_wait(0.050)
                 continue
 
+            probe_peak = float(np.max(np.abs(recording)))
             rms = float(np.sqrt(np.mean(recording ** 2)))
             total_probes += 1
 
-            if rms > SILENCE_RMS:
+            if not (probe_peak < SILENCE_PEAK and rms < SILENCE_RMS):
                 preset_result[voice_name] = True
                 alive_count += 1
                 pass2_recovered += 1
@@ -814,7 +817,7 @@ def load_voice_map(output_dir: str) -> dict | None:
 def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
                 audio_device, sample_rate: int, preset_load_ms: int = 200,
                 force_rerender: bool = False, voice_map: dict | None = None,
-                require_probe: bool = False):
+                require_probe: bool = False, adaptive_load: bool = False):
     """Execute all render jobs: MIDI out + audio record → WAV.
 
     Args:
@@ -826,6 +829,8 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
             probe_voices() / load_voice_map().  None = no filtering.
         require_probe: When True and voice_map is None, abort with a message
             instructing the user to run the probe first (--skip-probe to bypass).
+        adaptive_load: When True, after each program change send a quick test note
+            and retry with 2× wait (up to 3 retries, max 1600ms) if silent.
     """
     if require_probe and voice_map is None:
         print("[ABORT] --require-probe is set but no voice_map.json was found in the output "
@@ -838,14 +843,16 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
     _lock_fd = _acquire_render_lock()
     try:
         _render_jobs_locked(jobs, output_dir, midi_port_name, audio_device,
-                            sample_rate, preset_load_ms, force_rerender, voice_map)
+                            sample_rate, preset_load_ms, force_rerender, voice_map,
+                            adaptive_load=adaptive_load)
     finally:
         _release_render_lock(_lock_fd)
 
 
 def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str | None,
                         audio_device, sample_rate: int, preset_load_ms: int = 200,
-                        force_rerender: bool = False, voice_map: dict | None = None):
+                        force_rerender: bool = False, voice_map: dict | None = None,
+                        adaptive_load: bool = False):
     """Internal implementation of render_jobs, called only while holding the lock."""
     mido = _require_mido()
     sd = _require_sounddevice()
@@ -986,6 +993,47 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
                 port.send(mido.Message("control_change", channel=ch, control=32, value=job["bank_lsb"]))
             port.send(mido.Message("program_change", channel=ch, program=job["program"]))
             time.sleep(preset_load_ms / 1000.0)
+
+            # Issue #740: Adaptive load retry — verify preset loaded before recording
+            if adaptive_load:
+                _adaptive_wait_ms = preset_load_ms
+                _total_waited_ms = preset_load_ms  # already slept before this block
+                _loaded_on_retry = False
+                for _retry in range(3):
+                    # Quick test note: velocity 80, 100ms recording
+                    _test_frames = int(0.1 * sample_rate)
+                    _test_rec = sd.rec(_test_frames, samplerate=sample_rate,
+                                       channels=2, dtype="float32", device=device_index)
+                    port.send(mido.Message("note_on", channel=ch,
+                                           note=job["note"], velocity=80))
+                    _precise_wait(0.08)
+                    port.send(mido.Message("note_off", channel=ch,
+                                           note=job["note"], velocity=0))
+                    _wait_with_timeout(0.1)
+                    port.send(mido.Message("control_change", channel=ch,
+                                           control=123, value=0))  # All Notes Off
+                    _test_peak = float(np.max(np.abs(_test_rec)))
+                    if _test_peak >= 0.001:
+                        if _retry > 0:
+                            _loaded_on_retry = True
+                        break  # preset loaded — proceed
+                    # Silent — double the wait and retry
+                    _adaptive_wait_ms = min(_adaptive_wait_ms * 2, 1600)
+                    if _retry < 2:
+                        time.sleep(_adaptive_wait_ms / 1000.0)
+                        _total_waited_ms += _adaptive_wait_ms
+                else:
+                    # Exhausted all retries — still silent; voice probe will catch it
+                    _preset_name = job.get("preset", job.get("filename", "unknown"))
+                    print(f"  [WARN] Preset '{_preset_name}' needed {_total_waited_ms}ms to load "
+                          f"(default: {preset_load_ms}ms) — continuing anyway")
+                if _loaded_on_retry:
+                    _preset_name = job.get("preset", job.get("filename", "unknown"))
+                    print(f"  [WARN] Preset '{_preset_name}' needed {_total_waited_ms}ms to load "
+                          f"(default: {preset_load_ms}ms)")
+                # Brief gap so test-note tail doesn't bleed into the real recording
+                _precise_wait(0.100)
+
             last_program = pc_key
 
         # Calculate total recording duration in seconds
@@ -1017,15 +1065,17 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
         completed = _wait_with_timeout(rec_seconds)
         if not completed:
             peak = float(np.max(np.abs(recording)))
-            if peak < 0.001:
+            rms  = float(np.sqrt(np.mean(np.square(recording))))
+            if peak < 0.002 and rms < 0.0005:
                 print(f"  [TIMEOUT] {job['filename']} — driver timed out and no audio captured. Skipping.")
                 tracker.record_failed()
                 continue
             print(f"  [TIMEOUT] {job['filename']} — driver timed out but audio was captured (peak={peak:.4f}). Saving partial recording.")
 
-        # B2: Post-capture peak check — catch silent/clipping recordings immediately
+        # B2: Post-capture dual-metric silence check — peak alone misses slow-attack pads
         peak = float(np.max(np.abs(recording)))
-        if peak < 0.001:  # ~-60 dBFS
+        rms  = float(np.sqrt(np.mean(np.square(recording))))
+        if peak < 0.002 and rms < 0.0005:  # peak ~-54 dBFS AND rms ~-66 dBFS
             print(f"  [SILENT WARNING] {job['filename']} — no signal detected! Check BlackHole routing.")
             n_consecutive_silent += 1
             tracker.record_failed()
@@ -1131,7 +1181,8 @@ def dry_run(jobs: list[dict], output_dir: str):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Oxport Fleet Render — automate WAV rendering from XOceanus via MIDI + loopback audio",
+        description="Oxport Fleet Render — automate WAV rendering from XOceanus via MIDI + loopback audio. "
+                    "See also: oxport.py for the full build pipeline (recommended entry point).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -1171,6 +1222,10 @@ Render spec JSON format:
     parser.add_argument("--preset-load-ms", type=int, default=200, help="Wait time after program change (default: 200)")
     parser.add_argument("--force-rerender", action="store_true",
                         help="Re-render all jobs even if output WAV already exists (disables resume skip)")
+    parser.add_argument("--adaptive-load", action="store_true", dest="adaptive_load",
+                        help="After each program change, send a quick test note to confirm the preset "
+                             "loaded before recording. Retries with 2× wait up to 3 times (max 1600ms). "
+                             "Adds ~100ms overhead per preset on the happy path. Default: off.")
 
     args = parser.parse_args()
 
@@ -1217,7 +1272,8 @@ Render spec JSON format:
         return
 
     render_jobs(jobs, args.output_dir, args.midi_port, args.audio_device,
-                args.sample_rate, args.preset_load_ms, args.force_rerender)
+                args.sample_rate, args.preset_load_ms, args.force_rerender,
+                adaptive_load=args.adaptive_load)
 
 
 if __name__ == "__main__":
