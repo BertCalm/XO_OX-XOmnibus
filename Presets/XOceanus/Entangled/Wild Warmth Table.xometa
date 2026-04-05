@@ -59,7 +59,8 @@
       "ocelot_macroCoupling": 0.624,
       "ocelot_macroSpace": 0.373,
       "ocelot_filterEnvDepth": 0.574,
-      "ocelot_lfoRate": 0.188
+      "ocelot_lfoRate": 0.188,
+      "ocelot_floorVelocity": 0.762
     },
     "Osteria": {
       "ost_ampAttack": 0.03,

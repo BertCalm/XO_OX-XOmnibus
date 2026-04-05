@@ -76,7 +76,8 @@
       "owl_subLevel3": 0.35,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.7,
-      "owl_subWave": 0.15
+      "owl_subWave": 0.15,
+      "owl_velocity": 0.442
     }
   },
   "schema_version": 1,
@@ -90,5 +91,11 @@
     "foundation"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Retroreflection",
+  "mood": "Luminous",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cat's eye retroreflection \u2014 the tapetum lucidum bouncing light back exactly to its source, making eyes glow in car headlights. Biological architecture serving function through geometry.",
+  "tags": [
+    "luminous",
+    "retroreflect",
+    "tapetum",
+    "geometry",
+    "biological",
+    "glow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.48,
+    "movement": 0.32,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotDepth": 0.48,
+      "olap_filterCutoff": 10500.0,
+      "olap_filterRes": 0.15,
+      "olap_attack": 0.15,
+      "olap_decay": 1.5,
+      "olap_sustain": 0.72,
+      "olap_release": 4.5,
+      "olap_lfo1Rate": 0.1,
+      "olap_lfo1Depth": 0.18,
+      "olap_macroCharacter": 0.55,
+      "olap_macroMovement": 0.32,
+      "olap_macroCoupling": 0.12,
+      "olap_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

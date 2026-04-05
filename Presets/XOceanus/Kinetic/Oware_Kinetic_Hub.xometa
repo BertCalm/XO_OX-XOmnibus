@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Kinetic coupling hub \u2014 short decay, high mallet hardness, designed as AmpToFilter or VelocityToMod coupling source",
+  "description": "Kinetic coupling hub — short decay, high mallet hardness, designed as AmpToFilter or VelocityToMod coupling source",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.72,
@@ -48,7 +48,8 @@
       "owr_macroMaterial": 0.65,
       "owr_macroMallet": 0.65,
       "owr_macroCoupling": 0.45,
-      "owr_macroSpace": 0.48
+      "owr_macroSpace": 0.48,
+      "owr_malletVelocity": 0.85
     }
   },
   "schema_version": 1,

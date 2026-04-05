@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.292,
       "owl_resonantPitch": 0.401,
       "owl_shimmer": 0.447,
-      "owl_subLevel": 0.37
+      "owl_subLevel": 0.37,
+      "owl_velocity": 0.646
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "origami"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.466,
+    "MOVEMENT": 0.356,
+    "COUPLING": 0.604,
+    "SPACE": 0.485
+  }
 }

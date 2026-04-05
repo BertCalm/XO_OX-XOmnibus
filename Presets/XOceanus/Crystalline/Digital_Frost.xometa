@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Frost forming on a digital matrix \u2014 each pixel a crystal grain, the screen frozen in mineral clarity.",
+  "description": "Frost forming on a digital matrix — each pixel a crystal grain, the screen frozen in mineral clarity.",
   "tags": [
     "crystalline",
     "digital",
@@ -39,7 +39,8 @@
       "opco_macroSpace": 0.53,
       "opco_filterEnvAmt": 0.59,
       "opco_lfo1Rate": 0.14,
-      "opco_lfo1Depth": 0.19
+      "opco_lfo1Depth": 0.19,
+      "opco_velToIndex": 0.413
     }
   },
   "coupling": {

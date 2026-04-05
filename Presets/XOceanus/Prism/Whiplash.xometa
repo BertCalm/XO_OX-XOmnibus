@@ -57,5 +57,11 @@
     "transient"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.925,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.2,
+    "SPACE": 1.0
+  }
 }

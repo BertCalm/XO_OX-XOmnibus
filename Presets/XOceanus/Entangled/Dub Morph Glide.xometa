@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB GLIDE": 0.45,
+    "MORPH EVOLVE": 0.45,
+    "COUPLING": 0.42,
+    "FILTER": 0.45
+  }
 }

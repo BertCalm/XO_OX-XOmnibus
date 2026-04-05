@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERBITE bite envelope dominantly controls OPAL grain size expansion \u2014 possessive tension physically expanding granular cloud, bite as grain growth.",
+  "description": "OVERBITE bite envelope dominantly controls OPAL grain size expansion — possessive tension physically expanding granular cloud, bite as grain growth.",
   "tags": [
     "coupling",
     "heavy",
@@ -41,7 +41,8 @@
       "poss_macroScurry": 0.58,
       "poss_filterEnvAmt": 0.65,
       "poss_lfo1Rate": 0.16,
-      "poss_lfo1Depth": 0.35
+      "poss_lfo1Depth": 0.35,
+      "poss_ampVelSens": 0.52
     },
     "Opal": {
       "opal_grainSize": 0.68,
@@ -51,7 +52,8 @@
       "opal_macroCharacter": 0.62,
       "opal_macroMovement": 0.62,
       "opal_macroCoupling": 0.72,
-      "opal_macroSpace": 0.52
+      "opal_macroSpace": 0.52,
+      "opal_ampVelSens": 0.416
     }
   },
   "coupling": {

@@ -54,7 +54,8 @@
       "orph_macroDivine": 0.437,
       "orph_filterEnvAmt": 0.516,
       "orph_lfo1Rate": 0.17,
-      "orph_lfo1Depth": 0.269
+      "orph_lfo1Depth": 0.269,
+      "orph_velocitySensitivity": 0.769
     },
     "Overbite": {
       "poss_gnashAmount": 0.642,
@@ -67,7 +68,8 @@
       "poss_macroPlayDead": 0.649,
       "poss_filterEnvAmount": 0.516,
       "poss_lfo1Rate": 0.17,
-      "poss_lfo1Depth": 0.269
+      "poss_lfo1Depth": 0.269,
+      "poss_ampVelSens": 0.513
     }
   },
   "schema_version": 1,

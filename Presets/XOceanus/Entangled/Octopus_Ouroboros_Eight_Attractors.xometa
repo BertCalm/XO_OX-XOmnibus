@@ -99,5 +99,11 @@
     "convergence"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.6,
+    "CHAOS": 0.296,
+    "COUPLING": 0.66,
+    "SPACE": 0.55
+  }
 }

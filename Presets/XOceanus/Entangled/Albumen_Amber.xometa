@@ -47,7 +47,8 @@
       "bob_macro3": 0.669,
       "bob_macro4": 0.456,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.492
     },
     "Obscura": {
       "obscura_couplingOut": 0.675,
@@ -72,5 +73,11 @@
     "entangled"
   ],
   "tempo": 130,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.414,
+    "MOVEMENT": 0.412,
+    "COUPLING": 0.627,
+    "SPACE": 0.558
+  }
 }

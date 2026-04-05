@@ -74,5 +74,11 @@
     "overlap"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.567,
+    "MOVEMENT": 0.687,
+    "COUPLING": 0.48,
+    "SPACE": 0.544
+  }
 }

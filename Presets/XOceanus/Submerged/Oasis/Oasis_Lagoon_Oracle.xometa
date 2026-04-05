@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Lagoon Oracle",
+  "mood": "Submerged",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hidden oasis pool where the resonator sings back prophecy — maximum lagoon depth, high resonator Q, notes bloom into harmonic prediction.",
+  "tags": [
+    "submerged",
+    "resonant",
+    "mystical",
+    "mid",
+    "warm",
+    "oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.58,
+      "oas_breeze": 0.38,
+      "oas_swarmDensity": 0.45,
+      "oas_lagoonDepth": 0.95,
+      "oas_subDrive": 0.28,
+      "oas_resonatorQ": 17.0,
+      "oas_cullDecay": 0.998,
+      "oas_canopyFB": 0.7,
+      "oas_filterCutoff": 1200.0,
+      "oas_filterEnvAmt": 0.45,
+      "oas_rhodesMix": 0.78,
+      "oas_pickupPos": 0.38,
+      "oas_bellAmount": 0.35,
+      "oas_warmth": 0.62,
+      "oas_tremoloDepth": 0.08,
+      "oas_tremoloRate": 0.8,
+      "oas_glideTime": 0.12,
+      "oas_macroCharacter": 0.35,
+      "oas_macroMovement": 0.42,
+      "oas_macroCoupling": 0.3,
+      "oas_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.235,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}

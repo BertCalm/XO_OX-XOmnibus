@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Pollen Draft",
+  "mood": "Coupling",
+  "engines": [
+    "Overgrow",
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERGROW growth rate barely modulates OSIER's wind density morph — a forest exhaling almost nothing into the willow's trembling, the barest exchange of atmospheric information between root and branch.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "growth",
+    "wind",
+    "EnvToMorph",
+    "organic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.58,
+    "movement": 0.4,
+    "density": 0.36,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overgrow": {
+      "grow_growthRate": 0.5,
+      "grow_filterEnvAmt": 0.36,
+      "grow_lfo1Rate": 0.07,
+      "grow_lfo1Depth": 0.15,
+      "grow_macroCharacter": 0.46,
+      "grow_macroMovement": 0.38,
+      "grow_macroCoupling": 0.11,
+      "grow_macroSpace": 0.6
+    },
+    "Osier": {
+      "osier_windDensity": 0.48,
+      "osier_filterEnvAmt": 0.34,
+      "osier_lfo1Rate": 0.08,
+      "osier_lfo1Depth": 0.14,
+      "osier_macroCharacter": 0.44,
+      "osier_macroMovement": 0.36,
+      "osier_macroCoupling": 0.1,
+      "osier_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overgrow",
+        "engineB": "Osier",
+        "type": "EnvToMorph",
+        "amount": 0.1
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.11,
+    "SPACE": 0.61
+  }
+}

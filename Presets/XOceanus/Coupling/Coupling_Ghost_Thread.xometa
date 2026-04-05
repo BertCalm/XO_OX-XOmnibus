@@ -51,7 +51,8 @@
       "opal_lfoRate": 0.04,
       "opal_lfoDepth": 0.12,
       "opal_outputLevel": 0.68,
-      "opal_reverbMix": 0.35
+      "opal_reverbMix": 0.35,
+      "opal_ampVelSens": 0.336
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -76,7 +77,7 @@
         "engineA": "Opal",
         "engineB": "Overdub",
         "type": "AmpToFilter",
-        "amount": 0.10
+        "amount": 0.1
       }
     ]
   },
@@ -86,11 +87,17 @@
         "slot": 1,
         "active": true,
         "type": 0,
-        "amount": 0.10,
+        "amount": 0.1,
         "sourceSlot": 0,
         "targetSlot": 1
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.215,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.21,
+    "SPACE": 0.72
+  }
 }

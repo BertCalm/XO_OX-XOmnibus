@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA echolocation amplitude at extreme forces OCEANDEEP pressure to maximum \u2014 apex predator generating the pressure of the abyss itself, hunt as depth.",
+  "description": "ORCA echolocation amplitude at extreme forces OCEANDEEP pressure to maximum — apex predator generating the pressure of the abyss itself, hunt as depth.",
   "tags": [
     "coupling",
     "extreme",
@@ -43,7 +43,8 @@
       "orca_macroCharacter": 0.78,
       "orca_macroMovement": 0.88,
       "orca_macroCoupling": 0.9,
-      "orca_macroSpace": 0.62
+      "orca_macroSpace": 0.62,
+      "orca_velCutoffAmt": 0.595
     },
     "OceanDeep": {
       "deep_macroPressure": 0.92,
@@ -53,7 +54,8 @@
       "deep_macroCharacter": 0.75,
       "deep_macroMovement": 0.82,
       "deep_macroCoupling": 0.88,
-      "deep_macroSpace": 0.78
+      "deep_macroSpace": 0.78,
+      "deep_velCutoffAmt": 0.595
     }
   },
   "coupling": {

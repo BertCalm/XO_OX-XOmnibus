@@ -119,5 +119,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT EARTH": 0.45,
+    "DRIFT SKY": 0.45,
+    "COUPLING": 0.33,
+    "BREATH": 0.596
+  }
 }

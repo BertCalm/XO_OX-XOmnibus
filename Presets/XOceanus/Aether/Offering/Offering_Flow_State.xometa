@@ -9,10 +9,10 @@
     "psychology"
   ],
   "macros": {
-    "DIG": 0.0,
-    "CITY": 0.0,
-    "FLIP": 0.0,
-    "DUST": 0.0
+    "DIG": 0.534,
+    "CITY": 0.416,
+    "FLIP": 0.214,
+    "DUST": 0.28
   },
   "dna": {
     "brightness": 0.4,

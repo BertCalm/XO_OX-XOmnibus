@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 2, ratio 4, feedback 0.6 \u2014 the FM equivalent of razor wire. Maximum harmonic aggression.",
+  "description": "Algorithm 2, ratio 4, feedback 0.6 — the FM equivalent of razor wire. Maximum harmonic aggression.",
   "tags": [
     "fm",
     "razor",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.18
+  }
 }

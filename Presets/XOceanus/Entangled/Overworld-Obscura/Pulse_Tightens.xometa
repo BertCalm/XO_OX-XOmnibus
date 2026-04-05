@@ -110,5 +110,11 @@
     "density": 0.42,
     "space": 0.48,
     "aggression": 0.15
+  },
+  "macros": {
+    "ERA": 0.55,
+    "MATERIAL": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.48
   }
 }

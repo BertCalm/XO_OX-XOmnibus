@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Obsidian Inject",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Orca"],
+  "engines": [
+    "Ouroboros",
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chaos attractor chaos-injecting hunt signal. Both predatory systems entangled in a spiral of maximum aggression.",
-  "tags": ["entangled", "aggressive", "obsidian", "inject", "entangle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "obsidian",
+    "inject",
+    "entangle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -51,7 +65,8 @@
       "orca_attackTime": 0.005,
       "orca_decayTime": 0.16,
       "orca_sustain": 0.28,
-      "orca_releaseTime": 0.12
+      "orca_releaseTime": 0.12,
+      "orca_velCutoffAmt": 0.643
     }
   },
   "coupling": {

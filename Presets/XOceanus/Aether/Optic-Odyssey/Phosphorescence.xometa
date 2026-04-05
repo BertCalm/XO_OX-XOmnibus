@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Near-zero pulse rate, maximum viz feedback and speed \u2014 the long aether tail of bioluminescent light. OPTIC barely moves, Odyssey floats in maximum reverb space. The comb jelly's ghost.",
+  "description": "Near-zero pulse rate, maximum viz feedback and speed — the long aether tail of bioluminescent light. OPTIC barely moves, Odyssey floats in maximum reverb space. The comb jelly's ghost.",
   "tags": [
     "optic",
     "aether",
@@ -97,5 +97,11 @@
     "density": 0.5,
     "space": 0.98,
     "aggression": 0.03
+  },
+  "macros": {
+    "LUMINOSITY": 0.45,
+    "REVERB": 0.45,
+    "FILTER": 0.45,
+    "DRIFT": 0.1
   }
 }

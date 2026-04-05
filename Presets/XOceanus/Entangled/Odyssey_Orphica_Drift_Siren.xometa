@@ -67,7 +67,8 @@
     },
     "Orphica": {
       "orph_filterCutoff": 9283.4,
-      "orph_level": 0.741
+      "orph_level": 0.741,
+      "orph_velocitySensitivity": 0.733
     }
   },
   "schema_version": 1,
@@ -79,5 +80,11 @@
     "orphica"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.603,
+    "COUPLING": 0.63,
+    "SPACE": 0.641
+  }
 }

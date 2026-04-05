@@ -118,5 +118,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT CHARACTER": 0.45,
+    "PORTAMENTO": 0.45,
+    "COUPLING": 0.42,
+    "ECHO TAIL": 0.45
+  }
 }

@@ -91,5 +91,11 @@
     "overworld"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.518,
+    "COUPLING": 0.517,
+    "SPACE": 0.431
+  }
 }

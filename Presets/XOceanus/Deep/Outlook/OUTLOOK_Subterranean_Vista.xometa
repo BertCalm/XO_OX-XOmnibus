@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Sub-register panoramic \u2014 deep below the horizon line. Heavy low resonance, near-closed filter, cavernous parallax.",
+  "description": "Sub-register panoramic — deep below the horizon line. Heavy low resonance, near-closed filter, cavernous parallax.",
   "tags": [
     "sub",
     "cavernous",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.16,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
   }
 }

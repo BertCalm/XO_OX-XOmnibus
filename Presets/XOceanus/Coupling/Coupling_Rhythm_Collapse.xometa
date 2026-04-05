@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three extreme percussion engines: OSTINATO world rhythm drives OFFERING city chain which drives ONSET transient \u2014 all three rhythm architectures converging at extreme intensity.",
+  "description": "Three extreme percussion engines: OSTINATO world rhythm drives OFFERING city chain which drives ONSET transient — all three rhythm architectures converging at extreme intensity.",
   "tags": [
     "coupling",
     "extreme",
@@ -55,7 +55,8 @@
       "ofr_macroCharacter": 0.72,
       "ofr_macroMovement": 0.88,
       "ofr_macroCoupling": 0.88,
-      "ofr_macroSpace": 0.38
+      "ofr_macroSpace": 0.38,
+      "ofr_velToSnap": 0.735
     },
     "Onset": {
       "perc_macro_punch": 0.88,

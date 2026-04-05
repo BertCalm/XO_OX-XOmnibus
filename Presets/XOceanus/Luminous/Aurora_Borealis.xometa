@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Aurora Borealis",
   "mood": "Luminous",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The classical northern lights — full width shimmer engine with slow-moving luminous curtains of green and violet, the sky itself an instrument of light.",
-  "tags": ["luminous", "aurora", "borealis", "curtains", "northern"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "aurora",
+    "borealis",
+    "curtains",
+    "northern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,12 +37,12 @@
       "sky_macroMovement": 0.46,
       "sky_macroCoupling": 0.16,
       "sky_macroSpace": 0.78,
-      "sky_macroRise": 0.60,
+      "sky_macroRise": 0.6,
       "sky_filterEnvAmt": 0.54,
       "sky_lfo1Rate": 0.03,
       "sky_lfo1Depth": 0.28,
       "sky_lfo2Rate": 0.07,
-      "sky_lfo2Depth": 0.20,
+      "sky_lfo2Depth": 0.2,
       "sky_attack": 0.8,
       "sky_decay": 2.0,
       "sky_sustain": 0.82,
@@ -40,12 +53,15 @@
       "sky_shimmerRate": 0.04,
       "sky_unisonVoices": 6,
       "sky_unisonDetune": 0.22,
-      "sky_chorusDepth": 0.40,
+      "sky_chorusDepth": 0.4,
       "sky_reverbMix": 0.65,
-      "sky_output": 0
+      "sky_output": 0,
+      "sky_velSensitivity": 0.574
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.54,

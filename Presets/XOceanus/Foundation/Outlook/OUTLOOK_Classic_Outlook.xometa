@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "The most direct expression of Outlook's identity \u2014 triangle at center scan, medium parallax, moderate reverb. The engine's calling card.",
+  "description": "The most direct expression of Outlook's identity — triangle at center scan, medium parallax, moderate reverb. The engine's calling card.",
   "tags": [
     "classic",
     "identity",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
   }
 }

@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BASS TONE": 0.45,
+    "PORTAMENTO": 0.45,
+    "COUPLING": 0.33,
+    "DRIFT SPACE": 0.45
+  }
 }

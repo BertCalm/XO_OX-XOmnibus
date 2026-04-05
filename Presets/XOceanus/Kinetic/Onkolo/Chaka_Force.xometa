@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Dance-floor clavinet in the Chaka Khan tradition \u2014 bright tone, tight attack, the filter envelope makes every note an event.",
+  "description": "Dance-floor clavinet in the Chaka Khan tradition — bright tone, tight attack, the filter envelope makes every note an event.",
   "tags": [
     "clavinet",
     "chaka-khan",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.835,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.32
+  }
 }

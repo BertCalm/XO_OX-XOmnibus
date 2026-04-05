@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANDEEP pressure signal feeds ORBWEAVE knot routing topology \u2014 abyssal physics reshaping geometric coupling paths.",
+  "description": "OCEANDEEP pressure signal feeds ORBWEAVE knot routing topology — abyssal physics reshaping geometric coupling paths.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "deep_macroCharacter": 0.52,
       "deep_macroMovement": 0.52,
       "deep_macroCoupling": 0.62,
-      "deep_macroSpace": 0.6
+      "deep_macroSpace": 0.6,
+      "deep_velCutoffAmt": 0.45
     },
     "Orbweave": {
       "weave_knotDepth": 0.56,

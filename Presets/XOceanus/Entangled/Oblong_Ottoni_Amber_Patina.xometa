@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.36,
       "bob_scaleMode": 0.8,
       "bob_subOscLevel": 0.469,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.525
     },
     "Ottoni": {
       "otto_filterCutoff": 6274.5,
@@ -74,5 +75,11 @@
     "ottoni"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.601,
+    "MOVEMENT": 0.569,
+    "COUPLING": 0.54,
+    "SPACE": 0.501
+  }
 }

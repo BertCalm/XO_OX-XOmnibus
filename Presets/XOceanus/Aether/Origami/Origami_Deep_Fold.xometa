@@ -56,5 +56,11 @@
     "minimal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "FOLD": 0.376,
+    "CREASE": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.92
+  }
 }

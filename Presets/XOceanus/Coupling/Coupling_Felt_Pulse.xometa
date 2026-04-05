@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWORN felt age drives OSTINATO world pattern temporal feel \u2014 worn material adding human imperfection to ethnomusicological patterns.",
+  "description": "OVERWORN felt age drives OSTINATO world pattern temporal feel — worn material adding human imperfection to ethnomusicological patterns.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "osti_macroCharacter": 0.5,
       "osti_macroMovement": 0.58,
       "osti_macroCoupling": 0.62,
-      "osti_macroSpace": 0.48
+      "osti_macroSpace": 0.48,
+      "osti_velFilter": 0.5
     }
   },
   "coupling": {

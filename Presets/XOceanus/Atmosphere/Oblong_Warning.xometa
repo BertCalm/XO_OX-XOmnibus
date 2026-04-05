@@ -47,7 +47,8 @@
       "bob_macroSpace": 0.0,
       "bob_oscDetune": 0.38,
       "bob_oscWave": 1,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.396
     }
   },
   "schema_version": 1,
@@ -60,5 +61,11 @@
     "detuned"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.2,
+    "SPACE": 0.58
+  }
 }

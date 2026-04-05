@@ -2,16 +2,30 @@
   "schema_version": 1,
   "name": "Soil and String",
   "mood": "Organic",
-  "engines": ["Ohm", "Orphica"],
+  "engines": [
+    "Ohm",
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Communion with soil as plucked strings resonate through the earth. The pluck's envelope shapes the ground's macro response.",
-  "tags": ["organic", "soil", "string", "coupled", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "soil",
+    "string",
+    "coupled",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
-    "brightness": 0.30,
+    "brightness": 0.3,
     "warmth": 0.74,
     "movement": 0.36,
     "density": 0.46,
@@ -21,7 +35,7 @@
   "parameters": {
     "Ohm": {
       "ohm_macroCharacter": 0.44,
-      "ohm_macroMovement": 0.30,
+      "ohm_macroMovement": 0.3,
       "ohm_macroCoupling": 0.22,
       "ohm_macroSpace": 0.52,
       "ohm_macroMeddling": 0.38,
@@ -32,16 +46,17 @@
       "ohm_lfo2Depth": 0.16
     },
     "Orphica": {
-      "orph_macroCharacter": 0.40,
+      "orph_macroCharacter": 0.4,
       "orph_macroMovement": 0.38,
       "orph_macroCoupling": 0.22,
-      "orph_macroSpace": 0.50,
+      "orph_macroSpace": 0.5,
       "orph_pluckBrightness": 0.42,
       "orph_filterEnvAmt": 0.44,
       "orph_lfo1Rate": 0.06,
-      "orph_lfo1Depth": 0.20,
+      "orph_lfo1Depth": 0.2,
       "orph_lfo2Rate": 0.11,
-      "orph_lfo2Depth": 0.14
+      "orph_lfo2Depth": 0.14,
+      "orph_velocitySensitivity": 0.626
     }
   },
   "coupling": {
@@ -50,7 +65,7 @@
         "source": "Orphica",
         "target": "Ohm",
         "type": "EnvToMorph",
-        "amount": 0.30
+        "amount": 0.3
       }
     ]
   },

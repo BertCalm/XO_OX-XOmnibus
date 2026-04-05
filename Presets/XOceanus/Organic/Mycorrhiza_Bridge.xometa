@@ -2,18 +2,31 @@
   "schema_version": 1,
   "name": "Mycorrhiza Bridge",
   "mood": "Organic",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fungal bridge connecting two plant root systems — chemical information traveling in both directions across the living link.",
-  "tags": ["organic", "mycorrhiza", "bridge", "connection", "bidirectional"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "mycorrhiza",
+    "bridge",
+    "connection",
+    "bidirectional"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.28,
     "warmth": 0.74,
-    "movement": 0.40,
+    "movement": 0.4,
     "density": 0.54,
     "space": 0.52,
     "aggression": 0.08
@@ -21,22 +34,25 @@
   "parameters": {
     "Organism": {
       "org_macroCharacter": 0.46,
-      "org_macroMovement": 0.40,
+      "org_macroMovement": 0.4,
       "org_macroCoupling": 0.22,
       "org_macroSpace": 0.52,
-      "org_ruleSet": 0.50,
+      "org_ruleSet": 0.5,
       "org_filterEnvAmt": 0.44,
       "org_lfo1Rate": 0.06,
       "org_lfo1Depth": 0.24,
       "org_lfo2Rate": 0.11,
-      "org_lfo2Depth": 0.18
+      "org_lfo2Depth": 0.18,
+      "org_velCutoff": 0.42
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.46,
-    "MOVEMENT": 0.40,
+    "MOVEMENT": 0.4,
     "COUPLING": 0.22,
     "SPACE": 0.52
   }

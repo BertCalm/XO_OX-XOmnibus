@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Tine Mutation",
+  "mood": "Flux",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The tine responds unpredictably — medium entropy sensitivity on the threshold of bloom; each phrase risks a partial cascade. Dark crossroads energy.",
+  "tags": [
+    "flux",
+    "mutation",
+    "threshold",
+    "dark",
+    "unpredictable",
+    "spice-route"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.68,
+      "oas_breeze": 0.28,
+      "oas_swarmDensity": 0.6,
+      "oas_lagoonDepth": 0.45,
+      "oas_subDrive": 0.42,
+      "oas_resonatorQ": 8.5,
+      "oas_cullDecay": 0.978,
+      "oas_canopyFB": 0.42,
+      "oas_filterCutoff": 3000.0,
+      "oas_filterEnvAmt": 0.72,
+      "oas_rhodesMix": 0.95,
+      "oas_pickupPos": 0.58,
+      "oas_bellAmount": 0.68,
+      "oas_warmth": 0.52,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.05,
+      "oas_macroCharacter": 0.6,
+      "oas_macroMovement": 0.7,
+      "oas_macroCoupling": 0.22,
+      "oas_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
+}

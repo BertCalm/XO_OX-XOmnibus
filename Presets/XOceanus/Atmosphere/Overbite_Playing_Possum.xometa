@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Still, near-silent atmospheric drone with slowly evolving filter \u2014 the sound of not moving.",
+  "description": "Still, near-silent atmospheric drone with slowly evolving filter — the sound of not moving.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.2,
@@ -54,7 +54,8 @@
       "poss_macroTrash": 0.0,
       "poss_oscADrift": 0.1,
       "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.4
+      "poss_subLevel": 0.4,
+      "poss_ampVelSens": 0.31
     }
   },
   "schema_version": 1,

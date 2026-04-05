@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Flanged bass with slow jet-sweep motion \u2014 the opossum crawl slowed to flange speed.",
+  "description": "Flanged bass with slow jet-sweep motion — the opossum crawl slowed to flange speed.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.5,
@@ -49,7 +49,8 @@
       "poss_macroScurry": 0.65,
       "poss_macroTrash": 0.15,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.59
     }
   },
   "schema_version": 1,

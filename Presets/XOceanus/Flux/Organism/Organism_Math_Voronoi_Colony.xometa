@@ -52,7 +52,8 @@
       "org_macroSpace": 0.62,
       "org_filterEnvAmt": 0.639,
       "org_lfo1Rate": 0.35,
-      "org_lfo1Depth": 0.392
+      "org_lfo1Depth": 0.392,
+      "org_velCutoff": 0.605
     }
   },
   "coupling": {

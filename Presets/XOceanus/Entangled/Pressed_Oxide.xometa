@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.83,
       "bob_macroCoupling": 0.9,
       "bob_macroMovement": 0.67,
-      "bob_macroSpace": 0.43
+      "bob_macroSpace": 0.43,
+      "bob_velFilter": 0.475
     },
     "Overdub": {
       "dub_lfoDepth": 0.12,

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Membrane Oscillation",
+  "mood": "Flux",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cell membrane cycling at maximum frequency — permeability oscillating between open and sealed, the signal in constant flux.",
+  "tags": ["flux", "movement", "membrane", "oscillation", "cellular"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.92,
+    "density": 0.55,
+    "space": 0.60,
+    "aggression": 0.30
+  },
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.38,
+      "organon_dampingCoeff": 0.22,
+      "organon_enzymeSelect": 3500.0,
+      "organon_isotopeBalance": 0.72,
+      "organon_lockIn": 0.05,
+      "organon_membrane": 0.98,
+      "organon_metabolicRate": 0.82,
+      "organon_noiseColor": 0.48,
+      "organon_phasonShift": 0.88,
+      "organon_signalFlux": 0.95,
+      "organon_macroCharacter": 0.42,
+      "organon_macroMovement": 0.92,
+      "organon_macroCoupling": 0.45,
+      "organon_macroSpace": 0.60,
+      "organon_filterEnvAmt": 0.78,
+      "organon_lfo1Rate": 0.82,
+      "organon_lfo1Depth": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.45,
+    "SPACE": 0.60
+  }
+}

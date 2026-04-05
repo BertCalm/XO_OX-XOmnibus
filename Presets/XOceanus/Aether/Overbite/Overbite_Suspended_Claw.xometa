@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Ethereal hanging tone like a claw suspended mid-swipe \u2014 resonant, still, faintly trembling.",
+  "description": "Ethereal hanging tone like a claw suspended mid-swipe — resonant, still, faintly trembling.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.45,
@@ -55,7 +55,8 @@
       "poss_modSlot1Src": 1,
       "poss_oscAWaveform": 0,
       "poss_oscBWaveform": 1,
-      "poss_oscMix": 0.5
+      "poss_oscMix": 0.5,
+      "poss_ampVelSens": 0.32
     }
   },
   "schema_version": 1,

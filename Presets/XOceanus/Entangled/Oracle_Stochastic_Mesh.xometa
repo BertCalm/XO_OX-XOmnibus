@@ -115,5 +115,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PROPHECY": 0.45,
+    "DENSITY": 0.72,
+    "COUPLING": 0.42,
+    "DRIFT": 0.75
+  }
 }

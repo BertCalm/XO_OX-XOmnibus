@@ -59,5 +59,11 @@
     "settled"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.235,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.2,
+    "SPACE": 0.75
+  }
 }

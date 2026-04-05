@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OUTWIT chromatophore arm depth modulates ORGANISM cell birth threshold \u2014 intelligent camouflage logic teaching cells when to grow.",
+  "description": "OUTWIT chromatophore arm depth modulates ORGANISM cell birth threshold — intelligent camouflage logic teaching cells when to grow.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "org_macroCharacter": 0.5,
       "org_macroMovement": 0.54,
       "org_macroCoupling": 0.6,
-      "org_macroSpace": 0.48
+      "org_macroSpace": 0.48,
+      "org_velCutoff": 0.46
     }
   },
   "coupling": {

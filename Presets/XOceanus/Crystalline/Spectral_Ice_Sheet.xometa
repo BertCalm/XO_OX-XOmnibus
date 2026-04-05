@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Flat spectral spread across the upper register \u2014 an ice sheet with harmonic altitude. No warmth below the treeline.",
+  "description": "Flat spectral spread across the upper register — an ice sheet with harmonic altitude. No warmth below the treeline.",
   "tags": [
     "crystalline",
     "spectral",
@@ -39,7 +39,8 @@
       "over_macroSpace": 0.6,
       "over_filterEnvAmt": 0.54,
       "over_lfo1Rate": 0.09,
-      "over_lfo1Depth": 0.1
+      "over_lfo1Depth": 0.1,
+      "over_velBright": 0.367
     }
   },
   "coupling": {

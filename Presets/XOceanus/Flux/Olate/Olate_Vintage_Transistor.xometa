@@ -63,5 +63,11 @@
     "funk"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.2,
+    "SPACE": 0.18
+  }
 }

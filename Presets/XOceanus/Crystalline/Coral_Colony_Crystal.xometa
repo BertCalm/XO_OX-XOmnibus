@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A coral colony crystallized \u2014 cellular automata generating mineral lattice, each cell a crystal node.",
+  "description": "A coral colony crystallized — cellular automata generating mineral lattice, each cell a crystal node.",
   "tags": [
     "crystalline",
     "coral",
@@ -39,7 +39,8 @@
       "org_macroSpace": 0.64,
       "org_filterEnvAmt": 0.57,
       "org_lfo1Rate": 0.14,
-      "org_lfo1Depth": 0.16
+      "org_lfo1Depth": 0.16,
+      "org_velCutoff": 0.425
     }
   },
   "coupling": {

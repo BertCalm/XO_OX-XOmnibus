@@ -88,7 +88,8 @@
       "owl_macroCoupling": 0.276,
       "owl_macroSpace": 0.413,
       "owl_lfoRate": 0.114,
-      "owl_lfoDepth": 0.238
+      "owl_lfoDepth": 0.238,
+      "owl_velocity": 0.463
     }
   },
   "schema_version": 1,

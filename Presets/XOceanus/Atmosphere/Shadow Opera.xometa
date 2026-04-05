@@ -83,5 +83,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "DRAMA": 0.5,
+    "VOICE": 0.535,
+    "BREATHE": 0.45,
+    "STAGE": 0.45
+  }
 }

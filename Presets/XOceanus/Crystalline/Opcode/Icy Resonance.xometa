@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sub-zero FM \u2014 ratio 9:1 with bright filter, index 0.45. The highest overtones only, floating above silence.",
+  "description": "Sub-zero FM — ratio 9:1 with bright filter, index 0.45. The highest overtones only, floating above silence.",
   "tags": [
     "fm",
     "resonance",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.8
+  }
 }

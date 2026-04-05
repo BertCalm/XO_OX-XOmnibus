@@ -38,7 +38,8 @@
       "bob_filterCutoff": 6831.6,
       "bob_level": 0.662,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.53
     },
     "Octopus": {
       "octo_ampAttack": 0.0243,
@@ -93,5 +94,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.589,
+    "MOVEMENT": 0.641,
+    "COUPLING": 0.48,
+    "SPACE": 0.484
+  }
 }

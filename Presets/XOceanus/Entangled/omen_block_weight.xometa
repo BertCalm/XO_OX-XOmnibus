@@ -44,7 +44,8 @@
       "bob_macroCharacter": 0.2,
       "bob_macroCoupling": 0.9,
       "bob_macroMovement": 0.8,
-      "bob_macroSpace": 0.4
+      "bob_macroSpace": 0.4,
+      "bob_velFilter": 0.6
     },
     "Oracle": {
       "oracle_macroCharacter": 0.7,

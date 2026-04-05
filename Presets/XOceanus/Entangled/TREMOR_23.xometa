@@ -43,13 +43,15 @@
       "bob_macroCharacter": 0.273,
       "bob_macroCoupling": 0.905,
       "bob_macroMovement": 0.909,
-      "bob_macroSpace": 0.147
+      "bob_macroSpace": 0.147,
+      "bob_velFilter": 0.554
     },
     "Opal": {
       "opal_macroCharacter": 0.437,
       "opal_macroCoupling": 0.946,
       "opal_macroMovement": 0.956,
-      "opal_macroSpace": 0.222
+      "opal_macroSpace": 0.222,
+      "opal_ampVelSens": 0.444
     }
   },
   "schema_version": 1,

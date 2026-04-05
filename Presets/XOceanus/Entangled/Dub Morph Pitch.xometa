@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB BASS": 0.45,
+    "MORPH PITCH": 0.45,
+    "COUPLING": 0.27,
+    "WAVETABLE": 0.45
+  }
 }

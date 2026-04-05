@@ -63,7 +63,8 @@
       "orca_modRelease": 0.4,
       "orca_modSustain": 0.55,
       "orca_wtPosition": 0.2,
-      "orca_wtScanRate": 0.05
+      "orca_wtScanRate": 0.05,
+      "orca_velCutoffAmt": 0.36
     }
   },
   "schema_version": 1,
@@ -77,5 +78,11 @@
     "clean"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

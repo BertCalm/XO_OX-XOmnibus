@@ -72,5 +72,11 @@
     "warm"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.225,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.27,
+    "SPACE": 0.8
+  }
 }

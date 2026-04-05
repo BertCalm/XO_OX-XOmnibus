@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbweave knot filter linked to OpenSky shimmer \u2014 topological geometry and arctic shimmer in crystalline union.",
+  "description": "Orbweave knot filter linked to OpenSky shimmer — topological geometry and arctic shimmer in crystalline union.",
   "tags": [
     "crystalline",
     "coupled",
@@ -49,7 +49,8 @@
       "sky_macroSpace": 0.58,
       "sky_filterEnvAmt": 0.45,
       "sky_lfo1Rate": 0.07,
-      "sky_lfo1Depth": 0.11
+      "sky_lfo1Depth": 0.11,
+      "sky_velSensitivity": 0.578
     }
   },
   "coupling": {

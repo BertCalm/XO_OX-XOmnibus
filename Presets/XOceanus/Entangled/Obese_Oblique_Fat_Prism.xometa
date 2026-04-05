@@ -74,5 +74,11 @@
     "oblique"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.629,
+    "MOVEMENT": 0.725,
+    "COUPLING": 0.51,
+    "SPACE": 0.401
+  }
 }

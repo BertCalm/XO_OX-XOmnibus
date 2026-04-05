@@ -124,5 +124,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT ENVELOPE": 0.45,
+    "DUB DECAY": 0.45,
+    "COUPLING": 0.45,
+    "ECHO SPACE": 0.45
+  }
 }

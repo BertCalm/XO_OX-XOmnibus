@@ -93,5 +93,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH SCAN": 0.45,
+    "FAT FM": 0.45,
+    "FM DEPTH": 0.45,
+    "DENSITY": 0.85
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM kettledrum \u2014 ratio 1.5, mod decay 0.4s. Low brightness gives the body, velocity-index creates the attack crack.",
+  "description": "FM kettledrum — ratio 1.5, mod decay 0.4s. Low brightness gives the body, velocity-index creates the attack crack.",
   "tags": [
     "fm",
     "kettle",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

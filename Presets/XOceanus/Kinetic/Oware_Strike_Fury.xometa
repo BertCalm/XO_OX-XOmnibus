@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Strike Fury",
   "mood": "Kinetic",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metal-mode mallet at maximum hardness — sympathetic strings buzzed hard, damping aggressive so notes die fast and sharp.",
-  "tags": ["percussion", "kinetic", "metal", "aggressive", "mallet"],
-  "macroLabels": ["MATERIAL", "HARDNESS", "BUZZ", "SYMPATHETIC"],
+  "tags": [
+    "percussion",
+    "kinetic",
+    "metal",
+    "aggressive",
+    "mallet"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "HARDNESS",
+    "BUZZ",
+    "SYMPATHETIC"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,9 +59,18 @@
       "owr_macroMaterial": 0.95,
       "owr_macroHardness": 1.0,
       "owr_macroBuzz": 0.52,
-      "owr_macroSympathetic": 0.55
+      "owr_macroSympathetic": 0.55,
+      "owr_malletVelocity": 0.85
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "MATERIAL": 0.45,
+    "HARDNESS": 0.45,
+    "BUZZ": 0.45,
+    "SYMPATHETIC": 0.45
+  }
 }

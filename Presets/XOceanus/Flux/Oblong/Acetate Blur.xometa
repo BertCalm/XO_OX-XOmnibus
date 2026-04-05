@@ -54,7 +54,8 @@
       "bob_macroSpace": 0.334,
       "bob_fltEnvAmt": 0.599,
       "bob_lfo1Rate": 0.362,
-      "bob_lfo1Depth": 0.387
+      "bob_lfo1Depth": 0.387,
+      "bob_velFilter": 0.57
     }
   },
   "schema_version": 1,

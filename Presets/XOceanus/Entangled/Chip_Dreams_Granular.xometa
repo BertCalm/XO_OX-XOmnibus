@@ -158,5 +158,11 @@
     "density": 0.6,
     "space": 0.7,
     "aggression": 0.2
+  },
+  "macros": {
+    "ERA": 0.55,
+    "GRAIN SCATTER": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.7
   }
 }

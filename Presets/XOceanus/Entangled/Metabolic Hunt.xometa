@@ -56,7 +56,8 @@
       "orca_pitchRand": 0.077,
       "orca_podSync": 0.447,
       "orca_wavetablePos": 0.41,
-      "orca_wavetableScan": 0.208
+      "orca_wavetableScan": 0.208,
+      "orca_velCutoffAmt": 0.56
     },
     "Organon": {
       "organon_attack": 0.228,
@@ -77,5 +78,11 @@
     "organon"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.484,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.455,
+    "SPACE": 0.498
+  }
 }

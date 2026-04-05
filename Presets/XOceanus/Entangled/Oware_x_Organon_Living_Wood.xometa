@@ -72,7 +72,8 @@
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 0.4,
       "owr_lfo2Depth": 0.1,
-      "owr_lfo2Shape": 0
+      "owr_lfo2Shape": 0,
+      "owr_malletVelocity": 0.675
     }
   },
   "coupling": {
@@ -85,5 +86,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "METABOLISM": 0.45,
+    "MATERIAL": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.58
+  }
 }

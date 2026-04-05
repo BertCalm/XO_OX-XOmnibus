@@ -42,7 +42,8 @@
       "ofr_dustVinyl": 0.25,
       "ofr_v1_decay": 0.16,
       "ofr_v4_decay": 0.18,
-      "ofr_masterWidth": 0.65
+      "ofr_masterWidth": 0.65,
+      "ofr_velToSnap": 0.66
     }
   },
   "engines": [

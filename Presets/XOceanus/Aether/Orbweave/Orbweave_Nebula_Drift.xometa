@@ -77,5 +77,11 @@
     "beautiful"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "WEAVE": 0.533,
+    "TENSION": 0.422,
+    "KNOT": 0.454,
+    "SPACE": 0.85
+  }
 }

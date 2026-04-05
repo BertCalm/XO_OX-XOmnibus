@@ -62,7 +62,8 @@
     },
     "Owlfish": {
       "owl_filterCutoff": 9631.5,
-      "owl_level": 0.705
+      "owl_level": 0.705,
+      "owl_velocity": 0.721
     }
   },
   "schema_version": 1,
@@ -74,5 +75,11 @@
     "owlfish"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.546,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.45,
+    "SPACE": 0.529
+  }
 }

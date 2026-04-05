@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive pads atmosphere with prism shimmer.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.561,
+    "density": 0.117,
+    "movement": 0.0,
+    "space": 0.269,
+    "warmth": 0.0
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "_quarantine_Drift Prism Pad",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 0.35,
+      "drift_filterCutoff": 6000.0,
+      "drift_filterReso": 0.1,
+      "drift_level": -4.0,
+      "drift_oscA_fmDepth": 0.2,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 3.0,
+      "drift_oscB_fmDepth": 0.15,
+      "drift_oscB_level": 0.5,
+      "drift_oscB_mode": 3.0,
+      "drift_release": 1.5,
+      "drift_shimmerAmount": 0.25,
+      "drift_shimmerTone": 0.6,
+      "drift_sustain": 0.7,
+      "drift_macroCharacter": 0.379,
+      "drift_macroMovement": 0.488,
+      "drift_macroCoupling": 0.179,
+      "drift_macroSpace": 0.644,
+      "drift_filterEnvAmt": 0.474,
+      "drift_lfoRate": 0.031,
+      "drift_lfoDepth": 0.342
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "shimmery",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.349,
+    "MOVEMENT": 0.458,
+    "COUPLING": 0.149,
+    "SPACE": 0.614
+  }
+}

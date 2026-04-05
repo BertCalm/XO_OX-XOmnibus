@@ -160,5 +160,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.05,
+    "SCURRY": 0.239,
+    "SPACE": 0.35
+  }
 }

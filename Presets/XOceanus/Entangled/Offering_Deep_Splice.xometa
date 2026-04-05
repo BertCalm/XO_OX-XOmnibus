@@ -42,7 +42,8 @@
       "ofr_lfo2Rate": 3.6,
       "ofr_lfo2Depth": 0.16,
       "ofr_v0_tune": -2.0,
-      "ofr_masterWidth": 0.7
+      "ofr_masterWidth": 0.7,
+      "ofr_velToSnap": 0.63
     }
   },
   "engines": [

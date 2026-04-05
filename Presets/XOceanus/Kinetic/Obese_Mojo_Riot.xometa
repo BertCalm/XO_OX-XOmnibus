@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Mojo Riot",
   "mood": "Kinetic",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full mojo saturation stack — digital and analog axes colliding, bit crusher grinding under heavy filter resonance.",
-  "tags": ["distortion", "kinetic", "fat", "aggressive", "bitcrush"],
-  "macroLabels": ["BELLY", "MOJO", "GRIT", "CRUSH"],
+  "tags": [
+    "distortion",
+    "kinetic",
+    "fat",
+    "aggressive",
+    "bitcrush"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MOJO",
+    "GRIT",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -47,6 +60,14 @@
       "fat_polyphony": 4
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MOJO": 0.45,
+    "GRIT": 0.85,
+    "CRUSH": 0.85
+  }
 }

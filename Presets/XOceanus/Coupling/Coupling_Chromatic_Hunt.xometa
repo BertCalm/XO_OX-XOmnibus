@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.54,
       "orca_macroMovement": 0.62,
       "orca_macroCoupling": 0.65,
-      "orca_macroSpace": 0.46
+      "orca_macroSpace": 0.46,
+      "orca_velCutoffAmt": 0.495
     },
     "Octopus": {
       "octo_armDepth": 0.58,

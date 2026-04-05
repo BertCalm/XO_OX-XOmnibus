@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.582,
+    "SPACE": 0.55
+  }
 }

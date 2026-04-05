@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP CRACK": 0.45,
+    "FAT DENSITY": 0.45,
+    "CHOKE AMOUNT": 0.45,
+    "FAT DECAY": 0.45
+  }
 }

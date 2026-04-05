@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Hunt Ring Mod",
   "mood": "Entangled",
-  "engines": ["Orca", "Overbite"],
+  "engines": [
+    "Orca",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Apex predator hunt signal ring-modulating possum bite. Two aggression architectures creating mutual annihilation.",
-  "tags": ["entangled", "aggressive", "hunt", "ring-mod", "annihilation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "hunt",
+    "ring-mod",
+    "annihilation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -34,7 +48,8 @@
       "orca_attackTime": 0.004,
       "orca_decayTime": 0.15,
       "orca_sustain": 0.26,
-      "orca_releaseTime": 0.12
+      "orca_releaseTime": 0.12,
+      "orca_velCutoffAmt": 0.637
     },
     "Overbite": {
       "poss_macroCharacter": 0.86,
@@ -51,7 +66,8 @@
       "poss_attackTime": 0.006,
       "poss_decayTime": 0.22,
       "poss_releaseTime": 0.18,
-      "poss_sustain": 0.3
+      "poss_sustain": 0.3,
+      "poss_ampVelSens": 0.637
     }
   },
   "coupling": {

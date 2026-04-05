@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Oxalis Thread",
   "mood": "Crystalline",
-  "engines": ["Oxalis"],
+  "engines": [
+    "Oxalis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wood sorrel leaf tension at minimum — one microscopic vibration, crystalline and nearly silent. The sound of light through a leaf.",
-  "tags": ["crystalline", "oxalis", "leaf", "pure", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "oxalis",
+    "leaf",
+    "pure",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,6 +57,14 @@
       "oxal_macroSpace": 0.65
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.2,
+    "SPACE": 0.75
+  }
 }

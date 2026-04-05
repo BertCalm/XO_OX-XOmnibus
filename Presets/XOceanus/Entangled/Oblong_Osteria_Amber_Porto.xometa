@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.166,
       "bob_scaleMode": 0.6,
       "bob_subOscLevel": 0.339,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.505
     },
     "Osteria": {
       "osteria_filterCutoff": 6535.4,
@@ -74,5 +75,11 @@
     "osteria"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.507,
+    "MOVEMENT": 0.472,
+    "COUPLING": 0.6,
+    "SPACE": 0.459
+  }
 }

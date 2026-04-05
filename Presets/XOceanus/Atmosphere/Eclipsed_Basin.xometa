@@ -35,7 +35,8 @@
       "coupling": 0.452,
       "drift": 0.533,
       "scatter": 0.064,
-      "space": 0.694
+      "space": 0.694,
+      "opal_ampVelSens": 0.255
     }
   },
   "schema_version": 1,

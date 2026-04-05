@@ -67,7 +67,8 @@
       "owl_resonantFeedback": 0.33,
       "owl_resonantPitch": 0.607,
       "owl_shimmer": 0.277,
-      "owl_subLevel": 0.204
+      "owl_subLevel": 0.204,
+      "owl_velocity": 0.68
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.377,
+    "MUTATE": 0.271
+  }
 }

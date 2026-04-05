@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TIDAL SWELL": 0.45,
+    "FM MIGRATION": 0.45,
+    "DRIFT RATE": 0.45,
+    "SHIMMER TAIL": 0.45
+  }
 }

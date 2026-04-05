@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Two coupled resonant bodies \u2014 the clavinet acts as a resonator for another engine's output. Passive acoustic coupling.",
+  "description": "Two coupled resonant bodies — the clavinet acts as a resonator for another engine's output. Passive acoustic coupling.",
   "tags": [
     "clavinet",
     "resonant",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

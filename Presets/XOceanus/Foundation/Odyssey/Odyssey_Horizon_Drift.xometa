@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FM DEPTH": 0.45,
+    "DRIFT DISTANCE": 0.45,
+    "FILTER TONE": 0.45,
+    "REVERB SPACE": 0.45
+  }
 }

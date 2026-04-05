@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RATE": 0.45,
+    "DRIFT PITCH": 0.45,
+    "COUPLING": 0.318,
+    "SHIMMER": 0.5
+  }
 }

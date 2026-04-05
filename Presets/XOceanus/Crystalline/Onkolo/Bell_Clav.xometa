@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Clavinet voiced as a bell \u2014 minimal wah, maximum brightness, long clean decay. The crystalline side of the D6.",
+  "description": "Clavinet voiced as a bell — minimal wah, maximum brightness, long clean decay. The crystalline side of the D6.",
   "tags": [
     "clavinet",
     "bell",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

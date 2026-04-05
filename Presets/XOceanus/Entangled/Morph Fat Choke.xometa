@@ -93,5 +93,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH PAD": 0.45,
+    "FAT CHOKE": 0.45,
+    "CHOKE SPEED": 0.45,
+    "DENSITY": 0.85
+  }
 }

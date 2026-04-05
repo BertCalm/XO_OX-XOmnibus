@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.339,
       "owl_resonantPitch": 0.485,
       "owl_shimmer": 0.196,
-      "owl_subLevel": 0.26
+      "owl_subLevel": 0.26,
+      "owl_velocity": 0.647
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "oceanic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.441,
+    "MOVEMENT": 0.444,
+    "COUPLING": 0.443,
+    "SPACE": 0.53
+  }
 }

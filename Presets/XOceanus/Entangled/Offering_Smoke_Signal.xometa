@@ -42,7 +42,8 @@
       "ofr_lfo1Depth": 0.1,
       "ofr_masterLevel": 0.75,
       "ofr_masterWidth": 0.5,
-      "ofr_v0_body": 0.85
+      "ofr_v0_body": 0.85,
+      "ofr_velToSnap": 0.6
     }
   },
   "engines": [

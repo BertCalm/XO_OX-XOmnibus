@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Drum Foundation",
   "mood": "Foundation",
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Foundational boom bap drum architecture. Psychology-driven percussion at base curiosity level — where it all begins.",
-  "tags": ["foundation", "aggressive", "drums", "boom-bap", "base"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "aggressive",
+    "drums",
+    "boom-bap",
+    "base"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -33,10 +46,13 @@
       "ofr_attackTime": 0.004,
       "ofr_decayTime": 0.2,
       "ofr_sustain": 0.22,
-      "ofr_releaseTime": 0.15
+      "ofr_releaseTime": 0.15,
+      "ofr_velToSnap": 0.571
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.85,

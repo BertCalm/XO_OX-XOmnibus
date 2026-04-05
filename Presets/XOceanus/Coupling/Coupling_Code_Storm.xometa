@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPCODE logic depth flooding OUROBOROS topology \u2014 code patterns destabilizing the strange attractor completely, logic creating chaos.",
+  "description": "OPCODE logic depth flooding OUROBOROS topology — code patterns destabilizing the strange attractor completely, logic creating chaos.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "opco_macroCharacter": 0.65,
       "opco_macroMovement": 0.75,
       "opco_macroCoupling": 0.78,
-      "opco_macroSpace": 0.48
+      "opco_macroSpace": 0.48,
+      "opco_velToIndex": 0.55
     },
     "Ouroboros": {
       "ouro_topology": 0.72,

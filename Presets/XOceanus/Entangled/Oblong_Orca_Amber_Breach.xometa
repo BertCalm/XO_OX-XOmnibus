@@ -58,11 +58,13 @@
       "bob_reverbMix": 0.275,
       "bob_scaleMode": 0.6,
       "bob_subOscLevel": 0.179,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.561
     },
     "Orca": {
       "orca_filterCutoff": 5770.5,
-      "orca_level": 0.84
+      "orca_level": 0.84,
+      "orca_velCutoffAmt": 0.561
     }
   },
   "schema_version": 1,
@@ -74,5 +76,11 @@
     "orca"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.642,
+    "COUPLING": 0.63,
+    "SPACE": 0.547
+  }
 }

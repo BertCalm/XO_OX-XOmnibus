@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Conway's Choir",
   "mood": "Aether",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
   "description": "Rule 110 — the only known Turing-complete elementary CA. Its class IV complexity generates near-vocal formant-like harmonics when read through the cosine projection. Medium projection width (0.42) gives formant-like resonance. Resonant filter set to 0.55 adds a soft vowel character. Morphs slowly toward Rule 90 via LFO on Rule Morph. The choir that emerged from nothing.",
-  "tags": ["awakening", "vocal", "choir", "rule-110", "formant", "complex", "evolving"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "vocal",
+    "choir",
+    "rule-110",
+    "formant",
+    "complex",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.52,
@@ -59,5 +80,11 @@
     "density": 0.55,
     "space": 0.52,
     "aggression": 0.15
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.48,
+    "SPACE": 0.52,
+    "COUPLING": 0.2
   }
 }

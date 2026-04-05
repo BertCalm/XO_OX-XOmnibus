@@ -76,7 +76,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.455
     },
     "Obese": {
       "fat_morph": 0.48,
@@ -142,5 +143,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB CHARACTER": 0.45,
+    "FAT DENSITY": 0.45,
+    "MORPH EVOLVE": 0.45,
+    "COUPLING": 0.462
+  }
 }

@@ -60,7 +60,8 @@
       "opal_grainDensity": 0.65,
       "opal_grainScatter": 0.42,
       "opal_grainPosition": 0.5,
-      "opal_filterCutoff": 0.6
+      "opal_filterCutoff": 0.6,
+      "opal_ampVelSens": 0.376
     }
   },
   "coupling": {
@@ -74,5 +75,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.415,
+    "CHAOS": 0.296,
+    "COUPLING": 0.48,
+    "SPACE": 0.65
+  }
 }

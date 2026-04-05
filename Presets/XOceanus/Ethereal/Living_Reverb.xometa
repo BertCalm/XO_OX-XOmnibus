@@ -2,30 +2,46 @@
   "schema_version": 1,
   "name": "Living Reverb",
   "mood": "Ethereal",
-  "engines": ["Oxbow", "Organism"],
+  "engines": [
+    "Oxbow",
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The reverb tail is alive. Oxbow's golden FDN decays into a colony that continues evolving after the note ends — each generation a slightly different tail.",
-  "tags": ["ethereal", "whisper", "coupling", "reverb", "cellular", "alive", "decay"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "whisper",
+    "coupling",
+    "reverb",
+    "cellular",
+    "alive",
+    "decay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.38,
     "warmth": 0.62,
-    "movement": 0.40,
-    "density": 0.40,
+    "movement": 0.4,
+    "density": 0.4,
     "space": 0.92,
     "aggression": 0.03
   },
   "parameters": {
     "Oxbow": {
-      "oxb_macroCharacter": 0.40,
+      "oxb_macroCharacter": 0.4,
       "oxb_macroMovement": 0.34,
       "oxb_macroCoupling": 0.13,
-      "oxb_macroSpace": 0.90,
+      "oxb_macroSpace": 0.9,
       "oxb_entangle": 0.48,
-      "oxb_filterEnvAmt": 0.30,
+      "oxb_filterEnvAmt": 0.3,
       "oxb_lfo1Rate": 0.03,
       "oxb_lfo1Depth": 0.16,
       "oxb_attack": 1.5,
@@ -41,7 +57,8 @@
       "org_lfo1Rate": 0.07,
       "org_lfo1Depth": 0.22,
       "org_attack": 0.4,
-      "org_release": 3.0
+      "org_release": 3.0,
+      "org_velCutoff": 0.306
     }
   },
   "coupling": {
@@ -50,7 +67,7 @@
         "engineA": "Oxbow",
         "engineB": "Organism",
         "type": "AmpToPitch",
-        "amount": 0.10
+        "amount": 0.1
       }
     ]
   },

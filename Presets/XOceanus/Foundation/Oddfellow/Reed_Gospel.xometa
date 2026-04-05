@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Gospel-register Wurlitzer \u2014 high sustain, expressive release, medium drive with full tremolo.",
+  "description": "Gospel-register Wurlitzer — high sustain, expressive release, medium drive with full tremolo.",
   "tags": [
     "wurlitzer",
     "gospel",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.2,
+    "SPACE": 0.46
+  }
 }

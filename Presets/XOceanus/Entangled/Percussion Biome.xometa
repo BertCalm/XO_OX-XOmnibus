@@ -59,7 +59,8 @@
       "ocelot_macroCoupling": 0.664,
       "ocelot_macroSpace": 0.512,
       "ocelot_filterEnvDepth": 0.534,
-      "ocelot_lfoRate": 0.149
+      "ocelot_lfoRate": 0.149,
+      "ocelot_floorVelocity": 0.821
     },
     "Onset": {
       "perc_ampAttack": 0.03,

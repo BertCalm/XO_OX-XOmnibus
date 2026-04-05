@@ -163,5 +163,11 @@
     "contradiction"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.85,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

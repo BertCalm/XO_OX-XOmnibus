@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH CARRIER": 0.45,
+    "FAT RING": 0.45,
+    "MODULATION": 0.45,
+    "DENSITY": 0.88
+  }
 }

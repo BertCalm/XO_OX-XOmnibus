@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "An orca hunting through ice-field waters \u2014 echolocation pulses crystallizing against mineral-cold surfaces.",
+  "description": "An orca hunting through ice-field waters — echolocation pulses crystallizing against mineral-cold surfaces.",
   "tags": [
     "crystalline",
     "ice-field",
@@ -39,7 +39,8 @@
       "orca_macroSpace": 0.52,
       "orca_filterEnvAmt": 0.6,
       "orca_lfo1Rate": 0.14,
-      "orca_lfo1Depth": 0.22
+      "orca_lfo1Depth": 0.22,
+      "orca_velCutoffAmt": 0.425
     }
   },
   "coupling": {

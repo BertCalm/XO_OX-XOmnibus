@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SUPERSAW SPREAD": 0.45,
+    "FM MODULATION": 0.45,
+    "PARTIAL DRIFT": 0.45,
+    "FILTER HEIGHT": 0.45
+  }
 }

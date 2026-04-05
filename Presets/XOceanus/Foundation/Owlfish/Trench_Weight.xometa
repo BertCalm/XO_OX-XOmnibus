@@ -82,7 +82,8 @@
       "owl_macroSpace": 0.409,
       "owl_filterEnvDepth": 0.407,
       "owl_lfoRate": 0.205,
-      "owl_lfoDepth": 0.294
+      "owl_lfoDepth": 0.294,
+      "owl_velocity": 0.481
     }
   },
   "schema_version": 1,

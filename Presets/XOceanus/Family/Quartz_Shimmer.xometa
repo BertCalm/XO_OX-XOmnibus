@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.53,
       "bob_macroCoupling": 0.358,
       "bob_macroMovement": 0.863,
-      "bob_macroSpace": 0.882
+      "bob_macroSpace": 0.882,
+      "bob_velFilter": 0.479
     },
     "Osteria": {
       "osteria_macroCharacter": 0.525,

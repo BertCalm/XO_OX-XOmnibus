@@ -135,7 +135,7 @@
       "poss_modSlot8Src": 0,
       "poss_modSlot8Amt": 0.0,
       "poss_modSlot8Dst": 0,
-      "poss_ampVelSens": 0.0,
+      "poss_ampVelSens": 0.4,
       "poss_lfo3Rate": 1.0,
       "poss_lfo3Depth": 0.0,
       "poss_lfo3Shape": 0,
@@ -160,5 +160,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.0,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

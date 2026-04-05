@@ -95,5 +95,11 @@
     "founders"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "JOURNEY": 0.45,
+    "SEND DEPTH": 0.45,
+    "COUPLING": 0.3,
+    "SPACE": 0.85
+  }
 }

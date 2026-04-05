@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Single Partial",
   "mood": "Crystalline",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "One continued-fraction convergent — π approximation yields a single unearthly partial. No overtones. Pure mathematics made audible.",
-  "tags": ["crystalline", "single-partial", "pure", "overtone", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "single-partial",
+    "pure",
+    "overtone",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -43,9 +56,18 @@
       "over_macroCharacter": 0.15,
       "over_macroMovement": 0.08,
       "over_macroCoupling": 0.05,
-      "over_macroSpace": 0.62
+      "over_macroSpace": 0.62,
+      "over_velBright": 0.367
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

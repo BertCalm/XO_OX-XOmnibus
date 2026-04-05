@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Khamsin Surge",
+  "mood": "Flux",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The hot sandstorm wind driving everything into chaotic motion — high entropy amplifies every imperfection into harmonic debris. Violent, volatile, alive.",
+  "tags": [
+    "flux",
+    "chaotic",
+    "hot",
+    "aggressive",
+    "bright",
+    "volatile"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.75,
+    "space": 0.38,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.92,
+      "oas_breeze": 0.1,
+      "oas_swarmDensity": 0.82,
+      "oas_lagoonDepth": 0.2,
+      "oas_subDrive": 0.55,
+      "oas_resonatorQ": 9.5,
+      "oas_cullDecay": 0.955,
+      "oas_canopyFB": 0.35,
+      "oas_filterCutoff": 6800.0,
+      "oas_filterEnvAmt": 0.92,
+      "oas_rhodesMix": 0.98,
+      "oas_pickupPos": 0.9,
+      "oas_bellAmount": 0.95,
+      "oas_warmth": 0.4,
+      "oas_tremoloDepth": 0.22,
+      "oas_tremoloRate": 9.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.88,
+      "oas_macroMovement": 0.88,
+      "oas_macroCoupling": 0.28,
+      "oas_macroSpace": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
+}

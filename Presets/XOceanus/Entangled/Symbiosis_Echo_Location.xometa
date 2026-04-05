@@ -47,7 +47,8 @@
       "orca_macroSpace": 0.433,
       "orca_filterEnvAmt": 0.464,
       "orca_lfo1Rate": 0.182,
-      "orca_lfo1Depth": 0.327
+      "orca_lfo1Depth": 0.327,
+      "orca_velCutoffAmt": 0.562
     },
     "Octopus": {
       "octo_armDepth": 0.72,

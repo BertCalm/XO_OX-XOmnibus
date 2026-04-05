@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Nocturnal pad with cool high-pass shimmer and a warm sub undertow \u2014 opossum under the moon.",
+  "description": "Nocturnal pad with cool high-pass shimmer and a warm sub undertow — opossum under the moon.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.45,
@@ -54,7 +54,8 @@
       "poss_subLevel": 0.3,
       "poss_unisonDetune": 0.15,
       "poss_unisonSpread": 0.75,
-      "poss_unisonVoices": 3
+      "poss_unisonVoices": 3,
+      "poss_ampVelSens": 0.32
     }
   },
   "schema_version": 1,

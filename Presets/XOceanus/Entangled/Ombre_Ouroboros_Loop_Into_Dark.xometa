@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.508,
       "ombre_spaceMix": 0.742,
       "ombre_toneA": 6617.8,
-      "ombre_toneB": 2377.4
+      "ombre_toneB": 2377.4,
+      "ombre_velCutoffScale": 0.414
     },
     "Ouroboros": {
       "ouro_filterCutoff": 7569.6,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.461,
+    "MOVEMENT": 0.704,
+    "COUPLING": 0.6,
+    "SPACE": 0.646
+  }
 }

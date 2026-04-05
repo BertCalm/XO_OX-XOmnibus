@@ -122,5 +122,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB CARRIER": 0.45,
+    "DRIFT RING": 0.45,
+    "MODULATION": 0.45,
+    "SHIMMER": 0.5
+  }
 }

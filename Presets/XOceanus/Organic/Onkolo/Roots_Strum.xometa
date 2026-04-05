@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Reggae-roots clavinet strum \u2014 relaxed tempo, mid wah, warm pickup. The upstroke complement to a roots bassline.",
+  "description": "Reggae-roots clavinet strum — relaxed tempo, mid wah, warm pickup. The upstroke complement to a roots bassline.",
   "tags": [
     "clavinet",
     "reggae",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

@@ -43,7 +43,8 @@
       "orph_macroDivine": 0.603,
       "orph_filterEnvAmt": 0.542,
       "orph_lfo1Rate": 0.055,
-      "orph_lfo1Depth": 0.177
+      "orph_lfo1Depth": 0.177,
+      "orph_velocitySensitivity": 0.64
     },
     "Overlap": {
       "level": 0.829,

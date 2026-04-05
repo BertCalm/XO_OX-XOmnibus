@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Low-riding clavinet \u2014 slow groove, sub emphasis, moderate wah opening slowly. The hydraulic bounce of the instrument.",
+  "description": "Low-riding clavinet — slow groove, sub emphasis, moderate wah opening slowly. The hydraulic bounce of the instrument.",
   "tags": [
     "clavinet",
     "low-rider",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

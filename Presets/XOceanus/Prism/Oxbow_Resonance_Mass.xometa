@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Mass",
+  "mood": "Prism",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chiasmus FDN at maximum resonance mix with maximum entanglement — a dense wall of spectral resonators, layered until they form a single massive body.",
+  "tags": ["prism", "dense", "massive", "resonance", "layered"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.38,
+    "movement": 0.45,
+    "density": 0.90,
+    "space": 0.12,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.65,
+      "oxb_decay": 3.5,
+      "oxb_entangle": 0.96,
+      "oxb_erosionRate": 0.38,
+      "oxb_erosionDepth": 0.52,
+      "oxb_convergence": 4,
+      "oxb_resonanceQ": 32,
+      "oxb_resonanceMix": 0.98,
+      "oxb_cantilever": 0.42,
+      "oxb_damping": 5000,
+      "oxb_predelay": 3,
+      "oxb_dryWet": 0.92,
+      "oxb_exciterDecay": 0.025,
+      "oxb_exciterBright": 0.72,
+      "oxb_macroCharacter": 0.78,
+      "oxb_macroMovement": 0.45,
+      "oxb_macroCoupling": 0.55,
+      "oxb_macroSpace": 0.12,
+      "oxb_filterEnvAmt": 0.52,
+      "oxb_lfo1Rate": 0.28,
+      "oxb_lfo1Depth": 0.42
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.96,
+    "EROSION": 0.38,
+    "CONVERGE": 0.78,
+    "CANTILEVER": 0.12
+  }
+}

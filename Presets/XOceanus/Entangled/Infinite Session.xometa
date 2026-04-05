@@ -91,5 +91,11 @@
     "ouroboros"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.443,
+    "MOVEMENT": 0.585,
+    "COUPLING": 0.421,
+    "SPACE": 0.496
+  }
 }

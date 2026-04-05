@@ -42,7 +42,8 @@
       "ofr_masterWidth": 0.75,
       "ofr_v7_type": 7,
       "ofr_v7_level": 0.9,
-      "ofr_v7_decay": 0.2
+      "ofr_v7_decay": 0.2,
+      "ofr_velToSnap": 0.66
     }
   },
   "engines": [

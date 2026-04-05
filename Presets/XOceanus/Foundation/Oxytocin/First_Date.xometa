@@ -64,5 +64,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Cold gentle foundational tone from Oxytocin."
+  "description": "Cold gentle foundational tone from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.349,
+    "MOVEMENT": 0.031,
+    "COUPLING": 0.2,
+    "SPACE": 0.4
+  }
 }

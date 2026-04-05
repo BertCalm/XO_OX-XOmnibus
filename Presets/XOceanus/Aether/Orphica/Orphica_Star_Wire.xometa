@@ -62,7 +62,8 @@
       "orph_tapeSat": 0.121,
       "orph_filterEnvAmt": 0.435,
       "orph_lfo1Rate": 0.026,
-      "orph_lfo1Depth": 0.127
+      "orph_lfo1Depth": 0.127,
+      "orph_velocitySensitivity": 0.564
     }
   },
   "schema_version": 1,

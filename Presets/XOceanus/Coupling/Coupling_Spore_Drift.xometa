@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM cellular automata rule evolution barely seeds OPAL grain scatter \u2014 living pattern logic at the threshold of audibility, like spores on still air.",
+  "description": "ORGANISM cellular automata rule evolution barely seeds OPAL grain scatter — living pattern logic at the threshold of audibility, like spores on still air.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "org_macroCharacter": 0.46,
       "org_macroMovement": 0.44,
       "org_macroCoupling": 0.5,
-      "org_macroSpace": 0.48
+      "org_macroSpace": 0.48,
+      "org_velCutoff": 0.423
     },
     "Opal": {
       "opal_grainSize": 0.5,
@@ -53,7 +54,8 @@
       "opal_macroCharacter": 0.44,
       "opal_macroMovement": 0.42,
       "opal_macroCoupling": 0.48,
-      "opal_macroSpace": 0.5
+      "opal_macroSpace": 0.5,
+      "opal_ampVelSens": 0.338
     }
   },
   "coupling": {

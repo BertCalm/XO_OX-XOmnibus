@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Murky, southern-fried clavinet \u2014 mid wah, warm pickup position, elongated decay for a loose swampy feel.",
+  "description": "Murky, southern-fried clavinet — mid wah, warm pickup position, elongated decay for a loose swampy feel.",
   "tags": [
     "clavinet",
     "swamp",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

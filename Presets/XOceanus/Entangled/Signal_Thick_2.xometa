@@ -51,7 +51,8 @@
       "bob_macroCharacter": 0.9653,
       "bob_macroCoupling": 0.7978,
       "bob_macroMovement": 0.01,
-      "bob_macroSpace": 0.1173
+      "bob_macroSpace": 0.1173,
+      "bob_velFilter": 0.62
     },
     "OddOscar": {
       "morph_macroCharacter": 0.5618,

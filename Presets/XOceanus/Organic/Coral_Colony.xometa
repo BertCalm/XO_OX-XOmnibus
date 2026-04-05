@@ -2,20 +2,33 @@
   "schema_version": 1,
   "name": "Coral Colony",
   "mood": "Organic",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cellular automata models a coral polyp colony — Rule 110 complexity emerging from simple chemical gradients.",
-  "tags": ["organic", "coral", "colony", "cellular", "reef"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "coral",
+    "colony",
+    "cellular",
+    "reef"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.40,
+    "brightness": 0.4,
     "warmth": 0.65,
     "movement": 0.48,
     "density": 0.58,
-    "space": 0.50,
+    "space": 0.5,
     "aggression": 0.12
   },
   "parameters": {
@@ -23,21 +36,24 @@
       "org_macroCharacter": 0.45,
       "org_macroMovement": 0.48,
       "org_macroCoupling": 0.22,
-      "org_macroSpace": 0.50,
-      "org_ruleSet": 0.70,
+      "org_macroSpace": 0.5,
+      "org_ruleSet": 0.7,
       "org_filterEnvAmt": 0.48,
       "org_lfo1Rate": 0.07,
       "org_lfo1Depth": 0.28,
       "org_lfo2Rate": 0.13,
-      "org_lfo2Depth": 0.20
+      "org_lfo2Depth": 0.2,
+      "org_velCutoff": 0.43
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.45,
     "MOVEMENT": 0.48,
     "COUPLING": 0.22,
-    "SPACE": 0.50
+    "SPACE": 0.5
   }
 }

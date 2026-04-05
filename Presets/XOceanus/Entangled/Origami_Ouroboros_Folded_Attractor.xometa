@@ -86,5 +86,11 @@
     "FM"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.42,
+    "SPACE": 0.4
+  }
 }

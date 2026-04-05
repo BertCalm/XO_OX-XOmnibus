@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Cambium Layer",
+  "mood": "Organic",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The living tissue between bark and heartwood \u2014 one cell thick, dividing annually to add a ring of summer and winter growth. The body of every tree.",
+  "tags": [
+    "organic",
+    "cambium",
+    "growth",
+    "tree",
+    "ring",
+    "annual"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.78,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_macroCharacter": 0.38,
+      "obbl_macroMovement": 0.3,
+      "obbl_macroCoupling": 0.1,
+      "obbl_macroSpace": 0.52,
+      "obbl_breathA": 0.62,
+      "obbl_breathB": 0.38,
+      "obbl_filterEnvAmt": 0.28,
+      "obbl_lfo1Rate": 0.05,
+      "obbl_lfo1Depth": 0.15,
+      "obbl_attack": 1.2,
+      "obbl_release": 5.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.52
+  }
+}

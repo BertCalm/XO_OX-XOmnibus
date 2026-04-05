@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERBITE bite depth drives OBESE grit saturation \u2014 possessive tension and fat analog heat feeding each other, bite informing distortion character.",
+  "description": "OVERBITE bite depth drives OBESE grit saturation — possessive tension and fat analog heat feeding each other, bite informing distortion character.",
   "tags": [
     "coupling",
     "moderate",
@@ -41,7 +41,8 @@
       "poss_macroScurry": 0.5,
       "poss_filterEnvAmt": 0.54,
       "poss_lfo1Rate": 0.13,
-      "poss_lfo1Depth": 0.28
+      "poss_lfo1Depth": 0.28,
+      "poss_ampVelSens": 0.5
     },
     "Obese": {
       "fat_macroMojo": 0.58,

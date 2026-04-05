@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORPHICA pluck envelope barely nudges OHM macro meddling \u2014 a delicate conversation between plucked string resonance and circuit drift.",
+  "description": "ORPHICA pluck envelope barely nudges OHM macro meddling — a delicate conversation between plucked string resonance and circuit drift.",
   "tags": [
     "coupling",
     "whisper",
@@ -43,7 +43,8 @@
       "orph_macroCharacter": 0.45,
       "orph_macroMovement": 0.38,
       "orph_macroCoupling": 0.5,
-      "orph_macroSpace": 0.44
+      "orph_macroSpace": 0.44,
+      "orph_velocitySensitivity": 0.626
     },
     "Ohm": {
       "ohm_macroMeddling": 0.45,

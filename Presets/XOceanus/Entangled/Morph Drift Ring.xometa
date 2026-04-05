@@ -100,5 +100,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH CARRIER": 0.45,
+    "DRIFT RING": 0.45,
+    "MODULATION": 0.45,
+    "SHIMMER": 0.5
+  }
 }

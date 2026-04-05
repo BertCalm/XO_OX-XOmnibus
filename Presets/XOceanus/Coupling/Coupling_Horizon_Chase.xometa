@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERFLOW deep current speed drives OPENSKY shimmer RISE \u2014 ocean current velocity pushing the shimmer ascent rate, deep water as launch energy.",
+  "description": "OVERFLOW deep current speed drives OPENSKY shimmer RISE — ocean current velocity pushing the shimmer ascent rate, deep water as launch energy.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "sky_macroCharacter": 0.52,
       "sky_macroMovement": 0.58,
       "sky_macroCoupling": 0.62,
-      "sky_macroSpace": 0.62
+      "sky_macroSpace": 0.62,
+      "sky_velSensitivity": 0.623
     }
   },
   "coupling": {

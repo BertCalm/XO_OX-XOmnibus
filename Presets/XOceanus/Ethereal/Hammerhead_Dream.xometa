@@ -2,18 +2,34 @@
   "schema_version": 1,
   "name": "Hammerhead Dream",
   "mood": "Ethereal",
-  "engines": ["Ouie", "OceanDeep"],
+  "engines": [
+    "Ouie",
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two voices dreaming the same depth. Ouie's duophonic interval drifts through OceanDeep's pressure field, the pitch coupling barely audible.",
-  "tags": ["ethereal", "whisper", "coupling", "duophonic", "deep", "dream", "interval"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "whisper",
+    "coupling",
+    "duophonic",
+    "deep",
+    "dream",
+    "interval"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.36,
     "warmth": 0.55,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.35,
     "space": 0.92,
     "aggression": 0.04
@@ -24,12 +40,13 @@
       "ouie_macroMovement": 0.36,
       "ouie_macroCoupling": 0.14,
       "ouie_macroSpace": 0.86,
-      "ouie_macroHammer": 0.20,
+      "ouie_macroHammer": 0.2,
       "ouie_filterEnvAmt": 0.32,
       "ouie_lfo1Rate": 0.04,
       "ouie_lfo1Depth": 0.18,
       "ouie_attack": 0.8,
-      "ouie_release": 4.5
+      "ouie_release": 4.5,
+      "ouie_velCutoffAmt": 0.308
     },
     "OceanDeep": {
       "deep_macroCharacter": 0.34,
@@ -41,7 +58,8 @@
       "deep_lfo1Rate": 0.02,
       "deep_lfo1Depth": 0.12,
       "deep_attack": 2.5,
-      "deep_release": 8.5
+      "deep_release": 8.5,
+      "deep_velCutoffAmt": 0.308
     }
   },
   "coupling": {
@@ -59,6 +77,6 @@
     "CHARACTER": 0.38,
     "MOVEMENT": 0.31,
     "COUPLING": 0.13,
-    "SPACE": 0.90
+    "SPACE": 0.9
   }
 }

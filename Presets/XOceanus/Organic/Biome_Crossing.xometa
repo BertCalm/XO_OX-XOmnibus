@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Biome Crossing",
   "mood": "Organic",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow crossfade between two adjacent ecosystems — the moment where forest meets grassland and both sounds coexist.",
-  "tags": ["organic", "biome", "ecosystem", "crossfade", "wild"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "biome",
+    "ecosystem",
+    "crossfade",
+    "wild"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,15 +37,18 @@
       "ocelot_macroMovement": 0.42,
       "ocelot_macroCoupling": 0.18,
       "ocelot_macroSpace": 0.55,
-      "ocelot_biome": 0.50,
-      "ocelot_filterEnvAmt": 0.40,
+      "ocelot_biome": 0.5,
+      "ocelot_filterEnvAmt": 0.4,
       "ocelot_lfo1Rate": 0.07,
       "ocelot_lfo1Depth": 0.26,
       "ocelot_lfo2Rate": 0.03,
-      "ocelot_lfo2Depth": 0.18
+      "ocelot_lfo2Depth": 0.18,
+      "ocelot_floorVelocity": 0.645
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.42,

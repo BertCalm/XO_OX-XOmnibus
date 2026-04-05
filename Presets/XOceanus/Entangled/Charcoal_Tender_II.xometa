@@ -53,7 +53,8 @@
       "orph_macroCharacter": 0.6781,
       "orph_macroCoupling": 0.5813,
       "orph_macroMovement": 0.4046,
-      "orph_macroSpace": 0.5482
+      "orph_macroSpace": 0.5482,
+      "orph_velocitySensitivity": 0.619
     },
     "Overlap": {
       "amp_attack": 0.2666,

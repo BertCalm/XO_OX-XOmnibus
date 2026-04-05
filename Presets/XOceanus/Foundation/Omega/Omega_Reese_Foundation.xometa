@@ -60,5 +60,11 @@
     "analog"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
 }

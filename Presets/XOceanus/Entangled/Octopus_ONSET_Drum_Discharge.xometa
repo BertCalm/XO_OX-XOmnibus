@@ -89,5 +89,11 @@
     "space": 0.42,
     "aggression": 0.82
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.42,
+    "MUTATE": 0.271
+  }
 }

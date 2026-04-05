@@ -42,7 +42,8 @@
       "ocelot_macroCoupling": 0.612,
       "ocelot_macroSpace": 0.435,
       "ocelot_filterEnvDepth": 0.538,
-      "ocelot_lfoRate": 0.171
+      "ocelot_lfoRate": 0.171,
+      "ocelot_floorVelocity": 0.621
     },
     "Orphica": {
       "level": 0.752,
@@ -53,7 +54,8 @@
       "orph_macroDivine": 0.43,
       "orph_filterEnvAmt": 0.538,
       "orph_lfo1Rate": 0.171,
-      "orph_lfo1Depth": 0.233
+      "orph_lfo1Depth": 0.233,
+      "orph_velocitySensitivity": 0.621
     }
   },
   "schema_version": 1,

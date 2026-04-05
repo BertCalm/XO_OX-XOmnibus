@@ -86,7 +86,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.55
     }
   },
   "coupling": {
@@ -99,5 +100,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP TRIGGER": 0.45,
+    "BOB FM": 0.45,
+    "FM DEPTH": 0.45,
+    "CHARACTER": 0.6
+  }
 }

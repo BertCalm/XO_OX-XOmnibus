@@ -126,5 +126,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH TEXTURE": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "FAT DENSITY": 0.45,
+    "BALANCE": 0.45
+  }
 }

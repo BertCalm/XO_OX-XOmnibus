@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX reef stress ecology dominantly drives OCEANDEEP bleach level \u2014 reef ecology collapse feeding trench pressure, symbiosis becoming catastrophe.",
+  "description": "OBRIX reef stress ecology dominantly drives OCEANDEEP bleach level — reef ecology collapse feeding trench pressure, symbiosis becoming catastrophe.",
   "tags": [
     "coupling",
     "heavy",
@@ -52,7 +52,8 @@
       "deep_macroCharacter": 0.6,
       "deep_macroMovement": 0.62,
       "deep_macroCoupling": 0.72,
-      "deep_macroSpace": 0.65
+      "deep_macroSpace": 0.65,
+      "deep_velCutoffAmt": 0.52
     }
   },
   "coupling": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Village soul clavinet \u2014 gentle wah, mid-neck pickup, generous decay. Community music, not performance.",
+  "description": "Village soul clavinet — gentle wah, mid-neck pickup, generous decay. Community music, not performance.",
   "tags": [
     "clavinet",
     "soul",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
 }

@@ -36,7 +36,8 @@
   "parameters": {
     "Ombre": {
       "level": 0.753,
-      "pan": -0.07
+      "pan": -0.07,
+      "ombre_velCutoffScale": 0.335
     },
     "Overdub": {
       "level": 0.777,
@@ -55,5 +56,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.349,
+    "MOVEMENT": 0.949,
+    "COUPLING": 0.416,
+    "SPACE": 0.936
+  }
 }

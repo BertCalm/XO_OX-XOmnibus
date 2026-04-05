@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.276,
       "bob_scaleMode": 0.0,
       "bob_subOscLevel": 0.528,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.481
     },
     "Oceanic": {
       "ocean_filterCutoff": 6523.3,
@@ -74,5 +75,11 @@
     "oceanic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.472,
+    "MOVEMENT": 0.578,
+    "COUPLING": 0.63,
+    "SPACE": 0.574
+  }
 }

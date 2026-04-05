@@ -144,5 +144,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB GRAVITY": 0.45,
+    "MORPH MIST": 0.45,
+    "DRIFT SKY": 0.45,
+    "COUPLING": 0.402
+  }
 }

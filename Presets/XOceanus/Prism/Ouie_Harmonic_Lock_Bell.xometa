@@ -88,7 +88,8 @@
       "ouie_macroAmpullae": 0.243,
       "ouie_macroCartilage": 0.627,
       "ouie_macroCurrent": 0.465,
-      "ouie_filterEnvAmt": 0.412
+      "ouie_filterEnvAmt": 0.412,
+      "ouie_velCutoffAmt": 0.53
     }
   },
   "coupling": {

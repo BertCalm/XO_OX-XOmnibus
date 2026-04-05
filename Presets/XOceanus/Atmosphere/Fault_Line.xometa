@@ -47,7 +47,8 @@
       "orca_macroCoupling": 0.0,
       "orca_macroMovement": 0.0,
       "orca_macroSpace": 0.0,
-      "orca_reverbMix": 0.62
+      "orca_reverbMix": 0.62,
+      "orca_velCutoffAmt": 0.376
     }
   },
   "schema_version": 1,
@@ -60,5 +61,11 @@
     "seismic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
 }

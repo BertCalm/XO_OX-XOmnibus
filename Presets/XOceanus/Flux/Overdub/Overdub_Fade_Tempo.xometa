@@ -87,5 +87,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "WOW DEPTH": 0.45,
+    "LFO FILTER": 0.45,
+    "DELAY TIME": 0.45,
+    "FEEDBACK": 0.45
+  }
 }

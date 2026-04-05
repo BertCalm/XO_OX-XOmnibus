@@ -76,5 +76,11 @@
     "metallic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
 }

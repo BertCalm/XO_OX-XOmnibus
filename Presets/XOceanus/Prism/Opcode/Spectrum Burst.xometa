@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Simultaneous parallel FM at extreme index \u2014 both operators at high level create spectral burst on attack.",
+  "description": "Simultaneous parallel FM at extreme index — both operators at high level create spectral burst on attack.",
   "tags": [
     "fm",
     "parallel",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
 }

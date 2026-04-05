@@ -23,10 +23,10 @@
     "DEPTH"
   ],
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "DART": 0.45,
+    "SCHOOL": 0.45,
+    "SURFACE": 0.536,
+    "DEPTH": 0.2
   },
   "mood": "Foundation",
   "name": "FELIX Electric Dart",

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A horizon line made of crystalline light \u2014 the shimmer reverb frozen at the edge of infinite space.",
+  "description": "A horizon line made of crystalline light — the shimmer reverb frozen at the edge of infinite space.",
   "tags": [
     "crystalline",
     "horizon",
@@ -39,7 +39,8 @@
       "sky_macroSpace": 0.57,
       "sky_filterEnvAmt": 0.62,
       "sky_lfo1Rate": 0.12,
-      "sky_lfo1Depth": 0.24
+      "sky_lfo1Depth": 0.24,
+      "sky_velSensitivity": 0.574
     }
   },
   "coupling": {

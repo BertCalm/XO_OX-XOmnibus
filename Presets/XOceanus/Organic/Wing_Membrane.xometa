@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Wing Membrane",
+  "mood": "Organic",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bat wing skin stretched over elongated finger bones \u2014 the patagium that turned a small mammal into the sky's most agile hunter. Translucent and veined.",
+  "tags": [
+    "organic",
+    "wing",
+    "bat",
+    "membrane",
+    "translucent",
+    "flight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.38,
+    "movement": 0.42,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.38,
+      "obsidian_macroMovement": 0.42,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.72,
+      "obsidian_depth": 0.45,
+      "obsidian_filterEnvAmt": 0.35,
+      "obsidian_lfo1Rate": 0.12,
+      "obsidian_lfo1Depth": 0.22,
+      "obsidian_attack": 0.8,
+      "obsidian_release": 4.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

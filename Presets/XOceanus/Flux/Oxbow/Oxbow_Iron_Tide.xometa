@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Iron Tide",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Massive entangled reverb surge with metallic exciter — Oxbow at its most aggressive, phase erosion as a tidal force.",
+  "tags": ["flux", "aggressive", "metallic", "tide", "resonance"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.28,
+    "movement": 0.82,
+    "density": 0.80,
+    "space": 0.45,
+    "aggression": 0.80
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.80,
+      "oxb_decay": 1.0,
+      "oxb_entangle": 0.82,
+      "oxb_erosionRate": 0.78,
+      "oxb_erosionDepth": 0.85,
+      "oxb_convergence": 3,
+      "oxb_resonanceQ": 18,
+      "oxb_resonanceMix": 0.75,
+      "oxb_cantilever": 0.72,
+      "oxb_damping": 9000,
+      "oxb_predelay": 7,
+      "oxb_dryWet": 0.78,
+      "oxb_exciterDecay": 0.006,
+      "oxb_exciterBright": 0.95,
+      "oxb_macroCharacter": 0.72,
+      "oxb_macroMovement": 0.80,
+      "oxb_macroCoupling": 0.40,
+      "oxb_macroSpace": 0.45,
+      "oxb_filterEnvAmt": 0.75,
+      "oxb_lfo1Rate": 0.42,
+      "oxb_lfo1Depth": 0.60
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.82,
+    "EROSION": 0.78,
+    "CONVERGE": 0.72,
+    "CANTILEVER": 0.45
+  }
+}

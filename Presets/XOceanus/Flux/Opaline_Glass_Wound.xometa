@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glass Wound",
   "mood": "Flux",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prepared piano under sustained thermal shock — fragility high enough that every note bends the frame. Crystal drive reveals a wounded interior.",
-  "tags": ["prepared-piano", "flux", "aggressive", "glass", "sustained"],
-  "macroLabels": ["FRAGILITY", "CRYSTAL", "SHOCK", "NOISE"],
+  "tags": [
+    "prepared-piano",
+    "flux",
+    "aggressive",
+    "glass",
+    "sustained"
+  ],
+  "macroLabels": [
+    "FRAGILITY",
+    "CRYSTAL",
+    "SHOCK",
+    "NOISE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,14 @@
       "opal2_macroNoise": 0.58
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "FRAGILITY": 0.45,
+    "CRYSTAL": 0.45,
+    "SHOCK": 0.45,
+    "NOISE": 0.45
+  }
 }

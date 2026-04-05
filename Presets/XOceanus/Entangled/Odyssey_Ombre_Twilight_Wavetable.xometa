@@ -67,7 +67,8 @@
     },
     "Ombre": {
       "ombre_filterCutoff": 3683.1,
-      "ombre_level": 0.749
+      "ombre_level": 0.749,
+      "ombre_velCutoffScale": 0.388
     }
   },
   "schema_version": 1,
@@ -79,5 +80,11 @@
     "ombre"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.41,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.51,
+    "SPACE": 0.668
+  }
 }

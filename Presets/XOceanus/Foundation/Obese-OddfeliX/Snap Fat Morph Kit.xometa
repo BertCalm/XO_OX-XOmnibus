@@ -96,5 +96,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP PERC": 0.45,
+    "FAT PAD": 0.45,
+    "MORPH KEYS": 0.45,
+    "BALANCE": 0.45
+  }
 }

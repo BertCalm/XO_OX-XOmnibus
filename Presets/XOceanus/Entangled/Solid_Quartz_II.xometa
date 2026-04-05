@@ -55,7 +55,8 @@
       "bob_macroCharacter": 0.341,
       "bob_macroCoupling": 0.7183,
       "bob_macroMovement": 0.3876,
-      "bob_macroSpace": 0.1467
+      "bob_macroSpace": 0.1467,
+      "bob_velFilter": 0.481
     },
     "Overlap": {
       "amp_attack": 0.3085,

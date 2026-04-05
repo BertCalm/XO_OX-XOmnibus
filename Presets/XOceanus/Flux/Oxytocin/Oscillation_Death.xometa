@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Bright aggressive evolving texture from Oxytocin."
+  "description": "Bright aggressive evolving texture from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.773,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.2,
+    "SPACE": 0.363
+  }
 }

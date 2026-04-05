@@ -9,10 +9,10 @@
     "sampler"
   ],
   "macros": {
-    "DIG": 0.0,
-    "CITY": 0.0,
-    "FLIP": 0.0,
-    "DUST": 0.0
+    "DIG": 0.534,
+    "CITY": 0.416,
+    "FLIP": 0.214,
+    "DUST": 0.28
   },
   "dna": {
     "brightness": 0.3,
@@ -44,7 +44,8 @@
       "ofr_v0_body": 0.7,
       "ofr_v1_decay": 0.22,
       "ofr_v3_decay": 0.5,
-      "ofr_v6_decay": 0.4
+      "ofr_v6_decay": 0.4,
+      "ofr_velToSnap": 0.504
     }
   },
   "engines": [

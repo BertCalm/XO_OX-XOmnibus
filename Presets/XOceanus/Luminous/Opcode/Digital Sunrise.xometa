@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Parallel FM with slow attack \u2014 the sun rising through FM synthesis. Gradually brightening, rich in upper partials.",
+  "description": "Parallel FM with slow attack — the sun rising through FM synthesis. Gradually brightening, rich in upper partials.",
   "tags": [
     "fm",
     "sunrise",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.315,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

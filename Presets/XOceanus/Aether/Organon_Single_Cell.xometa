@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Single Cell",
+  "mood": "Aether",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "One cell. One process. The minimum unit of biological existence — a single metabolic event in maximum space.",
+  "tags": ["aether", "sparse", "minimal", "single", "biological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.08,
+    "density": 0.06,
+    "space": 0.98,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.05,
+      "organon_dampingCoeff": 0.98,
+      "organon_enzymeSelect": 440.0,
+      "organon_isotopeBalance": 0.72,
+      "organon_lockIn": 0.95,
+      "organon_membrane": 0.08,
+      "organon_metabolicRate": 0.04,
+      "organon_noiseColor": 0.35,
+      "organon_phasonShift": 0.03,
+      "organon_signalFlux": 0.02,
+      "organon_macroCharacter": 0.35,
+      "organon_macroMovement": 0.06,
+      "organon_macroCoupling": 0.05,
+      "organon_macroSpace": 0.98,
+      "organon_filterEnvAmt": 0.05,
+      "organon_lfo1Rate": 0.008,
+      "organon_lfo1Depth": 0.04
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.05,
+    "SPACE": 0.98
+  }
+}

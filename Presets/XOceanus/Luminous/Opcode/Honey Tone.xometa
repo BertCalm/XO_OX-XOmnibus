@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Warm FM with low brightness filter and slow LFO \u2014 golden, unhurried. The sweetest algorithm 0 patch.",
+  "description": "Warm FM with low brightness filter and slow LFO — golden, unhurried. The sweetest algorithm 0 patch.",
   "tags": [
     "fm",
     "honey",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
 }

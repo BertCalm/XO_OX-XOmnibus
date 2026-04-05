@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP AUDIO": 0.45,
+    "FAT MORPH": 0.45,
+    "SCAN DEPTH": 0.45,
+    "DENSITY": 0.88
+  }
 }

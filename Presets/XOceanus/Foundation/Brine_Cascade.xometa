@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Brine Cascade",
+  "mood": "Foundation",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hypersaline brine cascading from a tidal flat \u2014 water so dense it flows along the bottom like a river within the sea, carrying extreme salinity in a distinct flow layer.",
+  "tags": [
+    "foundation",
+    "outflow",
+    "brine",
+    "cascade",
+    "hypersaline",
+    "tidal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.78,
+    "space": 0.38,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.52,
+      "out_macroMovement": 0.58,
+      "out_macroCoupling": 0.15,
+      "out_macroSpace": 0.38,
+      "out_currentSpeed": 0.58,
+      "out_stormDepth": 0.78,
+      "out_filterEnvAmt": 0.42,
+      "out_lfo1Rate": 0.18,
+      "out_lfo1Depth": 0.28,
+      "out_filterCutoff": 0.42,
+      "out_filterRes": 0.38,
+      "out_attackTime": 0.04,
+      "out_decayTime": 0.6,
+      "out_sustain": 0.68,
+      "out_releaseTime": 1.8
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.15,
+    "SPACE": 0.38
+  }
+}

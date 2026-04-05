@@ -79,5 +79,11 @@
       "dub_lfoDepth": 0.12
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.7,
+    "MUTATE": 0.271
+  }
 }

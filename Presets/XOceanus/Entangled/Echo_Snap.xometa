@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP DEPTH": 0.45,
+    "ECHO": 0.4,
+    "COUPLING": 0.51,
+    "SPACE": 0.65
+  }
 }

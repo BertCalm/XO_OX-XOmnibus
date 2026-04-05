@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "An algorithmic lattice of crystalline precision \u2014 code generating mineral structure.",
+  "description": "An algorithmic lattice of crystalline precision — code generating mineral structure.",
   "tags": [
     "crystalline",
     "algorithm",
@@ -39,7 +39,8 @@
       "opco_macroSpace": 0.58,
       "opco_filterEnvAmt": 0.52,
       "opco_lfo1Rate": 0.1,
-      "opco_lfo1Depth": 0.13
+      "opco_lfo1Depth": 0.13,
+      "opco_velToIndex": 0.418
     }
   },
   "coupling": {

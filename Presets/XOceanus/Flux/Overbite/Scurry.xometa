@@ -54,7 +54,8 @@
       "poss_oscBWaveform": 4,
       "poss_subLevel": 0.3,
       "poss_trashAmount": 0.0,
-      "poss_trashMode": 0
+      "poss_trashMode": 0,
+      "poss_ampVelSens": 0.59
     }
   },
   "schema_version": 1,
@@ -66,5 +67,11 @@
     "restless"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.3,
+    "SCURRY": 0.239,
+    "SPACE": 0.05
+  }
 }

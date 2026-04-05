@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OWLFISH Mixtur-Trautonium partials feed OVERTONE spectral convergents \u2014 two spectral engines weaving harmonic fabric from shared partial series.",
+  "description": "OWLFISH Mixtur-Trautonium partials feed OVERTONE spectral convergents — two spectral engines weaving harmonic fabric from shared partial series.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "owl_macroCharacter": 0.52,
       "owl_macroMovement": 0.5,
       "owl_macroCoupling": 0.62,
-      "owl_macroSpace": 0.52
+      "owl_macroSpace": 0.52,
+      "owl_velocity": 0.579
     },
     "Overtone": {
       "over_cfDepth": 0.58,
@@ -52,7 +53,8 @@
       "over_macroCharacter": 0.5,
       "over_macroMovement": 0.5,
       "over_macroCoupling": 0.6,
-      "over_macroSpace": 0.52
+      "over_macroSpace": 0.52,
+      "over_velBright": 0.401
     }
   },
   "coupling": {

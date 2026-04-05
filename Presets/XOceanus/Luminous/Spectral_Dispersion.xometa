@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Dispersion",
+  "mood": "Luminous",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "White light refracting into its component wavelengths through a glass prism \u2014 the first demonstration that colour is not property of the prism but of the light itself.",
+  "tags": [
+    "luminous",
+    "spectral",
+    "dispersion",
+    "prism",
+    "wavelength",
+    "refraction"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.38,
+    "movement": 0.52,
+    "density": 0.28,
+    "space": 0.78,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismColor": 0.65,
+      "oblq_refractionAngle": 0.72,
+      "oblq_spectralWidth": 0.85,
+      "oblq_filterCutoff": 11000.0,
+      "oblq_filterRes": 0.12,
+      "oblq_attack": 0.4,
+      "oblq_decay": 2.0,
+      "oblq_sustain": 0.72,
+      "oblq_release": 5.0,
+      "oblq_lfo1Rate": 0.12,
+      "oblq_lfo1Depth": 0.28,
+      "oblq_macroCharacter": 0.52,
+      "oblq_macroMovement": 0.52,
+      "oblq_macroCoupling": 0.15,
+      "oblq_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.15,
+    "SPACE": 0.78
+  }
+}

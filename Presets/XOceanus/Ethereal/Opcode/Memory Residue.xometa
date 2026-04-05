@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM decay tail only \u2014 minimal attack, instant mute to very long release shimmer. The memory that remains after a sound.",
+  "description": "FM decay tail only — minimal attack, instant mute to very long release shimmer. The memory that remains after a sound.",
   "tags": [
     "fm",
     "memory",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.365,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.98
+  }
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dark Plasma",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low-brightness partials sustaining through drive saturation — group envelope slow but deep. Plasma that stays dark and boils rather than flares.",
-  "tags": ["additive", "flux", "dark", "aggressive", "plasma"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "additive",
+    "flux",
+    "dark",
+    "aggressive",
+    "plasma"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,14 @@
       "orb_macroSpace": 0.28
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.2,
+    "SPACE": 0.28
+  }
 }

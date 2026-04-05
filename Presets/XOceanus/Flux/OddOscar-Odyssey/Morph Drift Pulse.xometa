@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH PULSE": 0.45,
+    "DRIFT PITCH": 0.45,
+    "COUPLING": 0.33,
+    "SHIMMER": 0.5
+  }
 }

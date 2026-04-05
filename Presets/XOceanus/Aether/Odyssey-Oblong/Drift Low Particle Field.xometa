@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer field with BOB dust particles \u2014 shimmer as medium, dust as content.",
+  "description": "DRIFT shimmer field with BOB dust particles — shimmer as medium, dust as content.",
   "tags": [
     "drift",
     "bob",
@@ -114,7 +114,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.308
     }
   },
   "coupling": {
@@ -127,5 +128,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT FIELD": 0.45,
+    "BOB PARTICLES": 0.45,
+    "COUPLING": 0.24,
+    "SPACE": 0.92
+  }
 }

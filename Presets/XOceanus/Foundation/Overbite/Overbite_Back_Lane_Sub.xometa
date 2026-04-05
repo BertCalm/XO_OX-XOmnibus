@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rolling sub bass for the back alley \u2014 weighted triangle with deep octave and slow glide.",
+  "description": "Rolling sub bass for the back alley — weighted triangle with deep octave and slow glide.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.25,
@@ -51,7 +51,8 @@
       "poss_oscAWaveform": 1,
       "poss_subLevel": 0.75,
       "poss_subOctave": -2,
-      "poss_weightLevel": 0.6
+      "poss_weightLevel": 0.6,
+      "poss_ampVelSens": 0.35
     }
   },
   "schema_version": 1,

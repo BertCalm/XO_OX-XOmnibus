@@ -41,7 +41,8 @@
       "orph_macroCharacter": 0.929,
       "orph_macroCoupling": 0.385,
       "orph_macroMovement": 0.391,
-      "orph_macroSpace": 0.891
+      "orph_macroSpace": 0.891,
+      "orph_velocitySensitivity": 0.848
     },
     "Overdub": {
       "dub_lfoDepth": 0.12,

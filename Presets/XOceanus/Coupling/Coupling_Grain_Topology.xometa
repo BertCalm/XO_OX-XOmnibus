@@ -51,7 +51,8 @@
       "opal_lfoRate": 0.1,
       "opal_lfoDepth": 0.25,
       "opal_outputLevel": 0.72,
-      "opal_reverbMix": 0.3
+      "opal_reverbMix": 0.3,
+      "opal_ampVelSens": 0.384
     },
     "Orbweave": {
       "weave_knotDepth": 0.55,
@@ -105,5 +106,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.36,
+    "SPACE": 0.65
+  }
 }

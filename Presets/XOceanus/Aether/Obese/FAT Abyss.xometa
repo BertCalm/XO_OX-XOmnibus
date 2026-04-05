@@ -69,5 +69,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SUB LEVEL": 0.45,
+    "FILTER": 0.45,
+    "DENSITY": 0.92,
+    "ATTACK": 0.45
+  }
 }

@@ -74,7 +74,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 3
+      "bob_polyphony": 3,
+      "bob_velFilter": 0.45
     },
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -97,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.33,
+    "SPACE": 0.2
+  }
 }

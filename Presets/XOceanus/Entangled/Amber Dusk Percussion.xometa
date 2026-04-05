@@ -41,12 +41,14 @@
       "bob_groove": 0.45,
       "bob_density": 0.6,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.525
     },
     "Ombre": {
       "ombre_gradient": 0.55,
       "ombre_shadow": 0.4,
-      "ombre_filterCut": 4000.0
+      "ombre_filterCut": 4000.0,
+      "ombre_velCutoffScale": 0.42
     }
   },
   "coupling": {
@@ -65,5 +67,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.48,
+    "SPACE": 0.5
+  }
 }

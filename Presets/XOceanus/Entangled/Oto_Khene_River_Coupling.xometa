@@ -74,7 +74,9 @@
       "oto_macroC": 0.0,
       "oto_macroD": 0.0
     },
-    "Ostinato": {}
+    "Ostinato": {
+      "osti_velFilter": 0.5
+    }
   },
   "tempo": null
 }

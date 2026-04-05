@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Biofilm Colony",
+  "mood": "Organic",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bacterial biofilm on a stone surface — rule 90 generating the quorum sensing threshold where individual bacteria surrender autonomy to collective behavior.",
+  "tags": [
+    "organic",
+    "biofilm",
+    "bacteria",
+    "quorum",
+    "colony",
+    "collective"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.42,
+    "density": 0.78,
+    "space": 0.35,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 90,
+      "org_cellularDensity": 0.78,
+      "org_evolutionRate": 0.22,
+      "org_spatialSpread": 0.62,
+      "org_pitchTracking": 0.58,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.25,
+      "org_attack": 0.8,
+      "org_decay": 2.0,
+      "org_sustain": 0.75,
+      "org_release": 4.5,
+      "org_lfo1Rate": 0.12,
+      "org_lfo1Depth": 0.2,
+      "org_macroCharacter": 0.38,
+      "org_macroMovement": 0.42,
+      "org_macroCoupling": 0.2,
+      "org_macroSpace": 0.35,
+      "org_velCutoff": 0.438
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
+}

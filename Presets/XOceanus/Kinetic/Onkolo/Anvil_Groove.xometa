@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Heavy-hitting rhythmic clavinet with iron-hard attack transients. Industrial funk \u2014 all weight and forward momentum.",
+  "description": "Heavy-hitting rhythmic clavinet with iron-hard attack transients. Industrial funk — all weight and forward momentum.",
   "tags": [
     "clavinet",
     "heavy",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.79,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
 }

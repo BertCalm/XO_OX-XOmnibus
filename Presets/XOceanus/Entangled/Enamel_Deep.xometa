@@ -54,7 +54,8 @@
       "orca_macroSpace": 0.42,
       "orca_filterEnvAmt": 0.46,
       "orca_lfo1Rate": 0.225,
-      "orca_lfo1Depth": 0.389
+      "orca_lfo1Depth": 0.389,
+      "orca_velCutoffAmt": 0.567
     },
     "Overbite": {
       "poss_gnashAmount": 0.365,
@@ -67,7 +68,8 @@
       "poss_macroPlayDead": 0.418,
       "poss_filterEnvAmount": 0.46,
       "poss_lfo1Rate": 0.225,
-      "poss_lfo1Depth": 0.389
+      "poss_lfo1Depth": 0.389,
+      "poss_ampVelSens": 0.567
     }
   },
   "schema_version": 1,

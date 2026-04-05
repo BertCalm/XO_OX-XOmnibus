@@ -75,11 +75,18 @@
       "bob_level": 0.65,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.3
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUST TEXTURE": 0.45,
+    "WARMTH": 0.75,
+    "MOTION": 0.3,
+    "SPACE": 0.8
+  }
 }

@@ -89,5 +89,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP TRIGGER": 0.45,
+    "FAT GATE": 0.45,
+    "GATE DEPTH": 0.45,
+    "FILTER OPEN": 0.4
+  }
 }

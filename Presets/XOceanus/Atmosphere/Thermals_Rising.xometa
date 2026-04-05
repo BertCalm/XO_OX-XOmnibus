@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Thermals Rising",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thermal columns rising from heated rock in the afternoon \u2014 invisible columns of warm air carrying birds of prey to altitude, the desert's hidden elevator system.",
+  "tags": [
+    "atmosphere",
+    "thermal",
+    "rising",
+    "convection",
+    "desert",
+    "invisible"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.72,
+    "movement": 0.48,
+    "density": 0.35,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.42,
+      "oas_breeze": 0.62,
+      "oas_swarmDensity": 0.32,
+      "oas_lagoonDepth": 0.62,
+      "oas_subDrive": 0.1,
+      "oas_resonatorQ": 4.5,
+      "oas_cullDecay": 0.9997,
+      "oas_canopyFB": 0.68,
+      "oas_filterCutoff": 7000.0,
+      "oas_filterEnvAmt": 0.32,
+      "oas_pickupPos": 0.62,
+      "oas_bellAmount": 0.42,
+      "oas_warmth": 0.72,
+      "oas_tremoloDepth": 0.15,
+      "oas_tremoloRate": 3.5,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.52,
+      "oas_macroMovement": 0.48,
+      "oas_macroCoupling": 0.18,
+      "oas_macroSpace": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.18,
+    "SPACE": 0.82
+  }
+}

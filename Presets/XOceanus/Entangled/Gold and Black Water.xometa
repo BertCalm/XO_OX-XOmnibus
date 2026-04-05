@@ -71,7 +71,8 @@
       "orca_pitchRand": 0.052,
       "orca_podSync": 0.1,
       "orca_wavetablePos": 0.377,
-      "orca_wavetableScan": 0.314
+      "orca_wavetableScan": 0.314,
+      "orca_velCutoffAmt": 0.504
     },
     "Osteria": {
       "osteria_attack": 0.253,
@@ -134,7 +135,8 @@
       "owl_resonantFeedback": 0.556,
       "owl_resonantPitch": 0.692,
       "owl_shimmer": 0.219,
-      "owl_subLevel": 0.302
+      "owl_subLevel": 0.302,
+      "owl_velocity": 0.656
     }
   },
   "schema_version": 1,
@@ -149,5 +151,11 @@
     "marquee"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "GOLD": 0.45,
+    "DARK": 0.45,
+    "COUPLING": 0.568,
+    "SPACE": 0.465
+  }
 }

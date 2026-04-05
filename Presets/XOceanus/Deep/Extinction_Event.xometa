@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Extinction Event",
+  "mood": "Deep",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 30 at maximum chaos — the colony approaching grid extinction, Anti-extinction mechanism triggering emergency reseeding. A CA population teetering at the edge.",
+  "tags": [
+    "deep",
+    "rule-30",
+    "extinction",
+    "chaos",
+    "crisis",
+    "reseeding"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.18,
+    "movement": 0.82,
+    "density": 0.52,
+    "space": 0.42,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 30,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 45.0,
+      "obnt_gridDensity": 0.35,
+      "obnt_chaos": 0.65,
+      "obnt_projection": 0.35,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 11000.0,
+      "obnt_filterResonance": 0.78,
+      "obnt_attack": 0.001,
+      "obnt_decay": 0.06,
+      "obnt_sustain": 0.0,
+      "obnt_release": 0.1,
+      "obnt_velSens": 1.0,
+      "obnt_lfo1Rate": 12.0,
+      "obnt_lfo1Depth": 0.45,
+      "obnt_modSrc1": 3,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.9,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": -0.7,
+      "obnt_modSrc3": 1,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.55,
+      "obnt_modSrc4": 0,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": -0.45,
+      "obnt_macroChaos": 0.88,
+      "obnt_macroEvolution": 0.95,
+      "obnt_macroSpace": 0.12,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.82,
+    "SPACE": 0.42,
+    "COUPLING": 0.2
+  }
+}

@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MIST DENSITY": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "COUPLING": 0.24,
+    "FILTER": 0.45
+  }
 }

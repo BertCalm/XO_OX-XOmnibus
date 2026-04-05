@@ -48,7 +48,8 @@
       "bob_space": 0.479,
       "bob_warmth": 0.661,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.471
     },
     "Obsidian": {
       "obsidian_aggression": 0.128,
@@ -69,5 +70,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.529,
+    "MOVEMENT": 0.373,
+    "COUPLING": 0.463,
+    "SPACE": 0.577
+  }
 }

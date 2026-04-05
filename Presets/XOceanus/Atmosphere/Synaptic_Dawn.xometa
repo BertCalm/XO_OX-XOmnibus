@@ -94,5 +94,11 @@
     "density": 0.35,
     "space": 0.5,
     "aggression": 0.15
+  },
+  "macros": {
+    "JOURNEY": 0.45,
+    "BREATHE": 0.45,
+    "BLOOM": 0.393,
+    "FRACTURE": 0.244
   }
 }

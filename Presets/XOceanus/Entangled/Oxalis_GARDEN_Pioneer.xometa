@@ -59,5 +59,11 @@
     "pioneer"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.315,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
 }

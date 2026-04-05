@@ -96,5 +96,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH GATE": 0.45,
+    "DUB CHOKE": 0.45,
+    "CHOKE SPEED": 0.45,
+    "WAVETABLE": 0.45
+  }
 }

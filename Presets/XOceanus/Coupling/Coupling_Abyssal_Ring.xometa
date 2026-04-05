@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANDEEP extreme pressure drives OXBOW golden phase entanglement deeply \u2014 trench physics dominating reverb space, the abyss swallowing resonance.",
+  "description": "OCEANDEEP extreme pressure drives OXBOW golden phase entanglement deeply — trench physics dominating reverb space, the abyss swallowing resonance.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "deep_macroCharacter": 0.62,
       "deep_macroMovement": 0.6,
       "deep_macroCoupling": 0.72,
-      "deep_macroSpace": 0.68
+      "deep_macroSpace": 0.68,
+      "deep_velCutoffAmt": 0.495
     },
     "Oxbow": {
       "oxb_entangle": 0.75,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OpenSky shimmer arch modulating Overtone spectral pitch \u2014 dual-engine crystal ascension with mathematical harmonics.",
+  "description": "OpenSky shimmer arch modulating Overtone spectral pitch — dual-engine crystal ascension with mathematical harmonics.",
   "tags": [
     "crystalline",
     "coupled",
@@ -40,7 +40,8 @@
       "sky_macroSpace": 0.56,
       "sky_filterEnvAmt": 0.47,
       "sky_lfo1Rate": 0.09,
-      "sky_lfo1Depth": 0.21
+      "sky_lfo1Depth": 0.21,
+      "sky_velSensitivity": 0.574
     },
     "Overtone": {
       "over_macroCharacter": 0.52,
@@ -49,7 +50,8 @@
       "over_macroSpace": 0.56,
       "over_filterEnvAmt": 0.47,
       "over_lfo1Rate": 0.09,
-      "over_lfo1Depth": 0.21
+      "over_lfo1Depth": 0.21,
+      "over_velBright": 0.369
     }
   },
   "coupling": {

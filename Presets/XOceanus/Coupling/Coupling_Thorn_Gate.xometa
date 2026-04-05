@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERBITE bite amplitude chokes ONSET attack \u2014 physical tension gating percussion, possessive energy controlling when the strike can land.",
+  "description": "OVERBITE bite amplitude chokes ONSET attack — physical tension gating percussion, possessive energy controlling when the strike can land.",
   "tags": [
     "coupling",
     "moderate",
@@ -41,7 +41,8 @@
       "poss_macroScurry": 0.52,
       "poss_filterEnvAmt": 0.54,
       "poss_lfo1Rate": 0.14,
-      "poss_lfo1Depth": 0.28
+      "poss_lfo1Depth": 0.28,
+      "poss_ampVelSens": 0.505
     },
     "Onset": {
       "perc_macro_punch": 0.6,

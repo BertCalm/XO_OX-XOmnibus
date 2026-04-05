@@ -43,7 +43,8 @@
       "ofr_v1_decay": 0.24,
       "ofr_v2_pan": 0.35,
       "ofr_v3_pan": -0.35,
-      "ofr_masterWidth": 0.65
+      "ofr_masterWidth": 0.65,
+      "ofr_velToSnap": 0.492
     }
   },
   "schema_version": 1,

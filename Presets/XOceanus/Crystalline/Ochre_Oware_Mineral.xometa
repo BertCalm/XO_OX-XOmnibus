@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ochre mineral resonance driving Oware mallet morphology \u2014 stone and struck crystal in mineral dialogue.",
+  "description": "Ochre mineral resonance driving Oware mallet morphology — stone and struck crystal in mineral dialogue.",
   "tags": [
     "crystalline",
     "coupled",
@@ -49,7 +49,8 @@
       "owr_macroSpace": 0.63,
       "owr_filterEnvAmt": 0.44,
       "owr_lfo1Rate": 0.07,
-      "owr_lfo1Depth": 0.2
+      "owr_lfo1Depth": 0.2,
+      "owr_malletVelocity": 0.63
     }
   },
   "coupling": {

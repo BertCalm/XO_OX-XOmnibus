@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The filter resonance dances \u2014 LFO2 modulates brightness while LFO1 moves wah depth. The clavinet in perpetual motion.",
+  "description": "The filter resonance dances — LFO2 modulates brightness while LFO1 moves wah depth. The clavinet in perpetual motion.",
   "tags": [
     "clavinet",
     "resonance",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

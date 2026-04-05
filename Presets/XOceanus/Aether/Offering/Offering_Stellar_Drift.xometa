@@ -49,7 +49,8 @@
       "ofr_v1_tune": -4.0,
       "ofr_v6_decay": 1.1,
       "ofr_v6_tune": -14.0,
-      "ofr_v7_tune": 5.0
+      "ofr_v7_tune": 5.0,
+      "ofr_velToSnap": 0.396
     }
   },
   "engines": [

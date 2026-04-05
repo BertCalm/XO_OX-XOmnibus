@@ -69,5 +69,11 @@
       "dub_voiceMode": 0,
       "dub_polyphony": 4
     }
+  },
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
   }
 }

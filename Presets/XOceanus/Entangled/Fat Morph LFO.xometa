@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT LFO": 0.45,
+    "MORPH PITCH": 0.45,
+    "COUPLING": 0.33,
+    "RATE": 0.45
+  }
 }

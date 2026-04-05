@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Morning Service",
+  "mood": "Foundation",
+  "engines": [
+    "Otis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sunday morning gospel organ \u2014 warm drawbars, slow Leslie, the congregation still filling in. The sound before the choir begins.",
+  "tags": [
+    "foundation",
+    "gospel",
+    "organ",
+    "morning",
+    "Leslie",
+    "congregation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.82,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.68,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Otis": {
+      "otis_organ": 0,
+      "otis_drawbar1": 0.8,
+      "otis_drawbar2": 0.8,
+      "otis_drawbar3": 1.0,
+      "otis_drawbar4": 0.6,
+      "otis_drawbar5": 0.4,
+      "otis_drawbar6": 0.2,
+      "otis_drawbar7": 0.0,
+      "otis_drawbar8": 0.0,
+      "otis_drawbar9": 0.0,
+      "otis_leslie": 0.3,
+      "otis_keyClick": 0.2,
+      "otis_percussion": 0.0,
+      "otis_percHarmonic": 0.0,
+      "otis_percDecay": 0.3,
+      "otis_crosstalk": 0.05,
+      "otis_brightness": 8000.0,
+      "otis_drive": 0.08,
+      "otis_filterEnvAmount": 0.15,
+      "otis_bendRange": 2.0,
+      "otis_instability": 0.12,
+      "otis_attack": 0.01,
+      "otis_decay": 0.2,
+      "otis_sustain": 1.0,
+      "otis_release": 0.2,
+      "otis_macroCharacter": 0.45,
+      "otis_macroMovement": 0.25,
+      "otis_macroCoupling": 0.0,
+      "otis_macroSpace": 0.68,
+      "otis_lfo1Rate": 0.8,
+      "otis_lfo1Depth": 0.12,
+      "otis_lfo1Shape": 3,
+      "otis_lfo2Rate": 0.15,
+      "otis_lfo2Depth": 0.08,
+      "otis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.68
+  }
+}

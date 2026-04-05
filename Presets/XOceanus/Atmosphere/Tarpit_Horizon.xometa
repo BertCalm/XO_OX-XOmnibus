@@ -35,7 +35,8 @@
       "coupling": 0.176,
       "gradient": 0.233,
       "space": 0.691,
-      "warmth": 0.357
+      "warmth": 0.357,
+      "ombre_velCutoffScale": 0.259
     }
   },
   "schema_version": 1,

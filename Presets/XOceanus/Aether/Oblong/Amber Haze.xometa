@@ -47,7 +47,8 @@
       "bob_oscA_wave": 3.0,
       "bob_oscB_blend": 0.55,
       "bob_oscB_detune": 10.0,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.313
     }
   },
   "schema_version": 1,
@@ -58,5 +59,11 @@
     "amber"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.211,
+    "MOVEMENT": 0.112,
+    "COUPLING": 0.2,
+    "SPACE": 0.587
+  }
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cricket Choir",
   "mood": "Organic",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense granular swarm mimics the amplitude modulation of an insect chorus at dusk. Entropy sensitivity is high — the ecosystem chirps in irregular clusters as the mycelial network fragments partials into the delay canopy.",
-  "tags": ["organic", "granular", "textured", "insects", "rhythmic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "granular",
+    "textured",
+    "insects",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -16,22 +29,22 @@
     "movement": 0.72,
     "density": 0.75,
     "space": 0.52,
-    "aggression": 0.20
+    "aggression": 0.2
   },
   "parameters": {
     "Oasis": {
-      "oas_entropySens": 0.80,
+      "oas_entropySens": 0.8,
       "oas_breeze": 0.55,
       "oas_swarmDensity": 0.85,
       "oas_lagoonDepth": 0.48,
-      "oas_subDrive": 0.30,
+      "oas_subDrive": 0.3,
       "oas_resonatorQ": 8.0,
       "oas_cullDecay": 0.9935,
       "oas_canopyFB": 0.52,
       "oas_filterCutoff": 2600.0,
-      "oas_filterEnvAmt": 0.50,
-      "oas_pickupPos": 0.50,
-      "oas_bellAmount": 0.30,
+      "oas_filterEnvAmt": 0.5,
+      "oas_pickupPos": 0.5,
+      "oas_bellAmount": 0.3,
       "oas_warmth": 0.58,
       "oas_tremoloDepth": 0.28,
       "oas_tremoloRate": 7.5,
@@ -42,6 +55,14 @@
       "oas_macroSpace": 0.52
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

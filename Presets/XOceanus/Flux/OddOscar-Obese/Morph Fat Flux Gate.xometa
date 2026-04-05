@@ -91,5 +91,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH GATE": 0.45,
+    "FAT DENSITY": 0.45,
+    "COUPLING": 0.48,
+    "FILTER": 0.45
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Performance bass with mod wheel controlling filter sweep and gnash intensity \u2014 expressive bite on demand.",
+  "description": "Performance bass with mod wheel controlling filter sweep and gnash intensity — expressive bite on demand.",
   "dna": {
     "aggression": 0.6,
     "brightness": 0.55,
@@ -53,7 +53,8 @@
       "poss_modSlot2Dst": 5,
       "poss_modSlot2Src": 7,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.68
     }
   },
   "schema_version": 1,

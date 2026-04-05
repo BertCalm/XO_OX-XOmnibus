@@ -84,5 +84,11 @@
     "vocal",
     "transcendental"
   ],
-  "description": "chromaMorph=0.8 in HP/Notch territory — LFO2 at 3.5 Hz scans the filter topology continuously. The envelope follower adds amplitude-reactive spectral shifting. OCTOPUS skin as formant vocalist."
+  "description": "chromaMorph=0.8 in HP/Notch territory — LFO2 at 3.5 Hz scans the filter topology continuously. The envelope follower adds amplitude-reactive spectral shifting. OCTOPUS skin as formant vocalist.",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.6
+  }
 }

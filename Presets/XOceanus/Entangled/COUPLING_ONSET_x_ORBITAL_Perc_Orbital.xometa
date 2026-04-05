@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Perc Orbital",
   "mood": "Entangled",
-  "engines": ["Onset", "Orbital"],
+  "engines": [
+    "Onset",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Percussion impact triggers Orbital additive engine via envelope coupling — the drum hit shapes the harmonic ring that follows it. Physical force becomes spectral event.",
-  "tags": ["percussion", "additive", "entangled", "aggressive", "trigger"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "percussion",
+    "additive",
+    "entangled",
+    "aggressive",
+    "trigger"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -144,5 +158,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.51,
+    "SPACE": 0.28
+  }
 }

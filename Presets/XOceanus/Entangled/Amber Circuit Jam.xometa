@@ -45,7 +45,8 @@
       "bob_curiousRate": 0.5,
       "bob_amberMix": 0.65,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.533
     },
     "Onset": {
       "perc_v1_level": 0.85,
@@ -86,5 +87,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "GROOVE": 0.45,
+    "PUNCH": 0.53,
+    "ERA": 0.55,
+    "SPACE": 0.433
+  }
 }

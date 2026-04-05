@@ -60,7 +60,8 @@
       "opal_reverbSize": 0.75,
       "opal_filterEnvAmt": 0.565,
       "opal_lfo1Rate": 0.206,
-      "opal_lfo1Depth": 0.263
+      "opal_lfo1Depth": 0.263,
+      "opal_ampVelSens": 0.324
     },
     "Organon": {
       "organon_catalystDrive": 0.02,

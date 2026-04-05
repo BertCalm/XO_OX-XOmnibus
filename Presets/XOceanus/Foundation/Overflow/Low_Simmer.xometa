@@ -67,5 +67,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "starterFor": null
+  "starterFor": null,
+  "macros": {
+    "VESSEL": 0.45,
+    "PRESSURE": 0.315,
+    "SENSITIVITY": 0.45,
+    "RELEASE": 0.45
+  }
 }

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-way extreme: OPERA Kuramoto arc forces OUIE toward LOVE convergence while OXYTOCIN bond depth drives both \u2014 three instruments in total harmonic lockdown.",
+  "description": "Three-way extreme: OPERA Kuramoto arc forces OUIE toward LOVE convergence while OXYTOCIN bond depth drives both — three instruments in total harmonic lockdown.",
   "tags": [
     "coupling",
     "extreme",
@@ -44,7 +44,8 @@
       "opera_macroCharacter": 0.78,
       "opera_macroMovement": 0.82,
       "opera_macroCoupling": 0.9,
-      "opera_macroSpace": 0.52
+      "opera_macroSpace": 0.52,
+      "opera_velToFilter": 0.404
     },
     "Ouie": {
       "ouie_macroHammer": 0.85,
@@ -54,7 +55,8 @@
       "ouie_macroCharacter": 0.72,
       "ouie_macroMovement": 0.82,
       "ouie_macroCoupling": 0.88,
-      "ouie_macroSpace": 0.52
+      "ouie_macroSpace": 0.52,
+      "ouie_velCutoffAmt": 0.505
     },
     "Oxytocin": {
       "oxy_intimacy": 0.92,

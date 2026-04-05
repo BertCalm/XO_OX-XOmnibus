@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Opal granular envelopes morphing Origami fold geometry \u2014 crystal grain folding into geometric crystalline form.",
+  "description": "Opal granular envelopes morphing Origami fold geometry — crystal grain folding into geometric crystalline form.",
   "tags": [
     "crystalline",
     "coupled",
@@ -40,7 +40,8 @@
       "opal_macroSpace": 0.52,
       "opal_filterEnvAmt": 0.59,
       "opal_lfo1Rate": 0.06,
-      "opal_lfo1Depth": 0.2
+      "opal_lfo1Depth": 0.2,
+      "opal_ampVelSens": 0.334
     },
     "Origami": {
       "origami_macroCharacter": 0.59,

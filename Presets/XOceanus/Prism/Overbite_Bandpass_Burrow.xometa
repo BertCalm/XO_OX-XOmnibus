@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Narrow bandpass character synth \u2014 only the burrowing frequency range survives the filter.",
+  "description": "Narrow bandpass character synth — only the burrowing frequency range survives the filter.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.55,
@@ -51,7 +51,8 @@
       "poss_macroTrash": 0.2,
       "poss_oscAShape": 0.4,
       "poss_oscAWaveform": 3,
-      "poss_subLevel": 0.3
+      "poss_subLevel": 0.3,
+      "poss_ampVelSens": 0.65
     }
   },
   "schema_version": 1,

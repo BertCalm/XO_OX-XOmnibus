@@ -59,5 +59,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "STONE": 0.45,
+    "PREPARATION": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
   }
 }

@@ -77,5 +77,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FILTER BRIGHT": 0.45,
+    "GLIDE AMOUNT": 0.45,
+    "LFO VIBE": 0.45,
+    "TAPE ECHO": 0.45
+  }
 }

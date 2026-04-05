@@ -42,7 +42,8 @@
       "ofr_v3_body": 0.35,
       "ofr_v3_level": 0.9,
       "ofr_v3_pan": -0.4,
-      "ofr_v2_pan": 0.45
+      "ofr_v2_pan": 0.45,
+      "ofr_velToSnap": 0.726
     }
   },
   "engines": [

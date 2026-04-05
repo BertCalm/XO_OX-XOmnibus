@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Void Impulse",
+  "mood": "Aether",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A single exciter impulse into maximum reverb space — one event, infinite decay. The Chiasmus FDN stretched across silence.",
+  "tags": ["aether", "sparse", "minimal", "impulse", "reverb"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.50,
+    "movement": 0.04,
+    "density": 0.08,
+    "space": 0.98,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.98,
+      "oxb_decay": 30.0,
+      "oxb_entangle": 0.05,
+      "oxb_erosionRate": 0.02,
+      "oxb_erosionDepth": 0.03,
+      "oxb_convergence": 0,
+      "oxb_resonanceQ": 2,
+      "oxb_resonanceMix": 0.12,
+      "oxb_cantilever": 0.02,
+      "oxb_damping": 2000,
+      "oxb_predelay": 1,
+      "oxb_dryWet": 0.98,
+      "oxb_exciterDecay": 0.002,
+      "oxb_exciterBright": 0.55,
+      "oxb_macroCharacter": 0.08,
+      "oxb_macroMovement": 0.04,
+      "oxb_macroCoupling": 0.05,
+      "oxb_macroSpace": 0.98,
+      "oxb_filterEnvAmt": 0.03,
+      "oxb_lfo1Rate": 0.005,
+      "oxb_lfo1Depth": 0.04
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.05,
+    "EROSION": 0.02,
+    "CONVERGE": 0.08,
+    "CANTILEVER": 0.98
+  }
+}

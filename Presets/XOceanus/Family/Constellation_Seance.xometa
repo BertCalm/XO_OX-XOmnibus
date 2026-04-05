@@ -57,7 +57,8 @@
       "orph_macroDivine": 0.485,
       "orph_filterEnvAmt": 0.514,
       "orph_lfo1Rate": 0.15,
-      "orph_lfo1Depth": 0.174
+      "orph_lfo1Depth": 0.174,
+      "orph_velocitySensitivity": 0.693
     },
     "Obbligato": {
       "obbl_macroBond": 0.451,

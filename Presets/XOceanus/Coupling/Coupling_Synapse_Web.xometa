@@ -52,7 +52,8 @@
       "org_macroCharacter": 0.5,
       "org_macroMovement": 0.54,
       "org_macroCoupling": 0.6,
-      "org_macroSpace": 0.5
+      "org_macroSpace": 0.5,
+      "org_velCutoff": 0.45
     }
   },
   "coupling": {

@@ -88,5 +88,11 @@
     "density": 0.5,
     "space": 0.45,
     "aggression": 0.25
+  },
+  "macros": {
+    "PROPHECY": 0.45,
+    "METABOLISM": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.45
   }
 }

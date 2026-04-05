@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pure sine LFO wah \u2014 the cleanest possible filter modulation, perfectly smooth wah oscillation. Mathematical and musical.",
+  "description": "Pure sine LFO wah — the cleanest possible filter modulation, perfectly smooth wah oscillation. Mathematical and musical.",
   "tags": [
     "clavinet",
     "sine",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

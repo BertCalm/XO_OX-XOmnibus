@@ -49,7 +49,8 @@
       "orca_lfoRate": 0.12,
       "orca_lfoDepth": 0.28,
       "orca_outputLevel": 0.72,
-      "orca_reverbMix": 0.25
+      "orca_reverbMix": 0.25,
+      "orca_velCutoffAmt": 0.505
     },
     "Oceanic": {
       "ocean_separation": 0.55,
@@ -104,5 +105,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.435,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.39,
+    "SPACE": 0.55
+  }
 }

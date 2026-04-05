@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Permafrost Memory",
+  "mood": "Ethereal",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Siberian permafrost holding Pleistocene pollen, mammoth proteins, and 50,000-year-old viruses in anaerobic cold \u2014 a biological archive of everything that fell and was preserved.",
+  "tags": [
+    "ethereal",
+    "permafrost",
+    "preserved",
+    "ancient",
+    "Pleistocene",
+    "archive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.38,
+    "movement": 0.08,
+    "density": 0.48,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.28,
+      "obsidian_macroMovement": 0.08,
+      "obsidian_macroCoupling": 0.05,
+      "obsidian_macroSpace": 0.92,
+      "obsidian_depth": 0.55,
+      "obsidian_filterEnvAmt": 0.15,
+      "obsidian_lfo1Rate": 0.01,
+      "obsidian_lfo1Depth": 0.06,
+      "obsidian_attack": 5.0,
+      "obsidian_release": 14.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.05,
+    "SPACE": 0.92
+  }
+}

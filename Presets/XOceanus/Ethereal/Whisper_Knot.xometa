@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Whisper Knot",
   "mood": "Ethereal",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Solomon knot topology — minimal strand count, maximum transparency. Sound that passes through itself without leaving a trace.",
-  "tags": ["ethereal", "whisper", "orbweave", "transparent", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "whisper",
+    "orbweave",
+    "transparent",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +58,14 @@
       "weave_macroSpace": 0.8
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.09,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

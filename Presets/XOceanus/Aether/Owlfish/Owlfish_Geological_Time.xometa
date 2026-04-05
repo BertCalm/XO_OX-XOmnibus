@@ -76,7 +76,8 @@
       "owl_subLevel3": 0.4,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.75,
-      "owl_subWave": 0.3
+      "owl_subWave": 0.3,
+      "owl_velocity": 0.429
     }
   },
   "schema_version": 1,
@@ -91,5 +92,11 @@
     "sala"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.2,
+    "SPACE": 0.9
+  }
 }

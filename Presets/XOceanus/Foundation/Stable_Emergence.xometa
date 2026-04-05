@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Stable Emergence",
+  "mood": "Foundation",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 4 — a simple Class II automaton producing stable repeating patterns. The simplest behavior from which emergence becomes visible. Ordered complexity.",
+  "tags": [
+    "foundation",
+    "rule-4",
+    "stable",
+    "ordered",
+    "emergence",
+    "Class II"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 4,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 8.0,
+      "obnt_gridDensity": 0.65,
+      "obnt_chaos": 0.02,
+      "obnt_projection": 0.55,
+      "obnt_pitchMode": 1,
+      "obnt_filterCutoff": 6500.0,
+      "obnt_filterResonance": 0.22,
+      "obnt_attack": 0.1,
+      "obnt_decay": 0.8,
+      "obnt_sustain": 0.78,
+      "obnt_release": 1.5,
+      "obnt_velSens": 0.75,
+      "obnt_lfo1Rate": 1.5,
+      "obnt_lfo1Depth": 0.15,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 0,
+      "obnt_modAmt1": 0.25,
+      "obnt_modSrc2": 1,
+      "obnt_modDst2": 1,
+      "obnt_modAmt2": 0.18,
+      "obnt_modSrc3": 0,
+      "obnt_modDst3": 3,
+      "obnt_modAmt3": 0.22,
+      "obnt_modSrc4": 0,
+      "obnt_modDst4": 0,
+      "obnt_modAmt4": 0.0,
+      "obnt_macroChaos": 0.12,
+      "obnt_macroEvolution": 0.28,
+      "obnt_macroSpace": 0.58,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.28,
+    "SPACE": 0.58,
+    "COUPLING": 0.2
+  }
+}

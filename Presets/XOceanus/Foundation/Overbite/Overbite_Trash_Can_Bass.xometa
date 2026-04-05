@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Bitcrushed and folded mid-bass as if played through a tin trash can lid \u2014 full TRASH macro engagement.",
+  "description": "Bitcrushed and folded mid-bass as if played through a tin trash can lid — full TRASH macro engagement.",
   "dna": {
     "aggression": 0.8,
     "brightness": 0.55,
@@ -53,7 +53,8 @@
       "poss_oscAWaveform": 3,
       "poss_subLevel": 0.4,
       "poss_trashAmount": 0.75,
-      "poss_trashMode": 2
+      "poss_trashMode": 2,
+      "poss_ampVelSens": 0.46
     }
   },
   "schema_version": 1,

@@ -42,7 +42,8 @@
       "deep_lfo1Rate": 0.018,
       "deep_lfo1Depth": 0.13,
       "deep_attack": 3.2,
-      "deep_release": 10.5
+      "deep_release": 10.5,
+      "deep_velCutoffAmt": 0.302
     }
   },
   "coupling": {

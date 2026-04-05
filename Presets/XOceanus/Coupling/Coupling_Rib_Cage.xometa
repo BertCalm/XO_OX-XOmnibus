@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG amber filter spine heavily shapes OBRIX brick ecology \u2014 filter backbone dictating how the modular coral reef assembles its structure.",
+  "description": "OBLONG amber filter spine heavily shapes OBRIX brick ecology — filter backbone dictating how the modular coral reef assembles its structure.",
   "tags": [
     "coupling",
     "heavy",
@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.64,
       "bob_macroMovement": 0.64,
       "bob_macroCoupling": 0.75,
-      "bob_macroSpace": 0.48
+      "bob_macroSpace": 0.48,
+      "bob_velFilter": 0.495
     },
     "Obrix": {
       "obrix_src1Type": 0.68,

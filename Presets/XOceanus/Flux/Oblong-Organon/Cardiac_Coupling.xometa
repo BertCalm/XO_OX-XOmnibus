@@ -58,7 +58,8 @@
       "bob_oscA_drift": 0.1,
       "bob_oscA_shape": 0.4,
       "bob_oscA_wave": 0,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.53
     },
     "Organon": {
       "organon_catalystDrive": 0.5,
@@ -83,5 +84,11 @@
     "sync"
   ],
   "tempo": 72,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BOB PULSE": 0.45,
+    "HEARTBEAT": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.2
+  }
 }

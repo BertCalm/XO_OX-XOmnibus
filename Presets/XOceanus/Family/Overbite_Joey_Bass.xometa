@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Small, warm, contained bass \u2014 the joey version, tucked and safe inside the pouch frequency.",
+  "description": "Small, warm, contained bass — the joey version, tucked and safe inside the pouch frequency.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.35,
@@ -50,7 +50,8 @@
       "poss_macroTrash": 0.05,
       "poss_oscAShape": 0.15,
       "poss_oscAWaveform": 1,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.438
     }
   },
   "schema_version": 1,

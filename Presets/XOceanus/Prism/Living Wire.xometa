@@ -56,7 +56,8 @@
       "bob_oscB_detune": 15.0,
       "bob_oscB_fm": 0.3,
       "bob_oscB_sync": 1.0,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.557
     }
   },
   "schema_version": 1,
@@ -68,5 +69,11 @@
     "expressive"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.305,
+    "MOVEMENT": 0.819,
+    "COUPLING": 0.2,
+    "SPACE": 0.167
+  }
 }

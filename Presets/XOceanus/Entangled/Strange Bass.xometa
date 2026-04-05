@@ -80,7 +80,8 @@
       "bob_texMode": 0,
       "bob_texTone": 0.5,
       "bob_texWidth": 0.5,
-      "bob_voiceMode": 1
+      "bob_voiceMode": 1,
+      "bob_velFilter": 0.488
     },
     "Ouroboros": {
       "ouro_chaosIndex": 0.25,
@@ -102,5 +103,11 @@
     "warm"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "ATTRACTOR": 0.45,
+    "BOB WARMTH": 0.45,
+    "MORPH DEPTH": 0.45,
+    "SPACE": 0.2
+  }
 }

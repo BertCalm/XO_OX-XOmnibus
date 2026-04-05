@@ -43,7 +43,8 @@
       "bob_density": 0.55,
       "bob_warmth": 0.7,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.533
     },
     "Onset": {
       "perc_v1_level": 0.9,
@@ -81,5 +82,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "RIDDIM": 0.45,
+    "WEIGHT": 0.45,
+    "FM DEPTH": 0.45,
+    "DUB SPACE": 0.45
+  }
 }

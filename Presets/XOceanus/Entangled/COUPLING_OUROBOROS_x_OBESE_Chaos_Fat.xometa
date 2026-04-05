@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Chaos Fat",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Obese"],
+  "engines": [
+    "Ouroboros",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz chaos trajectory feeding into fat saturation as AudioToFM — the attractor modulates the oscillator, chaos becomes timbre. Entangled aggression.",
-  "tags": ["chaos", "distortion", "entangled", "aggressive", "FM"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "distortion",
+    "entangled",
+    "aggressive",
+    "FM"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -67,5 +81,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.71,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.54,
+    "SPACE": 0.22
+  }
 }

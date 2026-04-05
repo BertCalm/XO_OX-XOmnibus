@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH POSITION": 0.45,
+    "DUB TIMBRE": 0.45,
+    "BLEND DEPTH": 0.45,
+    "FILTER": 0.45
+  }
 }

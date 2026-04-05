@@ -96,5 +96,11 @@
     "organism",
     "transcendental"
   ],
-  "description": "Forte strikes trigger OCTOPUS ink cloud (threshold 0.65) — the 8-second noise burst FM-modulates ORGANON's metabolic oscillator via AudioToFM. One alien feeding another."
+  "description": "Forte strikes trigger OCTOPUS ink cloud (threshold 0.65) — the 8-second noise burst FM-modulates ORGANON's metabolic oscillator via AudioToFM. One alien feeding another.",
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.39,
+    "SPACE": 0.75
+  }
 }

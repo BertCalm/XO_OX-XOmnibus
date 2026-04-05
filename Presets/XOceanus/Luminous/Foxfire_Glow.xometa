@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Foxfire Glow",
+  "mood": "Luminous",
+  "engines": [
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bioluminescent fungal threads in decaying wood \u2014 foxfire, the soft blue-green perpetual glow of Panellus stipticus feeding on cellulose in the permanent dark of old forests.",
+  "tags": [
+    "luminous",
+    "foxfire",
+    "fungal",
+    "decay",
+    "forest",
+    "perpetual",
+    "cold-light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.35,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.78,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Osier": {
+      "osier_windDensity": 0.28,
+      "osier_filterCutoff": 6800.0,
+      "osier_filterRes": 0.12,
+      "osier_attack": 2.5,
+      "osier_decay": 4.5,
+      "osier_sustain": 0.88,
+      "osier_release": 9.0,
+      "osier_lfo1Rate": 0.02,
+      "osier_lfo1Depth": 0.1,
+      "osier_macroCharacter": 0.38,
+      "osier_macroMovement": 0.18,
+      "osier_macroCoupling": 0.08,
+      "osier_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.08,
+    "SPACE": 0.78
+  }
+}

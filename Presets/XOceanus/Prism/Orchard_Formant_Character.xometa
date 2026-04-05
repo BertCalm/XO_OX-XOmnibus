@@ -63,5 +63,11 @@
     "violin"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.2,
+    "SPACE": 0.88
+  }
 }

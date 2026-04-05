@@ -65,5 +65,11 @@
   ],
   "tempo": null,
   "tier": "awakening",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "RULE": 0.415,
+    "SEED": 0.278,
+    "COUPLING": 0.2,
+    "MUTATE": 0.271
+  }
 }

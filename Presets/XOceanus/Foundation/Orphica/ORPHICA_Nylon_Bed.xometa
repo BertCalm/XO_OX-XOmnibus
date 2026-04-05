@@ -67,7 +67,8 @@
       "orph_macroPluck": 0.4,
       "orph_macroSurface": 0.3,
       "orph_macroFracture": 0.0,
-      "orph_macroDivine": 0.08
+      "orph_macroDivine": 0.08,
+      "orph_velocitySensitivity": 0.465
     }
   },
   "macros": {

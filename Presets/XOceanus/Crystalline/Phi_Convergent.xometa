@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Phi Convergent",
   "mood": "Crystalline",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Golden ratio continued fraction — φ approximation, first convergent only. The most irrational number expressed as a single crystalline tone.",
-  "tags": ["crystalline", "golden-ratio", "overtone", "mathematical", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystalline",
+    "golden-ratio",
+    "overtone",
+    "mathematical",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -43,9 +56,18 @@
       "over_macroCharacter": 0.15,
       "over_macroMovement": 0.06,
       "over_macroCoupling": 0.04,
-      "over_macroSpace": 0.72
+      "over_macroSpace": 0.72,
+      "over_velBright": 0.365
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.2,
+    "SPACE": 0.8
+  }
 }

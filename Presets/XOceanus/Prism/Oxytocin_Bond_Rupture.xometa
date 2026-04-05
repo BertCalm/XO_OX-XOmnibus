@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Bond Rupture",
+  "mood": "Prism",
+  "engines": ["Oxytocin"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Circuit-love driven to breaking point — intimacy accumulated until the bond snaps. The warmth of attachment weaponized.",
+  "tags": ["prism", "aggressive", "circuit", "rupture", "intense"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.45,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.22,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.98,
+      "oxy_filterEnvAmt": 0.92,
+      "oxy_lfo1Rate": 0.85,
+      "oxy_lfo1Depth": 0.78,
+      "oxy_macroCharacter": 0.88,
+      "oxy_macroMovement": 0.82,
+      "oxy_macroCoupling": 0.22,
+      "oxy_macroSpace": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.22,
+    "SPACE": 0.22
+  }
+}

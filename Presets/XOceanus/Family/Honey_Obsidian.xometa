@@ -55,5 +55,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.491,
+    "MOVEMENT": 0.417,
+    "COUPLING": 0.478,
+    "SPACE": 0.582
+  }
 }

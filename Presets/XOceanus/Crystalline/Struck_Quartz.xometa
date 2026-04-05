@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A mallet striking pure quartz \u2014 the piezoelectric resonance of mineral percussion, bright and crystalline.",
+  "description": "A mallet striking pure quartz — the piezoelectric resonance of mineral percussion, bright and crystalline.",
   "tags": [
     "crystalline",
     "struck",
@@ -39,7 +39,8 @@
       "owr_macroSpace": 0.61,
       "owr_filterEnvAmt": 0.42,
       "owr_lfo1Rate": 0.1,
-      "owr_lfo1Depth": 0.12
+      "owr_lfo1Depth": 0.12,
+      "owr_malletVelocity": 0.626
     }
   },
   "coupling": {

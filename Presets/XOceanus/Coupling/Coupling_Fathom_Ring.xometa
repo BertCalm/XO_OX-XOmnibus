@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANDEEP abyss pressure drives OCEANIC surface expression and OCEANIC chromatophore drives OceanDeep current \u2014 bidirectional ocean layer coupling.",
+  "description": "OCEANDEEP abyss pressure drives OCEANIC surface expression and OCEANIC chromatophore drives OceanDeep current — bidirectional ocean layer coupling.",
   "tags": [
     "coupling",
     "heavy",
@@ -43,7 +43,8 @@
       "deep_macroCharacter": 0.62,
       "deep_macroMovement": 0.64,
       "deep_macroCoupling": 0.72,
-      "deep_macroSpace": 0.65
+      "deep_macroSpace": 0.65,
+      "deep_velCutoffAmt": 0.488
     },
     "Oceanic": {
       "ocean_separation": 0.68,

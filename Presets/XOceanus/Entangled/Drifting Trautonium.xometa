@@ -69,7 +69,8 @@
       "owl_resonantFeedback": 0.477,
       "owl_resonantPitch": 0.681,
       "owl_shimmer": 0.25,
-      "owl_subLevel": 0.453
+      "owl_subLevel": 0.453,
+      "owl_velocity": 0.606
     }
   },
   "schema_version": 1,
@@ -81,5 +82,11 @@
     "odyssey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.366,
+    "MOVEMENT": 0.442,
+    "COUPLING": 0.509,
+    "SPACE": 0.627
+  }
 }

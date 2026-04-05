@@ -102,5 +102,11 @@
     "coupled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "TOPOLOGY": 0.45,
+    "SHORE CHARACTER": 0.45,
+    "COUPLING": 0.558,
+    "SPACE": 0.75
+  }
 }

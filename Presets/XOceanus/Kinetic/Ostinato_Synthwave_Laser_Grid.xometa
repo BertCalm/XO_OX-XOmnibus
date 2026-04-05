@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Tabla high tones snap like laser fire across a 16th-note grid. The doumbek provides the punchy kick equivalent while frame drum lays down ghost notes between beats 2 and 4. Prismatic processing gives the whole pattern a spectral shimmer \u2014 1987 on a stranger planet.",
+  "description": "Tabla high tones snap like laser fire across a 16th-note grid. The doumbek provides the punchy kick equivalent while frame drum lays down ghost notes between beats 2 and 4. Prismatic processing gives the whole pattern a spectral shimmer — 1987 on a stranger planet.",
   "tags": [
     "synthwave",
     "tabla",
@@ -112,7 +112,15 @@
       "osti_macroSpace": 0.504,
       "osti_filterEnvAmt": 0.513,
       "osti_lfo1Rate": 0.179,
-      "osti_lfo1Depth": 0.344
+      "osti_lfo1Depth": 0.344,
+      "osti_seat1_velSens": 0.7,
+      "osti_seat2_velSens": 0.7,
+      "osti_seat3_velSens": 0.7,
+      "osti_seat4_velSens": 0.7,
+      "osti_seat5_velSens": 0.7,
+      "osti_seat6_velSens": 0.7,
+      "osti_seat7_velSens": 0.7,
+      "osti_seat8_velSens": 0.7
     }
   },
   "coupling": {

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPERA Kuramoto synchronicity arc drives OUIE HAMMER axis \u2014 the conductor arc pushing the hammerhead interaction from STRIFE toward LOVE.",
+  "description": "OPERA Kuramoto synchronicity arc drives OUIE HAMMER axis — the conductor arc pushing the hammerhead interaction from STRIFE toward LOVE.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "opera_macroCharacter": 0.54,
       "opera_macroMovement": 0.54,
       "opera_macroCoupling": 0.62,
-      "opera_macroSpace": 0.5
+      "opera_macroSpace": 0.5,
+      "opera_velToFilter": 0.36
     },
     "Ouie": {
       "ouie_macroHammer": 0.55,
@@ -52,7 +53,8 @@
       "ouie_macroCharacter": 0.52,
       "ouie_macroMovement": 0.52,
       "ouie_macroCoupling": 0.6,
-      "ouie_macroSpace": 0.5
+      "ouie_macroSpace": 0.5,
+      "ouie_velCutoffAmt": 0.45
     }
   },
   "coupling": {

@@ -52,7 +52,8 @@
       "opal_macroSpace": 0.415,
       "opal_filterEnvAmt": 0.485,
       "opal_lfo1Rate": 0.154,
-      "opal_lfo1Depth": 0.277
+      "opal_lfo1Depth": 0.277,
+      "opal_ampVelSens": 0.389
     },
     "Origami": {
       "origami_couplingOut": 0.776,

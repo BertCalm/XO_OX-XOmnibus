@@ -35,7 +35,8 @@
       "ombre_macroSpace": 0.773,
       "ombre_filterEnvAmt": 0.535,
       "ombre_lfo1Rate": 0.025,
-      "ombre_lfo1Depth": 0.181
+      "ombre_lfo1Depth": 0.181,
+      "ombre_velCutoffScale": 0.315
     }
   },
   "schema_version": 1,

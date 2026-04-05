@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Pitch Mode Cosine",
+  "mood": "Crystalline",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cosine readout pitch mode — active cell positions projected through cosine function, creating harmonic series relationships between cell positions and pitched outputs.",
+  "tags": [
+    "crystalline",
+    "cosine",
+    "pitch mode",
+    "harmonic",
+    "mathematical",
+    "pure"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.28,
+    "movement": 0.42,
+    "density": 0.48,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 22,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 10.0,
+      "obnt_gridDensity": 0.55,
+      "obnt_chaos": 0.05,
+      "obnt_projection": 0.65,
+      "obnt_pitchMode": 2,
+      "obnt_filterCutoff": 9500.0,
+      "obnt_filterResonance": 0.28,
+      "obnt_attack": 0.01,
+      "obnt_decay": 0.6,
+      "obnt_sustain": 0.65,
+      "obnt_release": 1.2,
+      "obnt_velSens": 0.78,
+      "obnt_lfo1Rate": 2.5,
+      "obnt_lfo1Depth": 0.22,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 1,
+      "obnt_modAmt1": 0.42,
+      "obnt_modSrc2": 1,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.28,
+      "obnt_modSrc3": 2,
+      "obnt_modDst3": 4,
+      "obnt_modAmt3": 0.35,
+      "obnt_modSrc4": 0,
+      "obnt_modDst4": 3,
+      "obnt_modAmt4": -0.18,
+      "obnt_macroChaos": 0.22,
+      "obnt_macroEvolution": 0.42,
+      "obnt_macroSpace": 0.72,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.42,
+    "SPACE": 0.72,
+    "COUPLING": 0.2
+  }
+}

@@ -44,7 +44,8 @@
       "ofr_aftertouch": 0.7,
       "ofr_envToPitch": 0.25,
       "ofr_v0_decay": 0.38,
-      "ofr_v1_decay": 0.2
+      "ofr_v1_decay": 0.2,
+      "ofr_velToSnap": 0.834
     }
   },
   "engines": [

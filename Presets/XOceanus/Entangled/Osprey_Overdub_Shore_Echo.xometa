@@ -114,5 +114,11 @@
     "dub"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.39,
+    "SPACE": 0.85
+  }
 }

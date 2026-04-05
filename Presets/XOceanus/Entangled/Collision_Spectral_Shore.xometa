@@ -47,7 +47,8 @@
       "over_macroSpace": 0.54,
       "over_filterEnvAmt": 0.449,
       "over_lfo1Rate": 0.147,
-      "over_lfo1Depth": 0.388
+      "over_lfo1Depth": 0.388,
+      "over_velBright": 0.439
     },
     "Osprey": {
       "osprey_macroCharacter": 0.615,

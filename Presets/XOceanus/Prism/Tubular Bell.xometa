@@ -48,7 +48,8 @@
       "bob_oscB_blend": 0.65,
       "bob_oscB_detune": 9.0,
       "bob_oscB_fm": 0.42,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.549
     }
   },
   "schema_version": 1,
@@ -59,5 +60,11 @@
     "chime"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.394,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.449
+  }
 }

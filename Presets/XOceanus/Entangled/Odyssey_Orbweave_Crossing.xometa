@@ -111,5 +111,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FM MIGRATION": 0.45,
+    "KNOT TOPOLOGY": 0.45,
+    "DRIFT SPEED": 0.45,
+    "NETWORK DEPTH": 0.45
+  }
 }

@@ -41,7 +41,8 @@
       "ofr_masterLevel": 0.7,
       "ofr_masterWidth": 0.5,
       "ofr_v0_body": 0.9,
-      "ofr_v0_decay": 0.5
+      "ofr_v0_decay": 0.5,
+      "ofr_velToSnap": 0.69
     }
   },
   "engines": [

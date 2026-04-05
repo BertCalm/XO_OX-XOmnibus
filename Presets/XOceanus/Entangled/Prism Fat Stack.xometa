@@ -63,7 +63,8 @@
       "bob_filterCutoff": 2800.0,
       "bob_filterReso": 0.3,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.521
     }
   },
   "schema_version": 1,
@@ -79,5 +80,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.665,
+    "COUPLING": 0.54,
+    "SPACE": 0.555
+  }
 }

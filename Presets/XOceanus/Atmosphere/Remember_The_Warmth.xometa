@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Warm gentle atmospheric layer from Oxytocin."
+  "description": "Warm gentle atmospheric layer from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.418,
+    "MOVEMENT": 0.079,
+    "COUPLING": 0.2,
+    "SPACE": 0.865
+  }
 }

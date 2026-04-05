@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The ice biome crossfaded through Ocelot's timbral landscape \u2014 arctic crystalline terrain.",
+  "description": "The ice biome crossfaded through Ocelot's timbral landscape — arctic crystalline terrain.",
   "tags": [
     "crystalline",
     "ice",
@@ -39,7 +39,8 @@
       "ocelot_macroSpace": 0.57,
       "ocelot_filterEnvAmt": 0.44,
       "ocelot_lfo1Rate": 0.14,
-      "ocelot_lfo1Depth": 0.11
+      "ocelot_lfo1Depth": 0.11,
+      "ocelot_floorVelocity": 0.626
     }
   },
   "coupling": {

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ODDFELLOW spectral shift drives OVERTONE continued fraction convergents \u2014 copper spectral fingerprint reshaping rational harmonic approximations.",
+  "description": "ODDFELLOW spectral shift drives OVERTONE continued fraction convergents — copper spectral fingerprint reshaping rational harmonic approximations.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "over_macroCharacter": 0.5,
       "over_macroMovement": 0.52,
       "over_macroCoupling": 0.6,
-      "over_macroSpace": 0.52
+      "over_macroSpace": 0.52,
+      "over_velBright": 0.41
     }
   },
   "coupling": {

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Shear Force",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Entangled reverb pushed to structural failure — phase erosion at maximum depth, the FDN folding under its own weight.",
+  "tags": ["flux", "aggressive", "structural", "erosion", "brutal"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.25,
+    "movement": 0.72,
+    "density": 0.78,
+    "space": 0.42,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.72,
+      "oxb_decay": 0.8,
+      "oxb_entangle": 0.92,
+      "oxb_erosionRate": 0.88,
+      "oxb_erosionDepth": 0.85,
+      "oxb_convergence": 4,
+      "oxb_resonanceQ": 24,
+      "oxb_resonanceMix": 0.78,
+      "oxb_cantilever": 0.85,
+      "oxb_damping": 8000,
+      "oxb_predelay": 5,
+      "oxb_dryWet": 0.75,
+      "oxb_exciterDecay": 0.008,
+      "oxb_exciterBright": 0.88,
+      "oxb_macroCharacter": 0.82,
+      "oxb_macroMovement": 0.72,
+      "oxb_macroCoupling": 0.38,
+      "oxb_macroSpace": 0.42,
+      "oxb_filterEnvAmt": 0.78,
+      "oxb_lfo1Rate": 0.58,
+      "oxb_lfo1Depth": 0.62
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.92,
+    "EROSION": 0.88,
+    "CONVERGE": 0.78,
+    "CANTILEVER": 0.42
+  }
+}

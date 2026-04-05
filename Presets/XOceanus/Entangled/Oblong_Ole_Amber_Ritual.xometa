@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.259,
       "bob_scaleMode": 0.8,
       "bob_subOscLevel": 0.309,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.535
     },
     "Ole": {
       "ole_filterCutoff": 4199.1,
@@ -74,5 +75,11 @@
     "ole"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.581,
+    "MOVEMENT": 0.685,
+    "COUPLING": 0.57,
+    "SPACE": 0.4
+  }
 }

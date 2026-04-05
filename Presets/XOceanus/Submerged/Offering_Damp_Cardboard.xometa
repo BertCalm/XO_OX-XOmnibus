@@ -49,7 +49,8 @@
       "ofr_v0_tune": -0.1,
       "ofr_v6_tune": -0.08,
       "ofr_v7_tune": -0.06,
-      "ofr_masterWidth": 0.35
+      "ofr_masterWidth": 0.35,
+      "ofr_velToSnap": 0.427
     }
   },
   "schema_version": 1,

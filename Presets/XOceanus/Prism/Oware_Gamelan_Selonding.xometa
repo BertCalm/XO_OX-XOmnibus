@@ -49,8 +49,15 @@
       "owr_damping": 0.22,
       "owr_decay": 4.5,
       "owr_filterEnvAmount": 0.3,
-      "owr_bendRange": 3
+      "owr_bendRange": 3,
+      "owr_malletVelocity": 0.818
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

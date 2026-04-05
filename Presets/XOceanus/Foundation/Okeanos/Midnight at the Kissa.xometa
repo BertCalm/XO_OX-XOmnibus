@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The signature Rhodes. Warm tine tone with gentle bell, no tremolo. The sound of midnight in a Tokyo kissaten \u2014 one last pour-over, one last chord.",
+  "description": "The signature Rhodes. Warm tine tone with gentle bell, no tremolo. The sound of midnight in a Tokyo kissaten — one last pour-over, one last chord.",
   "tags": [
     "rhodes",
     "warm",
@@ -61,5 +61,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
 }

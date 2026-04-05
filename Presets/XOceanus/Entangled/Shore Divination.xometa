@@ -91,5 +91,11 @@
     "oracle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.386,
+    "MOVEMENT": 0.526,
+    "COUPLING": 0.641,
+    "SPACE": 0.611
+  }
 }

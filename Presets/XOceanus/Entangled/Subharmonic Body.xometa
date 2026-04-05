@@ -58,11 +58,13 @@
       "bob_reverbMix": 0.243,
       "bob_scaleMode": 0.6,
       "bob_subOscLevel": 0.095,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.502
     },
     "Owlfish": {
       "owl_filterCutoff": 9524.8,
-      "owl_level": 0.827
+      "owl_level": 0.827,
+      "owl_velocity": 0.652
     }
   },
   "schema_version": 1,
@@ -74,5 +76,11 @@
     "owlfish"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.63,
+    "SPACE": 0.435
+  }
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Light Fracture",
   "mood": "Prism",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prepared piano crystal drive sending HF noise through a spectral fracture — fragility creating different colors of light on each velocity layer.",
-  "tags": ["prepared-piano", "prism", "aggressive", "spectral", "fracture"],
-  "macroLabels": ["FRAGILITY", "CRYSTAL", "SHOCK", "NOISE"],
+  "tags": [
+    "prepared-piano",
+    "prism",
+    "aggressive",
+    "spectral",
+    "fracture"
+  ],
+  "macroLabels": [
+    "FRAGILITY",
+    "CRYSTAL",
+    "SHOCK",
+    "NOISE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,6 +61,14 @@
       "opal2_macroNoise": 0.75
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "FRAGILITY": 0.45,
+    "CRYSTAL": 0.45,
+    "SHOCK": 0.45,
+    "NOISE": 0.45
+  }
 }

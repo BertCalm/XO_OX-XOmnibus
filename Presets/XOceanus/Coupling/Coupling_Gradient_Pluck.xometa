@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORPHICA pluck velocity drives OPAL grain density \u2014 string impact force populating granular cloud density, physical pluck as granular seed.",
+  "description": "ORPHICA pluck velocity drives OPAL grain density — string impact force populating granular cloud density, physical pluck as granular seed.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "orph_macroCharacter": 0.52,
       "orph_macroMovement": 0.5,
       "orph_macroCoupling": 0.62,
-      "orph_macroSpace": 0.5
+      "orph_macroSpace": 0.5,
+      "orph_velocitySensitivity": 0.66
     },
     "Opal": {
       "opal_grainSize": 0.54,
@@ -52,7 +53,8 @@
       "opal_macroCharacter": 0.5,
       "opal_macroMovement": 0.5,
       "opal_macroCoupling": 0.6,
-      "opal_macroSpace": 0.52
+      "opal_macroSpace": 0.52,
+      "opal_ampVelSens": 0.352
     }
   },
   "coupling": {

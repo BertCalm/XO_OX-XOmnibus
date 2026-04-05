@@ -55,5 +55,11 @@
     "immersive"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.2,
+    "SPACE": 0.95
+  }
 }

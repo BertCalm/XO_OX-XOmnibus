@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Desert Tremolo",
+  "mood": "Luminous",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fata morgana over hot sand \u2014 light and tremolo distorting the horizon, the mirage city visible for 30 minutes before convection columns erase it.",
+  "tags": [
+    "luminous",
+    "desert",
+    "tremolo",
+    "mirage",
+    "fata morgana",
+    "heat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.55,
+      "oas_breeze": 0.72,
+      "oas_swarmDensity": 0.35,
+      "oas_lagoonDepth": 0.55,
+      "oas_subDrive": 0.08,
+      "oas_resonatorQ": 5.5,
+      "oas_cullDecay": 0.9998,
+      "oas_canopyFB": 0.72,
+      "oas_filterCutoff": 8500.0,
+      "oas_filterEnvAmt": 0.38,
+      "oas_pickupPos": 0.72,
+      "oas_bellAmount": 0.55,
+      "oas_warmth": 0.72,
+      "oas_tremoloDepth": 0.42,
+      "oas_tremoloRate": 4.5,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.62,
+      "oas_macroMovement": 0.55,
+      "oas_macroCoupling": 0.18,
+      "oas_macroSpace": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.18,
+    "SPACE": 0.75
+  }
+}

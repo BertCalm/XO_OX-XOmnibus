@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Tape-saturated bass with slow pitch drift and mod echo \u2014 worn cassette opossum energy.",
+  "description": "Tape-saturated bass with slow pitch drift and mod echo — worn cassette opossum energy.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.4,
@@ -52,7 +52,8 @@
       "poss_macroTrash": 0.25,
       "poss_oscADrift": 0.4,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.59
     }
   },
   "schema_version": 1,

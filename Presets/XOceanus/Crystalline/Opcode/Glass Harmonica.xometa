@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High ratio, high index FM bell \u2014 the ringing overtones of a crystal glass set spinning. Haunting and pure.",
+  "description": "High ratio, high index FM bell — the ringing overtones of a crystal glass set spinning. Haunting and pure.",
   "tags": [
     "fm",
     "bell",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

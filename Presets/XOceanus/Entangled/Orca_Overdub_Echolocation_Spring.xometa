@@ -62,7 +62,8 @@
       "orca_pitchRand": 0.05,
       "orca_podSync": 0.4,
       "orca_wavetablePos": 0.4,
-      "orca_wavetableScan": 0.3
+      "orca_wavetableScan": 0.3,
+      "orca_velCutoffAmt": 0.525
     },
     "Overdub": {
       "dub_ampAttack": 0.08,
@@ -99,5 +100,11 @@
     "dub"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.475,
+    "ECHO": 0.4,
+    "COUPLING": 0.51,
+    "SPACE": 0.85
+  }
 }

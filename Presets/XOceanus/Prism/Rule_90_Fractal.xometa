@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Rule 90 Fractal",
+  "mood": "Prism",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wolfram Rule 90 — the additive rule producing Sierpinski triangle patterns. Self-similar structure at every zoom level, the fractal emerging from binary simplicity.",
+  "tags": [
+    "prism",
+    "rule-90",
+    "fractal",
+    "Sierpinski",
+    "self-similar",
+    "cellular"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.62,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 90,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 20.0,
+      "obnt_gridDensity": 0.58,
+      "obnt_chaos": 0.08,
+      "obnt_projection": 0.45,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 9500.0,
+      "obnt_filterResonance": 0.45,
+      "obnt_attack": 0.005,
+      "obnt_decay": 0.25,
+      "obnt_sustain": 0.45,
+      "obnt_release": 0.5,
+      "obnt_velSens": 0.85,
+      "obnt_lfo1Rate": 5.0,
+      "obnt_lfo1Depth": 0.28,
+      "obnt_modSrc1": 1,
+      "obnt_modDst1": 0,
+      "obnt_modAmt1": 0.55,
+      "obnt_modSrc2": 0,
+      "obnt_modDst2": 1,
+      "obnt_modAmt2": 0.35,
+      "obnt_modSrc3": 2,
+      "obnt_modDst3": 3,
+      "obnt_modAmt3": 0.45,
+      "obnt_modSrc4": 3,
+      "obnt_modDst4": 2,
+      "obnt_modAmt4": -0.25,
+      "obnt_macroChaos": 0.38,
+      "obnt_macroEvolution": 0.62,
+      "obnt_macroSpace": 0.55,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.62,
+    "SPACE": 0.55,
+    "COUPLING": 0.2
+  }
+}

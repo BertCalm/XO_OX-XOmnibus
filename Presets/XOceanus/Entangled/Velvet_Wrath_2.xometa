@@ -48,7 +48,8 @@
       "owl_macroCharacter": 0.371,
       "owl_macroCoupling": 0.839,
       "owl_macroMovement": 0.91,
-      "owl_macroSpace": 0.544
+      "owl_macroSpace": 0.544,
+      "owl_velocity": 0.837
     }
   },
   "schema_version": 1,

@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.101,
       "bob_scaleMode": 1.0,
       "bob_subOscLevel": 0.285,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.544
     },
     "Octopus": {
       "octo_filterCutoff": 5639.0,
@@ -74,5 +75,11 @@
     "octopus"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.751,
+    "COUPLING": 0.45,
+    "SPACE": 0.476
+  }
 }

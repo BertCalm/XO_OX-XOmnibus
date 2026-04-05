@@ -68,5 +68,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP CARRIER": 0.45,
+    "MORPH RING": 0.45,
+    "MODULATION": 0.45,
+    "WAVETABLE": 0.45
+  }
 }

@@ -42,7 +42,8 @@
       "ombre_macroMovement": 0.382,
       "ombre_filterEnvAmt": 0.349,
       "ombre_lfo1Rate": 0.018,
-      "ombre_lfo1Depth": 0.214
+      "ombre_lfo1Depth": 0.214,
+      "ombre_velCutoffScale": 0.243
     }
   },
   "schema_version": 1,

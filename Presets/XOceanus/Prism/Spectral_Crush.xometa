@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Spectral Crush",
   "mood": "Prism",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Continued fraction convergents crushed together under harmonic pressure. Spectral Ice meeting its compressive limit.",
-  "tags": ["prism", "aggressive", "spectral", "crush", "convergent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "aggressive",
+    "spectral",
+    "crush",
+    "convergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "over_attackTime": 0.008,
       "over_decayTime": 0.24,
       "over_sustain": 0.38,
-      "over_releaseTime": 0.22
+      "over_releaseTime": 0.22,
+      "over_velBright": 0.688
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.86,

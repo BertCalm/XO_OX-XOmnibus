@@ -67,5 +67,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Static rhythmic motion from Oxytocin."
+  "description": "Static rhythmic motion from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.553,
+    "MOVEMENT": 0.137,
+    "COUPLING": 0.2,
+    "SPACE": 0.502
+  }
 }

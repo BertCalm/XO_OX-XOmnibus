@@ -47,7 +47,8 @@
       "bob_oscB_blend": 0.78,
       "bob_oscB_detune": 14.0,
       "bob_oscB_fm": 0.75,
-      "bob_oscB_wave": 0.0
+      "bob_oscB_wave": 0.0,
+      "bob_velFilter": 0.561
     }
   },
   "schema_version": 1,
@@ -58,5 +59,11 @@
     "ping"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.349,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.403
+  }
 }

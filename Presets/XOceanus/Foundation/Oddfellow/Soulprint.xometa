@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The fingerprint of the Wurlitzer in R&B \u2014 medium reed, confident drive, perfect tremolo for the pocket.",
+  "description": "The fingerprint of the Wurlitzer in R&B — medium reed, confident drive, perfect tremolo for the pocket.",
   "tags": [
     "wurlitzer",
     "soul",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.2,
+    "SPACE": 0.4
+  }
 }

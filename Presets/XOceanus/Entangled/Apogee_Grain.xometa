@@ -52,7 +52,8 @@
       "opal_macroSpace": 0.491,
       "opal_filterEnvAmt": 0.578,
       "opal_lfo1Rate": 0.233,
-      "opal_lfo1Depth": 0.219
+      "opal_lfo1Depth": 0.219,
+      "opal_ampVelSens": 0.394
     },
     "Orbital": {
       "orb_arcDecay": 0.443,

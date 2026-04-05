@@ -189,7 +189,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.31
     }
   },
   "coupling": {
@@ -214,5 +215,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB DEPTH": 0.45,
+    "FAT EARTH": 0.45,
+    "DRIFT SKY": 0.45,
+    "BOB WARMTH": 0.45
+  }
 }

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Hurdy Gurdy Drone",
+  "mood": "Organic",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wheel vielle at constant rotation \u2014 the drone strings sustaining indefinitely beneath the melody, a continuous bow that never lifts. Medieval mechanized polyphony.",
+  "tags": [
+    "organic",
+    "hurdy-gurdy",
+    "wheel",
+    "drone",
+    "medieval",
+    "continuous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 4,
+      "oleg_buzz": 0.65,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 1.0,
+      "oleg_bellows": 0.75,
+      "oleg_detune": 12.0,
+      "oleg_formant": 0.55,
+      "oleg_attack": 0.02,
+      "oleg_release": 0.15,
+      "oleg_filterEnvAmt": 0.25,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.01,
+      "oleg_cassottoDepth": 0.2,
+      "oleg_buzzThreshold": 0.5,
+      "oleg_wheelSpeed": 0.75,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.52,
+      "oleg_macroMovement": 0.35,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.42,
+      "oleg_lfo1Rate": 0.08,
+      "oleg_lfo1Depth": 0.15,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 2.5,
+      "oleg_lfo2Depth": 0.08,
+      "oleg_lfo2Shape": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  }
+}

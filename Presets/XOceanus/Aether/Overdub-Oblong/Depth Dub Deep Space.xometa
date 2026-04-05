@@ -74,7 +74,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.308
     },
     "Overdub": {
       "dub_oscWave": 2,
@@ -125,5 +126,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB PRESENCE": 0.45,
+    "DUB DRONE": 0.45,
+    "COUPLING": 0.24,
+    "SPACE": 0.92
+  }
 }

@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.396,
       "owl_resonantPitch": 0.64,
       "owl_shimmer": 0.445,
-      "owl_subLevel": 0.246
+      "owl_subLevel": 0.246,
+      "owl_velocity": 0.658
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "obsidian"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.482,
+    "MOVEMENT": 0.185,
+    "COUPLING": 0.432,
+    "SPACE": 0.473
+  }
 }

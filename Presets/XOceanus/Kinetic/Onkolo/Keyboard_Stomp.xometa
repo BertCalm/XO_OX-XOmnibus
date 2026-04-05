@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Staccato clavinet attack with high mechanical clunk \u2014 you feel the key mechanism as much as the tone. Maximum kinetic energy.",
+  "description": "Staccato clavinet attack with high mechanical clunk — you feel the key mechanism as much as the tone. Maximum kinetic energy.",
   "tags": [
     "clavinet",
     "stomp",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.76,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
 }

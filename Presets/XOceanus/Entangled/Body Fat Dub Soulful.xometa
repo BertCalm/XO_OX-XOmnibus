@@ -77,7 +77,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.475
     },
     "Obese": {
       "fat_morph": 0.5,
@@ -167,5 +168,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BOB LEAD": 0.45,
+    "FAT HARMONY": 0.45,
+    "DUB BASS": 0.45,
+    "COUPLING": 0.42
+  }
 }

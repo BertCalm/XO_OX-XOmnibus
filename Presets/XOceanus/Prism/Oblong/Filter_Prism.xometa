@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Filter Prism",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multiple filter modes creating spectral color shifts — the filter character parameter sweeps between LP, BP, and HP responses, each revealing a different spectral color of the oscillator's harmonic content. LFO1 drives the character sweep while LFO2 modulates filter resonance.",
-  "tags": ["prism", "filter", "spectral", "color-shifting", "harmonic", "resonance", "movement"],
-  "macroLabels": ["BOB MODE", "CURIOSITY", "FILTER CHAR", "SPACE"],
+  "tags": [
+    "prism",
+    "filter",
+    "spectral",
+    "color-shifting",
+    "harmonic",
+    "resonance",
+    "movement"
+  ],
+  "macroLabels": [
+    "BOB MODE",
+    "CURIOSITY",
+    "FILTER CHAR",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,7 +75,8 @@
       "bob_level": 0.72,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.635
     }
   },
   "macros": {
@@ -69,5 +85,7 @@
     "FILTER CHAR": 0.88,
     "SPACE": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

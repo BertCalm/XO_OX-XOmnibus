@@ -76,7 +76,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 1,
       "bob_glide": 0.1,
-      "bob_polyphony": 0
+      "bob_polyphony": 0,
+      "bob_velFilter": 0.384
     },
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -130,5 +131,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "LEAD": 0.45,
+    "PERCUSSION": 0.45,
+    "BASS": 0.45,
+    "BALANCE": 0.45
+  }
 }

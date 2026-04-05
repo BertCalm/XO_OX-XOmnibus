@@ -76,10 +76,10 @@
     }
   },
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "CHARACTER": 0.435,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
   },
   "coupling": {
     "pairs": []

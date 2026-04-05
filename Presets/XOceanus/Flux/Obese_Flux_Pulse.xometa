@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Obese Flux Pulse",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBESE in digital-max mode — bit crush fully engaged, filter envelope sweeping deep and fast. A dense pulsing transformation between states of saturation.",
-  "tags": ["flux", "dense", "obese", "bitcrush", "pulse", "transformation"],
-  "macroLabels": ["BELLY", "MOJO", "GRIT", "CRUSH"],
+  "tags": [
+    "flux",
+    "dense",
+    "obese",
+    "bitcrush",
+    "pulse",
+    "transformation"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MOJO",
+    "GRIT",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -47,6 +61,14 @@
       "fat_polyphony": 8
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MOJO": 0.45,
+    "GRIT": 0.92,
+    "CRUSH": 0.92
+  }
 }

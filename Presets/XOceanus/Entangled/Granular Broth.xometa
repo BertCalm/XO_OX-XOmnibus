@@ -43,7 +43,8 @@
       "opal_grainSize": 0.411,
       "opal_macroCharacter": 0.0,
       "opal_macroCoupling": 0.045,
-      "opal_release": 1.0
+      "opal_release": 1.0,
+      "opal_ampVelSens": 0.361
     },
     "Osteria": {
       "osteria_attack": 0.091,
@@ -92,5 +93,11 @@
     "opal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.403,
+    "MOVEMENT": 0.479,
+    "COUPLING": 0.655,
+    "SPACE": 0.628
+  }
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Sediment Memory",
   "mood": "Deep",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Geological strata as memory — each layer a chapter of climate history laid down in darkness. The dual narratives of past and present suspended in stone.",
-  "tags": ["deep", "memory", "geological", "dark", "drone"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "memory",
+    "geological",
+    "dark",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -23,19 +36,22 @@
       "ombre_macroCharacter": 0.44,
       "ombre_macroMovement": 0.16,
       "ombre_macroCoupling": 0.13,
-      "ombre_macroSpace": 0.70,
+      "ombre_macroSpace": 0.7,
       "ombre_filterEnvAmt": 0.38,
       "ombre_lfo1Rate": 0.03,
       "ombre_lfo1Depth": 0.18,
-      "ombre_blend": 0.45
+      "ombre_blend": 0.45,
+      "ombre_velCutoffScale": 0.332
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.44,
     "MOVEMENT": 0.16,
     "COUPLING": 0.13,
-    "SPACE": 0.70
+    "SPACE": 0.7
   }
 }

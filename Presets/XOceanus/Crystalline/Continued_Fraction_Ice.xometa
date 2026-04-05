@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Each continued fraction convergent is a crystal node \u2014 the mathematical series frozen into spectral architecture.",
+  "description": "Each continued fraction convergent is a crystal node — the mathematical series frozen into spectral architecture.",
   "tags": [
     "crystalline",
     "continued-fraction",
@@ -39,7 +39,8 @@
       "over_macroSpace": 0.52,
       "over_filterEnvAmt": 0.53,
       "over_lfo1Rate": 0.06,
-      "over_lfo1Depth": 0.13
+      "over_lfo1Depth": 0.13,
+      "over_velBright": 0.369
     }
   },
   "coupling": {

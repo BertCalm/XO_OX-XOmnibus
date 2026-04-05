@@ -114,7 +114,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.562
     }
   },
   "coupling": {
@@ -127,5 +128,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB CARRIER": 0.45,
+    "BOB RING": 0.45,
+    "MODULATION": 0.45,
+    "CHARACTER": 0.575
+  }
 }

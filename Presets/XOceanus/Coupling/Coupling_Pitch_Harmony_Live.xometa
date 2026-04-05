@@ -68,7 +68,8 @@
       "bob_outputLevel": 0.68,
       "bob_reverbMix": 0.32,
       "bob_glide": 0.05,
-      "bob_transpose": 12
+      "bob_transpose": 12,
+      "bob_velFilter": 0.45
     }
   },
   "coupling": {
@@ -109,5 +110,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.45,
+    "SPACE": 0.62
+  }
 }

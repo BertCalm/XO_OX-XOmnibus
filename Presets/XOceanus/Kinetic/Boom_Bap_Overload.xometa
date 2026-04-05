@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Boom Bap Overload",
   "mood": "Kinetic",
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Berlyne curiosity pushed past 0.7 alien shift — all 5 city chains firing, maximum curiosity loading every transient model simultaneously. Psychology at peak density.",
-  "tags": ["kinetic", "dense", "offering", "boom-bap", "psychology", "overload"],
-  "macroLabels": ["CURIOSITY", "CITY", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "dense",
+    "offering",
+    "boom-bap",
+    "psychology",
+    "overload"
+  ],
+  "macroLabels": [
+    "CURIOSITY",
+    "CITY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,9 +58,18 @@
       "ofr_macroCharacter": 0.88,
       "ofr_macroMovement": 0.92,
       "ofr_macroCoupling": 0.45,
-      "ofr_macroSpace": 0.16
+      "ofr_macroSpace": 0.16,
+      "ofr_velToSnap": 0.85
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CURIOSITY": 0.5,
+    "CITY": 0.416,
+    "COUPLING": 0.2,
+    "SPACE": 0.15
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OUROBOROS chaotic pitch trace barely registers in OMBRE memory blend \u2014 the strange attractor leaving shadow impressions in dual-narrative space.",
+  "description": "OUROBOROS chaotic pitch trace barely registers in OMBRE memory blend — the strange attractor leaving shadow impressions in dual-narrative space.",
   "tags": [
     "coupling",
     "whisper",
@@ -53,7 +53,8 @@
       "ombre_macroCharacter": 0.42,
       "ombre_macroMovement": 0.4,
       "ombre_macroCoupling": 0.48,
-      "ombre_macroSpace": 0.52
+      "ombre_macroSpace": 0.52,
+      "ombre_velCutoffScale": 0.344
     }
   },
   "coupling": {

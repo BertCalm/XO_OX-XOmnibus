@@ -76,7 +76,8 @@
       "over_shimmerMix": 0.28,
       "over_masterVolume": 0.73,
       "over_stereoWidth": 0.72,
-      "over_convergent": 0.65
+      "over_convergent": 0.65,
+      "over_velBright": 0.383
     }
   },
   "schema_version": 1,
@@ -92,5 +93,11 @@
     "atmospheric"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "SPACE": 0.85,
+    "SPECTRAL": 0.55,
+    "COUPLING": 0.438,
+    "DECAY": 0.45
+  }
 }

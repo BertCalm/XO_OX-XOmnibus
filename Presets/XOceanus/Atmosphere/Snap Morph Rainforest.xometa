@@ -68,5 +68,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP DENSITY": 0.45,
+    "MORPH FOREST": 0.45,
+    "COUPLING": 0.3,
+    "FILTER": 0.45
+  }
 }

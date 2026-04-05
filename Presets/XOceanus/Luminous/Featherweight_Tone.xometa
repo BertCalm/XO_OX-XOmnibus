@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Featherweight Tone",
   "mood": "Luminous",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A tone so bright it barely has mass — unison supersaw thinned to a thread of pure shimmer, sustaining indefinitely at the upper edge of brightness.",
-  "tags": ["luminous", "supersaw", "unison", "bright", "ethereal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "supersaw",
+    "unison",
+    "bright",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -20,12 +33,12 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.60,
+      "sky_macroCharacter": 0.6,
       "sky_macroMovement": 0.36,
       "sky_macroCoupling": 0.12,
       "sky_macroSpace": 0.62,
       "sky_macroRise": 0.48,
-      "sky_filterEnvAmt": 0.50,
+      "sky_filterEnvAmt": 0.5,
       "sky_lfo1Rate": 0.05,
       "sky_lfo1Depth": 0.18,
       "sky_lfo2Rate": 0.02,
@@ -42,13 +55,16 @@
       "sky_unisonDetune": 0.08,
       "sky_chorusDepth": 0.25,
       "sky_reverbMix": 0.48,
-      "sky_output": 0
+      "sky_output": 0,
+      "sky_velSensitivity": 0.571
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.60,
+    "CHARACTER": 0.6,
     "MOVEMENT": 0.36,
     "COUPLING": 0.12,
     "SPACE": 0.62

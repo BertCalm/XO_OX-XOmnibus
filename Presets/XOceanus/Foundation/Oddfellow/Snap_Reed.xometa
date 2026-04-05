@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

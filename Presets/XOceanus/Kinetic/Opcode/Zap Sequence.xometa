@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Short feedback zap \u2014 ratio 3, algorithm 2, moderate feedback. Sounds like a laser or electrostatic discharge.",
+  "description": "Short feedback zap — ratio 3, algorithm 2, moderate feedback. Sounds like a laser or electrostatic discharge.",
   "tags": [
     "fm",
     "zap",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.12
+  }
 }

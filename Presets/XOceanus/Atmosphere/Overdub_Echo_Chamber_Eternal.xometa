@@ -87,5 +87,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SPRING SIZE": 0.45,
+    "DELAY TIME": 0.45,
+    "FILTER DARK": 0.45,
+    "SEND LEVEL": 0.45
+  }
 }

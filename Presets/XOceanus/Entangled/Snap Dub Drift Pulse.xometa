@@ -140,5 +140,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP TRIGGER": 0.45,
+    "DUB PULSE": 0.45,
+    "DRIFT TRAIL": 0.45,
+    "COUPLING": 0.51
+  }
 }

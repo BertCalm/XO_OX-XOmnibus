@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OFFERING boom bap curiosity barely permeates OVERTONE spectral ice \u2014 psychology-derived drum transients at the edge of harmonic convergence.",
+  "description": "OFFERING boom bap curiosity barely permeates OVERTONE spectral ice — psychology-derived drum transients at the edge of harmonic convergence.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "ofr_macroCharacter": 0.46,
       "ofr_macroMovement": 0.44,
       "ofr_macroCoupling": 0.5,
-      "ofr_macroSpace": 0.46
+      "ofr_macroSpace": 0.46,
+      "ofr_velToSnap": 0.516
     },
     "Overtone": {
       "over_cfDepth": 0.48,
@@ -52,7 +53,8 @@
       "over_macroCharacter": 0.44,
       "over_macroMovement": 0.4,
       "over_macroCoupling": 0.48,
-      "over_macroSpace": 0.5
+      "over_macroSpace": 0.5,
+      "over_velBright": 0.387
     }
   },
   "coupling": {

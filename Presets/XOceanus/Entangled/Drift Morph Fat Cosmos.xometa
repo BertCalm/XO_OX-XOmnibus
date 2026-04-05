@@ -140,5 +140,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT SHIMMER": 0.45,
+    "MORPH EVOLVE": 0.45,
+    "FAT EARTH": 0.45,
+    "COUPLING": 0.45
+  }
 }

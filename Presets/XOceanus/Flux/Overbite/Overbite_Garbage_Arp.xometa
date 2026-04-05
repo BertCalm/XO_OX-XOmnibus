@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Choppy arpeggiated synth with punchy envelope and filter sequence \u2014 digging through the bins.",
+  "description": "Choppy arpeggiated synth with punchy envelope and filter sequence — digging through the bins.",
   "dna": {
     "aggression": 0.6,
     "brightness": 0.6,
@@ -52,7 +52,8 @@
       "poss_macroTrash": 0.4,
       "poss_oscAWaveform": 2,
       "poss_oscBWaveform": 3,
-      "poss_oscMix": 0.5
+      "poss_oscMix": 0.5,
+      "poss_ampVelSens": 0.68
     }
   },
   "schema_version": 1,

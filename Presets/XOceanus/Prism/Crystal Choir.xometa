@@ -48,7 +48,8 @@
       "bob_oscB_blend": 0.6,
       "bob_oscB_detune": 8.0,
       "bob_oscB_fm": 0.48,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.547
     }
   },
   "schema_version": 1,
@@ -59,5 +60,11 @@
     "choir"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.406,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.513
+  }
 }

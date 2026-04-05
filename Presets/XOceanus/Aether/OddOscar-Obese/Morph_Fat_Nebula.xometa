@@ -93,5 +93,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH BLOOM": 0.45,
+    "FAT GRAVITY": 0.45,
+    "COUPLING": 0.33,
+    "VOID": 0.45
+  }
 }

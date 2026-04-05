@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Fault Line",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tectonic-scale phase erosion — two entangled resonators grinding against each other until the seam gives way.",
+  "tags": ["flux", "aggressive", "tectonic", "erosion", "grinding"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.32,
+    "movement": 0.68,
+    "density": 0.75,
+    "space": 0.38,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.60,
+      "oxb_decay": 1.2,
+      "oxb_entangle": 0.85,
+      "oxb_erosionRate": 0.92,
+      "oxb_erosionDepth": 0.78,
+      "oxb_convergence": 2,
+      "oxb_resonanceQ": 20,
+      "oxb_resonanceMix": 0.72,
+      "oxb_cantilever": 0.70,
+      "oxb_damping": 10000,
+      "oxb_predelay": 4,
+      "oxb_dryWet": 0.70,
+      "oxb_exciterDecay": 0.015,
+      "oxb_exciterBright": 0.72,
+      "oxb_macroCharacter": 0.70,
+      "oxb_macroMovement": 0.65,
+      "oxb_macroCoupling": 0.35,
+      "oxb_macroSpace": 0.38,
+      "oxb_filterEnvAmt": 0.72,
+      "oxb_lfo1Rate": 0.38,
+      "oxb_lfo1Depth": 0.55
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.85,
+    "EROSION": 0.92,
+    "CONVERGE": 0.70,
+    "CANTILEVER": 0.38
+  }
+}

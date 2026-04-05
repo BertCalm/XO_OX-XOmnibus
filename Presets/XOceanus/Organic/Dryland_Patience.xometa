@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Dryland Patience",
+  "mood": "Organic",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Desert seeds viable for 40 years in bone-dry soil \u2014 entire ecosystems waiting as compacted genetic information, the patience of biological systems measured in decades.",
+  "tags": [
+    "organic",
+    "drought",
+    "seeds",
+    "patience",
+    "dormant",
+    "waiting"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.15,
+      "oas_breeze": 0.22,
+      "oas_swarmDensity": 0.45,
+      "oas_lagoonDepth": 0.55,
+      "oas_subDrive": 0.08,
+      "oas_resonatorQ": 2.5,
+      "oas_cullDecay": 0.9998,
+      "oas_canopyFB": 0.55,
+      "oas_filterCutoff": 3200.0,
+      "oas_filterEnvAmt": 0.15,
+      "oas_pickupPos": 0.45,
+      "oas_bellAmount": 0.25,
+      "oas_warmth": 0.72,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.28,
+      "oas_macroMovement": 0.08,
+      "oas_macroCoupling": 0.08,
+      "oas_macroSpace": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.08,
+    "SPACE": 0.72
+  }
+}

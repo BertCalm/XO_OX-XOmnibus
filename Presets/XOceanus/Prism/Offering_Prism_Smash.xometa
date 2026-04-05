@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Prism Smash",
+  "mood": "Prism",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LA parallel compression at maximum ratio — spectral colors crushed into diamond shards. Curiosity-driven hypercompression.",
+  "tags": ["prism", "aggressive", "la", "compression", "hard"],
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.90,
+    "warmth": 0.20,
+    "movement": 0.72,
+    "density": 0.78,
+    "space": 0.25,
+    "aggression": 0.86
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_transientSnap": 0.96,
+      "ofr_transientPitch": 0.88,
+      "ofr_transientSat": 0.18,
+      "ofr_dustVinyl": 0.04,
+      "ofr_dustTape": 0.06,
+      "ofr_dustBits": 24,
+      "ofr_cityMode": 2,
+      "ofr_cityBlend": 0.90,
+      "ofr_cityIntensity": 0.95,
+      "ofr_digCuriosity": 0.85,
+      "ofr_digComplexity": 0.78,
+      "ofr_digFlow": 0.72,
+      "ofr_masterWidth": 0.55,
+      "ofr_masterLevel": 0.92,
+      "ofr_velToSnap": 0.96,
+      "ofr_velToBody": 0.62,
+      "ofr_v0_decay": 0.20,
+      "ofr_v0_body": 0.95,
+      "ofr_v1_decay": 0.15,
+      "ofr_v5_level": 0.92
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "DIG": 0.85,
+    "CITY": 0.90,
+    "FLIP": 0.18,
+    "DUST": 0.06
+  }
+}

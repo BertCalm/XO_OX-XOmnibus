@@ -108,5 +108,11 @@
     "unstable"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "PROWL": 0.45,
+    "FOLIAGE": 0.482,
+    "ECOSYSTEM": 0.478,
+    "CANOPY": 0.469
+  }
 }

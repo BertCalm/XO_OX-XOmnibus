@@ -90,5 +90,11 @@
     "oddfelix"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.481,
+    "COUPLING": 0.451,
+    "SPACE": 0.453
+  }
 }

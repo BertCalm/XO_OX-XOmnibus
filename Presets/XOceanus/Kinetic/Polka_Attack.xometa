@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Polka Attack",
+  "mood": "Kinetic",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Czech polka accordion at full speed \u2014 staccato bellows attack, maximum brightness, tight release. The instrument as velocity trigger, dance music stripped to mechanism.",
+  "tags": [
+    "kinetic",
+    "polka",
+    "accordion",
+    "staccato",
+    "Czech",
+    "dance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.45,
+    "movement": 0.88,
+    "density": 0.52,
+    "space": 0.18,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 1,
+      "oleg_buzz": 0.35,
+      "oleg_brightness": 10000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.92,
+      "oleg_detune": 15.0,
+      "oleg_formant": 0.5,
+      "oleg_attack": 0.003,
+      "oleg_release": 0.06,
+      "oleg_filterEnvAmt": 0.55,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.4,
+      "oleg_wheelSpeed": 0.0,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.62,
+      "oleg_macroMovement": 0.88,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.18,
+      "oleg_lfo1Rate": 0.2,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 8.0,
+      "oleg_lfo2Depth": 0.12,
+      "oleg_lfo2Shape": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.18
+  }
+}

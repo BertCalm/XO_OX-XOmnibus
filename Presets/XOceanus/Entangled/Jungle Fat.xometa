@@ -51,7 +51,8 @@
       "bob_filterCutoff": 2800.0,
       "bob_filterReso": 0.3,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.514
     },
     "Ocelot": {
       "ocelot_ampAttack": 0.04,
@@ -61,7 +62,8 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_floorVelocity": 0.771
     }
   },
   "schema_version": 1,
@@ -76,5 +78,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.505,
+    "MOVEMENT": 0.555,
+    "COUPLING": 0.51,
+    "SPACE": 0.5
+  }
 }

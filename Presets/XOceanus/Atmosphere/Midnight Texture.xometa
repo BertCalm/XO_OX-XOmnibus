@@ -57,5 +57,11 @@
     "saw"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.387,
+    "MOVEMENT": 0.495,
+    "COUPLING": 0.2,
+    "SPACE": 0.735
+  }
 }

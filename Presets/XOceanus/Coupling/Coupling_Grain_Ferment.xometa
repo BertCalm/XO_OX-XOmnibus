@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL granular scatter drives OBESE saturation mojo \u2014 grain position data feeding distortion character, scatter pattern determining the shape of heat.",
+  "description": "OPAL granular scatter drives OBESE saturation mojo — grain position data feeding distortion character, scatter pattern determining the shape of heat.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "opal_macroCharacter": 0.52,
       "opal_macroMovement": 0.52,
       "opal_macroCoupling": 0.62,
-      "opal_macroSpace": 0.48
+      "opal_macroSpace": 0.48,
+      "opal_ampVelSens": 0.38
     },
     "Obese": {
       "fat_macroMojo": 0.58,

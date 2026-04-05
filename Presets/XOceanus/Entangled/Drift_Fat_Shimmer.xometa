@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.225,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.55
+  }
 }

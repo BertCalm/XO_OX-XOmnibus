@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP GATE": 0.45,
+    "FAT PRISM": 0.45,
+    "COUPLING": 0.54,
+    "DENSITY": 0.85
+  }
 }

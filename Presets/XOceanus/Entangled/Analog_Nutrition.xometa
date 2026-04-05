@@ -55,7 +55,8 @@
       "bob_oscB_detune": 6.0,
       "bob_oscB_wave": 1,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.425
     },
     "Organon": {
       "organon_catalystDrive": 0.55,
@@ -80,5 +81,11 @@
     "nutrition"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BOB WARMTH": 0.45,
+    "ORGANISM": 0.45,
+    "COUPLING": 0.48,
+    "SPACE": 0.3
+  }
 }

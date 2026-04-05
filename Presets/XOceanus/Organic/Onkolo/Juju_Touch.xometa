@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Nigerian juju music clavinet influence \u2014 King Sunny Ade territory. Bright but warm, light syncopation implied, talking drum sibling.",
+  "description": "Nigerian juju music clavinet influence — King Sunny Ade territory. Bright but warm, light syncopation implied, talking drum sibling.",
   "tags": [
     "clavinet",
     "juju",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

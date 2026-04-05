@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Isaac Hayes / David Porter groove clavinet \u2014 driving wah, medium sustain, authoritative presence. Classic soul-funk session.",
+  "description": "Isaac Hayes / David Porter groove clavinet — driving wah, medium sustain, authoritative presence. Classic soul-funk session.",
   "tags": [
     "clavinet",
     "shaft",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.77,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
 }

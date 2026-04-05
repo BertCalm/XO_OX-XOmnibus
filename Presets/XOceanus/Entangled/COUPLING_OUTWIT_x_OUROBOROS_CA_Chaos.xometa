@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "CA Chaos",
   "mood": "Entangled",
-  "engines": ["Outwit", "Ouroboros"],
+  "engines": [
+    "Outwit",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cellular automaton step output feeding chaotic attractor as injection signal — the CA decides when the chaos spikes. Two pattern-generating systems in conflict.",
-  "tags": ["cellular-automata", "chaos", "entangled", "aggressive", "pattern"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "COUPLING", "SPACE"],
+  "tags": [
+    "cellular-automata",
+    "chaos",
+    "entangled",
+    "aggressive",
+    "pattern"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -138,5 +152,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SOLVE": 0.43,
+    "SYNAPSE": 0.564,
+    "COUPLING": 0.57,
+    "SPACE": 0.2
+  }
 }

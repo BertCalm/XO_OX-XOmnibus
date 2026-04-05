@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.888,
       "bob_macroCoupling": 0.75,
       "bob_macroMovement": 0.088,
-      "bob_macroSpace": 0.435
+      "bob_macroSpace": 0.435,
+      "bob_velFilter": 0.78
     },
     "Odyssey": {
       "drift_macroCharacter": 0.837,

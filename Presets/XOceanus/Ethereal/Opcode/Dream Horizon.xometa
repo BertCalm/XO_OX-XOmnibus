@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slow parallel FM pad \u2014 80ms attack, 5 second release, slow LFO. The horizon at the edge of sleep.",
+  "description": "Slow parallel FM pad — 80ms attack, 5 second release, slow LFO. The horizon at the edge of sleep.",
   "tags": [
     "fm",
     "dream",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.98
+  }
 }

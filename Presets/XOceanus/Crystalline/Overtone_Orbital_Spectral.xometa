@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overtone spectral ice and Orbital additive partials with locked filters \u2014 twin crystal engines in harmonic alignment.",
+  "description": "Overtone spectral ice and Orbital additive partials with locked filters — twin crystal engines in harmonic alignment.",
   "tags": [
     "crystalline",
     "coupled",
@@ -40,7 +40,8 @@
       "over_macroSpace": 0.51,
       "over_filterEnvAmt": 0.52,
       "over_lfo1Rate": 0.1,
-      "over_lfo1Depth": 0.22
+      "over_lfo1Depth": 0.22,
+      "over_velBright": 0.371
     },
     "Orbital": {
       "orb_macroCharacter": 0.6,

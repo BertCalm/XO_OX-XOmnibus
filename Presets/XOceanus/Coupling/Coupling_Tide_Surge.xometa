@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWASH tide foam depth heavily drives OCEANDEEP pressure surge \u2014 surface wave energy compressing into trench physics, tide becoming abyss.",
+  "description": "OVERWASH tide foam depth heavily drives OCEANDEEP pressure surge — surface wave energy compressing into trench physics, tide becoming abyss.",
   "tags": [
     "coupling",
     "heavy",
@@ -52,7 +52,8 @@
       "deep_macroCharacter": 0.6,
       "deep_macroMovement": 0.65,
       "deep_macroCoupling": 0.72,
-      "deep_macroSpace": 0.68
+      "deep_macroSpace": 0.68,
+      "deep_velCutoffAmt": 0.495
     }
   },
   "coupling": {

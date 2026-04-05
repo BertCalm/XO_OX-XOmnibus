@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High index FM at midnight dark filter \u2014 3000 Hz ceiling traps the harmonics inside. Dense, warm, claustrophobic.",
+  "description": "High index FM at midnight dark filter — 3000 Hz ceiling traps the harmonics inside. Dense, warm, claustrophobic.",
   "tags": [
     "fm",
     "dark",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.8
+  }
 }

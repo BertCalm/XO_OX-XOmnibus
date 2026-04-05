@@ -85,7 +85,8 @@
       "ocelot_macroCoupling": 0.583,
       "ocelot_macroSpace": 0.472,
       "ocelot_filterEnvDepth": 0.433,
-      "ocelot_lfoRate": 0.286
+      "ocelot_lfoRate": 0.286,
+      "ocelot_floorVelocity": 0.804
     },
     "Optic": {
       "optic_autoPulse": 0,

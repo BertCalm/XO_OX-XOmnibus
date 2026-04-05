@@ -99,5 +99,11 @@
     "ethereal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "DRIFT HAZE": 0.45,
+    "ROTATION": 0.45,
+    "COUPLING": 0.45,
+    "SPACE": 0.7
+  }
 }

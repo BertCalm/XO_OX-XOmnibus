@@ -122,5 +122,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB DEPTH": 0.45,
+    "DRIFT MIST": 0.45,
+    "COUPLING": 0.27,
+    "ECHO": 0.4
+  }
 }

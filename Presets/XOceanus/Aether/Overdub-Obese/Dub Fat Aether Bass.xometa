@@ -115,5 +115,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB REVERB": 0.45,
+    "FAT DRONE": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.9
+  }
 }

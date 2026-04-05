@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Process",
+  "mood": "Atmosphere",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chemosynthetic metabolism in total darkness — life processing sulfur below the photic zone. No light. Only pressure and biochemistry.",
+  "tags": ["atmosphere", "dark", "abyssal", "chemosynthesis", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.80,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.12,
+      "organon_dampingCoeff": 0.95,
+      "organon_enzymeSelect": 60.0,
+      "organon_isotopeBalance": 0.88,
+      "organon_lockIn": 0.88,
+      "organon_membrane": 0.18,
+      "organon_metabolicRate": 0.14,
+      "organon_noiseColor": 0.05,
+      "organon_phasonShift": 0.08,
+      "organon_signalFlux": 0.08,
+      "organon_macroCharacter": 0.18,
+      "organon_macroMovement": 0.14,
+      "organon_macroCoupling": 0.12,
+      "organon_macroSpace": 0.80,
+      "organon_filterEnvAmt": 0.10,
+      "organon_lfo1Rate": 0.015,
+      "organon_lfo1Depth": 0.10
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.12,
+    "SPACE": 0.80
+  }
+}

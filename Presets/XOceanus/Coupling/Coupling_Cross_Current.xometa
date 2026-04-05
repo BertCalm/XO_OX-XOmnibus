@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANIC chromatophore amplitude modulates OCEANDEEP hydrostatic pressure \u2014 surface color signals feeding depth compression, two ocean layers in dialogue.",
+  "description": "OCEANIC chromatophore amplitude modulates OCEANDEEP hydrostatic pressure — surface color signals feeding depth compression, two ocean layers in dialogue.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "deep_macroCharacter": 0.5,
       "deep_macroMovement": 0.5,
       "deep_macroCoupling": 0.6,
-      "deep_macroSpace": 0.6
+      "deep_macroSpace": 0.6,
+      "deep_velCutoffAmt": 0.45
     }
   },
   "coupling": {

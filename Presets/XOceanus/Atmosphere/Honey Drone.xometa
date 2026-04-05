@@ -47,7 +47,8 @@
       "bob_oscA_wave": 0.0,
       "bob_oscB_blend": 0.48,
       "bob_oscB_detune": -8.0,
-      "bob_oscB_wave": 0.0
+      "bob_oscB_wave": 0.0,
+      "bob_velFilter": 0.31
     }
   },
   "schema_version": 1,
@@ -58,5 +59,11 @@
     "drone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.239,
+    "MOVEMENT": 0.068,
+    "COUPLING": 0.2,
+    "SPACE": 0.154
+  }
 }

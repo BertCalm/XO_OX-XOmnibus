@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Supersaw Eruption",
   "mood": "Flux",
-  "engines": ["Opensky"],
+  "engines": [
+    "Opensky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "RISE macro fully engaged — supersaw unison at maximum detuning, shimmer reverb feeding back, chorus width at 100. The sky erupts with dense upward motion.",
-  "tags": ["flux", "dense", "opensky", "supersaw", "shimmer", "eruption"],
-  "macroLabels": ["RISE", "SHIMMER", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "dense",
+    "opensky",
+    "supersaw",
+    "shimmer",
+    "eruption"
+  ],
+  "macroLabels": [
+    "RISE",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,14 @@
       "sky_macroSpace": 0.65
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "RISE": 0.696,
+    "SHIMMER": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
+  }
 }

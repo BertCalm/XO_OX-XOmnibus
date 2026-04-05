@@ -62,7 +62,8 @@
       "bob_reverbMix": 0.351,
       "bob_scaleMode": 0.4,
       "bob_subOscLevel": 0.078,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.53
     }
   },
   "schema_version": 1,
@@ -74,5 +75,11 @@
     "oblique"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.692,
+    "COUPLING": 0.54,
+    "SPACE": 0.499
+  }
 }

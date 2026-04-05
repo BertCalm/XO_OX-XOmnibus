@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Textured bass with fur convolution adding organic warmth \u2014 like a bass run through coarse static.",
+  "description": "Textured bass with fur convolution adding organic warmth — like a bass run through coarse static.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.4,
@@ -51,7 +51,8 @@
       "poss_macroTrash": 0.15,
       "poss_oscAShape": 0.25,
       "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.37
     }
   },
   "schema_version": 1,

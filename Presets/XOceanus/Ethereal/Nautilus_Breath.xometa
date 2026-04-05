@@ -42,7 +42,8 @@
       "over_lfo1Rate": 0.015,
       "over_lfo1Depth": 0.12,
       "over_attack": 3.2,
-      "over_release": 9.5
+      "over_release": 9.5,
+      "over_velBright": 0.274
     }
   },
   "coupling": {

@@ -64,5 +64,11 @@
     "flux"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.498,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.636,
+    "SPACE": 0.908
+  }
 }

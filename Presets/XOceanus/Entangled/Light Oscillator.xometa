@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.59,
       "owl_resonantPitch": 0.658,
       "owl_shimmer": 0.189,
-      "owl_subLevel": 0.472
+      "owl_subLevel": 0.472,
+      "owl_velocity": 0.665
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "optic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.566,
+    "COUPLING": 0.616,
+    "SPACE": 0.561
+  }
 }

@@ -115,5 +115,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB FILTER": 0.45,
+    "FAT AMP": 0.45,
+    "COUPLING": 0.462,
+    "DEPTH": 0.75
+  }
 }

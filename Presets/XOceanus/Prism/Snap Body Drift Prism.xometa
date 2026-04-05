@@ -86,7 +86,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.644
     },
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -145,5 +146,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP CRYSTAL": 0.45,
+    "BOB SPECTRAL": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "COUPLING": 0.402
+  }
 }

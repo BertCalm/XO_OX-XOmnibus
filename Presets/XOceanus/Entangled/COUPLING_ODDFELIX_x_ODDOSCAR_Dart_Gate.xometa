@@ -102,5 +102,11 @@
     "transient"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "DART": 0.45,
+    "MORPH": 0.45,
+    "COUPLING": 0.582,
+    "SPACE": 0.35
+  }
 }

@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.422,
       "ombre_spaceMix": 0.789,
       "ombre_toneA": 2601.8,
-      "ombre_toneB": 2036.4
+      "ombre_toneB": 2036.4,
+      "ombre_velCutoffScale": 0.399
     },
     "Osprey": {
       "osprey_filterTilt": 0.722
@@ -80,5 +81,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.459,
+    "MOVEMENT": 0.451,
+    "COUPLING": 0.48,
+    "SPACE": 0.606
+  }
 }

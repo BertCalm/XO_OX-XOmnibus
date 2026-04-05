@@ -56,11 +56,18 @@
       "org_macroCharacter": 0.85,
       "org_macroMovement": 0.95,
       "org_macroCoupling": 0.45,
-      "org_macroSpace": 0.22
+      "org_macroSpace": 0.22,
+      "org_velCutoff": 0.77
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "GROWTH": 0.45,
+    "RULE": 0.415,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
 }

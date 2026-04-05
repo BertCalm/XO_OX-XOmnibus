@@ -43,7 +43,8 @@
       "ofr_v2_decay": 0.06,
       "ofr_v3_level": 0.85,
       "ofr_v3_pan": -0.4,
-      "ofr_v7_level": 0.75
+      "ofr_v7_level": 0.75,
+      "ofr_velToSnap": 0.78
     }
   },
   "engines": [

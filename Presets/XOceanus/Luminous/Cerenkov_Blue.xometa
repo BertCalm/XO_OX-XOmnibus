@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Cerenkov Blue",
+  "mood": "Luminous",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cherenkov radiation — the electric-blue glow of a nuclear reactor pool, produced when charged particles exceed the local speed of light in water.",
+  "tags": [
+    "luminous",
+    "cherenkov",
+    "nuclear",
+    "blue",
+    "radiation",
+    "reactor"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.18,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.82,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroPressure": 0.35,
+      "deep_hydrostaticDepth": 0.28,
+      "deep_bioluminescence": 0.85,
+      "deep_filterCutoff": 10000.0,
+      "deep_filterRes": 0.18,
+      "deep_attack": 0.15,
+      "deep_decay": 1.5,
+      "deep_sustain": 0.65,
+      "deep_release": 4.0,
+      "deep_lfo1Rate": 0.22,
+      "deep_lfo1Depth": 0.32,
+      "deep_macroCharacter": 0.48,
+      "deep_macroMovement": 0.42,
+      "deep_macroCoupling": 0.18,
+      "deep_macroSpace": 0.82,
+      "deep_velCutoffAmt": 0.438
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.18,
+    "SPACE": 0.82
+  }
+}

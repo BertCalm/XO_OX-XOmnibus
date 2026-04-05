@@ -79,5 +79,11 @@
       "osti_polyphony": 8,
       "osti_pitchBendRange": 2.0
     }
+  },
+  "macros": {
+    "GATHER": 0.45,
+    "SWING": 0.45,
+    "BODY": 0.5,
+    "SPACE": 0.35
   }
 }

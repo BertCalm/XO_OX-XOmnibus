@@ -59,5 +59,11 @@
     "downward"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "DART": 0.45,
+    "SCHOOL": 0.45,
+    "SURFACE": 0.536,
+    "DEPTH": 0.45
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Warm parallel FM with sustained pipe-like quality \u2014 slow attack, full sustain. Amber-lit church.",
+  "description": "Warm parallel FM with sustained pipe-like quality — slow attack, full sustain. Amber-lit church.",
   "tags": [
     "fm",
     "organ",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.23,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
+  }
 }

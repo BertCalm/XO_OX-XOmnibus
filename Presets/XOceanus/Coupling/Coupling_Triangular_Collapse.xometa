@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine extreme triangular coupling: OUROBOROS chaos amplitude feeds OCTOPUS chromatophores which triggers OCEANDEEP pressure which feeds back to OUROBOROS leash \u2014 three marine intelligences in a closed loop collapse.",
+  "description": "Three-engine extreme triangular coupling: OUROBOROS chaos amplitude feeds OCTOPUS chromatophores which triggers OCEANDEEP pressure which feeds back to OUROBOROS leash — three marine intelligences in a closed loop collapse.",
   "tags": [
     "coupling",
     "extreme",
@@ -65,7 +65,8 @@
       "deep_macroCharacter": 0.72,
       "deep_macroMovement": 0.82,
       "deep_macroCoupling": 0.88,
-      "deep_macroSpace": 0.72
+      "deep_macroSpace": 0.72,
+      "deep_velCutoffAmt": 0.605
     }
   },
   "coupling": {

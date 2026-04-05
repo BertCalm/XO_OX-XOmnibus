@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORBWEAVE kelp knot topology barely modulates OCEANDEEP trench pressure \u2014 underwater geometry whispering to abyssal depth.",
+  "description": "ORBWEAVE kelp knot topology barely modulates OCEANDEEP trench pressure — underwater geometry whispering to abyssal depth.",
   "tags": [
     "coupling",
     "whisper",
@@ -52,7 +52,8 @@
       "deep_macroCharacter": 0.4,
       "deep_macroMovement": 0.38,
       "deep_macroCoupling": 0.48,
-      "deep_macroSpace": 0.62
+      "deep_macroSpace": 0.62,
+      "deep_velCutoffAmt": 0.42
     }
   },
   "coupling": {

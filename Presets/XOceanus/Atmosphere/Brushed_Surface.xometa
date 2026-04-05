@@ -46,5 +46,11 @@
       "snap_level": 0.55,
       "snap_detune": 0.05
     }
+  },
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
   }
 }

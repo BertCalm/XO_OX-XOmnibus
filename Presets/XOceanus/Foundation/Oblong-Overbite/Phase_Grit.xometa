@@ -51,9 +51,12 @@
       "bob_macroCharacter": 0.102,
       "bob_macroCoupling": 0.957,
       "bob_macroMovement": 0.946,
-      "bob_macroSpace": 0.579
+      "bob_macroSpace": 0.579,
+      "bob_velFilter": 0.49
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_ampVelSens": 0.49
+    }
   },
   "schema_version": 1,
   "sequencer": null,

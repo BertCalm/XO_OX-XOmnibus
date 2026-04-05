@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The stock Clavinet D6 with no augmentation \u2014 middle pickup position, moderate wah, factory voice. The benchmark.",
+  "description": "The stock Clavinet D6 with no augmentation — middle pickup position, moderate wah, factory voice. The benchmark.",
   "tags": [
     "clavinet",
     "reference",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.585,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.124,
       "bob_macroCoupling": 0.7,
       "bob_macroMovement": 0.689,
-      "bob_macroSpace": 0.943
+      "bob_macroSpace": 0.943,
+      "bob_velFilter": 0.349
     },
     "OddfeliX": {
       "snap_macroCharacter": 0.308,

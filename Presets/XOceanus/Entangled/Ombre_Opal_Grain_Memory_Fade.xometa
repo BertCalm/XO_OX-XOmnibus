@@ -62,11 +62,13 @@
       "ombre_shadowAmount": 0.641,
       "ombre_spaceMix": 0.511,
       "ombre_toneA": 3999.5,
-      "ombre_toneB": 960.2
+      "ombre_toneB": 960.2,
+      "ombre_velCutoffScale": 0.343
     },
     "Opal": {
       "opal_filterCutoff": 7542.2,
-      "opal_level": 0.793
+      "opal_level": 0.793,
+      "opal_ampVelSens": 0.343
     }
   },
   "schema_version": 1,
@@ -81,5 +83,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.284,
+    "MOVEMENT": 0.584,
+    "COUPLING": 0.51,
+    "SPACE": 0.798
+  }
 }

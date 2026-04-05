@@ -97,11 +97,18 @@
       "sky_modSlot1Amt": 0.35,
       "sky_modSlot2Src": 1,
       "sky_modSlot2Dst": 3,
-      "sky_modSlot2Amt": 0.12
+      "sky_modSlot2Amt": 0.12,
+      "sky_velSensitivity": 0.42
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "RISE": 0.984,
+    "WIDTH": 0.984,
+    "GLOW": 0.984,
+    "AIR": 0.984
+  }
 }

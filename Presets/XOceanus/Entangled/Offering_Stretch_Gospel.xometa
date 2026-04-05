@@ -42,7 +42,8 @@
       "ofr_masterWidth": 0.8,
       "ofr_v0_body": 0.8,
       "ofr_v0_tune": -1.5,
-      "ofr_v6_level": 0.85
+      "ofr_v6_level": 0.85,
+      "ofr_velToSnap": 0.6
     }
   },
   "engines": [

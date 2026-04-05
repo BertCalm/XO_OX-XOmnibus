@@ -62,7 +62,8 @@
     },
     "Ocelot": {
       "ocelot_filterCutoff": 6746.7,
-      "ocelot_level": 0.675
+      "ocelot_level": 0.675,
+      "ocelot_floorVelocity": 0.85
     }
   },
   "schema_version": 1,
@@ -74,5 +75,11 @@
     "ocelot"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.693,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.54,
+    "SPACE": 0.337
+  }
 }

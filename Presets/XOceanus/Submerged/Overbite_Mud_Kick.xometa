@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sub-kick character bass with tight transient and heavy mud weight \u2014 stepping through bog territory.",
+  "description": "Sub-kick character bass with tight transient and heavy mud weight — stepping through bog territory.",
   "dna": {
     "aggression": 0.6,
     "brightness": 0.35,
@@ -53,7 +53,8 @@
       "poss_subLevel": 0.75,
       "poss_subOctave": -1,
       "poss_weightLevel": 0.75,
-      "poss_weightShape": 1
+      "poss_weightShape": 1,
+      "poss_ampVelSens": 0.42
     }
   },
   "schema_version": 1,

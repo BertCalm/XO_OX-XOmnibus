@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Ghostly echo-trail bass where the reverb tail is the instrument \u2014 presence through absence.",
+  "description": "Ghostly echo-trail bass where the reverb tail is the instrument — presence through absence.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.3,
@@ -53,7 +53,8 @@
       "poss_macroScurry": 0.3,
       "poss_macroTrash": 0.0,
       "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.25
+      "poss_subLevel": 0.25,
+      "poss_ampVelSens": 0.31
     }
   },
   "schema_version": 1,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO world rhythm heavily activates OWARE mallet articulation \u2014 ethnomusicological pattern forcing physical mallet behavior, ritual informing physics.",
+  "description": "OSTINATO world rhythm heavily activates OWARE mallet articulation — ethnomusicological pattern forcing physical mallet behavior, ritual informing physics.",
   "tags": [
     "coupling",
     "heavy",
@@ -52,7 +52,8 @@
       "owr_macroCharacter": 0.62,
       "owr_macroMovement": 0.68,
       "owr_macroCoupling": 0.72,
-      "owr_macroSpace": 0.48
+      "owr_macroSpace": 0.48,
+      "owr_malletVelocity": 0.742
     }
   },
   "coupling": {

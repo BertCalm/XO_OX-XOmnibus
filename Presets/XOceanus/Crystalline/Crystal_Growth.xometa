@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Cellular automata simulating crystal growth \u2014 each generation adds a new mineral layer to the lattice.",
+  "description": "Cellular automata simulating crystal growth — each generation adds a new mineral layer to the lattice.",
   "tags": [
     "crystalline",
     "growth",
@@ -39,7 +39,8 @@
       "org_macroSpace": 0.63,
       "org_filterEnvAmt": 0.43,
       "org_lfo1Rate": 0.12,
-      "org_lfo1Depth": 0.2
+      "org_lfo1Depth": 0.2,
+      "org_velCutoff": 0.423
     }
   },
   "coupling": {

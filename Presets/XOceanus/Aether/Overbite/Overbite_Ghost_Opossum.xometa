@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Nearly inaudible sub whisper \u2014 a ghost of a bass note passing through the hall reverb.",
+  "description": "Nearly inaudible sub whisper — a ghost of a bass note passing through the hall reverb.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.2,
@@ -51,7 +51,8 @@
       "poss_macroTrash": 0.0,
       "poss_oscAWaveform": 0,
       "poss_subLevel": 0.5,
-      "poss_subOctave": -1
+      "poss_subOctave": -1,
+      "poss_ampVelSens": 0.31
     }
   },
   "schema_version": 1,

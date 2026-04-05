@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Textbook series FM \u2014 modulator perfectly tuned to carrier, ratio 2:1, index sweeps harmonics with velocity. The ur-FM preset.",
+  "description": "Textbook series FM — modulator perfectly tuned to carrier, ratio 2:1, index sweeps harmonics with velocity. The ur-FM preset.",
   "tags": [
     "fm",
     "textbook",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.335,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.4
+  }
 }

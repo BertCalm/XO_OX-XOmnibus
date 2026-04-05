@@ -88,7 +88,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.308
     }
   },
   "coupling": {
@@ -101,5 +102,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH GHOST": 0.45,
+    "BOB DUST": 0.45,
+    "COUPLING": 0.27,
+    "SPACE": 0.85
+  }
 }

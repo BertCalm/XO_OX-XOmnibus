@@ -42,7 +42,8 @@
       "opal_lfo1Rate": 0.045,
       "opal_lfo1Depth": 0.15,
       "opal_attack": 2.0,
-      "opal_release": 7.5
+      "opal_release": 7.5,
+      "opal_ampVelSens": 0.242
     }
   },
   "coupling": {

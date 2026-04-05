@@ -64,7 +64,8 @@
       "orca_pitchRand": 0.249,
       "orca_podSync": 0.214,
       "orca_wavetablePos": 0.271,
-      "orca_wavetableScan": 0.339
+      "orca_wavetableScan": 0.339,
+      "orca_velCutoffAmt": 0.574
     }
   },
   "schema_version": 1,
@@ -77,5 +78,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "PUNCH": 0.53,
+    "SPACE": 0.477,
+    "MUTATE": 0.271
+  }
 }

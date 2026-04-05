@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Okeanos Tide Wall",
   "mood": "Flux",
-  "engines": ["Okeanos"],
+  "engines": [
+    "Okeanos"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Okeanos warmth axis at maximum sweep — tidal transformation from dense gold to dense gold, all harmonic bands active in constant flux. The ocean never empties.",
-  "tags": ["flux", "dense", "okeanos", "tide", "sweep", "wall"],
-  "macroLabels": ["WARMTH", "TIDE", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "dense",
+    "okeanos",
+    "tide",
+    "sweep",
+    "wall"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "TIDE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +59,14 @@
       "okan_macroSpace": 0.52
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "WARMTH": 0.88,
+    "TIDE": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
 }

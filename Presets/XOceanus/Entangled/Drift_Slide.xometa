@@ -116,7 +116,8 @@
       "bob_level": 0.5,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.463
     }
   },
   "coupling": {
@@ -129,5 +130,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT TONE": 0.45,
+    "SLIDE DEPTH": 0.45,
+    "COUPLING": 0.33,
+    "BOB PAD": 0.45
+  }
 }

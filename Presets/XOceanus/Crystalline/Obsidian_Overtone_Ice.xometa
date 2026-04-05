@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obsidian crystal white drives Overtone spectral ice \u2014 filter resonances locked together for maximum crystalline clarity.",
+  "description": "Obsidian crystal white drives Overtone spectral ice — filter resonances locked together for maximum crystalline clarity.",
   "tags": [
     "crystalline",
     "coupled",
@@ -49,7 +49,8 @@
       "over_macroSpace": 0.51,
       "over_filterEnvAmt": 0.47,
       "over_lfo1Rate": 0.14,
-      "over_lfo1Depth": 0.13
+      "over_lfo1Depth": 0.13,
+      "over_velBright": 0.371
     }
   },
   "coupling": {

@@ -59,7 +59,8 @@
       "ocelot_macroCoupling": 0.756,
       "ocelot_macroSpace": 0.561,
       "ocelot_filterEnvDepth": 0.583,
-      "ocelot_lfoRate": 0.149
+      "ocelot_lfoRate": 0.149,
+      "ocelot_floorVelocity": 0.788
     },
     "Osprey": {
       "osprey_ampAttack": 0.03,

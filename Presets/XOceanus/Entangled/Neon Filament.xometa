@@ -67,7 +67,8 @@
       "owl_resonantFeedback": 0.364,
       "owl_resonantPitch": 0.566,
       "owl_shimmer": 0.278,
-      "owl_subLevel": 0.303
+      "owl_subLevel": 0.303,
+      "owl_velocity": 0.652
     }
   },
   "schema_version": 1,
@@ -79,5 +80,11 @@
     "oddfelix"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.507,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.657,
+    "SPACE": 0.476
+  }
 }

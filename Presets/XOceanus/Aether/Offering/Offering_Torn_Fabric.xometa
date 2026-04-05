@@ -46,7 +46,8 @@
       "ofr_masterWidth": 0.8,
       "ofr_v0_tune": -4.0,
       "ofr_v6_tune": 8.0,
-      "ofr_v7_tune": -12.0
+      "ofr_v7_tune": -12.0,
+      "ofr_velToSnap": 0.516
     }
   },
   "engines": [

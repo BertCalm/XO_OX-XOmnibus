@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.704,
       "bob_macroCoupling": 0.784,
       "bob_macroMovement": 0.913,
-      "bob_macroSpace": 0.391
+      "bob_macroSpace": 0.391,
+      "bob_velFilter": 0.779
     },
     "Optic": {
       "optic_macroCharacter": 0.607,

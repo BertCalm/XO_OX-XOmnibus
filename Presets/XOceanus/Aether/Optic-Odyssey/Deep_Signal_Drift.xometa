@@ -90,5 +90,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PULSE RATE": 0.45,
+    "REVERB SIZE": 0.45,
+    "FILTER": 0.45,
+    "BLOOM": 0.393
+  }
 }

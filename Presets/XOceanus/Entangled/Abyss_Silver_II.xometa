@@ -53,9 +53,12 @@
       "ocelot_macroCharacter": 0.5644,
       "ocelot_macroCoupling": 0.9001,
       "ocelot_macroMovement": 0.6881,
-      "ocelot_macroSpace": 0.9496
+      "ocelot_macroSpace": 0.9496,
+      "ocelot_floorVelocity": 0.85
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_ampVelSens": 0.63
+    }
   },
   "schema_version": 1,
   "tags": [

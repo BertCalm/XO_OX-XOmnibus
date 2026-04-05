@@ -2,18 +2,31 @@
   "schema_version": 1,
   "name": "Lithic Resonance",
   "mood": "Deep",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-Q resonator pushed into near-self-oscillation over a heavy sub — the resonator sings the pitch while the sub layer anchors beneath. Entropy sensitivity is moderate so the canopy shimmer mutates with rhythmic variation.",
-  "tags": ["bass", "resonator", "drone", "deep", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "resonator",
+    "drone",
+    "deep",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.22,
     "warmth": 0.78,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.68,
     "space": 0.48,
     "aggression": 0.28
@@ -21,27 +34,35 @@
   "parameters": {
     "Oasis": {
       "oas_entropySens": 0.55,
-      "oas_breeze": 0.20,
+      "oas_breeze": 0.2,
       "oas_swarmDensity": 0.42,
       "oas_lagoonDepth": 0.48,
       "oas_subDrive": 0.75,
       "oas_resonatorQ": 14.0,
-      "oas_cullDecay": 0.9970,
+      "oas_cullDecay": 0.997,
       "oas_canopyFB": 0.38,
       "oas_filterCutoff": 700.0,
       "oas_filterEnvAmt": 0.52,
-      "oas_pickupPos": 0.20,
+      "oas_pickupPos": 0.2,
       "oas_bellAmount": 0.18,
       "oas_warmth": 0.72,
       "oas_tremoloDepth": 0.0,
       "oas_tremoloRate": 5.0,
       "oas_glideTime": 0.0,
       "oas_macroCharacter": 0.55,
-      "oas_macroMovement": 0.30,
+      "oas_macroMovement": 0.3,
       "oas_macroCoupling": 0.38,
       "oas_macroSpace": 0.48
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
 }

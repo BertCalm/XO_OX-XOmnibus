@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Maximum release, minimum attack. The pad that takes 10 seconds to fully arrive and another 10 to leave \u2014 temporal sculpture.",
+  "description": "Maximum release, minimum attack. The pad that takes 10 seconds to fully arrive and another 10 to leave — temporal sculpture.",
   "tags": [
     "infinite",
     "slow",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.205,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.2,
+    "SPACE": 0.96
   }
 }

@@ -43,13 +43,15 @@
       "bob_macroCharacter": 0.9053,
       "bob_macroCoupling": 0.0923,
       "bob_macroMovement": 0.8461,
-      "bob_macroSpace": 0.4236
+      "bob_macroSpace": 0.4236,
+      "bob_velFilter": 0.582
     },
     "Owlfish": {
       "owl_macroCharacter": 0.2036,
       "owl_macroCoupling": 0.264,
       "owl_macroMovement": 0.6342,
-      "owl_macroSpace": 0.4885
+      "owl_macroSpace": 0.4885,
+      "owl_velocity": 0.756
     }
   },
   "schema_version": 1,

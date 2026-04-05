@@ -69,7 +69,8 @@
       "orca_macroCharacter": 0.759,
       "orca_macroCoupling": 0.5904,
       "orca_macroMovement": 0.3149,
-      "orca_macroSpace": 0.9074
+      "orca_macroSpace": 0.9074,
+      "orca_velCutoffAmt": 0.407
     }
   },
   "schema_version": 1,

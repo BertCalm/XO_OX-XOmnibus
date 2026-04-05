@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Transparent Pluck",
   "mood": "Ethereal",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Siren seafoam pluck with no body — just the attack transient and an impossibly long transparent decay. Sound made of air.",
-  "tags": ["ethereal", "transparent", "pluck", "orphica", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ethereal",
+    "transparent",
+    "pluck",
+    "orphica",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -41,9 +54,18 @@
       "orph_macroCharacter": 0.18,
       "orph_macroMovement": 0.1,
       "orph_macroCoupling": 0.05,
-      "orph_macroSpace": 0.78
+      "orph_macroSpace": 0.78,
+      "orph_velocitySensitivity": 0.459
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.2,
+    "SPACE": 0.82
+  }
 }

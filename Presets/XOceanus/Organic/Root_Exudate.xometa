@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Root Exudate",
+  "mood": "Organic",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chemical compounds released by plant roots into rhizosphere soil \u2014 an underground molecular signaling vocabulary that no two plants speak identically.",
+  "tags": [
+    "organic",
+    "root",
+    "rhizosphere",
+    "exudate",
+    "chemical",
+    "signal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroMeddling": 0.35,
+      "ohm_filterCutoff": 2500.0,
+      "ohm_filterRes": 0.18,
+      "ohm_attack": 2.0,
+      "ohm_decay": 4.0,
+      "ohm_sustain": 0.88,
+      "ohm_release": 7.5,
+      "ohm_lfo1Rate": 0.03,
+      "ohm_lfo1Depth": 0.12,
+      "ohm_macroCharacter": 0.35,
+      "ohm_macroMovement": 0.18,
+      "ohm_macroCoupling": 0.1,
+      "ohm_macroSpace": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.1,
+    "SPACE": 0.42
+  }
+}

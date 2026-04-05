@@ -55,7 +55,8 @@
       "bob_macroCharacter": 0.5477,
       "bob_macroCoupling": 0.8069,
       "bob_macroMovement": 0.0001,
-      "bob_macroSpace": 0.9719
+      "bob_macroSpace": 0.9719,
+      "bob_velFilter": 0.556
     },
     "Ohm": {
       "amp_attack": 0.4655,

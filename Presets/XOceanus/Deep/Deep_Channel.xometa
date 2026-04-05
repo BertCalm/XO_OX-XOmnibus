@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Deep Channel",
+  "mood": "Deep",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Antarctic Bottom Water outflow \u2014 the densest ocean water on Earth, forming near Antarctica and filling the deepest trenches at -1.8 degrees Celsius.",
+  "tags": [
+    "deep",
+    "outflow",
+    "Antarctic",
+    "dense",
+    "abyssal",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.22,
+    "movement": 0.38,
+    "density": 0.88,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.35,
+      "out_macroMovement": 0.38,
+      "out_macroCoupling": 0.15,
+      "out_macroSpace": 0.65,
+      "out_currentSpeed": 0.38,
+      "out_stormDepth": 0.88,
+      "out_filterEnvAmt": 0.28,
+      "out_lfo1Rate": 0.06,
+      "out_lfo1Depth": 0.18,
+      "out_filterCutoff": 0.22,
+      "out_filterRes": 0.28,
+      "out_attackTime": 0.5,
+      "out_decayTime": 1.5,
+      "out_sustain": 0.75,
+      "out_releaseTime": 4.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.15,
+    "SPACE": 0.65
+  }
+}

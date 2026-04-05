@@ -62,7 +62,8 @@
       "bob_lfoRate": 0.07,
       "bob_lfoDepth": 0.18,
       "bob_outputLevel": 0.7,
-      "bob_reverbMix": 0.22
+      "bob_reverbMix": 0.22,
+      "bob_velFilter": 0.425
     }
   },
   "coupling": {
@@ -87,5 +88,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.204,
+    "SPACE": 0.58
+  }
 }

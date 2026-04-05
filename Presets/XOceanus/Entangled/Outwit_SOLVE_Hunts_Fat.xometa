@@ -72,5 +72,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.615,
+    "CHAOS": 0.296,
+    "COUPLING": 0.54,
+    "SPACE": 0.52
+  }
 }

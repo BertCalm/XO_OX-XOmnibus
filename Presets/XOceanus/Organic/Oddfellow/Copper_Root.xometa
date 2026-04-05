@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The Wurlitzer rooted in its acoustic origins \u2014 natural reed, organic warmth, nothing added.",
+  "description": "The Wurlitzer rooted in its acoustic origins — natural reed, organic warmth, nothing added.",
   "tags": [
     "wurlitzer",
     "root",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
 }

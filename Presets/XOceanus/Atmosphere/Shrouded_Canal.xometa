@@ -50,5 +50,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.115,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.2,
+    "SPACE": 0.88
+  }
 }

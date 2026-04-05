@@ -53,5 +53,11 @@
     "movement"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "ANGLE": 0.4,
+    "PHASE": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

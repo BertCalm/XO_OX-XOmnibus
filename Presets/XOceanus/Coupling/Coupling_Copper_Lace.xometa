@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OTTONI patina envelope drives ORPHICA body resonance \u2014 brass harmonic bloom shaping string resonance, metal warmth teaching string tone.",
+  "description": "OTTONI patina envelope drives ORPHICA body resonance — brass harmonic bloom shaping string resonance, metal warmth teaching string tone.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "orph_macroCharacter": 0.5,
       "orph_macroMovement": 0.5,
       "orph_macroCoupling": 0.6,
-      "orph_macroSpace": 0.5
+      "orph_macroSpace": 0.5,
+      "orph_velocitySensitivity": 0.66
     }
   },
   "coupling": {

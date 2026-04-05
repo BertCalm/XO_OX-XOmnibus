@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The moment of mallet contact with mineral \u2014 the physical model expressing crystalline material properties.",
+  "description": "The moment of mallet contact with mineral — the physical model expressing crystalline material properties.",
   "tags": [
     "crystalline",
     "mineral",
@@ -39,7 +39,8 @@
       "owr_macroSpace": 0.6,
       "owr_filterEnvAmt": 0.58,
       "owr_lfo1Rate": 0.11,
-      "owr_lfo1Depth": 0.22
+      "owr_lfo1Depth": 0.22,
+      "owr_malletVelocity": 0.63
     }
   },
   "coupling": {

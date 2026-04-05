@@ -64,7 +64,8 @@
       "orca_pitchRand": 0.064,
       "orca_podSync": 0.567,
       "orca_wavetablePos": 0.459,
-      "orca_wavetableScan": 0.674
+      "orca_wavetableScan": 0.674,
+      "orca_velCutoffAmt": 0.572
     }
   },
   "schema_version": 1,
@@ -76,5 +77,11 @@
     "oddfelix"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.576,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.432,
+    "SPACE": 0.633
+  }
 }

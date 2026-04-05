@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO world rhythm live override feeds ORGANISM emergence timing \u2014 human rhythm overriding machine timing, which teaches new cellular rules.",
+  "description": "OSTINATO world rhythm live override feeds ORGANISM emergence timing — human rhythm overriding machine timing, which teaches new cellular rules.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "org_macroCharacter": 0.52,
       "org_macroMovement": 0.58,
       "org_macroCoupling": 0.62,
-      "org_macroSpace": 0.46
+      "org_macroSpace": 0.46,
+      "org_velCutoff": 0.465
     }
   },
   "coupling": {

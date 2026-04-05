@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pure low-frequency mass. Near-subsonic modal resonators with high density and body resonance. Not a melody instrument \u2014 a tectonic event.",
+  "description": "Pure low-frequency mass. Near-subsonic modal resonators with high density and body resonance. Not a melody instrument — a tectonic event.",
   "tags": [
     "bass",
     "deep",
@@ -64,5 +64,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.3
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANDEEP bioluminescent exciter barely salts OBLONG filter resonance \u2014 trench glow leaving mineral traces on warm amber filter surfaces.",
+  "description": "OCEANDEEP bioluminescent exciter barely salts OBLONG filter resonance — trench glow leaving mineral traces on warm amber filter surfaces.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "deep_macroCharacter": 0.44,
       "deep_macroMovement": 0.38,
       "deep_macroCoupling": 0.5,
-      "deep_macroSpace": 0.56
+      "deep_macroSpace": 0.56,
+      "deep_velCutoffAmt": 0.42
     },
     "Oblong": {
       "bob_fltCutoff": 0.5,
@@ -53,7 +54,8 @@
       "bob_macroCharacter": 0.42,
       "bob_macroMovement": 0.38,
       "bob_macroCoupling": 0.48,
-      "bob_macroSpace": 0.5
+      "bob_macroSpace": 0.5,
+      "bob_velFilter": 0.42
     }
   },
   "coupling": {

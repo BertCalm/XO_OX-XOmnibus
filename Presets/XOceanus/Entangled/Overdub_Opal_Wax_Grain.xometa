@@ -98,7 +98,8 @@
       "opal_sustain": 0.6,
       "opal_release": 3.5,
       "opal_reverbMix": 0.42,
-      "opal_level": 0.62
+      "opal_level": 0.62,
+      "opal_ampVelSens": 0.344
     }
   },
   "coupling": {
@@ -111,5 +112,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TAPE AGE": 0.45,
+    "GRAIN CLOUD": 0.45,
+    "FILTER DUO": 0.45,
+    "REVERB DEPTH": 0.45
+  }
 }

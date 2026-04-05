@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Lo-fi bitcrushed bass with vowel-like filter sweep \u2014 low resolution and high personality.",
+  "description": "Lo-fi bitcrushed bass with vowel-like filter sweep — low resolution and high personality.",
   "dna": {
     "aggression": 0.7,
     "brightness": 0.5,
@@ -51,7 +51,8 @@
       "poss_oscAWaveform": 2,
       "poss_subLevel": 0.45,
       "poss_trashAmount": 0.6,
-      "poss_trashMode": 2
+      "poss_trashMode": 2,
+      "poss_ampVelSens": 0.71
     }
   },
   "schema_version": 1,

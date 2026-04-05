@@ -59,5 +59,11 @@
     "Seasonal"
   ],
   "version": "1.0",
-  "schema_version": 1
+  "schema_version": 1,
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
 }

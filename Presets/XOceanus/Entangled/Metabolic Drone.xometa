@@ -68,7 +68,8 @@
       "owl_resonantFeedback": 0.512,
       "owl_resonantPitch": 0.336,
       "owl_shimmer": 0.2,
-      "owl_subLevel": 0.223
+      "owl_subLevel": 0.223,
+      "owl_velocity": 0.672
     }
   },
   "schema_version": 1,
@@ -80,5 +81,11 @@
     "organon"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.458,
+    "COUPLING": 0.53,
+    "SPACE": 0.412
+  }
 }

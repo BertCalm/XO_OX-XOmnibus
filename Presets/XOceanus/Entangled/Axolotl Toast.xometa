@@ -91,5 +91,11 @@
     "oddoscar"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.367,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.601,
+    "SPACE": 0.527
+  }
 }

@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.487,
       "bob_macroCoupling": 0.174,
       "bob_macroMovement": 0.02,
-      "bob_macroSpace": 0.139
+      "bob_macroSpace": 0.139,
+      "bob_velFilter": 0.417
     },
     "Osprey": {
       "osprey_macroCharacter": 0.506,

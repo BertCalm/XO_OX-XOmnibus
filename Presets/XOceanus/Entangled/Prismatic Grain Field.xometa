@@ -75,7 +75,8 @@
       "opal_macroSpace": 0.36,
       "opal_filterEnvAmt": 0.517,
       "opal_lfo1Rate": 0.23,
-      "opal_lfo1Depth": 0.311
+      "opal_lfo1Depth": 0.311,
+      "opal_ampVelSens": 0.403
     }
   },
   "schema_version": 1,

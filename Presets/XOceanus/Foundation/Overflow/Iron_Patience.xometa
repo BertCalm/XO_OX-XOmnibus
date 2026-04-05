@@ -67,5 +67,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "starterFor": "Overflow"
+  "starterFor": "Overflow",
+  "macros": {
+    "VESSEL": 0.45,
+    "PRESSURE": 0.365,
+    "SENSITIVITY": 0.45,
+    "RELEASE": 0.45
+  }
 }

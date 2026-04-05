@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crushed Nerve",
   "mood": "Kinetic",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bitcrusher at 6-bit with extreme sat drive — nerve endings fried, filter envelope snapping fast. Sound that makes speakers wince.",
-  "tags": ["distortion", "kinetic", "bitcrush", "aggressive", "nerve"],
-  "macroLabels": ["BELLY", "MOJO", "GRIT", "CRUSH"],
+  "tags": [
+    "distortion",
+    "kinetic",
+    "bitcrush",
+    "aggressive",
+    "nerve"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MOJO",
+    "GRIT",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -47,6 +60,14 @@
       "fat_polyphony": 4
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MOJO": 0.45,
+    "GRIT": 0.88,
+    "CRUSH": 0.88
+  }
 }

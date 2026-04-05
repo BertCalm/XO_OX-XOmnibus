@@ -79,5 +79,11 @@
     "obbligato"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.443,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.45,
+    "SPACE": 0.574
+  }
 }

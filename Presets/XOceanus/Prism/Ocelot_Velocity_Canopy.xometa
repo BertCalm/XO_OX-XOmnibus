@@ -106,5 +106,11 @@
     "filter"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "PROWL": 0.45,
+    "FOLIAGE": 0.482,
+    "ECOSYSTEM": 0.478,
+    "CANOPY": 0.469
+  }
 }

@@ -63,5 +63,11 @@
     "underscore"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.225,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

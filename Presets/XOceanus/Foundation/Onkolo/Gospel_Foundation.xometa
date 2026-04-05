@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Gospel keyboard in the soul-funk tradition \u2014 clavinet as church instrument, moderate wah, spiritual presence.",
+  "description": "Gospel keyboard in the soul-funk tradition — clavinet as church instrument, moderate wah, spiritual presence.",
   "tags": [
     "clavinet",
     "gospel",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
 }

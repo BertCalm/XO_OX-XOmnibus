@@ -133,5 +133,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT DENSITY": 0.45,
+    "DUB BASS": 0.45,
+    "SNAP PUNCH": 0.45,
+    "COUPLING": 0.54
+  }
 }

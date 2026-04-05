@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPERA conductor arc dominantly reshapes OUIE HAMMER axis balance \u2014 the dramatic arc forcing the duophonic voice toward LOVE convergence.",
+  "description": "OPERA conductor arc dominantly reshapes OUIE HAMMER axis balance — the dramatic arc forcing the duophonic voice toward LOVE convergence.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "opera_macroCharacter": 0.65,
       "opera_macroMovement": 0.68,
       "opera_macroCoupling": 0.75,
-      "opera_macroSpace": 0.5
+      "opera_macroSpace": 0.5,
+      "opera_velToFilter": 0.396
     },
     "Ouie": {
       "ouie_macroHammer": 0.68,
@@ -52,7 +53,8 @@
       "ouie_macroCharacter": 0.62,
       "ouie_macroMovement": 0.65,
       "ouie_macroCoupling": 0.72,
-      "ouie_macroSpace": 0.5
+      "ouie_macroSpace": 0.5,
+      "ouie_velCutoffAmt": 0.495
     }
   },
   "coupling": {

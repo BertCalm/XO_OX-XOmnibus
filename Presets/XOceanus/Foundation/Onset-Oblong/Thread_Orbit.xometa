@@ -51,7 +51,8 @@
       "bob_macroCharacter": 0.26,
       "bob_macroCoupling": 0.159,
       "bob_macroMovement": 0.323,
-      "bob_macroSpace": 0.86
+      "bob_macroSpace": 0.86,
+      "bob_velFilter": 0.319
     },
     "Onset": {
       "perc_macroCharacter": 0.18,

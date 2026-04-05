@@ -57,5 +57,11 @@
     "Atmospheric"
   ],
   "version": "1.0",
-  "schema_version": 1
+  "schema_version": 1,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.8
+  }
 }

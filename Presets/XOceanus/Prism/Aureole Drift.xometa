@@ -61,5 +61,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
 }

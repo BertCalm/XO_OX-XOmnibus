@@ -40,7 +40,8 @@
       "bob_macro_space": 0.7003,
       "bob_outputLevel": 0.85,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.483
     }
   },
   "schema_version": 1,

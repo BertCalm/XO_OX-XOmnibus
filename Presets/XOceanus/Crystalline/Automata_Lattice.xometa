@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wolfram rules generating a crystalline lattice \u2014 rule 30 or rule 110 creating mineral geometry automatically.",
+  "description": "Wolfram rules generating a crystalline lattice — rule 30 or rule 110 creating mineral geometry automatically.",
   "tags": [
     "crystalline",
     "automata",
@@ -39,7 +39,8 @@
       "org_macroSpace": 0.5,
       "org_filterEnvAmt": 0.5,
       "org_lfo1Rate": 0.14,
-      "org_lfo1Depth": 0.1
+      "org_lfo1Depth": 0.1,
+      "org_velCutoff": 0.425
     }
   },
   "coupling": {

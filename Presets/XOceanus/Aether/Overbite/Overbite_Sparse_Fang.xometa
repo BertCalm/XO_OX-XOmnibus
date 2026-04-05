@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Single-note sparse lead with very long decay \u2014 one fang in the silence, minimal and present.",
+  "description": "Single-note sparse lead with very long decay — one fang in the silence, minimal and present.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.5,
@@ -51,7 +51,8 @@
       "poss_macroTrash": 0.1,
       "poss_oscAShape": 0.1,
       "poss_oscAWaveform": 2,
-      "poss_polyphony": 1
+      "poss_polyphony": 1,
+      "poss_ampVelSens": 0.36
     }
   },
   "schema_version": 1,

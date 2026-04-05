@@ -58,7 +58,8 @@
       "poss_oscBShape": 0.5,
       "poss_oscBWaveform": 2,
       "poss_oscMix": 0.6,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.45
     }
   },
   "schema_version": 1,

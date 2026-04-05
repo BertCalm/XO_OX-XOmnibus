@@ -59,7 +59,8 @@
       "poss_subOctave": 0,
       "poss_trashAmount": 0.1,
       "poss_trashMode": 0,
-      "poss_weightLevel": 0.2
+      "poss_weightLevel": 0.2,
+      "poss_ampVelSens": 0.65
     }
   },
   "schema_version": 1,
@@ -73,5 +74,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.5,
+    "SCURRY": 0.239,
+    "PLAY DEAD": 0.299
+  }
 }

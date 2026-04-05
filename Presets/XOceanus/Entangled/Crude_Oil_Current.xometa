@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.42,
       "bob_macroCoupling": 0.75,
       "bob_macroMovement": 0.15,
-      "bob_macroSpace": 0.41
+      "bob_macroSpace": 0.41,
+      "bob_velFilter": 0.59
     },
     "Overworld": {
       "ow_macroCharacter": 0.89,

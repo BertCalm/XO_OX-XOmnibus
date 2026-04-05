@@ -69,5 +69,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FILTER SPEED": 0.45,
+    "RESONANCE": 0.5,
+    "DENSITY": 0.85,
+    "MORPH": 0.45
+  }
 }

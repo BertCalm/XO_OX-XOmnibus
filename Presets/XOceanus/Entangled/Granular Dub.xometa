@@ -129,5 +129,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SCATTER": 0.547,
+    "DRIFT": 0.6,
+    "COUPLING": 0.2,
+    "SPACE": 0.6
+  }
 }

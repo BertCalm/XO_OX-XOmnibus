@@ -68,5 +68,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.389,
+    "MOVEMENT": 0.686,
+    "COUPLING": 0.473,
+    "SPACE": 0.744
+  }
 }

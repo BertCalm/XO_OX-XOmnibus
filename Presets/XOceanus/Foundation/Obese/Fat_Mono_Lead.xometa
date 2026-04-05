@@ -71,5 +71,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH": 0.45,
+    "GLIDE TIME": 0.45,
+    "FILTER": 0.45,
+    "SATURATION": 0.45
+  }
 }

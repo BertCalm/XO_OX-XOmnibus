@@ -84,5 +84,11 @@
     "boneless",
     "transcendental"
   ],
-  "description": "shiftGlide=9.0 seconds + shiftDrift=0.85 + shiftMicro=-30 cents. Pitch is permanently in transit, never landing. A note toward C3 is still moving when the next note arrives. Boneless synthesis."
+  "description": "shiftGlide=9.0 seconds + shiftDrift=0.85 + shiftMicro=-30 cents. Pitch is permanently in transit, never landing. A note toward C3 is still moving when the next note arrives. Boneless synthesis.",
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
 }

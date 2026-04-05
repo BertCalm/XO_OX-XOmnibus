@@ -92,5 +92,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RHYTHM": 0.45,
+    "DUB FILTER": 0.45,
+    "COUPLING": 0.54,
+    "ECHO": 0.4
+  }
 }

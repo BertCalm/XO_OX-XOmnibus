@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Osmotic Flood",
   "mood": "Flux",
-  "engines": ["Osmosis", "Obese"],
+  "engines": [
+    "Osmosis",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "External audio membrane at maximum permeability — everything passes through, OBESE multiplies whatever arrives. A dense transformation of all input.",
-  "tags": ["flux", "dense", "osmosis", "obese", "membrane", "flood"],
-  "macroLabels": ["PERMEABILITY", "BELLY", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "dense",
+    "osmosis",
+    "obese",
+    "membrane",
+    "flood"
+  ],
+  "macroLabels": [
+    "PERMEABILITY",
+    "BELLY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -80,5 +95,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PERMEABILITY": 0.45,
+    "BELLY": 0.552,
+    "COUPLING": 0.66,
+    "SPACE": 0.3
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORPHICA pluck excitation heavily destabilizes OUROBOROS attractor topology \u2014 string impulse releasing chaos, physical pluck as strange attractor trigger.",
+  "description": "ORPHICA pluck excitation heavily destabilizes OUROBOROS attractor topology — string impulse releasing chaos, physical pluck as strange attractor trigger.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "orph_macroCharacter": 0.64,
       "orph_macroMovement": 0.68,
       "orph_macroCoupling": 0.75,
-      "orph_macroSpace": 0.5
+      "orph_macroSpace": 0.5,
+      "orph_velocitySensitivity": 0.795
     },
     "Ouroboros": {
       "ouro_topology": 0.68,

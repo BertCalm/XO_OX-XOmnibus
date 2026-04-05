@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OUROBOROS chaotic velocity output heavily drives OPERA Kuramoto coherence into sudden phase transitions \u2014 chaos triggering lock-and-release dramatic arcs.",
+  "description": "OUROBOROS chaotic velocity output heavily drives OPERA Kuramoto coherence into sudden phase transitions — chaos triggering lock-and-release dramatic arcs.",
   "tags": [
     "coupling",
     "heavy",
@@ -54,7 +54,8 @@
       "opera_macroCharacter": 0.62,
       "opera_macroMovement": 0.68,
       "opera_macroCoupling": 0.72,
-      "opera_macroSpace": 0.5
+      "opera_macroSpace": 0.5,
+      "opera_velToFilter": 0.42
     }
   },
   "coupling": {

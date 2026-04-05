@@ -110,5 +110,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP TRIGGER": 0.45,
+    "MORPH SCAN": 0.45,
+    "FAT FOUNDATION": 0.45,
+    "COUPLING": 0.54
+  }
 }

@@ -45,7 +45,8 @@
       "ombre_subLevel": 0.28,
       "ombre_filterEnvAmt": 0.329,
       "ombre_lfo1Rate": 0.033,
-      "ombre_lfo1Depth": 0.16
+      "ombre_lfo1Depth": 0.16,
+      "ombre_velCutoffScale": 0.298
     }
   },
   "schema_version": 1,

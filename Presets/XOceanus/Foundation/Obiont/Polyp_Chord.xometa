@@ -79,5 +79,11 @@
     "density": 0.65,
     "space": 0.52,
     "aggression": 0.18
+  },
+  "macros": {
+    "CHAOS": 0.296,
+    "EVOLUTION": 0.35,
+    "SPACE": 0.52,
+    "COUPLING": 0.2
   }
 }

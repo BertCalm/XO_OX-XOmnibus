@@ -75,5 +75,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PROPHECY": 0.45,
+    "EVOLUTION": 0.18,
+    "GRAVITY": 0.435,
+    "DRIFT": 0.18
+  }
 }

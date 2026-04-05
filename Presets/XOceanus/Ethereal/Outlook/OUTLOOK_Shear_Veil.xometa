@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Aggressive ethereal \u2014 high resonance with wide parallax and long release. The brutal note that decays into beauty.",
+  "description": "Aggressive ethereal — high resonance with wide parallax and long release. The brutal note that decays into beauty.",
   "tags": [
     "shear",
     "aggressive",
@@ -61,5 +61,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.67,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
   }
 }

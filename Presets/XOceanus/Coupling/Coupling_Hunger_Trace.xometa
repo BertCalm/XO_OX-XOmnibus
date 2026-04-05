@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORCA hunt macro barely activates OUIE hammer interaction \u2014 apex predator echolocation at the threshold of the hammerhead's STRIFE/LOVE axis.",
+  "description": "ORCA hunt macro barely activates OUIE hammer interaction — apex predator echolocation at the threshold of the hammerhead's STRIFE/LOVE axis.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "orca_macroCharacter": 0.44,
       "orca_macroMovement": 0.42,
       "orca_macroCoupling": 0.5,
-      "orca_macroSpace": 0.48
+      "orca_macroSpace": 0.48,
+      "orca_velCutoffAmt": 0.435
     },
     "Ouie": {
       "ouie_macroHammer": 0.45,
@@ -52,7 +53,8 @@
       "ouie_macroCharacter": 0.42,
       "ouie_macroMovement": 0.4,
       "ouie_macroCoupling": 0.48,
-      "ouie_macroSpace": 0.5
+      "ouie_macroSpace": 0.5,
+      "ouie_velCutoffAmt": 0.435
     }
   },
   "coupling": {

@@ -57,7 +57,8 @@
       "ocelot_filterCutoff": 2800.0,
       "ocelot_filterReso": 0.4,
       "ocelot_drive": 0.45,
-      "ocelot_lfoRate": 0.25
+      "ocelot_lfoRate": 0.25,
+      "ocelot_floorVelocity": 0.732
     }
   },
   "coupling": {

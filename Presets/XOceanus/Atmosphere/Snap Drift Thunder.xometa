@@ -94,5 +94,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "THUNDER RATE": 0.45,
+    "DRIFT SKY": 0.45,
+    "COUPLING": 0.33,
+    "FILTER": 0.45
+  }
 }

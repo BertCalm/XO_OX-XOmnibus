@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH POSITION": 0.45,
+    "DRIFT VEIL": 0.45,
+    "COUPLING": 0.45,
+    "BLOOM": 0.393
+  }
 }

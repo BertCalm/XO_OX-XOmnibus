@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPTIC bioluminescent pulse feeds OPAL grain luminance \u2014 visual light signal seeding granular cloud positions, photon energy as grain scatter.",
+  "description": "OPTIC bioluminescent pulse feeds OPAL grain luminance — visual light signal seeding granular cloud positions, photon energy as grain scatter.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "opal_macroCharacter": 0.52,
       "opal_macroMovement": 0.54,
       "opal_macroCoupling": 0.6,
-      "opal_macroSpace": 0.54
+      "opal_macroSpace": 0.54,
+      "opal_ampVelSens": 0.356
     }
   },
   "coupling": {

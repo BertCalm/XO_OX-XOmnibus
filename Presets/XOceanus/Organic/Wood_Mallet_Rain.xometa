@@ -2,18 +2,31 @@
   "schema_version": 1,
   "name": "Wood Mallet Rain",
   "mood": "Organic",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tuned wooden bars struck by rain — each drop a separate pitch, sympathetic strings sustaining beneath the shower.",
-  "tags": ["organic", "wood", "mallet", "rain", "percussion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "wood",
+    "mallet",
+    "rain",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
-    "warmth": 0.70,
-    "movement": 0.50,
+    "warmth": 0.7,
+    "movement": 0.5,
     "density": 0.45,
     "space": 0.48,
     "aggression": 0.12
@@ -21,23 +34,26 @@
   "parameters": {
     "Oware": {
       "owr_macroCharacter": 0.45,
-      "owr_macroMovement": 0.50,
-      "owr_macroCoupling": 0.20,
+      "owr_macroMovement": 0.5,
+      "owr_macroCoupling": 0.2,
       "owr_macroSpace": 0.48,
       "owr_material": 0.25,
       "owr_filterEnvAmt": 0.48,
       "owr_lfo1Rate": 0.08,
       "owr_lfo1Depth": 0.24,
       "owr_lfo2Rate": 0.15,
-      "owr_lfo2Depth": 0.18
+      "owr_lfo2Depth": 0.18,
+      "owr_malletVelocity": 0.645
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.50,
-    "COUPLING": 0.20,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.2,
     "SPACE": 0.48
   }
 }

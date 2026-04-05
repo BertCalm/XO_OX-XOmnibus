@@ -75,7 +75,8 @@
       "bob_voiceMode": 1,
       "bob_polyphony": 1,
       "bob_glide": 0.15,
-      "bob_level": 0.82
+      "bob_level": 0.82,
+      "bob_velFilter": 0.596
     }
   },
   "macros": {

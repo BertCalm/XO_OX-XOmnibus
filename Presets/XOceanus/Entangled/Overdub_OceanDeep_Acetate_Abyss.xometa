@@ -88,7 +88,8 @@
       "deep_macroPressure": 0.72,
       "deep_macroDepth": 0.65,
       "deep_macroBioluminescence": 0.25,
-      "deep_macroTurbulence": 0.18
+      "deep_macroTurbulence": 0.18,
+      "deep_velCutoffAmt": 0.425
     }
   },
   "coupling": {
@@ -101,5 +102,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SURFACE TONE": 0.45,
+    "DEPTH PRESSURE": 0.45,
+    "COUPLING BRIDGE": 0.45,
+    "REVERB BLEND": 0.45
+  }
 }

@@ -49,7 +49,8 @@
       "sky_lfoRate": 0.08,
       "sky_lfoDepth": 0.22,
       "sky_outputLevel": 0.72,
-      "sky_reverbMix": 0.5
+      "sky_reverbMix": 0.5,
+      "sky_velSensitivity": 0.665
     },
     "Ombre": {
       "ombre_blend": 0.55,
@@ -64,7 +65,8 @@
       "ombre_lfoRate": 0.06,
       "ombre_lfoDepth": 0.18,
       "ombre_outputLevel": 0.65,
-      "ombre_reverbMix": 0.45
+      "ombre_reverbMix": 0.45,
+      "ombre_velCutoffScale": 0.38
     }
   },
   "coupling": {
@@ -103,5 +105,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.342,
+    "SPACE": 0.72
+  }
 }

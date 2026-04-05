@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Knot Overload",
   "mood": "Entangled",
-  "engines": ["Orbweave", "Obese"],
+  "engines": [
+    "Orbweave",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Topological coupling matrix overloaded — ORBWEAVE at maximum strand count through all 4 knot types coupled to OBESE mass. Topology becomes texture.",
-  "tags": ["entangled", "dense", "orbweave", "obese", "topology", "coupling"],
-  "macroLabels": ["KNOT", "BELLY", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "dense",
+    "orbweave",
+    "obese",
+    "topology",
+    "coupling"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "BELLY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -82,5 +97,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "KNOT": 0.454,
+    "BELLY": 0.552,
+    "COUPLING": 0.678,
+    "SPACE": 0.38
+  }
 }

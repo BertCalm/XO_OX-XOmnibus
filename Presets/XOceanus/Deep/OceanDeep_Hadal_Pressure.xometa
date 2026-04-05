@@ -42,7 +42,8 @@
       "deep_lfo1Depth": 0.22,
       "deep_macroPressure": 0.88,
       "deep_darknessCeiling": 0.95,
-      "deep_bioExciter": 0.35
+      "deep_bioExciter": 0.35,
+      "deep_velCutoffAmt": 0.42
     }
   },
   "coupling": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 0 at near silence \u2014 slow attack, no decay movement, pure sustained tone. The sound of being completely still.",
+  "description": "Algorithm 0 at near silence — slow attack, no decay movement, pure sustained tone. The sound of being completely still.",
   "tags": [
     "fm",
     "still",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.2,
+    "SPACE": 0.98
+  }
 }

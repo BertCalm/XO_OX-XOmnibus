@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Slow-attack atmospheric pad born from dumpster acoustics \u2014 folded waveforms and cave reverb.",
+  "description": "Slow-attack atmospheric pad born from dumpster acoustics — folded waveforms and cave reverb.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.35,
@@ -56,7 +56,8 @@
       "poss_trashMode": 0,
       "poss_unisonDetune": 0.3,
       "poss_unisonSpread": 0.6,
-      "poss_unisonVoices": 3
+      "poss_unisonVoices": 3,
+      "poss_ampVelSens": 0.36
     }
   },
   "schema_version": 1,

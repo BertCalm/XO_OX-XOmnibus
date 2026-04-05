@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Sub Crystal",
   "mood": "Entangled",
-  "engines": ["Ogre", "Opaline"],
+  "engines": [
+    "Ogre",
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub bass body resonance feeding prepared piano crystal drive — the sub's physical energy propagates through the piano's frame. Weight becomes fragility.",
-  "tags": ["bass", "prepared-piano", "entangled", "aggressive", "resonance"],
-  "macroLabels": ["MASS", "FRAGILITY", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "prepared-piano",
+    "entangled",
+    "aggressive",
+    "resonance"
+  ],
+  "macroLabels": [
+    "MASS",
+    "FRAGILITY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -86,5 +100,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MASS": 0.78,
+    "FRAGILITY": 0.45,
+    "COUPLING": 0.48,
+    "SPACE": 0.3
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ultra-fast FM snap \u2014 ratio 5, algorithm 2, feedback 0.25. A single harmonic snap. The finger at the end of the phrase.",
+  "description": "Ultra-fast FM snap — ratio 5, algorithm 2, feedback 0.25. A single harmonic snap. The finger at the end of the phrase.",
   "tags": [
     "fm",
     "snap",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.875,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.2,
+    "SPACE": 0.06
+  }
 }

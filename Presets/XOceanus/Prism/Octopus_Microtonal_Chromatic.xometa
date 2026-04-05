@@ -84,5 +84,11 @@
     "shapeshifter",
     "transcendental"
   ],
-  "description": "shiftMicro=25 cents + arm pitch modulation (±50 cents at prime-ratio rates) + shiftDrift=0.2 — pitch permanently avoids equal temperament. OCTOPUS as a quarter-tone non-tempered instrument."
+  "description": "shiftMicro=25 cents + arm pitch modulation (±50 cents at prime-ratio rates) + shiftDrift=0.2 — pitch permanently avoids equal temperament. OCTOPUS as a quarter-tone non-tempered instrument.",
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
 }

@@ -147,5 +147,11 @@
   ],
   "tempo": 120,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "MACHINE": 0.436,
+    "REEF": 0.45,
+    "COUPLING": 0.54,
+    "SPACE": 0.3
+  }
 }

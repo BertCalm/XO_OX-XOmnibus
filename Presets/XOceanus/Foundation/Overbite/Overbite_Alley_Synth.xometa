@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Street-level synth bass \u2014 dual sawtooth with mild detuning, FM interaction and a grimy filter character.",
+  "description": "Street-level synth bass — dual sawtooth with mild detuning, FM interaction and a grimy filter character.",
   "dna": {
     "aggression": 0.55,
     "brightness": 0.5,
@@ -54,7 +54,8 @@
       "poss_oscInteractAmount": 0.25,
       "poss_oscInteractMode": 2,
       "poss_oscMix": 0.5,
-      "poss_subLevel": 0.45
+      "poss_subLevel": 0.45,
+      "poss_ampVelSens": 0.41
     }
   },
   "schema_version": 1,

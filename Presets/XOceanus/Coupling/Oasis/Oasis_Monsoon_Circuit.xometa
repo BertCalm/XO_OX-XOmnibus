@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Monsoon Circuit",
+  "mood": "Coupling",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Spice Route follows monsoon winds — reactive coupling configuration where entropy sensitivity responds to external pressure, allowing other engines to destabilize the tine ecology.",
+  "tags": [
+    "coupling",
+    "reactive",
+    "monsoon",
+    "wind",
+    "bright",
+    "interconnected"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "couplingType": "BRIDGE",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.78,
+      "oas_breeze": 0.5,
+      "oas_swarmDensity": 0.55,
+      "oas_lagoonDepth": 0.48,
+      "oas_subDrive": 0.38,
+      "oas_resonatorQ": 7.5,
+      "oas_cullDecay": 0.988,
+      "oas_canopyFB": 0.6,
+      "oas_filterCutoff": 4000.0,
+      "oas_filterEnvAmt": 0.6,
+      "oas_rhodesMix": 0.92,
+      "oas_pickupPos": 0.62,
+      "oas_bellAmount": 0.6,
+      "oas_warmth": 0.48,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.58,
+      "oas_macroMovement": 0.62,
+      "oas_macroCoupling": 0.88,
+      "oas_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.2,
+    "SPACE": 0.62
+  }
+}

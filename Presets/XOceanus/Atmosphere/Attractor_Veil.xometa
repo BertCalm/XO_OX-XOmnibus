@@ -2,21 +2,37 @@
   "schema_version": 1,
   "name": "Attractor Veil",
   "mood": "Atmosphere",
-  "engines": ["Ouroboros", "Opal"],
+  "engines": [
+    "Ouroboros",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Strange attractor paths seen through granular gauze. The chaos topology of Ouroboros barely stirs Opal's grain clouds into new formations.",
-  "tags": ["atmosphere", "whisper", "coupling", "attractor", "granular", "veil", "chaos"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "attractor",
+    "granular",
+    "veil",
+    "chaos"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
     "warmth": 0.55,
-    "movement": 0.40,
+    "movement": 0.4,
     "density": 0.45,
     "space": 0.78,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Ouroboros": {
@@ -25,7 +41,7 @@
       "ouro_macroCoupling": 0.15,
       "ouro_macroSpace": 0.72,
       "ouro_topology": 0.35,
-      "ouro_filterEnvAmt": 0.40,
+      "ouro_filterEnvAmt": 0.4,
       "ouro_lfo1Rate": 0.07,
       "ouro_lfo1Depth": 0.24,
       "ouro_attack": 0.2,
@@ -41,7 +57,8 @@
       "opal_lfo1Rate": 0.05,
       "opal_lfo1Depth": 0.18,
       "opal_attack": 1.0,
-      "opal_release": 4.0
+      "opal_release": 4.0,
+      "opal_ampVelSens": 0.256
     }
   },
   "coupling": {

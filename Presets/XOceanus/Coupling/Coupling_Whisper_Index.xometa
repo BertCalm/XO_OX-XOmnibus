@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Whisper Index",
+  "mood": "Coupling",
+  "engines": [
+    "Outlook",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUTLOOK's horizon scan LFO barely modulates OPAL grain position — the panoramic sweep leaving only a ghost index into the granular field, as if a distant view is deciding which memory to surface.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "horizon",
+    "granular",
+    "LFOToPitch",
+    "panoramic",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.46,
+    "movement": 0.42,
+    "density": 0.36,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_horizonScan": 0.5,
+      "look_filterEnvAmt": 0.38,
+      "look_lfo1Rate": 0.08,
+      "look_lfo1Depth": 0.16,
+      "look_macroCharacter": 0.48,
+      "look_macroMovement": 0.4,
+      "look_macroCoupling": 0.11,
+      "look_macroSpace": 0.65
+    },
+    "Opal": {
+      "opal_grainSize": 0.52,
+      "opal_filterEnvAmt": 0.34,
+      "opal_lfo1Rate": 0.07,
+      "opal_lfo1Depth": 0.14,
+      "opal_macroCharacter": 0.46,
+      "opal_macroMovement": 0.38,
+      "opal_macroCoupling": 0.1,
+      "opal_macroSpace": 0.66,
+      "opal_ampVelSens": 0.332
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outlook",
+        "engineB": "Opal",
+        "type": "LFOToPitch",
+        "amount": 0.08
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.11,
+    "SPACE": 0.65
+  }
+}

@@ -74,7 +74,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.312
     },
     "OddOscar": {
       "morph_morph": 0.45,
@@ -101,5 +102,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "WARMTH": 0.75,
+    "CANOPY": 0.469,
+    "COUPLING": 0.3,
+    "FILTER": 0.45
+  }
 }

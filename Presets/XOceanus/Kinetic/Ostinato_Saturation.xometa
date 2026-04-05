@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ostinato Saturation",
   "mood": "Kinetic",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "96 world rhythm patterns stacked — CIRCULAR coupling active, all adjacent seats triggering sympathetic responses. No silence, only perpetual rhythmic mass.",
-  "tags": ["kinetic", "dense", "ostinato", "rhythm", "circular", "saturation"],
-  "macroLabels": ["GATHER", "MEMBRANE", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "dense",
+    "ostinato",
+    "rhythm",
+    "circular",
+    "saturation"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "MEMBRANE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -43,9 +57,18 @@
       "osti_macroCharacter": 0.88,
       "osti_macroMovement": 0.95,
       "osti_macroCoupling": 0.45,
-      "osti_macroSpace": 0.15
+      "osti_macroSpace": 0.15,
+      "osti_velFilter": 0.5
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "GATHER": 0.45,
+    "MEMBRANE": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.14
+  }
 }

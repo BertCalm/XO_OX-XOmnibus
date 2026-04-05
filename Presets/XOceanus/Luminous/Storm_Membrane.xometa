@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Storm Membrane",
+  "mood": "Luminous",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The leading edge of a supercell thunderstorm \u2014 an arc cloud rolling across flat plains ahead of the inflow boundary, charged with electricity and momentum.",
+  "tags": [
+    "luminous",
+    "storm",
+    "outflow",
+    "supercell",
+    "electric",
+    "charged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.35,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.55,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.72,
+      "out_macroMovement": 0.82,
+      "out_macroCoupling": 0.28,
+      "out_macroSpace": 0.55,
+      "out_currentSpeed": 0.82,
+      "out_stormDepth": 0.72,
+      "out_filterEnvAmt": 0.62,
+      "out_lfo1Rate": 0.35,
+      "out_lfo1Depth": 0.45,
+      "out_filterCutoff": 0.68,
+      "out_filterRes": 0.55,
+      "out_attackTime": 0.01,
+      "out_decayTime": 0.25,
+      "out_sustain": 0.55,
+      "out_releaseTime": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.28,
+    "SPACE": 0.55
+  }
+}

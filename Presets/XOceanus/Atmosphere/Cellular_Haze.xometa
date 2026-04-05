@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Cellular Haze",
   "mood": "Atmosphere",
-  "engines": ["Organism", "Obscura"],
+  "engines": [
+    "Organism",
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Automata generations seen through amber glass. Organism's coral colony evolves in the background of Obscura's daguerreotype world.",
-  "tags": ["atmosphere", "whisper", "coupling", "cellular", "haze", "daguerreotype", "automata"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "cellular",
+    "haze",
+    "daguerreotype",
+    "automata"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
@@ -15,25 +31,26 @@
     "warmth": 0.64,
     "movement": 0.38,
     "density": 0.48,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.04
   },
   "parameters": {
     "Organism": {
-      "org_macroCharacter": 0.40,
+      "org_macroCharacter": 0.4,
       "org_macroMovement": 0.42,
       "org_macroCoupling": 0.14,
       "org_macroSpace": 0.76,
-      "org_ruleSet": 0.40,
+      "org_ruleSet": 0.4,
       "org_filterEnvAmt": 0.34,
       "org_lfo1Rate": 0.07,
       "org_lfo1Depth": 0.22,
       "org_attack": 0.3,
-      "org_release": 2.5
+      "org_release": 2.5,
+      "org_velCutoff": 0.308
     },
     "Obscura": {
       "obscura_macroCharacter": 0.38,
-      "obscura_macroMovement": 0.30,
+      "obscura_macroMovement": 0.3,
       "obscura_macroCoupling": 0.12,
       "obscura_macroSpace": 0.82,
       "obscura_stiffness": 0.46,
@@ -50,7 +67,7 @@
         "engineA": "Organism",
         "engineB": "Obscura",
         "type": "LFOToPitch",
-        "amount": 0.10
+        "amount": 0.1
       }
     ]
   },

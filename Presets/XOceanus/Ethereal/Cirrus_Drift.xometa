@@ -42,7 +42,8 @@
       "sky_lfo1Rate": 0.018,
       "sky_lfo1Depth": 0.13,
       "sky_attack": 3.0,
-      "sky_release": 10.0
+      "sky_release": 10.0,
+      "sky_velSensitivity": 0.426
     }
   },
   "coupling": {

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Caravan",
+  "mood": "Coupling",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two trade routes becoming one — maximum coupling depth with mirror topology. Dark warmth, the canopy absorbs partner signal into the Route feedback loop.",
+  "tags": [
+    "coupling",
+    "mirror",
+    "entangled",
+    "dark",
+    "deep",
+    "fusion-quad"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "couplingType": "MIRROR",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.48,
+    "density": 0.7,
+    "space": 0.68,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.55,
+      "oas_breeze": 0.45,
+      "oas_swarmDensity": 0.65,
+      "oas_lagoonDepth": 0.75,
+      "oas_subDrive": 0.5,
+      "oas_resonatorQ": 9.0,
+      "oas_cullDecay": 0.9965,
+      "oas_canopyFB": 0.72,
+      "oas_filterCutoff": 2200.0,
+      "oas_filterEnvAmt": 0.4,
+      "oas_rhodesMix": 0.82,
+      "oas_pickupPos": 0.38,
+      "oas_bellAmount": 0.38,
+      "oas_warmth": 0.72,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.38,
+      "oas_macroMovement": 0.48,
+      "oas_macroCoupling": 0.95,
+      "oas_macroSpace": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
+}

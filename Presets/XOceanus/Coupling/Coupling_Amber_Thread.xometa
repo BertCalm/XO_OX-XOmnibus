@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG warm filter contour whispers into OPAL grain size \u2014 a barely-there breath of amber warmth threading through granular clouds.",
+  "description": "OBLONG warm filter contour whispers into OPAL grain size — a barely-there breath of amber warmth threading through granular clouds.",
   "tags": [
     "coupling",
     "whisper",
@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.48,
       "bob_macroMovement": 0.4,
       "bob_macroCoupling": 0.5,
-      "bob_macroSpace": 0.42
+      "bob_macroSpace": 0.42,
+      "bob_velFilter": 0.42
     },
     "Opal": {
       "opal_grainSize": 0.55,
@@ -54,7 +55,8 @@
       "opal_macroCharacter": 0.45,
       "opal_macroMovement": 0.42,
       "opal_macroCoupling": 0.48,
-      "opal_macroSpace": 0.5
+      "opal_macroSpace": 0.5,
+      "opal_ampVelSens": 0.336
     }
   },
   "coupling": {

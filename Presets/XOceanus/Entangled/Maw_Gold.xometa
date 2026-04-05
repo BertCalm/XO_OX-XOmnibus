@@ -50,7 +50,8 @@
       "poss_macroPlayDead": 0.572,
       "poss_filterEnvAmount": 0.564,
       "poss_lfo1Rate": 0.272,
-      "poss_lfo1Depth": 0.326
+      "poss_lfo1Depth": 0.326,
+      "poss_ampVelSens": 0.538
     },
     "Owlfish": {
       "owl_couplingIn": 0.782,
@@ -67,7 +68,8 @@
       "owl_macroSpace": 0.561,
       "owl_filterEnvDepth": 0.564,
       "owl_lfoRate": 0.272,
-      "owl_lfoDepth": 0.326
+      "owl_lfoDepth": 0.326,
+      "owl_velocity": 0.7
     }
   },
   "schema_version": 1,

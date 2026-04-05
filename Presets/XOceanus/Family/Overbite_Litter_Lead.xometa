@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Unison mid-range lead with 4 voices \u2014 many young opossums sharing a single melodic purpose.",
+  "description": "Unison mid-range lead with 4 voices — many young opossums sharing a single melodic purpose.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.5,
@@ -52,7 +52,8 @@
       "poss_oscAWaveform": 2,
       "poss_unisonDetune": 0.25,
       "poss_unisonSpread": 0.65,
-      "poss_unisonVoices": 4
+      "poss_unisonVoices": 4,
+      "poss_ampVelSens": 0.475
     }
   },
   "schema_version": 1,

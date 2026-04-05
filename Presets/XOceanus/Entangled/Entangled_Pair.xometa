@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Static entangled harmonics from Oxytocin."
+  "description": "Static entangled harmonics from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.543,
+    "MOVEMENT": 0.128,
+    "COUPLING": 0.2,
+    "SPACE": 0.604
+  }
 }

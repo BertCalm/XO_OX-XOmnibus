@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Astor Espacio",
+  "mood": "Ethereal",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Piazzolla's Espacio \u2014 the bandoneon breathing at concert-hall space, slow LFO attack mimicking the hand opening the bellows against resisting air. The tango goes to the concert hall.",
+  "tags": [
+    "ethereal",
+    "Piazzolla",
+    "Espacio",
+    "space",
+    "bandoneon",
+    "concert"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.62,
+    "movement": 0.15,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.18,
+      "oleg_brightness": 5200.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.45,
+      "oleg_detune": 6.0,
+      "oleg_formant": 0.65,
+      "oleg_attack": 0.25,
+      "oleg_release": 1.5,
+      "oleg_filterEnvAmt": 0.35,
+      "oleg_bendRange": 3,
+      "oleg_glideTime": 0.08,
+      "oleg_cassottoDepth": 0.62,
+      "oleg_buzzThreshold": 0.28,
+      "oleg_wheelSpeed": 0.0,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.38,
+      "oleg_macroMovement": 0.15,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.88,
+      "oleg_lfo1Rate": 0.06,
+      "oleg_lfo1Depth": 0.18,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.2,
+      "oleg_lfo2Depth": 0.1,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  }
+}

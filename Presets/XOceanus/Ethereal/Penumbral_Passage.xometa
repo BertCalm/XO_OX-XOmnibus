@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Penumbral Passage",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The penumbra of a lunar eclipse — the partial shadow where the sun is only partly obscured, a 30-minute dimming so gradual that few notice it happening.",
+  "tags": [
+    "ethereal",
+    "penumbra",
+    "eclipse",
+    "shadow",
+    "gradual",
+    "lunar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.52,
+    "movement": 0.15,
+    "density": 0.28,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.42,
+      "ombre_filterCutoff": 4200.0,
+      "ombre_filterRes": 0.1,
+      "ombre_attack": 4.5,
+      "ombre_decay": 6.0,
+      "ombre_sustain": 0.92,
+      "ombre_release": 12.0,
+      "ombre_lfo1Rate": 0.01,
+      "ombre_lfo1Depth": 0.08,
+      "ombre_macroCharacter": 0.28,
+      "ombre_macroMovement": 0.15,
+      "ombre_macroCoupling": 0.05,
+      "ombre_macroSpace": 0.92,
+      "ombre_velCutoffScale": 0.242
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.05,
+    "SPACE": 0.92
+  }
+}

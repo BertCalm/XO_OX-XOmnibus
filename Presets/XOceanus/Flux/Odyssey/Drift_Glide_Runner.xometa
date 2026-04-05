@@ -78,5 +78,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FILTER TONE": 0.45,
+    "GLIDE TIME": 0.45,
+    "LFO": 0.45,
+    "SHIMMER": 0.5
+  }
 }

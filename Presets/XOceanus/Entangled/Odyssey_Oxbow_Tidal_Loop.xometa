@@ -108,5 +108,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TIDAL DEPTH": 0.45,
+    "OXBOW ENTANGLE": 0.45,
+    "FM TEXTURE": 0.45,
+    "REVERB COUPLING": 0.45
+  }
 }

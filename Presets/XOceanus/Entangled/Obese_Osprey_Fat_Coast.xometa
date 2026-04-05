@@ -73,5 +73,11 @@
     "osprey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.543,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.57,
+    "SPACE": 0.587
+  }
 }

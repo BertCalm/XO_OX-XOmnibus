@@ -2,16 +2,32 @@
   "schema_version": 1,
   "name": "Shimmer Fraction",
   "mood": "Atmosphere",
-  "engines": ["OpenSky", "Overtone"],
+  "engines": [
+    "OpenSky",
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Euphoric shimmer meets spectral continued fractions. The ascent of OpenSky finds the irrational ratios of Overtone waiting at the horizon.",
-  "tags": ["atmosphere", "whisper", "coupling", "shimmer", "spectral", "ascent", "horizon"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "shimmer",
+    "spectral",
+    "ascent",
+    "horizon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
-    "brightness": 0.50,
+    "brightness": 0.5,
     "warmth": 0.52,
     "movement": 0.38,
     "density": 0.35,
@@ -29,7 +45,8 @@
       "sky_lfo1Rate": 0.07,
       "sky_lfo1Depth": 0.22,
       "sky_attack": 1.2,
-      "sky_release": 4.8
+      "sky_release": 4.8,
+      "sky_velSensitivity": 0.431
     },
     "Overtone": {
       "over_macroCharacter": 0.38,
@@ -41,7 +58,8 @@
       "over_lfo1Rate": 0.05,
       "over_lfo1Depth": 0.18,
       "over_attack": 1.8,
-      "over_release": 6.0
+      "over_release": 6.0,
+      "over_velBright": 0.277
     }
   },
   "coupling": {

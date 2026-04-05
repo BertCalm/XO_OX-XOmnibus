@@ -69,5 +69,11 @@
     "pairs": []
   },
   "sequencer": null,
-  "starterFor": null
+  "starterFor": null,
+  "macros": {
+    "RICHNESS": 0.45,
+    "REDUCTION": 0.45,
+    "CONCENTRATE": 0.45,
+    "DEPTH": 0.95
+  }
 }

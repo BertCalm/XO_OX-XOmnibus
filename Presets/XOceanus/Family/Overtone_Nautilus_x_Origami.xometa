@@ -69,5 +69,11 @@
         "amount": 0.5
       }
     ]
+  },
+  "macros": {
+    "DEPTH": 0.45,
+    "COLOR": 0.5,
+    "COUPLING": 0.2,
+    "SPACE": 0.1
   }
 }

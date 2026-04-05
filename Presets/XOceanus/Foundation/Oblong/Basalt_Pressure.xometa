@@ -41,7 +41,8 @@
       "bob_osc2wave": 0,
       "bob_reverbMix": 0.88,
       "bob_space": 0.29,
-      "bob_lfo1Depth": 0.11
+      "bob_lfo1Depth": 0.11,
+      "bob_velFilter": 0.444
     }
   },
   "schema_version": 1,
@@ -51,5 +52,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.19,
+    "COUPLING": 0.2,
+    "SPACE": 0.57
+  }
 }

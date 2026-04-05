@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Smooth Transitions",
+  "mood": "Atmosphere",
+  "engines": [
+    "Otis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Lounge organ with slow Leslie \u2014 smooth jazz comping register, whisper-quiet key click, the organ retreating to its supportive role in a late-night trio setting.",
+  "tags": [
+    "atmosphere",
+    "lounge",
+    "jazz",
+    "smooth",
+    "comping",
+    "late-night"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Otis": {
+      "otis_organ": 0,
+      "otis_drawbar1": 0.0,
+      "otis_drawbar2": 0.4,
+      "otis_drawbar3": 0.8,
+      "otis_drawbar4": 0.6,
+      "otis_drawbar5": 0.2,
+      "otis_drawbar6": 0.0,
+      "otis_drawbar7": 0.0,
+      "otis_drawbar8": 0.0,
+      "otis_drawbar9": 0.0,
+      "otis_leslie": 0.25,
+      "otis_keyClick": 0.05,
+      "otis_percussion": 0.0,
+      "otis_percHarmonic": 0.0,
+      "otis_percDecay": 0.3,
+      "otis_crosstalk": 0.02,
+      "otis_brightness": 8000.0,
+      "otis_drive": 0.05,
+      "otis_filterEnvAmount": 0.12,
+      "otis_bendRange": 2.0,
+      "otis_instability": 0.08,
+      "otis_attack": 0.012,
+      "otis_decay": 0.25,
+      "otis_sustain": 1.0,
+      "otis_release": 0.25,
+      "otis_macroCharacter": 0.42,
+      "otis_macroMovement": 0.35,
+      "otis_macroCoupling": 0.0,
+      "otis_macroSpace": 0.72,
+      "otis_lfo1Rate": 1.2,
+      "otis_lfo1Depth": 0.12,
+      "otis_lfo1Shape": 3,
+      "otis_lfo2Rate": 0.25,
+      "otis_lfo2Depth": 0.08,
+      "otis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  }
+}

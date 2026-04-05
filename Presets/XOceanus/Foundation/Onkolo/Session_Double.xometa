@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The classic double-tracked clavinet studio technique \u2014 slightly different pickup positions create natural width.",
+  "description": "The classic double-tracked clavinet studio technique — slightly different pickup positions create natural width.",
   "tags": [
     "clavinet",
     "double",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

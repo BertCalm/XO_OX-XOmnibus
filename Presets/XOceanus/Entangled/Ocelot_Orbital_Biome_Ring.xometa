@@ -73,7 +73,8 @@
       "ocelot_reverbSize": 0.55,
       "ocelot_strataBalance": 0.5,
       "ocelot_swing": 0.1,
-      "ocelot_understoryLevel": 0.45
+      "ocelot_understoryLevel": 0.45,
+      "ocelot_floorVelocity": 0.75
     },
     "Orbital": {
       "orb_attack": 0.01,
@@ -109,5 +110,11 @@
     "tawny"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.33,
+    "SPACE": 0.6
+  }
 }

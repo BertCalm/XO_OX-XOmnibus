@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBIONT Wolfram CA spatial cosine heavily rewrites OBRIX reef ecology \u2014 1D automaton dictating reef structure, rule 110 as biological architect.",
+  "description": "OBIONT Wolfram CA spatial cosine heavily rewrites OBRIX reef ecology — 1D automaton dictating reef structure, rule 110 as biological architect.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "obnt_macroCharacter": 0.64,
       "obnt_macroMovement": 0.72,
       "obnt_macroCoupling": 0.78,
-      "obnt_macroSpace": 0.5
+      "obnt_macroSpace": 0.5,
+      "obnt_velSens": 0.714
     },
     "Obrix": {
       "obrix_src1Type": 0.68,

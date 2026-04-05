@@ -67,5 +67,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Gentle static luminous shimmer from Oxytocin."
+  "description": "Gentle static luminous shimmer from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.342,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.2,
+    "SPACE": 0.704
+  }
 }

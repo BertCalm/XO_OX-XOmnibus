@@ -43,7 +43,8 @@
       "sky_lfo1Rate": 0.022,
       "sky_lfo1Depth": 0.13,
       "sky_attack": 3.0,
-      "sky_release": 10.0
+      "sky_release": 10.0,
+      "sky_velSensitivity": 0.423
     },
     "Opal": {
       "opal_macroCharacter": 0.28,
@@ -55,7 +56,8 @@
       "opal_lfo1Rate": 0.035,
       "opal_lfo1Depth": 0.14,
       "opal_attack": 2.5,
-      "opal_release": 9.0
+      "opal_release": 9.0,
+      "opal_ampVelSens": 0.242
     }
   },
   "coupling": {

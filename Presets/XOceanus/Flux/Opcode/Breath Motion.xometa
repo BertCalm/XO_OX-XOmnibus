@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Dual LFO cross-modulation \u2014 LFO1 shapes index, LFO2 shapes brightness. The preset breathes with its own independent life.",
+  "description": "Dual LFO cross-modulation — LFO1 shapes index, LFO2 shapes brightness. The preset breathes with its own independent life.",
   "tags": [
     "fm",
     "breath",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.2,
+    "SPACE": 0.7
+  }
 }

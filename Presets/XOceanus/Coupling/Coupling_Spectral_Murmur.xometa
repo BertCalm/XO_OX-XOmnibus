@@ -63,7 +63,8 @@
       "over_lfoRate": 0.04,
       "over_lfoDepth": 0.12,
       "over_outputLevel": 0.7,
-      "over_reverbMix": 0.4
+      "over_reverbMix": 0.4,
+      "over_velBright": 0.387
     }
   },
   "coupling": {
@@ -88,5 +89,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.234,
+    "SPACE": 0.65
+  }
 }

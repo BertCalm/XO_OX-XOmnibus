@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High-energy clavinet stab \u2014 extremely fast attack and decay, maximum wah depth, bridge pickup snap. For stabs in dense mixes.",
+  "description": "High-energy clavinet stab — extremely fast attack and decay, maximum wah depth, bridge pickup snap. For stabs in dense mixes.",
   "tags": [
     "clavinet",
     "stab",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
 }

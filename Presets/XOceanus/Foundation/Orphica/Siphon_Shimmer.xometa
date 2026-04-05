@@ -41,7 +41,8 @@
       "orph_pluckDecay": 181.2,
       "orph_resonanceBody": 0.69,
       "orph_reverbMix": 0.27,
-      "orph_space": 0.12
+      "orph_space": 0.12,
+      "orph_velocitySensitivity": 0.489
     }
   },
   "schema_version": 1,
@@ -51,5 +52,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.2,
+    "SPACE": 0.69
+  }
 }

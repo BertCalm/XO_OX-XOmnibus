@@ -77,7 +77,8 @@
     },
     "Opal": {
       "opal_filterCutoff": 5114.0,
-      "opal_level": 0.705
+      "opal_level": 0.705,
+      "opal_ampVelSens": 0.395
     }
   },
   "schema_version": 1,
@@ -91,5 +92,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.552,
+    "MOVEMENT": 0.777,
+    "COUPLING": 0.6,
+    "SPACE": 0.7
+  }
 }

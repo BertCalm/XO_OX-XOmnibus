@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Null Field",
+  "mood": "Foundation",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chiasmus FDN with all high frequencies absorbed — a reverb that exists only in the sub-bass register. The golden resonance operating in darkness.",
+  "tags": ["foundation", "dark", "sub-bass", "reverb", "null"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.82,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.88,
+      "oxb_decay": 8.0,
+      "oxb_entangle": 0.22,
+      "oxb_erosionRate": 0.05,
+      "oxb_erosionDepth": 0.08,
+      "oxb_convergence": 0,
+      "oxb_resonanceQ": 4,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.08,
+      "oxb_damping": 200,
+      "oxb_predelay": 2,
+      "oxb_dryWet": 0.88,
+      "oxb_exciterDecay": 0.08,
+      "oxb_exciterBright": 0.05,
+      "oxb_macroCharacter": 0.18,
+      "oxb_macroMovement": 0.12,
+      "oxb_macroCoupling": 0.22,
+      "oxb_macroSpace": 0.82,
+      "oxb_filterEnvAmt": 0.08,
+      "oxb_lfo1Rate": 0.015,
+      "oxb_lfo1Depth": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "ENTANGLE": 0.22,
+    "EROSION": 0.05,
+    "CONVERGE": 0.18,
+    "CANTILEVER": 0.82
+  }
+}

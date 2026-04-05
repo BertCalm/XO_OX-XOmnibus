@@ -54,7 +54,8 @@
       "org_outputBus": 0,
       "org_couplingLevel": 0.7,
       "org_emergence": 0.55,
-      "org_colorField": 0.3
+      "org_colorField": 0.3,
+      "org_velCutoff": 0.438
     },
     "Overtone": {
       "over_cfDepth": 0.6,
@@ -74,7 +75,8 @@
       "over_shimmerMix": 0.35,
       "over_masterVolume": 0.75,
       "over_stereoWidth": 0.65,
-      "over_convergent": 0.7
+      "over_convergent": 0.7,
+      "over_velBright": 0.394
     }
   },
   "schema_version": 1,
@@ -90,5 +92,11 @@
     "generative"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "COLONY": 0.45,
+    "SPECTRAL": 0.6,
+    "COUPLING": 0.378,
+    "SPACE": 0.65
+  }
 }

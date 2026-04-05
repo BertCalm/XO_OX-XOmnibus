@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPERA conductor arc barely lifts OBBLIGATO breath amplitude \u2014 the dramatic arc conducting wind instruments at the whisper threshold.",
+  "description": "OPERA conductor arc barely lifts OBBLIGATO breath amplitude — the dramatic arc conducting wind instruments at the whisper threshold.",
   "tags": [
     "coupling",
     "whisper",
@@ -42,7 +42,8 @@
       "opera_macroCharacter": 0.46,
       "opera_macroMovement": 0.42,
       "opera_macroCoupling": 0.5,
-      "opera_macroSpace": 0.5
+      "opera_macroSpace": 0.5,
+      "opera_velToFilter": 0.336
     },
     "Obbligato": {
       "obbl_breathA": 0.5,

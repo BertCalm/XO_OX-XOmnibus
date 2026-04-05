@@ -74,5 +74,11 @@
     "outwit"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.689,
+    "COUPLING": 0.54,
+    "SPACE": 0.503
+  }
 }

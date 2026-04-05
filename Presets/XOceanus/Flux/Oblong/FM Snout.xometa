@@ -52,7 +52,8 @@
       "bob_oscB_blend": 0.92,
       "bob_oscB_detune": 12.0,
       "bob_oscB_fm": 0.85,
-      "bob_oscB_wave": 0.0
+      "bob_oscB_wave": 0.0,
+      "bob_velFilter": 0.602
     }
   },
   "schema_version": 1,
@@ -63,5 +64,11 @@
     "metallic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.491,
+    "MOVEMENT": 0.443,
+    "COUPLING": 0.2,
+    "SPACE": 0.0
+  }
 }

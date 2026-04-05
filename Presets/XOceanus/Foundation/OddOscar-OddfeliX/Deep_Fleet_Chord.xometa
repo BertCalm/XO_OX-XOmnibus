@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Six-engine complete foundation \u2014 all engines in their canonical roles. The complete XOceanus.",
+  "description": "Six-engine complete foundation — all engines in their canonical roles. The complete XOceanus.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.52,
@@ -104,7 +104,8 @@
       "bob_texMode": 0,
       "bob_texTone": 0.5,
       "bob_texWidth": 0.5,
-      "bob_voiceMode": 1
+      "bob_voiceMode": 1,
+      "bob_velFilter": 0.37
     },
     "OddOscar": {
       "morph_bloom": 0.65,
@@ -223,5 +224,11 @@
     "foundation"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "PERC": 0.45,
+    "PAD": 0.45,
+    "BASS": 0.45,
+    "SHIMMER": 0.5
+  }
 }

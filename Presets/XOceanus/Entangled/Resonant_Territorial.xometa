@@ -51,7 +51,8 @@
       "ocelot_macroCoupling": 0.575,
       "ocelot_macroSpace": 0.548,
       "ocelot_filterEnvDepth": 0.405,
-      "ocelot_lfoRate": 0.131
+      "ocelot_lfoRate": 0.131,
+      "ocelot_floorVelocity": 0.774
     },
     "Orbital": {
       "orb_arcDecay": 0.887,

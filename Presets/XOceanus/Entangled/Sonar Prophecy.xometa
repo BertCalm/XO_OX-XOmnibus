@@ -65,7 +65,8 @@
       "orca_pitchRand": 0.042,
       "orca_podSync": 0.235,
       "orca_wavetablePos": 0.348,
-      "orca_wavetableScan": 0.429
+      "orca_wavetableScan": 0.429,
+      "orca_velCutoffAmt": 0.545
     }
   },
   "schema_version": 1,
@@ -77,5 +78,11 @@
     "oracle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.446,
+    "MOVEMENT": 0.556,
+    "COUPLING": 0.43,
+    "SPACE": 0.601
+  }
 }

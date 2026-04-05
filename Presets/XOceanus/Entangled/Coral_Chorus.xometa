@@ -76,7 +76,8 @@
       "bob_sustain": 0.6,
       "bob_release": 1.5,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.463
     }
   },
   "coupling": {
@@ -103,5 +104,11 @@
     "density": 0.6,
     "space": 0.55,
     "aggression": 0.25
+  },
+  "macros": {
+    "PROPHECY": 0.45,
+    "BOB WARMTH": 0.45,
+    "COUPLING": 0.39,
+    "SPACE": 0.55
   }
 }

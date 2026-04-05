@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Reef Density Maximum",
   "mood": "Entangled",
-  "engines": ["Obrix", "Oceanic"],
+  "engines": [
+    "Obrix",
+    "Oceanic"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reef ecology at symbiote maximum — OBRIX three sources in symbiosis with OCEANIC particle field. Harmonic Field prime limit 7, every just ratio occupied.",
-  "tags": ["entangled", "dense", "obrix", "oceanic", "reef", "symbiosis"],
-  "macroLabels": ["REEF", "PARTICLES", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "dense",
+    "obrix",
+    "oceanic",
+    "reef",
+    "symbiosis"
+  ],
+  "macroLabels": [
+    "REEF",
+    "PARTICLES",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -87,5 +102,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "REEF": 0.45,
+    "PARTICLES": 0.45,
+    "COUPLING": 0.642,
+    "SPACE": 0.4
+  }
 }

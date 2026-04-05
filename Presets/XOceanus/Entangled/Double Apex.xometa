@@ -56,11 +56,13 @@
       "orca_pitchRand": 0.07,
       "orca_podSync": 0.13,
       "orca_wavetablePos": 0.779,
-      "orca_wavetableScan": 0.503
+      "orca_wavetableScan": 0.503,
+      "orca_velCutoffAmt": 0.572
     },
     "Overbite": {
       "poss_filterCutoff": 0.459,
-      "poss_macroBite": 0.042
+      "poss_macroBite": 0.042,
+      "poss_ampVelSens": 0.572
     }
   },
   "schema_version": 1,
@@ -72,5 +74,11 @@
     "overbite"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.687,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

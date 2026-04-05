@@ -54,7 +54,8 @@
       "poss_oscBWaveform": 1,
       "poss_subLevel": 0.4,
       "poss_trashAmount": 0.0,
-      "poss_trashMode": 0
+      "poss_trashMode": 0,
+      "poss_ampVelSens": 0.68
     }
   },
   "schema_version": 1,
@@ -66,5 +67,11 @@
     "feral"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.6,
+    "SCURRY": 0.239,
+    "SPACE": 0.1
+  }
 }

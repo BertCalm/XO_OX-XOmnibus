@@ -66,5 +66,11 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": "Bright cold rhythmic motion from Oxytocin."
+  "description": "Bright cold rhythmic motion from Oxytocin.",
+  "macros": {
+    "CHARACTER": 0.712,
+    "MOVEMENT": 0.256,
+    "COUPLING": 0.2,
+    "SPACE": 0.34
+  }
 }

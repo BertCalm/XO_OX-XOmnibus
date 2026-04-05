@@ -46,7 +46,8 @@
       "ofr_dustVinyl": 0.4,
       "ofr_dustWobble": 0.12,
       "ofr_masterWidth": 0.9,
-      "ofr_lfo2Depth": 0.15
+      "ofr_lfo2Depth": 0.15,
+      "ofr_velToSnap": 0.396
     }
   },
   "schema_version": 1,

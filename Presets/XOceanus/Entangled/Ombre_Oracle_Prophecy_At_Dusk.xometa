@@ -62,7 +62,8 @@
       "ombre_shadowAmount": 0.773,
       "ombre_spaceMix": 0.625,
       "ombre_toneA": 7450.9,
-      "ombre_toneB": 1411.5
+      "ombre_toneB": 1411.5,
+      "ombre_velCutoffScale": 0.389
     },
     "Oracle": {
       "oracle_filterCutoff": 1523.5,
@@ -81,5 +82,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.419,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.51,
+    "SPACE": 0.691
+  }
 }

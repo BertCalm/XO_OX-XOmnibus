@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERCAST cloud density drives OPAL grain scatter pattern \u2014 weather systems becoming granular architecture, meteorology as cloud synthesis.",
+  "description": "OVERCAST cloud density drives OPAL grain scatter pattern — weather systems becoming granular architecture, meteorology as cloud synthesis.",
   "tags": [
     "coupling",
     "moderate",
@@ -52,7 +52,8 @@
       "opal_macroCharacter": 0.5,
       "opal_macroMovement": 0.5,
       "opal_macroCoupling": 0.6,
-      "opal_macroSpace": 0.58
+      "opal_macroSpace": 0.58,
+      "opal_ampVelSens": 0.348
     }
   },
   "coupling": {

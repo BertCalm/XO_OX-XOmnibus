@@ -30,7 +30,8 @@
       "ombre_macro_character": 0.26,
       "ombre_macro_coupling": 0.31,
       "ombre_macro_movement": 0.29,
-      "ombre_macro_space": 0.76
+      "ombre_macro_space": 0.76,
+      "ombre_velCutoffScale": 0.245
     }
   },
   "schema_version": 1,

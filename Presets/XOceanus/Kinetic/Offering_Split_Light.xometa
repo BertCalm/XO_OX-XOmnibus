@@ -41,7 +41,8 @@
       "ofr_v4_pan": 0.3,
       "ofr_v5_pan": -0.25,
       "ofr_v6_pan": 0.5,
-      "ofr_v7_pan": -0.5
+      "ofr_v7_pan": -0.5,
+      "ofr_velToSnap": 0.762
     }
   },
   "engines": [

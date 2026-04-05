@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "An aria performed in crystal halls \u2014 Kuramoto synchronicity creating formant resonances of mineral clarity.",
+  "description": "An aria performed in crystal halls — Kuramoto synchronicity creating formant resonances of mineral clarity.",
   "tags": [
     "crystalline",
     "aria",
@@ -39,7 +39,8 @@
       "opera_macroSpace": 0.56,
       "opera_filterEnvAmt": 0.58,
       "opera_lfo1Rate": 0.07,
-      "opera_lfo1Depth": 0.22
+      "opera_lfo1Depth": 0.22,
+      "opera_velToFilter": 0.33
     }
   },
   "coupling": {

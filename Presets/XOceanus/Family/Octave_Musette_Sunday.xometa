@@ -67,5 +67,11 @@
       "oct_lfo2Shape": 0,
       "oct_competition": 0.0
     }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
   }
 }

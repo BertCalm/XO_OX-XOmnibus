@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.617,
       "bob_macroCoupling": 0.799,
       "bob_macroMovement": 0.521,
-      "bob_macroSpace": 0.619
+      "bob_macroSpace": 0.619,
+      "bob_velFilter": 0.625
     },
     "Ottoni": {
       "otto_macroCharacter": 0.62,

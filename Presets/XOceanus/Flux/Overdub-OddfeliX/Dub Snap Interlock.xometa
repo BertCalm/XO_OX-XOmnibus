@@ -92,5 +92,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DUB RATE": 0.45,
+    "SNAP GATE": 0.45,
+    "COUPLING": 0.48,
+    "FILTER": 0.45
+  }
 }

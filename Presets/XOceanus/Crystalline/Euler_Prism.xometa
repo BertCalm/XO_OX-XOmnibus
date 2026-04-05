@@ -39,7 +39,8 @@
       "over_macroSpace": 0.56,
       "over_filterEnvAmt": 0.58,
       "over_lfo1Rate": 0.04,
-      "over_lfo1Depth": 0.2
+      "over_lfo1Depth": 0.2,
+      "over_velBright": 0.374
     }
   },
   "coupling": {

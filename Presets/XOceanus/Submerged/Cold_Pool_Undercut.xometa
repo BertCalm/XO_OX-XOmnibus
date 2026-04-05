@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Cold Pool Undercut",
+  "mood": "Submerged",
+  "engines": [
+    "Outflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cold-air pool undercutting a warm front \u2014 the dense cold air sliding under warm moist air like a wedge, lifting it to condensation altitude and triggering squall lines.",
+  "tags": [
+    "submerged",
+    "outflow",
+    "cold pool",
+    "wedge",
+    "meteorological",
+    "front"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.28,
+    "movement": 0.52,
+    "density": 0.68,
+    "space": 0.62,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Outflow": {
+      "out_macroCharacter": 0.48,
+      "out_macroMovement": 0.52,
+      "out_macroCoupling": 0.18,
+      "out_macroSpace": 0.62,
+      "out_currentSpeed": 0.52,
+      "out_stormDepth": 0.68,
+      "out_filterEnvAmt": 0.42,
+      "out_lfo1Rate": 0.15,
+      "out_lfo1Depth": 0.25,
+      "out_filterCutoff": 0.38,
+      "out_filterRes": 0.32,
+      "out_attackTime": 0.12,
+      "out_decayTime": 0.8,
+      "out_sustain": 0.62,
+      "out_releaseTime": 2.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.18,
+    "SPACE": 0.62
+  }
+}

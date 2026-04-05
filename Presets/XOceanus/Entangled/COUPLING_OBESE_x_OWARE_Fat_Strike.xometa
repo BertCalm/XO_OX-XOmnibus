@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Fat Strike",
   "mood": "Entangled",
-  "engines": ["Obese", "Oware"],
+  "engines": [
+    "Obese",
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Saturated synth voice envelope-coupled to mallet percussion — the fat lead's amplitude drives the sympathetic resonance strings. Rhythm and lead entangled.",
-  "tags": ["distortion", "percussion", "entangled", "aggressive", "sympathetic"],
-  "macroLabels": ["BELLY", "MATERIAL", "COUPLING", "SPACE"],
+  "tags": [
+    "distortion",
+    "percussion",
+    "entangled",
+    "aggressive",
+    "sympathetic"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "MATERIAL",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -73,7 +87,8 @@
       "owr_macroMaterial": 0.82,
       "owr_macroHardness": 0.85,
       "owr_macroBuzz": 0.4,
-      "owr_macroSympathetic": 0.7
+      "owr_macroSympathetic": 0.7,
+      "owr_malletVelocity": 0.85
     }
   },
   "coupling": {
@@ -86,5 +101,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "BELLY": 0.552,
+    "MATERIAL": 0.45,
+    "COUPLING": 0.498,
+    "SPACE": 0.25
+  }
 }

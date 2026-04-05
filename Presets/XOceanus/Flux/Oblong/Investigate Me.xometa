@@ -47,7 +47,8 @@
       "bob_oscB_blend": 0.72,
       "bob_oscB_detune": -8.0,
       "bob_oscB_fm": 0.45,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_velFilter": 0.557
     }
   },
   "schema_version": 1,
@@ -58,5 +59,11 @@
     "morphing"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.389,
+    "MOVEMENT": 0.719,
+    "COUPLING": 0.2,
+    "SPACE": 0.181
+  }
 }

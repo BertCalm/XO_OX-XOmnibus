@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM cellular automaton firing dominantly reshapes OUROBOROS strange attractor leash \u2014 living patterns pulling chaos back and then releasing it in waves.",
+  "description": "ORGANISM cellular automaton firing dominantly reshapes OUROBOROS strange attractor leash — living patterns pulling chaos back and then releasing it in waves.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "org_macroCharacter": 0.64,
       "org_macroMovement": 0.72,
       "org_macroCoupling": 0.75,
-      "org_macroSpace": 0.46
+      "org_macroSpace": 0.46,
+      "org_velCutoff": 0.538
     },
     "Ouroboros": {
       "ouro_topology": 0.65,

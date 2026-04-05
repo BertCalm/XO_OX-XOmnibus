@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme three-engine ocean vortex: OCEANIC surface drives OXBOW phase entanglement which drives OCEANDEEP pressure which feeds back \u2014 three ocean depths in a whirlpool.",
+  "description": "Extreme three-engine ocean vortex: OCEANIC surface drives OXBOW phase entanglement which drives OCEANDEEP pressure which feeds back — three ocean depths in a whirlpool.",
   "tags": [
     "coupling",
     "extreme",
@@ -54,7 +54,8 @@
       "deep_macroCharacter": 0.72,
       "deep_macroMovement": 0.82,
       "deep_macroCoupling": 0.88,
-      "deep_macroSpace": 0.78
+      "deep_macroSpace": 0.78,
+      "deep_velCutoffAmt": 0.55
     },
     "Oxbow": {
       "oxb_entangle": 0.9,

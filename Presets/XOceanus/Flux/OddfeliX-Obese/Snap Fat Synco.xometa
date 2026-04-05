@@ -87,5 +87,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP RHYTHM": 0.45,
+    "FAT ARP": 0.45,
+    "COUPLING": 0.51,
+    "DENSITY": 0.82
+  }
 }

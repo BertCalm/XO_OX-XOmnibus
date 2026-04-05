@@ -42,7 +42,8 @@
       "ocelot_lfoRate": 0.066,
       "ocelot_macroCharacter": 0.019,
       "ocelot_macroCoupling": 0.0,
-      "ocelot_release": 1.0
+      "ocelot_release": 1.0,
+      "ocelot_floorVelocity": 0.748
     },
     "Osteria": {
       "osteria_attack": 0.073,
@@ -91,5 +92,11 @@
     "ocelot"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.408,
+    "COUPLING": 0.536,
+    "SPACE": 0.556
+  }
 }

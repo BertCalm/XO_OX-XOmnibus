@@ -108,5 +108,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "HUNT": 0.4,
+    "MATERIAL": 0.45,
+    "COUPLING": 0.402,
+    "SPACE": 0.62
+  }
 }

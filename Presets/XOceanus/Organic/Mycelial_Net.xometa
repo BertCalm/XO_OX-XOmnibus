@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Mycelial Net",
   "mood": "Organic",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Underground fungal communication network spanning entire forest — chemical messages as low-frequency carrier waves.",
-  "tags": ["organic", "mycelium", "network", "underground", "communication"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "mycelium",
+    "network",
+    "underground",
+    "communication"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,22 +35,25 @@
     "Organism": {
       "org_macroCharacter": 0.46,
       "org_macroMovement": 0.35,
-      "org_macroCoupling": 0.20,
+      "org_macroCoupling": 0.2,
       "org_macroSpace": 0.55,
       "org_ruleSet": 0.45,
       "org_filterEnvAmt": 0.44,
       "org_lfo1Rate": 0.03,
       "org_lfo1Depth": 0.24,
       "org_lfo2Rate": 0.07,
-      "org_lfo2Depth": 0.18
+      "org_lfo2Depth": 0.18,
+      "org_velCutoff": 0.418
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.46,
     "MOVEMENT": 0.35,
-    "COUPLING": 0.20,
+    "COUPLING": 0.2,
     "SPACE": 0.55
   }
 }

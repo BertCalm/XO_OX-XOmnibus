@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Magnetic Declination",
+  "mood": "Ethereal",
+  "engines": [
+    "Opcode"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The angular difference between magnetic north and true north — a slow drift of 0.1 degrees per year that compasses must compensate for. Invisible but geographically essential.",
+  "tags": [
+    "ethereal",
+    "magnetic",
+    "declination",
+    "drift",
+    "invisible",
+    "compass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.18,
+    "density": 0.28,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_codeDepth": 0.35,
+      "opco_filterCutoff": 5800.0,
+      "opco_filterRes": 0.12,
+      "opco_attack": 2.0,
+      "opco_decay": 4.0,
+      "opco_sustain": 0.85,
+      "opco_release": 8.5,
+      "opco_lfo1Rate": 0.03,
+      "opco_lfo1Depth": 0.15,
+      "opco_macroCharacter": 0.35,
+      "opco_macroMovement": 0.18,
+      "opco_macroCoupling": 0.08,
+      "opco_macroSpace": 0.88,
+      "opco_velToIndex": 0.306
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.08,
+    "SPACE": 0.88
+  }
+}

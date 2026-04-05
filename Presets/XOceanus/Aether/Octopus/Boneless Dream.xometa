@@ -82,5 +82,11 @@
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.2,
+    "SPACE": 0.95
   }
 }

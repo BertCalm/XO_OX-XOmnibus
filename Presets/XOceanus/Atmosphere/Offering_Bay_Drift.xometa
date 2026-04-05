@@ -44,7 +44,8 @@
       "ofr_lfo1Depth": 0.12,
       "ofr_lfo1Rate": 0.03,
       "ofr_masterWidth": 0.85,
-      "ofr_envFilterAmt": 0.35
+      "ofr_envFilterAmt": 0.35,
+      "ofr_velToSnap": 0.408
     }
   },
   "schema_version": 1,

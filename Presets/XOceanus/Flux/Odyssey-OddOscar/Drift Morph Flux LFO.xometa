@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT LFO": 0.45,
+    "MORPH PITCH": 0.45,
+    "RATE": 0.45,
+    "DEPTH": 0.52
+  }
 }

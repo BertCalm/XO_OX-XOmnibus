@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCELOT biome signals feed ORGANISM cellular automata rule evolution \u2014 habitat data teaching cells new behaviors, ecology as generative logic.",
+  "description": "OCELOT biome signals feed ORGANISM cellular automata rule evolution — habitat data teaching cells new behaviors, ecology as generative logic.",
   "tags": [
     "coupling",
     "moderate",
@@ -42,7 +42,8 @@
       "ocelot_macroCharacter": 0.52,
       "ocelot_macroMovement": 0.54,
       "ocelot_macroCoupling": 0.62,
-      "ocelot_macroSpace": 0.5
+      "ocelot_macroSpace": 0.5,
+      "ocelot_floorVelocity": 0.682
     },
     "Organism": {
       "org_ruleSet": 0.55,
@@ -52,7 +53,8 @@
       "org_macroCharacter": 0.5,
       "org_macroMovement": 0.54,
       "org_macroCoupling": 0.6,
-      "org_macroSpace": 0.5
+      "org_macroSpace": 0.5,
+      "org_velCutoff": 0.455
     }
   },
   "coupling": {

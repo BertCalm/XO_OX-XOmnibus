@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Cull Resonance",
+  "mood": "Deep",
+  "engines": [
+    "Oasis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum cull decay \u2014 resonator rings at near-infinite sustain, canopy feedback at threshold. The spring sound that refuses to end, reverberating through stone.",
+  "tags": [
+    "deep",
+    "cull",
+    "resonance",
+    "sustained",
+    "infinite",
+    "cavern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_entropySens": 0.28,
+      "oas_breeze": 0.35,
+      "oas_swarmDensity": 0.52,
+      "oas_lagoonDepth": 0.92,
+      "oas_subDrive": 0.15,
+      "oas_resonatorQ": 9.0,
+      "oas_cullDecay": 0.99995,
+      "oas_canopyFB": 0.92,
+      "oas_filterCutoff": 4500.0,
+      "oas_filterEnvAmt": 0.18,
+      "oas_pickupPos": 0.58,
+      "oas_bellAmount": 0.48,
+      "oas_warmth": 0.55,
+      "oas_tremoloDepth": 0.0,
+      "oas_tremoloRate": 5.0,
+      "oas_glideTime": 0.0,
+      "oas_macroCharacter": 0.38,
+      "oas_macroMovement": 0.18,
+      "oas_macroCoupling": 0.12,
+      "oas_macroSpace": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.88
+  }
+}

@@ -82,7 +82,8 @@
       "sky_macroMovement": 0.371,
       "sky_macroCoupling": 0.145,
       "sky_macroSpace": 0.295,
-      "sky_filterEnvAmt": 0.372
+      "sky_filterEnvAmt": 0.372,
+      "sky_velSensitivity": 0.42
     }
   },
   "coupling": {

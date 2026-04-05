@@ -2,25 +2,41 @@
   "schema_version": 1,
   "name": "Entangled Garden",
   "mood": "Atmosphere",
-  "engines": ["Oxbow", "Organism"],
+  "engines": [
+    "Oxbow",
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chiasmus reverb threads through living coral colony. Each cellular generation changes slightly what the reverb remembers of itself.",
-  "tags": ["atmosphere", "whisper", "coupling", "reverb", "cellular", "growth", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "reverb",
+    "cellular",
+    "growth",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
     "warmth": 0.62,
     "movement": 0.38,
-    "density": 0.50,
+    "density": 0.5,
     "space": 0.84,
     "aggression": 0.05
   },
   "parameters": {
     "Oxbow": {
-      "oxb_macroCharacter": 0.40,
+      "oxb_macroCharacter": 0.4,
       "oxb_macroMovement": 0.36,
       "oxb_macroCoupling": 0.14,
       "oxb_macroSpace": 0.82,
@@ -33,7 +49,7 @@
     },
     "Organism": {
       "org_macroCharacter": 0.38,
-      "org_macroMovement": 0.40,
+      "org_macroMovement": 0.4,
       "org_macroCoupling": 0.13,
       "org_macroSpace": 0.78,
       "org_ruleSet": 0.35,
@@ -41,7 +57,8 @@
       "org_lfo1Rate": 0.08,
       "org_lfo1Depth": 0.24,
       "org_attack": 0.4,
-      "org_release": 2.8
+      "org_release": 2.8,
+      "org_velCutoff": 0.31
     }
   },
   "coupling": {
@@ -59,6 +76,6 @@
     "CHARACTER": 0.39,
     "MOVEMENT": 0.38,
     "COUPLING": 0.13,
-    "SPACE": 0.80
+    "SPACE": 0.8
   }
 }

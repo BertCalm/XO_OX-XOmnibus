@@ -123,5 +123,11 @@
     "awakening"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "ERA": 0.55,
+    "CIRCUIT": 0.45,
+    "GLITCH": 0.2,
+    "SPACE": 0.6
+  }
 }

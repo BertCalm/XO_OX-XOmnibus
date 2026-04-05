@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM EP designed for coupling with drum engines \u2014 velocity coupling input modulates index for velocity-sensitive dynamics.",
+  "description": "FM EP designed for coupling with drum engines — velocity coupling input modulates index for velocity-sensitive dynamics.",
   "tags": [
     "fm",
     "ep",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  }
 }

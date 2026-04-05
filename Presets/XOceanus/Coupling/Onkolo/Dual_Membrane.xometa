@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Two membranes in conversation \u2014 clunk and migration create a paired mechanical resonance. Physical model coupling.",
+  "description": "Two membranes in conversation — clunk and migration create a paired mechanical resonance. Physical model coupling.",
   "tags": [
     "clavinet",
     "dual",
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.2,
+    "SPACE": 0.52
+  }
 }

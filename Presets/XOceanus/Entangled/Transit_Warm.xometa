@@ -47,7 +47,8 @@
       "bob_macro3": 0.549,
       "bob_macro4": 0.487,
       "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08
+      "bob_lfo1Depth": 0.08,
+      "bob_velFilter": 0.515
     },
     "Orbital": {
       "orb_arcDecay": 0.744,
@@ -73,5 +74,11 @@
     "entangled"
   ],
   "tempo": 120,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.521,
+    "MOVEMENT": 0.515,
+    "COUPLING": 0.577,
+    "SPACE": 0.562
+  }
 }

@@ -83,5 +83,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "KNOT": 0.454,
+    "PULSE": 0.43,
+    "ENTRAIN": 0.376,
+    "BLOOM": 0.393
+  }
 }

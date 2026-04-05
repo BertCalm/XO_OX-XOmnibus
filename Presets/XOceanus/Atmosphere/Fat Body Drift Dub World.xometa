@@ -111,7 +111,8 @@
       "bob_level": 0.7,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_velFilter": 0.312
     },
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -214,5 +215,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "FAT EARTH": 0.45,
+    "BOB LIFE": 0.45,
+    "DRIFT SKY": 0.45,
+    "DUB WATER": 0.45
+  }
 }

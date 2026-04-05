@@ -62,5 +62,11 @@
       "org_macroMutate": 0.0
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "RULE": 0.415,
+    "SEED": 0.278,
+    "COUPLING": 0.2,
+    "MUTATE": 0.271
+  }
 }

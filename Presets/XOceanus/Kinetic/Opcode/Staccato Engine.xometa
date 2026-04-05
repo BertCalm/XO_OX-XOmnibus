@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Algorithm 2 feedback for a harsh staccato engine sound \u2014 very short envelope, self-modulating carrier at ratio 1.",
+  "description": "Algorithm 2 feedback for a harsh staccato engine sound — very short envelope, self-modulating carrier at ratio 1.",
   "tags": [
     "fm",
     "feedback",
@@ -65,5 +65,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.15
+  }
 }

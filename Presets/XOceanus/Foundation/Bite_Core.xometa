@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Bite Core",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The core bite preset. Foundational possum aggression — maximum bite depth as starting point.",
-  "tags": ["foundation", "aggressive", "bite", "core", "possum"],
-  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "tags": [
+    "foundation",
+    "aggressive",
+    "bite",
+    "core",
+    "possum"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "PLAY DEAD",
+    "SCURRY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -34,10 +47,13 @@
       "poss_attackTime": 0.007,
       "poss_decayTime": 0.26,
       "poss_sustain": 0.4,
-      "poss_releaseTime": 0.22
+      "poss_releaseTime": 0.22,
+      "poss_ampVelSens": 0.486
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.9,

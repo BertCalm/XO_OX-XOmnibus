@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Submerged Letter",
   "mood": "Atmosphere",
-  "engines": ["Ombre", "OceanDeep"],
+  "engines": [
+    "Ombre",
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Words written long ago, pressed into the deep. Ombre's forgetting layers drift down into OceanDeep's crushing silence, ink slowly dissolving.",
-  "tags": ["atmosphere", "whisper", "coupling", "deep", "memory", "dissolve", "pressure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "whisper",
+    "coupling",
+    "deep",
+    "memory",
+    "dissolve",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Whisper",
   "tempo": null,
   "dna": {
@@ -25,14 +41,15 @@
       "ombre_macroCoupling": 0.13,
       "ombre_macroSpace": 0.82,
       "ombre_blend": 0.42,
-      "ombre_filterEnvAmt": 0.30,
+      "ombre_filterEnvAmt": 0.3,
       "ombre_lfo1Rate": 0.03,
       "ombre_lfo1Depth": 0.16,
       "ombre_attack": 1.8,
-      "ombre_release": 6.0
+      "ombre_release": 6.0,
+      "ombre_velCutoffScale": 0.245
     },
     "OceanDeep": {
-      "deep_macroCharacter": 0.30,
+      "deep_macroCharacter": 0.3,
       "deep_macroMovement": 0.25,
       "deep_macroCoupling": 0.15,
       "deep_macroSpace": 0.88,
@@ -41,7 +58,8 @@
       "deep_lfo1Rate": 0.02,
       "deep_lfo1Depth": 0.12,
       "deep_attack": 2.5,
-      "deep_release": 7.0
+      "deep_release": 7.0,
+      "deep_velCutoffAmt": 0.306
     }
   },
   "coupling": {
@@ -50,7 +68,7 @@
         "engineA": "Ombre",
         "engineB": "OceanDeep",
         "type": "EnvToDecay",
-        "amount": 0.10
+        "amount": 0.1
       }
     ]
   },

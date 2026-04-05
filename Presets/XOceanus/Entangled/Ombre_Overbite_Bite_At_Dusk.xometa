@@ -62,11 +62,13 @@
       "ombre_shadowAmount": 0.708,
       "ombre_spaceMix": 0.707,
       "ombre_toneA": 6044.6,
-      "ombre_toneB": 2898.0
+      "ombre_toneB": 2898.0,
+      "ombre_velCutoffScale": 0.395
     },
     "Overbite": {
       "poss_filterCutoff": 8810.9,
-      "poss_level": 0.821
+      "poss_level": 0.821,
+      "poss_ampVelSens": 0.494
     }
   },
   "schema_version": 1,
@@ -81,5 +83,11 @@
     "liminal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "BELLY": 0.552,
+    "BITE": 0.377,
+    "SCURRY": 0.239,
+    "TRASH": 0.174
+  }
 }

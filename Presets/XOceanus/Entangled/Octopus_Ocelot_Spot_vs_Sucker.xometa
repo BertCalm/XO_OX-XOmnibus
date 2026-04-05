@@ -36,7 +36,8 @@
   "parameters": {
     "Ocelot": {
       "ocelot_filterCutoff": 5154.8,
-      "ocelot_level": 0.69
+      "ocelot_level": 0.69,
+      "ocelot_floorVelocity": 0.828
     },
     "Octopus": {
       "octo_ampAttack": 0.0762,
@@ -91,5 +92,11 @@
     "decentralized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.657,
+    "MOVEMENT": 0.825,
+    "COUPLING": 0.48,
+    "SPACE": 0.374
+  }
 }

@@ -93,5 +93,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH POSITION": 0.45,
+    "FAT DENSITY": 0.45,
+    "COUPLING": 0.45,
+    "FILTER": 0.45
+  }
 }

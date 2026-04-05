@@ -157,5 +157,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP TOP": 0.45,
+    "DRIFT SHIMMER": 0.45,
+    "MORPH MIDDLE": 0.45,
+    "FAT BASE": 0.45
+  }
 }

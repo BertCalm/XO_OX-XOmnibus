@@ -51,7 +51,8 @@
       "opal_macroSpace": 0.449,
       "opal_filterEnvAmt": 0.421,
       "opal_lfo1Rate": 0.178,
-      "opal_lfo1Depth": 0.319
+      "opal_lfo1Depth": 0.319,
+      "opal_ampVelSens": 0.344
     },
     "Overlap": {
       "olap_damping": 0.45,

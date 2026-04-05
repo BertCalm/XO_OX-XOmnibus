@@ -42,7 +42,8 @@
       "ofr_v3_decay": 0.6,
       "ofr_v3_body": 0.4,
       "ofr_v6_pan": 0.5,
-      "ofr_v7_pan": -0.5
+      "ofr_v7_pan": -0.5,
+      "ofr_velToSnap": 0.708
     }
   },
   "engines": [

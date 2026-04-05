@@ -98,5 +98,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH ARP": 0.45,
+    "DRIFT TRAIL": 0.45,
+    "COUPLING": 0.36,
+    "RATE": 0.45
+  }
 }

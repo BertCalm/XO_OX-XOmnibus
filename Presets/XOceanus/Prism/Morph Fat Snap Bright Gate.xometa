@@ -109,5 +109,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "SNAP GATE": 0.45,
+    "MORPH SPECTRAL": 0.45,
+    "FAT BRIGHT": 0.45,
+    "COUPLING": 0.582
+  }
 }

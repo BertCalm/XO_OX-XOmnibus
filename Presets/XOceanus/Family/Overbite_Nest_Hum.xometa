@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Continuous gentle hum of a nest at rest \u2014 low sustaining sine with minimal movement.",
+  "description": "Continuous gentle hum of a nest at rest — low sustaining sine with minimal movement.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.25,
@@ -50,7 +50,8 @@
       "poss_macroTrash": 0.0,
       "poss_oscADrift": 0.08,
       "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.5
+      "poss_subLevel": 0.5,
+      "poss_ampVelSens": 0.413
     }
   },
   "schema_version": 1,

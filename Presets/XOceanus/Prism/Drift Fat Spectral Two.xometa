@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT FORMANT": 0.45,
+    "FAT BRIGHT": 0.45,
+    "COUPLING": 0.342,
+    "FILTER": 0.45
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OMBRE memory/forgetting blend dominantly floods OPAL grain cloud size \u2014 memory depth controlling how large granular clouds grow, forgetting as grain extinction.",
+  "description": "OMBRE memory/forgetting blend dominantly floods OPAL grain cloud size — memory depth controlling how large granular clouds grow, forgetting as grain extinction.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "ombre_macroCharacter": 0.62,
       "ombre_macroMovement": 0.62,
       "ombre_macroCoupling": 0.75,
-      "ombre_macroSpace": 0.58
+      "ombre_macroSpace": 0.58,
+      "ombre_velCutoffScale": 0.384
     },
     "Opal": {
       "opal_grainSize": 0.72,
@@ -52,7 +53,8 @@
       "opal_macroCharacter": 0.6,
       "opal_macroMovement": 0.62,
       "opal_macroCoupling": 0.72,
-      "opal_macroSpace": 0.58
+      "opal_macroSpace": 0.58,
+      "opal_ampVelSens": 0.384
     }
   },
   "coupling": {

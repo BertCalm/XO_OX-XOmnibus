@@ -83,5 +83,11 @@
     "adhesion",
     "transcendental"
   ],
-  "description": "Maximum sucker resonance at suckerMix=0.85 — the high-Q bandpass adhesion transient dominates every attack. OCTOPUS as a physical plucking instrument; each note is a tentacle grip."
+  "description": "Maximum sucker resonance at suckerMix=0.85 — the high-Q bandpass adhesion transient dominates every attack. OCTOPUS as a physical plucking instrument; each note is a tentacle grip.",
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.4
+  }
 }

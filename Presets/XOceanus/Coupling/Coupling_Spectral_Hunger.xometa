@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERTONE continued fraction convergents heavily reshape ORGANON metabolic parameters \u2014 number theory driving biological variation, mathematics as life.",
+  "description": "OVERTONE continued fraction convergents heavily reshape ORGANON metabolic parameters — number theory driving biological variation, mathematics as life.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "over_macroCharacter": 0.64,
       "over_macroMovement": 0.68,
       "over_macroCoupling": 0.75,
-      "over_macroSpace": 0.54
+      "over_macroSpace": 0.54,
+      "over_velBright": 0.446
     },
     "Organon": {
       "organon_metabolicRate": 0.72,

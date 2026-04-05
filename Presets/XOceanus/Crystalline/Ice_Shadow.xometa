@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A shadow frozen in ice \u2014 the dual narrative of memory and forgetting crystallized at the cold-dark boundary.",
+  "description": "A shadow frozen in ice — the dual narrative of memory and forgetting crystallized at the cold-dark boundary.",
   "tags": [
     "crystalline",
     "ice",
@@ -39,7 +39,8 @@
       "ombre_macroSpace": 0.59,
       "ombre_filterEnvAmt": 0.42,
       "ombre_lfo1Rate": 0.1,
-      "ombre_lfo1Depth": 0.14
+      "ombre_lfo1Depth": 0.14,
+      "ombre_velCutoffScale": 0.336
     }
   },
   "coupling": {

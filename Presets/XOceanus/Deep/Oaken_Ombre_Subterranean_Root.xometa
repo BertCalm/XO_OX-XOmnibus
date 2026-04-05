@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Subterranean Root",
   "mood": "Deep",
-  "engines": ["Oaken", "Ombre"],
+  "engines": [
+    "Oaken",
+    "Ombre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ancient wood resonance fading through shadow memory — Oaken's warm grain filtered through Ombre's forgetting narrative, each ring of growth a dimmer echo.",
-  "tags": ["deep", "coupled", "woody", "memory", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "coupled",
+    "woody",
+    "memory",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {
@@ -24,20 +38,21 @@
       "oaken_macroMovement": 0.16,
       "oaken_macroCoupling": 0.28,
       "oaken_macroSpace": 0.62,
-      "oaken_filterEnvAmt": 0.40,
+      "oaken_filterEnvAmt": 0.4,
       "oaken_lfo1Rate": 0.02,
       "oaken_lfo1Depth": 0.14,
-      "oaken_stringAge": 0.80
+      "oaken_stringAge": 0.8
     },
     "Ombre": {
       "ombre_macroCharacter": 0.42,
       "ombre_macroMovement": 0.16,
       "ombre_macroCoupling": 0.26,
-      "ombre_macroSpace": 0.70,
+      "ombre_macroSpace": 0.7,
       "ombre_filterEnvAmt": 0.34,
       "ombre_lfo1Rate": 0.03,
       "ombre_lfo1Depth": 0.16,
-      "ombre_blend": 0.52
+      "ombre_blend": 0.52,
+      "ombre_velCutoffScale": 0.332
     }
   },
   "coupling": {

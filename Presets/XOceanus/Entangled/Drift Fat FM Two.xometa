@@ -117,5 +117,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "DRIFT CARRIER": 0.45,
+    "FAT FM": 0.45,
+    "FM DEPTH": 0.45,
+    "DENSITY": 0.88
+  }
 }

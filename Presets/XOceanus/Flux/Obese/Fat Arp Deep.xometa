@@ -69,5 +69,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "ARP RATE": 0.45,
+    "OCTAVES": 0.45,
+    "SUB": 0.45,
+    "FILTER": 0.45
+  }
 }

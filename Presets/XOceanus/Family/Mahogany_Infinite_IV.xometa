@@ -64,5 +64,11 @@
     "family"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.075,
+    "COUPLING": 0.666,
+    "SPACE": 0.951
+  }
 }

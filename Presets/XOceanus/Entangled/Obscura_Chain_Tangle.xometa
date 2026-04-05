@@ -103,5 +103,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "TANGLE": 0.45,
+    "MORPH": 0.45,
+    "COUPLING": 0.42,
+    "SPACE": 0.45
+  }
 }

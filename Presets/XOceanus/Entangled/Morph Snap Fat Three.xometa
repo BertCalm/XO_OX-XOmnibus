@@ -109,5 +109,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "MORPH EVOLVE": 0.45,
+    "SNAP FIRE": 0.45,
+    "FAT GROUND": 0.45,
+    "COUPLING": 0.522
+  }
 }

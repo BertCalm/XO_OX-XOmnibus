@@ -42,7 +42,8 @@
       "ocelot_lfoRate": 0.122,
       "ocelot_macroCharacter": 0.008,
       "ocelot_macroCoupling": 0.0,
-      "ocelot_release": 1.0
+      "ocelot_release": 1.0,
+      "ocelot_floorVelocity": 0.795
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.515,
@@ -68,7 +69,8 @@
       "owl_resonantFeedback": 0.621,
       "owl_resonantPitch": 0.411,
       "owl_shimmer": 0.189,
-      "owl_subLevel": 0.104
+      "owl_subLevel": 0.104,
+      "owl_velocity": 0.689
     }
   },
   "schema_version": 1,
@@ -80,5 +82,11 @@
     "ocelot"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.433,
+    "COUPLING": 0.658,
+    "SPACE": 0.352
+  }
 }

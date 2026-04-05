@@ -48,7 +48,8 @@
       "owr_macroMaterial": 0.28,
       "owr_macroMallet": 0.15,
       "owr_macroCoupling": 0.0,
-      "owr_macroSpace": 0.88
+      "owr_macroSpace": 0.88,
+      "owr_malletVelocity": 0.474
     }
   },
   "schema_version": 1,

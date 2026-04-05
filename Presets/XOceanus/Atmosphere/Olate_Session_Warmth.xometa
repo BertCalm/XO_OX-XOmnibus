@@ -60,5 +60,11 @@
     "session"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.2,
+    "SPACE": 0.32
+  }
 }

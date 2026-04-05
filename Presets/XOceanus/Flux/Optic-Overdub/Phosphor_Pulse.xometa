@@ -106,5 +106,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "PULSE RATE": 0.45,
+    "EVOLVE": 0.9,
+    "BASS DEPTH": 0.45,
+    "SPACE": 0.4
+  }
 }

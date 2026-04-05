@@ -1,0 +1,79 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Maximum Genesis ERA, sixteen voices at maximum detune, glitch at near-maximum. The digital atmosphere in catastrophic failure mode \u2014 still coherent enough to be atmospheric, not noise.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.92,
+    "density": 0.92,
+    "movement": 0.95,
+    "space": 0.45,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Kinetic",
+  "name": "Overworld Cascade Collapse",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.03,
+      "ow_ampDecay": 0.25,
+      "ow_ampRelease": 2.0,
+      "ow_ampSustain": 0.38,
+      "ow_detune": 0.88,
+      "ow_eraBalance": 0.98,
+      "ow_filterCutoff": 0.98,
+      "ow_filterReso": 0.88,
+      "ow_glitchDepth": 0.95,
+      "ow_glitchRate": 0.92,
+      "ow_glitchType": 5,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroSpace": 0.62,
+      "ow_reverbMix": 0.45,
+      "ow_spread": 0.95,
+      "ow_voiceCount": 16,
+      "ow_macroEra": 0.446,
+      "ow_macroCrush": 0.373,
+      "ow_macroGlitch": 0.245,
+      "ow_filterEnvDepth": 0.363,
+      "ow_fmLfoRate": 0.11,
+      "ow_fmLfoDepth": 0.242
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "storm",
+    "overworld",
+    "cascade",
+    "collapse",
+    "maximum",
+    "kinetic"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.433,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.232,
+    "SPACE": 0.607
+  }
+}

@@ -58,7 +58,8 @@
       "bob_reverbMix": 0.333,
       "bob_scaleMode": 1.0,
       "bob_subOscLevel": 0.448,
-      "bob_curAmount": 0.2
+      "bob_curAmount": 0.2,
+      "bob_velFilter": 0.493
     },
     "Osprey": {
       "osprey_filterTilt": 0.807
@@ -73,5 +74,11 @@
     "osprey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.555,
+    "COUPLING": 0.57,
+    "SPACE": 0.519
+  }
 }

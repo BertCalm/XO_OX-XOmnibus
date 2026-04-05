@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OWARE sympathetic resonance flood heavily drives OVERGROW forest growth \u2014 tuned percussion sympathetics triggering mass organic expansion.",
+  "description": "OWARE sympathetic resonance flood heavily drives OVERGROW forest growth — tuned percussion sympathetics triggering mass organic expansion.",
   "tags": [
     "coupling",
     "heavy",
@@ -42,7 +42,8 @@
       "owr_macroCharacter": 0.64,
       "owr_macroMovement": 0.65,
       "owr_macroCoupling": 0.75,
-      "owr_macroSpace": 0.52
+      "owr_macroSpace": 0.52,
+      "owr_malletVelocity": 0.72
     },
     "Overgrow": {
       "grow_growthRate": 0.75,

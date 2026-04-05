@@ -42,7 +42,8 @@
       "sky_macroCharacter": 0.54,
       "sky_macroMovement": 0.56,
       "sky_macroCoupling": 0.62,
-      "sky_macroSpace": 0.62
+      "sky_macroSpace": 0.62,
+      "sky_velSensitivity": 0.609
     },
     "Obscura": {
       "obscura_stiffness": 0.55,

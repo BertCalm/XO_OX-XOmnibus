@@ -43,7 +43,8 @@
       "bob_macroCharacter": 0.22,
       "bob_macroCoupling": 0.79,
       "bob_macroMovement": 0.5,
-      "bob_macroSpace": 0.82
+      "bob_macroSpace": 0.82,
+      "bob_velFilter": 0.525
     },
     "Outwit": {
       "owit_macroCharacter": 0.65,

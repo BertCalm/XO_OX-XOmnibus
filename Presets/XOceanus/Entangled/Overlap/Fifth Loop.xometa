@@ -82,5 +82,11 @@
     "harmonic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "KNOT": 0.454,
+    "PULSE": 0.43,
+    "ENTRAIN": 0.376,
+    "BLOOM": 0.393
+  }
 }

@@ -107,5 +107,11 @@
     "tonal-axis"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.522,
+    "SPACE": 0.68
+  }
 }
