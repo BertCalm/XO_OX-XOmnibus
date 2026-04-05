@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Horizon Scan",
+  "name": "Horizon Scan (Outlook + OpenSky)",
   "mood": "Coupling",
   "engines": [
     "Outlook",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OUTLOOK panoramic scan drives OPENSKY shimmer horizon \u2014 visionary architecture and euphoric sky in parallel ascent, two horizon metaphors interacting.",
+  "description": "OUTLOOK panoramic scan drives OPENSKY shimmer horizon — visionary architecture and euphoric sky in parallel ascent, two horizon metaphors interacting.",
   "tags": [
     "coupling",
     "moderate",

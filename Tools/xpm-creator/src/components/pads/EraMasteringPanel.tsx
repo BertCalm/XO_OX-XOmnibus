@@ -8,7 +8,7 @@ import { useAudioStore } from '@/stores/audioStore';
 import { useToastStore } from '@/stores/toastStore';
 import { generateWaveformPeaks } from '@/lib/audio/audioUtils';
 import { getDecodedBuffer, invalidateCache } from '@/lib/audio/audioBufferCache';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import Button from '@/components/ui/Button';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import Slider from '@/components/ui/Slider';
@@ -35,7 +35,7 @@ async function masterSampleInPlace(
     intensity: intensityPct / 100,
   });
 
-  const wavData = encodeWav(mastered, 16);
+  const wavData = await encodeWavAsync(mastered, 16);
   const newPeaks = generateWaveformPeaks(mastered);
 
   updateSample(sampleId, {

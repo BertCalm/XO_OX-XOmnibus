@@ -13,13 +13,11 @@ import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import ContextMenu, { type ContextMenuItem } from '@/components/ui/ContextMenu';
 import Select from '@/components/ui/Select';
 import UndoTimeline from '@/components/tools/UndoTimeline';
-import { MpcContractStrip } from '@/components/pads/MpcContractStrip';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useToastStore } from '@/stores/toastStore';
 import { PAD_MAP_TEMPLATES } from '@/constants/padMapTemplates';
 import type { AudioSample } from '@/types';
 import type { PadSelectMode } from '@/stores/padStore';
-import { getVelocityZones } from '@/lib/xpn-spec';
 
 const BANK_LABELS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -43,12 +41,21 @@ const DISPLAY_ORDER = [
   0, 1, 2, 3,
 ];
 
-/**
- * Return velocity splits for `count` layers using the canonical XPN spec zones.
- * Single source of truth: Tools/xpn-spec.json via @/lib/xpn-spec.
- */
 function computeVelocitySplits(count: number): Array<{ velStart: number; velEnd: number }> {
-  return getVelocityZones(count).map((z) => ({ velStart: z.low, velEnd: z.high }));
+  if (count <= 0) return [];
+  if (count === 1) return [{ velStart: 0, velEnd: 127 }];
+  if (count === 2) return [{ velStart: 0, velEnd: 63 }, { velStart: 64, velEnd: 127 }];
+  if (count === 3) return [{ velStart: 0, velEnd: 42 }, { velStart: 43, velEnd: 84 }, { velStart: 85, velEnd: 127 }];
+  if (count === 4) return [{ velStart: 0, velEnd: 31 }, { velStart: 32, velEnd: 63 }, { velStart: 64, velEnd: 95 }, { velStart: 96, velEnd: 127 }];
+
+  const splits: Array<{ velStart: number; velEnd: number }> = [];
+  const rangePerLayer = 128 / count;
+  for (let i = 0; i < count; i++) {
+    const velStart = Math.round(i * rangePerLayer);
+    const velEnd = i === count - 1 ? 127 : Math.round((i + 1) * rangePerLayer) - 1;
+    splits.push({ velStart, velEnd });
+  }
+  return splits;
 }
 
 export default function PadGrid() {
@@ -198,8 +205,8 @@ export default function PadGrid() {
   );
 
   const handlePlayPad = useCallback(
-    (globalIndex: number) => {
-      triggerPad(globalIndex);
+    (globalIndex: number, velocity: number) => {
+      triggerPad(globalIndex, velocity);
     },
     [triggerPad]
   );
@@ -452,9 +459,6 @@ export default function PadGrid() {
           Drag audio files onto pads or import samples above
         </p>
       )}
-
-      {/* MPC Contract compliance strip */}
-      <MpcContractStrip />
 
       {/* Undo Timeline */}
       <UndoTimeline />

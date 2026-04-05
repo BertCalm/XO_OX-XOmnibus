@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Arc Flash",
+  "name": "Arc Flash (Oxytocin)",
   "author": "XO_OX Designs",
   "mood": "Flux",
   "tags": [
@@ -66,5 +66,5 @@
   "engines": [
     "Oxytocin"
   ],
-  "description": ""
+  "description": "Aggressive evolving texture from Oxytocin."
 }

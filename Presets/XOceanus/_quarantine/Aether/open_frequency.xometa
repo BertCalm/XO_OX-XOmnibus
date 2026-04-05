@@ -24,7 +24,7 @@
     "SPACE": 0.92
   },
   "mood": "Aether",
-  "name": "Open Frequency",
+  "name": "Open Frequency (Quarantine)",
   "parameters": {
     "Ombre": {}
   },
@@ -39,6 +39,6 @@
     "pairs": []
   },
   "tempo": null,
-  "description": "",
+  "description": "Gentle sparse aetheric sound from Ombre.",
   "quarantine_reason": "legacy_uncategorized"
 }

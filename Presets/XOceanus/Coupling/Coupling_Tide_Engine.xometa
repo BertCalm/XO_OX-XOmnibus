@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tide Engine",
+  "name": "Tide Engine (Oceanic + Orbweave)",
   "mood": "Coupling",
   "engines": [
     "Oceanic",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCEANIC chromatophore signal feeds ORBWEAVE knot topology matrix \u2014 ocean color change patterns rewiring topological coupling paths.",
+  "description": "OCEANIC chromatophore signal feeds ORBWEAVE knot topology matrix — ocean color change patterns rewiring topological coupling paths.",
   "tags": [
     "coupling",
     "moderate",

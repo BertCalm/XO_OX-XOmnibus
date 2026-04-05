@@ -13,7 +13,7 @@ import {
   applyTransientSnap,
   applyValveBloom,
 } from './sculptingProcessors';
-import { encodeWav } from './wavEncoder';
+import { encodeWavAsync } from './wavEncoder';
 import { generateWaveformPeaks } from './audioUtils';
 import { v4 as uuid } from 'uuid';
 import type { AudioSample } from '@/types';
@@ -1228,7 +1228,7 @@ export async function generateVelocityLayers(
 
     const processed = await processLayer(source, spec);
 
-    const wavBuffer = encodeWav(processed, 16);
+    const wavBuffer = await encodeWavAsync(processed, 16);
     const peaks = generateWaveformPeaks(processed);
 
     const sample: AudioSample = {

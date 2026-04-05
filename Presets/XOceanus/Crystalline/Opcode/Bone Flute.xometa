@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bone Flute",
+  "name": "Bone Flute (Opcode)",
   "mood": "Crystalline",
   "engines": [
     "Opcode"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pure FM flute \u2014 parallel algorithm, near-unity ratio. Breathy upper harmonics via LFO1. Ancient and simple.",
+  "description": "Pure FM flute — parallel algorithm, near-unity ratio. Breathy upper harmonics via LFO1. Ancient and simple.",
   "tags": [
     "fm",
     "flute",

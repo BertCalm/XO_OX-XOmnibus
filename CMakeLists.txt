@@ -471,6 +471,10 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Offering/OfferingTransient.h
     Source/Engines/Offering/OfferingEngine.cpp
 
+    # OXIDIZE — age-based corrosion synthesis engine
+    Source/Engines/Oxidize/OxidizeEngine.h
+    Source/Engines/Oxidize/OxidizeEngine.cpp
+
     # Late-registered engines (closes #162)
     Source/Engines/Obiont/ObiontEngine.h
     Source/Engines/Obiont/ObiontEngine.cpp

@@ -1,21 +1,34 @@
 {
   "schema_version": 1,
-  "name": "Root System",
+  "name": "Root System (Oaken)",
   "mood": "Deep",
-  "engines": ["Oaken"],
+  "engines": [
+    "Oaken"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ancient oak root systems reaching 30 feet underground — the woody resonance of living wood pressing into dark soil, drinking from aquifers older than the tree.",
-  "tags": ["deep", "woody", "ancient", "root", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "woody",
+    "ancient",
+    "root",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.14,
-    "warmth": 0.80,
+    "warmth": 0.8,
     "movement": 0.15,
     "density": 0.68,
-    "space": 0.60,
+    "space": 0.6,
     "aggression": 0.08
   },
   "parameters": {
@@ -30,7 +43,9 @@
       "oaken_stringAge": 0.85
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.52,

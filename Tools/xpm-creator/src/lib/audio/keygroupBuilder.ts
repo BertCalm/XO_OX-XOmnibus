@@ -1,6 +1,6 @@
 import { getAudioContext } from './audioContext';
 import { decodeArrayBuffer, generateWaveformPeaks } from './audioUtils';
-import { encodeWav } from './wavEncoder';
+import { encodeWavAsync } from './wavEncoder';
 import { pitchShiftSemitones } from './pitchShifter';
 import {
   generateVelocityLayers,

@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-**0 factory presets** in XOlokun. 34 presets in standalone XOceanic repo (not integrated).
+**0 factory presets** in XOceanus. 34 presets in standalone XOceanic repo (not integrated).
 
 Sound design guide described OCEANIC as "paraphonic string ensemble" with BBD chorus and Chromatophore pedalboard — parameters `oceanic_ensemble`, `oceanic_filterCutoff`, `oceanic_pedalMix`, `oceanic_abyssMix`, `oceanic_freezeMix`, `oceanic_chromRate`. **None of these are real parameters.** (Actual prefix is `ocean_`.) The guide described a different engine entirely. Corrected during Phase R7.
 

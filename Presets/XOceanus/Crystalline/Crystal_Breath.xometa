@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Breath",
+  "name": "Crystal Breath (Obbligato)",
   "mood": "Crystalline",
   "engines": [
     "Obbligato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Crystalline breath \u2014 the wind instrument tone frozen at maximum precision, cold air through mineral pipes.",
+  "description": "Crystalline breath — the wind instrument tone frozen at maximum precision, cold air through mineral pipes.",
   "tags": [
     "crystalline",
     "breath",

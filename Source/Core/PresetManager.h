@@ -86,6 +86,8 @@ inline const juce::StringArray validEngineNames{
     "Oasis", "Outflow",
     // Cellular Automata Oscillator
     "Obiont",
+    // Age-based corrosion synthesis
+    "Oxidize",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob", "XObese", "XOnset", "XOrbital", "XOrganon",
     "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
@@ -239,6 +241,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Outflow", "out_"},
         // Cellular Automata Oscillator
         {"Obiont", "obnt_"},
+        // Age-based corrosion synthesis
+        {"Oxidize", "oxidize_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
@@ -467,6 +471,32 @@ public:
 
     //--------------------------------------------------------------------------
     PresetManager() = default;
+
+    // Issue #712 — Destructor stops any in-flight scan thread.
+    //
+    // The ScanThread posts a callAsync that holds a WeakReference to this
+    // PresetManager.  Clearing the weak master here (JUCE does this when the
+    // owner is destroyed) means the callAsync lambda becomes a harmless no-op
+    // if it fires after destruction.  We also signal the worker and wait so the
+    // thread object is not leaked.
+    ~PresetManager()
+    {
+        if (activeScanThread != nullptr)
+        {
+            activeScanThread->signalThreadShouldExit();
+            // waitForThreadToExit blocks until run() returns.  run() completes
+            // quickly once threadShouldExit() returns true (the file-scan loop
+            // checks the flag every iteration).  The self-delete inside callAsync
+            // is safe even after we return here because callAsync owns the thread
+            // pointer exclusively at that point.
+            activeScanThread->waitForThreadToExit(3000);
+            // After wait returns, run() has posted the callAsync and exited.
+            // The WeakReference guard in the lambda prevents it touching the
+            // now-dead library.  We clear our pointer (it will self-delete in
+            // the callAsync).
+            activeScanThread = nullptr;
+        }
+    }
 
     //==========================================================================
     // Loading
@@ -700,13 +730,16 @@ public:
                                   std::function<void()> onComplete)
     {
         // Inner Thread subclass — self-deletes after the callAsync fires.
+        // Issue #712: uses WeakReference<PresetManager> so the callAsync lambda
+        // is a no-op if the PresetManager is destroyed before the message-thread
+        // callback fires (e.g., plugin window closed milliseconds after open).
         struct ScanThread : public juce::Thread
         {
             ScanThread(PresetManager& mgr,
                        juce::File dir,
                        std::function<void()> done)
                 : juce::Thread("PresetScan"),
-                  manager(mgr),
+                  weakManager(&mgr),
                   scanDir(std::move(dir)),
                   onComplete(std::move(done))
             {
@@ -715,11 +748,18 @@ public:
             void run() override
             {
                 // Build the library into a *local* vector — never touch
-                // manager.library from here.
+                // manager.library from here.  All JSON parsing is done with
+                // a temporary local PresetManager so parseJSON (private) is
+                // accessible without touching the shared instance on the
+                // wrong thread.
                 std::vector<PresetData> localLib;
 
                 if (scanDir.isDirectory())
                 {
+                    // Temporary manager used only for its parseJSON helper.
+                    // This avoids any cross-thread access to the shared manager.
+                    PresetManager localParser;
+
                     for (const auto& file :
                          scanDir.findChildFiles(juce::File::findFiles, true, "*.xometa"))
                     {
@@ -743,7 +783,7 @@ public:
                             continue;
 
                         PresetData preset;
-                        if (manager.parseJSON(jsonString, preset))
+                        if (localParser.parseJSON(jsonString, preset))
                         {
                             preset.sourceFile = file;
                             localLib.push_back(std::move(preset));
@@ -751,29 +791,55 @@ public:
                     }
                 }
 
-                // Atomic-swap onto the message thread — `library` is ONLY
-                // mutated here, inside callAsync, which runs on the message
-                // thread.
+                // Record whether the scan was cancelled mid-flight.  If it was,
+                // we still post callAsync (so self-delete happens on the message
+                // thread) but we skip updating the library and calling onComplete.
+                const bool wasCancelled = threadShouldExit();
+
+                // Swap onto the message thread.  The WeakReference guard ensures
+                // this is a no-op if PresetManager was destroyed while we were
+                // scanning (e.g., plugin window closed before scan finished).
                 juce::MessageManager::callAsync(
-                    [&manager = manager,
-                     newLib   = std::move(localLib),
-                     done     = std::move(onComplete),
-                     self     = this]() mutable
+                    [weakRef    = weakManager,
+                     newLib     = std::move(localLib),
+                     done       = std::move(onComplete),
+                     cancelled  = wasCancelled,
+                     self       = this]() mutable
                     {
-                        manager.library = std::move(newLib);
-                        if (done)
-                            done();
+                        // Issue #712: guard against UAF — manager may be dead.
+                        if (!cancelled)
+                        {
+                            if (auto* mgr = weakRef.get())
+                            {
+                                mgr->library          = std::move(newLib);
+                                mgr->activeScanThread = nullptr; // clear tracker
+                                if (done)
+                                    done();
+                            }
+                        }
                         // Thread has finished its run() by now; delete self.
                         delete self;
                     });
             }
 
-            PresetManager&         manager;
-            juce::File             scanDir;
-            std::function<void()>  onComplete;
+            juce::WeakReference<PresetManager> weakManager;
+            juce::File                          scanDir;
+            std::function<void()>               onComplete;
         };
 
+        // Cancel and wait for any previous scan before starting a new one.
+        // This prevents two scans racing to overwrite `library`.
+        if (activeScanThread != nullptr)
+        {
+            activeScanThread->signalThreadShouldExit();
+            activeScanThread->waitForThreadToExit(3000);
+            // activeScanThread will self-delete inside callAsync; null it here
+            // so we don't double-signal if the destructor also runs.
+            activeScanThread = nullptr;
+        }
+
         auto* thread = new ScanThread(*this, directory, std::move(onComplete));
+        activeScanThread = thread;
         thread->startThread(juce::Thread::Priority::background);
     }
 
@@ -1240,6 +1306,16 @@ private:
     PresetData currentPreset;
     int currentIndex = -1;
     std::vector<Listener*> listeners;
+
+    // Issue #712: raw pointer to the in-flight scan thread (if any).
+    // Owned by the callAsync self-delete; we only hold a non-owning observer
+    // pointer here so the destructor can signal it.  Must only be read/written
+    // on the message thread.
+    juce::Thread* activeScanThread = nullptr;
+
+    // Enables juce::WeakReference<PresetManager> so the callAsync lambda in
+    // scanPresetDirectoryAsync() can safely detect destruction without UAF.
+    JUCE_DECLARE_WEAK_REFERENCEABLE(PresetManager)
 };
 
 } // namespace xoceanus

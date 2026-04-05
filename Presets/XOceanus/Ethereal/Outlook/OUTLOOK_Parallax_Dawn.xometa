@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Parallax Dawn",
+  "name": "Parallax Dawn (Ethereal)",
   "mood": "Ethereal",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "The horizon at first light \u2014 sine and formant weave a slow-breathing aurora. Parallax spreads wide as notes climb higher. Best played slow.",
+  "description": "The horizon at first light — sine and formant weave a slow-breathing aurora. Parallax spreads wide as notes climb higher. Best played slow.",
   "tags": [
     "atmospheric",
     "dawn",

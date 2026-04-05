@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hadal Pressure (OceanDeep)",
+  "name": "Hadal Pressure (OceanDeep) (Foundation)",
   "mood": "Foundation",
   "engines": [
     "OceanDeep"

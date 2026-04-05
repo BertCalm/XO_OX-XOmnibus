@@ -271,7 +271,7 @@ The mod wheel controlling mod index is the most dramatic expression control in O
 
 *"OMEGA arrived as the most cerebral engine in the CELLAR quad — the most mathematical, the most digital, the furthest from the body. The ghosts acknowledged this: Vangelis said FM bass is 'heard in the mind, not felt in the chest.' This is not a flaw. It is an identity.*
 
-*The distillation model is fleet-unique. Not just within XOlokun — commercially unique. No synthesizer sold in mass quantities performs irreversible FM index decay over note sustain as a core feature. OMEGA does. Hold a note and the complexity is consumed. You cannot get it back without releasing and replaying. The distillation is irreversible within the note.*
+*The distillation model is fleet-unique. Not just within XOceanus — commercially unique. No synthesizer sold in mass quantities performs irreversible FM index decay over note sustain as a core feature. OMEGA does. Hold a note and the complexity is consumed. You cannot get it back without releasing and replaying. The distillation is irreversible within the note.*
 
 *Schulze heard this correctly: it is a compositional gesture. A note that begins as a DX7 FM cluster and completes as a near-pure sine is not a preset behavior. It is a musical event — a note that completes a harmonic process before the next note arrives. Build a section around this: play a complex FM bass note, hold it, let it purify, release into silence. This is modern classical composition at the synthesizer.*
 

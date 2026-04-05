@@ -80,6 +80,10 @@ public:
     // sampleRate is used to scale the control-rate decimation ratio so that the
     // effective modulation update rate stays near ~1.5 kHz regardless of sample
     // rate (e.g. 32 @ 48 kHz ≈ 1.5 kHz; 64 @ 96 kHz ≈ 1.5 kHz).
+    //
+    // #702: No default for sampleRate — callers must pass the actual rate from
+    // prepareToPlay. Passing a hardcoded default (e.g. 44100) would silently
+    // compute an incorrect controlRateRatio on 48 kHz / 96 kHz interfaces.
     void prepare(int maxBlockSize, double sampleRate)
     {
         couplingBuffer.resize(static_cast<size_t>(maxBlockSize), 0.0f);
@@ -466,8 +470,11 @@ public:
 private:
     // SRO: Control-rate decimation ratio for modulation coupling types.
     // Computed in prepare() to maintain ~1.5 kHz control rate at any sample rate.
-    // Default of 32 is correct for 48 kHz (32 × 1500 = 48000).
-    int controlRateRatio = 32;
+    // #702: Initialised to 0 (not a hardcoded 48 kHz guess) so any processBlock()
+    // call before prepare() is detected early. fillControlRateBuffer() treats
+    // controlRateRatio <= 0 as "not prepared" and reads every sample (ratio = 1),
+    // which is safe but CPU-heavy — a clear signal that prepare() was missed.
+    int controlRateRatio = 0;
 
     //-- Cycle detection helpers (message thread only) -------------------------
 
@@ -543,12 +550,18 @@ private:
         if (numSamples <= 0)
             return;
 
+        // #702: If prepare() was never called, controlRateRatio is 0.
+        // Fall back to ratio=1 (per-sample, no decimation) — safe but CPU-heavy.
+        // This should never happen in production; the assertion in prepare() and
+        // the sr>0 guard in loadEngine() are the first lines of defence.
+        const int effectiveRatio = (controlRateRatio > 0) ? controlRateRatio : 1;
+
         float currentVal = source->getSampleForCoupling(0, 0);
 
         int blockStart = 0;
         while (blockStart < numSamples)
         {
-            int blockEnd = std::min(blockStart + controlRateRatio, numSamples);
+            int blockEnd = std::min(blockStart + effectiveRatio, numSamples);
             // Read next control point (or last sample if at buffer end)
             float nextVal = source->getSampleForCoupling(0, std::min(blockEnd, numSamples - 1));
 

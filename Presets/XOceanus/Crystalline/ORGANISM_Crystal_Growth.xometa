@@ -23,7 +23,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Crystal Growth",
+  "name": "Crystal Growth (Prism)",
   "parameters": {
     "Organism": {
       "org_rule": 18.0,

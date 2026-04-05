@@ -24,7 +24,7 @@
     "MUTATE"
   ],
   "mood": "Atmosphere",
-  "name": "Spore Cloud",
+  "name": "Spore Cloud (Organism) (Atmosphere)",
   "parameters": {
     "Organism": {
       "org_rule": 22.0,

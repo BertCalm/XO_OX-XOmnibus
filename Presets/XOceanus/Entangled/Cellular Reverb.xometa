@@ -31,7 +31,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Cellular Reverb",
+  "name": "Cellular Reverb (Overlap + Outwit)",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.045,

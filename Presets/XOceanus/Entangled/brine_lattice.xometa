@@ -37,7 +37,7 @@
     "SPACE": 0.48
   },
   "mood": "Entangled",
-  "name": "Brine Lattice",
+  "name": "Brine Lattice (Overlap + Oceanic)",
   "parameters": {
     "Oceanic": {
       "ocean_ampAttack": 0.25,

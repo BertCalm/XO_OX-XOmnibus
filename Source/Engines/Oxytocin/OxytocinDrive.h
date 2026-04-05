@@ -46,6 +46,12 @@ public:
     /// \param circuitAge   0..1 aging amount
     float processSample(float input, float passion, float cutoffHz, float circuitAge) noexcept
     {
+        // #701: Release-build guard for sr=0 (prepare() not yet called or called
+        // with an invalid rate). jassert in prepare() only fires in Debug; in Release
+        // a division by sr in the scream path would produce inf/NaN. Return the
+        // dry input unchanged — clean passthrough is preferable to a crash.
+        if (sr <= 0.0) return input;
+
         const float driveAmount = passion * 4.0f; // 0 = clean, 4 = heavy
 
         // Main transfer function — PERF-1: fastTanh replaces std::tanh

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Horizon",
+  "name": "Crystal Horizon (Outlook)",
   "mood": "Crystalline",
   "engines": [
     "Outlook"
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Sine oscillators at high vista line \u2014 sharp attack reveals bright harmonic partials. Decays like fractured ice.",
+  "description": "Sine oscillators at high vista line — sharp attack reveals bright harmonic partials. Decays like fractured ice.",
   "tags": [
     "crystal",
     "sine",

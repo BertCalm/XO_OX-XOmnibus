@@ -110,7 +110,7 @@ The coupling graph is not a patch bay. It is a living ecology.
 
 ## Presets
 
-~19,200+ active factory presets in `.xometa` format, organized by 15 moods:
+19,346 active factory presets in `.xometa` format, organized by 15 moods:
 
 **Foundation** · **Atmosphere** · **Entangled** · **Prism** · **Flux** · **Aether** · **Family** · **Submerged** · **Coupling** · **Crystalline** · **Deep** · **Ethereal** · **Kinetic** · **Luminous** · **Organic**
 

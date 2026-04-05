@@ -138,9 +138,11 @@ public:
         predelayBuf.assign(static_cast<size_t>(predelaySamples), 0.0f);
         predelayPos = 0;
 
-        // Silence gate: 500ms hold (reverb-tail category)
-        silenceGate.prepare(sr, maxBlockSize);
-        silenceGate.setHoldTime(500.0f);
+        // Silence gate configured by the processor via prepareSilenceGate()
+        // which is called after prepare(). Hold time: 500ms (reverb-tail
+        // category — Chiasmus FDN + pre-delay). See silenceGateHoldMs() in
+        // XOceanusProcessor.cpp. Do NOT call silenceGate.setHoldTime() here;
+        // the processor call overwrites it and is the single source of truth.
 
         // Smoothers for zipper-prone params: 20ms ramp at current sample rate
         smoothDryWet.reset(sampleRate, 0.020);

@@ -3,19 +3,15 @@
 import React, { useState, useMemo } from 'react';
 import Card, { CardHeader, CardTitle } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
-import Tooltip from '@/components/ui/Tooltip';
 import PadGrid from '@/components/pads/PadGrid';
 import PadLayerEditor from '@/components/pads/PadLayerEditor';
 import { usePadStore } from '@/stores/padStore';
 
 interface DrumEditorProps {
   onBuild: (config: { programName: string }) => void;
-  /** When true, the Build button is disabled and reasons are shown as a tooltip */
-  exportBlocked?: boolean;
-  exportBlockedReasons?: string[];
 }
 
-export default function DrumEditor({ onBuild, exportBlocked = false, exportBlockedReasons = [] }: DrumEditorProps) {
+export default function DrumEditor({ onBuild }: DrumEditorProps) {
   const [programName, setProgramName] = useState('');
   const pads = usePadStore((s) => s.pads);
 
@@ -62,23 +58,14 @@ export default function DrumEditor({ onBuild, exportBlocked = false, exportBlock
         </Card>
       </div>
 
-      <Tooltip
-        content={exportBlocked ? 'MPC Contract violations must be resolved before exporting' : ''}
-        description={exportBlocked ? exportBlockedReasons.join(' · ') : undefined}
-        position="top"
-        disabled={!exportBlocked}
+      <Button
+        variant="primary"
+        className="w-full"
+        disabled={!programName.trim() || loadedPadCount === 0}
+        onClick={handleBuild}
       >
-        <Button
-          variant="primary"
-          className="w-full"
-          disabled={!programName.trim() || loadedPadCount === 0 || exportBlocked}
-          onClick={handleBuild}
-        >
-          {exportBlocked
-            ? `Fix ${exportBlockedReasons.length} MPC issue(s) to export`
-            : `Build Drum Program (${loadedPadCount} pads)`}
-        </Button>
-      </Tooltip>
+        Build Drum Program ({loadedPadCount} pads)
+      </Button>
     </div>
   );
 }

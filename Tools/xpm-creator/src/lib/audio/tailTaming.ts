@@ -1,5 +1,5 @@
 import { decodeArrayBuffer, generateWaveformPeaks } from './audioUtils';
-import { encodeWav } from './wavEncoder';
+import { encodeWavAsync } from './wavEncoder';
 import { getAudioContext } from './audioContext';
 
 export interface TailTameConfig {
@@ -104,7 +104,7 @@ export async function tameTailFromBuffer(
 ): Promise<{ buffer: ArrayBuffer; peaks: number[] }> {
   const audioBuffer = await decodeArrayBuffer(rawBuffer);
   const tamed = tameTail(audioBuffer, config);
-  const buffer = encodeWav(tamed, bitDepth);
+  const buffer = await encodeWavAsync(tamed, bitDepth);
   const peaks = generateWaveformPeaks(tamed);
   return { buffer, peaks };
 }

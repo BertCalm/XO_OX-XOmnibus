@@ -3,14 +3,11 @@ import { getDefaultInstrument, getDefaultLayer } from './xpmTemplate';
 import { XPM_DEFAULTS, MAX_LAYERS_PER_PAD } from '@/constants/mpcDefaults';
 import { generateXpmXml } from './xpmGenerator';
 import { pitchShiftSemitones } from '@/lib/audio/pitchShifter';
-import { encodeWav } from '@/lib/audio/wavEncoder';
+import { encodeWavAsync } from '@/lib/audio/wavEncoder';
 import { midiNoteToName } from '@/types';
 import type { PadAssignment } from '@/types';
 import { useEnvelopeStore } from '@/stores/envelopeStore';
 import { useModulationStore } from '@/stores/modulationStore';
-import type { PadEnvelopeSettings } from '@/stores/envelopeStore';
-import type { XpmModulationConfig } from './xpmTypes';
-import type { WorkerInput, WorkerProgress, WorkerNoteComplete, WorkerComplete, WorkerError } from '@/workers/keygroupWorker';
 
 export interface KeygroupConfig {
   programName: string;
@@ -82,8 +79,8 @@ export async function buildKeygroupProgram(
     const sampleFileName = `${truncatedBase}${suffix}`;
     const sampleName = `${truncatedBase}_${noteName}`;
 
-    // Encode to WAV
-    const wavData = encodeWav(shiftedBuffer, bitDepth);
+    // Encode to WAV (async — non-blocking)
+    const wavData = await encodeWavAsync(shiftedBuffer, bitDepth);
     generatedSamples.push({
       fileName: sampleFileName,
       data: wavData,
@@ -126,8 +123,8 @@ export async function buildKeygroupProgram(
       active: true,
       sampleName,
       sampleFile: sampleFileName,
-      rootNote: 0,
-      keyTrack: true, // MPC transposes using pre-pitched samples; rootNote=0 for auto-detect
+      rootNote: note,
+      keyTrack: false, // Each sample is pre-pitched, no keytrack needed
     };
 
     // Copy additional layers if provided (for layered sounds)
@@ -194,265 +191,6 @@ export async function buildKeygroupProgram(
     xpmContent,
     samples: generatedSamples,
   };
-}
-
-// ---------------------------------------------------------------------------
-// Worker-based async keygroup builder
-// ---------------------------------------------------------------------------
-
-export interface KeygroupOptions {
-  programName: string;
-  rootNote: number;
-  lowNote: number;
-  highNote: number;
-  layers: PadAssignment['layers'];
-  bitDepth?: number;
-  envSettings: PadEnvelopeSettings;
-  modConfig: XpmModulationConfig;
-}
-
-/**
- * Build a Keygroup XPM program asynchronously using a Web Worker.
- *
- * Pitch shifting and WAV encoding run off the main thread so the UI stays
- * responsive during long (10–30 s) exports.
- *
- * @param audioBuffer  - Decoded source AudioBuffer
- * @param options      - Keygroup configuration
- * @param onProgress   - Called with (currentNote, totalNotes) after each note completes
- * @param signal       - AbortSignal to cancel the export mid-flight
- */
-export async function buildKeygroupProgramAsync(
-  audioBuffer: AudioBuffer,
-  options: KeygroupOptions,
-  onProgress?: (note: number, total: number) => void,
-  signal?: AbortSignal
-): Promise<KeygroupResult> {
-  const {
-    programName,
-    rootNote,
-    lowNote,
-    highNote,
-    layers,
-    bitDepth = 16,
-    envSettings,
-    modConfig,
-  } = options;
-
-  if (lowNote > highNote) {
-    throw new Error(`Invalid keygroup range: lowNote (${lowNote}) > highNote (${highNote})`);
-  }
-
-  const MAX_KEYGROUPS = 128;
-  const totalNotes = highNote - lowNote + 1;
-  if (totalNotes > MAX_KEYGROUPS) {
-    throw new Error(
-      `Keygroup range of ${totalNotes} notes exceeds MPC's ${MAX_KEYGROUPS}-keygroup limit. ` +
-      `Reduce the range (currently ${lowNote}–${highNote}).`
-    );
-  }
-
-  if (signal?.aborted) {
-    throw new DOMException('Export cancelled', 'AbortError');
-  }
-
-  // Build the worker
-  const worker = new Worker(
-    new URL('../../workers/keygroupWorker.ts', import.meta.url),
-    { type: 'module' }
-  );
-
-  // Copy channel data from the AudioBuffer before transferring to the worker.
-  // getChannelData() returns a live view — we must slice() to get independent
-  // Float32Arrays so transferring them doesn't corrupt the source AudioBuffer.
-  const channelData: Float32Array[] = [];
-  const transferable: ArrayBuffer[] = [];
-  for (let ch = 0; ch < audioBuffer.numberOfChannels; ch++) {
-    const copy = audioBuffer.getChannelData(ch).slice();
-    channelData.push(copy);
-    transferable.push(copy.buffer);
-  }
-
-  const noteWavMap = new Map<number, ArrayBuffer>();
-
-  return new Promise<KeygroupResult>((resolve, reject) => {
-    // Handle AbortSignal cancellation
-    const onAbort = () => {
-      worker.postMessage({ type: 'cancel' } satisfies WorkerCancel);
-      worker.terminate();
-      reject(new DOMException('Export cancelled', 'AbortError'));
-    };
-    signal?.addEventListener('abort', onAbort, { once: true });
-
-    worker.onmessage = (e: MessageEvent<WorkerProgress | WorkerNoteComplete | WorkerComplete | WorkerError>) => {
-      const msg = e.data;
-
-      if (msg.type === 'error') {
-        signal?.removeEventListener('abort', onAbort);
-        worker.terminate();
-        reject(new Error(msg.message));
-        return;
-      }
-
-      if (msg.type === 'progress') {
-        onProgress?.(msg.note, msg.total);
-        return;
-      }
-
-      if (msg.type === 'noteComplete') {
-        noteWavMap.set(msg.note, msg.wavData);
-        return;
-      }
-
-      if (msg.type === 'complete') {
-        signal?.removeEventListener('abort', onAbort);
-        worker.terminate();
-
-        try {
-          // Assemble the final result from collected note WAV buffers
-          const generatedSamples: GeneratedSample[] = [];
-          const instruments: XpmInstrumentData[] = [];
-
-          for (let note = lowNote; note <= highNote; note++) {
-            const wavData = noteWavMap.get(note);
-            if (!wavData) {
-              reject(new Error(`Missing WAV data for note ${note}`));
-              return;
-            }
-
-            const baseName = sanitizeFileName(programName);
-            const noteName = midiNoteToName(note).replace('#', 's');
-            const suffix = `_${noteName}.WAV`;
-            const maxBase = 32 - suffix.length;
-            const truncatedBase = baseName.length > maxBase ? baseName.substring(0, maxBase) : baseName;
-            const sampleFileName = `${truncatedBase}${suffix}`;
-            const sampleName = `${truncatedBase}_${noteName}`;
-
-            generatedSamples.push({
-              fileName: sampleFileName,
-              data: wavData,
-              midiNote: note,
-            });
-
-            const instrument = getDefaultInstrument(note - lowNote + 1);
-            instrument.lowNote = note;
-            instrument.highNote = note;
-
-            instrument.volumeAttack = envSettings.volumeEnvelope.attack;
-            instrument.volumeHold = envSettings.volumeEnvelope.hold;
-            instrument.volumeDecay = envSettings.volumeEnvelope.decay;
-            instrument.volumeSustain = envSettings.volumeEnvelope.sustain;
-            instrument.volumeRelease = envSettings.volumeEnvelope.release;
-            instrument.filterType = envSettings.filterType;
-            instrument.cutoff = envSettings.filterCutoff;
-            instrument.resonance = envSettings.filterResonance;
-            instrument.filterEnvAmt = Math.max(-1, Math.min(1, envSettings.filterEnvAmount));
-            instrument.filterAttack = envSettings.filterEnvelope.attack;
-            instrument.filterHold = envSettings.filterEnvelope.hold;
-            instrument.filterDecay = envSettings.filterEnvelope.decay;
-            instrument.filterSustain = envSettings.filterEnvelope.sustain;
-            instrument.filterRelease = envSettings.filterEnvelope.release;
-
-            if (modConfig.routes.length > 0) {
-              instrument.modulation = {
-                routes: modConfig.routes.map((r) => ({ ...r })),
-                lfo1: modConfig.lfo1 ? { ...modConfig.lfo1 } : undefined,
-              };
-            }
-
-            instrument.layers[0] = {
-              ...getDefaultLayer(1),
-              active: true,
-              sampleName,
-              sampleFile: sampleFileName,
-              rootNote: 0,
-              keyTrack: true,
-            };
-
-            if (layers && layers.length > 1) {
-              for (let i = 1; i < layers.length && i < MAX_LAYERS_PER_PAD; i++) {
-                const srcLayer = layers[i];
-                if (srcLayer.active && srcLayer.sampleId) {
-                  instrument.layers[i] = {
-                    ...getDefaultLayer(i + 1),
-                    active: true,
-                    sampleName: srcLayer.sampleName,
-                    sampleFile: srcLayer.sampleFile.replace(/\.wav$/i, '.WAV'),
-                    rootNote: note,
-                    volume: srcLayer.volume,
-                    pan: srcLayer.pan,
-                    pitch: srcLayer.pitch,
-                    tuneCoarse: srcLayer.tuneCoarse,
-                    tuneFine: srcLayer.tuneFine,
-                    velStart: srcLayer.velStart,
-                    velEnd: srcLayer.velEnd,
-                    pitchRandom: srcLayer.pitchRandom,
-                    volumeRandom: srcLayer.volumeRandom,
-                    panRandom: srcLayer.panRandom,
-                    offset: srcLayer.offset,
-                  };
-                }
-              }
-            }
-
-            instruments.push(instrument);
-          }
-
-          const programData: XpmProgramData = {
-            name: programName,
-            type: 'Keygroup',
-            volume: XPM_DEFAULTS.volume,
-            pan: XPM_DEFAULTS.pan,
-            pitch: XPM_DEFAULTS.pitch,
-            tuneCoarse: XPM_DEFAULTS.tuneCoarse,
-            tuneFine: XPM_DEFAULTS.tuneFine,
-            send1: XPM_DEFAULTS.send1,
-            send2: XPM_DEFAULTS.send2,
-            send3: XPM_DEFAULTS.send3,
-            send4: XPM_DEFAULTS.send4,
-            mute: false,
-            solo: false,
-            instruments,
-            keygroupNumKeygroups: instruments.length,
-            keygroupPitchBendRange: XPM_DEFAULTS.pitchBendRange,
-            keygroupWheelToLfo: XPM_DEFAULTS.wheelToLfo,
-            padNoteMap: [],
-            padGroupMap: [],
-          };
-
-          const xpmContent = generateXpmXml(programData);
-          resolve({ xpmContent, samples: generatedSamples });
-        } catch (err) {
-          reject(err instanceof Error ? err : new Error(String(err)));
-        }
-      }
-    };
-
-    worker.onerror = (e) => {
-      signal?.removeEventListener('abort', onAbort);
-      worker.terminate();
-      reject(new Error(`Keygroup worker error: ${e.message}`));
-    };
-
-    // Fire: transfer channel data to worker (zero-copy)
-    const input: WorkerInput = {
-      type: 'start',
-      channelData,
-      sampleRate: audioBuffer.sampleRate,
-      numberOfChannels: audioBuffer.numberOfChannels,
-      sourceLength: audioBuffer.length,
-      lowNote,
-      highNote,
-      rootNote,
-      bitDepth,
-    };
-    worker.postMessage(input, transferable);
-  });
-}
-
-// Internal type alias for the cancel message (avoids circular import in type position)
-interface WorkerCancel {
-  type: 'cancel';
 }
 
 /**

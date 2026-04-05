@@ -1,5 +1,5 @@
 import { decodeArrayBuffer, generateWaveformPeaks } from './audioUtils';
-import { encodeWav } from './wavEncoder';
+import { encodeWavAsync } from './wavEncoder';
 import { getAudioContext, createOfflineContext } from './audioContext';
 
 export interface AirConfig {
@@ -220,8 +220,8 @@ export async function generateAirLayer(
       airBuffer = await generateHighShelfAir(audioBuffer, mergedConfig);
   }
 
-  // Encode the result to WAV
-  const airWav = encodeWav(airBuffer, 16);
+  // Encode the result to WAV (async — non-blocking)
+  const airWav = await encodeWavAsync(airBuffer, 16);
 
   // Generate waveform peaks for visualization
   const peaks = generateWaveformPeaks(airBuffer);

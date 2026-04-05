@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Magnetic Field",
+  "name": "Magnetic Field (Optic + Orbital)",
   "mood": "Coupling",
   "engines": [
     "Optic",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPTIC visual pulse dominantly reshapes ORBITAL spectral geometry \u2014 zero-audio identity engine driving additive synthesis through pure light frequency.",
+  "description": "OPTIC visual pulse dominantly reshapes ORBITAL spectral geometry — zero-audio identity engine driving additive synthesis through pure light frequency.",
   "tags": [
     "coupling",
     "heavy",
