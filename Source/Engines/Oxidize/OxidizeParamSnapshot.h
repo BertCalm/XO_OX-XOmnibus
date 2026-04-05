@@ -6,7 +6,7 @@
 namespace xooxidize
 {
 
-/// OxidizeParamSnapshot — cache all 46 oxidize_ parameter values once per block.
+/// OxidizeParamSnapshot — cache all 50 oxidize_ parameter values once per block.
 /// Never query APVTS on the audio thread per-sample; call updateFrom() once at
 /// the top of processBlock() and then read the plain POD fields throughout.
 ///
@@ -113,7 +113,7 @@ struct OxidizeParamSnapshot
 
     // =========================================================================
     // attachTo() — call ONCE during plugin initialisation.
-    // Caches all 46 raw parameter pointers so updateFrom() has zero string
+    // Caches all 50 raw parameter pointers so updateFrom() has zero string
     // lookups on the audio thread.
     // =========================================================================
     void attachTo(juce::AudioProcessorValueTreeState& apvts)
@@ -193,7 +193,7 @@ struct OxidizeParamSnapshot
 
     // =========================================================================
     // updateFrom() — call ONCE per audio block.
-    // Reads all 46 cached atomic<float>* pointers with memory_order_relaxed —
+    // Reads all 50 cached atomic<float>* pointers with memory_order_relaxed —
     // zero string lookups on the audio thread.
     // Null guard: if pAgeRate is nullptr, attachTo() was never called — return
     // immediately so the engine runs on safe default values.

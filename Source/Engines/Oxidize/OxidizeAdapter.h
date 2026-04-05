@@ -44,8 +44,6 @@ public:
         engine_.prepare(sampleRate, maxBlockSize);
         // SRO SilenceGate: polyphonic synth with sediment reverb tail → 500ms hold
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
-        couplingCacheL_ = 0.0f;
-        couplingCacheR_ = 0.0f;
         sampleRate_     = sampleRate;
         maxBlockSize_   = maxBlockSize;
     }
@@ -55,12 +53,9 @@ public:
     void reset() override
     {
         engine_.reset();
-        couplingCacheL_       = 0.0f;
-        couplingCacheR_       = 0.0f;
         couplingAgeBoost_     = 0.0f;
         couplingWobbleMod_    = 0.0f;
         couplingFilterMod_    = 0.0f;
-        couplingRingAmount_   = 0.0f;
     }
 
     //-- Audio -------------------------------------------------------------------
@@ -68,6 +63,12 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+
+        // Reset per-block coupling accumulators at the START of each block so any
+        // applyCouplingInput() calls arriving this block accumulate from zero.
+        couplingAgeBoost_   = 0.0f;
+        couplingWobbleMod_  = 0.0f;
+        couplingFilterMod_  = 0.0f;
 
         // Wake silence gate on any note-on event
         for (const auto& metadata : midi)
@@ -105,23 +106,10 @@ public:
         // ── Steps 3–9: Delegate to engine ─────────────────────────────────────
         engine_.processBlock(buffer, midi, snap_, numSamples);
 
-        // ── Cache last stereo samples for coupling reads ───────────────────────
-        if (numSamples > 0)
-        {
-            couplingCacheL_ = engine_.getSampleForCoupling(0, numSamples - 1);
-            couplingCacheR_ = engine_.getSampleForCoupling(1, numSamples - 1);
-        }
-
         // Update active voice count for UI display
         activeVoiceCount_.store(engine_.getActiveVoiceCount(), std::memory_order_relaxed);
 
         analyzeForSilenceGate(buffer, numSamples);
-
-        // Reset per-block coupling accumulators
-        couplingAgeBoost_   = 0.0f;
-        couplingWobbleMod_  = 0.0f;
-        couplingFilterMod_  = 0.0f;
-        couplingRingAmount_ = 0.0f;
     }
 
     //-- Coupling ----------------------------------------------------------------
@@ -174,7 +162,6 @@ public:
         case CouplingType::AudioToRing:
             // Pass source buffer directly to engine for ring modulation in voices
             engine_.setCouplingRingBuffer(sourceBuffer, numSamples, amount);
-            couplingRingAmount_ = amount;
             break;
 
         case CouplingType::AmpToFilter:
@@ -476,15 +463,10 @@ private:
     double                                  sampleRate_    = 44100.0;
     int                                     maxBlockSize_  = 512;
 
-    // Coupling output cache (last block)
-    float couplingCacheL_ = 0.0f;
-    float couplingCacheR_ = 0.0f;
-
-    // Per-block coupling accumulators — set by applyCouplingInput(), consumed + reset in renderBlock()
+    // Per-block coupling accumulators — set by applyCouplingInput(), consumed + reset at START of renderBlock()
     float couplingAgeBoost_   = 0.0f; // AmplitudeModulation → faster aging
     float couplingWobbleMod_  = 0.0f; // FrequencyModulation → wobble rate mod
     float couplingFilterMod_  = 0.0f; // SpectralShaping → erosion floor shift
-    float couplingRingAmount_ = 0.0f; // AudioToRing → ring mod depth (for bookkeeping)
 };
 
 } // namespace xoceanus

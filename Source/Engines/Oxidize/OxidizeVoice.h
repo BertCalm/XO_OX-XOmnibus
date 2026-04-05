@@ -122,6 +122,12 @@ struct OxidizeVoice
     StandardLFO flutterLFO_R;
 
     //==========================================================================
+    // General-purpose LFOs (wired to oxidize_lfo1*/lfo2* params — issue #835)
+    //==========================================================================
+    StandardLFO lfo1_;
+    StandardLFO lfo2_;
+
+    //==========================================================================
     // Dropout gate
     //==========================================================================
     float    dropoutEnv  = 1.0f;   // 1.0 = fully open, dropoutFloor = silenced
@@ -146,6 +152,11 @@ struct OxidizeVoice
     AgeDerivedState ageDerived;
 
     //==========================================================================
+    // Corrosion tilt EQ state (one-pole IIR)
+    //==========================================================================
+    float corrosionTiltState_ = 0.0f;
+
+    //==========================================================================
     // Private: sample rate
     //==========================================================================
     float sampleRate_ = 44100.0f;
@@ -154,6 +165,16 @@ struct OxidizeVoice
     // isActive — false once envelope completes and voice is recyclable
     //==========================================================================
     bool isActive() const noexcept { return active; }
+
+    //==========================================================================
+    // randomFloat — LCG helper using voice noiseState (advances the PRNG).
+    //   Returns a value in [0.0, 1.0)
+    //==========================================================================
+    static inline float randomFloat(uint32_t& state) noexcept
+    {
+        state = state * 1664525u + 1013904223u;  // LCG (Knuth TAOCP)
+        return static_cast<float>(state >> 8) / 16777216.0f;  // 0.0 to 1.0
+    }
 
     //==========================================================================
     // getLastSampleL/R — coupling output cache accessor
@@ -178,6 +199,11 @@ struct OxidizeVoice
         flutterLFO_R.setRate(12.0f, sampleRate_);
         flutterLFO_R.setShape(StandardLFO::Sine);
 
+        lfo1_.setRate(0.3f, sampleRate_);
+        lfo1_.setShape(StandardLFO::Sine);
+        lfo2_.setRate(1.5f, sampleRate_);
+        lfo2_.setShape(StandardLFO::Sine);
+
         resetState();
     }
 
@@ -200,9 +226,10 @@ struct OxidizeVoice
         lastSampleL    = 0.0f;
         lastSampleR    = 0.0f;
 
-        erosionFilter   = CytomicSVF{};
-        erosionBpFilter = CytomicSVF{};
-        ageDerived      = AgeDerivedState{};
+        erosionFilter       = CytomicSVF{};
+        erosionBpFilter     = CytomicSVF{};
+        ageDerived          = AgeDerivedState{};
+        corrosionTiltState_ = 0.0f;
     }
 
     //==========================================================================
@@ -255,6 +282,10 @@ struct OxidizeVoice
         flutterLFO_L.setPhaseOffset(notePhaseOffset * 0.5f);
         flutterLFO_R.setPhaseOffset(snap.wobbleSpread * 0.25f + notePhaseOffset * 0.75f);
 
+        // Reset general-purpose LFOs, randomize phase for ensemble width
+        lfo1_.reset(static_cast<float>(midiNote % 16) / 16.0f);
+        lfo2_.reset(static_cast<float>((midiNote + 7) % 16) / 16.0f);
+
         // Reset dropout
         dropoutEnv = 1.0f;
         inDropout  = false;
@@ -262,6 +293,9 @@ struct OxidizeVoice
 
         // Reset entropy sample-hold counter
         digitalCounter = 0;
+
+        // Reset corrosion tilt IIR state to avoid transient glitch at note start
+        corrosionTiltState_ = 0.0f;
     }
 
     //==========================================================================
@@ -377,31 +411,30 @@ struct OxidizeVoice
         float erosionCutoff = ageDerived.erosionCutoff;
         float erosionRes    = ageDerived.erosionRes;
 
+        // erosionVariance: add random offset to cutoff (block-rate jitter)
+        {
+            float cutoffJitter = (snap.erosionVariance > 0.001f)
+                ? (randomFloat(noiseState) * 2.0f - 1.0f) * snap.erosionVariance * 500.0f
+                : 0.0f;
+            erosionCutoff = std::max(20.0f, erosionCutoff + cutoffJitter);
+        }
+
+        // Erosion filter mode: set once per block (mode changes reset SVF state).
+        // Coefficients are updated per-sample inside the loop to apply LFO1 modulation.
         switch (snap.erosionMode)
         {
         case 0: // Vinyl — smooth LP roll-off, gentle resonance
             erosionFilter.setMode(CytomicSVF::Mode::LowPass);
-            erosionFilter.setCoefficients(erosionCutoff,
-                                          0.1f + 0.2f * erosionRes,
-                                          sampleRate_);
             break;
         case 1: // Tape — LP base + BandPass subtraction (mid-scoop)
             erosionFilter.setMode(CytomicSVF::Mode::LowPass);
-            erosionFilter.setCoefficients(erosionCutoff, 0.1f, sampleRate_);
             erosionBpFilter.setMode(CytomicSVF::Mode::BandPass);
-            erosionBpFilter.setCoefficients(std::min(erosionCutoff * 2.0f, sampleRate_ * 0.45f),
-                                             0.4f + 0.5f * erosionRes,
-                                             sampleRate_);
             break;
         case 2: // Failure — notch with high resonance → unstable collapse
             erosionFilter.setMode(CytomicSVF::Mode::Notch);
-            erosionFilter.setCoefficients(erosionCutoff,
-                                          0.45f + 0.5f * erosionRes,
-                                          sampleRate_);
             break;
         default:
             erosionFilter.setMode(CytomicSVF::Mode::LowPass);
-            erosionFilter.setCoefficients(erosionCutoff, 0.1f, sampleRate_);
             break;
         }
 
@@ -429,7 +462,11 @@ struct OxidizeVoice
         float dropFloor      = 1.0f - snap.dropoutDepth;
 
         // ── Digital entropy: hold period (block-rate) ─────────────────────────
-        int holdPeriod = static_cast<int>(sampleRate_ / ageDerived.entropyRate);
+        // entropyVariance: jitter the hold period length
+        float holdJitter = (snap.entropyVariance > 0.001f)
+            ? randomFloat(noiseState) * snap.entropyVariance * 0.5f
+            : 0.0f;
+        int holdPeriod = static_cast<int>(sampleRate_ / ageDerived.entropyRate * (1.0f + holdJitter));
         holdPeriod = std::max(1, holdPeriod);
 
         // Bit depth quantization step size
@@ -449,6 +486,10 @@ struct OxidizeVoice
                           ? noteAge / snap.preserveAmount : 0.0f;
         normalAge = std::clamp(normalAge, 0.0f, 1.0f);
 
+        // ── General-purpose LFOs — block-rate rate update ────────────────────
+        lfo1_.setRate(snap.lfo1Rate, sampleRate_);
+        lfo2_.setRate(snap.lfo2Rate, sampleRate_);
+
         // ── Per-sample loop ───────────────────────────────────────────────────
         for (int i = 0; i < numSamples; ++i)
         {
@@ -457,6 +498,42 @@ struct OxidizeVoice
             float wowR    = wowLFO_R.process();
             float flutL   = flutterLFO_L.process();
             float flutR   = flutterLFO_R.process();
+
+            // ── General-purpose LFOs — process per-sample (issue #835) ────────
+            float lfo1Val = lfo1_.process(); // [-1, +1]
+            float lfo2Val = lfo2_.process(); // [-1, +1]
+
+            // LFO1 → erosion cutoff modulation (builds on top of block-rate jitter)
+            float erosionCutoffModded = std::max(20.0f,
+                                            erosionCutoff * (1.0f + lfo1Val * snap.lfo1Depth * 0.5f));
+
+            // Update erosion filter coefficients per-sample to track LFO1
+            switch (snap.erosionMode)
+            {
+            case 0:
+                erosionFilter.setCoefficients(erosionCutoffModded,
+                                              0.1f + 0.2f * erosionRes,
+                                              sampleRate_);
+                break;
+            case 1:
+                erosionFilter.setCoefficients(erosionCutoffModded, 0.1f, sampleRate_);
+                erosionBpFilter.setCoefficients(std::min(erosionCutoffModded * 2.0f, sampleRate_ * 0.45f),
+                                                0.4f + 0.5f * erosionRes,
+                                                sampleRate_);
+                break;
+            case 2:
+                erosionFilter.setCoefficients(erosionCutoffModded,
+                                              0.45f + 0.5f * erosionRes,
+                                              sampleRate_);
+                break;
+            default:
+                erosionFilter.setCoefficients(erosionCutoffModded, 0.1f, sampleRate_);
+                break;
+            }
+
+            // LFO2 → corrosion drive modulation
+            float corrosionDriveModded = ageDerived.corrosionDrive
+                                         * (1.0f + lfo2Val * snap.lfo2Depth * 0.3f);
 
             float wd = ageDerived.wobbleDepth;
             // Convert cents deviation to phase increment multiplier.
@@ -520,20 +597,34 @@ struct OxidizeVoice
             float mixed = oscOut * snap.oscMix + patinaOut * (1.0f - snap.oscMix);
 
             // ── Corrosion waveshaper ───────────────────────────────────────────
+            // corrosionVariance: per-sample drive jitter applied on top of LFO2 modulation
+            float driveJitter = (snap.corrosionVariance > 0.001f)
+                ? (randomFloat(noiseState) * 2.0f - 1.0f) * snap.corrosionVariance * 0.2f
+                : 0.0f;
+            float jitteredDrive = corrosionDriveModded * (1.0f + driveJitter);
+
             // BrokenSpeaker noise: derive fresh per-sample from noiseState
             float bsNoise = static_cast<float>((noiseState >> 16) & 0xFFFF) / 65536.0f;
             float corroded = oxidize::processCorrosion(mixed,
-                                                       ageDerived.corrosionDrive,
+                                                       jitteredDrive,
                                                        corrMode,
                                                        normalAge,   // rust param for Rust mode
                                                        bsNoise);    // noise for BrokenSpeaker
 
-            // Post-corrosion tone tilt: corrosionTone 0=dark, 0.5=flat, 1=bright
-            // Simple 1-pole IIR: bright = pass-through, dark = low-pass
-            // (Implemented as a mix between the signal and a one-pole LP of it)
-            // We skip an extra filter here and let erosionFilter handle roll-off —
-            // corrosionTone is applied as a dry/wet blend against a slightly darkened version.
-            // (Full tone EQ is post-corrosion in the engine layer; voice stays lightweight)
+            // Post-corrosion tilt EQ (corrosionTone: 0=dark, 0.5=flat, 1=bright)
+            {
+                float tiltCoeff = snap.corrosionTone * 2.0f - 1.0f; // -1 to +1
+                // Simple tilt: blend between LP and HP character
+                // LP: state += coeff * (input - state); output = state
+                // HP: output = input - state
+                float tiltAlpha = 0.05f + 0.1f * std::abs(tiltCoeff);
+                corrosionTiltState_ = corrosionTiltState_ + tiltAlpha * (corroded - corrosionTiltState_);
+                corrosionTiltState_ = flushDenormal(corrosionTiltState_);
+                float tilted = (tiltCoeff >= 0.0f)
+                    ? corroded + tiltCoeff * (corroded - corrosionTiltState_)  // bright: emphasize HF
+                    : corrosionTiltState_ + (1.0f + tiltCoeff) * (corroded - corrosionTiltState_);  // dark: emphasize LF
+                corroded = tilted;
+            }
 
             // Sediment tap 1 — post-corrosion character
             float sed1 = ageDerived.sedimentSend * 0.4f;
