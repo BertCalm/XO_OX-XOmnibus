@@ -21,7 +21,7 @@ export function generateXpmXml(program: XpmProgramData): string {
   lines.push('  </Version>');
 
   // Program block
-  lines.push(`  <Program type="${program.type}">`);
+  lines.push(`  <Program type="${escapeXml(program.type)}">`);
   lines.push(`    <ProgramName>${escapeXml(program.name)}</ProgramName>`);
   lines.push(`    <AudioRoute>0</AudioRoute>`);
   lines.push(`    <Send1>${fmt(program.send1)}</Send1>`);

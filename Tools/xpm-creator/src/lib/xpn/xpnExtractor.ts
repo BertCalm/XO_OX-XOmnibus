@@ -64,6 +64,15 @@ function filenameFromPath(zipPath: string): string {
   return parts[parts.length - 1];
 }
 
+/**
+ * Sanitize a filename extracted from a ZIP entry to prevent path traversal.
+ * Strips `..` segments, leading slashes, and collapses to just the basename.
+ */
+function sanitizeZipFilename(name: string): string {
+  // Remove any path traversal sequences, then take only the final component
+  return name.replace(/\.\./g, '').replace(/^\/+/, '').split('/').pop() || 'unnamed';
+}
+
 // ---------------------------------------------------------------------------
 // Main extractor
 // ---------------------------------------------------------------------------
@@ -181,7 +190,7 @@ export async function extractXpn(
     if (!file) continue;
 
     const data = await file.async('arraybuffer');
-    const fileName = filenameFromPath(samplePath);
+    const fileName = sanitizeZipFilename(filenameFromPath(samplePath));
     samples.set(fileName, data);
     reportFileProgress(`Extracted sample: ${fileName}`);
   }

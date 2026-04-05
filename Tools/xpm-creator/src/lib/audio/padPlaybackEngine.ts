@@ -102,7 +102,7 @@ function scheduleRelease(
   } else {
     // Fallback for older browsers that lack cancelAndHoldAtTime
     param.cancelScheduledValues(releaseTime);
-    param.setValueAtTime(Math.max(param.value || 0.001, 0.001), releaseTime);
+    param.setValueAtTime(Math.max(param.value !== 0 ? param.value : 0.001, 0.001), releaseTime);
   }
   const endValue = Math.max(targetValue, 0.001);
   const endTime = releaseTime + Math.max(release, 0.005);
@@ -474,7 +474,7 @@ export function fadeStopVoices(voices: PadVoiceHandle[], fadeDuration: number = 
       } else {
         // Fallback for older browsers
         voice.gainEnv.gain.cancelScheduledValues(now);
-        voice.gainEnv.gain.setValueAtTime(Math.max(voice.gainEnv.gain.value || 0.001, 0.001), now);
+        voice.gainEnv.gain.setValueAtTime(Math.max(voice.gainEnv.gain.value !== 0 ? voice.gainEnv.gain.value : 0.001, 0.001), now);
       }
       voice.gainEnv.gain.linearRampToValueAtTime(0.0001, now + fadeDuration);
 
