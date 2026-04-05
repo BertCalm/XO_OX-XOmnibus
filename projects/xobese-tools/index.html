@@ -1,0 +1,3894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0a0a">
+<title>XObese — XO_OX Designs</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0a' width='100' height='100' rx='20'/><text x='50' y='65' text-anchor='middle' fill='%23f5a623' font-family='system-ui' font-size='36' font-weight='700'>XO</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0a' width='100' height='100' rx='20'/><text x='50' y='65' text-anchor='middle' fill='%23f5a623' font-family='system-ui' font-size='36' font-weight='700'>XO</text></svg>">
+<link rel="manifest" href="/manifest.json">
+<style>
+/* ================================================================
+   XObese Glass UI — Apple-inspired glassmorphism
+   ================================================================ */
+
+:root {
+  --bg: #0a0a0a;
+  --glass: rgba(255,255,255,0.06);
+  --glass-hover: rgba(255,255,255,0.10);
+  --glass-active: rgba(255,255,255,0.15);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-border-hover: rgba(255,255,255,0.20);
+  --text: rgba(255,255,255,0.92);
+  --text-dim: rgba(255,255,255,0.50);
+  --text-muted: rgba(255,255,255,0.30);
+  --accent: #f5a623;
+  --accent-glow: rgba(245,166,35,0.25);
+  --white-key: rgba(255,255,255,0.90);
+  --white-key-active: #f5a623;
+  --black-key: #1a1a1a;
+  --black-key-active: #c47d1a;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --blur: 20px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --sidebar-width: 200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  /* user-select: none scoped to interactive elements only, not here */
+}
+
+/* Ambient background gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(245,166,35,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(100,100,255,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Layout ---- */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+#header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#header h1 .brand {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+#search-box {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: var(--text);
+  font-size: 13px;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#search-box:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.12);
+}
+
+#search-box::placeholder { color: var(--text-muted); }
+
+#header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#midi-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  background: var(--glass);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+#midi-status.connected { color: #4ade80; border-color: rgba(74,222,128,0.3); }
+
+/* ---- Main Content ---- */
+#main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---- Sidebar ---- */
+#sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 14px;
+  color: var(--text-dim);
+  border-left: 3px solid transparent;
+}
+
+.cat-item:hover {
+  background: var(--glass-hover);
+  color: var(--text);
+}
+
+.cat-item.active {
+  background: var(--glass-active);
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 500;
+}
+
+.cat-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.06);
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.cat-item.active .cat-count {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+/* ---- Preset Grid ---- */
+#preset-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.preset-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  contain: layout style;
+}
+
+.preset-card:hover {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+}
+
+.preset-card.active {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  box-shadow: 0 0 20px rgba(245,166,35,0.1);
+}
+
+.preset-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preset-category-badge {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preset-card.active .preset-category-badge { color: var(--accent); }
+
+/* Loading overlay */
+#loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#loading-overlay.visible { display: flex; }
+
+#loading-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#loading-text { font-size: 14px; color: var(--text-dim); }
+
+/* ---- Keyboard + Controls ---- */
+#bottom-bar {
+  flex-shrink: 0;
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  border-top: 1px solid var(--glass-border);
+  padding-bottom: var(--safe-bottom);
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  gap: 12px;
+}
+
+#now-playing {
+  font-size: 13px;
+  color: var(--text-dim);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#now-playing .np-name { color: var(--accent); font-weight: 500; }
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.octave-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.octave-btn:hover { background: var(--glass-hover); color: var(--text); }
+.octave-btn:active { background: var(--glass-active); }
+
+#octave-display {
+  font-size: 12px;
+  color: var(--text-dim);
+  min-width: 30px;
+  text-align: center;
+}
+
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 4px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  outline: none;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#volume-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+#volume-slider::-moz-range-track {
+  background: var(--glass-border);
+  height: 4px;
+  border-radius: 2px;
+}
+
+#volume-label { font-size: 11px; color: var(--text-muted); }
+
+/* ---- Level Meter ---- */
+#level-meter {
+  display: block;
+  width: calc(100% - 16px);
+  height: 24px;
+  margin: 0 8px;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+/* ---- Shuffle Button ---- */
+#random-btn { font-size: 11px; }
+
+/* ---- Category Colors ---- */
+.cat-color { margin-right: 6px; font-size: 10px; }
+
+/* ---- Ripple Effect ---- */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.key-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  width: 30px; height: 30px;
+  pointer-events: none;
+  animation: ripple 0.4s ease-out forwards;
+  z-index: 10;
+  will-change: transform;
+}
+
+/* ---- Feature Toggle Buttons ---- */
+.feature-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.feature-btn:hover { background: var(--glass-hover); color: var(--text-dim); }
+.feature-btn.on {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---- Arp indicator ---- */
+.arp-indicator {
+  font-size: 10px;
+  color: var(--accent);
+  animation: pulse 0.5s ease-in-out infinite alternate;
+}
+@keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
+
+/* ---- Mood Tags ---- */
+#mood-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0 16px 8px;
+  flex-wrap: wrap;
+}
+.mood-tag {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.mood-tag:hover { background: var(--glass-hover); color: var(--text-dim); }
+.mood-tag.active {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---- Progress bar for loading ---- */
+#loading-progress {
+  width: 200px;
+  height: 3px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+#loading-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.1s;
+  border-radius: 2px;
+}
+
+/* ---- Transpose display ---- */
+#transpose-display {
+  font-size: 11px;
+  color: var(--text-dim);
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ---- Piano Keyboard ---- */
+#keyboard-container {
+  position: relative;
+  height: 120px;
+  margin: 0 8px 8px;
+  overflow: hidden;
+}
+
+#keyboard {
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.white-key, .black-key, .octave-btn, .feature-btn, .mood-tag, .cat-item, .mobile-cat-pill {
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.white-key {
+  flex: 1;
+  background: var(--white-key);
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 0 0 6px 6px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: background 0.08s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 6px;
+}
+
+.white-key:active, .white-key.pressed {
+  background: var(--white-key-active);
+}
+
+.key-label {
+  font-size: 9px;
+  color: rgba(0,0,0,0.3);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.white-key.pressed .key-label { color: rgba(0,0,0,0.6); }
+
+.key-hint {
+  font-size: 8px;
+  color: rgba(0,0,0,0.20);
+  pointer-events: none;
+  margin-bottom: 2px;
+}
+
+.black-key {
+  width: 8%;
+  height: 65%;
+  background: var(--black-key);
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 0 0 4px 4px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  transition: background 0.08s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.black-key:active, .black-key.pressed {
+  background: var(--black-key-active);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.black-key .key-hint {
+  color: rgba(255,255,255,0.25);
+}
+
+/* ---- Keyboard Shortcut Hints Toggle ---- */
+#keyboard-container.show-hints .white-key .key-hint {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.6);
+  transition: all 0.15s ease;
+}
+#keyboard-container.show-hints .black-key .key-hint {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.15s ease;
+}
+
+/* ---- Empty State ---- */
+#empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 40px;
+  line-height: 1.6;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  :root { --sidebar-width: 0px; }
+
+  #sidebar { display: none; }
+
+  #mobile-categories {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 8px 12px;
+    flex-shrink: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-cat-pill {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .mobile-cat-pill.active {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  #preset-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+
+  .preset-card { padding: 10px; }
+
+  #keyboard-container { height: 100px; }
+
+  #sidebar-toggle { display: none; }
+
+  #search-box { width: 140px; }
+
+  #controls { flex-wrap: wrap; justify-content: center; }
+  #now-playing { width: 100%; text-align: center; margin-bottom: 4px; }
+
+  .octave-btn, .feature-btn { min-height: 44px; min-width: 44px; }
+  .mood-tag { min-height: 36px; display: flex; align-items: center; }
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+#preset-grid.animate-cards .preset-card { animation: fadeIn 0.2s ease-out; }
+.preset-card { will-change: transform, opacity; }
+
+/* Focus-visible for keyboard navigation */
+.cat-item:focus-visible, .preset-card:focus-visible, .mood-tag:focus-visible, .feature-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Toast Notifications ---- */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 120;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.toast {
+  background: rgba(30,30,30,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  animation: toastIn 0.2s ease-out;
+  transition: opacity 0.3s;
+}
+.toast.fade-out { opacity: 0; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---- Volume Display ---- */
+#volume-display {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 28px;
+}
+
+/* ---- Preset Count ---- */
+#preset-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+/* ---- Filter Breadcrumbs ---- */
+#filter-breadcrumbs {
+  display: flex;
+  gap: 6px;
+  padding: 0 16px 6px;
+  flex-wrap: wrap;
+}
+#filter-breadcrumbs:empty { display: none; }
+.breadcrumb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  background: rgba(30,30,30,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+}
+.breadcrumb-x {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1;
+  padding: 0 2px;
+  transition: color 0.15s;
+}
+.breadcrumb-x:hover { color: var(--accent); }
+
+/* ---- Preset Favorites ---- */
+.preset-card {
+  position: relative;
+}
+.fav-star {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.15s, transform 0.15s;
+  line-height: 1;
+  z-index: 3;
+}
+.fav-star:hover { color: var(--accent); transform: scale(1.2); }
+.fav-star.favorited { color: var(--accent); }
+
+/* ---- Better Empty State ---- */
+#empty-state {
+  flex-direction: column;
+  gap: 12px;
+}
+#empty-state svg {
+  opacity: 0.25;
+}
+#empty-state .empty-msg {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ---- Scroll-to-Top Button ---- */
+#scroll-top-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(30,30,30,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+#scroll-top-btn:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+@media (max-width: 768px) {
+  #scroll-top-btn { display: none !important; }
+}
+
+/* ---- Arp BPM label ---- */
+#arp-bpm-label {
+  font-size: 10px;
+  color: var(--accent);
+  display: none;
+}
+
+/* ---- Arp BPM Slider ---- */
+#arp-bpm-group {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+#arp-bpm-group.visible { display: flex; }
+#arp-bpm-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 60px;
+  height: 3px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  outline: none;
+}
+#arp-bpm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+#arp-bpm-slider::-moz-range-thumb {
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+#arp-bpm-value {
+  font-size: 10px;
+  color: var(--accent);
+  min-width: 32px;
+}
+
+/* ---- Envelope Sliders ---- */
+#envelope-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.env-control {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.env-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.env-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 3px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  outline: none;
+}
+.env-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.env-slider::-moz-range-thumb {
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+.env-value {
+  font-size: 9px;
+  color: var(--text-muted);
+  min-width: 28px;
+}
+
+/* ---- Velocity Indicator ---- */
+.vel-indicator {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(0,0,0,0.6);
+  padding: 1px 5px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.3s;
+}
+.vel-indicator.fade-out { opacity: 0; }
+
+/* ---- Sustain Pedal Indicator ---- */
+#sustain-indicator {
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 3px 6px;
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+#sustain-indicator.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  animation: pulse 0.5s ease-in-out infinite alternate;
+}
+
+/* ---- Split Keyboard Line ---- */
+.split-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  z-index: 5;
+  pointer-events: none;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* ---- Pitch Bend Visual ---- */
+.white-key.bend-up { background: linear-gradient(90deg, var(--white-key) 60%, rgba(245,166,35,0.3)); }
+.white-key.bend-down { background: linear-gradient(90deg, rgba(245,166,35,0.3), var(--white-key) 40%); }
+.black-key.bend-up { background: linear-gradient(90deg, var(--black-key) 60%, rgba(245,166,35,0.3)); }
+.black-key.bend-down { background: linear-gradient(90deg, rgba(245,166,35,0.3), var(--black-key) 40%); }
+
+/* ---- Transpose accent color ---- */
+#transpose-display.accented {
+  color: var(--accent);
+}
+
+/* ---- Audio Recorder ---- */
+#rec-btn {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+#rec-btn.recording {
+  background: rgba(239,68,68,0.25);
+  border-color: #ef4444;
+  color: #ef4444;
+  animation: pulse 0.5s ease-in-out infinite alternate;
+}
+#rec-timer {
+  font-size: 10px;
+  color: #ef4444;
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+#rec-timer.visible { display: flex; }
+.rec-dot {
+  width: 6px;
+  height: 6px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: pulse 0.5s ease-in-out infinite alternate;
+}
+
+/* ---- Preset Chain ---- */
+#chain-indicator {
+  font-size: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px 8px;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  transition: all 0.15s;
+  display: none;
+}
+#chain-indicator.visible { display: inline-block; }
+#chain-indicator:hover { background: var(--glass-hover); color: var(--text-dim); }
+#chain-indicator.playing {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.chain-add-btn {
+  position: absolute;
+  top: 6px;
+  right: 28px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.15s, transform 0.15s;
+  line-height: 1;
+  z-index: 3;
+}
+.chain-add-btn:hover { color: var(--accent); transform: scale(1.2); }
+.chain-add-btn.in-chain { color: var(--accent); }
+
+/* ---- Drone Mode ---- */
+#keyboard-container.drone-active {
+  box-shadow: inset 0 0 30px rgba(245,166,35,0.15);
+  animation: droneGlow 4s ease-in-out infinite alternate;
+}
+@keyframes droneGlow {
+  from { box-shadow: inset 0 0 20px rgba(245,166,35,0.1); }
+  to { box-shadow: inset 0 0 40px rgba(245,166,35,0.25); }
+}
+
+/* ---- Roulette Animation ---- */
+.np-name.roulette-spinning {
+  animation: rouletteSpin 0.1s ease-in-out;
+}
+@keyframes rouletteSpin {
+  0% { opacity: 0.3; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile categories hidden on desktop */
+#mobile-categories { display: none; }
+
+/* ---- Sidebar Collapse ---- */
+#sidebar {
+  transition: width 0.25s ease, padding 0.25s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+#sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  border-right: none;
+}
+#sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.15s;
+  margin-right: 8px;
+}
+#sidebar-toggle:hover { color: var(--text); }
+
+/* ---- Preset Grid Transition ---- */
+#preset-grid.transitioning {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+#preset-grid:not(.transitioning) {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+/* ---- Help Modal ---- */
+#help-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#help-content {
+  background: rgba(30,30,30,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+}
+
+#help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.help-section { margin-bottom: 16px; }
+.help-section:last-child { margin-bottom: 0; }
+
+.help-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.help-row {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+kbd {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-family: system-ui;
+  color: var(--text);
+  margin-right: 2px;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Header -->
+  <header id="header">
+    <div style="display:flex;align-items:center">
+      <button id="sidebar-toggle" title="Toggle sidebar" aria-label="Toggle sidebar">&#9776;</button>
+      <h1><span class="brand">XObese</span> Player <span id="preset-count"></span></h1>
+    </div>
+    <div id="header-right">
+      <input type="text" id="search-box" placeholder="Search presets..." autocomplete="off" spellcheck="false" aria-label="Search presets">
+      <button id="random-btn" class="octave-btn" title="Random preset">Shuffle</button>
+      <button id="roulette-btn" class="octave-btn" title="Preset roulette">Roulette</button>
+      <button id="rec-btn" class="feature-btn" title="Record audio output">REC</button>
+      <span id="rec-timer"><span class="rec-dot"></span><span id="rec-elapsed">0:00</span></span>
+      <span id="chain-indicator" title="Click to show/clear chain">Chain: 0</span>
+      <button id="chain-play-btn" class="octave-btn" title="Play preset chain" style="display:none">Play Chain</button>
+      <div id="midi-status" aria-live="polite">No MIDI</div>
+      <button id="help-btn" class="octave-btn" title="Keyboard shortcuts">?</button>
+    </div>
+  </header>
+
+  <!-- Mobile category pills -->
+  <div id="mobile-categories" role="navigation" aria-label="Preset categories"></div>
+
+  <!-- Main content -->
+  <main id="main">
+    <!-- Sidebar -->
+    <nav id="sidebar" role="navigation" aria-label="Preset categories"></nav>
+
+    <!-- Preset grid -->
+    <div id="preset-area" style="position:relative">
+      <div id="preset-grid" role="list" aria-label="Presets"></div>
+      <div id="empty-state" style="display:none">
+        Loading presets...
+      </div>
+      <button id="scroll-top-btn" title="Scroll to top" aria-label="Scroll to top">&#8593;</button>
+    </div>
+  </main>
+
+  <!-- Bottom bar: controls + keyboard -->
+  <div id="bottom-bar">
+    <div id="mood-bar">
+      <button class="mood-tag" data-mood="all" aria-pressed="false">All</button>
+      <button class="mood-tag" data-mood="dark" aria-pressed="false">Dark</button>
+      <button class="mood-tag" data-mood="bright" aria-pressed="false">Bright</button>
+      <button class="mood-tag" data-mood="weird" aria-pressed="false">Weird</button>
+    </div>
+    <div id="filter-breadcrumbs"></div>
+    <div id="controls">
+      <div id="now-playing">Select a preset to begin</div>
+      <div class="control-group">
+        <button class="feature-btn" id="hold-btn" title="Hold notes (no release)" aria-pressed="false">Hold</button>
+        <button class="feature-btn" id="arp-btn" title="Arpeggiator" aria-pressed="false">Arp</button>
+        <span id="arp-indicator" class="arp-indicator" style="display:none">ARP</span>
+        <span id="arp-bpm-label"></span>
+        <div id="arp-bpm-group">
+          <input type="range" id="arp-bpm-slider" min="60" max="300" value="160" aria-label="Arp BPM">
+          <span id="arp-bpm-value">160</span>
+        </div>
+        <button class="feature-btn" id="glitch-btn" title="Glitch mode (random detune + reverse)" aria-pressed="false">Glitch</button>
+        <button class="feature-btn" id="chord-btn" title="Chord mode (dbl-click to cycle type)" aria-pressed="false">Chord</button>
+        <button class="feature-btn" id="strum-btn" title="Strum chords (with chord mode)" aria-pressed="false">Strum</button>
+        <button class="feature-btn" id="glide-btn" title="Portamento/Glide between notes" aria-pressed="false">Glide</button>
+        <button class="feature-btn" id="expr-btn" title="Expression filter (vertical mouse)" aria-pressed="false">Expr</button>
+        <button class="feature-btn" id="split-btn" title="Split keyboard" aria-pressed="false">Split</button>
+        <button class="feature-btn" id="drone-btn" title="Drone mode (looping notes with filter sweep)" aria-pressed="false">Drone</button>
+        <button class="feature-btn" id="layer-btn" title="Layer two presets" aria-pressed="false">Layer</button>
+        <span id="sustain-indicator" title="Sustain pedal status">SUS</span>
+      </div>
+      <div class="control-group">
+        <button class="octave-btn" id="oct-down" title="Octave Down (Z)">-</button>
+        <span id="octave-display">C3</span>
+        <button class="octave-btn" id="oct-up" title="Octave Up (X)">+</button>
+        <button class="feature-btn" id="kb-octaves-btn" title="Toggle 2/3 octave keyboard">2 Oct</button>
+      </div>
+      <div class="control-group" id="envelope-group">
+        <div class="env-control">
+          <span class="env-label">Atk</span>
+          <input type="range" class="env-slider" id="attack-slider" min="0" max="500" value="10" aria-label="Attack">
+          <span class="env-value" id="attack-value">10ms</span>
+        </div>
+        <div class="env-control">
+          <span class="env-label">Rel</span>
+          <input type="range" class="env-slider" id="release-slider" min="50" max="2000" value="200" aria-label="Release">
+          <span class="env-value" id="release-value">200ms</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <button class="feature-btn" id="vel-curve-btn" title="Velocity curve (click to cycle)">Vel: Linear</button>
+      </div>
+      <div class="control-group">
+        <button class="octave-btn" id="transpose-down" title="Transpose -1 semitone">-</button>
+        <span id="transpose-display">T:0</span>
+        <button class="octave-btn" id="transpose-up" title="Transpose +1 semitone">+</button>
+      </div>
+      <div class="control-group">
+        <span id="volume-label">Vol</span>
+        <input type="range" id="volume-slider" min="0" max="100" value="80" aria-label="Volume">
+        <span id="volume-display">80%</span>
+      </div>
+    </div>
+    <canvas id="level-meter" height="4" aria-hidden="true"></canvas>
+    <div id="keyboard-container">
+      <div id="keyboard"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Help modal -->
+<div id="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-header-title" style="display:none">
+  <div id="help-content">
+    <div id="help-header">
+      <span id="help-header-title">Keyboard Shortcuts</span>
+      <button id="help-close" class="octave-btn" aria-label="Close">X</button>
+    </div>
+    <div id="help-body">
+      <div class="help-section">
+        <div class="help-title">Play Notes</div>
+        <div class="help-row"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd> White keys (1st octave)</div>
+        <div class="help-row"><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd> White keys (2nd octave)</div>
+        <div class="help-row"><kbd>W</kbd><kbd>E</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd> Black keys (1st octave)</div>
+        <div class="help-row"><kbd>O</kbd><kbd>P</kbd> Black keys (2nd octave)</div>
+      </div>
+      <div class="help-section">
+        <div class="help-title">Controls</div>
+        <div class="help-row"><kbd>Z</kbd> Octave down</div>
+        <div class="help-row"><kbd>X</kbd> Octave up</div>
+        <div class="help-row"><kbd>Space</kbd> Sustain (hold)</div>
+        <div class="help-row"><kbd>&#8592;</kbd><kbd>&#8594;</kbd> Previous / Next preset</div>
+        <div class="help-row"><kbd>`</kbd> Toggle key hint labels</div>
+        <div class="help-row"><kbd>Esc</kbd> Close modal / clear search</div>
+      </div>
+      <div class="help-section">
+        <div class="help-title">Features</div>
+        <div class="help-row"><b>Hold</b> — Keep notes ringing until toggled off</div>
+        <div class="help-row"><b>Arp</b> — Arpeggiator (dbl-click to cycle up/down/random)</div>
+        <div class="help-row"><b>Glitch</b> — Random detune + reverse chance</div>
+        <div class="help-row"><b>Chord</b> — Play chords (dbl-click to cycle Maj/Min/7th/Maj7)</div>
+        <div class="help-row"><b>Strum</b> — Stagger chord notes for strum effect</div>
+        <div class="help-row"><b>Glide</b> — Portamento between notes</div>
+        <div class="help-row"><b>Expr</b> — Vertical mouse = filter sweep</div>
+        <div class="help-row"><b>Split</b> — Split keyboard (two presets)</div>
+        <div class="help-row"><b>Atk/Rel</b> — Attack &amp; release envelope</div>
+        <div class="help-row"><b>Vel curve</b> — Linear / Soft / Hard velocity</div>
+        <div class="help-row"><b>Pitch bend</b> — Drag horizontally on keys</div>
+        <div class="help-row"><b>Velocity</b> — Click lower on key = louder</div>
+        <div class="help-row"><b>Drone</b> — Looping notes with filter LFO sweep</div>
+        <div class="help-row"><b>Layer</b> — Play two presets simultaneously</div>
+        <div class="help-row"><b>REC</b> — Record audio output to .webm file</div>
+        <div class="help-row"><b>Chain</b> — Queue presets, auto-advance every 10s</div>
+        <div class="help-row"><b>Roulette</b> — Random preset slot-machine picker</div>
+      </div>
+      <div class="help-section">
+        <div class="help-title">MIDI</div>
+        <div class="help-row">Connect any USB/Bluetooth MIDI controller</div>
+        <div class="help-row">Sustain pedal (CC64) supported</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading overlay -->
+<div id="loading-overlay" role="status" aria-live="polite">
+  <div id="loading-spinner"></div>
+  <div id="loading-text">Loading samples...</div>
+  <div id="loading-progress"><div id="loading-progress-bar"></div></div>
+</div>
+
+<div id="toast-container"></div>
+
+<script>
+// ================================================================
+// XObese Web Player — Audio Engine + UI Controller
+// ================================================================
+
+(() => {
+'use strict';
+
+// ---- State ----
+const state = {
+  presets: {},
+  categories: {},
+  currentPreset: null,
+  currentCategory: 'All',
+  currentMood: 'all',
+  octave: 3,
+  transpose: 0,
+  volume: 0.8,
+  buffers: {},
+  activeNotes: new Map(),
+  sustainedNotes: new Set(),
+  sustainOn: false,
+  holdMode: false,
+  heldNotes: new Set(),
+  arpOn: false,
+  arpMode: 'up',
+  arpInterval: null,
+  arpNotes: [],
+  arpIndex: 0,
+  arpBpm: 160,
+  arpLastNote: null,
+  glitchMode: false,
+  midiAccess: null,
+  searchQuery: '',
+  favorites: [],
+  previewPlaying: false,
+  // Envelope
+  attack: 10,
+  release: 200,
+  // Keyboard octaves
+  keyboardOctaves: 2,
+  // Chord mode
+  chordMode: false,
+  chordType: 'maj',
+  // Velocity curve
+  velocityCurve: 'linear',
+  // Portamento/Glide
+  glideOn: false,
+  lastPlayedMidi: null,
+  // Split keyboard
+  splitOn: false,
+  splitPreset: null,
+  // Strum mode
+  strumOn: false,
+  // Expression filter
+  expressionOn: false,
+  // Pitch bend tracking
+  pitchBendActive: false,
+  // Audio Recorder
+  recording: false,
+  recorder: null,
+  recordingStartTime: null,
+  recordingTimerInterval: null,
+  recordingStreamDest: null,
+  // Preset Chain/Playlist
+  presetChain: [],
+  chainPlaying: false,
+  chainIndex: 0,
+  chainTimer: null,
+  // Drone Mode
+  droneMode: false,
+  droneNotes: new Map(),
+  droneLfoNode: null,
+  droneLfoGainNode: null,
+  droneFilterNode: null,
+  // Sound Layering
+  layerMode: false,
+  layerPreset: null,
+  // P15: LRU buffer cache tracking
+  bufferLastUsed: {},
+  // P20: Cached category counts
+  categoryCounts: null,
+  // P22: AbortController for in-flight fetches
+  loadAbortController: null,
+  // P18: First render flag
+  firstRenderDone: false,
+};
+
+// Mood classification for presets
+const MOOD_MAP = {
+  dark: ['bass','pads','textures'],
+  bright: ['keys','leads'],
+  weird: ['fx','rhythmic','init'],
+};
+
+// ---- Toast Notifications (P23: reuse single toast element) ----
+var _toastEl = null;
+var _toastTimer = null;
+var _toastFadeTimer = null;
+function showToast(msg) {
+  if (!_toastEl) {
+    _toastEl = document.createElement('div');
+    _toastEl.className = 'toast';
+    document.getElementById('toast-container').appendChild(_toastEl);
+  }
+  if (_toastTimer) clearTimeout(_toastTimer);
+  if (_toastFadeTimer) clearTimeout(_toastFadeTimer);
+  _toastEl.textContent = msg;
+  _toastEl.classList.remove('fade-out');
+  _toastEl.style.display = '';
+  // Force reflow to restart animation
+  _toastEl.style.animation = 'none';
+  _toastEl.offsetHeight; // trigger reflow
+  _toastEl.style.animation = '';
+  _toastTimer = setTimeout(function() {
+    _toastEl.classList.add('fade-out');
+    _toastFadeTimer = setTimeout(function() { _toastEl.style.display = 'none'; }, 300);
+  }, 1500);
+}
+
+// ---- Favorites ----
+function loadFavorites() {
+  try {
+    var data = localStorage.getItem('xobese-favorites');
+    if (data) state.favorites = JSON.parse(data);
+  } catch(e) { state.favorites = []; }
+}
+
+function saveFavorites() {
+  try { localStorage.setItem('xobese-favorites', JSON.stringify(state.favorites)); } catch(e) {}
+}
+
+function toggleFavorite(presetName) {
+  var idx = state.favorites.indexOf(presetName);
+  var isFav;
+  if (idx >= 0) {
+    state.favorites.splice(idx, 1);
+    isFav = false;
+  } else {
+    state.favorites.push(presetName);
+    isFav = true;
+  }
+  saveFavorites();
+
+  // If viewing Favorites category, must do full rebuild (items added/removed)
+  if (state.currentCategory === 'Favorites') {
+    buildSidebar();
+    renderPresets();
+    return;
+  }
+
+  // Otherwise, just toggle the star in-place and update sidebar badge
+  var cards = document.querySelectorAll('.preset-card');
+  for (var ci = 0; ci < cards.length; ci++) {
+    var nameEl = cards[ci].querySelector('.preset-name');
+    if (nameEl && nameEl.title === presetName.replace(/_/g, ' ')) {
+      var star = cards[ci].querySelector('.fav-star');
+      if (star) {
+        star.className = 'fav-star' + (isFav ? ' favorited' : '');
+        star.textContent = isFav ? '\u2605' : '\u2606';
+      }
+      break;
+    }
+  }
+  // Update Favorites count in sidebar
+  buildSidebar();
+}
+
+// ---- Filter Breadcrumbs (P30: DocumentFragment, P25: RAF-batched) ----
+function updateBreadcrumbs() {
+  requestAnimationFrame(function() {
+    var container = document.getElementById('filter-breadcrumbs');
+    var frag = document.createDocumentFragment();
+
+    if (state.currentCategory !== 'All') {
+      let pillCat = document.createElement('span');
+      pillCat.className = 'breadcrumb-pill';
+      pillCat.textContent = state.currentCategory + ' ';
+      let xCat = document.createElement('span');
+      xCat.className = 'breadcrumb-x';
+      xCat.textContent = '\u00D7';
+      xCat.addEventListener('click', function() { selectCategory('All'); });
+      pillCat.appendChild(xCat);
+      frag.appendChild(pillCat);
+    }
+    if (state.currentMood !== 'all') {
+      let pillMood = document.createElement('span');
+      pillMood.className = 'breadcrumb-pill';
+      pillMood.textContent = state.currentMood + ' ';
+      let xMood = document.createElement('span');
+      xMood.className = 'breadcrumb-x';
+      xMood.textContent = '\u00D7';
+      xMood.addEventListener('click', function() { selectMood('all'); });
+      pillMood.appendChild(xMood);
+      frag.appendChild(pillMood);
+    }
+    if (state.searchQuery) {
+      let pillSearch = document.createElement('span');
+      pillSearch.className = 'breadcrumb-pill';
+      pillSearch.textContent = '"' + state.searchQuery + '" ';
+      let xSearch = document.createElement('span');
+      xSearch.className = 'breadcrumb-x';
+      xSearch.textContent = '\u00D7';
+      xSearch.addEventListener('click', function() {
+        state.searchQuery = '';
+        document.getElementById('search-box').value = '';
+        renderPresets();
+      });
+      pillSearch.appendChild(xSearch);
+      frag.appendChild(pillSearch);
+    }
+
+    // Replace all children in one operation
+    while (container.firstChild) container.removeChild(container.firstChild);
+    container.appendChild(frag);
+  });
+}
+
+// ---- Preset Count Display ----
+function updatePresetCount(filtered, total) {
+  var el = document.getElementById('preset-count');
+  if (!el) return;
+  if (filtered < total) {
+    el.textContent = filtered + '/' + total + ' presets';
+  } else {
+    el.textContent = total + ' presets';
+  }
+}
+
+// ---- Audio Context (lazy init on user gesture) ----
+let audioCtx = null;
+let masterGain = null;
+
+function ensureAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = state.volume;
+    masterGain.connect(audioCtx.destination);
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  initLevelMeter();
+  return audioCtx;
+}
+
+// ---- Note Helpers ----
+const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+
+function noteNameToMidi(noteStr) {
+  let name, octave;
+  if (noteStr.length >= 2 && noteStr[1] === '#') {
+    name = noteStr.slice(0, 2);
+    octave = parseInt(noteStr.slice(2));
+  } else {
+    name = noteStr[0];
+    octave = parseInt(noteStr.slice(1));
+  }
+  const semitone = NOTE_NAMES.indexOf(name);
+  return (octave + 1) * 12 + semitone;
+}
+
+function midiToNoteName(midi) {
+  const octave = Math.floor(midi / 12) - 1;
+  const note = NOTE_NAMES[midi % 12];
+  return note + octave;
+}
+
+// ---- Reversed Buffer Cache (for glitch mode) ----
+var reversedBufferCache = new WeakMap();
+
+function getReversedBuffer(buffer) {
+  if (reversedBufferCache.has(buffer)) return reversedBufferCache.get(buffer);
+  var reversed = audioCtx.createBuffer(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+  for (var ch = 0; ch < buffer.numberOfChannels; ch++) {
+    var src = buffer.getChannelData(ch);
+    var dst = reversed.getChannelData(ch);
+    for (var i = 0; i < src.length; i++) dst[i] = src[src.length - 1 - i];
+  }
+  reversedBufferCache.set(buffer, reversed);
+  return reversed;
+}
+
+// ---- Sample Zone Mapping (cached) ----
+var sampleZoneCache = {};
+
+function buildSampleZoneCache(presetName) {
+  var samples = state.presets[presetName];
+  if (!samples || samples.length === 0) return;
+  var sorted = samples.map(function(s) {
+    return { midi: noteNameToMidi(s.note), file: s.file, note: s.note };
+  }).sort(function(a, b) { return a.midi - b.midi; });
+  // Build a 128-entry lookup table: midiNote -> nearest sample
+  var table = new Array(128);
+  for (var m = 0; m < 128; m++) {
+    var best = sorted[0];
+    var bestDist = Math.abs(m - best.midi);
+    for (var j = 1; j < sorted.length; j++) {
+      var dist = Math.abs(m - sorted[j].midi);
+      if (dist < bestDist) { bestDist = dist; best = sorted[j]; }
+      else if (dist > bestDist) break; // sorted, so no point continuing
+    }
+    table[m] = best;
+  }
+  sampleZoneCache[presetName] = table;
+}
+
+function findSampleForNote(presetName, midiNote) {
+  if (!sampleZoneCache[presetName]) buildSampleZoneCache(presetName);
+  var table = sampleZoneCache[presetName];
+  if (!table) return null;
+  var clamped = Math.max(0, Math.min(127, midiNote));
+  return table[clamped];
+}
+
+// ---- Concurrency Limiter ----
+async function fetchWithLimit(tasks, limit) {
+  var results = [];
+  var executing = [];
+  for (var i = 0; i < tasks.length; i++) {
+    var p = tasks[i]().then(function(r) { executing.splice(executing.indexOf(p), 1); return r; });
+    executing.push(p);
+    results.push(p);
+    if (executing.length >= limit) await Promise.race(executing);
+  }
+  return Promise.all(results);
+}
+
+// ---- Sample Loading ----
+var loadingPromises = {};
+
+async function loadPresetSamples(presetName, silent) {
+  // P15: Update last-used timestamp
+  state.bufferLastUsed[presetName] = Date.now();
+  if (state.buffers[presetName] && Object.keys(state.buffers[presetName]).length > 0) return;
+  if (loadingPromises[presetName]) return loadingPromises[presetName];
+  loadingPromises[presetName] = _doLoadPresetSamples(presetName, silent);
+  try {
+    await loadingPromises[presetName];
+  } finally {
+    delete loadingPromises[presetName];
+  }
+  // P15: Evict oldest unused presets if cache > 10
+  evictBufferCache(presetName);
+}
+
+function evictBufferCache(justLoadedPreset) {
+  var cachedNames = Object.keys(state.buffers);
+  if (cachedNames.length <= 10) return;
+  // Don't evict current, layer, or just-loaded preset
+  var protectedPresets = [state.currentPreset, state.layerPreset, justLoadedPreset].filter(Boolean);
+  var evictable = cachedNames.filter(function(n) { return protectedPresets.indexOf(n) < 0; });
+  evictable.sort(function(a, b) { return (state.bufferLastUsed[a] || 0) - (state.bufferLastUsed[b] || 0); });
+  while (Object.keys(state.buffers).length > 10 && evictable.length > 0) {
+    var oldest = evictable.shift();
+    delete state.buffers[oldest];
+    delete state.bufferLastUsed[oldest];
+    delete sampleZoneCache[oldest];
+  }
+}
+
+async function _doLoadPresetSamples(presetName, silent) {
+  const ctx = ensureAudio();
+  const samples = state.presets[presetName];
+  if (!samples) return;
+
+  // P22: Cancel any in-flight fetches from a previous preset load
+  if (state.loadAbortController) {
+    state.loadAbortController.abort();
+  }
+  var abortController = new AbortController();
+  state.loadAbortController = abortController;
+
+  if (!silent) showLoading(true);
+  state.buffers[presetName] = {};
+  var loaded = 0;
+  var total = samples.length;
+  if (!silent) updateLoadingProgress(0, total);
+
+  var tasks = samples.map(function(s) {
+    return async function() {
+      const midi = noteNameToMidi(s.note);
+      try {
+        const resp = await fetch('/samples/' + encodeURIComponent(s.file), { signal: abortController.signal });
+        const arrayBuf = await resp.arrayBuffer();
+        const audioBuf = await ctx.decodeAudioData(arrayBuf);
+        state.buffers[presetName][midi] = audioBuf;
+        // P17: Pre-warm reversed buffer off the hot path
+        setTimeout(function() { getReversedBuffer(audioBuf); }, 0);
+      } catch (e) {
+        if (e.name === 'AbortError') return; // P22: silently ignore aborted fetches
+        console.warn('Failed to load ' + s.file, e);
+      }
+      loaded++;
+      if (!silent) updateLoadingProgress(loaded, total);
+    };
+  });
+
+  await fetchWithLimit(tasks, 6);
+  // Clear abort controller if it's still ours
+  if (state.loadAbortController === abortController) {
+    state.loadAbortController = null;
+  }
+  // If all samples failed, remove the empty cache so retry is possible
+  if (Object.keys(state.buffers[presetName]).length === 0) {
+    delete state.buffers[presetName];
+  }
+  if (!silent) showLoading(false);
+}
+
+// ---- Playback ----
+const MAX_VOICES = 16;
+
+function noteOn(midiNote, velocity, _isChordExtra) {
+  velocity = velocity || 100;
+  if (!state.currentPreset) return;
+  ensureAudio();
+  resumeMeter();
+
+  // P14: Voice stealing — cap at MAX_VOICES active voices
+  if (state.activeNotes.size >= MAX_VOICES) {
+    // Find oldest voice (first in Map iteration order), skip drone notes
+    for (const [oldMidi] of state.activeNotes) {
+      if (!state.droneNotes.has(oldMidi)) {
+        noteOffImmediate(oldMidi);
+        break;
+      }
+    }
+  }
+
+  // Chord mode: play additional chord notes (but not recursively)
+  if (state.chordMode && !_isChordExtra) {
+    var intervals = { maj: [0,4,7], min: [0,3,7], '7th': [0,4,7,10], maj7: [0,4,7,11] };
+    var offsets = intervals[state.chordType] || [0,4,7];
+    if (state.strumOn) {
+      // Strum: cascade with slight delays
+      offsets.forEach(function(offset, i) {
+        var delay = i * (15 + Math.random() * 30); // 15-45ms between notes
+        setTimeout(function() {
+          if (offset === 0) noteOn(midiNote, velocity, true);
+          else noteOn(midiNote + offset, velocity, true);
+        }, delay);
+      });
+      // Still handle arp/hold for root only
+      if (state.arpOn) {
+        if (state.arpNotes.indexOf(midiNote) < 0) {
+          state.arpNotes.push(midiNote);
+          state.arpNotes.sort(function(a, b) { return a - b; });
+        }
+        startArp();
+      }
+      if (state.holdMode) state.heldNotes.add(midiNote);
+      return;
+    } else {
+      // Play all chord notes simultaneously
+      for (var ci = 1; ci < offsets.length; ci++) {
+        noteOn(midiNote + offsets[ci], velocity, true);
+      }
+    }
+  }
+
+  // Split keyboard: determine which preset to use
+  var presetToUse = state.currentPreset;
+  if (state.splitOn && state.splitPreset && !_isChordExtra) {
+    var startMidi = (state.octave + 1) * 12;
+    var totalKeys = state.keyboardOctaves * 12;
+    var splitPoint = startMidi + Math.floor(totalKeys / 2);
+    if (midiNote >= splitPoint) {
+      presetToUse = state.splitPreset;
+    }
+  }
+
+  // Apply transpose
+  var transposedNote = midiNote + state.transpose;
+  if (transposedNote < 0 || transposedNote > 127) return;
+
+  noteOffImmediate(midiNote);
+  // Clear arp tracking if we just killed its last note
+  if (state.arpLastNote === midiNote) state.arpLastNote = null;
+
+  const sample = findSampleForNote(presetToUse, transposedNote);
+  if (!sample) return;
+
+  const buffer = state.buffers[presetToUse] && state.buffers[presetToUse][sample.midi];
+  if (!buffer) return;
+
+  // Helper to create and start a source for a given preset
+  function createSourceForPreset(pName, tNote, vel) {
+    var s = findSampleForNote(pName, tNote);
+    if (!s) return null;
+    var buf = state.buffers[pName] && state.buffers[pName][s.midi];
+    if (!buf) return null;
+
+    var src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    var st = tNote - s.midi;
+
+    if (state.glitchMode) {
+      st += (Math.random() - 0.5) * 2;
+      if (Math.random() < 0.3 && buf.numberOfChannels > 0) {
+        src.buffer = getReversedBuffer(buf);
+      }
+    }
+
+    var bRate = Math.pow(2, st / 12);
+
+    if (state.glideOn && state.lastPlayedMidi !== null && state.activeNotes.size > 0) {
+      var oldSt = state.lastPlayedMidi + state.transpose - s.midi;
+      var oldRate = Math.pow(2, oldSt / 12);
+      src.playbackRate.value = oldRate;
+      src.playbackRate.linearRampToValueAtTime(bRate, audioCtx.currentTime + 0.1);
+    } else {
+      src.playbackRate.value = bRate;
+    }
+
+    // Drone mode: loop the source
+    if (state.droneMode) {
+      src.loop = true;
+    }
+
+    var vGain = (vel / 127) * 0.8 + 0.2;
+    var gn = audioCtx.createGain();
+    if (state.attack > 0) {
+      gn.gain.value = 0;
+      gn.gain.setTargetAtTime(vGain, audioCtx.currentTime, state.attack / 1000 / 3);
+    } else {
+      gn.gain.value = vGain;
+    }
+
+    // Drone mode: add LFO filter sweep using shared LFO
+    if (state.droneMode) {
+      // Create shared drone LFO if it doesn't exist yet
+      if (!state.droneLfo) {
+        state.droneLfo = audioCtx.createOscillator();
+        state.droneLfo.type = 'sine';
+        state.droneLfo.frequency.value = 1 / 8; // 8 second sweep
+        state.droneLfoGain = audioCtx.createGain();
+        state.droneLfoGain.gain.value = 900; // sweep range: 1100 +/- 900 = 200-2000Hz
+        state.droneLfo.connect(state.droneLfoGain);
+        state.droneLfo.start();
+      }
+
+      var droneFilter = audioCtx.createBiquadFilter();
+      droneFilter.type = 'lowpass';
+      droneFilter.frequency.value = 1100;
+      droneFilter.Q.value = 2;
+
+      // Connect shared LFO to this note's filter
+      state.droneLfoGain.connect(droneFilter.frequency);
+
+      src.connect(gn);
+      gn.connect(droneFilter);
+      droneFilter.connect(masterGain);
+      src.start();
+
+      state.droneNotes.set(midiNote, { source: src, gain: gn, filter: droneFilter, baseRate: bRate });
+      return { source: src, gain: gn, filter: droneFilter, baseRate: bRate, isDrone: true };
+    }
+
+    if (state.expressionOn) {
+      var filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 8000;
+      filter.Q.value = 1;
+      src.connect(gn);
+      gn.connect(filter);
+      filter.connect(masterGain);
+      src.start();
+      return { source: src, gain: gn, filter: filter, baseRate: bRate };
+    } else {
+      src.connect(gn);
+      gn.connect(masterGain);
+      src.start();
+      return { source: src, gain: gn, baseRate: bRate };
+    }
+  }
+
+  var noteData = createSourceForPreset(presetToUse, transposedNote, velocity);
+  if (!noteData) return;
+
+  // Layer mode: also play from layered preset
+  var layerData = null;
+  if (state.layerPreset && state.buffers[state.layerPreset] && !state.droneMode) {
+    layerData = createSourceForPreset(state.layerPreset, transposedNote, velocity);
+  }
+
+  state.lastPlayedMidi = midiNote;
+
+  if (!noteData.isDrone) {
+    if (layerData) {
+      state.activeNotes.set(midiNote, { source: noteData.source, gain: noteData.gain, filter: noteData.filter, baseRate: noteData.baseRate, layerSource: layerData.source, layerGain: layerData.gain });
+    } else {
+      state.activeNotes.set(midiNote, { source: noteData.source, gain: noteData.gain, filter: noteData.filter, baseRate: noteData.baseRate });
+    }
+  }
+
+  highlightKey(midiNote, true);
+
+  // Arpeggiator: track held notes (not for chord extras)
+  if (state.arpOn && !_isChordExtra) {
+    if (state.arpNotes.indexOf(midiNote) < 0) {
+      state.arpNotes.push(midiNote);
+      state.arpNotes.sort(function(a, b) { return a - b; });
+    }
+    startArp();
+  }
+
+  // Hold mode: track for later release
+  if (state.holdMode && !_isChordExtra) {
+    state.heldNotes.add(midiNote);
+  }
+}
+
+function noteOffImmediate(midiNote) {
+  // Check drone notes first
+  if (state.droneNotes.has(midiNote)) {
+    var droneNote = state.droneNotes.get(midiNote);
+    try { droneNote.source.stop(); } catch(e) {}
+    try { droneNote.gain.disconnect(); } catch(e) {}
+    if (droneNote.filter) try { droneNote.filter.disconnect(); } catch(e) {}
+    state.droneNotes.delete(midiNote);
+    highlightKey(midiNote, false);
+    return;
+  }
+
+  const note = state.activeNotes.get(midiNote);
+  if (!note) return;
+
+  const now = audioCtx.currentTime;
+  var releaseTC = state.release / 1000 / 3; // time constant from ms
+  note.gain.gain.cancelScheduledValues(now);
+  note.gain.gain.setTargetAtTime(0, now, releaseTC);
+  const src = note.source;
+  var stopDelay = Math.max(200, state.release * 2);
+  var noteGain = note.gain;
+  var noteFilter = note.filter;
+  var noteLayerGain = note.layerGain;
+  setTimeout(function() {
+    try { src.stop(); } catch(e) {}
+    try { noteGain.disconnect(); } catch(e) {}
+    if (noteFilter) try { noteFilter.disconnect(); } catch(e) {}
+    if (noteLayerGain) try { noteLayerGain.disconnect(); } catch(e) {}
+  }, stopDelay);
+
+  // Clean up layer source if present
+  if (note.layerSource) {
+    if (note.layerGain) {
+      note.layerGain.gain.cancelScheduledValues(now);
+      note.layerGain.gain.setTargetAtTime(0, now, releaseTC);
+    }
+    var layerSrc = note.layerSource;
+    setTimeout(function() {
+      try { layerSrc.stop(); } catch(e) {}
+    }, stopDelay);
+  }
+
+  state.activeNotes.delete(midiNote);
+  highlightKey(midiNote, false);
+}
+
+function noteOff(midiNote) {
+  // Always update arp tracking, even in hold mode
+  if (state.arpOn) {
+    var idx = state.arpNotes.indexOf(midiNote);
+    if (idx >= 0) state.arpNotes.splice(idx, 1);
+    if (state.arpNotes.length === 0) stopArp();
+  }
+
+  if (state.holdMode) return; // Hold mode keeps notes ringing
+  if (state.sustainOn) {
+    state.sustainedNotes.add(midiNote);
+    return;
+  }
+  noteOffImmediate(midiNote);
+}
+
+function releaseSustain() {
+  state.sustainOn = false;
+  state.sustainedNotes.forEach(function(midi) {
+    noteOffImmediate(midi);
+  });
+  state.sustainedNotes.clear();
+}
+
+// ---- Computer Keyboard Mapping ----
+const KEY_MAP = {
+  'a': 0, 's': 2, 'd': 4, 'f': 5, 'g': 7, 'h': 9, 'j': 11,
+  'k': 12, 'l': 14, ';': 16,
+  'w': 1, 'e': 3, 't': 6, 'y': 8, 'u': 10,
+  'o': 13, 'p': 15,
+  "'": 17
+};
+
+// Map key -> MIDI note that was triggered (fixes stuck notes on octave change)
+const pressedKeys = new Map();
+
+// ---- Get Visible Presets (respecting filters) ----
+function getVisiblePresets() {
+  var presetNames = Object.keys(state.presets).sort();
+  if (state.currentCategory === 'Favorites') {
+    presetNames = presetNames.filter(function(n) { return state.favorites.indexOf(n) >= 0; });
+  } else if (state.currentCategory !== 'All') {
+    presetNames = presetNames.filter(function(n) { return state.categories[n] === state.currentCategory; });
+  }
+  if (state.currentMood !== 'all') {
+    presetNames = presetNames.filter(presetMatchesMood);
+  }
+  if (state.searchQuery) {
+    var q = state.searchQuery.toLowerCase();
+    presetNames = presetNames.filter(function(n) {
+      return n.toLowerCase().indexOf(q) >= 0 || (state.categories[n] || '').toLowerCase().indexOf(q) >= 0;
+    });
+  }
+  return presetNames;
+}
+
+// ---- Arrow Key Preset Navigation ----
+function navigatePreset(direction) {
+  var visible = getVisiblePresets();
+  if (visible.length === 0) return;
+  var currentIdx = visible.indexOf(state.currentPreset);
+  var nextIdx;
+  if (currentIdx < 0) {
+    nextIdx = direction > 0 ? 0 : visible.length - 1;
+  } else {
+    nextIdx = currentIdx + direction;
+    if (nextIdx < 0) nextIdx = visible.length - 1;
+    if (nextIdx >= visible.length) nextIdx = 0;
+  }
+  showToast(direction < 0 ? '\u2190 Prev' : 'Next \u2192');
+  selectPreset(visible[nextIdx]);
+}
+
+function handleKeyDown(e) {
+  // Escape: close help modal or clear search
+  if (e.key === 'Escape') {
+    var helpModal = document.getElementById('help-modal');
+    if (helpModal.style.display === 'flex') {
+      helpModal.style.display = 'none';
+      return;
+    }
+    var searchBox = document.getElementById('search-box');
+    if (searchBox.value) {
+      searchBox.value = '';
+      state.searchQuery = '';
+      renderPresets();
+      searchBox.blur();
+      return;
+    }
+    return;
+  }
+
+  if (e.target.tagName === 'INPUT') return;
+  const key = e.key.toLowerCase();
+
+  // Arrow key preset navigation
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    navigatePreset(e.key === 'ArrowLeft' ? -1 : 1);
+    return;
+  }
+
+  // Backtick toggles keyboard shortcut hints
+  if (key === '`') {
+    var kbContainer = document.getElementById('keyboard-container');
+    var showing = kbContainer.classList.toggle('show-hints');
+    showToast(showing ? 'Hints: ON' : 'Hints: OFF');
+    return;
+  }
+
+  if (key === 'z') { changeOctave(-1); return; }
+  if (key === 'x') { changeOctave(1); return; }
+  if (key === ' ') {
+    e.preventDefault();
+    state.sustainOn = true;
+    updateSustainIndicator();
+    return;
+  }
+
+  if (KEY_MAP[key] !== undefined && !pressedKeys.has(key)) {
+    const midi = (state.octave + 1) * 12 + KEY_MAP[key];
+    pressedKeys.set(key, midi);
+    noteOn(midi);
+  }
+}
+
+function handleKeyUp(e) {
+  const key = e.key.toLowerCase();
+  if (key === ' ') { releaseSustain(); updateSustainIndicator(); return; }
+
+  if (KEY_MAP[key] !== undefined && pressedKeys.has(key)) {
+    var midi = pressedKeys.get(key);
+    pressedKeys.delete(key);
+    noteOff(midi);
+  }
+}
+
+// ---- Web MIDI ----
+async function initMIDI() {
+  if (!navigator.requestMIDIAccess) {
+    updateMidiStatus('No Web MIDI');
+    return;
+  }
+  try {
+    state.midiAccess = await navigator.requestMIDIAccess();
+    state.midiAccess.addEventListener('statechange', onMIDIStateChange);
+    connectMIDIInputs();
+  } catch (e) {
+    updateMidiStatus('MIDI denied');
+  }
+}
+
+function connectMIDIInputs() {
+  let count = 0;
+  for (const input of state.midiAccess.inputs.values()) {
+    input.onmidimessage = onMIDIMessage;
+    count++;
+  }
+  if (count > 0) {
+    updateMidiStatus('MIDI: ' + count + ' device' + (count > 1 ? 's' : ''));
+  } else {
+    updateMidiStatus('No MIDI devices');
+  }
+}
+
+function onMIDIStateChange() { connectMIDIInputs(); }
+
+function onMIDIMessage(e) {
+  const status = e.data[0];
+  const note = e.data[1];
+  const velocity = e.data[2];
+  const command = status & 0xf0;
+
+  if (command === 0x90 && velocity > 0) {
+    noteOn(note, velocity);
+  } else if (command === 0x80 || (command === 0x90 && velocity === 0)) {
+    noteOff(note);
+  } else if (command === 0xb0 && note === 64) {
+    if (velocity >= 64) state.sustainOn = true;
+    else releaseSustain();
+    updateSustainIndicator();
+  }
+}
+
+function updateMidiStatus(text) {
+  const el = document.getElementById('midi-status');
+  el.textContent = text;
+  el.className = text.indexOf('device') >= 0 ? 'connected' : '';
+}
+
+// ---- UI: Category Sidebar ----
+const CATEGORIES = ['All', 'Favorites', 'Bass', 'Keys', 'Pads', 'Leads', 'FX', 'Textures', 'Rhythmic', 'Init'];
+const CAT_COLORS = {
+  All: '#888', Favorites: '#f5a623', Bass: '#e74c3c', Keys: '#3498db', Pads: '#9b59b6',
+  Leads: '#f39c12', FX: '#1abc9c', Textures: '#2ecc71', Rhythmic: '#e67e22', Init: '#95a5a6'
+};
+
+// P20: Compute and cache category counts
+function computeCategoryCounts() {
+  var counts = { All: Object.keys(state.presets).length };
+  CATEGORIES.forEach(function(cat) {
+    if (cat === 'All' || cat === 'Favorites') return;
+    counts[cat] = 0;
+  });
+  Object.keys(state.categories).forEach(function(name) {
+    var cat = state.categories[name];
+    if (counts[cat] !== undefined) counts[cat]++;
+  });
+  state.categoryCounts = counts;
+}
+
+function buildSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const mobileCats = document.getElementById('mobile-categories');
+
+  // Clear existing
+  while (sidebar.firstChild) sidebar.removeChild(sidebar.firstChild);
+  while (mobileCats.firstChild) mobileCats.removeChild(mobileCats.firstChild);
+
+  CATEGORIES.forEach(function(cat) {
+    let count;
+    if (cat === 'All') {
+      count = state.categoryCounts ? state.categoryCounts.All : Object.keys(state.presets).length;
+    } else if (cat === 'Favorites') {
+      count = state.favorites.filter(function(n) { return state.presets[n]; }).length;
+      if (count === 0) return; // Hide Favorites when empty
+    } else {
+      count = state.categoryCounts ? (state.categoryCounts[cat] || 0) : 0;
+    }
+
+    if (count === 0 && cat !== 'All') return;
+
+    // Desktop sidebar item
+    const item = document.createElement('div');
+    item.className = 'cat-item' + (cat === state.currentCategory ? ' active' : '');
+    item.dataset.category = cat;
+
+    const colorDot = document.createElement('span');
+    colorDot.className = 'cat-color';
+    colorDot.textContent = '\u25CF';
+    colorDot.style.color = CAT_COLORS[cat] || '#888';
+
+    const label = document.createElement('span');
+    label.appendChild(colorDot);
+    label.appendChild(document.createTextNode(cat));
+    item.appendChild(label);
+
+    const badge = document.createElement('span');
+    badge.className = 'cat-count';
+    badge.textContent = count;
+    item.appendChild(badge);
+
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.addEventListener('click', function() { selectCategory(cat); });
+    item.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCategory(cat); } });
+    sidebar.appendChild(item);
+
+    // Mobile pill
+    const pill = document.createElement('div');
+    pill.className = 'mobile-cat-pill' + (cat === state.currentCategory ? ' active' : '');
+    pill.dataset.category = cat;
+    pill.textContent = cat + ' (' + count + ')';
+    pill.addEventListener('click', function() { selectCategory(cat); });
+    mobileCats.appendChild(pill);
+  });
+}
+
+function selectCategory(cat) {
+  state.currentCategory = cat;
+
+  // Clear search when switching categories for clean navigation
+  state.searchQuery = '';
+  var searchBox = document.getElementById('search-box');
+  if (searchBox) searchBox.value = '';
+
+  document.querySelectorAll('.cat-item').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.category === cat);
+  });
+  document.querySelectorAll('.mobile-cat-pill').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.category === cat);
+  });
+
+  // Auto-scroll mobile pill strip to center the active pill
+  var activePill = document.querySelector('.mobile-cat-pill.active');
+  if (activePill) {
+    activePill.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+  }
+
+  // Smooth category transition: fade out, re-render, fade in
+  var grid = document.getElementById('preset-grid');
+  grid.classList.add('transitioning');
+  setTimeout(function() {
+    renderPresets();
+    // Allow browser to paint opacity:0, then fade in
+    requestAnimationFrame(function() {
+      grid.classList.remove('transitioning');
+    });
+  }, 150);
+}
+
+// ---- UI: Preset Grid ----
+function renderPresets() {
+  const grid = document.getElementById('preset-grid');
+  const empty = document.getElementById('empty-state');
+
+  while (grid.firstChild) grid.removeChild(grid.firstChild);
+
+  var totalPresets = Object.keys(state.presets).length;
+  let presetNames = Object.keys(state.presets).sort();
+
+  // Filter by category (including Favorites)
+  if (state.currentCategory === 'Favorites') {
+    presetNames = presetNames.filter(function(n) {
+      return state.favorites.indexOf(n) >= 0;
+    });
+  } else if (state.currentCategory !== 'All') {
+    presetNames = presetNames.filter(function(n) {
+      return state.categories[n] === state.currentCategory;
+    });
+  }
+
+  // Filter by mood
+  if (state.currentMood !== 'all') {
+    presetNames = presetNames.filter(presetMatchesMood);
+  }
+
+  // Filter by search
+  if (state.searchQuery) {
+    const q = state.searchQuery.toLowerCase();
+    presetNames = presetNames.filter(function(n) {
+      return n.toLowerCase().indexOf(q) >= 0 ||
+        (state.categories[n] || '').toLowerCase().indexOf(q) >= 0;
+    });
+  }
+
+  // Update breadcrumbs and preset count
+  updateBreadcrumbs();
+  updatePresetCount(presetNames.length, totalPresets);
+
+  if (presetNames.length === 0) {
+    // Better empty state with SVG icon and contextual message
+    while (empty.firstChild) empty.removeChild(empty.firstChild);
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '48');
+    svg.setAttribute('height', '48');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.5');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M9 18V5l12-2v13M9 18c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zM21 16c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z');
+    svg.appendChild(path);
+    empty.appendChild(svg);
+    var msgEl = document.createElement('div');
+    msgEl.className = 'empty-msg';
+    if (state.currentCategory === 'Favorites') {
+      msgEl.textContent = 'No favorites yet — star some presets!';
+    } else if (state.searchQuery) {
+      msgEl.textContent = 'No matching presets';
+    } else if (state.currentMood !== 'all') {
+      msgEl.textContent = 'No presets match this mood';
+    } else {
+      msgEl.textContent = 'No presets in this category';
+    }
+    empty.appendChild(msgEl);
+    empty.style.display = 'flex';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Use DocumentFragment to batch DOM insertions (avoids reflow per card)
+  var fragment = document.createDocumentFragment();
+
+  presetNames.forEach(function(name, i) {
+    const card = document.createElement('div');
+    card.className = 'preset-card' + (name === state.currentPreset ? ' active' : '');
+    card.setAttribute('role', 'listitem');
+    card.dataset.preset = name; // P26: data-preset for direct toggle
+    card.style.animationDelay = Math.min(i * 15, 300) + 'ms';
+
+    const displayName = name.replace(/_/g, ' ');
+    const cat = state.categories[name] || 'Unknown';
+
+    // Chain add button
+    var chainBtn = document.createElement('span');
+    chainBtn.className = 'chain-add-btn' + (state.presetChain.indexOf(name) >= 0 ? ' in-chain' : '');
+    chainBtn.textContent = state.presetChain.indexOf(name) >= 0 ? '\u2713' : '+';
+    chainBtn.title = state.presetChain.indexOf(name) >= 0 ? 'Remove from chain' : 'Add to chain';
+    chainBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      addToChain(name);
+    });
+    card.appendChild(chainBtn);
+
+    // Favorite star
+    var star = document.createElement('span');
+    star.className = 'fav-star' + (state.favorites.indexOf(name) >= 0 ? ' favorited' : '');
+    star.textContent = state.favorites.indexOf(name) >= 0 ? '\u2605' : '\u2606';
+    star.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFavorite(name);
+    });
+    card.appendChild(star);
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'preset-name';
+    nameEl.title = displayName;
+    nameEl.textContent = displayName;
+    card.appendChild(nameEl);
+
+    const infoRow = document.createElement('div');
+    infoRow.className = 'preset-category-badge';
+    var sampleCount = state.presets[name] ? state.presets[name].length : 0;
+    infoRow.textContent = cat + ' \u00B7 ' + sampleCount + ' samples';
+    card.appendChild(infoRow);
+
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('click', function() { selectPreset(name); });
+    card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectPreset(name); } });
+    // Double-click plays a demo note
+    card.addEventListener('dblclick', function() {
+      selectPreset(name).then(function() {
+        var demoMidi = (state.octave + 1) * 12 + 12;
+        noteOn(demoMidi, 100);
+        setTimeout(function() { noteOff(demoMidi); }, 500);
+      });
+    });
+
+    // Hover preview: play a brief demo note after 800ms hover
+    var hoverTimer = null;
+    card.addEventListener('mouseenter', function() {
+      // Skip if: current preset, mobile/touch device, already previewing, or loading
+      if (name === state.currentPreset) return;
+      if ('ontouchstart' in window) return;
+      if (state.previewPlaying) return;
+      if (document.getElementById('loading-overlay').classList.contains('visible')) return;
+
+      hoverTimer = setTimeout(function() {
+        hoverTimer = null;
+        state.previewPlaying = true;
+        var demoMidi = (state.octave + 1) * 12;
+
+        // Load samples silently, then play preview without mutating state.currentPreset
+        loadPresetSamples(name, true).then(function() {
+          if (!state.previewPlaying) return; // cancelled during load
+          ensureAudio();
+
+          var transposedNote = demoMidi + state.transpose;
+          if (transposedNote < 0 || transposedNote > 127) { state.previewPlaying = false; return; }
+
+          var sample = findSampleForNote(name, transposedNote);
+          if (!sample) { state.previewPlaying = false; return; }
+
+          var buffer = state.buffers[name] && state.buffers[name][sample.midi];
+          if (!buffer) { state.previewPlaying = false; return; }
+
+          var src = audioCtx.createBufferSource();
+          src.buffer = buffer;
+          var st = transposedNote - sample.midi;
+          src.playbackRate.value = Math.pow(2, st / 12);
+
+          var gn = audioCtx.createGain();
+          gn.gain.value = (80 / 127) * 0.8 + 0.2;
+          src.connect(gn);
+          gn.connect(masterGain);
+          src.start();
+
+          setTimeout(function() {
+            var now = audioCtx.currentTime;
+            gn.gain.cancelScheduledValues(now);
+            gn.gain.setTargetAtTime(0, now, 0.05);
+            setTimeout(function() {
+              try { src.stop(); } catch(e) {}
+              try { gn.disconnect(); } catch(e) {}
+            }, 200);
+            state.previewPlaying = false;
+          }, 300);
+        }).catch(function() {
+          state.previewPlaying = false;
+        });
+      }, 800);
+    });
+    card.addEventListener('mouseleave', function() {
+      if (hoverTimer) {
+        clearTimeout(hoverTimer);
+        hoverTimer = null;
+      }
+    });
+
+    fragment.appendChild(card);
+  });
+
+  // P18: Only animate cards on first render
+  if (!state.firstRenderDone) {
+    grid.classList.add('animate-cards');
+  } else {
+    grid.classList.remove('animate-cards');
+  }
+
+  grid.appendChild(fragment);
+  state.firstRenderDone = true;
+
+  // Scroll active card into view
+  var activeEl = grid.querySelector('.preset-card.active');
+  if (activeEl) {
+    activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+}
+
+async function selectPreset(name) {
+  // Layer mode: if we already have a current preset, set this as the layer
+  if (state.layerMode && state.currentPreset && state.currentPreset !== name && !state.layerPreset) {
+    state.layerPreset = name;
+    await loadPresetSamples(name);
+    updateNowPlaying();
+    showToast('Layered: ' + name.replace(/_/g, ' '));
+    return;
+  }
+
+  // If selecting while layer exists, reset layer
+  if (state.layerMode && state.layerPreset && state.currentPreset !== name) {
+    state.layerPreset = null;
+  }
+
+  var oldPreset = state.currentPreset;
+  state.currentPreset = name;
+
+  // P15: Update last-used timestamp on select
+  state.bufferLastUsed[name] = Date.now();
+
+  const displayName = name.replace(/_/g, ' ');
+  const cat = state.categories[name] || '';
+
+  const np = document.getElementById('now-playing');
+  while (np.firstChild) np.removeChild(np.firstChild);
+  np.appendChild(document.createTextNode('Now Playing: '));
+  const strong = document.createElement('span');
+  strong.className = 'np-name';
+  strong.textContent = displayName;
+  np.appendChild(strong);
+  if (cat) {
+    np.appendChild(document.createTextNode(' (' + cat + ')'));
+  }
+  if (state.layerPreset) {
+    np.appendChild(document.createTextNode(' + '));
+    var layerSpan = document.createElement('span');
+    layerSpan.className = 'np-name';
+    layerSpan.textContent = state.layerPreset.replace(/_/g, ' ');
+    np.appendChild(layerSpan);
+  }
+
+  // P26: Toggle active class directly instead of full rebuild
+  var grid = document.getElementById('preset-grid');
+  if (oldPreset) {
+    var oldCard = grid.querySelector('[data-preset="' + CSS.escape(oldPreset) + '"]');
+    if (oldCard) oldCard.classList.remove('active');
+  }
+  var newCard = grid.querySelector('[data-preset="' + CSS.escape(name) + '"]');
+  if (newCard) {
+    newCard.classList.add('active');
+    newCard.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  } else {
+    // Card not in current view (filter mismatch), do full rebuild
+    renderPresets();
+  }
+
+  await loadPresetSamples(name);
+  saveLastPreset();
+}
+
+// ---- UI: Piano Keyboard ----
+function buildKeyboard() {
+  const container = document.getElementById('keyboard');
+  while (container.firstChild) container.removeChild(container.firstChild);
+
+  const startMidi = (state.octave + 1) * 12;
+  const numOctaves = state.keyboardOctaves || 2;
+
+  // Adjust keyboard container height for 3 octaves
+  var kbContainer = document.getElementById('keyboard-container');
+  kbContainer.style.height = numOctaves >= 3 ? '150px' : '120px';
+
+  const whiteNoteOffsets = [0, 2, 4, 5, 7, 9, 11];
+  const whiteKeyLabels = ['A','S','D','F','G','H','J','K','L',';','','','','',''];
+  const blackKeyLabels = ['W','E','','T','Y','U','','O','P','','','','','',''];
+
+  // Build white keys
+  const whiteKeys = [];
+  for (let oct = 0; oct < numOctaves; oct++) {
+    for (let i = 0; i < 7; i++) {
+      whiteKeys.push(startMidi + oct * 12 + whiteNoteOffsets[i]);
+    }
+  }
+  whiteKeys.push(startMidi + numOctaves * 12);
+
+  const totalWhite = whiteKeys.length;
+  const keyWidth = 100 / totalWhite;
+
+  whiteKeys.forEach(function(midi, i) {
+    const key = document.createElement('div');
+    key.className = 'white-key';
+    key.dataset.midi = midi;
+    key.style.width = keyWidth + '%';
+
+    var label = whiteKeyLabels[i] || '';
+    if (label) {
+      var hintEl = document.createElement('span');
+      hintEl.className = 'key-hint';
+      hintEl.textContent = label;
+      key.appendChild(hintEl);
+    }
+
+    var labelEl = document.createElement('span');
+    labelEl.className = 'key-label';
+    labelEl.textContent = midiToNoteName(midi);
+    key.appendChild(labelEl);
+
+    addTouchHandlers(key, midi);
+    container.appendChild(key);
+  });
+
+  // Build black keys
+  const blackPattern = [
+    { afterWhite: 0, offset: 1 },
+    { afterWhite: 1, offset: 3 },
+    { afterWhite: 3, offset: 6 },
+    { afterWhite: 4, offset: 8 },
+    { afterWhite: 5, offset: 10 },
+  ];
+
+  let blackIdx = 0;
+  for (let oct = 0; oct < numOctaves; oct++) {
+    blackPattern.forEach(function(bp) {
+      const midi = startMidi + oct * 12 + bp.offset;
+      const whiteIdx = oct * 7 + bp.afterWhite;
+      const leftPos = (whiteIdx + 1) * keyWidth - keyWidth * 0.3;
+
+      const key = document.createElement('div');
+      key.className = 'black-key';
+      key.dataset.midi = midi;
+      key.style.left = leftPos + '%';
+      key.style.width = (keyWidth * 0.6) + '%';
+
+      var label = blackKeyLabels[blackIdx] || '';
+      if (label) {
+        var hintEl = document.createElement('span');
+        hintEl.className = 'key-hint';
+        hintEl.textContent = label;
+        key.appendChild(hintEl);
+      }
+
+      addTouchHandlers(key, midi);
+      container.appendChild(key);
+      blackIdx++;
+    });
+  }
+
+  // Split keyboard visual line
+  if (state.splitOn) {
+    var splitLine = document.createElement('div');
+    splitLine.className = 'split-line';
+    splitLine.style.left = '50%';
+    container.appendChild(splitLine);
+  }
+
+  updateOctaveDisplay();
+  cacheKeyElements();
+}
+
+function addTouchHandlers(el, midi) {
+  var pitchBendStartX = null;
+  var pitchBendActive = false;
+
+  el.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    var vel = velocityFromPosition(el, e);
+    createRipple(el, e);
+    showVelocityIndicator(el, vel);
+    noteOn(midi, vel);
+
+    // Pitch bend tracking
+    pitchBendStartX = e.clientX;
+    pitchBendActive = true;
+
+    // Cache keyboard rect on mousedown for expression filter (avoids reflow in mousemove)
+    var cachedKbRect = state.expressionOn ? document.getElementById('keyboard-container').getBoundingClientRect() : null;
+
+    // P19: RAF-throttled pitch bend mousemove
+    var pitchBendRafPending = false;
+    function onMouseMove(ev) {
+      if (!pitchBendActive) return;
+      if (pitchBendRafPending) return;
+      pitchBendRafPending = true;
+      requestAnimationFrame(function() {
+        pitchBendRafPending = false;
+        if (!pitchBendActive) return;
+        var dx = ev.clientX - pitchBendStartX;
+        var bendRange = 100; // pixels for full +/-2 semitones
+        var bendSemitones = Math.max(-2, Math.min(2, (dx / bendRange) * 2));
+        var noteData = state.activeNotes.get(midi);
+        if (noteData && noteData.source && noteData.baseRate) {
+          noteData.source.playbackRate.value = noteData.baseRate * Math.pow(2, bendSemitones / 12);
+        }
+        // Visual feedback
+        el.classList.remove('bend-up', 'bend-down');
+        if (bendSemitones > 0.2) el.classList.add('bend-up');
+        else if (bendSemitones < -0.2) el.classList.add('bend-down');
+
+        // Expression filter control (vertical mouse) — uses cached rect
+        if (state.expressionOn && noteData && noteData.filter && cachedKbRect) {
+          var yRatio = Math.max(0, Math.min(1, (ev.clientY - cachedKbRect.top) / cachedKbRect.height));
+          var freq = 200 + (1 - yRatio) * 7800; // 200-8000Hz, top = bright
+          noteData.filter.frequency.setTargetAtTime(freq, audioCtx.currentTime, 0.01);
+        }
+      });
+    }
+
+    function onMouseUp() {
+      pitchBendActive = false;
+      // Snap pitch back
+      var noteData = state.activeNotes.get(midi);
+      if (noteData && noteData.source && noteData.baseRate) {
+        noteData.source.playbackRate.value = noteData.baseRate;
+      }
+      el.classList.remove('bend-up', 'bend-down');
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+      noteOff(midi);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+  // Don't use simple mouseup/mouseleave for noteOff — handled in mousedown's onMouseUp
+  el.addEventListener('mouseleave', function() {
+    if (!pitchBendActive) noteOff(midi);
+  });
+
+  el.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    var touch = e.touches[0];
+    var vel = velocityFromPosition(el, touch);
+    createRipple(el, touch);
+    showVelocityIndicator(el, vel);
+    noteOn(midi, vel);
+  }, { passive: false });
+  el.addEventListener('touchend', function(e) { e.preventDefault(); noteOff(midi); }, { passive: false });
+  el.addEventListener('touchcancel', function() { noteOff(midi); });
+
+  // Note name tooltip on hover
+  el.addEventListener('mouseenter', function() {
+    el.title = midiToNoteName(midi);
+  });
+}
+
+// ---- Velocity Indicator (P29: Object pool of reusable indicator divs) ----
+var _velPool = [];
+var _velPoolIdx = 0;
+var _velPoolSize = 4;
+function _initVelPool() {
+  for (var i = 0; i < _velPoolSize; i++) {
+    var el = document.createElement('div');
+    el.className = 'vel-indicator';
+    el.style.display = 'none';
+    _velPool.push(el);
+  }
+}
+function showVelocityIndicator(keyEl, velocity) {
+  if (_velPool.length === 0) _initVelPool();
+  var indicator = _velPool[_velPoolIdx % _velPoolSize];
+  _velPoolIdx++;
+  // Remove from previous parent if any
+  if (indicator.parentNode) indicator.parentNode.removeChild(indicator);
+  indicator.textContent = velocity;
+  indicator.className = 'vel-indicator';
+  indicator.style.display = '';
+  keyEl.appendChild(indicator);
+  setTimeout(function() {
+    indicator.classList.add('fade-out');
+    setTimeout(function() { indicator.style.display = 'none'; if (indicator.parentNode) indicator.parentNode.removeChild(indicator); }, 300);
+  }, 500);
+}
+
+// Key element cache — rebuilt when keyboard changes octave
+var keyElementCache = {};
+
+function cacheKeyElements() {
+  keyElementCache = {};
+  document.querySelectorAll('[data-midi]').forEach(function(el) {
+    keyElementCache[el.dataset.midi] = el;
+  });
+}
+
+function highlightKey(midiNote, on) {
+  var key = keyElementCache[midiNote];
+  if (key) key.classList.toggle('pressed', on);
+}
+
+function changeOctave(delta) {
+  state.octave = Math.max(-1, Math.min(7, state.octave + delta));
+  buildKeyboard();
+  saveLastPreset();
+}
+
+function updateOctaveDisplay() {
+  document.getElementById('octave-display').textContent = 'C' + state.octave;
+}
+
+// ---- UI: Loading ----
+function showLoading(show) {
+  document.getElementById('loading-overlay').classList.toggle('visible', show);
+}
+
+// ---- Random Preset ----
+function randomPreset() {
+  var names = Object.keys(state.presets);
+  if (state.currentCategory !== 'All') {
+    names = names.filter(function(n) { return state.categories[n] === state.currentCategory; });
+  }
+  if (state.currentMood !== 'all') {
+    names = names.filter(presetMatchesMood);
+  }
+  if (state.searchQuery) {
+    var q = state.searchQuery.toLowerCase();
+    names = names.filter(function(n) {
+      return n.toLowerCase().indexOf(q) >= 0 || (state.categories[n] || '').toLowerCase().indexOf(q) >= 0;
+    });
+  }
+  if (names.length === 0) return;
+  // Avoid picking the same preset
+  var filtered = names.filter(function(n) { return n !== state.currentPreset; });
+  if (filtered.length === 0) filtered = names;
+  var pick = filtered[Math.floor(Math.random() * filtered.length)];
+  selectPreset(pick);
+}
+
+// ---- Level Meter ----
+var analyserNode = null;
+var meterAnimId = null;
+var meterCanvasW = 0;
+var meterCanvasH = 48;
+var meterSilentFrames = 0;
+
+function initLevelMeter() {
+  if (!audioCtx || analyserNode) return;
+  analyserNode = audioCtx.createAnalyser();
+  analyserNode.fftSize = 256;
+  analyserNode.smoothingTimeConstant = 0.7;
+  masterGain.connect(analyserNode);
+
+  // Set initial canvas size and observe for resize
+  var canvas = document.getElementById('level-meter');
+  if (!canvas) return;
+  meterCanvasW = canvas.offsetWidth * 2;
+  meterCanvasH = 48;
+  canvas.width = meterCanvasW;
+  canvas.height = meterCanvasH;
+
+  if (typeof ResizeObserver !== 'undefined') {
+    var ro = new ResizeObserver(function(entries) {
+      var entry = entries[0];
+      var newW = Math.round(entry.contentRect.width * 2);
+      if (newW !== meterCanvasW && newW > 0) {
+        meterCanvasW = newW;
+        canvas.width = meterCanvasW;
+        canvas.height = meterCanvasH;
+      }
+    });
+    ro.observe(canvas);
+  }
+
+  // Pause/resume meter when tab visibility changes
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      if (meterAnimId) {
+        cancelAnimationFrame(meterAnimId);
+        meterAnimId = null;
+      }
+    } else {
+      resumeMeter();
+    }
+  });
+
+  drawMeter();
+}
+
+function resumeMeter() {
+  if (!meterAnimId && analyserNode) {
+    meterSilentFrames = 0;
+    drawMeter();
+  }
+}
+
+function drawMeter() {
+  var canvas = document.getElementById('level-meter');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var w = meterCanvasW;
+  var h = meterCanvasH;
+
+  // Pre-allocate reusable buffer
+  var freqData = new Uint8Array(analyserNode.frequencyBinCount);
+  var idlePhase = 0;
+
+  function frame() {
+    meterAnimId = requestAnimationFrame(frame);
+    if (!analyserNode) return;
+
+    analyserNode.getByteFrequencyData(freqData);
+
+    // Use cached dimensions (may update via ResizeObserver)
+    w = meterCanvasW;
+    h = meterCanvasH;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Calculate overall energy to detect silence
+    var totalEnergy = 0;
+    for (var i = 0; i < freqData.length; i++) totalEnergy += freqData[i];
+    var isPlaying = totalEnergy > 50;
+
+    // Track silent frames and stop after ~2s of silence
+    if (!isPlaying) {
+      meterSilentFrames++;
+      if (meterSilentFrames > 120) {
+        cancelAnimationFrame(meterAnimId);
+        meterAnimId = null;
+        // Draw one last idle frame
+        ctx.clearRect(0, 0, w, h);
+        ctx.strokeStyle = 'rgba(245,166,35,0.15)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        for (var si = 0; si <= w; si++) {
+          var sy = h / 2 + Math.sin(si * 0.02 + idlePhase) * 3 + Math.sin(si * 0.005 + idlePhase * 0.7) * 2;
+          if (si === 0) ctx.moveTo(si, sy);
+          else ctx.lineTo(si, sy);
+        }
+        ctx.stroke();
+        return;
+      }
+    } else {
+      meterSilentFrames = 0;
+    }
+
+    // Number of bars to draw (use ~64 bins for a clean look)
+    var numBars = Math.min(64, freqData.length);
+    var barWidth = w / numBars;
+    var gap = Math.max(1, barWidth * 0.15);
+    var actualBarW = barWidth - gap;
+
+    if (isPlaying) {
+      // Active: frequency bar visualization
+      for (var i = 0; i < numBars; i++) {
+        var value = freqData[i] / 255;
+        var barH = value * h * 0.9;
+        if (barH < 1) barH = 1;
+
+        var x = i * barWidth;
+        var y = h - barH;
+
+        // Gradient from accent color to brighter orange
+        var intensity = value;
+        var r = Math.round(245 - intensity * 40);
+        var g = Math.round(166 - intensity * 100);
+        var b = Math.round(35 + intensity * 20);
+        ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (0.6 + intensity * 0.4) + ')';
+
+        // Draw bar with rounded top
+        ctx.beginPath();
+        var radius = Math.min(actualBarW / 2, 2);
+        ctx.moveTo(x, h);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.lineTo(x + actualBarW - radius, y);
+        ctx.quadraticCurveTo(x + actualBarW, y, x + actualBarW, y + radius);
+        ctx.lineTo(x + actualBarW, h);
+        ctx.closePath();
+        ctx.fill();
+      }
+    } else {
+      // Idle: subtle ambient wave animation
+      idlePhase += 0.02;
+      ctx.strokeStyle = 'rgba(245,166,35,0.15)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      for (var i = 0; i <= w; i++) {
+        var y = h / 2 + Math.sin(i * 0.02 + idlePhase) * 3 + Math.sin(i * 0.005 + idlePhase * 0.7) * 2;
+        if (i === 0) ctx.moveTo(i, y);
+        else ctx.lineTo(i, y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  frame();
+}
+
+// ---- Arpeggiator (P28: RAF-based timer for precision, no drift) ----
+var _arpRafId = null;
+var _lastArpTick = 0;
+
+function startArp() {
+  if (state.arpInterval) return; // reuse arpInterval as a truthy flag
+  state.arpIndex = 0;
+  state.arpInterval = true; // mark as running
+  _lastArpTick = performance.now();
+
+  function arpFrame(now) {
+    if (!state.arpInterval) return; // stopped
+    _arpRafId = requestAnimationFrame(arpFrame);
+    var msPerBeat = 60000 / state.arpBpm;
+    if (now - _lastArpTick < msPerBeat) return;
+    _lastArpTick += msPerBeat;
+    // Prevent spiral if tab was backgrounded
+    if (now - _lastArpTick > msPerBeat * 2) _lastArpTick = now;
+
+    if (state.arpNotes.length === 0) { stopArp(); return; }
+    var idx;
+    if (state.arpMode === 'up') {
+      idx = state.arpIndex % state.arpNotes.length;
+      state.arpIndex++;
+    } else if (state.arpMode === 'down') {
+      idx = (state.arpNotes.length - 1) - (state.arpIndex % state.arpNotes.length);
+      state.arpIndex++;
+    } else {
+      idx = Math.floor(Math.random() * state.arpNotes.length);
+    }
+    var midi = state.arpNotes[idx];
+    if (state.arpLastNote !== null) {
+      noteOffImmediate(state.arpLastNote);
+    }
+    state.arpLastNote = midi;
+    arpPlayNote(midi);
+  }
+
+  _arpRafId = requestAnimationFrame(arpFrame);
+}
+
+// Direct playback for arpeggiator — avoids recursive noteOn/startArp loop
+function arpPlayNote(midiNote) {
+  if (!state.currentPreset) return;
+  ensureAudio();
+  var transposedNote = midiNote + state.transpose;
+  if (transposedNote < 0 || transposedNote > 127) return;
+  var sample = findSampleForNote(state.currentPreset, transposedNote);
+  if (!sample) return;
+  var buffer = state.buffers[state.currentPreset] && state.buffers[state.currentPreset][sample.midi];
+  if (!buffer) return;
+  // Stop any existing note at this MIDI to prevent audio node leak
+  noteOffImmediate(midiNote);
+
+  var source = audioCtx.createBufferSource();
+  source.buffer = buffer;
+  var semitones = transposedNote - sample.midi;
+  // Apply glitch mode if active
+  if (state.glitchMode) {
+    semitones += (Math.random() - 0.5) * 2;
+    if (Math.random() < 0.3 && buffer.numberOfChannels > 0) {
+      source.buffer = getReversedBuffer(buffer);
+    }
+  }
+  var baseRate = Math.pow(2, semitones / 12);
+  source.playbackRate.value = baseRate;
+  var gain = audioCtx.createGain();
+
+  // Attack envelope for arp notes
+  if (state.attack > 0) {
+    gain.gain.value = 0;
+    gain.gain.setTargetAtTime(0.8, audioCtx.currentTime, state.attack / 1000 / 3);
+  } else {
+    gain.gain.value = 0.8;
+  }
+
+  // Expression filter for arp notes
+  if (state.expressionOn) {
+    var filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 8000;
+    filter.Q.value = 1;
+    source.connect(gain);
+    gain.connect(filter);
+    filter.connect(masterGain);
+    state.activeNotes.set(midiNote, { source: source, gain: gain, filter: filter, baseRate: baseRate });
+  } else {
+    source.connect(gain);
+    gain.connect(masterGain);
+    state.activeNotes.set(midiNote, { source: source, gain: gain, baseRate: baseRate });
+  }
+
+  source.start();
+  highlightKey(midiNote, true);
+}
+
+function stopArp() {
+  if (state.arpInterval) {
+    state.arpInterval = null;
+    if (_arpRafId) {
+      cancelAnimationFrame(_arpRafId);
+      _arpRafId = null;
+    }
+  }
+  if (state.arpLastNote !== null) {
+    noteOffImmediate(state.arpLastNote);
+    state.arpLastNote = null;
+  }
+}
+
+function toggleArp() {
+  state.arpOn = !state.arpOn;
+  var btn = document.getElementById('arp-btn');
+  btn.classList.toggle('on', state.arpOn);
+  btn.setAttribute('aria-pressed', state.arpOn);
+  document.getElementById('arp-indicator').style.display = state.arpOn ? 'inline' : 'none';
+  var bpmLabel = document.getElementById('arp-bpm-label');
+  if (bpmLabel) {
+    bpmLabel.style.display = state.arpOn ? 'inline' : 'none';
+    bpmLabel.textContent = state.arpBpm + 'bpm';
+  }
+  // Show/hide BPM slider
+  var bpmGroup = document.getElementById('arp-bpm-group');
+  if (bpmGroup) bpmGroup.classList.toggle('visible', state.arpOn);
+  showToast(state.arpOn ? 'Arp ON' : 'Arp OFF');
+  if (!state.arpOn) {
+    stopArp();
+    state.arpNotes = [];
+    if (state.arpLastNote !== null) {
+      noteOffImmediate(state.arpLastNote);
+      state.arpLastNote = null;
+    }
+  }
+}
+
+function cycleArpMode() {
+  var modes = ['up', 'down', 'random'];
+  var idx = modes.indexOf(state.arpMode);
+  state.arpMode = modes[(idx + 1) % modes.length];
+  document.getElementById('arp-btn').textContent = 'Arp:' + state.arpMode[0].toUpperCase();
+  showToast('Arp: ' + state.arpMode);
+}
+
+// ---- Hold Mode ----
+function toggleHold() {
+  state.holdMode = !state.holdMode;
+  var btn = document.getElementById('hold-btn');
+  btn.classList.toggle('on', state.holdMode);
+  btn.setAttribute('aria-pressed', state.holdMode);
+  showToast(state.holdMode ? 'Hold ON' : 'Hold OFF');
+  if (!state.holdMode) {
+    // Release all held notes
+    state.heldNotes.forEach(function(midi) { noteOffImmediate(midi); });
+    state.heldNotes.clear();
+    // Also clear arp notes to prevent zombie arp
+    state.arpNotes = [];
+    stopArp();
+  }
+}
+
+// ---- Sustain Indicator ----
+function updateSustainIndicator() {
+  var el = document.getElementById('sustain-indicator');
+  if (el) el.classList.toggle('active', state.sustainOn);
+}
+
+// ---- Chord Mode ----
+function toggleChord() {
+  state.chordMode = !state.chordMode;
+  var btn = document.getElementById('chord-btn');
+  btn.classList.toggle('on', state.chordMode);
+  btn.setAttribute('aria-pressed', state.chordMode);
+  updateChordBtnText();
+  showToast(state.chordMode ? 'Chord: ' + state.chordType.toUpperCase() : 'Chord OFF');
+}
+
+function cycleChordType() {
+  var types = ['maj', 'min', '7th', 'maj7'];
+  var idx = types.indexOf(state.chordType);
+  state.chordType = types[(idx + 1) % types.length];
+  updateChordBtnText();
+  showToast('Chord: ' + state.chordType.toUpperCase());
+}
+
+function updateChordBtnText() {
+  var btn = document.getElementById('chord-btn');
+  if (state.chordMode) {
+    btn.textContent = 'Chord:' + state.chordType.toUpperCase();
+  } else {
+    btn.textContent = 'Chord';
+  }
+}
+
+// ---- Strum Mode ----
+function toggleStrum() {
+  state.strumOn = !state.strumOn;
+  var btn = document.getElementById('strum-btn');
+  btn.classList.toggle('on', state.strumOn);
+  btn.setAttribute('aria-pressed', state.strumOn);
+  showToast(state.strumOn ? 'Strum ON' : 'Strum OFF');
+}
+
+// ---- Glide/Portamento ----
+function toggleGlide() {
+  state.glideOn = !state.glideOn;
+  var btn = document.getElementById('glide-btn');
+  btn.classList.toggle('on', state.glideOn);
+  btn.setAttribute('aria-pressed', state.glideOn);
+  showToast(state.glideOn ? 'Glide ON' : 'Glide OFF');
+}
+
+// ---- Expression Filter ----
+function toggleExpression() {
+  state.expressionOn = !state.expressionOn;
+  var btn = document.getElementById('expr-btn');
+  btn.classList.toggle('on', state.expressionOn);
+  btn.setAttribute('aria-pressed', state.expressionOn);
+  showToast(state.expressionOn ? 'Expression ON' : 'Expression OFF');
+}
+
+// ---- Split Keyboard ----
+function toggleSplit() {
+  state.splitOn = !state.splitOn;
+  var btn = document.getElementById('split-btn');
+  btn.classList.toggle('on', state.splitOn);
+  btn.setAttribute('aria-pressed', state.splitOn);
+
+  if (state.splitOn && !state.splitPreset) {
+    // Pick a different preset for the right half
+    var presetNames = Object.keys(state.presets).sort();
+    var currentIdx = presetNames.indexOf(state.currentPreset);
+    if (currentIdx >= 0 && presetNames.length > 1) {
+      state.splitPreset = presetNames[(currentIdx + 1) % presetNames.length];
+      // Pre-load the split preset samples
+      loadPresetSamples(state.splitPreset);
+    }
+    showToast('Split ON — R: ' + (state.splitPreset || '').replace(/_/g, ' '));
+  } else if (state.splitOn) {
+    showToast('Split ON — R: ' + (state.splitPreset || '').replace(/_/g, ' '));
+  } else {
+    showToast('Split OFF');
+  }
+
+  buildKeyboard();
+}
+
+// ---- Velocity Curve ----
+function cycleVelocityCurve() {
+  var curves = ['linear', 'soft', 'hard'];
+  var idx = curves.indexOf(state.velocityCurve);
+  state.velocityCurve = curves[(idx + 1) % curves.length];
+  var btn = document.getElementById('vel-curve-btn');
+  btn.textContent = 'Vel: ' + state.velocityCurve.charAt(0).toUpperCase() + state.velocityCurve.slice(1);
+  showToast('Velocity: ' + state.velocityCurve);
+}
+
+// ---- Keyboard Octave Count Toggle ----
+function toggleKeyboardOctaves() {
+  state.keyboardOctaves = state.keyboardOctaves === 2 ? 3 : 2;
+  var btn = document.getElementById('kb-octaves-btn');
+  btn.textContent = state.keyboardOctaves + ' Oct';
+  buildKeyboard();
+  showToast(state.keyboardOctaves + ' Octave Keyboard');
+}
+
+// ---- Transpose ----
+function changeTranspose(delta) {
+  state.transpose = Math.max(-12, Math.min(12, state.transpose + delta));
+  var display = document.getElementById('transpose-display');
+  display.textContent = 'T:' + (state.transpose > 0 ? '+' : '') + state.transpose;
+  display.classList.toggle('accented', state.transpose !== 0);
+  showToast('Transpose: ' + (state.transpose > 0 ? '+' : '') + state.transpose);
+  saveLastPreset();
+}
+
+// ---- Sidebar Toggle ----
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  var btn = document.getElementById('sidebar-toggle');
+  var collapsed = sidebar.classList.toggle('collapsed');
+  btn.innerHTML = collapsed ? '&#9654;' : '&#9776;';
+  btn.title = collapsed ? 'Expand sidebar' : 'Collapse sidebar';
+  try { localStorage.setItem('xobese-sidebar-collapsed', collapsed ? '1' : '0'); } catch(e) {}
+}
+
+// ---- Glitch Mode ----
+function toggleGlitch() {
+  state.glitchMode = !state.glitchMode;
+  var btn = document.getElementById('glitch-btn');
+  btn.classList.toggle('on', state.glitchMode);
+  btn.setAttribute('aria-pressed', state.glitchMode);
+  showToast(state.glitchMode ? 'Glitch ON' : 'Glitch OFF');
+}
+
+// ---- Mood Filter ----
+function selectMood(mood) {
+  state.currentMood = mood;
+  document.querySelectorAll('.mood-tag').forEach(function(el) {
+    var active = el.dataset.mood === mood;
+    el.classList.toggle('active', active);
+    el.setAttribute('aria-pressed', active);
+  });
+  renderPresets();
+}
+
+function presetMatchesMood(presetName) {
+  if (state.currentMood === 'all') return true;
+  var cat = (state.categories[presetName] || '').toLowerCase();
+  var moodCats = MOOD_MAP[state.currentMood] || [];
+  return moodCats.indexOf(cat) >= 0;
+}
+
+// ---- Ripple Effect on Keys ----
+function createRipple(keyEl, e) {
+  var ripple = document.createElement('div');
+  ripple.className = 'key-ripple';
+  var rect = keyEl.getBoundingClientRect();
+  var x, y;
+  if (e && e.clientX) {
+    x = e.clientX - rect.left - 15;
+    y = e.clientY - rect.top - 15;
+  } else {
+    x = rect.width / 2 - 15;
+    y = rect.height / 2 - 15;
+  }
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  keyEl.appendChild(ripple);
+  setTimeout(function() { ripple.remove(); }, 400);
+}
+
+// ---- Velocity from Click Position ----
+function velocityFromPosition(keyEl, e) {
+  if (!e || !e.clientY) return 100;
+  var rect = keyEl.getBoundingClientRect();
+  var yRatio = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+  // Apply velocity curve
+  if (state.velocityCurve === 'soft') {
+    return Math.round(60 + yRatio * 67); // 60-127, less dynamic range
+  } else if (state.velocityCurve === 'hard') {
+    return Math.round(20 + Math.pow(yRatio, 2) * 107); // 20-127, steep
+  }
+  // Linear (default)
+  return Math.round(40 + yRatio * 87); // 40-127 range
+}
+
+// ---- Loading Progress ----
+function updateLoadingProgress(loaded, total) {
+  var pct = total > 0 ? (loaded / total) * 100 : 0;
+  var bar = document.getElementById('loading-progress-bar');
+  if (bar) bar.style.width = pct + '%';
+  var text = document.getElementById('loading-text');
+  if (text) text.textContent = 'Loading samples... ' + loaded + '/' + total;
+}
+
+// ---- LocalStorage Persistence (debounced) ----
+// P21: Batch localStorage into single JSON object
+var _saveTimer = null;
+function saveLastPreset() {
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() {
+    _saveTimer = null;
+    try {
+      localStorage.setItem('xobese-state', JSON.stringify({
+        preset: state.currentPreset || '',
+        category: state.currentCategory,
+        octave: state.octave,
+        volume: state.volume,
+        transpose: state.transpose,
+        attack: state.attack,
+        release: state.release
+      }));
+    } catch(e) {}
+  }, 500);
+}
+
+// P21: Restore from single JSON key with fallback to old individual keys
+function restoreLastState() {
+  try {
+    var lastPreset = null;
+    var saved = localStorage.getItem('xobese-state');
+    if (saved) {
+      var data = JSON.parse(saved);
+      lastPreset = data.preset || null;
+      if (data.category && CATEGORIES.indexOf(data.category) >= 0) state.currentCategory = data.category;
+      if (data.octave !== undefined) { var o = parseInt(data.octave); if (!isNaN(o)) state.octave = o; }
+      if (data.transpose !== undefined) state.transpose = parseInt(data.transpose) || 0;
+      if (data.attack !== undefined) {
+        state.attack = parseInt(data.attack) || 10;
+        var atkSlider = document.getElementById('attack-slider');
+        if (atkSlider) atkSlider.value = state.attack;
+        var atkVal = document.getElementById('attack-value');
+        if (atkVal) atkVal.textContent = state.attack + 'ms';
+      }
+      if (data.release !== undefined) {
+        state.release = parseInt(data.release) || 200;
+        var relSlider = document.getElementById('release-slider');
+        if (relSlider) relSlider.value = state.release;
+        var relVal = document.getElementById('release-value');
+        if (relVal) relVal.textContent = state.release + 'ms';
+      }
+      if (data.volume !== undefined) {
+        state.volume = parseFloat(data.volume) || 0.8;
+        document.getElementById('volume-slider').value = Math.round(state.volume * 100);
+      }
+    } else {
+      // Migration fallback: read old individual keys
+      lastPreset = localStorage.getItem('xobese-last-preset');
+      var lastCat = localStorage.getItem('xobese-last-category');
+      var lastOctave = localStorage.getItem('xobese-octave');
+      var lastVol = localStorage.getItem('xobese-volume');
+      if (lastCat && CATEGORIES.indexOf(lastCat) >= 0) state.currentCategory = lastCat;
+      if (lastOctave !== null) { var o2 = parseInt(lastOctave); if (!isNaN(o2)) state.octave = o2; }
+      var lastTranspose = localStorage.getItem('xobese-transpose');
+      if (lastTranspose) state.transpose = parseInt(lastTranspose) || 0;
+      var savedAttack = localStorage.getItem('xobese-attack');
+      if (savedAttack !== null) {
+        state.attack = parseInt(savedAttack) || 10;
+        var atkSlider2 = document.getElementById('attack-slider');
+        if (atkSlider2) atkSlider2.value = state.attack;
+        var atkVal2 = document.getElementById('attack-value');
+        if (atkVal2) atkVal2.textContent = state.attack + 'ms';
+      }
+      var savedRelease = localStorage.getItem('xobese-release');
+      if (savedRelease !== null) {
+        state.release = parseInt(savedRelease) || 200;
+        var relSlider2 = document.getElementById('release-slider');
+        if (relSlider2) relSlider2.value = state.release;
+        var relVal2 = document.getElementById('release-value');
+        if (relVal2) relVal2.textContent = state.release + 'ms';
+      }
+      if (lastVol) {
+        state.volume = parseFloat(lastVol) || 0.8;
+        document.getElementById('volume-slider').value = Math.round(state.volume * 100);
+      }
+    }
+    // Restore sidebar collapsed state (separate concern, keep independent)
+    var sidebarCollapsed = localStorage.getItem('xobese-sidebar-collapsed');
+    if (sidebarCollapsed === '1') {
+      var sidebar = document.getElementById('sidebar');
+      var btn = document.getElementById('sidebar-toggle');
+      sidebar.classList.add('collapsed');
+      btn.innerHTML = '&#9654;';
+      btn.title = 'Expand sidebar';
+    }
+    return lastPreset || null;
+  } catch(e) { return null; }
+}
+
+// ---- Audio Recorder ----
+function toggleRecording() {
+  if (state.recording) {
+    stopRecording();
+  } else {
+    startRecording();
+  }
+}
+
+function startRecording() {
+  ensureAudio();
+  if (!audioCtx) return;
+
+  var dest = audioCtx.createMediaStreamDestination();
+  masterGain.connect(dest);
+  state.recordingStreamDest = dest;
+
+  var recorder;
+  try {
+    recorder = new MediaRecorder(dest.stream);
+  } catch(e) {
+    showToast('Recording not supported in this browser');
+    return;
+  }
+
+  var chunks = [];
+  recorder.ondataavailable = function(e) {
+    if (e.data.size > 0) chunks.push(e.data);
+  };
+  recorder.onstop = function() {
+    var blob = new Blob(chunks, { type: 'audio/webm' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'xobese-recording-' + Date.now() + '.webm';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Recording saved');
+    // Disconnect stream dest
+    try { masterGain.disconnect(state.recordingStreamDest); } catch(e) {}
+    state.recordingStreamDest = null;
+  };
+
+  recorder.start();
+  state.recorder = recorder;
+  state.recording = true;
+  state.recordingStartTime = Date.now();
+
+  // Update UI
+  document.getElementById('rec-btn').classList.add('recording');
+  document.getElementById('rec-btn').textContent = 'STOP';
+  document.getElementById('rec-timer').classList.add('visible');
+
+  // Update elapsed time
+  state.recordingTimerInterval = setInterval(function() {
+    var elapsed = Math.floor((Date.now() - state.recordingStartTime) / 1000);
+    var mins = Math.floor(elapsed / 60);
+    var secs = elapsed % 60;
+    document.getElementById('rec-elapsed').textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+  }, 500);
+
+  showToast('Recording started');
+}
+
+function stopRecording() {
+  if (state.recorder && state.recorder.state !== 'inactive') {
+    state.recorder.stop();
+  }
+  state.recording = false;
+  state.recorder = null;
+  if (state.recordingTimerInterval) {
+    clearInterval(state.recordingTimerInterval);
+    state.recordingTimerInterval = null;
+  }
+  document.getElementById('rec-btn').classList.remove('recording');
+  document.getElementById('rec-btn').textContent = 'REC';
+  document.getElementById('rec-timer').classList.remove('visible');
+}
+
+// ---- Preset Chain/Playlist ----
+function loadPresetChain() {
+  try {
+    var data = localStorage.getItem('xobese-preset-chain');
+    if (data) state.presetChain = JSON.parse(data);
+  } catch(e) { state.presetChain = []; }
+}
+
+function savePresetChain() {
+  try { localStorage.setItem('xobese-preset-chain', JSON.stringify(state.presetChain)); } catch(e) {}
+}
+
+function addToChain(presetName) {
+  var idx = state.presetChain.indexOf(presetName);
+  if (idx >= 0) {
+    state.presetChain.splice(idx, 1);
+    showToast('Removed from chain');
+  } else {
+    state.presetChain.push(presetName);
+    showToast('Added to chain: ' + presetName.replace(/_/g, ' '));
+  }
+  savePresetChain();
+  updateChainIndicator();
+  renderPresets(); // refresh chain-add buttons
+}
+
+function updateChainIndicator() {
+  var el = document.getElementById('chain-indicator');
+  var playBtn = document.getElementById('chain-play-btn');
+  if (state.presetChain.length > 0) {
+    el.classList.add('visible');
+    if (state.chainPlaying) {
+      el.textContent = 'Chain: ' + (state.chainIndex + 1) + '/' + state.presetChain.length;
+      el.classList.add('playing');
+    } else {
+      el.textContent = 'Chain: ' + state.presetChain.length;
+      el.classList.remove('playing');
+    }
+    playBtn.style.display = 'inline-block';
+  } else {
+    el.classList.remove('visible');
+    el.classList.remove('playing');
+    playBtn.style.display = 'none';
+  }
+}
+
+function toggleChainPlay() {
+  if (state.chainPlaying) {
+    stopChainPlay();
+  } else {
+    startChainPlay();
+  }
+}
+
+function startChainPlay() {
+  if (state.presetChain.length === 0) {
+    showToast('Chain is empty');
+    return;
+  }
+  state.chainPlaying = true;
+  state.chainIndex = 0;
+  selectPreset(state.presetChain[0]);
+  document.getElementById('chain-play-btn').textContent = 'Stop Chain';
+  updateChainIndicator();
+  showToast('Chain playing');
+
+  state.chainTimer = setInterval(function() {
+    state.chainIndex++;
+    if (state.chainIndex >= state.presetChain.length) {
+      state.chainIndex = 0; // loop
+    }
+    selectPreset(state.presetChain[state.chainIndex]);
+    updateChainIndicator();
+  }, 10000);
+}
+
+function stopChainPlay() {
+  state.chainPlaying = false;
+  if (state.chainTimer) {
+    clearInterval(state.chainTimer);
+    state.chainTimer = null;
+  }
+  document.getElementById('chain-play-btn').textContent = 'Play Chain';
+  updateChainIndicator();
+  showToast('Chain stopped');
+}
+
+function handleChainIndicatorClick() {
+  if (state.presetChain.length === 0) return;
+  if (confirm('Clear preset chain (' + state.presetChain.length + ' presets)?')) {
+    if (state.chainPlaying) stopChainPlay();
+    state.presetChain = [];
+    savePresetChain();
+    updateChainIndicator();
+    renderPresets();
+    showToast('Chain cleared');
+  }
+}
+
+// ---- Drone Mode ----
+function toggleDrone() {
+  state.droneMode = !state.droneMode;
+  var btn = document.getElementById('drone-btn');
+  btn.classList.toggle('on', state.droneMode);
+  btn.setAttribute('aria-pressed', state.droneMode);
+  var kbContainer = document.getElementById('keyboard-container');
+  kbContainer.classList.toggle('drone-active', state.droneMode);
+
+  if (state.droneMode) {
+    showToast('Drone ON');
+  } else {
+    showToast('Drone OFF');
+    // Stop all drone notes
+    state.droneNotes.forEach(function(noteData, midi) {
+      try { noteData.source.stop(); } catch(e) {}
+      try { noteData.gain.disconnect(); } catch(e) {}
+      if (noteData.filter) try { noteData.filter.disconnect(); } catch(e) {}
+      highlightKey(midi, false);
+    });
+    state.droneNotes.clear();
+    // Clean up shared drone LFO
+    if (state.droneLfo) {
+      try { state.droneLfo.stop(); } catch(e) {}
+      try { state.droneLfoGain.disconnect(); } catch(e) {}
+      state.droneLfo = null;
+      state.droneLfoGain = null;
+    }
+  }
+}
+
+// ---- Sound Layering ----
+function toggleLayer() {
+  state.layerMode = !state.layerMode;
+  var btn = document.getElementById('layer-btn');
+  btn.classList.toggle('on', state.layerMode);
+  btn.setAttribute('aria-pressed', state.layerMode);
+
+  if (state.layerMode) {
+    showToast('Layer ON — select a 2nd preset');
+  } else {
+    state.layerPreset = null;
+    showToast('Layer OFF');
+    updateNowPlaying();
+  }
+}
+
+function updateNowPlaying() {
+  if (!state.currentPreset) return;
+  var np = document.getElementById('now-playing');
+  while (np.firstChild) np.removeChild(np.firstChild);
+  np.appendChild(document.createTextNode('Now Playing: '));
+  var strong = document.createElement('span');
+  strong.className = 'np-name';
+  strong.textContent = state.currentPreset.replace(/_/g, ' ');
+  np.appendChild(strong);
+  var cat = state.categories[state.currentPreset] || '';
+  if (cat) np.appendChild(document.createTextNode(' (' + cat + ')'));
+  if (state.layerPreset) {
+    np.appendChild(document.createTextNode(' + '));
+    var layerSpan = document.createElement('span');
+    layerSpan.className = 'np-name';
+    layerSpan.textContent = state.layerPreset.replace(/_/g, ' ');
+    np.appendChild(layerSpan);
+  }
+}
+
+// ---- Preset Roulette ----
+function startRoulette() {
+  var names = Object.keys(state.presets);
+  if (names.length < 2) return;
+  showToast('Roulette!');
+
+  var np = document.getElementById('now-playing');
+  var startInterval = 50;
+  var endInterval = 300;
+  var totalDuration = 2000;
+  var elapsed = 0;
+  var finalPick = names[Math.floor(Math.random() * names.length)];
+  // Avoid same preset
+  var filtered = names.filter(function(n) { return n !== state.currentPreset; });
+  if (filtered.length > 0) finalPick = filtered[Math.floor(Math.random() * filtered.length)];
+
+  function tick() {
+    var progress = Math.min(elapsed / totalDuration, 1);
+    var currentInterval = startInterval + (endInterval - startInterval) * Math.pow(progress, 2);
+
+    // Pick random name to display (not final until done)
+    var displayName;
+    if (progress >= 1) {
+      displayName = finalPick;
+    } else {
+      displayName = names[Math.floor(Math.random() * names.length)];
+    }
+
+    // Update display
+    while (np.firstChild) np.removeChild(np.firstChild);
+    np.appendChild(document.createTextNode('Now Playing: '));
+    var strong = document.createElement('span');
+    strong.className = 'np-name roulette-spinning';
+    strong.textContent = displayName.replace(/_/g, ' ');
+    np.appendChild(strong);
+
+    if (progress >= 1) {
+      // Done — select the final preset
+      selectPreset(finalPick);
+      return;
+    }
+
+    elapsed += currentInterval;
+    setTimeout(tick, currentInterval);
+  }
+
+  tick();
+}
+
+// ---- Init ----
+async function init() {
+  try {
+    const presetsResp = await fetch('/api/presets');
+    const catsResp = await fetch('/api/categories');
+    state.presets = await presetsResp.json();
+    state.categories = await catsResp.json();
+  } catch (e) {
+    var emptyEl = document.getElementById('empty-state');
+    emptyEl.textContent = 'Could not load presets. Is serve.py running?';
+    emptyEl.style.display = 'flex';
+    return;
+  }
+
+  // Load favorites from localStorage
+  loadFavorites();
+
+  // P20: Compute and cache category counts once after presets load
+  computeCategoryCounts();
+
+  // Restore last session state
+  var lastPreset = restoreLastState();
+
+  buildSidebar();
+  renderPresets();
+  buildKeyboard();
+
+  // Auto-load last preset
+  if (lastPreset && state.presets[lastPreset]) {
+    selectPreset(lastPreset);
+  }
+
+  // Debounced search — avoids re-rendering 110 cards on every keystroke
+  var searchTimer = null;
+  document.getElementById('search-box').addEventListener('input', function(e) {
+    state.searchQuery = e.target.value;
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(renderPresets, 80);
+  });
+
+  // Sidebar toggle
+  document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+
+  document.getElementById('oct-down').addEventListener('click', function() { changeOctave(-1); });
+  document.getElementById('oct-up').addEventListener('click', function() { changeOctave(1); });
+  document.getElementById('random-btn').addEventListener('click', randomPreset);
+
+  document.getElementById('volume-slider').addEventListener('input', function(e) {
+    state.volume = e.target.value / 100;
+    if (masterGain) masterGain.gain.value = state.volume;
+    document.getElementById('volume-display').textContent = e.target.value + '%';
+    saveLastPreset();
+  });
+
+  // Transpose controls
+  document.getElementById('transpose-down').addEventListener('click', function() { changeTranspose(-1); });
+  document.getElementById('transpose-up').addEventListener('click', function() { changeTranspose(1); });
+
+  // Feature toggles
+  document.getElementById('hold-btn').addEventListener('click', toggleHold);
+  // Arp: single click toggles, long-press cycles mode (avoids dblclick toggle-off issue)
+  var arpClickTimer = null;
+  document.getElementById('arp-btn').addEventListener('click', function() {
+    if (arpClickTimer) { clearTimeout(arpClickTimer); arpClickTimer = null; }
+    arpClickTimer = setTimeout(function() { arpClickTimer = null; toggleArp(); }, 220);
+  });
+  document.getElementById('arp-btn').addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    if (arpClickTimer) { clearTimeout(arpClickTimer); arpClickTimer = null; }
+    cycleArpMode();
+  });
+  document.getElementById('glitch-btn').addEventListener('click', toggleGlitch);
+
+  // New feature toggles
+  var chordClickTimer = null;
+  document.getElementById('chord-btn').addEventListener('click', function() {
+    if (chordClickTimer) { clearTimeout(chordClickTimer); chordClickTimer = null; }
+    chordClickTimer = setTimeout(function() { chordClickTimer = null; toggleChord(); }, 220);
+  });
+  document.getElementById('chord-btn').addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    if (chordClickTimer) { clearTimeout(chordClickTimer); chordClickTimer = null; }
+    if (!state.chordMode) state.chordMode = true;
+    document.getElementById('chord-btn').classList.add('on');
+    document.getElementById('chord-btn').setAttribute('aria-pressed', 'true');
+    cycleChordType();
+  });
+  document.getElementById('strum-btn').addEventListener('click', toggleStrum);
+  document.getElementById('glide-btn').addEventListener('click', toggleGlide);
+  document.getElementById('expr-btn').addEventListener('click', toggleExpression);
+  document.getElementById('split-btn').addEventListener('click', toggleSplit);
+  document.getElementById('drone-btn').addEventListener('click', toggleDrone);
+  document.getElementById('layer-btn').addEventListener('click', toggleLayer);
+  document.getElementById('vel-curve-btn').addEventListener('click', cycleVelocityCurve);
+  document.getElementById('kb-octaves-btn').addEventListener('click', toggleKeyboardOctaves);
+
+  // Audio Recorder
+  document.getElementById('rec-btn').addEventListener('click', toggleRecording);
+
+  // Preset Chain
+  loadPresetChain();
+  updateChainIndicator();
+  document.getElementById('chain-indicator').addEventListener('click', handleChainIndicatorClick);
+  document.getElementById('chain-play-btn').addEventListener('click', toggleChainPlay);
+
+  // Roulette
+  document.getElementById('roulette-btn').addEventListener('click', startRoulette);
+
+  // Arp BPM slider
+  document.getElementById('arp-bpm-slider').addEventListener('input', function(e) {
+    state.arpBpm = parseInt(e.target.value);
+    document.getElementById('arp-bpm-value').textContent = state.arpBpm;
+    var bpmLabel = document.getElementById('arp-bpm-label');
+    if (bpmLabel) bpmLabel.textContent = state.arpBpm + 'bpm';
+    // P28: RAF-based arp — just reset tick timing, no restart needed
+    if (state.arpOn && state.arpInterval) {
+      _lastArpTick = performance.now();
+    }
+  });
+
+  // Envelope sliders
+  document.getElementById('attack-slider').addEventListener('input', function(e) {
+    state.attack = parseInt(e.target.value);
+    document.getElementById('attack-value').textContent = state.attack + 'ms';
+    saveLastPreset();
+  });
+  document.getElementById('release-slider').addEventListener('input', function(e) {
+    state.release = parseInt(e.target.value);
+    document.getElementById('release-value').textContent = state.release + 'ms';
+    saveLastPreset();
+  });
+
+  // Mood filter tags
+  document.querySelectorAll('.mood-tag').forEach(function(el) {
+    el.addEventListener('click', function() { selectMood(el.dataset.mood); });
+  });
+
+  document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('keyup', handleKeyUp);
+
+  // P24: Lazy help modal — only populate on first open
+  var helpModal = document.getElementById('help-modal');
+  var helpInitialized = false;
+  document.getElementById('help-btn').addEventListener('click', function() {
+    if (!helpInitialized) {
+      // Populate help body content lazily on first click
+      helpInitialized = true;
+      document.getElementById('help-close').addEventListener('click', function() {
+        helpModal.style.display = 'none';
+      });
+      helpModal.addEventListener('click', function(e) {
+        if (e.target === helpModal) helpModal.style.display = 'none';
+      });
+    }
+    helpModal.style.display = 'flex';
+  });
+
+  // Scroll-to-top button
+  var presetArea = document.getElementById('preset-area');
+  var scrollBtn = document.getElementById('scroll-top-btn');
+  presetArea.addEventListener('scroll', function() {
+    if (presetArea.scrollTop > 200) {
+      scrollBtn.style.display = 'flex';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  }, { passive: true });
+  scrollBtn.addEventListener('click', function() {
+    presetArea.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Update volume display on restore
+  document.getElementById('volume-display').textContent = Math.round(state.volume * 100) + '%';
+
+  // Restore transpose accent
+  if (state.transpose !== 0) {
+    document.getElementById('transpose-display').classList.add('accented');
+  }
+
+  initMIDI();
+
+  document.addEventListener('click', ensureAudio, { once: true });
+  document.addEventListener('touchstart', ensureAudio, { once: true, passive: true });
+
+  // Register service worker for PWA / offline support
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js').catch(function() {});
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+})();
+</script>
+
+</body>
+</html>
