@@ -32,7 +32,13 @@
       "morph_envSustain": 0.9,
       "morph_filterCutoff": 500,
       "morph_filterRes": 0.15,
-      "morph_morph": 0.2
+      "morph_morph": 0.2,
+      "morph_macroCharacter": 0.499,
+      "morph_macroMovement": 0.395,
+      "morph_macroCoupling": 0.132,
+      "morph_macroSpace": 0.897,
+      "morph_filterEnvDepth": 0.355,
+      "morph_lfoRate": 0.07
     }
   },
   "schema_version": 1,
@@ -48,5 +54,11 @@
     "slow"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.476,
+    "MOVEMENT": 0.372,
+    "COUPLING": 0.109,
+    "SPACE": 0.874
+  }
 }

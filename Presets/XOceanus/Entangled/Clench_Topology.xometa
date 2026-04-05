@@ -41,12 +41,16 @@
   "parameters": {
     "Overbite": {
       "poss_gnashAmount": 0.5,
-      "poss_macroBelly": 0.301,
-      "poss_macroBite": 0.463,
-      "poss_macroScurry": 0.335,
+      "poss_macroBelly": 0.461,
+      "poss_macroBite": 0.587,
+      "poss_macroScurry": 0.538,
       "poss_macroTrash": 0.598,
       "poss_level": 0.847,
-      "poss_pan": -0.005
+      "poss_pan": -0.005,
+      "poss_macroPlayDead": 0.654,
+      "poss_filterEnvAmount": 0.401,
+      "poss_lfo1Rate": 0.153,
+      "poss_lfo1Depth": 0.37
     },
     "Overlap": {
       "olap_couplingIn": 0.743,
@@ -56,7 +60,14 @@
       "olap_macro3": 0.67,
       "olap_macro4": 0.585,
       "olap_outputLevel": 0.805,
-      "olap_outputPan": 0.011
+      "olap_outputPan": 0.011,
+      "olap_macroCharacter": 0.456,
+      "olap_macroMovement": 0.582,
+      "olap_macroCoupling": 0.649,
+      "olap_macroSpace": 0.533,
+      "olap_filterEnvAmt": 0.401,
+      "olap_lfo1Rate": 0.153,
+      "olap_lfo1Depth": 0.37
     }
   },
   "schema_version": 1,
@@ -68,5 +79,11 @@
     "entangled"
   ],
   "tempo": 125,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.578,
+    "COUPLING": 0.645,
+    "SPACE": 0.529
+  }
 }

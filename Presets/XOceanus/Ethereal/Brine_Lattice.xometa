@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Brine Lattice",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Salt crystallizing from a brine solution. Osmosis membrane meets Organon metabolism in a joint act of crystallization.",
+  "tags": [
+    "ethereal",
+    "brine",
+    "crystal",
+    "coupling",
+    "lattice"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.52,
+    "movement": 0.22,
+    "density": 0.18,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.32,
+      "osmo_macroMovement": 0.24,
+      "osmo_macroCoupling": 0.11,
+      "osmo_macroSpace": 0.89,
+      "osmo_permeability": 0.52,
+      "osmo_filterEnvAmt": 0.26,
+      "osmo_lfo1Rate": 0.012,
+      "osmo_lfo1Depth": 0.11,
+      "osmo_attack": 3.8,
+      "osmo_release": 10.5
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.28,
+      "organon_macroMovement": 0.2,
+      "organon_macroCoupling": 0.09,
+      "organon_macroSpace": 0.91,
+      "organon_metabolicRate": 0.22,
+      "organon_filterEnvAmt": 0.22,
+      "organon_lfo1Rate": 0.008,
+      "organon_lfo1Depth": 0.09,
+      "organon_attack": 4.5,
+      "organon_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Organon",
+        "type": "FilterToFilter",
+        "amount": 0.14
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.1,
+    "SPACE": 0.9
+  }
+}

@@ -63,7 +63,14 @@
       "oblq_phaserRate": 0.8,
       "oblq_phaserDepth": 0.35,
       "oblq_phaserFeedback": 0.2,
-      "oblq_phaserMix": 0.2
+      "oblq_phaserMix": 0.2,
+      "oblq_macroCharacter": 0.564,
+      "oblq_macroMovement": 0.528,
+      "oblq_macroCoupling": 0.71,
+      "oblq_macroSpace": 0.418,
+      "oblq_filterEnvAmt": 0.524,
+      "oblq_lfo1Rate": 0.224,
+      "oblq_lfo1Depth": 0.21
     },
     "Onset": {
       "perc_v1_level": 0.85,
@@ -74,8 +81,13 @@
       "perc_v2_decay": 0.3,
       "perc_v3_level": 0.6,
       "perc_v4_level": 0.5,
-      "perc_macro_punch": 0.6,
-      "perc_macro_space": 0.3
+      "perc_macro_punch": 0.565,
+      "perc_macro_space": 0.419,
+      "perc_macro_mutate": 0.529,
+      "perc_macro_machine": 0.711,
+      "perc_filterEnvAmt": 0.524,
+      "perc_lfo1Rate": 0.224,
+      "perc_lfo1Depth": 0.21
     }
   },
   "coupling": {
@@ -95,5 +107,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.541,
+    "MOVEMENT": 0.505,
+    "COUPLING": 0.687,
+    "SPACE": 0.395
+  }
 }

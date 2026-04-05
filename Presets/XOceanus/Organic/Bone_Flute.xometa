@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Bone Flute",
+  "mood": "Organic",
+  "engines": ["Obbligato"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "40,000-year-old bone flute recovered from cave sediment — ancient breath instrument carrying breath from another era.",
+  "tags": ["organic", "bone", "flute", "ancient", "breath"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.32,
+    "density": 0.30,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_macroCharacter": 0.38,
+      "obbl_macroMovement": 0.32,
+      "obbl_macroCoupling": 0.14,
+      "obbl_macroSpace": 0.58,
+      "obbl_breathA": 0.35,
+      "obbl_filterEnvAmt": 0.40,
+      "obbl_lfo1Rate": 0.04,
+      "obbl_lfo1Depth": 0.20,
+      "obbl_lfo2Rate": 0.08,
+      "obbl_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.58
+  }
+}

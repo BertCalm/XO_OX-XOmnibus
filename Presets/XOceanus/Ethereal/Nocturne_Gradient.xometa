@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Nocturne Gradient",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The sky's imperceptible shift from navy to charcoal between 2 and 4am. Darkness as a spectral gradient.",
+  "tags": [
+    "ethereal",
+    "nocturne",
+    "dark",
+    "gradient",
+    "night"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.26,
+    "warmth": 0.5,
+    "movement": 0.18,
+    "density": 0.13,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.28,
+      "ombre_macroMovement": 0.19,
+      "ombre_macroCoupling": 0.06,
+      "ombre_macroSpace": 0.88,
+      "ombre_blend": 0.72,
+      "ombre_filterEnvAmt": 0.21,
+      "ombre_lfo1Rate": 0.009,
+      "ombre_lfo1Depth": 0.1,
+      "ombre_attack": 4.5,
+      "ombre_release": 11.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.19,
+    "COUPLING": 0.06,
+    "SPACE": 0.88
+  }
+}

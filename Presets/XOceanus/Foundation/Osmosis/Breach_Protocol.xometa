@@ -31,7 +31,14 @@
       "osmo_permeability": 0.45,
       "osmo_selectivity": 0.8,
       "osmo_reactivity": 1.0,
-      "osmo_memory": 0.02
+      "osmo_memory": 0.02,
+      "osmo_macro1": 0.666,
+      "osmo_macro2": 0.773,
+      "osmo_macro3": 0.213,
+      "osmo_macro4": 0.499,
+      "osmo_filterEnvAmt": 0.601,
+      "osmo_lfo1Rate": 0.294,
+      "osmo_lfo1Depth": 0.344
     }
   },
   "coupling": {
@@ -44,5 +51,11 @@
     "density": 0.35,
     "space": 0.15,
     "aggression": 0.95
+  },
+  "macros": {
+    "CHARACTER": 0.611,
+    "MOVEMENT": 0.718,
+    "COUPLING": 0.158,
+    "SPACE": 0.444
   }
 }

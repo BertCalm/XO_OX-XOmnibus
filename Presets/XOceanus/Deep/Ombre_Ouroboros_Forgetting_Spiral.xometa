@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Forgetting Spiral",
+  "mood": "Deep",
+  "engines": ["Ombre", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Memory dissolving into chaos — Ombre's forgetting narrative driven by Ouroboros's strange attractor, a spiral descent into the deepest layer of forgetting.",
+  "tags": ["deep", "coupled", "memory", "chaotic", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.10,
+    "warmth": 0.62,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.42,
+      "ombre_macroMovement": 0.22,
+      "ombre_macroCoupling": 0.38,
+      "ombre_macroSpace": 0.70,
+      "ombre_filterEnvAmt": 0.38,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.20,
+      "ombre_blend": 0.55
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.48,
+      "ouro_macroMovement": 0.28,
+      "ouro_macroCoupling": 0.35,
+      "ouro_macroSpace": 0.68,
+      "ouro_filterEnvAmt": 0.40,
+      "ouro_lfo1Rate": 0.06,
+      "ouro_lfo1Depth": 0.24,
+      "ouro_topology": 0.50
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Ombre",
+        "type": "EnvToMorph",
+        "amount": 0.38
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.38,
+    "SPACE": 0.70
+  }
+}

@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.412,
+      "ouro_macroCharacter": 0.739,
+      "ouro_macroMovement": 0.673,
+      "ouro_macroCoupling": 0.295,
+      "ouro_filterEnvAmt": 0.577,
+      "ouro_lfoRate": 0.368
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "mathematical",
     "transcendental"
   ],
-  "description": "leash=0.0 — pure free-running Lorenz chaos, no Poincare reset, no forced fundamental. Ergodic coverage of the attractor basin. OUROBOROS as a mathematical noise source. CHARACTER macro restores minimal pitch locking."
+  "description": "leash=0.0 — pure free-running Lorenz chaos, no Poincare reset, no forced fundamental. Ergodic coverage of the attractor basin. OUROBOROS as a mathematical noise source. CHARACTER macro restores minimal pitch locking.",
+  "macros": {
+    "CHARACTER": 0.737,
+    "MOVEMENT": 0.671,
+    "COUPLING": 0.293,
+    "SPACE": 0.41
+  }
 }

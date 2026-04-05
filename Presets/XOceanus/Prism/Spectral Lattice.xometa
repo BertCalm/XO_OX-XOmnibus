@@ -41,14 +41,16 @@
       "optic_filterCutoff": 16700.0,
       "optic_filterReso": 0.13,
       "optic_level": 0.78,
-      "optic_macroCharacter": 0.72,
-      "optic_macroCoupling": 0.0,
-      "optic_macroMovement": 0.3,
-      "optic_macroSpace": 0.65,
+      "optic_macroCharacter": 0.57,
+      "optic_macroCoupling": 0.307,
+      "optic_macroMovement": 0.526,
+      "optic_macroSpace": 0.516,
       "optic_modulationDepth": 0.12,
       "optic_modulationRate": 1.84,
       "optic_reverbMix": 0.488,
-      "optic_stereoWidth": 0.81
+      "optic_stereoWidth": 0.81,
+      "optic_filterEnvAmt": 0.443,
+      "optic_lfoRate": 0.198
     }
   },
   "schema_version": 1,
@@ -61,5 +63,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.542,
+    "MOVEMENT": 0.498,
+    "COUPLING": 0.279,
+    "SPACE": 0.488
+  }
 }

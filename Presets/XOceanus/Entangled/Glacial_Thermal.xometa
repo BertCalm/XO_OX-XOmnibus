@@ -46,7 +46,14 @@
       "obsidian_level": 0.8,
       "obsidian_movement": 0.231,
       "obsidian_space": 0.544,
-      "obsidian_warmth": 0.258
+      "obsidian_warmth": 0.258,
+      "obsidian_macroCharacter": 0.545,
+      "obsidian_macroMovement": 0.603,
+      "obsidian_macroCoupling": 0.676,
+      "obsidian_macroSpace": 0.459,
+      "obsidian_filterEnvAmt": 0.531,
+      "obsidian_lfoRate": 0.164,
+      "obsidian_lfoDepth": 0.317
     },
     "Osprey": {
       "osprey_brine": 0.588,
@@ -54,7 +61,14 @@
       "osprey_foam": 0.603,
       "osprey_creatureRate": 0.757,
       "osprey_harborVerb": 0.53,
-      "osprey_hull": 0.452
+      "osprey_hull": 0.452,
+      "osprey_macroCharacter": 0.51,
+      "osprey_macroMovement": 0.568,
+      "osprey_macroCoupling": 0.641,
+      "osprey_macroSpace": 0.424,
+      "osprey_filterEnvDepth": 0.531,
+      "osprey_lfo2Rate": 0.164,
+      "osprey_lfo2Depth": 0.317
     }
   },
   "schema_version": 1,
@@ -66,5 +80,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.477,
+    "MOVEMENT": 0.535,
+    "COUPLING": 0.608,
+    "SPACE": 0.391
+  }
 }

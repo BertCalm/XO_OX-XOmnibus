@@ -45,7 +45,14 @@
       "bob_oscA_wave": 1.0,
       "bob_oscB_blend": 0.68,
       "bob_oscB_detune": 3.0,
-      "bob_oscB_wave": 3.0
+      "bob_oscB_wave": 3.0,
+      "bob_macroCharacter": 0.384,
+      "bob_macroMovement": 0.555,
+      "bob_macroCoupling": 0.169,
+      "bob_macroSpace": 0.796,
+      "bob_fltEnvAmt": 0.391,
+      "bob_lfo1Rate": 0.017,
+      "bob_lfo1Depth": 0.157
     }
   },
   "schema_version": 1,
@@ -56,5 +63,11 @@
     "gentle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.371,
+    "MOVEMENT": 0.542,
+    "COUPLING": 0.156,
+    "SPACE": 0.783
+  }
 }

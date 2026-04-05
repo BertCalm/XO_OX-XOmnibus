@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Optic Obsidian Scan",
+  "mood": "Crystalline",
+  "engines": [
+    "Optic",
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic visual modulation scanning Obsidian crystal pitch \u2014 phosphor precision modulating crystal white resonance.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "optic",
+    "obsidian",
+    "scanning"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.18,
+    "movement": 0.35,
+    "density": 0.34,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.62,
+      "optic_macroMovement": 0.4,
+      "optic_macroCoupling": 0.25,
+      "optic_macroSpace": 0.53,
+      "optic_filterEnvAmt": 0.58,
+      "optic_lfo1Rate": 0.09,
+      "optic_lfo1Depth": 0.17
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.62,
+      "obsidian_macroMovement": 0.4,
+      "obsidian_macroCoupling": 0.25,
+      "obsidian_macroSpace": 0.53,
+      "obsidian_filterEnvAmt": 0.58,
+      "obsidian_lfo1Rate": 0.09,
+      "obsidian_lfo1Depth": 0.17
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Obsidian",
+        "type": "LFOToPitch",
+        "amount": 0.2
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.25,
+    "SPACE": 0.53
+  }
+}

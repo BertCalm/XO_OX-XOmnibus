@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Opaline Fracture",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An opaline gem fractured at a precise angle \u2014 the resonance of a crack through mineral perfection.",
+  "tags": [
+    "crystalline",
+    "opaline",
+    "fracture",
+    "crack",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.26,
+    "movement": 0.32,
+    "density": 0.44,
+    "space": 0.56,
+    "aggression": 0.11
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.62,
+      "opal2_macroMovement": 0.35,
+      "opal2_macroCoupling": 0.12,
+      "opal2_macroSpace": 0.57,
+      "opal2_filterEnvAmt": 0.57,
+      "opal2_lfo1Rate": 0.06,
+      "opal2_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.12,
+    "SPACE": 0.57
+  }
+}

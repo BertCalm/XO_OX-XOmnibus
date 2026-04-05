@@ -46,11 +46,23 @@
       "ocelot_reverbMix": 0.348,
       "ocelot_outputLevel": 0.785,
       "ocelot_couplingLevel": 0.181,
-      "ocelot_couplingBus": 0
+      "ocelot_couplingBus": 0,
+      "ocelot_macroCharacter": 0.614,
+      "ocelot_macroMovement": 0.575,
+      "ocelot_macroCoupling": 0.242,
+      "ocelot_macroSpace": 0.443,
+      "ocelot_filterEnvDepth": 0.54,
+      "ocelot_lfoRate": 0.18
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.597,
+    "MOVEMENT": 0.558,
+    "COUPLING": 0.225,
+    "SPACE": 0.426
+  }
 }

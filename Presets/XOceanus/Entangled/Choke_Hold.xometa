@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Choke Hold",
+  "mood": "Entangled",
+  "engines": ["Orca", "Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Apex predator amplitude choking alien intelligence. Orca AmpToChoke coupling suppressing Octopus at peak hunt.",
+  "tags": ["entangled", "aggressive", "choke", "predator", "coupling"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.15,
+    "movement": 0.92,
+    "density": 0.88,
+    "space": 0.16,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.92,
+      "orca_macroMovement": 0.9,
+      "orca_macroCoupling": 0.28,
+      "orca_macroSpace": 0.16,
+      "orca_huntMacro": 0.94,
+      "orca_echoDepth": 0.65,
+      "orca_filterEnvAmt": 0.82,
+      "orca_lfo1Rate": 0.55,
+      "orca_lfo1Depth": 0.46,
+      "orca_filterCutoff": 0.72,
+      "orca_filterRes": 0.76,
+      "orca_attackTime": 0.005,
+      "orca_decayTime": 0.16,
+      "orca_sustain": 0.28,
+      "orca_releaseTime": 0.12
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.82,
+      "octo_macroMovement": 0.86,
+      "octo_macroCoupling": 0.3,
+      "octo_macroSpace": 0.18,
+      "octo_armDepth": 0.88,
+      "octo_chromaFlash": 0.8,
+      "octo_inkCloud": 0.7,
+      "octo_filterEnvAmt": 0.74,
+      "octo_lfo1Rate": 0.48,
+      "octo_lfo1Depth": 0.44,
+      "octo_filterCutoff": 0.65,
+      "octo_filterRes": 0.7,
+      "octo_attackTime": 0.01,
+      "octo_decayTime": 0.25,
+      "octo_sustain": 0.38,
+      "octo_releaseTime": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Octopus",
+        "type": "AmpToChoke",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.3,
+    "SPACE": 0.16
+  }
+}

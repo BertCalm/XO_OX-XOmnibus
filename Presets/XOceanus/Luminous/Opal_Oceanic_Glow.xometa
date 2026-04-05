@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Opal Oceanic Glow",
+  "mood": "Luminous",
+  "engines": ["Opal", "Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Granular sparkle from the Opal engine drifts into Oceanic's phosphorescent field. Two glowing systems, one luminous environment.",
+  "tags": ["luminous", "coupled", "granular", "phosphorescent", "glow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.52,
+    "movement": 0.50,
+    "density": 0.45,
+    "space": 0.68,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.48,
+      "opal_macroMovement": 0.50,
+      "opal_macroCoupling": 0.25,
+      "opal_macroSpace": 0.65,
+      "opal_filterEnvAmt": 0.52,
+      "opal_grainSize": 0.42,
+      "opal_grainDensity": 0.65,
+      "opal_grainSpread": 0.70,
+      "opal_lfo1Rate": 0.08,
+      "opal_lfo1Depth": 0.26,
+      "opal_lfo2Rate": 0.04,
+      "opal_lfo2Depth": 0.18,
+      "opal_attack": 0.4,
+      "opal_decay": 1.2,
+      "opal_sustain": 0.78,
+      "opal_release": 3.8,
+      "opal_filterCutoff": 8000,
+      "opal_output": 0
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.42,
+      "ocean_macroMovement": 0.45,
+      "ocean_macroCoupling": 0.25,
+      "ocean_macroSpace": 0.65,
+      "ocean_filterEnvAmt": 0.48,
+      "ocean_separation": 0.52,
+      "ocean_chromatophore": 0.42,
+      "ocean_lfo1Rate": 0.06,
+      "ocean_lfo1Depth": 0.20,
+      "ocean_attack": 0.3,
+      "ocean_decay": 1.0,
+      "ocean_sustain": 0.80,
+      "ocean_release": 3.5,
+      "ocean_filterCutoff": 6500,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Opal",
+        "target": "Oceanic",
+        "type": "AmpToFilter",
+        "amount": 0.22
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.50,
+    "COUPLING": 0.25,
+    "SPACE": 0.65
+  }
+}

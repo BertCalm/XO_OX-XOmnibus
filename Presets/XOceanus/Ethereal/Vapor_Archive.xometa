@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Vapor Archive",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A memory half-formed before it fades. Ombre's forgetting mechanism breathes at glacial pace, leaving only the ghost of harmonic shape.",
+  "tags": [
+    "ethereal",
+    "vapor",
+    "memory",
+    "dissolve",
+    "breath"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.15,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.3,
+      "ombre_macroMovement": 0.22,
+      "ombre_macroCoupling": 0.08,
+      "ombre_macroSpace": 0.82,
+      "ombre_blend": 0.55,
+      "ombre_filterEnvAmt": 0.28,
+      "ombre_lfo1Rate": 0.008,
+      "ombre_lfo1Depth": 0.13,
+      "ombre_attack": 3.2,
+      "ombre_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.08,
+    "SPACE": 0.82
+  }
+}

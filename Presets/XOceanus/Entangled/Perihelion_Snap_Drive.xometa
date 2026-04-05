@@ -65,7 +65,14 @@
       "fat_mojoCtrl": 0.305,
       "fat_outputLevel": 0.866,
       "fat_outputPan": -0.018,
-      "fat_satDrive": 0.487
+      "fat_satDrive": 0.487,
+      "fat_macroMojo": 0.507,
+      "fat_macroGrit": 0.549,
+      "fat_macroSize": 0.756,
+      "fat_macroCrush": 0.42,
+      "fat_fltEnvAmt": 0.437,
+      "fat_lfo1Rate": 0.236,
+      "fat_lfo1Depth": 0.294
     },
     "Orbital": {
       "orb_arcDecay": 0.668,
@@ -80,16 +87,27 @@
       "orb_outputLevel": 0.845,
       "orb_outputPan": -0.024,
       "orb_phaseSpread": 0.327,
-      "orb_resonantPeak": 0.353
+      "orb_resonantPeak": 0.353,
+      "orb_macroSpectrum": 0.493,
+      "orb_macroEvolve": 0.535,
+      "orb_macroCoupling": 0.742,
+      "orb_macroSpace": 0.406,
+      "orb_filterEnvAmt": 0.437,
+      "orb_lfo1Rate": 0.236,
+      "orb_lfo1Depth": 0.294
     },
     "Overbite": {
       "poss_gnashAmount": 0.635,
-      "poss_macroBelly": 0.567,
-      "poss_macroBite": 0.436,
-      "poss_macroScurry": 0.558,
+      "poss_macroBelly": 0.468,
+      "poss_macroBite": 0.51,
+      "poss_macroScurry": 0.381,
       "poss_macroTrash": 0.377,
       "poss_level": 0.786,
-      "poss_pan": -0.012
+      "poss_pan": -0.012,
+      "poss_macroPlayDead": 0.717,
+      "poss_filterEnvAmount": 0.437,
+      "poss_lfo1Rate": 0.236,
+      "poss_lfo1Depth": 0.294
     }
   },
   "schema_version": 1,
@@ -102,5 +120,11 @@
     "entangled"
   ],
   "tempo": 125,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.459,
+    "MOVEMENT": 0.501,
+    "COUPLING": 0.708,
+    "SPACE": 0.372
+  }
 }

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Gradient",
+  "mood": "Deep",
+  "engines": ["Ombre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ombre of ocean depth — the gradual transition from twilight to midnight zone, each meter of descent darkening the perception narrative.",
+  "tags": ["deep", "gradient", "oceanic", "dark", "transitional"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.16,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.56,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.42,
+      "ombre_macroMovement": 0.22,
+      "ombre_macroCoupling": 0.13,
+      "ombre_macroSpace": 0.73,
+      "ombre_filterEnvAmt": 0.36,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.20,
+      "ombre_blend": 0.38
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.13,
+    "SPACE": 0.73
+  }
+}

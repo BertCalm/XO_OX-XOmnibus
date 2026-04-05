@@ -79,10 +79,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.3,
       "obrix_level": 0.8,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
-      "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroCharacter": 0.628,
+      "obrix_macroMovement": 0.398,
+      "obrix_macroCoupling": 0.282,
+      "obrix_macroSpace": 0.431,
       "obrix_polyphony": 3,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,
@@ -97,15 +97,18 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5
+      "obrix_air": 0.5,
+      "obrix_fltEnvAmt": 0.442,
+      "obrix_lfo1Rate": 0.165,
+      "obrix_lfo1Depth": 0.191
     }
   },
   "category": "lesson",
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "CHARACTER": 0.592,
+    "MOVEMENT": 0.362,
+    "COUPLING": 0.246,
+    "SPACE": 0.395
   },
   "coupling": {
     "pairs": []

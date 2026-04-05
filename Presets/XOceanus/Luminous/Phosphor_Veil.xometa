@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Phosphor Veil",
+  "mood": "Luminous",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The green phosphor screen glows behind a translucent curtain. Pulse modulations ripple at near-imperceptible speed, pure cathode light through silk.",
+  "tags": ["luminous", "phosphor", "glow", "optic", "pulse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.22,
+    "space": 0.55,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.58,
+      "optic_macroMovement": 0.38,
+      "optic_macroCoupling": 0.12,
+      "optic_macroSpace": 0.55,
+      "optic_filterEnvAmt": 0.48,
+      "optic_pulseRate": 0.09,
+      "optic_pulseDepth": 0.25,
+      "optic_lfo1Rate": 0.05,
+      "optic_lfo1Depth": 0.20,
+      "optic_lfo2Rate": 0.12,
+      "optic_lfo2Depth": 0.15,
+      "optic_attack": 0.08,
+      "optic_decay": 0.9,
+      "optic_sustain": 0.82,
+      "optic_release": 2.8,
+      "optic_filterCutoff": 9500,
+      "optic_filterRes": 0.18,
+      "optic_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.12,
+    "SPACE": 0.55
+  }
+}

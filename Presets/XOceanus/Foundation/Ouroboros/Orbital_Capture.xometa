@@ -39,7 +39,13 @@
       "ouro_phi": 0.6,
       "ouro_rate": 155.0,
       "ouro_theta": -0.4,
-      "ouro_topology": 3
+      "ouro_topology": 3,
+      "ouro_macroCharacter": 0.521,
+      "ouro_macroMovement": 0.326,
+      "ouro_macroCoupling": 0.235,
+      "ouro_macroSpace": 0.268,
+      "ouro_filterEnvAmt": 0.414,
+      "ouro_lfoRate": 0.142
     }
   },
   "schema_version": 1,
@@ -51,5 +57,11 @@
     "organic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.324,
+    "COUPLING": 0.233,
+    "SPACE": 0.266
+  }
 }

@@ -34,12 +34,18 @@
       "orph_filterReso": 0.1,
       "orph_macroBloom": 0.0,
       "orph_macroCoupling": 0.0,
-      "orph_macroPluck": 0.0,
+      "orph_macroPluck": 0.38,
       "orph_macroSpace": 0.0,
       "orph_microsoundDensity": 0.4,
       "orph_pluckBrightness": 0.95,
       "orph_reverbMix": 0.9,
-      "orph_shimmerAmt": 0.9
+      "orph_shimmerAmt": 0.9,
+      "orph_macroSurface": 0.55,
+      "orph_macroFracture": 0.149,
+      "orph_macroDivine": 0.826,
+      "orph_filterEnvAmt": 0.446,
+      "orph_lfo1Rate": 0.059,
+      "orph_lfo1Depth": 0.14
     }
   },
   "schema_version": 1,
@@ -52,5 +58,11 @@
     "cosmic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.368,
+    "MOVEMENT": 0.538,
+    "COUPLING": 0.137,
+    "SPACE": 0.814
+  }
 }

@@ -39,15 +39,18 @@
       "oracle_filterCutoff": 15810.0,
       "oracle_filterReso": 0.135,
       "oracle_level": 0.78,
-      "oracle_macroCharacter": 0.679,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroMovement": 0.29,
-      "oracle_macroSpace": 0.67,
+      "oracle_macroCharacter": 0.627,
+      "oracle_macroCoupling": 0.276,
+      "oracle_macroMovement": 0.411,
+      "oracle_macroSpace": 0.435,
       "oracle_propheticShimmer": 0.16,
       "oracle_reverbMix": 0.523,
       "oracle_stereoWidth": 0.801,
       "oracle_temporalRate": 1.66,
-      "oracle_visionDepth": 0.696
+      "oracle_visionDepth": 0.696,
+      "oracle_filterEnvAmt": 0.434,
+      "oracle_lfo1Rate": 0.148,
+      "oracle_lfo1Depth": 0.237
     }
   },
   "schema_version": 1,
@@ -59,5 +62,11 @@
     "oracular"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.619,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.268,
+    "SPACE": 0.427
+  }
 }

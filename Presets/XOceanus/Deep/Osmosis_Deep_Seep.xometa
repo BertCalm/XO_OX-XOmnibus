@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Deep Seep",
+  "mood": "Deep",
+  "engines": ["Osmosis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cold seep communities at the ocean floor — methane and sulfide percolating through sediment, sustaining impossible ecosystems through slow chemical exchange.",
+  "tags": ["deep", "seep", "oceanic", "membrane", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.65,
+    "movement": 0.26,
+    "density": 0.58,
+    "space": 0.68,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.40,
+      "osmo_macroMovement": 0.26,
+      "osmo_macroCoupling": 0.14,
+      "osmo_macroSpace": 0.66,
+      "osmo_filterEnvAmt": 0.42,
+      "osmo_lfo1Rate": 0.06,
+      "osmo_lfo1Depth": 0.25,
+      "osmo_permeability": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.14,
+    "SPACE": 0.66
+  }
+}

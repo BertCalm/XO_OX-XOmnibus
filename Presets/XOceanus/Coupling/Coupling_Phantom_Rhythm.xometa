@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Phantom Rhythm",
+  "mood": "Coupling",
+  "engines": [
+    "Ostinato",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSTINATO world rhythm live override feeds ORGANISM emergence timing \u2014 human rhythm overriding machine timing, which teaches new cellular rules.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "rhythm",
+    "cellular",
+    "RhythmToBlend",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.44,
+    "movement": 0.62,
+    "density": 0.56,
+    "space": 0.46,
+    "aggression": 0.26
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_macroGather": 0.62,
+      "osti_filterEnvAmt": 0.52,
+      "osti_lfo1Rate": 0.18,
+      "osti_lfo1Depth": 0.3,
+      "osti_macroCharacter": 0.54,
+      "osti_macroMovement": 0.62,
+      "osti_macroCoupling": 0.65,
+      "osti_macroSpace": 0.46
+    },
+    "Organism": {
+      "org_ruleSet": 0.56,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.16,
+      "org_lfo1Depth": 0.28,
+      "org_macroCharacter": 0.52,
+      "org_macroMovement": 0.58,
+      "org_macroCoupling": 0.62,
+      "org_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ostinato",
+        "engineB": "Organism",
+        "type": "RhythmToBlend",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.64,
+    "SPACE": 0.46
+  }
+}

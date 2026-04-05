@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Diamond Additive",
+  "mood": "Luminous",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Diamond clarity through additive brightness — Orbital engine with all partials contributing equally to the highest possible brightness score, a total luminance sum.",
+  "tags": ["luminous", "diamond", "additive", "total", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.48,
+    "movement": 0.32,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.64,
+      "orb_macroMovement": 0.32,
+      "orb_macroCoupling": 0.14,
+      "orb_macroSpace": 0.55,
+      "orb_filterEnvAmt": 0.60,
+      "orb_brightness": 0.94,
+      "orb_lfo1Rate": 0.06,
+      "orb_lfo1Depth": 0.18,
+      "orb_lfo2Rate": 0.11,
+      "orb_lfo2Depth": 0.12,
+      "orb_attack": 0.03,
+      "orb_decay": 0.6,
+      "orb_sustain": 0.90,
+      "orb_release": 3.0,
+      "orb_filterCutoff": 14000,
+      "orb_filterRes": 0.16,
+      "orb_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.55
+  }
+}

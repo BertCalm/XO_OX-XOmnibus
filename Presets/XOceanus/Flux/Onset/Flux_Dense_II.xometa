@@ -28,7 +28,14 @@
   "parameters": {
     "Onset": {
       "couplingBus": 1,
-      "couplingLevel": 0.57
+      "couplingLevel": 0.57,
+      "perc_macro_punch": 0.767,
+      "perc_macro_mutate": 0.776,
+      "perc_macro_machine": 0.205,
+      "perc_macro_space": 0.396,
+      "perc_filterEnvAmt": 0.542,
+      "perc_lfo1Rate": 0.42,
+      "perc_lfo1Depth": 0.259
     }
   },
   "schema_version": 1,
@@ -40,5 +47,11 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.743,
+    "MOVEMENT": 0.752,
+    "COUPLING": 0.181,
+    "SPACE": 0.372
+  }
 }

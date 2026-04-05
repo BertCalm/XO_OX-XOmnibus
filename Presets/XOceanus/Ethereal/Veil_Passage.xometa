@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Veil Passage",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The thin membrane between waking and sleep. Crossing it takes a full breath.",
+  "tags": [
+    "ethereal",
+    "veil",
+    "liminal",
+    "passage",
+    "sleep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.57,
+    "movement": 0.2,
+    "density": 0.16,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.29,
+      "ombre_macroMovement": 0.21,
+      "ombre_macroCoupling": 0.07,
+      "ombre_macroSpace": 0.9,
+      "ombre_blend": 0.58,
+      "ombre_filterEnvAmt": 0.23,
+      "ombre_lfo1Rate": 0.01,
+      "ombre_lfo1Depth": 0.11,
+      "ombre_attack": 4.5,
+      "ombre_release": 13.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.21,
+    "COUPLING": 0.07,
+    "SPACE": 0.9
+  }
+}

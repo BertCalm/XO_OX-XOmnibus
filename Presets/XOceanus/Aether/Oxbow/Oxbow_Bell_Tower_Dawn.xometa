@@ -39,7 +39,14 @@
       "oxb_predelay": 90.0,
       "oxb_dryWet": 0.52,
       "oxb_exciterDecay": 0.007,
-      "oxb_exciterBright": 0.78
+      "oxb_exciterBright": 0.78,
+      "oxb_macroCharacter": 0.431,
+      "oxb_macroMovement": 0.398,
+      "oxb_macroCoupling": 0.185,
+      "oxb_macroSpace": 0.838,
+      "oxb_filterEnvAmt": 0.363,
+      "oxb_lfo1Rate": 0.056,
+      "oxb_lfo1Depth": 0.109
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "bronze"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.402,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.156,
+    "SPACE": 0.809
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Root",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Coastal tree roots submerged at high tide, exposed at low — wood shaped by alternating immersion and exposure.",
+  "tags": ["organic", "tidal", "roots", "coastal", "cycles"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.26,
+    "warmth": 0.74,
+    "movement": 0.38,
+    "density": 0.54,
+    "space": 0.50,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.48,
+      "oaken_macroMovement": 0.38,
+      "oaken_macroCoupling": 0.16,
+      "oaken_macroSpace": 0.50,
+      "oaken_stringAge": 0.70,
+      "oaken_filterEnvAmt": 0.44,
+      "oaken_lfo1Rate": 0.06,
+      "oaken_lfo1Depth": 0.24,
+      "oaken_lfo2Rate": 0.02,
+      "oaken_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.50
+  }
+}

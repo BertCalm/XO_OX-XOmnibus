@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Onset pushed to extreme brightness \u2014 brightness 0.96, movement 0.72, aggression 0.47. Ultra-bright Prism zone filler.",
+  "description": "Onset pushed to extreme brightness — brightness 0.96, movement 0.72, aggression 0.47. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -53,12 +53,25 @@
       "perc_mutate": 0.388,
       "perc_outputLevel": 0.878,
       "perc_couplingLevel": 0.062,
-      "perc_couplingBus": 0
+      "perc_couplingBus": 0,
+      "perc_macro_punch": 0.744,
+      "perc_macro_mutate": 0.705,
+      "perc_macro_machine": 0.353,
+      "perc_macro_space": 0.321,
+      "perc_filterEnvAmt": 0.526,
+      "perc_lfo1Rate": 0.591,
+      "perc_lfo1Depth": 0.449
     }
   },
   "coupling": {
     "pairs": []
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.681,
+    "COUPLING": 0.329,
+    "SPACE": 0.297
+  }
 }

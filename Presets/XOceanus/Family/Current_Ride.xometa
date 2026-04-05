@@ -36,9 +36,24 @@
   "parameters": {
     "Origami": {
       "level": 0.718,
-      "pan": -0.046
+      "pan": -0.046,
+      "origami_macroCharacter": 0.628,
+      "origami_macroMovement": 0.371,
+      "origami_macroCoupling": 0.528,
+      "origami_macroSpace": 0.572,
+      "origami_filterEnvAmt": 0.509,
+      "origami_lfo1Rate": 0.166,
+      "origami_lfo1Depth": 0.188
     },
-    "Osprey": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.602,
+      "osprey_macroMovement": 0.345,
+      "osprey_macroCoupling": 0.502,
+      "osprey_macroSpace": 0.546,
+      "osprey_filterEnvDepth": 0.509,
+      "osprey_lfo2Rate": 0.166,
+      "osprey_lfo2Depth": 0.188
+    }
   },
   "schema_version": 1,
   "sequencer": null,
@@ -51,5 +66,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.569,
+    "MOVEMENT": 0.312,
+    "COUPLING": 0.469,
+    "SPACE": 0.513
+  }
 }

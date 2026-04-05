@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Vent Field",
+  "mood": "Deep",
+  "engines": ["Organon", "Osmosis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hydrothermal vent ecosystem — Organon's metabolic pulse coupled with Osmosis's membrane exchange, minerals and organisms in constant slow chemical dialogue.",
+  "tags": ["deep", "coupled", "hydrothermal", "organic", "membrane"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.68,
+    "movement": 0.26,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.46,
+      "organon_macroMovement": 0.26,
+      "organon_macroCoupling": 0.40,
+      "organon_macroSpace": 0.70,
+      "organon_filterEnvAmt": 0.42,
+      "organon_lfo1Rate": 0.06,
+      "organon_lfo1Depth": 0.24,
+      "organon_metabolicRate": 0.50
+    },
+    "Osmosis": {
+      "osmo_macroCharacter": 0.44,
+      "osmo_macroMovement": 0.22,
+      "osmo_macroCoupling": 0.38,
+      "osmo_macroSpace": 0.68,
+      "osmo_filterEnvAmt": 0.38,
+      "osmo_lfo1Rate": 0.05,
+      "osmo_lfo1Depth": 0.20,
+      "osmo_permeability": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Organon",
+        "target": "Osmosis",
+        "type": "EnvToMorph",
+        "amount": 0.40
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.40,
+    "SPACE": 0.70
+  }
+}

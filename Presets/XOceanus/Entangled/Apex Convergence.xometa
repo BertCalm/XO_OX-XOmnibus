@@ -53,12 +53,25 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_macroCharacter": 0.534,
+      "ocelot_macroMovement": 0.54,
+      "ocelot_macroCoupling": 0.756,
+      "ocelot_macroSpace": 0.561,
+      "ocelot_filterEnvDepth": 0.583,
+      "ocelot_lfoRate": 0.149
     },
     "Osprey": {
       "osprey_ampAttack": 0.03,
       "osprey_ampRelease": 1.5,
-      "osprey_filterTilt": 0.715
+      "osprey_filterTilt": 0.715,
+      "osprey_macroCharacter": 0.55,
+      "osprey_macroMovement": 0.556,
+      "osprey_macroCoupling": 0.772,
+      "osprey_macroSpace": 0.577,
+      "osprey_filterEnvDepth": 0.583,
+      "osprey_lfo2Rate": 0.149,
+      "osprey_lfo2Depth": 0.234
     }
   },
   "schema_version": 1,
@@ -73,5 +86,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.517,
+    "MOVEMENT": 0.523,
+    "COUPLING": 0.739,
+    "SPACE": 0.544
+  }
 }

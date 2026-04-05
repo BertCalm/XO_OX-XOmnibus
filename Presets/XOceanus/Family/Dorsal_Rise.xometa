@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "dna": {
     "aggression": 0.542,
     "brightness": 0.922,
@@ -36,15 +36,26 @@
   "parameters": {
     "Oblique": {
       "level": 0.672,
-      "pan": -0.069
+      "pan": -0.069,
+      "oblq_macroCharacter": 0.432,
+      "oblq_macroMovement": 0.36,
+      "oblq_macroCoupling": 0.593,
+      "oblq_macroSpace": 0.499,
+      "oblq_filterEnvAmt": 0.528,
+      "oblq_lfo1Rate": 0.068,
+      "oblq_lfo1Depth": 0.162
     },
     "Overbite": {
       "poss_level": 0.8,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.5,
-      "poss_macroScurry": 0.5,
+      "poss_macroBelly": 0.418,
+      "poss_macroBite": 0.346,
+      "poss_macroScurry": 0.485,
       "poss_macroTrash": 0.5,
-      "poss_pan": 0.0
+      "poss_pan": 0.0,
+      "poss_macroPlayDead": 0.579,
+      "poss_filterEnvAmount": 0.528,
+      "poss_lfo1Rate": 0.068,
+      "poss_lfo1Depth": 0.162
     }
   },
   "schema_version": 1,
@@ -58,5 +69,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.409,
+    "MOVEMENT": 0.337,
+    "COUPLING": 0.57,
+    "SPACE": 0.476
+  }
 }

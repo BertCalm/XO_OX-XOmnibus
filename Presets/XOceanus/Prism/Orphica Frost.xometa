@@ -48,7 +48,14 @@
       "orph_microsoundDensity": 0.218,
       "orph_reverbMix": 0.722,
       "orph_stereoWidth": 0.92,
-      "orph_stringTension": 0.752
+      "orph_stringTension": 0.752,
+      "orph_macroPluck": 0.651,
+      "orph_macroSurface": 0.581,
+      "orph_macroFracture": 0.355,
+      "orph_macroDivine": 0.364,
+      "orph_filterEnvAmt": 0.53,
+      "orph_lfo1Rate": 0.277,
+      "orph_lfo1Depth": 0.304
     }
   },
   "schema_version": 1,
@@ -61,5 +68,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.639,
+    "MOVEMENT": 0.569,
+    "COUPLING": 0.343,
+    "SPACE": 0.352
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Diffusion Field",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A scent diffusing through still air. Particle Brownian motion as rhythmic content.",
+  "tags": [
+    "ethereal",
+    "diffusion",
+    "particle",
+    "scent",
+    "field"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.28,
+    "density": 0.12,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.33,
+      "osmo_macroMovement": 0.3,
+      "osmo_macroCoupling": 0.09,
+      "osmo_macroSpace": 0.91,
+      "osmo_permeability": 0.65,
+      "osmo_filterEnvAmt": 0.28,
+      "osmo_lfo1Rate": 0.025,
+      "osmo_lfo1Depth": 0.14,
+      "osmo_attack": 3.0,
+      "osmo_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.09,
+    "SPACE": 0.91
+  }
+}

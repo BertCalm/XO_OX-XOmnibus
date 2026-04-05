@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Forgotten River",
+  "mood": "Deep",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An underground river cut off from the main channel — still flowing in darkness, carrying dissolved minerals from formations seen by no light for millennia.",
+  "tags": ["deep", "underground", "river", "subterranean", "reverb"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.62,
+    "space": 0.80,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.42,
+      "oxb_macroMovement": 0.32,
+      "oxb_macroCoupling": 0.14,
+      "oxb_macroSpace": 0.78,
+      "oxb_filterEnvAmt": 0.38,
+      "oxb_lfo1Rate": 0.06,
+      "oxb_lfo1Depth": 0.24,
+      "oxb_entangle": 0.55,
+      "oxb_phaseErosion": 0.42
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.78
+  }
+}

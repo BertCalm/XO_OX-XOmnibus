@@ -63,7 +63,14 @@
       "oblq_phaserRate": 0.25,
       "oblq_phaserDepth": 0.45,
       "oblq_phaserFeedback": 0.25,
-      "oblq_phaserMix": 0.3
+      "oblq_phaserMix": 0.3,
+      "oblq_macroCharacter": 0.49,
+      "oblq_macroMovement": 0.507,
+      "oblq_macroCoupling": 0.506,
+      "oblq_macroSpace": 0.405,
+      "oblq_filterEnvAmt": 0.54,
+      "oblq_lfo1Rate": 0.203,
+      "oblq_lfo1Depth": 0.229
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -79,7 +86,13 @@
       "dub_voiceMode": 0,
       "dub_driveAmount": 1.5,
       "dub_delayMix": 0.35,
-      "dub_reverbMix": 0.25
+      "dub_reverbMix": 0.25,
+      "dub_macroCharacter": 0.459,
+      "dub_macroMovement": 0.476,
+      "dub_macroCoupling": 0.475,
+      "dub_macroSpace": 0.374,
+      "dub_filterEnvAmt": 0.54,
+      "dub_lfoDepth": 0.203
     }
   },
   "coupling": {
@@ -98,5 +111,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.467,
+    "MOVEMENT": 0.484,
+    "COUPLING": 0.483,
+    "SPACE": 0.382
+  }
 }

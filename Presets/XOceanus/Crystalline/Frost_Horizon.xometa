@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Frost Horizon",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A frost-covered horizon \u2014 aurora and crystal light at the edge of the world, cold and precise.",
+  "tags": [
+    "crystalline",
+    "frost",
+    "horizon",
+    "aurora",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.28,
+    "density": 0.32,
+    "space": 0.7,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.63,
+      "look_macroMovement": 0.36,
+      "look_macroCoupling": 0.22,
+      "look_macroSpace": 0.5,
+      "look_filterEnvAmt": 0.42,
+      "look_lfo1Rate": 0.11,
+      "look_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.22,
+    "SPACE": 0.5
+  }
+}

@@ -38,10 +38,10 @@
     "aggression": 0.2
   },
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "CHARACTER": 0.342,
+    "MOVEMENT": 0.473,
+    "COUPLING": 0.223,
+    "SPACE": 0.737
   },
   "parameters": {
     "Oxbow": {
@@ -59,10 +59,13 @@
       "oxb_dryWet": 0.55,
       "oxb_exciterDecay": 0.012,
       "oxb_exciterBright": 0.55,
-      "oxb_macroCharacter": 0.0,
-      "oxb_macroMovement": 0.0,
-      "oxb_macroCoupling": 0.5,
-      "oxb_macroSpace": 0.0
+      "oxb_macroCharacter": 0.371,
+      "oxb_macroMovement": 0.502,
+      "oxb_macroCoupling": 0.252,
+      "oxb_macroSpace": 0.766,
+      "oxb_filterEnvAmt": 0.488,
+      "oxb_lfo1Rate": 0.065,
+      "oxb_lfo1Depth": 0.233
     }
   }
 }

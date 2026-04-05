@@ -43,10 +43,13 @@
       "out_exciterDecay": 0.03,
       "out_vacuumAttack": 0.2,
       "out_opticalWarmth": 0.42,
-      "out_macroCharacter": 0.0,
-      "out_macroMovement": 0.0,
-      "out_macroCoupling": 0.0,
-      "out_macroSpace": 0.0
+      "out_macroCharacter": 0.523,
+      "out_macroMovement": 0.288,
+      "out_macroCoupling": 0.21,
+      "out_macroSpace": 0.726,
+      "out_filterEnvAmt": 0.546,
+      "out_lfo1Rate": 0.037,
+      "out_lfo1Depth": 0.138
     }
   },
   "coupling": {
@@ -60,5 +63,11 @@
     "density": 0.58,
     "space": 0.88,
     "aggression": 0.72
+  },
+  "macros": {
+    "CHARACTER": 0.494,
+    "MOVEMENT": 0.259,
+    "COUPLING": 0.181,
+    "SPACE": 0.697
   }
 }

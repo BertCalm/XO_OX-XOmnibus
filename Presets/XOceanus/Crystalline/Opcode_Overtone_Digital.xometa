@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Opcode Overtone Digital",
+  "mood": "Crystalline",
+  "engines": [
+    "Opcode",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opcode digital precision pitch-locked to Overtone spectral constants \u2014 algorithmic crystal and mathematical ice in unison.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "opcode",
+    "overtone",
+    "digital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.28,
+    "density": 0.4,
+    "space": 0.63,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_macroCharacter": 0.51,
+      "opco_macroMovement": 0.43,
+      "opco_macroCoupling": 0.12,
+      "opco_macroSpace": 0.63,
+      "opco_filterEnvAmt": 0.52,
+      "opco_lfo1Rate": 0.04,
+      "opco_lfo1Depth": 0.23
+    },
+    "Overtone": {
+      "over_macroCharacter": 0.51,
+      "over_macroMovement": 0.43,
+      "over_macroCoupling": 0.12,
+      "over_macroSpace": 0.63,
+      "over_filterEnvAmt": 0.52,
+      "over_lfo1Rate": 0.04,
+      "over_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opcode",
+        "engineB": "Overtone",
+        "type": "PitchToPitch",
+        "amount": 0.24
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.12,
+    "SPACE": 0.63
+  }
+}

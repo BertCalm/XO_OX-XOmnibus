@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Nerve Shatter",
+  "mood": "Flux",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fold geometry snapping at nerve-shredding speed. High-angle folds collapsing faster than perception.",
+  "tags": ["flux", "aggressive", "shatter", "fold", "sharp"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.14,
+    "movement": 0.93,
+    "density": 0.75,
+    "space": 0.12,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.88,
+      "origami_macroMovement": 0.9,
+      "origami_macroCoupling": 0.16,
+      "origami_macroSpace": 0.13,
+      "origami_foldPoint": 0.92,
+      "origami_foldAngle": 0.85,
+      "origami_filterEnvAmt": 0.82,
+      "origami_lfo1Rate": 0.58,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.68,
+      "origami_filterRes": 0.78,
+      "origami_attackTime": 0.005,
+      "origami_decayTime": 0.16,
+      "origami_sustain": 0.22,
+      "origami_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.16,
+    "SPACE": 0.13
+  }
+}

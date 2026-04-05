@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Kelp Whisper",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE kelp knot topology barely modulates OCEANDEEP trench pressure \u2014 underwater geometry whispering to abyssal depth.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "topology",
+    "depth",
+    "KnotTopology",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.42,
+    "movement": 0.4,
+    "density": 0.44,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.48,
+      "weave_filterEnvAmt": 0.4,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo1Depth": 0.2,
+      "weave_macroCharacter": 0.44,
+      "weave_macroMovement": 0.4,
+      "weave_macroCoupling": 0.5,
+      "weave_macroSpace": 0.54
+    },
+    "OceanDeep": {
+      "deep_macroPressure": 0.5,
+      "deep_filterEnvAmt": 0.38,
+      "deep_lfo1Rate": 0.07,
+      "deep_lfo1Depth": 0.18,
+      "deep_macroCharacter": 0.4,
+      "deep_macroMovement": 0.38,
+      "deep_macroCoupling": 0.48,
+      "deep_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "OceanDeep",
+        "type": "KnotTopology",
+        "amount": 0.14
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.49,
+    "SPACE": 0.58
+  }
+}

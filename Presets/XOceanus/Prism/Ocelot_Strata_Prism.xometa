@@ -56,11 +56,23 @@
       "ocelot_prowl": 0.45,
       "ocelot_foliage": 0.72,
       "ocelot_ecosystem": 0.72,
-      "ocelot_canopy": 0.85
+      "ocelot_canopy": 0.85,
+      "ocelot_macroCharacter": 0.527,
+      "ocelot_macroMovement": 0.494,
+      "ocelot_macroCoupling": 0.285,
+      "ocelot_macroSpace": 0.395,
+      "ocelot_filterEnvDepth": 0.538,
+      "ocelot_lfoRate": 0.168
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.477,
+    "COUPLING": 0.268,
+    "SPACE": 0.378
+  }
 }

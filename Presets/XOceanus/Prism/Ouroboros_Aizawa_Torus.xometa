@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.465,
+      "ouro_macroCharacter": 0.581,
+      "ouro_macroMovement": 0.514,
+      "ouro_macroCoupling": 0.194,
+      "ouro_filterEnvAmt": 0.419,
+      "ouro_lfoRate": 0.269
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "toroidal",
     "transcendental"
   ],
-  "description": "Aizawa (1982) toroidal system at mid-bifurcation. theta=1.2 rad, phi=0.8 rad exposes toroidal geometry's asymmetric, spiraling modulation. Phase-cancellation artifacts are features of the geometry."
+  "description": "Aizawa (1982) toroidal system at mid-bifurcation. theta=1.2 rad, phi=0.8 rad exposes toroidal geometry's asymmetric, spiraling modulation. Phase-cancellation artifacts are features of the geometry.",
+  "macros": {
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.512,
+    "COUPLING": 0.192,
+    "SPACE": 0.463
+  }
 }

@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.65,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.397,
+      "ouro_macroCharacter": 0.604,
+      "ouro_macroMovement": 0.807,
+      "ouro_macroCoupling": 0.17,
+      "ouro_filterEnvAmt": 0.669,
+      "ouro_lfoRate": 0.283
     }
   },
   "tags": [
@@ -50,5 +55,11 @@
     "period-doubling",
     "transcendental"
   ],
-  "description": "Living below Lorenz chaos onset (rho~24.74). Period-doubling regime, not yet fully chaotic. CHARACTER macro is the pivot between ordered and chaotic. macroMove=0.65 accelerates bifurcation cycling."
+  "description": "Living below Lorenz chaos onset (rho~24.74). Period-doubling regime, not yet fully chaotic. CHARACTER macro is the pivot between ordered and chaotic. macroMove=0.65 accelerates bifurcation cycling.",
+  "macros": {
+    "CHARACTER": 0.602,
+    "MOVEMENT": 0.805,
+    "COUPLING": 0.168,
+    "SPACE": 0.395
+  }
 }

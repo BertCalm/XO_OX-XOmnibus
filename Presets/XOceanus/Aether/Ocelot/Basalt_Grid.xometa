@@ -38,7 +38,13 @@
       "ocelot_density": 0.93,
       "ocelot_ecosystemDepth": 0.95,
       "ocelot_movement": 0.75,
-      "ocelot_strataBalance": 0.92
+      "ocelot_strataBalance": 0.92,
+      "ocelot_macroCharacter": 0.378,
+      "ocelot_macroMovement": 0.437,
+      "ocelot_macroCoupling": 0.257,
+      "ocelot_macroSpace": 0.855,
+      "ocelot_filterEnvDepth": 0.405,
+      "ocelot_lfoRate": 0.013
     }
   },
   "schema_version": 1,
@@ -50,5 +56,11 @@
     "layered"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.361,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.24,
+    "SPACE": 0.838
+  }
 }

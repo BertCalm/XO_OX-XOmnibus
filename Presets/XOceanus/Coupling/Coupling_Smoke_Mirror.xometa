@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Smoke Mirror",
+  "mood": "Coupling",
+  "engines": [
+    "Ombre",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OMBRE shadow blend drives OBSCURA plate stiffness \u2014 memory and forgetting shaping how the daguerreotype surface receives light.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "shadow",
+    "spectral",
+    "EnvToMorph",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.58,
+      "ombre_filterEnvAmt": 0.52,
+      "ombre_lfo1Rate": 0.12,
+      "ombre_lfo1Depth": 0.26,
+      "ombre_macroCharacter": 0.52,
+      "ombre_macroMovement": 0.5,
+      "ombre_macroCoupling": 0.62,
+      "ombre_macroSpace": 0.56
+    },
+    "Obscura": {
+      "obscura_stiffness": 0.55,
+      "obscura_filterEnvAmt": 0.5,
+      "obscura_lfo1Rate": 0.11,
+      "obscura_lfo1Depth": 0.24,
+      "obscura_macroCharacter": 0.5,
+      "obscura_macroMovement": 0.48,
+      "obscura_macroCoupling": 0.6,
+      "obscura_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "EnvToMorph",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.61,
+    "SPACE": 0.57
+  }
+}

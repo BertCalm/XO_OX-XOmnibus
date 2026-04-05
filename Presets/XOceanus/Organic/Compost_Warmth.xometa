@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Compost Warmth",
+  "mood": "Organic",
+  "engines": ["Ohm"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Interior of an active compost heap — thermophilic bacteria generating real heat as they break down complex molecules.",
+  "tags": ["organic", "compost", "warmth", "bacteria", "decomposition"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.85,
+    "movement": 0.35,
+    "density": 0.62,
+    "space": 0.38,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.54,
+      "ohm_macroMovement": 0.35,
+      "ohm_macroCoupling": 0.18,
+      "ohm_macroSpace": 0.38,
+      "ohm_macroMeddling": 0.55,
+      "ohm_filterEnvAmt": 0.48,
+      "ohm_lfo1Rate": 0.05,
+      "ohm_lfo1Depth": 0.24,
+      "ohm_lfo2Rate": 0.10,
+      "ohm_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.18,
+    "SPACE": 0.38
+  }
+}

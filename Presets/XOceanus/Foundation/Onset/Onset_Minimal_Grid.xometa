@@ -34,10 +34,10 @@
     "Onset": {
       "perc_drive": 0.05,
       "perc_level": 0.88,
-      "perc_macro_machine": 0.92,
-      "perc_macro_mutate": 0.0,
-      "perc_macro_punch": 0.62,
-      "perc_macro_space": 0.18,
+      "perc_macro_machine": 0.206,
+      "perc_macro_mutate": 0.455,
+      "perc_macro_punch": 0.593,
+      "perc_macro_space": 0.292,
       "perc_masterTone": 0.75,
       "perc_v1_algoMode": 1,
       "perc_v1_blend": 0.95,
@@ -69,7 +69,10 @@
       "perc_v3_pitch": 0.0,
       "perc_v3_snap": 0.65,
       "perc_v3_tone": 0.92,
-      "perc_xvc_global_amount": 0.15
+      "perc_xvc_global_amount": 0.15,
+      "perc_filterEnvAmt": 0.415,
+      "perc_lfo1Rate": 0.243,
+      "perc_lfo1Depth": 0.254
     }
   },
   "schema_version": 1,
@@ -85,5 +88,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.569,
+    "MOVEMENT": 0.431,
+    "COUPLING": 0.182,
+    "SPACE": 0.268
+  }
 }

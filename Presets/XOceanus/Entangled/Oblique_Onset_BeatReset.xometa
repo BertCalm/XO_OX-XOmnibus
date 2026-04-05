@@ -51,7 +51,14 @@
       "oblq_drive": 0.48,
       "oblq_filterCutoff": 0.62,
       "oblq_filterReso": 0.35,
-      "oblq_prismColor": 0.55
+      "oblq_prismColor": 0.55,
+      "oblq_macroCharacter": 0.639,
+      "oblq_macroMovement": 0.557,
+      "oblq_macroCoupling": 0.754,
+      "oblq_macroSpace": 0.541,
+      "oblq_filterEnvAmt": 0.567,
+      "oblq_lfo1Rate": 0.169,
+      "oblq_lfo1Depth": 0.224
     },
     "Onset": {
       "perc_kickDecay": 0.28,
@@ -62,7 +69,14 @@
       "perc_noiseLevel": 0.4,
       "perc_snareDecay": 0.35,
       "perc_snareLevel": 0.55,
-      "perc_snareTone": 0.44
+      "perc_snareTone": 0.44,
+      "perc_macro_punch": 0.64,
+      "perc_macro_mutate": 0.558,
+      "perc_macro_machine": 0.755,
+      "perc_macro_space": 0.542,
+      "perc_filterEnvAmt": 0.567,
+      "perc_lfo1Rate": 0.169,
+      "perc_lfo1Depth": 0.224
     }
   },
   "schema_version": 1,
@@ -80,5 +94,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.616,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.731,
+    "SPACE": 0.518
+  }
 }

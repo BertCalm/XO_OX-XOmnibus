@@ -41,7 +41,14 @@
       "organon_metabolicRate": 1.2,
       "organon_noiseColor": 0.4,
       "organon_phasonShift": 0.3,
-      "organon_signalFlux": 0.6
+      "organon_signalFlux": 0.6,
+      "organon_macroCharacter": 0.674,
+      "organon_macroMovement": 0.794,
+      "organon_macroCoupling": 0.343,
+      "organon_macroSpace": 0.277,
+      "organon_filterEnvAmt": 0.666,
+      "organon_lfo1Rate": 0.401,
+      "organon_lfo1Depth": 0.448
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "cardiac"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.675,
+    "MOVEMENT": 0.795,
+    "COUPLING": 0.344,
+    "SPACE": 0.278
+  }
 }

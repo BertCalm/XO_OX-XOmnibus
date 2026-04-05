@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Grain Cloud Bright",
+  "mood": "Luminous",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dense grain clouds scatter light like a sunlit fog bank — each granule refracting a different wavelength, the mass uniformly luminous and directionless.",
+  "tags": ["luminous", "granular", "cloud", "bright", "scatter"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.50,
+    "movement": 0.50,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.50,
+      "opal_macroMovement": 0.50,
+      "opal_macroCoupling": 0.14,
+      "opal_macroSpace": 0.65,
+      "opal_filterEnvAmt": 0.52,
+      "opal_grainSize": 0.22,
+      "opal_grainDensity": 0.78,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.80,
+      "opal_lfo1Rate": 0.05,
+      "opal_lfo1Depth": 0.24,
+      "opal_lfo2Rate": 0.09,
+      "opal_lfo2Depth": 0.16,
+      "opal_attack": 0.6,
+      "opal_decay": 1.8,
+      "opal_sustain": 0.72,
+      "opal_release": 5.0,
+      "opal_filterCutoff": 8500,
+      "opal_filterRes": 0.18,
+      "opal_reverbMix": 0.62,
+      "opal_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.50,
+    "COUPLING": 0.14,
+    "SPACE": 0.65
+  }
+}

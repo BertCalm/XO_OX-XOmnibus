@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Glass Marimba",
+  "mood": "Luminous",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystal bars struck in a sunlit room — additive synthesis mimicking glass percussion, the overtone crown thick and glowing, each strike a flash of pure luminosity.",
+  "tags": ["luminous", "glass", "marimba", "percussion", "crystal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.90,
+    "warmth": 0.50,
+    "movement": 0.30,
+    "density": 0.40,
+    "space": 0.52,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.60,
+      "orb_macroMovement": 0.30,
+      "orb_macroCoupling": 0.13,
+      "orb_macroSpace": 0.52,
+      "orb_filterEnvAmt": 0.62,
+      "orb_brightness": 0.90,
+      "orb_lfo1Rate": 0.04,
+      "orb_lfo1Depth": 0.16,
+      "orb_lfo2Rate": 0.10,
+      "orb_lfo2Depth": 0.10,
+      "orb_attack": 0.001,
+      "orb_decay": 1.8,
+      "orb_sustain": 0.35,
+      "orb_release": 2.5,
+      "orb_filterCutoff": 13000,
+      "orb_filterRes": 0.28,
+      "orb_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.13,
+    "SPACE": 0.52
+  }
+}

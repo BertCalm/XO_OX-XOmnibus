@@ -41,7 +41,14 @@
       "octo_spread": 0.75,
       "octo_sustain": 0.85,
       "octo_wtPosition": 0.85,
-      "octo_wtScanRate": 0.95
+      "octo_wtScanRate": 0.95,
+      "octo_macroCharacter": 0.61,
+      "octo_macroMovement": 0.425,
+      "octo_macroCoupling": 0.326,
+      "octo_macroSpace": 0.531,
+      "octo_filterEnvAmt": 0.427,
+      "octo_lfo1Rate": 0.123,
+      "octo_lfo1Depth": 0.32
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "dense"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.612,
+    "MOVEMENT": 0.427,
+    "COUPLING": 0.328,
+    "SPACE": 0.533
+  }
 }

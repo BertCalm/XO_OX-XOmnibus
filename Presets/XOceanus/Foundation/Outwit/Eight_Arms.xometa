@@ -109,7 +109,7 @@
       "owit_denDecay": 0.4,
       "owit_denMix": 0.2,
       "owit_lfo1Rate": 1.0,
-      "owit_lfo1Depth": 0.0,
+      "owit_lfo1Depth": 0.205,
       "owit_lfo1Shape": 0,
       "owit_lfo1Dest": 0,
       "owit_lfo2Rate": 0.3,
@@ -121,7 +121,12 @@
       "owit_macroSolve": 0.0,
       "owit_macroSynapse": 0.0,
       "owit_macroChromatophore": 0.0,
-      "owit_macroDen": 0.0
+      "owit_macroDen": 0.0,
+      "owit_macroCharacter": 0.487,
+      "owit_macroMovement": 0.314,
+      "owit_macroCoupling": 0.257,
+      "owit_macroSpace": 0.41,
+      "owit_filterEnvAmt": 0.496
     }
   },
   "schema_version": 1,
@@ -131,5 +136,11 @@
     "signature"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.336,
+    "COUPLING": 0.279,
+    "SPACE": 0.432
+  }
 }

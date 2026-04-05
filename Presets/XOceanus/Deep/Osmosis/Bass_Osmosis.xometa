@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sub-bass membrane locked to the lowest octave. Minimum selectivity keeps the analysis window centred just above the 200 Hz lower bound \u2014 capturing only fundamental sub energy. High permeability maximises the influence of the filtered signal. Medium reactivity catches bass note attacks; medium memory smooths between them. The engine at its most gravitational.",
+  "description": "Sub-bass membrane locked to the lowest octave. Minimum selectivity keeps the analysis window centred just above the 200 Hz lower bound — capturing only fundamental sub energy. High permeability maximises the influence of the filtered signal. Medium reactivity catches bass note attacks; medium memory smooths between them. The engine at its most gravitational.",
   "tags": [
     "deep",
     "sub-bass",
@@ -30,7 +30,14 @@
       "osmo_permeability": 0.85,
       "osmo_selectivity": 0.02,
       "osmo_reactivity": 0.55,
-      "osmo_memory": 0.45
+      "osmo_memory": 0.45,
+      "osmo_macro1": 0.58,
+      "osmo_macro2": 0.442,
+      "osmo_macro3": 0.216,
+      "osmo_macro4": 0.557,
+      "osmo_filterEnvAmt": 0.402,
+      "osmo_lfo1Rate": 0.056,
+      "osmo_lfo1Depth": 0.206
     }
   },
   "coupling": {
@@ -43,5 +50,11 @@
     "density": 0.85,
     "space": 0.38,
     "aggression": 0.6
+  },
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.387,
+    "COUPLING": 0.161,
+    "SPACE": 0.502
   }
 }

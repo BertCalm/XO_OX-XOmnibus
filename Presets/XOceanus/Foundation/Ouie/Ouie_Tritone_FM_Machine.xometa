@@ -49,7 +49,7 @@
       "ouie_fmRatio2": 7.07,
       "ouie_fmIndex2": 0.8,
       "ouie_pw2": 0.5,
-      "ouie_macroHammer": -0.15,
+      "ouie_macroHammer": 0.496,
       "ouie_voiceMix": 0.55,
       "ouie_cutoff1": 6500.0,
       "ouie_reso1": 0.08,
@@ -72,7 +72,7 @@
       "ouie_modR": 0.5,
       "ouie_modDepth": 0.5,
       "ouie_lfo1Rate": 0.5,
-      "ouie_lfo1Depth": 0.0,
+      "ouie_lfo1Depth": 0.196,
       "ouie_lfo1Shape": 0,
       "ouie_lfo2Rate": 2.0,
       "ouie_lfo2Depth": 0.0,
@@ -85,12 +85,19 @@
       "ouie_splitNote": 60.0,
       "ouie_glide": 0.0,
       "ouie_level": 0.68,
-      "ouie_macroAmpullae": 0.6,
-      "ouie_macroCartilage": 0.45,
-      "ouie_macroCurrent": 0.2
+      "ouie_macroAmpullae": 0.227,
+      "ouie_macroCartilage": 0.419,
+      "ouie_macroCurrent": 0.369,
+      "ouie_filterEnvAmt": 0.405
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.442,
+    "MOVEMENT": 0.365,
+    "COUPLING": 0.173,
+    "SPACE": 0.315
   }
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Nautilus Breath",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A nautilus shell's logarithmic spiral heard as spectral content. Each whorl a harmonic approximation.",
+  "tags": [
+    "ethereal",
+    "nautilus",
+    "spiral",
+    "logarithmic",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.2,
+    "space": 0.89,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.35,
+      "over_macroMovement": 0.24,
+      "over_macroCoupling": 0.1,
+      "over_macroSpace": 0.85,
+      "over_cfDepth": 0.52,
+      "over_filterEnvAmt": 0.27,
+      "over_lfo1Rate": 0.015,
+      "over_lfo1Depth": 0.12,
+      "over_attack": 3.2,
+      "over_release": 9.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.1,
+    "SPACE": 0.85
+  }
+}

@@ -38,13 +38,26 @@
     "Onset": {
       "perc_v2_level": 0.85,
       "perc_v2_decay": 0.3,
-      "perc_macro_punch": 0.75
+      "perc_macro_punch": 0.516,
+      "perc_macro_mutate": 0.428,
+      "perc_macro_machine": 0.51,
+      "perc_macro_space": 0.491,
+      "perc_filterEnvAmt": 0.475,
+      "perc_lfo1Rate": 0.184,
+      "perc_lfo1Depth": 0.366
     },
     "Oblique": {
       "oblq_bounceGravity": 0.6,
       "oblq_bounceCnt": 12.0,
       "oblq_prismMix": 0.5,
-      "oblq_prismColor": 0.7
+      "oblq_prismColor": 0.7,
+      "oblq_macroCharacter": 0.515,
+      "oblq_macroMovement": 0.427,
+      "oblq_macroCoupling": 0.509,
+      "oblq_macroSpace": 0.49,
+      "oblq_filterEnvAmt": 0.475,
+      "oblq_lfo1Rate": 0.184,
+      "oblq_lfo1Depth": 0.366
     }
   },
   "coupling": {
@@ -64,5 +77,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.404,
+    "COUPLING": 0.486,
+    "SPACE": 0.467
+  }
 }

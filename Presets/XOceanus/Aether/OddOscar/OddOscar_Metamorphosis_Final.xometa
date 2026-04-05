@@ -32,12 +32,16 @@
       "morph_delayFeedback": 0.35,
       "morph_filterCutoff": 0.85,
       "morph_filterReso": 0.1,
-      "morph_macroCoupling": 0.0,
+      "morph_macroCoupling": 0.126,
       "morph_macroGlitch": 0.0,
-      "morph_macroSpace": 0.0,
+      "morph_macroSpace": 0.729,
       "morph_macroTension": 0.0,
       "morph_reverbMix": 0.9,
-      "morph_sampleRate": 0.85
+      "morph_sampleRate": 0.85,
+      "morph_macroCharacter": 0.517,
+      "morph_macroMovement": 0.503,
+      "morph_filterEnvDepth": 0.386,
+      "morph_lfoRate": 0.064
     }
   },
   "schema_version": 1,
@@ -50,5 +54,11 @@
     "pure"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.494,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.103,
+    "SPACE": 0.706
+  }
 }

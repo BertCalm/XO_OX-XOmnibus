@@ -49,14 +49,27 @@
       "optic_vizMode": 1,
       "optic_vizFeedback": 0.95,
       "optic_vizSpeed": 2.5,
-      "optic_vizIntensity": 1.0
+      "optic_vizIntensity": 1.0,
+      "optic_macroCharacter": 0.575,
+      "optic_macroMovement": 0.463,
+      "optic_macroCoupling": 0.712,
+      "optic_macroSpace": 0.568,
+      "optic_filterEnvAmt": 0.48,
+      "optic_lfoRate": 0.173
     },
     "OddfeliX": {
       "snap_snap": 0.95,
       "snap_decay": 0.04,
       "snap_filterCutoff": 14000.0,
       "snap_filterReso": 0.8,
-      "snap_level": 0.85
+      "snap_level": 0.85,
+      "snap_macroDart": 0.618,
+      "snap_macroDepth": 0.506,
+      "snap_macroSchool": 0.755,
+      "snap_macroSurface": 0.611,
+      "snap_filterEnvDepth": 0.48,
+      "snap_lfoRate": 0.173,
+      "snap_lfoDepth": 0.281
     }
   },
   "coupling": {
@@ -75,5 +88,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.547,
+    "MOVEMENT": 0.435,
+    "COUPLING": 0.684,
+    "SPACE": 0.54
+  }
 }

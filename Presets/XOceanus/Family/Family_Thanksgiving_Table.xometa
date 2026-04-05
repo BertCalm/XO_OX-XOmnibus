@@ -56,10 +56,10 @@
       "ohm_grainScatter": 0.265,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.036,
-      "ohm_macroCommune": 0.687,
-      "ohm_macroJam": 0.373,
-      "ohm_macroMeadow": 0.551,
-      "ohm_macroMeddling": 0.195,
+      "ohm_macroCommune": 0.434,
+      "ohm_macroJam": 0.691,
+      "ohm_macroMeadow": 0.507,
+      "ohm_macroMeddling": 0.472,
       "ohm_meddlingThresh": 0.494,
       "ohm_obedLevel": 0.0,
       "ohm_pluckBrightness": 0.432,
@@ -67,7 +67,10 @@
       "ohm_spectralFreeze": 0.417,
       "ohm_sympatheticAmt": 0.498,
       "ohm_thereminScale": 1.0,
-      "ohm_thereminWobble": 0.394
+      "ohm_thereminWobble": 0.394,
+      "ohm_filterEnvAmt": 0.461,
+      "ohm_lfo1Rate": 0.078,
+      "ohm_lfo1Depth": 0.154
     },
     "Orphica": {
       "orph_bodySize": 0.535,
@@ -83,10 +86,10 @@
       "orph_driftRate": 0.08,
       "orph_highLevel": 0.826,
       "orph_lowLevel": 0.872,
-      "orph_macroDivine": 0.672,
-      "orph_macroFracture": 0.132,
-      "orph_macroPluck": 0.419,
-      "orph_macroSurface": 0.629,
+      "orph_macroDivine": 0.467,
+      "orph_macroFracture": 0.651,
+      "orph_macroPluck": 0.432,
+      "orph_macroSurface": 0.394,
       "orph_microDelayTime": 1.0,
       "orph_microDensity": 1.0,
       "orph_microMix": 0.0,
@@ -102,7 +105,10 @@
       "orph_stringMaterial": 1,
       "orph_subAmount": 0.0,
       "orph_sympatheticAmt": 0.433,
-      "orph_tapeSat": 0.051
+      "orph_tapeSat": 0.051,
+      "orph_filterEnvAmt": 0.461,
+      "orph_lfo1Rate": 0.078,
+      "orph_lfo1Depth": 0.154
     },
     "Ottoni": {
       "otto_chorusRate": 0.589,
@@ -132,7 +138,13 @@
       "otto_tweenEmbouchure": 0.698,
       "otto_tweenInst": 1,
       "otto_tweenLevel": 0.665,
-      "otto_tweenValve": 0.478
+      "otto_tweenValve": 0.478,
+      "otto_macroCharacter": 0.398,
+      "otto_macroMovement": 0.36,
+      "otto_macroCoupling": 0.617,
+      "otto_macroSpace": 0.433,
+      "otto_filterEnvAmt": 0.461,
+      "otto_lfoRate": 0.078
     }
   },
   "schema_version": 1,
@@ -144,5 +156,11 @@
     "atmosphere"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.382,
+    "COUPLING": 0.639,
+    "SPACE": 0.455
+  }
 }

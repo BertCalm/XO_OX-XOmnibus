@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Bright Orbital Tone",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A singular orbital tone at maximum brightness \u2014 additive synthesis reduced to its purest crystalline expression.",
+  "tags": [
+    "crystalline",
+    "bright",
+    "orbital",
+    "tone",
+    "pure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.16,
+    "movement": 0.2,
+    "density": 0.28,
+    "space": 0.68,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.62,
+      "orb_macroMovement": 0.41,
+      "orb_macroCoupling": 0.16,
+      "orb_macroSpace": 0.53,
+      "orb_filterEnvAmt": 0.51,
+      "orb_lfo1Rate": 0.11,
+      "orb_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.16,
+    "SPACE": 0.53
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Prism Rage",
+  "mood": "Prism",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Saturation rage driving distortion through prism color space. MOJO at rage state across all harmonics.",
+  "tags": ["prism", "aggressive", "rage", "saturation", "harmonic"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.85,
+    "density": 0.88,
+    "space": 0.18,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.9,
+      "fat_macroMovement": 0.83,
+      "fat_macroCoupling": 0.18,
+      "fat_macroSpace": 0.2,
+      "fat_satDrive": 0.92,
+      "fat_mojo": 0.88,
+      "fat_filterEnvAmt": 0.78,
+      "fat_lfo1Rate": 0.45,
+      "fat_lfo1Depth": 0.44,
+      "fat_filterCutoff": 0.55,
+      "fat_filterRes": 0.7,
+      "fat_attackTime": 0.006,
+      "fat_decayTime": 0.22,
+      "fat_sustain": 0.38,
+      "fat_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

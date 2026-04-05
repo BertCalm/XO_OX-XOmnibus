@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Prism Walk",
+  "mood": "Luminous",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Moving through a prism, each position a different color of light — Oblique's continuous prism color sweep under LFO modulation, every moment a new luminous hue.",
+  "tags": ["luminous", "prism", "walk", "color", "sweep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.46,
+    "movement": 0.55,
+    "density": 0.30,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.54,
+      "oblq_macroMovement": 0.55,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.58,
+      "oblq_filterEnvAmt": 0.54,
+      "oblq_prismColor": 0.58,
+      "oblq_lfo1Rate": 0.15,
+      "oblq_lfo1Depth": 0.30,
+      "oblq_lfo2Rate": 0.06,
+      "oblq_lfo2Depth": 0.20,
+      "oblq_attack": 0.05,
+      "oblq_decay": 0.7,
+      "oblq_sustain": 0.80,
+      "oblq_release": 2.2,
+      "oblq_filterCutoff": 10800,
+      "oblq_filterRes": 0.22,
+      "oblq_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

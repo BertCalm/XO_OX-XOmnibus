@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Fold Zero",
+  "mood": "Foundation",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Zero position fold — the first aggressive crease. Foundational angular geometry from which all folds descend.",
+  "tags": ["foundation", "aggressive", "fold", "zero", "angular"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.18,
+    "movement": 0.8,
+    "density": 0.76,
+    "space": 0.14,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.84,
+      "origami_macroMovement": 0.78,
+      "origami_macroCoupling": 0.15,
+      "origami_macroSpace": 0.15,
+      "origami_foldPoint": 0.82,
+      "origami_foldAngle": 0.8,
+      "origami_filterEnvAmt": 0.76,
+      "origami_lfo1Rate": 0.44,
+      "origami_lfo1Depth": 0.4,
+      "origami_filterCutoff": 0.6,
+      "origami_filterRes": 0.72,
+      "origami_attackTime": 0.008,
+      "origami_decayTime": 0.22,
+      "origami_sustain": 0.32,
+      "origami_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

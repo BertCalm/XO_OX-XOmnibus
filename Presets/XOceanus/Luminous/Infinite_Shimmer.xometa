@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Shimmer",
+  "mood": "Luminous",
+  "engines": ["OpenSky"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OpenSky's Shepard Shimmer architecture at infinite extension — the shimmer tail appears to ascend forever, each loop resetting imperceptibly, luminosity without ceiling.",
+  "tags": ["luminous", "infinite", "shimmer", "ascending", "perpetual"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.44,
+    "movement": 0.48,
+    "density": 0.42,
+    "space": 0.76,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.55,
+      "sky_macroMovement": 0.48,
+      "sky_macroCoupling": 0.16,
+      "sky_macroSpace": 0.76,
+      "sky_macroRise": 0.68,
+      "sky_filterEnvAmt": 0.56,
+      "sky_lfo1Rate": 0.05,
+      "sky_lfo1Depth": 0.24,
+      "sky_lfo2Rate": 0.02,
+      "sky_lfo2Depth": 0.16,
+      "sky_attack": 0.5,
+      "sky_decay": 2.0,
+      "sky_sustain": 0.84,
+      "sky_release": 7.0,
+      "sky_filterCutoff": 9200,
+      "sky_filterRes": 0.16,
+      "sky_shimmerDepth": 0.85,
+      "sky_shimmerRate": 0.03,
+      "sky_unisonVoices": 7,
+      "sky_unisonDetune": 0.20,
+      "sky_chorusDepth": 0.48,
+      "sky_chorusRate": 0.07,
+      "sky_reverbMix": 0.65,
+      "sky_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.16,
+    "SPACE": 0.76
+  }
+}

@@ -37,7 +37,14 @@
       "ocean_cohesion": 0.03,
       "ocean_depth": 0.96,
       "ocean_separation": 0.97,
-      "ocean_turbulence": 0.03
+      "ocean_turbulence": 0.03,
+      "ocean_macroCharacter": 0.368,
+      "ocean_macroMovement": 0.359,
+      "ocean_macroCoupling": 0.114,
+      "ocean_macroSpace": 0.775,
+      "ocean_filterEnvAmt": 0.405,
+      "ocean_lfo1Rate": 0.067,
+      "ocean_lfo1Depth": 0.231
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "drone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.353,
+    "COUPLING": 0.108,
+    "SPACE": 0.769
+  }
 }

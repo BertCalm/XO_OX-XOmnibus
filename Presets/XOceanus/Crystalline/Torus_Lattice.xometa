@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Torus Lattice",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A torus-knot lattice structure \u2014 the crystal cell repeating through topological space in perfect geometry.",
+  "tags": [
+    "crystalline",
+    "torus",
+    "lattice",
+    "topology",
+    "geometry"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.62,
+      "weave_macroMovement": 0.36,
+      "weave_macroCoupling": 0.18,
+      "weave_macroSpace": 0.59,
+      "weave_filterEnvAmt": 0.51,
+      "weave_lfo1Rate": 0.07,
+      "weave_lfo1Depth": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.18,
+    "SPACE": 0.59
+  }
+}

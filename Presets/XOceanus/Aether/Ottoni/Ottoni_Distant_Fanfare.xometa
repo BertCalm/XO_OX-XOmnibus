@@ -35,7 +35,13 @@
       "otto_harmonicRich": 0.35,
       "otto_releaseTime": 4.0,
       "otto_reverbDecay": 0.85,
-      "otto_reverbSend": 0.92
+      "otto_reverbSend": 0.92,
+      "otto_macroCharacter": 0.394,
+      "otto_macroMovement": 0.516,
+      "otto_macroCoupling": 0.225,
+      "otto_macroSpace": 0.772,
+      "otto_filterEnvAmt": 0.307,
+      "otto_lfoRate": 0.07
     }
   },
   "schema_version": 1,
@@ -49,5 +55,11 @@
     "aether"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.538,
+    "COUPLING": 0.247,
+    "SPACE": 0.794
+  }
 }

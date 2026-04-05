@@ -40,14 +40,28 @@
       "oracle_stochasticRate": 0.6,
       "oracle_barrierMod": 0.52,
       "oracle_filterCutoff": 0.5,
-      "oracle_outputLevel": 0.8
+      "oracle_outputLevel": 0.8,
+      "oracle_macroCharacter": 0.493,
+      "oracle_macroMovement": 0.537,
+      "oracle_macroCoupling": 0.513,
+      "oracle_macroSpace": 0.37,
+      "oracle_filterEnvAmt": 0.591,
+      "oracle_lfo1Rate": 0.101,
+      "oracle_lfo1Depth": 0.389
     },
     "Origami": {
       "origami_foldPoint": 0.58,
       "origami_foldDepth": 0.65,
       "origami_freezeTrigger": 0.3,
       "origami_filterCutoff": 0.52,
-      "origami_outputLevel": 0.78
+      "origami_outputLevel": 0.78,
+      "origami_macroCharacter": 0.544,
+      "origami_macroMovement": 0.588,
+      "origami_macroCoupling": 0.564,
+      "origami_macroSpace": 0.421,
+      "origami_filterEnvAmt": 0.591,
+      "origami_lfo1Rate": 0.101,
+      "origami_lfo1Depth": 0.389
     }
   },
   "coupling": {
@@ -66,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.529,
+    "COUPLING": 0.505,
+    "SPACE": 0.362
+  }
 }

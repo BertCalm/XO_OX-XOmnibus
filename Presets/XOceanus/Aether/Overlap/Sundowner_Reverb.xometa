@@ -39,7 +39,14 @@
       "olap_diffusion": 0.72,
       "olap_knotType": 2.0,
       "olap_size": 0.95,
-      "olap_spread": 0.92
+      "olap_spread": 0.92,
+      "olap_macroCharacter": 0.44,
+      "olap_macroMovement": 0.452,
+      "olap_macroCoupling": 0.21,
+      "olap_macroSpace": 0.78,
+      "olap_filterEnvAmt": 0.309,
+      "olap_lfo1Rate": 0.032,
+      "olap_lfo1Depth": 0.196
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "reverb"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.436,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.206,
+    "SPACE": 0.776
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Captures the characteristic resonance tail of piano: medium selectivity focuses on the 2\u20138 kHz string tone, moderate reactivity for clean note detection, long memory mimics the natural sustain decay. The coupled engine feels the piano's full resonant shape \u2014 not just the hammer transient.",
+  "description": "Captures the characteristic resonance tail of piano: medium selectivity focuses on the 2–8 kHz string tone, moderate reactivity for clean note detection, long memory mimics the natural sustain decay. The coupled engine feels the piano's full resonant shape — not just the hammer transient.",
   "tags": [
     "coupling",
     "piano",
@@ -30,7 +30,14 @@
       "osmo_permeability": 0.45,
       "osmo_selectivity": 0.45,
       "osmo_reactivity": 0.6,
-      "osmo_memory": 0.82
+      "osmo_memory": 0.82,
+      "osmo_macro1": 0.691,
+      "osmo_macro2": 0.629,
+      "osmo_macro3": 0.719,
+      "osmo_macro4": 0.572,
+      "osmo_filterEnvAmt": 0.427,
+      "osmo_lfo1Rate": 0.129,
+      "osmo_lfo1Depth": 0.385
     }
   },
   "coupling": {
@@ -43,5 +50,11 @@
     "density": 0.45,
     "space": 0.7,
     "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.636,
+    "MOVEMENT": 0.574,
+    "COUPLING": 0.664,
+    "SPACE": 0.517
   }
 }

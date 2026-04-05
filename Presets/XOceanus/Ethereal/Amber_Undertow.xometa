@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Amber Undertow",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A warm amber undercurrent in deep water. Below the visible, the warmth persists.",
+  "tags": [
+    "ethereal",
+    "amber",
+    "undertow",
+    "warm",
+    "depth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.36,
+      "okan_macroMovement": 0.27,
+      "okan_macroCoupling": 0.1,
+      "okan_macroSpace": 0.84,
+      "okan_warmth": 0.72,
+      "okan_filterEnvAmt": 0.28,
+      "okan_lfo1Rate": 0.02,
+      "okan_lfo1Depth": 0.13,
+      "okan_attack": 3.2,
+      "okan_release": 10.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.1,
+    "SPACE": 0.84
+  }
+}

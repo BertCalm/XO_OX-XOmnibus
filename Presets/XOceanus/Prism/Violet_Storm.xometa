@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Violet Storm",
+  "mood": "Prism",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prism violet storm system. Tame Impala x RTJ energy colliding in violet-spectrum turbulence.",
+  "tags": ["prism", "aggressive", "violet", "storm", "turbulence"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.92,
+    "density": 0.82,
+    "space": 0.2,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.87,
+      "oblq_macroMovement": 0.9,
+      "oblq_macroCoupling": 0.22,
+      "oblq_macroSpace": 0.22,
+      "oblq_prismColor": 0.88,
+      "oblq_bounceRate": 0.92,
+      "oblq_filterEnvAmt": 0.76,
+      "oblq_lfo1Rate": 0.65,
+      "oblq_lfo1Depth": 0.46,
+      "oblq_filterCutoff": 0.68,
+      "oblq_filterRes": 0.7,
+      "oblq_attackTime": 0.007,
+      "oblq_decayTime": 0.2,
+      "oblq_sustain": 0.35,
+      "oblq_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.22,
+    "SPACE": 0.22
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Euler Prism",
+  "mood": "Crystalline",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Euler's number e rendered as prismatic spectral partials. Mathematical elegance in crystalline form.",
+  "tags": [
+    "crystalline",
+    "euler",
+    "prism",
+    "spectral",
+    "mathematical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.64,
+      "over_macroMovement": 0.33,
+      "over_macroCoupling": 0.13,
+      "over_macroSpace": 0.56,
+      "over_filterEnvAmt": 0.58,
+      "over_lfo1Rate": 0.04,
+      "over_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.13,
+    "SPACE": 0.56
+  }
+}

@@ -69,7 +69,14 @@
       "octo_inkCloud": 0.02,
       "octo_level": 0.74,
       "octo_release": 2.8,
-      "octo_sustain": 0.5
+      "octo_sustain": 0.5,
+      "octo_macroCharacter": 0.57,
+      "octo_macroMovement": 0.583,
+      "octo_macroCoupling": 0.206,
+      "octo_macroSpace": 0.512,
+      "octo_filterEnvAmt": 0.455,
+      "octo_lfo1Rate": 0.105,
+      "octo_lfo1Depth": 0.285
     }
   },
   "schema_version": 1,
@@ -86,5 +93,11 @@
     "expression"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.572,
+    "MOVEMENT": 0.585,
+    "COUPLING": 0.208,
+    "SPACE": 0.514
+  }
 }

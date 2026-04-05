@@ -28,7 +28,14 @@
   "parameters": {
     "Opal": {
       "couplingBus": 0,
-      "couplingLevel": 0.695
+      "couplingLevel": 0.695,
+      "opal_macroCharacter": 0.767,
+      "opal_macroMovement": 0.788,
+      "opal_macroCoupling": 0.319,
+      "opal_macroSpace": 0.313,
+      "opal_filterEnvAmt": 0.64,
+      "opal_lfo1Rate": 0.374,
+      "opal_lfo1Depth": 0.318
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "opal"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.782,
+    "MOVEMENT": 0.803,
+    "COUPLING": 0.334,
+    "SPACE": 0.328
+  }
 }

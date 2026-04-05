@@ -40,10 +40,10 @@
       "orph_driftRate": 0.072,
       "orph_highLevel": 0.785,
       "orph_lowLevel": 0.722,
-      "orph_macroDivine": 0.651,
-      "orph_macroFracture": 0.457,
-      "orph_macroPluck": 0.373,
-      "orph_macroSurface": 0.333,
+      "orph_macroDivine": 0.795,
+      "orph_macroFracture": 0.17,
+      "orph_macroPluck": 0.439,
+      "orph_macroSurface": 0.373,
       "orph_microDelayTime": 1.0,
       "orph_microDensity": 1.0,
       "orph_microMix": 0.319,
@@ -59,7 +59,10 @@
       "orph_stringMaterial": 3,
       "orph_subAmount": 0.0,
       "orph_sympatheticAmt": 0.481,
-      "orph_tapeSat": 0.182
+      "orph_tapeSat": 0.182,
+      "orph_filterEnvAmt": 0.317,
+      "orph_lfo1Rate": 0.022,
+      "orph_lfo1Depth": 0.168
     }
   },
   "schema_version": 1,
@@ -70,5 +73,11 @@
     "experimental"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.427,
+    "MOVEMENT": 0.361,
+    "COUPLING": 0.158,
+    "SPACE": 0.783
+  }
 }

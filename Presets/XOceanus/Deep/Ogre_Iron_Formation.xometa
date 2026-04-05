@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Iron Formation",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Banded iron formations — ancient seafloor sediments from when Earth's oceans first oxygenated, iron precipitating out in slow dark layers across billions of years.",
+  "tags": ["deep", "ancient", "iron", "geological", "sub-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.80,
+    "movement": 0.10,
+    "density": 0.82,
+    "space": 0.58,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.60,
+      "ogre_macroMovement": 0.10,
+      "ogre_macroCoupling": 0.11,
+      "ogre_macroSpace": 0.56,
+      "ogre_filterEnvAmt": 0.46,
+      "ogre_lfo1Rate": 0.01,
+      "ogre_lfo1Depth": 0.14,
+      "ogre_subFreq": 0.28,
+      "ogre_satDrive": 0.48
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.10,
+    "COUPLING": 0.11,
+    "SPACE": 0.56
+  }
+}

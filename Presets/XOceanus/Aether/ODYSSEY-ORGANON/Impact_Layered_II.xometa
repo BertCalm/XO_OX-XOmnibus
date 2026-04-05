@@ -36,11 +36,25 @@
   "parameters": {
     "Odyssey": {
       "level": 0.723,
-      "pan": -0.023
+      "pan": -0.023,
+      "drift_macroCharacter": 0.412,
+      "drift_macroMovement": 0.544,
+      "drift_macroCoupling": 0.432,
+      "drift_macroSpace": 0.841,
+      "drift_filterEnvAmt": 0.339,
+      "drift_lfoRate": 0.045,
+      "drift_lfoDepth": 0.139
     },
     "Organon": {
       "level": 0.73,
-      "pan": 0.026
+      "pan": 0.026,
+      "organon_macroCharacter": 0.381,
+      "organon_macroMovement": 0.513,
+      "organon_macroCoupling": 0.401,
+      "organon_macroSpace": 0.81,
+      "organon_filterEnvAmt": 0.339,
+      "organon_lfo1Rate": 0.045,
+      "organon_lfo1Depth": 0.139
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.382,
+    "MOVEMENT": 0.514,
+    "COUPLING": 0.402,
+    "SPACE": 0.811
+  }
 }

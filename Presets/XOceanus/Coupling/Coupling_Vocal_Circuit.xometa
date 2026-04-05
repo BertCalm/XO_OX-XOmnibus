@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Vocal Circuit",
+  "mood": "Coupling",
+  "engines": [
+    "Opera",
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPERA Kuramoto synchronicity arc drives OUIE HAMMER axis \u2014 the conductor arc pushing the hammerhead interaction from STRIFE toward LOVE.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "vocal",
+    "duophonic",
+    "EnvToMorph",
+    "dramatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.52,
+    "movement": 0.55,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.58,
+      "opera_filterEnvAmt": 0.52,
+      "opera_lfo1Rate": 0.12,
+      "opera_lfo1Depth": 0.28,
+      "opera_macroCharacter": 0.54,
+      "opera_macroMovement": 0.54,
+      "opera_macroCoupling": 0.62,
+      "opera_macroSpace": 0.5
+    },
+    "Ouie": {
+      "ouie_macroHammer": 0.55,
+      "ouie_filterEnvAmt": 0.5,
+      "ouie_lfo1Rate": 0.13,
+      "ouie_lfo1Depth": 0.26,
+      "ouie_macroCharacter": 0.52,
+      "ouie_macroMovement": 0.52,
+      "ouie_macroCoupling": 0.6,
+      "ouie_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opera",
+        "engineB": "Ouie",
+        "type": "EnvToMorph",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

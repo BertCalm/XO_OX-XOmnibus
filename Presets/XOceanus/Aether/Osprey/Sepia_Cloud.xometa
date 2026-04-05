@@ -38,7 +38,14 @@
       "osprey_seaState": 0.25,
       "osprey_shore": 0.42,
       "osprey_swellPeriod": 0.65,
-      "osprey_harborVerb": 0.94
+      "osprey_harborVerb": 0.94,
+      "osprey_macroCharacter": 0.417,
+      "osprey_macroMovement": 0.478,
+      "osprey_macroCoupling": 0.14,
+      "osprey_macroSpace": 0.921,
+      "osprey_filterEnvDepth": 0.371,
+      "osprey_lfo2Rate": 0.04,
+      "osprey_lfo2Depth": 0.177
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "ambient"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.384,
+    "MOVEMENT": 0.445,
+    "COUPLING": 0.107,
+    "SPACE": 0.888
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Curious Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Digital curiosity crystallized \u2014 Berlyne's exploration drive frozen at maximum mineral precision.",
+  "tags": [
+    "crystalline",
+    "curious",
+    "digital",
+    "berlyne",
+    "precision"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.27,
+    "movement": 0.35,
+    "density": 0.44,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_macroCharacter": 0.51,
+      "ofr_macroMovement": 0.43,
+      "ofr_macroCoupling": 0.2,
+      "ofr_macroSpace": 0.61,
+      "ofr_filterEnvAmt": 0.53,
+      "ofr_lfo1Rate": 0.06,
+      "ofr_lfo1Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.2,
+    "SPACE": 0.61
+  }
+}

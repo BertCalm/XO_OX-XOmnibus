@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Arm Drill",
+  "mood": "Kinetic",
+  "engines": ["Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Arms rotating as a drill mechanism. Decentralized intelligence applying kinetic torque simultaneously.",
+  "tags": ["kinetic", "aggressive", "arms", "drill", "rotation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.16,
+    "movement": 0.95,
+    "density": 0.84,
+    "space": 0.16,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.86,
+      "octo_macroMovement": 0.93,
+      "octo_macroCoupling": 0.17,
+      "octo_macroSpace": 0.17,
+      "octo_armDepth": 0.9,
+      "octo_chromaFlash": 0.75,
+      "octo_inkCloud": 0.5,
+      "octo_filterEnvAmt": 0.76,
+      "octo_lfo1Rate": 0.72,
+      "octo_lfo1Depth": 0.46,
+      "octo_filterCutoff": 0.68,
+      "octo_filterRes": 0.7,
+      "octo_attackTime": 0.006,
+      "octo_decayTime": 0.16,
+      "octo_sustain": 0.25,
+      "octo_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.17,
+    "SPACE": 0.17
+  }
+}

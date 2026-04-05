@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tuned for electric guitar: selectivity centred around the upper-mid guitar presence peak (approx. 2\u20136 kHz effective). Reactivity fast enough to catch pick attacks and bends without over-tracking string noise. Memory moderate \u2014 sustains coupling between picked notes but resets on rests. Natural feel for guitar-driven generative coupling.",
+  "description": "Tuned for electric guitar: selectivity centred around the upper-mid guitar presence peak (approx. 2–6 kHz effective). Reactivity fast enough to catch pick attacks and bends without over-tracking string noise. Memory moderate — sustains coupling between picked notes but resets on rests. Natural feel for guitar-driven generative coupling.",
   "tags": [
     "coupling",
     "guitar",
@@ -30,7 +30,14 @@
       "osmo_permeability": 0.6,
       "osmo_selectivity": 0.32,
       "osmo_reactivity": 0.72,
-      "osmo_memory": 0.38
+      "osmo_memory": 0.38,
+      "osmo_macro1": 0.606,
+      "osmo_macro2": 0.627,
+      "osmo_macro3": 0.841,
+      "osmo_macro4": 0.527,
+      "osmo_filterEnvAmt": 0.56,
+      "osmo_lfo1Rate": 0.226,
+      "osmo_lfo1Depth": 0.33
     }
   },
   "coupling": {
@@ -43,5 +50,11 @@
     "density": 0.48,
     "space": 0.42,
     "aggression": 0.52
+  },
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.572,
+    "COUPLING": 0.786,
+    "SPACE": 0.472
   }
 }

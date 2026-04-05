@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Warm Circuit Bond",
+  "mood": "Luminous",
+  "engines": ["Oxytocin"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The warm glow of a trusted circuit — Oxytocin's RE-201 topology making the synthesizer feel like a warm device you've touched a thousand times, luminous with familiarity.",
+  "tags": ["luminous", "warm", "circuit", "familiar", "trusted"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.73,
+    "warmth": 0.68,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.50,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.72,
+      "oxy_passion": 0.22,
+      "oxy_commitment": 0.80,
+      "oxy_warmth_rate": 0.52,
+      "oxy_passion_rate": 0.005,
+      "oxy_commit_rate": 2.0,
+      "oxy_entanglement": 0.35,
+      "oxy_circuit_age": 0.42,
+      "oxy_circuit_noise": 0.06,
+      "oxy_memory_depth": 0.52,
+      "oxy_memory_decay": 5.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.28,
+      "oxy_cutoff": 4200,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.018,
+      "oxy_decay": 0.9,
+      "oxy_sustain": 0.85,
+      "oxy_release": 4.0,
+      "oxy_lfo_rate": 0.05,
+      "oxy_lfo_depth": 0.14,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.02,
+      "oxy_lfo2_depth": 0.08,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 5
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.50
+  }
+}

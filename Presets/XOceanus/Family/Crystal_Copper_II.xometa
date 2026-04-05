@@ -36,11 +36,25 @@
   "parameters": {
     "Octopus": {
       "level": 0.848,
-      "pan": -0.023
+      "pan": -0.023,
+      "octo_macroCharacter": 0.499,
+      "octo_macroMovement": 0.384,
+      "octo_macroCoupling": 0.732,
+      "octo_macroSpace": 0.521,
+      "octo_filterEnvAmt": 0.416,
+      "octo_lfo1Rate": 0.153,
+      "octo_lfo1Depth": 0.276
     },
     "Ohm": {
       "level": 0.693,
-      "pan": -0.102
+      "pan": -0.102,
+      "ohm_macroMeddling": 0.553,
+      "ohm_macroCommune": 0.438,
+      "ohm_macroJam": 0.786,
+      "ohm_macroMeadow": 0.575,
+      "ohm_filterEnvAmt": 0.416,
+      "ohm_lfo1Rate": 0.153,
+      "ohm_lfo1Depth": 0.276
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.501,
+    "MOVEMENT": 0.386,
+    "COUPLING": 0.734,
+    "SPACE": 0.523
+  }
 }

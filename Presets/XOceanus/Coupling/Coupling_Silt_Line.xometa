@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Silt Line",
+  "mood": "Coupling",
+  "engines": [
+    "Olate",
+    "Ogre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLATE fretless glide barely activates OGRE sub bass frequency shift \u2014 sliding pitch physics leaving a trace in the depths below.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "fretless",
+    "sub",
+    "PitchToPitch",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.5,
+    "space": 0.44,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Olate": {
+      "olate_fretlessGlide": 0.5,
+      "olate_filterEnvAmt": 0.4,
+      "olate_lfo1Rate": 0.1,
+      "olate_lfo1Depth": 0.2,
+      "olate_macroCharacter": 0.44,
+      "olate_macroMovement": 0.42,
+      "olate_macroCoupling": 0.5,
+      "olate_macroSpace": 0.42
+    },
+    "Ogre": {
+      "ogre_subFreq": 0.48,
+      "ogre_filterEnvAmt": 0.38,
+      "ogre_lfo1Rate": 0.07,
+      "ogre_lfo1Depth": 0.16,
+      "ogre_macroCharacter": 0.42,
+      "ogre_macroMovement": 0.36,
+      "ogre_macroCoupling": 0.48,
+      "ogre_macroSpace": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Olate",
+        "engineB": "Ogre",
+        "type": "PitchToPitch",
+        "amount": 0.15
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.49,
+    "SPACE": 0.41
+  }
+}

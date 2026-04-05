@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Frost Cast",
+  "mood": "Crystalline",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An overcast sky of frost crystals \u2014 cloud density made crystalline, light slate grey and cold.",
+  "tags": [
+    "crystalline",
+    "frost",
+    "overcast",
+    "cloud",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.32,
+    "movement": 0.28,
+    "density": 0.48,
+    "space": 0.6,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_macroCharacter": 0.63,
+      "cast_macroMovement": 0.37,
+      "cast_macroCoupling": 0.22,
+      "cast_macroSpace": 0.5,
+      "cast_filterEnvAmt": 0.46,
+      "cast_lfo1Rate": 0.12,
+      "cast_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.22,
+    "SPACE": 0.5
+  }
+}

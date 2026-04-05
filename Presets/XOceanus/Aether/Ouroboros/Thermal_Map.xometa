@@ -39,7 +39,13 @@
       "ouro_feedback": 0.62,
       "ouro_leash": 0.55,
       "ouro_rate": 0.62,
-      "ouro_topology": 1.0
+      "ouro_topology": 1.0,
+      "ouro_macroCharacter": 0.408,
+      "ouro_macroMovement": 0.392,
+      "ouro_macroCoupling": 0.158,
+      "ouro_macroSpace": 0.778,
+      "ouro_filterEnvAmt": 0.424,
+      "ouro_lfoRate": 0.075
     }
   },
   "schema_version": 1,
@@ -51,5 +57,11 @@
     "feedback"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.406,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.156,
+    "SPACE": 0.776
+  }
 }

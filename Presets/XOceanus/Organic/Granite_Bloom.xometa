@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Granite Bloom",
+  "mood": "Organic",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Struck granite resonating like a slow bell — mineral memory singing in crystalline overtones at the edge of stone.",
+  "tags": ["organic", "granite", "mineral", "crystalline", "struck"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.30,
+    "density": 0.40,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oware": {
+      "owr_macroCharacter": 0.42,
+      "owr_macroMovement": 0.30,
+      "owr_macroCoupling": 0.16,
+      "owr_macroSpace": 0.58,
+      "owr_material": 0.90,
+      "owr_filterEnvAmt": 0.44,
+      "owr_lfo1Rate": 0.04,
+      "owr_lfo1Depth": 0.20,
+      "owr_lfo2Rate": 0.09,
+      "owr_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

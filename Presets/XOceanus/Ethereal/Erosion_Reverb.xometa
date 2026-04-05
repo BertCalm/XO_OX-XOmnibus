@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Erosion Reverb",
+  "mood": "Ethereal",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The slow erosion of riverbank recorded as reverb. Each decay a particle of clay returning to water.",
+  "tags": [
+    "ethereal",
+    "erosion",
+    "reverb",
+    "decay",
+    "geological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.24,
+    "space": 0.89,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.36,
+      "oxb_macroMovement": 0.22,
+      "oxb_macroCoupling": 0.1,
+      "oxb_macroSpace": 0.85,
+      "oxb_entangle": 0.65,
+      "oxb_filterEnvAmt": 0.3,
+      "oxb_lfo1Rate": 0.01,
+      "oxb_lfo1Depth": 0.13,
+      "oxb_attack": 4.0,
+      "oxb_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.1,
+    "SPACE": 0.85
+  }
+}

@@ -38,12 +38,24 @@
     "Onset": {
       "perc_v1_level": 0.85,
       "perc_v2_level": 0.75,
-      "perc_macro_punch": 0.7
+      "perc_macro_punch": 0.522,
+      "perc_macro_mutate": 0.493,
+      "perc_macro_machine": 0.655,
+      "perc_macro_space": 0.398,
+      "perc_filterEnvAmt": 0.592,
+      "perc_lfo1Rate": 0.144,
+      "perc_lfo1Depth": 0.329
     },
     "Optic": {
       "optic_lensFlare": 0.65,
       "optic_aberration": 0.45,
-      "optic_filterCut": 7000.0
+      "optic_filterCut": 7000.0,
+      "optic_macroCharacter": 0.526,
+      "optic_macroMovement": 0.497,
+      "optic_macroCoupling": 0.659,
+      "optic_macroSpace": 0.402,
+      "optic_filterEnvAmt": 0.592,
+      "optic_lfoRate": 0.144
     }
   },
   "coupling": {
@@ -63,5 +75,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.498,
+    "MOVEMENT": 0.469,
+    "COUPLING": 0.631,
+    "SPACE": 0.374
+  }
 }

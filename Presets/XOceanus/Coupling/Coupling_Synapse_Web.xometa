@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Synapse Web",
+  "mood": "Coupling",
+  "engines": [
+    "Oxytocin",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXYTOCIN synapse depth drives ORGANISM cellular rule mutation \u2014 oxytocin bonding chemistry reshaping what rules the living cells follow.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "synapse",
+    "cellular",
+    "EnvToMorph",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.52,
+    "movement": 0.56,
+    "density": 0.54,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.58,
+      "oxy_filterEnvAmt": 0.52,
+      "oxy_lfo1Rate": 0.12,
+      "oxy_lfo1Depth": 0.28,
+      "oxy_macroCharacter": 0.52,
+      "oxy_macroMovement": 0.52,
+      "oxy_macroCoupling": 0.62,
+      "oxy_macroSpace": 0.5
+    },
+    "Organism": {
+      "org_ruleSet": 0.56,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.14,
+      "org_lfo1Depth": 0.28,
+      "org_macroCharacter": 0.5,
+      "org_macroMovement": 0.54,
+      "org_macroCoupling": 0.6,
+      "org_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxytocin",
+        "engineB": "Organism",
+        "type": "EnvToMorph",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

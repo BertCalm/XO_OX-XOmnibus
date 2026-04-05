@@ -46,7 +46,14 @@
       "obsidian_level": 0.798,
       "obsidian_movement": 0.327,
       "obsidian_space": 0.599,
-      "obsidian_warmth": 0.211
+      "obsidian_warmth": 0.211,
+      "obsidian_macroCharacter": 0.636,
+      "obsidian_macroMovement": 0.578,
+      "obsidian_macroCoupling": 0.599,
+      "obsidian_macroSpace": 0.598,
+      "obsidian_filterEnvAmt": 0.423,
+      "obsidian_lfoRate": 0.196,
+      "obsidian_lfoDepth": 0.246
     },
     "Oceanic": {
       "ocean_aggression": 0.309,
@@ -55,7 +62,14 @@
       "ocean_level": 0.803,
       "ocean_movement": 0.465,
       "ocean_space": 0.811,
-      "ocean_warmth": 0.511
+      "ocean_warmth": 0.511,
+      "ocean_macroCharacter": 0.574,
+      "ocean_macroMovement": 0.516,
+      "ocean_macroCoupling": 0.537,
+      "ocean_macroSpace": 0.536,
+      "ocean_filterEnvAmt": 0.423,
+      "ocean_lfo1Rate": 0.196,
+      "ocean_lfo1Depth": 0.246
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.568,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.531,
+    "SPACE": 0.53
+  }
 }

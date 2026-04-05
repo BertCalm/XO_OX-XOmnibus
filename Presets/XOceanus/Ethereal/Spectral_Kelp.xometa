@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Kelp",
+  "mood": "Ethereal",
+  "engines": ["Overtone", "Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Continued fractions tangled in golden FDN kelp. Overtone's harmonic series threads into Oxbow's reverb knot — the irrational becomes the entangled.",
+  "tags": ["ethereal", "whisper", "coupling", "spectral", "reverb", "kelp", "irrational"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.58,
+    "movement": 0.28,
+    "density": 0.36,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.40,
+      "over_macroMovement": 0.34,
+      "over_macroCoupling": 0.14,
+      "over_macroSpace": 0.88,
+      "over_cfDepth": 0.48,
+      "over_filterEnvAmt": 0.30,
+      "over_lfo1Rate": 0.04,
+      "over_lfo1Depth": 0.18,
+      "over_attack": 1.5,
+      "over_release": 6.0
+    },
+    "Oxbow": {
+      "oxb_macroCharacter": 0.38,
+      "oxb_macroMovement": 0.30,
+      "oxb_macroCoupling": 0.12,
+      "oxb_macroSpace": 0.92,
+      "oxb_entangle": 0.52,
+      "oxb_filterEnvAmt": 0.26,
+      "oxb_lfo1Rate": 0.03,
+      "oxb_lfo1Depth": 0.14,
+      "oxb_attack": 2.0,
+      "oxb_release": 7.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overtone",
+        "engineB": "Oxbow",
+        "type": "EnvToMorph",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.39,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.13,
+    "SPACE": 0.90
+  }
+}

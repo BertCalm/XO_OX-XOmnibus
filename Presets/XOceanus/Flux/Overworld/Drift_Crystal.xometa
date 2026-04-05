@@ -28,7 +28,14 @@
   "parameters": {
     "Overworld": {
       "couplingBus": 1,
-      "couplingLevel": 0.931
+      "couplingLevel": 0.931,
+      "ow_macroEra": 0.735,
+      "ow_macroCrush": 0.857,
+      "ow_macroGlitch": 0.315,
+      "ow_macroSpace": 0.303,
+      "ow_filterEnvDepth": 0.69,
+      "ow_fmLfoRate": 0.247,
+      "ow_fmLfoDepth": 0.362
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "overworld"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.722,
+    "MOVEMENT": 0.844,
+    "COUPLING": 0.302,
+    "SPACE": 0.29
+  }
 }

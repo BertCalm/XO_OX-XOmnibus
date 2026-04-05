@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Albumen Print",
+  "mood": "Ethereal",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A 19th-century photographic print fading at its edges. The faces in it approach abstraction.",
+  "tags": [
+    "ethereal",
+    "antique",
+    "fading",
+    "photograph",
+    "edge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.18,
+    "space": 0.87,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_macroCharacter": 0.34,
+      "obscura_macroMovement": 0.22,
+      "obscura_macroCoupling": 0.09,
+      "obscura_macroSpace": 0.82,
+      "obscura_stiffness": 0.52,
+      "obscura_filterEnvAmt": 0.27,
+      "obscura_lfo1Rate": 0.014,
+      "obscura_lfo1Depth": 0.13,
+      "obscura_attack": 2.8,
+      "obscura_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.09,
+    "SPACE": 0.82
+  }
+}

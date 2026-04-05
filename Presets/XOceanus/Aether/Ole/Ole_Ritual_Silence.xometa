@@ -35,7 +35,13 @@
       "ole_rhythmB": 0.08,
       "ole_voiceA": 0.3,
       "ole_voiceB": 0.2,
-      "ole_voiceC": 0.15
+      "ole_voiceC": 0.15,
+      "ole_macroDrama": 0.474,
+      "ole_macroFuego": 0.331,
+      "ole_macroIsla": 0.192,
+      "ole_macroSides": 0.771,
+      "ole_filterEnvAmt": 0.33,
+      "ole_lfoRate": 0.026
     }
   },
   "schema_version": 1,
@@ -49,5 +55,11 @@
     "ceremony"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.496,
+    "MOVEMENT": 0.353,
+    "COUPLING": 0.214,
+    "SPACE": 0.793
+  }
 }

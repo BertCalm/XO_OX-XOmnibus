@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Catkin Drift",
+  "mood": "Ethereal",
+  "engines": [
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Willow catkins releasing in March, a slow drift of seed-silk through still air.",
+  "tags": [
+    "ethereal",
+    "catkin",
+    "drift",
+    "seed",
+    "silk"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.1,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.28,
+      "osier_macroMovement": 0.37,
+      "osier_macroCoupling": 0.07,
+      "osier_macroSpace": 0.91,
+      "osier_windDensity": 0.25,
+      "osier_filterEnvAmt": 0.26,
+      "osier_lfo1Rate": 0.045,
+      "osier_lfo1Depth": 0.14,
+      "osier_attack": 2.0,
+      "osier_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.07,
+    "SPACE": 0.91
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Strike",
+  "mood": "Kinetic",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Group envelope system deployed as orbital strike. Additive partials converging into destructive impact.",
+  "tags": ["kinetic", "aggressive", "orbital", "strike", "additive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.82,
+    "space": 0.18,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.86,
+      "orb_macroMovement": 0.88,
+      "orb_macroCoupling": 0.18,
+      "orb_macroSpace": 0.2,
+      "orb_brightness": 0.88,
+      "orb_partialCount": 0.85,
+      "orb_filterEnvAmt": 0.75,
+      "orb_lfo1Rate": 0.58,
+      "orb_lfo1Depth": 0.44,
+      "orb_filterCutoff": 0.68,
+      "orb_filterRes": 0.7,
+      "orb_attackTime": 0.005,
+      "orb_decayTime": 0.2,
+      "orb_sustain": 0.32,
+      "orb_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

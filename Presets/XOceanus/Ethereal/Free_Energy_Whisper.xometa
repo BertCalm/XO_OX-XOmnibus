@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Free Energy Whisper",
+  "mood": "Ethereal",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Variational free energy minimization at its most delicate. The system predicting silence.",
+  "tags": [
+    "ethereal",
+    "variational",
+    "free-energy",
+    "prediction",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.14,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.26,
+      "organon_macroMovement": 0.22,
+      "organon_macroCoupling": 0.05,
+      "organon_macroSpace": 0.91,
+      "organon_metabolicRate": 0.15,
+      "organon_filterEnvAmt": 0.2,
+      "organon_lfo1Rate": 0.006,
+      "organon_lfo1Depth": 0.08,
+      "organon_attack": 6.0,
+      "organon_release": 14.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.05,
+    "SPACE": 0.91
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Bite And Run",
+  "mood": "Flux",
+  "engines": ["Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard bite with instant SCURRY escape. Short attack maximum agitation, plays dead then escapes.",
+  "tags": ["flux", "aggressive", "bite", "escape", "possum"],
+  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.18,
+    "movement": 0.95,
+    "density": 0.72,
+    "space": 0.14,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroCharacter": 0.85,
+      "poss_macroMovement": 0.92,
+      "poss_macroCoupling": 0.12,
+      "poss_macroSpace": 0.14,
+      "poss_biteDepth": 0.88,
+      "poss_scritchRate": 0.8,
+      "poss_filterEnvAmt": 0.78,
+      "poss_lfo1Rate": 0.68,
+      "poss_lfo1Depth": 0.42,
+      "poss_filterCutoff": 0.65,
+      "poss_filterRes": 0.68,
+      "poss_attackTime": 0.003,
+      "poss_decayTime": 0.12,
+      "poss_sustain": 0.18,
+      "poss_releaseTime": 0.08
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.12,
+    "SPACE": 0.14
+  }
+}

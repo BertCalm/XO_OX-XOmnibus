@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Violet Prism",
+  "mood": "Luminous",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique bounces at the violet end of the spectrum — pure ultraviolet light made audible, the highest prismatic color, luminous and otherworldly.",
+  "tags": ["luminous", "violet", "prism", "ultraviolet", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.38,
+    "movement": 0.44,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.58,
+      "oblq_macroMovement": 0.44,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.55,
+      "oblq_filterEnvAmt": 0.56,
+      "oblq_prismColor": 0.88,
+      "oblq_lfo1Rate": 0.11,
+      "oblq_lfo1Depth": 0.28,
+      "oblq_lfo2Rate": 0.05,
+      "oblq_lfo2Depth": 0.18,
+      "oblq_attack": 0.04,
+      "oblq_decay": 0.7,
+      "oblq_sustain": 0.82,
+      "oblq_release": 2.0,
+      "oblq_filterCutoff": 12000,
+      "oblq_filterRes": 0.20,
+      "oblq_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.16,
+    "SPACE": 0.55
+  }
+}

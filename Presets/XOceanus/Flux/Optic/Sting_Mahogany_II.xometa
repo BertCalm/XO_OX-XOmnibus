@@ -28,7 +28,13 @@
   "parameters": {
     "Optic": {
       "couplingBus": 1,
-      "couplingLevel": 0.973
+      "couplingLevel": 0.973,
+      "optic_macroCharacter": 0.768,
+      "optic_macroMovement": 0.874,
+      "optic_macroCoupling": 0.314,
+      "optic_macroSpace": 0.327,
+      "optic_filterEnvAmt": 0.698,
+      "optic_lfoRate": 0.212
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "optic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.846,
+    "COUPLING": 0.286,
+    "SPACE": 0.299
+  }
 }

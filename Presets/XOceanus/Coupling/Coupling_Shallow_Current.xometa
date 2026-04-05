@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Shallow Current",
+  "mood": "Coupling",
+  "engines": [
+    "OceanDeep",
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANDEEP pressure barely activates OSMOSIS membrane permeability \u2014 depth physics nudging the surface tension of an external signal follower.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "depth",
+    "membrane",
+    "EnvelopeFollow",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.48,
+    "movement": 0.38,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroPressure": 0.5,
+      "deep_filterEnvAmt": 0.4,
+      "deep_lfo1Rate": 0.07,
+      "deep_lfo1Depth": 0.2,
+      "deep_macroCharacter": 0.44,
+      "deep_macroMovement": 0.4,
+      "deep_macroCoupling": 0.5,
+      "deep_macroSpace": 0.56
+    },
+    "Osmosis": {
+      "osmo_permeability": 0.48,
+      "osmo_filterEnvAmt": 0.36,
+      "osmo_lfo1Rate": 0.09,
+      "osmo_lfo1Depth": 0.18,
+      "osmo_macroCharacter": 0.42,
+      "osmo_macroMovement": 0.38,
+      "osmo_macroCoupling": 0.48,
+      "osmo_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Osmosis",
+        "type": "EnvelopeFollow",
+        "amount": 0.15
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.49,
+    "SPACE": 0.56
+  }
+}

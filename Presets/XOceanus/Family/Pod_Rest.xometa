@@ -36,11 +36,25 @@
   "parameters": {
     "Obscura": {
       "level": 0.786,
-      "pan": 0.02
+      "pan": 0.02,
+      "obscura_macroCharacter": 0.484,
+      "obscura_macroMovement": 0.375,
+      "obscura_macroCoupling": 0.455,
+      "obscura_macroSpace": 0.422,
+      "obscura_filterEnvAmt": 0.549,
+      "obscura_lfo1Rate": 0.172,
+      "obscura_lfo1Depth": 0.168
     },
     "Orbital": {
       "level": 0.711,
-      "pan": 0.053
+      "pan": 0.053,
+      "orb_macroSpectrum": 0.508,
+      "orb_macroEvolve": 0.399,
+      "orb_macroCoupling": 0.479,
+      "orb_macroSpace": 0.446,
+      "orb_filterEnvAmt": 0.549,
+      "orb_lfo1Rate": 0.172,
+      "orb_lfo1Depth": 0.168
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.474,
+    "MOVEMENT": 0.365,
+    "COUPLING": 0.445,
+    "SPACE": 0.412
+  }
 }

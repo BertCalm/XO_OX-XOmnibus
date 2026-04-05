@@ -50,14 +50,23 @@
       "weave_lfo1Type": 0,
       "weave_lfo2Type": 0,
       "weave_fx1Type": 0,
-      "weave_macroWeave": 0.0,
-      "weave_macroTension": 0.0,
-      "weave_macroKnot": 0.0,
-      "weave_macroSpace": 0.0,
+      "weave_macroWeave": 0.545,
+      "weave_macroTension": 0.436,
+      "weave_macroKnot": 0.181,
+      "weave_macroSpace": 0.331,
       "weave_voiceMode": 0,
       "weave_pitchBendRange": 5,
-      "weave_glideTime": 0.15
+      "weave_glideTime": 0.15,
+      "weave_filterEnvAmt": 0.396,
+      "weave_lfo1Rate": 0.216,
+      "weave_lfo1Depth": 0.172
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.431,
+    "COUPLING": 0.176,
+    "SPACE": 0.326
+  }
 }

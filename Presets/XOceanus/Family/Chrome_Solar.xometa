@@ -36,11 +36,25 @@
   "parameters": {
     "Obese": {
       "level": 0.748,
-      "pan": 0.029
+      "pan": 0.029,
+      "fat_macroMojo": 0.566,
+      "fat_macroGrit": 0.417,
+      "fat_macroSize": 0.722,
+      "fat_macroCrush": 0.588,
+      "fat_fltEnvAmt": 0.421,
+      "fat_lfo1Rate": 0.098,
+      "fat_lfo1Depth": 0.209
     },
     "Overlap": {
       "level": 0.82,
-      "pan": -0.024
+      "pan": -0.024,
+      "olap_macroCharacter": 0.522,
+      "olap_macroMovement": 0.373,
+      "olap_macroCoupling": 0.678,
+      "olap_macroSpace": 0.544,
+      "olap_filterEnvAmt": 0.421,
+      "olap_lfo1Rate": 0.098,
+      "olap_lfo1Depth": 0.209
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.518,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.674,
+    "SPACE": 0.54
+  }
 }

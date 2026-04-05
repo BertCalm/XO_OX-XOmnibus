@@ -36,11 +36,25 @@
   "parameters": {
     "OddfeliX": {
       "level": 0.77,
-      "pan": 0.017
+      "pan": 0.017,
+      "snap_macroDart": 0.376,
+      "snap_macroDepth": 0.567,
+      "snap_macroSchool": 0.618,
+      "snap_macroSurface": 0.771,
+      "snap_filterEnvDepth": 0.363,
+      "snap_lfoRate": 0.023,
+      "snap_lfoDepth": 0.12
     },
     "Overworld": {
       "level": 0.807,
-      "pan": 0.014
+      "pan": 0.014,
+      "ow_macroEra": 0.318,
+      "ow_macroCrush": 0.509,
+      "ow_macroGlitch": 0.56,
+      "ow_macroSpace": 0.713,
+      "ow_filterEnvDepth": 0.363,
+      "ow_fmLfoRate": 0.023,
+      "ow_fmLfoDepth": 0.12
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.305,
+    "MOVEMENT": 0.496,
+    "COUPLING": 0.547,
+    "SPACE": 0.7
+  }
 }

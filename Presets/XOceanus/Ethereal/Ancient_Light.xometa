@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Ancient Light",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Starlight 8000 years old arriving now. Okeanos warmth carries Overtone irrational harmonics across time.",
+  "tags": [
+    "ethereal",
+    "ancient",
+    "light",
+    "coupling",
+    "starlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.22,
+    "density": 0.14,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.3,
+      "okan_macroMovement": 0.24,
+      "okan_macroCoupling": 0.1,
+      "okan_macroSpace": 0.91,
+      "okan_warmth": 0.65,
+      "okan_filterEnvAmt": 0.24,
+      "okan_lfo1Rate": 0.012,
+      "okan_lfo1Depth": 0.11,
+      "okan_attack": 3.8,
+      "okan_release": 11.0
+    },
+    "Overtone": {
+      "over_macroCharacter": 0.28,
+      "over_macroMovement": 0.2,
+      "over_macroCoupling": 0.08,
+      "over_macroSpace": 0.93,
+      "over_cfDepth": 0.48,
+      "over_filterEnvAmt": 0.23,
+      "over_lfo1Rate": 0.015,
+      "over_lfo1Depth": 0.11,
+      "over_attack": 3.5,
+      "over_release": 11.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Okeanos",
+        "engineB": "Overtone",
+        "type": "LFOToPitch",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.09,
+    "SPACE": 0.92
+  }
+}

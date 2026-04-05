@@ -37,7 +37,14 @@
       "obsidian_densityX": 0.15,
       "obsidian_depth": 0.95,
       "obsidian_movement": 0.04,
-      "obsidian_tiltY": 0.06
+      "obsidian_tiltY": 0.06,
+      "obsidian_macroCharacter": 0.44,
+      "obsidian_macroMovement": 0.437,
+      "obsidian_macroCoupling": 0.235,
+      "obsidian_macroSpace": 0.86,
+      "obsidian_filterEnvAmt": 0.439,
+      "obsidian_lfoRate": 0.035,
+      "obsidian_lfoDepth": 0.207
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "dark"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.372,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.167,
+    "SPACE": 0.792
+  }
 }

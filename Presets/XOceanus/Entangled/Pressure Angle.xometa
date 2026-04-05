@@ -55,13 +55,27 @@
       "oblq_modDepth": 0.6,
       "oblq_modRate": 0.5,
       "oblq_prismAngle": 0.55,
-      "oblq_refraction": 0.6
+      "oblq_refraction": 0.6,
+      "oblq_macroCharacter": 0.642,
+      "oblq_macroMovement": 0.473,
+      "oblq_macroCoupling": 0.654,
+      "oblq_macroSpace": 0.536,
+      "oblq_filterEnvAmt": 0.447,
+      "oblq_lfo1Rate": 0.283,
+      "oblq_lfo1Depth": 0.27
     },
     "Owlfish": {
       "owlf_ampAttack": 0.03,
       "owlf_ampRelease": 1.5,
       "owlf_filterCutoff": 2800.0,
-      "owlf_filterReso": 0.3
+      "owlf_filterReso": 0.3,
+      "owl_macroCharacter": 0.639,
+      "owl_macroMovement": 0.47,
+      "owl_macroCoupling": 0.651,
+      "owl_macroSpace": 0.533,
+      "owl_filterEnvDepth": 0.447,
+      "owl_lfoRate": 0.283,
+      "owl_lfoDepth": 0.27
     }
   },
   "schema_version": 1,
@@ -77,5 +91,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.619,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.631,
+    "SPACE": 0.513
+  }
 }

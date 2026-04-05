@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Wrack Line Memory",
+  "mood": "Ethereal",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The line of debris left by the highest tide. A notation of where water once was.",
+  "tags": [
+    "ethereal",
+    "tide",
+    "memory",
+    "shore",
+    "residue"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.22,
+    "density": 0.18,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_macroCharacter": 0.33,
+      "wash_macroMovement": 0.24,
+      "wash_macroCoupling": 0.09,
+      "wash_macroSpace": 0.87,
+      "wash_tideDepth": 0.5,
+      "wash_filterEnvAmt": 0.26,
+      "wash_lfo1Rate": 0.015,
+      "wash_lfo1Depth": 0.12,
+      "wash_attack": 3.5,
+      "wash_release": 10.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.09,
+    "SPACE": 0.87
+  }
+}

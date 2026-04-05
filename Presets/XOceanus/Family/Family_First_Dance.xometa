@@ -58,14 +58,17 @@
       "obbl_fxBTapeSat": 0.178,
       "obbl_instrumentA": 1,
       "obbl_instrumentB": 1,
-      "obbl_macroBond": 0.168,
-      "obbl_macroBreath": 0.641,
-      "obbl_macroMischief": 0.125,
-      "obbl_macroWind": 0.436,
+      "obbl_macroBond": 0.612,
+      "obbl_macroBreath": 0.406,
+      "obbl_macroMischief": 0.436,
+      "obbl_macroWind": 0.607,
       "obbl_reedBite": 0.34,
       "obbl_reedStiffness": 0.344,
       "obbl_sympatheticAmt": 0.389,
-      "obbl_voiceRouting": 0
+      "obbl_voiceRouting": 0,
+      "obbl_filterEnvAmt": 0.443,
+      "obbl_lfoRateA": 0.089,
+      "obbl_lfoDepthA": 0.161
     },
     "Ohm": {
       "ohm_bodyMaterial": 1,
@@ -88,10 +91,10 @@
       "ohm_grainScatter": 0.436,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.079,
-      "ohm_macroCommune": 0.451,
-      "ohm_macroJam": 0.61,
-      "ohm_macroMeadow": 0.648,
-      "ohm_macroMeddling": 0.095,
+      "ohm_macroCommune": 0.444,
+      "ohm_macroJam": 0.645,
+      "ohm_macroMeadow": 0.474,
+      "ohm_macroMeddling": 0.65,
       "ohm_meddlingThresh": 0.387,
       "ohm_obedLevel": 0.069,
       "ohm_pluckBrightness": 0.502,
@@ -99,7 +102,10 @@
       "ohm_spectralFreeze": 0.481,
       "ohm_sympatheticAmt": 0.487,
       "ohm_thereminScale": 0.885,
-      "ohm_thereminWobble": 0.185
+      "ohm_thereminWobble": 0.185,
+      "ohm_filterEnvAmt": 0.443,
+      "ohm_lfo1Rate": 0.089,
+      "ohm_lfo1Depth": 0.161
     },
     "Orphica": {
       "orph_bodySize": 0.492,
@@ -115,10 +121,10 @@
       "orph_driftRate": 0.094,
       "orph_highLevel": 0.877,
       "orph_lowLevel": 0.885,
-      "orph_macroDivine": 0.596,
-      "orph_macroFracture": 0.0,
-      "orph_macroPluck": 0.58,
-      "orph_macroSurface": 0.315,
+      "orph_macroDivine": 0.434,
+      "orph_macroFracture": 0.605,
+      "orph_macroPluck": 0.61,
+      "orph_macroSurface": 0.404,
       "orph_microDelayTime": 1.0,
       "orph_microDensity": 1.0,
       "orph_microMix": 0.0,
@@ -134,7 +140,10 @@
       "orph_stringMaterial": 1,
       "orph_subAmount": 0.0,
       "orph_sympatheticAmt": 0.442,
-      "orph_tapeSat": 0.213
+      "orph_tapeSat": 0.213,
+      "orph_filterEnvAmt": 0.443,
+      "orph_lfo1Rate": 0.089,
+      "orph_lfo1Depth": 0.161
     }
   },
   "schema_version": 1,
@@ -146,5 +155,11 @@
     "atmosphere"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.598,
+    "MOVEMENT": 0.392,
+    "COUPLING": 0.593,
+    "SPACE": 0.422
+  }
 }

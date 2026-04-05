@@ -37,13 +37,41 @@
     "Optic": {
       "optic_character": 0.506,
       "optic_movement": 0.673,
-      "optic_space": 0.752
+      "optic_space": 0.752,
+      "optic_macroCharacter": 0.542,
+      "optic_macroMovement": 0.462,
+      "optic_macroCoupling": 0.53,
+      "optic_macroSpace": 0.614,
+      "optic_filterEnvAmt": 0.509,
+      "optic_lfoRate": 0.089
     },
-    "Oblique": {},
-    "Overworld": {}
+    "Oblique": {
+      "oblq_macroCharacter": 0.537,
+      "oblq_macroMovement": 0.457,
+      "oblq_macroCoupling": 0.525,
+      "oblq_macroSpace": 0.609,
+      "oblq_filterEnvAmt": 0.509,
+      "oblq_lfo1Rate": 0.089,
+      "oblq_lfo1Depth": 0.159
+    },
+    "Overworld": {
+      "ow_macroEra": 0.527,
+      "ow_macroCrush": 0.447,
+      "ow_macroGlitch": 0.515,
+      "ow_macroSpace": 0.599,
+      "ow_filterEnvDepth": 0.509,
+      "ow_fmLfoRate": 0.089,
+      "ow_fmLfoDepth": 0.159
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.514,
+    "MOVEMENT": 0.434,
+    "COUPLING": 0.502,
+    "SPACE": 0.586
+  }
 }

@@ -38,7 +38,14 @@
       "orph_resonance": 0.82,
       "orph_space": 0.12,
       "orph_stringCount": 0.95,
-      "orph_stringMaterial": 0.85
+      "orph_stringMaterial": 0.85,
+      "orph_macroPluck": 0.614,
+      "orph_macroSurface": 0.517,
+      "orph_macroFracture": 0.272,
+      "orph_macroDivine": 0.47,
+      "orph_filterEnvAmt": 0.466,
+      "orph_lfo1Rate": 0.292,
+      "orph_lfo1Depth": 0.346
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "harp"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.602,
+    "MOVEMENT": 0.505,
+    "COUPLING": 0.26,
+    "SPACE": 0.458
+  }
 }

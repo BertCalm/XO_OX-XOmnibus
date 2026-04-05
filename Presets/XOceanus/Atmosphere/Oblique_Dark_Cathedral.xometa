@@ -62,11 +62,24 @@
       "oblq_phaserRate": 0.03,
       "oblq_phaserDepth": 0.9,
       "oblq_phaserFeedback": 0.6,
-      "oblq_phaserMix": 0.7
+      "oblq_phaserMix": 0.7,
+      "oblq_macroCharacter": 0.46,
+      "oblq_macroMovement": 0.482,
+      "oblq_macroCoupling": 0.17,
+      "oblq_macroSpace": 0.693,
+      "oblq_filterEnvAmt": 0.438,
+      "oblq_lfo1Rate": 0.025,
+      "oblq_lfo1Depth": 0.277
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.437,
+    "MOVEMENT": 0.459,
+    "COUPLING": 0.147,
+    "SPACE": 0.67
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Brine Spring",
+  "mood": "Organic",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hyper-saline spring bubbling up through desert rock — dense mineral water supporting extreme halophilic life.",
+  "tags": ["organic", "brine", "spring", "saline", "extreme"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.68,
+    "movement": 0.38,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.46,
+      "oxb_macroMovement": 0.38,
+      "oxb_macroCoupling": 0.20,
+      "oxb_macroSpace": 0.52,
+      "oxb_entangle": 0.70,
+      "oxb_filterEnvAmt": 0.44,
+      "oxb_lfo1Rate": 0.06,
+      "oxb_lfo1Depth": 0.24,
+      "oxb_lfo2Rate": 0.12,
+      "oxb_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.20,
+    "SPACE": 0.52
+  }
+}

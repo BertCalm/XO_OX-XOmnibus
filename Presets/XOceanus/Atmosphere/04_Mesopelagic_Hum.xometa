@@ -75,7 +75,14 @@
       "owl_subLevel3": 0.4,
       "owl_subLevel4": 0.25,
       "owl_subMix": 0.75,
-      "owl_subWave": 0.2
+      "owl_subWave": 0.2,
+      "owl_macroCharacter": 0.37,
+      "owl_macroMovement": 0.452,
+      "owl_macroCoupling": 0.258,
+      "owl_macroSpace": 0.757,
+      "owl_filterEnvDepth": 0.317,
+      "owl_lfoRate": 0.085,
+      "owl_lfoDepth": 0.332
     }
   },
   "schema_version": 1,
@@ -86,5 +93,11 @@
     "evolving"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.432,
+    "COUPLING": 0.238,
+    "SPACE": 0.737
+  }
 }

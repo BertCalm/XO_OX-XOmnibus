@@ -54,7 +54,7 @@
       "owl_feedRate": 0.0,
       "owl_feeding": 0.0,
       "owl_filterCutoff": 0.95,
-      "owl_filterEnvDepth": 0.0,
+      "owl_filterEnvDepth": 0.37,
       "owl_filterReso": 0.3,
       "owl_filterTrack": 1.0,
       "owl_fundWave": 1.0,
@@ -82,7 +82,13 @@
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.0,
-      "owl_subWave": 0.0
+      "owl_subWave": 0.0,
+      "owl_macroCharacter": 0.559,
+      "owl_macroMovement": 0.282,
+      "owl_macroCoupling": 0.188,
+      "owl_macroSpace": 0.314,
+      "owl_lfoRate": 0.194,
+      "owl_lfoDepth": 0.282
     }
   },
   "schema_version": 1,
@@ -96,5 +102,11 @@
     "isolated"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.539,
+    "MOVEMENT": 0.262,
+    "COUPLING": 0.168,
+    "SPACE": 0.294
+  }
 }

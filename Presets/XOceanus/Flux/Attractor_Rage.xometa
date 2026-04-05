@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Rage",
+  "mood": "Flux",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Strange attractor system in full rage state. Velocity coupling outputs firing into surrounding engines.",
+  "tags": ["flux", "aggressive", "attractor", "rage", "velocity"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.13,
+    "movement": 0.94,
+    "density": 0.86,
+    "space": 0.12,
+    "aggression": 0.97
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.94,
+      "ouro_macroMovement": 0.92,
+      "ouro_macroCoupling": 0.12,
+      "ouro_macroSpace": 0.1,
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.08,
+      "ouro_filterEnvAmt": 0.88,
+      "ouro_lfo1Rate": 0.72,
+      "ouro_lfo1Depth": 0.5,
+      "ouro_lfo2Rate": 0.85,
+      "ouro_lfo2Depth": 0.46,
+      "ouro_filterCutoff": 0.72,
+      "ouro_filterRes": 0.86,
+      "ouro_attackTime": 0.002,
+      "ouro_decayTime": 0.1,
+      "ouro_sustain": 0.22,
+      "ouro_releaseTime": 0.08
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.12,
+    "SPACE": 0.1
+  }
+}

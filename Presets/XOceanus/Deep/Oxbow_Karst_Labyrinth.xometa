@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Karst Labyrinth",
+  "mood": "Deep",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A karst cave system of impossible complexity — passages winding for miles through limestone, every surface reflecting and entangling sound from neighboring chambers.",
+  "tags": ["deep", "cave", "labyrinthine", "reverb", "limestone"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.66,
+    "movement": 0.18,
+    "density": 0.62,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.42,
+      "oxb_macroMovement": 0.18,
+      "oxb_macroCoupling": 0.12,
+      "oxb_macroSpace": 0.83,
+      "oxb_filterEnvAmt": 0.36,
+      "oxb_lfo1Rate": 0.04,
+      "oxb_lfo1Depth": 0.18,
+      "oxb_entangle": 0.78,
+      "oxb_phaseErosion": 0.52
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.83
+  }
+}

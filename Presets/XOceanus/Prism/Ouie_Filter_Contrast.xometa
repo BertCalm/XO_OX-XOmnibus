@@ -53,19 +53,26 @@
       "ouie_portaTime": 0.0,
       "ouie_portaAuto": 0,
       "ouie_lfo1Rate": 5.0,
-      "ouie_lfo1Depth": 0.0,
+      "ouie_lfo1Depth": 0.336,
       "ouie_lfo1Target": 0,
       "ouie_lfo2Rate": 3.0,
       "ouie_lfo2Depth": 0.0,
       "ouie_reverbMix": 0.15,
-      "ouie_macroHammer": 0.0,
-      "ouie_macroAmpullae": 0.0,
-      "ouie_macroCartilage": 0.5,
-      "ouie_macroCurrent": 0.0
+      "ouie_macroHammer": 0.709,
+      "ouie_macroAmpullae": 0.345,
+      "ouie_macroCartilage": 0.544,
+      "ouie_macroCurrent": 0.522,
+      "ouie_filterEnvAmt": 0.506
     }
   },
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.655,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.291,
+    "SPACE": 0.468
+  }
 }

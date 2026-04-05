@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dark Life",
+  "mood": "Deep",
+  "engines": ["Ouroboros", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chaotic loops driving bioluminescent metabolism — Ouroboros's strange attractor feeding Organon's variational free energy, life cycling through darkness.",
+  "tags": ["deep", "coupled", "organic", "chaotic", "bioluminescent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.66,
+    "movement": 0.32,
+    "density": 0.65,
+    "space": 0.68,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.50,
+      "ouro_macroMovement": 0.32,
+      "ouro_macroCoupling": 0.40,
+      "ouro_macroSpace": 0.65,
+      "ouro_filterEnvAmt": 0.42,
+      "ouro_lfo1Rate": 0.05,
+      "ouro_lfo1Depth": 0.25,
+      "ouro_topology": 0.45
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.45,
+      "organon_macroMovement": 0.28,
+      "organon_macroCoupling": 0.38,
+      "organon_macroSpace": 0.66,
+      "organon_filterEnvAmt": 0.38,
+      "organon_lfo1Rate": 0.07,
+      "organon_lfo1Depth": 0.22,
+      "organon_metabolicRate": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Organon",
+        "type": "FilterToFilter",
+        "amount": 0.40
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.40,
+    "SPACE": 0.66
+  }
+}

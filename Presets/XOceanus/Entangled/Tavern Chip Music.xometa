@@ -39,12 +39,25 @@
       "ow_eraCross": 0.3,
       "ow_oscWave": 0,
       "ow_arpRate": 75.0,
-      "ow_reverbMix": 0.3
+      "ow_reverbMix": 0.3,
+      "ow_macroEra": 0.533,
+      "ow_macroCrush": 0.426,
+      "ow_macroGlitch": 0.512,
+      "ow_macroSpace": 0.386,
+      "ow_filterEnvDepth": 0.593,
+      "ow_fmLfoRate": 0.292,
+      "ow_fmLfoDepth": 0.26
     },
     "Osteria": {
       "ost_communalPulse": 0.5,
       "ost_warmth": 0.6,
-      "ost_roomMix": 0.5
+      "ost_roomMix": 0.5,
+      "osteria_macroCharacter": 0.557,
+      "osteria_macroMovement": 0.45,
+      "osteria_macroCoupling": 0.536,
+      "osteria_macroSpace": 0.41,
+      "osteria_filterEnvDepth": 0.593,
+      "osteria_lfoDepth": 0.292
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.413,
+    "COUPLING": 0.499,
+    "SPACE": 0.373
+  }
 }

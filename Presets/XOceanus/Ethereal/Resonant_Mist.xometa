@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Mist",
+  "mood": "Ethereal",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fog with resonant properties. Each water droplet briefly sustained, collectively forming a distributed instrument.",
+  "tags": [
+    "ethereal",
+    "resonance",
+    "mist",
+    "fog",
+    "distributed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.58,
+    "movement": 0.32,
+    "density": 0.22,
+    "space": 0.89,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_macroCharacter": 0.36,
+      "orph_macroMovement": 0.34,
+      "orph_macroCoupling": 0.11,
+      "orph_macroSpace": 0.85,
+      "orph_pluckBrightness": 0.25,
+      "orph_filterEnvAmt": 0.31,
+      "orph_lfo1Rate": 0.042,
+      "orph_lfo1Depth": 0.16,
+      "orph_attack": 0.06,
+      "orph_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.11,
+    "SPACE": 0.85
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Arm Wrestle",
+  "mood": "Coupling",
+  "engines": [
+    "Octopus",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCTOPUS arm depth modulates OUROBOROS topology \u2014 decentralized intelligence wrestling with a strange attractor, eight arms reshaping chaos.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "chaos",
+    "decentralized",
+    "AmpToPitch",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.42,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.58,
+      "octo_filterEnvAmt": 0.52,
+      "octo_lfo1Rate": 0.15,
+      "octo_lfo1Depth": 0.3,
+      "octo_macroCharacter": 0.54,
+      "octo_macroMovement": 0.58,
+      "octo_macroCoupling": 0.65,
+      "octo_macroSpace": 0.48
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.55,
+      "ouro_leash": 0.45,
+      "ouro_filterEnvAmt": 0.5,
+      "ouro_lfo1Rate": 0.17,
+      "ouro_lfo1Depth": 0.28,
+      "ouro_macroCharacter": 0.52,
+      "ouro_macroMovement": 0.56,
+      "ouro_macroCoupling": 0.62,
+      "ouro_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Ouroboros",
+        "type": "AmpToPitch",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.64,
+    "SPACE": 0.48
+  }
+}

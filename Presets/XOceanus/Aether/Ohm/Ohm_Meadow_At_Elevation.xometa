@@ -38,14 +38,17 @@
       "ohm_grainDensity": 0.3,
       "ohm_grainScatter": 0.3,
       "ohm_grainSize": 0.95,
-      "ohm_macroCommune": 0.0,
-      "ohm_macroJam": 0.0,
-      "ohm_macroMeadow": 0.0,
-      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.558,
+      "ohm_macroJam": 0.281,
+      "ohm_macroMeadow": 0.807,
+      "ohm_macroMeddling": 0.36,
       "ohm_pluckBrightness": 0.5,
       "ohm_reverbMix": 0.82,
       "ohm_spectralFreeze": 0.75,
-      "ohm_sympatheticAmt": 0.7
+      "ohm_sympatheticAmt": 0.7,
+      "ohm_filterEnvAmt": 0.446,
+      "ohm_lfo1Rate": 0.025,
+      "ohm_lfo1Depth": 0.153
     }
   },
   "schema_version": 1,
@@ -58,5 +61,11 @@
     "pastoral"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.308,
+    "MOVEMENT": 0.506,
+    "COUPLING": 0.229,
+    "SPACE": 0.755
+  }
 }

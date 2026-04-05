@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Kelp",
+  "mood": "Luminous",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Phosphorescent algae cling to kelp ribbons swaying in a midnight current. Each strand pulses with cold blue-green light, the ocean floor aglow.",
+  "tags": ["luminous", "bioluminescent", "oceanic", "kelp", "underwater"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.48,
+    "density": 0.35,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.45,
+      "ocean_macroMovement": 0.48,
+      "ocean_macroCoupling": 0.15,
+      "ocean_macroSpace": 0.62,
+      "ocean_filterEnvAmt": 0.50,
+      "ocean_lfo1Rate": 0.08,
+      "ocean_lfo1Depth": 0.24,
+      "ocean_lfo2Rate": 0.04,
+      "ocean_lfo2Depth": 0.16,
+      "ocean_separation": 0.55,
+      "ocean_chromatophore": 0.38,
+      "ocean_attack": 0.2,
+      "ocean_decay": 1.0,
+      "ocean_sustain": 0.80,
+      "ocean_release": 3.2,
+      "ocean_filterCutoff": 6800,
+      "ocean_filterRes": 0.25,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.15,
+    "SPACE": 0.62
+  }
+}

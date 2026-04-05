@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Wind Phrase",
+  "mood": "Ethereal",
+  "engines": [
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wind through osier that sounds like language. You can almost make out what it's saying.",
+  "tags": [
+    "ethereal",
+    "wind",
+    "phrase",
+    "language",
+    "almost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.55,
+    "movement": 0.38,
+    "density": 0.16,
+    "space": 0.9,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.4,
+      "osier_macroMovement": 0.4,
+      "osier_macroCoupling": 0.13,
+      "osier_macroSpace": 0.86,
+      "osier_windDensity": 0.6,
+      "osier_filterEnvAmt": 0.33,
+      "osier_lfo1Rate": 0.055,
+      "osier_lfo1Depth": 0.18,
+      "osier_attack": 2.0,
+      "osier_release": 7.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.13,
+    "SPACE": 0.86
+  }
+}

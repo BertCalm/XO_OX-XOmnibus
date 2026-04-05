@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Analog Hunger",
+  "mood": "Coupling",
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBESE saturation grit feeds OVERDUB spring reverb character \u2014 distortion heat energizing the metallic spring, analog warmth teaching analog warmth.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "saturation",
+    "tape",
+    "AudioToRing",
+    "analog"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.62,
+    "movement": 0.52,
+    "density": 0.56,
+    "space": 0.44,
+    "aggression": 0.34
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroMojo": 0.6,
+      "fat_macroGrit": 0.58,
+      "fat_macroSize": 0.52,
+      "fat_macroCrush": 0.48,
+      "fat_filterEnvAmt": 0.52,
+      "fat_lfo1Rate": 0.14,
+      "fat_lfo1Depth": 0.3
+    },
+    "Overdub": {
+      "dub_oscWave": 0.52,
+      "dub_filterEnvAmt": 0.5,
+      "dub_lfo1Rate": 0.13,
+      "dub_lfo1Depth": 0.26,
+      "dub_macroCharacter": 0.52,
+      "dub_macroMovement": 0.52,
+      "dub_macroCoupling": 0.62,
+      "dub_macroSpace": 0.44
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overdub",
+        "type": "AudioToRing",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.62,
+    "SPACE": 0.44
+  }
+}

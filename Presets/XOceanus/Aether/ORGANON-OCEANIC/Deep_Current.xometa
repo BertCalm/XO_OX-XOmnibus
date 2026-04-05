@@ -36,11 +36,25 @@
   "parameters": {
     "Oceanic": {
       "level": 0.766,
-      "pan": 0.13
+      "pan": 0.13,
+      "ocean_macroCharacter": 0.481,
+      "ocean_macroMovement": 0.417,
+      "ocean_macroCoupling": 0.461,
+      "ocean_macroSpace": 0.759,
+      "ocean_filterEnvAmt": 0.371,
+      "ocean_lfo1Rate": 0.035,
+      "ocean_lfo1Depth": 0.229
     },
     "Organon": {
       "level": 0.653,
-      "pan": -0.15
+      "pan": -0.15,
+      "organon_macroCharacter": 0.474,
+      "organon_macroMovement": 0.41,
+      "organon_macroCoupling": 0.454,
+      "organon_macroSpace": 0.752,
+      "organon_filterEnvAmt": 0.371,
+      "organon_lfo1Rate": 0.035,
+      "organon_lfo1Depth": 0.229
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.411,
+    "COUPLING": 0.455,
+    "SPACE": 0.753
+  }
 }

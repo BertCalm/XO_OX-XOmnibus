@@ -37,7 +37,13 @@
       "optic_inputGain": 0.85,
       "optic_movement": 0.2,
       "optic_reactivity": 0.88,
-      "optic_wetDry": 0.92
+      "optic_wetDry": 0.92,
+      "optic_macroCharacter": 0.645,
+      "optic_macroMovement": 0.432,
+      "optic_macroCoupling": 0.358,
+      "optic_macroSpace": 0.577,
+      "optic_filterEnvAmt": 0.411,
+      "optic_lfoRate": 0.291
     }
   },
   "schema_version": 1,
@@ -49,5 +55,11 @@
     "reactive"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.617,
+    "MOVEMENT": 0.404,
+    "COUPLING": 0.33,
+    "SPACE": 0.549
+  }
 }

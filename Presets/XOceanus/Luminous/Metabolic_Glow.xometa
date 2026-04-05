@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Metabolic Glow",
+  "mood": "Luminous",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Organon engine's variational free energy model glows with metabolic light — internal energy made audible as a warm, living luminescence that breathes and adapts.",
+  "tags": ["luminous", "metabolic", "organic", "glow", "living"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.73,
+    "warmth": 0.58,
+    "movement": 0.52,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.50,
+      "organon_macroMovement": 0.52,
+      "organon_macroCoupling": 0.16,
+      "organon_macroSpace": 0.58,
+      "organon_filterEnvAmt": 0.54,
+      "organon_metabolicRate": 0.68,
+      "organon_lfo1Rate": 0.10,
+      "organon_lfo1Depth": 0.28,
+      "organon_lfo2Rate": 0.04,
+      "organon_lfo2Depth": 0.18,
+      "organon_attack": 0.2,
+      "organon_decay": 1.4,
+      "organon_sustain": 0.70,
+      "organon_release": 3.8,
+      "organon_filterCutoff": 6500,
+      "organon_filterRes": 0.25,
+      "organon_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

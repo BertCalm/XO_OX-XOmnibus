@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Residue",
+  "mood": "Ethereal",
+  "engines": ["Ouroboros", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "What variational free energy does with strange attractors. Ouroboros releases just enough chaos for Organon to metabolize into quiet coherence.",
+  "tags": ["ethereal", "whisper", "coupling", "chaos", "metabolic", "attractor", "coherence"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.54,
+    "movement": 0.38,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.44,
+      "ouro_macroMovement": 0.42,
+      "ouro_macroCoupling": 0.15,
+      "ouro_macroSpace": 0.80,
+      "ouro_topology": 0.28,
+      "ouro_filterEnvAmt": 0.36,
+      "ouro_lfo1Rate": 0.06,
+      "ouro_lfo1Depth": 0.22,
+      "ouro_attack": 0.3,
+      "ouro_release": 3.0
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.36,
+      "organon_macroMovement": 0.30,
+      "organon_macroCoupling": 0.12,
+      "organon_macroSpace": 0.90,
+      "organon_metabolicRate": 0.38,
+      "organon_filterEnvAmt": 0.26,
+      "organon_lfo1Rate": 0.04,
+      "organon_lfo1Depth": 0.16,
+      "organon_attack": 1.5,
+      "organon_release": 6.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "AudioToFM",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.13,
+    "SPACE": 0.85
+  }
+}

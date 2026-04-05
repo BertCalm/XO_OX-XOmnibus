@@ -41,11 +41,24 @@
       "ow_macro_space": 0.3,
       "ow_outputLevel": 0.8,
       "ow_couplingLevel": 0.0,
-      "ow_couplingBus": 0
+      "ow_couplingBus": 0,
+      "ow_macroEra": 0.655,
+      "ow_macroCrush": 0.697,
+      "ow_macroGlitch": 0.302,
+      "ow_macroSpace": 0.374,
+      "ow_filterEnvDepth": 0.662,
+      "ow_fmLfoRate": 0.298,
+      "ow_fmLfoDepth": 0.364
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.642,
+    "MOVEMENT": 0.684,
+    "COUPLING": 0.289,
+    "SPACE": 0.361
+  }
 }

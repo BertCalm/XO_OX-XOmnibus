@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.8,
       "perc_v1_decay": 0.6,
-      "perc_macro_space": 0.5
+      "perc_macro_space": 0.44,
+      "perc_macro_punch": 0.503,
+      "perc_macro_mutate": 0.46,
+      "perc_macro_machine": 0.614,
+      "perc_filterEnvAmt": 0.416,
+      "perc_lfo1Rate": 0.244,
+      "perc_lfo1Depth": 0.324
     },
     "Ombre": {
       "ombre_gradient": 0.6,
       "ombre_shadow": 0.5,
-      "ombre_filterCut": 4500.0
+      "ombre_filterCut": 4500.0,
+      "ombre_macroCharacter": 0.509,
+      "ombre_macroMovement": 0.466,
+      "ombre_macroCoupling": 0.62,
+      "ombre_macroSpace": 0.446,
+      "ombre_filterEnvAmt": 0.416,
+      "ombre_lfo1Rate": 0.244,
+      "ombre_lfo1Depth": 0.324
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.436,
+    "COUPLING": 0.59,
+    "SPACE": 0.416
+  }
 }

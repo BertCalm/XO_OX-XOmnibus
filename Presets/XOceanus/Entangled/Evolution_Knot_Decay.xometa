@@ -41,7 +41,14 @@
       "weave_topologyOrder": 0.72,
       "weave_feedbackAmount": 0.65,
       "weave_filterCutoff": 0.55,
-      "weave_outputLevel": 0.8
+      "weave_outputLevel": 0.8,
+      "weave_macroWeave": 0.474,
+      "weave_macroTension": 0.52,
+      "weave_macroKnot": 0.556,
+      "weave_macroSpace": 0.513,
+      "weave_filterEnvAmt": 0.479,
+      "weave_lfo1Rate": 0.113,
+      "weave_lfo1Depth": 0.393
     },
     "Opal": {
       "opal_grainSize": 0.55,
@@ -49,7 +56,14 @@
       "opal_grainPitch": 0.5,
       "opal_filterCutoff": 0.52,
       "opal_reverbMix": 0.55,
-      "opal_outputLevel": 0.78
+      "opal_outputLevel": 0.78,
+      "opal_macroCharacter": 0.454,
+      "opal_macroMovement": 0.5,
+      "opal_macroCoupling": 0.536,
+      "opal_macroSpace": 0.493,
+      "opal_filterEnvAmt": 0.479,
+      "opal_lfo1Rate": 0.113,
+      "opal_lfo1Depth": 0.393
     }
   },
   "coupling": {
@@ -69,5 +83,11 @@
     "endAmount": 0.12,
     "description": "KnotTopology linking number 5 → 1 over 50 seconds — knot dissolves into free grains"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.469,
+    "MOVEMENT": 0.515,
+    "COUPLING": 0.551,
+    "SPACE": 0.508
+  }
 }

@@ -49,7 +49,14 @@
       "drift_release": 1.5,
       "drift_shimmerAmount": 0.3,
       "drift_shimmerTone": 0.5,
-      "drift_sustain": 0.5
+      "drift_sustain": 0.5,
+      "drift_macroCharacter": 0.307,
+      "drift_macroMovement": 0.4,
+      "drift_macroCoupling": 0.224,
+      "drift_macroSpace": 0.746,
+      "drift_filterEnvAmt": 0.437,
+      "drift_lfoRate": 0.075,
+      "drift_lfoDepth": 0.307
     }
   },
   "schema_version": 1,
@@ -63,5 +70,11 @@
     "supersaw"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.277,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.194,
+    "SPACE": 0.716
+  }
 }

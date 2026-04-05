@@ -52,7 +52,14 @@
       "orb_outputLevel": 0.807,
       "orb_outputPan": -0.013,
       "orb_phaseSpread": 0.504,
-      "orb_resonantPeak": 0.211
+      "orb_resonantPeak": 0.211,
+      "orb_macroSpectrum": 0.6,
+      "orb_macroEvolve": 0.563,
+      "orb_macroCoupling": 0.442,
+      "orb_macroSpace": 0.413,
+      "orb_filterEnvAmt": 0.514,
+      "orb_lfo1Rate": 0.143,
+      "orb_lfo1Depth": 0.395
     },
     "Organon": {
       "organon_couplingIn": 0.577,
@@ -62,7 +69,14 @@
       "organon_macro3": 0.372,
       "organon_macro4": 0.512,
       "organon_outputLevel": 0.891,
-      "organon_outputPan": 0.026
+      "organon_outputPan": 0.026,
+      "organon_macroCharacter": 0.565,
+      "organon_macroMovement": 0.528,
+      "organon_macroCoupling": 0.407,
+      "organon_macroSpace": 0.378,
+      "organon_filterEnvAmt": 0.514,
+      "organon_lfo1Rate": 0.143,
+      "organon_lfo1Depth": 0.395
     }
   },
   "schema_version": 1,
@@ -74,5 +88,11 @@
     "entangled"
   ],
   "tempo": 90,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.566,
+    "MOVEMENT": 0.529,
+    "COUPLING": 0.408,
+    "SPACE": 0.379
+  }
 }

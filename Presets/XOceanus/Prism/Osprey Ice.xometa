@@ -37,11 +37,14 @@
       "osprey_ampRelease": 2.376,
       "osprey_ampSustain": 0.79,
       "osprey_filterTilt": 0.974,
-      "osprey_macroCharacter": 0.72,
-      "osprey_macroCoupling": 0.0,
-      "osprey_macroMovement": 0.24,
-      "osprey_macroSpace": 0.86,
-      "osprey_harborVerb": 0.688
+      "osprey_macroCharacter": 0.73,
+      "osprey_macroCoupling": 0.303,
+      "osprey_macroMovement": 0.567,
+      "osprey_macroSpace": 0.458,
+      "osprey_harborVerb": 0.688,
+      "osprey_filterEnvDepth": 0.574,
+      "osprey_lfo2Rate": 0.165,
+      "osprey_lfo2Depth": 0.325
     }
   },
   "schema_version": 1,
@@ -54,5 +57,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.697,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.27,
+    "SPACE": 0.425
+  }
 }

@@ -28,7 +28,14 @@
   "parameters": {
     "Oceanic": {
       "couplingBus": 2,
-      "couplingLevel": 0.718
+      "couplingLevel": 0.718,
+      "ocean_macroCharacter": 0.496,
+      "ocean_macroMovement": 0.429,
+      "ocean_macroCoupling": 0.315,
+      "ocean_macroSpace": 0.639,
+      "ocean_filterEnvAmt": 0.547,
+      "ocean_lfo1Rate": 0.037,
+      "ocean_lfo1Depth": 0.21
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "oceanic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.309,
+    "SPACE": 0.633
+  }
 }

@@ -62,16 +62,17 @@
       "octo_modSustain": 0.5,
       "octo_modRelease": 0.5,
       "octo_lfo1Rate": 0.4,
-      "octo_lfo1Depth": 0.0,
+      "octo_lfo1Depth": 0.258,
       "octo_lfo1Shape": 0,
       "octo_lfo2Rate": 2.0,
       "octo_lfo2Depth": 0.0,
       "octo_lfo2Shape": 0,
       "octo_polyphony": 2,
-      "octo_macroCharacter": 0.0,
-      "octo_macroMovement": 0.0,
-      "octo_macroCoupling": 0.0,
-      "octo_macroSpace": 0.0
+      "octo_macroCharacter": 0.438,
+      "octo_macroMovement": 0.443,
+      "octo_macroCoupling": 0.263,
+      "octo_macroSpace": 0.313,
+      "octo_filterEnvAmt": 0.464
     }
   },
   "tags": [
@@ -82,5 +83,11 @@
     "alien",
     "transcendental"
   ],
-  "description": "Eight arms at full prime-ratio independence, no chromatophore — pure polyrhythmic modulation as a polyphonic pad. All eight dimensions moving at irrational rates simultaneously."
+  "description": "Eight arms at full prime-ratio independence, no chromatophore — pure polyrhythmic modulation as a polyphonic pad. All eight dimensions moving at irrational rates simultaneously.",
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.445,
+    "COUPLING": 0.265,
+    "SPACE": 0.315
+  }
 }

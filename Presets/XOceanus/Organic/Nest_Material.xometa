@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Nest Material",
+  "mood": "Organic",
+  "engines": ["Ottoni", "Oxalis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aged brass and leaf tension interwoven like a bird collecting material for its nest. Two organic sources, one shared space.",
+  "tags": ["organic", "nest", "brass", "leaf", "coupled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_macroCharacter": 0.46,
+      "otto_macroMovement": 0.32,
+      "otto_macroCoupling": 0.22,
+      "otto_macroSpace": 0.50,
+      "otto_macroGrow": 0.38,
+      "otto_filterEnvAmt": 0.42,
+      "otto_lfo1Rate": 0.04,
+      "otto_lfo1Depth": 0.22,
+      "otto_lfo2Rate": 0.08,
+      "otto_lfo2Depth": 0.16
+    },
+    "Oxalis": {
+      "oxal_macroCharacter": 0.38,
+      "oxal_macroMovement": 0.38,
+      "oxal_macroCoupling": 0.22,
+      "oxal_macroSpace": 0.52,
+      "oxal_leafTension": 0.48,
+      "oxal_filterEnvAmt": 0.38,
+      "oxal_lfo1Rate": 0.07,
+      "oxal_lfo1Depth": 0.22,
+      "oxal_lfo2Rate": 0.12,
+      "oxal_lfo2Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ottoni",
+        "target": "Oxalis",
+        "type": "FilterToFilter",
+        "amount": 0.26
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.22,
+    "SPACE": 0.51
+  }
+}

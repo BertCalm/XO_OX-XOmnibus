@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Hunt Ring Mod",
+  "mood": "Entangled",
+  "engines": ["Orca", "Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Apex predator hunt signal ring-modulating possum bite. Two aggression architectures creating mutual annihilation.",
+  "tags": ["entangled", "aggressive", "hunt", "ring-mod", "annihilation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.17,
+    "movement": 0.9,
+    "density": 0.88,
+    "space": 0.14,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.9,
+      "orca_macroMovement": 0.88,
+      "orca_macroCoupling": 0.28,
+      "orca_macroSpace": 0.15,
+      "orca_huntMacro": 0.92,
+      "orca_echoDepth": 0.65,
+      "orca_filterEnvAmt": 0.8,
+      "orca_lfo1Rate": 0.55,
+      "orca_lfo1Depth": 0.46,
+      "orca_filterCutoff": 0.7,
+      "orca_filterRes": 0.74,
+      "orca_attackTime": 0.004,
+      "orca_decayTime": 0.15,
+      "orca_sustain": 0.26,
+      "orca_releaseTime": 0.12
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.86,
+      "poss_macroMovement": 0.86,
+      "poss_macroCoupling": 0.28,
+      "poss_macroSpace": 0.14,
+      "poss_biteDepth": 0.9,
+      "poss_scritchRate": 0.62,
+      "poss_filterEnvAmt": 0.76,
+      "poss_lfo1Rate": 0.52,
+      "poss_lfo1Depth": 0.44,
+      "poss_filterCutoff": 0.58,
+      "poss_filterRes": 0.72,
+      "poss_attackTime": 0.006,
+      "poss_decayTime": 0.22,
+      "poss_releaseTime": 0.18,
+      "poss_sustain": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Overbite",
+        "type": "AudioToRing",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.14
+  }
+}

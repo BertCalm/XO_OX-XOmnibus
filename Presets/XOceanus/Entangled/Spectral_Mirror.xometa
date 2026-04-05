@@ -50,13 +50,33 @@
       "optic_vizMode": 1,
       "optic_vizFeedback": 0.5,
       "optic_vizSpeed": 0.8,
-      "optic_vizIntensity": 0.7
+      "optic_vizIntensity": 0.7,
+      "optic_macroCharacter": 0.595,
+      "optic_macroMovement": 0.551,
+      "optic_macroCoupling": 0.484,
+      "optic_macroSpace": 0.427,
+      "optic_filterEnvAmt": 0.425,
+      "optic_lfoRate": 0.168
     },
     "Odyssey": {
-      "drift_oscA_detune": 0.08
+      "drift_oscA_detune": 0.08,
+      "drift_macroCharacter": 0.597,
+      "drift_macroMovement": 0.553,
+      "drift_macroCoupling": 0.486,
+      "drift_macroSpace": 0.429,
+      "drift_filterEnvAmt": 0.425,
+      "drift_lfoRate": 0.168,
+      "drift_lfoDepth": 0.357
     },
     "Opal": {
-      "opal_filterCutoff": 3000.0
+      "opal_filterCutoff": 3000.0,
+      "opal_macroCharacter": 0.552,
+      "opal_macroMovement": 0.508,
+      "opal_macroCoupling": 0.441,
+      "opal_macroSpace": 0.384,
+      "opal_filterEnvAmt": 0.425,
+      "opal_lfo1Rate": 0.168,
+      "opal_lfo1Depth": 0.357
     }
   },
   "coupling": {
@@ -81,5 +101,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.567,
+    "MOVEMENT": 0.523,
+    "COUPLING": 0.456,
+    "SPACE": 0.399
+  }
 }

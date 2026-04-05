@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Crust Rumble",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Micro-seismic activity in stable crust — a continuous low-frequency rumble below the detection threshold of most instruments, the baseline noise floor of the solid Earth.",
+  "tags": ["deep", "seismic", "sub-bass", "geological", "rumble"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.76,
+    "movement": 0.18,
+    "density": 0.78,
+    "space": 0.60,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.56,
+      "ogre_macroMovement": 0.18,
+      "ogre_macroCoupling": 0.12,
+      "ogre_macroSpace": 0.58,
+      "ogre_filterEnvAmt": 0.44,
+      "ogre_lfo1Rate": 0.05,
+      "ogre_lfo1Depth": 0.22,
+      "ogre_subFreq": 0.24,
+      "ogre_satDrive": 0.40
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.58
+  }
+}

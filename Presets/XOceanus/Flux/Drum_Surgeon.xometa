@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Drum Surgeon",
+  "mood": "Flux",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Psychology-driven boom bap with surgical precision. Berlyne curiosity at maximum alien shift, NY noise gate slamming.",
+  "tags": ["flux", "aggressive", "drums", "boom-bap", "offering"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.25,
+    "movement": 0.88,
+    "density": 0.9,
+    "space": 0.15,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_macroCharacter": 0.88,
+      "ofr_macroMovement": 0.85,
+      "ofr_macroCoupling": 0.12,
+      "ofr_macroSpace": 0.15,
+      "ofr_digCuriosity": 0.9,
+      "ofr_cityChain": 0.0,
+      "ofr_filterEnvAmt": 0.78,
+      "ofr_lfo1Rate": 0.42,
+      "ofr_lfo1Depth": 0.38,
+      "ofr_transientAmt": 0.92,
+      "ofr_attackTime": 0.003,
+      "ofr_decayTime": 0.2,
+      "ofr_sustain": 0.2,
+      "ofr_releaseTime": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.12,
+    "SPACE": 0.15
+  }
+}

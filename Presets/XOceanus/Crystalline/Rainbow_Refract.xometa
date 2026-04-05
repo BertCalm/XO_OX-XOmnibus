@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Rainbow Refract",
+  "mood": "Crystalline",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full spectrum refraction through a crystal wedge \u2014 all frequencies separated and clarified by the prism.",
+  "tags": [
+    "crystalline",
+    "rainbow",
+    "refraction",
+    "spectrum",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.2,
+    "movement": 0.38,
+    "density": 0.4,
+    "space": 0.63,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.53,
+      "oblq_macroMovement": 0.33,
+      "oblq_macroCoupling": 0.23,
+      "oblq_macroSpace": 0.64,
+      "oblq_filterEnvAmt": 0.6,
+      "oblq_lfo1Rate": 0.11,
+      "oblq_lfo1Depth": 0.24
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.23,
+    "SPACE": 0.64
+  }
+}

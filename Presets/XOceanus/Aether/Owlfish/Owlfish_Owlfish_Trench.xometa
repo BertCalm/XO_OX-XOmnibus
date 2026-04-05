@@ -32,11 +32,16 @@
       "owl_filterReso": 0.4,
       "owl_formantShift": 0.2,
       "owl_hollowAmt": 0.85,
-      "owl_macroCoupling": 0.0,
+      "owl_macroCoupling": 0.131,
       "owl_macroHollow": 0.0,
       "owl_macroScreech": 0.0,
-      "owl_macroSpace": 0.0,
-      "owl_reverbMix": 0.82
+      "owl_macroSpace": 0.741,
+      "owl_reverbMix": 0.82,
+      "owl_macroCharacter": 0.403,
+      "owl_macroMovement": 0.566,
+      "owl_filterEnvDepth": 0.438,
+      "owl_lfoRate": 0.041,
+      "owl_lfoDepth": 0.197
     }
   },
   "schema_version": 1,
@@ -50,5 +55,11 @@
     "owlfish"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.383,
+    "MOVEMENT": 0.546,
+    "COUPLING": 0.111,
+    "SPACE": 0.721
+  }
 }

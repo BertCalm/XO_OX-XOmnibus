@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Organic Spin",
+  "mood": "Coupling",
+  "engines": [
+    "Oxalis",
+    "Overgrow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXALIS leaf tension drives OVERGROW growth rate \u2014 sorrel leaf physics informing forest expansion, small plant teaching large system.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "organic",
+    "growth",
+    "EnvToMorph",
+    "botanical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.54,
+    "movement": 0.56,
+    "density": 0.52,
+    "space": 0.52,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oxalis": {
+      "oxal_leafTension": 0.56,
+      "oxal_filterEnvAmt": 0.52,
+      "oxal_lfo1Rate": 0.13,
+      "oxal_lfo1Depth": 0.28,
+      "oxal_macroCharacter": 0.52,
+      "oxal_macroMovement": 0.54,
+      "oxal_macroCoupling": 0.62,
+      "oxal_macroSpace": 0.52
+    },
+    "Overgrow": {
+      "grow_growthRate": 0.58,
+      "grow_filterEnvAmt": 0.5,
+      "grow_lfo1Rate": 0.14,
+      "grow_lfo1Depth": 0.26,
+      "grow_macroCharacter": 0.5,
+      "grow_macroMovement": 0.54,
+      "grow_macroCoupling": 0.6,
+      "grow_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oxalis",
+        "engineB": "Overgrow",
+        "type": "EnvToMorph",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.61,
+    "SPACE": 0.52
+  }
+}

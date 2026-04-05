@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Bright Oasis",
+  "mood": "Luminous",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An oasis seen from the highest desert ridge in full noon sun — the water is visible from kilometers away as a luminous signal in the parched landscape, pure and unmistakable.",
+  "tags": ["luminous", "oasis", "noon", "brilliant", "desert"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.52,
+    "movement": 0.36,
+    "density": 0.25,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oasis": {
+      "oas_macroCharacter": 0.60,
+      "oas_macroMovement": 0.36,
+      "oas_macroCoupling": 0.15,
+      "oas_macroSpace": 0.62,
+      "oas_filterEnvAmt": 0.58,
+      "oas_springDepth": 0.72,
+      "oas_lfo1Rate": 0.06,
+      "oas_lfo1Depth": 0.18,
+      "oas_lfo2Rate": 0.11,
+      "oas_lfo2Depth": 0.12,
+      "oas_attack": 0.025,
+      "oas_decay": 0.6,
+      "oas_sustain": 0.88,
+      "oas_release": 3.0,
+      "oas_filterCutoff": 12500,
+      "oas_filterRes": 0.18,
+      "oas_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.15,
+    "SPACE": 0.62
+  }
+}

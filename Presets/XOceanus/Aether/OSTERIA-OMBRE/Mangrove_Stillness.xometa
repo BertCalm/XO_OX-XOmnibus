@@ -36,11 +36,24 @@
   "parameters": {
     "Ombre": {
       "level": 0.805,
-      "pan": -0.026
+      "pan": -0.026,
+      "ombre_macroCharacter": 0.336,
+      "ombre_macroMovement": 0.479,
+      "ombre_macroCoupling": 0.501,
+      "ombre_macroSpace": 0.838,
+      "ombre_filterEnvAmt": 0.419,
+      "ombre_lfo1Rate": 0.014,
+      "ombre_lfo1Depth": 0.207
     },
     "Osteria": {
       "level": 0.732,
-      "pan": 0.119
+      "pan": 0.119,
+      "osteria_macroCharacter": 0.343,
+      "osteria_macroMovement": 0.486,
+      "osteria_macroCoupling": 0.508,
+      "osteria_macroSpace": 0.845,
+      "osteria_filterEnvDepth": 0.419,
+      "osteria_lfoDepth": 0.014
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.306,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.471,
+    "SPACE": 0.808
+  }
 }

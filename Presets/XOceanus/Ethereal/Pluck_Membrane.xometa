@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Pluck Membrane",
+  "mood": "Ethereal",
+  "engines": [
+    "Orphica",
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A ghostly string pluck filtering through a semi-permeable acoustic membrane. Only the upper harmonics pass.",
+  "tags": [
+    "ethereal",
+    "pluck",
+    "membrane",
+    "coupling",
+    "filtered"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.56,
+    "movement": 0.24,
+    "density": 0.15,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_macroCharacter": 0.35,
+      "orph_macroMovement": 0.26,
+      "orph_macroCoupling": 0.11,
+      "orph_macroSpace": 0.88,
+      "orph_pluckBrightness": 0.42,
+      "orph_filterEnvAmt": 0.28,
+      "orph_lfo1Rate": 0.018,
+      "orph_lfo1Depth": 0.13,
+      "orph_attack": 0.04,
+      "orph_release": 9.5
+    },
+    "Osmosis": {
+      "osmo_macroCharacter": 0.28,
+      "osmo_macroMovement": 0.22,
+      "osmo_macroCoupling": 0.09,
+      "osmo_macroSpace": 0.91,
+      "osmo_permeability": 0.6,
+      "osmo_filterEnvAmt": 0.23,
+      "osmo_lfo1Rate": 0.01,
+      "osmo_lfo1Depth": 0.1,
+      "osmo_attack": 3.8,
+      "osmo_release": 11.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osmosis",
+        "type": "EnvToDecay",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.1,
+    "SPACE": 0.9
+  }
+}

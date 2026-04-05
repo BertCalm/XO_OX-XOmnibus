@@ -75,7 +75,14 @@
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.55,
-      "owl_subWave": 0.15
+      "owl_subWave": 0.15,
+      "owl_macroCharacter": 0.514,
+      "owl_macroMovement": 0.565,
+      "owl_macroCoupling": 0.155,
+      "owl_macroSpace": 0.891,
+      "owl_filterEnvDepth": 0.373,
+      "owl_lfoRate": 0.05,
+      "owl_lfoDepth": 0.245
     }
   },
   "schema_version": 1,
@@ -86,5 +93,11 @@
     "meditative"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.494,
+    "MOVEMENT": 0.545,
+    "COUPLING": 0.135,
+    "SPACE": 0.871
+  }
 }

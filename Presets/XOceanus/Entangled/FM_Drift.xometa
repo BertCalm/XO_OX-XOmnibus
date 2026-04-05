@@ -57,7 +57,14 @@
       "drift_release": 2.5,
       "drift_driftDepth": 0.45,
       "drift_level": 0.62,
-      "drift_polyphony": 4
+      "drift_polyphony": 4,
+      "drift_macroCharacter": 0.531,
+      "drift_macroMovement": 0.592,
+      "drift_macroCoupling": 0.518,
+      "drift_macroSpace": 0.48,
+      "drift_filterEnvAmt": 0.529,
+      "drift_lfoRate": 0.133,
+      "drift_lfoDepth": 0.335
     },
     "OddOscar": {
       "morph_morph": 0.5,
@@ -67,7 +74,19 @@
       "morph_filterReso": 0.15,
       "morph_driftDepth": 0.3,
       "morph_level": 0.6,
-      "morph_polyphony": 4
+      "morph_polyphony": 4,
+      "morph_macroCharacter": 0.524,
+      "morph_macroMovement": 0.585,
+      "morph_macroCoupling": 0.511,
+      "morph_macroSpace": 0.473,
+      "morph_filterEnvDepth": 0.529,
+      "morph_lfoRate": 0.133
     }
+  },
+  "macros": {
+    "CHARACTER": 0.501,
+    "MOVEMENT": 0.562,
+    "COUPLING": 0.488,
+    "SPACE": 0.45
   }
 }

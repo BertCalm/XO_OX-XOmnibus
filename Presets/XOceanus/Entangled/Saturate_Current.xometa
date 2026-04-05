@@ -52,7 +52,14 @@
       "fat_mojoCtrl": 0.447,
       "fat_outputLevel": 0.857,
       "fat_outputPan": -0.004,
-      "fat_satDrive": 0.477
+      "fat_satDrive": 0.477,
+      "fat_macroMojo": 0.538,
+      "fat_macroGrit": 0.536,
+      "fat_macroSize": 0.503,
+      "fat_macroCrush": 0.413,
+      "fat_fltEnvAmt": 0.532,
+      "fat_lfo1Rate": 0.101,
+      "fat_lfo1Depth": 0.219
     },
     "Oceanic": {
       "ocean_couplingIn": 0.791,
@@ -62,7 +69,14 @@
       "ocean_macro3": 0.574,
       "ocean_macro4": 0.534,
       "ocean_outputLevel": 0.815,
-      "ocean_outputPan": 0.007
+      "ocean_outputPan": 0.007,
+      "ocean_macroCharacter": 0.496,
+      "ocean_macroMovement": 0.494,
+      "ocean_macroCoupling": 0.461,
+      "ocean_macroSpace": 0.371,
+      "ocean_filterEnvAmt": 0.532,
+      "ocean_lfo1Rate": 0.101,
+      "ocean_lfo1Depth": 0.219
     }
   },
   "schema_version": 1,
@@ -74,5 +88,11 @@
     "entangled"
   ],
   "tempo": 125,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.488,
+    "COUPLING": 0.455,
+    "SPACE": 0.365
+  }
 }

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Frost Facet",
+  "mood": "Crystalline",
+  "engines": ["Overtone"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Frost forming on a glass pane — each facet a continued-fraction harmonic reflection. Spectral ice, precise and cold.",
+  "tags": ["crystalline", "frost", "facet", "spectral", "ice"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.24,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.60,
+      "over_macroMovement": 0.28,
+      "over_macroCoupling": 0.12,
+      "over_macroSpace": 0.62,
+      "over_filterEnvAmt": 0.55,
+      "over_lfo1Rate": 0.06,
+      "over_lfo1Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.12,
+    "SPACE": 0.62
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Frost Mirror",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A mirror frozen at dawn \u2014 every reflection a prismatic facet of crystalline light.",
+  "tags": [
+    "crystalline",
+    "frost",
+    "mirror",
+    "reflection",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.32,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.58,
+      "obsidian_macroMovement": 0.38,
+      "obsidian_macroCoupling": 0.21,
+      "obsidian_macroSpace": 0.56,
+      "obsidian_filterEnvAmt": 0.45,
+      "obsidian_lfo1Rate": 0.13,
+      "obsidian_lfo1Depth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.21,
+    "SPACE": 0.56
+  }
+}

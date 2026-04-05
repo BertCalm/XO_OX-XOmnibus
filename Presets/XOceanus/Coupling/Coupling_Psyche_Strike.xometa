@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Psyche Strike",
+  "mood": "Coupling",
+  "engines": [
+    "Offering",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OFFERING psychology-derived curiosity drives ONSET transient model \u2014 Berlyne's arousal curve shaping how percussion attacks, emotion as transient.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "psychology",
+    "percussion",
+    "VelocityCoupling",
+    "emotional"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.62,
+    "density": 0.56,
+    "space": 0.44,
+    "aggression": 0.36
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_digCuriosity": 0.62,
+      "ofr_filterEnvAmt": 0.54,
+      "ofr_lfo1Rate": 0.16,
+      "ofr_lfo1Depth": 0.3,
+      "ofr_macroCharacter": 0.54,
+      "ofr_macroMovement": 0.62,
+      "ofr_macroCoupling": 0.65,
+      "ofr_macroSpace": 0.44
+    },
+    "Onset": {
+      "perc_macro_punch": 0.62,
+      "perc_macro_mutate": 0.55,
+      "perc_macro_machine": 0.5,
+      "perc_macro_space": 0.44,
+      "perc_filterEnvAmt": 0.52,
+      "perc_lfo1Rate": 0.16,
+      "perc_lfo1Depth": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Offering",
+        "engineB": "Onset",
+        "type": "VelocityCoupling",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.65,
+    "SPACE": 0.44
+  }
+}

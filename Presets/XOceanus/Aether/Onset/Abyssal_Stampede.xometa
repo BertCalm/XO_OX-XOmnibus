@@ -42,7 +42,14 @@
       "perc_v2_decay": 200.0,
       "perc_v2_drive": 0.85,
       "perc_v2_pitch": 40.0,
-      "perc_v2_punch": 0.9
+      "perc_v2_punch": 0.9,
+      "perc_macro_punch": 0.408,
+      "perc_macro_mutate": 0.427,
+      "perc_macro_machine": 0.236,
+      "perc_macro_space": 0.902,
+      "perc_filterEnvAmt": 0.383,
+      "perc_lfo1Rate": 0.032,
+      "perc_lfo1Depth": 0.13
     }
   },
   "schema_version": 1,
@@ -55,5 +62,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.384,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.212,
+    "SPACE": 0.878
+  }
 }

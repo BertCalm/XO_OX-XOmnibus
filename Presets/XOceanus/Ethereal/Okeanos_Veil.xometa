@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Okeanos Veil",
+  "mood": "Ethereal",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The primordial ocean of Greek mythology, surrounding the known world. Its waters warm with ancient memory.",
+  "tags": [
+    "ethereal",
+    "ancient",
+    "ocean",
+    "myth",
+    "veil"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.68,
+    "movement": 0.2,
+    "density": 0.18,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.33,
+      "okan_macroMovement": 0.22,
+      "okan_macroCoupling": 0.09,
+      "okan_macroSpace": 0.88,
+      "okan_warmth": 0.65,
+      "okan_filterEnvAmt": 0.26,
+      "okan_lfo1Rate": 0.012,
+      "okan_lfo1Depth": 0.12,
+      "okan_attack": 3.5,
+      "okan_release": 11.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.09,
+    "SPACE": 0.88
+  }
+}

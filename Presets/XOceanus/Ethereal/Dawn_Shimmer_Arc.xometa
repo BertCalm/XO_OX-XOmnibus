@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Shimmer Arc",
+  "mood": "Ethereal",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The arc of light at the horizon thirty minutes before sunrise. A shimmer that hasn't yet become daylight.",
+  "tags": [
+    "ethereal",
+    "dawn",
+    "shimmer",
+    "arc",
+    "horizon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.3,
+    "density": 0.14,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.33,
+      "sky_macroMovement": 0.32,
+      "sky_macroCoupling": 0.08,
+      "sky_macroSpace": 0.89,
+      "sky_macroRise": 0.6,
+      "sky_filterEnvAmt": 0.29,
+      "sky_lfo1Rate": 0.03,
+      "sky_lfo1Depth": 0.15,
+      "sky_attack": 2.5,
+      "sky_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.08,
+    "SPACE": 0.89
+  }
+}

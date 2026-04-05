@@ -50,7 +50,7 @@
       "obscura_physEnvSustain": 0.0,
       "obscura_physEnvRelease": 0.1,
       "obscura_lfo1Rate": 1.0,
-      "obscura_lfo1Depth": 0.0,
+      "obscura_lfo1Depth": 0.288,
       "obscura_lfo1Shape": 0,
       "obscura_lfo2Rate": 1.0,
       "obscura_lfo2Depth": 0.0,
@@ -58,10 +58,11 @@
       "obscura_voiceMode": 2,
       "obscura_glide": 0.0,
       "obscura_initShape": 3,
-      "obscura_macroCharacter": 0.0,
-      "obscura_macroMovement": 0.0,
-      "obscura_macroCoupling": 0.0,
-      "obscura_macroSpace": 0.0
+      "obscura_macroCharacter": 0.602,
+      "obscura_macroMovement": 0.4,
+      "obscura_macroCoupling": 0.205,
+      "obscura_macroSpace": 0.317,
+      "obscura_filterEnvAmt": 0.416
     }
   },
   "coupling": {
@@ -75,5 +76,11 @@
     "density": 0.38,
     "space": 0.35,
     "aggression": 0.52
+  },
+  "macros": {
+    "CHARACTER": 0.592,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.195,
+    "SPACE": 0.307
   }
 }

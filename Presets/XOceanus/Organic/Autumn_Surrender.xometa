@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Autumn Surrender",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Leaves detaching from an aged oak at their seasonal moment of release. Each string decay echoes a falling leaf.",
+  "tags": ["organic", "autumn", "leaves", "release", "seasonal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.78,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.52,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.44,
+      "oaken_macroMovement": 0.32,
+      "oaken_macroCoupling": 0.14,
+      "oaken_macroSpace": 0.52,
+      "oaken_stringAge": 0.90,
+      "oaken_filterEnvAmt": 0.42,
+      "oaken_lfo1Rate": 0.04,
+      "oaken_lfo1Depth": 0.18,
+      "oaken_lfo2Rate": 0.08,
+      "oaken_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.52
+  }
+}

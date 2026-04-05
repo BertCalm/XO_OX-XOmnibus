@@ -47,10 +47,10 @@
       "ohm_grainScatter": 0.378,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.498,
-      "ohm_macroCommune": 0.329,
-      "ohm_macroJam": 0.346,
-      "ohm_macroMeadow": 0.16,
-      "ohm_macroMeddling": 0.61,
+      "ohm_macroCommune": 0.722,
+      "ohm_macroJam": 0.228,
+      "ohm_macroMeadow": 0.44,
+      "ohm_macroMeddling": 0.842,
       "ohm_meddlingThresh": 0.487,
       "ohm_obedLevel": 0.317,
       "ohm_pluckBrightness": 0.253,
@@ -58,7 +58,10 @@
       "ohm_spectralFreeze": 0.0,
       "ohm_sympatheticAmt": 0.177,
       "ohm_thereminScale": 1.0,
-      "ohm_thereminWobble": 0.275
+      "ohm_thereminWobble": 0.275,
+      "ohm_filterEnvAmt": 0.657,
+      "ohm_lfo1Rate": 0.327,
+      "ohm_lfo1Depth": 0.404
     }
   },
   "schema_version": 1,
@@ -69,5 +72,11 @@
     "movement"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.79,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.176,
+    "SPACE": 0.388
+  }
 }

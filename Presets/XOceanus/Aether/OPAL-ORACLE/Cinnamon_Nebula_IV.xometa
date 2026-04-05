@@ -36,11 +36,25 @@
   "parameters": {
     "Opal": {
       "level": 0.812,
-      "pan": 0.017
+      "pan": 0.017,
+      "opal_macroCharacter": 0.394,
+      "opal_macroMovement": 0.501,
+      "opal_macroCoupling": 0.691,
+      "opal_macroSpace": 0.689,
+      "opal_filterEnvAmt": 0.319,
+      "opal_lfo1Rate": 0.019,
+      "opal_lfo1Depth": 0.207
     },
     "Oracle": {
       "level": 0.831,
-      "pan": 0.099
+      "pan": 0.099,
+      "oracle_macroCharacter": 0.417,
+      "oracle_macroMovement": 0.524,
+      "oracle_macroCoupling": 0.714,
+      "oracle_macroSpace": 0.712,
+      "oracle_filterEnvAmt": 0.319,
+      "oracle_lfo1Rate": 0.019,
+      "oracle_lfo1Depth": 0.207
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.409,
+    "MOVEMENT": 0.516,
+    "COUPLING": 0.706,
+    "SPACE": 0.704
+  }
 }

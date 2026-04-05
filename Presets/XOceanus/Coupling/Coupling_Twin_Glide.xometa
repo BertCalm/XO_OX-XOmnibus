@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Twin Glide",
+  "mood": "Coupling",
+  "engines": [
+    "Olate",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLATE fretless portamento drives ODYSSEY drift oscillator pitch tracking \u2014 two slide mechanisms in harmonic conversation, both expressing continuous pitch.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "fretless",
+    "analog",
+    "PitchToPitch",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.56,
+    "movement": 0.6,
+    "density": 0.48,
+    "space": 0.48,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Olate": {
+      "olate_fretlessGlide": 0.62,
+      "olate_filterEnvAmt": 0.52,
+      "olate_lfo1Rate": 0.14,
+      "olate_lfo1Depth": 0.28,
+      "olate_macroCharacter": 0.52,
+      "olate_macroMovement": 0.58,
+      "olate_macroCoupling": 0.62,
+      "olate_macroSpace": 0.48
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 0.56,
+      "drift_filterEnvAmt": 0.5,
+      "drift_lfo1Rate": 0.15,
+      "drift_lfo1Depth": 0.26,
+      "drift_macroCharacter": 0.5,
+      "drift_macroMovement": 0.56,
+      "drift_macroCoupling": 0.6,
+      "drift_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Olate",
+        "engineB": "Odyssey",
+        "type": "PitchToPitch",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.61,
+    "SPACE": 0.48
+  }
+}

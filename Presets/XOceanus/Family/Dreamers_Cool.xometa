@@ -37,13 +37,42 @@
     "Odyssey": {
       "drift_character": 0.506,
       "drift_movement": 0.399,
-      "drift_space": 0.625
+      "drift_space": 0.625,
+      "drift_macroCharacter": 0.431,
+      "drift_macroMovement": 0.404,
+      "drift_macroCoupling": 0.475,
+      "drift_macroSpace": 0.448,
+      "drift_filterEnvAmt": 0.42,
+      "drift_lfoRate": 0.185,
+      "drift_lfoDepth": 0.205
     },
-    "Opal": {},
-    "Oracle": {}
+    "Opal": {
+      "opal_macroCharacter": 0.386,
+      "opal_macroMovement": 0.359,
+      "opal_macroCoupling": 0.43,
+      "opal_macroSpace": 0.403,
+      "opal_filterEnvAmt": 0.42,
+      "opal_lfo1Rate": 0.185,
+      "opal_lfo1Depth": 0.205
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.409,
+      "oracle_macroMovement": 0.382,
+      "oracle_macroCoupling": 0.453,
+      "oracle_macroSpace": 0.426,
+      "oracle_filterEnvAmt": 0.42,
+      "oracle_lfo1Rate": 0.185,
+      "oracle_lfo1Depth": 0.205
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.401,
+    "MOVEMENT": 0.374,
+    "COUPLING": 0.445,
+    "SPACE": 0.418
+  }
 }

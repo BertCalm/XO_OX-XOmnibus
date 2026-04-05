@@ -36,7 +36,14 @@
       "perc_macroSpace": 0.0,
       "perc_noiseLevel": 0.4,
       "perc_reverbMix": 0.88,
-      "perc_snareTone": 0.4
+      "perc_snareTone": 0.4,
+      "perc_macro_punch": 0.428,
+      "perc_macro_mutate": 0.537,
+      "perc_macro_machine": 0.221,
+      "perc_macro_space": 0.798,
+      "perc_filterEnvAmt": 0.369,
+      "perc_lfo1Rate": 0.04,
+      "perc_lfo1Depth": 0.107
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.404,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.197,
+    "SPACE": 0.774
+  }
 }

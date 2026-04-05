@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Sky Grain",
+  "mood": "Ethereal",
+  "engines": [
+    "OpenSky",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High altitude shimmer feeding granular mist. Supersaw shimmer dissolves into grain clouds.",
+  "tags": [
+    "ethereal",
+    "sky",
+    "grain",
+    "coupling",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.16,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.3,
+      "sky_macroMovement": 0.32,
+      "sky_macroCoupling": 0.11,
+      "sky_macroSpace": 0.91,
+      "sky_macroRise": 0.5,
+      "sky_filterEnvAmt": 0.27,
+      "sky_lfo1Rate": 0.022,
+      "sky_lfo1Depth": 0.13,
+      "sky_attack": 3.0,
+      "sky_release": 10.0
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.28,
+      "opal_macroMovement": 0.28,
+      "opal_macroCoupling": 0.09,
+      "opal_macroSpace": 0.93,
+      "opal_grainSize": 0.2,
+      "opal_filterEnvAmt": 0.25,
+      "opal_lfo1Rate": 0.035,
+      "opal_lfo1Depth": 0.14,
+      "opal_attack": 2.5,
+      "opal_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OpenSky",
+        "engineB": "Opal",
+        "type": "LFOToPitch",
+        "amount": 0.1
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.92
+  }
+}

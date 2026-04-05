@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Drum FM Riot",
+  "mood": "Entangled",
+  "engines": ["Offering", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boom bap drum machine AudioToFM-modulating chaos attractor. Drum hits mutating the strange attractor at every impact.",
+  "tags": ["entangled", "aggressive", "drums", "fm", "riot"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.24,
+    "movement": 0.93,
+    "density": 0.9,
+    "space": 0.13,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_macroCharacter": 0.9,
+      "ofr_macroMovement": 0.88,
+      "ofr_macroCoupling": 0.26,
+      "ofr_macroSpace": 0.13,
+      "ofr_digCuriosity": 0.82,
+      "ofr_cityChain": 0.0,
+      "ofr_filterEnvAmt": 0.8,
+      "ofr_lfo1Rate": 0.45,
+      "ofr_lfo1Depth": 0.42,
+      "ofr_transientAmt": 0.9,
+      "ofr_attackTime": 0.003,
+      "ofr_decayTime": 0.18,
+      "ofr_sustain": 0.18,
+      "ofr_releaseTime": 0.12
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.85,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.28,
+      "ouro_macroSpace": 0.13,
+      "ouro_topology": 0.82,
+      "ouro_leash": 0.18,
+      "ouro_filterEnvAmt": 0.8,
+      "ouro_lfo1Rate": 0.62,
+      "ouro_lfo1Depth": 0.46,
+      "ouro_filterCutoff": 0.68,
+      "ouro_filterRes": 0.8,
+      "ouro_attackTime": 0.005,
+      "ouro_decayTime": 0.18,
+      "ouro_sustain": 0.28,
+      "ouro_releaseTime": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Offering",
+        "target": "Ouroboros",
+        "type": "AudioToFM",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.13
+  }
+}

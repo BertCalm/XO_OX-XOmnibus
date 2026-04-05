@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Afternoon Grain",
+  "mood": "Luminous",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm afternoon light filtered through window dust — each dust particle a grain, the aggregate texture luminous with mote-light and suspended time.",
+  "tags": ["luminous", "afternoon", "grain", "dust", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.62,
+    "movement": 0.44,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.50,
+      "opal_macroMovement": 0.44,
+      "opal_macroCoupling": 0.14,
+      "opal_macroSpace": 0.58,
+      "opal_filterEnvAmt": 0.52,
+      "opal_grainSize": 0.48,
+      "opal_grainDensity": 0.58,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.62,
+      "opal_lfo1Rate": 0.06,
+      "opal_lfo1Depth": 0.20,
+      "opal_lfo2Rate": 0.12,
+      "opal_lfo2Depth": 0.14,
+      "opal_attack": 0.5,
+      "opal_decay": 1.5,
+      "opal_sustain": 0.76,
+      "opal_release": 4.5,
+      "opal_filterCutoff": 7800,
+      "opal_filterRes": 0.20,
+      "opal_reverbMix": 0.52,
+      "opal_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.14,
+    "SPACE": 0.58
+  }
+}

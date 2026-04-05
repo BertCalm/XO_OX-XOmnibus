@@ -44,13 +44,24 @@
       "origami_foldPoint": 0.5,
       "origami_layers": 3,
       "origami_oscPitch": 0.0,
-      "origami_symmetry": 0.2
+      "origami_symmetry": 0.2,
+      "origami_macroCharacter": 0.644,
+      "origami_macroMovement": 0.614,
+      "origami_macroCoupling": 0.72,
+      "origami_macroSpace": 0.492,
+      "origami_filterEnvAmt": 0.41,
+      "origami_lfo1Rate": 0.265,
+      "origami_lfo1Depth": 0.385
     },
     "Ouroboros": {
       "ouro_leash": 0.45,
-      "ouro_macroCharacter": 0.6,
-      "ouro_macroMovement": 0.7,
-      "ouro_topology": 0.65
+      "ouro_macroCharacter": 0.587,
+      "ouro_macroMovement": 0.557,
+      "ouro_topology": 0.65,
+      "ouro_macroCoupling": 0.663,
+      "ouro_macroSpace": 0.435,
+      "ouro_filterEnvAmt": 0.41,
+      "ouro_lfoRate": 0.265
     }
   },
   "schema_version": 1,
@@ -64,5 +75,11 @@
     "fold"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.585,
+    "MOVEMENT": 0.555,
+    "COUPLING": 0.661,
+    "SPACE": 0.433
+  }
 }

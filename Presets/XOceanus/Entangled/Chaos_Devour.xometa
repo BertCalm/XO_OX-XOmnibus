@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Devour",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Strange attractor chaos feeding into saturation. Ouroboros AudioToFM injection mutating every harmonic Obese produces.",
+  "tags": ["entangled", "aggressive", "chaos", "devour", "coupling"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.94,
+    "density": 0.92,
+    "space": 0.12,
+    "aggression": 0.97
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.92,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.25,
+      "ouro_macroSpace": 0.12,
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.12,
+      "ouro_filterEnvAmt": 0.85,
+      "ouro_lfo1Rate": 0.68,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_filterCutoff": 0.72,
+      "ouro_filterRes": 0.85,
+      "ouro_attackTime": 0.002,
+      "ouro_decayTime": 0.12,
+      "ouro_sustain": 0.22,
+      "ouro_releaseTime": 0.08
+    },
+    "Obese": {
+      "fat_macroCharacter": 0.88,
+      "fat_macroMovement": 0.78,
+      "fat_macroCoupling": 0.28,
+      "fat_macroSpace": 0.12,
+      "fat_satDrive": 0.9,
+      "fat_mojo": 0.88,
+      "fat_filterEnvAmt": 0.78,
+      "fat_lfo1Rate": 0.35,
+      "fat_lfo1Depth": 0.44,
+      "fat_filterCutoff": 0.52,
+      "fat_filterRes": 0.68,
+      "fat_attackTime": 0.005,
+      "fat_decayTime": 0.22,
+      "fat_sustain": 0.35,
+      "fat_releaseTime": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Obese",
+        "type": "AudioToFM",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.12
+  }
+}

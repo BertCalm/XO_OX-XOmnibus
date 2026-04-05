@@ -75,7 +75,14 @@
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.4,
-      "owl_subWave": 0.15
+      "owl_subWave": 0.15,
+      "owl_macroCharacter": 0.701,
+      "owl_macroMovement": 0.583,
+      "owl_macroCoupling": 0.212,
+      "owl_macroSpace": 0.512,
+      "owl_filterEnvDepth": 0.447,
+      "owl_lfoRate": 0.147,
+      "owl_lfoDepth": 0.331
     }
   },
   "schema_version": 1,
@@ -86,5 +93,11 @@
     "resonant"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.681,
+    "MOVEMENT": 0.563,
+    "COUPLING": 0.192,
+    "SPACE": 0.492
+  }
 }

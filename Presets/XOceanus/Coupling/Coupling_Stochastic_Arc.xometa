@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Arc",
+  "mood": "Coupling",
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE GENDY stochastic envelope drives ORGANON metabolic variation \u2014 prophecy shaping the free energy landscape, foresight as metabolic input.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "stochastic",
+    "metabolic",
+    "EnvToMorph",
+    "algorithmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.58,
+      "oracle_filterEnvAmt": 0.52,
+      "oracle_lfo1Rate": 0.14,
+      "oracle_lfo1Depth": 0.28,
+      "oracle_macroCharacter": 0.52,
+      "oracle_macroMovement": 0.56,
+      "oracle_macroCoupling": 0.62,
+      "oracle_macroSpace": 0.5
+    },
+    "Organon": {
+      "organon_metabolicRate": 0.56,
+      "organon_filterEnvAmt": 0.5,
+      "organon_lfo1Rate": 0.13,
+      "organon_lfo1Depth": 0.26,
+      "organon_macroCharacter": 0.5,
+      "organon_macroMovement": 0.54,
+      "organon_macroCoupling": 0.6,
+      "organon_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

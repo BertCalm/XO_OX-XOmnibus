@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Ink Jet",
+  "mood": "Kinetic",
+  "engines": ["Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ink jet propulsion at maximum kinetic output. Octopus escape mechanism deployed as attack vector.",
+  "tags": ["kinetic", "aggressive", "ink", "jet", "propulsion"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.18,
+    "movement": 0.96,
+    "density": 0.82,
+    "space": 0.18,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.85,
+      "octo_macroMovement": 0.94,
+      "octo_macroCoupling": 0.18,
+      "octo_macroSpace": 0.2,
+      "octo_armDepth": 0.75,
+      "octo_chromaFlash": 0.65,
+      "octo_inkCloud": 0.95,
+      "octo_filterEnvAmt": 0.74,
+      "octo_lfo1Rate": 0.75,
+      "octo_lfo1Depth": 0.46,
+      "octo_filterCutoff": 0.65,
+      "octo_filterRes": 0.68,
+      "octo_attackTime": 0.004,
+      "octo_decayTime": 0.14,
+      "octo_sustain": 0.2,
+      "octo_releaseTime": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.94,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

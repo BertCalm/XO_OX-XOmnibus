@@ -32,7 +32,14 @@
       "origami_macro_fold": 0.273,
       "origami_macro_space": 0.662,
       "origami_macro_tension": 0.627,
-      "origami_outputLevel": 0.848
+      "origami_outputLevel": 0.848,
+      "origami_macroCharacter": 0.605,
+      "origami_macroMovement": 0.476,
+      "origami_macroCoupling": 0.394,
+      "origami_macroSpace": 0.602,
+      "origami_filterEnvAmt": 0.537,
+      "origami_lfo1Rate": 0.289,
+      "origami_lfo1Depth": 0.265
     }
   },
   "schema_version": 1,
@@ -45,5 +52,11 @@
     "origami"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.546,
+    "MOVEMENT": 0.417,
+    "COUPLING": 0.335,
+    "SPACE": 0.543
+  }
 }

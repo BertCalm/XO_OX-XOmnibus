@@ -49,7 +49,14 @@
       "obsidian_ampAttack": 0.03,
       "obsidian_ampRelease": 1.5,
       "obsidian_filterCutoff": 2800.0,
-      "obsidian_filterReso": 0.3
+      "obsidian_filterReso": 0.3,
+      "obsidian_macroCharacter": 0.607,
+      "obsidian_macroMovement": 0.593,
+      "obsidian_macroCoupling": 0.715,
+      "obsidian_macroSpace": 0.442,
+      "obsidian_filterEnvAmt": 0.539,
+      "obsidian_lfoRate": 0.11,
+      "obsidian_lfoDepth": 0.233
     },
     "Ocelot": {
       "ocelot_ampAttack": 0.04,
@@ -59,7 +66,13 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_macroCharacter": 0.556,
+      "ocelot_macroMovement": 0.542,
+      "ocelot_macroCoupling": 0.664,
+      "ocelot_macroSpace": 0.391,
+      "ocelot_filterEnvDepth": 0.539,
+      "ocelot_lfoRate": 0.11
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.539,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.647,
+    "SPACE": 0.374
+  }
 }

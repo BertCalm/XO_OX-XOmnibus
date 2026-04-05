@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Void Sediment",
+  "mood": "Ethereal",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Marine snow falling at millimeters per hour onto abyssal clay. The quietest accumulation in the world.",
+  "tags": [
+    "ethereal",
+    "sediment",
+    "void",
+    "accumulation",
+    "snow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.55,
+    "movement": 0.16,
+    "density": 0.2,
+    "space": 0.95,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.26,
+      "deep_macroMovement": 0.17,
+      "deep_macroCoupling": 0.05,
+      "deep_macroSpace": 0.93,
+      "deep_macroPressure": 0.58,
+      "deep_filterEnvAmt": 0.21,
+      "deep_lfo1Rate": 0.006,
+      "deep_lfo1Depth": 0.09,
+      "deep_attack": 5.5,
+      "deep_release": 14.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.17,
+    "COUPLING": 0.05,
+    "SPACE": 0.93
+  }
+}

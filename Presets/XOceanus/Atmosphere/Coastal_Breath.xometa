@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Coastal Breath",
+  "mood": "Atmosphere",
+  "engines": ["Osprey", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sea air with the faint scent of metabolism. Osprey's coastline data feeds Organon's free energy equations at barely perceptible depth.",
+  "tags": ["atmosphere", "whisper", "coupling", "coastal", "breath", "metabolic", "sea"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.34,
+    "density": 0.40,
+    "space": 0.76,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_macroCharacter": 0.46,
+      "osprey_macroMovement": 0.40,
+      "osprey_macroCoupling": 0.14,
+      "osprey_macroSpace": 0.74,
+      "osprey_shoreBlend": 0.48,
+      "osprey_filterEnvAmt": 0.36,
+      "osprey_lfo1Rate": 0.06,
+      "osprey_lfo1Depth": 0.20,
+      "osprey_attack": 0.8,
+      "osprey_release": 3.6
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.40,
+      "organon_macroMovement": 0.35,
+      "organon_macroCoupling": 0.13,
+      "organon_macroSpace": 0.78,
+      "organon_metabolicRate": 0.35,
+      "organon_filterEnvAmt": 0.30,
+      "organon_lfo1Rate": 0.04,
+      "organon_lfo1Depth": 0.16,
+      "organon_attack": 1.4,
+      "organon_release": 4.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Organon",
+        "type": "EnvToDecay",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.13,
+    "SPACE": 0.76
+  }
+}

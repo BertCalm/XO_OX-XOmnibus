@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Diffuse Light",
+  "mood": "Ethereal",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Total cloud cover creating shadowless diffuse light. The perfect illumination for grief.",
+  "tags": [
+    "ethereal",
+    "diffuse",
+    "light",
+    "shadowless",
+    "grief"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.5,
+    "movement": 0.2,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_macroCharacter": 0.33,
+      "cast_macroMovement": 0.22,
+      "cast_macroCoupling": 0.08,
+      "cast_macroSpace": 0.87,
+      "cast_cloudDensity": 0.55,
+      "cast_filterEnvAmt": 0.26,
+      "cast_lfo1Rate": 0.012,
+      "cast_lfo1Depth": 0.11,
+      "cast_attack": 3.8,
+      "cast_release": 11.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.08,
+    "SPACE": 0.87
+  }
+}

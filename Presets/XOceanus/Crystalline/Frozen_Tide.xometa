@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Tide",
+  "mood": "Crystalline",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tide foam frozen at the moment of breaking \u2014 the crystalline form of water captured in mineral stasis.",
+  "tags": [
+    "crystalline",
+    "frozen",
+    "tide",
+    "foam",
+    "water"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.28,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_macroCharacter": 0.61,
+      "wash_macroMovement": 0.35,
+      "wash_macroCoupling": 0.23,
+      "wash_macroSpace": 0.64,
+      "wash_filterEnvAmt": 0.51,
+      "wash_lfo1Rate": 0.05,
+      "wash_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.23,
+    "SPACE": 0.64
+  }
+}

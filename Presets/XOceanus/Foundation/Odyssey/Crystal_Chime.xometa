@@ -53,7 +53,7 @@
       "drift_filterCutoff": 12000.0,
       "drift_filterReso": 0.05,
       "drift_filterSlope": 0,
-      "drift_filterEnvAmt": 0.0,
+      "drift_filterEnvAmt": 0.452,
       "drift_formantMorph": 0.5,
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.25,
@@ -63,18 +63,28 @@
       "drift_sustain": 0.0,
       "drift_release": 1.5,
       "drift_lfoRate": 1.5,
-      "drift_lfoDepth": 0.0,
+      "drift_lfoDepth": 0.166,
       "drift_lfoDest": 0,
       "drift_driftDepth": 0.15,
       "drift_driftRate": 0.1,
       "drift_level": 0.8,
       "drift_voiceMode": 0,
       "drift_glide": 0.0,
-      "drift_polyphony": 3
+      "drift_polyphony": 3,
+      "drift_macroCharacter": 0.462,
+      "drift_macroMovement": 0.321,
+      "drift_macroCoupling": 0.177,
+      "drift_macroSpace": 0.392
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.432,
+    "MOVEMENT": 0.291,
+    "COUPLING": 0.147,
+    "SPACE": 0.362
+  }
 }

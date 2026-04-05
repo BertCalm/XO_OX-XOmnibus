@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Thought",
+  "mood": "Atmosphere",
+  "engines": ["Organon", "Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A metabolic idea crystallizes. Organon's variational energy brushes the surface of Obsidian, leaving a faint warm signature in the crystal.",
+  "tags": ["atmosphere", "whisper", "coupling", "bioluminescent", "crystal", "metabolic", "idea"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.60,
+    "movement": 0.28,
+    "density": 0.46,
+    "space": 0.82,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.42,
+      "organon_macroMovement": 0.35,
+      "organon_macroCoupling": 0.14,
+      "organon_macroSpace": 0.78,
+      "organon_metabolicRate": 0.40,
+      "organon_filterEnvAmt": 0.32,
+      "organon_lfo1Rate": 0.04,
+      "organon_lfo1Depth": 0.18,
+      "organon_attack": 1.2,
+      "organon_release": 4.0
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.38,
+      "obsidian_macroMovement": 0.30,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.84,
+      "obsidian_depth": 0.42,
+      "obsidian_filterEnvAmt": 0.26,
+      "obsidian_lfo1Rate": 0.03,
+      "obsidian_lfo1Depth": 0.14,
+      "obsidian_attack": 2.0,
+      "obsidian_release": 6.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obsidian",
+        "type": "EnvToMorph",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.13,
+    "SPACE": 0.81
+  }
+}

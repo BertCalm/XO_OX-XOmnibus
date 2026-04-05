@@ -5,11 +5,11 @@ xpn_velocity_curve_tester.py — XO_OX Designs
 Parse an Akai MPC XPM program file, validate each keygroup's velocity layer
 splits, and generate a per-keygroup audit report with an overall program score.
 
-Vibe's canonical 4-layer curve:
-  Layer 1: vel   1 –  40  (pp  — soft)
-  Layer 2: vel  41 –  90  (mp/mf — medium)
-  Layer 3: vel  91 – 110  (f   — hard)
-  Layer 4: vel 111 – 127  (ff  — max)
+Ghost Council Modified 4-layer curve (adopted 2026-04-04):
+  Layer 1: vel   1 –  20  (Ghost  — below pad threshold)
+  Layer 2: vel  21 –  55  (Light  — finger drumming sweet spot)
+  Layer 3: vel  56 –  90  (Medium — deliberate hits)
+  Layer 4: vel  91 – 127  (Hard   — power hits)
 
 Four validation rules applied per keygroup:
   R1  Full-range coverage  — layers cover vel 1-127 with no gaps, no overlaps
@@ -46,12 +46,9 @@ from xml.etree import ElementTree as ET
 # Constants
 # ---------------------------------------------------------------------------
 
-CANONICAL_SPLITS = [
-    (1, 40),
-    (41, 90),
-    (91, 110),
-    (111, 127),
-]
+# Ghost Council Modified zones — import from single source of truth.
+# Old values were (1,40),(41,90),(91,110),(111,127) — replaced 2026-04-04.
+from xpn_velocity_standard import ZONES as CANONICAL_SPLITS
 
 DEFAULT_TOLERANCE = 5
 MIN_LAYER_SPAN    = 5
@@ -61,8 +58,9 @@ VEL_MIN           = 1
 VEL_MAX           = 127
 VEL_RANGE         = VEL_MAX - VEL_MIN + 1   # 127 units
 
-# Test velocities from the spec
-TEST_VELOCITIES = [10, 40, 41, 90, 91, 110, 111, 127]
+# Test velocities exercise each zone boundary (Ghost Council Modified zones).
+# Old values were [10, 40, 41, 90, 91, 110, 111, 127] (replaced 2026-04-04).
+TEST_VELOCITIES = [10, 20, 21, 55, 56, 90, 91, 127]
 
 # ---------------------------------------------------------------------------
 # Data model
@@ -239,7 +237,7 @@ def check_canonical(kg: Keygroup, tolerance: int) -> RuleResult:
 
     if mismatches:
         return RuleResult(False, "R2 Canonical Curve", "; ".join(mismatches))
-    return RuleResult(True, "R2 Canonical Curve", f"Matches Vibe's curve within ±{tolerance}")
+    return RuleResult(True, "R2 Canonical Curve", f"Matches Ghost Council Modified curve within ±{tolerance}")
 
 
 def check_balanced(kg: Keygroup) -> RuleResult:
@@ -382,7 +380,7 @@ def fix_suggestions(kg: Keygroup) -> list[str]:
         lines.append(f"    Layer {i}: VelStart={s}  VelEnd={e}  (span={e - s + 1})")
 
     if n == 4:
-        lines.append(f"  Vibe canonical curve (recommended for 4-layer keygroups):")
+        lines.append(f"  Ghost Council Modified curve (recommended for 4-layer keygroups):")
         for i, (s, e) in enumerate(CANONICAL_SPLITS, start=1):
             lines.append(f"    Layer {i}: VelStart={s}  VelEnd={e}  (span={e - s + 1})")
 

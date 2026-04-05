@@ -34,7 +34,14 @@
       "orph_pluckBrightness": 0.55,
       "orph_releaseTime": 3.5,
       "orph_reverbSend": 0.8,
-      "orph_velocitySensitivity": 0.6
+      "orph_velocitySensitivity": 0.6,
+      "orph_macroPluck": 0.757,
+      "orph_macroSurface": 0.765,
+      "orph_macroFracture": 0.176,
+      "orph_macroDivine": 0.412,
+      "orph_filterEnvAmt": 0.551,
+      "orph_lfo1Rate": 0.44,
+      "orph_lfo1Depth": 0.404
     }
   },
   "schema_version": 1,
@@ -48,5 +55,11 @@
     "flux"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.745,
+    "MOVEMENT": 0.753,
+    "COUPLING": 0.164,
+    "SPACE": 0.4
+  }
 }

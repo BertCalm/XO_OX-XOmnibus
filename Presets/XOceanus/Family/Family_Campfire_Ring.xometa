@@ -58,14 +58,17 @@
       "obbl_fxBTapeSat": 0.167,
       "obbl_instrumentA": 1,
       "obbl_instrumentB": 1,
-      "obbl_macroBond": 0.29,
-      "obbl_macroBreath": 0.301,
-      "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.149,
+      "obbl_macroBond": 0.569,
+      "obbl_macroBreath": 0.41,
+      "obbl_macroMischief": 0.558,
+      "obbl_macroWind": 0.758,
       "obbl_reedBite": 0.233,
       "obbl_reedStiffness": 0.614,
       "obbl_sympatheticAmt": 0.36,
-      "obbl_voiceRouting": 4
+      "obbl_voiceRouting": 4,
+      "obbl_filterEnvAmt": 0.467,
+      "obbl_lfoRateA": 0.083,
+      "obbl_lfoDepthA": 0.246
     },
     "Ohm": {
       "ohm_bodyMaterial": 1,
@@ -88,10 +91,10 @@
       "ohm_grainScatter": 0.41,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.009,
-      "ohm_macroCommune": 0.359,
-      "ohm_macroJam": 0.325,
-      "ohm_macroMeadow": 0.137,
-      "ohm_macroMeddling": 0.19,
+      "ohm_macroCommune": 0.448,
+      "ohm_macroJam": 0.796,
+      "ohm_macroMeadow": 0.596,
+      "ohm_macroMeddling": 0.607,
       "ohm_meddlingThresh": 0.514,
       "ohm_obedLevel": 0.168,
       "ohm_pluckBrightness": 0.485,
@@ -99,7 +102,10 @@
       "ohm_spectralFreeze": 0.0,
       "ohm_sympatheticAmt": 0.187,
       "ohm_thereminScale": 0.977,
-      "ohm_thereminWobble": 0.264
+      "ohm_thereminWobble": 0.264,
+      "ohm_filterEnvAmt": 0.467,
+      "ohm_lfo1Rate": 0.083,
+      "ohm_lfo1Depth": 0.246
     },
     "Ole": {
       "ole_allianceBlend": 0.67,
@@ -119,11 +125,13 @@
       "ole_husbandBouzLevel": 0.0,
       "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroDrama": 0.134,
-      "ole_macroFuego": 0.585,
-      "ole_macroIsla": 0.094,
-      "ole_macroSides": 0.0,
-      "ole_sympatheticAmt": 0.242
+      "ole_macroDrama": 0.533,
+      "ole_macroFuego": 0.374,
+      "ole_macroIsla": 0.722,
+      "ole_macroSides": 0.522,
+      "ole_sympatheticAmt": 0.242,
+      "ole_filterEnvAmt": 0.467,
+      "ole_lfoRate": 0.083
     }
   },
   "schema_version": 1,
@@ -135,5 +143,11 @@
     "prism"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.396,
+    "COUPLING": 0.744,
+    "SPACE": 0.544
+  }
 }

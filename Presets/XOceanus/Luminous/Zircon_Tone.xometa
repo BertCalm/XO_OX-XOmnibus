@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Zircon Tone",
+  "mood": "Luminous",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Zircon gemstone clarity — high dispersion, blue-white fire, the crystal synthesizer's most refractive mode. Obsidian at maximum filter openness, the tone pure mineral light.",
+  "tags": ["luminous", "zircon", "crystal", "blue", "mineral"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.38,
+    "movement": 0.34,
+    "density": 0.28,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.64,
+      "obsidian_macroMovement": 0.34,
+      "obsidian_macroCoupling": 0.13,
+      "obsidian_macroSpace": 0.58,
+      "obsidian_filterEnvAmt": 0.58,
+      "obsidian_depth": 0.58,
+      "obsidian_lfo1Rate": 0.06,
+      "obsidian_lfo1Depth": 0.20,
+      "obsidian_lfo2Rate": 0.12,
+      "obsidian_lfo2Depth": 0.12,
+      "obsidian_attack": 0.02,
+      "obsidian_decay": 0.6,
+      "obsidian_sustain": 0.88,
+      "obsidian_release": 2.8,
+      "obsidian_filterCutoff": 15000,
+      "obsidian_filterRes": 0.18,
+      "obsidian_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.13,
+    "SPACE": 0.58
+  }
+}

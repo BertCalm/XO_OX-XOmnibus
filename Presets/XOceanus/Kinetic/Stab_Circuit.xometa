@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Stab Circuit",
+  "mood": "Kinetic",
+  "engines": ["Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Acid circuit stab at maximum kinetic velocity. Filter resonance spiking on every attack.",
+  "tags": ["kinetic", "aggressive", "stab", "circuit", "acid"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.93,
+    "density": 0.72,
+    "space": 0.13,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_macroCharacter": 0.88,
+      "bob_macroMovement": 0.9,
+      "bob_macroCoupling": 0.14,
+      "bob_macroSpace": 0.14,
+      "bob_fltCutoff": 0.5,
+      "bob_fltRes": 0.9,
+      "bob_filterEnvAmt": 0.92,
+      "bob_lfo1Rate": 0.62,
+      "bob_lfo1Depth": 0.42,
+      "bob_attackTime": 0.004,
+      "bob_decayTime": 0.14,
+      "bob_sustain": 0.18,
+      "bob_releaseTime": 0.1
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.14,
+    "SPACE": 0.14
+  }
+}

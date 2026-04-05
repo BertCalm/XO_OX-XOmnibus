@@ -28,7 +28,14 @@
   "parameters": {
     "Obsidian": {
       "couplingBus": 2,
-      "couplingLevel": 0.699
+      "couplingLevel": 0.699,
+      "obsidian_macroCharacter": 0.749,
+      "obsidian_macroMovement": 0.911,
+      "obsidian_macroCoupling": 0.312,
+      "obsidian_macroSpace": 0.489,
+      "obsidian_filterEnvAmt": 0.585,
+      "obsidian_lfoRate": 0.337,
+      "obsidian_lfoDepth": 0.429
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "obsidian"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.681,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.244,
+    "SPACE": 0.421
+  }
 }

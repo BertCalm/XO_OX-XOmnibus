@@ -40,7 +40,14 @@
       "orca_release": 1100.0,
       "orca_sustain": 0.88,
       "orca_wtPosition": 0.88,
-      "orca_wtScanRate": 0.05
+      "orca_wtScanRate": 0.05,
+      "orca_macroCharacter": 0.664,
+      "orca_macroMovement": 0.475,
+      "orca_macroCoupling": 0.319,
+      "orca_macroSpace": 0.558,
+      "orca_filterEnvAmt": 0.52,
+      "orca_lfo1Rate": 0.199,
+      "orca_lfo1Depth": 0.258
     }
   },
   "schema_version": 1,
@@ -52,5 +59,11 @@
     "wavetable"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.648,
+    "MOVEMENT": 0.459,
+    "COUPLING": 0.303,
+    "SPACE": 0.542
+  }
 }

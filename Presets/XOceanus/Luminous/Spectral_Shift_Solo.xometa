@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Shift Solo",
+  "mood": "Luminous",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A Fender Rhodes-adjacent tone that has crossed into spectral territory — copper fingerprints on every harmonic, the shift brightening each note's center.",
+  "tags": ["luminous", "spectral", "copper", "bright", "oddfellow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.79,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.40,
+    "space": 0.50,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_macroCharacter": 0.55,
+      "oddf_macroMovement": 0.38,
+      "oddf_macroCoupling": 0.16,
+      "oddf_macroSpace": 0.50,
+      "oddf_filterEnvAmt": 0.58,
+      "oddf_spectralShift": 0.65,
+      "oddf_lfo1Rate": 0.08,
+      "oddf_lfo1Depth": 0.22,
+      "oddf_lfo2Rate": 0.04,
+      "oddf_lfo2Depth": 0.14,
+      "oddf_attack": 0.008,
+      "oddf_decay": 1.2,
+      "oddf_sustain": 0.60,
+      "oddf_release": 2.2,
+      "oddf_filterCutoff": 8200,
+      "oddf_filterRes": 0.28,
+      "oddf_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.50
+  }
+}

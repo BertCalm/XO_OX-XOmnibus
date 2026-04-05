@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Wide Shimmer",
+  "mood": "Luminous",
+  "engines": ["OpenSky"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum stereo width shimmer — OpenSky's parallax detuning at its widest, the shimmer tail occupying the full panorama, luminous from edge to edge.",
+  "tags": ["luminous", "wide", "shimmer", "stereo", "panoramic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.44,
+    "movement": 0.44,
+    "density": 0.42,
+    "space": 0.80,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.55,
+      "sky_macroMovement": 0.44,
+      "sky_macroCoupling": 0.16,
+      "sky_macroSpace": 0.80,
+      "sky_macroRise": 0.62,
+      "sky_filterEnvAmt": 0.56,
+      "sky_lfo1Rate": 0.06,
+      "sky_lfo1Depth": 0.22,
+      "sky_lfo2Rate": 0.03,
+      "sky_lfo2Depth": 0.14,
+      "sky_attack": 0.45,
+      "sky_decay": 1.8,
+      "sky_sustain": 0.82,
+      "sky_release": 5.5,
+      "sky_filterCutoff": 9500,
+      "sky_filterRes": 0.18,
+      "sky_shimmerDepth": 0.78,
+      "sky_shimmerRate": 0.05,
+      "sky_unisonVoices": 7,
+      "sky_unisonDetune": 0.32,
+      "sky_chorusDepth": 0.50,
+      "sky_chorusRate": 0.08,
+      "sky_reverbMix": 0.62,
+      "sky_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.16,
+    "SPACE": 0.80
+  }
+}

@@ -55,12 +55,25 @@
       "optic_vizFeedback": 0.5,
       "optic_vizIntensity": 0.65,
       "optic_vizMode": 1,
-      "optic_vizSpeed": 0.55
+      "optic_vizSpeed": 0.55,
+      "optic_macroCharacter": 0.656,
+      "optic_macroMovement": 0.534,
+      "optic_macroCoupling": 0.709,
+      "optic_macroSpace": 0.482,
+      "optic_filterEnvAmt": 0.45,
+      "optic_lfoRate": 0.252
     },
     "Osprey": {
       "osprey_ampAttack": 0.03,
       "osprey_ampRelease": 1.5,
-      "osprey_filterTilt": 0.715
+      "osprey_filterTilt": 0.715,
+      "osprey_macroCharacter": 0.661,
+      "osprey_macroMovement": 0.539,
+      "osprey_macroCoupling": 0.714,
+      "osprey_macroSpace": 0.487,
+      "osprey_filterEnvDepth": 0.45,
+      "osprey_lfo2Rate": 0.252,
+      "osprey_lfo2Depth": 0.247
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.628,
+    "MOVEMENT": 0.506,
+    "COUPLING": 0.681,
+    "SPACE": 0.454
+  }
 }

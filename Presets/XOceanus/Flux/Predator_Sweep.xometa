@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Predator Sweep",
+  "mood": "Flux",
+  "engines": ["Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Apex predator echolocation sweeping for prey. Hunt macro engaged, echolocation depth fully extended.",
+  "tags": ["flux", "aggressive", "predator", "sweep", "hunt"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.14,
+    "movement": 0.92,
+    "density": 0.78,
+    "space": 0.2,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.88,
+      "orca_macroMovement": 0.9,
+      "orca_macroCoupling": 0.18,
+      "orca_macroSpace": 0.22,
+      "orca_huntMacro": 0.88,
+      "orca_echoDepth": 0.85,
+      "orca_filterEnvAmt": 0.76,
+      "orca_lfo1Rate": 0.55,
+      "orca_lfo1Depth": 0.44,
+      "orca_filterCutoff": 0.65,
+      "orca_filterRes": 0.7,
+      "orca_attackTime": 0.006,
+      "orca_decayTime": 0.2,
+      "orca_sustain": 0.32,
+      "orca_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.18,
+    "SPACE": 0.22
+  }
+}

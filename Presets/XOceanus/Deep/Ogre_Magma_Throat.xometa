@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Magma Throat",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The vocalization of the earth's mantle — molten rock forcing through narrow conduits, a sub-bass groan from below the crust.",
+  "tags": ["deep", "sub-bass", "volcanic", "dark", "rumble"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.78,
+    "space": 0.55,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.62,
+      "ogre_macroMovement": 0.22,
+      "ogre_macroCoupling": 0.15,
+      "ogre_macroSpace": 0.55,
+      "ogre_filterEnvAmt": 0.48,
+      "ogre_lfo1Rate": 0.07,
+      "ogre_lfo1Depth": 0.25,
+      "ogre_subFreq": 0.22,
+      "ogre_satDrive": 0.55
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.15,
+    "SPACE": 0.55
+  }
+}

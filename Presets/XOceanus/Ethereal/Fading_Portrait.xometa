@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Fading Portrait",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A photograph left in sunlight for decades. The colors bleed slowly toward white silence.",
+  "tags": [
+    "ethereal",
+    "memory",
+    "fading",
+    "slow",
+    "portrait"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.58,
+    "movement": 0.22,
+    "density": 0.12,
+    "space": 0.9,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.35,
+      "ombre_macroMovement": 0.25,
+      "ombre_macroCoupling": 0.1,
+      "ombre_macroSpace": 0.85,
+      "ombre_blend": 0.4,
+      "ombre_filterEnvAmt": 0.3,
+      "ombre_lfo1Rate": 0.015,
+      "ombre_lfo1Depth": 0.15,
+      "ombre_attack": 2.8,
+      "ombre_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.1,
+    "SPACE": 0.85
+  }
+}

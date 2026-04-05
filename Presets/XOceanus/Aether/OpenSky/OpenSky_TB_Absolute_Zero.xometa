@@ -78,7 +78,7 @@
       "sky_level": 0.72,
       "sky_pan": 0.5,
       "sky_lfo1Rate": 0.067,
-      "sky_lfo1Depth": 0.0,
+      "sky_lfo1Depth": 0.184,
       "sky_lfo1Shape": 0,
       "sky_lfo2Rate": 2.0,
       "sky_lfo2Depth": 0.0,
@@ -93,11 +93,22 @@
       "sky_modSlot1Amt": 0.0,
       "sky_modSlot2Src": 0,
       "sky_modSlot2Dst": 0,
-      "sky_modSlot2Amt": 0.0
+      "sky_modSlot2Amt": 0.0,
+      "sky_macroCharacter": 0.492,
+      "sky_macroMovement": 0.409,
+      "sky_macroCoupling": 0.227,
+      "sky_macroSpace": 0.774,
+      "sky_filterEnvAmt": 0.417
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.483,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.218,
+    "SPACE": 0.765
+  }
 }

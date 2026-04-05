@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Orbweave Opensky Geometry",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave",
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbweave knot filter linked to OpenSky shimmer \u2014 topological geometry and arctic shimmer in crystalline union.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "orbweave",
+    "opensky",
+    "geometry"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.35,
+    "density": 0.36,
+    "space": 0.68,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.51,
+      "weave_macroMovement": 0.3,
+      "weave_macroCoupling": 0.16,
+      "weave_macroSpace": 0.58,
+      "weave_filterEnvAmt": 0.45,
+      "weave_lfo1Rate": 0.07,
+      "weave_lfo1Depth": 0.11
+    },
+    "OpenSky": {
+      "sky_macroCharacter": 0.51,
+      "sky_macroMovement": 0.3,
+      "sky_macroCoupling": 0.16,
+      "sky_macroSpace": 0.58,
+      "sky_filterEnvAmt": 0.45,
+      "sky_lfo1Rate": 0.07,
+      "sky_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "OpenSky",
+        "type": "FilterToFilter",
+        "amount": 0.35
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

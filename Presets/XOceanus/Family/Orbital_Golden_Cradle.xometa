@@ -43,7 +43,14 @@
       "orb_groupEnvDepth": 0.28,
       "orb_groupEnvRate": 0.04,
       "orb_oscCount": 4,
-      "orb_spread": 0.18
+      "orb_spread": 0.18,
+      "orb_macroSpectrum": 0.439,
+      "orb_macroEvolve": 0.486,
+      "orb_macroCoupling": 0.497,
+      "orb_macroSpace": 0.561,
+      "orb_filterEnvAmt": 0.479,
+      "orb_lfo1Rate": 0.153,
+      "orb_lfo1Depth": 0.255
     }
   },
   "schema_version": 1,
@@ -58,5 +65,11 @@
     "beginner"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.405,
+    "MOVEMENT": 0.452,
+    "COUPLING": 0.463,
+    "SPACE": 0.527
+  }
 }

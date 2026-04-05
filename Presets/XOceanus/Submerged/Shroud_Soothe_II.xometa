@@ -28,7 +28,14 @@
   "parameters": {
     "Orphica": {
       "couplingBus": 2,
-      "couplingLevel": 0.726
+      "couplingLevel": 0.726,
+      "orph_macroPluck": 0.453,
+      "orph_macroSurface": 0.284,
+      "orph_macroFracture": 0.226,
+      "orph_macroDivine": 0.665,
+      "orph_filterEnvAmt": 0.46,
+      "orph_lfo1Rate": 0.085,
+      "orph_lfo1Depth": 0.213
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "orphica"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.441,
+    "MOVEMENT": 0.272,
+    "COUPLING": 0.214,
+    "SPACE": 0.653
+  }
 }

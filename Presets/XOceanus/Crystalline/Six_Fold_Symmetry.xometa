@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Six Fold Symmetry",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The six-fold symmetry of a crystal lattice expressed through geometric folds. Perfect mineral mathematics.",
+  "tags": [
+    "crystalline",
+    "six-fold",
+    "symmetry",
+    "lattice",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.81,
+    "warmth": 0.22,
+    "movement": 0.26,
+    "density": 0.38,
+    "space": 0.64,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.5,
+      "origami_macroMovement": 0.32,
+      "origami_macroCoupling": 0.18,
+      "origami_macroSpace": 0.5,
+      "origami_filterEnvAmt": 0.42,
+      "origami_lfo1Rate": 0.12,
+      "origami_lfo1Depth": 0.24
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.18,
+    "SPACE": 0.5
+  }
+}

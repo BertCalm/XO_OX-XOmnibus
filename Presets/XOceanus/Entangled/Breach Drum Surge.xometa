@@ -37,13 +37,25 @@
   "parameters": {
     "Onset": {
       "perc_v1_level": 0.9,
-      "perc_macro_punch": 0.85,
-      "perc_macro_machine": 0.65
+      "perc_macro_punch": 0.536,
+      "perc_macro_machine": 0.444,
+      "perc_macro_mutate": 0.487,
+      "perc_macro_space": 0.43,
+      "perc_filterEnvAmt": 0.458,
+      "perc_lfo1Rate": 0.209,
+      "perc_lfo1Depth": 0.351
     },
     "Orca": {
       "orca_breach": 0.75,
       "orca_impact": 0.8,
-      "orca_tail": 0.35
+      "orca_tail": 0.35,
+      "orca_macroCharacter": 0.528,
+      "orca_macroMovement": 0.479,
+      "orca_macroCoupling": 0.436,
+      "orca_macroSpace": 0.422,
+      "orca_filterEnvAmt": 0.458,
+      "orca_lfo1Rate": 0.209,
+      "orca_lfo1Depth": 0.351
     }
   },
   "coupling": {
@@ -63,5 +75,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.512,
+    "MOVEMENT": 0.463,
+    "COUPLING": 0.42,
+    "SPACE": 0.406
+  }
 }

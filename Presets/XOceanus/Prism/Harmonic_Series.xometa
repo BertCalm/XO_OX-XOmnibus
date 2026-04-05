@@ -48,7 +48,19 @@
       "morph_release": 0.9,
       "morph_sub": 0.2,
       "morph_level": 0.68,
-      "morph_polyphony": 4
+      "morph_polyphony": 4,
+      "morph_macroCharacter": 0.598,
+      "morph_macroMovement": 0.426,
+      "morph_macroCoupling": 0.191,
+      "morph_macroSpace": 0.466,
+      "morph_filterEnvDepth": 0.522,
+      "morph_lfoRate": 0.216
     }
+  },
+  "macros": {
+    "CHARACTER": 0.575,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.168,
+    "SPACE": 0.443
   }
 }

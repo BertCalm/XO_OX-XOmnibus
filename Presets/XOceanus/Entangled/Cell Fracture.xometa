@@ -46,7 +46,14 @@
       "owit_mutateProb": 0.08,
       "owit_outputLevel": 0.693,
       "owit_pitchSpread": 0.277,
-      "owit_rule": 110
+      "owit_rule": 110,
+      "owit_macroCharacter": 0.556,
+      "owit_macroMovement": 0.518,
+      "owit_macroCoupling": 0.698,
+      "owit_macroSpace": 0.504,
+      "owit_filterEnvAmt": 0.447,
+      "owit_lfo1Rate": 0.172,
+      "owit_lfo1Depth": 0.372
     }
   },
   "schema_version": 1,
@@ -59,5 +66,11 @@
     "wolfram"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.578,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.72,
+    "SPACE": 0.526
+  }
 }

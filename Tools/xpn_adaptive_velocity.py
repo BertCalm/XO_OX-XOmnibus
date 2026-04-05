@@ -31,6 +31,8 @@ except ImportError:
           file=sys.stderr)
     sys.exit(1)
 
+from xpn_velocity_standard import ZONES as _STANDARD_ZONES
+
 # Optional: xpn_auto_dna for per-sample 6D DNA (enables Sonic DNA Velocity Sculpting)
 try:
     from xpn_auto_dna import compute_dna as _compute_dna
@@ -49,6 +51,13 @@ except ImportError:
 
 # Each entry: list of VelStart values for layers [L0, L1, L2, L3, L4...]
 # These represent IDEAL 4-layer distributions (5 boundaries = 4 ranges).
+# Build the standard fallback boundary list from xpn_velocity_standard.
+# Format: [velStart_L1, velStart_L2, velStart_L3, velStart_L4, 127]
+# Old "unknown" fallback was [0, 32, 64, 96, 127] (equal division).
+# New fallback derives from Ghost Council Modified zones (replaced 2026-04-04).
+_STD_BOUNDARY = [_STANDARD_ZONES[i][0] for i in range(len(_STANDARD_ZONES))] + [127]
+# _STD_BOUNDARY == [1, 21, 56, 91, 127]
+
 VELOCITY_CURVES = {
     "kick":        [0, 40, 75, 100, 127],   # Heavy weighting toward upper layers
     "snare":       [0, 35, 65,  90, 127],   # Similar to kick, slightly more even
@@ -61,7 +70,7 @@ VELOCITY_CURVES = {
     "bass":        [0, 40, 70,  95, 127],   # Low-end weighted
     "perc":        [0, 35, 65,  90, 127],   # Snare-like
     "fx":          [0, 32, 64,  96, 127],   # Even
-    "unknown":     [0, 32, 64,  96, 127],   # Default equal division
+    "unknown":     _STD_BOUNDARY,           # Ghost Council Modified zones (standard fallback)
 }
 
 # VelocityToFilter range: 0–127 in MPC XPM convention.

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Gendy Storm",
+  "mood": "Flux",
+  "engines": ["Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "GENDY stochastic synthesis at maximum breakpoint density. Maqam tuning warping under chaotic attack.",
+  "tags": ["flux", "aggressive", "stochastic", "gendy", "oracle"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.16,
+    "movement": 0.94,
+    "density": 0.88,
+    "space": 0.14,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_macroCharacter": 0.86,
+      "oracle_macroMovement": 0.9,
+      "oracle_macroCoupling": 0.16,
+      "oracle_macroSpace": 0.15,
+      "oracle_breakpoints": 0.92,
+      "oracle_stochDensity": 0.88,
+      "oracle_filterEnvAmt": 0.75,
+      "oracle_lfo1Rate": 0.6,
+      "oracle_lfo1Depth": 0.44,
+      "oracle_filterCutoff": 0.65,
+      "oracle_filterRes": 0.72,
+      "oracle_attackTime": 0.006,
+      "oracle_decayTime": 0.2,
+      "oracle_sustain": 0.3,
+      "oracle_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.16,
+    "SPACE": 0.15
+  }
+}

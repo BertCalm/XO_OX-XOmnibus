@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Phantom Current",
+  "mood": "Atmosphere",
+  "engines": ["Orca", "Ombre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The predator passes unseen through shadow. Orca's hunt energy bleeds in whispers into Ombre's memory layers, casting faint luminescence into forgetting.",
+  "tags": ["atmosphere", "whisper", "coupling", "predator", "shadow", "memory", "ocean"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.58,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.80,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.44,
+      "orca_macroMovement": 0.40,
+      "orca_macroCoupling": 0.14,
+      "orca_macroSpace": 0.70,
+      "orca_huntMacro": 0.22,
+      "orca_filterEnvAmt": 0.30,
+      "orca_lfo1Rate": 0.05,
+      "orca_lfo1Depth": 0.20,
+      "orca_attack": 0.8,
+      "orca_release": 3.8
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.36,
+      "ombre_macroMovement": 0.30,
+      "ombre_macroCoupling": 0.12,
+      "ombre_macroSpace": 0.82,
+      "ombre_blend": 0.48,
+      "ombre_filterEnvAmt": 0.28,
+      "ombre_lfo1Rate": 0.03,
+      "ombre_lfo1Depth": 0.14,
+      "ombre_attack": 1.4,
+      "ombre_release": 5.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ombre",
+        "type": "AmpToFilter",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.13,
+    "SPACE": 0.76
+  }
+}

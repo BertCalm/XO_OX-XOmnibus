@@ -41,11 +41,24 @@
       "snap_level": 0.85,
       "snap_pitchLock": false,
       "snap_unison": 0,
-      "snap_polyphony": 2
+      "snap_polyphony": 2,
+      "snap_macroDart": 0.644,
+      "snap_macroDepth": 0.346,
+      "snap_macroSchool": 0.273,
+      "snap_macroSurface": 0.373,
+      "snap_filterEnvDepth": 0.373,
+      "snap_lfoRate": 0.206,
+      "snap_lfoDepth": 0.255
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.573,
+    "MOVEMENT": 0.275,
+    "COUPLING": 0.202,
+    "SPACE": 0.302
+  }
 }

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Soft Grid",
+  "mood": "Luminous",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A grid of phosphor dots pulsing in gentle synchrony — Optic engine at slow pulse rate, the visual rhythm of a screen translating into acoustic luminosity.",
+  "tags": ["luminous", "grid", "dots", "phosphor", "rhythm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.40,
+    "movement": 0.44,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.56,
+      "optic_macroMovement": 0.44,
+      "optic_macroCoupling": 0.14,
+      "optic_macroSpace": 0.55,
+      "optic_filterEnvAmt": 0.50,
+      "optic_pulseRate": 0.15,
+      "optic_pulseDepth": 0.24,
+      "optic_lfo1Rate": 0.09,
+      "optic_lfo1Depth": 0.22,
+      "optic_lfo2Rate": 0.04,
+      "optic_lfo2Depth": 0.14,
+      "optic_attack": 0.05,
+      "optic_decay": 0.7,
+      "optic_sustain": 0.82,
+      "optic_release": 2.5,
+      "optic_filterCutoff": 10500,
+      "optic_filterRes": 0.20,
+      "optic_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.14,
+    "SPACE": 0.55
+  }
+}

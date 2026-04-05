@@ -51,17 +51,24 @@
       "over_ampSus": 0.7,
       "over_ampRel": 1.0,
       "over_lfo1Rate": 0.25,
-      "over_lfo1Depth": 0.0,
+      "over_lfo1Depth": 0.254,
       "over_lfo2Rate": 0.1,
       "over_lfo2Depth": 0.0,
       "over_resoMix": 0.15,
-      "over_macroDepth": 0.0,
-      "over_macroColor": 0.0,
-      "over_macroCoupling": 0.0,
-      "over_macroSpace": 0.0
+      "over_macroDepth": 0.602,
+      "over_macroColor": 0.466,
+      "over_macroCoupling": 0.33,
+      "over_macroSpace": 0.308,
+      "over_filterEnvAmt": 0.42
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.558,
+    "MOVEMENT": 0.422,
+    "COUPLING": 0.286,
+    "SPACE": 0.264
   }
 }

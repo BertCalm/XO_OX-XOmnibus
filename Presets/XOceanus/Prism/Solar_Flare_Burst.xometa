@@ -41,7 +41,14 @@
       "fat_morph": 0.92,
       "fat_release": 150.0,
       "fat_subLevel": 0.85,
-      "fat_sustain": 0.88
+      "fat_sustain": 0.88,
+      "fat_macroMojo": 0.602,
+      "fat_macroGrit": 0.593,
+      "fat_macroSize": 0.287,
+      "fat_macroCrush": 0.585,
+      "fat_fltEnvAmt": 0.43,
+      "fat_lfo1Rate": 0.109,
+      "fat_lfo1Depth": 0.303
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "saturated"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.554,
+    "MOVEMENT": 0.545,
+    "COUPLING": 0.239,
+    "SPACE": 0.537
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Mist Argument",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two voices disagreeing in fog. The narrative layer carries urgency, the forgetting layer erases it note by note.",
+  "tags": [
+    "ethereal",
+    "mist",
+    "argument",
+    "dual",
+    "erasing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.53,
+    "movement": 0.35,
+    "density": 0.25,
+    "space": 0.84,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.42,
+      "ombre_macroMovement": 0.38,
+      "ombre_macroCoupling": 0.16,
+      "ombre_macroSpace": 0.76,
+      "ombre_blend": 0.45,
+      "ombre_filterEnvAmt": 0.35,
+      "ombre_lfo1Rate": 0.035,
+      "ombre_lfo1Depth": 0.17,
+      "ombre_attack": 1.8,
+      "ombre_release": 6.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.76
+  }
+}

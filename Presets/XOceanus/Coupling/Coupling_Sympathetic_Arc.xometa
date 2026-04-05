@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Sympathetic Arc",
+  "mood": "Coupling",
+  "engines": [
+    "Orchard",
+    "Oaken"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCHARD bow pressure feeds OAKEN sympathetic resonance \u2014 bowing technique directly activating acoustic memory in old wood, articulation teaching age.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "acoustic",
+    "strings",
+    "EnvToDecay",
+    "natural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.48,
+    "density": 0.48,
+    "space": 0.54,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Orchard": {
+      "orch_bowPressure": 0.58,
+      "orch_filterEnvAmt": 0.52,
+      "orch_lfo1Rate": 0.11,
+      "orch_lfo1Depth": 0.26,
+      "orch_macroCharacter": 0.52,
+      "orch_macroMovement": 0.5,
+      "orch_macroCoupling": 0.62,
+      "orch_macroSpace": 0.52
+    },
+    "Oaken": {
+      "oaken_stringAge": 0.58,
+      "oaken_filterEnvAmt": 0.5,
+      "oaken_lfo1Rate": 0.1,
+      "oaken_lfo1Depth": 0.24,
+      "oaken_macroCharacter": 0.5,
+      "oaken_macroMovement": 0.48,
+      "oaken_macroCoupling": 0.6,
+      "oaken_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orchard",
+        "engineB": "Oaken",
+        "type": "EnvToDecay",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.61,
+    "SPACE": 0.52
+  }
+}

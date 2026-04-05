@@ -12,7 +12,8 @@
   "archetype": "percussion",
 
   "profile": "boom-bap-percussion",
-  "corner_strategy": "dynamic_expression",
+  "tier": "TRENCH",
+  "corner_strategy": "none",
   "pad_count": 16,
 
   "preset_selection": {
@@ -26,7 +27,7 @@
     "sample_rate": 44100,
     "bit_depth": 24,
     "velocity_layers": 4,
-    "velocity_values": [20, 50, 90, 127],
+    "velocity_values": [10, 38, 73, 109],
     "render_spec_override": "Docs/render_specs/mpce_perc_001_render.json",
     "preset_load_ms": 400
   },

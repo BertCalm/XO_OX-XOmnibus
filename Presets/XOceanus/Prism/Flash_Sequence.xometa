@@ -49,7 +49,13 @@
       "optic_vizMode": 1,
       "optic_vizFeedback": 0.6,
       "optic_vizSpeed": 0.6,
-      "optic_vizIntensity": 0.8
+      "optic_vizIntensity": 0.8,
+      "optic_macroCharacter": 0.596,
+      "optic_macroMovement": 0.625,
+      "optic_macroCoupling": 0.653,
+      "optic_macroSpace": 0.444,
+      "optic_filterEnvAmt": 0.525,
+      "optic_lfoRate": 0.219
     },
     "Odyssey": {
       "drift_oscA_mode": 1,
@@ -61,7 +67,14 @@
       "drift_decay": 0.3,
       "drift_sustain": 0.6,
       "drift_release": 0.35,
-      "drift_level": 0.72
+      "drift_level": 0.72,
+      "drift_macroCharacter": 0.598,
+      "drift_macroMovement": 0.627,
+      "drift_macroCoupling": 0.655,
+      "drift_macroSpace": 0.446,
+      "drift_filterEnvAmt": 0.525,
+      "drift_lfoRate": 0.219,
+      "drift_lfoDepth": 0.237
     }
   },
   "coupling": {
@@ -88,5 +101,11 @@
     "density": 0.5,
     "space": 0.3,
     "aggression": 0.65
+  },
+  "macros": {
+    "CHARACTER": 0.568,
+    "MOVEMENT": 0.597,
+    "COUPLING": 0.625,
+    "SPACE": 0.416
   }
 }

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Pteropod Rain",
+  "mood": "Deep",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Marine snow — the slow descent of organic matter through the water column, pteropod shells dissolving under pressure, granular organic material falling into the abyss.",
+  "tags": ["deep", "granular", "descent", "oceanic", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.58,
+    "movement": 0.30,
+    "density": 0.52,
+    "space": 0.80,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.34,
+      "opal_macroMovement": 0.30,
+      "opal_macroCoupling": 0.12,
+      "opal_macroSpace": 0.78,
+      "opal_filterEnvAmt": 0.32,
+      "opal_lfo1Rate": 0.07,
+      "opal_lfo1Depth": 0.24,
+      "opal_grainSize": 0.55,
+      "opal_grainDensity": 0.42
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.12,
+    "SPACE": 0.78
+  }
+}

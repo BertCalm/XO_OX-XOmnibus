@@ -39,7 +39,14 @@
       "oxb_predelay": 40,
       "oxb_dryWet": 0.9,
       "oxb_exciterDecay": 0.001,
-      "oxb_exciterBright": 0.5
+      "oxb_exciterBright": 0.5,
+      "oxb_macroCharacter": 0.472,
+      "oxb_macroMovement": 0.336,
+      "oxb_macroCoupling": 0.156,
+      "oxb_macroSpace": 0.705,
+      "oxb_filterEnvAmt": 0.464,
+      "oxb_lfo1Rate": 0.062,
+      "oxb_lfo1Depth": 0.271
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "sustain"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.443,
+    "MOVEMENT": 0.307,
+    "COUPLING": 0.127,
+    "SPACE": 0.676
+  }
 }

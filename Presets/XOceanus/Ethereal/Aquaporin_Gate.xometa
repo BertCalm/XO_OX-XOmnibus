@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Aquaporin Gate",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Protein channels that only allow water molecules through. The most selective filter in biology.",
+  "tags": [
+    "ethereal",
+    "gate",
+    "selective",
+    "biological",
+    "filter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.14,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.28,
+      "osmo_macroMovement": 0.22,
+      "osmo_macroCoupling": 0.07,
+      "osmo_macroSpace": 0.9,
+      "osmo_permeability": 0.3,
+      "osmo_filterEnvAmt": 0.22,
+      "osmo_lfo1Rate": 0.008,
+      "osmo_lfo1Depth": 0.09,
+      "osmo_attack": 4.5,
+      "osmo_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.07,
+    "SPACE": 0.9
+  }
+}

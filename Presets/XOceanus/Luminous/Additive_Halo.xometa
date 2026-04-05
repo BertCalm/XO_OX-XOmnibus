@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Additive Halo",
+  "mood": "Luminous",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A halo of additive partials rings every note with concentric rings of brightness. Higher harmonics glow like a saint's crown in old candlelight.",
+  "tags": ["luminous", "additive", "halo", "harmonic", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.52,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.58,
+      "orb_macroMovement": 0.38,
+      "orb_macroCoupling": 0.16,
+      "orb_macroSpace": 0.55,
+      "orb_filterEnvAmt": 0.55,
+      "orb_brightness": 0.80,
+      "orb_lfo1Rate": 0.08,
+      "orb_lfo1Depth": 0.22,
+      "orb_lfo2Rate": 0.04,
+      "orb_lfo2Depth": 0.14,
+      "orb_attack": 0.08,
+      "orb_decay": 0.8,
+      "orb_sustain": 0.85,
+      "orb_release": 3.0,
+      "orb_filterCutoff": 11000,
+      "orb_filterRes": 0.18,
+      "orb_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.55
+  }
+}

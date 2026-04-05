@@ -40,7 +40,14 @@
       "fat_mojo": 1.0,
       "fat_morph": 1.0,
       "fat_noiseAmount": 0.85,
-      "fat_satDrive": 0.65
+      "fat_satDrive": 0.65,
+      "fat_macroMojo": 0.83,
+      "fat_macroGrit": 0.865,
+      "fat_macroSize": 0.226,
+      "fat_macroCrush": 0.385,
+      "fat_fltEnvAmt": 0.7,
+      "fat_lfo1Rate": 0.446,
+      "fat_lfo1Depth": 0.341
     }
   },
   "schema_version": 1,
@@ -55,5 +62,11 @@
     "analog"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.782,
+    "MOVEMENT": 0.817,
+    "COUPLING": 0.178,
+    "SPACE": 0.337
+  }
 }

@@ -28,7 +28,14 @@
   "parameters": {
     "Outwit": {
       "couplingBus": 2,
-      "couplingLevel": 0.812
+      "couplingLevel": 0.812,
+      "owit_macroCharacter": 0.649,
+      "owit_macroMovement": 0.812,
+      "owit_macroCoupling": 0.178,
+      "owit_macroSpace": 0.364,
+      "owit_filterEnvAmt": 0.633,
+      "owit_lfo1Rate": 0.235,
+      "owit_lfo1Depth": 0.379
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "outwit"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.671,
+    "MOVEMENT": 0.834,
+    "COUPLING": 0.2,
+    "SPACE": 0.386
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Opal Fire",
+  "mood": "Crystalline",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The play of color in a fire opal \u2014 granular particles of light dancing through crystalline mineral.",
+  "tags": [
+    "crystalline",
+    "opal",
+    "fire",
+    "color-play",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.32,
+    "movement": 0.48,
+    "density": 0.46,
+    "space": 0.56,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.57,
+      "opal_macroMovement": 0.34,
+      "opal_macroCoupling": 0.19,
+      "opal_macroSpace": 0.53,
+      "opal_filterEnvAmt": 0.59,
+      "opal_lfo1Rate": 0.06,
+      "opal_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.19,
+    "SPACE": 0.53
+  }
+}

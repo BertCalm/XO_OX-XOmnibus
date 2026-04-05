@@ -31,13 +31,17 @@
       "olap_delayFeedback": 0.62,
       "olap_diffusion": 0.78,
       "olap_knotType": 0,
-      "olap_macroCharacter": 0.0,
-      "olap_macroCoupling": 0.0,
+      "olap_macroCharacter": 0.396,
+      "olap_macroCoupling": 0.197,
       "olap_macroDecay": 0.0,
-      "olap_macroSpace": 0.0,
+      "olap_macroSpace": 0.621,
       "olap_modDepth": 0.38,
       "olap_modRate": 0.04,
-      "olap_spread": 0.9
+      "olap_spread": 0.9,
+      "olap_macroMovement": 0.373,
+      "olap_filterEnvAmt": 0.401,
+      "olap_lfo1Rate": 0.05,
+      "olap_lfo1Depth": 0.247
     }
   },
   "schema_version": 1,
@@ -51,5 +55,11 @@
     "slow"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.193,
+    "SPACE": 0.617
+  }
 }

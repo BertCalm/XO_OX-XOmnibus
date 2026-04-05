@@ -53,12 +53,25 @@
       "perc_mutate": 0.394,
       "perc_outputLevel": 0.823,
       "perc_couplingLevel": 0.199,
-      "perc_couplingBus": 0
+      "perc_couplingBus": 0,
+      "perc_macro_punch": 0.677,
+      "perc_macro_mutate": 0.685,
+      "perc_macro_machine": 0.367,
+      "perc_macro_space": 0.326,
+      "perc_filterEnvAmt": 0.682,
+      "perc_lfo1Rate": 0.219,
+      "perc_lfo1Depth": 0.436
     }
   },
   "coupling": {
     "pairs": []
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.653,
+    "MOVEMENT": 0.661,
+    "COUPLING": 0.343,
+    "SPACE": 0.302
+  }
 }

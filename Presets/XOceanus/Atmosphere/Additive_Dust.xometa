@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Additive Dust",
+  "mood": "Atmosphere",
+  "engines": ["Orbital", "Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital's partials dissolve into Opal's grain field like light into suspension. Each harmonic becomes a mote, drifting.",
+  "tags": ["atmosphere", "whisper", "coupling", "additive", "granular", "dust", "partials"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.80,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.42,
+      "orb_macroMovement": 0.35,
+      "orb_macroCoupling": 0.14,
+      "orb_macroSpace": 0.76,
+      "orb_brightness": 0.45,
+      "orb_filterEnvAmt": 0.34,
+      "orb_lfo1Rate": 0.05,
+      "orb_lfo1Depth": 0.18,
+      "orb_attack": 1.0,
+      "orb_release": 4.2
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.38,
+      "opal_macroMovement": 0.32,
+      "opal_macroCoupling": 0.12,
+      "opal_macroSpace": 0.82,
+      "opal_grainSize": 0.28,
+      "opal_filterEnvAmt": 0.30,
+      "opal_lfo1Rate": 0.04,
+      "opal_lfo1Depth": 0.20,
+      "opal_attack": 1.6,
+      "opal_release": 5.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "AudioToFM",
+        "amount": 0.10
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.13,
+    "SPACE": 0.79
+  }
+}

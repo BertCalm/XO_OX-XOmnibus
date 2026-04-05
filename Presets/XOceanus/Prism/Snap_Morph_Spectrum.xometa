@@ -45,7 +45,14 @@
       "snap_level": 0.75,
       "snap_pitchLock": false,
       "snap_unison": 0,
-      "snap_polyphony": 2
+      "snap_polyphony": 2,
+      "snap_macroDart": 0.628,
+      "snap_macroDepth": 0.593,
+      "snap_macroSchool": 0.747,
+      "snap_macroSurface": 0.469,
+      "snap_filterEnvDepth": 0.515,
+      "snap_lfoRate": 0.277,
+      "snap_lfoDepth": 0.23
     },
     "OddOscar": {
       "morph_morph": 0.7,
@@ -59,7 +66,13 @@
       "morph_sub": 0.0,
       "morph_detune": 8.0,
       "morph_level": 0.65,
-      "morph_polyphony": 4
+      "morph_polyphony": 4,
+      "morph_macroCharacter": 0.58,
+      "morph_macroMovement": 0.545,
+      "morph_macroCoupling": 0.699,
+      "morph_macroSpace": 0.421,
+      "morph_filterEnvDepth": 0.515,
+      "morph_lfoRate": 0.277
     }
   },
   "coupling": {
@@ -72,5 +85,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.557,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.676,
+    "SPACE": 0.398
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Depth",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Parallax depth through crystal layers \u2014 each plane a different frequency of frozen mineral light.",
+  "tags": [
+    "crystalline",
+    "depth",
+    "parallax",
+    "layer",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.24,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.65,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.59,
+      "look_macroMovement": 0.36,
+      "look_macroCoupling": 0.14,
+      "look_macroSpace": 0.63,
+      "look_filterEnvAmt": 0.5,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.14,
+    "SPACE": 0.63
+  }
+}

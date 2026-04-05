@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Hammer Strife",
+  "mood": "Kinetic",
+  "engines": ["Ouie"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Duophonic voices at maximum STRIFE kinetic output. Hammerhead steel interval crashing hard sync.",
+  "tags": ["kinetic", "aggressive", "hammer", "strife", "duophonic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.14,
+    "movement": 0.92,
+    "density": 0.8,
+    "space": 0.15,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_macroCharacter": 0.88,
+      "ouie_macroMovement": 0.9,
+      "ouie_macroCoupling": 0.16,
+      "ouie_macroSpace": 0.16,
+      "ouie_macroHammer": 0.98,
+      "ouie_intervalSemitones": 5.0,
+      "ouie_algo1": 0.8,
+      "ouie_algo2": 0.85,
+      "ouie_filterEnvAmt": 0.8,
+      "ouie_lfo1Rate": 0.62,
+      "ouie_lfo1Depth": 0.44,
+      "ouie_filterCutoff": 0.7,
+      "ouie_filterRes": 0.72,
+      "ouie_attackTime": 0.005,
+      "ouie_decayTime": 0.18,
+      "ouie_sustain": 0.28,
+      "ouie_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.16,
+    "SPACE": 0.16
+  }
+}

@@ -37,9 +37,9 @@
       "otto_foreignDrift": 0.634,
       "otto_foreignStretch": 0.581,
       "otto_macroBrightness": 0.394,
-      "otto_macroCoupling": 0.0,
+      "otto_macroCoupling": 0.113,
       "otto_macroGrow": 0.964,
-      "otto_macroSpace": 0.841,
+      "otto_macroSpace": 0.862,
       "otto_reverbSize": 0.748,
       "otto_sympatheticAmt": 0.714,
       "otto_teenBore": 0.781,
@@ -54,7 +54,11 @@
       "otto_tweenEmbouchure": 0.912,
       "otto_tweenInst": 0,
       "otto_tweenLevel": 0.874,
-      "otto_tweenValve": 0.838
+      "otto_tweenValve": 0.838,
+      "otto_macroCharacter": 0.291,
+      "otto_macroMovement": 0.438,
+      "otto_filterEnvAmt": 0.336,
+      "otto_lfoRate": 0.046
     }
   },
   "schema_version": 1,
@@ -67,5 +71,11 @@
     "geological"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.313,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.135,
+    "SPACE": 0.884
+  }
 }

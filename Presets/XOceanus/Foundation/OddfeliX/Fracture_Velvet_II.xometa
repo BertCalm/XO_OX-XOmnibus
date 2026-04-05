@@ -28,7 +28,14 @@
   "parameters": {
     "OddfeliX": {
       "couplingBus": 1,
-      "couplingLevel": 0.811
+      "couplingLevel": 0.811,
+      "snap_macroDart": 0.501,
+      "snap_macroDepth": 0.464,
+      "snap_macroSchool": 0.238,
+      "snap_macroSurface": 0.444,
+      "snap_filterEnvDepth": 0.47,
+      "snap_lfoRate": 0.24,
+      "snap_lfoDepth": 0.235
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "oddfelix"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.393,
+    "COUPLING": 0.167,
+    "SPACE": 0.373
+  }
 }

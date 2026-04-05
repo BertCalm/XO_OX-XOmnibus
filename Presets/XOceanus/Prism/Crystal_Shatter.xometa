@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Shatter",
+  "mood": "Prism",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystalline fold geometry shattering at resonant frequency. Bright angular shards propagating outward.",
+  "tags": ["prism", "aggressive", "crystal", "shatter", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.14,
+    "movement": 0.88,
+    "density": 0.74,
+    "space": 0.22,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.88,
+      "origami_macroMovement": 0.86,
+      "origami_macroCoupling": 0.22,
+      "origami_macroSpace": 0.24,
+      "origami_foldPoint": 0.92,
+      "origami_foldAngle": 0.9,
+      "origami_filterEnvAmt": 0.8,
+      "origami_lfo1Rate": 0.55,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.78,
+      "origami_filterRes": 0.76,
+      "origami_attackTime": 0.006,
+      "origami_decayTime": 0.18,
+      "origami_sustain": 0.28,
+      "origami_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.22,
+    "SPACE": 0.24
+  }
+}

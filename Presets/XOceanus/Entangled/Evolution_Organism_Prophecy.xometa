@@ -41,14 +41,28 @@
       "oracle_stochasticRate": 0.55,
       "oracle_barrierMod": 0.48,
       "oracle_filterCutoff": 0.52,
-      "oracle_outputLevel": 0.8
+      "oracle_outputLevel": 0.8,
+      "oracle_macroCharacter": 0.476,
+      "oracle_macroMovement": 0.515,
+      "oracle_macroCoupling": 0.49,
+      "oracle_macroSpace": 0.552,
+      "oracle_filterEnvAmt": 0.577,
+      "oracle_lfo1Rate": 0.256,
+      "oracle_lfo1Depth": 0.383
     },
     "Organon": {
       "organon_metabolicRate": 0.6,
       "organon_voiceCount": 4,
       "organon_filterCutoff": 0.55,
       "organon_reverbMix": 0.5,
-      "organon_outputLevel": 0.78
+      "organon_outputLevel": 0.78,
+      "organon_macroCharacter": 0.467,
+      "organon_macroMovement": 0.506,
+      "organon_macroCoupling": 0.481,
+      "organon_macroSpace": 0.543,
+      "organon_filterEnvAmt": 0.577,
+      "organon_lfo1Rate": 0.256,
+      "organon_lfo1Depth": 0.383
     }
   },
   "coupling": {
@@ -80,5 +94,11 @@
     "endAmount": 0.9,
     "description": "Coupling amount cycles on a 30-second sine — organism grows and starves repeatedly"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.468,
+    "MOVEMENT": 0.507,
+    "COUPLING": 0.482,
+    "SPACE": 0.544
+  }
 }

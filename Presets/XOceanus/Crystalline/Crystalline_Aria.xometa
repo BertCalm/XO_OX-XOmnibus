@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystalline Aria",
+  "mood": "Crystalline",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An aria performed in crystal halls \u2014 Kuramoto synchronicity creating formant resonances of mineral clarity.",
+  "tags": [
+    "crystalline",
+    "aria",
+    "vocal",
+    "formant",
+    "Kuramoto"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.25,
+    "movement": 0.35,
+    "density": 0.42,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Opera": {
+      "opera_macroCharacter": 0.62,
+      "opera_macroMovement": 0.38,
+      "opera_macroCoupling": 0.24,
+      "opera_macroSpace": 0.56,
+      "opera_filterEnvAmt": 0.58,
+      "opera_lfo1Rate": 0.07,
+      "opera_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.24,
+    "SPACE": 0.56
+  }
+}

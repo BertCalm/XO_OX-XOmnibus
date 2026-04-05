@@ -41,14 +41,28 @@
       "opal_grainPitch": 0.5,
       "opal_filterCutoff": 0.55,
       "opal_reverbMix": 0.48,
-      "opal_outputLevel": 0.8
+      "opal_outputLevel": 0.8,
+      "opal_macroCharacter": 0.461,
+      "opal_macroMovement": 0.519,
+      "opal_macroCoupling": 0.697,
+      "opal_macroSpace": 0.375,
+      "opal_filterEnvAmt": 0.449,
+      "opal_lfo1Rate": 0.112,
+      "opal_lfo1Depth": 0.259
     },
     "Orbweave": {
       "weave_knotDepth": 0.72,
       "weave_topologyOrder": 0.6,
       "weave_feedbackAmount": 0.55,
       "weave_filterCutoff": 0.52,
-      "weave_outputLevel": 0.78
+      "weave_outputLevel": 0.78,
+      "weave_macroWeave": 0.481,
+      "weave_macroTension": 0.539,
+      "weave_macroKnot": 0.717,
+      "weave_macroSpace": 0.395,
+      "weave_filterEnvAmt": 0.449,
+      "weave_lfo1Rate": 0.112,
+      "weave_lfo1Depth": 0.259
     }
   },
   "coupling": {
@@ -67,5 +81,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.476,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.712,
+    "SPACE": 0.39
+  }
 }

@@ -28,7 +28,14 @@
   "parameters": {
     "Owlfish": {
       "couplingBus": 3,
-      "couplingLevel": 0.646
+      "couplingLevel": 0.646,
+      "owl_macroCharacter": 0.692,
+      "owl_macroMovement": 0.809,
+      "owl_macroCoupling": 0.179,
+      "owl_macroSpace": 0.451,
+      "owl_filterEnvDepth": 0.616,
+      "owl_lfoRate": 0.47,
+      "owl_lfoDepth": 0.277
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "owlfish"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.672,
+    "MOVEMENT": 0.789,
+    "COUPLING": 0.159,
+    "SPACE": 0.431
+  }
 }

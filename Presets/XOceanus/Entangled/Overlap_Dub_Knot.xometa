@@ -37,12 +37,17 @@
   "parameters": {
     "Overdub": {
       "dub_driveAmount": 0.3,
-      "dub_macroCoupling": 0.0,
+      "dub_macroCoupling": 0.701,
       "dub_oscWave": 0,
       "dub_sendAmount": 0.7,
       "dub_springAmount": 0.65,
       "dub_tapeDelayTime": 0.38,
-      "dub_tapeFeedback": 0.55
+      "dub_tapeFeedback": 0.55,
+      "dub_macroCharacter": 0.487,
+      "dub_macroMovement": 0.405,
+      "dub_macroSpace": 0.448,
+      "dub_filterEnvAmt": 0.524,
+      "dub_lfoDepth": 0.178
     },
     "Overlap": {
       "olap_damping": 0.5,
@@ -50,13 +55,17 @@
       "olap_delayFeedback": 0.52,
       "olap_diffusion": 0.45,
       "olap_knotType": 1,
-      "olap_macroCharacter": 0.0,
-      "olap_macroCoupling": 0.0,
+      "olap_macroCharacter": 0.499,
+      "olap_macroCoupling": 0.713,
       "olap_macroDecay": 0.0,
-      "olap_macroSpace": 0.0,
+      "olap_macroSpace": 0.46,
       "olap_modDepth": 0.12,
       "olap_modRate": 0.2,
-      "olap_spread": 0.82
+      "olap_spread": 0.82,
+      "olap_macroMovement": 0.417,
+      "olap_filterEnvAmt": 0.524,
+      "olap_lfo1Rate": 0.178,
+      "olap_lfo1Depth": 0.262
     }
   },
   "schema_version": 1,
@@ -70,5 +79,11 @@
     "reggae"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.413,
+    "COUPLING": 0.709,
+    "SPACE": 0.456
+  }
 }

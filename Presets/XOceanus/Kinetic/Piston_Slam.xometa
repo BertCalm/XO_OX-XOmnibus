@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Piston Slam",
+  "mood": "Kinetic",
+  "engines": ["Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mechanical piston slamming with possum bite precision. Machine-rhythm scritch at industrial BPM.",
+  "tags": ["kinetic", "aggressive", "piston", "slam", "mechanical"],
+  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.22,
+    "movement": 0.94,
+    "density": 0.85,
+    "space": 0.12,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroCharacter": 0.88,
+      "poss_macroMovement": 0.92,
+      "poss_macroCoupling": 0.12,
+      "poss_macroSpace": 0.12,
+      "poss_biteDepth": 0.88,
+      "poss_scritchRate": 0.88,
+      "poss_filterEnvAmt": 0.82,
+      "poss_lfo1Rate": 0.75,
+      "poss_lfo1Depth": 0.46,
+      "poss_filterCutoff": 0.6,
+      "poss_filterRes": 0.75,
+      "poss_attackTime": 0.002,
+      "poss_decayTime": 0.1,
+      "poss_sustain": 0.12,
+      "poss_releaseTime": 0.07
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  }
+}

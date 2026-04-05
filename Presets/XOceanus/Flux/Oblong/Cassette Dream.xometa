@@ -50,7 +50,14 @@
       "bob_oscB_wave": 3.0,
       "bob_texLevel": 0.32,
       "bob_texMode": 1.0,
-      "bob_texTone": 0.45
+      "bob_texTone": 0.45,
+      "bob_macroCharacter": 0.703,
+      "bob_macroMovement": 0.729,
+      "bob_macroCoupling": 0.18,
+      "bob_macroSpace": 0.287,
+      "bob_fltEnvAmt": 0.675,
+      "bob_lfo1Rate": 0.355,
+      "bob_lfo1Depth": 0.421
     }
   },
   "schema_version": 1,
@@ -62,5 +69,11 @@
     "dream"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.716,
+    "COUPLING": 0.167,
+    "SPACE": 0.274
+  }
 }

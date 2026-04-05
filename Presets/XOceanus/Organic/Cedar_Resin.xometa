@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Cedar Resin",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fresh cedar resin oozing from a wound in the bark — pungent and protective, the tree's immune response made audible.",
+  "tags": ["organic", "cedar", "resin", "aromatic", "protective"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.74,
+    "movement": 0.30,
+    "density": 0.50,
+    "space": 0.48,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.46,
+      "oaken_macroMovement": 0.30,
+      "oaken_macroCoupling": 0.16,
+      "oaken_macroSpace": 0.48,
+      "oaken_stringAge": 0.55,
+      "oaken_filterEnvAmt": 0.46,
+      "oaken_lfo1Rate": 0.05,
+      "oaken_lfo1Depth": 0.22,
+      "oaken_lfo2Rate": 0.10,
+      "oaken_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.16,
+    "SPACE": 0.48
+  }
+}

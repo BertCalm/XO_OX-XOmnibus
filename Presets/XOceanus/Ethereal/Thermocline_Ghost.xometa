@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Thermocline Ghost",
+  "mood": "Ethereal",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The invisible temperature boundary where warm and cold water refuse to mix. A ghost membrane in the deep.",
+  "tags": [
+    "ethereal",
+    "boundary",
+    "depth",
+    "temperature",
+    "invisible"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.16,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.33,
+      "deep_macroMovement": 0.24,
+      "deep_macroCoupling": 0.08,
+      "deep_macroSpace": 0.88,
+      "deep_macroPressure": 0.5,
+      "deep_filterEnvAmt": 0.26,
+      "deep_lfo1Rate": 0.015,
+      "deep_lfo1Depth": 0.12,
+      "deep_attack": 3.0,
+      "deep_release": 9.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.08,
+    "SPACE": 0.88
+  }
+}

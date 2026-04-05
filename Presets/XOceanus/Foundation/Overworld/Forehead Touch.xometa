@@ -30,17 +30,20 @@
       "ow_dpcmEnable": 0,
       "ow_era": 0.466,
       "ow_eraY": 0.563,
-      "ow_macroCrush": 0.363,
-      "ow_macroEra": 0.666,
-      "ow_macroGlitch": 0.0,
-      "ow_macroSpace": 0.088,
+      "ow_macroCrush": 0.425,
+      "ow_macroEra": 0.535,
+      "ow_macroGlitch": 0.254,
+      "ow_macroSpace": 0.362,
       "ow_masterVol": 0.8,
       "ow_noiseMode": 0,
       "ow_noisePeriod": 8,
       "ow_pulseDuty": 3,
       "ow_pulseSweep": 0.04,
       "ow_triEnable": 0,
-      "ow_voiceMode": 0
+      "ow_voiceMode": 0,
+      "ow_filterEnvDepth": 0.399,
+      "ow_fmLfoRate": 0.156,
+      "ow_fmLfoDepth": 0.227
     }
   },
   "schema_version": 1,
@@ -54,5 +57,11 @@
     "overworld"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.412,
+    "COUPLING": 0.241,
+    "SPACE": 0.349
+  }
 }

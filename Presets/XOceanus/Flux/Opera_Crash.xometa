@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Opera Crash",
+  "mood": "Flux",
+  "engines": ["Opera"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Autonomous conductor arc crashing into dramatic catastrophe. Kuramoto synchronicity collapsing under aggression.",
+  "tags": ["flux", "aggressive", "opera", "crash", "dramatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.88,
+    "density": 0.85,
+    "space": 0.22,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Opera": {
+      "opera_macroCharacter": 0.85,
+      "opera_macroMovement": 0.86,
+      "opera_macroCoupling": 0.22,
+      "opera_macroSpace": 0.24,
+      "opera_drama": 0.95,
+      "opera_conductorK": 0.9,
+      "opera_filterEnvAmt": 0.74,
+      "opera_lfo1Rate": 0.5,
+      "opera_lfo1Depth": 0.44,
+      "opera_filterCutoff": 0.65,
+      "opera_filterRes": 0.7,
+      "opera_attackTime": 0.01,
+      "opera_decayTime": 0.28,
+      "opera_sustain": 0.42,
+      "opera_releaseTime": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.22,
+    "SPACE": 0.24
+  }
+}

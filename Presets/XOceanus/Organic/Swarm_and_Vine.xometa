@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Swarm and Vine",
+  "mood": "Organic",
+  "engines": ["Oceanic", "Overgrow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Insect swarm modulating a vine's growth pattern — amplitude of the colony drives the forest's filter frequency.",
+  "tags": ["organic", "swarm", "vine", "coupled", "ecosystem"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.66,
+    "movement": 0.50,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.44,
+      "ocean_macroMovement": 0.50,
+      "ocean_macroCoupling": 0.25,
+      "ocean_macroSpace": 0.52,
+      "ocean_separation": 0.45,
+      "ocean_filterEnvAmt": 0.45,
+      "ocean_lfo1Rate": 0.10,
+      "ocean_lfo1Depth": 0.28,
+      "ocean_lfo2Rate": 0.04,
+      "ocean_lfo2Depth": 0.20
+    },
+    "Overgrow": {
+      "grow_macroCharacter": 0.40,
+      "grow_macroMovement": 0.42,
+      "grow_macroCoupling": 0.25,
+      "grow_macroSpace": 0.52,
+      "grow_growthRate": 0.38,
+      "grow_filterEnvAmt": 0.40,
+      "grow_lfo1Rate": 0.06,
+      "grow_lfo1Depth": 0.22,
+      "grow_lfo2Rate": 0.12,
+      "grow_lfo2Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oceanic",
+        "target": "Overgrow",
+        "type": "AmpToFilter",
+        "amount": 0.32
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.25,
+    "SPACE": 0.52
+  }
+}

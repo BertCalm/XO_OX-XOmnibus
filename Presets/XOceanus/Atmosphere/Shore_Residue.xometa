@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Shore Residue",
+  "mood": "Atmosphere",
+  "engines": ["Osprey", "Osteria"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "What tide leaves behind on stone. The coastline memory of Osprey murmurs into Osteria's warm interior, salt on warm wood.",
+  "tags": ["atmosphere", "whisper", "coupling", "shore", "tide", "warmth", "coastal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.75,
+    "movement": 0.33,
+    "density": 0.44,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_macroCharacter": 0.48,
+      "osprey_macroMovement": 0.40,
+      "osprey_macroCoupling": 0.15,
+      "osprey_macroSpace": 0.70,
+      "osprey_shoreBlend": 0.52,
+      "osprey_filterEnvAmt": 0.35,
+      "osprey_lfo1Rate": 0.06,
+      "osprey_lfo1Depth": 0.20,
+      "osprey_attack": 0.7,
+      "osprey_release": 3.5
+    },
+    "Osteria": {
+      "osteria_macroCharacter": 0.45,
+      "osteria_macroMovement": 0.36,
+      "osteria_macroCoupling": 0.13,
+      "osteria_macroSpace": 0.74,
+      "osteria_qBassShore": 0.38,
+      "osteria_filterEnvAmt": 0.32,
+      "osteria_lfo1Rate": 0.05,
+      "osteria_lfo1Depth": 0.18,
+      "osteria_attack": 0.5,
+      "osteria_release": 3.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Osteria",
+        "type": "FilterToFilter",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.14,
+    "SPACE": 0.72
+  }
+}

@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, vast.",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
   "dna": {
     "aggression": 0.072,
     "brightness": 0.956,
@@ -36,15 +36,24 @@
   "parameters": {
     "Ole": {
       "level": 0.687,
-      "pan": -0.104
+      "pan": -0.104,
+      "ole_macroDrama": 0.401,
+      "ole_macroFuego": 0.289,
+      "ole_macroIsla": 0.532,
+      "ole_macroSides": 0.568,
+      "ole_filterEnvAmt": 0.407,
+      "ole_lfoRate": 0.139
     },
     "Osprey": {
       "osprey_level": 0.8,
-      "osprey_macroCharacter": 0.5,
-      "osprey_macroCoupling": 0.5,
-      "osprey_macroMovement": 0.5,
-      "osprey_macroSpace": 0.5,
-      "osprey_pan": 0.0
+      "osprey_macroCharacter": 0.456,
+      "osprey_macroCoupling": 0.587,
+      "osprey_macroMovement": 0.344,
+      "osprey_macroSpace": 0.623,
+      "osprey_pan": 0.0,
+      "osprey_filterEnvDepth": 0.407,
+      "osprey_lfo2Rate": 0.139,
+      "osprey_lfo2Depth": 0.273
     }
   },
   "schema_version": 1,
@@ -58,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.311,
+    "COUPLING": 0.554,
+    "SPACE": 0.59
+  }
 }

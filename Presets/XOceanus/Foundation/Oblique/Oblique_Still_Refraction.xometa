@@ -38,7 +38,14 @@
       "oblq_prismColor": 0.3,
       "oblq_refractionAngle": 0.3,
       "oblq_reverbMix": 0.2,
-      "oblq_warmth": 0.7
+      "oblq_warmth": 0.7,
+      "oblq_macroCharacter": 0.428,
+      "oblq_macroMovement": 0.313,
+      "oblq_macroCoupling": 0.251,
+      "oblq_macroSpace": 0.389,
+      "oblq_filterEnvAmt": 0.38,
+      "oblq_lfo1Rate": 0.089,
+      "oblq_lfo1Depth": 0.229
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "foundation"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.405,
+    "MOVEMENT": 0.29,
+    "COUPLING": 0.228,
+    "SPACE": 0.366
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Forgotten Surname",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The family name that dissolved over three generations. Only the vowels remain, carried as harmonic residue.",
+  "tags": [
+    "ethereal",
+    "memory",
+    "ghost",
+    "identity",
+    "dissolve"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.15,
+    "density": 0.14,
+    "space": 0.91,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.27,
+      "ombre_macroMovement": 0.18,
+      "ombre_macroCoupling": 0.06,
+      "ombre_macroSpace": 0.88,
+      "ombre_blend": 0.75,
+      "ombre_filterEnvAmt": 0.2,
+      "ombre_lfo1Rate": 0.007,
+      "ombre_lfo1Depth": 0.09,
+      "ombre_attack": 5.0,
+      "ombre_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.06,
+    "SPACE": 0.88
+  }
+}

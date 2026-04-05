@@ -28,7 +28,13 @@
   "parameters": {
     "OddOscar": {
       "couplingBus": 1,
-      "couplingLevel": 0.855
+      "couplingLevel": 0.855,
+      "morph_macroCharacter": 0.588,
+      "morph_macroMovement": 0.406,
+      "morph_macroCoupling": 0.124,
+      "morph_macroSpace": 0.429,
+      "morph_filterEnvDepth": 0.521,
+      "morph_lfoRate": 0.11
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "oddoscar"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.565,
+    "MOVEMENT": 0.383,
+    "COUPLING": 0.101,
+    "SPACE": 0.406
+  }
 }

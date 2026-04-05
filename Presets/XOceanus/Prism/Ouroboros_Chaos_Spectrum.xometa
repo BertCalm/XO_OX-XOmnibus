@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.7,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.4
+      "ouro_macroSpace": 0.441,
+      "ouro_macroCharacter": 0.508,
+      "ouro_macroMovement": 0.45,
+      "ouro_macroCoupling": 0.223,
+      "ouro_filterEnvAmt": 0.456,
+      "ouro_lfoRate": 0.26
     }
   },
   "tags": [
@@ -50,5 +55,11 @@
     "rho-30",
     "transcendental"
   ],
-  "description": "chaosIndex=0.9 — Rayleigh number 30.8, deep fully ergodic Lorenz chaos. damping=0.2 (near-minimum). macroChar=0.7 adds further chaos depth. Broadest possible OUROBOROS harmonic spectrum."
+  "description": "chaosIndex=0.9 — Rayleigh number 30.8, deep fully ergodic Lorenz chaos. damping=0.2 (near-minimum). macroChar=0.7 adds further chaos depth. Broadest possible OUROBOROS harmonic spectrum.",
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.221,
+    "SPACE": 0.439
+  }
 }

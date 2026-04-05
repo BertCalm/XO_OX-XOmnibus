@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Propulsion Burn",
+  "mood": "Kinetic",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rocket propulsion burn converting fuel to maximum kinetic energy. Prism trajectory locked forward.",
+  "tags": ["kinetic", "aggressive", "propulsion", "burn", "forward"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.2,
+    "movement": 0.96,
+    "density": 0.78,
+    "space": 0.16,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.85,
+      "oblq_macroMovement": 0.95,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.17,
+      "oblq_prismColor": 0.86,
+      "oblq_bounceRate": 0.95,
+      "oblq_filterEnvAmt": 0.76,
+      "oblq_lfo1Rate": 0.75,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.72,
+      "oblq_filterRes": 0.64,
+      "oblq_attackTime": 0.005,
+      "oblq_decayTime": 0.16,
+      "oblq_sustain": 0.28,
+      "oblq_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.16,
+    "SPACE": 0.17
+  }
+}

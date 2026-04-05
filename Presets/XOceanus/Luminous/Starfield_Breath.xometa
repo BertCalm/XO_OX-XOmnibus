@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Starfield Breath",
+  "mood": "Luminous",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Granular particles expand and contract like the galaxy inhaling. Each grain is a distant star, the texture a deep-space luminescence.",
+  "tags": ["luminous", "granular", "stars", "space", "breath"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.45,
+    "movement": 0.45,
+    "density": 0.42,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.48,
+      "opal_macroMovement": 0.45,
+      "opal_macroCoupling": 0.18,
+      "opal_macroSpace": 0.70,
+      "opal_filterEnvAmt": 0.55,
+      "opal_grainSize": 0.38,
+      "opal_grainDensity": 0.62,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.72,
+      "opal_lfo1Rate": 0.06,
+      "opal_lfo1Depth": 0.28,
+      "opal_lfo2Rate": 0.03,
+      "opal_lfo2Depth": 0.18,
+      "opal_attack": 0.5,
+      "opal_decay": 1.5,
+      "opal_sustain": 0.75,
+      "opal_release": 4.0,
+      "opal_filterCutoff": 7800,
+      "opal_filterRes": 0.22,
+      "opal_reverbMix": 0.58,
+      "opal_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.18,
+    "SPACE": 0.70
+  }
+}

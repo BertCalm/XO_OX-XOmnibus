@@ -109,7 +109,14 @@
       "perc_v8_pan": 0.0,
       "perc_v8_pitch": -0.5,
       "perc_v8_snap": 0.55,
-      "perc_v8_tone": 0.272
+      "perc_v8_tone": 0.272,
+      "perc_macro_punch": 0.444,
+      "perc_macro_mutate": 0.457,
+      "perc_macro_machine": 0.198,
+      "perc_macro_space": 0.407,
+      "perc_filterEnvAmt": 0.475,
+      "perc_lfo1Rate": 0.166,
+      "perc_lfo1Depth": 0.239
     }
   },
   "schema_version": 1,
@@ -124,5 +131,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.433,
+    "COUPLING": 0.174,
+    "SPACE": 0.383
+  }
 }

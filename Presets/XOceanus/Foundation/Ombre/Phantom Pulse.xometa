@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.85,
       "ombre_release": 0.3,
       "ombre_subLevel": 0.5,
-      "ombre_sustain": 0.5
+      "ombre_sustain": 0.5,
+      "ombre_macroCharacter": 0.538,
+      "ombre_macroMovement": 0.401,
+      "ombre_macroCoupling": 0.322,
+      "ombre_macroSpace": 0.468,
+      "ombre_filterEnvAmt": 0.388,
+      "ombre_lfo1Rate": 0.143,
+      "ombre_lfo1Depth": 0.28
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "percussive"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.508,
+    "MOVEMENT": 0.371,
+    "COUPLING": 0.292,
+    "SPACE": 0.438
+  }
 }

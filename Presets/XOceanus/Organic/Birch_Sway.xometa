@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Birch Sway",
+  "mood": "Organic",
+  "engines": ["Osier"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slender birch trees flexing in a light wind — white bark catching light as each lean exposes different grain.",
+  "tags": ["organic", "birch", "sway", "light", "flexible"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.46,
+    "density": 0.36,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.38,
+      "osier_macroMovement": 0.46,
+      "osier_macroCoupling": 0.16,
+      "osier_macroSpace": 0.58,
+      "osier_windDensity": 0.38,
+      "osier_filterEnvAmt": 0.40,
+      "osier_lfo1Rate": 0.08,
+      "osier_lfo1Depth": 0.26,
+      "osier_lfo2Rate": 0.14,
+      "osier_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

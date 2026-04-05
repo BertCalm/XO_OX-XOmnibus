@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Short attack, short memory \u2014 designed to track drum transients cleanly. High reactivity snaps to kick and snare hits; low memory drops quickly between beats so the coupling signal reflects rhythmic pulse rather than sustained envelope. Selectivity kept low to capture the body of the drum, not the air. Pairs with any engine where you want rhythmic amplitude modulation.",
+  "description": "Short attack, short memory — designed to track drum transients cleanly. High reactivity snaps to kick and snare hits; low memory drops quickly between beats so the coupling signal reflects rhythmic pulse rather than sustained envelope. Selectivity kept low to capture the body of the drum, not the air. Pairs with any engine where you want rhythmic amplitude modulation.",
   "tags": [
     "coupling",
     "drums",
@@ -30,7 +30,14 @@
       "osmo_permeability": 0.78,
       "osmo_selectivity": 0.18,
       "osmo_reactivity": 0.9,
-      "osmo_memory": 0.08
+      "osmo_memory": 0.08,
+      "osmo_macro1": 0.693,
+      "osmo_macro2": 0.541,
+      "osmo_macro3": 0.782,
+      "osmo_macro4": 0.503,
+      "osmo_filterEnvAmt": 0.586,
+      "osmo_lfo1Rate": 0.247,
+      "osmo_lfo1Depth": 0.288
     }
   },
   "coupling": {
@@ -43,5 +50,11 @@
     "density": 0.65,
     "space": 0.25,
     "aggression": 0.78
+  },
+  "macros": {
+    "CHARACTER": 0.638,
+    "MOVEMENT": 0.486,
+    "COUPLING": 0.727,
+    "SPACE": 0.448
   }
 }

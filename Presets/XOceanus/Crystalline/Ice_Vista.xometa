@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Ice Vista",
+  "mood": "Crystalline",
+  "engines": [
+    "Outlook"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An ice-field vista \u2014 the horizon scan revealing crystalline structures at every panoramic angle.",
+  "tags": [
+    "crystalline",
+    "ice",
+    "vista",
+    "panoramic",
+    "horizon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.68,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.61,
+      "look_macroMovement": 0.41,
+      "look_macroCoupling": 0.12,
+      "look_macroSpace": 0.58,
+      "look_filterEnvAmt": 0.49,
+      "look_lfo1Rate": 0.07,
+      "look_lfo1Depth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.12,
+    "SPACE": 0.58
+  }
+}

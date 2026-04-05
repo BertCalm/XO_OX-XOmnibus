@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Velocity Oracle",
+  "mood": "Coupling",
+  "engines": [
+    "Onset",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET percussion velocity feeds ORACLE stochastic breakpoint generation \u2014 strike force determining the shape of prophecy, impact as prediction.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "percussion",
+    "stochastic",
+    "VelocityCoupling",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.48,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_punch": 0.58,
+      "perc_macro_mutate": 0.5,
+      "perc_macro_machine": 0.45,
+      "perc_macro_space": 0.48,
+      "perc_filterEnvAmt": 0.52,
+      "perc_lfo1Rate": 0.14,
+      "perc_lfo1Depth": 0.28
+    },
+    "Oracle": {
+      "oracle_breakpoints": 0.55,
+      "oracle_filterEnvAmt": 0.5,
+      "oracle_lfo1Rate": 0.12,
+      "oracle_lfo1Depth": 0.26,
+      "oracle_macroCharacter": 0.5,
+      "oracle_macroMovement": 0.52,
+      "oracle_macroCoupling": 0.62,
+      "oracle_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oracle",
+        "type": "VelocityCoupling",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.62,
+    "SPACE": 0.48
+  }
+}

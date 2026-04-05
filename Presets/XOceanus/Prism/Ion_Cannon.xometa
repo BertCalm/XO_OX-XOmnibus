@@ -38,7 +38,14 @@
       "ow_filterCutoff": 8000.0,
       "ow_glitchAmt": 0.88,
       "ow_masterVol": 0.88,
-      "ow_voiceMode": 0.0
+      "ow_voiceMode": 0.0,
+      "ow_macroEra": 0.661,
+      "ow_macroCrush": 0.462,
+      "ow_macroGlitch": 0.257,
+      "ow_macroSpace": 0.536,
+      "ow_filterEnvDepth": 0.517,
+      "ow_fmLfoRate": 0.119,
+      "ow_fmLfoDepth": 0.288
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "chip"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.648,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.244,
+    "SPACE": 0.523
+  }
 }

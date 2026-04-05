@@ -42,15 +42,15 @@
       "onko_decay": 0.35,
       "onko_sustain": 0.4,
       "onko_release": 0.12,
-      "onko_filterEnvAmt": 0.0,
+      "onko_filterEnvAmt": 0.469,
       "onko_migration": 0.0,
       "onko_bendRange": 2.0,
-      "onko_macroCharacter": 0.5,
-      "onko_macroMovement": 0.0,
-      "onko_macroCoupling": 0.0,
-      "onko_macroSpace": 0.38,
+      "onko_macroCharacter": 0.619,
+      "onko_macroMovement": 0.413,
+      "onko_macroCoupling": 0.209,
+      "onko_macroSpace": 0.361,
       "onko_lfo1Rate": 0.05,
-      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Depth": 0.278,
       "onko_lfo1Shape": 0,
       "onko_lfo2Rate": 0.2,
       "onko_lfo2Depth": 0.0,
@@ -60,5 +60,11 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.591,
+    "MOVEMENT": 0.385,
+    "COUPLING": 0.181,
+    "SPACE": 0.333
+  }
 }

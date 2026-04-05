@@ -40,14 +40,28 @@
       "owit_chromatophoreRate": 0.68,
       "owit_ruleSet": 0.55,
       "owit_filterCutoff": 0.52,
-      "owit_outputLevel": 0.8
+      "owit_outputLevel": 0.8,
+      "owit_macroCharacter": 0.607,
+      "owit_macroMovement": 0.41,
+      "owit_macroCoupling": 0.412,
+      "owit_macroSpace": 0.474,
+      "owit_filterEnvAmt": 0.58,
+      "owit_lfo1Rate": 0.102,
+      "owit_lfo1Depth": 0.328
     },
     "Organism": {
       "org_ruleSet": 0.62,
       "org_colonyDensity": 0.65,
       "org_generationRate": 0.72,
       "org_filterCutoff": 0.5,
-      "org_outputLevel": 0.78
+      "org_outputLevel": 0.78,
+      "org_macroRule": 0.633,
+      "org_macroSeed": 0.436,
+      "org_macroCoupling": 0.438,
+      "org_macroMutate": 0.5,
+      "org_filterEnvAmt": 0.58,
+      "org_lfo1Rate": 0.102,
+      "org_lfo1Depth": 0.328
     }
   },
   "coupling": {
@@ -60,5 +74,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.629,
+    "MOVEMENT": 0.432,
+    "COUPLING": 0.434,
+    "SPACE": 0.496
+  }
 }

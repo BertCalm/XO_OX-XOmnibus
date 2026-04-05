@@ -42,7 +42,14 @@
       "fat_couplingLevel": 0.67,
       "fat_outputLevel": 0.8,
       "fat_outputPan": -0.04,
-      "fat_warmth": 0.659
+      "fat_warmth": 0.659,
+      "fat_macroMojo": 0.504,
+      "fat_macroGrit": 0.638,
+      "fat_macroSize": 0.607,
+      "fat_macroCrush": 0.479,
+      "fat_fltEnvAmt": 0.444,
+      "fat_lfo1Rate": 0.148,
+      "fat_lfo1Depth": 0.322
     },
     "Onset": {
       "perc_aggression": 0.686,
@@ -51,7 +58,14 @@
       "perc_couplingLevel": 0.56,
       "perc_outputLevel": 0.89,
       "perc_outputPan": 0.0,
-      "perc_warmth": 0.522
+      "perc_warmth": 0.522,
+      "perc_macro_punch": 0.48,
+      "perc_macro_mutate": 0.614,
+      "perc_macro_machine": 0.583,
+      "perc_macro_space": 0.455,
+      "perc_filterEnvAmt": 0.444,
+      "perc_lfo1Rate": 0.148,
+      "perc_lfo1Depth": 0.322
     }
   },
   "schema_version": 1,
@@ -64,5 +78,11 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.456,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.559,
+    "SPACE": 0.431
+  }
 }

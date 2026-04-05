@@ -35,7 +35,14 @@
       "poss_ampSustain": 0.9,
       "poss_driveAmount": 0.65,
       "poss_filterCutoff": 0.3,
-      "poss_filterReso": 0.4
+      "poss_filterReso": 0.4,
+      "poss_macroBelly": 0.557,
+      "poss_macroBite": 0.385,
+      "poss_macroPlayDead": 0.12,
+      "poss_macroScurry": 0.445,
+      "poss_filterEnvAmount": 0.498,
+      "poss_lfo1Rate": 0.097,
+      "poss_lfo1Depth": 0.177
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "bite"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.548,
+    "MOVEMENT": 0.376,
+    "COUPLING": 0.111,
+    "SPACE": 0.436
+  }
 }

@@ -36,19 +36,31 @@
   },
   "parameters": {
     "Ouie": {
-      "ouie_macroHammer": 0.72,
+      "ouie_macroHammer": 0.639,
       "ouie_voiceAlgo": 5,
       "ouie_strifeBalance": 0.55,
       "ouie_attackTime": 0.01,
       "ouie_decayTime": 0.25,
-      "ouie_outputLevel": 0.82
+      "ouie_outputLevel": 0.82,
+      "ouie_macroCartilage": 0.619,
+      "ouie_macroAmpullae": 0.716,
+      "ouie_macroCurrent": 0.53,
+      "ouie_filterEnvAmt": 0.497,
+      "ouie_lfo1Rate": 0.269,
+      "ouie_lfo1Depth": 0.256
     },
     "Ostinato": {
-      "osti_macroGather": 0.7,
+      "osti_macroGather": 0.606,
       "osti_rhythmDensity": 0.65,
       "osti_accentDepth": 0.72,
       "osti_filterCutoff": 0.48,
-      "osti_outputLevel": 0.8
+      "osti_outputLevel": 0.8,
+      "osti_macroFire": 0.586,
+      "osti_macroCircle": 0.683,
+      "osti_macroSpace": 0.497,
+      "osti_filterEnvAmt": 0.497,
+      "osti_lfo1Rate": 0.269,
+      "osti_lfo1Depth": 0.256
     }
   },
   "coupling": {
@@ -67,5 +79,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.585,
+    "MOVEMENT": 0.565,
+    "COUPLING": 0.662,
+    "SPACE": 0.476
+  }
 }

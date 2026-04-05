@@ -115,12 +115,25 @@
       "perc_v8_pan": -0.3,
       "perc_level": 0.8,
       "perc_drive": 0.05,
-      "perc_masterTone": 0.55
+      "perc_masterTone": 0.55,
+      "perc_macro_punch": 0.714,
+      "perc_macro_mutate": 0.871,
+      "perc_macro_machine": 0.371,
+      "perc_macro_space": 0.33,
+      "perc_filterEnvAmt": 0.664,
+      "perc_lfo1Rate": 0.318,
+      "perc_lfo1Depth": 0.252
     }
   },
   "coupling": {
     "pairs": []
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.847,
+    "COUPLING": 0.347,
+    "SPACE": 0.306
+  }
 }

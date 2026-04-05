@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extremely long memory combined with minimum selectivity creates a membrane that locks onto sub-bass energy and holds it as a sustained pressure for up to a full second. Slow reactivity prevents individual transients from disrupting the held mass. Use to generate a slow, tectonic coupling signal from any low-frequency source \u2014 perfect for ambient and experimental pairings where you want the sub-world to move in geological time.",
+  "description": "Extremely long memory combined with minimum selectivity creates a membrane that locks onto sub-bass energy and holds it as a sustained pressure for up to a full second. Slow reactivity prevents individual transients from disrupting the held mass. Use to generate a slow, tectonic coupling signal from any low-frequency source — perfect for ambient and experimental pairings where you want the sub-world to move in geological time.",
   "tags": [
     "deep",
     "sub-bass",
@@ -31,7 +31,14 @@
       "osmo_permeability": 0.72,
       "osmo_selectivity": 0.05,
       "osmo_reactivity": 0.12,
-      "osmo_memory": 0.97
+      "osmo_memory": 0.97,
+      "osmo_macro1": 0.531,
+      "osmo_macro2": 0.401,
+      "osmo_macro3": 0.214,
+      "osmo_macro4": 0.728,
+      "osmo_filterEnvAmt": 0.523,
+      "osmo_lfo1Rate": 0.075,
+      "osmo_lfo1Depth": 0.114
     }
   },
   "coupling": {
@@ -44,5 +51,11 @@
     "density": 0.9,
     "space": 0.45,
     "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.476,
+    "MOVEMENT": 0.346,
+    "COUPLING": 0.159,
+    "SPACE": 0.673
   }
 }

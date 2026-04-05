@@ -38,7 +38,14 @@
       "ohm_pluckDecay": 1200.0,
       "ohm_resonance": 0.12,
       "ohm_space": 0.92,
-      "ohm_warmth": 0.89
+      "ohm_warmth": 0.89,
+      "ohm_macroMeddling": 0.552,
+      "ohm_macroCommune": 0.521,
+      "ohm_macroJam": 0.209,
+      "ohm_macroMeadow": 0.575,
+      "ohm_filterEnvAmt": 0.508,
+      "ohm_lfo1Rate": 0.189,
+      "ohm_lfo1Depth": 0.257
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "organic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.469,
+    "COUPLING": 0.157,
+    "SPACE": 0.523
+  }
 }

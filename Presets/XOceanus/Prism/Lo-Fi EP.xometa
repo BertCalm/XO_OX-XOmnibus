@@ -42,7 +42,14 @@
       "drift_oscA_level": 0.7,
       "drift_oscA_mode": 3.0,
       "drift_release": 0.35,
-      "drift_sustain": 0.3
+      "drift_sustain": 0.3,
+      "drift_macroCharacter": 0.612,
+      "drift_macroMovement": 0.455,
+      "drift_macroCoupling": 0.188,
+      "drift_macroSpace": 0.407,
+      "drift_filterEnvAmt": 0.559,
+      "drift_lfoRate": 0.158,
+      "drift_lfoDepth": 0.339
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "dyssey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.582,
+    "MOVEMENT": 0.425,
+    "COUPLING": 0.158,
+    "SPACE": 0.377
+  }
 }

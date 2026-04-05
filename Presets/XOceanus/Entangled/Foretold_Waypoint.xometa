@@ -46,7 +46,14 @@
       "drift_level": 0.829,
       "drift_movement": 0.602,
       "drift_space": 0.71,
-      "drift_warmth": 0.462
+      "drift_warmth": 0.462,
+      "drift_macroCharacter": 0.672,
+      "drift_macroMovement": 0.584,
+      "drift_macroCoupling": 0.446,
+      "drift_macroSpace": 0.551,
+      "drift_filterEnvAmt": 0.448,
+      "drift_lfoRate": 0.246,
+      "drift_lfoDepth": 0.373
     },
     "Oracle": {
       "oracle_aggression": 0.439,
@@ -55,7 +62,14 @@
       "oracle_level": 0.856,
       "oracle_movement": 0.664,
       "oracle_space": 0.702,
-      "oracle_warmth": 0.459
+      "oracle_warmth": 0.459,
+      "oracle_macroCharacter": 0.65,
+      "oracle_macroMovement": 0.562,
+      "oracle_macroCoupling": 0.424,
+      "oracle_macroSpace": 0.529,
+      "oracle_filterEnvAmt": 0.448,
+      "oracle_lfo1Rate": 0.246,
+      "oracle_lfo1Depth": 0.373
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.642,
+    "MOVEMENT": 0.554,
+    "COUPLING": 0.416,
+    "SPACE": 0.521
+  }
 }

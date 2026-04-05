@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Experimental modal membrane exploration \u2014 tabla and doumbek across all four articulations, tuned to microtonally offset pitches. FIRE macro drives the exciter energy into modal membrane resonators producing overtone blooms. Not a groove \u2014 a modal investigation.",
+  "description": "Experimental modal membrane exploration — tabla and doumbek across all four articulations, tuned to microtonally offset pitches. FIRE macro drives the exciter energy into modal membrane resonators producing overtone blooms. Not a groove — a modal investigation.",
   "tags": [
     "experimental",
     "microtonal",
@@ -146,10 +146,10 @@
       "osti_seat8_pitchEnv": 0.0,
       "osti_seat8_exciterMix": 0.62,
       "osti_seat8_bodyModel": 0,
-      "osti_macroGather": 0.18,
-      "osti_macroFire": 0.72,
-      "osti_macroCircle": 0.55,
-      "osti_macroSpace": 0.42,
+      "osti_macroGather": 0.729,
+      "osti_macroFire": 0.835,
+      "osti_macroCircle": 0.176,
+      "osti_macroSpace": 0.401,
       "osti_tempo": 80.0,
       "osti_swing": 10.0,
       "osti_masterTune": 0.0,
@@ -165,10 +165,19 @@
       "osti_compRelease": 45.0,
       "osti_circleAmount": 0.55,
       "osti_humanize": 0.42,
-      "osti_masterLevel": 0.8
+      "osti_masterLevel": 0.8,
+      "osti_filterEnvAmt": 0.592,
+      "osti_lfo1Rate": 0.352,
+      "osti_lfo1Depth": 0.39
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.708,
+    "MOVEMENT": 0.814,
+    "COUPLING": 0.155,
+    "SPACE": 0.38
   }
 }

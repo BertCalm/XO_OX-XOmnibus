@@ -47,16 +47,27 @@
       "organon_macro3": 0.336,
       "organon_macro4": 0.689,
       "organon_outputLevel": 0.817,
-      "organon_outputPan": -0.037
+      "organon_outputPan": -0.037,
+      "organon_macroCharacter": 0.523,
+      "organon_macroMovement": 0.417,
+      "organon_macroCoupling": 0.548,
+      "organon_macroSpace": 0.454,
+      "organon_filterEnvAmt": 0.519,
+      "organon_lfo1Rate": 0.199,
+      "organon_lfo1Depth": 0.288
     },
     "Overbite": {
       "poss_gnashAmount": 0.484,
-      "poss_macroBelly": 0.667,
-      "poss_macroBite": 0.546,
-      "poss_macroScurry": 0.676,
+      "poss_macroBelly": 0.533,
+      "poss_macroBite": 0.427,
+      "poss_macroScurry": 0.464,
       "poss_macroTrash": 0.363,
       "poss_level": 0.832,
-      "poss_pan": 0.03
+      "poss_pan": 0.03,
+      "poss_macroPlayDead": 0.558,
+      "poss_filterEnvAmount": 0.519,
+      "poss_lfo1Rate": 0.199,
+      "poss_lfo1Depth": 0.288
     }
   },
   "schema_version": 1,
@@ -68,5 +79,11 @@
     "entangled"
   ],
   "tempo": 115,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.418,
+    "COUPLING": 0.549,
+    "SPACE": 0.455
+  }
 }

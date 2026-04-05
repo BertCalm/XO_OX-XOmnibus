@@ -46,7 +46,14 @@
       "oracle_level": 0.756,
       "oracle_movement": 0.7,
       "oracle_space": 0.627,
-      "oracle_warmth": 0.481
+      "oracle_warmth": 0.481,
+      "oracle_macroCharacter": 0.528,
+      "oracle_macroMovement": 0.484,
+      "oracle_macroCoupling": 0.573,
+      "oracle_macroSpace": 0.484,
+      "oracle_filterEnvAmt": 0.484,
+      "oracle_lfo1Rate": 0.136,
+      "oracle_lfo1Depth": 0.248
     },
     "Osprey": {
       "osprey_brine": 0.527,
@@ -54,7 +61,14 @@
       "osprey_foam": 0.624,
       "osprey_creatureRate": 0.69,
       "osprey_harborVerb": 0.553,
-      "osprey_hull": 0.553
+      "osprey_hull": 0.553,
+      "osprey_macroCharacter": 0.553,
+      "osprey_macroMovement": 0.509,
+      "osprey_macroCoupling": 0.598,
+      "osprey_macroSpace": 0.509,
+      "osprey_filterEnvDepth": 0.484,
+      "osprey_lfo2Rate": 0.136,
+      "osprey_lfo2Depth": 0.248
     }
   },
   "schema_version": 1,
@@ -66,5 +80,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.476,
+    "COUPLING": 0.565,
+    "SPACE": 0.476
+  }
 }

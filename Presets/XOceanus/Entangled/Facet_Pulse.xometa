@@ -46,7 +46,14 @@
       "obsidian_level": 0.746,
       "obsidian_movement": 0.22,
       "obsidian_space": 0.615,
-      "obsidian_warmth": 0.132
+      "obsidian_warmth": 0.132,
+      "obsidian_macroCharacter": 0.624,
+      "obsidian_macroMovement": 0.531,
+      "obsidian_macroCoupling": 0.683,
+      "obsidian_macroSpace": 0.534,
+      "obsidian_filterEnvAmt": 0.501,
+      "obsidian_lfoRate": 0.199,
+      "obsidian_lfoDepth": 0.346
     },
     "Optic": {
       "optic_aggression": 0.496,
@@ -55,7 +62,13 @@
       "optic_level": 0.825,
       "optic_movement": 0.893,
       "optic_space": 0.568,
-      "optic_warmth": 0.332
+      "optic_warmth": 0.332,
+      "optic_macroCharacter": 0.584,
+      "optic_macroMovement": 0.491,
+      "optic_macroCoupling": 0.643,
+      "optic_macroSpace": 0.494,
+      "optic_filterEnvAmt": 0.501,
+      "optic_lfoRate": 0.199
     }
   },
   "schema_version": 1,
@@ -67,5 +80,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.556,
+    "MOVEMENT": 0.463,
+    "COUPLING": 0.615,
+    "SPACE": 0.466
+  }
 }

@@ -37,9 +37,9 @@
       "otto_foreignDrift": 0.041,
       "otto_foreignStretch": 0.0,
       "otto_macroBrightness": 0.471,
-      "otto_macroCoupling": 0.0,
+      "otto_macroCoupling": 0.21,
       "otto_macroGrow": 0.614,
-      "otto_macroSpace": 0.193,
+      "otto_macroSpace": 0.383,
       "otto_reverbSize": 0.274,
       "otto_sympatheticAmt": 0.418,
       "otto_teenBore": 0.447,
@@ -54,7 +54,11 @@
       "otto_tweenEmbouchure": 0.641,
       "otto_tweenInst": 1,
       "otto_tweenLevel": 0.712,
-      "otto_tweenValve": 0.518
+      "otto_tweenValve": 0.518,
+      "otto_macroCharacter": 0.475,
+      "otto_macroMovement": 0.292,
+      "otto_filterEnvAmt": 0.5,
+      "otto_lfoRate": 0.188
     }
   },
   "schema_version": 1,
@@ -67,5 +71,11 @@
     "family"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.497,
+    "MOVEMENT": 0.314,
+    "COUPLING": 0.232,
+    "SPACE": 0.405
+  }
 }

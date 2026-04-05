@@ -28,7 +28,14 @@
   "parameters": {
     "Octopus": {
       "couplingBus": 1,
-      "couplingLevel": 0.735
+      "couplingLevel": 0.735,
+      "octo_macroCharacter": 0.558,
+      "octo_macroMovement": 0.36,
+      "octo_macroCoupling": 0.161,
+      "octo_macroSpace": 0.347,
+      "octo_filterEnvAmt": 0.448,
+      "octo_lfo1Rate": 0.2,
+      "octo_lfo1Depth": 0.177
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "octopus"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.362,
+    "COUPLING": 0.163,
+    "SPACE": 0.349
+  }
 }

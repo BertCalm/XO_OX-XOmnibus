@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Prism Organon Field",
+  "mood": "Luminous",
+  "engines": ["Oblique", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prismatic bounce feeds Organon's metabolic synthesis — each refracted angle becomes metabolic energy, the whole system glowing with algorithmic bioluminescence.",
+  "tags": ["luminous", "coupled", "prismatic", "metabolic", "glow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.48,
+    "movement": 0.52,
+    "density": 0.42,
+    "space": 0.60,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.55,
+      "oblq_macroMovement": 0.52,
+      "oblq_macroCoupling": 0.24,
+      "oblq_macroSpace": 0.58,
+      "oblq_filterEnvAmt": 0.53,
+      "oblq_prismColor": 0.68,
+      "oblq_lfo1Rate": 0.09,
+      "oblq_lfo1Depth": 0.24,
+      "oblq_attack": 0.05,
+      "oblq_decay": 0.8,
+      "oblq_sustain": 0.78,
+      "oblq_release": 2.5,
+      "oblq_filterCutoff": 10000,
+      "oblq_output": 0
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.45,
+      "organon_macroMovement": 0.48,
+      "organon_macroCoupling": 0.24,
+      "organon_macroSpace": 0.58,
+      "organon_filterEnvAmt": 0.48,
+      "organon_metabolicRate": 0.60,
+      "organon_lfo1Rate": 0.06,
+      "organon_lfo1Depth": 0.20,
+      "organon_attack": 0.12,
+      "organon_decay": 1.0,
+      "organon_sustain": 0.74,
+      "organon_release": 3.2,
+      "organon_filterCutoff": 7200,
+      "organon_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oblique",
+        "target": "Organon",
+        "type": "FilterToFilter",
+        "amount": 0.20
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.24,
+    "SPACE": 0.58
+  }
+}

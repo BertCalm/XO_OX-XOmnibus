@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Glass Silence",
+  "mood": "Ethereal",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The silence held inside volcanic glass. A stillness that took ten thousand years to perfect.",
+  "tags": [
+    "ethereal",
+    "glass",
+    "silence",
+    "volcanic",
+    "ancient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.15,
+    "density": 0.12,
+    "space": 0.94,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.26,
+      "obsidian_macroMovement": 0.17,
+      "obsidian_macroCoupling": 0.05,
+      "obsidian_macroSpace": 0.92,
+      "obsidian_depth": 0.35,
+      "obsidian_filterEnvAmt": 0.2,
+      "obsidian_lfo1Rate": 0.006,
+      "obsidian_lfo1Depth": 0.08,
+      "obsidian_attack": 5.0,
+      "obsidian_release": 13.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.17,
+    "COUPLING": 0.05,
+    "SPACE": 0.92
+  }
+}

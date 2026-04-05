@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Membrane",
+  "mood": "Atmosphere",
+  "engines": ["Osmosis", "Orphica"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The membrane barely remembers the pluck that passed through it. Osmosis reads the room; Orphica answers with a ghost of a string.",
+  "tags": ["atmosphere", "whisper", "coupling", "membrane", "pluck", "ghost", "subtle"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.78,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.38,
+      "osmo_macroMovement": 0.32,
+      "osmo_macroCoupling": 0.12,
+      "osmo_macroSpace": 0.74,
+      "osmo_permeability": 0.55,
+      "osmo_filterEnvAmt": 0.32,
+      "osmo_lfo1Rate": 0.04,
+      "osmo_lfo1Depth": 0.18,
+      "osmo_attack": 0.6,
+      "osmo_release": 3.2
+    },
+    "Orphica": {
+      "orph_macroCharacter": 0.42,
+      "orph_macroMovement": 0.35,
+      "orph_macroCoupling": 0.14,
+      "orph_macroSpace": 0.80,
+      "orph_pluckBrightness": 0.45,
+      "orph_filterEnvAmt": 0.38,
+      "orph_lfo1Rate": 0.06,
+      "orph_lfo1Depth": 0.15,
+      "orph_attack": 0.02,
+      "orph_release": 4.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Orphica",
+        "type": "EnvToMorph",
+        "amount": 0.11
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.13,
+    "SPACE": 0.77
+  }
+}

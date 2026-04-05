@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Orbital Spectrum",
+  "mood": "Crystalline",
+  "engines": [
+    "Oblique",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique prism pitch interlocked with Orbital additive partials \u2014 the full spectral dispersion of crystalline light.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "oblique",
+    "orbital",
+    "spectrum"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.19,
+    "movement": 0.32,
+    "density": 0.4,
+    "space": 0.65,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.55,
+      "oblq_macroMovement": 0.44,
+      "oblq_macroCoupling": 0.25,
+      "oblq_macroSpace": 0.58,
+      "oblq_filterEnvAmt": 0.56,
+      "oblq_lfo1Rate": 0.04,
+      "oblq_lfo1Depth": 0.1
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.55,
+      "orb_macroMovement": 0.44,
+      "orb_macroCoupling": 0.25,
+      "orb_macroSpace": 0.58,
+      "orb_filterEnvAmt": 0.56,
+      "orb_lfo1Rate": 0.04,
+      "orb_lfo1Depth": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "PitchToPitch",
+        "amount": 0.28
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.25,
+    "SPACE": 0.58
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Prepared Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystal prepared with foreign elements \u2014 the lattice disrupted but not broken. Mineral resonance under stress.",
+  "tags": [
+    "crystalline",
+    "prepared",
+    "crystal",
+    "mineral",
+    "stress"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.35,
+    "density": 0.48,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.5,
+      "opal2_macroMovement": 0.44,
+      "opal2_macroCoupling": 0.19,
+      "opal2_macroSpace": 0.51,
+      "opal2_filterEnvAmt": 0.54,
+      "opal2_lfo1Rate": 0.07,
+      "opal2_lfo1Depth": 0.17
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.19,
+    "SPACE": 0.51
+  }
+}

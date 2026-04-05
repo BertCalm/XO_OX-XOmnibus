@@ -46,12 +46,24 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.6,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.463,
+      "ouro_macroCharacter": 0.557,
+      "ouro_macroMovement": 0.516,
+      "ouro_macroCoupling": 0.446,
+      "ouro_filterEnvAmt": 0.594,
+      "ouro_lfoRate": 0.141
     },
     "Opal": {
       "opal_grainSize": 0.4,
       "opal_grainDensity": 0.6,
-      "opal_grainPitch": 0.0
+      "opal_grainPitch": 0.0,
+      "opal_macroCharacter": 0.54,
+      "opal_macroMovement": 0.499,
+      "opal_macroCoupling": 0.429,
+      "opal_macroSpace": 0.446,
+      "opal_filterEnvAmt": 0.594,
+      "opal_lfo1Rate": 0.141,
+      "opal_lfo1Depth": 0.295
     }
   },
   "tags": [
@@ -65,5 +77,11 @@
     "granular",
     "transcendental"
   ],
-  "description": "B007: OUROBOROS dx/dt velocity output (coupling channel 2) drives OPAL grain size. Fast chaos = small grains. Near-stable = large grains. The granular cloud breathes with the mathematics."
+  "description": "B007: OUROBOROS dx/dt velocity output (coupling channel 2) drives OPAL grain size. Fast chaos = small grains. Near-stable = large grains. The granular cloud breathes with the mathematics.",
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.514,
+    "COUPLING": 0.444,
+    "SPACE": 0.461
+  }
 }

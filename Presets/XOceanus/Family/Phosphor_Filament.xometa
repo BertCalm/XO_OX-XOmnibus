@@ -36,11 +36,25 @@
   "parameters": {
     "Onset": {
       "level": 0.743,
-      "pan": -0.108
+      "pan": -0.108,
+      "perc_macro_punch": 0.53,
+      "perc_macro_mutate": 0.396,
+      "perc_macro_machine": 0.757,
+      "perc_macro_space": 0.463,
+      "perc_filterEnvAmt": 0.474,
+      "perc_lfo1Rate": 0.183,
+      "perc_lfo1Depth": 0.281
     },
     "Outwit": {
       "level": 0.727,
-      "pan": -0.14
+      "pan": -0.14,
+      "owit_macroCharacter": 0.484,
+      "owit_macroMovement": 0.35,
+      "owit_macroCoupling": 0.711,
+      "owit_macroSpace": 0.417,
+      "owit_filterEnvAmt": 0.474,
+      "owit_lfo1Rate": 0.183,
+      "owit_lfo1Depth": 0.281
     }
   },
   "schema_version": 1,
@@ -55,5 +69,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.372,
+    "COUPLING": 0.733,
+    "SPACE": 0.439
+  }
 }

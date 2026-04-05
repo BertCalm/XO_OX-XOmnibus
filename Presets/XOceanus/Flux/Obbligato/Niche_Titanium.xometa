@@ -28,7 +28,14 @@
   "parameters": {
     "Obbligato": {
       "couplingBus": 1,
-      "couplingLevel": 0.556
+      "couplingLevel": 0.556,
+      "obbl_macroBond": 0.616,
+      "obbl_macroBreath": 0.76,
+      "obbl_macroWind": 0.278,
+      "obbl_macroMischief": 0.435,
+      "obbl_filterEnvAmt": 0.528,
+      "obbl_lfoRateA": 0.487,
+      "obbl_lfoDepthA": 0.35
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "obbligato"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.602,
+    "MOVEMENT": 0.746,
+    "COUPLING": 0.264,
+    "SPACE": 0.421
+  }
 }

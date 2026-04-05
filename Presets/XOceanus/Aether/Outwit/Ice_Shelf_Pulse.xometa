@@ -39,7 +39,14 @@
       "owit_density": 0.93,
       "owit_mutationRate": 0.85,
       "owit_rule": 30.0,
-      "owit_warmth": 0.06
+      "owit_warmth": 0.06,
+      "owit_macroCharacter": 0.319,
+      "owit_macroMovement": 0.408,
+      "owit_macroCoupling": 0.109,
+      "owit_macroSpace": 0.787,
+      "owit_filterEnvAmt": 0.381,
+      "owit_lfo1Rate": 0.048,
+      "owit_lfo1Depth": 0.114
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "cellular"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.341,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.131,
+    "SPACE": 0.809
+  }
 }

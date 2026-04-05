@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Forest Floor",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Walking on centuries of compressed leaves and root networks — each footstep resonates through the entire understory.",
+  "tags": ["organic", "forest", "floor", "understory", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.80,
+    "movement": 0.35,
+    "density": 0.58,
+    "space": 0.45,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.50,
+      "oaken_macroMovement": 0.35,
+      "oaken_macroCoupling": 0.16,
+      "oaken_macroSpace": 0.45,
+      "oaken_stringAge": 0.85,
+      "oaken_filterEnvAmt": 0.45,
+      "oaken_lfo1Rate": 0.04,
+      "oaken_lfo1Depth": 0.20,
+      "oaken_lfo2Rate": 0.02,
+      "oaken_lfo2Depth": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.16,
+    "SPACE": 0.45
+  }
+}

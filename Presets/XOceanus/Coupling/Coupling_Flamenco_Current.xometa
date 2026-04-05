@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Flamenco Current",
+  "mood": "Coupling",
+  "engines": [
+    "Ole",
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLE hibiscus drama macro modulates OSTERIA porto resonance response \u2014 flamenco impulse energizing a wine cellar's acoustic character.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "flamenco",
+    "cultural",
+    "AmpToFilter",
+    "iberian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.48,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ole": {
+      "ole_macroDrama": 0.62,
+      "ole_filterEnvAmt": 0.54,
+      "ole_lfo1Rate": 0.15,
+      "ole_lfo1Depth": 0.3,
+      "ole_macroCharacter": 0.54,
+      "ole_macroMovement": 0.6,
+      "ole_macroCoupling": 0.65,
+      "ole_macroSpace": 0.48
+    },
+    "Osteria": {
+      "osteria_qBassShore": 0.58,
+      "osteria_filterEnvAmt": 0.5,
+      "osteria_lfo1Rate": 0.13,
+      "osteria_lfo1Depth": 0.28,
+      "osteria_macroCharacter": 0.52,
+      "osteria_macroMovement": 0.56,
+      "osteria_macroCoupling": 0.62,
+      "osteria_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osteria",
+        "type": "AmpToFilter",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.64,
+    "SPACE": 0.48
+  }
+}

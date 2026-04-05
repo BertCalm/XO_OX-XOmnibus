@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Peat Smoke",
+  "mood": "Organic",
+  "engines": ["Ohm"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow-burning peat releasing stored carbon from ancient vegetation — acrid, complex, and impossibly dense with time.",
+  "tags": ["organic", "peat", "smoke", "burning", "ancient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.20,
+    "warmth": 0.80,
+    "movement": 0.30,
+    "density": 0.62,
+    "space": 0.44,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.52,
+      "ohm_macroMovement": 0.30,
+      "ohm_macroCoupling": 0.16,
+      "ohm_macroSpace": 0.44,
+      "ohm_macroMeddling": 0.65,
+      "ohm_filterEnvAmt": 0.48,
+      "ohm_lfo1Rate": 0.04,
+      "ohm_lfo1Depth": 0.22,
+      "ohm_lfo2Rate": 0.09,
+      "ohm_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.16,
+    "SPACE": 0.44
+  }
+}

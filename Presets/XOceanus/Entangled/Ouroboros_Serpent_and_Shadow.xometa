@@ -46,10 +46,22 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.541,
+      "ouro_macroCharacter": 0.509,
+      "ouro_macroMovement": 0.531,
+      "ouro_macroCoupling": 0.605,
+      "ouro_filterEnvAmt": 0.411,
+      "ouro_lfoRate": 0.219
     },
     "Obsidian": {
-      "obsidian_depth": 0.5
+      "obsidian_depth": 0.5,
+      "obsidian_macroCharacter": 0.575,
+      "obsidian_macroMovement": 0.597,
+      "obsidian_macroCoupling": 0.671,
+      "obsidian_macroSpace": 0.607,
+      "obsidian_filterEnvAmt": 0.411,
+      "obsidian_lfoRate": 0.219,
+      "obsidian_lfoDepth": 0.31
     }
   },
   "tags": [
@@ -62,5 +74,11 @@
     "mathematical",
     "transcendental"
   ],
-  "description": "Rossler's soft trajectory (leash=0.8) FM-perturbs OBSIDIAN's physical model via AudioToFM. Chaos adds slow non-repeating modulation to a resonating body — the crystal's room temperature changing randomly."
+  "description": "Rossler's soft trajectory (leash=0.8) FM-perturbs OBSIDIAN's physical model via AudioToFM. Chaos adds slow non-repeating modulation to a resonating body — the crystal's room temperature changing randomly.",
+  "macros": {
+    "CHARACTER": 0.507,
+    "MOVEMENT": 0.529,
+    "COUPLING": 0.603,
+    "SPACE": 0.539
+  }
 }

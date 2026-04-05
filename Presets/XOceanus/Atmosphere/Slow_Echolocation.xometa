@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Slow Echolocation",
+  "mood": "Atmosphere",
+  "engines": ["Orca", "Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A whale call that returns as crystal. Orca sends its low-frequency sonar into the crystalline dark; Obsidian reflects back a faint, transposed glow.",
+  "tags": ["atmosphere", "whisper", "coupling", "echolocation", "crystal", "whale", "sonar"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.60,
+    "movement": 0.24,
+    "density": 0.46,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.44,
+      "orca_macroMovement": 0.38,
+      "orca_macroCoupling": 0.15,
+      "orca_macroSpace": 0.80,
+      "orca_huntMacro": 0.18,
+      "orca_filterEnvAmt": 0.30,
+      "orca_lfo1Rate": 0.03,
+      "orca_lfo1Depth": 0.16,
+      "orca_attack": 1.5,
+      "orca_release": 6.0
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.36,
+      "obsidian_macroMovement": 0.28,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.88,
+      "obsidian_depth": 0.50,
+      "obsidian_filterEnvAmt": 0.24,
+      "obsidian_lfo1Rate": 0.02,
+      "obsidian_lfo1Depth": 0.12,
+      "obsidian_attack": 2.5,
+      "obsidian_release": 7.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obsidian",
+        "type": "PitchToPitch",
+        "amount": 0.08
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.13,
+    "SPACE": 0.84
+  }
+}

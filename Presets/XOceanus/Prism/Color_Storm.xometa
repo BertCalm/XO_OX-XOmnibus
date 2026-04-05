@@ -74,7 +74,14 @@
       "octo_inkCloud": 0.05,
       "octo_level": 0.78,
       "octo_release": 2.5,
-      "octo_sustain": 0.6
+      "octo_sustain": 0.6,
+      "octo_macroCharacter": 0.521,
+      "octo_macroMovement": 0.452,
+      "octo_macroCoupling": 0.174,
+      "octo_macroSpace": 0.53,
+      "octo_filterEnvAmt": 0.451,
+      "octo_lfo1Rate": 0.251,
+      "octo_lfo1Depth": 0.329
     }
   },
   "schema_version": 1,
@@ -90,5 +97,11 @@
     "alien"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.523,
+    "MOVEMENT": 0.454,
+    "COUPLING": 0.176,
+    "SPACE": 0.532
+  }
 }

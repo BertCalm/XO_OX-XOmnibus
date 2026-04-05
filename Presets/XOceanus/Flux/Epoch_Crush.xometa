@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Epoch Crush",
+  "mood": "Flux",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Epoch-level sonic crush. All SIZE, all CRUSH, maximum GRIT — this is what civilization collapse sounds like.",
+  "tags": ["flux", "aggressive", "epoch", "crush", "massive"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.38,
+    "movement": 0.76,
+    "density": 0.98,
+    "space": 0.08,
+    "aggression": 0.98
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.96,
+      "fat_macroMovement": 0.74,
+      "fat_macroCoupling": 0.08,
+      "fat_macroSpace": 0.08,
+      "fat_satDrive": 1.0,
+      "fat_mojo": 0.92,
+      "fat_filterEnvAmt": 0.82,
+      "fat_lfo1Rate": 0.22,
+      "fat_lfo1Depth": 0.5,
+      "fat_filterCutoff": 0.38,
+      "fat_filterRes": 0.62,
+      "fat_attackTime": 0.015,
+      "fat_decayTime": 0.4,
+      "fat_sustain": 0.65,
+      "fat_releaseTime": 0.35
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.96,
+    "MOVEMENT": 0.74,
+    "COUPLING": 0.08,
+    "SPACE": 0.08
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Diffraction Strike",
+  "mood": "Prism",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Diffraction pattern snapping at strike angle. Bright fold geometry creating maximum destructive interference.",
+  "tags": ["prism", "aggressive", "diffraction", "strike", "interference"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.16,
+    "movement": 0.87,
+    "density": 0.76,
+    "space": 0.2,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.87,
+      "origami_macroMovement": 0.85,
+      "origami_macroCoupling": 0.22,
+      "origami_macroSpace": 0.22,
+      "origami_foldPoint": 0.9,
+      "origami_foldAngle": 0.86,
+      "origami_filterEnvAmt": 0.78,
+      "origami_lfo1Rate": 0.53,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.76,
+      "origami_filterRes": 0.74,
+      "origami_attackTime": 0.007,
+      "origami_decayTime": 0.2,
+      "origami_sustain": 0.3,
+      "origami_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.22,
+    "SPACE": 0.22
+  }
+}

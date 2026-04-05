@@ -46,11 +46,24 @@
       "octo_reverbMix": 0.139,
       "octo_outputLevel": 0.876,
       "octo_couplingLevel": 0.252,
-      "octo_couplingBus": 0
+      "octo_couplingBus": 0,
+      "octo_macroCharacter": 0.692,
+      "octo_macroMovement": 0.575,
+      "octo_macroCoupling": 0.289,
+      "octo_macroSpace": 0.528,
+      "octo_filterEnvAmt": 0.458,
+      "octo_lfo1Rate": 0.178,
+      "octo_lfo1Depth": 0.229
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.694,
+    "MOVEMENT": 0.577,
+    "COUPLING": 0.291,
+    "SPACE": 0.53
+  }
 }

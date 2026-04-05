@@ -36,11 +36,24 @@
   "parameters": {
     "Ocelot": {
       "level": 0.746,
-      "pan": -0.114
+      "pan": -0.114,
+      "ocelot_macroCharacter": 0.327,
+      "ocelot_macroMovement": 0.373,
+      "ocelot_macroCoupling": 0.542,
+      "ocelot_macroSpace": 0.844,
+      "ocelot_filterEnvDepth": 0.32,
+      "ocelot_lfoRate": 0.016
     },
     "Orphica": {
       "level": 0.809,
-      "pan": 0.089
+      "pan": 0.089,
+      "orph_macroPluck": 0.322,
+      "orph_macroSurface": 0.368,
+      "orph_macroFracture": 0.537,
+      "orph_macroDivine": 0.839,
+      "orph_filterEnvAmt": 0.32,
+      "orph_lfo1Rate": 0.016,
+      "orph_lfo1Depth": 0.221
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.356,
+    "COUPLING": 0.525,
+    "SPACE": 0.827
+  }
 }

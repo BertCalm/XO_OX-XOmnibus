@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Ground",
+  "mood": "Foundation",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Foundational chaos preset. Strange attractor at controlled leash — the ground state of chaotic aggression.",
+  "tags": ["foundation", "aggressive", "chaos", "ground", "attractor"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.85,
+    "density": 0.82,
+    "space": 0.12,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.88,
+      "ouro_macroMovement": 0.82,
+      "ouro_macroCoupling": 0.12,
+      "ouro_macroSpace": 0.12,
+      "ouro_topology": 0.75,
+      "ouro_leash": 0.25,
+      "ouro_filterEnvAmt": 0.8,
+      "ouro_lfo1Rate": 0.55,
+      "ouro_lfo1Depth": 0.44,
+      "ouro_lfo2Rate": 0.72,
+      "ouro_lfo2Depth": 0.38,
+      "ouro_filterCutoff": 0.62,
+      "ouro_filterRes": 0.75,
+      "ouro_attackTime": 0.005,
+      "ouro_decayTime": 0.18,
+      "ouro_sustain": 0.3,
+      "ouro_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  }
+}

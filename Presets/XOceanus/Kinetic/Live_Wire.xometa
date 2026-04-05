@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Live Wire",
+  "mood": "Kinetic",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Electric chaos system sparking at every point. Live wire strange attractor never touching ground.",
+  "tags": ["kinetic", "aggressive", "electric", "wire", "spark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.1,
+    "movement": 0.96,
+    "density": 0.76,
+    "space": 0.12,
+    "aggression": 0.97
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.92,
+      "ouro_macroMovement": 0.95,
+      "ouro_macroCoupling": 0.1,
+      "ouro_macroSpace": 0.12,
+      "ouro_topology": 0.9,
+      "ouro_leash": 0.1,
+      "ouro_filterEnvAmt": 0.88,
+      "ouro_lfo1Rate": 0.8,
+      "ouro_lfo1Depth": 0.5,
+      "ouro_lfo2Rate": 0.92,
+      "ouro_lfo2Depth": 0.45,
+      "ouro_filterCutoff": 0.78,
+      "ouro_filterRes": 0.85,
+      "ouro_attackTime": 0.001,
+      "ouro_decayTime": 0.1,
+      "ouro_sustain": 0.2,
+      "ouro_releaseTime": 0.07
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.1,
+    "SPACE": 0.12
+  }
+}

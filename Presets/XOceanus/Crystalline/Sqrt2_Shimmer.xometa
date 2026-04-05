@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sqrt2 Shimmer",
+  "mood": "Crystalline",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Square root of two as shimmering ice harmonics. Metallic and bell-like, cold as winter glass.",
+  "tags": [
+    "crystalline",
+    "sqrt2",
+    "shimmer",
+    "metallic",
+    "bell"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.6,
+      "over_macroMovement": 0.3,
+      "over_macroCoupling": 0.23,
+      "over_macroSpace": 0.61,
+      "over_filterEnvAmt": 0.59,
+      "over_lfo1Rate": 0.13,
+      "over_lfo1Depth": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.23,
+    "SPACE": 0.61
+  }
+}

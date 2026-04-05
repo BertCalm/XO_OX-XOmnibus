@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Salt Gradient",
+  "mood": "Deep",
+  "engines": ["Osmosis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The halocline — a layer of salt concentration gradient in the deep ocean, where the membrane of density separates two distinct water masses in silence.",
+  "tags": ["deep", "oceanic", "gradient", "membrane", "layered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.60,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.74,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.42,
+      "osmo_macroMovement": 0.18,
+      "osmo_macroCoupling": 0.12,
+      "osmo_macroSpace": 0.72,
+      "osmo_filterEnvAmt": 0.40,
+      "osmo_lfo1Rate": 0.04,
+      "osmo_lfo1Depth": 0.20,
+      "osmo_permeability": 0.48
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Spring Thaw",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Frozen wood slowly releasing its winter contraction — micro-cracks and settling as warmth returns to the grain.",
+  "tags": ["organic", "spring", "thaw", "wood", "seasonal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.74,
+    "movement": 0.35,
+    "density": 0.46,
+    "space": 0.50,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.46,
+      "oaken_macroMovement": 0.35,
+      "oaken_macroCoupling": 0.16,
+      "oaken_macroSpace": 0.50,
+      "oaken_stringAge": 0.65,
+      "oaken_filterEnvAmt": 0.44,
+      "oaken_lfo1Rate": 0.05,
+      "oaken_lfo1Depth": 0.22,
+      "oaken_lfo2Rate": 0.10,
+      "oaken_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.16,
+    "SPACE": 0.50
+  }
+}

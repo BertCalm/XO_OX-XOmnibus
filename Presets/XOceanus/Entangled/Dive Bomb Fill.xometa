@@ -38,9 +38,23 @@
     "Onset": {
       "perc_v4_level": 0.75,
       "perc_v5_level": 0.7,
-      "perc_macro_punch": 0.65
+      "perc_macro_punch": 0.672,
+      "perc_macro_mutate": 0.53,
+      "perc_macro_machine": 0.75,
+      "perc_macro_space": 0.438,
+      "perc_filterEnvAmt": 0.572,
+      "perc_lfo1Rate": 0.253,
+      "perc_lfo1Depth": 0.294
     },
-    "Osprey": {}
+    "Osprey": {
+      "osprey_macroCharacter": 0.681,
+      "osprey_macroMovement": 0.539,
+      "osprey_macroCoupling": 0.759,
+      "osprey_macroSpace": 0.447,
+      "osprey_filterEnvDepth": 0.572,
+      "osprey_lfo2Rate": 0.253,
+      "osprey_lfo2Depth": 0.294
+    }
   },
   "coupling": {
     "pairs": [
@@ -59,5 +73,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.648,
+    "MOVEMENT": 0.506,
+    "COUPLING": 0.726,
+    "SPACE": 0.414
+  }
 }

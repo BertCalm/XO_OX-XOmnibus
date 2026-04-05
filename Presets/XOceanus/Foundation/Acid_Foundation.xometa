@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Acid Foundation",
+  "mood": "Foundation",
+  "engines": ["Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Foundational acid filter aggression. Bob resonance at maximum, filter envelope deep — acid in its purest form.",
+  "tags": ["foundation", "aggressive", "acid", "filter", "resonance"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.22,
+    "movement": 0.8,
+    "density": 0.72,
+    "space": 0.14,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_macroCharacter": 0.84,
+      "bob_macroMovement": 0.78,
+      "bob_macroCoupling": 0.15,
+      "bob_macroSpace": 0.15,
+      "bob_fltCutoff": 0.52,
+      "bob_fltRes": 0.88,
+      "bob_filterEnvAmt": 0.88,
+      "bob_lfo1Rate": 0.44,
+      "bob_lfo1Depth": 0.38,
+      "bob_attackTime": 0.006,
+      "bob_decayTime": 0.2,
+      "bob_sustain": 0.25,
+      "bob_releaseTime": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

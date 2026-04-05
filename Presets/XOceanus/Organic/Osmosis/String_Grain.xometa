@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Reads the micro-texture of bowed string instruments \u2014 the rosin grain, bow pressure fluctuations, and harmonic shimmer. Medium-high selectivity targets the upper partials where string character lives. Fast reactivity captures bow-change transients. Medium memory bridges the arc between bowing strokes without losing the detail of each.",
+  "description": "Reads the micro-texture of bowed string instruments — the rosin grain, bow pressure fluctuations, and harmonic shimmer. Medium-high selectivity targets the upper partials where string character lives. Fast reactivity captures bow-change transients. Medium memory bridges the arc between bowing strokes without losing the detail of each.",
   "tags": [
     "organic",
     "strings",
@@ -31,7 +31,14 @@
       "osmo_permeability": 0.58,
       "osmo_selectivity": 0.65,
       "osmo_reactivity": 0.8,
-      "osmo_memory": 0.5
+      "osmo_memory": 0.5,
+      "osmo_macro1": 0.417,
+      "osmo_macro2": 0.566,
+      "osmo_macro3": 0.211,
+      "osmo_macro4": 0.497,
+      "osmo_filterEnvAmt": 0.548,
+      "osmo_lfo1Rate": 0.078,
+      "osmo_lfo1Depth": 0.183
     }
   },
   "coupling": {
@@ -44,5 +51,11 @@
     "density": 0.42,
     "space": 0.6,
     "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.511,
+    "COUPLING": 0.156,
+    "SPACE": 0.442
   }
 }

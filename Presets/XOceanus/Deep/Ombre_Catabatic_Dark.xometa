@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Catabatic Dark",
+  "mood": "Deep",
+  "engines": ["Ombre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cold dense air flowing downslope in darkness — catabatic winds descending into a valley where night and cold are permanent, the shadow of a mountain as narrative.",
+  "tags": ["deep", "dark", "descending", "cold", "drone"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.58,
+    "movement": 0.20,
+    "density": 0.62,
+    "space": 0.74,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.44,
+      "ombre_macroMovement": 0.20,
+      "ombre_macroCoupling": 0.12,
+      "ombre_macroSpace": 0.72,
+      "ombre_filterEnvAmt": 0.38,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.20,
+      "ombre_blend": 0.65
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.20,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Ice Biome",
+  "mood": "Crystalline",
+  "engines": [
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ice biome crossfaded through Ocelot's timbral landscape \u2014 arctic crystalline terrain.",
+  "tags": [
+    "crystalline",
+    "ice",
+    "biome",
+    "arctic",
+    "timbral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.26,
+    "movement": 0.32,
+    "density": 0.44,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.56,
+      "ocelot_macroMovement": 0.43,
+      "ocelot_macroCoupling": 0.16,
+      "ocelot_macroSpace": 0.57,
+      "ocelot_filterEnvAmt": 0.44,
+      "ocelot_lfo1Rate": 0.14,
+      "ocelot_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.16,
+    "SPACE": 0.57
+  }
+}

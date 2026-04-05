@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Color Bomb",
+  "mood": "Prism",
+  "engines": ["Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chromatophore color bomb detonating across full prism spectrum. Alien chromatic aggression in every octave.",
+  "tags": ["prism", "aggressive", "color", "bomb", "chromatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.18,
+    "movement": 0.9,
+    "density": 0.84,
+    "space": 0.2,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.86,
+      "octo_macroMovement": 0.88,
+      "octo_macroCoupling": 0.22,
+      "octo_macroSpace": 0.22,
+      "octo_armDepth": 0.8,
+      "octo_chromaFlash": 0.98,
+      "octo_inkCloud": 0.65,
+      "octo_filterEnvAmt": 0.76,
+      "octo_lfo1Rate": 0.58,
+      "octo_lfo1Depth": 0.44,
+      "octo_filterCutoff": 0.68,
+      "octo_filterRes": 0.68,
+      "octo_attackTime": 0.008,
+      "octo_decayTime": 0.22,
+      "octo_sustain": 0.35,
+      "octo_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.22,
+    "SPACE": 0.22
+  }
+}

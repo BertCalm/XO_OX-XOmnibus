@@ -37,13 +37,41 @@
     "Osprey": {
       "osprey_coherence": 0.488,
       "osprey_creatureRate": 0.328,
-      "osprey_harborVerb": 0.652
+      "osprey_harborVerb": 0.652,
+      "osprey_macroCharacter": 0.526,
+      "osprey_macroMovement": 0.423,
+      "osprey_macroCoupling": 0.449,
+      "osprey_macroSpace": 0.496,
+      "osprey_filterEnvDepth": 0.481,
+      "osprey_lfo2Rate": 0.064,
+      "osprey_lfo2Depth": 0.223
     },
-    "Osteria": {},
-    "Oceanic": {}
+    "Osteria": {
+      "osteria_macroCharacter": 0.53,
+      "osteria_macroMovement": 0.427,
+      "osteria_macroCoupling": 0.453,
+      "osteria_macroSpace": 0.5,
+      "osteria_filterEnvDepth": 0.481,
+      "osteria_lfoDepth": 0.064
+    },
+    "Oceanic": {
+      "ocean_macroCharacter": 0.499,
+      "ocean_macroMovement": 0.396,
+      "ocean_macroCoupling": 0.422,
+      "ocean_macroSpace": 0.469,
+      "ocean_filterEnvAmt": 0.481,
+      "ocean_lfo1Rate": 0.064,
+      "ocean_lfo1Depth": 0.223
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.493,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.416,
+    "SPACE": 0.463
+  }
 }

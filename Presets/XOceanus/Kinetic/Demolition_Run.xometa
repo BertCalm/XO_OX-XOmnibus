@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Demolition Run",
+  "mood": "Kinetic",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full demolition run at maximum kinetic energy. Everything maxed — the building comes down this time.",
+  "tags": ["kinetic", "aggressive", "demolition", "destruction", "massive"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.96,
+    "space": 0.1,
+    "aggression": 0.97
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.95,
+      "fat_macroMovement": 0.88,
+      "fat_macroCoupling": 0.1,
+      "fat_macroSpace": 0.1,
+      "fat_satDrive": 0.97,
+      "fat_mojo": 0.92,
+      "fat_filterEnvAmt": 0.84,
+      "fat_lfo1Rate": 0.38,
+      "fat_lfo1Depth": 0.48,
+      "fat_filterCutoff": 0.46,
+      "fat_filterRes": 0.68,
+      "fat_attackTime": 0.005,
+      "fat_decayTime": 0.25,
+      "fat_sustain": 0.45,
+      "fat_releaseTime": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.1,
+    "SPACE": 0.1
+  }
+}

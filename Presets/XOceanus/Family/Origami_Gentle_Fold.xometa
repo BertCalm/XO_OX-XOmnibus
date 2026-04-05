@@ -42,7 +42,14 @@
       "origami_foldPoint": 0.7,
       "origami_layers": 1,
       "origami_oscPitch": 0.0,
-      "origami_symmetry": 0.98
+      "origami_symmetry": 0.98,
+      "origami_macroCharacter": 0.536,
+      "origami_macroMovement": 0.557,
+      "origami_macroCoupling": 0.456,
+      "origami_macroSpace": 0.562,
+      "origami_filterEnvAmt": 0.545,
+      "origami_lfo1Rate": 0.114,
+      "origami_lfo1Depth": 0.195
     }
   },
   "schema_version": 1,
@@ -58,5 +65,11 @@
     "beginner"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.477,
+    "MOVEMENT": 0.498,
+    "COUPLING": 0.397,
+    "SPACE": 0.503
+  }
 }

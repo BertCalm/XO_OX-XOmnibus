@@ -32,17 +32,20 @@
       "osprey_creatureRate": 0.415,
       "osprey_depth": 0.851,
       "osprey_foam": 0.101,
-      "osprey_macroCharacter": 0.25,
-      "osprey_macroCoupling": 0.0,
-      "osprey_macroMovement": 0.358,
-      "osprey_macroSpace": 0.93,
+      "osprey_macroCharacter": 0.421,
+      "osprey_macroCoupling": 0.19,
+      "osprey_macroMovement": 0.422,
+      "osprey_macroSpace": 0.851,
       "osprey_resonatorBright": 0.339,
       "osprey_resonatorDecay": 0.905,
       "osprey_seaState": 0.758,
       "osprey_shore": 3.8,
       "osprey_swellPeriod": 10.4,
       "osprey_sympathyAmount": 0.658,
-      "osprey_windDir": 0.479
+      "osprey_windDir": 0.479,
+      "osprey_filterEnvDepth": 0.317,
+      "osprey_lfo2Rate": 0.036,
+      "osprey_lfo2Depth": 0.201
     }
   },
   "schema_version": 1,
@@ -57,5 +60,11 @@
     "osprey"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.388,
+    "MOVEMENT": 0.389,
+    "COUPLING": 0.157,
+    "SPACE": 0.818
+  }
 }

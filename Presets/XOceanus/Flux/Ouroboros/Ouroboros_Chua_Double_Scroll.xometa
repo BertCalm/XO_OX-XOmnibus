@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.6,
       "ouro_macroMove": 0.55,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.45
+      "ouro_macroSpace": 0.322,
+      "ouro_macroCharacter": 0.756,
+      "ouro_macroMovement": 0.791,
+      "ouro_macroCoupling": 0.217,
+      "ouro_filterEnvAmt": 0.677,
+      "ouro_lfoRate": 0.392
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "metallic",
     "transcendental"
   ],
-  "description": "Chua (1983) at chaosIndex=0.75 — alphaChua=14.25, deep in double-scroll chaos. theta=0.8 exposes both scrolls in stereo. The first electronic chaos circuit proven to exist, at high bifurcation."
+  "description": "Chua (1983) at chaosIndex=0.75 — alphaChua=14.25, deep in double-scroll chaos. theta=0.8 exposes both scrolls in stereo. The first electronic chaos circuit proven to exist, at high bifurcation.",
+  "macros": {
+    "CHARACTER": 0.754,
+    "MOVEMENT": 0.789,
+    "COUPLING": 0.215,
+    "SPACE": 0.32
+  }
 }

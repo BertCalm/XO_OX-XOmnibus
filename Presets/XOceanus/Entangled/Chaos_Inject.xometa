@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Inject",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Strange attractor chaos injected directly into fold geometry. Every Origami fold corrupted by Ouroboros instability.",
+  "tags": ["entangled", "aggressive", "chaos", "inject", "fold"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.16,
+    "movement": 0.93,
+    "density": 0.85,
+    "space": 0.14,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.28,
+      "ouro_macroSpace": 0.14,
+      "ouro_topology": 0.86,
+      "ouro_leash": 0.14,
+      "ouro_filterEnvAmt": 0.84,
+      "ouro_lfo1Rate": 0.68,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_filterCutoff": 0.72,
+      "ouro_filterRes": 0.84,
+      "ouro_attackTime": 0.002,
+      "ouro_decayTime": 0.12,
+      "ouro_sustain": 0.22,
+      "ouro_releaseTime": 0.08
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.85,
+      "origami_macroMovement": 0.86,
+      "origami_macroCoupling": 0.28,
+      "origami_macroSpace": 0.14,
+      "origami_foldPoint": 0.88,
+      "origami_foldAngle": 0.85,
+      "origami_filterEnvAmt": 0.78,
+      "origami_lfo1Rate": 0.52,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.64,
+      "origami_filterRes": 0.76,
+      "origami_attackTime": 0.006,
+      "origami_decayTime": 0.18,
+      "origami_sustain": 0.28,
+      "origami_releaseTime": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Origami",
+        "type": "ChaosInject",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.14
+  }
+}

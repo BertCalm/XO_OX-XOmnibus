@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Predator Ring",
+  "mood": "Entangled",
+  "engines": ["Orca", "Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Apex predator hunt signal ring-modulating prismatic bounce. The hunt frequency destroys the prism trajectory.",
+  "tags": ["entangled", "aggressive", "predator", "ring-mod", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.15,
+    "movement": 0.93,
+    "density": 0.82,
+    "space": 0.18,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.9,
+      "orca_macroMovement": 0.9,
+      "orca_macroCoupling": 0.28,
+      "orca_macroSpace": 0.18,
+      "orca_huntMacro": 0.92,
+      "orca_echoDepth": 0.65,
+      "orca_filterEnvAmt": 0.8,
+      "orca_lfo1Rate": 0.55,
+      "orca_lfo1Depth": 0.46,
+      "orca_filterCutoff": 0.7,
+      "orca_filterRes": 0.74,
+      "orca_attackTime": 0.004,
+      "orca_decayTime": 0.15,
+      "orca_sustain": 0.26,
+      "orca_releaseTime": 0.12
+    },
+    "Oblique": {
+      "oblq_macroCharacter": 0.84,
+      "oblq_macroMovement": 0.88,
+      "oblq_macroCoupling": 0.28,
+      "oblq_macroSpace": 0.2,
+      "oblq_prismColor": 0.88,
+      "oblq_bounceRate": 0.85,
+      "oblq_filterEnvAmt": 0.72,
+      "oblq_lfo1Rate": 0.6,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.68,
+      "oblq_filterRes": 0.66,
+      "oblq_attackTime": 0.007,
+      "oblq_decayTime": 0.2,
+      "oblq_sustain": 0.35,
+      "oblq_releaseTime": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Oblique",
+        "type": "AudioToRing",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.18
+  }
+}

@@ -39,15 +39,18 @@
       "oracle_filterCutoff": 16330.0,
       "oracle_filterReso": 0.131,
       "oracle_level": 0.78,
-      "oracle_macroCharacter": 0.71,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroMovement": 0.28,
-      "oracle_macroSpace": 0.65,
+      "oracle_macroCharacter": 0.527,
+      "oracle_macroCoupling": 0.302,
+      "oracle_macroMovement": 0.429,
+      "oracle_macroSpace": 0.556,
       "oracle_propheticShimmer": 0.154,
       "oracle_reverbMix": 0.507,
       "oracle_stereoWidth": 0.793,
       "oracle_temporalRate": 1.62,
-      "oracle_visionDepth": 0.728
+      "oracle_visionDepth": 0.728,
+      "oracle_filterEnvAmt": 0.419,
+      "oracle_lfo1Rate": 0.152,
+      "oracle_lfo1Depth": 0.329
     }
   },
   "schema_version": 1,
@@ -60,5 +63,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.421,
+    "COUPLING": 0.294,
+    "SPACE": 0.548
+  }
 }

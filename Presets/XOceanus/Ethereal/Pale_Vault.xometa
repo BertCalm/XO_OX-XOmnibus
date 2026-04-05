@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Pale Vault",
+  "mood": "Ethereal",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A winter sky with no clouds, pale blue approaching white. The vault of heaven drained of color.",
+  "tags": [
+    "ethereal",
+    "pale",
+    "vault",
+    "winter",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.38,
+    "movement": 0.18,
+    "density": 0.08,
+    "space": 0.95,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.26,
+      "sky_macroMovement": 0.2,
+      "sky_macroCoupling": 0.05,
+      "sky_macroSpace": 0.93,
+      "sky_macroRise": 0.4,
+      "sky_filterEnvAmt": 0.2,
+      "sky_lfo1Rate": 0.008,
+      "sky_lfo1Depth": 0.09,
+      "sky_attack": 5.0,
+      "sky_release": 13.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.05,
+    "SPACE": 0.93
+  }
+}

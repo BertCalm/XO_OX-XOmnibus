@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Chasm Floor",
+  "mood": "Deep",
+  "engines": ["Ogre", "Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sub-bass resonating in a deep chasm — Ogre's fundamental driving Oxbow's entangled reverb, the sound of stone bouncing in a vertical canyon that drops kilometers.",
+  "tags": ["deep", "coupled", "chasm", "reverb", "sub-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.70,
+    "space": 0.82,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.55,
+      "ogre_macroMovement": 0.18,
+      "ogre_macroCoupling": 0.42,
+      "ogre_macroSpace": 0.55,
+      "ogre_filterEnvAmt": 0.42,
+      "ogre_lfo1Rate": 0.03,
+      "ogre_lfo1Depth": 0.18,
+      "ogre_subFreq": 0.20,
+      "ogre_satDrive": 0.35
+    },
+    "Oxbow": {
+      "oxb_macroCharacter": 0.38,
+      "oxb_macroMovement": 0.18,
+      "oxb_macroCoupling": 0.40,
+      "oxb_macroSpace": 0.80,
+      "oxb_filterEnvAmt": 0.35,
+      "oxb_lfo1Rate": 0.04,
+      "oxb_lfo1Depth": 0.20,
+      "oxb_entangle": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ogre",
+        "target": "Oxbow",
+        "type": "AudioToFM",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.42,
+    "SPACE": 0.80
+  }
+}

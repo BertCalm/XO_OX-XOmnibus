@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Glass Harp",
+  "mood": "Luminous",
+  "engines": ["Orphica"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wet fingers on crystal rims — Orphica's pluck engine captures the pure resonance of glass, bright and cold and utterly luminous, sustaining like a prayer.",
+  "tags": ["luminous", "glass", "crystal", "plucked", "resonance"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.90,
+    "warmth": 0.35,
+    "movement": 0.30,
+    "density": 0.22,
+    "space": 0.58,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_macroCharacter": 0.55,
+      "orph_macroMovement": 0.30,
+      "orph_macroCoupling": 0.12,
+      "orph_macroSpace": 0.58,
+      "orph_filterEnvAmt": 0.62,
+      "orph_pluckBrightness": 0.88,
+      "orph_bodyResonance": 0.35,
+      "orph_lfo1Rate": 0.05,
+      "orph_lfo1Depth": 0.14,
+      "orph_lfo2Rate": 0.10,
+      "orph_lfo2Depth": 0.08,
+      "orph_attack": 0.001,
+      "orph_decay": 2.5,
+      "orph_sustain": 0.55,
+      "orph_release": 3.0,
+      "orph_filterCutoff": 12000,
+      "orph_filterRes": 0.35,
+      "orph_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.12,
+    "SPACE": 0.58
+  }
+}

@@ -83,7 +83,14 @@
       "xPitchLock": 0,
       "xPolyphony": 3,
       "xSnap": 0.194,
-      "xUnison": 1
+      "xUnison": 1,
+      "snap_macroDart": 0.431,
+      "snap_macroDepth": 0.593,
+      "snap_macroSchool": 0.301,
+      "snap_macroSurface": 0.805,
+      "snap_filterEnvDepth": 0.411,
+      "snap_lfoRate": 0.03,
+      "snap_lfoDepth": 0.18
     }
   },
   "schema_version": 1,
@@ -97,5 +104,11 @@
     "karplus-strong"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.23,
+    "SPACE": 0.734
+  }
 }

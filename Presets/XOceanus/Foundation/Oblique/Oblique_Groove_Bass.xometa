@@ -55,7 +55,14 @@
       "oblq_prismSpread": 0.1,
       "oblq_prismWidth": 0.2,
       "oblq_release": 0.1,
-      "oblq_sustain": 0.4
+      "oblq_sustain": 0.4,
+      "oblq_macroCharacter": 0.476,
+      "oblq_macroMovement": 0.377,
+      "oblq_macroCoupling": 0.236,
+      "oblq_macroSpace": 0.418,
+      "oblq_filterEnvAmt": 0.436,
+      "oblq_lfo1Rate": 0.25,
+      "oblq_lfo1Depth": 0.279
     }
   },
   "schema_version": 1,
@@ -69,5 +76,11 @@
     "rhythmic"
   ],
   "tempo": 95,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.453,
+    "MOVEMENT": 0.354,
+    "COUPLING": 0.213,
+    "SPACE": 0.395
+  }
 }

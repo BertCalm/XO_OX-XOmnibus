@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Ice Current",
+  "mood": "Crystalline",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An ice current flowing through mineral channels \u2014 deep crystal water at near-freezing temperatures.",
+  "tags": [
+    "crystalline",
+    "ice",
+    "current",
+    "flow",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.3,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_macroCharacter": 0.53,
+      "flow_macroMovement": 0.41,
+      "flow_macroCoupling": 0.16,
+      "flow_macroSpace": 0.55,
+      "flow_filterEnvAmt": 0.53,
+      "flow_lfo1Rate": 0.09,
+      "flow_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.16,
+    "SPACE": 0.55
+  }
+}

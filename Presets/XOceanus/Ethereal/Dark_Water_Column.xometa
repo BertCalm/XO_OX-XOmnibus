@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dark Water Column",
+  "mood": "Ethereal",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Vertical water movement in the deep, silent but enormous. A column of cold moving against a column of cold.",
+  "tags": [
+    "ethereal",
+    "dark",
+    "column",
+    "vertical",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.42,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.94,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.28,
+      "deep_macroMovement": 0.22,
+      "deep_macroCoupling": 0.06,
+      "deep_macroSpace": 0.91,
+      "deep_macroPressure": 0.68,
+      "deep_filterEnvAmt": 0.24,
+      "deep_lfo1Rate": 0.007,
+      "deep_lfo1Depth": 0.1,
+      "deep_attack": 4.5,
+      "deep_release": 12.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.06,
+    "SPACE": 0.91
+  }
+}

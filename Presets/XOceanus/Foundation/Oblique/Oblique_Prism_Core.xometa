@@ -37,7 +37,14 @@
       "oblq_outputPan": 0.0,
       "oblq_prismColor": 0.5,
       "oblq_refractionAngle": 0.5,
-      "oblq_reverbMix": 0.25
+      "oblq_reverbMix": 0.25,
+      "oblq_macroCharacter": 0.615,
+      "oblq_macroMovement": 0.323,
+      "oblq_macroCoupling": 0.183,
+      "oblq_macroSpace": 0.406,
+      "oblq_filterEnvAmt": 0.439,
+      "oblq_lfo1Rate": 0.18,
+      "oblq_lfo1Depth": 0.262
     }
   },
   "schema_version": 1,
@@ -48,5 +55,11 @@
     "foundation"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.592,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.16,
+    "SPACE": 0.383
+  }
 }

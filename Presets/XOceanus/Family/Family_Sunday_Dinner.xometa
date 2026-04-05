@@ -58,14 +58,17 @@
       "obbl_fxBTapeSat": 0.062,
       "obbl_instrumentA": 3,
       "obbl_instrumentB": 3,
-      "obbl_macroBond": 0.0,
-      "obbl_macroBreath": 0.545,
-      "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.144,
+      "obbl_macroBond": 0.563,
+      "obbl_macroBreath": 0.496,
+      "obbl_macroMischief": 0.438,
+      "obbl_macroWind": 0.433,
       "obbl_reedBite": 0.263,
       "obbl_reedStiffness": 0.433,
       "obbl_sympatheticAmt": 0.366,
-      "obbl_voiceRouting": 3
+      "obbl_voiceRouting": 3,
+      "obbl_filterEnvAmt": 0.474,
+      "obbl_lfoRateA": 0.177,
+      "obbl_lfoDepthA": 0.16
     },
     "Ole": {
       "ole_allianceBlend": 0.53,
@@ -85,11 +88,13 @@
       "ole_husbandBouzLevel": 0.0,
       "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroDrama": 0.0,
-      "ole_macroFuego": 0.616,
-      "ole_macroIsla": 0.21,
-      "ole_macroSides": 0.014,
-      "ole_sympatheticAmt": 0.309
+      "ole_macroDrama": 0.527,
+      "ole_macroFuego": 0.46,
+      "ole_macroIsla": 0.397,
+      "ole_macroSides": 0.402,
+      "ole_sympatheticAmt": 0.309,
+      "ole_filterEnvAmt": 0.474,
+      "ole_lfoRate": 0.177
     },
     "Orphica": {
       "orph_bodySize": 0.355,
@@ -105,10 +110,10 @@
       "orph_driftRate": 0.139,
       "orph_highLevel": 0.817,
       "orph_lowLevel": 0.866,
-      "orph_macroDivine": 0.087,
-      "orph_macroFracture": 0.088,
-      "orph_macroPluck": 0.385,
-      "orph_macroSurface": 0.658,
+      "orph_macroDivine": 0.436,
+      "orph_macroFracture": 0.431,
+      "orph_macroPluck": 0.561,
+      "orph_macroSurface": 0.494,
       "orph_microDelayTime": 1.0,
       "orph_microDensity": 1.0,
       "orph_microMix": 0.0,
@@ -124,7 +129,10 @@
       "orph_stringMaterial": 3,
       "orph_subAmount": 0.051,
       "orph_sympatheticAmt": 0.202,
-      "orph_tapeSat": 0.195
+      "orph_tapeSat": 0.195,
+      "orph_filterEnvAmt": 0.474,
+      "orph_lfo1Rate": 0.177,
+      "orph_lfo1Depth": 0.16
     }
   },
   "schema_version": 1,
@@ -136,5 +144,11 @@
     "prism"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.549,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.419,
+    "SPACE": 0.424
+  }
 }

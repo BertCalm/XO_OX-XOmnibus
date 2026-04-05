@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Mauve Threshold",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Standing at the edge where memory becomes dream. The mauve layer speaks in past tense, the shimmer layer never arrives.",
+  "tags": [
+    "ethereal",
+    "threshold",
+    "mauve",
+    "dream",
+    "liminal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.2,
+    "space": 0.87,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.38,
+      "ombre_macroMovement": 0.3,
+      "ombre_macroCoupling": 0.12,
+      "ombre_macroSpace": 0.83,
+      "ombre_blend": 0.6,
+      "ombre_filterEnvAmt": 0.25,
+      "ombre_lfo1Rate": 0.025,
+      "ombre_lfo1Depth": 0.12,
+      "ombre_attack": 2.5,
+      "ombre_release": 7.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.12,
+    "SPACE": 0.83
+  }
+}

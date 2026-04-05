@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pack Hunt",
+  "mood": "Deep",
+  "engines": ["Orca", "Omega"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A pod coordinating a deep-water hunt — Orca's echolocation sweeps filtering Omega's sustained sub-bass, the prey's position triangulated through EnvToMorph coupling.",
+  "tags": ["deep", "coupled", "predatory", "oceanic", "sub-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.60,
+    "movement": 0.30,
+    "density": 0.72,
+    "space": 0.70,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.52,
+      "orca_macroMovement": 0.30,
+      "orca_macroCoupling": 0.42,
+      "orca_macroSpace": 0.68,
+      "orca_filterEnvAmt": 0.44,
+      "orca_lfo1Rate": 0.08,
+      "orca_lfo1Depth": 0.28,
+      "orca_huntMacro": 0.60
+    },
+    "Omega": {
+      "omega_macroCharacter": 0.55,
+      "omega_macroMovement": 0.20,
+      "omega_macroCoupling": 0.38,
+      "omega_macroSpace": 0.65,
+      "omega_filterEnvAmt": 0.40,
+      "omega_lfo1Rate": 0.04,
+      "omega_lfo1Depth": 0.18,
+      "omega_synthBass": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Omega",
+        "type": "EnvToMorph",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.42,
+    "SPACE": 0.68
+  }
+}

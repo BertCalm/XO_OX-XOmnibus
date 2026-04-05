@@ -32,15 +32,18 @@
       "organon_enzymeSelect": 1016.0,
       "organon_isotopeBalance": 0.393,
       "organon_lockIn": 0.542,
-      "organon_macroCharacter": 0.385,
-      "organon_macroCoupling": 0.0,
-      "organon_macroMovement": 0.37,
-      "organon_macroSpace": 0.985,
+      "organon_macroCharacter": 0.441,
+      "organon_macroCoupling": 0.145,
+      "organon_macroMovement": 0.5,
+      "organon_macroSpace": 0.892,
       "organon_membrane": 0.789,
       "organon_metabolicRate": 0.522,
       "organon_noiseColor": 0.215,
       "organon_phasonShift": 0.422,
-      "organon_signalFlux": 0.542
+      "organon_signalFlux": 0.542,
+      "organon_filterEnvAmt": 0.398,
+      "organon_lfo1Rate": 0.045,
+      "organon_lfo1Depth": 0.149
     }
   },
   "schema_version": 1,
@@ -55,5 +58,11 @@
     "organon"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.442,
+    "MOVEMENT": 0.501,
+    "COUPLING": 0.146,
+    "SPACE": 0.893
+  }
 }

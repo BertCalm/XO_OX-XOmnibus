@@ -76,10 +76,10 @@
       "perc_level": 0.8,
       "perc_drive": 0.08,
       "perc_masterTone": 0.5,
-      "perc_macro_machine": 0.5,
-      "perc_macro_punch": 0.6,
-      "perc_macro_space": 0.1,
-      "perc_macro_mutate": 0.0,
+      "perc_macro_machine": 0.769,
+      "perc_macro_punch": 0.664,
+      "perc_macro_space": 0.465,
+      "perc_macro_mutate": 0.447,
       "perc_xvc_kick_to_snare_filter": 0.2,
       "perc_xvc_hat_choke": 1.0,
       "perc_xvc_global_amount": 0.5,
@@ -87,7 +87,10 @@
       "perc_char_grit": 0.1,
       "perc_fx_delay_mix": 0.1,
       "perc_fx_reverb_mix": 0.15,
-      "perc_fx_lofi_mix": 0.0
+      "perc_fx_lofi_mix": 0.0,
+      "perc_filterEnvAmt": 0.401,
+      "perc_lfo1Rate": 0.23,
+      "perc_lfo1Depth": 0.379
     },
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -123,7 +126,14 @@
       "poss_ampSustain": 0.7,
       "poss_ampRelease": 0.25,
       "poss_ampVelSens": 0.55,
-      "poss_level": 0.7
+      "poss_level": 0.7,
+      "poss_macroBelly": 0.649,
+      "poss_macroBite": 0.432,
+      "poss_macroPlayDead": 0.754,
+      "poss_macroScurry": 0.45,
+      "poss_filterEnvAmount": 0.401,
+      "poss_lfo1Rate": 0.23,
+      "poss_lfo1Depth": 0.379
     }
   },
   "coupling": {
@@ -151,5 +161,11 @@
     "space": 0.25,
     "aggression": 0.5
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.745,
+    "SPACE": 0.441
+  }
 }

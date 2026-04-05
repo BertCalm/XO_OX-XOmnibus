@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Strife Choke",
+  "mood": "Entangled",
+  "engines": ["Ouie", "Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Duophonic STRIFE axis choking possum bite. Both aggressive systems fighting for dominance, choking each other.",
+  "tags": ["entangled", "aggressive", "strife", "choke", "conflict"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.16,
+    "movement": 0.9,
+    "density": 0.88,
+    "space": 0.14,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_macroCharacter": 0.88,
+      "ouie_macroMovement": 0.88,
+      "ouie_macroCoupling": 0.28,
+      "ouie_macroSpace": 0.14,
+      "ouie_macroHammer": 0.96,
+      "ouie_intervalSemitones": 6.0,
+      "ouie_algo1": 0.75,
+      "ouie_algo2": 0.8,
+      "ouie_filterEnvAmt": 0.78,
+      "ouie_lfo1Rate": 0.58,
+      "ouie_lfo1Depth": 0.44,
+      "ouie_filterCutoff": 0.68,
+      "ouie_filterRes": 0.72,
+      "ouie_attackTime": 0.006,
+      "ouie_decayTime": 0.2,
+      "ouie_sustain": 0.3,
+      "ouie_releaseTime": 0.16
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.86,
+      "poss_macroMovement": 0.84,
+      "poss_macroCoupling": 0.28,
+      "poss_macroSpace": 0.14,
+      "poss_biteDepth": 0.9,
+      "poss_scritchRate": 0.6,
+      "poss_filterEnvAmt": 0.76,
+      "poss_lfo1Rate": 0.48,
+      "poss_lfo1Depth": 0.44,
+      "poss_filterCutoff": 0.58,
+      "poss_filterRes": 0.72,
+      "poss_attackTime": 0.007,
+      "poss_decayTime": 0.22,
+      "poss_sustain": 0.32,
+      "poss_releaseTime": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouie",
+        "target": "Overbite",
+        "type": "AmpToChoke",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.14
+  }
+}

@@ -63,7 +63,14 @@
       "oblq_phaserRate": 0.5,
       "oblq_phaserDepth": 0.5,
       "oblq_phaserFeedback": 0.3,
-      "oblq_phaserMix": 0.35
+      "oblq_phaserMix": 0.35,
+      "oblq_macroCharacter": 0.583,
+      "oblq_macroMovement": 0.584,
+      "oblq_macroCoupling": 0.47,
+      "oblq_macroSpace": 0.515,
+      "oblq_filterEnvAmt": 0.535,
+      "oblq_lfo1Rate": 0.231,
+      "oblq_lfo1Depth": 0.201
     },
     "Optic": {
       "optic_reactivity": 0.8,
@@ -78,7 +85,13 @@
       "optic_vizMode": 2,
       "optic_vizFeedback": 0.7,
       "optic_vizSpeed": 1.2,
-      "optic_vizIntensity": 0.8
+      "optic_vizIntensity": 0.8,
+      "optic_macroCharacter": 0.588,
+      "optic_macroMovement": 0.589,
+      "optic_macroCoupling": 0.475,
+      "optic_macroSpace": 0.52,
+      "optic_filterEnvAmt": 0.535,
+      "optic_lfoRate": 0.231
     }
   },
   "coupling": {
@@ -103,5 +116,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.561,
+    "COUPLING": 0.447,
+    "SPACE": 0.492
+  }
 }

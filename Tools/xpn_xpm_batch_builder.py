@@ -62,6 +62,40 @@ from typing import Dict, List, Optional, Tuple
 from xml.sax.saxutils import escape as xml_escape
 
 # ---------------------------------------------------------------------------
+# Velocity / taxonomy imports (lazy — only needed for layered builder)
+# ---------------------------------------------------------------------------
+def _get_velocity_standard():
+    """Lazy import of xpn_velocity_standard to avoid hard dependency."""
+    try:
+        from xpn_velocity_standard import vel_start, vel_end, NUM_LAYERS
+        return vel_start, vel_end, NUM_LAYERS
+    except ImportError:
+        import importlib.util, os
+        _here = Path(__file__).parent
+        spec = importlib.util.spec_from_file_location(
+            "xpn_velocity_standard", _here / "xpn_velocity_standard.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.vel_start, mod.vel_end, mod.NUM_LAYERS
+
+
+def _get_voice_taxonomy():
+    """Lazy import of xpn_voice_taxonomy to avoid hard dependency."""
+    try:
+        from xpn_voice_taxonomy import compute_slot_budget, display_label, rr_count
+        return compute_slot_budget, display_label, rr_count
+    except ImportError:
+        import importlib.util
+        _here = Path(__file__).parent
+        spec = importlib.util.spec_from_file_location(
+            "xpn_voice_taxonomy", _here / "xpn_voice_taxonomy.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.compute_slot_budget, mod.display_label, mod.rr_count
+
+# ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
@@ -80,6 +114,16 @@ DRUM_INSTRUMENTS_TOTAL = 128
 
 # Keygroup program: up to 128 instrument zones (one per semitone, or fewer)
 KEYGROUP_INSTRUMENTS_TOTAL = 128
+
+# Tier slot ceilings (QDD locked 2026-04-04)
+# SURFACE: single-layer, 16 active pads max
+# DEEP: 4 velocity layers, no round-robin
+# TRENCH: 4 velocity layers + per-voice round-robin
+TIER_SLOT_LIMITS = {
+    "SURFACE": 16,
+    "DEEP": 64,
+    "TRENCH": 96,
+}
 
 # ---------------------------------------------------------------------------
 # Validation
@@ -205,6 +249,94 @@ def _validate_multikeygroup(prog: dict, loc: str, name: str) -> List[str]:
                 f"{loc} '{name}' zone[{zidx}]: root_note must be 0-127, got {root!r}"
             )
     return errors
+
+# ---------------------------------------------------------------------------
+# Slot Budget Validator
+# ---------------------------------------------------------------------------
+
+def validate_slot_budget(pads: list, tier: str = "DEEP") -> Tuple[bool, int, int, list]:
+    """Validate that total XPM slots for all pads fit within the tier ceiling.
+
+    Slot count per pad:
+      SURFACE : 1 per pad (single layer)
+      DEEP    : NUM_LAYERS per pad (velocity layers, no RR)
+      TRENCH  : NUM_LAYERS * max(1, rr_count(voice)) per pad
+
+    Args:
+        pads: List of pad dicts, each with at least a "voice" key (engine-internal name).
+        tier: One of "SURFACE", "DEEP", "TRENCH".
+
+    Returns:
+        Tuple of (is_valid, total_slots, limit, details_per_pad).
+        details_per_pad is a list of dicts:
+            {"voice": str, "slots": int, "rr": int, "vel_layers": int}
+        is_valid is False when total_slots > limit.
+
+    Hard gate: prints a clear error when invalid. Callers should abort the build
+    on False.
+    """
+    tier = tier.upper()
+    if tier not in TIER_SLOT_LIMITS:
+        valid_tiers = sorted(TIER_SLOT_LIMITS)
+        print(
+            f"ERROR: Unknown tier {tier!r}. Valid tiers: {valid_tiers}",
+            file=sys.stderr,
+        )
+        return False, 0, 0, []
+
+    limit = TIER_SLOT_LIMITS[tier]
+    _, _, num_layers = _get_velocity_standard()
+    _, _, rr_count_fn = _get_voice_taxonomy()
+
+    details: List[dict] = []
+    total = 0
+
+    for pad in pads:
+        voice = pad.get("voice", "")
+        if tier == "SURFACE":
+            vel_layers = 1
+            rr = 1
+        elif tier == "DEEP":
+            vel_layers = num_layers
+            rr = 1
+        else:  # TRENCH
+            vel_layers = num_layers
+            rr = max(1, rr_count_fn(voice))
+
+        slots = vel_layers * rr
+        total += slots
+        details.append(
+            {
+                "voice": voice,
+                "slots": slots,
+                "rr": rr,
+                "vel_layers": vel_layers,
+            }
+        )
+
+    is_valid = total <= limit
+
+    if not is_valid:
+        print(
+            f"SLOT BUDGET ERROR: tier={tier!r} allows {limit} slots, "
+            f"but {total} slots requested across {len(pads)} pads.",
+            file=sys.stderr,
+        )
+        print("  Per-pad breakdown:", file=sys.stderr)
+        for d in details:
+            print(
+                f"    voice={d['voice']!r:12s}  vel_layers={d['vel_layers']}  "
+                f"rr={d['rr']}  slots={d['slots']}",
+                file=sys.stderr,
+            )
+        print(
+            f"  => Reduce pad count, choose a higher tier, or "
+            f"reduce RR counts to fit within {limit} slots.",
+            file=sys.stderr,
+        )
+
+    return is_valid, total, limit, details
+
 
 # ---------------------------------------------------------------------------
 # XPM Generators
@@ -354,6 +486,211 @@ def _instrument_block_keygroup(instrument_num: int, low: int, high: int,
     )
 
 
+def _active_drum_layer_xml(
+    sample_path: str,
+    layer_num: int,
+    vel_start: int,
+    vel_end: int,
+    rr_index: int = 0,
+    cycle_group: int = 0,
+) -> str:
+    """Single active sample layer for a drum program (OneShot=True, KeyTrack=False).
+
+    Args:
+        sample_path: Relative path to the WAV file.
+        layer_num: XPM layer number (1-indexed).
+        vel_start: VelStart value.
+        vel_end: VelEnd value.
+        rr_index: Round-robin variant index (0 = base, no RR tags added).
+        cycle_group: CycleGroup value for round-robin grouping (velocity zone index).
+    """
+    sample_file = Path(sample_path).name
+    sample_name = Path(sample_path).stem
+
+    rr_xml = ""
+    if rr_index > 0:
+        rr_xml = (
+            f'              <CycleType>RoundRobin</CycleType>\n'
+            f'              <CycleGroup>{cycle_group}</CycleGroup>\n'
+        )
+
+    return (
+        f'            <Layer number="{layer_num}">\n'
+        f'              <Active>True</Active>\n'
+        f'              <Volume>{_fmt(1.0)}</Volume>\n'
+        f'              <Pan>{_fmt(0.5)}</Pan>\n'
+        f'              <Pitch>{_fmt(0.0)}</Pitch>\n'
+        f'              <TuneCoarse>0</TuneCoarse>\n'
+        f'              <TuneFine>0</TuneFine>\n'
+        f'              <SampleName>{xml_escape(sample_name)}</SampleName>\n'
+        f'              <SampleFile>{xml_escape(sample_file)}</SampleFile>\n'
+        f'              <File>{xml_escape(sample_path)}</File>\n'
+        f'              <RootNote>0</RootNote>\n'
+        f'              <KeyTrack>False</KeyTrack>\n'
+        f'              <OneShot>True</OneShot>\n'
+        f'              <Loop>False</Loop>\n'
+        f'              <LoopStart>0</LoopStart>\n'
+        f'              <LoopEnd>0</LoopEnd>\n'
+        f'              <LoopXFade>0</LoopXFade>\n'
+        f'              <VolumeAttack>{_fmt(0)}</VolumeAttack>\n'
+        f'              <VolumeDecay>{_fmt(0)}</VolumeDecay>\n'
+        f'              <VolumeSustain>{_fmt(1)}</VolumeSustain>\n'
+        f'              <VolumeRelease>{_fmt(0.5)}</VolumeRelease>\n'
+        f'              <VelStart>{vel_start}</VelStart>\n'
+        f'              <VelEnd>{vel_end}</VelEnd>\n'
+        f'{rr_xml}'
+        f'            </Layer>\n'
+    )
+
+
+def _instrument_block_drum_layered(
+    instrument_num: int,
+    voice_name: str,
+    samples: list,
+    tier: str,
+    choke_group: int = 0,
+) -> str:
+    """Build one <Instrument> block for a multi-layer drum pad.
+
+    Args:
+        instrument_num: XPM instrument slot (0-indexed).
+        voice_name: Engine-internal voice name (e.g., "kick", "snare").
+        samples: List of sample dicts from the pad spec, each with:
+            - "file": str — relative WAV path
+            - "vel_layer": int — velocity layer index (0–3)
+            - "rr_index": int — round-robin variant (0 = base, 1+ = RR)
+        tier: "SURFACE", "DEEP", or "TRENCH" (controls RR emission).
+        choke_group: MuteGroup value (0 = no choke).
+
+    Returns:
+        XML string for the complete <Instrument> block.
+    """
+    vel_start_fn, vel_end_fn, num_layers = _get_velocity_standard()
+    _, display_label_fn, _ = _get_voice_taxonomy()
+
+    instr_name = display_label_fn(voice_name)
+
+    if not samples:
+        # Ghost-trigger prevention: empty pad
+        return (
+            f'      <Instrument number="{instrument_num}">\n'
+            f'        <Active>False</Active>\n'
+            f'        <Volume>{_fmt(1.0)}</Volume>\n'
+            f'        <Pan>{_fmt(0.5)}</Pan>\n'
+            f'        <Tune>0</Tune>\n'
+            f'        <Transpose>0</Transpose>\n'
+            f'        <VolumeAttack>{_fmt(0)}</VolumeAttack>\n'
+            f'        <VolumeHold>{_fmt(0)}</VolumeHold>\n'
+            f'        <VolumeDecay>{_fmt(0.5)}</VolumeDecay>\n'
+            f'        <VolumeSustain>{_fmt(1)}</VolumeSustain>\n'
+            f'        <VolumeRelease>{_fmt(0.05)}</VolumeRelease>\n'
+            f'        <FilterType>2</FilterType>\n'
+            f'        <Cutoff>{_fmt(1.0)}</Cutoff>\n'
+            f'        <Resonance>{_fmt(0.0)}</Resonance>\n'
+            f'        <FilterEnvAmt>{_fmt(0.0)}</FilterEnvAmt>\n'
+            f'        <LowNote>{instrument_num}</LowNote>\n'
+            f'        <HighNote>{instrument_num}</HighNote>\n'
+            f'        <RootNote>0</RootNote>\n'
+            f'        <KeyTrack>False</KeyTrack>\n'
+            f'        <OneShot>True</OneShot>\n'
+            f'        <Layers>\n'
+            f'          <Layer number="1">\n'
+            f'            <Active>False</Active>\n'
+            f'            <SampleName></SampleName>\n'
+            f'            <SampleFile></SampleFile>\n'
+            f'            <File></File>\n'
+            f'            <VelStart>0</VelStart>\n'
+            f'            <VelEnd>0</VelEnd>\n'
+            f'          </Layer>\n'
+            f'        </Layers>\n'
+            f'      </Instrument>\n'
+        )
+
+    # Group samples by velocity layer, then by rr_index within each layer
+    # Structure: {vel_layer_idx: [(rr_index, file), ...]}
+    layers_by_vel: Dict[int, List[Tuple[int, str]]] = {}
+    for s in samples:
+        vl = int(s.get("vel_layer", 0))
+        ri = int(s.get("rr_index", 0))
+        layers_by_vel.setdefault(vl, []).append((ri, s["file"]))
+
+    # Sort RR variants within each velocity layer
+    for vl in layers_by_vel:
+        layers_by_vel[vl].sort(key=lambda x: x[0])
+
+    # Build layer XML — iterate velocity layers in order, emit RR variants per layer
+    layers_xml = ""
+    layer_num = 1
+    use_rr = (tier.upper() == "TRENCH")
+
+    for vl_idx in range(num_layers):
+        vs = vel_start_fn(vl_idx)
+        ve = vel_end_fn(vl_idx)
+        variants = layers_by_vel.get(vl_idx, [])
+
+        if not variants:
+            # Missing sample for this velocity zone — emit inactive placeholder
+            layers_xml += (
+                f'            <Layer number="{layer_num}">\n'
+                f'              <Active>False</Active>\n'
+                f'              <SampleName></SampleName>\n'
+                f'              <SampleFile></SampleFile>\n'
+                f'              <File></File>\n'
+                f'              <VelStart>0</VelStart>\n'
+                f'              <VelEnd>0</VelEnd>\n'
+                f'            </Layer>\n'
+            )
+            layer_num += 1
+        else:
+            for rr_idx, (ri, file_path) in enumerate(variants):
+                # cycle_group = velocity layer index (so MPC groups RR within zone)
+                emit_rr = use_rr and ri > 0
+                layers_xml += _active_drum_layer_xml(
+                    sample_path=file_path,
+                    layer_num=layer_num,
+                    vel_start=vs,
+                    vel_end=ve,
+                    rr_index=ri if emit_rr else 0,
+                    cycle_group=vl_idx if emit_rr else 0,
+                )
+                layer_num += 1
+
+    choke_xml = (
+        f"        <MuteGroup>{choke_group}</MuteGroup>\n"
+        if choke_group
+        else ""
+    )
+    note_comment = f"  <!-- {xml_escape(instr_name).replace('--', '- -')} -->"
+
+    return (
+        f'      <Instrument number="{instrument_num}">{note_comment}\n'
+        f'        <Active>True</Active>\n'
+        f'        <Volume>{_fmt(1.0)}</Volume>\n'
+        f'        <Pan>{_fmt(0.5)}</Pan>\n'
+        f'        <Tune>0</Tune>\n'
+        f'        <Transpose>0</Transpose>\n'
+        f'        <VolumeAttack>{_fmt(0)}</VolumeAttack>\n'
+        f'        <VolumeHold>{_fmt(0)}</VolumeHold>\n'
+        f'        <VolumeDecay>{_fmt(0.5)}</VolumeDecay>\n'
+        f'        <VolumeSustain>{_fmt(1)}</VolumeSustain>\n'
+        f'        <VolumeRelease>{_fmt(0.05)}</VolumeRelease>\n'
+        f'        <FilterType>2</FilterType>\n'
+        f'        <Cutoff>{_fmt(1.0)}</Cutoff>\n'
+        f'        <Resonance>{_fmt(0.0)}</Resonance>\n'
+        f'        <FilterEnvAmt>{_fmt(0.0)}</FilterEnvAmt>\n'
+        f'        <LowNote>{instrument_num}</LowNote>\n'
+        f'        <HighNote>{instrument_num}</HighNote>\n'
+        f'        <RootNote>0</RootNote>\n'
+        f'        <KeyTrack>False</KeyTrack>\n'
+        f'        <OneShot>True</OneShot>\n'
+        f'{choke_xml}'
+        f'        <Layers>\n'
+        f'{layers_xml}'
+        f'        </Layers>\n'
+        f'      </Instrument>\n'
+    )
+
+
 def _xpm_header(prog_name: str, prog_type_str: str) -> str:
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
@@ -398,6 +735,104 @@ def build_drum_program(prog: dict) -> str:
 
     return (
         _xpm_header(prog_name, "Drum")
+        + "    <PadNoteMap>\n"
+        + pad_note_entries + "\n"
+        + "    </PadNoteMap>\n"
+        + "    <Instruments>\n"
+        + instruments_xml
+        + "    </Instruments>\n"
+        + _xpm_footer()
+    )
+
+
+# ---------------------------------------------------------------------------
+# Build: DrumProgram — multi-layer (DEEP / TRENCH)
+# ---------------------------------------------------------------------------
+
+def build_drum_program_layered(
+    program_name: str,
+    pads: list,
+    tier: str = "DEEP",
+    output_dir: Optional[str] = None,
+) -> str:
+    """Build a multi-velocity-layer drum program XPM.
+
+    This is the DEEP/TRENCH builder. SURFACE callers should use
+    build_drum_program() instead.
+
+    Args:
+        program_name: Program display name.
+        pads: List of pad dicts, each with:
+            - "voice": str — engine-internal voice name (e.g., "kick", "snare")
+            - "samples": list of dicts, each with:
+                - "file": str — relative WAV path
+                - "vel_layer": int — velocity layer index 0–3
+                - "rr_index": int — round-robin variant (0 = base, 1+ = RR)
+            - "choke": int (optional) — MuteGroup number
+            - "pad": int (optional) — explicit pad slot (1-indexed); defaults to
+              position in the pads list + 1
+        tier: "SURFACE", "DEEP", or "TRENCH".
+        output_dir: Not used by this function (reserved for future file writing).
+            Returns the XPM XML string; callers write the file.
+
+    Returns:
+        str — XPM XML content (not yet written to disk).
+
+    Raises:
+        ValueError: If slot budget validation fails (hard gate).
+    """
+    tier = tier.upper()
+
+    # Hard gate: validate slot budget before building
+    is_valid, total_slots, limit, _details = validate_slot_budget(pads, tier)
+    if not is_valid:
+        raise ValueError(
+            f"Slot budget exceeded for tier {tier!r}: "
+            f"{total_slots} slots > {limit} limit. "
+            f"Aborting build for program {program_name!r}."
+        )
+
+    # Build a slot→XML map (0-indexed) for all 128 instrument slots.
+    # If pad dict has "pad" key (1-indexed), use that; otherwise use list position.
+    all_instrument_blocks: Dict[int, str] = {}
+
+    for pos, pad_cfg in enumerate(pads):
+        slot = (pad_cfg.get("pad", pos + 1) - 1)  # convert 1-indexed → 0-indexed
+        slot = max(0, min(slot, DRUM_INSTRUMENTS_TOTAL - 1))
+        voice = pad_cfg.get("voice", f"pad{pos+1}")
+        samples = pad_cfg.get("samples", [])
+        choke = pad_cfg.get("choke", 0)
+        all_instrument_blocks[slot] = _instrument_block_drum_layered(
+            instrument_num=slot,
+            voice_name=voice,
+            samples=samples,
+            tier=tier,
+            choke_group=choke,
+        )
+
+    # Fill remaining 128 slots with empty (inactive) instruments
+    for slot in range(DRUM_INSTRUMENTS_TOTAL):
+        if slot not in all_instrument_blocks:
+            all_instrument_blocks[slot] = _instrument_block_drum_layered(
+                instrument_num=slot,
+                voice_name="",
+                samples=[],
+                tier=tier,
+                choke_group=0,
+            )
+
+    instruments_xml = "".join(
+        all_instrument_blocks[s] for s in range(DRUM_INSTRUMENTS_TOTAL)
+    )
+
+    # PadNoteMap: pads 1-16 → instrument indices 0-15 (standard MPC mapping)
+    pad_note_entries = "\n".join(
+        f'        <Pad number="{p}" note="{p - 1}"/>'
+        for p in range(1, 17)
+    )
+
+    return (
+        _xpm_header(program_name, "Drum")
         + "    <PadNoteMap>\n"
         + pad_note_entries + "\n"
         + "    </PadNoteMap>\n"
@@ -478,13 +913,44 @@ BUILDERS = {
 }
 
 
-def build_program(prog: dict) -> str:
-    """Dispatch to the correct builder by type."""
+def _dispatch_program_from_spec(prog: dict) -> str:
+    """Internal: dispatch to the correct builder by type field in a batch spec dict."""
     prog_type = prog.get("type", "")
     builder = BUILDERS.get(prog_type)
     if builder is None:
         raise ValueError(f"Unknown program type: {prog_type!r}")
     return builder(prog)
+
+
+def build_program(
+    program_name: str,
+    pads: list,
+    tier: str = "DEEP",
+    **kwargs,
+) -> str:
+    """Route to the correct drum program builder based on tier.
+
+    SURFACE tier uses build_drum_program() (single layer, legacy format).
+    DEEP and TRENCH tiers use build_drum_program_layered() (multi-layer + RR).
+
+    Args:
+        program_name: Program display name.
+        pads: List of pad dicts.
+            For SURFACE: legacy format with "pad", "sample", "name", "choke" keys.
+            For DEEP/TRENCH: new format with "voice", "samples", "choke", "pad" keys.
+        tier: "SURFACE", "DEEP", or "TRENCH".
+        **kwargs: Reserved for future options (e.g., output_dir).
+
+    Returns:
+        str — XPM XML content.
+    """
+    tier = tier.upper()
+    if tier == "SURFACE":
+        # Adapt new-style pads to the legacy format if needed, then delegate
+        prog_spec = {"name": program_name, "type": "DrumProgram", "pads": pads}
+        return build_drum_program(prog_spec)
+    else:
+        return build_drum_program_layered(program_name, pads, tier=tier, **kwargs)
 
 
 # ---------------------------------------------------------------------------
@@ -566,7 +1032,7 @@ def main(argv=None) -> int:
         xpm_path = output_dir / xpm_filename
 
         try:
-            xpm_xml = build_program(prog)
+            xpm_xml = _dispatch_program_from_spec(prog)
         except Exception as exc:
             build_errors.append(f"{name}: {exc}")
             continue

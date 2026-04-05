@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Scan",
+  "mood": "Coupling",
+  "engines": [
+    "Outlook",
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUTLOOK panoramic scan drives OPENSKY shimmer horizon \u2014 visionary architecture and euphoric sky in parallel ascent, two horizon metaphors interacting.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "panoramic",
+    "shimmer",
+    "FilterToFilter",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.44,
+    "movement": 0.58,
+    "density": 0.46,
+    "space": 0.65,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Outlook": {
+      "look_horizonScan": 0.6,
+      "look_filterEnvAmt": 0.52,
+      "look_lfo1Rate": 0.14,
+      "look_lfo1Depth": 0.28,
+      "look_macroCharacter": 0.52,
+      "look_macroMovement": 0.56,
+      "look_macroCoupling": 0.62,
+      "look_macroSpace": 0.62
+    },
+    "OpenSky": {
+      "sky_macroRise": 0.62,
+      "sky_filterEnvAmt": 0.5,
+      "sky_lfo1Rate": 0.14,
+      "sky_lfo1Depth": 0.28,
+      "sky_macroCharacter": 0.52,
+      "sky_macroMovement": 0.56,
+      "sky_macroCoupling": 0.62,
+      "sky_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outlook",
+        "engineB": "OpenSky",
+        "type": "FilterToFilter",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.56,
+    "COUPLING": 0.62,
+    "SPACE": 0.64
+  }
+}

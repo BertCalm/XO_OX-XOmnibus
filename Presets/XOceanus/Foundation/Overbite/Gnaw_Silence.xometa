@@ -31,7 +31,14 @@
       "poss_ampRelease": 420.6,
       "poss_ampSustain": 0.71,
       "poss_filterCutoff": 0.89,
-      "poss_filterReso": 0.25
+      "poss_filterReso": 0.25,
+      "poss_macroBelly": 0.504,
+      "poss_macroBite": 0.378,
+      "poss_macroPlayDead": 0.157,
+      "poss_macroScurry": 0.386,
+      "poss_filterEnvAmount": 0.397,
+      "poss_lfo1Rate": 0.24,
+      "poss_lfo1Depth": 0.235
     }
   },
   "schema_version": 1,
@@ -41,5 +48,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.369,
+    "COUPLING": 0.148,
+    "SPACE": 0.377
+  }
 }

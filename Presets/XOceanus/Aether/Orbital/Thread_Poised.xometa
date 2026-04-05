@@ -28,7 +28,14 @@
   "parameters": {
     "Orbital": {
       "couplingBus": 3,
-      "couplingLevel": 0.523
+      "couplingLevel": 0.523,
+      "orb_macroSpectrum": 0.438,
+      "orb_macroEvolve": 0.555,
+      "orb_macroCoupling": 0.211,
+      "orb_macroSpace": 0.857,
+      "orb_filterEnvAmt": 0.343,
+      "orb_lfo1Rate": 0.029,
+      "orb_lfo1Depth": 0.197
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "orbital"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.404,
+    "MOVEMENT": 0.521,
+    "COUPLING": 0.177,
+    "SPACE": 0.823
+  }
 }

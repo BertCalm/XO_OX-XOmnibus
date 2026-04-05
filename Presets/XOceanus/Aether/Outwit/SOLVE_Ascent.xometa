@@ -118,7 +118,7 @@
       "owit_denDecay": 0.6,
       "owit_denMix": 0.45,
       "owit_lfo1Rate": 1.0,
-      "owit_lfo1Depth": 0.0,
+      "owit_lfo1Depth": 0.144,
       "owit_lfo1Shape": 0,
       "owit_lfo1Dest": 0,
       "owit_lfo2Rate": 0.3,
@@ -130,11 +130,22 @@
       "owit_macroSolve": 0.0,
       "owit_macroSynapse": 0.0,
       "owit_macroChromatophore": 0.0,
-      "owit_macroDen": 0.0
+      "owit_macroDen": 0.0,
+      "owit_macroCharacter": 0.294,
+      "owit_macroMovement": 0.446,
+      "owit_macroCoupling": 0.188,
+      "owit_macroSpace": 0.855,
+      "owit_filterEnvAmt": 0.322
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.316,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.21,
+    "SPACE": 0.877
+  }
 }

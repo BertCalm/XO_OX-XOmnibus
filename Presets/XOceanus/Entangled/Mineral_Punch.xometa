@@ -46,7 +46,14 @@
       "obsidian_level": 0.715,
       "obsidian_movement": 0.237,
       "obsidian_space": 0.614,
-      "obsidian_warmth": 0.221
+      "obsidian_warmth": 0.221,
+      "obsidian_macroCharacter": 0.617,
+      "obsidian_macroMovement": 0.495,
+      "obsidian_macroCoupling": 0.614,
+      "obsidian_macroSpace": 0.467,
+      "obsidian_filterEnvAmt": 0.473,
+      "obsidian_lfoRate": 0.11,
+      "obsidian_lfoDepth": 0.261
     },
     "Onset": {
       "perc_aggression": 0.716,
@@ -55,7 +62,14 @@
       "perc_level": 0.766,
       "perc_movement": 0.627,
       "perc_space": 0.302,
-      "perc_warmth": 0.516
+      "perc_warmth": 0.516,
+      "perc_macro_punch": 0.573,
+      "perc_macro_mutate": 0.451,
+      "perc_macro_machine": 0.57,
+      "perc_macro_space": 0.423,
+      "perc_filterEnvAmt": 0.473,
+      "perc_lfo1Rate": 0.11,
+      "perc_lfo1Depth": 0.261
     }
   },
   "schema_version": 1,
@@ -68,5 +82,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.549,
+    "MOVEMENT": 0.427,
+    "COUPLING": 0.546,
+    "SPACE": 0.399
+  }
 }

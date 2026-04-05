@@ -41,7 +41,14 @@
       "organon_metabolicRate": 0.2,
       "organon_noiseColor": 0.2,
       "organon_phasonShift": 0.1,
-      "organon_signalFlux": 0.85
+      "organon_signalFlux": 0.85,
+      "organon_macroCharacter": 0.287,
+      "organon_macroMovement": 0.305,
+      "organon_macroCoupling": 0.215,
+      "organon_macroSpace": 0.645,
+      "organon_filterEnvAmt": 0.432,
+      "organon_lfo1Rate": 0.042,
+      "organon_lfo1Depth": 0.161
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "magma"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.288,
+    "MOVEMENT": 0.306,
+    "COUPLING": 0.216,
+    "SPACE": 0.646
+  }
 }

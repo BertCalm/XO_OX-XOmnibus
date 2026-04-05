@@ -19,11 +19,12 @@ Round-robin (opt-in via --round-robin or cycle/random naming):
 Release samples (opt-in via --release-layer):
     {preset_slug}__{NOTE}__rel.WAV
 
-Velocity layer ranges (4-layer standard):
-    v1 → 1–31    (pp)   VelStart=1 not 0 (Rex Rule #3)
-    v2 → 32–63   (mp)
-    v3 → 64–95   (mf)
-    v4 → 96–127  (ff)
+Velocity layer ranges (Ghost Council Modified standard, adopted 2026-04-04):
+    v1 → 1–20    (Ghost)   VelStart=1 not 0 (Rex Rule #3)
+    v2 → 21–55   (Light)
+    v3 → 56–90   (Medium)
+    v4 → 91–127  (Hard)
+(Old even-split values were v1:1-31, v2:32-63, v3:64-95, v4:96-127)
 
 XPM Rules (from CLAUDE.md — never break these):
     - KeyTrack  = True   (samples transpose across zones)
@@ -71,6 +72,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from xml.sax.saxutils import escape as xml_escape
 
+from xpn_velocity_standard import ZONES as _STANDARD_ZONES
 
 REPO_ROOT   = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
@@ -108,20 +110,23 @@ def midi_to_note_name(midi: int) -> str:
 # Velocity layer definitions (instrument-family-aware)
 # ---------------------------------------------------------------------------
 
-# Standard equal-split (backward-compatible default)
+# Ghost Council Modified standard zones — derived from xpn_velocity_standard.
+# Old VEL_LAYERS_EVEN was v1:1-31, v2:32-63, v3:64-95, v4:96-127 (replaced 2026-04-04).
 VEL_LAYERS_EVEN = {
-    "v1": (1,   31),
-    "v2": (32,  63),
-    "v3": (64,  95),
-    "v4": (96, 127),
+    "v1": (_STANDARD_ZONES[0][0], _STANDARD_ZONES[0][1]),   # Ghost:  1–20
+    "v2": (_STANDARD_ZONES[1][0], _STANDARD_ZONES[1][1]),   # Light: 21–55
+    "v3": (_STANDARD_ZONES[2][0], _STANDARD_ZONES[2][1]),   # Medium: 56–90
+    "v4": (_STANDARD_ZONES[3][0], _STANDARD_ZONES[3][1]),   # Hard:  91–127
 }
 
-# Vibe's musical curve — wider mid range, narrow ghost
+# Ghost Council Modified musical curve — wider mid range, narrow ghost.
+# Old values were (1,20), (21,50), (51,90), (91,127) — zone 2 end 50→55,
+# zone 3 start 51→56 (replaced 2026-04-04).
 VEL_LAYERS_MUSICAL = [
-    (1,   20, 0.30),   # ghost   (15% — barely touching)
-    (21,  50, 0.55),   # light   (23% — gentle playing)
-    (51,  90, 0.75),   # mid     (31% — expressive sweet spot)
-    (91, 127, 0.95),   # hard    (29% — full force)
+    (_STANDARD_ZONES[0][0], _STANDARD_ZONES[0][1], 0.30),   # Ghost  (1–20,  15%)
+    (_STANDARD_ZONES[1][0], _STANDARD_ZONES[1][1], 0.55),   # Light  (21–55, 26%)
+    (_STANDARD_ZONES[2][0], _STANDARD_ZONES[2][1], 0.75),   # Medium (56–90, 27%)
+    (_STANDARD_ZONES[3][0], _STANDARD_ZONES[3][1], 0.95),   # Hard   (91–127, 29%)
 ]
 
 # --- Instrument-family velocity curves ---
@@ -205,12 +210,13 @@ FAMILY_VEL_LAYERS: Dict[str, List[tuple]] = {
     "default":   VEL_LAYERS_MUSICAL,
 }
 
-# Standard 4-layer fallback (backward compat, simple tuples without label)
+# Standard 4-layer fallback (backward compat, simple tuples without label).
+# Old values were v1:1-31, v2:32-63, v3:64-95, v4:96-127 (replaced 2026-04-04).
 VEL_LAYERS = {
-    "v1": (1,   31),
-    "v2": (32,  63),
-    "v3": (64,  95),
-    "v4": (96, 127),
+    "v1": (_STANDARD_ZONES[0][0], _STANDARD_ZONES[0][1]),   # Ghost:  1–20
+    "v2": (_STANDARD_ZONES[1][0], _STANDARD_ZONES[1][1]),   # Light: 21–55
+    "v3": (_STANDARD_ZONES[2][0], _STANDARD_ZONES[2][1]),   # Medium: 56–90
+    "v4": (_STANDARD_ZONES[3][0], _STANDARD_ZONES[3][1]),   # Hard:  91–127
 }
 
 # Single-layer fallback (no velocity switching)
@@ -262,9 +268,9 @@ def _apply_vel_crossfade(
     In the overlap zone both layers sound at complementary volumes on MPC,
     producing a smooth morph instead of an abrupt timbral switch.
 
-    Example with crossfade=3 on standard 4-layer:
-        Before: v1: 1-31,  v2: 32-63,  v3: 64-95,  v4: 96-127
-        After:  v1: 1-34,  v2: 29-66,  v3: 61-98,  v4: 93-127
+    Example with crossfade=3 on Ghost Council Modified 4-layer zones:
+        Before: v1: 1-20,  v2: 21-55,  v3: 56-90,  v4: 91-127
+        After:  v1: 1-23,  v2: 18-58,  v3: 53-93,  v4: 88-127
 
     Drums/percussion always get hard splits (no crossfade applied).
 
@@ -745,13 +751,14 @@ def generate_keygroup_xpm(
     else:
         active_vel_layers = _family_vel_layers(instrument_family)
 
-    # Even curve override (backward compat)
+    # Even curve override (backward compat).
+    # Old values were (1,31),(32,63),(64,95),(96,127) — updated 2026-04-04.
     if vel_curve == "even" and not dna_adaptive:
         active_vel_layers = [
-            (1, 31, 0.55),
-            (32, 63, 0.70),
-            (64, 95, 0.85),
-            (96, 127, 0.97),
+            (_STANDARD_ZONES[0][0], _STANDARD_ZONES[0][1], 0.55),
+            (_STANDARD_ZONES[1][0], _STANDARD_ZONES[1][1], 0.70),
+            (_STANDARD_ZONES[2][0], _STANDARD_ZONES[2][1], 0.85),
+            (_STANDARD_ZONES[3][0], _STANDARD_ZONES[3][1], 0.97),
         ]
 
     # --- Apply velocity crossfade (overlap adjacent layers for smooth morphing) ---

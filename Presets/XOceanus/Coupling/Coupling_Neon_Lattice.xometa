@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Neon Lattice",
+  "mood": "Coupling",
+  "engines": [
+    "OddfeliX",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODDFELIX school schooling amplitude drives OPTIC visual pulse pattern \u2014 neon tetras in formation generating bioluminescent light sequences.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "neon",
+    "visual",
+    "VelocityCoupling",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.48,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_macroDart": 0.58,
+      "snap_macroDepth": 0.5,
+      "snap_macroSchool": 0.55,
+      "snap_macroSurface": 0.48,
+      "snap_filterEnvAmt": 0.52,
+      "snap_lfo1Rate": 0.18,
+      "snap_lfo1Depth": 0.3
+    },
+    "Optic": {
+      "optic_pulseRate": 0.55,
+      "optic_filterEnvAmt": 0.5,
+      "optic_lfo1Rate": 0.2,
+      "optic_lfo1Depth": 0.28,
+      "optic_macroCharacter": 0.54,
+      "optic_macroMovement": 0.56,
+      "optic_macroCoupling": 0.62,
+      "optic_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Optic",
+        "type": "VelocityCoupling",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.62,
+    "SPACE": 0.49
+  }
+}

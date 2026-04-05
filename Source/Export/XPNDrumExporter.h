@@ -65,14 +65,28 @@ public:
 
     static const PadVoice* getPadLayout()
     {
-        //                  name           note  muteGrp        muteTarget  oneShot
+        // IMPORTANT: pad names here MUST match the engine-internal voice names used by the
+        // Python tools (xpn_render_spec.py, xpn_drum_export.py, xpn_sample_categorizer.py).
+        // These names are the source of truth for WAV filename stems:
+        //   {preset_slug}_{name}_v{1-4}.wav
+        //
+        // Canonical mapping (see Tools/xpn_voice_taxonomy.py):
+        //   "chat" is the engine-internal name for closed hat (XPN display: "CLOSED HAT")
+        //   "ohat" is the engine-internal name for open hat  (XPN display: "OPEN HAT")
+        //
+        // DO NOT change "chat"/"ohat" back to "closed_hat"/"open_hat" — that breaks
+        // the Python←→C++ WAV filename contract. (QDD Level 4 finding, 2026-04-04)
+        //
+        //                  name    note  muteGrp        muteTarget  oneShot
         static constexpr PadVoice pads[kNumPads] = {
-            {"kick", 36, kChokeKick, -1, true},        {"snare", 38, kChokeSnare, -1, true},
-            {"closed_hat", 42, kChokeHiHat, 46, true}, // closed hat mutes open hat
-            {"open_hat", 46, kChokeHiHat, -1, true},   // open hat does NOT mute closed hat
-            {"clap", 39, kChokeSnare, -1, true},       // clap chokes with snare
-            {"tom", 41, kChokeTom, -1, true},          {"perc", 43, kChokeNone, -1, true},
-            {"fx", 49, kChokeNone, -1, true},
+            {"kick",  36, kChokeKick,  -1, true},
+            {"snare", 38, kChokeSnare, -1, true},
+            {"chat",  42, kChokeHiHat, 46, true},  // engine-internal: "chat" = closed hat; mutes open hat
+            {"ohat",  46, kChokeHiHat, -1, true},  // engine-internal: "ohat" = open hat; does NOT mute closed hat
+            {"clap",  39, kChokeSnare, -1, true},  // clap chokes with snare
+            {"tom",   41, kChokeTom,   -1, true},
+            {"perc",  43, kChokeNone,  -1, true},
+            {"fx",    49, kChokeNone,  -1, true},
         };
         return pads;
     }
@@ -634,7 +648,8 @@ private:
             auto* instrument = instruments->createNewChildElement("Instrument");
             instrument->setAttribute("number", pad.midiNote);
 
-            instrument->createNewChildElement("InstrumentName")->addTextElement(juce::String(pad.name).toUpperCase());
+            // voiceDisplayLabel: "chat" → "CLOSED HAT", "ohat" → "OPEN HAT", etc.
+            instrument->createNewChildElement("InstrumentName")->addTextElement(voiceDisplayLabel(pad.name));
 
             // One-shot mode: drum hits play to end regardless of note-off
             instrument->createNewChildElement("TriggerMode")->addTextElement(pad.oneShot ? "OneShot" : "Note");
@@ -689,6 +704,21 @@ private:
         manifest.setAttribute("PresetCount", presetCount);
 
         manifest.writeTo(bundleDir.getChildFile("Manifest.xml"));
+    }
+
+    //==========================================================================
+    // Voice display label — converts engine-internal pad name to MPC display string.
+    //
+    // Engine-internal names ("chat", "ohat") are short identifiers used for WAV
+    // filenames. MPC <InstrumentName> should show the human-readable label.
+    // This mirrors Tools/xpn_voice_taxonomy.py::ONSET_VOICE_DISPLAY.
+    //==========================================================================
+
+    static juce::String voiceDisplayLabel(const juce::String& internalName)
+    {
+        if (internalName == "chat") return "CLOSED HAT";
+        if (internalName == "ohat") return "OPEN HAT";
+        return internalName.toUpperCase(); // kick → KICK, snare → SNARE, etc.
     }
 
     //==========================================================================

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Volcanic Glass Dome",
+  "mood": "Ethereal",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Inside a dome of natural glass. The world outside bent, distorted, made beautiful by the curvature.",
+  "tags": [
+    "ethereal",
+    "dome",
+    "glass",
+    "distorted",
+    "enclosed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.18,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.33,
+      "obsidian_macroMovement": 0.27,
+      "obsidian_macroCoupling": 0.08,
+      "obsidian_macroSpace": 0.87,
+      "obsidian_depth": 0.4,
+      "obsidian_filterEnvAmt": 0.26,
+      "obsidian_lfo1Rate": 0.022,
+      "obsidian_lfo1Depth": 0.13,
+      "obsidian_attack": 3.0,
+      "obsidian_release": 9.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.08,
+    "SPACE": 0.87
+  }
+}

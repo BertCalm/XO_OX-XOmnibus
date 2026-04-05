@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Glass Grain",
+  "mood": "Ethereal",
+  "engines": [
+    "Obsidian",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Volcanic glass scattered into granular mist. Obsidian crystalline reflections cloud into Opal scatter.",
+  "tags": [
+    "ethereal",
+    "glass",
+    "grain",
+    "coupling",
+    "crystal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.42,
+    "movement": 0.28,
+    "density": 0.14,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.3,
+      "obsidian_macroMovement": 0.3,
+      "obsidian_macroCoupling": 0.11,
+      "obsidian_macroSpace": 0.9,
+      "obsidian_depth": 0.38,
+      "obsidian_filterEnvAmt": 0.25,
+      "obsidian_lfo1Rate": 0.018,
+      "obsidian_lfo1Depth": 0.12,
+      "obsidian_attack": 3.0,
+      "obsidian_release": 9.5
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.28,
+      "opal_macroMovement": 0.26,
+      "opal_macroCoupling": 0.09,
+      "opal_macroSpace": 0.92,
+      "opal_grainSize": 0.15,
+      "opal_filterEnvAmt": 0.24,
+      "opal_lfo1Rate": 0.04,
+      "opal_lfo1Depth": 0.15,
+      "opal_attack": 2.2,
+      "opal_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Opal",
+        "type": "FilterToFilter",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.1,
+    "SPACE": 0.91
+  }
+}

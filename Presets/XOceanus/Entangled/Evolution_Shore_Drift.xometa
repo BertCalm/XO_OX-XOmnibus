@@ -38,18 +38,27 @@
   "parameters": {
     "Osprey": {
       "osprey_macroCharacter": 0.52,
-      "osprey_macroMovement": 0.58,
-      "osprey_macroCoupling": 0.5,
-      "osprey_macroSpace": 0.72,
+      "osprey_macroMovement": 0.596,
+      "osprey_macroCoupling": 0.505,
+      "osprey_macroSpace": 0.425,
       "osprey_shore": 2.0,
-      "osprey_harborVerb": 0.68
+      "osprey_harborVerb": 0.68,
+      "osprey_filterEnvDepth": 0.499,
+      "osprey_lfo2Rate": 0.189,
+      "osprey_lfo2Depth": 0.35
     },
     "Osteria": {
       "osteria_qBassShore": 0.55,
       "osteria_roomExcitation": 0.48,
       "osteria_filterCutoff": 0.52,
       "osteria_reverbMix": 0.65,
-      "osteria_outputLevel": 0.78
+      "osteria_outputLevel": 0.78,
+      "osteria_macroCharacter": 0.524,
+      "osteria_macroMovement": 0.6,
+      "osteria_macroCoupling": 0.509,
+      "osteria_macroSpace": 0.429,
+      "osteria_filterEnvDepth": 0.499,
+      "osteria_lfoDepth": 0.189
     }
   },
   "coupling": {
@@ -75,5 +84,11 @@
     "endAmount": 0.65,
     "description": "Tidal coupling cycles on 20-second period — shoreline character shifts with each wave"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.563,
+    "COUPLING": 0.472,
+    "SPACE": 0.392
+  }
 }

@@ -41,7 +41,13 @@
       "ouro_theta": 1.2,
       "ouro_phi": -0.8,
       "ouro_damping": 0.25,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_macroCharacter": 0.601,
+      "ouro_macroMovement": 0.462,
+      "ouro_macroCoupling": 0.415,
+      "ouro_macroSpace": 0.466,
+      "ouro_filterEnvAmt": 0.58,
+      "ouro_lfoRate": 0.199
     },
     "Onset": {
       "perc_v1_blend": 0.3,
@@ -97,10 +103,10 @@
       "perc_level": 0.85,
       "perc_drive": 0.1,
       "perc_masterTone": 0.55,
-      "perc_macro_machine": 0.65,
-      "perc_macro_punch": 0.65,
-      "perc_macro_space": 0.2,
-      "perc_macro_mutate": 0.3,
+      "perc_macro_machine": 0.437,
+      "perc_macro_punch": 0.623,
+      "perc_macro_space": 0.488,
+      "perc_macro_mutate": 0.484,
       "perc_xvc_kick_to_snare_filter": 0.25,
       "perc_xvc_snare_to_hat_decay": 0.2,
       "perc_xvc_hat_choke": 1.0,
@@ -109,7 +115,10 @@
       "perc_char_grit": 0.2,
       "perc_fx_reverb_mix": 0.2,
       "perc_fx_delay_mix": 0.1,
-      "perc_fx_lofi_mix": 0.05
+      "perc_fx_lofi_mix": 0.05,
+      "perc_filterEnvAmt": 0.58,
+      "perc_lfo1Rate": 0.199,
+      "perc_lfo1Depth": 0.232
     }
   },
   "coupling": {
@@ -143,5 +152,11 @@
     "space": 0.35,
     "aggression": 0.7
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.599,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.413,
+    "SPACE": 0.464
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Stone Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Ochre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystal growing within stone \u2014 the mineral substrate providing structural resonance for the new formation.",
+  "tags": [
+    "crystalline",
+    "stone",
+    "crystal",
+    "mineral",
+    "growing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_macroCharacter": 0.56,
+      "ochre_macroMovement": 0.42,
+      "ochre_macroCoupling": 0.25,
+      "ochre_macroSpace": 0.64,
+      "ochre_filterEnvAmt": 0.56,
+      "ochre_lfo1Rate": 0.07,
+      "ochre_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.25,
+    "SPACE": 0.64
+  }
+}

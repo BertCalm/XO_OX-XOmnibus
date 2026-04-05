@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Iridescent Blade",
+  "mood": "Prism",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Iridescent prism edge sharpened to cutting geometry. Beauty and violence in the same blade.",
+  "tags": ["prism", "aggressive", "iridescent", "blade", "beautiful"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.86,
+    "density": 0.72,
+    "space": 0.24,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.84,
+      "oblq_macroMovement": 0.84,
+      "oblq_macroCoupling": 0.24,
+      "oblq_macroSpace": 0.26,
+      "oblq_prismColor": 0.96,
+      "oblq_bounceRate": 0.8,
+      "oblq_filterEnvAmt": 0.74,
+      "oblq_lfo1Rate": 0.5,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.72,
+      "oblq_filterRes": 0.68,
+      "oblq_attackTime": 0.007,
+      "oblq_decayTime": 0.22,
+      "oblq_sustain": 0.38,
+      "oblq_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.24,
+    "SPACE": 0.26
+  }
+}

@@ -49,14 +49,17 @@
       "obbl_fxBTapeSat": 0.114,
       "obbl_instrumentA": 3,
       "obbl_instrumentB": 3,
-      "obbl_macroBond": 0.251,
-      "obbl_macroBreath": 0.497,
-      "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.085,
+      "obbl_macroBond": 0.613,
+      "obbl_macroBreath": 0.438,
+      "obbl_macroMischief": 0.288,
+      "obbl_macroWind": 0.224,
       "obbl_reedBite": 0.242,
       "obbl_reedStiffness": 0.336,
       "obbl_sympatheticAmt": 0.373,
-      "obbl_voiceRouting": 3
+      "obbl_voiceRouting": 3,
+      "obbl_filterEnvAmt": 0.352,
+      "obbl_lfoRateA": 0.236,
+      "obbl_lfoDepthA": 0.282
     }
   },
   "schema_version": 1,
@@ -67,5 +70,11 @@
     "clean"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.599,
+    "MOVEMENT": 0.424,
+    "COUPLING": 0.21,
+    "SPACE": 0.274
+  }
 }

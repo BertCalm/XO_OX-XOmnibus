@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Moth Wing",
+  "mood": "Organic",
+  "engines": ["Oxalis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dusty moth wing patterns — tiny scales of chitin creating organic texture that changes color with angle.",
+  "tags": ["organic", "moth", "wing", "delicate", "nocturnal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.52,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxalis": {
+      "oxal_macroCharacter": 0.36,
+      "oxal_macroMovement": 0.35,
+      "oxal_macroCoupling": 0.14,
+      "oxal_macroSpace": 0.52,
+      "oxal_leafTension": 0.42,
+      "oxal_filterEnvAmt": 0.36,
+      "oxal_lfo1Rate": 0.05,
+      "oxal_lfo1Depth": 0.20,
+      "oxal_lfo2Rate": 0.09,
+      "oxal_lfo2Depth": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.14,
+    "SPACE": 0.52
+  }
+}

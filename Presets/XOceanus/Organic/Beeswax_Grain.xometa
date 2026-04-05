@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Beeswax Grain",
+  "mood": "Organic",
+  "engines": ["Ottoni"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hexagonal beeswax cell structure — geometry produced by collective insect labor, warm and precise at once.",
+  "tags": ["organic", "beeswax", "hexagonal", "collective", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.78,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_macroCharacter": 0.50,
+      "otto_macroMovement": 0.28,
+      "otto_macroCoupling": 0.15,
+      "otto_macroSpace": 0.45,
+      "otto_macroGrow": 0.52,
+      "otto_filterEnvAmt": 0.44,
+      "otto_lfo1Rate": 0.04,
+      "otto_lfo1Depth": 0.20,
+      "otto_lfo2Rate": 0.08,
+      "otto_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.15,
+    "SPACE": 0.45
+  }
+}

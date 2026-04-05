@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Chromatophore Amber",
+  "mood": "Crystalline",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Amber chromatophore cells frozen in crystal \u2014 the warm copper-amber tone crystallized into cold mineral.",
+  "tags": [
+    "crystalline",
+    "chromatophore",
+    "amber",
+    "outwit",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.32,
+    "movement": 0.3,
+    "density": 0.44,
+    "space": 0.56,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_macroCharacter": 0.56,
+      "owit_macroMovement": 0.3,
+      "owit_macroCoupling": 0.15,
+      "owit_macroSpace": 0.56,
+      "owit_filterEnvAmt": 0.64,
+      "owit_lfo1Rate": 0.13,
+      "owit_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.15,
+    "SPACE": 0.56
+  }
+}

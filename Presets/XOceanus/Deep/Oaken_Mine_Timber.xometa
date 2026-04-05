@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Mine Timber",
+  "mood": "Deep",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Old mine support timbers at depth — wood that has held tons of earth above it for a century, resonating with the weight of the mountain pressing down.",
+  "tags": ["deep", "mine", "woody", "weight", "subterranean"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.78,
+    "movement": 0.14,
+    "density": 0.74,
+    "space": 0.58,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.54,
+      "oaken_macroMovement": 0.14,
+      "oaken_macroCoupling": 0.12,
+      "oaken_macroSpace": 0.56,
+      "oaken_filterEnvAmt": 0.44,
+      "oaken_lfo1Rate": 0.02,
+      "oaken_lfo1Depth": 0.14,
+      "oaken_stringAge": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.12,
+    "SPACE": 0.56
+  }
+}

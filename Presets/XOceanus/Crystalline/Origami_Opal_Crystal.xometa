@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Origami Opal Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Origami geometric folds drive Opal grain morphology \u2014 envelope shapes folding granular texture into crystalline form.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "origami",
+    "opal",
+    "granular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.24,
+    "movement": 0.42,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.53,
+      "origami_macroMovement": 0.33,
+      "origami_macroCoupling": 0.23,
+      "origami_macroSpace": 0.61,
+      "origami_filterEnvAmt": 0.55,
+      "origami_lfo1Rate": 0.13,
+      "origami_lfo1Depth": 0.19
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.53,
+      "opal_macroMovement": 0.33,
+      "opal_macroCoupling": 0.23,
+      "opal_macroSpace": 0.61,
+      "opal_filterEnvAmt": 0.55,
+      "opal_lfo1Rate": 0.13,
+      "opal_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "EnvToMorph",
+        "amount": 0.25
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.23,
+    "SPACE": 0.61
+  }
+}

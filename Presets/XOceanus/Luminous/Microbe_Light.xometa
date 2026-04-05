@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Microbe Light",
+  "mood": "Luminous",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Single-celled organisms producing light through chemical reaction — the simplest bioluminescent unit. Organon at low metabolic rate, the single note an individual glowing cell.",
+  "tags": ["luminous", "microbe", "cell", "chemical", "bioluminescent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.48,
+    "movement": 0.36,
+    "density": 0.30,
+    "space": 0.58,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.44,
+      "organon_macroMovement": 0.36,
+      "organon_macroCoupling": 0.13,
+      "organon_macroSpace": 0.58,
+      "organon_filterEnvAmt": 0.50,
+      "organon_metabolicRate": 0.30,
+      "organon_lfo1Rate": 0.06,
+      "organon_lfo1Depth": 0.16,
+      "organon_lfo2Rate": 0.12,
+      "organon_lfo2Depth": 0.10,
+      "organon_attack": 0.4,
+      "organon_decay": 1.8,
+      "organon_sustain": 0.72,
+      "organon_release": 4.5,
+      "organon_filterCutoff": 5500,
+      "organon_filterRes": 0.22,
+      "organon_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.13,
+    "SPACE": 0.58
+  }
+}

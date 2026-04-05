@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Passive Transport",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Passive transport requires no energy. The signal moves of its own accord toward equilibrium.",
+  "tags": [
+    "ethereal",
+    "passive",
+    "transport",
+    "equilibrium",
+    "effortless"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.58,
+    "movement": 0.18,
+    "density": 0.14,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.27,
+      "osmo_macroMovement": 0.2,
+      "osmo_macroCoupling": 0.06,
+      "osmo_macroSpace": 0.9,
+      "osmo_permeability": 0.62,
+      "osmo_filterEnvAmt": 0.21,
+      "osmo_lfo1Rate": 0.009,
+      "osmo_lfo1Depth": 0.09,
+      "osmo_attack": 4.5,
+      "osmo_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.06,
+    "SPACE": 0.9
+  }
+}

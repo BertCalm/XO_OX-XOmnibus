@@ -46,7 +46,14 @@
       "oracle_ampSustain": 0.55,
       "oracle_ampRelease": 1.5,
       "oracle_voiceMode": 2,
-      "oracle_glide": 0.0
+      "oracle_glide": 0.0,
+      "oracle_macroCharacter": 0.488,
+      "oracle_macroMovement": 0.525,
+      "oracle_macroCoupling": 0.473,
+      "oracle_macroSpace": 0.508,
+      "oracle_filterEnvAmt": 0.527,
+      "oracle_lfo1Rate": 0.252,
+      "oracle_lfo1Depth": 0.354
     },
     "Organon": {
       "organon_metabolicRate": 2.0,
@@ -58,7 +65,14 @@
       "organon_isotopeBalance": 0.5,
       "organon_lockIn": 0.5,
       "organon_membrane": 0.2,
-      "organon_noiseColor": 0.45
+      "organon_noiseColor": 0.45,
+      "organon_macroCharacter": 0.479,
+      "organon_macroMovement": 0.516,
+      "organon_macroCoupling": 0.464,
+      "organon_macroSpace": 0.499,
+      "organon_filterEnvAmt": 0.527,
+      "organon_lfo1Rate": 0.252,
+      "organon_lfo1Depth": 0.354
     }
   },
   "coupling": {
@@ -79,5 +93,11 @@
     "density": 0.45,
     "space": 0.4,
     "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.517,
+    "COUPLING": 0.465,
+    "SPACE": 0.5
   }
 }

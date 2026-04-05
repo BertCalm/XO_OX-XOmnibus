@@ -28,7 +28,14 @@
   "parameters": {
     "Odyssey": {
       "couplingBus": 2,
-      "couplingLevel": 0.967
+      "couplingLevel": 0.967,
+      "drift_macroCharacter": 0.486,
+      "drift_macroMovement": 0.394,
+      "drift_macroCoupling": 0.218,
+      "drift_macroSpace": 0.63,
+      "drift_filterEnvAmt": 0.46,
+      "drift_lfoRate": 0.091,
+      "drift_lfoDepth": 0.191
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "odyssey"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.456,
+    "MOVEMENT": 0.364,
+    "COUPLING": 0.188,
+    "SPACE": 0.6
+  }
 }

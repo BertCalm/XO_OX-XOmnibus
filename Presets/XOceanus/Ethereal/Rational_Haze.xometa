@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Rational Haze",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The zone between rational and irrational where approximations are close enough to count. Spectral ambiguity as mood.",
+  "tags": [
+    "ethereal",
+    "rational",
+    "haze",
+    "spectral",
+    "ambiguous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.48,
+    "movement": 0.2,
+    "density": 0.19,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.34,
+      "over_macroMovement": 0.22,
+      "over_macroCoupling": 0.09,
+      "over_macroSpace": 0.84,
+      "over_cfDepth": 0.6,
+      "over_filterEnvAmt": 0.24,
+      "over_lfo1Rate": 0.012,
+      "over_lfo1Depth": 0.11,
+      "over_attack": 3.8,
+      "over_release": 10.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.09,
+    "SPACE": 0.84
+  }
+}

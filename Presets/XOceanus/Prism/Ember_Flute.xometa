@@ -38,7 +38,14 @@
       "origami_layers": 0.08,
       "origami_release": 900.0,
       "origami_resonance": 0.12,
-      "origami_tension": 0.15
+      "origami_tension": 0.15,
+      "origami_macroCharacter": 0.591,
+      "origami_macroMovement": 0.591,
+      "origami_macroCoupling": 0.28,
+      "origami_macroSpace": 0.427,
+      "origami_filterEnvAmt": 0.565,
+      "origami_lfo1Rate": 0.265,
+      "origami_lfo1Depth": 0.304
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "textured"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.532,
+    "MOVEMENT": 0.532,
+    "COUPLING": 0.221,
+    "SPACE": 0.368
+  }
 }

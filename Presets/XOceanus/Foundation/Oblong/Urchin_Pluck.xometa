@@ -47,7 +47,14 @@
       "bob_oscA_wave": 2.0,
       "bob_oscB_blend": 0.55,
       "bob_oscB_detune": 5.0,
-      "bob_oscB_wave": 1.0
+      "bob_oscB_wave": 1.0,
+      "bob_macroCharacter": 0.559,
+      "bob_macroMovement": 0.449,
+      "bob_macroCoupling": 0.183,
+      "bob_macroSpace": 0.356,
+      "bob_fltEnvAmt": 0.426,
+      "bob_lfo1Rate": 0.25,
+      "bob_lfo1Depth": 0.205
     }
   },
   "schema_version": 1,
@@ -58,5 +65,11 @@
     "punchy"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.546,
+    "MOVEMENT": 0.436,
+    "COUPLING": 0.17,
+    "SPACE": 0.343
+  }
 }

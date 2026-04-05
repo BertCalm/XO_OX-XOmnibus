@@ -97,7 +97,13 @@
       "ocelot_xf_floorUnder": 0.42,
       "ocelot_xf_underCanopy": 0.58,
       "ocelot_xf_underEmerg": 0.5,
-      "ocelot_xf_underFloor": 0.38
+      "ocelot_xf_underFloor": 0.38,
+      "ocelot_macroCharacter": 0.549,
+      "ocelot_macroMovement": 0.364,
+      "ocelot_macroCoupling": 0.441,
+      "ocelot_macroSpace": 0.492,
+      "ocelot_filterEnvDepth": 0.505,
+      "ocelot_lfoRate": 0.195
     }
   },
   "schema_version": 1,
@@ -111,5 +117,11 @@
     "spotted"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.532,
+    "MOVEMENT": 0.347,
+    "COUPLING": 0.424,
+    "SPACE": 0.475
+  }
 }

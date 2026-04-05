@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Entangle Bomb",
+  "mood": "Flux",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chiasmus FDN reverb entanglement at maximum intensity. Phase erosion and golden resonance weaponized.",
+  "tags": ["flux", "aggressive", "entangle", "reverb", "oxbow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.22,
+    "movement": 0.86,
+    "density": 0.88,
+    "space": 0.25,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.82,
+      "oxb_macroMovement": 0.84,
+      "oxb_macroCoupling": 0.25,
+      "oxb_macroSpace": 0.28,
+      "oxb_entangle": 0.92,
+      "oxb_phaseErosion": 0.85,
+      "oxb_filterEnvAmt": 0.72,
+      "oxb_lfo1Rate": 0.48,
+      "oxb_lfo1Depth": 0.42,
+      "oxb_filterCutoff": 0.6,
+      "oxb_filterRes": 0.65,
+      "oxb_attackTime": 0.015,
+      "oxb_decayTime": 0.35,
+      "oxb_sustain": 0.45,
+      "oxb_releaseTime": 0.3
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.25,
+    "SPACE": 0.28
+  }
+}

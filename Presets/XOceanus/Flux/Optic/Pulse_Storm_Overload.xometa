@@ -46,11 +46,23 @@
       "optic_drive": 0.427,
       "optic_outputLevel": 0.81,
       "optic_couplingLevel": 0.313,
-      "optic_couplingBus": 0
+      "optic_couplingBus": 0,
+      "optic_macroCharacter": 0.766,
+      "optic_macroMovement": 0.728,
+      "optic_macroCoupling": 0.193,
+      "optic_macroSpace": 0.463,
+      "optic_filterEnvAmt": 0.638,
+      "optic_lfoRate": 0.412
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.738,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.165,
+    "SPACE": 0.435
+  }
 }

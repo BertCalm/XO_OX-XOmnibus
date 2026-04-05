@@ -97,7 +97,13 @@
       "ocelot_xf_floorUnder": 0.45,
       "ocelot_xf_underCanopy": 0.45,
       "ocelot_xf_underEmerg": 0.4,
-      "ocelot_xf_underFloor": 0.42
+      "ocelot_xf_underFloor": 0.42,
+      "ocelot_macroCharacter": 0.433,
+      "ocelot_macroMovement": 0.333,
+      "ocelot_macroCoupling": 0.272,
+      "ocelot_macroSpace": 0.46,
+      "ocelot_filterEnvDepth": 0.441,
+      "ocelot_lfoRate": 0.08
     }
   },
   "schema_version": 1,
@@ -112,5 +118,11 @@
     "workhorse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.316,
+    "COUPLING": 0.255,
+    "SPACE": 0.443
+  }
 }

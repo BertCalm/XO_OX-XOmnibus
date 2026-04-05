@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Voltage Snap",
+  "mood": "Flux",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High-voltage saturation snap with thick harmonic distortion. Mojo cranked, digital grit biting hard.",
+  "tags": ["flux", "aggressive", "saturation", "snap", "distortion"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.75,
+    "density": 0.88,
+    "space": 0.15,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.88,
+      "fat_macroMovement": 0.72,
+      "fat_macroCoupling": 0.12,
+      "fat_macroSpace": 0.18,
+      "fat_satDrive": 0.9,
+      "fat_mojo": 0.85,
+      "fat_filterEnvAmt": 0.72,
+      "fat_lfo1Rate": 0.38,
+      "fat_lfo1Depth": 0.42,
+      "fat_filterCutoff": 0.55,
+      "fat_filterRes": 0.65,
+      "fat_attackTime": 0.005,
+      "fat_decayTime": 0.22,
+      "fat_sustain": 0.25,
+      "fat_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.12,
+    "SPACE": 0.18
+  }
+}

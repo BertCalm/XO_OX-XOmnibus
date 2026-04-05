@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Wood Resonance Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Ochre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wood resonance transformed by crystalline processing \u2014 organic warmth crystallized into cold precision.",
+  "tags": [
+    "crystalline",
+    "wood",
+    "resonance",
+    "transformed",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.36,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.54,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_macroCharacter": 0.56,
+      "ochre_macroMovement": 0.4,
+      "ochre_macroCoupling": 0.14,
+      "ochre_macroSpace": 0.55,
+      "ochre_filterEnvAmt": 0.43,
+      "ochre_lfo1Rate": 0.12,
+      "ochre_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.14,
+    "SPACE": 0.55
+  }
+}

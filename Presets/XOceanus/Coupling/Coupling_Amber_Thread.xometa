@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Amber Thread",
+  "mood": "Coupling",
+  "engines": [
+    "Oblong",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG warm filter contour whispers into OPAL grain size \u2014 a barely-there breath of amber warmth threading through granular clouds.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "granular",
+    "warm",
+    "AmpToFilter",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_fltCutoff": 0.52,
+      "bob_fltReso": 0.28,
+      "bob_filterEnvAmt": 0.42,
+      "bob_lfo1Rate": 0.09,
+      "bob_lfo1Depth": 0.22,
+      "bob_macroCharacter": 0.48,
+      "bob_macroMovement": 0.4,
+      "bob_macroCoupling": 0.5,
+      "bob_macroSpace": 0.42
+    },
+    "Opal": {
+      "opal_grainSize": 0.55,
+      "opal_grainDensity": 0.5,
+      "opal_filterEnvAmt": 0.38,
+      "opal_lfo1Rate": 0.12,
+      "opal_lfo1Depth": 0.2,
+      "opal_macroCharacter": 0.45,
+      "opal_macroMovement": 0.42,
+      "opal_macroCoupling": 0.48,
+      "opal_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Opal",
+        "type": "AmpToFilter",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.5,
+    "SPACE": 0.45
+  }
+}

@@ -55,14 +55,17 @@
       "obsidian_lfo2Depth": 0.0,
       "obsidian_lfo2Rate": 0.3,
       "obsidian_lfo2Shape": 0,
-      "obsidian_macroCharacter": 0.2,
-      "obsidian_macroCoupling": 0.0,
-      "obsidian_macroMovement": 0.0,
-      "obsidian_macroSpace": 0.1,
+      "obsidian_macroCharacter": 0.498,
+      "obsidian_macroCoupling": 0.364,
+      "obsidian_macroMovement": 0.398,
+      "obsidian_macroSpace": 0.418,
       "obsidian_polyphony": 1,
       "obsidian_stereoWidth": 0.15,
       "obsidian_stiffness": 0.0,
-      "obsidian_tiltY": 0.2
+      "obsidian_tiltY": 0.2,
+      "obsidian_filterEnvAmt": 0.402,
+      "obsidian_lfoRate": 0.169,
+      "obsidian_lfoDepth": 0.24
     }
   },
   "schema_version": 1,
@@ -75,5 +78,11 @@
     "stone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.296,
+    "SPACE": 0.35
+  }
 }

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Prism Fold",
+  "mood": "Coupling",
+  "engines": [
+    "Oblique",
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLIQUE prism color signal modulates ORIGAMI fold point \u2014 refracted light determining where paper creases, geometry and physics colliding.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "prismatic",
+    "fold",
+    "FilterToFilter",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.44,
+    "movement": 0.52,
+    "density": 0.48,
+    "space": 0.48,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismColor": 0.55,
+      "oblq_filterEnvAmt": 0.5,
+      "oblq_lfo1Rate": 0.15,
+      "oblq_lfo1Depth": 0.28,
+      "oblq_macroCharacter": 0.52,
+      "oblq_macroMovement": 0.52,
+      "oblq_macroCoupling": 0.62,
+      "oblq_macroSpace": 0.48
+    },
+    "Origami": {
+      "origami_foldPoint": 0.55,
+      "origami_filterEnvAmt": 0.48,
+      "origami_lfo1Rate": 0.13,
+      "origami_lfo1Depth": 0.26,
+      "origami_macroCharacter": 0.5,
+      "origami_macroMovement": 0.5,
+      "origami_macroCoupling": 0.6,
+      "origami_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "FilterToFilter",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.61,
+    "SPACE": 0.47
+  }
+}

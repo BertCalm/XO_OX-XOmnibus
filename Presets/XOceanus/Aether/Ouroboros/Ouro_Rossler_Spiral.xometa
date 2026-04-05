@@ -39,7 +39,13 @@
       "ouro_theta": 0.785,
       "ouro_phi": 0.3,
       "ouro_damping": 0.42,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_macroCharacter": 0.354,
+      "ouro_macroMovement": 0.362,
+      "ouro_macroCoupling": 0.231,
+      "ouro_macroSpace": 0.856,
+      "ouro_filterEnvAmt": 0.39,
+      "ouro_lfoRate": 0.028
     }
   },
   "coupling": {
@@ -53,5 +59,11 @@
     "density": 0.45,
     "space": 0.68,
     "aggression": 0.22
+  },
+  "macros": {
+    "CHARACTER": 0.352,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.229,
+    "SPACE": 0.854
   }
 }

@@ -28,7 +28,13 @@
   "parameters": {
     "Ocelot": {
       "couplingBus": 3,
-      "couplingLevel": 0.643
+      "couplingLevel": 0.643,
+      "ocelot_macroCharacter": 0.498,
+      "ocelot_macroMovement": 0.466,
+      "ocelot_macroCoupling": 0.148,
+      "ocelot_macroSpace": 0.883,
+      "ocelot_filterEnvDepth": 0.39,
+      "ocelot_lfoRate": 0.064
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "ocelot"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.481,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.131,
+    "SPACE": 0.866
+  }
 }

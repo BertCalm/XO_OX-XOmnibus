@@ -41,7 +41,14 @@
       "oblq_oscDetune": 0.0,
       "oblq_oscFold": 0.97,
       "oblq_oscWave": 3.0,
-      "oblq_sustain": 0.0
+      "oblq_sustain": 0.0,
+      "oblq_macroCharacter": 0.672,
+      "oblq_macroMovement": 0.551,
+      "oblq_macroCoupling": 0.204,
+      "oblq_macroSpace": 0.468,
+      "oblq_filterEnvAmt": 0.435,
+      "oblq_lfo1Rate": 0.18,
+      "oblq_lfo1Depth": 0.211
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "transient"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.528,
+    "COUPLING": 0.181,
+    "SPACE": 0.445
+  }
 }

@@ -34,14 +34,17 @@
       "opal_filterCutoff": 0.88,
       "opal_filterReso": 0.08,
       "opal_grainSize": 0.9,
-      "opal_macroCharacter": 0.0,
-      "opal_macroCoupling": 0.0,
-      "opal_macroMovement": 0.0,
-      "opal_macroSpace": 0.0,
+      "opal_macroCharacter": 0.438,
+      "opal_macroCoupling": 0.15,
+      "opal_macroMovement": 0.442,
+      "opal_macroSpace": 0.738,
       "opal_pitchScatter": 0.02,
       "opal_posScatter": 0.35,
       "opal_reverse": 0.0,
-      "opal_speed": 0.2
+      "opal_speed": 0.2,
+      "opal_filterEnvAmt": 0.303,
+      "opal_lfo1Rate": 0.041,
+      "opal_lfo1Depth": 0.118
     }
   },
   "schema_version": 1,
@@ -54,5 +57,11 @@
     "crystalline"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.453,
+    "MOVEMENT": 0.457,
+    "COUPLING": 0.165,
+    "SPACE": 0.753
+  }
 }

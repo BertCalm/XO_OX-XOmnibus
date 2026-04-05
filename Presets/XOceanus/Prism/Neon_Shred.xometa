@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Neon Shred",
+  "mood": "Prism",
+  "engines": ["Overworld"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Neon green ERA triangle shredding through prism frequency bands. Electronic aggression meets phosphorescent color.",
+  "tags": ["prism", "aggressive", "neon", "shred", "electronic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.18,
+    "movement": 0.9,
+    "density": 0.78,
+    "space": 0.18,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macroCharacter": 0.84,
+      "ow_macroMovement": 0.88,
+      "ow_macroCoupling": 0.2,
+      "ow_macroSpace": 0.2,
+      "ow_era": 0.88,
+      "ow_kinetic": 0.85,
+      "ow_filterEnvAmt": 0.74,
+      "ow_lfo1Rate": 0.62,
+      "ow_lfo1Depth": 0.44,
+      "ow_filterCutoff": 0.72,
+      "ow_filterRes": 0.68,
+      "ow_attackTime": 0.006,
+      "ow_decayTime": 0.18,
+      "ow_sustain": 0.3,
+      "ow_releaseTime": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
+}

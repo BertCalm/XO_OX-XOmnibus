@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Peat Resonance",
+  "mood": "Organic",
+  "engines": ["Ohm"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mire and bog holding ancient acoustic memory. Percussion from a peat drum — dense, muffled, deeply resonant.",
+  "tags": ["organic", "peat", "bog", "muffled", "ancient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.82,
+    "movement": 0.28,
+    "density": 0.65,
+    "space": 0.40,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.52,
+      "ohm_macroMovement": 0.28,
+      "ohm_macroCoupling": 0.16,
+      "ohm_macroSpace": 0.40,
+      "ohm_macroMeddling": 0.25,
+      "ohm_filterEnvAmt": 0.48,
+      "ohm_lfo1Rate": 0.03,
+      "ohm_lfo1Depth": 0.20,
+      "ohm_lfo2Rate": 0.06,
+      "ohm_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.16,
+    "SPACE": 0.40
+  }
+}

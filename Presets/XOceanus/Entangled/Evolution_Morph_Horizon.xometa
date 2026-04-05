@@ -41,7 +41,14 @@
       "drift_morphAmount": 0.55,
       "drift_filterCutoff": 0.55,
       "drift_reverbMix": 0.45,
-      "drift_outputLevel": 0.8
+      "drift_outputLevel": 0.8,
+      "drift_macroCharacter": 0.589,
+      "drift_macroMovement": 0.545,
+      "drift_macroCoupling": 0.727,
+      "drift_macroSpace": 0.512,
+      "drift_filterEnvAmt": 0.432,
+      "drift_lfoRate": 0.217,
+      "drift_lfoDepth": 0.235
     },
     "Opal": {
       "opal_grainSize": 0.48,
@@ -49,7 +56,14 @@
       "opal_grainPitch": 0.5,
       "opal_filterCutoff": 0.55,
       "opal_reverbMix": 0.58,
-      "opal_outputLevel": 0.78
+      "opal_outputLevel": 0.78,
+      "opal_macroCharacter": 0.544,
+      "opal_macroMovement": 0.5,
+      "opal_macroCoupling": 0.682,
+      "opal_macroSpace": 0.467,
+      "opal_filterEnvAmt": 0.432,
+      "opal_lfo1Rate": 0.217,
+      "opal_lfo1Depth": 0.235
     }
   },
   "coupling": {
@@ -83,5 +97,11 @@
     "endAmount": 0.18,
     "description": "Coupling peaks at 28 seconds — familiar into alien and back, different return path"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.559,
+    "MOVEMENT": 0.515,
+    "COUPLING": 0.697,
+    "SPACE": 0.482
+  }
 }

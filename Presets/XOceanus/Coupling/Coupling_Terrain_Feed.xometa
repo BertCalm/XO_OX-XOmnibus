@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Terrain Feed",
+  "mood": "Coupling",
+  "engines": [
+    "Ocelot",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCELOT biome signals feed ORGANISM cellular automata rule evolution \u2014 habitat data teaching cells new behaviors, ecology as generative logic.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "biome",
+    "cellular",
+    "ChaosInject",
+    "ecological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.54,
+    "space": 0.5,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0.58,
+      "ocelot_filterEnvAmt": 0.52,
+      "ocelot_lfo1Rate": 0.14,
+      "ocelot_lfo1Depth": 0.28,
+      "ocelot_macroCharacter": 0.52,
+      "ocelot_macroMovement": 0.54,
+      "ocelot_macroCoupling": 0.62,
+      "ocelot_macroSpace": 0.5
+    },
+    "Organism": {
+      "org_ruleSet": 0.55,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.28,
+      "org_macroCharacter": 0.5,
+      "org_macroMovement": 0.54,
+      "org_macroCoupling": 0.6,
+      "org_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Organism",
+        "type": "ChaosInject",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

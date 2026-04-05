@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Residue Signal",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "What remains of a radio broadcast after the station closes. Static elevated to melody.",
+  "tags": [
+    "ethereal",
+    "residue",
+    "static",
+    "radio",
+    "ghost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.28,
+    "density": 0.18,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.37,
+      "ombre_macroMovement": 0.3,
+      "ombre_macroCoupling": 0.11,
+      "ombre_macroSpace": 0.82,
+      "ombre_blend": 0.35,
+      "ombre_filterEnvAmt": 0.29,
+      "ombre_lfo1Rate": 0.028,
+      "ombre_lfo1Depth": 0.13,
+      "ombre_attack": 2.2,
+      "ombre_release": 7.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.11,
+    "SPACE": 0.82
+  }
+}

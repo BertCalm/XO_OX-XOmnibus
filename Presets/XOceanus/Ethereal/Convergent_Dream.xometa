@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Convergent Dream",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The partial that keeps getting closer to the true value but never arrives. Asymptotic melody.",
+  "tags": [
+    "ethereal",
+    "convergent",
+    "dream",
+    "asymptotic",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.14,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.36,
+      "over_macroMovement": 0.37,
+      "over_macroCoupling": 0.1,
+      "over_macroSpace": 0.88,
+      "over_cfDepth": 0.7,
+      "over_filterEnvAmt": 0.31,
+      "over_lfo1Rate": 0.048,
+      "over_lfo1Depth": 0.17,
+      "over_attack": 2.2,
+      "over_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.1,
+    "SPACE": 0.88
+  }
+}

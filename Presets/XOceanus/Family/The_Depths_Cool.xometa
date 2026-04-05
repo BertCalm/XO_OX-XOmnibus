@@ -37,13 +37,42 @@
     "Oceanic": {
       "ocean_character": 0.751,
       "ocean_movement": 0.679,
-      "ocean_space": 0.434
+      "ocean_space": 0.434,
+      "ocean_macroCharacter": 0.415,
+      "ocean_macroMovement": 0.363,
+      "ocean_macroCoupling": 0.392,
+      "ocean_macroSpace": 0.506,
+      "ocean_filterEnvAmt": 0.429,
+      "ocean_lfo1Rate": 0.183,
+      "ocean_lfo1Depth": 0.21
     },
-    "Owlfish": {},
-    "Organon": {}
+    "Owlfish": {
+      "owl_macroCharacter": 0.429,
+      "owl_macroMovement": 0.377,
+      "owl_macroCoupling": 0.406,
+      "owl_macroSpace": 0.52,
+      "owl_filterEnvDepth": 0.429,
+      "owl_lfoRate": 0.183,
+      "owl_lfoDepth": 0.21
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.408,
+      "organon_macroMovement": 0.356,
+      "organon_macroCoupling": 0.385,
+      "organon_macroSpace": 0.499,
+      "organon_filterEnvAmt": 0.429,
+      "organon_lfo1Rate": 0.183,
+      "organon_lfo1Depth": 0.21
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.409,
+    "MOVEMENT": 0.357,
+    "COUPLING": 0.386,
+    "SPACE": 0.5
+  }
 }

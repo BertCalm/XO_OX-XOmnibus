@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.85,
       "perc_v3_level": 0.6,
-      "perc_macro_punch": 0.7
+      "perc_macro_punch": 0.594,
+      "perc_macro_mutate": 0.49,
+      "perc_macro_machine": 0.65,
+      "perc_macro_space": 0.437,
+      "perc_filterEnvAmt": 0.43,
+      "perc_lfo1Rate": 0.284,
+      "perc_lfo1Depth": 0.327
     },
     "Oceanic": {
       "oce_depth": 0.6,
       "oce_pressure": 0.5,
-      "oce_filterCut": 3000.0
+      "oce_filterCut": 3000.0,
+      "ocean_macroCharacter": 0.576,
+      "ocean_macroMovement": 0.472,
+      "ocean_macroCoupling": 0.632,
+      "ocean_macroSpace": 0.419,
+      "ocean_filterEnvAmt": 0.43,
+      "ocean_lfo1Rate": 0.284,
+      "ocean_lfo1Depth": 0.327
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.466,
+    "COUPLING": 0.626,
+    "SPACE": 0.413
+  }
 }

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Recoil Strike",
+  "mood": "Kinetic",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fold recoil on each strike creates equal opposite snap. Newton's third law encoded in paper geometry.",
+  "tags": ["kinetic", "aggressive", "recoil", "strike", "fold"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.16,
+    "movement": 0.92,
+    "density": 0.78,
+    "space": 0.14,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.87,
+      "origami_macroMovement": 0.9,
+      "origami_macroCoupling": 0.14,
+      "origami_macroSpace": 0.15,
+      "origami_foldPoint": 0.85,
+      "origami_foldAngle": 0.88,
+      "origami_filterEnvAmt": 0.8,
+      "origami_lfo1Rate": 0.6,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.64,
+      "origami_filterRes": 0.74,
+      "origami_attackTime": 0.005,
+      "origami_decayTime": 0.16,
+      "origami_sustain": 0.22,
+      "origami_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.14,
+    "SPACE": 0.15
+  }
+}

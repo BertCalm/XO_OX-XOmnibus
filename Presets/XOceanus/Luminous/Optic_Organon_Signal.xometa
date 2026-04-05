@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Optic Organon Signal",
+  "mood": "Luminous",
+  "engines": ["Optic", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Visual modulation from Optic controls Organon's metabolic rate — light becomes life-force. A bioluminescent organism that breathes to the rhythm of phosphor pulses.",
+  "tags": ["luminous", "coupled", "phosphor", "bioluminescent", "metabolic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.45,
+    "movement": 0.52,
+    "density": 0.38,
+    "space": 0.60,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.55,
+      "optic_macroMovement": 0.52,
+      "optic_macroCoupling": 0.24,
+      "optic_macroSpace": 0.58,
+      "optic_filterEnvAmt": 0.50,
+      "optic_pulseRate": 0.11,
+      "optic_pulseDepth": 0.26,
+      "optic_lfo1Rate": 0.07,
+      "optic_lfo1Depth": 0.22,
+      "optic_attack": 0.07,
+      "optic_decay": 0.9,
+      "optic_sustain": 0.80,
+      "optic_release": 2.6,
+      "optic_filterCutoff": 10000,
+      "optic_output": 0
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.45,
+      "organon_macroMovement": 0.50,
+      "organon_macroCoupling": 0.24,
+      "organon_macroSpace": 0.60,
+      "organon_filterEnvAmt": 0.48,
+      "organon_metabolicRate": 0.62,
+      "organon_lfo1Rate": 0.08,
+      "organon_lfo1Depth": 0.22,
+      "organon_attack": 0.14,
+      "organon_decay": 1.1,
+      "organon_sustain": 0.75,
+      "organon_release": 3.2,
+      "organon_filterCutoff": 7000,
+      "organon_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Optic",
+        "target": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.22
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.24,
+    "SPACE": 0.60
+  }
+}

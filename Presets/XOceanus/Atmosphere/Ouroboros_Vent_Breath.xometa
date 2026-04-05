@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.65
+      "ouro_macroSpace": 0.695,
+      "ouro_macroCharacter": 0.382,
+      "ouro_macroMovement": 0.495,
+      "ouro_macroCoupling": 0.141,
+      "ouro_filterEnvAmt": 0.447,
+      "ouro_lfoRate": 0.058
     }
   },
   "tags": [
@@ -52,5 +57,11 @@
     "ambient",
     "transcendental"
   ],
-  "description": "D005 breathing LFO at 0.08 Hz becomes audible — 12.5-second leash undulation creates slow organic movement. Rossler + heavy damping (0.7) = warm, smooth atmospheric texture. The vent's geological pulse."
+  "description": "D005 breathing LFO at 0.08 Hz becomes audible — 12.5-second leash undulation creates slow organic movement. Rossler + heavy damping (0.7) = warm, smooth atmospheric texture. The vent's geological pulse.",
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.493,
+    "COUPLING": 0.139,
+    "SPACE": 0.693
+  }
 }

@@ -35,9 +35,13 @@
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.55,
-      "oracle_macroCharacter": 0.5,
-      "oracle_macroCoupling": 0.55,
-      "oracle_macroMovement": 0.6
+      "oracle_macroCharacter": 0.561,
+      "oracle_macroCoupling": 0.427,
+      "oracle_macroMovement": 0.583,
+      "oracle_macroSpace": 0.523,
+      "oracle_filterEnvAmt": 0.535,
+      "oracle_lfo1Rate": 0.263,
+      "oracle_lfo1Depth": 0.353
     },
     "Origami": {
       "origami_ampAttack": 0.15,
@@ -50,7 +54,14 @@
       "origami_foldPoint": 0.6,
       "origami_layers": 2,
       "origami_oscPitch": 0.0,
-      "origami_symmetry": 0.25
+      "origami_symmetry": 0.25,
+      "origami_macroCharacter": 0.612,
+      "origami_macroMovement": 0.634,
+      "origami_macroCoupling": 0.478,
+      "origami_macroSpace": 0.574,
+      "origami_filterEnvAmt": 0.535,
+      "origami_lfo1Rate": 0.263,
+      "origami_lfo1Depth": 0.353
     }
   },
   "schema_version": 1,
@@ -64,5 +75,11 @@
     "fold"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.553,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.419,
+    "SPACE": 0.515
+  }
 }

@@ -36,11 +36,17 @@
   },
   "parameters": {
     "Ostinato": {
-      "osti_macroGather": 0.6,
+      "osti_macroGather": 0.485,
       "osti_rhythmDensity": 0.5,
       "osti_accentDepth": 0.55,
       "osti_filterCutoff": 0.52,
-      "osti_outputLevel": 0.8
+      "osti_outputLevel": 0.8,
+      "osti_macroFire": 0.454,
+      "osti_macroCircle": 0.57,
+      "osti_macroSpace": 0.432,
+      "osti_filterEnvAmt": 0.586,
+      "osti_lfo1Rate": 0.102,
+      "osti_lfo1Depth": 0.22
     },
     "OpenSky": {
       "sky_macroRise": 0.72,
@@ -48,7 +54,14 @@
       "sky_chorusMix": 0.5,
       "sky_filterCutoff": 0.68,
       "sky_reverbSize": 0.65,
-      "sky_outputLevel": 0.78
+      "sky_outputLevel": 0.78,
+      "sky_macroCharacter": 0.473,
+      "sky_macroMovement": 0.442,
+      "sky_macroCoupling": 0.558,
+      "sky_macroSpace": 0.42,
+      "sky_filterEnvAmt": 0.586,
+      "sky_lfo1Rate": 0.102,
+      "sky_lfo1Depth": 0.22
     }
   },
   "coupling": {
@@ -67,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.433,
+    "COUPLING": 0.549,
+    "SPACE": 0.411
+  }
 }

@@ -48,7 +48,13 @@
       "optic_vizMode": 1,
       "optic_vizFeedback": 0.5,
       "optic_vizSpeed": 0.35,
-      "optic_vizIntensity": 0.55
+      "optic_vizIntensity": 0.55,
+      "optic_macroCharacter": 0.603,
+      "optic_macroMovement": 0.302,
+      "optic_macroCoupling": 0.688,
+      "optic_macroSpace": 0.393,
+      "optic_filterEnvAmt": 0.386,
+      "optic_lfoRate": 0.131
     },
     "Organon": {
       "organon_metabolicRate": 3.0,
@@ -60,7 +66,14 @@
       "organon_isotopeBalance": 0.5,
       "organon_lockIn": 0.4,
       "organon_membrane": 0.3,
-      "organon_noiseColor": 0.5
+      "organon_noiseColor": 0.5,
+      "organon_macroCharacter": 0.574,
+      "organon_macroMovement": 0.273,
+      "organon_macroCoupling": 0.659,
+      "organon_macroSpace": 0.364,
+      "organon_filterEnvAmt": 0.386,
+      "organon_lfo1Rate": 0.131,
+      "organon_lfo1Depth": 0.261
     }
   },
   "coupling": {
@@ -81,5 +94,11 @@
     "density": 0.5,
     "space": 0.45,
     "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.575,
+    "MOVEMENT": 0.274,
+    "COUPLING": 0.66,
+    "SPACE": 0.365
   }
 }

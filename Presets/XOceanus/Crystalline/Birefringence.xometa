@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Birefringence",
+  "mood": "Crystalline",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Birefringent crystal splitting light into two polarized beams. Double refraction as stereo spatial phenomenon.",
+  "tags": [
+    "crystalline",
+    "birefringence",
+    "polarized",
+    "splitting",
+    "stereo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.22,
+    "movement": 0.36,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.53,
+      "oblq_macroMovement": 0.44,
+      "oblq_macroCoupling": 0.24,
+      "oblq_macroSpace": 0.5,
+      "oblq_filterEnvAmt": 0.62,
+      "oblq_lfo1Rate": 0.05,
+      "oblq_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.24,
+    "SPACE": 0.5
+  }
+}

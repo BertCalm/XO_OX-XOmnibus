@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Arc Flash",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Electrical arc flash through prism spectrum. Strange attractor releasing stored energy as blinding light burst.",
+  "tags": ["prism", "aggressive", "arc", "flash", "electric"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.1,
+    "movement": 0.9,
+    "density": 0.76,
+    "space": 0.18,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9,
+      "ouro_macroMovement": 0.88,
+      "ouro_macroCoupling": 0.18,
+      "ouro_macroSpace": 0.2,
+      "ouro_topology": 0.88,
+      "ouro_leash": 0.15,
+      "ouro_filterEnvAmt": 0.86,
+      "ouro_lfo1Rate": 0.75,
+      "ouro_lfo1Depth": 0.5,
+      "ouro_lfo2Rate": 0.88,
+      "ouro_lfo2Depth": 0.44,
+      "ouro_filterCutoff": 0.85,
+      "ouro_filterRes": 0.85,
+      "ouro_attackTime": 0.001,
+      "ouro_decayTime": 0.1,
+      "ouro_sustain": 0.18,
+      "ouro_releaseTime": 0.08
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

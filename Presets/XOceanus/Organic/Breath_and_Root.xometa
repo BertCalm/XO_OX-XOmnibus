@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Breath and Root",
+  "mood": "Organic",
+  "engines": ["Obbligato", "Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reed breath sitting above oak wood resonance — the sound a forest makes on a still morning when all is listening.",
+  "tags": ["organic", "breath", "wood", "coupled", "forest"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.76,
+    "movement": 0.36,
+    "density": 0.44,
+    "space": 0.56,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_macroCharacter": 0.40,
+      "obbl_macroMovement": 0.36,
+      "obbl_macroCoupling": 0.22,
+      "obbl_macroSpace": 0.56,
+      "obbl_breathA": 0.50,
+      "obbl_filterEnvAmt": 0.40,
+      "obbl_lfo1Rate": 0.06,
+      "obbl_lfo1Depth": 0.26,
+      "obbl_lfo2Rate": 0.03,
+      "obbl_lfo2Depth": 0.18
+    },
+    "Oaken": {
+      "oaken_macroCharacter": 0.44,
+      "oaken_macroMovement": 0.30,
+      "oaken_macroCoupling": 0.22,
+      "oaken_macroSpace": 0.50,
+      "oaken_stringAge": 0.72,
+      "oaken_filterEnvAmt": 0.40,
+      "oaken_lfo1Rate": 0.04,
+      "oaken_lfo1Depth": 0.18,
+      "oaken_lfo2Rate": 0.09,
+      "oaken_lfo2Depth": 0.14
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Obbligato",
+        "target": "Oaken",
+        "type": "EnvToMorph",
+        "amount": 0.25
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.22,
+    "SPACE": 0.53
+  }
+}

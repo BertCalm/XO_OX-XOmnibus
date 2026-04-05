@@ -47,7 +47,13 @@
       "optic_vizFeedback": 0.68,
       "optic_vizIntensity": 0.72,
       "optic_vizMode": 0,
-      "optic_vizSpeed": 0.35
+      "optic_vizSpeed": 0.35,
+      "optic_macroCharacter": 0.547,
+      "optic_macroMovement": 0.623,
+      "optic_macroCoupling": 0.353,
+      "optic_macroSpace": 0.421,
+      "optic_filterEnvAmt": 0.405,
+      "optic_lfoRate": 0.14
     }
   },
   "schema_version": 1,
@@ -62,5 +68,11 @@
     "evolving"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.595,
+    "COUPLING": 0.325,
+    "SPACE": 0.393
+  }
 }

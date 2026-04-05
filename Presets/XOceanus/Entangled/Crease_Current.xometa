@@ -49,13 +49,23 @@
       "origami_macro4": 0.32,
       "origami_pleatRate": 0.772,
       "origami_tessellate": 0.403,
-      "origami_valleyDepth": 0.749
+      "origami_valleyDepth": 0.749,
+      "origami_macroCharacter": 0.629,
+      "origami_macroMovement": 0.611,
+      "origami_macroCoupling": 0.628,
+      "origami_macroSpace": 0.541,
+      "origami_filterEnvAmt": 0.527,
+      "origami_lfo1Rate": 0.296,
+      "origami_lfo1Depth": 0.281
     },
     "Osprey": {
-      "osprey_macroCharacter": 0.648,
-      "osprey_macroMovement": 0.548,
-      "osprey_macroCoupling": 0.482,
-      "osprey_macroSpace": 0.57
+      "osprey_macroCharacter": 0.603,
+      "osprey_macroMovement": 0.585,
+      "osprey_macroCoupling": 0.602,
+      "osprey_macroSpace": 0.515,
+      "osprey_filterEnvDepth": 0.527,
+      "osprey_lfo2Rate": 0.296,
+      "osprey_lfo2Depth": 0.281
     }
   },
   "schema_version": 1,
@@ -68,5 +78,11 @@
     "entangled"
   ],
   "tempo": 120,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.552,
+    "COUPLING": 0.569,
+    "SPACE": 0.482
+  }
 }

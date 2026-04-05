@@ -35,7 +35,13 @@
       "ole_velSensitivity": 0.75,
       "ole_voiceA": 0.85,
       "ole_voiceB": 0.75,
-      "ole_voiceC": 0.8
+      "ole_voiceC": 0.8,
+      "ole_macroDrama": 0.585,
+      "ole_macroFuego": 0.563,
+      "ole_macroIsla": 0.192,
+      "ole_macroSides": 0.396,
+      "ole_filterEnvAmt": 0.404,
+      "ole_lfoRate": 0.262
     }
   },
   "schema_version": 1,
@@ -49,5 +55,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.607,
+    "MOVEMENT": 0.585,
+    "COUPLING": 0.214,
+    "SPACE": 0.418
+  }
 }

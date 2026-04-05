@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Magnetic Exchange",
+  "mood": "Coupling",
+  "engines": [
+    "Ouroboros",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS strange attractor amplitude modulates ORBITAL spectral brightness \u2014 chaos feeding additive synthesis, the attractor coloring harmonic partials.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "chaos",
+    "additive",
+    "AmpToFilter",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.6,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.55,
+      "ouro_leash": 0.45,
+      "ouro_chaos": 0.6,
+      "ouro_filterEnvAmt": 0.5,
+      "ouro_lfo1Rate": 0.18,
+      "ouro_lfo1Depth": 0.3,
+      "ouro_macroCharacter": 0.55,
+      "ouro_macroMovement": 0.58,
+      "ouro_macroCoupling": 0.62,
+      "ouro_macroSpace": 0.5
+    },
+    "Orbital": {
+      "orb_brightness": 0.55,
+      "orb_macroSpectrum": 0.52,
+      "orb_macroEvolve": 0.5,
+      "orb_macroCoupling": 0.6,
+      "orb_macroSpace": 0.5,
+      "orb_filterEnvAmt": 0.48,
+      "orb_lfo1Rate": 0.15,
+      "orb_lfo1Depth": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

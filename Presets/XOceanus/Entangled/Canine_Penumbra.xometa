@@ -47,16 +47,27 @@
       "ombre_macro3": 0.517,
       "ombre_macro4": 0.447,
       "ombre_outputLevel": 0.881,
-      "ombre_outputPan": 0.032
+      "ombre_outputPan": 0.032,
+      "ombre_macroCharacter": 0.566,
+      "ombre_macroMovement": 0.444,
+      "ombre_macroCoupling": 0.641,
+      "ombre_macroSpace": 0.394,
+      "ombre_filterEnvAmt": 0.428,
+      "ombre_lfo1Rate": 0.164,
+      "ombre_lfo1Depth": 0.267
     },
     "Overbite": {
       "poss_gnashAmount": 0.37,
-      "poss_macroBelly": 0.409,
-      "poss_macroBite": 0.459,
-      "poss_macroScurry": 0.676,
+      "poss_macroBelly": 0.545,
+      "poss_macroBite": 0.423,
+      "poss_macroScurry": 0.373,
       "poss_macroTrash": 0.675,
       "poss_level": 0.791,
-      "poss_pan": -0.018
+      "poss_pan": -0.018,
+      "poss_macroPlayDead": 0.62,
+      "poss_filterEnvAmount": 0.428,
+      "poss_lfo1Rate": 0.164,
+      "poss_lfo1Depth": 0.267
     }
   },
   "schema_version": 1,
@@ -68,5 +79,11 @@
     "entangled"
   ],
   "tempo": 115,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.536,
+    "MOVEMENT": 0.414,
+    "COUPLING": 0.611,
+    "SPACE": 0.364
+  }
 }

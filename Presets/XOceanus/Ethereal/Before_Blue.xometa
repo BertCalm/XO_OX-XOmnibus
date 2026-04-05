@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Before Blue",
+  "mood": "Ethereal",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The sky before it becomes blue in the morning. The moment between dark and color.",
+  "tags": [
+    "ethereal",
+    "sky",
+    "dawn",
+    "moment",
+    "before"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.1,
+    "space": 0.94,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.28,
+      "sky_macroMovement": 0.24,
+      "sky_macroCoupling": 0.06,
+      "sky_macroSpace": 0.92,
+      "sky_macroRise": 0.45,
+      "sky_filterEnvAmt": 0.23,
+      "sky_lfo1Rate": 0.014,
+      "sky_lfo1Depth": 0.11,
+      "sky_attack": 4.0,
+      "sky_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.06,
+    "SPACE": 0.92
+  }
+}

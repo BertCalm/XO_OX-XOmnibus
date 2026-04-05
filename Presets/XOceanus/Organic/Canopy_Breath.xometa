@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Canopy Breath",
+  "mood": "Organic",
+  "engines": ["Overgrow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow exhalation of a forest canopy as wind moves through layered leaves. Growth rate is measured in seasons, not seconds.",
+  "tags": ["organic", "forest", "canopy", "breath", "trees"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.68,
+    "movement": 0.32,
+    "density": 0.45,
+    "space": 0.60,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overgrow": {
+      "grow_macroCharacter": 0.38,
+      "grow_macroMovement": 0.32,
+      "grow_macroCoupling": 0.12,
+      "grow_macroSpace": 0.58,
+      "grow_growthRate": 0.22,
+      "grow_filterEnvAmt": 0.36,
+      "grow_lfo1Rate": 0.03,
+      "grow_lfo1Depth": 0.25,
+      "grow_lfo2Rate": 0.07,
+      "grow_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.12,
+    "SPACE": 0.58
+  }
+}

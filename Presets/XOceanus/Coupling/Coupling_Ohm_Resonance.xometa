@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Resonance",
+  "mood": "Coupling",
+  "engines": [
+    "Ohm",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OHM circuit meddling drives ORGANON metabolic equilibrium \u2014 analog circuit drift as the energy input to a biological variational system.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "circuit",
+    "metabolic",
+    "EnvToMorph",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.54,
+    "movement": 0.54,
+    "density": 0.52,
+    "space": 0.52,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroMeddling": 0.58,
+      "ohm_filterEnvAmt": 0.52,
+      "ohm_lfo1Rate": 0.13,
+      "ohm_lfo1Depth": 0.28,
+      "ohm_macroCharacter": 0.52,
+      "ohm_macroMovement": 0.54,
+      "ohm_macroCoupling": 0.62,
+      "ohm_macroSpace": 0.52
+    },
+    "Organon": {
+      "organon_metabolicRate": 0.56,
+      "organon_filterEnvAmt": 0.5,
+      "organon_lfo1Rate": 0.13,
+      "organon_lfo1Depth": 0.26,
+      "organon_macroCharacter": 0.5,
+      "organon_macroMovement": 0.52,
+      "organon_macroCoupling": 0.6,
+      "organon_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.52
+  }
+}

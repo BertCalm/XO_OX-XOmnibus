@@ -45,7 +45,14 @@
       "perc_macro1": 0.621,
       "perc_macro2": 0.622,
       "perc_macro3": 0.466,
-      "perc_macro4": 0.691
+      "perc_macro4": 0.691,
+      "perc_macro_punch": 0.585,
+      "perc_macro_mutate": 0.463,
+      "perc_macro_machine": 0.606,
+      "perc_macro_space": 0.378,
+      "perc_filterEnvAmt": 0.468,
+      "perc_lfo1Rate": 0.185,
+      "perc_lfo1Depth": 0.37
     },
     "Origami": {
       "origami_couplingOut": 0.723,
@@ -57,7 +64,14 @@
       "origami_macro4": 0.483,
       "origami_pleatRate": 0.518,
       "origami_tessellate": 0.525,
-      "origami_valleyDepth": 0.3
+      "origami_valleyDepth": 0.3,
+      "origami_macroCharacter": 0.62,
+      "origami_macroMovement": 0.498,
+      "origami_macroCoupling": 0.641,
+      "origami_macroSpace": 0.413,
+      "origami_filterEnvAmt": 0.468,
+      "origami_lfo1Rate": 0.185,
+      "origami_lfo1Depth": 0.37
     }
   },
   "schema_version": 1,
@@ -71,5 +85,11 @@
   ],
   "tempo": 90,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.561,
+    "MOVEMENT": 0.439,
+    "COUPLING": 0.582,
+    "SPACE": 0.354
+  }
 }

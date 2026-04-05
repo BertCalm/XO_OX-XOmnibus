@@ -54,7 +54,13 @@
       "otto_tweenEmbouchure": 0.433,
       "otto_tweenInst": 0,
       "otto_tweenLevel": 0.416,
-      "otto_tweenValve": 0.344
+      "otto_tweenValve": 0.344,
+      "otto_macroCharacter": 0.43,
+      "otto_macroMovement": 0.427,
+      "otto_macroCoupling": 0.15,
+      "otto_macroSpace": 0.311,
+      "otto_filterEnvAmt": 0.46,
+      "otto_lfoRate": 0.208
     }
   },
   "schema_version": 1,
@@ -65,5 +71,11 @@
     "clean"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.172,
+    "SPACE": 0.333
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Phosphorescent Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bioluminescent crystal in deep water \u2014 the chromatophore modulator frozen at maximum phosphorescent brightness.",
+  "tags": [
+    "crystalline",
+    "phosphorescent",
+    "bioluminescent",
+    "deep",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.24,
+    "movement": 0.36,
+    "density": 0.44,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.58,
+      "ocean_macroMovement": 0.34,
+      "ocean_macroCoupling": 0.23,
+      "ocean_macroSpace": 0.51,
+      "ocean_filterEnvAmt": 0.59,
+      "ocean_lfo1Rate": 0.11,
+      "ocean_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.23,
+    "SPACE": 0.51
+  }
+}

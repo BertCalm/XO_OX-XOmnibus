@@ -32,13 +32,22 @@
   },
   "parameters": {
     "Oracle": {
-      "oracle_macroCharacter": 0.3,
-      "oracle_macroMovement": 0.2,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroSpace": 0.65
+      "oracle_macroCharacter": 0.425,
+      "oracle_macroMovement": 0.402,
+      "oracle_macroCoupling": 0.243,
+      "oracle_macroSpace": 0.646,
+      "oracle_filterEnvAmt": 0.444,
+      "oracle_lfo1Rate": 0.07,
+      "oracle_lfo1Depth": 0.287
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.417,
+    "MOVEMENT": 0.394,
+    "COUPLING": 0.235,
+    "SPACE": 0.638
   }
 }

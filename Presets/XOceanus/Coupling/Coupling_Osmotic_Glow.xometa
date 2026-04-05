@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Osmotic Glow",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSMOSIS membrane follows external signal barely, translating presence to ORBITAL spectral luminance \u2014 the faintest biotic glow.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "membrane",
+    "spectral",
+    "EnvelopeFollow",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.46,
+    "movement": 0.42,
+    "density": 0.4,
+    "space": 0.52,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.48,
+      "osmo_filterEnvAmt": 0.4,
+      "osmo_lfo1Rate": 0.09,
+      "osmo_lfo1Depth": 0.2,
+      "osmo_macroCharacter": 0.44,
+      "osmo_macroMovement": 0.4,
+      "osmo_macroCoupling": 0.5,
+      "osmo_macroSpace": 0.48
+    },
+    "Orbital": {
+      "orb_brightness": 0.5,
+      "orb_macroSpectrum": 0.46,
+      "orb_macroEvolve": 0.42,
+      "orb_macroCoupling": 0.5,
+      "orb_macroSpace": 0.5,
+      "orb_filterEnvAmt": 0.38,
+      "orb_lfo1Rate": 0.1,
+      "orb_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Orbital",
+        "type": "EnvelopeFollow",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.5,
+    "SPACE": 0.49
+  }
+}

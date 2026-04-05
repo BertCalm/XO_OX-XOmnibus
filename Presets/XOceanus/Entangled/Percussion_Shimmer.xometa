@@ -52,8 +52,13 @@
       "perc_v2_blend": 0.4,
       "perc_v2_decay": 0.2,
       "perc_v2_level": 0.6,
-      "perc_macro_punch": 0.45,
-      "perc_macro_space": 0.5
+      "perc_macro_punch": 0.533,
+      "perc_macro_space": 0.468,
+      "perc_macro_mutate": 0.544,
+      "perc_macro_machine": 0.762,
+      "perc_filterEnvAmt": 0.467,
+      "perc_lfo1Rate": 0.117,
+      "perc_lfo1Depth": 0.329
     },
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -68,8 +73,21 @@
       "drift_release": 2.5,
       "drift_driftDepth": 0.3,
       "drift_level": 0.55,
-      "drift_polyphony": 4
+      "drift_polyphony": 4,
+      "drift_macroCharacter": 0.539,
+      "drift_macroMovement": 0.55,
+      "drift_macroCoupling": 0.768,
+      "drift_macroSpace": 0.474,
+      "drift_filterEnvAmt": 0.467,
+      "drift_lfoRate": 0.117,
+      "drift_lfoDepth": 0.329
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.738,
+    "SPACE": 0.444
+  }
 }

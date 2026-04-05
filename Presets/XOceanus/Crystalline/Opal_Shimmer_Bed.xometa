@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Opal Shimmer Bed",
+  "mood": "Crystalline",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A shimmering bed of opalescent granular textures. Light diffracts through each micro-grain like a prism.",
+  "tags": [
+    "crystalline",
+    "opal",
+    "shimmer",
+    "granular",
+    "opalescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.32,
+    "movement": 0.4,
+    "density": 0.46,
+    "space": 0.62,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.64,
+      "opal_macroMovement": 0.41,
+      "opal_macroCoupling": 0.22,
+      "opal_macroSpace": 0.52,
+      "opal_filterEnvAmt": 0.53,
+      "opal_lfo1Rate": 0.07,
+      "opal_lfo1Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.22,
+    "SPACE": 0.52
+  }
+}

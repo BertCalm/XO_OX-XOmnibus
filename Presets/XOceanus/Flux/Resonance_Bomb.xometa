@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Bomb",
+  "mood": "Flux",
+  "engines": ["Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Filter resonance bomb detonating at maximum Q. The feedback loop creates resonant self-destruction.",
+  "tags": ["flux", "aggressive", "resonance", "bomb", "filter"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.86,
+    "density": 0.78,
+    "space": 0.14,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_macroCharacter": 0.88,
+      "bob_macroMovement": 0.84,
+      "bob_macroCoupling": 0.16,
+      "bob_macroSpace": 0.15,
+      "bob_fltCutoff": 0.56,
+      "bob_fltRes": 0.95,
+      "bob_filterEnvAmt": 0.9,
+      "bob_lfo1Rate": 0.48,
+      "bob_lfo1Depth": 0.42,
+      "bob_attackTime": 0.005,
+      "bob_decayTime": 0.18,
+      "bob_sustain": 0.22,
+      "bob_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.16,
+    "SPACE": 0.15
+  }
+}

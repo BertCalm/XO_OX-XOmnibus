@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Ant Colony Hum",
+  "mood": "Organic",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Emergent intelligence from individual simplex — the hum of ten thousand coordinated organisms building in silence.",
+  "tags": ["organic", "ants", "colony", "emergent", "buzzing"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.68,
+    "movement": 0.52,
+    "density": 0.60,
+    "space": 0.42,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Organism": {
+      "org_macroCharacter": 0.48,
+      "org_macroMovement": 0.52,
+      "org_macroCoupling": 0.22,
+      "org_macroSpace": 0.42,
+      "org_ruleSet": 0.85,
+      "org_filterEnvAmt": 0.50,
+      "org_lfo1Rate": 0.12,
+      "org_lfo1Depth": 0.30,
+      "org_lfo2Rate": 0.05,
+      "org_lfo2Depth": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.22,
+    "SPACE": 0.42
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Reef Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystal formations growing on a reef structure \u2014 biological geometry crystallized into mineral precision.",
+  "tags": [
+    "crystalline",
+    "reef",
+    "crystal",
+    "biological",
+    "geometry"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.38,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_macroCharacter": 0.54,
+      "obrix_macroMovement": 0.36,
+      "obrix_macroCoupling": 0.14,
+      "obrix_macroSpace": 0.6,
+      "obrix_filterEnvAmt": 0.49,
+      "obrix_lfo1Rate": 0.06,
+      "obrix_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.14,
+    "SPACE": 0.6
+  }
+}

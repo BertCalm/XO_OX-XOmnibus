@@ -49,7 +49,14 @@
       "poss_oscMix": 0.635,
       "poss_subLevel": 0.519,
       "poss_subOctave": -1,
-      "poss_weightShape": 0
+      "poss_weightShape": 0,
+      "poss_macroBelly": 0.461,
+      "poss_macroBite": 0.264,
+      "poss_macroPlayDead": 0.175,
+      "poss_macroScurry": 0.302,
+      "poss_filterEnvAmount": 0.399,
+      "poss_lfo1Rate": 0.095,
+      "poss_lfo1Depth": 0.281
     }
   },
   "schema_version": 1,
@@ -64,5 +71,11 @@
     "anechoic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.255,
+    "COUPLING": 0.166,
+    "SPACE": 0.293
+  }
 }

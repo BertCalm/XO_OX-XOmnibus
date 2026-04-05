@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Living Fence",
+  "mood": "Organic",
+  "engines": ["Overgrow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hedgerow grown so thick and old it has become architecture — planted as boundary, now a living ecosystem.",
+  "tags": ["organic", "hedge", "boundary", "living", "growth"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.32,
+    "density": 0.58,
+    "space": 0.46,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overgrow": {
+      "grow_macroCharacter": 0.46,
+      "grow_macroMovement": 0.32,
+      "grow_macroCoupling": 0.16,
+      "grow_macroSpace": 0.46,
+      "grow_growthRate": 0.72,
+      "grow_filterEnvAmt": 0.44,
+      "grow_lfo1Rate": 0.04,
+      "grow_lfo1Depth": 0.20,
+      "grow_lfo2Rate": 0.09,
+      "grow_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.16,
+    "SPACE": 0.46
+  }
+}

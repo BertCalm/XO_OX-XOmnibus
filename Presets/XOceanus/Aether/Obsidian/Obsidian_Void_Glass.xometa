@@ -33,13 +33,18 @@
       "obsidian_delayFeedback": 0.35,
       "obsidian_filterCutoff": 20.4,
       "obsidian_filterReso": 0.2,
-      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroCoupling": 0.311,
       "obsidian_macroDarkness": 0.0,
       "obsidian_macroEdge": 0.0,
-      "obsidian_macroSpace": 0.0,
+      "obsidian_macroSpace": 0.856,
       "obsidian_oscShape": 0.5,
       "obsidian_reverbMix": 0.94,
-      "obsidian_subLevel": 0.3
+      "obsidian_subLevel": 0.3,
+      "obsidian_macroCharacter": 0.451,
+      "obsidian_macroMovement": 0.484,
+      "obsidian_filterEnvAmt": 0.36,
+      "obsidian_lfoRate": 0.022,
+      "obsidian_lfoDepth": 0.152
     }
   },
   "schema_version": 1,
@@ -53,5 +58,11 @@
     "dark"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.383,
+    "MOVEMENT": 0.416,
+    "COUPLING": 0.243,
+    "SPACE": 0.788
+  }
 }

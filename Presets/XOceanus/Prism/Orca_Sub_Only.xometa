@@ -62,22 +62,29 @@
       "orca_modSustain": 0.55,
       "orca_modRelease": 0.45,
       "orca_lfo1Rate": 0.05,
-      "orca_lfo1Depth": 0.0,
+      "orca_lfo1Depth": 0.233,
       "orca_lfo1Shape": 0.0,
       "orca_lfo2Rate": 0.1,
       "orca_lfo2Depth": 0.0,
       "orca_lfo2Shape": 0.0,
       "orca_polyphony": 1,
       "orca_velCutoffAmt": 0.5,
-      "orca_macroCharacter": 0.0,
-      "orca_macroMovement": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
+      "orca_macroCharacter": 0.649,
+      "orca_macroMovement": 0.571,
+      "orca_macroCoupling": 0.282,
+      "orca_macroSpace": 0.544,
+      "orca_filterEnvAmt": 0.523
     }
   },
   "coupling": {
     "pairs": []
   },
   "sequencer": null,
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.633,
+    "MOVEMENT": 0.555,
+    "COUPLING": 0.266,
+    "SPACE": 0.528
+  }
 }

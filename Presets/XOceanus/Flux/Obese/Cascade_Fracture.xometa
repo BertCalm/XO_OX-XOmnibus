@@ -28,7 +28,14 @@
   "parameters": {
     "Obese": {
       "couplingBus": 2,
-      "couplingLevel": 0.872
+      "couplingLevel": 0.872,
+      "fat_macroMojo": 0.702,
+      "fat_macroGrit": 0.704,
+      "fat_macroSize": 0.218,
+      "fat_macroCrush": 0.327,
+      "fat_fltEnvAmt": 0.599,
+      "fat_lfo1Rate": 0.435,
+      "fat_lfo1Depth": 0.344
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "obese"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.654,
+    "MOVEMENT": 0.656,
+    "COUPLING": 0.17,
+    "SPACE": 0.279
+  }
 }

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic Pulse",
+  "mood": "Deep",
+  "engines": ["Ogre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow rhythmic shifts of continental plates — sub-bass frequencies felt in the chest before the ears register. Geological time made audible.",
+  "tags": ["deep", "sub-bass", "tectonic", "geological", "drone"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.78,
+    "movement": 0.16,
+    "density": 0.82,
+    "space": 0.62,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.58,
+      "ogre_macroMovement": 0.16,
+      "ogre_macroCoupling": 0.13,
+      "ogre_macroSpace": 0.62,
+      "ogre_filterEnvAmt": 0.40,
+      "ogre_lfo1Rate": 0.04,
+      "ogre_lfo1Depth": 0.20,
+      "ogre_subFreq": 0.15,
+      "ogre_satDrive": 0.38
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.13,
+    "SPACE": 0.62
+  }
+}

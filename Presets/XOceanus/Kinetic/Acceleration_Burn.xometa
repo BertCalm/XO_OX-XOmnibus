@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Acceleration Burn",
+  "mood": "Kinetic",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prismatic bounce velocity increasing exponentially. Each collision transferring momentum forward.",
+  "tags": ["kinetic", "aggressive", "acceleration", "velocity", "momentum"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.97,
+    "density": 0.72,
+    "space": 0.14,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.84,
+      "oblq_macroMovement": 0.96,
+      "oblq_macroCoupling": 0.14,
+      "oblq_macroSpace": 0.14,
+      "oblq_prismColor": 0.82,
+      "oblq_bounceRate": 0.98,
+      "oblq_filterEnvAmt": 0.74,
+      "oblq_lfo1Rate": 0.78,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.72,
+      "oblq_filterRes": 0.64,
+      "oblq_attackTime": 0.005,
+      "oblq_decayTime": 0.14,
+      "oblq_sustain": 0.25,
+      "oblq_releaseTime": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.96,
+    "COUPLING": 0.14,
+    "SPACE": 0.14
+  }
+}

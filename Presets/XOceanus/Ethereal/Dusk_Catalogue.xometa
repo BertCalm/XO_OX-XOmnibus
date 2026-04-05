@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dusk Catalogue",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A systematic inventory of everything dusk changes. Each item listed in the forgetting layer.",
+  "tags": [
+    "ethereal",
+    "dusk",
+    "catalog",
+    "inventory",
+    "change"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.18,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.38,
+      "ombre_macroMovement": 0.24,
+      "ombre_macroCoupling": 0.12,
+      "ombre_macroSpace": 0.82,
+      "ombre_blend": 0.55,
+      "ombre_filterEnvAmt": 0.28,
+      "ombre_lfo1Rate": 0.02,
+      "ombre_lfo1Depth": 0.13,
+      "ombre_attack": 3.0,
+      "ombre_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.12,
+    "SPACE": 0.82
+  }
+}

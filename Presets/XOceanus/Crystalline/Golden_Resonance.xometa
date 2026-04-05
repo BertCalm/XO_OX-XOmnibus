@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Golden Resonance",
+  "mood": "Crystalline",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Golden ratio resonance in a crystalline FDN \u2014 phi-proportioned decay creating natural crystal harmonics.",
+  "tags": [
+    "crystalline",
+    "golden",
+    "resonance",
+    "phi",
+    "FDN"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.3,
+    "movement": 0.25,
+    "density": 0.44,
+    "space": 0.7,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.55,
+      "oxb_macroMovement": 0.4,
+      "oxb_macroCoupling": 0.25,
+      "oxb_macroSpace": 0.5,
+      "oxb_filterEnvAmt": 0.62,
+      "oxb_lfo1Rate": 0.05,
+      "oxb_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.25,
+    "SPACE": 0.5
+  }
+}

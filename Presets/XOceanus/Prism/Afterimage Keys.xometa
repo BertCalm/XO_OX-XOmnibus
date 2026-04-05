@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.5,
       "ombre_release": 0.8,
       "ombre_subLevel": 0.3,
-      "ombre_sustain": 0.6
+      "ombre_sustain": 0.6,
+      "ombre_macroCharacter": 0.618,
+      "ombre_macroMovement": 0.535,
+      "ombre_macroCoupling": 0.292,
+      "ombre_macroSpace": 0.548,
+      "ombre_filterEnvAmt": 0.525,
+      "ombre_lfo1Rate": 0.225,
+      "ombre_lfo1Depth": 0.228
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "trail"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.588,
+    "MOVEMENT": 0.505,
+    "COUPLING": 0.262,
+    "SPACE": 0.518
+  }
 }

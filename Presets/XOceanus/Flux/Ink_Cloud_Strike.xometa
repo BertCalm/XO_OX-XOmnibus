@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Ink Cloud Strike",
+  "mood": "Flux",
+  "engines": ["Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Eight arms striking simultaneously, chromatophore flash and ink cloud deploying as attack weapon.",
+  "tags": ["flux", "aggressive", "alien", "strike", "octopus"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.18,
+    "movement": 0.9,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.82,
+      "octo_macroMovement": 0.88,
+      "octo_macroCoupling": 0.2,
+      "octo_macroSpace": 0.22,
+      "octo_armDepth": 0.85,
+      "octo_chromaFlash": 0.9,
+      "octo_inkCloud": 0.78,
+      "octo_filterEnvAmt": 0.75,
+      "octo_lfo1Rate": 0.45,
+      "octo_lfo1Depth": 0.48,
+      "octo_filterCutoff": 0.65,
+      "octo_filterRes": 0.68,
+      "octo_attackTime": 0.01,
+      "octo_decayTime": 0.25,
+      "octo_sustain": 0.35,
+      "octo_releaseTime": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.22
+  }
+}

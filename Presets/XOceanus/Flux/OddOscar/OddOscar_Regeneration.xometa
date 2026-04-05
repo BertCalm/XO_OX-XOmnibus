@@ -32,7 +32,13 @@
       "morph_envSustain": 0.85,
       "morph_filterCutoff": 1200,
       "morph_filterRes": 0.3,
-      "morph_morph": 0.0
+      "morph_morph": 0.0,
+      "morph_macroCharacter": 0.667,
+      "morph_macroMovement": 0.736,
+      "morph_macroCoupling": 0.341,
+      "morph_macroSpace": 0.326,
+      "morph_filterEnvDepth": 0.5,
+      "morph_lfoRate": 0.21
     }
   },
   "schema_version": 1,
@@ -48,5 +54,11 @@
     "axolotl"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.644,
+    "MOVEMENT": 0.713,
+    "COUPLING": 0.318,
+    "SPACE": 0.303
+  }
 }

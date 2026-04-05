@@ -48,11 +48,24 @@
       "orb_reverbMix": 0.267,
       "orb_outputLevel": 0.827,
       "orb_couplingLevel": 0.103,
-      "orb_couplingBus": 0
+      "orb_couplingBus": 0,
+      "orb_macroSpectrum": 0.646,
+      "orb_macroEvolve": 0.851,
+      "orb_macroCoupling": 0.211,
+      "orb_macroSpace": 0.448,
+      "orb_filterEnvAmt": 0.665,
+      "orb_lfo1Rate": 0.342,
+      "orb_lfo1Depth": 0.379
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.612,
+    "MOVEMENT": 0.817,
+    "COUPLING": 0.177,
+    "SPACE": 0.414
+  }
 }

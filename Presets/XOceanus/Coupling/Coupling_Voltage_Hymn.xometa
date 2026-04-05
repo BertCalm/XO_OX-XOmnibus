@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Voltage Hymn",
+  "mood": "Coupling",
+  "engines": [
+    "Odyssey",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY drift voltage modulates OLE hibiscus drama pitch \u2014 analog instability expressing itself as flamenco gesture, voltage becoming ceremony.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "analog",
+    "drama",
+    "PitchToPitch",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.56,
+    "movement": 0.58,
+    "density": 0.5,
+    "space": 0.46,
+    "aggression": 0.24
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.58,
+      "drift_filterEnvAmt": 0.52,
+      "drift_lfo1Rate": 0.16,
+      "drift_lfo1Depth": 0.3,
+      "drift_macroCharacter": 0.52,
+      "drift_macroMovement": 0.58,
+      "drift_macroCoupling": 0.62,
+      "drift_macroSpace": 0.46
+    },
+    "Ole": {
+      "ole_macroDrama": 0.62,
+      "ole_filterEnvAmt": 0.5,
+      "ole_lfo1Rate": 0.15,
+      "ole_lfo1Depth": 0.28,
+      "ole_macroCharacter": 0.52,
+      "ole_macroMovement": 0.56,
+      "ole_macroCoupling": 0.6,
+      "ole_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ole",
+        "type": "PitchToPitch",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.61,
+    "SPACE": 0.46
+  }
+}

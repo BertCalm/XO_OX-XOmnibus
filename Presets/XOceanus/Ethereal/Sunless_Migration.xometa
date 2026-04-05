@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Sunless Migration",
+  "mood": "Ethereal",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep-sea creatures migrating vertically, never reaching light. A journey measured in pressure changes.",
+  "tags": [
+    "ethereal",
+    "migration",
+    "dark",
+    "journey",
+    "depth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.44,
+    "movement": 0.32,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.38,
+      "deep_macroMovement": 0.34,
+      "deep_macroCoupling": 0.1,
+      "deep_macroSpace": 0.86,
+      "deep_macroPressure": 0.6,
+      "deep_filterEnvAmt": 0.32,
+      "deep_lfo1Rate": 0.02,
+      "deep_lfo1Depth": 0.16,
+      "deep_attack": 2.5,
+      "deep_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.1,
+    "SPACE": 0.86
+  }
+}

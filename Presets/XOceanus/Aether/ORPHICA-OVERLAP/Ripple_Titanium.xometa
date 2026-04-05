@@ -36,11 +36,25 @@
   "parameters": {
     "Orphica": {
       "level": 0.708,
-      "pan": 0.137
+      "pan": 0.137,
+      "orph_macroPluck": 0.481,
+      "orph_macroSurface": 0.519,
+      "orph_macroFracture": 0.76,
+      "orph_macroDivine": 0.774,
+      "orph_filterEnvAmt": 0.315,
+      "orph_lfo1Rate": 0.049,
+      "orph_lfo1Depth": 0.12
     },
     "Overlap": {
       "level": 0.81,
-      "pan": -0.113
+      "pan": -0.113,
+      "olap_macroCharacter": 0.473,
+      "olap_macroMovement": 0.511,
+      "olap_macroCoupling": 0.752,
+      "olap_macroSpace": 0.766,
+      "olap_filterEnvAmt": 0.315,
+      "olap_lfo1Rate": 0.049,
+      "olap_lfo1Depth": 0.12
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.469,
+    "MOVEMENT": 0.507,
+    "COUPLING": 0.748,
+    "SPACE": 0.762
+  }
 }

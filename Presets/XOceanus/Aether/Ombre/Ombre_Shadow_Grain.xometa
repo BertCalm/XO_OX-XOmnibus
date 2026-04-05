@@ -33,11 +33,16 @@
       "ombre_filterReso": 0.25,
       "ombre_grainDensity": 0.6,
       "ombre_grainSize": 0.85,
-      "ombre_macroCoupling": 0.0,
+      "ombre_macroCoupling": 0.163,
       "ombre_macroGrain": 0.0,
       "ombre_macroShade": 0.0,
-      "ombre_macroSpace": 0.0,
-      "ombre_reverbMix": 0.88
+      "ombre_macroSpace": 0.774,
+      "ombre_reverbMix": 0.88,
+      "ombre_macroCharacter": 0.346,
+      "ombre_macroMovement": 0.486,
+      "ombre_filterEnvAmt": 0.437,
+      "ombre_lfo1Rate": 0.07,
+      "ombre_lfo1Depth": 0.155
     }
   },
   "schema_version": 1,
@@ -51,5 +56,11 @@
     "vast"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.316,
+    "MOVEMENT": 0.456,
+    "COUPLING": 0.133,
+    "SPACE": 0.744
+  }
 }

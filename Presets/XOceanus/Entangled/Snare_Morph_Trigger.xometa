@@ -54,8 +54,13 @@
       "perc_v2_tone": 0.6,
       "perc_v2_snap": 0.7,
       "perc_v2_level": 0.7,
-      "perc_macro_punch": 0.5,
-      "perc_macro_mutate": 0.25
+      "perc_macro_punch": 0.58,
+      "perc_macro_mutate": 0.524,
+      "perc_macro_machine": 0.499,
+      "perc_macro_space": 0.46,
+      "perc_filterEnvAmt": 0.413,
+      "perc_lfo1Rate": 0.211,
+      "perc_lfo1Depth": 0.303
     },
     "OddOscar": {
       "morph_morph": 0.4,
@@ -65,8 +70,20 @@
       "morph_filterReso": 0.2,
       "morph_drift": 0.2,
       "morph_level": 0.65,
-      "morph_polyphony": 4
+      "morph_polyphony": 4,
+      "morph_macroCharacter": 0.579,
+      "morph_macroMovement": 0.523,
+      "morph_macroCoupling": 0.498,
+      "morph_macroSpace": 0.459,
+      "morph_filterEnvDepth": 0.413,
+      "morph_lfoRate": 0.211
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.556,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.475,
+    "SPACE": 0.436
+  }
 }

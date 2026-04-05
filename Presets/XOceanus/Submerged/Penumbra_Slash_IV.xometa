@@ -28,7 +28,13 @@
   "parameters": {
     "Overdub": {
       "couplingBus": 2,
-      "couplingLevel": 0.853
+      "couplingLevel": 0.853,
+      "dub_macroCharacter": 0.374,
+      "dub_macroMovement": 0.299,
+      "dub_macroCoupling": 0.163,
+      "dub_macroSpace": 0.653,
+      "dub_filterEnvAmt": 0.412,
+      "dub_lfoDepth": 0.037
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "overdub"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.382,
+    "MOVEMENT": 0.307,
+    "COUPLING": 0.171,
+    "SPACE": 0.661
+  }
 }

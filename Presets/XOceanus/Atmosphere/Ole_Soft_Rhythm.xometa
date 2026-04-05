@@ -41,7 +41,13 @@
       "ole_reverbSize": 0.75,
       "ole_rhythmA": 0.25,
       "ole_rhythmB": 0.15,
-      "ole_rhythmC": 0.1
+      "ole_rhythmC": 0.1,
+      "ole_macroDrama": 0.376,
+      "ole_macroFuego": 0.342,
+      "ole_macroIsla": 0.168,
+      "ole_macroSides": 0.595,
+      "ole_filterEnvAmt": 0.381,
+      "ole_lfoRate": 0.06
     }
   },
   "schema_version": 1,
@@ -52,5 +58,11 @@
     "atmosphere"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.398,
+    "MOVEMENT": 0.364,
+    "COUPLING": 0.19,
+    "SPACE": 0.617
+  }
 }

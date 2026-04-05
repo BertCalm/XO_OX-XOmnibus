@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Neon Trace",
+  "mood": "Coupling",
+  "engines": [
+    "OddfeliX",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODDFELIX neon dart amplitude barely registers in OBLONG filter \u2014 a tetra's flash of light touching amber warmth at the edge of notice.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "neon",
+    "filter",
+    "AmpToFilter",
+    "delicate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.38,
+    "space": 0.48,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_macroDart": 0.5,
+      "snap_macroDepth": 0.4,
+      "snap_macroSchool": 0.45,
+      "snap_macroSurface": 0.42,
+      "snap_filterEnvAmt": 0.4,
+      "snap_lfo1Rate": 0.12,
+      "snap_lfo1Depth": 0.2
+    },
+    "Oblong": {
+      "bob_fltCutoff": 0.52,
+      "bob_fltReso": 0.28,
+      "bob_filterEnvAmt": 0.38,
+      "bob_lfo1Rate": 0.09,
+      "bob_lfo1Depth": 0.18,
+      "bob_macroCharacter": 0.45,
+      "bob_macroMovement": 0.4,
+      "bob_macroCoupling": 0.48,
+      "bob_macroSpace": 0.44
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
+        "type": "AmpToFilter",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.49,
+    "SPACE": 0.43
+  }
+}

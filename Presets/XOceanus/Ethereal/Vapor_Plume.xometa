@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Vapor Plume",
+  "mood": "Ethereal",
+  "engines": [
+    "OceanDeep",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hydrothermal vapor rising through spectral ice. OceanDeep pressure drives Overtone's irrational harmonics into barely-there shimmer.",
+  "tags": [
+    "ethereal",
+    "vapor",
+    "plume",
+    "coupling",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.42,
+    "movement": 0.28,
+    "density": 0.15,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.3,
+      "deep_macroMovement": 0.3,
+      "deep_macroCoupling": 0.12,
+      "deep_macroSpace": 0.91,
+      "deep_macroPressure": 0.5,
+      "deep_filterEnvAmt": 0.24,
+      "deep_lfo1Rate": 0.01,
+      "deep_lfo1Depth": 0.11,
+      "deep_attack": 4.0,
+      "deep_release": 11.0
+    },
+    "Overtone": {
+      "over_macroCharacter": 0.32,
+      "over_macroMovement": 0.26,
+      "over_macroCoupling": 0.1,
+      "over_macroSpace": 0.92,
+      "over_cfDepth": 0.55,
+      "over_filterEnvAmt": 0.26,
+      "over_lfo1Rate": 0.018,
+      "over_lfo1Depth": 0.13,
+      "over_attack": 3.5,
+      "over_release": 10.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Overtone",
+        "type": "LFOToPitch",
+        "amount": 0.12
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.11,
+    "SPACE": 0.92
+  }
+}

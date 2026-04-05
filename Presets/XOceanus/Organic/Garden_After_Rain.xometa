@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Garden After Rain",
+  "mood": "Organic",
+  "engines": ["Ohm"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The hour after heavy rain — every plant surface gleaming, petrichor rising from wet soil, the garden's deepest breath.",
+  "tags": ["organic", "garden", "rain", "petrichor", "renewal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.72,
+    "movement": 0.36,
+    "density": 0.50,
+    "space": 0.58,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.44,
+      "ohm_macroMovement": 0.36,
+      "ohm_macroCoupling": 0.16,
+      "ohm_macroSpace": 0.58,
+      "ohm_macroMeddling": 0.50,
+      "ohm_filterEnvAmt": 0.40,
+      "ohm_lfo1Rate": 0.05,
+      "ohm_lfo1Depth": 0.24,
+      "ohm_lfo2Rate": 0.10,
+      "ohm_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

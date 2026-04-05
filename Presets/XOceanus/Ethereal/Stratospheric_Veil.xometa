@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Stratospheric Veil",
+  "mood": "Ethereal",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The stratosphere, where ozone filters ultraviolet into protective invisibility. A veil that saves everything.",
+  "tags": [
+    "ethereal",
+    "stratosphere",
+    "veil",
+    "protection",
+    "invisible"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.4,
+    "movement": 0.2,
+    "density": 0.08,
+    "space": 0.95,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.25,
+      "sky_macroMovement": 0.22,
+      "sky_macroCoupling": 0.05,
+      "sky_macroSpace": 0.94,
+      "sky_macroRise": 0.55,
+      "sky_filterEnvAmt": 0.22,
+      "sky_lfo1Rate": 0.012,
+      "sky_lfo1Depth": 0.1,
+      "sky_attack": 4.5,
+      "sky_release": 13.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.05,
+    "SPACE": 0.94
+  }
+}

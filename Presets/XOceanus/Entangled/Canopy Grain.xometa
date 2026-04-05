@@ -53,13 +53,26 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_macroCharacter": 0.479,
+      "ocelot_macroMovement": 0.506,
+      "ocelot_macroCoupling": 0.736,
+      "ocelot_macroSpace": 0.54,
+      "ocelot_filterEnvDepth": 0.494,
+      "ocelot_lfoRate": 0.152
     },
     "Opal": {
       "opal_ampAttack": 0.03,
       "opal_ampRelease": 1.5,
       "opal_filterCutoff": 2800.0,
-      "opal_filterReso": 0.3
+      "opal_filterReso": 0.3,
+      "opal_macroCharacter": 0.447,
+      "opal_macroMovement": 0.474,
+      "opal_macroCoupling": 0.704,
+      "opal_macroSpace": 0.508,
+      "opal_filterEnvAmt": 0.494,
+      "opal_lfo1Rate": 0.152,
+      "opal_lfo1Depth": 0.37
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.462,
+    "MOVEMENT": 0.489,
+    "COUPLING": 0.719,
+    "SPACE": 0.523
+  }
 }

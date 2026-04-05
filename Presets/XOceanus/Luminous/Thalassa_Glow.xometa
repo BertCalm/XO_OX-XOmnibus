@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Thalassa Glow",
+  "mood": "Luminous",
+  "engines": ["Okeanos"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thalassa — sea personified, the elder deity of the Mediterranean. Okeanos warmth at its mythological depth, ancient gold light emanating from the source of all waters.",
+  "tags": ["luminous", "thalassa", "ancient", "gold", "mythological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.68,
+    "movement": 0.30,
+    "density": 0.44,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.52,
+      "okan_macroMovement": 0.30,
+      "okan_macroCoupling": 0.14,
+      "okan_macroSpace": 0.65,
+      "okan_filterEnvAmt": 0.50,
+      "okan_warmth": 0.78,
+      "okan_lfo1Rate": 0.04,
+      "okan_lfo1Depth": 0.16,
+      "okan_lfo2Rate": 0.08,
+      "okan_lfo2Depth": 0.12,
+      "okan_attack": 0.20,
+      "okan_decay": 1.2,
+      "okan_sustain": 0.86,
+      "okan_release": 4.5,
+      "okan_filterCutoff": 7200,
+      "okan_filterRes": 0.22,
+      "okan_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.14,
+    "SPACE": 0.65
+  }
+}

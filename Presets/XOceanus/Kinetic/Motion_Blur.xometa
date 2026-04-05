@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Motion Blur",
+  "mood": "Kinetic",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Movement so fast the prism bounces blur into streaks. Kinetic energy smearing pitch and timbre.",
+  "tags": ["kinetic", "aggressive", "motion", "blur", "fast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.98,
+    "density": 0.7,
+    "space": 0.16,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.82,
+      "oblq_macroMovement": 0.97,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.17,
+      "oblq_prismColor": 0.78,
+      "oblq_bounceRate": 0.98,
+      "oblq_filterEnvAmt": 0.72,
+      "oblq_lfo1Rate": 0.85,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.68,
+      "oblq_filterRes": 0.6,
+      "oblq_attackTime": 0.004,
+      "oblq_decayTime": 0.12,
+      "oblq_sustain": 0.2,
+      "oblq_releaseTime": 0.1
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.97,
+    "COUPLING": 0.16,
+    "SPACE": 0.17
+  }
+}

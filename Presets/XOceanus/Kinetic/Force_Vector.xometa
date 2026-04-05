@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Force Vector",
+  "mood": "Kinetic",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prismatic bounce converted into directed force vector. Each reflection adding kinetic energy.",
+  "tags": ["kinetic", "aggressive", "force", "vector", "bounce"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.94,
+    "density": 0.75,
+    "space": 0.15,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.86,
+      "oblq_macroMovement": 0.92,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.16,
+      "oblq_prismColor": 0.88,
+      "oblq_bounceRate": 0.95,
+      "oblq_filterEnvAmt": 0.76,
+      "oblq_lfo1Rate": 0.7,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.7,
+      "oblq_filterRes": 0.66,
+      "oblq_attackTime": 0.006,
+      "oblq_decayTime": 0.16,
+      "oblq_sustain": 0.3,
+      "oblq_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.16,
+    "SPACE": 0.16
+  }
+}

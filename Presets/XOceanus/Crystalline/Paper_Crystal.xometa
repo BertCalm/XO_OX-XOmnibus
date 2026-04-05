@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Paper Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A crystal grown from paper geometry. The fold point determines the lattice angle.",
+  "tags": [
+    "crystalline",
+    "paper",
+    "crystal",
+    "geometry",
+    "lattice"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.24,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.59,
+      "origami_macroMovement": 0.35,
+      "origami_macroCoupling": 0.25,
+      "origami_macroSpace": 0.52,
+      "origami_filterEnvAmt": 0.46,
+      "origami_lfo1Rate": 0.06,
+      "origami_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.25,
+    "SPACE": 0.52
+  }
+}

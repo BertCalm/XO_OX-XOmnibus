@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Chase",
+  "mood": "Coupling",
+  "engines": [
+    "Overflow",
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERFLOW deep current speed drives OPENSKY shimmer RISE \u2014 ocean current velocity pushing the shimmer ascent rate, deep water as launch energy.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "current",
+    "shimmer",
+    "AmpToPitch",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.46,
+    "movement": 0.6,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_currentSpeed": 0.58,
+      "flow_filterEnvAmt": 0.52,
+      "flow_lfo1Rate": 0.13,
+      "flow_lfo1Depth": 0.28,
+      "flow_macroCharacter": 0.52,
+      "flow_macroMovement": 0.58,
+      "flow_macroCoupling": 0.62,
+      "flow_macroSpace": 0.56
+    },
+    "OpenSky": {
+      "sky_macroRise": 0.62,
+      "sky_filterEnvAmt": 0.5,
+      "sky_lfo1Rate": 0.15,
+      "sky_lfo1Depth": 0.28,
+      "sky_macroCharacter": 0.52,
+      "sky_macroMovement": 0.58,
+      "sky_macroCoupling": 0.62,
+      "sky_macroSpace": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overflow",
+        "engineB": "OpenSky",
+        "type": "AmpToPitch",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.62,
+    "SPACE": 0.59
+  }
+}

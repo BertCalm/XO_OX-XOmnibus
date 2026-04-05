@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Fracture Point",
+  "mood": "Flux",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sharp angular folds snapping at the fracture point. Vermillion geometry colliding at maximum tension.",
+  "tags": ["flux", "aggressive", "sharp", "fracture", "origami"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.18,
+    "movement": 0.88,
+    "density": 0.72,
+    "space": 0.14,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.85,
+      "origami_macroMovement": 0.82,
+      "origami_macroCoupling": 0.18,
+      "origami_macroSpace": 0.15,
+      "origami_foldPoint": 0.88,
+      "origami_foldAngle": 0.75,
+      "origami_filterEnvAmt": 0.78,
+      "origami_lfo1Rate": 0.48,
+      "origami_lfo1Depth": 0.4,
+      "origami_filterCutoff": 0.62,
+      "origami_filterRes": 0.7,
+      "origami_attackTime": 0.008,
+      "origami_decayTime": 0.2,
+      "origami_sustain": 0.28,
+      "origami_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.18,
+    "SPACE": 0.15
+  }
+}

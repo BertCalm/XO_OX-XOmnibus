@@ -40,7 +40,14 @@
       "opal_grainSize": 0.95,
       "opal_pitchScatter": 0.0,
       "opal_posScatter": 0.85,
-      "opal_release": 1200.0
+      "opal_release": 1200.0,
+      "opal_macroCharacter": 0.305,
+      "opal_macroMovement": 0.413,
+      "opal_macroCoupling": 0.203,
+      "opal_macroSpace": 0.784,
+      "opal_filterEnvAmt": 0.418,
+      "opal_lfo1Rate": 0.052,
+      "opal_lfo1Depth": 0.22
     }
   },
   "schema_version": 1,
@@ -52,5 +59,11 @@
     "granular"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.428,
+    "COUPLING": 0.218,
+    "SPACE": 0.799
+  }
 }

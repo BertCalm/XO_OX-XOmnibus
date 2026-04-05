@@ -49,7 +49,14 @@
       "poss_oscMix": 0.72,
       "poss_subLevel": 0.435,
       "poss_subOctave": 0,
-      "poss_weightShape": 0
+      "poss_weightShape": 0,
+      "poss_macroBelly": 0.458,
+      "poss_macroBite": 0.429,
+      "poss_macroPlayDead": 0.14,
+      "poss_macroScurry": 0.285,
+      "poss_filterEnvAmount": 0.437,
+      "poss_lfo1Rate": 0.087,
+      "poss_lfo1Depth": 0.25
     }
   },
   "schema_version": 1,
@@ -63,5 +70,11 @@
     "overbite"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.449,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.131,
+    "SPACE": 0.276
+  }
 }

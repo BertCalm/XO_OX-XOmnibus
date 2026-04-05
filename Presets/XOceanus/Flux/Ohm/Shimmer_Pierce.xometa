@@ -28,7 +28,14 @@
   "parameters": {
     "Ohm": {
       "couplingBus": 3,
-      "couplingLevel": 0.626
+      "couplingLevel": 0.626,
+      "ohm_macroMeddling": 0.827,
+      "ohm_macroCommune": 0.72,
+      "ohm_macroJam": 0.337,
+      "ohm_macroMeadow": 0.459,
+      "ohm_filterEnvAmt": 0.582,
+      "ohm_lfo1Rate": 0.367,
+      "ohm_lfo1Depth": 0.306
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "ohm"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.775,
+    "MOVEMENT": 0.668,
+    "COUPLING": 0.285,
+    "SPACE": 0.407
+  }
 }

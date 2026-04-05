@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.6
+      "ouro_macroSpace": 0.888,
+      "ouro_macroCharacter": 0.376,
+      "ouro_macroMovement": 0.412,
+      "ouro_macroCoupling": 0.226,
+      "ouro_filterEnvAmt": 0.333,
+      "ouro_lfoRate": 0.05
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "b003",
     "transcendental"
   ],
-  "description": "leash=0.05 at chaosIndex=0.85 — 95% free-running chaos. Pitch is a spectral peak, not a clear fundamental. phi=1.0 exposes lower-wing Lorenz trajectory. Notes gesture toward pitches without committing."
+  "description": "leash=0.05 at chaosIndex=0.85 — 95% free-running chaos. Pitch is a spectral peak, not a clear fundamental. phi=1.0 exposes lower-wing Lorenz trajectory. Notes gesture toward pitches without committing.",
+  "macros": {
+    "CHARACTER": 0.374,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.224,
+    "SPACE": 0.886
+  }
 }

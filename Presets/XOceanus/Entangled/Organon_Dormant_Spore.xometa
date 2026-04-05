@@ -50,14 +50,17 @@
       "opal_grainPitch": 0.5,
       "opal_grainSize": 0.85,
       "opal_grainSpread": 0.35,
-      "opal_macroCharacter": 0.0,
-      "opal_macroCoupling": 0.0,
-      "opal_macroMovement": 0.0,
-      "opal_macroSpace": 0.0,
+      "opal_macroCharacter": 0.587,
+      "opal_macroCoupling": 0.615,
+      "opal_macroMovement": 0.501,
+      "opal_macroSpace": 0.336,
       "opal_position": 0.3,
       "opal_positionSpread": 0.65,
       "opal_reverbMix": 0.55,
-      "opal_reverbSize": 0.75
+      "opal_reverbSize": 0.75,
+      "opal_filterEnvAmt": 0.565,
+      "opal_lfo1Rate": 0.206,
+      "opal_lfo1Depth": 0.263
     },
     "Organon": {
       "organon_catalystDrive": 0.02,
@@ -69,7 +72,14 @@
       "organon_metabolicRate": 0.05,
       "organon_noiseColor": 0.15,
       "organon_phasonShift": 0.0,
-      "organon_signalFlux": 0.05
+      "organon_signalFlux": 0.05,
+      "organon_macroCharacter": 0.601,
+      "organon_macroMovement": 0.515,
+      "organon_macroCoupling": 0.629,
+      "organon_macroSpace": 0.35,
+      "organon_filterEnvAmt": 0.565,
+      "organon_lfo1Rate": 0.206,
+      "organon_lfo1Depth": 0.263
     }
   },
   "schema_version": 1,
@@ -84,5 +94,11 @@
     "opal"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.602,
+    "MOVEMENT": 0.516,
+    "COUPLING": 0.63,
+    "SPACE": 0.351
+  }
 }

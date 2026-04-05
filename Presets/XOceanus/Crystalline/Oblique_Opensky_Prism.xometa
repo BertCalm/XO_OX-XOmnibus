@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Opensky Prism",
+  "mood": "Crystalline",
+  "engines": [
+    "Oblique",
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique prismatic refraction drives OpenSky shimmer pitch \u2014 LFO modulation creating interference between prism and sky.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "oblique",
+    "opensky",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.16,
+    "movement": 0.38,
+    "density": 0.32,
+    "space": 0.7,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.59,
+      "oblq_macroMovement": 0.31,
+      "oblq_macroCoupling": 0.13,
+      "oblq_macroSpace": 0.55,
+      "oblq_filterEnvAmt": 0.47,
+      "oblq_lfo1Rate": 0.09,
+      "oblq_lfo1Depth": 0.11
+    },
+    "OpenSky": {
+      "sky_macroCharacter": 0.59,
+      "sky_macroMovement": 0.31,
+      "sky_macroCoupling": 0.13,
+      "sky_macroSpace": 0.55,
+      "sky_filterEnvAmt": 0.47,
+      "sky_lfo1Rate": 0.09,
+      "sky_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OpenSky",
+        "type": "LFOToPitch",
+        "amount": 0.18
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.13,
+    "SPACE": 0.55
+  }
+}

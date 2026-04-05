@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Penumbra Lace",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The partial shadow at an eclipse edge, woven into textile. Intricate dimming patterns repeat at a rate too slow to perceive as rhythm.",
+  "tags": [
+    "ethereal",
+    "shadow",
+    "lace",
+    "penumbra",
+    "texture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.52,
+    "movement": 0.3,
+    "density": 0.22,
+    "space": 0.85,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.4,
+      "ombre_macroMovement": 0.32,
+      "ombre_macroCoupling": 0.14,
+      "ombre_macroSpace": 0.78,
+      "ombre_blend": 0.5,
+      "ombre_filterEnvAmt": 0.33,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.18,
+      "ombre_attack": 2.0,
+      "ombre_release": 6.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.78
+  }
+}

@@ -106,14 +106,23 @@
       "osti_circleAmount": 0.48,
       "osti_reverbSize": 0.38,
       "osti_reverbMix": 0.12,
-      "osti_macroGather": 0.0,
-      "osti_macroFire": 0.75,
-      "osti_macroCircle": 0.48,
-      "osti_macroSpace": 0.38
+      "osti_macroGather": 0.457,
+      "osti_macroFire": 0.47,
+      "osti_macroCircle": 0.285,
+      "osti_macroSpace": 0.456,
+      "osti_filterEnvAmt": 0.37,
+      "osti_lfo1Rate": 0.184,
+      "osti_lfo1Depth": 0.234
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.436,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.264,
+    "SPACE": 0.435
+  }
 }

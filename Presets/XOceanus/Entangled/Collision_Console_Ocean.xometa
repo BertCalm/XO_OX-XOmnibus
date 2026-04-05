@@ -40,14 +40,28 @@
       "ow_glitchAmount": 0.35,
       "ow_filterCutoff": 0.55,
       "ow_reverbMix": 0.25,
-      "ow_outputLevel": 0.8
+      "ow_outputLevel": 0.8,
+      "ow_macroEra": 0.613,
+      "ow_macroCrush": 0.548,
+      "ow_macroGlitch": 0.576,
+      "ow_macroSpace": 0.413,
+      "ow_filterEnvDepth": 0.529,
+      "ow_fmLfoRate": 0.14,
+      "ow_fmLfoDepth": 0.242
     },
     "Orca": {
       "orca_huntMacro": 0.6,
       "orca_breachAmount": 0.45,
       "orca_echoDepth": 0.55,
       "orca_filterCutoff": 0.6,
-      "orca_outputLevel": 0.78
+      "orca_outputLevel": 0.78,
+      "orca_macroCharacter": 0.616,
+      "orca_macroMovement": 0.551,
+      "orca_macroCoupling": 0.579,
+      "orca_macroSpace": 0.416,
+      "orca_filterEnvAmt": 0.529,
+      "orca_lfo1Rate": 0.14,
+      "orca_lfo1Depth": 0.242
     }
   },
   "coupling": {
@@ -66,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.535,
+    "COUPLING": 0.563,
+    "SPACE": 0.4
+  }
 }

@@ -46,7 +46,14 @@
       "drift_release": 2.0,
       "drift_driftDepth": 0.6,
       "drift_level": 0.55,
-      "drift_polyphony": 3
+      "drift_polyphony": 3,
+      "drift_macroCharacter": 0.641,
+      "drift_macroMovement": 0.538,
+      "drift_macroCoupling": 0.51,
+      "drift_macroSpace": 0.424,
+      "drift_filterEnvAmt": 0.563,
+      "drift_lfoRate": 0.293,
+      "drift_lfoDepth": 0.207
     },
     "Opal": {
       "opal_source": 0,
@@ -74,7 +81,14 @@
       "opal_fxDelayFeedback": 0.4,
       "opal_fxDelayMix": 0.2,
       "opal_fxFinishLevel": 0.8,
-      "opal_level": 0.65
+      "opal_level": 0.65,
+      "opal_macroCharacter": 0.596,
+      "opal_macroMovement": 0.493,
+      "opal_macroCoupling": 0.465,
+      "opal_macroSpace": 0.379,
+      "opal_filterEnvAmt": 0.563,
+      "opal_lfo1Rate": 0.293,
+      "opal_lfo1Depth": 0.207
     }
   },
   "coupling": {
@@ -107,5 +121,11 @@
     "density": 0.7,
     "space": 0.88,
     "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.611,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.48,
+    "SPACE": 0.394
   }
 }

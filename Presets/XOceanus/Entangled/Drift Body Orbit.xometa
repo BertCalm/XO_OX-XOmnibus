@@ -56,7 +56,14 @@
       "drift_release": 3.5,
       "drift_driftDepth": 0.45,
       "drift_level": 0.6,
-      "drift_polyphony": 4
+      "drift_polyphony": 4,
+      "drift_macroCharacter": 0.491,
+      "drift_macroMovement": 0.517,
+      "drift_macroCoupling": 0.472,
+      "drift_macroSpace": 0.419,
+      "drift_filterEnvAmt": 0.528,
+      "drift_lfoRate": 0.177,
+      "drift_lfoDepth": 0.398
     },
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -70,7 +77,20 @@
       "bob_ampRelease": 2.5,
       "bob_bobMode": 0.3,
       "bob_level": 0.65,
-      "bob_polyphony": 4
+      "bob_polyphony": 4,
+      "bob_macroCharacter": 0.474,
+      "bob_macroMovement": 0.5,
+      "bob_macroCoupling": 0.455,
+      "bob_macroSpace": 0.402,
+      "bob_fltEnvAmt": 0.528,
+      "bob_lfo1Rate": 0.177,
+      "bob_lfo1Depth": 0.398
     }
+  },
+  "macros": {
+    "CHARACTER": 0.461,
+    "MOVEMENT": 0.487,
+    "COUPLING": 0.442,
+    "SPACE": 0.389
   }
 }

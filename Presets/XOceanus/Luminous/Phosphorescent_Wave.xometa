@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Phosphorescent Wave",
+  "mood": "Luminous",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Each breaking wave releases a flash of phosphorescent light — the Oceanic engine's chromatophore modulator captures this cyclic glow, bright against a dark shore.",
+  "tags": ["luminous", "phosphorescent", "wave", "oceanic", "cyclic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.44,
+    "movement": 0.54,
+    "density": 0.38,
+    "space": 0.60,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.48,
+      "ocean_macroMovement": 0.54,
+      "ocean_macroCoupling": 0.14,
+      "ocean_macroSpace": 0.60,
+      "ocean_filterEnvAmt": 0.54,
+      "ocean_separation": 0.60,
+      "ocean_chromatophore": 0.55,
+      "ocean_lfo1Rate": 0.12,
+      "ocean_lfo1Depth": 0.28,
+      "ocean_lfo2Rate": 0.05,
+      "ocean_lfo2Depth": 0.18,
+      "ocean_attack": 0.1,
+      "ocean_decay": 0.8,
+      "ocean_sustain": 0.75,
+      "ocean_release": 3.0,
+      "ocean_filterCutoff": 7200,
+      "ocean_filterRes": 0.28,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.14,
+    "SPACE": 0.60
+  }
+}

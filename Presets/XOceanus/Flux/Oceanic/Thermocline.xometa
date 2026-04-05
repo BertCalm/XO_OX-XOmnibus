@@ -37,7 +37,14 @@
       "ocean_cohesion": 0.72,
       "ocean_depth": 0.45,
       "ocean_separation": 0.5,
-      "ocean_turbulence": 0.95
+      "ocean_turbulence": 0.95,
+      "ocean_macroCharacter": 0.724,
+      "ocean_macroMovement": 0.774,
+      "ocean_macroCoupling": 0.312,
+      "ocean_macroSpace": 0.31,
+      "ocean_filterEnvAmt": 0.577,
+      "ocean_lfo1Rate": 0.222,
+      "ocean_lfo1Depth": 0.331
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "boundary"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.718,
+    "MOVEMENT": 0.768,
+    "COUPLING": 0.306,
+    "SPACE": 0.304
+  }
 }

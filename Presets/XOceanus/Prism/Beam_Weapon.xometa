@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Beam Weapon",
+  "mood": "Prism",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prism-focused energy beam weapon. Visual modulation concentrated into a single coherent aggressive pulse.",
+  "tags": ["prism", "aggressive", "beam", "focused", "weapon"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.08,
+    "movement": 0.9,
+    "density": 0.72,
+    "space": 0.14,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.88,
+      "optic_macroMovement": 0.88,
+      "optic_macroCoupling": 0.15,
+      "optic_macroSpace": 0.15,
+      "optic_pulseRate": 0.8,
+      "optic_pulseDepth": 0.98,
+      "optic_filterEnvAmt": 0.72,
+      "optic_lfo1Rate": 0.62,
+      "optic_lfo1Depth": 0.46,
+      "optic_attackTime": 0.002,
+      "optic_decayTime": 0.1,
+      "optic_sustain": 0.15,
+      "optic_releaseTime": 0.08
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

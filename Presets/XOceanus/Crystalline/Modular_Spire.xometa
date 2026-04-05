@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Modular Spire",
+  "mood": "Crystalline",
+  "engines": [
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A modular spire built from brick synthesis blocks \u2014 each module adds crystalline height to the structure.",
+  "tags": [
+    "crystalline",
+    "modular",
+    "spire",
+    "brick",
+    "structure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.28,
+    "density": 0.44,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_macroCharacter": 0.58,
+      "obrix_macroMovement": 0.39,
+      "obrix_macroCoupling": 0.14,
+      "obrix_macroSpace": 0.56,
+      "obrix_filterEnvAmt": 0.45,
+      "obrix_lfo1Rate": 0.14,
+      "obrix_lfo1Depth": 0.13
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.14,
+    "SPACE": 0.56
+  }
+}

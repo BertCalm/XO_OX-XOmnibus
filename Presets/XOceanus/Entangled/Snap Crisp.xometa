@@ -42,11 +42,25 @@
       "origami_couplingLevel": 0.79,
       "origami_outputLevel": 0.8,
       "origami_outputPan": 0.02,
-      "origami_warmth": 0.486
+      "origami_warmth": 0.486,
+      "origami_macroCharacter": 0.666,
+      "origami_macroMovement": 0.613,
+      "origami_macroCoupling": 0.512,
+      "origami_macroSpace": 0.437,
+      "origami_filterEnvAmt": 0.514,
+      "origami_lfo1Rate": 0.181,
+      "origami_lfo1Depth": 0.262
     },
     "Overbite": {
       "poss_level": 0.89,
-      "poss_pan": 0.02
+      "poss_pan": 0.02,
+      "poss_macroBelly": 0.616,
+      "poss_macroBite": 0.563,
+      "poss_macroPlayDead": 0.462,
+      "poss_macroScurry": 0.387,
+      "poss_filterEnvAmount": 0.514,
+      "poss_lfo1Rate": 0.181,
+      "poss_lfo1Depth": 0.262
     }
   },
   "schema_version": 1,
@@ -58,5 +72,11 @@
     "bite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.607,
+    "MOVEMENT": 0.554,
+    "COUPLING": 0.453,
+    "SPACE": 0.378
+  }
 }

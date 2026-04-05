@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Vent Superheated",
+  "mood": "Deep",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Superheated black smoker venting at 400°C — the roar of mineral-rich water expelled into cold ocean, chemistry as sound, geology as rhythm.",
+  "tags": ["deep", "hydrothermal", "vent", "oceanic", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.82,
+    "movement": 0.30,
+    "density": 0.72,
+    "space": 0.65,
+    "aggression": 0.24
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.58,
+      "deep_macroMovement": 0.30,
+      "deep_macroCoupling": 0.14,
+      "deep_macroSpace": 0.63,
+      "deep_filterEnvAmt": 0.50,
+      "deep_lfo1Rate": 0.08,
+      "deep_lfo1Depth": 0.28,
+      "deep_macroPressure": 0.70,
+      "deep_darknessCeiling": 0.80,
+      "deep_bioExciter": 0.55
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.14,
+    "SPACE": 0.63
+  }
+}

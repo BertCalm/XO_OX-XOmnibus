@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Additive Mineral",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mineral resonance built from additive sine components \u2014 geology expressed as pure harmonic architecture.",
+  "tags": [
+    "crystalline",
+    "additive",
+    "mineral",
+    "sine",
+    "geology"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.26,
+    "movement": 0.28,
+    "density": 0.46,
+    "space": 0.58,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.59,
+      "orb_macroMovement": 0.42,
+      "orb_macroCoupling": 0.15,
+      "orb_macroSpace": 0.5,
+      "orb_filterEnvAmt": 0.64,
+      "orb_lfo1Rate": 0.08,
+      "orb_lfo1Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.15,
+    "SPACE": 0.5
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Bamboo Hollow",
+  "mood": "Organic",
+  "engines": ["Obbligato"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Air moving through a hollow bamboo shaft — pure tube resonance with breath noise and natural overtone series.",
+  "tags": ["organic", "bamboo", "hollow", "tube", "breath"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.35,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_macroCharacter": 0.40,
+      "obbl_macroMovement": 0.38,
+      "obbl_macroCoupling": 0.15,
+      "obbl_macroSpace": 0.55,
+      "obbl_breathA": 0.45,
+      "obbl_filterEnvAmt": 0.40,
+      "obbl_lfo1Rate": 0.07,
+      "obbl_lfo1Depth": 0.24,
+      "obbl_lfo2Rate": 0.03,
+      "obbl_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.15,
+    "SPACE": 0.55
+  }
+}

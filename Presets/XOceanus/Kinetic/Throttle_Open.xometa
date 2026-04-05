@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Throttle Open",
+  "mood": "Kinetic",
+  "engines": ["Overworld"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full throttle open. ERA triangle driving kinetic output with zero restriction, maximum energy transfer.",
+  "tags": ["kinetic", "aggressive", "throttle", "full", "open"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.98,
+    "density": 0.78,
+    "space": 0.14,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macroCharacter": 0.84,
+      "ow_macroMovement": 0.96,
+      "ow_macroCoupling": 0.15,
+      "ow_macroSpace": 0.15,
+      "ow_era": 0.9,
+      "ow_kinetic": 0.98,
+      "ow_filterEnvAmt": 0.74,
+      "ow_lfo1Rate": 0.78,
+      "ow_lfo1Depth": 0.44,
+      "ow_filterCutoff": 0.72,
+      "ow_filterRes": 0.66,
+      "ow_attackTime": 0.005,
+      "ow_decayTime": 0.16,
+      "ow_sustain": 0.28,
+      "ow_releaseTime": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.96,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

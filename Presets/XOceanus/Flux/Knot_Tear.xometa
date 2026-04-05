@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Knot Tear",
+  "mood": "Flux",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Topological knot violently torn apart. Kelp Knot topology morphing through extreme phase coupling states.",
+  "tags": ["flux", "aggressive", "knot", "topology", "orbweave"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.18,
+    "movement": 0.9,
+    "density": 0.82,
+    "space": 0.16,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.85,
+      "weave_macroMovement": 0.88,
+      "weave_macroCoupling": 0.18,
+      "weave_macroSpace": 0.17,
+      "weave_knotDepth": 0.92,
+      "weave_topoMorph": 0.88,
+      "weave_filterEnvAmt": 0.74,
+      "weave_lfo1Rate": 0.55,
+      "weave_lfo1Depth": 0.44,
+      "weave_filterCutoff": 0.65,
+      "weave_filterRes": 0.72,
+      "weave_attackTime": 0.008,
+      "weave_decayTime": 0.22,
+      "weave_sustain": 0.32,
+      "weave_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.18,
+    "SPACE": 0.17
+  }
+}

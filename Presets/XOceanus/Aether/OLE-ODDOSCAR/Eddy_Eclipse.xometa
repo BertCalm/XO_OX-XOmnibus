@@ -36,11 +36,23 @@
   "parameters": {
     "OddOscar": {
       "level": 0.746,
-      "pan": -0.071
+      "pan": -0.071,
+      "morph_macroCharacter": 0.44,
+      "morph_macroMovement": 0.548,
+      "morph_macroCoupling": 0.591,
+      "morph_macroSpace": 0.848,
+      "morph_filterEnvDepth": 0.405,
+      "morph_lfoRate": 0.054
     },
     "Ole": {
       "level": 0.655,
-      "pan": -0.067
+      "pan": -0.067,
+      "ole_macroDrama": 0.395,
+      "ole_macroFuego": 0.503,
+      "ole_macroIsla": 0.546,
+      "ole_macroSides": 0.803,
+      "ole_filterEnvAmt": 0.405,
+      "ole_lfoRate": 0.054
     }
   },
   "schema_version": 1,
@@ -54,5 +66,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.417,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.568,
+    "SPACE": 0.825
+  }
 }

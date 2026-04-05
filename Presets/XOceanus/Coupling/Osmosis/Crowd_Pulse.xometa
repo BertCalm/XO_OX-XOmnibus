@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Designed for dense, complex audio sources \u2014 crowd noise, dense ensemble recordings, full mixes. Low selectivity captures the full-spectrum energy mass. Low reactivity smooths over micro-variations, while maximum memory tracks the global energy arc across bars rather than individual events. Use when you want a coupled engine to ride the overall intensity envelope of a complete scene.",
+  "description": "Designed for dense, complex audio sources — crowd noise, dense ensemble recordings, full mixes. Low selectivity captures the full-spectrum energy mass. Low reactivity smooths over micro-variations, while maximum memory tracks the global energy arc across bars rather than individual events. Use when you want a coupled engine to ride the overall intensity envelope of a complete scene.",
   "tags": [
     "coupling",
     "crowd",
@@ -30,7 +30,14 @@
       "osmo_permeability": 0.35,
       "osmo_selectivity": 0.25,
       "osmo_reactivity": 0.15,
-      "osmo_memory": 0.98
+      "osmo_memory": 0.98,
+      "osmo_macro1": 0.567,
+      "osmo_macro2": 0.577,
+      "osmo_macro3": 0.797,
+      "osmo_macro4": 0.454,
+      "osmo_filterEnvAmt": 0.547,
+      "osmo_lfo1Rate": 0.209,
+      "osmo_lfo1Depth": 0.31
     }
   },
   "coupling": {
@@ -43,5 +50,11 @@
     "density": 0.88,
     "space": 0.55,
     "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.512,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.742,
+    "SPACE": 0.399
   }
 }

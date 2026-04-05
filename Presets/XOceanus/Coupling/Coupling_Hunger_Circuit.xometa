@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Hunger Circuit",
+  "mood": "Coupling",
+  "engines": [
+    "Orca",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA hunt amplitude modulates ONSET transient shaping \u2014 predator energy teaching percussion how to strike, apex dynamics informing transient force.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "predator",
+    "percussion",
+    "AmpToFilter",
+    "marine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.38,
+    "movement": 0.6,
+    "density": 0.54,
+    "space": 0.44,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.6,
+      "orca_filterEnvAmt": 0.52,
+      "orca_lfo1Rate": 0.15,
+      "orca_lfo1Depth": 0.3,
+      "orca_macroCharacter": 0.54,
+      "orca_macroMovement": 0.58,
+      "orca_macroCoupling": 0.65,
+      "orca_macroSpace": 0.44
+    },
+    "Onset": {
+      "perc_macro_punch": 0.6,
+      "perc_macro_mutate": 0.5,
+      "perc_macro_machine": 0.48,
+      "perc_macro_space": 0.45,
+      "perc_filterEnvAmt": 0.5,
+      "perc_lfo1Rate": 0.14,
+      "perc_lfo1Depth": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Onset",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.65,
+    "SPACE": 0.45
+  }
+}

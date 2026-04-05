@@ -118,14 +118,28 @@
       "ombre_reactivity": 0.3,
       "ombre_release": 2.5,
       "ombre_subLevel": 0.25,
-      "ombre_sustain": 0.65
+      "ombre_sustain": 0.65,
+      "ombre_macroCharacter": 0.55,
+      "ombre_macroMovement": 0.628,
+      "ombre_macroCoupling": 0.495,
+      "ombre_macroSpace": 0.571,
+      "ombre_filterEnvAmt": 0.549,
+      "ombre_lfo1Rate": 0.125,
+      "ombre_lfo1Depth": 0.297
     },
     "Opal": {
       "opal_filterCutoff": 5000.0,
       "opal_grainDensity": 0.6,
       "opal_grainSize": 80.0,
       "opal_level": 0.6,
-      "opal_scatter": 0.4
+      "opal_scatter": 0.4,
+      "opal_macroCharacter": 0.505,
+      "opal_macroMovement": 0.583,
+      "opal_macroCoupling": 0.45,
+      "opal_macroSpace": 0.526,
+      "opal_filterEnvAmt": 0.549,
+      "opal_lfo1Rate": 0.125,
+      "opal_lfo1Depth": 0.297
     }
   },
   "schema_version": 1,
@@ -137,5 +151,11 @@
     "memory"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.598,
+    "COUPLING": 0.465,
+    "SPACE": 0.541
+  }
 }

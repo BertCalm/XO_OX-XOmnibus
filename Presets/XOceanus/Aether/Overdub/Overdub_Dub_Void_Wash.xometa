@@ -33,14 +33,19 @@
       "dub_filterReso": 0.2,
       "dub_macroDrive": 0.0,
       "dub_macroEcho": 0.0,
-      "dub_macroSpace": 0.0,
+      "dub_macroSpace": 0.888,
       "dub_macroXosend": 0.0,
       "dub_reverbMix": 0.97,
       "dub_reverbSize": 1.0,
       "dub_springMix": 0.7,
       "dub_tapeFeedback": 0.3,
       "dub_tapeSpeed": 0.5,
-      "dub_tapeWow": 0.3
+      "dub_tapeWow": 0.3,
+      "dub_macroCharacter": 0.473,
+      "dub_macroMovement": 0.346,
+      "dub_macroCoupling": 0.224,
+      "dub_filterEnvAmt": 0.345,
+      "dub_lfoDepth": 0.017
     }
   },
   "schema_version": 1,
@@ -54,5 +59,11 @@
     "warm"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.481,
+    "MOVEMENT": 0.354,
+    "COUPLING": 0.232,
+    "SPACE": 0.896
+  }
 }

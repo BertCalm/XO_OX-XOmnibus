@@ -36,6 +36,7 @@ from pathlib import Path
 from typing import Optional
 
 from engine_registry import get_all_engines, is_valid_engine
+from xpn_voice_taxonomy import ONSET_VOICE_MAP  # canonical voice name map (QDD L4 fix)
 
 REPO_ROOT   = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOceanus"
@@ -54,7 +55,11 @@ MINOR_3RD_NOTES = [
 ENGINE_STRATEGIES = {
     "Onset": {
         "program_type": "drum",
-        "voices": ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx"],
+        # Voice names are engine-internal (see xpn_voice_taxonomy.ONSET_VOICE_MAP for
+        # the mapping to XPN canonical pad names used by XPNDrumExporter.h).
+        # "chat" → "closed_hat", "ohat" → "open_hat" in C++ land.
+        # WAV filenames always use these internal names (e.g., preset_chat_v1.wav).
+        "voices": list(ONSET_VOICE_MAP.keys()),  # ["kick","snare","chat","ohat","clap","tom","perc","fx"]
         "vel_layers": 4,
         "vel_suffixes": ["v1", "v2", "v3", "v4"],
         "notes": None,  # drums don't use notes

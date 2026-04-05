@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Plateau Bright",
+  "mood": "Luminous",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light on a high plateau at altitude — the air is thin and pure, the brightness extraordinary. Obsidian's crystal clarity finds its widest dynamic expression at this elevation.",
+  "tags": ["luminous", "plateau", "altitude", "pure", "crystal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.44,
+    "movement": 0.34,
+    "density": 0.28,
+    "space": 0.65,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.60,
+      "obsidian_macroMovement": 0.34,
+      "obsidian_macroCoupling": 0.13,
+      "obsidian_macroSpace": 0.65,
+      "obsidian_filterEnvAmt": 0.56,
+      "obsidian_depth": 0.50,
+      "obsidian_lfo1Rate": 0.07,
+      "obsidian_lfo1Depth": 0.18,
+      "obsidian_lfo2Rate": 0.03,
+      "obsidian_lfo2Depth": 0.12,
+      "obsidian_attack": 0.06,
+      "obsidian_decay": 0.9,
+      "obsidian_sustain": 0.88,
+      "obsidian_release": 3.2,
+      "obsidian_filterCutoff": 13500,
+      "obsidian_filterRes": 0.18,
+      "obsidian_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.13,
+    "SPACE": 0.65
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Kithara Ghost",
+  "mood": "Ethereal",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ancient kithara, heard through twenty-five centuries of acoustic distance. The original pluck barely survives the journey.",
+  "tags": [
+    "ethereal",
+    "ancient",
+    "ghost",
+    "kithara",
+    "distance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.15,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_macroCharacter": 0.28,
+      "orph_macroMovement": 0.22,
+      "orph_macroCoupling": 0.06,
+      "orph_macroSpace": 0.9,
+      "orph_pluckBrightness": 0.38,
+      "orph_filterEnvAmt": 0.22,
+      "orph_lfo1Rate": 0.01,
+      "orph_lfo1Depth": 0.09,
+      "orph_attack": 0.03,
+      "orph_release": 11.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.06,
+    "SPACE": 0.9
+  }
+}

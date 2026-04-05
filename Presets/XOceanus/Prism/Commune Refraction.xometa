@@ -48,7 +48,14 @@
       "ohm_meddlingRate": 3.72,
       "ohm_resonantPeak": 0.54,
       "ohm_reverbMix": 0.562,
-      "ohm_stereoWidth": 0.812
+      "ohm_stereoWidth": 0.812,
+      "ohm_macroMeddling": 0.604,
+      "ohm_macroCommune": 0.468,
+      "ohm_macroJam": 0.304,
+      "ohm_macroMeadow": 0.423,
+      "ohm_filterEnvAmt": 0.599,
+      "ohm_lfo1Rate": 0.279,
+      "ohm_lfo1Depth": 0.284
     }
   },
   "schema_version": 1,
@@ -61,5 +68,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.552,
+    "MOVEMENT": 0.416,
+    "COUPLING": 0.252,
+    "SPACE": 0.371
+  }
 }

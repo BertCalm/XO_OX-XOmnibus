@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Pitch Smoke",
+  "mood": "Ethereal",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A musical pitch dissolving into smoke. Granular expansion until the original frequency is only an afterimage.",
+  "tags": [
+    "ethereal",
+    "smoke",
+    "dissolve",
+    "granular",
+    "pitch"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.5,
+    "movement": 0.28,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.34,
+      "opal_macroMovement": 0.3,
+      "opal_macroCoupling": 0.09,
+      "opal_macroSpace": 0.87,
+      "opal_grainSize": 0.35,
+      "opal_filterEnvAmt": 0.28,
+      "opal_lfo1Rate": 0.03,
+      "opal_lfo1Depth": 0.14,
+      "opal_attack": 2.8,
+      "opal_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.09,
+    "SPACE": 0.87
+  }
+}

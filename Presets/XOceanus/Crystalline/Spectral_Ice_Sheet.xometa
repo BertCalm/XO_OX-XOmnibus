@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Ice Sheet",
+  "mood": "Crystalline",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Flat spectral spread across the upper register \u2014 an ice sheet with harmonic altitude. No warmth below the treeline.",
+  "tags": [
+    "crystalline",
+    "spectral",
+    "ice-sheet",
+    "upper",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.15,
+    "movement": 0.22,
+    "density": 0.32,
+    "space": 0.7,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.55,
+      "over_macroMovement": 0.4,
+      "over_macroCoupling": 0.22,
+      "over_macroSpace": 0.6,
+      "over_filterEnvAmt": 0.54,
+      "over_lfo1Rate": 0.09,
+      "over_lfo1Depth": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.22,
+    "SPACE": 0.6
+  }
+}

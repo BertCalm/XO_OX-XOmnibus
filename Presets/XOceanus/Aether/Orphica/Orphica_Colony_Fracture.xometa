@@ -59,7 +59,14 @@
       "orph_stringMaterial": 0,
       "orph_subAmount": 0.041,
       "orph_sympatheticAmt": 0.619,
-      "orph_tapeSat": 0.177
+      "orph_tapeSat": 0.177,
+      "orph_macroPluck": 0.347,
+      "orph_macroSurface": 0.525,
+      "orph_macroFracture": 0.232,
+      "orph_macroDivine": 0.714,
+      "orph_filterEnvAmt": 0.423,
+      "orph_lfo1Rate": 0.025,
+      "orph_lfo1Depth": 0.129
     }
   },
   "schema_version": 1,
@@ -72,5 +79,11 @@
     "abstract"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.335,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.22,
+    "SPACE": 0.702
+  }
 }

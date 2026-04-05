@@ -36,7 +36,14 @@
       "perc_kick_punch": 0.95,
       "perc_kick_sub": 0.85,
       "perc_kick_tune": 0.2,
-      "perc_sub_drive": 0.7
+      "perc_sub_drive": 0.7,
+      "perc_macro_punch": 0.458,
+      "perc_macro_mutate": 0.302,
+      "perc_macro_machine": 0.218,
+      "perc_macro_space": 0.315,
+      "perc_filterEnvAmt": 0.48,
+      "perc_lfo1Rate": 0.194,
+      "perc_lfo1Depth": 0.199
     }
   },
   "schema_version": 1,
@@ -52,5 +59,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.434,
+    "MOVEMENT": 0.278,
+    "COUPLING": 0.194,
+    "SPACE": 0.291
+  }
 }

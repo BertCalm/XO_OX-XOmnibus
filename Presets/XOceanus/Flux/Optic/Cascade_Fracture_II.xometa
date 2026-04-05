@@ -28,7 +28,13 @@
   "parameters": {
     "Optic": {
       "couplingBus": 2,
-      "couplingLevel": 0.61
+      "couplingLevel": 0.61,
+      "optic_macroCharacter": 0.695,
+      "optic_macroMovement": 0.791,
+      "optic_macroCoupling": 0.375,
+      "optic_macroSpace": 0.428,
+      "optic_filterEnvAmt": 0.52,
+      "optic_lfoRate": 0.284
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "overbite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.667,
+    "MOVEMENT": 0.763,
+    "COUPLING": 0.347,
+    "SPACE": 0.4
+  }
 }

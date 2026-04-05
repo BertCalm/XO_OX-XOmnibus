@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "FM Annihilate",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chaos FM signal annihilating acid filter resonance. Ouroboros audio feeding Oblong FM at maximum depth.",
+  "tags": ["entangled", "aggressive", "fm", "annihilate", "acid"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.92,
+    "density": 0.82,
+    "space": 0.14,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.26,
+      "ouro_macroSpace": 0.14,
+      "ouro_topology": 0.85,
+      "ouro_leash": 0.15,
+      "ouro_filterEnvAmt": 0.84,
+      "ouro_lfo1Rate": 0.65,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_filterCutoff": 0.7,
+      "ouro_filterRes": 0.82,
+      "ouro_attackTime": 0.002,
+      "ouro_decayTime": 0.12,
+      "ouro_sustain": 0.22,
+      "ouro_releaseTime": 0.08
+    },
+    "Oblong": {
+      "bob_macroCharacter": 0.85,
+      "bob_macroMovement": 0.84,
+      "bob_macroCoupling": 0.28,
+      "bob_macroSpace": 0.14,
+      "bob_fltCutoff": 0.5,
+      "bob_fltRes": 0.9,
+      "bob_filterEnvAmt": 0.88,
+      "bob_lfo1Rate": 0.5,
+      "bob_lfo1Depth": 0.4,
+      "bob_attackTime": 0.005,
+      "bob_decayTime": 0.16,
+      "bob_sustain": 0.2,
+      "bob_releaseTime": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Oblong",
+        "type": "AudioToFM",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.14
+  }
+}

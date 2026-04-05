@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Arctic Rise",
+  "mood": "Crystalline",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A slow ascension through arctic crystal air. The RISE macro lifts pitch and shimmer simultaneously.",
+  "tags": [
+    "crystalline",
+    "arctic",
+    "rise",
+    "ascension",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.18,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.68,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.51,
+      "sky_macroMovement": 0.4,
+      "sky_macroCoupling": 0.21,
+      "sky_macroSpace": 0.55,
+      "sky_filterEnvAmt": 0.59,
+      "sky_lfo1Rate": 0.11,
+      "sky_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.21,
+    "SPACE": 0.55
+  }
+}

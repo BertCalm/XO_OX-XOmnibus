@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Obsidian Ray",
+  "mood": "Luminous",
+  "engines": ["Oblique", "Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A ray of light hits an obsidian surface at an oblique angle — refraction meets crystal reflection. Two pure luminance systems in dialogue.",
+  "tags": ["luminous", "coupled", "ray", "crystal", "refraction"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.90,
+    "warmth": 0.40,
+    "movement": 0.44,
+    "density": 0.30,
+    "space": 0.60,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.60,
+      "oblq_macroMovement": 0.44,
+      "oblq_macroCoupling": 0.22,
+      "oblq_macroSpace": 0.60,
+      "oblq_filterEnvAmt": 0.56,
+      "oblq_prismColor": 0.75,
+      "oblq_lfo1Rate": 0.09,
+      "oblq_lfo1Depth": 0.24,
+      "oblq_attack": 0.05,
+      "oblq_decay": 0.7,
+      "oblq_sustain": 0.82,
+      "oblq_release": 2.2,
+      "oblq_filterCutoff": 11000,
+      "oblq_output": 0
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.58,
+      "obsidian_macroMovement": 0.38,
+      "obsidian_macroCoupling": 0.22,
+      "obsidian_macroSpace": 0.58,
+      "obsidian_filterEnvAmt": 0.52,
+      "obsidian_depth": 0.48,
+      "obsidian_lfo1Rate": 0.06,
+      "obsidian_lfo1Depth": 0.18,
+      "obsidian_attack": 0.04,
+      "obsidian_decay": 0.8,
+      "obsidian_sustain": 0.86,
+      "obsidian_release": 2.8,
+      "obsidian_filterCutoff": 13500,
+      "obsidian_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oblique",
+        "target": "Obsidian",
+        "type": "LFOToPitch",
+        "amount": 0.18
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.22,
+    "SPACE": 0.60
+  }
+}

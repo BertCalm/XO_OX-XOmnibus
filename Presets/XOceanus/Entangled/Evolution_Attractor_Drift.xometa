@@ -40,14 +40,27 @@
       "ouro_topology": 0.55,
       "ouro_chaosAmount": 0.52,
       "ouro_filterCutoff": 0.5,
-      "ouro_outputLevel": 0.78
+      "ouro_outputLevel": 0.78,
+      "ouro_macroCharacter": 0.471,
+      "ouro_macroMovement": 0.538,
+      "ouro_macroCoupling": 0.455,
+      "ouro_macroSpace": 0.382,
+      "ouro_filterEnvAmt": 0.564,
+      "ouro_lfoRate": 0.124
     },
     "Odyssey": {
       "drift_oscA_mode": 2,
       "drift_morphAmount": 0.5,
       "drift_filterCutoff": 0.55,
       "drift_reverbMix": 0.55,
-      "drift_outputLevel": 0.8
+      "drift_outputLevel": 0.8,
+      "drift_macroCharacter": 0.499,
+      "drift_macroMovement": 0.566,
+      "drift_macroCoupling": 0.483,
+      "drift_macroSpace": 0.41,
+      "drift_filterEnvAmt": 0.564,
+      "drift_lfoRate": 0.124,
+      "drift_lfoDepth": 0.269
     }
   },
   "coupling": {
@@ -79,5 +92,11 @@
     "endAmount": 0.72,
     "description": "All three coupling amounts drift linearly over 45 seconds — never-repeating pad evolution"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.469,
+    "MOVEMENT": 0.536,
+    "COUPLING": 0.453,
+    "SPACE": 0.38
+  }
 }

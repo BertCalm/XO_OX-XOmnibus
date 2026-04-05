@@ -44,8 +44,10 @@ warnings.warn(
 
 VERSION = "1.0.0"
 
-# Vibe's musical velocity curve
-VIBE_VELOCITIES = [40, 80, 100, 120]
+# Render velocities — DEPRECATED constant kept for backward compatibility.
+# Old values were [40, 80, 100, 120] (replaced 2026-04-04).
+# Import from the single source of truth: xpn_velocity_standard.
+from xpn_velocity_standard import RENDER_MIDPOINTS as VIBE_VELOCITIES  # [10, 38, 73, 109]
 
 # GM drum notes used by XOnset
 DRUM_NOTES = [36, 38, 42, 44, 46, 49, 51]

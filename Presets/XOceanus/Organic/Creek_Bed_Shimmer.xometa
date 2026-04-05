@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Creek Bed Shimmer",
+  "mood": "Organic",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Shallow water over smooth stones in a forest creek — light diffracting through moving water and shifting harmonics.",
+  "tags": ["organic", "creek", "water", "shimmer", "stones"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.62,
+    "movement": 0.50,
+    "density": 0.40,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.40,
+      "oxb_macroMovement": 0.50,
+      "oxb_macroCoupling": 0.18,
+      "oxb_macroSpace": 0.58,
+      "oxb_entangle": 0.30,
+      "oxb_filterEnvAmt": 0.42,
+      "oxb_lfo1Rate": 0.10,
+      "oxb_lfo1Depth": 0.28,
+      "oxb_lfo2Rate": 0.06,
+      "oxb_lfo2Depth": 0.20
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.50,
+    "COUPLING": 0.18,
+    "SPACE": 0.58
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Drive Chain",
+  "mood": "Kinetic",
+  "engines": ["Overworld"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ERA triangle driving kinetic chain at machine tempo. Neon green momentum never releasing.",
+  "tags": ["kinetic", "aggressive", "drive", "chain", "overworld"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.22,
+    "movement": 0.94,
+    "density": 0.8,
+    "space": 0.14,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macroCharacter": 0.82,
+      "ow_macroMovement": 0.92,
+      "ow_macroCoupling": 0.15,
+      "ow_macroSpace": 0.14,
+      "ow_era": 0.85,
+      "ow_kinetic": 0.9,
+      "ow_filterEnvAmt": 0.72,
+      "ow_lfo1Rate": 0.68,
+      "ow_lfo1Depth": 0.44,
+      "ow_filterCutoff": 0.68,
+      "ow_filterRes": 0.65,
+      "ow_attackTime": 0.006,
+      "ow_decayTime": 0.18,
+      "ow_sustain": 0.35,
+      "ow_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.15,
+    "SPACE": 0.14
+  }
+}

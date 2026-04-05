@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Root Echo",
+  "mood": "Coupling",
+  "engines": [
+    "Ouroboros",
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS chaotic pitch trace barely registers in OMBRE memory blend \u2014 the strange attractor leaving shadow impressions in dual-narrative space.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "chaos",
+    "shadow",
+    "PitchToPitch",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.42,
+      "ouro_leash": 0.6,
+      "ouro_filterEnvAmt": 0.4,
+      "ouro_lfo1Rate": 0.11,
+      "ouro_lfo1Depth": 0.2,
+      "ouro_macroCharacter": 0.45,
+      "ouro_macroMovement": 0.42,
+      "ouro_macroCoupling": 0.5,
+      "ouro_macroSpace": 0.48
+    },
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_filterEnvAmt": 0.38,
+      "ombre_lfo1Rate": 0.08,
+      "ombre_lfo1Depth": 0.18,
+      "ombre_macroCharacter": 0.42,
+      "ombre_macroMovement": 0.4,
+      "ombre_macroCoupling": 0.48,
+      "ombre_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Ombre",
+        "type": "PitchToPitch",
+        "amount": 0.11
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.49,
+    "SPACE": 0.5
+  }
+}

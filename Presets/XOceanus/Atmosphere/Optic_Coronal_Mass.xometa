@@ -47,7 +47,13 @@
       "optic_vizFeedback": 0.95,
       "optic_vizIntensity": 0.88,
       "optic_vizMode": 3,
-      "optic_vizSpeed": 0.98
+      "optic_vizSpeed": 0.98,
+      "optic_macroCharacter": 0.449,
+      "optic_macroMovement": 0.34,
+      "optic_macroCoupling": 0.202,
+      "optic_macroSpace": 0.717,
+      "optic_filterEnvAmt": 0.306,
+      "optic_lfoRate": 0.04
     }
   },
   "schema_version": 1,
@@ -60,5 +66,11 @@
     "solar"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.421,
+    "MOVEMENT": 0.312,
+    "COUPLING": 0.174,
+    "SPACE": 0.689
+  }
 }

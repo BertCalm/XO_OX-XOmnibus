@@ -61,7 +61,14 @@
       "oblq_prismSpread": 0.22,
       "oblq_prismWidth": 0.45,
       "oblq_release": 2.5,
-      "oblq_sustain": 0.62
+      "oblq_sustain": 0.62,
+      "oblq_macroCharacter": 0.566,
+      "oblq_macroMovement": 0.485,
+      "oblq_macroCoupling": 0.429,
+      "oblq_macroSpace": 0.439,
+      "oblq_filterEnvAmt": 0.54,
+      "oblq_lfo1Rate": 0.074,
+      "oblq_lfo1Depth": 0.278
     }
   },
   "schema_version": 1,
@@ -76,5 +83,11 @@
     "beginner"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.543,
+    "MOVEMENT": 0.462,
+    "COUPLING": 0.406,
+    "SPACE": 0.416
+  }
 }

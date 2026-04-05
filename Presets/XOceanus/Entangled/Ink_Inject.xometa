@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Ink Inject",
+  "mood": "Entangled",
+  "engines": ["Octopus", "Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Alien ink cloud chaos injected into fold geometry. Octopus instability corrupting Origami's precise angles.",
+  "tags": ["entangled", "aggressive", "ink", "inject", "alien"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.17,
+    "movement": 0.91,
+    "density": 0.86,
+    "space": 0.16,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.86,
+      "octo_macroMovement": 0.88,
+      "octo_macroCoupling": 0.28,
+      "octo_macroSpace": 0.16,
+      "octo_armDepth": 0.88,
+      "octo_chromaFlash": 0.8,
+      "octo_inkCloud": 0.9,
+      "octo_filterEnvAmt": 0.76,
+      "octo_lfo1Rate": 0.55,
+      "octo_lfo1Depth": 0.46,
+      "octo_filterCutoff": 0.66,
+      "octo_filterRes": 0.7,
+      "octo_attackTime": 0.008,
+      "octo_decayTime": 0.22,
+      "octo_sustain": 0.35,
+      "octo_releaseTime": 0.2
+    },
+    "Origami": {
+      "origami_macroCharacter": 0.85,
+      "origami_macroMovement": 0.84,
+      "origami_macroCoupling": 0.28,
+      "origami_macroSpace": 0.16,
+      "origami_foldPoint": 0.88,
+      "origami_foldAngle": 0.86,
+      "origami_filterEnvAmt": 0.78,
+      "origami_lfo1Rate": 0.5,
+      "origami_lfo1Depth": 0.44,
+      "origami_filterCutoff": 0.64,
+      "origami_filterRes": 0.74,
+      "origami_attackTime": 0.006,
+      "origami_decayTime": 0.18,
+      "origami_sustain": 0.28,
+      "origami_releaseTime": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Octopus",
+        "target": "Origami",
+        "type": "ChaosInject",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.16
+  }
+}

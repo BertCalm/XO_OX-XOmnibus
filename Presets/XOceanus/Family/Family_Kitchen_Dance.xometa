@@ -56,10 +56,10 @@
       "ohm_grainScatter": 0.332,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.0,
-      "ohm_macroCommune": 0.358,
-      "ohm_macroJam": 0.588,
-      "ohm_macroMeadow": 0.537,
-      "ohm_macroMeddling": 0.101,
+      "ohm_macroCommune": 0.365,
+      "ohm_macroJam": 0.493,
+      "ohm_macroMeadow": 0.512,
+      "ohm_macroMeddling": 0.48,
       "ohm_meddlingThresh": 0.541,
       "ohm_obedLevel": 0.0,
       "ohm_pluckBrightness": 0.397,
@@ -67,7 +67,10 @@
       "ohm_spectralFreeze": 0.447,
       "ohm_sympatheticAmt": 0.306,
       "ohm_thereminScale": 0.744,
-      "ohm_thereminWobble": 0.292
+      "ohm_thereminWobble": 0.292,
+      "ohm_filterEnvAmt": 0.444,
+      "ohm_lfo1Rate": 0.143,
+      "ohm_lfo1Depth": 0.152
     },
     "Ole": {
       "ole_allianceBlend": 0.523,
@@ -87,11 +90,13 @@
       "ole_husbandBouzLevel": 0.0,
       "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroDrama": 0.102,
-      "ole_macroFuego": 0.6,
-      "ole_macroIsla": 0.359,
-      "ole_macroSides": 0.151,
-      "ole_sympatheticAmt": 0.303
+      "ole_macroDrama": 0.406,
+      "ole_macroFuego": 0.291,
+      "ole_macroIsla": 0.419,
+      "ole_macroSides": 0.438,
+      "ole_sympatheticAmt": 0.303,
+      "ole_filterEnvAmt": 0.444,
+      "ole_lfoRate": 0.143
     },
     "Orphica": {
       "orph_bodySize": 0.57,
@@ -107,10 +112,10 @@
       "orph_driftRate": 0.089,
       "orph_highLevel": 0.789,
       "orph_lowLevel": 0.843,
-      "orph_macroDivine": 0.557,
-      "orph_macroFracture": 0.0,
-      "orph_macroPluck": 0.606,
-      "orph_macroSurface": 0.417,
+      "orph_macroDivine": 0.472,
+      "orph_macroFracture": 0.453,
+      "orph_macroPluck": 0.44,
+      "orph_macroSurface": 0.325,
       "orph_microDelayTime": 1.0,
       "orph_microDensity": 1.0,
       "orph_microMix": 0.0,
@@ -126,7 +131,10 @@
       "orph_stringMaterial": 3,
       "orph_subAmount": 0.054,
       "orph_sympatheticAmt": 0.386,
-      "orph_tapeSat": 0.173
+      "orph_tapeSat": 0.173,
+      "orph_filterEnvAmt": 0.444,
+      "orph_lfo1Rate": 0.143,
+      "orph_lfo1Depth": 0.152
     }
   },
   "schema_version": 1,
@@ -138,5 +146,11 @@
     "atmosphere"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.428,
+    "MOVEMENT": 0.313,
+    "COUPLING": 0.441,
+    "SPACE": 0.46
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Sheen",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The reflective sheen on polished obsidian \u2014 light bending across mineral surfaces. Cool and precise.",
+  "tags": [
+    "crystalline",
+    "mineral",
+    "sheen",
+    "obsidian",
+    "reflective"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.61,
+      "obsidian_macroMovement": 0.34,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.5,
+      "obsidian_filterEnvAmt": 0.54,
+      "obsidian_lfo1Rate": 0.08,
+      "obsidian_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.12,
+    "SPACE": 0.5
+  }
+}

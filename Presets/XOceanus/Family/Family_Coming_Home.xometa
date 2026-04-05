@@ -58,14 +58,17 @@
       "obbl_fxBTapeSat": 0.03,
       "obbl_instrumentA": 5,
       "obbl_instrumentB": 5,
-      "obbl_macroBond": 0.559,
-      "obbl_macroBreath": 0.362,
-      "obbl_macroMischief": 0.391,
-      "obbl_macroWind": 0.425,
+      "obbl_macroBond": 0.588,
+      "obbl_macroBreath": 0.5,
+      "obbl_macroMischief": 0.49,
+      "obbl_macroWind": 0.7,
       "obbl_reedBite": 0.228,
       "obbl_reedStiffness": 0.428,
       "obbl_sympatheticAmt": 0.37,
-      "obbl_voiceRouting": 4
+      "obbl_voiceRouting": 4,
+      "obbl_filterEnvAmt": 0.543,
+      "obbl_lfoRateA": 0.184,
+      "obbl_lfoDepthA": 0.298
     },
     "Ohm": {
       "ohm_bodyMaterial": 1,
@@ -88,10 +91,10 @@
       "ohm_grainScatter": 0.206,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.596,
-      "ohm_macroCommune": 0.32,
-      "ohm_macroJam": 0.623,
-      "ohm_macroMeadow": 0.625,
-      "ohm_macroMeddling": 0.597,
+      "ohm_macroCommune": 0.538,
+      "ohm_macroJam": 0.738,
+      "ohm_macroMeadow": 0.528,
+      "ohm_macroMeddling": 0.626,
       "ohm_meddlingThresh": 0.64,
       "ohm_obedLevel": 0.252,
       "ohm_pluckBrightness": 0.366,
@@ -99,7 +102,10 @@
       "ohm_spectralFreeze": 0.385,
       "ohm_sympatheticAmt": 0.452,
       "ohm_thereminScale": 1.0,
-      "ohm_thereminWobble": 0.296
+      "ohm_thereminWobble": 0.296,
+      "ohm_filterEnvAmt": 0.543,
+      "ohm_lfo1Rate": 0.184,
+      "ohm_lfo1Depth": 0.298
     },
     "Ottoni": {
       "otto_chorusRate": 0.558,
@@ -129,7 +135,13 @@
       "otto_tweenEmbouchure": 0.319,
       "otto_tweenInst": 5,
       "otto_tweenLevel": 0.617,
-      "otto_tweenValve": 0.516
+      "otto_tweenValve": 0.516,
+      "otto_macroCharacter": 0.552,
+      "otto_macroMovement": 0.464,
+      "otto_macroCoupling": 0.664,
+      "otto_macroSpace": 0.454,
+      "otto_filterEnvAmt": 0.543,
+      "otto_lfoRate": 0.184
     }
   },
   "schema_version": 1,
@@ -141,5 +153,11 @@
     "aether"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.574,
+    "MOVEMENT": 0.486,
+    "COUPLING": 0.686,
+    "SPACE": 0.476
+  }
 }

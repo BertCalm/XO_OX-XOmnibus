@@ -71,7 +71,14 @@
       "orca_level": 0.72,
       "orca_release": 3.0,
       "orca_sustain": 0.55,
-      "orca_wtScanRate": 0.25
+      "orca_wtScanRate": 0.25,
+      "orca_macroCharacter": 0.616,
+      "orca_macroMovement": 0.439,
+      "orca_macroCoupling": 0.252,
+      "orca_macroSpace": 0.561,
+      "orca_filterEnvAmt": 0.582,
+      "orca_lfo1Rate": 0.119,
+      "orca_lfo1Depth": 0.214
     }
   },
   "schema_version": 1,
@@ -88,5 +95,11 @@
     "expression"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.236,
+    "SPACE": 0.545
+  }
 }

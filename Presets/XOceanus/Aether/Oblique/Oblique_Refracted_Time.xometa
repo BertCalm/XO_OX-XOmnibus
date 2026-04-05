@@ -41,7 +41,7 @@
       "oblq_macroBounce": 0.0,
       "oblq_macroColor": 0.0,
       "oblq_macroFold": 0.0,
-      "oblq_macroSpace": 0.0,
+      "oblq_macroSpace": 0.878,
       "oblq_oscDetune": 15.0,
       "oblq_oscFold": 0.7,
       "oblq_oscWave": 1,
@@ -59,7 +59,13 @@
       "oblq_prismSpread": 1.0,
       "oblq_prismWidth": 0.9,
       "oblq_release": 2.8,
-      "oblq_sustain": 0.8
+      "oblq_sustain": 0.8,
+      "oblq_macroCharacter": 0.394,
+      "oblq_macroMovement": 0.398,
+      "oblq_macroCoupling": 0.233,
+      "oblq_filterEnvAmt": 0.389,
+      "oblq_lfo1Rate": 0.038,
+      "oblq_lfo1Depth": 0.235
     }
   },
   "schema_version": 1,
@@ -73,5 +79,11 @@
     "spatial"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.371,
+    "MOVEMENT": 0.375,
+    "COUPLING": 0.21,
+    "SPACE": 0.855
+  }
 }

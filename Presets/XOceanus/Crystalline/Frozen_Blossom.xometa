@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Blossom",
+  "mood": "Crystalline",
+  "engines": [
+    "Orchard"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orchard blossoms frozen in crystal ice \u2014 the delicate bow pressure of spring crystallized into winter mineral.",
+  "tags": [
+    "crystalline",
+    "frozen",
+    "blossom",
+    "orchard",
+    "delicate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.3,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Orchard": {
+      "orch_macroCharacter": 0.53,
+      "orch_macroMovement": 0.39,
+      "orch_macroCoupling": 0.23,
+      "orch_macroSpace": 0.58,
+      "orch_filterEnvAmt": 0.61,
+      "orch_lfo1Rate": 0.07,
+      "orch_lfo1Depth": 0.24
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.23,
+    "SPACE": 0.58
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Lucid Vista",
+  "mood": "Luminous",
+  "engines": ["Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A lucid dream vista — Outlook's aurora modulation active, the panoramic landscape entirely imagined yet luminous with coherent detail. Consciousness illuminating itself.",
+  "tags": ["luminous", "lucid", "dream", "aurora", "vista"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.50,
+    "movement": 0.46,
+    "density": 0.35,
+    "space": 0.74,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.54,
+      "look_macroMovement": 0.46,
+      "look_macroCoupling": 0.16,
+      "look_macroSpace": 0.74,
+      "look_filterEnvAmt": 0.52,
+      "look_horizonScan": 0.62,
+      "look_lfo1Rate": 0.08,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.14,
+      "look_attack": 0.16,
+      "look_decay": 1.0,
+      "look_sustain": 0.84,
+      "look_release": 4.2,
+      "look_filterCutoff": 9800,
+      "look_filterRes": 0.18,
+      "look_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.16,
+    "SPACE": 0.74
+  }
+}

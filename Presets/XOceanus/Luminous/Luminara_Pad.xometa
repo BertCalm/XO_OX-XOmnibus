@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Luminara Pad",
+  "mood": "Luminous",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A luminous pad — the Organon engine's bioluminescent cyan at sustained mid-brightness, the metabolic model looping in slow contentment, filling space with gentle living light.",
+  "tags": ["luminous", "pad", "sustained", "cyan", "gentle"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.52,
+    "movement": 0.40,
+    "density": 0.40,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.48,
+      "organon_macroMovement": 0.40,
+      "organon_macroCoupling": 0.14,
+      "organon_macroSpace": 0.65,
+      "organon_filterEnvAmt": 0.52,
+      "organon_metabolicRate": 0.50,
+      "organon_lfo1Rate": 0.08,
+      "organon_lfo1Depth": 0.22,
+      "organon_lfo2Rate": 0.03,
+      "organon_lfo2Depth": 0.14,
+      "organon_attack": 0.25,
+      "organon_decay": 1.4,
+      "organon_sustain": 0.78,
+      "organon_release": 4.5,
+      "organon_filterCutoff": 6800,
+      "organon_filterRes": 0.22,
+      "organon_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.14,
+    "SPACE": 0.65
+  }
+}

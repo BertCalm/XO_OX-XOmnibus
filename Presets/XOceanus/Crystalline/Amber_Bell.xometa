@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Amber Bell",
+  "mood": "Crystalline",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Amber resonance crystallized into a bell tone \u2014 the spectral core of Onkolo cast in mineral form.",
+  "tags": [
+    "crystalline",
+    "amber",
+    "bell",
+    "spectral",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.36,
+    "movement": 0.24,
+    "density": 0.44,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_macroCharacter": 0.52,
+      "onko_macroMovement": 0.36,
+      "onko_macroCoupling": 0.14,
+      "onko_macroSpace": 0.58,
+      "onko_filterEnvAmt": 0.52,
+      "onko_lfo1Rate": 0.09,
+      "onko_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.14,
+    "SPACE": 0.58
+  }
+}

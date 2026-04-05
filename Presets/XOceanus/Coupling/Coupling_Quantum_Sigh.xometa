@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Quantum Sigh",
+  "mood": "Coupling",
+  "engines": [
+    "Organon",
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANON metabolic variational energy barely informs OSMOSIS permeability threshold \u2014 free energy minimization as the most delicate of all coupling signals.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "metabolic",
+    "membrane",
+    "EnvelopeFollow",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.44,
+    "density": 0.44,
+    "space": 0.54,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.5,
+      "organon_filterEnvAmt": 0.42,
+      "organon_lfo1Rate": 0.1,
+      "organon_lfo1Depth": 0.2,
+      "organon_macroCharacter": 0.46,
+      "organon_macroMovement": 0.42,
+      "organon_macroCoupling": 0.5,
+      "organon_macroSpace": 0.5
+    },
+    "Osmosis": {
+      "osmo_permeability": 0.5,
+      "osmo_filterEnvAmt": 0.38,
+      "osmo_lfo1Rate": 0.09,
+      "osmo_lfo1Depth": 0.18,
+      "osmo_macroCharacter": 0.43,
+      "osmo_macroMovement": 0.4,
+      "osmo_macroCoupling": 0.48,
+      "osmo_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osmosis",
+        "type": "EnvelopeFollow",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.49,
+    "SPACE": 0.51
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Ice Fold",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The geometry of folded ice \u2014 crystalline angles and reflective planes emerging from crease and fold.",
+  "tags": [
+    "crystalline",
+    "ice",
+    "fold",
+    "geometric",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.51,
+      "origami_macroMovement": 0.31,
+      "origami_macroCoupling": 0.17,
+      "origami_macroSpace": 0.63,
+      "origami_filterEnvAmt": 0.59,
+      "origami_lfo1Rate": 0.06,
+      "origami_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.17,
+    "SPACE": 0.63
+  }
+}

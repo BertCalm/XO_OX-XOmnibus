@@ -46,7 +46,14 @@
       "drift_oscB_mode": 2.0,
       "drift_release": 2.0,
       "drift_shimmerAmount": 0.2,
-      "drift_sustain": 0.55
+      "drift_sustain": 0.55,
+      "drift_macroCharacter": 0.414,
+      "drift_macroMovement": 0.377,
+      "drift_macroCoupling": 0.251,
+      "drift_macroSpace": 0.693,
+      "drift_filterEnvAmt": 0.387,
+      "drift_lfoRate": 0.081,
+      "drift_lfoDepth": 0.289
     }
   },
   "schema_version": 1,
@@ -58,5 +65,11 @@
     "slow-attack"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.384,
+    "MOVEMENT": 0.347,
+    "COUPLING": 0.221,
+    "SPACE": 0.663
+  }
 }

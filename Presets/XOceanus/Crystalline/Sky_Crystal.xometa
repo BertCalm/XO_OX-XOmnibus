@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sky Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The sky itself crystallized \u2014 frozen shimmer at high altitude, pure and cold and radiantly bright.",
+  "tags": [
+    "crystalline",
+    "sky",
+    "shimmer",
+    "altitude",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.16,
+    "movement": 0.35,
+    "density": 0.3,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.54,
+      "sky_macroMovement": 0.44,
+      "sky_macroCoupling": 0.12,
+      "sky_macroSpace": 0.54,
+      "sky_filterEnvAmt": 0.46,
+      "sky_lfo1Rate": 0.1,
+      "sky_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.12,
+    "SPACE": 0.54
+  }
+}

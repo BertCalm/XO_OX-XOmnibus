@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.55
+      "ouro_macroSpace": 0.542,
+      "ouro_macroCharacter": 0.519,
+      "ouro_macroMovement": 0.589,
+      "ouro_macroCoupling": 0.231,
+      "ouro_filterEnvAmt": 0.482,
+      "ouro_lfoRate": 0.207
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "harmonic",
     "transcendental"
   ],
-  "description": "theta=2.0 rad (~115 degrees) as a spectral parameter — exposing the Lorenz upper-wing cross-section. Different theta values are audibly different harmonically. The rotation matrix as a filter."
+  "description": "theta=2.0 rad (~115 degrees) as a spectral parameter — exposing the Lorenz upper-wing cross-section. Different theta values are audibly different harmonically. The rotation matrix as a filter.",
+  "macros": {
+    "CHARACTER": 0.517,
+    "MOVEMENT": 0.587,
+    "COUPLING": 0.229,
+    "SPACE": 0.54
+  }
 }

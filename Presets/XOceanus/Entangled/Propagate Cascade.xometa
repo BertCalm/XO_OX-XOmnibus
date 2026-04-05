@@ -46,7 +46,14 @@
       "olap_modRate": 0.144,
       "olap_outputLevel": 0.792,
       "olap_preDelay": 0.152,
-      "olap_size": 0.935
+      "olap_size": 0.935,
+      "olap_macroCharacter": 0.539,
+      "olap_macroMovement": 0.504,
+      "olap_macroCoupling": 0.418,
+      "olap_macroSpace": 0.367,
+      "olap_filterEnvAmt": 0.44,
+      "olap_lfo1Rate": 0.266,
+      "olap_lfo1Depth": 0.232
     }
   },
   "schema_version": 1,
@@ -59,5 +66,11 @@
     "reverb"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.414,
+    "SPACE": 0.363
+  }
 }

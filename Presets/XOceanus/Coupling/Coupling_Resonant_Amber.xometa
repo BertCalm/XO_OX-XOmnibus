@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Amber",
+  "mood": "Coupling",
+  "engines": [
+    "Onkolo",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONKOLO spectral resonance core feeds OBLONG filter contour \u2014 amber resonant peaks guiding the filter sweep, spectral fingerprint as filter envelope.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "resonance",
+    "filter",
+    "FilterToFilter",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.58,
+    "movement": 0.52,
+    "density": 0.52,
+    "space": 0.48,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_resonanceCore": 0.58,
+      "onko_filterEnvAmt": 0.52,
+      "onko_lfo1Rate": 0.13,
+      "onko_lfo1Depth": 0.28,
+      "onko_macroCharacter": 0.52,
+      "onko_macroMovement": 0.52,
+      "onko_macroCoupling": 0.62,
+      "onko_macroSpace": 0.48
+    },
+    "Oblong": {
+      "bob_fltCutoff": 0.58,
+      "bob_fltReso": 0.34,
+      "bob_filterEnvAmt": 0.5,
+      "bob_lfo1Rate": 0.12,
+      "bob_lfo1Depth": 0.26,
+      "bob_macroCharacter": 0.5,
+      "bob_macroMovement": 0.5,
+      "bob_macroCoupling": 0.6,
+      "bob_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onkolo",
+        "engineB": "Oblong",
+        "type": "FilterToFilter",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.61,
+    "SPACE": 0.48
+  }
+}

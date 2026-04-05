@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OSTINATO's generative behavior at maximum \u2014 GATHER very low, CIRCLE at maximum, all 8 seats active with different patterns. Ghost triggers cascade between seats autonomously. The fire circle breathes, conversations spontaneous.",
+  "description": "OSTINATO's generative behavior at maximum — GATHER very low, CIRCLE at maximum, all 8 seats active with different patterns. Ghost triggers cascade between seats autonomously. The fire circle breathes, conversations spontaneous.",
   "tags": [
     "experimental",
     "generative",
@@ -146,10 +146,10 @@
       "osti_seat8_pitchEnv": 0.0,
       "osti_seat8_exciterMix": 0.52,
       "osti_seat8_bodyModel": 0,
-      "osti_macroGather": 0.1,
-      "osti_macroFire": 0.52,
-      "osti_macroCircle": 0.85,
-      "osti_macroSpace": 0.42,
+      "osti_macroGather": 0.743,
+      "osti_macroFire": 0.805,
+      "osti_macroCircle": 0.27,
+      "osti_macroSpace": 0.296,
       "osti_tempo": 88.0,
       "osti_swing": 12.0,
       "osti_masterTune": 0.0,
@@ -165,10 +165,19 @@
       "osti_compRelease": 50.0,
       "osti_circleAmount": 0.85,
       "osti_humanize": 0.45,
-      "osti_masterLevel": 0.78
+      "osti_masterLevel": 0.78,
+      "osti_filterEnvAmt": 0.633,
+      "osti_lfo1Rate": 0.378,
+      "osti_lfo1Depth": 0.347
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.722,
+    "MOVEMENT": 0.784,
+    "COUPLING": 0.249,
+    "SPACE": 0.275
   }
 }

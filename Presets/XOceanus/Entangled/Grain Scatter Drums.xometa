@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.8,
       "perc_v3_level": 0.6,
-      "perc_macro_punch": 0.7
+      "perc_macro_punch": 0.55,
+      "perc_macro_mutate": 0.426,
+      "perc_macro_machine": 0.611,
+      "perc_macro_space": 0.508,
+      "perc_filterEnvAmt": 0.53,
+      "perc_lfo1Rate": 0.274,
+      "perc_lfo1Depth": 0.235
     },
     "Orphica": {
       "orph_grainSize": 0.25,
       "orph_scatter": 0.65,
-      "orph_harpDensity": 0.55
+      "orph_harpDensity": 0.55,
+      "orph_macroPluck": 0.538,
+      "orph_macroSurface": 0.414,
+      "orph_macroFracture": 0.599,
+      "orph_macroDivine": 0.496,
+      "orph_filterEnvAmt": 0.53,
+      "orph_lfo1Rate": 0.274,
+      "orph_lfo1Depth": 0.235
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.526,
+    "MOVEMENT": 0.402,
+    "COUPLING": 0.587,
+    "SPACE": 0.484
+  }
 }

@@ -41,12 +41,16 @@
   "parameters": {
     "Overbite": {
       "poss_gnashAmount": 0.36,
-      "poss_macroBelly": 0.348,
-      "poss_macroBite": 0.361,
-      "poss_macroScurry": 0.604,
+      "poss_macroBelly": 0.62,
+      "poss_macroBite": 0.517,
+      "poss_macroScurry": 0.55,
       "poss_macroTrash": 0.653,
       "poss_level": 0.8,
-      "poss_pan": -0.008
+      "poss_pan": -0.008,
+      "poss_macroPlayDead": 0.572,
+      "poss_filterEnvAmount": 0.564,
+      "poss_lfo1Rate": 0.272,
+      "poss_lfo1Depth": 0.326
     },
     "Owlfish": {
       "owl_couplingIn": 0.782,
@@ -56,7 +60,14 @@
       "owl_macro3": 0.4,
       "owl_macro4": 0.44,
       "owl_outputLevel": 0.766,
-      "owl_outputPan": -0.014
+      "owl_outputPan": -0.014,
+      "owl_macroCharacter": 0.631,
+      "owl_macroMovement": 0.528,
+      "owl_macroCoupling": 0.583,
+      "owl_macroSpace": 0.561,
+      "owl_filterEnvDepth": 0.564,
+      "owl_lfoRate": 0.272,
+      "owl_lfoDepth": 0.326
     }
   },
   "schema_version": 1,
@@ -68,5 +79,11 @@
     "entangled"
   ],
   "tempo": 120,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.611,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.563,
+    "SPACE": 0.541
+  }
 }

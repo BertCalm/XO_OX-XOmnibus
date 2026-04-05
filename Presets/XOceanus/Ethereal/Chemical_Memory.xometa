@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Chemical Memory",
+  "mood": "Ethereal",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The smell of fixer in a darkroom carrying decades of images developed in that space. Synesthetic memory made audible.",
+  "tags": [
+    "ethereal",
+    "chemical",
+    "memory",
+    "synesthetic",
+    "darkroom"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.22,
+    "space": 0.87,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_macroCharacter": 0.38,
+      "obscura_macroMovement": 0.22,
+      "obscura_macroCoupling": 0.12,
+      "obscura_macroSpace": 0.82,
+      "obscura_stiffness": 0.55,
+      "obscura_filterEnvAmt": 0.29,
+      "obscura_lfo1Rate": 0.018,
+      "obscura_lfo1Depth": 0.12,
+      "obscura_attack": 3.0,
+      "obscura_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.12,
+    "SPACE": 0.82
+  }
+}

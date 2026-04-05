@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sage Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sage green crystallized \u2014 the meddling macro of Ohm frozen into cold mineral clarity.",
+  "tags": [
+    "crystalline",
+    "sage",
+    "ohm",
+    "mineral",
+    "macro"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.33,
+    "movement": 0.28,
+    "density": 0.44,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.63,
+      "ohm_macroMovement": 0.32,
+      "ohm_macroCoupling": 0.2,
+      "ohm_macroSpace": 0.5,
+      "ohm_filterEnvAmt": 0.56,
+      "ohm_lfo1Rate": 0.09,
+      "ohm_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
+}

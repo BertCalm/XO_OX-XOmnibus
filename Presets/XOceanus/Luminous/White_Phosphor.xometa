@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "White Phosphor",
+  "mood": "Luminous",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "White phosphor display — the purest, most neutral glow. Optic engine's pulse rate set for imperceptibly slow breathing, luminance steady as a lighthouse.",
+  "tags": ["luminous", "phosphor", "white", "pure", "steady"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.35,
+    "movement": 0.28,
+    "density": 0.20,
+    "space": 0.52,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.62,
+      "optic_macroMovement": 0.28,
+      "optic_macroCoupling": 0.11,
+      "optic_macroSpace": 0.52,
+      "optic_filterEnvAmt": 0.48,
+      "optic_pulseRate": 0.04,
+      "optic_pulseDepth": 0.18,
+      "optic_lfo1Rate": 0.03,
+      "optic_lfo1Depth": 0.16,
+      "optic_lfo2Rate": 0.08,
+      "optic_lfo2Depth": 0.10,
+      "optic_attack": 0.12,
+      "optic_decay": 1.0,
+      "optic_sustain": 0.90,
+      "optic_release": 3.5,
+      "optic_filterCutoff": 14000,
+      "optic_filterRes": 0.12,
+      "optic_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.11,
+    "SPACE": 0.52
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Tide Engine",
+  "mood": "Coupling",
+  "engines": [
+    "Oceanic",
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC chromatophore signal feeds ORBWEAVE knot topology matrix \u2014 ocean color change patterns rewiring topological coupling paths.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "ocean",
+    "topology",
+    "KnotTopology",
+    "aquatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.46,
+    "movement": 0.56,
+    "density": 0.52,
+    "space": 0.56,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.58,
+      "ocean_filterEnvAmt": 0.52,
+      "ocean_lfo1Rate": 0.13,
+      "ocean_lfo1Depth": 0.28,
+      "ocean_macroCharacter": 0.52,
+      "ocean_macroMovement": 0.54,
+      "ocean_macroCoupling": 0.62,
+      "ocean_macroSpace": 0.54
+    },
+    "Orbweave": {
+      "weave_knotDepth": 0.56,
+      "weave_filterEnvAmt": 0.5,
+      "weave_lfo1Rate": 0.12,
+      "weave_lfo1Depth": 0.26,
+      "weave_macroCharacter": 0.5,
+      "weave_macroMovement": 0.52,
+      "weave_macroCoupling": 0.6,
+      "weave_macroSpace": 0.54
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbweave",
+        "type": "KnotTopology",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.54
+  }
+}

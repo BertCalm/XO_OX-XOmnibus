@@ -28,7 +28,14 @@
   "parameters": {
     "Overlap": {
       "couplingBus": 1,
-      "couplingLevel": 0.661
+      "couplingLevel": 0.661,
+      "olap_macroCharacter": 0.417,
+      "olap_macroMovement": 0.376,
+      "olap_macroCoupling": 0.174,
+      "olap_macroSpace": 0.308,
+      "olap_filterEnvAmt": 0.505,
+      "olap_lfo1Rate": 0.161,
+      "olap_lfo1Depth": 0.294
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "overlap"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.413,
+    "MOVEMENT": 0.372,
+    "COUPLING": 0.17,
+    "SPACE": 0.304
+  }
 }

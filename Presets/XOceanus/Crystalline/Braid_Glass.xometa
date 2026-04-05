@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Braid Glass",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A braid of glass strands forming crystal geometry. Each strand adds topological precision to the lattice.",
+  "tags": [
+    "crystalline",
+    "braid",
+    "glass",
+    "strand",
+    "topology"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.32,
+    "density": 0.36,
+    "space": 0.67,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.63,
+      "weave_macroMovement": 0.34,
+      "weave_macroCoupling": 0.17,
+      "weave_macroSpace": 0.62,
+      "weave_filterEnvAmt": 0.44,
+      "weave_lfo1Rate": 0.09,
+      "weave_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.17,
+    "SPACE": 0.62
+  }
+}

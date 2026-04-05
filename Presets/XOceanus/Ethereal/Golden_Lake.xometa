@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Golden Lake",
+  "mood": "Ethereal",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An oxbow lake in late afternoon gold. The old river cut off and made contemplative by its own geography.",
+  "tags": [
+    "ethereal",
+    "lake",
+    "golden",
+    "afternoon",
+    "contemplative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.18,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.34,
+      "oxb_macroMovement": 0.24,
+      "oxb_macroCoupling": 0.09,
+      "oxb_macroSpace": 0.87,
+      "oxb_entangle": 0.4,
+      "oxb_filterEnvAmt": 0.25,
+      "oxb_lfo1Rate": 0.015,
+      "oxb_lfo1Depth": 0.12,
+      "oxb_attack": 3.2,
+      "oxb_release": 10.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.09,
+    "SPACE": 0.87
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Strike Pulse",
+  "mood": "Flux",
+  "engines": ["Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Additive partials converging at strike point. Group envelope deployed as kinetic pulse weapon.",
+  "tags": ["flux", "aggressive", "strike", "additive", "pulse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.86,
+    "density": 0.82,
+    "space": 0.18,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.86,
+      "orb_macroMovement": 0.84,
+      "orb_macroCoupling": 0.2,
+      "orb_macroSpace": 0.2,
+      "orb_brightness": 0.86,
+      "orb_partialCount": 0.82,
+      "orb_filterEnvAmt": 0.76,
+      "orb_lfo1Rate": 0.52,
+      "orb_lfo1Depth": 0.42,
+      "orb_filterCutoff": 0.66,
+      "orb_filterRes": 0.7,
+      "orb_attackTime": 0.006,
+      "orb_decayTime": 0.2,
+      "orb_sustain": 0.32,
+      "orb_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
+}

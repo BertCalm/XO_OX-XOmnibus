@@ -41,7 +41,13 @@
       "otto_toddlerPressure": 0.92,
       "otto_tweenInst": 1.0,
       "otto_tweenLevel": 0.88,
-      "otto_tweenPressure": 0.89
+      "otto_tweenPressure": 0.89,
+      "otto_macroCharacter": 0.575,
+      "otto_macroMovement": 0.469,
+      "otto_macroCoupling": 0.249,
+      "otto_macroSpace": 0.395,
+      "otto_filterEnvAmt": 0.508,
+      "otto_lfoRate": 0.155
     }
   },
   "schema_version": 1,
@@ -53,5 +59,11 @@
     "brass"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.597,
+    "MOVEMENT": 0.491,
+    "COUPLING": 0.271,
+    "SPACE": 0.417
+  }
 }

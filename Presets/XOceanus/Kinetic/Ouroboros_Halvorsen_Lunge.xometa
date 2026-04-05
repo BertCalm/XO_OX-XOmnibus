@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Halvorsen Lunge",
   "mood": "Kinetic",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Halvorsen topology at speed — rate pushed to 450, damping near zero. Each period is a lunge forward before pulling back.",
-  "tags": ["chaos", "kinetic", "halvorsen", "aggressive", "forward"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "kinetic",
+    "halvorsen",
+    "aggressive",
+    "forward"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -27,9 +40,23 @@
       "ouro_theta": 0.8,
       "ouro_phi": -0.2,
       "ouro_damping": 0.05,
-      "ouro_injection": 0.4
+      "ouro_injection": 0.4,
+      "ouro_macroCharacter": 0.638,
+      "ouro_macroMovement": 0.746,
+      "ouro_macroCoupling": 0.271,
+      "ouro_macroSpace": 0.278,
+      "ouro_filterEnvAmt": 0.572,
+      "ouro_lfoRate": 0.27
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.636,
+    "MOVEMENT": 0.744,
+    "COUPLING": 0.269,
+    "SPACE": 0.276
+  }
 }

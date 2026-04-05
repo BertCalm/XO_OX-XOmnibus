@@ -36,11 +36,24 @@
   "parameters": {
     "OddfeliX": {
       "level": 0.818,
-      "pan": -0.004
+      "pan": -0.004,
+      "snap_macroDart": 0.539,
+      "snap_macroDepth": 0.557,
+      "snap_macroSchool": 0.507,
+      "snap_macroSurface": 0.531,
+      "snap_filterEnvDepth": 0.548,
+      "snap_lfoRate": 0.187,
+      "snap_lfoDepth": 0.25
     },
     "Ottoni": {
       "level": 0.754,
-      "pan": 0.116
+      "pan": 0.116,
+      "otto_macroCharacter": 0.446,
+      "otto_macroMovement": 0.464,
+      "otto_macroCoupling": 0.414,
+      "otto_macroSpace": 0.438,
+      "otto_filterEnvAmt": 0.548,
+      "otto_lfoRate": 0.187
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.468,
+    "MOVEMENT": 0.486,
+    "COUPLING": 0.436,
+    "SPACE": 0.46
+  }
 }

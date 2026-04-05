@@ -52,7 +52,14 @@
       "fat_mojoCtrl": 0.747,
       "fat_outputLevel": 0.89,
       "fat_outputPan": 0.018,
-      "fat_satDrive": 0.639
+      "fat_satDrive": 0.639,
+      "fat_macroMojo": 0.65,
+      "fat_macroGrit": 0.571,
+      "fat_macroSize": 0.573,
+      "fat_macroCrush": 0.546,
+      "fat_fltEnvAmt": 0.56,
+      "fat_lfo1Rate": 0.167,
+      "fat_lfo1Depth": 0.275
     },
     "Overlap": {
       "olap_couplingIn": 0.581,
@@ -62,7 +69,14 @@
       "olap_macro3": 0.367,
       "olap_macro4": 0.327,
       "olap_outputLevel": 0.845,
-      "olap_outputPan": -0.018
+      "olap_outputPan": -0.018,
+      "olap_macroCharacter": 0.606,
+      "olap_macroMovement": 0.527,
+      "olap_macroCoupling": 0.529,
+      "olap_macroSpace": 0.502,
+      "olap_filterEnvAmt": 0.56,
+      "olap_lfo1Rate": 0.167,
+      "olap_lfo1Depth": 0.275
     }
   },
   "schema_version": 1,
@@ -74,5 +88,11 @@
     "entangled"
   ],
   "tempo": 125,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.602,
+    "MOVEMENT": 0.523,
+    "COUPLING": 0.525,
+    "SPACE": 0.498
+  }
 }

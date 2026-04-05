@@ -28,7 +28,14 @@
   "parameters": {
     "Orca": {
       "couplingBus": 3,
-      "couplingLevel": 0.934
+      "couplingLevel": 0.934,
+      "orca_macroCharacter": 0.566,
+      "orca_macroMovement": 0.292,
+      "orca_macroCoupling": 0.126,
+      "orca_macroSpace": 0.298,
+      "orca_filterEnvAmt": 0.392,
+      "orca_lfo1Rate": 0.153,
+      "orca_lfo1Depth": 0.186
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "orca"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.276,
+    "COUPLING": 0.11,
+    "SPACE": 0.282
+  }
 }

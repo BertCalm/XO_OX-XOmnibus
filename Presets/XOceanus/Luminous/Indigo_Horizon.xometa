@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Indigo Horizon",
+  "mood": "Luminous",
+  "engines": ["Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Outlook's dual wavetable horizon scan tuned to the indigo hour before true dawn — the horizon itself is luminous, the world not yet lit but already visible.",
+  "tags": ["luminous", "indigo", "horizon", "wavetable", "dawn"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.46,
+    "movement": 0.40,
+    "density": 0.32,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.52,
+      "look_macroMovement": 0.40,
+      "look_macroCoupling": 0.15,
+      "look_macroSpace": 0.72,
+      "look_filterEnvAmt": 0.50,
+      "look_horizonScan": 0.58,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.20,
+      "look_lfo2Rate": 0.03,
+      "look_lfo2Depth": 0.14,
+      "look_attack": 0.18,
+      "look_decay": 1.2,
+      "look_sustain": 0.84,
+      "look_release": 4.5,
+      "look_filterCutoff": 9200,
+      "look_filterRes": 0.18,
+      "look_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.15,
+    "SPACE": 0.72
+  }
+}

@@ -55,7 +55,14 @@
       "opal_shimmer": 0.1,
       "opal_smear": 0.6,
       "opal_source": 4,
-      "opal_window": 1
+      "opal_window": 1,
+      "opal_macroCharacter": 0.442,
+      "opal_macroMovement": 0.532,
+      "opal_macroCoupling": 0.097,
+      "opal_macroSpace": 0.875,
+      "opal_filterEnvAmt": 0.391,
+      "opal_lfo1Rate": 0.03,
+      "opal_lfo1Depth": 0.105
     }
   },
   "schema_version": 1,
@@ -67,5 +74,11 @@
     "vast"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.457,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.112,
+    "SPACE": 0.89
+  }
 }

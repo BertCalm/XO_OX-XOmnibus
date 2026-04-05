@@ -35,7 +35,14 @@
       "poss_ampSustain": 0.85,
       "poss_driveAmount": 0.6,
       "poss_filterCutoff": 0.35,
-      "poss_filterReso": 0.5
+      "poss_filterReso": 0.5,
+      "poss_macroBelly": 0.472,
+      "poss_macroBite": 0.274,
+      "poss_macroPlayDead": 0.294,
+      "poss_macroScurry": 0.364,
+      "poss_filterEnvAmount": 0.428,
+      "poss_lfo1Rate": 0.127,
+      "poss_lfo1Depth": 0.22
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "fang"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.463,
+    "MOVEMENT": 0.265,
+    "COUPLING": 0.285,
+    "SPACE": 0.355
+  }
 }

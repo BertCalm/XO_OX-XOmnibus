@@ -50,7 +50,13 @@
       "morph_release": 1.5,
       "morph_sustain": 0.7,
       "morph_waveA": 0,
-      "morph_waveB": 2
+      "morph_waveB": 2,
+      "morph_macroCharacter": 0.621,
+      "morph_macroMovement": 0.526,
+      "morph_macroCoupling": 0.674,
+      "morph_macroSpace": 0.484,
+      "morph_filterEnvDepth": 0.462,
+      "morph_lfoRate": 0.273
     },
     "Organon": {
       "organon_catalystDrive": 0.6,
@@ -62,7 +68,14 @@
       "organon_metabolicRate": 0.8,
       "organon_noiseColor": 0.5,
       "organon_phasonShift": 0.0,
-      "organon_signalFlux": 0.85
+      "organon_signalFlux": 0.85,
+      "organon_macroCharacter": 0.597,
+      "organon_macroMovement": 0.502,
+      "organon_macroCoupling": 0.65,
+      "organon_macroSpace": 0.46,
+      "organon_filterEnvAmt": 0.462,
+      "organon_lfo1Rate": 0.273,
+      "organon_lfo1Depth": 0.238
     }
   },
   "schema_version": 1,
@@ -75,5 +88,11 @@
     "metabolized"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.598,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.651,
+    "SPACE": 0.461
+  }
 }

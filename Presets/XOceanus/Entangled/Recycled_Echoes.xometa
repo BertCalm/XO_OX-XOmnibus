@@ -49,7 +49,14 @@
       "organon_metabolicRate": 0.6,
       "organon_noiseColor": 0.5,
       "organon_phasonShift": 0.15,
-      "organon_signalFlux": 0.8
+      "organon_signalFlux": 0.8,
+      "organon_macroCharacter": 0.489,
+      "organon_macroMovement": 0.446,
+      "organon_macroCoupling": 0.501,
+      "organon_macroSpace": 0.526,
+      "organon_filterEnvAmt": 0.551,
+      "organon_lfo1Rate": 0.254,
+      "organon_lfo1Depth": 0.395
     },
     "Overdub": {
       "dub_attack": 0.1,
@@ -65,7 +72,13 @@
       "dub_release": 0.8,
       "dub_reverbMix": 0.3,
       "dub_reverbSize": 0.7,
-      "dub_sustain": 0.6
+      "dub_sustain": 0.6,
+      "dub_macroCharacter": 0.482,
+      "dub_macroMovement": 0.439,
+      "dub_macroCoupling": 0.494,
+      "dub_macroSpace": 0.519,
+      "dub_filterEnvAmt": 0.551,
+      "dub_lfoDepth": 0.254
     }
   },
   "schema_version": 1,
@@ -78,5 +91,11 @@
     "feedback"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.502,
+    "SPACE": 0.527
+  }
 }

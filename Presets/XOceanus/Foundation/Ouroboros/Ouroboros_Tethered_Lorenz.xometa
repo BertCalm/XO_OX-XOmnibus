@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.372,
+      "ouro_macroCharacter": 0.452,
+      "ouro_macroMovement": 0.352,
+      "ouro_macroCoupling": 0.114,
+      "ouro_filterEnvAmt": 0.387,
+      "ouro_lfoRate": 0.183
     }
   },
   "tags": [
@@ -50,5 +55,11 @@
     "pitched",
     "transcendental"
   ],
-  "description": "Lorenz butterfly attractor at leash=0.85 — pitch clear, harmonics richly chaotic. The most musical OUROBOROS configuration. Fundamental audible; spectrum never repeats above it."
+  "description": "Lorenz butterfly attractor at leash=0.85 — pitch clear, harmonics richly chaotic. The most musical OUROBOROS configuration. Fundamental audible; spectrum never repeats above it.",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.112,
+    "SPACE": 0.37
+  }
 }

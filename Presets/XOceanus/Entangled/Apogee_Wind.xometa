@@ -45,7 +45,14 @@
       "obbl_macro1": 0.449,
       "obbl_macro2": 0.682,
       "obbl_macro3": 0.644,
-      "obbl_macro4": 0.604
+      "obbl_macro4": 0.604,
+      "obbl_macroBond": 0.647,
+      "obbl_macroBreath": 0.476,
+      "obbl_macroWind": 0.5,
+      "obbl_macroMischief": 0.485,
+      "obbl_filterEnvAmt": 0.53,
+      "obbl_lfoRateA": 0.167,
+      "obbl_lfoDepthA": 0.357
     },
     "Orbital": {
       "orb_arcDecay": 0.399,
@@ -58,7 +65,14 @@
       "orb_macro3": 0.538,
       "orb_macro4": 0.334,
       "orb_phaseSpread": 0.363,
-      "orb_resonantPeak": 0.304
+      "orb_resonantPeak": 0.304,
+      "orb_macroSpectrum": 0.667,
+      "orb_macroEvolve": 0.496,
+      "orb_macroCoupling": 0.52,
+      "orb_macroSpace": 0.505,
+      "orb_filterEnvAmt": 0.53,
+      "orb_lfo1Rate": 0.167,
+      "orb_lfo1Depth": 0.357
     }
   },
   "schema_version": 1,
@@ -71,5 +85,11 @@
     "entangled"
   ],
   "tempo": 115,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.633,
+    "MOVEMENT": 0.462,
+    "COUPLING": 0.486,
+    "SPACE": 0.471
+  }
 }

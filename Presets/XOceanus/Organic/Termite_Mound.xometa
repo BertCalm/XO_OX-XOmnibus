@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Termite Mound",
+  "mood": "Organic",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Six-meter termite mound with internal climate control — individual insect rules producing emergent architectural intelligence.",
+  "tags": ["organic", "termite", "mound", "emergent", "architecture"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.76,
+    "movement": 0.44,
+    "density": 0.62,
+    "space": 0.44,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_macroCharacter": 0.50,
+      "org_macroMovement": 0.44,
+      "org_macroCoupling": 0.22,
+      "org_macroSpace": 0.44,
+      "org_ruleSet": 0.75,
+      "org_filterEnvAmt": 0.48,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.26,
+      "org_lfo2Rate": 0.03,
+      "org_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.22,
+    "SPACE": 0.44
+  }
+}

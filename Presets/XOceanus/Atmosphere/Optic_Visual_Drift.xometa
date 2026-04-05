@@ -39,7 +39,13 @@
       "optic_pulseShape": 0.7,
       "optic_reverbDamp": 0.4,
       "optic_reverbMix": 0.6,
-      "optic_reverbSize": 0.85
+      "optic_reverbSize": 0.85,
+      "optic_macroCharacter": 0.305,
+      "optic_macroMovement": 0.37,
+      "optic_macroCoupling": 0.247,
+      "optic_macroSpace": 0.813,
+      "optic_filterEnvAmt": 0.31,
+      "optic_lfoRate": 0.089
     }
   },
   "schema_version": 1,
@@ -50,5 +56,11 @@
     "atmosphere"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.277,
+    "MOVEMENT": 0.342,
+    "COUPLING": 0.219,
+    "SPACE": 0.785
+  }
 }

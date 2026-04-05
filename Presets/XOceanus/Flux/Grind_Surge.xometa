@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Grind Surge",
+  "mood": "Flux",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Analog saturation grinding through digital grit at maximum SIZE. Full distortion spectrum attack.",
+  "tags": ["flux", "aggressive", "grind", "saturation", "obese"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.78,
+    "density": 0.92,
+    "space": 0.12,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.92,
+      "fat_macroMovement": 0.75,
+      "fat_macroCoupling": 0.1,
+      "fat_macroSpace": 0.12,
+      "fat_satDrive": 0.95,
+      "fat_mojo": 0.9,
+      "fat_filterEnvAmt": 0.8,
+      "fat_lfo1Rate": 0.3,
+      "fat_lfo1Depth": 0.45,
+      "fat_filterCutoff": 0.48,
+      "fat_filterRes": 0.7,
+      "fat_attackTime": 0.01,
+      "fat_decayTime": 0.3,
+      "fat_sustain": 0.45,
+      "fat_releaseTime": 0.25
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.1,
+    "SPACE": 0.12
+  }
+}

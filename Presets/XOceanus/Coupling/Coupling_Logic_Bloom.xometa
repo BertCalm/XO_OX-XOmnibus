@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Logic Bloom",
+  "mood": "Coupling",
+  "engines": [
+    "Opcode",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPCODE code depth drives ORGANISM rule evolution \u2014 programmatic logic reshaping cellular behavior, code becoming biology.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "code",
+    "cellular",
+    "ChaosInject",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.44,
+    "movement": 0.58,
+    "density": 0.54,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_codeDepth": 0.58,
+      "opco_filterEnvAmt": 0.52,
+      "opco_lfo1Rate": 0.14,
+      "opco_lfo1Depth": 0.28,
+      "opco_macroCharacter": 0.52,
+      "opco_macroMovement": 0.54,
+      "opco_macroCoupling": 0.62,
+      "opco_macroSpace": 0.5
+    },
+    "Organism": {
+      "org_ruleSet": 0.56,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.26,
+      "org_macroCharacter": 0.5,
+      "org_macroMovement": 0.54,
+      "org_macroCoupling": 0.6,
+      "org_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opcode",
+        "engineB": "Organism",
+        "type": "ChaosInject",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

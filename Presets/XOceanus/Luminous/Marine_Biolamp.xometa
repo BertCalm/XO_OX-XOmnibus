@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Marine Biolamp",
+  "mood": "Luminous",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A deep-sea organism that produces a sustained bioluminescent lamp — not a flash but a constant, patient glow illuminating a small sphere of the deep.",
+  "tags": ["luminous", "marine", "bioluminescent", "sustained", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.34,
+    "density": 0.40,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.46,
+      "ocean_macroMovement": 0.34,
+      "ocean_macroCoupling": 0.13,
+      "ocean_macroSpace": 0.62,
+      "ocean_filterEnvAmt": 0.50,
+      "ocean_separation": 0.52,
+      "ocean_chromatophore": 0.48,
+      "ocean_lfo1Rate": 0.04,
+      "ocean_lfo1Depth": 0.18,
+      "ocean_lfo2Rate": 0.08,
+      "ocean_lfo2Depth": 0.12,
+      "ocean_attack": 0.5,
+      "ocean_decay": 2.0,
+      "ocean_sustain": 0.84,
+      "ocean_release": 5.0,
+      "ocean_filterCutoff": 6000,
+      "ocean_filterRes": 0.20,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.13,
+    "SPACE": 0.62
+  }
+}

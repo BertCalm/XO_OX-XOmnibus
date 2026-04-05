@@ -49,12 +49,25 @@
       "optic_vizMode": 2,
       "optic_vizFeedback": 0.85,
       "optic_vizSpeed": 1.5,
-      "optic_vizIntensity": 0.95
+      "optic_vizIntensity": 0.95,
+      "optic_macroCharacter": 0.642,
+      "optic_macroMovement": 0.692,
+      "optic_macroCoupling": 0.61,
+      "optic_macroSpace": 0.459,
+      "optic_filterEnvAmt": 0.699,
+      "optic_lfoRate": 0.249
     },
     "Obese": {
       "fat_satDrive": 6.0,
       "fat_fltCutoff": 800.0,
-      "fat_fltReso": 0.4
+      "fat_fltReso": 0.4,
+      "fat_macroMojo": 0.662,
+      "fat_macroGrit": 0.712,
+      "fat_macroSize": 0.63,
+      "fat_macroCrush": 0.479,
+      "fat_fltEnvAmt": 0.699,
+      "fat_lfo1Rate": 0.249,
+      "fat_lfo1Depth": 0.367
     }
   },
   "coupling": {
@@ -79,5 +92,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.614,
+    "MOVEMENT": 0.664,
+    "COUPLING": 0.582,
+    "SPACE": 0.431
+  }
 }

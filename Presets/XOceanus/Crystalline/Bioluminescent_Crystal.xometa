@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bioluminescent crystal \u2014 cellular automata oscillators generating mineral glow patterns in living geometry.",
+  "tags": [
+    "crystalline",
+    "bioluminescent",
+    "automata",
+    "glow",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.79,
+    "warmth": 0.24,
+    "movement": 0.44,
+    "density": 0.46,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_macroCharacter": 0.53,
+      "obnt_macroMovement": 0.39,
+      "obnt_macroCoupling": 0.15,
+      "obnt_macroSpace": 0.61,
+      "obnt_filterEnvAmt": 0.54,
+      "obnt_lfo1Rate": 0.04,
+      "obnt_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.15,
+    "SPACE": 0.61
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Synapse Horizon",
+  "mood": "Luminous",
+  "engines": ["Oxytocin", "Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Neural warmth from Oxytocin spills into Outlook's panoramic horizon scan — intimacy projected across the full width of the sky, light touching everything.",
+  "tags": ["luminous", "coupled", "neural", "panoramic", "warmth"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.80,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.40,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.78,
+      "oxy_passion": 0.32,
+      "oxy_commitment": 0.62,
+      "oxy_warmth_rate": 0.42,
+      "oxy_passion_rate": 0.008,
+      "oxy_commit_rate": 1.4,
+      "oxy_entanglement": 0.28,
+      "oxy_circuit_age": 0.12,
+      "oxy_circuit_noise": 0.03,
+      "oxy_memory_depth": 0.38,
+      "oxy_memory_decay": 3.8,
+      "oxy_topology": 1,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.20,
+      "oxy_cutoff": 5000,
+      "oxy_attack": 0.02,
+      "oxy_decay": 0.8,
+      "oxy_sustain": 0.80,
+      "oxy_release": 3.0,
+      "oxy_lfo_rate": 0.07,
+      "oxy_lfo_depth": 0.18,
+      "oxy_lfo2_rate": 0.04,
+      "oxy_lfo2_depth": 0.12,
+      "oxy_voices": 5,
+      "oxy_output": 0
+    },
+    "Outlook": {
+      "look_macroCharacter": 0.52,
+      "look_macroMovement": 0.45,
+      "look_macroCoupling": 0.25,
+      "look_macroSpace": 0.72,
+      "look_filterEnvAmt": 0.50,
+      "look_horizonScan": 0.68,
+      "look_lfo1Rate": 0.06,
+      "look_lfo1Depth": 0.20,
+      "look_attack": 0.15,
+      "look_decay": 1.2,
+      "look_sustain": 0.82,
+      "look_release": 4.0,
+      "look_filterCutoff": 9000,
+      "look_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oxytocin",
+        "target": "Outlook",
+        "type": "AmpToFilter",
+        "amount": 0.20
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.25,
+    "SPACE": 0.72
+  }
+}

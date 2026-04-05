@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Kelp Crystal Knot",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Kelp Knot topology crystallized \u2014 biological geometry made mineral and precise.",
+  "tags": [
+    "crystalline",
+    "kelp",
+    "knot",
+    "topology",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.26,
+    "movement": 0.35,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.59,
+      "weave_macroMovement": 0.4,
+      "weave_macroCoupling": 0.21,
+      "weave_macroSpace": 0.55,
+      "weave_filterEnvAmt": 0.47,
+      "weave_lfo1Rate": 0.06,
+      "weave_lfo1Depth": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.21,
+    "SPACE": 0.55
+  }
+}

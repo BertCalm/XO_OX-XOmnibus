@@ -53,9 +53,20 @@
       "oto_sustain": 0.3,
       "oto_release": 0.1,
       "oto_lfo1Rate": 1.0,
-      "oto_lfo1Depth": 0.0,
-      "oto_competition": 0.0
+      "oto_lfo1Depth": 0.441,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.63,
+      "oto_macroB": 0.671,
+      "oto_macroC": 0.231,
+      "oto_macroD": 0.369,
+      "oto_filterEnvAmt": 0.572
     }
   },
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.646,
+    "MOVEMENT": 0.687,
+    "COUPLING": 0.247,
+    "SPACE": 0.385
+  }
 }

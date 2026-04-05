@@ -62,16 +62,17 @@
       "octo_modSustain": 0.0,
       "octo_modRelease": 0.2,
       "octo_lfo1Rate": 0.5,
-      "octo_lfo1Depth": 0.0,
+      "octo_lfo1Depth": 0.158,
       "octo_lfo1Shape": 0,
       "octo_lfo2Rate": 2.0,
       "octo_lfo2Depth": 0.0,
       "octo_lfo2Shape": 0,
       "octo_polyphony": 2,
-      "octo_macroCharacter": 0.0,
-      "octo_macroMovement": 0.0,
-      "octo_macroCoupling": 0.0,
-      "octo_macroSpace": 0.8
+      "octo_macroCharacter": 0.472,
+      "octo_macroMovement": 0.358,
+      "octo_macroCoupling": 0.165,
+      "octo_macroSpace": 0.727,
+      "octo_filterEnvAmt": 0.376
     }
   },
   "tags": [
@@ -84,5 +85,11 @@
     "silence",
     "transcendental"
   ],
-  "description": "inkMix=1.0, inkThreshold=0.0, inkDecay=20.0 — every note fires a 20-second dark noise cloud. Dry signal fully muted. The ink IS the composition. OCTOPUS forgets it was a synthesizer."
+  "description": "inkMix=1.0, inkThreshold=0.0, inkDecay=20.0 — every note fires a 20-second dark noise cloud. Dry signal fully muted. The ink IS the composition. OCTOPUS forgets it was a synthesizer.",
+  "macros": {
+    "CHARACTER": 0.474,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.167,
+    "SPACE": 0.729
+  }
 }

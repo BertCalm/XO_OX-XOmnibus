@@ -52,13 +52,23 @@
       "orb_outputLevel": 0.817,
       "orb_outputPan": -0.03,
       "orb_phaseSpread": 0.264,
-      "orb_resonantPeak": 0.517
+      "orb_resonantPeak": 0.517,
+      "orb_macroSpectrum": 0.513,
+      "orb_macroEvolve": 0.457,
+      "orb_macroCoupling": 0.496,
+      "orb_macroSpace": 0.384,
+      "orb_filterEnvAmt": 0.442,
+      "orb_lfo1Rate": 0.166,
+      "orb_lfo1Depth": 0.385
     },
     "Osprey": {
-      "osprey_macroCharacter": 0.486,
-      "osprey_macroMovement": 0.399,
-      "osprey_macroCoupling": 0.409,
-      "osprey_macroSpace": 0.458
+      "osprey_macroCharacter": 0.512,
+      "osprey_macroMovement": 0.456,
+      "osprey_macroCoupling": 0.495,
+      "osprey_macroSpace": 0.383,
+      "osprey_filterEnvDepth": 0.442,
+      "osprey_lfo2Rate": 0.166,
+      "osprey_lfo2Depth": 0.385
     }
   },
   "schema_version": 1,
@@ -70,5 +80,11 @@
     "entangled"
   ],
   "tempo": 95,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.462,
+    "SPACE": 0.35
+  }
 }

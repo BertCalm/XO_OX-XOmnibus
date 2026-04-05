@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Spray",
+  "mood": "Crystalline",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A spray of crystal granules in the air \u2014 granular synthesis mimicking the scatter of light through mineral dust.",
+  "tags": [
+    "crystalline",
+    "spray",
+    "granular",
+    "scatter",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.24,
+    "movement": 0.5,
+    "density": 0.44,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.51,
+      "opal_macroMovement": 0.37,
+      "opal_macroCoupling": 0.21,
+      "opal_macroSpace": 0.58,
+      "opal_filterEnvAmt": 0.42,
+      "opal_lfo1Rate": 0.06,
+      "opal_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.21,
+    "SPACE": 0.58
+  }
+}

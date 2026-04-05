@@ -44,7 +44,14 @@
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
       "drift_release": 1.5,
-      "drift_sustain": 0.5
+      "drift_sustain": 0.5,
+      "drift_macroCharacter": 0.374,
+      "drift_macroMovement": 0.436,
+      "drift_macroCoupling": 0.247,
+      "drift_macroSpace": 0.732,
+      "drift_filterEnvAmt": 0.416,
+      "drift_lfoRate": 0.102,
+      "drift_lfoDepth": 0.176
     }
   },
   "schema_version": 1,
@@ -55,5 +62,11 @@
     "fractured"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.344,
+    "MOVEMENT": 0.406,
+    "COUPLING": 0.217,
+    "SPACE": 0.702
+  }
 }

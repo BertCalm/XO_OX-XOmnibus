@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Warm Quartz",
+  "mood": "Luminous",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rose quartz with internal illumination — the crystal warm but still clear, luminous through structure rather than surface. Obsidian at moderate warmth, depth dialed in.",
+  "tags": ["luminous", "quartz", "crystal", "warm", "rose"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.58,
+    "movement": 0.30,
+    "density": 0.32,
+    "space": 0.55,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.58,
+      "obsidian_macroMovement": 0.30,
+      "obsidian_macroCoupling": 0.13,
+      "obsidian_macroSpace": 0.55,
+      "obsidian_filterEnvAmt": 0.54,
+      "obsidian_depth": 0.42,
+      "obsidian_lfo1Rate": 0.05,
+      "obsidian_lfo1Depth": 0.16,
+      "obsidian_lfo2Rate": 0.10,
+      "obsidian_lfo2Depth": 0.10,
+      "obsidian_attack": 0.08,
+      "obsidian_decay": 0.9,
+      "obsidian_sustain": 0.86,
+      "obsidian_release": 3.5,
+      "obsidian_filterCutoff": 10500,
+      "obsidian_filterRes": 0.20,
+      "obsidian_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.13,
+    "SPACE": 0.55
+  }
+}

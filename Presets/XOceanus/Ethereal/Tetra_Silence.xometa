@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Tetra Silence",
+  "mood": "Ethereal",
+  "engines": ["OddfeliX", "Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A neon tetra at rest in still crystal water. OddfeliX glimmers but restrains; Obsidian holds the shape of silence around each tiny movement.",
+  "tags": ["ethereal", "whisper", "coupling", "neon", "crystal", "stillness", "glimmer"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.50,
+    "movement": 0.20,
+    "density": 0.25,
+    "space": 0.93,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_macroCharacter": 0.44,
+      "snap_macroMovement": 0.36,
+      "snap_macroCoupling": 0.14,
+      "snap_macroSpace": 0.88,
+      "snap_filterCutoff": 0.42,
+      "snap_filterEnvAmt": 0.34,
+      "snap_lfo1Rate": 0.05,
+      "snap_lfo1Depth": 0.18,
+      "snap_attack": 0.05,
+      "snap_release": 4.0
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.32,
+      "obsidian_macroMovement": 0.24,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.94,
+      "obsidian_depth": 0.38,
+      "obsidian_filterEnvAmt": 0.25,
+      "obsidian_lfo1Rate": 0.02,
+      "obsidian_lfo1Depth": 0.12,
+      "obsidian_attack": 3.0,
+      "obsidian_release": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.08
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.13,
+    "SPACE": 0.91
+  }
+}

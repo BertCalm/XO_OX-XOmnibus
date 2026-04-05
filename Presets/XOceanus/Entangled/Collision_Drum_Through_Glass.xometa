@@ -40,14 +40,28 @@
       "perc_kickFreq": 60,
       "perc_kickDecay": 0.45,
       "perc_snareSnap": 0.6,
-      "perc_outputLevel": 0.8
+      "perc_outputLevel": 0.8,
+      "perc_macro_punch": 0.582,
+      "perc_macro_mutate": 0.544,
+      "perc_macro_machine": 0.526,
+      "perc_macro_space": 0.465,
+      "perc_filterEnvAmt": 0.576,
+      "perc_lfo1Rate": 0.147,
+      "perc_lfo1Depth": 0.207
     },
     "Overlap": {
       "olap_knotDepth": 0.68,
       "olap_feedbackAmount": 0.62,
       "olap_resonanceFreq": 0.5,
       "olap_reverbMix": 0.6,
-      "olap_outputLevel": 0.78
+      "olap_outputLevel": 0.78,
+      "olap_macroCharacter": 0.562,
+      "olap_macroMovement": 0.524,
+      "olap_macroCoupling": 0.506,
+      "olap_macroSpace": 0.445,
+      "olap_filterEnvAmt": 0.576,
+      "olap_lfo1Rate": 0.147,
+      "olap_lfo1Depth": 0.207
     }
   },
   "coupling": {
@@ -67,5 +81,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.558,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.502,
+    "SPACE": 0.441
+  }
 }

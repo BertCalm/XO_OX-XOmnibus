@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Felt Pulse",
+  "mood": "Coupling",
+  "engines": [
+    "Overworn",
+    "Ostinato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORN felt age drives OSTINATO world pattern temporal feel \u2014 worn material adding human imperfection to ethnomusicological patterns.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "worn",
+    "rhythm",
+    "RhythmToBlend",
+    "tactile"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.58,
+    "density": 0.54,
+    "space": 0.48,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_feltAge": 0.58,
+      "worn_filterEnvAmt": 0.52,
+      "worn_lfo1Rate": 0.12,
+      "worn_lfo1Depth": 0.26,
+      "worn_macroCharacter": 0.52,
+      "worn_macroMovement": 0.52,
+      "worn_macroCoupling": 0.62,
+      "worn_macroSpace": 0.48
+    },
+    "Ostinato": {
+      "osti_macroGather": 0.58,
+      "osti_filterEnvAmt": 0.5,
+      "osti_lfo1Rate": 0.17,
+      "osti_lfo1Depth": 0.28,
+      "osti_macroCharacter": 0.5,
+      "osti_macroMovement": 0.58,
+      "osti_macroCoupling": 0.62,
+      "osti_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworn",
+        "engineB": "Ostinato",
+        "type": "RhythmToBlend",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.62,
+    "SPACE": 0.48
+  }
+}

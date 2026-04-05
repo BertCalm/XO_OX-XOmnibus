@@ -46,10 +46,16 @@
       "ow_macroCharacter": 0.0,
       "ow_macroCoupling": 0.0,
       "ow_macroMovement": 0.0,
-      "ow_macroSpace": 0.0,
+      "ow_macroSpace": 0.704,
       "ow_reverbMix": 0.55,
       "ow_spread": 0.62,
-      "ow_voiceCount": 6
+      "ow_voiceCount": 6,
+      "ow_macroEra": 0.343,
+      "ow_macroCrush": 0.323,
+      "ow_macroGlitch": 0.114,
+      "ow_filterEnvDepth": 0.435,
+      "ow_fmLfoRate": 0.115,
+      "ow_fmLfoDepth": 0.207
     }
   },
   "schema_version": 1,
@@ -62,5 +68,11 @@
     "glitch"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.101,
+    "SPACE": 0.691
+  }
 }

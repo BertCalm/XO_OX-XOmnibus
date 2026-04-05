@@ -43,7 +43,14 @@
       "oracle_macroGravity": 0.302,
       "oracle_macroProphecy": 0.504,
       "oracle_maqam": 5,
-      "oracle_timeStep": 0.654
+      "oracle_timeStep": 0.654,
+      "oracle_macroCharacter": 0.368,
+      "oracle_macroMovement": 0.433,
+      "oracle_macroCoupling": 0.236,
+      "oracle_macroSpace": 0.786,
+      "oracle_filterEnvAmt": 0.366,
+      "oracle_lfo1Rate": 0.05,
+      "oracle_lfo1Depth": 0.141
     }
   },
   "schema_version": 1,
@@ -58,5 +65,11 @@
     "oracle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.425,
+    "COUPLING": 0.228,
+    "SPACE": 0.778
+  }
 }

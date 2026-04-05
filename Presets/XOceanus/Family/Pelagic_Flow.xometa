@@ -36,11 +36,24 @@
   "parameters": {
     "Oracle": {
       "level": 0.801,
-      "pan": -0.09
+      "pan": -0.09,
+      "oracle_macroCharacter": 0.53,
+      "oracle_macroMovement": 0.385,
+      "oracle_macroCoupling": 0.58,
+      "oracle_macroSpace": 0.446,
+      "oracle_filterEnvAmt": 0.441,
+      "oracle_lfo1Rate": 0.059,
+      "oracle_lfo1Depth": 0.169
     },
     "Osteria": {
       "level": 0.705,
-      "pan": 0.103
+      "pan": 0.103,
+      "osteria_macroCharacter": 0.559,
+      "osteria_macroMovement": 0.414,
+      "osteria_macroCoupling": 0.609,
+      "osteria_macroSpace": 0.475,
+      "osteria_filterEnvDepth": 0.441,
+      "osteria_lfoDepth": 0.059
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.377,
+    "COUPLING": 0.572,
+    "SPACE": 0.438
+  }
 }

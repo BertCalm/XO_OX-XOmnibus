@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Circuit Melt",
+  "mood": "Flux",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Circuit board dissolving under extreme voltage. Analog-digital mojo axis crossing the overload threshold.",
+  "tags": ["flux", "aggressive", "melt", "circuit", "overload"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.32,
+    "movement": 0.8,
+    "density": 0.92,
+    "space": 0.12,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.92,
+      "fat_macroMovement": 0.78,
+      "fat_macroCoupling": 0.12,
+      "fat_macroSpace": 0.12,
+      "fat_satDrive": 0.92,
+      "fat_mojo": 0.88,
+      "fat_filterEnvAmt": 0.78,
+      "fat_lfo1Rate": 0.28,
+      "fat_lfo1Depth": 0.46,
+      "fat_filterCutoff": 0.42,
+      "fat_filterRes": 0.72,
+      "fat_attackTime": 0.012,
+      "fat_decayTime": 0.32,
+      "fat_sustain": 0.55,
+      "fat_releaseTime": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  }
+}

@@ -55,13 +55,27 @@
       "oblq_modDepth": 0.6,
       "oblq_modRate": 0.5,
       "oblq_prismAngle": 0.55,
-      "oblq_refraction": 0.6
+      "oblq_refraction": 0.6,
+      "oblq_macroCharacter": 0.548,
+      "oblq_macroMovement": 0.517,
+      "oblq_macroCoupling": 0.734,
+      "oblq_macroSpace": 0.466,
+      "oblq_filterEnvAmt": 0.551,
+      "oblq_lfo1Rate": 0.25,
+      "oblq_lfo1Depth": 0.342
     },
     "Ohm": {
       "ohm_ampAttack": 0.03,
       "ohm_ampRelease": 1.5,
       "ohm_filterCutoff": 2800.0,
-      "ohm_filterReso": 0.3
+      "ohm_filterReso": 0.3,
+      "ohm_macroMeddling": 0.577,
+      "ohm_macroCommune": 0.546,
+      "ohm_macroJam": 0.763,
+      "ohm_macroMeadow": 0.495,
+      "ohm_filterEnvAmt": 0.551,
+      "ohm_lfo1Rate": 0.25,
+      "ohm_lfo1Depth": 0.342
     }
   },
   "schema_version": 1,
@@ -77,5 +91,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.494,
+    "COUPLING": 0.711,
+    "SPACE": 0.443
+  }
 }

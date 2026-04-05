@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Bioluminescence",
+  "mood": "Luminous",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The tidal cycle stirs up deep water organisms, releasing stored light from a thousand meters below. Oceanic's separation parameter models this vertical light column.",
+  "tags": ["luminous", "tidal", "bioluminescent", "depth", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.48,
+    "movement": 0.44,
+    "density": 0.42,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.46,
+      "ocean_macroMovement": 0.44,
+      "ocean_macroCoupling": 0.14,
+      "ocean_macroSpace": 0.65,
+      "ocean_filterEnvAmt": 0.52,
+      "ocean_separation": 0.68,
+      "ocean_chromatophore": 0.62,
+      "ocean_lfo1Rate": 0.06,
+      "ocean_lfo1Depth": 0.22,
+      "ocean_lfo2Rate": 0.02,
+      "ocean_lfo2Depth": 0.15,
+      "ocean_attack": 0.3,
+      "ocean_decay": 1.5,
+      "ocean_sustain": 0.76,
+      "ocean_release": 4.0,
+      "ocean_filterCutoff": 6200,
+      "ocean_filterRes": 0.22,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.14,
+    "SPACE": 0.65
+  }
+}

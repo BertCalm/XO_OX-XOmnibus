@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Old Growth",
+  "mood": "Organic",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Standing in an old-growth forest where some trees predate Western civilization — deep time made audible.",
+  "tags": ["organic", "old-growth", "ancient", "timeless", "forest"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.85,
+    "movement": 0.22,
+    "density": 0.68,
+    "space": 0.55,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.54,
+      "oaken_macroMovement": 0.22,
+      "oaken_macroCoupling": 0.14,
+      "oaken_macroSpace": 0.55,
+      "oaken_stringAge": 1.0,
+      "oaken_filterEnvAmt": 0.45,
+      "oaken_lfo1Rate": 0.02,
+      "oaken_lfo1Depth": 0.15,
+      "oaken_lfo2Rate": 0.05,
+      "oaken_lfo2Depth": 0.10
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.14,
+    "SPACE": 0.55
+  }
+}

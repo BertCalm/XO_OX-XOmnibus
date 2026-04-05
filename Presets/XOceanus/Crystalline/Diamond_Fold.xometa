@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Diamond Fold",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The diamond fold in origami \u2014 an impossible geometric precision made audible as crystal resonance.",
+  "tags": [
+    "crystalline",
+    "diamond",
+    "fold",
+    "geometric",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.36,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.56,
+      "origami_macroMovement": 0.33,
+      "origami_macroCoupling": 0.24,
+      "origami_macroSpace": 0.57,
+      "origami_filterEnvAmt": 0.42,
+      "origami_lfo1Rate": 0.07,
+      "origami_lfo1Depth": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.33,
+    "COUPLING": 0.24,
+    "SPACE": 0.57
+  }
+}

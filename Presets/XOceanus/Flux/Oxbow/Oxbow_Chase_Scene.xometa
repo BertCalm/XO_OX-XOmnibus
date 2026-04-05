@@ -39,7 +39,14 @@
       "oxb_predelay": 3.0,
       "oxb_dryWet": 0.3,
       "oxb_exciterDecay": 0.045,
-      "oxb_exciterBright": 0.75
+      "oxb_exciterBright": 0.75,
+      "oxb_macroCharacter": 0.757,
+      "oxb_macroMovement": 0.69,
+      "oxb_macroCoupling": 0.368,
+      "oxb_macroSpace": 0.47,
+      "oxb_filterEnvAmt": 0.559,
+      "oxb_lfo1Rate": 0.443,
+      "oxb_lfo1Depth": 0.363
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "percussion"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.728,
+    "MOVEMENT": 0.661,
+    "COUPLING": 0.339,
+    "SPACE": 0.441
+  }
 }

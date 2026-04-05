@@ -41,14 +41,28 @@
       "obrix_flashAmount": 0.48,
       "obrix_fxDrive": 0.6,
       "obrix_filterCutoff": 0.52,
-      "obrix_outputLevel": 0.8
+      "obrix_outputLevel": 0.8,
+      "obrix_macroCharacter": 0.626,
+      "obrix_macroMovement": 0.553,
+      "obrix_macroCoupling": 0.569,
+      "obrix_macroSpace": 0.5,
+      "obrix_fltEnvAmt": 0.525,
+      "obrix_lfo1Rate": 0.275,
+      "obrix_lfo1Depth": 0.266
     },
     "Oracle": {
       "oracle_breakpoints": 0.72,
       "oracle_stochasticRate": 0.65,
       "oracle_barrierMod": 0.5,
       "oracle_filterCutoff": 0.48,
-      "oracle_outputLevel": 0.78
+      "oracle_outputLevel": 0.78,
+      "oracle_macroCharacter": 0.598,
+      "oracle_macroMovement": 0.525,
+      "oracle_macroCoupling": 0.541,
+      "oracle_macroSpace": 0.472,
+      "oracle_filterEnvAmt": 0.525,
+      "oracle_lfo1Rate": 0.275,
+      "oracle_lfo1Depth": 0.266
     }
   },
   "coupling": {
@@ -67,5 +81,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.517,
+    "COUPLING": 0.533,
+    "SPACE": 0.464
+  }
 }

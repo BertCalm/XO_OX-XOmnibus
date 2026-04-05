@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Spore Cloud",
+  "mood": "Organic",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bioluminescent metabolic engine renders airborne spore dispersal as shimmering spectral particles. Dense but weightless.",
+  "tags": ["organic", "spores", "bioluminescent", "cloud", "dispersal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.50,
+    "density": 0.60,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.45,
+      "organon_macroMovement": 0.50,
+      "organon_macroCoupling": 0.20,
+      "organon_macroSpace": 0.52,
+      "organon_metabolicRate": 0.45,
+      "organon_filterEnvAmt": 0.45,
+      "organon_lfo1Rate": 0.06,
+      "organon_lfo1Depth": 0.30,
+      "organon_lfo2Rate": 0.12,
+      "organon_lfo2Depth": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.50,
+    "COUPLING": 0.20,
+    "SPACE": 0.52
+  }
+}

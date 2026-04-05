@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Lattice Deep",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep lattice resonance of a crystal formation. The molecular geometry made audible.",
+  "tags": [
+    "crystalline",
+    "lattice",
+    "deep",
+    "molecular",
+    "resonance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.24,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.57,
+      "obsidian_macroMovement": 0.42,
+      "obsidian_macroCoupling": 0.24,
+      "obsidian_macroSpace": 0.64,
+      "obsidian_filterEnvAmt": 0.59,
+      "obsidian_lfo1Rate": 0.04,
+      "obsidian_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.24,
+    "SPACE": 0.64
+  }
+}

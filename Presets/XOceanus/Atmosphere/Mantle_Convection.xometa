@@ -43,7 +43,14 @@
       "orb_groupEnvDepth": 0.85,
       "orb_groupEnvRate": 0.03,
       "orb_oscCount": 16,
-      "orb_spread": 0.92
+      "orb_spread": 0.92,
+      "orb_macroSpectrum": 0.483,
+      "orb_macroEvolve": 0.406,
+      "orb_macroCoupling": 0.245,
+      "orb_macroSpace": 0.823,
+      "orb_filterEnvAmt": 0.336,
+      "orb_lfo1Rate": 0.033,
+      "orb_lfo1Depth": 0.292
     }
   },
   "schema_version": 1,
@@ -56,5 +63,11 @@
     "geological"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.449,
+    "MOVEMENT": 0.372,
+    "COUPLING": 0.211,
+    "SPACE": 0.789
+  }
 }

@@ -41,14 +41,24 @@
       "olap_modDepth": 0.32,
       "olap_modRate": 0.07,
       "olap_damping": 0.38,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
+      "olap_macroCharacter": 0.368,
+      "olap_macroSpace": 0.614,
+      "olap_macroCoupling": 0.136,
+      "olap_macroDecay": 0.0,
+      "olap_macroMovement": 0.374,
+      "olap_filterEnvAmt": 0.458,
+      "olap_lfo1Rate": 0.104,
+      "olap_lfo1Depth": 0.318
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.364,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.132,
+    "SPACE": 0.61
+  }
 }

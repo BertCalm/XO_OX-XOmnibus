@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Chiasmus Trail",
+  "mood": "Ethereal",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The FDN reverb tail crossing itself like a chiasmus. What went in returns transformed.",
+  "tags": [
+    "ethereal",
+    "chiasmus",
+    "reverb",
+    "trail",
+    "transformed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.28,
+    "density": 0.2,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.35,
+      "oxb_macroMovement": 0.3,
+      "oxb_macroCoupling": 0.1,
+      "oxb_macroSpace": 0.88,
+      "oxb_entangle": 0.55,
+      "oxb_filterEnvAmt": 0.28,
+      "oxb_lfo1Rate": 0.02,
+      "oxb_lfo1Depth": 0.14,
+      "oxb_attack": 3.0,
+      "oxb_release": 10.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.88
+  }
+}

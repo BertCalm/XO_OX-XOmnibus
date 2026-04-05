@@ -36,11 +36,25 @@
   "parameters": {
     "Origami": {
       "level": 0.769,
-      "pan": -0.013
+      "pan": -0.013,
+      "origami_macroCharacter": 0.391,
+      "origami_macroMovement": 0.5,
+      "origami_macroCoupling": 0.778,
+      "origami_macroSpace": 0.78,
+      "origami_filterEnvAmt": 0.44,
+      "origami_lfo1Rate": 0.068,
+      "origami_lfo1Depth": 0.212
     },
     "Overworld": {
       "level": 0.657,
-      "pan": 0.047
+      "pan": 0.047,
+      "ow_macroEra": 0.345,
+      "ow_macroCrush": 0.454,
+      "ow_macroGlitch": 0.732,
+      "ow_macroSpace": 0.734,
+      "ow_filterEnvDepth": 0.44,
+      "ow_fmLfoRate": 0.068,
+      "ow_fmLfoDepth": 0.212
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.332,
+    "MOVEMENT": 0.441,
+    "COUPLING": 0.719,
+    "SPACE": 0.721
+  }
 }

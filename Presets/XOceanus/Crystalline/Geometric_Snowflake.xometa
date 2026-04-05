@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Geometric Snowflake",
+  "mood": "Crystalline",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A snowflake as a geometric origami problem \u2014 six-fold symmetry expressed as crystalline precision.",
+  "tags": [
+    "crystalline",
+    "geometric",
+    "snowflake",
+    "symmetry",
+    "ice"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.22,
+    "density": 0.32,
+    "space": 0.68,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.56,
+      "origami_macroMovement": 0.37,
+      "origami_macroCoupling": 0.18,
+      "origami_macroSpace": 0.53,
+      "origami_filterEnvAmt": 0.62,
+      "origami_lfo1Rate": 0.12,
+      "origami_lfo1Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.18,
+    "SPACE": 0.53
+  }
+}

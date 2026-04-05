@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Pollen Drift",
+  "mood": "Organic",
+  "engines": ["Osier"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Microscopic pollen grains riding thermal currents — golden density suspended in warm spring air.",
+  "tags": ["organic", "pollen", "spring", "golden", "floating"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.70,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.40,
+      "osier_macroMovement": 0.42,
+      "osier_macroCoupling": 0.16,
+      "osier_macroSpace": 0.58,
+      "osier_windDensity": 0.55,
+      "osier_filterEnvAmt": 0.40,
+      "osier_lfo1Rate": 0.06,
+      "osier_lfo1Depth": 0.24,
+      "osier_lfo2Rate": 0.12,
+      "osier_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.16,
+    "SPACE": 0.58
+  }
+}

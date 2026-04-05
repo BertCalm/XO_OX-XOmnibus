@@ -28,7 +28,14 @@
   "parameters": {
     "Oracle": {
       "couplingBus": 3,
-      "couplingLevel": 0.734
+      "couplingLevel": 0.734,
+      "oracle_macroCharacter": 0.347,
+      "oracle_macroMovement": 0.479,
+      "oracle_macroCoupling": 0.135,
+      "oracle_macroSpace": 0.84,
+      "oracle_filterEnvAmt": 0.42,
+      "oracle_lfo1Rate": 0.069,
+      "oracle_lfo1Depth": 0.193
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "oracle"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.339,
+    "MOVEMENT": 0.471,
+    "COUPLING": 0.127,
+    "SPACE": 0.832
+  }
 }

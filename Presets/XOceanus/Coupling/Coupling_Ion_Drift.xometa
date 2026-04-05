@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Ion Drift",
+  "mood": "Coupling",
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC phosphor pulse barely drives ODYSSEY analog drift rate \u2014 light frequency as the subtle force behind oscillator wandering.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "visual",
+    "analog",
+    "LFOToPitch",
+    "electronic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.46,
+    "density": 0.38,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.35,
+      "optic_filterEnvAmt": 0.4,
+      "optic_lfo1Rate": 0.15,
+      "optic_lfo1Depth": 0.22,
+      "optic_macroCharacter": 0.48,
+      "optic_macroMovement": 0.44,
+      "optic_macroCoupling": 0.5,
+      "optic_macroSpace": 0.46
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 0.45,
+      "drift_filterEnvAmt": 0.4,
+      "drift_lfo1Rate": 0.12,
+      "drift_lfo1Depth": 0.2,
+      "drift_macroCharacter": 0.44,
+      "drift_macroMovement": 0.42,
+      "drift_macroCoupling": 0.48,
+      "drift_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.49,
+    "SPACE": 0.46
+  }
+}

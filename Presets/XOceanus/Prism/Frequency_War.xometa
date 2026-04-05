@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Frequency War",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Frequencies at war across the entire spectrum. Strange attractor generating hostile interference patterns.",
+  "tags": ["prism", "aggressive", "frequency", "war", "interference"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.14,
+    "movement": 0.94,
+    "density": 0.84,
+    "space": 0.16,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.9,
+      "ouro_macroMovement": 0.92,
+      "ouro_macroCoupling": 0.16,
+      "ouro_macroSpace": 0.17,
+      "ouro_topology": 0.86,
+      "ouro_leash": 0.14,
+      "ouro_filterEnvAmt": 0.86,
+      "ouro_lfo1Rate": 0.72,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_lfo2Rate": 0.85,
+      "ouro_lfo2Depth": 0.44,
+      "ouro_filterCutoff": 0.74,
+      "ouro_filterRes": 0.84,
+      "ouro_attackTime": 0.003,
+      "ouro_decayTime": 0.14,
+      "ouro_sustain": 0.25,
+      "ouro_releaseTime": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.16,
+    "SPACE": 0.17
+  }
+}

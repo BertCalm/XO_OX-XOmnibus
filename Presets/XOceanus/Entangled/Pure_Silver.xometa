@@ -46,7 +46,14 @@
       "obscura_level": 0.851,
       "obscura_movement": 0.328,
       "obscura_space": 0.592,
-      "obscura_warmth": 0.613
+      "obscura_warmth": 0.613,
+      "obscura_macroCharacter": 0.611,
+      "obscura_macroMovement": 0.417,
+      "obscura_macroCoupling": 0.552,
+      "obscura_macroSpace": 0.408,
+      "obscura_filterEnvAmt": 0.531,
+      "obscura_lfo1Rate": 0.101,
+      "obscura_lfo1Depth": 0.227
     },
     "Obsidian": {
       "obsidian_aggression": 0.106,
@@ -55,7 +62,14 @@
       "obsidian_level": 0.849,
       "obsidian_movement": 0.243,
       "obsidian_space": 0.639,
-      "obsidian_warmth": 0.223
+      "obsidian_warmth": 0.223,
+      "obsidian_macroCharacter": 0.669,
+      "obsidian_macroMovement": 0.475,
+      "obsidian_macroCoupling": 0.61,
+      "obsidian_macroSpace": 0.466,
+      "obsidian_filterEnvAmt": 0.531,
+      "obsidian_lfoRate": 0.101,
+      "obsidian_lfoDepth": 0.227
     }
   },
   "schema_version": 1,
@@ -69,5 +83,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.601,
+    "MOVEMENT": 0.407,
+    "COUPLING": 0.542,
+    "SPACE": 0.398
+  }
 }

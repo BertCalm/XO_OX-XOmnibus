@@ -62,7 +62,14 @@
       "perc_reverbSize": 0.55,
       "perc_snareLevel": 0.65,
       "perc_snareSnap": 0.6,
-      "perc_snareTone": 0.5
+      "perc_snareTone": 0.5,
+      "perc_macro_punch": 0.54,
+      "perc_macro_mutate": 0.555,
+      "perc_macro_machine": 0.728,
+      "perc_macro_space": 0.57,
+      "perc_filterEnvAmt": 0.417,
+      "perc_lfo1Rate": 0.281,
+      "perc_lfo1Depth": 0.2
     },
     "Osprey": {
       "osprey_ampAttack": 0.3,
@@ -75,16 +82,19 @@
       "osprey_depth": 0.4,
       "osprey_filterTilt": 0.5,
       "osprey_foam": 0.35,
-      "osprey_macroCharacter": 0.0,
-      "osprey_macroCoupling": 0.5,
-      "osprey_macroMovement": 0.0,
-      "osprey_macroSpace": 0.0,
+      "osprey_macroCharacter": 0.549,
+      "osprey_macroCoupling": 0.737,
+      "osprey_macroMovement": 0.564,
+      "osprey_macroSpace": 0.579,
       "osprey_resonatorBright": 0.55,
       "osprey_resonatorDecay": 1.5,
       "osprey_seaState": 0.55,
       "osprey_shore": 0.5,
       "osprey_swellPeriod": 6.0,
-      "osprey_windDir": 0.6
+      "osprey_windDir": 0.6,
+      "osprey_filterEnvDepth": 0.417,
+      "osprey_lfo2Rate": 0.281,
+      "osprey_lfo2Depth": 0.2
     }
   },
   "schema_version": 1,
@@ -101,5 +111,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.531,
+    "COUPLING": 0.704,
+    "SPACE": 0.546
+  }
 }

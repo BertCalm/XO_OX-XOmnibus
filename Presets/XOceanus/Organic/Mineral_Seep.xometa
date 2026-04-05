@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Seep",
+  "mood": "Organic",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Iron-rich groundwater seeping through limestone — mineral dissolution creating slow chemical music over geological time.",
+  "tags": ["organic", "mineral", "seep", "groundwater", "geological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.28,
+    "density": 0.56,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.46,
+      "oxb_macroMovement": 0.28,
+      "oxb_macroCoupling": 0.16,
+      "oxb_macroSpace": 0.55,
+      "oxb_entangle": 0.60,
+      "oxb_filterEnvAmt": 0.42,
+      "oxb_lfo1Rate": 0.03,
+      "oxb_lfo1Depth": 0.20,
+      "oxb_lfo2Rate": 0.06,
+      "oxb_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.16,
+    "SPACE": 0.55
+  }
+}

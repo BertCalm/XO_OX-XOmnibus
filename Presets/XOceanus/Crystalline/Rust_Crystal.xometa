@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Rust Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rust crystallizing on prepared metal \u2014 oxidation as mineral process, red-brown geometry on cold iron.",
+  "tags": [
+    "crystalline",
+    "rust",
+    "prepared",
+    "oxidation",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.38,
+    "movement": 0.32,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.6,
+      "opal2_macroMovement": 0.31,
+      "opal2_macroCoupling": 0.23,
+      "opal2_macroSpace": 0.6,
+      "opal2_filterEnvAmt": 0.52,
+      "opal2_lfo1Rate": 0.14,
+      "opal2_lfo1Depth": 0.11
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.23,
+    "SPACE": 0.6
+  }
+}

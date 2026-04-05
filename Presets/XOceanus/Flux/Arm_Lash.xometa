@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Arm Lash",
+  "mood": "Flux",
+  "engines": ["Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All eight arms lashing simultaneously. Decentralized intelligence in maximum aggression state.",
+  "tags": ["flux", "aggressive", "arms", "lash", "octopus"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.15,
+    "movement": 0.94,
+    "density": 0.88,
+    "space": 0.16,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_macroCharacter": 0.88,
+      "octo_macroMovement": 0.92,
+      "octo_macroCoupling": 0.18,
+      "octo_macroSpace": 0.18,
+      "octo_armDepth": 0.95,
+      "octo_chromaFlash": 0.82,
+      "octo_inkCloud": 0.6,
+      "octo_filterEnvAmt": 0.8,
+      "octo_lfo1Rate": 0.58,
+      "octo_lfo1Depth": 0.5,
+      "octo_filterCutoff": 0.7,
+      "octo_filterRes": 0.72,
+      "octo_attackTime": 0.005,
+      "octo_decayTime": 0.18,
+      "octo_sustain": 0.28,
+      "octo_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.18,
+    "SPACE": 0.18
+  }
+}

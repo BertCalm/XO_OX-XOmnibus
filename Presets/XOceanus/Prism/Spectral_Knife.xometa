@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Knife",
+  "mood": "Prism",
+  "engines": ["Overtone"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Continued fraction spectral edge sharpened to a blade. Irrational convergent cutting cleanly through the spectrum.",
+  "tags": ["prism", "aggressive", "spectral", "knife", "sharp"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.15,
+    "movement": 0.86,
+    "density": 0.72,
+    "space": 0.18,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.86,
+      "over_macroMovement": 0.84,
+      "over_macroCoupling": 0.18,
+      "over_macroSpace": 0.2,
+      "over_cfDepth": 0.95,
+      "over_constant": 0.92,
+      "over_filterEnvAmt": 0.74,
+      "over_lfo1Rate": 0.55,
+      "over_lfo1Depth": 0.44,
+      "over_filterCutoff": 0.78,
+      "over_filterRes": 0.72,
+      "over_attackTime": 0.006,
+      "over_decayTime": 0.2,
+      "over_sustain": 0.3,
+      "over_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

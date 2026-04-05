@@ -41,7 +41,14 @@
       "fat_morph": 0.06,
       "fat_release": 100.0,
       "fat_subLevel": 0.95,
-      "fat_sustain": 0.94
+      "fat_sustain": 0.94,
+      "fat_macroMojo": 0.544,
+      "fat_macroGrit": 0.509,
+      "fat_macroSize": 0.232,
+      "fat_macroCrush": 0.856,
+      "fat_fltEnvAmt": 0.308,
+      "fat_lfo1Rate": 0.06,
+      "fat_lfo1Depth": 0.173
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "bass"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.496,
+    "MOVEMENT": 0.461,
+    "COUPLING": 0.184,
+    "SPACE": 0.808
+  }
 }

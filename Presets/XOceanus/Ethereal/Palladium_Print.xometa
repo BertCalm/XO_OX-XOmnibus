@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Palladium Print",
+  "mood": "Ethereal",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A palladium photographic print with its characteristic warm-toned neutrals. Permanence achieved through precious metal.",
+  "tags": [
+    "ethereal",
+    "palladium",
+    "print",
+    "permanent",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.18,
+    "density": 0.18,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_macroCharacter": 0.35,
+      "obscura_macroMovement": 0.2,
+      "obscura_macroCoupling": 0.1,
+      "obscura_macroSpace": 0.83,
+      "obscura_stiffness": 0.6,
+      "obscura_filterEnvAmt": 0.27,
+      "obscura_lfo1Rate": 0.012,
+      "obscura_lfo1Depth": 0.12,
+      "obscura_attack": 3.2,
+      "obscura_release": 9.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.83
+  }
+}

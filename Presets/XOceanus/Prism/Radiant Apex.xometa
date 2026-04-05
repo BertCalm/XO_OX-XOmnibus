@@ -41,13 +41,16 @@
       "origami_filterReso": 0.102,
       "origami_foldDepth": 0.698,
       "origami_level": 0.78,
-      "origami_macroCharacter": 0.763,
-      "origami_macroCoupling": 0.0,
-      "origami_macroMovement": 0.25,
-      "origami_macroSpace": 0.7,
+      "origami_macroCharacter": 0.704,
+      "origami_macroCoupling": 0.267,
+      "origami_macroMovement": 0.541,
+      "origami_macroSpace": 0.463,
       "origami_reverbMix": 0.504,
       "origami_stereoWidth": 0.801,
-      "origami_unfoldRate": 1.35
+      "origami_unfoldRate": 1.35,
+      "origami_filterEnvAmt": 0.585,
+      "origami_lfo1Rate": 0.208,
+      "origami_lfo1Depth": 0.246
     }
   },
   "schema_version": 1,
@@ -60,5 +63,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.645,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.208,
+    "SPACE": 0.404
+  }
 }

@@ -54,7 +54,13 @@
       "ocelot_tapeWobble": 0.05,
       "ocelot_understoryLevel": 0.3,
       "ocelot_xf_floorEmerg": 0.4,
-      "ocelot_xf_floorUnder": 0.55
+      "ocelot_xf_floorUnder": 0.55,
+      "ocelot_macroCharacter": 0.608,
+      "ocelot_macroMovement": 0.57,
+      "ocelot_macroCoupling": 0.557,
+      "ocelot_macroSpace": 0.556,
+      "ocelot_filterEnvDepth": 0.488,
+      "ocelot_lfoRate": 0.231
     },
     "Onset": {
       "perc_drive": 0.08,
@@ -89,7 +95,14 @@
       "perc_v3_pan": 0.2,
       "perc_v3_pitch": 5.0,
       "perc_v3_snap": 0.3,
-      "perc_v3_tone": 0.7
+      "perc_v3_tone": 0.7,
+      "perc_macro_punch": 0.615,
+      "perc_macro_mutate": 0.577,
+      "perc_macro_machine": 0.564,
+      "perc_macro_space": 0.563,
+      "perc_filterEnvAmt": 0.488,
+      "perc_lfo1Rate": 0.231,
+      "perc_lfo1Depth": 0.263
     }
   },
   "schema_version": 1,
@@ -103,5 +116,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.591,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.54,
+    "SPACE": 0.539
+  }
 }

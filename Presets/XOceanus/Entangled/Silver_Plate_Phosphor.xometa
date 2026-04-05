@@ -46,7 +46,14 @@
       "obscura_level": 0.841,
       "obscura_movement": 0.306,
       "obscura_space": 0.727,
-      "obscura_warmth": 0.566
+      "obscura_warmth": 0.566,
+      "obscura_macroCharacter": 0.657,
+      "obscura_macroMovement": 0.566,
+      "obscura_macroCoupling": 0.61,
+      "obscura_macroSpace": 0.464,
+      "obscura_filterEnvAmt": 0.511,
+      "obscura_lfo1Rate": 0.151,
+      "obscura_lfo1Depth": 0.246
     },
     "Oceanic": {
       "ocean_aggression": 0.229,
@@ -55,7 +62,14 @@
       "ocean_level": 0.772,
       "ocean_movement": 0.468,
       "ocean_space": 0.722,
-      "ocean_warmth": 0.497
+      "ocean_warmth": 0.497,
+      "ocean_macroCharacter": 0.653,
+      "ocean_macroMovement": 0.562,
+      "ocean_macroCoupling": 0.606,
+      "ocean_macroSpace": 0.46,
+      "ocean_filterEnvAmt": 0.511,
+      "ocean_lfo1Rate": 0.151,
+      "ocean_lfo1Depth": 0.246
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.647,
+    "MOVEMENT": 0.556,
+    "COUPLING": 0.6,
+    "SPACE": 0.454
+  }
 }

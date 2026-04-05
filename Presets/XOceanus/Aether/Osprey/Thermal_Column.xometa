@@ -30,9 +30,14 @@
       "osprey_ampRelease": 7.5,
       "osprey_fog": 0.25,
       "osprey_filterTilt": 0.82,
-      "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.0,
-      "osprey_harborVerb": 0.88
+      "osprey_macroCoupling": 0.215,
+      "osprey_macroSpace": 0.859,
+      "osprey_harborVerb": 0.88,
+      "osprey_macroCharacter": 0.35,
+      "osprey_macroMovement": 0.474,
+      "osprey_filterEnvDepth": 0.44,
+      "osprey_lfo2Rate": 0.037,
+      "osprey_lfo2Depth": 0.227
     }
   },
   "schema_version": 1,
@@ -45,5 +50,11 @@
     "natural"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.317,
+    "MOVEMENT": 0.441,
+    "COUPLING": 0.182,
+    "SPACE": 0.826
+  }
 }

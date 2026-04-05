@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Reed Flex",
+  "mood": "Ethereal",
+  "engines": [
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Flexible reeds at a wetland edge, each bending at its own natural frequency in gentle wind.",
+  "tags": [
+    "ethereal",
+    "reed",
+    "flex",
+    "wetland",
+    "natural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.58,
+    "movement": 0.28,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.33,
+      "osier_macroMovement": 0.3,
+      "osier_macroCoupling": 0.09,
+      "osier_macroSpace": 0.87,
+      "osier_windDensity": 0.38,
+      "osier_filterEnvAmt": 0.27,
+      "osier_lfo1Rate": 0.032,
+      "osier_lfo1Depth": 0.14,
+      "osier_attack": 2.8,
+      "osier_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.09,
+    "SPACE": 0.87
+  }
+}

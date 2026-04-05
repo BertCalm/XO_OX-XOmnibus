@@ -75,7 +75,14 @@
       "owl_subLevel3": 0.35,
       "owl_subLevel4": 0.0,
       "owl_subMix": 0.45,
-      "owl_subWave": 0.35
+      "owl_subWave": 0.35,
+      "owl_macroCharacter": 0.53,
+      "owl_macroMovement": 0.354,
+      "owl_macroCoupling": 0.15,
+      "owl_macroSpace": 0.381,
+      "owl_filterEnvDepth": 0.476,
+      "owl_lfoRate": 0.245,
+      "owl_lfoDepth": 0.171
     }
   },
   "schema_version": 1,
@@ -86,5 +93,11 @@
     "harmonic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.334,
+    "COUPLING": 0.13,
+    "SPACE": 0.361
+  }
 }

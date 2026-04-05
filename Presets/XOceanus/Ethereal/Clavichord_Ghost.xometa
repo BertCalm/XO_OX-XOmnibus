@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Clavichord Ghost",
+  "mood": "Ethereal",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The quietest keyboard instrument ever made. A clavichord played so softly only the room knows.",
+  "tags": [
+    "ethereal",
+    "clavichord",
+    "ghost",
+    "intimate",
+    "quiet"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.7,
+    "movement": 0.18,
+    "density": 0.2,
+    "space": 0.87,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_macroCharacter": 0.35,
+      "orph_macroMovement": 0.2,
+      "orph_macroCoupling": 0.1,
+      "orph_macroSpace": 0.83,
+      "orph_pluckBrightness": 0.55,
+      "orph_filterEnvAmt": 0.26,
+      "orph_lfo1Rate": 0.008,
+      "orph_lfo1Depth": 0.1,
+      "orph_attack": 0.08,
+      "orph_release": 7.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.83
+  }
+}

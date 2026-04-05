@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Rust Veil",
+  "mood": "Coupling",
+  "engines": [
+    "Opaline",
+    "Overgrow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPALINE prepared piano rust barely seeds OVERGROW forest growth rate \u2014 prepared string tension as the subtle force behind organic expansion.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "prepared",
+    "organic",
+    "EnvToMorph",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_preparedDensity": 0.5,
+      "opal2_filterEnvAmt": 0.4,
+      "opal2_lfo1Rate": 0.1,
+      "opal2_lfo1Depth": 0.2,
+      "opal2_macroCharacter": 0.45,
+      "opal2_macroMovement": 0.42,
+      "opal2_macroCoupling": 0.5,
+      "opal2_macroSpace": 0.48
+    },
+    "Overgrow": {
+      "grow_growthRate": 0.5,
+      "grow_filterEnvAmt": 0.38,
+      "grow_lfo1Rate": 0.09,
+      "grow_lfo1Depth": 0.18,
+      "grow_macroCharacter": 0.43,
+      "grow_macroMovement": 0.42,
+      "grow_macroCoupling": 0.48,
+      "grow_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opaline",
+        "engineB": "Overgrow",
+        "type": "EnvToMorph",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.49,
+    "SPACE": 0.49
+  }
+}

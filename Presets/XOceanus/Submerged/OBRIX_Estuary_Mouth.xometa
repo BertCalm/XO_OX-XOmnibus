@@ -82,10 +82,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.3,
       "obrix_level": 0.8,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
-      "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroCharacter": 0.444,
+      "obrix_macroMovement": 0.481,
+      "obrix_macroCoupling": 0.309,
+      "obrix_macroSpace": 0.74,
       "obrix_polyphony": 3,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,
@@ -116,11 +116,20 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3
+      "obrix_residentStrength": 0.3,
+      "obrix_fltEnvAmt": 0.461,
+      "obrix_lfo1Rate": 0.07,
+      "obrix_lfo1Depth": 0.212
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.408,
+    "MOVEMENT": 0.445,
+    "COUPLING": 0.273,
+    "SPACE": 0.704
+  }
 }

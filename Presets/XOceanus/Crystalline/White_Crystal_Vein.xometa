@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "White Crystal Vein",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A vein of white crystal running through dark stone. Bright and cold against mineral background.",
+  "tags": [
+    "crystalline",
+    "white",
+    "vein",
+    "mineral",
+    "stone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.35,
+    "space": 0.63,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.51,
+      "obsidian_macroMovement": 0.32,
+      "obsidian_macroCoupling": 0.14,
+      "obsidian_macroSpace": 0.54,
+      "obsidian_filterEnvAmt": 0.54,
+      "obsidian_lfo1Rate": 0.13,
+      "obsidian_lfo1Depth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.14,
+    "SPACE": 0.54
+  }
+}

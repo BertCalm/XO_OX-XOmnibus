@@ -62,7 +62,14 @@
       "oblq_modDepth": 0.6,
       "oblq_modRate": 0.5,
       "oblq_prismAngle": 0.55,
-      "oblq_refraction": 0.6
+      "oblq_refraction": 0.6,
+      "oblq_macroCharacter": 0.509,
+      "oblq_macroMovement": 0.546,
+      "oblq_macroCoupling": 0.656,
+      "oblq_macroSpace": 0.568,
+      "oblq_filterEnvAmt": 0.421,
+      "oblq_lfo1Rate": 0.143,
+      "oblq_lfo1Depth": 0.384
     },
     "Ocelot": {
       "ocelot_ampAttack": 0.04,
@@ -72,7 +79,13 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_macroCharacter": 0.503,
+      "ocelot_macroMovement": 0.54,
+      "ocelot_macroCoupling": 0.65,
+      "ocelot_macroSpace": 0.562,
+      "ocelot_filterEnvDepth": 0.421,
+      "ocelot_lfoRate": 0.143
     },
     "Optic": {
       "optic_autoPulse": 0,
@@ -84,7 +97,13 @@
       "optic_vizFeedback": 0.5,
       "optic_vizIntensity": 0.65,
       "optic_vizMode": 1,
-      "optic_vizSpeed": 0.55
+      "optic_vizSpeed": 0.55,
+      "optic_macroCharacter": 0.514,
+      "optic_macroMovement": 0.551,
+      "optic_macroCoupling": 0.661,
+      "optic_macroSpace": 0.573,
+      "optic_filterEnvAmt": 0.421,
+      "optic_lfoRate": 0.143
     }
   },
   "schema_version": 1,
@@ -102,5 +121,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.486,
+    "MOVEMENT": 0.523,
+    "COUPLING": 0.633,
+    "SPACE": 0.545
+  }
 }

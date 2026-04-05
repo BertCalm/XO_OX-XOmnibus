@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Infrared Edge",
+  "mood": "Prism",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Infrared spectrum edge where saturation burns hottest. Low-frequency heat meeting high-frequency aggression.",
+  "tags": ["prism", "aggressive", "infrared", "edge", "heat"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.85,
+    "density": 0.9,
+    "space": 0.18,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.88,
+      "fat_macroMovement": 0.83,
+      "fat_macroCoupling": 0.2,
+      "fat_macroSpace": 0.2,
+      "fat_satDrive": 0.9,
+      "fat_mojo": 0.85,
+      "fat_filterEnvAmt": 0.8,
+      "fat_lfo1Rate": 0.42,
+      "fat_lfo1Depth": 0.44,
+      "fat_filterCutoff": 0.5,
+      "fat_filterRes": 0.7,
+      "fat_attackTime": 0.008,
+      "fat_decayTime": 0.25,
+      "fat_sustain": 0.42,
+      "fat_releaseTime": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
+}

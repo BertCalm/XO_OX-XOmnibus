@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Membrane Orbit",
+  "mood": "Coupling",
+  "engines": [
+    "Osmosis",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSMOSIS envelope follower feeds ORBITAL spectral evolution \u2014 external signal presence driving harmonic partial growth, biology as additive engine.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "membrane",
+    "additive",
+    "EnvelopeFollow",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.48,
+    "movement": 0.54,
+    "density": 0.52,
+    "space": 0.52,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.58,
+      "osmo_filterEnvAmt": 0.52,
+      "osmo_lfo1Rate": 0.13,
+      "osmo_lfo1Depth": 0.28,
+      "osmo_macroCharacter": 0.52,
+      "osmo_macroMovement": 0.52,
+      "osmo_macroCoupling": 0.62,
+      "osmo_macroSpace": 0.52
+    },
+    "Orbital": {
+      "orb_brightness": 0.56,
+      "orb_macroSpectrum": 0.52,
+      "orb_macroEvolve": 0.52,
+      "orb_macroCoupling": 0.62,
+      "orb_macroSpace": 0.52,
+      "orb_filterEnvAmt": 0.5,
+      "orb_lfo1Rate": 0.14,
+      "orb_lfo1Depth": 0.26
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Orbital",
+        "type": "EnvelopeFollow",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.62,
+    "SPACE": 0.52
+  }
+}

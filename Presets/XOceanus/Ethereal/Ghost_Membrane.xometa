@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Membrane",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis",
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A semi-permeable membrane made of volcanic glass. Only certain harmonics pass, the rest crystallize at the boundary.",
+  "tags": [
+    "ethereal",
+    "ghost",
+    "membrane",
+    "coupling",
+    "crystal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.45,
+    "movement": 0.2,
+    "density": 0.18,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.32,
+      "osmo_macroMovement": 0.22,
+      "osmo_macroCoupling": 0.1,
+      "osmo_macroSpace": 0.89,
+      "osmo_permeability": 0.48,
+      "osmo_filterEnvAmt": 0.26,
+      "osmo_lfo1Rate": 0.012,
+      "osmo_lfo1Depth": 0.11,
+      "osmo_attack": 3.5,
+      "osmo_release": 10.5
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.28,
+      "obsidian_macroMovement": 0.18,
+      "obsidian_macroCoupling": 0.08,
+      "obsidian_macroSpace": 0.91,
+      "obsidian_depth": 0.45,
+      "obsidian_filterEnvAmt": 0.22,
+      "obsidian_lfo1Rate": 0.008,
+      "obsidian_lfo1Depth": 0.09,
+      "obsidian_attack": 4.5,
+      "obsidian_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osmosis",
+        "engineB": "Obsidian",
+        "type": "FilterToFilter",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.09,
+    "SPACE": 0.9
+  }
+}

@@ -46,7 +46,14 @@
       "perc_v1_decay": 0.4,
       "perc_v1_pitch": 0.0,
       "perc_v1_snap": 0.6,
-      "perc_v1_tone": 0.5
+      "perc_v1_tone": 0.5,
+      "perc_macro_punch": 0.594,
+      "perc_macro_mutate": 0.577,
+      "perc_macro_machine": 0.612,
+      "perc_macro_space": 0.414,
+      "perc_filterEnvAmt": 0.466,
+      "perc_lfo1Rate": 0.244,
+      "perc_lfo1Depth": 0.273
     },
     "Ouroboros": {
       "ouro_chaosIndex": 0.6,
@@ -56,7 +63,13 @@
       "ouro_phi": -0.4,
       "ouro_rate": 200.0,
       "ouro_theta": 0.8,
-      "ouro_topology": 2
+      "ouro_topology": 2,
+      "ouro_macroCharacter": 0.572,
+      "ouro_macroMovement": 0.555,
+      "ouro_macroCoupling": 0.59,
+      "ouro_macroSpace": 0.392,
+      "ouro_filterEnvAmt": 0.466,
+      "ouro_lfoRate": 0.244
     }
   },
   "schema_version": 1,
@@ -69,5 +82,11 @@
   ],
   "tempo": 120,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.588,
+    "SPACE": 0.39
+  }
 }

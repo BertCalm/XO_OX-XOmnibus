@@ -52,7 +52,14 @@
       "fat_mojoCtrl": 0.696,
       "fat_outputLevel": 0.83,
       "fat_outputPan": -0.027,
-      "fat_satDrive": 0.691
+      "fat_satDrive": 0.691,
+      "fat_macroMojo": 0.524,
+      "fat_macroGrit": 0.589,
+      "fat_macroSize": 0.514,
+      "fat_macroCrush": 0.495,
+      "fat_fltEnvAmt": 0.467,
+      "fat_lfo1Rate": 0.198,
+      "fat_lfo1Depth": 0.255
     },
     "Ole": {
       "ole_couplingIn": 0.652,
@@ -62,7 +69,13 @@
       "ole_macro3": 0.559,
       "ole_macro4": 0.346,
       "ole_outputLevel": 0.761,
-      "ole_outputPan": -0.03
+      "ole_outputPan": -0.03,
+      "ole_macroDrama": 0.454,
+      "ole_macroFuego": 0.519,
+      "ole_macroIsla": 0.444,
+      "ole_macroSides": 0.425,
+      "ole_filterEnvAmt": 0.467,
+      "ole_lfoRate": 0.198
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "entangled"
   ],
   "tempo": 120,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.476,
+    "MOVEMENT": 0.541,
+    "COUPLING": 0.466,
+    "SPACE": 0.447
+  }
 }

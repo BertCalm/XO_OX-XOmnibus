@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morning Grain",
+  "mood": "Luminous",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Morning light through window grain — the granular texture inherits the warmth of early sun filtering through slightly dirty glass, luminous and domestic and perfect.",
+  "tags": ["luminous", "morning", "grain", "warm", "window"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.60,
+    "movement": 0.40,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.50,
+      "opal_macroMovement": 0.40,
+      "opal_macroCoupling": 0.14,
+      "opal_macroSpace": 0.58,
+      "opal_filterEnvAmt": 0.52,
+      "opal_grainSize": 0.52,
+      "opal_grainDensity": 0.62,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.58,
+      "opal_lfo1Rate": 0.06,
+      "opal_lfo1Depth": 0.20,
+      "opal_lfo2Rate": 0.11,
+      "opal_lfo2Depth": 0.12,
+      "opal_attack": 0.6,
+      "opal_decay": 1.8,
+      "opal_sustain": 0.76,
+      "opal_release": 4.8,
+      "opal_filterCutoff": 7800,
+      "opal_filterRes": 0.20,
+      "opal_reverbMix": 0.50,
+      "opal_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.14,
+    "SPACE": 0.58
+  }
+}

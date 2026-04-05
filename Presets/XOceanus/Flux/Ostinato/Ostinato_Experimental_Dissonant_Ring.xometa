@@ -146,10 +146,10 @@
       "osti_seat8_pitchEnv": 0.0,
       "osti_seat8_exciterMix": 0.62,
       "osti_seat8_bodyModel": 0,
-      "osti_macroGather": 0.15,
-      "osti_macroFire": 0.6,
-      "osti_macroCircle": 0.65,
-      "osti_macroSpace": 0.35,
+      "osti_macroGather": 0.745,
+      "osti_macroFire": 0.673,
+      "osti_macroCircle": 0.299,
+      "osti_macroSpace": 0.317,
       "osti_tempo": 92.0,
       "osti_swing": 8.0,
       "osti_masterTune": 0.0,
@@ -165,10 +165,19 @@
       "osti_compRelease": 40.0,
       "osti_circleAmount": 0.65,
       "osti_humanize": 0.38,
-      "osti_masterLevel": 0.8
+      "osti_masterLevel": 0.8,
+      "osti_filterEnvAmt": 0.675,
+      "osti_lfo1Rate": 0.458,
+      "osti_lfo1Depth": 0.269
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.724,
+    "MOVEMENT": 0.652,
+    "COUPLING": 0.278,
+    "SPACE": 0.296
   }
 }

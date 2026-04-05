@@ -52,7 +52,14 @@
       "fat_mojoCtrl": 0.323,
       "fat_outputLevel": 0.801,
       "fat_outputPan": 0.036,
-      "fat_satDrive": 0.683
+      "fat_satDrive": 0.683,
+      "fat_macroMojo": 0.67,
+      "fat_macroGrit": 0.586,
+      "fat_macroSize": 0.787,
+      "fat_macroCrush": 0.564,
+      "fat_fltEnvAmt": 0.403,
+      "fat_lfo1Rate": 0.199,
+      "fat_lfo1Depth": 0.255
     },
     "Ottoni": {
       "otto_couplingIn": 0.738,
@@ -62,7 +69,13 @@
       "otto_macro3": 0.487,
       "otto_macro4": 0.501,
       "otto_outputLevel": 0.915,
-      "otto_outputPan": 0.027
+      "otto_outputPan": 0.027,
+      "otto_macroCharacter": 0.6,
+      "otto_macroMovement": 0.516,
+      "otto_macroCoupling": 0.717,
+      "otto_macroSpace": 0.494,
+      "otto_filterEnvAmt": 0.403,
+      "otto_lfoRate": 0.199
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "entangled"
   ],
   "tempo": 100,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.622,
+    "MOVEMENT": 0.538,
+    "COUPLING": 0.739,
+    "SPACE": 0.516
+  }
 }

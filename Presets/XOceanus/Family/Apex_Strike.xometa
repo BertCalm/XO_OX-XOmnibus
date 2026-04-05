@@ -36,11 +36,25 @@
   "parameters": {
     "Odyssey": {
       "level": 0.677,
-      "pan": -0.118
+      "pan": -0.118,
+      "drift_macroCharacter": 0.58,
+      "drift_macroMovement": 0.338,
+      "drift_macroCoupling": 0.627,
+      "drift_macroSpace": 0.498,
+      "drift_filterEnvAmt": 0.446,
+      "drift_lfoRate": 0.096,
+      "drift_lfoDepth": 0.285
     },
     "Orca": {
       "level": 0.654,
-      "pan": 0.119
+      "pan": 0.119,
+      "orca_macroCharacter": 0.566,
+      "orca_macroMovement": 0.324,
+      "orca_macroCoupling": 0.613,
+      "orca_macroSpace": 0.484,
+      "orca_filterEnvAmt": 0.446,
+      "orca_lfo1Rate": 0.096,
+      "orca_lfo1Depth": 0.285
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.308,
+    "COUPLING": 0.597,
+    "SPACE": 0.468
+  }
 }

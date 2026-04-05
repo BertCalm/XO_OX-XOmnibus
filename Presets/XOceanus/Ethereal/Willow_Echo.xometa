@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Willow Echo",
+  "mood": "Ethereal",
+  "engines": [
+    "Osier",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Willow branches over an oxbow lake. The reverb carries each wind phrase into the still water reflection.",
+  "tags": [
+    "ethereal",
+    "willow",
+    "echo",
+    "coupling",
+    "reflection"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.62,
+    "movement": 0.32,
+    "density": 0.17,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.36,
+      "osier_macroMovement": 0.34,
+      "osier_macroCoupling": 0.12,
+      "osier_macroSpace": 0.88,
+      "osier_windDensity": 0.42,
+      "osier_filterEnvAmt": 0.28,
+      "osier_lfo1Rate": 0.038,
+      "osier_lfo1Depth": 0.15,
+      "osier_attack": 2.5,
+      "osier_release": 8.0
+    },
+    "Oxbow": {
+      "oxb_macroCharacter": 0.3,
+      "oxb_macroMovement": 0.28,
+      "oxb_macroCoupling": 0.1,
+      "oxb_macroSpace": 0.92,
+      "oxb_entangle": 0.5,
+      "oxb_filterEnvAmt": 0.24,
+      "oxb_lfo1Rate": 0.015,
+      "oxb_lfo1Depth": 0.12,
+      "oxb_attack": 3.5,
+      "oxb_release": 11.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osier",
+        "engineB": "Oxbow",
+        "type": "LFOToPitch",
+        "amount": 0.11
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.11,
+    "SPACE": 0.9
+  }
+}

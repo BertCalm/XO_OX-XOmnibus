@@ -39,7 +39,14 @@
       "obbl_embouchureA": 0.9,
       "obbl_instrumentA": 1.0,
       "obbl_releaseA": 900.0,
-      "obbl_spaceA": 0.92
+      "obbl_spaceA": 0.92,
+      "obbl_macroBond": 0.601,
+      "obbl_macroBreath": 0.515,
+      "obbl_macroWind": 0.327,
+      "obbl_macroMischief": 0.518,
+      "obbl_filterEnvAmt": 0.494,
+      "obbl_lfoRateA": 0.161,
+      "obbl_lfoDepthA": 0.259
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "brass"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.587,
+    "MOVEMENT": 0.501,
+    "COUPLING": 0.313,
+    "SPACE": 0.504
+  }
 }

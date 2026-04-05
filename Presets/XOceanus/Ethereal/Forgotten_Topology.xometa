@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Forgotten Topology",
+  "mood": "Ethereal",
+  "engines": ["Orbweave", "Ombre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Knot matrices that memory no longer holds completely. Orbweave traces paths that Ombre keeps losing, the topology dissolving at its own edges.",
+  "tags": ["ethereal", "whisper", "coupling", "topological", "memory", "dissolve", "knot"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.58,
+    "movement": 0.30,
+    "density": 0.32,
+    "space": 0.90,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.40,
+      "weave_macroMovement": 0.36,
+      "weave_macroCoupling": 0.15,
+      "weave_macroSpace": 0.86,
+      "weave_knotDepth": 0.28,
+      "weave_filterEnvAmt": 0.30,
+      "weave_lfo1Rate": 0.04,
+      "weave_lfo1Depth": 0.18,
+      "weave_attack": 1.0,
+      "weave_release": 5.0
+    },
+    "Ombre": {
+      "ombre_macroCharacter": 0.34,
+      "ombre_macroMovement": 0.26,
+      "ombre_macroCoupling": 0.12,
+      "ombre_macroSpace": 0.92,
+      "ombre_blend": 0.50,
+      "ombre_filterEnvAmt": 0.24,
+      "ombre_lfo1Rate": 0.02,
+      "ombre_lfo1Depth": 0.12,
+      "ombre_attack": 2.5,
+      "ombre_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Ombre",
+        "type": "LFOToPitch",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.13,
+    "SPACE": 0.89
+  }
+}

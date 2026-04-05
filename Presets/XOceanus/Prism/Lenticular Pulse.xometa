@@ -40,13 +40,15 @@
       "ocelot_filterReso": 0.184,
       "ocelot_huntDepth": 0.49,
       "ocelot_level": 0.79,
-      "ocelot_macroCharacter": 0.525,
-      "ocelot_macroCoupling": 0.0,
-      "ocelot_macroMovement": 0.88,
-      "ocelot_macroSpace": 0.68,
+      "ocelot_macroCharacter": 0.603,
+      "ocelot_macroCoupling": 0.238,
+      "ocelot_macroMovement": 0.44,
+      "ocelot_macroSpace": 0.44,
       "ocelot_reverbMix": 0.442,
       "ocelot_stalkerRate": 4.096,
-      "ocelot_stereoWidth": 0.766
+      "ocelot_stereoWidth": 0.766,
+      "ocelot_filterEnvDepth": 0.553,
+      "ocelot_lfoRate": 0.207
     }
   },
   "schema_version": 1,
@@ -59,5 +61,11 @@
     "prism"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.586,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.221,
+    "SPACE": 0.423
+  }
 }

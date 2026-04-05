@@ -67,7 +67,7 @@
       "ow_fmSustain": 12,
       "ow_fmRelease": 6,
       "ow_fmLfoRate": 3,
-      "ow_fmLfoDepth": 0,
+      "ow_fmLfoDepth": 0.155,
       "ow_brrSample": 0,
       "ow_brrInterp": 1,
       "ow_snesAttack": 10,
@@ -109,10 +109,11 @@
       "ow_eraMemTime": 0.0,
       "ow_eraMemMix": 0.0,
       "ow_colorTheme": 0,
-      "ow_macroEra": 0.0,
-      "ow_macroCrush": 0.0,
-      "ow_macroGlitch": 0.0,
-      "ow_macroSpace": 0.0
+      "ow_macroEra": 0.415,
+      "ow_macroCrush": 0.427,
+      "ow_macroGlitch": 0.24,
+      "ow_macroSpace": 0.344,
+      "ow_filterEnvDepth": 0.477
     }
   },
   "coupling": {
@@ -126,5 +127,11 @@
     "density": 0.5,
     "space": 0.1,
     "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.402,
+    "MOVEMENT": 0.414,
+    "COUPLING": 0.227,
+    "SPACE": 0.331
   }
 }

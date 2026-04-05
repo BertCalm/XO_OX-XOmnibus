@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Petroglyphic",
+  "mood": "Deep",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Symbols carved into obsidian cave walls by unknown hands — the stone vibrates at the frequency of ancient intent, crystal memory of the deepest human past.",
+  "tags": ["deep", "ancient", "crystalline", "carved", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.58,
+    "movement": 0.14,
+    "density": 0.65,
+    "space": 0.76,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.44,
+      "obsidian_macroMovement": 0.14,
+      "obsidian_macroCoupling": 0.12,
+      "obsidian_macroSpace": 0.74,
+      "obsidian_filterEnvAmt": 0.38,
+      "obsidian_lfo1Rate": 0.03,
+      "obsidian_lfo1Depth": 0.16,
+      "obsidian_depth": 0.82
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.12,
+    "SPACE": 0.74
+  }
+}

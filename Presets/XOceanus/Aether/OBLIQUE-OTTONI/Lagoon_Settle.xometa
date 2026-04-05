@@ -36,11 +36,24 @@
   "parameters": {
     "Oblique": {
       "level": 0.761,
-      "pan": 0.02
+      "pan": 0.02,
+      "oblq_macroCharacter": 0.394,
+      "oblq_macroMovement": 0.426,
+      "oblq_macroCoupling": 0.609,
+      "oblq_macroSpace": 0.848,
+      "oblq_filterEnvAmt": 0.318,
+      "oblq_lfo1Rate": 0.024,
+      "oblq_lfo1Depth": 0.144
     },
     "Ottoni": {
       "level": 0.693,
-      "pan": -0.062
+      "pan": -0.062,
+      "otto_macroCharacter": 0.349,
+      "otto_macroMovement": 0.381,
+      "otto_macroCoupling": 0.564,
+      "otto_macroSpace": 0.803,
+      "otto_filterEnvAmt": 0.318,
+      "otto_lfoRate": 0.024
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.371,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.586,
+    "SPACE": 0.825
+  }
 }

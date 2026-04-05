@@ -34,6 +34,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Optional
 
+from xpn_voice_taxonomy import ONSET_VOICES, VOICE_CATEGORIES  # canonical voice names (QDD L4 fix)
+
 # Voice type keywords — ordered by specificity (most specific first)
 VOICE_KEYWORDS = {
     "kick":  ["kick", "bd", "bass drum", "bassdrum", "bass_drum", "kik", "kck"],
@@ -231,7 +233,7 @@ def build_kit_wav_map(
     """
     wav_map = {}
 
-    for voice in ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx"]:
+    for voice in ONSET_VOICES:  # ["kick","snare","chat","ohat","clap","tom","perc","fx"]
         samples = categories.get(voice, [])
         if not samples:
             continue
@@ -268,7 +270,7 @@ def organize_samples(
         output_dir.mkdir(parents=True, exist_ok=True)
 
     wav_map = {}
-    for voice in ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx"]:
+    for voice in ONSET_VOICES:  # ["kick","snare","chat","ohat","clap","tom","perc","fx"]
         samples = categories.get(voice, [])
         selected = samples[:max_layers]
 
@@ -291,7 +293,7 @@ def print_classification(categories: dict):
     total = sum(len(v) for v in categories.values())
     print(f"\nClassified {total} samples:\n")
 
-    for voice in ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx", "unknown"]:
+    for voice in ONSET_VOICES + ["unknown"]:
         samples = categories.get(voice, [])
         if not samples:
             continue

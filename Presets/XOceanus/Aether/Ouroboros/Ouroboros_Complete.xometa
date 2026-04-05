@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.6,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.796,
+      "ouro_macroCharacter": 0.468,
+      "ouro_macroMovement": 0.515,
+      "ouro_macroCoupling": 0.226,
+      "ouro_filterEnvAmt": 0.319,
+      "ouro_lfoRate": 0.068
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "b003",
     "transcendental"
   ],
-  "description": "Full expressive range: injection=0.3 (external audio perturbs attractor), macroCoup=0.6 (tighter leash + more injection). CHARACTER sweeps near-stable to maximum chaos. The complete OUROBOROS in one preset."
+  "description": "Full expressive range: injection=0.3 (external audio perturbs attractor), macroCoup=0.6 (tighter leash + more injection). CHARACTER sweeps near-stable to maximum chaos. The complete OUROBOROS in one preset.",
+  "macros": {
+    "CHARACTER": 0.466,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.224,
+    "SPACE": 0.794
+  }
 }

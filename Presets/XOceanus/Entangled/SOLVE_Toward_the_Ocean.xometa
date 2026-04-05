@@ -120,7 +120,7 @@
       "owit_denDecay": 0.5,
       "owit_denMix": 0.35,
       "owit_lfo1Rate": 1.0,
-      "owit_lfo1Depth": 0.0,
+      "owit_lfo1Depth": 0.306,
       "owit_lfo1Shape": 0,
       "owit_lfo1Dest": 0,
       "owit_lfo2Rate": 0.3,
@@ -132,7 +132,12 @@
       "owit_macroSolve": 0.0,
       "owit_macroSynapse": 0.0,
       "owit_macroChromatophore": 0.0,
-      "owit_macroDen": 0.0
+      "owit_macroDen": 0.0,
+      "owit_macroCharacter": 0.465,
+      "owit_macroMovement": 0.519,
+      "owit_macroCoupling": 0.514,
+      "owit_macroSpace": 0.463,
+      "owit_filterEnvAmt": 0.428
     },
     "OceanDeep": {
       "deep_subShape": 2,
@@ -156,7 +161,14 @@
       "deep_decay": 0.8,
       "deep_sustain": 0.65,
       "deep_release": 4.0,
-      "deep_velCutoffAmt": 0.3
+      "deep_velCutoffAmt": 0.3,
+      "deep_macroPressure": 0.535,
+      "deep_macroCreature": 0.589,
+      "deep_macroWreck": 0.584,
+      "deep_macroAbyss": 0.533,
+      "deep_filterEnvAmt": 0.428,
+      "deep_lfo1Rate": 0.105,
+      "deep_lfo1Depth": 0.306
     }
   },
   "coupling": {
@@ -177,5 +189,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.541,
+    "COUPLING": 0.536,
+    "SPACE": 0.485
+  }
 }

@@ -34,11 +34,16 @@
       "organon_filterCutoff": 0.12,
       "organon_filterReso": 0.15,
       "organon_macroBreathe": 0.0,
-      "organon_macroCoupling": 0.0,
-      "organon_macroSpace": 0.0,
+      "organon_macroCoupling": 0.143,
+      "organon_macroSpace": 0.819,
       "organon_macroSwell": 0.0,
       "organon_reverbMix": 0.92,
-      "organon_rotarySpeed": 0.05
+      "organon_rotarySpeed": 0.05,
+      "organon_macroCharacter": 0.466,
+      "organon_macroMovement": 0.52,
+      "organon_filterEnvAmt": 0.419,
+      "organon_lfo1Rate": 0.055,
+      "organon_lfo1Depth": 0.107
     }
   },
   "schema_version": 1,
@@ -52,5 +57,11 @@
     "vast"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.467,
+    "MOVEMENT": 0.521,
+    "COUPLING": 0.144,
+    "SPACE": 0.82
+  }
 }

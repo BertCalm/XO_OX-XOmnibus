@@ -39,11 +39,23 @@
       "ouro_theta": 0.7,
       "ouro_phi": -0.4,
       "ouro_damping": 0.3,
-      "ouro_injection": 0.5
+      "ouro_injection": 0.5,
+      "ouro_macroCharacter": 0.613,
+      "ouro_macroMovement": 0.671,
+      "ouro_macroCoupling": 0.253,
+      "ouro_macroSpace": 0.332,
+      "ouro_filterEnvAmt": 0.571,
+      "ouro_lfoRate": 0.449
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.611,
+    "MOVEMENT": 0.669,
+    "COUPLING": 0.251,
+    "SPACE": 0.33
+  }
 }

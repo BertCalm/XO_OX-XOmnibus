@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Struck",
+  "mood": "Crystalline",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The moment of mallet contact with mineral \u2014 the physical model expressing crystalline material properties.",
+  "tags": [
+    "crystalline",
+    "mineral",
+    "struck",
+    "mallet",
+    "physical-model"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.24,
+    "movement": 0.28,
+    "density": 0.44,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oware": {
+      "owr_macroCharacter": 0.5,
+      "owr_macroMovement": 0.35,
+      "owr_macroCoupling": 0.22,
+      "owr_macroSpace": 0.6,
+      "owr_filterEnvAmt": 0.58,
+      "owr_lfo1Rate": 0.11,
+      "owr_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.22,
+    "SPACE": 0.6
+  }
+}

@@ -64,7 +64,7 @@
       "ow_fmSustain": 20,
       "ow_fmRelease": 8,
       "ow_fmLfoRate": 3,
-      "ow_fmLfoDepth": 0,
+      "ow_fmLfoDepth": 0.205,
       "ow_brrSample": 2,
       "ow_brrInterp": 1,
       "ow_snesAttack": 0,
@@ -108,11 +108,22 @@
       "ow_vertexA": 0,
       "ow_vertexB": 1,
       "ow_vertexC": 2,
-      "ow_colorTheme": 6
+      "ow_colorTheme": 6,
+      "ow_macroEra": 0.465,
+      "ow_macroCrush": 0.348,
+      "ow_macroGlitch": 0.3,
+      "ow_macroSpace": 0.315,
+      "ow_filterEnvDepth": 0.529
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.335,
+    "COUPLING": 0.287,
+    "SPACE": 0.302
+  }
 }

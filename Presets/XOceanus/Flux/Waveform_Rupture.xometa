@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Waveform Rupture",
+  "mood": "Flux",
+  "engines": ["Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Spring reverb metal splash at detonation amplitude. Dub oscillator rupturing through maximum send amount.",
+  "tags": ["flux", "aggressive", "rupture", "dub", "spring"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.85,
+    "density": 0.82,
+    "space": 0.28,
+    "aggression": 0.83
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_macroCharacter": 0.82,
+      "dub_macroMovement": 0.82,
+      "dub_macroCoupling": 0.28,
+      "dub_macroSpace": 0.3,
+      "dub_oscWave": 0.75,
+      "dub_sendAmount": 0.95,
+      "dub_filterEnvAmt": 0.72,
+      "dub_lfo1Rate": 0.45,
+      "dub_lfo1Depth": 0.42,
+      "dub_filterCutoff": 0.62,
+      "dub_filterRes": 0.65,
+      "dub_attackTime": 0.01,
+      "dub_decayTime": 0.28,
+      "dub_sustain": 0.4,
+      "dub_releaseTime": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.28,
+    "SPACE": 0.3
+  }
+}

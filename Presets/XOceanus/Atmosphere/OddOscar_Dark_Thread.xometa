@@ -37,20 +37,24 @@
       "morph_detune": 0.0,
       "morph_drift": 0.0,
       "morph_filterCutoff": 400.0,
-      "morph_filterEnvDepth": 0.0,
+      "morph_filterEnvDepth": 0.457,
       "morph_filterReso": 0.05,
       "morph_glide": 0.0,
       "morph_level": 0.68,
       "morph_macroBloom": 0.05,
       "morph_macroDepth": 0.05,
       "morph_macroDrift": 0.0,
-      "morph_macroSpace": 0.0,
+      "morph_macroSpace": 0.641,
       "morph_morph": 0.0,
       "morph_polyphony": 1,
       "morph_release": 0.8,
       "morph_sub": 0.0,
       "morph_sustain": 0.55,
-      "morph_voiceMode": 1
+      "morph_voiceMode": 1,
+      "morph_macroCharacter": 0.308,
+      "morph_macroMovement": 0.434,
+      "morph_macroCoupling": 0.231,
+      "morph_lfoRate": 0.04
     }
   },
   "schema_version": 1,
@@ -64,5 +68,11 @@
     "atmosphere"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.285,
+    "MOVEMENT": 0.411,
+    "COUPLING": 0.208,
+    "SPACE": 0.618
+  }
 }

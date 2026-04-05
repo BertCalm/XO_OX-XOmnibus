@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Trench Blow",
+  "mood": "Flux",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Trench pressure detonation from maximum depth. Bioluminescent exciter and hydrostatic compressor synchronized.",
+  "tags": ["flux", "aggressive", "trench", "deep", "pressure"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.22,
+    "movement": 0.88,
+    "density": 0.92,
+    "space": 0.22,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_macroCharacter": 0.88,
+      "deep_macroMovement": 0.86,
+      "deep_macroCoupling": 0.22,
+      "deep_macroSpace": 0.24,
+      "deep_macroPressure": 0.92,
+      "deep_biolumExcite": 0.9,
+      "deep_filterEnvAmt": 0.78,
+      "deep_lfo1Rate": 0.42,
+      "deep_lfo1Depth": 0.44,
+      "deep_filterCutoff": 0.45,
+      "deep_filterRes": 0.72,
+      "deep_attackTime": 0.012,
+      "deep_decayTime": 0.32,
+      "deep_sustain": 0.45,
+      "deep_releaseTime": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.22,
+    "SPACE": 0.24
+  }
+}

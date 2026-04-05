@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Kelp Light",
+  "mood": "Luminous",
+  "engines": ["Oceanic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light filtering through a kelp forest canopy — dappled, green-tinted, the Oceanic engine's separation parameter modelling the vertical light gradient from surface to floor.",
+  "tags": ["luminous", "kelp", "forest", "dappled", "green"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.40,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.48,
+      "ocean_macroMovement": 0.42,
+      "ocean_macroCoupling": 0.14,
+      "ocean_macroSpace": 0.65,
+      "ocean_filterEnvAmt": 0.52,
+      "ocean_separation": 0.60,
+      "ocean_chromatophore": 0.55,
+      "ocean_lfo1Rate": 0.10,
+      "ocean_lfo1Depth": 0.22,
+      "ocean_lfo2Rate": 0.04,
+      "ocean_lfo2Depth": 0.14,
+      "ocean_attack": 0.25,
+      "ocean_decay": 1.2,
+      "ocean_sustain": 0.78,
+      "ocean_release": 3.8,
+      "ocean_filterCutoff": 7000,
+      "ocean_filterRes": 0.22,
+      "ocean_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.14,
+    "SPACE": 0.65
+  }
+}

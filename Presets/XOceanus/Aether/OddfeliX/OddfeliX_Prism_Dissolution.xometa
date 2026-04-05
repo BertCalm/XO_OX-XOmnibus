@@ -37,7 +37,14 @@
       "snap_macroSpace": 0.0,
       "snap_macroTension": 0.0,
       "snap_reverbMix": 0.94,
-      "snap_sampleRate": 0.98
+      "snap_sampleRate": 0.98,
+      "snap_macroDart": 0.506,
+      "snap_macroDepth": 0.512,
+      "snap_macroSchool": 0.183,
+      "snap_macroSurface": 0.863,
+      "snap_filterEnvDepth": 0.336,
+      "snap_lfoRate": 0.037,
+      "snap_lfoDepth": 0.22
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "pure"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.435,
+    "MOVEMENT": 0.441,
+    "COUPLING": 0.112,
+    "SPACE": 0.792
+  }
 }

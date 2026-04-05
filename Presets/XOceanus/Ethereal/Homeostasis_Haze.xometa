@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Homeostasis Haze",
+  "mood": "Ethereal",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The body maintaining 98.6\u00b0F through a blizzard. The effort invisible, the result seamless.",
+  "tags": [
+    "ethereal",
+    "homeostasis",
+    "balance",
+    "invisible",
+    "sustained"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.7,
+    "movement": 0.18,
+    "density": 0.16,
+    "space": 0.91,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.33,
+      "organon_macroMovement": 0.2,
+      "organon_macroCoupling": 0.08,
+      "organon_macroSpace": 0.89,
+      "organon_metabolicRate": 0.22,
+      "organon_filterEnvAmt": 0.23,
+      "organon_lfo1Rate": 0.01,
+      "organon_lfo1Depth": 0.1,
+      "organon_attack": 4.5,
+      "organon_release": 12.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.08,
+    "SPACE": 0.89
+  }
+}

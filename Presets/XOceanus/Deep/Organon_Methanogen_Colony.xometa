@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Methanogen Colony",
+  "mood": "Deep",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A colony of methanogens in deep sediment — Archaea producing methane in complete darkness, one of Earth's oldest metabolic strategies expressed as bioluminescent hum.",
+  "tags": ["deep", "organic", "archaeal", "methane", "ancient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.60,
+    "space": 0.66,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.44,
+      "organon_macroMovement": 0.22,
+      "organon_macroCoupling": 0.12,
+      "organon_macroSpace": 0.64,
+      "organon_filterEnvAmt": 0.38,
+      "organon_lfo1Rate": 0.04,
+      "organon_lfo1Depth": 0.20,
+      "organon_metabolicRate": 0.42
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.12,
+    "SPACE": 0.64
+  }
+}

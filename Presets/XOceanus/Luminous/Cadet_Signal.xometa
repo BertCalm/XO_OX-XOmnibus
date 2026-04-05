@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Cadet Signal",
+  "mood": "Luminous",
+  "engines": ["Opcode"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A signal light blinks in perfect cadet blue morse across the open sea. Clean, purposeful, luminous — code carved in light against darkness.",
+  "tags": ["luminous", "signal", "bright", "clean", "opcode"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.44,
+    "movement": 0.42,
+    "density": 0.30,
+    "space": 0.52,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_macroCharacter": 0.55,
+      "opco_macroMovement": 0.42,
+      "opco_macroCoupling": 0.16,
+      "opco_macroSpace": 0.52,
+      "opco_filterEnvAmt": 0.52,
+      "opco_codeDepth": 0.62,
+      "opco_lfo1Rate": 0.10,
+      "opco_lfo1Depth": 0.22,
+      "opco_lfo2Rate": 0.05,
+      "opco_lfo2Depth": 0.15,
+      "opco_attack": 0.005,
+      "opco_decay": 0.6,
+      "opco_sustain": 0.75,
+      "opco_release": 1.8,
+      "opco_filterCutoff": 10000,
+      "opco_filterRes": 0.25,
+      "opco_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.16,
+    "SPACE": 0.52
+  }
+}

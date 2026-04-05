@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Figure Eight Ice",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A figure-eight knot frozen in crystal ice \u2014 the topological complexity preserved in mineral geometry.",
+  "tags": [
+    "crystalline",
+    "figure-eight",
+    "knot",
+    "ice",
+    "topology"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.32,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.53,
+      "weave_macroMovement": 0.44,
+      "weave_macroCoupling": 0.21,
+      "weave_macroSpace": 0.64,
+      "weave_filterEnvAmt": 0.56,
+      "weave_lfo1Rate": 0.07,
+      "weave_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.21,
+    "SPACE": 0.64
+  }
+}

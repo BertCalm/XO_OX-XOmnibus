@@ -36,7 +36,14 @@
       "organon_dampingCoeff": 0.2,
       "organon_enzymeSelect": 180.0,
       "organon_metabolicRate": 0.05,
-      "organon_signalFlux": 0.75
+      "organon_signalFlux": 0.75,
+      "organon_macroCharacter": 0.467,
+      "organon_macroMovement": 0.371,
+      "organon_macroCoupling": 0.121,
+      "organon_macroSpace": 0.416,
+      "organon_filterEnvAmt": 0.46,
+      "organon_lfo1Rate": 0.205,
+      "organon_lfo1Depth": 0.281
     }
   },
   "schema_version": 1,
@@ -50,5 +57,11 @@
     "foundation"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.468,
+    "MOVEMENT": 0.372,
+    "COUPLING": 0.122,
+    "SPACE": 0.417
+  }
 }

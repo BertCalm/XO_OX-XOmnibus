@@ -83,7 +83,14 @@
       "xPitchLock": 0,
       "xPolyphony": 0,
       "xSnap": 0.337,
-      "xUnison": 0
+      "xUnison": 0,
+      "snap_macroDart": 0.509,
+      "snap_macroDepth": 0.576,
+      "snap_macroSchool": 0.321,
+      "snap_macroSurface": 0.832,
+      "snap_filterEnvDepth": 0.42,
+      "snap_lfoRate": 0.049,
+      "snap_lfoDepth": 0.222
     }
   },
   "schema_version": 1,
@@ -198,5 +205,11 @@
     "heavy"
   ],
   "tempo": 140,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.438,
+    "MOVEMENT": 0.505,
+    "COUPLING": 0.25,
+    "SPACE": 0.761
+  }
 }

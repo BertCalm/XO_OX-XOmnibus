@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Euler Ghost",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Continued fractions of e as partials. The natural logarithm's skeleton made spectral.",
+  "tags": [
+    "ethereal",
+    "euler",
+    "mathematical",
+    "spectral",
+    "ghost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.15,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.3,
+      "over_macroMovement": 0.27,
+      "over_macroCoupling": 0.08,
+      "over_macroSpace": 0.89,
+      "over_cfDepth": 0.4,
+      "over_filterEnvAmt": 0.26,
+      "over_lfo1Rate": 0.018,
+      "over_lfo1Depth": 0.12,
+      "over_attack": 3.2,
+      "over_release": 9.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.08,
+    "SPACE": 0.89
+  }
+}

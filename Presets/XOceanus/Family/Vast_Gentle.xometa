@@ -36,11 +36,25 @@
   "parameters": {
     "Orca": {
       "level": 0.683,
-      "pan": -0.093
+      "pan": -0.093,
+      "orca_macroCharacter": 0.439,
+      "orca_macroMovement": 0.404,
+      "orca_macroCoupling": 0.534,
+      "orca_macroSpace": 0.533,
+      "orca_filterEnvAmt": 0.466,
+      "orca_lfo1Rate": 0.126,
+      "orca_lfo1Depth": 0.298
     },
     "Owlfish": {
       "level": 0.701,
-      "pan": 0.077
+      "pan": 0.077,
+      "owl_macroCharacter": 0.443,
+      "owl_macroMovement": 0.408,
+      "owl_macroCoupling": 0.538,
+      "owl_macroSpace": 0.537,
+      "owl_filterEnvDepth": 0.466,
+      "owl_lfoRate": 0.126,
+      "owl_lfoDepth": 0.298
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.388,
+    "COUPLING": 0.518,
+    "SPACE": 0.517
+  }
 }

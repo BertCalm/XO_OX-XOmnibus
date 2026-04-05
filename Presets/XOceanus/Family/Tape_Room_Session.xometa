@@ -37,13 +37,41 @@
     "Overdub": {
       "dub_character": 0.474,
       "dub_movement": 0.538,
-      "dub_space": 0.67
+      "dub_space": 0.67,
+      "dub_macroCharacter": 0.476,
+      "dub_macroMovement": 0.402,
+      "dub_macroCoupling": 0.321,
+      "dub_macroSpace": 0.531,
+      "dub_filterEnvAmt": 0.467,
+      "dub_lfoDepth": 0.093
     },
-    "Obscura": {},
-    "Overbite": {}
+    "Obscura": {
+      "obscura_macroCharacter": 0.494,
+      "obscura_macroMovement": 0.42,
+      "obscura_macroCoupling": 0.339,
+      "obscura_macroSpace": 0.549,
+      "obscura_filterEnvAmt": 0.467,
+      "obscura_lfo1Rate": 0.093,
+      "obscura_lfo1Depth": 0.175
+    },
+    "Overbite": {
+      "poss_macroBelly": 0.493,
+      "poss_macroBite": 0.419,
+      "poss_macroPlayDead": 0.338,
+      "poss_macroScurry": 0.548,
+      "poss_filterEnvAmount": 0.467,
+      "poss_lfo1Rate": 0.093,
+      "poss_lfo1Depth": 0.175
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.484,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.329,
+    "SPACE": 0.539
+  }
 }

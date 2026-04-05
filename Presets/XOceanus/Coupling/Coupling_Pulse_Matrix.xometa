@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Matrix",
+  "mood": "Coupling",
+  "engines": [
+    "Optic",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC pulse rate modulates ORBITAL spectral evolution \u2014 visual timing driving additive harmonic change, light pulse as spectral clock.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "visual",
+    "additive",
+    "LFOToPitch",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.58,
+      "optic_filterEnvAmt": 0.52,
+      "optic_lfo1Rate": 0.2,
+      "optic_lfo1Depth": 0.3,
+      "optic_macroCharacter": 0.54,
+      "optic_macroMovement": 0.58,
+      "optic_macroCoupling": 0.65,
+      "optic_macroSpace": 0.52
+    },
+    "Orbital": {
+      "orb_brightness": 0.56,
+      "orb_macroSpectrum": 0.52,
+      "orb_macroEvolve": 0.54,
+      "orb_macroCoupling": 0.62,
+      "orb_macroSpace": 0.52,
+      "orb_filterEnvAmt": 0.5,
+      "orb_lfo1Rate": 0.15,
+      "orb_lfo1Depth": 0.26
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orbital",
+        "type": "LFOToPitch",
+        "amount": 0.43
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.64,
+    "SPACE": 0.52
+  }
+}

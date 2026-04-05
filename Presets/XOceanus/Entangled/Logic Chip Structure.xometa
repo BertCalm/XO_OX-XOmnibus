@@ -38,12 +38,26 @@
     "Overworld": {
       "ow_eraCross": 0.5,
       "ow_glitch": 0.4,
-      "ow_filterCut": 7500.0
+      "ow_filterCut": 7500.0,
+      "ow_macroEra": 0.473,
+      "ow_macroCrush": 0.564,
+      "ow_macroGlitch": 0.514,
+      "ow_macroSpace": 0.522,
+      "ow_filterEnvDepth": 0.48,
+      "ow_fmLfoRate": 0.11,
+      "ow_fmLfoDepth": 0.321
     },
     "Organon": {
       "organon_logic": 0.6,
       "organon_density": 0.6,
-      "organon_filterCut": 6000.0
+      "organon_filterCut": 6000.0,
+      "organon_macroCharacter": 0.459,
+      "organon_macroMovement": 0.55,
+      "organon_macroCoupling": 0.5,
+      "organon_macroSpace": 0.508,
+      "organon_filterEnvAmt": 0.48,
+      "organon_lfo1Rate": 0.11,
+      "organon_lfo1Depth": 0.321
     }
   },
   "coupling": {
@@ -62,5 +76,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.551,
+    "COUPLING": 0.501,
+    "SPACE": 0.509
+  }
 }

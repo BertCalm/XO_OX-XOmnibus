@@ -39,7 +39,14 @@
       "oxb_predelay": 18,
       "oxb_dryWet": 0.5,
       "oxb_exciterDecay": 0.015,
-      "oxb_exciterBright": 0.35
+      "oxb_exciterBright": 0.35,
+      "oxb_macroCharacter": 0.408,
+      "oxb_macroMovement": 0.316,
+      "oxb_macroCoupling": 0.204,
+      "oxb_macroSpace": 0.764,
+      "oxb_filterEnvAmt": 0.49,
+      "oxb_lfo1Rate": 0.078,
+      "oxb_lfo1Depth": 0.248
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "cycling"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.379,
+    "MOVEMENT": 0.287,
+    "COUPLING": 0.175,
+    "SPACE": 0.735
+  }
 }

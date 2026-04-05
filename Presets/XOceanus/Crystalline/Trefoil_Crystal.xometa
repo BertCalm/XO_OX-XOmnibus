@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Trefoil Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Trefoil knot topology as crystal structure \u2014 three interlocked loops forming a single geometric entity.",
+  "tags": [
+    "crystalline",
+    "trefoil",
+    "knot",
+    "topology",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.35,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.58,
+      "weave_macroMovement": 0.38,
+      "weave_macroCoupling": 0.22,
+      "weave_macroSpace": 0.54,
+      "weave_filterEnvAmt": 0.61,
+      "weave_lfo1Rate": 0.05,
+      "weave_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.22,
+    "SPACE": 0.54
+  }
+}

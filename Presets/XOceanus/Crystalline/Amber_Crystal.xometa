@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Amber Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Amber \u2014 fossilized resin crystal. Ancient organic material crystallized into mineral clarity.",
+  "tags": [
+    "crystalline",
+    "amber",
+    "fossil",
+    "organic",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_macroCharacter": 0.54,
+      "onko_macroMovement": 0.35,
+      "onko_macroCoupling": 0.14,
+      "onko_macroSpace": 0.62,
+      "onko_filterEnvAmt": 0.52,
+      "onko_lfo1Rate": 0.09,
+      "onko_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.14,
+    "SPACE": 0.62
+  }
+}

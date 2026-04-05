@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Grey Ice Cloud",
+  "mood": "Crystalline",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ice crystal cloud density \u2014 the light slate grey of overcast winter sky, cold and precise as mineral fog.",
+  "tags": [
+    "crystalline",
+    "grey",
+    "ice",
+    "cloud",
+    "overcast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.33,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_macroCharacter": 0.52,
+      "cast_macroMovement": 0.42,
+      "cast_macroCoupling": 0.19,
+      "cast_macroSpace": 0.51,
+      "cast_filterEnvAmt": 0.48,
+      "cast_lfo1Rate": 0.04,
+      "cast_lfo1Depth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.19,
+    "SPACE": 0.51
+  }
+}

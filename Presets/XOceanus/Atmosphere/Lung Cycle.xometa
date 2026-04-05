@@ -49,7 +49,14 @@
       "bob_texLevel": 0.48,
       "bob_texMode": 3.0,
       "bob_texTone": 0.52,
-      "bob_texWidth": 0.65
+      "bob_texWidth": 0.65,
+      "bob_macroCharacter": 0.266,
+      "bob_macroMovement": 0.417,
+      "bob_macroCoupling": 0.256,
+      "bob_macroSpace": 0.637,
+      "bob_fltEnvAmt": 0.381,
+      "bob_lfo1Rate": 0.038,
+      "bob_lfo1Depth": 0.233
     }
   },
   "schema_version": 1,
@@ -60,5 +67,11 @@
     "cycling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.253,
+    "MOVEMENT": 0.404,
+    "COUPLING": 0.243,
+    "SPACE": 0.624
+  }
 }

@@ -41,10 +41,10 @@
     "aggression": 0.9
   },
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.0,
-    "SPACE": 0.0
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.536,
+    "COUPLING": 0.301,
+    "SPACE": 0.361
   },
   "parameters": {
     "Obrix": {
@@ -96,10 +96,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.3,
       "obrix_level": 0.78,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
-      "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroCharacter": 0.615,
+      "obrix_macroMovement": 0.572,
+      "obrix_macroCoupling": 0.337,
+      "obrix_macroSpace": 0.397,
       "obrix_polyphony": 3,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,
@@ -126,7 +126,10 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0
+      "obrix_fxMode": 0,
+      "obrix_fltEnvAmt": 0.471,
+      "obrix_lfo1Rate": 0.202,
+      "obrix_lfo1Depth": 0.265
     }
   }
 }

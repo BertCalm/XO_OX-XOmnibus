@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Acid Ring War",
+  "mood": "Entangled",
+  "engines": ["Oblong", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Acid filter ring-modulated by chaos attractor. The resonance spike and attractor signal annihilate in spectacular war.",
+  "tags": ["entangled", "aggressive", "acid", "ring-mod", "war"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.92,
+    "density": 0.84,
+    "space": 0.14,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_macroCharacter": 0.88,
+      "bob_macroMovement": 0.86,
+      "bob_macroCoupling": 0.28,
+      "bob_macroSpace": 0.14,
+      "bob_fltCutoff": 0.52,
+      "bob_fltRes": 0.92,
+      "bob_filterEnvAmt": 0.9,
+      "bob_lfo1Rate": 0.52,
+      "bob_lfo1Depth": 0.42,
+      "bob_attackTime": 0.005,
+      "bob_decayTime": 0.16,
+      "bob_sustain": 0.2,
+      "bob_releaseTime": 0.12
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.88,
+      "ouro_macroMovement": 0.9,
+      "ouro_macroCoupling": 0.28,
+      "ouro_macroSpace": 0.14,
+      "ouro_topology": 0.84,
+      "ouro_leash": 0.16,
+      "ouro_filterEnvAmt": 0.82,
+      "ouro_lfo1Rate": 0.68,
+      "ouro_lfo1Depth": 0.48,
+      "ouro_filterCutoff": 0.7,
+      "ouro_filterRes": 0.82,
+      "ouro_attackTime": 0.002,
+      "ouro_decayTime": 0.12,
+      "ouro_sustain": 0.22,
+      "ouro_releaseTime": 0.08
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ouroboros",
+        "target": "Oblong",
+        "type": "AudioToRing",
+        "amount": 0.82
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.14
+  }
+}

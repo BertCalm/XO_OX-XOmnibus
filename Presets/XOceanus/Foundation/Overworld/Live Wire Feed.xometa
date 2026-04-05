@@ -30,17 +30,20 @@
       "ow_dpcmEnable": 0,
       "ow_era": 0.43,
       "ow_eraY": 0.524,
-      "ow_macroCrush": 0.294,
-      "ow_macroEra": 0.615,
-      "ow_macroGlitch": 0.0,
-      "ow_macroSpace": 0.017,
+      "ow_macroCrush": 0.415,
+      "ow_macroEra": 0.519,
+      "ow_macroGlitch": 0.172,
+      "ow_macroSpace": 0.296,
       "ow_masterVol": 0.8,
       "ow_noiseMode": 0,
       "ow_noisePeriod": 8,
       "ow_pulseDuty": 1,
       "ow_pulseSweep": 0.093,
       "ow_triEnable": 1,
-      "ow_voiceMode": 2
+      "ow_voiceMode": 2,
+      "ow_filterEnvDepth": 0.435,
+      "ow_fmLfoRate": 0.235,
+      "ow_fmLfoDepth": 0.273
     }
   },
   "schema_version": 1,
@@ -55,5 +58,11 @@
     "anechoic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.402,
+    "COUPLING": 0.159,
+    "SPACE": 0.283
+  }
 }

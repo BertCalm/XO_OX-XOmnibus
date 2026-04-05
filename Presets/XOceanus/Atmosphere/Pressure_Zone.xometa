@@ -61,7 +61,14 @@
       "oblq_prismSpread": 0.72,
       "oblq_prismWidth": 0.78,
       "oblq_release": 4.0,
-      "oblq_sustain": 0.72
+      "oblq_sustain": 0.72,
+      "oblq_macroCharacter": 0.352,
+      "oblq_macroMovement": 0.385,
+      "oblq_macroCoupling": 0.252,
+      "oblq_macroSpace": 0.653,
+      "oblq_filterEnvAmt": 0.484,
+      "oblq_lfo1Rate": 0.095,
+      "oblq_lfo1Depth": 0.305
     }
   },
   "schema_version": 1,
@@ -74,5 +81,11 @@
     "charged-air"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.329,
+    "MOVEMENT": 0.362,
+    "COUPLING": 0.229,
+    "SPACE": 0.63
+  }
 }

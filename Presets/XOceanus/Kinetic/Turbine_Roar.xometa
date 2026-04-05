@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Turbine Roar",
+  "mood": "Kinetic",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Industrial turbine saturation roar. Continuous kinetic energy transfer at maximum GRIT and SIZE.",
+  "tags": ["kinetic", "aggressive", "turbine", "roar", "industrial"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.94,
+    "space": 0.12,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.93,
+      "fat_macroMovement": 0.86,
+      "fat_macroCoupling": 0.12,
+      "fat_macroSpace": 0.12,
+      "fat_satDrive": 0.94,
+      "fat_mojo": 0.9,
+      "fat_filterEnvAmt": 0.78,
+      "fat_lfo1Rate": 0.42,
+      "fat_lfo1Depth": 0.46,
+      "fat_filterCutoff": 0.48,
+      "fat_filterRes": 0.68,
+      "fat_attackTime": 0.012,
+      "fat_decayTime": 0.38,
+      "fat_sustain": 0.65,
+      "fat_releaseTime": 0.3
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.93,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Resurgence Cave",
+  "mood": "Deep",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A cave spring where underground water resurfaces after decades underground — the entangled tail of a journey through rock, a river reborn carrying its dark passage in its chemistry.",
+  "tags": ["deep", "cave", "resurgence", "water", "reverb"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.56,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.40,
+      "oxb_macroMovement": 0.28,
+      "oxb_macroCoupling": 0.13,
+      "oxb_macroSpace": 0.80,
+      "oxb_filterEnvAmt": 0.36,
+      "oxb_lfo1Rate": 0.06,
+      "oxb_lfo1Depth": 0.24,
+      "oxb_entangle": 0.60,
+      "oxb_phaseErosion": 0.40
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.13,
+    "SPACE": 0.80
+  }
+}

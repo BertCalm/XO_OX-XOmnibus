@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Fossil Imprint",
+  "mood": "Organic",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cellular automata frozen in time like a fossil — rule iteration stopped at maximum complexity, preserved as mineral print.",
+  "tags": ["organic", "fossil", "preserved", "geological", "cellular"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.60,
+    "space": 0.50,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Organism": {
+      "org_macroCharacter": 0.48,
+      "org_macroMovement": 0.22,
+      "org_macroCoupling": 0.16,
+      "org_macroSpace": 0.50,
+      "org_ruleSet": 0.95,
+      "org_filterEnvAmt": 0.44,
+      "org_lfo1Rate": 0.02,
+      "org_lfo1Depth": 0.16,
+      "org_lfo2Rate": 0.05,
+      "org_lfo2Depth": 0.12
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.16,
+    "SPACE": 0.50
+  }
+}

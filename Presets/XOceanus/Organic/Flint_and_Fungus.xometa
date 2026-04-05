@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Flint and Fungus",
+  "mood": "Organic",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard flint surrounded by soft fungal growth — percussive mineral strike with a decay absorbed by living mycelium.",
+  "tags": ["organic", "flint", "fungus", "contrast", "percussive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.70,
+    "movement": 0.40,
+    "density": 0.48,
+    "space": 0.50,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oware": {
+      "owr_macroCharacter": 0.44,
+      "owr_macroMovement": 0.40,
+      "owr_macroCoupling": 0.20,
+      "owr_macroSpace": 0.50,
+      "owr_material": 0.60,
+      "owr_filterEnvAmt": 0.48,
+      "owr_lfo1Rate": 0.07,
+      "owr_lfo1Depth": 0.24,
+      "owr_lfo2Rate": 0.02,
+      "owr_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.20,
+    "SPACE": 0.50
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Ancient Bog",
+  "mood": "Deep",
+  "engines": ["Oaken"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bog oak preserved in anaerobic darkness for four thousand years — wood that remembers a different sky, dense and black and resonating with impossible patience.",
+  "tags": ["deep", "bog", "preserved", "ancient", "woody"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.10,
+    "density": 0.78,
+    "space": 0.56,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oaken": {
+      "oaken_macroCharacter": 0.58,
+      "oaken_macroMovement": 0.10,
+      "oaken_macroCoupling": 0.11,
+      "oaken_macroSpace": 0.54,
+      "oaken_filterEnvAmt": 0.46,
+      "oaken_lfo1Rate": 0.01,
+      "oaken_lfo1Depth": 0.12,
+      "oaken_stringAge": 0.95
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.10,
+    "COUPLING": 0.11,
+    "SPACE": 0.54
+  }
+}

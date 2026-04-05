@@ -41,7 +41,14 @@
       "organon_metabolicRate": 2.0,
       "organon_noiseColor": 0.7,
       "organon_phasonShift": 0.0,
-      "organon_signalFlux": 0.5
+      "organon_signalFlux": 0.5,
+      "organon_macroCharacter": 0.68,
+      "organon_macroMovement": 0.455,
+      "organon_macroCoupling": 0.274,
+      "organon_macroSpace": 0.477,
+      "organon_filterEnvAmt": 0.41,
+      "organon_lfo1Rate": 0.21,
+      "organon_lfo1Depth": 0.327
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "metallic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.681,
+    "MOVEMENT": 0.456,
+    "COUPLING": 0.275,
+    "SPACE": 0.478
+  }
 }

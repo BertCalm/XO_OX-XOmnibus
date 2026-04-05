@@ -37,7 +37,14 @@
       "oracle_brightness": 0.88,
       "oracle_density": 0.06,
       "oracle_space": 0.93,
-      "oracle_timeStep": 0.92
+      "oracle_timeStep": 0.92,
+      "oracle_macroCharacter": 0.681,
+      "oracle_macroMovement": 0.564,
+      "oracle_macroCoupling": 0.326,
+      "oracle_macroSpace": 0.361,
+      "oracle_filterEnvAmt": 0.47,
+      "oracle_lfo1Rate": 0.282,
+      "oracle_lfo1Depth": 0.331
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "generative"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.673,
+    "MOVEMENT": 0.556,
+    "COUPLING": 0.318,
+    "SPACE": 0.353
+  }
 }

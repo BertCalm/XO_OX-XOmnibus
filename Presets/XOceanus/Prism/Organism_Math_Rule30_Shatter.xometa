@@ -36,11 +36,11 @@
   "parameters": {
     "Organism": {
       "org_ruleSet": 0,
-      "org_macroRule": 0.0,
-      "org_macroSeed": 0.35,
+      "org_macroRule": 0.601,
+      "org_macroSeed": 0.459,
       "org_scope": 2,
       "org_stepRate": 4.0,
-      "org_macroMutate": 0.025,
+      "org_macroMutate": 0.385,
       "org_pitchRange": 5.0,
       "org_ampAttack": 0.02,
       "org_ampDecay": 0.0,
@@ -48,8 +48,11 @@
       "org_ampRelease": 1.2,
       "org_macroCharacter": 0.55,
       "org_macroMovement": 0.8,
-      "org_macroCoupling": 0.0,
-      "org_macroSpace": 0.75
+      "org_macroCoupling": 0.289,
+      "org_macroSpace": 0.75,
+      "org_filterEnvAmt": 0.576,
+      "org_lfo1Rate": 0.185,
+      "org_lfo1Depth": 0.334
     }
   },
   "coupling": {
@@ -63,5 +66,11 @@
     "density": 0.8,
     "space": 0.72,
     "aggression": 0.7
+  },
+  "macros": {
+    "CHARACTER": 0.597,
+    "MOVEMENT": 0.455,
+    "COUPLING": 0.285,
+    "SPACE": 0.381
   }
 }

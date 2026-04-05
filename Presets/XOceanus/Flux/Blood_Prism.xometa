@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Blood Prism",
+  "mood": "Flux",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prism violet shattered and refracting through blood-red spectrum. Bounce trajectory at maximum deviation.",
+  "tags": ["flux", "aggressive", "prism", "blood", "refractive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.78,
+    "space": 0.18,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.86,
+      "oblq_macroMovement": 0.88,
+      "oblq_macroCoupling": 0.18,
+      "oblq_macroSpace": 0.2,
+      "oblq_prismColor": 0.85,
+      "oblq_bounceRate": 0.9,
+      "oblq_filterEnvAmt": 0.75,
+      "oblq_lfo1Rate": 0.62,
+      "oblq_lfo1Depth": 0.45,
+      "oblq_filterCutoff": 0.68,
+      "oblq_filterRes": 0.68,
+      "oblq_attackTime": 0.006,
+      "oblq_decayTime": 0.2,
+      "oblq_sustain": 0.35,
+      "oblq_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.18,
+    "SPACE": 0.2
+  }
+}

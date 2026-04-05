@@ -28,7 +28,14 @@
   "parameters": {
     "Origami": {
       "couplingBus": 0,
-      "couplingLevel": 0.952
+      "couplingLevel": 0.952,
+      "origami_macroCharacter": 0.538,
+      "origami_macroMovement": 0.479,
+      "origami_macroCoupling": 0.285,
+      "origami_macroSpace": 0.826,
+      "origami_filterEnvAmt": 0.404,
+      "origami_lfo1Rate": 0.047,
+      "origami_lfo1Depth": 0.146
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "origami"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.226,
+    "SPACE": 0.767
+  }
 }

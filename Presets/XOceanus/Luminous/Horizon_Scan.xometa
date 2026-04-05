@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Horizon Scan",
+  "mood": "Luminous",
+  "engines": ["Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A panoramic wavetable sweeps the full horizon, parallax stereo placing light far left and far right simultaneously. Vista filter opens like an eye at dawn.",
+  "tags": ["luminous", "panoramic", "horizon", "stereo", "outlook"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.50,
+    "movement": 0.44,
+    "density": 0.35,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.55,
+      "look_macroMovement": 0.44,
+      "look_macroCoupling": 0.17,
+      "look_macroSpace": 0.70,
+      "look_filterEnvAmt": 0.52,
+      "look_horizonScan": 0.65,
+      "look_lfo1Rate": 0.07,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.16,
+      "look_attack": 0.12,
+      "look_decay": 1.0,
+      "look_sustain": 0.82,
+      "look_release": 3.5,
+      "look_filterCutoff": 9500,
+      "look_filterRes": 0.20,
+      "look_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.17,
+    "SPACE": 0.70
+  }
+}

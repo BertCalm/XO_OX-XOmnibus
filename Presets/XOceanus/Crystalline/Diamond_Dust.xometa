@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Diamond Dust",
+  "mood": "Crystalline",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Diamond dust \u2014 microscopic ice crystals suspended in arctic air, each a tiny prism of shimmer.",
+  "tags": [
+    "crystalline",
+    "diamond-dust",
+    "arctic",
+    "suspended",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.16,
+    "movement": 0.4,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.51,
+      "sky_macroMovement": 0.31,
+      "sky_macroCoupling": 0.15,
+      "sky_macroSpace": 0.51,
+      "sky_filterEnvAmt": 0.44,
+      "sky_lfo1Rate": 0.1,
+      "sky_lfo1Depth": 0.14
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.15,
+    "SPACE": 0.51
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Fault Drone",
+  "mood": "Deep",
+  "engines": ["Omega"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The sustained hum of stressed geology — a fault line under tension, emitting low-frequency energy measured in years rather than seconds.",
+  "tags": ["deep", "drone", "geological", "fault", "sustained"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.68,
+    "movement": 0.14,
+    "density": 0.74,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Omega": {
+      "omega_macroCharacter": 0.52,
+      "omega_macroMovement": 0.14,
+      "omega_macroCoupling": 0.12,
+      "omega_macroSpace": 0.65,
+      "omega_filterEnvAmt": 0.38,
+      "omega_lfo1Rate": 0.03,
+      "omega_lfo1Depth": 0.18,
+      "omega_synthBass": 0.72,
+      "omega_subOsc": 0.65
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.12,
+    "SPACE": 0.65
+  }
+}

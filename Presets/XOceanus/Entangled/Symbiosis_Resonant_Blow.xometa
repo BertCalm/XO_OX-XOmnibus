@@ -40,15 +40,28 @@
       "olap_feedbackAmount": 0.65,
       "olap_resonanceFreq": 0.55,
       "olap_reverbMix": 0.45,
-      "olap_outputLevel": 0.8
+      "olap_outputLevel": 0.8,
+      "olap_macroCharacter": 0.523,
+      "olap_macroMovement": 0.427,
+      "olap_macroCoupling": 0.61,
+      "olap_macroSpace": 0.54,
+      "olap_filterEnvAmt": 0.599,
+      "olap_lfo1Rate": 0.286,
+      "olap_lfo1Depth": 0.386
     },
     "Ouie": {
-      "ouie_macroHammer": 0.72,
+      "ouie_macroHammer": 0.573,
       "ouie_voiceAlgo": 6,
       "ouie_strifeBalance": 0.65,
       "ouie_attackTime": 0.015,
       "ouie_decayTime": 0.3,
-      "ouie_outputLevel": 0.82
+      "ouie_outputLevel": 0.82,
+      "ouie_macroCartilage": 0.477,
+      "ouie_macroAmpullae": 0.66,
+      "ouie_macroCurrent": 0.59,
+      "ouie_filterEnvAmt": 0.599,
+      "ouie_lfo1Rate": 0.286,
+      "ouie_lfo1Depth": 0.386
     }
   },
   "coupling": {
@@ -67,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.606,
+    "SPACE": 0.536
+  }
 }

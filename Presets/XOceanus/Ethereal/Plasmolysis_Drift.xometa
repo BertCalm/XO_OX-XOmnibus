@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Plasmolysis Drift",
+  "mood": "Ethereal",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A cell losing water to a hyperosmotic environment, the membrane pulling away from the wall. Withdrawal as texture.",
+  "tags": [
+    "ethereal",
+    "plasmolysis",
+    "cellular",
+    "withdrawal",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.48,
+    "movement": 0.22,
+    "density": 0.18,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.3,
+      "osmo_macroMovement": 0.24,
+      "osmo_macroCoupling": 0.08,
+      "osmo_macroSpace": 0.88,
+      "osmo_permeability": 0.72,
+      "osmo_filterEnvAmt": 0.24,
+      "osmo_lfo1Rate": 0.012,
+      "osmo_lfo1Depth": 0.1,
+      "osmo_attack": 3.8,
+      "osmo_release": 10.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.08,
+    "SPACE": 0.88
+  }
+}

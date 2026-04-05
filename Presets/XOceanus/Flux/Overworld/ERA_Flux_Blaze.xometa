@@ -32,7 +32,14 @@
       "ow_macro_couple": 0.096,
       "ow_macro_era": 0.99,
       "ow_macro_space": 0.635,
-      "ow_outputLevel": 0.859
+      "ow_outputLevel": 0.859,
+      "ow_macroEra": 0.677,
+      "ow_macroCrush": 0.765,
+      "ow_macroGlitch": 0.319,
+      "ow_macroSpace": 0.44,
+      "ow_filterEnvDepth": 0.576,
+      "ow_fmLfoRate": 0.384,
+      "ow_fmLfoDepth": 0.355
     }
   },
   "schema_version": 1,
@@ -45,5 +52,11 @@
     "overworld"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.664,
+    "MOVEMENT": 0.752,
+    "COUPLING": 0.306,
+    "SPACE": 0.427
+  }
 }

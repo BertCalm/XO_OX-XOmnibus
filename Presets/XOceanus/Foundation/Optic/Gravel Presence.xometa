@@ -39,7 +39,13 @@
       "optic_pulseSubdiv": 0.665,
       "optic_pulseSwing": 0.248,
       "optic_reactivity": 0.715,
-      "optic_space": 0.053
+      "optic_space": 0.053,
+      "optic_macroCharacter": 0.619,
+      "optic_macroMovement": 0.296,
+      "optic_macroCoupling": 0.306,
+      "optic_macroSpace": 0.387,
+      "optic_filterEnvAmt": 0.375,
+      "optic_lfoRate": 0.107
     }
   },
   "schema_version": 1,
@@ -53,5 +59,11 @@
     "optic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.591,
+    "MOVEMENT": 0.268,
+    "COUPLING": 0.278,
+    "SPACE": 0.359
+  }
 }

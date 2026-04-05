@@ -41,7 +41,14 @@
       "organon_metabolicRate": 3.0,
       "organon_noiseColor": 0.7,
       "organon_phasonShift": 0.25,
-      "organon_signalFlux": 0.65
+      "organon_signalFlux": 0.65,
+      "organon_macroCharacter": 0.554,
+      "organon_macroMovement": 0.526,
+      "organon_macroCoupling": 0.185,
+      "organon_macroSpace": 0.361,
+      "organon_filterEnvAmt": 0.548,
+      "organon_lfo1Rate": 0.253,
+      "organon_lfo1Depth": 0.285
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "stinging"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.527,
+    "COUPLING": 0.186,
+    "SPACE": 0.362
+  }
 }

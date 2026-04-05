@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Rabinovich Burn",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rabinovich-Fabrikant topology with chaos high and injection fully open — plasma burns steady-state. Sustained aggression without rest.",
-  "tags": ["chaos", "flux", "rabinovich", "aggressive", "burn"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "flux",
+    "rabinovich",
+    "aggressive",
+    "burn"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -27,9 +40,23 @@
       "ouro_theta": 0.4,
       "ouro_phi": -0.6,
       "ouro_damping": 0.08,
-      "ouro_injection": 0.6
+      "ouro_injection": 0.6,
+      "ouro_macroCharacter": 0.742,
+      "ouro_macroMovement": 0.817,
+      "ouro_macroCoupling": 0.16,
+      "ouro_macroSpace": 0.328,
+      "ouro_filterEnvAmt": 0.609,
+      "ouro_lfoRate": 0.495
     }
   },
-  "coupling": {"pairs": []},
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.815,
+    "COUPLING": 0.158,
+    "SPACE": 0.326
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Root Two Drift",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sqrt(2) approximations as spectral intervals. The tritone's irrational heart made into slow shimmer.",
+  "tags": [
+    "ethereal",
+    "spectral",
+    "irrational",
+    "drift",
+    "tritone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.42,
+    "movement": 0.32,
+    "density": 0.16,
+    "space": 0.9,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.38,
+      "over_macroMovement": 0.34,
+      "over_macroCoupling": 0.11,
+      "over_macroSpace": 0.86,
+      "over_cfDepth": 0.48,
+      "over_filterEnvAmt": 0.3,
+      "over_lfo1Rate": 0.028,
+      "over_lfo1Depth": 0.15,
+      "over_attack": 2.5,
+      "over_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.11,
+    "SPACE": 0.86
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Bounce Choke",
+  "mood": "Entangled",
+  "engines": ["Oblique", "Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Prismatic bounce amplitude choking percussive transient. Movement energy silencing impact at peak amplitude.",
+  "tags": ["entangled", "aggressive", "bounce", "choke", "sidechain"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.93,
+    "density": 0.82,
+    "space": 0.15,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.86,
+      "oblq_macroMovement": 0.9,
+      "oblq_macroCoupling": 0.26,
+      "oblq_macroSpace": 0.16,
+      "oblq_prismColor": 0.88,
+      "oblq_bounceRate": 0.9,
+      "oblq_filterEnvAmt": 0.74,
+      "oblq_lfo1Rate": 0.62,
+      "oblq_lfo1Depth": 0.44,
+      "oblq_filterCutoff": 0.7,
+      "oblq_filterRes": 0.66,
+      "oblq_attackTime": 0.006,
+      "oblq_decayTime": 0.18,
+      "oblq_sustain": 0.32,
+      "oblq_releaseTime": 0.16
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.86,
+      "perc_macroMovement": 0.88,
+      "perc_macroCoupling": 0.28,
+      "perc_macroSpace": 0.15,
+      "perc_noiseLevel": 0.78,
+      "perc_transientAmt": 0.9,
+      "perc_filterEnvAmt": 0.82,
+      "perc_lfo1Rate": 0.58,
+      "perc_lfo1Depth": 0.42,
+      "perc_filterCutoff": 0.7,
+      "perc_filterRes": 0.76,
+      "perc_attackTime": 0.001,
+      "perc_decayTime": 0.12,
+      "perc_sustain": 0.12,
+      "perc_releaseTime": 0.07
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oblique",
+        "target": "Onset",
+        "type": "AmpToChoke",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.28,
+    "SPACE": 0.15
+  }
+}

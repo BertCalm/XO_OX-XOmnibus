@@ -41,14 +41,28 @@
       "obscura_chainForce": 0.48,
       "obscura_filterCutoff": 0.52,
       "obscura_reverbMix": 0.42,
-      "obscura_outputLevel": 0.78
+      "obscura_outputLevel": 0.78,
+      "obscura_macroCharacter": 0.559,
+      "obscura_macroMovement": 0.607,
+      "obscura_macroCoupling": 0.428,
+      "obscura_macroSpace": 0.474,
+      "obscura_filterEnvAmt": 0.587,
+      "obscura_lfo1Rate": 0.126,
+      "obscura_lfo1Depth": 0.219
     },
     "Organon": {
       "organon_metabolicRate": 0.52,
       "organon_voiceCount": 3,
       "organon_filterCutoff": 0.55,
       "organon_reverbMix": 0.48,
-      "organon_outputLevel": 0.8
+      "organon_outputLevel": 0.8,
+      "organon_macroCharacter": 0.548,
+      "organon_macroMovement": 0.596,
+      "organon_macroCoupling": 0.417,
+      "organon_macroSpace": 0.463,
+      "organon_filterEnvAmt": 0.587,
+      "organon_lfo1Rate": 0.126,
+      "organon_lfo1Depth": 0.219
     }
   },
   "coupling": {
@@ -74,5 +88,11 @@
     "endAmount": 0.8,
     "description": "Coupling rises exponentially — organism emerges from near-silence to full life in 38 seconds"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.549,
+    "MOVEMENT": 0.597,
+    "COUPLING": 0.418,
+    "SPACE": 0.464
+  }
 }

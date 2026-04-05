@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.55,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.681,
+      "ouro_macroCharacter": 0.371,
+      "ouro_macroMovement": 0.407,
+      "ouro_macroCoupling": 0.147,
+      "ouro_filterEnvAmt": 0.336,
+      "ouro_lfoRate": 0.085
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "gesture",
     "transcendental"
   ],
-  "description": "Topology crossfade (50ms equal-power blend) as expressive technique. CHARACTER simultaneously shifts theta AND chaos depth. Sweeping CHARACTER 0→1: Lorenz atmosphere → theta rotation → deeper chaos. All four topologies explorable via CHARACTER."
+  "description": "Topology crossfade (50ms equal-power blend) as expressive technique. CHARACTER simultaneously shifts theta AND chaos depth. Sweeping CHARACTER 0→1: Lorenz atmosphere → theta rotation → deeper chaos. All four topologies explorable via CHARACTER.",
+  "macros": {
+    "CHARACTER": 0.369,
+    "MOVEMENT": 0.405,
+    "COUPLING": 0.145,
+    "SPACE": 0.679
+  }
 }

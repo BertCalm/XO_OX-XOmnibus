@@ -28,7 +28,13 @@
   "parameters": {
     "Ole": {
       "couplingBus": 3,
-      "couplingLevel": 0.669
+      "couplingLevel": 0.669,
+      "ole_macroDrama": 0.557,
+      "ole_macroFuego": 0.359,
+      "ole_macroIsla": 0.211,
+      "ole_macroSides": 0.388,
+      "ole_filterEnvAmt": 0.352,
+      "ole_lfoRate": 0.162
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "ole"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.381,
+    "COUPLING": 0.233,
+    "SPACE": 0.41
+  }
 }

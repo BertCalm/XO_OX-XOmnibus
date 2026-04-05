@@ -41,7 +41,14 @@
       "fat_reverbMix": 0.86,
       "fat_saturation": 0.22,
       "fat_space": 0.21,
-      "fat_subLevel": 0.23
+      "fat_subLevel": 0.23,
+      "fat_macroMojo": 0.568,
+      "fat_macroGrit": 0.323,
+      "fat_macroSize": 0.289,
+      "fat_macroCrush": 0.352,
+      "fat_fltEnvAmt": 0.491,
+      "fat_lfo1Rate": 0.101,
+      "fat_lfo1Depth": 0.191
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.275,
+    "COUPLING": 0.241,
+    "SPACE": 0.304
+  }
 }

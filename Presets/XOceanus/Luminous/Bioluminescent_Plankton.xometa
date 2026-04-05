@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Plankton",
+  "mood": "Luminous",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Millions of tiny organisms glow with metabolic light in dark ocean water. The Organon engine models this as a living energy system — each note triggers a cascade of bioluminescence.",
+  "tags": ["luminous", "bioluminescent", "plankton", "organic", "cyan"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.50,
+    "movement": 0.48,
+    "density": 0.40,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.48,
+      "organon_macroMovement": 0.48,
+      "organon_macroCoupling": 0.18,
+      "organon_macroSpace": 0.65,
+      "organon_filterEnvAmt": 0.50,
+      "organon_metabolicRate": 0.55,
+      "organon_lfo1Rate": 0.09,
+      "organon_lfo1Depth": 0.26,
+      "organon_lfo2Rate": 0.04,
+      "organon_lfo2Depth": 0.20,
+      "organon_attack": 0.15,
+      "organon_decay": 1.2,
+      "organon_sustain": 0.72,
+      "organon_release": 3.5,
+      "organon_filterCutoff": 7200,
+      "organon_filterRes": 0.24,
+      "organon_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.18,
+    "SPACE": 0.65
+  }
+}

@@ -83,7 +83,14 @@
       "xPitchLock": 0,
       "xPolyphony": 3,
       "xSnap": 0.665,
-      "xUnison": 2
+      "xUnison": 2,
+      "snap_macroDart": 0.454,
+      "snap_macroDepth": 0.548,
+      "snap_macroSchool": 0.269,
+      "snap_macroSurface": 0.7,
+      "snap_filterEnvDepth": 0.459,
+      "snap_lfoRate": 0.099,
+      "snap_lfoDepth": 0.272
     }
   },
   "schema_version": 1,
@@ -96,5 +103,11 @@
     "seismic"
   ],
   "tempo": 70,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.383,
+    "MOVEMENT": 0.477,
+    "COUPLING": 0.198,
+    "SPACE": 0.629
+  }
 }

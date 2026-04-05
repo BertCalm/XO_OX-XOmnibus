@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Volcanic Glass",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Volcanic glass formed in extreme conditions \u2014 obsidian clarity without warmth, forged in heat but cold as ice.",
+  "tags": [
+    "crystalline",
+    "volcanic",
+    "glass",
+    "obsidian",
+    "forged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.26,
+    "movement": 0.24,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.6,
+      "obsidian_macroMovement": 0.3,
+      "obsidian_macroCoupling": 0.22,
+      "obsidian_macroSpace": 0.5,
+      "obsidian_filterEnvAmt": 0.62,
+      "obsidian_lfo1Rate": 0.06,
+      "obsidian_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.22,
+    "SPACE": 0.5
+  }
+}

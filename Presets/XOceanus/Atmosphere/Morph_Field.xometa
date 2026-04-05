@@ -45,11 +45,23 @@
       "morph_sub": 0.1,
       "morph_detune": 16.0,
       "morph_level": 0.7,
-      "morph_polyphony": 4
+      "morph_polyphony": 4,
+      "morph_macroCharacter": 0.306,
+      "morph_macroMovement": 0.408,
+      "morph_macroCoupling": 0.17,
+      "morph_macroSpace": 0.719,
+      "morph_filterEnvDepth": 0.37,
+      "morph_lfoRate": 0.062
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.283,
+    "MOVEMENT": 0.385,
+    "COUPLING": 0.147,
+    "SPACE": 0.696
+  }
 }

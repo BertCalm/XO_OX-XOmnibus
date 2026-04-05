@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Silica Tone",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure silica resonance \u2014 the fundamental mineral tone of sand and glass and crystal.",
+  "tags": [
+    "crystalline",
+    "silica",
+    "tone",
+    "mineral",
+    "pure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.28,
+    "movement": 0.26,
+    "density": 0.4,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.64,
+      "obsidian_macroMovement": 0.39,
+      "obsidian_macroCoupling": 0.14,
+      "obsidian_macroSpace": 0.54,
+      "obsidian_filterEnvAmt": 0.59,
+      "obsidian_lfo1Rate": 0.12,
+      "obsidian_lfo1Depth": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.14,
+    "SPACE": 0.54
+  }
+}

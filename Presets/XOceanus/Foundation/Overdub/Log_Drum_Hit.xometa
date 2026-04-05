@@ -44,7 +44,7 @@
       "dub_filterMode": 0,
       "dub_filterCutoff": 2000.0,
       "dub_filterReso": 0.15,
-      "dub_filterEnvAmt": 0.0,
+      "dub_filterEnvAmt": 0.485,
       "dub_attack": 0.001,
       "dub_decay": 0.6,
       "dub_sustain": 0.0,
@@ -52,7 +52,7 @@
       "dub_pitchEnvDepth": 24.0,
       "dub_pitchEnvDecay": 0.02,
       "dub_lfoRate": 2.0,
-      "dub_lfoDepth": 0.0,
+      "dub_lfoDepth": 0.153,
       "dub_lfoDest": 0,
       "dub_sendLevel": 0.0,
       "dub_returnLevel": 0.0,
@@ -68,11 +68,21 @@
       "dub_reverbMix": 0.3,
       "dub_voiceMode": 0,
       "dub_glide": 0.0,
-      "dub_polyphony": 2
+      "dub_polyphony": 2,
+      "dub_macroCharacter": 0.475,
+      "dub_macroMovement": 0.436,
+      "dub_macroCoupling": 0.168,
+      "dub_macroSpace": 0.281
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.483,
+    "MOVEMENT": 0.444,
+    "COUPLING": 0.176,
+    "SPACE": 0.289
+  }
 }

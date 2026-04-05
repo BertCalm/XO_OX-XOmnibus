@@ -46,10 +46,22 @@
       "ouro_macroChar": 0.5,
       "ouro_macroMove": 0.7,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.5
+      "ouro_macroSpace": 0.45,
+      "ouro_macroCharacter": 0.508,
+      "ouro_macroMovement": 0.5,
+      "ouro_macroCoupling": 0.684,
+      "ouro_filterEnvAmt": 0.545,
+      "ouro_lfoRate": 0.138
     },
     "Onset": {
-      "perc_noiseLevel": 0.5
+      "perc_noiseLevel": 0.5,
+      "perc_macro_punch": 0.53,
+      "perc_macro_mutate": 0.522,
+      "perc_macro_machine": 0.706,
+      "perc_macro_space": 0.472,
+      "perc_filterEnvAmt": 0.545,
+      "perc_lfo1Rate": 0.138,
+      "perc_lfo1Depth": 0.308
     }
   },
   "tags": [
@@ -64,5 +76,11 @@
     "transcendental"
   ],
   "description": "B007: Chua at chaosIndex=0.65 fires rapid irregular bifurcation events (dx/dt spikes). RhythmToBlend coupling drives ONSET percussion texture. Drums that fire when the chaos tells them to.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.498,
+    "COUPLING": 0.682,
+    "SPACE": 0.448
+  }
 }

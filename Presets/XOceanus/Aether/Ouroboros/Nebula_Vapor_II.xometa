@@ -28,7 +28,13 @@
   "parameters": {
     "Ouroboros": {
       "couplingBus": 3,
-      "couplingLevel": 0.579
+      "couplingLevel": 0.579,
+      "ouro_macroCharacter": 0.328,
+      "ouro_macroMovement": 0.404,
+      "ouro_macroCoupling": 0.208,
+      "ouro_macroSpace": 0.749,
+      "ouro_filterEnvAmt": 0.421,
+      "ouro_lfoRate": 0.051
     }
   },
   "schema_version": 1,
@@ -39,5 +45,11 @@
     "ouroboros"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.326,
+    "MOVEMENT": 0.402,
+    "COUPLING": 0.206,
+    "SPACE": 0.747
+  }
 }

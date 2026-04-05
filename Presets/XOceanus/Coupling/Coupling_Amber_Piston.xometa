@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Amber Piston",
+  "mood": "Coupling",
+  "engines": [
+    "Oblong",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG amber filter contour drives OTTONI brass harmonics \u2014 warm filter envelope shaping how brass partials bloom and decay.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "warm",
+    "brass",
+    "AmpToFilter",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.64,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.46,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_fltCutoff": 0.58,
+      "bob_fltReso": 0.32,
+      "bob_filterEnvAmt": 0.52,
+      "bob_lfo1Rate": 0.12,
+      "bob_lfo1Depth": 0.28,
+      "bob_macroCharacter": 0.52,
+      "bob_macroMovement": 0.5,
+      "bob_macroCoupling": 0.62,
+      "bob_macroSpace": 0.46
+    },
+    "Ottoni": {
+      "otto_macroGrow": 0.56,
+      "otto_filterEnvAmt": 0.5,
+      "otto_lfo1Rate": 0.11,
+      "otto_lfo1Depth": 0.26,
+      "otto_macroCharacter": 0.5,
+      "otto_macroMovement": 0.5,
+      "otto_macroCoupling": 0.6,
+      "otto_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ottoni",
+        "type": "AmpToFilter",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.61,
+    "SPACE": 0.46
+  }
+}

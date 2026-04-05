@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Scatter",
+  "mood": "Crystalline",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light scattered by crystal facets \u2014 an oblique dispersion of high-frequency energy across space.",
+  "tags": [
+    "crystalline",
+    "scatter",
+    "dispersion",
+    "faceted",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.22,
+    "movement": 0.4,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.54,
+      "oblq_macroMovement": 0.43,
+      "oblq_macroCoupling": 0.16,
+      "oblq_macroSpace": 0.51,
+      "oblq_filterEnvAmt": 0.6,
+      "oblq_lfo1Rate": 0.12,
+      "oblq_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.16,
+    "SPACE": 0.51
+  }
+}

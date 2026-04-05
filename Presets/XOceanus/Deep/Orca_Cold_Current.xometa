@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Cold Current",
+  "mood": "Deep",
+  "engines": ["Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A pod traveling through a cold deep-ocean current — the pressure wave of their passage creates subtle displacement in the surrounding water column.",
+  "tags": ["deep", "oceanic", "cold", "current", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.50,
+    "movement": 0.25,
+    "density": 0.60,
+    "space": 0.75,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.40,
+      "orca_macroMovement": 0.25,
+      "orca_macroCoupling": 0.12,
+      "orca_macroSpace": 0.72,
+      "orca_filterEnvAmt": 0.36,
+      "orca_lfo1Rate": 0.05,
+      "orca_lfo1Depth": 0.20,
+      "orca_huntMacro": 0.45
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.40,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  }
+}

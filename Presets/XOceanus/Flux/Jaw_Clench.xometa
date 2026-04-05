@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Jaw Clench",
+  "mood": "Flux",
+  "engines": ["Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The possum bites down hard. Maximum bite depth, scritch tremolo rattling the cage.",
+  "tags": ["flux", "aggressive", "bite", "tension", "overbite"],
+  "macroLabels": ["BELLY", "BITE", "PLAY DEAD", "SCURRY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.2,
+    "movement": 0.84,
+    "density": 0.8,
+    "space": 0.16,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroCharacter": 0.88,
+      "poss_macroMovement": 0.8,
+      "poss_macroCoupling": 0.14,
+      "poss_macroSpace": 0.16,
+      "poss_biteDepth": 0.92,
+      "poss_scritchRate": 0.6,
+      "poss_filterEnvAmt": 0.76,
+      "poss_lfo1Rate": 0.52,
+      "poss_lfo1Depth": 0.44,
+      "poss_filterCutoff": 0.58,
+      "poss_filterRes": 0.72,
+      "poss_attackTime": 0.006,
+      "poss_decayTime": 0.24,
+      "poss_sustain": 0.32,
+      "poss_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.14,
+    "SPACE": 0.16
+  }
+}

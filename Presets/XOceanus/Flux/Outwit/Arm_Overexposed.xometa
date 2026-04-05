@@ -46,11 +46,24 @@
       "owit_reverbMix": 0.292,
       "owit_outputLevel": 0.806,
       "owit_couplingLevel": 0.1,
-      "owit_couplingBus": 0
+      "owit_couplingBus": 0,
+      "owit_macroCharacter": 0.766,
+      "owit_macroMovement": 0.665,
+      "owit_macroCoupling": 0.172,
+      "owit_macroSpace": 0.276,
+      "owit_filterEnvAmt": 0.667,
+      "owit_lfo1Rate": 0.257,
+      "owit_lfo1Depth": 0.351
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.788,
+    "MOVEMENT": 0.687,
+    "COUPLING": 0.194,
+    "SPACE": 0.298
+  }
 }

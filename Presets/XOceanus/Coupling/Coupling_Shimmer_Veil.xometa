@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Veil",
+  "mood": "Coupling",
+  "engines": [
+    "OpenSky",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPENSKY shimmer tail feeds OBSCURA plate stiffness character \u2014 ascending euphoria leaving silver-grain impressions on a daguerreotype surface.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "shimmer",
+    "spectral",
+    "AudioToWavetable",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.46,
+    "movement": 0.54,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroRise": 0.6,
+      "sky_filterEnvAmt": 0.52,
+      "sky_lfo1Rate": 0.14,
+      "sky_lfo1Depth": 0.3,
+      "sky_macroCharacter": 0.54,
+      "sky_macroMovement": 0.56,
+      "sky_macroCoupling": 0.62,
+      "sky_macroSpace": 0.62
+    },
+    "Obscura": {
+      "obscura_stiffness": 0.55,
+      "obscura_filterEnvAmt": 0.5,
+      "obscura_lfo1Rate": 0.11,
+      "obscura_lfo1Depth": 0.26,
+      "obscura_macroCharacter": 0.52,
+      "obscura_macroMovement": 0.52,
+      "obscura_macroCoupling": 0.6,
+      "obscura_macroSpace": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OpenSky",
+        "engineB": "Obscura",
+        "type": "AudioToWavetable",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.61,
+    "SPACE": 0.61
+  }
+}

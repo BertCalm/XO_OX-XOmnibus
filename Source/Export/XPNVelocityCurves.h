@@ -57,7 +57,11 @@ inline std::vector<VelocitySplit> getVelocitySplits(XPNVelocityCurve curve, int 
         break;
     case XPNVelocityCurve::Musical:
     default:
-        full = {{1, 20, 0.30f, 0.16f}, {21, 50, 0.55f, 0.40f}, {51, 90, 0.75f, 0.71f}, {91, 127, 0.95f, 1.00f}};
+        // Ghost Council Modified zones (adopted 2026-04-04).
+        // Old zone 2 end was 50, old zone 3 start was 51 (replaced).
+        // normVel = zone midpoint / 127: Ghost=10/127≈0.08, Light=38/127≈0.30,
+        //           Medium=73/127≈0.57, Hard=109/127≈0.86.
+        full = {{1, 20, 0.30f, 0.08f}, {21, 55, 0.55f, 0.30f}, {56, 90, 0.75f, 0.57f}, {91, 127, 0.95f, 0.86f}};
         break;
     }
 

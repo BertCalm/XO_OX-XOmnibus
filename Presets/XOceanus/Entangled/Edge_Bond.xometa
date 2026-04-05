@@ -46,7 +46,14 @@
       "obbl_level": 0.754,
       "obbl_movement": 0.593,
       "obbl_space": 0.608,
-      "obbl_warmth": 0.708
+      "obbl_warmth": 0.708,
+      "obbl_macroBond": 0.569,
+      "obbl_macroBreath": 0.424,
+      "obbl_macroWind": 0.562,
+      "obbl_macroMischief": 0.564,
+      "obbl_filterEnvAmt": 0.452,
+      "obbl_lfoRateA": 0.218,
+      "obbl_lfoDepthA": 0.227
     },
     "Obsidian": {
       "obsidian_aggression": 0.053,
@@ -55,7 +62,14 @@
       "obsidian_level": 0.871,
       "obsidian_movement": 0.35,
       "obsidian_space": 0.668,
-      "obsidian_warmth": 0.112
+      "obsidian_warmth": 0.112,
+      "obsidian_macroCharacter": 0.623,
+      "obsidian_macroMovement": 0.478,
+      "obsidian_macroCoupling": 0.616,
+      "obsidian_macroSpace": 0.618,
+      "obsidian_filterEnvAmt": 0.452,
+      "obsidian_lfoRate": 0.218,
+      "obsidian_lfoDepth": 0.227
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.548,
+    "SPACE": 0.55
+  }
 }

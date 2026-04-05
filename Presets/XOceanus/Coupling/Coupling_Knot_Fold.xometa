@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Knot Fold",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE trefoil knot matrix drives ORIGAMI fold geometry \u2014 topology determining where paper folds, mathematical surfaces informing physical crease.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "topology",
+    "fold",
+    "KnotTopology",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.54,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.58,
+      "weave_filterEnvAmt": 0.52,
+      "weave_lfo1Rate": 0.13,
+      "weave_lfo1Depth": 0.28,
+      "weave_macroCharacter": 0.52,
+      "weave_macroMovement": 0.54,
+      "weave_macroCoupling": 0.62,
+      "weave_macroSpace": 0.5
+    },
+    "Origami": {
+      "origami_foldPoint": 0.55,
+      "origami_filterEnvAmt": 0.5,
+      "origami_lfo1Rate": 0.12,
+      "origami_lfo1Depth": 0.26,
+      "origami_macroCharacter": 0.5,
+      "origami_macroMovement": 0.52,
+      "origami_macroCoupling": 0.6,
+      "origami_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Origami",
+        "type": "KnotTopology",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

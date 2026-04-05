@@ -37,13 +37,41 @@
     "Ouroboros": {
       "ouro_character": 0.594,
       "ouro_movement": 0.385,
-      "ouro_space": 0.56
+      "ouro_space": 0.56,
+      "ouro_macroCharacter": 0.575,
+      "ouro_macroMovement": 0.46,
+      "ouro_macroCoupling": 0.505,
+      "ouro_macroSpace": 0.458,
+      "ouro_filterEnvAmt": 0.516,
+      "ouro_lfoRate": 0.119
     },
-    "Oracle": {},
-    "Outwit": {}
+    "Oracle": {
+      "oracle_macroCharacter": 0.581,
+      "oracle_macroMovement": 0.466,
+      "oracle_macroCoupling": 0.511,
+      "oracle_macroSpace": 0.464,
+      "oracle_filterEnvAmt": 0.516,
+      "oracle_lfo1Rate": 0.119,
+      "oracle_lfo1Depth": 0.171
+    },
+    "Outwit": {
+      "owit_macroCharacter": 0.551,
+      "owit_macroMovement": 0.436,
+      "owit_macroCoupling": 0.481,
+      "owit_macroSpace": 0.434,
+      "owit_filterEnvAmt": 0.516,
+      "owit_lfo1Rate": 0.119,
+      "owit_lfo1Depth": 0.171
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.573,
+    "MOVEMENT": 0.458,
+    "COUPLING": 0.503,
+    "SPACE": 0.456
+  }
 }

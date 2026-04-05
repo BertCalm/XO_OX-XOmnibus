@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Silver Branch",
+  "mood": "Ethereal",
+  "engines": [
+    "Osier"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Osier branches in winter, stripped of leaves. The willow silver color at dusk, bare against pale sky.",
+  "tags": [
+    "ethereal",
+    "silver",
+    "branch",
+    "winter",
+    "bare"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.22,
+    "density": 0.14,
+    "space": 0.91,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Osier": {
+      "osier_macroCharacter": 0.28,
+      "osier_macroMovement": 0.24,
+      "osier_macroCoupling": 0.07,
+      "osier_macroSpace": 0.89,
+      "osier_windDensity": 0.3,
+      "osier_filterEnvAmt": 0.24,
+      "osier_lfo1Rate": 0.018,
+      "osier_lfo1Depth": 0.11,
+      "osier_attack": 3.5,
+      "osier_release": 10.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.07,
+    "SPACE": 0.89
+  }
+}

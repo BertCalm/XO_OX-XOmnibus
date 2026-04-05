@@ -28,7 +28,14 @@
   "parameters": {
     "Oblique": {
       "couplingBus": 0,
-      "couplingLevel": 0.838
+      "couplingLevel": 0.838,
+      "oblq_macroCharacter": 0.555,
+      "oblq_macroMovement": 0.283,
+      "oblq_macroCoupling": 0.146,
+      "oblq_macroSpace": 0.345,
+      "oblq_filterEnvAmt": 0.416,
+      "oblq_lfo1Rate": 0.082,
+      "oblq_lfo1Depth": 0.225
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "oblique"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.532,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.123,
+    "SPACE": 0.322
+  }
 }

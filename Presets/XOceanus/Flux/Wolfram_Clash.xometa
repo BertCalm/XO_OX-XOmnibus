@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Wolfram Clash",
+  "mood": "Flux",
+  "engines": ["Obiont"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "1D Wolfram CA spatial projection at maximum evolution rate. Bioluminescent amber cells clashing in 8-voice poly.",
+  "tags": ["flux", "aggressive", "wolfram", "cellular", "clash"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.22,
+    "movement": 0.9,
+    "density": 0.84,
+    "space": 0.16,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_macroCharacter": 0.85,
+      "obnt_macroMovement": 0.88,
+      "obnt_macroCoupling": 0.18,
+      "obnt_macroSpace": 0.18,
+      "obnt_evolutionRate": 0.92,
+      "obnt_ruleIndex": 0.75,
+      "obnt_filterEnvAmt": 0.72,
+      "obnt_lfo1Rate": 0.55,
+      "obnt_lfo1Depth": 0.42,
+      "obnt_filterCutoff": 0.65,
+      "obnt_filterRes": 0.68,
+      "obnt_attackTime": 0.01,
+      "obnt_decayTime": 0.25,
+      "obnt_sustain": 0.38,
+      "obnt_releaseTime": 0.22
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.18,
+    "SPACE": 0.18
+  }
+}

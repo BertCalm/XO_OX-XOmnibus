@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Halo",
+  "mood": "Luminous",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A resonance halo forms when metabolic energy exceeds baseline — Organon engine's free energy model briefly surpassing equilibrium, generating a luminescent surplus visible only at the threshold.",
+  "tags": ["luminous", "resonance", "halo", "threshold", "metabolic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.56,
+    "movement": 0.44,
+    "density": 0.42,
+    "space": 0.60,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.52,
+      "organon_macroMovement": 0.44,
+      "organon_macroCoupling": 0.15,
+      "organon_macroSpace": 0.60,
+      "organon_filterEnvAmt": 0.55,
+      "organon_metabolicRate": 0.58,
+      "organon_lfo1Rate": 0.09,
+      "organon_lfo1Depth": 0.24,
+      "organon_lfo2Rate": 0.04,
+      "organon_lfo2Depth": 0.16,
+      "organon_attack": 0.18,
+      "organon_decay": 1.2,
+      "organon_sustain": 0.74,
+      "organon_release": 4.0,
+      "organon_filterCutoff": 7500,
+      "organon_filterRes": 0.24,
+      "organon_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.15,
+    "SPACE": 0.60
+  }
+}

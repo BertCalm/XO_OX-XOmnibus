@@ -53,13 +53,25 @@
       "ocelot_filterReso": 0.3,
       "ocelot_movement": 0.6,
       "ocelot_predatorDepth": 0.55,
-      "ocelot_warmth": 0.65
+      "ocelot_warmth": 0.65,
+      "ocelot_macroCharacter": 0.635,
+      "ocelot_macroMovement": 0.564,
+      "ocelot_macroCoupling": 0.624,
+      "ocelot_macroSpace": 0.373,
+      "ocelot_filterEnvDepth": 0.574,
+      "ocelot_lfoRate": 0.188
     },
     "Osteria": {
       "ost_ampAttack": 0.03,
       "ost_ampRelease": 1.5,
       "ost_filterCutoff": 2800.0,
-      "ost_filterReso": 0.3
+      "ost_filterReso": 0.3,
+      "osteria_macroCharacter": 0.655,
+      "osteria_macroMovement": 0.584,
+      "osteria_macroCoupling": 0.644,
+      "osteria_macroSpace": 0.393,
+      "osteria_filterEnvDepth": 0.574,
+      "osteria_lfoDepth": 0.188
     }
   },
   "schema_version": 1,
@@ -74,5 +86,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.618,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.607,
+    "SPACE": 0.356
+  }
 }

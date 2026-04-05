@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Breath of Reeds",
+  "mood": "Organic",
+  "engines": ["Obbligato"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sustained breath through a hollow reed — obligatory air becoming obligatory sound, warm and unsteady like a living thing.",
+  "tags": ["organic", "breath", "reeds", "wind", "sustained"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.72,
+    "movement": 0.40,
+    "density": 0.38,
+    "space": 0.52,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_macroCharacter": 0.42,
+      "obbl_macroMovement": 0.40,
+      "obbl_macroCoupling": 0.18,
+      "obbl_macroSpace": 0.52,
+      "obbl_breathA": 0.55,
+      "obbl_filterEnvAmt": 0.38,
+      "obbl_lfo1Rate": 0.06,
+      "obbl_lfo1Depth": 0.28,
+      "obbl_lfo2Rate": 0.02,
+      "obbl_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.18,
+    "SPACE": 0.52
+  }
+}

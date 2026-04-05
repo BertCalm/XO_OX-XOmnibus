@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "dna": {
     "aggression": 0.537,
     "brightness": 0.511,
@@ -36,15 +36,24 @@
   "parameters": {
     "Ole": {
       "level": 0.687,
-      "pan": 0.039
+      "pan": 0.039,
+      "ole_macroDrama": 0.344,
+      "ole_macroFuego": 0.513,
+      "ole_macroIsla": 0.407,
+      "ole_macroSides": 0.707,
+      "ole_filterEnvAmt": 0.349,
+      "ole_lfoRate": 0.074
     },
     "Osprey": {
       "osprey_level": 0.8,
-      "osprey_macroCharacter": 0.5,
-      "osprey_macroCoupling": 0.5,
-      "osprey_macroMovement": 0.5,
-      "osprey_macroSpace": 0.5,
-      "osprey_pan": 0.0
+      "osprey_macroCharacter": 0.399,
+      "osprey_macroCoupling": 0.462,
+      "osprey_macroMovement": 0.568,
+      "osprey_macroSpace": 0.762,
+      "osprey_pan": 0.0,
+      "osprey_filterEnvDepth": 0.349,
+      "osprey_lfo2Rate": 0.074,
+      "osprey_lfo2Depth": 0.179
     }
   },
   "schema_version": 1,
@@ -58,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.366,
+    "MOVEMENT": 0.535,
+    "COUPLING": 0.429,
+    "SPACE": 0.729
+  }
 }

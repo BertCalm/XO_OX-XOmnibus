@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Kelp Forest",
+  "mood": "Organic",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Giant kelp fronds swaying in slow current — underwater forest with its own light, cathedral acoustics, and temperature gradient.",
+  "tags": ["organic", "kelp", "underwater", "forest", "cathedral"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.68,
+    "movement": 0.40,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.44,
+      "oxb_macroMovement": 0.40,
+      "oxb_macroCoupling": 0.18,
+      "oxb_macroSpace": 0.62,
+      "oxb_entangle": 0.55,
+      "oxb_filterEnvAmt": 0.42,
+      "oxb_lfo1Rate": 0.06,
+      "oxb_lfo1Depth": 0.26,
+      "oxb_lfo2Rate": 0.03,
+      "oxb_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.40,
+    "COUPLING": 0.18,
+    "SPACE": 0.62
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Ocelot Charge",
+  "mood": "Flux",
+  "engines": ["Ocelot"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ocelot charging through biome crossfade at full sprint. Tawny aggression accelerating past every environment.",
+  "tags": ["flux", "aggressive", "ocelot", "charge", "sprint"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.94,
+    "density": 0.78,
+    "space": 0.16,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_macroCharacter": 0.84,
+      "ocelot_macroMovement": 0.92,
+      "ocelot_macroCoupling": 0.18,
+      "ocelot_macroSpace": 0.18,
+      "ocelot_biome": 0.88,
+      "ocelot_biomeRate": 0.95,
+      "ocelot_filterEnvAmt": 0.74,
+      "ocelot_lfo1Rate": 0.68,
+      "ocelot_lfo1Depth": 0.44,
+      "ocelot_filterCutoff": 0.66,
+      "ocelot_filterRes": 0.7,
+      "ocelot_attackTime": 0.008,
+      "ocelot_decayTime": 0.18,
+      "ocelot_sustain": 0.28,
+      "ocelot_releaseTime": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.18,
+    "SPACE": 0.18
+  }
+}

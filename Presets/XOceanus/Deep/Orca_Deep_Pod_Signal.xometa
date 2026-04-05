@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Deep Pod Signal",
+  "mood": "Deep",
+  "engines": ["Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Long-range pod communication at depth — ultra-low frequency calls that travel hundreds of miles through deep sound channels, voice become sonar become geography.",
+  "tags": ["deep", "oceanic", "signal", "resonant", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.16,
+    "warmth": 0.55,
+    "movement": 0.20,
+    "density": 0.52,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.42,
+      "orca_macroMovement": 0.20,
+      "orca_macroCoupling": 0.12,
+      "orca_macroSpace": 0.85,
+      "orca_filterEnvAmt": 0.38,
+      "orca_lfo1Rate": 0.04,
+      "orca_lfo1Depth": 0.22,
+      "orca_huntMacro": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.20,
+    "COUPLING": 0.12,
+    "SPACE": 0.85
+  }
+}

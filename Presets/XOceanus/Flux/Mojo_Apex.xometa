@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Mojo Apex",
+  "mood": "Flux",
+  "engines": ["Obese"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MOJO at absolute apex. Orthogonal analog-digital axis maxed simultaneously — the moment everything ignites.",
+  "tags": ["flux", "aggressive", "mojo", "apex", "ignition"],
+  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.26,
+    "movement": 0.88,
+    "density": 0.9,
+    "space": 0.12,
+    "aggression": 0.96
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macroCharacter": 0.94,
+      "fat_macroMovement": 0.85,
+      "fat_macroCoupling": 0.12,
+      "fat_macroSpace": 0.12,
+      "fat_satDrive": 0.96,
+      "fat_mojo": 0.98,
+      "fat_filterEnvAmt": 0.82,
+      "fat_lfo1Rate": 0.4,
+      "fat_lfo1Depth": 0.48,
+      "fat_filterCutoff": 0.55,
+      "fat_filterRes": 0.7,
+      "fat_attackTime": 0.006,
+      "fat_decayTime": 0.24,
+      "fat_sustain": 0.45,
+      "fat_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  }
+}

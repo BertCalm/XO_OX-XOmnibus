@@ -51,7 +51,14 @@
       "drift_shimmerAmount": 0.35,
       "drift_shimmerTone": 0.55,
       "drift_subLevel": 0.2,
-      "drift_sustain": 0.65
+      "drift_sustain": 0.65,
+      "drift_macroCharacter": 0.422,
+      "drift_macroMovement": 0.376,
+      "drift_macroCoupling": 0.265,
+      "drift_macroSpace": 0.791,
+      "drift_filterEnvAmt": 0.475,
+      "drift_lfoRate": 0.021,
+      "drift_lfoDepth": 0.224
     }
   },
   "schema_version": 1,
@@ -66,5 +73,11 @@
     "slow-attack"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.346,
+    "COUPLING": 0.235,
+    "SPACE": 0.761
+  }
 }

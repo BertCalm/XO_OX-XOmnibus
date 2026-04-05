@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Low",
+  "mood": "Deep",
+  "engines": ["Omega"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The defining frequency of the abyssal plain — a sub-bass note sustained across geological time, the tonal identity of the deepest flat expanse on Earth.",
+  "tags": ["deep", "abyssal", "sub-bass", "sustained", "oceanic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.70,
+    "movement": 0.10,
+    "density": 0.78,
+    "space": 0.70,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Omega": {
+      "omega_macroCharacter": 0.56,
+      "omega_macroMovement": 0.10,
+      "omega_macroCoupling": 0.11,
+      "omega_macroSpace": 0.68,
+      "omega_filterEnvAmt": 0.42,
+      "omega_lfo1Rate": 0.01,
+      "omega_lfo1Depth": 0.14,
+      "omega_synthBass": 0.88,
+      "omega_subOsc": 0.82
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.10,
+    "COUPLING": 0.11,
+    "SPACE": 0.68
+  }
+}

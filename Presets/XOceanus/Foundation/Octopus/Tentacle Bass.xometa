@@ -48,7 +48,7 @@
       "octo_modSustain": 0.1,
       "octo_modRelease": 0.3,
       "octo_lfo1Rate": 0.5,
-      "octo_lfo1Depth": 0.0,
+      "octo_lfo1Depth": 0.24,
       "octo_lfo1Shape": 0,
       "octo_lfo2Rate": 0.2,
       "octo_lfo2Depth": 0.0,
@@ -74,13 +74,20 @@
       "octo_suckerFreq": 1200,
       "octo_suckerDecay": 0.02,
       "octo_suckerMix": 0.7,
-      "octo_macroCharacter": 0.4,
-      "octo_macroMovement": 0.1,
-      "octo_macroCoupling": 0.0,
-      "octo_macroSpace": 0.15
+      "octo_macroCharacter": 0.404,
+      "octo_macroMovement": 0.325,
+      "octo_macroCoupling": 0.142,
+      "octo_macroSpace": 0.324,
+      "octo_filterEnvAmt": 0.518
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.406,
+    "MOVEMENT": 0.327,
+    "COUPLING": 0.144,
+    "SPACE": 0.326
   }
 }

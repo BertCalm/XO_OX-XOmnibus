@@ -44,11 +44,13 @@
       "ole_husbandBouzLevel": 0.409,
       "ole_husbandOudLevel": 0.435,
       "ole_husbandPinLevel": 0.44,
-      "ole_macroDrama": 0.739,
-      "ole_macroFuego": 0.409,
-      "ole_macroIsla": 0.3,
-      "ole_macroSides": 0.442,
-      "ole_sympatheticAmt": 0.369
+      "ole_macroDrama": 0.584,
+      "ole_macroFuego": 0.694,
+      "ole_macroIsla": 0.325,
+      "ole_macroSides": 0.251,
+      "ole_sympatheticAmt": 0.369,
+      "ole_filterEnvAmt": 0.571,
+      "ole_lfoRate": 0.374
     }
   },
   "schema_version": 1,
@@ -59,5 +61,11 @@
     "movement"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.606,
+    "MOVEMENT": 0.716,
+    "COUPLING": 0.347,
+    "SPACE": 0.273
+  }
 }

@@ -35,7 +35,13 @@
       "ole_rhythmB": 0.55,
       "ole_voiceA": 0.7,
       "ole_voiceB": 0.65,
-      "ole_voiceC": 0.6
+      "ole_voiceC": 0.6,
+      "ole_macroDrama": 0.715,
+      "ole_macroFuego": 0.815,
+      "ole_macroIsla": 0.245,
+      "ole_macroSides": 0.341,
+      "ole_filterEnvAmt": 0.567,
+      "ole_lfoRate": 0.466
     }
   },
   "schema_version": 1,
@@ -49,5 +55,11 @@
     "cross-rhythm"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.737,
+    "MOVEMENT": 0.837,
+    "COUPLING": 0.267,
+    "SPACE": 0.363
+  }
 }

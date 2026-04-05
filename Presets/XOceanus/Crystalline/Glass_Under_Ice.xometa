@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Glass Under Ice",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The resonance of glass beneath a layer of ice \u2014 muted but precise, the cold modifying the crystal voice.",
+  "tags": [
+    "crystalline",
+    "glass",
+    "ice",
+    "prepared",
+    "resonance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.32,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.63,
+      "opal2_macroMovement": 0.31,
+      "opal2_macroCoupling": 0.25,
+      "opal2_macroSpace": 0.62,
+      "opal2_filterEnvAmt": 0.59,
+      "opal2_lfo1Rate": 0.06,
+      "opal2_lfo1Depth": 0.17
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.25,
+    "SPACE": 0.62
+  }
+}

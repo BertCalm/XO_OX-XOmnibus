@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
   "dna": {
     "aggression": 0.947,
     "brightness": 0.105,
@@ -36,15 +36,26 @@
   "parameters": {
     "Oblique": {
       "level": 0.653,
-      "pan": -0.118
+      "pan": -0.118,
+      "oblq_macroCharacter": 0.495,
+      "oblq_macroMovement": 0.534,
+      "oblq_macroCoupling": 0.441,
+      "oblq_macroSpace": 0.862,
+      "oblq_filterEnvAmt": 0.315,
+      "oblq_lfo1Rate": 0.028,
+      "oblq_lfo1Depth": 0.222
     },
     "Overbite": {
       "poss_level": 0.8,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.5,
-      "poss_macroScurry": 0.5,
+      "poss_macroBelly": 0.481,
+      "poss_macroBite": 0.52,
+      "poss_macroScurry": 0.848,
       "poss_macroTrash": 0.5,
-      "poss_pan": 0.0
+      "poss_pan": 0.0,
+      "poss_macroPlayDead": 0.427,
+      "poss_filterEnvAmount": 0.315,
+      "poss_lfo1Rate": 0.028,
+      "poss_lfo1Depth": 0.222
     }
   },
   "schema_version": 1,
@@ -58,5 +69,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.472,
+    "MOVEMENT": 0.511,
+    "COUPLING": 0.418,
+    "SPACE": 0.839
+  }
 }

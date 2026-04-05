@@ -34,7 +34,13 @@
       "otto_filterCutoff": 0.6,
       "otto_grow": 0.5,
       "otto_harmonicRich": 0.5,
-      "otto_releaseTime": 3.2
+      "otto_releaseTime": 3.2,
+      "otto_macroCharacter": 0.603,
+      "otto_macroMovement": 0.704,
+      "otto_macroCoupling": 0.212,
+      "otto_macroSpace": 0.399,
+      "otto_filterEnvAmt": 0.653,
+      "otto_lfoRate": 0.458
     }
   },
   "schema_version": 1,
@@ -48,5 +54,11 @@
     "flux"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.726,
+    "COUPLING": 0.234,
+    "SPACE": 0.421
+  }
 }

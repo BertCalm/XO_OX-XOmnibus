@@ -42,11 +42,24 @@
       "ost_couplingLevel": 0.6,
       "ost_outputLevel": 0.89,
       "ost_outputPan": -0.05,
-      "ost_warmth": 0.737
+      "ost_warmth": 0.737,
+      "osteria_macroCharacter": 0.519,
+      "osteria_macroMovement": 0.636,
+      "osteria_macroCoupling": 0.715,
+      "osteria_macroSpace": 0.585,
+      "osteria_filterEnvDepth": 0.534,
+      "osteria_lfoDepth": 0.227
     },
     "Overbite": {
       "poss_level": 0.78,
-      "poss_pan": -0.04
+      "poss_pan": -0.04,
+      "poss_macroBelly": 0.491,
+      "poss_macroBite": 0.608,
+      "poss_macroPlayDead": 0.687,
+      "poss_macroScurry": 0.557,
+      "poss_filterEnvAmount": 0.534,
+      "poss_lfo1Rate": 0.227,
+      "poss_lfo1Depth": 0.307
     }
   },
   "schema_version": 1,
@@ -58,5 +71,11 @@
     "bite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.482,
+    "MOVEMENT": 0.599,
+    "COUPLING": 0.678,
+    "SPACE": 0.548
+  }
 }

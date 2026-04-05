@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Camera Obscura Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A camera obscura made of crystal \u2014 light entering and projecting inverted through mineral optics.",
+  "tags": [
+    "crystalline",
+    "camera",
+    "optics",
+    "mineral",
+    "projection"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.32,
+    "density": 0.48,
+    "space": 0.56,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_macroCharacter": 0.62,
+      "obscura_macroMovement": 0.36,
+      "obscura_macroCoupling": 0.21,
+      "obscura_macroSpace": 0.54,
+      "obscura_filterEnvAmt": 0.54,
+      "obscura_lfo1Rate": 0.13,
+      "obscura_lfo1Depth": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.21,
+    "SPACE": 0.54
+  }
+}

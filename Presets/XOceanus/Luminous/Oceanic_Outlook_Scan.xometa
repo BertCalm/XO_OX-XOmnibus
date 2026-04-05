@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Oceanic Outlook Scan",
+  "mood": "Luminous",
+  "engines": ["Oceanic", "Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oceanic's phosphorescent chromatophores feed Outlook's panoramic parallax field — bioluminescence spreading to fill the full horizon, light turning to landscape.",
+  "tags": ["luminous", "coupled", "phosphorescent", "panoramic", "horizon"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.81,
+    "warmth": 0.50,
+    "movement": 0.48,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_macroCharacter": 0.48,
+      "ocean_macroMovement": 0.48,
+      "ocean_macroCoupling": 0.28,
+      "ocean_macroSpace": 0.72,
+      "ocean_filterEnvAmt": 0.52,
+      "ocean_separation": 0.55,
+      "ocean_chromatophore": 0.48,
+      "ocean_lfo1Rate": 0.08,
+      "ocean_lfo1Depth": 0.24,
+      "ocean_attack": 0.2,
+      "ocean_decay": 1.0,
+      "ocean_sustain": 0.80,
+      "ocean_release": 3.5,
+      "ocean_filterCutoff": 6800,
+      "ocean_output": 0
+    },
+    "Outlook": {
+      "look_macroCharacter": 0.50,
+      "look_macroMovement": 0.44,
+      "look_macroCoupling": 0.28,
+      "look_macroSpace": 0.75,
+      "look_filterEnvAmt": 0.48,
+      "look_horizonScan": 0.70,
+      "look_lfo1Rate": 0.05,
+      "look_lfo1Depth": 0.18,
+      "look_attack": 0.18,
+      "look_decay": 1.3,
+      "look_sustain": 0.82,
+      "look_release": 4.2,
+      "look_filterCutoff": 8800,
+      "look_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oceanic",
+        "target": "Outlook",
+        "type": "AmpToFilter",
+        "amount": 0.24
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.28,
+    "SPACE": 0.72
+  }
+}

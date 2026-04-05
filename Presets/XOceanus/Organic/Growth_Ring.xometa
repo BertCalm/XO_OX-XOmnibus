@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Growth Ring",
+  "mood": "Organic",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dendrological rings read as cellular memory — each year a new rule iteration, expanding outward from the heartwood.",
+  "tags": ["organic", "growth-ring", "dendrology", "annual", "memory"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.76,
+    "movement": 0.30,
+    "density": 0.56,
+    "space": 0.48,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Organism": {
+      "org_macroCharacter": 0.46,
+      "org_macroMovement": 0.30,
+      "org_macroCoupling": 0.16,
+      "org_macroSpace": 0.48,
+      "org_ruleSet": 0.10,
+      "org_filterEnvAmt": 0.44,
+      "org_lfo1Rate": 0.03,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.06,
+      "org_lfo2Depth": 0.16
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.16,
+    "SPACE": 0.48
+  }
+}

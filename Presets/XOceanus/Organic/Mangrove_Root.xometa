@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Mangrove Root",
+  "mood": "Organic",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tangled mangrove root system creating shelter and complexity. Each arc of root feeds back into the harmonic structure.",
+  "tags": ["organic", "mangrove", "roots", "tangled", "coastal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.60,
+    "space": 0.55,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.48,
+      "oxb_macroMovement": 0.35,
+      "oxb_macroCoupling": 0.22,
+      "oxb_macroSpace": 0.55,
+      "oxb_entangle": 0.65,
+      "oxb_filterEnvAmt": 0.42,
+      "oxb_lfo1Rate": 0.04,
+      "oxb_lfo1Depth": 0.28,
+      "oxb_lfo2Rate": 0.08,
+      "oxb_lfo2Depth": 0.20
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.22,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Vista Filter Open",
+  "mood": "Luminous",
+  "engines": ["Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Outlook's vista filter at maximum aperture — everything is visible, nothing excluded. The luminous moment when the full view becomes available, unfiltered.",
+  "tags": ["luminous", "vista", "open", "horizon", "unfiltered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.50,
+    "movement": 0.38,
+    "density": 0.30,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.60,
+      "look_macroMovement": 0.38,
+      "look_macroCoupling": 0.16,
+      "look_macroSpace": 0.72,
+      "look_filterEnvAmt": 0.58,
+      "look_horizonScan": 0.72,
+      "look_lfo1Rate": 0.07,
+      "look_lfo1Depth": 0.20,
+      "look_lfo2Rate": 0.03,
+      "look_lfo2Depth": 0.12,
+      "look_attack": 0.10,
+      "look_decay": 0.8,
+      "look_sustain": 0.86,
+      "look_release": 3.8,
+      "look_filterCutoff": 12000,
+      "look_filterRes": 0.16,
+      "look_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.72
+  }
+}

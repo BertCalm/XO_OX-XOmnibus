@@ -50,11 +50,24 @@
       "orph_reverbMix": 0.446,
       "orph_outputLevel": 0.805,
       "orph_couplingLevel": 0.011,
-      "orph_couplingBus": 0
+      "orph_couplingBus": 0,
+      "orph_macroPluck": 0.643,
+      "orph_macroSurface": 0.446,
+      "orph_macroFracture": 0.257,
+      "orph_macroDivine": 0.368,
+      "orph_filterEnvAmt": 0.407,
+      "orph_lfo1Rate": 0.143,
+      "orph_lfo1Depth": 0.337
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.434,
+    "COUPLING": 0.245,
+    "SPACE": 0.356
+  }
 }

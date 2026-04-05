@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Green Phosphor Glyph",
+  "mood": "Crystalline",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A phosphor green glyph etched in crystalline precision. CRT geometry frozen at absolute clarity.",
+  "tags": [
+    "crystalline",
+    "green",
+    "phosphor",
+    "glyph",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.35,
+    "density": 0.32,
+    "space": 0.58,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.6,
+      "optic_macroMovement": 0.4,
+      "optic_macroCoupling": 0.16,
+      "optic_macroSpace": 0.59,
+      "optic_filterEnvAmt": 0.48,
+      "optic_lfo1Rate": 0.05,
+      "optic_lfo1Depth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.16,
+    "SPACE": 0.59
+  }
+}

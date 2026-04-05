@@ -61,7 +61,14 @@
       "drift_driftDepth": 0.35,
       "drift_driftRate": 0.04,
       "drift_level": 0.62,
-      "drift_polyphony": 4
+      "drift_polyphony": 4,
+      "drift_macroCharacter": 0.645,
+      "drift_macroMovement": 0.619,
+      "drift_macroCoupling": 0.679,
+      "drift_macroSpace": 0.516,
+      "drift_filterEnvAmt": 0.469,
+      "drift_lfoRate": 0.255,
+      "drift_lfoDepth": 0.241
     },
     "Onset": {
       "perc_v1_blend": 0.15,
@@ -70,9 +77,20 @@
       "perc_v2_blend": 0.3,
       "perc_v2_decay": 0.15,
       "perc_v2_level": 0.55,
-      "perc_macro_punch": 0.4,
-      "perc_macro_space": 0.55
+      "perc_macro_punch": 0.639,
+      "perc_macro_space": 0.51,
+      "perc_macro_mutate": 0.613,
+      "perc_macro_machine": 0.673,
+      "perc_filterEnvAmt": 0.469,
+      "perc_lfo1Rate": 0.255,
+      "perc_lfo1Depth": 0.241
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.589,
+    "COUPLING": 0.649,
+    "SPACE": 0.486
+  }
 }

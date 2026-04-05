@@ -37,7 +37,14 @@
   "parameters": {
     "Overbite": {
       "poss_level": 0.89,
-      "poss_pan": -0.02
+      "poss_pan": -0.02,
+      "poss_macroBelly": 0.608,
+      "poss_macroBite": 0.599,
+      "poss_macroPlayDead": 0.748,
+      "poss_macroScurry": 0.454,
+      "poss_filterEnvAmount": 0.571,
+      "poss_lfo1Rate": 0.189,
+      "poss_lfo1Depth": 0.215
     },
     "Overdub": {
       "dub_aggression": 0.355,
@@ -46,7 +53,13 @@
       "dub_couplingLevel": 0.63,
       "dub_outputLevel": 0.77,
       "dub_outputPan": 0.04,
-      "dub_warmth": 0.682
+      "dub_warmth": 0.682,
+      "dub_macroCharacter": 0.591,
+      "dub_macroMovement": 0.582,
+      "dub_macroCoupling": 0.731,
+      "dub_macroSpace": 0.437,
+      "dub_filterEnvAmt": 0.571,
+      "dub_lfoDepth": 0.189
     }
   },
   "schema_version": 1,
@@ -58,5 +71,11 @@
     "bite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.599,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.739,
+    "SPACE": 0.445
+  }
 }

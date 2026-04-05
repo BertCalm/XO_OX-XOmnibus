@@ -47,7 +47,14 @@
       "owit_mutateProb": 0.133,
       "owit_outputLevel": 0.698,
       "owit_pitchSpread": 0.505,
-      "owit_rule": 54
+      "owit_rule": 54,
+      "owit_macroCharacter": 0.498,
+      "owit_macroMovement": 0.457,
+      "owit_macroCoupling": 0.418,
+      "owit_macroSpace": 0.469,
+      "owit_filterEnvAmt": 0.574,
+      "owit_lfo1Rate": 0.293,
+      "owit_lfo1Depth": 0.353
     },
     "Overlap": {
       "olap_couplingBus": 0,
@@ -63,7 +70,14 @@
       "olap_modRate": 0.287,
       "olap_outputLevel": 0.71,
       "olap_preDelay": 0.104,
-      "olap_size": 0.919
+      "olap_size": 0.919,
+      "olap_macroCharacter": 0.524,
+      "olap_macroMovement": 0.483,
+      "olap_macroCoupling": 0.444,
+      "olap_macroSpace": 0.495,
+      "olap_filterEnvAmt": 0.574,
+      "olap_lfo1Rate": 0.293,
+      "olap_lfo1Depth": 0.353
     }
   },
   "schema_version": 1,
@@ -78,5 +92,11 @@
     "cellular-automata"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.479,
+    "COUPLING": 0.44,
+    "SPACE": 0.491
+  }
 }

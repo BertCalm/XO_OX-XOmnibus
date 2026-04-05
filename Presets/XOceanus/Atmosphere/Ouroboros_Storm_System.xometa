@@ -39,7 +39,13 @@
       "ouro_phi": 0.12,
       "ouro_rate": 880.0,
       "ouro_theta": 0.92,
-      "ouro_topology": 3
+      "ouro_topology": 3,
+      "ouro_macroCharacter": 0.29,
+      "ouro_macroMovement": 0.445,
+      "ouro_macroCoupling": 0.15,
+      "ouro_macroSpace": 0.644,
+      "ouro_filterEnvAmt": 0.383,
+      "ouro_lfoRate": 0.103
     }
   },
   "schema_version": 1,
@@ -52,5 +58,11 @@
     "cyclone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.288,
+    "MOVEMENT": 0.443,
+    "COUPLING": 0.148,
+    "SPACE": 0.642
+  }
 }

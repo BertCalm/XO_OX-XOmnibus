@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Brass Sunlight",
+  "mood": "Luminous",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sunlight reflecting off polished brass — the warmest bright, harmonic richness catching the light at every spectral angle. Oddfellow's copper heritage rendered luminous.",
+  "tags": ["luminous", "brass", "sunlight", "warm", "copper"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.65,
+    "movement": 0.36,
+    "density": 0.45,
+    "space": 0.50,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_macroCharacter": 0.60,
+      "oddf_macroMovement": 0.36,
+      "oddf_macroCoupling": 0.14,
+      "oddf_macroSpace": 0.50,
+      "oddf_filterEnvAmt": 0.62,
+      "oddf_spectralShift": 0.50,
+      "oddf_lfo1Rate": 0.06,
+      "oddf_lfo1Depth": 0.20,
+      "oddf_lfo2Rate": 0.10,
+      "oddf_lfo2Depth": 0.12,
+      "oddf_attack": 0.012,
+      "oddf_decay": 1.0,
+      "oddf_sustain": 0.70,
+      "oddf_release": 2.2,
+      "oddf_filterCutoff": 8500,
+      "oddf_filterRes": 0.28,
+      "oddf_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.14,
+    "SPACE": 0.50
+  }
+}

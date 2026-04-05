@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Parallax Dawn",
+  "mood": "Luminous",
+  "engines": ["Outlook"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Parallax stereo at dawn — foreground and background elements rise at different rates, the nearest edge of light moving faster, the depth of the luminous scene revealed.",
+  "tags": ["luminous", "parallax", "dawn", "depth", "stereo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.52,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Outlook": {
+      "look_macroCharacter": 0.56,
+      "look_macroMovement": 0.42,
+      "look_macroCoupling": 0.16,
+      "look_macroSpace": 0.75,
+      "look_filterEnvAmt": 0.54,
+      "look_horizonScan": 0.68,
+      "look_lfo1Rate": 0.09,
+      "look_lfo1Depth": 0.22,
+      "look_lfo2Rate": 0.04,
+      "look_lfo2Depth": 0.14,
+      "look_attack": 0.20,
+      "look_decay": 1.2,
+      "look_sustain": 0.82,
+      "look_release": 4.5,
+      "look_filterCutoff": 9500,
+      "look_filterRes": 0.20,
+      "look_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.16,
+    "SPACE": 0.75
+  }
+}

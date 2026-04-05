@@ -36,11 +36,24 @@
   "parameters": {
     "Obsidian": {
       "level": 0.842,
-      "pan": 0.113
+      "pan": 0.113,
+      "obsidian_macroCharacter": 0.497,
+      "obsidian_macroMovement": 0.431,
+      "obsidian_macroCoupling": 0.594,
+      "obsidian_macroSpace": 0.797,
+      "obsidian_filterEnvAmt": 0.335,
+      "obsidian_lfoRate": 0.05,
+      "obsidian_lfoDepth": 0.145
     },
     "Optic": {
       "level": 0.751,
-      "pan": -0.125
+      "pan": -0.125,
+      "optic_macroCharacter": 0.457,
+      "optic_macroMovement": 0.391,
+      "optic_macroCoupling": 0.554,
+      "optic_macroSpace": 0.757,
+      "optic_filterEnvAmt": 0.335,
+      "optic_lfoRate": 0.05
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.429,
+    "MOVEMENT": 0.363,
+    "COUPLING": 0.526,
+    "SPACE": 0.729
+  }
 }

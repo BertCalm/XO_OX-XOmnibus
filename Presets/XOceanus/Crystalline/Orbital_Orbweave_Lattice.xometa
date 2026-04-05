@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Orbweave Lattice",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbital",
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital additive partials locked to Orbweave knot topology \u2014 pitch entanglement creating a two-engine crystal lattice.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "orbital",
+    "orbweave",
+    "lattice"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.32,
+    "density": 0.44,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.62,
+      "orb_macroMovement": 0.37,
+      "orb_macroCoupling": 0.22,
+      "orb_macroSpace": 0.51,
+      "orb_filterEnvAmt": 0.57,
+      "orb_lfo1Rate": 0.04,
+      "orb_lfo1Depth": 0.2
+    },
+    "Orbweave": {
+      "weave_macroCharacter": 0.62,
+      "weave_macroMovement": 0.37,
+      "weave_macroCoupling": 0.22,
+      "weave_macroSpace": 0.51,
+      "weave_filterEnvAmt": 0.57,
+      "weave_lfo1Rate": 0.04,
+      "weave_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Orbweave",
+        "type": "PitchToPitch",
+        "amount": 0.22
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.22,
+    "SPACE": 0.51
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Abyss Loop",
+  "mood": "Deep",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chaos consuming itself in slow motion — the Ouroboros as deep-time phenomenon, where the beginning and end are indistinguishable in geological darkness.",
+  "tags": ["deep", "chaos", "cyclical", "dark", "drone"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.64,
+    "movement": 0.24,
+    "density": 0.70,
+    "space": 0.68,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.50,
+      "ouro_macroMovement": 0.24,
+      "ouro_macroCoupling": 0.13,
+      "ouro_macroSpace": 0.65,
+      "ouro_filterEnvAmt": 0.42,
+      "ouro_lfo1Rate": 0.04,
+      "ouro_lfo1Depth": 0.22,
+      "ouro_topology": 0.35,
+      "ouro_leash": 0.55
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.13,
+    "SPACE": 0.65
+  }
+}

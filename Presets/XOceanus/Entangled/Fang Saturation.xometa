@@ -42,11 +42,25 @@
       "fat_couplingLevel": 0.57,
       "fat_outputLevel": 0.78,
       "fat_outputPan": -0.02,
-      "fat_warmth": 0.705
+      "fat_warmth": 0.705,
+      "fat_macroMojo": 0.536,
+      "fat_macroGrit": 0.525,
+      "fat_macroSize": 0.715,
+      "fat_macroCrush": 0.473,
+      "fat_fltEnvAmt": 0.54,
+      "fat_lfo1Rate": 0.181,
+      "fat_lfo1Depth": 0.366
     },
     "Overbite": {
       "poss_level": 0.78,
-      "poss_pan": -0.04
+      "poss_pan": -0.04,
+      "poss_macroBelly": 0.497,
+      "poss_macroBite": 0.486,
+      "poss_macroPlayDead": 0.676,
+      "poss_macroScurry": 0.434,
+      "poss_filterEnvAmount": 0.54,
+      "poss_lfo1Rate": 0.181,
+      "poss_lfo1Depth": 0.366
     }
   },
   "schema_version": 1,
@@ -59,5 +73,11 @@
     "saturation"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.488,
+    "MOVEMENT": 0.477,
+    "COUPLING": 0.667,
+    "SPACE": 0.425
+  }
 }

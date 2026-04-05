@@ -44,10 +44,10 @@
       "perc_fx_reverb_mix": 0.62,
       "perc_fx_reverb_size": 0.78,
       "perc_level": 0.82,
-      "perc_macro_machine": 0.78,
-      "perc_macro_mutate": 0.82,
-      "perc_macro_punch": 0.75,
-      "perc_macro_space": 0.55,
+      "perc_macro_machine": 0.254,
+      "perc_macro_mutate": 0.368,
+      "perc_macro_punch": 0.431,
+      "perc_macro_space": 0.72,
       "perc_masterTone": 0.72,
       "perc_v1_algoMode": 3,
       "perc_v1_blend": 0.82,
@@ -98,7 +98,10 @@
       "perc_xvc_kick_to_snare_filter": 0.52,
       "perc_xvc_kick_to_tom_pitch": 0.32,
       "perc_xvc_snare_to_hat_decay": 0.48,
-      "perc_xvc_snare_to_perc_blend": 0.38
+      "perc_xvc_snare_to_perc_blend": 0.38,
+      "perc_filterEnvAmt": 0.434,
+      "perc_lfo1Rate": 0.079,
+      "perc_lfo1Depth": 0.339
     }
   },
   "schema_version": 1,
@@ -112,5 +115,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.407,
+    "MOVEMENT": 0.344,
+    "COUPLING": 0.23,
+    "SPACE": 0.696
+  }
 }

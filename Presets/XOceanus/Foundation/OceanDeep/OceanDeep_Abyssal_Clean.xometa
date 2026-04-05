@@ -49,17 +49,24 @@
       "deep_ampSus": 0.8,
       "deep_ampRel": 1.5,
       "deep_lfo1Rate": 0.15,
-      "deep_lfo1Depth": 0.0,
+      "deep_lfo1Depth": 0.199,
       "deep_lfo2Rate": 0.05,
       "deep_lfo2Depth": 0.0,
       "deep_reverbMix": 0.0,
-      "deep_macroPressure": 0.0,
-      "deep_macroCreature": 0.0,
-      "deep_macroWreck": 0.0,
-      "deep_macroAbyss": 0.0
+      "deep_macroPressure": 0.462,
+      "deep_macroCreature": 0.339,
+      "deep_macroWreck": 0.228,
+      "deep_macroAbyss": 0.303,
+      "deep_filterEnvAmt": 0.521
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.414,
+    "MOVEMENT": 0.291,
+    "COUPLING": 0.18,
+    "SPACE": 0.255
   }
 }

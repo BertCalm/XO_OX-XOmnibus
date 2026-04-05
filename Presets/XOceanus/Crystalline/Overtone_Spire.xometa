@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Overtone Spire",
+  "mood": "Crystalline",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Additive overtones stacked into a crystalline spire \u2014 each partial adds height and precision to the structure.",
+  "tags": [
+    "crystalline",
+    "overtone",
+    "spire",
+    "additive",
+    "stacked"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macroCharacter": 0.62,
+      "orb_macroMovement": 0.32,
+      "orb_macroCoupling": 0.23,
+      "orb_macroSpace": 0.62,
+      "orb_filterEnvAmt": 0.42,
+      "orb_lfo1Rate": 0.12,
+      "orb_lfo1Depth": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.23,
+    "SPACE": 0.62
+  }
+}

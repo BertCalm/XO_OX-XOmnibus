@@ -40,7 +40,14 @@
       "fat_mojo": 0.82,
       "fat_morph": 0.4,
       "fat_noiseAmount": 0.55,
-      "fat_satDrive": 0.92
+      "fat_satDrive": 0.92,
+      "fat_macroMojo": 0.724,
+      "fat_macroGrit": 0.851,
+      "fat_macroSize": 0.385,
+      "fat_macroCrush": 0.342,
+      "fat_fltEnvAmt": 0.524,
+      "fat_lfo1Rate": 0.345,
+      "fat_lfo1Depth": 0.305
     }
   },
   "schema_version": 1,
@@ -55,5 +62,11 @@
     "staircase"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.676,
+    "MOVEMENT": 0.803,
+    "COUPLING": 0.337,
+    "SPACE": 0.294
+  }
 }

@@ -33,7 +33,14 @@
       "orph_pluckBrightness": 0.8,
       "orph_releaseTime": 1.2,
       "orph_resonance": 0.65,
-      "orph_velocitySensitivity": 0.95
+      "orph_velocitySensitivity": 0.95,
+      "orph_macroPluck": 0.661,
+      "orph_macroSurface": 0.492,
+      "orph_macroFracture": 0.282,
+      "orph_macroDivine": 0.427,
+      "orph_filterEnvAmt": 0.408,
+      "orph_lfo1Rate": 0.193,
+      "orph_lfo1Depth": 0.226
     }
   },
   "schema_version": 1,
@@ -46,5 +53,11 @@
     "cascade"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.27,
+    "SPACE": 0.415
+  }
 }

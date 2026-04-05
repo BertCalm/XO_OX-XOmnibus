@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Breath",
+  "mood": "Ethereal",
+  "engines": ["Obsidian", "Overtone"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystalline resonance exhales continued fractions. Obsidian's white surface barely moves, but each exhalation traces Overtone's irrational harmonics.",
+  "tags": ["ethereal", "whisper", "coupling", "crystal", "spectral", "breath", "irrational"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.48,
+    "movement": 0.22,
+    "density": 0.28,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.34,
+      "obsidian_macroMovement": 0.26,
+      "obsidian_macroCoupling": 0.13,
+      "obsidian_macroSpace": 0.90,
+      "obsidian_depth": 0.36,
+      "obsidian_filterEnvAmt": 0.30,
+      "obsidian_lfo1Rate": 0.02,
+      "obsidian_lfo1Depth": 0.14,
+      "obsidian_attack": 2.8,
+      "obsidian_release": 8.0
+    },
+    "Overtone": {
+      "over_macroCharacter": 0.32,
+      "over_macroMovement": 0.28,
+      "over_macroCoupling": 0.12,
+      "over_macroSpace": 0.94,
+      "over_cfDepth": 0.52,
+      "over_filterEnvAmt": 0.26,
+      "over_lfo1Rate": 0.03,
+      "over_lfo1Depth": 0.15,
+      "over_attack": 2.0,
+      "over_release": 7.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overtone",
+        "type": "FilterToFilter",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.12,
+    "SPACE": 0.92
+  }
+}

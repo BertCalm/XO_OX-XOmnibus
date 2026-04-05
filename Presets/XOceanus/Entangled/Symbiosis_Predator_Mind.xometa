@@ -39,14 +39,28 @@
       "orca_breachAmount": 0.55,
       "orca_echoDepth": 0.62,
       "orca_filterCutoff": 0.5,
-      "orca_outputLevel": 0.8
+      "orca_outputLevel": 0.8,
+      "orca_macroCharacter": 0.633,
+      "orca_macroMovement": 0.548,
+      "orca_macroCoupling": 0.422,
+      "orca_macroSpace": 0.557,
+      "orca_filterEnvAmt": 0.411,
+      "orca_lfo1Rate": 0.185,
+      "orca_lfo1Depth": 0.248
     },
     "Octopus": {
       "octo_armDepth": 0.68,
       "octo_chromatophoreRate": 0.58,
       "octo_inkCloudMix": 0.4,
       "octo_filterCutoff": 0.52,
-      "octo_outputLevel": 0.78
+      "octo_outputLevel": 0.78,
+      "octo_macroCharacter": 0.615,
+      "octo_macroMovement": 0.53,
+      "octo_macroCoupling": 0.404,
+      "octo_macroSpace": 0.539,
+      "octo_filterEnvAmt": 0.411,
+      "octo_lfo1Rate": 0.185,
+      "octo_lfo1Depth": 0.248
     }
   },
   "coupling": {
@@ -65,5 +79,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.617,
+    "MOVEMENT": 0.532,
+    "COUPLING": 0.406,
+    "SPACE": 0.541
+  }
 }

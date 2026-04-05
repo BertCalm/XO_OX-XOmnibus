@@ -48,17 +48,24 @@
       "org_ampSus": 0.0,
       "org_ampRel": 0.15,
       "org_lfo1Rate": 0.5,
-      "org_lfo1Depth": 0.0,
+      "org_lfo1Depth": 0.407,
       "org_lfo2Rate": 0.3,
       "org_lfo2Depth": 0.0,
       "org_reverbMix": 0.2,
-      "org_macroRule": 0.25,
-      "org_macroSeed": 0.0,
-      "org_macroCoupling": 0.0,
-      "org_macroMutate": 0.0
+      "org_macroRule": 0.728,
+      "org_macroSeed": 0.817,
+      "org_macroCoupling": 0.293,
+      "org_macroMutate": 0.306,
+      "org_filterEnvAmt": 0.641
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.724,
+    "MOVEMENT": 0.813,
+    "COUPLING": 0.289,
+    "SPACE": 0.302
   }
 }

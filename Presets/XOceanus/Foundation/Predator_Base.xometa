@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Predator Base",
+  "mood": "Foundation",
+  "engines": ["Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Foundational apex predator preset. Hunt macro at controlled intensity — the base layer of all predatory sounds.",
+  "tags": ["foundation", "aggressive", "predator", "base", "hunt"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.18,
+    "movement": 0.82,
+    "density": 0.82,
+    "space": 0.16,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Orca": {
+      "orca_macroCharacter": 0.86,
+      "orca_macroMovement": 0.8,
+      "orca_macroCoupling": 0.16,
+      "orca_macroSpace": 0.18,
+      "orca_huntMacro": 0.88,
+      "orca_echoDepth": 0.6,
+      "orca_filterEnvAmt": 0.76,
+      "orca_lfo1Rate": 0.45,
+      "orca_lfo1Depth": 0.42,
+      "orca_filterCutoff": 0.65,
+      "orca_filterRes": 0.7,
+      "orca_attackTime": 0.008,
+      "orca_decayTime": 0.2,
+      "orca_sustain": 0.32,
+      "orca_releaseTime": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.16,
+    "SPACE": 0.18
+  }
+}

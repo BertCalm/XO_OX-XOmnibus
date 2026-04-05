@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Harmonic Pi",
+  "mood": "Luminous",
+  "engines": ["Overtone"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pi as continued fractions (3, 22/7, 333/106…) — the most irrational constant's rational approximations forming a timbral system of sublime near-periodicity and shimmer.",
+  "tags": ["luminous", "pi", "mathematical", "irrational", "shimmer"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.44,
+    "movement": 0.38,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroDepth": 0.56,
+      "over_macroColor": 0.64,
+      "over_macroCoupling": 0.16,
+      "over_macroSpace": 0.62,
+      "over_filterEnvAmt": 0.56,
+      "over_constant": 0,
+      "over_depth": 3.14159,
+      "over_partial0": 1.0,
+      "over_partial1": 0.70,
+      "over_partial2": 0.50,
+      "over_partial3": 0.36,
+      "over_partial4": 0.26,
+      "over_partial5": 0.18,
+      "over_partial6": 0.12,
+      "over_partial7": 0.08,
+      "over_velBright": 0.60,
+      "over_filterCutoff": 12500,
+      "over_filterRes": 0.20,
+      "over_ampAtk": 0.028,
+      "over_ampDec": 0.6,
+      "over_ampSus": 0.78,
+      "over_ampRel": 2.6,
+      "over_lfo1Rate": 0.07,
+      "over_lfo1Depth": 0.18,
+      "over_lfo2Rate": 0.03,
+      "over_lfo2Depth": 0.12,
+      "over_resoMix": 0.24,
+      "over_cfDepth": 0.42
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.56,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.62
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Pollen Cloud",
+  "mood": "Ethereal",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A pollen cloud released in spring stillness. Each grain airborne and buoyant, collectively a yellow-green haze.",
+  "tags": [
+    "ethereal",
+    "pollen",
+    "cloud",
+    "spring",
+    "haze"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.2,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.36,
+      "opal_macroMovement": 0.32,
+      "opal_macroCoupling": 0.1,
+      "opal_macroSpace": 0.84,
+      "opal_grainSize": 0.4,
+      "opal_filterEnvAmt": 0.29,
+      "opal_lfo1Rate": 0.035,
+      "opal_lfo1Depth": 0.15,
+      "opal_attack": 2.5,
+      "opal_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.1,
+    "SPACE": 0.84
+  }
+}

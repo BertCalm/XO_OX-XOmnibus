@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Opaline Orbweave Fault",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline",
+    "Orbweave"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opaline fault envelope driving Orbweave knot morphology \u2014 a crystal fracture creating topological mutation.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "opaline",
+    "orbweave",
+    "fracture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.28,
+    "movement": 0.36,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.57,
+      "opal2_macroMovement": 0.38,
+      "opal2_macroCoupling": 0.21,
+      "opal2_macroSpace": 0.5,
+      "opal2_filterEnvAmt": 0.45,
+      "opal2_lfo1Rate": 0.1,
+      "opal2_lfo1Depth": 0.15
+    },
+    "Orbweave": {
+      "weave_macroCharacter": 0.57,
+      "weave_macroMovement": 0.38,
+      "weave_macroCoupling": 0.21,
+      "weave_macroSpace": 0.5,
+      "weave_filterEnvAmt": 0.45,
+      "weave_lfo1Rate": 0.1,
+      "weave_lfo1Depth": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opaline",
+        "engineB": "Orbweave",
+        "type": "EnvToMorph",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.21,
+    "SPACE": 0.5
+  }
+}

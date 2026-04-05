@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Jewel Facet",
+  "mood": "Luminous",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Light enters a cut jewel and hits the first internal facet — explosion of refracted brilliance. Obsidian's crystal clarity sculpted into one perfect flash.",
+  "tags": ["luminous", "jewel", "facet", "crystal", "refraction"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.42,
+    "movement": 0.34,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.65,
+      "obsidian_macroMovement": 0.34,
+      "obsidian_macroCoupling": 0.13,
+      "obsidian_macroSpace": 0.55,
+      "obsidian_filterEnvAmt": 0.62,
+      "obsidian_depth": 0.55,
+      "obsidian_lfo1Rate": 0.07,
+      "obsidian_lfo1Depth": 0.22,
+      "obsidian_lfo2Rate": 0.13,
+      "obsidian_lfo2Depth": 0.14,
+      "obsidian_attack": 0.003,
+      "obsidian_decay": 0.5,
+      "obsidian_sustain": 0.85,
+      "obsidian_release": 2.2,
+      "obsidian_filterCutoff": 14000,
+      "obsidian_filterRes": 0.25,
+      "obsidian_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.13,
+    "SPACE": 0.55
+  }
+}

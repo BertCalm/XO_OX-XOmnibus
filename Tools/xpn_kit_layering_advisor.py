@@ -5,11 +5,11 @@ xpn_kit_layering_advisor.py — XO_OX XOceanus Tool
 Analyzes a set of WAV files (presumed to be velocity variants of the same hit)
 and advises on optimal MPC keygroup velocity layering strategies.
 
-Vibe's canonical 4-layer curve:
-  Layer 1: 1–40   (pp — gentle ghost touches)
-  Layer 2: 41–90  (mp/mf — musical centre of gravity)
-  Layer 3: 91–110 (f — forward presence)
-  Layer 4: 111–127 (ff — full commitment)
+Ghost Council Modified 4-layer curve (adopted 2026-04-04):
+  Layer 1: 1–20   (Ghost — below pad sensitivity threshold)
+  Layer 2: 21–55  (Light — finger drumming sweet spot)
+  Layer 3: 56–90  (Medium — deliberate hits)
+  Layer 4: 91–127 (Hard — power hits)
 
 Usage:
   python xpn_kit_layering_advisor.py kick_soft.wav kick_med.wav kick_hard.wav
@@ -21,6 +21,8 @@ import json
 import math
 import struct
 from pathlib import Path
+
+from xpn_velocity_standard import ZONES as _STANDARD_ZONES
 
 
 # ---------------------------------------------------------------------------
@@ -192,12 +194,13 @@ def analyze_wav(path: Path) -> dict:
 # Layer assignment logic
 # ---------------------------------------------------------------------------
 
-# Vibe's canonical 4-layer velocity zones
+# Ghost Council Modified 4-layer velocity zones — built from xpn_velocity_standard.
+# Old values were pp:1-40, mp/mf:41-90, f:91-110, ff:111-127 (replaced 2026-04-04).
+_LAYER_LABELS = ["Ghost", "Light", "Medium", "Hard"]
 VIBE_4_LAYER = [
-    {"layer": 1, "label": "pp",    "vel_low": 1,   "vel_high": 40},
-    {"layer": 2, "label": "mp/mf", "vel_low": 41,  "vel_high": 90},
-    {"layer": 3, "label": "f",     "vel_low": 91,  "vel_high": 110},
-    {"layer": 4, "label": "ff",    "vel_low": 111, "vel_high": 127},
+    {"layer": i + 1, "label": _LAYER_LABELS[i],
+     "vel_low": _STANDARD_ZONES[i][0], "vel_high": _STANDARD_ZONES[i][1]}
+    for i in range(len(_STANDARD_ZONES))
 ]
 
 SPLIT_2_LAYER = [
@@ -253,8 +256,8 @@ def assign_layers(analyses: list[dict]) -> dict:
             )
         else:
             note = (
-                "4 samples: Vibe's canonical 4-layer curve applied. "
-                "pp (1–40) / mp-mf (41–90) / f (91–110) / ff (111–127)."
+                "4 samples: Ghost Council Modified 4-layer curve applied. "
+                "Ghost (1–20) / Light (21–55) / Medium (56–90) / Hard (91–127)."
             )
 
     # Assign samples to zones (up to 4)

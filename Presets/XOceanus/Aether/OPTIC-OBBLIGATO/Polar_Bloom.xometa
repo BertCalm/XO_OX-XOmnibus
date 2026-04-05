@@ -36,11 +36,24 @@
   "parameters": {
     "Obbligato": {
       "level": 0.784,
-      "pan": 0.138
+      "pan": 0.138,
+      "obbl_macroBond": 0.447,
+      "obbl_macroBreath": 0.499,
+      "obbl_macroWind": 0.484,
+      "obbl_macroMischief": 0.864,
+      "obbl_filterEnvAmt": 0.426,
+      "obbl_lfoRateA": 0.012,
+      "obbl_lfoDepthA": 0.131
     },
     "Optic": {
       "level": 0.807,
-      "pan": 0.105
+      "pan": 0.105,
+      "optic_macroCharacter": 0.461,
+      "optic_macroMovement": 0.513,
+      "optic_macroCoupling": 0.498,
+      "optic_macroSpace": 0.878,
+      "optic_filterEnvAmt": 0.426,
+      "optic_lfoRate": 0.012
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.433,
+    "MOVEMENT": 0.485,
+    "COUPLING": 0.47,
+    "SPACE": 0.85
+  }
 }

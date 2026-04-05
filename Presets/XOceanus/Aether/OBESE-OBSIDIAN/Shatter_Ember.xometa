@@ -36,11 +36,25 @@
   "parameters": {
     "Obese": {
       "level": 0.668,
-      "pan": -0.002
+      "pan": -0.002,
+      "fat_macroMojo": 0.437,
+      "fat_macroGrit": 0.495,
+      "fat_macroSize": 0.741,
+      "fat_macroCrush": 0.925,
+      "fat_fltEnvAmt": 0.395,
+      "fat_lfo1Rate": 0.017,
+      "fat_lfo1Depth": 0.205
     },
     "Obsidian": {
       "level": 0.712,
-      "pan": 0.076
+      "pan": 0.076,
+      "obsidian_macroCharacter": 0.457,
+      "obsidian_macroMovement": 0.515,
+      "obsidian_macroCoupling": 0.761,
+      "obsidian_macroSpace": 0.945,
+      "obsidian_filterEnvAmt": 0.395,
+      "obsidian_lfoRate": 0.017,
+      "obsidian_lfoDepth": 0.205
     }
   },
   "schema_version": 1,
@@ -54,5 +68,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.389,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.693,
+    "SPACE": 0.877
+  }
 }

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Shore",
+  "mood": "Ethereal",
+  "engines": [
+    "Overtone",
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Irrational harmonics washing over a tide-foam shore. Mathematical beauty dissolved by ocean repetition.",
+  "tags": [
+    "ethereal",
+    "spectral",
+    "shore",
+    "coupling",
+    "mathematical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.52,
+    "movement": 0.3,
+    "density": 0.14,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overtone": {
+      "over_macroCharacter": 0.34,
+      "over_macroMovement": 0.32,
+      "over_macroCoupling": 0.11,
+      "over_macroSpace": 0.9,
+      "over_cfDepth": 0.5,
+      "over_filterEnvAmt": 0.28,
+      "over_lfo1Rate": 0.025,
+      "over_lfo1Depth": 0.13,
+      "over_attack": 3.0,
+      "over_release": 9.5
+    },
+    "Overwash": {
+      "wash_macroCharacter": 0.28,
+      "wash_macroMovement": 0.28,
+      "wash_macroCoupling": 0.09,
+      "wash_macroSpace": 0.92,
+      "wash_tideDepth": 0.4,
+      "wash_filterEnvAmt": 0.24,
+      "wash_lfo1Rate": 0.038,
+      "wash_lfo1Depth": 0.15,
+      "wash_attack": 2.5,
+      "wash_release": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overtone",
+        "engineB": "Overwash",
+        "type": "EnvToMorph",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.91
+  }
+}

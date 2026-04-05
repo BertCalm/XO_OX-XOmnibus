@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Percussion and Pulse",
+  "mood": "Organic",
+  "engines": ["Oware", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mallet percussion driving metabolic pulse — each struck wood bar accelerates the bioluminescent organism beneath.",
+  "tags": ["organic", "percussion", "pulse", "coupled", "bioluminescent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.68,
+    "movement": 0.52,
+    "density": 0.52,
+    "space": 0.48,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Oware": {
+      "owr_macroCharacter": 0.46,
+      "owr_macroMovement": 0.52,
+      "owr_macroCoupling": 0.24,
+      "owr_macroSpace": 0.48,
+      "owr_material": 0.30,
+      "owr_filterEnvAmt": 0.48,
+      "owr_lfo1Rate": 0.08,
+      "owr_lfo1Depth": 0.26,
+      "owr_lfo2Rate": 0.14,
+      "owr_lfo2Depth": 0.18
+    },
+    "Organon": {
+      "organon_macroCharacter": 0.44,
+      "organon_macroMovement": 0.44,
+      "organon_macroCoupling": 0.24,
+      "organon_macroSpace": 0.46,
+      "organon_metabolicRate": 0.55,
+      "organon_filterEnvAmt": 0.44,
+      "organon_lfo1Rate": 0.09,
+      "organon_lfo1Depth": 0.26,
+      "organon_lfo2Rate": 0.04,
+      "organon_lfo2Depth": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oware",
+        "target": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.38
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.24,
+    "SPACE": 0.47
+  }
+}

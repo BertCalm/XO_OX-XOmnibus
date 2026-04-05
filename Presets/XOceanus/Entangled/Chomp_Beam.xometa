@@ -47,16 +47,26 @@
       "optic_macro3": 0.651,
       "optic_macro4": 0.401,
       "optic_outputLevel": 0.871,
-      "optic_outputPan": 0.004
+      "optic_outputPan": 0.004,
+      "optic_macroCharacter": 0.538,
+      "optic_macroMovement": 0.523,
+      "optic_macroCoupling": 0.738,
+      "optic_macroSpace": 0.469,
+      "optic_filterEnvAmt": 0.484,
+      "optic_lfoRate": 0.213
     },
     "Overbite": {
       "poss_gnashAmount": 0.362,
-      "poss_macroBelly": 0.416,
-      "poss_macroBite": 0.348,
-      "poss_macroScurry": 0.402,
+      "poss_macroBelly": 0.519,
+      "poss_macroBite": 0.504,
+      "poss_macroScurry": 0.45,
       "poss_macroTrash": 0.603,
       "poss_level": 0.814,
-      "poss_pan": 0.039
+      "poss_pan": 0.039,
+      "poss_macroPlayDead": 0.719,
+      "poss_filterEnvAmount": 0.484,
+      "poss_lfo1Rate": 0.213,
+      "poss_lfo1Depth": 0.314
     }
   },
   "schema_version": 1,
@@ -68,5 +78,11 @@
     "entangled"
   ],
   "tempo": 130,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.495,
+    "COUPLING": 0.71,
+    "SPACE": 0.441
+  }
 }

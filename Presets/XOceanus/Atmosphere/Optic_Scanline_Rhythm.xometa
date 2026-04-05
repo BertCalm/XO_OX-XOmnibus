@@ -47,7 +47,13 @@
       "optic_vizFeedback": 0.4,
       "optic_vizIntensity": 0.5,
       "optic_vizMode": 1,
-      "optic_vizSpeed": 0.6
+      "optic_vizSpeed": 0.6,
+      "optic_macroCharacter": 0.376,
+      "optic_macroMovement": 0.371,
+      "optic_macroCoupling": 0.195,
+      "optic_macroSpace": 0.675,
+      "optic_filterEnvAmt": 0.335,
+      "optic_lfoRate": 0.036
     }
   },
   "schema_version": 1,
@@ -62,5 +68,11 @@
     "flicker"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.348,
+    "MOVEMENT": 0.343,
+    "COUPLING": 0.167,
+    "SPACE": 0.647
+  }
 }

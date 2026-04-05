@@ -36,11 +36,24 @@
   "parameters": {
     "OddOscar": {
       "level": 0.73,
-      "pan": -0.148
+      "pan": -0.148,
+      "morph_macroCharacter": 0.439,
+      "morph_macroMovement": 0.482,
+      "morph_macroCoupling": 0.723,
+      "morph_macroSpace": 0.43,
+      "morph_filterEnvDepth": 0.451,
+      "morph_lfoRate": 0.113
     },
     "Opal": {
       "level": 0.689,
-      "pan": -0.071
+      "pan": -0.071,
+      "opal_macroCharacter": 0.401,
+      "opal_macroMovement": 0.444,
+      "opal_macroCoupling": 0.685,
+      "opal_macroSpace": 0.392,
+      "opal_filterEnvAmt": 0.451,
+      "opal_lfo1Rate": 0.113,
+      "opal_lfo1Depth": 0.212
     }
   },
   "schema_version": 1,
@@ -54,5 +67,11 @@
     "ultra-diverse"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.459,
+    "COUPLING": 0.7,
+    "SPACE": 0.407
+  }
 }

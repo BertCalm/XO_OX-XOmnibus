@@ -57,14 +57,17 @@
       "obbl_fxBTapeSat": 0.051,
       "obbl_instrumentA": 2,
       "obbl_instrumentB": 2,
-      "obbl_macroBond": 0.321,
-      "obbl_macroBreath": 0.468,
-      "obbl_macroMischief": 0.316,
-      "obbl_macroWind": 0.163,
+      "obbl_macroBond": 0.449,
+      "obbl_macroBreath": 0.315,
+      "obbl_macroMischief": 0.555,
+      "obbl_macroWind": 0.68,
       "obbl_reedBite": 0.361,
       "obbl_reedStiffness": 0.584,
       "obbl_sympatheticAmt": 0.447,
-      "obbl_voiceRouting": 0
+      "obbl_voiceRouting": 0,
+      "obbl_filterEnvAmt": 0.523,
+      "obbl_lfoRateA": 0.151,
+      "obbl_lfoDepthA": 0.196
     },
     "Ohm": {
       "ohm_bodyMaterial": 2,
@@ -87,10 +90,10 @@
       "ohm_grainScatter": 0.348,
       "ohm_grainSize": 1.0,
       "ohm_inlawLevel": 0.394,
-      "ohm_macroCommune": 0.095,
-      "ohm_macroJam": 0.451,
-      "ohm_macroMeadow": 0.057,
-      "ohm_macroMeddling": 0.577,
+      "ohm_macroCommune": 0.353,
+      "ohm_macroJam": 0.718,
+      "ohm_macroMeadow": 0.593,
+      "ohm_macroMeddling": 0.487,
       "ohm_meddlingThresh": 0.527,
       "ohm_obedLevel": 0.394,
       "ohm_pluckBrightness": 0.419,
@@ -98,7 +101,10 @@
       "ohm_spectralFreeze": 0.02,
       "ohm_sympatheticAmt": 0.231,
       "ohm_thereminScale": 0.96,
-      "ohm_thereminWobble": 0.317
+      "ohm_thereminWobble": 0.317,
+      "ohm_filterEnvAmt": 0.523,
+      "ohm_lfo1Rate": 0.151,
+      "ohm_lfo1Depth": 0.196
     }
   },
   "schema_version": 1,
@@ -110,5 +116,11 @@
     "flux"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.435,
+    "MOVEMENT": 0.301,
+    "COUPLING": 0.666,
+    "SPACE": 0.541
+  }
 }

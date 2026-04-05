@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Warmth Devour",
+  "mood": "Flux",
+  "engines": ["Okeanos"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Okeanos warmth amplified until it becomes destructive. Cardamom gold burning through the spectrum.",
+  "tags": ["flux", "aggressive", "warmth", "devour", "okeanos"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.45,
+    "movement": 0.84,
+    "density": 0.85,
+    "space": 0.18,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.82,
+      "okan_macroMovement": 0.82,
+      "okan_macroCoupling": 0.2,
+      "okan_macroSpace": 0.2,
+      "okan_warmth": 0.92,
+      "okan_resonance": 0.82,
+      "okan_filterEnvAmt": 0.72,
+      "okan_lfo1Rate": 0.45,
+      "okan_lfo1Depth": 0.42,
+      "okan_filterCutoff": 0.55,
+      "okan_filterRes": 0.68,
+      "okan_attackTime": 0.01,
+      "okan_decayTime": 0.3,
+      "okan_sustain": 0.48,
+      "okan_releaseTime": 0.28
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
+}

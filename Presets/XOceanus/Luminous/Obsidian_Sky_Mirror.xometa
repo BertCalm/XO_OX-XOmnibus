@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Sky Mirror",
+  "mood": "Luminous",
+  "engines": ["Obsidian", "OpenSky"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crystal clarity from Obsidian mirrors the shimmer of OpenSky — a still water surface reflecting aurora light, doubling the luminosity of everything it touches.",
+  "tags": ["luminous", "coupled", "crystal", "shimmer", "mirror"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.42,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.70,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.62,
+      "obsidian_macroMovement": 0.38,
+      "obsidian_macroCoupling": 0.25,
+      "obsidian_macroSpace": 0.68,
+      "obsidian_filterEnvAmt": 0.55,
+      "obsidian_depth": 0.52,
+      "obsidian_lfo1Rate": 0.05,
+      "obsidian_lfo1Depth": 0.18,
+      "obsidian_attack": 0.05,
+      "obsidian_decay": 0.8,
+      "obsidian_sustain": 0.88,
+      "obsidian_release": 3.0,
+      "obsidian_filterCutoff": 13000,
+      "obsidian_output": 0
+    },
+    "OpenSky": {
+      "sky_macroCharacter": 0.52,
+      "sky_macroMovement": 0.45,
+      "sky_macroCoupling": 0.25,
+      "sky_macroSpace": 0.70,
+      "sky_macroRise": 0.55,
+      "sky_filterEnvAmt": 0.50,
+      "sky_lfo1Rate": 0.08,
+      "sky_lfo1Depth": 0.22,
+      "sky_shimmerDepth": 0.68,
+      "sky_unisonVoices": 4,
+      "sky_unisonDetune": 0.14,
+      "sky_attack": 0.3,
+      "sky_decay": 1.5,
+      "sky_sustain": 0.78,
+      "sky_release": 4.2,
+      "sky_filterCutoff": 9500,
+      "sky_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Obsidian",
+        "target": "OpenSky",
+        "type": "FilterToFilter",
+        "amount": 0.25
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.25,
+    "SPACE": 0.68
+  }
+}

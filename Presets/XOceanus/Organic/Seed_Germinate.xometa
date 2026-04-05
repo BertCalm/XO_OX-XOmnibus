@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Seed Germinate",
+  "mood": "Organic",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The moment a seed coat splits and the first radicle emerges — metabolic awakening from dormancy into living process.",
+  "tags": ["organic", "seed", "germination", "awakening", "biological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.75,
+    "movement": 0.38,
+    "density": 0.44,
+    "space": 0.48,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organon": {
+      "organon_macroCharacter": 0.42,
+      "organon_macroMovement": 0.38,
+      "organon_macroCoupling": 0.16,
+      "organon_macroSpace": 0.48,
+      "organon_metabolicRate": 0.55,
+      "organon_filterEnvAmt": 0.42,
+      "organon_lfo1Rate": 0.05,
+      "organon_lfo1Depth": 0.26,
+      "organon_lfo2Rate": 0.10,
+      "organon_lfo2Depth": 0.18
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.16,
+    "SPACE": 0.48
+  }
+}

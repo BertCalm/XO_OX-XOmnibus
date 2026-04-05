@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Biophonic Loom",
+  "mood": "Coupling",
+  "engines": [
+    "Obrix",
+    "Overgrow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBRIX reef ecology drives OVERGROW forest growth patterning \u2014 two organic systems sharing ecological data, reef informing forest rhythm.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "ecological",
+    "organic",
+    "AudioToFM",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.5,
+    "movement": 0.58,
+    "density": 0.56,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_src1Type": 0.56,
+      "obrix_filterEnvAmt": 0.52,
+      "obrix_lfo1Rate": 0.14,
+      "obrix_lfo1Depth": 0.28,
+      "obrix_macroCharacter": 0.52,
+      "obrix_macroMovement": 0.56,
+      "obrix_macroCoupling": 0.62,
+      "obrix_macroSpace": 0.5
+    },
+    "Overgrow": {
+      "grow_growthRate": 0.58,
+      "grow_filterEnvAmt": 0.5,
+      "grow_lfo1Rate": 0.13,
+      "grow_lfo1Depth": 0.28,
+      "grow_macroCharacter": 0.5,
+      "grow_macroMovement": 0.54,
+      "grow_macroCoupling": 0.6,
+      "grow_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obrix",
+        "engineB": "Overgrow",
+        "type": "AudioToFM",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.61,
+    "SPACE": 0.5
+  }
+}

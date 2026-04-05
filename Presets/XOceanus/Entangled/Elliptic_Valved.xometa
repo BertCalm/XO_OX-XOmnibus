@@ -52,7 +52,14 @@
       "orb_outputLevel": 0.865,
       "orb_outputPan": 0.005,
       "orb_phaseSpread": 0.723,
-      "orb_resonantPeak": 0.501
+      "orb_resonantPeak": 0.501,
+      "orb_macroSpectrum": 0.589,
+      "orb_macroEvolve": 0.46,
+      "orb_macroCoupling": 0.474,
+      "orb_macroSpace": 0.532,
+      "orb_filterEnvAmt": 0.533,
+      "orb_lfo1Rate": 0.258,
+      "orb_lfo1Depth": 0.391
     },
     "Ottoni": {
       "otto_couplingIn": 0.773,
@@ -62,7 +69,13 @@
       "otto_macro3": 0.447,
       "otto_macro4": 0.687,
       "otto_outputLevel": 0.85,
-      "otto_outputPan": 0.005
+      "otto_outputPan": 0.005,
+      "otto_macroCharacter": 0.533,
+      "otto_macroMovement": 0.404,
+      "otto_macroCoupling": 0.418,
+      "otto_macroSpace": 0.476,
+      "otto_filterEnvAmt": 0.533,
+      "otto_lfoRate": 0.258
     }
   },
   "schema_version": 1,
@@ -74,5 +87,11 @@
     "entangled"
   ],
   "tempo": 115,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.426,
+    "COUPLING": 0.44,
+    "SPACE": 0.498
+  }
 }

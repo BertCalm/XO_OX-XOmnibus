@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.9,
       "ombre_release": 0.15,
       "ombre_subLevel": 0.15,
-      "ombre_sustain": 0.4
+      "ombre_sustain": 0.4,
+      "ombre_macroCharacter": 0.631,
+      "ombre_macroMovement": 0.821,
+      "ombre_macroCoupling": 0.306,
+      "ombre_macroSpace": 0.475,
+      "ombre_filterEnvAmt": 0.666,
+      "ombre_lfo1Rate": 0.297,
+      "ombre_lfo1Depth": 0.267
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "stutter"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.601,
+    "MOVEMENT": 0.791,
+    "COUPLING": 0.276,
+    "SPACE": 0.445
+  }
 }

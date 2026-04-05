@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Deep Topsoil",
+  "mood": "Organic",
+  "engines": ["Ohm"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rich black topsoil compressing sound into warmth — all the community of life in a handful of living earth.",
+  "tags": ["organic", "soil", "dark", "warm", "earthen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.84,
+    "movement": 0.26,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_macroCharacter": 0.54,
+      "ohm_macroMovement": 0.26,
+      "ohm_macroCoupling": 0.14,
+      "ohm_macroSpace": 0.38,
+      "ohm_macroMeddling": 0.20,
+      "ohm_filterEnvAmt": 0.48,
+      "ohm_lfo1Rate": 0.02,
+      "ohm_lfo1Depth": 0.20,
+      "ohm_lfo2Rate": 0.05,
+      "ohm_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.14,
+    "SPACE": 0.38
+  }
+}

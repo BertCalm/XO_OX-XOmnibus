@@ -40,14 +40,28 @@
       "snap_resonance": 0.45,
       "snap_ampAttack": 0.005,
       "snap_ampDecay": 0.18,
-      "snap_outputLevel": 0.78
+      "snap_outputLevel": 0.78,
+      "snap_macroDart": 0.622,
+      "snap_macroDepth": 0.618,
+      "snap_macroSchool": 0.755,
+      "snap_macroSurface": 0.526,
+      "snap_filterEnvDepth": 0.54,
+      "snap_lfoRate": 0.28,
+      "snap_lfoDepth": 0.377
     },
     "Orca": {
       "orca_huntMacro": 0.52,
       "orca_breachAmount": 0.38,
       "orca_echoDepth": 0.48,
       "orca_filterCutoff": 0.55,
-      "orca_outputLevel": 0.8
+      "orca_outputLevel": 0.8,
+      "orca_macroCharacter": 0.567,
+      "orca_macroMovement": 0.563,
+      "orca_macroCoupling": 0.7,
+      "orca_macroSpace": 0.471,
+      "orca_filterEnvAmt": 0.54,
+      "orca_lfo1Rate": 0.28,
+      "orca_lfo1Depth": 0.377
     }
   },
   "coupling": {
@@ -66,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.684,
+    "SPACE": 0.455
+  }
 }

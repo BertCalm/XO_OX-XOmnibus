@@ -41,15 +41,58 @@
     "Ohm": {
       "ohm_character": 0.486,
       "ohm_movement": 0.353,
-      "ohm_space": 0.774
+      "ohm_space": 0.774,
+      "ohm_macroMeddling": 0.569,
+      "ohm_macroCommune": 0.534,
+      "ohm_macroJam": 0.485,
+      "ohm_macroMeadow": 0.642,
+      "ohm_filterEnvAmt": 0.497,
+      "ohm_lfo1Rate": 0.07,
+      "ohm_lfo1Depth": 0.229
     },
-    "Orphica": {},
-    "Obbligato": {},
-    "Ottoni": {},
-    "Ole": {}
+    "Orphica": {
+      "orph_macroPluck": 0.529,
+      "orph_macroSurface": 0.494,
+      "orph_macroFracture": 0.445,
+      "orph_macroDivine": 0.602,
+      "orph_filterEnvAmt": 0.497,
+      "orph_lfo1Rate": 0.07,
+      "orph_lfo1Depth": 0.229
+    },
+    "Obbligato": {
+      "obbl_macroBond": 0.531,
+      "obbl_macroBreath": 0.496,
+      "obbl_macroWind": 0.447,
+      "obbl_macroMischief": 0.604,
+      "obbl_filterEnvAmt": 0.497,
+      "obbl_lfoRateA": 0.07,
+      "obbl_lfoDepthA": 0.229
+    },
+    "Ottoni": {
+      "otto_macroCharacter": 0.495,
+      "otto_macroMovement": 0.46,
+      "otto_macroCoupling": 0.411,
+      "otto_macroSpace": 0.568,
+      "otto_filterEnvAmt": 0.497,
+      "otto_lfoRate": 0.07
+    },
+    "Ole": {
+      "ole_macroDrama": 0.495,
+      "ole_macroFuego": 0.46,
+      "ole_macroIsla": 0.411,
+      "ole_macroSides": 0.568,
+      "ole_filterEnvAmt": 0.497,
+      "ole_lfoRate": 0.07
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.517,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.433,
+    "SPACE": 0.59
+  }
 }

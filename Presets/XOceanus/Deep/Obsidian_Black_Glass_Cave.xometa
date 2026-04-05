@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Black Glass Cave",
+  "mood": "Deep",
+  "engines": ["Obsidian"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A cavern lined with obsidian — ancient volcanic glass reflecting zero light but resonating at sub-audible frequencies, a resonator made of frozen fire.",
+  "tags": ["deep", "cave", "obsidian", "resonant", "volcanic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.60,
+    "movement": 0.12,
+    "density": 0.72,
+    "space": 0.74,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.52,
+      "obsidian_macroMovement": 0.12,
+      "obsidian_macroCoupling": 0.11,
+      "obsidian_macroSpace": 0.72,
+      "obsidian_filterEnvAmt": 0.44,
+      "obsidian_lfo1Rate": 0.02,
+      "obsidian_lfo1Depth": 0.14,
+      "obsidian_depth": 0.90
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.11,
+    "SPACE": 0.72
+  }
+}

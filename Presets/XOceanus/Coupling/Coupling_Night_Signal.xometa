@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Night Signal",
+  "mood": "Coupling",
+  "engines": [
+    "Overbite",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERBITE bite depth barely marks ORACLE prophecy breakpoints \u2014 teeth grazing prediction, physical tension at the threshold of foresight.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "physical",
+    "stochastic",
+    "VelocityCoupling",
+    "tension"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.44,
+    "movement": 0.46,
+    "density": 0.44,
+    "space": 0.48,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroBelly": 0.45,
+      "poss_macroBite": 0.42,
+      "poss_macroPlayDead": 0.4,
+      "poss_macroScurry": 0.38,
+      "poss_filterEnvAmt": 0.42,
+      "poss_lfo1Rate": 0.1,
+      "poss_lfo1Depth": 0.2
+    },
+    "Oracle": {
+      "oracle_breakpoints": 0.5,
+      "oracle_filterEnvAmt": 0.4,
+      "oracle_lfo1Rate": 0.1,
+      "oracle_lfo1Depth": 0.2,
+      "oracle_macroCharacter": 0.44,
+      "oracle_macroMovement": 0.42,
+      "oracle_macroCoupling": 0.48,
+      "oracle_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oracle",
+        "type": "VelocityCoupling",
+        "amount": 0.15
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.49,
+    "SPACE": 0.47
+  }
+}

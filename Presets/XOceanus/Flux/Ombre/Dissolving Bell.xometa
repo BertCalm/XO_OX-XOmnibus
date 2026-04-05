@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.6,
       "ombre_release": 2.0,
       "ombre_subLevel": 0.15,
-      "ombre_sustain": 0.3
+      "ombre_sustain": 0.3,
+      "ombre_macroCharacter": 0.788,
+      "ombre_macroMovement": 0.857,
+      "ombre_macroCoupling": 0.202,
+      "ombre_macroSpace": 0.415,
+      "ombre_filterEnvAmt": 0.685,
+      "ombre_lfo1Rate": 0.374,
+      "ombre_lfo1Depth": 0.277
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "decay"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.758,
+    "MOVEMENT": 0.827,
+    "COUPLING": 0.172,
+    "SPACE": 0.385
+  }
 }

@@ -35,12 +35,32 @@
     "OddfeliX": {
       "snap_character": 0.783,
       "snap_movement": 0.435,
-      "snap_space": 0.437
+      "snap_space": 0.437,
+      "snap_macroDart": 0.61,
+      "snap_macroDepth": 0.396,
+      "snap_macroSchool": 0.515,
+      "snap_macroSurface": 0.641,
+      "snap_filterEnvDepth": 0.458,
+      "snap_lfoRate": 0.18,
+      "snap_lfoDepth": 0.247
     },
-    "OddOscar": {}
+    "OddOscar": {
+      "morph_macroCharacter": 0.562,
+      "morph_macroMovement": 0.348,
+      "morph_macroCoupling": 0.467,
+      "morph_macroSpace": 0.593,
+      "morph_filterEnvDepth": 0.458,
+      "morph_lfoRate": 0.18
+    }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.539,
+    "MOVEMENT": 0.325,
+    "COUPLING": 0.444,
+    "SPACE": 0.57
+  }
 }

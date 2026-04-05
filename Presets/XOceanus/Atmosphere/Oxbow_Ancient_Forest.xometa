@@ -39,7 +39,14 @@
       "oxb_predelay": 30.0,
       "oxb_dryWet": 0.42,
       "oxb_exciterDecay": 0.016,
-      "oxb_exciterBright": 0.38
+      "oxb_exciterBright": 0.38,
+      "oxb_macroCharacter": 0.311,
+      "oxb_macroMovement": 0.361,
+      "oxb_macroCoupling": 0.273,
+      "oxb_macroSpace": 0.665,
+      "oxb_filterEnvAmt": 0.446,
+      "oxb_lfo1Rate": 0.071,
+      "oxb_lfo1Depth": 0.261
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "documentary"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.282,
+    "MOVEMENT": 0.332,
+    "COUPLING": 0.244,
+    "SPACE": 0.636
+  }
 }

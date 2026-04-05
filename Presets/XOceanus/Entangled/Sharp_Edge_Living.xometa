@@ -46,7 +46,14 @@
       "obsidian_level": 0.857,
       "obsidian_movement": 0.285,
       "obsidian_space": 0.569,
-      "obsidian_warmth": 0.211
+      "obsidian_warmth": 0.211,
+      "obsidian_macroCharacter": 0.573,
+      "obsidian_macroMovement": 0.52,
+      "obsidian_macroCoupling": 0.522,
+      "obsidian_macroSpace": 0.531,
+      "obsidian_filterEnvAmt": 0.504,
+      "obsidian_lfoRate": 0.234,
+      "obsidian_lfoDepth": 0.302
     },
     "Organon": {
       "organon_aggression": 0.447,
@@ -55,7 +62,14 @@
       "organon_level": 0.892,
       "organon_movement": 0.641,
       "organon_space": 0.652,
-      "organon_warmth": 0.572
+      "organon_warmth": 0.572,
+      "organon_macroCharacter": 0.504,
+      "organon_macroMovement": 0.451,
+      "organon_macroCoupling": 0.453,
+      "organon_macroSpace": 0.462,
+      "organon_filterEnvAmt": 0.504,
+      "organon_lfo1Rate": 0.234,
+      "organon_lfo1Depth": 0.302
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.505,
+    "MOVEMENT": 0.452,
+    "COUPLING": 0.454,
+    "SPACE": 0.463
+  }
 }

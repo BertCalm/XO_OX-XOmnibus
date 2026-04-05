@@ -31,13 +31,18 @@
       "ocean_delayFeedback": 0.55,
       "ocean_filterCutoff": 0.03,
       "ocean_filterReso": 0.3,
-      "ocean_macroCoupling": 0.0,
+      "ocean_macroCoupling": 0.203,
       "ocean_macroCurrent": 0.0,
       "ocean_macroDepth": 0.0,
-      "ocean_macroSpace": 0.0,
+      "ocean_macroSpace": 0.882,
       "ocean_reverbMix": 0.9,
       "ocean_separation": 0.7,
-      "ocean_wavefolderAmt": 0.15
+      "ocean_wavefolderAmt": 0.15,
+      "ocean_macroCharacter": 0.505,
+      "ocean_macroMovement": 0.496,
+      "ocean_filterEnvAmt": 0.379,
+      "ocean_lfo1Rate": 0.074,
+      "ocean_lfo1Depth": 0.171
     }
   },
   "schema_version": 1,
@@ -51,5 +56,11 @@
     "vast"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.499,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.197,
+    "SPACE": 0.876
+  }
 }

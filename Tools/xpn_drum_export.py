@@ -82,6 +82,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 from engine_registry import get_all_engines, get_color
+from xpn_voice_taxonomy import ONSET_VOICE_MAP, display_label  # canonical voice names (QDD L4 fix)
 
 try:
     from xpn_cover_art import generate_cover

@@ -42,7 +42,14 @@
       "origami_foldPoint": 0.22,
       "origami_layers": 8,
       "origami_oscPitch": 0.0,
-      "origami_symmetry": 0.08
+      "origami_symmetry": 0.08,
+      "origami_macroCharacter": 0.365,
+      "origami_macroMovement": 0.422,
+      "origami_macroCoupling": 0.256,
+      "origami_macroSpace": 0.746,
+      "origami_filterEnvAmt": 0.496,
+      "origami_lfo1Rate": 0.049,
+      "origami_lfo1Depth": 0.298
     }
   },
   "schema_version": 1,
@@ -55,5 +62,11 @@
     "odd-harmonic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.306,
+    "MOVEMENT": 0.363,
+    "COUPLING": 0.197,
+    "SPACE": 0.687
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Tundra Thaw",
+  "mood": "Organic",
+  "engines": ["Overgrow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Arctic tundra unfreezing — a landscape re-awakening from permafrost, each species returning at its own tempo.",
+  "tags": ["organic", "tundra", "arctic", "thaw", "awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.65,
+    "movement": 0.30,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overgrow": {
+      "grow_macroCharacter": 0.38,
+      "grow_macroMovement": 0.30,
+      "grow_macroCoupling": 0.14,
+      "grow_macroSpace": 0.62,
+      "grow_growthRate": 0.18,
+      "grow_filterEnvAmt": 0.36,
+      "grow_lfo1Rate": 0.02,
+      "grow_lfo1Depth": 0.18,
+      "grow_lfo2Rate": 0.06,
+      "grow_lfo2Depth": 0.14
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.14,
+    "SPACE": 0.62
+  }
+}

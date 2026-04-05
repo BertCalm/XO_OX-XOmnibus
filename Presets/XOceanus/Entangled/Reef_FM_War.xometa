@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Reef FM War",
+  "mood": "Entangled",
+  "engines": ["Obrix", "Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reef ecology AudioToFM coupling into chaos system. Brick ecology stress output feeding attractor instability.",
+  "tags": ["entangled", "aggressive", "reef", "fm", "ecology"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.9,
+    "space": 0.16,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_macroCharacter": 0.85,
+      "obrix_macroMovement": 0.86,
+      "obrix_macroCoupling": 0.28,
+      "obrix_macroSpace": 0.17,
+      "obrix_src1Type": 1.0,
+      "obrix_src2Type": 2.0,
+      "obrix_reefResident": 1.0,
+      "obrix_residentStrength": 0.85,
+      "obrix_filterEnvAmt": 0.72,
+      "obrix_lfo1Rate": 0.44,
+      "obrix_lfo1Depth": 0.42,
+      "obrix_filterCutoff": 0.6,
+      "obrix_filterRes": 0.68,
+      "obrix_attackTime": 0.01,
+      "obrix_decayTime": 0.26,
+      "obrix_sustain": 0.38,
+      "obrix_releaseTime": 0.22
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.86,
+      "ouro_macroMovement": 0.88,
+      "ouro_macroCoupling": 0.28,
+      "ouro_macroSpace": 0.16,
+      "ouro_topology": 0.85,
+      "ouro_leash": 0.16,
+      "ouro_filterEnvAmt": 0.8,
+      "ouro_lfo1Rate": 0.65,
+      "ouro_lfo1Depth": 0.46,
+      "ouro_filterCutoff": 0.7,
+      "ouro_filterRes": 0.8,
+      "ouro_attackTime": 0.004,
+      "ouro_decayTime": 0.16,
+      "ouro_sustain": 0.28,
+      "ouro_releaseTime": 0.14
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Obrix",
+        "target": "Ouroboros",
+        "type": "AudioToFM",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.17
+  }
+}

@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.85,
       "perc_v2_level": 0.7,
-      "perc_macro_space": 0.55
+      "perc_macro_space": 0.558,
+      "perc_macro_punch": 0.619,
+      "perc_macro_mutate": 0.462,
+      "perc_macro_machine": 0.448,
+      "perc_filterEnvAmt": 0.505,
+      "perc_lfo1Rate": 0.185,
+      "perc_lfo1Depth": 0.256
     },
     "Overlap": {
       "olap_diffusion": 0.65,
       "olap_knotTopo": 0.6,
-      "olap_decay": 0.7
+      "olap_decay": 0.7,
+      "olap_macroCharacter": 0.599,
+      "olap_macroMovement": 0.442,
+      "olap_macroCoupling": 0.428,
+      "olap_macroSpace": 0.538,
+      "olap_filterEnvAmt": 0.505,
+      "olap_lfo1Rate": 0.185,
+      "olap_lfo1Depth": 0.256
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.595,
+    "MOVEMENT": 0.438,
+    "COUPLING": 0.424,
+    "SPACE": 0.534
+  }
 }

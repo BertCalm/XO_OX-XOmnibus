@@ -50,7 +50,20 @@
       "oxb_predelay": 3,
       "oxb_dryWet": 0.7,
       "oxb_exciterDecay": 0.004,
-      "oxb_exciterBright": 0.8
+      "oxb_exciterBright": 0.8,
+      "oxb_macroCharacter": 0.678,
+      "oxb_macroMovement": 0.588,
+      "oxb_macroCoupling": 0.182,
+      "oxb_macroSpace": 0.482,
+      "oxb_filterEnvAmt": 0.417,
+      "oxb_lfo1Rate": 0.131,
+      "oxb_lfo1Depth": 0.208
     }
+  },
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.559,
+    "COUPLING": 0.153,
+    "SPACE": 0.453
   }
 }

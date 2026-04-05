@@ -41,7 +41,14 @@
       "organon_reverbMix": 0.93,
       "organon_rotaryDepth": 0.36,
       "organon_rotarySpeed": 0.04,
-      "organon_space": 0.68
+      "organon_space": 0.68,
+      "organon_macroCharacter": 0.457,
+      "organon_macroMovement": 0.372,
+      "organon_macroCoupling": 0.216,
+      "organon_macroSpace": 0.308,
+      "organon_filterEnvAmt": 0.486,
+      "organon_lfo1Rate": 0.11,
+      "organon_lfo1Depth": 0.206
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "extreme-brightness"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.458,
+    "MOVEMENT": 0.373,
+    "COUPLING": 0.217,
+    "SPACE": 0.309
+  }
 }

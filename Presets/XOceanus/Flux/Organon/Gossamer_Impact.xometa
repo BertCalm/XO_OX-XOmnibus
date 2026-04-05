@@ -28,7 +28,14 @@
   "parameters": {
     "Organon": {
       "couplingBus": 0,
-      "couplingLevel": 0.99
+      "couplingLevel": 0.99,
+      "organon_macroCharacter": 0.766,
+      "organon_macroMovement": 0.823,
+      "organon_macroCoupling": 0.172,
+      "organon_macroSpace": 0.401,
+      "organon_filterEnvAmt": 0.699,
+      "organon_lfo1Rate": 0.365,
+      "organon_lfo1Depth": 0.261
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "organon"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.767,
+    "MOVEMENT": 0.824,
+    "COUPLING": 0.173,
+    "SPACE": 0.402
+  }
 }

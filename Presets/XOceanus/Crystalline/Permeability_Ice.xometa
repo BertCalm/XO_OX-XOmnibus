@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Permeability Ice",
+  "mood": "Crystalline",
+  "engines": [
+    "Osmosis"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ice as a semi-permeable membrane \u2014 the selective transmission of frequency bands through frozen crystal walls.",
+  "tags": [
+    "crystalline",
+    "permeability",
+    "ice",
+    "selective",
+    "transmission"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.54,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_macroCharacter": 0.54,
+      "osmo_macroMovement": 0.39,
+      "osmo_macroCoupling": 0.13,
+      "osmo_macroSpace": 0.64,
+      "osmo_filterEnvAmt": 0.56,
+      "osmo_lfo1Rate": 0.05,
+      "osmo_lfo1Depth": 0.14
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.13,
+    "SPACE": 0.64
+  }
+}

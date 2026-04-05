@@ -45,7 +45,14 @@
       "obsidian_macro1": 0.343,
       "obsidian_macro2": 0.386,
       "obsidian_macro3": 0.496,
-      "obsidian_macro4": 0.457
+      "obsidian_macro4": 0.457,
+      "obsidian_macroCharacter": 0.618,
+      "obsidian_macroMovement": 0.652,
+      "obsidian_macroCoupling": 0.797,
+      "obsidian_macroSpace": 0.499,
+      "obsidian_filterEnvAmt": 0.531,
+      "obsidian_lfoRate": 0.255,
+      "obsidian_lfoDepth": 0.252
     },
     "Origami": {
       "origami_couplingOut": 0.749,
@@ -57,7 +64,14 @@
       "origami_macro4": 0.597,
       "origami_pleatRate": 0.419,
       "origami_tessellate": 0.678,
-      "origami_valleyDepth": 0.735
+      "origami_valleyDepth": 0.735,
+      "origami_macroCharacter": 0.609,
+      "origami_macroMovement": 0.643,
+      "origami_macroCoupling": 0.788,
+      "origami_macroSpace": 0.49,
+      "origami_filterEnvAmt": 0.531,
+      "origami_lfo1Rate": 0.255,
+      "origami_lfo1Depth": 0.252
     }
   },
   "schema_version": 1,
@@ -70,5 +84,11 @@
     "entangled"
   ],
   "tempo": 125,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.584,
+    "COUPLING": 0.729,
+    "SPACE": 0.431
+  }
 }

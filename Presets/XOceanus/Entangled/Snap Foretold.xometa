@@ -42,11 +42,25 @@
       "oracle_couplingLevel": 0.76,
       "oracle_outputLevel": 0.77,
       "oracle_outputPan": -0.0,
-      "oracle_warmth": 0.464
+      "oracle_warmth": 0.464,
+      "oracle_macroCharacter": 0.628,
+      "oracle_macroMovement": 0.483,
+      "oracle_macroCoupling": 0.683,
+      "oracle_macroSpace": 0.455,
+      "oracle_filterEnvAmt": 0.466,
+      "oracle_lfo1Rate": 0.133,
+      "oracle_lfo1Depth": 0.37
     },
     "Overbite": {
       "poss_level": 0.8,
-      "poss_pan": -0.04
+      "poss_pan": -0.04,
+      "poss_macroBelly": 0.629,
+      "poss_macroBite": 0.484,
+      "poss_macroPlayDead": 0.684,
+      "poss_macroScurry": 0.456,
+      "poss_filterEnvAmount": 0.466,
+      "poss_lfo1Rate": 0.133,
+      "poss_lfo1Depth": 0.37
     }
   },
   "schema_version": 1,
@@ -58,5 +72,11 @@
     "bite"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.475,
+    "COUPLING": 0.675,
+    "SPACE": 0.447
+  }
 }

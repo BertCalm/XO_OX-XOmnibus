@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Lacewing Chime",
+  "mood": "Coupling",
+  "engines": [
+    "Oware",
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OWARE mallet strike barely excites OVERTONE spectral convergents \u2014 physical impact sending the faintest harmonic seed into continued fraction space.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "mallet",
+    "spectral",
+    "AudioToFM",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.52,
+      "owr_filterEnvAmt": 0.4,
+      "owr_lfo1Rate": 0.08,
+      "owr_lfo1Depth": 0.18,
+      "owr_macroCharacter": 0.46,
+      "owr_macroMovement": 0.38,
+      "owr_macroCoupling": 0.5,
+      "owr_macroSpace": 0.5
+    },
+    "Overtone": {
+      "over_cfDepth": 0.5,
+      "over_filterEnvAmt": 0.38,
+      "over_lfo1Rate": 0.09,
+      "over_lfo1Depth": 0.18,
+      "over_macroCharacter": 0.44,
+      "over_macroMovement": 0.4,
+      "over_macroCoupling": 0.48,
+      "over_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oware",
+        "engineB": "Overtone",
+        "type": "AudioToFM",
+        "amount": 0.15
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.49,
+    "SPACE": 0.51
+  }
+}

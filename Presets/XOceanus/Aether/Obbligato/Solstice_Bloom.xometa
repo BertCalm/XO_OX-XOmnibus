@@ -39,7 +39,14 @@
       "obbl_embouchureA": 0.65,
       "obbl_instrumentA": 0.0,
       "obbl_releaseA": 2000.0,
-      "obbl_spaceA": 0.94
+      "obbl_spaceA": 0.94,
+      "obbl_macroBond": 0.364,
+      "obbl_macroBreath": 0.42,
+      "obbl_macroWind": 0.135,
+      "obbl_macroMischief": 0.852,
+      "obbl_filterEnvAmt": 0.412,
+      "obbl_lfoRateA": 0.01,
+      "obbl_lfoDepthA": 0.14
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "wind"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.406,
+    "COUPLING": 0.121,
+    "SPACE": 0.838
+  }
 }

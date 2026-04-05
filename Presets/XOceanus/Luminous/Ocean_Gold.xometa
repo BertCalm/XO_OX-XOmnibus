@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Ocean Gold",
+  "mood": "Luminous",
+  "engines": ["Okeanos"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Gold light filtered through deep ocean water — warmth meeting depth. Okeanos carries the ancient cardamom light of Oceanos the world-ocean, patient and luminous.",
+  "tags": ["luminous", "gold", "ocean", "depth", "warmth"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.72,
+    "movement": 0.30,
+    "density": 0.40,
+    "space": 0.62,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Okeanos": {
+      "okan_macroCharacter": 0.52,
+      "okan_macroMovement": 0.30,
+      "okan_macroCoupling": 0.14,
+      "okan_macroSpace": 0.62,
+      "okan_filterEnvAmt": 0.50,
+      "okan_warmth": 0.80,
+      "okan_lfo1Rate": 0.04,
+      "okan_lfo1Depth": 0.16,
+      "okan_lfo2Rate": 0.08,
+      "okan_lfo2Depth": 0.10,
+      "okan_attack": 0.15,
+      "okan_decay": 1.0,
+      "okan_sustain": 0.85,
+      "okan_release": 4.0,
+      "okan_filterCutoff": 7000,
+      "okan_filterRes": 0.18,
+      "okan_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.14,
+    "SPACE": 0.62
+  }
+}

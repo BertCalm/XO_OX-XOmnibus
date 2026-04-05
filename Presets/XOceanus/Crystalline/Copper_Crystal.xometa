@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Copper Crystal",
+  "mood": "Crystalline",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Copper oxide crystal \u2014 mineral with metallic spectral signature. The crystalline structure of a living metal.",
+  "tags": [
+    "crystalline",
+    "copper",
+    "crystal",
+    "metallic",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_macroCharacter": 0.5,
+      "oddf_macroMovement": 0.34,
+      "oddf_macroCoupling": 0.18,
+      "oddf_macroSpace": 0.5,
+      "oddf_filterEnvAmt": 0.64,
+      "oddf_lfo1Rate": 0.04,
+      "oddf_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.18,
+    "SPACE": 0.5
+  }
+}

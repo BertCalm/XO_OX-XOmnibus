@@ -37,7 +37,14 @@
       "obscura_decay": 0.02,
       "obscura_exciteAmt": 0.04,
       "obscura_nonlinear": 0.01,
-      "obscura_stiffness": 0.04
+      "obscura_stiffness": 0.04,
+      "obscura_macroCharacter": 0.418,
+      "obscura_macroMovement": 0.449,
+      "obscura_macroCoupling": 0.244,
+      "obscura_macroSpace": 0.904,
+      "obscura_filterEnvAmt": 0.343,
+      "obscura_lfo1Rate": 0.03,
+      "obscura_lfo1Depth": 0.218
     }
   },
   "schema_version": 1,
@@ -49,5 +56,11 @@
     "physical"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.408,
+    "MOVEMENT": 0.439,
+    "COUPLING": 0.234,
+    "SPACE": 0.894
+  }
 }

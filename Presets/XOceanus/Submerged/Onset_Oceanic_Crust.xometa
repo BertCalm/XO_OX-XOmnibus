@@ -35,11 +35,24 @@
       "perc_macroCharacter": 0.55,
       "perc_macroMovement": 0.45,
       "perc_macroCoupling": 0.0,
-      "perc_macroSpace": 0.6
+      "perc_macroSpace": 0.6,
+      "perc_macro_punch": 0.486,
+      "perc_macro_mutate": 0.277,
+      "perc_macro_machine": 0.311,
+      "perc_macro_space": 0.575,
+      "perc_filterEnvAmt": 0.384,
+      "perc_lfo1Rate": 0.043,
+      "perc_lfo1Depth": 0.289
     }
   },
   "coupling": {
     "pairs": []
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.462,
+    "MOVEMENT": 0.253,
+    "COUPLING": 0.287,
+    "SPACE": 0.551
+  }
 }

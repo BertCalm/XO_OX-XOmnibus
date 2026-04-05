@@ -39,7 +39,14 @@
       "oxb_predelay": 70.0,
       "oxb_dryWet": 0.48,
       "oxb_exciterDecay": 0.014,
-      "oxb_exciterBright": 0.5
+      "oxb_exciterBright": 0.5,
+      "oxb_macroCharacter": 0.404,
+      "oxb_macroMovement": 0.488,
+      "oxb_macroCoupling": 0.245,
+      "oxb_macroSpace": 0.734,
+      "oxb_filterEnvAmt": 0.404,
+      "oxb_lfo1Rate": 0.078,
+      "oxb_lfo1Depth": 0.35
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "medieval"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.459,
+    "COUPLING": 0.216,
+    "SPACE": 0.705
+  }
 }

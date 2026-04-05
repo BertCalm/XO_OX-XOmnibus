@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "CA Crystal Pulse",
+  "mood": "Crystalline",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "1D cellular automata oscillations projected through crystal geometry \u2014 living mineral sound, precise and cold.",
+  "tags": [
+    "crystalline",
+    "cellular-automata",
+    "pulse",
+    "mineral",
+    "precision"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.77,
+    "warmth": 0.25,
+    "movement": 0.42,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_macroCharacter": 0.54,
+      "obnt_macroMovement": 0.37,
+      "obnt_macroCoupling": 0.22,
+      "obnt_macroSpace": 0.62,
+      "obnt_filterEnvAmt": 0.58,
+      "obnt_lfo1Rate": 0.1,
+      "obnt_lfo1Depth": 0.23
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.22,
+    "SPACE": 0.62
+  }
+}

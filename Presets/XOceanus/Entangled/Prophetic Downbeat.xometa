@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.8,
       "perc_v2_level": 0.7,
-      "perc_macro_punch": 0.65
+      "perc_macro_punch": 0.5,
+      "perc_macro_mutate": 0.448,
+      "perc_macro_machine": 0.756,
+      "perc_macro_space": 0.452,
+      "perc_filterEnvAmt": 0.432,
+      "perc_lfo1Rate": 0.204,
+      "perc_lfo1Depth": 0.29
     },
     "Oracle": {
       "oracle_prophecy": 0.6,
       "oracle_morphRate": 0.5,
-      "oracle_resonance": 0.55
+      "oracle_resonance": 0.55,
+      "oracle_macroCharacter": 0.484,
+      "oracle_macroMovement": 0.432,
+      "oracle_macroCoupling": 0.74,
+      "oracle_macroSpace": 0.436,
+      "oracle_filterEnvAmt": 0.432,
+      "oracle_lfo1Rate": 0.204,
+      "oracle_lfo1Depth": 0.29
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.476,
+    "MOVEMENT": 0.424,
+    "COUPLING": 0.732,
+    "SPACE": 0.428
+  }
 }

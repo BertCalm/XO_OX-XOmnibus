@@ -43,11 +43,24 @@
       "organon_dampingCoeff": 0.7,
       "organon_signalFlux": 0.25,
       "organon_noiseColor": 2,
-      "organon_lockIn": 0.65
+      "organon_lockIn": 0.65,
+      "organon_macroCharacter": 0.563,
+      "organon_macroMovement": 0.429,
+      "organon_macroCoupling": 0.148,
+      "organon_macroSpace": 0.259,
+      "organon_filterEnvAmt": 0.462,
+      "organon_lfo1Rate": 0.105,
+      "organon_lfo1Depth": 0.196
     }
   },
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.564,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.149,
+    "SPACE": 0.26
+  }
 }

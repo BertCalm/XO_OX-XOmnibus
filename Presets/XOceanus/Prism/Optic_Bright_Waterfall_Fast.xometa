@@ -48,10 +48,22 @@
       "optic_vizMode": 3,
       "optic_vizIntensity": 0.95,
       "optic_vizSpeed": 0.88,
-      "optic_vizFeedback": 0.32
+      "optic_vizFeedback": 0.32,
+      "optic_macroCharacter": 0.634,
+      "optic_macroMovement": 0.515,
+      "optic_macroCoupling": 0.251,
+      "optic_macroSpace": 0.547,
+      "optic_filterEnvAmt": 0.518,
+      "optic_lfoRate": 0.157
     }
   },
   "coupling": {
     "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.606,
+    "MOVEMENT": 0.487,
+    "COUPLING": 0.223,
+    "SPACE": 0.519
   }
 }

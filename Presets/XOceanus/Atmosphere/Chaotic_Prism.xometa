@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Chaotic Prism",
+  "mood": "Atmosphere",
+  "engines": ["Ouroboros", "Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Strange attractor light caught in a prism, barely refracting. Ouroboros keeps its chaos leashed; Oblique receives just enough to shift the spectrum.",
+  "tags": ["atmosphere", "whisper", "coupling", "chaos", "prism", "attractor", "spectrum"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.50,
+    "movement": 0.42,
+    "density": 0.44,
+    "space": 0.76,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.48,
+      "ouro_macroMovement": 0.45,
+      "ouro_macroCoupling": 0.15,
+      "ouro_macroSpace": 0.70,
+      "ouro_topology": 0.30,
+      "ouro_filterEnvAmt": 0.38,
+      "ouro_lfo1Rate": 0.06,
+      "ouro_lfo1Depth": 0.22,
+      "ouro_attack": 0.3,
+      "ouro_release": 3.0
+    },
+    "Oblique": {
+      "oblq_macroCharacter": 0.42,
+      "oblq_macroMovement": 0.38,
+      "oblq_macroCoupling": 0.13,
+      "oblq_macroSpace": 0.76,
+      "oblq_prismColor": 0.52,
+      "oblq_filterEnvAmt": 0.32,
+      "oblq_lfo1Rate": 0.05,
+      "oblq_lfo1Depth": 0.18,
+      "oblq_attack": 0.5,
+      "oblq_release": 3.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "AmpToPitch",
+        "amount": 0.09
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.14,
+    "SPACE": 0.73
+  }
+}

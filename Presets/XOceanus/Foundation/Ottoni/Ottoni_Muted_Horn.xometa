@@ -42,7 +42,13 @@
       "otto_grow": 0.15,
       "otto_outputLevel": 0.78,
       "otto_outputPan": 0.0,
-      "otto_reverbMix": 0.3
+      "otto_reverbMix": 0.3,
+      "otto_macroCharacter": 0.487,
+      "otto_macroMovement": 0.38,
+      "otto_macroCoupling": 0.14,
+      "otto_macroSpace": 0.38,
+      "otto_filterEnvAmt": 0.359,
+      "otto_lfoRate": 0.214
     }
   },
   "schema_version": 1,
@@ -53,5 +59,11 @@
     "foundation"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.402,
+    "COUPLING": 0.162,
+    "SPACE": 0.402
+  }
 }

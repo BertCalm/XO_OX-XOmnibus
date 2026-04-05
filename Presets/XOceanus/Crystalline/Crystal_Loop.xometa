@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Loop",
+  "mood": "Crystalline",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ouroboros in crystal \u2014 a self-referential mineral loop, the strange attractor frozen at absolute clarity.",
+  "tags": [
+    "crystalline",
+    "ouroboros",
+    "loop",
+    "attractor",
+    "self-referential"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.6,
+      "ouro_macroMovement": 0.44,
+      "ouro_macroCoupling": 0.21,
+      "ouro_macroSpace": 0.6,
+      "ouro_filterEnvAmt": 0.44,
+      "ouro_lfo1Rate": 0.05,
+      "ouro_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.21,
+    "SPACE": 0.6
+  }
+}

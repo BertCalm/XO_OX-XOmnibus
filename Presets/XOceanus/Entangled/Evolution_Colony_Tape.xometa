@@ -41,7 +41,14 @@
       "org_colonyDensity": 0.48,
       "org_generationRate": 0.42,
       "org_filterCutoff": 0.52,
-      "org_outputLevel": 0.78
+      "org_outputLevel": 0.78,
+      "org_macroRule": 0.496,
+      "org_macroSeed": 0.423,
+      "org_macroCoupling": 0.753,
+      "org_macroMutate": 0.373,
+      "org_filterEnvAmt": 0.49,
+      "org_lfo1Rate": 0.202,
+      "org_lfo1Depth": 0.342
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -49,7 +56,13 @@
       "dub_tapeDelayTime": 0.52,
       "dub_springReverbMix": 0.6,
       "dub_filterCutoff": 0.5,
-      "dub_outputLevel": 0.8
+      "dub_outputLevel": 0.8,
+      "dub_macroCharacter": 0.484,
+      "dub_macroMovement": 0.411,
+      "dub_macroCoupling": 0.741,
+      "dub_macroSpace": 0.361,
+      "dub_filterEnvAmt": 0.49,
+      "dub_lfoDepth": 0.202
     }
   },
   "coupling": {
@@ -75,5 +88,11 @@
     "endAmount": 0.68,
     "description": "Colony matures exponentially — dub machine goes from predictable to alive over 35 seconds"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.419,
+    "COUPLING": 0.749,
+    "SPACE": 0.369
+  }
 }

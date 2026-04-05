@@ -46,7 +46,14 @@
       "obscura_level": 0.898,
       "obscura_movement": 0.396,
       "obscura_space": 0.614,
-      "obscura_warmth": 0.644
+      "obscura_warmth": 0.644,
+      "obscura_macroCharacter": 0.657,
+      "obscura_macroMovement": 0.429,
+      "obscura_macroCoupling": 0.513,
+      "obscura_macroSpace": 0.477,
+      "obscura_filterEnvAmt": 0.505,
+      "obscura_lfo1Rate": 0.221,
+      "obscura_lfo1Depth": 0.368
     },
     "Odyssey": {
       "drift_aggression": 0.277,
@@ -55,7 +62,14 @@
       "drift_level": 0.858,
       "drift_movement": 0.638,
       "drift_space": 0.641,
-      "drift_warmth": 0.548
+      "drift_warmth": 0.548,
+      "drift_macroCharacter": 0.677,
+      "drift_macroMovement": 0.449,
+      "drift_macroCoupling": 0.533,
+      "drift_macroSpace": 0.497,
+      "drift_filterEnvAmt": 0.505,
+      "drift_lfoRate": 0.221,
+      "drift_lfoDepth": 0.368
     }
   },
   "schema_version": 1,
@@ -67,5 +81,11 @@
     "entangled"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.647,
+    "MOVEMENT": 0.419,
+    "COUPLING": 0.503,
+    "SPACE": 0.467
+  }
 }

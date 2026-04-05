@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.8,
       "ombre_release": 0.3,
       "ombre_subLevel": 0.4,
-      "ombre_sustain": 0.7
+      "ombre_sustain": 0.7,
+      "ombre_macroCharacter": 0.511,
+      "ombre_macroMovement": 0.462,
+      "ombre_macroCoupling": 0.219,
+      "ombre_macroSpace": 0.333,
+      "ombre_filterEnvAmt": 0.35,
+      "ombre_lfo1Rate": 0.169,
+      "ombre_lfo1Depth": 0.184
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "saw"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.481,
+    "MOVEMENT": 0.432,
+    "COUPLING": 0.189,
+    "SPACE": 0.303
+  }
 }

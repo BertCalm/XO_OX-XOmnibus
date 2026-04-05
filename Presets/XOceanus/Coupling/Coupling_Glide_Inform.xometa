@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Glide Inform",
+  "mood": "Coupling",
+  "engines": [
+    "Olate",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLATE fretless pitch glide modulates OVERDUB tape warble rate \u2014 sliding string physics shaping analog tape instability, fret physics informing oxide particles.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "fretless",
+    "tape",
+    "PitchToPitch",
+    "analog"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.58,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.46,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Olate": {
+      "olate_fretlessGlide": 0.58,
+      "olate_filterEnvAmt": 0.52,
+      "olate_lfo1Rate": 0.13,
+      "olate_lfo1Depth": 0.28,
+      "olate_macroCharacter": 0.52,
+      "olate_macroMovement": 0.54,
+      "olate_macroCoupling": 0.62,
+      "olate_macroSpace": 0.46
+    },
+    "Overdub": {
+      "dub_oscWave": 0.5,
+      "dub_filterEnvAmt": 0.5,
+      "dub_lfo1Rate": 0.14,
+      "dub_lfo1Depth": 0.26,
+      "dub_macroCharacter": 0.5,
+      "dub_macroMovement": 0.52,
+      "dub_macroCoupling": 0.6,
+      "dub_macroSpace": 0.46
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Olate",
+        "engineB": "Overdub",
+        "type": "PitchToPitch",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.61,
+    "SPACE": 0.46
+  }
+}

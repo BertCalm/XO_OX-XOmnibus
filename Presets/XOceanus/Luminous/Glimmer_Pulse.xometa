@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Glimmer Pulse",
+  "mood": "Luminous",
+  "engines": ["Optic"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A subtle glimmer — phosphor just above threshold, pulsing at the edge of perception. Optic engine at its quietest, luminous through understatement.",
+  "tags": ["luminous", "glimmer", "subtle", "threshold", "pulse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.38,
+    "density": 0.20,
+    "space": 0.55,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Optic": {
+      "optic_macroCharacter": 0.48,
+      "optic_macroMovement": 0.38,
+      "optic_macroCoupling": 0.12,
+      "optic_macroSpace": 0.55,
+      "optic_filterEnvAmt": 0.48,
+      "optic_pulseRate": 0.06,
+      "optic_pulseDepth": 0.16,
+      "optic_lfo1Rate": 0.04,
+      "optic_lfo1Depth": 0.14,
+      "optic_lfo2Rate": 0.08,
+      "optic_lfo2Depth": 0.08,
+      "optic_attack": 0.15,
+      "optic_decay": 1.2,
+      "optic_sustain": 0.82,
+      "optic_release": 3.5,
+      "optic_filterCutoff": 9000,
+      "optic_filterRes": 0.16,
+      "optic_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.12,
+    "SPACE": 0.55
+  }
+}

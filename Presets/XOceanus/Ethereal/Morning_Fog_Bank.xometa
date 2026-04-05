@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Morning Fog Bank",
+  "mood": "Ethereal",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A granular fog bank arriving before 5am. Dense with tiny water voices, collectively orchestrating silence.",
+  "tags": [
+    "ethereal",
+    "fog",
+    "morning",
+    "dense",
+    "collective"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.3,
+    "space": 0.86,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opal": {
+      "opal_macroCharacter": 0.38,
+      "opal_macroMovement": 0.24,
+      "opal_macroCoupling": 0.12,
+      "opal_macroSpace": 0.8,
+      "opal_grainSize": 0.3,
+      "opal_filterEnvAmt": 0.26,
+      "opal_lfo1Rate": 0.02,
+      "opal_lfo1Depth": 0.13,
+      "opal_attack": 3.0,
+      "opal_release": 8.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.12,
+    "SPACE": 0.8
+  }
+}

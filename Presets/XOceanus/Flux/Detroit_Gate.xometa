@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Detroit Gate",
+  "mood": "Flux",
+  "engines": ["Offering"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Detroit feedback saturation with drunk timing attacking through the gate. City chain locked to Motor City architecture.",
+  "tags": ["flux", "aggressive", "detroit", "gate", "drums"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.3,
+    "movement": 0.88,
+    "density": 0.88,
+    "space": 0.15,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Offering": {
+      "ofr_macroCharacter": 0.88,
+      "ofr_macroMovement": 0.85,
+      "ofr_macroCoupling": 0.15,
+      "ofr_macroSpace": 0.15,
+      "ofr_digCuriosity": 0.75,
+      "ofr_cityChain": 1.0,
+      "ofr_filterEnvAmt": 0.78,
+      "ofr_lfo1Rate": 0.38,
+      "ofr_lfo1Depth": 0.42,
+      "ofr_transientAmt": 0.88,
+      "ofr_attackTime": 0.005,
+      "ofr_decayTime": 0.22,
+      "ofr_sustain": 0.25,
+      "ofr_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.15,
+    "SPACE": 0.15
+  }
+}

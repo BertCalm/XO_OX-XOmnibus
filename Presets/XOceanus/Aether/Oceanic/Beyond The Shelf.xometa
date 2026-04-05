@@ -34,15 +34,18 @@
       "ocean_ampSustain": 0.623,
       "ocean_cohesion": 0.558,
       "ocean_damping": 0.104,
-      "ocean_macroCharacter": 0.59,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroMovement": 0.403,
-      "ocean_macroSpace": 0.993,
+      "ocean_macroCharacter": 0.37,
+      "ocean_macroCoupling": 0.111,
+      "ocean_macroMovement": 0.464,
+      "ocean_macroSpace": 0.809,
       "ocean_scatter": 0.646,
       "ocean_separation": 0.414,
       "ocean_subflocks": 4,
       "ocean_tether": 0.204,
-      "ocean_waveform": 2
+      "ocean_waveform": 2,
+      "ocean_filterEnvAmt": 0.348,
+      "ocean_lfo1Rate": 0.02,
+      "ocean_lfo1Depth": 0.156
     }
   },
   "schema_version": 1,
@@ -57,5 +60,11 @@
     "oceanic"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.364,
+    "MOVEMENT": 0.458,
+    "COUPLING": 0.105,
+    "SPACE": 0.803
+  }
 }

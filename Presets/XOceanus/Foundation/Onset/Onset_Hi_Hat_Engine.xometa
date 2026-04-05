@@ -35,7 +35,14 @@
       "perc_hat_decay": 0.3,
       "perc_hat_level": 0.8,
       "perc_hat_tone": 0.7,
-      "perc_ohat_decay": 0.6
+      "perc_ohat_decay": 0.6,
+      "perc_macro_punch": 0.567,
+      "perc_macro_mutate": 0.276,
+      "perc_macro_machine": 0.199,
+      "perc_macro_space": 0.437,
+      "perc_filterEnvAmt": 0.434,
+      "perc_lfo1Rate": 0.147,
+      "perc_lfo1Depth": 0.271
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.543,
+    "MOVEMENT": 0.252,
+    "COUPLING": 0.175,
+    "SPACE": 0.413
+  }
 }

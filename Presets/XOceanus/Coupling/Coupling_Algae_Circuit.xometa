@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Algae Circuit",
+  "mood": "Coupling",
+  "engines": [
+    "Organism",
+    "Obrix"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANISM cellular automaton rules barely seed OBRIX reef ecology \u2014 living logic informing the coral synthesis ecology at the whisper level.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "cellular",
+    "ecology",
+    "ChaosInject",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.44,
+    "movement": 0.48,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 0.48,
+      "org_filterEnvAmt": 0.42,
+      "org_lfo1Rate": 0.12,
+      "org_lfo1Depth": 0.2,
+      "org_macroCharacter": 0.46,
+      "org_macroMovement": 0.44,
+      "org_macroCoupling": 0.5,
+      "org_macroSpace": 0.48
+    },
+    "Obrix": {
+      "obrix_src1Type": 0.48,
+      "obrix_filterEnvAmt": 0.4,
+      "obrix_lfo1Rate": 0.1,
+      "obrix_lfo1Depth": 0.2,
+      "obrix_macroCharacter": 0.44,
+      "obrix_macroMovement": 0.42,
+      "obrix_macroCoupling": 0.48,
+      "obrix_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organism",
+        "engineB": "Obrix",
+        "type": "ChaosInject",
+        "amount": 0.16
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.49,
+    "SPACE": 0.48
+  }
+}

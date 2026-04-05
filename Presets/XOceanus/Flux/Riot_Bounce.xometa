@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Riot Bounce",
+  "mood": "Flux",
+  "engines": ["Oblique"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "RTJ-energy prismatic bounce ricocheting off every surface. Prism color maxed, funk collision at full velocity.",
+  "tags": ["flux", "aggressive", "bounce", "prism", "funk"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.28,
+    "movement": 0.93,
+    "density": 0.76,
+    "space": 0.22,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_macroCharacter": 0.85,
+      "oblq_macroMovement": 0.9,
+      "oblq_macroCoupling": 0.2,
+      "oblq_macroSpace": 0.25,
+      "oblq_prismColor": 0.92,
+      "oblq_bounceRate": 0.8,
+      "oblq_filterEnvAmt": 0.7,
+      "oblq_lfo1Rate": 0.6,
+      "oblq_lfo1Depth": 0.42,
+      "oblq_filterCutoff": 0.72,
+      "oblq_filterRes": 0.62,
+      "oblq_attackTime": 0.008,
+      "oblq_decayTime": 0.18,
+      "oblq_sustain": 0.4,
+      "oblq_releaseTime": 0.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.2,
+    "SPACE": 0.25
+  }
+}

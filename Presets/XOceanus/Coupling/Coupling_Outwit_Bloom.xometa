@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Outwit Bloom",
+  "mood": "Coupling",
+  "engines": [
+    "Outwit",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUTWIT chromatophore arm depth modulates ORGANISM cell birth threshold \u2014 intelligent camouflage logic teaching cells when to grow.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "adaptive",
+    "cellular",
+    "ChaosInject",
+    "ecological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.46,
+    "movement": 0.58,
+    "density": 0.54,
+    "space": 0.48,
+    "aggression": 0.24
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_armDepth": 0.58,
+      "owit_filterEnvAmt": 0.52,
+      "owit_lfo1Rate": 0.14,
+      "owit_lfo1Depth": 0.28,
+      "owit_macroCharacter": 0.52,
+      "owit_macroMovement": 0.56,
+      "owit_macroCoupling": 0.62,
+      "owit_macroSpace": 0.48
+    },
+    "Organism": {
+      "org_ruleSet": 0.55,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.28,
+      "org_macroCharacter": 0.5,
+      "org_macroMovement": 0.54,
+      "org_macroCoupling": 0.6,
+      "org_macroSpace": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Organism",
+        "type": "ChaosInject",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.61,
+    "SPACE": 0.48
+  }
+}

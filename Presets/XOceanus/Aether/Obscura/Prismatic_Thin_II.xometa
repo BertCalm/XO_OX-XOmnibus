@@ -28,7 +28,14 @@
   "parameters": {
     "Obscura": {
       "couplingBus": 3,
-      "couplingLevel": 0.724
+      "couplingLevel": 0.724,
+      "obscura_macroCharacter": 0.472,
+      "obscura_macroMovement": 0.399,
+      "obscura_macroCoupling": 0.246,
+      "obscura_macroSpace": 0.749,
+      "obscura_filterEnvAmt": 0.36,
+      "obscura_lfo1Rate": 0.044,
+      "obscura_lfo1Depth": 0.114
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "obscura"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.462,
+    "MOVEMENT": 0.389,
+    "COUPLING": 0.236,
+    "SPACE": 0.739
+  }
 }

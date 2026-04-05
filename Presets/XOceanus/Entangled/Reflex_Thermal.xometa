@@ -47,16 +47,27 @@
       "ocean_macro3": 0.527,
       "ocean_macro4": 0.662,
       "ocean_outputLevel": 0.819,
-      "ocean_outputPan": 0.019
+      "ocean_outputPan": 0.019,
+      "ocean_macroCharacter": 0.595,
+      "ocean_macroMovement": 0.486,
+      "ocean_macroCoupling": 0.65,
+      "ocean_macroSpace": 0.431,
+      "ocean_filterEnvAmt": 0.567,
+      "ocean_lfo1Rate": 0.147,
+      "ocean_lfo1Depth": 0.242
     },
     "Overbite": {
       "poss_gnashAmount": 0.608,
-      "poss_macroBelly": 0.321,
-      "poss_macroBite": 0.348,
-      "poss_macroScurry": 0.658,
+      "poss_macroBelly": 0.598,
+      "poss_macroBite": 0.489,
+      "poss_macroScurry": 0.434,
       "poss_macroTrash": 0.38,
       "poss_level": 0.774,
-      "poss_pan": 0.024
+      "poss_pan": 0.024,
+      "poss_macroPlayDead": 0.653,
+      "poss_filterEnvAmount": 0.567,
+      "poss_lfo1Rate": 0.147,
+      "poss_lfo1Depth": 0.242
     }
   },
   "schema_version": 1,
@@ -68,5 +79,11 @@
     "entangled"
   ],
   "tempo": 105,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.589,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.644,
+    "SPACE": 0.425
+  }
 }

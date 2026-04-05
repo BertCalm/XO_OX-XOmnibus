@@ -61,6 +61,7 @@ import json
 import math
 import os
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -116,6 +117,49 @@ ENGINE_ALIASES.update({
     "Oceandeep":   "OceanDeep",
 })
 del _get_all_engines, _n
+
+# ---------------------------------------------------------------------------
+# Tier configurations — SURFACE / DEEP / TRENCH
+# QDD locked decision: tiers control velocity layers, round-robin policy,
+# and maximum XPM slot budget.  First ONSET pack ships at TRENCH.
+# ---------------------------------------------------------------------------
+
+# Lazy-import so oxport.py stays fast when these modules are not needed.
+def _build_tier_configs() -> dict:
+    from xpn_velocity_standard import RENDER_MIDPOINTS, NUM_LAYERS
+    return {
+        "SURFACE": {
+            "vel_layers":  1,
+            "vel_values":  [RENDER_MIDPOINTS[3]],   # Hard only (vel=109)
+            "round_robin": False,
+            "max_slots":   16,
+        },
+        "DEEP": {
+            "vel_layers":  NUM_LAYERS,               # 4
+            "vel_values":  list(RENDER_MIDPOINTS),   # [10, 38, 73, 109]
+            "round_robin": False,
+            "max_slots":   64,
+        },
+        "TRENCH": {
+            "vel_layers":  NUM_LAYERS,               # 4
+            "vel_values":  list(RENDER_MIDPOINTS),   # [10, 38, 73, 109]
+            "round_robin": True,                     # per-voice RR from VOICE_RR_COUNTS
+            "max_slots":   96,
+        },
+    }
+
+TIER_CONFIGS: dict = {}   # populated on first use via _get_tier_config()
+
+def _get_tier_config(tier: str) -> dict:
+    """Return the config dict for *tier*, building TIER_CONFIGS on first call."""
+    global TIER_CONFIGS
+    if not TIER_CONFIGS:
+        TIER_CONFIGS = _build_tier_configs()
+    tier_upper = tier.upper()
+    if tier_upper not in TIER_CONFIGS:
+        valid = ", ".join(TIER_CONFIGS)
+        raise ValueError(f"Unknown tier {tier!r}. Valid values: {valid}")
+    return TIER_CONFIGS[tier_upper]
 
 
 def resolve_engine_name(raw: str) -> str:
@@ -2118,6 +2162,47 @@ BUILD_STAGES = [
     "fallback", "intent", "docs", "art", "package", "validate",
 ]
 
+
+def _estimate_disk_usage(total_jobs: int, render_duration_ms: int, render_release_ms: int,
+                         sample_rate: int, bit_depth: int = 24, channels: int = 2) -> int:
+    """Return estimated total bytes for a render run.
+
+    Uses the same formula as the dry-run display so the two are consistent.
+    Formula: jobs × (hold_ms + release_ms) / 1000 × sample_rate × channels × bytes_per_sample
+    """
+    bytes_per_sample = (bit_depth + 7) // 8  # 24-bit → 3
+    avg_wav_bytes = (
+        (render_duration_ms + render_release_ms) / 1000.0
+        * sample_rate * channels * bytes_per_sample
+    )
+    return int(total_jobs * avg_wav_bytes)
+
+
+def _check_disk_space(output_dir: Path, estimated_bytes: int, margin: float = 1.20) -> bool:
+    """Check that output_dir has enough free space for the render.
+
+    Returns True if sufficient space is available.
+    Prints an [ABORT] message and returns False if not.
+    The check requires margin × estimated_bytes free (default 20% headroom).
+    """
+    try:
+        free_bytes = shutil.disk_usage(output_dir).free
+    except OSError:
+        # Can't stat the directory — warn but don't block
+        print(f"         [WARN] Could not check disk space for {output_dir}")
+        return True
+
+    needed_bytes = estimated_bytes * margin
+    if free_bytes < needed_bytes:
+        need_gb = needed_bytes / 1_073_741_824
+        free_gb = free_bytes / 1_073_741_824
+        print(f"[ABORT] Insufficient disk space. "
+              f"Need ~{need_gb:.1f}GB (with 20% margin), "
+              f"only {free_gb:.1f}GB available.")
+        return False
+    return True
+
+
 def cmd_build(args) -> int:
     """Compile a .oxbuild spec into a complete .xpn pack."""
     oxbuild_path = Path(args.oxbuild)
@@ -2181,10 +2266,11 @@ def cmd_build(args) -> int:
 
     # Rendering config
     rendering = spec.get("rendering", {})
-    sample_rate = rendering.get("sample_rate", 44100)
+    sample_rate = rendering.get("sample_rate")
+    if sample_rate is None:
+        sample_rate = 44100
+        print(f"  [WARN] No sample_rate in .oxbuild rendering block — defaulting to {sample_rate}Hz")
     bit_depth = rendering.get("bit_depth", 24)
-    velocity_layers = rendering.get("velocity_layers", 4)
-    velocity_values = rendering.get("velocity_values", [20, 50, 90, 127])
     render_spec_override = rendering.get("render_spec_override")
     # preset_load_ms: how long to wait after MIDI program change before recording.
     # 200ms default is too tight for XOceanus with 50+ presets — use 400ms or set
@@ -2195,8 +2281,33 @@ def cmd_build(args) -> int:
     render_release_ms = rendering.get("release_tail_ms", 500)
 
     # Corner config
-    corner_strategy = spec.get("corner_strategy", "dynamic_expression")
+    # Quad-corner velocity workaround removed (QDD 2026-04-04: causes MPC hardware state corruption)
+    # "none" or missing value means no corner expansion; "dynamic_expression" is kept in schema
+    # for backwards compatibility with older .oxbuild files but is now effectively inert.
+    corner_strategy = spec.get("corner_strategy", "none")
+    corner_expansion_active = corner_strategy not in ("none", None, "")
     pad_count = spec.get("pad_count", 16)
+
+    # ── Tier resolution ──────────────────────────────────────────────────────
+    # Priority: --tier CLI flag > .oxbuild "tier" field > default "DEEP"
+    _raw_tier = (getattr(args, "tier", None) or spec.get("tier", "DEEP")).upper()
+    try:
+        tier_cfg = _get_tier_config(_raw_tier)
+    except ValueError as _e:
+        print(f"ERROR: {_e}", file=sys.stderr)
+        return 1
+    tier = _raw_tier
+
+    # Tier-derived rendering parameters (override any legacy .oxbuild values)
+    velocity_layers = tier_cfg["vel_layers"]
+    velocity_values = tier_cfg["vel_values"]
+    round_robin     = tier_cfg["round_robin"]
+    max_slots       = tier_cfg["max_slots"]
+
+    # --preset-count overrides preset_selection.min_presets from .oxbuild
+    if getattr(args, "preset_count", None) is not None:
+        spec.setdefault("preset_selection", {})
+        spec["preset_selection"]["min_presets"] = args.preset_count
 
     # Output config
     output_cfg = spec.get("output", {})
@@ -2231,6 +2342,33 @@ def cmd_build(args) -> int:
     total_samples = pad_count * 4 * velocity_layers  # pads * corners * vel layers
     stages_run = 0
     stages_skipped = 0
+    stages_failed = 0
+
+    # ── Tier summary print ───────────────────────────────────────────────────
+    # Compute slot budget and estimated job count using voice taxonomy.
+    # These are informational — actual job count is set during RENDER stage.
+    try:
+        from xpn_voice_taxonomy import ONSET_VOICES, compute_slot_budget, rr_count
+        _onset_voices = ONSET_VOICES
+        _slot_budget = compute_slot_budget(_onset_voices, velocity_layers) if round_robin else (len(_onset_voices) * velocity_layers)
+        _preset_count_hint = spec.get("preset_selection", {}).get("min_presets", pad_count)
+        if round_robin:
+            _rr_jobs = sum(
+                velocity_layers * max(1, rr_count(v))
+                for v in _onset_voices
+            )
+            _est_jobs = _preset_count_hint * _rr_jobs
+        else:
+            _est_jobs = _preset_count_hint * len(_onset_voices) * velocity_layers
+        _rr_str = "enabled" if round_robin else "disabled"
+        print(f"[BUILD] Pack: {pack_name} | Tier: {tier} | Vel layers: {velocity_layers} | RR: {_rr_str}")
+        print(f"        Slot budget: {_slot_budget}/{max_slots} | Estimated jobs: {_est_jobs}")
+        print()
+    except ImportError:
+        # voice taxonomy not available (non-Onset engine path) — minimal tier line
+        _rr_str = "enabled" if round_robin else "disabled"
+        print(f"[BUILD] Pack: {pack_name} | Tier: {tier} | Vel layers: {velocity_layers} | RR: {_rr_str}")
+        print()
 
     # ── STAGE 1: PARSE ──
     print(f"  [1/10] PARSE        .oxbuild → BuildManifest")
@@ -2262,6 +2400,7 @@ def cmd_build(args) -> int:
             print(f"         → Would scan {PRESETS_DIR} for {engine} presets")
             if mood_filter:
                 print(f"         → Mood filter: {', '.join(mood_filter)}")
+            stages_run += 1
         else:
             try:
                 import xpn_profile_preset_selector as selector
@@ -2350,15 +2489,157 @@ def cmd_build(args) -> int:
                 else:
                     print(f"         ⚠  No profile specified — skipping DNA-based selection")
             except ImportError:
-                print(f"         ⚠  xpn_profile_preset_selector not available")
+                print(f"         [SKIP] xpn_profile_preset_selector not available")
+                stages_skipped += 1
             except Exception as e:
                 print(f"         ✗  Selection failed: {e}")
+                stages_failed += 1
                 if not args.continue_on_error:
                     return 1
-        stages_run += 1
+            else:
+                stages_run += 1
     else:
         print(f"  [2/10] SELECT       SKIPPED")
         stages_skipped += 1
+
+    # ── STAGE 0: VOICE PROBE ──
+    # QDD D2 (unanimous Ghost Council decision): two-pass probe before any rendering.
+    # Prevents committing 12,800+ jobs when no audio is flowing from the engine.
+    # voice_map is passed into the RENDER stage to skip known-dead voices.
+    voice_map: dict | None = None
+    renders_dir_for_probe = output_dir / "renders"
+    voice_map_path = renders_dir_for_probe / "voice_map.json"
+
+    if "render" not in skip and not args.dry_run and not args.no_render and not args.skip_probe:
+        print(f"\n{'─'*60}")
+        print(f"  STAGE 0: VOICE PROBE")
+        print(f"{'─'*60}")
+
+        # If voice_map.json already exists from a prior probe run, load it rather
+        # than running the full probe again (saves significant time on resume).
+        if voice_map_path.exists():
+            print(f"  [PROBE] Found existing voice_map.json — loading (use --skip-probe to bypass probe)")
+            try:
+                import oxport_render as _or_probe
+                voice_map = _or_probe.load_voice_map(str(renders_dir_for_probe))
+                if voice_map is not None:
+                    _vm_presets = len(voice_map)
+                    _vm_alive = sum(
+                        sum(1 for v in pv.values() if v)
+                        for pv in voice_map.values()
+                    )
+                    _vm_total = sum(len(pv) for pv in voice_map.values())
+                    print(f"  [PROBE] Loaded voice_map: {_vm_presets} presets, "
+                          f"{_vm_alive}/{_vm_total} voices alive")
+                else:
+                    print(f"  [PROBE] voice_map.json unreadable — will run fresh probe")
+            except Exception as _e:
+                print(f"  [PROBE] Failed to load voice_map.json: {_e} — will run fresh probe")
+                voice_map = None
+
+        if voice_map is None and render_spec_override:
+            # Build engine voice list from render spec for the probe
+            try:
+                import oxport_render as _or_probe
+                import mido as _mido_probe
+                import sounddevice as _sd_probe
+
+                _probe_spec_path = REPO_ROOT / render_spec_override
+                if _probe_spec_path.exists():
+                    _probe_spec = _or_probe.load_spec(str(_probe_spec_path))
+                    _probe_layout = _or_probe.resolve_presets(_probe_spec)
+
+                    # Extract unique (voice_name, note) pairs from the note layout.
+                    # Each entry in note_layout has a "slug"/"name" (voice) and "notes".
+                    _seen_voices: set[str] = set()
+                    _engine_voices: list[dict] = []
+                    for entry in _probe_layout:
+                        _vname = entry.get("slug", entry.get("name", ""))
+                        _vnotes = entry.get("notes", [entry.get("note")])
+                        _vnote = _vnotes[0] if _vnotes else 60
+                        if _vname and _vname not in _seen_voices:
+                            _seen_voices.add(_vname)
+                            _engine_voices.append({"name": _vname, "note": _vnote})
+
+                    # Build probe preset list from selected_presets (or a stub if SELECT was skipped)
+                    if selected_presets:
+                        _probe_presets = [
+                            {"name": p["name"], "index": i,
+                             "engine": engine,
+                             "channel": p.get("channel", 0),
+                             "bank_msb": p.get("bank_msb"),
+                             "bank_lsb": p.get("bank_lsb")}
+                            for i, p in enumerate(selected_presets)
+                        ]
+                    else:
+                        # No SELECT data — probe with a single stub preset at program 0
+                        _probe_presets = [{"name": f"{engine}_default", "index": 0,
+                                           "engine": engine, "channel": 0,
+                                           "bank_msb": None, "bank_lsb": None}]
+
+                    if _engine_voices and _probe_presets:
+                        # Open MIDI port and resolve audio device for the probe
+                        _midi_ports = _mido_probe.get_output_names()
+                        _probe_midi_port_name = args.midi_port or (_midi_ports[0] if _midi_ports else None)
+                        if _probe_midi_port_name is None:
+                            print(f"  [PROBE SKIP] No MIDI port available — skipping probe")
+                        else:
+                            _probe_port = _mido_probe.open_output(_probe_midi_port_name)
+                            _probe_audio_device = None
+                            if args.audio_device is not None:
+                                _ad = args.audio_device
+                                if str(_ad).isdigit():
+                                    _probe_audio_device = int(_ad)
+                                else:
+                                    _all_devs = _sd_probe.query_devices()
+                                    for _di, _dd in enumerate(_all_devs):
+                                        if _ad.lower() in _dd["name"].lower() and _dd["max_input_channels"] > 0:
+                                            _probe_audio_device = _di
+                                            break
+
+                            renders_dir_for_probe.mkdir(parents=True, exist_ok=True)
+                            _or_probe._require_sounddevice()  # ensure sd/numpy loaded
+                            voice_map = _or_probe.probe_voices(
+                                voices=_engine_voices,
+                                presets=_probe_presets,
+                                midi_port=_probe_port,
+                                audio_device=_probe_audio_device,
+                                sample_rate=sample_rate,
+                                output_dir=str(renders_dir_for_probe),
+                                preset_load_ms=preset_load_ms,
+                            )
+                            _probe_port.close()
+
+                            if not voice_map:
+                                print(f"  [ABORT] Probe failed — no voice map generated. "
+                                      f"Check BlackHole routing and XOceanus engine state.")
+                                return 1
+                    else:
+                        print(f"  [PROBE SKIP] No voices or presets to probe — skipping Stage 0")
+
+                else:
+                    print(f"  [PROBE SKIP] Render spec not found at {_probe_spec_path} — skipping Stage 0")
+
+            except ImportError as _e:
+                print(f"  [PROBE SKIP] Missing dependency for probe: {_e}")
+            except Exception as _e:
+                print(f"  [PROBE WARN] Probe failed with error: {_e}")
+                print(f"  [PROBE WARN] Continuing without voice map — all voices will be rendered")
+                voice_map = None
+        elif voice_map is None and not render_spec_override:
+            print(f"  [PROBE SKIP] No render_spec_override in .oxbuild — cannot build voice list for probe")
+
+    elif args.skip_probe:
+        # --skip-probe: try to load existing voice_map.json silently
+        if voice_map_path.exists():
+            try:
+                import oxport_render as _or_vm
+                voice_map = _or_vm.load_voice_map(str(renders_dir_for_probe))
+                if voice_map:
+                    print(f"  [STAGE 0] --skip-probe: loaded existing voice_map.json "
+                          f"({len(voice_map)} presets)")
+            except Exception:
+                pass
 
     # ── STAGE 3: RENDER ──
     if "render" not in skip:
@@ -2407,6 +2688,7 @@ def cmd_build(args) -> int:
                   f"({total_jobs} WAVs × "
                   f"{(render_duration_ms + render_release_ms) / 1000.0:.1f}s × "
                   f"{sample_rate}Hz × stereo × {_bytes_per_sample * 8}-bit)")
+            stages_run += 1
         else:
             renders_dir = output_dir / "renders"
             renders_dir.mkdir(exist_ok=True)
@@ -2449,10 +2731,30 @@ def cmd_build(args) -> int:
                             for entry in note_layout:
                                 patched = dict(entry)
                                 patched["program"] = prog_num
+                                # Preserve the original voice slug for voice_map filtering
+                                _orig_voice_slug = entry.get("slug", entry.get("name", "voice"))
+                                patched["_voice_name"] = _orig_voice_slug  # probe filter key
                                 # Prefix slug so WAV filenames are unique across presets
-                                patched["slug"] = f"{preset_slug_prefix}__{entry.get('slug', entry.get('name', 'voice'))}"
+                                patched["slug"] = f"{preset_slug_prefix}__{_orig_voice_slug}"
                                 patched_layout.append(patched)
-                            preset_jobs = oxport_render.build_render_jobs(render_spec_data, patched_layout)
+                            preset_jobs = oxport_render.build_render_jobs(
+                                render_spec_data, patched_layout,
+                                tier=tier,
+                                vel_values=velocity_values,
+                                round_robin=round_robin,
+                            )
+                            # Annotate each job with preset_name + voice_name for
+                            # Stage 0 voice_map filtering in _render_jobs_locked.
+                            _preset_name_for_jobs = sel_preset["name"]
+                            for _pj in preset_jobs:
+                                _pj["preset_name"] = _preset_name_for_jobs
+                                # voice_name: strip the preset prefix from the slug
+                                _full_slug = _pj.get("slug", "")
+                                _sep = f"{preset_slug_prefix}__"
+                                if _full_slug.startswith(_sep):
+                                    _pj["voice_name"] = _full_slug[len(_sep):]
+                                else:
+                                    _pj["voice_name"] = _full_slug
                             all_jobs.extend(preset_jobs)
 
                         # Save the wired render manifest for auditability
@@ -2462,6 +2764,9 @@ def cmd_build(args) -> int:
                                 "source_spec": str(spec_path),
                                 "selected_presets_count": len(selected_presets),
                                 "total_jobs": len(all_jobs),
+                                "tier": tier,
+                                "round_robin": round_robin,
+                                "vel_values": velocity_values,
                                 "presets": [
                                     {"name": p["name"], "program": i, "path": p.get("path", "")}
                                     for i, p in enumerate(selected_presets)
@@ -2469,30 +2774,50 @@ def cmd_build(args) -> int:
                             }, _wm, indent=2)
                         print(f"         ✓ Render manifest: {wired_manifest_path}")
                         print(f"         → {len(all_jobs)} total render jobs "
-                              f"({len(selected_presets)} presets × {len(note_layout)} voices × {velocity_layers} vel)")
+                              f"({len(selected_presets)} presets × {len(note_layout)} voices × {velocity_layers} vel"
+                              + (" × RR" if round_robin else "") + ")")
                         jobs = all_jobs
                     else:
                         # No SELECT data — render spec as-is (program numbers from the spec file)
-                        jobs = oxport_render.build_render_jobs(render_spec_data, note_layout)
+                        jobs = oxport_render.build_render_jobs(
+                            render_spec_data, note_layout,
+                            tier=tier,
+                            vel_values=velocity_values,
+                            round_robin=round_robin,
+                        )
                         print(f"         → {len(jobs)} render jobs queued (no SELECT override)")
 
                     if not args.no_render:
+                        # Pre-render disk space check — abort early rather than
+                        # filling the disk during a multi-hour render session.
+                        _est_bytes = _estimate_disk_usage(
+                            len(jobs), render_duration_ms, render_release_ms,
+                            sample_rate, bit_depth
+                        )
+                        renders_dir.mkdir(exist_ok=True)
+                        if not _check_disk_space(renders_dir, _est_bytes):
+                            return 1
                         oxport_render.render_jobs(
                             jobs, str(renders_dir),
                             midi_port_name=args.midi_port,
                             audio_device=args.audio_device,
                             sample_rate=sample_rate,
                             preset_load_ms=preset_load_ms,
+                            voice_map=voice_map,
                         )
                     else:
                         print(f"         → --no-render flag: skipping actual audio capture")
+                    stages_run += 1
                 except ImportError:
-                    print(f"         ⚠  oxport_render not available (pip install mido sounddevice numpy)")
+                    print(f"         [SKIP] oxport_render not available (pip install mido sounddevice numpy)")
+                    stages_skipped += 1
                 except Exception as e:
                     print(f"         ✗  Render failed: {e}")
+                    stages_failed += 1
                     if not args.continue_on_error:
                         return 1
-        stages_run += 1
+            else:
+                stages_skipped += 1
     else:
         print(f"  [3/10] RENDER       SKIPPED")
         stages_skipped += 1
@@ -2500,11 +2825,12 @@ def cmd_build(args) -> int:
     # ── STAGE 4: ASSEMBLE ──
     assembled_xpm_paths: list[Path] = []  # populated here, consumed by PACKAGE
     if "assemble" not in skip:
-        print(f"  [4/10] ASSEMBLE     MPCe XPM ({corner_strategy} corners)")
+        print(f"  [4/10] ASSEMBLE     MPCe XPM (corner_strategy={corner_strategy}, expansion={'on' if corner_expansion_active else 'off'})")
         if args.dry_run:
             src = f"{len(selected_presets)} selected presets" if selected_presets else f"all {engine} presets"
             print(f"         → Would call: xpn_mpce_quad_builder.py --engine {engine} "
                   f"--pad-count {pad_count} (source: {src})")
+            stages_run += 1
         else:
             try:
                 import xpn_mpce_quad_builder as qb
@@ -2614,12 +2940,15 @@ def cmd_build(args) -> int:
                                       f"{_cleanup_err}")
 
             except ImportError:
-                print(f"         ⚠  xpn_mpce_quad_builder not available")
+                print(f"         [SKIP] xpn_mpce_quad_builder not available")
+                stages_skipped += 1
             except Exception as e:
                 print(f"         ✗  Assemble failed: {e}")
+                stages_failed += 1
                 if not args.continue_on_error:
                     return 1
-        stages_run += 1
+            else:
+                stages_run += 1
     else:
         print(f"  [4/10] ASSEMBLE     SKIPPED")
         stages_skipped += 1
@@ -2629,9 +2958,10 @@ def cmd_build(args) -> int:
         print(f"  [5/10] FALLBACK     Standard XPM (velocity-layered, non-MPCe)")
         if args.dry_run:
             print(f"         → Would call: xpn_drum_export.py --mode smart")
+            stages_run += 1
         else:
-            print(f"         ⚠  Standard XPM fallback not yet implemented")
-        stages_run += 1
+            print(f"  [5/10] FALLBACK     [SKIP] Standard XPM fallback not yet implemented")
+            stages_skipped += 1
     else:
         print(f"  [5/10] FALLBACK     SKIPPED")
         stages_skipped += 1
@@ -2641,6 +2971,7 @@ def cmd_build(args) -> int:
         print(f"  [6/10] INTENT       xpn_intent.json sidecar")
         if args.dry_run:
             print(f"         → Would call: xpn_intent_generator.py --corner-pattern {corner_strategy}")
+            stages_run += 1
         else:
             try:
                 import xpn_intent_generator as ig
@@ -2665,13 +2996,15 @@ def cmd_build(args) -> int:
                 with open(intent_path, "w", encoding='utf-8') as f:
                     json.dump(intent_data, f, indent=2)
                 print(f"         ✓ Written: {intent_path}")
+                stages_run += 1
             except ImportError:
-                print(f"         ⚠  xpn_intent_generator not available")
+                print(f"         [SKIP] xpn_intent_generator not available")
+                stages_skipped += 1
             except Exception as e:
                 print(f"         ✗  Intent generation failed: {e}")
+                stages_failed += 1
                 if not args.continue_on_error:
                     return 1
-        stages_run += 1
     else:
         print(f"  [6/10] INTENT       SKIPPED")
         stages_skipped += 1
@@ -2707,6 +3040,7 @@ def cmd_build(args) -> int:
         print(f"  [8/10] ART          Cover art{f' [{cover_art_badge}]' if cover_art_badge else ''}")
         if args.dry_run:
             print(f"         → Would call: xpn_cover_art_generator_v2.py --engine {engine}")
+            stages_run += 1
         else:
             try:
                 import xpn_cover_art_generator_v2 as art_gen
@@ -2752,11 +3086,13 @@ def cmd_build(args) -> int:
                 except Exception:
                     pass  # hi-res is optional
 
+                stages_run += 1
             except ImportError:
-                print(f"         ⚠  xpn_cover_art_generator_v2 not available")
+                print(f"         [SKIP] xpn_cover_art_generator_v2 not available")
+                stages_skipped += 1
             except Exception as e:
                 print(f"         ✗  Art generation failed: {e}")
-        stages_run += 1
+                stages_failed += 1
     else:
         print(f"  [8/10] ART          SKIPPED")
         stages_skipped += 1
@@ -2767,6 +3103,7 @@ def cmd_build(args) -> int:
         print(f"  [9/10] PACKAGE      {xpn_name}")
         if args.dry_run:
             print(f"         → Would call: xpn_packager.py --output {output_dir / xpn_name}")
+            stages_run += 1
         else:
             try:
                 from xpn_packager import package_xpn, XPNMetadata
@@ -2804,14 +3141,15 @@ def cmd_build(args) -> int:
                     size_mb = result_path.stat().st_size / (1024 * 1024) \
                         if result_path.exists() else 0
                     print(f"         ✓ {result_path.name} ({size_mb:.2f} MB)")
-
+                stages_run += 1
             except ImportError:
-                print(f"         ⚠  xpn_packager not available")
+                print(f"         [SKIP] xpn_packager not available")
+                stages_skipped += 1
             except Exception as e:
                 print(f"         ✗  Package failed: {e}")
+                stages_failed += 1
                 if not args.continue_on_error:
                     return 1
-        stages_run += 1
     else:
         print(f"  [9/10] PACKAGE      SKIPPED")
         stages_skipped += 1
@@ -2863,7 +3201,7 @@ def cmd_build(args) -> int:
                         print(f"         ✓ Profile validation PASSED — "
                               f"score {report.get('score', 0)}%")
                 except ImportError:
-                    print(f"         ⚠  xpn_profile_validator not available")
+                    print(f"         [SKIP] xpn_profile_validator not available")
                 except Exception as e:
                     print(f"         ✗  Profile validation error: {e}")
                     if not args.continue_on_error:
@@ -2932,6 +3270,7 @@ def cmd_build(args) -> int:
         "oxbuild_source": str(oxbuild_path),
         "stages_run": stages_run,
         "stages_skipped": stages_skipped,
+        "stages_failed": stages_failed,
         "dry_run": args.dry_run,
         "output_dir": str(output_dir),
     }
@@ -2941,7 +3280,10 @@ def cmd_build(args) -> int:
 
     print()
     print(f"  ─────────────────────────────────")
-    print(f"  Build {'plan' if args.dry_run else 'complete'}: {stages_run} stages{'(dry)' if args.dry_run else ''}, {stages_skipped} skipped")
+    _label = 'plan' if args.dry_run else 'complete'
+    _dry = '(dry)' if args.dry_run else ''
+    _failed_str = f", {stages_failed} failed" if stages_failed else ""
+    print(f"  Build {_label}: {stages_run} completed{_dry}, {stages_skipped} skipped{_failed_str}")
     if experiment_id:
         print(f"  Experiment ID: {experiment_id}")
     print(f"  Output: {output_dir}")
@@ -3099,6 +3441,18 @@ def main():
     p_build.add_argument("--auto-fix", action="store_true", dest="auto_fix",
                          help="Auto-fix safe QA issues in-place (DC_OFFSET, ATTACK_PRESENCE, "
                               "SILENCE_TAIL) when WAV QA is run during the validate stage.")
+    p_build.add_argument("--skip-probe", action="store_true", dest="skip_probe",
+                         help="Skip Stage 0 voice probe (load existing voice_map.json if present, "
+                              "or render all voices). Use when voice_map.json already exists "
+                              "from a prior probe run.")
+    p_build.add_argument("--tier", choices=["SURFACE", "DEEP", "TRENCH"], default=None,
+                         metavar="TIER",
+                         help="Override tier from .oxbuild (SURFACE | DEEP | TRENCH). "
+                              "Controls velocity layers, round-robin policy, and max slot budget.")
+    p_build.add_argument("--preset-count", type=int, default=None, dest="preset_count",
+                         metavar="N",
+                         help="Override preset_selection.min_presets from .oxbuild. "
+                              "Useful for quick test builds without editing the spec file.")
 
     # --- verify ---
     p_verify = sub.add_parser("verify", help="Verify .xpn provenance chain")

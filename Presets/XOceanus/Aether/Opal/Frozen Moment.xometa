@@ -55,7 +55,14 @@
       "opal_shimmer": 0.0,
       "opal_smear": 0.7,
       "opal_source": 0,
-      "opal_window": 1
+      "opal_window": 1,
+      "opal_macroCharacter": 0.287,
+      "opal_macroMovement": 0.511,
+      "opal_macroCoupling": 0.218,
+      "opal_macroSpace": 0.758,
+      "opal_filterEnvAmt": 0.39,
+      "opal_lfo1Rate": 0.079,
+      "opal_lfo1Depth": 0.187
     }
   },
   "schema_version": 1,
@@ -67,5 +74,11 @@
     "ice"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.302,
+    "MOVEMENT": 0.526,
+    "COUPLING": 0.233,
+    "SPACE": 0.773
+  }
 }

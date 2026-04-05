@@ -38,7 +38,12 @@
       "ouro_macroChar": 0.45,
       "ouro_macroMove": 0.5,
       "ouro_macroCoup": 0.5,
-      "ouro_macroSpace": 0.55
+      "ouro_macroSpace": 0.405,
+      "ouro_macroCharacter": 0.436,
+      "ouro_macroMovement": 0.368,
+      "ouro_macroCoupling": 0.298,
+      "ouro_filterEnvAmt": 0.414,
+      "ouro_lfoRate": 0.107
     }
   },
   "tags": [
@@ -51,5 +56,11 @@
     "soft",
     "transcendental"
   ],
-  "description": "Rossler (1976) at mid-bifurcation — the warmest OUROBOROS topology. Single nonlinear term; softest, most harmonically coherent chaos in the fleet. Tonal without being static."
+  "description": "Rossler (1976) at mid-bifurcation — the warmest OUROBOROS topology. Single nonlinear term; softest, most harmonically coherent chaos in the fleet. Tonal without being static.",
+  "macros": {
+    "CHARACTER": 0.434,
+    "MOVEMENT": 0.366,
+    "COUPLING": 0.296,
+    "SPACE": 0.403
+  }
 }

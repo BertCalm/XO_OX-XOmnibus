@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "First Light",
+  "mood": "Luminous",
+  "engines": ["OpenSky"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The absolute first moment of sunlight on the horizon — long slow attack, the shimmer building from nothing to full luminance, the RISE macro completing at the peak of day.",
+  "tags": ["luminous", "dawn", "first", "sunrise", "gradual"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.80,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.30,
+    "space": 0.70,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.50,
+      "sky_macroMovement": 0.35,
+      "sky_macroCoupling": 0.14,
+      "sky_macroSpace": 0.70,
+      "sky_macroRise": 0.45,
+      "sky_filterEnvAmt": 0.52,
+      "sky_lfo1Rate": 0.03,
+      "sky_lfo1Depth": 0.22,
+      "sky_lfo2Rate": 0.06,
+      "sky_lfo2Depth": 0.14,
+      "sky_attack": 1.5,
+      "sky_decay": 2.5,
+      "sky_sustain": 0.80,
+      "sky_release": 6.0,
+      "sky_filterCutoff": 7000,
+      "sky_filterRes": 0.18,
+      "sky_shimmerDepth": 0.60,
+      "sky_shimmerRate": 0.03,
+      "sky_unisonVoices": 5,
+      "sky_unisonDetune": 0.15,
+      "sky_chorusDepth": 0.32,
+      "sky_reverbMix": 0.58,
+      "sky_output": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.14,
+    "SPACE": 0.70
+  }
+}

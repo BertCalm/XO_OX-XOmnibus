@@ -36,9 +36,24 @@
   "parameters": {
     "Onset": {
       "level": 0.751,
-      "pan": -0.049
+      "pan": -0.049,
+      "perc_macro_punch": 0.44,
+      "perc_macro_mutate": 0.327,
+      "perc_macro_machine": 0.647,
+      "perc_macro_space": 0.434,
+      "perc_filterEnvAmt": 0.446,
+      "perc_lfo1Rate": 0.17,
+      "perc_lfo1Depth": 0.196
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_macroBelly": 0.425,
+      "poss_macroBite": 0.312,
+      "poss_macroPlayDead": 0.632,
+      "poss_macroScurry": 0.419,
+      "poss_filterEnvAmount": 0.446,
+      "poss_lfo1Rate": 0.17,
+      "poss_lfo1Depth": 0.196
+    }
   },
   "schema_version": 1,
   "sequencer": null,
@@ -52,5 +67,11 @@
   ],
   "tempo": null,
   "version": "1.0.0",
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.303,
+    "COUPLING": 0.623,
+    "SPACE": 0.41
+  }
 }

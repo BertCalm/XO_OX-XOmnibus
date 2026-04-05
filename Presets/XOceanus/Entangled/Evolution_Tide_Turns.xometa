@@ -42,14 +42,27 @@
       "ocean_cohesion": 0.6,
       "ocean_filterCutoff": 0.58,
       "ocean_reverbMix": 0.65,
-      "ocean_outputLevel": 0.8
+      "ocean_outputLevel": 0.8,
+      "ocean_macroCharacter": 0.54,
+      "ocean_macroMovement": 0.457,
+      "ocean_macroCoupling": 0.661,
+      "ocean_macroSpace": 0.405,
+      "ocean_filterEnvAmt": 0.409,
+      "ocean_lfo1Rate": 0.199,
+      "ocean_lfo1Depth": 0.305
     },
     "OceanDeep": {
-      "deep_macroPressure": 0.35,
+      "deep_macroPressure": 0.582,
       "deep_abyssalFreq": 0.32,
       "deep_filterCutoff": 0.4,
       "deep_reverbSize": 0.8,
-      "deep_outputLevel": 0.78
+      "deep_outputLevel": 0.78,
+      "deep_macroCreature": 0.499,
+      "deep_macroWreck": 0.703,
+      "deep_macroAbyss": 0.447,
+      "deep_filterEnvAmt": 0.409,
+      "deep_lfo1Rate": 0.199,
+      "deep_lfo1Depth": 0.305
     }
   },
   "coupling": {
@@ -75,5 +88,11 @@
     "endAmount": 0.85,
     "description": "Coupling amount rises logarithmically over 48 seconds — surface to abyss"
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.534,
+    "MOVEMENT": 0.451,
+    "COUPLING": 0.655,
+    "SPACE": 0.399
+  }
 }

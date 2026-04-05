@@ -38,12 +38,25 @@
     "Onset": {
       "perc_v1_level": 0.8,
       "perc_v2_level": 0.65,
-      "perc_macro_punch": 0.65
+      "perc_macro_punch": 0.656,
+      "perc_macro_mutate": 0.574,
+      "perc_macro_machine": 0.736,
+      "perc_macro_space": 0.394,
+      "perc_filterEnvAmt": 0.548,
+      "perc_lfo1Rate": 0.104,
+      "perc_lfo1Depth": 0.254
     },
     "Ohm": {
       "ohm_commune": 0.65,
       "ohm_meddling": 0.5,
-      "ohm_ritualDepth": 0.55
+      "ohm_ritualDepth": 0.55,
+      "ohm_macroMeddling": 0.684,
+      "ohm_macroCommune": 0.602,
+      "ohm_macroJam": 0.764,
+      "ohm_macroMeadow": 0.422,
+      "ohm_filterEnvAmt": 0.548,
+      "ohm_lfo1Rate": 0.104,
+      "ohm_lfo1Depth": 0.254
     }
   },
   "coupling": {
@@ -63,5 +76,11 @@
     ]
   },
   "sequencer": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.632,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.712,
+    "SPACE": 0.37
+  }
 }

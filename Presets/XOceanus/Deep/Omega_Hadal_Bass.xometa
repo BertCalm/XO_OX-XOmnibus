@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Bass",
+  "mood": "Deep",
+  "engines": ["Omega"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A bass frequency so low it approaches the theoretical limit of human perception — the Hadal zone equivalent in sonic form. Massive and patient.",
+  "tags": ["deep", "hadal", "sub-bass", "massive", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.72,
+    "movement": 0.10,
+    "density": 0.80,
+    "space": 0.58,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Omega": {
+      "omega_macroCharacter": 0.60,
+      "omega_macroMovement": 0.10,
+      "omega_macroCoupling": 0.10,
+      "omega_macroSpace": 0.58,
+      "omega_filterEnvAmt": 0.44,
+      "omega_lfo1Rate": 0.01,
+      "omega_lfo1Depth": 0.14,
+      "omega_synthBass": 0.85,
+      "omega_subOsc": 0.80
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.60,
+    "MOVEMENT": 0.10,
+    "COUPLING": 0.10,
+    "SPACE": 0.58
+  }
+}

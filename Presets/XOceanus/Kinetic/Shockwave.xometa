@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Shockwave",
+  "mood": "Kinetic",
+  "engines": ["Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Supersonic shockwave propagating outward. All transient energy released at once, zero propagation delay.",
+  "tags": ["kinetic", "aggressive", "shockwave", "supersonic", "transient"],
+  "macroLabels": ["PUNCH", "MUTATE", "MACHINE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.12,
+    "movement": 0.92,
+    "density": 0.88,
+    "space": 0.12,
+    "aggression": 0.98
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macroCharacter": 0.96,
+      "perc_macroMovement": 0.9,
+      "perc_macroCoupling": 0.1,
+      "perc_macroSpace": 0.12,
+      "perc_noiseLevel": 0.9,
+      "perc_transientAmt": 0.98,
+      "perc_filterEnvAmt": 0.9,
+      "perc_lfo1Rate": 0.55,
+      "perc_lfo1Depth": 0.44,
+      "perc_filterCutoff": 0.8,
+      "perc_filterRes": 0.82,
+      "perc_attackTime": 0.0,
+      "perc_decayTime": 0.1,
+      "perc_sustain": 0.08,
+      "perc_releaseTime": 0.06
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.96,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.1,
+    "SPACE": 0.12
+  }
+}

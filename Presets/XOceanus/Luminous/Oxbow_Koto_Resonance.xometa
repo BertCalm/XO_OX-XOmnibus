@@ -39,7 +39,14 @@
       "oxb_predelay": 3.0,
       "oxb_dryWet": 0.35,
       "oxb_exciterDecay": 0.01,
-      "oxb_exciterBright": 0.62
+      "oxb_exciterBright": 0.62,
+      "oxb_macroCharacter": 0.661,
+      "oxb_macroMovement": 0.444,
+      "oxb_macroCoupling": 0.246,
+      "oxb_macroSpace": 0.54,
+      "oxb_filterEnvAmt": 0.583,
+      "oxb_lfo1Rate": 0.099,
+      "oxb_lfo1Depth": 0.179
     }
   },
   "schema_version": 1,
@@ -51,5 +58,11 @@
     "silk"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.632,
+    "MOVEMENT": 0.415,
+    "COUPLING": 0.217,
+    "SPACE": 0.511
+  }
 }

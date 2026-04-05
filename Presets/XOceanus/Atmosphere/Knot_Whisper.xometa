@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Knot Whisper",
+  "mood": "Atmosphere",
+  "engines": ["Orbweave", "Ouie"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Topological routes tied loosely, two voices feeling each other's gravity without touching. The knot communicates through the wood of space.",
+  "tags": ["atmosphere", "whisper", "coupling", "topological", "duophonic", "knot", "gravity"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.40,
+    "space": 0.78,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_macroCharacter": 0.44,
+      "weave_macroMovement": 0.38,
+      "weave_macroCoupling": 0.15,
+      "weave_macroSpace": 0.74,
+      "weave_knotDepth": 0.32,
+      "weave_filterEnvAmt": 0.35,
+      "weave_lfo1Rate": 0.06,
+      "weave_lfo1Depth": 0.20,
+      "weave_attack": 0.8,
+      "weave_release": 3.6
+    },
+    "Ouie": {
+      "ouie_macroCharacter": 0.40,
+      "ouie_macroMovement": 0.34,
+      "ouie_macroCoupling": 0.13,
+      "ouie_macroSpace": 0.76,
+      "ouie_macroHammer": 0.25,
+      "ouie_filterEnvAmt": 0.30,
+      "ouie_lfo1Rate": 0.05,
+      "ouie_lfo1Depth": 0.16,
+      "ouie_attack": 0.6,
+      "ouie_release": 3.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Ouie",
+        "type": "PitchToPitch",
+        "amount": 0.08
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.14,
+    "SPACE": 0.75
+  }
+}

@@ -104,7 +104,14 @@
       "ombre_reactivity": 0.1,
       "ombre_release": 5.0,
       "ombre_subLevel": 0.45,
-      "ombre_sustain": 0.9
+      "ombre_sustain": 0.9,
+      "ombre_macroCharacter": 0.449,
+      "ombre_macroMovement": 0.449,
+      "ombre_macroCoupling": 0.194,
+      "ombre_macroSpace": 0.899,
+      "ombre_filterEnvAmt": 0.384,
+      "ombre_lfo1Rate": 0.033,
+      "ombre_lfo1Depth": 0.235
     }
   },
   "schema_version": 1,
@@ -116,5 +123,11 @@
     "drone"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.419,
+    "MOVEMENT": 0.419,
+    "COUPLING": 0.164,
+    "SPACE": 0.869
+  }
 }

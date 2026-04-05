@@ -28,7 +28,14 @@
   "parameters": {
     "Ombre": {
       "couplingBus": 0,
-      "couplingLevel": 0.874
+      "couplingLevel": 0.874,
+      "ombre_macroCharacter": 0.815,
+      "ombre_macroMovement": 0.803,
+      "ombre_macroCoupling": 0.217,
+      "ombre_macroSpace": 0.473,
+      "ombre_filterEnvAmt": 0.66,
+      "ombre_lfo1Rate": 0.223,
+      "ombre_lfo1Depth": 0.3
     }
   },
   "schema_version": 1,
@@ -39,5 +46,11 @@
     "ombre"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.773,
+    "COUPLING": 0.187,
+    "SPACE": 0.443
+  }
 }

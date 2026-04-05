@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Preparation",
+  "mood": "Crystalline",
+  "engines": [
+    "Opaline"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A mineral preparation \u2014 foreign objects altering crystal resonance to create new timbral geometries.",
+  "tags": [
+    "crystalline",
+    "mineral",
+    "preparation",
+    "timbral",
+    "geometry"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.28,
+    "movement": 0.38,
+    "density": 0.52,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_macroCharacter": 0.62,
+      "opal2_macroMovement": 0.4,
+      "opal2_macroCoupling": 0.17,
+      "opal2_macroSpace": 0.53,
+      "opal2_filterEnvAmt": 0.48,
+      "opal2_lfo1Rate": 0.05,
+      "opal2_lfo1Depth": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.17,
+    "SPACE": 0.53
+  }
+}

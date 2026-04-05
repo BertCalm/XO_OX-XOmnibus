@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Evolution Gate",
+  "mood": "Coupling",
+  "engines": [
+    "Obiont",
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBIONT 1D Wolfram CA spatial evolution feeds ORGANISM 2D cellular rules \u2014 one-dimensional automaton informing two-dimensional life, dimensions in dialogue.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "automata",
+    "cellular",
+    "ChaosInject",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.44,
+    "movement": 0.62,
+    "density": 0.58,
+    "space": 0.5,
+    "aggression": 0.24
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_evolutionRate": 0.6,
+      "obnt_filterEnvAmt": 0.52,
+      "obnt_lfo1Rate": 0.16,
+      "obnt_lfo1Depth": 0.3,
+      "obnt_macroCharacter": 0.54,
+      "obnt_macroMovement": 0.62,
+      "obnt_macroCoupling": 0.65,
+      "obnt_macroSpace": 0.5
+    },
+    "Organism": {
+      "org_ruleSet": 0.58,
+      "org_filterEnvAmt": 0.5,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.28,
+      "org_macroCharacter": 0.52,
+      "org_macroMovement": 0.58,
+      "org_macroCoupling": 0.62,
+      "org_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obiont",
+        "engineB": "Organism",
+        "type": "ChaosInject",
+        "amount": 0.44
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.64,
+    "SPACE": 0.5
+  }
+}

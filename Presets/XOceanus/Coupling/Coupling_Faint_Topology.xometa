@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Faint Topology",
+  "mood": "Coupling",
+  "engines": [
+    "Orbweave",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORBWEAVE knot phase matrix sends the softest topological signal to OXBOW entangled reverb \u2014 geometric logic breathing into a chiasmus of space.",
+  "tags": [
+    "coupling",
+    "whisper",
+    "topology",
+    "reverb",
+    "KnotTopology",
+    "spatial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.44,
+    "movement": 0.42,
+    "density": 0.4,
+    "space": 0.65,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.45,
+      "weave_filterEnvAmt": 0.38,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo1Depth": 0.2,
+      "weave_macroCharacter": 0.44,
+      "weave_macroMovement": 0.4,
+      "weave_macroCoupling": 0.5,
+      "weave_macroSpace": 0.52
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.5,
+      "oxb_filterEnvAmt": 0.36,
+      "oxb_lfo1Rate": 0.07,
+      "oxb_lfo1Depth": 0.18,
+      "oxb_macroCharacter": 0.4,
+      "oxb_macroMovement": 0.38,
+      "oxb_macroCoupling": 0.48,
+      "oxb_macroSpace": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Oxbow",
+        "type": "KnotTopology",
+        "amount": 0.13
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.49,
+    "SPACE": 0.56
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Bite Ring",
+  "mood": "Entangled",
+  "engines": ["Overbite", "Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Possum bite audio ring-modulating percussive transient. Bite signal and impact signal annihilate each other.",
+  "tags": ["entangled", "aggressive", "bite", "ring-mod", "transient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.18,
+    "movement": 0.92,
+    "density": 0.86,
+    "space": 0.12,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macroCharacter": 0.88,
+      "poss_macroMovement": 0.85,
+      "poss_macroCoupling": 0.28,
+      "poss_macroSpace": 0.12,
+      "poss_biteDepth": 0.92,
+      "poss_scritchRate": 0.65,
+      "poss_filterEnvAmt": 0.78,
+      "poss_lfo1Rate": 0.52,
+      "poss_lfo1Depth": 0.44,
+      "poss_filterCutoff": 0.6,
+      "poss_filterRes": 0.74,
+      "poss_attackTime": 0.006,
+      "poss_decayTime": 0.22,
+      "poss_sustain": 0.3,
+      "poss_releaseTime": 0.18
+    },
+    "Onset": {
+      "perc_macroCharacter": 0.88,
+      "perc_macroMovement": 0.88,
+      "perc_macroCoupling": 0.28,
+      "perc_macroSpace": 0.12,
+      "perc_noiseLevel": 0.8,
+      "perc_transientAmt": 0.92,
+      "perc_filterEnvAmt": 0.82,
+      "perc_lfo1Rate": 0.6,
+      "perc_lfo1Depth": 0.44,
+      "perc_filterCutoff": 0.7,
+      "perc_filterRes": 0.78,
+      "perc_attackTime": 0.001,
+      "perc_decayTime": 0.12,
+      "perc_sustain": 0.12,
+      "perc_releaseTime": 0.07
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Overbite",
+        "target": "Onset",
+        "type": "RingMod",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.12
+  }
+}

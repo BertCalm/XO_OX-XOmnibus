@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Toxic Fold",
+  "mood": "Flux",
+  "engines": ["Origami"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Vermillion fold geometry infected with toxic resonance. Each fold exaggerated to maximum sharpness.",
+  "tags": ["flux", "aggressive", "toxic", "fold", "vermillion"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.15,
+    "movement": 0.86,
+    "density": 0.78,
+    "space": 0.13,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Origami": {
+      "origami_macroCharacter": 0.88,
+      "origami_macroMovement": 0.84,
+      "origami_macroCoupling": 0.14,
+      "origami_macroSpace": 0.13,
+      "origami_foldPoint": 0.95,
+      "origami_foldAngle": 0.92,
+      "origami_filterEnvAmt": 0.84,
+      "origami_lfo1Rate": 0.52,
+      "origami_lfo1Depth": 0.46,
+      "origami_filterCutoff": 0.58,
+      "origami_filterRes": 0.82,
+      "origami_attackTime": 0.004,
+      "origami_decayTime": 0.18,
+      "origami_sustain": 0.25,
+      "origami_releaseTime": 0.15
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.14,
+    "SPACE": 0.13
+  }
+}

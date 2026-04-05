@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Obrix Obsidian Reef",
+  "mood": "Crystalline",
+  "engines": [
+    "Obrix",
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obrix reef brick filter locked to Obsidian crystal white \u2014 the modular coral lattice filtering through volcanic glass.",
+  "tags": [
+    "crystalline",
+    "coupled",
+    "obrix",
+    "obsidian",
+    "reef"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obrix": {
+      "obrix_macroCharacter": 0.64,
+      "obrix_macroMovement": 0.43,
+      "obrix_macroCoupling": 0.23,
+      "obrix_macroSpace": 0.59,
+      "obrix_filterEnvAmt": 0.62,
+      "obrix_lfo1Rate": 0.12,
+      "obrix_lfo1Depth": 0.22
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.64,
+      "obsidian_macroMovement": 0.43,
+      "obsidian_macroCoupling": 0.23,
+      "obsidian_macroSpace": 0.59,
+      "obsidian_filterEnvAmt": 0.62,
+      "obsidian_lfo1Rate": 0.12,
+      "obsidian_lfo1Depth": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obrix",
+        "engineB": "Obsidian",
+        "type": "FilterToFilter",
+        "amount": 0.26
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.23,
+    "SPACE": 0.59
+  }
+}

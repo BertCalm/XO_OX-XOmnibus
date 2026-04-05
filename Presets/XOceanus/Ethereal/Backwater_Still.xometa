@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Backwater Still",
+  "mood": "Ethereal",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A river backwater in summer. Still but not stagnant, the occasional ripple from a forgotten current.",
+  "tags": [
+    "ethereal",
+    "still",
+    "backwater",
+    "summer",
+    "ripple"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.18,
+    "density": 0.16,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_macroCharacter": 0.28,
+      "oxb_macroMovement": 0.2,
+      "oxb_macroCoupling": 0.06,
+      "oxb_macroSpace": 0.91,
+      "oxb_entangle": 0.35,
+      "oxb_filterEnvAmt": 0.22,
+      "oxb_lfo1Rate": 0.008,
+      "oxb_lfo1Depth": 0.09,
+      "oxb_attack": 4.5,
+      "oxb_release": 13.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.06,
+    "SPACE": 0.91
+  }
+}

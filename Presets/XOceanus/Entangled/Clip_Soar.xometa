@@ -52,13 +52,23 @@
       "fat_mojoCtrl": 0.396,
       "fat_outputLevel": 0.858,
       "fat_outputPan": 0.013,
-      "fat_satDrive": 0.887
+      "fat_satDrive": 0.887,
+      "fat_macroMojo": 0.597,
+      "fat_macroGrit": 0.496,
+      "fat_macroSize": 0.604,
+      "fat_macroCrush": 0.558,
+      "fat_fltEnvAmt": 0.522,
+      "fat_lfo1Rate": 0.104,
+      "fat_lfo1Depth": 0.228
     },
     "Osprey": {
-      "osprey_macroCharacter": 0.606,
-      "osprey_macroMovement": 0.7,
-      "osprey_macroCoupling": 0.542,
-      "osprey_macroSpace": 0.474
+      "osprey_macroCharacter": 0.582,
+      "osprey_macroMovement": 0.481,
+      "osprey_macroCoupling": 0.589,
+      "osprey_macroSpace": 0.543,
+      "osprey_filterEnvDepth": 0.522,
+      "osprey_lfo2Rate": 0.104,
+      "osprey_lfo2Depth": 0.228
     }
   },
   "schema_version": 1,
@@ -70,5 +80,11 @@
     "entangled"
   ],
   "tempo": 115,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.549,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.556,
+    "SPACE": 0.51
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Clarity",
+  "mood": "Crystalline",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure volcanic glass \u2014 absolute transparency of tone. No warmth, no decay, only precision.",
+  "tags": [
+    "crystalline",
+    "obsidian",
+    "clarity",
+    "pure",
+    "glass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.16,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.66,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.63,
+      "obsidian_macroMovement": 0.36,
+      "obsidian_macroCoupling": 0.17,
+      "obsidian_macroSpace": 0.58,
+      "obsidian_filterEnvAmt": 0.53,
+      "obsidian_lfo1Rate": 0.12,
+      "obsidian_lfo1Depth": 0.19
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.17,
+    "SPACE": 0.58
+  }
+}

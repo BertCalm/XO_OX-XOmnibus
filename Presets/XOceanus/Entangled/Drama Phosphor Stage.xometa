@@ -49,7 +49,13 @@
       "ole_ampAttack": 0.03,
       "ole_ampRelease": 1.5,
       "ole_filterCutoff": 2800.0,
-      "ole_filterReso": 0.3
+      "ole_filterReso": 0.3,
+      "ole_macroDrama": 0.436,
+      "ole_macroFuego": 0.57,
+      "ole_macroIsla": 0.43,
+      "ole_macroSides": 0.432,
+      "ole_filterEnvAmt": 0.549,
+      "ole_lfoRate": 0.176
     },
     "Optic": {
       "optic_autoPulse": 0,
@@ -61,7 +67,13 @@
       "optic_vizFeedback": 0.5,
       "optic_vizIntensity": 0.65,
       "optic_vizMode": 1,
-      "optic_vizSpeed": 0.55
+      "optic_vizSpeed": 0.55,
+      "optic_macroCharacter": 0.486,
+      "optic_macroMovement": 0.62,
+      "optic_macroCoupling": 0.48,
+      "optic_macroSpace": 0.482,
+      "optic_filterEnvAmt": 0.549,
+      "optic_lfoRate": 0.176
     }
   },
   "schema_version": 1,
@@ -75,5 +87,11 @@
     "coupling"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.458,
+    "MOVEMENT": 0.592,
+    "COUPLING": 0.452,
+    "SPACE": 0.454
+  }
 }

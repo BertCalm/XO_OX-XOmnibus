@@ -40,14 +40,28 @@
       "weave_topologyOrder": 0.55,
       "weave_feedbackAmount": 0.48,
       "weave_filterCutoff": 0.58,
-      "weave_outputLevel": 0.8
+      "weave_outputLevel": 0.8,
+      "weave_macroWeave": 0.629,
+      "weave_macroTension": 0.445,
+      "weave_macroKnot": 0.606,
+      "weave_macroSpace": 0.425,
+      "weave_filterEnvAmt": 0.544,
+      "weave_lfo1Rate": 0.191,
+      "weave_lfo1Depth": 0.222
     },
     "Overtone": {
       "over_cfDepth": 0.65,
       "over_partialCount": 0.72,
       "over_spectralSpread": 0.55,
       "over_filterCutoff": 0.52,
-      "over_outputLevel": 0.78
+      "over_outputLevel": 0.78,
+      "over_macroDepth": 0.668,
+      "over_macroColor": 0.484,
+      "over_macroCoupling": 0.645,
+      "over_macroSpace": 0.464,
+      "over_filterEnvAmt": 0.544,
+      "over_lfo1Rate": 0.191,
+      "over_lfo1Depth": 0.222
     }
   },
   "coupling": {
@@ -66,5 +80,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.624,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.601,
+    "SPACE": 0.42
+  }
 }

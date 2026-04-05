@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Opcode Orbital Signal",
+  "mood": "Luminous",
+  "engines": ["Opcode", "Orbital"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Machine code and additive synthesis share one luminous stream — Opcode's digital clarity rings with Orbital's harmonic crown, signal and shimmer as one architecture.",
+  "tags": ["luminous", "coupled", "digital", "additive", "signal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_macroCharacter": 0.58,
+      "opco_macroMovement": 0.42,
+      "opco_macroCoupling": 0.24,
+      "opco_macroSpace": 0.55,
+      "opco_filterEnvAmt": 0.54,
+      "opco_codeDepth": 0.65,
+      "opco_lfo1Rate": 0.09,
+      "opco_lfo1Depth": 0.22,
+      "opco_attack": 0.004,
+      "opco_decay": 0.5,
+      "opco_sustain": 0.78,
+      "opco_release": 1.8,
+      "opco_filterCutoff": 10500,
+      "opco_output": 0
+    },
+    "Orbital": {
+      "orb_macroCharacter": 0.55,
+      "orb_macroMovement": 0.40,
+      "orb_macroCoupling": 0.24,
+      "orb_macroSpace": 0.52,
+      "orb_filterEnvAmt": 0.52,
+      "orb_brightness": 0.78,
+      "orb_lfo1Rate": 0.06,
+      "orb_lfo1Depth": 0.18,
+      "orb_attack": 0.07,
+      "orb_decay": 0.8,
+      "orb_sustain": 0.84,
+      "orb_release": 2.5,
+      "orb_filterCutoff": 11200,
+      "orb_output": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Opcode",
+        "target": "Orbital",
+        "type": "FilterToFilter",
+        "amount": 0.20
+      }
+    ]
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.24,
+    "SPACE": 0.55
+  }
+}

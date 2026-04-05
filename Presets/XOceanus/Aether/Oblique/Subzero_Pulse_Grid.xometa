@@ -41,7 +41,14 @@
       "oblq_oscDetune": 4.0,
       "oblq_oscFold": 0.92,
       "oblq_oscWave": 2.0,
-      "oblq_sustain": 0.92
+      "oblq_sustain": 0.92,
+      "oblq_macroCharacter": 0.345,
+      "oblq_macroMovement": 0.54,
+      "oblq_macroCoupling": 0.13,
+      "oblq_macroSpace": 0.841,
+      "oblq_filterEnvAmt": 0.322,
+      "oblq_lfo1Rate": 0.073,
+      "oblq_lfo1Depth": 0.132
     }
   },
   "schema_version": 1,
@@ -53,5 +60,11 @@
     "distorted"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "macros": {
+    "CHARACTER": 0.322,
+    "MOVEMENT": 0.517,
+    "COUPLING": 0.107,
+    "SPACE": 0.818
+  }
 }

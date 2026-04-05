@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Thread",
+  "mood": "Ethereal",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A single thread of spider silk visible only when the light catches it. The dual layer makes the invisible briefly audible.",
+  "tags": [
+    "ethereal",
+    "thread",
+    "silk",
+    "delicate",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.32,
+    "density": 0.11,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_macroCharacter": 0.33,
+      "ombre_macroMovement": 0.34,
+      "ombre_macroCoupling": 0.1,
+      "ombre_macroSpace": 0.86,
+      "ombre_blend": 0.38,
+      "ombre_filterEnvAmt": 0.32,
+      "ombre_lfo1Rate": 0.055,
+      "ombre_lfo1Depth": 0.16,
+      "ombre_attack": 1.5,
+      "ombre_release": 5.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.34,
+    "COUPLING": 0.1,
+    "SPACE": 0.86
+  }
+}
