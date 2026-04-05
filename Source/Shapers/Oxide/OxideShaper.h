@@ -120,6 +120,7 @@ public:
 
     void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midi*/, int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0 || isBypassed())
             return;
 

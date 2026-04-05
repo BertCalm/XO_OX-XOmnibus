@@ -5,7 +5,6 @@
 #include <array>
 #include <atomic>
 #include <cmath>
-#include <string>
 
 namespace xoceanus
 {

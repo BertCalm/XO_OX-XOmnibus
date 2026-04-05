@@ -54,6 +54,8 @@ public:
     /// @param shelfGainDb Gain in dB for LowShelf/HighShelf modes (ignored for others).
     void setCoefficients(float cutoffHz, float resonance, float sampleRate, float shelfGainDb = 0.0f) noexcept
     {
+        if (sampleRate <= 0.0f) return;
+
         // Clamp cutoff to safe range: [20 Hz, just below Nyquist]
         float nyquistLimit = sampleRate * 0.49f;
         float fc = cutoffHz;
