@@ -658,13 +658,15 @@ endif()
 #   ${prefix}/bin/XOceanus                     (Standalone application)
 #   ${prefix}/share/XOceanus/Presets/          (factory presets)
 # ==============================================================================
-if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    # AU plugin bundle
-    install(
-        DIRECTORY "$<TARGET_BUNDLE_DIR:XOceanus_AU>"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/AU"
-        USE_SOURCE_PERMISSIONS
-    )
+if(APPLE)
+    # AU plugin bundle (macOS only — not applicable to iOS)
+    if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+        install(
+            DIRECTORY "$<TARGET_BUNDLE_DIR:XOceanus_AU>"
+            DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/AU"
+            USE_SOURCE_PERMISSIONS
+        )
+    endif()
 
     # Standalone application
     install(
