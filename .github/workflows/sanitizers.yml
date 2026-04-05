@@ -36,7 +36,7 @@ jobs:
 
       - name: Cache JUCE
         id: cache-juce
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: Libs/JUCE
           key: juce-8.0.4
