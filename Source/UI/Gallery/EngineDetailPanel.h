@@ -7,6 +7,7 @@
 #include "MacroHeroStrip.h"
 #include "ParameterGrid.h"
 #include "MidiLearnMouseListener.h"
+#include "DrumDetailPanel.h"
 #include "ObrixDetailPanel.h"
 #include "WaveformDisplay.h"
 #include "DrumPadGrid.h"
@@ -172,6 +173,11 @@ public:
         // ── Reset ALL specialized components before recreating ────────────────
         fiveMacroDisplay.reset();
         drumGrid.reset();
+        // drumDetailPanel and obrixPanel ownership is transferred to the viewport
+        // via release() when created, so these resets are no-ops after that point.
+        // They guard against the case where a previous load was interrupted before
+        // the viewport assignment (e.g., if the engine failed to load mid-way).
+        drumDetailPanel.reset();
         trianglePad.reset();
         conductorArc.reset();
         modeSelector.reset();
@@ -189,11 +195,14 @@ public:
             macroHero.setVisible(true);
         }
 
-        // ── Percussion engines get a DrumPadGrid above the ParameterGrid ─────
-        bool isPercEngine = (engineId.equalsIgnoreCase("Onset") || engineId.equalsIgnoreCase("Offering"));
-        if (isPercEngine)
+        // ── Percussion engines ────────────────────────────────────────────────
+        // ONSET: uses DrumDetailPanel — a full drum-machine hierarchical layout
+        //        inside the viewport (VOICES / GLOBAL / MACROS / XVC / FX sections).
+        //        No separate DrumPadGrid needed above the viewport for ONSET.
+        // OFFERING: keeps the classic DrumPadGrid above the generic ParameterGrid.
+        if (engineId.equalsIgnoreCase("Offering"))
         {
-            int numVoices = 8; // both ONSET and OFFERING use 8 voices for now
+            int numVoices = 8;
             drumGrid = std::make_unique<DrumPadGrid>(processor, prefix, accentColour, numVoices);
             addAndMakeVisible(*drumGrid);
         }
@@ -325,8 +334,22 @@ public:
             }
         }
 
-        // ── OBRIX gets a custom panel instead of the generic ParameterGrid ────
-        if (engineId.equalsIgnoreCase("Obrix"))
+        // ── Custom panels replace the generic ParameterGrid ──────────────────
+        // OBRIX → ObrixDetailPanel  |  ONSET → DrumDetailPanel
+        // All other engines → generic ParameterGrid.
+        //
+        // Pattern: clear viewport first, then reset the unique_ptr, then create
+        // a new panel and transfer ownership to the viewport via release().
+        // This avoids dangling raw pointers when the viewport owns the component.
+        if (engineId.equalsIgnoreCase("Onset"))
+        {
+            viewport.setViewedComponent(nullptr, false);
+            drumDetailPanel.reset();
+            obrixPanel.reset(); // ensure OBRIX panel is cleared if switching from it
+            drumDetailPanel = std::make_unique<DrumDetailPanel>(processor, learnManager);
+            viewport.setViewedComponent(drumDetailPanel.release(), true);
+        }
+        else if (engineId.equalsIgnoreCase("Obrix"))
         {
             // Clear the viewport BEFORE resetting obrixPanel to avoid a dangling
             // pointer: if a previous OBRIX load transferred ownership to the
@@ -335,11 +358,15 @@ public:
             // create a new one.
             viewport.setViewedComponent(nullptr, false);
             obrixPanel.reset(); // safe: viewport no longer references it
+            drumDetailPanel.reset();
             obrixPanel = std::make_unique<ObrixDetailPanel>(processor, learnManager);
             viewport.setViewedComponent(obrixPanel.release(), true);
         }
         else
         {
+            viewport.setViewedComponent(nullptr, false);
+            drumDetailPanel.reset();
+            obrixPanel.reset();
             auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour, learnManager);
             newGrid->setParentViewport(&viewport);
             viewport.setViewedComponent(newGrid, true);
@@ -449,19 +476,23 @@ public:
         // ── Main area: Viewport with ParameterGrid (fills remaining space) ───
         viewport.setBounds(area);
 
-        // Resize viewport content: support both ParameterGrid and ObrixDetailPanel
-        if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
-        {
-            grid->setParentViewport(&viewport);
-            int gridW = juce::jmax(200, viewport.getWidth() - viewport.getScrollBarThickness() - 4);
-            int gridH = grid->getRequiredHeight(gridW);
-            grid->setSize(gridW, gridH);
-        }
-        else if (auto* obrix = dynamic_cast<ObrixDetailPanel*>(viewport.getViewedComponent()))
+        // Resize viewport content: support ParameterGrid, ObrixDetailPanel, DrumDetailPanel
         {
             int gridW = juce::jmax(200, viewport.getWidth() - viewport.getScrollBarThickness() - 4);
-            int gridH = obrix->getRequiredHeight(gridW);
-            obrix->setSize(gridW, gridH);
+            auto* viewed = viewport.getViewedComponent();
+            if (auto* grid = dynamic_cast<ParameterGrid*>(viewed))
+            {
+                grid->setParentViewport(&viewport);
+                grid->setSize(gridW, grid->getRequiredHeight(gridW));
+            }
+            else if (auto* obrix = dynamic_cast<ObrixDetailPanel*>(viewed))
+            {
+                obrix->setSize(gridW, obrix->getRequiredHeight(gridW));
+            }
+            else if (auto* drum = dynamic_cast<DrumDetailPanel*>(viewed))
+            {
+                drum->setSize(gridW, drum->getRequiredHeight(gridW));
+            }
         }
     }
 
@@ -474,7 +505,8 @@ private:
     WaveformDisplay waveformDisplay;
     ADSRDisplay adsrDisplay;
     std::unique_ptr<ObrixDetailPanel> obrixPanel;       // only created when OBRIX is loaded
-    std::unique_ptr<DrumPadGrid> drumGrid;              // created for ONSET, OFFERING
+    std::unique_ptr<DrumDetailPanel> drumDetailPanel;  // only created when ONSET is loaded
+    std::unique_ptr<DrumPadGrid> drumGrid;              // created for OFFERING (ONSET uses DrumDetailPanel)
     std::unique_ptr<FiveMacroDisplay> fiveMacroDisplay; // created for OVERBITE
     std::unique_ptr<TriangleXYPad> trianglePad;         // created for OVERWORLD, OXYTOCIN
     std::unique_ptr<ConductorArcDisplay> conductorArc;  // created for OPERA
